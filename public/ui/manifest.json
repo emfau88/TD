@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "style": "Spire woodland pixel art: slate stone, oak, moss and mint crystal",
+  "assets": {
+    "panel-frame.png": { "width": 1254, "height": 1254, "transparent": true, "nineSlice": { "top": 170, "right": 170, "bottom": 170, "left": 170 } },
+    "button-states.png": { "width": 1254, "height": 1254, "transparent": true, "states": ["normal", "hover", "pressed"], "layout": "3 rows", "cssBackgroundSize": "106.5% 375.45%", "cssBackgroundPositionY": ["8.91%", "50%", "91.09%"] },
+    "menu-backdrop.png": { "width": 1672, "height": 941, "transparent": false, "layout": "landscape" },
+    "spire-emblem.png": { "width": 1254, "height": 1254, "transparent": true, "layout": "single emblem" },
+    "hud-icons.png": { "width": 1774, "height": 887, "transparent": true, "columns": 4, "rows": 2, "order": ["gold", "heart", "wave", "build", "pause", "play", "fast", "sound"] },
+    "tower-slots.png": { "width": 2172, "height": 724, "transparent": true, "columns": 3, "rows": 1, "states": ["normal", "hover", "selected"] },
+    "map-covers.png": { "width": 2172, "height": 724, "transparent": false, "columns": 3, "rows": 1, "order": ["Der alte Hain", "Die Nebelbrücke", "Die letzte Lichtung"], "purpose": "Illustrative chapter covers, not exact gameplay maps" },
+    "moon-cover.png": { "width": 1254, "height": 1254, "transparent": false, "layout": "single square chapter cover", "purpose": "Illustrative Mondwarte cover; runtime terrain follows the playable route layout" }
+  }
+}

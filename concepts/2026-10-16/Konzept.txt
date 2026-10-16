@@ -1,0 +1,44 @@
+SPIRE – HERZ AUS SPLITTERN
+Visuelle Vorschläge · 16.10.2026 · Noch nicht ins Spiel eingebaut
+
+STORY
+Astronomin Vesper bündelt die Kraft von sechs Spire-Kernen, um einen Magiesturm aufzuhalten. Die Überlastung zerreißt ihr gemeinsames Kristallherz. Seine falschen Resonanzen bringen Tiere, Waldgeister und alte Maschinen durcheinander. Wisp und Mara reisen durch sechs Regionen, stimmen die Kerne neu und entdecken, warum Vesper dieses Risiko eingegangen ist. Im Finale kann sie zur Verbündeten werden.
+
+DAS DUO
+Mara ist eine erwachsene Tüftlerin mit kupferrotem Zopf, Petrolumhang, violettem Oberteil und Kristallwerkzeug. Kokett durch Mimik, Haltung und selbstbewussten Humor. Wisp bleibt der erkennbare weißbehütete Baumeister im roten Mantel. Ihre Nähe wächst über gemeinsam gelöste Probleme, freundliches Necken und kleine Lagerdialoge. Beide dürfen kompetent sein und Fehler machen.
+Mara: „Du hältst die Leiter. Ich erhöhe die Spannung.“
+Wisp: „Die elektrische?“ — Mara: „Konzentrier dich.“
+
+WEITERE ERWACHSENE FIGUREN
+Runa – Fährfrau und Sumpfhexe; rettet ihr überflutetes Dorf. Trocken, warmherzig, praktisch. Kann Wasserwege kurz beruhigen.
+Ilyra – Himmelsritterin; sucht ihre verschwundene Staffel. Stolz, theatralisch, schlechte Verliererin. Markiert Fluggegner.
+Vesper – Astronomin; will die Wiederholung einer früheren Katastrophe verhindern. Kontrolliert aus Angst zu viel. Erst Rivalin, später mögliche Verbündete.
+
+KAMPAGNENZIEL: 6 REGIONEN × 3 MISSIONEN = 18 KARTEN
+Je Region: Mechanik kennenlernen, andere Wegführung mit Nebenauftrag, Finale mit einer neuen Gegnerkombination und regionalem Boss. Erst drei Beispielmissionen bauen und prüfen, danach den Umfang ausarbeiten. Keine 18 bloßen Umfärbungen.
+1. Mooshain: Verzweigte Waldwege; Weiche verändert die nächste Bodenroute.
+2. Laternenmoor: Inseln und Stege; angekündigte Wasserstände öffnen und schließen Abkürzungen.
+3. Windbruch: Terrassen und Seilbrücken; sichtbare Windphasen verschieben die Flugroute.
+4. Glutgarten: Überwachsene Maschinenruinen; Ventile aktivieren Bremsdampf und öffnen dafür einen zweiten Zugang.
+5. Spiegelwinter: Gefrorene Seen; schwere Gegner brechen eine Abkürzung durchs Eis auf.
+6. Mondwarte: Sternenplattformen; angekündigte Portalpaare verändern die Anmarschrichtung.
+Alle Wegänderungen werden vorab sichtbar angezeigt; jede aktive Bodenroute bleibt mit dem Ziel verbunden. Die Bilder sind Konzeptkarten, keine geprüften Spiellayouts.
+
+NEUE GEGNERROLLEN
+Mooshüpfer – schneller Schwarm.
+Schildkäfer – starke Front, verwundbarer Rücken; Seitenfeuer belohnen.
+Laternenqualle – heilt Begleiter; früh ausschalten.
+Samenmutter – setzt kleine Sprösslinge frei; Flächenschaden einplanen.
+Windrochen – fliegt entlang der wechselnden Windroute.
+Kesselkrabbe – kündigt einen kurzen Geschwindigkeitsschub durch Dampf an.
+Frostwidder – öffnet Eisabkürzungen.
+Sternenrichter – schützt Begleiter mit sichtbaren, zeitlich begrenzten Schilden.
+Bestehende acht Gegnertypen bleiben nutzbar; neue Fähigkeiten zunächst einzeln einführen.
+
+AKTIVE HELFER UND HUMOR
+Mara übertaktet kurz einen Turm. Wisp lenkt eine Bodengruppe ab. Später pro Mission zwei Helfer auswählen. Gemeinsame Abklingzeit begrenzt die Klickarbeit.
+Sprechblasen reagieren selten auf echte Ereignisse wie knappe Rettung, Geldmangel oder einen Boss. Wenige kurze Sätze, Wiederholungssperre und abschaltbar. Panisches Rennen ist eine Animation mit verständlichem Anlass, kein dauerhaftes Bildschirmchaos.
+
+ENTWURFSSTATUS
+Die PNGs zeigen Stil, Silhouetten, Mimik und Mechanikideen. Es sind keine einsatzfertigen Animationsatlanten. Für die Integration müssten Figuren auf die tatsächliche Wisp-Pixeldichte und ein gemeinsames Zellraster gebracht, animiert und auf Lesbarkeit in Spielgröße geprüft werden. Spielcode, Runtime-Assets und Build wurden für diese Entwürfe nicht geändert.
+Erstellt mit dem eingebauten Imagegen-Werkzeug. Vollständige Prompts und Referenzpfade stehen in prompts.json.

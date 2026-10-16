@@ -1,0 +1,114 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "name": "Terrain moon",
+      "refs": [
+        "C:/Users/madde/Documents/TowerDefense/concepts/2026-10-16/02-kampagnen-regionen.png"
+      ],
+      "prompt": "Derive a production GAME TILE ATLAS from the MOON OBSERVATORY region in the supplied style reference. Output ONE clean 4-column by 2-row evenly divided sprite sheet, landscape ratio 2:1. Exactly eight square cells, no labels, no separators, no captions, no margins. Crisp premium hand-painted pixel art, orthographic top-down RPG with slight visible front sides, blue-violet slate stone with gold and teal accents. TOP ROW four cells must be completely filled opaque square seamless textures: cell0 fine irregular lunar flagstone floor; cell1 alternate worn flagstone floor with subtle gold inlay; cell2 sandy ochre paved walkway texture; cell3 dark violet vertical layered cliff masonry texture suitable for repeating on platform sides. These four are texture swatches filling every pixel of their cell, NOT separate floating tiles. BOTTOM ROW four single props, each centered in its square and separated on genuine transparent background: cell4 an ornate circular gold moon rune medallion viewed from above; cell5 a cluster of purple/blue rocky moon crystals; cell6 a tall silver-blue observatory pillar with brass bands and a glowing tip; cell7 an intricate golden astronomical armillary sphere on a round stone plinth. Props entirely inside own cells, consistent scale, clean alpha, no cast background. No characters, UI, towers or lettering. Preserve the rich detailed pixel aesthetic of bottom-right moon concept, but output this exact reusable asset atlas, NOT a scene.",
+      "file": "public/assets/Terrain moon.png"
+    },
+    {
+      "name": "Hero Mara",
+      "refs": [
+        "C:/Users/madde/Documents/TowerDefense/concepts/2026-10-16/01-mara-entwurf.png"
+      ],
+      "prompt": "Convert the approved adult woman Mara into a production directional animation sprite sheet. ONE square transparent atlas, EXACTLY 4 columns and 4 rows, sixteen equal square cells. No text, no borders, no ground, no duplicates outside the grid. Same copper braid, green eyes, teal short cape, cream collar, flattering plum bodice, charcoal trousers, tall brown boots, mint crystal wrench from reference. Refined crisp pixel art. Each whole-body figure occupies about 76% cell height, feet at 88% of cell height, perfectly consistent scale and anchor in every frame. ROW1 all four facing down toward camera; ROW2 all four facing LEFT; ROW3 all four facing RIGHT; ROW4 all four facing AWAY/up, show back of braid and cape. Within EACH row: column1 standing idle; column2 walking with left foot forward; column3 walking with right foot forward; column4 using wrench/casting a small mint spark in that row's direction. Clearly distinct walking legs and arm movement. RPG top-down 3/4 slight overhead view, readable compact silhouettes, detailed pixel shading, no antialiased illustration look. Faithful character identity and adult proportions in all16. Genuine transparent background.",
+      "file": "public/assets/Hero Mara.png"
+    },
+    {
+      "name": "Hero Wisp",
+      "refs": [
+        "C:/Users/madde/Documents/TowerDefense/public/assets/Wisp - Animations.png",
+        "C:/Users/madde/Documents/TowerDefense/concepts/2026-10-16/01-mara-entwurf.png"
+      ],
+      "prompt": "Create an upgraded production sprite sheet of Wisp, the SMALL MYSTERIOUS ADULT magical builder in the first reference, rendered with the richer pixel detail of the second reference. Preserve Wisp's iconic white pointed hood/mask with two dark oval eyes, red wine robe and cloak, little gold trim, dark gloves and boots. Not a child, no visible human face. ONE square transparent atlas, EXACTLY4columns and4rows, sixteen equal square cells. No text, borders, ground. Whole-body Wisp fills about68%cell height, feetat88% of eachcell, same scale/anchor. ROW1 all4facingDOWN, ROW2 all4facingLEFT, ROW3 all4facingRIGHT, ROW4 all4facingAWAY/UP backofhoodandcape. Eachrow COLUMN1idle, COLUMN2walkleftfootforward, COLUMN3walkrightfootforward, COLUMN4interactwithsmall glowing gold construction rune in hands. Clear distinct walking poses and direction, deep pixel shading, crisp outlined premium RPGsprite, slight overhead3/4view. Eachsprite fully containedinowncell with generous transparentpadding. Genuinealpha, absolutelyno background.",
+      "file": "public/assets/Hero Wisp.png"
+    },
+    {
+      "name": "Terrain forest",
+      "refs": [
+        "C:/Users/madde/Documents/TowerDefense/concepts/2026-10-16/02-kampagnen-regionen.png"
+      ],
+      "prompt": "Create one production pixel-art GAME ASSET atlas derived from the sunny woodland MOOSHAIN region in the reference. Exact4columns×2rows of square equal cells, landscape2:1. No text,borders,gutters,UI or characters. Toprow has4entirely opaque fullbleed seamless texture swatches,notfloatingtiles: [lush moss-green grass with tiny blades; grass with small clover flecks; warm ochre dirt and small pebbles path; dark soil with roots and rocks exposed vertical cliff]. Bottomrow4isolatedprops on genuine transparentbackground, eachcontainedinitsowncell: [round ancient leafy rune medallion, mossy rock and fern cluster, full leafy oak tree with round rich green canopy, beautiful ancient tree shrine with turquoise crystal]. View slight overheadtopdownorthographic RPG. Same rich high-quality crisp pixelart palette and detailed shading as reference. Objects should occupy80%owncell withgenuinealpha padding. No scenerycomposite; reusabletextureandpropatlas only.",
+      "file": "public/assets/Terrain forest.png"
+    },
+    {
+      "name": "Terrain marsh",
+      "refs": [
+        "C:/Users/madde/Documents/TowerDefense/concepts/2026-10-16/02-kampagnen-regionen.png"
+      ],
+      "prompt": "Create one production pixel-art GAME ASSET atlas derived from the teal swamp LANTERN MARSH region in the reference. Exact4columns×2rows of square equal cells, landscape2:1. No text,borders,gutters,UI or characters. Toprow has4entirely opaque fullbleed seamless texture swatches,notfloatingtiles: [dark green mossy damp soil; alternate muddy moss and root ground; rich warm brown wooden walkway planks; dark weathered upright wooden dock pilings texture]. Bottomrow4isolatedprops on genuine transparentbackground, eachcontainedinitsowncell: [round mossy ward rune, reeds and waterlilies, dead gnarled willow tree with hanging golden lantern, ornate wooden sluice gate with bronze wheel]. View slight overheadtopdownorthographic RPG. Same rich high-quality crisp pixelart palette and detailed shading as reference. Objects should occupy80%owncell withgenuinealpha padding. No scenerycomposite; reusabletextureandpropatlas only.",
+      "file": "public/assets/Terrain marsh.png"
+    },
+    {
+      "name": "Terrain wind",
+      "refs": [
+        "C:/Users/madde/Documents/TowerDefense/concepts/2026-10-16/02-kampagnen-regionen.png"
+      ],
+      "prompt": "Create one production pixel-art GAME ASSET atlas derived from the golden cliffs above clouds WINDBRUCH region in the reference. Exact4columns×2rows of square equal cells, landscape2:1. No text,borders,gutters,UI or characters. Toprow has4entirely opaque fullbleed seamless texture swatches,notfloatingtiles: [golden dry cliff meadow grass; pale weathered limestone ground; ochre sandy trail; bluish sheer layered cliff rock wall]. Bottomrow4isolatedprops on genuine transparentbackground, eachcontainedinitsowncell: [round carved sun-and-wind rune medallion, windswept pale rock and golden grass, slender alpine pine tree, old rope-bridge watchtower with golden wind banner]. View slight overheadtopdownorthographic RPG. Same rich high-quality crisp pixelart palette and detailed shading as reference. Objects should occupy80%owncell withgenuinealpha padding. No scenerycomposite; reusabletextureandpropatlas only.",
+      "file": "public/assets/Terrain wind.png"
+    },
+    {
+      "name": "Hero Runa",
+      "refs": [
+        "C:/Users/madde/Documents/TowerDefense/concepts/2026-10-16/03-weitere-charaktere.png"
+      ],
+      "prompt": "Derive RUNA fromthe corresponding woman inthe suppliedreference into a productionpixelart animationatlas. Runa is an adult sturdy curvy swampwitchwithwarm brownskin, longcurlycharcoalhairwithsilverstrands,wide mossgreenhat,plumblouse,tealcoat,leatherboots,woodenstaffandamberlantern. Hercastshowsatinygreenrootspell.. EXACT4columns×4rows squaretransparentimage, sixteen equalcells. Eachwholefigureconstant80%cellheight, feetat94%cellheight, samebaseline/scale. Row1ALL4facingDOWNfront, row2ALL4facingLEFT, row3ALL4facingRIGHT, row4ALL4facingAWAYback. Eachrowcolumns:1idle,2walkleftfootforward,3walkrightfootforward,4casting/usingherweapon inrowdirection. Explicitdifferentlegpositionsforwalking. Preserve sameadultidentity/outfitinall16frames. Premiumcrisp outlinedpixelart RPG3/4overheadview. Fullyinsideeachcell,nooverlap,nocaptions,noground,noborders,nolabels. Genuinetransparentalpha.",
+      "file": "public/assets/Hero Runa.png"
+    },
+    {
+      "name": "Terrain ember",
+      "refs": [
+        "C:/Users/madde/Documents/TowerDefense/concepts/2026-10-16/02-kampagnen-regionen.png"
+      ],
+      "prompt": "Derive the GLUTHART INDUSTRIAL FOUNDRY region into one reusable4column×2rowequalcellatlas landscape2:1. Richcrisp pixelart like fourthreferencepanel. Nocharacters,nolabels,noborders. Toprow4FULLBLEEDOPAQUEseamlesstextures:0darkgrayironandflagstonefactoryfloor,1alternaterustedcoppergratingfloor,2warmochrebrickwalkway,3darkbasaltverticalmasonrywithsmalllavafissures cliffwalltexture. Bottomrowgenuinetransparent4props:4roundbronzevalverunemedallion,5smallpileofcoalorangerocksandrustedpipe,6industrialverticalcopperboilerwithchimneyandpressuregauge,7ornatelargebrasssteamenginewithflywheelandpipes. Eachpropowncell80%heightfullycontained. Reusablegametexture/propsatlasnotconceptscene. Matchmoontileatlasquality.",
+      "file": "public/assets/Terrain ember.png"
+    },
+    {
+      "name": "Terrain frost",
+      "refs": [
+        "C:/Users/madde/Documents/TowerDefense/concepts/2026-10-16/02-kampagnen-regionen.png"
+      ],
+      "prompt": "Derive SPIEGELWINTER icylandscape into one production4column×2rowequalcellatlaslandscape2:1. Premium crisp pixelartmatchingfifthreferencepanel. Nocharacters,text,borders. Toprow4FULLBLEEDOPAQUEseamlesstextures:0richwhitesnowwithsubtlebluepixelshadows,1icybluegroundlightlydustedsnow,2goldenpalestonepathsnowflecked,3icyblueverticalrockcliffswithicicles. Bottomrow4isolatedpropsgenuinetransparentbackground:4roundruneoficeandamethyst,5clusterofpurpleicecrystals,6tallsnowcoveredfirtree,7ancientfrozenstonearchandturquoisecrystalshrine. Eachowncellcentered,80%heightfullycontained. TextureatlasNOTscene. Readablepixeldetail,richcoolpalette.",
+      "file": "public/assets/Terrain frost.png"
+    },
+    {
+      "name": "Hero Ilyra",
+      "refs": [
+        "C:/Users/madde/Documents/TowerDefense/concepts/2026-10-16/03-weitere-charaktere.png"
+      ],
+      "prompt": "Derive ILYRA the middlewomanfromreference into a productionanimatedspritesheet EXACT4columns×4rows squaretransparentatlas sixteen equalcells. Beautifuladultbrownskinnedskyknightwithshortsilverwhitehair,brassflightgogglesonhead,ivorygoldarmour,bluecape,boots,longslimbluecrystallance. Consistentadultidentityanduniform. Eachwholefigure80%cellheightfeet94%cellheight,contained,consistentanchor. Rows1DOWNfront,2LEFT,3RIGHT,4AWAYback. ALL4framesineachrowfacesamedirection. Columnsineachrow:1idle,2walkleftfootforward,3walkrightfootforward,4lancethrustwithsmallblueenergyarc. Explicitdistinctlegmotion. RichcrispoutlinedpixelartRPG3/4overhead,transparentalpha,nolettering,noborders,noground,noscenery.",
+      "file": "public/assets/Hero Ilyra.png"
+    },
+    {
+      "name": "Lantern Jelly",
+      "prompt": "ONE production game atlas with EXACT4columns×2rows equal square cells, landscape2:1, genuine transparentbackground, no text, labels, gridlines or scenery. Eight distinct frames fixedscale centeredinsideowncells, crisp premium pixelart topdownRPG3/4view. Frames0,1 walking/idleposes;2,3 usingability;4,5 hurt;6,7 collapsinganddeath. Subject is a floating magical LANTERN JELLYFISH monster: teal translucent umbrella cap, tiny gold lantern glowing orange inside, elegant trailing cyan tendrils, mischievousface, healinggreenmotes duringability. Facing slightlyright. Clearly8distinctanimatedposeswithtentaclemotionandbellcontraction. Warmgold/tealpalette. Samekindofcrispfantasypixelartas16bitRPGbutrichdetail.",
+      "file": "public/assets/Lantern Jelly.png"
+    },
+    {
+      "name": "Root Herald",
+      "prompt": "ONE production game atlas with EXACT4columns×2rows equal square cells, landscape2:1, genuine transparentbackground, no text, labels, gridlines or scenery. Eight distinct frames fixedscale centeredinsideowncells, crisp premium pixelart topdownRPG3/4view. Frames0,1 walking/idleposes;2,3 usingability;4,5 hurt;6,7 collapsinganddeath. Subject is a ROOT HERALD monster: small gnarled walking treecreature with mossywoodbody,leafeyebrows,stumpyrootlegs,mushroomshoulders,roundwoodendrumstrappedtobelly,twigsfordrumsticks. Comicallyselfimportantface. Facing slightlyright. Poses0,1differentwalkinglegs,2,3beatingdrumwithgreensoundpulse,4,5hurtshrink,6,7collapseintoleavesandwood. Richgreenbrownpixelshading.",
+      "file": "public/assets/Root Herald.png"
+    },
+    {
+      "name": "Frost Ram",
+      "prompt": "ONE production game atlas with EXACT4columns×2rows equal square cells, landscape2:1, genuine transparentbackground, no text, labels, gridlines or scenery. Eight distinct frames fixedscale centeredinsideowncells, crisp premium pixelart topdownRPG3/4view. Frames0,1 walking/idleposes;2,3 usingability;4,5 hurt;6,7 collapsinganddeath. Subject is a FROST RAM monster: stockyicewhitewoolramwithblueiceplatedback,enormouscurledamethysthorns,shortfourlegs,goldfrostbell,grumpydeterminedface. Facingright. Frames0,1differentwalkinglegs,2,3charginghornsandicyshockwave,4,5hurt,6,7fallandicefragments. Readablecuteformbutformidable. Richbluewhitepurplepixelshading.",
+      "file": "public/assets/Frost Ram.png"
+    },
+    {
+      "name": "Campaign Objects",
+      "prompt": "ProductionpixelartpropATLAS EXACTeightobjects in4columns×2rowsofequalsquarecells landscape2:1,genuinetransparentbackground. Premiumcrisp fantasyRPGslightlyoverheadperspective,consistentgoldtealwoodslatepalette. Eachwholeobjectcentered80%cellheightwithpadding,nooverlap,nolabels,nogrid,noscenery. Toprowlefttoright0closedwoodentoolchestwithbrasscornersandmintwrenchsymbol;1samechestopenwithtoolsandgoldinside;2inactivepurplebluestonerunepillarongoldfoot;3samepillaractivewithglowingmintcrystal. Bottomrow4largecoppersteamvalvewithredwheelonpipe;5brassrailwayswitchleveronsmallstonebase;6warmamberhanginglanternonshortwoodenpost;7floatingvioletstarshardabovegoldringbase. Clearinteractivegameprops.",
+      "file": "public/assets/Campaign Objects.png"
+    },
+    {
+      "name": "Portrait Vesper",
+      "refs": [
+        "C:/Users/madde/Documents/TowerDefense/concepts/2026-10-16/03-weitere-charaktere.png"
+      ],
+      "prompt": "Create a single transparent square RPG dialogue portrait of VESPER, the adult astronomer woman on the RIGHT of the reference. Waist-up three-quarter view facing slightlyleft, confident elegantexpression withhintofregret, darkwavyviolethair, silverycrescenthairclip, plumandmidnightblueastronomerrobes withgoldstar embroidery, holdingasmallgoldarmillaryorbwithvioletstarlight. Tastefullyalluringadult, refinednotexplicit. Richcrisp premium pixelart matchingreferenceMaraandRuna, darkpixeloutlines, brilliantreadablefaceandeyes. Centeredwholebustwithinimagewithalpha padding, no words,no frame,no floor,no background. Oneportraitonly.",
+      "file": "public/assets/Portrait Vesper.png"
+    }
+  ]
+}

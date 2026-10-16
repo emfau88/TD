@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-16",
+  "scope": "Exactly five curated standalone maps. Dialogues remain unchanged. Additional draft map definitions are not part of this release. Browser pixel review is separate.",
+  "campaign": {
+    "missions": 5,
+    "regions": 5,
+    "mapIds": [4, 7, 10, 16, 3],
+    "wavesPerMission": 10,
+    "finalMoonMapId": 3,
+    "missionRequirement": "Every map requires clearing all ten waves and activating its core rune with a companion. Both orders work."
+  },
+  "regionMechanics": {
+    "forest": {
+      "terrain": "An upper forest detour and lower entrance merge beside two large ponds. The core, supplies and root station each have an authored position; both companions start safely beside/in front of the right-hand Spire.",
+      "routes": "First entrance in waves 1-3, second entrance in 4-6, both from wave 7.",
+      "station": "Wurzelrune",
+      "effect": "Ground enemies within 175 pixels move at 50 percent speed for 12 seconds. Flyers and enemies outside the zone are unaffected."
+    },
+    "marsh": {
+      "terrain": "Four reed islands and connected boardwalks over non-walkable water, with a shared central turn and a separate eastern base island.",
+      "routes": "Entrances alternate at waves 4 and 7.",
+      "station": "Nebelglocke",
+      "effect": "Suppresses every Lantern Jelly healing aura for 15 seconds. Healing resumes after expiry."
+    },
+    "wind": {
+      "terrain": "Five cliff islands connected by long diagonal zigzag bridges. The base sits in the northeastern corner with safe visible companion spawns.",
+      "effect": "The flying corridor mirrors vertically for waves 4-6, then returns. Preview and actual enemy route use the same activeAir getter."
+    },
+    "frost": {
+      "terrain": "A large central frozen lake, a long northern shore route and a southern entrance that crosses the lake on an ice bridge.",
+      "station": "Taurune",
+      "effect": "Suppresses Frost Ram tower-disruption auras for 15 seconds. Disruption resumes after expiry."
+    },
+    "moon": {
+      "terrain": "Seven separate rounded floating platforms with 80-pixel diagonal bridges share geometry with the navigation mask. Cardinal navigation uses a connected supercover through diagonal bridge cells. Both heroes start two cells beside the Spire, and the rune/cache sit on separate upper/lower plazas.",
+      "effect": "Portal entrances change at waves 4 and 7. The final mission progresses from northern to southern to all four portals. Sternenrichter shields at most two nearby allies."
+    }
+  },
+  "stationRules": {
+    "availableDuring": "wave",
+    "whoCanActivate": "Either selected companion",
+    "activation": "Walk to an adjacent reachable cell, then channel for 1.2 seconds. No remote activation.",
+    "cooldownSeconds": 30,
+    "cooldownStarts": "Successful activation",
+    "cooldownOwnership": "Station, shared by both companions",
+    "waveEnd": "Active effect clears; remaining station cooldown persists and continues during the next build phase.",
+    "pause": "Simulation updates are suspended, freezing movement, effects and cooldowns."
+  },
+  "saveValidation": {
+    "checkpoint": "Most recent build phase, including economy, towers, priorities, hero positions, cooldowns, completed objectives and station uses/cooldowns.",
+    "verified": [
+      "Restores immutable tower statistics from the definition ID.",
+      "Rejects malformed hero and station entries without throwing.",
+      "Rejects nonfinite, negative or fractional integer resources.",
+      "Rejects duplicate hero IDs, tower UIDs and objective IDs.",
+      "Rejects impossible tower cells, costs, levels and priorities.",
+      "Does not reset used station cooldowns on restore.",
+      "A cancelled or sold-target Mara order consumes no cooldown and causes no remote boost."
+    ],
+    "boundary": "Local single-player saves are validated for consistency and safe loading. They are not a server-authoritative anti-cheat system."
+  },
+  "verification": {
+    "simulationTests": "53 tests pass. The suite checks the five release maps with exported renderer obstacles plus shared mechanics, arrival requirements, station cooldowns, expiry, corrupted saves, connected bridges and visible companion spawns.",
+    "balance": "All five authored missions won with the regular starting budget and legally built mixed defenses. Lives remaining: forest 20, marsh 20, wind 20, frost 20, Moonwatch 13. Companions reached caches and mandatory runes through actual pathfinding.",
+    "sceneObstacles": "scripts/check-scene.mjs exports the actual renderer blockers to tests/rendered-obstacles.json. All five missions have been replayed successfully against that export; campaign tests and the balance CLI now load it. Regenerate the export after changing scenery.",
+    "visualLimit": "The scene check uses a drawing-API double; it proves behavior and obstruction consistency, not final visual quality."
+  },
+  "implementedAlternatives": [
+    "The five-map release uses repeatable forest, marsh and frost stations, wind corridor changes and Moon portal changes.",
+    "There are no physically rising water levels, growing ice surfaces or player-operated route switches. Static route corridors reserve every future entrance, with the active entrance clearly previewed."
+  ]
+}

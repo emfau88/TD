@@ -1,0 +1,44 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-16",
+  "assets": [
+    {
+      "name": "mara_atlas",
+      "prompt": "Use case: stylized-concept. Production game animation sprite atlas derived from the supplied MARA character reference. Preserve exactly her adult copper-haired braided engineer identity, fitted plum bodice, short petrol cape with cream collar, tool belt, dark trousers and brown boots, mint crystal spanner. Crisp premium pixel art with dark plum outline, nearest-neighbor square pixels, modest adult flirty charm. FULL TRANSPARENT BACKGROUND with real alpha, no checkerboard, no ground, no text, no labels, no borders. NOT a concept board.\nPrecisely FOUR equal columns by TWO equal rows, 8 full-body poses in reading order. Wide 2:1 canvas, ideally 2048x1024, each square cell exactly one character, no overlap, character occupies 65% cell height. Each pose same size and consistent body proportions, same anchor feet at 82% cell height, centered horizontally. Leave at least 12% padding every side, tools inside cell. All poses face three-quarter toward viewer's RIGHT, same character.\nRow1: 1 relaxed idle spanner lowered; 2 idle breathing with slight cape flutter; 3 walk right with right leg forward; 4 walk right with left leg forward.\nRow2: 5 casting/working raises crystal spanner pointing upward; 6 casting followthrough with two small mint sparks close to spanner; 7 joyful victory raises free hand confident smile; 8 comic alarm/panic running pose wide worried eyes cape flaring, still adult.\nApparent native sprite size about 48x64 pixels enlarged with hard pixel edges. No smooth illustration, no blur, no frame numbers, no cropped extremities, no atmospheric background.",
+      "reference_images": [
+        "C:\\Users\\madde\\Documents\\TowerDefense\\concepts\\2026-10-16\\01-mara-entwurf.png"
+      ],
+      "transparent_background": true
+    },
+    {
+      "name": "judge_atlas",
+      "prompt": "Use case: stylized-concept. Production animation sprite atlas of ONLY STERNENRICHTER from bottom-right of the supplied bestiary reference. Preserve floating dark-purple faceted automaton, narrow elongated body, one mint diamond eye, brass orbital ring around torso and small mint shield crystals. Other creatures in reference must NOT appear. Premium readable fantasy pixel art, hard square pixels, dark outline, no smooth rendering.\nGenuinely TRANSPARENT background (alpha), no checkerboard, no text, no borders, no labels, no ground. Precisely FOUR equal columns and TWO equal rows: 8 cells. Wide 2:1 canvas ideally2048x1024, square equal cells. Every figure same scale, centered, occupying65% cell height with generous equal margins, anchor at same height. All front/three-quarter view with face clearly visible.\nRow1 frames0-3: 0 idle floating arms/ring relaxed; 1 idle alternate ring orientation and slight float; 2 shield casting ring expands and two mint shield diamonds light; 3 shield casting pulsing alternate, same size.\nRow2 frames4-7: 4 hit recoil body slightly tilted small pale flash on edge; 5 recovering from hit, eye bright; 6 death body begins splitting into eight large purple crystalline pieces with broken brass ring; 7 death further scattered fragments with fading mint sparks, all fragments still inside cell. No external beams linking to other cells.\nNo additional enemies, no scenery, no watermark. High quality authentic pixel sprites, consistent design, no anti-aliasing, no opaque backdrops.",
+      "reference_images": [
+        "C:\\Users\\madde\\Documents\\TowerDefense\\concepts\\2026-10-16\\04-neue-gegner.png"
+      ],
+      "transparent_background": true
+    },
+    {
+      "name": "moon_props",
+      "prompt": "Use case: stylized-concept. Production transparent environment prop sprite atlas for the MONDWARTE region (bottom right of the reference image). Match that pixel-art moon observatory: blue-gray carved stone, brass astronomical machinery, violet and mint crystals. Orthographic top-down 3/4 fantasy game object sprites; premium crisp hand-placed pixel clusters with dark outlines. Not a concept board. NO TEXT, numbers, labels, grids or backdrop.\nExactly THREE equal columns and TWO equal rows, six objects, on truly transparent alpha canvas, landscape3:2 ideally1536x1024. Each object centered in its own square cell with at least12% transparent padding all around, consistent footpoint at82% cell height. Every object stands alone, no terrain tile/pedestal spreading across cells.\nTop row: 0 violet portal: tall ornate blue-gray stone arch with purple inner vortex and brass crescent cap; 1 cyan portal: matching arch with turquoise inner vortex; 2 central Spire: tall mint crystal floating above a compact circular gray-stone and brass socket.\nBottom row: 3 brass armillary sphere on low blue stone stand, elegant celestial rings; 4 broken ancient blue-gray column, rubble at foot, gold trim; 5 small cluster of three moon crystals, pale lilac and blue, on a compact rock base.\nAll architectural stone consistently lit top-left, readable silhouette, restrained glow confined near the object with transparent surroundings. No painterly backgrounds, no terrain landscape, no shadows beyond compact contact shadow, no 3D render, no watermark.",
+      "reference_images": [
+        "C:\\Users\\madde\\Documents\\TowerDefense\\concepts\\2026-10-16\\02-kampagnen-regionen.png"
+      ],
+      "transparent_background": true
+    },
+    {
+      "name": "moon_cover",
+      "prompt": "Use case: stylized-concept. One square pixel-art map thumbnail for MONDWARTE, inspired by the bottom-right region of the reference, NOT the whole collage. Night-sky observatory tower-defense landscape: several connected floating circular blue-gray stone terraces and bridges, a central glowing mint Spire, a violet entrance portal to left and cyan entrance portal to right, brass armillary sphere on rear platform, tiny moon crystals, distant purple nebula and stars. Clear silhouettes at tiny menu-thumbnail size, crisp premium 16-bit pixel art, dark midnight blue/violet with mint highlights, no smooth brushwork. No text, no headings, no frame, no labels, no HUD, no watermark. Square full-bleed composition, central spire dominant.",
+      "reference_images": [
+        "C:\\Users\\madde\\Documents\\TowerDefense\\concepts\\2026-10-16\\02-kampagnen-regionen.png"
+      ],
+      "transparent_background": false
+    }
+  ],
+  "files": [
+    "public/assets/Mara.png",
+    "public/assets/Sternenrichter.png",
+    "public/assets/Moon Props.png",
+    "public/ui/moon-cover.png"
+  ]
+}

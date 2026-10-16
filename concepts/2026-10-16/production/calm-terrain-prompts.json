@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Terrain forest calm",
+    "refs": [
+      "C:/Users/madde/Documents/TowerDefense/public/assets/Terrain forest.png"
+    ],
+    "prompt": "REVISE this GAME atlas for calm professional level art. Exact SAME4columns2rows equalcells2:1landscape composition and transparency behavior. ToprowfourFULLBLEEDOPAQUEtextures. CELL0 andCELL1: quiet subdued mossy woodland ground in mid-dark olivegreens (#486344,#526d46,#5d744d), broad soft pixel clusters and subtlelargepatches, LOWCONTRAST, VERYSPARSE smallgrass tufts. Absolutely NOflowers, nocloverpatterns,nodotnoise,noindividualfinegrassblades,nohighlights,noobjectspaintedintheground. Thesearecalmnegative-spacegroundtiles todisplaycharactersandtowerson. Cell1onlyslighttonalvariationofcell0, seamlessedges. CELL2 plainwarmmutedochredirtwalkwaywithsubtlewideearthpatches,noembeddedgrass,nogravelnoise,nopattern,noedges. CELL3darkbrownlayeredsoilcliffwallwithfewroots, lowcontrast. Bottomrowpropspreservepolishedcrispoutlinedpixelartwithclearshapes:cell4flatquietstoneleafrunemedallion,cell5smallfernandmossrockcluster,cell6fullbroadcrownedoldoaktreewithtrunkdeepgreenfoliagelargepainterlypixelclusters,cell7ancienttreecrystalshrine. Eachprop80%cellheightpaddingallaroundgenuinealpha. Critical difference fromreference: visuallyCALMmaterialswatcheswithalmostnodetails, textureslowfrequencyandnorepeatingflowers. Propsmaybedetailed. No captions/grid/borders."
+  },
+  {
+    "name": "Terrain marsh calm",
+    "refs": [
+      "C:/Users/madde/Documents/TowerDefense/public/assets/Terrain marsh.png"
+    ],
+    "prompt": "EDIT suppliedGAMEatlaspreservingEXACT4columns2rowsequalcellgrid2:1landscape andgenuinealphaBOTTOMrow. AllTOProwcellsremaincompletelyopaque fullbleedmaterialtextures. ChangeONLYcell0,cell1,cell2 to quietLOWCONTRASTlevelmaterials: Dark muted mossy peat ground in desaturated tealgreen, broadquietpatches, no tinyflowers or repetitive roots. Path warm weathered wooden planks, larger simple boards with restrained grain. GroundneedsCALMnegative-spaceforreadabletowerscharacters, broadpixelclustersnospeckleddetail,NOrepeatingflowers,noborders,gutters,labels. Keepcell3verticalcliffwallandallfourbottompropssameidentitiesasreference. Bottomobjectsfullywithinowncellwithgenuinealpha. Crisp premium pixelart. Mapreadabilitynottexturecomplexity. Preservepaletteandpropsbutdramaticallyreducedetaildensityoftopfirst3swatches."
+  },
+  {
+    "name": "Terrain wind calm",
+    "refs": [
+      "C:/Users/madde/Documents/TowerDefense/public/assets/Terrain wind.png"
+    ],
+    "prompt": "EDIT suppliedGAMEatlaspreservingEXACT4columns2rowsequalcellgrid2:1landscape andgenuinealphaBOTTOMrow. AllTOProwcellsremaincompletelyopaque fullbleedmaterialtextures. ChangeONLYcell0,cell1,cell2 to quietLOWCONTRASTlevelmaterials: Muted warm straw meadow ground, broadsoft ochregreenpatches, NOscatteredstones NOdaisies NOhighcontrastblades. Alternatecell1palelevel limestone slabs, NOcliffsinsidefloor. Path quietwarmochredirt. GroundneedsCALMnegative-spaceforreadabletowerscharacters, broadpixelclustersnospeckleddetail,NOrepeatingflowers,noborders,gutters,labels. Keepcell3verticalcliffwallandallfourbottompropssameidentitiesasreference. Bottomobjectsfullywithinowncellwithgenuinealpha. Crisp premium pixelart. Mapreadabilitynottexturecomplexity. Preservepaletteandpropsbutdramaticallyreducedetaildensityoftopfirst3swatches."
+  },
+  {
+    "name": "Terrain frost calm",
+    "refs": [
+      "C:/Users/madde/Documents/TowerDefense/public/assets/Terrain frost.png"
+    ],
+    "prompt": "EDIT suppliedGAMEatlaspreservingEXACT4columns2rowsequalcellgrid2:1landscape andgenuinealphaBOTTOMrow. AllTOProwcellsremaincompletelyopaque fullbleedmaterialtextures. ChangeONLYcell0,cell1,cell2 to quietLOWCONTRASTlevelmaterials: Quiet coolwhite snow, broadsoftblueshadowpatches, NOtiny rocks NOmini pineclusters NOpatterneddots. Alternatecell1quiettranslucentblueicewithafewwidehairlinecracks. Pathmutedpalesandstonewithouttinysnowblotches. GroundneedsCALMnegative-spaceforreadabletowerscharacters, broadpixelclustersnospeckleddetail,NOrepeatingflowers,noborders,gutters,labels. Keepcell3verticalcliffwallandallfourbottompropssameidentitiesasreference. Bottomobjectsfullywithinowncellwithgenuinealpha. Crisp premium pixelart. Mapreadabilitynottexturecomplexity. Preservepaletteandpropsbutdramaticallyreducedetaildensityoftopfirst3swatches."
+  },
+  {
+    "name": "Terrain moon calm",
+    "refs": [
+      "C:/Users/madde/Documents/TowerDefense/public/assets/Terrain moon.png"
+    ],
+    "prompt": "EDIT suppliedGAMEatlaspreservingEXACT4columns2rowsequalcellgrid2:1landscape andgenuinealphaBOTTOMrow. AllTOProwcellsremaincompletelyopaque fullbleedmaterialtextures. ChangeONLYcell0,cell1,cell2 to quietLOWCONTRASTlevelmaterials: Quiet medium bluegray lunar flagstone floor, LARGE restrained flatstone shapes, subtle fine dark joints, low contrast, no glitter or scratches orstars. Alternatecell1samefloorwithveryfaintworninlay, NOTgiantgoldgeometricpatterns. Path muted warmgoldgraypavingwithfewwidejointslines, nopeppernoise. GroundneedsCALMnegative-spaceforreadabletowerscharacters, broadpixelclustersnospeckleddetail,NOrepeatingflowers,noborders,gutters,labels. Keepcell3verticalcliffwallandallfourbottompropssameidentitiesasreference. Bottomobjectsfullywithinowncellwithgenuinealpha. Crisp premium pixelart. Mapreadabilitynottexturecomplexity. Preservepaletteandpropsbutdramaticallyreducedetaildensityoftopfirst3swatches."
+  }
+]

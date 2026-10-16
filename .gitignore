@@ -1,0 +1,7 @@
+node_modules/
+dist/
+Spire.html
+*.log
+backups/
+reference/dist/
+reference/Spire-Original.html
