@@ -1,6 +1,6 @@
 # M2 – vollständige Waldkarte
 
-Stand: 16.10.2026. **Umgesetzt und gezielt geprüft; Nutzerabnahme der vollständigen Karte steht noch aus.** Grundlage ist die ausdrücklich bestätigte M1-Grafikprobe. Die übrigen Regionen und die Story wurden nicht bearbeitet.
+Stand: 16.10.2026. **Umgesetzt, gezielt geprüft und vom Nutzer abgenommen:** „ok passt so, mach jetzt mit dem Laternenmoor als nächster Map weiter“. Grundlage ist die ausdrücklich bestätigte M1-Grafikprobe. Dieser Bericht dokumentiert den M2-Stand; weitere Regionen folgen separat, die Story bleibt zurückgestellt.
 
 ## Spielen
 
@@ -50,7 +50,7 @@ Die 20 Wellen wurden vollständig in der Simulation geprüft, nicht zusätzlich 
 
 ## Grenzen und nächster Schritt
 
-Mara nutzt weiterhin zwei vorhandene Gehposen je Richtung. Die Schrittfolge ist bereinigt; zusätzliche Zwischenposen wurden nicht erzeugt. Die volle Waldkarte steht zur spielerischen und visuellen Nutzerabnahme bereit. Erst danach wird Laternenmoor als nächste Region des gemeinsamen Spiels umgesetzt.
+Mara nutzt weiterhin zwei vorhandene Gehposen je Richtung. Die Schrittfolge ist bereinigt; zusätzliche Zwischenposen wurden nicht erzeugt. Die volle Waldkarte wurde inzwischen vom Nutzer angenommen; Laternenmoor ist als nächste Region beauftragt.
 
 Originalvergleich und M1-Probe bleiben erhalten. Versionsmarke: `m2-woodland-playable`. Die künftigen Regionen sollen in dieselbe Spielstruktur aufgenommen werden; die separaten Vergleichsdateien sind keine geplante Aufteilung der Kampagne in einzelne Spiele.
 

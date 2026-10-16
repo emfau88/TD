@@ -1,8 +1,14 @@
 # Spire — Herz aus Splittern
 
-**Aktueller Umsetzungsstand: vollständige Waldkarte M2.** `WALDKARTE STARTEN.cmd` öffnet „Der alte Hain“ mit Wisp, Mara, acht Türmen, 20 Wellen und gespeicherten Bauphasen. [Spielanleitung](reference/README.md), [aktueller Bericht und Ansichten](artifacts/m2/REPORT.md). Der M1-Grafikstandard ist vom Nutzer bestätigt; die Abnahme der vollständigen Waldkarte steht noch aus. Die nachfolgenden Beschreibungen des älteren Fünf-Karten-Stands bleiben zur Einordnung erhalten.
+**Aktueller Spielstand: vier zusammenhängende Regionen.** Der alte Hain, Laternenmoor, Spiegelwinter und Windbruch sind sofort frei auswählbar, mit Wisp, Mara, acht Türmen und jeweils 10 Wellen. Mausradzoom von 100 bis 120 %, getrennte Bauphasen-Spielstände und animierte Wolken/Felsinseln in Windbruch sind integriert. Die Waldkarte ist vom Nutzer abgenommen; die drei neuen Regionen sind umgesetzt und gezielt geprüft, ihre optische Nutzerabnahme steht aus. Mobile Optimierung ist zurückgestellt.
+
+**Start nach dem Klonen:** `npm ci`, dann `npm run reference:regions:build`, anschließend `REGIONEN STARTEN.cmd` doppelklicken. Die erzeugte HTML-Datei enthält Code und Grafiken und funktioniert ohne Server. Entwicklung: `npm run reference:dev`, dann `http://127.0.0.1:5180/woodland.html` öffnen. [Spielanleitung](reference/README.md), [Roadmap](ROADMAP.md), [Moorbericht](artifacts/m3/REPORT.md), [Winterbericht](artifacts/m3-winter/REPORT.md), [Windbruch mit Asset- und Animationsnachweis](artifacts/m3-wind/REPORT.md).
 
 Der Plan für die Überarbeitung auf Basis der ursprünglichen Karten steht in [ROADMAP.md](ROADMAP.md): fünf zusammenhängende Spielkarten, verbindliche Asset-Vorgaben und schrittweise Abnahmen. **M0 ist abgeschlossen:** Die drei ursprünglichen Karten sind separat unter [reference/](reference/README.md) rekonstruiert. Zum Spielen `ORIGINAL SPIEL STARTEN.cmd` öffnen; [Prüfbericht und Screenshots](artifacts/m0/REPORT.md) dokumentieren Herkunft und Grenzen. **Die M1-Grafikprobe ist abgenommen:** `GRAFIKPROBE STARTEN.cmd` bleibt als Vergleich mit Originalgelände, Wisp, Mara und Turmkampf erhalten; [Grafikvorgaben](reference/STYLE_GUIDE.md) halten Maße und Grenzen fest. Die folgende Dokumentation beschreibt weiterhin den erhaltenen älteren Stand mit fünf Karten.
+
+## Archiv: älterer Fünf-Karten-Entwurf
+
+Die folgenden Angaben und `SPIEL STARTEN.cmd` gehören zum erhaltenen älteren Entwurf, nicht zum aktuellen Vier-Regionen-Spiel oben.
 
 Ein lokales Tower-Defense-Spiel mit fünf eigenständigen Spielkarten und vier steuerbaren Begleitern. Die größere Kampagne „Herz aus Splittern“ ist als separat gekennzeichneter Entwurf erhalten. Ihre Geschichte verbindet Wisp, Mara, Runa, Ilyra und die Astronomin Vesper.
 

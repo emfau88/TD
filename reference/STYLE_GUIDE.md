@@ -25,7 +25,7 @@ Die Szene nutzt leichte Draufsicht und dieselbe Blickrichtung wie die Originalt�
 
 ## Gelände richtig zusammensetzen
 
-Die Original-PNGs bleiben unverändert. Zuschnitte, Skalierung und zulässige Bereinigung stehen im Code; keine gemalten Ersatzränder oder neuen generierten Geländepakete.
+Die Original-PNGs bleiben unverändert. Für M1 stehen Zuschnitte, Skalierung und zulässige Bereinigung im Code; diese Probe verwendet keine neuen generierten Geländepakete. Die gezielten M3-Ergänzungen für neue Regionen sind unten dokumentiert.
 
 - **Gras:** Der ältere Ausschnitt x64/y64 ist vollständig transparent. M1 nutzt die tatsächlich gefüllte Fläche x128/y64. Die bereits bestätigten drei Karten behalten ihre bisherige Darstellung.
 - **Wegteile:** Jeweils 64 × 64. Waagerecht x384/y64, senkrecht x320/y128; Verbindung Nord–Ost x320/y192, Nord–West x448/y192, Süd–Ost x320/y64, Süd–West x448/y64. Auswahl anhand der belegten Nachbarzellen. Diese Probe enthält keine Kreuzung; weitere Anschlüsse müssen vor ihrem Einsatz geprüft werden.
@@ -61,3 +61,20 @@ M2: Fußpunkte und getrennte Richtungen bleiben erhalten; die Schrittfolge läuf
 7. Erst einen kleinen repräsentativen Ausschnitt im laufenden Spiel ansehen. Danach die restlichen benötigten Teile produzieren. Freigabe erfolgt über die Spielansicht und Nutzerabnahme, nicht über ein hübsches Rohbild oder einen erfolgreichen Build.
 
 Technische Prüfung, visuelle Eigenprüfung und Nutzerabnahme werden getrennt dokumentiert. Diese M1-Probe erfüllt noch nicht die Abnahmekriterien einer vollständigen Karte aus der [Roadmap](../ROADMAP.md).
+
+## M3 – verbindliche regionale Ergänzungen
+
+Die abgenommene Waldkarte bleibt Maßstabsreferenz. Neue Regionen ändern Landschaft und Palette, nicht Türme, Gegner, Figuren oder Spielraster. ImageGen liefert nur Rohmaterial; technische Anschlüsse entstehen anschließend deterministisch. Rohquellen bleiben unverändert in `public/assets/`, vollständige Prompts stehen in den jeweiligen Berichten: [Moor](../artifacts/m3/REPORT.md), [Winter](../artifacts/m3-winter/REPORT.md), [Windbruch](../artifacts/m3-wind/REPORT.md).
+
+| Bereich | Laufzeitformat und Anschlussvertrag |
+| --- | --- |
+| Moor | Originalgras/-weg/-brücken. Zehn synchrone Wasserframes mit 100 ms; vier zusätzliche konkave Quellteile. Vier neue Objekte in 64er Rahmen, Fußpunkt (32/56), Quellmaßstab 0,09. |
+| Winterterrain | 512 × 320, 8 Spalten mit 64er Zellen. Frame 0 Schnee; 4–19 Weg; 20–35 Eis. Nachbarmaske Nord 1, Ost 2, Süd 4, West 8. Darstellung 40 × 40, keine Animation unter dem gefrorenen See. |
+| Windterrain | 512 × 448, 8 Spalten mit 64er Zellen. 4–19 Inseloberkante, 20–35 Weg, 36–51 Felsseite. Dieselbe Nachbarmaske. Außerhalb der Inseln transparent; Klippentiefe bekommt kleine unregelmäßige Versätze. |
+| Winterobjekte | 256 × 64: zwei Bäume, Felsen, Eiskristall. Exakt vermessene Ausschnitte, Quellmaßstab 1/12, Fußpunkt (32/58). |
+| Windobjekte | 256 × 64: Kristall, kleine Felsinsel, Wolke, Steinbogen. Exakte Ausschnitte, Quellmaßstab 1/11, Fußpunkt (32/58). Wolken/Ferninseln sind reine Hintergrunddekoration. |
+| Windbrücken/-ränder | 384 × 192: horizontale Brücke im Rahmen (0,0,160,64), vertikale in (160,0,64,160), Felsnase (224,0,64,64), Ranken (288,0,64,64). Brückenanker jeweils Rahmenmitte; Ränder bei (32/8). Die Generations-Landekappen werden herausgeschnitten; die Deckenden verbinden die bestehenden drei Spielzellen. Quellmaßstab horizontal 0,25, vertikal 0,37, Fels 0,10, Ranken 0,12, jeweils proportional. |
+
+Winterpalette: Schnee `#e5edf0 / #d2e0e8 / #bccfdc`, Weg `#9eafc0 / #afc0cf / #bdcdd8`, Eis `#85bed0 / #a4d4df / #cce9ed`. Windpalette: Boden `#729f91 / #a1bba1 / #567c79`, Weg `#ccbfa2 / #b0a68f / #e4d5b2`, Fels `#49566e / #657386 / #354156`. Kleine regionale Farbakzente dürfen die Gegner- und Weglesbarkeit nicht verdrängen.
+
+Die Skripte `prepare-winter-atlas.mjs` und `prepare-wind-atlas.mjs` enthalten die exakten Zuschnitte. Kein pauschales Halbieren eines KI-Bildes für Objekte: Die Wolke überschreitet beispielsweise die nominelle Quadrantengrenze. Quellen werden einmal vermessen, proportional verkleinert und getrennt gepackt; Alpha wird bei 128 auf 0/255 normalisiert. `reference/tests/atlas.test.mjs` kontrolliert kompatible Kanten pixelgenau und prüft Sprite-/Brückenrahmen auf Überläufe. Die Spielansicht bleibt zusätzlich nötig; ein bestandener Atlas-Test ersetzt keine visuelle Abnahme.

@@ -11,6 +11,8 @@ export const upgradeCost=(tower:Tower)=>Math.round(tower.def.cost*(tower.level==
 export const sellValue=(tower:Tower)=>Math.round(tower.spent*.7);
 
 export class Simulation {
+  get waveLimit():number{return 20;}
+  compositionForWave(wave:number){return waveComposition(wave);}
   map: typeof MAPS[number]; gold: number; lives=20; wave=0; phase:Phase='build'; elapsed=0;
   towers:Tower[]=[]; enemies:Enemy[]=[]; shots:Shot[]=[]; events:Event[]=[];
   kills=0; earned=0; waveBonus=0; obstacles=new Set<string>(); blocked:Set<string>;
@@ -39,8 +41,8 @@ export class Simulation {
     this.gold+=sellValue(tower);this.towers=this.towers.filter(t=>t.uid!==uid);this.events.push({type:'sell',tower,x:tower.x,y:tower.y});return true;
   }
   startWave():boolean {
-    if(this.phase!=='build'||this.wave>=20)return false;
-    this.wave++;this.phase='wave';this.queue=waveComposition(this.wave);this.spawnTimer=.6;this.spawned=0;this.events.push({type:'wave'});return true;
+    if(this.phase!=='build'||this.wave>=this.waveLimit)return false;
+    this.wave++;this.phase='wave';this.queue=this.compositionForWave(this.wave);this.spawnTimer=.6;this.spawned=0;this.events.push({type:'wave'});return true;
   }
   private spawn(def:EnemyDef,boss:boolean) {
     const nodes=def.flying?this.map.air:this.map.paths[this.spawned%this.map.paths.length];
@@ -106,7 +108,7 @@ export class Simulation {
       shot.x+=(target.x-shot.x)/gap*step;shot.y+=(target.y-shot.y)/gap*step;return true;
     });
     this.enemies=this.enemies.filter(e=>e.hp>0);
-    if(!this.queue.length&&!this.enemies.length){this.shots=[];this.waveBonus=35+this.wave*3;this.gold+=this.waveBonus;this.events.push({type:'clear',amount:this.waveBonus});this.phase=this.wave===20?'victory':'build';if(this.phase==='victory')this.events.push({type:'victory'});}
+    if(!this.queue.length&&!this.enemies.length){this.shots=[];this.waveBonus=35+this.wave*3;this.gold+=this.waveBonus;this.events.push({type:'clear',amount:this.waveBonus});this.phase=this.wave===this.waveLimit?'victory':'build';if(this.phase==='victory')this.events.push({type:'victory'});}
   }
   get remaining(){return this.enemies.length+this.queue.length;}
   drainEvents(){const events=this.events;this.events=[];return events;}

@@ -1,27 +1,33 @@
 import { Simulation } from './simulation';
-import { CELL, COLS, ROWS, center, waterCells, type Point, type Priority } from './data';
+import { CELL, COLS, ROWS, center, pathCells, waterCells, type Point, type Priority } from './data';
 import { previewPath } from './style-navigation';
-import { WOODLAND_OBSTACLES } from './woodland-world';
+import { getRegion, isRegionID, type RegionID } from './regions';
+import { REGION_WAVE_COUNT, regionWaveComposition } from './region-waves';
 
 export type CompanionID='wisp'|'mara';
 export type CompanionOrder={kind:'move'|'distract';col:number;row:number}|{kind:'overclock';tower:number};
 export type Companion=Point & {id:CompanionID;direction:'up'|'down'|'left'|'right';path:Point[];order?:CompanionOrder;cooldown:number;action:number;pose:number};
-export type WoodlandSnapshot={version:1;map:'old-grove';gold:number;lives:number;wave:number;kills:number;earned:number;elapsed:number;
+export type WoodlandSnapshot={version:2;map:RegionID;gold:number;lives:number;wave:number;kills:number;earned:number;elapsed:number;
   towers:{id:number;col:number;row:number;level:number;priority:Priority;kills:number}[];
   heroes:{id:CompanionID;x:number;y:number;cooldown:number}[]};
 const cell=(point:Point):[number,number]=>[Math.floor(point.x/CELL),Math.floor(point.y/CELL)];
 export class WoodlandSimulation extends Simulation {
+  override get waveLimit(){return REGION_WAVE_COUNT;}
+  override compositionForWave(wave:number){return regionWaveComposition(wave);}
   heroes:Companion[]=[];
   boosts=new Map<number,number>();
   distractions:(Point & {remaining:number})[]=[];
   abilityMessages:string[]=[];
-  private water=waterCells(this.map);
-  constructor(){
-    super(0);this.obstacles=new Set(WOODLAND_OBSTACLES);
-    this.heroes=(['wisp','mara'] as const).map((id,index)=>({...center([8+index,9]),id,direction:'down',path:[],cooldown:0,action:0,pose:0}));
+  readonly region;
+  private water:Set<string>;
+  constructor(key:RegionID='old-grove'){
+    super(0);this.region=getRegion(key);this.map=this.region.map;this.gold=this.map.gold;
+    this.water=waterCells(this.map);this.obstacles=new Set(this.region.obstacles);
+    this.blocked=new Set([...this.map.paths.flatMap(p=>[...pathCells(p)]),...this.water,...this.region.bridgeCells]);
+    this.heroes=(['wisp','mara'] as const).map((id,index)=>({...center(this.region.heroes[index]),id,direction:'down',path:[],cooldown:0,action:0,pose:0}));
   }
   override canBuild(col:number,row:number){return super.canBuild(col,row)&&!this.heroes.some(hero=>cell(hero)[0]===col&&cell(hero)[1]===row);}
-  canWalk(col:number,row:number){return Number.isInteger(col)&&Number.isInteger(row)&&col>=1&&col<COLS-1&&row>=1&&row<ROWS-1&&!this.water.has(`${col},${row}`)&&!this.obstacles.has(`${col},${row}`)&&!this.towers.some(t=>t.col===col&&t.row===row);}
+  canWalk(col:number,row:number){return Number.isInteger(col)&&Number.isInteger(row)&&col>=1&&col<COLS-1&&row>=1&&row<ROWS-1&&(!this.water.has(`${col},${row}`)||this.region.bridgeCells.has(`${col},${row}`))&&!this.obstacles.has(`${col},${row}`)&&!this.towers.some(t=>t.col===col&&t.row===row);}
   private route(hero:Companion,order:CompanionOrder){
     const tower=order.kind==='overclock'?this.towers.find(t=>t.uid===order.tower):undefined;
     if(order.kind==='overclock'&&!tower)return;
@@ -83,15 +89,15 @@ export class WoodlandSimulation extends Simulation {
   }
   snapshot():WoodlandSnapshot|undefined{
     if(this.phase!=='build')return;
-    return {version:1,map:'old-grove',gold:this.gold,lives:this.lives,wave:this.wave,kills:this.kills,earned:this.earned,elapsed:this.elapsed,
+    return {version:2,map:this.region.key,gold:this.gold,lives:this.lives,wave:this.wave,kills:this.kills,earned:this.earned,elapsed:this.elapsed,
       towers:this.towers.map(t=>({id:t.def.id,col:t.col,row:t.row,level:t.level,priority:t.priority,kills:t.kills})),
       heroes:this.heroes.map(h=>({id:h.id,x:h.x,y:h.y,cooldown:h.cooldown}))};
   }
   static restore(value:unknown):WoodlandSimulation|undefined{
     if(!value||typeof value!=='object')return;
-    const saved=value as WoodlandSnapshot;
-    if(saved.version!==1||saved.map!=='old-grove'||![saved.gold,saved.lives,saved.wave,saved.kills,saved.earned].every(n=>Number.isSafeInteger(n)&&n>=0)||saved.lives<1||saved.lives>20||saved.wave>=20||!Number.isFinite(saved.elapsed)||saved.elapsed<0||!Array.isArray(saved.towers)||saved.towers.length>200||!Array.isArray(saved.heroes)||saved.heroes.length!==2)return;
-    const sim=new WoodlandSimulation();sim.heroes=[];sim.gold=Number.MAX_SAFE_INTEGER;
+    const saved=value as Omit<WoodlandSnapshot,'version'>&{version:number};
+    if(![1,2].includes(saved.version)||!isRegionID(saved.map)||![saved.gold,saved.lives,saved.wave,saved.kills,saved.earned].every(n=>Number.isSafeInteger(n)&&n>=0)||saved.lives<1||saved.lives>20||saved.wave>=(saved.version===1?20:REGION_WAVE_COUNT)||!Number.isFinite(saved.elapsed)||saved.elapsed<0||!Array.isArray(saved.towers)||saved.towers.length>200||!Array.isArray(saved.heroes)||saved.heroes.length!==2)return;
+    const sim=new WoodlandSimulation(saved.map);sim.heroes=[];sim.gold=Number.MAX_SAFE_INTEGER;
     for(const entry of saved.towers){
       if(!entry||![1,2,3].includes(entry.level)||!['first','strong','near','last'].includes(entry.priority)||!Number.isSafeInteger(entry.kills)||entry.kills<0)return;
       const tower=sim.build(entry.id,entry.col,entry.row);if(!tower)return;
@@ -103,7 +109,9 @@ export class WoodlandSimulation extends Simulation {
       if(!stored||!['wisp','mara'].includes(stored.id)||seen.has(stored.id)||![stored.x,stored.y,stored.cooldown].every(Number.isFinite)||stored.cooldown<0||stored.cooldown>(stored.id==='mara'?30:22)||!sim.canWalk(...cell(stored)))return;
       seen.add(stored.id);sim.heroes.push({...stored,direction:'down',path:[],action:0,pose:0});
     }
-    sim.gold=saved.gold;sim.lives=saved.lives;sim.wave=saved.wave;sim.kills=saved.kills;sim.earned=saved.earned;sim.elapsed=saved.elapsed;sim.events=[];
+    // Late checkpoints from the former 20-wave format retain their defense and
+    // resume before the new finale, instead of becoming unusable or auto-winning.
+    sim.gold=saved.gold;sim.lives=saved.lives;sim.wave=Math.min(saved.wave,REGION_WAVE_COUNT-1);sim.kills=saved.kills;sim.earned=saved.earned;sim.elapsed=saved.elapsed;sim.events=[];
     return sim;
   }
 }

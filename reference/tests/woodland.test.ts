@@ -4,9 +4,9 @@ import { center } from '../src/data';
 import { WoodlandSimulation } from '../src/woodland-simulation';
 import { runCampaign } from '../scripts/balance';
 
-test('M2: the landscaped forest is winnable through all twenty waves with the normal budget',()=>{
+test('M2: the landscaped forest is winnable through all ten waves with the normal budget',()=>{
   const result=runCampaign(0,new WoodlandSimulation());
-  assert.equal(result.phase,'victory');assert.equal(result.wave,20);assert.ok(result.lives>0);assert.ok(result.gold>=0);
+  assert.equal(result.phase,'victory');assert.equal(result.wave,10);assert.ok(result.lives>0);assert.ok(result.gold>=0);
   console.log(`Forest result: ${result.lives} lives, ${result.kills} kills, ${result.towers} towers, ${result.seconds}s simulated.`);
   const undefended=new WoodlandSimulation();while(undefended.phase==='build'){undefended.startWave();undefended.update(180);}assert.equal(undefended.phase,'defeat');assert.equal(undefended.lives,0);
 });

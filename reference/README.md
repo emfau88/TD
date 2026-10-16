@@ -1,50 +1,46 @@
-# Spire – ursprüngliche drei Karten als Vergleichsbasis
+# Spire – vier Regionen
 
-M0, erstellt am 16.10.2026. Separat spielbare Rekonstruktion des Quellstands vom 14.10.2026, kein wiedergefundenes historisches Programm. Anschließend wurden auf Nutzerwunsch Baumzuschnitte und Wasser korrigiert; [Änderungen und aktuelle Ansichten](../artifacts/terrain-fix/REPORT.md). Das neuere Spiel im übergeordneten Verzeichnis bleibt erhalten.
+Stand: 16.10.2026. Das aktuelle Spiel baut auf der bestätigten Originalgrafik und der abgenommenen Waldkarte auf. **Der alte Hain, Laternenmoor, Spiegelwinter und Windbruch** sind ohne Freischaltung sofort spielbar. Jede Karte enthält acht Türme, Wisp und Mara sowie 10 Wellen. Die drei neuen Regionen sind umgesetzt und gezielt geprüft; ihre visuelle Nutzerabnahme steht aus. Mobile Optimierung ist zurückgestellt.
 
-## Spielen
+## Starten
 
-- Im Projektordner `ORIGINAL SPIEL STARTEN.cmd` doppelklicken oder hier `Spire-Original.html` öffnen.
-- Enthalten: **Der alte Hain**, **Die Nebelbrücke**, **Die letzte Lichtung**, acht Türme und jeweils 20 Wellen.
-- Maus: Turm auswählen und auf einer freien Wiese platzieren; gebauten Turm anklicken für Aufwertung, Priorität und Verkauf.
-- `1–8`: Turmwahl, `Escape`: Auswahl aufheben, `N`: Welle starten, `U`: aufwerten, `Leertaste`: Pause, `F`: 1×/2×.
+Im übergeordneten Projektordner einmal `npm ci` und `npm run reference:regions:build` ausführen. Anschließend `REGIONEN STARTEN.cmd` doppelklicken. Die erzeugte Einzeldatei enthält Code und Grafiken; zum Spielen wird kein Server benötigt.
 
-Sterne, beste Wellen, Tutorial und Audioeinstellungen werden separat unter `spire-reference-save-v1` gespeichert. Laufende Partien lassen sich nur innerhalb der geöffneten Seite fortsetzen; nach Neuladen gibt es in diesem ursprünglichen Stand keinen Bauphasen-Zwischenstand. Bestehende Daten des neueren Spiels unter `spire-save` werden nicht verändert.
+Der Launcher öffnet weiterhin `reference/Spire-Wald.html`, damit die bisherige lokale Speicheradresse erhalten bleibt. `Spire-Regionen.html` enthält denselben Vier-Karten-Stand; `WALDKARTE STARTEN.cmd` funktioniert ebenfalls weiter. Browser können Spielstände für verschiedene lokale Dateipfade getrennt behandeln.
 
-## Spielbare Grafikprobe M1
+Entwicklung: `npm run reference:dev`, dann `http://127.0.0.1:5180/woodland.html` öffnen. Der normale Einstieg `/` bleibt die Vergleichsversion der drei Originalkarten.
 
-`GRAFIKPROBE STARTEN.cmd` im Projektordner öffnet die separate Waldlichtung mit Originalgelände, Wisp, Mara und echtem Turmkampf. Alternativ `Spire-Style.html` öffnen oder auf dem Entwicklungsserver `/style.html` aufrufen. Q/E wählt eine Figur, Klick auf freien Boden bewegt sie. „Bewegung zeigen“ lässt beide Figuren alle Richtungen durchlaufen; „Testwelle starten“ startet die vorhandene Kampfsimulation. Die Probe speichert keinen Fortschritt.
+## Bedienung und Speicherung
 
-Build aus dem Projektordner: `npm run reference:style:build`. Die Ausgabe liegt unter `reference/style-dist/` und `reference/Spire-Style.html`. [Konkrete Grafikvorgaben](STYLE_GUIDE.md), [Prüfbericht](../artifacts/m1/REPORT.md). Der Nutzer hat den M1-Stil bestätigt.
+- „Karten“ öffnet die freie Auswahl aller vier Regionen. Jede behält ihren eigenen Fortschritt und ihre letzte Bauphase.
+- Mausrad über der Karte: 100–120 % Zoom in 5-%-Schritten. Mit gedrückter mittlerer Maustaste die vergrößerte Karte verschieben. Klick auf die Prozentanzeige setzt den Zoom zurück.
+- 1–8: Turm wählen, freie Fläche anklicken: bauen. Turmklick öffnet Aufwertung, Zielpriorität und Verkauf; U wertet auf.
+- Q/E: Wisp/Mara wählen, Boden anklicken: bewegen. Brücken verbinden die Inseln; Wasser, Eisflächen, Abgründe und große Dekoration sind gesperrt.
+- Während einer Welle M drücken, dann mit Wisp einen Ort oder mit Mara einen Turm auswählen. Die Fähigkeit wirkt nach der Ankunft.
+- Wisp verlangsamt nahe Bodengegner für 5 Sekunden um 45 %, mit 22 Sekunden Abklingzeit. Mara erhöht die Feuerrate eines Turms für 8 Sekunden um 50 %, mit 30 Sekunden Abklingzeit.
+- N: Welle starten, F: 1×/2×, Leertaste: Pause, Esc: Auswahl lösen.
 
-## Vollständige Waldkarte M2
+Speicherkennung bleibt `spire-woodland-v1`. Bestehende Waldstände werden in die getrennten Kartenplätze übernommen. Nach Neuladen „Gespeicherte Bauphase laden“ wählen. Unterbrochene Wellen beginnen erneut mit der letzten Bauphase; abgeschlossene Spiele behalten ihr Ergebnis. Entwicklungsserver und lokale HTML-Datei haben unterschiedliche Browser-Speicherbereiche.
 
-`WALDKARTE STARTEN.cmd` im Projektordner oder `Spire-Wald.html` öffnet die ausgearbeitete Fassung von „Der alte Hain“. Im Entwicklungsserver ist sie unter `/woodland.html` erreichbar. Sie enthält den ursprünglichen Weg, beide Teiche, acht Türme und 20 Wellen sowie Wisp und Mara. Das ist die Grundlage des neuen gemeinsamen Spiels; die Originalkarten und M1 bleiben Vergleichsstände.
+Die neue Fassung hat **10 Wellen mit insgesamt 133 Gegnern je Karte**, einschließlich zweier verstärkter Bossvarianten in Welle 5 und 10. Alle acht Gegnertypen kommen vor: Blattkäfer, Feuerkäfer, Skorpion, Magmakrabbe, Flugheuschrecke, Feuerwespe, Panzerflieger und Leerenfalter. Die letzten vier sind Fluggegner. Ältere Bauphasen ab zehn bereits abgeschlossenen Wellen behalten Türme, Gold und Begleiter und setzen vor dem neuen Finale an; Sterne bleiben erhalten. Die historische Originalvergleichsversion behält ihre damaligen 20 Wellen.
 
-- Q/E: Wisp/Mara wählen, Boden anklicken: bewegen. Während der Welle M drücken, dann Ziel wählen.
-- Wisp: am Ziel 5 Sekunden lang 45 % Verlangsamung für nahe Bodengegner; 22 Sekunden Abklingzeit.
-- Mara: läuft neben den gewählten Turm und erhöht nach der Aktion seine Feuerrate 8 Sekunden um 50 %; 30 Sekunden Abklingzeit.
-- 1–8: Türme wählen, Turmklick: Aufwertung/Priorität/Verkauf, U: aufwerten, N: Welle, F: Tempo, Leertaste: Pause, Esc: Auswahl lösen.
-- Bauphase wird automatisch unter `spire-woodland-v1` gesichert. Nach Neuladen im Menü „Gespeicherte Bauphase laden“ wählen. Unterbrochene Wellen beginnen erneut mit der letzten Bauphase; nach Sieg/Niederlage bleibt das Ergebnis, aber kein laufender Zwischenstand.
+## Build und gezielte Prüfung
 
-Build: `npm run reference:forest:build`. Gezielte M2-Prüfung: `node node_modules/tsx/dist/cli.mjs --test reference/tests/woodland.test.ts`. [Umfang, Prüfung und aktuelle Spielansichten](../artifacts/m2/REPORT.md). Nutzerabnahme der vollständigen Karte steht noch aus.
-
-## Entwicklung und Prüfung
-
-Alle Befehle im **übergeordneten Projektordner** ausführen. Die Referenz verwendet dessen vorhandene Abhängigkeiten und `package-lock.json`:
+Alle Befehle im übergeordneten Projektordner ausführen:
 
 ```text
-npm run reference:dev
-npm run reference:test
-npm run reference:build
+npm run reference:regions:build
+node node_modules/tsx/dist/cli.mjs --test reference/tests/region-waves.test.ts reference/tests/new-regions.test.ts reference/tests/marsh.test.ts reference/tests/woodland.test.ts reference/tests/atlas.test.mjs
 ```
 
-Der Entwicklungsserver verwendet `http://127.0.0.1:5180/`. Der Build erstellt `reference/dist/` und `reference/Spire-Original.html`. Er kopiert und prüft die 84 ursprünglichen Spielgrafiken gegen die Foozle-Pakete sowie die sieben vorhandenen Wald-UI-Grafiken. Aus Git allein vor dem ersten Start den Referenzbuild ausführen; die erzeugten PNG-Kopien und die HTML-Ausgabe werden nicht doppelt versioniert. Bei fehlenden Abhängigkeiten zuerst im Projektordner `npm ci` ausführen.
+Der Build prüft TypeScript, baut `reference/woodland-dist/` und die beiden identischen Einzeldateien. Originalgrafiken werden bytegenau mit den Foozle-Paketen verglichen; neue Laufzeitatlanten werden deterministisch aus den erhaltenen Rohdateien aufgebaut. Die erzeugten HTML-Ausgaben und Asset-Kopien werden nicht doppelt versioniert. `npm run reference:test` führt bei Bedarf die gesamte Referenzprüfung aus.
 
-Die historischen Hilfsskripte sind als Beleg erhalten. Insbesondere `scripts/prepare-assets.py` erwartet die frühere Ordnerstruktur; für diese isolierte Referenz stattdessen die obigen Befehle verwenden.
+Nachweise: [Wald](../artifacts/m2/REPORT.md), [Moor](../artifacts/m3/REPORT.md), [Winter](../artifacts/m3-winter/REPORT.md), [Windbruch](../artifacts/m3-wind/REPORT.md). [Grafikvertrag](STYLE_GUIDE.md), [Roadmap](../ROADMAP.md).
 
-## Herkunft und aktueller Status
+## Erhaltene Vergleichsstände
 
-[M0-Prüfbericht](../artifacts/m0/REPORT.md) mit Screenshots, Tests und Abweichungen; [Roadmap](../ROADMAP.md) für die nächsten Schritte. Der unveränderte rekonstruierte Quellstand liegt zusätzlich in `artifacts/m0/historical-source.zip` im Projektordner. Historische Änderungen und Hashes sind in `artifacts/m0/recovery.json` protokolliert.
+- **M0:** rekonstruierter Quellstand vom 14.10.2026 mit drei Originalkarten, keine wiedergefundene historische Programmdatei. `npm run reference:build`, danach `ORIGINAL SPIEL STARTEN.cmd`. [Herkunft und Grenzen](../artifacts/m0/REPORT.md), [Baum-/Wasserkorrektur](../artifacts/terrain-fix/REPORT.md).
+- **M1:** abgenommene Grafikprobe mit Originalgelände, Wisp, Mara und Turmkampf. `npm run reference:style:build`, danach `GRAFIKPROBE STARTEN.cmd`. [Prüfbericht](../artifacts/m1/REPORT.md).
+- **M2:** vom Nutzer abgenommene Waldkarte, Git-Tag `m2-woodland-playable`. [Prüfbericht](../artifacts/m2/REPORT.md).
 
-Unter Git-Tag `m0-original-reference` entsprechen Kartendaten, Renderer und Simulation dem rekonstruierten Quellstand. `reference-terrain-fixed` hält die bestätigten Baum- und Wasserkorrekturen fest. M1 erweitert die Basisklasse lediglich um Schnittstellen für die separate Probe; die drei Originalkarten behalten ihre Darstellung und Spielmechanik. M1 verwendet vorhandene Figuren und Originalgelände. Es wurden keine neuen Grafiken generiert.
+Der ältere Fünf-Karten-Entwurf im übergeordneten `src/` und seine Story bleiben erhalten. Das aktuelle Spiel wird in `reference/src/` weiterentwickelt. Mondwarte und Storyausarbeitung sind noch nicht Bestandteil dieses neuen Stands.

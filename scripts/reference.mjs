@@ -51,6 +51,10 @@ async function prepare() {
   }
   await writeFile(resolve(output, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
   await copyFile(resolve(root, 'public/assets/Hero Mara.png'), resolve(output, 'Mara style source.png'));
+  await copyFile(resolve(root, 'public/assets/Laternenmoor Props v1.png'), resolve(output, 'Laternenmoor Props v1.png'));
+  await run([resolve(root,'scripts/prepare-winter-atlas.mjs')]);
+  await run([resolve(root,'scripts/prepare-wind-atlas.mjs')]);
+  for(const file of ['Spiegelwinter Tiles v1.png','Spiegelwinter Sprites v1.png','Windbruch Tiles v1.png','Windbruch Sprites v1.png','Windbruch Details v1.png'])await copyFile(resolve(root,'public/assets',file),resolve(output,file));
   const ui = ['panel-frame.png', 'button-states.png', 'menu-backdrop.png', 'spire-emblem.png', 'hud-icons.png', 'tower-slots.png', 'map-covers.png'];
   await mkdir(resolve(reference, 'public/ui'), { recursive: true });
   for (const file of ui) await copyFile(resolve(root, 'public/ui', file), resolve(reference, 'public/ui', file));
@@ -93,7 +97,7 @@ if (mode === 'forest-build') {
   await run(['scripts/check-package.mjs', 'forest']);
 }
 if (mode === 'test') {
-  const files = (await readdir(resolve(reference, 'tests'))).filter(file => file.endsWith('.test.ts')).sort();
+  const files = (await readdir(resolve(reference, 'tests'))).filter(file => /\.test\.(ts|mjs)$/.test(file)).sort();
   await run([bin('tsx/dist/cli.mjs'), '--test', ...files.map(file => `tests/${file}`)]);
   await run(['scripts/check-ui.mjs']);
 }

@@ -1,7 +1,9 @@
 # Spire – Roadmap für fünf zusammenhängende Spielkarten
 
 Stand: 16. Oktober 2026  
-Status: M0 abgeschlossen; Baum-/Wasserkorrektur und M1-Grafikstandard vom Nutzer bestätigt. M2 ist als vollständige Waldkarte umgesetzt und gezielt geprüft; die Nutzerabnahme der Karte steht noch aus. M3–M4 sind noch nicht umgesetzt oder abgenommen. Nachweise: [M0-Prüfbericht](artifacts/m0/REPORT.md), [M1-Probe](artifacts/m1/REPORT.md), [Waldkarte M2](artifacts/m2/REPORT.md).
+Status: M0 und M1 abgeschlossen; M2-Waldkarte vom Nutzer abgenommen. Laternenmoor, Spiegelwinter und Windbruch sind umgesetzt und gezielt geprüft; ihre visuelle Nutzerabnahme steht aus. Vier Karten sind gemeinsam frei auswählbar, mit getrennten Spielständen und PC-Mausradzoom 100–120 %. Windbruch enthält animierte Wolken, schwebende Felsinseln und pulsierende Kristalle. Mobile Optimierung und mobile Tests sind auf Nutzerwunsch zurückgestellt. Nachweise: [M0](artifacts/m0/REPORT.md), [M1](artifacts/m1/REPORT.md), [Waldkarte M2](artifacts/m2/REPORT.md), [Laternenmoor](artifacts/m3/REPORT.md), [Spiegelwinter](artifacts/m3-winter/REPORT.md), [Windbruch](artifacts/m3-wind/REPORT.md).
+
+**Aktueller Auftrag vom 16.10.2026:** Laternenmoor fertigstellen, danach Spiegelwinter und eine besondere vierte Karte (Windbruch) bauen. Die kleinen thematischen Asset-Ergänzungen und tatsächlichen Spielansichten dokumentieren; keine weiteren Vollpakete auf Vorrat. Der Nutzer hat die Ausführung dieser Karten beauftragt, die abschließende optische Abnahme wird dadurch nicht vorweggenommen. Mondwarte und Story bleiben außerhalb dieses Umsetzungsauftrags. Zielrepository: `https://github.com/emfau88/TD.git`.
 
 ## 1. Ziel und verbindlicher Umfang
 
@@ -17,7 +19,7 @@ Wir bauen auf dem ursprünglichen Tower-Defense-Spiel mit dem Foozle-Tileset auf
 
 Die Reihenfolge der Umsetzung ist Wald → Moor → Eis → Inseln → Mondwarte. Die erzählerische Reihenfolge kann später festgelegt werden.
 
-**Jetzt im Umfang:** fünf Karten, gemeinsame Oberfläche, bewährte Spielmechanik, passende vorhandene Figuren und nötige Grafikergänzungen. Wisp und Mara bilden zunächst das steuerbare Duo. Runa und Ilyra folgen nur im ausdrücklich beauftragten Ausbauabschnitt.
+**Gesamtziel:** fünf Karten, gemeinsame Oberfläche, bewährte Spielmechanik, passende vorhandene Figuren und nötige Grafikergänzungen. Der aktuelle Umsetzungsauftrag umfasst die ersten vier Karten. Wisp und Mara bilden zunächst das steuerbare Duo. Mondwarte, Runa und Ilyra folgen nur im ausdrücklich beauftragten Ausbauabschnitt.
 
 **Später:** Kampagnenstory, neue Dialoge, zusätzliche Regionen, weitere Charaktere, umfangreiche neue Gegner- und Bossmechaniken. Vorhandene Storytexte bleiben als Entwurf erhalten. Sie werden in diesem Vorhaben nicht weiter ausgearbeitet.
 
@@ -80,7 +82,7 @@ Beim Audit gab es im Projektordner kein Git-Repository. Eine vollständige, unve
 - [x] Kompaktes HUD und Spielfeld gemeinsam prüfen; Darstellung berücksichtigt die verfügbare Fensterhöhe.
 - [x] Sieg und Verlust in vollständiger Simulation, Neuaufbau und Bauphasen-Wiederherstellung gezielt prüfen. Tatsächlichen Browserablauf einschließlich Reload und Fähigkeiten prüfen.
 - [x] Browser- und Offline-Build aus demselben Stand erstellen und ansehen; [M2-Bericht](artifacts/m2/REPORT.md).
-- [ ] Nutzer nimmt die Waldkarte im Spiel ab.
+- [x] Nutzer nimmt die Waldkarte im Spiel ab: „ok passt so, mach jetzt mit dem Laternenmoor als nächster Map weiter“, 16.10.2026.
 
 **Haltepunkt:** Vor dieser Abnahme keine vollständigen Grafikpakete für die übrigen vier Regionen produzieren. Offene grundlegende Grafikprobleme werden zuerst an der Waldkarte gelöst.
 
@@ -100,12 +102,20 @@ Für jede Region wird derselbe Ablauf abgeschlossen:
 
 | Region | Layout geprüft | Grafikprobe abgenommen | Karte fertig geprüft | Vom Nutzer abgenommen |
 | --- | --- | --- | --- | --- |
-| Laternenmoor | [ ] | [ ] | [ ] | [ ] |
-| Spiegelwinter | [ ] | [ ] | [ ] | [ ] |
-| Windbruch | [ ] | [ ] | [ ] | [ ] |
+| Laternenmoor | [x] | [ ] | [x] | [ ] |
+| Spiegelwinter | [x] | [ ] | [x] | [ ] |
+| Windbruch | [x] | [ ] | [x] | [ ] |
 | Mondwarte | [ ] | [ ] | [ ] | [ ] |
 
+**M3-Arbeitsstand:** Laternenmoor enthält drei Originalholzbrücken, zusammenhängende animierte Wasserarme und vier neu erzeugte Moorobjekte. Spiegelwinter hat zwei Anmarschwege, eigene Schnee-/Weg-/Eistiles und Winterobjekte. Windbruch besteht aus vier verbundenen Plateaus mit eigenen Boden-/Klippen-/Wegtiles, Steinbrücken, Kristallen und Steinbögen; sechs Wolken und vier kleine Felsinseln bewegen sich dezent. Auf Nutzerfeedback wurden die zunächst verwendeten Holzbrücken ersetzt und die glatten Inselkanten durch unregelmäßige Felsnasen, Grasüberhänge und Ranken aufgewertet. Die sechs Generationsaufträge lieferten nur benötigtes Rohmaterial. Daraus wurden vermessene Einzelobjekte und technisch definierte Anschlussatlanten aufgebaut, nicht ungeprüfte KI-Raster übernommen. Auf Nutzerwunsch haben alle vier Karten jetzt zehn neu zusammengestellte Wellen: acht Gegnertypen, Zwischenboss in Welle 5, Finale in Welle 10, insgesamt 133 Gegner pro Karte. Alle vier 10-Wellen-Modellprüfungen bestehen. Kartenwechsel, getrennte Bauphasen und Übernahme alter Waldstände sind integriert; Mausradzoom und Bauen bei 120 % wurden im Browser geprüft. Keine Nutzerabnahme oder manuelle Balanceprüfung aller 40 Wellen vorweggenommen.
+
+**Nächster Schritt:** Nutzeransicht der drei neuen Karten; danach konkrete optische Korrekturen und gezielter Spielbalance-Feinschliff. Mondwarte und Story erst auf gesonderten Auftrag. Der Stand wird im beauftragten Repository `emfau88/TD` versioniert.
+
+**Aktuelle Spieldauer:** Zehn Wellen je Karte ersetzen den zuvor geprüften 20-Wellen-Stand. Im automatisierten Modell dauern die Kämpfe bei 1× rund 4,6–6,1 Minuten ohne Baupausen; die tatsächliche Spieldauer hängt von der Verteidigung ab. Alle acht Gegnertypen bleiben enthalten. Späte alte Bauphasen werden mit ihrer Verteidigung vor das neue Finale übernommen; vorhandene Sterne bleiben erhalten. Weitere regionale Wellenvarianten und Schwierigkeit werden erst anhand konkreten Spiel-Feedbacks abgestimmt.
+
 ### M4 – Die fünf Karten als gemeinsames Spiel prüfen
+
+Die gemeinsame Infrastruktur ist bereits für vier Karten umgesetzt und gezielt geprüft. Die folgenden Kriterien bleiben für das vollständige Fünf-Karten-Paket offen; sie bedeuten nicht, dass die vorhandenen vier Karten gesperrt sind.
 
 - [ ] Gemeinsame Kartenauswahl mit fünf direkt testbaren Karten; verständliche Reihenfolge und Schwierigkeitsangaben.
 - [ ] Einheitliche Steuerung, Turmrollen, Figurenmaßstäbe, Anzeigen und Rückmeldungen auf allen Karten.

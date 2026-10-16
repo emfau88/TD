@@ -8,6 +8,7 @@
     "reference:build": "node scripts/reference.mjs build",
     "reference:style:build": "node scripts/reference.mjs style-build",
     "reference:forest:build": "node scripts/reference.mjs forest-build",
+    "reference:regions:build": "node scripts/reference.mjs forest-build",
     "reference:test": "node scripts/reference.mjs test",
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build && node scripts/package-offline.mjs",
