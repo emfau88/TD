@@ -38,6 +38,6 @@ Drei Generationsaufträge über das eingebaute ImageGen-Werkzeug, kein CLI-Aufru
 - Ansicht mit den neuen Brücken und Kanten im tatsächlichen Spiel kontrolliert. Die bestehende Zoom- und Speicherkontrolle gilt gemeinsam für alle Regionen.
 - TypeScript und Browser-/Offline-Paket geprüft. Keine mobile Prüfung und keine vollständige manuelle Balanceabnahme.
 
-![Windbruch mit Steinbrücken und überarbeiteten Inselrändern](overview.png)
+![Windbruch mit Steinbrücken und überarbeiteten Inselrändern](../screenshots/windbruch.jpg)
 
 [Gemeinsame Bedienung](../../reference/README.md), [Roadmap](../../ROADMAP.md).

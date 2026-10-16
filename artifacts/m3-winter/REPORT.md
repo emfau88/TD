@@ -20,6 +20,6 @@ Die Rohbilder bleiben unverändert. `scripts/prepare-winter-atlas.mjs` normalisi
 - Anschlussprüfung vergleicht die Randpixel aller kompatiblen Tilekombinationen; Spritezellen sind transparent voneinander getrennt.
 - Im Browser angesehen, Mausradzoom bis 120 % und zurück geprüft und bei 120 % einen Turm korrekt gebaut. Keine manuelle Balanceprüfung aller Wellen, keine mobilen Tests.
 
-![Spiegelwinter im Spiel](overview.png)
+![Spiegelwinter im Spiel](../screenshots/spiegelwinter.jpg)
 
 [Gemeinsame Bedienung](../../reference/README.md), [Roadmap](../../ROADMAP.md).

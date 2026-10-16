@@ -113,6 +113,8 @@ Für jede Region wird derselbe Ablauf abgeschlossen:
 
 **Aktuelle Spieldauer:** Zehn Wellen je Karte ersetzen den zuvor geprüften 20-Wellen-Stand. Im automatisierten Modell dauern die Kämpfe bei 1× rund 4,6–6,1 Minuten ohne Baupausen; die tatsächliche Spieldauer hängt von der Verteidigung ab. Alle acht Gegnertypen bleiben enthalten. Späte alte Bauphasen werden mit ihrer Verteidigung vor das neue Finale übernommen; vorhandene Sterne bleiben erhalten. Weitere regionale Wellenvarianten und Schwierigkeit werden erst anhand konkreten Spiel-Feedbacks abgestimmt.
 
+**Ansichten für GitHub:** Die [README-Galerie](README.md#die-vier-spielbaren-karten) enthält je einen aktuellen In-Game-Screenshot aller vier Karten. Bilddateien liegen versioniert unter `artifacts/screenshots/`.
+
 ### M4 – Die fünf Karten als gemeinsames Spiel prüfen
 
 Die gemeinsame Infrastruktur ist bereits für vier Karten umgesetzt und gezielt geprüft. Die folgenden Kriterien bleiben für das vollständige Fünf-Karten-Paket offen; sie bedeuten nicht, dass die vorhandenen vier Karten gesperrt sind.

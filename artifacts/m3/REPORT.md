@@ -15,6 +15,6 @@ Ein Generationsauftrag über das eingebaute ImageGen-Werkzeug, kein CLI-Aufruf. 
 - Alte Waldstände werden übernommen; Kartenplätze behalten eigene Bauphasen. Kartenwechsel und Laden im Browser geprüft, vorhandener Moor-Spielstand erhalten.
 - Aktueller Build enthält alle vier Karten und dieselben Assets in Browser- und Offline-Fassung.
 
-![Laternenmoor im Spiel](overview.png)
+![Laternenmoor im Spiel](../screenshots/laternenmoor.jpg)
 
 [Gemeinsame Bedienung](../../reference/README.md), [Roadmap](../../ROADMAP.md).
