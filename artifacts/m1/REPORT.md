@@ -1,6 +1,6 @@
 # M1 – spielbare Grafikprobe
 
-16.10.2026. **Technisch und visuell geprüft; Nutzerabnahme des gemeinsamen Stils noch offen.** M2 wurde nicht begonnen. Ausgangspunkt ist der vom Nutzer bestätigte Stand `reference-terrain-fixed`.
+16.10.2026. **Technisch und visuell geprüft; anschließend vom Nutzer bestätigt** („ok passt so, mach jetzt mit der vollständigen Waldkarte weiter“). Der ursprüngliche Bericht dokumentiert die M1-Probe; die anschließende Umsetzung steht im [M2-Bericht](../m2/REPORT.md). Ausgangspunkt ist der vom Nutzer bestätigte Stand `reference-terrain-fixed`.
 
 ## Ergebnis und Start
 
@@ -52,4 +52,4 @@ Die grafische Prüfung erfolgte im echten Browser, zusätzlich zu den Logik- und
 - Die kleine Lichtung ist ein Prüfausschnitt. Dekorationsdichte, vollständiges Leveldesign und Spielbalance sind hier nicht als fertige Karte abgenommen. Ein einzelner Demonstrationsturm hält nicht jeden Gegner auf.
 - Weitere Regionen, neue Tileset-Serien und Story wurden nicht ausgearbeitet.
 
-**Nächste Entscheidung:** Passt der gemeinsame Maßstab von Wisp, Mara, Bäumen, Gegnern und Türmen? Erst nach dieser konkreten Nutzerabnahme beginnt gemäß [Roadmap](../../ROADMAP.md) die vollständige Waldkarte. Versionsmarke für diese Probe: `m1-style-preview`.
+**Abnahme erfolgt:** Der Nutzer hat den gemeinsamen Stil bestätigt und M2 beauftragt. Die vollständige Waldkarte ist im [M2-Bericht](../m2/REPORT.md) dokumentiert. Versionsmarke für diese unverändert erhaltene Probe: `m1-style-preview`.

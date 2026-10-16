@@ -3,8 +3,9 @@ import { resolve, dirname, relative, isAbsolute, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const stylePreview = process.argv[2] === 'style';
-const filename = stylePreview ? 'Spire-Style.html' : 'Spire-Original.html';
+const woodland = process.argv[2] === 'forest';
+const stylePreview = process.argv[2] === 'style' || woodland;
+const filename = woodland ? 'Spire-Wald.html' : stylePreview ? 'Spire-Style.html' : 'Spire-Original.html';
 const manifest = JSON.parse(await readFile(resolve(root, 'public/assets/manifest.json'), 'utf8'));
 const images = Object.fromEntries(await Promise.all(Object.keys(manifest).map(async name => [
   name,
@@ -16,7 +17,7 @@ const uiImages = Object.fromEntries(await Promise.all(uiNames.map(async name => 
   name,
   `data:image/png;base64,${(await readFile(resolve(root, 'public/ui', name))).toString('base64')}`,
 ])));
-const distRoot = resolve(root, stylePreview ? 'style-dist' : 'dist');
+const distRoot = resolve(root, woodland ? 'woodland-dist' : stylePreview ? 'style-dist' : 'dist');
 const builtPath = (url, directory = distRoot) => {
   const cleanUrl = decodeURIComponent(url.split(/[?#]/, 1)[0]);
   const assetPath = cleanUrl.startsWith('/')
@@ -26,7 +27,7 @@ const builtPath = (url, directory = distRoot) => {
   if (pathFromDist.startsWith('..') || isAbsolute(pathFromDist)) throw new Error(`Asset outside dist: ${url}`);
   return assetPath;
 };
-const builtHtml = await readFile(resolve(distRoot, stylePreview ? 'style.html' : 'index.html'), 'utf8');
+const builtHtml = await readFile(resolve(distRoot, woodland ? 'woodland.html' : stylePreview ? 'style.html' : 'index.html'), 'utf8');
 const scriptPath = builtHtml.match(/<script[^>]*src="([^"\s]+)"[^>]*><\/script>/)?.[1];
 const stylePath = builtHtml.match(/<link[^>]*href="([^"\s]+\.css)"[^>]*>/)?.[1];
 if (!scriptPath || !stylePath) throw new Error('Run npm run build before packaging.');
@@ -55,7 +56,7 @@ const embeddedStyles = styles.replace(cssUrlPattern, (match, doubleQuoted, singl
 });
 const bundle = JSON.stringify({ manifest, images, uiImages }).replaceAll('<', '\\u003c');
 const document = `<!doctype html>
-<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="theme-color" content="#132c28"><title>${stylePreview ? 'Waldlichtung · Spire Grafikprobe' : 'Originalkarten · Spire — Hüter des Waldes'}</title><style>${embeddedStyles.replaceAll('</style', '<\\/style')}</style></head>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="theme-color" content="#132c28"><title>${woodland ? 'Der alte Hain · Spire' : stylePreview ? 'Waldlichtung · Spire Grafikprobe' : 'Originalkarten · Spire — Hüter des Waldes'}</title><style>${embeddedStyles.replaceAll('</style', '<\\/style')}</style></head>
 <body><div id="app"></div><script>window.__SPIRE_BUNDLE__=${bundle};</script><script type="module">${script.replaceAll('</script', '<\\/script')}</script></body></html>`;
 await writeFile(resolve(root, filename), document);
 console.log(`${filename}: ${(Buffer.byteLength(document) / 1024 / 1024).toFixed(2)} MB, ${Object.keys(images).length} game images, ${Object.keys(uiImages).length} UI images, ${embeddedCssAssets.size} CSS assets embedded`);

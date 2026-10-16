@@ -1,6 +1,6 @@
 # Spire – Grafikreferenz M1
 
-Stand: 16.10.2026. **Im Spiel geprüfter Vorschlag, Nutzerabnahme noch offen.** Die spielbare Waldlichtung setzt die Maße konkret um. Nach der Abnahme gelten sie als Ausgangspunkt für M2. Die Probe ist keine fertige Waldkarte und keine Kampagne.
+Stand: 16.10.2026. **M1 vom Nutzer abgenommen.** Die spielbare Waldlichtung setzt die Maße konkret um; sie sind die Grundlage für M2. Die vollständige Waldkarte ist separat als `Spire-Wald.html` spielbar. Die M1-Probe bleibt als Vergleich erhalten.
 
 Start: `GRAFIKPROBE STARTEN.cmd` im Projektordner oder `reference/Spire-Style.html`. Entwicklung: `http://127.0.0.1:5180/style.html`. [Prüfbericht und Spielansichten](../artifacts/m1/REPORT.md).
 
@@ -44,11 +44,11 @@ Farbreferenz aus dem Originalgelände: Gras `#63ab3f`, helle Vegetation `#c8d45d
 - Reihen: unten, links, rechts, oben. Jede Reihe enthält Standpose, Gehpose A, Gehpose B und Aktionspose.
 - Einheitlich um Faktor 1÷7 verkleinern, ohne Glättung; niemals jede Pose separat auf dieselbe sichtbare Breite/Höhe strecken.
 - Ausschnitte in 64 × 64 Rahmen mit Fußpunkt (32 / 56) einsetzen. Kein Rand darf in die Nachbarzelle reichen. Halbtransparente Generationsfransen werden in der Laufzeitkopie bei Alpha 128 auf 0/255 gesetzt; die Quelldatei bleibt erhalten.
-- Vorläufiger Laufzyklus: Gehpose A → Stand → Gehpose B → Stand, 7 fps. Das ist eine kurze Probe aus **zwei vorhandenen Gehposen**, keine ausgearbeitete Produktionsanimation.
+- M1-Laufzyklus: Gehpose A → Stand → Gehpose B → Stand, 7 fps. M2 verwendet die direkte Folge A → B mit 6 fps, um die Stand-Unterbrechungen zu entfernen. Es bleiben **zwei vorhandene Gehposen**; zusätzliche Zwischenposen wurden nicht erzeugt.
 - Die Aktionspose wird kurz gezeigt. Sie implementiert noch kein Übertakten, Sammeln oder andere Spielfähigkeiten.
 - Maras Richtungen werden einzeln verwendet; Werkzeug und asymmetrische Kleidung werden nicht durch Spiegelung vertauscht.
 
-Vor M2-Fertigstellung: Laufbewegung mit konsistentem Körpervolumen und klarer Fußfolge ausarbeiten, Konturen gegebenenfalls von Hand korrigieren und die echte Fähigkeit am Zielort integrieren. Neue Bilder nur dann anfordern, wenn diese konkrete Lücke nicht mit dem vorhandenen Material sauber lösbar ist.
+M2: Fußpunkte und getrennte Richtungen bleiben erhalten; die Schrittfolge läuft ohne eingeschobene Standpose. Die echte Fähigkeit wird erst nach Ankunft und Aktionspose ausgeführt. Die vorhandene kurze Pixelanimation ist weiterhin eine Grenze des Materials. Zusätzliche Bewegungsphasen sind eine mögliche spätere Grafikverbesserung. Neue Bilder nur dann anfordern, wenn diese konkrete Lücke nicht mit dem vorhandenen Material sauber lösbar ist.
 
 ## Vertrag für weitere Assets
 

@@ -78,8 +78,7 @@ function invest(sim: Simulation, samples: RouteSample[]) {
   }
 }
 
-export function runCampaign(mapId: number): CampaignResult {
-  const sim = new Simulation(mapId);
+export function runCampaign(mapId: number, sim: Simulation = new Simulation(mapId)): CampaignResult {
   const samples = routeSamples(sim);
   let elapsed = 0;
   while (sim.phase !== 'victory' && sim.phase !== 'defeat') {

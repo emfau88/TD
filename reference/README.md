@@ -15,7 +15,19 @@ Sterne, beste Wellen, Tutorial und Audioeinstellungen werden separat unter `spir
 
 `GRAFIKPROBE STARTEN.cmd` im Projektordner öffnet die separate Waldlichtung mit Originalgelände, Wisp, Mara und echtem Turmkampf. Alternativ `Spire-Style.html` öffnen oder auf dem Entwicklungsserver `/style.html` aufrufen. Q/E wählt eine Figur, Klick auf freien Boden bewegt sie. „Bewegung zeigen“ lässt beide Figuren alle Richtungen durchlaufen; „Testwelle starten“ startet die vorhandene Kampfsimulation. Die Probe speichert keinen Fortschritt.
 
-Build aus dem Projektordner: `npm run reference:style:build`. Die Ausgabe liegt unter `reference/style-dist/` und `reference/Spire-Style.html`. [Konkrete Grafikvorgaben](STYLE_GUIDE.md), [Prüfbericht](../artifacts/m1/REPORT.md). Nutzerabnahme offen; Mara besitzt bisher zwei Gehposen je Richtung und vorläufige Aktionsposen.
+Build aus dem Projektordner: `npm run reference:style:build`. Die Ausgabe liegt unter `reference/style-dist/` und `reference/Spire-Style.html`. [Konkrete Grafikvorgaben](STYLE_GUIDE.md), [Prüfbericht](../artifacts/m1/REPORT.md). Der Nutzer hat den M1-Stil bestätigt.
+
+## Vollständige Waldkarte M2
+
+`WALDKARTE STARTEN.cmd` im Projektordner oder `Spire-Wald.html` öffnet die ausgearbeitete Fassung von „Der alte Hain“. Im Entwicklungsserver ist sie unter `/woodland.html` erreichbar. Sie enthält den ursprünglichen Weg, beide Teiche, acht Türme und 20 Wellen sowie Wisp und Mara. Das ist die Grundlage des neuen gemeinsamen Spiels; die Originalkarten und M1 bleiben Vergleichsstände.
+
+- Q/E: Wisp/Mara wählen, Boden anklicken: bewegen. Während der Welle M drücken, dann Ziel wählen.
+- Wisp: am Ziel 5 Sekunden lang 45 % Verlangsamung für nahe Bodengegner; 22 Sekunden Abklingzeit.
+- Mara: läuft neben den gewählten Turm und erhöht nach der Aktion seine Feuerrate 8 Sekunden um 50 %; 30 Sekunden Abklingzeit.
+- 1–8: Türme wählen, Turmklick: Aufwertung/Priorität/Verkauf, U: aufwerten, N: Welle, F: Tempo, Leertaste: Pause, Esc: Auswahl lösen.
+- Bauphase wird automatisch unter `spire-woodland-v1` gesichert. Nach Neuladen im Menü „Gespeicherte Bauphase laden“ wählen. Unterbrochene Wellen beginnen erneut mit der letzten Bauphase; nach Sieg/Niederlage bleibt das Ergebnis, aber kein laufender Zwischenstand.
+
+Build: `npm run reference:forest:build`. Gezielte M2-Prüfung: `node node_modules/tsx/dist/cli.mjs --test reference/tests/woodland.test.ts`. [Umfang, Prüfung und aktuelle Spielansichten](../artifacts/m2/REPORT.md). Nutzerabnahme der vollständigen Karte steht noch aus.
 
 ## Entwicklung und Prüfung
 

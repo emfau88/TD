@@ -1,7 +1,7 @@
 # Spire – Roadmap für fünf zusammenhängende Spielkarten
 
 Stand: 16. Oktober 2026  
-Status: M0 abgeschlossen; anschließende Baum-/Wasserkorrektur vom Nutzer bestätigt. Die spielbare M1-Grafikprobe ist umgesetzt und geprüft, ihre visuelle Nutzerabnahme ist noch offen. M2–M4 sind noch nicht umgesetzt oder abgenommen. Nachweise: [M0-Prüfbericht](artifacts/m0/REPORT.md), [M1-Probe](artifacts/m1/REPORT.md).
+Status: M0 abgeschlossen; Baum-/Wasserkorrektur und M1-Grafikstandard vom Nutzer bestätigt. M2 ist als vollständige Waldkarte umgesetzt und gezielt geprüft; die Nutzerabnahme der Karte steht noch aus. M3–M4 sind noch nicht umgesetzt oder abgenommen. Nachweise: [M0-Prüfbericht](artifacts/m0/REPORT.md), [M1-Probe](artifacts/m1/REPORT.md), [Waldkarte M2](artifacts/m2/REPORT.md).
 
 ## 1. Ziel und verbindlicher Umfang
 
@@ -66,23 +66,25 @@ Beim Audit gab es im Projektordner kein Git-Repository. Eine vollständige, unve
 - [x] Mara danebenstellen und Größe, Perspektive, Konturen und Detailgrad für die Probe angleichen. Zuschnitte und Fußpunkte bereinigt; vollständige Laufanimation und finales Pixelpolieren bleiben vor M2-Abnahme offen.
 - [x] Die technischen Asset-Vorgaben aus Abschnitt 4 mit konkreten Maßen ausfüllen: [Grafikreferenz](reference/STYLE_GUIDE.md).
 - [x] Einen repräsentativen Ausschnitt einschließlich Bewegung und Turmfeuer prüfen: [M1-Prüfbericht](artifacts/m1/REPORT.md).
-- [ ] Nutzer bestätigt den gemeinsamen Stil anhand dieser tatsächlichen Spielansicht.
+- [x] Nutzer bestätigt den gemeinsamen Stil anhand dieser tatsächlichen Spielansicht: „ok passt so, mach jetzt mit der vollständigen Waldkarte weiter“, 16.10.2026.
 
 **Ergebnis:** eine verbindliche Grafikreferenz und dokumentierte Größen. Konzeptbilder dienen als Themenreferenz; die freigegebene Spielansicht bestimmt die Produktionsqualität.
 
-**Vorliegende Probe:** `GRAFIKPROBE STARTEN.cmd` / `reference/Spire-Style.html`. Vorhandene Figuren werden weiterverwendet; keine neue Grafikgeneration. Die vier technischen Punkte sind erledigt. M1 bleibt bis zur tatsächlichen Stilbestätigung offen; M2 beginnt erst danach.
+**Abgenommene Probe:** `GRAFIKPROBE STARTEN.cmd` / `reference/Spire-Style.html`, Git-Tag `m1-style-preview`. Vorhandene Figuren werden weiterverwendet; keine neue Grafikgeneration. Die Nutzerabnahme liegt vor; die anschließende M2-Umsetzung baut darauf auf.
 
 ### M2 – Eine Waldkarte vollständig fertigstellen
 
-- [ ] Eine ursprüngliche Karte als Grundlage auswählen; Änderungen am Layout begründen.
-- [ ] Landschaft mit den Originalassets ausarbeiten, fehlende Teile gezielt ergänzen.
-- [ ] Wisp und Mara mit Auswahl, Bewegung, Wegfindung und Aktion am Zielort sauber integrieren.
-- [ ] HUD und Spielfeld gemeinsam prüfen; Platz für Türme, Figuren und Effekte sicherstellen.
-- [ ] Vollständigen Kartenablauf, Verlust, Neustart und Bauphasen-Wiederherstellung prüfen.
-- [ ] Aktuellen Browser- und Offline-Build visuell vergleichen und als Referenzversion sichern.
+- [x] „Der alte Hain“ als Grundlage auswählen; ursprünglichen Wegverlauf, Flugroute, beide Teiche, Startbudget und 20 Wellen erhalten.
+- [x] Landschaft mit zusammenhängenden Baumgruppen, freigehaltenen Kurven, Felsen und Originaldekoration ausarbeiten.
+- [x] Wisp und Mara mit Auswahl, Bewegung, Wegfindung und Aktion am Zielort integrieren: Ablenkung und Übertakten.
+- [x] Kompaktes HUD und Spielfeld gemeinsam prüfen; Darstellung berücksichtigt die verfügbare Fensterhöhe.
+- [x] Sieg und Verlust in vollständiger Simulation, Neuaufbau und Bauphasen-Wiederherstellung gezielt prüfen. Tatsächlichen Browserablauf einschließlich Reload und Fähigkeiten prüfen.
+- [x] Browser- und Offline-Build aus demselben Stand erstellen und ansehen; [M2-Bericht](artifacts/m2/REPORT.md).
 - [ ] Nutzer nimmt die Waldkarte im Spiel ab.
 
 **Haltepunkt:** Vor dieser Abnahme keine vollständigen Grafikpakete für die übrigen vier Regionen produzieren. Offene grundlegende Grafikprobleme werden zuerst an der Waldkarte gelöst.
+
+**Spielbarer Stand:** `WALDKARTE STARTEN.cmd` / `reference/Spire-Wald.html`. Separate Speicherkennung `spire-woodland-v1`; Browser-Neuladen stellt die letzte Bauphase wieder bereit. Kein Storyausbau und keine neue Grafikgeneration. Mara nutzt den vorhandenen Zweiphasenlauf mit korrigierten Fußpunkten und einer direkten Schrittfolge; es wurden keine zusätzlichen Animationsposen erzeugt.
 
 ### M3 – Vier weitere Regionen einzeln umsetzen
 
@@ -258,11 +260,11 @@ Wenn die visuelle Prüfung technisch blockiert ist, lautet der Status „visuell
 
 - [x] Roadmap mit Umfang, Asset-Vorgaben und Abnahmekriterien erstellt.
 - [x] M0: gesicherte und dokumentierte Ausgangsversion.
-- [ ] M1: gemeinsamer Grafikstandard im Spiel abgenommen.
+- [x] M1: gemeinsamer Grafikstandard im Spiel abgenommen.
 - [ ] M2: Waldkarte mit Wisp und Mara vollständig abgenommen.
 - [ ] M3: vier weitere Karten nacheinander fertiggestellt und abgenommen.
 - [ ] M4: gemeinsames Paket aus fünf Karten abgenommen.
 
-**Nächster Schritt:** Die vorliegende M1-Probe gemeinsam ansehen und den Maßstab sowie den Stil bestätigen oder gezielt korrigieren. Erst nach dieser Nutzerabnahme folgt M2, die vollständige Waldkarte. Noch keine regionalen Grafikpakete erzeugen.
+**Nächster Schritt:** Die vollständige M2-Waldkarte spielen und gezielt nach Nutzerfeedback verfeinern. Nach ihrer Abnahme folgt Laternenmoor als zweite Region im gemeinsamen Spiel. Noch keine vollständigen regionalen Grafikpakete erzeugen. Auf Nutzerwunsch bleiben Prüfungen auf geänderte Funktionen und den jeweils nötigen Spielablauf beschränkt.
 
 Bei späteren Arbeiten zuerst diesen Plan und den letzten belegten Stand lesen. Checklisten werden nur mit tatsächlichem Nachweis aktualisiert; Nutzerabnahmen werden nicht aus verstrichener Zeit oder fehlendem Widerspruch abgeleitet.

@@ -4,10 +4,11 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const stylePreview = process.argv[2] === 'style';
-const dist = stylePreview ? 'style-dist' : 'dist';
+const woodland = process.argv[2] === 'forest';
+const stylePreview = process.argv[2] === 'style' || woodland;
+const dist = woodland ? 'woodland-dist' : stylePreview ? 'style-dist' : 'dist';
 const manifest = JSON.parse(await readFile(resolve(root, 'public/assets/manifest.json'), 'utf8'));
-const offline = await readFile(resolve(root, stylePreview ? 'Spire-Style.html' : 'Spire-Original.html'), 'utf8');
+const offline = await readFile(resolve(root, woodland ? 'Spire-Wald.html' : stylePreview ? 'Spire-Style.html' : 'Spire-Original.html'), 'utf8');
 const payload = offline.match(/window\.__SPIRE_BUNDLE__=(.*?);<\/script>/s)?.[1];
 assert.ok(payload, 'Offline payload missing');
 const embedded = JSON.parse(payload);

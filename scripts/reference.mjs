@@ -71,7 +71,7 @@ async function run(args) {
 }
 const bin = path => resolve(root, 'node_modules', path);
 const mode = process.argv[2] ?? 'prepare';
-assert.ok(['prepare', 'dev', 'build', 'test', 'style-build'].includes(mode), 'Use prepare, dev, build, test, or style-build');
+assert.ok(['prepare', 'dev', 'build', 'test', 'style-build', 'forest-build'].includes(mode), 'Use prepare, dev, build, test, style-build, or forest-build');
 await prepare();
 if (mode === 'dev') await run([bin('vite/bin/vite.js'), '--host', '127.0.0.1']);
 if (mode === 'build') {
@@ -85,6 +85,12 @@ if (mode === 'style-build') {
   await run([bin('vite/bin/vite.js'), 'build', '--config', 'vite.style.config.ts']);
   await run(['scripts/package-offline.mjs', 'style']);
   await run(['scripts/check-package.mjs', 'style']);
+}
+if (mode === 'forest-build') {
+  await run([bin('typescript/bin/tsc'), '--noEmit']);
+  await run([bin('vite/bin/vite.js'), 'build', '--config', 'vite.woodland.config.ts']);
+  await run(['scripts/package-offline.mjs', 'forest']);
+  await run(['scripts/check-package.mjs', 'forest']);
 }
 if (mode === 'test') {
   const files = (await readdir(resolve(reference, 'tests'))).filter(file => file.endsWith('.test.ts')).sort();

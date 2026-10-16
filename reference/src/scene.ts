@@ -185,7 +185,7 @@ export class ForestScene extends Phaser.Scene {
   }this.refreshPreview();}
   private playEffect(texture:string,animation:string,x:number,y:number,scale:number,origin=.5){if(!this.textures.exists(texture)||!this.anims.exists(animation))return false;const sprite=this.track(this.add.sprite(x,y,texture).setScale(scale).setOrigin(.5,origin).setDepth(6500));sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE,()=>sprite.destroy());sprite.play({key:animation,repeat:0});return true;}
   private weaponKey(tower:Tower){return`Tower ${String(tower.def.id).padStart(2,'0')} - Level ${String(tower.level).padStart(2,'0')} - Weapon`;}
-  private refreshTower(tower:Tower){
+  protected refreshTower(tower:Tower){
     const id=String(tower.def.id).padStart(2,'0'),weaponKey=this.weaponKey(tower),baseInfo=this.assets[`Tower ${id}`];
     let view=this.towerViews.get(tower.uid);
     if(!view){view={base:this.add.image(tower.x,tower.y+13,`Tower ${id}`,tower.level-1).setOrigin(.5,.8).setScale(.63),weapon:this.add.sprite(tower.x,tower.y-23,weaponKey,0).setScale(.63),level:this.add.text(tower.x,tower.y+13,'',{fontFamily:'monospace',fontSize:'9px',color:'#faf0cf',backgroundColor:'#294935',padding:{x:3,y:1}}).setOrigin(.5)};this.towerViews.set(tower.uid,view);const weapon=view.weapon;weapon.on(Phaser.Animations.Events.ANIMATION_COMPLETE,()=>{const idle=`${this.weaponKey(tower)}-idle`;if(this.anims.exists(idle))weapon.play(idle);else weapon.setFrame(0);});}
