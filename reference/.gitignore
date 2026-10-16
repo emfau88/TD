@@ -1,0 +1,4 @@
+node_modules/
+dist/
+Spire.html
+*.log

@@ -5,3 +5,5 @@ Spire.html
 backups/
 reference/dist/
 reference/Spire-Original.html
+reference/public/assets/*.png
+reference/public/ui/*.png

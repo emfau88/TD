@@ -1,0 +1,24 @@
+{
+  "name": "spire-original-reference",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build && node scripts/package-offline.mjs",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "tsx --test tests/*.test.ts",
+    "test:ui": "node scripts/check-ui.mjs",
+    "test:package": "node scripts/check-package.mjs",
+    "balance:sim": "tsx scripts/balance.ts"
+  },
+  "dependencies": {
+    "phaser": "^4.1.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0",
+    "typescript": "^5.9.0",
+    "tsx": "^4.20.0",
+    "@types/node": "^22.0.0"
+  }
+}

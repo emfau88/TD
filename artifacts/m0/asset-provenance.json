@@ -1,0 +1,434 @@
+{
+  "description": "84 original game PNGs verified byte-for-byte against Foozle packages; seven existing forest UI graphics reused.",
+  "assets": [
+    {
+      "name": "Animated water tiles",
+      "original": "Foozle_2DT0012_Spire_Tileset_1/Foozle_2DT0012_Spire_Tileset_1/Tileset/PNGs/Animated water tiles.png",
+      "sha256": "d28c9a6f6b39e6d9fab744d8a94a2f5e6c3a6aa25117f4694692008ac0a15754"
+    },
+    {
+      "name": "Clampbeetle",
+      "original": "Foozle_2DC0027_Spire_EnemyPack_1_Flying/Foozle_2DC0027_Spire_EnemyPack_1_Flying/Flying/Spritesheets/Clampbeetle.png",
+      "sha256": "7be3a97a274a7b6367cbf7789668d38db9dcc42c308af8564e58cad1ad6c63cc"
+    },
+    {
+      "name": "Firebug",
+      "original": "Foozle_2DC0028_Spire_EnemyPack_2_Ground/Foozle_2DC0028_Spire_EnemyPack_2_Ground/Ground/Spritesheets/Firebug.png",
+      "sha256": "c413a2c11e045da30515fadca7252579191e4ea42cf029c46582ab4c598d6d81"
+    },
+    {
+      "name": "Firewasp",
+      "original": "Foozle_2DC0027_Spire_EnemyPack_1_Flying/Foozle_2DC0027_Spire_EnemyPack_1_Flying/Flying/Spritesheets/Firewasp.png",
+      "sha256": "5a32f72fce62a1e6861f72a9b84dd0fec8ce89c3c9be16151dda14eaa7bf9056"
+    },
+    {
+      "name": "Flying Locust",
+      "original": "Foozle_2DC0027_Spire_EnemyPack_1_Flying/Foozle_2DC0027_Spire_EnemyPack_1_Flying/Flying/Spritesheets/Flying Locust.png",
+      "sha256": "b03c5da39e94f95ab849f634607a4f3b9a2d9d6f1c869bd92d0dd3e287bad9a4"
+    },
+    {
+      "name": "Grass Tileset",
+      "original": "Foozle_2DT0012_Spire_Tileset_1/Foozle_2DT0012_Spire_Tileset_1/Tileset/PNGs/Grass Tileset.png",
+      "sha256": "0d36e48873dcfa12e656087da8e348b0ea2ddecf3b5f4724e9a5253b4e27c7f4"
+    },
+    {
+      "name": "Leafbug",
+      "original": "Foozle_2DC0028_Spire_EnemyPack_2_Ground/Foozle_2DC0028_Spire_EnemyPack_2_Ground/Ground/Spritesheets/Leafbug.png",
+      "sha256": "613c6f0fb08163ce028ad0b287626e4ca1b7794638b3eefc37c7181ada08224c"
+    },
+    {
+      "name": "Leaves Falling",
+      "original": "Foozle_2DT0012_Spire_Tileset_1/Foozle_2DT0012_Spire_Tileset_1/Effects/Spritesheets/Leaves Falling.png",
+      "sha256": "29729f4e1c5d77e761305076542d370bc6b59a0ef348ee0bb63b0746cbb5dd42"
+    },
+    {
+      "name": "Magma Crab",
+      "original": "Foozle_2DC0028_Spire_EnemyPack_2_Ground/Foozle_2DC0028_Spire_EnemyPack_2_Ground/Ground/Spritesheets/Magma Crab.png",
+      "sha256": "e911920172fddf41feda54c9325f3b7ae2b2f0a1b6c4bb781b133c9b6a57819b"
+    },
+    {
+      "name": "Scorpion",
+      "original": "Foozle_2DC0028_Spire_EnemyPack_2_Ground/Foozle_2DC0028_Spire_EnemyPack_2_Ground/Ground/Spritesheets/Scorpion.png",
+      "sha256": "1ca1e0f94819be8a532164b1f3be5f6d8875abf0d188c7871198dab1c45a6f2a"
+    },
+    {
+      "name": "Tower - Collapse",
+      "original": "Foozle_2DS0021_Spire_BuilderPack/Foozle_2DS0021_Spire_WispBuilder/Building Animations/PNGs/Tower - Collapse.png",
+      "sha256": "a0c81db3ef596d765f26afb80e00ff6f2b7371bb95bc93139699995758b16efd"
+    },
+    {
+      "name": "Tower 01",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers bases/PNGs/Tower 01.png",
+      "sha256": "add3e333cdad1fa8fe499592ab86e315583a8a2d3d5deaa8411e66386da434af"
+    },
+    {
+      "name": "Tower 01 - Level 01 - Projectile",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 01/Spritesheets/Tower 01 - Level 01 - Projectile.png",
+      "sha256": "ba18ae667c49fe543e98af6910f02b7d7104e95146dd3226aadc023740fe892b"
+    },
+    {
+      "name": "Tower 01 - Level 01 - Weapon",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 01/Spritesheets/Tower 01 - Level 01 - Weapon.png",
+      "sha256": "7a29ce001ce9ddcf4572c16438066b921fe6bed88211715d6b5b85efae9f4299"
+    },
+    {
+      "name": "Tower 01 - Level 02 - Projectile",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 01/Spritesheets/Tower 01 - Level 02 - Projectile.png",
+      "sha256": "30260f076c0f8c0c94b7277543b0aacac1ae004ccd2292852683babafa9d9749"
+    },
+    {
+      "name": "Tower 01 - Level 02 - Weapon",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 01/Spritesheets/Tower 01 - Level 02 - Weapon.png",
+      "sha256": "2b2c1b673e5436ab2067849633af849db0d4607e8faea115e4e118b45c653385"
+    },
+    {
+      "name": "Tower 01 - Level 03 - Projectile",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 01/Spritesheets/Tower 01 - Level 03 - Projectile.png",
+      "sha256": "5c743cfd800884fcce79e4529b4dc76b96e6bfca5f07f09b1e001bc8dd1813f3"
+    },
+    {
+      "name": "Tower 01 - Level 03 - Weapon",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 01/Spritesheets/Tower 01 - Level 03 - Weapon.png",
+      "sha256": "0132885f1b9bbc1da3731eedd41e280285385ca39d61820673cb1bb2a5bbb982"
+    },
+    {
+      "name": "Tower 01 - Weapon - Impact",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 01/Spritesheets/Tower 01 - Weapon - Impact.png",
+      "sha256": "b6875299a9876cd9f38a77d7a291da96fcec61ecbee23fbe47222a448e056c79"
+    },
+    {
+      "name": "Tower 02",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers bases/PNGs/Tower 02.png",
+      "sha256": "f08794906c26509dc7d2fc53e7697b2af20bb4692daf070175ede43daeb80106"
+    },
+    {
+      "name": "Tower 02 - Level 01 - Projectile",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 02/Spritesheets/Tower 02 - Level 01 - Projectile.png",
+      "sha256": "b18bf28ffb78158901eef6e3d2651ae2cf880d88a87770561d630af208295cae"
+    },
+    {
+      "name": "Tower 02 - Level 01 - Projectile - Impact",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 02/Spritesheets/Tower 02 - Level 01 - Projectile - Impact.png",
+      "sha256": "c15c9a9b63d4998c94d3c8a845546cedd8326a991fd881c9ed2bdae788824ec2"
+    },
+    {
+      "name": "Tower 02 - Level 01 - Weapon",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 02/Spritesheets/Tower 02 - Level 01 - Weapon.png",
+      "sha256": "8cf9a8afc2249ea8923b9f5555a2a1e1bfcc20c7f6cb237252a2491f583edb6f"
+    },
+    {
+      "name": "Tower 02 - Level 02 - Projectile",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 02/Spritesheets/Tower 02 - Level 02 - Projectile.png",
+      "sha256": "d5b811091adfbd2486fb211d1b7fb8c726082c7a4469e7df6e348327629d9a8f"
+    },
+    {
+      "name": "Tower 02 - Level 02 - Projectile - Impact",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 02/Spritesheets/Tower 02 - Level 02 - Projectile - Impact.png",
+      "sha256": "0556e8867fe26c13e0113e75ad41f5369f12a531d6055caf3ba41e086878f58a"
+    },
+    {
+      "name": "Tower 02 - Level 02 - Weapon",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 02/Spritesheets/Tower 02 - Level 02 - Weapon.png",
+      "sha256": "4b0deb70604fddf66a188d84e4612f01c4c183847bb951de15c1cf096259f609"
+    },
+    {
+      "name": "Tower 02 - Level 03 - Projectile",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 02/Spritesheets/Tower 02 - Level 03 - Projectile.png",
+      "sha256": "b68372c56757353f8e424ac3343b9e4b7f5fc8c9ece09ea03110f9b3bee65db4"
+    },
+    {
+      "name": "Tower 02 - Level 03 - Projectile - Impact",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 02/Spritesheets/Tower 02 - Level 03 - Projectile - Impact.png",
+      "sha256": "5ff541144644dfa4c293a2ea1317e54931fd3d3011a4236bd1c39047364570f8"
+    },
+    {
+      "name": "Tower 02 - Level 03 - Weapon",
+      "original": "Foozle_2DS0017_Spire_TowerPack_1/Foozle_2DS0017_Spire_TowerPack_1/Towers Weapons/Tower 02/Spritesheets/Tower 02 - Level 03 - Weapon.png",
+      "sha256": "7f2424b93f25fd5d658340a29b941142ce1dd19992328ef93021a9a123382d57"
+    },
+    {
+      "name": "Tower 03",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers bases/PNGs/Tower 03.png",
+      "sha256": "a564bf83d5207d84aec74943873a2cede67f999b3f8e1ff31cad270a7ad26d9e"
+    },
+    {
+      "name": "Tower 03 - Level 01 - Projectile",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 03/Spritesheets/Tower 03 - Level 01 - Projectile.png",
+      "sha256": "ed0b28c579f11c86f9b34a086fab8d8a44867f1ec793812791ee8d75121afcc2"
+    },
+    {
+      "name": "Tower 03 - Level 01 - Projectile - Impact",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 03/Spritesheets/Tower 03 - Level 01 - Projectile - Impact.png",
+      "sha256": "d4d941e20f9c5850dbcd8c638639f6120761e55bdce3b3dd3f2fe28b4e4ff2b9"
+    },
+    {
+      "name": "Tower 03 - Level 01 - Weapon",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 03/Spritesheets/Tower 03 - Level 01 - Weapon.png",
+      "sha256": "b865be190fd97fddab771d16adab5f52629661c77bd191f4d9e496dfce26d0c0"
+    },
+    {
+      "name": "Tower 03 - Level 02 - Projectile",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 03/Spritesheets/Tower 03 - Level 02 - Projectile.png",
+      "sha256": "4cfbfdef694c59113155c42cca59de564e0e92acf9925c97839b4ffd0282f1c4"
+    },
+    {
+      "name": "Tower 03 - Level 02 - Projectile - Impact",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 03/Spritesheets/Tower 03 - Level 02 - Projectile - Impact.png",
+      "sha256": "cc0fe9ea96226065d7c91228529f5ced63a23e2782d91f27db650e02ddf75c1a"
+    },
+    {
+      "name": "Tower 03 - Level 02 - Weapon",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 03/Spritesheets/Tower 03 - Level 02 - Weapon.png",
+      "sha256": "dcb99027d1a37a0355f176dc39a12e011a063081cff683c0510e347d64344bb9"
+    },
+    {
+      "name": "Tower 03 - Level 03 - Projectile",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 03/Spritesheets/Tower 03 - Level 03 - Projectile.png",
+      "sha256": "151d3421d1ac9e7221447580659b7db9d280f1b17c4133ac6906790f7d48beef"
+    },
+    {
+      "name": "Tower 03 - Level 03 - Projectile - Impact",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 03/Spritesheets/Tower 03 - Level 03 - Projectile - Impact.png",
+      "sha256": "6057f1044b839b60e0021ec1c2bb684f533f0867b9937fc5a5d03f3814fcfd81"
+    },
+    {
+      "name": "Tower 03 - Level 03 - Weapon",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 03/Spritesheets/Tower 03 - Level 03 - Weapon.png",
+      "sha256": "8872279cdfc5ffc51ae8fa7007c117dff00705c7ed0e83d85dba99ab39f1bb87"
+    },
+    {
+      "name": "Tower 04",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers bases/PNGs/Tower 04.png",
+      "sha256": "fc50b73d57bcba6fabdd665ef001c2c2c044310b55364ebb0a6579cfe6f14a01"
+    },
+    {
+      "name": "Tower 04 - Level 01 - Projectile",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 01 - Projectile.png",
+      "sha256": "a98571849f4808e0090bd68f68a027e1747e91c9979921c14c62b688bd78451c"
+    },
+    {
+      "name": "Tower 04 - Level 01 - Projectile - Impact",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 01 - Projectile - Impact.png",
+      "sha256": "9000dbbb0b7a9872fe6adf5a605a1baf3b9c58352cab9e1268ab5add4d0be915"
+    },
+    {
+      "name": "Tower 04 - Level 01 - Weapon",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 01 - Weapon.png",
+      "sha256": "4bacf3a2bd6f186b04ca2c9e87db40c9d9cbfff59db1953e6ea68039e6d43b1e"
+    },
+    {
+      "name": "Tower 04 - Level 02 - Projectile",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 02 - Projectile.png",
+      "sha256": "2a6e8bd26e2af0c9f1f7e5f700d9e967ad9ee2330969fcb18de602bb20bd4ea2"
+    },
+    {
+      "name": "Tower 04 - Level 02 - Projectile - Impact",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 02 - Projectile - Impact.png",
+      "sha256": "9355da03c03f76de136daa0ac5edb501d2e1b6c577d0c2ae494af148617f7927"
+    },
+    {
+      "name": "Tower 04 - Level 02 - Weapon",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 02 - Weapon.png",
+      "sha256": "10c651ba8bf03f34f26c23bca46af84aac58e6af865f36e14bc3dd7f1af43f77"
+    },
+    {
+      "name": "Tower 04 - Level 03 - Projectile",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 03 - Projectile.png",
+      "sha256": "e65098e19bee4b78df99b2444f34a77fb970c3d3c4543557abe79bcd3cb2e60f"
+    },
+    {
+      "name": "Tower 04 - Level 03 - Projectile - Impact",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 03 - Projectile - Impact.png",
+      "sha256": "ec40d797c8c3b681405f92a7025ab3e6f58c45be7ea351409f07e490f9186630"
+    },
+    {
+      "name": "Tower 04 - Level 03 - Weapon",
+      "original": "Foozle_2DS0018_Spire_TowerPack_2/Foozle_2DS0018_Spire_TowerPack_2/Towers Weapons/Tower 04/PNGs/Tower 04 - Level 03 - Weapon.png",
+      "sha256": "c35df186115b9198459fc935ef2123d543a00fd60638774695d13c8597cf28f8"
+    },
+    {
+      "name": "Tower 05",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers bases/PNGs/Tower 05.png",
+      "sha256": "f2822cd0ac2f2823e430a753c2a8dcb91e5d0e6646fc313dd5204333280abd6b"
+    },
+    {
+      "name": "Tower 05 - Level 01 - Projectile",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 05/Spritesheets/Tower 05 - Level 01 - Projectile.png",
+      "sha256": "bb4e9dd655287e157d4a4ae36d873fc32e41f6fb33f4884a0c42ca56f50fc07d"
+    },
+    {
+      "name": "Tower 05 - Level 01 - Projectile - Impact",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 05/Spritesheets/Tower 05 - Level 01 - Projectile - Impact.png",
+      "sha256": "d034056eb0606b924b65bb1677237b845bc9f19113188bc9c50c90afbea066d9"
+    },
+    {
+      "name": "Tower 05 - Level 01 - Weapon",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 05/Spritesheets/Tower 05 - Level 01 - Weapon.png",
+      "sha256": "3cca00c101d2fd8bc2009347850ba0b3847212b8bf3ca0c55dd0ce17ae57e59f"
+    },
+    {
+      "name": "Tower 05 - Level 02 - Projectile",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 05/Spritesheets/Tower 05 - Level 02 - Projectile.png",
+      "sha256": "856dcd29138ae9652c8e207ca599cc327c92a12373789fec9cab5fe7568d782d"
+    },
+    {
+      "name": "Tower 05 - Level 02 - Projectile - Impact",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 05/Spritesheets/Tower 05 - Level 02 - Projectile - Impact.png",
+      "sha256": "0c62a3b0392d5f096afe46ca3bd8bb5ba1bf44b88c91990c70f98468eed041bf"
+    },
+    {
+      "name": "Tower 05 - Level 02 - Weapon",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 05/Spritesheets/Tower 05 - Level 02 - Weapon.png",
+      "sha256": "1eae710ffdf29b9b71b5a072ec5246fbb65a615737d61a1f1a498bccd63bdbfb"
+    },
+    {
+      "name": "Tower 05 - Level 03 - Projectile",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 05/Spritesheets/Tower 05 - Level 03 - Projectile.png",
+      "sha256": "51ec7a6de71f9318bb703820d0e9b236e51852a5b90669e9c702cfb4e81a957f"
+    },
+    {
+      "name": "Tower 05 - Level 03 - Projectile - Impact",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 05/Spritesheets/Tower 05 - Level 03 - Projectile - Impact.png",
+      "sha256": "7b66d332bd336c97fa79d999a59d3b35263ef54b0918062e8b75809ab0b01f7a"
+    },
+    {
+      "name": "Tower 05 - Level 03 - Weapon",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 05/Spritesheets/Tower 05 - Level 03 - Weapon.png",
+      "sha256": "d776d6f7e5b3dde5ce6ae08edee828b9bbe4548ea8eaeae85820819db61daa17"
+    },
+    {
+      "name": "Tower 06",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers bases/PNGs/Tower 06.png",
+      "sha256": "c74974429a38777b8eeb8d9460f40e690a5d4e6c7c037de148ce02d3bdb7f9b1"
+    },
+    {
+      "name": "Tower 06 - Level 01 - Projectile",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 06/Spritesheets/Tower 06 - Level 01 - Projectile.png",
+      "sha256": "7c0429d6311fccd711b5ddb559690108ffa40c3b581eff8b10414526d7e2e596"
+    },
+    {
+      "name": "Tower 06 - Level 01 - Weapon",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 06/Spritesheets/Tower 06 - Level 01 - Weapon.png",
+      "sha256": "8168c6fd8fcda4620c81fbd8b182d6165b7e97a07adb4055bc0f870cb6226809"
+    },
+    {
+      "name": "Tower 06 - Level 02 - Projectile",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 06/Spritesheets/Tower 06 - Level 02 - Projectile.png",
+      "sha256": "da4d0a978fc090091dcdb35e6bd3d286b31652dc269c69280f3e282aa4d346ef"
+    },
+    {
+      "name": "Tower 06 - Level 02 - Weapon",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 06/Spritesheets/Tower 06 - Level 02 - Weapon.png",
+      "sha256": "d5afc3cffd1b17c84a2dbf8357af216ea4bd481280ab34eee527cf5a12787e69"
+    },
+    {
+      "name": "Tower 06 - Level 03 - Projectile",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 06/Spritesheets/Tower 06 - Level 03 - Projectile.png",
+      "sha256": "92d29beb853c07a9c624fdf8aca812fa29d7d7e18ea4d0a47c950ad4ca5b68e1"
+    },
+    {
+      "name": "Tower 06 - Level 03 - Weapon",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 06/Spritesheets/Tower 06 - Level 03 - Weapon.png",
+      "sha256": "c6ca28456fa52e20044c49995eef7040507ebeb54079b3a4eb33dd58161ede4b"
+    },
+    {
+      "name": "Tower 06 - Weapon - Impact",
+      "original": "Foozle_2DS0019_Spire_TowerPack_3/Foozle_2DS0019_Spire_TowerPack_3/Towers Weapons/Tower 06/Spritesheets/Tower 06 - Weapon - Impact.png",
+      "sha256": "b6875299a9876cd9f38a77d7a291da96fcec61ecbee23fbe47222a448e056c79"
+    },
+    {
+      "name": "Tower 07",
+      "original": "Foozle_2DS0020_Spire_TowerPack_4/Foozle_2DS0020_Spire_TowerPack_4/Towers bases/PNGs/Tower 07.png",
+      "sha256": "70ce7e05b632f5cb63d78f92b7dd3e96a2e0890f7fdfb3ea3507e6e487895d30"
+    },
+    {
+      "name": "Tower 07 - Level 01 - Weapon",
+      "original": "Foozle_2DS0020_Spire_TowerPack_4/Foozle_2DS0020_Spire_TowerPack_4/Towers Weapons/Tower 07/Spritesheets/Tower 07 - Level 01 - Weapon.png",
+      "sha256": "1638621c5ceecb637e50642dc329ab6eca042523895013a41bfdb9c561d03e46"
+    },
+    {
+      "name": "Tower 07 - Level 02 - Weapon",
+      "original": "Foozle_2DS0020_Spire_TowerPack_4/Foozle_2DS0020_Spire_TowerPack_4/Towers Weapons/Tower 07/Spritesheets/Tower 07 - Level 02 - Weapon.png",
+      "sha256": "e3a127c0d36dbc938c278a1c74f722a5f963e8ed22f8ecfad55622aa87f57a45"
+    },
+    {
+      "name": "Tower 07 - Level 03 - Weapon",
+      "original": "Foozle_2DS0020_Spire_TowerPack_4/Foozle_2DS0020_Spire_TowerPack_4/Towers Weapons/Tower 07/Spritesheets/Tower 07 - Level 03 - Weapon.png",
+      "sha256": "05f58cef6040f225f13ddc647bfcef0b0b5f20f2ab4017511159e529d9311356"
+    },
+    {
+      "name": "Tower 07 - Level X - Projectile",
+      "original": "Foozle_2DS0020_Spire_TowerPack_4/Foozle_2DS0020_Spire_TowerPack_4/Towers Weapons/Tower 07/Spritesheets/Tower 07 - Level X - Projectile.png",
+      "sha256": "702e48dd9fd5d5a533300ae2ce9f6e6d70395bd3da8699d06b970330b0eeb7b7"
+    },
+    {
+      "name": "Tower 07 - Level X - Projectile - Impact",
+      "original": "Foozle_2DS0020_Spire_TowerPack_4/Foozle_2DS0020_Spire_TowerPack_4/Towers Weapons/Tower 07/Spritesheets/Tower 07 - Level X - Projectile - Impact.png",
+      "sha256": "86561b4e88c2e01726df1a4a59755c3e5ca1785fc9ad78a093fdbf6de9af9d8a"
+    },
+    {
+      "name": "Tower 08",
+      "original": "Foozle_2DS0020_Spire_TowerPack_4/Foozle_2DS0020_Spire_TowerPack_4/Towers bases/PNGs/Tower 08.png",
+      "sha256": "f0ad3b03ec69ef8e19f9bdd46b16ec17e82a96b4d05b0f935607b33ba4a710e3"
+    },
+    {
+      "name": "Tower 08 - Level 01 - Projectile",
+      "original": "Foozle_2DS0020_Spire_TowerPack_4/Foozle_2DS0020_Spire_TowerPack_4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 01 - Projectile.png",
+      "sha256": "47da1c48050f77e1f039cba098cc91e9626d106567f352a6fd2448680e7ce04e"
+    },
+    {
+      "name": "Tower 08 - Level 01 - Weapon",
+      "original": "Foozle_2DS0020_Spire_TowerPack_4/Foozle_2DS0020_Spire_TowerPack_4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 01 - Weapon.png",
+      "sha256": "2af9ca46082458c98db408cb3558f9a169db7f74f2af069ea59a113685548226"
+    },
+    {
+      "name": "Tower 08 - Level 02 - Projectile",
+      "original": "Foozle_2DS0020_Spire_TowerPack_4/Foozle_2DS0020_Spire_TowerPack_4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 02 - Projectile.png",
+      "sha256": "9c3dc501bc569d58e88dcdcd4d13088ab66c9da151f105dc3562b55afe2252cb"
+    },
+    {
+      "name": "Tower 08 - Level 02 - Weapon",
+      "original": "Foozle_2DS0020_Spire_TowerPack_4/Foozle_2DS0020_Spire_TowerPack_4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 02 - Weapon.png",
+      "sha256": "87a6b8675bcc7bab8119c5b2f2349d72fb494c3bcdf5a09ad2e518fb1bded24e"
+    },
+    {
+      "name": "Tower 08 - Level 03 - Projectile",
+      "original": "Foozle_2DS0020_Spire_TowerPack_4/Foozle_2DS0020_Spire_TowerPack_4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 03 - Projectile.png",
+      "sha256": "b6384b0fb55ee50e04f1debbc6d0a2dd91918c5e57e40757e6d24e4b34c4d922"
+    },
+    {
+      "name": "Tower 08 - Level 03 - Weapon",
+      "original": "Foozle_2DS0020_Spire_TowerPack_4/Foozle_2DS0020_Spire_TowerPack_4/Towers Weapons/Tower 08/Spritesheets/Tower 08 - Level 03 - Weapon.png",
+      "sha256": "65b1da9a625c8a9b9e988aafaebbaad30a37811b1fcbdae27fa4722477bd22ed"
+    },
+    {
+      "name": "Tower Construction",
+      "original": "Foozle_2DS0021_Spire_BuilderPack/Foozle_2DS0021_Spire_WispBuilder/Building Animations/PNGs/Tower Construction.png",
+      "sha256": "79c6ec5b2d82cab67b5dd6d6b0622fdb4d6a9d5bdc4a4304b23c764b76dbc6a8"
+    },
+    {
+      "name": "Voidbutterfly",
+      "original": "Foozle_2DC0027_Spire_EnemyPack_1_Flying/Foozle_2DC0027_Spire_EnemyPack_1_Flying/Flying/Spritesheets/Voidbutterfly.png",
+      "sha256": "d4a0e9cf5ab6af6de2fa8a4a26f6af3a8c36de911324b1b575aa9b5e211fe0e5"
+    },
+    {
+      "name": "Wind Blowing",
+      "original": "Foozle_2DT0012_Spire_Tileset_1/Foozle_2DT0012_Spire_Tileset_1/Effects/Spritesheets/Wind Blowing.png",
+      "sha256": "1af99a7194f5699ee715bbc22c511842f0cc450c62f89111461dd45154d94195"
+    },
+    {
+      "name": "Wisp - Animations",
+      "original": "Foozle_2DS0021_Spire_BuilderPack/Foozle_2DS0021_Spire_WispBuilder/Wisp/Spritesheet/Wisp - Animations.png",
+      "sha256": "e4918a43384f9bbfd67f469bd0ac038ff69ab137e7ad3ead8b3d5f2658e9daff"
+    }
+  ],
+  "ui": [
+    "panel-frame.png",
+    "button-states.png",
+    "menu-backdrop.png",
+    "spire-emblem.png",
+    "hud-icons.png",
+    "tower-slots.png",
+    "map-covers.png"
+  ]
+}

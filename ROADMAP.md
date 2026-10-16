@@ -1,7 +1,7 @@
 # Spire – Roadmap für fünf zusammenhängende Spielkarten
 
 Stand: 16. Oktober 2026  
-Status: Arbeitsplan erstellt. Die unten beschriebenen Umbauten sind noch nicht umgesetzt oder abgenommen.
+Status: M0 abgeschlossen – Sicherung und separat spielbare Rekonstruktion der drei ursprünglichen Karten liegen vor. M1–M4 sind noch nicht umgesetzt oder abgenommen. Nachweise: [M0-Prüfbericht](artifacts/m0/REPORT.md).
 
 ## 1. Ziel und verbindlicher Umfang
 
@@ -48,13 +48,15 @@ Beim Audit gab es im Projektordner kein Git-Repository. Eine vollständige, unve
 
 ### M0 – Ausgangsversion sichern und Vergleich herstellen
 
-- [ ] Aktuellen Quellcode, Assets, Startversion und benötigte Spielstände sichern, bevor etwas ersetzt wird.
-- [ ] Versionierung mit nachvollziehbaren Ständen einrichten; Originalpakete erhalten.
-- [ ] Ursprüngliche Darstellung der drei Waldkarten möglichst vollständig wiederherstellen.
-- [ ] Jede der drei Karten ansehen und mit einem Screenshot dokumentieren; Herkunft und mögliche Rekonstruktionsabweichungen vermerken.
-- [ ] Bauen, Aufwerten, Gegnerbewegung, Pause, Neustart und Speichern der Ausgangsversion prüfen.
+- [x] Aktuellen Quellcode, Assets und Startversion sichern. Bestehende Browser-Spielstände durch getrennten Speicherschlüssel erhalten; kein Browserdaten-Export und keine Ersetzung des aktuellen Spiels.
+- [x] Versionierung mit nachvollziehbaren Ständen einrichten; Originalpakete erhalten.
+- [x] Ursprüngliche Darstellung der drei Waldkarten aus belegten Änderungen rekonstruieren.
+- [x] Jede der drei Karten ansehen und mit einem Screenshot dokumentieren; Herkunft und Rekonstruktionsabweichungen vermerken.
+- [x] Bauen, Aufwerten, Gegnerbewegung, Pause, Neustart und Speicherung von Ergebnissen/Einstellungen prüfen. Der ursprüngliche Stand hat keine Wiederherstellung einer laufenden Bauphase nach Neuladen.
 
 **Ergebnis:** separat spielbare Vergleichsbasis und gesicherter neuer Stand. Noch keine neue Grafikproduktion.
+
+**Nachweis vom 16.10.2026:** [Referenz starten und bauen](reference/README.md), [Prüfbericht mit drei Kartenansichten](artifacts/m0/REPORT.md). Sicherung: `backups/2026-10-16-before-m0/`; Git-Stände: `before-m0` und `m0-original-reference`. Die Rekonstruktion ist keine wiedergefundene historische Startdatei und noch keine Nutzerabnahme des künftigen Grafikstandards.
 
 ### M1 – Grafikstandard an einer kleinen Spielszene festlegen
 
@@ -251,12 +253,12 @@ Wenn die visuelle Prüfung technisch blockiert ist, lautet der Status „visuell
 ## 9. Status und nächster Auftrag
 
 - [x] Roadmap mit Umfang, Asset-Vorgaben und Abnahmekriterien erstellt.
-- [ ] M0: gesicherte und dokumentierte Ausgangsversion.
+- [x] M0: gesicherte und dokumentierte Ausgangsversion.
 - [ ] M1: gemeinsamer Grafikstandard im Spiel abgenommen.
 - [ ] M2: Waldkarte mit Wisp und Mara vollständig abgenommen.
 - [ ] M3: vier weitere Karten nacheinander fertiggestellt und abgenommen.
 - [ ] M4: gemeinsames Paket aus fünf Karten abgenommen.
 
-**Nächster sinnvoller Umsetzungsauftrag:** M0 bearbeiten und die wiederhergestellte Vergleichsbasis zeigen. Dabei noch keine neuen regionalen Grafikpakete erzeugen. Anschließend M1 und M2 als ausdrücklich vereinbarten Referenzabschnitt umsetzen.
+**Nächster sinnvoller Umsetzungsauftrag:** M1 – einen kleinen Spielausschnitt auf Basis der rekonstruierten Originalkarten mit Wisp, Mara, Turm und Gegner ausarbeiten. Maßstab und Anschlüsse dort konkret festlegen und die tatsächliche Spielansicht zur visuellen Abnahme vorlegen. Erst danach M2, die vollständige Waldkarte. Noch keine regionalen Grafikpakete erzeugen.
 
 Bei späteren Arbeiten zuerst diesen Plan und den letzten belegten Stand lesen. Checklisten werden nur mit tatsächlichem Nachweis aktualisiert; Nutzerabnahmen werden nicht aus verstrichener Zeit oder fehlendem Widerspruch abgeleitet.

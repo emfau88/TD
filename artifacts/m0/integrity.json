@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-16T14:50:11.700Z",
+  "baselineFiles": 554,
+  "changedExistingFiles": [
+    ".gitignore",
+    "README.md",
+    "ROADMAP.md",
+    "package.json"
+  ],
+  "missingExistingFiles": [],
+  "unchangedExistingFiles": 550,
+  "recoveredFiles": 25,
+  "recoveredChanges": 55,
+  "adaptedHistoricalFiles": [
+    "package.json",
+    "index.html",
+    "src/main.ts",
+    "SPIEL STARTEN.cmd",
+    "scripts/package-offline.mjs",
+    "vite.config.ts",
+    "scripts/check-ui.mjs",
+    "README.md",
+    "scripts/check-package.mjs"
+  ],
+  "verifiedHistoricalFiles": [
+    "tsconfig.json",
+    "scripts/prepare-assets.py",
+    "src/simulation.ts",
+    "src/data.ts",
+    "src/audio.ts",
+    "src/scene.ts",
+    "src/style.css",
+    "src/assets.ts",
+    "tests/simulation.test.ts",
+    "scripts/balance.ts",
+    ".gitignore",
+    "tests/campaign.test.ts",
+    "public/ui/README.md",
+    "src/ui-skin.css",
+    "public/ui/catalog.html",
+    "public/ui/manifest.json"
+  ],
+  "offlineSha256": "ddfaff260aee06ee5c5e5a4b31cba55f2192839444f7512f8ad3f4b0d8d0a05d"
+}

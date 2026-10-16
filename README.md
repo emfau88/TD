@@ -1,6 +1,6 @@
 # Spire — Herz aus Splittern
 
-Der Plan für die Überarbeitung auf Basis der ursprünglichen Karten steht in [ROADMAP.md](ROADMAP.md): fünf zusammenhängende Spielkarten, verbindliche Asset-Vorgaben und schrittweise Abnahmen. Die Roadmap beschreibt geplante Arbeiten; die folgende Dokumentation beschreibt den vorhandenen Stand.
+Der Plan für die Überarbeitung auf Basis der ursprünglichen Karten steht in [ROADMAP.md](ROADMAP.md): fünf zusammenhängende Spielkarten, verbindliche Asset-Vorgaben und schrittweise Abnahmen. **M0 ist abgeschlossen:** Die drei ursprünglichen Karten sind separat unter [reference/](reference/README.md) rekonstruiert. Zum Spielen `ORIGINAL SPIEL STARTEN.cmd` öffnen; [Prüfbericht und Screenshots](artifacts/m0/REPORT.md) dokumentieren Herkunft und Grenzen. Die folgende Dokumentation beschreibt weiterhin den erhaltenen neueren Stand mit fünf Karten.
 
 Ein lokales Tower-Defense-Spiel mit fünf eigenständigen Spielkarten und vier steuerbaren Begleitern. Die größere Kampagne „Herz aus Splittern“ ist als separat gekennzeichneter Entwurf erhalten. Ihre Geschichte verbindet Wisp, Mara, Runa, Ilyra und die Astronomin Vesper.
 

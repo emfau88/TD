@@ -1,0 +1,114 @@
+import { CELL,COLS,ROWS,MAPS,TOWERS,center,pathCells,pathPoints,waterCells,waveComposition, type EnemyDef,type Point,type Priority,type TowerDef } from './data';
+
+export type Tower = Point & { uid: number; def: TowerDef; col: number; row: number; level: number; cooldown: number; spent: number; priority: Priority; kills: number; angle: number; };
+export type Enemy = Point & { uid: number; def: EnemyDef; hp: number; maxHp: number; distance: number; total: number; path: Point[]; segment: number; speed: number; slow: number; slowTime: number; burn: number; burnTime: number; burnOwner?: number; burnSource?: Tower; boss: boolean; direction: 'up'|'down'|'side'; flip: boolean; };
+export type Shot = Point & { uid: number; tower: Tower; target: number; speed: number; damage: number; level: number; };
+export type Event = { type: 'build'|'upgrade'|'sell'|'fire'|'hit'|'kill'|'escape'|'wave'|'clear'|'victory'|'defeat'; x?: number; y?: number; tower?: Tower; enemy?: Enemy; shot?: Shot; amount?: number; links?: Point[]; };
+export type Phase = 'build'|'wave'|'victory'|'defeat';
+const distance=(a:Point,b:Point)=>Math.hypot(a.x-b.x,a.y-b.y);
+export const stats=(tower: Tower)=>({damage:tower.def.damage*[1,1.75,2.8][tower.level-1],range:tower.def.range+(tower.level-1)*15,cooldown:tower.def.cooldown/Math.pow(1.13,tower.level-1)});
+export const upgradeCost=(tower:Tower)=>Math.round(tower.def.cost*(tower.level===1?.85:1.25));
+export const sellValue=(tower:Tower)=>Math.round(tower.spent*.7);
+
+export class Simulation {
+  map: typeof MAPS[number]; gold: number; lives=20; wave=0; phase:Phase='build'; elapsed=0;
+  towers:Tower[]=[]; enemies:Enemy[]=[]; shots:Shot[]=[]; events:Event[]=[];
+  kills=0; earned=0; waveBonus=0; obstacles=new Set<string>(); blocked:Set<string>;
+  private uid=1; private queue: ReturnType<typeof waveComposition>=[]; private spawnTimer=0; private spawned=0;
+  constructor(mapId:number) {
+    this.map=MAPS[mapId] ?? MAPS[0]; this.gold=this.map.gold;
+    this.blocked=new Set([...this.map.paths.flatMap(p=>[...pathCells(p)]),...waterCells(this.map)]);
+  }
+  canBuild(col:number,row:number):boolean {
+    return Number.isInteger(col) && Number.isInteger(row) && col>=1 && col<COLS-1 && row>=1 && row<ROWS-1 && !this.blocked.has(`${col},${row}`) && !this.obstacles.has(`${col},${row}`) && !this.towers.some(t=>t.col===col&&t.row===row) && this.phase!=='defeat' && this.phase!=='victory';
+  }
+  build(id:number,col:number,row:number):Tower|undefined {
+    const def=TOWERS.find(t=>t.id===id);
+    if(!def||!this.canBuild(col,row)||this.gold<def.cost)return;
+    const tower:Tower={...center([col,row]),uid:this.uid++,def,col,row,level:1,cooldown:0,spent:def.cost,priority:'first',kills:0,angle:0};
+    this.gold-=def.cost;this.towers.push(tower);this.events.push({type:'build',tower,x:tower.x,y:tower.y});return tower;
+  }
+  upgrade(uid:number):boolean {
+    const tower=this.towers.find(t=>t.uid===uid);
+    if(!tower||tower.level>=3||this.gold<upgradeCost(tower)||this.phase==='defeat'||this.phase==='victory')return false;
+    const cost=upgradeCost(tower); this.gold-=cost;tower.spent+=cost;tower.level++;this.events.push({type:'upgrade',tower,x:tower.x,y:tower.y});return true;
+  }
+  sell(uid:number):boolean {
+    const tower=this.towers.find(t=>t.uid===uid);
+    if(!tower||this.phase==='defeat'||this.phase==='victory')return false;
+    this.gold+=sellValue(tower);this.towers=this.towers.filter(t=>t.uid!==uid);this.events.push({type:'sell',tower,x:tower.x,y:tower.y});return true;
+  }
+  startWave():boolean {
+    if(this.phase!=='build'||this.wave>=20)return false;
+    this.wave++;this.phase='wave';this.queue=waveComposition(this.wave);this.spawnTimer=.6;this.spawned=0;this.events.push({type:'wave'});return true;
+  }
+  private spawn(def:EnemyDef,boss:boolean) {
+    const nodes=def.flying?this.map.air:this.map.paths[this.spawned%this.map.paths.length];
+    const path=pathPoints(nodes), hp=def.hp*Math.pow(1.095,this.wave-1)*(boss?3.2:1)*(1+this.map.id*.06);
+    const total=path.slice(1).reduce((sum,p,i)=>sum+distance(path[i],p),0);
+    this.enemies.push({uid:this.uid++,def,...path[0],hp,maxHp:hp,path,total,distance:0,segment:0,speed:def.speed*(boss?.78:1),slow:0,slowTime:0,burn:0,burnTime:0,boss,direction:'side',flip:false});
+    this.spawned++;
+  }
+  private hurt(enemy:Enemy,damage:number,tower:Tower) {
+    if(enemy.hp<=0)return;
+    enemy.hp-=damage*(tower.def.pierce?1:1-enemy.def.armor);
+    if(enemy.hp<=0){const reward=Math.round(enemy.def.gold*(enemy.boss?3:1));this.gold+=reward;this.earned+=reward;this.kills++;tower.kills++;this.events.push({type:'kill',enemy,x:enemy.x,y:enemy.y,amount:reward});}
+  }
+  private impact(shot:Shot,target:Enemy) {
+    const def=shot.tower.def;
+    const victims=def.splash?this.enemies.filter(e=>e.hp>0&&(!e.def.flying||def.targets==='all')&&distance(e,target)<=def.splash!):[target];
+    for(const enemy of victims){
+      this.hurt(enemy,shot.damage,shot.tower);
+      if(enemy.hp<=0)continue;
+      if(def.slow){enemy.slow=Math.max(enemy.slowTime>0?enemy.slow:0,def.slow);enemy.slowTime=2.3;}
+      if(def.burn){
+        const burn=def.burn*shot.level;
+        if(enemy.burnTime<=0||burn>=enemy.burn){enemy.burn=burn;enemy.burnOwner=shot.tower.uid;enemy.burnSource=shot.tower;}
+        enemy.burnTime=3;
+      }
+    }
+    const links:Point[]=[{x:target.x,y:target.y}];
+    if(def.chain){let previous=target;const used=new Set([target.uid]);for(let i=1;i<def.chain;i++){const next=this.enemies.filter(e=>e.hp>0&&!used.has(e.uid)&&(def.targets==='all'||!e.def.flying)&&distance(e,previous)<100).sort((a,b)=>distance(a,previous)-distance(b,previous))[0];if(!next)break;this.hurt(next,shot.damage*Math.pow(.8,i),shot.tower);used.add(next.uid);links.push({x:next.x,y:next.y});previous=next;}}
+    this.events.push({type:'hit',shot,x:target.x,y:target.y,links});
+  }
+  update(dt:number) {
+    if(!Number.isFinite(dt)||dt<=0||this.phase!=='wave')return;
+    const steps=Math.ceil(dt/.025), step=dt/steps;
+    for(let index=0;index<steps&&this.phase==='wave';index++)this.tick(step);
+  }
+  private tick(dt:number) {
+    if(this.phase!=='wave')return;
+    this.elapsed+=dt;this.spawnTimer-=dt;
+    while(this.queue.length&&this.spawnTimer<=0){const next=this.queue.shift()!;this.spawn(next.type,next.boss);this.spawnTimer+=Math.max(.32,.95-this.wave*.022);}
+    for(const enemy of this.enemies){
+      if(enemy.hp<=0)continue;
+      if(enemy.burnTime>0){const owner=enemy.burnSource??this.towers.find(t=>t.uid===enemy.burnOwner);if(owner)this.hurt(enemy,enemy.burn*Math.min(dt,enemy.burnTime),owner);enemy.burnTime=Math.max(0,enemy.burnTime-dt);}
+      if(enemy.hp<=0)continue;
+      const slowedDuration=Math.min(dt,enemy.slowTime);
+      enemy.slowTime=Math.max(0,enemy.slowTime-dt);
+      let travel=enemy.speed*(dt-slowedDuration*enemy.slow);
+      while(travel>0&&enemy.segment<enemy.path.length-1){const next=enemy.path[enemy.segment+1],gap=distance(enemy,next);const step=Math.min(gap,travel);const dx=next.x-enemy.x,dy=next.y-enemy.y;enemy.direction=Math.abs(dx)>Math.abs(dy)?'side':dy>0?'down':'up';enemy.flip=dx<0;if(gap>0){enemy.x+=dx/gap*step;enemy.y+=dy/gap*step;}travel-=step;enemy.distance+=step;if(gap<=step+.001)enemy.segment++;}
+      if(enemy.segment===enemy.path.length-1){enemy.hp=0;this.lives=Math.max(0,this.lives-enemy.def.lives*(enemy.boss?2:1));this.events.push({type:'escape',enemy,x:enemy.x,y:enemy.y});}
+    }
+    if(this.lives<=0){this.phase='defeat';this.events.push({type:'defeat'});return;}
+    for(const tower of this.towers){
+      tower.cooldown-=dt;if(tower.cooldown>0)continue;
+      const stat=stats(tower), candidates=this.enemies.filter(e=>e.hp>0&&(tower.def.targets==='all'||!e.def.flying)&&distance(e,tower)<=stat.range);
+      candidates.sort((a,b)=>tower.priority==='strong'?b.hp-a.hp:tower.priority==='near'?distance(a,tower)-distance(b,tower):tower.priority==='last'?(a.distance/a.total)-(b.distance/b.total):(b.distance/b.total)-(a.distance/a.total));
+      const target=candidates[0];if(!target)continue;
+      tower.angle=Math.atan2(target.y-tower.y,target.x-tower.x)+Math.PI/2;tower.cooldown=stat.cooldown;
+      const shot:Shot={uid:this.uid++,tower,target:target.uid,x:tower.x,y:tower.y-12,speed:defSpeed(tower.def.id),damage:stat.damage,level:tower.level};this.shots.push(shot);this.events.push({type:'fire',tower,shot});
+    }
+    this.shots=this.shots.filter(shot=>{
+      const target=this.enemies.find(e=>e.uid===shot.target&&e.hp>0);if(!target)return false;
+      const gap=distance(shot,target), step=shot.speed*dt;
+      if(gap<=step+4){this.impact(shot,target);return false;}
+      shot.x+=(target.x-shot.x)/gap*step;shot.y+=(target.y-shot.y)/gap*step;return true;
+    });
+    this.enemies=this.enemies.filter(e=>e.hp>0);
+    if(!this.queue.length&&!this.enemies.length){this.shots=[];this.waveBonus=35+this.wave*3;this.gold+=this.waveBonus;this.events.push({type:'clear',amount:this.waveBonus});this.phase=this.wave===20?'victory':'build';if(this.phase==='victory')this.events.push({type:'victory'});}
+  }
+  get remaining(){return this.enemies.length+this.queue.length;}
+  drainEvents(){const events=this.events;this.events=[];return events;}
+}
+function defSpeed(id:number){return id===3?240:id===5?900:id===8?380:480;}
