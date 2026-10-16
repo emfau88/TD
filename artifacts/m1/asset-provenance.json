@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-16",
+  "sourcePolicy": "Existing sources preserved; runtime crops and anchors in reference/src/style-assets.ts and reference/src/terrain.ts; no generated images in M1.",
+  "assets": [
+    {
+      "name": "Grass Tileset",
+      "path": "reference/public/assets/Grass Tileset.png",
+      "sha256": "0d36e48873dcfa12e656087da8e348b0ea2ddecf3b5f4724e9a5253b4e27c7f4"
+    },
+    {
+      "name": "Animated water tiles",
+      "path": "reference/public/assets/Animated water tiles.png",
+      "sha256": "d28c9a6f6b39e6d9fab744d8a94a2f5e6c3a6aa25117f4694692008ac0a15754"
+    },
+    {
+      "name": "Wisp - Animations",
+      "path": "reference/public/assets/Wisp - Animations.png",
+      "sha256": "e4918a43384f9bbfd67f469bd0ac038ff69ab137e7ad3ead8b3d5f2658e9daff"
+    },
+    {
+      "name": "Leafbug",
+      "path": "reference/public/assets/Leafbug.png",
+      "sha256": "613c6f0fb08163ce028ad0b287626e4ca1b7794638b3eefc37c7181ada08224c"
+    },
+    {
+      "name": "Tower 01",
+      "path": "reference/public/assets/Tower 01.png",
+      "sha256": "add3e333cdad1fa8fe499592ab86e315583a8a2d3d5deaa8411e66386da434af"
+    },
+    {
+      "name": "Tower 01 - Level 01 - Weapon",
+      "path": "reference/public/assets/Tower 01 - Level 01 - Weapon.png",
+      "sha256": "7a29ce001ce9ddcf4572c16438066b921fe6bed88211715d6b5b85efae9f4299"
+    },
+    {
+      "name": "Mara style source",
+      "path": "public/assets/Hero Mara.png",
+      "sha256": "e6de0e03d9be8a78fc01904f4adbdec88362807b57e71c8dd83d344f90634a4a"
+    }
+  ]
+}

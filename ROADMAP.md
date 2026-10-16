@@ -1,7 +1,7 @@
 # Spire – Roadmap für fünf zusammenhängende Spielkarten
 
 Stand: 16. Oktober 2026  
-Status: M0 abgeschlossen – Sicherung und separat spielbare Rekonstruktion der drei ursprünglichen Karten liegen vor. M1–M4 sind noch nicht umgesetzt oder abgenommen. Nachweise: [M0-Prüfbericht](artifacts/m0/REPORT.md).
+Status: M0 abgeschlossen; anschließende Baum-/Wasserkorrektur vom Nutzer bestätigt. Die spielbare M1-Grafikprobe ist umgesetzt und geprüft, ihre visuelle Nutzerabnahme ist noch offen. M2–M4 sind noch nicht umgesetzt oder abgenommen. Nachweise: [M0-Prüfbericht](artifacts/m0/REPORT.md), [M1-Probe](artifacts/m1/REPORT.md).
 
 ## 1. Ziel und verbindlicher Umfang
 
@@ -62,13 +62,15 @@ Beim Audit gab es im Projektordner kein Git-Repository. Eine vollständige, unve
 
 ### M1 – Grafikstandard an einer kleinen Spielszene festlegen
 
-- [ ] Originalboden, Wegkurve, Wasserufer, Baum, Turm, Gegner und Wisp gemeinsam in echter Spielgröße zeigen.
-- [ ] Mara danebenstellen und Größe, Perspektive, Konturen und Detailgrad angleichen.
-- [ ] Die technischen Asset-Vorgaben aus Abschnitt 4 mit konkreten Maßen ausfüllen.
-- [ ] Einen repräsentativen Ausschnitt einschließlich Bewegung und Turmfeuer prüfen.
+- [x] Originalboden, Wegkurve, Wasserufer, Baum, Turm, Gegner und Wisp gemeinsam in echter Spielgröße zeigen.
+- [x] Mara danebenstellen und Größe, Perspektive, Konturen und Detailgrad für die Probe angleichen. Zuschnitte und Fußpunkte bereinigt; vollständige Laufanimation und finales Pixelpolieren bleiben vor M2-Abnahme offen.
+- [x] Die technischen Asset-Vorgaben aus Abschnitt 4 mit konkreten Maßen ausfüllen: [Grafikreferenz](reference/STYLE_GUIDE.md).
+- [x] Einen repräsentativen Ausschnitt einschließlich Bewegung und Turmfeuer prüfen: [M1-Prüfbericht](artifacts/m1/REPORT.md).
 - [ ] Nutzer bestätigt den gemeinsamen Stil anhand dieser tatsächlichen Spielansicht.
 
 **Ergebnis:** eine verbindliche Grafikreferenz und dokumentierte Größen. Konzeptbilder dienen als Themenreferenz; die freigegebene Spielansicht bestimmt die Produktionsqualität.
+
+**Vorliegende Probe:** `GRAFIKPROBE STARTEN.cmd` / `reference/Spire-Style.html`. Vorhandene Figuren werden weiterverwendet; keine neue Grafikgeneration. Die vier technischen Punkte sind erledigt. M1 bleibt bis zur tatsächlichen Stilbestätigung offen; M2 beginnt erst danach.
 
 ### M2 – Eine Waldkarte vollständig fertigstellen
 
@@ -118,7 +120,7 @@ Ausgangspunkt ist das stimmige Gesamtbild der ursprünglichen Karten. Verbesseru
 
 Der aktuelle Code verwendet **28 × 16 Zellen mit 40 Spieleinheiten**, also ein logisches Spielfeld von **1120 × 640**. Das ist die Spielgeometrie. Die Originalgrafiken haben unterschiedliche Quelldimensionen; der ursprüngliche Renderer nutzte beispielsweise 64 × 64 große Bodenausschnitte. **Spielzelle, Bildausschnitt und sichtbare Objektgröße sind verschiedene Angaben.**
 
-Die Spielgeometrie bleibt zunächst erhalten. Die verbindliche Grafikauflösung wird in M1 anhand der Originalgrafiken und der Darstellung festgelegt. Es wird nicht pauschal jedes vorhandene Bild auf 40 × 40 oder jede Figur auf dieselbe Zellgröße umgerechnet.
+Die Spielgeometrie bleibt zunächst erhalten. Die M1-Probe konkretisiert die Grafikauflösung in der [Grafikreferenz mit Maßen, Ausschnitten und Animationsregeln](reference/STYLE_GUIDE.md): 64er Bodenteile auf 40 Spieleinheiten, 32er Wasserteile auf 20, 62 × 64 Einzelbäume sowie getrennte Maßstäbe und Fußpunkte für Türme, Gegner, Wisp und Mara. Verbindlich wird der Vorschlag mit der Nutzerabnahme. Es wird nicht pauschal jedes vorhandene Bild auf 40 × 40 oder jede Figur auf dieselbe Zellgröße umgerechnet.
 
 Vor neuer Grafikproduktion müssen folgende Angaben konkret vorliegen:
 
@@ -261,6 +263,6 @@ Wenn die visuelle Prüfung technisch blockiert ist, lautet der Status „visuell
 - [ ] M3: vier weitere Karten nacheinander fertiggestellt und abgenommen.
 - [ ] M4: gemeinsames Paket aus fünf Karten abgenommen.
 
-**Nächster sinnvoller Umsetzungsauftrag:** M1 – einen kleinen Spielausschnitt auf Basis der rekonstruierten Originalkarten mit Wisp, Mara, Turm und Gegner ausarbeiten. Maßstab und Anschlüsse dort konkret festlegen und die tatsächliche Spielansicht zur visuellen Abnahme vorlegen. Erst danach M2, die vollständige Waldkarte. Noch keine regionalen Grafikpakete erzeugen.
+**Nächster Schritt:** Die vorliegende M1-Probe gemeinsam ansehen und den Maßstab sowie den Stil bestätigen oder gezielt korrigieren. Erst nach dieser Nutzerabnahme folgt M2, die vollständige Waldkarte. Noch keine regionalen Grafikpakete erzeugen.
 
 Bei späteren Arbeiten zuerst diesen Plan und den letzten belegten Stand lesen. Checklisten werden nur mit tatsächlichem Nachweis aktualisiert; Nutzerabnahmen werden nicht aus verstrichener Zeit oder fehlendem Widerspruch abgeleitet.

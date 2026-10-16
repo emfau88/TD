@@ -50,6 +50,7 @@ async function prepare() {
     provenance.push({ name, original: relative(root, original).replaceAll('\\', '/'), sha256: hash(runtime) });
   }
   await writeFile(resolve(output, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
+  await copyFile(resolve(root, 'public/assets/Hero Mara.png'), resolve(output, 'Mara style source.png'));
   const ui = ['panel-frame.png', 'button-states.png', 'menu-backdrop.png', 'spire-emblem.png', 'hud-icons.png', 'tower-slots.png', 'map-covers.png'];
   await mkdir(resolve(reference, 'public/ui'), { recursive: true });
   for (const file of ui) await copyFile(resolve(root, 'public/ui', file), resolve(reference, 'public/ui', file));
@@ -70,7 +71,7 @@ async function run(args) {
 }
 const bin = path => resolve(root, 'node_modules', path);
 const mode = process.argv[2] ?? 'prepare';
-assert.ok(['prepare', 'dev', 'build', 'test'].includes(mode), 'Use prepare, dev, build, or test');
+assert.ok(['prepare', 'dev', 'build', 'test', 'style-build'].includes(mode), 'Use prepare, dev, build, test, or style-build');
 await prepare();
 if (mode === 'dev') await run([bin('vite/bin/vite.js'), '--host', '127.0.0.1']);
 if (mode === 'build') {
@@ -78,6 +79,12 @@ if (mode === 'build') {
   await run([bin('vite/bin/vite.js'), 'build']);
   await run(['scripts/package-offline.mjs']);
   await run(['scripts/check-package.mjs']);
+}
+if (mode === 'style-build') {
+  await run([bin('typescript/bin/tsc'), '--noEmit']);
+  await run([bin('vite/bin/vite.js'), 'build', '--config', 'vite.style.config.ts']);
+  await run(['scripts/package-offline.mjs', 'style']);
+  await run(['scripts/check-package.mjs', 'style']);
 }
 if (mode === 'test') {
   const files = (await readdir(resolve(reference, 'tests'))).filter(file => file.endsWith('.test.ts')).sort();

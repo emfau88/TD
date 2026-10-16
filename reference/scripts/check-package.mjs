@@ -4,12 +4,19 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const stylePreview = process.argv[2] === 'style';
+const dist = stylePreview ? 'style-dist' : 'dist';
 const manifest = JSON.parse(await readFile(resolve(root, 'public/assets/manifest.json'), 'utf8'));
-const offline = await readFile(resolve(root, 'Spire-Original.html'), 'utf8');
+const offline = await readFile(resolve(root, stylePreview ? 'Spire-Style.html' : 'Spire-Original.html'), 'utf8');
 const payload = offline.match(/window\.__SPIRE_BUNDLE__=(.*?);<\/script>/s)?.[1];
 assert.ok(payload, 'Offline payload missing');
 const embedded = JSON.parse(payload);
-assert.equal(Object.keys(embedded.images).length, 84);
+assert.equal(Object.keys(embedded.images).length, stylePreview ? 85 : 84);
+if (stylePreview) {
+  const original = await readFile(resolve(root, '../public/assets/Hero Mara.png'));
+  assert.ok(original.equals(Buffer.from(embedded.images['Mara style source'].split(',')[1], 'base64')), 'Mara source changed during packaging');
+  assert.ok(original.equals(await readFile(resolve(root, dist, 'assets/Mara style source.png'))), 'Mara source differs in production build');
+}
 assert.deepEqual(embedded.manifest, manifest);
 assert.ok(!/<(?:script|link)[^>]+(?:src|href)="(?:https?:|\.\/)/.test(offline), 'Offline output references an external script/style');
 assert.ok(!offline.includes('@import url('), 'Offline output references external fonts');
@@ -25,7 +32,7 @@ for (const match of styles.matchAll(/url\(\s*(?:"([^"]*)"|'([^']*)'|([^)]*?))\s*
 
 for (const [name, info] of Object.entries(manifest)) {
   const original = await readFile(resolve(root, 'public/assets', `${name}.png`));
-  const built = await readFile(resolve(root, 'dist/assets', `${name}.png`));
+  const built = await readFile(resolve(root, dist, 'assets', `${name}.png`));
   const encoded = Buffer.from(embedded.images[name].split(',')[1], 'base64');
   assert.ok(original.equals(built), `${name}: production PNG differs`);
   assert.ok(original.equals(encoded), `${name}: embedded PNG differs`);
@@ -37,11 +44,11 @@ for (const [name, info] of Object.entries(manifest)) {
 }
 for (const name of uiNames) {
   const original = await readFile(resolve(root, 'public/ui', name));
-  const built = await readFile(resolve(root, 'dist/ui', name));
+  const built = await readFile(resolve(root, dist, 'ui', name));
   assert.ok(embedded.uiImages[name].startsWith('data:image/png;base64,'), `${name}: invalid embedded UI image`);
   const encoded = Buffer.from(embedded.uiImages[name].split(',')[1], 'base64');
   assert.ok(original.equals(built), `${name}: production UI PNG differs`);
   assert.ok(original.equals(encoded), `${name}: embedded UI PNG differs`);
   assert.ok(original.readUInt32BE(16) > 0 && original.readUInt32BE(20) > 0, `${name}: invalid UI dimensions`);
 }
-console.log('PASS 84 game PNGs and 7 UI PNGs: production and offline bytes match; dimensions and animation frames valid; offline package has no external script/style/font/image dependencies.');
+console.log(`PASS ${stylePreview ? 85 : 84} game PNGs and 7 UI PNGs: production and offline bytes match; dimensions and animation frames valid; offline package has no external script/style/font/image dependencies.`);

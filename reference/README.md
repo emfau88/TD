@@ -11,6 +11,12 @@ M0, erstellt am 16.10.2026. Separat spielbare Rekonstruktion des Quellstands vom
 
 Sterne, beste Wellen, Tutorial und Audioeinstellungen werden separat unter `spire-reference-save-v1` gespeichert. Laufende Partien lassen sich nur innerhalb der geöffneten Seite fortsetzen; nach Neuladen gibt es in diesem ursprünglichen Stand keinen Bauphasen-Zwischenstand. Bestehende Daten des neueren Spiels unter `spire-save` werden nicht verändert.
 
+## Spielbare Grafikprobe M1
+
+`GRAFIKPROBE STARTEN.cmd` im Projektordner öffnet die separate Waldlichtung mit Originalgelände, Wisp, Mara und echtem Turmkampf. Alternativ `Spire-Style.html` öffnen oder auf dem Entwicklungsserver `/style.html` aufrufen. Q/E wählt eine Figur, Klick auf freien Boden bewegt sie. „Bewegung zeigen“ lässt beide Figuren alle Richtungen durchlaufen; „Testwelle starten“ startet die vorhandene Kampfsimulation. Die Probe speichert keinen Fortschritt.
+
+Build aus dem Projektordner: `npm run reference:style:build`. Die Ausgabe liegt unter `reference/style-dist/` und `reference/Spire-Style.html`. [Konkrete Grafikvorgaben](STYLE_GUIDE.md), [Prüfbericht](../artifacts/m1/REPORT.md). Nutzerabnahme offen; Mara besitzt bisher zwei Gehposen je Richtung und vorläufige Aktionsposen.
+
 ## Entwicklung und Prüfung
 
 Alle Befehle im **übergeordneten Projektordner** ausführen. Die Referenz verwendet dessen vorhandene Abhängigkeiten und `package-lock.json`:
@@ -29,4 +35,4 @@ Die historischen Hilfsskripte sind als Beleg erhalten. Insbesondere `scripts/pre
 
 [M0-Prüfbericht](../artifacts/m0/REPORT.md) mit Screenshots, Tests und Abweichungen; [Roadmap](../ROADMAP.md) für die nächsten Schritte. Der unveränderte rekonstruierte Quellstand liegt zusätzlich in `artifacts/m0/historical-source.zip` im Projektordner. Historische Änderungen und Hashes sind in `artifacts/m0/recovery.json` protokolliert.
 
-Unter Git-Tag `m0-original-reference` entsprechen Kartendaten, Renderer und Simulation dem rekonstruierten Quellstand. Der aktuelle Renderer ergänzt die dokumentierten Baum- und Wasserkorrekturen. Eine weitergehende gestalterische Überarbeitung und die neuen Begleiter sind Gegenstand von M1/M2. Für M0 und diese Korrekturen wurden keine neuen Grafiken generiert.
+Unter Git-Tag `m0-original-reference` entsprechen Kartendaten, Renderer und Simulation dem rekonstruierten Quellstand. `reference-terrain-fixed` hält die bestätigten Baum- und Wasserkorrekturen fest. M1 erweitert die Basisklasse lediglich um Schnittstellen für die separate Probe; die drei Originalkarten behalten ihre Darstellung und Spielmechanik. M1 verwendet vorhandene Figuren und Originalgelände. Es wurden keine neuen Grafiken generiert.

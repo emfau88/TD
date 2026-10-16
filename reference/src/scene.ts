@@ -19,9 +19,9 @@ export class ForestScene extends Phaser.Scene {
   set speed(value:number){this.gameSpeed=value;this.syncClocks();}
   get menu(){return this.inMenu;}
   set menu(value:boolean){this.inMenu=value;this.syncClocks();this.refreshPreview();}
-  private ground?:Phaser.GameObjects.Container; private towerViews=new Map<number,TowerView>();private enemyViews=new Map<number,EnemyView>();private shotViews=new Map<number,Phaser.GameObjects.Sprite|Phaser.GameObjects.Arc>();
+  protected ground?:Phaser.GameObjects.Container; private towerViews=new Map<number,TowerView>();private enemyViews=new Map<number,EnemyView>();private shotViews=new Map<number,Phaser.GameObjects.Sprite|Phaser.GameObjects.Arc>();
   private cursor!:Phaser.GameObjects.Graphics;private ranges!:Phaser.GameObjects.Graphics;private effects!:Phaser.GameObjects.Graphics;private ghost?:Phaser.GameObjects.Image;
-  private ticks=0; private lastUi=0;private terrainKey?:string;private routeKey?:string;private temporaryObjects=new Set<Phaser.GameObjects.GameObject>();
+  private ticks=0; private lastUi=0;protected terrainKey?:string;protected routeKey?:string;private temporaryObjects=new Set<Phaser.GameObjects.GameObject>();
   private readonly preventContextMenu:EventListener=event=>event.preventDefault();
   constructor(assets:Assets,hooks:GameHooks){super('Forest');this.assets=assets;this.hooks=hooks;}
   preload(){
@@ -41,7 +41,7 @@ export class ForestScene extends Phaser.Scene {
     this.loadMap(0);this.hooks.ready();
   }
   private syncClocks(){const timeScale=this.paused||this.menu?0:this.speed;if(this.anims)this.anims.globalTimeScale=timeScale;if(this.tweens)this.tweens.timeScale=timeScale;}
-  private track<ObjectType extends Phaser.GameObjects.GameObject>(object:ObjectType):ObjectType{this.temporaryObjects.add(object);object.once(Phaser.GameObjects.Events.DESTROY,()=>this.temporaryObjects.delete(object));return object;}
+  protected track<ObjectType extends Phaser.GameObjects.GameObject>(object:ObjectType):ObjectType{this.temporaryObjects.add(object);object.once(Phaser.GameObjects.Events.DESTROY,()=>this.temporaryObjects.delete(object));return object;}
   private clearWorld(){
     this.tweens.killAll();for(const object of [...this.temporaryObjects])object.destroy();this.temporaryObjects.clear();
     this.ground?.destroy(true);this.ground=undefined;
@@ -72,7 +72,7 @@ export class ForestScene extends Phaser.Scene {
       }else if(name.includes('Impact')||name.includes('Projectile')||name==='Tower - Collapse')make(`${name}-play`,0,info.frames!-1,name.includes('Projectile')&&!name.includes('Impact')?-1:0);
     }
   }
-  private makeTerrainFrames(){
+  protected makeTerrainFrames(){
     const texture=this.textures.get('Grass Tileset');
     const frames:Record<string,[number,number,number,number]>={grass:[64,64,64,64],sand:[128,128,64,64],...TREE_FRAMES,rock:[832,768,64,64],flowers:[704,576,64,64],bridge:[704,768,64,192]};
     for(const [name,[x,y,w,h]] of Object.entries(frames))if(!texture.has(name))texture.add(name,0,x,y,w,h);
@@ -97,7 +97,7 @@ export class ForestScene extends Phaser.Scene {
       this.anims.create({key,frames:animationFrames,frameRate:10,repeat:-1});
     }
   }
-  private drawWater(){
+  protected drawWater(){
     for(const [x,y,w,h] of this.sim.map.water){
       const cols=w*2,rows=h*2,size=CELL/2;
       for(let row=0;row<rows;row++)for(let col=0;col<cols;col++){
@@ -107,12 +107,13 @@ export class ForestScene extends Phaser.Scene {
       }
     }
   }
+  protected createSimulation(id:number){return new Simulation(id);}
   loadMap(id:number){
     this.clearWorld();this.ticks=0;this.lastUi=0;this.effects.clear();
-    this.sim=new Simulation(id);this.paused=false;this.speed=1;this.selected=undefined;this.cancelBuild();this.hooks.select();
+    this.sim=this.createSimulation(id);this.paused=false;this.speed=1;this.selected=undefined;this.cancelBuild();this.hooks.select();
     this.drawMap();this.hooks.changed();
   }
-  private drawMap(){
+  protected drawMap(){
     const map=this.sim.map,random=seeded(map.seed),paths=new Set(map.paths.flatMap(p=>[...pathCells(p)])),water=waterCells(map);
     this.ground=this.add.container(0,0).setDepth(0);
     this.terrainKey='forest-terrain';const canvas=this.textures.createCanvas(this.terrainKey,WIDTH,HEIGHT)!;
@@ -155,7 +156,7 @@ export class ForestScene extends Phaser.Scene {
   chooseBuild(id:number){if(!TOWERS.some(tower=>tower.id===id))return;this.buildId=id;this.selected=undefined;this.hooks.select();this.ghost?.destroy();this.ghost=this.add.image(-100,-100,`Tower ${String(id).padStart(2,'0')}`,0).setScale(.63).setOrigin(.5,this.assets[`Tower ${String(id).padStart(2,'0')}`].height===192?.81:.8).setAlpha(.5).setDepth(6002);this.refreshPreview();this.hooks.changed();}
   cancelBuild(){this.buildId=undefined;this.ghost?.destroy();this.ghost=undefined;this.cursor?.clear();this.drawRange();this.hooks.select(this.sim?.towers.find(tower=>tower.uid===this.selected));this.hooks.changed();}
   clearSelection(){this.selected=undefined;this.cancelBuild();this.hooks.select();}
-  private click(col:number,row:number){
+  protected click(col:number,row:number){
     const existing=this.sim.towers.find(t=>t.col===col&&t.row===row);
     if(existing){this.cancelBuild();this.selected=existing.uid;this.drawRange();this.hooks.select(existing);this.hooks.changed();return;}
     if(this.buildId){if(this.paused){this.hooks.toast('Zum Bauen zuerst das Spiel fortsetzen.');return;}const def=TOWERS[this.buildId-1];if(this.sim.gold<def.cost){this.hooks.toast('Nicht genug Gold für diesen Turm.');return;}if(!this.sim.canBuild(col,row)){this.hooks.toast('Baue auf einer freien Wiese neben dem Weg.');return;}const tower=this.sim.build(this.buildId,col,row);if(tower){this.handleEvents();this.hooks.changed();this.hover(col*CELL+20,row*CELL+20);}return;}
