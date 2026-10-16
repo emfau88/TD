@@ -2,6 +2,8 @@
 
 Stand: 16.10.2026. **M0 abgeschlossen.** Drei ursprüngliche Karten sind separat spielbar, im Browser angesehen und dokumentiert. Die grafische Verbesserung und die Nutzerabnahme des künftigen Stils stehen noch aus.
 
+Dieser Bericht beschreibt den gesicherten Tag `m0-original-reference`. Danach erfolgten auf Nutzerwunsch [Baum- und Wasserkorrekturen](../terrain-fix/REPORT.md); die folgenden historischen Hashvergleiche und Screenshots gelten für den M0-Stand.
+
 ## Ergebnis und Start
 
 Im Projektordner `ORIGINAL SPIEL STARTEN.cmd` doppelklicken. Die Startdatei öffnet `reference/Spire-Original.html`. Entwicklung: `npm run reference:dev`, Adresse `http://127.0.0.1:5180/`. Weitere Befehle: [Referenz-README](../../reference/README.md).

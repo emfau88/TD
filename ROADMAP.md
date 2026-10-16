@@ -58,6 +58,8 @@ Beim Audit gab es im Projektordner kein Git-Repository. Eine vollständige, unve
 
 **Nachweis vom 16.10.2026:** [Referenz starten und bauen](reference/README.md), [Prüfbericht mit drei Kartenansichten](artifacts/m0/REPORT.md). Sicherung: `backups/2026-10-16-before-m0/`; Git-Stände: `before-m0` und `m0-original-reference`. Die Rekonstruktion ist keine wiedergefundene historische Startdatei und noch keine Nutzerabnahme des künftigen Grafikstandards.
 
+**Anschließende Nutzerkorrektur:** [Einzelbäume ohne Pixelstreifen und korrekt zusammengesetztes animiertes Wasser](artifacts/terrain-fix/REPORT.md) sind umgesetzt und auf allen drei Karten geprüft. Der unveränderte M0-Stand bleibt im genannten Git-Tag erhalten; M1 ist dadurch noch nicht abgeschlossen.
+
 ### M1 – Grafikstandard an einer kleinen Spielszene festlegen
 
 - [ ] Originalboden, Wegkurve, Wasserufer, Baum, Turm, Gegner und Wisp gemeinsam in echter Spielgröße zeigen.

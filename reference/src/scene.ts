@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { CELL,COLS,ROWS,WIDTH,HEIGHT,TOWERS,pathCells,waterCells,seeded,center } from './data';
 import { assetUrl } from './assets';
 import { Simulation,stats, type Enemy,type Tower,type Event } from './simulation';
+import { TREE_FRAMES, WATER_TILE_SIZE, waterTileSource, clearWaterBackdrop } from './terrain';
 
 export type AssetInfo={width?:number;height?:number;frames?:number;cols?:number;rows?:number;sheetWidth:number;sheetHeight:number;frameMap?:number[];durations?:number[];tags?:{name:string;start:number;end:number}[]};
 export type Assets=Record<string,AssetInfo>;
@@ -20,7 +21,7 @@ export class ForestScene extends Phaser.Scene {
   set menu(value:boolean){this.inMenu=value;this.syncClocks();this.refreshPreview();}
   private ground?:Phaser.GameObjects.Container; private towerViews=new Map<number,TowerView>();private enemyViews=new Map<number,EnemyView>();private shotViews=new Map<number,Phaser.GameObjects.Sprite|Phaser.GameObjects.Arc>();
   private cursor!:Phaser.GameObjects.Graphics;private ranges!:Phaser.GameObjects.Graphics;private effects!:Phaser.GameObjects.Graphics;private ghost?:Phaser.GameObjects.Image;
-  private ticks=0; private lastUi=0;private terrainKey?:string;private temporaryObjects=new Set<Phaser.GameObjects.GameObject>();
+  private ticks=0; private lastUi=0;private terrainKey?:string;private routeKey?:string;private temporaryObjects=new Set<Phaser.GameObjects.GameObject>();
   private readonly preventContextMenu:EventListener=event=>event.preventDefault();
   constructor(assets:Assets,hooks:GameHooks){super('Forest');this.assets=assets;this.hooks=hooks;}
   preload(){
@@ -48,6 +49,7 @@ export class ForestScene extends Phaser.Scene {
     for(const view of this.enemyViews.values()){view.sprite.destroy();view.shadow.destroy();view.bar.destroy();}this.enemyViews.clear();
     for(const shot of this.shotViews.values())shot.destroy();this.shotViews.clear();
     if(this.terrainKey){this.textures.remove(this.terrainKey);this.terrainKey=undefined;}
+    if(this.routeKey){this.textures.remove(this.routeKey);this.routeKey=undefined;}
   }
   private makeAnimations(){
     for(const [name,info] of Object.entries(this.assets)){
@@ -62,7 +64,6 @@ export class ForestScene extends Phaser.Scene {
       if(directions?.length===9){
         for(let row=0;row<9;row++){const tag=directions[row];make(`${name}-${row<3?'idle':row<6?'move':'death'}-${['down','up','side'][row%3]}`,tag.start,tag.end,row>=6?0:-1);}
       }else if(name==='Wisp - Animations'){make('wisp',0,8);make('wisp-summon',27,35,0);}
-      else if(name==='Animated water tiles')make('water',0,9);
       else if(name==='Tower Construction'){const transitions=info.tags?.filter(tag=>tag.name==='Transition')??[];transitions.forEach((tag,index)=>make(`construction-${index+1}`,tag.start,tag.end,0));}
       else if(name.includes('Weapon')){
         const idle=info.tags?.find(t=>t.name==='Idle');
@@ -73,8 +74,38 @@ export class ForestScene extends Phaser.Scene {
   }
   private makeTerrainFrames(){
     const texture=this.textures.get('Grass Tileset');
-    const frames:Record<string,[number,number,number,number]>={grass:[64,64,64,64],sand:[128,128,64,64],tree:[832,384,64,128],tree2:[896,384,64,128],autumn:[832,576,64,128],rock:[832,768,64,64],flowers:[704,576,64,64],bridge:[704,768,64,192]};
+    const frames:Record<string,[number,number,number,number]>={grass:[64,64,64,64],sand:[128,128,64,64],...TREE_FRAMES,rock:[832,768,64,64],flowers:[704,576,64,64],bridge:[704,768,64,192]};
     for(const [name,[x,y,w,h]] of Object.entries(frames))if(!texture.has(name))texture.add(name,0,x,y,w,h);
+    const info=this.assets['Animated water tiles'];
+    if(!this.textures.exists('water-terrain')){
+      const copy=this.textures.createCanvas('water-terrain',info.sheetWidth,info.sheetHeight)!;
+      copy.context.drawImage(this.textures.get('Animated water tiles').getSourceImage() as HTMLImageElement,0,0);
+      const pixels=copy.context.getImageData(0,0,info.sheetWidth,info.sheetHeight);
+      clearWaterBackdrop(pixels.data,info.sheetWidth,info.width!,info.height!);
+      copy.context.putImageData(pixels,0,0);copy.refresh();
+    }
+    const water=this.textures.get('water-terrain');
+    // A 4x4 sample covers corners, both edge variants and four interior tiles.
+    for(let row=0;row<4;row++)for(let col=0;col<4;col++){
+      const [x,y]=waterTileSource(col,row,4,4),key=`water-${x}-${y}`;
+      if(this.anims.exists(key))continue;
+      const animationFrames=info.frameMap!.map((sheetFrame,index)=>{
+        const name=`${key}-${index}`;
+        water.add(name,0,sheetFrame*info.width!+x,y,WATER_TILE_SIZE,WATER_TILE_SIZE);
+        return {key:'water-terrain',frame:name,duration:info.durations![index]};
+      });
+      this.anims.create({key,frames:animationFrames,frameRate:10,repeat:-1});
+    }
+  }
+  private drawWater(){
+    for(const [x,y,w,h] of this.sim.map.water){
+      const cols=w*2,rows=h*2,size=CELL/2;
+      for(let row=0;row<rows;row++)for(let col=0;col<cols;col++){
+        const [sx,sy]=waterTileSource(col,row,cols,rows),key=`water-${sx}-${sy}`;
+        this.ground!.add(this.add.sprite(x*CELL+col*size,y*CELL+row*size,'water-terrain',`${key}-0`)
+          .setOrigin(0).setDisplaySize(size,size).play(key));
+      }
+    }
   }
   loadMap(id:number){
     this.clearWorld();this.ticks=0;this.lastUi=0;this.effects.clear();
@@ -85,28 +116,31 @@ export class ForestScene extends Phaser.Scene {
     const map=this.sim.map,random=seeded(map.seed),paths=new Set(map.paths.flatMap(p=>[...pathCells(p)])),water=waterCells(map);
     this.ground=this.add.container(0,0).setDepth(0);
     this.terrainKey='forest-terrain';const canvas=this.textures.createCanvas(this.terrainKey,WIDTH,HEIGHT)!;
-    const ctx=canvas.context,source=this.textures.get('Grass Tileset').getSourceImage() as HTMLImageElement;
+    let ctx=canvas.context;const source=this.textures.get('Grass Tileset').getSourceImage() as HTMLImageElement;
     ctx.imageSmoothingEnabled=false;
     for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++)ctx.drawImage(source,64,64,64,64,c*CELL,r*CELL,CELL,CELL);
-    // A soft forest edge keeps the playfield framed without hiding buildable land.
-    const shade=ctx.createLinearGradient(0,0,0,HEIGHT);shade.addColorStop(0,'rgba(20,56,36,.19)');shade.addColorStop(.4,'rgba(20,56,36,0)');shade.addColorStop(1,'rgba(20,56,36,.15)');ctx.fillStyle=shade;ctx.fillRect(0,0,WIDTH,HEIGHT);
     for(let i=0;i<1800;i++){const x=random()*WIDTH,y=random()*HEIGHT;ctx.fillStyle=random()>.5?'rgba(217,233,138,.18)':'rgba(42,91,46,.12)';ctx.fillRect(x,y,2,2);}
-    for(const [x,y,w,h]of map.water){ctx.fillStyle='#456e54';ctx.beginPath();ctx.roundRect(x*CELL-7,y*CELL-7,w*CELL+14,h*CELL+14,24);ctx.fill();ctx.fillStyle='#62b3b8';ctx.beginPath();ctx.roundRect(x*CELL,y*CELL,w*CELL,h*CELL,20);ctx.fill();
-      for(let k=0;k<22;k++){ctx.fillStyle=k%2?'#80c8c4':'#50a3ac';ctx.fillRect(x*CELL+10+random()*(w*CELL-30),y*CELL+10+random()*(h*CELL-20),12+random()*20,2);}}
+    // Preserve the existing scenery positions: the old pond decoration consumed
+    // 66 random numbers per pond before the trees were placed.
+    for(let i=0;i<map.water.length*66;i++)random();
+    canvas.refresh();this.ground.add(this.add.image(0,0,canvas.key).setOrigin(0));
+    this.drawWater();
+    // Paths and bridge must sit above opaque water; shade both grass sources alike.
+    this.routeKey='forest-routes';const routes=this.textures.createCanvas(this.routeKey,WIDTH,HEIGHT)!;
+    ctx=routes.context;ctx.imageSmoothingEnabled=false;
+    const shade=ctx.createLinearGradient(0,0,0,HEIGHT);shade.addColorStop(0,'rgba(20,56,36,.19)');shade.addColorStop(.4,'rgba(20,56,36,0)');shade.addColorStop(1,'rgba(20,56,36,.15)');ctx.fillStyle=shade;ctx.fillRect(0,0,WIDTH,HEIGHT);
     ctx.strokeStyle='#b28256';ctx.lineWidth=48;ctx.lineJoin='round';ctx.lineCap='round';
     for(const nodes of map.paths){ctx.beginPath();nodes.forEach(([c,r],i)=>i?ctx.lineTo(c*CELL+20,r*CELL+20):ctx.moveTo(c*CELL+20,r*CELL+20));ctx.stroke();}
     ctx.strokeStyle='#e8b87f';ctx.lineWidth=40;
     for(const nodes of map.paths){ctx.beginPath();nodes.forEach(([c,r],i)=>i?ctx.lineTo(c*CELL+20,r*CELL+20):ctx.moveTo(c*CELL+20,r*CELL+20));ctx.stroke();}
     for(const key of paths){const[c,r]=key.split(',').map(Number);if(c<0||c>=COLS)continue;ctx.globalAlpha=.5;ctx.drawImage(source,128,128,64,64,c*CELL+3,r*CELL+3,CELL-6,CELL-6);ctx.globalAlpha=1;}
     if(map.id===1){for(let c=13;c<=17;c++){ctx.fillStyle='#bb845b';ctx.fillRect(c*CELL,7*CELL-2,CELL,44);ctx.strokeStyle='#815e50';ctx.lineWidth=2;for(let x=c*CELL;x<(c+1)*CELL;x+=8){ctx.beginPath();ctx.moveTo(x,7*CELL);ctx.lineTo(x,8*CELL);ctx.stroke();}ctx.fillStyle='#b5c0bb';ctx.fillRect(c*CELL,7*CELL-4,CELL,5);ctx.fillRect(c*CELL,8*CELL-1,CELL,5);}}
-    canvas.refresh();this.ground.add(this.add.image(0,0,canvas.key).setOrigin(0));
-    // Restrained water animation, clipped to each pond, from the provided sheet.
-    for(const [x,y,w,h]of map.water){const ripple=this.add.sprite((x+w/2)*CELL,(y+h/2)*CELL,'Animated water tiles',0).setDisplaySize(w*CELL,h*CELL).setAlpha(.18).play('water');this.ground.add(ripple);}
+    routes.refresh();this.ground.add(this.add.image(0,0,routes.key).setOrigin(0));
     for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
       const key=`${c},${r}`,edge=c===0||r===0||c===COLS-1||r===ROWS-1;
       const nearPath=[...paths].some(p=>{const[x,y]=p.split(',').map(Number);return Math.abs(x-c)+Math.abs(y-r)<=1;});
       if(paths.has(key)||water.has(key)||nearPath)continue;
-      if(edge||random()<.075){const tree=this.add.image(c*CELL+20,r*CELL+37,'Grass Tileset',random()<.18?'autumn':random()<.5?'tree':'tree2').setOrigin(.5,1).setScale(.68+random()*.16).setDepth(r*CELL+35);this.sim.obstacles.add(key);this.ground.add(tree);}
+      if(edge||random()<.075){const autumn=random()<.18,variant=autumn?(c+r)%4:(random()<.5?0:1)+2*((c+r)%2);const tree=this.add.image(c*CELL+20,r*CELL+37,'Grass Tileset',`${autumn?'autumn':'tree'}-${variant}`).setOrigin(.5,1).setScale(.68+random()*.16).setDepth(r*CELL+35);this.sim.obstacles.add(key);this.ground.add(tree);}
       else if(random()<.1){this.ground.add(this.add.image(c*CELL+20,r*CELL+20,'Grass Tileset','flowers').setScale(.65).setAlpha(.8));}
     }
     // Landmark at the end of every route.

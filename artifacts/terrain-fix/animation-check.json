@@ -1,0 +1,23 @@
+{
+  "live": {
+    "captures": 6,
+    "unique_pixel_frames": 4,
+    "changed_pixels_vs_first": [
+      0,
+      0,
+      7174,
+      7372,
+      7372,
+      8514
+    ]
+  },
+  "paused": {
+    "captures": 3,
+    "unique_pixel_frames": 1,
+    "changed_pixels_vs_first": [
+      0,
+      0,
+      0
+    ]
+  }
+}

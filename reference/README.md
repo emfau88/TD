@@ -1,6 +1,6 @@
 # Spire – ursprüngliche drei Karten als Vergleichsbasis
 
-M0, erstellt am 16.10.2026. Separat spielbare Rekonstruktion des Quellstands vom 14.10.2026, kein wiedergefundenes historisches Programm. Das neuere Spiel im übergeordneten Verzeichnis bleibt erhalten.
+M0, erstellt am 16.10.2026. Separat spielbare Rekonstruktion des Quellstands vom 14.10.2026, kein wiedergefundenes historisches Programm. Anschließend wurden auf Nutzerwunsch Baumzuschnitte und Wasser korrigiert; [Änderungen und aktuelle Ansichten](../artifacts/terrain-fix/REPORT.md). Das neuere Spiel im übergeordneten Verzeichnis bleibt erhalten.
 
 ## Spielen
 
@@ -29,4 +29,4 @@ Die historischen Hilfsskripte sind als Beleg erhalten. Insbesondere `scripts/pre
 
 [M0-Prüfbericht](../artifacts/m0/REPORT.md) mit Screenshots, Tests und Abweichungen; [Roadmap](../ROADMAP.md) für die nächsten Schritte. Der unveränderte rekonstruierte Quellstand liegt zusätzlich in `artifacts/m0/historical-source.zip` im Projektordner. Historische Änderungen und Hashes sind in `artifacts/m0/recovery.json` protokolliert.
 
-Kartendaten, Renderer und Simulation entsprechen diesem rekonstruierten Quellstand. Die Referenz bewahrt auch die damaligen sichtbaren Schwächen. Eine gestalterische Überarbeitung und die neuen Begleiter sind Gegenstand von M1/M2. Es wurde für M0 keine neue Grafik generiert.
+Unter Git-Tag `m0-original-reference` entsprechen Kartendaten, Renderer und Simulation dem rekonstruierten Quellstand. Der aktuelle Renderer ergänzt die dokumentierten Baum- und Wasserkorrekturen. Eine weitergehende gestalterische Überarbeitung und die neuen Begleiter sind Gegenstand von M1/M2. Für M0 und diese Korrekturen wurden keine neuen Grafiken generiert.
