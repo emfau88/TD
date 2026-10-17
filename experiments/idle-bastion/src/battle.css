@@ -1,0 +1,19 @@
+.battle-resources { display: flex; align-items: center; gap: 40px; margin: 0; }
+.battle-resources > div { min-width: 70px; }
+.battle-resources dt { color: #aebbb0; font-size: 11px; }
+.battle-resources dd { margin: 3px 0 0; color: #efdb9e; font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+#battle-phase { color: #c7d2bf; font-size: 12px; }
+.tower-name { margin: 0 0 5px; color: #f0e4c4; font: 20px Georgia,serif; }
+.tower-role { margin: 0 0 16px; color: #aebbb0; font-size: 11px; }
+.action-stack { display: grid; gap: 10px; margin-top: 20px; }
+.action-stack button { width: 100%; padding: 12px 9px; border: 1px solid #a38b56; border-radius: 3px; font-size: 12px; }
+.primary-action { background: #cfb077; color: #14271d; font-weight: 700; }
+.primary-action:hover:enabled { background: #dfc18b; }
+.secondary-action { background: #1c3328; color: #d8dccd; }
+.action-stack button:disabled { opacity: .45; cursor: default; }
+.action-hint { margin: 12px 0 0; color: #bec8b8; font-size: 11px; line-height: 1.6; }
+.battle-notes p { color: #aebbb0; font-size: 12px; line-height: 1.65; margin: 0 0 12px; }
+.app-footer a { color: #c8b57d; text-decoration: none; }
+.app-footer a:hover { text-decoration: underline; }
+@media (max-width: 1000px) { .battle-resources { gap: 20px; } .battle-resources dd { font-size: 18px; } }
+@media (max-width: 600px) { .app-header { flex-wrap: wrap; } .battle-resources { order: 3; width: 100%; justify-content: space-between; } }

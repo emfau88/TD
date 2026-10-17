@@ -4,76 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#10211d" />
-    <meta name="description" content="Maßstäbliche Kartenprobe für SPIRE: Idle Bastion." />
-    <title>SPIRE · Idle Bastion — Kartenprobe</title>
+    <title>SPIRE · Idle Bastion — Kampfprobe</title>
   </head>
   <body>
     <div id="app">
       <header class="app-header">
-        <div class="brand">
-          <span class="brand-mark" aria-hidden="true">S</span>
-          <div>
-            <p class="eyebrow">SPIRE</p>
-            <h1>Idle Bastion</h1>
-          </div>
-        </div>
-        <p class="phase-badge"><span aria-hidden="true"></span>B01 · Kartenprobe</p>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">S</span><div><p class="eyebrow">SPIRE</p><h1>Idle Bastion</h1></div></div>
+        <dl class="battle-resources" aria-label="Verteidigung"><div><dt>Gold</dt><dd id="gold">75</dd></div><div><dt>Kernleben</dt><dd id="lives">20 / 20</dd></div><div><dt>Welle</dt><dd id="wave">—</dd></div></dl>
+        <p class="phase-badge"><span aria-hidden="true"></span>B02 · Kampfprobe</p>
       </header>
-
       <main class="workspace">
         <section class="board-section" aria-labelledby="board-title">
-          <div class="board-toolbar">
-            <h2 id="board-title">Startlichtung</h2>
-            <div class="view-controls" aria-label="Kartenansicht">
-              <button id="home-view" type="button">Startansicht</button>
-              <button id="plan-view" type="button">Erweiterung prüfen</button>
-              <label class="toggle-control"><input id="grid-toggle" type="checkbox" checked />Raster</label>
-              <label class="toggle-control"><input id="ranges-toggle" type="checkbox" />Reichweiten</label>
-            </div>
-          </div>
-          <div id="game" role="img" aria-label="Interaktive maßstäbliche Layoutprobe der Startlichtung mit Pfad, Kern, Grundstücken und Turmplätzen"></div>
-          <p class="board-caption">Plätze anklicken, um ihre Lage zu prüfen. Diese neutrale Kartenprobe zeigt Anordnung und Zugänge; der Kampf folgt später.</p>
+          <div class="board-toolbar"><h2 id="board-title">Startlichtung</h2><div class="view-controls"><span id="battle-phase">Die Verteidigung beginnt …</span><button id="pause" type="button">Pause</button><button id="reset" type="button">Neue Probe starten</button></div></div>
+          <div id="game" role="img" aria-label="Automatischer Kampf mit Gegnerpfad, Kern und vier verfügbaren Turmplätzen"></div>
+          <p id="combat-message" class="board-caption" role="status">Ein Waldwächter steht bereit. Baue deine Verteidigung auf einem der hell markierten Plätze aus.</p>
         </section>
-
-        <aside class="info-panel" aria-labelledby="info-title">
-          <div class="panel-intro">
-            <p class="eyebrow">Der erste Ausschnitt</p>
-            <h2 id="info-title">Ein kompakter Anfang</h2>
-            <p>Startturm, Mara, Werkstatt und Kern liegen gemeinsam im Blick. Der Weg endet direkt am Kern.</p>
-          </div>
-
-          <section class="selection-card" aria-labelledby="selection-title">
-            <h3 id="selection-title">Auf der Karte</h3>
-            <p id="selection-description" role="status">Wähle einen markierten Platz. Hier erscheinen seine Funktion und die vorgesehenen Zugänge.</p>
+        <aside class="info-panel" aria-labelledby="selection-title">
+          <div class="panel-intro"><p class="eyebrow">Deine Verteidigung</p><h2 id="selection-title">Bauplatz wählen</h2><p id="selection-description">Wähle einen der verfügbaren Plätze auf der Karte.</p></div>
+          <section class="selection-card" aria-label="Turm verwalten">
+            <p class="tower-name">Waldwächter</p><p class="tower-role">Zuverlässige Pfeile · Allrounder</p>
+            <dl id="tower-stats" class="layout-metrics"></dl>
+            <div class="action-stack"><button id="build" class="primary-action" type="button">Waldwächter bauen · 75 Gold</button><button id="upgrade" class="primary-action" type="button" hidden>Aufwerten</button><button id="sell" class="secondary-action" type="button" hidden>Verkaufen</button></div>
+            <p id="action-hint" class="action-hint"></p>
           </section>
-
-          <section class="legend-section" aria-labelledby="legend-title">
-            <h3 id="legend-title">Orientierung</h3>
-            <ul class="legend">
-              <li><span class="legend-swatch legend-path" aria-hidden="true"></span>Gegnerpfad</li>
-              <li><span class="legend-swatch legend-slot" aria-hidden="true"></span>Fester Turmplatz</li>
-              <li><span class="legend-swatch legend-plot" aria-hidden="true"></span>Gebäudegrundstück</li>
-              <li><span class="legend-swatch legend-mara" aria-hidden="true"></span>Mara / Zugang</li>
-            </ul>
-          </section>
-
-          <dl class="layout-metrics">
-            <div><dt>Zellmaß</dt><dd>40 × 40</dd></div>
-            <div><dt>Startgebiet</dt><dd>28 × 16</dd></div>
-            <div><dt>Turmplätze im Slice</dt><dd>10 geplant</dd></div>
-          </dl>
-
-          <div class="layout-feedback">
-            <p id="layout-status" role="status">Die Kartenprobe wird geladen …</p>
-            <p id="app-error" class="app-error" role="alert" hidden></p>
-          </div>
+          <div class="battle-notes"><p>Die Wellen starten selbstständig. Du entscheidest, wann und wo du Gold investierst.</p><p>Helle Rahmen sind verfügbare Turmplätze. Der erste Waldwächter bleibt als Grundverteidigung erhalten.</p></div>
+          <div class="layout-feedback"><p id="layout-status" role="status">Die Kampfprobe wird geladen …</p><p id="app-error" class="app-error" role="alert" hidden></p></div>
         </aside>
       </main>
-
-      <footer class="app-footer">
-        <span>Entwicklungsstand B01</span>
-        <span>Layoutnachweis · noch kein fertiges Spiel</span>
-      </footer>
+      <footer class="app-footer"><span>1× · Sitzung wird noch nicht gespeichert</span><a href="./layout.html">B01-Grundriss ansehen ↗</a></footer>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

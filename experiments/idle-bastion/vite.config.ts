@@ -13,5 +13,11 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     chunkSizeWarningLimit: 1600,
+    rollupOptions: {
+      input: {
+        battle: fileURLToPath(new URL('./index.html', import.meta.url)),
+        layout: fileURLToPath(new URL('./layout.html', import.meta.url)),
+      },
+    },
   },
 });
