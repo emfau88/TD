@@ -50,6 +50,8 @@ let contextOpen = false;
 let placementType: 1 | 2 | undefined;
 let toastUntil = 0;
 let padListKey = '';
+let mobileHintOpen = false;
+let mobileHintStep = -1;
 let ready = false;
 let booting = false;
 let lifecycle = Promise.resolve();
@@ -122,7 +124,12 @@ function syncUI(): void {
   element('next-objective').textContent = nextObjective(sim);
   element('play-time').textContent = `${Math.floor(sim.elapsed / 60)}:${String(Math.floor(sim.elapsed % 60)).padStart(2, '0')}`;
   const hintStep = tutorialStep(sim);
-  element('tutorial-card').hidden = sim.tutorial.hidden || Boolean(sim.tutorial.seen & (1 << hintStep)) || contextOpen || Boolean(placementType) || live.awaitingResume;
+  const mobile = window.matchMedia('(max-width: 700px)').matches;
+  if (hintStep !== mobileHintStep) { mobileHintStep = hintStep; mobileHintOpen = false; }
+  const hintAvailable = !sim.tutorial.hidden && !(sim.tutorial.seen & (1 << hintStep)) && !contextOpen && !placementType && !live.awaitingResume;
+  element('tutorial-card').hidden = !hintAvailable || (mobile && !mobileHintOpen);
+  element('mobile-hint').hidden = !mobile || !hintAvailable || mobileHintOpen;
+  element('mobile-hint').setAttribute('aria-expanded', String(mobileHintOpen));
   element('tutorial-hint').textContent = tutorialHint(sim);
   element('tutorial-card').dataset.step = String(hintStep);
   const mara = sim.mara;
@@ -361,13 +368,27 @@ const menu = element<HTMLDialogElement>('game-menu');
 element('open-menu').addEventListener('click', () => menu.showModal(), { signal: lifetime.signal });
 element('close-menu').addEventListener('click', () => menu.close(), { signal: lifetime.signal });
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && !menu.open) { placementType = undefined; closeContext(); } }, { signal: lifetime.signal });
-element('fullscreen').addEventListener('click', () => {
-  const request = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.();
-  void request?.catch(() => { element('fullscreen').title = 'Vollbild wird in diesem Browser nicht unterstützt.'; });
+element('fullscreen').addEventListener('click', async () => {
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else if (document.fullscreenEnabled) await document.documentElement.requestFullscreen();
+    else throw new Error('Fullscreen unavailable');
+  } catch {
+    element('fullscreen-notice').hidden = false;
+    if (!menu.open) menu.showModal();
+  }
 }, { signal: lifetime.signal });
+document.addEventListener('fullscreenchange', () => {
+  const active = Boolean(document.fullscreenElement);
+  element('fullscreen').setAttribute('aria-label', active ? 'Vollbild verlassen' : 'Vollbild');
+  element('fullscreen').setAttribute('aria-pressed', String(active));
+  element('fullscreen').title = active ? 'Vollbild verlassen' : 'Vollbild';
+}, { signal: lifetime.signal });
+element('mobile-hint').addEventListener('click', () => { mobileHintOpen = true; syncUI(); }, { signal: lifetime.signal });
+element('close-mobile-hint').addEventListener('click', () => { mobileHintOpen = false; syncUI(); }, { signal: lifetime.signal });
 element('hint-skip').addEventListener('click', () => { void perform(battle => { battle.tutorial.hidden = true; }, true); }, { signal: lifetime.signal });
 element('hint-read').addEventListener('click', () => { void perform(battle => { battle.tutorial.seen |= 1 << tutorialStep(battle); }, true); }, { signal: lifetime.signal });
-element('show-hints').addEventListener('click', () => { menu.close(); placementType = undefined; closeContext(); void perform(battle => { battle.tutorial.hidden = false; battle.tutorial.seen = 0; }, true); }, { signal: lifetime.signal });
+element('show-hints').addEventListener('click', () => { menu.close(); placementType = undefined; closeContext(); mobileHintOpen = true; void perform(battle => { battle.tutorial.hidden = false; battle.tutorial.seen = 0; }, true); }, { signal: lifetime.signal });
 element('new-probe').addEventListener('click', () => {
   const url = new URL(location.href); url.searchParams.set('probe', crypto.randomUUID());
   void (session?.suspend() ?? Promise.resolve()).then(() => location.assign(url));

@@ -123,3 +123,5 @@ Bei jeder betroffenen Ansicht gezielt prüfen:
 - Erweiterung lässt sich bei identischem Weltmaßstab entdecken und wieder verlassen.
 
 Als Nachweise echte Screenshots aus der laufenden Anwendung verwenden: Einstieg, Werkstatt, späterer Ausbau und geöffnete Lichtung. Konzeptbilder, erfolgreiche Builds und bestandene Tests ersetzen diese Sichtprüfung nicht. Technische Prüfung, eigene visuelle Prüfung und Nutzerabnahme werden getrennt protokolliert.
+
+Mobile Ergänzung vom 18.10.2026: kompaktes HUD (56 px) und Dock (96 px), zweizeiliger Zielstreifen, Hinweise zunächst als aufklappbarer Tipp. Geräteabstände im normalen Browserfenster nicht zusätzlich reservieren. Vollbild erhält nur einen begrenzten Schutzabstand. Mobile Chronik über Gold-/Wellenanzeige; Vollbild direkt oben rechts. Desktop-Komposition unverändert.

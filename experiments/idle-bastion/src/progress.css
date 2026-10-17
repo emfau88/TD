@@ -111,3 +111,35 @@ dialog { background:linear-gradient(130deg,#3b3025,#28221b); border-color:#b5946
   .goal-ribbon { width:280px; } .goal-copy { padding:6px 9px; } .goal-copy .eyebrow { display:none; } .goal-copy strong { font-size:13px; }
   .fallback-note { display:none; } .tutorial-card { bottom:calc(var(--dock) + 6px); } .companion-card { min-width:150px; }
 }
+
+/* Mobile follow-up: browser chrome reserves normal device insets already.
+   Keep a small notch allowance only in explicitly requested fullscreen. */
+.mobile-hint-toggle,#close-mobile-hint { display:none; }
+@media (max-width:700px) {
+  :root { --mobile-top:0px; --mobile-bottom:0px; --header:calc(56px + var(--mobile-top)); --dock:calc(96px + var(--mobile-bottom)); }
+  :root:fullscreen { --mobile-top:min(env(safe-area-inset-top,0px),24px); --mobile-bottom:min(env(safe-area-inset-bottom,0px),16px); }
+  #app { height:100dvh; }
+  .app-header { padding-top:var(--mobile-top); }
+  .resource-tile { min-height:44px; }
+  #fullscreen { display:grid; }
+  #open-progress { display:none; } /* Gold and wave still open the chronicle. */
+  .command-dock { padding:4px 8px calc(4px + var(--mobile-bottom)); }
+  .context-tabs { margin-bottom:4px; }
+  .catalog-items,.companion-card { height:54px; }
+  .build-card canvas { width:36px; height:45px; flex-basis:36px; }
+  .building-card img { width:58px; height:52px; }
+  .companion-card canvas { width:29px; height:36px; }
+  .companion-card strong { font-size:11px; }
+  .goal-ribbon { top:calc(var(--header) + 6px); }
+  .goal-copy { padding:6px 9px; gap:2px; }
+  .goal-copy .eyebrow,#goal-progress { display:none; }
+  .goal-copy strong,.goal-copy small { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .goal-copy strong { font-size:13px; line-height:18px; }
+  .map-controls { top:calc(var(--header) + 6px); }
+  .life-tile { top:calc(var(--header) + 52px); min-height:30px; }
+  .fallback-note { top:calc(var(--header) + 88px); }
+  .mobile-hint-toggle { display:block; position:absolute; z-index:13; left:8px; bottom:calc(var(--dock) + 10px); min-height:36px; padding:6px 12px; border-color:#aa8952; background:#30271ff2; font-size:12px; }
+  #close-mobile-hint { display:grid; position:absolute; top:4px; right:4px; width:32px; height:32px; min-height:32px; padding:0; border:0; background:transparent; font-size:22px; }
+  .tutorial-copy { padding-right:14px; }
+  .context-panel { max-height:calc(100dvh - var(--header) - var(--dock) - 18px); }
+}
