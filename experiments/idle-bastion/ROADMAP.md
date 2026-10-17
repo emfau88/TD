@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 17.10.2026 · **B01 und B02 abgeschlossen; B03 in Arbeit.**
+Stand: 17.10.2026 · **B01–B03 abgeschlossen; B04 in Arbeit.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -11,13 +11,13 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | B01, B02 und anschließend B03 umsetzen; G1 bleibt verbindlicher späterer Halt |
-| Aktives Umsetzungspaket | B03 |
-| Nächster Schritt | B03 — konsistenter Spielstand |
+| Autorisierter Umfang | B01–B04 umsetzen; G1 bleibt verbindlicher späterer Halt |
+| Aktives Umsetzungspaket | B04 |
+| Nächster Schritt | B04 — Farmen, Abwesenheit und Tab-Eigentümerschaft |
 | G1: 90-Sekunden-Zwischenabnahme | **Offen; keine Nutzerfreigabe vorhanden** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
-Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01 und B02 sind abgeschlossen; B03 ist in Arbeit, B04–B14 sind offen. Der Zustand der Pakete und tatsächliche Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B03 sind abgeschlossen; B04 ist in Arbeit, B05–B14 sind offen. Der Zustand der Pakete und tatsächliche Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
 
 ## So werden die Pakete bearbeitet
 
@@ -37,8 +37,8 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P0 | Planung | Auftrag, Referenzen und Checklisten vorhanden | Planungsauftrag | Erledigt; ursprüngliche Unterlagen in `6ac8dea`, Checklisten in diesem Dokument |
 | P1 | B01 · Eigenständiger Einstieg | Leere Idle-Anwendung separat start- und baubar, Kartenrahmen festgelegt | Umsetzungsauftrag | Erledigt · `b47294a` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b01--eigenständiger-einstieg-und-kartenrahmen) |
 | P1 | B02 · Kampf und Gold | Automatische Wellen, bezahlbare Käufe, Kernreset | B01 | Erledigt · `d10cb04` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b02--automatischer-kampf-und-bauwirtschaft) |
-| P1 | B03 · Spielstand | Laufenden Kampf samt Wirtschaft konsistent wiederherstellen | B02 | In Arbeit |
-| P1 | B04 · Farmen und Abwesenheit | Tragfähige Rückfallwelle, korrekte Offline-Zeit, ein schreibender Tab | B03 | Nicht begonnen |
+| P1 | B03 · Spielstand | Laufenden Kampf samt Wirtschaft konsistent wiederherstellen | B02 | Erledigt · `40dc019` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b03--konsistenter-spielstand-während-des-kampfes) |
+| P1 | B04 · Farmen und Abwesenheit | Tragfähige Rückfallwelle, korrekte Offline-Zeit, ein schreibender Tab | B03 | In Arbeit |
 | P2 | B05 · Startlichtung und Mara | Echter Wald, sichtbare automatische Unterstützung und bedienbares HUD | B04; Layout aus B01 | Nicht begonnen |
 | P2 | B06 · Werkstatt und Frost | Erstes sichtbares Gebäude mit neuer taktischer Möglichkeit | B05 | Nicht begonnen |
 | P2 | B07 · Einstieg und Nachweise | Regulär spielbarer 90-Sekunden-Kreislauf samt kurzer Technikfolge | B06 | Nicht begonnen |
@@ -94,12 +94,12 @@ Vorbefund aus der vorangegangenen Analyse: 54 Root- und 58 Referenztests sowie b
 
 **Voraussetzung:** B02. **Ergebnis:** Reload setzt Kampf, Geld und Käufe widerspruchsfrei fort.
 
-- [ ] Eigenen versionierten IndexedDB-Spielstand gemäß Technikvertrag anlegen; klassische Daten weder lesen noch ersetzen.
-- [ ] Türme, Gegner, Projektilwerte, Spawnfortschritt, IDs, Timer und Wirtschaft in einen serialisierbaren Zustand überführen.
-- [ ] Wirtschaftliche Änderungen atomar speichern und erst nach Commit bestätigen; asynchrone Schreibvorgänge in gültiger Reihenfolge abarbeiten.
-- [ ] Regelmäßige Kampfsnapshots ergänzen; noch unbestätigte reine Simulationsschritte dürfen bei hartem Abbruch begrenzt zurückspringen.
-- [ ] Reload nach Kill/Kauf, während einer Welle und vor Niederlage prüfen; bereits abgefeuerte Geschosse verkaufter Türme korrekt rekonstruieren.
-- [ ] Ungültige oder unbekannt neuere Saves schützen, bekannte Versionen kontrolliert behandeln; Schreibfehler verständlich anzeigen statt Speichern vorzutäuschen.
+- [x] Eigenen versionierten IndexedDB-Spielstand gemäß Technikvertrag anlegen; klassische Daten weder lesen noch ersetzen.
+- [x] Türme, Gegner, Projektilwerte, Spawnfortschritt, IDs, Timer und Wirtschaft in einen serialisierbaren Zustand überführen.
+- [x] Wirtschaftliche Änderungen atomar speichern und erst nach Commit bestätigen; asynchrone Schreibvorgänge in gültiger Reihenfolge abarbeiten.
+- [x] Regelmäßige Kampfsnapshots ergänzen; noch unbestätigte reine Simulationsschritte dürfen bei hartem Abbruch begrenzt zurückspringen.
+- [x] Reload nach Kill/Kauf, während einer Welle und vor Niederlage prüfen; bereits abgefeuerte Geschosse verkaufter Türme korrekt rekonstruieren.
+- [x] Ungültige oder unbekannt neuere Saves schützen, bekannte Versionen kontrolliert behandeln; Schreibfehler verständlich anzeigen statt Speichern vorzutäuschen.
 
 **Fertig, wenn:** Bestätigte Ressourcen und Käufe erhalten bleiben, keine Belohnung beim Restore erneut entsteht und deterministische Fortsetzung mit/ohne Reload übereinstimmt. Export/Import ist spätestens in B14 vollständig nachzuweisen.
 

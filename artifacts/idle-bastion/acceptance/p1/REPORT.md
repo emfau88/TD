@@ -100,3 +100,40 @@ Konkrete Browsertransaktionen: Bei 78 Gold kostet das erste Upgrade 60 und läss
 Die Modellzeiten sind ausdrücklich kein vollständiger Echtzeit-Playtest des späteren Tutorials. Ein Wiederholungsdurchlauf bis Minute 15, Farming und Offline-Ertrag sind hier nicht behauptet. B03 ergänzt die noch fehlende Speicherung.
 
 [Realer Kampf mit gekauftem Turm](b02-combat-1366x768.jpg) · [bezahltes Upgrade im Browser](b02-upgrade-1920x1080.jpg)
+## B03 — Konsistenter Spielstand während des Kampfes
+
+Geprüfter Implementierungscommit: `40dc019`.
+
+### Ergebnis
+
+Der eigene IndexedDB-Namensraum `spire-idle-bastion` enthält einen versionierten vollständigen Kampfstand samt Gold, Türmen, Gegnern, Projektilwerten, Spawnfortschritt, IDs, Timern und ausdrücklicher Pause. Klassische Spielstände werden weder gelesen noch verändert. Die erste persistente Idle-Fassung verwendet Schema-, Regel- und Layoutversion 1; ein älteres veröffentlichtes Idle-Schema zum Migrieren existiert noch nicht.
+
+Käufe, Verkauf, Goldbelohnungen, Wellenwechsel und Lebensänderungen werden als vollständiger Zustand atomar geschrieben. Oberfläche und Kampf bestätigen die Änderung erst nach Abschluss der Transaktion. Ein zweiter Klick während des Schreibens wird abgewiesen. Bei Schreibfehlern wird auf den letzten bestätigten Zustand zurückgesetzt und die Probe angehalten; sie behauptet kein erfolgreiches Speichern.
+
+Reine Kampfschritte erhalten zusätzlich ungefähr jede Simulationssekunde einen Checkpoint sowie beim geordneten Hintergrundwechsel. Ein harter Prozessabbruch kann noch nicht bestätigte Bewegung und Timer seit dem letzten Checkpoint verwerfen; bestätigtes Gold und Käufe werden dadurch nicht doppelt vergeben oder zurückgenommen. Das ist keine Garantie für einen gerade noch laufenden Schreibvorgang.
+
+Der letzte gültige Vorgängerstand bleibt als Backup erhalten. Ein beschädigter Hauptstand mit bekanntem Schema bietet ausdrückliche Wiederherstellung an und bewahrt seinen Rohstand. Unbekannt neuere Versionen werden geschützt. Bei grundsätzlich fehlendem Speicher ist nur eine ausdrücklich gewählte, klar bezeichnete temporäre Probe möglich. „Neu laden“ setzt den Spielstand nicht zurück.
+
+### Ausgeführte Prüfungen
+
+| Prüfung | Ergebnis |
+| --- | --- |
+| `npm run idle:test` | 55/55 bestanden: 10 neue Codec-, 11 Session- und 12 IndexedDB-Tests zusätzlich zu den 22 B01/B02-Tests |
+| Kampf-Roundtrip | JSON-Restore mit fliegenden Projektilen, Teilzeitschritten, Wegknicken, Wellenpause, Niederlage und verkauftem Projektilursprung; weitere deterministische Fortsetzung stimmt überein |
+| Belohnungsgrenzen | Restore direkt vor tödlichem Treffer sowie nach Kill/Wellenabschluss vergibt keine bereits bestätigte Belohnung erneut |
+| Speichertransaktionen | Mit `fake-indexeddb`: konkurrierende Revisionen haben genau einen Gewinner; Abbruch nach erfolgreichem `put` bleibt unbestätigt und verändert den Vorgänger nicht |
+| Fehlerfälle | Ungültige Zustände, unbekannte neuere Versionen, beschädigter Hauptstand/Backup, verweigerte Wiederherstellung, blockiertes Öffnen und fehlender Speicher geprüft; kein stilles Überschreiben |
+| Session | Bestätigung nach Commit, abgewiesener Doppelklick, vollständiger Rollback, geordnete Schreibreihenfolge, Checkpoints und gespeicherte Pause geprüft |
+| Echter Browser, Produktionsbuild | Erste Killgutschrift regulär abgewartet, zweiten Turm gekauft, mitten in Welle 1 pausiert und neu geladen: 8 Gold, 20/20 Leben, gekaufter Level-1-Turm und Revision 7 unverändert; Canvas-Ausschnitte vor/nach Reload bytegleich |
+| Echter Browser, Upgrade | Fortgesetzt, echtes Gold verdient, Upgrade für 60 Gold gekauft und pausiert. Nach Reload unverändert: Level 2, 10 Gold, Welle 1 und Revision 19 |
+| Browserlogs | Keine erfassten Warnungen oder Fehler im geprüften Produktionsdurchlauf |
+| `npm run idle:build` | Eigene TypeScript-Prüfung und Produktionsbuild erfolgreich |
+| Bestehende Anwendung | 54/54 Root-Tests sowie Root- und Referenz-TypeScript-Prüfungen erfolgreich; kein klassischer Spielcode geändert |
+
+Fehler- und Beschädigungsfälle wurden automatisiert gegen das IndexedDB-Verhalten geprüft; im Browser wurde keine künstliche Speicherbeschädigung oder Betriebssystem-Abschaltung erzwungen. Ein vollständiger klassischer Referenztestlauf und neue klassische Asset-Builds wurden in B03 nicht ausgeführt.
+
+[Mitten in der Welle vor Reload](b03-before-reload-1366x768.jpg) · [derselbe Kampf nach Reload](b03-after-reload-1366x768.jpg) · [erhaltenes Upgrade nach Reload](b03-upgrade-reload-1366x768.jpg)
+
+### Grenzen und nächster Schritt
+
+B03 ist die technische Persistenzgrundlage. Offline-Ertrag, sichere Farmwelle und exklusive Tab-Eigentümerschaft mit Writer-Epoche gehören zu B04; eine Revisionsprüfung ersetzt diese Eigentümerschaft nicht. Hintergrundzeit wird derzeit nicht als Kampf oder Goldgewinn nachgeholt. Export/Import folgt spätestens B14. Die Darstellung verwendet weiterhin neutrale Marker; Wald und Mara folgen B05. Die verbindliche Nutzerabnahme G1 bleibt offen.
