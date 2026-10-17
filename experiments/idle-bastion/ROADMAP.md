@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08 veröffentlicht; B09 umgesetzt, Veröffentlichung läuft.**
+Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08 und B09 veröffentlicht.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -12,8 +12,8 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08 und anschließend B09 ausdrücklich beauftragt; Maras Fernzauber und Werkstattschilder bleiben vorgemerkt |
-| Aktives Umsetzungspaket | B09 · Lager und Rückkehr |
-| Nächster Schritt | B09-Commit pushen und Pages-Veröffentlichung bestätigen |
+| Aktives Umsetzungspaket | Keines; B09 abgeschlossen |
+| Nächster Schritt | B10 · erste Bossherausforderung, bei nächstem Nutzerauftrag |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -67,7 +67,7 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P2 | B07b · Orientierung und HUD | Goldzufluss, Wellenrekord, nächstes Ziel, Versuchshistorie und stimmige warme Oberflächen | Zusätzlicher ausdrücklicher Nutzerauftrag am 17.10.2026 | Abgeschlossen und veröffentlicht · [Nachweis](../../artifacts/idle-bastion/acceptance/ui/PROGRESS.md) |
 | Halt | G1 · Nutzerabnahme | Ausdrückliche Entscheidung zur vorgelegten Fassung | B01–B07 sowie B07a/B07b geprüft | **Freigegeben · 18.10.2026** |
 | P3 | B08 · Wisp und Turmrollen | Zweite Figur, Wirtschaftseffekt und vier unterscheidbare Türme | G1 freigegeben | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p3/B08.md) |
-| P3 | B09 · Lager und Rückkehr | Zweites Gebäude und befriedigender Wiedereinstieg | B08 | In Arbeit |
+| P3 | B09 · Lager und Rückkehr | Zweites Gebäude und befriedigender Wiedereinstieg | B08 | Abgeschlossen |
 | P4 | B10 · Erste Bossherausforderung | Lesbarer Boss verlangt die verfügbaren Turmrollen | B09 | Nicht begonnen |
 | P4 | B11 · Wachsende Karte | Echte seitliche Freischaltung mit zwei nützlichen Turmplätzen | B10 | Nicht begonnen |
 | P4 | B12 · Ausbau und Fortsetzung | Werkstatt II, spätere Level und Fortschritt nach Minute 15 | B11 | Nicht begonnen |
@@ -274,7 +274,7 @@ Historische Halteregel bis zur obigen G1-Freigabe: Während des Wartens nur P2 p
 
 ### B09 — Vorratslager und befriedigende Rückkehr
 
-**Status: UMGESETZT; VERÖFFENTLICHUNG LÄUFT.** Nutzerauftrag: „Nächster Bulk“ nach veröffentlichtem B08. Ein benötigtes Lagerasset ist Teil dieses Pakets.
+**Status: ABGESCHLOSSEN UND VERÖFFENTLICHT.** Nutzerauftrag: „Nächster Bulk“ nach veröffentlichtem B08. Ein benötigtes Lagerasset ist Teil dieses Pakets.
 
 **Voraussetzung:** B08. **Ergebnis:** Ein zweites sichtbares Gebäude verbessert die nächste Spielsitzung.
 
@@ -284,6 +284,8 @@ Historische Halteregel bis zur obigen G1-Freigabe: Während des Wartens nur P2 p
 - [x] Sichere Basis, Effizienz, Limit und Ein-Stunden-Beispiel verständlich anzeigen; Tutorialhinweis ohne lange Unterbrechung.
 - [x] Kontrolliert nachgestellte Ein-Stunden-Abwesenheit mit regulär erspieltem Stand abrechnen und danach real weiterspielen; sinnvolle Käufe und erhaltene Fortschrittsbedingungen nachweisen.
 - [x] Abwesenheit über acht Stunden, wiederholte Rückkehr vor Claim und Lagerwerte nach Reload prüfen; kein erneuertes Limit allein durch Öffnen des Dialogs.
+
+**Veröffentlichung:** Codecommit `34382cc`, [Pages-Lauf 39080652213](https://github.com/emfau88/TD/actions/runs/39080652213) erfolgreich. Öffentlicher Playlink mit geladenem Lagerasset und erklärter Kaufsperre vor Wisp/Welle 8 geprüft.
 
 **Nachweis:** [B09-Bericht mit echtem Kauf, Rückkehrprüfung und Desktop-/Hochkantaufnahmen](../../artifacts/idle-bastion/acceptance/p3/B09.md).
 
