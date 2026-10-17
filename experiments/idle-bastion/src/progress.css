@@ -1,5 +1,4 @@
-/* Bronze edges and warm wood unify the interface without covering the forest
-   with decorative bitmaps. All information remains selectable, scalable text. */
+/* Progress views and compact mobile geometry; illustrated materials in premium.css. */
 :root { --header:68px; --gold:#e0bd78; }
 .app-header,.command-dock { background-image:repeating-linear-gradient(0deg,#fff1c902 0 1px,transparent 1px 4px),linear-gradient(#352d24fa,#211d18fc); border-color:#aa8952; box-shadow:inset 0 0 0 1px #e5bc6320,0 3px 12px #0005; }
 .app-header { gap:18px; }

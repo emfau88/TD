@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 17.10.2026 · **B01–B07 sowie B07a/B07b abgeschlossen und veröffentlicht. Nutzerfreigabe G1 offen.**
+Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b abgeschlossen und veröffentlicht. Nutzerfreigabe G1 offen.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -11,13 +11,24 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant und Commit/Push/Pages beauftragt. Figurenmechanik und Werkstattschilder nur vorgemerkt |
-| Aktives Umsetzungspaket | Keines · mobile Nachbesserung veröffentlicht |
-| Nächster Schritt | Nutzer testet die veröffentlichte Fassung und entscheidet über G1; B08 bleibt gesperrt |
+| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Figurenmechanik und Werkstattschilder nur vorgemerkt |
+| Aktives Umsetzungspaket | Premium-UI mit vier Imagegen-Assets · geprüft, Veröffentlichung läuft |
+| Nächster Schritt | Premium-Oberfläche prüfen, committen und über den vorhandenen Playlink veröffentlichen; B08 bleibt gesperrt |
 | G1: 90-Sekunden-Zwischenabnahme | **Offen; keine Nutzerfreigabe vorhanden** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
 Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. B08–B14 bleiben bis zur ausdrücklichen G1-Freigabe gesperrt. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+
+## Premium-Überarbeitung nach der mobilen Nachbesserung
+
+Am 18.10.2026 ausdrücklich beauftragt: hochwertige, an den Mockups orientierte UI mit 3–4 passenden Imagegen-Assets. Die kompakte mobile Aufteilung bleibt erhalten. Keine Freigabe für B08 oder neue Figurenmechanik.
+
+- [x] Vier passende Materialien/Symbole erzeugen, Originale und vollständige Prompts erhalten.
+- [x] Echte Assets in HUD, Karten, Kontextfenster und Aktionen integrieren; einheitliche Symbole und lokale Pixelschrift.
+- [x] 56-px-HUD / 96-px-Dock, eingeklappte Hinweise, Vollbild und erreichbare Chronik mobil erhalten.
+- [x] Desktop und normale Hochkantansicht visuell prüfen, betroffene Bedienung und Build bestätigen. [Nachweis](../../artifacts/idle-bastion/acceptance/ui/PREMIUM.md).
+- [x] Screenshots, README und nachvollziehbaren Asset-/Prüfnachweis ablegen.
+- [ ] Commit/Push und erfolgreiche Pages-Veröffentlichung prüfen.
 
 ## Mobile-Nachbesserung nach B07b
 

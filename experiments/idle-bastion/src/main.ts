@@ -1,6 +1,8 @@
 import Phaser from 'phaser';
 import './battle.css';
 import './progress.css';
+import './premium.css';
+import { mountUIIcons } from './ui-icons';
 import { SETTLEMENT, stats, upgradeCost, sellValue, type IdleBattle } from './battle';
 import { BattleScene } from './battle-scene';
 import { nextObjective, tutorialHint, tutorialStep } from './hud';
@@ -15,6 +17,7 @@ const element = <T extends HTMLElement = HTMLElement>(id: string): T => {
   if (!value) throw new Error(`Missing battle element: ${id}`);
   return value as T;
 };
+mountUIIcons();
 const lifetime = new AbortController();
 const currency = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 const preciseCurrency = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 3 });
@@ -109,7 +112,7 @@ function syncUI(): void {
   element('pick-frost').setAttribute('aria-pressed', String(placementType === 2));
   element('pick-frost').classList.toggle('locked', !sim.settlement.frostResearched);
   element('frost-lock').textContent = sim.settlement.frostResearched ? 'Verlangsamung' : 'Frostfassung nötig';
-  element('frost-price').textContent = sim.settlement.frostResearched ? '● 110' : '◆ Forschung';
+  element('frost-price').textContent = sim.settlement.frostResearched ? '110' : 'Forschung';
   const freePads = sim.layout.towerPads.filter(pad => pad.availability === 'initial' && !sim.towers.some(tower => tower.padId === pad.id));
   const padKey = freePads.map(pad => pad.id).join(',');
   if (padKey !== padListKey) {
@@ -142,7 +145,6 @@ function syncUI(): void {
     : mara.cooldownRemaining > 0 ? `Beim ${targetName} · wieder bereit in ${Math.ceil(mara.cooldownRemaining)} s`
     : `Beim ${targetName} · bereit für die nächste Welle.`;
   element('camera-zoom').setAttribute('aria-pressed', String(view.mapZoom > 1));
-  element('camera-zoom').textContent = view.mapZoom > 1 ? '−' : '＋';
   element('camera-zoom').setAttribute('aria-label', view.mapZoom > 1 ? 'Karte weiter ansehen' : 'Karte näher ansehen');
   element('safe-rate').textContent = `${rateFormat.format(certificate ? certificate.rewardGold * 60000 / certificate.durationMs : 0)} G/min sicher`;
   element('safe-rate').title = certificate ? `Welle ${certificate.wave}: zwei konservative, schadensfreie Wiederholungen inklusive Wellenpausen. Grundlage für 60 % Offline-Ertrag.`
@@ -210,7 +212,8 @@ function syncUI(): void {
   if (workshopIcon.getAttribute('src') !== workshopSource) workshopIcon.src = workshopSource;
   element('workshop-card-title').textContent = settlement.workshopBuilt ? 'Werkstatt I' : 'Alte Werkstatt';
   element('workshop-card-copy').textContent = settlement.frostResearched ? 'Frosttechnik verfügbar' : settlement.workshopBuilt ? 'Frostfassung erforschen' : 'Reparieren & forschen';
-  element('workshop-card-price').textContent = settlement.frostResearched ? '✓ Erforscht' : `● ${settlement.workshopBuilt ? SETTLEMENT.researchCost : SETTLEMENT.workshopCost}`;
+  element('workshop-card-price').textContent = settlement.frostResearched ? '✓ Erforscht' : `${settlement.workshopBuilt ? SETTLEMENT.researchCost : SETTLEMENT.workshopCost}`;
+  element('pick-workshop').classList.toggle('researched', settlement.frostResearched);
   element('workshop-title').textContent = settlement.workshopBuilt ? 'Werkstatt I' : 'Beschädigte Werkstatt';
   element('workshop-description').textContent = settlement.frostResearched
     ? 'Frostfassung erforscht · Frostkristall und Turmlevel 4–6 sind verfügbar.'

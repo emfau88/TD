@@ -6,7 +6,7 @@
 
 Die erste Idle-Vorschau enthält automatischen Kampf, Mara, eigene Turmkäufe, Upgrades, Werkstatt I und Frostforschung. Folge Maras Hinweisen bis zum ersten Frosttreffer. Gold und Kampf werden lokal im Browser gespeichert; „Frische Probe“ öffnet eine getrennte neue Partie und bewahrt den bisherigen Stand. Nur ein Tab pro Partie kann gleichzeitig spielen.
 
-Die Karte steht im Mittelpunkt: warmes Holz-/Bronze-HUD, Baudock und Details erst bei Auswahl. Goldzufluss, Wellenrekord, Vorstoß/Farmen und nächstes Ziel sind direkt sichtbar; das Buchsymbol öffnet Ertragsdetails, Begleiter und die gespeicherte Wellenchronik. Alte Spielstände bleiben erhalten, frühere nicht aufgezeichnete Versuche werden als unbekannt behandelt. Hochkant gibt es einen verschiebbaren Kartenausschnitt und große Aktionsflächen. Funktional in schmalen Browseransichten geprüft; eine vollständige Smartphone-/Safari-Abnahme steht noch aus. [Aktueller UI-/Fortschrittsnachweis](artifacts/idle-bastion/acceptance/ui/PROGRESS.md).
+Die Karte steht im Mittelpunkt: illustriertes Messing-/Schiefer-HUD, Baudock und Details erst bei Auswahl. Vier erzeugte UI-Assets, einheitliche Pixel-Symbole und eine lokal geladene Pixelschrift greifen die Mockups auf. Goldzufluss, Wellenrekord, Vorstoß/Farmen und nächstes Ziel sind direkt sichtbar; das Buchsymbol öffnet Ertragsdetails, Begleiter und die gespeicherte Wellenchronik. Alte Spielstände bleiben erhalten, frühere nicht aufgezeichnete Versuche werden als unbekannt behandelt. Hochkant gibt es einen verschiebbaren Kartenausschnitt und große Aktionsflächen. Funktional in schmalen Browseransichten geprüft; eine vollständige Smartphone-/Safari-Abnahme steht noch aus. [Aktuelle Premium-Oberfläche und Prüfung](artifacts/idle-bastion/acceptance/ui/PREMIUM.md) · [Fortschrittsinformationen](artifacts/idle-bastion/acceptance/ui/PROGRESS.md).
 
 Diese Fassung dient der verbindlichen ersten Zwischenabnahme. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht; spätere Inhalte folgen erst nach Nutzerfreigabe.
 
@@ -41,6 +41,16 @@ Echte Spielaufnahmen der bisherigen Entwicklung, keine Mockups. B07a führte die
 | Chronik · Ertrag, Begleiter und Wellen | Hochkant · kompakte Informationen am Spielfeld |
 | --- | --- |
 | ![Geöffnete Fortschrittschronik](artifacts/idle-bastion/acceptance/ui/b07b-chronicle-1366x768.png) | ![Neue Oberfläche im Hochformat](artifacts/idle-bastion/acceptance/ui/b07b-hud-390x844.png) |
+
+**Premium-Überarbeitung · vier Imagegen-Assets und kompakte mobile Ansicht**
+
+![Illustriertes Messing-HUD, Pixelschrift und eingefasste Baukarten](artifacts/idle-bastion/acceptance/ui/premium-desktop-1366x768.png)
+
+| Hochkant · weiterhin viel Spielfläche | Hochkant · klar hervorgehobene Hauptaktion |
+| --- | --- |
+| ![Kompaktes HUD und Dock mit neuen UI-Materialien](artifacts/idle-bastion/acceptance/ui/premium-mobile-390x844.png) | ![Turmfenster mit goldener Upgrade-Aktion](artifacts/idle-bastion/acceptance/ui/premium-context-390x844.png) |
+
+[Asset-Quellen und vollständige Prompts](experiments/idle-bastion/assets/ui/README.md) · [Gezielter Prüfbericht](artifacts/idle-bastion/acceptance/ui/PREMIUM.md).
 
 ## Bestehendes klassisches Spiel
 
