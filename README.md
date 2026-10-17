@@ -8,6 +8,22 @@ Die erste Idle-Vorschau enthält automatischen Kampf, Mara, eigene Turmkäufe, U
 
 Diese Fassung dient der verbindlichen ersten Zwischenabnahme. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht; spätere Inhalte folgen erst nach Nutzerfreigabe.
 
+### Entwicklung von Idle Bastion
+
+Echte Spielaufnahmen der bisherigen Entwicklung, keine Mockups. B01, B02 und B05 zeigen historische Zwischenstände; B07 zeigt die aktuelle Werkstattfassung nach der Korrektur der Bauplatzanzeige. Die alten Aufnahmen bleiben unverändert als Vergleich erhalten.
+
+| B01 · Kartenrahmen und reservierte Flächen | B02 · Automatischer Kampf und Turmkäufe |
+| --- | --- |
+| ![Historische Layoutprobe mit Pfad, Bauflächen und Figurenwegen](artifacts/idle-bastion/acceptance/p1/b01-plan-1920x1080.jpg) | ![Historische technische Kampfprobe vor der Waldgestaltung](artifacts/idle-bastion/acceptance/p1/b02-combat-1366x768.jpg) |
+
+| B05 · Waldlichtung und Mara | B07 · Werkstatt, Forschung und Frost |
+| --- | --- |
+| ![Waldstart mit Mara, noch ohne Werkstattgebäude](artifacts/idle-bastion/acceptance/p1/b05-start-1366x768.jpg) | ![Gebautes Werkstattgebäude ohne Bauplatzpfosten oder Platzbeschriftung](artifacts/idle-bastion/acceptance/90s/workshop-built-clean.png) |
+
+[Weitere Aufnahmen und technische Entwicklung B01–B05](artifacts/idle-bastion/acceptance/p1/REPORT.md) · [B06–B07: gemessene Spielabläufe, Reload und Kameraprüfung](artifacts/idle-bastion/acceptance/90s/REPORT.md).
+
+## Bestehendes klassisches Spiel
+
 **Aktueller Spielstand: vier zusammenhängende Regionen.** Der alte Hain, Laternenmoor, Spiegelwinter und Windbruch sind sofort frei auswählbar, mit Wisp, Mara, acht Türmen und jeweils 10 Wellen. Mausradzoom von 100 bis 120 %, getrennte Bauphasen-Spielstände und animierte Wolken/Felsinseln in Windbruch sind integriert. Die Waldkarte ist vom Nutzer abgenommen; die drei neuen Regionen sind umgesetzt und gezielt geprüft, ihre optische Nutzerabnahme steht aus. Mobile Optimierung ist zurückgestellt.
 
 **Start nach dem Klonen:** `npm ci`, dann `npm run reference:regions:build`, anschließend `REGIONEN STARTEN.cmd` doppelklicken. Die erzeugte HTML-Datei enthält Code und Grafiken und funktioniert ohne Server. Entwicklung: `npm run reference:dev`, dann `http://127.0.0.1:5180/woodland.html` öffnen. [Spielanleitung](reference/README.md), [Roadmap](ROADMAP.md), [Moorbericht](artifacts/m3/REPORT.md), [Winterbericht](artifacts/m3-winter/REPORT.md), [Windbruch mit Asset- und Animationsnachweis](artifacts/m3-wind/REPORT.md).

@@ -66,6 +66,12 @@ Die echte Browseransicht wurde bei angeforderten 1366×768 (gemeldet 1367×768 d
 
 Keine erneute vollständige Langzeit-, klassische Referenz- oder Offline-Matrix durchgeführt. Diese gehört zu späteren Paketen; B07 prüft die betroffenen Speicher-/Farmfälle und die reale Anfangsverteidigung.
 
+## Korrektur nach Nutzerprobe: Werkstattgrundstück
+
+Die Reparatur entfernt jetzt die vier Bauplatzpfosten und die Platzbeschriftung. Die zuvor in den Boden gezeichnete rechteckige Reservierungsfläche entfällt ebenfalls; sie war neben dem tatsächlichen Gebäude nicht mehr nötig. Gebäudeauswahl, blockierter Grundriss und begehbarer Vorplatz bleiben unverändert.
+
+`npm run idle:build` einschließlich TypeScript erfolgreich. Der regulär erspielte, pausierte B07-Stand wurde im Browser neu geladen: Werkstatt ohne Platzanzeige, weiterhin 10 Gold, Welle 7 und Spielzeit 2:04; keine erfassten Browserwarnungen oder Fehler. [Neue vollständige Spielansicht](workshop-built-clean.png). Die älteren Screenshots werden nicht überschrieben; die [README-Galerie](../../../../README.md#entwicklung-von-idle-bastion) ordnet vier echte Entwicklungsstände B01, B02, B05 und B07 ein. Keine zusätzliche vollständige Balance- oder Langzeitprüfung für diese Darstellungskorrektur.
+
 ## Drei wichtigste Grenzen für die Nutzerprobe
 
 1. Die kleine Desktop-Seitenleiste ist beim Turmverwalten dicht; einzelne Hinweise oder Mara-Details können Scrollen benötigen. Kampf, Karte und Kontextreiter bleiben sichtbar.

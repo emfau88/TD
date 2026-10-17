@@ -39,15 +39,7 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
     const [x, y] = roadSource(position, road);
     context.drawImage(source, x, y, 64, 64, position.x * size, position.y * size, size, size);
   }
-  // A quiet worn clearing anticipates the workshop without a future building,
-  // builder sprite or conspicuous rectangular placeholder.
   const workshop = layout.plots.find(plot => plot.id === 'workshop')!;
-  context.globalAlpha = 0.24;
-  for (let row = 0; row < workshop.footprint.height; row++) for (let col = 0; col < workshop.footprint.width; col++) {
-    context.drawImage(source, 128, 128, 64, 64, (workshop.footprint.x + col) * size,
-      (workshop.footprint.y + row) * size, size, size);
-  }
-  context.globalAlpha = 1;
   ground.refresh();
   track(scene.add.image(0, 0, ground.key).setOrigin(0).setDepth(0));
 
@@ -94,7 +86,7 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
     const point = cellCenter(layout, cell);
     track(scene.add.image(point.x, point.y, KEYS.grass, 'flowers').setScale(0.65).setDepth(3));
   });
-  // Four small boundary stakes reserve the footprint; the courtyard stays open.
+  // Repair markers belong only to the damaged site; the courtyard stays open.
   const stakes = track(scene.add.graphics().setDepth(4));
   stakes.fillStyle(0x745445, 0.9);
   for (const x of [workshop.footprint.x * size + 5, (workshop.footprint.x + workshop.footprint.width) * size - 5]) {
@@ -122,7 +114,8 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
       pond?.setFrame(loopFrame(elapsed, 10)); coreWeapon.setFrame(loopFrame(elapsed, 10));
       const texture = built ? KEYS.workshop : KEYS.workshopDamaged;
       if (building.texture.key !== texture) building.setTexture(texture);
-      plotLabel.setText(built ? 'Werkstatt I' : 'Alte Werkstatt');
+      stakes.setVisible(!built);
+      plotLabel.setVisible(!built);
       dust.clear();
       const age = builtAt === null ? 10 : elapsed - builtAt;
       if (built && age >= 0 && age < 1.2) for (let i = 0; i < 9; i++) {

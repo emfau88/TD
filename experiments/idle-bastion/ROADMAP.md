@@ -52,6 +52,22 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P5 | B14 · Stabilität und Lieferung | Geprüfte Builds, Regression, Laufzeit und ehrlicher Ergebnisbericht | B13 | Nicht begonnen |
 | Ende | G2 · Gesamtabnahme | Vollständiger Slice bewertet | B14 | **Offen** |
 
+## Aufwand der verbleibenden Pakete
+
+Grobe relative Einschätzung nach B07, keine Termin- oder Freigabezusage. „Mittel“ bedeutet ein begrenzter Ausbau vorhandener Systeme; „groß“ mehrere zusammenwirkende Änderungen oder voraussichtlich mehrere Abstimmungsrunden. Das technische Fundament ist vorhanden, die vollständige 15-Minuten-Balance noch nicht.
+
+| Paket | Einschätzung | Hauptaufwand / Unsicherheit |
+| --- | --- | --- |
+| B08 | Groß | Wisp, zwei neue Turmrollen, zusätzliche Gegnerrollen und Bauplatzfreigaben wirken auf Wirtschaft, Save und Farmbasis zusammen. |
+| B09 | Mittel | Ein Lagerasset und verständliche Rückkehrvorschau; die bestehende Offline-Abrechnung muss die Verbesserung korrekt ab Kauf berücksichtigen. |
+| B10 | Mittel | Vorhandenen Boss und Anzeigen integrieren; Schwierigkeit und reguläre Wiederholungsversuche abstimmen. |
+| B11 | Groß | Echte Kartenerweiterung mit Kamera, Grafik, Figurenzugängen und zwei tatsächlich nützlichen Schusspositionen. |
+| B12 | Mittel | Werkstatt-II-Ergänzung, höhere Level und Wellenkurve; die vorhandenen Grafikstufen lassen sich weiterverwenden. |
+| B13 | Groß / variabel | Alle Meilensteine müssen im tatsächlichen 15-Minuten-Verlauf zusammenpassen; Balancekorrekturen können mehrere betroffene Systeme berühren. |
+| B14 | Mittel bis groß | Save-Export/Import, gezielte Speicher-/Offline-Regression, längerer Betrieb und reproduzierbare Lieferung; Aufwand hängt von den Befunden ab. |
+
+Für B08–B12 möglichst pro Paket eine sichtbare spielbare Verbesserung liefern und betroffene Regeln gezielt prüfen. B13/B14 bündeln die notwendigen Gesamtdurchläufe; nicht nach jedem kleinen Grafikfix die komplette Matrix wiederholen. Der bestehende G1-Halt bleibt verbindlich.
+
 ## P0 — Planung: erledigte Grundlagen
 
 - [x] Aktuellen Spielstrang unter `reference/src/` und abgenommene Waldkarte identifiziert; älteren Entwurf im Stammordner abgegrenzt.
