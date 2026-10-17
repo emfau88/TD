@@ -3,7 +3,7 @@ import './style.css';
 import './battle.css';
 import { stats, upgradeCost, sellValue, type IdleBattle } from './battle';
 import { BattleScene } from './battle-scene';
-import { BattleSession, SessionLoadError } from './battle-session';
+import { BattleSession, SessionLoadError, SessionOwnershipError } from './battle-session';
 import { openBattleStore, type BattleSaveStore } from './save-store';
 
 const element = <T extends HTMLElement = HTMLElement>(id: string): T => {
@@ -13,10 +13,14 @@ const element = <T extends HTMLElement = HTMLElement>(id: string): T => {
 };
 const lifetime = new AbortController();
 const currency = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
+const preciseCurrency = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 3 });
+const rateFormat = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 1 });
 const build = element<HTMLButtonElement>('build');
 const upgrade = element<HTMLButtonElement>('upgrade');
 const sell = element<HTMLButtonElement>('sell');
 const pause = element<HTMLButtonElement>('pause');
+const advance = element<HTMLButtonElement>('advance');
+const claim = element<HTMLButtonElement>('claim-offline');
 const recover = element<HTMLButtonElement>('recover-save');
 let session: BattleSession | undefined;
 let scene: BattleScene | undefined;
@@ -25,38 +29,62 @@ let store: BattleSaveStore | undefined;
 let selectedPadId: string | undefined = 'tower-02';
 let ready = false;
 let booting = false;
+let lifecycle = Promise.resolve();
+let retryTimer: number | undefined;
 
-function showError(message: string, canRecover = false): void {
-  const target = element('app-error');
-  target.hidden = false;
-  target.textContent = message;
+function showError(message: string, canRecover = false, ownership = false): void {
+  element('app-error').hidden = false;
+  element('app-error').textContent = message;
   element('load-actions').hidden = false;
   recover.hidden = !canRecover;
+  element('activate-session').hidden = !ownership;
+  element('temporary-session').hidden = ownership;
 }
 window.addEventListener('error', event => showError(`Ein unerwarteter Fehler ist aufgetreten: ${event.message}`), { signal: lifetime.signal });
 
 function syncUI(): void {
   const live = session;
   const view = scene;
-  build.disabled = upgrade.disabled = sell.disabled = pause.disabled = !ready || !live || live.busy || Boolean(live.error);
+  const unavailable = !ready || !live || live.busy || Boolean(live.error) || live.suspended;
+  build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = unavailable;
   if (!ready || !live || !view) return;
-  view.paused = live.paused || document.hidden || Boolean(live.error);
+  view.paused = live.paused || document.hidden || Boolean(live.error) || live.suspended || live.awaitingResume;
   const saveStatus = element('save-status');
   saveStatus.dataset.revision = String(live.revision);
-  saveStatus.textContent = live.error ? 'Speichern fehlgeschlagen · Probe angehalten'
+  saveStatus.textContent = live.error ? 'Probe angehalten · letzter bestätigter Stand erhalten'
+    : live.suspended ? 'Abwesend · Kampf angehalten'
     : live.temporary ? 'Temporäre Probe · kein Speichern und kein Offline-Ertrag'
-    : live.busy ? 'Wird gespeichert …' : '1× · Fortschritt lokal gespeichert';
-  if (live.busy) return; // A tentative reward or purchase is not a confirmed UI balance.
+    : live.busy ? 'Wird gespeichert …' : '1× · dieser Tab ist aktiv · lokal gespeichert';
+  if (live.busy) return;
   const sim = live.battle;
-  element('gold').textContent = currency.format(sim.gold);
+  const certificate = live.certificate;
+  element('safe-rate').textContent = `Sicher: ${rateFormat.format(certificate ? certificate.rewardGold * 60000 / certificate.durationMs : 0)} G/min`;
+  element('safe-rate').title = certificate ? `Welle ${certificate.wave}: zwei konservative, schadensfreie Wiederholungen inklusive Wellenpausen. Grundlage für 60 % Offline-Ertrag.`
+    : 'Noch kein gültiger Farmnachweis. Eine erste Welle muss live geschafft und zweimal konservativ geprüft werden.';
+  element('gold').textContent = preciseCurrency.format(sim.gold + sim.goldRemainderUnits / 1000);
   element('lives').textContent = `${sim.lives} / 20`;
   element('wave').textContent = String(sim.wave);
-  element('battle-phase').textContent = live.error ? 'Speicherfehler' : view.paused ? 'Pause'
-    : sim.phase === 'defeat' ? 'Der Kern ist gefallen'
-    : sim.phase === 'wave' ? `Welle ${sim.wave} · ${sim.remaining} Gegner`
-    : `Nächste Welle in ${Math.ceil(sim.intermissionRemaining)} s`;
+  const mode = sim.mode === 'farm' ? 'Farmen' : 'Vorstoß';
+  element('battle-phase').textContent = live.error ? 'Angehalten' : live.awaitingResume ? 'Rückkehr' : view.paused ? 'Pause'
+    : sim.phase === 'defeat' ? 'Wechsel ins sichere Farmen …'
+    : sim.phase === 'wave' ? `${mode} · Welle ${sim.wave} · ${sim.remaining} Gegner`
+    : `${mode} · nächste Welle in ${Math.ceil(sim.intermissionRemaining)} s`;
   pause.textContent = live.paused ? 'Weiter' : 'Pause';
-  pause.disabled = sim.phase === 'defeat' || Boolean(live.error);
+  pause.disabled = unavailable || live.awaitingResume;
+  advance.hidden = sim.mode !== 'farm';
+  advance.textContent = sim.advanceRequested ? 'Vorstoß vorgemerkt' : `Erneut vorstoßen · Welle ${sim.highestCleared + 1}`;
+  advance.disabled = unavailable || view.paused || sim.advanceRequested;
+  element('return-card').hidden = !live.awaitingResume;
+  if (live.awaitingResume) {
+    const reward = live.pendingReward;
+    element('return-details').textContent = reward
+      ? `${live.paused ? 'Pause aktiv · ' : ''}${Math.floor(reward.elapsedMs / 1000)} s abwesend · ${rateFormat.format(reward.creditedMs / 60000)} min angerechnet · +${preciseCurrency.format(reward.amountUnits / 1000)} Gold`
+      : live.paused ? 'Die gespeicherte Pause ist aktiv. Während der Pause entsteht kein Offline-Gold.' : 'Deine Verteidigung ist wieder bereit. Es ist keine Belohnung offen.';
+    const basis = live.offline.window?.certificate;
+    element('return-basis').textContent = `Sichere Basis beim Verlassen: ${rateFormat.format(basis ? basis.rewardGold * 60000 / basis.durationMs : 0)} G/min · 60 % Ertrag · höchstens 2 Stunden. Der Kampf bleibt während der Rückkehr angehalten.`;
+    claim.textContent = reward && reward.amountUnits > 0 ? 'Belohnung einsammeln und fortsetzen' : live.paused ? 'Zur pausierten Verteidigung' : 'Verteidigung fortsetzen';
+    claim.disabled = unavailable || document.hidden;
+  }
   const tower = sim.towers.find(value => value.padId === selectedPadId);
   const pad = sim.layout.towerPads.find(value => value.id === selectedPadId);
   element('selection-title').textContent = tower ? `Waldwächter · Level ${tower.level}` : pad ? 'Freier Bauplatz' : 'Bauplatz wählen';
@@ -65,7 +93,7 @@ function syncUI(): void {
     : pad?.availability === 'initial' ? 'Hier kannst du einen weiteren Waldwächter errichten.'
     : pad ? 'Dieser Platz ist im aktuellen Startbereich noch nicht verfügbar.' : 'Wähle einen hell markierten Platz auf der Karte.';
   build.hidden = Boolean(tower); upgrade.hidden = !tower; sell.hidden = !tower;
-  const blocked = view.paused || sim.phase === 'defeat' || Boolean(live.error);
+  const blocked = unavailable || view.paused || sim.phase === 'defeat';
   build.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId);
   const canUpgrade = Boolean(tower && tower.level < 3);
   upgrade.disabled = blocked || !tower || !canUpgrade || sim.gold < upgradeCost(tower);
@@ -76,33 +104,39 @@ function syncUI(): void {
     const values = stats(tower);
     return `<div><dt>Schaden</dt><dd>${values.damage.toFixed(1)}</dd></div><div><dt>Reichweite</dt><dd>${values.range}</dd></div><div><dt>Angriff alle</dt><dd>${values.cooldown.toFixed(2)} s</dd></div><div><dt>Abschüsse</dt><dd>${tower.kills}</dd></div>`;
   })() : '';
-  element('action-hint').textContent = blocked ? live.error ? 'Der letzte bestätigte Spielstand bleibt erhalten.' : view.paused ? 'Setze den Kampf fort, um zu bauen oder aufzuwerten.' : 'Die Verteidigung ist beendet. Gold und Türme bleiben erhalten.'
+  element('action-hint').textContent = blocked ? live.error ? 'Der letzte bestätigte Spielstand bleibt erhalten.' : live.awaitingResume ? 'Setze die Verteidigung über den Rückkehrbeleg fort.' : 'Setze den Kampf fort, um zu bauen oder aufzuwerten.'
     : tower ? tower.level >= 3 ? 'Dieser Turm ist für diese Kampfprobe voll ausgebaut.' : sim.gold < upgradeCost(tower) ? `Noch ${currency.format(upgradeCost(tower) - sim.gold)} Gold bis zum nächsten Level.` : 'Mehr Schaden verbessert die Verteidigung sofort.'
     : pad?.availability === 'initial' && sim.gold < 75 ? `Noch ${currency.format(75 - sim.gold)} Gold bis zum Waldwächter.` : '';
-  element('layout-status').textContent = view.paused ? 'Pause · Kampf und Goldgewinn angehalten.' : sim.phase === 'defeat' ? `Welle ${sim.wave} · ${sim.kills} Gegner besiegt.` : 'Automatischer Kampf aktiv · vier Startplätze.';
+  element('layout-status').textContent = view.paused ? 'Kampf angehalten.'
+    : sim.mode === 'farm' ? `Sicheres Farmen · Welle ${sim.farmWave}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang.`
+    : `Automatischer Vorstoß · höchste geschaffte Welle ${sim.highestCleared}.`;
   const message = sim.drainEvents().filter(event => ['kill', 'clear', 'wave', 'defeat', 'build', 'upgrade', 'sell'].includes(event.type)).at(-1);
-  if (message) element('combat-message').textContent = message.type === 'clear' ? `Welle ${sim.wave} geschafft · +${currency.format(message.amount ?? 0)} Gold Abschlussbonus.`
+  if (message) element('combat-message').textContent = message.type === 'clear' ? `Welle ${message.wave} geschafft · +${currency.format(message.amount ?? 0)} Gold Abschlussbonus.`
     : message.type === 'kill' ? `Gegner besiegt · +${currency.format(message.amount ?? 0)} Gold.`
-    : message.type === 'wave' ? `Welle ${sim.wave} hat begonnen. Deine Türme greifen automatisch an.`
-    : message.type === 'build' ? live.temporary ? 'Dein neuer Waldwächter greift selbstständig an.' : 'Dein neuer Waldwächter ist gespeichert und greift selbstständig an.'
-    : message.type === 'upgrade' ? live.temporary ? 'Waldwächter verbessert.' : 'Waldwächter verbessert und gespeichert.'
-    : message.type === 'sell' ? `Turm verkauft · +${currency.format(message.amount ?? 0)} Gold.`
-    : live.temporary ? 'Der Kern ist gefallen. Goldbestand und Türme bleiben für diese Probe erhalten.' : 'Der Kern ist gefallen. Goldbestand und Türme sind gespeichert.';
+    : message.type === 'wave' ? `${mode} · Welle ${message.wave} hat begonnen. Deine Türme greifen automatisch an.`
+    : message.type === 'build' ? 'Dein neuer Waldwächter greift selbstständig an.'
+    : message.type === 'upgrade' ? 'Waldwächter verbessert. Der nächste Schuss nutzt den höheren Schaden.'
+    : message.type === 'sell' ? `Turm verkauft · +${currency.format(message.amount ?? 0)} Gold. Die sichere Farmbasis wird neu geprüft.`
+    : 'Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.';
 }
 
-async function boot(options: { temporary?: boolean; recover?: boolean } = {}): Promise<void> {
-  if (booting) return;
+async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ownershipRetries = 6): Promise<void> {
+  if (booting || document.hidden) return;
+  if (retryTimer !== undefined) { clearTimeout(retryTimer); retryTimer = undefined; }
   booting = true; ready = false;
-  build.disabled = upgrade.disabled = sell.disabled = pause.disabled = true;
+  build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = true;
   element('app-error').hidden = true; element('load-actions').hidden = true;
   try {
-    game?.destroy(true); game = undefined;
+    game?.destroy(true); game = undefined; scene = undefined;
+    const previous = session; session = undefined;
+    await previous?.close().catch(() => undefined);
     store?.close(); store = options.temporary ? undefined : await openBattleStore();
     const live = await BattleSession.open(store, { recover: options.recover });
     session = live;
+    if (document.hidden && !live.temporary) { await live.suspend(); return; }
     if (live.battle.wave > 0) element('combat-message').textContent = 'Gespeicherte Verteidigung geladen. Gold, Türme und laufender Kampf sind wieder da.';
     live.onChange = () => { if (session === live) { scene?.refresh(); syncUI(); } };
-    live.onError = error => { if (session === live) { showError(`Speichern fehlgeschlagen. Die Probe ist angehalten; der letzte bestätigte Stand bleibt erhalten. ${error.message}`); syncUI(); } };
+    live.onError = error => { if (session === live) { showError(`Die Probe ist angehalten; der letzte bestätigte Stand bleibt erhalten. ${error.message}`, false, true); syncUI(); } };
     const view = new BattleScene(() => live.battle, {
       advance(seconds) { live.advance(seconds); },
       canRender: () => !live.busy,
@@ -119,26 +153,59 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}): P
   } catch (error) {
     session = undefined;
     const message = error instanceof Error ? error.message : String(error);
-    showError(`Der Spielstand wurde nicht überschrieben. ${message}`, error instanceof SessionLoadError && error.canRecover);
-    element('save-status').textContent = 'Spielstand konnte nicht geladen werden';
+    const ownership = error instanceof SessionOwnershipError;
+    if (ownership && ownershipRetries > 0) {
+      element('save-status').textContent = 'Schreibfreigabe wird geprüft …';
+      element('layout-status').textContent = 'Warte kurz auf die Freigabe der bisherigen Registerkarte.';
+      retryTimer = window.setTimeout(() => { void boot(options, ownershipRetries - 1); }, 1000);
+      return;
+    }
+    showError(ownership ? 'Spiel bereits in einem anderen Tab aktiv. Dieser Tab führt keinen Kampf aus und vergibt kein Gold. Du kannst ihn erneut aktivieren, wenn der andere Tab nicht mehr aktiv ist.'
+      : `Der Spielstand wurde nicht überschrieben. ${message}`, error instanceof SessionLoadError && error.canRecover, ownership);
+    element('save-status').textContent = ownership ? 'Anderer Tab ist aktiv' : 'Spielstand konnte nicht geladen werden';
   } finally { booting = false; }
 }
 async function perform(action: (battle: IdleBattle) => unknown): Promise<void> {
   const live = session;
-  if (!ready || !live || live.paused || live.error || document.hidden) return;
+  if (!ready || !live || live.paused || live.error || document.hidden || live.awaitingResume || live.suspended) return;
   const completion = live.command(action);
-  syncUI();
-  await completion;
+  syncUI(); await completion;
   scene?.refresh(); syncUI();
 }
 build.addEventListener('click', () => { void perform(battle => selectedPadId && battle.build(selectedPadId)); }, { signal: lifetime.signal });
 upgrade.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.upgrade(tower.uid); }); }, { signal: lifetime.signal });
 sell.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.sell(tower.uid); }); }, { signal: lifetime.signal });
+advance.addEventListener('click', () => { void perform(battle => battle.requestAdvance()); }, { signal: lifetime.signal });
 pause.addEventListener('click', () => { if (session) { const completion = session.setPaused(!session.paused); syncUI(); void completion.then(syncUI); } }, { signal: lifetime.signal });
-element('reset').addEventListener('click', () => window.location.reload(), { signal: lifetime.signal });
+claim.addEventListener('click', () => {
+  const live = session;
+  if (!live || live.busy || live.error || document.hidden) return;
+  const complete = async () => {
+    if (live.pendingReward) await live.claimOffline();
+    if (!live.error && !document.hidden) await live.resumeActive();
+    syncUI();
+  };
+  void complete(); syncUI();
+}, { signal: lifetime.signal });
+element('reset').addEventListener('click', () => {
+  void (session?.suspend() ?? Promise.resolve()).catch(() => undefined).then(() => window.location.reload());
+}, { signal: lifetime.signal });
 recover.addEventListener('click', () => { void boot({ recover: true }); }, { signal: lifetime.signal });
 element('temporary-session').addEventListener('click', () => { void boot({ temporary: true }); }, { signal: lifetime.signal });
-document.addEventListener('visibilitychange', () => { syncUI(); if (document.hidden) void session?.flush().catch(() => syncUI()); }, { signal: lifetime.signal });
-window.addEventListener('pagehide', () => { void session?.flush().catch(() => undefined); }, { signal: lifetime.signal });
-if (import.meta.hot) import.meta.hot.dispose(() => { lifetime.abort(); game?.destroy(true); void session?.close().catch(() => undefined); });
+element('activate-session').addEventListener('click', () => { void boot(); }, { signal: lifetime.signal });
+
+document.addEventListener('visibilitychange', () => {
+  const hidden = document.hidden;
+  syncUI();
+  lifecycle = lifecycle.then(async () => {
+    if (session?.temporary) { if (hidden) await session.flush(); syncUI(); return; }
+    if (hidden) await session?.suspend(); else await boot();
+  })
+    .catch(error => showError(`Die Probe ist angehalten. ${error instanceof Error ? error.message : String(error)}`, false, true));
+}, { signal: lifetime.signal });
+window.addEventListener('pagehide', () => { void session?.suspend().catch(() => undefined); }, { signal: lifetime.signal });
+const heartbeat = window.setInterval(() => {
+  if (!document.hidden && session && !session.suspended) void session.heartbeat().catch(() => syncUI());
+}, 1000);
+if (import.meta.hot) import.meta.hot.dispose(() => { lifetime.abort(); clearInterval(heartbeat); clearTimeout(retryTimer); game?.destroy(true); void session?.close().catch(() => undefined); });
 void boot();

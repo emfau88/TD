@@ -178,7 +178,7 @@ test('simultaneous lethal projectiles cannot pay a kill twice', () => {
   assert.equal(events.filter(event => event.type === 'kill' && event.enemy?.uid === target.uid).length, 1);
 });
 
-test('escape causes a terminal defeat without erasing earned gold or purchased towers', () => {
+test('escape records defeat without erasing gold or purchases and then returns to live farming', () => {
   const sim = new IdleBattle();
   sim.build('tower-02');
   for (const tower of sim.towers) tower.cooldown = 1000;
@@ -195,9 +195,13 @@ test('escape causes a terminal defeat without erasing earned gold or purchased t
   assert.equal(sim.build('tower-03'), undefined);
   assert.equal(sim.events.filter(event => event.type === 'clear').length, 0);
   assert.equal(sim.events.filter(event => event.type === 'defeat').length, 1);
-  sim.update(100);
-  assert.equal(sim.elapsed, elapsed);
+  sim.update(BASE.stepSeconds);
+  assert.equal(sim.elapsed, elapsed + BASE.stepSeconds);
   assert.equal(sim.gold, gold);
+  assert.equal(sim.mode, 'farm');
+  assert.equal(sim.phase, 'intermission');
+  assert.equal(sim.lives, 20);
+  assert.equal(sim.remaining, 0);
   assert.equal(sim.events.filter(event => event.type === 'defeat').length, 1);
 });
 

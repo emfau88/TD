@@ -17,3 +17,12 @@
 .app-footer a:hover { text-decoration: underline; }
 @media (max-width: 1000px) { .battle-resources { gap: 20px; } .battle-resources dd { font-size: 18px; } }
 @media (max-width: 600px) { .app-header { flex-wrap: wrap; } .battle-resources { order: 3; width: 100%; justify-content: space-between; } }
+
+#safe-rate { font-size: 16px; white-space: nowrap; }
+.return-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 16px; margin-bottom: 10px; background: #263c28; border: 1px solid #a38b56; border-radius: 4px; }
+.return-card h3 { margin: 0 0 6px; color: #efdb9e; font: 18px Georgia,serif; }
+.return-card p { margin: 3px 0; color: #c7d2bf; font-size: 11px; line-height: 1.5; }
+.return-card button { flex-shrink: 0; max-width: 230px; padding: 12px; border: 1px solid #a38b56; border-radius: 3px; cursor: pointer; font-size: 12px; }
+.return-card button:disabled { opacity: .45; cursor: default; }
+@media (max-width: 1400px) { .battle-resources { gap: 22px; } #safe-rate { font-size: 14px; } .phase-badge { font-size: 10px; } }
+@media (max-width: 1000px) { .return-card { align-items: flex-start; flex-direction: column; } }

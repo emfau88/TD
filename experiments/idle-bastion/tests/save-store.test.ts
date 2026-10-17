@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { IDBFactory } from 'fake-indexeddb';
 import { IdleBattle } from '../src/battle';
+import { beginAbsence, claimOffline, createOfflineState, reserveOffline } from '../src/offline';
 import {
   openBattleStore, SaveConflictError, SaveUnsupportedError, SaveValidationError,
   type SaveEnvelope,
@@ -51,7 +52,7 @@ test('isolated native IndexedDB starts empty and restores a committed battle and
   const battle = fixture();
   const before = Date.now();
   const saved = await store.save(battle.snapshot(), true, 0);
-  assert.equal(saved.schemaVersion, 1);
+  assert.equal(saved.schemaVersion, 2);
   assert.equal(saved.revision, 1);
   assert.equal(saved.paused, true);
   assert.ok(saved.writtenAt >= before && saved.writtenAt <= Date.now());
@@ -136,7 +137,7 @@ test('newer primary schemas never fall back to backup or permit overwrite or rec
   const snapshot = fixture().snapshot();
   const first = await store.save(snapshot, false, 0);
   await store.save(snapshot, false, 1);
-  const future = { schemaVersion: 2, revision: 400, preciousFutureState: ['preserve me'] };
+  const future = { schemaVersion: 3, revision: 400, preciousFutureState: ['preserve me'] };
   await rawWrite(factory, 'default', future);
   const result = await store.load();
   assert.equal(result.kind, 'unsupported');
@@ -287,5 +288,190 @@ test('an explicitly stored undefined value is corruption rather than an absent p
   assert.equal((await store.load()).kind, 'corrupt');
   await assert.rejects(store.save(fixture().snapshot(), false, 0), SaveValidationError);
   await assert.rejects(store.recoverBackup(), SaveValidationError);
+  store.close();
+});
+
+
+test('writer acquisition is atomic, exclusive and requires a lease for all subsequent production writes', async () => {
+  const factory = new IDBFactory();
+  let now = 10_000;
+  const a = await openBattleStore(factory, DB_NAME, () => now);
+  const b = await openBattleStore(factory, DB_NAME, () => now);
+  const [left, right] = await Promise.all([a.acquireWriter('tab-a'), b.acquireWriter('tab-b')]);
+  assert.equal([left, right].filter(Boolean).length, 1);
+  const winner = left ?? right!;
+  assert.equal(winner.epoch, 1);
+  assert.equal(winner.expiresAt, now + 5000);
+  const writerStore = left ? a : b;
+  assert.deepEqual(await writerStore.acquireWriter(winner.ownerId), winner);
+  const snapshot = fixture().snapshot();
+  await assert.rejects(writerStore.save(snapshot, false, 0), SaveConflictError);
+  const first = await writerStore.save(snapshot, false, 0, { writer: winner });
+  await writerStore.releaseWriter(winner);
+  await assert.rejects(writerStore.save(snapshot, false, first.revision), SaveConflictError);
+  const next = await b.acquireWriter('tab-c');
+  assert.equal(next?.epoch, 2, 'Released epochs remain as a durable tombstone.');
+  assert.deepEqual(await rawRead(factory, 'default'), first);
+  a.close(); b.close();
+});
+
+test('expired writer takeover rejects the waking old tab even when its save revision still matches', async () => {
+  const factory = new IDBFactory();
+  let now = 20_000;
+  const a = await openBattleStore(factory, DB_NAME, () => now);
+  const b = await openBattleStore(factory, DB_NAME, () => now);
+  const oldLease = (await a.acquireWriter('old-tab'))!;
+  const snapshot = fixture().snapshot();
+  const first = await a.save(snapshot, false, 0, { writer: oldLease });
+  now = oldLease.expiresAt - 1;
+  assert.equal(await b.acquireWriter('new-tab'), undefined);
+  now++;
+  const newLease = (await b.acquireWriter('new-tab'))!;
+  assert.equal(newLease.epoch, oldLease.epoch + 1);
+  await assert.rejects(a.save(snapshot, false, first.revision, { writer: oldLease }), SaveConflictError);
+  await assert.rejects(a.renewWriter(oldLease), SaveConflictError);
+  await assert.rejects(a.releaseWriter(oldLease), SaveConflictError);
+  assert.deepEqual(await rawRead(factory, 'default'), first);
+  const second = await b.save(snapshot, false, first.revision, { writer: newLease });
+  assert.equal(second.revision, 2);
+  assert.equal((await rawRead(factory, 'writer') as { ownerId: string }).ownerId, 'new-tab');
+  a.close(); b.close();
+});
+
+test('renewal extends the same epoch; expired writers cannot renew or save themselves back into ownership', async () => {
+  const factory = new IDBFactory();
+  let now = 30_000;
+  const store = await openBattleStore(factory, DB_NAME, () => now);
+  const first = (await store.acquireWriter('renewing-tab'))!;
+  now += 2000;
+  const renewed = await store.renewWriter(first);
+  assert.equal(renewed.epoch, first.epoch);
+  assert.equal(renewed.expiresAt, now + 5000);
+  assert.ok(renewed.expiresAt > first.expiresAt);
+  now = renewed.expiresAt;
+  await assert.rejects(store.renewWriter(renewed), SaveConflictError);
+  await assert.rejects(store.save(fixture().snapshot(), false, 0, { writer: renewed }), SaveConflictError);
+  const acquiredAgain = (await store.acquireWriter('renewing-tab'))!;
+  assert.equal(acquiredAgain.epoch, first.epoch + 1);
+  store.close();
+});
+
+test('lease epoch and release tombstone survive reopening the database', async () => {
+  const factory = new IDBFactory();
+  let now = 40_000;
+  const firstStore = await openBattleStore(factory, DB_NAME, () => now);
+  const first = (await firstStore.acquireWriter('first-tab'))!;
+  await firstStore.releaseWriter(first);
+  firstStore.close();
+  const reopened = await openBattleStore(factory, DB_NAME, () => now);
+  const second = (await reopened.acquireWriter('second-tab'))!;
+  assert.equal(second.epoch, 2);
+  await assert.rejects(reopened.save(fixture().snapshot(), false, 0, { writer: first }), SaveConflictError);
+  await reopened.releaseWriter(second);
+  await assert.rejects(reopened.save(fixture().snapshot(), false, 0), SaveConflictError);
+  reopened.close();
+});
+
+test('backup recovery checks the writer epoch in the same transaction as replacement', async () => {
+  const factory = new IDBFactory();
+  let now = 50_000;
+  const store = await openBattleStore(factory, DB_NAME, () => now);
+  const firstLease = (await store.acquireWriter('old-tab'))!;
+  const snapshot = fixture().snapshot();
+  const first = await store.save(snapshot, false, 0, { writer: firstLease });
+  await store.save(snapshot, false, first.revision, { writer: firstLease });
+  const broken = { schemaVersion: 2, revision: 4, battle: 'damaged' };
+  await rawWrite(factory, 'default', broken);
+  now = firstLease.expiresAt;
+  const secondLease = (await store.acquireWriter('new-tab'))!;
+  await assert.rejects(store.recoverBackup(firstLease), SaveConflictError);
+  await assert.rejects(store.recoverBackup(), SaveConflictError);
+  assert.deepEqual(await rawRead(factory, 'default'), broken);
+  assert.equal(await rawRead(factory, 'rejected-default'), undefined);
+  const recovered = await store.recoverBackup(secondLease);
+  assert.equal(recovered.revision, 5);
+  assert.deepEqual(await rawRead(factory, 'rejected-default'), broken);
+  store.close();
+});
+
+test('malformed or future writer records are protected instead of being overwritten by acquisition', async () => {
+  const factory = new IDBFactory();
+  const store = await openBattleStore(factory, DB_NAME, () => 60_000);
+  const invalid = { schemaVersion: 1, epoch: -1, ownerId: 'broken', expiresAt: 0 };
+  await rawWrite(factory, 'writer', invalid);
+  await assert.rejects(store.acquireWriter('new-tab'), SaveValidationError);
+  assert.deepEqual(await rawRead(factory, 'writer'), invalid);
+  const future = { schemaVersion: 2, epoch: 8, futureOwner: 'valuable' };
+  await rawWrite(factory, 'writer', future);
+  await assert.rejects(store.acquireWriter('new-tab'), SaveUnsupportedError);
+  assert.deepEqual(await rawRead(factory, 'writer'), future);
+  store.close();
+});
+
+test('envelope one migrates read-only without production evidence and retains CAS revision protection', async () => {
+  const factory = new IDBFactory();
+  const snapshot = { ...fixture().snapshot(), schemaVersion: 1 };
+  const legacy = { schemaVersion: 1, revision: 17, writtenAt: 10_000, paused: true, battle: snapshot };
+  await rawWrite(factory, 'default', legacy);
+  const store = await openBattleStore(factory, DB_NAME, () => 70_000);
+  const result = await store.load();
+  assert.equal(result.kind, 'valid');
+  if (result.kind !== 'valid') assert.fail('Known schema one must migrate.');
+  assert.equal(result.save.schemaVersion, 2);
+  assert.equal(result.save.revision, 17);
+  assert.equal(result.save.battle.schemaVersion, 2);
+  assert.deepEqual(result.save.battle.liveClearedWaves, []);
+  assert.equal(result.save.offline.baseline.certificate, null);
+  assert.equal(result.save.offline.baseline.paused, true);
+  assert.equal(reserveOffline(result.save.offline, 7_000_000).pendingReward?.amountUnits, 0);
+  assert.deepEqual(await rawRead(factory, 'default'), legacy, 'Loading must never persist a migration implicitly.');
+  await assert.rejects(store.save(result.save.battle, true, 0), SaveConflictError);
+  const next = await store.save(result.save.battle, true, 17, { offline: result.save.offline });
+  assert.equal(next.revision, 18);
+  assert.equal(next.schemaVersion, 2);
+  store.close();
+});
+
+test('pending offline receipt and cleared claim persist atomically with actual gold across reloads', async () => {
+  const factory = new IDBFactory();
+  let now = 80_000;
+  const store = await openBattleStore(factory, DB_NAME, () => now);
+  const writer = (await store.acquireWriter('departure'))!;
+  const basis = { wave: 1, fingerprint: 'proved-defense', rulesVersion: 1, rewardGold: 200, durationMs: 120_000 };
+  const absent = beginAbsence(createOfflineState(now), now, basis, false);
+  now += 30_000;
+  // Simulated restart after the old lease expires.
+  const returningWriter = (await store.acquireWriter('return'))!;
+  const pending = reserveOffline(absent, now);
+  const first = await store.save(fixture().snapshot(), false, 0, { writer: returningWriter, offline: pending });
+  await store.releaseWriter(returningWriter); store.close();
+  const reopened = await openBattleStore(factory, DB_NAME, () => now);
+  const nextWriter = (await reopened.acquireWriter('claim'))!;
+  const loaded = await reopened.load();
+  assert.equal(loaded.kind, 'valid');
+  if (loaded.kind !== 'valid') assert.fail('Pending receipt must survive a real database reopen.');
+  assert.deepEqual(loaded.save.offline, first.offline);
+  const claimed = claimOffline(loaded.save.offline, loaded.save.offline.pendingReward!.id);
+  const battle = IdleBattle.restore(loaded.save.battle)!;
+  battle.creditOfflineUnits(claimed.amountUnits);
+  const second = await reopened.save(battle.snapshot(), false, loaded.save.revision, { writer: nextWriter, offline: claimed.state });
+  assert.equal(second.battle.gold, first.battle.gold + 30);
+  assert.equal(second.offline.pendingReward, null);
+  assert.ok(second.offline.window, 'Persisting a claim still must not end the original window.');
+  assert.equal(claimOffline(second.offline, loaded.save.offline.pendingReward!.id).amountUnits, 0);
+  await assert.rejects(store.save(first.battle, false, first.revision, { writer }), /./);
+  reopened.close();
+});
+
+test('a future offline schema is protected even with a valid predecessor', async () => {
+  const factory = new IDBFactory();
+  const store = await openBattleStore(factory, DB_NAME);
+  const first = await store.save(fixture().snapshot(), false, 0);
+  await store.save(first.battle, false, 1);
+  const future = { ...first, revision: 99, offline: { schemaVersion: 2, valuable: true } };
+  await rawWrite(factory, 'default', future);
+  assert.equal((await store.load()).kind, 'unsupported');
+  await assert.rejects(store.recoverBackup(), SaveUnsupportedError);
+  assert.deepEqual(await rawRead(factory, 'default'), future);
   store.close();
 });

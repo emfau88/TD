@@ -131,16 +131,19 @@ test('initial delay and sub-tick remainder persist without accelerating or dropp
   continueEqually(sim, next, 3);
 });
 
-test('real terminal defeat including the escaped enemy restores without another reward or attempt', () => {
+test('real defeat including the escaped enemy restores and enters the identical farm transition', () => {
   const sim = new IdleBattle();
   until(sim, () => sim.phase === 'defeat', 3000);
   const next = restored(sim), snapshot = sim.snapshot();
-  sim.update(100);
-  next.update(100);
-  assert.deepEqual(sim.snapshot(), snapshot);
-  assert.deepEqual(next.snapshot(), snapshot);
+  sim.update(BASE.stepSeconds);
+  next.update(BASE.stepSeconds);
+  assert.deepEqual(next.snapshot(), sim.snapshot());
+  assert.equal(next.gold, snapshot.gold);
+  assert.equal(next.lives, 20);
+  assert.equal(next.mode, 'farm');
+  assert.equal(next.phase, 'intermission');
   assert.deepEqual(next.drainEvents(), []);
-  assert.equal(next.lives, 0);
+  continueEqually(sim, next, 30);
 });
 
 test('every sampled route corner, enemy recipe and partial update remains valid through later waves', () => {
@@ -163,7 +166,7 @@ test('invalid resources, times, references, definitions and newer formats are re
   until(sim, () => sim.shots.length > 0);
   const valid = sim.snapshot();
   const mutations: [string, (value: BattleSnapshot) => void][] = [
-    ['schema', value => { value.schemaVersion = 2 as 1; }],
+    ['schema', value => { value.schemaVersion = 3 as 2; }],
     ['rules', value => { value.rulesVersion = 2 as 1; }],
     ['layout version', value => { value.layoutVersion = 2 as 1; }],
     ['layout identity', value => { value.layoutId = 'unknown' as 'start28'; }],

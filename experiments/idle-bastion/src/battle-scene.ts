@@ -60,7 +60,7 @@ export class BattleScene extends Phaser.Scene {
     // Fixed substeps and the economy remain the simulation's responsibility.
     const seconds = Number.isFinite(delta) ? Math.max(0, Math.min(delta / 1000, 0.08)) : 0;
     if (!this.paused) {
-      if (this.hooks.advance) this.hooks.advance(seconds);
+      if (this.hooks.advance) this.hooks.advance(Number.isFinite(delta) ? Math.max(0, delta / 1000) : 0);
       else this.sim.update(seconds);
     }
     if (!this.readyToDraw) return;

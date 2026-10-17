@@ -1,0 +1,94 @@
+/** Conservative, bounded, Phaser-free proofs. A probe never mutates the live
+ * model, issues its rewards or consumes its renderer/tutorial event stream.
+ */
+import { BASE, BATTLE_RULES_VERSION, IdleBattle, isNormalFarmWave, stats } from './battle';
+
+export interface FarmCertificate {
+  wave: number;
+  fingerprint: string;
+  rulesVersion: number;
+  /** Sum of ordinary enemy/clear gold from two complete repetitions. */
+  rewardGold: number;
+  /** Sum of both repetitions including a 2s pause each; exact integer ms. */
+  durationMs: number;
+}
+
+export const MAX_FARM_CANDIDATES = 3;
+export const MAX_FARM_PROBE_STEPS = 8000;
+const STEP_MS = BASE.stepSeconds * 1000;
+const MAX_PROBE_REWARD = 2 * (BASE.waves.maxCount * Math.max(...Object.values(BASE.enemies).map(def => def.gold)) + BASE.waves.maxReward);
+
+/** Ignores transient HP, cooldowns, currency, IDs and kill statistics. Every
+ * economically relevant placement/level/rule/layout change invalidates a proof.
+ */
+export function defenseFingerprint(battle: IdleBattle): string {
+  return JSON.stringify({
+    rulesVersion: BATTLE_RULES_VERSION, layoutVersion: 1, layout: battle.layout,
+    towers: battle.towers.map(tower => ({ padId: tower.padId, definition: tower.def.id, level: tower.level, protected: tower.protected }))
+      .sort((left, right) => left.padId.localeCompare(right.padId)),
+  });
+}
+
+function candidateWaves(battle: IdleBattle, previous?: FarmCertificate): number[] {
+  const completed = battle.liveClearedWaves.filter(wave => isNormalFarmWave(wave) && wave <= battle.highestCleared)
+    .sort((a, b) => b - a);
+  const preferred = previous?.wave ?? completed[1];
+  return [...new Set([completed[0], preferred, completed.includes(1) ? 1 : undefined])]
+    .filter((wave): wave is number => wave !== undefined).slice(0, MAX_FARM_CANDIDATES);
+}
+
+function prove(battle: IdleBattle, wave: number, fingerprint: string): FarmCertificate | undefined {
+  const snapshot = battle.snapshot();
+  snapshot.mode = 'farm'; snapshot.farmWave = wave; snapshot.advanceRequested = false;
+  snapshot.wave = wave; snapshot.phase = 'intermission'; snapshot.lives = BASE.coreLives;
+  snapshot.enemies = []; snapshot.shots = []; snapshot.queue = [];
+  snapshot.spawnTimer = 0; snapshot.intermissionRemaining = BASE.intermissionSeconds;
+  snapshot.pendingTime = 0; snapshot.ticks = 0; snapshot.elapsed = 0;
+  snapshot.gold = 0; snapshot.goldRemainderUnits = 0; snapshot.earned = 0; snapshot.kills = 0;
+  snapshot.towers = snapshot.towers.map(tower => ({ ...tower, cooldown: stats({ def: BASE.tower, level: tower.level }).cooldown, kills: 0 }));
+  const probe = IdleBattle.restore(snapshot);
+  if (!probe) return undefined;
+  let clears = 0;
+  for (let step = 1; step <= MAX_FARM_PROBE_STEPS; step++) {
+    probe.update(BASE.stepSeconds);
+    // Even a successful but leaky attempt is not a safe production proof.
+    if (probe.lives !== BASE.coreLives || probe.phase === 'defeat') return undefined;
+    for (const event of probe.drainEvents()) {
+      if (event.type !== 'clear') continue;
+      if (event.wave !== wave) return undefined;
+      clears++;
+      if (clears === 2) return {
+        wave, fingerprint, rulesVersion: BATTLE_RULES_VERSION,
+        rewardGold: probe.earned, durationMs: step * STEP_MS,
+      };
+      // Both complete cycles begin with the pessimistic normal cooldown.
+      for (const tower of probe.towers) tower.cooldown = stats(tower).cooldown;
+    }
+  }
+  return undefined;
+}
+
+export function certifyFarm(battle: IdleBattle, previous?: FarmCertificate): FarmCertificate | undefined {
+  const fingerprint = defenseFingerprint(battle);
+  // A newer leaky victory must not erase an older still-valid safe proof.
+  let best = isFarmCertificateValid(previous, battle) ? { ...previous! } : undefined;
+  for (const wave of candidateWaves(battle, best)) {
+    if (best?.wave === wave) continue;
+    const proof = prove(battle, wave, fingerprint);
+    if (proof && (!best || proof.rewardGold * best.durationMs > best.rewardGold * proof.durationMs)) best = proof;
+  }
+  return best;
+}
+
+/** Structural and defense validity is cheap; obtaining a new proof explicitly
+ * reruns certifyFarm. Serialized proofs never open previously uncleared waves.
+ */
+export function isFarmCertificateValid(certificate: FarmCertificate | undefined, battle: IdleBattle): boolean {
+  if (!certificate || typeof certificate !== 'object' || certificate.rulesVersion !== BATTLE_RULES_VERSION
+    || certificate.fingerprint !== defenseFingerprint(battle)
+    || !isNormalFarmWave(certificate.wave) || !battle.liveClearedWaves.includes(certificate.wave)
+    || !Number.isSafeInteger(certificate.rewardGold) || certificate.rewardGold <= 0 || certificate.rewardGold > MAX_PROBE_REWARD
+    || !Number.isSafeInteger(certificate.durationMs) || certificate.durationMs < 2 * BASE.intermissionSeconds * 1000
+    || certificate.durationMs > MAX_FARM_PROBE_STEPS * STEP_MS || certificate.durationMs % STEP_MS !== 0) return false;
+  return true;
+}

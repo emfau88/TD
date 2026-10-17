@@ -3,7 +3,7 @@
  * homing shots, kill accounting, purchases) and reference/src/data.ts
  * (Waldwächter and original enemy identities). No Scene or mutable classic
  * rules are imported. Idle owns its prices, bounded stats and wave recipes.
- * B03 adds the exact versioned live-state codec. Farming/characters are later packages.
+ * B03 adds exact persistence; B04 owns advance/farm attempts and fractional offline credit.
  */
 import { cellCenter, createIdleLayout, isUnlockedCell, type IdleLayout } from './layout';
 
@@ -27,6 +27,11 @@ export const BASE = Object.freeze({
   }),
 });
 
+export const BATTLE_RULES_VERSION = 1 as const;
+export const LIVE_CANDIDATE_LIMIT = 32;
+/** Reserved boss milestones never contribute repeatable offline production. */
+export const isNormalFarmWave = (wave: number): boolean => Number.isSafeInteger(wave) && wave >= 1 && wave !== 15 && wave !== 25;
+export type BattleMode = 'advance' | 'farm';
 export type Phase = 'intermission' | 'wave' | 'defeat';
 export type TowerDef = typeof BASE.tower;
 export type EnemyDef = typeof BASE.enemies[keyof typeof BASE.enemies];
@@ -52,7 +57,9 @@ export interface BattleEvent {
 
 /** Only scalar IDs and fired payloads cross the save boundary. UI events are transient. */
 export interface BattleSnapshot {
-  schemaVersion: 1; rulesVersion: 1; layoutVersion: 1; layoutId: 'start28';
+  schemaVersion: 2; rulesVersion: 1; layoutVersion: 1; layoutId: 'start28';
+  goldRemainderUnits: number; mode: BattleMode; highestCleared: number; attemptId: number;
+  liveClearedWaves: number[]; farmWave: number; advanceRequested: boolean;
   gold: number; lives: number; wave: number; phase: Phase; elapsed: number;
   ticks: number; pendingTime: number; uid: number; intermissionRemaining: number;
   kills: number; earned: number; queue: EnemyDef['id'][]; spawnTimer: number;
@@ -87,6 +94,13 @@ export function sellValue(tower: Pick<Tower, 'spent'>): number {
 
 export class IdleBattle {
   gold: number = BASE.startGold;
+  goldRemainderUnits = 0;
+  mode: BattleMode = 'advance';
+  highestCleared = 0;
+  attemptId = 0;
+  liveClearedWaves: number[] = [];
+  farmWave = 1;
+  advanceRequested = false;
   lives: number = BASE.coreLives;
   wave = 0;
   phase: Phase = 'intermission';
@@ -122,10 +136,13 @@ export class IdleBattle {
    */
   snapshot(): BattleSnapshot {
     if (JSON.stringify(this.layout) !== SNAPSHOT_LAYOUT_JSON) {
-      throw new Error('Unsupported battle layout for snapshot version 1.');
+      throw new Error('Unsupported battle layout for snapshot version 2.');
     }
     return {
-      schemaVersion: 1, rulesVersion: 1, layoutVersion: 1, layoutId: 'start28',
+      schemaVersion: 2, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: 1, layoutId: 'start28',
+      goldRemainderUnits: this.goldRemainderUnits, mode: this.mode, highestCleared: this.highestCleared,
+      attemptId: this.attemptId, liveClearedWaves: [...this.liveClearedWaves],
+      farmWave: this.farmWave, advanceRequested: this.advanceRequested,
       gold: this.gold, lives: this.lives, wave: this.wave, phase: this.phase,
       elapsed: this.elapsed, ticks: this.ticks, pendingTime: this.pendingTime,
       uid: this.uid, intermissionRemaining: this.intermissionRemaining,
@@ -144,9 +161,25 @@ export class IdleBattle {
    * never fires commands, combat ticks, purchases or reward/UI events.
    */
   static restore(value: unknown): IdleBattle | undefined {
+    // v1 carried no reliable live-clear evidence. Preserve its exact combat and
+    // progress estimate, but never invent farm certificates from old wave numbers.
+    if (isRecord(value) && value.schemaVersion === 1) {
+      value = {
+        ...value, schemaVersion: 2, goldRemainderUnits: 0, mode: 'advance',
+        highestCleared: integerIn(value.wave) ? Math.max(0, value.wave - (value.phase === 'intermission' ? 0 : 1)) : -1,
+        attemptId: value.wave, liveClearedWaves: [], farmWave: 1, advanceRequested: false,
+      };
+    }
     const model = new IdleBattle(SNAPSHOT_LAYOUT);
     if (!validSnapshot(value, model.layout, model.path, model.pathLength)) return undefined;
     model.gold = value.gold;
+    model.goldRemainderUnits = value.goldRemainderUnits;
+    model.mode = value.mode;
+    model.highestCleared = value.highestCleared;
+    model.attemptId = value.attemptId;
+    model.liveClearedWaves = [...value.liveClearedWaves];
+    model.farmWave = value.farmWave;
+    model.advanceRequested = value.advanceRequested;
     model.lives = value.lives;
     model.wave = value.wave;
     model.phase = value.phase;
@@ -170,6 +203,33 @@ export class IdleBattle {
   }
 
   get remaining(): number { return this.enemies.length + this.queue.length; }
+
+  /** A certified target affects the next attempt, never the running queue.
+   * Zero means no certificate yet: replay live entry wave one to earn evidence.
+   */
+  setFarmWave(wave: number): boolean {
+    const target = wave === 0 ? 1 : wave;
+    if (!isNormalFarmWave(target) || (target !== 1 && (target > this.highestCleared || !this.liveClearedWaves.includes(target)))) return false;
+    this.farmWave = target;
+    return true;
+  }
+
+  requestAdvance(): boolean {
+    if (this.mode !== 'farm' || this.advanceRequested) return false;
+    this.advanceRequested = true;
+    return true;
+  }
+
+  /** Offline is credited in thousandths. Spending whole gold preserves change.
+   * The session commits this mutation together with its one-time claim record.
+   */
+  creditOfflineUnits(amountUnits: number): void {
+    if (!Number.isSafeInteger(amountUnits) || amountUnits < 0
+      || !Number.isSafeInteger(amountUnits + this.goldRemainderUnits)) throw new Error('Invalid offline gold transaction.');
+    const total = amountUnits + this.goldRemainderUnits;
+    this.credit(Math.floor(total / 1000), true);
+    this.goldRemainderUnits = total % 1000;
+  }
 
   canBuild(padId: string): boolean {
     const pad = this.layout.towerPads.find(candidate => candidate.id === padId);
@@ -213,13 +273,12 @@ export class IdleBattle {
    * A partial step is retained. The browser owns suspension/absence handling.
    */
   update(dt: number): void {
-    if (this.phase === 'defeat' || !Number.isFinite(dt) || dt <= 0) return;
+    if (!Number.isFinite(dt) || dt <= 0) return;
     this.pendingTime += dt;
     const count = Math.floor((this.pendingTime + 1e-9) / BASE.stepSeconds);
     this.pendingTime -= count * BASE.stepSeconds;
     if (Math.abs(this.pendingTime) < 1e-9) this.pendingTime = 0;
     for (let index = 0; index < count; index++) {
-      if ((this.phase as Phase) === 'defeat') break;
       this.ticks++;
       this.elapsed = this.ticks * BASE.stepSeconds;
       this.tick(BASE.stepSeconds);
@@ -249,7 +308,12 @@ export class IdleBattle {
   }
 
   private startAttempt(): void {
-    this.wave++;
+    if (this.advanceRequested) {
+      this.mode = 'advance';
+      this.advanceRequested = false;
+    }
+    this.wave = this.mode === 'advance' ? this.highestCleared + 1 : this.farmWave;
+    this.attemptId++;
     this.lives = BASE.coreLives;
     this.enemies = [];
     this.shots = [];
@@ -305,6 +369,17 @@ export class IdleBattle {
   }
 
   private tick(dt: number): void {
+    if (this.phase === 'defeat') {
+      this.mode = 'farm';
+      this.lives = BASE.coreLives;
+      this.enemies = [];
+      this.shots = [];
+      this.queue = [];
+      this.spawnTimer = 0;
+      this.phase = 'intermission';
+      this.intermissionRemaining = BASE.intermissionSeconds;
+      return;
+    }
     if (this.phase === 'intermission') {
       this.intermissionRemaining = Math.max(0, this.intermissionRemaining - dt);
       if (this.intermissionRemaining <= 1e-9) this.startAttempt();
@@ -317,6 +392,9 @@ export class IdleBattle {
     }
     for (const enemy of this.enemies) if (enemy.hp > 0) this.move(enemy, dt);
     if (this.lives <= 0) {
+      if (this.mode === 'farm') this.farmWave = 1;
+      this.mode = 'farm';
+      this.advanceRequested = false;
       this.phase = 'defeat';
       this.shots = [];
       this.events.push({ type: 'defeat', wave: this.wave });
@@ -353,6 +431,19 @@ export class IdleBattle {
       this.shots = [];
       const amount = Math.min(BASE.waves.maxReward, BASE.waves.rewardBase + this.wave * BASE.waves.rewardPerWave);
       this.credit(amount, true);
+      this.highestCleared = Math.max(this.highestCleared, this.wave);
+      if (isNormalFarmWave(this.wave) && !this.liveClearedWaves.includes(this.wave)) {
+        const completed = [...this.liveClearedWaves, this.wave].sort((a, b) => a - b);
+        const retained = completed.slice(-LIVE_CANDIDATE_LIMIT);
+        // Pin the actual entry evidence and current certified target so an old
+        // still-valid proof cannot disappear merely because history is bounded.
+        for (const pinned of [1, this.farmWave]) {
+          if (!completed.includes(pinned) || retained.includes(pinned)) continue;
+          const replace = retained.findIndex(candidate => candidate !== 1 && candidate !== this.farmWave);
+          retained.splice(replace, 1, pinned);
+        }
+        this.liveClearedWaves = retained.sort((a, b) => a - b);
+      }
       this.events.push({ type: 'clear', wave: this.wave, amount });
       this.phase = 'intermission';
       this.intermissionRemaining = BASE.intermissionSeconds;
@@ -378,8 +469,19 @@ const near = (left: number, right: number): boolean => Math.abs(left - right) <=
 function validSnapshot(
   value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number,
 ): value is BattleSnapshot {
-  if (!isRecord(value) || value.schemaVersion !== 1 || value.rulesVersion !== 1
+  if (!isRecord(value) || value.schemaVersion !== 2 || value.rulesVersion !== BATTLE_RULES_VERSION
     || value.layoutVersion !== 1 || value.layoutId !== 'start28') return false;
+  if (!integerIn(value.goldRemainderUnits, 0, 999) || (value.mode !== 'advance' && value.mode !== 'farm')
+    || !integerIn(value.highestCleared, 0, Number.MAX_SAFE_INTEGER - 1) || !integerIn(value.attemptId)
+    || !integerIn(value.farmWave, 1) || !isNormalFarmWave(value.farmWave)
+    || typeof value.advanceRequested !== 'boolean' || (value.advanceRequested && value.mode !== 'farm')
+    || !Array.isArray(value.liveClearedWaves) || value.liveClearedWaves.length > LIVE_CANDIDATE_LIMIT) return false;
+  let previousWave = 0;
+  for (const wave of value.liveClearedWaves) {
+    if (!integerIn(wave, 1, value.highestCleared) || !isNormalFarmWave(wave) || wave <= previousWave) return false;
+    previousWave = wave;
+  }
+  if (value.farmWave !== 1 && !value.liveClearedWaves.includes(value.farmWave)) return false;
   if (!integerIn(value.gold) || !integerIn(value.earned) || !integerIn(value.kills)
     || !integerIn(value.wave) || !integerIn(value.uid, 2)
     || !integerIn(value.ticks) || !numberIn(value.elapsed, 0, Number.MAX_SAFE_INTEGER)
@@ -400,7 +502,9 @@ function validSnapshot(
   if (value.phase === 'intermission' && (value.queue.length || value.enemies.length || value.shots.length)) return false;
   if (value.phase === 'wave' && value.queue.length + value.enemies.length === 0) return false;
   if (value.phase === 'defeat' && value.shots.length) return false;
-  if (value.wave === 0 && (value.elapsed >= BASE.firstWaveDelay || value.kills !== 0 || value.earned !== 0)) return false;
+  if (value.wave === 0 && (value.elapsed >= BASE.firstWaveDelay || value.kills !== 0 || value.highestCleared !== 0
+    || value.attemptId !== 0 || value.mode !== 'advance' || value.liveClearedWaves.length > 0)) return false;
+  if (value.wave > 0 && (value.attemptId < 1 || value.wave > value.highestCleared + 1)) return false;
 
   const waveCount = value.wave === 0 ? 0 : Math.min(BASE.waves.maxCount, BASE.waves.firstCount + value.wave - 1);
   if (value.queue.length + value.enemies.length > waveCount) return false;
