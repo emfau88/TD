@@ -1,0 +1,10 @@
+Use case: identity-preserve. Asset type: healing action sprite sequence for an existing tiny pixel-art game enemy.
+Image1 is the APPROVED side-view lantern jellyfish. Image2 shows its newly drawn rear and front views. Preserve the bell silhouette, turquoise scalloped bell with cream rim, broad tentacles, dark bluegreen outline, little hanging amber lantern. Keep exactly the same small coarse-pixel 14-color aesthetic. No painted detail, no halo, no gradient, actual transparent background.
+Produce TWELVE isolated sprites in a strict THREE ROWS by FOUR COLUMNS arrangement, with generous transparent margins.
+Top row: FRONT/DOWN view, four successive healing-action poses.
+Middle row: REAR/UP view, four successive healing-action poses, no visible eyes.
+Bottom row: RIGHT SIDE view, four successive healing-action poses.
+Action sequence per row: 1 anticipate, tentacles draw inward, lantern normal; 2 bell widens subtly and tentacles lift, lantern brighter; 3 release, tentacles spread, lantern pale yellow brightest; 4 recover, body relaxes back to ordinary swimming. Each row must remain a single consistent view, scale, shape, design, anchor. Do not move the bell up and down; change tentacles and subtle bell compression to communicate action. Lantern never becomes a separate huge object.
+No green crosses, rings, particles, swirls or external effects; just body and lantern! Effects are drawn separately by the game.
+Art target about30x34 LOGICAL pixels each character, enlarged with blocky nearest-neighbor pixels, 64px transparent logical frame. These are twelve animation frames of the SAME character, not twelve different designs.
+No text, no numbers, no labels, no borders, no shadows, no background. No normal side-pose duplicates; show the FOUR successive body poses.

@@ -4,7 +4,7 @@ Stand: 17. Oktober 2026
 
 Status: M0 und M1 abgeschlossen; M2-Waldkarte vom Nutzer abgenommen. Laternenmoor, Spiegelwinter und Windbruch sind umgesetzt und gezielt geprüft; ihre visuelle Nutzerabnahme steht aus. Vier Karten sind gemeinsam frei auswählbar, mit getrennten Spielständen und PC-Mausradzoom 100–120 %. Windbruch enthält animierte Wolken, schwebende Felsinseln und pulsierende Kristalle. Mobile Optimierung und mobile Tests sind auf Nutzerwunsch zurückgestellt. Nachweise: [M0](artifacts/m0/REPORT.md), [M1](artifacts/m1/REPORT.md), [Waldkarte M2](artifacts/m2/REPORT.md), [Laternenmoor](artifacts/m3/REPORT.md), [Spiegelwinter](artifacts/m3-winter/REPORT.md), [Windbruch](artifacts/m3-wind/REPORT.md).
 
-**Aktueller Auftrag vom 17.10.2026:** Den ersten neuen Gegner gemäß [Produktionsplan](GEGNER_PRODUKTIONSPLAN.md) erstellen. Die Laternenqualle liegt als erste seitliche Bewegungsprobe mit sechs Frames vor, im echten Moor neben Originalfliegern gezeigt. Visuelle Nutzerabnahme, weitere Ansichten, Heilaktion, Tod und Gameplayintegration stehen aus: [Ergebnis](artifacts/enemies/lantern-jelly/v1/REPORT.md). Der [Umsetzungsplan](UMSETZUNGSPLAN.md) bleibt die Reihenfolge für den übrigen Ausbau. Der bisherige Vier-Karten-Stand einschließlich README-Screenshots ist nach `https://github.com/emfau88/TD.git` gepusht.
+**Aktueller Stand vom 17.10.2026:** Die seitliche Laternenquallen-Probe ist mit „ja passt gut“ vom Nutzer abgenommen. Die Einheit ist anschließend mit drei Ansichten, Bewegung, Heilaktion und Tod vervollständigt und im Moor integriert: [Ergebnis](artifacts/enemies/lantern-jelly/v1/REPORT.md). Sie kommt in Welle 4, 7 und 9 vor. Der [Umsetzungsplan](UMSETZUNGSPLAN.md) bleibt die Reihenfolge für den übrigen Ausbau. Der neue Nutzerauftrag verlangt zunächst die Sicherung dieses Stands, danach ausschließlich drei Succubus-Entwürfe mit Fähigkeitsideen; noch keine weitere Gegnerintegration.
 
 ## 1. Ziel und verbindlicher Umfang
 
@@ -112,7 +112,7 @@ Für jede Region wird derselbe Ablauf abgeschlossen:
 
 **Nächster geplanter Ausbau:** Zunächst vier eigene Wellenpläne, danach ein gezielt eingeführter Spezialgegner, Ilyra, Runa und Feinschliff gemäß [Umsetzungsplan P1–P4](UMSETZUNGSPLAN.md). Die ausstehenden visuellen Nutzerabnahmen bleiben offen. Mondwarte und Story folgen später.
 
-**Aktuelle Spieldauer:** Zehn Wellen je Karte ersetzen den zuvor geprüften 20-Wellen-Stand. Im automatisierten Modell dauern die Kämpfe bei 1× rund 4,6–6,1 Minuten ohne Baupausen; die tatsächliche Spieldauer hängt von der Verteidigung ab. Alle acht Gegnertypen bleiben enthalten. Späte alte Bauphasen werden mit ihrer Verteidigung vor das neue Finale übernommen; vorhandene Sterne bleiben erhalten. Aktuell nutzen alle vier Karten denselben Wellenplan. P1 soll diese Wiederholung durch regionale Pläne ersetzen und die Schwierigkeit anhand gezielter Spielprüfungen abstimmen.
+**Aktuelle Spieldauer:** Zehn Wellen je Karte ersetzen den zuvor geprüften 20-Wellen-Stand. Im automatisierten Modell dauern die Kämpfe bei 1× rund 4,6–6,1 Minuten ohne Baupausen; die tatsächliche Spieldauer hängt von der Verteidigung ab. Alle acht Originalgegner bleiben enthalten. Das Moor hat zusätzlich fünf Laternenquallen, insgesamt 138 statt 133 Gegner, und benötigt in der gezielten Modellprüfung rund 295 Sekunden Kampfzeit. Späte alte Bauphasen werden mit ihrer Verteidigung vor das neue Finale übernommen; vorhandene Sterne bleiben erhalten. Der gemeinsame Wellenplan ist bisher nur um die Moorheiler ergänzt. P1 soll die übrige Wiederholung durch regionale Pläne ersetzen.
 
 **Ansichten für GitHub:** Die [README-Galerie](README.md#die-vier-spielbaren-karten) enthält je einen aktuellen In-Game-Screenshot aller vier Karten. Bilddateien liegen versioniert unter `artifacts/screenshots/`.
 
@@ -280,12 +280,13 @@ Wenn die visuelle Prüfung technisch blockiert ist, lautet der Status „visuell
 
 - [x] Umsetzungsplan für den nächsten Ausbau erstellt: [P1–P6 mit Aufgaben und Fertigkriterien](UMSETZUNGSPLAN.md).
 - [x] Konkreter Gegner-Produktionsplan erstellt: [Laternenqualle, Pixelmaßstab, Richtungen, Animation und Mechanik](GEGNER_PRODUKTIONSPLAN.md).
-- [x] Erste seitliche Laternenquallen-Probe mit sechs Frames erzeugt und im Moor angesehen; [visuelle Nutzerabnahme offen](artifacts/enemies/lantern-jelly/v1/REPORT.md).
+- [x] Erste seitliche Laternenquallen-Probe vom Nutzer abgenommen: „ja passt gut“, 17.10.2026.
+- [x] Laternenqualle mit 45 unterschiedlichen Posen in 48 Rahmen, drei Ansichten, Heilung und Tod vervollständigt und im Moor integriert; [Nachweis](artifacts/enemies/lantern-jelly/v1/REPORT.md).
 - [ ] P1: Vier eigenständige Zehn-Wellen-Pläne und passende Vorschau.
-- [ ] P2: Ersten Spezialgegner im Laternenmoor verständlich einführen.
+- [x] P2: Ersten Spezialgegner im Laternenmoor mit Wellenvorschau und Einführung integrieren. Die finale Kampfbalance bleibt offen für konkretes Nutzerfeedback.
 - [ ] P3: Ilyra, anschließend Runa und Auswahl von zwei Begleitern integrieren.
 - [ ] P4: Spielgefühl, Figurenanimationen und Rückmeldungen gezielt verbessern.
 
-**Nächster Schritt für den aktuellen Gegnerauftrag:** Die animierte Stilprobe ansehen und abnehmen; danach die erste Einheit gemäß Produktionsplan vervollständigen. Als nächster allgemeiner Spielausbau bleibt P1 aus dem Umsetzungsplan vorgesehen. Mondwarte und Story folgen nach dem Feinschliff der vorhandenen vier Karten. Auf Nutzerwunsch bleiben Prüfungen auf geänderte Funktionen und den jeweils nötigen Spielablauf beschränkt.
+**Nächster Schritt laut neuem Nutzerauftrag:** Den Laternenquallen-Stand committen und pushen, danach zwei bis drei kleine Succubus-Bildvorschläge mit klaren Fähigkeitsideen vorlegen. Die Auswahl geht der Animation und Integration voraus. Als nächster allgemeiner Spielausbau bleibt P1 vorgesehen; Mondwarte und Story folgen später. Prüfungen bleiben auf geänderte Funktionen und nötige Abläufe beschränkt.
 
 Bei späteren Arbeiten zuerst diesen Plan und den letzten belegten Stand lesen. Checklisten werden nur mit tatsächlichem Nachweis aktualisiert; Nutzerabnahmen werden nicht aus verstrichener Zeit oder fehlendem Widerspruch abgeleitet.

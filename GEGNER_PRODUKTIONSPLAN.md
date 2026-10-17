@@ -1,6 +1,6 @@
 # Spire – Produktionsplan für neue Gegner
 
-Stand: 17. Oktober 2026. **Erste seitliche Bewegungsprobe erstellt; visuelle Nutzerabnahme offen.** Sechs Frames sind als eigene Moor-Vorschau verfügbar: [Ergebnis und Aufbereitung](artifacts/enemies/lantern-jelly/v1/REPORT.md). Weitere Ansichten, Heilung, Tod und Gameplayintegration bleiben offen. Ergänzung zu [Umsetzungsplan P2](UMSETZUNGSPLAN.md#p2--eine-regionale-besonderheit-sauber-einführen) und zur [Grafikreferenz](reference/STYLE_GUIDE.md).
+Stand: 17. Oktober 2026. **Seitliche Stilprobe vom Nutzer abgenommen; vollständige Einheit anschließend umgesetzt.** Drei Ansichten, Bewegung, Heilung und Tod sind im Laternenmoor integriert: [Ergebnis und Aufbereitung](artifacts/enemies/lantern-jelly/v1/REPORT.md). Die finale Kampfbalance bleibt offen für Nutzerfeedback. Ergänzung zu [Umsetzungsplan P2](UMSETZUNGSPLAN.md#p2--eine-regionale-besonderheit-sauber-einführen) und zur [Grafikreferenz](reference/STYLE_GUIDE.md).
 
 ## 1. Was wir übernehmen
 
@@ -35,7 +35,7 @@ Diese Maße sind ein konkreter Produktionsstart. Änderungen nach der ersten Spi
 
 ## 3. Benötigte Animationen
 
-Für die erste vollständige Einheit sind **48 unterschiedliche Körperframes** vorgesehen. Links wird nur dann aus der Seitenansicht gespiegelt, wenn Laterne, Licht und Körperzeichnung das tatsächlich erlauben; das Design wird dafür möglichst symmetrisch angelegt.
+Die vollständige Einheit hat **48 Rahmen mit 45 unterschiedlichen Posen**. Drei Ruheframes verwenden die jeweils erste Bewegungsphase erneut; dafür werden keine zusätzlichen Bilder erzeugt. Links wird aus der Seitenansicht gespiegelt; die kleine mittige Laterne bleibt dabei erhalten.
 
 | Zustand | Frames je Ansicht | Ansichten | Summe | Erste Zeitvorgabe |
 | --- | --- | --- | --- | --- |
@@ -86,13 +86,13 @@ Die Fähigkeit muss Zielpriorität interessant machen. Wenn sie nur Wellen verl�
 
 ## 7. Fertigkriterien und begrenzte Prüfung
 
-- [ ] Seitenprobe passt neben Originalgegner und Gelände: vergleichbare Pixelgröße, Konturen und Details; auch bei 100 % und 120 % Kamera lesbar.
-- [ ] Alle benötigten Ansichten sind vorhanden; Bewegung, Heilung und Tod sind echte zusammenhängende Folgen ohne springende Anker, abgeschnittene Tentakel oder wechselndes Design.
-- [ ] Heilimpuls, Tod, Pause und 2× laufen im tatsächlichen Kampf korrekt. Todesanimation wird beendet und entfernt; kein Heilereignis nach dem Tod.
-- [ ] Ein kleiner automatisierter Mechaniktest deckt Reichweite, Heilobergrenze, Zielausschlüsse und mehrere Heiler ab. Ein technischer Atlascheck prüft Maße, gültige Framefolgen und Rahmenüberläufe. Kein flächendeckender erneuter Test aller Karten.
-- [ ] Eine frühe Einführungswelle und eine spätere gemischte Moorwelle gezielt spielen. Nur festgestellte Probleme nachprüfen.
-- [ ] Spielansicht und kurze bewegte Vorschau dokumentieren. Build, Offline-Ausgabe, Roadmap und Versionsstand bei der Umsetzung aktualisieren.
+- [x] Seitenprobe neben Originalgegner und Gelände bei 100/120 % geprüft und vom Nutzer abgenommen.
+- [x] Drei Ansichten mit Bewegung, Heilung und Tod vorhanden; Rahmen technisch geprüft und Folgen in der Vorschau angesehen.
+- [x] Heilpose an Simulationszeit gebunden; Tod, Pause und Tempo berücksichtigt. Tod vor Heilung durch gezielte Logikprüfung abgesichert.
+- [x] Gezielt Heilgrenzen, Zielausschlüsse, mehrere Heiler und Atlasrahmen geprüft; keine komplette Kartentestserie.
+- [x] Moor-Prüfwellen 4 und 7 vollständig im Browser angesehen; Heilimpulse und Lebenspunkte sichtbar bestätigt.
+- [x] Aktuelle Spielansicht, interaktive Bewegungsvorschau, Builds und Roadmap aktualisiert; siehe Bericht.
 
 **Ergebnis des ersten Produktionspakets:** eine stilistisch passende, vollständig animierte und spielerisch verständliche Laternenqualle. Dieser fertige Gegner ist anschließend die Produktionsvorlage für einen eventuell benötigten zweiten Spezialgegner. Die regionalen Wellen aus P1 bleiben der nächste allgemeine Umsetzungsschritt; dieser Plan beschreibt den darin anschließenden Gegnerausbau.
 
-**Tatsächlicher Zwischenstand:** Auf den anschließenden Nutzerauftrag „erstelle den ersten“ wurde die erste Grafikprobe vorgezogen. Eine Generation lieferte die sechs Seitenposen; Laufzeitexport, Vergleich im echten Moor und eigene Offline-Vorschau sind angelegt. Das vollständige 48-Frame-Paket wird nach der vorgesehenen Stilabnahme vervollständigt. P1 und die Heilmechanik sind damit nicht als umgesetzt markiert.
+**Tatsächlicher Stand:** Auf „ja passt gut“ ist die Stilprobe abgenommen. Vier weitere Generationsaufträge lieferten Richtungen, Heilung, Tod und einen gezielt getrennten Frontzyklus, weil im ersten Richtungsblatt Fronttentakel aneinanderstießen. Nur dessen sechs Rückansichten werden verwendet. Die sechs abgenommenen Seitenframes bleiben bytegleich erhalten. Laufzeitatlas, explizite Animationen, begrenzte Heillogik, Welleneinsätze, Einführung und separate Kampfvorschau sind umgesetzt. P1 bleibt offen.

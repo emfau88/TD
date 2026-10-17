@@ -1,12 +1,12 @@
 # Spire – Umsetzungsplan für den nächsten Ausbau
 
-Stand: 17. Oktober 2026. Status: **Ausbau geplant; erste Gegner-Grafikprobe erstellt.** Dieser Plan konkretisiert die [Roadmap](ROADMAP.md); deren Grafik- und Asset-Vorgaben bleiben verbindlich. Auf den nachfolgenden Auftrag zur ersten Einheit wurde die seitliche Laternenquallen-Probe aus P2 vorgezogen. Die normale Spielversion, ihre Wellen und Spielstände bleiben unverändert; siehe [Prüfbericht](artifacts/enemies/lantern-jelly/v1/REPORT.md).
+Stand: 17. Oktober 2026. Status: **P2-Laternenqualle nach Stilabnahme umgesetzt; übriger Ausbau geplant.** Dieser Plan konkretisiert die [Roadmap](ROADMAP.md); deren Grafik- und Asset-Vorgaben bleiben verbindlich. Auf den nachfolgenden Auftrag zur ersten Einheit wurde P2 vorgezogen. Die Qualle ist jetzt im Moor in Welle 4, 7 und 9 enthalten; bestehende Speicherformate bleiben erhalten. Siehe [Prüfbericht](artifacts/enemies/lantern-jelly/v1/REPORT.md).
 
 ## Ziel und Ausgangspunkt
 
 Aus dem vorhandenen Prototyp soll ein zusammenhängendes Tower-Defense-Spiel mit fünf eigenständigen Karten werden. Zuerst verbessern wir die spielerische Qualität der vier vorhandenen Karten. Zusätzlicher Inhalt folgt auf dieser Grundlage.
 
-Vorhanden sind vier direkt auswählbare Karten, acht Türme, acht aktive Gegnertypen sowie Wisp und Mara. Jede Karte hat zehn Wellen; aktuell verwenden alle denselben Wellenplan. Runa und Ilyra besitzen im alten Projekt Figurenentwürfe und Fähigkeiten, aber noch keine fertig geprüfte Integration in das aktuelle Spiel. Vesper ist zunächst eine Storyfigur mit Porträt. Vier zusätzliche Gegnerrollen aus dem alten Projekt sind Kandidaten für eine spätere gezielte Übernahme.
+Vorhanden sind vier direkt auswählbare Karten, acht Türme, acht Originalgegner plus Laternenqualle sowie Wisp und Mara. Jede Karte hat zehn Wellen; der gemeinsame Plan wurde bisher nur um die Moorheiler ergänzt. Runa und Ilyra besitzen im alten Projekt Figurenentwürfe und Fähigkeiten, aber noch keine fertig geprüfte Integration in das aktuelle Spiel. Vesper ist zunächst eine Storyfigur mit Porträt. Drei weitere alte Gegnerrollen sind spätere Kandidaten.
 
 **Verbindlich:** zehn Wellen je Karte, frei zugängliche Karten zum Testen, bestehende Speicherstände berücksichtigen, PC-Steuerung und Zoom erhalten. Mobile bleibt zurückgestellt. Keine neue Engine, kein umfassender Umbau und keine Assetproduktion auf Vorrat.
 
@@ -46,13 +46,13 @@ P1 bis P4 bilden den empfohlenen nächsten Ausbau. P5 und P6 bleiben spätere Ab
 
 **Erster Kandidat: Laternenmoor mit einer neu aufgebauten Laternenqualle als Heiler.** Die alte Einheit liefert Motiv und Mechanikidee. Ihre hoch aufgelösten Bilder und kurzen Framefolgen gelten als Entwurf. Der [konkrete Gegner-Produktionsplan](GEGNER_PRODUKTIONSPLAN.md) legt Pixelmaßstab, 48 Körperframes, Produktionsfolge, technische Integration und erste Spielwerte fest.
 
-**Zwischenstand:** Sechs seitliche Bewegungsframes sind erzeugt, technisch aufbereitet und als separate Moor-Probe im Browser angesehen. Die visuelle Nutzerabnahme sowie weitere Ansichten, Heilaktion, Tod und Integration stehen noch aus. Start über `GEGNERPROBE STARTEN.cmd` nach `npm run reference:enemy:build`.
+**Umgesetzt nach Stilabnahme:** Drei Ansichten mit insgesamt 45 unterschiedlichen Posen in 48 Rahmen, Heilaktion und Tod sowie Einsätze in Moorwelle 4, 7 und 9. Die separate Vorschau bietet Zustands-/Richtungswahl und zwei Kampfwellen ohne Spielstandzugriff. Start über `GEGNERPROBE STARTEN.cmd` nach `npm run reference:enemy:build`. Heillogik, Rahmen und Speicherübernahme sind gezielt geprüft; die finale Nutzerbeurteilung der neuen Kampfsituationen bleibt möglich.
 
-- [ ] Alte Heillogik isoliert prüfen und an die aktuelle Simulation anpassen. Kein pauschaler Import der alten Kampagnensimulation.
-- [ ] Heilradius, Takt, Menge und mögliche Ziele festlegen; Selbstheilung und das Stapeln mehrerer Heiler ausdrücklich regeln.
-- [ ] Heiler durch Silhouette und einen kurzen sichtbaren Heileffekt erkennbar machen. Einführung zunächst in einer übersichtlichen Welle.
-- [ ] Passende Gegenstrategie ermöglichen: Heiler früh ausschalten oder seine Gruppe rechtzeitig überwältigen. Kein bestimmter Begleiter darf Pflicht sein.
-- [ ] Zunächst eine vereinfachte Pixelpose und sechs zusammenhängende Bewegungsframes im Moor zeigen. Nach visueller Abnahme die übrigen Richtungen sowie Heil- und Todesanimation vervollständigen; erst danach als fertiges Gegnerasset integrieren.
+- [x] Heillogik passend zur aktuellen Simulation umsetzen; Originalvergleich bleibt ohne neue Gegner.
+- [x] Heilradius, Takt, Menge, Ziele und Begrenzung mehrerer Heiler festlegen.
+- [x] Eigene Silhouette, Heilpose, kurze Verbindungen und Zielringe; erste Einführung in Welle 4.
+- [x] Heiler durch bestehende Luftabwehr angreifbar machen; Moor mit vorhandenem Budget gewinnbar.
+- [x] Seitenprobe vom Nutzer abnehmen lassen und die benötigten Richtungen und Zustände vervollständigen.
 
 **Fertig, wenn:** Spieler erkennen ohne Handbuch, wer heilt und wie sie reagieren können. Heilung kann keine endlose Welle erzeugen. Das Moor bleibt mit Wisp und Mara lösbar.
 

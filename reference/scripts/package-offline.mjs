@@ -13,8 +13,7 @@ const images = Object.fromEntries(await Promise.all(Object.keys(manifest).map(as
   `data:image/png;base64,${(await readFile(resolve(root, 'public/assets', `${name}.png`))).toString('base64')}`,
 ])));
 if (stylePreview) images['Mara style source'] = `data:image/png;base64,${(await readFile(resolve(root, 'public/assets/Mara style source.png'))).toString('base64')}`;
-if (woodland || enemyPreview) for(const name of ['Laternenmoor Props v1','Spiegelwinter Tiles v1','Spiegelwinter Sprites v1','Windbruch Tiles v1','Windbruch Sprites v1','Windbruch Details v1'])images[name] = `data:image/png;base64,${(await readFile(resolve(root, 'public/assets',`${name}.png`))).toString('base64')}`;
-if (enemyPreview) images['Lantern Jelly Pixel Preview v1'] = `data:image/png;base64,${(await readFile(resolve(root, 'public/assets/Lantern Jelly Pixel Preview v1.png'))).toString('base64')}`;
+if (woodland || enemyPreview) for(const name of ['Laternenmoor Props v1','Spiegelwinter Tiles v1','Spiegelwinter Sprites v1','Windbruch Tiles v1','Windbruch Sprites v1','Windbruch Details v1','Lantern Jelly Pixel v1'])images[name] = `data:image/png;base64,${(await readFile(resolve(root, 'public/assets',`${name}.png`))).toString('base64')}`;
 const uiNames = ['panel-frame.png', 'button-states.png', 'menu-backdrop.png', 'spire-emblem.png', 'hud-icons.png', 'tower-slots.png', 'map-covers.png'];
 const uiImages = Object.fromEntries(await Promise.all(uiNames.map(async name => [
   name,

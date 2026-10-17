@@ -1,0 +1,6 @@
+Use case: identity-preserve. Asset type: fix ONLY the front/down movement cycle of the approved lantern jellyfish.
+References: approved turquoise pixel jellyfish and new directions. Keep the exact coarse square pixel technique, simple bell silhouette with pale rim, broad tentacles, central small amber lantern and small amber eyes.
+Generate exactly SIX isolated sprites in a THREE COLUMNS by TWO ROWS arrangement. EVERY sprite faces directly toward the viewer/down/south, both eyes symmetric at the front, a slight top view matching a tower defense game. No side views, no back views.
+Six successive swim-cycle poses in reading order: relaxed, tentacles tuck, draw inward, thrust widely outward, follow through, relax. Same bell dimensions and center for all frames, same equipment. Tentacles must show real movement, not the whole sprite just moving up/down.
+Important: generous transparent gap of at least half a character width between sprites. No tentacle or halo ever touches its neighbour. Each character identical visible scale, about30x34 logical pixels rendered enlarged with hard chunky squares, just14 flat colors, no complex detail, no painterly illustration.
+Background actual transparent alpha. NO glow halos, labels, text, lines, grid, shadows or particles. Keep every full sprite completely within its separated cell.

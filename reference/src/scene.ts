@@ -3,6 +3,7 @@ import { CELL,COLS,ROWS,WIDTH,HEIGHT,TOWERS,pathCells,waterCells,seeded,center }
 import { assetUrl } from './assets';
 import { Simulation,stats, type Enemy,type Tower,type Event } from './simulation';
 import { TREE_FRAMES, WATER_TILE_SIZE, waterTileSource, clearWaterBackdrop } from './terrain';
+import { JELLY_ASSET, JELLY_SCALE, jellyFrame, makeJellyAnimations } from './jelly-art';
 
 export type AssetInfo={width?:number;height?:number;frames?:number;cols?:number;rows?:number;sheetWidth:number;sheetHeight:number;frameMap?:number[];durations?:number[];tags?:{name:string;start:number;end:number}[]};
 export type Assets=Record<string,AssetInfo>;
@@ -52,6 +53,7 @@ export class ForestScene extends Phaser.Scene {
     if(this.routeKey){this.textures.remove(this.routeKey);this.routeKey=undefined;}
   }
   private makeAnimations(){
+    makeJellyAnimations(this);
     for(const [name,info] of Object.entries(this.assets)){
       if(!info.width||!info.frameMap)continue;
       const make=(key:string,start:number,end:number,repeat=-1)=>{
@@ -182,6 +184,18 @@ export class ForestScene extends Phaser.Scene {
     if(event.type==='hit'){const tower=event.shot!.tower,id=String(tower.def.id).padStart(2,'0'),prefix=`Tower ${id} - ${tower.def.id===7?'Level X':`Level ${String(tower.level).padStart(2,'0')}`}`;const key=tower.def.id===8?`${prefix} - Projectile`:[1,6].includes(tower.def.id)?`Tower ${id} - Weapon - Impact`:`${prefix} - Projectile - Impact`;if(!this.playEffect(key,`${key}-play`,event.x!,event.y!,tower.def.id===8?.32:.6))this.puff(event.x!,event.y!,tower.def.color,tower.def.splash?18:7);if(tower.def.chain){const line=this.track(this.add.graphics().setDepth(6500));line.lineStyle(2,0xbaf6ff,1);const links=[tower,...event.links!];for(let i=1;i<links.length;i++){line.beginPath().moveTo(links[i-1].x,links[i-1].y).lineTo(links[i].x,links[i].y).strokePath();}this.tweens.add({targets:line,alpha:0,duration:180,onComplete:()=>line.destroy()});}}
     if(event.type==='kill'){this.floating(event.x!,event.y!-16,`+${event.amount}`, '#fff0a5');this.removeEnemy(event.enemy!,true);}
     if(event.type==='escape'){this.removeEnemy(event.enemy!,false);this.puff(event.x!,event.y!,0xeb8879,16);}
+    if(event.type==='heal'){
+      const glow=this.track(this.add.graphics().setDepth(4600));
+      glow.lineStyle(1,0xc2dda1,.6);
+      for(const healed of event.healedTargets??[]){
+        const target=healed.enemy,bob=target.def.flying?-11:0;
+        glow.beginPath().moveTo(event.x!,event.y!-11).lineTo(target.x,target.y+bob).strokePath();
+        const ring=this.track(this.add.ellipse(target.x,target.y+bob,20,12,0xb9d68b,.12).setStrokeStyle(1,0xdce9b2,.9).setDepth(4601));
+        this.tweens.add({targets:ring,scale:1.6,alpha:0,duration:280,onComplete:()=>ring.destroy()});
+        this.floating(target.x,target.y-24+bob,`+${Math.round(healed.amount)}`,'#d7efaf');
+      }
+      this.tweens.add({targets:glow,alpha:0,duration:230,onComplete:()=>glow.destroy()});
+    }
   }this.refreshPreview();}
   private playEffect(texture:string,animation:string,x:number,y:number,scale:number,origin=.5){if(!this.textures.exists(texture)||!this.anims.exists(animation))return false;const sprite=this.track(this.add.sprite(x,y,texture).setScale(scale).setOrigin(.5,origin).setDepth(6500));sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE,()=>sprite.destroy());sprite.play({key:animation,repeat:0});return true;}
   private weaponKey(tower:Tower){return`Tower ${String(tower.def.id).padStart(2,'0')} - Level ${String(tower.level).padStart(2,'0')} - Weapon`;}
@@ -196,7 +210,7 @@ export class ForestScene extends Phaser.Scene {
     const idle=`${weaponKey}-idle`;if(this.anims.exists(idle))view.weapon.play(idle);
     this.drawRange();
   }
-  private removeEnemy(enemy:Enemy,death:boolean){const view=this.enemyViews.get(enemy.uid);if(!view)return;view.bar.destroy();view.shadow.destroy();this.enemyViews.delete(enemy.uid);const key=`${enemy.def.id}-death-${enemy.direction}`;if(death&&this.anims.exists(key)){this.track(view.sprite);view.sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE,()=>view.sprite.destroy());view.sprite.play(key);}else view.sprite.destroy();}
+  private removeEnemy(enemy:Enemy,death:boolean){const view=this.enemyViews.get(enemy.uid);if(!view)return;view.bar.destroy();view.shadow.destroy();this.enemyViews.delete(enemy.uid);const direction=enemy.healAction?.direction??enemy.direction,key=`${enemy.def.id}-death-${direction}`;if(death&&this.anims.exists(key)){this.track(view.sprite);view.sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE,()=>view.sprite.destroy());view.sprite.play({key,repeat:0});}else view.sprite.destroy();}
   private puff(x:number,y:number,color:number,radius=10){const ring=this.track(this.add.circle(x,y,radius,color,.35).setDepth(6500));this.tweens.add({targets:ring,scale:2.1,alpha:0,duration:250,onComplete:()=>ring.destroy()});}
   private floating(x:number,y:number,text:string,color:string){const label=this.track(this.add.text(x,y,text,{fontFamily:'monospace',fontSize:'11px',fontStyle:'bold',color,stroke:'#304a32',strokeThickness:2}).setOrigin(.5).setDepth(6800));this.tweens.add({targets:label,y:y-25,alpha:0,duration:850,onComplete:()=>label.destroy()});}
   update(_time:number,delta:number){
@@ -206,11 +220,18 @@ export class ForestScene extends Phaser.Scene {
     for(const tower of this.sim.towers){const view=this.towerViews.get(tower.uid);if(view&&[1,3,4,6].includes(tower.def.id))view.weapon.setRotation(tower.angle);}
     for(const enemy of this.sim.enemies){
       let view=this.enemyViews.get(enemy.uid);
-      if(!view){view={sprite:this.add.sprite(enemy.x,enemy.y,enemy.def.id).setScale(enemy.def.id==='Firewasp'?.65:.83),shadow:this.add.ellipse(enemy.x,enemy.y+12,23,9,0x263e30,.24),bar:this.add.graphics(),anim:''};this.enemyViews.set(enemy.uid,view);}
-      const key=`${enemy.def.id}-move-${enemy.direction}`;
-      if(view.anim!==key&&this.anims.exists(key)){view.sprite.play(key);view.anim=key;}
+      if(!view){view={sprite:this.add.sprite(enemy.x,enemy.y,enemy.def.id).setScale(enemy.def.id==='Firewasp'?.65:JELLY_SCALE),shadow:this.add.ellipse(enemy.x,enemy.y+12,23,9,0x263e30,.24),bar:this.add.graphics(),anim:''};this.enemyViews.set(enemy.uid,view);}
+      const cast=enemy.def.id===JELLY_ASSET?enemy.healAction:undefined;
+      if(cast){
+        // The simulation clock owns cast progress, so pause, tempo and the
+        // actual healing pulse cannot drift away from this four-frame action.
+        view.sprite.stop().setFrame(jellyFrame('heal',cast.direction,(this.sim.elapsed-cast.startedAt)*1000));view.anim='heal';
+      }else{
+        const key=`${enemy.def.id}-move-${enemy.direction}`;
+        if(view.anim!==key&&this.anims.exists(key)){view.sprite.play(key);view.anim=key;}
+      }
       const bob=enemy.def.flying?Math.sin(this.ticks*.007+enemy.uid)*3-11:0;
-      view.sprite.setPosition(enemy.x,enemy.y+bob).setFlipX(enemy.flip).setDepth(enemy.y+(enemy.def.flying?4000:2000)).setTint(enemy.slowTime>0?0xb9ecff:enemy.burnTime>0?0xffd3a6:0xffffff);
+      view.sprite.setPosition(enemy.x,enemy.y+bob).setFlipX(cast?.flip??enemy.flip).setDepth(enemy.y+(enemy.def.flying?4000:2000)).setTint(enemy.slowTime>0?0xb9ecff:enemy.burnTime>0?0xffd3a6:0xffffff);
       if(enemy.boss)view.sprite.setScale(1.15);view.shadow.setPosition(enemy.x,enemy.y+9).setDepth(1000);
       const barY=enemy.y-25+bob;view.bar.clear().setDepth(5000);if(enemy.hp<enemy.maxHp||enemy.boss){view.bar.fillStyle(0x263f33,.85).fillRoundedRect(enemy.x-17,barY,34,5,2);view.bar.fillStyle(enemy.boss?0xf2b473:0xdde69c,1).fillRoundedRect(enemy.x-16,barY+1,32*enemy.hp/enemy.maxHp,3,1);}
     }

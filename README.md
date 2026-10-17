@@ -4,6 +4,8 @@
 
 **Start nach dem Klonen:** `npm ci`, dann `npm run reference:regions:build`, anschließend `REGIONEN STARTEN.cmd` doppelklicken. Die erzeugte HTML-Datei enthält Code und Grafiken und funktioniert ohne Server. Entwicklung: `npm run reference:dev`, dann `http://127.0.0.1:5180/woodland.html` öffnen. [Spielanleitung](reference/README.md), [Roadmap](ROADMAP.md), [Moorbericht](artifacts/m3/REPORT.md), [Winterbericht](artifacts/m3-winter/REPORT.md), [Windbruch mit Asset- und Animationsnachweis](artifacts/m3-wind/REPORT.md).
 
+**Neuer Moorgegner:** Die Laternenqualle ergänzt die acht Originalgegner als fliegender Heiler in Welle 4, 7 und 9. Ihr abgenommener Pixelentwurf wurde mit drei Ansichten, Bewegung, Heilung und Tod vervollständigt. Separate Animations- und Kampfvorschau: `npm run reference:enemy:build`, danach `GEGNERPROBE STARTEN.cmd`. [Produktionsnachweis und Quellen](artifacts/enemies/lantern-jelly/v1/REPORT.md).
+
 Der Plan für die Überarbeitung auf Basis der ursprünglichen Karten steht in [ROADMAP.md](ROADMAP.md): fünf zusammenhängende Spielkarten, verbindliche Asset-Vorgaben und schrittweise Abnahmen. **M0 ist abgeschlossen:** Die drei ursprünglichen Karten sind separat unter [reference/](reference/README.md) rekonstruiert. Zum Spielen `ORIGINAL SPIEL STARTEN.cmd` öffnen; [Prüfbericht und Screenshots](artifacts/m0/REPORT.md) dokumentieren Herkunft und Grenzen. **Die M1-Grafikprobe ist abgenommen:** `GRAFIKPROBE STARTEN.cmd` bleibt als Vergleich mit Originalgelände, Wisp, Mara und Turmkampf erhalten; [Grafikvorgaben](reference/STYLE_GUIDE.md) halten Maße und Grenzen fest. Die Archivsektion unter der Galerie beschreibt den erhaltenen älteren Stand mit fünf Karten.
 
 ## Die vier spielbaren Karten

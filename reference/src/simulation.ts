@@ -1,9 +1,11 @@
 import { CELL,COLS,ROWS,MAPS,TOWERS,center,pathCells,pathPoints,waterCells,waveComposition, type EnemyDef,type Point,type Priority,type TowerDef } from './data';
+import { JELLY_HEAL } from './jelly';
 
 export type Tower = Point & { uid: number; def: TowerDef; col: number; row: number; level: number; cooldown: number; spent: number; priority: Priority; kills: number; angle: number; };
-export type Enemy = Point & { uid: number; def: EnemyDef; hp: number; maxHp: number; distance: number; total: number; path: Point[]; segment: number; speed: number; slow: number; slowTime: number; burn: number; burnTime: number; burnOwner?: number; burnSource?: Tower; boss: boolean; direction: 'up'|'down'|'side'; flip: boolean; };
+export type HealAction={startedAt:number;direction:'up'|'down'|'side';flip:boolean;pulsed:boolean};
+export type Enemy = Point & { uid: number; def: EnemyDef; hp: number; maxHp: number; distance: number; total: number; path: Point[]; segment: number; speed: number; slow: number; slowTime: number; burn: number; burnTime: number; burnOwner?: number; burnSource?: Tower; boss: boolean; direction: 'up'|'down'|'side'; flip: boolean; healAction?:HealAction;nextHealAt?:number;lastHealedAt?:number; };
 export type Shot = Point & { uid: number; tower: Tower; target: number; speed: number; damage: number; level: number; };
-export type Event = { type: 'build'|'upgrade'|'sell'|'fire'|'hit'|'kill'|'escape'|'wave'|'clear'|'victory'|'defeat'; x?: number; y?: number; tower?: Tower; enemy?: Enemy; shot?: Shot; amount?: number; links?: Point[]; };
+export type Event = { type: 'build'|'upgrade'|'sell'|'fire'|'hit'|'kill'|'escape'|'wave'|'clear'|'victory'|'defeat'|'heal-start'|'heal'; x?: number; y?: number; tower?: Tower; enemy?: Enemy; shot?: Shot; amount?: number; links?: Point[]; healedTargets?:{enemy:Enemy;amount:number}[]; };
 export type Phase = 'build'|'wave'|'victory'|'defeat';
 const distance=(a:Point,b:Point)=>Math.hypot(a.x-b.x,a.y-b.y);
 export const stats=(tower: Tower)=>({damage:tower.def.damage*[1,1.75,2.8][tower.level-1],range:tower.def.range+(tower.level-1)*15,cooldown:tower.def.cooldown/Math.pow(1.13,tower.level-1)});
@@ -48,7 +50,7 @@ export class Simulation {
     const nodes=def.flying?this.map.air:this.map.paths[this.spawned%this.map.paths.length];
     const path=pathPoints(nodes), hp=def.hp*Math.pow(1.095,this.wave-1)*(boss?3.2:1)*(1+this.map.id*.06);
     const total=path.slice(1).reduce((sum,p,i)=>sum+distance(path[i],p),0);
-    this.enemies.push({uid:this.uid++,def,...path[0],hp,maxHp:hp,path,total,distance:0,segment:0,speed:def.speed*(boss?.78:1),slow:0,slowTime:0,burn:0,burnTime:0,boss,direction:'side',flip:false});
+    this.enemies.push({uid:this.uid++,def,...path[0],hp,maxHp:hp,path,total,distance:0,segment:0,speed:def.speed*(boss?.78:1),slow:0,slowTime:0,burn:0,burnTime:0,boss,direction:'side',flip:false,...(def.healer?{nextHealAt:this.elapsed+JELLY_HEAL.interval}:{})});
     this.spawned++;
   }
   private hurt(enemy:Enemy,damage:number,tower:Tower) {
@@ -77,6 +79,33 @@ export class Simulation {
     if(!Number.isFinite(dt)||dt<=0||this.phase!=='wave')return;
     const steps=Math.ceil(dt/.025), step=dt/steps;
     for(let index=0;index<steps&&this.phase==='wave';index++)this.tick(step);
+  }
+  private healTargets(healer:Enemy,pulseTime=this.elapsed){
+    return this.enemies.filter(enemy=>enemy!==healer&&enemy.hp>0&&enemy.hp<enemy.maxHp&&!enemy.def.healer&&!enemy.boss&&distance(enemy,healer)<=JELLY_HEAL.range&&(enemy.lastHealedAt===undefined||pulseTime-enemy.lastHealedAt>=JELLY_HEAL.interval-1e-9))
+      .sort((a,b)=>(b.maxHp-b.hp)-(a.maxHp-a.hp)||a.uid-b.uid).slice(0,JELLY_HEAL.maxTargets);
+  }
+  private updateHealing(){
+    // Resolve only after every burn tick and projectile hit, so dead units cannot cast or receive a pulse.
+    for(const healer of this.enemies){
+      if(!healer.def.healer||healer.hp<=0)continue;
+      const action=healer.healAction;
+      if(action){
+        const age=this.elapsed-action.startedAt;
+        if(!action.pulsed&&age>=JELLY_HEAL.pulseAt-1e-9){
+          action.pulsed=true;
+          const healedTargets=this.healTargets(healer).map(enemy=>{
+            const amount=Math.min(JELLY_HEAL.amount,enemy.maxHp-enemy.hp);enemy.hp+=amount;enemy.lastHealedAt=this.elapsed;return {enemy,amount};
+          });
+          if(healedTargets.length)this.events.push({type:'heal',enemy:healer,x:healer.x,y:healer.y,healedTargets,amount:healedTargets.reduce((sum,target)=>sum+target.amount,0)});
+        }
+        if(age>=JELLY_HEAL.castDuration-1e-9)healer.healAction=undefined;
+      }
+      if(!healer.healAction&&this.elapsed>=(healer.nextHealAt??0)-1e-9&&this.healTargets(healer,this.elapsed+JELLY_HEAL.pulseAt).length){
+        healer.healAction={startedAt:this.elapsed,direction:healer.direction,flip:healer.flip,pulsed:false};
+        healer.nextHealAt=this.elapsed+JELLY_HEAL.interval;
+        this.events.push({type:'heal-start',enemy:healer,x:healer.x,y:healer.y});
+      }
+    }
   }
   private tick(dt:number) {
     if(this.phase!=='wave')return;
@@ -107,6 +136,7 @@ export class Simulation {
       if(gap<=step+4){this.impact(shot,target);return false;}
       shot.x+=(target.x-shot.x)/gap*step;shot.y+=(target.y-shot.y)/gap*step;return true;
     });
+    this.updateHealing();
     this.enemies=this.enemies.filter(e=>e.hp>0);
     if(!this.queue.length&&!this.enemies.length){this.shots=[];this.waveBonus=35+this.wave*3;this.gold+=this.waveBonus;this.events.push({type:'clear',amount:this.waveBonus});this.phase=this.wave===this.waveLimit?'victory':'build';if(this.phase==='victory')this.events.push({type:'victory'});}
   }

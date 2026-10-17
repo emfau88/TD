@@ -21,7 +21,7 @@ export const TOWERS: TowerDef[] = [
   { id: 7, name: 'Glutwerfer', role: 'Brandschaden', description: 'Feuerbälle verbrennen Bodengegner über mehrere Sekunden.', cost: 145, damage: 17, range: 125, cooldown: .85, color: 0xf8a576, targets: 'ground', splash: 30, burn: 8 },
   { id: 8, name: 'Sonnenobelisk', role: 'Schwere Magie', description: 'Mächtige Energiewellen durchdringen Rüstung und treffen Gruppen.', cost: 210, damage: 48, range: 146, cooldown: 1.45, color: 0xffc77e, targets: 'all', splash: 42, pierce: true },
 ];
-export type EnemyDef = { id: string; name: string; hp: number; speed: number; gold: number; flying: boolean; armor: number; lives: number; };
+export type EnemyDef = { id: string; name: string; hp: number; speed: number; gold: number; flying: boolean; armor: number; lives: number; healer?: boolean; };
 export const ENEMIES: EnemyDef[] = [
   { id: 'Leafbug', name: 'Blattkäfer', hp: 30, speed: 57, gold: 10, flying: false, armor: 0, lives: 1 },
   { id: 'Firebug', name: 'Feuerkäfer', hp: 48, speed: 78, gold: 13, flying: false, armor: 0, lives: 1 },

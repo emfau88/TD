@@ -12,7 +12,7 @@ Entwicklung: `npm run reference:dev`, dann `http://127.0.0.1:5180/woodland.html`
 
 ## Erste Gegner-Grafikprobe
 
-Die neue Laternenqualle ist als separate animierte Seitenprobe im echten Moor verfügbar, mit Originalfliegern zum Vergleich. Im Projektordner `npm run reference:enemy:build` ausführen, danach `GEGNERPROBE STARTEN.cmd` öffnen. Entwicklung: `/enemy-preview.html`. Pause, 1×/2×, Einzelbilder und 100/120-%-Zoom stehen bereit. Diese Probe verändert keine Spielstände; Heilmechanik und weitere Animationen sind noch nicht integriert. [Ergebnis, Prompt und offene Schritte](../artifacts/enemies/lantern-jelly/v1/REPORT.md).
+Die Laternenqualle ist nach Abnahme ihrer Seitenprobe mit drei Ansichten, Bewegung, Heilaktion und Tod im Moor integriert. Eine separate Vorschau zeigt alle Zustände neben Originalfliegern und bietet zwei Kampfwellen ohne Spielstandzugriff: `npm run reference:enemy:build`, danach `GEGNERPROBE STARTEN.cmd`. Entwicklung: `/enemy-preview.html`. Pause, 1×/2×, Einzelbilder und 100/120-%-Zoom stehen bereit. [Ergebnis und Prompts](../artifacts/enemies/lantern-jelly/v1/REPORT.md).
 
 ## Bedienung und Speicherung
 
@@ -26,7 +26,7 @@ Die neue Laternenqualle ist als separate animierte Seitenprobe im echten Moor ve
 
 Speicherkennung bleibt `spire-woodland-v1`. Bestehende Waldstände werden in die getrennten Kartenplätze übernommen. Nach Neuladen „Gespeicherte Bauphase laden“ wählen. Unterbrochene Wellen beginnen erneut mit der letzten Bauphase; abgeschlossene Spiele behalten ihr Ergebnis. Entwicklungsserver und lokale HTML-Datei haben unterschiedliche Browser-Speicherbereiche.
 
-Die neue Fassung hat **10 Wellen mit insgesamt 133 Gegnern je Karte**, einschließlich zweier verstärkter Bossvarianten in Welle 5 und 10. Alle acht Gegnertypen kommen vor: Blattkäfer, Feuerkäfer, Skorpion, Magmakrabbe, Flugheuschrecke, Feuerwespe, Panzerflieger und Leerenfalter. Die letzten vier sind Fluggegner. Ältere Bauphasen ab zehn bereits abgeschlossenen Wellen behalten Türme, Gold und Begleiter und setzen vor dem neuen Finale an; Sterne bleiben erhalten. Die historische Originalvergleichsversion behält ihre damaligen 20 Wellen.
+Die Fassung hat **10 Wellen mit 133 Gegnern auf Wald-, Winter- und Inselkarte sowie 138 im Moor**, einschließlich zweier verstärkter Bossvarianten in Welle 5 und 10. Alle acht Originalgegner kommen vor: Blattkäfer, Feuerkäfer, Skorpion, Magmakrabbe, Flugheuschrecke, Feuerwespe, Panzerflieger und Leerenfalter. Die letzten vier sind Fluggegner. Hinzu kommt die Laternenqualle als fliegender Moorheiler in Welle 4 (eine), 7 und 9 (je zwei). Alle zwei Sekunden heilt sie bis zu zwei verletzte Nachbarn um sechs Lebenspunkte im Radius 100; Heiler und Bosse sind ausgeschlossen, die Wirkung mehrerer Heiler stapelt nicht. Ältere Bauphasen ab zehn bereits abgeschlossenen Wellen behalten Türme, Gold und Begleiter und setzen vor dem neuen Finale an; Sterne bleiben erhalten. Die historische Originalvergleichsversion behält ihre damaligen acht Gegnertypen und 20 Wellen.
 
 ## Build und gezielte Prüfung
 

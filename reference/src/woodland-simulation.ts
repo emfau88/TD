@@ -13,7 +13,7 @@ export type WoodlandSnapshot={version:2;map:RegionID;gold:number;lives:number;wa
 const cell=(point:Point):[number,number]=>[Math.floor(point.x/CELL),Math.floor(point.y/CELL)];
 export class WoodlandSimulation extends Simulation {
   override get waveLimit(){return REGION_WAVE_COUNT;}
-  override compositionForWave(wave:number){return regionWaveComposition(wave);}
+  override compositionForWave(wave:number){return regionWaveComposition(wave,this.region.key);}
   heroes:Companion[]=[];
   boosts=new Map<number,number>();
   distractions:(Point & {remaining:number})[]=[];

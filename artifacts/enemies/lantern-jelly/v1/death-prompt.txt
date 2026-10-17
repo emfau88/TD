@@ -1,0 +1,11 @@
+Use case: identity-preserve. Asset type: five-frame DEATH animation for an approved tiny pixel-art jellyfish enemy.
+Inputs: Image1 approved side-view design, Image2 front/rear views. Preserve turquoise bell, pale yellow scalloped rim, broad tentacles and small amber hanging lantern. Coarse hard pixel clusters, about30x34 logical pixels enlarged, flat14-color look, no painterly detailing.
+Output FIFTEEN isolated complete sprites in exactly THREE ROWS of FIVE COLUMNS, evenly spaced on actual transparent background with generous margins.
+Top row front/down view. Middle row rear/up view (no eyes). Bottom row right-side view.
+Every row has this progressive five-frame death:
+1 hit: bell squashes a little, lantern dims, tentacles recoil;
+2 collapse: bell sags lower and narrows, tentacles droop;
+3 deflate: bell is flattened halfway, lantern nearly dark;
+4 falling apart: small flat bell and curled tentacles lying lower, lantern dark;
+5 extinguished: low small collapsed bluegreen silhouette with a few broken pieces, no light.
+Maintain stable left/right center and common invisible lower contact line in each row. Body really gets lower as it collapses, do not scale each pose to same height. No gore, no skull icon, no angel, no cross, no lettering. Do NOT draw a standing intact jellyfish five times! Clear successive loss of height and life. Actual square pixel edges, no soft fade, no halo, no shadows, no glow effects, no white background. All poses must be entirely inside their own separated cell. This is a short sprite animation, not an illustration.

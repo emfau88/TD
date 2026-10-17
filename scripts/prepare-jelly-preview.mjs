@@ -44,7 +44,7 @@ const enlarged=blank(atlas.width*3,atlas.height*3);
 for(let y=0;y<enlarged.height;y++)for(let x=0;x<enlarged.width;x++)put(enlarged,x,y,pixel(atlas,Math.floor(x/3),Math.floor(y/3)));
 await writePNG(resolve(directory,'movement-frames-3x.png'),enlarged);
 await writeFile(resolve(directory,'movement-metadata.json'),JSON.stringify({
-  status:'movement study; side direction only; awaiting visual approval',
+  status:'side movement study approved by user on 2026-10-17; preserved as reference',
   source:'movement-source.png',runtime:`public/assets/${name}`,frameWidth:64,frameHeight:64,
   atlasWidth:384,atlasHeight:64,origin:[.5,.5],bellTop:[32,16],scale:.83,
   animations:{'move-side':{frames:[0,1,2,3,4,5],durations:[100,100,100,100,100,100],repeat:-1}},

@@ -1,32 +1,48 @@
-# Laternenqualle – erste animierte Stilprobe
+# Laternenqualle – abgenommener Pixelstil und vollständige Einheit
 
-Stand: 17. Oktober 2026. **Sechs seitliche Bewegungsframes erstellt und im Laternenmoor angesehen; visuelle Nutzerabnahme offen.** Die Einheit besitzt noch keine weiteren Ansichten, Heil- oder Todesanimation und ist noch kein Gegner im normalen Spiel.
+Stand: 17. Oktober 2026. Die erste seitliche Bewegungsprobe wurde mit **„ja passt gut“** vom Nutzer abgenommen. Anschließend sind weitere Ansichten, Heilung, Tod und die Integration ins Laternenmoor umgesetzt. Die Abnahme der Probe wird nicht als pauschale Abnahme der abschließenden Kampfbalance ausgegeben.
 
-## Ergebnis und Herkunft
+## Grafikproduktion
 
-Eine Generation mit dem eingebauten Imagegen-Werkzeug. Die alte Laternenqualle wurde ausschließlich als Motivvorlage verwendet; Original-Blattkäfer und Leerenfalter bestimmten den Pixelstil. Vollständiger Auftrag: [prompt.txt](prompt.txt). Unveränderte Generationsquelle: [movement-source.png](movement-source.png).
+Fünf Aufträge mit dem eingebauten Imagegen-Werkzeug, alle Rohquellen erhalten:
 
-Die sechs tatsächlichen Quellausschnitte und Glockenanker wurden einzeln vermessen. `scripts/prepare-jelly-preview.mjs` exportiert sie mit einheitlichem Maßstab 0,1 in 64er Rahmen, reduziert die Laufzeitpalette auf 14 Farben und normalisiert Alpha bei 128 auf 0/255. Es werden keine unabhängig auf gleiche Breite gestreckten Posen verwendet. Die Quelle bleibt erhalten.
+| Auftrag | Prompt | Quelle | Verwendung |
+| --- | --- | --- | --- |
+| Erste Seitenprobe | [prompt.txt](prompt.txt) | [movement-source.png](movement-source.png) | Sechs vom Nutzer abgenommene Bewegungsbilder |
+| Weitere Ansichten | [directions-prompt.txt](directions-prompt.txt) | [directions-source.png](directions-source.png) | Sechs Rückansichten; Frontposen berührten einander und wurden verworfen |
+| Heilung | [heal-prompt.txt](heal-prompt.txt) | [heal-source.png](heal-source.png) | Vier Körperposen je Ansicht |
+| Tod | [death-prompt.txt](death-prompt.txt) | [death-source.png](death-source.png) | Fünf zusammenfallende Körperposen je Ansicht |
+| Getrennte Frontbewegung | [down-prompt.txt](down-prompt.txt) | [down-source.png](down-source.png) | Sechs Frontposen mit ausreichenden Abständen |
 
-Export: [Lantern Jelly Pixel Preview v1.png](../../../../public/assets/Lantern%20Jelly%20Pixel%20Preview%20v1.png), 384 × 64 Pixel. Metadaten: [movement-metadata.json](movement-metadata.json). Animationsfolge: sechs Frames zu je 100 ms; Darstellung mit Maßstab 0,83. Die sichtbare Silhouette ist je nach Tentakelstellung 27–39 Quellpixel breit und 30–32 hoch. [Vergrößerte Bildfolge](movement-frames-3x.png).
+`scripts/prepare-jelly-atlas.mjs` verwendet einzeln vermessene Rechtecke und Anker, einen gemeinsamen Maßstab je Sequenz sowie dieselbe 14-Farben-Palette. Konturen sind im Laufzeitexport vollständig transparent oder deckend. Die ursprünglichen sechs Seitenframes werden bytegleich aus dem abgenommenen Export übernommen; keine pro Pose unabhängig gestreckten Figuren und kein pauschales Raster über die Generationsbilder.
+
+Laufzeit: [Lantern Jelly Pixel v1.png](../../../../public/assets/Lantern%20Jelly%20Pixel%20v1.png), **512 × 384 Pixel mit 48 Rahmen à 64 × 64**. 45 unterschiedliche Posen; die drei Ruheframes verwenden jeweils die erste Bewegungspose erneut. Pro Richtung: Ruhe 1, Bewegung 6, Heilen 4, Tod 5, je 100 ms. Darstellung 0,83, zentraler Ursprung. [Metadaten mit Quellenmaßen](complete-metadata.json), [vergrößerter Atlas](complete-atlas-2x.png).
+
+## Fähigkeit und Einsätze
+
+Die Qualle fliegt und besitzt 85 Basisleben, Tempo 43, keine Rüstung, 20 Gold Belohnung und verursacht einen Lebenspunkt Schaden am Ziel. Bestehende Wellenskalierung gilt weiterhin. Alle zwei Sekunden heilt sie bis zu zwei verletzte Verbündete um sechs Lebenspunkte im Radius 100. Ihre Aktion dauert 0,4 Sekunden, der Puls erfolgt nach 0,2 Sekunden. Sie schwebt dabei weiter; Blickrichtung und Körperaktion bleiben für diese kurze Zeit stabil.
+
+Heiler, Bosse, tote Gegner und Selbstheilung sind ausgeschlossen. Heilung überschreitet keine maximalen Lebenspunkte. Ein Ziel wird innerhalb von zwei Sekunden höchstens einmal geheilt. Schadensbedingte Todesfälle werden vor dem Heilpuls aufgelöst. Kurze Linien, Ringe und Zahlen kennzeichnen die tatsächlich geheilten Ziele.
+
+Nur Laternenmoor: Welle 4 enthält einen Heiler, Welle 7 und 9 je zwei. Das Moor hat dadurch 138 Gegner; die anderen Karten behalten 133. Die Wellenvorschau nennt die neue Einheit, Welle 4 erklärt die Heilrolle und Luftabwehr. Neue Speicherformate oder ein Zurücksetzen bestehender Bauphasen sind nicht nötig.
 
 ## Ansehen und bauen
 
-- Laufender Entwicklungsserver: `http://127.0.0.1:5180/enemy-preview.html`.
-- Offline bauen: im Projektverzeichnis `npm run reference:enemy:build`.
-- Danach `GEGNERPROBE STARTEN.cmd` öffnen; Ausgabe: `reference/Spire-Gegnerprobe.html`.
+- Normales Spiel: `npm run reference:regions:build`, dann `REGIONEN STARTEN.cmd`.
+- Animations- und Kampfvorschau: `npm run reference:enemy:build`, dann `GEGNERPROBE STARTEN.cmd`.
+- Entwicklung: `/enemy-preview.html`; erzeugte Vorschau: `/Spire-Gegnerprobe.html`.
 
-Die eigene Vorschauseite verwendet den echten Moor-Renderer und eine eigene Simulation. Sie importiert keine Speicherverwaltung und verändert keine Spielstände. Neue Qualle, Original-Flugheuschrecke und Original-Feuerwespe werden gemeinsam gezeigt. Es gibt Pause, 1×/2×, Einzelbilder, 100/120-%-Zoom, einen Größenvergleich und die sechs Einzelbilder.
+Die separate Probe bietet Aktionen, Richtungen, Pause, Tempo, Einzelbilder und Zoom sowie vorbereitete Moorwellen 4 und 7 mit sichtbarem Heilzähler. Beide Vorschau-Simulationen sind unabhängig von den Nutzer-Spielständen.
 
 ## Gezielte Prüfung
 
-- TypeScript-Prüfung und eigener Offline-Build; keine vollständige Kartentestserie.
-- Im Browser Bewegung, Originalgegnervergleich, Pause, Einzelbild, Tempoauswahl und 120-%-Darstellung angesehen. Keine Warnungen oder Fehler im Vorschautab während dieser Prüfung.
-- Export kontrolliert Rahmenüberläufe; alle sechs Figuren halten Abstand zum Frame-Rand.
-- Erzeugte Offline-Ausgabe `Spire-Gegnerprobe.html` separat über den lokalen Browser geöffnet: Moor, Qualle und Originalflieger werden aus dem Bundle angezeigt; keine Warnungen oder Fehler im Vorschautab. Ausgabe enthält 92 eingebettete Spielbilder und sieben UI-Bilder, etwa 15,83 MB. Der direkte Start über `file://` wurde nicht zusätzlich geprüft.
+- Sieben Logikprüfungen bestanden: fünf Heilerchecks plus zwei vorhandene Prüfungen zu Zehn-Wellen-Plan und alter Speicherübernahme. Heilobergrenze, Zielauswahl, Stapelung, Castzeit und Tod sind abgedeckt.
+- Moor mit bestehendem Budget und vorhandenem Turmkader vollständig im Modell gewinnbar: 20 Leben, 138 Kills, acht Türme, 295 simulierte Kampfsekunden. Das ist kein Nachweis abgeschlossener manueller Balance.
+- Ein Atlascheck bestanden: binäres Alpha, freie Rahmenränder, verschiedene Aktionsposen, sichtbares Zusammenfallen beim Tod und bytegleiche abgenommene Seitenbewegung.
+- TypeScript, Regionsbuild und Gegnerprobe gebaut. Beide Offline-Prüfungen bestätigen 92 bytegleiche eingebettete Spielbilder plus sieben UI-Bilder und keine externen Skript-/Stil-/Bildabhängigkeiten.
+- Im Browser drei Ansichten, Heilpose und einmalige Todesfolge angesehen. Prüfwelle 4 lief vollständig mit acht Impulsen und 48 geheilten Lebenspunkten; Prüfwelle 7 mit 16 Impulsen und 109 geheilten Lebenspunkten. Keine anderen Karten vollständig nachgetestet.
+- Offline-Bundles werden über den lokalen Server angesehen. Direkter Start mit `file://` ist nicht zusätzlich getestet. Vorhandene Nutzer-Spielstände bleiben unangetastet.
 
-![Qualle und Originalgegner im Laternenmoor](moor-preview.jpg)
+![Laternenqualle mit vollständiger Animationsauswahl](complete-preview.jpg)
 
-## Nächster Schritt
-
-Stil, Größe und Bewegung anhand der animierten Probe beurteilen. Gemäß [Produktionsplan](../../../../GEGNER_PRODUKTIONSPLAN.md) folgt nach der visuellen Abnahme die Vervollständigung der Richtungen, Heilaktion und Todesanimation. Weitere Gegnerpakete wurden nicht erzeugt. Regionale Wellenpläne und Heillogik bleiben unverändert.
+Die erste Seitenprobe und ihre Aufnahme [moor-preview.jpg](moor-preview.jpg) bleiben als abgenommene Vergleichsbasis erhalten. Die vollständige Einheit ist die Grundlage für mögliche weitere Spezialgegner; deren Grafikproduktion erfolgt erst nach konkreter Auswahl.
