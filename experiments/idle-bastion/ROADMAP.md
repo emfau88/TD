@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 17.10.2026 · **B01–B07 abgeschlossen; spielbare G1-Probe veröffentlicht. Nutzerfreigabe offen.**
+Stand: 17.10.2026 · **B01–B07 sowie B07a/B07b abgeschlossen und veröffentlicht. Nutzerfreigabe G1 offen.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -12,8 +12,8 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant und Commit/Push/Pages beauftragt. Figurenmechanik und Werkstattschilder nur vorgemerkt |
-| Aktives Umsetzungspaket | B07b · Fortschrittsorientierung und hochwertige HUD-Gestaltung |
-| Nächster Schritt | B07a/B07b sind lokal geprüft; gemeinsam pushen und die öffentliche GitHub-Pages-Fassung bestätigen |
+| Aktives Umsetzungspaket | Keines · B07a/B07b abgeschlossen |
+| Nächster Schritt | Nutzer testet die veröffentlichte Fassung und entscheidet über G1; B08 bleibt gesperrt |
 | G1: 90-Sekunden-Zwischenabnahme | **Offen; keine Nutzerfreigabe vorhanden** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -42,8 +42,8 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P2 | B05 · Startlichtung und Mara | Echter Wald, sichtbare automatische Unterstützung und bedienbares HUD | B04; Layout aus B01 | Erledigt · `884f7c4` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b05--startlichtung-mara-und-kompakte-bedienung) |
 | P2 | B06 · Werkstatt und Frost | Erstes sichtbares Gebäude mit neuer taktischer Möglichkeit | B05 | Erledigt · `8a0a276` · [Nachweis](../../artifacts/idle-bastion/acceptance/90s/REPORT.md#b06--werkstatt-und-echte-frosttechnik) |
 | P2 | B07 · Einstieg und Nachweise | Regulär spielbarer 90-Sekunden-Kreislauf samt kurzer Technikfolge | B06 | Erledigt · `8a0a276` · [Browserzeiten und drei Spielweisen](../../artifacts/idle-bastion/acceptance/90s/REPORT.md) |
-| P2 | B07a · Spieloberfläche | Große Karte, Dock, Kontextaktionen und funktionale Hochkantansicht | Zusätzlicher Nutzerauftrag vor B08 | Lokal geprüft; Veröffentlichung ausstehend · [Nachweis](../../artifacts/idle-bastion/acceptance/ui/REPORT.md) |
-| P2 | B07b · Orientierung und HUD | Goldzufluss, Wellenrekord, nächstes Ziel, Versuchshistorie und stimmige warme Oberflächen | Zusätzlicher ausdrücklicher Nutzerauftrag am 17.10.2026 | Lokal geprüft; Veröffentlichung ausstehend · [Nachweis](../../artifacts/idle-bastion/acceptance/ui/PROGRESS.md) |
+| P2 | B07a · Spieloberfläche | Große Karte, Dock, Kontextaktionen und funktionale Hochkantansicht | Zusätzlicher Nutzerauftrag vor B08 | Abgeschlossen und veröffentlicht · [Nachweis](../../artifacts/idle-bastion/acceptance/ui/REPORT.md) |
+| P2 | B07b · Orientierung und HUD | Goldzufluss, Wellenrekord, nächstes Ziel, Versuchshistorie und stimmige warme Oberflächen | Zusätzlicher ausdrücklicher Nutzerauftrag am 17.10.2026 | Abgeschlossen und veröffentlicht · [Nachweis](../../artifacts/idle-bastion/acceptance/ui/PROGRESS.md) |
 | Halt | G1 · Nutzerabnahme | Ausdrückliche Entscheidung zur vorgelegten Fassung | B01–B07 sowie B07a/B07b geprüft | **Offen** |
 | P3 | B08 · Wisp und Turmrollen | Zweite Figur, Wirtschaftseffekt und vier unterscheidbare Türme | G1 freigegeben | Nicht begonnen |
 | P3 | B09 · Lager und Rückkehr | Zweites Gebäude und befriedigender Wiedereinstieg | B08 | Nicht begonnen |
@@ -64,7 +64,7 @@ Am 17.10.2026 zusätzlich vor B08 beauftragt, einschließlich Commit, Push und b
 - [x] Hochkant: lesbarer Kartenausschnitt, Ziehen, Übersicht und große Bauplatz-Schaltflächen; kein notwendiges Scrollen der gesamten Webseite.
 - [x] Desktop und Hochkant tatsächlich ansehen, betroffene Bedienabläufe und vorhandenen Spielstand prüfen; echte Touch-Geräteprüfung von einer schmalen Browseransicht unterscheiden.
 - [x] Screenshots und kurze Prüfnotizen ablegen, README-Galerie erweitern.
-- [ ] Committen, pushen und Testfassung veröffentlichen; öffentliche Oberfläche bestätigen.
+- [x] Committen, pushen und Testfassung veröffentlichen; öffentliche Oberfläche bestätigen.
 
 ## Vorgemerkte UX-Ergänzungen — noch nicht zur Umsetzung freigegeben
 
@@ -85,7 +85,9 @@ Die folgenden Informationsideen wurden nach der Diskussion ausdrücklich zur Ums
 - [x] Figuren über Porträts, Freischaltbedingungen und aktuellen Auftrag erklären; bei zwei Figuren keinen zusätzlichen permanenten Mengenzähler einführen. Mehr Informationen erst beim Öffnen der Figurenübersicht.
 - [x] Nach einer Niederlage erklären, welche Welle gescheitert ist, wo nun gefarmt wird und was erhalten bleibt. Nächste sinnvolle Handlung anbieten, ohne ein garantiert erfolgreiches Upgrade vorzutäuschen.
 - [x] HUD, Dock und Kontextfenster als zusammengehörige warme Material-/Farbwelt gestalten; klare Typografie und Kontraste auf Desktop/Hochkant. Höchstens zehn zusätzliche Bilder erlaubt, nur bei tatsächlichem Bedarf.
-- [ ] Statistikmigration, Zählung und Goldzufluss gezielt prüfen; reale Desktop-/Hochkantansichten und vorhandenen Spielstand kontrollieren. Screenshots, Bericht, Commit/Push und GitHub-Pages-Prüfung abschließen.
+- [x] Statistikmigration, Zählung und Goldzufluss gezielt prüfen; reale Desktop-/Hochkantansichten und vorhandenen Spielstand kontrollieren. Screenshots, Bericht, Commit/Push und GitHub-Pages-Prüfung abschließen.
+
+Veröffentlicht: Code `2c96642`, einschließlich B07a `d0566cf`. [Pages-Lauf 39072783215](https://github.com/emfau88/TD/actions/runs/39072783215) erfolgreich; öffentliche Chronik, laufender Goldzufluss und Wellenfortschritt im Browser bestätigt. 131 Tests und Produktionsbuild bestanden. G1 bleibt offen.
 
 Vergleichsbeispiele für die Diskussion: [The Tower: umschaltbare Währung/Ertragsanzeige und Welleninformationen (Community-Wiki)](https://the-tower-idle-tower-defense.fandom.com/wiki/Gameplay); [Bloons TD 6: höchste Runden in separater Profilstatistik (Entwicklernotizen)](https://store.steampowered.com/news/posts/?appgroupname=Bloons+TD+6&appids=960090&enddate=1709170182&feed=steam_community_announcements). Das sind Anregungen für die Informationshierarchie, keine Übernahme ihres Umfangs oder ihrer Wirtschaft.
 

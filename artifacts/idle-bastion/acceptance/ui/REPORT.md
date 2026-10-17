@@ -40,4 +40,4 @@ Echte Aufnahmen der regulär gespielten UI-Probe. Die Spielzeit lief während de
 
 Die vorhandene sichere Farmrate ist weiterhin keine Messung des laufenden Goldzuflusses. Fortschrittsübersicht und Versuchshistorie wurden anschließend als B07b beauftragt. Verständlichere Werkstattkennzeichnung und Maras Fernunterstützung bleiben vorgemerkt. Dieser Bericht beschreibt den B07a-Zwischenstand; die Karte bleibt auch im folgenden Paket Hauptfläche.
 
-[Playlink](https://emfau88.github.io/TD/idle-bastion/) · [Unabhängige frische Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1). Veröffentlichung dieses UI-Stands wird nach dem Push gesondert bestätigt.
+[Playlink](https://emfau88.github.io/TD/idle-bastion/) · [Unabhängige frische Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1). B07a wurde zusammen mit B07b veröffentlicht; aktueller Nachweis einschließlich Pages-Lauf unter [B07b](PROGRESS.md).

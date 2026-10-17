@@ -38,4 +38,4 @@ Die reguläre Partie lief während der Prüfung weiter; die Aufnahmen sind keine
 | --- | --- |
 | ![Hochkant-HUD](b07b-hud-390x844.png) | ![Hochkant-Chronik](b07b-chronicle-390x844.png) |
 
-[Im Browser testen](https://emfau88.github.io/TD/idle-bastion/) · [Unabhängige frische Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1). Veröffentlichung wird nach dem Push anhand des Pages-Laufs und der öffentlichen Oberfläche bestätigt.
+[Im Browser testen](https://emfau88.github.io/TD/idle-bastion/) · [Unabhängige frische Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1). Veröffentlicht aus `2c96642` einschließlich B07a `d0566cf`: [GitHub-Pages-Lauf 39072783215](https://github.com/emfau88/TD/actions/runs/39072783215) erfolgreich. Auf der öffentlichen URL wurden der laufende Kampf, der gemessene Goldzufluss, Wellenrekord und die geöffnete Chronik bestätigt; Konsole ohne Warnungen/Fehler.

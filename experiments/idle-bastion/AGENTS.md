@@ -1,7 +1,7 @@
 # Arbeitsregeln für Idle Bastion
 
 1. Vor Änderungen `README.md`, `ROADMAP.md` und die zur Aufgabe passende Datei unter `docs/` lesen.
-2. B01–B07 sind umgesetzt, B07a lokal in `d0566cf` gesichert. Anschließend hat der Nutzer B07b ausdrücklich beauftragt: Fortschrittsinformationen professionell umsetzen, HUD/UI hochwertiger und wärmer gestalten, funktionales Hochkant erhalten, dann committen/pushen/veröffentlichen. Höchstens zehn neue Bilder erlaubt, bei echtem Bedarf. Werkstatt-Handlungsschilder und Maras Fernzauber/freie Bewegung bleiben vorgemerkt. G1 und B08 bleiben offen.
+2. B01–B07 sowie B07a/B07b sind umgesetzt und veröffentlicht: Kartenfokus, funktionales Hochkant, Fortschrittschronik und warmes HUD. Paketstatus/Nachweise ausschließlich in der ROADMAP.md. Werkstatt-Handlungsschilder und Maras Fernzauber/freie Bewegung bleiben vorgemerkt. G1 und B08 bleiben offen; keine weitere Umsetzung ohne entsprechenden Nutzerauftrag.
 3. Nur auf `codex/idle-bastion-vertical-slice` im zugehörigen Worktree arbeiten. `main`, das klassische Spiel und seine Spielstände schützen. Commit, Push und GitHub-Pages-Testfassung mit README-Playlink sind ausdrücklich autorisiert; ein Merge nach `main` ist es nicht.
 4. Nach Umsetzungsstart P1 und P2 selbstständig bearbeiten; dann bei **G1 / 90-Sekunden-Zwischenabnahme** anhalten. Erst ausdrückliche Nutzerfreigabe erlaubt P3 und folgende. Verstrichene Zeit, technische Tests oder eigene Begeisterung sind keine Freigabe.
 5. P2 umfasst die erste Werkstatt und erste Technologie. Wisp, Lager, Boss, Kartenerweiterung und deren Assets nicht vor G1 ausarbeiten. Generische Datenfelder sind Vorbereitung, kein vorgezogener Funktionsausbau.
