@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 17.10.2026 · **B01–B05 abgeschlossen; B06 in Arbeit.**
+Stand: 17.10.2026 · **B01–B07 abgeschlossen; spielbare G1-Probe veröffentlicht. Nutzerfreigabe offen.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -11,13 +11,13 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | B01–B05 abgeschlossen; B06 mit Werkstatt und Frostpfad beauftragt. G1 bleibt unverändert |
-| Aktives Umsetzungspaket | B06 |
-| Nächster Schritt | B06 — erste Werkstatt und sichtbar wirksame Technologie |
+| Autorisierter Umfang | Korrektur und vollständige Umsetzung bis einschließlich B07, Commit/Push und GitHub-Pages-Probe mit README-Playlink ausdrücklich beauftragt |
+| Aktives Umsetzungspaket | G1 · verbindlicher Halt vor B08 |
+| Nächster Schritt | [Veröffentlichte Fassung spielen](https://emfau88.github.io/TD/idle-bastion/) und ausdrückliche Nutzerentscheidung zu G1 abwarten |
 | G1: 90-Sekunden-Zwischenabnahme | **Offen; keine Nutzerfreigabe vorhanden** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
-Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B05 sind abgeschlossen; B06 ist beauftragt und in Arbeit, B07–B14 sind offen. Der Zustand der Pakete und tatsächliche Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. B08–B14 bleiben bis zur ausdrücklichen G1-Freigabe gesperrt. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
 
 ## So werden die Pakete bearbeitet
 
@@ -40,8 +40,8 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P1 | B03 · Spielstand | Laufenden Kampf samt Wirtschaft konsistent wiederherstellen | B02 | Erledigt · `40dc019` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b03--konsistenter-spielstand-während-des-kampfes) |
 | P1 | B04 · Farmen und Abwesenheit | Tragfähige Rückfallwelle, korrekte Offline-Zeit, ein schreibender Tab | B03 | Erledigt · `25e9a5f` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b04--sicheres-farmen-abwesenheit-und-tab-eigentümerschaft) |
 | P2 | B05 · Startlichtung und Mara | Echter Wald, sichtbare automatische Unterstützung und bedienbares HUD | B04; Layout aus B01 | Erledigt · `884f7c4` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b05--startlichtung-mara-und-kompakte-bedienung) |
-| P2 | B06 · Werkstatt und Frost | Erstes sichtbares Gebäude mit neuer taktischer Möglichkeit | B05 | In Arbeit |
-| P2 | B07 · Einstieg und Nachweise | Regulär spielbarer 90-Sekunden-Kreislauf samt kurzer Technikfolge | B06 | Nicht begonnen |
+| P2 | B06 · Werkstatt und Frost | Erstes sichtbares Gebäude mit neuer taktischer Möglichkeit | B05 | Erledigt · `8a0a276` · [Nachweis](../../artifacts/idle-bastion/acceptance/90s/REPORT.md#b06--werkstatt-und-echte-frosttechnik) |
+| P2 | B07 · Einstieg und Nachweise | Regulär spielbarer 90-Sekunden-Kreislauf samt kurzer Technikfolge | B06 | Erledigt · `8a0a276` · [Browserzeiten und drei Spielweisen](../../artifacts/idle-bastion/acceptance/90s/REPORT.md) |
 | Halt | G1 · Nutzerabnahme | Ausdrückliche Entscheidung zur vorgelegten Fassung | B01–B07 geprüft | **Offen** |
 | P3 | B08 · Wisp und Turmrollen | Zweite Figur, Wirtschaftseffekt und vier unterscheidbare Türme | G1 freigegeben | Nicht begonnen |
 | P3 | B09 · Lager und Rückkehr | Zweites Gebäude und befriedigender Wiedereinstieg | B08 | Nicht begonnen |
@@ -137,12 +137,12 @@ Vorbefund aus der vorangegangenen Analyse: 54 Root- und 58 Referenztests sowie b
 
 **Voraussetzung:** B05. **Ergebnis:** Die Karte verändert sich durch ein Gebäude, das eine neue Kampfmöglichkeit eröffnet.
 
-- [ ] Grundstück, Silhouette, Anker, Referenzbilder und benötigte Zustände vor Assetproduktion nach Grafikvertrag festlegen.
-- [ ] Nur beschädigte Werkstatt und Werkstatt I produzieren/aufbereiten; Rohquelle, Prompt, Referenzen und technische Metadaten sichern.
-- [ ] Gebäude neben Originalturm, Baum und Mara bei echter Spielgröße prüfen; kurze Bauwirkung ohne fremden Stil und ohne vorzeitig auftauchenden Wisp integrieren.
-- [ ] Werkstatt gegen reguläres Gold bauen; Bauzustand, Grundstück und Freischaltungen korrekt speichern.
-- [ ] „Frostfassung“ gegen Gold kaufen: Frostkristall und Level 4–6 freischalten; Frostwirkung im tatsächlichen Kampf zeigen.
-- [ ] Baupreise, Erträge und Folgekäufe gemeinsam abstimmen: Werkstatt nach etwa 60–90 Sekunden, erste Technik samt nutzbarem Frostturm in kurzer Fortsetzung bis ungefähr 150 Sekunden erreichbar.
+- [x] Grundstück, Silhouette, Anker, Referenzbilder und benötigte Zustände vor Assetproduktion nach Grafikvertrag festlegen.
+- [x] Nur beschädigte Werkstatt und Werkstatt I produzieren/aufbereiten; Rohquelle, Prompt, Referenzen und technische Metadaten sichern.
+- [x] Gebäude neben Originalturm, Baum und Mara bei echter Spielgröße prüfen; kurze Bauwirkung ohne fremden Stil und ohne vorzeitig auftauchenden Wisp integrieren.
+- [x] Werkstatt gegen reguläres Gold bauen; Bauzustand, Grundstück und Freischaltungen korrekt speichern.
+- [x] „Frostfassung“ gegen Gold kaufen: Frostkristall und Level 4–6 freischalten; Frostwirkung im tatsächlichen Kampf zeigen.
+- [x] Baupreise, Erträge und Folgekäufe gemeinsam abstimmen: Werkstatt nach etwa 60–90 Sekunden, erste Technik samt nutzbarem Frostturm in kurzer Fortsetzung bis ungefähr 150 Sekunden erreichbar.
 
 **Fertig, wenn:** Die Werkstatt sichtbar und stilistisch passend entsteht, eine erkennbare taktische Folge hat und nicht nur ein Menüeintrag bleibt. Lager, Werkstatt II und spätere Assets bleiben unproduziert.
 
@@ -150,13 +150,13 @@ Vorbefund aus der vorangegangenen Analyse: 54 Root- und 58 Referenztests sowie b
 
 **Voraussetzung:** B06. **Ergebnis:** Eine selbst startbare Fassung mit nachgewiesenem ersten Spielkreislauf.
 
-- [ ] Kurze Mara-Hinweise und ein aktuelles Ziel für Kampf, eigenen Turm, Upgrade, Werkstatt und Frostfassung an tatsächliche Ereignisse binden.
-- [ ] Skip, zustandsbezogenes Wiederanzeigen, bereits erledigte Schritte, alternative Turmplätze und Reload prüfen; keine zusätzlichen Ressourcen durch Tutorialwiederholung.
-- [ ] Einen echten frischen 1×-Durchlauf mit Zeitprotokoll spielen: erste Gegner/Schüsse, erstes Gold, eigener Turm bis 20 Sekunden, Upgrade und Werkstatt bei etwa 60–90 Sekunden.
-- [ ] Erste Technologie und Frostwirkung nur als kurze Fortsetzung bis etwa 120–150 Sekunden nachweisen; die Zielzeit nicht durch feste Geschenk-Timer erzwingen.
-- [ ] Drei Spielweisen prüfen: Tutorial folgen, anders investieren, drei Minuten zuschauen und dann weiterspielen. Unterschiedliches Tempo zulassen, Sackgassen beheben.
-- [ ] Speicherung/Farming mit dieser echten Anfangsverteidigung erneut gezielt prüfen, einschließlich Mara und Frost; nur betroffene Prüfungen wiederholen.
-- [ ] Startanleitung, konkrete Fassung, echte Screenshots, gemessene Zeiten und die drei wichtigsten Schwächen zur Nutzerprobe vorlegen.
+- [x] Kurze Mara-Hinweise und ein aktuelles Ziel für Kampf, eigenen Turm, Upgrade, Werkstatt und Frostfassung an tatsächliche Ereignisse binden.
+- [x] Skip, zustandsbezogenes Wiederanzeigen, bereits erledigte Schritte, alternative Turmplätze und Reload prüfen; keine zusätzlichen Ressourcen durch Tutorialwiederholung.
+- [x] Einen echten frischen 1×-Durchlauf mit Zeitprotokoll spielen: erste Gegner/Schüsse, erstes Gold, eigener Turm bis 20 Sekunden, Upgrade und Werkstatt bei etwa 60–90 Sekunden.
+- [x] Erste Technologie und Frostwirkung nur als kurze Fortsetzung bis etwa 120–150 Sekunden nachweisen; die Zielzeit nicht durch feste Geschenk-Timer erzwingen.
+- [x] Drei Spielweisen prüfen: Tutorial folgen, anders investieren, drei Minuten zuschauen und dann weiterspielen. Unterschiedliches Tempo zulassen, Sackgassen beheben.
+- [x] Speicherung/Farming mit dieser echten Anfangsverteidigung erneut gezielt prüfen, einschließlich Mara und Frost; nur betroffene Prüfungen wiederholen.
+- [x] Startanleitung, konkrete Fassung, echte Screenshots, gemessene Zeiten und die drei wichtigsten Schwächen zur Nutzerprobe vorlegen.
 
 **Fertig, wenn:** Die Fassung startbar ist, der Ablauf nachvollziehbar funktioniert und alle Nachweise samt Abweichungen vorliegen. Das Paket fertigzustellen ist noch keine Nutzerfreigabe.
 
@@ -164,18 +164,18 @@ Vorbefund aus der vorangegangenen Analyse: 54 Root- und 58 Referenztests sowie b
 
 **Status: OFFEN. B08–B14 sind gesperrt, bis der Nutzer ausdrücklich freigibt.**
 
-- [ ] B01–B07 nachgewiesen; keine wesentlichen offenen Speicher-/Farmfehler in der vorgelegten Fassung.
-- [ ] Startbare Probe, Commit, Screenshots, Zeitprotokoll und Ergebnisse der drei Spielweisen bereitgestellt.
-- [ ] Spielgefühl selbst kritisch beurteilt: verständliche Entscheidungen, spürbare Verbesserungen, wenig Leerlauf, Werkstatt als echter Fortschritt und stimmiger Maßstab.
+- [x] B01–B07 nachgewiesen; keine wesentlichen offenen Speicher-/Farmfehler in der vorgelegten Fassung.
+- [x] Startbare Probe, Commit, Screenshots, Zeitprotokoll und Ergebnisse der drei Spielweisen bereitgestellt.
+- [x] Spielgefühl selbst kritisch beurteilt: verständliche Entscheidungen, spürbare Verbesserungen, wenig Leerlauf, Werkstatt als echter Fortschritt und stimmiger Maßstab.
 - [ ] Nutzer konnte die konkrete Fassung beurteilen; verlangte Änderungen innerhalb P2 umgesetzt und bei Bedarf erneut vorgelegt.
 - [ ] **Ausdrückliche Nutzerfreigabe erhalten und hier dokumentiert.** Dieses Kästchen darf nur aufgrund der tatsächlichen Nutzerentscheidung gesetzt werden.
 
 | Freigabenachweis | Eintrag |
 | --- | --- |
-| Geprüfte Fassung / Commit | Noch nicht vorhanden |
-| Datum und Chatbezug | Noch nicht vorhanden |
+| Geprüfte Fassung / Commit | `8a0a276` · [Playlink](https://emfau88.github.io/TD/idle-bastion/) · [Bericht](../../artifacts/idle-bastion/acceptance/90s/REPORT.md) |
+| Datum und Chatbezug | 17.10.2026 · Nutzer beauftragt Berichtigung und Vervollständigung bis einschließlich B07 sowie GitHub-Testfassung |
 | Wortlaut / Entscheidung | Noch keine Entscheidung |
-| Offene Auflagen | Noch nicht beurteilt |
+| Offene Auflagen | Nutzerprobe ausstehend; drei wesentliche Grenzen stehen im Bericht. Keine Freigabe für B08–B14. |
 
 Während des Wartens nur P2 prüfen und korrigieren. Kein Wisp, Lager, Boss, Werkstatt II oder freischaltbare Erweiterung vorziehen und keine entsprechenden Assets auf Vorrat erzeugen. Zeitablauf, erfolgreiche Tests und allgemeine Entwicklungsautonomie ersetzen die Freigabe nicht.
 

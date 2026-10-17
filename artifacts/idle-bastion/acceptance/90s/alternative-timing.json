@@ -1,0 +1,44 @@
+[
+  {
+    "event": "Anderer erster Bauplatz: Südkurve",
+    "time": "0:00",
+    "gold": "0",
+    "wallMs": 673
+  },
+  {
+    "event": "Südturm verbessert",
+    "time": "0:31",
+    "gold": "122",
+    "wallMs": 31658
+  },
+  {
+    "event": "Zusätzliche Investition: Nordwestturm",
+    "time": "0:31",
+    "gold": "47",
+    "wallMs": 32043
+  },
+  {
+    "event": "Werkstatt trotz anderer Investitionen",
+    "time": "1:32",
+    "gold": "62",
+    "wallMs": 92424
+  },
+  {
+    "event": "Frostfassung",
+    "time": "1:32",
+    "gold": "2",
+    "wallMs": 92736
+  },
+  {
+    "event": "Frostturm trotz zusätzlicher Ausgabe",
+    "time": "2:30",
+    "gold": "131",
+    "wallMs": 151304
+  },
+  {
+    "event": "Frostwirkung",
+    "time": "2:32",
+    "gold": "131",
+    "wallMs": 152377
+  }
+]

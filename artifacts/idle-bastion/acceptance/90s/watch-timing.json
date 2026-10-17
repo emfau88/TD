@@ -1,0 +1,65 @@
+[
+  {
+    "event": "Start ohne Käufe",
+    "time": "0:00",
+    "gold": "75",
+    "wave": "—",
+    "wallMs": 64
+  },
+  {
+    "event": "Zwischenstand ohne Eingriff",
+    "time": "1:58",
+    "gold": "445",
+    "wave": "5",
+    "wallMs": 118980
+  },
+  {
+    "event": "Mindestens drei Minuten ohne Käufe",
+    "time": "3:16",
+    "gold": "574",
+    "wave": "7",
+    "wallMs": 197128
+  },
+  {
+    "event": "Später Einstieg: eigener Turm",
+    "time": "3:17",
+    "gold": "499",
+    "wave": "7",
+    "wallMs": 197529
+  },
+  {
+    "event": "Später Einstieg: Upgrade",
+    "time": "3:17",
+    "gold": "439",
+    "wave": "7",
+    "wallMs": 197835
+  },
+  {
+    "event": "Werkstatt nach Zuschauerstart",
+    "time": "3:18",
+    "gold": "39",
+    "wave": "7",
+    "wallMs": 198419
+  },
+  {
+    "event": "Frostfassung nach Zuschauerstart",
+    "time": "3:26",
+    "gold": "44",
+    "wave": "7",
+    "wallMs": 206583
+  },
+  {
+    "event": "Frostturm nach Zuschauerstart",
+    "time": "3:40",
+    "gold": "0",
+    "wave": "8",
+    "wallMs": 220433
+  },
+  {
+    "event": "Frostwirkung nach Zuschauerstart",
+    "time": "3:40",
+    "gold": "0",
+    "wave": "8",
+    "wallMs": 220471
+  }
+]

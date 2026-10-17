@@ -1,12 +1,14 @@
 # P2 — Erste spielbare Fassung und G1-Probe
 
-Stand: 17.10.2026 · Branch `codex/idle-bastion-vertical-slice` · G1 bleibt **offen**. B06 ist implementiert; die letzten B07-Varianten und das Hosting werden in dieser Fassung noch abschließend geprüft.
+Stand: 17.10.2026 · Branch `codex/idle-bastion-vertical-slice` · Implementierungscommit `8a0a276` · B06/B07 abgeschlossen. G1 bleibt **offen**, bis der Nutzer diese spielbare Fassung ausdrücklich freigibt.
 
 ## Selbst ausprobieren
 
 [Spiel starten](https://emfau88.github.io/TD/idle-bastion/) · [Neue unabhängige Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1)
 
-Die Veröffentlichung erfolgt per GitHub Pages aus dem Testbranch. Die bestehende Anwendung wird dabei ebenfalls gebaut und bleibt am Seitenanfang erreichbar. Kein Merge nach `main`. Die GitHub-Seite war vor dieser Veröffentlichung nicht erreichbar (HTTP 404).
+Die Veröffentlichung erfolgt per GitHub Pages aus dem Testbranch. [Deployment 39068456156](https://github.com/emfau88/TD/actions/runs/39068456156) hat beide Builds erfolgreich erstellt und veröffentlicht. Idle und die bestehende Anwendung antworten mit HTTP 200. Kein Merge nach `main`. Die GitHub-Seite war vor dieser Veröffentlichung nicht erreichbar (HTTP 404).
+
+Die gehostete Fassung wurde zusätzlich im echten Browser geöffnet: automatische Gegner, regulär verdienter erster Goldbetrag, eigener Turmkauf, Pause und vollständig geladene Grafik geprüft; keine erfassten Browserwarnungen/-fehler. [Gehostete Spielansicht](github-pages-live-1920x1080.jpg). Die öffentliche [Maßstabprobe](https://emfau88.github.io/TD/idle-bastion/asset-check.html) wurde ebenfalls geöffnet und beide Werkstattzustände neben den Originalobjekten angesehen: [Vergleich](asset-comparison.jpg).
 
 Im Spiel: automatischen Kampf beobachten, Waldwächter an der ausgewählten Nordostkurve bauen, einmal verbessern, unter Siedlung die Werkstatt reparieren und Frostfassung erforschen. „Frostkristall platzieren“ wählt einen freien Platz; empfohlen ist die Nordwestkurve. Alle Schritte verwenden reguläres Gold und bleiben frei entscheidbar. Werkstatt 400, Forschung 60, Frostturm 110 Gold. Weitere Upgrades bis Level 6 sind anschließend möglich.
 
@@ -39,7 +41,15 @@ Das erste Upgrade war bereits früher bezahlbar; die tatsächliche Kaufentscheid
 
 ## Spielweisen und zusätzliche Prüfung
 
-Der vollständige Tutorialverlauf wurde im Browser bei 1× nachgewiesen. Die zwei zusätzlichen Browservarianten werden noch ergänzt. Ergänzend enthält [model-comparison.json](model-comparison.json) drei deterministische, legale Modellläufe: Tutorial, zusätzliche Turmausgabe an anderem Platz und drei Minuten ohne Käufe. Alle drei gelangen mit gültigem Speicherstand zur Frostwirkung. Der Modellvergleich ist ausdrücklich kein Echtzeit-Playtest. Reproduzierbar mit `node --import tsx scripts/idle-opening.ts`.
+Alle drei Varianten wurden mit getrennten frischen Spielständen im echten Browser bei 1× ausgeführt:
+
+| Variante | Tatsächliche Aktionen und Ergebnis |
+| --- | --- |
+| Tutorial | Obiger durchgehender Ablauf: Werkstatt 1:23, Forschung 1:41, Frostwirkung 2:04. |
+| Anders investieren | Erster Waldwächter an der Südkurve 0:00; Upgrade und zusätzlicher Nordwestturm 0:31. Werkstatt und Forschung wurden bei 1:32 gekauft, Frostturm bei 2:30, Frostwirkung bei 2:32. Der spätere Frostkauf enthält bewusste Bedien-/Beobachtungszeit; diese Variante behauptet keine garantierte 150-Sekunden-Zeit. Kein dauerhafter Rückstand oder blockierter Tutorialschritt. [Zeitprotokoll](alternative-timing.json) · [Ansicht](alternative-1920x1080.jpg). |
+| Zunächst zuschauen | Bis 3:16 kein Kauf: 574 Gold, Welle 7 und geschützter Startturm. Danach eigener Turm und Upgrade 3:17, Werkstatt 3:18, Forschung 3:26, Frostturm und Frostwirkung 3:40. Das Spiel konnte mit regulärem Gold ohne Reset oder Geschenk weitergeführt werden. [Zeitprotokoll](watch-timing.json) · [vor Einstieg](watch-three-minutes-1920x1080.jpg) · [anschließend](watch-resumed-1920x1080.jpg). |
+
+Ergänzend enthält [model-comparison.json](model-comparison.json) drei deterministische, legale Modellläufe mit festgelegter sofortiger Kaufpolitik. Sie liefern ebenfalls gültige Stände und Frostwirkung. Diese Modellzeiten sind ausdrücklich keine Browserzeiten. Reproduzierbar mit `node --import tsx scripts/idle-opening.ts`.
 
 Hinweise folgen tatsächlichen Käufen und Treffern. Alternative Plätze zählen ebenso; bereits erledigte Aktionen und verkaufte ehemalige Türme setzen die Aufgaben nicht zurück. Überspringen bleibt gespeichert. Wiederanzeigen ändert weder Geld noch Kampf oder Freischaltungen. Im Browser blieb nach Wiederanzeigen derselbe Goldsaldo von 10 erhalten.
 
@@ -62,4 +72,4 @@ Keine erneute vollständige Langzeit-, klassische Referenz- oder Offline-Matrix 
 2. Der erste Kauf lässt bewusst mehrere Platzierungen zu. Ein Frostturm weit hinter einer starken vorderen Verteidigung kann später zum ersten Treffer kommen; das Tutorial empfiehlt deshalb die freie Nordwestkurve.
 3. Dies ist der erste Kreislauf, noch kein gestalteter 15-Minuten-Verlauf. Wisp, Lager, Boss, Gebietsfreischaltung und Werkstatt II fehlen absichtlich bis G1. Langzeitbalance und zusätzliche Politur sind nicht abgenommen.
 
-**Nächster Schritt nach fertiger Testveröffentlichung: Nutzer spielt diese Fassung und entscheidet ausdrücklich über G1. B08 bleibt gesperrt.**
+**Nächster Schritt: Nutzer spielt die veröffentlichte Fassung und entscheidet ausdrücklich über G1. B08 bleibt gesperrt.**
