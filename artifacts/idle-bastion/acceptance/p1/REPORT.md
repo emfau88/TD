@@ -137,3 +137,43 @@ Fehler- und Beschädigungsfälle wurden automatisiert gegen das IndexedDB-Verhal
 ### Grenzen und nächster Schritt
 
 B03 ist die technische Persistenzgrundlage. Offline-Ertrag, sichere Farmwelle und exklusive Tab-Eigentümerschaft mit Writer-Epoche gehören zu B04; eine Revisionsprüfung ersetzt diese Eigentümerschaft nicht. Hintergrundzeit wird derzeit nicht als Kampf oder Goldgewinn nachgeholt. Export/Import folgt spätestens B14. Die Darstellung verwendet weiterhin neutrale Marker; Wald und Mara folgen B05. Die verbindliche Nutzerabnahme G1 bleibt offen.
+## B04 — Sicheres Farmen, Abwesenheit und Tab-Eigentümerschaft
+
+Geprüfter Implementierungscommit: `25e9a5f`.
+
+### Ergebnis
+
+Nach einer Niederlage bleibt die Wirtschaft erhalten. Die Verteidigung wechselt zu einer nachgewiesenen Farmwelle oder spielt mangels Nachweis Welle 1 live. Jeder Versuch beginnt mit 20/20 Kernleben, leerer Gegner-/Projektilmenge und frischer Warteschlange. „Erneut vorstoßen“ wird am Wellenübergang ausgeführt und startet die erste noch nicht geschaffte Welle. Danach läuft der Vorstoß automatisch; eine Niederlage löst keinen sofortigen erneuten Vorstoß aus.
+
+Die sichere Rate stammt aus zwei vollständigen konservativen Prüfläufen einer tatsächlich live geschafften normalen Welle. Beide starten mit ungünstigen normalen Turm-Cooldowns und schließen ihre Wellenpause ein; schon ein entkommener Gegner verwirft den Nachweis. Die begrenzte Prüfung verändert weder Live-Gold noch Statistik oder UI-Ereignisse. Maximal drei Kandidaten werden geprüft; ein weiterhin gültiger älterer Nachweis bleibt erhalten. Bau, Upgrade und schädlicher Verkauf ändern den Fingerabdruck und veranlassen neue Prüfung. Reservierte Bosswellen zählen nicht als Farmbasis.
+
+Offline-Abrechnung verwendet die beim Verlassen gültige Basis, 60 % Effizienz und zwei Stunden Limit. Fensterherkunft, Zeitcursor, verbrauchte Limitdauer, eindeutige ausstehende Belohnung und exakter rationaler Rundungsrest bleiben gespeichert. Der Saldo besitzt zusätzlich gespeicherte Goldtausendstel. Reload und Claim allein starten kein neues Limit; erst die tatsächliche aktive Fortsetzung beendet das Fenster. Explizite Pause produziert kein Gold. Im ausdrücklich temporären Modus werden große Frame-Lücken verworfen, ohne Offline-Ertrag zu versprechen.
+
+Ein persistenter Writer-Datensatz mit monotoner Epoche schützt alle wirtschaftlichen Writes innerhalb derselben IndexedDB-Transaktion. Die fünf Sekunden gültige Lease wird regelmäßig erneuert. Web Locks dienen als kurzer Übernahme-Zugriff und verhindern keine gültige Übernahme einer abgelaufenen Lease. Ein versteckter Tab speichert die gemeinsame aktive/abwesende Grenze und gibt die Kontrolle ab. Ein alter wieder erwachter Writer kann keine neueren Ergebnisse überschreiben. Schnelle Reloads warten begrenzt auf eine noch auslaufende vorherige Lease.
+
+### Ausgeführte Prüfungen
+
+| Prüfung | Ergebnis |
+| --- | --- |
+| `npm run idle:test` | 97/97 bestanden: acht Layout-, 35 Kampf/Codec/Farm-, 21 Session- und 33 Store/Offline-Tests |
+| Unveränderter Startturm | Erster Live-Abschluss bei 8,8 s; konservativer Nachweis: 140 Gold über 21.100 ms für zwei Zyklen inklusive Pausen, entsprechend 398,1 G/min |
+| Natürlicher Rückfall im Modell | Ohne Käufe erste Niederlage in Welle 15 nach 662,2 s, höchste geschaffte Welle 14. Anschließend frischer Farmversuch mit 20/20 Leben, Wiederholung ohne automatischen Vorstoß; vorgemerkter Vorstoß erst am Übergang |
+| Schädlicher Verkauf | Nachweis für ausgebaute Welle 8 wird unmittelbar ungültig; tatsächlicher neuer Nachweis fällt auf die tragfähige Welle 1 zurück |
+| Offline-Zeitfälle | 30 s, 10 min, 1 h und 3 h bei 60 % und Zwei-Stunden-Limit; keine Limitverlängerung durch Claim, erneutes Schließen oder mehrfaches Öffnen |
+| Uhr/Rundung | Rückwärtsuhr senkt den Cursor nicht, Vorwärtssprung bleibt begrenzt, kleine Teilbeträge und wechselnde Raten bewahren exakten gespeicherten Rest |
+| Eigentümerschaft | Konkurrierende Akquisition, Erneuerung, Freigabe, Übernahme nach Ablauf, alter Writer nach Übernahme, gespeicherte Epoche und geschützte Recovery geprüft |
+| Bestehende Daten | Envelope 1/Kampf 1 werden kontrolliert migriert; neuere unbekannte Formate bleiben geschützt. Die frühe B04-Fassung ohne explizite Policy-Felder wird mit ihren bekannten 60 % / 2 h gelesen, ohne Fenster oder Belohnung zu verwerfen |
+| Echter Browser | Laufender Kampf und sichere Rate; zweiter Tab blieb ohne eigene Simulation und zeigte „Spiel bereits in einem anderen Tab aktiv“ |
+| Echter Browser, Rückkehr | Bei 495 vorhandenem Gold zunächst Anzeige von 646,027 ausstehenden Gold nach rund 162 s angezeigter Abwesenheit. Reload vor dem Claim behielt den Saldo; nur neu hinzugekommene Abwesenheit erhöhte den ausstehenden Betrag |
+| Echter Browser, Claim/Pause | Nach Einsammeln einschließlich hinzugekommener Dialogzeit und anschließendem Pausieren: 1.463,078 Gold. Erneuter Reload erhält exakt 1.463,078; Rückkehrbeleg zeigt aktive Pause und +0 Gold |
+| Echter Browser, schnelle Reloads | Kontrolliertes Neuladen und harte Reloads geprüft; eine noch lebende alte Lease wird begrenzt abgewartet |
+| Desktopansichten | Angeforderte 1366×768 und 1920×1080 ohne horizontalen Überlauf; kleine Breite meldet browserbedingt 1367 CSS-Pixel |
+| `npm run idle:build` | TypeScript und Produktionsbuild erfolgreich; keine erfassten Browserwarnungen/-fehler im abschließenden Durchlauf |
+
+Der elfminütige natürliche Rückfall wurde deterministisch automatisiert geprüft; ein zusätzlicher durchgehender elfminütiger Browserlauf wurde nicht behauptet. Große Uhrsprünge, Betriebssystem-Suspend und Lease-Übernahme eines eingefrorenen alten Tabs wurden mit kontrollierten Uhren und IndexedDB-Tests geprüft, nicht durch reale Systemuhränderungen. Das ist weiterhin eine neutrale technische P1-Fassung, keine Wald-/Grafik- oder G1-Spielgefühlabnahme.
+
+[Zweiter Tab bleibt inaktiv](b04-second-tab.jpg) · [echter Rückkehrbeleg](b04-offline-return.jpg) · [Pause und unveränderter Saldo nach Reload](b04-paused-reload-1366x768.jpg) · [kleine Desktopansicht](b04-ready-1366x768.jpg) · [große Desktopansicht](b04-ready-1920x1080.jpg)
+
+### Halt vor B05
+
+B01–B04 sind abgeschlossen. Der Nutzer hat zuletzt ausdrücklich „warte vor beginn mit b05“ angeordnet. Deshalb beginnt B05 noch nicht. Bisher wurden dafür lediglich Originalassets und vorhandene Navigations-/Renderingmodule gelesen; es gibt keine B05-Codeänderungen und keine Assetproduktion. Der spätere G1-Halt nach B07 bleibt zusätzlich bestehen.

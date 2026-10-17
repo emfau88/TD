@@ -109,7 +109,7 @@ Im sichtbaren Kampf unterstützt Mara weiterhin automatisch. Die Offline-Grundla
 
 ## 8. Verbindliches Speicherverfahren
 
-Eigene IndexedDB-Datenbank und eigener Namensraum, `spire-idle-bastion`, Store `saves`, Spielstand-ID `default`, mit versioniertem Save-Envelope (erste Fassung: `schemaVersion: 1`). Keine Wiederverwendung von `spire-woodland-v1`.
+Eigene IndexedDB-Datenbank und eigener Namensraum, `spire-idle-bastion`, Store `saves`, Spielstand-ID `default`, mit versioniertem Save-Envelope (erste Fassung: `schemaVersion: 1`). Keine Wiederverwendung von `spire-woodland-v1`. Der B04-Code verwendet Envelope 2 und Kampfsnapshot 2 bei unveränderter Datenbankversion 1; bekannte B03-Stände werden lesend migriert, ohne nachträglichen Farmnachweis. Offline-Daten besitzen ihre eigene Version 1.
 
 Der Zustand enthält mindestens:
 
@@ -150,7 +150,8 @@ Ein harter Prozessabbruch kann die letzten noch nicht bestätigten Simulationsbr
 
 - Genau ein Tab darf den Save wirtschaftlich fortschreiben. Andere zeigen „Spiel bereits in einem anderen Tab aktiv“ und bleiben ohne eigene Simulation oder Belohnungen.
 - Web Locks nach Verfügbarkeit verwenden. Zusätzlich beziehungsweise als Fallback Eigentümerschaft über eine IndexedDB-Lease mit Writer-Epoche absichern.
-- Jeder Commit prüft die gültige Epoche innerhalb seiner Datenbanktransaktion. Ein eingefrorener alter Tab darf nach Leaseübernahme keine veralteten Ergebnisse schreiben.
+- Die B04-Lease läuft fünf Sekunden und wird bei sichtbarer aktiver Sitzung regelmäßig erneuert. Ihre Epoche bleibt auch nach Freigabe als Tombstone erhalten. Web Locks ordnen kurz die Übernahme; eine eingefrorene Registerkarte darf durch einen dauerhaft gehaltenen Web Lock keine gültige Leaseübernahme blockieren.
+- Jeder Commit prüft die gültige Epoche im persistenten Writer-Datensatz innerhalb seiner Datenbanktransaktion. Ein eingefrorener alter Tab darf nach Leaseübernahme keine veralteten Ergebnisse schreiben.
 - Verstecken des aktiven Tabs: aktuellen Zustand committen, Simulation stoppen, Abwesenheitsgrenze setzen und Kontrolle geordnet abgeben. Keine parallel weiterlaufende gedrosselte Kampfsimulation.
 - Rückkehr: zuerst Eigentümerschaft erwerben, aktuellen Stand lesen und Abwesenheit abrechnen; danach Kampf fortsetzen.
 - Eine zweite Registerkarte verursacht keinen zusätzlichen Abwesenheitszeitraum, solange der berechtigte Tab aktiv spielt.
