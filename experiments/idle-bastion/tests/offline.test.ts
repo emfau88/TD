@@ -176,3 +176,18 @@ test('policy migration never replaces an explicitly contradictory or malformed s
     }
   }
 });
+
+test('known historical rule-one and rule-two departure proofs retain their original production basis', () => {
+  for (const rulesVersion of [1, 2]) {
+    const basis = { ...BASIS, rulesVersion, fingerprint: `defense-rules-${rulesVersion}` };
+    const pending = reserveOffline(start(basis), START + 30_000);
+    const restored = restoreOffline(JSON.parse(JSON.stringify(pending)));
+    assert.deepEqual(restored, pending);
+    assert.equal(restored?.window?.certificate?.rulesVersion, rulesVersion);
+    assert.equal(restored?.baseline.certificate?.fingerprint, basis.fingerprint);
+    assert.equal(reserveOffline(restored!, START + 60_000).pendingReward?.amountUnits, 60_000);
+  }
+  const future = JSON.parse(JSON.stringify(start()));
+  future.baseline.certificate.rulesVersion = future.window.certificate.rulesVersion = 3;
+  assert.equal(restoreOffline(future), undefined);
+});

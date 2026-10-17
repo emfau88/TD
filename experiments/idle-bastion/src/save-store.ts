@@ -35,7 +35,6 @@ export class SaveUnsupportedError extends Error {
 export class SaveValidationError extends Error {
   constructor(message: string) { super(message); this.name = 'SaveValidationError'; }
 }
-
 export const WRITER_LEASE_MS = 5000;
 type Inspection = Exclude<LoadResult, { kind: 'recoverable' }>;
 interface WriterRecord { schemaVersion: 1; ownerId: string | null; epoch: number; expiresAt: number }
@@ -56,13 +55,21 @@ function inspect(value: unknown, present = value !== undefined): Inspection {
   }
   if (!knownSchema(value)) return { kind: 'corrupt', reason: 'The save envelope has no recognized schema.' };
   if (record(value.battle)) {
-    for (const [key, maximum] of [['schemaVersion', 2], ['rulesVersion', 1], ['layoutVersion', 1]] as const) {
+    for (const [key, maximum] of [['schemaVersion', 3], ['rulesVersion', 2], ['layoutVersion', 1]] as const) {
       const version = value.battle[key];
       if (natural(version) && version > maximum) return { kind: 'unsupported', reason: `Battle ${key} ${version} requires a newer game version.` };
     }
   }
-  if (record(value.offline) && natural(value.offline.schemaVersion) && value.offline.schemaVersion > 1) {
-    return { kind: 'unsupported', reason: 'The offline state requires a newer game version.' };
+  if (record(value.offline)) {
+    if (natural(value.offline.schemaVersion) && value.offline.schemaVersion > 1) {
+      return { kind: 'unsupported', reason: 'The offline state requires a newer game version.' };
+    }
+    for (const origin of [value.offline.baseline, value.offline.window]) {
+      if (record(origin) && record(origin.certificate) && natural(origin.certificate.rulesVersion)
+        && origin.certificate.rulesVersion > 2) {
+        return { kind: 'unsupported', reason: 'The offline production proof requires a newer game version.' };
+      }
+    }
   }
   if (!natural(value.revision) || value.revision < 1 || !natural(value.writtenAt) || typeof value.paused !== 'boolean') {
     return { kind: 'corrupt', reason: 'The save revision, timestamp or pause flag is invalid.' };
@@ -284,3 +291,4 @@ export function openBattleStore(factory: IDBFactory = globalThis.indexedDB,
     };
   });
 }
+

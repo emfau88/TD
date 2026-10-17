@@ -3,6 +3,7 @@ import './style.css';
 import './battle.css';
 import { stats, upgradeCost, sellValue, type IdleBattle } from './battle';
 import { BattleScene } from './battle-scene';
+import { nextObjective } from './hud';
 import { BattleSession, SessionLoadError, SessionOwnershipError } from './battle-session';
 import { openBattleStore, type BattleSaveStore } from './save-store';
 
@@ -22,6 +23,7 @@ const pause = element<HTMLButtonElement>('pause');
 const advance = element<HTMLButtonElement>('advance');
 const claim = element<HTMLButtonElement>('claim-offline');
 const recover = element<HTMLButtonElement>('recover-save');
+const assignMara = element<HTMLButtonElement>('assign-mara');
 let session: BattleSession | undefined;
 let scene: BattleScene | undefined;
 let game: Phaser.Game | undefined;
@@ -46,7 +48,7 @@ function syncUI(): void {
   const live = session;
   const view = scene;
   const unavailable = !ready || !live || live.busy || Boolean(live.error) || live.suspended;
-  build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = unavailable;
+  build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = unavailable;
   if (!ready || !live || !view) return;
   view.paused = live.paused || document.hidden || Boolean(live.error) || live.suspended || live.awaitingResume;
   const saveStatus = element('save-status');
@@ -58,6 +60,16 @@ function syncUI(): void {
   if (live.busy) return;
   const sim = live.battle;
   const certificate = live.certificate;
+  element('next-objective').textContent = nextObjective(sim);
+  const mara = sim.mara;
+  const maraTarget = sim.towers.find(tower => tower.uid === mara.targetTowerUid);
+  const targetName = maraTarget?.protected ? 'Startturm' : maraTarget ? 'Waldwächter' : 'Startturm';
+  element('mara-status').textContent = mara.unreachable ? 'Mara erreicht dieses Ziel nicht. Wähle einen anderen Turm.'
+    : mara.path.length ? `Mara ist unterwegs zum ${targetName}. Noch kein Bonus während der Anreise.`
+    : mara.effectRemaining > 0 ? `Übertakten aktiv · ${Math.ceil(mara.effectRemaining)} s · ${targetName}`
+    : mara.cooldownRemaining > 0 ? `Beim ${targetName} · wieder bereit in ${Math.ceil(mara.cooldownRemaining)} s`
+    : `Beim ${targetName} · bereit für die nächste Welle.`;
+  element('camera-zoom').setAttribute('aria-pressed', String(view.mapZoom > 1));
   element('safe-rate').textContent = `Sicher: ${rateFormat.format(certificate ? certificate.rewardGold * 60000 / certificate.durationMs : 0)} G/min`;
   element('safe-rate').title = certificate ? `Welle ${certificate.wave}: zwei konservative, schadensfreie Wiederholungen inklusive Wellenpausen. Grundlage für 60 % Offline-Ertrag.`
     : 'Noch kein gültiger Farmnachweis. Eine erste Welle muss live geschafft und zweimal konservativ geprüft werden.';
@@ -92,13 +104,15 @@ function syncUI(): void {
     ? tower.protected ? 'Dein erster Turm sichert die Grundverteidigung. Du kannst ihn verbessern.' : 'Dieser Waldwächter verteidigt den Weg. Verbessere ihn oder investiere das Gold an anderer Stelle.'
     : pad?.availability === 'initial' ? 'Hier kannst du einen weiteren Waldwächter errichten.'
     : pad ? 'Dieser Platz ist im aktuellen Startbereich noch nicht verfügbar.' : 'Wähle einen hell markierten Platz auf der Karte.';
-  build.hidden = Boolean(tower); upgrade.hidden = !tower; sell.hidden = !tower;
+  build.hidden = Boolean(tower); upgrade.hidden = !tower; sell.hidden = !tower; assignMara.hidden = !tower;
   const blocked = unavailable || view.paused || sim.phase === 'defeat';
   build.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId);
   const canUpgrade = Boolean(tower && tower.level < 3);
   upgrade.disabled = blocked || !tower || !canUpgrade || sim.gold < upgradeCost(tower);
   upgrade.textContent = tower && canUpgrade ? `Aufwerten · ${currency.format(upgradeCost(tower))} Gold` : 'Levelgrenze erreicht';
   sell.disabled = blocked || !tower || tower.protected;
+  assignMara.disabled = blocked || !tower || tower.uid === mara.targetTowerUid;
+  assignMara.textContent = tower?.uid === mara.targetTowerUid ? 'Mara unterstützt diesen Turm' : 'Mara hier einsetzen';
   sell.textContent = tower?.protected ? 'Geschützter Startturm' : `Verkaufen · +${currency.format(tower ? sellValue(tower) : 0)} Gold`;
   element('tower-stats').innerHTML = tower ? (() => {
     const values = stats(tower);
@@ -124,7 +138,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
   if (booting || document.hidden) return;
   if (retryTimer !== undefined) { clearTimeout(retryTimer); retryTimer = undefined; }
   booting = true; ready = false;
-  build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = true;
+  build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = true;
   element('app-error').hidden = true; element('load-actions').hidden = true;
   try {
     game?.destroy(true); game = undefined; scene = undefined;
@@ -142,6 +156,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
       canRender: () => !live.busy,
       changed: syncUI,
       select(padId) { selectedPadId = padId; view.setSelected(padId); syncUI(); },
+      selectMara() { element('mara-title').scrollIntoView({ block: 'nearest' }); },
       ready() { ready = true; view.setSelected(selectedPadId); syncUI(); },
     });
     scene = view;
@@ -176,6 +191,9 @@ build.addEventListener('click', () => { void perform(battle => selectedPadId && 
 upgrade.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.upgrade(tower.uid); }); }, { signal: lifetime.signal });
 sell.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.sell(tower.uid); }); }, { signal: lifetime.signal });
 advance.addEventListener('click', () => { void perform(battle => battle.requestAdvance()); }, { signal: lifetime.signal });
+assignMara.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.assignMara(tower.uid); }); }, { signal: lifetime.signal });
+element('camera-reset').addEventListener('click', () => { scene?.resetCamera(); syncUI(); }, { signal: lifetime.signal });
+element('camera-zoom').addEventListener('click', () => { if (scene) scene.setMapZoom(scene.mapZoom > 1 ? 1 : 1.15); syncUI(); }, { signal: lifetime.signal });
 pause.addEventListener('click', () => { if (session) { const completion = session.setPaused(!session.paused); syncUI(); void completion.then(syncUI); } }, { signal: lifetime.signal });
 claim.addEventListener('click', () => {
   const live = session;

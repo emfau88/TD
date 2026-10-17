@@ -1,6 +1,7 @@
 /** Conservative, bounded, Phaser-free proofs. A probe never mutates the live
  * model, issues its rewards or consumes its renderer/tutorial event stream.
  */
+import { getForestBlockedCells } from './forest-world';
 import { BASE, BATTLE_RULES_VERSION, IdleBattle, isNormalFarmWave, stats } from './battle';
 
 export interface FarmCertificate {
@@ -24,6 +25,7 @@ const MAX_PROBE_REWARD = 2 * (BASE.waves.maxCount * Math.max(...Object.values(BA
 export function defenseFingerprint(battle: IdleBattle): string {
   return JSON.stringify({
     rulesVersion: BATTLE_RULES_VERSION, layoutVersion: 1, layout: battle.layout,
+    blocked: getForestBlockedCells(battle.layout), maraTarget: battle.mara.targetTowerUid,
     towers: battle.towers.map(tower => ({ padId: tower.padId, definition: tower.def.id, level: tower.level, protected: tower.protected }))
       .sort((left, right) => left.padId.localeCompare(right.padId)),
   });
@@ -46,7 +48,7 @@ function prove(battle: IdleBattle, wave: number, fingerprint: string): FarmCerti
   snapshot.pendingTime = 0; snapshot.ticks = 0; snapshot.elapsed = 0;
   snapshot.gold = 0; snapshot.goldRemainderUnits = 0; snapshot.earned = 0; snapshot.kills = 0;
   snapshot.towers = snapshot.towers.map(tower => ({ ...tower, cooldown: stats({ def: BASE.tower, level: tower.level }).cooldown, kills: 0 }));
-  const probe = IdleBattle.restore(snapshot);
+  const probe = IdleBattle.restore(snapshot, { maraBonus: false });
   if (!probe) return undefined;
   let clears = 0;
   for (let step = 1; step <= MAX_FARM_PROBE_STEPS; step++) {

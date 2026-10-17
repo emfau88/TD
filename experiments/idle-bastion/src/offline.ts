@@ -31,11 +31,13 @@ function time(value: number): number {
 }
 function certificate(value: unknown): FarmCertificate | null | undefined {
   if (value === null) return null;
-  if (!object(value) || !positive(value.wave) || value.rulesVersion !== 1 || !positive(value.rewardGold)
+  // Historical departure proofs retain the rule set that earned them. New
+  // active proofs are validated separately by farming.ts against current rules.
+  if (!object(value) || !positive(value.wave) || (value.rulesVersion !== 1 && value.rulesVersion !== 2) || !positive(value.rewardGold)
     || !positive(value.durationMs) || typeof value.fingerprint !== 'string' || value.fingerprint.length < 1
     || value.fingerprint.length > 20_000) return undefined;
   return {
-    wave: value.wave, fingerprint: value.fingerprint, rulesVersion: 1,
+    wave: value.wave, fingerprint: value.fingerprint, rulesVersion: value.rulesVersion,
     rewardGold: value.rewardGold, durationMs: value.durationMs,
   };
 }
@@ -59,7 +61,6 @@ function fraction(value: unknown): Fraction | undefined {
 function sameCertificate(a: FarmCertificate | null, b: FarmCertificate | null): boolean {
   return JSON.stringify(a) === JSON.stringify(b);
 }
-
 /** Validate persisted fields without inventing a certificate or production rate. */
 export function restoreOffline(value: unknown): OfflineState | undefined {
   if (!object(value) || value.schemaVersion !== 1 || !positive(value.nextWindowId)) return undefined;
@@ -214,3 +215,4 @@ export function activateOffline(state: OfflineState, now: number, basis: FarmCer
   };
   return checkpointActive(next, boundary, basis, paused);
 }
+

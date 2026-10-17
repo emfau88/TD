@@ -6,6 +6,8 @@
  * B03 adds exact persistence; B04 owns advance/farm attempts and fractional offline credit.
  */
 import { cellCenter, createIdleLayout, isUnlockedCell, type IdleLayout } from './layout';
+import { getForestBlockedCells } from './forest-world';
+import { MARA, createMara, cloneMara, assignMaraTarget, stepMara, validMara, type MaraState } from './mara';
 
 export const BASE = Object.freeze({
   stepSeconds: 0.025, startGold: 75, coreLives: 20,
@@ -27,7 +29,7 @@ export const BASE = Object.freeze({
   }),
 });
 
-export const BATTLE_RULES_VERSION = 1 as const;
+export const BATTLE_RULES_VERSION = 2 as const;
 export const LIVE_CANDIDATE_LIMIT = 32;
 /** Reserved boss milestones never contribute repeatable offline production. */
 export const isNormalFarmWave = (wave: number): boolean => Number.isSafeInteger(wave) && wave >= 1 && wave !== 15 && wave !== 25;
@@ -57,7 +59,7 @@ export interface BattleEvent {
 
 /** Only scalar IDs and fired payloads cross the save boundary. UI events are transient. */
 export interface BattleSnapshot {
-  schemaVersion: 2; rulesVersion: 1; layoutVersion: 1; layoutId: 'start28';
+  schemaVersion: 3; rulesVersion: 2; layoutVersion: 1; layoutId: 'start28';
   goldRemainderUnits: number; mode: BattleMode; highestCleared: number; attemptId: number;
   liveClearedWaves: number[]; farmWave: number; advanceRequested: boolean;
   gold: number; lives: number; wave: number; phase: Phase; elapsed: number;
@@ -66,6 +68,7 @@ export interface BattleSnapshot {
   towers: Pick<Tower, 'uid' | 'padId' | 'level' | 'cooldown' | 'spent' | 'kills' | 'angle' | 'protected'>[];
   enemies: (Omit<Enemy, 'def'> & { defId: EnemyDef['id'] })[];
   shots: Shot[];
+  mara: MaraState;
 }
 
 const distance = (a: { x: number; y: number }, b: { x: number; y: number }): number => Math.hypot(a.x - b.x, a.y - b.y);
@@ -119,8 +122,11 @@ export class IdleBattle {
   private ticks = 0;
   private readonly path: readonly { x: number; y: number }[];
   private readonly pathLength: number;
+  readonly mara: MaraState;
+  private readonly maraBonus: boolean;
 
-  constructor(public readonly layout: IdleLayout = createIdleLayout()) {
+  constructor(public readonly layout: IdleLayout = createIdleLayout(), options: { maraBonus?: boolean } = {}) {
+    this.maraBonus = options.maraBonus !== false;
     this.path = layout.road.waypoints.map(position => cellCenter(layout, position));
     this.pathLength = this.path.slice(1).reduce((sum, point, index) => sum + distance(this.path[index], point), 0);
     if (this.path.length < 2 || this.pathLength <= 0) throw new Error('Battle requires a non-empty enemy route.');
@@ -129,6 +135,7 @@ export class IdleBattle {
       throw new Error('Battle requires an unlocked starter pad.');
     }
     this.towers.push(this.createTower(starter.id, true));
+    this.mara = createMara(layout, this.towers[0].uid);
   }
 
   /** The B03 codec deliberately supports only the shipped starting layout.
@@ -136,10 +143,10 @@ export class IdleBattle {
    */
   snapshot(): BattleSnapshot {
     if (JSON.stringify(this.layout) !== SNAPSHOT_LAYOUT_JSON) {
-      throw new Error('Unsupported battle layout for snapshot version 2.');
+      throw new Error('Unsupported battle layout for snapshot version 3.');
     }
     return {
-      schemaVersion: 2, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: 1, layoutId: 'start28',
+      schemaVersion: 3, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: 1, layoutId: 'start28',
       goldRemainderUnits: this.goldRemainderUnits, mode: this.mode, highestCleared: this.highestCleared,
       attemptId: this.attemptId, liveClearedWaves: [...this.liveClearedWaves],
       farmWave: this.farmWave, advanceRequested: this.advanceRequested,
@@ -154,23 +161,31 @@ export class IdleBattle {
       })),
       enemies: this.enemies.map(({ def, ...enemy }) => ({ ...enemy, defId: def.id })),
       shots: this.shots.map(shot => ({ ...shot })),
+      mara: cloneMara(this.mara),
     };
   }
 
   /** Reject malformed/newer snapshots before exposing a model. Rebuilding refs
    * never fires commands, combat ticks, purchases or reward/UI events.
    */
-  static restore(value: unknown): IdleBattle | undefined {
+  static restore(value: unknown, options: { maraBonus?: boolean } = {}): IdleBattle | undefined {
     // v1 carried no reliable live-clear evidence. Preserve its exact combat and
     // progress estimate, but never invent farm certificates from old wave numbers.
-    if (isRecord(value) && value.schemaVersion === 1) {
+    if (isRecord(value) && value.schemaVersion === 1 && value.rulesVersion === 1) {
       value = {
         ...value, schemaVersion: 2, goldRemainderUnits: 0, mode: 'advance',
         highestCleared: integerIn(value.wave) ? Math.max(0, value.wave - (value.phase === 'intermission' ? 0 : 1)) : -1,
         attemptId: value.wave, liveClearedWaves: [], farmWave: 1, advanceRequested: false,
       };
     }
-    const model = new IdleBattle(SNAPSHOT_LAYOUT);
+    const model = new IdleBattle(SNAPSHOT_LAYOUT, options);
+    if (isRecord(value) && value.schemaVersion === 2 && value.rulesVersion === 1) {
+      // Validate the original rules before migrating. A rule change invalidates
+      // old live-clear evidence, never confirmed money or historical absence.
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, true)) return undefined;
+      value = { ...value, schemaVersion: 3, rulesVersion: BATTLE_RULES_VERSION,
+        liveClearedWaves: [], farmWave: 1, mara: cloneMara(model.mara) };
+    }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength)) return undefined;
     model.gold = value.gold;
     model.goldRemainderUnits = value.goldRemainderUnits;
@@ -198,11 +213,24 @@ export class IdleBattle {
     }));
     model.enemies = value.enemies.map(({ defId, ...enemy }) => ({ ...enemy, def: BASE.enemies[defId] }));
     model.shots = value.shots.map(shot => ({ ...shot }));
+    Object.assign(model.mara, cloneMara(value.mara));
     model.events = [];
     return model;
   }
 
   get remaining(): number { return this.enemies.length + this.queue.length; }
+
+  assignMara(uid: number): boolean {
+    const tower = this.towers.find(tower => tower.uid === uid);
+    if (!tower || (uid === this.mara.targetTowerUid && !this.mara.unreachable)) return false;
+    assignMaraTarget(this.mara, tower, this.layout, getForestBlockedCells(this.layout));
+    return true;
+  }
+
+  isMaraBoosted(uid: number): boolean {
+    return this.maraBonus && this.phase === 'wave' && this.mara.targetTowerUid === uid
+      && !this.mara.unreachable && this.mara.path.length === 0 && this.mara.effectRemaining > 1e-9;
+  }
 
   /** A certified target affects the next attempt, never the running queue.
    * Zero means no certificate yet: replay live entry wave one to earn evidence.
@@ -265,6 +293,7 @@ export class IdleBattle {
     const amount = sellValue(tower);
     this.credit(amount, false);
     this.towers = this.towers.filter(candidate => candidate.uid !== uid);
+    if (this.mara.targetTowerUid === uid) this.assignMara(this.towers.find(tower => tower.protected)!.uid);
     this.events.push({ type: 'sell', tower, x: tower.x, y: tower.y, amount });
     return true;
   }
@@ -369,6 +398,13 @@ export class IdleBattle {
   }
 
   private tick(dt: number): void {
+    let maraTarget = this.towers.find(tower => tower.uid === this.mara.targetTowerUid);
+    if (!maraTarget) {
+      maraTarget = this.towers.find(tower => tower.protected)!;
+      assignMaraTarget(this.mara, maraTarget, this.layout, getForestBlockedCells(this.layout));
+    }
+    const boostedSeconds = stepMara(this.mara, maraTarget, this.layout, getForestBlockedCells(this.layout),
+      dt, this.phase === 'wave', this.maraBonus);
     if (this.phase === 'defeat') {
       this.mode = 'farm';
       this.lives = BASE.coreLives;
@@ -401,7 +437,8 @@ export class IdleBattle {
       return;
     }
     for (const tower of this.towers) {
-      tower.cooldown = Math.max(0, tower.cooldown - dt);
+      const support = tower.uid === this.mara.targetTowerUid ? boostedSeconds * (MARA.fireRate - 1) : 0;
+      tower.cooldown = Math.max(0, tower.cooldown - dt - support);
       if (tower.cooldown > 1e-9) continue;
       const stat = stats(tower);
       const target = this.enemies.filter(enemy => enemy.hp > 0 && distance(tower, enemy) <= stat.range)
@@ -467,9 +504,9 @@ const near = (left: number, right: number): boolean => Math.abs(left - right) <=
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy = false,
 ): value is BattleSnapshot {
-  if (!isRecord(value) || value.schemaVersion !== 2 || value.rulesVersion !== BATTLE_RULES_VERSION
+  if (!isRecord(value) || value.schemaVersion !== (legacy ? 2 : 3) || value.rulesVersion !== (legacy ? 1 : BATTLE_RULES_VERSION)
     || value.layoutVersion !== 1 || value.layoutId !== 'start28') return false;
   if (!integerIn(value.goldRemainderUnits, 0, 999) || (value.mode !== 'advance' && value.mode !== 'farm')
     || !integerIn(value.highestCleared, 0, Number.MAX_SAFE_INTEGER - 1) || !integerIn(value.attemptId)
@@ -538,6 +575,8 @@ function validSnapshot(
     towerKills += tower.kills;
   }
   if (protectedCount !== 1 || towerKills > value.kills) return false;
+  if (!legacy && !validMara(value.mara, value.towers.map(tower => ({ ...tower,
+    ...cellCenter(layout, layout.towerPads.find(pad => pad.id === tower.padId)!.cell) })), layout, getForestBlockedCells(layout))) return false;
   const cumulative = [0];
   for (let index = 1; index < path.length; index++) cumulative.push(cumulative[index - 1] + distance(path[index - 1], path[index]));
   for (const enemy of value.enemies) {

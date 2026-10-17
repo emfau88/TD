@@ -4,20 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#10211d" />
-    <title>SPIRE · Idle Bastion — Kampfprobe</title>
+    <title>SPIRE · Idle Bastion — Der alte Hain</title>
   </head>
   <body>
     <div id="app">
       <header class="app-header">
-        <div class="brand"><span class="brand-mark" aria-hidden="true">S</span><div><p class="eyebrow">SPIRE</p><h1>Idle Bastion</h1></div></div>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">S</span><div><p class="eyebrow">SPIRE</p><h1>Der alte Hain</h1></div></div>
         <dl class="battle-resources" aria-label="Verteidigung"><div><dt>Gold</dt><dd id="gold">75</dd></div><div><dt>Kernleben</dt><dd id="lives">20 / 20</dd></div><div><dt>Welle</dt><dd id="wave">—</dd></div><div><dt>Offline-Grundlage</dt><dd id="safe-rate" title="Zwei konservative, schadensfreie Wiederholungen ohne Maras Bonus">Sicher: 0 G/min</dd></div></dl>
-        <p class="phase-badge"><span aria-hidden="true"></span>B04 · Farmen und Rückkehr</p>
+        <p class="phase-badge"><span aria-hidden="true"></span>B05 · Startlichtung</p>
       </header>
       <main class="workspace">
         <section class="board-section" aria-labelledby="board-title">
-          <div class="board-toolbar"><h2 id="board-title">Startlichtung</h2><div class="view-controls"><span id="battle-phase">Die Verteidigung beginnt …</span><button id="advance" type="button" hidden>Erneut vorstoßen</button><button id="pause" type="button">Pause</button><button id="reset" type="button">Neu laden</button></div></div>
+          <div class="board-toolbar"><h2 id="board-title">Startlichtung</h2><div class="view-controls"><span id="battle-phase">Die Verteidigung beginnt …</span><button id="advance" type="button" hidden>Erneut vorstoßen</button><button id="pause" type="button">Pause</button><button id="camera-reset" type="button" title="Zeigt wieder die gesamte Verteidigung">Zur Verteidigung</button><button id="camera-zoom" type="button" aria-pressed="false" title="Näher ansehen; mit mittlerer Maustaste verschieben">Näher ansehen</button><button id="reset" type="button">Neu laden</button></div></div>
+          <p id="next-objective" class="next-objective" role="status">Nächstes Ziel: Baue deinen zweiten Waldwächter · 75 Gold.</p>
           <section id="return-card" class="return-card" aria-labelledby="return-title" hidden><div><h3 id="return-title">Willkommen zurück</h3><p id="return-details"></p><p id="return-basis"></p></div><button id="claim-offline" class="primary-action" type="button">Belohnung einsammeln und fortsetzen</button></section>
-          <div id="game" role="img" aria-label="Automatischer Kampf mit Gegnerpfad, Kern und vier verfügbaren Turmplätzen"></div>
+          <div id="game" role="img" aria-label="Waldlichtung mit automatischem Kampf, Mara, Kern und vier verfügbaren Turmplätzen"></div>
           <p id="combat-message" class="board-caption" role="status">Ein Waldwächter steht bereit. Baue deine Verteidigung auf einem der hell markierten Plätze aus.</p>
         </section>
         <aside class="info-panel" aria-labelledby="selection-title">
@@ -25,10 +26,10 @@
           <section class="selection-card" aria-label="Turm verwalten">
             <p class="tower-name">Waldwächter</p><p class="tower-role">Zuverlässige Pfeile · Allrounder</p>
             <dl id="tower-stats" class="layout-metrics"></dl>
-            <div class="action-stack"><button id="build" class="primary-action" type="button">Waldwächter bauen · 75 Gold</button><button id="upgrade" class="primary-action" type="button" hidden>Aufwerten</button><button id="sell" class="secondary-action" type="button" hidden>Verkaufen</button></div>
+            <div class="action-stack"><button id="build" class="primary-action" type="button">Waldwächter bauen · 75 Gold</button><button id="upgrade" class="primary-action" type="button" hidden>Aufwerten</button><button id="assign-mara" class="secondary-action" type="button" hidden>Mara hier einsetzen</button><button id="sell" class="secondary-action" type="button" hidden>Verkaufen</button></div>
             <p id="action-hint" class="action-hint"></p>
           </section>
-          <div class="battle-notes"><p>Die Wellen starten selbstständig. Du entscheidest, wann und wo du Gold investierst.</p><p>Helle Rahmen sind verfügbare Turmplätze. Der erste Waldwächter bleibt als Grundverteidigung erhalten.</p></div>
+          <section class="mara-card" aria-labelledby="mara-title"><p class="eyebrow">Deine Begleiterin</p><h2 id="mara-title">Mara</h2><p id="mara-status" role="status">Unterstützt deinen Startturm.</p><p>Übertakten: 8 s lang +50 % Feuerrate, automatisch alle 30 s. Wähle einen Turm, um Mara zuzuweisen.</p></section><p class="map-help">Helle Ringe: Bauplätze · Turm anklicken: verwalten · Näher ansehen: mittlere Maustaste zum Verschieben.</p>
           <div class="layout-feedback"><p id="layout-status" role="status">Die Kampfprobe wird geladen …</p><p id="app-error" class="app-error" role="alert" hidden></p><div id="load-actions" class="action-stack" hidden><button id="recover-save" class="secondary-action" type="button" hidden>Letzten gültigen Stand laden</button><button id="activate-session" class="secondary-action" type="button" hidden>Hier erneut aktivieren</button><button id="temporary-session" class="secondary-action" type="button">Ohne Speicherung testen</button></div></div>
         </aside>
       </main>

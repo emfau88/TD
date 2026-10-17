@@ -103,7 +103,7 @@ test('selling returns 70 percent of actual investment exactly once; starter rema
 
 for (const initialCooldown of [0, BASE.tower.cooldown]) {
   test(`unassisted protected starter clears the real entry geometry at 20/20 (cooldown ${initialCooldown})`, () => {
-    const sim = new IdleBattle();
+    const sim = new IdleBattle(undefined, { maraBonus: false });
     sim.towers[0].cooldown = initialCooldown;
     const events = firstClear(sim);
     assert.equal(sim.wave, 1);

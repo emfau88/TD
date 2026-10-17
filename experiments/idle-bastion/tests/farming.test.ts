@@ -123,14 +123,15 @@ test('defeat returns to a fresh farm attempt, repeats it and never advances unti
 });
 
 test('snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history', () => {
-  const battle = firstClear();
+  const battle = new IdleBattle(undefined, { maraBonus: false });
+  until(battle, () => battle.highestCleared === 1);
   battle.update(2.5);
   const modern = battle.snapshot();
-  const { goldRemainderUnits, mode, highestCleared, attemptId, liveClearedWaves, farmWave, advanceRequested, ...old } = modern;
-  const legacy = { ...old, schemaVersion: 1 };
-  const migrated = IdleBattle.restore(legacy)!;
+  const { mara, goldRemainderUnits, mode, highestCleared, attemptId, liveClearedWaves, farmWave, advanceRequested, ...old } = modern;
+  const legacy = { ...old, schemaVersion: 1, rulesVersion: 1 };
+  const migrated = IdleBattle.restore(legacy, { maraBonus: false })!;
   assert.ok(migrated);
-  assert.equal(migrated.snapshot().schemaVersion, 2);
+  assert.equal(migrated.snapshot().schemaVersion, 3);
   assert.equal(migrated.highestCleared, 1);
   assert.equal(migrated.attemptId, 2);
   assert.deepEqual(migrated.liveClearedWaves, []);
@@ -171,17 +172,17 @@ test('offline thousandths survive repeated credits, spending and snapshots; inva
   }
 });
 
-test('v2 progress and certificate fields reject invalid histories, references, versions and numeric limits', () => {
+test('v3 progress and certificate fields reject invalid histories, references, versions and numeric limits', () => {
   const battle = firstClear(), good = battle.snapshot(), certificate = certifyFarm(battle)!;
   const mutations = [
     { mode: 'wrong' }, { highestCleared: -1 }, { attemptId: 0 }, { farmWave: 9 }, { farmWave: 15 },
     { liveClearedWaves: [1, 1] }, { liveClearedWaves: [2] }, { liveClearedWaves: [1, 15] },
     { goldRemainderUnits: -1 }, { goldRemainderUnits: 1000 }, { goldRemainderUnits: 0.5 },
-    { mode: 'advance', advanceRequested: true }, { schemaVersion: 3 },
+    { mode: 'advance', advanceRequested: true }, { schemaVersion: 4 },
   ];
   for (const fields of mutations) assert.equal(IdleBattle.restore({ ...good, ...fields }), undefined, JSON.stringify(fields));
   for (const fields of [
-    { wave: 2 }, { wave: 15 }, { rulesVersion: 2 }, { fingerprint: 'stale' },
+    { wave: 2 }, { wave: 15 }, { rulesVersion: 3 }, { fingerprint: 'stale' },
     { rewardGold: 0 }, { rewardGold: Infinity }, { rewardGold: 0.5 },
     { durationMs: -1 }, { durationMs: 4001 }, { durationMs: 999999999 },
   ]) assert.equal(isFarmCertificateValid({ ...certificate, ...fields }, battle), false, JSON.stringify(fields));

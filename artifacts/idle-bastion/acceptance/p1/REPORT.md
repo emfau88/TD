@@ -177,3 +177,32 @@ Der elfminütige natürliche Rückfall wurde deterministisch automatisiert gepr�
 ### Halt vor B05
 
 B01–B04 sind abgeschlossen. Der Nutzer hat zuletzt ausdrücklich „warte vor beginn mit b05“ angeordnet. Deshalb beginnt B05 noch nicht. Bisher wurden dafür lediglich Originalassets und vorhandene Navigations-/Renderingmodule gelesen; es gibt keine B05-Codeänderungen und keine Assetproduktion. Der spätere G1-Halt nach B07 bleibt zusätzlich bestehen.
+
+## B05 — Startlichtung, Mara und kompakte Bedienung
+
+Geprüfter Implementierungscommit: `a4f7e91`.
+
+### Ergebnis
+
+Die neutrale Probe ist durch eine eigene Waldlichtung aus einer kleinen, dokumentierten Auswahl der vorhandenen Originalgrafiken ersetzt. Weg, Teich, Bäume, Felsen, Kern und freie Bauplätze folgen derselben blockierenden Waldwelt wie Maras Wegsuche. Die Werkstattstelle bleibt absichtlich nur eine stille, freie Lichtung: Es gibt noch kein zukünftiges Gebäude und keinen Wisp.
+
+Mara startet am geschützten Waldwächter. Sie läuft bei Umweisung über freie kardinale Wege, übertaktet ihr Ziel acht Sekunden lang mit 50 % zusätzlicher Feuerrate und beginnt nach dem 30-Sekunden-Cooldown selbstständig erneut. Verkaufen ihres Ziels schickt sie zum Startturm zurück. Ihre Anreise, das Ziel und die Timer werden gespeichert; Farmzertifikate rechnen ihren Bonus ausdrücklich nicht ein.
+
+Das verdichtete HUD zeigt Gold, Kernleben, Welle, sichere Farmrate, Kampfmodus und die nächste bezahlbare Handlung. Kaufen, Aufwerten, Verkauf, Pausieren und Maras Zuweisung bleiben an der Karte erreichbar. Kamerazoom, mittlere-Maustaste-Pan und Rückkehransicht sind von Bauklicks getrennt.
+
+### Ausgeführte Prüfungen
+
+| Prüfung | Ergebnis |
+| --- | --- |
+| `npm run idle:test` | 117/117 bestanden; neue Asset-, Waldwelt- und Mara-Fälle zusätzlich zu den bisherigen Kampf-, Speicher- und Farmprüfungen |
+| TypeScript | Idle-, Root- und Referenz-TypeScript-Prüfungen erfolgreich |
+| `npm run idle:build` | Produktionsbuild erfolgreich |
+| Browser, 1366×768 | Waldstart, regulärer Kauf, Mara-Anreise, Übertakten, Verkauf mit Rückfall auf den Startturm und Reload geprüft; keine erfassten Browserfehler |
+| Browser, 1920×1080 | Startansicht und Bedienung mit allen Einstiegszielen sichtbar geprüft |
+| Reload | Gold, Welle, Mara-Ziel, Reise-/Wirkzustand und Canvas-Ausschnitt nach Reload erhalten; kein doppelter Fortschritt beobachtet |
+
+[Waldstart](b05-start-1366x768.jpg) · [Mara unterwegs](b05-mara-travel-1366x768.jpg) · [Mara übertaktet](b05-mara-active-1366x768.jpg) · [Zielverkauf und Rückfall](b05-sale-fallback-1366x768.jpg)
+
+### Grenzen und nächster Schritt
+
+B05 führt weder Werkstatt noch Frosttechnik ein. Die konkrete Gebäudegrafik, persistenter Siedlungszustand und die sichtbare Frostwirkung gehören B06. G1 bleibt offen; B07 muss den kompletten 90-Sekunden-Kreislauf erst messen und zur Nutzerprobe vorlegen.
