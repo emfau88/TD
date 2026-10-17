@@ -255,8 +255,21 @@ export class ForestScene extends Phaser.Scene {
       const position=curve((age*.7+index/3)%1);
       pixelHeart(charm.tether,position.x,position.y,7,.95);
     }
-    pixelHeart(charm.tether,end.x,end.y-10+Math.sin(age*6)*2,active?13:9,active?1:.5);
-    if(active){charm.tether.lineStyle(1,0xffb9de,.35).strokeCircle(target.x,target.y-26,17+Math.sin(age*5)*2);}
+    // Stagger the hearts so the target sheds a continuous, softly fading trail.
+    // Deriving their positions from the spell age also freezes them on pause.
+    for(let index=0;index<5;index++){
+      const progress=(age/1.65+index/5)%1;
+      const spread=(index%3-1)*10;
+      const x=end.x+spread+Math.sin(progress*Math.PI*2+index*1.7)*4;
+      const y=end.y-5-progress*(38+index%2*8);
+      const alpha=Math.min(1,progress/.16,(1-progress)/.3)*(active?.95:.35);
+      pixelHeart(charm.tether,x,y,(index%2?7:10)*(1-progress*.25),alpha);
+    }
+    if(active){
+      const pulse=(Math.sin(age*5)+1)/2;
+      charm.tether.fillStyle(0xf185c1,.04+pulse*.04).fillEllipse(target.x,target.y-23,42+pulse*6,48+pulse*6);
+      charm.tether.lineStyle(1,0xffb9de,.2+pulse*.15).strokeEllipse(target.x,target.y-23,38+pulse*5,44+pulse*5);
+    }
   }
   private removeEnemy(enemy:Enemy,death:boolean){const view=this.enemyViews.get(enemy.uid);if(!view)return;this.clearCharmView(view);view.bar.destroy();view.shadow.destroy();this.enemyViews.delete(enemy.uid);const direction=enemy.charmAction?.direction??enemy.healAction?.direction??enemy.direction,key=`${enemy.def.id}-death-${direction}`;if(death&&this.anims.exists(key)){this.track(view.sprite);view.sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE,()=>view.sprite.destroy());view.sprite.play({key,repeat:0});}else view.sprite.destroy();}
   private puff(x:number,y:number,color:number,radius=10){const ring=this.track(this.add.circle(x,y,radius,color,.35).setDepth(6500));this.tweens.add({targets:ring,scale:2.1,alpha:0,duration:250,onComplete:()=>ring.destroy()});}
@@ -267,9 +280,14 @@ export class ForestScene extends Phaser.Scene {
     if(!this.sim)return;
     for(const tower of this.sim.towers){
       const view=this.towerViews.get(tower.uid);if(!view)continue;
-      const distracted=this.sim.enemies.some(enemy=>enemy.hp>0&&enemy.charmAction?.active&&enemy.charmAction.targetUid===tower.uid);
-      const wobble=distracted?Math.sin(this.sim.elapsed*8+tower.uid)*.045:0;
-      view.base.setRotation(wobble*.4);view.weapon.setRotation(([1,3,4,6].includes(tower.def.id)?tower.angle:0)+wobble);
+      const caster=this.sim.enemies.find(enemy=>enemy.hp>0&&enemy.charmAction?.active&&enemy.charmAction.targetUid===tower.uid);
+      const age=caster?this.sim.elapsed-caster.charmAction!.startedAt:0;
+      const wobble=caster?Math.sin(age*8)*.035:0;
+      const tremble=caster?Math.sin(age*31)*.65:0;
+      const tint=caster?Phaser.Display.Color.GetColor(255,Math.round(192+Math.sin(age*5)*22),Math.round(229+Math.sin(age*5)*10)):0xffffff;
+      const weaponY=tower.y-(this.assets[`Tower ${String(tower.def.id).padStart(2,'0')}`].height===192?34:23);
+      view.base.setPosition(tower.x+tremble*.6,tower.y+13).setRotation(wobble*.4).setTint(tint);
+      view.weapon.setPosition(tower.x+tremble,weaponY).setRotation(([1,3,4,6].includes(tower.def.id)?tower.angle:0)+wobble).setTint(tint);
     }
     for(const enemy of this.sim.enemies){
       let view=this.enemyViews.get(enemy.uid);
