@@ -1,7 +1,7 @@
 # Arbeitsregeln für Idle Bastion
 
 1. Vor Änderungen `README.md`, `ROADMAP.md` und die zur Aufgabe passende Datei unter `docs/` lesen.
-2. Die Umsetzung wurde mit B01 ausdrücklich gestartet; anschließend wurde B02 beauftragt. Aktuelles Paket, Ergebnisse und weitere Freigaben stehen in der Roadmap. Die 90-Sekunden-Abnahme bleibt verbindlich.
+2. Die Umsetzung wurde mit B01 ausdrücklich gestartet; anschließend wurden B02 und B03 beauftragt. Aktuelles Paket, Ergebnisse und weitere Freigaben stehen in der Roadmap. Die 90-Sekunden-Abnahme bleibt verbindlich.
 3. Nur auf `codex/idle-bastion-vertical-slice` im zugehörigen Worktree arbeiten. `main`, das klassische Spiel und seine Spielstände schützen. Kein eigenmächtiger Push, Merge oder Deployment.
 4. Nach Umsetzungsstart P1 und P2 selbstständig bearbeiten; dann bei **G1 / 90-Sekunden-Zwischenabnahme** anhalten. Erst ausdrückliche Nutzerfreigabe erlaubt P3 und folgende. Verstrichene Zeit, technische Tests oder eigene Begeisterung sind keine Freigabe.
 5. P2 umfasst die erste Werkstatt und erste Technologie. Wisp, Lager, Boss, Kartenerweiterung und deren Assets nicht vor G1 ausarbeiten. Generische Datenfelder sind Vorbereitung, kein vorgezogener Funktionsausbau.

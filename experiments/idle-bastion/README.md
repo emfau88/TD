@@ -109,8 +109,8 @@ Separat startbarer Build mit dokumentierten tatsächlichen Befehlen; möglichst 
 
 Dazu gehören reale Screenshots (erste Minute, Werkstatt, ungefähr Minute 15), Fortschrittszeiten, echte Browser- und Rückkehrtests, technische Entscheidungen sowie eine ehrliche Bewertung der drei größten Schwachstellen. Vollständig/teilweise implementiert, nur vorbereitet und nicht begonnen werden getrennt ausgewiesen. Technische Prüfergebnisse sind keine Nutzerabnahme.
 
-## B01 lokal starten
+## Lokale Probe starten
 
-Im Wurzelverzeichnis des isolierten Worktrees `npm ci` ausführen, falls die Abhängigkeiten fehlen. `npm run idle:dev` startet die neutrale Layoutprobe auf `http://127.0.0.1:5190/`. `npm run idle:test` prüft ihre Geometrie. `npm run idle:build` erzeugt `experiments/idle-bastion/dist/`; `npm run idle:preview` öffnet den Server auf Port 5191.
+Im Wurzelverzeichnis des isolierten Worktrees `npm ci` ausführen, falls die Abhängigkeiten fehlen. `npm run idle:dev` startet die technische Kampfprobe auf `http://127.0.0.1:5190/`. `npm run idle:test` prüft Geometrie und Kampfsimulation. `npm run idle:build` erzeugt `experiments/idle-bastion/dist/`; `npm run idle:preview` öffnet den Server auf Port 5191.
 
-Die Probe zeigt Anordnung und Zugänge, noch keinen laufenden Kampf. Die östliche Planungsansicht schaltet kein Gebiet frei. Tatsächliche Ergebnisse und Screenshots stehen im [P1-Bericht](../../artifacts/idle-bastion/acceptance/p1/REPORT.md).
+Die Startseite zeigt automatische Kämpfe und Bauwirtschaft. `/layout.html` erhält die neutrale B01-Layoutprobe; ihre östliche Planungsansicht schaltet kein Gebiet frei. Tatsächliche Ergebnisse und Screenshots stehen im [P1-Bericht](../../artifacts/idle-bastion/acceptance/p1/REPORT.md).

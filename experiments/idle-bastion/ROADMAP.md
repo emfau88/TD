@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 17.10.2026 · **B01 abgeschlossen; B02 als nächstes beauftragt.**
+Stand: 17.10.2026 · **B01 und B02 abgeschlossen; B03 in Arbeit.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -11,13 +11,13 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | B01 und danach B02 umsetzen; G1 bleibt verbindlicher späterer Halt |
-| Aktives Umsetzungspaket | Keines; B01 abgeschlossen |
-| Nächster Schritt | B02 — automatischer Kampf und Bauwirtschaft |
+| Autorisierter Umfang | B01, B02 und anschließend B03 umsetzen; G1 bleibt verbindlicher späterer Halt |
+| Aktives Umsetzungspaket | B03 |
+| Nächster Schritt | B03 — konsistenter Spielstand |
 | G1: 90-Sekunden-Zwischenabnahme | **Offen; keine Nutzerfreigabe vorhanden** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
-Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01 ist abgeschlossen; B02–B14 sind offen. Der Zustand der Pakete und tatsächliche Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01 und B02 sind abgeschlossen; B03 ist in Arbeit, B04–B14 sind offen. Der Zustand der Pakete und tatsächliche Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
 
 ## So werden die Pakete bearbeitet
 
@@ -36,8 +36,8 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | --- | --- | --- | --- | --- |
 | P0 | Planung | Auftrag, Referenzen und Checklisten vorhanden | Planungsauftrag | Erledigt; ursprüngliche Unterlagen in `6ac8dea`, Checklisten in diesem Dokument |
 | P1 | B01 · Eigenständiger Einstieg | Leere Idle-Anwendung separat start- und baubar, Kartenrahmen festgelegt | Umsetzungsauftrag | Erledigt · `b47294a` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b01--eigenständiger-einstieg-und-kartenrahmen) |
-| P1 | B02 · Kampf und Gold | Automatische Wellen, bezahlbare Käufe, Kernreset | B01 | Nicht begonnen |
-| P1 | B03 · Spielstand | Laufenden Kampf samt Wirtschaft konsistent wiederherstellen | B02 | Nicht begonnen |
+| P1 | B02 · Kampf und Gold | Automatische Wellen, bezahlbare Käufe, Kernreset | B01 | Erledigt · `d10cb04` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b02--automatischer-kampf-und-bauwirtschaft) |
+| P1 | B03 · Spielstand | Laufenden Kampf samt Wirtschaft konsistent wiederherstellen | B02 | In Arbeit |
 | P1 | B04 · Farmen und Abwesenheit | Tragfähige Rückfallwelle, korrekte Offline-Zeit, ein schreibender Tab | B03 | Nicht begonnen |
 | P2 | B05 · Startlichtung und Mara | Echter Wald, sichtbare automatische Unterstützung und bedienbares HUD | B04; Layout aus B01 | Nicht begonnen |
 | P2 | B06 · Werkstatt und Frost | Erstes sichtbares Gebäude mit neuer taktischer Möglichkeit | B05 | Nicht begonnen |
@@ -81,12 +81,12 @@ Vorbefund aus der vorangegangenen Analyse: 54 Root- und 58 Referenztests sowie b
 
 **Voraussetzung:** B01. **Ergebnis:** Ein legal spielbarer technischer Kampfkreislauf bei 1×.
 
-- [ ] Geschützten Waldwächter und reguläres Startgold anlegen; Startturm nicht verkauf-/verschiebbar machen.
-- [ ] Gegner, Zielwahl, Projektile, Schaden und 1×-Simulationsschritte aus bewährten Regeln übernehmen.
-- [ ] Wellen automatisch starten und fortsetzen; jeden neuen Versuch mit 20/20 Kernleben, frischer Gegnerwarteschlange und ohne alte Projektile beginnen.
-- [ ] Bauen, Level-1–3-Upgrades und zulässigen Verkauf aus dem echten Goldsaldo bezahlen; bestätigte Kills und Wellenabschlüsse genau einmal verbuchen.
-- [ ] Levelzahl und Grafikstufe trennen; Reichweiten-/Feuerratengrenzen und Preis-/Belohnungsdaten an zentraler Stelle festlegen.
-- [ ] Einstiegspfad und erste Welle so prüfen, dass allein der geschützte Startturm eine sichere Grundlage trägt; keine bloß behauptete Mindestrate einsetzen.
+- [x] Geschützten Waldwächter und reguläres Startgold anlegen; Startturm nicht verkauf-/verschiebbar machen.
+- [x] Gegner, Zielwahl, Projektile, Schaden und 1×-Simulationsschritte aus bewährten Regeln übernehmen.
+- [x] Wellen automatisch starten und fortsetzen; jeden neuen Versuch mit 20/20 Kernleben, frischer Gegnerwarteschlange und ohne alte Projektile beginnen.
+- [x] Bauen, Level-1–3-Upgrades und zulässigen Verkauf aus dem echten Goldsaldo bezahlen; bestätigte Kills und Wellenabschlüsse genau einmal verbuchen.
+- [x] Levelzahl und Grafikstufe trennen; Reichweiten-/Feuerratengrenzen und Preis-/Belohnungsdaten an zentraler Stelle festlegen.
+- [x] Einstiegspfad und erste Welle so prüfen, dass allein der geschützte Startturm eine sichere Grundlage trägt; keine bloß behauptete Mindestrate einsetzen.
 
 **Fertig, wenn:** Automatische Kämpfe Geld verdienen, reguläre Käufe den Kampf verändern, Wellen sauber wechseln und die reine Simulation ohne Phaser prüfbar bleibt. Niederlage ist ein definierter Zustand für B04, keine Löschung des Fortschritts.
 
@@ -311,3 +311,6 @@ Für jedes abgeschlossene Paket im Bericht festhalten:
 | 17.10.2026 | Roadmap zu 14 prüfbaren Arbeitspaketen mit Checklisten und Abschlusskriterien ausgebaut; Funktionsumfang und Freigabegrenzen bleiben gleich |
 
 | 17.10.2026 | B01 umgesetzt und geprüft; Nutzer beauftragt anschließend ausdrücklich B02 |
+
+
+| 17.10.2026 | B02 umgesetzt und geprüft; Nutzer beauftragt anschließend ausdrücklich B03 |
