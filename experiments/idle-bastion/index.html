@@ -11,11 +11,11 @@
       <header class="app-header">
         <div class="brand"><span class="brand-mark" aria-hidden="true">S</span><div><p class="eyebrow">SPIRE</p><h1>Idle Bastion</h1></div></div>
         <dl class="battle-resources" aria-label="Verteidigung"><div><dt>Gold</dt><dd id="gold">75</dd></div><div><dt>Kernleben</dt><dd id="lives">20 / 20</dd></div><div><dt>Welle</dt><dd id="wave">—</dd></div></dl>
-        <p class="phase-badge"><span aria-hidden="true"></span>B02 · Kampfprobe</p>
+        <p class="phase-badge"><span aria-hidden="true"></span>B03 · Kampfspielstand</p>
       </header>
       <main class="workspace">
         <section class="board-section" aria-labelledby="board-title">
-          <div class="board-toolbar"><h2 id="board-title">Startlichtung</h2><div class="view-controls"><span id="battle-phase">Die Verteidigung beginnt …</span><button id="pause" type="button">Pause</button><button id="reset" type="button">Neue Probe starten</button></div></div>
+          <div class="board-toolbar"><h2 id="board-title">Startlichtung</h2><div class="view-controls"><span id="battle-phase">Die Verteidigung beginnt …</span><button id="pause" type="button">Pause</button><button id="reset" type="button">Neu laden</button></div></div>
           <div id="game" role="img" aria-label="Automatischer Kampf mit Gegnerpfad, Kern und vier verfügbaren Turmplätzen"></div>
           <p id="combat-message" class="board-caption" role="status">Ein Waldwächter steht bereit. Baue deine Verteidigung auf einem der hell markierten Plätze aus.</p>
         </section>
@@ -28,10 +28,10 @@
             <p id="action-hint" class="action-hint"></p>
           </section>
           <div class="battle-notes"><p>Die Wellen starten selbstständig. Du entscheidest, wann und wo du Gold investierst.</p><p>Helle Rahmen sind verfügbare Turmplätze. Der erste Waldwächter bleibt als Grundverteidigung erhalten.</p></div>
-          <div class="layout-feedback"><p id="layout-status" role="status">Die Kampfprobe wird geladen …</p><p id="app-error" class="app-error" role="alert" hidden></p></div>
+          <div class="layout-feedback"><p id="layout-status" role="status">Die Kampfprobe wird geladen …</p><p id="app-error" class="app-error" role="alert" hidden></p><div id="load-actions" class="action-stack" hidden><button id="recover-save" class="secondary-action" type="button" hidden>Letzten gültigen Stand laden</button><button id="temporary-session" class="secondary-action" type="button">Ohne Speicherung testen</button></div></div>
         </aside>
       </main>
-      <footer class="app-footer"><span>1× · Sitzung wird noch nicht gespeichert</span><a href="./layout.html">B01-Grundriss ansehen ↗</a></footer>
+      <footer class="app-footer"><span id="save-status">Spielstand wird geladen …</span><a href="./layout.html">B01-Grundriss ansehen ↗</a></footer>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

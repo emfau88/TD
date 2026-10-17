@@ -3,7 +3,7 @@
  * homing shots, kill accounting, purchases) and reference/src/data.ts
  * (Waldwächter and original enemy identities). No Scene or mutable classic
  * rules are imported. Idle owns its prices, bounded stats and wave recipes.
- * Persistence/farming/characters belong to later packages.
+ * B03 adds the exact versioned live-state codec. Farming/characters are later packages.
  */
 import { cellCenter, createIdleLayout, isUnlockedCell, type IdleLayout } from './layout';
 
@@ -50,8 +50,22 @@ export interface BattleEvent {
   amount?: number; wave?: number;
 }
 
+/** Only scalar IDs and fired payloads cross the save boundary. UI events are transient. */
+export interface BattleSnapshot {
+  schemaVersion: 1; rulesVersion: 1; layoutVersion: 1; layoutId: 'start28';
+  gold: number; lives: number; wave: number; phase: Phase; elapsed: number;
+  ticks: number; pendingTime: number; uid: number; intermissionRemaining: number;
+  kills: number; earned: number; queue: EnemyDef['id'][]; spawnTimer: number;
+  towers: Pick<Tower, 'uid' | 'padId' | 'level' | 'cooldown' | 'spent' | 'kills' | 'angle' | 'protected'>[];
+  enemies: (Omit<Enemy, 'def'> & { defId: EnemyDef['id'] })[];
+  shots: Shot[];
+}
+
 const distance = (a: { x: number; y: number }, b: { x: number; y: number }): number => Math.hypot(a.x - b.x, a.y - b.y);
 const DAMAGE_MULTIPLIERS = Object.freeze([1, 1.75, 2.8]);
+// Immutable layout geometry is shared by restored models; never rerun footpath search per frame.
+const SNAPSHOT_LAYOUT = createIdleLayout();
+const SNAPSHOT_LAYOUT_JSON = JSON.stringify(SNAPSHOT_LAYOUT);
 
 /** Level and visual stage deliberately differ: all B02 levels use art stage I.
  * Explicit clamps prevent accidental unbounded range/fire rate in later levels.
@@ -101,6 +115,58 @@ export class IdleBattle {
       throw new Error('Battle requires an unlocked starter pad.');
     }
     this.towers.push(this.createTower(starter.id, true));
+  }
+
+  /** The B03 codec deliberately supports only the shipped starting layout.
+   * A changed route/unlock layout needs a new version before it can be saved.
+   */
+  snapshot(): BattleSnapshot {
+    if (JSON.stringify(this.layout) !== SNAPSHOT_LAYOUT_JSON) {
+      throw new Error('Unsupported battle layout for snapshot version 1.');
+    }
+    return {
+      schemaVersion: 1, rulesVersion: 1, layoutVersion: 1, layoutId: 'start28',
+      gold: this.gold, lives: this.lives, wave: this.wave, phase: this.phase,
+      elapsed: this.elapsed, ticks: this.ticks, pendingTime: this.pendingTime,
+      uid: this.uid, intermissionRemaining: this.intermissionRemaining,
+      kills: this.kills, earned: this.earned, queue: this.queue.map(def => def.id),
+      spawnTimer: this.spawnTimer,
+      towers: this.towers.map(tower => ({
+        uid: tower.uid, padId: tower.padId, level: tower.level, cooldown: tower.cooldown,
+        spent: tower.spent, kills: tower.kills, angle: tower.angle, protected: tower.protected,
+      })),
+      enemies: this.enemies.map(({ def, ...enemy }) => ({ ...enemy, defId: def.id })),
+      shots: this.shots.map(shot => ({ ...shot })),
+    };
+  }
+
+  /** Reject malformed/newer snapshots before exposing a model. Rebuilding refs
+   * never fires commands, combat ticks, purchases or reward/UI events.
+   */
+  static restore(value: unknown): IdleBattle | undefined {
+    const model = new IdleBattle(SNAPSHOT_LAYOUT);
+    if (!validSnapshot(value, model.layout, model.path, model.pathLength)) return undefined;
+    model.gold = value.gold;
+    model.lives = value.lives;
+    model.wave = value.wave;
+    model.phase = value.phase;
+    model.elapsed = value.elapsed;
+    model.ticks = value.ticks;
+    model.pendingTime = value.pendingTime;
+    model.uid = value.uid;
+    model.intermissionRemaining = value.intermissionRemaining;
+    model.kills = value.kills;
+    model.earned = value.earned;
+    model.queue = value.queue.map(id => BASE.enemies[id]);
+    model.spawnTimer = value.spawnTimer;
+    model.towers = value.towers.map(tower => ({
+      ...tower, ...cellCenter(model.layout, model.layout.towerPads.find(pad => pad.id === tower.padId)!.cell),
+      def: BASE.tower, visualStage: 1,
+    }));
+    model.enemies = value.enemies.map(({ defId, ...enemy }) => ({ ...enemy, def: BASE.enemies[defId] }));
+    model.shots = value.shots.map(shot => ({ ...shot }));
+    model.events = [];
+    return model;
   }
 
   get remaining(): number { return this.enemies.length + this.queue.length; }
@@ -292,4 +358,116 @@ export class IdleBattle {
       this.intermissionRemaining = BASE.intermissionSeconds;
     }
   }
+}
+
+
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === 'object' && value !== null && !Array.isArray(value);
+const numberIn = (value: unknown, min: number, max: number): value is number =>
+  typeof value === 'number' && Number.isFinite(value) && value >= min && value <= max;
+const integerIn = (value: unknown, min = 0, max = Number.MAX_SAFE_INTEGER): value is number =>
+  typeof value === 'number' && Number.isSafeInteger(value) && value >= min && value <= max;
+const enemyId = (value: unknown): value is EnemyDef['id'] => value === 'Leafbug' || value === 'Firebug';
+const near = (left: number, right: number): boolean => Math.abs(left - right) <= 1e-6;
+
+/** Limits follow the finite shipped rules, rather than trusting serialized stats.
+ * Dead escaped enemies can still be present at defeat: tick exits before cleanup.
+ * Likewise an earlier in-flight shot may have lost its target to a later shot
+ * in the same tick; it is discarded normally on the following tick.
+ */
+function validSnapshot(
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number,
+): value is BattleSnapshot {
+  if (!isRecord(value) || value.schemaVersion !== 1 || value.rulesVersion !== 1
+    || value.layoutVersion !== 1 || value.layoutId !== 'start28') return false;
+  if (!integerIn(value.gold) || !integerIn(value.earned) || !integerIn(value.kills)
+    || !integerIn(value.wave) || !integerIn(value.uid, 2)
+    || !integerIn(value.ticks) || !numberIn(value.elapsed, 0, Number.MAX_SAFE_INTEGER)
+    || value.elapsed !== value.ticks * BASE.stepSeconds
+    || !numberIn(value.pendingTime, 0, BASE.stepSeconds) || value.pendingTime >= BASE.stepSeconds
+    || !integerIn(value.lives, 0, BASE.coreLives)
+    || !numberIn(value.intermissionRemaining, 0, BASE.intermissionSeconds)
+    || !numberIn(value.spawnTimer, -pathLength / Math.min(...Object.values(BASE.enemies).map(def => def.speed)) - BASE.stepSeconds,
+      BASE.waves.spawnInterval)) return false;
+  if (value.phase !== 'wave' && value.phase !== 'intermission' && value.phase !== 'defeat') return false;
+  if ((value.phase === 'defeat') !== (value.lives === 0)) return false;
+  if ((value.phase === 'wave' || value.phase === 'defeat') && value.wave === 0) return false;
+  if (value.phase !== 'intermission' && value.intermissionRemaining !== 0) return false;
+  if (!Array.isArray(value.towers) || value.towers.length < 1 || value.towers.length > 4
+    || !Array.isArray(value.enemies) || value.enemies.length > BASE.waves.maxCount
+    || !Array.isArray(value.shots) || value.shots.length > 1024
+    || !Array.isArray(value.queue) || value.queue.length > BASE.waves.maxCount) return false;
+  if (value.phase === 'intermission' && (value.queue.length || value.enemies.length || value.shots.length)) return false;
+  if (value.phase === 'wave' && value.queue.length + value.enemies.length === 0) return false;
+  if (value.phase === 'defeat' && value.shots.length) return false;
+  if (value.wave === 0 && (value.elapsed >= BASE.firstWaveDelay || value.kills !== 0 || value.earned !== 0)) return false;
+
+  const waveCount = value.wave === 0 ? 0 : Math.min(BASE.waves.maxCount, BASE.waves.firstCount + value.wave - 1);
+  if (value.queue.length + value.enemies.length > waveCount) return false;
+  for (let index = 0; index < value.queue.length; index++) {
+    const recipeIndex = waveCount - value.queue.length + index;
+    const expected = value.wave >= 4 && recipeIndex % 3 === 2 ? 'Firebug' : 'Leafbug';
+    if (value.queue[index] !== expected) return false;
+  }
+  const ids = new Set<number>(), pads = new Set<string>(), towerIds = new Set<number>(), enemyIds = new Set<number>();
+  const takeId = (id: unknown): id is number => {
+    if (!integerIn(id, 1, value.uid as number - 1) || ids.has(id)) return false;
+    ids.add(id);
+    return true;
+  };
+  let protectedCount = 0, towerKills = 0;
+  for (const tower of value.towers) {
+    if (!isRecord(tower) || !takeId(tower.uid) || typeof tower.padId !== 'string' || pads.has(tower.padId)
+      || !integerIn(tower.level, 1, BASE.maxLevel) || typeof tower.protected !== 'boolean'
+      || !numberIn(tower.cooldown, 0, BASE.tower.cooldown) || !numberIn(tower.angle, -2 * Math.PI, 2 * Math.PI)
+      || !integerIn(tower.kills, 0, value.kills)) return false;
+    const pad = layout.towerPads.find(candidate => candidate.id === tower.padId);
+    if (!pad || pad.availability !== 'initial' || !isUnlockedCell(layout, pad.cell)) return false;
+    if (tower.protected !== pad.isStarter || (tower.protected && tower.uid !== 1)) return false;
+    if (tower.protected) protectedCount++;
+    const expectedSpent = (tower.protected ? 0 : BASE.tower.cost)
+      + (tower.level >= 2 ? BASE.firstUpgradeCost : 0)
+      + (tower.level >= 3 ? Math.round(BASE.tower.cost * BASE.laterUpgradePriceFactor) : 0);
+    if (tower.spent !== expectedSpent) return false;
+    pads.add(tower.padId);
+    towerIds.add(tower.uid);
+    towerKills += tower.kills;
+  }
+  if (protectedCount !== 1 || towerKills > value.kills) return false;
+  const cumulative = [0];
+  for (let index = 1; index < path.length; index++) cumulative.push(cumulative[index - 1] + distance(path[index - 1], path[index]));
+  for (const enemy of value.enemies) {
+    if (!isRecord(enemy) || !takeId(enemy.uid) || !enemyId(enemy.defId)
+      || !numberIn(enemy.x, 0, layout.bounds.width) || !numberIn(enemy.y, 0, layout.bounds.height)
+      || !numberIn(enemy.maxHp, 1, Math.max(...Object.values(BASE.enemies).map(def => def.hp)) * BASE.waves.maxHpMultiplier)
+      || !numberIn(enemy.hp, 0, enemy.maxHp) || !numberIn(enemy.distance, 0, pathLength + 1e-6)
+      || enemy.total !== pathLength || !integerIn(enemy.segment, 0, path.length - 1)
+      || enemy.speed !== BASE.enemies[enemy.defId].speed || typeof enemy.flip !== 'boolean'
+      || (enemy.direction !== 'up' && enemy.direction !== 'down' && enemy.direction !== 'side')) return false;
+    const def = BASE.enemies[enemy.defId];
+    const expectedHp = def.hp * Math.min(BASE.waves.maxHpMultiplier, Math.pow(BASE.waves.hpGrowth, value.wave - 1));
+    if (enemy.maxHp !== expectedHp || (value.wave < 4 && enemy.defId !== 'Leafbug')) return false;
+    if (enemy.hp === 0 && (value.phase !== 'defeat' || enemy.segment !== path.length - 1)) return false;
+    if (enemy.segment === path.length - 1) {
+      if (value.phase !== 'defeat' || enemy.hp !== 0 || !near(enemy.distance, pathLength)
+        || !near(enemy.x, path.at(-1)!.x) || !near(enemy.y, path.at(-1)!.y)) return false;
+    } else {
+      const start = path[enemy.segment], end = path[enemy.segment + 1];
+      const length = distance(start, end), travelled = enemy.distance - cumulative[enemy.segment];
+      if (travelled < -1e-6 || travelled > length + 1e-6
+        || !near(enemy.x, start.x + (end.x - start.x) * travelled / length)
+        || !near(enemy.y, start.y + (end.y - start.y) * travelled / length)) return false;
+    }
+    enemyIds.add(enemy.uid);
+  }
+  for (const shot of value.shots) {
+    if (!isRecord(shot) || !takeId(shot.uid) || !integerIn(shot.towerUid, 1, shot.uid - 1)
+      || !integerIn(shot.target, 2, shot.uid - 1) || towerIds.has(shot.target) || enemyIds.has(shot.towerUid)
+      || !numberIn(shot.x, 0, layout.bounds.width) || !numberIn(shot.y, 0, layout.bounds.height)
+      || !integerIn(shot.level, 1, BASE.maxLevel) || shot.speed !== BASE.projectileSpeed
+      || shot.damage !== BASE.tower.damage * DAMAGE_MULTIPLIERS[shot.level - 1]) return false;
+  }
+  // References may point at removed source/target entities, but never at a projectile.
+  const shotIds = new Set(value.shots.map(shot => shot.uid));
+  return value.shots.every(shot => !shotIds.has(shot.towerUid) && !shotIds.has(shot.target));
 }

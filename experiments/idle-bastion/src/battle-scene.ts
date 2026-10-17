@@ -6,6 +6,8 @@ export interface BattleSceneHooks {
   readonly changed: () => void;
   readonly select: (padId?: string) => void;
   readonly ready: () => void;
+  readonly advance?: (seconds: number) => void;
+  readonly canRender?: () => boolean;
 }
 
 const colors = {
@@ -28,7 +30,9 @@ export class BattleScene extends Phaser.Scene {
   private readyToDraw = false;
   private hudElapsed = 0;
 
-  constructor(private readonly sim: IdleBattle, private readonly hooks: BattleSceneHooks) {
+  private get sim(): IdleBattle { return this.readBattle(); }
+
+  constructor(private readonly readBattle: () => IdleBattle, private readonly hooks: BattleSceneHooks) {
     super('IdleBattle');
   }
 
@@ -55,13 +59,16 @@ export class BattleScene extends Phaser.Scene {
     // A resumed/throttled frame must not fast-forward a long unattended battle.
     // Fixed substeps and the economy remain the simulation's responsibility.
     const seconds = Number.isFinite(delta) ? Math.max(0, Math.min(delta / 1000, 0.08)) : 0;
-    if (!this.paused) this.sim.update(seconds);
+    if (!this.paused) {
+      if (this.hooks.advance) this.hooks.advance(seconds);
+      else this.sim.update(seconds);
+    }
     if (!this.readyToDraw) return;
-    this.drawActors();
+    if (this.hooks.canRender?.() ?? true) this.drawActors();
     this.hudElapsed += seconds;
     if (this.hudElapsed >= 0.1) {
       this.hudElapsed %= 0.1;
-      this.refreshLabels();
+      if (this.hooks.canRender?.() ?? true) this.refreshLabels();
       this.hooks.changed();
     }
   }
@@ -73,10 +80,10 @@ export class BattleScene extends Phaser.Scene {
 
   /** Call after a user transaction; does not consume simulation events. */
   refresh(): void {
-    if (!this.readyToDraw) return;
+    if (!this.readyToDraw || this.hooks.canRender?.() === false) return;
     this.refreshLabels();
     this.drawSelection();
-    this.drawActors();
+    if (this.hooks.canRender?.() ?? true) this.drawActors();
   }
 
   private selectAtPointer(pointer: Phaser.Input.Pointer): void {
