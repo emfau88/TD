@@ -8,7 +8,7 @@ Dieses Dokument ersetzt für Idle Bastion den ursprünglichen langen Auftrag. Es
 
 | Dokument | Zweck |
 | --- | --- |
-| [ROADMAP.md](ROADMAP.md) | Reihenfolge, Arbeitsstatus, verbindliche Zwischenabnahme, nächster erlaubter Schritt |
+| [ROADMAP.md](ROADMAP.md) | 14 Arbeitspakete mit Checklisten, Abhängigkeiten, Abschlusskriterien und verbindlicher Zwischenabnahme |
 | [docs/TECHNIK.md](docs/TECHNIK.md) | Kampf, Wirtschaft, Save, Offline-Zeit und Farmregeln |
 | [docs/ART_DIRECTION.md](docs/ART_DIRECTION.md) | Karte, Kamera, Originalmaßstab und begrenzte Gebäudeproduktion |
 | [docs/ABNAHME.md](docs/ABNAHME.md) | Messbare Prüfungen und ehrliche Ergebnisnachweise |

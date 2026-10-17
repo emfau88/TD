@@ -8,5 +8,6 @@
 6. Kein neuer Haltepunkt für gewöhnliche reversible Detailentscheidungen. Innerhalb einer autorisierten Phase selbstständig arbeiten. Bei Enginewechsel, gefährlicher Änderung des klassischen Spiels oder grundlegender Abweichung vom Umfang zuerst das konkrete Problem erläutern.
 7. Bestehende Pixelart und `reference/STYLE_GUIDE.md` bestimmen den Maßstab. Mockups unter `docs/references/` sind Kompositionsideen, keine zusätzlichen Features oder fertigen Atlanten.
 8. Nur unmittelbar benötigte Gebäudeassets erzeugen; zuerst Bedarf, Maße und Originalreferenzen festlegen, dann im echten Spielmaßstab prüfen. Keine Bilder oder Umsetzungen in dieser Planungsphase generieren.
-9. Status und Freigaben ausschließlich in `ROADMAP.md` pflegen. Nachweise in phasenbezogenen Berichten verlinken, keine Tests oder Nutzerabnahmen erfinden.
+9. Paketstatus, Arbeitschecklisten und Freigaben ausschließlich in `ROADMAP.md` pflegen. Ein Paket nur mit geprüftem Ergebnis abschließen; Nachweise in phasenbezogenen Berichten verlinken, keine Tests oder Nutzerabnahmen erfinden.
 10. Im neuen Worktree können ignorierte Abhängigkeiten/Builds fehlen. Setup bei Umsetzungsbeginn prüfen. `scripts/reference.mjs` bereitet vor jedem Modus Assets neu auf; `reference:test` ist deshalb keine rein lesende Bestandsprüfung.
+11. Die Roadmap gliedert P1–P5 in B01–B14. Voraussetzungen beachten, gewöhnliche Pakete ohne neue Einzelabnahme nacheinander bearbeiten; G1 sperrt B08–B14 bis zur ausdrücklichen Nutzerfreigabe. Nach Unterbrechung beim nächsten offenen Schritt des aktuellen Pakets fortsetzen.
