@@ -467,11 +467,14 @@ export class IdleBattle {
       if (this.intermissionRemaining <= 1e-9) this.startAttempt();
       return;
     }
-    this.spawnTimer -= dt;
+    if (this.queue.length) this.spawnTimer -= dt;
     while (this.queue.length && this.spawnTimer <= 1e-9) {
       this.spawn(this.queue.shift()!);
       this.spawnTimer += Math.max(BASE.waves.minSpawnInterval, BASE.waves.spawnInterval - (this.wave - 1) * 0.025);
     }
+    // This timer only schedules queued spawns. Letting it run negative after
+    // the last spawn rejects valid saves when Frost prolongs a live wave.
+    if (!this.queue.length) this.spawnTimer = 0;
     for (const enemy of this.enemies) if (enemy.hp > 0) this.move(enemy, dt);
     if (this.lives <= 0) {
       if (this.mode === 'farm') this.farmWave = 1;

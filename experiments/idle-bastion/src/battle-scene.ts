@@ -37,10 +37,15 @@ export class BattleScene extends Phaser.Scene {
   private readyToDraw = false;
   private hudElapsed = 0;
   private dragOrigin?: { x: number; y: number; dragging: boolean };
+  private relativeZoom = 1;
+  private baseZoom = 1;
+  private overview = false;
+  private portraitCamera = false;
+  private cameraFitted = false;
   private readonly preventMiddleScroll = (event: MouseEvent) => { if (event.button === 1) event.preventDefault(); };
   private readonly preventWheel = (event: WheelEvent) => { if (!event.ctrlKey) event.preventDefault(); };
   private get sim(): IdleBattle { return this.readBattle(); }
-  get mapZoom(): number { return this.cameras.main.zoom; }
+  get mapZoom(): number { return this.relativeZoom; }
 
   constructor(private readonly readBattle: () => IdleBattle, private readonly hooks: BattleSceneHooks) { super('IdleBattle'); }
   preload(): void { preloadArt(this); }
@@ -70,6 +75,7 @@ export class BattleScene extends Phaser.Scene {
     this.input.on('pointerupoutside', this.cancelPointer, this);
     this.input.on('pointermove', this.panAtPointer, this);
     this.input.on('wheel', this.zoomAtPointer, this);
+    this.scale.on('resize', this.resizeCamera, this);
     this.game.canvas.addEventListener('wheel', this.preventWheel, { passive: false });
     this.game.canvas.addEventListener('mousedown', this.preventMiddleScroll);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
@@ -81,10 +87,12 @@ export class BattleScene extends Phaser.Scene {
       this.input.off('pointerupoutside', this.cancelPointer, this);
       this.input.off('pointermove', this.panAtPointer, this);
       this.input.off('wheel', this.zoomAtPointer, this);
+      this.scale.off('resize', this.resizeCamera, this);
       this.forest?.destroy(); this.forest = undefined;
       this.padLabels.clear(); this.padMarks.clear(); this.towerViews.clear(); this.enemyViews.clear(); this.shotViews.clear();
     });
     this.readyToDraw = true;
+    this.resizeCamera();
     this.refresh(); this.hooks.ready(); this.hooks.changed();
   }
   update(_time: number, delta: number): void {
@@ -111,13 +119,66 @@ export class BattleScene extends Phaser.Scene {
     this.refreshLabels(); this.drawSelection(); this.drawActors();
   }
   resetCamera(): void {
-    this.cameras.main.setZoom(1).setScroll(0, 0); this.hooks.changed();
+    this.relativeZoom = 1; this.overview = true; this.resizeCamera();
+    this.cameras.main.centerOn(this.sim.layout.bounds.width / 2, this.sim.layout.bounds.height / 2);
+    this.hooks.changed();
+  }
+  private resizeCamera(): void {
+    const camera = this.cameras.main, { width, height } = this.sim.layout.bounds;
+    const portrait = this.scale.width <= 700 && window.innerHeight > window.innerWidth;
+    const changedOrientation = portrait !== this.portraitCamera;
+    const center = this.cameraFitted ? { x: camera.midPoint.x, y: camera.midPoint.y } : { x: portrait ? 280 : width / 2, y: height / 2 };
+    if (changedOrientation) { this.relativeZoom = 1; this.overview = false; }
+    this.portraitCamera = portrait;
+    this.baseZoom = portrait && !this.overview ? Math.max(this.scale.height / height, this.scale.width / 640)
+      : Math.min(this.scale.width / width, this.scale.height / height);
+    camera.setSize(this.scale.width, this.scale.height).setZoom(this.baseZoom * this.relativeZoom);
+    this.fitCameraBounds();
+    camera.centerOn(changedOrientation ? portrait ? 280 : width / 2 : center.x, height / 2);
+    this.cameraFitted = true; this.hooks.changed();
+  }
+  private fitCameraBounds(): void {
+    const camera = this.cameras.main, { width, height } = this.sim.layout.bounds;
+    // Phaser pins undersized bounds to the top left. Symmetric padding keeps
+    // the overview centered while locking any axis that already fits in full.
+    const padX = Math.max(0, (camera.displayWidth - width) / 2);
+    const padY = Math.max(0, (camera.displayHeight - height) / 2);
+    camera.setBounds(-padX, -padY, width + padX * 2, height + padY * 2);
+  }
+  focusPad(padId: string): void {
+    if (!this.portraitCamera) return;
+    const pad = this.sim.layout.towerPads.find(pad => pad.id === padId);
+    if (pad) this.focusPoint(cellCenter(this.sim.layout, pad.cell));
+  }
+  focusObject(kind: 'tower' | 'settlement' | 'mara'): void {
+    if (this.portraitCamera) this.focusPoint(this.objectPoint(kind));
+  }
+  private focusPoint(point: { x: number; y: number }): void {
+    if (this.overview) { this.overview = false; this.relativeZoom = 1; this.resizeCamera(); }
+    this.cameras.main.centerOn(point.x, this.sim.layout.bounds.height / 2);
+  }
+  private objectPoint(kind: 'tower' | 'settlement' | 'mara'): { x: number; y: number } {
+    if (kind === 'mara') return { x: this.sim.mara.x, y: this.sim.mara.y - 20 };
+    if (kind === 'settlement') {
+      const plot = this.sim.layout.plots.find(plot => plot.id === 'workshop')!;
+      return { x: (plot.footprint.x + plot.footprint.width / 2) * this.sim.layout.cellSize,
+        y: (plot.blockingBody.y + plot.blockingBody.height) * this.sim.layout.cellSize - 35 };
+    }
+    const pad = this.selectedPad();
+    return pad ? cellCenter(this.sim.layout, pad.cell) : { x: 560, y: 320 };
+  }
+  uiAnchor(kind: 'tower' | 'settlement' | 'mara'): { x: number; y: number } {
+    const point = this.objectPoint(kind), camera = this.cameras.main;
+    return { x: (point.x - camera.worldView.x) * camera.zoom, y: (point.y - camera.worldView.y) * camera.zoom };
   }
   setMapZoom(value: number, pointerX = this.scale.width / 2, pointerY = this.scale.height / 2): void {
     if (!this.readyToDraw || !Number.isFinite(value)) return;
+    if (this.overview) { this.overview = false; this.resizeCamera(); }
     const camera = this.cameras.main, old = camera.zoom;
-    const zoom = Math.round(Phaser.Math.Clamp(value, 1, 1.15) * 100) / 100;
+    this.relativeZoom = Math.round(Phaser.Math.Clamp(value, 1, 1.15) * 100) / 100;
+    const zoom = this.baseZoom * this.relativeZoom;
     camera.setZoom(zoom);
+    this.fitCameraBounds();
     camera.setScroll(camera.clampX(camera.scrollX + (pointerX - this.scale.width / 2) * (1 / old - 1 / zoom)),
       camera.clampY(camera.scrollY + (pointerY - this.scale.height / 2) * (1 / old - 1 / zoom)));
     if (old !== zoom) this.hooks.changed();
@@ -133,7 +194,7 @@ export class BattleScene extends Phaser.Scene {
   private panAtPointer(pointer: Phaser.Input.Pointer): void {
     if (this.dragOrigin && pointer.leftButtonDown()
       && Math.hypot(pointer.x - this.dragOrigin.x, pointer.y - this.dragOrigin.y) >= 6) this.dragOrigin.dragging = true;
-    if ((!pointer.middleButtonDown() && !(pointer.leftButtonDown() && this.dragOrigin?.dragging)) || this.mapZoom <= 1) return;
+    if (!pointer.middleButtonDown() && !(pointer.leftButtonDown() && this.dragOrigin?.dragging)) return;
     const camera = this.cameras.main;
     camera.setScroll(camera.clampX(camera.scrollX - (pointer.x - pointer.prevPosition.x) / camera.zoom),
       camera.clampY(camera.scrollY - (pointer.y - pointer.prevPosition.y) / camera.zoom));

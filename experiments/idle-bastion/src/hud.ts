@@ -12,7 +12,7 @@ export function tutorialStep(battle: IdleBattle): number {
 }
 const HINTS = [
   'Ich bin Mara. Unser Startturm greift automatisch an. Beobachte die ersten Käfer — für jeden besiegten Gegner erhalten wir Gold.',
-  'Verstärken wir den Weg: Baue einen Waldwächter an der ausgewählten Nordostkurve. So bleibt die Nordwestkurve für Frost frei. Andere freie Plätze zählen ebenfalls.',
+  'Wähle unten den Waldwächter und dann einen hellen Bauplatz. Ich empfehle die Nordostkurve; die Nordwestkurve bleibt dann für Frost frei.',
   'Ein Upgrade erhöht den Schaden sofort. Wähle einen Waldwächter und werte ihn für 60 Gold auf. Ich unterstütze meinen zugewiesenen Turm automatisch.',
   'Die alte Werkstatt kann wieder arbeiten. Öffne Siedlung und spare für ihre Reparatur. Sie eröffnet die Frostforschung; dafür muss kein weiterer Turm gekauft werden.',
   'Die Werkstatt steht! Erforsche Frostfassung. Damit erhalten wir einen Kontrollturm und können alle Türme bis Level 6 verbessern.',

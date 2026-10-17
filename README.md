@@ -6,11 +6,13 @@
 
 Die erste Idle-Vorschau enthält automatischen Kampf, Mara, eigene Turmkäufe, Upgrades, Werkstatt I und Frostforschung. Folge Maras Hinweisen bis zum ersten Frosttreffer. Gold und Kampf werden lokal im Browser gespeichert; „Frische Probe“ öffnet eine getrennte neue Partie und bewahrt den bisherigen Stand. Nur ein Tab pro Partie kann gleichzeitig spielen.
 
+Die Karte steht jetzt im Mittelpunkt: schmales HUD, Baudock und Details erst bei Auswahl. Hochkant gibt es einen verschiebbaren Kartenausschnitt, große Bauplatz-Schaltflächen und kompakte Aktionsfenster. Funktional in schmalen Browseransichten geprüft; eine vollständige Smartphone-/Safari-Abnahme steht noch aus. [UI-Prüfung](artifacts/idle-bastion/acceptance/ui/REPORT.md).
+
 Diese Fassung dient der verbindlichen ersten Zwischenabnahme. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht; spätere Inhalte folgen erst nach Nutzerfreigabe.
 
 ### Entwicklung von Idle Bastion
 
-Echte Spielaufnahmen der bisherigen Entwicklung, keine Mockups. B01, B02 und B05 zeigen historische Zwischenstände; B07 zeigt die aktuelle Werkstattfassung nach der Korrektur der Bauplatzanzeige. Die alten Aufnahmen bleiben unverändert als Vergleich erhalten.
+Echte Spielaufnahmen der bisherigen Entwicklung, keine Mockups. B01 bis B07 zeigen historische Zwischenstände; B07a zeigt die große Kartenansicht und das kompakte Dock. Die alten Aufnahmen bleiben unverändert als Vergleich erhalten.
 
 | B01 · Kartenrahmen und reservierte Flächen | B02 · Automatischer Kampf und Turmkäufe |
 | --- | --- |
@@ -21,6 +23,14 @@ Echte Spielaufnahmen der bisherigen Entwicklung, keine Mockups. B01, B02 und B05
 | ![Waldstart mit Mara, noch ohne Werkstattgebäude](artifacts/idle-bastion/acceptance/p1/b05-start-1366x768.jpg) | ![Gebautes Werkstattgebäude ohne Bauplatzpfosten oder Platzbeschriftung](artifacts/idle-bastion/acceptance/90s/workshop-built-clean.png) |
 
 [Weitere Aufnahmen und technische Entwicklung B01–B05](artifacts/idle-bastion/acceptance/p1/REPORT.md) · [B06–B07: gemessene Spielabläufe, Reload und Kameraprüfung](artifacts/idle-bastion/acceptance/90s/REPORT.md).
+
+**B07a · Karte im Mittelpunkt**
+
+![Große Kartenansicht mit schmalem HUD und Baudock](artifacts/idle-bastion/acceptance/ui/desktop-1366x768.png)
+
+| Hochkant · Kartenausschnitt und Bauplatzwahl | Hochkant · Aktionen nach Turmauswahl |
+| --- | --- |
+| ![Hochkant mit großen Bauplatz-Schaltflächen](artifacts/idle-bastion/acceptance/ui/portrait-placement-390x844.png) | ![Frostturm mit schließbarem Aktionsfenster](artifacts/idle-bastion/acceptance/ui/portrait-context-390x844.png) |
 
 ## Bestehendes klassisches Spiel
 

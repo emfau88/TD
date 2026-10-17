@@ -4,6 +4,24 @@ import { BASE, IdleBattle, type BattleSnapshot } from '../src/battle';
 import { createIdleLayout } from '../src/layout';
 
 const jsonCopy = <T>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
+
+test('a legally funded Frost run stays saveable through long wave tails and wave 15', () => {
+  const sim = new IdleBattle();
+  const archer = sim.build('tower-03')!;
+  sim.assignMara(archer.uid);
+  for (let step = 0; step < 6500 && sim.wave < 16; step++) {
+    if (archer.level === 1 && sim.gold >= 60) sim.upgrade(archer.uid);
+    if (!sim.settlement.workshopBuilt && sim.gold >= 400) sim.buildWorkshop();
+    if (sim.settlement.workshopBuilt && !sim.settlement.frostResearched && sim.gold >= 60) sim.researchFrost();
+    if (sim.settlement.frostResearched && sim.canBuild('tower-02', 2)) sim.build('tower-02', 2);
+    if (sim.settlement.frostResearched && sim.canBuild('tower-04')) sim.build('tower-04');
+    sim.update(0.1);
+    sim.drainEvents();
+    assert.ok(IdleBattle.restore(jsonCopy(sim.snapshot())), `Invalid save at ${sim.elapsed}s / wave ${sim.wave}`);
+  }
+  assert.equal(sim.wave, 16, 'The regular run must cross the formerly invalid wave-15 boundary.');
+});
+
 function until(sim: IdleBattle, condition: () => boolean, seconds = 100): void {
   for (let step = 0; step < seconds / BASE.stepSeconds && !condition(); step++) sim.update(BASE.stepSeconds);
   assert.ok(condition(), `Condition not reached at wave ${sim.wave}, phase ${sim.phase}.`);

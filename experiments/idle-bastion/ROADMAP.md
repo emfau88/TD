@@ -11,9 +11,9 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | Korrektur und vollständige Umsetzung bis einschließlich B07, Commit/Push und GitHub-Pages-Probe mit README-Playlink ausdrücklich beauftragt |
-| Aktives Umsetzungspaket | G1 · verbindlicher Halt vor B08 |
-| Nächster Schritt | [Veröffentlichte Fassung spielen](https://emfau88.github.io/TD/idle-bastion/) und ausdrückliche Nutzerentscheidung zu G1 abwarten |
+| Autorisierter Umfang | B01–B07 sowie zusätzliche UI-Überarbeitung B07a mit funktionalem Hochkant, Commit/Push und GitHub-Pages-Probe beauftragt. Neue UX-Ideen nur vorgemerkt |
+| Aktives Umsetzungspaket | B07a · Karte im Mittelpunkt, kompakte UI und funktionale Hochkantansicht |
+| Nächster Schritt | B07a gezielt prüfen, committen und über den vorhandenen Playlink veröffentlichen; danach Nutzerprobe |
 | G1: 90-Sekunden-Zwischenabnahme | **Offen; keine Nutzerfreigabe vorhanden** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -42,7 +42,8 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P2 | B05 · Startlichtung und Mara | Echter Wald, sichtbare automatische Unterstützung und bedienbares HUD | B04; Layout aus B01 | Erledigt · `884f7c4` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b05--startlichtung-mara-und-kompakte-bedienung) |
 | P2 | B06 · Werkstatt und Frost | Erstes sichtbares Gebäude mit neuer taktischer Möglichkeit | B05 | Erledigt · `8a0a276` · [Nachweis](../../artifacts/idle-bastion/acceptance/90s/REPORT.md#b06--werkstatt-und-echte-frosttechnik) |
 | P2 | B07 · Einstieg und Nachweise | Regulär spielbarer 90-Sekunden-Kreislauf samt kurzer Technikfolge | B06 | Erledigt · `8a0a276` · [Browserzeiten und drei Spielweisen](../../artifacts/idle-bastion/acceptance/90s/REPORT.md) |
-| Halt | G1 · Nutzerabnahme | Ausdrückliche Entscheidung zur vorgelegten Fassung | B01–B07 geprüft | **Offen** |
+| P2 | B07a · Spieloberfläche | Große Karte, Dock, Kontextaktionen und funktionale Hochkantansicht | Zusätzlicher Nutzerauftrag vor B08 | Lokal geprüft; Veröffentlichung ausstehend · [Nachweis](../../artifacts/idle-bastion/acceptance/ui/REPORT.md) |
+| Halt | G1 · Nutzerabnahme | Ausdrückliche Entscheidung zur vorgelegten Fassung | B01–B07 und B07a geprüft | **Offen** |
 | P3 | B08 · Wisp und Turmrollen | Zweite Figur, Wirtschaftseffekt und vier unterscheidbare Türme | G1 freigegeben | Nicht begonnen |
 | P3 | B09 · Lager und Rückkehr | Zweites Gebäude und befriedigender Wiedereinstieg | B08 | Nicht begonnen |
 | P4 | B10 · Erste Bossherausforderung | Lesbarer Boss verlangt die verfügbaren Turmrollen | B09 | Nicht begonnen |
@@ -51,6 +52,37 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P5 | B13 · Gesamter Spielverlauf | Gemessene 15-Minuten-Sitzung und Rückkehr mit legalen Aktionen | B12 | Nicht begonnen |
 | P5 | B14 · Stabilität und Lieferung | Geprüfte Builds, Regression, Laufzeit und ehrlicher Ergebnisbericht | B13 | Nicht begonnen |
 | Ende | G2 · Gesamtabnahme | Vollständiger Slice bewertet | B14 | **Offen** |
+
+## B07a — Karte im Mittelpunkt
+
+Am 17.10.2026 zusätzlich vor B08 beauftragt, einschließlich Commit, Push und bestehendem Playlink. Die anschließende Ergänzung umfasst eine funktionale Hochkantansicht; eine vollständige Geräteoptimierung ist nicht verlangt. Keine Freigabe für B08 daraus ableiten.
+
+- [x] Karte großflächig, ohne äußeren Seitenrahmen oder dauerhafte Verwaltungsleiste darstellen; schmale Statusleiste und kompaktes Dock nach den Mockups.
+- [x] Vorhandene Spielgrafiken im Bau-/Begleiterdock verwenden; Details bei Auswahl eines Turms, Bauplatzes oder Gebäudes einblenden.
+- [x] Alle bisherigen Käufe, Forschung, Mara-Zuweisung, Pause, Rückkehr und Speicher-Recovery erreichbar halten.
+- [x] Hochkant: lesbarer Kartenausschnitt, Ziehen, Übersicht und große Bauplatz-Schaltflächen; kein notwendiges Scrollen der gesamten Webseite.
+- [x] Desktop und Hochkant tatsächlich ansehen, betroffene Bedienabläufe und vorhandenen Spielstand prüfen; echte Touch-Geräteprüfung von einer schmalen Browseransicht unterscheiden.
+- [x] Screenshots und kurze Prüfnotizen ablegen, README-Galerie erweitern.
+- [ ] Committen, pushen und Testfassung veröffentlichen; öffentliche Oberfläche bestätigen.
+
+## Vorgemerkte UX-Ergänzungen — noch nicht zur Umsetzung freigegeben
+
+Am 17.10.2026 zusätzlich besprochen und auf Nutzerwunsch vorgemerkt. Diese Punkte erweitern B07a nicht und umgehen weder G1 noch eine spätere ausdrückliche Beauftragung. Priorität: zuerst Orientierung und verständliche Handlungen, danach Änderung des Figurenverhaltens. Die folgenden Kästchen sind offene Arbeit, keine zugesagte Umsetzung im laufenden Auftrag.
+
+- [ ] **Werkstatt verständlich machen:** Zustand, nächste mögliche Handlung, Goldpreis und Nutzen bereits am Gebäude bzw. an seiner Karte vermitteln. Vor Reparatur „Werkstatt reparieren · 400 Gold“, danach Frostforschung mit Preis/Voraussetzung. Kein erneutes dauerhaftes Bauplatzschild unter einem fertigen Gebäude.
+- [ ] **Mara: Ziel und Standort trennen:** Fernunterstützung eines bewusst gewählten Turms als mögliche Neugestaltung prüfen. Automatische Aktivierung bevorzugen; kein obligatorisches regelmäßiges Spell-Klicken. Reichweite, Zielwechsel, Abklingzeit, Farmnachweis und Save-Verhalten vor Umsetzung festlegen.
+- [ ] **Mara-Effekt sofort lesbar:** Aktivierungsimpuls zum Turm, eindeutiger Effekt am Turm, verbleibende Wirkungsdauer und anschließende Abklingzeit am Porträt. Aktiver Bonus darf nicht nur aus einem Detailtext erkennbar sein.
+- [ ] **Freie Figurenbewegung prüfen:** Charaktere sollen sich von Turmpositionen lösen können. Sinnvolle Ziele/Interaktionen definieren; reine Dekoration und spielwirksame Bewegung unterscheiden. Noch keine neuen Gebäude oder Nebenaktivitäten daraus ableiten.
+
+**Neu diskutierter, höher priorisierter Vorschlag: Fortschrittsorientierung.** Der Nutzer fragt nach der Bewertung; noch kein Umsetzungsauftrag. Kleine dauerhaft sichtbare Zusammenfassung, ergänzende Details auf Abruf, Karte bleibt Hauptfläche.
+
+- [ ] Laufenden ungefähren Goldzufluss klar von sicherer Farmbasis und tatsächlicher Offline-Rate unterscheiden. Geglättete aktive Messzeit und normale Kampfbelohnungen verwenden; Käufe, Verkäufe, einmalige Freischaltboni und Offline-Claims nicht als wiederholbares Einkommen behandeln. Start-/Pausenzustand ehrlich beschriften.
+- [ ] Aktuelle Welle, Vorstoß/Farmen, höchste **besiegte** Welle und nächstes konkretes Freischaltziel verständlich zusammenführen. „Erreicht“, „besiegt“ und „sicher farmbar“ nicht gleichsetzen; auf Hochkant darf der nächste Schritt nicht allein in einem ausgeblendeten Desktopblock stehen.
+- [ ] Abrufbare Fortschrittsansicht: Versuche/Siege/Niederlagen je Welle, Farmdurchläufe getrennt von Vorstößen. Künftige Zähler transaktional speichern; bei alten Saves fehlende Historie als unbekannt ausweisen, niemals aus dem Rekord erfinden. Reload zählt nicht als neuer Versuch.
+- [ ] Figuren über Porträts, Freischaltbedingungen und aktuellen Auftrag erklären; bei zwei Figuren keinen zusätzlichen permanenten Mengenzähler einführen. Mehr Informationen erst beim Öffnen der Figurenübersicht.
+- [ ] Nach einer Niederlage erklären, welche Welle gescheitert ist, wo nun gefarmt wird und was erhalten bleibt. Nächste sinnvolle Handlung anbieten, ohne ein garantiert erfolgreiches Upgrade vorzutäuschen.
+
+Vergleichsbeispiele für die Diskussion: [The Tower: umschaltbare Währung/Ertragsanzeige und Welleninformationen (Community-Wiki)](https://the-tower-idle-tower-defense.fandom.com/wiki/Gameplay); [Bloons TD 6: höchste Runden in separater Profilstatistik (Entwicklernotizen)](https://store.steampowered.com/news/posts/?appgroupname=Bloons+TD+6&appids=960090&enddate=1709170182&feed=steam_community_announcements). Das sind Anregungen für die Informationshierarchie, keine Übernahme ihres Umfangs oder ihrer Wirtschaft.
 
 ## Aufwand der verbleibenden Pakete
 

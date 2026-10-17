@@ -18,7 +18,7 @@ Bei Konflikten gilt die jüngste ausdrückliche Nutzerentscheidung, danach diese
 
 ## Ziel und Spielgefühl
 
-Ein eigenständig startbares Browser-Spiel für Desktop: Eine kleine Fantasy-Siedlung wächst sichtbar, während ihre Türme automatisch Gegner besiegen. Der Spieler entscheidet über Bau, Upgrades, Forschung und Maras Auftrag. Offline erhält er einen konservativ berechneten Ertrag seiner nachweislich tragfähigen Verteidigung.
+Ein eigenständig startbares Browser-Spiel mit Desktop als Hauptansicht und einer funktionalen Hochkantansicht: Eine kleine Fantasy-Siedlung wächst sichtbar, während ihre Türme automatisch Gegner besiegen. Der Spieler entscheidet über Bau, Upgrades, Forschung und Maras Auftrag. Offline erhält er einen konservativ berechneten Ertrag seiner nachweislich tragfähigen Verteidigung.
 
 Der erste Vertical Slice bietet etwa 15 Minuten gestalteten Fortschritt und einen sinnvollen Wiedereinstieg nach einer Abwesenheit. Danach laufen skalierende Wellen und Turmverbesserungen weiter. Hunderte Stunden Endspielbalance sind kein Abnahmeversprechen.
 
@@ -38,7 +38,7 @@ Prioritäten: verständlicher Einstieg → korrekte Wirtschaft und Speicherung �
 | Bereich | Entscheidung |
 | --- | --- |
 | Welt | Eigene Waldkarte, 40er Zellen; Startbereich 28×16, eine östliche Erweiterung um bis zu 8 Spalten, insgesamt höchstens 36×16 im Slice |
-| Kamera | Vorwiegend horizontales Verschieben; alle Einstiegsziele im Startausschnitt gemeinsam sichtbar, keine notwendige Kamerasuche in den ersten 90 Sekunden |
+| Kamera | Vorwiegend horizontales Verschieben; am Desktop alle Einstiegsziele gemeinsam sichtbar. Hochkant lesbarer Ausschnitt, Übersicht und direkter Kamerafokus über Bau-/Figurenkarten |
 | Turmplätze | 10 fest gestaltete Plätze insgesamt: 8 im Startbereich, 2 in der Erweiterung. Zunächst 4 verfügbar, davon einer mit geschütztem Startturm belegt; je 2 weitere bei Welle 5 und 10 |
 | Türme | Waldwächter (Allrounder), Frostkristall (Verlangsamung), Steinschleuder (Fläche), Scharfschütze (Rüstung) |
 | Turmlevel | Ziel der ersten 15 Minuten: Level 1–10; anschließend normale Schadensupgrades bis Level 20. Zahlenlevel getrennt von 3 vorhandenen Grafikstufen. Keine automatische Ausgabe von Gold für Upgrades |
@@ -50,7 +50,7 @@ Prioritäten: verständlicher Einstieg → korrekte Wirtschaft und Speicherung �
 | Währung | Nur Gold. Keine zweite Bauressource, Prestige-Währung, Premiumwährung oder Beuteinventare |
 | Speichern | Versionierter eigener Browser-Spielstand, transaktionale Wirtschaft, exakter kampffähiger Zustand; Export/Import als lokales Backup |
 | Offline | Zunächst 60 % der sicheren Farmbasis, höchstens 2 Stunden; Vorratslager I erhöht auf 65 % und 8 Stunden. Keine Offline-Bosse/Freischaltungen |
-| Oberfläche | Gold, klar beschriftete sichere Farmbasis, Welle, Kernleben, Vorstoß/Farmen, ein nächstes Ziel; Kontextreiter Türme/Siedlung/Forschung schrittweise zeigen |
+| Oberfläche | Karte als Hauptfläche, schmale Statusleiste, kompaktes Dock für Türme/Siedlung und Figuren. Details und Forschung bei Auswahl; sichere Farmbasis auf schmalen Ansichten im Menü. Keine dauerhafte Seitenleiste |
 
 Die Kartenmaße sind ein konkreter Layout-Ausgangspunkt, kein Anlass, bestehende globale Konstanten zu verändern. Eine kleine Anpassung innerhalb des Slice-Flächenbudgets ist nach dokumentierter Ansicht-/Wegprüfung zulässig. Zusätzliche Regionen oder Angriffsfronten sind es nicht.
 
@@ -101,7 +101,7 @@ Die [echte abgenommene Waldansicht](../../artifacts/m2/overview.png) und der [vo
 
 Übernehmen: sichtbare Siedlung neben der Verteidigung, grüne Landschaft, warme Wege, dunkelgrüne Oberfläche, Goldakzente, ruhige Effekte. Gebäude und Figuren bleiben klein genug, damit Weg, Projektile und Gegner lesbar sind. Keine Turmlebensbalken, wenn Türme keinen Schaden nehmen.
 
-Nicht im Slice: Späherposten als eigenes Gebäude, Gilde/Taverne, weitere Regionen/Wege, Charakterlevel, Fertigkeitsbäume, automatische Käufe, Prestige, Multiplayer, Accounts, Monetarisierung, Mobile, große Storybibliothek oder neue umfassende Gelände-/Gegnerpakete. Spätere Systeme erhalten stabile IDs und klare Datenbereiche, keine ungenutzte Implementierung auf Vorrat.
+Nicht im Slice: Späherposten als eigenes Gebäude, Gilde/Taverne, weitere Regionen/Wege, Charakterlevel, Fertigkeitsbäume, automatische Käufe, Prestige, Multiplayer, Accounts, Monetarisierung, vollständige Mobile-Optimierung, große Storybibliothek oder neue umfassende Gelände-/Gegnerpakete. Eine funktionale Hochkantdarstellung ist zusätzlich beauftragt; das ist keine Zusage einer umfassenden Geräteabnahme. Spätere Systeme erhalten stabile IDs und klare Datenbereiche, keine ungenutzte Implementierung auf Vorrat.
 
 ## Lieferumfang der späteren Umsetzung
 
@@ -115,6 +115,8 @@ Im Wurzelverzeichnis des isolierten Worktrees `npm ci` ausführen, falls die Abh
 
 Die Startseite zeigt den kompletten ersten Kreislauf mit automatischem Kampf, Mara, Turmbau, Werkstatt und Frosttechnik. [Im Browser testen](https://emfau88.github.io/TD/idle-bastion/) · [Frische unabhängige Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1). Die gemessene Werkstattzeit beträgt 1:23, die erste Frostwirkung 2:04; [B07-Bericht und Screenshots](../../artifacts/idle-bastion/acceptance/90s/REPORT.md).
 
-[Die Entwicklung in vier Spielaufnahmen](../../README.md#entwicklung-von-idle-bastion) zeigt den Weg vom neutralen Kartenrahmen bis zur gebauten Werkstatt. Nach der Reparatur verschwinden ihre Bauplatzpfosten und die Platzbeschriftung; die Werkstatt selbst bleibt zur Auswahl anklickbar.
+[Die Entwicklung in Spielaufnahmen](../../README.md#entwicklung-von-idle-bastion) zeigt den Weg vom neutralen Kartenrahmen bis zur großen Kartenansicht. Nach der Reparatur verschwinden die Bauplatzpfosten und die Platzbeschriftung der Werkstatt; das Gebäude selbst bleibt zur Auswahl anklickbar.
+
+Die Karte füllt die Ansicht zwischen Statusleiste und Baudock. Eine Baukarte aktiviert die Platzierung, ein Klick auf Turm oder Gebäude öffnet dessen Aktionen. Hochkant lässt sich die Welt ziehen; große Bauplatz-Schaltflächen ergänzen die Auswahl direkt auf der Karte. „Übersicht“ zeigt den ganzen Hain, „+“ kehrt zum nahen Ausschnitt zurück. Menü, Pause, Forschung und Rückkehr sind auch in der schmalen Ansicht erreichbar. [UI-Nachweis und Grenzen](../../artifacts/idle-bastion/acceptance/ui/REPORT.md).
 
 Käufe, Gold, laufender Kampf, Gebäude, Forschung, Hinweise und ausdrückliche Pause bleiben nach Reload erhalten. „Neu laden“ lädt denselben Stand; „Frische Probe“ öffnet eine getrennte neue Partie. Entwicklung (Port 5190), Produktionsvorschau (Port 5191) und GitHub Pages besitzen getrennte lokale Spielstände. Bei Speicherproblemen wird kein neuer Stand über bestehende Daten geschrieben; eine ausdrücklich gewählte temporäre Probe speichert nichts. Niederlagen führen ins sichere Farmen; ein neuer Vorstoß beginnt bewusst am Wellenübergang. Abwesenheit reserviert 60 % der beim Verlassen nachgewiesenen Rate für höchstens zwei Stunden. Pause produziert kein Gold. Genau ein Tab pro Partie darf den Stand fortschreiben. Nach sehr schnellem Reload kann die Freigabe der vorherigen Sitzung kurz dauern (Lease: fünf Sekunden). `/layout.html` enthält die neutrale B01-Layoutprobe, `/asset-check.html` den maßstäblichen Werkstattvergleich. G1 bleibt offen; spätere Inhalte werden erst nach Nutzerfreigabe umgesetzt.

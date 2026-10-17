@@ -14,7 +14,7 @@ Die Mockups enthalten andere Gebäude, größere beziehungsweise dichtere Vegeta
 
 ## Gemeinsamer Maßstab
 
-Alle Maße unten sind Spieleinheiten bei 100 % Weltmaßstab. Eine Zelle bleibt **40 × 40**. Auf kleineren Ansichten wird die gesamte Spielfläche proportional dargestellt; einzelne Objekte werden nicht unabhängig vergrößert.
+Alle Maße unten sind Spieleinheiten bei 100 % Weltmaßstab. Eine Zelle bleibt **40 × 40**. Die Kamera skaliert die Welt proportional; einzelne Objekte werden nicht unabhängig vergrößert. Hochkant wird ein größerer Ausschnitt gezeigt und horizontal verschoben, damit Figuren und Türme lesbar bleiben. Die explizite Übersicht passt die gesamte Welt ein.
 
 | Element | Vorhandene Quelle | Laufzeitmaß und Anker |
 | --- | --- | --- |
@@ -39,7 +39,7 @@ Farbanker aus dem bestehenden Gelände: Gras `#63ab3f`, helle Vegetation `#c8d45
 - Das freigelegte Gebiet wird Teil derselben zusammenhängenden Welt. Die Kamera kann dorthin verschoben werden; die Objekte behalten ihren Maßstab. Kein automatisches Verkleinern der ganzen Welt beim Ausbau.
 - Acht feste Turmplätze im Startgebiet, davon vier zu Beginn verfügbar, einschließlich des belegten Startplatzes. Die übrigen vier werden im Verlauf freigeschaltet. Genau zwei weitere Plätze liegen in der Erweiterung; insgesamt zehn.
 - Noch gesperrte Plätze bleiben zurückhaltend lesbar. Keine zehn blinkenden Bauaufforderungen im Einstieg.
-- Startturm, erste Gegner, Mara, Kern, Werkstattstelle und erster vorgeschlagener Bauplatz sind im Startausschnitt gleichzeitig sichtbar. Das Tutorial verlangt zunächst kein Kameraschieben.
+- Am Desktop sind Startturm, erste Gegner, Mara, Kern, Werkstattstelle und erster vorgeschlagener Bauplatz im Startausschnitt gleichzeitig sichtbar. Hochkant führen die Dockkarten zum relevanten Ausschnitt; zusätzlich sind freie Bauplätze über große Schaltflächen wählbar.
 - Die erste Abnahme prüft das einschließlich HUD bei **1366 × 768**. Eine Ansicht bei **1920 × 1080** ergänzt den Vergleich. UI-Höhe und Startkomposition werden zusammen festgelegt.
 - Die Erweiterung öffnet eine sichtbare Waldkante. Der bestehende Weg wird im Slice nicht neu geroutet; die neuen Plätze liegen vorzugsweise in den ersten ein bis zwei neuen Spalten und müssen taktisch relevante Schussfenster auf den letzten Wegabschnitt besitzen. Tiefer östlich liegende Plätze dürfen nicht durch künstlich erhöhte Reichweite gerettet werden.
 - Der seitliche Ausbau ist auf dem Startausschnitt bereits als mögliche Lichtung erkennbar, ohne spielbare Fläche vorzutäuschen.
@@ -47,7 +47,13 @@ Farbanker aus dem bestehenden Gelände: Gras `#63ab3f`, helle Vegetation `#c8d45
 - Werkstatt und Lager haben feste Grundstücke abseits des Gegnerwegs. Zugängliche Gehflächen verbinden sie mit den erreichbaren Turm-Nachbarfeldern.
 - Ein Baum, Fels oder Gebäude darf keine scheinbar freie Bau- oder Gehfläche verdecken. Die Bodenbelegung folgt den tatsächlichen Objekten.
 
-Kamerabewegung und Bauklick dürfen nicht dieselbe Geste beanspruchen. Sichtbare Bedienhilfe, Rückkehr zur Verteidigung und klare Benachrichtigung bei Ereignissen außerhalb des Bildes gehören zur Oberfläche. Ein automatischer Kameraschwenk unterbricht keine laufende Platzierung.
+Ein kurzer Klick wählt aus; Ziehen ab sechs Bildschirmpixeln verschiebt die Karte und löst beim Loslassen keinen Bau aus. Übersicht und Zoom bleiben sichtbar. Der Kamerafokus auf einen Bauplatz folgt einer bewussten Auswahl im Dock; keine eigenständigen Schwenks während einer Platzierung.
+
+### Oberfläche nach den Mockups
+
+Die Welt ist die Hauptfläche. Oben stehen Gold, Kernleben und Welle in einer schmalen Leiste, unten Turm-/Siedlungskarten, Mara und Kampfsteuerung in einem kompakten Dock. Vorhandene Spielsprites bilden die Kartenillustrationen. Grün-/Goldrahmen und klare Schrift entstehen in CSS; keine neuen Bildrahmen oder Icons allein für diese Überarbeitung generieren.
+
+Turmwerte, Upgrades und Gebäudeforschung erscheinen erst nach Auswahl. Am Desktop steht das Fenster neben dem Objekt, hochkant als schließbare Karte über dem Dock. Speicherinformationen, Hilfe und Probenstart liegen im Menü. Bau-/Forschungsmeldungen sind kurz; normale Abschüsse erzeugen keine ständig wechselnde Textleiste. Die schmale Ansicht zeigt den Kampfzustand auf der Karte und ersetzt den breiten Auto-Kampf-Schalter durch Pause/Fortsetzen. Geräte-Schutzabstände und große Aktionsflächen berücksichtigen; echte Geräteprüfung gesondert ausweisen.
 
 Die Zahlen sind die Ausgangsentscheidung für den Slice. Ergibt die erste maßstäbliche Ansichtsprüfung ein konkretes Platzproblem, zuerst UI, Positionen und Dekoration korrigieren. Eine notwendige Maßänderung mit Begründung in den Plan zurückschreiben; niemals still Gebäude oder Figuren strecken. Eine große Welt und zusätzliche Angriffsrouten bleiben außerhalb des Slice.
 
