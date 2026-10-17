@@ -14,6 +14,7 @@ export interface BattleSceneHooks {
   readonly selectWisp?: () => void;
   readonly selectMara?: () => void;
   readonly selectWorkshop?: () => void;
+  readonly selectWarehouse?: () => void;
 }
 const colors = { gold: 0xd9bd79, text: '#eae5ce', muted: '#91a58e', panel: '#183424' };
 type TowerView = { base: Phaser.GameObjects.Image; weapon: Phaser.GameObjects.Image };
@@ -157,25 +158,25 @@ export class BattleScene extends Phaser.Scene {
     const pad = this.sim.layout.towerPads.find(pad => pad.id === padId);
     if (pad) this.focusPoint(cellCenter(this.sim.layout, pad.cell));
   }
-  focusObject(kind: 'tower' | 'settlement' | 'mara' | 'wisp'): void {
+  focusObject(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp'): void {
     if (this.portraitCamera) this.focusPoint(this.objectPoint(kind));
   }
   private focusPoint(point: { x: number; y: number }): void {
     if (this.overview) { this.overview = false; this.relativeZoom = 1; this.resizeCamera(); }
     this.cameras.main.centerOn(point.x, this.sim.layout.bounds.height / 2);
   }
-  private objectPoint(kind: 'tower' | 'settlement' | 'mara' | 'wisp'): { x: number; y: number } {
-    if (kind === 'wisp') return wispPose(this.sim.layout, this.sim.elapsed);
+  private objectPoint(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp'): { x: number; y: number } {
+    if (kind === 'wisp') return wispPose(this.sim.layout, this.sim.elapsed, this.sim.settlement.warehouseBuilt);
     if (kind === 'mara') return { x: this.sim.mara.x, y: this.sim.mara.y - 20 };
-    if (kind === 'settlement') {
-      const plot = this.sim.layout.plots.find(plot => plot.id === 'workshop')!;
+    if (kind === 'settlement' || kind === 'warehouse') {
+      const plot = this.sim.layout.plots.find(plot => plot.id === (kind === 'warehouse' ? 'warehouse' : 'workshop'))!;
       return { x: (plot.footprint.x + plot.footprint.width / 2) * this.sim.layout.cellSize,
         y: (plot.blockingBody.y + plot.blockingBody.height) * this.sim.layout.cellSize - 35 };
     }
     const pad = this.selectedPad();
     return pad ? cellCenter(this.sim.layout, pad.cell) : { x: 560, y: 320 };
   }
-  uiAnchor(kind: 'tower' | 'settlement' | 'mara' | 'wisp'): { x: number; y: number } {
+  uiAnchor(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp'): { x: number; y: number } {
     const point = this.objectPoint(kind), camera = this.cameras.main;
     return { x: (point.x - camera.worldView.x) * camera.zoom, y: (point.y - camera.worldView.y) * camera.zoom };
   }
@@ -215,8 +216,13 @@ export class BattleScene extends Phaser.Scene {
     if (this.hooks.canRender?.() === false) return;
     const point = this.cameras.main.getWorldPoint(pointer.x, pointer.y), size = this.sim.layout.cellSize;
     const pad = this.sim.layout.towerPads.find(value => value.cell.x === Math.floor(point.x / size) && value.cell.y === Math.floor(point.y / size));
-    const wisp = wispPose(this.sim.layout, this.sim.elapsed);
+    const wisp = wispPose(this.sim.layout, this.sim.elapsed, this.sim.settlement.warehouseBuilt);
     if (this.sim.wispUnlocked && Math.hypot(point.x - wisp.x, point.y - (wisp.y - 18)) < 23) { this.hooks.selectWisp?.(); return; }
+    const warehouse = this.sim.layout.plots.find(plot => plot.id === 'warehouse')!.footprint;
+    if (!pad && this.sim.warehouseUnlocked && point.x >= warehouse.x * size && point.x < (warehouse.x + warehouse.width) * size
+      && point.y >= (warehouse.y - 0.5) * size && point.y < (warehouse.y + warehouse.height) * size) {
+      this.hooks.selectWarehouse?.(); return;
+    }
     const workshop = this.sim.layout.plots.find(plot => plot.id === 'workshop')!.footprint;
     if (!pad && point.x >= workshop.x * size && point.x < (workshop.x + workshop.width) * size
       && point.y >= (workshop.y - 1.2) * size && point.y < (workshop.y + workshop.height) * size) {
@@ -280,7 +286,7 @@ export class BattleScene extends Phaser.Scene {
     const sim = this.sim, elapsed = sim.elapsed;
     // Read the complete confirmed model. Rollback can replace its identity and
     // move time backwards; UID maps are reconciled rather than replaying events.
-    this.forest?.update(elapsed, sim.settlement.workshopBuilt, sim.settlement.builtAt);
+    this.forest?.update(elapsed, sim.settlement.workshopBuilt, sim.settlement.builtAt, sim.settlement.warehouseBuilt, sim.settlement.warehouseBuiltAt, sim.warehouseUnlocked);
     this.effects.clear();
     const towers = new Set(sim.towers.map(tower => tower.uid));
     for (const [uid, view] of this.towerViews) if (!towers.has(uid)) { view.base.destroy(); view.weapon.destroy(); this.towerViews.delete(uid); }
@@ -332,7 +338,7 @@ export class BattleScene extends Phaser.Scene {
       if (age < 0 || age > 0.35) { this.impacts.delete(id); continue; }
       this.effects.lineStyle(2, 0xecc78d, (1 - age / 0.35) * 0.8).strokeCircle(hit.x, hit.y, 12 + age / 0.35 * 40);
     }
-    const wisp = wispPose(sim.layout, elapsed);
+    const wisp = wispPose(sim.layout, elapsed, sim.settlement.warehouseBuilt);
     this.wisp.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y).setFrame(wisp.frame).setFlipX(wisp.flip).setDepth(wisp.y + 1002);
     this.wispName.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y + 13);
     const mara = sim.mara, acting = mara.effectRemaining > 0 && sim.isMaraBoosted(mara.targetTowerUid);

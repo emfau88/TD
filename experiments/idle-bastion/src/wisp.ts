@@ -1,15 +1,17 @@
-/** Cosmetic workshop errands use the same walkable grid as Mara. The gold
+/** Cosmetic workshop / warehouse errands use the same walkable grid as Mara. The gold
  * bonus is unconditional once unlocked and never depends on these poses. */
 import { cellCenter, findFootpath, type IdleLayout } from './layout';
 import { getForestBlockedCells } from './forest-world';
-const routes = new WeakMap<IdleLayout, { x: number; y: number }[]>();
-export function wispPose(layout: IdleLayout, elapsed: number) {
-  let route = routes.get(layout);
+const routes = new WeakMap<IdleLayout, Map<boolean, { x: number; y: number }[]>>();
+export function wispPose(layout: IdleLayout, elapsed: number, warehouseBuilt = false) {
+  let cache = routes.get(layout);
+  if (!cache) { cache = new Map(); routes.set(layout, cache); }
+  let route = cache.get(warehouseBuilt);
   if (!route) {
     const start = layout.plots.find(plot => plot.id === 'workshop')!.entrance;
-    route = (findFootpath(layout, start, { x: 5, y: 12 }, getForestBlockedCells(layout)) ?? [start]).map(cell => cellCenter(layout, cell));
+    route = (findFootpath(layout, start, warehouseBuilt ? layout.plots.find(plot => plot.id === 'warehouse')!.entrance : { x: 5, y: 12 }, getForestBlockedCells(layout)) ?? [start]).map(cell => cellCenter(layout, cell));
     if (!route.length) route = [cellCenter(layout, start)];
-    routes.set(layout, route);
+    cache.set(warehouseBuilt, route);
   }
   const travel = Math.max(0, route.length - 1) * layout.cellSize / 30;
   const phase = elapsed % (travel * 2 + 8), returning = phase >= travel + 4;

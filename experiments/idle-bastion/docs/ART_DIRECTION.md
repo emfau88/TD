@@ -140,3 +140,7 @@ Keine neuen generierten Bilder. Laufzeit und Dock verwenden dieselben Originale 
 | Scorpion | 64×64; Lauf-Frames 24–31 abwärts, 32–39 aufwärts, 40–47 seitlich | 0,83; wie vorhandene Gegner |
 
 Die vier Premium-UI-Materialien bleiben erhalten. Vier Turmkarten und zwei Begleiter teilen das Dock; mobil scrollen ausschließlich die Turmkarten horizontal. HUD 56 px und Dock 96 px bleiben bestehen. Keine weitere Asset-Produktion für spätere Gebäude.
+
+### B09: Vorratslager I
+
+Ein einzelnes Imagegen-Gebäude: kompakter offener Holzschuppen mit roten Ziegeln, Kisten und Säcken, kleiner als die Werkstatt. Laufzeitrahmen 96 × 96, Silhouette etwa 68 × 50, Fußanker (48,80), Weltanker (360,520). Herkunft, Original, vollständiger Prompt und reproduzierbare Pixelaufbereitung stehen im [Assetnachweis](../assets/warehouse/README.md). Vor dem Bau erscheint nach Freischaltung eine dezente Markierung; nach dem Bau verschwindet sie. Wisp läuft über vorhandene freie Zellen zwischen Werkstatt und Lager; sein Bonus hängt nicht von der Animation ab. Desktop und kompakte Hochkantansicht wurden mit echten Spielaufnahmen geprüft.

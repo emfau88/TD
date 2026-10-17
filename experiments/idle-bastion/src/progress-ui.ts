@@ -1,11 +1,11 @@
 import { farmRewardGold } from './farming';
 import { BASE, SETTLEMENT, FROST, upgradeCost, type IdleBattle } from './battle';
 import type { BattleSession } from './battle-session';
-import { OFFLINE } from './offline';
+import { offlinePolicy } from './offline';
 import { IncomeWindow, HISTORY_LIMIT, type AttemptMode } from './progress';
 import { tutorialStep } from './hud';
 
-export type GoalAction = 'archer' | 'upgrade' | 'workshop' | 'frost' | 'cannon' | 'sniper' | 'progress';
+export type GoalAction = 'archer' | 'upgrade' | 'workshop' | 'warehouse' | 'frost' | 'cannon' | 'sniper' | 'progress';
 const el = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id)! as T;
 const number = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 const gold = (value: number) => number.format(value);
@@ -26,6 +26,8 @@ export function currentGoal(battle: IdleBattle): Goal {
     case 6: return { title: 'Die Frosttechnik wirkt', detail: 'Ersten Frosttreffer beobachten · Gegner werden langsamer', action: 'progress', label: 'Fortschritt ansehen' };
     case 7: return { title: 'Wisp für die Werkstatt gewinnen', detail: 'Welle 5 meistern · +10 % Gold & zwei Bauplätze', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 8: return { title: 'Käfergruppen gemeinsam treffen', detail: `${need(135)} · Steinschleuder neben Frost`, cost: 135, action: 'cannon', label: 'Steinschleuder auswählen' };
+    case 12: return { title: 'Vorräte für deine Rückkehr', detail: `${need(SETTLEMENT.warehouseCost)} · 65 % Ertrag für 8 Stunden`, cost: SETTLEMENT.warehouseCost, action: 'warehouse', label: 'Vorratslager ansehen' };
+    case 13: return { title: 'Den Weg bis Welle 8 sichern', detail: 'Vorratslager freischalten · längere Offline-Erträge', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 9: return { title: 'Den Weg bis Welle 10 sichern', detail: 'Scharfschütze & zwei weitere Bauplätze freischalten', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 10: return { title: 'Für Rüstung gewappnet', detail: `${need(170)} · Scharfschütze durchdringt Panzer`, cost: 170, action: 'sniper', label: 'Scharfschütze auswählen' };
     default: return battle.mode === 'farm'
@@ -55,7 +57,7 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       const stopped = live.paused || live.awaitingResume || live.suspended || Boolean(live.error);
       const certificate = live.certificate;
       const safe = certificate ? farmRewardGold(certificate) * 60000 / certificate.durationMs : 0;
-      const offline = safe * OFFLINE.efficiencyPermille / 1000;
+      const policy = offlinePolicy(b.settlement.warehouseBuilt), offline = safe * policy.efficiencyPermille / 1000;
       const rateText = stopped ? `${live.paused ? 'Pause' : 'Angehalten'} · 0 G/min` : rate.perMinute === null ? 'Ertrag wird ermittelt' : `Ø ${gold(rate.perMinute)} G/min`;
       el('live-income').textContent = rateText;
       el('gold-summary').title = `Laufender Goldzufluss aus Kampfbelohnungen. ${Math.floor(rate.seconds)} aktive Sekunden gemessen. Details öffnen.`;
@@ -78,7 +80,7 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       el('journal-goal-copy').textContent = goal.detail;
       el('journal-goal-action').textContent = goal.label;
       el('journal-companions-count').textContent = `${b.wispUnlocked ? 2 : 1} verfügbar`;
-      el('journal-wisp-order').textContent = b.wispUnlocked ? 'Auftrag: Werkstatt versorgen · +10 % Gegner- und Wellen-Gold. Bereits in Live-Ertrag und Farmbasis enthalten.' : 'Kommt kostenlos nach Frostfassung und gemeisterter Welle 5.';
+      el('journal-wisp-order').textContent = b.wispUnlocked ? `Auftrag: ${b.settlement.warehouseBuilt ? 'Werkstatt und Lager' : 'Werkstatt'} versorgen · +10 % Kampf-Gold. Bereits in Live-Ertrag und Farmbasis enthalten.` : 'Kommt kostenlos nach Frostfassung und gemeisterter Welle 5.';
       const target = b.towers.find(t => t.uid === b.mara.targetTowerUid);
       const assignment = target ? padNames[target.padId] ?? target.def.name : 'Startturm';
       el('mara-brief').textContent = b.mara.path.length ? `Unterwegs · ${assignment}` : `Unterstützt ${assignment}`;
@@ -92,7 +94,7 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
         : `Durchschnitt der letzten ${Math.floor(rate.seconds)} aktiven Sekunden. Käufe, Verkäufe und Offline-Gutschriften zählen nicht dazu. Nach Neuladen beginnt die Messung neu.`;
       el('journal-safe-rate').textContent = certificate ? `${gold(safe)} G/min` : 'Noch kein Nachweis';
       el('journal-offline-rate').textContent = live.paused ? '0 G/min · Pause aktiv' : `${gold(offline)} G/min`;
-      el('journal-offline-note').textContent = `60 % der sicheren Farmbasis · höchstens 2 Stunden. ${certificate ? `Bei unveränderter Verteidigung etwa ${gold(live.paused ? 0 : offline * 60)} Gold in einer Stunde.` : 'Zuerst eine Welle zuverlässig besiegen.'}`;
+      el('journal-offline-note').textContent = `${policy.efficiencyPermille / 10} % der sicheren Farmbasis · höchstens ${policy.limitMs / 3600000} Stunden. ${certificate ? `Bei unveränderter Verteidigung etwa ${gold(live.paused ? 0 : offline * 60)} Gold in einer Stunde.` : 'Zuerst eine Welle zuverlässig besiegen.'}`;
       const defeat = p.lastDefeat;
       const fallback = b.mode === 'farm' && defeat;
       el('fallback-note').hidden = !fallback || live.awaitingResume;

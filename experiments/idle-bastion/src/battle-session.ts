@@ -4,7 +4,7 @@
 import { IdleBattle, type BattleSnapshot } from './battle';
 import { certifyFarm, defenseFingerprint, type FarmCertificate } from './farming';
 import {
-  activateOffline, beginAbsence, checkpointActive, claimOffline as claimReward,
+  offlinePolicy, activateOffline, beginAbsence, checkpointActive, claimOffline as claimReward,
   createOfflineState, reserveOffline, type OfflineReward, type OfflineState,
 } from './offline';
 import type { BattleSaveStore, SaveEnvelope, WriterLease } from './save-store';
@@ -236,7 +236,7 @@ export class BattleSession {
         this.currentBattle.creditOfflineUnits(claimed.amountUnits);
         next = claimed.state;
       }
-      this.currentOffline = activateOffline(next, this.now(), this.currentCertificate, this.currentPaused);
+      this.currentOffline = activateOffline(next, this.now(), this.currentCertificate, this.currentPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
       this.waitingForResume = false;
       await this.commit();
       return true;
@@ -278,7 +278,7 @@ export class BattleSession {
       try {
         if (this.pendingWrite) await this.pendingWrite;
         if (this.currentError) throw this.currentError;
-        if (!this.waitingForResume) this.currentOffline = beginAbsence(this.currentOffline, this.now(), this.currentCertificate, this.currentPaused);
+        if (!this.waitingForResume) this.currentOffline = beginAbsence(this.currentOffline, this.now(), this.currentCertificate, this.currentPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
         await this.commit();
       } finally {
         await this.releaseOwnership();
@@ -316,7 +316,7 @@ export class BattleSession {
       await this.heartbeat();
       const end = this.now();
       const start = Math.max(this.currentOffline.baseline.at, end - Math.floor(seconds * 1000));
-      this.currentOffline = beginAbsence(this.currentOffline, start, this.currentCertificate, this.currentPaused);
+      this.currentOffline = beginAbsence(this.currentOffline, start, this.currentCertificate, this.currentPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
       this.currentOffline = reserveOffline(this.currentOffline, end);
       await this.commit();
     } catch (error) { this.fail(asError(error), true); throw error; }
@@ -327,7 +327,7 @@ export class BattleSession {
     if (this.currentError) return Promise.reject(this.currentError);
     const snapshot = this.currentBattle.snapshot(), paused = this.currentPaused;
     if (!this.waitingForResume && !this.currentSuspended) {
-      this.currentOffline = checkpointActive(this.currentOffline, this.now(), this.currentCertificate, paused);
+      this.currentOffline = checkpointActive(this.currentOffline, this.now(), this.currentCertificate, paused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
     }
     const offline = clone(this.currentOffline);
     if (!force && same(snapshot, this.committedSnapshot) && paused === this.committedPaused && same(offline, this.committedOffline)) return Promise.resolve();

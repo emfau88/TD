@@ -8,6 +8,7 @@ import { BattleScene } from './battle-scene';
 import { nextObjective, tutorialHint, tutorialStep } from './hud';
 import { BattleSession, SessionLoadError, SessionOwnershipError } from './battle-session';
 import { openBattleStore, type BattleSaveStore } from './save-store';
+import { offlinePolicy, WAREHOUSE_OFFLINE } from './offline';
 import { farmRewardGold } from './farming';
 import { ART } from './art';
 import { drawDockArt } from './dock-art';
@@ -32,6 +33,7 @@ const claim = element<HTMLButtonElement>('claim-offline');
 const recover = element<HTMLButtonElement>('recover-save');
 const assignMara = element<HTMLButtonElement>('assign-mara');
 const buildFrost = element<HTMLButtonElement>('build-frost');
+const buildWarehouse = element<HTMLButtonElement>('build-warehouse');
 const buildWorkshop = element<HTMLButtonElement>('build-workshop');
 const researchFrost = element<HTMLButtonElement>('research-frost');
 const padChoice = element<HTMLSelectElement>('pad-choice');
@@ -48,7 +50,7 @@ let scene: BattleScene | undefined;
 let game: Phaser.Game | undefined;
 let store: BattleSaveStore | undefined;
 let selectedPadId: string | undefined;
-let selectedPanel: 'tower' | 'settlement' | 'mara' | 'wisp' = 'tower';
+let selectedPanel: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' = 'tower';
 let catalogPanel: 'tower' | 'settlement' = 'tower';
 let contextOpen = false;
 let placementType: TowerId | undefined;
@@ -62,6 +64,7 @@ let lifecycle = Promise.resolve();
 let retryTimer: number | undefined;
 const progressUI = createProgressUI(action => {
   if (action === 'archer' || action === 'frost' || action === 'cannon' || action === 'sniper') startPlacement(({ archer: 1, frost: 2, cannon: 3, sniper: 4 } as const)[action]);
+  else if (action === 'warehouse') { catalogPanel = 'settlement'; openContext('warehouse'); }
   else if (action === 'workshop') { catalogPanel = 'settlement'; openContext('settlement'); }
   else if (action === 'upgrade' && session) {
     const towers = session.battle.towers;
@@ -70,6 +73,10 @@ const progressUI = createProgressUI(action => {
   }
 }, lifetime.signal);
 
+function duration(ms: number): string {
+  const seconds = Math.floor(ms / 1000), minutes = Math.floor(seconds / 60), hours = Math.floor(minutes / 60);
+  return hours ? `${hours} Std. ${minutes % 60} Min.` : minutes ? `${minutes} Min. ${seconds % 60} Sek.` : `${seconds} Sek.`;
+}
 function showError(message: string, canRecover = false, ownership = false): void {
   element('error-panel').hidden = false;
   element('app-error').hidden = false;
@@ -87,7 +94,7 @@ function syncUI(): void {
   const unavailable = !ready || !live || live.busy || Boolean(live.error) || live.suspended;
   build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = unavailable;
   element<HTMLButtonElement>('build-cannon').disabled = element<HTMLButtonElement>('build-sniper').disabled = unavailable;
-  buildFrost.disabled = buildWorkshop.disabled = researchFrost.disabled = unavailable;
+  buildFrost.disabled = buildWorkshop.disabled = buildWarehouse.disabled = researchFrost.disabled = unavailable;
   if (!ready || !live || !view) return;
   view.paused = live.paused || document.hidden || Boolean(live.error) || live.suspended || live.awaitingResume;
   const saveStatus = element('save-status');
@@ -99,13 +106,14 @@ function syncUI(): void {
   if (live.busy) return;
   const sim = live.battle;
   element('tower-panel').hidden = selectedPanel !== 'tower';
+  element('warehouse-panel').hidden = selectedPanel !== 'warehouse';
   element('settlement-panel').hidden = selectedPanel !== 'settlement';
   element('wisp-panel').hidden = selectedPanel !== 'wisp';
-  element('wisp-status').textContent = sim.wispUnlocked ? 'Aktiv · +10 % Kampf-Gold. Auftrag: die Werkstatt versorgen.' : `Wisp kommt kostenlos nach Frostfassung und gemeisterter Welle 5. ${sim.settlement.frostResearched ? 'Frostfassung ✓' : 'Frostfassung fehlt'} · ${sim.highestCleared >= 5 ? 'Welle 5 ✓' : 'Welle 5 noch offen'}.`;
+  element('wisp-status').textContent = sim.wispUnlocked ? `Aktiv · +10 % Kampf-Gold. Auftrag: ${sim.settlement.warehouseBuilt ? 'Werkstatt und Lager' : 'die Werkstatt'} versorgen.` : `Wisp kommt kostenlos nach Frostfassung und gemeisterter Welle 5. ${sim.settlement.frostResearched ? 'Frostfassung ✓' : 'Frostfassung fehlt'} · ${sim.highestCleared >= 5 ? 'Welle 5 ✓' : 'Welle 5 noch offen'}.`;
   element('pick-wisp').classList.toggle('locked', !sim.wispUnlocked);
   element('wisp-brief').textContent = sim.wispUnlocked ? '+10 % Gold' : 'Frost & Welle 5';
   element('pick-wisp').setAttribute('aria-label', sim.wispUnlocked ? 'Wisp · +10 Prozent Kampf-Gold' : 'Wisp · Frostfassung und Welle 5 nötig');
-  element('catalog-next').hidden = catalogPanel !== 'tower';
+  element('catalog-next').hidden = false;
   element('mara-panel').hidden = selectedPanel !== 'mara';
   element('context-panel').hidden = !contextOpen || live.awaitingResume || Boolean(live.error);
   element('tower-catalog').hidden = catalogPanel !== 'tower';
@@ -165,7 +173,7 @@ function syncUI(): void {
   element('camera-zoom').setAttribute('aria-pressed', String(view.mapZoom > 1));
   element('camera-zoom').setAttribute('aria-label', view.mapZoom > 1 ? 'Karte weiter ansehen' : 'Karte näher ansehen');
   element('safe-rate').textContent = `${rateFormat.format(certificate ? farmRewardGold(certificate) * 60000 / certificate.durationMs : 0)} G/min sicher`;
-  element('safe-rate').title = certificate ? `Welle ${certificate.wave}: zwei konservative, schadensfreie Wiederholungen inklusive Wellenpausen. Grundlage für 60 % Offline-Ertrag.`
+  element('safe-rate').title = certificate ? `Welle ${certificate.wave}: zwei konservative, schadensfreie Wiederholungen inklusive Wellenpausen. Grundlage für ${offlinePolicy(sim.settlement.warehouseBuilt).efficiencyPermille / 10} % Offline-Ertrag.`
     : 'Noch kein gültiger Farmnachweis. Eine erste Welle muss live geschafft und zweimal konservativ geprüft werden.';
   element('menu-farm-rate').textContent = `${element('safe-rate').textContent}. ${element('safe-rate').title}`;
   element('gold').textContent = currency.format(sim.gold);
@@ -186,18 +194,22 @@ function syncUI(): void {
   element('return-card').hidden = !live.awaitingResume;
   if (live.awaitingResume) {
     const reward = live.pendingReward;
-    element('return-details').textContent = reward
-      ? `${live.paused ? 'Pause aktiv · ' : ''}${Math.floor(reward.elapsedMs / 1000)} s abwesend · ${rateFormat.format(reward.creditedMs / 60000)} min angerechnet · +${preciseCurrency.format(reward.amountUnits / 1000)} Gold`
-      : live.paused ? 'Die gespeicherte Pause ist aktiv. Während der Pause entsteht kein Offline-Gold.' : 'Deine Verteidigung ist wieder bereit. Es ist keine Belohnung offen.';
-    const basis = live.offline.window?.certificate;
-    element('return-basis').textContent = `Sichere Basis beim Verlassen: ${rateFormat.format(basis ? farmRewardGold(basis) * 60000 / basis.durationMs : 0)} G/min · 60 % Ertrag · höchstens 2 Stunden. Der Kampf bleibt während der Rückkehr angehalten.`;
+    const departure = live.offline.window ?? live.offline.baseline, basis = departure.certificate;
+    element('return-gold').textContent = `+${preciseCurrency.format((reward?.amountUnits ?? 0) / 1000)} Gold`;
+    element('return-elapsed').textContent = duration(reward?.elapsedMs ?? 0);
+    element('return-credited').textContent = duration(reward?.creditedMs ?? 0);
+    element('return-details').textContent = live.paused ? 'Die gespeicherte Pause war aktiv. Dabei entsteht kein Offline-Gold.'
+      : !basis ? 'Noch kein sicherer Farmnachweis vorhanden. Besiege zuerst eine Welle zuverlässig.'
+      : reward && reward.elapsedMs > reward.creditedMs ? 'Deine Vorräte sind voll. Die Sammelzeit wurde ausgeschöpft.'
+      : 'Deine Verteidigung hat Gold für dich gesammelt. Setze es für deinen nächsten Ausbau ein.';
+    element('return-basis').textContent = `Farmbasis beim Verlassen: ${rateFormat.format(basis ? farmRewardGold(basis) * 60000 / basis.durationMs : 0)} G/min · ${departure.efficiencyPermille / 10} % Ertrag · bis zu ${departure.limitMs / 3600000} Stunden. Zeit bis zum Einsammeln zählt mit.`;
     claim.textContent = reward && reward.amountUnits > 0 ? 'Belohnung einsammeln und fortsetzen' : live.paused ? 'Zur pausierten Verteidigung' : 'Verteidigung fortsetzen';
     claim.disabled = unavailable || document.hidden;
   }
   const tower = sim.towers.find(value => value.padId === selectedPadId);
   const pad = sim.layout.towerPads.find(value => value.id === selectedPadId);
   padChoice.value = selectedPadId ?? '';
-  element('selection-title').textContent = selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
+  element('selection-title').textContent = selectedPanel === 'warehouse' ? 'Vorratslager' : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
     : tower ? `${tower.def.name} · Level ${tower.level}` : pad ? 'Freier Bauplatz' : 'Bauplatz wählen';
   element('tower-name').textContent = tower?.def.name ?? 'Turm wählen';
   element('tower-role').textContent = tower?.def.id === 4 ? 'Bevorzugt Rüstung · ignoriert 100 % davon' : tower?.def.id === 3 ? 'Flächentreffer · 52 Reichweite um das Ziel' : tower?.def.id === 2 ? 'Frosttreffer · 45 % langsamer für 2 s' : 'Zuverlässige Pfeile · Allrounder';
@@ -248,10 +260,30 @@ function syncUI(): void {
   researchFrost.textContent = `Frostfassung erforschen · ${SETTLEMENT.researchCost} Gold`;
   researchFrost.disabled = blocked || sim.gold < SETTLEMENT.researchCost;
   element('choose-frost').hidden = !settlement.frostResearched;
+  const warehouseIcon = element<HTMLImageElement>('warehouse-icon');
+  if (warehouseIcon.getAttribute('src') !== ART.warehouse) warehouseIcon.src = ART.warehouse;
+  const builtWarehouse = settlement.warehouseBuilt;
+  const safeRate = certificate ? farmRewardGold(certificate) * 60000 / certificate.durationMs : 0;
+  element('pick-warehouse').classList.toggle('locked', !sim.warehouseUnlocked);
+  element('pick-warehouse').classList.toggle('researched', builtWarehouse);
+  element('warehouse-card-price').textContent = builtWarehouse ? '✓ Gebaut' : sim.warehouseUnlocked ? String(SETTLEMENT.warehouseCost) : sim.wispUnlocked ? 'Welle 8' : 'Wisp & Welle 8';
+  element('warehouse-description').textContent = builtWarehouse ? 'Wisp versorgt das Lager. Deine Vorräte sammeln automatisch während deiner Abwesenheit.'
+    : 'Sammle länger und mit höherem Ertrag. Der Ausbau gilt ab Kauf für künftige Abwesenheiten.';
+  element('warehouse-rate').textContent = certificate ? `${rateFormat.format(safeRate)} G/min` : 'Noch kein Nachweis';
+  element('warehouse-efficiency').textContent = builtWarehouse ? '65 % der Farmbasis' : '60 % → 65 %';
+  element('warehouse-cap').textContent = builtWarehouse ? 'Bis zu 8 Stunden' : '2 → 8 Stunden';
+  element('warehouse-preview').textContent = live.paused ? '0 Gold · Pause aktiv' : !certificate ? 'Zuerst sicher farmen'
+    : builtWarehouse ? `≈ ${currency.format(safeRate * 60 * WAREHOUSE_OFFLINE.efficiencyPermille / 1000)} Gold`
+    : `${currency.format(safeRate * 60 * 0.6)} → ${currency.format(safeRate * 60 * 0.65)} Gold`;
+  element('warehouse-condition').textContent = !sim.warehouseUnlocked ? `Voraussetzung: ${sim.wispUnlocked ? 'Wisp ✓' : 'Wisp (Frost & Welle 5)'} · Welle 8 ${sim.highestCleared >= 8 ? '✓' : 'meistern'}.`
+    : !builtWarehouse && sim.gold < SETTLEMENT.warehouseCost ? `Noch ${currency.format(SETTLEMENT.warehouseCost - sim.gold)} Gold. Die Vorschau gilt bei unveränderter Verteidigung; während einer Pause entsteht kein Ertrag.`
+    : 'Vorschau bei unveränderter Verteidigung. Während einer Pause entsteht kein Offline-Ertrag.';
+  buildWarehouse.hidden = builtWarehouse;
+  buildWarehouse.disabled = blocked || !sim.warehouseUnlocked || sim.gold < SETTLEMENT.warehouseCost;
   element('layout-status').textContent = view.paused ? 'Kampf angehalten.'
     : sim.mode === 'farm' ? `Sicheres Farmen · Welle ${sim.farmWave}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang.`
     : `Automatischer Vorstoß · höchste geschaffte Welle ${sim.highestCleared}.`;
-  const message = sim.drainEvents().filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads'].includes(event.type)).at(-1);
+  const message = sim.drainEvents().filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse'].includes(event.type)).at(-1);
   if (message) toastUntil = performance.now() + 4500;
   if (message) element('combat-message').textContent = message.type === 'clear' ? `Welle ${message.wave} geschafft · +${currency.format(message.amount ?? 0)} Gold Abschlussbonus.`
     : message.type === 'kill' ? `Gegner besiegt · +${currency.format(message.amount ?? 0)} Gold.`
@@ -261,6 +293,7 @@ function syncUI(): void {
     : message.type === 'build' ? `${message.tower?.def.name} gebaut und einsatzbereit.`
     : message.type === 'upgrade' ? `${message.tower?.def.name} verbessert. Der nächste Schuss nutzt den höheren Schaden.`
     : message.type === 'workshop' ? 'Die Werkstatt arbeitet wieder! Frostfassung ist jetzt erforschbar.'
+    : message.type === 'warehouse' ? 'Vorratslager gebaut! Künftig 65 % Offline-Ertrag für bis zu 8 Stunden.'
     : message.type === 'research' ? 'Frostfassung erforscht! Baue einen Frostkristall oder verbessere Türme bis Level 6.'
     : message.type === 'sell' ? `Turm verkauft · +${currency.format(message.amount ?? 0)} Gold. Die sichere Farmbasis wird neu geprüft.`
     : 'Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.';
@@ -339,6 +372,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
       select(padId) { void selectPad(padId); },
       selectWisp() { openContext('wisp'); },
       selectMara() { openContext('mara'); },
+      selectWarehouse() { catalogPanel = 'settlement'; openContext('warehouse'); },
       selectWorkshop() { catalogPanel = 'settlement'; openContext('settlement'); },
       ready() { ready = true; drawDockArt(view); view.setSelected(selectedPadId); syncUI(); },
     });
@@ -372,6 +406,7 @@ async function perform(action: (battle: IdleBattle) => unknown, allowPaused = fa
 }
 build.addEventListener('click', () => { void perform(battle => selectedPadId && battle.build(selectedPadId)); }, { signal: lifetime.signal });
 buildFrost.addEventListener('click', () => { void perform(battle => selectedPadId && battle.build(selectedPadId, 2)); }, { signal: lifetime.signal });
+buildWarehouse.addEventListener('click', () => { void perform(battle => battle.buildWarehouse()); }, { signal: lifetime.signal });
 buildWorkshop.addEventListener('click', () => { void perform(battle => battle.buildWorkshop()); }, { signal: lifetime.signal });
 researchFrost.addEventListener('click', () => { void perform(battle => battle.researchFrost()); }, { signal: lifetime.signal });
 padChoice.addEventListener('change', () => { placementType = undefined; void selectPad(padChoice.value || undefined); }, { signal: lifetime.signal });
@@ -389,9 +424,10 @@ for (const [name, kind] of [['cannon', 3], ['sniper', 4]] as const) {
   element(`build-${name}`).addEventListener('click', () => { void perform(battle => selectedPadId && battle.build(selectedPadId, kind)); }, { signal: lifetime.signal });
 }
 element('pick-wisp').addEventListener('click', () => openContext('wisp'), { signal: lifetime.signal });
-element('catalog-next').addEventListener('click', () => { const list = element('tower-catalog'); list.scrollTo({ left: list.scrollLeft >= list.scrollWidth - list.clientWidth - 2 ? 0 : list.scrollLeft + list.clientWidth, behavior: 'smooth' }); }, { signal: lifetime.signal });
+element('catalog-next').addEventListener('click', () => { const list = element(`${catalogPanel}-catalog`); list.scrollTo({ left: list.scrollLeft >= list.scrollWidth - list.clientWidth - 2 ? 0 : list.scrollLeft + list.clientWidth, behavior: 'smooth' }); }, { signal: lifetime.signal });
 element('pick-archer').addEventListener('click', () => startPlacement(1), { signal: lifetime.signal });
 element('pick-frost').addEventListener('click', () => startPlacement(2), { signal: lifetime.signal });
+element('pick-warehouse').addEventListener('click', () => openContext('warehouse'), { signal: lifetime.signal });
 element('pick-workshop').addEventListener('click', () => openContext('settlement'), { signal: lifetime.signal });
 element('pick-mara').addEventListener('click', () => openContext('mara'), { signal: lifetime.signal });
 element('close-context').addEventListener('click', closeContext, { signal: lifetime.signal });

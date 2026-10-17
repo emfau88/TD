@@ -11,6 +11,7 @@ export function tutorialStep(battle: IdleBattle): number {
   if (!battle.tutorial.frostSeen) return 6;
   if (!battle.wispUnlocked) return 7;
   if (!battle.towers.some(tower => tower.def.id === 3)) return 8;
+  if (!battle.settlement.warehouseBuilt) return battle.warehouseUnlocked ? 12 : 13;
   if (battle.highestCleared < 10) return 9;
   if (!battle.towers.some(tower => tower.def.id === 4)) return 10;
   return 11;
@@ -28,6 +29,8 @@ const HINTS = [
   'Nach Welle 10 öffnen zwei weitere Bauplätze und der Scharfschütze. Verbessere deine Verteidigung für diesen Meilenstein.',
   'Der Scharfschütze bevorzugt gepanzerte Gegner und ignoriert ihre Rüstung. Ab Welle 11 kommen Panzerskorpione. Frost und Flächentreffer helfen gegen ihre Begleiter.',
   'Unsere erste Kombination funktioniert: Waldwächter verursachen Schaden, Frostkristalle halten Gegner länger in Reichweite. Probiere Plätze und meine Zuweisung aus.',
+  'Das Vorratslager sammelt länger: 65 % der sicheren Farmbasis für bis zu acht Stunden. Öffne Siedlung, prüfe die Vorschau und baue es für 650 Gold. Die besseren Werte gelten für die nächste Abwesenheit.',
+  'Nach gemeisterter Welle 8 kannst du ein Vorratslager bauen. Verbessere deine Verteidigung und spare dann 650 Gold. Wisp versorgt später beide Gebäude.',
 ] as const;
 export const tutorialHint = (battle: IdleBattle): string => HINTS[tutorialStep(battle)];
 export function nextObjective(battle: IdleBattle): string {
@@ -42,6 +45,8 @@ export function nextObjective(battle: IdleBattle): string {
     case 6: return 'Nächstes Ziel: den ersten blauen Frosttreffer im Kampf beobachten.';
     case 7: return 'Welle 5 meistern: Wisp, Steinschleuder und zwei Bauplätze.';
     case 8: return 'Wisp arbeitet: +10 % Kampf-Gold. Steinschleuder bauen · 135 Gold.';
+    case 12: return `Vorratslager bauen · ${remaining(SETTLEMENT.warehouseCost)} · 65 % Offline-Ertrag für bis zu 8 Stunden.`;
+    case 13: return 'Welle 8 meistern: Vorratslager freischalten.';
     case 9: return 'Welle 10 meistern: Scharfschütze und zwei weitere Bauplätze.';
     case 10: return 'Scharfschütze bauen · 170 Gold · Rüstung durchdringen.';
     default: return battle.mode === 'farm' ? 'Verteidigung ausbauen, dann bewusst erneut vorstoßen.'

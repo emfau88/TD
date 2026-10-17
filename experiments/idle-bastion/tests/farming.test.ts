@@ -131,7 +131,7 @@ test('snapshot v1 migration retains combat exactly and invents neither a certifi
   const legacy = { ...old, schemaVersion: 1, rulesVersion: 1 };
   const migrated = IdleBattle.restore(legacy, { maraBonus: false })!;
   assert.ok(migrated);
-  assert.equal(migrated.snapshot().schemaVersion, 6);
+  assert.equal(migrated.snapshot().schemaVersion, 7);
   assert.equal(migrated.highestCleared, 1);
   assert.equal(migrated.attemptId, 2);
   assert.deepEqual(migrated.liveClearedWaves, []);
@@ -178,7 +178,7 @@ test('current progress and certificate fields reject invalid histories, referenc
     { mode: 'wrong' }, { highestCleared: -1 }, { attemptId: 0 }, { farmWave: 9 }, { farmWave: 15 },
     { liveClearedWaves: [1, 1] }, { liveClearedWaves: [2] }, { liveClearedWaves: [1, 15] },
     { goldRemainderUnits: -1 }, { goldRemainderUnits: 1000 }, { goldRemainderUnits: 0.5 },
-    { mode: 'advance', advanceRequested: true }, { schemaVersion: 7 },
+    { mode: 'advance', advanceRequested: true }, { schemaVersion: 8 },
   ];
   for (const fields of mutations) assert.equal(IdleBattle.restore({ ...good, ...fields }), undefined, JSON.stringify(fields));
   for (const fields of [

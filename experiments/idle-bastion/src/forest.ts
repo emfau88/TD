@@ -7,7 +7,7 @@ import { KEYS, SCALE, loopFrame } from './art';
 import { getForestWorld } from './forest-world';
 import { cellCenter, type GridCell, type IdleLayout } from './layout';
 
-export interface ForestView { update(elapsed: number, built: boolean, builtAt: number | null): void; destroy(): void }
+export interface ForestView { update(elapsed: number, built: boolean, builtAt: number | null, warehouseBuilt: boolean, warehouseBuiltAt: number | null, warehouseUnlocked: boolean): void; destroy(): void }
 const cellKey = ({ x, y }: GridCell) => `${x},${y}`;
 /** Source quadrants are chosen from occupied N/E/S/W neighbours. */
 export function roadSource(position: GridCell, road: ReadonlySet<string>): readonly [number, number] {
@@ -103,6 +103,17 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
     (workshop.footprint.y + workshop.footprint.height) * size - 7, 'Alte Werkstatt', {
       fontFamily: 'Segoe UI, sans-serif', fontSize: '10px', color: '#e1d0a8', stroke: '#304a32', strokeThickness: 3,
     }).setOrigin(0.5).setDepth(workshopY + 1003));
+  const warehouse = layout.plots.find(plot => plot.id === 'warehouse')!;
+  const warehouseX = (warehouse.footprint.x + warehouse.footprint.width / 2) * size;
+  const warehouseY = (warehouse.blockingBody.y + warehouse.blockingBody.height) * size;
+  const warehouseMark = track(scene.add.graphics().setDepth(4));
+  warehouseMark.lineStyle(1, 0xe1c481, 0.7).strokeRoundedRect(warehouseX - 31, warehouseY - 8, 62, 21, 3);
+  const warehouseLabel = track(scene.add.text(warehouseX, warehouseY + 25, 'Lager bauen', {
+    fontFamily: 'Segoe UI, sans-serif', fontSize: '10px', color: '#f0dfb2', stroke: '#304a32', strokeThickness: 3,
+  }).setOrigin(0.5).setDepth(warehouseY + 1003));
+  const warehouseBuilding = track(scene.add.image(warehouseX, warehouseY, KEYS.warehouse)
+    .setOrigin(0.5, 80/96).setDepth(warehouseY + 1000));
+  const warehouseDust = track(scene.add.graphics().setDepth(warehouseY + 1002));
   const goal = cellCenter(layout, layout.core);
   track(scene.add.ellipse(goal.x, goal.y + 5, 37, 16, 0xffd79b, 0.13).setDepth(900));
   track(scene.add.image(goal.x, goal.y + 3, KEYS.core, 2).setScale(0.65).setOrigin(0.5, 0.78).setDepth(goal.y + 1000));
@@ -110,12 +121,21 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   const entrance = cellCenter(layout, layout.road.cells[0]);
   track(scene.add.text(8, entrance.y - 15, '➜', { fontSize: '24px', color: '#35533b' }).setDepth(10));
   return {
-    update(elapsed, built, builtAt) {
+    update(elapsed, built, builtAt, warehouseBuilt, warehouseBuiltAt, warehouseUnlocked) {
       pond?.setFrame(loopFrame(elapsed, 10)); coreWeapon.setFrame(loopFrame(elapsed, 10));
       const texture = built ? KEYS.workshop : KEYS.workshopDamaged;
       if (building.texture.key !== texture) building.setTexture(texture);
       stakes.setVisible(!built);
       plotLabel.setVisible(!built);
+      warehouseBuilding.setVisible(warehouseBuilt);
+      warehouseMark.setVisible(warehouseUnlocked && !warehouseBuilt);
+      warehouseLabel.setVisible(warehouseUnlocked && !warehouseBuilt);
+      warehouseDust.clear();
+      const warehouseAge = warehouseBuiltAt === null ? 10 : elapsed - warehouseBuiltAt;
+      if (warehouseBuilt && warehouseAge >= 0 && warehouseAge < 1.2) for (let i = 0; i < 7; i++) {
+        warehouseDust.fillStyle(0xe7d4a5, (1 - warehouseAge/1.2) * 0.7)
+          .fillRect(warehouseX - 30 + i * 10, warehouseY - warehouseAge * (9 + i % 3 * 5), 3, 3);
+      }
       dust.clear();
       const age = builtAt === null ? 10 : elapsed - builtAt;
       if (built && age >= 0 && age < 1.2) for (let i = 0; i < 9; i++) {

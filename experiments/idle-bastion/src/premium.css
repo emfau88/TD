@@ -246,3 +246,18 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 }
 
 @media (max-width:700px) { .advance-button { position:absolute; } }
+
+/* B09: the same compact dock; warehouse details remain contextual. */
+.warehouse-stats, .return-times { display: grid; gap: 8px; margin: 14px 0; }
+.warehouse-stats > div, .return-times > div { display: flex; justify-content: space-between; gap: 12px; }
+.warehouse-stats dt, .return-times dt { color: var(--muted, #c8bc9e); }
+.warehouse-stats dd, .return-times dd { margin: 0; text-align: right; color: #f2dfab; }
+.warehouse-preview { padding-top: 10px; border-top: 1px solid #ad895b70; }
+#build-warehouse { width: 100%; }
+.return-gold { display: block; margin: 16px 0 8px; color: #f6cf73; font-size: clamp(26px, 5vw, 36px); }
+.return-times { padding: 12px 0; border-block: 1px solid #ad895b70; }
+@media (max-width: 700px) {
+  #settlement-catalog .building-card { flex: 0 0 154px; min-width: 154px; }
+  #settlement-catalog .building-card img { width: 50px; height: 56px; }
+  .warehouse-stats { font-size: 12px; gap: 7px; }
+}

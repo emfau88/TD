@@ -5,6 +5,11 @@
 import { farmRewardUnits, type FarmCertificate } from './farming';
 
 export const OFFLINE = Object.freeze({ unitsPerGold: 1000, efficiencyPermille: 600, limitMs: 2 * 60 * 60 * 1000 });
+export interface OfflinePolicy { readonly efficiencyPermille: number; readonly limitMs: number }
+export const WAREHOUSE_OFFLINE: OfflinePolicy = Object.freeze({ efficiencyPermille: 650, limitMs: 8 * 60 * 60 * 1000 });
+export const offlinePolicy = (warehouseBuilt: boolean): OfflinePolicy => warehouseBuilt ? WAREHOUSE_OFFLINE : OFFLINE;
+const validPolicy = (efficiency: unknown, limit: unknown) => efficiency === OFFLINE.efficiencyPermille && limit === OFFLINE.limitMs
+  || efficiency === WAREHOUSE_OFFLINE.efficiencyPermille && limit === WAREHOUSE_OFFLINE.limitMs;
 export interface Fraction { numerator: string; denominator: string }
 export interface OfflineBaseline {
   at: number; paused: boolean; certificate: FarmCertificate | null; efficiencyPermille: number; limitMs: number;
@@ -49,9 +54,9 @@ function baseline(value: unknown): OfflineBaseline | undefined {
   // policy fields; an explicitly stored contradictory value stays invalid.
   const efficiencyPermille = Object.hasOwn(value, 'efficiencyPermille') ? value.efficiencyPermille : OFFLINE.efficiencyPermille;
   const limitMs = Object.hasOwn(value, 'limitMs') ? value.limitMs : OFFLINE.limitMs;
-  if (efficiencyPermille !== OFFLINE.efficiencyPermille || limitMs !== OFFLINE.limitMs) return undefined;
+  if (!validPolicy(efficiencyPermille, limitMs)) return undefined;
   const basis = certificate(value.certificate);
-  return basis === undefined ? undefined : { at: value.at, paused: value.paused, certificate: basis, efficiencyPermille, limitMs };
+  return basis === undefined ? undefined : { at: value.at, paused: value.paused, certificate: basis, efficiencyPermille: efficiencyPermille as number, limitMs: limitMs as number };
 }
 function fraction(value: unknown): Fraction | undefined {
   if (!object(value) || typeof value.numerator !== 'string' || typeof value.denominator !== 'string'
@@ -125,13 +130,14 @@ export function createOfflineState(now: number): OfflineState {
 /** Every confirmed active checkpoint advances the one shared active/offline
  * boundary. An abrupt close can therefore reserve only time after that commit.
  */
-export function checkpointActive(state: OfflineState, now: number, basis: FarmCertificate | null, paused: boolean): OfflineState {
+export function checkpointActive(state: OfflineState, now: number, basis: FarmCertificate | null, paused: boolean, policy: OfflinePolicy = OFFLINE): OfflineState {
   const next = copy(state);
   if (next.window || next.pendingReward) throw new RangeError('Resume the absence window before advancing active time.');
   if (typeof paused !== 'boolean') throw new RangeError('Invalid explicit pause flag.');
+  if (!validPolicy(policy.efficiencyPermille, policy.limitMs)) throw new RangeError('Invalid offline policy.');
   next.baseline = {
     at: Math.max(time(now), next.baseline.at), paused, certificate: frozenBasis(basis),
-    efficiencyPermille: OFFLINE.efficiencyPermille, limitMs: OFFLINE.limitMs,
+    efficiencyPermille: policy.efficiencyPermille, limitMs: policy.limitMs,
   };
   return next;
 }
@@ -145,10 +151,10 @@ function openWindow(state: OfflineState): OfflineState {
   };
   return state;
 }
-export function beginAbsence(state: OfflineState, now: number, basis: FarmCertificate | null, paused: boolean): OfflineState {
+export function beginAbsence(state: OfflineState, now: number, basis: FarmCertificate | null, paused: boolean, policy: OfflinePolicy = OFFLINE): OfflineState {
   const next = copy(state);
   if (next.window) return next; // Unclaimed return dialogs never refresh the cap.
-  return openWindow(checkpointActive(next, now, basis, paused));
+  return openWindow(checkpointActive(next, now, basis, paused, policy));
 }
 function gcd(a: bigint, b: bigint): bigint {
   while (b !== 0n) { const remainder = a % b; a = b; b = remainder; }
@@ -206,15 +212,15 @@ export function claimOffline(state: OfflineState, rewardId: string): { state: Of
   next.pendingReward = null;
   return { state: next, amountUnits };
 }
-export function activateOffline(state: OfflineState, now: number, basis: FarmCertificate | null, paused: boolean): OfflineState {
+export function activateOffline(state: OfflineState, now: number, basis: FarmCertificate | null, paused: boolean, policy: OfflinePolicy = OFFLINE): OfflineState {
   const next = copy(state);
   if (next.pendingReward) throw new RangeError('Claim the pending offline receipt before resuming active play.');
   const boundary = Math.max(time(now), next.window?.cursorHighWater ?? next.baseline.at);
   next.window = null;
   next.baseline = {
     at: boundary, paused, certificate: frozenBasis(basis),
-    efficiencyPermille: OFFLINE.efficiencyPermille, limitMs: OFFLINE.limitMs,
+    efficiencyPermille: policy.efficiencyPermille, limitMs: policy.limitMs,
   };
-  return checkpointActive(next, boundary, basis, paused);
+  return checkpointActive(next, boundary, basis, paused, policy);
 }
 
