@@ -75,7 +75,7 @@ Zeiten sind Ziele für einen neuen Spielstand bei 1× und zügigen normalen Ents
 
 Die Wellen- und Preiskurve wird auf diese Fenster abgestimmt; bei einem Zielkonflikt zuerst Erträge, Kampfdauer und Kosten ändern. Kleine datenbezogene Anpassungen sind erlaubt und mit Vorher/Nachher-Zeiten zu dokumentieren. Reihenfolge, Charakterrollen und Freigabegrenzen bleiben verbindlich.
 
-**Umgesetzte Einstiegspreise:** 75 Startgold plus kostenloser Startturm; Waldwächter 75, Frostkristall 110, erstes Upgrade 60, Werkstatt I 400, Frostfassung 60. Die Werkstatt-Hypothese 220 wurde nach Messung des gesamten Kaufablaufs auf 400 angehoben. Der tatsächliche 1×-Browserverlauf und die verschiedenen Spielweisen stehen im [90-Sekunden-Bericht](../../artifacts/idle-bastion/acceptance/90s/REPORT.md). Spätere, noch ungetestete Hypothesen: Steinschleuder/Scharfschütze 135/170, Lager I 650, Lichtung 900, Werkstatt II 1.200. Diese Inhalte bleiben bis G1 gesperrt.
+**Umgesetzte Einstiegspreise:** 75 Startgold plus kostenloser Startturm; Waldwächter 75, Frostkristall 110, erstes Upgrade 60, Werkstatt I 400, Frostfassung 60. Die Werkstatt-Hypothese 220 wurde nach Messung des gesamten Kaufablaufs auf 400 angehoben. Der tatsächliche 1×-Browserverlauf und die verschiedenen Spielweisen stehen im [90-Sekunden-Bericht](../../artifacts/idle-bastion/acceptance/90s/REPORT.md). Spätere, noch ungetestete Hypothesen: Steinschleuder/Scharfschütze 135/170, Lager I 650, Lichtung 900, Werkstatt II 1.200. B08 verwendet 135/170 Gold für Steinschleuder/Scharfschütze; Lager und weitere Ausbaupreise bleiben spätere Hypothesen.
 
 ## Rollen und Entscheidungen
 

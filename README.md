@@ -4,11 +4,11 @@
 
 [▶ Im Browser spielen](https://emfau88.github.io/TD/idle-bastion/) · [Frische Probe starten](https://emfau88.github.io/TD/idle-bastion/?fresh=1)
 
-Die erste Idle-Vorschau enthält automatischen Kampf, Mara, eigene Turmkäufe, Upgrades, Werkstatt I und Frostforschung. Folge Maras Hinweisen bis zum ersten Frosttreffer. Gold und Kampf werden lokal im Browser gespeichert; „Frische Probe“ öffnet eine getrennte neue Partie und bewahrt den bisherigen Stand. Nur ein Tab pro Partie kann gleichzeitig spielen.
+Die Idle-Vorschau enthält automatischen Kampf, Mara, Wisp, vier Turmrollen, Upgrades, Werkstatt I und Frostforschung. Wisp bringt nach Frostfassung und Welle 5 automatisch +10 % Kampf-Gold und die Steinschleuder; ab Welle 10 kommt der Scharfschütze hinzu. Je zwei weitere Bauplätze öffnen bei Welle 5 und 10. Folge Maras Hinweisen bis zum ersten Frosttreffer. Gold und Kampf werden lokal im Browser gespeichert; „Frische Probe“ öffnet eine getrennte neue Partie und bewahrt den bisherigen Stand. Nur ein Tab pro Partie kann gleichzeitig spielen.
 
 Die Karte steht im Mittelpunkt: illustriertes Messing-/Schiefer-HUD, Baudock und Details erst bei Auswahl. Vier erzeugte UI-Assets, einheitliche Pixel-Symbole und eine lokal geladene Pixelschrift greifen die Mockups auf. Goldzufluss, Wellenrekord, Vorstoß/Farmen und nächstes Ziel sind direkt sichtbar; das Buchsymbol öffnet Ertragsdetails, Begleiter und die gespeicherte Wellenchronik. Alte Spielstände bleiben erhalten, frühere nicht aufgezeichnete Versuche werden als unbekannt behandelt. Hochkant gibt es einen verschiebbaren Kartenausschnitt und große Aktionsflächen. Funktional in schmalen Browseransichten geprüft; eine vollständige Smartphone-/Safari-Abnahme steht noch aus. [Aktuelle Premium-Oberfläche und Prüfung](artifacts/idle-bastion/acceptance/ui/PREMIUM.md) · [Fortschrittsinformationen](artifacts/idle-bastion/acceptance/ui/PROGRESS.md).
 
-Diese Fassung dient der verbindlichen ersten Zwischenabnahme. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht; spätere Inhalte folgen erst nach Nutzerfreigabe.
+Nach der freigegebenen ersten Zwischenabnahme ist B08 zum Testen enthalten. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht; Lager, Boss und Kartenerweiterung folgen in späteren Paketen.
 
 Mobil wurde die Oberfläche zusätzlich verdichtet: weniger Rahmen, einklappbare Hinweise und Vollbild oben rechts. Gold oder Welle öffnen die Chronik. [Mobile Ansicht und Prüfung](artifacts/idle-bastion/acceptance/ui/MOBILE.md).
 
@@ -51,6 +51,12 @@ Echte Spielaufnahmen der bisherigen Entwicklung, keine Mockups. B07a führte die
 | ![Kompaktes HUD und Dock mit neuen UI-Materialien](artifacts/idle-bastion/acceptance/ui/premium-mobile-390x844.png) | ![Turmfenster mit goldener Upgrade-Aktion](artifacts/idle-bastion/acceptance/ui/premium-context-390x844.png) |
 
 [Asset-Quellen und vollständige Prompts](experiments/idle-bastion/assets/ui/README.md) · [Gezielter Prüfbericht](artifacts/idle-bastion/acceptance/ui/PREMIUM.md).
+
+**B08 · Wisp, vier Turmrollen und acht Bauplätze**
+
+![Wisp und neue Turmrollen in der Waldkarte](artifacts/idle-bastion/acceptance/p3/b08-desktop.png)
+
+[Änderungen, kompakte Prüfung und mobile Aufnahme](artifacts/idle-bastion/acceptance/p3/B08.md). Bestehende Spielstände werden übernommen; die sichere Farmbasis wird nach dem Regelupdate neu erspielt. Bereits entstandene Offline-Ansprüche bleiben erhalten.
 
 ## Bestehendes klassisches Spiel
 

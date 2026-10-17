@@ -109,7 +109,7 @@ Im sichtbaren Kampf unterstützt Mara weiterhin automatisch. Die Offline-Grundla
 
 ## 8. Verbindliches Speicherverfahren
 
-Eigene IndexedDB-Datenbank und eigener Namensraum, `spire-idle-bastion`, Store `saves`, Spielstand-ID `default`, mit versioniertem Save-Envelope. Keine Wiederverwendung von `spire-woodland-v1`. Aktuell: Envelope 2, Kampfsnapshot 5, Kampfregeln 3 und Datenbankversion 1. Bekannte Kampfschemas 1–3 werden validiert und ohne erfundenen Live-Farmnachweis migriert; Mara aus Schema 3 bleibt exakt erhalten. Werkstatt und Tutorial beginnen bei älteren Ständen mit passenden Vorgabewerten. Schema 4 behält seine gültigen Kampfregeln, Forschung, Farmnachweise und exakte Verteidigung. Historische Offline-Ansprüche behalten ihre ursprüngliche Regelversion (1–3); Offline-Daten besitzen Version 1. „Frische Probe“ verwendet einen eigenen, in der URL identifizierten Datenbanknamen und berührt den Hauptspielstand nicht.
+Eigene IndexedDB-Datenbank und eigener Namensraum, `spire-idle-bastion`, Store `saves`, Spielstand-ID `default`, mit versioniertem Save-Envelope. Keine Wiederverwendung von `spire-woodland-v1`. Versionierung: Envelope 2, Kampfsnapshot 6, Kampfregeln 4 und Datenbankversion 1. Bekannte Kampfschemas 1–5 werden vor der Migration validiert. Gold, Statistik, Mara, Forschung und laufende Projektile bleiben erhalten. `waveRecipeVersion` erhält die alte Gegnerfolge und Spawnabstände bis zum nächsten Versuch. Alte Live-Farmnachweise werden bei Regelwechsel verworfen; auch ein gerade beendeter Altversuch zertifiziert keine neue Regel. Historische Offline-Ansprüche behalten ihre ursprüngliche Basis (Regeln 1–4); Offline-Daten besitzen weiterhin Version 1. „Frische Probe“ verwendet einen eigenen, in der URL identifizierten Datenbanknamen und berührt den Hauptspielstand nicht.
 
 ### Fortschrittschronik und Ertragsanzeige
 
@@ -181,3 +181,13 @@ Ein harter Prozessabbruch kann die letzten noch nicht bestätigten Simulationsbr
 ## 11. Prüfung
 
 Die verbindlichen Szenarien und Nachweise stehen in [ABNAHME.md](ABNAHME.md). Besonders wichtig sind deterministische Snapshot-Fortsetzung einschließlich verkaufter Projektilquelle, atomare Käufe, Farmzertifikate, einmalige Offline-Claims und konkurrierende Tabs. Technische Tests ersetzen weder Browserprüfung noch Nutzer-Zwischenabnahme.
+
+## B08: konkrete Freischaltungen und Kampfwerte
+
+- Wisp und Steinschleuder: Frostfassung plus höchste gemeisterte Welle ≥ 5. Scharfschütze: höchste gemeisterte Welle ≥ 10. Je zwei Startregion-Plätze bei 5 und 10; östliche Plätze bleiben gesperrt. Bedingungen werden aus dauerhaft gespeicherter Forschung und Rekord abgeleitet, ohne wiederholbare Geschenke oder doppelte Unlock-Flags.
+- Steinschleuder: 135 Gold, 28 Basisschaden, 150 Reichweite, 1,55 s, 52 Radius. Jede getroffene lebende Einheit erhält genau einen Treffer und höchstens eine Abschussbelohnung.
+- Scharfschütze: 170 Gold, 53 Basisschaden, 190 Reichweite, 1,85 s. Bevorzugt innerhalb seiner Reichweite gepanzerte Gegner und ignoriert deren Rüstung vollständig.
+- Wellen 1–5 behalten Rezepte, Werte und Kosten. Ab 6 entstehen Dreiergruppen mit Abständen 0,32 / 0,32 / 1,65 s. Ab 11 ist jeder fünfte Gegner ein Panzerskorpion: 50 Basis-HP, Tempo 40, 45 % Rüstung, 15 Gold, 2 Kernschaden. Die normalen HP-Steigerungen gelten weiter. Rüstung ist auch mit anderen Türmen überwindbar.
+- Wisps 10 % gelten ab Freischaltung für folgende Gegner-/Wellenbelohnungen. Tausendstel werden ganzzahlig im Geldbeutel getragen; `rewardRemainderUnits` führt Kampfgold unabhängig von Offline-Resten für die Statistik. Verkäufe und Offline-Claims erhalten keinen weiteren Bonus.
+- Farmzertifikate führen neben ganzem `rewardGold` optional `rewardRemainderUnits`. Der Offline-Rechner verwendet diese exakte Rate mit rationaler BigInt-Rechnung und dem bestehenden 60-%-/2-h-Fenster. Historische Zertifikate ohne Rest bleiben unverändert gültige Abreisegrundlagen.
+- Wisp ist automatisch aktiv; sein kurzer Werkstattgang folgt begehbaren Zellen und Simulationszeit. Keine Sammelobjekte, Bewegungskommandos oder Charakterlevel.

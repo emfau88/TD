@@ -3,11 +3,12 @@ import './battle.css';
 import './progress.css';
 import './premium.css';
 import { mountUIIcons } from './ui-icons';
-import { SETTLEMENT, stats, upgradeCost, sellValue, type IdleBattle } from './battle';
+import { SETTLEMENT, towerDefinition, type TowerId, stats, upgradeCost, sellValue, type IdleBattle } from './battle';
 import { BattleScene } from './battle-scene';
 import { nextObjective, tutorialHint, tutorialStep } from './hud';
 import { BattleSession, SessionLoadError, SessionOwnershipError } from './battle-session';
 import { openBattleStore, type BattleSaveStore } from './save-store';
+import { farmRewardGold } from './farming';
 import { ART } from './art';
 import { drawDockArt } from './dock-art';
 import { createProgressUI } from './progress-ui';
@@ -47,10 +48,10 @@ let scene: BattleScene | undefined;
 let game: Phaser.Game | undefined;
 let store: BattleSaveStore | undefined;
 let selectedPadId: string | undefined;
-let selectedPanel: 'tower' | 'settlement' | 'mara' = 'tower';
+let selectedPanel: 'tower' | 'settlement' | 'mara' | 'wisp' = 'tower';
 let catalogPanel: 'tower' | 'settlement' = 'tower';
 let contextOpen = false;
-let placementType: 1 | 2 | undefined;
+let placementType: TowerId | undefined;
 let toastUntil = 0;
 let padListKey = '';
 let mobileHintOpen = false;
@@ -60,7 +61,7 @@ let booting = false;
 let lifecycle = Promise.resolve();
 let retryTimer: number | undefined;
 const progressUI = createProgressUI(action => {
-  if (action === 'archer' || action === 'frost') startPlacement(action === 'archer' ? 1 : 2);
+  if (action === 'archer' || action === 'frost' || action === 'cannon' || action === 'sniper') startPlacement(({ archer: 1, frost: 2, cannon: 3, sniper: 4 } as const)[action]);
   else if (action === 'workshop') { catalogPanel = 'settlement'; openContext('settlement'); }
   else if (action === 'upgrade' && session) {
     const towers = session.battle.towers;
@@ -85,6 +86,7 @@ function syncUI(): void {
   const view = scene;
   const unavailable = !ready || !live || live.busy || Boolean(live.error) || live.suspended;
   build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = unavailable;
+  element<HTMLButtonElement>('build-cannon').disabled = element<HTMLButtonElement>('build-sniper').disabled = unavailable;
   buildFrost.disabled = buildWorkshop.disabled = researchFrost.disabled = unavailable;
   if (!ready || !live || !view) return;
   view.paused = live.paused || document.hidden || Boolean(live.error) || live.suspended || live.awaitingResume;
@@ -98,6 +100,12 @@ function syncUI(): void {
   const sim = live.battle;
   element('tower-panel').hidden = selectedPanel !== 'tower';
   element('settlement-panel').hidden = selectedPanel !== 'settlement';
+  element('wisp-panel').hidden = selectedPanel !== 'wisp';
+  element('wisp-status').textContent = sim.wispUnlocked ? 'Aktiv · +10 % Kampf-Gold. Auftrag: die Werkstatt versorgen.' : `Wisp kommt kostenlos nach Frostfassung und gemeisterter Welle 5. ${sim.settlement.frostResearched ? 'Frostfassung ✓' : 'Frostfassung fehlt'} · ${sim.highestCleared >= 5 ? 'Welle 5 ✓' : 'Welle 5 noch offen'}.`;
+  element('pick-wisp').classList.toggle('locked', !sim.wispUnlocked);
+  element('wisp-brief').textContent = sim.wispUnlocked ? '+10 % Gold' : 'Frost & Welle 5';
+  element('pick-wisp').setAttribute('aria-label', sim.wispUnlocked ? 'Wisp · +10 Prozent Kampf-Gold' : 'Wisp · Frostfassung und Welle 5 nötig');
+  element('catalog-next').hidden = catalogPanel !== 'tower';
   element('mara-panel').hidden = selectedPanel !== 'mara';
   element('context-panel').hidden = !contextOpen || live.awaitingResume || Boolean(live.error);
   element('tower-catalog').hidden = catalogPanel !== 'tower';
@@ -107,17 +115,27 @@ function syncUI(): void {
     element(`${kind}-tab`).tabIndex = catalogPanel === kind ? 0 : -1;
   }
   element('placement-help').hidden = !placementType || live.awaitingResume;
-  element('placement-text').textContent = `${placementType === 2 ? 'Frostkristall' : 'Waldwächter'} · hellen Bauplatz wählen`;
+  element('placement-text').textContent = `${towerDefinition(placementType ?? 1).name} · hellen Bauplatz wählen`;
   element('pick-archer').setAttribute('aria-pressed', String(placementType === 1));
   element('pick-frost').setAttribute('aria-pressed', String(placementType === 2));
   element('pick-frost').classList.toggle('locked', !sim.settlement.frostResearched);
   element('frost-lock').textContent = sim.settlement.frostResearched ? 'Verlangsamung' : 'Frostfassung nötig';
   element('frost-price').textContent = sim.settlement.frostResearched ? '110' : 'Forschung';
-  const freePads = sim.layout.towerPads.filter(pad => pad.availability === 'initial' && !sim.towers.some(tower => tower.padId === pad.id));
+  for (const [name, kind, role, condition] of [['cannon', 3, 'Flächenschaden', 'Frost & Welle 5'], ['sniper', 4, 'Ignoriert Rüstung', 'Welle 10 meistern']] as const) {
+    const unlocked = sim.isTowerUnlocked(kind);
+    element(`pick-${name}`).classList.toggle('locked', !unlocked);
+    element(`pick-${name}`).setAttribute('aria-pressed', String(placementType === kind));
+    element(`${name}-lock`).textContent = unlocked ? role : condition;
+    element(`${name}-price`).textContent = unlocked ? String(towerDefinition(kind).cost) : kind === 3 ? sim.highestCleared < 5 ? 'Welle 5' : 'Forschung' : 'Welle 10';
+  }
+  const freePads = sim.layout.towerPads.filter(pad => sim.isPadUnlocked(pad.id) && !sim.towers.some(tower => tower.padId === pad.id));
   const padKey = freePads.map(pad => pad.id).join(',');
   if (padKey !== padListKey) {
     padListKey = padKey;
-    const names: Record<string, string> = { 'tower-02': 'Nordwest', 'tower-03': 'Nordost', 'tower-04': 'Südkurve' };
+    const names: Record<string, string> = { 'tower-02': 'Nordwest', 'tower-03': 'Nordost', 'tower-04': 'Südkurve', 'tower-05': 'Nordweg', 'tower-06': 'Engpass', 'tower-07': 'Südweg', 'tower-08': 'Kernwache' };
+    const current = padChoice.value;
+    padChoice.replaceChildren(new Option('Bauplatz wählen …', ''), ...sim.layout.towerPads.filter(pad => sim.isPadUnlocked(pad.id)).map(pad => new Option(names[pad.id] ?? 'Startturm', pad.id)));
+    padChoice.value = current;
     element('placement-pads').replaceChildren(...freePads.map(pad => {
       const button = document.createElement('button'); button.type = 'button'; button.dataset.pad = pad.id;
       button.textContent = names[pad.id] ?? pad.id; return button;
@@ -146,7 +164,7 @@ function syncUI(): void {
     : `Beim ${targetName} · bereit für die nächste Welle.`;
   element('camera-zoom').setAttribute('aria-pressed', String(view.mapZoom > 1));
   element('camera-zoom').setAttribute('aria-label', view.mapZoom > 1 ? 'Karte weiter ansehen' : 'Karte näher ansehen');
-  element('safe-rate').textContent = `${rateFormat.format(certificate ? certificate.rewardGold * 60000 / certificate.durationMs : 0)} G/min sicher`;
+  element('safe-rate').textContent = `${rateFormat.format(certificate ? farmRewardGold(certificate) * 60000 / certificate.durationMs : 0)} G/min sicher`;
   element('safe-rate').title = certificate ? `Welle ${certificate.wave}: zwei konservative, schadensfreie Wiederholungen inklusive Wellenpausen. Grundlage für 60 % Offline-Ertrag.`
     : 'Noch kein gültiger Farmnachweis. Eine erste Welle muss live geschafft und zweimal konservativ geprüft werden.';
   element('menu-farm-rate').textContent = `${element('safe-rate').textContent}. ${element('safe-rate').title}`;
@@ -172,26 +190,31 @@ function syncUI(): void {
       ? `${live.paused ? 'Pause aktiv · ' : ''}${Math.floor(reward.elapsedMs / 1000)} s abwesend · ${rateFormat.format(reward.creditedMs / 60000)} min angerechnet · +${preciseCurrency.format(reward.amountUnits / 1000)} Gold`
       : live.paused ? 'Die gespeicherte Pause ist aktiv. Während der Pause entsteht kein Offline-Gold.' : 'Deine Verteidigung ist wieder bereit. Es ist keine Belohnung offen.';
     const basis = live.offline.window?.certificate;
-    element('return-basis').textContent = `Sichere Basis beim Verlassen: ${rateFormat.format(basis ? basis.rewardGold * 60000 / basis.durationMs : 0)} G/min · 60 % Ertrag · höchstens 2 Stunden. Der Kampf bleibt während der Rückkehr angehalten.`;
+    element('return-basis').textContent = `Sichere Basis beim Verlassen: ${rateFormat.format(basis ? farmRewardGold(basis) * 60000 / basis.durationMs : 0)} G/min · 60 % Ertrag · höchstens 2 Stunden. Der Kampf bleibt während der Rückkehr angehalten.`;
     claim.textContent = reward && reward.amountUnits > 0 ? 'Belohnung einsammeln und fortsetzen' : live.paused ? 'Zur pausierten Verteidigung' : 'Verteidigung fortsetzen';
     claim.disabled = unavailable || document.hidden;
   }
   const tower = sim.towers.find(value => value.padId === selectedPadId);
   const pad = sim.layout.towerPads.find(value => value.id === selectedPadId);
   padChoice.value = selectedPadId ?? '';
-  element('selection-title').textContent = selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
+  element('selection-title').textContent = selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
     : tower ? `${tower.def.name} · Level ${tower.level}` : pad ? 'Freier Bauplatz' : 'Bauplatz wählen';
   element('tower-name').textContent = tower?.def.name ?? 'Turm wählen';
-  element('tower-role').textContent = tower?.def.id === 2 ? 'Frosttreffer · 45 % langsamer für 2 s' : 'Zuverlässige Pfeile · Allrounder';
+  element('tower-role').textContent = tower?.def.id === 4 ? 'Bevorzugt Rüstung · ignoriert 100 % davon' : tower?.def.id === 3 ? 'Flächentreffer · 52 Reichweite um das Ziel' : tower?.def.id === 2 ? 'Frosttreffer · 45 % langsamer für 2 s' : 'Zuverlässige Pfeile · Allrounder';
   element('selection-description').textContent = selectedPanel !== 'tower' ? '' : tower
     ? tower.protected ? 'Dein erster Turm sichert die Grundverteidigung. Du kannst ihn verbessern.' : `${tower.def.name} verteidigt den Weg. Verbessere ihn oder investiere das Gold an anderer Stelle.`
-    : pad?.availability === 'initial' ? 'Hier kannst du einen weiteren Waldwächter errichten.'
-    : pad ? 'Dieser Platz ist im aktuellen Startbereich noch nicht verfügbar.' : 'Wähle einen hell markierten Platz auf der Karte.';
+    : (pad && sim.isPadUnlocked(pad.id)) ? 'Wähle einen freigeschalteten Turm für diesen Platz.'
+    : pad ? `Dieser Platz öffnet nach gemeisterter Welle ${pad.availability === 'wave-5' ? 5 : 10}.` : 'Wähle einen hell markierten Platz auf der Karte.';
   build.hidden = Boolean(tower); upgrade.hidden = !tower; sell.hidden = !tower; assignMara.hidden = !tower;
   buildFrost.hidden = Boolean(tower) || !sim.settlement.frostResearched;
   const blocked = unavailable || view.paused || sim.phase === 'defeat';
   build.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId);
   buildFrost.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId, 2);
+  for (const [name, kind] of [['cannon', 3], ['sniper', 4]] as const) {
+    const button = element<HTMLButtonElement>(`build-${name}`);
+    button.hidden = Boolean(tower) || !sim.isTowerUnlocked(kind);
+    button.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId, kind);
+  }
   const canUpgrade = Boolean(tower && tower.level < sim.maxLevel);
   upgrade.disabled = blocked || !tower || !canUpgrade || sim.gold < upgradeCost(tower);
   upgrade.textContent = tower && canUpgrade ? `Aufwerten · ${currency.format(upgradeCost(tower))} Gold` : 'Levelgrenze erreicht';
@@ -205,7 +228,7 @@ function syncUI(): void {
   })() : '';
   element('action-hint').textContent = blocked ? live.error ? 'Der letzte bestätigte Spielstand bleibt erhalten.' : live.awaitingResume ? 'Setze die Verteidigung über den Rückkehrbeleg fort.' : 'Setze den Kampf fort, um zu bauen oder aufzuwerten.'
     : tower ? tower.level >= sim.maxLevel ? sim.settlement.frostResearched ? 'Level 6 erreicht.' : 'Frostfassung erschließt Level 4–6.' : sim.gold < upgradeCost(tower) ? `Noch ${currency.format(upgradeCost(tower) - sim.gold)} Gold bis zum nächsten Level.` : 'Mehr Schaden verbessert die Verteidigung sofort.'
-    : pad?.availability === 'initial' && sim.gold < 75 ? `Noch ${currency.format(75 - sim.gold)} Gold bis zum Waldwächter.` : '';
+    : (pad && sim.isPadUnlocked(pad.id)) && sim.gold < 75 ? `Noch ${currency.format(75 - sim.gold)} Gold bis zum Waldwächter.` : '';
   const settlement = sim.settlement;
   const workshopIcon = element<HTMLImageElement>('workshop-icon');
   const workshopSource = settlement.workshopBuilt ? ART.workshop : ART.workshopDamaged;
@@ -228,11 +251,13 @@ function syncUI(): void {
   element('layout-status').textContent = view.paused ? 'Kampf angehalten.'
     : sim.mode === 'farm' ? `Sicheres Farmen · Welle ${sim.farmWave}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang.`
     : `Automatischer Vorstoß · höchste geschaffte Welle ${sim.highestCleared}.`;
-  const message = sim.drainEvents().filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research'].includes(event.type)).at(-1);
+  const message = sim.drainEvents().filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads'].includes(event.type)).at(-1);
   if (message) toastUntil = performance.now() + 4500;
   if (message) element('combat-message').textContent = message.type === 'clear' ? `Welle ${message.wave} geschafft · +${currency.format(message.amount ?? 0)} Gold Abschlussbonus.`
     : message.type === 'kill' ? `Gegner besiegt · +${currency.format(message.amount ?? 0)} Gold.`
     : message.type === 'wave' ? `${mode} · Welle ${message.wave} hat begonnen. Deine Türme greifen automatisch an.`
+    : message.type === 'wisp' ? 'Wisp ist da! +10 % Kampf-Gold und die Steinschleuder sind jetzt verfügbar.'
+    : message.type === 'pads' ? `Welle ${message.wave} gemeistert: zwei weitere Bauplätze${message.wave === 10 ? ' und der Scharfschütze' : ''} sind verfügbar.`
     : message.type === 'build' ? `${message.tower?.def.name} gebaut und einsatzbereit.`
     : message.type === 'upgrade' ? `${message.tower?.def.name} verbessert. Der nächste Schuss nutzt den höheren Schaden.`
     : message.type === 'workshop' ? 'Die Werkstatt arbeitet wieder! Frostfassung ist jetzt erforschbar.'
@@ -266,13 +291,14 @@ function openContext(kind: typeof selectedPanel): void {
   if (kind !== 'tower') { selectedPadId = undefined; scene?.setSelected(); }
   scene?.focusObject(kind); syncUI();
 }
-function startPlacement(kind: 1 | 2): void {
+function startPlacement(kind: TowerId): void {
   if (!session || !ready) return;
   if (kind === 2 && !session.battle.settlement.frostResearched) { catalogPanel = 'settlement'; openContext('settlement'); return; }
+  if (!session.battle.isTowerUnlocked(kind)) { if (kind === 3) openContext('wisp'); else { element('combat-message').textContent = 'Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.'; toastUntil = performance.now() + 6000; syncUI(); } return; }
   if (placementType === kind) { placementType = undefined; closeContext(); return; }
   catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
   const preferred = kind === 1 ? 'tower-03' : 'tower-02';
-  const pads = session.battle.layout.towerPads.filter(pad => pad.availability === 'initial' && !session!.battle.towers.some(tower => tower.padId === pad.id));
+  const pads = session.battle.layout.towerPads.filter(pad => session!.battle.isPadUnlocked(pad.id) && !session!.battle.towers.some(tower => tower.padId === pad.id));
   if (!pads.length) { placementType = undefined; selectedPadId = 'tower-03'; scene?.setSelected(selectedPadId); openContext('tower'); }
   else scene?.focusPad(pads.find(pad => pad.id === preferred)?.id ?? pads[0].id);
   syncUI();
@@ -311,6 +337,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
       canRender: () => !live.busy,
       changed: syncUI,
       select(padId) { void selectPad(padId); },
+      selectWisp() { openContext('wisp'); },
       selectMara() { openContext('mara'); },
       selectWorkshop() { catalogPanel = 'settlement'; openContext('settlement'); },
       ready() { ready = true; drawDockArt(view); view.setSelected(selectedPadId); syncUI(); },
@@ -357,6 +384,12 @@ for (const kind of ['tower', 'settlement'] as const) {
   }, { signal: lifetime.signal });
 }
 element('choose-frost').addEventListener('click', () => startPlacement(2), { signal: lifetime.signal });
+for (const [name, kind] of [['cannon', 3], ['sniper', 4]] as const) {
+  element(`pick-${name}`).addEventListener('click', () => startPlacement(kind), { signal: lifetime.signal });
+  element(`build-${name}`).addEventListener('click', () => { void perform(battle => selectedPadId && battle.build(selectedPadId, kind)); }, { signal: lifetime.signal });
+}
+element('pick-wisp').addEventListener('click', () => openContext('wisp'), { signal: lifetime.signal });
+element('catalog-next').addEventListener('click', () => { const list = element('tower-catalog'); list.scrollTo({ left: list.scrollLeft >= list.scrollWidth - list.clientWidth - 2 ? 0 : list.scrollLeft + list.clientWidth, behavior: 'smooth' }); }, { signal: lifetime.signal });
 element('pick-archer').addEventListener('click', () => startPlacement(1), { signal: lifetime.signal });
 element('pick-frost').addEventListener('click', () => startPlacement(2), { signal: lifetime.signal });
 element('pick-workshop').addEventListener('click', () => openContext('settlement'), { signal: lifetime.signal });

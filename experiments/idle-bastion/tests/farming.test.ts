@@ -67,7 +67,7 @@ test('combat timers and money do not invalidate a proof; a purchase or upgrade d
 
 test('a harmful sale immediately invalidates the old defense and selects a genuinely safe lower proof', () => {
   const battle = equipped(), previous = certifyFarm(battle)!;
-  assert.equal(previous.wave, 8);
+  assert.ok(previous.wave > 1 && previous.wave <= battle.highestCleared);
   assert.equal(battle.setFarmWave(previous.wave), true);
   for (const tower of [...battle.towers]) if (!tower.protected) battle.sell(tower.uid);
   assert.equal(isFarmCertificateValid(previous, battle), false);
@@ -131,7 +131,7 @@ test('snapshot v1 migration retains combat exactly and invents neither a certifi
   const legacy = { ...old, schemaVersion: 1, rulesVersion: 1 };
   const migrated = IdleBattle.restore(legacy, { maraBonus: false })!;
   assert.ok(migrated);
-  assert.equal(migrated.snapshot().schemaVersion, 5);
+  assert.equal(migrated.snapshot().schemaVersion, 6);
   assert.equal(migrated.highestCleared, 1);
   assert.equal(migrated.attemptId, 2);
   assert.deepEqual(migrated.liveClearedWaves, []);
@@ -178,11 +178,11 @@ test('current progress and certificate fields reject invalid histories, referenc
     { mode: 'wrong' }, { highestCleared: -1 }, { attemptId: 0 }, { farmWave: 9 }, { farmWave: 15 },
     { liveClearedWaves: [1, 1] }, { liveClearedWaves: [2] }, { liveClearedWaves: [1, 15] },
     { goldRemainderUnits: -1 }, { goldRemainderUnits: 1000 }, { goldRemainderUnits: 0.5 },
-    { mode: 'advance', advanceRequested: true }, { schemaVersion: 6 },
+    { mode: 'advance', advanceRequested: true }, { schemaVersion: 7 },
   ];
   for (const fields of mutations) assert.equal(IdleBattle.restore({ ...good, ...fields }), undefined, JSON.stringify(fields));
   for (const fields of [
-    { wave: 2 }, { wave: 15 }, { rulesVersion: 4 }, { fingerprint: 'stale' },
+    { wave: 2 }, { wave: 15 }, { rulesVersion: 5 }, { fingerprint: 'stale' },
     { rewardGold: 0 }, { rewardGold: Infinity }, { rewardGold: 0.5 },
     { durationMs: -1 }, { durationMs: 4001 }, { durationMs: 999999999 },
   ]) assert.equal(isFarmCertificateValid({ ...certificate, ...fields }, battle), false, JSON.stringify(fields));

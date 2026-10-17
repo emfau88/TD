@@ -1,6 +1,7 @@
 /** Conservative, bounded, Phaser-free proofs. A probe never mutates the live
  * model, issues its rewards or consumes its renderer/tutorial event stream.
  */
+import { createProgress } from './progress';
 import { getForestBlockedCells } from './forest-world';
 import { BASE, BATTLE_RULES_VERSION, IdleBattle, isNormalFarmWave, stats, towerDefinition } from './battle';
 
@@ -10,6 +11,7 @@ export interface FarmCertificate {
   rulesVersion: number;
   /** Sum of ordinary enemy/clear gold from two complete repetitions. */
   rewardGold: number;
+  rewardRemainderUnits?: number;
   /** Sum of both repetitions including a 2s pause each; exact integer ms. */
   durationMs: number;
 }
@@ -17,7 +19,9 @@ export interface FarmCertificate {
 export const MAX_FARM_CANDIDATES = 3;
 export const MAX_FARM_PROBE_STEPS = 8000;
 const STEP_MS = BASE.stepSeconds * 1000;
-const MAX_PROBE_REWARD = 2 * (BASE.waves.maxCount * Math.max(...Object.values(BASE.enemies).map(def => def.gold)) + BASE.waves.maxReward);
+export const farmRewardGold = (certificate: FarmCertificate): number => certificate.rewardGold + (certificate.rewardRemainderUnits ?? 0) / 1000;
+export const farmRewardUnits = (certificate: FarmCertificate): bigint => BigInt(certificate.rewardGold) * 1000n + BigInt(certificate.rewardRemainderUnits ?? 0);
+const MAX_PROBE_REWARD = 2.2 * (BASE.waves.maxCount * Math.max(...Object.values(BASE.enemies).map(def => def.gold)) + BASE.waves.maxReward);
 
 /** Ignores transient HP, cooldowns, currency, IDs and kill statistics. Every
  * economically relevant placement/level/rule/layout change invalidates a proof.
@@ -25,7 +29,7 @@ const MAX_PROBE_REWARD = 2 * (BASE.waves.maxCount * Math.max(...Object.values(BA
 export function defenseFingerprint(battle: IdleBattle): string {
   return JSON.stringify({
     rulesVersion: BATTLE_RULES_VERSION, layoutVersion: 1, layout: battle.layout,
-    blocked: getForestBlockedCells(battle.layout), maraTarget: battle.mara.targetTowerUid, settlement: battle.settlement,
+    blocked: getForestBlockedCells(battle.layout), maraTarget: battle.mara.targetTowerUid, settlement: battle.settlement, wisp: battle.wispUnlocked,
     towers: battle.towers.map(tower => ({ padId: tower.padId, definition: tower.def.id, level: tower.level, protected: tower.protected }))
       .sort((left, right) => left.padId.localeCompare(right.padId)),
   });
@@ -47,6 +51,7 @@ function prove(battle: IdleBattle, wave: number, fingerprint: string): FarmCerti
   snapshot.spawnTimer = 0; snapshot.intermissionRemaining = BASE.intermissionSeconds;
   snapshot.pendingTime = 0; snapshot.ticks = 0; snapshot.elapsed = 0;
   if (snapshot.settlement.workshopBuilt) snapshot.settlement.builtAt = 0;
+  snapshot.progress = createProgress(snapshot.attemptId, 0); snapshot.rewardRemainderUnits = 0;
   snapshot.gold = 0; snapshot.goldRemainderUnits = 0; snapshot.earned = 0; snapshot.kills = 0;
   snapshot.towers = snapshot.towers.map(tower => ({ ...tower, cooldown: stats({ def: towerDefinition(tower.kind), level: tower.level }).cooldown, kills: 0 }));
   const probe = IdleBattle.restore(snapshot, { maraBonus: false });
@@ -62,7 +67,7 @@ function prove(battle: IdleBattle, wave: number, fingerprint: string): FarmCerti
       clears++;
       if (clears === 2) return {
         wave, fingerprint, rulesVersion: BATTLE_RULES_VERSION,
-        rewardGold: probe.earned, durationMs: step * STEP_MS,
+        rewardGold: probe.earned, rewardRemainderUnits: probe.rewardRemainderUnits, durationMs: step * STEP_MS,
       };
       // Both complete cycles begin with the pessimistic normal cooldown.
       for (const tower of probe.towers) tower.cooldown = stats(tower).cooldown;
@@ -78,7 +83,7 @@ export function certifyFarm(battle: IdleBattle, previous?: FarmCertificate): Far
   for (const wave of candidateWaves(battle, best)) {
     if (best?.wave === wave) continue;
     const proof = prove(battle, wave, fingerprint);
-    if (proof && (!best || proof.rewardGold * best.durationMs > best.rewardGold * proof.durationMs)) best = proof;
+    if (proof && (!best || farmRewardGold(proof) * best.durationMs > farmRewardGold(best) * proof.durationMs)) best = proof;
   }
   return best;
 }
@@ -91,6 +96,7 @@ export function isFarmCertificateValid(certificate: FarmCertificate | undefined,
     || certificate.fingerprint !== defenseFingerprint(battle)
     || !isNormalFarmWave(certificate.wave) || !battle.liveClearedWaves.includes(certificate.wave)
     || !Number.isSafeInteger(certificate.rewardGold) || certificate.rewardGold <= 0 || certificate.rewardGold > MAX_PROBE_REWARD
+    || !Number.isSafeInteger(certificate.rewardRemainderUnits ?? 0) || (certificate.rewardRemainderUnits ?? 0) < 0 || (certificate.rewardRemainderUnits ?? 0) > 999
     || !Number.isSafeInteger(certificate.durationMs) || certificate.durationMs < 2 * BASE.intermissionSeconds * 1000
     || certificate.durationMs > MAX_FARM_PROBE_STEPS * STEP_MS || certificate.durationMs % STEP_MS !== 0) return false;
   return true;

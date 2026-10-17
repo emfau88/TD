@@ -8,6 +8,16 @@ import { TREE_FRAMES } from '../../../reference/src/terrain';
 export { MARA_FOOT };
 
 export const ART = Object.freeze({
+  wisp: new URL('../../../public/assets/Wisp - Animations.png', import.meta.url).href,
+  scorpion: new URL('../../../public/assets/Scorpion.png', import.meta.url).href,
+  cannonTower: new URL('../../../public/assets/Tower 03.png', import.meta.url).href,
+  cannonWeapon: new URL('../../../public/assets/Tower 03 - Level 01 - Weapon.png', import.meta.url).href,
+  cannonWeapon2: new URL('../../../public/assets/Tower 03 - Level 02 - Weapon.png', import.meta.url).href,
+  cannonProjectile: new URL('../../../public/assets/Tower 03 - Level 01 - Projectile.png', import.meta.url).href,
+  sniperTower: new URL('../../../public/assets/Tower 04.png', import.meta.url).href,
+  sniperWeapon: new URL('../../../public/assets/Tower 04 - Level 01 - Weapon.png', import.meta.url).href,
+  sniperWeapon2: new URL('../../../public/assets/Tower 04 - Level 02 - Weapon.png', import.meta.url).href,
+  sniperProjectile: new URL('../../../public/assets/Tower 04 - Level 01 - Projectile.png', import.meta.url).href,
   grass: new URL('../../../public/assets/Grass Tileset.png', import.meta.url).href,
   water: new URL('../../../public/assets/Animated water tiles.png', import.meta.url).href,
   tower: new URL('../../../public/assets/Tower 01.png', import.meta.url).href,
@@ -27,6 +37,16 @@ export const ART = Object.freeze({
   workshopDamaged: new URL('../assets/workshop/workshop-damaged.png', import.meta.url).href,
 });
 export const KEYS = Object.freeze({
+  wisp: 'idle-wisp',
+  scorpion: 'idle-scorpion',
+  cannonTower: 'idle-cannonTower',
+  cannonWeapon: 'idle-cannonWeapon',
+  cannonWeapon2: 'idle-cannonWeapon2',
+  cannonProjectile: 'idle-cannonProjectile',
+  sniperTower: 'idle-sniperTower',
+  sniperWeapon: 'idle-sniperWeapon',
+  sniperWeapon2: 'idle-sniperWeapon2',
+  sniperProjectile: 'idle-sniperProjectile',
   grass: 'idle-grass', water: 'idle-water-source', tower: 'idle-tower', weapon: 'idle-weapon',
   projectile: 'idle-projectile', leafbug: 'idle-leafbug', firebug: 'idle-firebug',
   core: 'idle-core', coreWeapon: 'idle-core-weapon', maraSource: 'idle-mara-source', mara: 'idle-mara',
@@ -41,7 +61,8 @@ export type EnemyDirection = 'up' | 'down' | 'side';
 export type MaraDirection = 'up' | 'down' | 'left' | 'right';
 
 /** Directional Move tags point into the logical manifest frame map. */
-export function enemyFrame(kind: 'Leafbug' | 'Firebug', direction: EnemyDirection, elapsed: number): number {
+export function enemyFrame(kind: 'Leafbug' | 'Firebug' | 'Scorpion', direction: EnemyDirection, elapsed: number): number {
+  if (kind === 'Scorpion') return (direction === 'down' ? 24 : direction === 'up' ? 32 : 40) + Math.floor(Math.max(0, elapsed) * 10) % 8;
   const logicalStart = direction === 'down' ? 18 : direction === 'up' ? 26 : 34;
   const frames = kind === 'Leafbug' ? LEAF_FRAMES : FIRE_FRAMES;
   return frames[logicalStart + Math.floor(Math.max(0, elapsed) * 10) % 8];
@@ -69,6 +90,9 @@ export function preloadArt(scene: Phaser.Scene): void {
   scene.load.image(KEYS.workshop, ART.workshop);
   scene.load.image(KEYS.workshopDamaged, ART.workshopDamaged);
   for (const [key, url, width, height] of [
+    [KEYS.wisp, ART.wisp, 64, 64], [KEYS.scorpion, ART.scorpion, 64, 64],
+    [KEYS.cannonTower, ART.cannonTower, 64, 128], [KEYS.cannonWeapon, ART.cannonWeapon, 96, 96], [KEYS.cannonWeapon2, ART.cannonWeapon2, 96, 96], [KEYS.cannonProjectile, ART.cannonProjectile, 10, 10],
+    [KEYS.sniperTower, ART.sniperTower, 64, 128], [KEYS.sniperWeapon, ART.sniperWeapon, 128, 128], [KEYS.sniperWeapon2, ART.sniperWeapon2, 128, 128], [KEYS.sniperProjectile, ART.sniperProjectile, 8, 8],
     [KEYS.tower, ART.tower, 64, 128], [KEYS.weapon, ART.weapon, 96, 96],
     [KEYS.projectile, ART.projectile, 8, 40],
     [KEYS.leafbug, ART.leafbug, 64, 64], [KEYS.firebug, ART.firebug, 128, 64],
@@ -101,3 +125,10 @@ export function prepareArt(scene: Phaser.Scene): void {
   }
 }
 
+
+export function towerArt(kind: number) {
+  return kind === 4 ? { base: KEYS.sniperTower, weapons: [KEYS.sniperWeapon, KEYS.sniperWeapon2], projectile: KEYS.sniperProjectile, frames: 17, shotFrames: 6 }
+    : kind === 3 ? { base: KEYS.cannonTower, weapons: [KEYS.cannonWeapon, KEYS.cannonWeapon2], projectile: KEYS.cannonProjectile, frames: 8, shotFrames: 6 }
+    : kind === 2 ? { base: KEYS.frostTower, weapons: [KEYS.frostWeapon, KEYS.frostWeapon2], projectile: KEYS.frostProjectile, frames: 6, shotFrames: 3 }
+    : { base: KEYS.tower, weapons: [KEYS.weapon, KEYS.weapon2], projectile: KEYS.projectile, frames: 6, shotFrames: 3 };
+}

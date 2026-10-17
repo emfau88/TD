@@ -170,7 +170,7 @@ test('old rule snapshots migrate once, preserve money and combat payloads and re
   const legacy = { ...core, schemaVersion: 2, rulesVersion: 1 };
   const before = structuredClone(legacy), migrated = IdleBattle.restore(legacy)!;
   assert.ok(migrated);
-  assert.equal(migrated.snapshot().schemaVersion, 5); assert.equal(BATTLE_RULES_VERSION, 3);
+  assert.equal(migrated.snapshot().schemaVersion, 6); assert.equal(BATTLE_RULES_VERSION, 4);
   assert.deepEqual(migrated.liveClearedWaves, []); assert.equal(migrated.farmWave, 1);
   assert.equal(certifyFarm(migrated), undefined);
   assert.deepEqual(migrated.snapshot().towers, modern.towers);

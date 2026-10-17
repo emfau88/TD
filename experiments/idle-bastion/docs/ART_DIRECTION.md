@@ -125,3 +125,18 @@ Bei jeder betroffenen Ansicht gezielt prüfen:
 Als Nachweise echte Screenshots aus der laufenden Anwendung verwenden: Einstieg, Werkstatt, späterer Ausbau und geöffnete Lichtung. Konzeptbilder, erfolgreiche Builds und bestandene Tests ersetzen diese Sichtprüfung nicht. Technische Prüfung, eigene visuelle Prüfung und Nutzerabnahme werden getrennt protokolliert.
 
 Mobile Ergänzung vom 18.10.2026: kompaktes HUD (56 px) und Dock (96 px), zweizeiliger Zielstreifen, Hinweise zunächst als aufklappbarer Tipp. Geräteabstände im normalen Browserfenster nicht zusätzlich reservieren. Vollbild erhält nur einen begrenzten Schutzabstand. Mobile Chronik über Gold-/Wellenanzeige; Vollbild direkt oben rechts. Desktop-Komposition unverändert.
+
+### B08: vorhandene Originalgrafiken
+
+Keine neuen generierten Bilder. Laufzeit und Dock verwenden dieselben Originale aus `public/assets/`, bereits im klassischen Spiel eingebunden; Quelle und Raster sind im dortigen `manifest.json` erhalten. Keine Originaldatei wird verändert.
+
+| Grafik | Raster / tatsächlich verwendete Frames | Maßstab / Anker |
+| --- | --- | --- |
+| Wisp - Animations | 64×64; 9 Frames je Richtung; Bewegung Reihen 0–2, Arbeit Reihe 3 | 0,9; Fuß bei (32,51), seitlich spiegelbar |
+| Tower 03 / 04 | 64×128; Stufen 0/1 | 0,63; wie vorhandener Waldwächter |
+| Tower 03 Waffen I/II | 96×96; 8 Frames | 0,63; vorhandene Drehachse |
+| Tower 04 Waffen I/II | 128×128; 17 Frames | 0,63; vorhandene Drehachse |
+| Projektile 03 / 04 I | 10×10 / 8×8; je 6 Frames | 0,85 |
+| Scorpion | 64×64; Lauf-Frames 24–31 abwärts, 32–39 aufwärts, 40–47 seitlich | 0,83; wie vorhandene Gegner |
+
+Die vier Premium-UI-Materialien bleiben erhalten. Vier Turmkarten und zwei Begleiter teilen das Dock; mobil scrollen ausschließlich die Turmkarten horizontal. HUD 56 px und Dock 96 px bleiben bestehen. Keine weitere Asset-Produktion für spätere Gebäude.

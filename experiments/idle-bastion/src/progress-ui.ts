@@ -1,10 +1,11 @@
+import { farmRewardGold } from './farming';
 import { BASE, SETTLEMENT, FROST, upgradeCost, type IdleBattle } from './battle';
 import type { BattleSession } from './battle-session';
 import { OFFLINE } from './offline';
 import { IncomeWindow, HISTORY_LIMIT, type AttemptMode } from './progress';
 import { tutorialStep } from './hud';
 
-export type GoalAction = 'archer' | 'upgrade' | 'workshop' | 'frost' | 'progress';
+export type GoalAction = 'archer' | 'upgrade' | 'workshop' | 'frost' | 'cannon' | 'sniper' | 'progress';
 const el = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id)! as T;
 const number = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 const gold = (value: number) => number.format(value);
@@ -23,9 +24,13 @@ export function currentGoal(battle: IdleBattle): Goal {
     case 4: return { title: 'Frostfassung erforschen', detail: `${need(SETTLEMENT.researchCost)} · Frostturm & Level 4–6`, cost: SETTLEMENT.researchCost, action: 'workshop', label: 'Forschung ansehen' };
     case 5: return { title: 'Frost und Pfeile kombinieren', detail: `${need(FROST.cost)} · Frostkristall platzieren`, cost: FROST.cost, action: 'frost', label: 'Frostkristall auswählen' };
     case 6: return { title: 'Die Frosttechnik wirkt', detail: 'Ersten Frosttreffer beobachten · Gegner werden langsamer', action: 'progress', label: 'Fortschritt ansehen' };
+    case 7: return { title: 'Wisp für die Werkstatt gewinnen', detail: 'Welle 5 meistern · +10 % Gold & zwei Bauplätze', action: 'upgrade', label: 'Verteidigung verbessern' };
+    case 8: return { title: 'Käfergruppen gemeinsam treffen', detail: `${need(135)} · Steinschleuder neben Frost`, cost: 135, action: 'cannon', label: 'Steinschleuder auswählen' };
+    case 9: return { title: 'Den Weg bis Welle 10 sichern', detail: 'Scharfschütze & zwei weitere Bauplätze freischalten', action: 'upgrade', label: 'Verteidigung verbessern' };
+    case 10: return { title: 'Für Rüstung gewappnet', detail: `${need(170)} · Scharfschütze durchdringt Panzer`, cost: 170, action: 'sniper', label: 'Scharfschütze auswählen' };
     default: return battle.mode === 'farm'
       ? { title: `Bereite Welle ${battle.highestCleared + 1} vor`, detail: 'Türme aufwerten · dann erneut vorstoßen', action: 'upgrade', label: 'Verteidigung ansehen' }
-      : { title: `Nächster Rekord: Welle ${battle.highestCleared + 1}`, detail: 'Einstieg gemeistert · Türme bis Level 6 ausbauen', action: 'upgrade', label: 'Verteidigung ansehen' };
+      : { title: `Nächster Rekord: Welle ${battle.highestCleared + 1}`, detail: 'Vier Turmrollen · bis Level 6 ausbauen', action: 'upgrade', label: 'Verteidigung ansehen' };
   }
 }
 
@@ -49,7 +54,7 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       const b = live.battle, p = b.progress, rate = income.observe(b.elapsed, p.battleGold);
       const stopped = live.paused || live.awaitingResume || live.suspended || Boolean(live.error);
       const certificate = live.certificate;
-      const safe = certificate ? certificate.rewardGold * 60000 / certificate.durationMs : 0;
+      const safe = certificate ? farmRewardGold(certificate) * 60000 / certificate.durationMs : 0;
       const offline = safe * OFFLINE.efficiencyPermille / 1000;
       const rateText = stopped ? `${live.paused ? 'Pause' : 'Angehalten'} · 0 G/min` : rate.perMinute === null ? 'Ertrag wird ermittelt' : `Ø ${gold(rate.perMinute)} G/min`;
       el('live-income').textContent = rateText;
@@ -72,6 +77,8 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       el('journal-goal-title').textContent = goal.title;
       el('journal-goal-copy').textContent = goal.detail;
       el('journal-goal-action').textContent = goal.label;
+      el('journal-companions-count').textContent = `${b.wispUnlocked ? 2 : 1} verfügbar`;
+      el('journal-wisp-order').textContent = b.wispUnlocked ? 'Auftrag: Werkstatt versorgen · +10 % Gegner- und Wellen-Gold. Bereits in Live-Ertrag und Farmbasis enthalten.' : 'Kommt kostenlos nach Frostfassung und gemeisterter Welle 5.';
       const target = b.towers.find(t => t.uid === b.mara.targetTowerUid);
       const assignment = target ? padNames[target.padId] ?? target.def.name : 'Startturm';
       el('mara-brief').textContent = b.mara.path.length ? `Unterwegs · ${assignment}` : `Unterstützt ${assignment}`;

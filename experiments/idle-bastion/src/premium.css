@@ -217,3 +217,32 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
  .journal-goal { padding:12px; }
  .journal-section h3 { font-size:21px; }
 }
+/* B08: four roles fit on desktop; the mobile catalog scrolls within the same dock. */
+.catalog { flex:1 1 auto; width:auto; min-width:0; }
+.catalog-items { overflow-x:auto; scrollbar-width:thin; scrollbar-color:#ad9562 #142126; scroll-snap-type:x proximity; }
+#tower-catalog .build-card { flex:1 0 165px; scroll-snap-align:start; }
+#tower-catalog .build-card canvas { width:46px; height:58px; flex-basis:46px; }
+#tower-catalog .build-card strong { font-size:15px; }
+.companions { display:flex; align-items:end; gap:7px; flex-shrink:0; }
+.companions .companion-card { flex-direction:column; justify-content:center; gap:0; min-width:70px; width:78px; padding:2px; margin:0; text-align:center; }
+.companions .companion-card canvas { width:28px; height:35px; }
+.companions .companion-card span { gap:2px; min-width:0; max-width:100%; }
+.companions .companion-card small { max-width:72px; font-size:9px; line-height:11px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.companion-card.locked canvas { filter:grayscale(.8); opacity:.55; }
+#catalog-next { margin-left:auto; padding:0 10px; font-size:23px; }
+@media (min-width:1350px) { #catalog-next { display:none; } }
+@media (max-width:700px) {
+ #tower-catalog .build-card { flex:0 0 136px; }
+ #tower-catalog .build-card canvas { width:32px; height:40px; flex-basis:32px; }
+ #tower-catalog .build-card strong { font-size:13px; }
+ .catalog-items { scrollbar-width:none; gap:5px; }
+ .companions { gap:4px; }
+ .companions .companion-card { min-width:42px; width:42px; height:54px; padding:1px; }
+ .companions .companion-card canvas { width:26px; height:33px; }
+ .companions .companion-card strong { font-size:12px; }
+ .companions .companion-card small { display:none; }
+ .context-tabs button { padding-inline:7px; }
+ #catalog-next { padding-inline:8px; }
+}
+
+@media (max-width:700px) { .advance-button { position:absolute; } }

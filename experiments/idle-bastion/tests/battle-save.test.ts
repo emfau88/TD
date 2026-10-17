@@ -15,6 +15,9 @@ test('a legally funded Frost run stays saveable through long wave tails and wave
     if (sim.settlement.workshopBuilt && !sim.settlement.frostResearched && sim.gold >= 60) sim.researchFrost();
     if (sim.settlement.frostResearched && sim.canBuild('tower-02', 2)) sim.build('tower-02', 2);
     if (sim.settlement.frostResearched && sim.canBuild('tower-04')) sim.build('tower-04');
+    if (sim.highestCleared >= 5) for (const tower of sim.towers) if (tower.level < 3) sim.upgrade(tower.uid);
+    if (sim.canBuild('tower-06', 3)) sim.build('tower-06', 3);
+    if (sim.canBuild('tower-07', 4)) sim.build('tower-07', 4);
     sim.update(0.1);
     sim.drainEvents();
     assert.ok(IdleBattle.restore(jsonCopy(sim.snapshot())), `Invalid save at ${sim.elapsed}s / wave ${sim.wave}`);
@@ -184,8 +187,8 @@ test('invalid resources, times, references, definitions and newer formats are re
   until(sim, () => sim.shots.length > 0);
   const valid = sim.snapshot();
   const mutations: [string, (value: BattleSnapshot) => void][] = [
-    ['schema', value => { value.schemaVersion = 6 as 5; }],
-    ['rules', value => { value.rulesVersion = 4 as 3; }],
+    ['schema', value => { value.schemaVersion = 7 as 6; }],
+    ['rules', value => { value.rulesVersion = 5 as 4; }],
     ['layout version', value => { value.layoutVersion = 2 as 1; }],
     ['layout identity', value => { value.layoutId = 'unknown' as 'start28'; }],
     ['negative gold', value => { value.gold = -1; }],

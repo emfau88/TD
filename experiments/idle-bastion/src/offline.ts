@@ -2,7 +2,7 @@
  * time never enters this module. A reserved interval is consumed immediately,
  * while gold is credited only by an explicit, atomically saved claim.
  */
-import type { FarmCertificate } from './farming';
+import { farmRewardUnits, type FarmCertificate } from './farming';
 
 export const OFFLINE = Object.freeze({ unitsPerGold: 1000, efficiencyPermille: 600, limitMs: 2 * 60 * 60 * 1000 });
 export interface Fraction { numerator: string; denominator: string }
@@ -33,12 +33,14 @@ function certificate(value: unknown): FarmCertificate | null | undefined {
   if (value === null) return null;
   // Historical departure proofs retain the rule set that earned them. New
   // active proofs are validated separately by farming.ts against current rules.
-  if (!object(value) || !positive(value.wave) || ![1, 2, 3].includes(value.rulesVersion as number) || !positive(value.rewardGold)
+  if (!object(value) || !positive(value.wave) || ![1, 2, 3, 4].includes(value.rulesVersion as number) || !positive(value.rewardGold)
+    || (value.rewardRemainderUnits !== undefined && (value.rulesVersion !== 4 || !natural(value.rewardRemainderUnits) || value.rewardRemainderUnits > 999))
     || !positive(value.durationMs) || typeof value.fingerprint !== 'string' || value.fingerprint.length < 1
     || value.fingerprint.length > 20_000) return undefined;
   return {
     wave: value.wave, fingerprint: value.fingerprint, rulesVersion: value.rulesVersion as number,
     rewardGold: value.rewardGold, durationMs: value.durationMs,
+    ...(value.rewardRemainderUnits === undefined ? {} : { rewardRemainderUnits: value.rewardRemainderUnits as number }),
   };
 }
 function baseline(value: unknown): OfflineBaseline | undefined {
@@ -91,8 +93,8 @@ export function restoreOffline(value: unknown): OfflineState | undefined {
     if (window.paused || !window.certificate) {
       if (reward.amountUnits !== 0 || reward.creditedMs !== 0) return undefined;
     } else {
-      const maximumNumerator = BigInt(window.certificate.rewardGold) * BigInt(window.efficiencyPermille) * BigInt(reward.creditedMs);
-      const denominator = BigInt(window.certificate.durationMs);
+      const maximumNumerator = farmRewardUnits(window.certificate) * BigInt(window.efficiencyPermille) * BigInt(reward.creditedMs);
+      const denominator = BigInt(window.certificate.durationMs) * 1000n;
       if (BigInt(reward.amountUnits) > (maximumNumerator + denominator - 1n) / denominator) return undefined;
     }
     pendingReward = {
@@ -154,9 +156,9 @@ function gcd(a: bigint, b: bigint): bigint {
 }
 function addProduction(remainder: Fraction, basis: FarmCertificate, durationMs: number, efficiencyPermille: number): { units: number; remainder: Fraction } {
   const oldDenominator = BigInt(remainder.denominator);
-  const denominator = oldDenominator * BigInt(basis.durationMs);
-  const numerator = BigInt(remainder.numerator) * BigInt(basis.durationMs)
-    + BigInt(basis.rewardGold) * BigInt(efficiencyPermille) * BigInt(durationMs) * oldDenominator;
+  const denominator = oldDenominator * BigInt(basis.durationMs) * 1000n;
+  const numerator = BigInt(remainder.numerator) * BigInt(basis.durationMs) * 1000n
+    + farmRewardUnits(basis) * BigInt(efficiencyPermille) * BigInt(durationMs) * oldDenominator;
   const units = numerator / denominator;
   if (units > BigInt(Number.MAX_SAFE_INTEGER)) throw new RangeError('Offline reward exceeds the safe currency range.');
   const rest = numerator % denominator;

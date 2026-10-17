@@ -1,7 +1,8 @@
+import { wispPose } from './wisp';
 import Phaser from 'phaser';
 import { BASE, IdleBattle, stats, type Enemy, type Tower } from './battle';
 import { cellCenter, type TowerPad } from './layout';
-import { KEYS, MARA_FOOT, SCALE, enemyFrame, loopFrame, maraFrame, preloadArt, prepareArt } from './art';
+import { KEYS, MARA_FOOT, SCALE, enemyFrame, loopFrame, maraFrame, towerArt, preloadArt, prepareArt } from './art';
 import { createForest, type ForestView } from './forest';
 
 export interface BattleSceneHooks {
@@ -10,6 +11,7 @@ export interface BattleSceneHooks {
   readonly ready: () => void;
   readonly advance?: (seconds: number) => void;
   readonly canRender?: () => boolean;
+  readonly selectWisp?: () => void;
   readonly selectMara?: () => void;
   readonly selectWorkshop?: () => void;
 }
@@ -27,6 +29,9 @@ export class BattleScene extends Phaser.Scene {
   private effects!: Phaser.GameObjects.Graphics;
   private mara!: Phaser.GameObjects.Image;
   private maraShadow!: Phaser.GameObjects.Ellipse;
+  private wisp!: Phaser.GameObjects.Image;
+  private wispName!: Phaser.GameObjects.Text;
+  private readonly impacts = new Map<number, { x: number; y: number; at: number }>();
   private maraName!: Phaser.GameObjects.Text;
   private readonly towerViews = new Map<number, TowerView>();
   private readonly enemyViews = new Map<number, EnemyView>();
@@ -70,6 +75,8 @@ export class BattleScene extends Phaser.Scene {
     this.maraName = this.add.text(0, 0, 'Mara', {
       fontFamily: 'Segoe UI, sans-serif', fontSize: '10px', color: '#fff3cf', stroke: '#20392c', strokeThickness: 3,
     }).setOrigin(0.5).setDepth(5001);
+    this.wisp = this.add.image(0, 0, KEYS.wisp, 0).setOrigin(0.5, 51 / 64).setScale(0.9);
+    this.wispName = this.add.text(0, 0, 'Wisp · +10 % Gold', { fontFamily: 'Segoe UI, sans-serif', fontSize: '10px', color: '#ffe0a0', stroke: '#20392c', strokeThickness: 3 }).setOrigin(0.5).setDepth(5001);
     this.input.on('pointerdown', this.beginPointer, this);
     this.input.on('pointerup', this.endPointer, this);
     this.input.on('pointerupoutside', this.cancelPointer, this);
@@ -150,14 +157,15 @@ export class BattleScene extends Phaser.Scene {
     const pad = this.sim.layout.towerPads.find(pad => pad.id === padId);
     if (pad) this.focusPoint(cellCenter(this.sim.layout, pad.cell));
   }
-  focusObject(kind: 'tower' | 'settlement' | 'mara'): void {
+  focusObject(kind: 'tower' | 'settlement' | 'mara' | 'wisp'): void {
     if (this.portraitCamera) this.focusPoint(this.objectPoint(kind));
   }
   private focusPoint(point: { x: number; y: number }): void {
     if (this.overview) { this.overview = false; this.relativeZoom = 1; this.resizeCamera(); }
     this.cameras.main.centerOn(point.x, this.sim.layout.bounds.height / 2);
   }
-  private objectPoint(kind: 'tower' | 'settlement' | 'mara'): { x: number; y: number } {
+  private objectPoint(kind: 'tower' | 'settlement' | 'mara' | 'wisp'): { x: number; y: number } {
+    if (kind === 'wisp') return wispPose(this.sim.layout, this.sim.elapsed);
     if (kind === 'mara') return { x: this.sim.mara.x, y: this.sim.mara.y - 20 };
     if (kind === 'settlement') {
       const plot = this.sim.layout.plots.find(plot => plot.id === 'workshop')!;
@@ -167,7 +175,7 @@ export class BattleScene extends Phaser.Scene {
     const pad = this.selectedPad();
     return pad ? cellCenter(this.sim.layout, pad.cell) : { x: 560, y: 320 };
   }
-  uiAnchor(kind: 'tower' | 'settlement' | 'mara'): { x: number; y: number } {
+  uiAnchor(kind: 'tower' | 'settlement' | 'mara' | 'wisp'): { x: number; y: number } {
     const point = this.objectPoint(kind), camera = this.cameras.main;
     return { x: (point.x - camera.worldView.x) * camera.zoom, y: (point.y - camera.worldView.y) * camera.zoom };
   }
@@ -207,6 +215,8 @@ export class BattleScene extends Phaser.Scene {
     if (this.hooks.canRender?.() === false) return;
     const point = this.cameras.main.getWorldPoint(pointer.x, pointer.y), size = this.sim.layout.cellSize;
     const pad = this.sim.layout.towerPads.find(value => value.cell.x === Math.floor(point.x / size) && value.cell.y === Math.floor(point.y / size));
+    const wisp = wispPose(this.sim.layout, this.sim.elapsed);
+    if (this.sim.wispUnlocked && Math.hypot(point.x - wisp.x, point.y - (wisp.y - 18)) < 23) { this.hooks.selectWisp?.(); return; }
     const workshop = this.sim.layout.plots.find(plot => plot.id === 'workshop')!.footprint;
     if (!pad && point.x >= workshop.x * size && point.x < (workshop.x + workshop.width) * size
       && point.y >= (workshop.y - 1.2) * size && point.y < (workshop.y + workshop.height) * size) {
@@ -224,21 +234,21 @@ export class BattleScene extends Phaser.Scene {
       const tower = this.sim.towers.find(value => value.padId === pad.id), point = cellCenter(this.sim.layout, pad.cell);
       mark.clear();
       if (!tower) {
-        const available = pad.availability === 'initial';
+        const available = this.sim.isPadUnlocked(pad.id);
         mark.fillStyle(0x243d29, available ? 0.20 : 0.08).fillEllipse(point.x, point.y + 3, 30, 16);
         mark.lineStyle(1.2, colors.gold, available ? 0.65 : 0.2).strokeEllipse(point.x, point.y + 3, 30, 16);
       }
-      const content = tower ? `Lv. ${tower.level}` : pad.availability === 'initial' ? '+' : '';
+      const content = tower ? `Lv. ${tower.level}` : this.sim.isPadUnlocked(pad.id) ? '+' : '';
       if (label.text !== content) label.setText(content);
       label.setPosition(point.x, tower ? point.y + 22 : point.y - 1);
-      label.setColor(tower && this.sim.isMaraBoosted(tower.uid) ? '#ffe3a0' : pad.availability === 'initial' ? colors.text : colors.muted);
+      label.setColor(tower && this.sim.isMaraBoosted(tower.uid) ? '#ffe3a0' : this.sim.isPadUnlocked(pad.id) ? colors.text : colors.muted);
     }
   }
   private drawSelection(): void {
     const g = this.selection; g.clear();
     const pad = this.selectedPad(); if (!pad) return;
     const point = cellCenter(this.sim.layout, pad.cell);
-    if (pad.availability === 'initial') {
+    if (this.sim.isPadUnlocked(pad.id)) {
       const tower = this.sim.towers.find(value => value.padId === pad.id), range = tower ? stats(tower).range : BASE.tower.range;
       g.fillStyle(colors.gold, 0.055).fillCircle(point.x, point.y, range);
       g.lineStyle(1.5, colors.gold, 0.45).strokeCircle(point.x, point.y, range);
@@ -250,7 +260,7 @@ export class BattleScene extends Phaser.Scene {
     let view = this.towerViews.get(tower.uid);
     if (!view) {
       view = {
-        base: this.add.image(tower.x, tower.y + 13, tower.def.id === 2 ? KEYS.frostTower : KEYS.tower, 0).setOrigin(0.5, 0.8).setScale(SCALE.tower).setDepth(tower.y + 1000),
+        base: this.add.image(tower.x, tower.y + 13, towerArt(tower.def.id).base, 0).setOrigin(0.5, 0.8).setScale(SCALE.tower).setDepth(tower.y + 1000),
         weapon: this.add.image(tower.x, tower.y - 23, KEYS.weapon, 0).setScale(SCALE.tower).setDepth(tower.y + 1001),
       };
       this.towerViews.set(tower.uid, view);
@@ -260,7 +270,7 @@ export class BattleScene extends Phaser.Scene {
   private enemyView(enemy: Enemy): EnemyView {
     let view = this.enemyViews.get(enemy.uid);
     if (!view) {
-      view = { sprite: this.add.image(enemy.x, enemy.y, enemy.def.id === 'Leafbug' ? KEYS.leafbug : KEYS.firebug).setScale(SCALE.enemy),
+      view = { sprite: this.add.image(enemy.x, enemy.y, enemy.def.id === 'Scorpion' ? KEYS.scorpion : enemy.def.id === 'Leafbug' ? KEYS.leafbug : KEYS.firebug).setScale(SCALE.enemy),
         shadow: this.add.ellipse(enemy.x, enemy.y + 9, 23, 9, 0x263e30, 0.24) };
       this.enemyViews.set(enemy.uid, view);
     }
@@ -278,10 +288,9 @@ export class BattleScene extends Phaser.Scene {
       const view = this.towerView(tower), stat = stats(tower);
       const boosted = sim.isMaraBoosted(tower.uid), firingCooldown = stat.cooldown / (boosted ? 1.5 : 1);
       const firingAge = firingCooldown - tower.cooldown;
-      const frame = tower.cooldown > 0 && firingAge < firingCooldown * 0.85 ? Math.min(5, Math.floor(firingAge / (firingCooldown * 0.85) * 6)) : 0;
-      const frost = tower.def.id === 2;
-      const weaponKey = frost ? tower.visualStage === 2 ? KEYS.frostWeapon2 : KEYS.frostWeapon
-        : tower.visualStage === 2 ? KEYS.weapon2 : KEYS.weapon;
+      const art = towerArt(tower.def.id);
+      const frame = tower.cooldown > 0 && firingAge < firingCooldown * 0.85 ? Math.min(art.frames - 1, Math.floor(firingAge / (firingCooldown * 0.85) * art.frames)) : 0;
+      const weaponKey = art.weapons[tower.visualStage - 1];
       if (view.weapon.texture.key !== weaponKey) view.weapon.setTexture(weaponKey);
       view.base.setFrame(tower.visualStage - 1);
       view.weapon.setFrame(Math.max(0, frame)).setRotation(tower.angle);
@@ -310,11 +319,22 @@ export class BattleScene extends Phaser.Scene {
     for (const [uid, view] of this.shotViews) if (!shots.has(uid)) { view.destroy(); this.shotViews.delete(uid); }
     for (const shot of sim.shots) {
       let view = this.shotViews.get(shot.uid);
-      if (!view) { view = this.add.image(shot.x, shot.y, shot.kind === 2 ? KEYS.frostProjectile : KEYS.projectile, 0).setScale(shot.kind === 2 ? 0.5 : SCALE.projectile).setDepth(5501); this.shotViews.set(shot.uid, view); }
-      view.setPosition(shot.x, shot.y).setFrame(loopFrame(elapsed, 3));
+      if (!view) { view = this.add.image(shot.x, shot.y, towerArt(shot.kind).projectile, 0).setScale(shot.kind >= 3 ? 0.85 : shot.kind === 2 ? 0.5 : SCALE.projectile).setDepth(5501); this.shotViews.set(shot.uid, view); }
+      view.setPosition(shot.x, shot.y).setFrame(loopFrame(elapsed, towerArt(shot.kind).shotFrames));
       const target = sim.enemies.find(enemy => enemy.uid === shot.target);
       if (target) view.setRotation(Math.atan2(target.y - shot.y, target.x - shot.x) + Math.PI / 2);
     }
+    // One ring per cannon impact, even when the blast hits several enemies.
+    for (const event of sim.events) if (event.type === 'hit' && event.shot?.kind === 3 && !this.impacts.has(event.shot.uid))
+      this.impacts.set(event.shot.uid, { x: event.x!, y: event.y!, at: elapsed });
+    for (const [id, hit] of this.impacts) {
+      const age = elapsed - hit.at;
+      if (age < 0 || age > 0.35) { this.impacts.delete(id); continue; }
+      this.effects.lineStyle(2, 0xecc78d, (1 - age / 0.35) * 0.8).strokeCircle(hit.x, hit.y, 12 + age / 0.35 * 40);
+    }
+    const wisp = wispPose(sim.layout, elapsed);
+    this.wisp.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y).setFrame(wisp.frame).setFlipX(wisp.flip).setDepth(wisp.y + 1002);
+    this.wispName.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y + 13);
     const mara = sim.mara, acting = mara.effectRemaining > 0 && sim.isMaraBoosted(mara.targetTowerUid);
     this.mara.setPosition(mara.x, mara.y).setFrame(maraFrame(mara.direction, mara.path.length > 0, acting, elapsed)).setDepth(mara.y + 1002);
     this.maraShadow.setPosition(mara.x, mara.y + 1).setDepth(mara.y + 999);

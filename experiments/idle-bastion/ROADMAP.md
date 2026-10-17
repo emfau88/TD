@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. Nutzerfreigabe G1 offen.**
+Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08 umgesetzt und geprüft.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -11,13 +11,13 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Figurenmechanik und Werkstattschilder nur vorgemerkt |
-| Aktives Umsetzungspaket | Keines · Premium-UI veröffentlicht |
-| Nächster Schritt | Nutzer testet die veröffentlichte Fassung und entscheidet über G1; B08 bleibt gesperrt |
-| G1: 90-Sekunden-Zwischenabnahme | **Offen; keine Nutzerfreigabe vorhanden** |
+| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08 ausdrücklich gestartet; Maras Fernzauber und Werkstattschilder bleiben vorgemerkt |
+| Aktives Umsetzungspaket | B08 abgeschlossen · Veröffentlichung |
+| Nächster Schritt | B08 testen; danach B09 · Lager und Rückkehr |
+| G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
-Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. B08–B14 bleiben bis zur ausdrücklichen G1-Freigabe gesperrt. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. G1 ist freigegeben. Dieser Durchlauf umfasst B08; B09 folgt separat. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
 
 ## Premium-Überarbeitung nach der mobilen Nachbesserung
 
@@ -65,8 +65,8 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P2 | B07 · Einstieg und Nachweise | Regulär spielbarer 90-Sekunden-Kreislauf samt kurzer Technikfolge | B06 | Erledigt · `8a0a276` · [Browserzeiten und drei Spielweisen](../../artifacts/idle-bastion/acceptance/90s/REPORT.md) |
 | P2 | B07a · Spieloberfläche | Große Karte, Dock, Kontextaktionen und funktionale Hochkantansicht | Zusätzlicher Nutzerauftrag vor B08 | Abgeschlossen und veröffentlicht · [Nachweis](../../artifacts/idle-bastion/acceptance/ui/REPORT.md) |
 | P2 | B07b · Orientierung und HUD | Goldzufluss, Wellenrekord, nächstes Ziel, Versuchshistorie und stimmige warme Oberflächen | Zusätzlicher ausdrücklicher Nutzerauftrag am 17.10.2026 | Abgeschlossen und veröffentlicht · [Nachweis](../../artifacts/idle-bastion/acceptance/ui/PROGRESS.md) |
-| Halt | G1 · Nutzerabnahme | Ausdrückliche Entscheidung zur vorgelegten Fassung | B01–B07 sowie B07a/B07b geprüft | **Offen** |
-| P3 | B08 · Wisp und Turmrollen | Zweite Figur, Wirtschaftseffekt und vier unterscheidbare Türme | G1 freigegeben | Nicht begonnen |
+| Halt | G1 · Nutzerabnahme | Ausdrückliche Entscheidung zur vorgelegten Fassung | B01–B07 sowie B07a/B07b geprüft | **Freigegeben · 18.10.2026** |
+| P3 | B08 · Wisp und Turmrollen | Zweite Figur, Wirtschaftseffekt und vier unterscheidbare Türme | G1 freigegeben | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p3/B08.md) |
 | P3 | B09 · Lager und Rückkehr | Zweites Gebäude und befriedigender Wiedereinstieg | B08 | Nicht begonnen |
 | P4 | B10 · Erste Bossherausforderung | Lesbarer Boss verlangt die verfügbaren Turmrollen | B09 | Nicht begonnen |
 | P4 | B11 · Wachsende Karte | Echte seitliche Freischaltung mit zwei nützlichen Turmplätzen | B10 | Nicht begonnen |
@@ -238,35 +238,37 @@ Vorbefund aus der vorangegangenen Analyse: 54 Root- und 58 Referenztests sowie b
 
 ## G1 — Verbindlicher Halt: 90-Sekunden-Zwischenabnahme
 
-**Status: OFFEN. B08–B14 sind gesperrt, bis der Nutzer ausdrücklich freigibt.**
+**Status: FREIGEGEBEN am 18.10.2026. Aktueller Auftrag: B08 mit möglichst kompakten Tests.**
 
 - [x] B01–B07 nachgewiesen; keine wesentlichen offenen Speicher-/Farmfehler in der vorgelegten Fassung.
 - [x] Startbare Probe, Commit, Screenshots, Zeitprotokoll und Ergebnisse der drei Spielweisen bereitgestellt.
 - [x] Spielgefühl selbst kritisch beurteilt: verständliche Entscheidungen, spürbare Verbesserungen, wenig Leerlauf, Werkstatt als echter Fortschritt und stimmiger Maßstab.
-- [ ] Nutzer konnte die konkrete Fassung beurteilen; verlangte Änderungen innerhalb P2 umgesetzt und bei Bedarf erneut vorgelegt.
-- [ ] **Ausdrückliche Nutzerfreigabe erhalten und hier dokumentiert.** Dieses Kästchen darf nur aufgrund der tatsächlichen Nutzerentscheidung gesetzt werden.
+- [x] Nutzer konnte die konkrete Fassung beurteilen; verlangte Änderungen innerhalb P2 umgesetzt und bei Bedarf erneut vorgelegt.
+- [x] **Ausdrückliche Nutzerfreigabe erhalten und hier dokumentiert.** Dieses Kästchen darf nur aufgrund der tatsächlichen Nutzerentscheidung gesetzt werden.
 
 | Freigabenachweis | Eintrag |
 | --- | --- |
 | Geprüfte Fassung / Commit | `8a0a276` · [Playlink](https://emfau88.github.io/TD/idle-bastion/) · [Bericht](../../artifacts/idle-bastion/acceptance/90s/REPORT.md) |
-| Datum und Chatbezug | 17.10.2026 · Nutzer beauftragt Berichtigung und Vervollständigung bis einschließlich B07 sowie GitHub-Testfassung |
-| Wortlaut / Entscheidung | Noch keine Entscheidung |
-| Offene Auflagen | Nutzerprobe ausstehend; drei wesentliche Grenzen stehen im Bericht. Keine Freigabe für B08–B14. |
+| Datum und Chatbezug | 18.10.2026 · ausdrückliches Go zum nächsten Bulk B08 nach Veröffentlichung des Premium-HUD |
+| Wortlaut / Entscheidung | „Ok go, halte deine Tests so kompakt und klein wie möglich“ — Antwort auf den vorgeschlagenen B08-Durchlauf einschließlich G1-Freigabe. |
+| Offene Auflagen | Kompakte, gezielte Prüfungen. B09 und folgende nicht Teil dieses Durchlaufs; keine Behauptung einer erneuten gemessenen Nutzerprobe. |
 
-Während des Wartens nur P2 prüfen und korrigieren. Kein Wisp, Lager, Boss, Werkstatt II oder freischaltbare Erweiterung vorziehen und keine entsprechenden Assets auf Vorrat erzeugen. Zeitablauf, erfolgreiche Tests und allgemeine Entwicklungsautonomie ersetzen die Freigabe nicht.
+Historische Halteregel bis zur obigen G1-Freigabe: Während des Wartens nur P2 prüfen und korrigieren. Kein Wisp, Lager, Boss, Werkstatt II oder freischaltbare Erweiterung vorziehen und keine entsprechenden Assets auf Vorrat erzeugen. Zeitablauf, erfolgreiche Tests und allgemeine Entwicklungsautonomie ersetzen die Freigabe nicht.
 
 ## P3 — Frühe Siedlung und Rückkehr
 
 ### B08 — Wisp, weitere Turmrollen und Bauplätze
 
+**Status: ABGESCHLOSSEN.** [Prüfung und echte Aufnahmen](../../artifacts/idle-bastion/acceptance/p3/B08.md).
+
 **Voraussetzung:** G1 ausdrücklich freigegeben. **Ergebnis:** Zweite Figur und weitere Turmrollen verändern die Entscheidungen des Spielers.
 
-- [ ] Abgenommenen Einstieg beibehalten; relevante Balanceänderungen gegen seine gemessenen Zeiten prüfen.
-- [ ] Wisp nach Frostfassung und Welle 5 etwa bei Minute 2–4 freischalten; vorhandene Figur verwenden, keine Charakterlevel einführen.
-- [ ] 10 % Bonus auf wiederholbare Gegner-/Wellenbelohnungen korrekt und genau einmal vergeben; sichtbaren Auftrag ohne Sammelzwang darstellen.
-- [ ] Steinschleuder bei Wisp-Freischaltung und Scharfschütze nach Welle 10 anbieten; passende Gegnerrollen ohne unerwartete unlösbare Sperre einführen.
-- [ ] Je zwei weitere Startregion-Turmplätze nach Welle 5 und 10 öffnen und speichern.
-- [ ] Tutorial, Save und Farmzertifikate um die tatsächlichen Freischaltungen ergänzen; Wisps Bonus nicht ein zweites Mal auf Offline-Erträge anwenden.
+- [x] Abgenommenen Einstieg beibehalten; relevante Balanceänderungen gegen seine gemessenen Zeiten prüfen.
+- [x] Wisp nach Frostfassung und Welle 5 etwa bei Minute 2–4 freischalten; vorhandene Figur verwenden, keine Charakterlevel einführen.
+- [x] 10 % Bonus auf wiederholbare Gegner-/Wellenbelohnungen korrekt und genau einmal vergeben; sichtbaren Auftrag ohne Sammelzwang darstellen.
+- [x] Steinschleuder bei Wisp-Freischaltung und Scharfschütze nach Welle 10 anbieten; passende Gegnerrollen ohne unerwartete unlösbare Sperre einführen.
+- [x] Je zwei weitere Startregion-Turmplätze nach Welle 5 und 10 öffnen und speichern.
+- [x] Tutorial, Save und Farmzertifikate um die tatsächlichen Freischaltungen ergänzen; Wisps Bonus nicht ein zweites Mal auf Offline-Erträge anwenden.
 
 **Fertig, wenn:** Vier unterscheidbare Turmrollen nutzbar sind und Wisps automatischer Nutzen sichtbar und messbar ist.
 

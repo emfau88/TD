@@ -40,16 +40,16 @@ test('a genuine defeat records the failed advance before switching to farm', () 
   assert.equal(resumed.progress.totals.farm.attempts, 1);
 });
 
-test('schema four migration keeps combat and farm proof but does not invent old attempts', () => {
+test('schema four migration keeps combat and invalidates old rule proofs but does not invent old attempts', () => {
   const old = new IdleBattle();
   until(old, () => old.wave === 2);
   const certificate = certifyFarm(old)!;
   const { progress: ignored, ...snapshot } = old.snapshot();
-  const restored = IdleBattle.restore({ ...snapshot, schemaVersion: 4 })!;
+  const restored = IdleBattle.restore({ ...snapshot, schemaVersion: 4, rulesVersion: 3 })!;
   assert.ok(restored);
   assert.equal(restored.gold, old.gold);
   assert.equal(restored.highestCleared, 1);
-  assert.equal(isFarmCertificateValid(certificate, restored), true);
+  assert.equal(isFarmCertificateValid(certificate, restored), false);
   assert.equal(restored.progress.sinceAttempt, old.attemptId + 1);
   until(restored, () => restored.highestCleared === 2);
   assert.deepEqual(restored.progress.totals.advance, { attempts: 0, wins: 0, losses: 0 });
