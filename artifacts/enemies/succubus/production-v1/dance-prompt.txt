@@ -1,0 +1,14 @@
+Use case: identity-preserve. Production asset: EIGHT-FRAME playful theatrical dance loop for the approved adult pink-haired fantasy demon woman.
+Reference1 is the exact approved simplified game character and clothes. Reference2 is the selected design for identity only.
+Clearly mature ADULT woman, about30, warm brown skin, pink hair, dark horns, small magenta-black bat wings, heart-tip tail, opaque magenta-black corset dress, boots, gloves and little gold accents. Preserve the same adult proportions, body volume, outfit, hair, horns and wings throughout all eight frames.
+Layout FOUR COLUMNS by TWO ROWS, reading order. Single coherent dance:
+1 hand rests at hip, otherarm begins to rise;
+2 both arms open at shoulderheight, shift weight to leftfoot;
+3 left arm arched abovehead, rightarm extended;
+4 both hands briefly lifted abovehead, rightknee bent;
+5 arms sweep outward, shift weight to rightfoot;
+6 rightarm abovehead,leftarm extended;
+7 hands sweep toward waist, tail follows;
+8 return toward first standingpose, gentle smile.
+Elegant humorous stage dance performed facing FRONT toward camera, no floor work or explicit actions. Actual body changes between frames, stable equipment and common footbaseline. Do not add a new outfit or enlarge body parts.
+Tiny coarse pixel art about40logicalpixels high inside64pxframe, enlarged hard square pixels. Minimal flatpalette18-20 colors with simple shadows. No realistic skin texture, gradients or glow. Actual transparent background and generous gutters. Complete figures, all limbs/wings/tails visible. No external hearts (game draws them), no props, text, labels, grid, shadow, scenery or other people.

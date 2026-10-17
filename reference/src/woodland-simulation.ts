@@ -1,4 +1,4 @@
-import { Simulation } from './simulation';
+import { Simulation, type Tower } from './simulation';
 import { CELL, COLS, ROWS, center, pathCells, waterCells, type Point, type Priority } from './data';
 import { previewPath } from './style-navigation';
 import { getRegion, isRegionID, type RegionID } from './regions';
@@ -72,6 +72,10 @@ export class WoodlandSimulation extends Simulation {
       hero.pose=.7;hero.action=0;hero.order=undefined;
     }
   }
+  protected override fireRateMultiplier(tower:Tower,dt:number){
+    const boostedDuration=Math.min(dt,this.boosts.get(tower.uid)??0);
+    return super.fireRateMultiplier(tower,dt)*(1+.5*boostedDuration/dt);
+  }
   override update(dt:number){
     if(!Number.isFinite(dt)||dt<=0||this.phase==='defeat'||this.phase==='victory')return;
     const steps=Math.ceil(dt/.025),step=dt/steps;
@@ -79,11 +83,11 @@ export class WoodlandSimulation extends Simulation {
       if(!['build','wave'].includes(this.phase))break;
       this.updateHeroes(step);
       if(this.phase==='wave'){
-        for(const [id,remaining]of this.boosts){const tower=this.towers.find(t=>t.uid===id);if(tower)tower.cooldown-=Math.min(step,remaining)*.5;if(remaining<=step||!tower)this.boosts.delete(id);else this.boosts.set(id,remaining-step);}
         for(const field of this.distractions){for(const enemy of this.enemies)if(!enemy.def.flying&&Math.hypot(enemy.x-field.x,enemy.y-field.y)<=110){enemy.slow=Math.max(enemy.slowTime>0?enemy.slow:0,.45);enemy.slowTime=Math.max(enemy.slowTime,Math.min(step,field.remaining));}field.remaining-=step;}
         this.distractions=this.distractions.filter(field=>field.remaining>0);
       }
       super.update(step);
+      for(const [id,remaining]of this.boosts)if(remaining<=step||!this.towers.some(tower=>tower.uid===id))this.boosts.delete(id);else this.boosts.set(id,remaining-step);
       if(this.phase!=='wave'){this.boosts.clear();this.distractions=[];}
     }
   }

@@ -58,7 +58,7 @@ test('only Moor waves 4, 7 and 9 introduce healers; the historical roster and al
     const original=regionWaveComposition(wave),moor=marsh.compositionForWave(wave);
     assert.equal(moor.filter(entry=>entry.type.healer).length,wave===4?1:wave===7||wave===9?2:0);
     assert.deepEqual(moor.filter(entry=>!entry.type.healer),original);
-    for(const region of ['old-grove','mirror-winter','windbreak'] as const)assert.deepEqual(regionWaveComposition(wave,region),original);
+    for(const region of ['old-grove','mirror-winter','windbreak'] as const)assert.deepEqual(regionWaveComposition(wave,region).filter(entry=>!entry.type.charmer),original);
   }
   assert.equal(new Simulation(0).waveLimit,20);assert.equal(JELLY_HEAL.maxTargets,2);
 });

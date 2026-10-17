@@ -56,6 +56,7 @@ async function prepare() {
   await run([resolve(root,'scripts/prepare-wind-atlas.mjs')]);
   await run([resolve(root,'scripts/prepare-jelly-preview.mjs')]);
   await run([resolve(root,'scripts/prepare-jelly-atlas.mjs')]);
+  await run([resolve(root,'scripts/prepare-succubus-atlas.mjs')]);
   for(const file of ['Spiegelwinter Tiles v1.png','Spiegelwinter Sprites v1.png','Windbruch Tiles v1.png','Windbruch Sprites v1.png','Windbruch Details v1.png'])await copyFile(resolve(root,'public/assets',file),resolve(output,file));
   const ui = ['panel-frame.png', 'button-states.png', 'menu-backdrop.png', 'spire-emblem.png', 'hud-icons.png', 'tower-slots.png', 'map-covers.png'];
   await mkdir(resolve(reference, 'public/ui'), { recursive: true });
@@ -77,7 +78,7 @@ async function run(args) {
 }
 const bin = path => resolve(root, 'node_modules', path);
 const mode = process.argv[2] ?? 'prepare';
-assert.ok(['prepare', 'dev', 'build', 'test', 'style-build', 'forest-build', 'enemy-build'].includes(mode), 'Use prepare, dev, build, test, style-build, forest-build, or enemy-build');
+assert.ok(['prepare', 'dev', 'build', 'test', 'style-build', 'forest-build', 'enemy-build', 'succubus-build'].includes(mode), 'Use prepare, dev, build, test, style-build, forest-build, enemy-build, or succubus-build');
 await prepare();
 if (mode === 'dev') await run([bin('vite/bin/vite.js'), '--host', '127.0.0.1']);
 if (mode === 'build') {
@@ -103,6 +104,12 @@ if (mode === 'enemy-build') {
   await run([bin('vite/bin/vite.js'), 'build', '--config', 'vite.enemy.config.ts']);
   await run(['scripts/package-offline.mjs', 'enemy']);
   await run(['scripts/check-package.mjs', 'enemy']);
+}
+if (mode === 'succubus-build') {
+  await run([bin('typescript/bin/tsc'), '--noEmit']);
+  await run([bin('vite/bin/vite.js'), 'build', '--config', 'vite.succubus.config.ts']);
+  await run(['scripts/package-offline.mjs', 'succubus']);
+  await run(['scripts/check-package.mjs', 'succubus']);
 }
 if (mode === 'test') {
   const files = (await readdir(resolve(reference, 'tests'))).filter(file => /\.test\.(ts|mjs)$/.test(file)).sort();

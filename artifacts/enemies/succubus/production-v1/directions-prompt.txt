@@ -1,0 +1,7 @@
+Use case: identity-preserve. Production asset: TWO SIX-FRAME directional walking loops for the approved ADULT pink-haired demon woman.
+Input1 approved six side-walking frames is the exact simplified character to preserve; input2 is the selected original concept only to preserve colors and outfit.
+Mature adult woman around30, warm brown skin, pale pink hair, dark curved horns, small magenta/black wings, heart-tip tail, opaque fitted magenta-black corset dress with short asymmetric skirt, tall boots, long gloves and minimal gold. Same outline/detail level and SAME body proportions across every pose.
+Produce TWELVE separated full-body sprites. THREE ROWS by FOUR COLUMNS.
+First six in reading order: BACK view walking UP/NORTH away, face hidden by back of head. Rear wings and long pink hair visible. A true six-phase walking cycle.
+Last six: FRONT view walking DOWN/SOUTH toward viewer, both arms/legs alternate in a real walking cycle. These are genuinely front/back views, not copies of the side profile.
+All figures same visible size, common foot baseline within each row. Simple chunky low-resolution pixels, character40logicalpixels high in64pxframe. 18-20flatcolors, stepped shading, no gradients, no painted textures, no halo. Ample transparent separation between all sprites including wide wings/tail, don't overlap. Actual transparent alpha background. No labels, numbers, lines, floor, shadow, hearts, magic, scenery or other characters.

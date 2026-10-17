@@ -1,12 +1,12 @@
 # Spire – Umsetzungsplan für den nächsten Ausbau
 
-Stand: 17. Oktober 2026. Status: **P2-Laternenqualle nach Stilabnahme umgesetzt; übriger Ausbau geplant.** Dieser Plan konkretisiert die [Roadmap](ROADMAP.md); deren Grafik- und Asset-Vorgaben bleiben verbindlich. Auf den nachfolgenden Auftrag zur ersten Einheit wurde P2 vorgezogen. Die Qualle ist jetzt im Moor in Welle 4, 7 und 9 enthalten; bestehende Speicherformate bleiben erhalten. Siehe [Prüfbericht](artifacts/enemies/lantern-jelly/v1/REPORT.md).
+Stand: 17. Oktober 2026. Status: **P2-Laternenqualle und eigens beauftragte Succubus umgesetzt; übriger Ausbau geplant.** Dieser Plan konkretisiert die [Roadmap](ROADMAP.md); deren Grafik- und Asset-Vorgaben bleiben verbindlich. Auf die nachfolgenden Einzelaufträge wurde der Gegnerausbau vorgezogen. Die Qualle ist im Moor in Welle 4, 7 und 9 enthalten; Rosenspiegel in Windbruch Welle 6 und 9. Bestehende Speicherformate bleiben erhalten. Nachweise: [Laternenqualle](artifacts/enemies/lantern-jelly/v1/REPORT.md), [Succubus und zweite Grafikfassung](artifacts/enemies/succubus/production-v2/REPORT.md). Die Nutzerabnahme der Succubus-Überarbeitung steht aus.
 
 ## Ziel und Ausgangspunkt
 
 Aus dem vorhandenen Prototyp soll ein zusammenhängendes Tower-Defense-Spiel mit fünf eigenständigen Karten werden. Zuerst verbessern wir die spielerische Qualität der vier vorhandenen Karten. Zusätzlicher Inhalt folgt auf dieser Grundlage.
 
-Vorhanden sind vier direkt auswählbare Karten, acht Türme, acht Originalgegner plus Laternenqualle sowie Wisp und Mara. Jede Karte hat zehn Wellen; der gemeinsame Plan wurde bisher nur um die Moorheiler ergänzt. Runa und Ilyra besitzen im alten Projekt Figurenentwürfe und Fähigkeiten, aber noch keine fertig geprüfte Integration in das aktuelle Spiel. Vesper ist zunächst eine Storyfigur mit Porträt. Drei weitere alte Gegnerrollen sind spätere Kandidaten.
+Vorhanden sind vier direkt auswählbare Karten, acht Türme, zehn Gegnertypen (acht Originalgegner, Laternenqualle und Succubus) sowie Wisp und Mara. Jede Karte hat zehn Wellen; der gemeinsame Plan wurde bisher nur um Moorheiler und Windbruch-Verführung ergänzt. Wald/Winter haben je 133 Gegner, Moor 138 und Windbruch 135. Runa und Ilyra besitzen im alten Projekt Figurenentwürfe und Fähigkeiten, aber noch keine fertig geprüfte Integration in das aktuelle Spiel. Vesper ist zunächst eine Storyfigur mit Porträt. Drei weitere alte Gegnerrollen sind spätere Kandidaten.
 
 **Verbindlich:** zehn Wellen je Karte, frei zugängliche Karten zum Testen, bestehende Speicherstände berücksichtigen, PC-Steuerung und Zoom erhalten. Mobile bleibt zurückgestellt. Keine neue Engine, kein umfassender Umbau und keine Assetproduktion auf Vorrat.
 
@@ -36,7 +36,7 @@ P1 bis P4 bilden den empfohlenen nächsten Ausbau. P5 und P6 bleiben spätere Ab
 | Karte | Geplanter Schwerpunkt | Beispiel für die Dramaturgie |
 | --- | --- | --- |
 | Der alte Hain | Verständlicher Einstieg und ausgewogene Verteidigung | Erst Bodenmassen, dann erste Flieger, später wenige gepanzerte Gegner; keine zusätzliche Sonderregel |
-| Laternenmoor | Gegnergruppen an Übergängen aufhalten und Prioritäten setzen | Langsame robuste Gruppen wechseln mit schnelleren Durchbruchsgruppen; Raum für den späteren Heiler |
+| Laternenmoor | Gegnergruppen an Übergängen aufhalten und Prioritäten setzen | Langsame robuste Gruppen wechseln mit schnelleren Durchbruchsgruppen; vorhandenen Heiler gezielt einsetzen |
 | Spiegelwinter | Ressourcen zwischen zwei Zugängen verteilen | Zunächst einzelne Zugänge, später angekündigte Überschneidungen; keine unangekündigten Wegwechsel |
 | Windbruch | Luftabwehr und Reichweite auf begrenzten Plateaus | Bodenwellen als Grundlage, steigender Fluganteil, gemischtes Finale; Flugbedrohungen vorab sichtbar |
 
@@ -55,6 +55,10 @@ P1 bis P4 bilden den empfohlenen nächsten Ausbau. P5 und P6 bleiben spätere Ab
 - [x] Seitenprobe vom Nutzer abnehmen lassen und die benötigten Richtungen und Zustände vervollständigen.
 
 **Fertig, wenn:** Spieler erkennen ohne Handbuch, wer heilt und wie sie reagieren können. Heilung kann keine endlose Welle erzeugen. Das Moor bleibt mit Wisp und Mara lösbar.
+
+**Zusätzlich beauftragte Succubus – umgesetzt:** Rosenspiegel ist eine Bodeneinheit in Windbruch Welle 6 und 9. Sie hält für eine Verführung an: feste Reichweite 200, 0,8 Sekunden erkennbare Vorbereitung, danach 4,5 Sekunden mit 40 % geringerer Turmfeuerrate. Pinker Herzfaden, Herzsymbol und ein separates Tanzfenster zeigen Quelle und Ziel. Ausschalten, Verkauf des Turms, Reichweitenverlust und Wellenende beenden die Wirkung. Die Quelle hat elf Sekunden Abklingzeit; der betroffene Turm danach sechs Sekunden Schutz. Maras Verstärkung und die Schwächung werden gemeinsam berechnet (1,5 × 0,6 = 0,9).
+
+Die zweite Grafikfassung reduziert auf zwölf Farben und vier Gehposen je Ansicht. Acht Tanzposen laufen langsamer mit 190 ms je Bild im vergrößerten Fenster (2,2-fach); die normale Spielfigur behält ihren Maßstab. Die kurze seitliche Folge wurde überarbeitet und bleibt ein begrenzter Animationszyklus. Die Nutzerbeurteilung dieser Korrektur steht aus. Eigene Zustands-/Richtungsprobe und echte kurze Kämpfe: `npm run reference:succubus:build`, dann `SUCCUBUS STARTEN.cmd`. [Grafikvertrag, Quellen und gezielte Prüfergebnisse](artifacts/enemies/succubus/production-v2/REPORT.md).
 
 Root Herald (Tempo), Frost Ram (Turmstörung) und Sternenrichter (Schilde) bleiben zunächst als Rollen- und Designideen im Vorrat. Ihre alten Grafiken sind keine freigegebenen Laufzeitassets; eine spätere Nutzung erfordert denselben Stil- und Animationsaufbau. Pro Region höchstens eine zusätzliche Sondermechanik in diesem Ausbau. Es besteht keine Pflicht, alle alten Gegner oder Interaktionsstationen einzubauen. Weitere Kandidaten folgen nur, wenn eine konkrete spielerische Lücke bleibt.
 

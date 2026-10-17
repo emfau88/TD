@@ -1,6 +1,6 @@
 # Spire – vier Regionen
 
-Stand: 16.10.2026. Das aktuelle Spiel baut auf der bestätigten Originalgrafik und der abgenommenen Waldkarte auf. **Der alte Hain, Laternenmoor, Spiegelwinter und Windbruch** sind ohne Freischaltung sofort spielbar. Jede Karte enthält acht Türme, Wisp und Mara sowie 10 Wellen. Die drei neuen Regionen sind umgesetzt und gezielt geprüft; ihre visuelle Nutzerabnahme steht aus. Mobile Optimierung ist zurückgestellt.
+Stand: 17.10.2026. Das aktuelle Spiel baut auf der bestätigten Originalgrafik und der abgenommenen Waldkarte auf. **Der alte Hain, Laternenmoor, Spiegelwinter und Windbruch** sind ohne Freischaltung sofort spielbar. Jede Karte enthält acht Türme, Wisp und Mara sowie 10 Wellen. Die drei neuen Regionen sind umgesetzt und gezielt geprüft; ihre visuelle Nutzerabnahme steht aus. Mobile Optimierung ist zurückgestellt.
 
 ## Starten
 
@@ -14,6 +14,10 @@ Entwicklung: `npm run reference:dev`, dann `http://127.0.0.1:5180/woodland.html`
 
 Die Laternenqualle ist nach Abnahme ihrer Seitenprobe mit drei Ansichten, Bewegung, Heilaktion und Tod im Moor integriert. Eine separate Vorschau zeigt alle Zustände neben Originalfliegern und bietet zwei Kampfwellen ohne Spielstandzugriff: `npm run reference:enemy:build`, danach `GEGNERPROBE STARTEN.cmd`. Entwicklung: `/enemy-preview.html`. Pause, 1×/2×, Einzelbilder und 100/120-%-Zoom stehen bereit. [Ergebnis und Prompts](../artifacts/enemies/lantern-jelly/v1/REPORT.md).
 
+## Succubus-Vorschau
+
+Rosenspiegel ist als Bodengegner in Windbruch integriert. Die zweite Grafikfassung greift das Feedback zu Lesbarkeit, Seitengang und Tanztempo auf; ihre Nutzerabnahme steht aus. `npm run reference:succubus:build`, danach `SUCCUBUS STARTEN.cmd` oder `reference/Spire-Succubus.html` öffnen. Entwicklung: `/succubus-preview.html`. Zustands- und Richtungswahl, Pause, 1×/2×, Einzelbilder und 100/120-%-Zoom stehen bereit. Der Tanz zeigt sich zum Betrachter. Die Kampffläche bietet einen kurzen echten Kampf, automatische Pause beim ersten Verführungseffekt, Gegenwehr, Turmverkauf und Windbruch-Prüfwellen 6/9. Die Vorschau greift nicht auf Nutzer-Spielstände zu. [Ergebnis, Quellen und Grenzen](../artifacts/enemies/succubus/production-v2/REPORT.md).
+
 ## Bedienung und Speicherung
 
 - „Karten“ öffnet die freie Auswahl aller vier Regionen. Jede behält ihren eigenen Fortschritt und ihre letzte Bauphase.
@@ -26,7 +30,11 @@ Die Laternenqualle ist nach Abnahme ihrer Seitenprobe mit drei Ansichten, Bewegu
 
 Speicherkennung bleibt `spire-woodland-v1`. Bestehende Waldstände werden in die getrennten Kartenplätze übernommen. Nach Neuladen „Gespeicherte Bauphase laden“ wählen. Unterbrochene Wellen beginnen erneut mit der letzten Bauphase; abgeschlossene Spiele behalten ihr Ergebnis. Entwicklungsserver und lokale HTML-Datei haben unterschiedliche Browser-Speicherbereiche.
 
-Die Fassung hat **10 Wellen mit 133 Gegnern auf Wald-, Winter- und Inselkarte sowie 138 im Moor**, einschließlich zweier verstärkter Bossvarianten in Welle 5 und 10. Alle acht Originalgegner kommen vor: Blattkäfer, Feuerkäfer, Skorpion, Magmakrabbe, Flugheuschrecke, Feuerwespe, Panzerflieger und Leerenfalter. Die letzten vier sind Fluggegner. Hinzu kommt die Laternenqualle als fliegender Moorheiler in Welle 4 (eine), 7 und 9 (je zwei). Alle zwei Sekunden heilt sie bis zu zwei verletzte Nachbarn um sechs Lebenspunkte im Radius 100; Heiler und Bosse sind ausgeschlossen, die Wirkung mehrerer Heiler stapelt nicht. Ältere Bauphasen ab zehn bereits abgeschlossenen Wellen behalten Türme, Gold und Begleiter und setzen vor dem neuen Finale an; Sterne bleiben erhalten. Die historische Originalvergleichsversion behält ihre damaligen acht Gegnertypen und 20 Wellen.
+Die Fassung hat **10 Wellen mit 133 Gegnern auf Wald-/Winterkarte, 138 im Moor und 135 in Windbruch**, einschließlich zweier verstärkter Bossvarianten in Welle 5 und 10. Alle acht Originalgegner kommen vor: Blattkäfer, Feuerkäfer, Skorpion, Magmakrabbe, Flugheuschrecke, Feuerwespe, Panzerflieger und Leerenfalter. Die letzten vier sind Fluggegner. Hinzu kommt die Laternenqualle als fliegender Moorheiler in Welle 4 (eine), 7 und 9 (je zwei). Alle zwei Sekunden heilt sie bis zu zwei verletzte Nachbarn um sechs Lebenspunkte im Radius 100; Heiler und Bosse sind ausgeschlossen, die Wirkung mehrerer Heiler stapelt nicht.
+
+Rosenspiegel ergänzt Windbruch um je eine Bodeneinheit in Welle 6 und 9: 140 Leben, Tempo 42, 10 % Rüstung, 30 Gold, zwei Lebenspunkte Schaden am Ziel. Innerhalb von 200 Spieleinheiten hält sie an und bereitet 0,8 Sekunden lang eine Verführung vor. Danach feuert ein Turm 4,5 Sekunden lang 40 % langsamer. Herzfaden, Herzsymbol und vergrößertes Tanzfenster machen den Effekt sichtbar. Ausschalten der Succubus, Turmverkauf, Reichweitenverlust und Wellenende lösen ihn. Elf Sekunden Quellen-Abklingzeit und sechs Sekunden Turmschutz nach Ende verhindern Dauerverführung; parallele Verführung desselben Turms ist ausgeschlossen. Maras 50-%-Verstärkung und die Schwächung ergeben gemeinsam 90 % der normalen Feuerrate.
+
+Damit sind zehn Gegnertypen aktiv. Ältere Bauphasen ab zehn bereits abgeschlossenen Wellen behalten Türme, Gold und Begleiter und setzen vor dem neuen Finale an; Sterne bleiben erhalten. Die historische Originalvergleichsversion behält ihre damaligen acht Gegnertypen und 20 Wellen.
 
 ## Build und gezielte Prüfung
 
@@ -38,6 +46,8 @@ node node_modules/tsx/dist/cli.mjs --test reference/tests/region-waves.test.ts r
 ```
 
 Der Build prüft TypeScript, baut `reference/woodland-dist/` und die beiden identischen Einzeldateien. Originalgrafiken werden bytegenau mit den Foozle-Paketen verglichen; neue Laufzeitatlanten werden deterministisch aus den erhaltenen Rohdateien aufgebaut. Die erzeugten HTML-Ausgaben und Asset-Kopien werden nicht doppelt versioniert. `npm run reference:test` führt bei Bedarf die gesamte Referenzprüfung aus.
+
+Für die Succubus wurden gezielt 17 Logik-/Speicher-/Durchspielprüfungen sowie eine Atlasprüfung ausgeführt. Die aktuellen Regionen- und Succubus-Ausgaben enthalten 93 Spielgrafiken und sieben UI-Bilder. Eine technische Prüfung ersetzt keine visuelle Nutzerabnahme. Neue Tests nur bei betroffenen Funktionen oder konkreten Problemen ergänzen.
 
 Nachweise: [Wald](../artifacts/m2/REPORT.md), [Moor](../artifacts/m3/REPORT.md), [Winter](../artifacts/m3-winter/REPORT.md), [Windbruch](../artifacts/m3-wind/REPORT.md). [Grafikvertrag](STYLE_GUIDE.md), [Roadmap](../ROADMAP.md).
 

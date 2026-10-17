@@ -1,11 +1,14 @@
 import { CELL,COLS,ROWS,MAPS,TOWERS,center,pathCells,pathPoints,waterCells,waveComposition, type EnemyDef,type Point,type Priority,type TowerDef } from './data';
 import { JELLY_HEAL } from './jelly';
+import { SUCCUBUS_CHARM } from './succubus';
 
-export type Tower = Point & { uid: number; def: TowerDef; col: number; row: number; level: number; cooldown: number; spent: number; priority: Priority; kills: number; angle: number; };
+export type Tower = Point & { uid: number; def: TowerDef; col: number; row: number; level: number; cooldown: number; spent: number; priority: Priority; kills: number; angle: number; charmRecoveryUntil?:number; };
 export type HealAction={startedAt:number;direction:'up'|'down'|'side';flip:boolean;pulsed:boolean};
-export type Enemy = Point & { uid: number; def: EnemyDef; hp: number; maxHp: number; distance: number; total: number; path: Point[]; segment: number; speed: number; slow: number; slowTime: number; burn: number; burnTime: number; burnOwner?: number; burnSource?: Tower; boss: boolean; direction: 'up'|'down'|'side'; flip: boolean; healAction?:HealAction;nextHealAt?:number;lastHealedAt?:number; };
+export type CharmAction={startedAt:number;targetUid:number;direction:'up'|'down'|'side';flip:boolean;active:boolean};
+export type CharmEndReason='complete'|'kill'|'escape'|'range'|'sold'|'wave-end';
+export type Enemy = Point & { uid: number; def: EnemyDef; hp: number; maxHp: number; distance: number; total: number; path: Point[]; segment: number; speed: number; slow: number; slowTime: number; burn: number; burnTime: number; burnOwner?: number; burnSource?: Tower; boss: boolean; direction: 'up'|'down'|'side'; flip: boolean; healAction?:HealAction;nextHealAt?:number;lastHealedAt?:number;charmAction?:CharmAction;nextCharmAt?:number; };
 export type Shot = Point & { uid: number; tower: Tower; target: number; speed: number; damage: number; level: number; };
-export type Event = { type: 'build'|'upgrade'|'sell'|'fire'|'hit'|'kill'|'escape'|'wave'|'clear'|'victory'|'defeat'|'heal-start'|'heal'; x?: number; y?: number; tower?: Tower; enemy?: Enemy; shot?: Shot; amount?: number; links?: Point[]; healedTargets?:{enemy:Enemy;amount:number}[]; };
+export type Event = { type: 'build'|'upgrade'|'sell'|'fire'|'hit'|'kill'|'escape'|'wave'|'clear'|'victory'|'defeat'|'heal-start'|'heal'|'charm-start'|'charm'|'charm-end'; x?: number; y?: number; tower?: Tower; enemy?: Enemy; shot?: Shot; amount?: number; links?: Point[]; healedTargets?:{enemy:Enemy;amount:number}[]; reason?:CharmEndReason; };
 export type Phase = 'build'|'wave'|'victory'|'defeat';
 const distance=(a:Point,b:Point)=>Math.hypot(a.x-b.x,a.y-b.y);
 export const stats=(tower: Tower)=>({damage:tower.def.damage*[1,1.75,2.8][tower.level-1],range:tower.def.range+(tower.level-1)*15,cooldown:tower.def.cooldown/Math.pow(1.13,tower.level-1)});
@@ -40,6 +43,7 @@ export class Simulation {
   sell(uid:number):boolean {
     const tower=this.towers.find(t=>t.uid===uid);
     if(!tower||this.phase==='defeat'||this.phase==='victory')return false;
+    for(const enemy of this.enemies)if(enemy.charmAction?.targetUid===uid)this.endCharm(enemy,'sold');
     this.gold+=sellValue(tower);this.towers=this.towers.filter(t=>t.uid!==uid);this.events.push({type:'sell',tower,x:tower.x,y:tower.y});return true;
   }
   startWave():boolean {
@@ -56,7 +60,7 @@ export class Simulation {
   private hurt(enemy:Enemy,damage:number,tower:Tower) {
     if(enemy.hp<=0)return;
     enemy.hp-=damage*(tower.def.pierce?1:1-enemy.def.armor);
-    if(enemy.hp<=0){const reward=Math.round(enemy.def.gold*(enemy.boss?3:1));this.gold+=reward;this.earned+=reward;this.kills++;tower.kills++;this.events.push({type:'kill',enemy,x:enemy.x,y:enemy.y,amount:reward});}
+    if(enemy.hp<=0){this.endCharm(enemy,'kill');const reward=Math.round(enemy.def.gold*(enemy.boss?3:1));this.gold+=reward;this.earned+=reward;this.kills++;tower.kills++;this.events.push({type:'kill',enemy,x:enemy.x,y:enemy.y,amount:reward});}
   }
   private impact(shot:Shot,target:Enemy) {
     const def=shot.tower.def;
@@ -76,9 +80,46 @@ export class Simulation {
     this.events.push({type:'hit',shot,x:target.x,y:target.y,links});
   }
   update(dt:number) {
-    if(!Number.isFinite(dt)||dt<=0||this.phase!=='wave')return;
+    if(this.phase!=='wave'){this.clearCharms();return;}
+    if(!Number.isFinite(dt)||dt<=0)return;
     const steps=Math.ceil(dt/.025), step=dt/steps;
     for(let index=0;index<steps&&this.phase==='wave';index++)this.tick(step);
+  }
+  protected fireRateMultiplier(tower:Tower,dt:number):number {
+    return this.enemies.some(enemy=>enemy.hp>0&&enemy.charmAction?.active&&enemy.charmAction.targetUid===tower.uid)?SUCCUBUS_CHARM.rateMultiplier:1;
+  }
+  private endCharm(enemy:Enemy,reason:CharmEndReason){
+    const action=enemy.charmAction;if(!action)return;
+    const tower=this.towers.find(candidate=>candidate.uid===action.targetUid);
+    if(tower)tower.charmRecoveryUntil=this.elapsed+SUCCUBUS_CHARM.recovery;
+    enemy.charmAction=undefined;
+    this.events.push({type:'charm-end',enemy,tower,x:enemy.x,y:enemy.y,reason});
+  }
+  private clearCharms(){for(const enemy of this.enemies)this.endCharm(enemy,'wave-end');}
+  private updateCharms(){
+    for(const enemy of this.enemies){
+      if(!enemy.def.charmer)continue;
+      if(enemy.hp<=0){this.endCharm(enemy,'kill');continue;}
+      const action=enemy.charmAction;
+      if(action){
+        const tower=this.towers.find(candidate=>candidate.uid===action.targetUid);
+        if(!tower){this.endCharm(enemy,'sold');continue;}
+        if(distance(enemy,tower)>SUCCUBUS_CHARM.range){this.endCharm(enemy,'range');continue;}
+        const age=this.elapsed-action.startedAt;
+        if(age>=SUCCUBUS_CHARM.windup+SUCCUBUS_CHARM.channel-1e-9){this.endCharm(enemy,'complete');continue;}
+        if(!action.active&&age>=SUCCUBUS_CHARM.windup-1e-9){action.active=true;this.events.push({type:'charm',enemy,tower,x:enemy.x,y:enemy.y});}
+        continue;
+      }
+      if(this.elapsed<(enemy.nextCharmAt??0)-1e-9)continue;
+      const target=this.towers.filter(tower=>distance(enemy,tower)<=SUCCUBUS_CHARM.range&&this.elapsed>=(tower.charmRecoveryUntil??0)-1e-9&&!this.enemies.some(other=>other!==enemy&&other.charmAction?.targetUid===tower.uid))
+        .sort((a,b)=>distance(enemy,a)-distance(enemy,b)||a.uid-b.uid)[0];
+      if(!target)continue;
+      const dx=target.x-enemy.x,dy=target.y-enemy.y;
+      const direction:Enemy['direction']=Math.abs(dx)>Math.abs(dy)?'side':dy>0?'down':'up';
+      enemy.charmAction={startedAt:this.elapsed,targetUid:target.uid,direction,flip:dx<0,active:false};
+      enemy.direction=direction;enemy.flip=dx<0;enemy.nextCharmAt=this.elapsed+SUCCUBUS_CHARM.cooldown;
+      this.events.push({type:'charm-start',enemy,tower:target,x:enemy.x,y:enemy.y});
+    }
   }
   private healTargets(healer:Enemy,pulseTime=this.elapsed){
     return this.enemies.filter(enemy=>enemy!==healer&&enemy.hp>0&&enemy.hp<enemy.maxHp&&!enemy.def.healer&&!enemy.boss&&distance(enemy,healer)<=JELLY_HEAL.range&&(enemy.lastHealedAt===undefined||pulseTime-enemy.lastHealedAt>=JELLY_HEAL.interval-1e-9))
@@ -117,13 +158,14 @@ export class Simulation {
       if(enemy.hp<=0)continue;
       const slowedDuration=Math.min(dt,enemy.slowTime);
       enemy.slowTime=Math.max(0,enemy.slowTime-dt);
-      let travel=enemy.speed*(dt-slowedDuration*enemy.slow);
+      let travel=enemy.charmAction?0:enemy.speed*(dt-slowedDuration*enemy.slow);
       while(travel>0&&enemy.segment<enemy.path.length-1){const next=enemy.path[enemy.segment+1],gap=distance(enemy,next);const step=Math.min(gap,travel);const dx=next.x-enemy.x,dy=next.y-enemy.y;enemy.direction=Math.abs(dx)>Math.abs(dy)?'side':dy>0?'down':'up';enemy.flip=dx<0;if(gap>0){enemy.x+=dx/gap*step;enemy.y+=dy/gap*step;}travel-=step;enemy.distance+=step;if(gap<=step+.001)enemy.segment++;}
-      if(enemy.segment===enemy.path.length-1){enemy.hp=0;this.lives=Math.max(0,this.lives-enemy.def.lives*(enemy.boss?2:1));this.events.push({type:'escape',enemy,x:enemy.x,y:enemy.y});}
+      if(enemy.segment===enemy.path.length-1){enemy.hp=0;this.endCharm(enemy,'escape');this.lives=Math.max(0,this.lives-enemy.def.lives*(enemy.boss?2:1));this.events.push({type:'escape',enemy,x:enemy.x,y:enemy.y});}
     }
-    if(this.lives<=0){this.phase='defeat';this.events.push({type:'defeat'});return;}
+    if(this.lives<=0){this.phase='defeat';this.clearCharms();this.events.push({type:'defeat'});return;}
+    this.updateCharms();
     for(const tower of this.towers){
-      tower.cooldown-=dt;if(tower.cooldown>0)continue;
+      tower.cooldown-=dt*this.fireRateMultiplier(tower,dt);if(tower.cooldown>0)continue;
       const stat=stats(tower), candidates=this.enemies.filter(e=>e.hp>0&&(tower.def.targets==='all'||!e.def.flying)&&distance(e,tower)<=stat.range);
       candidates.sort((a,b)=>tower.priority==='strong'?b.hp-a.hp:tower.priority==='near'?distance(a,tower)-distance(b,tower):tower.priority==='last'?(a.distance/a.total)-(b.distance/b.total):(b.distance/b.total)-(a.distance/a.total));
       const target=candidates[0];if(!target)continue;

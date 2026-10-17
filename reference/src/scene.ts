@@ -4,12 +4,21 @@ import { assetUrl } from './assets';
 import { Simulation,stats, type Enemy,type Tower,type Event } from './simulation';
 import { TREE_FRAMES, WATER_TILE_SIZE, waterTileSource, clearWaterBackdrop } from './terrain';
 import { JELLY_ASSET, JELLY_SCALE, jellyFrame, makeJellyAnimations } from './jelly-art';
+import { SUCCUBUS_ASSET, SUCCUBUS_SCALE, succubusFrame, makeSuccubusAnimations } from './succubus-art';
 
 export type AssetInfo={width?:number;height?:number;frames?:number;cols?:number;rows?:number;sheetWidth:number;sheetHeight:number;frameMap?:number[];durations?:number[];tags?:{name:string;start:number;end:number}[]};
 export type Assets=Record<string,AssetInfo>;
 export type GameHooks={ready:()=>void; changed:()=>void; event:(event:Event)=>void; select:(tower?:Tower)=>void; toast:(message:string)=>void;};
-type EnemyView={sprite:Phaser.GameObjects.Sprite;shadow:Phaser.GameObjects.Ellipse;bar:Phaser.GameObjects.Graphics;anim:string};
+type CharmView={panel:Phaser.GameObjects.Container;clip:Phaser.GameObjects.Sprite;backing:Phaser.GameObjects.Graphics;tether:Phaser.GameObjects.Graphics};
+type EnemyView={sprite:Phaser.GameObjects.Sprite;shadow:Phaser.GameObjects.Ellipse;bar:Phaser.GameObjects.Graphics;anim:string;charm?:CharmView};
 type TowerView={base:Phaser.GameObjects.Image;weapon:Phaser.GameObjects.Sprite;level:Phaser.GameObjects.Text};
+
+function pixelHeart(graphics:Phaser.GameObjects.Graphics,x:number,y:number,size:number,alpha:number){
+  const p=size/8;
+  graphics.fillStyle(0xffa4d6,alpha);
+  graphics.fillRect(x-3*p,y-3*p,2*p,2*p).fillRect(x+p,y-3*p,2*p,2*p);
+  graphics.fillRect(x-4*p,y-p,8*p,2*p).fillRect(x-3*p,y+p,6*p,2*p).fillRect(x-p,y+3*p,2*p,p);
+}
 
 export class ForestScene extends Phaser.Scene {
   sim!:Simulation; hooks!:GameHooks; assets!:Assets; buildId?:number; selected?:number;
@@ -47,13 +56,14 @@ export class ForestScene extends Phaser.Scene {
     this.tweens.killAll();for(const object of [...this.temporaryObjects])object.destroy();this.temporaryObjects.clear();
     this.ground?.destroy(true);this.ground=undefined;
     for(const view of this.towerViews.values()){view.base.destroy();view.weapon.destroy();view.level.destroy();}this.towerViews.clear();
-    for(const view of this.enemyViews.values()){view.sprite.destroy();view.shadow.destroy();view.bar.destroy();}this.enemyViews.clear();
+    for(const view of this.enemyViews.values()){this.clearCharmView(view);view.sprite.destroy();view.shadow.destroy();view.bar.destroy();}this.enemyViews.clear();
     for(const shot of this.shotViews.values())shot.destroy();this.shotViews.clear();
     if(this.terrainKey){this.textures.remove(this.terrainKey);this.terrainKey=undefined;}
     if(this.routeKey){this.textures.remove(this.routeKey);this.routeKey=undefined;}
   }
   private makeAnimations(){
     makeJellyAnimations(this);
+    makeSuccubusAnimations(this);
     for(const [name,info] of Object.entries(this.assets)){
       if(!info.width||!info.frameMap)continue;
       const make=(key:string,start:number,end:number,repeat=-1)=>{
@@ -210,19 +220,66 @@ export class ForestScene extends Phaser.Scene {
     const idle=`${weaponKey}-idle`;if(this.anims.exists(idle))view.weapon.play(idle);
     this.drawRange();
   }
-  private removeEnemy(enemy:Enemy,death:boolean){const view=this.enemyViews.get(enemy.uid);if(!view)return;view.bar.destroy();view.shadow.destroy();this.enemyViews.delete(enemy.uid);const direction=enemy.healAction?.direction??enemy.direction,key=`${enemy.def.id}-death-${direction}`;if(death&&this.anims.exists(key)){this.track(view.sprite);view.sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE,()=>view.sprite.destroy());view.sprite.play({key,repeat:0});}else view.sprite.destroy();}
+  private clearCharmView(view:EnemyView){view.charm?.panel.destroy(true);view.charm?.tether.destroy();view.charm=undefined;}
+  private updateCharmView(enemy:Enemy,view:EnemyView){
+    const action=enemy.charmAction,target=action?this.sim.towers.find(tower=>tower.uid===action.targetUid):undefined;
+    if(!action||!target||enemy.hp<=0){this.clearCharmView(view);return;}
+    if(!view.charm){
+      const backing=this.add.graphics(),clip=this.add.sprite(0,42,SUCCUBUS_ASSET).setOrigin(.5,.875).setScale(2.2);
+      view.charm={backing,clip,panel:this.add.container(0,0,[backing,clip]).setDepth(6198),tether:this.add.graphics().setDepth(6197)};
+    }
+    const charm=view.charm,age=this.sim.elapsed-action.startedAt,active=action.active;
+    const frame=succubusFrame('dance',action.direction,age*1000),opacity=Math.min(1,age/.18);
+    const visible=this.cameras.main.worldView;
+    const panelX=Phaser.Math.Clamp(enemy.x,Math.max(58,visible.x+58),Math.min(WIDTH-58,visible.right-58));
+    const panelY=Phaser.Math.Clamp(enemy.y>140?enemy.y-125:enemy.y+100,Math.max(64,visible.y+64),Math.min(HEIGHT-64,visible.bottom-64));
+    charm.panel.setPosition(panelX,panelY).setAlpha(opacity);
+    charm.backing.clear().fillStyle(0x291b37,.9).fillRoundedRect(-56,-61,112,122,8);
+    charm.backing.lineStyle(1,active?0xffa3d1:0xa86b9a,active?.9:.65).strokeRoundedRect(-56,-61,112,122,8);
+    charm.backing.fillStyle(0x170d25,.75).fillEllipse(0,44,56,10);
+    pixelHeart(charm.backing,-43,-48,7,active?1:.45);
+    pixelHeart(charm.backing,43,-48,7,active?1:.45);
+    charm.clip.setFrame(frame).setFlipX(action.flip);
+
+    // The world body stays its normal size. This small portrait uses the same
+    // dance frames; elapsed simulation time also freezes every heart on pause.
+    const start={x:enemy.x,y:enemy.y-13},end={x:target.x,y:target.y-34};
+    const curve=(t:number)=>({x:Phaser.Math.Linear(start.x,end.x,t),y:Phaser.Math.Linear(start.y,end.y,t)-Math.sin(t*Math.PI)*26});
+    charm.tether.clear().setAlpha(opacity).lineStyle(active?2:1,0xf185c1,active?.9:.45);
+    for(let step=0;step<30;step++){
+      if(!active&&step%4>=2)continue;
+      const from=curve(step/30),to=curve((step+1)/30);
+      charm.tether.beginPath().moveTo(from.x,from.y).lineTo(to.x,to.y).strokePath();
+    }
+    if(active)for(let index=0;index<3;index++){
+      const position=curve((age*.7+index/3)%1);
+      pixelHeart(charm.tether,position.x,position.y,7,.95);
+    }
+    pixelHeart(charm.tether,end.x,end.y-10+Math.sin(age*6)*2,active?13:9,active?1:.5);
+    if(active){charm.tether.lineStyle(1,0xffb9de,.35).strokeCircle(target.x,target.y-26,17+Math.sin(age*5)*2);}
+  }
+  private removeEnemy(enemy:Enemy,death:boolean){const view=this.enemyViews.get(enemy.uid);if(!view)return;this.clearCharmView(view);view.bar.destroy();view.shadow.destroy();this.enemyViews.delete(enemy.uid);const direction=enemy.charmAction?.direction??enemy.healAction?.direction??enemy.direction,key=`${enemy.def.id}-death-${direction}`;if(death&&this.anims.exists(key)){this.track(view.sprite);view.sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE,()=>view.sprite.destroy());view.sprite.play({key,repeat:0});}else view.sprite.destroy();}
   private puff(x:number,y:number,color:number,radius=10){const ring=this.track(this.add.circle(x,y,radius,color,.35).setDepth(6500));this.tweens.add({targets:ring,scale:2.1,alpha:0,duration:250,onComplete:()=>ring.destroy()});}
   private floating(x:number,y:number,text:string,color:string){const label=this.track(this.add.text(x,y,text,{fontFamily:'monospace',fontSize:'11px',fontStyle:'bold',color,stroke:'#304a32',strokeThickness:2}).setOrigin(.5).setDepth(6800));this.tweens.add({targets:label,y:y-25,alpha:0,duration:850,onComplete:()=>label.destroy()});}
   update(_time:number,delta:number){
     this.ticks+=this.paused||this.menu?0:delta*this.speed;
     if(this.sim&&!this.paused&&!this.menu){const duration=Math.min(delta/1000,.08)*this.speed;const steps=Math.ceil(duration/.025);for(let i=0;i<steps;i++)this.sim.update(duration/steps);this.handleEvents();}
     if(!this.sim)return;
-    for(const tower of this.sim.towers){const view=this.towerViews.get(tower.uid);if(view&&[1,3,4,6].includes(tower.def.id))view.weapon.setRotation(tower.angle);}
+    for(const tower of this.sim.towers){
+      const view=this.towerViews.get(tower.uid);if(!view)continue;
+      const distracted=this.sim.enemies.some(enemy=>enemy.hp>0&&enemy.charmAction?.active&&enemy.charmAction.targetUid===tower.uid);
+      const wobble=distracted?Math.sin(this.sim.elapsed*8+tower.uid)*.045:0;
+      view.base.setRotation(wobble*.4);view.weapon.setRotation(([1,3,4,6].includes(tower.def.id)?tower.angle:0)+wobble);
+    }
     for(const enemy of this.sim.enemies){
       let view=this.enemyViews.get(enemy.uid);
-      if(!view){view={sprite:this.add.sprite(enemy.x,enemy.y,enemy.def.id).setScale(enemy.def.id==='Firewasp'?.65:JELLY_SCALE),shadow:this.add.ellipse(enemy.x,enemy.y+12,23,9,0x263e30,.24),bar:this.add.graphics(),anim:''};this.enemyViews.set(enemy.uid,view);}
+      const succubus=enemy.def.id===SUCCUBUS_ASSET;
+      if(!view){view={sprite:this.add.sprite(enemy.x,enemy.y,enemy.def.id).setScale(succubus?SUCCUBUS_SCALE:enemy.def.id==='Firewasp'?.65:JELLY_SCALE).setOrigin(.5,succubus?.875:.5),shadow:this.add.ellipse(enemy.x,enemy.y+12,23,9,0x263e30,.24),bar:this.add.graphics(),anim:''};this.enemyViews.set(enemy.uid,view);}
       const cast=enemy.def.id===JELLY_ASSET?enemy.healAction:undefined;
-      if(cast){
+      const charm=succubus?enemy.charmAction:undefined;
+      if(charm){
+        view.sprite.stop().setFrame(succubusFrame('dance',charm.direction,(this.sim.elapsed-charm.startedAt)*1000));view.anim='dance';
+      }else if(cast){
         // The simulation clock owns cast progress, so pause, tempo and the
         // actual healing pulse cannot drift away from this four-frame action.
         view.sprite.stop().setFrame(jellyFrame('heal',cast.direction,(this.sim.elapsed-cast.startedAt)*1000));view.anim='heal';
@@ -231,9 +288,10 @@ export class ForestScene extends Phaser.Scene {
         if(view.anim!==key&&this.anims.exists(key)){view.sprite.play(key);view.anim=key;}
       }
       const bob=enemy.def.flying?Math.sin(this.ticks*.007+enemy.uid)*3-11:0;
-      view.sprite.setPosition(enemy.x,enemy.y+bob).setFlipX(cast?.flip??enemy.flip).setDepth(enemy.y+(enemy.def.flying?4000:2000)).setTint(enemy.slowTime>0?0xb9ecff:enemy.burnTime>0?0xffd3a6:0xffffff);
+      view.sprite.setPosition(enemy.x,enemy.y+bob+(succubus?12:0)).setFlipX(charm?.flip??cast?.flip??enemy.flip).setDepth(enemy.y+(enemy.def.flying?4000:2000)).setTint(enemy.slowTime>0?0xb9ecff:enemy.burnTime>0?0xffd3a6:0xffffff);
+      this.updateCharmView(enemy,view);
       if(enemy.boss)view.sprite.setScale(1.15);view.shadow.setPosition(enemy.x,enemy.y+9).setDepth(1000);
-      const barY=enemy.y-25+bob;view.bar.clear().setDepth(5000);if(enemy.hp<enemy.maxHp||enemy.boss){view.bar.fillStyle(0x263f33,.85).fillRoundedRect(enemy.x-17,barY,34,5,2);view.bar.fillStyle(enemy.boss?0xf2b473:0xdde69c,1).fillRoundedRect(enemy.x-16,barY+1,32*enemy.hp/enemy.maxHp,3,1);}
+      const barY=enemy.y-(succubus?36:25)+bob;view.bar.clear().setDepth(5000);if(enemy.hp<enemy.maxHp||enemy.boss){view.bar.fillStyle(0x263f33,.85).fillRoundedRect(enemy.x-17,barY,34,5,2);view.bar.fillStyle(enemy.boss?0xf2b473:0xdde69c,1).fillRoundedRect(enemy.x-16,barY+1,32*enemy.hp/enemy.maxHp,3,1);}
     }
     const liveShots=new Set<number>();for(const shot of this.sim.shots){liveShots.add(shot.uid);let sprite=this.shotViews.get(shot.uid);if(!sprite){const tower=shot.tower,id=String(tower.def.id).padStart(2,'0'),key=`Tower ${id} - ${tower.def.id===7?'Level X':`Level ${String(tower.level).padStart(2,'0')}`} - Projectile`;if(this.textures.exists(key)&&tower.def.id!==8){sprite=this.add.sprite(shot.x,shot.y,key,0).setScale(tower.def.id===3?.65:.45);const animation=`${key}-play`;if(this.anims.exists(animation))sprite.play(animation);}else sprite=this.add.circle(shot.x,shot.y,tower.def.id===8?6:3,tower.def.color);sprite.setDepth(5500);this.shotViews.set(shot.uid,sprite);}const target=this.sim.enemies.find(e=>e.uid===shot.target);sprite.setPosition(shot.x,shot.y);if(target)sprite.setRotation(Math.atan2(target.y-shot.y,target.x-shot.x)+Math.PI/2);}
     for(const[id,sprite]of this.shotViews)if(!liveShots.has(id)){sprite.destroy();this.shotViews.delete(id);}

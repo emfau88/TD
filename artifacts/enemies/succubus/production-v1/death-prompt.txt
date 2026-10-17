@@ -1,0 +1,8 @@
+Use case: identity-preserve. Production asset: short non-gory DEFEAT animation for the existing adult pink-haired fantasy demon-woman game enemy.
+Preserve character identity and opaque costume of reference1/2: warm brown adult woman, long pale pink hair, short dark horns, small folded magenta-black wings, heart-tip tail, black-magenta corset dress with skirt, tall boots and gloves. All clothing stays intact.
+EIGHTEEN isolated sprites, SIX COLUMNS by THREE ROWS with large transparent gaps.
+Top row: FRONT/DOWN view, six successive defeat poses.
+Middle row: BACK/UP view, same six stages, no face visible.
+Bottom row: RIGHT-SIDE view, same six stages.
+Sequence: 1 recoils from hit with hands raised slightly; 2 shoulders sink and knees bend; 3 kneels with wings folded; 4 slumps sideways, hair falls; 5 lies collapsed low on the ground; 6 a small fading remnant of hair/cloak and a few magenta pixels. No gore, no injuries, no separate floating head. Each later pose is genuinely lower and smaller as she collapses, not a full standing pose scaled to same height.
+Keep a common invisible ground baseline across each row; do not align tops of heads in death. Fixed scale of body parts while pose changes. Small simplified chunky pixel-art40px-tall logic, about18-20flat colors, hard square pixels. True transparent background. No imagebackground, groundshadow, text, labels, borders, grid, hearts or effects. Every full sprite remains inside its own spacious cell.

@@ -1,5 +1,6 @@
 import { ENEMIES, type EnemyDef } from './data';
 import { LANTERN_JELLY } from './jelly';
+import { ROSENSPIEGEL } from './succubus';
 import type { RegionID } from './regions';
 
 // Short regional encounters: introduce all eight roles, then combine them.
@@ -26,6 +27,8 @@ export function regionWaveComposition(wave:number,region:RegionID='old-grove'):{
     const count=wave===4?1:wave===7||wave===9?2:0;
     for(let index=0;index<count;index++)result.splice(3+index*6,0,{type:LANTERN_JELLY,boss:false});
   }
+  // One clearly readable caster at a time, first alone and later in a mixed group.
+  if(region==='windbreak'&&(wave===6||wave===9))result.splice(3,0,{type:ROSENSPIEGEL,boss:false});
   if(wave===5||wave===REGION_WAVE_COUNT)result.push({type:ENEMIES.find(enemy=>enemy.id===(wave===5?'Scorpion':'Magma Crab'))!,boss:true});
   return result;
 }

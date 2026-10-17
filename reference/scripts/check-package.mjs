@@ -5,18 +5,19 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const enemyPreview = process.argv[2] === 'enemy';
+const succubusPreview = process.argv[2] === 'succubus';
 const woodland = process.argv[2] === 'forest';
-const stylePreview = process.argv[2] === 'style' || woodland || enemyPreview;
-const regional=woodland||enemyPreview;
-const dist = enemyPreview ? 'enemy-dist' : woodland ? 'woodland-dist' : stylePreview ? 'style-dist' : 'dist';
+const stylePreview = process.argv[2] === 'style' || woodland || enemyPreview || succubusPreview;
+const regional=woodland||enemyPreview||succubusPreview;
+const dist = succubusPreview ? 'succubus-dist' : enemyPreview ? 'enemy-dist' : woodland ? 'woodland-dist' : stylePreview ? 'style-dist' : 'dist';
 const manifest = JSON.parse(await readFile(resolve(root, 'public/assets/manifest.json'), 'utf8'));
-const offline = await readFile(resolve(root, enemyPreview ? 'Spire-Gegnerprobe.html' : woodland ? 'Spire-Regionen.html' : stylePreview ? 'Spire-Style.html' : 'Spire-Original.html'), 'utf8');
+const offline = await readFile(resolve(root, succubusPreview ? 'Spire-Succubus.html' : enemyPreview ? 'Spire-Gegnerprobe.html' : woodland ? 'Spire-Regionen.html' : stylePreview ? 'Spire-Style.html' : 'Spire-Original.html'), 'utf8');
 const payload = offline.match(/window\.__SPIRE_BUNDLE__=(.*?);<\/script>/s)?.[1];
 assert.ok(payload, 'Offline payload missing');
 const embedded = JSON.parse(payload);
-assert.equal(Object.keys(embedded.images).length, regional ? 92 : stylePreview ? 85 : 84);
+assert.equal(Object.keys(embedded.images).length, regional ? 93 : stylePreview ? 85 : 84);
 if (regional) {
-  for(const name of ['Laternenmoor Props v1','Spiegelwinter Tiles v1','Spiegelwinter Sprites v1','Windbruch Tiles v1','Windbruch Sprites v1','Windbruch Details v1','Lantern Jelly Pixel v1']){
+  for(const name of ['Laternenmoor Props v1','Spiegelwinter Tiles v1','Spiegelwinter Sprites v1','Windbruch Tiles v1','Windbruch Sprites v1','Windbruch Details v1','Lantern Jelly Pixel v1','Succubus Pixel v2']){
     const source=await readFile(resolve(root, '../public/assets',`${name}.png`));
     assert.ok(source.equals(Buffer.from(embedded.images[name].split(',')[1], 'base64')));
     assert.ok(source.equals(await readFile(resolve(root, dist, 'assets',`${name}.png`))));
@@ -62,4 +63,4 @@ for (const name of uiNames) {
   assert.ok(original.equals(encoded), `${name}: embedded UI PNG differs`);
   assert.ok(original.readUInt32BE(16) > 0 && original.readUInt32BE(20) > 0, `${name}: invalid UI dimensions`);
 }
-console.log(`PASS ${regional ? 92 : stylePreview ? 85 : 84} game PNGs and 7 UI PNGs: production and offline bytes match; dimensions and animation frames valid; offline package has no external script/style/font/image dependencies.`);
+console.log(`PASS ${regional ? 93 : stylePreview ? 85 : 84} game PNGs and 7 UI PNGs: production and offline bytes match; dimensions and animation frames valid; offline package has no external script/style/font/image dependencies.`);
