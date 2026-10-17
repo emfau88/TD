@@ -12,7 +12,7 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant und Commit/Push/Pages beauftragt. Figurenmechanik und Werkstattschilder nur vorgemerkt |
-| Aktives Umsetzungspaket | Mobile-Nachbesserung lokal geprüft; Veröffentlichung folgt |
+| Aktives Umsetzungspaket | Keines · mobile Nachbesserung veröffentlicht |
 | Nächster Schritt | Nutzer testet die veröffentlichte Fassung und entscheidet über G1; B08 bleibt gesperrt |
 | G1: 90-Sekunden-Zwischenabnahme | **Offen; keine Nutzerfreigabe vorhanden** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
@@ -27,7 +27,7 @@ Am 18.10.2026 ausdrücklich beauftragt: mobile Spielfläche vergrößern, Vollbi
 - [x] Maras Hinweis zunächst einklappen; Hinweise, Chronik und Kernaktionen erreichbar halten.
 - [x] Vollbild-Schalter und verständliche Nichtverfügbarkeitsmeldung ergänzen.
 - [x] Build und normale Hochkantbedienung prüfen; Desktop-Layout abgrenzen. [Nachweis](../../artifacts/idle-bastion/acceptance/ui/MOBILE.md).
-- [ ] Commit/Push und öffentliche Testfassung bestätigen.
+- [x] Commit/Push und öffentliche Testfassung bestätigen: `7b74a7b`, [Pages-Lauf 39073600914](https://github.com/emfau88/TD/actions/runs/39073600914) erfolgreich; mobile Statusleiste 56 px, Dock 96 px und eingeklappter Tipp öffentlich geprüft.
 
 ## So werden die Pakete bearbeitet
 

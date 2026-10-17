@@ -11,4 +11,4 @@ Geprüft: TypeScript/Produktionsbuild; normale Hochkantansicht 390×844 mit rund
 
 ![Kompakte mobile Ansicht](mobile-compact-390x844.png)
 
-[Playlink](https://emfau88.github.io/TD/idle-bastion/). Veröffentlichung erfolgt über den bestehenden Branch-Workflow.
+[Playlink](https://emfau88.github.io/TD/idle-bastion/). Veröffentlicht aus `7b74a7b`; [Pages-Lauf 39073600914](https://github.com/emfau88/TD/actions/runs/39073600914) erfolgreich. Die öffentliche Ansicht zeigte den laufenden Kampf, 56 px HUD / 96 px Dock, Vollbild-Schalter und eingeklappten Tipp.
