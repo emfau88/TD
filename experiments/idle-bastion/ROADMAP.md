@@ -39,7 +39,7 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P1 | B02 · Kampf und Gold | Automatische Wellen, bezahlbare Käufe, Kernreset | B01 | Erledigt · `d10cb04` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b02--automatischer-kampf-und-bauwirtschaft) |
 | P1 | B03 · Spielstand | Laufenden Kampf samt Wirtschaft konsistent wiederherstellen | B02 | Erledigt · `40dc019` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b03--konsistenter-spielstand-während-des-kampfes) |
 | P1 | B04 · Farmen und Abwesenheit | Tragfähige Rückfallwelle, korrekte Offline-Zeit, ein schreibender Tab | B03 | Erledigt · `25e9a5f` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b04--sicheres-farmen-abwesenheit-und-tab-eigentümerschaft) |
-| P2 | B05 · Startlichtung und Mara | Echter Wald, sichtbare automatische Unterstützung und bedienbares HUD | B04; Layout aus B01 | Erledigt · `a4f7e91` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b05--startlichtung-mara-und-kompakte-bedienung) |
+| P2 | B05 · Startlichtung und Mara | Echter Wald, sichtbare automatische Unterstützung und bedienbares HUD | B04; Layout aus B01 | Erledigt · `884f7c4` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b05--startlichtung-mara-und-kompakte-bedienung) |
 | P2 | B06 · Werkstatt und Frost | Erstes sichtbares Gebäude mit neuer taktischer Möglichkeit | B05 | In Arbeit |
 | P2 | B07 · Einstieg und Nachweise | Regulär spielbarer 90-Sekunden-Kreislauf samt kurzer Technikfolge | B06 | Nicht begonnen |
 | Halt | G1 · Nutzerabnahme | Ausdrückliche Entscheidung zur vorgelegten Fassung | B01–B07 geprüft | **Offen** |

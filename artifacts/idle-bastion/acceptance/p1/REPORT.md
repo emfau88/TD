@@ -180,7 +180,7 @@ B01–B04 sind abgeschlossen. Der Nutzer hat zuletzt ausdrücklich „warte vor 
 
 ## B05 — Startlichtung, Mara und kompakte Bedienung
 
-Geprüfter Implementierungscommit: `a4f7e91`.
+Geprüfter Implementierungscommit: `884f7c4`.
 
 ### Ergebnis
 
