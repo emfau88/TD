@@ -19,7 +19,11 @@
     "test:ui": "node scripts/check-ui.mjs",
     "test:scene": "node scripts/check-scene.mjs",
     "test:package": "node scripts/check-package.mjs",
-    "balance:sim": "tsx scripts/balance.ts"
+    "balance:sim": "tsx scripts/balance.ts",
+    "idle:dev": "vite --config experiments/idle-bastion/vite.config.ts",
+    "idle:build": "tsc --project experiments/idle-bastion/tsconfig.json --noEmit && vite build --config experiments/idle-bastion/vite.config.ts",
+    "idle:preview": "vite preview --config experiments/idle-bastion/vite.config.ts",
+    "idle:test": "tsx --test experiments/idle-bastion/tests/*.test.ts"
   },
   "dependencies": {
     "phaser": "^4.1.0"

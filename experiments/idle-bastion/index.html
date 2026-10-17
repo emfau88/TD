@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10211d" />
+    <meta name="description" content="Maßstäbliche Kartenprobe für SPIRE: Idle Bastion." />
+    <title>SPIRE · Idle Bastion — Kartenprobe</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <div>
+            <p class="eyebrow">SPIRE</p>
+            <h1>Idle Bastion</h1>
+          </div>
+        </div>
+        <p class="phase-badge"><span aria-hidden="true"></span>B01 · Kartenprobe</p>
+      </header>
+
+      <main class="workspace">
+        <section class="board-section" aria-labelledby="board-title">
+          <div class="board-toolbar">
+            <h2 id="board-title">Startlichtung</h2>
+            <div class="view-controls" aria-label="Kartenansicht">
+              <button id="home-view" type="button">Startansicht</button>
+              <button id="plan-view" type="button">Erweiterung prüfen</button>
+              <label class="toggle-control"><input id="grid-toggle" type="checkbox" checked />Raster</label>
+              <label class="toggle-control"><input id="ranges-toggle" type="checkbox" />Reichweiten</label>
+            </div>
+          </div>
+          <div id="game" role="img" aria-label="Interaktive maßstäbliche Layoutprobe der Startlichtung mit Pfad, Kern, Grundstücken und Turmplätzen"></div>
+          <p class="board-caption">Plätze anklicken, um ihre Lage zu prüfen. Diese neutrale Kartenprobe zeigt Anordnung und Zugänge; der Kampf folgt später.</p>
+        </section>
+
+        <aside class="info-panel" aria-labelledby="info-title">
+          <div class="panel-intro">
+            <p class="eyebrow">Der erste Ausschnitt</p>
+            <h2 id="info-title">Ein kompakter Anfang</h2>
+            <p>Startturm, Mara, Werkstatt und Kern liegen gemeinsam im Blick. Der Weg endet direkt am Kern.</p>
+          </div>
+
+          <section class="selection-card" aria-labelledby="selection-title">
+            <h3 id="selection-title">Auf der Karte</h3>
+            <p id="selection-description" role="status">Wähle einen markierten Platz. Hier erscheinen seine Funktion und die vorgesehenen Zugänge.</p>
+          </section>
+
+          <section class="legend-section" aria-labelledby="legend-title">
+            <h3 id="legend-title">Orientierung</h3>
+            <ul class="legend">
+              <li><span class="legend-swatch legend-path" aria-hidden="true"></span>Gegnerpfad</li>
+              <li><span class="legend-swatch legend-slot" aria-hidden="true"></span>Fester Turmplatz</li>
+              <li><span class="legend-swatch legend-plot" aria-hidden="true"></span>Gebäudegrundstück</li>
+              <li><span class="legend-swatch legend-mara" aria-hidden="true"></span>Mara / Zugang</li>
+            </ul>
+          </section>
+
+          <dl class="layout-metrics">
+            <div><dt>Zellmaß</dt><dd>40 × 40</dd></div>
+            <div><dt>Startgebiet</dt><dd>28 × 16</dd></div>
+            <div><dt>Turmplätze im Slice</dt><dd>10 geplant</dd></div>
+          </dl>
+
+          <div class="layout-feedback">
+            <p id="layout-status" role="status">Die Kartenprobe wird geladen …</p>
+            <p id="app-error" class="app-error" role="alert" hidden></p>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="app-footer">
+        <span>Entwicklungsstand B01</span>
+        <span>Layoutnachweis · noch kein fertiges Spiel</span>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
