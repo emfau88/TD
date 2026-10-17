@@ -287,6 +287,8 @@ Wenn die visuelle Prüfung technisch blockiert ist, lautet der Status „visuell
 - [ ] P3: Ilyra, anschließend Runa und Auswahl von zwei Begleitern integrieren.
 - [ ] P4: Spielgefühl, Figurenanimationen und Rückmeldungen gezielt verbessern.
 
-**Nächster Schritt laut neuem Nutzerauftrag:** Den Laternenquallen-Stand committen und pushen, danach zwei bis drei kleine Succubus-Bildvorschläge mit klaren Fähigkeitsideen vorlegen. Die Auswahl geht der Animation und Integration voraus. Als nächster allgemeiner Spielausbau bleibt P1 vorgesehen; Mondwarte und Story folgen später. Prüfungen bleiben auf geänderte Funktionen und nötige Abläufe beschränkt.
+**Aktueller Entwurfsauftrag:** Laternenquallen-Stand sichern und Succubus-Varianten vorlegen; abgeschlossen. Die Designauswahl ist dokumentiert, eine Umsetzung wurde ausdrücklich zurückgestellt. Als nächster allgemeiner Spielausbau bleibt P1 vorgesehen; Mondwarte und Story folgen später. Prüfungen bleiben auf geänderte Funktionen und nötige Abläufe beschränkt.
+
+**Anschließende Designauswahl:** Der Laternenquallen-Stand ist als `bfbbc70` gepusht. Drei Succubus-Entwürfe wurden erzeugt; der Nutzer hat **Nummer 3, die pinkhaarige Tänzerin**, gewählt. [Bilder, Auswahl und Fähigkeitsidee](artifacts/enemies/succubus/concepts-v1/README.md). Herzfaden, Verführung und Tanzdarstellung bleiben Vorschläge; auf ausdrücklichen Wunsch noch keine Succubus-Implementierung.
 
 Bei späteren Arbeiten zuerst diesen Plan und den letzten belegten Stand lesen. Checklisten werden nur mit tatsächlichem Nachweis aktualisiert; Nutzerabnahmen werden nicht aus verstrichener Zeit oder fehlendem Widerspruch abgeleitet.
