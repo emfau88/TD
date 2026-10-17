@@ -1,0 +1,1437 @@
+{
+  "revision": 3,
+  "asset": "Succubus Pixel v2.png",
+  "width": 512,
+  "height": 576,
+  "cell": [
+    64,
+    64
+  ],
+  "foot": [
+    32,
+    56
+  ],
+  "scale": 1,
+  "allocatedSlots": 72,
+  "usedSlots": 57,
+  "distinctPoses": 38,
+  "reserved": [
+    5,
+    6,
+    21,
+    22,
+    23,
+    29,
+    30,
+    45,
+    46,
+    47,
+    53,
+    54,
+    69,
+    70,
+    71
+  ],
+  "palette": [
+    "#28182d",
+    "#522246",
+    "#b91463",
+    "#e8237e",
+    "#e97ca5",
+    "#ffc1d2",
+    "#aa653e",
+    "#d89562",
+    "#f2bb86",
+    "#e5b147",
+    "#fff3e4",
+    "#7c2252"
+  ],
+  "animations": {
+    "idle-down": {
+      "frames": [
+        0
+      ],
+      "durations": [
+        100
+      ],
+      "repeat": -1
+    },
+    "move-down": {
+      "frames": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "durations": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "repeat": -1
+    },
+    "dance-down": {
+      "frames": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "durations": [
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190
+      ],
+      "repeat": -1
+    },
+    "death-down": {
+      "frames": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "durations": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "repeat": 0
+    },
+    "idle-up": {
+      "frames": [
+        24
+      ],
+      "durations": [
+        100
+      ],
+      "repeat": -1
+    },
+    "move-up": {
+      "frames": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "durations": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "repeat": -1
+    },
+    "dance-up": {
+      "frames": [
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "durations": [
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190
+      ],
+      "repeat": -1
+    },
+    "death-up": {
+      "frames": [
+        39,
+        40,
+        41,
+        42,
+        43,
+        44
+      ],
+      "durations": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "repeat": 0
+    },
+    "idle-side": {
+      "frames": [
+        48
+      ],
+      "durations": [
+        100
+      ],
+      "repeat": -1
+    },
+    "move-side": {
+      "frames": [
+        49,
+        50,
+        51,
+        52
+      ],
+      "durations": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "repeat": -1
+    },
+    "dance-side": {
+      "frames": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ],
+      "durations": [
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190,
+        190
+      ],
+      "repeat": -1
+    },
+    "death-side": {
+      "frames": [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "durations": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "repeat": 0
+    }
+  },
+  "frames": [
+    {
+      "index": 0,
+      "direction": "down",
+      "state": "idle",
+      "bounds": [
+        18,
+        15,
+        25,
+        41
+      ]
+    },
+    {
+      "index": 1,
+      "direction": "down",
+      "state": "move",
+      "bounds": [
+        18,
+        15,
+        25,
+        41
+      ]
+    },
+    {
+      "index": 2,
+      "direction": "down",
+      "state": "move",
+      "bounds": [
+        18,
+        15,
+        25,
+        41
+      ]
+    },
+    {
+      "index": 3,
+      "direction": "down",
+      "state": "move",
+      "bounds": [
+        18,
+        15,
+        25,
+        41
+      ]
+    },
+    {
+      "index": 4,
+      "direction": "down",
+      "state": "move",
+      "bounds": [
+        18,
+        15,
+        25,
+        41
+      ]
+    },
+    {
+      "index": 7,
+      "direction": "down",
+      "state": "dance",
+      "bounds": [
+        14,
+        14,
+        26,
+        42
+      ]
+    },
+    {
+      "index": 8,
+      "direction": "down",
+      "state": "dance",
+      "bounds": [
+        14,
+        14,
+        30,
+        42
+      ]
+    },
+    {
+      "index": 9,
+      "direction": "down",
+      "state": "dance",
+      "bounds": [
+        14,
+        12,
+        30,
+        44
+      ]
+    },
+    {
+      "index": 10,
+      "direction": "down",
+      "state": "dance",
+      "bounds": [
+        10,
+        14,
+        35,
+        42
+      ]
+    },
+    {
+      "index": 11,
+      "direction": "down",
+      "state": "dance",
+      "bounds": [
+        13,
+        15,
+        29,
+        41
+      ]
+    },
+    {
+      "index": 12,
+      "direction": "down",
+      "state": "dance",
+      "bounds": [
+        15,
+        13,
+        31,
+        43
+      ]
+    },
+    {
+      "index": 13,
+      "direction": "down",
+      "state": "dance",
+      "bounds": [
+        16,
+        15,
+        28,
+        41
+      ]
+    },
+    {
+      "index": 14,
+      "direction": "down",
+      "state": "dance",
+      "bounds": [
+        15,
+        15,
+        27,
+        41
+      ]
+    },
+    {
+      "index": 15,
+      "direction": "down",
+      "state": "death",
+      "bounds": [
+        18,
+        15,
+        29,
+        40
+      ]
+    },
+    {
+      "index": 16,
+      "direction": "down",
+      "state": "death",
+      "bounds": [
+        17,
+        19,
+        27,
+        37
+      ]
+    },
+    {
+      "index": 17,
+      "direction": "down",
+      "state": "death",
+      "bounds": [
+        16,
+        26,
+        31,
+        30
+      ]
+    },
+    {
+      "index": 18,
+      "direction": "down",
+      "state": "death",
+      "bounds": [
+        14,
+        33,
+        35,
+        23
+      ]
+    },
+    {
+      "index": 19,
+      "direction": "down",
+      "state": "death",
+      "bounds": [
+        9,
+        38,
+        46,
+        18
+      ]
+    },
+    {
+      "index": 20,
+      "direction": "down",
+      "state": "death",
+      "bounds": [
+        19,
+        48,
+        26,
+        8
+      ]
+    },
+    {
+      "index": 24,
+      "direction": "up",
+      "state": "idle",
+      "bounds": [
+        18,
+        15,
+        24,
+        41
+      ]
+    },
+    {
+      "index": 25,
+      "direction": "up",
+      "state": "move",
+      "bounds": [
+        18,
+        15,
+        24,
+        41
+      ]
+    },
+    {
+      "index": 26,
+      "direction": "up",
+      "state": "move",
+      "bounds": [
+        18,
+        15,
+        24,
+        41
+      ]
+    },
+    {
+      "index": 27,
+      "direction": "up",
+      "state": "move",
+      "bounds": [
+        19,
+        15,
+        24,
+        41
+      ]
+    },
+    {
+      "index": 28,
+      "direction": "up",
+      "state": "move",
+      "bounds": [
+        19,
+        15,
+        24,
+        41
+      ]
+    },
+    {
+      "index": 31,
+      "direction": "up",
+      "state": "dance",
+      "bounds": [
+        14,
+        14,
+        26,
+        42
+      ]
+    },
+    {
+      "index": 32,
+      "direction": "up",
+      "state": "dance",
+      "bounds": [
+        14,
+        14,
+        30,
+        42
+      ]
+    },
+    {
+      "index": 33,
+      "direction": "up",
+      "state": "dance",
+      "bounds": [
+        14,
+        12,
+        30,
+        44
+      ]
+    },
+    {
+      "index": 34,
+      "direction": "up",
+      "state": "dance",
+      "bounds": [
+        10,
+        14,
+        35,
+        42
+      ]
+    },
+    {
+      "index": 35,
+      "direction": "up",
+      "state": "dance",
+      "bounds": [
+        13,
+        15,
+        29,
+        41
+      ]
+    },
+    {
+      "index": 36,
+      "direction": "up",
+      "state": "dance",
+      "bounds": [
+        15,
+        13,
+        31,
+        43
+      ]
+    },
+    {
+      "index": 37,
+      "direction": "up",
+      "state": "dance",
+      "bounds": [
+        16,
+        15,
+        28,
+        41
+      ]
+    },
+    {
+      "index": 38,
+      "direction": "up",
+      "state": "dance",
+      "bounds": [
+        15,
+        15,
+        27,
+        41
+      ]
+    },
+    {
+      "index": 39,
+      "direction": "up",
+      "state": "death",
+      "bounds": [
+        17,
+        14,
+        32,
+        41
+      ]
+    },
+    {
+      "index": 40,
+      "direction": "up",
+      "state": "death",
+      "bounds": [
+        16,
+        20,
+        33,
+        36
+      ]
+    },
+    {
+      "index": 41,
+      "direction": "up",
+      "state": "death",
+      "bounds": [
+        16,
+        27,
+        32,
+        29
+      ]
+    },
+    {
+      "index": 42,
+      "direction": "up",
+      "state": "death",
+      "bounds": [
+        15,
+        35,
+        35,
+        21
+      ]
+    },
+    {
+      "index": 43,
+      "direction": "up",
+      "state": "death",
+      "bounds": [
+        9,
+        42,
+        48,
+        16
+      ]
+    },
+    {
+      "index": 44,
+      "direction": "up",
+      "state": "death",
+      "bounds": [
+        18,
+        48,
+        27,
+        10
+      ]
+    },
+    {
+      "index": 48,
+      "direction": "side",
+      "state": "idle",
+      "bounds": [
+        11,
+        14,
+        31,
+        42
+      ]
+    },
+    {
+      "index": 49,
+      "direction": "side",
+      "state": "move",
+      "bounds": [
+        11,
+        14,
+        31,
+        42
+      ]
+    },
+    {
+      "index": 50,
+      "direction": "side",
+      "state": "move",
+      "bounds": [
+        13,
+        14,
+        26,
+        42
+      ]
+    },
+    {
+      "index": 51,
+      "direction": "side",
+      "state": "move",
+      "bounds": [
+        11,
+        15,
+        32,
+        41
+      ]
+    },
+    {
+      "index": 52,
+      "direction": "side",
+      "state": "move",
+      "bounds": [
+        12,
+        15,
+        27,
+        41
+      ]
+    },
+    {
+      "index": 55,
+      "direction": "side",
+      "state": "dance",
+      "bounds": [
+        14,
+        14,
+        26,
+        42
+      ]
+    },
+    {
+      "index": 56,
+      "direction": "side",
+      "state": "dance",
+      "bounds": [
+        14,
+        14,
+        30,
+        42
+      ]
+    },
+    {
+      "index": 57,
+      "direction": "side",
+      "state": "dance",
+      "bounds": [
+        14,
+        12,
+        30,
+        44
+      ]
+    },
+    {
+      "index": 58,
+      "direction": "side",
+      "state": "dance",
+      "bounds": [
+        10,
+        14,
+        35,
+        42
+      ]
+    },
+    {
+      "index": 59,
+      "direction": "side",
+      "state": "dance",
+      "bounds": [
+        13,
+        15,
+        29,
+        41
+      ]
+    },
+    {
+      "index": 60,
+      "direction": "side",
+      "state": "dance",
+      "bounds": [
+        15,
+        13,
+        31,
+        43
+      ]
+    },
+    {
+      "index": 61,
+      "direction": "side",
+      "state": "dance",
+      "bounds": [
+        16,
+        15,
+        28,
+        41
+      ]
+    },
+    {
+      "index": 62,
+      "direction": "side",
+      "state": "dance",
+      "bounds": [
+        15,
+        15,
+        27,
+        41
+      ]
+    },
+    {
+      "index": 63,
+      "direction": "side",
+      "state": "death",
+      "bounds": [
+        17,
+        16,
+        27,
+        40
+      ]
+    },
+    {
+      "index": 64,
+      "direction": "side",
+      "state": "death",
+      "bounds": [
+        16,
+        20,
+        33,
+        36
+      ]
+    },
+    {
+      "index": 65,
+      "direction": "side",
+      "state": "death",
+      "bounds": [
+        13,
+        27,
+        32,
+        29
+      ]
+    },
+    {
+      "index": 66,
+      "direction": "side",
+      "state": "death",
+      "bounds": [
+        13,
+        34,
+        38,
+        22
+      ]
+    },
+    {
+      "index": 67,
+      "direction": "side",
+      "state": "death",
+      "bounds": [
+        8,
+        40,
+        49,
+        16
+      ]
+    },
+    {
+      "index": 68,
+      "direction": "side",
+      "state": "death",
+      "bounds": [
+        18,
+        47,
+        27,
+        9
+      ]
+    }
+  ],
+  "sources": {
+    "files": {
+      "vertical": "production-v3/vertical-walk-source.png",
+      "move-side-fix": "production-v2/move-side-fix-source.png",
+      "dance": "production-v2/dance-source.png",
+      "death": "production-v1/death-source.png"
+    },
+    "movement": {
+      "side": [
+        {
+          "source": "move-side-fix",
+          "box": [
+            93,
+            14,
+            353,
+            481
+          ],
+          "foot": [
+            330,
+            495
+          ],
+          "scale": 0.087
+        },
+        {
+          "source": "move-side-fix",
+          "box": [
+            1063,
+            14,
+            306,
+            481
+          ],
+          "foot": [
+            1286,
+            495
+          ],
+          "scale": 0.087
+        },
+        {
+          "source": "move-side-fix",
+          "box": [
+            84,
+            523,
+            368,
+            473
+          ],
+          "foot": [
+            330,
+            996
+          ],
+          "scale": 0.087
+        },
+        {
+          "source": "move-side-fix",
+          "box": [
+            1061,
+            522,
+            305,
+            474
+          ],
+          "foot": [
+            1286,
+            996
+          ],
+          "scale": 0.087
+        }
+      ],
+      "up": [
+        {
+          "source": "vertical",
+          "box": [
+            119,
+            510,
+            281,
+            488
+          ],
+          "foot": [
+            278,
+            998
+          ],
+          "scale": 0.085
+        },
+        {
+          "source": "vertical",
+          "box": [
+            474,
+            510,
+            282,
+            488
+          ],
+          "foot": [
+            634,
+            998
+          ],
+          "scale": 0.085
+        },
+        {
+          "source": "vertical",
+          "box": [
+            832,
+            512,
+            285,
+            486
+          ],
+          "foot": [
+            982,
+            998
+          ],
+          "scale": 0.085
+        },
+        {
+          "source": "vertical",
+          "box": [
+            1194,
+            511,
+            280,
+            487
+          ],
+          "foot": [
+            1343,
+            998
+          ],
+          "scale": 0.085
+        }
+      ],
+      "down": [
+        {
+          "source": "vertical",
+          "box": [
+            114,
+            12,
+            295,
+            486
+          ],
+          "foot": [
+            278,
+            498
+          ],
+          "scale": 0.085
+        },
+        {
+          "source": "vertical",
+          "box": [
+            474,
+            12,
+            285,
+            486
+          ],
+          "foot": [
+            634,
+            498
+          ],
+          "scale": 0.085
+        },
+        {
+          "source": "vertical",
+          "box": [
+            820,
+            12,
+            296,
+            486
+          ],
+          "foot": [
+            982,
+            498
+          ],
+          "scale": 0.085
+        },
+        {
+          "source": "vertical",
+          "box": [
+            1181,
+            12,
+            292,
+            486
+          ],
+          "foot": [
+            1343,
+            498
+          ],
+          "scale": 0.085
+        }
+      ]
+    },
+    "dance": [
+      {
+        "source": "dance",
+        "box": [
+          45,
+          39,
+          290,
+          464
+        ],
+        "foot": [
+          242,
+          503
+        ],
+        "scale": 0.09
+      },
+      {
+        "source": "dance",
+        "box": [
+          419,
+          39,
+          328,
+          464
+        ],
+        "foot": [
+          615,
+          503
+        ],
+        "scale": 0.09
+      },
+      {
+        "source": "dance",
+        "box": [
+          786,
+          17,
+          339,
+          486
+        ],
+        "foot": [
+          988,
+          503
+        ],
+        "scale": 0.09
+      },
+      {
+        "source": "dance",
+        "box": [
+          1125,
+          39,
+          397,
+          464
+        ],
+        "foot": [
+          1374,
+          503
+        ],
+        "scale": 0.09
+      },
+      {
+        "source": "dance",
+        "box": [
+          33,
+          542,
+          321,
+          457
+        ],
+        "foot": [
+          242,
+          999
+        ],
+        "scale": 0.09
+      },
+      {
+        "source": "dance",
+        "box": [
+          424,
+          520,
+          348,
+          479
+        ],
+        "foot": [
+          615,
+          999
+        ],
+        "scale": 0.09
+      },
+      {
+        "source": "dance",
+        "box": [
+          809,
+          542,
+          312,
+          457
+        ],
+        "foot": [
+          988,
+          999
+        ],
+        "scale": 0.09
+      },
+      {
+        "source": "dance",
+        "box": [
+          1185,
+          542,
+          299,
+          457
+        ],
+        "foot": [
+          1374,
+          999
+        ],
+        "scale": 0.09
+      }
+    ],
+    "death": {
+      "down": [
+        {
+          "source": "death",
+          "box": [
+            32,
+            18,
+            208,
+            291
+          ],
+          "foot": [
+            135,
+            314
+          ],
+          "scale": 0.14
+        },
+        {
+          "source": "death",
+          "box": [
+            314,
+            50,
+            192,
+            261
+          ],
+          "foot": [
+            421,
+            314
+          ],
+          "scale": 0.14
+        },
+        {
+          "source": "death",
+          "box": [
+            590,
+            102,
+            226,
+            212
+          ],
+          "foot": [
+            706,
+            314
+          ],
+          "scale": 0.14
+        },
+        {
+          "source": "death",
+          "box": [
+            871,
+            153,
+            246,
+            159
+          ],
+          "foot": [
+            996,
+            314
+          ],
+          "scale": 0.14
+        },
+        {
+          "source": "death",
+          "box": [
+            1153,
+            189,
+            334,
+            125
+          ],
+          "foot": [
+            1320,
+            314
+          ],
+          "scale": 0.14
+        },
+        {
+          "source": "death",
+          "box": [
+            1533,
+            254,
+            192,
+            60
+          ],
+          "foot": [
+            1629,
+            314
+          ],
+          "scale": 0.14
+        }
+      ],
+      "up": [
+        {
+          "source": "death",
+          "box": [
+            47,
+            317,
+            219,
+            273
+          ],
+          "foot": [
+            150,
+            596
+          ],
+          "scale": 0.15
+        },
+        {
+          "source": "death",
+          "box": [
+            343,
+            357,
+            220,
+            240
+          ],
+          "foot": [
+            447,
+            596
+          ],
+          "scale": 0.15
+        },
+        {
+          "source": "death",
+          "box": [
+            619,
+            404,
+            216,
+            193
+          ],
+          "foot": [
+            727,
+            596
+          ],
+          "scale": 0.15
+        },
+        {
+          "source": "death",
+          "box": [
+            898,
+            451,
+            232,
+            146
+          ],
+          "foot": [
+            1010,
+            596
+          ],
+          "scale": 0.15
+        },
+        {
+          "source": "death",
+          "box": [
+            1172,
+            500,
+            320,
+            107
+          ],
+          "foot": [
+            1322,
+            596
+          ],
+          "scale": 0.15
+        },
+        {
+          "source": "death",
+          "box": [
+            1548,
+            542,
+            181,
+            65
+          ],
+          "foot": [
+            1640,
+            596
+          ],
+          "scale": 0.15
+        }
+      ],
+      "side": [
+        {
+          "source": "death",
+          "box": [
+            31,
+            597,
+            175,
+            269
+          ],
+          "foot": [
+            128,
+            866
+          ],
+          "scale": 0.15
+        },
+        {
+          "source": "death",
+          "box": [
+            316,
+            628,
+            217,
+            238
+          ],
+          "foot": [
+            422,
+            866
+          ],
+          "scale": 0.15
+        },
+        {
+          "source": "death",
+          "box": [
+            587,
+            675,
+            237,
+            191
+          ],
+          "foot": [
+            711,
+            866
+          ],
+          "scale": 0.15
+        },
+        {
+          "source": "death",
+          "box": [
+            873,
+            715,
+            255,
+            150
+          ],
+          "foot": [
+            1002,
+            866
+          ],
+          "scale": 0.15
+        },
+        {
+          "source": "death",
+          "box": [
+            1164,
+            758,
+            326,
+            108
+          ],
+          "foot": [
+            1322,
+            866
+          ],
+          "scale": 0.15
+        },
+        {
+          "source": "death",
+          "box": [
+            1544,
+            805,
+            185,
+            68
+          ],
+          "foot": [
+            1637,
+            866
+          ],
+          "scale": 0.15
+        }
+      ]
+    }
+  },
+  "notes": "Revision 3 corrects the vertical leg cycle with alternating left/right contact and lifted boots. Four walking poses remain 150ms each, with a consistent foot anchor and 12-color palette. Side walking, body dance and death frames are pixel-identical to v2. The larger dance presentation uses a separate higher-resolution atlas. The first new vertical study repeated the lifted boot; one targeted correction fixed the side swap. Raw sources and the v2 runtime atlas are preserved."
+}

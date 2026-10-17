@@ -57,6 +57,7 @@ async function prepare() {
   await run([resolve(root,'scripts/prepare-jelly-preview.mjs')]);
   await run([resolve(root,'scripts/prepare-jelly-atlas.mjs')]);
   await run([resolve(root,'scripts/prepare-succubus-atlas.mjs')]);
+  await run([resolve(root,'scripts/prepare-succubus-dance.mjs')]);
   for(const file of ['Spiegelwinter Tiles v1.png','Spiegelwinter Sprites v1.png','Windbruch Tiles v1.png','Windbruch Sprites v1.png','Windbruch Details v1.png'])await copyFile(resolve(root,'public/assets',file),resolve(output,file));
   const ui = ['panel-frame.png', 'button-states.png', 'menu-backdrop.png', 'spire-emblem.png', 'hud-icons.png', 'tower-slots.png', 'map-covers.png'];
   await mkdir(resolve(reference, 'public/ui'), { recursive: true });

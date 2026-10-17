@@ -8,7 +8,7 @@ import { WoodlandScene } from './woodland-scene';
 import { WoodlandSimulation } from './woodland-simulation';
 import { stats, type Event } from './simulation';
 import { ROSENSPIEGEL, SUCCUBUS_CHARM } from './succubus';
-import { SUCCUBUS_ASSET, SUCCUBUS_SCALE, SUCCUBUS_STATES, succubusFrame, succubusFrames, type SuccubusDirection, type SuccubusState } from './succubus-art';
+import { SUCCUBUS_ASSET, SUCCUBUS_SCALE, SUCCUBUS_STATES, SUCCUBUS_DANCE_ASSET, SUCCUBUS_DANCE_FRAME_SIZE, SUCCUBUS_DANCE_SCALE, succubusFrame, succubusFrames, succubusDanceFrame, type SuccubusDirection, type SuccubusState } from './succubus-art';
 import type { Assets } from './scene';
 
 // Independent visual and combat scenes. This page imports no save module and
@@ -20,9 +20,10 @@ $('app').innerHTML=`<main class="preview-shell succubus-shell">
   <p class="intro">Die pinkhaarige Succubus aus Entwurf 3: drei Gehansichten, Todesanimation und ein langsamer Verführungstanz mit dem Gesicht zum Betrachter. Ihr Herzfaden lenkt einen Turm ab.</p>
   <section class="preview-card" aria-labelledby="wind-heading"><h2 id="wind-heading">Auf den Inseln von Windbruch</h2>
     <div class="toolbar"><label for="state">Aktion <select id="state"><option value="move">Bewegen</option><option value="idle">Ruhen</option><option value="dance">Verführungstanz</option><option value="death">Tod</option></select></label><label for="direction">Ansicht <select id="direction"><option value="side">Seitlich</option><option value="down">Nach unten</option><option value="up">Nach oben</option></select></label></div>
-    <div class="toolbar"><button id="toggle-play" aria-pressed="false">Ⅱ Pause</button><button id="toggle-speed">Tempo 1×</button><button id="step" disabled>Ein Bild weiter</button><button id="toggle-zoom">Ansicht 100 %</button><output id="frame-status" aria-label="Aktuelles Bild">Bild 1 / 6</output></div>
+    <div class="toolbar"><button id="toggle-play" aria-pressed="false">Ⅱ Pause</button><button id="toggle-speed">Tempo 1×</button><button id="step" disabled>Ein Bild weiter</button><button id="toggle-zoom">Ansicht 100 %</button><output id="frame-status" aria-label="Aktuelles Bild">Bild 1 / ${SUCCUBUS_STATES.move.count}</output></div>
     <div id="preview-game" class="preview-board" aria-label="Windbruch-Ausschnitt mit Rosenspiegel neben Wisp und Mara"><div id="loading" class="loading" role="status">Die Wolken ziehen auf …</div></div>
     <p class="caption">Wisp links · Rosenspiegel in der Mitte · Mara rechts. Alle drei stehen im tatsächlichen Spielmaßstab. Mausrad: 100–120 %.</p>
+    <div id="dance-detail" class="dance-detail" hidden><canvas id="dance-portrait" width="176" height="160" aria-label="Verführungstanz mit feineren Pixeln wie im Tanzfenster der Kampfansicht"></canvas><div><h3>Ein genauerer Blick</h3><p class="caption">Das Tanzfenster verwendet eine eigene, feinere Animation. Die Figur auf der Karte behält ihre gut lesbare Spielgröße. Beide tanzen im gleichen Takt; Pause und Einzelbilder gelten auch hier.</p></div></div>
   </section>
   <section class="preview-card" aria-labelledby="scale-heading"><h2 id="scale-heading">Größe und Pixelkonturen</h2><div class="comparison-wrap"><canvas id="comparison" width="560" height="190" aria-label="Rosenspiegel, Mara und Original-Blattkäfer jeweils in Spielgröße und doppelt vergrößert"></canvas></div><p class="caption">Oben: 1× Spielgröße · unten: 2× für die Pixelgruppen. Der Ausschnitt skaliert bei schmalen Fenstern gemeinsam mit der Seite.</p></section>
   <section class="preview-card" aria-labelledby="frames-heading"><h2 id="frames-heading">Einzelbilder der gewählten Animation</h2><div id="frame-strip" class="frame-grid"></div><p class="caption" id="strip-caption"></p></section>
@@ -43,6 +44,7 @@ let proofReady=false,proofStarted=false,starts=0,charms=0,interruptions=0,comple
 let pauseAtCharm=false;
 let lastCharmStatus='Eine Begegnung auswählen.';
 const comparisonContext=$<HTMLCanvasElement>('comparison').getContext('2d')!;
+const danceContext=$<HTMLCanvasElement>('dance-portrait').getContext('2d')!;
 const stateNames:Record<SuccubusState,string>={idle:'Ruhen',move:'Bewegen',dance:'Verführungstanz',death:'Tod'};
 const directionNames:Record<SuccubusDirection,string>={side:'seitlich',down:'nach unten',up:'nach oben'};
 
@@ -77,6 +79,7 @@ class SuccubusPreviewScene extends WoodlandScene {
   showSelection(){
     if(state==='dance')direction='down';
     $<HTMLSelectElement>('direction').value=direction;$<HTMLSelectElement>('direction').disabled=state==='dance';
+    $('dance-detail').hidden=state!=='dance';
     elapsed=0;frame=0;this.succubus?.setFrame(succubusFrame(state,direction,0));drawFrameStrip();updateUI();drawComparison();
   }
   showFrame(value:number){elapsed=value*SUCCUBUS_STATES[state].frameMs;frame=value;this.succubus?.setFrame(succubusFrame(state,direction,elapsed));updateUI();drawComparison();}
@@ -130,10 +133,13 @@ function updateUI(){
   document.querySelectorAll<HTMLElement>('[data-frame]').forEach(card=>card.classList.toggle('active',Number(card.dataset.frame)===frame));
 }
 function drawFrameStrip(){
-  const source=preview.textures.get(SUCCUBUS_ASSET).getSourceImage() as HTMLImageElement,frames=succubusFrames(state,direction),config=SUCCUBUS_STATES[state];
-  $('frame-strip').innerHTML=frames.map((_,index)=>`<figure data-frame="${index}"><canvas width="64" height="64" aria-label="${stateNames[state]} ${directionNames[direction]}, Bild ${index+1}"></canvas><figcaption>${index+1} · ${config.frameMs} ms</figcaption></figure>`).join('');
-  document.querySelectorAll<HTMLCanvasElement>('[data-frame] canvas').forEach((canvas,index)=>{const ctx=canvas.getContext('2d')!;ctx.imageSmoothingEnabled=false;const atlasFrame=frames[index];ctx.drawImage(source,atlasFrame%8*64,Math.floor(atlasFrame/8)*64,64,64,0,0,64,64);});
-  $('strip-caption').textContent=`${stateNames[state]} · ${state==='dance'?'Bühnenfront zum Betrachter':directionNames[direction]} · ${seconds(config.count*config.frameMs/1000)} Sekunden${config.loop?' pro Zyklus':', einmalig'}.`;
+  const isDance=state==='dance',size=isDance?SUCCUBUS_DANCE_FRAME_SIZE:64;
+  const source=preview.textures.get(isDance?SUCCUBUS_DANCE_ASSET:SUCCUBUS_ASSET).getSourceImage() as HTMLImageElement,config=SUCCUBUS_STATES[state];
+  const frames=isDance?Array.from({length:config.count},(_,index)=>index):succubusFrames(state,direction);
+  $('frame-strip').classList.toggle('dance-frames',isDance);
+  $('frame-strip').innerHTML=frames.map((_,index)=>`<figure data-frame="${index}"><canvas width="${size}" height="${size}" aria-label="${stateNames[state]} ${isDance?'Tanzfenster':directionNames[direction]}, Bild ${index+1}"></canvas><figcaption>${index+1} · ${config.frameMs} ms</figcaption></figure>`).join('');
+  document.querySelectorAll<HTMLCanvasElement>('[data-frame] canvas').forEach((canvas,index)=>{const ctx=canvas.getContext('2d')!;ctx.imageSmoothingEnabled=false;const atlasFrame=frames[index];ctx.drawImage(source,atlasFrame%8*size,Math.floor(atlasFrame/8)*size,size,size,0,0,size,size);});
+  $('strip-caption').textContent=`${stateNames[state]} · ${isDance?'Feine Tanzfenster-Bilder, Bühnenfront zum Betrachter':directionNames[direction]} · ${seconds(config.count*config.frameMs/1000)} Sekunden${config.loop?' pro Zyklus':', einmalig'}.`;
 }
 function drawComparison(){
   if(!ready)return;
@@ -149,6 +155,15 @@ function drawComparison(){
     if(mara)ctx.drawImage(mara.source.image as HTMLImageElement,mara.cutX,mara.cutY,mara.cutWidth,mara.cutHeight,320-32*multiple,foot-56*multiple,64*multiple,64*multiple);
     if(leaf){const size=64*.83*multiple;ctx.drawImage(leaf.source.image as HTMLImageElement,leaf.cutX,leaf.cutY,leaf.cutWidth,leaf.cutHeight,475-size/2,foot-36*multiple,size,size);}
   }
+  if(state==='dance')drawDancePreview();
+}
+function drawDancePreview(){
+  const ctx=danceContext,size=SUCCUBUS_DANCE_FRAME_SIZE,displaySize=size*SUCCUBUS_DANCE_SCALE;
+  const source=preview.textures.get(SUCCUBUS_DANCE_ASSET).getSourceImage() as HTMLImageElement;
+  ctx.imageSmoothingEnabled=false;ctx.clearRect(0,0,176,160);
+  ctx.fillStyle='#291b37';ctx.fillRect(0,0,176,160);
+  ctx.fillStyle='#170d25';ctx.beginPath();ctx.ellipse(88,140,28,5,0,0,Math.PI*2);ctx.fill();
+  ctx.drawImage(source,succubusDanceFrame(elapsed)*size,0,size,size,(176-displaySize)/2,136-112*SUCCUBUS_DANCE_SCALE,displaySize,displaySize);
 }
 function receiveEvent(event:Event){
   if(!proofStarted)return;

@@ -16,7 +16,7 @@ Die Laternenqualle ist nach Abnahme ihrer Seitenprobe mit drei Ansichten, Bewegu
 
 ## Succubus-Vorschau
 
-Rosenspiegel ist als Bodengegner in Windbruch integriert. Die zweite Grafikfassung greift das Feedback zu Lesbarkeit, Seitengang und Tanztempo auf; ihre Nutzerabnahme steht aus. `npm run reference:succubus:build`, danach `SUCCUBUS STARTEN.cmd` oder `reference/Spire-Succubus.html` öffnen. Entwicklung: `/succubus-preview.html`. Zustands- und Richtungswahl, Pause, 1×/2×, Einzelbilder und 100/120-%-Zoom stehen bereit. Der Tanz zeigt sich zum Betrachter. Die Kampffläche bietet einen kurzen echten Kampf, automatische Pause beim ersten Verführungseffekt, Gegenwehr, Turmverkauf und Windbruch-Prüfwellen 6/9. Die Vorschau greift nicht auf Nutzer-Spielstände zu. [Ergebnis, Quellen und Grenzen](../artifacts/enemies/succubus/production-v2/REPORT.md).
+Rosenspiegel ist als Bodengegner in Windbruch integriert. Die aktuelle dritte Grafikfassung korrigiert den Schrittwechsel beim Hoch-/Runterlaufen und ergänzt ein eigenes höher aufgelöstes Tanzsheet; ihre Nutzerabnahme steht aus. `npm run reference:succubus:build`, danach `SUCCUBUS STARTEN.cmd` oder `reference/Spire-Succubus.html` öffnen. Entwicklung: `/succubus-preview.html`. Zustands- und Richtungswahl, Pause, 1×/2×, Einzelbilder und 100/120-%-Zoom stehen bereit. Die Tanzprobe zeigt das separate 128er Sheet zum Betrachter; das größere Fenster im Kampf verwendet dieselben feineren Posen. Die Kampffläche bietet einen kurzen echten Kampf, automatische Pause beim ersten Verführungseffekt, Gegenwehr, Turmverkauf und Windbruch-Prüfwellen 6/9. Die Vorschau greift nicht auf Nutzer-Spielstände zu. [Aktuelles Ergebnis, Quellen und Grenzen](../artifacts/enemies/succubus/production-v3/REPORT.md).
 
 ## Bedienung und Speicherung
 
@@ -47,7 +47,7 @@ node node_modules/tsx/dist/cli.mjs --test reference/tests/region-waves.test.ts r
 
 Der Build prüft TypeScript, baut `reference/woodland-dist/` und die beiden identischen Einzeldateien. Originalgrafiken werden bytegenau mit den Foozle-Paketen verglichen; neue Laufzeitatlanten werden deterministisch aus den erhaltenen Rohdateien aufgebaut. Die erzeugten HTML-Ausgaben und Asset-Kopien werden nicht doppelt versioniert. `npm run reference:test` führt bei Bedarf die gesamte Referenzprüfung aus.
 
-Für die Succubus wurden gezielt 17 Logik-/Speicher-/Durchspielprüfungen sowie eine Atlasprüfung ausgeführt. Die aktuellen Regionen- und Succubus-Ausgaben enthalten 93 Spielgrafiken und sieben UI-Bilder. Eine technische Prüfung ersetzt keine visuelle Nutzerabnahme. Neue Tests nur bei betroffenen Funktionen oder konkreten Problemen ergänzen.
+Die Succubus-Mechanik wurde in Fassung 2 mit 17 Logik-/Speicher-/Durchspielprüfungen abgesichert. Die aktuelle Änderung betrifft Grafik und Darstellung; dafür werden zwei Atlasprüfungen, TypeScript, beide Build-Pakete und die betroffenen Browseransichten gezielt geprüft. Die Regionen- und Succubus-Ausgaben enthalten nun 94 Spielgrafiken und sieben UI-Bilder. Die unveränderten Spielregeln werden nicht erneut vollständig durchgetestet. Eine technische Prüfung ersetzt keine visuelle Nutzerabnahme; tatsächliche Ergebnisse stehen im jeweiligen Produktionsbericht.
 
 Nachweise: [Wald](../artifacts/m2/REPORT.md), [Moor](../artifacts/m3/REPORT.md), [Winter](../artifacts/m3-winter/REPORT.md), [Windbruch](../artifacts/m3-wind/REPORT.md). [Grafikvertrag](STYLE_GUIDE.md), [Roadmap](../ROADMAP.md).
 

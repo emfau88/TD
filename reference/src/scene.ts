@@ -4,7 +4,7 @@ import { assetUrl } from './assets';
 import { Simulation,stats, type Enemy,type Tower,type Event } from './simulation';
 import { TREE_FRAMES, WATER_TILE_SIZE, waterTileSource, clearWaterBackdrop } from './terrain';
 import { JELLY_ASSET, JELLY_SCALE, jellyFrame, makeJellyAnimations } from './jelly-art';
-import { SUCCUBUS_ASSET, SUCCUBUS_SCALE, succubusFrame, makeSuccubusAnimations } from './succubus-art';
+import { SUCCUBUS_ASSET, SUCCUBUS_SCALE, SUCCUBUS_DANCE_ASSET, SUCCUBUS_DANCE_SCALE, succubusFrame, succubusDanceFrame, makeSuccubusAnimations } from './succubus-art';
 
 export type AssetInfo={width?:number;height?:number;frames?:number;cols?:number;rows?:number;sheetWidth:number;sheetHeight:number;frameMap?:number[];durations?:number[];tags?:{name:string;start:number;end:number}[]};
 export type Assets=Record<string,AssetInfo>;
@@ -225,24 +225,24 @@ export class ForestScene extends Phaser.Scene {
     const action=enemy.charmAction,target=action?this.sim.towers.find(tower=>tower.uid===action.targetUid):undefined;
     if(!action||!target||enemy.hp<=0){this.clearCharmView(view);return;}
     if(!view.charm){
-      const backing=this.add.graphics(),clip=this.add.sprite(0,42,SUCCUBUS_ASSET).setOrigin(.5,.875).setScale(2.2);
+      const backing=this.add.graphics(),clip=this.add.sprite(0,50,SUCCUBUS_DANCE_ASSET).setOrigin(.5,.875).setScale(SUCCUBUS_DANCE_SCALE);
       view.charm={backing,clip,panel:this.add.container(0,0,[backing,clip]).setDepth(6198),tether:this.add.graphics().setDepth(6197)};
     }
     const charm=view.charm,age=this.sim.elapsed-action.startedAt,active=action.active;
-    const frame=succubusFrame('dance',action.direction,age*1000),opacity=Math.min(1,age/.18);
+    const frame=succubusDanceFrame(age*1000),opacity=Math.min(1,age/.18);
     const visible=this.cameras.main.worldView;
-    const panelX=Phaser.Math.Clamp(enemy.x,Math.max(58,visible.x+58),Math.min(WIDTH-58,visible.right-58));
-    const panelY=Phaser.Math.Clamp(enemy.y>140?enemy.y-125:enemy.y+100,Math.max(64,visible.y+64),Math.min(HEIGHT-64,visible.bottom-64));
+    const panelX=Phaser.Math.Clamp(enemy.x,Math.max(66,visible.x+66),Math.min(WIDTH-66,visible.right-66));
+    const panelY=Phaser.Math.Clamp(enemy.y>140?enemy.y-137:enemy.y+112,Math.max(74,visible.y+74),Math.min(HEIGHT-74,visible.bottom-74));
     charm.panel.setPosition(panelX,panelY).setAlpha(opacity);
-    charm.backing.clear().fillStyle(0x291b37,.9).fillRoundedRect(-56,-61,112,122,8);
-    charm.backing.lineStyle(1,active?0xffa3d1:0xa86b9a,active?.9:.65).strokeRoundedRect(-56,-61,112,122,8);
-    charm.backing.fillStyle(0x170d25,.75).fillEllipse(0,44,56,10);
-    pixelHeart(charm.backing,-43,-48,7,active?1:.45);
-    pixelHeart(charm.backing,43,-48,7,active?1:.45);
-    charm.clip.setFrame(frame).setFlipX(action.flip);
+    charm.backing.clear().fillStyle(0x291b37,.9).fillRoundedRect(-64,-72,128,144,8);
+    charm.backing.lineStyle(1,active?0xffa3d1:0xa86b9a,active?.9:.65).strokeRoundedRect(-64,-72,128,144,8);
+    charm.backing.fillStyle(0x170d25,.75).fillEllipse(0,52,56,10);
+    pixelHeart(charm.backing,-49,-59,7,active?1:.45);
+    pixelHeart(charm.backing,49,-59,7,active?1:.45);
+    charm.clip.setFrame(frame).setFlipX(false);
 
-    // The world body stays its normal size. This small portrait uses the same
-    // dance frames; elapsed simulation time also freezes every heart on pause.
+    // The world body stays at its readable map scale. The finer portrait and
+    // every heart follow the same elapsed simulation time, including on pause.
     const start={x:enemy.x,y:enemy.y-13},end={x:target.x,y:target.y-34};
     const curve=(t:number)=>({x:Phaser.Math.Linear(start.x,end.x,t),y:Phaser.Math.Linear(start.y,end.y,t)-Math.sin(t*Math.PI)*26});
     charm.tether.clear().setAlpha(opacity).lineStyle(active?2:1,0xf185c1,active?.9:.45);

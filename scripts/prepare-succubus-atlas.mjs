@@ -3,9 +3,10 @@ import {writeFile,copyFile} from 'node:fs/promises';
 import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {readPNG,writePNG,blank,pixel,put,copyTile} from './pixel-atlas.mjs';
-const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),directory=resolve(root,'artifacts/enemies/succubus/production-v2');
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),directory=resolve(root,'artifacts/enemies/succubus/production-v3'),previous=resolve(directory,'../production-v2');
 const palette=['28182d','522246','b91463','e8237e','e97ca5','ffc1d2','aa653e','d89562','f2bb86','e5b147','fff3e4','7c2252'].map(hex=>[parseInt(hex.slice(0,2),16),parseInt(hex.slice(2,4),16),parseInt(hex.slice(4,6),16),255]);
-const sources={};for(const name of ['move-side-fix','up','down','dance'])sources[name]=await readPNG(resolve(directory,`${name}-source.png`));
+const sources={};for(const name of ['move-side-fix','dance'])sources[name]=await readPNG(resolve(previous,`${name}-source.png`));
+sources.vertical=await readPNG(resolve(directory,'vertical-walk-source.png'));
 sources.death=await readPNG(resolve(directory,'../production-v1/death-source.png'));
 const spec=(source,box,foot,scale)=>({source,box,foot,scale});
 const movement={
@@ -14,13 +15,13 @@ const movement={
     [[84,523,368,473],[330,996]],[[1061,522,305,474],[1286,996]],
   ].map(([box,foot])=>spec('move-side-fix',box,foot,.087)),
   up:[
-    [[119,11,327,491],[330,502]],[[604,11,279,492],[790,503]],
-    [[112,519,299,494],[308,1013]],[[614,519,269,494],[790,1013]],
-  ].map(([box,foot])=>spec('up',box,foot,.085)),
+    [[119,510,281,488],[278,998]],[[474,510,282,488],[634,998]],
+    [[832,512,285,486],[982,998]],[[1194,511,280,487],[1343,998]],
+  ].map(([box,foot])=>spec('vertical',box,foot,.085)),
   down:[
-    [[150,15,297,492],[330,507]],[[609,15,289,495],[785,510]],
-    [[151,523,301,485],[330,1008]],[[608,523,290,486],[785,1009]],
-  ].map(([box,foot])=>spec('down',box,foot,.085)),
+    [[114,12,295,486],[278,498]],[[474,12,285,486],[634,498]],
+    [[820,12,296,486],[982,498]],[[1181,12,292,486],[1343,498]],
+  ].map(([box,foot])=>spec('vertical',box,foot,.085)),
 };
 const dance=[
   [[45,39,290,464],[242,503]],[[419,39,328,464],[615,503]],[[786,17,339,486],[988,503]],[[1125,39,397,464],[1374,503]],
@@ -57,5 +58,5 @@ for(const [d,direction]of ['down','up','side'].entries()){
 }
 const filename='Succubus Pixel v2.png';await writePNG(resolve(root,'public/assets',filename),atlas);await copyFile(resolve(root,'public/assets',filename),resolve(root,'reference/public/assets',filename));
 const contact=blank(1024,1152);for(let y=0;y<contact.height;y++)for(let x=0;x<contact.width;x++)put(contact,x,y,pixel(atlas,Math.floor(x/2),Math.floor(y/2)));await writePNG(resolve(directory,'atlas-2x.png'),contact);
-await writeFile(resolve(directory,'metadata.json'),JSON.stringify({asset:filename,width:512,height:576,cell:[64,64],foot:[32,56],scale:1,allocatedSlots:72,usedSlots:57,distinctPoses:38,reserved:[5,6,21,22,23,29,30,45,46,47,53,54,69,70,71],palette:palette.map(c=>'#'+c.slice(0,3).map(n=>n.toString(16).padStart(2,'0')).join('')),animations,frames,sources:{movement,dance,death},notes:'Four selected walking poses per direction, a 600ms cycle with consistent foot anchor. Some generated step variants were too similar, so they were omitted. Idle reuses move. Shared stage dance is 8x190ms; death source is reused from v1 with the quieter palette. New 12-color version follows explicit readability feedback; source originals preserved.'},null,2)+'\n');
-console.log('Succubus v2: 512x576, 57 used slots, 38 distinct poses, four walking frames, eight slower dance frames, 12 colors.');
+await writeFile(resolve(directory,'metadata.json'),JSON.stringify({revision:3,asset:filename,width:512,height:576,cell:[64,64],foot:[32,56],scale:1,allocatedSlots:72,usedSlots:57,distinctPoses:38,reserved:[5,6,21,22,23,29,30,45,46,47,53,54,69,70,71],palette:palette.map(c=>'#'+c.slice(0,3).map(n=>n.toString(16).padStart(2,'0')).join('')),animations,frames,sources:{files:{vertical:'production-v3/vertical-walk-source.png','move-side-fix':'production-v2/move-side-fix-source.png',dance:'production-v2/dance-source.png',death:'production-v1/death-source.png'},movement,dance,death},notes:'Revision 3 corrects the vertical leg cycle with alternating left/right contact and lifted boots. Four walking poses remain 150ms each, with a consistent foot anchor and 12-color palette. Side walking, body dance and death frames are pixel-identical to v2. The larger dance presentation uses a separate higher-resolution atlas. The first new vertical study repeated the lifted boot; one targeted correction fixed the side swap. Raw sources and the v2 runtime atlas are preserved.'},null,2)+'\n');
+console.log('Succubus v3 body: 512x576, corrected vertical steps, preserved side/dance/death, 57 used slots, 12 colors.');

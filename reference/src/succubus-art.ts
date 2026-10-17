@@ -3,6 +3,9 @@ import type Phaser from 'phaser';
 // Each direction owns 24 consecutive slots in the eight-column sheet. Empty
 // reserve slots are deliberately omitted from every animation.
 export const SUCCUBUS_ASSET='Succubus Pixel v2';
+export const SUCCUBUS_DANCE_ASSET='Succubus Dance HD v1';
+export const SUCCUBUS_DANCE_FRAME_SIZE=128;
+export const SUCCUBUS_DANCE_SCALE=1.1;
 export const SUCCUBUS_SCALE=1;
 export const SUCCUBUS_FRAME_MS=100;
 export const SUCCUBUS_DIRECTIONS=['down','up','side'] as const;
@@ -22,6 +25,11 @@ export function succubusFrame(state:SuccubusState,direction:SuccubusDirection,el
   const config=SUCCUBUS_STATES[state],frames=succubusFrames(state,direction);
   const index=Math.max(0,Math.floor((elapsedMs+.001)/config.frameMs));
   return frames[config.loop?index%frames.length:Math.min(index,frames.length-1)];
+}
+// The portrait has its own finer artwork but shares the world body's clock.
+export function succubusDanceFrame(elapsedMs:number){
+  const config=SUCCUBUS_STATES.dance;
+  return Math.max(0,Math.floor((elapsedMs+.001)/config.frameMs))%config.count;
 }
 export function makeSuccubusAnimations(scene:Phaser.Scene){
   if(!scene.textures.exists(SUCCUBUS_ASSET))return;

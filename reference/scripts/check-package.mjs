@@ -15,12 +15,16 @@ const offline = await readFile(resolve(root, succubusPreview ? 'Spire-Succubus.h
 const payload = offline.match(/window\.__SPIRE_BUNDLE__=(.*?);<\/script>/s)?.[1];
 assert.ok(payload, 'Offline payload missing');
 const embedded = JSON.parse(payload);
-assert.equal(Object.keys(embedded.images).length, regional ? 93 : stylePreview ? 85 : 84);
+assert.equal(Object.keys(embedded.images).length, regional ? 94 : stylePreview ? 85 : 84);
 if (regional) {
-  for(const name of ['Laternenmoor Props v1','Spiegelwinter Tiles v1','Spiegelwinter Sprites v1','Windbruch Tiles v1','Windbruch Sprites v1','Windbruch Details v1','Lantern Jelly Pixel v1','Succubus Pixel v2']){
+  for(const name of ['Laternenmoor Props v1','Spiegelwinter Tiles v1','Spiegelwinter Sprites v1','Windbruch Tiles v1','Windbruch Sprites v1','Windbruch Details v1','Lantern Jelly Pixel v1','Succubus Pixel v2','Succubus Dance HD v1']){
     const source=await readFile(resolve(root, '../public/assets',`${name}.png`));
     assert.ok(source.equals(Buffer.from(embedded.images[name].split(',')[1], 'base64')));
     assert.ok(source.equals(await readFile(resolve(root, dist, 'assets',`${name}.png`))));
+    if(name==='Succubus Dance HD v1'){
+      assert.equal(source.readUInt32BE(16),1024,'Dance portrait must contain eight 128px frames');
+      assert.equal(source.readUInt32BE(20),128,'Dance portrait must have one frame row');
+    }
   }
   if(woodland)assert.equal(offline,await readFile(resolve(root,'Spire-Wald.html'),'utf8'),'Legacy woodland launcher must include all four maps');
 }
@@ -63,4 +67,4 @@ for (const name of uiNames) {
   assert.ok(original.equals(encoded), `${name}: embedded UI PNG differs`);
   assert.ok(original.readUInt32BE(16) > 0 && original.readUInt32BE(20) > 0, `${name}: invalid UI dimensions`);
 }
-console.log(`PASS ${regional ? 93 : stylePreview ? 85 : 84} game PNGs and 7 UI PNGs: production and offline bytes match; dimensions and animation frames valid; offline package has no external script/style/font/image dependencies.`);
+console.log(`PASS ${regional ? 94 : stylePreview ? 85 : 84} game PNGs and 7 UI PNGs: production and offline bytes match; dimensions and animation frames valid; offline package has no external script/style/font/image dependencies.`);

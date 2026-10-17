@@ -1,6 +1,6 @@
 # Succubus – Designauswahl
 
-Stand: 17. Oktober 2026. **Der Nutzer hat Variante 3 gewählt: „die nummer 3 soll es werden“.** Die anschließende Umsetzung wurde ausdrücklich beauftragt und ist als „Rosenspiegel“ in Windbruch integriert. Diese Datei erhält die ursprüngliche Entwurfsentscheidung. [Aktueller Produktionsstand mit zweiter Grafikfassung](../production-v2/REPORT.md); die Nutzerabnahme dieser Überarbeitung steht aus.
+Stand: 17. Oktober 2026. **Der Nutzer hat Variante 3 gewählt: „die nummer 3 soll es werden“.** Die anschließende Umsetzung wurde ausdrücklich beauftragt und ist als „Rosenspiegel“ in Windbruch integriert. Diese Datei erhält die ursprüngliche Entwurfsentscheidung. [Aktueller Produktionsstand mit dritter Grafikfassung](../production-v3/REPORT.md); die Nutzerabnahme dieser Überarbeitung steht aus.
 
 | 1 · Rubinflügel | 2 · Nachtbeschwörerin | 3 · Rosenspiegel – gewählt |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ Der Nutzer schlägt eine humorvolle Verführung vor: ein pinker Herzfaden zum be
 
 Eine feste, begrenzte Verführungsreichweite muss Gegenwehr erlauben. Ein pauschales „immer außerhalb jeder Turmreichweite“ würde die Einheit unangreifbar wirken lassen. Erste Gegenwehr: erkennbare Vorbereitung und Unterbrechung durch Ausschalten der Succubus, begrenzte Dauer und eine Erholungszeit für denselben Turm.
 
-**Anschließend umgesetzt:** Reichweite 200, 0,8 Sekunden Vorbereitung, 4,5 Sekunden Verführung mit 40 % geringerer Turmfeuerrate, elf Sekunden Quellen-Abklingzeit und sechs Sekunden Schutz für denselben Turm nach Ende. Das größere separate Tanzfenster nutzt acht Posen mit 190 ms je Bild bei 2,2-facher Darstellung. Die normale Spielfigur behält ihren Maßstab. Herzfaden, Zustand und Abbruch folgen der echten Simulation. [Details und Nachweise](../production-v2/REPORT.md).
+**Anschließend umgesetzt:** Reichweite 200, 0,8 Sekunden Vorbereitung, 4,5 Sekunden Verführung mit 40 % geringerer Turmfeuerrate, elf Sekunden Quellen-Abklingzeit und sechs Sekunden Schutz für denselben Turm nach Ende. Das separate Tanzfenster nutzt inzwischen acht neue 128er Posen mit 190 ms je Bild bei Maßstab 1,1; die normale Spielfigur behält ihren Maßstab und die kleine Tanzfolge. Herzfaden, Zustand und Abbruch folgen der echten Simulation. [Aktuelle Details und Nachweise](../production-v3/REPORT.md).
 
 Beschwörung kleiner Diener und Illusionsdoppelgänger bleiben alternative Ideen. Die Wahl des dritten Bildes legt diese Mechaniken nicht automatisch fest.
 

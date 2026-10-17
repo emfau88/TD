@@ -1,9 +1,10 @@
 import type { Assets } from './scene';
 import { JELLY_ASSET } from './jelly-art';
-import { SUCCUBUS_ASSET } from './succubus-art';
+import { SUCCUBUS_ASSET, SUCCUBUS_DANCE_ASSET } from './succubus-art';
 export const REGION_ASSETS:Assets={
   [JELLY_ASSET]:{sheetWidth:512,sheetHeight:384,width:64,height:64,cols:8,rows:6},
   [SUCCUBUS_ASSET]:{sheetWidth:512,sheetHeight:576,width:64,height:64,cols:8,rows:9},
+  [SUCCUBUS_DANCE_ASSET]:{sheetWidth:1024,sheetHeight:128,width:128,height:128,cols:8,rows:1},
   'Laternenmoor Props v1':{sheetWidth:1254,sheetHeight:1254},
   'Spiegelwinter Tiles v1':{sheetWidth:512,sheetHeight:320,width:64,height:64,cols:8,rows:5},
   'Spiegelwinter Sprites v1':{sheetWidth:256,sheetHeight:64,width:64,height:64,cols:4,rows:1},

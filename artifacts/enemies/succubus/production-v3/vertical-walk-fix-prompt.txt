@@ -1,0 +1,12 @@
+Use case: precise-object-edit.
+Edit target: the provided 4-column by 2-row transparent adult fantasy character WALK sprite sheet.
+This is a single precise animation correction, NOT a redesign. Keep the eight sprites' HEADS, HAIR, TORSOS, ARMS, WINGS, COSTUME COLORS, TAILS, SIZE, CELL LAYOUT and TRANSPARENT BACKGROUND pixel-art style exactly as close as possible. Only change the legs and boots below the hips.
+
+CRITICAL BUG: currently the raised leg in column 4 is the SAME screen-left leg as column 2. This MUST be corrected, because it is not a walk.
+For BOTH rows:
+- Keep column 1 as the left-side contact reference and keep column 2 as the raised screen-left boot reference.
+- Column 3 legs/boots must be the HORIZONTAL MIRROR of column 1 LEGS ONLY. Not the upper body. The front weight-bearing boot will be on screen-RIGHT.
+- Column 4 legs/boots must be the HORIZONTAL MIRROR of column 2 LEGS ONLY. Not the upper body. The lifted knee and raised boot MUST be on screen-RIGHT; the straight supporting leg MUST be screen-LEFT.
+To make the alternation unmistakable, separate the two boots horizontally instead of crossing them together down the middle. Contact poses columns 1 and 3 have feet approximately one boot width left and right of center. Passing poses columns 2 and 4 have a clear lifted knee, foot halfway up the opposite calf, with the other foot planted. At least a two-pixel gap between boots at the final tiny sprite size.
+Top row faces directly toward the viewer, bottom row directly away from the viewer; no other facing direction. Same body and head registration in every column. This should be a simple leg-swap loop: contact left, passing left-support, contact right, passing right-support.
+Every sprite stays wholly within its equal cell. Do not add text, grid, props, effects, extra sprites, floor shadows, gradients or opaque backdrop. Preserve true alpha transparency. Coarse clean pixel clusters like the input, not soft illustration.

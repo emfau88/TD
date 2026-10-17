@@ -79,24 +79,25 @@ Winterpalette: Schnee `#e5edf0 / #d2e0e8 / #bccfdc`, Weg `#9eafc0 / #afc0cf / #b
 
 Die Skripte `prepare-winter-atlas.mjs` und `prepare-wind-atlas.mjs` enthalten die exakten Zuschnitte. Kein pauschales Halbieren eines KI-Bildes für Objekte: Die Wolke überschreitet beispielsweise die nominelle Quadrantengrenze. Quellen werden einmal vermessen, proportional verkleinert und getrennt gepackt; Alpha wird bei 128 auf 0/255 normalisiert. `reference/tests/atlas.test.mjs` kontrolliert kompatible Kanten pixelgenau und prüft Sprite-/Brückenrahmen auf Überläufe. Die Spielansicht bleibt zusätzlich nötig; ein bestandener Atlas-Test ersetzt keine visuelle Abnahme.
 
-## Ergänzung vom 17.10.2026 – Succubus „Rosenspiegel“, Fassung 2
+## Ergänzung vom 17.10.2026 – Succubus „Rosenspiegel“, Fassung 3
 
-Die gewählte erwachsene Dämonin behält rosa Haare, dunkle Hörner, magentafarbenes Kostüm, kleine Flügel und Herzschwanz. Große Farbflächen bestimmen die Laufzeitfigur. Das Konzeptbild und die detailreichere erste Produktion bleiben Quellen; sie sind kein Maßstab für zusätzliche Details im kleinen Sprite. Die zweite Fassung reagiert auf das Nutzerfeedback zur Lesbarkeit und Bewegung. Ihre visuelle Nutzerabnahme steht aus.
+Die gewählte erwachsene Dämonin behält rosa Haare, dunkle Hörner, magentafarbenes Kostüm, kleine Flügel und Herzschwanz. Große Farbflächen bestimmen die Laufzeitfigur. Das Konzeptbild und die detailreichere erste Produktion bleiben Quellen; sie sind kein Maßstab für zusätzliche Details im kleinen Sprite. Die [zweite Fassung](../artifacts/enemies/succubus/production-v2/REPORT.md) vereinfachte Körper und Bewegung. Die aktuelle dritte Fassung korrigiert den Beinwechsel beim Hoch-/Runterlaufen und verwendet für die größere Tanzdarstellung einen eigenen feineren Atlas. Ihre visuelle Nutzerabnahme steht aus.
 
 | Bestandteil | Laufzeitvertrag |
 | --- | --- |
-| Atlas | `Succubus Pixel v2.png`, 512 × 576, acht Spalten und neun Reihen mit 64 × 64 Frames; 72 Plätze, 57 belegte Rahmen mit 38 unterschiedlichen Posen |
+| Körperatlas | Dateiname aus Kompatibilitätsgründen weiter `Succubus Pixel v2.png`, Inhalt Fassung 3; 512 × 576, acht Spalten und neun Reihen mit 64 × 64 Frames; 72 Plätze, 57 belegte Rahmen mit 38 unterschiedlichen Posen |
 | Farbe und Transparenz | Zwölf Körperfarben, große zusammenhängende Pixelgruppen; Alpha ausschließlich 0/255, mindestens zwei freie Randpixel |
 | Größe und Anker | Ungefähr 40–42 Pixel sichtbare Körperhöhe, Maßstab 1, Fußpunkt (32/56); normale Spielfigur wird während der Fähigkeit nicht vergrößert |
 | Richtungen | Unten, oben und seitlich mit je 24 reservierten Plätzen; links verwendet die gespiegelte Seitenansicht |
 | Ruhe | Ein Frame je Ansicht, aus der Bewegung übernommen |
-| Bewegung | Vier ausgewählte Posen je Ansicht, je 150 ms, geschlossener 600-ms-Zyklus; die kurze Seitenfolge bleibt eine Grenze des Materials |
-| Tanz | Acht Posen zum Betrachter, je 190 ms, 1,52 Sekunden pro Schleife; unabhängig von der Laufrichtung dieselbe Aufführung |
-| Tanzfenster | Separates Fenster 112 × 122 Spieleinheiten, Sprite 2,2-fach; Position an den sichtbaren Kameraausschnitt begrenzen |
+| Bewegung | Vier Posen je Ansicht, je 150 ms, geschlossener 600-ms-Zyklus; oben/unten mit tatsächlich wechselnd angehobenem linken und rechten Stiefel, Seitenfolge aus Fassung 2 unverändert |
+| Kleiner Körpertanz | Acht Posen aus Fassung 2 zum Betrachter, je 190 ms, 1,52 Sekunden pro Schleife; unabhängig von der Laufrichtung dieselbe Aufführung |
+| Größerer Tanzatlas | `Succubus Dance HD v1.png`, 1024 × 128, acht eigenständige 128 × 128 Frames; 33 Farben, ungefähr 90–99 Pixel sichtbare Körperhöhe, Fußpunkt (64/112) |
+| Tanzfenster | Separates Fenster 128 × 144 Spieleinheiten mit dem größeren Tanzatlas bei Maßstab 1,1; Position an den sichtbaren Kameraausschnitt begrenzen. Die Tanzprobe verwendet ebenfalls diesen Atlas |
 | Tod | Sechs Frames mit je 100 ms, einmalig; vorhandene Quelle aus Fassung 1 mit vereinfachter Palette weiterverwendet |
 
-Pro Richtungsblock sind Ruhe 0, Bewegung 1–4, Tanz 7–14 und Tod 15–20 belegt. Plätze 5–6 und 21–23 bleiben transparent. Tanzrahmen werden je Richtung wiederholt, nicht als unterschiedliche Ansichten ausgegeben. Die tatsächlichen Quellen und Fußpunkte sind vermessen; ein nominelles Generatorraster wird nicht ungeprüft übernommen.
+Pro Richtungsblock des Körperatlas sind Ruhe 0, Bewegung 1–4, Tanz 7–14 und Tod 15–20 belegt. Plätze 5–6 und 21–23 bleiben transparent. Kleine Tanzrahmen werden je Richtung wiederholt, nicht als unterschiedliche Ansichten ausgegeben. Seitengang, kleiner Tanz und Tod sind pixelgleich zur zweiten Fassung; nur die vertikalen Schritte wurden aus neuen Quellen gepackt. Das größere Tanzsheet besitzt acht eigene Posen statt einer Vergrößerung des Körperatlas. Die tatsächlichen Quellen und Fußpunkte sind vermessen; ein nominelles Generatorraster wird nicht ungeprüft übernommen.
 
-Animation und Fähigkeit folgen derselben Simulationszeit. Pause hält beide an; 2× beschleunigt beide. Die 0,8 Sekunden Vorbereitung und 4,5 Sekunden Verführung steuern Herzfaden und Tanzfenster, Tod oder Abbruch entfernen sie. Der Tanzzyklus dauert länger als in Fassung 1 und wiederholt sich während der Wirkung.
+Animation und Fähigkeit folgen derselben Simulationszeit. Pause hält beide an; 2× beschleunigt beide. Die 0,8 Sekunden Vorbereitung und 4,5 Sekunden Verführung steuern Herzfaden und Tanzfenster, Tod oder Abbruch entfernen sie. Beide Tanzatlanten behalten das ruhige Tempo der zweiten Fassung: 190 ms je Bild, 1,52 Sekunden je Schleife, Wiederholung während der Wirkung.
 
-[Produktionsbericht mit Prompts und Quellen](../artifacts/enemies/succubus/production-v2/REPORT.md), [Atlasmetadaten](../artifacts/enemies/succubus/production-v2/metadata.json). Reproduzierbarer Export: `scripts/prepare-succubus-atlas.mjs` im Projektstamm. Rohquellen, nicht verwendete Versuche und Fassung 1 bleiben getrennt erhalten. Weitere Bildgenerierungen folgen nur einer konkreten verbleibenden Lücke, nicht dem Wunsch nach pauschal mehr Frames.
+[Aktueller Produktionsbericht mit Prompts und Quellen](../artifacts/enemies/succubus/production-v3/REPORT.md), [Körpermetadaten](../artifacts/enemies/succubus/production-v3/metadata.json), [Tanzmetadaten](../artifacts/enemies/succubus/production-v3/dance-hd-metadata.json). Reproduzierbarer Export: `scripts/prepare-succubus-atlas.mjs` im Projektstamm. Rohquellen, nicht verwendete Versuche sowie Fassungen 1 und 2 bleiben getrennt erhalten. Weitere Bildgenerierungen folgen nur einer konkreten verbleibenden Lücke, nicht dem Wunsch nach pauschal mehr Frames.
