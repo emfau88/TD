@@ -1,0 +1,167 @@
+{
+  "status": "movement study; side direction only; awaiting visual approval",
+  "source": "movement-source.png",
+  "runtime": "public/assets/Lantern Jelly Pixel Preview v1.png",
+  "frameWidth": 64,
+  "frameHeight": 64,
+  "atlasWidth": 384,
+  "atlasHeight": 64,
+  "origin": [
+    0.5,
+    0.5
+  ],
+  "bellTop": [
+    32,
+    16
+  ],
+  "scale": 0.83,
+  "animations": {
+    "move-side": {
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "durations": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "repeat": -1
+    }
+  },
+  "sourceScale": 0.1,
+  "alphaThreshold": 128,
+  "palette": [
+    "#092c3d",
+    "#124e61",
+    "#176f80",
+    "#208d99",
+    "#35a7aa",
+    "#64c5b1",
+    "#a4dac0",
+    "#fff1ac",
+    "#e6d676",
+    "#cfad47",
+    "#ffc74b",
+    "#e79a1a",
+    "#a85b0b",
+    "#5e350d"
+  ],
+  "frames": [
+    {
+      "box": [
+        144,
+        113,
+        310,
+        318
+      ],
+      "bell": [
+        321,
+        113
+      ],
+      "visibleBounds": [
+        14,
+        16,
+        31,
+        32
+      ]
+    },
+    {
+      "box": [
+        646,
+        133,
+        271,
+        300
+      ],
+      "bell": [
+        784,
+        133
+      ],
+      "visibleBounds": [
+        18,
+        16,
+        27,
+        30
+      ]
+    },
+    {
+      "box": [
+        1068,
+        132,
+        351,
+        301
+      ],
+      "bell": [
+        1291,
+        132
+      ],
+      "visibleBounds": [
+        10,
+        16,
+        35,
+        30
+      ]
+    },
+    {
+      "box": [
+        99,
+        582,
+        391,
+        325
+      ],
+      "bell": [
+        350,
+        582
+      ],
+      "visibleBounds": [
+        7,
+        16,
+        39,
+        32
+      ]
+    },
+    {
+      "box": [
+        610,
+        591,
+        359,
+        307
+      ],
+      "bell": [
+        828,
+        591
+      ],
+      "visibleBounds": [
+        10,
+        16,
+        36,
+        31
+      ]
+    },
+    {
+      "box": [
+        1138,
+        596,
+        300,
+        310
+      ],
+      "bell": [
+        1300,
+        596
+      ],
+      "visibleBounds": [
+        16,
+        16,
+        30,
+        31
+      ]
+    }
+  ]
+}

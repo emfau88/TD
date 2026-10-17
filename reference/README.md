@@ -10,6 +10,10 @@ Der Launcher öffnet weiterhin `reference/Spire-Wald.html`, damit die bisherige 
 
 Entwicklung: `npm run reference:dev`, dann `http://127.0.0.1:5180/woodland.html` öffnen. Der normale Einstieg `/` bleibt die Vergleichsversion der drei Originalkarten.
 
+## Erste Gegner-Grafikprobe
+
+Die neue Laternenqualle ist als separate animierte Seitenprobe im echten Moor verfügbar, mit Originalfliegern zum Vergleich. Im Projektordner `npm run reference:enemy:build` ausführen, danach `GEGNERPROBE STARTEN.cmd` öffnen. Entwicklung: `/enemy-preview.html`. Pause, 1×/2×, Einzelbilder und 100/120-%-Zoom stehen bereit. Diese Probe verändert keine Spielstände; Heilmechanik und weitere Animationen sind noch nicht integriert. [Ergebnis, Prompt und offene Schritte](../artifacts/enemies/lantern-jelly/v1/REPORT.md).
+
 ## Bedienung und Speicherung
 
 - „Karten“ öffnet die freie Auswahl aller vier Regionen. Jede behält ihren eigenen Fortschritt und ihre letzte Bauphase.

@@ -1,9 +1,10 @@
 # Spire – Roadmap für fünf zusammenhängende Spielkarten
 
-Stand: 16. Oktober 2026  
+Stand: 17. Oktober 2026
+
 Status: M0 und M1 abgeschlossen; M2-Waldkarte vom Nutzer abgenommen. Laternenmoor, Spiegelwinter und Windbruch sind umgesetzt und gezielt geprüft; ihre visuelle Nutzerabnahme steht aus. Vier Karten sind gemeinsam frei auswählbar, mit getrennten Spielständen und PC-Mausradzoom 100–120 %. Windbruch enthält animierte Wolken, schwebende Felsinseln und pulsierende Kristalle. Mobile Optimierung und mobile Tests sind auf Nutzerwunsch zurückgestellt. Nachweise: [M0](artifacts/m0/REPORT.md), [M1](artifacts/m1/REPORT.md), [Waldkarte M2](artifacts/m2/REPORT.md), [Laternenmoor](artifacts/m3/REPORT.md), [Spiegelwinter](artifacts/m3-winter/REPORT.md), [Windbruch](artifacts/m3-wind/REPORT.md).
 
-**Aktueller Auftrag vom 16.10.2026:** Laternenmoor fertigstellen, danach Spiegelwinter und eine besondere vierte Karte (Windbruch) bauen. Die kleinen thematischen Asset-Ergänzungen und tatsächlichen Spielansichten dokumentieren; keine weiteren Vollpakete auf Vorrat. Der Nutzer hat die Ausführung dieser Karten beauftragt, die abschließende optische Abnahme wird dadurch nicht vorweggenommen. Mondwarte und Story bleiben außerhalb dieses Umsetzungsauftrags. Zielrepository: `https://github.com/emfau88/TD.git`.
+**Aktueller Auftrag vom 17.10.2026:** Den ersten neuen Gegner gemäß [Produktionsplan](GEGNER_PRODUKTIONSPLAN.md) erstellen. Die Laternenqualle liegt als erste seitliche Bewegungsprobe mit sechs Frames vor, im echten Moor neben Originalfliegern gezeigt. Visuelle Nutzerabnahme, weitere Ansichten, Heilaktion, Tod und Gameplayintegration stehen aus: [Ergebnis](artifacts/enemies/lantern-jelly/v1/REPORT.md). Der [Umsetzungsplan](UMSETZUNGSPLAN.md) bleibt die Reihenfolge für den übrigen Ausbau. Der bisherige Vier-Karten-Stand einschließlich README-Screenshots ist nach `https://github.com/emfau88/TD.git` gepusht.
 
 ## 1. Ziel und verbindlicher Umfang
 
@@ -11,10 +12,10 @@ Wir bauen auf dem ursprünglichen Tower-Defense-Spiel mit dem Foozle-Tileset auf
 
 | Karte | Thema | Eigenständigkeit des Layouts |
 | --- | --- | --- |
-| Mooshain | Wald, Lichtungen, Teiche, kleine Ruinen | Übersichtlich lesbare Einstiegsroute mit mehreren sinnvollen Verteidigungsstellen |
+| Der alte Hain | Wald, Lichtungen, Teiche, kleine Ruinen | Übersichtlich lesbare Einstiegsroute mit mehreren sinnvollen Verteidigungsstellen |
 | Laternenmoor | Wasser, bewachsene Inseln, Laternen, Holzstege | Getrennte Bauflächen und wenige wichtige Übergänge |
 | Spiegelwinter | Schnee, Eis, Felsen, verschneite Vegetation | Zwei Anmarschwege und unterschiedliche Verteidigungspositionen |
-| Windbruch | Schwebende Felsinseln, Klippen, Hängebrücken | Mehrere Plateaus mit begrenzten Bauflächen und klaren Flugrouten |
+| Windbruch | Schwebende Felsinseln, Klippen, Steinbrücken | Mehrere Plateaus mit begrenzten Bauflächen und klaren Flugrouten |
 | Mondwarte | Sternenhimmel, Steinplattformen, Portale, Sternenarchitektur | Mehrere Zugänge zu einem gemeinsamen Verteidigungsziel |
 
 Die Reihenfolge der Umsetzung ist Wald → Moor → Eis → Inseln → Mondwarte. Die erzählerische Reihenfolge kann später festgelegt werden.
@@ -109,9 +110,9 @@ Für jede Region wird derselbe Ablauf abgeschlossen:
 
 **M3-Arbeitsstand:** Laternenmoor enthält drei Originalholzbrücken, zusammenhängende animierte Wasserarme und vier neu erzeugte Moorobjekte. Spiegelwinter hat zwei Anmarschwege, eigene Schnee-/Weg-/Eistiles und Winterobjekte. Windbruch besteht aus vier verbundenen Plateaus mit eigenen Boden-/Klippen-/Wegtiles, Steinbrücken, Kristallen und Steinbögen; sechs Wolken und vier kleine Felsinseln bewegen sich dezent. Auf Nutzerfeedback wurden die zunächst verwendeten Holzbrücken ersetzt und die glatten Inselkanten durch unregelmäßige Felsnasen, Grasüberhänge und Ranken aufgewertet. Die sechs Generationsaufträge lieferten nur benötigtes Rohmaterial. Daraus wurden vermessene Einzelobjekte und technisch definierte Anschlussatlanten aufgebaut, nicht ungeprüfte KI-Raster übernommen. Auf Nutzerwunsch haben alle vier Karten jetzt zehn neu zusammengestellte Wellen: acht Gegnertypen, Zwischenboss in Welle 5, Finale in Welle 10, insgesamt 133 Gegner pro Karte. Alle vier 10-Wellen-Modellprüfungen bestehen. Kartenwechsel, getrennte Bauphasen und Übernahme alter Waldstände sind integriert; Mausradzoom und Bauen bei 120 % wurden im Browser geprüft. Keine Nutzerabnahme oder manuelle Balanceprüfung aller 40 Wellen vorweggenommen.
 
-**Nächster Schritt:** Nutzeransicht der drei neuen Karten; danach konkrete optische Korrekturen und gezielter Spielbalance-Feinschliff. Mondwarte und Story erst auf gesonderten Auftrag. Der Stand wird im beauftragten Repository `emfau88/TD` versioniert.
+**Nächster geplanter Ausbau:** Zunächst vier eigene Wellenpläne, danach ein gezielt eingeführter Spezialgegner, Ilyra, Runa und Feinschliff gemäß [Umsetzungsplan P1–P4](UMSETZUNGSPLAN.md). Die ausstehenden visuellen Nutzerabnahmen bleiben offen. Mondwarte und Story folgen später.
 
-**Aktuelle Spieldauer:** Zehn Wellen je Karte ersetzen den zuvor geprüften 20-Wellen-Stand. Im automatisierten Modell dauern die Kämpfe bei 1× rund 4,6–6,1 Minuten ohne Baupausen; die tatsächliche Spieldauer hängt von der Verteidigung ab. Alle acht Gegnertypen bleiben enthalten. Späte alte Bauphasen werden mit ihrer Verteidigung vor das neue Finale übernommen; vorhandene Sterne bleiben erhalten. Weitere regionale Wellenvarianten und Schwierigkeit werden erst anhand konkreten Spiel-Feedbacks abgestimmt.
+**Aktuelle Spieldauer:** Zehn Wellen je Karte ersetzen den zuvor geprüften 20-Wellen-Stand. Im automatisierten Modell dauern die Kämpfe bei 1× rund 4,6–6,1 Minuten ohne Baupausen; die tatsächliche Spieldauer hängt von der Verteidigung ab. Alle acht Gegnertypen bleiben enthalten. Späte alte Bauphasen werden mit ihrer Verteidigung vor das neue Finale übernommen; vorhandene Sterne bleiben erhalten. Aktuell nutzen alle vier Karten denselben Wellenplan. P1 soll diese Wiederholung durch regionale Pläne ersetzen und die Schwierigkeit anhand gezielter Spielprüfungen abstimmen.
 
 **Ansichten für GitHub:** Die [README-Galerie](README.md#die-vier-spielbaren-karten) enthält je einen aktuellen In-Game-Screenshot aller vier Karten. Bilddateien liegen versioniert unter `artifacts/screenshots/`.
 
@@ -207,7 +208,7 @@ KI-Bildgenerierung kann Entwürfe und Rohmaterial liefern. Ein Prompt wie „pre
 
 ## 5. Figuren und Animationen
 
-Die Designs von Mara, Runa und Ilyra können erhalten bleiben. Die Eignung der vorhandenen Spritesheets wird pro benötigtem Frame geprüft. Auch der neue Wisp wird mit Original-Wisp und den Türmen verglichen.
+Die Designs von Mara, Runa und Ilyra können erhalten bleiben. Die Eignung der vorhandenen Spritesheets wird pro benötigtem Frame geprüft. Der Original-Wisp bleibt die Referenz; sein alternativer Entwurf wird im nächsten Ausbau nicht eingebaut. Ilyra folgt vor Runa, mit klar unterschiedlichen Fähigkeiten gemäß [Umsetzungsplan P3](UMSETZUNGSPLAN.md). Vesper bleibt zunächst eine Storyfigur mit Porträt.
 
 Für Wisp und Mara zuerst erforderlich:
 
@@ -273,10 +274,18 @@ Wenn die visuelle Prüfung technisch blockiert ist, lautet der Status „visuell
 - [x] Roadmap mit Umfang, Asset-Vorgaben und Abnahmekriterien erstellt.
 - [x] M0: gesicherte und dokumentierte Ausgangsversion.
 - [x] M1: gemeinsamer Grafikstandard im Spiel abgenommen.
-- [ ] M2: Waldkarte mit Wisp und Mara vollständig abgenommen.
+- [x] M2: Waldkarte mit Wisp und Mara vom Nutzer abgenommen; siehe dokumentierten Auftrag zum Laternenmoor oben.
 - [ ] M3: vier weitere Karten nacheinander fertiggestellt und abgenommen.
 - [ ] M4: gemeinsames Paket aus fünf Karten abgenommen.
 
-**Nächster Schritt:** Die vollständige M2-Waldkarte spielen und gezielt nach Nutzerfeedback verfeinern. Nach ihrer Abnahme folgt Laternenmoor als zweite Region im gemeinsamen Spiel. Noch keine vollständigen regionalen Grafikpakete erzeugen. Auf Nutzerwunsch bleiben Prüfungen auf geänderte Funktionen und den jeweils nötigen Spielablauf beschränkt.
+- [x] Umsetzungsplan für den nächsten Ausbau erstellt: [P1–P6 mit Aufgaben und Fertigkriterien](UMSETZUNGSPLAN.md).
+- [x] Konkreter Gegner-Produktionsplan erstellt: [Laternenqualle, Pixelmaßstab, Richtungen, Animation und Mechanik](GEGNER_PRODUKTIONSPLAN.md).
+- [x] Erste seitliche Laternenquallen-Probe mit sechs Frames erzeugt und im Moor angesehen; [visuelle Nutzerabnahme offen](artifacts/enemies/lantern-jelly/v1/REPORT.md).
+- [ ] P1: Vier eigenständige Zehn-Wellen-Pläne und passende Vorschau.
+- [ ] P2: Ersten Spezialgegner im Laternenmoor verständlich einführen.
+- [ ] P3: Ilyra, anschließend Runa und Auswahl von zwei Begleitern integrieren.
+- [ ] P4: Spielgefühl, Figurenanimationen und Rückmeldungen gezielt verbessern.
+
+**Nächster Schritt für den aktuellen Gegnerauftrag:** Die animierte Stilprobe ansehen und abnehmen; danach die erste Einheit gemäß Produktionsplan vervollständigen. Als nächster allgemeiner Spielausbau bleibt P1 aus dem Umsetzungsplan vorgesehen. Mondwarte und Story folgen nach dem Feinschliff der vorhandenen vier Karten. Auf Nutzerwunsch bleiben Prüfungen auf geänderte Funktionen und den jeweils nötigen Spielablauf beschränkt.
 
 Bei späteren Arbeiten zuerst diesen Plan und den letzten belegten Stand lesen. Checklisten werden nur mit tatsächlichem Nachweis aktualisiert; Nutzerabnahmen werden nicht aus verstrichener Zeit oder fehlendem Widerspruch abgeleitet.

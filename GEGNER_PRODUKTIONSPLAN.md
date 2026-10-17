@@ -1,0 +1,98 @@
+# Spire – Produktionsplan für neue Gegner
+
+Stand: 17. Oktober 2026. **Erste seitliche Bewegungsprobe erstellt; visuelle Nutzerabnahme offen.** Sechs Frames sind als eigene Moor-Vorschau verfügbar: [Ergebnis und Aufbereitung](artifacts/enemies/lantern-jelly/v1/REPORT.md). Weitere Ansichten, Heilung, Tod und Gameplayintegration bleiben offen. Ergänzung zu [Umsetzungsplan P2](UMSETZUNGSPLAN.md#p2--eine-regionale-besonderheit-sauber-einführen) und zur [Grafikreferenz](reference/STYLE_GUIDE.md).
+
+## 1. Was wir übernehmen
+
+Die alten Spezialgegner liefern Rollen und Designideen. Ihre hoch aufgelösten Bilder gelten als Entwürfe, nicht als fertige Spielsprites. Der erste neue Gegner wird die **Laternenqualle als schwebender Moorheiler**. Die Grundidee mit leuchtendem Körper und Laterne bleibt; Form und Details werden für den vorhandenen Pixelstil neu aufgebaut.
+
+Beim geprüften Altbestand hat die Laternenqualle ungefähr 443 × 443 Pixel pro Bild, der Original-Blattkäfer einen 64 × 64 Rahmen. Das alte Quallenblatt enthält acht Posen; der alte Renderer verwendet für alle drei Richtungen dieselben zwei Bewegungsbilder. Eine vollständige Richtungsanimation ist damit nicht belegt. Reines Verkleinern würde die feinen Texturen und wechselnden Silhouetten nicht zuverlässig beheben.
+
+| Kandidat | Wiederverwendbare Idee | Geplante Behandlung |
+| --- | --- | --- |
+| Laternenqualle / Lantern Jelly | Heilt nahe Gegner | Erste vollständig neu aufbereitete und animierte Einheit für das Moor |
+| Wurzeltrommler / Root Herald | Beschleunigt eine Gruppe | Zurückgestellt; nur bei Bedarf, dann eigener Pixelentwurf und Bewegungszyklus |
+| Frostwidder / Frost Ram | Robuster Gegner mit Turmstörung | Zurückgestellt; Störwirkung und Gegenstrategie zuerst klären |
+| Sternenrichter | Schützt andere Gegner | Möglicher späterer Gegner der Mondwarte; eigener Aufwand, keine automatische Übernahme |
+
+Die acht Originalgegner bleiben der Maßstab. Es werden nicht vier neue Grafikpakete gleichzeitig produziert.
+
+## 2. Verbindlicher Entwurf der Laternenqualle
+
+| Merkmal | Produktionsvorgabe |
+| --- | --- |
+| Silhouette | Einfache Glockenform, wenige breite Tentakel, kleine mittige Laterne; auch ohne Leuchteffekt als eigene Einheit erkennbar |
+| Perspektive | Gleiche leichte Draufsicht wie Originalgegner; unten, oben und seitlich jeweils tatsächlich gezeichnet |
+| Detailgrad | Große klare Farbflächen und Pixelgruppen; keine gemalten Stofftexturen, Metallgravuren oder vielen winzigen Lichtpunkten |
+| Farbe | Gedämpftes Türkis, dunkle blaugrüne Kontur, warmes Laternenlicht; Startbudget etwa 10–14 Körperfarben einschließlich Schattierung |
+| Licht und Kontur | Zur Originalreferenz passend; harte Pixelkanten im logischen Raster, wenige Helligkeitsstufen, keine weichen Außenfransen |
+| Rahmen | 64 × 64 Pixel je Laufzeitframe, echte Transparenz; kein eingezeichnetes Schachbrett oder Schattenboden |
+| Sichtbare Größe | Ausgangspunkt etwa 30 × 36 Quellpixel für den Körper; bei Maßstab 0,83 ungefähr 25 × 30 Spieleinheiten. Neben Originalfliegern im Spiel fein abstimmen |
+| Anker | Einheitlicher Körperbezug bei (32/32); Weltposition und Bodenschatten getrennt. Kein Begleiter-Fußpunkt (32/56) für den schwebenden Gegner |
+| Freiraum | Tentakel und Heilpose bleiben innerhalb des Rahmens mit mindestens zwei transparenten Randpixeln. Größere Heilwirkung wird separat dargestellt |
+
+Diese Maße sind ein konkreter Produktionsstart. Änderungen nach der ersten Spielprobe werden einmal dokumentiert und gelten anschließend für alle Frames. Einzelposen werden nicht jeweils auf dieselbe Breite und Höhe gestreckt.
+
+## 3. Benötigte Animationen
+
+Für die erste vollständige Einheit sind **48 unterschiedliche Körperframes** vorgesehen. Links wird nur dann aus der Seitenansicht gespiegelt, wenn Laterne, Licht und Körperzeichnung das tatsächlich erlauben; das Design wird dafür möglichst symmetrisch angelegt.
+
+| Zustand | Frames je Ansicht | Ansichten | Summe | Erste Zeitvorgabe |
+| --- | --- | --- | --- | --- |
+| Ruhe | 1 | unten, oben, seitlich | 3 | Feste Ruhepose; dezentes Schweben getrennt gesteuert |
+| Bewegung | 6 | unten, oben, seitlich | 18 | 100 ms je Frame, geschlossener 600-ms-Zyklus |
+| Heilimpuls | 4 | unten, oben, seitlich | 12 | 100 ms je Frame, einmalig; Wirkung beim dritten Frame |
+| Tod | 5 | unten, oben, seitlich | 15 | 100 ms je Frame, einmalig; danach entfernen |
+
+Der Bewegungszyklus zeigt ein Zusammenziehen, Ausstrecken und Nachschwingen der Tentakel. Anfang und Ende schließen aneinander an. Heilung zeigt eine kurze Körper-/Laternenreaktion. Beim Tod fällt die Form sichtbar zusammen und das Licht erlischt. Ein normaler Angriff ist für diese Rolle nicht erforderlich; eine eigene Trefferanimation ist zunächst ebenfalls nicht nötig.
+
+Körper, Laterne und Tentakel behalten Volumen, Position und Farbgebung über den Zyklus. Ein dauerhaftes Hoch-und-runter-Schieben eines Einzelbilds ersetzt keine Körperanimation. Eine zusätzliche Schwebewegung darf den Körperzyklus nicht doppelt übertreiben.
+
+## 4. Produktion in fünf konkreten Schritten
+
+1. **Referenz festlegen:** Original-Blattkäfer und einen Originalflieger mit Bewegungsframes sowie einen aktuellen Moorausschnitt zusammenstellen. Die alte Qualle dient nur als Motivvorlage. Prompt und Zielmaße vor der Generation speichern.
+2. **Eine Grundpose erstellen:** Zunächst eine vereinfachte seitliche Pose als echte kleine Pixelgrafik aufbereiten. Hohe Generatorauflösung ist Rohmaterial; Pixelgruppen, Palette und Kontur müssen im 64er Zielformat stimmen. Nicht versuchen, den alten Detailgrad durch Weichzeichnen oder Schärfefilter passend zu machen.
+3. **Eine Bewegungsprobe bauen:** Sechs zusammengehörige Seitenframes aus demselben Entwurf entwickeln, kontrolliert nacharbeiten und in echter Spielgröße neben einem Originalflieger im Moor abspielen. Erst diese kleine animierte Probe visuell abnehmen lassen; bei Problemen diesen Entwurf korrigieren.
+4. **Die Einheit vervollständigen:** Nach bestandener Probe die übrigen Richtungen sowie Heil- und Todeszustände produzieren. Kurze Sequenzen mit festem Charakterbezug anfordern; ein einziges großes generiertes Komplettsheet ist kein verlässlicher Export. Gute Frames erhalten, nur fehlerhafte Abschnitte korrigieren.
+5. **Aufbereiten und integrieren:** Tatsächliche Ausschnitte vermessen, Konturen und Anker angleichen, Atlas deterministisch packen und Animationsmetadaten schreiben. Anschließend die Einheit mit ihrer echten Mechanik im Moor einsetzen.
+
+Nach zwei ungeeigneten Versuchen für dieselbe Pose oder Sequenz wird das Verfahren angepasst: Silhouette vereinfachen, gute Ausgangspose bearbeiten oder gezielt Pixel korrigieren. Es folgt keine Serie nahezu gleicher Prompts auf Verdacht.
+
+## 5. Dateien und technische Integration
+
+- Rohquellen und vollständige Prompts versioniert unter `artifacts/enemies/lantern-jelly/v1/` erhalten. Geprüfter Laufzeitexport unter `public/assets/` mit neuer Versionskennung; vorhandene Originale nicht überschreiben.
+- Körperatlas: **512 × 384 Pixel**, acht Spalten und sechs Reihen mit 64er Frames. Keine Atlasbeschriftungen oder Zwischenräume als Bildinhalt. Die Zuordnung der 48 Frames wird ausdrücklich gespeichert.
+- Metadaten enthalten Zustand, Richtung, Framefolge, Dauer, Schleife, Bezugspunkt, Maßstab und Zeitpunkt des Heileffekts. Der bestehende Import darf zusätzliche Heil-Tags nicht mit den neun Original-Richtungstags verwechseln.
+- Gezielt benötigte Änderungen an Gegnerdefinition, Simulation, Darstellung, Assetaufbereitung und Offline-Bundle vornehmen. Neue PNGs und Metadaten ausdrücklich in die Kopier- und Einbettungsliste von `scripts/reference.mjs` aufnehmen. Die aktuelle `reference/`-Version besitzt noch keine Heilerfunktion; die alte kontinuierliche Heilung wird nicht blind importiert.
+- Simulation und Animation verwenden dieselbe Spielzeit. Ein Aktionszustand mit zunächst 0,4 Sekunden Dauer steuert Heilpose und Puls bei 0,2 Sekunden. Zustandspriorität: Tod → Heilaktion → Bewegung → Ruhe. Menü und Pause halten beide an, 2× beschleunigt beide. Eine während des Heilimpulses laufende Bewegungsanimation darf die Heilpose nicht sofort überschreiben; nach dem Tod erfolgt kein Puls mehr.
+- Die Qualle darf während des kurzen Impulses weiterschweben. Blickrichtung während dieser Pose festhalten; danach in die passende Bewegung zurückkehren. Kein zusätzliches Stehenbleiben als neue Wegregel nötig.
+- Schatten, Flughöhe und Lebensbalken bleiben getrennte Darstellungsbestandteile. Die bisherigen festen Balken- und Schattenabstände am neuen Körpermaß überprüfen, statt sie in den Sprite einzumalen.
+
+## 6. Erste spielbare Heilerfassung
+
+Die folgenden Werte sind **Startwerte für einen gezielten Versuch**, keine abgeschlossene Balance:
+
+| Regel | Erste Fassung |
+| --- | --- |
+| Einheit | Fliegend, verwundbar durch vorhandene Luftabwehr; 85 Leben, Tempo 43, keine Rüstung, 20 Gold, ein Lebenspunkt Schaden am Ziel |
+| Reichweite | 100 Spieleinheiten um den Heiler; kurzer Effekt am Heiler und den tatsächlich geheilten Zielen |
+| Heilung | Alle zwei Sekunden bis zu zwei verletzte Verbündete um je sechs Lebenspunkte heilen, höchstens bis zu deren Maximalleben |
+| Zielwahl | Am stärksten verletzte geeignete Gegner im Radius zuerst; bei Gleichstand stabile Reihenfolge |
+| Grenzen | Keine Selbstheilung, keine Heilung anderer Heiler oder Bosse. Ein Ziel erhält höchstens einen Heilimpuls innerhalb von zwei Sekunden, auch bei mehreren Heilern |
+| Einführung | Im regionalen Moorplan erstmals in Welle 4 ein Heiler mit einer überschaubaren Gruppe. Weitere Einsätze erst nach dieser Probe, zunächst höchstens zwei gleichzeitig |
+| Rückmeldung | Kurzer Heilimpuls und verständliche Einführung in der Wellenvorschau; kein dauerhaft großer Leuchtnebel |
+
+Die Fähigkeit muss Zielpriorität interessant machen. Wenn sie nur Wellen verlängert, werden Heilmenge, Einsatzgruppe oder Frequenz reduziert. Bestehende Turmrollen müssen eine Gegenstrategie erlauben; ein neuer Begleiter wird dafür nicht vorausgesetzt.
+
+## 7. Fertigkriterien und begrenzte Prüfung
+
+- [ ] Seitenprobe passt neben Originalgegner und Gelände: vergleichbare Pixelgröße, Konturen und Details; auch bei 100 % und 120 % Kamera lesbar.
+- [ ] Alle benötigten Ansichten sind vorhanden; Bewegung, Heilung und Tod sind echte zusammenhängende Folgen ohne springende Anker, abgeschnittene Tentakel oder wechselndes Design.
+- [ ] Heilimpuls, Tod, Pause und 2× laufen im tatsächlichen Kampf korrekt. Todesanimation wird beendet und entfernt; kein Heilereignis nach dem Tod.
+- [ ] Ein kleiner automatisierter Mechaniktest deckt Reichweite, Heilobergrenze, Zielausschlüsse und mehrere Heiler ab. Ein technischer Atlascheck prüft Maße, gültige Framefolgen und Rahmenüberläufe. Kein flächendeckender erneuter Test aller Karten.
+- [ ] Eine frühe Einführungswelle und eine spätere gemischte Moorwelle gezielt spielen. Nur festgestellte Probleme nachprüfen.
+- [ ] Spielansicht und kurze bewegte Vorschau dokumentieren. Build, Offline-Ausgabe, Roadmap und Versionsstand bei der Umsetzung aktualisieren.
+
+**Ergebnis des ersten Produktionspakets:** eine stilistisch passende, vollständig animierte und spielerisch verständliche Laternenqualle. Dieser fertige Gegner ist anschließend die Produktionsvorlage für einen eventuell benötigten zweiten Spezialgegner. Die regionalen Wellen aus P1 bleiben der nächste allgemeine Umsetzungsschritt; dieser Plan beschreibt den darin anschließenden Gegnerausbau.
+
+**Tatsächlicher Zwischenstand:** Auf den anschließenden Nutzerauftrag „erstelle den ersten“ wurde die erste Grafikprobe vorgezogen. Eine Generation lieferte die sechs Seitenposen; Laufzeitexport, Vergleich im echten Moor und eigene Offline-Vorschau sind angelegt. Das vollständige 48-Frame-Paket wird nach der vorgesehenen Stilabnahme vervollständigt. P1 und die Heilmechanik sind damit nicht als umgesetzt markiert.

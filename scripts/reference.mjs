@@ -75,7 +75,7 @@ async function run(args) {
 }
 const bin = path => resolve(root, 'node_modules', path);
 const mode = process.argv[2] ?? 'prepare';
-assert.ok(['prepare', 'dev', 'build', 'test', 'style-build', 'forest-build'].includes(mode), 'Use prepare, dev, build, test, style-build, or forest-build');
+assert.ok(['prepare', 'dev', 'build', 'test', 'style-build', 'forest-build', 'enemy-build'].includes(mode), 'Use prepare, dev, build, test, style-build, forest-build, or enemy-build');
 await prepare();
 if (mode === 'dev') await run([bin('vite/bin/vite.js'), '--host', '127.0.0.1']);
 if (mode === 'build') {
@@ -95,6 +95,12 @@ if (mode === 'forest-build') {
   await run([bin('vite/bin/vite.js'), 'build', '--config', 'vite.woodland.config.ts']);
   await run(['scripts/package-offline.mjs', 'forest']);
   await run(['scripts/check-package.mjs', 'forest']);
+}
+if (mode === 'enemy-build') {
+  await run([resolve(root, 'scripts/prepare-jelly-preview.mjs')]);
+  await run([bin('typescript/bin/tsc'), '--noEmit']);
+  await run([bin('vite/bin/vite.js'), 'build', '--config', 'vite.enemy.config.ts']);
+  await run(['scripts/package-offline.mjs', 'enemy']);
 }
 if (mode === 'test') {
   const files = (await readdir(resolve(reference, 'tests'))).filter(file => /\.test\.(ts|mjs)$/.test(file)).sort();
