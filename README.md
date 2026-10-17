@@ -6,13 +6,13 @@
 
 Die erste Idle-Vorschau enthält automatischen Kampf, Mara, eigene Turmkäufe, Upgrades, Werkstatt I und Frostforschung. Folge Maras Hinweisen bis zum ersten Frosttreffer. Gold und Kampf werden lokal im Browser gespeichert; „Frische Probe“ öffnet eine getrennte neue Partie und bewahrt den bisherigen Stand. Nur ein Tab pro Partie kann gleichzeitig spielen.
 
-Die Karte steht jetzt im Mittelpunkt: schmales HUD, Baudock und Details erst bei Auswahl. Hochkant gibt es einen verschiebbaren Kartenausschnitt, große Bauplatz-Schaltflächen und kompakte Aktionsfenster. Funktional in schmalen Browseransichten geprüft; eine vollständige Smartphone-/Safari-Abnahme steht noch aus. [UI-Prüfung](artifacts/idle-bastion/acceptance/ui/REPORT.md).
+Die Karte steht im Mittelpunkt: warmes Holz-/Bronze-HUD, Baudock und Details erst bei Auswahl. Goldzufluss, Wellenrekord, Vorstoß/Farmen und nächstes Ziel sind direkt sichtbar; das Buchsymbol öffnet Ertragsdetails, Begleiter und die gespeicherte Wellenchronik. Alte Spielstände bleiben erhalten, frühere nicht aufgezeichnete Versuche werden als unbekannt behandelt. Hochkant gibt es einen verschiebbaren Kartenausschnitt und große Aktionsflächen. Funktional in schmalen Browseransichten geprüft; eine vollständige Smartphone-/Safari-Abnahme steht noch aus. [Aktueller UI-/Fortschrittsnachweis](artifacts/idle-bastion/acceptance/ui/PROGRESS.md).
 
 Diese Fassung dient der verbindlichen ersten Zwischenabnahme. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht; spätere Inhalte folgen erst nach Nutzerfreigabe.
 
 ### Entwicklung von Idle Bastion
 
-Echte Spielaufnahmen der bisherigen Entwicklung, keine Mockups. B01 bis B07 zeigen historische Zwischenstände; B07a zeigt die große Kartenansicht und das kompakte Dock. Die alten Aufnahmen bleiben unverändert als Vergleich erhalten.
+Echte Spielaufnahmen der bisherigen Entwicklung, keine Mockups. B07a führte die große Kartenansicht ein, B07b ergänzt verständliche Fortschrittsinformationen und die warme Spieloberfläche. Die älteren Aufnahmen bleiben als Vergleich erhalten.
 
 | B01 · Kartenrahmen und reservierte Flächen | B02 · Automatischer Kampf und Turmkäufe |
 | --- | --- |
@@ -31,6 +31,14 @@ Echte Spielaufnahmen der bisherigen Entwicklung, keine Mockups. B01 bis B07 zeig
 | Hochkant · Kartenausschnitt und Bauplatzwahl | Hochkant · Aktionen nach Turmauswahl |
 | --- | --- |
 | ![Hochkant mit großen Bauplatz-Schaltflächen](artifacts/idle-bastion/acceptance/ui/portrait-placement-390x844.png) | ![Frostturm mit schließbarem Aktionsfenster](artifacts/idle-bastion/acceptance/ui/portrait-context-390x844.png) |
+
+**B07b · Fortschritt im Blick**
+
+![Warme Statusleiste mit Goldzufluss, Wellenrekord und nächstem Ziel](artifacts/idle-bastion/acceptance/ui/b07b-hud-1366x768.png)
+
+| Chronik · Ertrag, Begleiter und Wellen | Hochkant · kompakte Informationen am Spielfeld |
+| --- | --- |
+| ![Geöffnete Fortschrittschronik](artifacts/idle-bastion/acceptance/ui/b07b-chronicle-1366x768.png) | ![Neue Oberfläche im Hochformat](artifacts/idle-bastion/acceptance/ui/b07b-hud-390x844.png) |
 
 ## Bestehendes klassisches Spiel
 

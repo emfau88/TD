@@ -30,7 +30,7 @@ Alle Maße unten sind Spieleinheiten bei 100 % Weltmaßstab. Eine Zelle bleibt *
 
 Leichte Draufsicht, Blickrichtung und Lichtführung entsprechen den Originaltürmen. Keine neue Isometrie. Große lesbare Farbflächen, klare Konturen und kleine Bodenschatten; keine weichen Renderkanten, fotorealistischen Materialien oder überfeinen Dachdetails. Gebäude stehen über ihrem Bodenanker, Figuren laufen auf der Bodenebene.
 
-Farbanker aus dem bestehenden Gelände: Gras `#63ab3f`, helle Vegetation `#c8d45d`, dunkle Vegetation `#3b7d4f`, Erde `#ffae70`, Erdkontur `#bd6a62`, Wasser `#92e8c0`. Sie dienen dem Abgleich, nicht einer pauschalen Umfärbung vorhandener Assets. Die Oberfläche bleibt dunkelgrün mit zurückhaltenden Goldakzenten; keine Neonfarben.
+Farbanker aus dem bestehenden Gelände: Gras `#63ab3f`, helle Vegetation `#c8d45d`, dunkle Vegetation `#3b7d4f`, Erde `#ffae70`, Erdkontur `#bd6a62`, Wasser `#92e8c0`. Sie dienen dem Abgleich, nicht einer pauschalen Umfärbung vorhandener Assets. Die Oberfläche verwendet nach dem zusätzlichen Nutzerauftrag warme Holz-/Kohletöne (#211d18 bis #443729), Bronzekanten (#aa8952) und helle Pergamentschrift (#f1e5cc). Grün bleibt der Landschaft und kleinen aktiven Kampfsignalen vorbehalten; keine Neonfarben.
 
 ## Karte, Kamera und Komposition
 
@@ -51,7 +51,7 @@ Ein kurzer Klick wählt aus; Ziehen ab sechs Bildschirmpixeln verschiebt die Kar
 
 ### Oberfläche nach den Mockups
 
-Die Welt ist die Hauptfläche. Oben stehen Gold, Kernleben und Welle in einer schmalen Leiste, unten Turm-/Siedlungskarten, Mara und Kampfsteuerung in einem kompakten Dock. Vorhandene Spielsprites bilden die Kartenillustrationen. Grün-/Goldrahmen und klare Schrift entstehen in CSS; keine neuen Bildrahmen oder Icons allein für diese Überarbeitung generieren.
+Die Welt ist die Hauptfläche. Oben stehen Gold, Kernleben und Welle in einer schmalen Leiste, unten Turm-/Siedlungskarten, Mara und Kampfsteuerung in einem kompakten Dock. Vorhandene Spielsprites bilden die Kartenillustrationen. Bronze-/Holzrahmen und klare Schrift entstehen in CSS; vorhandene Pixelart illustriert das Dock und die Begleiter. Für die B07b-Überarbeitung wurden keine neuen Bilder benötigt. Goldzufluss, Wellenrekord und Modus bilden eine kleine Statusgruppe; ein schmaler Zielstreifen führt zum nächsten Kauf. Das Buchsymbol öffnet die Chronik mit Ertragserklärung und Wellenhistorie.
 
 Turmwerte, Upgrades und Gebäudeforschung erscheinen erst nach Auswahl. Am Desktop steht das Fenster neben dem Objekt, hochkant als schließbare Karte über dem Dock. Speicherinformationen, Hilfe und Probenstart liegen im Menü. Bau-/Forschungsmeldungen sind kurz; normale Abschüsse erzeugen keine ständig wechselnde Textleiste. Die schmale Ansicht zeigt den Kampfzustand auf der Karte und ersetzt den breiten Auto-Kampf-Schalter durch Pause/Fortsetzen. Geräte-Schutzabstände und große Aktionsflächen berücksichtigen; echte Geräteprüfung gesondert ausweisen.
 

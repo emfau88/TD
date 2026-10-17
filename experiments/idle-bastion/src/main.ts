@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import './battle.css';
+import './progress.css';
 import { SETTLEMENT, stats, upgradeCost, sellValue, type IdleBattle } from './battle';
 import { BattleScene } from './battle-scene';
 import { nextObjective, tutorialHint, tutorialStep } from './hud';
@@ -7,6 +8,7 @@ import { BattleSession, SessionLoadError, SessionOwnershipError } from './battle
 import { openBattleStore, type BattleSaveStore } from './save-store';
 import { ART } from './art';
 import { drawDockArt } from './dock-art';
+import { createProgressUI } from './progress-ui';
 
 const element = <T extends HTMLElement = HTMLElement>(id: string): T => {
   const value = document.getElementById(id);
@@ -52,6 +54,15 @@ let ready = false;
 let booting = false;
 let lifecycle = Promise.resolve();
 let retryTimer: number | undefined;
+const progressUI = createProgressUI(action => {
+  if (action === 'archer' || action === 'frost') startPlacement(action === 'archer' ? 1 : 2);
+  else if (action === 'workshop') { catalogPanel = 'settlement'; openContext('settlement'); }
+  else if (action === 'upgrade' && session) {
+    const towers = session.battle.towers;
+    const tower = [...towers].filter(t => t.level < session!.battle.maxLevel).sort((a, b) => upgradeCost(a) - upgradeCost(b))[0] ?? towers[0];
+    selectedPadId = tower.padId; scene?.setSelected(selectedPadId); openContext('tower');
+  }
+}, lifetime.signal);
 
 function showError(message: string, canRecover = false, ownership = false): void {
   element('error-panel').hidden = false;
@@ -130,7 +141,7 @@ function syncUI(): void {
   element('safe-rate').title = certificate ? `Welle ${certificate.wave}: zwei konservative, schadensfreie Wiederholungen inklusive Wellenpausen. Grundlage für 60 % Offline-Ertrag.`
     : 'Noch kein gültiger Farmnachweis. Eine erste Welle muss live geschafft und zweimal konservativ geprüft werden.';
   element('menu-farm-rate').textContent = `${element('safe-rate').textContent}. ${element('safe-rate').title}`;
-  element('gold').textContent = preciseCurrency.format(sim.gold + sim.goldRemainderUnits / 1000);
+  element('gold').textContent = currency.format(sim.gold);
   element('lives').textContent = `${sim.lives} / 20`;
   element('wave').textContent = String(sim.wave);
   const mode = sim.mode === 'farm' ? 'Farmen' : 'Vorstoß';
@@ -219,6 +230,8 @@ function syncUI(): void {
     : message.type === 'sell' ? `Turm verkauft · +${currency.format(message.amount ?? 0)} Gold. Die sichere Farmbasis wird neu geprüft.`
     : 'Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.';
   element('combat-message').hidden = performance.now() > toastUntil || contextOpen || Boolean(placementType) || live.awaitingResume;
+  progressUI.update(live);
+  document.getElementById('app')!.classList.toggle('context-open', contextOpen || Boolean(placementType));
   positionContext();
 }
 
@@ -278,6 +291,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     store?.close(); store = options.temporary ? undefined : await openBattleStore(undefined, databaseName);
     const live = await BattleSession.open(store, { recover: options.recover });
     session = live;
+    progressUI.reset();
     if (document.hidden && !live.temporary) { await live.suspend(); return; }
     if (live.battle.wave > 0) element('combat-message').textContent = 'Gespeicherte Verteidigung geladen. Gold, Türme und laufender Kampf sind wieder da.';
     live.onChange = () => { if (session === live) { scene?.refresh(); syncUI(); } };

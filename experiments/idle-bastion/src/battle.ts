@@ -8,6 +8,7 @@
 import { cellCenter, createIdleLayout, isUnlockedCell, type IdleLayout } from './layout';
 import { getForestBlockedCells } from './forest-world';
 import { MARA, createMara, cloneMara, assignMaraTarget, stepMara, validMara, type MaraState } from './mara';
+import { createProgress, cloneProgress, recordAttempt, validProgress, type ProgressRecord } from './progress';
 
 export const BASE = Object.freeze({
   stepSeconds: 0.025, startGold: 75, coreLives: 20,
@@ -65,7 +66,8 @@ export interface BattleEvent {
 
 /** Only scalar IDs and fired payloads cross the save boundary. UI events are transient. */
 export interface BattleSnapshot {
-  schemaVersion: 4; rulesVersion: 3; layoutVersion: 1; layoutId: 'start28';
+  schemaVersion: 5; rulesVersion: 3; layoutVersion: 1; layoutId: 'start28';
+  progress: ProgressRecord;
   goldRemainderUnits: number; mode: BattleMode; highestCleared: number; attemptId: number;
   liveClearedWaves: number[]; farmWave: number; advanceRequested: boolean;
   gold: number; lives: number; wave: number; phase: Phase; elapsed: number;
@@ -119,6 +121,7 @@ export class IdleBattle {
   elapsed = 0;
   kills = 0;
   earned = 0;
+  progress = createProgress();
   towers: Tower[] = [];
   enemies: Enemy[] = [];
   shots: Shot[] = [];
@@ -154,10 +157,11 @@ export class IdleBattle {
    */
   snapshot(): BattleSnapshot {
     if (JSON.stringify(this.layout) !== SNAPSHOT_LAYOUT_JSON) {
-      throw new Error('Unsupported battle layout for snapshot version 4.');
+      throw new Error('Unsupported battle layout for snapshot version 5.');
     }
     return {
-      schemaVersion: 4, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: 1, layoutId: 'start28',
+      schemaVersion: 5, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: 1, layoutId: 'start28',
+      progress: cloneProgress(this.progress),
       goldRemainderUnits: this.goldRemainderUnits, mode: this.mode, highestCleared: this.highestCleared,
       attemptId: this.attemptId, liveClearedWaves: [...this.liveClearedWaves],
       farmWave: this.farmWave, advanceRequested: this.advanceRequested,
@@ -206,7 +210,12 @@ export class IdleBattle {
           builtTower: value.towers.some(tower => !tower.protected),
           upgradedTower: value.towers.some(tower => tower.level > 1) } };
     }
+    if (isRecord(value) && value.schemaVersion === 4 && value.rulesVersion === BATTLE_RULES_VERSION) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 4)) return undefined;
+      value = { ...value, schemaVersion: 5, progress: createProgress(value.attemptId, value.elapsed) };
+    }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength)) return undefined;
+    model.progress = cloneProgress(value.progress);
     model.gold = value.gold;
     model.goldRemainderUnits = value.goldRemainderUnits;
     model.mode = value.mode;
@@ -291,7 +300,7 @@ export class IdleBattle {
     if (!Number.isSafeInteger(amountUnits) || amountUnits < 0
       || !Number.isSafeInteger(amountUnits + this.goldRemainderUnits)) throw new Error('Invalid offline gold transaction.');
     const total = amountUnits + this.goldRemainderUnits;
-    this.credit(Math.floor(total / 1000), true);
+    this.credit(Math.floor(total / 1000), true, true);
     this.goldRemainderUnits = total % 1000;
   }
 
@@ -370,11 +379,13 @@ export class IdleBattle {
     };
   }
 
-  private credit(amount: number, reward: boolean): void {
+  private credit(amount: number, reward: boolean, offline = false): void {
     if (!Number.isSafeInteger(amount) || amount < 0 || !Number.isSafeInteger(this.gold + amount)
-      || (reward && !Number.isSafeInteger(this.earned + amount))) throw new Error('Invalid gold transaction.');
+      || (reward && !Number.isSafeInteger(this.earned + amount))
+      || (reward && !offline && !Number.isSafeInteger(this.progress.battleGold + amount))) throw new Error('Invalid gold transaction.');
     this.gold += amount;
     if (reward) this.earned += amount;
+    if (reward && !offline) this.progress.battleGold += amount;
   }
 
   private startAttempt(): void {
@@ -384,6 +395,7 @@ export class IdleBattle {
     }
     this.wave = this.mode === 'advance' ? this.highestCleared + 1 : this.farmWave;
     this.attemptId++;
+    recordAttempt(this.progress, this.wave, this.mode, this.attemptId, 'attempts');
     this.lives = BASE.coreLives;
     this.enemies = [];
     this.shots = [];
@@ -477,6 +489,7 @@ export class IdleBattle {
     if (!this.queue.length) this.spawnTimer = 0;
     for (const enemy of this.enemies) if (enemy.hp > 0) this.move(enemy, dt);
     if (this.lives <= 0) {
+      recordAttempt(this.progress, this.wave, this.mode, this.attemptId, 'losses');
       if (this.mode === 'farm') this.farmWave = 1;
       this.mode = 'farm';
       this.advanceRequested = false;
@@ -514,6 +527,7 @@ export class IdleBattle {
     });
     this.enemies = this.enemies.filter(enemy => enemy.hp > 0);
     if (!this.queue.length && !this.enemies.length) {
+      recordAttempt(this.progress, this.wave, this.mode, this.attemptId, 'wins');
       this.shots = [];
       const amount = Math.min(BASE.waves.maxReward, BASE.waves.rewardBase + this.wave * BASE.waves.rewardPerWave);
       this.credit(amount, true);
@@ -553,11 +567,12 @@ const near = (left: number, right: number): boolean => Math.abs(left - right) <=
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 = 0,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 = 0,
 ): value is BattleSnapshot {
-  if (!isRecord(value) || value.schemaVersion !== (legacy || 4) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : BATTLE_RULES_VERSION)
+  if (!isRecord(value) || value.schemaVersion !== (legacy || 5) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : BATTLE_RULES_VERSION)
     || value.layoutVersion !== 1 || value.layoutId !== 'start28') return false;
-  if (!legacy) {
+  const original = legacy === 2 || legacy === 3;
+  if (!original) {
     if (!isRecord(value.settlement) || typeof value.settlement.workshopBuilt !== 'boolean'
       || typeof value.settlement.frostResearched !== 'boolean'
       || (value.settlement.frostResearched && !value.settlement.workshopBuilt)
@@ -566,7 +581,7 @@ function validSnapshot(
       || !integerIn(value.tutorial.seen, 0, 255) || typeof value.tutorial.builtTower !== 'boolean'
       || typeof value.tutorial.upgradedTower !== 'boolean' || typeof value.tutorial.frostSeen !== 'boolean') return false;
   }
-  const levelLimit = !legacy && (value.settlement as BattleSnapshot['settlement']).frostResearched ? 6 : 3;
+  const levelLimit = !original && (value.settlement as BattleSnapshot['settlement']).frostResearched ? 6 : 3;
   if (!integerIn(value.goldRemainderUnits, 0, 999) || (value.mode !== 'advance' && value.mode !== 'farm')
     || !integerIn(value.highestCleared, 0, Number.MAX_SAFE_INTEGER - 1) || !integerIn(value.attemptId)
     || !integerIn(value.farmWave, 1) || !isNormalFarmWave(value.farmWave)
@@ -578,6 +593,7 @@ function validSnapshot(
     previousWave = wave;
   }
   if (value.farmWave !== 1 && !value.liveClearedWaves.includes(value.farmWave)) return false;
+  if (!legacy && !validProgress(value.progress, value.attemptId, value.elapsed as number)) return false;
   if (!integerIn(value.gold) || !integerIn(value.earned) || !integerIn(value.kills)
     || !integerIn(value.wave) || !integerIn(value.uid, 2)
     || !integerIn(value.ticks) || !numberIn(value.elapsed, 0, Number.MAX_SAFE_INTEGER)
@@ -617,9 +633,9 @@ function validSnapshot(
   };
   let protectedCount = 0, towerKills = 0;
   for (const tower of value.towers) {
-    if (!isRecord(tower) || (!legacy && tower.kind !== 1 && tower.kind !== 2)) return false;
-    const def = towerDefinition(legacy ? 1 : tower.kind as TowerId);
-    if (!legacy && def.id === 2 && !(value.settlement as BattleSnapshot['settlement']).frostResearched) return false;
+    if (!isRecord(tower) || (!original && tower.kind !== 1 && tower.kind !== 2)) return false;
+    const def = towerDefinition(original ? 1 : tower.kind as TowerId);
+    if (!original && def.id === 2 && !(value.settlement as BattleSnapshot['settlement']).frostResearched) return false;
     if (!isRecord(tower) || !takeId(tower.uid) || typeof tower.padId !== 'string' || pads.has(tower.padId)
       || !integerIn(tower.level, 1, levelLimit) || typeof tower.protected !== 'boolean'
       || !numberIn(tower.cooldown, 0, def.cooldown) || !numberIn(tower.angle, -2 * Math.PI, 2 * Math.PI)
@@ -647,7 +663,7 @@ function validSnapshot(
       || !numberIn(enemy.hp, 0, enemy.maxHp) || !numberIn(enemy.distance, 0, pathLength + 1e-6)
       || enemy.total !== pathLength || !integerIn(enemy.segment, 0, path.length - 1)
       || enemy.speed !== BASE.enemies[enemy.defId].speed || typeof enemy.flip !== 'boolean'
-      || (!legacy && !numberIn(enemy.slowRemaining, 0, SETTLEMENT.slowSeconds))
+      || (!original && !numberIn(enemy.slowRemaining, 0, SETTLEMENT.slowSeconds))
       || (enemy.direction !== 'up' && enemy.direction !== 'down' && enemy.direction !== 'side')) return false;
     const def = BASE.enemies[enemy.defId];
     const expectedHp = def.hp * Math.min(BASE.waves.maxHpMultiplier, Math.pow(BASE.waves.hpGrowth, value.wave - 1));
@@ -666,9 +682,9 @@ function validSnapshot(
     enemyIds.add(enemy.uid);
   }
   for (const shot of value.shots) {
-    if (!isRecord(shot) || (!legacy && shot.kind !== 1 && shot.kind !== 2)) return false;
-    const def = towerDefinition(legacy ? 1 : shot.kind as TowerId);
-    if (!legacy && def.id === 2 && !(value.settlement as BattleSnapshot['settlement']).frostResearched) return false;
+    if (!isRecord(shot) || (!original && shot.kind !== 1 && shot.kind !== 2)) return false;
+    const def = towerDefinition(original ? 1 : shot.kind as TowerId);
+    if (!original && def.id === 2 && !(value.settlement as BattleSnapshot['settlement']).frostResearched) return false;
     if (!isRecord(shot) || !takeId(shot.uid) || !integerIn(shot.towerUid, 1, shot.uid - 1)
       || !integerIn(shot.target, 2, shot.uid - 1) || towerIds.has(shot.target) || enemyIds.has(shot.towerUid)
       || !numberIn(shot.x, 0, layout.bounds.width) || !numberIn(shot.y, 0, layout.bounds.height)

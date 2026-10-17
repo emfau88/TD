@@ -131,7 +131,7 @@ test('snapshot v1 migration retains combat exactly and invents neither a certifi
   const legacy = { ...old, schemaVersion: 1, rulesVersion: 1 };
   const migrated = IdleBattle.restore(legacy, { maraBonus: false })!;
   assert.ok(migrated);
-  assert.equal(migrated.snapshot().schemaVersion, 4);
+  assert.equal(migrated.snapshot().schemaVersion, 5);
   assert.equal(migrated.highestCleared, 1);
   assert.equal(migrated.attemptId, 2);
   assert.deepEqual(migrated.liveClearedWaves, []);
@@ -178,7 +178,7 @@ test('current progress and certificate fields reject invalid histories, referenc
     { mode: 'wrong' }, { highestCleared: -1 }, { attemptId: 0 }, { farmWave: 9 }, { farmWave: 15 },
     { liveClearedWaves: [1, 1] }, { liveClearedWaves: [2] }, { liveClearedWaves: [1, 15] },
     { goldRemainderUnits: -1 }, { goldRemainderUnits: 1000 }, { goldRemainderUnits: 0.5 },
-    { mode: 'advance', advanceRequested: true }, { schemaVersion: 5 },
+    { mode: 'advance', advanceRequested: true }, { schemaVersion: 6 },
   ];
   for (const fields of mutations) assert.equal(IdleBattle.restore({ ...good, ...fields }), undefined, JSON.stringify(fields));
   for (const fields of [
@@ -208,6 +208,7 @@ test('bounded live history pins both entry evidence and the currently certified 
   until(initial, () => initial.shots.length > 0);
   const snapshot = initial.snapshot();
   snapshot.wave = 49; snapshot.highestCleared = 48; snapshot.attemptId = 49;
+  snapshot.progress.waves[0].wave = 49; // Match the artificially moved active attempt.
   snapshot.farmWave = 3;
   snapshot.liveClearedWaves = [1, 3, ...Array.from({ length: 31 }, (_, index) => index + 18).filter(wave => wave !== 25)];
   assert.equal(snapshot.liveClearedWaves.length, 32);
