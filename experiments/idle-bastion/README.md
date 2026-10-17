@@ -1,6 +1,6 @@
 # SPIRE: Idle Bastion — überarbeiteter Entwicklungsauftrag
 
-Stand: 17.10.2026 · Status: **Planung; Spiel noch nicht implementiert**
+Stand: 17.10.2026 · Umsetzungsstand und Freigaben: siehe [Roadmap](ROADMAP.md).
 
 Dieses Dokument ersetzt für Idle Bastion den ursprünglichen langen Auftrag. Es bündelt die anschließend gemeinsam besprochenen Entscheidungen einschließlich der wachsenden, scrollbar erschlossenen Karte. Die bestehende klassische SPIRE-Roadmap wird dadurch nicht verändert. Eine spätere ausdrückliche Startaufforderung autorisiert die Umsetzung bis zur ersten Zwischenabnahme, nicht das Überspringen dieser Abnahme.
 
@@ -108,3 +108,9 @@ Nicht im Slice: Späherposten als eigenes Gebäude, Gilde/Taverne, weitere Regio
 Separat startbarer Build mit dokumentierten tatsächlichen Befehlen; möglichst zusätzlich ein eigenständiger HTML-Build ohne Entwicklungsumgebung. Eine gehostete Vorschau oder Kongregate-Veröffentlichung benötigt einen gesonderten Auftrag. Unterschiedliche Dateipfade/Origins teilen Browser-Spielstände nicht automatisch.
 
 Dazu gehören reale Screenshots (erste Minute, Werkstatt, ungefähr Minute 15), Fortschrittszeiten, echte Browser- und Rückkehrtests, technische Entscheidungen sowie eine ehrliche Bewertung der drei größten Schwachstellen. Vollständig/teilweise implementiert, nur vorbereitet und nicht begonnen werden getrennt ausgewiesen. Technische Prüfergebnisse sind keine Nutzerabnahme.
+
+## B01 lokal starten
+
+Im Wurzelverzeichnis des isolierten Worktrees `npm ci` ausführen, falls die Abhängigkeiten fehlen. `npm run idle:dev` startet die neutrale Layoutprobe auf `http://127.0.0.1:5190/`. `npm run idle:test` prüft ihre Geometrie. `npm run idle:build` erzeugt `experiments/idle-bastion/dist/`; `npm run idle:preview` öffnet den Server auf Port 5191.
+
+Die Probe zeigt Anordnung und Zugänge, noch keinen laufenden Kampf. Die östliche Planungsansicht schaltet kein Gebiet frei. Tatsächliche Ergebnisse und Screenshots stehen im [P1-Bericht](../../artifacts/idle-bastion/acceptance/p1/REPORT.md).

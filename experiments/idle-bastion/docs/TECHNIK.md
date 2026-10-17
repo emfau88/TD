@@ -1,6 +1,6 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
-Status: verbindliche Planung, noch keine Implementierung. Gilt zusammen mit dem [überarbeiteten Auftrag](../README.md). Änderungen an diesen Regeln zuerst dokumentieren; offene Balancewerte sind keine Erlaubnis zur Erweiterung des Funktionsumfangs.
+Verbindliche technische Regeln; den tatsächlichen Umsetzungsstand führt die [Roadmap](../ROADMAP.md). Gilt zusammen mit dem [überarbeiteten Auftrag](../README.md). Änderungen an diesen Regeln zuerst dokumentieren; offene Balancewerte sind keine Erlaubnis zur Erweiterung des Funktionsumfangs.
 
 ## 1. Eigenständige Anwendung und gezielte Wiederverwendung
 

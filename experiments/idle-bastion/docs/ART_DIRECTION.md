@@ -1,6 +1,6 @@
 # SPIRE: Idle Bastion – Grafik- und Assetvertrag
 
-Stand: 17.10.2026. Verbindlich für den geplanten Slice; bisher nur Planung.
+Stand: 17.10.2026. Verbindlich für den Slice; tatsächlicher Umsetzungsstand siehe [Roadmap](../ROADMAP.md).
 Der Umfang und die Freischaltungen stehen in den übrigen Slice-Dokumenten. Dieses Dokument legt Maßstab, Quellen, Produktion und visuelle Prüfung fest.
 
 ## Referenzhierarchie

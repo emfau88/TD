@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 17.10.2026 · **Planung fertig; Spielimplementierung noch nicht begonnen.**
+Stand: 17.10.2026 · **B01 abgeschlossen; B02 als nächstes beauftragt.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -11,13 +11,13 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | Planungsunterlagen verbessern; keine Spielimplementierung oder Assetgenerierung |
-| Aktives Umsetzungspaket | Keines |
-| Nächster Schritt | B01, erst nach ausdrücklichem Umsetzungsauftrag |
+| Autorisierter Umfang | B01 und danach B02 umsetzen; G1 bleibt verbindlicher späterer Halt |
+| Aktives Umsetzungspaket | Keines; B01 abgeschlossen |
+| Nächster Schritt | B02 — automatischer Kampf und Bauwirtschaft |
 | G1: 90-Sekunden-Zwischenabnahme | **Offen; keine Nutzerfreigabe vorhanden** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
-Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B14 sind vollständig offen. Der Zustand der Pakete und tatsächliche Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01 ist abgeschlossen; B02–B14 sind offen. Der Zustand der Pakete und tatsächliche Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
 
 ## So werden die Pakete bearbeitet
 
@@ -35,7 +35,7 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | Phase | Paket | Prüffähiges Ergebnis | Voraussetzung | Status / Nachweis |
 | --- | --- | --- | --- | --- |
 | P0 | Planung | Auftrag, Referenzen und Checklisten vorhanden | Planungsauftrag | Erledigt; ursprüngliche Unterlagen in `6ac8dea`, Checklisten in diesem Dokument |
-| P1 | B01 · Eigenständiger Einstieg | Leere Idle-Anwendung separat start- und baubar, Kartenrahmen festgelegt | Umsetzungsauftrag | Nicht begonnen |
+| P1 | B01 · Eigenständiger Einstieg | Leere Idle-Anwendung separat start- und baubar, Kartenrahmen festgelegt | Umsetzungsauftrag | Erledigt · `b47294a` · [Nachweis](../../artifacts/idle-bastion/acceptance/p1/REPORT.md#b01--eigenständiger-einstieg-und-kartenrahmen) |
 | P1 | B02 · Kampf und Gold | Automatische Wellen, bezahlbare Käufe, Kernreset | B01 | Nicht begonnen |
 | P1 | B03 · Spielstand | Laufenden Kampf samt Wirtschaft konsistent wiederherstellen | B02 | Nicht begonnen |
 | P1 | B04 · Farmen und Abwesenheit | Tragfähige Rückfallwelle, korrekte Offline-Zeit, ein schreibender Tab | B03 | Nicht begonnen |
@@ -68,12 +68,12 @@ Vorbefund aus der vorangegangenen Analyse: 54 Root- und 58 Referenztests sowie b
 
 **Ergebnis:** Eine separat startbare und baubare Idle-Anwendung sowie ein geprüftes neutrales Startlayout. Keine fertige Spielprogression.
 
-- [ ] Branch, Arbeitsverzeichnis und Abhängigkeiten prüfen; im neuen Worktree fehlende ignorierte Dateien nicht als Quellverlust behandeln.
-- [ ] Eigenen Einstieg, Build, Konfiguration und Testaufruf einrichten. Geplant: `npm run idle:dev`, `idle:build`, `idle:test`; erst nach Einrichtung als ausführbar dokumentieren.
-- [ ] Übernommene Kampf-/Darstellungsmodule und Herkunft festhalten; klassische Spielregeln, Startdateien und Save-Keys schützen.
-- [ ] Instanzabhängige 40er-Zellen, 28×16-Startregion und späteres Flächenbudget bis 36×16 vorsehen. Keine globale Änderung alter Kartenkonstanten.
-- [ ] Neutrale Layoutprobe mit Kern/Pfadende, Werkstattgrundstück, vier aktiven Turmplätzen und Figurenzugängen bei 1366×768 und 1920×1080 ansehen.
-- [ ] Erste Gegner, Startturm, Mara-Position, Kern und Werkstattplatz ohne notwendiges Scrollen unterbringen; künftige östliche Turmplätze müssen den letzten Wegabschnitt erreichen können.
+- [x] Branch, Arbeitsverzeichnis und Abhängigkeiten prüfen; im neuen Worktree fehlende ignorierte Dateien nicht als Quellverlust behandeln.
+- [x] Eigenen Einstieg, Build, Konfiguration und Testaufruf einrichten. Geplant: `npm run idle:dev`, `idle:build`, `idle:test`; erst nach Einrichtung als ausführbar dokumentieren.
+- [x] Übernommene Kampf-/Darstellungsmodule und Herkunft festhalten; klassische Spielregeln, Startdateien und Save-Keys schützen.
+- [x] Instanzabhängige 40er-Zellen, 28×16-Startregion und späteres Flächenbudget bis 36×16 vorsehen. Keine globale Änderung alter Kartenkonstanten.
+- [x] Neutrale Layoutprobe mit Kern/Pfadende, Werkstattgrundstück, vier aktiven Turmplätzen und Figurenzugängen bei 1366×768 und 1920×1080 ansehen.
+- [x] Erste Gegner, Startturm, Mara-Position, Kern und Werkstattplatz ohne notwendiges Scrollen unterbringen; künftige östliche Turmplätze müssen den letzten Wegabschnitt erreichen können.
 
 **Fertig, wenn:** Start und Build wirklich laufen, die Ausgangsgeometrie plausibel ist und keine Änderungen am klassischen Spiel erforderlich waren oder unbemerkt eingeflossen sind. Layoutprobe ist kein fertiger Screenshotnachweis des späteren Spiels.
 
@@ -309,3 +309,5 @@ Für jedes abgeschlossene Paket im Bericht festhalten:
 | 17.10.2026 | Verbindliche Nutzer-Zwischenabnahme nach den ersten 90 Sekunden; kurze Technologievorführung bis etwa 150 Sekunden gehört dazu |
 | 17.10.2026 | Feste Turmplätze, manuelle Käufe/neuer Vorstoß, 1×, Kernreset, konservatives Farming und atomarer Kampfsave festgelegt |
 | 17.10.2026 | Roadmap zu 14 prüfbaren Arbeitspaketen mit Checklisten und Abschlusskriterien ausgebaut; Funktionsumfang und Freigabegrenzen bleiben gleich |
+
+| 17.10.2026 | B01 umgesetzt und geprüft; Nutzer beauftragt anschließend ausdrücklich B02 |

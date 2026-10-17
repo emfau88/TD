@@ -1,6 +1,6 @@
 # Abnahme und Nachweise
 
-Stand: 17.10.2026. Dies ist ein Prüfplan, kein Ergebnisbericht. Alle neuen Spielfunktionen sind derzeit **noch nicht begonnen**. Umfang und Regeln stehen in [überarbeiteten Auftrag](../README.md); die Reihenfolge steht in [ROADMAP.md](../ROADMAP.md).
+Stand: 17.10.2026. Dies ist ein Prüfplan, kein Ergebnisbericht. Den tatsächlichen Umsetzungsstand führt ausschließlich die [Roadmap](../ROADMAP.md). Umfang und Regeln stehen in [überarbeiteten Auftrag](../README.md); die Reihenfolge steht in [ROADMAP.md](../ROADMAP.md).
 
 ## 1. Verbindliche Zwischenabnahme: erster Spielkreislauf
 
