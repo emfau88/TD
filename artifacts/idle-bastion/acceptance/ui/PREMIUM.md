@@ -32,4 +32,4 @@ Pixelify Sans für Überschriften und Kennzahlen, Systemschrift für kleine Erkl
 
 ## Veröffentlichung
 
-Commit und Pages-Lauf werden nach erfolgreicher Veröffentlichung in der Roadmap festgehalten. [Playlink](https://emfau88.github.io/TD/idle-bastion/) · [Frische Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1).
+Veröffentlichte Fassung: `b972548`. [Pages-Lauf 39076457593](https://github.com/emfau88/TD/actions/runs/39076457593) erfolgreich (klassisches Spiel und Idle gebaut). Die öffentliche Fassung wurde im Browser geöffnet: Messing-WebP und Pixelify-Schrift geladen, Kampf läuft, kein Fehlerpanel. Der Paketstatus steht in der Roadmap. [Playlink](https://emfau88.github.io/TD/idle-bastion/) · [Frische Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1).
