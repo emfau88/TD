@@ -18,11 +18,21 @@ export const ART = Object.freeze({
   core: new URL('../../../public/assets/Tower 08.png', import.meta.url).href,
   coreWeapon: new URL('../../../public/assets/Tower 08 - Level 03 - Weapon.png', import.meta.url).href,
   maraSource: new URL('../../../public/assets/Hero Mara.png', import.meta.url).href,
+  weapon2: new URL('../../../public/assets/Tower 01 - Level 02 - Weapon.png', import.meta.url).href,
+  frostTower: new URL('../../../public/assets/Tower 02.png', import.meta.url).href,
+  frostWeapon: new URL('../../../public/assets/Tower 02 - Level 01 - Weapon.png', import.meta.url).href,
+  frostWeapon2: new URL('../../../public/assets/Tower 02 - Level 02 - Weapon.png', import.meta.url).href,
+  frostProjectile: new URL('../../../public/assets/Tower 02 - Level 01 - Projectile.png', import.meta.url).href,
+  workshop: new URL('../assets/workshop/workshop-i.png', import.meta.url).href,
+  workshopDamaged: new URL('../assets/workshop/workshop-damaged.png', import.meta.url).href,
 });
 export const KEYS = Object.freeze({
   grass: 'idle-grass', water: 'idle-water-source', tower: 'idle-tower', weapon: 'idle-weapon',
   projectile: 'idle-projectile', leafbug: 'idle-leafbug', firebug: 'idle-firebug',
   core: 'idle-core', coreWeapon: 'idle-core-weapon', maraSource: 'idle-mara-source', mara: 'idle-mara',
+  weapon2: 'idle-weapon-2', frostTower: 'idle-frost-tower', frostWeapon: 'idle-frost-weapon',
+  frostWeapon2: 'idle-frost-weapon-2', frostProjectile: 'idle-frost-projectile',
+  workshop: 'idle-workshop', workshopDamaged: 'idle-workshop-damaged',
 });
 export const SCALE = Object.freeze({ tile: 0.625, tree: 0.8, tower: 0.63, enemy: 0.83, mara: 1, projectile: 0.45 });
 export const LEAF_FRAMES = Object.freeze([0,1,2,3,4,5,8,9,10,11,12,13,16,17,18,19,20,21,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,56,57,58,59,60,61,62,64,65,66,67,68,69,70]);
@@ -56,11 +66,17 @@ export function preloadArt(scene: Phaser.Scene): void {
   scene.load.image(KEYS.grass, ART.grass);
   scene.load.image(KEYS.water, ART.water);
   scene.load.image(KEYS.maraSource, ART.maraSource);
+  scene.load.image(KEYS.workshop, ART.workshop);
+  scene.load.image(KEYS.workshopDamaged, ART.workshopDamaged);
   for (const [key, url, width, height] of [
     [KEYS.tower, ART.tower, 64, 128], [KEYS.weapon, ART.weapon, 96, 96],
     [KEYS.projectile, ART.projectile, 8, 40],
     [KEYS.leafbug, ART.leafbug, 64, 64], [KEYS.firebug, ART.firebug, 128, 64],
     [KEYS.core, ART.core, 64, 192], [KEYS.coreWeapon, ART.coreWeapon, 64, 64],
+    [KEYS.weapon2, ART.weapon2, 96, 96],
+    [KEYS.frostTower, ART.frostTower, 64, 192],
+    [KEYS.frostWeapon, ART.frostWeapon, 96, 96], [KEYS.frostWeapon2, ART.frostWeapon2, 128, 128],
+    [KEYS.frostProjectile, ART.frostProjectile, 32, 32],
   ] as const) scene.load.spritesheet(key, url, { frameWidth: width, frameHeight: height });
 }
 export function prepareArt(scene: Phaser.Scene): void {

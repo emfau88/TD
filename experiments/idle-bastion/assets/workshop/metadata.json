@@ -1,0 +1,58 @@
+{
+  "workshop-i": {
+    "source": [
+      1374,
+      1145
+    ],
+    "bounds": [
+      253,
+      183,
+      868,
+      783
+    ],
+    "scale": 0.11059907834101383,
+    "output": [
+      128,
+      128
+    ],
+    "silhouette": [
+      16,
+      26,
+      96,
+      87
+    ],
+    "anchor": [
+      64,
+      112
+    ],
+    "alphaThreshold": 128
+  },
+  "workshop-damaged": {
+    "source": [
+      1374,
+      1145
+    ],
+    "bounds": [
+      251,
+      181,
+      872,
+      786
+    ],
+    "scale": 0.11059907834101383,
+    "output": [
+      128,
+      128
+    ],
+    "silhouette": [
+      16,
+      26,
+      96,
+      87
+    ],
+    "anchor": [
+      64,
+      112
+    ],
+    "alphaThreshold": 128
+  }
+}

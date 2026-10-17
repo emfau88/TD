@@ -7,7 +7,7 @@ import { KEYS, SCALE, loopFrame } from './art';
 import { getForestWorld } from './forest-world';
 import { cellCenter, type GridCell, type IdleLayout } from './layout';
 
-export interface ForestView { update(elapsed: number): void; destroy(): void }
+export interface ForestView { update(elapsed: number, built: boolean, builtAt: number | null): void; destroy(): void }
 const cellKey = ({ x, y }: GridCell) => `${x},${y}`;
 /** Source quadrants are chosen from occupied N/E/S/W neighbours. */
 export function roadSource(position: GridCell, road: ReadonlySet<string>): readonly [number, number] {
@@ -102,11 +102,15 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
       stakes.fillRect(x - 2, y - 7, 4, 9).fillStyle(0xd8ba7b, 0.8).fillRect(x - 3, y - 8, 6, 3).fillStyle(0x745445, 0.9);
     }
   }
-  const plotLabel = track(scene.add.text((workshop.footprint.x + workshop.footprint.width / 2) * size,
-    (workshop.footprint.y + 0.55) * size, 'Werkstattstelle', {
+  const workshopX = (workshop.footprint.x + workshop.footprint.width / 2) * size;
+  const workshopY = (workshop.blockingBody.y + workshop.blockingBody.height) * size;
+  const building = track(scene.add.image(workshopX, workshopY, KEYS.workshopDamaged)
+    .setOrigin(0.5, 112/128).setDepth(workshopY + 1000));
+  const dust = track(scene.add.graphics().setDepth(workshopY + 1002));
+  const plotLabel = track(scene.add.text(workshopX,
+    (workshop.footprint.y + workshop.footprint.height) * size - 7, 'Alte Werkstatt', {
       fontFamily: 'Segoe UI, sans-serif', fontSize: '10px', color: '#e1d0a8', stroke: '#304a32', strokeThickness: 3,
-    }).setOrigin(0.5).setDepth(5));
-  void plotLabel;
+    }).setOrigin(0.5).setDepth(workshopY + 1003));
   const goal = cellCenter(layout, layout.core);
   track(scene.add.ellipse(goal.x, goal.y + 5, 37, 16, 0xffd79b, 0.13).setDepth(900));
   track(scene.add.image(goal.x, goal.y + 3, KEYS.core, 2).setScale(0.65).setOrigin(0.5, 0.78).setDepth(goal.y + 1000));
@@ -114,7 +118,18 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   const entrance = cellCenter(layout, layout.road.cells[0]);
   track(scene.add.text(8, entrance.y - 15, '➜', { fontSize: '24px', color: '#35533b' }).setDepth(10));
   return {
-    update(elapsed) { pond?.setFrame(loopFrame(elapsed, 10)); coreWeapon.setFrame(loopFrame(elapsed, 10)); },
+    update(elapsed, built, builtAt) {
+      pond?.setFrame(loopFrame(elapsed, 10)); coreWeapon.setFrame(loopFrame(elapsed, 10));
+      const texture = built ? KEYS.workshop : KEYS.workshopDamaged;
+      if (building.texture.key !== texture) building.setTexture(texture);
+      plotLabel.setText(built ? 'Werkstatt I' : 'Alte Werkstatt');
+      dust.clear();
+      const age = builtAt === null ? 10 : elapsed - builtAt;
+      if (built && age >= 0 && age < 1.2) for (let i = 0; i < 9; i++) {
+        dust.fillStyle(0xe7d4a5, (1 - age/1.2) * 0.7).fillRect(workshopX - 42 + i * 11,
+          workshopY - 3 - age * (9 + i % 3 * 5), 3 + i % 2, 3);
+      }
+    },
     destroy() { for (const object of objects) object.destroy(); for (const key of textureKeys) scene.textures.remove(key); },
   };
 }

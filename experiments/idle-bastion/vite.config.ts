@@ -17,6 +17,7 @@ export default defineConfig({
       input: {
         battle: fileURLToPath(new URL('./index.html', import.meta.url)),
         layout: fileURLToPath(new URL('./layout.html', import.meta.url)),
+        assets: fileURLToPath(new URL('./asset-check.html', import.meta.url)),
       },
     },
   },

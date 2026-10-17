@@ -301,7 +301,7 @@ export class BattleSession {
   }
   private economicState(): string {
     const b = this.currentBattle;
-    return `${b.gold}/${b.goldRemainderUnits}/${b.earned}/${b.kills}/${b.lives}/${b.wave}/${b.phase}/${b.mode}/${b.attemptId}`;
+    return `${b.gold}/${b.goldRemainderUnits}/${b.earned}/${b.kills}/${b.lives}/${b.wave}/${b.phase}/${b.mode}/${b.attemptId}/${b.tutorial.frostSeen}`;
   }
   private refreshFarm(): void {
     const key = `${defenseFingerprint(this.currentBattle)}/${this.currentBattle.liveClearedWaves.join(',')}`;

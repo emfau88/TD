@@ -1,0 +1,41 @@
+{
+  "beforeReload": {
+    "gold": "10",
+    "mara": "Übertakten aktiv · 4 s · Startturm",
+    "time": "2:04",
+    "wave": "7"
+  },
+  "afterReload": {
+    "gold": "10",
+    "hidden": true,
+    "mara": "Übertakten aktiv · 4 s · Startturm",
+    "time": "2:04",
+    "wave": "7"
+  },
+  "canvasEqual": true,
+  "cameraDragChangedView": true,
+  "cameraDragPreservedGold": "10",
+  "cameraDragPreservedTime": "2:04",
+  "viewports": [
+    {
+      "requested": [
+        1366,
+        768
+      ],
+      "reported": [
+        1367,
+        768
+      ]
+    },
+    {
+      "requested": [
+        1920,
+        1080
+      ],
+      "reported": [
+        1920,
+        1080
+      ]
+    }
+  ]
+}

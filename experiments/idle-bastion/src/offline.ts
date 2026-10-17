@@ -33,11 +33,11 @@ function certificate(value: unknown): FarmCertificate | null | undefined {
   if (value === null) return null;
   // Historical departure proofs retain the rule set that earned them. New
   // active proofs are validated separately by farming.ts against current rules.
-  if (!object(value) || !positive(value.wave) || (value.rulesVersion !== 1 && value.rulesVersion !== 2) || !positive(value.rewardGold)
+  if (!object(value) || !positive(value.wave) || ![1, 2, 3].includes(value.rulesVersion as number) || !positive(value.rewardGold)
     || !positive(value.durationMs) || typeof value.fingerprint !== 'string' || value.fingerprint.length < 1
     || value.fingerprint.length > 20_000) return undefined;
   return {
-    wave: value.wave, fingerprint: value.fingerprint, rulesVersion: value.rulesVersion,
+    wave: value.wave, fingerprint: value.fingerprint, rulesVersion: value.rulesVersion as number,
     rewardGold: value.rewardGold, durationMs: value.durationMs,
   };
 }

@@ -109,7 +109,7 @@ Im sichtbaren Kampf unterstützt Mara weiterhin automatisch. Die Offline-Grundla
 
 ## 8. Verbindliches Speicherverfahren
 
-Eigene IndexedDB-Datenbank und eigener Namensraum, `spire-idle-bastion`, Store `saves`, Spielstand-ID `default`, mit versioniertem Save-Envelope (erste Fassung: `schemaVersion: 1`). Keine Wiederverwendung von `spire-woodland-v1`. Der B04-Code verwendet Envelope 2 und Kampfsnapshot 2 bei unveränderter Datenbankversion 1; bekannte B03-Stände werden lesend migriert, ohne nachträglichen Farmnachweis. Offline-Daten besitzen ihre eigene Version 1.
+Eigene IndexedDB-Datenbank und eigener Namensraum, `spire-idle-bastion`, Store `saves`, Spielstand-ID `default`, mit versioniertem Save-Envelope. Keine Wiederverwendung von `spire-woodland-v1`. Aktuell: Envelope 2, Kampfsnapshot 4, Kampfregeln 3 und Datenbankversion 1. Bekannte Kampfschemas 1–3 werden validiert und ohne erfundenen Live-Farmnachweis migriert; Mara aus Schema 3 bleibt exakt erhalten. Werkstatt und Tutorial beginnen bei älteren Ständen mit passenden Vorgabewerten. Historische Offline-Ansprüche behalten ihre ursprüngliche Regelversion (1–3); Offline-Daten besitzen Version 1. „Frische Probe“ verwendet einen eigenen, in der URL identifizierten Datenbanknamen und berührt den Hauptspielstand nicht.
 
 Der Zustand enthält mindestens:
 

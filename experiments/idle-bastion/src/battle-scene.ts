@@ -11,6 +11,7 @@ export interface BattleSceneHooks {
   readonly advance?: (seconds: number) => void;
   readonly canRender?: () => boolean;
   readonly selectMara?: () => void;
+  readonly selectWorkshop?: () => void;
 }
 const colors = { gold: 0xd9bd79, text: '#eae5ce', muted: '#91a58e', panel: '#183424' };
 type TowerView = { base: Phaser.GameObjects.Image; weapon: Phaser.GameObjects.Image };
@@ -35,6 +36,7 @@ export class BattleScene extends Phaser.Scene {
   private selectedPadId?: string;
   private readyToDraw = false;
   private hudElapsed = 0;
+  private dragOrigin?: { x: number; y: number; dragging: boolean };
   private readonly preventMiddleScroll = (event: MouseEvent) => { if (event.button === 1) event.preventDefault(); };
   private readonly preventWheel = (event: WheelEvent) => { if (!event.ctrlKey) event.preventDefault(); };
   private get sim(): IdleBattle { return this.readBattle(); }
@@ -63,7 +65,9 @@ export class BattleScene extends Phaser.Scene {
     this.maraName = this.add.text(0, 0, 'Mara', {
       fontFamily: 'Segoe UI, sans-serif', fontSize: '10px', color: '#fff3cf', stroke: '#20392c', strokeThickness: 3,
     }).setOrigin(0.5).setDepth(5001);
-    this.input.on('pointerdown', this.selectAtPointer, this);
+    this.input.on('pointerdown', this.beginPointer, this);
+    this.input.on('pointerup', this.endPointer, this);
+    this.input.on('pointerupoutside', this.cancelPointer, this);
     this.input.on('pointermove', this.panAtPointer, this);
     this.input.on('wheel', this.zoomAtPointer, this);
     this.game.canvas.addEventListener('wheel', this.preventWheel, { passive: false });
@@ -72,7 +76,9 @@ export class BattleScene extends Phaser.Scene {
       this.readyToDraw = false;
       this.game.canvas.removeEventListener('wheel', this.preventWheel);
       this.game.canvas.removeEventListener('mousedown', this.preventMiddleScroll);
-      this.input.off('pointerdown', this.selectAtPointer, this);
+      this.input.off('pointerdown', this.beginPointer, this);
+      this.input.off('pointerup', this.endPointer, this);
+      this.input.off('pointerupoutside', this.cancelPointer, this);
       this.input.off('pointermove', this.panAtPointer, this);
       this.input.off('wheel', this.zoomAtPointer, this);
       this.forest?.destroy(); this.forest = undefined;
@@ -116,8 +122,18 @@ export class BattleScene extends Phaser.Scene {
       camera.clampY(camera.scrollY + (pointerY - this.scale.height / 2) * (1 / old - 1 / zoom)));
     if (old !== zoom) this.hooks.changed();
   }
+  private beginPointer(pointer: Phaser.Input.Pointer): void {
+    if (pointer.leftButtonDown()) this.dragOrigin = { x: pointer.x, y: pointer.y, dragging: false };
+  }
+  private cancelPointer(): void { this.dragOrigin = undefined; }
+  private endPointer(pointer: Phaser.Input.Pointer): void {
+    const drag = this.dragOrigin; this.dragOrigin = undefined;
+    if (drag && !drag.dragging && pointer.button === 0) this.selectAtPointer(pointer);
+  }
   private panAtPointer(pointer: Phaser.Input.Pointer): void {
-    if (!pointer.middleButtonDown() || this.mapZoom <= 1) return;
+    if (this.dragOrigin && pointer.leftButtonDown()
+      && Math.hypot(pointer.x - this.dragOrigin.x, pointer.y - this.dragOrigin.y) >= 6) this.dragOrigin.dragging = true;
+    if ((!pointer.middleButtonDown() && !(pointer.leftButtonDown() && this.dragOrigin?.dragging)) || this.mapZoom <= 1) return;
     const camera = this.cameras.main;
     camera.setScroll(camera.clampX(camera.scrollX - (pointer.x - pointer.prevPosition.x) / camera.zoom),
       camera.clampY(camera.scrollY - (pointer.y - pointer.prevPosition.y) / camera.zoom));
@@ -127,9 +143,14 @@ export class BattleScene extends Phaser.Scene {
     this.setMapZoom(this.mapZoom + (dy < 0 ? 0.05 : -0.05), pointer.x, pointer.y);
   }
   private selectAtPointer(pointer: Phaser.Input.Pointer): void {
-    if (!pointer.leftButtonDown() || this.hooks.canRender?.() === false) return;
+    if (this.hooks.canRender?.() === false) return;
     const point = this.cameras.main.getWorldPoint(pointer.x, pointer.y), size = this.sim.layout.cellSize;
     const pad = this.sim.layout.towerPads.find(value => value.cell.x === Math.floor(point.x / size) && value.cell.y === Math.floor(point.y / size));
+    const workshop = this.sim.layout.plots.find(plot => plot.id === 'workshop')!.footprint;
+    if (!pad && point.x >= workshop.x * size && point.x < (workshop.x + workshop.width) * size
+      && point.y >= (workshop.y - 1.2) * size && point.y < (workshop.y + workshop.height) * size) {
+      this.hooks.selectWorkshop?.(); return;
+    }
     if (!pad && Math.hypot(point.x - this.sim.mara.x, point.y - (this.sim.mara.y - 18)) < 23) {
       this.hooks.selectMara?.(); return;
     }
@@ -168,7 +189,7 @@ export class BattleScene extends Phaser.Scene {
     let view = this.towerViews.get(tower.uid);
     if (!view) {
       view = {
-        base: this.add.image(tower.x, tower.y + 13, KEYS.tower, 0).setOrigin(0.5, 0.8).setScale(SCALE.tower).setDepth(tower.y + 1000),
+        base: this.add.image(tower.x, tower.y + 13, tower.def.id === 2 ? KEYS.frostTower : KEYS.tower, 0).setOrigin(0.5, 0.8).setScale(SCALE.tower).setDepth(tower.y + 1000),
         weapon: this.add.image(tower.x, tower.y - 23, KEYS.weapon, 0).setScale(SCALE.tower).setDepth(tower.y + 1001),
       };
       this.towerViews.set(tower.uid, view);
@@ -188,7 +209,7 @@ export class BattleScene extends Phaser.Scene {
     const sim = this.sim, elapsed = sim.elapsed;
     // Read the complete confirmed model. Rollback can replace its identity and
     // move time backwards; UID maps are reconciled rather than replaying events.
-    this.forest?.update(elapsed);
+    this.forest?.update(elapsed, sim.settlement.workshopBuilt, sim.settlement.builtAt);
     this.effects.clear();
     const towers = new Set(sim.towers.map(tower => tower.uid));
     for (const [uid, view] of this.towerViews) if (!towers.has(uid)) { view.base.destroy(); view.weapon.destroy(); this.towerViews.delete(uid); }
@@ -197,6 +218,10 @@ export class BattleScene extends Phaser.Scene {
       const boosted = sim.isMaraBoosted(tower.uid), firingCooldown = stat.cooldown / (boosted ? 1.5 : 1);
       const firingAge = firingCooldown - tower.cooldown;
       const frame = tower.cooldown > 0 && firingAge < firingCooldown * 0.85 ? Math.min(5, Math.floor(firingAge / (firingCooldown * 0.85) * 6)) : 0;
+      const frost = tower.def.id === 2;
+      const weaponKey = frost ? tower.visualStage === 2 ? KEYS.frostWeapon2 : KEYS.frostWeapon
+        : tower.visualStage === 2 ? KEYS.weapon2 : KEYS.weapon;
+      if (view.weapon.texture.key !== weaponKey) view.weapon.setTexture(weaponKey);
       view.base.setFrame(tower.visualStage - 1);
       view.weapon.setFrame(Math.max(0, frame)).setRotation(tower.angle);
       view.base.setTint(boosted ? 0xffedbe : 0xffffff); view.weapon.setTint(boosted ? 0xffedbe : 0xffffff);
@@ -211,6 +236,8 @@ export class BattleScene extends Phaser.Scene {
     for (const enemy of sim.enemies) {
       const view = this.enemyView(enemy);
       view.sprite.setPosition(enemy.x, enemy.y).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed)).setFlipX(enemy.flip).setDepth(enemy.y + 1000);
+      view.sprite.setTint(enemy.slowRemaining > 0 ? 0x83ddff : 0xffffff);
+      if (enemy.slowRemaining > 0) this.effects.lineStyle(1.5, 0x96e8fa, 0.75).strokeEllipse(enemy.x, enemy.y + 7, 26, 10);
       view.shadow.setPosition(enemy.x, enemy.y + 9).setDepth(enemy.y + 999);
       if (enemy.hp < enemy.maxHp) {
         const barY = enemy.y - 25, fraction = Math.max(0, enemy.hp / enemy.maxHp);
@@ -222,7 +249,7 @@ export class BattleScene extends Phaser.Scene {
     for (const [uid, view] of this.shotViews) if (!shots.has(uid)) { view.destroy(); this.shotViews.delete(uid); }
     for (const shot of sim.shots) {
       let view = this.shotViews.get(shot.uid);
-      if (!view) { view = this.add.image(shot.x, shot.y, KEYS.projectile, 0).setScale(SCALE.projectile).setDepth(5501); this.shotViews.set(shot.uid, view); }
+      if (!view) { view = this.add.image(shot.x, shot.y, shot.kind === 2 ? KEYS.frostProjectile : KEYS.projectile, 0).setScale(shot.kind === 2 ? 0.5 : SCALE.projectile).setDepth(5501); this.shotViews.set(shot.uid, view); }
       view.setPosition(shot.x, shot.y).setFrame(loopFrame(elapsed, 3));
       const target = sim.enemies.find(enemy => enemy.uid === shot.target);
       if (target) view.setRotation(Math.atan2(target.y - shot.y, target.x - shot.x) + Math.PI / 2);

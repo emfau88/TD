@@ -1,5 +1,13 @@
 # Spire — Herz aus Splittern
 
+## Idle Bastion ausprobieren
+
+[▶ Im Browser spielen](https://emfau88.github.io/TD/idle-bastion/) · [Frische Probe starten](https://emfau88.github.io/TD/idle-bastion/?fresh=1)
+
+Die erste Idle-Vorschau enthält automatischen Kampf, Mara, eigene Turmkäufe, Upgrades, Werkstatt I und Frostforschung. Folge Maras Hinweisen bis zum ersten Frosttreffer. Gold und Kampf werden lokal im Browser gespeichert; „Frische Probe“ öffnet eine getrennte neue Partie und bewahrt den bisherigen Stand. Nur ein Tab pro Partie kann gleichzeitig spielen.
+
+Diese Fassung dient der verbindlichen ersten Zwischenabnahme. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht; spätere Inhalte folgen erst nach Nutzerfreigabe.
+
 **Aktueller Spielstand: vier zusammenhängende Regionen.** Der alte Hain, Laternenmoor, Spiegelwinter und Windbruch sind sofort frei auswählbar, mit Wisp, Mara, acht Türmen und jeweils 10 Wellen. Mausradzoom von 100 bis 120 %, getrennte Bauphasen-Spielstände und animierte Wolken/Felsinseln in Windbruch sind integriert. Die Waldkarte ist vom Nutzer abgenommen; die drei neuen Regionen sind umgesetzt und gezielt geprüft, ihre optische Nutzerabnahme steht aus. Mobile Optimierung ist zurückgestellt.
 
 **Start nach dem Klonen:** `npm ci`, dann `npm run reference:regions:build`, anschließend `REGIONEN STARTEN.cmd` doppelklicken. Die erzeugte HTML-Datei enthält Code und Grafiken und funktioniert ohne Server. Entwicklung: `npm run reference:dev`, dann `http://127.0.0.1:5180/woodland.html` öffnen. [Spielanleitung](reference/README.md), [Roadmap](ROADMAP.md), [Moorbericht](artifacts/m3/REPORT.md), [Winterbericht](artifacts/m3-winter/REPORT.md), [Windbruch mit Asset- und Animationsnachweis](artifacts/m3-wind/REPORT.md).

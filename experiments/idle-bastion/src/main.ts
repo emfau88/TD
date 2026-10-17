@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
 import './style.css';
 import './battle.css';
-import { stats, upgradeCost, sellValue, type IdleBattle } from './battle';
+import { SETTLEMENT, stats, upgradeCost, sellValue, type IdleBattle } from './battle';
 import { BattleScene } from './battle-scene';
-import { nextObjective } from './hud';
+import { nextObjective, tutorialHint, tutorialStep } from './hud';
 import { BattleSession, SessionLoadError, SessionOwnershipError } from './battle-session';
 import { openBattleStore, type BattleSaveStore } from './save-store';
 
@@ -24,11 +24,24 @@ const advance = element<HTMLButtonElement>('advance');
 const claim = element<HTMLButtonElement>('claim-offline');
 const recover = element<HTMLButtonElement>('recover-save');
 const assignMara = element<HTMLButtonElement>('assign-mara');
+const buildFrost = element<HTMLButtonElement>('build-frost');
+const buildWorkshop = element<HTMLButtonElement>('build-workshop');
+const researchFrost = element<HTMLButtonElement>('research-frost');
+const padChoice = element<HTMLSelectElement>('pad-choice');
+const entryURL = new URL(location.href);
+if (entryURL.searchParams.has('fresh')) {
+  entryURL.searchParams.delete('fresh'); entryURL.searchParams.set('probe', crypto.randomUUID());
+  history.replaceState(null, '', entryURL);
+}
+const probeSlot = entryURL.searchParams.get('probe');
+// Explicit fresh probes keep the user's main game and its offline clock intact.
+const databaseName = probeSlot && /^[a-z0-9-]{1,60}$/.test(probeSlot) ? `spire-idle-bastion-probe-${probeSlot}` : 'spire-idle-bastion';
 let session: BattleSession | undefined;
 let scene: BattleScene | undefined;
 let game: Phaser.Game | undefined;
 let store: BattleSaveStore | undefined;
-let selectedPadId: string | undefined = 'tower-02';
+let selectedPadId: string | undefined = 'tower-03';
+let selectedPanel: 'tower' | 'settlement' = 'tower';
 let ready = false;
 let booting = false;
 let lifecycle = Promise.resolve();
@@ -49,6 +62,7 @@ function syncUI(): void {
   const view = scene;
   const unavailable = !ready || !live || live.busy || Boolean(live.error) || live.suspended;
   build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = unavailable;
+  buildFrost.disabled = buildWorkshop.disabled = researchFrost.disabled = unavailable;
   if (!ready || !live || !view) return;
   view.paused = live.paused || document.hidden || Boolean(live.error) || live.suspended || live.awaitingResume;
   const saveStatus = element('save-status');
@@ -59,11 +73,20 @@ function syncUI(): void {
     : live.busy ? 'Wird gespeichert …' : '1× · dieser Tab ist aktiv · lokal gespeichert';
   if (live.busy) return;
   const sim = live.battle;
+  element('tower-panel').hidden = selectedPanel !== 'tower';
+  element('settlement-panel').hidden = selectedPanel !== 'settlement';
+  element('tower-tab').setAttribute('aria-selected', String(selectedPanel === 'tower'));
+  element('settlement-tab').setAttribute('aria-selected', String(selectedPanel === 'settlement'));
   const certificate = live.certificate;
   element('next-objective').textContent = nextObjective(sim);
+  element('play-time').textContent = `${Math.floor(sim.elapsed / 60)}:${String(Math.floor(sim.elapsed % 60)).padStart(2, '0')}`;
+  const hintStep = tutorialStep(sim);
+  element('tutorial-card').hidden = sim.tutorial.hidden || Boolean(sim.tutorial.seen & (1 << hintStep));
+  element('tutorial-hint').textContent = tutorialHint(sim);
+  element('tutorial-card').dataset.step = String(hintStep);
   const mara = sim.mara;
   const maraTarget = sim.towers.find(tower => tower.uid === mara.targetTowerUid);
-  const targetName = maraTarget?.protected ? 'Startturm' : maraTarget ? 'Waldwächter' : 'Startturm';
+  const targetName = maraTarget?.protected ? 'Startturm' : maraTarget?.def.name ?? 'Startturm';
   element('mara-status').textContent = mara.unreachable ? 'Mara erreicht dieses Ziel nicht. Wähle einen anderen Turm.'
     : mara.path.length ? `Mara ist unterwegs zum ${targetName}. Noch kein Bonus während der Anreise.`
     : mara.effectRemaining > 0 ? `Übertakten aktiv · ${Math.ceil(mara.effectRemaining)} s · ${targetName}`
@@ -99,15 +122,21 @@ function syncUI(): void {
   }
   const tower = sim.towers.find(value => value.padId === selectedPadId);
   const pad = sim.layout.towerPads.find(value => value.id === selectedPadId);
-  element('selection-title').textContent = tower ? `Waldwächter · Level ${tower.level}` : pad ? 'Freier Bauplatz' : 'Bauplatz wählen';
+  padChoice.value = selectedPadId ?? '';
+  element('selection-title').textContent = selectedPanel === 'settlement' ? 'Deine Siedlung'
+    : tower ? `${tower.def.name} · Level ${tower.level}` : pad ? 'Freier Bauplatz' : 'Bauplatz wählen';
+  element('tower-name').textContent = tower?.def.name ?? 'Turm wählen';
+  element('tower-role').textContent = tower?.def.id === 2 ? 'Frosttreffer · 45 % langsamer für 2 s' : 'Zuverlässige Pfeile · Allrounder';
   element('selection-description').textContent = tower
-    ? tower.protected ? 'Dein erster Turm sichert die Grundverteidigung. Du kannst ihn verbessern.' : 'Dieser Waldwächter verteidigt den Weg. Verbessere ihn oder investiere das Gold an anderer Stelle.'
+    ? tower.protected ? 'Dein erster Turm sichert die Grundverteidigung. Du kannst ihn verbessern.' : `${tower.def.name} verteidigt den Weg. Verbessere ihn oder investiere das Gold an anderer Stelle.`
     : pad?.availability === 'initial' ? 'Hier kannst du einen weiteren Waldwächter errichten.'
     : pad ? 'Dieser Platz ist im aktuellen Startbereich noch nicht verfügbar.' : 'Wähle einen hell markierten Platz auf der Karte.';
   build.hidden = Boolean(tower); upgrade.hidden = !tower; sell.hidden = !tower; assignMara.hidden = !tower;
+  buildFrost.hidden = Boolean(tower) || !sim.settlement.frostResearched;
   const blocked = unavailable || view.paused || sim.phase === 'defeat';
   build.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId);
-  const canUpgrade = Boolean(tower && tower.level < 3);
+  buildFrost.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId, 2);
+  const canUpgrade = Boolean(tower && tower.level < sim.maxLevel);
   upgrade.disabled = blocked || !tower || !canUpgrade || sim.gold < upgradeCost(tower);
   upgrade.textContent = tower && canUpgrade ? `Aufwerten · ${currency.format(upgradeCost(tower))} Gold` : 'Levelgrenze erreicht';
   sell.disabled = blocked || !tower || tower.protected;
@@ -119,17 +148,31 @@ function syncUI(): void {
     return `<div><dt>Schaden</dt><dd>${values.damage.toFixed(1)}</dd></div><div><dt>Reichweite</dt><dd>${values.range}</dd></div><div><dt>Angriff alle</dt><dd>${values.cooldown.toFixed(2)} s</dd></div><div><dt>Abschüsse</dt><dd>${tower.kills}</dd></div>`;
   })() : '';
   element('action-hint').textContent = blocked ? live.error ? 'Der letzte bestätigte Spielstand bleibt erhalten.' : live.awaitingResume ? 'Setze die Verteidigung über den Rückkehrbeleg fort.' : 'Setze den Kampf fort, um zu bauen oder aufzuwerten.'
-    : tower ? tower.level >= 3 ? 'Dieser Turm ist für diese Kampfprobe voll ausgebaut.' : sim.gold < upgradeCost(tower) ? `Noch ${currency.format(upgradeCost(tower) - sim.gold)} Gold bis zum nächsten Level.` : 'Mehr Schaden verbessert die Verteidigung sofort.'
+    : tower ? tower.level >= sim.maxLevel ? sim.settlement.frostResearched ? 'Level 6 erreicht.' : 'Frostfassung erschließt Level 4–6.' : sim.gold < upgradeCost(tower) ? `Noch ${currency.format(upgradeCost(tower) - sim.gold)} Gold bis zum nächsten Level.` : 'Mehr Schaden verbessert die Verteidigung sofort.'
     : pad?.availability === 'initial' && sim.gold < 75 ? `Noch ${currency.format(75 - sim.gold)} Gold bis zum Waldwächter.` : '';
+  const settlement = sim.settlement;
+  element('workshop-title').textContent = settlement.workshopBuilt ? 'Werkstatt I' : 'Beschädigte Werkstatt';
+  element('workshop-description').textContent = settlement.frostResearched
+    ? 'Frostfassung erforscht · Frostkristall und Turmlevel 4–6 sind verfügbar.'
+    : settlement.workshopBuilt ? 'Frostfassung erschließt den Frostkristall und Turmlevel 4–6.' : 'Repariere die alte Werkstatt. Danach kannst du Frosttechnik erforschen.';
+  buildWorkshop.hidden = settlement.workshopBuilt;
+  buildWorkshop.textContent = `Werkstatt reparieren · ${SETTLEMENT.workshopCost} Gold`;
+  buildWorkshop.disabled = blocked || sim.gold < SETTLEMENT.workshopCost;
+  researchFrost.hidden = !settlement.workshopBuilt || settlement.frostResearched;
+  researchFrost.textContent = `Frostfassung erforschen · ${SETTLEMENT.researchCost} Gold`;
+  researchFrost.disabled = blocked || sim.gold < SETTLEMENT.researchCost;
+  element('choose-frost').hidden = !settlement.frostResearched;
   element('layout-status').textContent = view.paused ? 'Kampf angehalten.'
     : sim.mode === 'farm' ? `Sicheres Farmen · Welle ${sim.farmWave}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang.`
     : `Automatischer Vorstoß · höchste geschaffte Welle ${sim.highestCleared}.`;
-  const message = sim.drainEvents().filter(event => ['kill', 'clear', 'wave', 'defeat', 'build', 'upgrade', 'sell'].includes(event.type)).at(-1);
+  const message = sim.drainEvents().filter(event => ['kill', 'clear', 'wave', 'defeat', 'build', 'upgrade', 'sell', 'workshop', 'research'].includes(event.type)).at(-1);
   if (message) element('combat-message').textContent = message.type === 'clear' ? `Welle ${message.wave} geschafft · +${currency.format(message.amount ?? 0)} Gold Abschlussbonus.`
     : message.type === 'kill' ? `Gegner besiegt · +${currency.format(message.amount ?? 0)} Gold.`
     : message.type === 'wave' ? `${mode} · Welle ${message.wave} hat begonnen. Deine Türme greifen automatisch an.`
-    : message.type === 'build' ? 'Dein neuer Waldwächter greift selbstständig an.'
-    : message.type === 'upgrade' ? 'Waldwächter verbessert. Der nächste Schuss nutzt den höheren Schaden.'
+    : message.type === 'build' ? `${message.tower?.def.name} gebaut und einsatzbereit.`
+    : message.type === 'upgrade' ? `${message.tower?.def.name} verbessert. Der nächste Schuss nutzt den höheren Schaden.`
+    : message.type === 'workshop' ? 'Die Werkstatt arbeitet wieder! Frostfassung ist jetzt erforschbar.'
+    : message.type === 'research' ? 'Frostfassung erforscht! Baue einen Frostkristall oder verbessere Türme bis Level 6.'
     : message.type === 'sell' ? `Turm verkauft · +${currency.format(message.amount ?? 0)} Gold. Die sichere Farmbasis wird neu geprüft.`
     : 'Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.';
 }
@@ -144,7 +187,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     game?.destroy(true); game = undefined; scene = undefined;
     const previous = session; session = undefined;
     await previous?.close().catch(() => undefined);
-    store?.close(); store = options.temporary ? undefined : await openBattleStore();
+    store?.close(); store = options.temporary ? undefined : await openBattleStore(undefined, databaseName);
     const live = await BattleSession.open(store, { recover: options.recover });
     session = live;
     if (document.hidden && !live.temporary) { await live.suspend(); return; }
@@ -155,8 +198,9 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
       advance(seconds) { live.advance(seconds); },
       canRender: () => !live.busy,
       changed: syncUI,
-      select(padId) { selectedPadId = padId; view.setSelected(padId); syncUI(); },
+      select(padId) { selectedPanel = 'tower'; selectedPadId = padId; view.setSelected(padId); syncUI(); },
       selectMara() { element('mara-title').scrollIntoView({ block: 'nearest' }); },
+      selectWorkshop() { selectedPanel = 'settlement'; syncUI(); },
       ready() { ready = true; view.setSelected(selectedPadId); syncUI(); },
     });
     scene = view;
@@ -180,14 +224,31 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     element('save-status').textContent = ownership ? 'Anderer Tab ist aktiv' : 'Spielstand konnte nicht geladen werden';
   } finally { booting = false; }
 }
-async function perform(action: (battle: IdleBattle) => unknown): Promise<void> {
+async function perform(action: (battle: IdleBattle) => unknown, allowPaused = false): Promise<void> {
   const live = session;
-  if (!ready || !live || live.paused || live.error || document.hidden || live.awaitingResume || live.suspended) return;
+  if (!ready || !live || (!allowPaused && live.paused) || live.error || document.hidden || live.awaitingResume || live.suspended) return;
   const completion = live.command(action);
   syncUI(); await completion;
   scene?.refresh(); syncUI();
 }
 build.addEventListener('click', () => { void perform(battle => selectedPadId && battle.build(selectedPadId)); }, { signal: lifetime.signal });
+buildFrost.addEventListener('click', () => { void perform(battle => selectedPadId && battle.build(selectedPadId, 2)); }, { signal: lifetime.signal });
+buildWorkshop.addEventListener('click', () => { void perform(battle => battle.buildWorkshop()); }, { signal: lifetime.signal });
+researchFrost.addEventListener('click', () => { void perform(battle => battle.researchFrost()); }, { signal: lifetime.signal });
+padChoice.addEventListener('change', () => { selectedPadId = padChoice.value; scene?.setSelected(selectedPadId); syncUI(); }, { signal: lifetime.signal });
+element('tower-tab').addEventListener('click', () => { selectedPanel = 'tower'; syncUI(); }, { signal: lifetime.signal });
+element('settlement-tab').addEventListener('click', () => { selectedPanel = 'settlement'; syncUI(); }, { signal: lifetime.signal });
+element('choose-frost').addEventListener('click', () => {
+  const pad = session?.battle.layout.towerPads.find(pad => pad.availability === 'initial' && !session?.battle.towers.some(tower => tower.padId === pad.id));
+  selectedPanel = 'tower'; if (pad) { selectedPadId = pad.id; scene?.setSelected(pad.id); } syncUI();
+}, { signal: lifetime.signal });
+element('hint-skip').addEventListener('click', () => { void perform(battle => { battle.tutorial.hidden = true; }, true); }, { signal: lifetime.signal });
+element('hint-read').addEventListener('click', () => { void perform(battle => { battle.tutorial.seen |= 1 << tutorialStep(battle); }, true); }, { signal: lifetime.signal });
+element('show-hints').addEventListener('click', () => { void perform(battle => { battle.tutorial.hidden = false; battle.tutorial.seen = 0; }, true); }, { signal: lifetime.signal });
+element('new-probe').addEventListener('click', () => {
+  const url = new URL(location.href); url.searchParams.set('probe', crypto.randomUUID());
+  void (session?.suspend() ?? Promise.resolve()).then(() => location.assign(url));
+}, { signal: lifetime.signal });
 upgrade.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.upgrade(tower.uid); }); }, { signal: lifetime.signal });
 sell.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.sell(tower.uid); }); }, { signal: lifetime.signal });
 advance.addEventListener('click', () => { void perform(battle => battle.requestAdvance()); }, { signal: lifetime.signal });

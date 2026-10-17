@@ -198,7 +198,7 @@ Das verdichtete HUD zeigt Gold, Kernleben, Welle, sichere Farmrate, Kampfmodus u
 | TypeScript | Idle-, Root- und Referenz-TypeScript-Prüfungen erfolgreich |
 | `npm run idle:build` | Produktionsbuild erfolgreich |
 | Browser, 1366×768 | Waldstart, regulärer Kauf, Mara-Anreise, Übertakten, Verkauf mit Rückfall auf den Startturm und Reload geprüft; keine erfassten Browserfehler |
-| Browser, 1920×1080 | Startansicht und Bedienung mit allen Einstiegszielen sichtbar geprüft |
+| Browser, 1920×1080 | Korrektur nach Verlaufsaudit: Nur die Größe wurde umgeschaltet; eine anschließende B05-Sichtprüfung ist nicht belegt. Die tatsächliche große Ansicht wird mit B07 nachgeholt. |
 | Reload | Gold, Welle, Mara-Ziel, Reise-/Wirkzustand und Canvas-Ausschnitt nach Reload erhalten; kein doppelter Fortschritt beobachtet |
 
 [Waldstart](b05-start-1366x768.jpg) · [Mara unterwegs](b05-mara-travel-1366x768.jpg) · [Mara übertaktet](b05-mara-active-1366x768.jpg) · [Zielverkauf und Rückfall](b05-sale-fallback-1366x768.jpg)
@@ -206,3 +206,5 @@ Das verdichtete HUD zeigt Gold, Kernleben, Welle, sichere Farmrate, Kampfmodus u
 ### Grenzen und nächster Schritt
 
 B05 führt weder Werkstatt noch Frosttechnik ein. Die konkrete Gebäudegrafik, persistenter Siedlungszustand und die sichtbare Frostwirkung gehören B06. G1 bleibt offen; B07 muss den kompletten 90-Sekunden-Kreislauf erst messen und zur Nutzerprobe vorlegen.
+
+Auditkorrektur vom 17.10.2026: Zoom und Rückkehrbutton wurden bedient, beim mittleren Mausknopf ist nur ein Klick dokumentiert. Ein tatsächlicher Pan-Drag war damit nicht nachgewiesen. Die obige Beschreibung benennt die implementierte Bedienung, nicht einen vollständig ausgeführten Gestentest. B07 ergänzt eine überprüfbare Kamerabedienung und dokumentiert den tatsächlich getesteten Umfang.
