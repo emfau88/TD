@@ -2,6 +2,8 @@ import { SETTLEMENT, FROST, type IdleBattle } from './battle';
 
 /** Objectives follow confirmed game state; help never grants money or unlocks. */
 export function tutorialStep(battle: IdleBattle): number {
+  // Completed expansion must not send veterans back to role-purchase tutorials.
+  if (battle.settlement.workshopUpgraded) return battle.secondBossVictories ? 11 : 17;
   if (!battle.kills) return 0;
   if (!battle.tutorial.builtTower) return 1;
   if (!battle.tutorial.upgradedTower) return 2;
@@ -16,6 +18,8 @@ export function tutorialStep(battle: IdleBattle): number {
   if (!battle.towers.some(tower => tower.def.id === 4)) return 10;
   if (!battle.bossVictories) return 14;
   if (!battle.clearing.unlocked) return 15;
+  if (!battle.settlement.workshopUpgraded) return 16;
+  if (!battle.secondBossVictories) return 17;
   return 11;
 }
 const HINTS = [
@@ -35,6 +39,8 @@ const HINTS = [
   'Nach gemeisterter Welle 8 kannst du ein Vorratslager bauen. Verbessere deine Verteidigung und spare dann 650 Gold. Wisp versorgt später beide Gebäude.',
   'Rosenspiegel erwartet uns in Welle 15. Ihr Herzfaden kündigt an, welchen Turm sie verführt. Frost unterbricht ihren Zauber; Flächentreffer räumen Begleiter ab, Scharfschützen durchdringen ihre Rüstung. Die erste vollständige Bosswelle bringt einmalig 750 Gold.',
   'Rosenspiegel ist besiegt. Öffne unter Siedlung die östliche Lichtung für 900 Gold. Zwei neue Plätze sichern den letzten Wegabschnitt. Mit Lichtung ansehen und Zur Verteidigung wechselst du zwischen den Bereichen.',
+  'Die Lichtung ist offen. Baue die Werkstatt für 1.200 Gold zur Stufe II aus. Der neue Arbeitsplatz ermöglicht Turmlevel 7–20; die nächste Herausforderung wartet in Welle 25.',
+  'Rosenspiegel kehrt in Welle 25 mit einer größeren Begleitgruppe zurück. Höhere Turmlevel und unsere vier Rollen helfen. Für den ersten Sieg gibt es einmalig 1.200 Gold.',
 ] as const;
 export const tutorialHint = (battle: IdleBattle): string => HINTS[tutorialStep(battle)];
 export function nextObjective(battle: IdleBattle): string {
@@ -55,7 +61,9 @@ export function nextObjective(battle: IdleBattle): string {
     case 10: return 'Scharfschütze bauen · 170 Gold · Rüstung durchdringen.';
     case 14: return battle.highestCleared < 14 ? 'Verteidigung für Rosenspiegel in Welle 15 vorbereiten.' : 'Rosenspiegel besiegen · 750 Gold Erstprämie · Frost unterbricht ihre Verführung.';
     case 15: return `Östliche Lichtung öffnen · ${remaining(SETTLEMENT.clearingCost)} · zwei neue Bauplätze.`;
+    case 16: return `Werkstatt II ausbauen · ${remaining(SETTLEMENT.workshopUpgradeCost)} · Turmlevel 7–20.`;
+    case 17: return 'Rosenspiegels Rückkehr in Welle 25 vorbereiten · Turmlevel 7–20 verfügbar.';
     default: return battle.mode === 'farm' ? 'Verteidigung ausbauen, dann bewusst erneut vorstoßen.'
-      : 'Frost und Pfeile arbeiten zusammen. Weitere Upgrades bis Level 6 sind verfügbar.';
+      : 'Frost und Pfeile arbeiten zusammen. Weitere Upgrades bis Level 20 sind verfügbar.';
   }
 }

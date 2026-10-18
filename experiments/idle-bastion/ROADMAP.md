@@ -11,13 +11,13 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B11 ausdrücklich beauftragt; Maras Fernzauber und Werkstattschilder bleiben vorgemerkt |
-| Aktives Umsetzungspaket | Keines · B11 abgeschlossen und veröffentlicht |
-| Nächster Schritt | B11 über den Playlink durch den Nutzer testen lassen; B12 bleibt offen |
+| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; Maras Fernzauber und Werkstattschilder bleiben vorgemerkt |
+| Aktives Umsetzungspaket | B12 · umgesetzt, Veröffentlichung läuft |
+| Nächster Schritt | B12 veröffentlichen und über den Playlink testen lassen; B13/B14 bleiben offen |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
-Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. G1 ist freigegeben. B11 ist am 18.10.2026 ausdrücklich mit kompakten Tests und Commit/Push/Pages beauftragt. B12 und folgende bleiben separat. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. G1 ist freigegeben. B11 ist am 18.10.2026 ausdrücklich mit kompakten Tests und Commit/Push/Pages beauftragt. B12 wurde anschließend ausdrücklich mit denselben Vorgaben beauftragt. B13/B14 bleiben separat. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
 
 ## Ergänzung nach B10 — Rosenspiegels Tanzdarstellung
 
@@ -92,7 +92,7 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P3 | B09 · Lager und Rückkehr | Zweites Gebäude und befriedigender Wiedereinstieg | B08 | Abgeschlossen |
 | P4 | B10 · Erste Bossherausforderung | Lesbarer Boss verlangt die verfügbaren Turmrollen | B09 | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/B10.md) |
 | P4 | B11 · Wachsende Karte | Echte seitliche Freischaltung mit zwei nützlichen Turmplätzen | B10 | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/B11.md) |
-| P4 | B12 · Ausbau und Fortsetzung | Werkstatt II, spätere Level und Fortschritt nach Minute 15 | B11 | Nicht begonnen |
+| P4 | B12 · Ausbau und Fortsetzung | Werkstatt II, spätere Level und Fortschritt nach Minute 15 | B11 | Umsetzung geprüft; Veröffentlichung läuft |
 | P5 | B13 · Gesamter Spielverlauf | Gemessene 15-Minuten-Sitzung und Rückkehr mit legalen Aktionen | B12 | Nicht begonnen |
 | P5 | B14 · Stabilität und Lieferung | Geprüfte Builds, Regression, Laufzeit und ehrlicher Ergebnisbericht | B13 | Nicht begonnen |
 | Ende | G2 · Gesamtabnahme | Vollständiger Slice bewertet | B14 | **Offen** |
@@ -352,14 +352,16 @@ Historische Halteregel bis zur obigen G1-Freigabe: Während des Wartens nur P2 p
 
 **Voraussetzung:** B11. **Ergebnis:** Sichtbarer weiterer Ausbau und ein erreichbares nächstes Ziel.
 
-- [ ] Werkstatt II nach Lichtung und Goldkauf etwa bei Minute 10–13 zugänglich machen; kleinen sichtbaren Anbau im bisherigen Maßstab ergänzen, Herkunft dokumentieren und Gebäudestufe nach Reload prüfen.
-- [ ] Level 7–20 freischalten; erste 15 Minuten auf ungefähr Level 1–10 ausrichten, spätere Level als normale Schadensupgrades ohne neue Fähigkeiten/Grafikstufen.
-- [ ] Zahlenlevel und vorhandene drei Grafikstufen korrekt zuordnen; Reichweite und Feuerrate innerhalb der festgelegten Grenzen halten.
-- [ ] Zweiten Boss um Welle 25 als nahes oder erreichtes Ziel bei etwa Minute 13–15 anbieten.
-- [ ] Weitere Wellen datengetrieben skalieren und Farmen stabil erhalten; Gegner-/Projektilmenge und Zahlenbereiche begrenzen.
-- [ ] Nächstes wirklich erreichbares Upgrade anzeigen; keine aktive Quest für ein nicht implementiertes Zukunftsgebäude ausgeben.
+- [x] Werkstatt II nach Lichtung und Goldkauf etwa bei Minute 10–13 zugänglich machen; kleinen sichtbaren Anbau im bisherigen Maßstab ergänzen, Herkunft dokumentieren und Gebäudestufe nach Reload prüfen.
+- [x] Level 7–20 freischalten; erste 15 Minuten auf ungefähr Level 1–10 ausrichten, spätere Level als normale Schadensupgrades ohne neue Fähigkeiten/Grafikstufen.
+- [x] Zahlenlevel und vorhandene drei Grafikstufen korrekt zuordnen; Reichweite und Feuerrate innerhalb der festgelegten Grenzen halten.
+- [x] Zweiten Boss um Welle 25 als nahes oder erreichtes Ziel bei etwa Minute 13–15 anbieten.
+- [x] Weitere Wellen datengetrieben skalieren und Farmen stabil erhalten; Gegner-/Projektilmenge und Zahlenbereiche begrenzen.
+- [x] Nächstes wirklich erreichbares Upgrade anzeigen; keine aktive Quest für ein nicht implementiertes Zukunftsgebäude ausgeben.
 
 **Fertig, wenn:** Die Siedlung nochmals sichtbar wächst und nach Minute 15 ohne künstliches Ende sinnvoll weitergespielt werden kann.
+
+**Nachweis:** [B12-Bericht und echte Spielaufnahmen](../../artifacts/idle-bastion/acceptance/p4/B12.md). Gezielter Modellverlauf mit verdientem Gold: Werkstatt II bei 13:01; nach 15 Minuten Rekord 20 und ein konkreter nächster Kauf. Welle 25 ist dabei als nächstes Bossziel sichtbar, nicht bereits besiegt. Gesamtabstimmung und vollständige 15-Minuten-Browserabnahme folgen in B13; keine G2-Abnahme behauptet.
 
 ## P5 — Gesamterlebnis, Stabilität und Lieferung
 

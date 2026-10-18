@@ -49,11 +49,12 @@ function prove(battle: IdleBattle, wave: number, fingerprint: string): FarmCerti
   snapshot.mode = 'farm'; snapshot.farmWave = wave; snapshot.advanceRequested = false;
   snapshot.wave = wave; snapshot.phase = 'intermission'; snapshot.lives = BASE.coreLives;
   snapshot.enemies = []; snapshot.shots = []; snapshot.queue = [];
-  snapshot.bossChallengeRequested = false; snapshot.bossCharm = { phase: 'idle', targetUid: null, remaining: 0, cooldown: 0 };
+  snapshot.bossChallengeRequested = false; snapshot.bossChallengeWave = 15; snapshot.bossCharm = { phase: 'idle', targetUid: null, remaining: 0, cooldown: 0 };
   snapshot.spawnTimer = 0; snapshot.intermissionRemaining = BASE.intermissionSeconds;
   snapshot.pendingTime = 0; snapshot.ticks = 0; snapshot.elapsed = 0;
   if (snapshot.settlement.workshopBuilt) snapshot.settlement.builtAt = 0;
   snapshot.progress = createProgress(snapshot.attemptId, 0); snapshot.rewardRemainderUnits = 0;
+  if (snapshot.settlement.workshopUpgraded) snapshot.settlement.upgradedAt = 0;
   if (snapshot.settlement.warehouseBuilt) snapshot.settlement.warehouseBuiltAt = 0;
   if (snapshot.clearing.unlocked) snapshot.clearing.openedAt = 0;
   snapshot.gold = 0; snapshot.goldRemainderUnits = 0; snapshot.earned = 0; snapshot.kills = 0;

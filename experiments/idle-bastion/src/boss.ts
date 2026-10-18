@@ -9,4 +9,10 @@ export interface BossCharm {
   targetUid: number | null; remaining: number; cooldown: number;
 }
 export const freshCharm = (): BossCharm => ({ phase: 'idle', targetUid: null, remaining: 0, cooldown: 0 });
-export const isBossWave = (wave: number, recipe = 5): boolean => recipe >= 5 && wave === BOSS.wave;
+export type BossWave = 15 | 25;
+export const BOSS_ENCOUNTERS = Object.freeze({
+  15: { count: 9, firstReward: 750, title: 'Rosenspiegel' },
+  25: { count: 13, firstReward: 1200, title: 'Rosenspiegels Rückkehr' },
+});
+export const bossEncounter = (wave: number) => BOSS_ENCOUNTERS[wave === 25 ? 25 : 15];
+export const isBossWave = (wave: number, recipe = 6): boolean => recipe >= 5 && (wave === 15 || recipe >= 6 && wave === 25);

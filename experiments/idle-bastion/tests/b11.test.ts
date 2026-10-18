@@ -68,9 +68,9 @@ test('expanded battle with east towers and a moving Mara reloads exactly; forged
 
 test('schema-eight live save migrates closed without changing money, combat or boss progress', () => {
   const b=eligible(), modern=b.snapshot(), {clearing,...core}=modern;
-  const old={...core,schemaVersion:8}; const copy=structuredClone(old);
+  const old={...core,schemaVersion:8,rulesVersion:5,waveRecipeVersion:5}; const copy=structuredClone(old);
   const migrated=IdleBattle.restore(old)!;
-  assert.deepEqual(migrated.snapshot(),modern);assert.deepEqual(old,copy);
+  assert.deepEqual(migrated.snapshot(),{...modern,waveRecipeVersion:5});assert.deepEqual(old,copy);
   assert.equal(migrated.canBuild('tower-east-01'),false);
 });
 

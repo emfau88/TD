@@ -66,7 +66,7 @@ test('schema five midwave migration preserves combat and historical money, witho
   assert.deepEqual(migrated.progress, b.progress); assert.equal(migrated.gold, b.gold);
   until(migrated, () => migrated.phase === 'intermission');
   assert.deepEqual(migrated.liveClearedWaves, []);
-  until(migrated, () => migrated.phase === 'wave'); assert.equal(migrated.waveRecipeVersion, 5);
+  until(migrated, () => migrated.phase === 'wave'); assert.equal(migrated.waveRecipeVersion, 6);
   assert.ok(IdleBattle.restore(migrated.snapshot()));
 });
 test('Wisp adds precisely ten percent to farm production and offline uses that rate once', () => {

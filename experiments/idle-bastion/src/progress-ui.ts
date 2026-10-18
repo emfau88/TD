@@ -1,3 +1,4 @@
+import { bossEncounter } from './boss';
 import { farmRewardGold } from './farming';
 import { waveCount, SETTLEMENT, FROST, upgradeCost, type IdleBattle } from './battle';
 import type { BattleSession } from './battle-session';
@@ -34,10 +35,14 @@ export function currentGoal(battle: IdleBattle): Goal {
       ? { title: 'Rosenspiegel stellt sich dir', detail: 'Welle 15 · 750 Gold Erstprämie · Frost unterbricht', action: 'boss', label: 'Bossherausforderung ansehen' }
       : { title: 'Bereite dich auf Rosenspiegel vor', detail: 'Boss in Welle 15 · Frost, Fläche und Durchdringung', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 15: return { title: 'Die östliche Lichtung öffnen', detail: `${need(SETTLEMENT.clearingCost)} · zwei neue Bauplätze`, cost: SETTLEMENT.clearingCost, action: 'clearing', label: 'Lichtung öffnen' };
-    default: if (battle.clearing.unlocked && !battle.towers.some(t => t.padId.startsWith('tower-east'))) return { title: 'Verstärke die letzte Wegkurve', detail: 'Lichtung geöffnet · Frost & Schaden kombinieren', action: 'clearing', label: 'Lichtung ansehen' };
-      return battle.mode === 'farm'
-      ? { title: `Bereite Welle ${battle.highestCleared + 1} vor`, detail: 'Türme aufwerten · dann erneut vorstoßen', action: 'upgrade', label: 'Verteidigung ansehen' }
-      : { title: `Nächster Rekord: Welle ${battle.highestCleared + 1}`, detail: 'Vier Turmrollen · bis Level 6 ausbauen', action: 'upgrade', label: 'Verteidigung ansehen' };
+    case 16: return { title: 'Werkstatt II ausbauen', detail: `${need(SETTLEMENT.workshopUpgradeCost)} · Turmlevel 7–20`, cost: SETTLEMENT.workshopUpgradeCost, action: 'workshop', label: 'Werkstatt ausbauen' };
+    case 17: if (battle.highestCleared >= 24 && !battle.bossActive && battle.mode !== 'farm') return { title: 'Rosenspiegels Rückkehr', detail: 'Welle 25 · 1.200 Gold Erstprämie', action: 'boss', label: 'Bossherausforderung ansehen' };
+    default: {
+      const tower = [...battle.towers].filter(t => t.level < battle.maxLevel).sort((a,b) => upgradeCost(a)-upgradeCost(b))[0];
+      if (tower) { const cost = upgradeCost(tower); return { title: `${padNames[tower.padId]} auf Level ${tower.level+1}`, detail: `${need(cost)} · ${battle.secondBossVictories ? `nächster Vorstoß: Welle ${battle.nextAdvanceWave}` : 'für Rosenspiegels Rückkehr · Welle 25'}`, cost, action: 'upgrade', label: 'Turm aufwerten' }; }
+      if (battle.layout.towerPads.some(p => battle.isPadUnlocked(p.id) && !battle.towers.some(t => t.padId === p.id))) return { title: 'Freie Bauplätze verstärken', detail: `${need(75)} · weitere Schussbereiche nutzen`, cost: 75, action: 'archer', label: 'Waldwächter platzieren' };
+      return { title: 'Verteidigung vollständig ausgebaut', detail: `Sicher farmen oder Welle ${battle.nextAdvanceWave} versuchen`, action: 'progress', label: 'Fortschritt und Vorstoß ansehen' };
+    }
   }
 }
 
@@ -90,12 +95,15 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       const assignment = target ? padNames[target.padId] ?? target.def.name : 'Startturm';
       el('mara-brief').textContent = b.mara.path.length ? `Unterwegs · ${assignment}` : `Unterstützt ${assignment}`;
       el('journal-mara-order').textContent = b.mara.path.length ? `Unterwegs zur Unterstützung: ${assignment}` : `Auftrag: ${assignment} unterstützen`;
-      el('journal-boss-status').textContent = b.bossVictories ? `${b.bossVictories} Sieg${b.bossVictories === 1 ? '' : 'e'} · Erstprämie bereits erhalten.`
-        : b.bossActive ? 'Bosskampf läuft · Sieg erst nach Boss und allen Begleitern.'
-        : b.highestCleared >= 15 ? 'Noch kein Bosssieg aufgezeichnet. Dein früherer Wellenrekord bleibt erhalten; fordere Rosenspiegel hier heraus.' : 'Noch unbesiegt · Herausforderung ab gemeisterter Welle 14.';
+      const nextBoss = b.nextBossWave, encounter = bossEncounter(nextBoss), wins = b.bossWins(nextBoss);
+      el('journal-boss-title').textContent = `${encounter.title} · Welle ${nextBoss}`;
+      el('journal-boss-status').textContent = `Welle 15: ${b.bossVictories} Siege · Welle 25: ${b.secondBossVictories} Siege. ` + (wins ? 'Erstprämie erhalten.'
+        : b.bossActive ? 'Bosskampf läuft · Sieg erst nach Boss und allen Begleitern.' : `Noch unbesiegt · Herausforderung nach Welle ${nextBoss-1}. Frühere Wellenrekorde ersetzen keinen Bosssieg.`);
       const challenge = el<HTMLButtonElement>('challenge-boss');
-      challenge.disabled = stopped || live.busy || b.highestCleared < 14 || b.bossActive || b.bossChallengeRequested;
-      challenge.textContent = b.bossChallengeRequested ? 'Boss am nächsten Wellenwechsel vorgemerkt' : b.bossVictories ? 'Boss erneut herausfordern · Welle 15' : 'Boss herausfordern · Welle 15';
+      challenge.disabled = stopped || live.busy || b.highestCleared < nextBoss-1 || b.bossActive || b.bossChallengeRequested;
+      challenge.textContent = b.bossChallengeRequested ? `Bosswelle ${b.bossChallengeWave} am Wellenwechsel vorgemerkt` : `Boss ${wins ? 'erneut ' : ''}herausfordern · Welle ${nextBoss}`;
+      const replay = el<HTMLButtonElement>('replay-first-boss'); replay.hidden = nextBoss === 15;
+      replay.disabled = stopped || live.busy || b.bossActive || b.bossChallengeRequested;
       el('journal-record').textContent = String(b.highestCleared);
       el('journal-current').textContent = `${b.wave || '—'} · ${b.mode === 'farm' ? 'Farmen' : 'Vorstoß'}`;
       el('journal-safe-wave').textContent = certificate ? `Welle ${certificate.wave}` : 'Wird geprüft';

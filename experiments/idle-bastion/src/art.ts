@@ -9,6 +9,10 @@ import { TREE_FRAMES } from '../../../reference/src/terrain';
 export { MARA_FOOT };
 
 export const ART = Object.freeze({
+  sniperWeapon3: new URL('../../../public/assets/Tower 04 - Level 03 - Weapon.png', import.meta.url).href,
+  cannonWeapon3: new URL('../../../public/assets/Tower 03 - Level 03 - Weapon.png', import.meta.url).href,
+  frostWeapon3: new URL('../../../public/assets/Tower 02 - Level 03 - Weapon.png', import.meta.url).href,
+  weapon3: new URL('../../../public/assets/Tower 01 - Level 03 - Weapon.png', import.meta.url).href,
   bossDance: new URL('../../../public/assets/Succubus Dance HD v1.png', import.meta.url).href,
   boss: new URL('../../../public/assets/Succubus Pixel v2.png', import.meta.url).href,
   wisp: new URL('../../../public/assets/Wisp - Animations.png', import.meta.url).href,
@@ -41,6 +45,10 @@ export const ART = Object.freeze({
   workshopDamaged: new URL('../assets/workshop/workshop-damaged.png', import.meta.url).href,
 });
 export const KEYS = Object.freeze({
+  sniperWeapon3: 'idle-sniperWeapon3',
+  cannonWeapon3: 'idle-cannonWeapon3',
+  frostWeapon3: 'idle-frostWeapon3',
+  weapon3: 'idle-weapon3',
   bossDance: 'idle-rosenspiegel-dance', boss: 'idle-rosenspiegel', wisp: 'idle-wisp',
   scorpion: 'idle-scorpion',
   cannonTower: 'idle-cannonTower',
@@ -100,7 +108,7 @@ export function preloadArt(scene: Phaser.Scene): void {
   scene.load.image(KEYS.warehouse, ART.warehouse);
   scene.load.image(KEYS.workshopDamaged, ART.workshopDamaged);
   for (const [key, url, width, height] of [
-    [KEYS.bossDance, ART.bossDance, 128, 128], [KEYS.boss, ART.boss, 64, 64], [KEYS.wisp, ART.wisp, 64, 64], [KEYS.scorpion, ART.scorpion, 64, 64],
+    [KEYS.weapon3, ART.weapon3, 96, 96], [KEYS.frostWeapon3, ART.frostWeapon3, 128, 128], [KEYS.cannonWeapon3, ART.cannonWeapon3, 96, 96], [KEYS.sniperWeapon3, ART.sniperWeapon3, 128, 128], [KEYS.bossDance, ART.bossDance, 128, 128], [KEYS.boss, ART.boss, 64, 64], [KEYS.wisp, ART.wisp, 64, 64], [KEYS.scorpion, ART.scorpion, 64, 64],
     [KEYS.cannonTower, ART.cannonTower, 64, 128], [KEYS.cannonWeapon, ART.cannonWeapon, 96, 96], [KEYS.cannonWeapon2, ART.cannonWeapon2, 96, 96], [KEYS.cannonProjectile, ART.cannonProjectile, 10, 10],
     [KEYS.sniperTower, ART.sniperTower, 64, 128], [KEYS.sniperWeapon, ART.sniperWeapon, 128, 128], [KEYS.sniperWeapon2, ART.sniperWeapon2, 128, 128], [KEYS.sniperProjectile, ART.sniperProjectile, 8, 8],
     [KEYS.tower, ART.tower, 64, 128], [KEYS.weapon, ART.weapon, 96, 96],
@@ -136,9 +144,9 @@ export function prepareArt(scene: Phaser.Scene): void {
 }
 
 
-export function towerArt(kind: number) {
-  return kind === 4 ? { base: KEYS.sniperTower, weapons: [KEYS.sniperWeapon, KEYS.sniperWeapon2], projectile: KEYS.sniperProjectile, frames: 17, shotFrames: 6 }
-    : kind === 3 ? { base: KEYS.cannonTower, weapons: [KEYS.cannonWeapon, KEYS.cannonWeapon2], projectile: KEYS.cannonProjectile, frames: 8, shotFrames: 6 }
-    : kind === 2 ? { base: KEYS.frostTower, weapons: [KEYS.frostWeapon, KEYS.frostWeapon2], projectile: KEYS.frostProjectile, frames: 6, shotFrames: 3 }
-    : { base: KEYS.tower, weapons: [KEYS.weapon, KEYS.weapon2], projectile: KEYS.projectile, frames: 6, shotFrames: 3 };
+export function towerArt(kind: number, stage = 1) {
+  return kind === 4 ? { base: KEYS.sniperTower, weapons: [KEYS.sniperWeapon, KEYS.sniperWeapon2, KEYS.sniperWeapon3], projectile: KEYS.sniperProjectile, frames: 17, shotFrames: 6 }
+    : kind === 3 ? { base: KEYS.cannonTower, weapons: [KEYS.cannonWeapon, KEYS.cannonWeapon2, KEYS.cannonWeapon3], projectile: KEYS.cannonProjectile, frames: 8, shotFrames: 6 }
+    : kind === 2 ? { base: KEYS.frostTower, weapons: [KEYS.frostWeapon, KEYS.frostWeapon2, KEYS.frostWeapon3], projectile: KEYS.frostProjectile, frames: stage === 3 ? 10 : 6, shotFrames: 3 }
+    : { base: KEYS.tower, weapons: [KEYS.weapon, KEYS.weapon2, KEYS.weapon3], projectile: KEYS.projectile, frames: 6, shotFrames: 3 };
 }

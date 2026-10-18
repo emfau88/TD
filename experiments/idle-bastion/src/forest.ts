@@ -2,12 +2,13 @@
  * All decoration comes from the same pure world used by companion navigation.
  */
 import type Phaser from 'phaser';
+import { drawWorkshopAnnex } from './workshop-annex';
 import { clearWaterBackdrop, waterTileSource } from '../../../reference/src/terrain';
 import { KEYS, SCALE, loopFrame } from './art';
 import { getForestWorld } from './forest-world';
 import { cellCenter, createIdleLayout, type GridCell, type IdleLayout } from './layout';
 
-export interface ForestView { update(elapsed: number, built: boolean, builtAt: number | null, warehouseBuilt: boolean, warehouseBuiltAt: number | null, warehouseUnlocked: boolean): void; destroy(): void }
+export interface ForestView { update(elapsed: number, built: boolean, builtAt: number | null, warehouseBuilt: boolean, warehouseBuiltAt: number | null, warehouseUnlocked: boolean, workshopUpgraded?: boolean, upgradedAt?: number | null): void; destroy(): void }
 const cellKey = ({ x, y }: GridCell) => `${x},${y}`;
 /** Source quadrants are chosen from occupied N/E/S/W neighbours. */
 export function roadSource(position: GridCell, road: ReadonlySet<string>): readonly [number, number] {
@@ -110,6 +111,8 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   const workshopY = (workshop.blockingBody.y + workshop.blockingBody.height) * size;
   const building = track(scene.add.image(workshopX, workshopY, KEYS.workshopDamaged)
     .setOrigin(0.5, 112/128).setDepth(workshopY + 1000));
+  const annex = track(scene.add.graphics().setDepth(workshopY + 1001));
+  drawWorkshopAnnex(annex, workshopX, workshopY);
   const dust = track(scene.add.graphics().setDepth(workshopY + 1002));
   const plotLabel = track(scene.add.text(workshopX,
     (workshop.footprint.y + workshop.footprint.height) * size - 7, 'Alte Werkstatt', {
@@ -133,7 +136,8 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   const entrance = cellCenter(layout, layout.road.cells[0]);
   track(scene.add.text(8, entrance.y - 15, '➜', { fontSize: '24px', color: '#35533b' }).setDepth(10));
   return {
-    update(elapsed, built, builtAt, warehouseBuilt, warehouseBuiltAt, warehouseUnlocked) {
+    update(elapsed, built, builtAt, warehouseBuilt, warehouseBuiltAt, warehouseUnlocked, workshopUpgraded = false, upgradedAt = null) {
+      annex.setVisible(workshopUpgraded);
       pond?.setFrame(loopFrame(elapsed, 10)); coreWeapon.setFrame(loopFrame(elapsed, 10));
       const texture = built ? KEYS.workshop : KEYS.workshopDamaged;
       if (building.texture.key !== texture) building.setTexture(texture);
@@ -149,7 +153,8 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
           .fillRect(warehouseX - 30 + i * 10, warehouseY - warehouseAge * (9 + i % 3 * 5), 3, 3);
       }
       dust.clear();
-      const age = builtAt === null ? 10 : elapsed - builtAt;
+      const lastBuild = workshopUpgraded ? upgradedAt : builtAt;
+      const age = lastBuild === null ? 10 : elapsed - lastBuild;
       if (built && age >= 0 && age < 1.2) for (let i = 0; i < 9; i++) {
         dust.fillStyle(0xe7d4a5, (1 - age/1.2) * 0.7).fillRect(workshopX - 42 + i * 11,
           workshopY - 3 - age * (9 + i % 3 * 5), 3 + i % 2, 3);

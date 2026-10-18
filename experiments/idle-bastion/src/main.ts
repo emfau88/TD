@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { bossEncounter } from './boss';
 import './battle.css';
 import './progress.css';
 import './premium.css';
@@ -244,20 +245,26 @@ function syncUI(): void {
     return `<div><dt>Schaden</dt><dd>${values.damage.toFixed(1)}</dd></div><div><dt>Reichweite</dt><dd>${values.range}</dd></div><div><dt>Angriff alle</dt><dd>${values.cooldown.toFixed(2)} s</dd></div><div><dt>Abschüsse</dt><dd>${tower.kills}</dd></div>`;
   })() : '';
   element('action-hint').textContent = blocked ? live.error ? 'Der letzte bestätigte Spielstand bleibt erhalten.' : live.awaitingResume ? 'Setze die Verteidigung über den Rückkehrbeleg fort.' : 'Setze den Kampf fort, um zu bauen oder aufzuwerten.'
-    : tower ? tower.level >= sim.maxLevel ? sim.settlement.frostResearched ? 'Level 6 erreicht.' : 'Frostfassung erschließt Level 4–6.' : sim.gold < upgradeCost(tower) ? `Noch ${currency.format(upgradeCost(tower) - sim.gold)} Gold bis zum nächsten Level.` : 'Mehr Schaden verbessert die Verteidigung sofort.'
+    : tower ? tower.level >= sim.maxLevel ? sim.settlement.frostResearched ? sim.settlement.workshopUpgraded ? 'Level 20 erreicht · höchster Ausbau.' : 'Werkstatt II erschließt Level 7–20 nach der Lichtung.' : 'Frostfassung erschließt Level 4–6.' : sim.gold < upgradeCost(tower) ? `Noch ${currency.format(upgradeCost(tower) - sim.gold)} Gold bis zum nächsten Level.` : 'Mehr Schaden verbessert die Verteidigung sofort.'
     : (pad && sim.isPadUnlocked(pad.id)) && sim.gold < 75 ? `Noch ${currency.format(75 - sim.gold)} Gold bis zum Waldwächter.` : '';
   const settlement = sim.settlement;
   const workshopIcon = element<HTMLImageElement>('workshop-icon');
   const workshopSource = settlement.workshopBuilt ? ART.workshop : ART.workshopDamaged;
   if (workshopIcon.getAttribute('src') !== workshopSource) workshopIcon.src = workshopSource;
-  element('workshop-card-title').textContent = settlement.workshopBuilt ? 'Werkstatt I' : 'Alte Werkstatt';
-  element('workshop-card-copy').textContent = settlement.frostResearched ? 'Frosttechnik verfügbar' : settlement.workshopBuilt ? 'Frostfassung erforschen' : 'Reparieren & forschen';
-  element('workshop-card-price').textContent = settlement.frostResearched ? '✓ Erforscht' : `${settlement.workshopBuilt ? SETTLEMENT.researchCost : SETTLEMENT.workshopCost}`;
+  element('workshop-card-title').textContent = settlement.workshopUpgraded ? 'Werkstatt II' : settlement.workshopBuilt ? 'Werkstatt I' : 'Alte Werkstatt';
+  element('workshop-card-copy').textContent = settlement.workshopUpgraded ? 'Turmlevel bis 20' : settlement.frostResearched && sim.clearing.unlocked ? 'Werkstatt II ausbauen' : settlement.frostResearched ? 'Frosttechnik verfügbar' : settlement.workshopBuilt ? 'Frostfassung erforschen' : 'Reparieren & forschen';
+  element('workshop-card-price').textContent = settlement.workshopUpgraded ? '✓ Ausgebaut' : settlement.frostResearched && sim.clearing.unlocked ? currency.format(SETTLEMENT.workshopUpgradeCost) : settlement.frostResearched ? '✓ Erforscht' : `${settlement.workshopBuilt ? SETTLEMENT.researchCost : SETTLEMENT.workshopCost}`;
   element('pick-workshop').classList.toggle('researched', settlement.frostResearched);
-  element('workshop-title').textContent = settlement.workshopBuilt ? 'Werkstatt I' : 'Beschädigte Werkstatt';
-  element('workshop-description').textContent = settlement.frostResearched
+  element('workshop-title').textContent = settlement.workshopUpgraded ? 'Werkstatt II' : settlement.workshopBuilt ? 'Werkstatt I' : 'Beschädigte Werkstatt';
+  element('workshop-description').textContent = settlement.workshopUpgraded ? 'Der neue Arbeitsplatz erschließt Turmlevel 7–20. Höhere Level erhöhen den Schaden; Reichweite und Feuerrate bleiben begrenzt.' : settlement.frostResearched
     ? 'Frostfassung erforscht · Frostkristall und Turmlevel 4–6 sind verfügbar.'
     : settlement.workshopBuilt ? 'Frostfassung erschließt den Frostkristall und Turmlevel 4–6.' : 'Repariere die alte Werkstatt. Danach kannst du Frosttechnik erforschen.';
+  const upgradeWorkshop = element<HTMLButtonElement>('upgrade-workshop');
+  upgradeWorkshop.hidden = !settlement.frostResearched || settlement.workshopUpgraded;
+  upgradeWorkshop.disabled = blocked || !sim.clearing.unlocked || sim.gold < SETTLEMENT.workshopUpgradeCost;
+  element('workshop-upgrade-condition').hidden = !settlement.frostResearched || settlement.workshopUpgraded;
+  element('workshop-upgrade-condition').textContent = !sim.clearing.unlocked ? 'Für Werkstatt II zuerst die östliche Lichtung erschließen.'
+    : sim.gold < SETTLEMENT.workshopUpgradeCost ? `Noch ${currency.format(SETTLEMENT.workshopUpgradeCost-sim.gold)} Gold für Werkstatt II.` : 'Bereit zum Ausbau · Turmlevel 7–20 freischalten.';
   buildWorkshop.hidden = settlement.workshopBuilt;
   buildWorkshop.textContent = `Werkstatt reparieren · ${SETTLEMENT.workshopCost} Gold`;
   buildWorkshop.disabled = blocked || sim.gold < SETTLEMENT.workshopCost;
@@ -303,17 +310,18 @@ function syncUI(): void {
     : sim.mode === 'farm' ? `Sicheres Farmen · Welle ${sim.farmWave}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang.`
     : `Automatischer Vorstoß · höchste geschaffte Welle ${sim.highestCleared}.`;
   const relevantEvents = sim.drainEvents();
-  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'boss-victory', 'clearing'].includes(event.type)).at(-1);
+  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'boss-victory', 'clearing', 'workshop-upgrade'].includes(event.type)).at(-1);
   if (message) toastUntil = performance.now() + 4500;
   if (message) element('combat-message').textContent = message.type === 'clear' ? `Welle ${message.wave} geschafft · +${currency.format(message.amount ?? 0)} Gold Abschlussbonus.`
     : message.type === 'kill' ? `Gegner besiegt · +${currency.format(message.amount ?? 0)} Gold.`
     : message.type === 'wave' ? `${mode} · Welle ${message.wave} hat begonnen. Deine Türme greifen automatisch an.`
-    : message.type === 'boss-victory' ? message.amount ? 'Rosenspiegel besiegt! +750 Gold einmalige Erstprämie. Meilenstein gespeichert.' : 'Rosenspiegel erneut besiegt. Gewöhnliche Kampfbelohnungen erhalten.'
+    : message.type === 'boss-victory' ? message.amount ? `${bossEncounter(message.wave ?? 15).title} besiegt! +${currency.format(message.amount)} Gold Erstprämie.` : 'Rosenspiegel erneut besiegt. Gewöhnliche Kampfbelohnungen erhalten.'
     : message.type === 'clearing' ? 'Östliche Lichtung geöffnet! Zwei Bauplätze verfügbar · Lichtung ansehen.'
     : message.type === 'wisp' ? 'Wisp ist da! +10 % Kampf-Gold und die Steinschleuder sind jetzt verfügbar.'
     : message.type === 'pads' ? `Welle ${message.wave} gemeistert: drei weitere Bauplätze${message.wave === 10 ? ' und der Scharfschütze' : ''} sind verfügbar.`
     : message.type === 'build' ? `${message.tower?.def.name} gebaut und einsatzbereit.`
     : message.type === 'upgrade' ? `${message.tower?.def.name} verbessert. Der nächste Schuss nutzt den höheren Schaden.`
+    : message.type === 'workshop-upgrade' ? 'Werkstatt II fertig! Turmlevel 7–20 sind jetzt verfügbar.'
     : message.type === 'workshop' ? 'Die Werkstatt arbeitet wieder! Frostfassung ist jetzt erforschbar.'
     : message.type === 'warehouse' ? 'Vorratslager gebaut! Künftig 65 % Offline-Ertrag für bis zu 8 Stunden.'
     : message.type === 'research' ? 'Frostfassung erforscht! Baue einen Frostkristall oder verbessere Türme bis Level 6.'
@@ -325,7 +333,7 @@ function syncUI(): void {
   const showBoss = sim.bossActive && !live.awaitingResume && !contextOpen && !placementType;
   element('boss-banner').hidden = !showBoss;
   document.querySelector<HTMLElement>('.goal-ribbon')!.hidden = showBoss;
-  element('boss-title').textContent = 'Rosenspiegel · Welle 15';
+  element('boss-title').textContent = `${bossEncounter(sim.wave).title} · Welle ${sim.wave}`;
   element('boss-health').textContent = boss ? `${currency.format(Math.ceil(boss.hp))} / ${currency.format(Math.ceil(boss.maxHp))}` : sim.bossQueued ? 'Im Anmarsch' : 'Boss gefallen';
   const health = element<HTMLProgressElement>('boss-health-bar');
   health.max = boss?.maxHp ?? 1; health.value = boss?.hp ?? (sim.bossQueued ? 1 : 0);
@@ -334,7 +342,7 @@ function syncUI(): void {
     : charm.phase === 'channel' ? `♥ ${charmTarget?.def.name}: 40 % langsamer · ${charm.remaining.toFixed(1)} s`
     : charm.phase === 'interrupted' ? 'Zauber unterbrochen!'
     : boss?.slowRemaining ? `Frost aktiv · 45 % langsamer · ${boss.slowRemaining.toFixed(1)} s`
-    : boss ? 'Frosttreffer unterbrechen ihre Verführung' : sim.bossQueued ? sim.bossVictories ? 'Boss und Begleiter besiegen · Wiederholung' : 'Boss und Begleiter besiegen · 750 Gold Erstprämie' : 'Besiege noch die übrigen Begleiter';
+    : boss ? 'Frosttreffer unterbrechen ihre Verführung' : sim.bossQueued ? sim.bossWins(sim.wave) ? 'Boss und Begleiter besiegen · Wiederholung' : `Boss und Begleiter besiegen · ${currency.format(bossEncounter(sim.wave).firstReward)} Gold Erstprämie` : 'Besiege noch die übrigen Begleiter';
   element('boss-banner').dataset.phase = charm.phase;
   element('boss-support').textContent = `${Math.max(0, sim.remaining - (boss || sim.bossQueued ? 1 : 0))} Begleiter übrig · Fläche & Durchdringung`;
   document.getElementById('app')!.classList.toggle('context-open', contextOpen || Boolean(placementType));
@@ -466,6 +474,8 @@ build.addEventListener('click', () => { if (selectedPadId) void placeTower(selec
 buildFrost.addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId, 2); }, { signal: lifetime.signal });
 buildWarehouse.addEventListener('click', () => { void perform(battle => battle.buildWarehouse()); }, { signal: lifetime.signal });
 buildWorkshop.addEventListener('click', () => { void perform(battle => battle.buildWorkshop()); }, { signal: lifetime.signal });
+element('upgrade-workshop').addEventListener('click', () => { void perform(battle => battle.upgradeWorkshop()); }, { signal: lifetime.signal });
+element('replay-first-boss').addEventListener('click', () => { void perform(b => b.requestBossChallenge(15)).then(() => { if (session?.battle.bossChallengeRequested) element<HTMLDialogElement>('chronicle').close(); }); }, { signal: lifetime.signal });
 researchFrost.addEventListener('click', () => { void perform(battle => battle.researchFrost()); }, { signal: lifetime.signal });
 padChoice.addEventListener('change', () => { placementType = undefined; void selectPad(padChoice.value || undefined); }, { signal: lifetime.signal });
 for (const kind of ['tower', 'settlement'] as const) {
@@ -483,7 +493,7 @@ for (const [name, kind] of [['cannon', 3], ['sniper', 4]] as const) {
 }
 element('pick-wisp').addEventListener('click', () => openContext('wisp'), { signal: lifetime.signal });
 element('challenge-boss').addEventListener('click', () => {
-  void perform(b => b.requestBossChallenge()).then(() => { if (session?.battle.bossChallengeRequested) element<HTMLDialogElement>('chronicle').close(); });
+  void perform(b => b.requestBossChallenge(b.nextBossWave)).then(() => { if (session?.battle.bossChallengeRequested) element<HTMLDialogElement>('chronicle').close(); });
 }, { signal: lifetime.signal });
 element('catalog-next').addEventListener('click', () => { const list = element(`${catalogPanel}-catalog`); list.scrollTo({ left: list.scrollLeft >= list.scrollWidth - list.clientWidth - 2 ? 0 : list.scrollLeft + list.clientWidth, behavior: 'smooth' }); }, { signal: lifetime.signal });
 element('pick-archer').addEventListener('click', () => startPlacement(1), { signal: lifetime.signal });

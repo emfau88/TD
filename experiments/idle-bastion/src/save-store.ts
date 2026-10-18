@@ -55,7 +55,7 @@ function inspect(value: unknown, present = value !== undefined): Inspection {
   }
   if (!knownSchema(value)) return { kind: 'corrupt', reason: 'The save envelope has no recognized schema.' };
   if (record(value.battle)) {
-    for (const [key, maximum] of [['schemaVersion', 9], ['rulesVersion', 5], ['layoutVersion', 2]] as const) {
+    for (const [key, maximum] of [['schemaVersion', 10], ['rulesVersion', 6], ['layoutVersion', 2]] as const) {
       const version = value.battle[key];
       if (natural(version) && version > maximum) return { kind: 'unsupported', reason: `Battle ${key} ${version} requires a newer game version.` };
     }
@@ -66,7 +66,7 @@ function inspect(value: unknown, present = value !== undefined): Inspection {
     }
     for (const origin of [value.offline.baseline, value.offline.window]) {
       if (record(origin) && record(origin.certificate) && natural(origin.certificate.rulesVersion)
-        && origin.certificate.rulesVersion > 5) {
+        && origin.certificate.rulesVersion > 6) {
         return { kind: 'unsupported', reason: 'The offline production proof requires a newer game version.' };
       }
     }

@@ -317,7 +317,7 @@ export class BattleScene extends Phaser.Scene {
     const sim = this.sim, elapsed = sim.elapsed;
     // Read the complete confirmed model. Rollback can replace its identity and
     // move time backwards; UID maps are reconciled rather than replaying events.
-    this.forest?.update(elapsed, sim.settlement.workshopBuilt, sim.settlement.builtAt, sim.settlement.warehouseBuilt, sim.settlement.warehouseBuiltAt, sim.warehouseUnlocked);
+    this.forest?.update(elapsed, sim.settlement.workshopBuilt, sim.settlement.builtAt, sim.settlement.warehouseBuilt, sim.settlement.warehouseBuiltAt, sim.warehouseUnlocked, sim.settlement.workshopUpgraded, sim.settlement.upgradedAt);
     this.effects.clear();
     const towers = new Set(sim.towers.map(tower => tower.uid));
     for (const [uid, view] of this.towerViews) if (!towers.has(uid)) { view.base.destroy(); view.weapon.destroy(); this.towerViews.delete(uid); }
@@ -326,7 +326,7 @@ export class BattleScene extends Phaser.Scene {
       const charmed = sim.isCharmed(tower.uid);
       const boosted = sim.isMaraBoosted(tower.uid), firingCooldown = stat.cooldown / ((boosted ? 1.5 : 1) * (charmed ? BOSS.rateMultiplier : 1));
       const firingAge = firingCooldown - tower.cooldown;
-      const art = towerArt(tower.def.id);
+      const art = towerArt(tower.def.id, tower.visualStage);
       const frame = tower.cooldown > 0 && firingAge < firingCooldown * 0.85 ? Math.min(art.frames - 1, Math.floor(firingAge / (firingCooldown * 0.85) * art.frames)) : 0;
       const weaponKey = art.weapons[tower.visualStage - 1];
       if (view.weapon.texture.key !== weaponKey) view.weapon.setTexture(weaponKey);

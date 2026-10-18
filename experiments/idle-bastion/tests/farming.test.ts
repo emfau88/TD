@@ -131,7 +131,7 @@ test('snapshot v1 migration retains combat exactly and invents neither a certifi
   const legacy = { ...old, schemaVersion: 1, layoutVersion: 1, rulesVersion: 1 };
   const migrated = IdleBattle.restore(legacy, { maraBonus: false })!;
   assert.ok(migrated);
-  assert.equal(migrated.snapshot().schemaVersion, 9);
+  assert.equal(migrated.snapshot().schemaVersion, 10);
   assert.equal(migrated.highestCleared, 1);
   assert.equal(migrated.attemptId, 2);
   assert.deepEqual(migrated.liveClearedWaves, []);

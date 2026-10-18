@@ -154,3 +154,12 @@ Ein einzelnes Imagegen-Gebäude: kompakter offener Holzschuppen mit roten Ziegel
 Zusätzlich zum kleinen Körperatlas verwendet die Bossdarstellung den unveränderten `public/assets/Succubus Dance HD v1.png` aus dem Hauptspiel: 1024 × 128, acht 128er Frames, 190 ms je Frame. Das separate Fenster ist 136 × 164 CSS-Pixel groß; die Figur nutzt den Originalmaßstab 1,1 und Fußanker (64/112). Es bleibt unabhängig vom Kartenzoom lesbar, wird innerhalb der sichtbaren Karte platziert und hält Abstand zu Bossanzeige und Dock. Es zeigt Vorbereitung beziehungsweise Wirkung mit Restdauer und Ablaufbalken.
 
 Herzfaden, fünf aufsteigende Herzen, pulsierender rosafarbener Turmglanz und leichtes Wackeln entsprechen der Inszenierung aus `reference/src/scene.ts`. Beide Tänze und sämtliche Effekte verwenden die gespeicherte Zauberphase samt Restdauer; Pause hält sie an. Unterbrechung, Zielverlust oder Ende entfernen das Fenster und setzen den Turm zurück. Kein neues Asset, keine Änderung an Bossbalance oder Spielstandschema. [Echte Spielaufnahmen und Prüfung](../../../artifacts/idle-bastion/acceptance/p4/B10_VISUALS.md).
+
+
+### B12: Werkstatt-Anbau und Grafikstufe III
+
+Der kleine überdachte Arbeitsplatz entsteht als eigene Phaser-Pixelgrafik in `src/workshop-annex.ts`: 32 × 39 Weltpixel, rote Ziegel, Holzpfosten, Amboss und warmes Lampenlicht. Das bestehende Werkstatt-Bitmap bleibt unverändert. Der Anbau sitzt rechts am Haus (Weltanker des Hauses weiterhin 180/480); Grundstück, Maßstab und Laufwege bleiben gleich. Sichtbarkeit folgt der gespeicherten Ausbaustufe, kurze Staubpartikel dem bestätigten Bauzeitpunkt. Herkunft: neu geschriebene Grafikprimitive, keine zusätzliche Bildgenerierung.
+
+Level 7–20 verwenden die vorhandenen dritten Basisturmframes und unveränderten Original-Waffenatlanten `Tower 01/02/03/04 - Level 03 - Weapon.png`. Raster/Animation: Waldwächter 96×96 / 6 Frames; Frostkristall 128×128 / 10; Steinschleuder 96×96 / 8; Scharfschütze 128×128 / 17. Maßstab und Drehachse bleiben erhalten. Die grüngelbe dritte Froststufe stammt aus dem Originalatlas; der Frosttreffer bleibt als Effekt erkennbar. Keine vierte Grafikstufe für spätere Zahlenlevel.
+
+Rosenspiegels zweite Begegnung nutzt dieselben Körper- und Tanzatlanten sowie Turmglanz, Herzen und Restdauer. Keine weitere Figur oder Bildserie. [Spielaufnahmen und gezielte Prüfung](../../../artifacts/idle-bastion/acceptance/p4/B12.md).
