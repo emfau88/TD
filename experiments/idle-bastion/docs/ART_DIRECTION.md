@@ -38,7 +38,7 @@ Farbanker aus dem bestehenden Gelände: Gras `#63ab3f`, helle Vegetation `#c8d45
 - Die bestehende klassische Karte bleibt unverändert; für Idle wird ein eigenes Startlayout gestaltet.
 - Startgebiet: **28 × 16 Zellen / 1120 × 640**. Im Slice genau eine Erweiterung um **bis zu acht Spalten rechts**, insgesamt höchstens **36 × 16 / 1440 × 640**.
 - Das freigelegte Gebiet wird Teil derselben zusammenhängenden Welt. Die Kamera kann dorthin verschoben werden; die Objekte behalten ihren Maßstab. Kein automatisches Verkleinern der ganzen Welt beim Ausbau.
-- Acht feste Turmplätze im Startgebiet, davon vier zu Beginn verfügbar, einschließlich des belegten Startplatzes. Die übrigen vier werden im Verlauf freigeschaltet. Genau zwei weitere Plätze liegen in der Erweiterung; insgesamt zehn.
+- Elf feste Turmplätze im Startgebiet, davon fünf zu Beginn verfügbar, einschließlich des belegten Startplatzes. Je drei weitere öffnen bei gemeisterter Welle 5 und 10. Zwei weitere Plätze liegen in der späteren Erweiterung; insgesamt dreizehn. Der Nutzerauftrag nach B10 ergänzt Nordbogen (11,4), Mittelpass (16,7) und Südbogen (23,9), ohne bestehende Plätze zu versetzen.
 - Noch gesperrte Plätze bleiben zurückhaltend lesbar. Keine zehn blinkenden Bauaufforderungen im Einstieg.
 - Am Desktop sind Startturm, erste Gegner, Mara, Kern, Werkstattstelle und erster vorgeschlagener Bauplatz im Startausschnitt gleichzeitig sichtbar. Hochkant führen die Dockkarten zum relevanten Ausschnitt; zusätzlich sind freie Bauplätze über große Schaltflächen wählbar.
 - Die erste Abnahme prüft das einschließlich HUD bei **1366 × 768**. Eine Ansicht bei **1920 × 1080** ergänzt den Vergleich. UI-Höhe und Startkomposition werden zusammen festgelegt.
@@ -48,7 +48,7 @@ Farbanker aus dem bestehenden Gelände: Gras `#63ab3f`, helle Vegetation `#c8d45
 - Werkstatt und Lager haben feste Grundstücke abseits des Gegnerwegs. Zugängliche Gehflächen verbinden sie mit den erreichbaren Turm-Nachbarfeldern.
 - Ein Baum, Fels oder Gebäude darf keine scheinbar freie Bau- oder Gehfläche verdecken. Die Bodenbelegung folgt den tatsächlichen Objekten.
 
-Ein kurzer Klick wählt aus; Ziehen ab sechs Bildschirmpixeln verschiebt die Karte und löst beim Loslassen keinen Bau aus. Übersicht und Zoom bleiben sichtbar. Der Kamerafokus auf einen Bauplatz folgt einer bewussten Auswahl im Dock; keine eigenständigen Schwenks während einer Platzierung.
+Ein kurzer Klick wählt aus; Ziehen ab sechs Bildschirmpixeln verschiebt die Karte und löst beim Loslassen keinen Bau aus. Nach bestätigtem Turmbau schließen Platzierung und Turmverwaltung; erneutes Antippen öffnet die Werte. Fehlerhafte oder nicht bezahlbare Käufe behalten ihren Hinweis. Übersicht und Zoom bleiben sichtbar. Der Kamerafokus auf einen Bauplatz folgt einer bewussten Auswahl im Dock; keine eigenständigen Schwenks während einer Platzierung.
 
 ### Oberfläche nach den Mockups
 
@@ -56,7 +56,7 @@ Die Welt ist die Hauptfläche. Oben stehen Gold, Kernleben und Welle in einer sc
 
 Während Welle 15 ersetzt ein kompakter Bossrahmen den Zielstreifen: HP, Verführung mit Ziel und Restdauer, Frost-Unterbrechung und verbleibende Begleiter. Er verwendet dasselbe Messingrahmen-Asset; hochkant bleibt das 56-px-HUD und 96-px-Dock erhalten. Keine zusätzliche dauerhafte Leiste.
 
-Turmwerte, Upgrades und Gebäudeforschung erscheinen erst nach Auswahl. Am Desktop steht das Fenster neben dem Objekt, hochkant als schließbare Karte über dem Dock. Speicherinformationen, Hilfe und Probenstart liegen im Menü. Bau-/Forschungsmeldungen sind kurz; normale Abschüsse erzeugen keine ständig wechselnde Textleiste. Die schmale Ansicht zeigt den Kampfzustand auf der Karte und ersetzt den breiten Auto-Kampf-Schalter durch Pause/Fortsetzen. Geräte-Schutzabstände und große Aktionsflächen berücksichtigen; echte Geräteprüfung gesondert ausweisen.
+Turmwerte, Upgrades und Gebäudeforschung erscheinen erst nach Auswahl. Am Desktop steht das Fenster neben dem Objekt, hochkant als schließbare Karte über dem Dock. Speicherinformationen, Hilfe und Probenstart liegen im Menü. Bau-/Forschungsmeldungen sind kurz; normale Abschüsse erzeugen keine ständig wechselnde Textleiste. Die schmale Ansicht zeigt den Kampfzustand auf der Karte und ersetzt den breiten Auto-Kampf-Schalter durch Pause/Fortsetzen. Geräte-Schutzabstände und große Aktionsflächen berücksichtigen; echte Geräteprüfung gesondert ausweisen. Die Spielfläche rendert bei dichterem Display in doppelter interner Auflösung (höchstens Faktor 2), bei unveränderter CSS-Größe. Kamera und Eingaben verwenden dieselbe Umrechnung; Beschriftungen besitzen doppelte Texturauflösung, 11-px-Fettschrift und schmalere Kontur. Keine geglätteten Pixel-Sprites.
 
 Die Zahlen sind die Ausgangsentscheidung für den Slice. Ergibt die erste maßstäbliche Ansichtsprüfung ein konkretes Platzproblem, zuerst UI, Positionen und Dekoration korrigieren. Eine notwendige Maßänderung mit Begründung in den Plan zurückschreiben; niemals still Gebäude oder Figuren strecken. Eine große Welt und zusätzliche Angriffsrouten bleiben außerhalb des Slice.
 

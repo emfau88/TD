@@ -45,7 +45,7 @@ test('schema four migration keeps combat and invalidates old rule proofs but doe
   until(old, () => old.wave === 2);
   const certificate = certifyFarm(old)!;
   const { progress: ignored, ...snapshot } = old.snapshot();
-  const restored = IdleBattle.restore({ ...snapshot, schemaVersion: 4, rulesVersion: 3 })!;
+  const restored = IdleBattle.restore({ ...snapshot, schemaVersion: 4, layoutVersion: 1, rulesVersion: 3 })!;
   assert.ok(restored);
   assert.equal(restored.gold, old.gold);
   assert.equal(restored.highestCleared, 1);

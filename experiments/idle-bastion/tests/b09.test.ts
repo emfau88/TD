@@ -34,7 +34,7 @@ test('warehouse has real unlock and price gates; old saves retain combat and ren
   assert.equal(early.buildWarehouse(), false);
   early.highestCleared = 8; assert.equal(early.buildWarehouse(), false, 'Wave alone is insufficient');
   const modern = earned.snapshot(), { warehouseBuilt, warehouseBuiltAt, ...settlement } = modern.settlement;
-  const migrated = IdleBattle.restore({ ...modern, schemaVersion: 6, rulesVersion: 4, waveRecipeVersion: 4, settlement })!;
+  const migrated = IdleBattle.restore({ ...modern, schemaVersion: 6, layoutVersion: 1, rulesVersion: 4, waveRecipeVersion: 4, settlement })!;
   assert.ok(migrated); assert.deepEqual(migrated.liveClearedWaves, []);
   assert.deepEqual(migrated.snapshot(), { ...modern, waveRecipeVersion: 4, liveClearedWaves: [], farmWave: 1 });
   const fingerprint = defenseFingerprint(migrated), wallet = migrated.gold;

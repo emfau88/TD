@@ -9,7 +9,7 @@ export type GoalAction = 'archer' | 'upgrade' | 'workshop' | 'warehouse' | 'fros
 const el = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id)! as T;
 const number = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 const gold = (value: number) => number.format(value);
-const padNames: Record<string, string> = { 'tower-start': 'Startturm', 'tower-02': 'Nordwest', 'tower-03': 'Nordost', 'tower-04': 'Südkurve' };
+const padNames: Record<string, string> = { 'tower-start': 'Startturm', 'tower-02': 'Nordwest', 'tower-03': 'Nordost', 'tower-04': 'Südkurve', 'tower-05': 'Nordweg', 'tower-06': 'Engpass', 'tower-07': 'Südweg', 'tower-08': 'Kernwache', 'tower-09': 'Nordbogen', 'tower-10': 'Mittelpass', 'tower-11': 'Südbogen' };
 interface Goal { title: string; detail: string; action: GoalAction; cost?: number; label: string }
 export function currentGoal(battle: IdleBattle): Goal {
   const need = (price: number) => battle.gold >= price ? 'Bereit' : `Noch ${gold(price - battle.gold)} Gold`;
@@ -24,11 +24,11 @@ export function currentGoal(battle: IdleBattle): Goal {
     case 4: return { title: 'Frostfassung erforschen', detail: `${need(SETTLEMENT.researchCost)} · Frostturm & Level 4–6`, cost: SETTLEMENT.researchCost, action: 'workshop', label: 'Forschung ansehen' };
     case 5: return { title: 'Frost und Pfeile kombinieren', detail: `${need(FROST.cost)} · Frostkristall platzieren`, cost: FROST.cost, action: 'frost', label: 'Frostkristall auswählen' };
     case 6: return { title: 'Die Frosttechnik wirkt', detail: 'Ersten Frosttreffer beobachten · Gegner werden langsamer', action: 'progress', label: 'Fortschritt ansehen' };
-    case 7: return { title: 'Wisp für die Werkstatt gewinnen', detail: 'Welle 5 meistern · +10 % Gold & zwei Bauplätze', action: 'upgrade', label: 'Verteidigung verbessern' };
+    case 7: return { title: 'Wisp für die Werkstatt gewinnen', detail: 'Welle 5 meistern · +10 % Gold & drei Bauplätze', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 8: return { title: 'Käfergruppen gemeinsam treffen', detail: `${need(135)} · Steinschleuder neben Frost`, cost: 135, action: 'cannon', label: 'Steinschleuder auswählen' };
     case 12: return { title: 'Vorräte für deine Rückkehr', detail: `${need(SETTLEMENT.warehouseCost)} · 65 % Ertrag für 8 Stunden`, cost: SETTLEMENT.warehouseCost, action: 'warehouse', label: 'Vorratslager ansehen' };
     case 13: return { title: 'Den Weg bis Welle 8 sichern', detail: 'Vorratslager freischalten · längere Offline-Erträge', action: 'upgrade', label: 'Verteidigung verbessern' };
-    case 9: return { title: 'Den Weg bis Welle 10 sichern', detail: 'Scharfschütze & zwei weitere Bauplätze freischalten', action: 'upgrade', label: 'Verteidigung verbessern' };
+    case 9: return { title: 'Den Weg bis Welle 10 sichern', detail: 'Scharfschütze & drei weitere Bauplätze freischalten', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 10: return { title: 'Für Rüstung gewappnet', detail: `${need(170)} · Scharfschütze durchdringt Panzer`, cost: 170, action: 'sniper', label: 'Scharfschütze auswählen' };
     case 14: return battle.highestCleared >= 14
       ? { title: 'Rosenspiegel stellt sich dir', detail: 'Welle 15 · 750 Gold Erstprämie · Frost unterbricht', action: 'boss', label: 'Bossherausforderung ansehen' }

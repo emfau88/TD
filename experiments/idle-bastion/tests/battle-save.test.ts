@@ -189,7 +189,7 @@ test('invalid resources, times, references, definitions and newer formats are re
   const mutations: [string, (value: BattleSnapshot) => void][] = [
     ['schema', value => { value.schemaVersion = 9 as 8; }],
     ['rules', value => { value.rulesVersion = 6 as 5; }],
-    ['layout version', value => { value.layoutVersion = 2 as 1; }],
+    ['layout version', value => { value.layoutVersion = 3 as 2; }],
     ['layout identity', value => { value.layoutId = 'unknown' as 'start28'; }],
     ['negative gold', value => { value.gold = -1; }],
     ['fractional gold', value => { value.gold = 0.5; }],

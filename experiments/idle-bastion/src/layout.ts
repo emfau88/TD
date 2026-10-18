@@ -1,4 +1,4 @@
-/** B01-only geometry fixture. No combat, economy, progression or persistence state.
+/** Owned map geometry, including the three additional tactical slots in layout v2. No combat, economy, progression or persistence state.
  * Cell size and scale follow reference/src/data.ts and the Idle art contract;
  * all bounds and reservations belong to the returned layout instance.
  */
@@ -144,7 +144,8 @@ export function findFootpath(
   return undefined;
 }
 
-export function createIdleLayout(options: { readonly unlockedColumns?: number } = {}): IdleLayout {
+export const LAYOUT_VERSION = 2 as const;
+export function createIdleLayout(options: { readonly unlockedColumns?: number; readonly version?: 1 | 2 } = {}): IdleLayout {
   const cellSize = 40, rows = 16, startColumns = 28, maxColumns = 36;
   const columns = options.unlockedColumns ?? startColumns;
   if (!Number.isInteger(columns) || columns < startColumns || columns > maxColumns) {
@@ -165,6 +166,11 @@ export function createIdleLayout(options: { readonly unlockedColumns?: number } 
     pad('tower-06', 14, 8, 'wave-5'),
     pad('tower-07', 21, 9, 'wave-10'),
     pad('tower-08', 26, 8, 'wave-10'),
+    ...(options.version === 1 ? [] : [
+      pad('tower-09', 11, 4, 'initial'),
+      pad('tower-10', 16, 7, 'wave-5'),
+      pad('tower-11', 23, 9, 'wave-10'),
+    ]),
     pad('tower-east-01', 28, 7, 'east-clearing'),
     pad('tower-east-02', 28, 10, 'east-clearing'),
   ]);

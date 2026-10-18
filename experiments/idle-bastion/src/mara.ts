@@ -136,3 +136,28 @@ export function validMara(value: unknown, targets: readonly MaraTarget[], layout
   if (mara.unreachable && mara.effectRemaining > 0) return false;
   return true;
 }
+
+/** Only called after validating the original save against its original layout.
+ * Keep an unaffected route exactly; reroute around new pads without refreshing
+ * cooldowns. If Mara occupied a newly reserved cell, use the nearest legal one. */
+export function migrateMaraLayout(mara: MaraState, targets: readonly MaraTarget[], layout: IdleLayout, blocked: readonly GridCell[]): MaraState | undefined {
+  if (validMara(mara as unknown, targets, layout, blocked)) return cloneMara(mara);
+  const target = targets.find(t => t.uid === mara.targetTowerUid);
+  if (!target) return undefined;
+  const blockedKeys = new Set(blocked.map(key));
+  const canStand = (point: WorldPoint) => isWalkableCell(layout, cellOf(layout, point)) && !blockedKeys.has(key(cellOf(layout, point)));
+  const candidates: WorldPoint[] = [];
+  if (canStand(mara)) candidates.push(mara);
+  const nearby: WorldPoint[] = [];
+  for (let y = 0; y < layout.bounds.rows; y++) for (let x = 0; x < layout.bounds.columns; x++) {
+    const point = cellCenter(layout, { x, y });
+    if (canStand(point)) nearby.push(point);
+  }
+  nearby.sort((a, b) => Math.hypot(a.x - mara.x, a.y - mara.y) - Math.hypot(b.x - mara.x, b.y - mara.y));
+  for (const point of [...candidates, ...nearby]) {
+    const next = { ...cloneMara(mara), x: point.x, y: point.y };
+    assignMaraTarget(next, target, layout, blocked);
+    if (!next.unreachable && validMara(next, targets, layout, blocked)) return next;
+  }
+  return undefined;
+}

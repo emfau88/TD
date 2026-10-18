@@ -4,7 +4,7 @@ import { wispPose } from './wisp';
 import Phaser from 'phaser';
 import { BASE, IdleBattle, stats, type Enemy, type Tower } from './battle';
 import { cellCenter, type TowerPad } from './layout';
-import { KEYS, MARA_FOOT, SCALE, enemyFrame, loopFrame, maraFrame, towerArt, preloadArt, prepareArt } from './art';
+import { KEYS, MARA_FOOT, SCALE, enemyFrame, enemyFlip, loopFrame, maraFrame, towerArt, preloadArt, prepareArt } from './art';
 import { createForest, type ForestView } from './forest';
 
 export interface BattleSceneHooks {
@@ -55,7 +55,7 @@ export class BattleScene extends Phaser.Scene {
   private get sim(): IdleBattle { return this.readBattle(); }
   get mapZoom(): number { return this.relativeZoom; }
 
-  constructor(private readonly readBattle: () => IdleBattle, private readonly hooks: BattleSceneHooks) { super('IdleBattle'); }
+  constructor(private readonly readBattle: () => IdleBattle, private readonly hooks: BattleSceneHooks, private readonly pixelDensity = 1) { super('IdleBattle'); }
   preload(): void { preloadArt(this); }
   create(): void {
     prepareArt(this);
@@ -69,17 +69,17 @@ export class BattleScene extends Phaser.Scene {
       const point = cellCenter(this.sim.layout, pad.cell);
       this.padMarks.set(pad.id, this.add.graphics().setDepth(20));
       this.padLabels.set(pad.id, this.add.text(point.x, point.y, '', {
-        fontFamily: 'Segoe UI, sans-serif', fontSize: '10px', color: colors.text,
-        stroke: '#233e2d', strokeThickness: 3, align: 'center',
+        fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: colors.text,
+        stroke: '#233e2d', strokeThickness: 2, align: 'center',
       }).setOrigin(0.5).setDepth(5000));
     }
     this.maraShadow = this.add.ellipse(0, 0, 22, 8, 0x18382b, 0.22).setDepth(950);
     this.mara = this.add.image(0, 0, KEYS.mara, 0).setOrigin(MARA_FOOT[0] / 64, MARA_FOOT[1] / 64).setScale(SCALE.mara);
     this.maraName = this.add.text(0, 0, 'Mara', {
-      fontFamily: 'Segoe UI, sans-serif', fontSize: '10px', color: '#fff3cf', stroke: '#20392c', strokeThickness: 3,
+      fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: '#fff3cf', stroke: '#20392c', strokeThickness: 2,
     }).setOrigin(0.5).setDepth(5001);
     this.wisp = this.add.image(0, 0, KEYS.wisp, 0).setOrigin(0.5, 51 / 64).setScale(0.9);
-    this.wispName = this.add.text(0, 0, 'Wisp · +10 % Gold', { fontFamily: 'Segoe UI, sans-serif', fontSize: '10px', color: '#ffe0a0', stroke: '#20392c', strokeThickness: 3 }).setOrigin(0.5).setDepth(5001);
+    this.wispName = this.add.text(0, 0, 'Wisp · +10 % Gold', { fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: '#ffe0a0', stroke: '#20392c', strokeThickness: 2 }).setOrigin(0.5).setDepth(5001);
     this.input.on('pointerdown', this.beginPointer, this);
     this.input.on('pointerup', this.endPointer, this);
     this.input.on('pointerupoutside', this.cancelPointer, this);
@@ -135,7 +135,7 @@ export class BattleScene extends Phaser.Scene {
   }
   private resizeCamera(): void {
     const camera = this.cameras.main, { width, height } = this.sim.layout.bounds;
-    const portrait = this.scale.width <= 700 && window.innerHeight > window.innerWidth;
+    const portrait = this.scale.width / this.pixelDensity <= 700 && window.innerHeight > window.innerWidth;
     const changedOrientation = portrait !== this.portraitCamera;
     const center = this.cameraFitted ? { x: camera.midPoint.x, y: camera.midPoint.y } : { x: portrait ? 280 : width / 2, y: height / 2 };
     if (changedOrientation) { this.relativeZoom = 1; this.overview = false; }
@@ -204,7 +204,7 @@ export class BattleScene extends Phaser.Scene {
   }
   private panAtPointer(pointer: Phaser.Input.Pointer): void {
     if (this.dragOrigin && pointer.leftButtonDown()
-      && Math.hypot(pointer.x - this.dragOrigin.x, pointer.y - this.dragOrigin.y) >= 6) this.dragOrigin.dragging = true;
+      && Math.hypot(pointer.x - this.dragOrigin.x, pointer.y - this.dragOrigin.y) >= 6 * this.pixelDensity) this.dragOrigin.dragging = true;
     if (!pointer.middleButtonDown() && !(pointer.leftButtonDown() && this.dragOrigin?.dragging)) return;
     const camera = this.cameras.main;
     camera.setScroll(camera.clampX(camera.scrollX - (pointer.x - pointer.prevPosition.x) / camera.zoom),
@@ -315,7 +315,7 @@ export class BattleScene extends Phaser.Scene {
     for (const [uid, view] of this.enemyViews) if (!enemies.has(uid)) { view.sprite.destroy(); view.shadow.destroy(); this.enemyViews.delete(uid); }
     for (const enemy of sim.enemies) {
       const view = this.enemyView(enemy);
-      view.sprite.setPosition(enemy.x, enemy.y).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed)).setFlipX(enemy.flip).setDepth(enemy.y + 1000);
+      view.sprite.setPosition(enemy.x, enemy.y).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(enemy.y + 1000);
       if (enemy.def.id === 'Rosenspiegel') {
         const casting = sim.bossCharm.phase === 'windup' || sim.bossCharm.phase === 'channel';
         if (casting) view.sprite.setFrame(succubusFrame('dance', 'down', elapsed * 1000)).setFlipX(false);

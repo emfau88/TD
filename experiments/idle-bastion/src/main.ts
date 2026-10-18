@@ -48,6 +48,7 @@ const databaseName = probeSlot && /^[a-z0-9-]{1,60}$/.test(probeSlot) ? `spire-i
 let session: BattleSession | undefined;
 let scene: BattleScene | undefined;
 let game: Phaser.Game | undefined;
+let gameResize: ResizeObserver | undefined;
 let store: BattleSaveStore | undefined;
 let selectedPadId: string | undefined;
 let selectedPanel: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' = 'tower';
@@ -140,7 +141,7 @@ function syncUI(): void {
   const padKey = freePads.map(pad => pad.id).join(',');
   if (padKey !== padListKey) {
     padListKey = padKey;
-    const names: Record<string, string> = { 'tower-02': 'Nordwest', 'tower-03': 'Nordost', 'tower-04': 'Südkurve', 'tower-05': 'Nordweg', 'tower-06': 'Engpass', 'tower-07': 'Südweg', 'tower-08': 'Kernwache' };
+    const names: Record<string, string> = { 'tower-02': 'Nordwest', 'tower-03': 'Nordost', 'tower-04': 'Südkurve', 'tower-05': 'Nordweg', 'tower-06': 'Engpass', 'tower-07': 'Südweg', 'tower-08': 'Kernwache', 'tower-09': 'Nordbogen', 'tower-10': 'Mittelpass', 'tower-11': 'Südbogen' };
     const current = padChoice.value;
     padChoice.replaceChildren(new Option('Bauplatz wählen …', ''), ...sim.layout.towerPads.filter(pad => sim.isPadUnlocked(pad.id)).map(pad => new Option(names[pad.id] ?? 'Startturm', pad.id)));
     padChoice.value = current;
@@ -291,7 +292,7 @@ function syncUI(): void {
     : message.type === 'wave' ? `${mode} · Welle ${message.wave} hat begonnen. Deine Türme greifen automatisch an.`
     : message.type === 'boss-victory' ? message.amount ? 'Rosenspiegel besiegt! +750 Gold einmalige Erstprämie. Meilenstein gespeichert.' : 'Rosenspiegel erneut besiegt. Gewöhnliche Kampfbelohnungen erhalten.'
     : message.type === 'wisp' ? 'Wisp ist da! +10 % Kampf-Gold und die Steinschleuder sind jetzt verfügbar.'
-    : message.type === 'pads' ? `Welle ${message.wave} gemeistert: zwei weitere Bauplätze${message.wave === 10 ? ' und der Scharfschütze' : ''} sind verfügbar.`
+    : message.type === 'pads' ? `Welle ${message.wave} gemeistert: drei weitere Bauplätze${message.wave === 10 ? ' und der Scharfschütze' : ''} sind verfügbar.`
     : message.type === 'build' ? `${message.tower?.def.name} gebaut und einsatzbereit.`
     : message.type === 'upgrade' ? `${message.tower?.def.name} verbessert. Der nächste Schuss nutzt den höheren Schaden.`
     : message.type === 'workshop' ? 'Die Werkstatt arbeitet wieder! Frostfassung ist jetzt erforschbar.'
@@ -348,18 +349,26 @@ function startPlacement(kind: TowerId): void {
   if (!session.battle.isTowerUnlocked(kind)) { if (kind === 3) openContext('wisp'); else { element('combat-message').textContent = 'Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.'; toastUntil = performance.now() + 6000; syncUI(); } return; }
   if (placementType === kind) { placementType = undefined; closeContext(); return; }
   catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
-  const preferred = kind === 1 ? 'tower-03' : 'tower-02';
+  const preferred = kind === 1 ? 'tower-03' : kind === 2 ? 'tower-09' : kind === 3 ? 'tower-10' : 'tower-11';
   const pads = session.battle.layout.towerPads.filter(pad => session!.battle.isPadUnlocked(pad.id) && !session!.battle.towers.some(tower => tower.padId === pad.id));
   if (!pads.length) { placementType = undefined; selectedPadId = 'tower-03'; scene?.setSelected(selectedPadId); openContext('tower'); }
   else scene?.focusPad(pads.find(pad => pad.id === preferred)?.id ?? pads[0].id);
   syncUI();
+}
+async function placeTower(padId: string, kind: TowerId = 1): Promise<boolean> {
+  const live = session;
+  if (!live || live.battle.towers.some(tower => tower.padId === padId)) return false;
+  await perform(battle => battle.build(padId, kind));
+  const built = session === live && !live.error && live.battle.towers.some(tower => tower.padId === padId);
+  if (built) { scene?.focusObject('tower'); placementType = undefined; closeContext(); }
+  return built;
 }
 async function selectPad(padId?: string): Promise<void> {
   selectedPadId = padId; selectedPanel = 'tower'; scene?.setSelected(padId);
   if (!padId) { contextOpen = false; syncUI(); return; }
   const kind = placementType;
   if (kind && session?.battle.canBuild(padId, kind)) {
-    await perform(battle => battle.build(padId, kind));
+    if (await placeTower(padId, kind)) return;
   }
   placementType = undefined;
   contextOpen = true; scene?.focusObject('tower'); syncUI();
@@ -372,6 +381,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
   build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = true;
   element('app-error').hidden = true; element('load-actions').hidden = true; element('error-panel').hidden = true;
   try {
+    gameResize?.disconnect(); gameResize = undefined;
     game?.destroy(true); game = undefined; scene = undefined;
     const previous = session; session = undefined;
     await previous?.close().catch(() => undefined);
@@ -383,6 +393,10 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     if (live.battle.wave > 0) element('combat-message').textContent = 'Gespeicherte Verteidigung geladen. Gold, Türme und laufender Kampf sind wieder da.';
     live.onChange = () => { if (session === live) { scene?.refresh(); syncUI(); } };
     live.onError = error => { if (session === live) { showError(`Die Probe ist angehalten; der letzte bestätigte Stand bleibt erhalten. ${error.message}`, false, true); syncUI(); } };
+    // Render at up to twice CSS resolution on dense displays. Phaser's own
+    // displayScale maps touch coordinates back into the larger canvas.
+    const pixelDensity = Math.min(2, Math.max(1, Math.round(window.devicePixelRatio || 1)));
+    const host = element('game');
     const view = new BattleScene(() => live.battle, {
       advance(seconds) { live.advance(seconds); },
       canRender: () => !live.busy,
@@ -393,13 +407,19 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
       selectWarehouse() { catalogPanel = 'settlement'; openContext('warehouse'); },
       selectWorkshop() { catalogPanel = 'settlement'; openContext('settlement'); },
       ready() { ready = true; drawDockArt(view); view.setSelected(selectedPadId); syncUI(); },
-    });
+    }, pixelDensity);
     scene = view;
     game = new Phaser.Game({
-      type: Phaser.AUTO, parent: 'game', width: live.battle.layout.startBounds.width, height: live.battle.layout.startBounds.height,
+      type: Phaser.AUTO, parent: 'game', width: Math.round(host.clientWidth * pixelDensity), height: Math.round(host.clientHeight * pixelDensity),
       backgroundColor: '#183424', pixelArt: true, roundPixels: true, render: { antialias: false }, audio: { noAudio: true },
-      scene: [view], scale: { mode: Phaser.Scale.RESIZE, autoCenter: Phaser.Scale.CENTER_BOTH },
+      scene: [view], scale: { mode: Phaser.Scale.NONE, zoom: 1 / pixelDensity, autoCenter: Phaser.Scale.CENTER_BOTH },
     });
+    const activeGame = game;
+    gameResize = new ResizeObserver(() => {
+      const width = Math.round(host.clientWidth * pixelDensity), height = Math.round(host.clientHeight * pixelDensity);
+      if (width > 0 && height > 0 && (activeGame.scale.width !== width || activeGame.scale.height !== height)) activeGame.scale.resize(width, height);
+    });
+    gameResize.observe(host);
   } catch (error) {
     session = undefined;
     const message = error instanceof Error ? error.message : String(error);
@@ -422,8 +442,8 @@ async function perform(action: (battle: IdleBattle) => unknown, allowPaused = fa
   syncUI(); await completion;
   scene?.refresh(); syncUI();
 }
-build.addEventListener('click', () => { void perform(battle => selectedPadId && battle.build(selectedPadId)); }, { signal: lifetime.signal });
-buildFrost.addEventListener('click', () => { void perform(battle => selectedPadId && battle.build(selectedPadId, 2)); }, { signal: lifetime.signal });
+build.addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId); }, { signal: lifetime.signal });
+buildFrost.addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId, 2); }, { signal: lifetime.signal });
 buildWarehouse.addEventListener('click', () => { void perform(battle => battle.buildWarehouse()); }, { signal: lifetime.signal });
 buildWorkshop.addEventListener('click', () => { void perform(battle => battle.buildWorkshop()); }, { signal: lifetime.signal });
 researchFrost.addEventListener('click', () => { void perform(battle => battle.researchFrost()); }, { signal: lifetime.signal });
@@ -439,7 +459,7 @@ for (const kind of ['tower', 'settlement'] as const) {
 element('choose-frost').addEventListener('click', () => startPlacement(2), { signal: lifetime.signal });
 for (const [name, kind] of [['cannon', 3], ['sniper', 4]] as const) {
   element(`pick-${name}`).addEventListener('click', () => startPlacement(kind), { signal: lifetime.signal });
-  element(`build-${name}`).addEventListener('click', () => { void perform(battle => selectedPadId && battle.build(selectedPadId, kind)); }, { signal: lifetime.signal });
+  element(`build-${name}`).addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId, kind); }, { signal: lifetime.signal });
 }
 element('pick-wisp').addEventListener('click', () => openContext('wisp'), { signal: lifetime.signal });
 element('challenge-boss').addEventListener('click', () => {

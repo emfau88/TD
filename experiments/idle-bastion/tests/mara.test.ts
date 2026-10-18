@@ -167,7 +167,7 @@ test('old rule snapshots migrate once, preserve money and combat payloads and re
   oldBattle.update(2.75);
   const modern = oldBattle.snapshot();
   const { mara, ...core } = modern;
-  const legacy = { ...core, schemaVersion: 2, rulesVersion: 1 };
+  const legacy = { ...core, schemaVersion: 2, layoutVersion: 1, rulesVersion: 1 };
   const before = structuredClone(legacy), migrated = IdleBattle.restore(legacy)!;
   assert.ok(migrated);
   assert.equal(migrated.snapshot().schemaVersion, 8); assert.equal(BATTLE_RULES_VERSION, 5);

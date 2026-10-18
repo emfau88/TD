@@ -6,9 +6,9 @@
  * B03 adds exact persistence; B04 owns advance/farm attempts and fractional offline credit.
  */
 import { BOSS, freshCharm, isBossWave, type BossCharm } from './boss';
-import { cellCenter, createIdleLayout, isUnlockedCell, type IdleLayout } from './layout';
+import { LAYOUT_VERSION, cellCenter, createIdleLayout, isUnlockedCell, type IdleLayout } from './layout';
 import { getForestBlockedCells } from './forest-world';
-import { MARA, createMara, cloneMara, assignMaraTarget, stepMara, validMara, type MaraState } from './mara';
+import { MARA, createMara, cloneMara, assignMaraTarget, stepMara, validMara, migrateMaraLayout, type MaraState } from './mara';
 import { createProgress, cloneProgress, recordAttempt, validProgress, type ProgressRecord } from './progress';
 
 export const BASE = Object.freeze({
@@ -76,7 +76,7 @@ export interface BattleEvent {
 
 /** Only scalar IDs and fired payloads cross the save boundary. UI events are transient. */
 export interface BattleSnapshot {
-  schemaVersion: 8; rulesVersion: 5; layoutVersion: 1; layoutId: 'start28';
+  schemaVersion: 8; rulesVersion: 5; layoutVersion: 2; layoutId: 'start28';
   bossVictories: number; bossChallengeRequested: boolean; bossCharm: BossCharm;
   progress: ProgressRecord;
   rewardRemainderUnits: number; waveRecipeVersion: 3 | 4 | 5;
@@ -97,6 +97,7 @@ const distance = (a: { x: number; y: number }, b: { x: number; y: number }): num
 const DAMAGE_MULTIPLIERS = Object.freeze([1, 1.75, 2.8, 4.1, 5.7, 7.5]);
 // Immutable layout geometry is shared by restored models; never rerun footpath search per frame.
 const SNAPSHOT_LAYOUT = createIdleLayout();
+const OLD_LAYOUT = createIdleLayout({ version: 1 });
 const SNAPSHOT_LAYOUT_JSON = JSON.stringify(SNAPSHOT_LAYOUT);
 
 /** Level and visual stage deliberately differ: all B02 levels use art stage I.
@@ -177,7 +178,7 @@ export class IdleBattle {
       throw new Error('Unsupported battle layout for snapshot version 8.');
     }
     return {
-      schemaVersion: 8, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: 1, layoutId: 'start28',
+      schemaVersion: 8, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: LAYOUT_VERSION, layoutId: 'start28',
       bossVictories: this.bossVictories, bossChallengeRequested: this.bossChallengeRequested, bossCharm: { ...this.bossCharm },
       progress: cloneProgress(this.progress), rewardRemainderUnits: this.rewardRemainderUnits, waveRecipeVersion: this.waveRecipeVersion,
       goldRemainderUnits: this.goldRemainderUnits, mode: this.mode, highestCleared: this.highestCleared,
@@ -218,7 +219,7 @@ export class IdleBattle {
       // Validate the original rules before migrating. A rule change invalidates
       // old live-clear evidence, never confirmed money or historical absence.
       const legacySchema = value.schemaVersion as 2 | 3;
-      if (!validSnapshot(value, model.layout, model.path, model.pathLength, legacySchema)) return undefined;
+      if (!validSnapshot(value, OLD_LAYOUT, model.path, model.pathLength, legacySchema, 1)) return undefined;
       value = { ...value, schemaVersion: 4, rulesVersion: 3,
         liveClearedWaves: [], farmWave: 1, mara: legacySchema === 3 ? value.mara : cloneMara(model.mara),
         towers: value.towers.map(tower => ({ ...tower, kind: 1 })),
@@ -229,22 +230,30 @@ export class IdleBattle {
           upgradedTower: value.towers.some(tower => tower.level > 1) } };
     }
     if (isRecord(value) && value.schemaVersion === 4 && value.rulesVersion === 3) {
-      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 4)) return undefined;
+      if (!validSnapshot(value, OLD_LAYOUT, model.path, model.pathLength, 4, 1)) return undefined;
       value = { ...value, schemaVersion: 5, progress: createProgress(value.attemptId, value.elapsed) };
     }
     if (isRecord(value) && value.schemaVersion === 5 && value.rulesVersion === 3) {
-      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 5)) return undefined;
+      if (!validSnapshot(value, OLD_LAYOUT, model.path, model.pathLength, 5, 1)) return undefined;
       value = { ...value, schemaVersion: 6, rulesVersion: 4, rewardRemainderUnits: 0,
         waveRecipeVersion: 3, liveClearedWaves: [], farmWave: 1 };
     }
     if (isRecord(value) && value.schemaVersion === 6 && value.rulesVersion === 4) {
-      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 6)) return undefined;
+      if (!validSnapshot(value, OLD_LAYOUT, model.path, model.pathLength, 6, 1)) return undefined;
       value = { ...value, schemaVersion: 7, settlement: { ...value.settlement, warehouseBuilt: false, warehouseBuiltAt: null } };
     }
     if (isRecord(value) && value.schemaVersion === 7 && value.rulesVersion === 4) {
-      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 7)) return undefined;
+      if (!validSnapshot(value, OLD_LAYOUT, model.path, model.pathLength, 7, 1)) return undefined;
       value = { ...value, schemaVersion: 8, rulesVersion: BATTLE_RULES_VERSION,
         bossVictories: 0, bossChallengeRequested: false, bossCharm: freshCharm(), liveClearedWaves: [], farmWave: 1 };
+    }
+    if (isRecord(value) && value.layoutVersion === 1) {
+      if (!validSnapshot(value, OLD_LAYOUT, model.path, model.pathLength, 0, 1)) return undefined;
+      const targets = value.towers.map(tower => ({ ...tower,
+        ...cellCenter(model.layout, model.layout.towerPads.find(pad => pad.id === tower.padId)!.cell) }));
+      const mara = migrateMaraLayout(value.mara, targets, model.layout, getForestBlockedCells(model.layout));
+      if (!mara) return undefined;
+      value = { ...value, layoutVersion: LAYOUT_VERSION, mara };
     }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength)) return undefined;
     model.bossVictories = value.bossVictories; model.bossChallengeRequested = value.bossChallengeRequested; model.bossCharm = { ...value.bossCharm };
@@ -689,10 +698,10 @@ const near = (left: number, right: number): boolean => Math.abs(left - right) <=
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 = 0,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 = 0, layoutVersion: 1 | 2 = LAYOUT_VERSION,
 ): value is BattleSnapshot {
   if (!isRecord(value) || value.schemaVersion !== (legacy || 8) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy ? 4 : BATTLE_RULES_VERSION)
-    || value.layoutVersion !== 1 || value.layoutId !== 'start28') return false;
+    || value.layoutVersion !== layoutVersion || value.layoutId !== 'start28') return false;
   if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy ? [3, 4] : [3, 4, 5]).includes(value.waveRecipeVersion as number))) return false;
   const original = legacy === 2 || legacy === 3;
   if (!original) {
@@ -740,7 +749,7 @@ function validSnapshot(
   if ((value.phase === 'defeat') !== (value.lives === 0)) return false;
   if ((value.phase === 'wave' || value.phase === 'defeat') && value.wave === 0) return false;
   if (value.phase !== 'intermission' && value.intermissionRemaining !== 0) return false;
-  if (!Array.isArray(value.towers) || value.towers.length < 1 || value.towers.length > (legacy && legacy < 6 ? 4 : 8)
+  if (!Array.isArray(value.towers) || value.towers.length < 1 || value.towers.length > (legacy && legacy < 6 ? 4 : layoutVersion === 1 ? 8 : 11)
     || !Array.isArray(value.enemies) || value.enemies.length > BASE.waves.maxCount
     || !Array.isArray(value.shots) || value.shots.length > 1024
     || !Array.isArray(value.queue) || value.queue.length > BASE.waves.maxCount) return false;

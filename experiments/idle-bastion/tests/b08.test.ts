@@ -17,11 +17,11 @@ test('Wisp and pads unlock at permanent milestones, with no gift or repeated pay
   assert.equal(b.wispUnlocked, false); assert.equal(b.build('tower-05', 3), undefined);
   b.highestCleared = 5;
   assert.equal(b.wispUnlocked, true); assert.equal(b.gold, before);
-  assert.equal(b.layout.towerPads.filter(p => b.isPadUnlocked(p.id)).length, 6);
+  assert.equal(b.layout.towerPads.filter(p => b.isPadUnlocked(p.id)).length, 8);
   assert.equal(b.build('tower-05', 3)?.def, CANNON);
   assert.equal(b.isTowerUnlocked(4), false);
   b.highestCleared = 10;
-  assert.equal(b.layout.towerPads.filter(p => b.isPadUnlocked(p.id)).length, 8);
+  assert.equal(b.layout.towerPads.filter(p => b.isPadUnlocked(p.id)).length, 11);
   assert.equal(b.build('tower-08', 4)?.def, SNIPER);
   assert.deepEqual(IdleBattle.restore(b.snapshot())!.snapshot(), b.snapshot());
   const bad = b.snapshot(); bad.highestCleared = 4;
@@ -60,7 +60,7 @@ test('schema five midwave migration preserves combat and historical money, witho
   const b = new IdleBattle(); b.build('tower-02'); until(b, () => b.shots.length > 0);
   const modern = b.snapshot();
   const { rewardRemainderUnits, waveRecipeVersion, ...old } = modern;
-  const migrated = IdleBattle.restore({ ...old, schemaVersion: 5, rulesVersion: 3 })!;
+  const migrated = IdleBattle.restore({ ...old, schemaVersion: 5, layoutVersion: 1, rulesVersion: 3 })!;
   assert.ok(migrated); assert.equal(migrated.waveRecipeVersion, 3);
   assert.deepEqual(migrated.snapshot().shots, modern.shots); assert.deepEqual(migrated.snapshot().queue, modern.queue);
   assert.deepEqual(migrated.progress, b.progress); assert.equal(migrated.gold, b.gold);

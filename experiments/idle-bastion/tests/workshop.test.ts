@@ -69,7 +69,7 @@ test('schema three preserves Mara and gold while migrating to damaged workshop a
   const battle = new IdleBattle(); battle.build('tower-02'); battle.assignMara(battle.towers[1].uid); battle.update(1.2);
   const modern = battle.snapshot();
   const { settlement, tutorial, ...old } = modern;
-  const legacy = { ...old, schemaVersion: 3, rulesVersion: 2,
+  const legacy = { ...old, schemaVersion: 3, layoutVersion: 1, rulesVersion: 2,
     towers: old.towers.map(({kind, ...tower}) => tower),
     enemies: old.enemies.map(({slowRemaining, ...enemy}) => enemy),
     shots: old.shots.map(({kind, ...shot}) => shot) };

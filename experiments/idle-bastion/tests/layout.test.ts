@@ -21,11 +21,11 @@ test('start fixture has unique reservations, correct budget and an in-bounds roa
     const previous = layout.road.cells[i - 1], current = layout.road.cells[i];
     assert.equal(Math.abs(current.x - previous.x) + Math.abs(current.y - previous.y), 1);
   }
-  assert.equal(layout.towerPads.length, 10);
-  assert.equal(layout.towerPads.filter(pad => pad.cell.x < 28).length, 8);
-  assert.equal(layout.towerPads.filter(pad => pad.availability === 'initial').length, 4);
+  assert.equal(layout.towerPads.length, 13);
+  assert.equal(layout.towerPads.filter(pad => pad.cell.x < 28).length, 11);
+  assert.equal(layout.towerPads.filter(pad => pad.availability === 'initial').length, 5);
   assert.equal(layout.towerPads.filter(pad => pad.isStarter).length, 1);
-  assert.equal(new Set(layout.towerPads.map(pad => key(pad.cell))).size, 10);
+  assert.equal(new Set(layout.towerPads.map(pad => key(pad.cell))).size, 13);
   const road = new Set(layout.road.cells.map(key));
   for (const plot of layout.plots) {
     for (const position of cellsInRect(plot.footprint)) {

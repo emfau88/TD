@@ -39,7 +39,7 @@ Prioritäten: verständlicher Einstieg → korrekte Wirtschaft und Speicherung �
 | --- | --- |
 | Welt | Eigene Waldkarte, 40er Zellen; Startbereich 28×16, eine östliche Erweiterung um bis zu 8 Spalten, insgesamt höchstens 36×16 im Slice |
 | Kamera | Vorwiegend horizontales Verschieben; am Desktop alle Einstiegsziele gemeinsam sichtbar. Hochkant lesbarer Ausschnitt, Übersicht und direkter Kamerafokus über Bau-/Figurenkarten |
-| Turmplätze | 10 fest gestaltete Plätze insgesamt: 8 im Startbereich, 2 in der Erweiterung. Zunächst 4 verfügbar, davon einer mit geschütztem Startturm belegt; je 2 weitere bei Welle 5 und 10 |
+| Turmplätze | 13 fest gestaltete Plätze insgesamt: 11 im Startbereich, 2 in der Erweiterung. Zunächst 5 verfügbar, davon einer mit geschütztem Startturm belegt; je 3 weitere bei Welle 5 und 10. Drei ergänzte Plätze verbinden die Schussbereiche bestehender Türme |
 | Türme | Waldwächter (Allrounder), Frostkristall (Verlangsamung), Steinschleuder (Fläche), Scharfschütze (Rüstung) |
 | Turmlevel | Ziel der ersten 15 Minuten: Level 1–10; anschließend normale Schadensupgrades bis Level 20. Zahlenlevel getrennt von 3 vorhandenen Grafikstufen. Keine automatische Ausgabe von Gold für Upgrades |
 | Gebäude | Werkstatt I, eine sichtbare Verbesserung zur Werkstatt II, Vorratslager I; feste Grundstücke, kurze Bauanimation, kein Ressourcen-Bauzeitspiel |

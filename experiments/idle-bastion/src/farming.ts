@@ -1,6 +1,7 @@
 /** Conservative, bounded, Phaser-free proofs. A probe never mutates the live
  * model, issues its rewards or consumes its renderer/tutorial event stream.
  */
+import { LAYOUT_VERSION } from './layout';
 import { createProgress } from './progress';
 import { getForestBlockedCells } from './forest-world';
 import { BASE, BATTLE_RULES_VERSION, IdleBattle, isNormalFarmWave, stats, towerDefinition } from './battle';
@@ -28,7 +29,7 @@ const MAX_PROBE_REWARD = 2.2 * (BASE.waves.maxCount * Math.max(...Object.values(
  */
 export function defenseFingerprint(battle: IdleBattle): string {
   return JSON.stringify({
-    rulesVersion: BATTLE_RULES_VERSION, layoutVersion: 1, layout: battle.layout,
+    rulesVersion: BATTLE_RULES_VERSION, layoutVersion: LAYOUT_VERSION, layout: battle.layout,
     blocked: getForestBlockedCells(battle.layout), maraTarget: battle.mara.targetTowerUid, settlement: { workshopBuilt: battle.settlement.workshopBuilt, frostResearched: battle.settlement.frostResearched, builtAt: battle.settlement.builtAt }, wisp: battle.wispUnlocked,
     towers: battle.towers.map(tower => ({ padId: tower.padId, definition: tower.def.id, level: tower.level, protected: tower.protected }))
       .sort((left, right) => left.padId.localeCompare(right.padId)),

@@ -48,7 +48,7 @@ function fixture(): IdleBattle {
 function preMaraSnapshot(battle: IdleBattle, schemaVersion: 1 | 2): Record<string, unknown> {
   return {
     ...Object.fromEntries(Object.entries(battle.snapshot()).filter(([key]) => key !== 'mara')),
-    schemaVersion, rulesVersion: 1,
+    schemaVersion, layoutVersion: 1, rulesVersion: 1,
   };
 }
 

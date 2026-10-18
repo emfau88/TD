@@ -12,12 +12,23 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08, B09 und B10 ausdrücklich beauftragt; Maras Fernzauber und Werkstattschilder bleiben vorgemerkt |
-| Aktives Umsetzungspaket | Keines · B10 abgeschlossen und veröffentlicht |
-| Nächster Schritt | B11 · wachsende, scrollbare Lichtung; noch nicht beauftragt |
+| Aktives Umsetzungspaket | Nachbesserung nach B10 · Bedienung, Schärfe und Turmkombinationen |
+| Nächster Schritt | Nachbesserung prüfen und veröffentlichen; B11 bleibt anschließend offen |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
 Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. G1 ist freigegeben. Aktueller Auftrag „Go b10“ umfasst B10; B11 und folgende bleiben separat. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+
+## Nachbesserung nach B10 — Baukomfort, Schärfe und Turmkombinationen
+
+Am 18.10.2026 ausdrücklich beauftragt: rückwärts laufende Skorpione korrigieren, nach Turmbau zur Karte zurückkehren, mobile Unschärfe verbessern und dichter kombinierbare Bauplätze ergänzen. Die drei zusätzlichen Plätze ändern die ursprüngliche Anzahl auf elf im Startgebiet; die spätere östliche Erweiterung bleibt B11.
+
+- [x] Skorpion-Seitengrafik passend zur Bewegungsrichtung spiegeln; vertikale Ansichten erhalten.
+- [x] Nach bestätigtem Bau alle Turmtypen aus Platzierung/Verwaltung entlassen; erneutes Antippen öffnet die Verwaltung.
+- [x] Auf dichten Displays höhere interne Zeichenauflösung und lesbarere Spielfeldtexte, bei unverändert kompaktem mobilem HUD/Dock.
+- [x] Drei Plätze mit nachgewiesenen gemeinsamen Schussfenstern ergänzen; bisherige Türme und Gegnerroute erhalten.
+- [x] Layoutmigration einschließlich Maras Laufweg und alter Offline-Ansprüche prüfen.
+- [ ] Abschließende Browseraufnahme, Commit, Push und öffentliche Testfassung bestätigen.
 
 ## Premium-Überarbeitung nach der mobilen Nachbesserung
 

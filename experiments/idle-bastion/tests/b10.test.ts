@@ -82,7 +82,7 @@ test('boss escaping forces farming without a first victory; retry is explicit an
 test('old wave-15 record is never a boss victory; an explicit repeat pays no second first reward', () => {
   const b = opening.b, modern=b.snapshot();
   const {bossVictories,bossCharm,bossChallengeRequested,...old}=modern;
-  const migrated=IdleBattle.restore({...old,schemaVersion:7,rulesVersion:4,waveRecipeVersion:4})!;
+  const migrated=IdleBattle.restore({...old,schemaVersion:7,layoutVersion:1,rulesVersion:4,waveRecipeVersion:4})!;
   assert.ok(migrated);assert.equal(migrated.highestCleared,b.highestCleared);assert.equal(migrated.bossVictories,0);
   assert.deepEqual(migrated.liveClearedWaves,[]);
   assert.equal(migrated.requestBossChallenge(),true);

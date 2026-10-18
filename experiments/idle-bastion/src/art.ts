@@ -71,6 +71,10 @@ export function enemyFrame(kind: 'Leafbug' | 'Firebug' | 'Scorpion' | 'Rosenspie
   const frames = kind === 'Leafbug' ? LEAF_FRAMES : FIRE_FRAMES;
   return frames[logicalStart + Math.floor(Math.max(0, elapsed) * 10) % 8];
 }
+/** Scorpion's side frames face left; the other sheets face right. */
+export function enemyFlip(kind: string, direction: EnemyDirection, movingLeft: boolean): boolean {
+  return direction === 'side' && (kind === 'Scorpion' ? !movingLeft : movingLeft);
+}
 export function maraFrame(direction: MaraDirection, moving: boolean, acting: boolean, elapsed: number): number {
   const row = ['down', 'left', 'right', 'up'].indexOf(direction) * 4;
   return row + (acting ? 3 : moving ? 1 + Math.floor(Math.max(0, elapsed) * 6) % 2 : 0);
