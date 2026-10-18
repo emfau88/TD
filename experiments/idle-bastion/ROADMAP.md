@@ -11,13 +11,28 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; Maras Fernzauber und Werkstattschilder bleiben vorgemerkt |
-| Aktives Umsetzungspaket | Keines · B12 umgesetzt und veröffentlicht; Kurvenabstimmung folgt in B13 |
-| Nächster Schritt | B12 über den Playlink testen lassen; B13/B14 bleiben offen |
+| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung |
+| Aktives Umsetzungspaket | B12a · Bauflächen, Begleiter und Kampfdarstellung · abschließende Prüfung/Veröffentlichung |
+| Nächster Schritt | B12a veröffentlichen und testen lassen; B13-Balance erst auf dieser Grundlage |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
 Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. G1 ist freigegeben. B11 ist am 18.10.2026 ausdrücklich mit kompakten Tests und Commit/Push/Pages beauftragt. B12 wurde anschließend ausdrücklich mit denselben Vorgaben beauftragt. B13/B14 bleiben separat. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+
+## B12a — Freie Verteidigung und verständliche Begleiter
+
+Am 18.10.2026 ausdrücklich beauftragt: beidseits des Gegnerwegs bis zu drei Felder tief bauen, Maras Fernzauber mit sinnvoller Automatik, Wisps Ankunft, optionale östliche Lichtung, eigene Gebäudepositionen und Bauanimationen, Frostatlas korrigieren und Projektile verbessern. B13/B14 bleiben separat.
+
+- [x] Freie geeignete Rasterfelder ab Beginn, Hindernisse und Weg schützen; bestehende Türme erhalten.
+- [x] Tatsächliche Reichweite/Vorschau, ausdrückliche Bestätigung, Rückkehr zur Karte und kompakte mobile Bedienung.
+- [x] Mara unabhängig bewegen, Fernziel wählen, Auto/Manuell, Gegnerprüfung, Buffdauer und Cooldown sichtbar.
+- [x] Wisp mit kurzer Ankunft und einmalig gespeicherter Begrüßung.
+- [x] Gebäudepositionen in der Siedlung, Versetzen bei Pause; Werkbank statt halbfertiger Werkstatt, sichtbare Baufolge.
+- [x] Lichtung optional; Werkstatt II davon entkoppelt. Späterer Herausforderungszugang vorgemerkt, kein vorgetäuschter Dungeon.
+- [x] Frost-Einzelframes und Originalprojektil-/Treffervarianten aller Grafikstufen; kosmetische Effekte begrenzen.
+- [x] Alte Spielstände und Offline-Belege erhalten; 54 gezielte Modell-/Speichertests und Produktionsbuild bestanden.
+- [x] Desktop-/Hochkantprüfung abgeschlossen; [Nachweis und Spielaufnahmen](../../artifacts/idle-bastion/acceptance/p4/REDESIGN.md).
+- [ ] Commit/Push/Pages bestätigen.
 
 ## Ergänzung nach B10 — Rosenspiegels Tanzdarstellung
 
@@ -109,9 +124,9 @@ Am 17.10.2026 zusätzlich vor B08 beauftragt, einschließlich Commit, Push und b
 - [x] Screenshots und kurze Prüfnotizen ablegen, README-Galerie erweitern.
 - [x] Committen, pushen und Testfassung veröffentlichen; öffentliche Oberfläche bestätigen.
 
-## Vorgemerkte UX-Ergänzungen — noch nicht zur Umsetzung freigegeben
+## Historische UX-Vormerkungen — inzwischen durch B12a beauftragt
 
-Am 17.10.2026 zusätzlich besprochen und auf Nutzerwunsch vorgemerkt. Diese Punkte erweitern B07a nicht und umgehen weder G1 noch eine spätere ausdrückliche Beauftragung. Priorität: zuerst Orientierung und verständliche Handlungen, danach Änderung des Figurenverhaltens. Die folgenden Kästchen sind offene Arbeit, keine zugesagte Umsetzung im laufenden Auftrag.
+Am 17.10.2026 zusätzlich besprochen und auf Nutzerwunsch vorgemerkt. Diese Punkte erweitern B07a nicht und umgehen weder G1 noch eine spätere ausdrückliche Beauftragung. Priorität: zuerst Orientierung und verständliche Handlungen, danach Änderung des Figurenverhaltens. Die folgende historische Liste wird durch das beauftragte Paket B12a oben konkretisiert; dessen Checkliste führt den aktuellen Stand.
 
 - [ ] **Werkstatt verständlich machen:** Zustand, nächste mögliche Handlung, Goldpreis und Nutzen bereits am Gebäude bzw. an seiner Karte vermitteln. Vor Reparatur „Werkstatt reparieren · 400 Gold“, danach Frostforschung mit Preis/Voraussetzung. Kein erneutes dauerhaftes Bauplatzschild unter einem fertigen Gebäude.
 - [ ] **Mara: Ziel und Standort trennen:** Fernunterstützung eines bewusst gewählten Turms als mögliche Neugestaltung prüfen. Automatische Aktivierung bevorzugen; kein obligatorisches regelmäßiges Spell-Klicken. Reichweite, Zielwechsel, Abklingzeit, Farmnachweis und Save-Verhalten vor Umsetzung festlegen.

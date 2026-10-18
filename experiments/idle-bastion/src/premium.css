@@ -292,3 +292,22 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
   .region-navigation { left:8px; bottom:calc(var(--dock) + 60px); gap:4px; }
   .region-navigation button { font-size:11px; padding:6px 9px; min-height:34px; }
 }
+
+/* Construction stays in the world; only one compact confirmation strip is shown. */
+#placement-pads { display: none; }
+#placement-help { max-width: min(620px, calc(100vw - 24px)); flex-wrap: wrap; }
+#confirm-placement { white-space: nowrap; }
+.wisp-arrival { position: fixed; z-index: 18; left: 16px; bottom: 184px; max-width: 440px; display: flex; gap: 12px; padding: 14px; color: #f6e6c4; background: #30291fee; border: 2px solid #bc975d; box-shadow: 0 5px 18px #0008; border-radius: 5px; }
+.wisp-arrival[hidden] { display: none; }
+.wisp-arrival canvas { width: 48px; height: 60px; flex: 0 0 auto; image-rendering: pixelated; }
+.wisp-arrival strong { color: #f7d98b; }
+.wisp-arrival p { margin: 6px 0 10px; line-height: 1.4; }
+.new-companion::after { content: 'Neu'; position: absolute; right: 3px; top: 3px; padding: 2px 4px; border-radius: 3px; background: #edc77a; color: #282117; font-size: 10px; }
+.companion-card { position: relative; }
+#mara-cooldown { display: block; width: 100%; height: 4px; margin-top: 3px; accent-color: #edc77a; }
+@media (max-width: 700px) {
+  .wisp-arrival { left: 8px; right: 8px; bottom: 104px; max-width: none; padding: 9px; gap: 8px; font-size: 12px; }
+  .wisp-arrival p { margin: 4px 0 6px; }
+  .wisp-arrival canvas { width: 36px; height: 45px; }
+  #placement-help { left: 8px; right: 8px; max-width: none; font-size: 12px; }
+}

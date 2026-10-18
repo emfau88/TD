@@ -21,20 +21,20 @@ export function currentGoal(battle: IdleBattle): Goal {
       const cost = tower ? upgradeCost(tower) : 60;
       return { title: 'Dein erstes Turmupgrade', detail: `${need(cost)} · mehr Schaden`, cost, action: 'upgrade', label: 'Turm auswählen' };
     }
-    case 3: return { title: 'Die Werkstatt wieder aufbauen', detail: `${need(SETTLEMENT.workshopCost)} · eröffnet Forschung`, cost: SETTLEMENT.workshopCost, action: 'workshop', label: 'Werkstatt ansehen' };
+    case 3: return { title: 'Die Werkstatt bauen', detail: `${need(SETTLEMENT.workshopCost)} · eröffnet Forschung`, cost: SETTLEMENT.workshopCost, action: 'workshop', label: 'Werkstatt ansehen' };
     case 4: return { title: 'Frostfassung erforschen', detail: `${need(SETTLEMENT.researchCost)} · Frostturm & Level 4–6`, cost: SETTLEMENT.researchCost, action: 'workshop', label: 'Forschung ansehen' };
     case 5: return { title: 'Frost und Pfeile kombinieren', detail: `${need(FROST.cost)} · Frostkristall platzieren`, cost: FROST.cost, action: 'frost', label: 'Frostkristall auswählen' };
     case 6: return { title: 'Die Frosttechnik wirkt', detail: 'Ersten Frosttreffer beobachten · Gegner werden langsamer', action: 'progress', label: 'Fortschritt ansehen' };
-    case 7: return { title: 'Wisp für die Werkstatt gewinnen', detail: 'Welle 5 meistern · +10 % Gold & drei Bauplätze', action: 'upgrade', label: 'Verteidigung verbessern' };
+    case 7: return { title: 'Wisp für die Werkstatt gewinnen', detail: 'Welle 5 meistern · +10 % Gold', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 8: return { title: 'Käfergruppen gemeinsam treffen', detail: `${need(135)} · Steinschleuder neben Frost`, cost: 135, action: 'cannon', label: 'Steinschleuder auswählen' };
     case 12: return { title: 'Vorräte für deine Rückkehr', detail: `${need(SETTLEMENT.warehouseCost)} · 65 % Ertrag für 8 Stunden`, cost: SETTLEMENT.warehouseCost, action: 'warehouse', label: 'Vorratslager ansehen' };
     case 13: return { title: 'Den Weg bis Welle 8 sichern', detail: 'Vorratslager freischalten · längere Offline-Erträge', action: 'upgrade', label: 'Verteidigung verbessern' };
-    case 9: return { title: 'Den Weg bis Welle 10 sichern', detail: 'Scharfschütze & drei weitere Bauplätze freischalten', action: 'upgrade', label: 'Verteidigung verbessern' };
+    case 9: return { title: 'Den Weg bis Welle 10 sichern', detail: 'Scharfschütze freischalten', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 10: return { title: 'Für Rüstung gewappnet', detail: `${need(170)} · Scharfschütze durchdringt Panzer`, cost: 170, action: 'sniper', label: 'Scharfschütze auswählen' };
     case 14: return battle.highestCleared >= 14
       ? { title: 'Rosenspiegel stellt sich dir', detail: 'Welle 15 · 750 Gold Erstprämie · Frost unterbricht', action: 'boss', label: 'Bossherausforderung ansehen' }
       : { title: 'Bereite dich auf Rosenspiegel vor', detail: 'Boss in Welle 15 · Frost, Fläche und Durchdringung', action: 'upgrade', label: 'Verteidigung verbessern' };
-    case 15: return { title: 'Die östliche Lichtung öffnen', detail: `${need(SETTLEMENT.clearingCost)} · zwei neue Bauplätze`, cost: SETTLEMENT.clearingCost, action: 'clearing', label: 'Lichtung öffnen' };
+    case 15: return { title: 'Die östliche Lichtung öffnen', detail: `${need(SETTLEMENT.clearingCost)} · optionale Erweiterung`, cost: SETTLEMENT.clearingCost, action: 'clearing', label: 'Lichtung öffnen' };
     case 16: return { title: 'Werkstatt II ausbauen', detail: `${need(SETTLEMENT.workshopUpgradeCost)} · Turmlevel 7–20`, cost: SETTLEMENT.workshopUpgradeCost, action: 'workshop', label: 'Werkstatt ausbauen' };
     case 17: if (battle.highestCleared >= 24 && !battle.bossActive && battle.mode !== 'farm') return { title: 'Rosenspiegels Rückkehr', detail: 'Welle 25 · 1.200 Gold Erstprämie', action: 'boss', label: 'Bossherausforderung ansehen' };
     default: {
@@ -93,8 +93,7 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       el('journal-wisp-order').textContent = b.wispUnlocked ? `Auftrag: ${b.settlement.warehouseBuilt ? 'Werkstatt und Lager' : 'Werkstatt'} versorgen · +10 % Kampf-Gold. Bereits in Live-Ertrag und Farmbasis enthalten.` : 'Kommt kostenlos nach Frostfassung und gemeisterter Welle 5.';
       const target = b.towers.find(t => t.uid === b.mara.targetTowerUid);
       const assignment = target ? padNames[target.padId] ?? target.def.name : 'Startturm';
-      el('mara-brief').textContent = b.mara.path.length ? `Unterwegs · ${assignment}` : `Unterstützt ${assignment}`;
-      el('journal-mara-order').textContent = b.mara.path.length ? `Unterwegs zur Unterstützung: ${assignment}` : `Auftrag: ${assignment} unterstützen`;
+      el('journal-mara-order').textContent = b.mara.path.length ? `Standortwechsel · Zauberziel: ${assignment}` : `Fernzauberziel: ${assignment} · ${b.mara.autoCast ? 'Automatik' : 'Manuell'}`;
       const nextBoss = b.nextBossWave, encounter = bossEncounter(nextBoss), wins = b.bossWins(nextBoss);
       el('journal-boss-title').textContent = `${encounter.title} · Welle ${nextBoss}`;
       el('journal-boss-status').textContent = `Welle 15: ${b.bossVictories} Siege · Welle 25: ${b.secondBossVictories} Siege. ` + (wins ? 'Erstprämie erhalten.'

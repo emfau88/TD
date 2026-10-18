@@ -1,3 +1,4 @@
+import { preloadTowerSheets, towerSheet } from './tower-atlas';
 /** Only the original PNGs needed by B05 are bundled. Source measurements and
  * frame maps come from public/assets/manifest.json and reference/STYLE_GUIDE.md.
  * These helpers never import classic simulation rules or start an animation clock.
@@ -101,6 +102,7 @@ export function maraDestination(index: number) {
   };
 }
 export function preloadArt(scene: Phaser.Scene): void {
+  preloadTowerSheets(scene);
   scene.load.image(KEYS.grass, ART.grass);
   scene.load.image(KEYS.water, ART.water);
   scene.load.image(KEYS.maraSource, ART.maraSource);
@@ -108,7 +110,7 @@ export function preloadArt(scene: Phaser.Scene): void {
   scene.load.image(KEYS.warehouse, ART.warehouse);
   scene.load.image(KEYS.workshopDamaged, ART.workshopDamaged);
   for (const [key, url, width, height] of [
-    [KEYS.weapon3, ART.weapon3, 96, 96], [KEYS.frostWeapon3, ART.frostWeapon3, 128, 128], [KEYS.cannonWeapon3, ART.cannonWeapon3, 96, 96], [KEYS.sniperWeapon3, ART.sniperWeapon3, 128, 128], [KEYS.bossDance, ART.bossDance, 128, 128], [KEYS.boss, ART.boss, 64, 64], [KEYS.wisp, ART.wisp, 64, 64], [KEYS.scorpion, ART.scorpion, 64, 64],
+    [KEYS.weapon3, ART.weapon3, 96, 96], [KEYS.frostWeapon3, ART.frostWeapon3, 64, 64], [KEYS.cannonWeapon3, ART.cannonWeapon3, 96, 96], [KEYS.sniperWeapon3, ART.sniperWeapon3, 128, 128], [KEYS.bossDance, ART.bossDance, 128, 128], [KEYS.boss, ART.boss, 64, 64], [KEYS.wisp, ART.wisp, 64, 64], [KEYS.scorpion, ART.scorpion, 64, 64],
     [KEYS.cannonTower, ART.cannonTower, 64, 128], [KEYS.cannonWeapon, ART.cannonWeapon, 96, 96], [KEYS.cannonWeapon2, ART.cannonWeapon2, 96, 96], [KEYS.cannonProjectile, ART.cannonProjectile, 10, 10],
     [KEYS.sniperTower, ART.sniperTower, 64, 128], [KEYS.sniperWeapon, ART.sniperWeapon, 128, 128], [KEYS.sniperWeapon2, ART.sniperWeapon2, 128, 128], [KEYS.sniperProjectile, ART.sniperProjectile, 8, 8],
     [KEYS.tower, ART.tower, 64, 128], [KEYS.weapon, ART.weapon, 96, 96],
@@ -117,7 +119,7 @@ export function preloadArt(scene: Phaser.Scene): void {
     [KEYS.core, ART.core, 64, 192], [KEYS.coreWeapon, ART.coreWeapon, 64, 64],
     [KEYS.weapon2, ART.weapon2, 96, 96],
     [KEYS.frostTower, ART.frostTower, 64, 192],
-    [KEYS.frostWeapon, ART.frostWeapon, 96, 96], [KEYS.frostWeapon2, ART.frostWeapon2, 128, 128],
+    [KEYS.frostWeapon, ART.frostWeapon, 48, 48], [KEYS.frostWeapon2, ART.frostWeapon2, 64, 64],
     [KEYS.frostProjectile, ART.frostProjectile, 32, 32],
   ] as const) scene.load.spritesheet(key, url, { frameWidth: width, frameHeight: height });
 }
@@ -145,8 +147,8 @@ export function prepareArt(scene: Phaser.Scene): void {
 
 
 export function towerArt(kind: number, stage = 1) {
-  return kind === 4 ? { base: KEYS.sniperTower, weapons: [KEYS.sniperWeapon, KEYS.sniperWeapon2, KEYS.sniperWeapon3], projectile: KEYS.sniperProjectile, frames: 17, shotFrames: 6 }
-    : kind === 3 ? { base: KEYS.cannonTower, weapons: [KEYS.cannonWeapon, KEYS.cannonWeapon2, KEYS.cannonWeapon3], projectile: KEYS.cannonProjectile, frames: 8, shotFrames: 6 }
-    : kind === 2 ? { base: KEYS.frostTower, weapons: [KEYS.frostWeapon, KEYS.frostWeapon2, KEYS.frostWeapon3], projectile: KEYS.frostProjectile, frames: stage === 3 ? 10 : 6, shotFrames: 3 }
-    : { base: KEYS.tower, weapons: [KEYS.weapon, KEYS.weapon2, KEYS.weapon3], projectile: KEYS.projectile, frames: 6, shotFrames: 3 };
+  const shot = towerSheet(kind, stage, 'Projectile');
+  return { base: kind === 4 ? KEYS.sniperTower : kind === 3 ? KEYS.cannonTower : kind === 2 ? KEYS.frostTower : KEYS.tower,
+    weapons: [1, 2, 3].map(s => towerSheet(kind, s, 'Weapon').key),
+    projectile: shot.key, frames: towerSheet(kind, stage, 'Weapon').frameMap.length, shotFrames: shot.frameMap.length };
 }

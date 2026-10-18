@@ -1,3 +1,5 @@
+import { MARA } from './mara';
+import type { GridCell } from './layout';
 import Phaser from 'phaser';
 import { bossEncounter } from './boss';
 import './battle.css';
@@ -56,6 +58,8 @@ let selectedPanel: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'cle
 let catalogPanel: 'tower' | 'settlement' = 'tower';
 let contextOpen = false;
 let placementType: TowerId | undefined;
+let groundMode: 'mara' | 'workshop' | 'warehouse' | undefined;
+let groundCandidate: GridCell | undefined;
 let toastUntil = 0;
 let padListKey = '';
 let mobileHintOpen = false;
@@ -110,7 +114,7 @@ function syncUI(): void {
   const sim = live.battle;
   element('tower-panel').hidden = selectedPanel !== 'tower';
   element('clearing-panel').hidden = selectedPanel !== 'clearing';
-  element('region-navigation').hidden = !sim.clearing.unlocked || contextOpen || Boolean(placementType) || live.awaitingResume;
+  element('region-navigation').hidden = !sim.clearing.unlocked || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
   element('warehouse-panel').hidden = selectedPanel !== 'warehouse';
   element('settlement-panel').hidden = selectedPanel !== 'settlement';
   element('wisp-panel').hidden = selectedPanel !== 'wisp';
@@ -127,8 +131,20 @@ function syncUI(): void {
     element(`${kind}-tab`).setAttribute('aria-selected', String(catalogPanel === kind));
     element(`${kind}-tab`).tabIndex = catalogPanel === kind ? 0 : -1;
   }
-  element('placement-help').hidden = !placementType || live.awaitingResume;
-  element('placement-text').textContent = `${towerDefinition(placementType ?? 1).name} · hellen Bauplatz wählen`;
+  const blocked = unavailable || view.paused || sim.phase === 'defeat';
+  view?.setPlacement(placementType, groundMode, groundCandidate);
+  element('placement-help').hidden = !(placementType || groundMode) || live.awaitingResume;
+  element('placement-text').textContent = groundMode === 'mara' ? 'Mara · begehbares Ziel antippen'
+    : groundMode ? `${groundMode === 'workshop' ? 'Werkstatt' : 'Lager'} · Position in der Siedlungsfläche wählen`
+    : `${towerDefinition(placementType ?? 1).name} · Feld am Weg wählen, Reichweite prüfen und bestätigen`;
+  const confirm = element<HTMLButtonElement>('confirm-placement');
+  confirm.hidden = !groundMode && !(placementType && selectedPadId);
+  if (groundMode === 'mara') confirm.hidden = true;
+  const groundBuilt = groundMode === 'workshop' ? sim.settlement.workshopBuilt : sim.settlement.warehouseBuilt;
+  confirm.textContent = groundMode ? groundBuilt ? 'Hier versetzen' : `Hier bauen · ${groundMode === 'workshop' ? SETTLEMENT.workshopCost : SETTLEMENT.warehouseCost} Gold` : `Hier bauen · ${towerDefinition(placementType ?? 1).cost} Gold`;
+  confirm.disabled = unavailable || sim.phase === 'defeat' || (!groundMode && live.paused) || (groundMode ? !groundCandidate || !sim.canPositionBuilding(groundMode === 'warehouse' ? 'warehouse' : 'workshop', groundCandidate)
+    || (groundBuilt ? !live.paused : sim.gold < (groundMode === 'workshop' ? SETTLEMENT.workshopCost : SETTLEMENT.warehouseCost))
+    : !selectedPadId || !sim.canBuild(selectedPadId, placementType));
   element('pick-archer').setAttribute('aria-pressed', String(placementType === 1));
   element('pick-frost').setAttribute('aria-pressed', String(placementType === 2));
   element('pick-frost').classList.toggle('locked', !sim.settlement.frostResearched);
@@ -147,12 +163,9 @@ function syncUI(): void {
     padListKey = padKey;
     const names: Record<string, string> = { 'tower-02': 'Nordwest', 'tower-03': 'Nordost', 'tower-04': 'Südkurve', 'tower-05': 'Nordweg', 'tower-06': 'Engpass', 'tower-07': 'Südweg', 'tower-08': 'Kernwache', 'tower-09': 'Nordbogen', 'tower-10': 'Mittelpass', 'tower-11': 'Südbogen', 'tower-east-01': 'Östlicher Sporn', 'tower-east-02': 'Ostbogen' };
     const current = padChoice.value;
-    padChoice.replaceChildren(new Option('Bauplatz wählen …', ''), ...sim.layout.towerPads.filter(pad => sim.isPadUnlocked(pad.id)).map(pad => new Option(names[pad.id] ?? 'Startturm', pad.id)));
+    padChoice.replaceChildren(new Option('Bauplatz wählen …', ''), ...sim.layout.towerPads.filter(pad => sim.isPadUnlocked(pad.id)).map(pad => new Option(names[pad.id] ?? `Feld ${pad.cell.x + 1}/${pad.cell.y + 1}`, pad.id)));
     padChoice.value = current;
-    element('placement-pads').replaceChildren(...freePads.map(pad => {
-      const button = document.createElement('button'); button.type = 'button'; button.dataset.pad = pad.id;
-      button.textContent = names[pad.id] ?? pad.id; return button;
-    }));
+    element('placement-pads').replaceChildren();
   }
   const certificate = live.certificate;
   element('next-objective').textContent = nextObjective(sim);
@@ -160,7 +173,9 @@ function syncUI(): void {
   const hintStep = tutorialStep(sim);
   const mobile = window.matchMedia('(max-width: 700px)').matches;
   if (hintStep !== mobileHintStep) { mobileHintStep = hintStep; mobileHintOpen = false; }
-  const hintAvailable = !sim.bossActive && !sim.tutorial.hidden && !(sim.tutorial.seen & (1 << hintStep)) && !contextOpen && !placementType && !live.awaitingResume;
+  element('wisp-arrival').hidden = !sim.wispUnlocked || sim.wispArrival.met || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
+  element('pick-wisp').classList.toggle('new-companion', sim.wispUnlocked && !sim.wispArrival.met);
+  const hintAvailable = (sim.wispArrival.met || !sim.wispUnlocked) && !sim.bossActive && !sim.tutorial.hidden && !(sim.tutorial.seen & (1 << hintStep)) && !contextOpen && !placementType && !live.awaitingResume;
   element('tutorial-card').hidden = !hintAvailable || (mobile && !mobileHintOpen);
   element('mobile-hint').hidden = !mobile || !hintAvailable || mobileHintOpen;
   element('mobile-hint').setAttribute('aria-expanded', String(mobileHintOpen));
@@ -169,12 +184,13 @@ function syncUI(): void {
   const mara = sim.mara;
   const maraTarget = sim.towers.find(tower => tower.uid === mara.targetTowerUid);
   const targetName = maraTarget?.protected ? 'Startturm' : maraTarget?.def.name ?? 'Startturm';
-  element('mara-brief').textContent = mara.path.length ? 'Unterwegs' : mara.effectRemaining > 0 ? 'Übertakten aktiv' : 'Unterstützt den Turm';
-  element('mara-status').textContent = mara.unreachable ? 'Mara erreicht dieses Ziel nicht. Wähle einen anderen Turm.'
-    : mara.path.length ? `Mara ist unterwegs zum ${targetName}. Noch kein Bonus während der Anreise.`
-    : mara.effectRemaining > 0 ? `Übertakten aktiv · ${Math.ceil(mara.effectRemaining)} s · ${targetName}`
-    : mara.cooldownRemaining > 0 ? `Beim ${targetName} · wieder bereit in ${Math.ceil(mara.cooldownRemaining)} s`
-    : `Beim ${targetName} · bereit für die nächste Welle.`;
+  const inSpellRange = !!maraTarget && Math.hypot(mara.x - maraTarget.x, mara.y - maraTarget.y) <= MARA.range;
+  element('mara-brief').textContent = mara.effectRemaining > 0 ? `Buff · ${Math.ceil(mara.effectRemaining)} s` : mara.cooldownRemaining > 0 ? `Bereit in ${Math.ceil(mara.cooldownRemaining)} s` : 'Zauber bereit';
+  element<HTMLProgressElement>('mara-cooldown').value = MARA.cooldown - mara.cooldownRemaining;
+  element('mara-status').textContent = `Ziel: ${targetName}. ` + (mara.effectRemaining > 0 ? `Buff wirkt noch ${Math.ceil(mara.effectRemaining)} s.` : mara.cooldownRemaining > 0 ? `Abklingzeit: ${Math.ceil(mara.cooldownRemaining)} s.` : !inSpellRange ? 'Außerhalb der Zauberreichweite. Ziel erneut zuweisen oder näher laufen.' : mara.autoCast ? 'Bereit · wartet auf Gegner beim Ziel.' : 'Bereit · manuell auslösen.');
+  const auto = element<HTMLButtonElement>('mara-auto'); auto.disabled = blocked; auto.textContent = `Automatik: ${mara.autoCast ? 'Ein' : 'Aus'}`; auto.setAttribute('aria-pressed', String(mara.autoCast));
+  element<HTMLButtonElement>('cast-mara').disabled = blocked || live.paused || !inSpellRange || sim.phase !== 'wave' || mara.cooldownRemaining > 0 || !maraTarget || sim.isCharmed(maraTarget.uid);
+  element<HTMLButtonElement>('move-mara').disabled = blocked;
   element('camera-zoom').setAttribute('aria-pressed', String(view.mapZoom > 1));
   element('camera-zoom').setAttribute('aria-label', view.mapZoom > 1 ? 'Karte weiter ansehen' : 'Karte näher ansehen');
   element('safe-rate').textContent = `${rateFormat.format(certificate ? farmRewardGold(certificate) * 60000 / certificate.durationMs : 0)} G/min sicher`;
@@ -225,7 +241,6 @@ function syncUI(): void {
     : pad ? `Dieser Platz öffnet nach gemeisterter Welle ${pad.availability === 'wave-5' ? 5 : 10}.` : 'Wähle einen hell markierten Platz auf der Karte.';
   build.hidden = Boolean(tower); upgrade.hidden = !tower; sell.hidden = !tower; assignMara.hidden = !tower;
   buildFrost.hidden = Boolean(tower) || !sim.settlement.frostResearched;
-  const blocked = unavailable || view.paused || sim.phase === 'defeat';
   build.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId);
   buildFrost.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId, 2);
   for (const [name, kind] of [['cannon', 3], ['sniper', 4]] as const) {
@@ -237,36 +252,35 @@ function syncUI(): void {
   upgrade.disabled = blocked || !tower || !canUpgrade || sim.gold < upgradeCost(tower);
   upgrade.textContent = tower && canUpgrade ? `Aufwerten · ${currency.format(upgradeCost(tower))} Gold` : 'Levelgrenze erreicht';
   sell.disabled = blocked || !tower || tower.protected;
-  assignMara.disabled = blocked || !tower || tower.uid === mara.targetTowerUid;
-  assignMara.textContent = tower?.uid === mara.targetTowerUid ? 'Mara unterstützt diesen Turm' : 'Mara hier einsetzen';
+  assignMara.disabled = blocked || !tower || (tower.uid === mara.targetTowerUid && inSpellRange);
+  assignMara.textContent = tower?.uid === mara.targetTowerUid ? 'Zauberziel · Mara heranrufen' : 'Als Zauberziel wählen';
   sell.textContent = tower?.protected ? 'Geschützter Startturm' : `Verkaufen · +${currency.format(tower ? sellValue(tower) : 0)} Gold`;
   element('tower-stats').innerHTML = tower ? (() => {
     const values = stats(tower);
     return `<div><dt>Schaden</dt><dd>${values.damage.toFixed(1)}</dd></div><div><dt>Reichweite</dt><dd>${values.range}</dd></div><div><dt>Angriff alle</dt><dd>${values.cooldown.toFixed(2)} s</dd></div><div><dt>Abschüsse</dt><dd>${tower.kills}</dd></div>`;
   })() : '';
   element('action-hint').textContent = blocked ? live.error ? 'Der letzte bestätigte Spielstand bleibt erhalten.' : live.awaitingResume ? 'Setze die Verteidigung über den Rückkehrbeleg fort.' : 'Setze den Kampf fort, um zu bauen oder aufzuwerten.'
-    : tower ? tower.level >= sim.maxLevel ? sim.settlement.frostResearched ? sim.settlement.workshopUpgraded ? 'Level 20 erreicht · höchster Ausbau.' : 'Werkstatt II erschließt Level 7–20 nach der Lichtung.' : 'Frostfassung erschließt Level 4–6.' : sim.gold < upgradeCost(tower) ? `Noch ${currency.format(upgradeCost(tower) - sim.gold)} Gold bis zum nächsten Level.` : 'Mehr Schaden verbessert die Verteidigung sofort.'
+    : tower ? tower.level >= sim.maxLevel ? sim.settlement.frostResearched ? sim.settlement.workshopUpgraded ? 'Level 20 erreicht · höchster Ausbau.' : 'Werkstatt II erschließt Level 7–20.' : 'Frostfassung erschließt Level 4–6.' : sim.gold < upgradeCost(tower) ? `Noch ${currency.format(upgradeCost(tower) - sim.gold)} Gold bis zum nächsten Level.` : 'Mehr Schaden verbessert die Verteidigung sofort.'
     : (pad && sim.isPadUnlocked(pad.id)) && sim.gold < 75 ? `Noch ${currency.format(75 - sim.gold)} Gold bis zum Waldwächter.` : '';
   const settlement = sim.settlement;
   const workshopIcon = element<HTMLImageElement>('workshop-icon');
-  const workshopSource = settlement.workshopBuilt ? ART.workshop : ART.workshopDamaged;
+  const workshopSource = ART.workshop;
   if (workshopIcon.getAttribute('src') !== workshopSource) workshopIcon.src = workshopSource;
-  element('workshop-card-title').textContent = settlement.workshopUpgraded ? 'Werkstatt II' : settlement.workshopBuilt ? 'Werkstatt I' : 'Alte Werkstatt';
-  element('workshop-card-copy').textContent = settlement.workshopUpgraded ? 'Turmlevel bis 20' : settlement.frostResearched && sim.clearing.unlocked ? 'Werkstatt II ausbauen' : settlement.frostResearched ? 'Frosttechnik verfügbar' : settlement.workshopBuilt ? 'Frostfassung erforschen' : 'Reparieren & forschen';
-  element('workshop-card-price').textContent = settlement.workshopUpgraded ? '✓ Ausgebaut' : settlement.frostResearched && sim.clearing.unlocked ? currency.format(SETTLEMENT.workshopUpgradeCost) : settlement.frostResearched ? '✓ Erforscht' : `${settlement.workshopBuilt ? SETTLEMENT.researchCost : SETTLEMENT.workshopCost}`;
+  element('workshop-card-title').textContent = settlement.workshopUpgraded ? 'Werkstatt II' : settlement.workshopBuilt ? 'Werkstatt I' : 'Werkstatt I';
+  element('workshop-card-copy').textContent = settlement.workshopUpgraded ? 'Turmlevel bis 20' : settlement.frostResearched ? 'Werkstatt II ausbauen' : settlement.frostResearched ? 'Frosttechnik verfügbar' : settlement.workshopBuilt ? 'Frostfassung erforschen' : 'Bauen & forschen';
+  element('workshop-card-price').textContent = settlement.workshopUpgraded ? '✓ Ausgebaut' : settlement.frostResearched ? currency.format(SETTLEMENT.workshopUpgradeCost) : settlement.frostResearched ? '✓ Erforscht' : `${settlement.workshopBuilt ? SETTLEMENT.researchCost : SETTLEMENT.workshopCost}`;
   element('pick-workshop').classList.toggle('researched', settlement.frostResearched);
-  element('workshop-title').textContent = settlement.workshopUpgraded ? 'Werkstatt II' : settlement.workshopBuilt ? 'Werkstatt I' : 'Beschädigte Werkstatt';
+  element('workshop-title').textContent = settlement.workshopUpgraded ? 'Werkstatt II' : settlement.workshopBuilt ? 'Werkstatt I' : 'Werkstatt bauen';
   element('workshop-description').textContent = settlement.workshopUpgraded ? 'Der neue Arbeitsplatz erschließt Turmlevel 7–20. Höhere Level erhöhen den Schaden; Reichweite und Feuerrate bleiben begrenzt.' : settlement.frostResearched
     ? 'Frostfassung erforscht · Frostkristall und Turmlevel 4–6 sind verfügbar.'
-    : settlement.workshopBuilt ? 'Frostfassung erschließt den Frostkristall und Turmlevel 4–6.' : 'Repariere die alte Werkstatt. Danach kannst du Frosttechnik erforschen.';
+    : settlement.workshopBuilt ? 'Frostfassung erschließt den Frostkristall und Turmlevel 4–6.' : 'Wähle eine Position in der Siedlung und baue die Werkstatt. Sie eröffnet die Frostforschung.';
   const upgradeWorkshop = element<HTMLButtonElement>('upgrade-workshop');
   upgradeWorkshop.hidden = !settlement.frostResearched || settlement.workshopUpgraded;
-  upgradeWorkshop.disabled = blocked || !sim.clearing.unlocked || sim.gold < SETTLEMENT.workshopUpgradeCost;
+  upgradeWorkshop.disabled = blocked || sim.gold < SETTLEMENT.workshopUpgradeCost;
   element('workshop-upgrade-condition').hidden = !settlement.frostResearched || settlement.workshopUpgraded;
-  element('workshop-upgrade-condition').textContent = !sim.clearing.unlocked ? 'Für Werkstatt II zuerst die östliche Lichtung erschließen.'
-    : sim.gold < SETTLEMENT.workshopUpgradeCost ? `Noch ${currency.format(SETTLEMENT.workshopUpgradeCost-sim.gold)} Gold für Werkstatt II.` : 'Bereit zum Ausbau · Turmlevel 7–20 freischalten.';
+  element('workshop-upgrade-condition').textContent = sim.gold < SETTLEMENT.workshopUpgradeCost ? `Noch ${currency.format(SETTLEMENT.workshopUpgradeCost-sim.gold)} Gold für Werkstatt II.` : 'Bereit zum Ausbau · Turmlevel 7–20 freischalten.';
   buildWorkshop.hidden = settlement.workshopBuilt;
-  buildWorkshop.textContent = `Werkstatt reparieren · ${SETTLEMENT.workshopCost} Gold`;
+  buildWorkshop.textContent = `Werkstatt platzieren · ${SETTLEMENT.workshopCost} Gold`;
   buildWorkshop.disabled = blocked || sim.gold < SETTLEMENT.workshopCost;
   researchFrost.hidden = !settlement.workshopBuilt || settlement.frostResearched;
   researchFrost.textContent = `Frostfassung erforschen · ${SETTLEMENT.researchCost} Gold`;
@@ -274,6 +288,12 @@ function syncUI(): void {
   element('choose-frost').hidden = !settlement.frostResearched;
   const warehouseIcon = element<HTMLImageElement>('warehouse-icon');
   if (warehouseIcon.getAttribute('src') !== ART.warehouse) warehouseIcon.src = ART.warehouse;
+  for (const id of ['workshop', 'warehouse'] as const) {
+    const button = element<HTMLButtonElement>(`move-${id}`);
+    button.hidden = !(id === 'workshop' ? settlement.workshopBuilt : settlement.warehouseBuilt);
+    button.disabled = unavailable || !live.paused;
+    button.textContent = live.paused ? `${id === 'workshop' ? 'Werkstatt' : 'Lager'} versetzen` : 'Zum Versetzen pausieren';
+  }
   const builtWarehouse = settlement.warehouseBuilt;
   const safeRate = certificate ? farmRewardGold(certificate) * 60000 / certificate.durationMs : 0;
   element('pick-warehouse').classList.toggle('locked', !sim.warehouseUnlocked);
@@ -297,8 +317,8 @@ function syncUI(): void {
   element('pick-clearing').classList.toggle('researched', clearing);
   element('clearing-card-price').textContent = clearing ? '✓ Geöffnet' : sim.clearingAvailable ? String(SETTLEMENT.clearingCost) : 'Boss 15';
   element('clearing-description').textContent = clearing
-    ? 'Die Waldkante ist geöffnet. Zwei zusätzliche Bauplätze sind verfügbar. Mit „Lichtung ansehen“ wechselst du in den neuen Abschnitt.'
-    : 'Öffne den Wald östlich des Kerns. Zwei neue Bauplätze verstärken deine letzte Verteidigungslinie.';
+    ? 'Die optionale Lichtung ist geöffnet. Du kannst am letzten Wegabschnitt weiter bauen. Neue Herausforderungen folgen in einem späteren Ausbau.'
+    : 'Optional: mehr Platz östlich des Kerns. Die Werkstatt lässt sich auch ohne diese Erweiterung ausbauen.';
   element('clearing-condition').textContent = clearing ? 'Geöffnet · die Verteidigung läuft weiter.'
     : !sim.clearingAvailable ? 'Voraussetzung: Rosenspiegel in Welle 15 besiegen. Danach einmalig 900 Gold.'
     : sim.gold < SETTLEMENT.clearingCost ? `Bosssieg geschafft. Noch ${currency.format(SETTLEMENT.clearingCost - sim.gold)} Gold.`
@@ -310,24 +330,25 @@ function syncUI(): void {
     : sim.mode === 'farm' ? `Sicheres Farmen · Welle ${sim.farmWave}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang.`
     : `Automatischer Vorstoß · höchste geschaffte Welle ${sim.highestCleared}.`;
   const relevantEvents = sim.drainEvents();
+  scene?.acceptEvents(relevantEvents);
   const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'boss-victory', 'clearing', 'workshop-upgrade'].includes(event.type)).at(-1);
   if (message) toastUntil = performance.now() + 4500;
   if (message) element('combat-message').textContent = message.type === 'clear' ? `Welle ${message.wave} geschafft · +${currency.format(message.amount ?? 0)} Gold Abschlussbonus.`
     : message.type === 'kill' ? `Gegner besiegt · +${currency.format(message.amount ?? 0)} Gold.`
     : message.type === 'wave' ? `${mode} · Welle ${message.wave} hat begonnen. Deine Türme greifen automatisch an.`
     : message.type === 'boss-victory' ? message.amount ? `${bossEncounter(message.wave ?? 15).title} besiegt! +${currency.format(message.amount)} Gold Erstprämie.` : 'Rosenspiegel erneut besiegt. Gewöhnliche Kampfbelohnungen erhalten.'
-    : message.type === 'clearing' ? 'Östliche Lichtung geöffnet! Zwei Bauplätze verfügbar · Lichtung ansehen.'
+    : message.type === 'clearing' ? 'Östliche Lichtung geöffnet! Optionale Fläche verfügbar · Lichtung ansehen.'
     : message.type === 'wisp' ? 'Wisp ist da! +10 % Kampf-Gold und die Steinschleuder sind jetzt verfügbar.'
-    : message.type === 'pads' ? `Welle ${message.wave} gemeistert: drei weitere Bauplätze${message.wave === 10 ? ' und der Scharfschütze' : ''} sind verfügbar.`
+    : message.type === 'pads' ? `Welle ${message.wave} gemeistert${message.wave === 10 ? ' · Scharfschütze verfügbar' : ''}.`
     : message.type === 'build' ? `${message.tower?.def.name} gebaut und einsatzbereit.`
     : message.type === 'upgrade' ? `${message.tower?.def.name} verbessert. Der nächste Schuss nutzt den höheren Schaden.`
     : message.type === 'workshop-upgrade' ? 'Werkstatt II fertig! Turmlevel 7–20 sind jetzt verfügbar.'
-    : message.type === 'workshop' ? 'Die Werkstatt arbeitet wieder! Frostfassung ist jetzt erforschbar.'
+    : message.type === 'workshop' ? 'Die Werkstatt ist fertig! Frostfassung ist jetzt erforschbar.'
     : message.type === 'warehouse' ? 'Vorratslager gebaut! Künftig 65 % Offline-Ertrag für bis zu 8 Stunden.'
     : message.type === 'research' ? 'Frostfassung erforscht! Baue einen Frostkristall oder verbessere Türme bis Level 6.'
     : message.type === 'sell' ? `Turm verkauft · +${currency.format(message.amount ?? 0)} Gold. Die sichere Farmbasis wird neu geprüft.`
     : 'Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.';
-  element('combat-message').hidden = performance.now() > toastUntil || contextOpen || Boolean(placementType) || live.awaitingResume;
+  element('combat-message').hidden = performance.now() > toastUntil || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
   progressUI.update(live);
   const boss = sim.bossEnemy, charm = sim.bossCharm;
   const showBoss = sim.bossActive && !live.awaitingResume && !contextOpen && !placementType;
@@ -345,7 +366,7 @@ function syncUI(): void {
     : boss ? 'Frosttreffer unterbrechen ihre Verführung' : sim.bossQueued ? sim.bossWins(sim.wave) ? 'Boss und Begleiter besiegen · Wiederholung' : `Boss und Begleiter besiegen · ${currency.format(bossEncounter(sim.wave).firstReward)} Gold Erstprämie` : 'Besiege noch die übrigen Begleiter';
   element('boss-banner').dataset.phase = charm.phase;
   element('boss-support').textContent = `${Math.max(0, sim.remaining - (boss || sim.bossQueued ? 1 : 0))} Begleiter übrig · Fläche & Durchdringung`;
-  document.getElementById('app')!.classList.toggle('context-open', contextOpen || Boolean(placementType));
+  document.getElementById('app')!.classList.toggle('context-open', contextOpen || Boolean(placementType || groundMode));
   positionContext();
 }
 
@@ -364,9 +385,9 @@ function positionContext(): void {
   panel.style.top = `${Math.max(top, Math.min(bottom - box.height, y - box.height / 2))}px`;
 }
 
-function closeContext(): void { contextOpen = false; selectedPadId = undefined; scene?.setSelected(); syncUI(); }
+function closeContext(): void { groundMode = undefined; groundCandidate = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); syncUI(); }
 function openContext(kind: typeof selectedPanel): void {
-  placementType = undefined; selectedPanel = kind; contextOpen = true;
+  groundMode = undefined; groundCandidate = undefined; placementType = undefined; selectedPanel = kind; contextOpen = true;
   if (kind !== 'tower') { selectedPadId = undefined; scene?.setSelected(); }
   scene?.focusObject(kind); syncUI();
 }
@@ -375,7 +396,7 @@ function startPlacement(kind: TowerId): void {
   if (kind === 2 && !session.battle.settlement.frostResearched) { catalogPanel = 'settlement'; openContext('settlement'); return; }
   if (!session.battle.isTowerUnlocked(kind)) { if (kind === 3) openContext('wisp'); else { element('combat-message').textContent = 'Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.'; toastUntil = performance.now() + 6000; syncUI(); } return; }
   if (placementType === kind) { placementType = undefined; closeContext(); return; }
-  catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
+  groundMode = undefined; groundCandidate = undefined; catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
   const preferred = kind === 1 ? 'tower-03' : kind === 2 ? 'tower-09' : kind === 3 ? 'tower-10' : 'tower-11';
   const pads = session.battle.layout.towerPads.filter(pad => session!.battle.isPadUnlocked(pad.id) && !session!.battle.towers.some(tower => tower.padId === pad.id));
   if (!pads.length) { placementType = undefined; selectedPadId = 'tower-03'; scene?.setSelected(selectedPadId); openContext('tower'); }
@@ -394,9 +415,7 @@ async function selectPad(padId?: string): Promise<void> {
   selectedPadId = padId; selectedPanel = 'tower'; scene?.setSelected(padId);
   if (!padId) { contextOpen = false; syncUI(); return; }
   const kind = placementType;
-  if (kind && session?.battle.canBuild(padId, kind)) {
-    if (await placeTower(padId, kind)) return;
-  }
+  if (kind) { contextOpen = false; syncUI(); return; }
   placementType = undefined;
   contextOpen = true; scene?.focusObject('tower'); syncUI();
 }
@@ -429,6 +448,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
       canRender: () => !live.busy,
       changed: syncUI,
       select(padId) { void selectPad(padId); },
+      ground(cell) { if (groundMode === 'mara') { let accepted = false; void perform(b => { accepted = b.moveMaraTo(cell); }).then(() => { if (accepted && !live.error) closeContext(); else { element('placement-text').textContent = 'Dorthin führt kein freier Weg. Wähle ein anderes Feld.'; } }); } else { groundCandidate = cell; syncUI(); } },
       selectWisp() { openContext('wisp'); },
       selectMara() { openContext('mara'); },
       selectClearing() { catalogPanel = 'settlement'; openContext('clearing'); },
@@ -470,10 +490,32 @@ async function perform(action: (battle: IdleBattle) => unknown, allowPaused = fa
   syncUI(); await completion;
   scene?.refresh(); syncUI();
 }
+function startGroundPlacement(id: 'workshop' | 'warehouse' | 'mara'): void {
+  if (!session || !ready) return;
+  placementType = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); groundMode = id;
+  groundCandidate = id === 'mara' ? undefined : { ...session.battle.plots[id] };
+  scene?.focusObject(id === 'workshop' ? 'settlement' : id); syncUI();
+}
+for (const id of ['workshop', 'warehouse', 'mara'] as const) element(`move-${id}`).addEventListener('click', () => startGroundPlacement(id), { signal: lifetime.signal });
+element('mara-auto').addEventListener('click', () => { void perform(b => { b.mara.autoCast = !b.mara.autoCast; }); }, { signal: lifetime.signal });
+element('cast-mara').addEventListener('click', () => { void perform(b => b.castMaraNow()).then(() => closeContext()); }, { signal: lifetime.signal });
+element('meet-wisp').addEventListener('click', () => { void perform(b => { if (b.wispUnlocked) b.wispArrival.met = true; }, true); }, { signal: lifetime.signal });
+element('confirm-placement').addEventListener('click', () => {
+  if (placementType && selectedPadId) { void placeTower(selectedPadId, placementType); return; }
+  const id = groundMode, cell = groundCandidate, live = session;
+  if (!live || !cell || !id || id === 'mara') return;
+  void perform(b => {
+    const built = id === 'workshop' ? b.settlement.workshopBuilt : b.settlement.warehouseBuilt;
+    if (built && !live.paused) return;
+    if (!built && (b.gold < (id === 'workshop' ? SETTLEMENT.workshopCost : SETTLEMENT.warehouseCost) || id === 'warehouse' && !b.warehouseUnlocked)) return;
+    if (!b.positionBuilding(id, cell)) return;
+    if (!built) { if (id === 'workshop') b.buildWorkshop(); else b.buildWarehouse(); }
+  }, true).then(() => closeContext());
+}, { signal: lifetime.signal });
 build.addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId); }, { signal: lifetime.signal });
 buildFrost.addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId, 2); }, { signal: lifetime.signal });
-buildWarehouse.addEventListener('click', () => { void perform(battle => battle.buildWarehouse()); }, { signal: lifetime.signal });
-buildWorkshop.addEventListener('click', () => { void perform(battle => battle.buildWorkshop()); }, { signal: lifetime.signal });
+buildWarehouse.addEventListener('click', () => { startGroundPlacement('warehouse'); }, { signal: lifetime.signal });
+buildWorkshop.addEventListener('click', () => { startGroundPlacement('workshop'); }, { signal: lifetime.signal });
 element('upgrade-workshop').addEventListener('click', () => { void perform(battle => battle.upgradeWorkshop()); }, { signal: lifetime.signal });
 element('replay-first-boss').addEventListener('click', () => { void perform(b => b.requestBossChallenge(15)).then(() => { if (session?.battle.bossChallengeRequested) element<HTMLDialogElement>('chronicle').close(); }); }, { signal: lifetime.signal });
 researchFrost.addEventListener('click', () => { void perform(battle => battle.researchFrost()); }, { signal: lifetime.signal });

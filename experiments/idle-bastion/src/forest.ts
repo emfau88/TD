@@ -109,13 +109,18 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   }
   const workshopX = (workshop.footprint.x + workshop.footprint.width / 2) * size;
   const workshopY = (workshop.blockingBody.y + workshop.blockingBody.height) * size;
-  const building = track(scene.add.image(workshopX, workshopY, KEYS.workshopDamaged)
+  const building = track(scene.add.image(workshopX, workshopY, KEYS.workshop)
     .setOrigin(0.5, 112/128).setDepth(workshopY + 1000));
+  const workbench = track(scene.add.graphics().setDepth(workshopY + 1000));
+  workbench.fillStyle(0x67472b).fillRect(workshopX - 18, workshopY - 6, 4, 16).fillRect(workshopX + 14, workshopY - 6, 4, 16);
+  workbench.fillStyle(0xac8250).fillRect(workshopX - 23, workshopY - 10, 46, 7);
+  workbench.fillStyle(0x775b3c).fillRect(workshopX + 23, workshopY + 2, 22, 5).fillRect(workshopX + 27, workshopY - 2, 17, 4);
+  workbench.fillStyle(0xd0c6aa).fillRect(workshopX - 5, workshopY - 14, 12, 4);
   const annex = track(scene.add.graphics().setDepth(workshopY + 1001));
   drawWorkshopAnnex(annex, workshopX, workshopY);
   const dust = track(scene.add.graphics().setDepth(workshopY + 1002));
   const plotLabel = track(scene.add.text(workshopX,
-    (workshop.footprint.y + workshop.footprint.height) * size - 7, 'Alte Werkstatt', {
+    (workshop.footprint.y + workshop.footprint.height) * size - 7, 'Werkstatt bauen · 400 Gold', {
       fontFamily: 'Segoe UI, sans-serif', fontSize: '10px', color: '#e1d0a8', stroke: '#304a32', strokeThickness: 3,
     }).setOrigin(0.5).setDepth(workshopY + 1003));
   const warehouse = layout.plots.find(plot => plot.id === 'warehouse')!;
@@ -139,26 +144,32 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
     update(elapsed, built, builtAt, warehouseBuilt, warehouseBuiltAt, warehouseUnlocked, workshopUpgraded = false, upgradedAt = null) {
       annex.setVisible(workshopUpgraded);
       pond?.setFrame(loopFrame(elapsed, 10)); coreWeapon.setFrame(loopFrame(elapsed, 10));
-      const texture = built ? KEYS.workshop : KEYS.workshopDamaged;
-      if (building.texture.key !== texture) building.setTexture(texture);
+      building.setVisible(built); workbench.setVisible(!built);
       stakes.setVisible(!built);
       plotLabel.setVisible(!built);
       warehouseBuilding.setVisible(warehouseBuilt);
       warehouseMark.setVisible(warehouseUnlocked && !warehouseBuilt);
       warehouseLabel.setVisible(warehouseUnlocked && !warehouseBuilt);
-      warehouseDust.clear();
-      const warehouseAge = warehouseBuiltAt === null ? 10 : elapsed - warehouseBuiltAt;
-      if (warehouseBuilt && warehouseAge >= 0 && warehouseAge < 1.2) for (let i = 0; i < 7; i++) {
-        warehouseDust.fillStyle(0xe7d4a5, (1 - warehouseAge/1.2) * 0.7)
-          .fillRect(warehouseX - 30 + i * 10, warehouseY - warehouseAge * (9 + i % 3 * 5), 3, 3);
-      }
-      dust.clear();
+      const construct = (g: Phaser.GameObjects.Graphics, image: Phaser.GameObjects.Image, x: number, y: number, width: number, age: number, exists: boolean) => {
+        g.clear(); image.setAlpha(1);
+        if (!exists || age < 0 || age > 1.6) return;
+        const progress = Math.min(1, age / 1.2);
+        image.setAlpha(0.25 + progress * 0.75);
+        if (age < 0.8) {
+          g.lineStyle(3, 0xa47a48, 1 - age / 0.8).strokeRect(x - width / 2, y - 52, width, 58);
+          g.lineBetween(x - width / 2, y + 6, x + width / 2, y - 52);
+          g.lineBetween(x + width / 2, y + 6, x - width / 2, y - 52);
+        }
+        for (let i = 0; i < 16; i++) {
+          const spread = age * (8 + i % 4 * 5), px = x + (i - 7.5) / 16 * width + (i % 2 ? spread : -spread);
+          const py = y + 7 - age * (13 + i % 3 * 9), size = 7 + i % 3 * 3;
+          g.fillStyle(i % 2 ? 0xd8c299 : 0xf0dfb5, Math.max(0, 1 - age / 1.6) * 0.8).fillRect(Math.round(px), Math.round(py), size, size);
+        }
+      };
+      construct(warehouseDust, warehouseBuilding, warehouseX, warehouseY, 64,
+        warehouseBuiltAt === null ? 10 : elapsed - warehouseBuiltAt, warehouseBuilt);
       const lastBuild = workshopUpgraded ? upgradedAt : builtAt;
-      const age = lastBuild === null ? 10 : elapsed - lastBuild;
-      if (built && age >= 0 && age < 1.2) for (let i = 0; i < 9; i++) {
-        dust.fillStyle(0xe7d4a5, (1 - age/1.2) * 0.7).fillRect(workshopX - 42 + i * 11,
-          workshopY - 3 - age * (9 + i % 3 * 5), 3 + i % 2, 3);
-      }
+      construct(dust, building, workshopX, workshopY, 95, lastBuild === null ? 10 : elapsed - lastBuild, built);
     },
     destroy() { for (const object of objects) object.destroy(); for (const key of textureKeys) scene.textures.remove(key); },
   };

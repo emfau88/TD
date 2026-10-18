@@ -2,8 +2,24 @@
  * bonus is unconditional once unlocked and never depends on these poses. */
 import { cellCenter, findFootpath, type IdleLayout } from './layout';
 import { getForestBlockedCells } from './forest-world';
+const arrivals = new WeakMap<IdleLayout, { x: number; y: number }[]>();
 const routes = new WeakMap<IdleLayout, Map<boolean, { x: number; y: number }[]>>();
-export function wispPose(layout: IdleLayout, elapsed: number, warehouseBuilt = false) {
+export function wispPose(layout: IdleLayout, elapsed: number, warehouseBuilt = false, arrivedAt: number | null = null) {
+  if (arrivedAt !== null) {
+    const end = layout.plots.find(p => p.id === 'workshop')!.entrance;
+    let arrival = arrivals.get(layout);
+    if (!arrival) {
+      arrival = [{ x: 2, y: 13 }, { x: 2, y: 11 }, { x: 10, y: 13 }, { x: 10, y: 11 }].map(start => findFootpath(layout, start, end, getForestBlockedCells(layout))).find(path => path && path.length > 1)?.map(p => ({ ...p })) ?? [end];
+      arrivals.set(layout, arrival);
+    }
+    const age = Math.max(0, elapsed - arrivedAt), duration = (arrival.length - 1) * layout.cellSize / 65;
+    if (age < duration) {
+      const step = age * 65 / layout.cellSize, i = Math.floor(step), a = cellCenter(layout, arrival[i]), b = cellCenter(layout, arrival[i + 1]);
+      const row = Math.abs(b.x - a.x) > Math.abs(b.y - a.y) ? 9 : b.y < a.y ? 18 : 0;
+      return { x: a.x + (b.x - a.x) * (step - i), y: a.y + (b.y - a.y) * (step - i), frame: row + Math.floor(age * 8) % 9, flip: b.x < a.x, moving: true };
+    }
+    elapsed = Math.max(0, age - duration);
+  }
   let cache = routes.get(layout);
   if (!cache) { cache = new Map(); routes.set(layout, cache); }
   let route = cache.get(warehouseBuilt);

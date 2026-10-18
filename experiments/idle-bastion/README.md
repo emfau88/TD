@@ -39,10 +39,10 @@ Prioritäten: verständlicher Einstieg → korrekte Wirtschaft und Speicherung �
 | --- | --- |
 | Welt | Eigene Waldkarte, 40er Zellen; Startbereich 28×16, östliche Lichtung um 4 Spalten auf 32×16; Obergrenze 36×16 im Slice |
 | Kamera | Vorwiegend horizontales Verschieben; am Desktop alle Einstiegsziele gemeinsam sichtbar. Hochkant lesbarer Ausschnitt, Übersicht und direkter Kamerafokus über Bau-/Figurenkarten |
-| Turmplätze | 13 fest gestaltete Plätze insgesamt: 11 im Startbereich, 2 in der Erweiterung. Zunächst 5 verfügbar, davon einer mit geschütztem Startturm belegt; je 3 weitere bei Welle 5 und 10. Drei ergänzte Plätze verbinden die Schussbereiche bestehender Türme |
+| Turmplätze | Freie Rasterwahl bis zu drei Zellen vom Gegnerweg entfernt, auf beiden Seiten ab Spielbeginn. Weg, Wasser, Bäume, Felsen und Siedlungsfläche bleiben frei von Türmen; geschützter Startturm bleibt erhalten. Vorschau mit tatsächlicher Reichweite und ausdrücklicher Baubestätigung |
 | Türme | Waldwächter (Allrounder), Frostkristall (Verlangsamung), Steinschleuder (Fläche), Scharfschütze (Rüstung) |
 | Turmlevel | Ziel der ersten 15 Minuten: Level 1–10; anschließend normale Schadensupgrades bis Level 20. Zahlenlevel getrennt von 3 vorhandenen Grafikstufen. Keine automatische Ausgabe von Gold für Upgrades |
-| Gebäude | Werkstatt I, eine sichtbare Verbesserung zur Werkstatt II, Vorratslager I; feste Grundstücke, kurze Bauanimation, kein Ressourcen-Bauzeitspiel |
+| Gebäude | Werkstatt I, eine sichtbare Verbesserung zur Werkstatt II, Vorratslager I; frei wählbare Grundstücke innerhalb der Siedlungsfläche, Versetzen bei Pause, kurze Bauanimation, kein Ressourcen-Bauzeitspiel |
 | Figuren | Mara sofort, Wisp später; keine Charakterlevel, Ausrüstung oder Beziehungswerte im Slice |
 | Wellen | Automatischer Start und Fortsetzung, kurze feste Pause; Niederlage führt automatisch zum sicheren Farmen, erneuter Vorstoß zunächst manuell |
 | Leben | Kern startet jeden Wellenversuch mit 20/20; Türme und Gebäude werden nicht beschädigt |
@@ -62,14 +62,14 @@ Zeiten sind Ziele für einen neuen Spielstand bei 1× und zügigen normalen Ents
 | --- | --- |
 | 0–10 s | Wald direkt öffnen, vorhandener Waldwächter kämpft, Mara sichtbar, erste Goldbelohnung. Geschützter Startturm sichert eine tragfähige Basis |
 | spätestens 20 s | Spieler kann einen zweiten Waldwächter kaufen und platzieren; Startgold reicht dafür ohne Warten |
-| 30–60 s | Erstes normales Turmupgrade; Schaden und Trefferwirkung sind nachvollziehbar. Mara weist auf die beschädigte Werkstatt hin |
+| 30–60 s | Erstes normales Turmupgrade; Schaden und Trefferwirkung sind nachvollziehbar. Mara erklärt den Bau einer Werkstatt |
 | 60–90 s | Werkstatt I ist durch regulär verdientes Gold erreichbar und wird bei Befolgen des Hinweises sichtbar gebaut |
 | nach Bau, spätestens etwa 120–150 s | Erste Technologie „Frostfassung“ kaufen: Frostkristall freigeschaltet, zugleich normale Turmlevel 4–6 zugänglich. Der neue Turm verlangsamt Gegner sichtbar |
 | 2–4 min | Nach erster Technologie und gemeisterter Welle 5 Wisp kostenlos freischalten; zusätzlich Steinschleuder verfügbar |
 | 4–6 min | Vorratslager I nach Wisp und Welle 8 baubar; Offline-Vorteil anhand konkreter Vorschau erklären. Scharfschütze ab gemeisterter Welle 10 verfügbar |
 | 7–10 min | Erster Bosssieg als Ziel; die Begegnung kann früher beginnen. Welle 15: vorhandene Succubus „Rosenspiegel“ mit angekündigter Turmverführung, Frost-Unterbrechung und kleiner Begleitgruppe; lesbare Bossanzeige, kein neues Spritepaket |
-| 8–11 min | Nach dem ersten echten Boss-15-Sieg kann die östliche Lichtung für 900 Gold erschlossen werden: echte Kamerabewegung in die neue Fläche und 2 taktisch nützliche Turmplätze |
-| 10–13 min | Werkstatt II nach Lichtung und Goldkauf; sichtbares kleines Anbauteil, Turmlevel ab 7 freigeschaltet, bis Level 20; erste Ziele liegen bei 7–10 |
+| 8–11 min | Nach dem ersten echten Boss-15-Sieg kann die östliche Lichtung für 900 Gold erschlossen werden: optionale zusätzliche Fläche; Werkstatt II setzt sie nicht voraus. Spätere Expeditionen sind vorgemerkt, noch nicht spielbar |
+| 10–13 min | Werkstatt II nach Frostforschung und Goldkauf; sichtbares kleines Anbauteil, Turmlevel ab 7 freigeschaltet, bis Level 20; erste Ziele liegen bei 7–10 |
 | 13–15 min | Verbesserte Verteidigung, zweiter Boss als nahes oder erreichtes Ziel (Welle 25), nächster sinnvoller Kauf erkennbar |
 | danach | Wiederkehrende Herausforderungen, weitere normale Schadenslevel bis 20 und skalierende Wellen. Nächstes Ausbauziel bleibt erreichbar; keine unerfüllbaren aktiven Quests auf nicht implementierte Gebäude |
 
@@ -79,8 +79,8 @@ Die Wellen- und Preiskurve wird auf diese Fenster abgestimmt; bei einem Zielkonf
 
 ## Rollen und Entscheidungen
 
-- **Mara:** Unterstützt standardmäßig den Startturm. Spieler kann ihr einen anderen erreichbaren Turm zuweisen. Nach Ankunft wirkt Übertakten automatisch: 8 Sekunden lang 50 % höhere Feuerrate, 30 Sekunden Abklingzeit ab Aktivierung; anschließend erneut bei gültigem Ziel und aktiver Welle. Kein ständiges Nachklicken, keine zusätzlichen manuell verpflichtenden Kampffähigkeiten.
-- **Wisp:** 10 % Bonus auf wiederholbare Gegner- und Wellen-Goldbelohnungen, keine Erstbesiegungs-/Verkaufsboni. Sichtbare kurze Werkstatt-/Lagergänge erklären seine Rolle, sind aber keine einsammelpflichtigen Goldobjekte. Der Bonus geht nicht wegen einer dekorativen Laufanimation verloren.
+- **Mara:** Unabhängiger Standort und Fernzauberziel, Zauberreichweite sechs Felder. Übertakten: 8 Sekunden lang 50 % höhere Feuerrate, 30 Sekunden Abklingzeit. Automatik wartet auf einen angreifbaren Gegner am Ziel; optional manuell auslösen. Bewegung oder Zielwechsel entfernt einen laufenden Buff nicht. Restdauer am Turm, Cooldown am Porträt. Farmnachweise bleiben konservativ ohne Mara-Bonus.
+- **Wisp:** Kurze Ankunft und einmalig bestätigte persönliche Begrüßung. Sofort nach Freischaltung 10 % Bonus auf wiederholbare Gegner- und Wellen-Goldbelohnungen, keine Erstbesiegungs-/Verkaufsboni. Sichtbare kurze Werkstatt-/Lagergänge erklären seine Rolle, sind aber keine einsammelpflichtigen Goldobjekte. Der Bonus geht nicht wegen einer dekorativen Laufanimation verloren.
 - **Werkstatt:** Erste Forschung eröffnet mit Frost eine neue taktische Kombination und höhere Level; keine frühe verzweigte Spezialisierung, die den Scharfschützen überflüssig macht. Werkstatt II ist ein späterer sichtbarer Erfolg mit neuer Levelgrenze.
 - **Lager:** Eine Vorschau zeigt sichere Basis, Effizienz, Zeitlimit und beispielsweise den Ertrag nach einer Stunde. Die Verbesserung wirkt ab Kauf, nicht rückwirkend auf bereits vergangene Abwesenheit.
 - **Platzierung:** Verlangsamung, Mehrfachabdeckung und Flächenschaden müssen sich lohnen. Numerische Level dürfen nicht irgendwann die gesamte Karte abdecken.
@@ -115,9 +115,9 @@ Im Wurzelverzeichnis des isolierten Worktrees `npm ci` ausführen, falls die Abh
 
 Die Startseite zeigt den kompletten ersten Kreislauf mit automatischem Kampf, Mara, Turmbau, Werkstatt und Frosttechnik. [Im Browser testen](https://emfau88.github.io/TD/idle-bastion/) · [Frische unabhängige Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1). Die gemessene Werkstattzeit beträgt 1:23, die erste Frostwirkung 2:04; [B07-Bericht und Screenshots](../../artifacts/idle-bastion/acceptance/90s/REPORT.md).
 
-[Die Entwicklung in Spielaufnahmen](../../README.md#entwicklung-von-idle-bastion) zeigt den Weg vom neutralen Kartenrahmen bis zur großen Kartenansicht. Nach der Reparatur verschwinden die Bauplatzpfosten und die Platzbeschriftung der Werkstatt; das Gebäude selbst bleibt zur Auswahl anklickbar.
+[Die Entwicklung in Spielaufnahmen](../../README.md#entwicklung-von-idle-bastion) zeigt den Weg vom neutralen Kartenrahmen bis zur großen Kartenansicht. Vor dem Werkstattbau stehen nur Werkbank und Material bereit. Nach dem Bau verschwinden die Bauplatzpfosten und die Platzbeschriftung; das Gebäude selbst bleibt zur Auswahl anklickbar.
 
-Die Karte füllt die Ansicht zwischen Statusleiste und Baudock. Eine Baukarte aktiviert die Platzierung, ein Klick auf Turm oder Gebäude öffnet dessen Aktionen. Hochkant lässt sich die Welt ziehen; große Bauplatz-Schaltflächen ergänzen die Auswahl direkt auf der Karte. „Übersicht“ zeigt den ganzen Hain, „+“ kehrt zum nahen Ausschnitt zurück. Menü, Pause, Forschung und Rückkehr sind auch in der schmalen Ansicht erreichbar. [UI-Nachweis und Grenzen](../../artifacts/idle-bastion/acceptance/ui/REPORT.md).
+Die Karte füllt die Ansicht zwischen Statusleiste und Baudock. Eine Baukarte zeigt den bebaubaren Wegstreifen; Feld antippen, Reichweite prüfen und Bau bestätigen. Danach schließt die Auswahl. Ein Klick auf einen vorhandenen Turm oder ein Gebäude öffnet dessen Aktionen. Hochkant lässt sich die Welt ziehen; eine kompakte Bestätigungsleiste ergänzt die Vorschau direkt auf der Karte. „Übersicht“ zeigt den ganzen Hain, „+“ kehrt zum nahen Ausschnitt zurück. Menü, Pause, Forschung und Rückkehr sind auch in der schmalen Ansicht erreichbar. [UI-Nachweis und Grenzen](../../artifacts/idle-bastion/acceptance/ui/REPORT.md).
 
 Käufe, Gold, laufender Kampf, Gebäude, Forschung, Hinweise und ausdrückliche Pause bleiben nach Reload erhalten. „Neu laden“ lädt denselben Stand; „Frische Probe“ öffnet eine getrennte neue Partie. Entwicklung (Port 5190), Produktionsvorschau (Port 5191) und GitHub Pages besitzen getrennte lokale Spielstände. Bei Speicherproblemen wird kein neuer Stand über bestehende Daten geschrieben; eine ausdrücklich gewählte temporäre Probe speichert nichts. Niederlagen führen ins sichere Farmen; ein neuer Vorstoß beginnt bewusst am Wellenübergang. Abwesenheit reserviert 60 % der beim Verlassen nachgewiesenen Rate für höchstens zwei Stunden. Pause produziert kein Gold. Genau ein Tab pro Partie darf den Stand fortschreiben. Nach sehr schnellem Reload kann die Freigabe der vorherigen Sitzung kurz dauern (Lease: fünf Sekunden). `/layout.html` enthält die neutrale B01-Layoutprobe, `/asset-check.html` den maßstäblichen Werkstattvergleich. Freigaben und der nächste Umsetzungsschritt stehen ausschließlich in der Roadmap.
 

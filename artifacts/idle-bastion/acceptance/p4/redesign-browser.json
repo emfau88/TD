@@ -1,0 +1,19 @@
+{
+  "errors": [],
+  "savedTowers": 6,
+  "plots": {
+    "workshop": {
+      "x": 2,
+      "y": 10
+    },
+    "warehouse": {
+      "x": 8,
+      "y": 12
+    }
+  },
+  "wispMet": true,
+  "maraAuto": false,
+  "paused": true,
+  "overflow": false,
+  "appError": ""
+}

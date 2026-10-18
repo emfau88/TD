@@ -1,7 +1,7 @@
 /** B05's authored clearing. Rendering and Mara navigation consume exactly the
  * same solid cells. This adds no unlocks and never changes the enemy route.
  */
-import { cellsInRect, getTowerApproachCells, isUnlockedCell, type GridCell, type IdleLayout } from './layout';
+import { SETTLEMENT_ZONE, createIdleLayout, cellsInRect, getTowerApproachCells, isUnlockedCell, type GridCell, type IdleLayout } from './layout';
 
 export interface ForestWorld {
   readonly trees: readonly GridCell[];
@@ -17,14 +17,18 @@ const cell = (x: number, y: number): GridCell => Object.freeze({ x, y });
 export function getForestWorld(layout: IdleLayout): ForestWorld {
   const cached = cache.get(layout);
   if (cached) return cached;
+  // Preserve the authored woods and pond when adding free construction candidates.
+  // The settlement zone stays clear so moving a building never uproots scenery.
+  const terrainLayout = layout.version === 3 ? createIdleLayout({ version: 2, unlockedColumns: layout.bounds.columns }) : layout;
+  const authoredPads = terrainLayout.towerPads;
   const reserved = new Set<string>([
-    ...layout.footpaths, ...layout.plots.flatMap(plot => cellsInRect(plot.footprint)),
+    ...(layout.version === 3 ? cellsInRect(SETTLEMENT_ZONE) : []), ...terrainLayout.footpaths, ...layout.plots.flatMap(plot => cellsInRect(plot.footprint)),
     layout.maraStart, layout.core,
-    ...layout.towerPads.flatMap(pad => [pad.cell, ...getTowerApproachCells(layout, pad.id)]),
+    ...authoredPads.flatMap(pad => [pad.cell, ...getTowerApproachCells(terrainLayout, pad.id)]),
   ].map(key));
   // Leave clear silhouettes around the route, tower bases and character access.
   // A tree's canopy reaches beyond its occupied root cell.
-  for (const position of [...layout.road.cells, ...layout.towerPads.map(pad => pad.cell), layout.core]) {
+  for (const position of [...layout.road.cells, ...authoredPads.map(pad => pad.cell), layout.core]) {
     for (let y = position.y - 1; y <= position.y + 1; y++) {
       for (let x = position.x - 1; x <= position.x + 1; x++) reserved.add(`${x},${y}`);
     }

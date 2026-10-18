@@ -29,10 +29,10 @@ const MAX_PROBE_REWARD = 2.2 * (BASE.waves.maxCount * Math.max(...Object.values(
  */
 export function defenseFingerprint(battle: IdleBattle): string {
   return JSON.stringify({
-    rulesVersion: BATTLE_RULES_VERSION, layoutVersion: LAYOUT_VERSION, layout: battle.layout,
+    rulesVersion: BATTLE_RULES_VERSION, layoutVersion: LAYOUT_VERSION, layout: { columns: battle.layout.bounds.columns, plots: battle.plots },
     blocked: getForestBlockedCells(battle.layout), maraTarget: battle.mara.targetTowerUid, settlement: { workshopBuilt: battle.settlement.workshopBuilt, frostResearched: battle.settlement.frostResearched, builtAt: battle.settlement.builtAt }, wisp: battle.wispUnlocked,
-    towers: battle.towers.map(tower => ({ padId: tower.padId, definition: tower.def.id, level: tower.level, protected: tower.protected }))
-      .sort((left, right) => left.padId.localeCompare(right.padId)),
+    towers: battle.towers.map(tower => [tower.padId, tower.def.id, tower.level, tower.protected] as const)
+      .sort((left, right) => left[0].localeCompare(right[0])),
   });
 }
 
@@ -57,6 +57,7 @@ function prove(battle: IdleBattle, wave: number, fingerprint: string): FarmCerti
   if (snapshot.settlement.workshopUpgraded) snapshot.settlement.upgradedAt = 0;
   if (snapshot.settlement.warehouseBuilt) snapshot.settlement.warehouseBuiltAt = 0;
   if (snapshot.clearing.unlocked) snapshot.clearing.openedAt = 0;
+  if (snapshot.wispArrival.at !== null) snapshot.wispArrival.at = 0;
   snapshot.gold = 0; snapshot.goldRemainderUnits = 0; snapshot.earned = 0; snapshot.kills = 0;
   snapshot.towers = snapshot.towers.map(tower => ({ ...tower, cooldown: stats({ def: towerDefinition(tower.kind), level: tower.level }).cooldown, kills: 0 }));
   const probe = IdleBattle.restore(snapshot, { maraBonus: false });

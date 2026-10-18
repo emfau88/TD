@@ -3,7 +3,7 @@ import { SETTLEMENT, FROST, type IdleBattle } from './battle';
 /** Objectives follow confirmed game state; help never grants money or unlocks. */
 export function tutorialStep(battle: IdleBattle): number {
   // Completed expansion must not send veterans back to role-purchase tutorials.
-  if (battle.settlement.workshopUpgraded) return battle.secondBossVictories ? 11 : 17;
+  if (battle.settlement.workshopUpgraded) return !battle.bossVictories ? 14 : battle.secondBossVictories ? 11 : 17;
   if (!battle.kills) return 0;
   if (!battle.tutorial.builtTower) return 1;
   if (!battle.tutorial.upgradedTower) return 2;
@@ -17,29 +17,28 @@ export function tutorialStep(battle: IdleBattle): number {
   if (battle.highestCleared < 10) return 9;
   if (!battle.towers.some(tower => tower.def.id === 4)) return 10;
   if (!battle.bossVictories) return 14;
-  if (!battle.clearing.unlocked) return 15;
   if (!battle.settlement.workshopUpgraded) return 16;
   if (!battle.secondBossVictories) return 17;
   return 11;
 }
 const HINTS = [
   'Ich bin Mara. Unser Startturm greift automatisch an. Beobachte die ersten Käfer — für jeden besiegten Gegner erhalten wir Gold.',
-  'Wähle unten den Waldwächter und dann einen hellen Bauplatz. Ich empfehle die Nordostkurve; der Nordbogen daneben bleibt dann für Frost frei.',
+  'Wähle unten den Waldwächter, dann ein Feld am Weg und bestätige die Vorschau. Ich empfehle die Nordostkurve; der Nordbogen daneben bleibt dann für Frost frei.',
   'Ein Upgrade erhöht den Schaden sofort. Wähle einen Waldwächter und werte ihn für 60 Gold auf. Ich unterstütze meinen zugewiesenen Turm automatisch.',
-  'Die alte Werkstatt kann wieder arbeiten. Öffne Siedlung und spare für ihre Reparatur. Sie eröffnet die Frostforschung; dafür muss kein weiterer Turm gekauft werden.',
+  'Baue unsere Werkstatt. Öffne Siedlung, wähle einen Platz und bestätige den Bau. Sie eröffnet die Frostforschung; dafür muss kein weiterer Turm gekauft werden.',
   'Die Werkstatt steht! Erforsche Frostfassung. Damit erhalten wir einen Kontrollturm und können alle Türme bis Level 6 verbessern.',
   'Setze einen Frostkristall an eine Kurve, wo auch ein Waldwächter angreift. Sind alle Plätze belegt, kannst du einen gekauften Turm für 70 % verkaufen.',
   'Die blauen Treffer bremsen Käfer zwei Sekunden lang um 45 %. Andere Türme bekommen dadurch mehr Zeit zum Angreifen.',
-  'Nach gemeisterter Welle 5 kommt Wisp kostenlos zur Werkstatt. Er bringt dauerhaft 10 % mehr Kampf-Gold mit; außerdem werden Steinschleuder und drei Bauplätze verfügbar.',
+  'Nach gemeisterter Welle 5 kommt Wisp kostenlos zur Werkstatt. Er bringt dauerhaft 10 % mehr Kampf-Gold mit; außerdem werden Steinschleuder verfügbar.',
   'Wisp versorgt die Werkstatt. Sein Goldbonus wirkt automatisch. Setze eine Steinschleuder nahe Frost ein: Ihr Flächentreffer trifft ganze Käfergruppen.',
-  'Nach Welle 10 öffnen drei weitere Bauplätze und der Scharfschütze. Verbessere deine Verteidigung für diesen Meilenstein.',
+  'Nach Welle 10 wird der Scharfschütze verfügbar. Verbessere deine Verteidigung für diesen Meilenstein.',
   'Der Scharfschütze bevorzugt gepanzerte Gegner und ignoriert ihre Rüstung. Ab Welle 11 kommen Panzerskorpione. Frost und Flächentreffer helfen gegen ihre Begleiter.',
   'Unsere erste Kombination funktioniert: Waldwächter verursachen Schaden, Frostkristalle halten Gegner länger in Reichweite. Probiere Plätze und meine Zuweisung aus.',
   'Das Vorratslager sammelt länger: 65 % der sicheren Farmbasis für bis zu acht Stunden. Öffne Siedlung, prüfe die Vorschau und baue es für 650 Gold. Die besseren Werte gelten für die nächste Abwesenheit.',
   'Nach gemeisterter Welle 8 kannst du ein Vorratslager bauen. Verbessere deine Verteidigung und spare dann 650 Gold. Wisp versorgt später beide Gebäude.',
   'Rosenspiegel erwartet uns in Welle 15. Ihr Herzfaden kündigt an, welchen Turm sie verführt. Frost unterbricht ihren Zauber; Flächentreffer räumen Begleiter ab, Scharfschützen durchdringen ihre Rüstung. Die erste vollständige Bosswelle bringt einmalig 750 Gold.',
   'Rosenspiegel ist besiegt. Öffne unter Siedlung die östliche Lichtung für 900 Gold. Zwei neue Plätze sichern den letzten Wegabschnitt. Mit Lichtung ansehen und Zur Verteidigung wechselst du zwischen den Bereichen.',
-  'Die Lichtung ist offen. Baue die Werkstatt für 1.200 Gold zur Stufe II aus. Der neue Arbeitsplatz ermöglicht Turmlevel 7–20; die nächste Herausforderung wartet in Welle 25.',
+  'Baue die Werkstatt für 1.200 Gold zur Stufe II aus. Der neue Arbeitsplatz ermöglicht Turmlevel 7–20; die nächste Herausforderung wartet in Welle 25.',
   'Rosenspiegel kehrt in Welle 25 mit einer größeren Begleitgruppe zurück. Höhere Turmlevel und unsere vier Rollen helfen. Für den ersten Sieg gibt es einmalig 1.200 Gold.',
 ] as const;
 export const tutorialHint = (battle: IdleBattle): string => HINTS[tutorialStep(battle)];
@@ -49,18 +48,18 @@ export function nextObjective(battle: IdleBattle): string {
     case 0: return 'Die Verteidigung läuft. Erste Käfer bringen Gold — dein zweiter Turm ist bereits bezahlbar.';
     case 1: return 'Nächstes Ziel: eigener Waldwächter auf einem hellen Bauplatz · 75 Gold.';
     case 2: return 'Nächstes Ziel: einen Waldwächter verbessern · 60 Gold.';
-    case 3: return `Nächstes Ziel: Werkstatt reparieren · ${remaining(SETTLEMENT.workshopCost)}.`;
+    case 3: return `Nächstes Ziel: Werkstatt bauen · ${remaining(SETTLEMENT.workshopCost)}.`;
     case 4: return `Nächstes Ziel: Frostfassung erforschen · ${remaining(SETTLEMENT.researchCost)}.`;
     case 5: return `Nächstes Ziel: Frostkristall an einem freien Platz bauen · ${remaining(FROST.cost)}.`;
     case 6: return 'Nächstes Ziel: den ersten blauen Frosttreffer im Kampf beobachten.';
-    case 7: return 'Welle 5 meistern: Wisp, Steinschleuder und drei Bauplätze.';
+    case 7: return 'Welle 5 meistern: Wisp, Steinschleuder.';
     case 8: return 'Wisp arbeitet: +10 % Kampf-Gold. Steinschleuder bauen · 135 Gold.';
     case 12: return `Vorratslager bauen · ${remaining(SETTLEMENT.warehouseCost)} · 65 % Offline-Ertrag für bis zu 8 Stunden.`;
     case 13: return 'Welle 8 meistern: Vorratslager freischalten.';
-    case 9: return 'Welle 10 meistern: Scharfschütze und drei weitere Bauplätze.';
+    case 9: return 'Welle 10 meistern: Scharfschütze.';
     case 10: return 'Scharfschütze bauen · 170 Gold · Rüstung durchdringen.';
     case 14: return battle.highestCleared < 14 ? 'Verteidigung für Rosenspiegel in Welle 15 vorbereiten.' : 'Rosenspiegel besiegen · 750 Gold Erstprämie · Frost unterbricht ihre Verführung.';
-    case 15: return `Östliche Lichtung öffnen · ${remaining(SETTLEMENT.clearingCost)} · zwei neue Bauplätze.`;
+    case 15: return `Östliche Lichtung öffnen · ${remaining(SETTLEMENT.clearingCost)} · optionale Erweiterung.`;
     case 16: return `Werkstatt II ausbauen · ${remaining(SETTLEMENT.workshopUpgradeCost)} · Turmlevel 7–20.`;
     case 17: return 'Rosenspiegels Rückkehr in Welle 25 vorbereiten · Turmlevel 7–20 verfügbar.';
     default: return battle.mode === 'farm' ? 'Verteidigung ausbauen, dann bewusst erneut vorstoßen.'

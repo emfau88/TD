@@ -21,7 +21,7 @@ export function drawDockArt(scene: Phaser.Scene): void {
       draw(cannon ? KEYS.cannonWeapon : KEYS.sniperWeapon, cannon ? 2 : -8, cannon ? -5 : -15, cannon ? 60 : 80, cannon ? 60 : 80);
     } else if (canvas.dataset.icon === 'frost') {
       draw(KEYS.frostTower, 16, -16, 32, 96);
-      draw(KEYS.frostWeapon, 8, -3, 48, 48);
+      draw(KEYS.frostWeapon, 20, 3, 24, 24);
     } else {
       draw(KEYS.tower, 12, 0, 40, 80);
       draw(KEYS.weapon, 2, -5, 60, 60);

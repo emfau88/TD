@@ -16,9 +16,15 @@ Nach dem Turmbau schließt die Verwaltung automatisch; Antippen eines Turms öff
 
 Mobil wurde die Oberfläche zusätzlich verdichtet: weniger Rahmen, einklappbare Hinweise und Vollbild oben rechts. Gold oder Welle öffnen die Chronik. [Mobile Ansicht und Prüfung](artifacts/idle-bastion/acceptance/ui/MOBILE.md).
 
-Werkstatt II wird nach der geöffneten Lichtung und Frostforschung für **1.200 Gold** unter **Siedlung → Werkstatt** ausgebaut. Der sichtbare Anbau schaltet Turmlevel **7–20** frei; ab Level 7 wechseln die vier Turmrollen zur dritten Originalgrafikstufe. In **Welle 25** kehrt Rosenspiegel mit mehr Begleitern und einer eigenen einmaligen 1.200-Gold-Prämie zurück. Alte Spielstände bleiben erhalten. [B12: Regeln, Spielaufnahmen und Prüfgrenzen](artifacts/idle-bastion/acceptance/p4/B12.md).
+Werkstatt II wird nach der Frostforschung unabhängig von der Lichtung für **1.200 Gold** unter **Siedlung → Werkstatt** ausgebaut. Der sichtbare Anbau schaltet Turmlevel **7–20** frei; ab Level 7 wechseln die vier Turmrollen zur dritten Originalgrafikstufe. In **Welle 25** kehrt Rosenspiegel mit mehr Begleitern und einer eigenen einmaligen 1.200-Gold-Prämie zurück. Alte Spielstände bleiben erhalten. [B12: Regeln, Spielaufnahmen und Prüfgrenzen](artifacts/idle-bastion/acceptance/p4/B12.md).
+
+Die Ergänzung nach B12 erlaubt freie Turmkombinationen auf bis zu drei Feldern beidseits des Wegs. Feld auswählen, Reichweite prüfen und Bau bestätigen. Mara unterstützt aus der Entfernung, wartet automatisch auf Gegner und kann unabhängig laufen; manuelles Zaubern ist optional. Wisp stellt sich kurz vor. Werkstatt und Lager lassen sich in der Siedlung platzieren und bei Pause versetzen. Die östliche Lichtung ist optional. Frost zeigt einen einzelnen Kristall; Originaltreffer und Bauanimationen machen Aktionen deutlicher. [Regeln und Prüfung](artifacts/idle-bastion/acceptance/p4/REDESIGN.md).
 
 ### Entwicklung von Idle Bastion
+
+[Neue Bauflächen und Figurenbedienung nach B12](artifacts/idle-bastion/acceptance/p4/REDESIGN.md):
+
+![Freie Wegstreifen mit Bauvorschau](artifacts/idle-bastion/acceptance/p4/redesign-frost-preview.png)
 
 Echte Spielaufnahmen der bisherigen Entwicklung, keine Mockups. B07a führte die große Kartenansicht ein, B07b ergänzt verständliche Fortschrittsinformationen und die warme Spieloberfläche. Die älteren Aufnahmen bleiben als Vergleich erhalten.
 

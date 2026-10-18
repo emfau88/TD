@@ -1,10 +1,13 @@
+import { MARA } from './mara';
+import { CombatEffects } from './combat-effects';
+import { weaponFrame } from './tower-atlas';
 import { succubusFrame } from '../../../reference/src/succubus-art';
 import { BOSS } from './boss';
 import { BossCharmView, charmAge } from './boss-visuals';
 import { wispPose } from './wisp';
 import Phaser from 'phaser';
-import { BASE, IdleBattle, stats, type Enemy, type Tower } from './battle';
-import { cellCenter, type TowerPad } from './layout';
+import { BASE, IdleBattle, stats, towerDefinition, visualStage, type BattleEvent, type TowerId, type Enemy, type Tower } from './battle';
+import { cellCenter, SETTLEMENT_ZONE, type GridCell, type TowerPad } from './layout';
 import { KEYS, MARA_FOOT, SCALE, enemyFrame, enemyFlip, loopFrame, maraFrame, towerArt, preloadArt, prepareArt } from './art';
 import { createForest, type ForestView } from './forest';
 
@@ -19,6 +22,7 @@ export interface BattleSceneHooks {
   readonly selectWorkshop?: () => void;
   readonly selectWarehouse?: () => void;
   readonly selectClearing?: () => void;
+  readonly ground?: (cell: GridCell) => void;
 }
 const colors = { gold: 0xd9bd79, text: '#eae5ce', muted: '#91a58e', panel: '#183424' };
 type TowerView = { base: Phaser.GameObjects.Image; weapon: Phaser.GameObjects.Image };
@@ -37,7 +41,13 @@ export class BattleScene extends Phaser.Scene {
   private maraShadow!: Phaser.GameObjects.Ellipse;
   private wisp!: Phaser.GameObjects.Image;
   private wispName!: Phaser.GameObjects.Text;
-  private readonly impacts = new Map<number, { x: number; y: number; at: number }>();
+  private combatEffects!: CombatEffects;
+  private buildKind?: TowerId;
+  private groundMode?: 'mara' | 'workshop' | 'warehouse';
+  private groundCell?: GridCell;
+  private ghostBase!: Phaser.GameObjects.Image;
+  private ghostWeapon!: Phaser.GameObjects.Image;
+  private buffText!: Phaser.GameObjects.Text;
   private maraName!: Phaser.GameObjects.Text;
   private readonly towerViews = new Map<number, TowerView>();
   private readonly enemyViews = new Map<number, EnemyView>();
@@ -46,6 +56,7 @@ export class BattleScene extends Phaser.Scene {
   private readonly padMarks = new Map<string, Phaser.GameObjects.Graphics>();
   private selectedPadId?: string;
   private readyToDraw = false;
+  private pendingTap?: { x: number; y: number };
   private hudElapsed = 0;
   private dragOrigin?: { x: number; y: number; dragging: boolean };
   private relativeZoom = 1;
@@ -53,7 +64,7 @@ export class BattleScene extends Phaser.Scene {
   private overview = false;
   private portraitCamera = false;
   private cameraFitted = false;
-  private renderedColumns = 0;
+  private renderedLayout?: IdleBattle['layout'];
   private readonly preventMiddleScroll = (event: MouseEvent) => { if (event.button === 1) event.preventDefault(); };
   private readonly preventWheel = (event: WheelEvent) => { if (!event.ctrlKey) event.preventDefault(); };
   private get sim(): IdleBattle { return this.readBattle(); }
@@ -66,18 +77,15 @@ export class BattleScene extends Phaser.Scene {
     const { width, height } = this.sim.layout.bounds;
     this.cameras.main.setBounds(0, 0, width, height).setScroll(0, 0);
     this.forest = createForest(this, this.sim.layout);
-    this.renderedColumns = this.sim.layout.bounds.columns;
+    this.renderedLayout = this.sim.layout;
     this.selection = this.add.graphics().setDepth(6000);
     this.effects = this.add.graphics().setDepth(5500);
     this.bossCharmView = new BossCharmView(this, this.pixelDensity);
-    for (const pad of this.sim.layout.towerPads) {
-      const point = cellCenter(this.sim.layout, pad.cell);
-      this.padMarks.set(pad.id, this.add.graphics().setDepth(20));
-      this.padLabels.set(pad.id, this.add.text(point.x, point.y, '', {
-        fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: colors.text,
-        stroke: '#233e2d', strokeThickness: 2, align: 'center',
-      }).setOrigin(0.5).setDepth(5000));
-    }
+    this.combatEffects = new CombatEffects(this);
+    this.ghostBase = this.add.image(0, 0, KEYS.tower).setVisible(false).setDepth(5900);
+    this.ghostWeapon = this.add.image(0, 0, KEYS.weapon).setVisible(false).setDepth(5901);
+    this.buffText = this.add.text(0, 0, '', { fontFamily: 'Segoe UI', fontSize: '12px', fontStyle: 'bold',
+      resolution: 2, color: '#fff0b0', stroke: '#302412', strokeThickness: 3 }).setOrigin(0.5).setDepth(5902);
     this.maraShadow = this.add.ellipse(0, 0, 22, 8, 0x18382b, 0.22).setDepth(950);
     this.mara = this.add.image(0, 0, KEYS.mara, 0).setOrigin(MARA_FOOT[0] / 64, MARA_FOOT[1] / 64).setScale(SCALE.mara);
     this.maraName = this.add.text(0, 0, 'Mara', {
@@ -103,7 +111,7 @@ export class BattleScene extends Phaser.Scene {
       this.input.off('pointermove', this.panAtPointer, this);
       this.input.off('wheel', this.zoomAtPointer, this);
       this.scale.off('resize', this.resizeCamera, this);
-      this.bossCharmView.destroy();
+      this.bossCharmView.destroy(); this.combatEffects.destroy();
       this.forest?.destroy(); this.forest = undefined;
       this.padLabels.clear(); this.padMarks.clear(); this.towerViews.clear(); this.enemyViews.clear(); this.shotViews.clear();
     });
@@ -118,6 +126,7 @@ export class BattleScene extends Phaser.Scene {
       else this.sim.update(Math.min(rawSeconds, 0.08));
     }
     if (!this.readyToDraw) return;
+    if (this.pendingTap && (this.hooks.canRender?.() ?? true)) { const tap = this.pendingTap; this.pendingTap = undefined; this.selectAtPointer(tap); }
     if (this.hooks.canRender?.() ?? true) this.drawActors();
     this.hudElapsed += Math.min(rawSeconds, 0.08);
     if (this.hudElapsed >= 0.1) {
@@ -125,6 +134,10 @@ export class BattleScene extends Phaser.Scene {
       if (this.hooks.canRender?.() ?? true) this.refreshLabels();
       this.hooks.changed();
     }
+  }
+  acceptEvents(events: readonly BattleEvent[]): void { if (this.readyToDraw) this.combatEffects.accept(events, this.sim.elapsed); }
+  setPlacement(kind?: TowerId, ground?: 'mara' | 'workshop' | 'warehouse', cell?: GridCell): void {
+    this.buildKind = kind; this.groundMode = ground; this.groundCell = cell;
   }
   setSelected(padId?: string): void {
     this.selectedPadId = this.sim.layout.towerPads.some(pad => pad.id === padId) ? padId : undefined;
@@ -135,10 +148,10 @@ export class BattleScene extends Phaser.Scene {
     this.syncLayout(); this.refreshLabels(); this.drawSelection(); this.drawActors();
   }
   private syncLayout(): void {
-    if (this.renderedColumns === this.sim.layout.bounds.columns) return;
+    if (this.renderedLayout === this.sim.layout) return;
     const camera = this.cameras.main, scrollX = camera.scrollX, scrollY = camera.scrollY;
     this.forest?.destroy(); this.forest = createForest(this, this.sim.layout);
-    this.renderedColumns = this.sim.layout.bounds.columns;
+    this.renderedLayout = this.sim.layout;
     this.overview = false;
     this.fitCameraBounds();
     camera.setScroll(camera.clampX(scrollX), camera.clampY(scrollY));
@@ -188,7 +201,7 @@ export class BattleScene extends Phaser.Scene {
   }
   private objectPoint(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
     if (kind === 'clearing') return { x: 1080, y: 524 };
-    if (kind === 'wisp') return wispPose(this.sim.layout, this.sim.elapsed, this.sim.settlement.warehouseBuilt);
+    if (kind === 'wisp') return wispPose(this.sim.layout, this.sim.elapsed, this.sim.settlement.warehouseBuilt, this.sim.wispArrival.at);
     if (kind === 'mara') return { x: this.sim.mara.x, y: this.sim.mara.y - 20 };
     if (kind === 'settlement' || kind === 'warehouse') {
       const plot = this.sim.layout.plots.find(plot => plot.id === (kind === 'warehouse' ? 'warehouse' : 'workshop'))!;
@@ -234,59 +247,84 @@ export class BattleScene extends Phaser.Scene {
     if ((pointer.event as WheelEvent).ctrlKey || !dy) return;
     this.setMapZoom(this.mapZoom + (dy < 0 ? 0.05 : -0.05), pointer.x, pointer.y);
   }
-  private selectAtPointer(pointer: Phaser.Input.Pointer): void {
-    if (this.hooks.canRender?.() === false) return;
+  private selectAtPointer(pointer: { x: number; y: number }): void {
+    if (this.hooks.canRender?.() === false) { this.pendingTap = { x: pointer.x, y: pointer.y }; return; }
     const point = this.cameras.main.getWorldPoint(pointer.x, pointer.y), size = this.sim.layout.cellSize;
+    if (this.groundMode) { this.hooks.ground?.({ x: Math.floor(point.x / size), y: Math.floor(point.y / size) }); return; }
     if (this.bossCharmView.contains(point)) return;
     if (!this.sim.clearing.unlocked && point.x > this.sim.layout.startBounds.width - 120 && point.y >= 505 && point.y <= 545) {
       this.hooks.selectClearing?.(); return;
     }
     const pad = this.sim.layout.towerPads.find(value => value.cell.x === Math.floor(point.x / size) && value.cell.y === Math.floor(point.y / size));
-    const wisp = wispPose(this.sim.layout, this.sim.elapsed, this.sim.settlement.warehouseBuilt);
+    if (this.buildKind) { this.setSelected(pad?.id); this.hooks.select(pad?.id); return; }
+    const wisp = wispPose(this.sim.layout, this.sim.elapsed, this.sim.settlement.warehouseBuilt, this.sim.wispArrival.at);
     if (this.sim.wispUnlocked && Math.hypot(point.x - wisp.x, point.y - (wisp.y - 18)) < 23) { this.hooks.selectWisp?.(); return; }
     const warehouse = this.sim.layout.plots.find(plot => plot.id === 'warehouse')!.footprint;
-    if (!pad && this.sim.warehouseUnlocked && point.x >= warehouse.x * size && point.x < (warehouse.x + warehouse.width) * size
+    if (this.sim.warehouseUnlocked && point.x >= warehouse.x * size && point.x < (warehouse.x + warehouse.width) * size
       && point.y >= (warehouse.y - 0.5) * size && point.y < (warehouse.y + warehouse.height) * size) {
       this.hooks.selectWarehouse?.(); return;
     }
     const workshop = this.sim.layout.plots.find(plot => plot.id === 'workshop')!.footprint;
-    if (!pad && point.x >= workshop.x * size && point.x < (workshop.x + workshop.width) * size
+    if (point.x >= workshop.x * size && point.x < (workshop.x + workshop.width) * size
       && point.y >= (workshop.y - 1.2) * size && point.y < (workshop.y + workshop.height) * size) {
       this.hooks.selectWorkshop?.(); return;
     }
-    if (!pad && Math.hypot(point.x - this.sim.mara.x, point.y - (this.sim.mara.y - 18)) < 23) {
+    if (Math.hypot(point.x - this.sim.mara.x, point.y - (this.sim.mara.y - 18)) < 23) {
       this.hooks.selectMara?.(); return;
     }
-    this.setSelected(pad?.id); this.hooks.select(pad?.id);
+    const occupied = this.sim.towers.some(t => t.padId === pad?.id);
+    this.setSelected(occupied ? pad?.id : undefined); this.hooks.select(occupied ? pad?.id : undefined);
   }
   private refreshLabels(): void {
-    for (const pad of this.sim.layout.towerPads) {
-      const label = this.padLabels.get(pad.id), mark = this.padMarks.get(pad.id);
-      if (!label || !mark) continue;
-      const visible = pad.cell.x < this.sim.layout.bounds.columns;
-      label.setVisible(visible); mark.setVisible(visible);
-      if (!visible) continue;
-      const tower = this.sim.towers.find(value => value.padId === pad.id), point = cellCenter(this.sim.layout, pad.cell);
-      mark.clear();
-      if (!tower) {
-        const available = this.sim.isPadUnlocked(pad.id);
-        mark.fillStyle(0x243d29, available ? 0.20 : 0.08).fillEllipse(point.x, point.y + 3, 30, 16);
-        mark.lineStyle(1.2, colors.gold, available ? 0.65 : 0.2).strokeEllipse(point.x, point.y + 3, 30, 16);
-      }
-      const content = tower ? `Lv. ${tower.level}` : this.sim.isPadUnlocked(pad.id) ? '+' : '';
-      if (label.text !== content) label.setText(content);
-      label.setPosition(point.x, tower ? point.y + 22 : point.y - 1);
-      label.setColor(tower && this.sim.isMaraBoosted(tower.uid) ? '#ffe3a0' : this.sim.isPadUnlocked(pad.id) ? colors.text : colors.muted);
+    const present = new Set(this.sim.towers.map(t => t.padId));
+    for (const [id, label] of this.padLabels) if (!present.has(id)) { label.destroy(); this.padLabels.delete(id); }
+    for (const tower of this.sim.towers) {
+      let label = this.padLabels.get(tower.padId);
+      if (!label) { label = this.add.text(0, 0, '', { fontFamily: 'Segoe UI', fontSize: '11px', fontStyle: 'bold', resolution: 2,
+        color: colors.text, stroke: '#233e2d', strokeThickness: 2 }).setOrigin(0.5).setDepth(5000); this.padLabels.set(tower.padId, label); }
+      label.setPosition(tower.x, tower.y + 22).setText(`Lv. ${tower.level}`);
     }
   }
   private drawSelection(): void {
-    const g = this.selection; g.clear();
+    const g = this.selection; g.clear(); this.ghostBase.setVisible(false); this.ghostWeapon.setVisible(false);
+    const size = this.sim.layout.cellSize;
+    if (this.groundMode) {
+      if (this.groundMode === 'mara') {
+        g.lineStyle(1.5, 0xf2daa0, 0.6).strokeCircle(this.sim.mara.x, this.sim.mara.y, MARA.range);
+      } else {
+        g.fillStyle(0xffdc8c, 0.10).fillRect(SETTLEMENT_ZONE.x * size, SETTLEMENT_ZONE.y * size, SETTLEMENT_ZONE.width * size, SETTLEMENT_ZONE.height * size);
+      }
+      if (this.groundCell && this.groundMode !== 'mara') {
+        const id = this.groundMode, cell = this.groundCell, width = id === 'workshop' ? 3 : 2;
+        const valid = this.sim.canPositionBuilding(id, cell);
+        g.lineStyle(2, valid ? 0xe9ce88 : 0xeb7272, 0.9).strokeRect(cell.x * size, cell.y * size, width * size, 2 * size);
+        this.ghostBase.setVisible(true).setTexture(id === 'workshop' ? KEYS.workshop : KEYS.warehouse)
+          .setPosition((cell.x + width / 2) * size, (cell.y + 1) * size).setScale(1)
+          .setOrigin(0.5, id === 'workshop' ? 112/128 : 80/96).setAlpha(0.65).setTint(valid ? 0xffffff : 0xff8888);
+      }
+      return;
+    }
+    if (this.buildKind) for (const pad of this.sim.layout.towerPads) {
+      if (!this.sim.isPadUnlocked(pad.id) || this.sim.towers.some(t => t.padId === pad.id)) continue;
+      g.fillStyle(0xf1d696, 0.12).fillRect(pad.cell.x * size + 2, pad.cell.y * size + 2, size - 4, size - 4);
+      g.lineStyle(1, 0xf1d696, 0.4).strokeRect(pad.cell.x * size + 2, pad.cell.y * size + 2, size - 4, size - 4);
+    }
     const pad = this.selectedPad(); if (!pad) return;
-    const point = cellCenter(this.sim.layout, pad.cell);
-    if (this.sim.isPadUnlocked(pad.id)) {
-      const tower = this.sim.towers.find(value => value.padId === pad.id), range = tower ? stats(tower).range : BASE.tower.range;
-      g.fillStyle(colors.gold, 0.055).fillCircle(point.x, point.y, range);
-      g.lineStyle(1.5, colors.gold, 0.45).strokeCircle(point.x, point.y, range);
+    const point = cellCenter(this.sim.layout, pad.cell), tower = this.sim.towers.find(t => t.padId === pad.id);
+    const range = tower ? stats(tower).range : towerDefinition(this.buildKind ?? 1).range;
+    g.fillStyle(colors.gold, 0.055).fillCircle(point.x, point.y, range);
+    g.lineStyle(1.5, colors.gold, 0.6).strokeCircle(point.x, point.y, range);
+    // Highlight the exact shared attack corridor, not just an abstract circle.
+    for (const cell of this.sim.layout.road.cells) {
+      const p = cellCenter(this.sim.layout, cell);
+      if (Math.hypot(p.x - point.x, p.y - point.y) <= range) g.fillStyle(0xffe0a0, 0.2).fillRect(cell.x * size, cell.y * size, size, size);
+    }
+    if (!tower && this.buildKind) {
+      const art = towerArt(this.buildKind), valid = this.sim.canBuild(pad.id, this.buildKind);
+      this.ghostBase.setVisible(true).setTexture(art.base, 0).setPosition(point.x, point.y + 13).setScale(SCALE.tower)
+        .setOrigin(0.5, this.buildKind === 2 ? 0.81 : 0.8).setAlpha(0.75).setTint(valid ? 0xffffff : 0xff9999);
+      this.ghostWeapon.setVisible(true).setTexture(art.weapons[0], 0).setPosition(point.x, point.y - (this.buildKind === 2 ? 34 : 23))
+        .setScale(SCALE.tower).setAlpha(0.75).setTint(valid ? 0xffffff : 0xff9999);
     }
     g.lineStyle(2, 0xf2daa0, 0.95).strokeEllipse(point.x, point.y + 7, 35, 18);
   }
@@ -325,22 +363,27 @@ export class BattleScene extends Phaser.Scene {
       const view = this.towerView(tower), stat = stats(tower);
       const charmed = sim.isCharmed(tower.uid);
       const boosted = sim.isMaraBoosted(tower.uid), firingCooldown = stat.cooldown / ((boosted ? 1.5 : 1) * (charmed ? BOSS.rateMultiplier : 1));
-      const firingAge = firingCooldown - tower.cooldown;
+      const firingAge = elapsed - this.combatEffects.firedAt(tower.uid);
       const art = towerArt(tower.def.id, tower.visualStage);
-      const frame = tower.cooldown > 0 && firingAge < firingCooldown * 0.85 ? Math.min(art.frames - 1, Math.floor(firingAge / (firingCooldown * 0.85) * art.frames)) : 0;
+      const frame = weaponFrame(tower.def.id, tower.visualStage, firingAge, elapsed, firingCooldown);
       const weaponKey = art.weapons[tower.visualStage - 1];
       if (view.weapon.texture.key !== weaponKey) view.weapon.setTexture(weaponKey);
-      view.base.setFrame(tower.visualStage - 1);
+      view.base.setFrame(tower.visualStage - 1).setOrigin(0.5, tower.def.id === 2 ? 0.81 : 0.8);
       const age = charmAge(sim.bossCharm), wobble = charmed ? Math.sin(age * 8) * 0.035 : 0;
       const tremble = charmed ? Math.sin(age * 31) * 0.65 : 0;
       const tint = charmed ? Phaser.Display.Color.GetColor(255, Math.round(192 + Math.sin(age * 5) * 22), Math.round(229 + Math.sin(age * 5) * 10))
         : boosted ? 0xffedbe : 0xffffff;
       view.base.setPosition(tower.x + tremble * 0.6, tower.y + 13).setRotation(wobble * 0.4).setTint(tint);
-      view.weapon.setPosition(tower.x + tremble, tower.y - 23).setFrame(Math.max(0, frame)).setRotation(tower.angle + wobble).setTint(tint);
+      view.weapon.setPosition(tower.x + tremble, tower.y - (tower.def.id === 2 ? 34 : 23)).setFrame(Math.max(0, frame)).setRotation((tower.def.id === 2 ? 0 : tower.angle) + wobble).setTint(tint);
       if (boosted) {
         const alpha = 0.45 + Math.sin(elapsed * 7) * 0.15;
         this.effects.lineStyle(2, 0xf5d58b, alpha).strokeEllipse(tower.x, tower.y + 12, 40, 19);
-        this.effects.lineStyle(1.5, 0xffe3a5, alpha * 0.7).lineBetween(sim.mara.x, sim.mara.y - 15, tower.x, tower.y - 15);
+        this.effects.lineStyle(3, 0xffe3a5, 0.95).beginPath().arc(tower.x, tower.y + 3, 24, -Math.PI/2, -Math.PI/2 + Math.PI * 2 * sim.mara.effectRemaining / MARA.duration, false).strokePath();
+        const spellAge = MARA.duration - sim.mara.effectRemaining;
+        if (spellAge < 0.4) {
+          const f = spellAge / 0.4;
+          this.effects.fillStyle(0xffe8a7, 1).fillCircle(sim.mara.x + (tower.x - sim.mara.x) * f, sim.mara.y - 15 + (tower.y - sim.mara.y) * f, 5);
+        }
       }
     }
     const enemies = new Set(sim.enemies.map(enemy => enemy.uid));
@@ -366,23 +409,19 @@ export class BattleScene extends Phaser.Scene {
     for (const [uid, view] of this.shotViews) if (!shots.has(uid)) { view.destroy(); this.shotViews.delete(uid); }
     for (const shot of sim.shots) {
       let view = this.shotViews.get(shot.uid);
-      if (!view) { view = this.add.image(shot.x, shot.y, towerArt(shot.kind).projectile, 0).setScale(shot.kind >= 3 ? 0.85 : shot.kind === 2 ? 0.5 : SCALE.projectile).setDepth(5501); this.shotViews.set(shot.uid, view); }
-      view.setPosition(shot.x, shot.y).setFrame(loopFrame(elapsed, towerArt(shot.kind).shotFrames));
+      if (!view) { view = this.add.image(shot.x, shot.y, towerArt(shot.kind, visualStage(shot.level)).projectile, 0).setScale(shot.kind >= 3 ? 0.85 : shot.kind === 2 ? 0.5 : SCALE.projectile).setDepth(5501); this.shotViews.set(shot.uid, view); }
+      view.setPosition(shot.x, shot.y).setFrame(loopFrame(this.combatEffects.shotAge(shot.uid, elapsed), towerArt(shot.kind, visualStage(shot.level)).shotFrames));
       const target = sim.enemies.find(enemy => enemy.uid === shot.target);
       if (target) view.setRotation(Math.atan2(target.y - shot.y, target.x - shot.x) + Math.PI / 2);
     }
-    // One ring per cannon impact, even when the blast hits several enemies.
-    for (const event of sim.events) if (event.type === 'hit' && event.shot?.kind === 3 && !this.impacts.has(event.shot.uid))
-      this.impacts.set(event.shot.uid, { x: event.x!, y: event.y!, at: elapsed });
-    for (const [id, hit] of this.impacts) {
-      const age = elapsed - hit.at;
-      if (age < 0 || age > 0.35) { this.impacts.delete(id); continue; }
-      this.effects.lineStyle(2, 0xecc78d, (1 - age / 0.35) * 0.8).strokeCircle(hit.x, hit.y, 12 + age / 0.35 * 40);
-    }
-    const wisp = wispPose(sim.layout, elapsed, sim.settlement.warehouseBuilt);
+    this.combatEffects.update(elapsed, shots, towers);
+    const boostedTower = sim.towers.find(t => sim.isMaraBoosted(t.uid));
+    this.buffText.setVisible(!!boostedTower);
+    if (boostedTower) this.buffText.setPosition(boostedTower.x, boostedTower.y - 60).setText(`✦ ${Math.ceil(sim.mara.effectRemaining)} s`);
+    const wisp = wispPose(sim.layout, elapsed, sim.settlement.warehouseBuilt, sim.wispArrival.at);
     this.wisp.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y).setFrame(wisp.frame).setFlipX(wisp.flip).setDepth(wisp.y + 1002);
     this.wispName.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y + 13);
-    const mara = sim.mara, acting = mara.effectRemaining > 0 && sim.isMaraBoosted(mara.targetTowerUid);
+    const mara = sim.mara, acting = mara.effectRemaining > 0 && sim.isMaraBoosted(mara.effectTowerUid ?? -1);
     this.mara.setPosition(mara.x, mara.y).setFrame(maraFrame(mara.direction, mara.path.length > 0, acting, elapsed)).setDepth(mara.y + 1002);
     this.maraShadow.setPosition(mara.x, mara.y + 1).setDepth(mara.y + 999);
     this.maraName.setPosition(mara.x, mara.y + 13).setText(acting ? 'Mara · Übertakten' : mara.unreachable ? 'Mara · kein Zugang' : 'Mara');

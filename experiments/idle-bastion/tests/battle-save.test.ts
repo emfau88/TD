@@ -187,9 +187,9 @@ test('invalid resources, times, references, definitions and newer formats are re
   until(sim, () => sim.shots.length > 0);
   const valid = sim.snapshot();
   const mutations: [string, (value: BattleSnapshot) => void][] = [
-    ['schema', value => { value.schemaVersion = 11 as 10; }],
-    ['rules', value => { value.rulesVersion = 7 as 6; }],
-    ['layout version', value => { value.layoutVersion = 3 as 2; }],
+    ['schema', value => { value.schemaVersion = 12 as 11; }],
+    ['rules', value => { value.rulesVersion = 8 as 7; }],
+    ['layout version', value => { value.layoutVersion = 4 as 3; }],
     ['layout identity', value => { value.layoutId = 'unknown' as 'start28'; }],
     ['negative gold', value => { value.gold = -1; }],
     ['fractional gold', value => { value.gold = 0.5; }],

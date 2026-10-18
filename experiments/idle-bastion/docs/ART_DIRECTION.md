@@ -38,15 +38,15 @@ Farbanker aus dem bestehenden Gelände: Gras `#63ab3f`, helle Vegetation `#c8d45
 - Die bestehende klassische Karte bleibt unverändert; für Idle wird ein eigenes Startlayout gestaltet.
 - Startgebiet: **28 × 16 Zellen / 1120 × 640**. Im Slice genau eine Erweiterung um **bis zu acht Spalten rechts**, insgesamt höchstens **36 × 16 / 1440 × 640**. Die östliche Lichtung verwendet vier dieser Spalten: **32 × 16 / 1280 × 640**, zwei Plätze in der ersten neuen Spalte.
 - Das freigelegte Gebiet wird Teil derselben zusammenhängenden Welt. Die Kamera kann dorthin verschoben werden; die Objekte behalten ihren Maßstab. Kein automatisches Verkleinern der ganzen Welt beim Ausbau.
-- Elf feste Turmplätze im Startgebiet, davon fünf zu Beginn verfügbar, einschließlich des belegten Startplatzes. Je drei weitere öffnen bei gemeisterter Welle 5 und 10. Zwei weitere Plätze liegen in der späteren Erweiterung; insgesamt dreizehn. Der Nutzerauftrag nach B10 ergänzt Nordbogen (11,4), Mittelpass (16,7) und Südbogen (23,9), ohne bestehende Plätze zu versetzen.
+- Ab der Ergänzung nach B12: bis zu drei Zellen tiefe bebaubare Streifen beidseits des Wegs, unter Ausschluss von Hindernissen und Siedlung. Das Raster erscheint nur beim Platzieren. Vorschau zeigt das richtige Turmbild, die tatsächliche Reichweite und den abgedeckten Weg. Bestehende Turmpositionen bleiben erhalten.
 - Noch gesperrte Plätze bleiben zurückhaltend lesbar. Keine zehn blinkenden Bauaufforderungen im Einstieg.
-- Am Desktop sind Startturm, erste Gegner, Mara, Kern, Werkstattstelle und erster vorgeschlagener Bauplatz im Startausschnitt gleichzeitig sichtbar. Hochkant führen die Dockkarten zum relevanten Ausschnitt; zusätzlich sind freie Bauplätze über große Schaltflächen wählbar.
+- Am Desktop sind Startturm, erste Gegner, Mara, Kern, Werkstattstelle und erster vorgeschlagener Bauplatz im Startausschnitt gleichzeitig sichtbar. Hochkant führen die Dockkarten zum relevanten Ausschnitt; eine kompakte Bestätigungsleiste ergänzt die Platzierung.
 - Die erste Abnahme prüft das einschließlich HUD bei **1366 × 768**. Eine Ansicht bei **1920 × 1080** ergänzt den Vergleich. UI-Höhe und Startkomposition werden zusammen festgelegt.
 - Für die Lichtung werden vorhandene Gras-/Baum-/Fels-/Blumenframes verwendet. Keine neuen Gebäude- oder Bildassets; das kleine Dock-Waldsymbol folgt dem vorhandenen SVG-Pixelraster. Bestehende Baumvarianten und Positionen bleiben beim Öffnen erhalten.
 - Die Erweiterung öffnet eine sichtbare Waldkante. Der bestehende Weg wird im Slice nicht neu geroutet; die neuen Plätze liegen vorzugsweise in den ersten ein bis zwei neuen Spalten und müssen taktisch relevante Schussfenster auf den letzten Wegabschnitt besitzen. Tiefer östlich liegende Plätze dürfen nicht durch künstlich erhöhte Reichweite gerettet werden.
 - Der seitliche Ausbau ist auf dem Startausschnitt bereits als mögliche Lichtung erkennbar, ohne spielbare Fläche vorzutäuschen.
 - Im Idle-Startlayout Kernposition und Gegnerpfadende ausdrücklich zusammenführen. Die klassische Kombination aus gezeichnetem Kern bei [27,8] und Pfadende [28,8] jenseits der Karte nicht blind übernehmen; nach Freilegung darf niemand sichtbar hinter dem Kern weiterlaufen.
-- Werkstatt und Lager haben feste Grundstücke abseits des Gegnerwegs. Zugängliche Gehflächen verbinden sie mit den erreichbaren Turm-Nachbarfeldern.
+- Werkstatt und Lager erhalten frei wählbare, nicht überlappende Grundstücke in der Siedlungsfläche abseits des Gegnerwegs. Zugängliche Gehflächen verbinden sie mit den erreichbaren Turm-Nachbarfeldern.
 - Ein Baum, Fels oder Gebäude darf keine scheinbar freie Bau- oder Gehfläche verdecken. Die Bodenbelegung folgt den tatsächlichen Objekten.
 
 Ein kurzer Klick wählt aus; Ziehen ab sechs Bildschirmpixeln verschiebt die Karte und löst beim Loslassen keinen Bau aus. Nach bestätigtem Turmbau schließen Platzierung und Turmverwaltung; erneutes Antippen öffnet die Werte. Fehlerhafte oder nicht bezahlbare Käufe behalten ihren Hinweis. Übersicht und Zoom bleiben sichtbar. Der Kamerafokus auf einen Bauplatz folgt einer bewussten Auswahl im Dock; keine eigenständigen Schwenks während einer Platzierung.
@@ -67,7 +67,7 @@ Das vorhandene Foozle-Builder-Pack enthält **Wisp, Turmbau und Turmeinsturz**, 
 
 | Motiv | Benötigte Zustände | Grundstück | Vorläufiger Laufzeitrahmen / sichtbare Silhouette |
 | --- | --- | --- | --- |
-| Werkstatt | Beschädigt/unvollständig → Werkstatt I → kleiner sichtbarer Zusatz für II | 3 × 2 Zellen, einschließlich Vorplatz | Rahmen 128 × 128; Gebäude ungefähr 84–100 breit und 70–88 hoch |
+| Werkstatt | Werkbank mit Baumaterial → Werkstatt I → kleiner sichtbarer Zusatz für II | 3 × 2 Zellen, einschließlich Vorplatz | Rahmen 128 × 128; Gebäude ungefähr 84–100 breit und 70–88 hoch |
 | Vorratslager | Markiertes Grundstück → Lager I | 2 × 2 Zellen | Rahmen 96 × 96; Gebäude ungefähr 56–72 breit und 48–64 hoch |
 | Kleine Requisiten | Höchstens wenige notwendige Kiste-/Holz-/Werkzeugdetails | Im jeweiligen Grundstück oder dokumentierte kleine Bodenbelegung | Aus bestehenden Quellen bevorzugt; keine separate Requisitenserie |
 
@@ -160,6 +160,15 @@ Herzfaden, fünf aufsteigende Herzen, pulsierender rosafarbener Turmglanz und le
 
 Der kleine überdachte Arbeitsplatz entsteht als eigene Phaser-Pixelgrafik in `src/workshop-annex.ts`: 32 × 39 Weltpixel, rote Ziegel, Holzpfosten, Amboss und warmes Lampenlicht. Das bestehende Werkstatt-Bitmap bleibt unverändert. Der Anbau sitzt rechts am Haus (Weltanker des Hauses weiterhin 180/480); Grundstück, Maßstab und Laufwege bleiben gleich. Sichtbarkeit folgt der gespeicherten Ausbaustufe, kurze Staubpartikel dem bestätigten Bauzeitpunkt. Herkunft: neu geschriebene Grafikprimitive, keine zusätzliche Bildgenerierung.
 
-Level 7–20 verwenden die vorhandenen dritten Basisturmframes und unveränderten Original-Waffenatlanten `Tower 01/02/03/04 - Level 03 - Weapon.png`. Raster/Animation: Waldwächter 96×96 / 6 Frames; Frostkristall 128×128 / 10; Steinschleuder 96×96 / 8; Scharfschütze 128×128 / 17. Maßstab und Drehachse bleiben erhalten. Die grüngelbe dritte Froststufe stammt aus dem Originalatlas; der Frosttreffer bleibt als Effekt erkennbar. Keine vierte Grafikstufe für spätere Zahlenlevel.
+Level 7–20 verwenden die vorhandenen dritten Basisturmframes und unveränderten Original-Waffenatlanten `Tower 01/02/03/04 - Level 03 - Weapon.png`. Raster/Animation: Waldwächter 96×96 / 6 Frames; Frostkristall 64×64 / 39 logische Frames (Idle 0–19, Angriff 20–38); Steinschleuder 96×96 / 8; Scharfschütze 128×128 / 17. Maßstab und Drehachse bleiben erhalten. Die grüngelbe dritte Froststufe stammt aus dem Originalatlas; der Frosttreffer bleibt als Effekt erkennbar. Keine vierte Grafikstufe für spätere Zahlenlevel.
 
 Rosenspiegels zweite Begegnung nutzt dieselben Körper- und Tanzatlanten sowie Turmglanz, Herzen und Restdauer. Keine weitere Figur oder Bildserie. [Spielaufnahmen und gezielte Prüfung](../../../artifacts/idle-bastion/acceptance/p4/B12.md).
+
+
+### Korrektur nach B12: Frost, Treffer und Bau
+
+Die frühere 128×128-Einschätzung für Frost III war falsch. Verbindlich sind die Originalmetadaten: Frost I 48×48 (26 logische Frames, Lücke im Atlas); II 64×64 (33, ebenfalls Lücke); III 64×64 (39). Ein Frame zeigt einen Kristall. `tower-atlas.ts` hält die gemessenen Maps samt Originalquellen. Der Kristall dreht nicht als zusammengesetztes Viererbild mit der Schussrichtung.
+
+Alle vier Turmrollen verwenden ihre jeweiligen Projektilstufen und kurzen Originaltreffer. Kanonentreffer entsprechen ungefähr dem 52-Pixel-Flächenradius. Turmbau nutzt den vorhandenen Construction-Atlas; Gebäude entstehen mit kurzer Gerüst-/Staubabfolge. Die Startwerkstatt zeigt nur eine Werkbank und Material, kein beschädigtes Haus. Keine neuen Imagegen-Assets in dieser Ergänzung.
+
+Maras aktiver Fernzauber zeigt einen kurzen Lichtimpuls zum Turm, warmen Ring, ablaufenden Bogen und Sekundenanzeige. Das Porträt trägt die Abklingzeitleiste. Wisps Ankunft nutzt vorhandene Laufbilder und eine kompakte einmalige Begrüßung; mobile HUD-/Dockhöhen bleiben unverändert.

@@ -1,5 +1,19 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Verbindliche Ergänzung nach B12: Bauflächen, Figuren und Siedlung
+
+Diese am 18.10.2026 beauftragten Regeln ersetzen die bisherigen festen Bauplätze, Maras Turmnachbarschaft und die Lichtung als Voraussetzung für Werkstatt II. Historische Migrationsabschnitte unten beschreiben weiterhin ihre jeweilige alte Version.
+
+- Schema 11 / Kampfregeln 7 / Layout 3. Ein Baufeld liegt in Manhattan-Distanz 1–3 zu einer Wegzelle, außerhalb der Siedlung und aller Geländehindernisse. Bisherige Platz-IDs behalten ihre Koordinaten; neue IDs kodieren die Rasterkoordinate. Alle geeigneten Startflächen sind sofort offen. Der Weg und der geschützte Startturm bleiben fest.
+- Vorschau und bestätigter Kauf sind getrennt. Goldpreis, Belegung, Freischaltung, Gelände und Maras aktuelle Zelle werden beim Kauf erneut geprüft. Kartenziehen baut nichts. Nach Erfolg schließt die Auswahl.
+- Siedlungsfläche: x=2–10, y=10–13, nullbasiert. Werkstatt 3×2, Lager 2×2 einschließlich Vorplatz; kein Überlappen. Positionen liegen im Snapshot. Der erste Bau wählt eine Position; spätere Umzüge sind in der UI nur während ausdrücklicher Pause möglich und kostenlos. Mara darf nicht überbaut werden; unterbrochene Laufwege stoppen ohne Cooldown-Reset.
+- Mara: unabhängiger Laufweg, bevorzugtes Zauberziel und `effectTowerUid`. Fernreichweite 240 Weltpixel; 8 s Wirkung, 30 s Cooldown ab Aktivierung. Auto wirkt nur während einer Welle mit lebendem Gegner in Turmreichweite; verführte Türme werden abgewartet. Manuelle Auslösung nutzt denselben Cooldown. Bewegung/Zielwechsel erhalten die laufende Wirkung. Verkauf des betroffenen Turms beendet nur dessen Buff, nicht den Cooldown. Farmproben rechnen weiterhin ohne Mara.
+- Wisp: einmaliger Ankunftszeitpunkt plus bestätigtes Begrüßungsflag. Der Bonus beginnt bei Freischaltung, unabhängig von Animation und Begrüßung. Kein erneuter Bonus oder Dialog nach bestätigtem Reload.
+- Lichtung bleibt optional (bisheriger Preis/Bossnachweis). Werkstatt II verlangt Frostforschung und 1.200 Gold. Ein späterer Herausforderungszugang ist eine Roadmap-Idee und wird nicht als vorhandener Inhalt dargestellt.
+- Schema 10 und ältere Versionen werden zuerst mit ihren alten Layout-/Figurenregeln validiert. Neue Migration erhält Geld, Käufe, Positionen, Kampf, Cooldowns, Pause und historische Offline-Belege. Aktuelle Farmnachweise werden neu verdient. Der neue Fingerabdruck enthält Layoutversion, Breite, Gebäude- und Turmpositionen sowie relevante Regeln statt aller möglichen Bauzellen.
+- Animationen sind rein kosmetisch: Originalatlanten für jede Grafikstufe, einzelne Frostframes mit Idle-/Attack-Folge, kurzlebige Treffer und Turmbau. Effekte folgen Simulationszeit, sind auf 96 gleichzeitig begrenzt und erzeugen keine Spielbelohnungen.
+
+
 Verbindliche technische Regeln; den tatsächlichen Umsetzungsstand führt die [Roadmap](../ROADMAP.md). Gilt zusammen mit dem [überarbeiteten Auftrag](../README.md). Änderungen an diesen Regeln zuerst dokumentieren; offene Balancewerte sind keine Erlaubnis zur Erweiterung des Funktionsumfangs.
 
 ## 1. Eigenständige Anwendung und gezielte Wiederverwendung
