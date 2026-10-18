@@ -155,7 +155,7 @@ function syncUI(): void {
   const hintStep = tutorialStep(sim);
   const mobile = window.matchMedia('(max-width: 700px)').matches;
   if (hintStep !== mobileHintStep) { mobileHintStep = hintStep; mobileHintOpen = false; }
-  const hintAvailable = !sim.tutorial.hidden && !(sim.tutorial.seen & (1 << hintStep)) && !contextOpen && !placementType && !live.awaitingResume;
+  const hintAvailable = !sim.bossActive && !sim.tutorial.hidden && !(sim.tutorial.seen & (1 << hintStep)) && !contextOpen && !placementType && !live.awaitingResume;
   element('tutorial-card').hidden = !hintAvailable || (mobile && !mobileHintOpen);
   element('mobile-hint').hidden = !mobile || !hintAvailable || mobileHintOpen;
   element('mobile-hint').setAttribute('aria-expanded', String(mobileHintOpen));
@@ -189,8 +189,8 @@ function syncUI(): void {
   pause.setAttribute('aria-label', live.paused ? 'Auto-Kampf fortsetzen' : 'Auto-Kampf pausieren');
   pause.disabled = unavailable || live.awaitingResume;
   advance.hidden = sim.mode !== 'farm';
-  advance.textContent = sim.advanceRequested ? 'Vorstoß vorgemerkt' : `Erneut vorstoßen · Welle ${sim.highestCleared + 1}`;
-  advance.disabled = unavailable || view.paused || sim.advanceRequested;
+  advance.textContent = sim.bossChallengeRequested ? 'Boss am Wellenwechsel vorgemerkt' : sim.advanceRequested ? 'Vorstoß vorgemerkt' : `Erneut vorstoßen · Welle ${sim.nextAdvanceWave}`;
+  advance.disabled = unavailable || view.paused || sim.advanceRequested || sim.bossChallengeRequested;
   element('return-card').hidden = !live.awaitingResume;
   if (live.awaitingResume) {
     const reward = live.pendingReward;
@@ -283,11 +283,13 @@ function syncUI(): void {
   element('layout-status').textContent = view.paused ? 'Kampf angehalten.'
     : sim.mode === 'farm' ? `Sicheres Farmen · Welle ${sim.farmWave}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang.`
     : `Automatischer Vorstoß · höchste geschaffte Welle ${sim.highestCleared}.`;
-  const message = sim.drainEvents().filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse'].includes(event.type)).at(-1);
+  const relevantEvents = sim.drainEvents();
+  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'boss-victory'].includes(event.type)).at(-1);
   if (message) toastUntil = performance.now() + 4500;
   if (message) element('combat-message').textContent = message.type === 'clear' ? `Welle ${message.wave} geschafft · +${currency.format(message.amount ?? 0)} Gold Abschlussbonus.`
     : message.type === 'kill' ? `Gegner besiegt · +${currency.format(message.amount ?? 0)} Gold.`
     : message.type === 'wave' ? `${mode} · Welle ${message.wave} hat begonnen. Deine Türme greifen automatisch an.`
+    : message.type === 'boss-victory' ? message.amount ? 'Rosenspiegel besiegt! +750 Gold einmalige Erstprämie. Meilenstein gespeichert.' : 'Rosenspiegel erneut besiegt. Gewöhnliche Kampfbelohnungen erhalten.'
     : message.type === 'wisp' ? 'Wisp ist da! +10 % Kampf-Gold und die Steinschleuder sind jetzt verfügbar.'
     : message.type === 'pads' ? `Welle ${message.wave} gemeistert: zwei weitere Bauplätze${message.wave === 10 ? ' und der Scharfschütze' : ''} sind verfügbar.`
     : message.type === 'build' ? `${message.tower?.def.name} gebaut und einsatzbereit.`
@@ -299,6 +301,22 @@ function syncUI(): void {
     : 'Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.';
   element('combat-message').hidden = performance.now() > toastUntil || contextOpen || Boolean(placementType) || live.awaitingResume;
   progressUI.update(live);
+  const boss = sim.bossEnemy, charm = sim.bossCharm;
+  const showBoss = sim.bossActive && !live.awaitingResume && !contextOpen && !placementType;
+  element('boss-banner').hidden = !showBoss;
+  document.querySelector<HTMLElement>('.goal-ribbon')!.hidden = showBoss;
+  element('boss-title').textContent = 'Rosenspiegel · Welle 15';
+  element('boss-health').textContent = boss ? `${currency.format(Math.ceil(boss.hp))} / ${currency.format(Math.ceil(boss.maxHp))}` : sim.bossQueued ? 'Im Anmarsch' : 'Boss gefallen';
+  const health = element<HTMLProgressElement>('boss-health-bar');
+  health.max = boss?.maxHp ?? 1; health.value = boss?.hp ?? (sim.bossQueued ? 1 : 0);
+  const charmTarget = sim.towers.find(t => t.uid === charm.targetUid);
+  element('boss-skill').textContent = charm.phase === 'windup' ? `♥ Zielt auf ${charmTarget?.def.name} · ${charm.remaining.toFixed(1)} s`
+    : charm.phase === 'channel' ? `♥ ${charmTarget?.def.name}: 40 % langsamer · ${charm.remaining.toFixed(1)} s`
+    : charm.phase === 'interrupted' ? 'Zauber unterbrochen!'
+    : boss?.slowRemaining ? `Frost aktiv · 45 % langsamer · ${boss.slowRemaining.toFixed(1)} s`
+    : boss ? 'Frosttreffer unterbrechen ihre Verführung' : sim.bossQueued ? sim.bossVictories ? 'Boss und Begleiter besiegen · Wiederholung' : 'Boss und Begleiter besiegen · 750 Gold Erstprämie' : 'Besiege noch die übrigen Begleiter';
+  element('boss-banner').dataset.phase = charm.phase;
+  element('boss-support').textContent = `${Math.max(0, sim.remaining - (boss || sim.bossQueued ? 1 : 0))} Begleiter übrig · Fläche & Durchdringung`;
   document.getElementById('app')!.classList.toggle('context-open', contextOpen || Boolean(placementType));
   positionContext();
 }
@@ -424,6 +442,9 @@ for (const [name, kind] of [['cannon', 3], ['sniper', 4]] as const) {
   element(`build-${name}`).addEventListener('click', () => { void perform(battle => selectedPadId && battle.build(selectedPadId, kind)); }, { signal: lifetime.signal });
 }
 element('pick-wisp').addEventListener('click', () => openContext('wisp'), { signal: lifetime.signal });
+element('challenge-boss').addEventListener('click', () => {
+  void perform(b => b.requestBossChallenge()).then(() => { if (session?.battle.bossChallengeRequested) element<HTMLDialogElement>('chronicle').close(); });
+}, { signal: lifetime.signal });
 element('catalog-next').addEventListener('click', () => { const list = element(`${catalogPanel}-catalog`); list.scrollTo({ left: list.scrollLeft >= list.scrollWidth - list.clientWidth - 2 ? 0 : list.scrollLeft + list.clientWidth, behavior: 'smooth' }); }, { signal: lifetime.signal });
 element('pick-archer').addEventListener('click', () => startPlacement(1), { signal: lifetime.signal });
 element('pick-frost').addEventListener('click', () => startPlacement(2), { signal: lifetime.signal });

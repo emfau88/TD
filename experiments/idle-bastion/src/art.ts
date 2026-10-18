@@ -2,12 +2,14 @@
  * frame maps come from public/assets/manifest.json and reference/STYLE_GUIDE.md.
  * These helpers never import classic simulation rules or start an animation clock.
  */
+import { succubusFrame } from '../../../reference/src/succubus-art';
 import type Phaser from 'phaser';
 import { MARA_FRAMES, MARA_FOOT, MARA_SCALE } from '../../../reference/src/style-assets';
 import { TREE_FRAMES } from '../../../reference/src/terrain';
 export { MARA_FOOT };
 
 export const ART = Object.freeze({
+  boss: new URL('../../../public/assets/Succubus Pixel v2.png', import.meta.url).href,
   wisp: new URL('../../../public/assets/Wisp - Animations.png', import.meta.url).href,
   scorpion: new URL('../../../public/assets/Scorpion.png', import.meta.url).href,
   cannonTower: new URL('../../../public/assets/Tower 03.png', import.meta.url).href,
@@ -38,7 +40,7 @@ export const ART = Object.freeze({
   workshopDamaged: new URL('../assets/workshop/workshop-damaged.png', import.meta.url).href,
 });
 export const KEYS = Object.freeze({
-  wisp: 'idle-wisp',
+  boss: 'idle-rosenspiegel', wisp: 'idle-wisp',
   scorpion: 'idle-scorpion',
   cannonTower: 'idle-cannonTower',
   cannonWeapon: 'idle-cannonWeapon',
@@ -62,7 +64,8 @@ export type EnemyDirection = 'up' | 'down' | 'side';
 export type MaraDirection = 'up' | 'down' | 'left' | 'right';
 
 /** Directional Move tags point into the logical manifest frame map. */
-export function enemyFrame(kind: 'Leafbug' | 'Firebug' | 'Scorpion', direction: EnemyDirection, elapsed: number): number {
+export function enemyFrame(kind: 'Leafbug' | 'Firebug' | 'Scorpion' | 'Rosenspiegel', direction: EnemyDirection, elapsed: number): number {
+  if (kind === 'Rosenspiegel') return succubusFrame('move', direction, elapsed * 1000);
   if (kind === 'Scorpion') return (direction === 'down' ? 24 : direction === 'up' ? 32 : 40) + Math.floor(Math.max(0, elapsed) * 10) % 8;
   const logicalStart = direction === 'down' ? 18 : direction === 'up' ? 26 : 34;
   const frames = kind === 'Leafbug' ? LEAF_FRAMES : FIRE_FRAMES;
@@ -92,7 +95,7 @@ export function preloadArt(scene: Phaser.Scene): void {
   scene.load.image(KEYS.warehouse, ART.warehouse);
   scene.load.image(KEYS.workshopDamaged, ART.workshopDamaged);
   for (const [key, url, width, height] of [
-    [KEYS.wisp, ART.wisp, 64, 64], [KEYS.scorpion, ART.scorpion, 64, 64],
+    [KEYS.boss, ART.boss, 64, 64], [KEYS.wisp, ART.wisp, 64, 64], [KEYS.scorpion, ART.scorpion, 64, 64],
     [KEYS.cannonTower, ART.cannonTower, 64, 128], [KEYS.cannonWeapon, ART.cannonWeapon, 96, 96], [KEYS.cannonWeapon2, ART.cannonWeapon2, 96, 96], [KEYS.cannonProjectile, ART.cannonProjectile, 10, 10],
     [KEYS.sniperTower, ART.sniperTower, 64, 128], [KEYS.sniperWeapon, ART.sniperWeapon, 128, 128], [KEYS.sniperWeapon2, ART.sniperWeapon2, 128, 128], [KEYS.sniperProjectile, ART.sniperProjectile, 8, 8],
     [KEYS.tower, ART.tower, 64, 128], [KEYS.weapon, ART.weapon, 96, 96],

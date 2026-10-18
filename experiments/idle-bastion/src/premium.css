@@ -8,12 +8,12 @@ button { border-radius:0; }
 .ui-icon { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; flex:0 0 auto; vertical-align:middle; }
 .ui-icon svg { display:block; width:100%; height:100%; overflow:visible; filter:drop-shadow(0 2px 0 #0007); }
 /* Every framed surface creates its own stacking context, so art cannot cover text. */
-.app-header,.command-dock,.goal-ribbon,.tutorial-card,.context-panel,.return-dialog,dialog,.placement-help,.combat-toast,.fallback-note,.error-panel,
+.app-header,.command-dock,.boss-banner,.goal-ribbon,.tutorial-card,.context-panel,.return-dialog,dialog,.placement-help,.combat-toast,.fallback-note,.error-panel,
 .build-card,.companion-card,.icon-button,.map-controls button,.context-tabs button,.auto-battle,.mobile-hint-toggle,.action-stack button,.tutorial-actions button,.primary-action,.advance-button,.journal-goal {
   isolation:isolate; border-color:transparent; background:#111c20; border-radius:0;
 }
 .build-card,.companion-card,.icon-button,.map-controls button,.context-tabs button,.auto-battle,.action-stack button,.tutorial-actions button,.primary-action,.advance-button,.journal-goal { position:relative; }
-.app-header::before,.command-dock::before,.goal-ribbon::before,.tutorial-card::before,.context-panel::before,.return-dialog::before,dialog::before,.placement-help::before,.combat-toast::before,.fallback-note::before,.error-panel::before,
+.app-header::before,.command-dock::before,.boss-banner::before,.goal-ribbon::before,.tutorial-card::before,.context-panel::before,.return-dialog::before,dialog::before,.placement-help::before,.combat-toast::before,.fallback-note::before,.error-panel::before,
 .build-card::before,.companion-card::before,.icon-button::before,.map-controls button::before,.context-tabs button::before,.auto-battle::after,.mobile-hint-toggle::before,.action-stack button::before,.tutorial-actions button::before,.primary-action::before,.advance-button::before,.journal-goal::before {
   content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; border:12px solid transparent; border-image:var(--ui-panel) 14% fill / 12px / 0 stretch;
 }
@@ -260,4 +260,24 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
   #settlement-catalog .building-card { flex: 0 0 154px; min-width: 154px; }
   #settlement-catalog .building-card img { width: 50px; height: 56px; }
   .warehouse-stats { font-size: 12px; gap: 7px; }
+}
+
+/* The boss occupies the goal ribbon's existing space, never a second HUD row. */
+.boss-banner { position:absolute; z-index:12; left:14px; top:calc(var(--header) + 12px); width:350px; padding:12px 15px; color:#f3d4e4; background:#171e27f5; border:2px solid #b58b65; box-shadow:inset 0 0 0 1px #554658,0 3px 12px #0006; }
+.boss-heading { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.boss-heading strong { font-family:var(--display); font-size:17px; }
+.boss-heading span { white-space:nowrap; font-size:11px; }
+#boss-health-bar { display:block; appearance:none; width:100%; height:8px; border:1px solid #d6a99c; background:#2a202c; margin:8px 0; }
+#boss-health-bar::-webkit-progress-bar { background:#2a202c; }
+#boss-health-bar::-webkit-progress-value { background:linear-gradient(90deg,#a94163,#ed9ab9); }
+#boss-health-bar::-moz-progress-bar { background:#d77799; }
+.boss-banner p { font-size:12px; line-height:1.5; }
+.boss-banner small { display:block; margin-top:3px; font-size:10px; color:#d0beb0; }
+.boss-banner[data-phase="interrupted"] p { color:#a9e5ff; }
+.boss-record p { margin-block:7px; }
+@media(max-width:700px) {
+ .boss-banner { left:8px; top:calc(var(--header) + 6px); width:calc(100% - 92px); padding:7px 8px; }
+ .boss-heading { gap:5px; flex-wrap:wrap; } .boss-heading strong { font-size:14px; }
+ .boss-banner p { font-size:10px; } .boss-banner small { font-size:9px; }
+ #boss-health-bar { margin:5px 0; height:7px; }
 }

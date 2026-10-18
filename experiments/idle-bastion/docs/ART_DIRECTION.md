@@ -24,6 +24,7 @@ Alle Maße unten sind Spieleinheiten bei 100 % Weltmaßstab. Eine Zelle bleibt *
 | Waldwächter | Basis 64 × 128, Waffe 96 × 96 | Faktor 0,63; sichtbare Basis Stufe I ungefähr 40 × 62; Originalmontage beibehalten |
 | Wisp | 64 × 64 Frames | Faktor 0,9; sichtbare Silhouette ungefähr 23 × 30; Ursprung (0,5 / 51÷64) |
 | Mara | Vorhandene vermessene Quelle, 64 × 64 Laufzeitframes | Maßstab 1; sichtbare Höhe etwa 38–42; Fußpunkt (32 / 56) |
+| Rosenspiegel | `public/assets/Succubus Pixel v2.png` (vorhandener v3-Inhalt unter Kompatibilitätsnamen), reine Frame-Funktion aus `reference/src/succubus-art.ts` | 64 × 64 Frames; Faktor 1,15 als Boss, Fußpunkt (32 / 56). Vorhandenes Laufen und Tanzen; Herzfaden/Zielring als kleine Canvas-Effekte, kein zusätzliches Tanzfenster |
 | Andere Türme/Gegner | Vorhandene Atlanten und Metadaten | Bestehende Skalierung und Montage übernehmen; keine gemeinsame Größen-Normalisierung |
 
 **Bildrahmen, sichtbare Silhouette und belegte Bodenfläche sind verschiedene Größen.** Die Außenabmessungen eines PNGs definieren weder die Kollisionsfläche noch die sichtbare Größe. Transparenter Rand zählt nicht zur Silhouette.
@@ -52,6 +53,8 @@ Ein kurzer Klick wählt aus; Ziehen ab sechs Bildschirmpixeln verschiebt die Kar
 ### Oberfläche nach den Mockups
 
 Die Welt ist die Hauptfläche. Oben stehen Gold, Kernleben und Welle in einer schmalen Leiste, unten Turm-/Siedlungskarten, Mara und Kampfsteuerung in einem kompakten Dock. Vorhandene Spielsprites bilden die Kartenillustrationen. Vier echte Imagegen-Assets bilden die Messingrahmen, eingelassenen Kartenflächen, goldenen Hauptaktionen und die Münze. Rahmen werden per CSS in neun Teilflächen skaliert, sodass ihre Ecken erhalten bleiben; keine eingebrannten Texte. Pixelify Sans wird lokal für Titel und Kennzahlen geladen, kleine Erklärtexte bleiben in gut lesbarer Systemschrift. Kontrollsymbole teilen ein kleines SVG-Pixelraster. [Originale, vollständige Prompts, Kodierung und Schriftlizenz](../assets/ui/README.md). Goldzufluss, Wellenrekord und Modus bilden eine kleine Statusgruppe; ein schmaler Zielstreifen führt zum nächsten Kauf. Das Buchsymbol öffnet die Chronik mit Ertragserklärung und Wellenhistorie.
+
+Während Welle 15 ersetzt ein kompakter Bossrahmen den Zielstreifen: HP, Verführung mit Ziel und Restdauer, Frost-Unterbrechung und verbleibende Begleiter. Er verwendet dasselbe Messingrahmen-Asset; hochkant bleibt das 56-px-HUD und 96-px-Dock erhalten. Keine zusätzliche dauerhafte Leiste.
 
 Turmwerte, Upgrades und Gebäudeforschung erscheinen erst nach Auswahl. Am Desktop steht das Fenster neben dem Objekt, hochkant als schließbare Karte über dem Dock. Speicherinformationen, Hilfe und Probenstart liegen im Menü. Bau-/Forschungsmeldungen sind kurz; normale Abschüsse erzeugen keine ständig wechselnde Textleiste. Die schmale Ansicht zeigt den Kampfzustand auf der Karte und ersetzt den breiten Auto-Kampf-Schalter durch Pause/Fortsetzen. Geräte-Schutzabstände und große Aktionsflächen berücksichtigen; echte Geräteprüfung gesondert ausweisen.
 

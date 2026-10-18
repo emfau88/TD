@@ -4,11 +4,11 @@
 
 [▶ Im Browser spielen](https://emfau88.github.io/TD/idle-bastion/) · [Frische Probe starten](https://emfau88.github.io/TD/idle-bastion/?fresh=1)
 
-Die Idle-Vorschau enthält automatischen Kampf, Mara, Wisp, vier Turmrollen, Upgrades, Werkstatt I, Frostforschung und Vorratslager I. Wisp bringt nach Frostfassung und Welle 5 automatisch +10 % Kampf-Gold und die Steinschleuder; ab Welle 10 kommt der Scharfschütze hinzu. Je zwei weitere Bauplätze öffnen bei Welle 5 und 10. Folge Maras Hinweisen bis zum ersten Frosttreffer. Gold und Kampf werden lokal im Browser gespeichert; „Frische Probe“ öffnet eine getrennte neue Partie und bewahrt den bisherigen Stand. Nur ein Tab pro Partie kann gleichzeitig spielen.
+Die Idle-Vorschau enthält automatischen Kampf, Mara, Wisp, vier Turmrollen, Upgrades, Werkstatt I, Frostforschung und Vorratslager I sowie Rosenspiegel als ersten Boss in Welle 15. Wisp bringt nach Frostfassung und Welle 5 automatisch +10 % Kampf-Gold und die Steinschleuder; ab Welle 10 kommt der Scharfschütze hinzu. Je zwei weitere Bauplätze öffnen bei Welle 5 und 10. Folge Maras Hinweisen bis zum ersten Frosttreffer. Gold und Kampf werden lokal im Browser gespeichert; „Frische Probe“ öffnet eine getrennte neue Partie und bewahrt den bisherigen Stand. Nur ein Tab pro Partie kann gleichzeitig spielen.
 
 Die Karte steht im Mittelpunkt: illustriertes Messing-/Schiefer-HUD, Baudock und Details erst bei Auswahl. Vier erzeugte UI-Assets, einheitliche Pixel-Symbole und eine lokal geladene Pixelschrift greifen die Mockups auf. Goldzufluss, Wellenrekord, Vorstoß/Farmen und nächstes Ziel sind direkt sichtbar; das Buchsymbol öffnet Ertragsdetails, Begleiter und die gespeicherte Wellenchronik. Alte Spielstände bleiben erhalten, frühere nicht aufgezeichnete Versuche werden als unbekannt behandelt. Hochkant gibt es einen verschiebbaren Kartenausschnitt und große Aktionsflächen. Funktional in schmalen Browseransichten geprüft; eine vollständige Smartphone-/Safari-Abnahme steht noch aus. [Aktuelle Premium-Oberfläche und Prüfung](artifacts/idle-bastion/acceptance/ui/PREMIUM.md) · [Fortschrittsinformationen](artifacts/idle-bastion/acceptance/ui/PROGRESS.md).
 
-Nach der freigegebenen ersten Zwischenabnahme sind B08 und B09 zum Testen enthalten. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht; Boss und Kartenerweiterung folgen in späteren Paketen.
+Nach der freigegebenen ersten Zwischenabnahme sind B08–B10 zum Testen enthalten. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht; Die Kartenerweiterung folgt mit B11.
 
 Mobil wurde die Oberfläche zusätzlich verdichtet: weniger Rahmen, einklappbare Hinweise und Vollbild oben rechts. Gold oder Welle öffnen die Chronik. [Mobile Ansicht und Prüfung](artifacts/idle-bastion/acceptance/ui/MOBILE.md).
 
@@ -52,6 +52,14 @@ Echte Spielaufnahmen der bisherigen Entwicklung, keine Mockups. B07a führte die
 
 [Asset-Quellen und vollständige Prompts](experiments/idle-bastion/assets/ui/README.md) · [Gezielter Prüfbericht](artifacts/idle-bastion/acceptance/ui/PREMIUM.md).
 
+
+**B10 · Rosenspiegel, der erste Boss**
+
+In Welle 15 kündigt die Succubus ihren Ziel-Turm per Herzfaden an und schwächt kurz dessen Feuerrate. Frost unterbricht den Zauber, Fläche hilft gegen die Begleiter und Scharfschützen durchdringen Rüstung. Bossbalken, Restdauer und Unterbrechung sind direkt am Spielfeld sichtbar. Der erste vollständige Sieg bringt einmalig 750 Gold. Nach einer Niederlage wird sicher gefarmt; den nächsten Versuch startest du bewusst.
+
+![Rosenspiegel mit Bossleiste und durch Frost unterbrochenem Zauber](artifacts/idle-bastion/acceptance/p4/b10-desktop.png)
+
+[Bossprüfung und mobile Ansicht](artifacts/idle-bastion/acceptance/p4/B10.md). Alte Wellenrekorde sind keine nachträglichen Bosssiege: Über Gold/Welle oder das Buch die Chronik öffnen und Rosenspiegel herausfordern. Bereits verdientes Gold und bestehende Offline-Ansprüche bleiben erhalten.
 
 **B09 · Vorratslager und Rückkehr**
 

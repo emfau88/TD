@@ -1,11 +1,11 @@
 import { farmRewardGold } from './farming';
-import { BASE, SETTLEMENT, FROST, upgradeCost, type IdleBattle } from './battle';
+import { waveCount, SETTLEMENT, FROST, upgradeCost, type IdleBattle } from './battle';
 import type { BattleSession } from './battle-session';
 import { offlinePolicy } from './offline';
 import { IncomeWindow, HISTORY_LIMIT, type AttemptMode } from './progress';
 import { tutorialStep } from './hud';
 
-export type GoalAction = 'archer' | 'upgrade' | 'workshop' | 'warehouse' | 'frost' | 'cannon' | 'sniper' | 'progress';
+export type GoalAction = 'archer' | 'upgrade' | 'workshop' | 'warehouse' | 'frost' | 'cannon' | 'sniper' | 'boss' | 'progress';
 const el = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id)! as T;
 const number = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 const gold = (value: number) => number.format(value);
@@ -30,6 +30,9 @@ export function currentGoal(battle: IdleBattle): Goal {
     case 13: return { title: 'Den Weg bis Welle 8 sichern', detail: 'Vorratslager freischalten · längere Offline-Erträge', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 9: return { title: 'Den Weg bis Welle 10 sichern', detail: 'Scharfschütze & zwei weitere Bauplätze freischalten', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 10: return { title: 'Für Rüstung gewappnet', detail: `${need(170)} · Scharfschütze durchdringt Panzer`, cost: 170, action: 'sniper', label: 'Scharfschütze auswählen' };
+    case 14: return battle.highestCleared >= 14
+      ? { title: 'Rosenspiegel stellt sich dir', detail: 'Welle 15 · 750 Gold Erstprämie · Frost unterbricht', action: 'boss', label: 'Bossherausforderung ansehen' }
+      : { title: 'Bereite dich auf Rosenspiegel vor', detail: 'Boss in Welle 15 · Frost, Fläche und Durchdringung', action: 'upgrade', label: 'Verteidigung verbessern' };
     default: return battle.mode === 'farm'
       ? { title: `Bereite Welle ${battle.highestCleared + 1} vor`, detail: 'Türme aufwerten · dann erneut vorstoßen', action: 'upgrade', label: 'Verteidigung ansehen' }
       : { title: `Nächster Rekord: Welle ${battle.highestCleared + 1}`, detail: 'Vier Turmrollen · bis Level 6 ausbauen', action: 'upgrade', label: 'Verteidigung ansehen' };
@@ -45,7 +48,7 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
   el('close-progress').addEventListener('click', () => dialog.close(), { signal });
   for (const id of ['goal-action', 'journal-goal-action']) el(id).addEventListener('click', () => {
     if (!goal) return;
-    if (goal.action === 'progress') open();
+    if (goal.action === 'progress' || goal.action === 'boss') open();
     else { dialog.close(); goTo(goal.action); }
   }, { signal });
   el<HTMLSelectElement>('history-mode').addEventListener('change', () => { activeMode = el<HTMLSelectElement>('history-mode').value as AttemptMode; tableKey = ''; }, { signal });
@@ -64,7 +67,7 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       el('record-wave').textContent = `Rekord ${b.highestCleared}`;
       el('wave-mode').textContent = live.paused ? 'Pause' : b.phase === 'defeat' ? 'Rückzug' : b.mode === 'farm' ? 'Farmen' : 'Vorstoß';
       el('wave-summary').setAttribute('aria-label', `Welle ${b.wave}, ${b.mode === 'farm' ? 'Farmen' : 'Vorstoß'}. Höchste besiegte Welle ${b.highestCleared}. Chronik öffnen`);
-      const total = Math.min(BASE.waves.maxCount, BASE.waves.firstCount + b.wave - 1);
+      const total = waveCount(b.wave, b.waveRecipeVersion);
       el<HTMLProgressElement>('wave-progress').max = Math.max(1, total);
       el<HTMLProgressElement>('wave-progress').value = b.phase === 'wave' ? total - b.remaining : b.wave ? total : 0;
       el('wave-progress').setAttribute('aria-label', b.phase === 'wave' ? `${b.remaining} von ${total} Gegnern verbleiben` : 'Wellenpause');
@@ -85,6 +88,12 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       const assignment = target ? padNames[target.padId] ?? target.def.name : 'Startturm';
       el('mara-brief').textContent = b.mara.path.length ? `Unterwegs · ${assignment}` : `Unterstützt ${assignment}`;
       el('journal-mara-order').textContent = b.mara.path.length ? `Unterwegs zur Unterstützung: ${assignment}` : `Auftrag: ${assignment} unterstützen`;
+      el('journal-boss-status').textContent = b.bossVictories ? `${b.bossVictories} Sieg${b.bossVictories === 1 ? '' : 'e'} · Erstprämie bereits erhalten.`
+        : b.bossActive ? 'Bosskampf läuft · Sieg erst nach Boss und allen Begleitern.'
+        : b.highestCleared >= 15 ? 'Noch kein Bosssieg aufgezeichnet. Dein früherer Wellenrekord bleibt erhalten; fordere Rosenspiegel hier heraus.' : 'Noch unbesiegt · Herausforderung ab gemeisterter Welle 14.';
+      const challenge = el<HTMLButtonElement>('challenge-boss');
+      challenge.disabled = stopped || live.busy || b.highestCleared < 14 || b.bossActive || b.bossChallengeRequested;
+      challenge.textContent = b.bossChallengeRequested ? 'Boss am nächsten Wellenwechsel vorgemerkt' : b.bossVictories ? 'Boss erneut herausfordern · Welle 15' : 'Boss herausfordern · Welle 15';
       el('journal-record').textContent = String(b.highestCleared);
       el('journal-current').textContent = `${b.wave || '—'} · ${b.mode === 'farm' ? 'Farmen' : 'Vorstoß'}`;
       el('journal-safe-wave').textContent = certificate ? `Welle ${certificate.wave}` : 'Wird geprüft';

@@ -1,0 +1,99 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { BASE, IdleBattle, waveCount } from '../src/battle';
+import { BOSS } from '../src/boss';
+import { certifyFarm } from '../src/farming';
+import { createOfflineState, beginAbsence, reserveOffline } from '../src/offline';
+
+// All money, unlocks and placements below are earned through regular actions.
+function playOpening() {
+  const b = new IdleBattle(), archer = b.build('tower-03')!; b.assignMara(archer.uid);
+  let bossStarted = 0, interrupts = 0, warehouseAt = 0;
+  let duringOwnedCharm: ReturnType<IdleBattle['snapshot']> | undefined;
+  let duringCharm: ReturnType<IdleBattle['snapshot']> | undefined;
+  for (let frame = 0; frame < 32000 && !b.bossVictories; frame++) {
+    if (archer.level === 1) b.upgrade(archer.uid);
+    if (!b.settlement.workshopBuilt) b.buildWorkshop();
+    if (!b.settlement.frostResearched) b.researchFrost();
+    b.build('tower-02', 2); b.build('tower-06', 3);
+    if (b.highestCleared >= 5) for (const tower of b.towers) if (tower.level < 3) b.upgrade(tower.uid);
+    if (!b.settlement.warehouseBuilt && b.buildWarehouse()) warehouseAt = b.elapsed;
+    if (b.settlement.warehouseBuilt) {
+      const sniper = b.towers.find(t => t.def.id === 4) ?? b.build('tower-07', 4);
+      if (sniper) {
+        if (sniper.level < 3) b.upgrade(sniper.uid);
+        else { b.build('tower-05'); for (const tower of [...b.towers].sort((a,z) => z.def.id-a.def.id)) if (tower.level < 4) b.upgrade(tower.uid); }
+      }
+    }
+    if (b.mode === 'farm' && frame % 40 === 0) { b.setFarmWave(certifyFarm(b)?.wave ?? 1); if (b.towers.some(t => t.def.id === 4 && t.level >= 3)) b.requestAdvance(); }
+    if (b.bossActive && !bossStarted) bossStarted = b.elapsed;
+    if (b.bossCharm.phase === 'channel' && !duringCharm) duringCharm = b.snapshot();
+    if (b.bossCharm.phase === 'channel' && b.bossCharm.targetUid !== 1 && !duringOwnedCharm) duringOwnedCharm = b.snapshot();
+    const wallet = b.gold * 1000 + b.goldRemainderUnits;
+    b.update(BASE.stepSeconds);
+    const events = b.drainEvents();
+    if (events.some(e => e.type === 'boss-victory')) {
+      const ordinary = events.filter(e => e.type === 'kill' || e.type === 'clear').reduce((sum,e) => sum + (e.amount ?? 0),0);
+      assert.equal(b.gold * 1000 + b.goldRemainderUnits - wallet, Math.round((ordinary + BOSS.firstReward) * 1000));
+    }
+    for (const e of events) { if (e.type === 'boss-interrupt') interrupts++; }
+  }
+  console.log('B10 legal run:', { warehouseAt, bossStarted, victoryAt: b.elapsed, wins:b.bossVictories, gold:b.gold, bossAttempts:b.progress.waves.find(row=>row.wave===15)?.advance, interrupts, towers:b.towers.map(t=>[t.padId,t.def.id,t.level]) });
+  assert.equal(b.bossVictories, 1, 'First boss must be beatable through earned purchases');
+  assert.ok(b.elapsed >= 7*60 && b.elapsed <= 10*60, 'First victory should land in the 7–10 minute target');
+  return { b, duringCharm, duringOwnedCharm, interrupts };
+}
+const opening = playOpening();
+
+test('earned boss clear rewards once, records the milestone, and stays outside safe/offline production', () => {
+  const b = opening.b;
+  assert.ok(IdleBattle.restore(b.snapshot()));
+  assert.equal(b.liveClearedWaves.includes(15), false); assert.equal(b.setFarmWave(15), false);
+  const proof = certifyFarm(b); assert.ok(proof); assert.notEqual(proof.wave, 15);
+  const before = b.snapshot(), state = reserveOffline(beginAbsence(createOfflineState(0),0,proof,false),3600000);
+  assert.ok(state.pendingReward!.amountUnits > 0); assert.deepEqual(b.snapshot(),before);
+  assert.equal(waveCount(15), 9); assert.equal(waveCount(15,4),20);
+});
+
+test('interrupted/reloaded boss keeps health, skill and deterministic combat; no premature victory', () => {
+  assert.ok(opening.duringCharm, 'A visible charm channel must occur');
+  const a = IdleBattle.restore(opening.duringCharm)!; assert.ok(a);
+  const b = IdleBattle.restore(JSON.parse(JSON.stringify(a.snapshot())))!;
+  assert.deepEqual(a.snapshot(), b.snapshot()); assert.equal(b.bossVictories,0);
+  for(let i=0;i<800;i++){a.update(BASE.stepSeconds);b.update(BASE.stepSeconds);a.drainEvents();b.drainEvents();}
+  assert.deepEqual(a.snapshot(), b.snapshot());
+  assert.ok(opening.interrupts>0,'Frost really interrupts the boss');
+});
+
+test('boss escaping forces farming without a first victory; retry is explicit and saveable', () => {
+  assert.ok(opening.duringOwnedCharm);
+  const b = IdleBattle.restore(opening.duringOwnedCharm)!;
+  for(const t of [...b.towers]) if(!t.protected)b.sell(t.uid);
+  assert.equal(b.bossCharm.targetUid,null,'Selling the affected tower cancels the link');
+  for(let i=0;i<12000 && b.phase!=='defeat';i++){b.update(BASE.stepSeconds);b.drainEvents();}
+  assert.equal(b.phase,'defeat'); assert.equal(b.bossVictories,0);
+  assert.ok(IdleBattle.restore(b.snapshot())); b.update(BASE.stepSeconds);
+  assert.equal(b.mode,'farm'); assert.equal(b.advanceRequested,false);
+  assert.equal(b.requestBossChallenge(),true); assert.equal(b.requestBossChallenge(),false);
+  const restored=IdleBattle.restore(b.snapshot())!;
+  assert.ok(restored); assert.equal(restored.bossChallengeRequested,true);
+});
+
+test('old wave-15 record is never a boss victory; an explicit repeat pays no second first reward', () => {
+  const b = opening.b, modern=b.snapshot();
+  const {bossVictories,bossCharm,bossChallengeRequested,...old}=modern;
+  const migrated=IdleBattle.restore({...old,schemaVersion:7,rulesVersion:4,waveRecipeVersion:4})!;
+  assert.ok(migrated);assert.equal(migrated.highestCleared,b.highestCleared);assert.equal(migrated.bossVictories,0);
+  assert.deepEqual(migrated.liveClearedWaves,[]);
+  assert.equal(migrated.requestBossChallenge(),true);
+  const repeat=IdleBattle.restore(b.snapshot())!; assert.equal(repeat.requestBossChallenge(),true);
+  let bonus=-1;
+  for(let i=0;i<16000 && repeat.bossVictories<2;i++){
+    repeat.update(BASE.stepSeconds);
+    for(const e of repeat.drainEvents())if(e.type==='boss-victory')bonus=e.amount!;
+  }
+  assert.equal(repeat.bossVictories,2);assert.equal(bonus,0);
+  assert.ok(IdleBattle.restore(repeat.snapshot()));
+  const bad=repeat.snapshot();bad.bossCharm={phase:'channel',targetUid:99999,remaining:4,cooldown:8};
+  assert.equal(IdleBattle.restore(bad),undefined);
+});

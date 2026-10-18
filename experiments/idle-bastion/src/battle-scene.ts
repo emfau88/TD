@@ -1,3 +1,5 @@
+import { succubusFrame } from '../../../reference/src/succubus-art';
+import { BOSS } from './boss';
 import { wispPose } from './wisp';
 import Phaser from 'phaser';
 import { BASE, IdleBattle, stats, type Enemy, type Tower } from './battle';
@@ -276,8 +278,9 @@ export class BattleScene extends Phaser.Scene {
   private enemyView(enemy: Enemy): EnemyView {
     let view = this.enemyViews.get(enemy.uid);
     if (!view) {
-      view = { sprite: this.add.image(enemy.x, enemy.y, enemy.def.id === 'Scorpion' ? KEYS.scorpion : enemy.def.id === 'Leafbug' ? KEYS.leafbug : KEYS.firebug).setScale(SCALE.enemy),
+      view = { sprite: this.add.image(enemy.x, enemy.y, enemy.def.id === 'Rosenspiegel' ? KEYS.boss : enemy.def.id === 'Scorpion' ? KEYS.scorpion : enemy.def.id === 'Leafbug' ? KEYS.leafbug : KEYS.firebug).setScale(SCALE.enemy),
         shadow: this.add.ellipse(enemy.x, enemy.y + 9, 23, 9, 0x263e30, 0.24) };
+      if (enemy.def.id === 'Rosenspiegel') view.sprite.setOrigin(0.5, 56/64).setScale(1.15);
       this.enemyViews.set(enemy.uid, view);
     }
     return view;
@@ -292,7 +295,8 @@ export class BattleScene extends Phaser.Scene {
     for (const [uid, view] of this.towerViews) if (!towers.has(uid)) { view.base.destroy(); view.weapon.destroy(); this.towerViews.delete(uid); }
     for (const tower of sim.towers) {
       const view = this.towerView(tower), stat = stats(tower);
-      const boosted = sim.isMaraBoosted(tower.uid), firingCooldown = stat.cooldown / (boosted ? 1.5 : 1);
+      const charmed = sim.isCharmed(tower.uid);
+      const boosted = sim.isMaraBoosted(tower.uid), firingCooldown = stat.cooldown / ((boosted ? 1.5 : 1) * (charmed ? BOSS.rateMultiplier : 1));
       const firingAge = firingCooldown - tower.cooldown;
       const art = towerArt(tower.def.id);
       const frame = tower.cooldown > 0 && firingAge < firingCooldown * 0.85 ? Math.min(art.frames - 1, Math.floor(firingAge / (firingCooldown * 0.85) * art.frames)) : 0;
@@ -300,7 +304,7 @@ export class BattleScene extends Phaser.Scene {
       if (view.weapon.texture.key !== weaponKey) view.weapon.setTexture(weaponKey);
       view.base.setFrame(tower.visualStage - 1);
       view.weapon.setFrame(Math.max(0, frame)).setRotation(tower.angle);
-      view.base.setTint(boosted ? 0xffedbe : 0xffffff); view.weapon.setTint(boosted ? 0xffedbe : 0xffffff);
+      view.base.setTint(charmed ? 0xe49bea : boosted ? 0xffedbe : 0xffffff); view.weapon.setTint(charmed ? 0xe49bea : boosted ? 0xffedbe : 0xffffff);
       if (boosted) {
         const alpha = 0.45 + Math.sin(elapsed * 7) * 0.15;
         this.effects.lineStyle(2, 0xf5d58b, alpha).strokeEllipse(tower.x, tower.y + 12, 40, 19);
@@ -312,11 +316,28 @@ export class BattleScene extends Phaser.Scene {
     for (const enemy of sim.enemies) {
       const view = this.enemyView(enemy);
       view.sprite.setPosition(enemy.x, enemy.y).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed)).setFlipX(enemy.flip).setDepth(enemy.y + 1000);
+      if (enemy.def.id === 'Rosenspiegel') {
+        const casting = sim.bossCharm.phase === 'windup' || sim.bossCharm.phase === 'channel';
+        if (casting) view.sprite.setFrame(succubusFrame('dance', 'down', elapsed * 1000)).setFlipX(false);
+        this.effects.lineStyle(2, 0xdb80cd, 0.8).strokeEllipse(enemy.x, enemy.y + 3, 34, 13);
+        const target = sim.towers.find(t => t.uid === sim.bossCharm.targetUid);
+        if (casting && target) {
+          this.effects.lineStyle(sim.bossCharm.phase === 'channel' ? 3 : 1, 0xf598d6, 0.8)
+            .lineBetween(enemy.x, enemy.y - 26, target.x, target.y - 32)
+            .strokeCircle(target.x, target.y - 24, 21);
+          // Small pixel hearts travel toward the selected tower on simulation time.
+          for (let i = 0; i < 3; i++) {
+            const part = (elapsed * 0.8 + i / 3) % 1;
+            const x = enemy.x + (target.x - enemy.x) * part, y = enemy.y - 26 + (target.y - enemy.y - 6) * part;
+            this.effects.fillStyle(0xffb0dd, 0.9).fillRect(x-4,y-2,3,3).fillRect(x+1,y-2,3,3).fillTriangle(x-4,y+1,x+4,y+1,x,y+5);
+          }
+        }
+      }
       view.sprite.setTint(enemy.slowRemaining > 0 ? 0x83ddff : 0xffffff);
       if (enemy.slowRemaining > 0) this.effects.lineStyle(1.5, 0x96e8fa, 0.75).strokeEllipse(enemy.x, enemy.y + 7, 26, 10);
       view.shadow.setPosition(enemy.x, enemy.y + 9).setDepth(enemy.y + 999);
-      if (enemy.hp < enemy.maxHp) {
-        const barY = enemy.y - 25, fraction = Math.max(0, enemy.hp / enemy.maxHp);
+      if (enemy.hp < enemy.maxHp || enemy.def.id === 'Rosenspiegel') {
+        const barY = enemy.y - (enemy.def.id === 'Rosenspiegel' ? 55 : 25), fraction = Math.max(0, enemy.hp / enemy.maxHp);
         this.effects.fillStyle(0x263f33, 0.9).fillRect(enemy.x - 15, barY, 30, 5);
         this.effects.fillStyle(fraction < 0.3 ? 0xdf9573 : 0xdde69c).fillRect(enemy.x - 14, barY + 1, 28 * fraction, 3);
       }

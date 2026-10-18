@@ -5,6 +5,7 @@
  * rules are imported. Idle owns its prices, bounded stats and wave recipes.
  * B03 adds exact persistence; B04 owns advance/farm attempts and fractional offline credit.
  */
+import { BOSS, freshCharm, isBossWave, type BossCharm } from './boss';
 import { cellCenter, createIdleLayout, isUnlockedCell, type IdleLayout } from './layout';
 import { getForestBlockedCells } from './forest-world';
 import { MARA, createMara, cloneMara, assignMaraTarget, stepMara, validMara, type MaraState } from './mara';
@@ -20,6 +21,7 @@ export const BASE = Object.freeze({
     cooldown: 0.6, color: 0xe3cf87,
   }),
   enemies: Object.freeze({
+    Rosenspiegel: Object.freeze({ id: 'Rosenspiegel' as const, name: 'Rosenspiegel', hp: 850, speed: 32, gold: 80, armor: 0.1, lives: 20 }),
     Leafbug: Object.freeze({ id: 'Leafbug' as const, name: 'Blattkäfer', hp: 24, speed: 45, gold: 8, armor: 0, lives: 1 }),
     Scorpion: Object.freeze({ id: 'Scorpion' as const, name: 'Panzerskorpion', hp: 50, speed: 40, gold: 15, armor: 0.45, lives: 2 }),
     Firebug: Object.freeze({ id: 'Firebug' as const, name: 'Feuerkäfer', hp: 34, speed: 56, gold: 11, armor: 0, lives: 1 }),
@@ -38,7 +40,7 @@ export const FROST = Object.freeze({ id: 2 as const, name: 'Frostkristall', cost
 export const CANNON = Object.freeze({ id: 3 as const, name: 'Steinschleuder', cost: 135, damage: 28, range: 150, cooldown: 1.55, color: 0xe4b976 });
 export const SNIPER = Object.freeze({ id: 4 as const, name: 'Scharfschütze', cost: 170, damage: 53, range: 190, cooldown: 1.85, color: 0xd9c8ee });
 export const SPLASH_RADIUS = 52;
-export const BATTLE_RULES_VERSION = 4 as const;
+export const BATTLE_RULES_VERSION = 5 as const;
 export const LIVE_CANDIDATE_LIMIT = 32;
 /** Reserved boss milestones never contribute repeatable offline production. */
 export const isNormalFarmWave = (wave: number): boolean => Number.isSafeInteger(wave) && wave >= 1 && wave !== 15 && wave !== 25;
@@ -49,7 +51,8 @@ export type TowerDef = typeof BASE.tower | typeof FROST | typeof CANNON | typeof
 export const towerDefinition = (id: TowerId): TowerDef => ({ 1: BASE.tower, 2: FROST, 3: CANNON, 4: SNIPER })[id];
 export const padUnlocked = (availability: string, wave: number): boolean => availability === 'initial' || availability === 'wave-5' && wave >= 5 || availability === 'wave-10' && wave >= 10;
 export const towerUnlocked = (kind: TowerId, frost: boolean, wave: number): boolean => kind === 1 || kind === 2 && frost || kind === 3 && frost && wave >= 5 || kind === 4 && wave >= 10;
-const waveEnemy = (wave: number, index: number, recipe: number): EnemyDef => recipe >= 4 && wave >= 11 && index % 5 === 4 ? BASE.enemies.Scorpion : wave >= 4 && index % 3 === 2 ? BASE.enemies.Firebug : BASE.enemies.Leafbug;
+export const waveCount = (wave: number, recipe: number = BATTLE_RULES_VERSION): number => isBossWave(wave, recipe) ? BOSS.count : Math.min(BASE.waves.maxCount, BASE.waves.firstCount + wave - 1);
+const waveEnemy = (wave: number, index: number, recipe: number): EnemyDef => isBossWave(wave, recipe) && index === 2 ? BASE.enemies.Rosenspiegel : recipe >= 4 && wave >= 11 && index % 5 === 4 ? BASE.enemies.Scorpion : wave >= 4 && index % 3 === 2 ? BASE.enemies.Firebug : BASE.enemies.Leafbug;
 export type EnemyDef = typeof BASE.enemies[keyof typeof BASE.enemies];
 export interface Tower {
   uid: number; padId: string; x: number; y: number; def: TowerDef;
@@ -66,16 +69,17 @@ export interface Shot {
   speed: number; damage: number; level: number; kind: TowerId;
 }
 export interface BattleEvent {
-  type: 'build' | 'upgrade' | 'sell' | 'fire' | 'hit' | 'kill' | 'escape' | 'wave' | 'clear' | 'defeat' | 'workshop' | 'research' | 'wisp' | 'pads' | 'warehouse';
+  type: 'build' | 'upgrade' | 'sell' | 'fire' | 'hit' | 'kill' | 'escape' | 'wave' | 'clear' | 'defeat' | 'workshop' | 'research' | 'wisp' | 'pads' | 'warehouse' | 'boss-victory' | 'boss-interrupt';
   tower?: Tower; enemy?: Enemy; shot?: Shot; x?: number; y?: number;
   amount?: number; wave?: number;
 }
 
 /** Only scalar IDs and fired payloads cross the save boundary. UI events are transient. */
 export interface BattleSnapshot {
-  schemaVersion: 7; rulesVersion: 4; layoutVersion: 1; layoutId: 'start28';
+  schemaVersion: 8; rulesVersion: 5; layoutVersion: 1; layoutId: 'start28';
+  bossVictories: number; bossChallengeRequested: boolean; bossCharm: BossCharm;
   progress: ProgressRecord;
-  rewardRemainderUnits: number; waveRecipeVersion: 3 | 4;
+  rewardRemainderUnits: number; waveRecipeVersion: 3 | 4 | 5;
   goldRemainderUnits: number; mode: BattleMode; highestCleared: number; attemptId: number;
   liveClearedWaves: number[]; farmWave: number; advanceRequested: boolean;
   gold: number; lives: number; wave: number; phase: Phase; elapsed: number;
@@ -118,7 +122,10 @@ export class IdleBattle {
   gold: number = BASE.startGold;
   goldRemainderUnits = 0;
   rewardRemainderUnits = 0;
-  waveRecipeVersion: 3 | 4 = 4;
+  waveRecipeVersion: 3 | 4 | 5 = 5;
+  bossVictories = 0;
+  bossChallengeRequested = false;
+  bossCharm = freshCharm();
   mode: BattleMode = 'advance';
   highestCleared = 0;
   attemptId = 0;
@@ -167,10 +174,11 @@ export class IdleBattle {
    */
   snapshot(): BattleSnapshot {
     if (JSON.stringify(this.layout) !== SNAPSHOT_LAYOUT_JSON) {
-      throw new Error('Unsupported battle layout for snapshot version 7.');
+      throw new Error('Unsupported battle layout for snapshot version 8.');
     }
     return {
-      schemaVersion: 7, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: 1, layoutId: 'start28',
+      schemaVersion: 8, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: 1, layoutId: 'start28',
+      bossVictories: this.bossVictories, bossChallengeRequested: this.bossChallengeRequested, bossCharm: { ...this.bossCharm },
       progress: cloneProgress(this.progress), rewardRemainderUnits: this.rewardRemainderUnits, waveRecipeVersion: this.waveRecipeVersion,
       goldRemainderUnits: this.goldRemainderUnits, mode: this.mode, highestCleared: this.highestCleared,
       attemptId: this.attemptId, liveClearedWaves: [...this.liveClearedWaves],
@@ -226,14 +234,20 @@ export class IdleBattle {
     }
     if (isRecord(value) && value.schemaVersion === 5 && value.rulesVersion === 3) {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 5)) return undefined;
-      value = { ...value, schemaVersion: 6, rulesVersion: BATTLE_RULES_VERSION, rewardRemainderUnits: 0,
+      value = { ...value, schemaVersion: 6, rulesVersion: 4, rewardRemainderUnits: 0,
         waveRecipeVersion: 3, liveClearedWaves: [], farmWave: 1 };
     }
-    if (isRecord(value) && value.schemaVersion === 6 && value.rulesVersion === BATTLE_RULES_VERSION) {
+    if (isRecord(value) && value.schemaVersion === 6 && value.rulesVersion === 4) {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 6)) return undefined;
       value = { ...value, schemaVersion: 7, settlement: { ...value.settlement, warehouseBuilt: false, warehouseBuiltAt: null } };
     }
+    if (isRecord(value) && value.schemaVersion === 7 && value.rulesVersion === 4) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 7)) return undefined;
+      value = { ...value, schemaVersion: 8, rulesVersion: BATTLE_RULES_VERSION,
+        bossVictories: 0, bossChallengeRequested: false, bossCharm: freshCharm(), liveClearedWaves: [], farmWave: 1 };
+    }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength)) return undefined;
+    model.bossVictories = value.bossVictories; model.bossChallengeRequested = value.bossChallengeRequested; model.bossCharm = { ...value.bossCharm };
     model.progress = cloneProgress(value.progress);
     model.rewardRemainderUnits = value.rewardRemainderUnits; model.waveRecipeVersion = value.waveRecipeVersion;
     model.gold = value.gold;
@@ -321,9 +335,20 @@ export class IdleBattle {
     return true;
   }
 
+  get nextAdvanceWave(): number { return this.bossVictories === 0 && this.highestCleared >= 14 ? BOSS.wave : this.highestCleared + 1; }
+  get bossActive(): boolean { return this.phase === 'wave' && isBossWave(this.wave, this.waveRecipeVersion); }
+  get bossEnemy(): Enemy | undefined { return this.enemies.find(e => e.def.id === 'Rosenspiegel' && e.hp > 0); }
+  get bossQueued(): boolean { return this.queue.some(def => def.id === 'Rosenspiegel'); }
+  requestBossChallenge(): boolean {
+    if (this.highestCleared < 14 || this.phase === 'defeat' || this.bossActive || this.bossChallengeRequested) return false;
+    this.bossChallengeRequested = true; return true;
+  }
+  isCharmed(uid: number): boolean { return this.bossCharm.phase === 'channel' && this.bossCharm.targetUid === uid; }
+
   requestAdvance(): boolean {
     if (this.mode !== 'farm' || this.advanceRequested) return false;
     this.advanceRequested = true;
+    if (this.nextAdvanceWave === BOSS.wave) this.bossChallengeRequested = true;
     return true;
   }
 
@@ -376,6 +401,7 @@ export class IdleBattle {
     const amount = sellValue(tower);
     this.credit(amount, false);
     this.towers = this.towers.filter(candidate => candidate.uid !== uid);
+    if (this.bossCharm.targetUid === uid) this.interruptBoss();
     if (this.mara.targetTowerUid === uid) this.assignMara(this.towers.find(tower => tower.protected)!.uid);
     this.events.push({ type: 'sell', tower, x: tower.x, y: tower.y, amount });
     return true;
@@ -413,13 +439,13 @@ export class IdleBattle {
     };
   }
 
-  private credit(amount: number, reward: boolean, offline = false): void {
+  private credit(amount: number, reward: boolean, excludeBattleRate = false): void {
     if (!Number.isSafeInteger(amount) || amount < 0 || !Number.isSafeInteger(this.gold + amount)
       || (reward && !Number.isSafeInteger(this.earned + amount))
-      || (reward && !offline && !Number.isSafeInteger(this.progress.battleGold + amount))) throw new Error('Invalid gold transaction.');
+      || (reward && !excludeBattleRate && !Number.isSafeInteger(this.progress.battleGold + amount))) throw new Error('Invalid gold transaction.');
     this.gold += amount;
     if (reward) this.earned += amount;
-    if (reward && !offline) this.progress.battleGold += amount;
+    if (reward && !excludeBattleRate) this.progress.battleGold += amount;
   }
 
   /** Fractional battle rewards and the shared wallet retain all tenths. Offline
@@ -435,18 +461,21 @@ export class IdleBattle {
   }
 
   private startAttempt(): void {
-    this.waveRecipeVersion = 4;
+    this.waveRecipeVersion = BATTLE_RULES_VERSION;
+    this.bossCharm = freshCharm();
     if (this.advanceRequested) {
       this.mode = 'advance';
       this.advanceRequested = false;
     }
-    this.wave = this.mode === 'advance' ? this.highestCleared + 1 : this.farmWave;
+    if (this.bossChallengeRequested) {
+      this.wave = BOSS.wave; this.mode = 'advance'; this.bossChallengeRequested = false;
+    } else this.wave = this.mode === 'advance' ? this.highestCleared + 1 : this.farmWave;
     this.attemptId++;
     recordAttempt(this.progress, this.wave, this.mode, this.attemptId, 'attempts');
     this.lives = BASE.coreLives;
     this.enemies = [];
     this.shots = [];
-    const count = Math.min(BASE.waves.maxCount, BASE.waves.firstCount + this.wave - 1);
+    const count = waveCount(this.wave);
     this.queue = Array.from({ length: count }, (_, index) =>
       waveEnemy(this.wave, index, this.waveRecipeVersion));
     this.spawnTimer = BASE.waves.firstSpawnDelay;
@@ -497,14 +526,41 @@ export class IdleBattle {
     enemy.hp = Math.max(0, enemy.hp - shot.damage * (shot.kind === 4 ? 1 : 1 - enemy.def.armor));
     if (shot.kind === 2 && enemy.hp > 0) {
       enemy.slowRemaining = SETTLEMENT.slowSeconds; this.tutorial.frostSeen = true;
+      if (enemy.def.id === 'Rosenspiegel') this.interruptBoss();
     }
     this.events.push({ type: 'hit', shot, enemy, x: enemy.x, y: enemy.y, amount: shot.damage });
     if (enemy.hp > 0) return;
+    if (enemy.def.id === 'Rosenspiegel') this.bossCharm = freshCharm();
     const owner = this.towers.find(tower => tower.uid === shot.towerUid);
     if (owner) owner.kills++;
     const amount = this.creditBattleReward(enemy.def.gold);
     this.kills++;
     this.events.push({ type: 'kill', tower: owner, enemy, x: enemy.x, y: enemy.y, amount });
+  }
+
+  private interruptBoss(): void {
+    if (this.bossCharm.phase !== 'windup' && this.bossCharm.phase !== 'channel') return;
+    this.bossCharm = { phase: 'interrupted', targetUid: null, remaining: 1.5, cooldown: BOSS.recovery };
+    this.events.push({ type: 'boss-interrupt' });
+  }
+
+  private stepBoss(dt: number): void {
+    const boss = this.bossEnemy, charm = this.bossCharm;
+    if (!boss) { this.bossCharm = freshCharm(); return; }
+    charm.cooldown = Math.max(0, charm.cooldown - dt);
+    if (charm.phase !== 'idle') {
+      const target = this.towers.find(t => t.uid === charm.targetUid);
+      if (charm.phase !== 'interrupted' && (!target || distance(target, boss) > BOSS.range)) { this.interruptBoss(); return; }
+      charm.remaining = Math.max(0, charm.remaining - dt);
+      if (charm.remaining > 1e-9) return;
+      if (charm.phase === 'windup') { charm.phase = 'channel'; charm.remaining = BOSS.channel; return; }
+      this.bossCharm = { ...freshCharm(), cooldown: charm.cooldown };
+      return;
+    }
+    if (charm.cooldown > 1e-9) return;
+    const target = this.towers.filter(t => distance(t, boss) <= BOSS.range)
+      .sort((a, b) => stats(b).damage / stats(b).cooldown - stats(a).damage / stats(a).cooldown || a.uid - b.uid)[0];
+    if (target) this.bossCharm = { phase: 'windup', targetUid: target.uid, remaining: BOSS.windup, cooldown: BOSS.cooldown };
   }
 
   private tick(dt: number): void {
@@ -516,7 +572,7 @@ export class IdleBattle {
     const boostedSeconds = stepMara(this.mara, maraTarget, this.layout, getForestBlockedCells(this.layout),
       dt, this.phase === 'wave', this.maraBonus);
     if (this.phase === 'defeat') {
-      this.mode = 'farm';
+      this.mode = 'farm'; this.bossCharm = freshCharm(); this.bossChallengeRequested = false;
       this.lives = BASE.coreLives;
       this.enemies = [];
       this.shots = [];
@@ -534,27 +590,31 @@ export class IdleBattle {
     if (this.queue.length) this.spawnTimer -= dt;
     while (this.queue.length && this.spawnTimer <= 1e-9) {
       this.spawn(this.queue.shift()!);
-      const spawned = Math.min(BASE.waves.maxCount, BASE.waves.firstCount + this.wave - 1) - this.queue.length;
+      const spawned = waveCount(this.wave, this.waveRecipeVersion) - this.queue.length;
       this.spawnTimer = Math.min(0, this.spawnTimer) + (this.waveRecipeVersion >= 4 && this.wave >= 6 ? (spawned % 3 === 0 ? 1.65 : 0.32)
         : Math.max(BASE.waves.minSpawnInterval, BASE.waves.spawnInterval - (this.wave - 1) * 0.025));
     }
     // This timer only schedules queued spawns. Letting it run negative after
     // the last spawn rejects valid saves when Frost prolongs a live wave.
     if (!this.queue.length) this.spawnTimer = 0;
-    for (const enemy of this.enemies) if (enemy.hp > 0) this.move(enemy, dt);
+    this.stepBoss(dt);
+    for (const enemy of this.enemies) if (enemy.hp > 0) {
+      if (enemy.def.id === 'Rosenspiegel' && ['windup', 'channel'].includes(this.bossCharm.phase)) enemy.slowRemaining = Math.max(0, enemy.slowRemaining - dt);
+      else this.move(enemy, dt);
+    }
     if (this.lives <= 0) {
       recordAttempt(this.progress, this.wave, this.mode, this.attemptId, 'losses');
       if (this.mode === 'farm') this.farmWave = 1;
       this.mode = 'farm';
       this.advanceRequested = false;
-      this.phase = 'defeat';
+      this.phase = 'defeat'; this.bossCharm = freshCharm(); this.bossChallengeRequested = false;
       this.shots = [];
       this.events.push({ type: 'defeat', wave: this.wave });
       return;
     }
     for (const tower of this.towers) {
       const support = tower.uid === this.mara.targetTowerUid ? boostedSeconds * (MARA.fireRate - 1) : 0;
-      tower.cooldown = Math.max(0, tower.cooldown - dt - support);
+      tower.cooldown = Math.max(0, tower.cooldown - (dt + support) * (this.isCharmed(tower.uid) ? BOSS.rateMultiplier : 1));
       if (tower.cooldown > 1e-9) continue;
       const stat = stats(tower);
       const target = this.enemies.filter(enemy => enemy.hp > 0 && distance(tower, enemy) <= stat.range)
@@ -584,11 +644,17 @@ export class IdleBattle {
       recordAttempt(this.progress, this.wave, this.mode, this.attemptId, 'wins');
       this.shots = [];
       const amount = this.creditBattleReward(Math.min(BASE.waves.maxReward, BASE.waves.rewardBase + this.wave * BASE.waves.rewardPerWave));
+      if (isBossWave(this.wave, this.waveRecipeVersion)) {
+        const first = this.bossVictories === 0;
+        this.bossVictories++;
+        if (first) this.credit(BOSS.firstReward, true, true);
+        this.events.push({ type: 'boss-victory', wave: this.wave, amount: first ? BOSS.firstReward : 0 });
+      }
       const previousRecord = this.highestCleared, hadWisp = this.wispUnlocked;
       this.highestCleared = Math.max(this.highestCleared, this.wave);
       if ([5, 10].some(wave => previousRecord < wave && this.highestCleared >= wave)) this.events.push({ type: 'pads', wave: this.highestCleared });
       if (!hadWisp && this.wispUnlocked) this.events.push({ type: 'wisp' });
-      if (this.waveRecipeVersion === 4 && isNormalFarmWave(this.wave) && !this.liveClearedWaves.includes(this.wave)) {
+      if (this.waveRecipeVersion === BATTLE_RULES_VERSION && isNormalFarmWave(this.wave) && !this.liveClearedWaves.includes(this.wave)) {
         const completed = [...this.liveClearedWaves, this.wave].sort((a, b) => a - b);
         const retained = completed.slice(-LIVE_CANDIDATE_LIMIT);
         // Pin the actual entry evidence and current certified target so an old
@@ -614,7 +680,7 @@ const numberIn = (value: unknown, min: number, max: number): value is number =>
   typeof value === 'number' && Number.isFinite(value) && value >= min && value <= max;
 const integerIn = (value: unknown, min = 0, max = Number.MAX_SAFE_INTEGER): value is number =>
   typeof value === 'number' && Number.isSafeInteger(value) && value >= min && value <= max;
-const enemyId = (value: unknown): value is EnemyDef['id'] => value === 'Leafbug' || value === 'Firebug' || value === 'Scorpion';
+const enemyId = (value: unknown): value is EnemyDef['id'] => value === 'Leafbug' || value === 'Firebug' || value === 'Scorpion' || value === 'Rosenspiegel';
 const near = (left: number, right: number): boolean => Math.abs(left - right) <= 1e-6;
 
 /** Limits follow the finite shipped rules, rather than trusting serialized stats.
@@ -623,11 +689,11 @@ const near = (left: number, right: number): boolean => Math.abs(left - right) <=
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 = 0,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 = 0,
 ): value is BattleSnapshot {
-  if (!isRecord(value) || value.schemaVersion !== (legacy || 7) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : BATTLE_RULES_VERSION)
+  if (!isRecord(value) || value.schemaVersion !== (legacy || 8) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy ? 4 : BATTLE_RULES_VERSION)
     || value.layoutVersion !== 1 || value.layoutId !== 'start28') return false;
-  if ((!legacy || legacy === 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || ![3, 4].includes(value.waveRecipeVersion as number))) return false;
+  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy ? [3, 4] : [3, 4, 5]).includes(value.waveRecipeVersion as number))) return false;
   const original = legacy === 2 || legacy === 3;
   if (!original) {
     if (!isRecord(value.settlement) || typeof value.settlement.workshopBuilt !== 'boolean'
@@ -635,15 +701,19 @@ function validSnapshot(
       || (value.settlement.frostResearched && !value.settlement.workshopBuilt)
       || (value.settlement.workshopBuilt ? !numberIn(value.settlement.builtAt, 0, value.elapsed as number) : value.settlement.builtAt !== null)
       || !isRecord(value.tutorial) || typeof value.tutorial.hidden !== 'boolean'
-      || !integerIn(value.tutorial.seen, 0, legacy ? legacy === 6 ? 4095 : 255 : 16383) || typeof value.tutorial.builtTower !== 'boolean'
+      || !integerIn(value.tutorial.seen, 0, legacy ? legacy === 7 ? 16383 : legacy === 6 ? 4095 : 255 : 32767) || typeof value.tutorial.builtTower !== 'boolean'
       || typeof value.tutorial.upgradedTower !== 'boolean' || typeof value.tutorial.frostSeen !== 'boolean') return false;
   }
-  if (!legacy) {
+  if (!legacy || legacy === 7) {
     const settlement = value.settlement as BattleSnapshot['settlement'];
     if (typeof settlement.warehouseBuilt !== 'boolean'
       || (settlement.warehouseBuilt ? !settlement.frostResearched || !integerIn(value.highestCleared, 8)
         || !numberIn(settlement.warehouseBuiltAt, settlement.builtAt ?? 0, value.elapsed as number) : settlement.warehouseBuiltAt !== null)) return false;
   }
+  if (!legacy && (!integerIn(value.bossVictories, 0, value.attemptId as number)
+    || (value.bossVictories > 0 && (value.highestCleared as number) < BOSS.wave)
+    || typeof value.bossChallengeRequested !== 'boolean'
+    || (value.bossChallengeRequested && ((value.highestCleared as number) < 14 || value.phase === 'defeat' || isBossWave(value.wave as number, value.waveRecipeVersion as number) && value.phase === 'wave')))) return false;
   const levelLimit = !original && (value.settlement as BattleSnapshot['settlement']).frostResearched ? 6 : 3;
   if (!integerIn(value.goldRemainderUnits, 0, 999) || (value.mode !== 'advance' && value.mode !== 'farm')
     || !integerIn(value.highestCleared, 0, Number.MAX_SAFE_INTEGER - 1) || !integerIn(value.attemptId)
@@ -681,10 +751,10 @@ function validSnapshot(
     || value.attemptId !== 0 || value.mode !== 'advance' || value.liveClearedWaves.length > 0)) return false;
   if (value.wave > 0 && (value.attemptId < 1 || value.wave > value.highestCleared + 1)) return false;
 
-  const waveCount = value.wave === 0 ? 0 : Math.min(BASE.waves.maxCount, BASE.waves.firstCount + value.wave - 1);
-  if (value.queue.length + value.enemies.length > waveCount) return false;
+  const count = value.wave === 0 ? 0 : waveCount(value.wave, (legacy && legacy < 6 ? 3 : value.waveRecipeVersion) as 3 | 4 | 5);
+  if (value.queue.length + value.enemies.length > count) return false;
   for (let index = 0; index < value.queue.length; index++) {
-    const recipeIndex = waveCount - value.queue.length + index;
+    const recipeIndex = count - value.queue.length + index;
     const expected = waveEnemy(value.wave, recipeIndex, legacy && legacy < 6 ? 3 : value.waveRecipeVersion as number).id;
     if (value.queue[index] !== expected) return false;
   }
@@ -717,6 +787,16 @@ function validSnapshot(
   if (protectedCount !== 1 || towerKills > value.kills) return false;
   if (legacy !== 2 && !validMara(value.mara, value.towers.map(tower => ({ ...tower,
     ...cellCenter(layout, layout.towerPads.find(pad => pad.id === tower.padId)!.cell) })), layout, getForestBlockedCells(layout))) return false;
+  if (!legacy) {
+    const charm = value.bossCharm;
+    if (!isRecord(charm) || !['idle', 'windup', 'channel', 'interrupted'].includes(charm.phase as string)
+      || !numberIn(charm.cooldown, 0, BOSS.cooldown) || !numberIn(charm.remaining, 0, charm.phase === 'windup' ? BOSS.windup : charm.phase === 'interrupted' ? 1.5 : BOSS.channel)) return false;
+    const casting = charm.phase === 'windup' || charm.phase === 'channel';
+    if (casting ? !integerIn(charm.targetUid, 1) || !towerIds.has(charm.targetUid) || (charm.remaining as number) <= 0 : charm.targetUid !== null) return false;
+    if (charm.phase === 'idle' && charm.remaining !== 0) return false;
+    if (charm.phase !== 'idle' && (value.phase !== 'wave' || !value.enemies.some(e => isRecord(e) && e.defId === 'Rosenspiegel' && typeof e.hp === 'number' && e.hp > 0))) return false;
+    if (value.enemies.filter(e => isRecord(e) && e.defId === 'Rosenspiegel').length + value.queue.filter(e => e === 'Rosenspiegel').length > 1) return false;
+  }
   const cumulative = [0];
   for (let index = 1; index < path.length; index++) cumulative.push(cumulative[index - 1] + distance(path[index - 1], path[index]));
   for (const enemy of value.enemies) {
@@ -728,6 +808,7 @@ function validSnapshot(
       || enemy.speed !== BASE.enemies[enemy.defId].speed || typeof enemy.flip !== 'boolean'
       || (!original && !numberIn(enemy.slowRemaining, 0, SETTLEMENT.slowSeconds))
       || (enemy.direction !== 'up' && enemy.direction !== 'down' && enemy.direction !== 'side')) return false;
+    if (enemy.defId === 'Rosenspiegel' && (legacy || !isBossWave(value.wave, value.waveRecipeVersion as number))) return false;
     if (enemy.defId === 'Scorpion' && ((legacy && legacy < 6) || value.waveRecipeVersion === 3 || value.wave < 11)) return false;
     const def = BASE.enemies[enemy.defId];
     const expectedHp = def.hp * Math.min(BASE.waves.maxHpMultiplier, Math.pow(BASE.waves.hpGrowth, value.wave - 1));

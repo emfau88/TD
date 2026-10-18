@@ -67,7 +67,7 @@ Zeiten sind Ziele für einen neuen Spielstand bei 1× und zügigen normalen Ents
 | nach Bau, spätestens etwa 120–150 s | Erste Technologie „Frostfassung“ kaufen: Frostkristall freigeschaltet, zugleich normale Turmlevel 4–6 zugänglich. Der neue Turm verlangsamt Gegner sichtbar |
 | 2–4 min | Nach erster Technologie und gemeisterter Welle 5 Wisp kostenlos freischalten; zusätzlich Steinschleuder verfügbar |
 | 4–6 min | Vorratslager I nach Wisp und Welle 8 baubar; Offline-Vorteil anhand konkreter Vorschau erklären. Scharfschütze ab gemeisterter Welle 10 verfügbar |
-| 7–10 min | Erster Boss in Welle 15: vorhandene gepanzerte Magmakrabbe mit erhöhter Ausdauer und kleiner Begleitgruppe; lesbare Bossanzeige, kein neues Spritepaket |
+| 7–10 min | Erster Bosssieg als Ziel; die Begegnung kann früher beginnen. Welle 15: vorhandene Succubus „Rosenspiegel“ mit angekündigter Turmverführung, Frost-Unterbrechung und kleiner Begleitgruppe; lesbare Bossanzeige, kein neues Spritepaket |
 | 8–11 min | Nach Boss 15 kann die östliche Lichtung gegen Gold erschlossen werden: echte Kamerabewegung in die neue Fläche und 2 taktisch nützliche Turmplätze |
 | 10–13 min | Werkstatt II nach Lichtung und Goldkauf; sichtbares kleines Anbauteil, Turmlevel ab 7 freigeschaltet, bis Level 20; erste Ziele liegen bei 7–10 |
 | 13–15 min | Verbesserte Verteidigung, zweiter Boss als nahes oder erreichtes Ziel (Welle 25), nächster sinnvoller Kauf erkennbar |
@@ -75,7 +75,7 @@ Zeiten sind Ziele für einen neuen Spielstand bei 1× und zügigen normalen Ents
 
 Die Wellen- und Preiskurve wird auf diese Fenster abgestimmt; bei einem Zielkonflikt zuerst Erträge, Kampfdauer und Kosten ändern. Kleine datenbezogene Anpassungen sind erlaubt und mit Vorher/Nachher-Zeiten zu dokumentieren. Reihenfolge, Charakterrollen und Freigabegrenzen bleiben verbindlich.
 
-**Umgesetzte Einstiegspreise:** 75 Startgold plus kostenloser Startturm; Waldwächter 75, Frostkristall 110, erstes Upgrade 60, Werkstatt I 400, Frostfassung 60. Die Werkstatt-Hypothese 220 wurde nach Messung des gesamten Kaufablaufs auf 400 angehoben. Der tatsächliche 1×-Browserverlauf und die verschiedenen Spielweisen stehen im [90-Sekunden-Bericht](../../artifacts/idle-bastion/acceptance/90s/REPORT.md). Spätere, noch ungetestete Hypothesen: Steinschleuder/Scharfschütze 135/170, Lager I 650, Lichtung 900, Werkstatt II 1.200. B08 verwendet 135/170 Gold für Steinschleuder/Scharfschütze; Lager und weitere Ausbaupreise bleiben spätere Hypothesen.
+**Umgesetzte Einstiegspreise:** 75 Startgold plus kostenloser Startturm; Waldwächter 75, Frostkristall 110, erstes Upgrade 60, Werkstatt I 400, Frostfassung 60. Die Werkstatt-Hypothese 220 wurde nach Messung des gesamten Kaufablaufs auf 400 angehoben. Der tatsächliche 1×-Browserverlauf und die verschiedenen Spielweisen stehen im [90-Sekunden-Bericht](../../artifacts/idle-bastion/acceptance/90s/REPORT.md). Spätere, noch ungetestete Hypothesen: Steinschleuder/Scharfschütze 135/170, Lager I 650, Lichtung 900, Werkstatt II 1.200. B08 verwendet 135/170 Gold für Steinschleuder/Scharfschütze; Lager I kostet 650 Gold. Rosenspiegel gewährt einmalig 750 Gold Erstprämie ohne Wisp-Bonus; spätere Ausbaupreise bleiben Hypothesen.
 
 ## Rollen und Entscheidungen
 

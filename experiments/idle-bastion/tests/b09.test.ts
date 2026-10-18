@@ -29,14 +29,14 @@ const basis = certifyFarm(earned)!;
 const HOUR = 3600000, START = 1000;
 assert.ok(basis);
 
-test('warehouse has real unlock and price gates; old saves retain combat and farm evidence', () => {
+test('warehouse has real unlock and price gates; old saves retain combat and renew farm evidence', () => {
   const early = new IdleBattle(); early.gold = 650;
   assert.equal(early.buildWarehouse(), false);
   early.highestCleared = 8; assert.equal(early.buildWarehouse(), false, 'Wave alone is insufficient');
   const modern = earned.snapshot(), { warehouseBuilt, warehouseBuiltAt, ...settlement } = modern.settlement;
-  const migrated = IdleBattle.restore({ ...modern, schemaVersion: 6, settlement })!;
-  assert.ok(migrated); assert.deepEqual(migrated.liveClearedWaves, earned.liveClearedWaves);
-  assert.deepEqual(migrated.snapshot(), modern);
+  const migrated = IdleBattle.restore({ ...modern, schemaVersion: 6, rulesVersion: 4, waveRecipeVersion: 4, settlement })!;
+  assert.ok(migrated); assert.deepEqual(migrated.liveClearedWaves, []);
+  assert.deepEqual(migrated.snapshot(), { ...modern, waveRecipeVersion: 4, liveClearedWaves: [], farmWave: 1 });
   const fingerprint = defenseFingerprint(migrated), wallet = migrated.gold;
   migrated.gold = 649; assert.equal(migrated.buildWarehouse(), false); migrated.gold = wallet;
   assert.equal(migrated.buildWarehouse(), true);

@@ -46,6 +46,16 @@ Diese Trennung beschreibt Zuständigkeiten, keine Verpflichtung zu zehn abstrakt
 - Wellenrezepte und Gegnerwerte sind datengetrieben. Nach Minute 15 läuft eine begrenzte skalierende Folge weiter; kein Sieg-Bildschirm beendet den Slice künstlich.
 - Gegneranzahl, gleichzeitige Gegner und Projektilanzahl bleiben begrenzt. Späte Schwierigkeit wächst nicht ausschließlich durch immer mehr Objekte.
 
+### Erster Boss: Rosenspiegel (Welle 15)
+
+- Ein Boss plus acht Begleiter, darunter ein Panzerskorpion. Bestehendes Succubus-Sheet und reine Frame-Zuordnung wiederverwenden; keine klassische Simulation importieren.
+- 850 Basis-HP, normale Wellen-HP-Skalierung (in Welle 15 etwa 6.790 HP), Tempo 32, 10 % Rüstung. Erreicht sie den Kern, verliert dieser 20 Leben: Niederlage, kein Bossmeilenstein.
+- Innerhalb von 200 Weltpixeln wählt sie den Turm mit der höchsten Grund-DPS. Herzfaden kündigt das Ziel 0,8 Sekunden an; anschließend 4,5 Sekunden lang 40 % weniger Feuerrate. Während Ankündigung und Wirkung bleibt sie stehen. Cooldown 11 Sekunden ab Ankündigung, nach Unterbrechung 6 Sekunden.
+- Jeder Frosttreffer unterbricht eine laufende Ankündigung oder Verführung und verlangsamt normal. Verkauf des Zielturms beendet den Zauber. Alle Timer laufen in Simulationszeit und bleiben über Pause/Reload erhalten.
+- Erst wenn Boss und alle Begleiter besiegt sind, steigt `bossVictories`. Beim ersten Mal einmalig 750 Gold; kein Wisp-Multiplikator und kein künstlicher Anstieg der Live-Einkommensanzeige. Wiederholbar sind nur gewöhnliches Gegner- und Wellen-Gold.
+- Bosswellen zählen nie als Farm-/Offline-Nachweis. Nach Niederlage bleibt der Wiederholungsversuch bewusst: Vorstoß oder Chronik → Boss herausfordern. Eine Herausforderung wird erst am nächsten Wellenübergang gestartet; keine laufende Welle wird abgeschnitten.
+- Schema 8 speichert Bosszähler, vorgemerkte Herausforderung sowie Zauberphase, Ziel-UID, Restdauer und Cooldown. Alte Welle-15-Rekorde bleiben erhalten, erzeugen aber weder Bossprämie noch Bosssieg. Ein laufender Altversuch behält sein altes Rezept und wird regulär beendet; die Chronik erlaubt anschließend die echte Herausforderung.
+
 ## 4. Sichere Farming-Leistung
 
 Ein bloßer Wellenabschluss oder eine theoretische DPS-Zahl ist kein Farmzertifikat.
@@ -109,13 +119,13 @@ Im sichtbaren Kampf unterstützt Mara weiterhin automatisch. Die Offline-Grundla
 
 ## 8. Verbindliches Speicherverfahren
 
-Eigene IndexedDB-Datenbank und eigener Namensraum, `spire-idle-bastion`, Store `saves`, Spielstand-ID `default`, mit versioniertem Save-Envelope. Keine Wiederverwendung von `spire-woodland-v1`. Versionierung: Envelope 2, Kampfsnapshot 7, Kampfregeln 4 und Datenbankversion 1. Bekannte Kampfschemas 1–6 werden vor der Migration validiert. Gold, Statistik, Mara, Forschung und laufende Projektile bleiben erhalten. `waveRecipeVersion` erhält die alte Gegnerfolge und Spawnabstände bis zum nächsten Versuch. Alte Live-Farmnachweise werden bei Regelwechsel verworfen; auch ein gerade beendeter Altversuch zertifiziert keine neue Regel. Historische Offline-Ansprüche behalten ihre ursprüngliche Basis (Regeln 1–4); Offline-Daten besitzen weiterhin Version 1. „Frische Probe“ verwendet einen eigenen, in der URL identifizierten Datenbanknamen und berührt den Hauptspielstand nicht.
+Eigene IndexedDB-Datenbank und eigener Namensraum, `spire-idle-bastion`, Store `saves`, Spielstand-ID `default`, mit versioniertem Save-Envelope. Keine Wiederverwendung von `spire-woodland-v1`. Versionierung: Envelope 2, Kampfsnapshot 8, Kampfregeln 5 und Datenbankversion 1. Bekannte Kampfschemas 1–7 werden vor der Migration validiert. Gold, Statistik, Mara, Forschung und laufende Projektile bleiben erhalten. `waveRecipeVersion` erhält die alte Gegnerfolge und Spawnabstände bis zum nächsten Versuch. Alte Live-Farmnachweise werden bei Regelwechsel verworfen; auch ein gerade beendeter Altversuch zertifiziert keine neue Regel. Historische Offline-Ansprüche behalten ihre ursprüngliche Basis (Regeln 1–5); Offline-Daten besitzen weiterhin Version 1. „Frische Probe“ verwendet einen eigenen, in der URL identifizierten Datenbanknamen und berührt den Hauptspielstand nicht.
 
 ### Fortschrittschronik und Ertragsanzeige
 
 Schema 5 ergänzt `progress`: Startpunkt der Aufzeichnung, reines Kampfgold, getrennte Vorstoß-/Farm-Gesamtsummen, Versuche/Siege/Niederlagen für die letzten 100 verschiedenen Wellen und letzte bekannte Niederlage. Beginn und Ausgang werden an den tatsächlichen Modellübergängen erfasst und gemeinsam mit Kampf und Wirtschaft bestätigt. Reload löst keinen neuen Versuch aus; fehlgeschlagene Speichertransaktionen rollen auch die Zähler zurück. Bei Migration startet die Versuchszählung mit dem nächsten tatsächlichen Wellenstart. Die noch laufende alte Welle erhält keinen erfundenen Start/Sieg; eine neue Niederlage kann trotzdem erklärt werden. Frühere Zahlen bleiben ausdrücklich unbekannt. Beim Entfernen alter Einzelzeilen bleiben die Gesamtsummen erhalten.
 
-Die HUD-Rate verwendet ausschließlich Änderungen von `progress.battleGold` über maximal 60 aktive Simulationssekunden, mit erster Schätzung nach 15 Sekunden. Sie ist eine unverbindliche Messung des jüngsten Goldzuflusses einschließlich regulärer Wellenboni. Käufe, Verkäufe und Offline-Gold verändern diesen Zähler nicht. Das alte Feld `earned` behält aus Kompatibilitätsgründen seine bisherige Bedeutung einschließlich Offline-Gold. Die Messung beginnt nach Reload neu; Pause und angehaltener Kampf werden explizit gezeigt. Sichere Farmbasis und daraus berechneter Offline-Ertrag stehen separat in der Chronik. Wellenrekord bedeutet stets höchste **besiegte** Welle, nicht sichere Farmwelle.
+Die HUD-Rate verwendet ausschließlich Änderungen von `progress.battleGold` über maximal 60 aktive Simulationssekunden, mit erster Schätzung nach 15 Sekunden. Sie ist eine unverbindliche Messung des jüngsten Goldzuflusses einschließlich regulärer Wellenboni. Käufe, Verkäufe, Offline-Gold und die einmalige Bossprämie verändern diesen Zähler nicht. Das alte Feld `earned` behält aus Kompatibilitätsgründen seine bisherige Bedeutung einschließlich Offline-Gold. Die Messung beginnt nach Reload neu; Pause und angehaltener Kampf werden explizit gezeigt. Sichere Farmbasis und daraus berechneter Offline-Ertrag stehen separat in der Chronik. Wellenrekord bedeutet stets höchste **besiegte** Welle, nicht sichere Farmwelle.
 
 Der Zustand enthält mindestens:
 
