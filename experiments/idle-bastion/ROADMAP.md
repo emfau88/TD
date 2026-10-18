@@ -12,7 +12,7 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08, B09 und B10 ausdrücklich beauftragt; Maras Fernzauber und Werkstattschilder bleiben vorgemerkt |
-| Aktives Umsetzungspaket | Rosenspiegels Tanzfenster und Turmeffekte · geprüft, Veröffentlichung läuft |
+| Aktives Umsetzungspaket | Keines · Tanzfenster und Turmeffekte abgeschlossen und veröffentlicht |
 | Nächster Schritt | B11 bleibt offen und ist noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
@@ -28,7 +28,7 @@ Am 18.10.2026 ausdrücklich beauftragt: das größere Tanzfenster sowie Leuchten
 - [x] Pulsierende Turmfärbung, leichtes Wackeln, geschwungener Herzfaden und aufsteigende Herzen übernehmen.
 - [x] Alle Effekte an die gespeicherte Zauberzeit binden; Pause und Frostunterbrechung im echten Kampf prüfen.
 - [x] Desktop/Hochkant, TypeScript und Produktionsbuild prüfen; [Spielaufnahmen und Nachweis](../../artifacts/idle-bastion/acceptance/p4/B10_VISUALS.md) ablegen.
-- [ ] Commit, Push und erfolgreiche Pages-Veröffentlichung bestätigen.
+- [x] Codecommit `7a6e2d5` gepusht; [Pages-Lauf 39085400278](https://github.com/emfau88/TD/actions/runs/39085400278) erfolgreich. Öffentlicher Playlink lädt das neue Bundle `battle-SZ-ugDyt.js` und stellt die bestehende Probe ohne Konsolenfehler wieder her.
 
 ## Nachbesserung nach B10 — Baukomfort, Schärfe und Turmkombinationen
 

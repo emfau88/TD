@@ -24,3 +24,7 @@ Die Darstellung berechnet ihre Zeit aus der gespeicherten Vorbereitungs-/Wirkung
 ![Desktop: Großes Tanzfenster, rosa leuchtende Steinschleuder und Herzfaden](boss-dance-desktop.png)
 
 ![Hochkant: Tanzfenster, betroffener Turm und Boss bleiben sichtbar](boss-dance-mobile.png)
+
+## Veröffentlichung
+
+Codecommit `7a6e2d54009daaeae4acc39b9f69f1d5b552e267` auf `codex/idle-bastion-vertical-slice`, [Pages-Lauf 39085400278](https://github.com/emfau88/TD/actions/runs/39085400278) erfolgreich. Am [öffentlichen Playlink](https://emfau88.github.io/TD/idle-bastion/) das neue Bundle `battle-SZ-ugDyt.js` und die erfolgreiche Wiederherstellung der bestehenden Probe geprüft; keine Konsolenfehler. Die Bossaufnahmen zeigen den lokal geprüften Produktionsbuild derselben Fassung. Kein Merge nach `main`.
