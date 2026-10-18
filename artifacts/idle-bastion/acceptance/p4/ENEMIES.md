@@ -38,4 +38,4 @@ Kein vollständiger 15-Minuten-Echtzeitdurchlauf und keine echte Smartphone-/Saf
 
 ## Veröffentlichung
 
-Commit/Push und abschließende öffentliche Prüfung werden nach dem Pages-Lauf ergänzt. [Playlink](https://emfau88.github.io/TD/idle-bastion/).
+Codecommit **`592b42a232dd9d0920c62fffcf1d244a2c0a5e41`** gepusht. [Pages-Lauf 39168061415](https://github.com/emfau88/TD/actions/runs/39168061415) erfolgreich; bestehendes Spiel und Idle-Fassung in CI gebaut. Öffentliche Hochkantprobe lädt `battle-CmaPzvKp.js`, sämtliche sechs zusätzlichen PNG-Atlanten antworten mit HTTP 200. Kampf gestartet, Gegnerchronik geöffnet, keine JavaScript-Fehler oder horizontaler Seitenüberlauf. Nachweis im verlinkten Browserprotokoll. [Playlink](https://emfau88.github.io/TD/idle-bastion/).

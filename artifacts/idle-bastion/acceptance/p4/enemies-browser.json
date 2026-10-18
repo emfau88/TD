@@ -32,5 +32,41 @@
     "errors": [],
     "script": "./assets/battle-CmaPzvKp.js",
     "overflow": false
+  },
+  "publication": {
+    "url": "https://emfau88.github.io/TD/idle-bastion/?probe=release-592b42a",
+    "errors": [],
+    "assets": [
+      {
+        "url": "https://emfau88.github.io/TD/idle-bastion/assets/Voidbutterfly-CMVn9i8r.png",
+        "status": 200
+      },
+      {
+        "url": "https://emfau88.github.io/TD/idle-bastion/assets/Clampbeetle-BsUFA0D2.png",
+        "status": 200
+      },
+      {
+        "url": "https://emfau88.github.io/TD/idle-bastion/assets/Lantern Jelly Pixel v1-htZNiiEL.png",
+        "status": 200
+      },
+      {
+        "url": "https://emfau88.github.io/TD/idle-bastion/assets/Magma Crab-Bf6s5u-Z.png",
+        "status": 200
+      },
+      {
+        "url": "https://emfau88.github.io/TD/idle-bastion/assets/Flying Locust-CiL6Y5kL.png",
+        "status": 200
+      },
+      {
+        "url": "https://emfau88.github.io/TD/idle-bastion/assets/Firewasp-BMqEsc73.png",
+        "status": 200
+      }
+    ],
+    "script": "./assets/battle-CmaPzvKp.js",
+    "composition": "Zusammenstellung Welle 1: 6 × Blattkäfer",
+    "next": "Nächster neuer Gegnertyp: Feuerkäfer ab Welle 4.",
+    "overflow": false,
+    "error": "",
+    "canvas": true
   }
 }

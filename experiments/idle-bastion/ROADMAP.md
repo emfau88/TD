@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08–B12 und die zusätzliche Überarbeitung B12a veröffentlicht.**
+Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08–B12 und die zusätzlichen Überarbeitungen B12a–B12c veröffentlicht.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -12,8 +12,8 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen |
-| Aktives Umsetzungspaket | B12c · Vorhandene Gegner umgesetzt und gezielt geprüft; Veröffentlichung läuft. B12b veröffentlicht |
-| Nächster Schritt | B12c committen/pushen und Pages bestätigen. B12d nur vorgemerkt |
+| Aktives Umsetzungspaket | Keines offen: B12b Karten/Kamera und B12c vorhandene Gegner abgeschlossen und veröffentlicht |
+| Nächster Schritt | Spielerfeedback zur veröffentlichten Fassung; B12d Gegner-Produktion vorgemerkt. B13/B14 weiterhin separat zu beauftragen |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -40,7 +40,7 @@ Am 18.10.2026 ausdrücklich als nächster Schritt nach B12b beauftragt. Vorhande
 - [x] Gemeinsame Frame-/Richtungsmetadaten nutzen; richtige Blickrichtung, Größe, Schatten und Pause überprüfen.
 - [x] Laufende Altversuche und alte Offline-Belege bewahren; neue Gegnerfolgen erst beim nächsten Versuch aktivieren.
 - [x] 35 gezielte Gegner-/Atlas-/Kampf-/Offline-/Kartenprüfungen und Build erfolgreich; Desktop/Hochkant mit Heilung und Pause/Reload geprüft. [Nachweis](../../artifacts/idle-bastion/acceptance/p4/ENEMIES.md).
-- [ ] Commit/Push und öffentliche Pages-Veröffentlichung bestätigen.
+- [x] Codecommit `592b42a` gepusht; [Pages-Lauf 39168061415](https://github.com/emfau88/TD/actions/runs/39168061415) erfolgreich. Öffentlicher Playlink mit Bundle `battle-CmaPzvKp.js`, sechs erfolgreich geladenen neuen Atlanten und erreichbarer Chronik ohne Seitenfehler/Überlauf bestätigt.
 
 ## B12d — Wiederholbarer Produktionsablauf für neue Gegner (vorgemerkt)
 
