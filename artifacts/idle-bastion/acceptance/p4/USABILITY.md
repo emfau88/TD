@@ -18,7 +18,7 @@ Kampfschema 8 und Regeln 5 bleiben bestehen; die Geometrie erhält **Layoutversi
 
 - TypeScript/Produktionsbuild erfolgreich; `git diff --check` ohne Befund.
 - 64 gezielte Fälle für Ausrichtung, neue Schussfenster, Layout/Wege, Speicherung, B08–B10 und IndexedDB; nach Korrektur der betroffenen Testfixtures alle erfolgreich. Zusätzlich vier gezielte Migrationstests älterer Schemata erfolgreich. Testläufe jeweils rund sechs Sekunden oder weniger; keine klassische Gesamtsuite.
-- Neuer Regressionstest: Migration eines echten gültigen alten Mara-Weges durch den späteren Nordbogen. Danach Kampfzustand unverändert, Route legal, kein Cooldownreset. Alle elf bebauten Plätze lassen sich speichern und wiederherstellen.
+- Neuer Regressionstest: Migration eines gültigen Layout-1-Mara-Wegs durch den späteren Nordbogen. Danach Kampfzustand unverändert, Route legal, kein Cooldownreset. Alle elf bebauten Plätze lassen sich speichern und wiederherstellen.
 - Der bisherige reguläre B10-Kaufablauf mit den alten Plätzen behält seine Zeit: erster Bosssieg **9:41,7**, zweiter Versuch. Das belegt Erhalt des bisherigen Ablaufs, nicht die Balance jeder neu möglichen Aufstellung.
 - Browser: bestehende isolierte B10-Probe `premium-ui-1` mit Bosssieg und fünf Türmen migriert. Zusätzliche Frosttürme regulär aus vorhandenem Gold am Nordbogen, Mittelpass und Südbogen gebaut. Nach Bau `contextHidden: true` und `placementHidden: true`; Antippen öffnet wieder „Frostkristall · Level 1“. Nordbogen und Mittelpass nach Reload weiterhin vorhanden; Kauf am Südbogen fokussiert mobil den neuen Turm.
 - Skorpion auf horizontalem Weg visuell mit Scheren in Bewegungsrichtung bestätigt. Desktop und 390 × 844 Hochkant geprüft, dynamische Anpassung der Zeichenfläche und unverändert kompaktes HUD/Dock bestätigt. Keine Browser-Konsolenfehler beobachtet.
@@ -29,3 +29,8 @@ Kampfschema 8 und Regeln 5 bleiben bestehen; die Geometrie erhält **Layoutversi
 ![Mobile Karte unmittelbar nach dem Frostbau am Südbogen, ohne offenes Verwaltungsmenü; Skorpione laufen vorwärts](usability-mobile.png)
 
 ![Bestehende Verteidigung mit drei ergänzten Frostplätzen und kräftigeren Spielfeldbeschriftungen](usability-desktop.png)
+## Veröffentlichung
+
+- Codecommit `27f54b500366528556ef30ae6503011693a18289` auf `codex/idle-bastion-vertical-slice` gepusht; [Pages-Lauf 39084247681](https://github.com/emfau88/TD/actions/runs/39084247681) erfolgreich.
+- [Öffentlicher Playlink](https://emfau88.github.io/TD/idle-bastion/) am 18.10.2026 mit isolierter Probe `usability-27f54b5` geprüft: neues Bundle `battle-DxKI_Mym.js` geladen. Bei 390 × 844 einen Waldwächter regulär am Nordbogen gekauft; Baumeldung sichtbar, Platzierung und Verwaltung geschlossen. Keine Browser-Konsolenfehler.
+- Kein Merge nach `main`; B11 nicht begonnen. Die Aufnahmen oben zeigen die lokale, regulär weitergespielte B10-Probe desselben Produktionsbuilds.
