@@ -9,6 +9,7 @@ import { TREE_FRAMES } from '../../../reference/src/terrain';
 export { MARA_FOOT };
 
 export const ART = Object.freeze({
+  bossDance: new URL('../../../public/assets/Succubus Dance HD v1.png', import.meta.url).href,
   boss: new URL('../../../public/assets/Succubus Pixel v2.png', import.meta.url).href,
   wisp: new URL('../../../public/assets/Wisp - Animations.png', import.meta.url).href,
   scorpion: new URL('../../../public/assets/Scorpion.png', import.meta.url).href,
@@ -40,7 +41,7 @@ export const ART = Object.freeze({
   workshopDamaged: new URL('../assets/workshop/workshop-damaged.png', import.meta.url).href,
 });
 export const KEYS = Object.freeze({
-  boss: 'idle-rosenspiegel', wisp: 'idle-wisp',
+  bossDance: 'idle-rosenspiegel-dance', boss: 'idle-rosenspiegel', wisp: 'idle-wisp',
   scorpion: 'idle-scorpion',
   cannonTower: 'idle-cannonTower',
   cannonWeapon: 'idle-cannonWeapon',
@@ -99,7 +100,7 @@ export function preloadArt(scene: Phaser.Scene): void {
   scene.load.image(KEYS.warehouse, ART.warehouse);
   scene.load.image(KEYS.workshopDamaged, ART.workshopDamaged);
   for (const [key, url, width, height] of [
-    [KEYS.boss, ART.boss, 64, 64], [KEYS.wisp, ART.wisp, 64, 64], [KEYS.scorpion, ART.scorpion, 64, 64],
+    [KEYS.bossDance, ART.bossDance, 128, 128], [KEYS.boss, ART.boss, 64, 64], [KEYS.wisp, ART.wisp, 64, 64], [KEYS.scorpion, ART.scorpion, 64, 64],
     [KEYS.cannonTower, ART.cannonTower, 64, 128], [KEYS.cannonWeapon, ART.cannonWeapon, 96, 96], [KEYS.cannonWeapon2, ART.cannonWeapon2, 96, 96], [KEYS.cannonProjectile, ART.cannonProjectile, 10, 10],
     [KEYS.sniperTower, ART.sniperTower, 64, 128], [KEYS.sniperWeapon, ART.sniperWeapon, 128, 128], [KEYS.sniperWeapon2, ART.sniperWeapon2, 128, 128], [KEYS.sniperProjectile, ART.sniperProjectile, 8, 8],
     [KEYS.tower, ART.tower, 64, 128], [KEYS.weapon, ART.weapon, 96, 96],

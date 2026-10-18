@@ -1,5 +1,6 @@
 import { succubusFrame } from '../../../reference/src/succubus-art';
 import { BOSS } from './boss';
+import { BossCharmView, charmAge } from './boss-visuals';
 import { wispPose } from './wisp';
 import Phaser from 'phaser';
 import { BASE, IdleBattle, stats, type Enemy, type Tower } from './battle';
@@ -30,6 +31,7 @@ export class BattleScene extends Phaser.Scene {
   private forest?: ForestView;
   private selection!: Phaser.GameObjects.Graphics;
   private effects!: Phaser.GameObjects.Graphics;
+  private bossCharmView!: BossCharmView;
   private mara!: Phaser.GameObjects.Image;
   private maraShadow!: Phaser.GameObjects.Ellipse;
   private wisp!: Phaser.GameObjects.Image;
@@ -64,6 +66,7 @@ export class BattleScene extends Phaser.Scene {
     this.forest = createForest(this, this.sim.layout);
     this.selection = this.add.graphics().setDepth(6000);
     this.effects = this.add.graphics().setDepth(5500);
+    this.bossCharmView = new BossCharmView(this, this.pixelDensity);
     for (const pad of this.sim.layout.towerPads) {
       if (pad.cell.x >= this.sim.layout.bounds.columns) continue;
       const point = cellCenter(this.sim.layout, pad.cell);
@@ -98,6 +101,7 @@ export class BattleScene extends Phaser.Scene {
       this.input.off('pointermove', this.panAtPointer, this);
       this.input.off('wheel', this.zoomAtPointer, this);
       this.scale.off('resize', this.resizeCamera, this);
+      this.bossCharmView.destroy();
       this.forest?.destroy(); this.forest = undefined;
       this.padLabels.clear(); this.padMarks.clear(); this.towerViews.clear(); this.enemyViews.clear(); this.shotViews.clear();
     });
@@ -217,6 +221,7 @@ export class BattleScene extends Phaser.Scene {
   private selectAtPointer(pointer: Phaser.Input.Pointer): void {
     if (this.hooks.canRender?.() === false) return;
     const point = this.cameras.main.getWorldPoint(pointer.x, pointer.y), size = this.sim.layout.cellSize;
+    if (this.bossCharmView.contains(point)) return;
     const pad = this.sim.layout.towerPads.find(value => value.cell.x === Math.floor(point.x / size) && value.cell.y === Math.floor(point.y / size));
     const wisp = wispPose(this.sim.layout, this.sim.elapsed, this.sim.settlement.warehouseBuilt);
     if (this.sim.wispUnlocked && Math.hypot(point.x - wisp.x, point.y - (wisp.y - 18)) < 23) { this.hooks.selectWisp?.(); return; }
@@ -303,8 +308,12 @@ export class BattleScene extends Phaser.Scene {
       const weaponKey = art.weapons[tower.visualStage - 1];
       if (view.weapon.texture.key !== weaponKey) view.weapon.setTexture(weaponKey);
       view.base.setFrame(tower.visualStage - 1);
-      view.weapon.setFrame(Math.max(0, frame)).setRotation(tower.angle);
-      view.base.setTint(charmed ? 0xe49bea : boosted ? 0xffedbe : 0xffffff); view.weapon.setTint(charmed ? 0xe49bea : boosted ? 0xffedbe : 0xffffff);
+      const age = charmAge(sim.bossCharm), wobble = charmed ? Math.sin(age * 8) * 0.035 : 0;
+      const tremble = charmed ? Math.sin(age * 31) * 0.65 : 0;
+      const tint = charmed ? Phaser.Display.Color.GetColor(255, Math.round(192 + Math.sin(age * 5) * 22), Math.round(229 + Math.sin(age * 5) * 10))
+        : boosted ? 0xffedbe : 0xffffff;
+      view.base.setPosition(tower.x + tremble * 0.6, tower.y + 13).setRotation(wobble * 0.4).setTint(tint);
+      view.weapon.setPosition(tower.x + tremble, tower.y - 23).setFrame(Math.max(0, frame)).setRotation(tower.angle + wobble).setTint(tint);
       if (boosted) {
         const alpha = 0.45 + Math.sin(elapsed * 7) * 0.15;
         this.effects.lineStyle(2, 0xf5d58b, alpha).strokeEllipse(tower.x, tower.y + 12, 40, 19);
@@ -318,20 +327,8 @@ export class BattleScene extends Phaser.Scene {
       view.sprite.setPosition(enemy.x, enemy.y).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(enemy.y + 1000);
       if (enemy.def.id === 'Rosenspiegel') {
         const casting = sim.bossCharm.phase === 'windup' || sim.bossCharm.phase === 'channel';
-        if (casting) view.sprite.setFrame(succubusFrame('dance', 'down', elapsed * 1000)).setFlipX(false);
+        if (casting) view.sprite.setFrame(succubusFrame('dance', 'down', charmAge(sim.bossCharm) * 1000)).setFlipX(false);
         this.effects.lineStyle(2, 0xdb80cd, 0.8).strokeEllipse(enemy.x, enemy.y + 3, 34, 13);
-        const target = sim.towers.find(t => t.uid === sim.bossCharm.targetUid);
-        if (casting && target) {
-          this.effects.lineStyle(sim.bossCharm.phase === 'channel' ? 3 : 1, 0xf598d6, 0.8)
-            .lineBetween(enemy.x, enemy.y - 26, target.x, target.y - 32)
-            .strokeCircle(target.x, target.y - 24, 21);
-          // Small pixel hearts travel toward the selected tower on simulation time.
-          for (let i = 0; i < 3; i++) {
-            const part = (elapsed * 0.8 + i / 3) % 1;
-            const x = enemy.x + (target.x - enemy.x) * part, y = enemy.y - 26 + (target.y - enemy.y - 6) * part;
-            this.effects.fillStyle(0xffb0dd, 0.9).fillRect(x-4,y-2,3,3).fillRect(x+1,y-2,3,3).fillTriangle(x-4,y+1,x+4,y+1,x,y+5);
-          }
-        }
       }
       view.sprite.setTint(enemy.slowRemaining > 0 ? 0x83ddff : 0xffffff);
       if (enemy.slowRemaining > 0) this.effects.lineStyle(1.5, 0x96e8fa, 0.75).strokeEllipse(enemy.x, enemy.y + 7, 26, 10);
@@ -366,6 +363,7 @@ export class BattleScene extends Phaser.Scene {
     this.mara.setPosition(mara.x, mara.y).setFrame(maraFrame(mara.direction, mara.path.length > 0, acting, elapsed)).setDepth(mara.y + 1002);
     this.maraShadow.setPosition(mara.x, mara.y + 1).setDepth(mara.y + 999);
     this.maraName.setPosition(mara.x, mara.y + 13).setText(acting ? 'Mara · Übertakten' : mara.unreachable ? 'Mara · kein Zugang' : 'Mara');
+    this.bossCharmView.draw(sim, this.portraitCamera);
     this.drawSelection();
   }
 }

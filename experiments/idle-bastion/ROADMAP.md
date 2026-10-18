@@ -12,12 +12,23 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08, B09 und B10 ausdrücklich beauftragt; Maras Fernzauber und Werkstattschilder bleiben vorgemerkt |
-| Aktives Umsetzungspaket | Keines · Nachbesserung nach B10 abgeschlossen und veröffentlicht |
+| Aktives Umsetzungspaket | Rosenspiegels Tanzfenster und Turmeffekte · geprüft, Veröffentlichung läuft |
 | Nächster Schritt | B11 bleibt offen und ist noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
 Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. G1 ist freigegeben. Aktueller Auftrag „Go b10“ umfasst B10; B11 und folgende bleiben separat. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+
+## Ergänzung nach B10 — Rosenspiegels Tanzdarstellung
+
+Am 18.10.2026 ausdrücklich beauftragt: das größere Tanzfenster sowie Leuchten, Vibrieren und Herzen des verführten Turms wie im Hauptspiel übernehmen.
+
+- [x] Vorhandenen HD-Tanzatlas mit acht Originalposen und 190 ms je Bild übernehmen.
+- [x] Lesbares Fenster während Vorbereitung/Wirkung, mit Restdauer und unveränderter Größe beim Kartenzoom.
+- [x] Pulsierende Turmfärbung, leichtes Wackeln, geschwungener Herzfaden und aufsteigende Herzen übernehmen.
+- [x] Alle Effekte an die gespeicherte Zauberzeit binden; Pause und Frostunterbrechung im echten Kampf prüfen.
+- [x] Desktop/Hochkant, TypeScript und Produktionsbuild prüfen; [Spielaufnahmen und Nachweis](../../artifacts/idle-bastion/acceptance/p4/B10_VISUALS.md) ablegen.
+- [ ] Commit, Push und erfolgreiche Pages-Veröffentlichung bestätigen.
 
 ## Nachbesserung nach B10 — Baukomfort, Schärfe und Turmkombinationen
 

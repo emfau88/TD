@@ -147,3 +147,9 @@ Die vier Premium-UI-Materialien bleiben erhalten. Vier Turmkarten und zwei Begle
 ### B09: Vorratslager I
 
 Ein einzelnes Imagegen-Gebäude: kompakter offener Holzschuppen mit roten Ziegeln, Kisten und Säcken, kleiner als die Werkstatt. Laufzeitrahmen 96 × 96, Silhouette etwa 68 × 50, Fußanker (48,80), Weltanker (360,520). Herkunft, Original, vollständiger Prompt und reproduzierbare Pixelaufbereitung stehen im [Assetnachweis](../assets/warehouse/README.md). Vor dem Bau erscheint nach Freischaltung eine dezente Markierung; nach dem Bau verschwindet sie. Wisp läuft über vorhandene freie Zellen zwischen Werkstatt und Lager; sein Bonus hängt nicht von der Animation ab. Desktop und kompakte Hochkantansicht wurden mit echten Spielaufnahmen geprüft.
+
+### B10: Tanzfenster und Verführung
+
+Zusätzlich zum kleinen Körperatlas verwendet die Bossdarstellung den unveränderten `public/assets/Succubus Dance HD v1.png` aus dem Hauptspiel: 1024 × 128, acht 128er Frames, 190 ms je Frame. Das separate Fenster ist 136 × 164 CSS-Pixel groß; die Figur nutzt den Originalmaßstab 1,1 und Fußanker (64/112). Es bleibt unabhängig vom Kartenzoom lesbar, wird innerhalb der sichtbaren Karte platziert und hält Abstand zu Bossanzeige und Dock. Es zeigt Vorbereitung beziehungsweise Wirkung mit Restdauer und Ablaufbalken.
+
+Herzfaden, fünf aufsteigende Herzen, pulsierender rosafarbener Turmglanz und leichtes Wackeln entsprechen der Inszenierung aus `reference/src/scene.ts`. Beide Tänze und sämtliche Effekte verwenden die gespeicherte Zauberphase samt Restdauer; Pause hält sie an. Unterbrechung, Zielverlust oder Ende entfernen das Fenster und setzen den Turm zurück. Kein neues Asset, keine Änderung an Bossbalance oder Spielstandschema. [Echte Spielaufnahmen und Prüfung](../../../artifacts/idle-bastion/acceptance/p4/B10_VISUALS.md).

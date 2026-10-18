@@ -10,6 +10,8 @@ Die Karte steht im Mittelpunkt: illustriertes Messing-/Schiefer-HUD, Baudock und
 
 Nach der freigegebenen ersten Zwischenabnahme sind B08–B10 zum Testen enthalten. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht; Die Kartenerweiterung folgt mit B11.
 
+Rosenspiegels Verführung zeigt nun das größere Tanzfenster mit dem Original-HD-Tanzatlas aus dem Hauptspiel. Der betroffene Turm leuchtet und wackelt; Herzfaden, aufsteigende Herzen und Restdauer zeigen die Wirkung. [Darstellung und Spielaufnahmen](artifacts/idle-bastion/acceptance/p4/B10_VISUALS.md).
+
 Nach dem Turmbau schließt die Verwaltung automatisch; Antippen eines Turms öffnet sie wieder. Skorpione schauen in Laufrichtung. Eine höhere interne Zeichenauflösung auf dichten Displays und kräftigere Spielfeldbeschriftungen verbessern die mobile Lesbarkeit. [Änderungen, Prüfung und neue Spielaufnahmen](artifacts/idle-bastion/acceptance/p4/USABILITY.md).
 
 Mobil wurde die Oberfläche zusätzlich verdichtet: weniger Rahmen, einklappbare Hinweise und Vollbild oben rechts. Gold oder Welle öffnen die Chronik. [Mobile Ansicht und Prüfung](artifacts/idle-bastion/acceptance/ui/MOBILE.md).
