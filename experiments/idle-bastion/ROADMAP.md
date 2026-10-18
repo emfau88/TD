@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08–B11 veröffentlicht.**
+Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08–B12 veröffentlicht.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -12,8 +12,8 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; Maras Fernzauber und Werkstattschilder bleiben vorgemerkt |
-| Aktives Umsetzungspaket | B12 · umgesetzt, Veröffentlichung läuft |
-| Nächster Schritt | B12 veröffentlichen und über den Playlink testen lassen; B13/B14 bleiben offen |
+| Aktives Umsetzungspaket | Keines · B12 umgesetzt und veröffentlicht; Kurvenabstimmung folgt in B13 |
+| Nächster Schritt | B12 über den Playlink testen lassen; B13/B14 bleiben offen |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -92,7 +92,7 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P3 | B09 · Lager und Rückkehr | Zweites Gebäude und befriedigender Wiedereinstieg | B08 | Abgeschlossen |
 | P4 | B10 · Erste Bossherausforderung | Lesbarer Boss verlangt die verfügbaren Turmrollen | B09 | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/B10.md) |
 | P4 | B11 · Wachsende Karte | Echte seitliche Freischaltung mit zwei nützlichen Turmplätzen | B10 | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/B11.md) |
-| P4 | B12 · Ausbau und Fortsetzung | Werkstatt II, spätere Level und Fortschritt nach Minute 15 | B11 | Umsetzung geprüft; Veröffentlichung läuft |
+| P4 | B12 · Ausbau und Fortsetzung | Werkstatt II, spätere Level und Fortschritt nach Minute 15 | B11 | Abgeschlossen; B13-Balance offen |
 | P5 | B13 · Gesamter Spielverlauf | Gemessene 15-Minuten-Sitzung und Rückkehr mit legalen Aktionen | B12 | Nicht begonnen |
 | P5 | B14 · Stabilität und Lieferung | Geprüfte Builds, Regression, Laufzeit und ehrlicher Ergebnisbericht | B13 | Nicht begonnen |
 | Ende | G2 · Gesamtabnahme | Vollständiger Slice bewertet | B14 | **Offen** |
@@ -362,6 +362,8 @@ Historische Halteregel bis zur obigen G1-Freigabe: Während des Wartens nur P2 p
 **Fertig, wenn:** Die Siedlung nochmals sichtbar wächst und nach Minute 15 ohne künstliches Ende sinnvoll weitergespielt werden kann.
 
 **Nachweis:** [B12-Bericht und echte Spielaufnahmen](../../artifacts/idle-bastion/acceptance/p4/B12.md). Gezielter Modellverlauf mit verdientem Gold: Werkstatt II bei 13:01; nach 15 Minuten Rekord 20 und ein konkreter nächster Kauf. Welle 25 ist dabei als nächstes Bossziel sichtbar, nicht bereits besiegt. Gesamtabstimmung und vollständige 15-Minuten-Browserabnahme folgen in B13; keine G2-Abnahme behauptet.
+
+**B12 veröffentlicht:** Codecommit `c40864c`, [Pages-Lauf 39147533177](https://github.com/emfau88/TD/actions/runs/39147533177) erfolgreich. Öffentliches Bundle `battle-CqIGhtYi.js`, übernommener Altstand und getrennte Bosschronik bestätigt.
 
 ## P5 — Gesamterlebnis, Stabilität und Lieferung
 
