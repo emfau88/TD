@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08 und B09 veröffentlicht.**
+Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08–B10 veröffentlicht.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -12,8 +12,8 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08, B09 und B10 ausdrücklich beauftragt; Maras Fernzauber und Werkstattschilder bleiben vorgemerkt |
-| Aktives Umsetzungspaket | B10 · erste Bossherausforderung |
-| Nächster Schritt | B10 committen, pushen und Pages-Veröffentlichung bestätigen |
+| Aktives Umsetzungspaket | Keines · B10 abgeschlossen und veröffentlicht |
+| Nächster Schritt | B11 · wachsende, scrollbare Lichtung; noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -68,7 +68,7 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | Halt | G1 · Nutzerabnahme | Ausdrückliche Entscheidung zur vorgelegten Fassung | B01–B07 sowie B07a/B07b geprüft | **Freigegeben · 18.10.2026** |
 | P3 | B08 · Wisp und Turmrollen | Zweite Figur, Wirtschaftseffekt und vier unterscheidbare Türme | G1 freigegeben | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p3/B08.md) |
 | P3 | B09 · Lager und Rückkehr | Zweites Gebäude und befriedigender Wiedereinstieg | B08 | Abgeschlossen |
-| P4 | B10 · Erste Bossherausforderung | Lesbarer Boss verlangt die verfügbaren Turmrollen | B09 | In Arbeit |
+| P4 | B10 · Erste Bossherausforderung | Lesbarer Boss verlangt die verfügbaren Turmrollen | B09 | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/B10.md) |
 | P4 | B11 · Wachsende Karte | Echte seitliche Freischaltung mit zwei nützlichen Turmplätzen | B10 | Nicht begonnen |
 | P4 | B12 · Ausbau und Fortsetzung | Werkstatt II, spätere Level und Fortschritt nach Minute 15 | B11 | Nicht begonnen |
 | P5 | B13 · Gesamter Spielverlauf | Gemessene 15-Minuten-Sitzung und Rückkehr mit legalen Aktionen | B12 | Nicht begonnen |
@@ -295,7 +295,7 @@ Historische Halteregel bis zur obigen G1-Freigabe: Während des Wartens nur P2 p
 
 ### B10 — Erste Bossherausforderung
 
-**Status: umgesetzt und geprüft; Veröffentlichung läuft.** Am 18.10.2026 mit „Go b10“ beauftragt. Auf den anschließenden Nutzervorschlag hin ersetzt Succubus „Rosenspiegel“ die geplante Magmakrabbe: angekündigte Turmverführung, durch Frost unterbrechbar, plus kleine gepanzerte Begleitgruppe. Vorhandene Assets; keine zusätzliche Grafikproduktion.
+**Status: ABGESCHLOSSEN UND VERÖFFENTLICHT.** Am 18.10.2026 mit „Go b10“ beauftragt. Auf den anschließenden Nutzervorschlag hin ersetzt Succubus „Rosenspiegel“ die geplante Magmakrabbe: angekündigte Turmverführung, durch Frost unterbrechbar, plus kleine gepanzerte Begleitgruppe. Vorhandene Assets; keine zusätzliche Grafikproduktion.
 
 **Voraussetzung:** B09. **Ergebnis:** Eine lesbare Herausforderung belohnt die verfügbaren Turmkombinationen.
 
@@ -307,7 +307,7 @@ Historische Halteregel bis zur obigen G1-Freigabe: Während des Wartens nur P2 p
 
 **Fertig, wenn:** Ein regulärer erster Bosssieg möglich, verständlich und als Meilenstein gespeichert ist.
 
-[Gezielte Prüfung und echte Screenshots](../../artifacts/idle-bastion/acceptance/p4/B10.md).
+[Gezielte Prüfung und echte Screenshots](../../artifacts/idle-bastion/acceptance/p4/B10.md). Umsetzung `c22494e`; [Pages-Lauf 39082715325](https://github.com/emfau88/TD/actions/runs/39082715325) erfolgreich. Öffentlicher Playlink mit Bundle `battle-DumR7ptg.js`, laufendem Kampf und Rosenspiegel-Abschnitt in der Chronik geprüft.
 
 ### B11 — Scrollbare Lichtung mit tatsächlichem Nutzen
 
