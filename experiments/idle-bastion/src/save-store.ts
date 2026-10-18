@@ -55,7 +55,7 @@ function inspect(value: unknown, present = value !== undefined): Inspection {
   }
   if (!knownSchema(value)) return { kind: 'corrupt', reason: 'The save envelope has no recognized schema.' };
   if (record(value.battle)) {
-    for (const [key, maximum] of [['schemaVersion', 8], ['rulesVersion', 5], ['layoutVersion', 2]] as const) {
+    for (const [key, maximum] of [['schemaVersion', 9], ['rulesVersion', 5], ['layoutVersion', 2]] as const) {
       const version = value.battle[key];
       if (natural(version) && version > maximum) return { kind: 'unsupported', reason: `Battle ${key} ${version} requires a newer game version.` };
     }

@@ -5,11 +5,11 @@ import { offlinePolicy } from './offline';
 import { IncomeWindow, HISTORY_LIMIT, type AttemptMode } from './progress';
 import { tutorialStep } from './hud';
 
-export type GoalAction = 'archer' | 'upgrade' | 'workshop' | 'warehouse' | 'frost' | 'cannon' | 'sniper' | 'boss' | 'progress';
+export type GoalAction = 'archer' | 'upgrade' | 'workshop' | 'warehouse' | 'frost' | 'cannon' | 'sniper' | 'boss' | 'clearing' | 'progress';
 const el = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id)! as T;
 const number = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 const gold = (value: number) => number.format(value);
-const padNames: Record<string, string> = { 'tower-start': 'Startturm', 'tower-02': 'Nordwest', 'tower-03': 'Nordost', 'tower-04': 'Südkurve', 'tower-05': 'Nordweg', 'tower-06': 'Engpass', 'tower-07': 'Südweg', 'tower-08': 'Kernwache', 'tower-09': 'Nordbogen', 'tower-10': 'Mittelpass', 'tower-11': 'Südbogen' };
+const padNames: Record<string, string> = { 'tower-start': 'Startturm', 'tower-02': 'Nordwest', 'tower-03': 'Nordost', 'tower-04': 'Südkurve', 'tower-05': 'Nordweg', 'tower-06': 'Engpass', 'tower-07': 'Südweg', 'tower-08': 'Kernwache', 'tower-09': 'Nordbogen', 'tower-10': 'Mittelpass', 'tower-11': 'Südbogen', 'tower-east-01': 'Östlicher Sporn', 'tower-east-02': 'Ostbogen' };
 interface Goal { title: string; detail: string; action: GoalAction; cost?: number; label: string }
 export function currentGoal(battle: IdleBattle): Goal {
   const need = (price: number) => battle.gold >= price ? 'Bereit' : `Noch ${gold(price - battle.gold)} Gold`;
@@ -33,7 +33,9 @@ export function currentGoal(battle: IdleBattle): Goal {
     case 14: return battle.highestCleared >= 14
       ? { title: 'Rosenspiegel stellt sich dir', detail: 'Welle 15 · 750 Gold Erstprämie · Frost unterbricht', action: 'boss', label: 'Bossherausforderung ansehen' }
       : { title: 'Bereite dich auf Rosenspiegel vor', detail: 'Boss in Welle 15 · Frost, Fläche und Durchdringung', action: 'upgrade', label: 'Verteidigung verbessern' };
-    default: return battle.mode === 'farm'
+    case 15: return { title: 'Die östliche Lichtung öffnen', detail: `${need(SETTLEMENT.clearingCost)} · zwei neue Bauplätze`, cost: SETTLEMENT.clearingCost, action: 'clearing', label: 'Lichtung öffnen' };
+    default: if (battle.clearing.unlocked && !battle.towers.some(t => t.padId.startsWith('tower-east'))) return { title: 'Verstärke die letzte Wegkurve', detail: 'Lichtung geöffnet · Frost & Schaden kombinieren', action: 'clearing', label: 'Lichtung ansehen' };
+      return battle.mode === 'farm'
       ? { title: `Bereite Welle ${battle.highestCleared + 1} vor`, detail: 'Türme aufwerten · dann erneut vorstoßen', action: 'upgrade', label: 'Verteidigung ansehen' }
       : { title: `Nächster Rekord: Welle ${battle.highestCleared + 1}`, detail: 'Vier Turmrollen · bis Level 6 ausbauen', action: 'upgrade', label: 'Verteidigung ansehen' };
   }

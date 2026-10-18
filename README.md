@@ -8,7 +8,7 @@ Die Idle-Vorschau enthält automatischen Kampf, Mara, Wisp, vier Turmrollen, Upg
 
 Die Karte steht im Mittelpunkt: illustriertes Messing-/Schiefer-HUD, Baudock und Details erst bei Auswahl. Vier erzeugte UI-Assets, einheitliche Pixel-Symbole und eine lokal geladene Pixelschrift greifen die Mockups auf. Goldzufluss, Wellenrekord, Vorstoß/Farmen und nächstes Ziel sind direkt sichtbar; das Buchsymbol öffnet Ertragsdetails, Begleiter und die gespeicherte Wellenchronik. Alte Spielstände bleiben erhalten, frühere nicht aufgezeichnete Versuche werden als unbekannt behandelt. Hochkant gibt es einen verschiebbaren Kartenausschnitt und große Aktionsflächen. Funktional in schmalen Browseransichten geprüft; eine vollständige Smartphone-/Safari-Abnahme steht noch aus. [Aktuelle Premium-Oberfläche und Prüfung](artifacts/idle-bastion/acceptance/ui/PREMIUM.md) · [Fortschrittsinformationen](artifacts/idle-bastion/acceptance/ui/PROGRESS.md).
 
-Nach der freigegebenen ersten Zwischenabnahme sind B08–B10 zum Testen enthalten. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht; Die Kartenerweiterung folgt mit B11.
+Nach der freigegebenen ersten Zwischenabnahme sind B08–B11 zum Testen enthalten. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht.
 
 Rosenspiegels Verführung zeigt nun das größere Tanzfenster mit dem Original-HD-Tanzatlas aus dem Hauptspiel. Der betroffene Turm leuchtet und wackelt; Herzfaden, aufsteigende Herzen und Restdauer zeigen die Wirkung. [Darstellung und Spielaufnahmen](artifacts/idle-bastion/acceptance/p4/B10_VISUALS.md).
 
@@ -56,6 +56,14 @@ Echte Spielaufnahmen der bisherigen Entwicklung, keine Mockups. B07a führte die
 
 [Asset-Quellen und vollständige Prompts](experiments/idle-bastion/assets/ui/README.md) · [Gezielter Prüfbericht](artifacts/idle-bastion/acceptance/ui/PREMIUM.md).
 
+
+**B11 · Die östliche Lichtung**
+
+Nach dem ersten echten Sieg über Rosenspiegel öffnest du unter **Siedlung → Östliche Lichtung** für **900 Gold** vier weitere Kartenspalten. Östlicher Sporn und Ostbogen ergänzen zwei Bauplätze am letzten Wegabschnitt: zusammen mit der Kernwache lassen sich Frost und Schaden kombinieren. Die Welt wächst von 28×16 auf 32×16 Zellen. „Lichtung ansehen“ und „Zur Verteidigung“ wechseln den Ausschnitt; du kannst die Karte auch ziehen. Weg, Kern und Objektmaßstab bleiben erhalten. Alte Spielstände übernehmen den Ausbau zunächst als geschlossen.
+
+![Geöffnete östliche Lichtung mit zwei neuen Türmen und Mara](artifacts/idle-bastion/acceptance/p4/b11-desktop.png)
+
+[Prüfung, gespeicherte Erweiterung und Hochkantaufnahme](artifacts/idle-bastion/acceptance/p4/B11.md).
 
 **B10 · Rosenspiegel, der erste Boss**
 

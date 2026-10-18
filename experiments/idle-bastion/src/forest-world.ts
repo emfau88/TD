@@ -36,8 +36,10 @@ export function getForestWorld(layout: IdleLayout): ForestWorld {
     const point = cell(x, y);
     if (usable(point)) { water.push(point); occupied.add(key(point)); }
   }
+  const expanded = layout.bounds.columns > layout.startBounds.columns;
   const trees: GridCell[] = [];
   const tree = (x: number, y: number): void => {
+    if (expanded && x >= 26 && x < 28 && y >= 3 && y <= 12) return;
     const point = cell(x, y);
     if (usable(point)) { trees.push(point); occupied.add(key(point)); }
   };
@@ -57,13 +59,18 @@ export function getForestWorld(layout: IdleLayout): ForestWorld {
     [1,9],[2,9],[1,10],[1,11],[2,10],[11,12],[12,12],[13,12],[12,13],[13,13],
     [18,13],[19,13],[21,13],[22,13],[23,13],[24,13],[25,12],[26,12],
   ]) tree(x, y);
+  if (expanded) {
+    for (let x = 28; x < layout.bounds.columns; x++) { tree(x, 0); tree(x, 15); tree(x, 14); }
+    for (let y = 1; y < 15; y++) tree(layout.bounds.columns - 1, y);
+    for (const [x,y] of [[29,1],[30,2],[29,3],[30,4],[29,12],[30,13]]) tree(x,y);
+  }
   const rocks: GridCell[] = [];
-  for (const [x, y] of [[6,1],[17,2],[23,3],[13,5],[3,9],[16,13],[24,12]]) {
+  for (const [x, y] of [[6,1],[17,2],[23,3],[13,5],[3,9],[16,13],[24,12], ...(expanded ? [[30,5],[29,13]] : [])]) {
     const point = cell(x, y);
     if (usable(point)) { rocks.push(point); occupied.add(key(point)); }
   }
   const flowers: GridCell[] = [];
-  for (const [x, y] of [[5,3],[6,7],[3,7],[9,8],[13,6],[16,7],[17,3],[22,3],[23,7],[19,8],[21,12],[11,11],[7,13],[2,13],[25,4]]) {
+  for (const [x, y] of [[5,3],[6,7],[3,7],[9,8],[13,6],[16,7],[17,3],[22,3],[23,7],[19,8],[21,12],[11,11],[7,13],[2,13],[25,4], ...(expanded ? [[29,6],[30,8],[29,11]] : [])]) {
     const point = cell(x, y);
     if (isUnlockedCell(layout, point) && !occupied.has(key(point)) && !layout.road.cells.some(road => key(road) === key(point))
       && !layout.plots.some(plot => cellsInRect(plot.footprint).some(plotCell => key(plotCell) === key(point)))

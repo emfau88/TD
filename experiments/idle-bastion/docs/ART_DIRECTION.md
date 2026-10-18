@@ -24,7 +24,7 @@ Alle Maße unten sind Spieleinheiten bei 100 % Weltmaßstab. Eine Zelle bleibt *
 | Waldwächter | Basis 64 × 128, Waffe 96 × 96 | Faktor 0,63; sichtbare Basis Stufe I ungefähr 40 × 62; Originalmontage beibehalten |
 | Wisp | 64 × 64 Frames | Faktor 0,9; sichtbare Silhouette ungefähr 23 × 30; Ursprung (0,5 / 51÷64) |
 | Mara | Vorhandene vermessene Quelle, 64 × 64 Laufzeitframes | Maßstab 1; sichtbare Höhe etwa 38–42; Fußpunkt (32 / 56) |
-| Rosenspiegel | `public/assets/Succubus Pixel v2.png` (vorhandener v3-Inhalt unter Kompatibilitätsnamen), reine Frame-Funktion aus `reference/src/succubus-art.ts` | 64 × 64 Frames; Faktor 1,15 als Boss, Fußpunkt (32 / 56). Vorhandenes Laufen und Tanzen; Herzfaden/Zielring als kleine Canvas-Effekte, kein zusätzliches Tanzfenster |
+| Rosenspiegel | `public/assets/Succubus Pixel v2.png` (vorhandener v3-Inhalt unter Kompatibilitätsnamen), reine Frame-Funktion aus `reference/src/succubus-art.ts` | 64 × 64 Frames; Faktor 1,15 als Boss, Fußpunkt (32 / 56). Vorhandenes Laufen und Tanzen; Herzfaden/Zielring als Canvas-Effekte; auf ausdrücklichen Nutzerwunsch zusätzlich 136 × 164 CSS-Pixel großes Tanzfenster mit dem Original-HD-Atlas |
 | Andere Türme/Gegner | Vorhandene Atlanten und Metadaten | Bestehende Skalierung und Montage übernehmen; keine gemeinsame Größen-Normalisierung |
 
 **Bildrahmen, sichtbare Silhouette und belegte Bodenfläche sind verschiedene Größen.** Die Außenabmessungen eines PNGs definieren weder die Kollisionsfläche noch die sichtbare Größe. Transparenter Rand zählt nicht zur Silhouette.
@@ -36,12 +36,13 @@ Farbanker aus dem bestehenden Gelände: Gras `#63ab3f`, helle Vegetation `#c8d45
 ## Karte, Kamera und Komposition
 
 - Die bestehende klassische Karte bleibt unverändert; für Idle wird ein eigenes Startlayout gestaltet.
-- Startgebiet: **28 × 16 Zellen / 1120 × 640**. Im Slice genau eine Erweiterung um **bis zu acht Spalten rechts**, insgesamt höchstens **36 × 16 / 1440 × 640**.
+- Startgebiet: **28 × 16 Zellen / 1120 × 640**. Im Slice genau eine Erweiterung um **bis zu acht Spalten rechts**, insgesamt höchstens **36 × 16 / 1440 × 640**. Die östliche Lichtung verwendet vier dieser Spalten: **32 × 16 / 1280 × 640**, zwei Plätze in der ersten neuen Spalte.
 - Das freigelegte Gebiet wird Teil derselben zusammenhängenden Welt. Die Kamera kann dorthin verschoben werden; die Objekte behalten ihren Maßstab. Kein automatisches Verkleinern der ganzen Welt beim Ausbau.
 - Elf feste Turmplätze im Startgebiet, davon fünf zu Beginn verfügbar, einschließlich des belegten Startplatzes. Je drei weitere öffnen bei gemeisterter Welle 5 und 10. Zwei weitere Plätze liegen in der späteren Erweiterung; insgesamt dreizehn. Der Nutzerauftrag nach B10 ergänzt Nordbogen (11,4), Mittelpass (16,7) und Südbogen (23,9), ohne bestehende Plätze zu versetzen.
 - Noch gesperrte Plätze bleiben zurückhaltend lesbar. Keine zehn blinkenden Bauaufforderungen im Einstieg.
 - Am Desktop sind Startturm, erste Gegner, Mara, Kern, Werkstattstelle und erster vorgeschlagener Bauplatz im Startausschnitt gleichzeitig sichtbar. Hochkant führen die Dockkarten zum relevanten Ausschnitt; zusätzlich sind freie Bauplätze über große Schaltflächen wählbar.
 - Die erste Abnahme prüft das einschließlich HUD bei **1366 × 768**. Eine Ansicht bei **1920 × 1080** ergänzt den Vergleich. UI-Höhe und Startkomposition werden zusammen festgelegt.
+- Für die Lichtung werden vorhandene Gras-/Baum-/Fels-/Blumenframes verwendet. Keine neuen Gebäude- oder Bildassets; das kleine Dock-Waldsymbol folgt dem vorhandenen SVG-Pixelraster. Bestehende Baumvarianten und Positionen bleiben beim Öffnen erhalten.
 - Die Erweiterung öffnet eine sichtbare Waldkante. Der bestehende Weg wird im Slice nicht neu geroutet; die neuen Plätze liegen vorzugsweise in den ersten ein bis zwei neuen Spalten und müssen taktisch relevante Schussfenster auf den letzten Wegabschnitt besitzen. Tiefer östlich liegende Plätze dürfen nicht durch künstlich erhöhte Reichweite gerettet werden.
 - Der seitliche Ausbau ist auf dem Startausschnitt bereits als mögliche Lichtung erkennbar, ohne spielbare Fläche vorzutäuschen.
 - Im Idle-Startlayout Kernposition und Gegnerpfadende ausdrücklich zusammenführen. Die klassische Kombination aus gezeichnetem Kern bei [27,8] und Pfadende [28,8] jenseits der Karte nicht blind übernehmen; nach Freilegung darf niemand sichtbar hinter dem Kern weiterlaufen.

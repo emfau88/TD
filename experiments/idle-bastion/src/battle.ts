@@ -34,7 +34,7 @@ export const BASE = Object.freeze({
 });
 
 /** Prices are ordinary gold purchases; B07 measures the whole opening economy. */
-export const SETTLEMENT = Object.freeze({ workshopCost: 400, researchCost: 60, warehouseCost: 650, slowFactor: 0.55, slowSeconds: 2 });
+export const SETTLEMENT = Object.freeze({ workshopCost: 400, researchCost: 60, warehouseCost: 650, clearingCost: 900, slowFactor: 0.55, slowSeconds: 2 });
 export const FROST = Object.freeze({ id: 2 as const, name: 'Frostkristall', cost: 110,
   damage: 7, range: 126, cooldown: 0.9, color: 0x8ce1ef });
 export const CANNON = Object.freeze({ id: 3 as const, name: 'Steinschleuder', cost: 135, damage: 28, range: 150, cooldown: 1.55, color: 0xe4b976 });
@@ -49,7 +49,7 @@ export type Phase = 'intermission' | 'wave' | 'defeat';
 export type TowerId = 1 | 2 | 3 | 4;
 export type TowerDef = typeof BASE.tower | typeof FROST | typeof CANNON | typeof SNIPER;
 export const towerDefinition = (id: TowerId): TowerDef => ({ 1: BASE.tower, 2: FROST, 3: CANNON, 4: SNIPER })[id];
-export const padUnlocked = (availability: string, wave: number): boolean => availability === 'initial' || availability === 'wave-5' && wave >= 5 || availability === 'wave-10' && wave >= 10;
+export const padUnlocked = (availability: string, wave: number, clearing = false): boolean => availability === 'initial' || availability === 'wave-5' && wave >= 5 || availability === 'wave-10' && wave >= 10 || availability === 'east-clearing' && clearing;
 export const towerUnlocked = (kind: TowerId, frost: boolean, wave: number): boolean => kind === 1 || kind === 2 && frost || kind === 3 && frost && wave >= 5 || kind === 4 && wave >= 10;
 export const waveCount = (wave: number, recipe: number = BATTLE_RULES_VERSION): number => isBossWave(wave, recipe) ? BOSS.count : Math.min(BASE.waves.maxCount, BASE.waves.firstCount + wave - 1);
 const waveEnemy = (wave: number, index: number, recipe: number): EnemyDef => isBossWave(wave, recipe) && index === 2 ? BASE.enemies.Rosenspiegel : recipe >= 4 && wave >= 11 && index % 5 === 4 ? BASE.enemies.Scorpion : wave >= 4 && index % 3 === 2 ? BASE.enemies.Firebug : BASE.enemies.Leafbug;
@@ -69,14 +69,15 @@ export interface Shot {
   speed: number; damage: number; level: number; kind: TowerId;
 }
 export interface BattleEvent {
-  type: 'build' | 'upgrade' | 'sell' | 'fire' | 'hit' | 'kill' | 'escape' | 'wave' | 'clear' | 'defeat' | 'workshop' | 'research' | 'wisp' | 'pads' | 'warehouse' | 'boss-victory' | 'boss-interrupt';
+  type: 'build' | 'upgrade' | 'sell' | 'fire' | 'hit' | 'kill' | 'escape' | 'wave' | 'clear' | 'defeat' | 'workshop' | 'research' | 'wisp' | 'pads' | 'warehouse' | 'boss-victory' | 'boss-interrupt' | 'clearing';
   tower?: Tower; enemy?: Enemy; shot?: Shot; x?: number; y?: number;
   amount?: number; wave?: number;
 }
 
 /** Only scalar IDs and fired payloads cross the save boundary. UI events are transient. */
 export interface BattleSnapshot {
-  schemaVersion: 8; rulesVersion: 5; layoutVersion: 2; layoutId: 'start28';
+  schemaVersion: 9; rulesVersion: 5; layoutVersion: 2; layoutId: 'start28' | 'east32';
+  clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; bossChallengeRequested: boolean; bossCharm: BossCharm;
   progress: ProgressRecord;
   rewardRemainderUnits: number; waveRecipeVersion: 3 | 4 | 5;
@@ -97,8 +98,10 @@ const distance = (a: { x: number; y: number }, b: { x: number; y: number }): num
 const DAMAGE_MULTIPLIERS = Object.freeze([1, 1.75, 2.8, 4.1, 5.7, 7.5]);
 // Immutable layout geometry is shared by restored models; never rerun footpath search per frame.
 const SNAPSHOT_LAYOUT = createIdleLayout();
+const EXPANDED_LAYOUT = createIdleLayout({ unlockedColumns: 32 });
 const OLD_LAYOUT = createIdleLayout({ version: 1 });
 const SNAPSHOT_LAYOUT_JSON = JSON.stringify(SNAPSHOT_LAYOUT);
+const EXPANDED_LAYOUT_JSON = JSON.stringify(EXPANDED_LAYOUT);
 
 /** Level and visual stage deliberately differ: all B02 levels use art stage I.
  * Explicit clamps prevent accidental unbounded range/fire rate in later levels.
@@ -124,6 +127,7 @@ export class IdleBattle {
   goldRemainderUnits = 0;
   rewardRemainderUnits = 0;
   waveRecipeVersion: 3 | 4 | 5 = 5;
+  clearing = { unlocked: false, openedAt: null as number | null };
   bossVictories = 0;
   bossChallengeRequested = false;
   bossCharm = freshCharm();
@@ -157,7 +161,7 @@ export class IdleBattle {
   readonly mara: MaraState;
   private readonly maraBonus: boolean;
 
-  constructor(public readonly layout: IdleLayout = createIdleLayout(), options: { maraBonus?: boolean } = {}) {
+  constructor(public layout: IdleLayout = createIdleLayout(), options: { maraBonus?: boolean } = {}) {
     this.maraBonus = options.maraBonus !== false;
     this.path = layout.road.waypoints.map(position => cellCenter(layout, position));
     this.pathLength = this.path.slice(1).reduce((sum, point, index) => sum + distance(this.path[index], point), 0);
@@ -170,15 +174,14 @@ export class IdleBattle {
     this.mara = createMara(layout, this.towers[0].uid);
   }
 
-  /** The B03 codec deliberately supports only the shipped starting layout.
-   * A changed route/unlock layout needs a new version before it can be saved.
-   */
+  /** Only the shipped closed/open layouts cross the save boundary. */
   snapshot(): BattleSnapshot {
-    if (JSON.stringify(this.layout) !== SNAPSHOT_LAYOUT_JSON) {
-      throw new Error('Unsupported battle layout for snapshot version 8.');
+    if (JSON.stringify(this.layout) !== (this.clearing.unlocked ? EXPANDED_LAYOUT_JSON : SNAPSHOT_LAYOUT_JSON)) {
+      throw new Error('Unsupported battle layout for snapshot version 9.');
     }
     return {
-      schemaVersion: 8, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: LAYOUT_VERSION, layoutId: 'start28',
+      schemaVersion: 9, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: LAYOUT_VERSION, layoutId: this.clearing.unlocked ? 'east32' : 'start28',
+      clearing: { ...this.clearing },
       bossVictories: this.bossVictories, bossChallengeRequested: this.bossChallengeRequested, bossCharm: { ...this.bossCharm },
       progress: cloneProgress(this.progress), rewardRemainderUnits: this.rewardRemainderUnits, waveRecipeVersion: this.waveRecipeVersion,
       goldRemainderUnits: this.goldRemainderUnits, mode: this.mode, highestCleared: this.highestCleared,
@@ -247,15 +250,21 @@ export class IdleBattle {
       value = { ...value, schemaVersion: 8, rulesVersion: BATTLE_RULES_VERSION,
         bossVictories: 0, bossChallengeRequested: false, bossCharm: freshCharm(), liveClearedWaves: [], farmWave: 1 };
     }
-    if (isRecord(value) && value.layoutVersion === 1) {
-      if (!validSnapshot(value, OLD_LAYOUT, model.path, model.pathLength, 0, 1)) return undefined;
+    if (isRecord(value) && value.schemaVersion === 8 && value.layoutVersion === 1) {
+      if (!validSnapshot(value, OLD_LAYOUT, model.path, model.pathLength, 8, 1)) return undefined;
       const targets = value.towers.map(tower => ({ ...tower,
         ...cellCenter(model.layout, model.layout.towerPads.find(pad => pad.id === tower.padId)!.cell) }));
       const mara = migrateMaraLayout(value.mara, targets, model.layout, getForestBlockedCells(model.layout));
       if (!mara) return undefined;
       value = { ...value, layoutVersion: LAYOUT_VERSION, mara };
     }
+    if (isRecord(value) && value.schemaVersion === 8) {
+      if (!validSnapshot(value, SNAPSHOT_LAYOUT, model.path, model.pathLength, 8)) return undefined;
+      value = { ...value, schemaVersion: 9, clearing: { unlocked: false, openedAt: null } };
+    }
+    if (isRecord(value) && isRecord(value.clearing) && value.clearing.unlocked === true) model.layout = EXPANDED_LAYOUT;
     if (!validSnapshot(value, model.layout, model.path, model.pathLength)) return undefined;
+    model.clearing = { ...value.clearing };
     model.bossVictories = value.bossVictories; model.bossChallengeRequested = value.bossChallengeRequested; model.bossCharm = { ...value.bossCharm };
     model.progress = cloneProgress(value.progress);
     model.rewardRemainderUnits = value.rewardRemainderUnits; model.waveRecipeVersion = value.waveRecipeVersion;
@@ -293,7 +302,7 @@ export class IdleBattle {
 
   get wispUnlocked(): boolean { return this.settlement.frostResearched && this.highestCleared >= 5; }
   isTowerUnlocked(kind: TowerId): boolean { return towerUnlocked(kind, this.settlement.frostResearched, this.highestCleared); }
-  isPadUnlocked(id: string): boolean { const pad = this.layout.towerPads.find(pad => pad.id === id); return !!pad && padUnlocked(pad.availability, this.highestCleared); }
+  isPadUnlocked(id: string): boolean { const pad = this.layout.towerPads.find(pad => pad.id === id); return !!pad && padUnlocked(pad.availability, this.highestCleared, this.clearing.unlocked); }
 
   get remaining(): number { return this.enemies.length + this.queue.length; }
   get maxLevel(): number { return this.settlement.frostResearched ? 6 : 3; }
@@ -319,6 +328,18 @@ export class IdleBattle {
     this.gold -= SETTLEMENT.warehouseCost;
     this.settlement.warehouseBuilt = true; this.settlement.warehouseBuiltAt = this.elapsed;
     this.events.push({ type: 'warehouse', amount: SETTLEMENT.warehouseCost });
+    return true;
+  }
+
+  get clearingAvailable(): boolean { return this.bossVictories > 0; }
+  unlockClearing(): boolean {
+    if (this.phase === 'defeat' || !this.clearingAvailable || this.clearing.unlocked || this.gold < SETTLEMENT.clearingCost) return false;
+    this.gold -= SETTLEMENT.clearingCost;
+    this.clearing = { unlocked: true, openedAt: this.elapsed };
+    // The same route/core and all existing actors remain in place. Opening land
+    // only removes old border obstacles; existing Mara routes remain legal.
+    this.layout = EXPANDED_LAYOUT;
+    this.events.push({ type: 'clearing', amount: SETTLEMENT.clearingCost });
     return true;
   }
 
@@ -698,11 +719,14 @@ const near = (left: number, right: number): boolean => Math.abs(left - right) <=
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 = 0, layoutVersion: 1 | 2 = LAYOUT_VERSION,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 = 0, layoutVersion: 1 | 2 = LAYOUT_VERSION,
 ): value is BattleSnapshot {
-  if (!isRecord(value) || value.schemaVersion !== (legacy || 8) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy ? 4 : BATTLE_RULES_VERSION)
-    || value.layoutVersion !== layoutVersion || value.layoutId !== 'start28') return false;
-  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy ? [3, 4] : [3, 4, 5]).includes(value.waveRecipeVersion as number))) return false;
+  if (!isRecord(value) || value.schemaVersion !== (legacy || 9) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : BATTLE_RULES_VERSION)
+    || value.layoutVersion !== layoutVersion || value.layoutId !== (layout.bounds.columns === 32 ? 'east32' : 'start28')) return false;
+  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : [3, 4, 5]).includes(value.waveRecipeVersion as number))) return false;
+  if (!legacy && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
+    || value.clearing.unlocked !== (layout.bounds.columns === 32)
+    || (value.clearing.unlocked ? !integerIn(value.bossVictories, 1) || !numberIn(value.clearing.openedAt, 0, value.elapsed as number) : value.clearing.openedAt !== null))) return false;
   const original = legacy === 2 || legacy === 3;
   if (!original) {
     if (!isRecord(value.settlement) || typeof value.settlement.workshopBuilt !== 'boolean'
@@ -710,16 +734,16 @@ function validSnapshot(
       || (value.settlement.frostResearched && !value.settlement.workshopBuilt)
       || (value.settlement.workshopBuilt ? !numberIn(value.settlement.builtAt, 0, value.elapsed as number) : value.settlement.builtAt !== null)
       || !isRecord(value.tutorial) || typeof value.tutorial.hidden !== 'boolean'
-      || !integerIn(value.tutorial.seen, 0, legacy ? legacy === 7 ? 16383 : legacy === 6 ? 4095 : 255 : 32767) || typeof value.tutorial.builtTower !== 'boolean'
+      || !integerIn(value.tutorial.seen, 0, legacy ? legacy === 8 ? 32767 : legacy === 7 ? 16383 : legacy === 6 ? 4095 : 255 : 65535) || typeof value.tutorial.builtTower !== 'boolean'
       || typeof value.tutorial.upgradedTower !== 'boolean' || typeof value.tutorial.frostSeen !== 'boolean') return false;
   }
-  if (!legacy || legacy === 7) {
+  if (!legacy || legacy >= 7) {
     const settlement = value.settlement as BattleSnapshot['settlement'];
     if (typeof settlement.warehouseBuilt !== 'boolean'
       || (settlement.warehouseBuilt ? !settlement.frostResearched || !integerIn(value.highestCleared, 8)
         || !numberIn(settlement.warehouseBuiltAt, settlement.builtAt ?? 0, value.elapsed as number) : settlement.warehouseBuiltAt !== null)) return false;
   }
-  if (!legacy && (!integerIn(value.bossVictories, 0, value.attemptId as number)
+  if ((!legacy || legacy === 8) && (!integerIn(value.bossVictories, 0, value.attemptId as number)
     || (value.bossVictories > 0 && (value.highestCleared as number) < BOSS.wave)
     || typeof value.bossChallengeRequested !== 'boolean'
     || (value.bossChallengeRequested && ((value.highestCleared as number) < 14 || value.phase === 'defeat' || isBossWave(value.wave as number, value.waveRecipeVersion as number) && value.phase === 'wave')))) return false;
@@ -749,7 +773,7 @@ function validSnapshot(
   if ((value.phase === 'defeat') !== (value.lives === 0)) return false;
   if ((value.phase === 'wave' || value.phase === 'defeat') && value.wave === 0) return false;
   if (value.phase !== 'intermission' && value.intermissionRemaining !== 0) return false;
-  if (!Array.isArray(value.towers) || value.towers.length < 1 || value.towers.length > (legacy && legacy < 6 ? 4 : layoutVersion === 1 ? 8 : 11)
+  if (!Array.isArray(value.towers) || value.towers.length < 1 || value.towers.length > (legacy && legacy < 6 ? 4 : layoutVersion === 1 ? 8 : layout.bounds.columns === 32 ? 13 : 11)
     || !Array.isArray(value.enemies) || value.enemies.length > BASE.waves.maxCount
     || !Array.isArray(value.shots) || value.shots.length > 1024
     || !Array.isArray(value.queue) || value.queue.length > BASE.waves.maxCount) return false;
@@ -783,7 +807,7 @@ function validSnapshot(
       || !numberIn(tower.cooldown, 0, def.cooldown) || !numberIn(tower.angle, -2 * Math.PI, 2 * Math.PI)
       || !integerIn(tower.kills, 0, value.kills)) return false;
     const pad = layout.towerPads.find(candidate => candidate.id === tower.padId);
-    if (!pad || !padUnlocked(pad.availability, legacy && legacy < 6 ? 0 : value.highestCleared) || !isUnlockedCell(layout, pad.cell)) return false;
+    if (!pad || !padUnlocked(pad.availability, legacy && legacy < 6 ? 0 : value.highestCleared, !legacy && layout.bounds.columns === 32) || !isUnlockedCell(layout, pad.cell)) return false;
     if (tower.protected !== pad.isStarter || (tower.protected && (tower.uid !== 1 || def.id !== 1))) return false;
     if (tower.protected) protectedCount++;
     let expectedSpent = tower.protected ? 0 : def.cost;
@@ -796,7 +820,7 @@ function validSnapshot(
   if (protectedCount !== 1 || towerKills > value.kills) return false;
   if (legacy !== 2 && !validMara(value.mara, value.towers.map(tower => ({ ...tower,
     ...cellCenter(layout, layout.towerPads.find(pad => pad.id === tower.padId)!.cell) })), layout, getForestBlockedCells(layout))) return false;
-  if (!legacy) {
+  if (!legacy || legacy === 8) {
     const charm = value.bossCharm;
     if (!isRecord(charm) || !['idle', 'windup', 'channel', 'interrupted'].includes(charm.phase as string)
       || !numberIn(charm.cooldown, 0, BOSS.cooldown) || !numberIn(charm.remaining, 0, charm.phase === 'windup' ? BOSS.windup : charm.phase === 'interrupted' ? 1.5 : BOSS.channel)) return false;
@@ -817,7 +841,7 @@ function validSnapshot(
       || enemy.speed !== BASE.enemies[enemy.defId].speed || typeof enemy.flip !== 'boolean'
       || (!original && !numberIn(enemy.slowRemaining, 0, SETTLEMENT.slowSeconds))
       || (enemy.direction !== 'up' && enemy.direction !== 'down' && enemy.direction !== 'side')) return false;
-    if (enemy.defId === 'Rosenspiegel' && (legacy || !isBossWave(value.wave, value.waveRecipeVersion as number))) return false;
+    if (enemy.defId === 'Rosenspiegel' && ((legacy && legacy < 8) || !isBossWave(value.wave, value.waveRecipeVersion as number))) return false;
     if (enemy.defId === 'Scorpion' && ((legacy && legacy < 6) || value.waveRecipeVersion === 3 || value.wave < 11)) return false;
     const def = BASE.enemies[enemy.defId];
     const expectedHp = def.hp * Math.min(BASE.waves.maxHpMultiplier, Math.pow(BASE.waves.hpGrowth, value.wave - 1));

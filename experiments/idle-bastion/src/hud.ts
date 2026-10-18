@@ -15,6 +15,7 @@ export function tutorialStep(battle: IdleBattle): number {
   if (battle.highestCleared < 10) return 9;
   if (!battle.towers.some(tower => tower.def.id === 4)) return 10;
   if (!battle.bossVictories) return 14;
+  if (!battle.clearing.unlocked) return 15;
   return 11;
 }
 const HINTS = [
@@ -33,6 +34,7 @@ const HINTS = [
   'Das Vorratslager sammelt länger: 65 % der sicheren Farmbasis für bis zu acht Stunden. Öffne Siedlung, prüfe die Vorschau und baue es für 650 Gold. Die besseren Werte gelten für die nächste Abwesenheit.',
   'Nach gemeisterter Welle 8 kannst du ein Vorratslager bauen. Verbessere deine Verteidigung und spare dann 650 Gold. Wisp versorgt später beide Gebäude.',
   'Rosenspiegel erwartet uns in Welle 15. Ihr Herzfaden kündigt an, welchen Turm sie verführt. Frost unterbricht ihren Zauber; Flächentreffer räumen Begleiter ab, Scharfschützen durchdringen ihre Rüstung. Die erste vollständige Bosswelle bringt einmalig 750 Gold.',
+  'Rosenspiegel ist besiegt. Öffne unter Siedlung die östliche Lichtung für 900 Gold. Zwei neue Plätze sichern den letzten Wegabschnitt. Mit Lichtung ansehen und Zur Verteidigung wechselst du zwischen den Bereichen.',
 ] as const;
 export const tutorialHint = (battle: IdleBattle): string => HINTS[tutorialStep(battle)];
 export function nextObjective(battle: IdleBattle): string {
@@ -52,6 +54,7 @@ export function nextObjective(battle: IdleBattle): string {
     case 9: return 'Welle 10 meistern: Scharfschütze und drei weitere Bauplätze.';
     case 10: return 'Scharfschütze bauen · 170 Gold · Rüstung durchdringen.';
     case 14: return battle.highestCleared < 14 ? 'Verteidigung für Rosenspiegel in Welle 15 vorbereiten.' : 'Rosenspiegel besiegen · 750 Gold Erstprämie · Frost unterbricht ihre Verführung.';
+    case 15: return `Östliche Lichtung öffnen · ${remaining(SETTLEMENT.clearingCost)} · zwei neue Bauplätze.`;
     default: return battle.mode === 'farm' ? 'Verteidigung ausbauen, dann bewusst erneut vorstoßen.'
       : 'Frost und Pfeile arbeiten zusammen. Weitere Upgrades bis Level 6 sind verfügbar.';
   }

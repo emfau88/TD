@@ -5,7 +5,7 @@ import type Phaser from 'phaser';
 import { clearWaterBackdrop, waterTileSource } from '../../../reference/src/terrain';
 import { KEYS, SCALE, loopFrame } from './art';
 import { getForestWorld } from './forest-world';
-import { cellCenter, type GridCell, type IdleLayout } from './layout';
+import { cellCenter, createIdleLayout, type GridCell, type IdleLayout } from './layout';
 
 export interface ForestView { update(elapsed: number, built: boolean, builtAt: number | null, warehouseBuilt: boolean, warehouseBuiltAt: number | null, warehouseUnlocked: boolean): void; destroy(): void }
 const cellKey = ({ x, y }: GridCell) => `${x},${y}`;
@@ -73,7 +73,19 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   shade.context.fillStyle = gradient; shade.context.fillRect(0, 0, layout.bounds.width, layout.bounds.height); shade.refresh();
   track(scene.add.image(0, 0, shade.key).setOrigin(0).setDepth(2));
 
-  world.trees.forEach((cell, index) => {
+  if (layout.bounds.columns > layout.startBounds.columns) {
+    track(scene.add.text(1195, 184, 'Östliche Lichtung', { fontFamily: 'Segoe UI, sans-serif', fontSize: '12px',
+      fontStyle: 'bold', resolution: 2, color: '#f1dfaf', stroke: '#233e2d', strokeThickness: 3 }).setOrigin(0.5).setDepth(5000));
+  } else {
+    track(scene.add.text(layout.startBounds.width - 16, 524, 'Lichtung →', { fontFamily: 'Segoe UI, sans-serif', fontSize: '12px',
+      fontStyle: 'bold', resolution: 2, color: '#f1dfaf', backgroundColor: '#243d29', padding: { x: 7, y: 5 },
+      stroke: '#233e2d', strokeThickness: 2 }).setOrigin(1, 0.5).setDepth(5000));
+  }
+  // Keep existing tree variants/offsets when removing the old eastern border.
+  const originalTrees = getForestWorld(createIdleLayout()).trees;
+  const originalTreeIndices = new Map(originalTrees.map((cell, index) => [cellKey(cell), index]));
+  world.trees.forEach((cell, order) => {
+    const index = originalTreeIndices.get(cellKey(cell)) ?? originalTrees.length + order;
     const point = cellCenter(layout, cell), autumn = (cell.x < 5 && cell.y > 9) || index % 13 === 0;
     track(scene.add.image(point.x + index * 7 % 9 - 4, point.y + 12, KEYS.grass, `${autumn ? 'autumn' : 'tree'}-${index % 4}`)
       .setOrigin(0.5, 1).setScale(SCALE.tree).setDepth(point.y + 1000));

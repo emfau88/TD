@@ -1,5 +1,6 @@
 /** Small, consistent SVG controls; raster material art lives in assets/ui. */
 const shapes: Record<string, string> = {
+  grove: '<path fill="#a78655" d="M8 13h4v8H8z"/><path fill="#70955d" d="M8 1h4v2h3v3h3v4h-2v4H4v-4H2V6h3V3h3z"/><path fill="#c0c78c" d="M8 2h4v2H8zM5 5h3v3H5z"/><path fill="#d8bd7b" d="M14 15h3v-2l3 4-3 4v-2h-3z"/>',
   tower: '<path fill="#c6ad75" d="M3 2h3v4h3V2h3v4h3V2h3v7h-2v8h2v3H3v-3h2V9H3z"/><path fill="#fff0b8" d="M3 2h3v2H3zm6 0h3v2H9zm6 0h3v2h-3z"/><path fill="#243238" d="M9 13h3v7H9zM8 8h5v3H8z"/>',
   house: '<path fill="#9e7d48" d="M1 9 10 1l9 8v3h-3v8H4v-8H1z"/><path fill="#efce8b" d="m2 9 8-7 8 7v2l-8-7-8 7zM5 11h10v8H5z"/><path fill="#243238" d="M8 13h4v7H8z"/>',
   heart: '<path fill="#7a3036" d="M1 3h7l2 2 2-2h7v10l-9 8-9-8z"/><path fill="#dd635e" d="M2 3h6l2 3 2-3h6v8l-8 8-8-8z"/><path fill="#ffc8a0" d="M3 4h4v2H5v3H3z"/>',

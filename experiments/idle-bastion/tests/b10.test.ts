@@ -97,3 +97,22 @@ test('old wave-15 record is never a boss victory; an explicit repeat pays no sec
   const bad=repeat.snapshot();bad.bossCharm={phase:'channel',targetUid:99999,remaining:4,cooldown:8};
   assert.equal(IdleBattle.restore(bad),undefined);
 });
+
+
+test('B11 earned boss follow-up opens the clearing within the 8–11 minute target and retains farming', () => {
+  const b=IdleBattle.restore(opening.b.snapshot())!;
+  for(let i=0;i<4000 && b.gold<900;i++){b.update(BASE.stepSeconds);b.drainEvents();}
+  assert.equal(b.unlockClearing(),true);
+  assert.ok(b.elapsed>=8*60 && b.elapsed<=11*60);
+  assert.ok(certifyFarm(b),'Expanded snapshot must still support conservative farming proofs');
+  console.log('B11 earned clearing:',{openedAt:b.elapsed,goldAfter:b.gold,columns:b.layout.bounds.columns});
+});
+
+
+test('B11 migrates schema-eight saves during the active boss dance without resetting combat', () => {
+  assert.ok(opening.duringCharm);
+  const {clearing, ...old}=opening.duringCharm;
+  const migrated=IdleBattle.restore({...old,schemaVersion:8});
+  assert.ok(migrated);
+  assert.deepEqual(migrated.snapshot(),opening.duringCharm);
+});

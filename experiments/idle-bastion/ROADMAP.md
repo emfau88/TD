@@ -11,13 +11,13 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08, B09 und B10 ausdrücklich beauftragt; Maras Fernzauber und Werkstattschilder bleiben vorgemerkt |
-| Aktives Umsetzungspaket | Keines · Tanzfenster und Turmeffekte abgeschlossen und veröffentlicht |
-| Nächster Schritt | B11 bleibt offen und ist noch nicht beauftragt |
+| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B11 ausdrücklich beauftragt; Maras Fernzauber und Werkstattschilder bleiben vorgemerkt |
+| Aktives Umsetzungspaket | B11 · Umsetzung und gezielte Prüfung abgeschlossen; Veröffentlichung läuft |
+| Nächster Schritt | B11 über GitHub Pages veröffentlichen und öffentlichen Playlink prüfen; B12 bleibt offen |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
-Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. G1 ist freigegeben. Aktueller Auftrag „Go b10“ umfasst B10; B11 und folgende bleiben separat. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. G1 ist freigegeben. B11 ist am 18.10.2026 ausdrücklich mit kompakten Tests und Commit/Push/Pages beauftragt. B12 und folgende bleiben separat. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
 
 ## Ergänzung nach B10 — Rosenspiegels Tanzdarstellung
 
@@ -91,7 +91,7 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P3 | B08 · Wisp und Turmrollen | Zweite Figur, Wirtschaftseffekt und vier unterscheidbare Türme | G1 freigegeben | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p3/B08.md) |
 | P3 | B09 · Lager und Rückkehr | Zweites Gebäude und befriedigender Wiedereinstieg | B08 | Abgeschlossen |
 | P4 | B10 · Erste Bossherausforderung | Lesbarer Boss verlangt die verfügbaren Turmrollen | B09 | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/B10.md) |
-| P4 | B11 · Wachsende Karte | Echte seitliche Freischaltung mit zwei nützlichen Turmplätzen | B10 | Nicht begonnen |
+| P4 | B11 · Wachsende Karte | Echte seitliche Freischaltung mit zwei nützlichen Turmplätzen | B10 | Geprüft · Veröffentlichung läuft |
 | P4 | B12 · Ausbau und Fortsetzung | Werkstatt II, spätere Level und Fortschritt nach Minute 15 | B11 | Nicht begonnen |
 | P5 | B13 · Gesamter Spielverlauf | Gemessene 15-Minuten-Sitzung und Rückkehr mit legalen Aktionen | B12 | Nicht begonnen |
 | P5 | B14 · Stabilität und Lieferung | Geprüfte Builds, Regression, Laufzeit und ehrlicher Ergebnisbericht | B13 | Nicht begonnen |
@@ -335,12 +335,14 @@ Historische Halteregel bis zur obigen G1-Freigabe: Während des Wartens nur P2 p
 
 **Voraussetzung:** B10; geometrische Vorbereitung aus B01. **Ergebnis:** Die bestehende Welt wird sichtbar größer und sinnvoll nutzbar.
 
-- [ ] Nach Boss 15 und Goldkauf eine östliche Lichtung öffnen, Ziel etwa Minute 8–11; maximal acht zusätzliche Spalten, keine neue Region.
-- [ ] Genau zwei neue Turmplätze nahe der westlichen Erweiterungskante anlegen; echte Schussfenster auf den vorhandenen letzten Wegabschnitt prüfen.
-- [ ] Gegnerpfad und Kern während Freischaltung nicht verschieben; keine zweite Angriffsfront oder hinter dem Kern weiterlaufenden Gegner erzeugen.
-- [ ] Waldkante sichtbar freilegen und Kameragrenzen erweitern, ohne sämtliche Objekte zu verkleinern; nur benötigte Dekoration ergänzen.
-- [ ] „Lichtung ansehen“ anbieten, keinen überraschenden Kamerasprung erzwingen; HUD und Rückkehr-zur-Verteidigung bleiben bedienbar.
-- [ ] Gesperrte Plätze vor Freischaltung zurückweisen; Freischaltung, Bauplätze, Figurenzugänge und Kameraverhalten nach Reload, im Kampf und bei beiden Viewports prüfen.
+- [x] Nach Boss 15 und Goldkauf eine östliche Lichtung öffnen, Ziel etwa Minute 8–11; maximal acht zusätzliche Spalten, keine neue Region.
+- [x] Genau zwei neue Turmplätze nahe der westlichen Erweiterungskante anlegen; echte Schussfenster auf den vorhandenen letzten Wegabschnitt prüfen.
+- [x] Gegnerpfad und Kern während Freischaltung nicht verschieben; keine zweite Angriffsfront oder hinter dem Kern weiterlaufenden Gegner erzeugen.
+- [x] Waldkante sichtbar freilegen und Kameragrenzen erweitern, ohne sämtliche Objekte zu verkleinern; nur benötigte Dekoration ergänzen.
+- [x] „Lichtung ansehen“ anbieten, keinen überraschenden Kamerasprung erzwingen; HUD und Rückkehr-zur-Verteidigung bleiben bedienbar.
+- [x] Gesperrte Plätze vor Freischaltung zurückweisen; Freischaltung, Bauplätze, Figurenzugänge und Kameraverhalten nach Reload, im Kampf und bei beiden Viewports prüfen.
+
+**Entscheidung und Nachweis:** Vier zusätzliche Spalten auf 32×16, einmalig 900 Gold nach echtem Boss-15-Sieg. Im legalen Modellablauf nach 9:42 Minuten geöffnet. [Gezielte Prüfung und Desktop-/Hochkantaufnahmen](../../artifacts/idle-bastion/acceptance/p4/B11.md).
 
 **Fertig, wenn:** Der Nutzer tatsächlich in einen neuen Abschnitt scrollt und dessen Turmplätze taktisch helfen. Eine größere leere Karte oder Plätze außerhalb der Reichweite erfüllen das Paket nicht.
 

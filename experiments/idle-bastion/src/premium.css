@@ -281,3 +281,14 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
  .boss-banner p { font-size:10px; } .boss-banner small { font-size:9px; }
  #boss-health-bar { margin:5px 0; height:7px; }
 }
+
+/* B11: small region controls; the compact HUD/dock keep their dimensions. */
+.clearing-art { width:58px; height:62px; margin-inline:8px; }
+.region-navigation { position:absolute; z-index:12; bottom:calc(var(--dock) + 14px); left:14px; display:flex; gap:6px; }
+.region-navigation button { font-size:12px; padding:7px 12px; min-height:36px; }
+#clearing-panel .primary-action { width:100%; margin-top:8px; }
+@media(max-width:700px) {
+  .clearing-art { width:38px; height:44px; margin-inline:4px; }
+  .region-navigation { left:8px; bottom:calc(var(--dock) + 60px); gap:4px; }
+  .region-navigation button { font-size:11px; padding:6px 9px; min-height:34px; }
+}

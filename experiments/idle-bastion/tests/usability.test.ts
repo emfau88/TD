@@ -41,12 +41,12 @@ test('layout-one live save migrates combat intact and reroutes Mara away from a 
   snapshot.mara={...snapshot.mara,...cellCenter(oldLayout,{x:11,y:4}),cooldownRemaining:7,effectRemaining:0};
   assignMaraTarget(snapshot.mara,tower,oldLayout,getForestBlockedCells(oldLayout));
   assert.ok(validMara(snapshot.mara,b.towers,oldLayout,getForestBlockedCells(oldLayout)));
-  const old={...snapshot,layoutVersion:1}, restored=IdleBattle.restore(old)!;
+  const old={...snapshot,schemaVersion:8,layoutVersion:1}, restored=IdleBattle.restore(old)!;
   assert.ok(restored);const modern=restored.snapshot();
   assert.equal(modern.layoutVersion,2);assert.equal(modern.mara.cooldownRemaining,7);
   assert.ok(validMara(modern.mara,restored.towers,restored.layout,getForestBlockedCells(restored.layout)));
   assert.notDeepEqual(modern.mara.path,snapshot.mara.path);
-  assert.deepEqual({...modern,mara:snapshot.mara,layoutVersion:1},old);
+  assert.deepEqual({...modern,mara:snapshot.mara,schemaVersion:8,layoutVersion:1},old);
   assert.deepEqual(IdleBattle.restore(modern)!.snapshot(),modern);
 });
 

@@ -18,6 +18,7 @@ export interface BattleSceneHooks {
   readonly selectMara?: () => void;
   readonly selectWorkshop?: () => void;
   readonly selectWarehouse?: () => void;
+  readonly selectClearing?: () => void;
 }
 const colors = { gold: 0xd9bd79, text: '#eae5ce', muted: '#91a58e', panel: '#183424' };
 type TowerView = { base: Phaser.GameObjects.Image; weapon: Phaser.GameObjects.Image };
@@ -52,6 +53,7 @@ export class BattleScene extends Phaser.Scene {
   private overview = false;
   private portraitCamera = false;
   private cameraFitted = false;
+  private renderedColumns = 0;
   private readonly preventMiddleScroll = (event: MouseEvent) => { if (event.button === 1) event.preventDefault(); };
   private readonly preventWheel = (event: WheelEvent) => { if (!event.ctrlKey) event.preventDefault(); };
   private get sim(): IdleBattle { return this.readBattle(); }
@@ -64,11 +66,11 @@ export class BattleScene extends Phaser.Scene {
     const { width, height } = this.sim.layout.bounds;
     this.cameras.main.setBounds(0, 0, width, height).setScroll(0, 0);
     this.forest = createForest(this, this.sim.layout);
+    this.renderedColumns = this.sim.layout.bounds.columns;
     this.selection = this.add.graphics().setDepth(6000);
     this.effects = this.add.graphics().setDepth(5500);
     this.bossCharmView = new BossCharmView(this, this.pixelDensity);
     for (const pad of this.sim.layout.towerPads) {
-      if (pad.cell.x >= this.sim.layout.bounds.columns) continue;
       const point = cellCenter(this.sim.layout, pad.cell);
       this.padMarks.set(pad.id, this.add.graphics().setDepth(20));
       this.padLabels.set(pad.id, this.add.text(point.x, point.y, '', {
@@ -130,8 +132,21 @@ export class BattleScene extends Phaser.Scene {
   }
   refresh(): void {
     if (!this.readyToDraw || this.hooks.canRender?.() === false) return;
-    this.refreshLabels(); this.drawSelection(); this.drawActors();
+    this.syncLayout(); this.refreshLabels(); this.drawSelection(); this.drawActors();
   }
+  private syncLayout(): void {
+    if (this.renderedColumns === this.sim.layout.bounds.columns) return;
+    const camera = this.cameras.main, scrollX = camera.scrollX, scrollY = camera.scrollY;
+    this.forest?.destroy(); this.forest = createForest(this, this.sim.layout);
+    this.renderedColumns = this.sim.layout.bounds.columns;
+    this.overview = false;
+    this.fitCameraBounds();
+    camera.setScroll(camera.clampX(scrollX), camera.clampY(scrollY));
+  }
+  showClearing(): void {
+    if (this.sim.clearing.unlocked) this.focusPoint({ x: 1140, y: 320 });
+  }
+  showDefense(): void { this.focusPoint({ x: this.portraitCamera ? 280 : this.sim.layout.startBounds.width / 2, y: 320 }); }
   resetCamera(): void {
     this.relativeZoom = 1; this.overview = true; this.resizeCamera();
     this.cameras.main.centerOn(this.sim.layout.bounds.width / 2, this.sim.layout.bounds.height / 2);
@@ -141,14 +156,14 @@ export class BattleScene extends Phaser.Scene {
     const camera = this.cameras.main, { width, height } = this.sim.layout.bounds;
     const portrait = this.scale.width / this.pixelDensity <= 700 && window.innerHeight > window.innerWidth;
     const changedOrientation = portrait !== this.portraitCamera;
-    const center = this.cameraFitted ? { x: camera.midPoint.x, y: camera.midPoint.y } : { x: portrait ? 280 : width / 2, y: height / 2 };
+    const center = this.cameraFitted ? { x: camera.midPoint.x, y: camera.midPoint.y } : { x: portrait ? 280 : this.sim.layout.startBounds.width / 2, y: height / 2 };
     if (changedOrientation) { this.relativeZoom = 1; this.overview = false; }
     this.portraitCamera = portrait;
     this.baseZoom = portrait && !this.overview ? Math.max(this.scale.height / height, this.scale.width / 640)
-      : Math.min(this.scale.width / width, this.scale.height / height);
+      : Math.min(this.scale.width / (this.overview ? width : this.sim.layout.startBounds.width), this.scale.height / height);
     camera.setSize(this.scale.width, this.scale.height).setZoom(this.baseZoom * this.relativeZoom);
     this.fitCameraBounds();
-    camera.centerOn(changedOrientation ? portrait ? 280 : width / 2 : center.x, height / 2);
+    camera.centerOn(changedOrientation ? portrait ? 280 : this.sim.layout.startBounds.width / 2 : center.x, height / 2);
     this.cameraFitted = true; this.hooks.changed();
   }
   private fitCameraBounds(): void {
@@ -160,18 +175,19 @@ export class BattleScene extends Phaser.Scene {
     camera.setBounds(-padX, -padY, width + padX * 2, height + padY * 2);
   }
   focusPad(padId: string): void {
-    if (!this.portraitCamera) return;
+    if (!this.portraitCamera && !this.sim.clearing.unlocked) return;
     const pad = this.sim.layout.towerPads.find(pad => pad.id === padId);
     if (pad) this.focusPoint(cellCenter(this.sim.layout, pad.cell));
   }
-  focusObject(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp'): void {
-    if (this.portraitCamera) this.focusPoint(this.objectPoint(kind));
+  focusObject(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing'): void {
+    if (kind !== 'clearing' && (this.portraitCamera || this.sim.clearing.unlocked)) this.focusPoint(this.objectPoint(kind));
   }
   private focusPoint(point: { x: number; y: number }): void {
     if (this.overview) { this.overview = false; this.relativeZoom = 1; this.resizeCamera(); }
     this.cameras.main.centerOn(point.x, this.sim.layout.bounds.height / 2);
   }
-  private objectPoint(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp'): { x: number; y: number } {
+  private objectPoint(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
+    if (kind === 'clearing') return { x: 1080, y: 524 };
     if (kind === 'wisp') return wispPose(this.sim.layout, this.sim.elapsed, this.sim.settlement.warehouseBuilt);
     if (kind === 'mara') return { x: this.sim.mara.x, y: this.sim.mara.y - 20 };
     if (kind === 'settlement' || kind === 'warehouse') {
@@ -182,7 +198,7 @@ export class BattleScene extends Phaser.Scene {
     const pad = this.selectedPad();
     return pad ? cellCenter(this.sim.layout, pad.cell) : { x: 560, y: 320 };
   }
-  uiAnchor(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp'): { x: number; y: number } {
+  uiAnchor(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
     const point = this.objectPoint(kind), camera = this.cameras.main;
     return { x: (point.x - camera.worldView.x) * camera.zoom, y: (point.y - camera.worldView.y) * camera.zoom };
   }
@@ -222,6 +238,9 @@ export class BattleScene extends Phaser.Scene {
     if (this.hooks.canRender?.() === false) return;
     const point = this.cameras.main.getWorldPoint(pointer.x, pointer.y), size = this.sim.layout.cellSize;
     if (this.bossCharmView.contains(point)) return;
+    if (!this.sim.clearing.unlocked && point.x > this.sim.layout.startBounds.width - 120 && point.y >= 505 && point.y <= 545) {
+      this.hooks.selectClearing?.(); return;
+    }
     const pad = this.sim.layout.towerPads.find(value => value.cell.x === Math.floor(point.x / size) && value.cell.y === Math.floor(point.y / size));
     const wisp = wispPose(this.sim.layout, this.sim.elapsed, this.sim.settlement.warehouseBuilt);
     if (this.sim.wispUnlocked && Math.hypot(point.x - wisp.x, point.y - (wisp.y - 18)) < 23) { this.hooks.selectWisp?.(); return; }
@@ -244,6 +263,9 @@ export class BattleScene extends Phaser.Scene {
     for (const pad of this.sim.layout.towerPads) {
       const label = this.padLabels.get(pad.id), mark = this.padMarks.get(pad.id);
       if (!label || !mark) continue;
+      const visible = pad.cell.x < this.sim.layout.bounds.columns;
+      label.setVisible(visible); mark.setVisible(visible);
+      if (!visible) continue;
       const tower = this.sim.towers.find(value => value.padId === pad.id), point = cellCenter(this.sim.layout, pad.cell);
       mark.clear();
       if (!tower) {
@@ -291,6 +313,7 @@ export class BattleScene extends Phaser.Scene {
     return view;
   }
   private drawActors(): void {
+    this.syncLayout();
     const sim = this.sim, elapsed = sim.elapsed;
     // Read the complete confirmed model. Rollback can replace its identity and
     // move time backwards; UID maps are reconciled rather than replaying events.

@@ -51,7 +51,7 @@ let game: Phaser.Game | undefined;
 let gameResize: ResizeObserver | undefined;
 let store: BattleSaveStore | undefined;
 let selectedPadId: string | undefined;
-let selectedPanel: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' = 'tower';
+let selectedPanel: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing' = 'tower';
 let catalogPanel: 'tower' | 'settlement' = 'tower';
 let contextOpen = false;
 let placementType: TowerId | undefined;
@@ -65,6 +65,7 @@ let lifecycle = Promise.resolve();
 let retryTimer: number | undefined;
 const progressUI = createProgressUI(action => {
   if (action === 'archer' || action === 'frost' || action === 'cannon' || action === 'sniper') startPlacement(({ archer: 1, frost: 2, cannon: 3, sniper: 4 } as const)[action]);
+  else if (action === 'clearing') { catalogPanel = 'settlement'; openContext('clearing'); }
   else if (action === 'warehouse') { catalogPanel = 'settlement'; openContext('warehouse'); }
   else if (action === 'workshop') { catalogPanel = 'settlement'; openContext('settlement'); }
   else if (action === 'upgrade' && session) {
@@ -107,6 +108,8 @@ function syncUI(): void {
   if (live.busy) return;
   const sim = live.battle;
   element('tower-panel').hidden = selectedPanel !== 'tower';
+  element('clearing-panel').hidden = selectedPanel !== 'clearing';
+  element('region-navigation').hidden = !sim.clearing.unlocked || contextOpen || Boolean(placementType) || live.awaitingResume;
   element('warehouse-panel').hidden = selectedPanel !== 'warehouse';
   element('settlement-panel').hidden = selectedPanel !== 'settlement';
   element('wisp-panel').hidden = selectedPanel !== 'wisp';
@@ -141,7 +144,7 @@ function syncUI(): void {
   const padKey = freePads.map(pad => pad.id).join(',');
   if (padKey !== padListKey) {
     padListKey = padKey;
-    const names: Record<string, string> = { 'tower-02': 'Nordwest', 'tower-03': 'Nordost', 'tower-04': 'Südkurve', 'tower-05': 'Nordweg', 'tower-06': 'Engpass', 'tower-07': 'Südweg', 'tower-08': 'Kernwache', 'tower-09': 'Nordbogen', 'tower-10': 'Mittelpass', 'tower-11': 'Südbogen' };
+    const names: Record<string, string> = { 'tower-02': 'Nordwest', 'tower-03': 'Nordost', 'tower-04': 'Südkurve', 'tower-05': 'Nordweg', 'tower-06': 'Engpass', 'tower-07': 'Südweg', 'tower-08': 'Kernwache', 'tower-09': 'Nordbogen', 'tower-10': 'Mittelpass', 'tower-11': 'Südbogen', 'tower-east-01': 'Östlicher Sporn', 'tower-east-02': 'Ostbogen' };
     const current = padChoice.value;
     padChoice.replaceChildren(new Option('Bauplatz wählen …', ''), ...sim.layout.towerPads.filter(pad => sim.isPadUnlocked(pad.id)).map(pad => new Option(names[pad.id] ?? 'Startturm', pad.id)));
     padChoice.value = current;
@@ -210,13 +213,14 @@ function syncUI(): void {
   const tower = sim.towers.find(value => value.padId === selectedPadId);
   const pad = sim.layout.towerPads.find(value => value.id === selectedPadId);
   padChoice.value = selectedPadId ?? '';
-  element('selection-title').textContent = selectedPanel === 'warehouse' ? 'Vorratslager' : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
+  element('selection-title').textContent = selectedPanel === 'clearing' ? 'Östliche Lichtung' : selectedPanel === 'warehouse' ? 'Vorratslager' : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
     : tower ? `${tower.def.name} · Level ${tower.level}` : pad ? 'Freier Bauplatz' : 'Bauplatz wählen';
   element('tower-name').textContent = tower?.def.name ?? 'Turm wählen';
   element('tower-role').textContent = tower?.def.id === 4 ? 'Bevorzugt Rüstung · ignoriert 100 % davon' : tower?.def.id === 3 ? 'Flächentreffer · 52 Reichweite um das Ziel' : tower?.def.id === 2 ? 'Frosttreffer · 45 % langsamer für 2 s' : 'Zuverlässige Pfeile · Allrounder';
   element('selection-description').textContent = selectedPanel !== 'tower' ? '' : tower
     ? tower.protected ? 'Dein erster Turm sichert die Grundverteidigung. Du kannst ihn verbessern.' : `${tower.def.name} verteidigt den Weg. Verbessere ihn oder investiere das Gold an anderer Stelle.`
     : (pad && sim.isPadUnlocked(pad.id)) ? 'Wähle einen freigeschalteten Turm für diesen Platz.'
+    : pad?.availability === 'east-clearing' ? 'Öffne zuerst die östliche Lichtung nach dem Bosssieg.'
     : pad ? `Dieser Platz öffnet nach gemeisterter Welle ${pad.availability === 'wave-5' ? 5 : 10}.` : 'Wähle einen hell markierten Platz auf der Karte.';
   build.hidden = Boolean(tower); upgrade.hidden = !tower; sell.hidden = !tower; assignMara.hidden = !tower;
   buildFrost.hidden = Boolean(tower) || !sim.settlement.frostResearched;
@@ -281,16 +285,31 @@ function syncUI(): void {
     : 'Vorschau bei unveränderter Verteidigung. Während einer Pause entsteht kein Offline-Ertrag.';
   buildWarehouse.hidden = builtWarehouse;
   buildWarehouse.disabled = blocked || !sim.warehouseUnlocked || sim.gold < SETTLEMENT.warehouseCost;
+  const clearing = sim.clearing.unlocked;
+  element('pick-clearing').classList.toggle('locked', !sim.clearingAvailable);
+  element('pick-clearing').classList.toggle('researched', clearing);
+  element('clearing-card-price').textContent = clearing ? '✓ Geöffnet' : sim.clearingAvailable ? String(SETTLEMENT.clearingCost) : 'Boss 15';
+  element('clearing-description').textContent = clearing
+    ? 'Die Waldkante ist geöffnet. Zwei zusätzliche Bauplätze sind verfügbar. Mit „Lichtung ansehen“ wechselst du in den neuen Abschnitt.'
+    : 'Öffne den Wald östlich des Kerns. Zwei neue Bauplätze verstärken deine letzte Verteidigungslinie.';
+  element('clearing-condition').textContent = clearing ? 'Geöffnet · die Verteidigung läuft weiter.'
+    : !sim.clearingAvailable ? 'Voraussetzung: Rosenspiegel in Welle 15 besiegen. Danach einmalig 900 Gold.'
+    : sim.gold < SETTLEMENT.clearingCost ? `Bosssieg geschafft. Noch ${currency.format(SETTLEMENT.clearingCost - sim.gold)} Gold.`
+    : 'Bosssieg geschafft · 900 Gold verfügbar. Bereit zum Erschließen.';
+  element('unlock-clearing').hidden = clearing;
+  element<HTMLButtonElement>('unlock-clearing').disabled = blocked || !sim.clearingAvailable || sim.gold < SETTLEMENT.clearingCost;
+  element('show-clearing').hidden = !clearing;
   element('layout-status').textContent = view.paused ? 'Kampf angehalten.'
     : sim.mode === 'farm' ? `Sicheres Farmen · Welle ${sim.farmWave}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang.`
     : `Automatischer Vorstoß · höchste geschaffte Welle ${sim.highestCleared}.`;
   const relevantEvents = sim.drainEvents();
-  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'boss-victory'].includes(event.type)).at(-1);
+  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'boss-victory', 'clearing'].includes(event.type)).at(-1);
   if (message) toastUntil = performance.now() + 4500;
   if (message) element('combat-message').textContent = message.type === 'clear' ? `Welle ${message.wave} geschafft · +${currency.format(message.amount ?? 0)} Gold Abschlussbonus.`
     : message.type === 'kill' ? `Gegner besiegt · +${currency.format(message.amount ?? 0)} Gold.`
     : message.type === 'wave' ? `${mode} · Welle ${message.wave} hat begonnen. Deine Türme greifen automatisch an.`
     : message.type === 'boss-victory' ? message.amount ? 'Rosenspiegel besiegt! +750 Gold einmalige Erstprämie. Meilenstein gespeichert.' : 'Rosenspiegel erneut besiegt. Gewöhnliche Kampfbelohnungen erhalten.'
+    : message.type === 'clearing' ? 'Östliche Lichtung geöffnet! Zwei Bauplätze verfügbar · Lichtung ansehen.'
     : message.type === 'wisp' ? 'Wisp ist da! +10 % Kampf-Gold und die Steinschleuder sind jetzt verfügbar.'
     : message.type === 'pads' ? `Welle ${message.wave} gemeistert: drei weitere Bauplätze${message.wave === 10 ? ' und der Scharfschütze' : ''} sind verfügbar.`
     : message.type === 'build' ? `${message.tower?.def.name} gebaut und einsatzbereit.`
@@ -404,6 +423,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
       select(padId) { void selectPad(padId); },
       selectWisp() { openContext('wisp'); },
       selectMara() { openContext('mara'); },
+      selectClearing() { catalogPanel = 'settlement'; openContext('clearing'); },
       selectWarehouse() { catalogPanel = 'settlement'; openContext('warehouse'); },
       selectWorkshop() { catalogPanel = 'settlement'; openContext('settlement'); },
       ready() { ready = true; drawDockArt(view); view.setSelected(selectedPadId); syncUI(); },
@@ -468,6 +488,11 @@ element('challenge-boss').addEventListener('click', () => {
 element('catalog-next').addEventListener('click', () => { const list = element(`${catalogPanel}-catalog`); list.scrollTo({ left: list.scrollLeft >= list.scrollWidth - list.clientWidth - 2 ? 0 : list.scrollLeft + list.clientWidth, behavior: 'smooth' }); }, { signal: lifetime.signal });
 element('pick-archer').addEventListener('click', () => startPlacement(1), { signal: lifetime.signal });
 element('pick-frost').addEventListener('click', () => startPlacement(2), { signal: lifetime.signal });
+element('pick-clearing').addEventListener('click', () => openContext('clearing'), { signal: lifetime.signal });
+element('unlock-clearing').addEventListener('click', () => { void perform(b => b.unlockClearing()); }, { signal: lifetime.signal });
+for (const id of ['show-clearing', 'visit-clearing']) element(id).addEventListener('click', () => { placementType = undefined; closeContext(); scene?.showClearing(); }, { signal: lifetime.signal });
+element('return-defense').addEventListener('click', () => { placementType = undefined; closeContext(); scene?.showDefense(); }, { signal: lifetime.signal });
+
 element('pick-warehouse').addEventListener('click', () => openContext('warehouse'), { signal: lifetime.signal });
 element('pick-workshop').addEventListener('click', () => openContext('settlement'), { signal: lifetime.signal });
 element('pick-mara').addEventListener('click', () => openContext('mara'), { signal: lifetime.signal });
