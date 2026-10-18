@@ -19,10 +19,10 @@ export function getForestWorld(layout: IdleLayout): ForestWorld {
   if (cached) return cached;
   // Preserve the authored woods and pond when adding free construction candidates.
   // The settlement zone stays clear so moving a building never uproots scenery.
-  const terrainLayout = layout.version === 3 ? createIdleLayout({ version: 2, unlockedColumns: layout.bounds.columns }) : layout;
+  const terrainLayout = (layout.version ?? 1) >= 3 ? createIdleLayout({ version: 2, unlockedColumns: layout.bounds.columns }) : layout;
   const authoredPads = terrainLayout.towerPads;
   const reserved = new Set<string>([
-    ...(layout.version === 3 ? cellsInRect(SETTLEMENT_ZONE) : []), ...terrainLayout.footpaths, ...layout.plots.flatMap(plot => cellsInRect(plot.footprint)),
+    ...((layout.version ?? 1) >= 3 ? cellsInRect(SETTLEMENT_ZONE) : []), ...terrainLayout.footpaths, ...layout.plots.flatMap(plot => cellsInRect(plot.footprint)),
     layout.maraStart, layout.core,
     ...authoredPads.flatMap(pad => [pad.cell, ...getTowerApproachCells(terrainLayout, pad.id)]),
   ].map(key));
@@ -31,6 +31,19 @@ export function getForestWorld(layout: IdleLayout): ForestWorld {
   for (const position of [...layout.road.cells, ...authoredPads.map(pad => pad.cell), layout.core]) {
     for (let y = position.y - 1; y <= position.y + 1; y++) {
       for (let x = position.x - 1; x <= position.x + 1; x++) reserved.add(`${x},${y}`);
+    }
+  }
+  // Three clear rows above the lowered north road, with canopy headroom.
+  // Keep the old reservations too: valid existing towers must not acquire trees.
+  if ((layout.version ?? 1) >= 4) {
+    for (let y = 0; y <= 3; y++) for (let x = 6; x <= 16; x++) reserved.add(`${x},${y}`);
+    const old = getForestWorld(createIdleLayout({ version: 3, unlockedColumns: layout.bounds.columns, plots: {
+      workshop: layout.plots.find(p => p.id === 'workshop')!.footprint,
+      warehouse: layout.plots.find(p => p.id === 'warehouse')!.footprint,
+    } }));
+    const oldSolids = new Set(old.blocked.map(key));
+    for (const pad of createIdleLayout({ version: 3 }).towerPads) {
+      if (!oldSolids.has(key(pad.cell))) reserved.add(key(pad.cell));
     }
   }
   const occupied = new Set<string>();

@@ -159,7 +159,7 @@ export class BattleScene extends Phaser.Scene {
   showClearing(): void {
     if (this.sim.clearing.unlocked) this.focusPoint({ x: 1140, y: 320 });
   }
-  showDefense(): void { this.focusPoint({ x: this.portraitCamera ? 280 : this.sim.layout.startBounds.width / 2, y: 320 }); }
+  showDefense(): void { this.focusPoint({ x: this.portraitCamera ? 280 : this.sim.layout.startBounds.width / 2, y: this.portraitCamera ? 220 : 320 }); }
   resetCamera(): void {
     this.relativeZoom = 1; this.overview = true; this.resizeCamera();
     this.cameras.main.centerOn(this.sim.layout.bounds.width / 2, this.sim.layout.bounds.height / 2);
@@ -169,22 +169,32 @@ export class BattleScene extends Phaser.Scene {
     const camera = this.cameras.main, { width, height } = this.sim.layout.bounds;
     const portrait = this.scale.width / this.pixelDensity <= 700 && window.innerHeight > window.innerWidth;
     const changedOrientation = portrait !== this.portraitCamera;
-    const center = this.cameraFitted ? { x: camera.midPoint.x, y: camera.midPoint.y } : { x: portrait ? 280 : this.sim.layout.startBounds.width / 2, y: height / 2 };
+    const center = this.cameraFitted ? { x: camera.midPoint.x, y: camera.midPoint.y } : undefined;
     if (changedOrientation) { this.relativeZoom = 1; this.overview = false; }
     this.portraitCamera = portrait;
+    // Use the visible area between HUD and dock. Keep the existing mobile sprite
+    // scale; the smaller camera viewport supplies useful vertical travel instead.
+    const canvas = this.game.canvas.getBoundingClientRect();
+    const header = document.querySelector('.app-header')?.getBoundingClientRect();
+    const dock = document.querySelector('.command-dock')?.getBoundingClientRect();
+    const top = portrait ? Math.max(0, (header?.bottom ?? canvas.top) - canvas.top) * this.pixelDensity : 0;
+    const bottom = portrait ? Math.max(top + 1, ((dock?.top ?? canvas.bottom) - canvas.top) * this.pixelDensity) : this.scale.height;
+    const viewHeight = Math.max(1, Math.min(this.scale.height, bottom) - top);
+    camera.setViewport(0, top, this.scale.width, viewHeight);
     this.baseZoom = portrait && !this.overview ? Math.max(this.scale.height / height, this.scale.width / 640)
-      : Math.min(this.scale.width / (this.overview ? width : this.sim.layout.startBounds.width), this.scale.height / height);
-    camera.setSize(this.scale.width, this.scale.height).setZoom(this.baseZoom * this.relativeZoom);
+      : Math.min(this.scale.width / (this.overview ? width : this.sim.layout.startBounds.width), viewHeight / height);
+    camera.setZoom(this.baseZoom * this.relativeZoom);
     this.fitCameraBounds();
-    camera.centerOn(changedOrientation ? portrait ? 280 : this.sim.layout.startBounds.width / 2 : center.x, height / 2);
+    const initialY = portrait && !this.overview ? camera.displayHeight / 2 - 40 : height / 2;
+    camera.centerOn(!center || changedOrientation ? portrait ? 280 : this.sim.layout.startBounds.width / 2 : center.x,
+      !center || changedOrientation ? initialY : center.y);
     this.cameraFitted = true; this.hooks.changed();
   }
   private fitCameraBounds(): void {
     const camera = this.cameras.main, { width, height } = this.sim.layout.bounds;
-    // Phaser pins undersized bounds to the top left. Symmetric padding keeps
-    // the overview centered while locking any axis that already fits in full.
     const padX = Math.max(0, (camera.displayWidth - width) / 2);
-    const padY = Math.max(0, (camera.displayHeight - height) / 2);
+    // One cell of headroom lets tall north-row towers clear the objective ribbon.
+    const padY = Math.max(this.portraitCamera && !this.overview ? 40 : 0, (camera.displayHeight - height) / 2);
     camera.setBounds(-padX, -padY, width + padX * 2, height + padY * 2);
   }
   focusPad(padId: string): void {
@@ -197,7 +207,7 @@ export class BattleScene extends Phaser.Scene {
   }
   private focusPoint(point: { x: number; y: number }): void {
     if (this.overview) { this.overview = false; this.relativeZoom = 1; this.resizeCamera(); }
-    this.cameras.main.centerOn(point.x, this.sim.layout.bounds.height / 2);
+    this.cameras.main.centerOn(point.x, this.portraitCamera ? point.y - 20 : this.sim.layout.bounds.height / 2);
   }
   private objectPoint(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
     if (kind === 'clearing') return { x: 1080, y: 524 };
@@ -213,7 +223,7 @@ export class BattleScene extends Phaser.Scene {
   }
   uiAnchor(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
     const point = this.objectPoint(kind), camera = this.cameras.main;
-    return { x: (point.x - camera.worldView.x) * camera.zoom, y: (point.y - camera.worldView.y) * camera.zoom };
+    return { x: camera.x + (point.x - camera.worldView.x) * camera.zoom, y: camera.y + (point.y - camera.worldView.y) * camera.zoom };
   }
   setMapZoom(value: number, pointerX = this.scale.width / 2, pointerY = this.scale.height / 2): void {
     if (!this.readyToDraw || !Number.isFinite(value)) return;
@@ -223,8 +233,8 @@ export class BattleScene extends Phaser.Scene {
     const zoom = this.baseZoom * this.relativeZoom;
     camera.setZoom(zoom);
     this.fitCameraBounds();
-    camera.setScroll(camera.clampX(camera.scrollX + (pointerX - this.scale.width / 2) * (1 / old - 1 / zoom)),
-      camera.clampY(camera.scrollY + (pointerY - this.scale.height / 2) * (1 / old - 1 / zoom)));
+    camera.setScroll(camera.clampX(camera.scrollX + (pointerX - camera.x - camera.width / 2) * (1 / old - 1 / zoom)),
+      camera.clampY(camera.scrollY + (pointerY - camera.y - camera.height / 2) * (1 / old - 1 / zoom)));
     if (old !== zoom) this.hooks.changed();
   }
   private beginPointer(pointer: Phaser.Input.Pointer): void {
@@ -272,8 +282,14 @@ export class BattleScene extends Phaser.Scene {
     if (Math.hypot(point.x - this.sim.mara.x, point.y - (this.sim.mara.y - 18)) < 23) {
       this.hooks.selectMara?.(); return;
     }
-    const occupied = this.sim.towers.some(t => t.padId === pad?.id);
-    this.setSelected(occupied ? pad?.id : undefined); this.hooks.select(occupied ? pad?.id : undefined);
+    // A tower's visible body extends above its ground tile. Prefer an occupied
+    // ground tile, then the frontmost visible tower, so all three rows are tappable.
+    const tower = this.sim.towers.find(t => t.padId === pad?.id)
+      ?? [...this.sim.towers].sort((a, b) => b.y - a.y).find(t => {
+        const view = this.towerViews.get(t.uid);
+        return view?.base.getBounds().contains(point.x, point.y) || view?.weapon.getBounds().contains(point.x, point.y);
+      });
+    this.setSelected(tower?.padId); this.hooks.select(tower?.padId);
   }
   private refreshLabels(): void {
     const present = new Set(this.sim.towers.map(t => t.padId));

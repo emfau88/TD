@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 11,
+  "plots": {
+    "workshop": {
+      "x": 3,
+      "y": 11
+    },
+    "warehouse": {
+      "x": 8,
+      "y": 12
+    }
+  },
+  "wispArrival": {
+    "at": null,
+    "met": false
+  },
+  "rulesVersion": 7,
+  "layoutVersion": 3,
+  "layoutId": "start28",
+  "clearing": {
+    "unlocked": false,
+    "openedAt": null
+  },
+  "bossVictories": 0,
+  "secondBossVictories": 0,
+  "bossChallengeWave": 15,
+  "bossChallengeRequested": false,
+  "bossCharm": {
+    "phase": "idle",
+    "targetUid": null,
+    "remaining": 0,
+    "cooldown": 0
+  },
+  "progress": {
+    "sinceAttempt": 1,
+    "sinceSeconds": 0,
+    "battleGold": 0,
+    "totals": {
+      "advance": {
+        "attempts": 1,
+        "wins": 0,
+        "losses": 0
+      },
+      "farm": {
+        "attempts": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "waves": [
+      {
+        "wave": 1,
+        "advance": {
+          "attempts": 1,
+          "wins": 0,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      }
+    ],
+    "lastDefeat": null
+  },
+  "rewardRemainderUnits": 0,
+  "waveRecipeVersion": 7,
+  "goldRemainderUnits": 0,
+  "mode": "advance",
+  "highestCleared": 0,
+  "attemptId": 1,
+  "liveClearedWaves": [],
+  "farmWave": 1,
+  "advanceRequested": false,
+  "gold": 9925,
+  "lives": 20,
+  "wave": 1,
+  "phase": "wave",
+  "elapsed": 2.025,
+  "ticks": 81,
+  "pendingTime": 0,
+  "uid": 6,
+  "intermissionRemaining": 0,
+  "kills": 0,
+  "earned": 0,
+  "queue": [
+    "Leafbug",
+    "Leafbug",
+    "Leafbug",
+    "Leafbug"
+  ],
+  "spawnTimer": 0.7750000000000005,
+  "towers": [
+    {
+      "uid": 1,
+      "padId": "tower-start",
+      "kind": 1,
+      "level": 1,
+      "cooldown": 0.6,
+      "spent": 0,
+      "kills": 0,
+      "angle": -1.2628256071528496,
+      "protected": true
+    },
+    {
+      "uid": 2,
+      "padId": "tower-02",
+      "kind": 1,
+      "level": 1,
+      "cooldown": 0,
+      "spent": 75,
+      "kills": 0,
+      "angle": 0,
+      "protected": false
+    }
+  ],
+  "enemies": [
+    {
+      "uid": 3,
+      "x": 94.25,
+      "y": 220,
+      "hp": 24,
+      "maxHp": 24,
+      "distance": 74.25,
+      "total": 1680,
+      "segment": 0,
+      "speed": 45,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "defId": "Leafbug"
+    },
+    {
+      "uid": 4,
+      "x": 40.25,
+      "y": 220,
+      "hp": 24,
+      "maxHp": 24,
+      "distance": 20.25,
+      "total": 1680,
+      "segment": 0,
+      "speed": 45,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "defId": "Leafbug"
+    }
+  ],
+  "shots": [
+    {
+      "uid": 5,
+      "towerUid": 1,
+      "target": 3,
+      "x": 208.2868521546187,
+      "y": 245.39190346186342,
+      "speed": 480,
+      "damage": 14,
+      "level": 1,
+      "kind": 1
+    }
+  ],
+  "mara": {
+    "x": 220,
+    "y": 300,
+    "path": [],
+    "targetTowerUid": 1,
+    "direction": "up",
+    "cooldownRemaining": 0,
+    "effectRemaining": 0,
+    "unreachable": false,
+    "autoCast": true,
+    "effectTowerUid": null
+  },
+  "settlement": {
+    "workshopBuilt": false,
+    "frostResearched": false,
+    "builtAt": null,
+    "warehouseBuilt": false,
+    "warehouseBuiltAt": null,
+    "workshopUpgraded": false,
+    "upgradedAt": null
+  },
+  "tutorial": {
+    "hidden": false,
+    "seen": 0,
+    "builtTower": true,
+    "upgradedTower": false,
+    "frostSeen": false
+  }
+}

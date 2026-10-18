@@ -11,13 +11,45 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung |
-| Aktives Umsetzungspaket | Keines · B12a veröffentlicht; B13-Balance noch nicht begonnen |
-| Nächster Schritt | B12a über den Playlink testen lassen; B13-Balance auf dieser Grundlage separat beauftragen |
+| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen |
+| Aktives Umsetzungspaket | B12b · Karten- und Kamerakomfort geprüft; Veröffentlichung läuft. Danach B12c · vorhandene Gegner |
+| Nächster Schritt | B12b committen/pushen; anschließend B12c sinnvoll integrieren und ebenfalls veröffentlichen. B12d nur vorgemerkt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
 Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. G1 ist freigegeben. B11 ist am 18.10.2026 ausdrücklich mit kompakten Tests und Commit/Push/Pages beauftragt. B12 wurde anschließend ausdrücklich mit denselben Vorgaben beauftragt. B13/B14 bleiben separat. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+
+## B12b — Nordbogen und mobile Kamera
+
+Am 18.10.2026 ausdrücklich beauftragt; kompakte Prüfungen, Commit und Push.
+
+- [x] Oberen Weg zwei Felder tiefer legen; drei zusammenhängende, hindernisfreie Reihen darüber anbieten.
+- [x] Mobile Kamera vertikal verschiebbar, Rand mit Gelände füllen, Fokus auch in Y; sichtbare Turmgrafik zur Auswahl anklickbar.
+- [x] Alte laufende Versuche auf alter Route beenden; am Wellenübergang passende Plätze erhalten und betroffene Türme kostenlos versetzen.
+- [x] Geld, Level, Investitionen, IDs, Gebäude, Mara und historische Offline-Ansprüche erhalten; Farmnachweise für die neue Route neu verdienen.
+- [x] Gezielte Geometrie-/Speicherprüfungen, Build und mobile Bau-/Upgradeprobe; [Nachweis](../../artifacts/idle-bastion/acceptance/p4/MAP.md).
+- [ ] Commit/Push und öffentliche Veröffentlichung bestätigen.
+
+## B12c — Vorhandene Gegner mit gestaffelter Einführung
+
+Am 18.10.2026 ausdrücklich als nächster Schritt nach B12b beauftragt. Vorhandene Originalgrafiken verwenden; sinnvolle Rollen und Fortschritt statt einer rein zufälligen Grafikmischung. Danach kompakt prüfen, committen und pushen.
+
+- [ ] Magmakrabbe, Clampbeetle, Flying Locust, Firewasp und Voidbutterfly anhand ihrer vorhandenen Richtungsanimationen integrieren.
+- [ ] Vorhandene Laternenqualle prüfen und ihre Unterstützerrolle passend zum Idle-Kampf übernehmen.
+- [ ] Lesbare Rollen und Einführung über zunehmende Wellen, spätere abwechslungsreiche Gruppen; frühe Lernschritte erhalten.
+- [ ] Gemeinsame Frame-/Richtungsmetadaten nutzen; richtige Blickrichtung, Größe, Schatten und Pause überprüfen.
+- [ ] Laufende Altversuche und alte Offline-Belege bewahren; neue Gegnerfolgen erst beim nächsten Versuch aktivieren.
+- [ ] Wenige gezielte Modell-/Atlasprüfungen und eine echte Browserprobe; Bericht, Commit/Push/Playlink bestätigen.
+
+## B12d — Wiederholbarer Produktionsablauf für neue Gegner (vorgemerkt)
+
+Nur als nächster Ausbau geplant; keine neue Bildproduktion beauftragt. Vorhandene Verfahren aus `GEGNER_PRODUKTIONSPLAN.md`, `scripts/pixel-atlas.mjs` und der Gegnerprobe weiterverwenden.
+
+- [ ] Kurzen Standardsteckbrief für Rolle, Referenzen, Palette, sichtbare Größe und Anker festlegen.
+- [ ] Referenzpose und kleine Laufprobe vor vollständiger Richtungs-/Aktionsproduktion prüfen.
+- [ ] Gemeinsames Datenformat für Ausschnitte, Blickrichtung/Spiegelung, Bilddauer, Maßstab und Aktionszeitpunkte.
+- [ ] Ein gemeinsamer Import und eine gemeinsame Vorschau mit Originalvergleich, Einzelbildern und Kurvenstrecke.
+- [ ] Kompakte Prüfungen für Atlasgrenzen, Transparenz und Richtung; künstlerische Bewegung gezielt ansehen.
 
 ## B12a — Freie Verteidigung und verständliche Begleiter
 
@@ -109,6 +141,9 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P4 | B11 · Wachsende Karte | Echte seitliche Freischaltung mit zwei nützlichen Turmplätzen | B10 | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/B11.md) |
 | P4 | B12 · Ausbau und Fortsetzung | Werkstatt II, spätere Level und Fortschritt nach Minute 15 | B11 | Abgeschlossen; B13-Balance offen |
 | Zusatz | B12a · Freie Verteidigung | Wegstreifen, Fernzauber, Einführung, Siedlungsbau und Originaleffekte | Zusätzlicher Nutzerauftrag | Veröffentlicht · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/REDESIGN.md) |
+| Zusatz | B12b · Nordbogen/Kamera | Drei obere Baureihen und mobile Erreichbarkeit; sichere Kartenmigration | Nutzerauftrag | Geprüft · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/MAP.md) |
+| Zusatz | B12c · Vorhandene Gegner | Unterschiedliche Rollen und gestaffelte Gegnergruppen | B12b; ausdrücklich beauftragt | Als Nächstes |
+| Später | B12d · Gegnerproduktion | Einheitlicher Ablauf für neue Figuren | Nur vorgemerkt | Nicht begonnen |
 | P5 | B13 · Gesamter Spielverlauf | Gemessene 15-Minuten-Sitzung und Rückkehr mit legalen Aktionen | B12 | Nicht begonnen |
 | P5 | B14 · Stabilität und Lieferung | Geprüfte Builds, Regression, Laufzeit und ehrlicher Ergebnisbericht | B13 | Nicht begonnen |
 | Ende | G2 · Gesamtabnahme | Vollständiger Slice bewertet | B14 | **Offen** |

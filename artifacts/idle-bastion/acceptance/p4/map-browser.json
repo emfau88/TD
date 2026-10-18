@@ -1,0 +1,17 @@
+{
+  "errors": [],
+  "northTower": {
+    "uid": 3,
+    "padId": "cell-14-1",
+    "kind": 1,
+    "level": 2,
+    "cooldown": 0,
+    "spent": 135,
+    "kills": 0,
+    "angle": 0,
+    "protected": false
+  },
+  "layout": 4,
+  "overflow": false,
+  "script": "./assets/battle-DBVGNKuN.js"
+}

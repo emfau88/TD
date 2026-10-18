@@ -29,7 +29,7 @@ const MAX_PROBE_REWARD = 2.2 * (BASE.waves.maxCount * Math.max(...Object.values(
  */
 export function defenseFingerprint(battle: IdleBattle): string {
   return JSON.stringify({
-    rulesVersion: BATTLE_RULES_VERSION, layoutVersion: LAYOUT_VERSION, layout: { columns: battle.layout.bounds.columns, plots: battle.plots },
+    rulesVersion: BATTLE_RULES_VERSION, layoutVersion: battle.layout.version, layout: { columns: battle.layout.bounds.columns, plots: battle.plots },
     blocked: getForestBlockedCells(battle.layout), maraTarget: battle.mara.targetTowerUid, settlement: { workshopBuilt: battle.settlement.workshopBuilt, frostResearched: battle.settlement.frostResearched, builtAt: battle.settlement.builtAt }, wisp: battle.wispUnlocked,
     towers: battle.towers.map(tower => [tower.padId, tower.def.id, tower.level, tower.protected] as const)
       .sort((left, right) => left[0].localeCompare(right[0])),
@@ -83,6 +83,7 @@ function prove(battle: IdleBattle, wave: number, fingerprint: string): FarmCerti
 }
 
 export function certifyFarm(battle: IdleBattle, previous?: FarmCertificate): FarmCertificate | undefined {
+  if (battle.layout.version !== LAYOUT_VERSION) return undefined;
   const fingerprint = defenseFingerprint(battle);
   // A newer leaky victory must not erase an older still-valid safe proof.
   let best = isFarmCertificateValid(previous, battle) ? { ...previous! } : undefined;

@@ -21,7 +21,7 @@ export interface BuildingPlot {
 }
 export interface IdleLayout {
   readonly cellSize: number;
-  readonly version?: 1 | 2 | 3;
+  readonly version?: 1 | 2 | 3 | 4;
   readonly startBounds: GridBounds; readonly bounds: GridBounds; readonly maxBounds: GridBounds;
   readonly road: { readonly waypoints: readonly GridCell[]; readonly cells: readonly GridCell[] };
   readonly core: GridCell; readonly towerPads: readonly TowerPad[];
@@ -89,7 +89,7 @@ export function isWalkableCell(layout: IdleLayout, position: GridCell): boolean 
   if (!isUnlockedCell(layout, position) || sameCell(position, layout.core)) return false;
   if (layout.plots.some(plot => rectContains(plot.blockingBody, position))) return false;
   // Reserve the tower's ground cell even before construction; Mara works from an adjacent cell.
-  return layout.version === 3 || !layout.towerPads.some(pad => sameCell(pad.cell, position));
+  return (layout.version ?? 1) >= 3 || !layout.towerPads.some(pad => sameCell(pad.cell, position));
 }
 
 /** Ground reservation check; the named reservation may be used by its own later building action.
@@ -145,33 +145,35 @@ export function findFootpath(
   return undefined;
 }
 
-export const LAYOUT_VERSION = 3 as const;
+export const LAYOUT_VERSION = 4 as const;
 export const SETTLEMENT_ZONE: GridRect = { x: 2, y: 10, width: 9, height: 4 };
 export type PlotPositions = Record<BuildingPlot['id'], GridCell>;
 export const DEFAULT_PLOTS: PlotPositions = { workshop: { x: 3, y: 11 }, warehouse: { x: 8, y: 12 } };
-export function createIdleLayout(options: { readonly unlockedColumns?: number; readonly version?: 1 | 2 | 3; readonly plots?: PlotPositions } = {}): IdleLayout {
+export function createIdleLayout(options: { readonly unlockedColumns?: number; readonly version?: 1 | 2 | 3 | 4; readonly plots?: PlotPositions } = {}): IdleLayout {
   const cellSize = 40, rows = 16, startColumns = 28, maxColumns = 36;
   const columns = options.unlockedColumns ?? startColumns;
   if (!Number.isInteger(columns) || columns < startColumns || columns > maxColumns) {
     throw new Error('Unlocked columns must be an integer from 28 through 36.');
   }
+  const version = options.version ?? LAYOUT_VERSION;
+  const northRow = version >= 4 ? 4 : 2;
   const waypoints = Object.freeze([
-    cell(0, 5), cell(7, 5), cell(7, 2), cell(15, 2),
+    cell(0, 5), cell(7, 5), cell(7, northRow), cell(15, northRow),
     cell(15, 10), cell(25, 10), cell(25, 6), cell(27, 6),
   ]);
   const pad = (id: string, x: number, y: number, availability: PadAvailability, isStarter = false): TowerPad =>
     Object.freeze({ id, cell: cell(x, y), availability, isStarter });
   let towerPads: readonly TowerPad[] = Object.freeze([
     pad('tower-start', 5, 6, 'initial', true),
-    pad('tower-02', 8, 4, 'initial'),
-    pad('tower-03', 14, 4, 'initial'),
+    pad('tower-02', 8, version >= 4 ? 5 : 4, 'initial'),
+    pad('tower-03', 14, version >= 4 ? 5 : 4, 'initial'),
     pad('tower-04', 17, 9, 'initial'),
     pad('tower-05', 10, 1, 'wave-5'),
     pad('tower-06', 14, 8, 'wave-5'),
     pad('tower-07', 21, 9, 'wave-10'),
     pad('tower-08', 26, 8, 'wave-10'),
     ...(options.version === 1 ? [] : [
-      pad('tower-09', 11, 4, 'initial'),
+      pad('tower-09', 11, version >= 4 ? 5 : 4, 'initial'),
       pad('tower-10', 16, 7, 'wave-5'),
       pad('tower-11', 23, 9, 'wave-10'),
     ]),
@@ -188,7 +190,7 @@ export function createIdleLayout(options: { readonly unlockedColumns?: number; r
       courtyard: rect(8, 13, 2, 1), entrance: cell(8, 13),
     }),
   ]);
-  if ((options.version ?? 3) === 3) {
+  if (version >= 3) {
     plots = plots.map(plot => {
       const destination = options.plots?.[plot.id] ?? DEFAULT_PLOTS[plot.id];
       const dx = destination.x - plot.footprint.x, dy = destination.y - plot.footprint.y;
@@ -207,7 +209,7 @@ export function createIdleLayout(options: { readonly unlockedColumns?: number; r
     towerPads = Object.freeze(candidates);
   }
   const layout: IdleLayout = {
-    ...((options.version ?? 3) === 3 ? { version: 3 as const } : {}),
+    ...(version >= 3 ? { version } : {}),
     cellSize, startBounds: boundsFor(startColumns, rows, cellSize),
     bounds: boundsFor(columns, rows, cellSize), maxBounds: boundsFor(maxColumns, rows, cellSize),
     road: Object.freeze({ waypoints, cells: pathCells(waypoints) }),
@@ -278,9 +280,9 @@ export function validPlotPositions(positions: unknown): positions is PlotPositio
   return true;
 }
 const battleLayouts = new Map<string, IdleLayout>();
-export function battleLayout(expanded: boolean, plots: PlotPositions = DEFAULT_PLOTS): IdleLayout {
-  const key = JSON.stringify([expanded, plots.workshop.x, plots.workshop.y, plots.warehouse.x, plots.warehouse.y]);
+export function battleLayout(expanded: boolean, plots: PlotPositions = DEFAULT_PLOTS, version: 3 | 4 = LAYOUT_VERSION): IdleLayout {
+  const key = JSON.stringify([version, expanded, plots.workshop.x, plots.workshop.y, plots.warehouse.x, plots.warehouse.y]);
   let layout = battleLayouts.get(key);
-  if (!layout) { layout = createIdleLayout({ unlockedColumns: expanded ? 32 : 28, plots }); battleLayouts.set(key, layout); }
+  if (!layout) { layout = createIdleLayout({ unlockedColumns: expanded ? 32 : 28, plots, version }); battleLayouts.set(key, layout); }
   return layout;
 }

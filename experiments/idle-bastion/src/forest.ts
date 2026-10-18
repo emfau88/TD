@@ -35,6 +35,10 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   for (let y = 0; y < layout.bounds.rows; y++) for (let x = 0; x < layout.bounds.columns; x++) {
     context.drawImage(source, 128, 64, 64, 64, x * size, y * size, size, size);
   }
+  // Cosmetic one-cell camera margin; these pixels never become buildable land.
+  for (let x = 0; x < layout.bounds.columns; x++) for (const y of [-1, layout.bounds.rows]) {
+    track(scene.add.image(x * size, y * size, KEYS.grass, 'grass').setOrigin(0).setScale(SCALE.tile).setTint(0xc9d7c7).setDepth(0));
+  }
   const road = new Set(layout.road.cells.map(cellKey));
   for (const position of layout.road.cells) {
     const [x, y] = roadSource(position, road);

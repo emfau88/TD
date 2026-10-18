@@ -44,15 +44,14 @@ test('a dense Frost / damage combination builds, charges once and survives exact
   b.update(2); restored.update(2); assert.deepEqual(restored.snapshot(), b.snapshot());
 });
 
-test('schema 10 preserves money, old tower positions, ongoing combat and cooldown, without inventing farm proof', () => {
-  const b = new IdleBattle(); b.build('tower-02'); b.update(0.5);
-  const snap = b.snapshot();
+test('schema 10 preserves money, old tower positions, ongoing combat and cooldown, without inventing farm proof', async () => {
+  const snap = JSON.parse(await readFile(new URL('./fixtures/map-v3.json', import.meta.url), 'utf8'));
   const legacy = { ...snap, schemaVersion: 10, rulesVersion: 6, layoutVersion: 2, waveRecipeVersion: 6 };
   const restored = IdleBattle.restore(legacy); assert.ok(restored);
   assert.equal(restored.gold, snap.gold); assert.deepEqual(restored.snapshot().towers, snap.towers);
   assert.deepEqual(restored.snapshot().enemies, snap.enemies); assert.deepEqual(restored.snapshot().shots, snap.shots);
   assert.equal(restored.mara.cooldownRemaining, snap.mara.cooldownRemaining);
-  assert.deepEqual(restored.liveClearedWaves, []); assert.equal(restored.snapshot().schemaVersion, 11);
+  assert.deepEqual(restored.liveClearedWaves, []); assert.equal(restored.snapshot().schemaVersion, 12);
   assert.ok(IdleBattle.restore(restored.snapshot()));
 });
 

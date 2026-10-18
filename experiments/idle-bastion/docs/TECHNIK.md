@@ -249,3 +249,11 @@ Welle **25** ist Rosenspiegels Rückkehr: ein Boss und zwölf Begleiter, normale
 Snapshot **10**, Kampfregeln **6**: `settlement.workshopUpgraded/upgradedAt`, `secondBossVictories` und `bossChallengeWave` ergänzen den Zustand. Schema 9 wird zuerst mit seinen Regeln validiert, dann übernommen; Geld, Gebäude, Lichtung, Türme und laufender Kampf bleiben erhalten. Alte Welle-25-Rekorde erzeugen keinen Bosssieg. Laufende alte Rezepte enden regulär; danach wird eine fehlende Bossbegegnung beim Vorstoß nachgeholt. Aktuelle Farmnachweise werden neu verdient; historische Offline-Belege behalten ihre ursprünglichen Werte und werden nicht rückwirkend verändert.
 
 Nach Werkstatt II zeigt das nächste Ziel einen tatsächlich kaufbaren Turmausbau mit Preis und fehlendem Gold. Wenn alle vorhandenen Türme maximal sind, folgen freie Plätze oder bewusstes Farmen/Vorstoßen. Keine Quest für ein zukünftiges Gebäude. Die Feinabstimmung der gesamten 15-Minuten-Kurve bleibt Gegenstand von B13.
+
+## Kartenrevision 4: Nordbogen und Übernahme
+
+Der Nordbogen liegt bei Rasterzeile 4 statt 2. Einstieg, Kern, Siedlung und der weitere Weg bleiben unverändert; die Route verkürzt sich von 1.680 auf 1.520 Weltpixel (ca. 9,5 %). Keine pauschale Änderung von Gegnertempo oder Turmreichweite. Die vollständige Balance bleibt B13.
+
+Schema 12 / Regeln 8 akzeptiert Layout 4 sowie Layout 3 für den Abschluss alter Versuche. Schema 11 wird zuerst gegen seine originale Geometrie geprüft; laufende Gegner, Geschosse und Timer bleiben exakt erhalten. Erst in einer Wellenpause erfolgt die Kartenumstellung. Unveränderte Turmkoordinaten werden zuerst reserviert, übrige Türme auf nahe freie gültige Plätze versetzt. UID, Level, Investition, Kills und Cooldown bleiben erhalten; Gebäude bleiben stehen. Mara wird nur bei ungültigem Standort/Laufweg angepasst, ohne Zauberzeit zurückzusetzen. Aktuelle Farmnachweise werden entwertet, historische Offline-Belege bis Regel 8 bleiben gültig.
+
+Mobile: vorhandener Maßstab, ein Feld vertikaler Kamerarand, Y-Fokus auf ausgewählte Objekte; dekorative Grasränder sind keine zusätzlichen Bauzellen. Turmauswahl bevorzugt ein belegtes Bodenfeld und berücksichtigt anschließend sichtbare Basis/Waffe, damit hochstehende Grafiken antippbar sind.

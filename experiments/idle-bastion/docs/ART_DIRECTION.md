@@ -172,3 +172,7 @@ Die frühere 128×128-Einschätzung für Frost III war falsch. Verbindlich sind 
 Alle vier Turmrollen verwenden ihre jeweiligen Projektilstufen und kurzen Originaltreffer. Kanonentreffer entsprechen ungefähr dem 52-Pixel-Flächenradius. Turmbau nutzt den vorhandenen Construction-Atlas; Gebäude entstehen mit kurzer Gerüst-/Staubabfolge. Die Startwerkstatt zeigt nur eine Werkbank und Material, kein beschädigtes Haus. Keine neuen Imagegen-Assets in dieser Ergänzung.
 
 Maras aktiver Fernzauber zeigt einen kurzen Lichtimpuls zum Turm, warmen Ring, ablaufenden Bogen und Sekundenanzeige. Das Porträt trägt die Abklingzeitleiste. Wisps Ankunft nutzt vorhandene Laufbilder und eine kompakte einmalige Begrüßung; mobile HUD-/Dockhöhen bleiben unverändert.
+
+## Nordbogen und Kamerarand
+
+Layout 4 senkt den oberen Weg auf Zeile 4. Oberhalb des horizontalen Abschnitts (Spalten 7–15, nullbasiert) sind Zeilen 1–3 frei; Bäume halten zusätzlich Kopfabstand. Der bestehende Teich und die Siedlung bleiben erhalten. Ein dekorativer Grasstreifen oberhalb/unterhalb der Karte füllt den mobilen Kamerarand. Er erweitert keine Baufläche. Keine neuen Assets und keine Änderung des Originalmaßstabs.

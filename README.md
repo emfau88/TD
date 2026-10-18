@@ -211,3 +211,5 @@ Die UI-Prüfung nutzt eine simulierte DOM-Umgebung mit der echten Spielsimulatio
 Die Originalordner der Foozle-Pakete bleiben erhalten. Die jeweiligen `Readme.txt` nennen CC0; die mitgelieferte Pixelgrafik stammt von Foozle und Baldur. Zusätzliche Konzept- und Spielgrafiken wurden mit dem eingebauten Imagegen-Werkzeug erzeugt. Referenzen und Prompts liegen im Ordner `concepts/`; die Runtime-Grafiken unter `public/assets/`, UI-Grafiken unter `public/ui/`. Die vier neuen Figuren verwenden eigene Atlanten mit einheitlichen Animationszellen. Umgebungsbauteile und Props werden in den regionalen Karten zusammengesetzt.
 
 Soundeffekte werden lokal erzeugt. Es werden keine externen Schrift- oder Sounddateien benötigt. Node.js 22 oder neuer wird für die Entwicklungswerkzeuge verwendet.
+
+Die [Nordbogen-Anpassung und mobile Kamera](artifacts/idle-bastion/acceptance/p4/MAP.md) schaffen drei freie Reihen oberhalb des Wegs und erleichtern die Turmauswahl auf dem Handy.

@@ -331,12 +331,14 @@ function syncUI(): void {
     : `Automatischer Vorstoß · höchste geschaffte Welle ${sim.highestCleared}.`;
   const relevantEvents = sim.drainEvents();
   scene?.acceptEvents(relevantEvents);
-  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'boss-victory', 'clearing', 'workshop-upgrade'].includes(event.type)).at(-1);
+  if (relevantEvents.some(event => event.type === 'map-update')) { selectedPadId = undefined; placementType = undefined; closeContext(); }
+  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'boss-victory', 'clearing', 'workshop-upgrade', 'map-update'].includes(event.type)).at(-1);
   if (message) toastUntil = performance.now() + 4500;
   if (message) element('combat-message').textContent = message.type === 'clear' ? `Welle ${message.wave} geschafft · +${currency.format(message.amount ?? 0)} Gold Abschlussbonus.`
     : message.type === 'kill' ? `Gegner besiegt · +${currency.format(message.amount ?? 0)} Gold.`
     : message.type === 'wave' ? `${mode} · Welle ${message.wave} hat begonnen. Deine Türme greifen automatisch an.`
     : message.type === 'boss-victory' ? message.amount ? `${bossEncounter(message.wave ?? 15).title} besiegt! +${currency.format(message.amount)} Gold Erstprämie.` : 'Rosenspiegel erneut besiegt. Gewöhnliche Kampfbelohnungen erhalten.'
+    : message.type === 'map-update' ? `Nordbogen angepasst · drei Baureihen oberhalb des Wegs.${message.amount ? ` ${message.amount} Türme kostenlos in der Nähe versetzt; alle Upgrades bleiben erhalten.` : ''}`
     : message.type === 'clearing' ? 'Östliche Lichtung geöffnet! Optionale Fläche verfügbar · Lichtung ansehen.'
     : message.type === 'wisp' ? 'Wisp ist da! +10 % Kampf-Gold und die Steinschleuder sind jetzt verfügbar.'
     : message.type === 'pads' ? `Welle ${message.wave} gemeistert${message.wave === 10 ? ' · Scharfschütze verfügbar' : ''}.`
