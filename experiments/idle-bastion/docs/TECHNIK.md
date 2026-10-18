@@ -257,3 +257,7 @@ Der Nordbogen liegt bei Rasterzeile 4 statt 2. Einstieg, Kern, Siedlung und der 
 Schema 12 / Regeln 8 akzeptiert Layout 4 sowie Layout 3 für den Abschluss alter Versuche. Schema 11 wird zuerst gegen seine originale Geometrie geprüft; laufende Gegner, Geschosse und Timer bleiben exakt erhalten. Erst in einer Wellenpause erfolgt die Kartenumstellung. Unveränderte Turmkoordinaten werden zuerst reserviert, übrige Türme auf nahe freie gültige Plätze versetzt. UID, Level, Investition, Kills und Cooldown bleiben erhalten; Gebäude bleiben stehen. Mara wird nur bei ungültigem Standort/Laufweg angepasst, ohne Zauberzeit zurückzusetzen. Aktuelle Farmnachweise werden entwertet, historische Offline-Belege bis Regel 8 bleiben gültig.
 
 Mobile: vorhandener Maßstab, ein Feld vertikaler Kamerarand, Y-Fokus auf ausgewählte Objekte; dekorative Grasränder sind keine zusätzlichen Bauzellen. Turmauswahl bevorzugt ein belegtes Bodenfeld und berücksichtigt anschließend sichtbare Basis/Waffe, damit hochstehende Grafiken antippbar sind.
+
+## Gegnererweiterung B12c
+
+Aktuell Schema 13 / Regeln 9, Layout 4 (Layout 3 nur für noch laufende Altversuche). Sechs vorhandene Figuren ergänzen die normalen Wellen; Regeln, Richtungen, Heilung und Migrationsgrenzen stehen kompakt in [ENEMIES.md](ENEMIES.md). Der nächste Versuch wechselt auf die neuen Gegnerrezepte. Historische Offline-Belege bleiben erhalten. Gleichzeitige Gegner sind weiterhin auf 28 begrenzt; Quallen auf zwei pro Welle.

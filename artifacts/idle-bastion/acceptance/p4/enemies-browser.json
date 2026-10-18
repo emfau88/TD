@@ -1,0 +1,36 @@
+{
+  "errors": [],
+  "results": [
+    {
+      "wave": 31,
+      "mobile": false,
+      "overflow": false,
+      "known": 9,
+      "composition": "Zusammenstellung Welle 31: 4 × Magmakrabbe · 5 × Blattkäfer · 2 × Laternenqualle · 4 × Panzerskorpion · 4 × Feuerkäfer · 3 × Panzerflieger · 3 × Flugheuschrecke · 3 × Leerenfalter",
+      "script": "./assets/battle-B6BBlxgs.js",
+      "initialTime": 2.225,
+      "activeTime": 3.225,
+      "pauseReloadExact": true,
+      "healedTargets": 1,
+      "schema": 13
+    },
+    {
+      "wave": 33,
+      "mobile": true,
+      "overflow": false,
+      "known": 9,
+      "composition": "Zusammenstellung Welle 33: 5 × Feuerkäfer · 9 × Feuerwespe · 5 × Flugheuschrecke · 5 × Blattkäfer · 4 × Leerenfalter",
+      "script": "./assets/battle-B6BBlxgs.js",
+      "initialTime": 8.025,
+      "activeTime": 8.950000000000001,
+      "pauseReloadExact": true,
+      "healedTargets": 0,
+      "schema": 13
+    }
+  ],
+  "finalFacingCheck": {
+    "errors": [],
+    "script": "./assets/battle-CmaPzvKp.js",
+    "overflow": false
+  }
+}

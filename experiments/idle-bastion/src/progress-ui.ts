@@ -1,6 +1,7 @@
+import { ENEMY_ROSTER } from './enemy-roster';
 import { bossEncounter } from './boss';
 import { farmRewardGold } from './farming';
-import { waveCount, SETTLEMENT, FROST, upgradeCost, type IdleBattle } from './battle';
+import { waveCount, waveEnemy, SETTLEMENT, FROST, upgradeCost, type IdleBattle } from './battle';
 import type { BattleSession } from './battle-session';
 import { offlinePolicy } from './offline';
 import { IncomeWindow, HISTORY_LIMIT, type AttemptMode } from './progress';
@@ -39,7 +40,7 @@ export function currentGoal(battle: IdleBattle): Goal {
     case 17: if (battle.highestCleared >= 24 && !battle.bossActive && battle.mode !== 'farm') return { title: 'Rosenspiegels Rückkehr', detail: 'Welle 25 · 1.200 Gold Erstprämie', action: 'boss', label: 'Bossherausforderung ansehen' };
     default: {
       const tower = [...battle.towers].filter(t => t.level < battle.maxLevel).sort((a,b) => upgradeCost(a)-upgradeCost(b))[0];
-      if (tower) { const cost = upgradeCost(tower); return { title: `${padNames[tower.padId]} auf Level ${tower.level+1}`, detail: `${need(cost)} · ${battle.secondBossVictories ? `nächster Vorstoß: Welle ${battle.nextAdvanceWave}` : 'für Rosenspiegels Rückkehr · Welle 25'}`, cost, action: 'upgrade', label: 'Turm aufwerten' }; }
+      if (tower) { const cost = upgradeCost(tower); return { title: `${padNames[tower.padId] ?? tower.def.name} auf Level ${tower.level+1}`, detail: `${need(cost)} · ${battle.secondBossVictories ? `nächster Vorstoß: Welle ${battle.nextAdvanceWave}` : 'für Rosenspiegels Rückkehr · Welle 25'}`, cost, action: 'upgrade', label: 'Turm aufwerten' }; }
       if (battle.layout.towerPads.some(p => battle.isPadUnlocked(p.id) && !battle.towers.some(t => t.padId === p.id))) return { title: 'Freie Bauplätze verstärken', detail: `${need(75)} · weitere Schussbereiche nutzen`, cost: 75, action: 'archer', label: 'Waldwächter platzieren' };
       return { title: 'Verteidigung vollständig ausgebaut', detail: `Sicher farmen oder Welle ${battle.nextAdvanceWave} versuchen`, action: 'progress', label: 'Fortschritt und Vorstoß ansehen' };
     }
@@ -49,7 +50,7 @@ export function currentGoal(battle: IdleBattle): Goal {
 export function createProgressUI(goTo: (action: GoalAction) => void, signal: AbortSignal) {
   const dialog = el<HTMLDialogElement>('chronicle');
   const income = new IncomeWindow();
-  let activeMode: AttemptMode = 'advance', tableKey = '', goal: Goal | undefined;
+  let activeMode: AttemptMode = 'advance', tableKey = '', enemiesKey = '', goal: Goal | undefined;
   const open = () => { if (!dialog.open) dialog.showModal(); };
   for (const id of ['open-progress', 'gold-summary', 'wave-summary', 'goal-details']) el(id).addEventListener('click', open, { signal });
   el('close-progress').addEventListener('click', () => dialog.close(), { signal });
@@ -61,7 +62,7 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
   el<HTMLSelectElement>('history-mode').addEventListener('change', () => { activeMode = el<HTMLSelectElement>('history-mode').value as AttemptMode; tableKey = ''; }, { signal });
 
   return {
-    reset() { income.reset(); tableKey = ''; },
+    reset() { income.reset(); tableKey = ''; enemiesKey = ''; },
     update(live: BattleSession) {
       const b = live.battle, p = b.progress, rate = income.observe(b.elapsed, p.battleGold);
       const stopped = live.paused || live.awaitingResume || live.suspended || Boolean(live.error);
@@ -121,6 +122,21 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       el('history-note').textContent = p.sinceAttempt > 1
         ? `Aufzeichnung ab Versuch ${p.sinceAttempt}. Frühere Versuche sind unbekannt; laufende Altversuche werden nicht nachträglich gezählt. Die letzten ${HISTORY_LIMIT} verschiedenen Wellen bleiben einzeln erhalten.`
         : `Aufzeichnung seit Spielbeginn. Ein Neuladen zählt nicht als neuer Versuch. Die letzten ${HISTORY_LIMIT} verschiedenen Wellen bleiben einzeln erhalten.`;
+      const enemyKey = `${b.wave}:${b.highestCleared}:${b.waveRecipeVersion}`;
+      if (enemyKey !== enemiesKey) {
+        enemiesKey = enemyKey;
+        const counts = new Map<string, number>();
+        for (let i = 0; i < (b.wave ? total : 0); i++) { const name = waveEnemy(b.wave, i, b.waveRecipeVersion).name; counts.set(name, (counts.get(name) ?? 0) + 1); }
+        el('journal-wave-enemies').textContent = b.wave ? `Zusammenstellung Welle ${b.wave}: ${[...counts].map(([name, n]) => `${n} × ${name}`).join(' · ')}` : 'Die erste Welle besteht aus Blattkäfern.';
+        const reached = Math.max(b.wave, b.highestCleared), next = ENEMY_ROSTER.find(e => e.id !== 'Rosenspiegel' && e.firstWave > reached);
+        el('journal-next-enemy').textContent = next ? `Nächster neuer Gegnertyp: ${next.name} ab Welle ${next.firstWave}.` : 'Alle neun normalen Gegnertypen verfügbar. Weitere Wellen wechseln zwischen Schwärmen, Tempo, Panzern und Unterstützung.';
+        el('journal-enemy-roster').replaceChildren(...ENEMY_ROSTER.filter(e => e.id !== 'Rosenspiegel' && e.firstWave <= Math.max(1, reached)).map(e => {
+          const item = document.createElement('li'), title = document.createElement('strong'), copy = document.createElement('p');
+          title.textContent = `${e.name} · ab Welle ${e.firstWave}`;
+          copy.textContent = `${e.flying ? 'Flieger · ' : ''}${e.role}. ${e.counter}.`;
+          item.append(title, copy); return item;
+        }));
+      }
       const key = JSON.stringify([activeMode, p.waves, p.totals, b.wave, b.phase]);
       if (key !== tableKey) {
         tableKey = key;

@@ -1,3 +1,4 @@
+import { introducedEnemy } from './enemy-roster';
 import { MARA } from './mara';
 import type { GridCell } from './layout';
 import Phaser from 'phaser';
@@ -61,6 +62,7 @@ let placementType: TowerId | undefined;
 let groundMode: 'mara' | 'workshop' | 'warehouse' | undefined;
 let groundCandidate: GridCell | undefined;
 let toastUntil = 0;
+const announcedEnemies = new Set<string>();
 let padListKey = '';
 let mobileHintOpen = false;
 let mobileHintStep = -1;
@@ -350,6 +352,13 @@ function syncUI(): void {
     : message.type === 'research' ? 'Frostfassung erforscht! Baue einen Frostkristall oder verbessere Türme bis Level 6.'
     : message.type === 'sell' ? `Turm verkauft · +${currency.format(message.amount ?? 0)} Gold. Die sichere Farmbasis wird neu geprüft.`
     : 'Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.';
+  const startedWave = relevantEvents.find(e => e.type === 'wave');
+  const newcomer = startedWave && sim.waveRecipeVersion >= 9 && sim.mode === 'advance' && sim.highestCleared < sim.wave ? introducedEnemy(sim.wave) : undefined;
+  if (!message && newcomer && newcomer.firstWave >= 6 && !announcedEnemies.has(newcomer.id)) {
+    announcedEnemies.add(newcomer.id);
+    element('combat-message').textContent = `Neu: ${newcomer.name} · ${newcomer.counter}. Mehr in der Chronik.`;
+    toastUntil = performance.now() + 6500;
+  }
   element('combat-message').hidden = performance.now() > toastUntil || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
   progressUI.update(live);
   const boss = sim.bossEnemy, charm = sim.bossCharm;

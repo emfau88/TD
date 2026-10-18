@@ -9,7 +9,7 @@ import { assignMaraTarget, validMara } from '../src/mara';
 test('side-facing Scorpion artwork follows travel; vertical and other sheets retain their orientation', () => {
   assert.equal(enemyFlip('Scorpion','side',false),true);
   assert.equal(enemyFlip('Scorpion','side',true),false);
-  for (const kind of ['Leafbug','Firebug','Rosenspiegel']) {
+  for (const kind of ['Leafbug','Firebug','Rosenspiegel'] as const) {
     assert.equal(enemyFlip(kind,'side',false),false);
     assert.equal(enemyFlip(kind,'side',true),true);
   }

@@ -3,7 +3,8 @@ import { preloadTowerSheets, towerSheet } from './tower-atlas';
  * frame maps come from public/assets/manifest.json and reference/STYLE_GUIDE.md.
  * These helpers never import classic simulation rules or start an animation clock.
  */
-import { succubusFrame } from '../../../reference/src/succubus-art';
+import { preloadEnemySheets } from './enemy-art';
+export { enemyFrame, enemyFlip } from './enemy-art';
 import type Phaser from 'phaser';
 import { MARA_FRAMES, MARA_FOOT, MARA_SCALE } from '../../../reference/src/style-assets';
 import { TREE_FRAMES } from '../../../reference/src/terrain';
@@ -73,18 +74,6 @@ export const FIRE_FRAMES = Object.freeze([0,1,2,3,4,5,11,12,13,14,15,16,22,23,24
 export type EnemyDirection = 'up' | 'down' | 'side';
 export type MaraDirection = 'up' | 'down' | 'left' | 'right';
 
-/** Directional Move tags point into the logical manifest frame map. */
-export function enemyFrame(kind: 'Leafbug' | 'Firebug' | 'Scorpion' | 'Rosenspiegel', direction: EnemyDirection, elapsed: number): number {
-  if (kind === 'Rosenspiegel') return succubusFrame('move', direction, elapsed * 1000);
-  if (kind === 'Scorpion') return (direction === 'down' ? 24 : direction === 'up' ? 32 : 40) + Math.floor(Math.max(0, elapsed) * 10) % 8;
-  const logicalStart = direction === 'down' ? 18 : direction === 'up' ? 26 : 34;
-  const frames = kind === 'Leafbug' ? LEAF_FRAMES : FIRE_FRAMES;
-  return frames[logicalStart + Math.floor(Math.max(0, elapsed) * 10) % 8];
-}
-/** Scorpion's side frames face left; the other sheets face right. */
-export function enemyFlip(kind: string, direction: EnemyDirection, movingLeft: boolean): boolean {
-  return direction === 'side' && (kind === 'Scorpion' ? !movingLeft : movingLeft);
-}
 export function maraFrame(direction: MaraDirection, moving: boolean, acting: boolean, elapsed: number): number {
   const row = ['down', 'left', 'right', 'up'].indexOf(direction) * 4;
   return row + (acting ? 3 : moving ? 1 + Math.floor(Math.max(0, elapsed) * 6) % 2 : 0);
@@ -103,6 +92,7 @@ export function maraDestination(index: number) {
 }
 export function preloadArt(scene: Phaser.Scene): void {
   preloadTowerSheets(scene);
+  preloadEnemySheets(scene);
   scene.load.image(KEYS.grass, ART.grass);
   scene.load.image(KEYS.water, ART.water);
   scene.load.image(KEYS.maraSource, ART.maraSource);

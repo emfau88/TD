@@ -12,8 +12,8 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen |
-| Aktives Umsetzungspaket | B12b · Karten- und Kamerakomfort geprüft; Veröffentlichung läuft. Danach B12c · vorhandene Gegner |
-| Nächster Schritt | B12b committen/pushen; anschließend B12c sinnvoll integrieren und ebenfalls veröffentlichen. B12d nur vorgemerkt |
+| Aktives Umsetzungspaket | B12c · Vorhandene Gegner umgesetzt und gezielt geprüft; Veröffentlichung läuft. B12b veröffentlicht |
+| Nächster Schritt | B12c committen/pushen und Pages bestätigen. B12d nur vorgemerkt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -28,18 +28,19 @@ Am 18.10.2026 ausdrücklich beauftragt; kompakte Prüfungen, Commit und Push.
 - [x] Alte laufende Versuche auf alter Route beenden; am Wellenübergang passende Plätze erhalten und betroffene Türme kostenlos versetzen.
 - [x] Geld, Level, Investitionen, IDs, Gebäude, Mara und historische Offline-Ansprüche erhalten; Farmnachweise für die neue Route neu verdienen.
 - [x] Gezielte Geometrie-/Speicherprüfungen, Build und mobile Bau-/Upgradeprobe; [Nachweis](../../artifacts/idle-bastion/acceptance/p4/MAP.md).
-- [ ] Commit/Push und öffentliche Veröffentlichung bestätigen.
+- [x] Codecommit `182d931` gepusht; [Pages-Lauf 39166433310](https://github.com/emfau88/TD/actions/runs/39166433310) erfolgreich. Öffentliche Kartenfassung veröffentlicht.
 
 ## B12c — Vorhandene Gegner mit gestaffelter Einführung
 
 Am 18.10.2026 ausdrücklich als nächster Schritt nach B12b beauftragt. Vorhandene Originalgrafiken verwenden; sinnvolle Rollen und Fortschritt statt einer rein zufälligen Grafikmischung. Danach kompakt prüfen, committen und pushen.
 
-- [ ] Magmakrabbe, Clampbeetle, Flying Locust, Firewasp und Voidbutterfly anhand ihrer vorhandenen Richtungsanimationen integrieren.
-- [ ] Vorhandene Laternenqualle prüfen und ihre Unterstützerrolle passend zum Idle-Kampf übernehmen.
-- [ ] Lesbare Rollen und Einführung über zunehmende Wellen, spätere abwechslungsreiche Gruppen; frühe Lernschritte erhalten.
-- [ ] Gemeinsame Frame-/Richtungsmetadaten nutzen; richtige Blickrichtung, Größe, Schatten und Pause überprüfen.
-- [ ] Laufende Altversuche und alte Offline-Belege bewahren; neue Gegnerfolgen erst beim nächsten Versuch aktivieren.
-- [ ] Wenige gezielte Modell-/Atlasprüfungen und eine echte Browserprobe; Bericht, Commit/Push/Playlink bestätigen.
+- [x] Magmakrabbe, Clampbeetle, Flying Locust, Firewasp und Voidbutterfly anhand ihrer vorhandenen Richtungsanimationen integrieren.
+- [x] Vorhandene Laternenqualle prüfen und ihre Unterstützerrolle passend zum Idle-Kampf übernehmen.
+- [x] Lesbare Rollen und Einführung über zunehmende Wellen, spätere abwechslungsreiche Gruppen; frühe Lernschritte erhalten.
+- [x] Gemeinsame Frame-/Richtungsmetadaten nutzen; richtige Blickrichtung, Größe, Schatten und Pause überprüfen.
+- [x] Laufende Altversuche und alte Offline-Belege bewahren; neue Gegnerfolgen erst beim nächsten Versuch aktivieren.
+- [x] 35 gezielte Gegner-/Atlas-/Kampf-/Offline-/Kartenprüfungen und Build erfolgreich; Desktop/Hochkant mit Heilung und Pause/Reload geprüft. [Nachweis](../../artifacts/idle-bastion/acceptance/p4/ENEMIES.md).
+- [ ] Commit/Push und öffentliche Pages-Veröffentlichung bestätigen.
 
 ## B12d — Wiederholbarer Produktionsablauf für neue Gegner (vorgemerkt)
 

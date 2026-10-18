@@ -20,7 +20,16 @@ Werkstatt II wird nach der Frostforschung unabhängig von der Lichtung für **1.
 
 Die Ergänzung nach B12 erlaubt freie Turmkombinationen auf bis zu drei Feldern beidseits des Wegs. Feld auswählen, Reichweite prüfen und Bau bestätigen. Mara unterstützt aus der Entfernung, wartet automatisch auf Gegner und kann unabhängig laufen; manuelles Zaubern ist optional. Wisp stellt sich kurz vor. Werkstatt und Lager lassen sich in der Siedlung platzieren und bei Pause versetzen. Die östliche Lichtung ist optional. Frost zeigt einen einzelnen Kristall; Originaltreffer und Bauanimationen machen Aktionen deutlicher. [Regeln und Prüfung](artifacts/idle-bastion/acceptance/p4/REDESIGN.md).
 
+Der Nordbogen liegt jetzt zwei Felder tiefer: drei zusammenhängende Baureihen oberhalb des Wegs und mehr Kameraspielraum auf dem Handy. Vorhandene Verteidigungen werden beim Wellenwechsel erhalten bzw. kostenlos in der Nähe versetzt. [Karte, mobile Bauprobe und Migration](artifacts/idle-bastion/acceptance/p4/MAP.md).
+
+Sechs weitere vorhandene Gegnertypen erscheinen gestaffelt: **Flugheuschrecke (6), Feuerwespe (9), Magmakrabbe (13), Panzerflieger (17), Laternenqualle (21), Leerenfalter (28)**. Schwarm, Tempo, Rüstung, Heilung und Frostresistenz sorgen für unterschiedliche Kombinationen. Alle Türme treffen Flieger. Die Chronik erklärt Zusammensetzung und Gegenmittel. [Gegnerregeln](experiments/idle-bastion/docs/ENEMIES.md) · [Prüfung und Spielaufnahmen](artifacts/idle-bastion/acceptance/p4/ENEMIES.md).
+
 ### Entwicklung von Idle Bastion
+
+![Vorhandene Panzer- und Fluggegner im Idle-Kampf](artifacts/idle-bastion/acceptance/p4/enemies-30.png)
+
+Gegnerdarstellung aus einer gezielt vorbereiteten Welle-30-Probe; künstliches Testguthaben, kein Nachweis des regulären Fortschrittstempos.
+
 
 [Neue Bauflächen und Figurenbedienung nach B12](artifacts/idle-bastion/acceptance/p4/REDESIGN.md):
 

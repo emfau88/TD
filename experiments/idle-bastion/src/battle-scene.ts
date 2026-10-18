@@ -1,3 +1,6 @@
+import { ENEMY_SHEETS } from './enemy-art';
+import { JELLY_HEAL } from './enemy-roster';
+import { jellyFrame } from '../../../reference/src/jelly-art';
 import { MARA } from './mara';
 import { CombatEffects } from './combat-effects';
 import { weaponFrame } from './tower-atlas';
@@ -359,7 +362,7 @@ export class BattleScene extends Phaser.Scene {
   private enemyView(enemy: Enemy): EnemyView {
     let view = this.enemyViews.get(enemy.uid);
     if (!view) {
-      view = { sprite: this.add.image(enemy.x, enemy.y, enemy.def.id === 'Rosenspiegel' ? KEYS.boss : enemy.def.id === 'Scorpion' ? KEYS.scorpion : enemy.def.id === 'Leafbug' ? KEYS.leafbug : KEYS.firebug).setScale(SCALE.enemy),
+      view = { sprite: this.add.image(enemy.x, enemy.y, ENEMY_SHEETS[enemy.def.id].key).setScale(ENEMY_SHEETS[enemy.def.id].scale),
         shadow: this.add.ellipse(enemy.x, enemy.y + 9, 23, 9, 0x263e30, 0.24) };
       if (enemy.def.id === 'Rosenspiegel') view.sprite.setOrigin(0.5, 56/64).setScale(1.15);
       this.enemyViews.set(enemy.uid, view);
@@ -406,17 +409,28 @@ export class BattleScene extends Phaser.Scene {
     for (const [uid, view] of this.enemyViews) if (!enemies.has(uid)) { view.sprite.destroy(); view.shadow.destroy(); this.enemyViews.delete(uid); }
     for (const enemy of sim.enemies) {
       const view = this.enemyView(enemy);
-      view.sprite.setPosition(enemy.x, enemy.y).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(enemy.y + 1000);
+      const lift = enemy.def.flying ? 7 + Math.sin(elapsed * 5 + enemy.uid) * 1.5 : 0;
+      view.sprite.setPosition(enemy.x, enemy.y - lift).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(enemy.y + 1000);
       if (enemy.def.id === 'Rosenspiegel') {
         const casting = sim.bossCharm.phase === 'windup' || sim.bossCharm.phase === 'channel';
         if (casting) view.sprite.setFrame(succubusFrame('dance', 'down', charmAge(sim.bossCharm) * 1000)).setFlipX(false);
         this.effects.lineStyle(2, 0xdb80cd, 0.8).strokeEllipse(enemy.x, enemy.y + 3, 34, 13);
       }
+      if (enemy.healRemaining > 0) {
+        view.sprite.setFrame(jellyFrame('heal', enemy.direction, (JELLY_HEAL.cast - enemy.healRemaining) * 1000));
+        const charge = 1 - enemy.healRemaining / JELLY_HEAL.cast;
+        this.effects.lineStyle(2, 0x9aefb3, .7).strokeEllipse(enemy.x, enemy.y + 7, 22 + charge * 26, 10 + charge * 10);
+      }
+      if (enemy.healLockout > JELLY_HEAL.lockout - .6) {
+        const age = JELLY_HEAL.lockout - enemy.healLockout, alpha = 1 - age / .6;
+        this.effects.lineStyle(2, 0x9aefb3, alpha).strokeEllipse(enemy.x, enemy.y + 6, 24 + age * 35, 10 + age * 14);
+        this.effects.fillStyle(0xbbffd2, alpha).fillRect(enemy.x - 1, enemy.y - 30 - age * 20, 3, 9).fillRect(enemy.x - 4, enemy.y - 27 - age * 20, 9, 3);
+      }
       view.sprite.setTint(enemy.slowRemaining > 0 ? 0x83ddff : 0xffffff);
       if (enemy.slowRemaining > 0) this.effects.lineStyle(1.5, 0x96e8fa, 0.75).strokeEllipse(enemy.x, enemy.y + 7, 26, 10);
       view.shadow.setPosition(enemy.x, enemy.y + 9).setDepth(enemy.y + 999);
       if (enemy.hp < enemy.maxHp || enemy.def.id === 'Rosenspiegel') {
-        const barY = enemy.y - (enemy.def.id === 'Rosenspiegel' ? 55 : 25), fraction = Math.max(0, enemy.hp / enemy.maxHp);
+        const barY = enemy.y - lift - (enemy.def.id === 'Rosenspiegel' ? 55 : 25), fraction = Math.max(0, enemy.hp / enemy.maxHp);
         this.effects.fillStyle(0x263f33, 0.9).fillRect(enemy.x - 15, barY, 30, 5);
         this.effects.fillStyle(fraction < 0.3 ? 0xdf9573 : 0xdde69c).fillRect(enemy.x - 14, barY + 1, 28 * fraction, 3);
       }

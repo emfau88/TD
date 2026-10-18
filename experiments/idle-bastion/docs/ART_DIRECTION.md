@@ -176,3 +176,7 @@ Maras aktiver Fernzauber zeigt einen kurzen Lichtimpuls zum Turm, warmen Ring, a
 ## Nordbogen und Kamerarand
 
 Layout 4 senkt den oberen Weg auf Zeile 4. Oberhalb des horizontalen Abschnitts (Spalten 7–15, nullbasiert) sind Zeilen 1–3 frei; Bäume halten zusätzlich Kopfabstand. Der bestehende Teich und die Siedlung bleiben erhalten. Ein dekorativer Grasstreifen oberhalb/unterhalb der Karte füllt den mobilen Kamerarand. Er erweitert keine Baufläche. Keine neuen Assets und keine Änderung des Originalmaßstabs.
+
+## B12c: Vorhandene Boden- und Fluggegner
+
+Sechs vorhandene Figuren, keine neuen generierten Bilder. Gemeinsame explizite Metadaten in `src/enemy-art.ts` bewahren physische Frame-Maps, originale Bilddauern, Seitenausrichtung und Maßstab. Krabbe und Panzerflieger werden seitlich passend gespiegelt; Wespe/Falter/Heuschrecke blicken bereits nach rechts. Die Qualle nutzt ihre bereits vorhandenen Lauf- und Heilbilder. [Vollständiger kompakter Grafik-/Spielvertrag](ENEMIES.md).

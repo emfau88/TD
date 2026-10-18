@@ -33,7 +33,7 @@ test('north road has three complete usable rows, while the entry, core and settl
 test('an old active fight and paused reload retain exact enemies, shots and tower positions until the boundary', () => {
   const snap = savedV3(), b = IdleBattle.restore(snap)!; assert.ok(b);
   assert.equal(b.layout.version, 3);
-  assert.equal(b.gold, snap.gold); assert.deepEqual(b.snapshot().enemies, snap.enemies);
+  assert.equal(b.gold, snap.gold); assert.deepEqual(b.snapshot().enemies.map(({healCooldown, healRemaining, healLockout, ...e}) => e), snap.enemies);
   assert.deepEqual(b.snapshot().shots, snap.shots); assert.deepEqual(b.snapshot().towers, snap.towers);
   assert.deepEqual(IdleBattle.restore(b.snapshot())!.snapshot(), b.snapshot());
   assert.equal(certifyFarm(b), undefined);

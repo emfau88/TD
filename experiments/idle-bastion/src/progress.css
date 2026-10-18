@@ -142,3 +142,8 @@ dialog { background:linear-gradient(130deg,#3b3025,#28221b); border-color:#b5946
   .tutorial-copy { padding-right:14px; }
   .context-panel { max-height:calc(100dvh - var(--header) - var(--dock) - 18px); }
 }
+.enemy-record summary { cursor:pointer; color:#ebcd94; padding:8px 0; }
+.enemy-roster { list-style:none; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr)); gap:12px; }
+.enemy-roster li { padding:10px 12px; border:1px solid #80684670; background:#201b1560; }
+.enemy-roster strong { color:#eddbb6; font-size:13px; }
+.enemy-roster p { margin:6px 0 0; color:#cbbb9d; font-size:12px; line-height:1.5; }
