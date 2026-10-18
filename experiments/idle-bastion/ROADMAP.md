@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08–B12 veröffentlicht.**
+Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08–B12 und die zusätzliche Überarbeitung B12a veröffentlicht.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -12,8 +12,8 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung |
-| Aktives Umsetzungspaket | B12a · Bauflächen, Begleiter und Kampfdarstellung · abschließende Prüfung/Veröffentlichung |
-| Nächster Schritt | B12a veröffentlichen und testen lassen; B13-Balance erst auf dieser Grundlage |
+| Aktives Umsetzungspaket | Keines · B12a veröffentlicht; B13-Balance noch nicht begonnen |
+| Nächster Schritt | B12a über den Playlink testen lassen; B13-Balance auf dieser Grundlage separat beauftragen |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -32,7 +32,7 @@ Am 18.10.2026 ausdrücklich beauftragt: beidseits des Gegnerwegs bis zu drei Fel
 - [x] Frost-Einzelframes und Originalprojektil-/Treffervarianten aller Grafikstufen; kosmetische Effekte begrenzen.
 - [x] Alte Spielstände und Offline-Belege erhalten; 54 gezielte Modell-/Speichertests und Produktionsbuild bestanden.
 - [x] Desktop-/Hochkantprüfung abgeschlossen; [Nachweis und Spielaufnahmen](../../artifacts/idle-bastion/acceptance/p4/REDESIGN.md).
-- [ ] Commit/Push/Pages bestätigen.
+- [x] Codecommit `6dbdd63` gepusht; [Pages-Lauf 39164594184](https://github.com/emfau88/TD/actions/runs/39164594184) erfolgreich. Öffentlicher Playlink lädt `battle-LDNvrmBq.js`; mobile Probe ohne Seitenfehler/Überlauf bestätigt.
 
 ## Ergänzung nach B10 — Rosenspiegels Tanzdarstellung
 
@@ -108,6 +108,7 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P4 | B10 · Erste Bossherausforderung | Lesbarer Boss verlangt die verfügbaren Turmrollen | B09 | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/B10.md) |
 | P4 | B11 · Wachsende Karte | Echte seitliche Freischaltung mit zwei nützlichen Turmplätzen | B10 | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/B11.md) |
 | P4 | B12 · Ausbau und Fortsetzung | Werkstatt II, spätere Level und Fortschritt nach Minute 15 | B11 | Abgeschlossen; B13-Balance offen |
+| Zusatz | B12a · Freie Verteidigung | Wegstreifen, Fernzauber, Einführung, Siedlungsbau und Originaleffekte | Zusätzlicher Nutzerauftrag | Veröffentlicht · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/REDESIGN.md) |
 | P5 | B13 · Gesamter Spielverlauf | Gemessene 15-Minuten-Sitzung und Rückkehr mit legalen Aktionen | B12 | Nicht begonnen |
 | P5 | B14 · Stabilität und Lieferung | Geprüfte Builds, Regression, Laufzeit und ehrlicher Ergebnisbericht | B13 | Nicht begonnen |
 | Ende | G2 · Gesamtabnahme | Vollständiger Slice bewertet | B14 | **Offen** |

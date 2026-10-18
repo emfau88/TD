@@ -45,4 +45,6 @@ Die Aufnahmen zeigen die geprüften UI-/Figurenabläufe. Die abschließende Ziel
 
 ## Veröffentlichung
 
-Commit/Push und Pages-Nachweis werden nach dem erfolgreichen Lauf ergänzt. Playlink: https://emfau88.github.io/TD/idle-bastion/
+Codecommit `6dbdd639b076b4bff1481506e9ca069123f152ec` auf `codex/idle-bastion-vertical-slice` gepusht. [Pages-Lauf 39164594184](https://github.com/emfau88/TD/actions/runs/39164594184) erfolgreich; klassisches Spiel und Idle-Produktionsbuild im Workflow erfolgreich.
+
+Öffentliche Kontrolle: HTTP 200, Bundle `battle-LDNvrmBq.js`, neue Mara-Automatik und Drei-Felder-Platzierung vorhanden, keine Seitenfehler und kein horizontaler Überlauf. Chromium-Hochkantprobe 390×844 mit Gerätefaktor 2 und Touch-Emulation; kein physischer Gerätetest. [Spiel öffnen](https://emfau88.github.io/TD/idle-bastion/?v=6dbdd63).
