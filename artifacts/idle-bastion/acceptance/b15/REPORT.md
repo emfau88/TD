@@ -33,4 +33,4 @@ Zwei Imagegen-Generierungen: [Taverne samt vollständigem Prompt und Original](.
 
 ## Veröffentlichung
 
-Commit, Push und öffentlicher Pages-Abgleich folgen nach der abschließenden Diffprüfung. Keine Aussage über ein erfolgreiches Deployment vor dem bestätigten Lauf.
+Codecommit `d9f83d1fd41c3676c73f644e5356667f064f7269` auf `codex/idle-bastion-vertical-slice` gepusht. [GitHub-Pages-Lauf 39306506798](https://github.com/emfau88/TD/actions/runs/39306506798) erfolgreich. Am 19.10.2026 um 18:56 UTC stimmen die öffentlich ausgelieferten JS-/CSS-Dateien sowie Taverne und Werkstatt II bytegenau mit dem geprüften Produktionsbuild überein; [Dateien, Größen und SHA-256](public.json). [Öffentlich spielen](https://emfau88.github.io/TD/idle-bastion/).

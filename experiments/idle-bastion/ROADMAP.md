@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 19.10.2026 · **B01–B13 und beauftragte Nachbesserungen veröffentlicht; B14/G2 offen. Akt II: B15a (Taverne ohne Ilyra) beauftragt und lokal umgesetzt; B15b–B22 bleiben geplant. B12d bleibt separat.**
+Stand: 19.10.2026 · **B01–B13 und beauftragte Nachbesserungen veröffentlicht; B14/G2 offen. Akt II: B15a (Taverne ohne Ilyra) veröffentlicht; B15b–B22 bleiben geplant. B12d bleibt separat.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -15,8 +15,8 @@ Neu: [Akt II — Pakete B15–B22, Bestand und Parkliste](#akt-ii) · [Kompakte 
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
 | Aktueller Auftrag | B15a: Taverne ohne Ilyra; zusätzlich echtes Werkstatt-II-Asset und Gebäudenamen. Freischaltungen und Forschungsicons im Plan ergänzen; kompakte Prüfung, Commit/Push/Pages |
-| Letzte veröffentlichte Spielfassung | Hinweise, Figurenauftritte, Bosstanz und klare Pixelziffern · `c164a11`; öffentliche Dateien abgeglichen |
-| Nächster Schritt | B15a veröffentlichen. Danach B15b: Ilyra erst nach weiterem Startauftrag; B16-Forschung und Icons ebenfalls nur geplant. B14/G2 und B12d bleiben getrennt offen |
+| Letzte veröffentlichte Spielfassung | B15a: Taverne, Werkstatt-II-Grafik und Gebäudenamen · `d9f83d1`; öffentliche Spieldateien und beide neuen Gebäudeassets bytegleich abgeglichen |
+| Nächster Schritt | B15a über den Playlink testen. B15b: Ilyra erst nach weiterem Startauftrag; B16-Forschung und Icons ebenfalls nur geplant. B14/G2 und B12d bleiben getrennt offen |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -633,7 +633,7 @@ M = abgegrenzter Funktionsausbau, L = mehrere zusammenhängende Systeme. Das sin
 
 | Paket | Ergebnis | Größe | Abhängigkeit | Status |
 | --- | --- | --- | --- | --- |
-| B15 | Taverne und verständlich eingeführte Ilyra | M–L, zwei Teilschritte | Bestehender Akt I | Teilweise: B15a lokal umgesetzt; B15b offen |
+| B15 | Taverne und verständlich eingeführte Ilyra | M–L, zwei Teilschritte | Bestehender Akt I | Teilweise: B15a veröffentlicht; B15b offen |
 | B16 | Sturmlicht als neue taktische Turmrolle | M | B15b / Ilyras Einführung | Geplant |
 | B17 | Große Ostkarte und passende Kamera | M | B15; gemeinsam mit B18 vorbereiten | Geplant, bis B19 nur Entwicklung |
 | B18 | Zwei Kampfrouten, sichere Saves und Farming | L, zwei Teilschritte | B17; relevante offene Speicherrisiken aus B14 klären | Geplant |
@@ -660,7 +660,7 @@ Am 19.10.2026 ausdrücklich beauftragt; anschließend um Werkstatt-II-Asset und 
 - [x] Ein Tavernenasset und ein separates Werkstatt-II-Asset mit Imagegen erzeugen; Werkstatt II ersetzt den gezeichneten Anbau. Gebaute Werkstatt I/II, Lager I und Taverne dezent auf der Karte beschriften; Namen erst nach Bauanimation zeigen.
 - [x] Schema 19: Altsaves aus 18 behalten Gebäude, Figuren, Gold und Fortschritt; Bau/Gold/Position atomar speichern. Kein kostenloser Tavernenbesitz durch Migration, kein Eingriff in Kampfregeln 10.
 - [x] Fünf gezielte Tavernenprüfungen und vier bestehende Speicher-/Bauprüfungen bestanden; Produktionsbuild bestanden. Kurzer Browsercheck auf Desktop und Hochkant mit direktem Bau und Reload; keine zusätzliche Vollabnahme.
-- [ ] Commit, Push und öffentliche Pages-Fassung bestätigen; [Bericht und Aufnahmen](../../artifacts/idle-bastion/acceptance/b15/REPORT.md).
+- [x] Codecommit `d9f83d1` gepusht; [Pages-Lauf 39306506798](https://github.com/emfau88/TD/actions/runs/39306506798) erfolgreich. Öffentliche JS-/CSS-Dateien und beide neuen Gebäudeassets am 19.10.2026, 18:56 UTC bytegleich mit dem lokalen Produktionsbuild; [öffentlicher Nachweis](../../artifacts/idle-bastion/acceptance/b15/public.json). README mit vier aktuellen Spielaufnahmen ergänzt; [Bericht](../../artifacts/idle-bastion/acceptance/b15/REPORT.md).
 
 #### B15b — Ilyra, separat offen
 

@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-10-19T18:56:43.524322+00:00",
+  "commit": "d9f83d1fd41c3676c73f644e5356667f064f7269",
+  "workflowRun": 39306506798,
+  "workflowConclusion": "success",
+  "playUrl": "https://emfau88.github.io/TD/idle-bastion/",
+  "assets": [
+    {
+      "path": "assets/battle-DjVyNA99.js",
+      "bytes": 195387,
+      "sha256": "0ddb229547aea0cadde1ddde29b6cf4306271a4093b3de9aabf85d58bcf463f0",
+      "matchesLocal": true
+    },
+    {
+      "path": "assets/phaser.esm-BfrqUybL.js",
+      "bytes": 1388080,
+      "sha256": "66d29a09633b51655012c892e7b4a8ab80403312c18e38e10b3c58d715f48673",
+      "matchesLocal": true
+    },
+    {
+      "path": "assets/layout-q7JtE5Tc.js",
+      "bytes": 6328,
+      "sha256": "f50b4f7ab1e30f2f5dccfc0c6fee02f04b113309d852aa3c3c25ed708eed2fde",
+      "matchesLocal": true
+    },
+    {
+      "path": "assets/art-BTgbbKcB.js",
+      "bytes": 128749,
+      "sha256": "fa82e456c7ee77309d58c3e8e21e682b9f6d287d2618b35229a31a598f6c7473",
+      "matchesLocal": true
+    },
+    {
+      "path": "assets/battle-EEhAmAEO.css",
+      "bytes": 52923,
+      "sha256": "632ab627fba983e4ae95733bb6309055b4fe68d6c6d32b343c4b08971cebd116",
+      "matchesLocal": true
+    },
+    {
+      "path": "assets/tavern-i-uo0DWSEK.png",
+      "bytes": 19511,
+      "sha256": "d5d8e6c55ddd6e1b05dc06ec4c91de973d690ea209aaeab71fcc4b03e6736252",
+      "matchesLocal": true
+    },
+    {
+      "path": "assets/workshop-ii-B7iG3M66.png",
+      "bytes": 19779,
+      "sha256": "8392daa3b781df95871e78aa1e5908a448b014ce629eb673a6fc906c96dbf41a",
+      "matchesLocal": true
+    }
+  ]
+}
