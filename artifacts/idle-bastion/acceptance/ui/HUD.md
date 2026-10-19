@@ -24,3 +24,7 @@ Die funktionierende Korrektur setzt ausschließlich den Hinweis (`.combat-toast`
 ## Vorschläge getrennt von der Korrektur
 
 Neun normale Gegner plus Rosenspiegel sind in `experiments/idle-bastion/docs/ENEMIES.md` erfasst. Dort stehen auch Mooskröte, Runenschnecke und Wurzeltrommler samt vorgeschlagenem gemeinsamen Produktionsablauf. Die Roadmap beschreibt eine ruhige Begrüßung durch Mara, einen selbst platzierten kostenlosen Startturm und einen ausdrücklichen ersten Kampfstart. Beides ist nur Planung; keine neuen Grafiken, Gegner oder Tutorialmechaniken wurden umgesetzt.
+
+## Veröffentlichung
+
+Codecommit `b003fca`, [Pages-Lauf 39248529885](https://github.com/emfau88/TD/actions/runs/39248529885) erfolgreich. Der öffentliche [Playlink](https://emfau88.github.io/TD/idle-bastion/) liefert HTTP 200 und `battle-D7MtO5wm.css` mit der korrigierten Hinweisregel. Nachweis und Vorschläge anschließend als reine Dokumentation ergänzt.

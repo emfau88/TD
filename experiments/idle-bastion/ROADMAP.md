@@ -12,8 +12,8 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten |
-| Aktives Umsetzungspaket | HUD-Nachbesserung nach B13; Einstieg und neue Gegner nur als Vorschläge |
-| Nächster Schritt | HUD-Korrektur veröffentlichen; Einstiegsvorschlag und drei neue Gegner besprechen. B14 und B12d-Umsetzung noch nicht beauftragt |
+| Aktives Umsetzungspaket | Keines · HUD-Nachbesserung veröffentlicht; Einstieg und neue Gegner nur als Vorschläge |
+| Nächster Schritt | Einstiegsvorschlag und drei neue Gegner besprechen. B14 und B12d-Umsetzung noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -25,7 +25,7 @@ Am 19.10.2026 beauftragt: leeren HUD-Balken beheben, vorhandene Gegner auflisten
 
 - [x] HUD-Balken reproduziert: unterer Hinweis erzeugt im WebGL-Bereich ein vertikal gespiegeltes schwarzes Rechteck. Minimale Transparenz ausschließlich am Hinweis umgeht die fehlerhafte Überdeckung; nach mehreren Zeichenzyklen geprüft.
 - [x] Produktionsbuild und kurze Desktop-/Hochkantprobe bestanden; [Befund, Vorher/Nachher und Prüfumfang](../../artifacts/idle-bastion/acceptance/ui/HUD.md).
-- [ ] Commit/Push und Pages-Veröffentlichung bestätigen.
+- [x] Codecommit `b003fca` gepusht; [Pages-Lauf 39248529885](https://github.com/emfau88/TD/actions/runs/39248529885) erfolgreich. Öffentlicher Playlink liefert `battle-D7MtO5wm.css` mit der Korrektur aus.
 - [x] Vollständigen Gegnerbestand und drei Kandidaten mit Produktionsablauf in [ENEMIES.md](docs/ENEMIES.md#vorschlag-drei-weitere-einheiten) festhalten.
 - [x] Einstiegsvorschlag unten festhalten; Umsetzung bleibt offen.
 
