@@ -9,14 +9,14 @@ export function wispPose(layout: IdleLayout, elapsed: number, warehouseBuilt = f
     const end = layout.plots.find(p => p.id === 'workshop')!.entrance;
     let arrival = arrivals.get(layout);
     if (!arrival) {
-      arrival = [{ x: 2, y: 13 }, { x: 2, y: 11 }, { x: 10, y: 13 }, { x: 10, y: 11 }].map(start => findFootpath(layout, start, end, getForestBlockedCells(layout))).find(path => path && path.length > 1)?.map(p => ({ ...p })) ?? [end];
+      arrival = [{ x: layout.core.x - 1, y: layout.core.y }, { x: layout.core.x, y: layout.core.y + 1 }, { x: layout.core.x, y: layout.core.y - 1 }].map(start => findFootpath(layout, start, end, getForestBlockedCells(layout))).find(path => path && path.length > 1)?.map(p => ({ ...p })) ?? [end];
       arrivals.set(layout, arrival);
     }
-    const age = Math.max(0, elapsed - arrivedAt), duration = (arrival.length - 1) * layout.cellSize / 65;
+    const age = Math.max(0, elapsed - arrivedAt), duration = (arrival.length - 1) * layout.cellSize / 110;
     if (age < duration) {
-      const step = age * 65 / layout.cellSize, i = Math.floor(step), a = cellCenter(layout, arrival[i]), b = cellCenter(layout, arrival[i + 1]);
+      const step = age * 110 / layout.cellSize, i = Math.floor(step), a = cellCenter(layout, arrival[i]), b = cellCenter(layout, arrival[i + 1]);
       const row = Math.abs(b.x - a.x) > Math.abs(b.y - a.y) ? 9 : b.y < a.y ? 18 : 0;
-      return { x: a.x + (b.x - a.x) * (step - i), y: a.y + (b.y - a.y) * (step - i), frame: row + Math.floor(age * 8) % 9, flip: b.x < a.x, moving: true };
+      return { x: a.x + (b.x - a.x) * (step - i), y: a.y + (b.y - a.y) * (step - i), frame: row + Math.floor(age * 8) % 9, flip: b.x < a.x, moving: true, arriving: true };
     }
     elapsed = Math.max(0, age - duration);
   }
@@ -38,5 +38,5 @@ export function wispPose(layout: IdleLayout, elapsed: number, warehouseBuilt = f
   const index = Math.floor(step), a = points[index], b = points[Math.min(points.length - 1, index + 1)];
   const row = moving ? Math.abs(b.x - a.x) > Math.abs(b.y - a.y) ? 9 : b.y < a.y ? 18 : 0 : 27;
   return { x: a.x + (b.x - a.x) * (step - index), y: a.y + (b.y - a.y) * (step - index),
-    frame: row + Math.floor(elapsed * 8) % 9, flip: moving && b.x < a.x, moving };
+    frame: row + Math.floor(elapsed * 8) % 9, flip: moving && b.x < a.x, moving, arriving: false };
 }

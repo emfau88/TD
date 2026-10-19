@@ -44,7 +44,7 @@ export class BossCharmView {
     this.panel.setVisible(Boolean(boss && target));
     if (!boss || !target) return;
     const age = charmAge(charm), opacity = Math.min(1, age / 0.18);
-    const camera = this.scene.cameras.main, unit = this.density / camera.zoom;
+    const camera = this.scene.cameras.main, unit = this.density / camera.zoom * 0.85;
     // Keep the portrait readable at every map zoom, inside the visible map and
     // clear of the boss banner, dock and mobile pause control.
     const topLeft = camera.getWorldPoint(8 * this.density, (portrait ? 122 : 188) * this.density);

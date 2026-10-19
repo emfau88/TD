@@ -12,12 +12,27 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
-| Aktives Umsetzungspaket | Anschlussführung Frost → Wisp → Mara → optionale Bauoptionen · geprüft, Commit `5db8cc6` gepusht; Pages wartet auf GitHub-Runner |
+| Aktives Umsetzungspaket | Lesbare Hinweise, Wisp-Anlauf und ununterbrochener Bosstanz · umgesetzt und kompakt geprüft; Veröffentlichung folgt |
 | Nächster Schritt | Nutzerprobe des Einstiegs einschließlich Anschlussführung über „Frische Probe“; B14 und B12d-Umsetzung noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
 Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. G1 ist freigegeben. B11 ist am 18.10.2026 ausdrücklich mit kompakten Tests und Commit/Push/Pages beauftragt. B12 wurde anschließend ausdrücklich mit denselben Vorgaben beauftragt. B13 ist am 19.10.2026 beauftragt; B14 bleibt separat. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+
+## Nachbesserung — Hinweise, Wisp-Auftritt und Bosstanz
+
+Am 19.10.2026 zusätzlich beauftragt; B14 bleibt separat.
+
+- [x] Niederlagenhinweis mit × schließen und pro verlorenem Versuch speichern; erneute Niederlage darf erneut informieren.
+- [x] Wisp kommt vom eigenen Kern über begehbare Felder; Anlauf läuft auch in der Begrüßungspause, mobile Kamera folgt bis zum eigenen Eingriff.
+- [x] Frost verlangsamt Rosenspiegel ohne Zauberabbruch; Tanzfenster einschließlich Treffbereich linear 15 % kleiner.
+- [x] Pfeile an echten Bedienelementen lassen Erklärungstexte frei; Aktionstasten reservieren Pfeilplatz.
+- [x] Zusätzlicher Auftrag: nur Ziffern 2/5/8 durch klare Pixelglyphen ersetzen, übrige Schrift erhalten. Maras aktiver Boost erhält Goldverbindung, wandernden Lichtpunkt und sanfte Turmaura; kurze Hochkantkontrolle bestanden.
+- [x] Mara zaubert im angeleiteten Einstieg erst nach ihrer Ankündigung nach Wisp. Wirkungsleiste nur rund 55 px hoch bei 430 px Breite, sofort schließbar.
+- [x] Save-Migration 17 → 18, laufende Effekte und Veteranen erhalten. 21 gezielte Modell-/Speicherprüfungen sowie Build und kurze Hochkant-/Desktopkontrolle bestanden. Ältere B10-Zeitvorgabe als Prüfgrenze dokumentiert.
+- [ ] Commit/Push und öffentliche Auslieferung bestätigen.
+
+[Bericht und Spielaufnahmen](../../artifacts/idle-bastion/acceptance/onboarding/readability/REPORT.md).
 
 ## Nachbesserung nach B13 — HUD und nächste Gestaltungsschritte
 
@@ -106,7 +121,7 @@ Am 19.10.2026 nach Einschätzung ausdrücklich mit „ok so durchführen“ beau
 - [x] Snapshot 17 mit gespeicherten Phasen; alte Saves erhalten, keine Wiederholung für Veteranen, kein Offline-Ertrag während Lernpause.
 - [x] 15 fokussierte Einstiegs-/Anschlussprüfungen und zwei Saveprüfungen bestanden; Produktionsbuild erfolgreich. Kurzer echter UI-Ablauf ab legal vorbereitetem Wisp-Stand, separat Lagerplatzierung, Hochkant und Desktopansicht geprüft. Kein vollständiger neuer 15-Minuten-/Gerätetest.
 - [x] Codecommit `5db8cc6` gepusht.
-- [ ] [Pages-Lauf 39279803452](https://github.com/emfau88/TD/actions/runs/39279803452) abschließen und öffentliche Dateien abgleichen. Am 19.10.2026 um 15:44 UTC noch `queued`, ohne gestartete Build-Schritte; der öffentliche Link liefert bei der anschließenden Prüfung noch `battle-OzF1aTOT.js` / `battle-BDiJOrpc.css`. Kein Deploymentfehler festgestellt, Veröffentlichung noch nicht bestätigt.
+- [x] [Pages-Lauf 39279803452](https://github.com/emfau88/TD/actions/runs/39279803452) inzwischen erfolgreich abgeschlossen; am 19.10.2026 erneut geprüft. Der aktuelle Anschluss wird durch die folgende Nachbesserung ergänzt.
 
 [Prüfbericht und Screenshots](../../artifacts/idle-bastion/acceptance/onboarding/followup/REPORT.md). B14 und neue Gegnerproduktion bleiben unbegonnen.
 

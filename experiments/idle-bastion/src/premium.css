@@ -1,7 +1,8 @@
 /* Illustrated UI chrome. Nine-slice images keep corners intact at every size.
    Geometry stays in battle/progress.css, including the compact mobile layout. */
 @font-face { font-family:"Pixelify Sans"; src:url('../assets/ui/fonts/PixelifySans.ttf') format('truetype'); font-weight:400 700; font-display:swap; }
-:root { --gold:#e4c386; --muted:#b7bcb3; --line:#657271; --ui-panel:url('../assets/ui/brass-panel.webp'); --ui-card:url('../assets/ui/inset-card.webp'); --ui-action:url('../assets/ui/gold-action.webp'); --ui-coin:url('../assets/ui/gold-coin.webp'); --display:"Pixelify Sans","Segoe UI",sans-serif; color:#eee8d6; background:#111b20; }
+@font-face { font-family:"Spire Clear Digits"; src:url('../assets/ui/fonts/SpireClearDigits.ttf') format('truetype'); font-weight:400 700; font-display:swap; unicode-range:U+0032,U+0035,U+0038; }
+:root { --gold:#e4c386; --muted:#b7bcb3; --line:#657271; --ui-panel:url('../assets/ui/brass-panel.webp'); --ui-card:url('../assets/ui/inset-card.webp'); --ui-action:url('../assets/ui/gold-action.webp'); --ui-coin:url('../assets/ui/gold-coin.webp'); --display:"Spire Clear Digits","Pixelify Sans","Segoe UI",sans-serif; color:#eee8d6; background:#111b20; }
 h1,h2,h3,.tutorial-copy strong,.companion-card strong,.goal-copy strong { font-family:var(--display); font-weight:500; }
 h2 { font-size:23px; } h3 { font-size:20px; }
 button { border-radius:0; }
@@ -393,3 +394,17 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 .wisp-arrival { top:calc(var(--header) + 9px); bottom:auto; width:350px; max-width:calc(100% - 120px); }
 #discovery-later { background:transparent; color:#d6c79f; }
 @media(max-width:700px) { .wisp-arrival { left:8px; right:auto; width:calc(100% - 104px); max-width:320px; } }
+
+/* Short acknowledgements stay small; their close buttons never cover the copy. */
+#dismiss-fallback { flex:0 0 32px; align-self:flex-start; min-height:32px; padding:2px; color:#f4dca4; background:transparent; border:0; font-size:23px; }
+.fallback-note p { flex:1; min-width:0; }
+#discovery-card[data-strip="true"] { padding:8px 10px; }
+#discovery-card[data-strip="true"] > div { width:100%; }
+#discovery-card[data-strip="true"] h2 { font-size:15px; padding-right:25px; margin:0; }
+#discovery-card[data-strip="true"] p { margin:4px 0 0; font-size:11px; }
+#discovery-card[data-strip="true"] .onboarding-actions { margin-top:3px; }
+#discovery-card[data-strip="true"] #discovery-later { position:absolute; right:6px; top:5px; min-width:28px; min-height:28px; padding:0; font-size:20px; border:0; }
+#discovery-card[data-strip="true"] .onboarding-actions:has(#discovery-next[hidden]) { margin:0; }
+.lesson-inline-target { padding-left:42px !important; }
+#lesson-pointer[data-mode="inline"] { width:20px; height:30px; transform:translate(-50%,-50%) rotate(-90deg); }
+#lesson-pointer[data-mode="map-below"] { transform:translate(-50%,0) rotate(180deg); }

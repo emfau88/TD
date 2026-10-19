@@ -1,0 +1,44 @@
+{
+  "viewport": "430x932 @2x",
+  "checks": [
+    "Wisp greeting, announcement before real cast, small effect strip and close",
+    "Research arrow in reserved button padding",
+    "Defeat dismissal survives browser reload",
+    "Current boss channel rendered"
+  ],
+  "errors": [],
+  "effectBox": {
+    "x": 8,
+    "y": 65,
+    "width": 320,
+    "height": 54.84375
+  },
+  "pointer": {
+    "hidden": false,
+    "mode": "inline",
+    "target": "research-frost",
+    "rect": {
+      "x": 28,
+      "y": 783,
+      "width": 30,
+      "height": 20,
+      "top": 783,
+      "right": 58,
+      "bottom": 803,
+      "left": 28
+    }
+  },
+  "researchButton": {
+    "rect": {
+      "x": 23,
+      "y": 773,
+      "width": 384,
+      "height": 40,
+      "top": 773,
+      "right": 407,
+      "bottom": 813,
+      "left": 23
+    },
+    "padding": "42px"
+  }
+}

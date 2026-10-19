@@ -180,3 +180,7 @@ Layout 4 senkt den oberen Weg auf Zeile 4. Oberhalb des horizontalen Abschnitts 
 ## B12c: Vorhandene Boden- und Fluggegner
 
 Sechs vorhandene Figuren, keine neuen generierten Bilder. Gemeinsame explizite Metadaten in `src/enemy-art.ts` bewahren physische Frame-Maps, originale Bilddauern, Seitenausrichtung und Maßstab. Krabbe und Panzerflieger werden seitlich passend gespiegelt; Wespe/Falter/Heuschrecke blicken bereits nach rechts. Die Qualle nutzt ihre bereits vorhandenen Lauf- und Heilbilder. [Vollständiger kompakter Grafik-/Spielvertrag](ENEMIES.md).
+
+## Kleine Lesbarkeitskorrektur am 19.10.2026
+
+Die Original-Pixelschrift bleibt erhalten. Nur 2, 5 und 8 werden durch drei eigene klarere Pixelglyphen gleicher Breite ersetzt (`SpireClearDigits.ttf`, CSS-Unicode-Bereich). Keine vollständige neue Schrift oder Grafikserie. Maras aktiver Buff verwendet warme Goldverbindung, kleinen wandernden Lichtpunkt und sanfte Turmaura. Quelle ist Maras echte Position, Ziel ausschließlich `effectTowerUid`; Darstellung endet mit dem tatsächlichen Effekt. Bossverführung behält Rosa/Herzen und Wackeln, damit beide Effekte unterscheidbar bleiben.

@@ -40,7 +40,7 @@ export function currentGoal(battle: IdleBattle): Goal {
     case 9: return { title: 'Den Weg bis Welle 10 sichern', detail: 'Scharfschütze freischalten', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 10: return { title: 'Für Rüstung gewappnet', detail: `${need(170)} · Scharfschütze durchdringt Panzer`, cost: 170, action: 'sniper', label: 'Scharfschütze auswählen' };
     case 14: return battle.highestCleared >= 14
-      ? { title: 'Rosenspiegel stellt sich dir', detail: 'Welle 15 · 750 Gold Erstprämie · Frost unterbricht', action: 'boss', label: 'Bossherausforderung ansehen' }
+      ? { title: 'Rosenspiegel stellt sich dir', detail: 'Welle 15 · 750 Gold Erstprämie · Frost verlangsamt', action: 'boss', label: 'Bossherausforderung ansehen' }
       : { title: 'Bereite dich auf Rosenspiegel vor', detail: 'Boss in Welle 15 · Frost, Fläche und Durchdringung', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 15: return { title: 'Maras Übertakten kennenlernen', detail: '8 Sekunden · +50 % Feuerrate · Automatik wartet auf Gegner', action: 'mara', label: 'Maras Zauber ansehen' };
     case 16: return { title: 'Werkstatt II ausbauen', detail: `${need(SETTLEMENT.workshopUpgradeCost)} · Turmlevel 7–20`, cost: SETTLEMENT.workshopUpgradeCost, action: 'workshop', label: 'Werkstatt ausbauen' };
@@ -122,7 +122,7 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       el('journal-offline-rate').textContent = live.paused ? '0 G/min · Pause aktiv' : `${gold(offline)} G/min`;
       el('journal-offline-note').textContent = `${policy.efficiencyPermille / 10} % der sicheren Farmbasis · höchstens ${policy.limitMs / 3600000} Stunden. ${certificate ? `Bei unveränderter Verteidigung etwa ${gold(live.paused ? 0 : offline * 60)} Gold in einer Stunde.` : 'Zuerst eine Welle zuverlässig besiegen.'}`;
       const defeat = p.lastDefeat;
-      const fallback = b.mode === 'farm' && defeat;
+      const fallback = b.mode === 'farm' && defeat && defeat.attemptId !== b.dismissedDefeatAttempt;
       el('fallback-note').hidden = !fallback || live.awaitingResume;
       el('fallback-copy').textContent = fallback ? `Welle ${defeat.wave} nicht geschafft. Jetzt Farmen auf Welle ${b.farmWave}. Gold, Türme und Forschung bleiben erhalten.` : '';
       el('journal-last-defeat').textContent = defeat ? `Letzte Niederlage: Welle ${defeat.wave}. Gold und Ausbau blieben erhalten.` : p.sinceAttempt > 1 ? 'Vor dem Update wurde keine Niederlagenhistorie aufgezeichnet.' : 'Bisher keine Niederlage.';

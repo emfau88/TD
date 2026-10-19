@@ -1,6 +1,18 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
-## Anschlussführung nach Frost (Snapshot 17)
+## Hinweise und Auftritte (Snapshot 18)
+
+`dismissedDefeatAttempt` speichert den geschlossenen verlorenen Versuch. Nur eine spätere Niederlage darf den Hinweis erneut öffnen. Schema 17 wird vor der Migration validiert; danach wird dieses Feld mit 0 ergänzt. Geld, Käufe, aktive Effekte, Timer und historische Offline-Ansprüche bleiben erhalten.
+
+Die aktuelle Anschlussfolge lautet `wisp → mara-wait → mara-ready → mara-effect → mara-controls → cannon → warehouse → done`. In angeleiteten Partien bleiben neue automatische und manuelle Mara-Aktivierungen bis zur Einführung gesperrt. Bestehende aktive Effekte aus Altsaves werden nicht gelöscht. `mara-wait` pausiert zum Lesen; „Übertakten zeigen“ setzt `mara-ready`. Erst bei tatsächlichem Gegnerkontakt beginnt der normale Zauber samt kleiner schließbarer Restzeitleiste. `mara-start` bleibt für alte bereits dort gespeicherte Partien gültig. Überspringen der Anleitung beendet die Sperre.
+
+Wisps Ankunft beginnt neben dem eigenen Kern und folgt begehbaren Feldern zur Werkstatt. Die rein visuelle Ankunftsuhr läuft auch in der Begrüßungs-Lernpause, hält aber bei manueller/Browserpause; sie erzeugt keine Ressourcen. Nach Reload wird sie aus dem gespeicherten Ankunftszeitpunkt abgeleitet: Bei unbestätigter eingefrorener Begrüßung kann der Lauf nochmals beginnen, Begrüßung und Bonus werden aber nicht dupliziert. Die mobile Kamera folgt bis zum Ende des Anlaufs, Begrüßen oder eigenem Kartenkontakt.
+
+Frost verlangsamt Rosenspiegel, unterbricht aber weder Ankündigung noch Tanz. Tod, Zielverlust/Verkauf und reguläres Wirkungsende bleiben wirksam. Tanzfenster und Treffbereich sind linear auf 85 % skaliert. Wellenrezept-/Farmregelversion bleibt 10: normale Wellen sind unverändert, Bosswellen bleiben außerhalb der Farm-/Offline-Zertifizierung.
+
+Aktionsbuttons in Detailfenstern reservieren Pfeilplatz. Bestätigungskarten erhalten nur eine Button-Umrandung; andere Pfeile weichen Textüberdeckungen aus oder werden ausgeblendet. [Gezielte Prüfung und Ansichten](../../../artifacts/idle-bastion/acceptance/onboarding/readability/REPORT.md).
+
+## Anschlussführung nach Frost (ursprünglich Snapshot 17)
 
 Kampfregeln 10 und Layout 4 bleiben unverändert. Das gespeicherte Feld `discovery` führt neue Partien durch `wisp → mara-wait → mara-start → mara-effect → mara-controls → cannon → warehouse → done`; `off` bleibt für reine Kampfmodelle und fortgeschrittene ältere Spielstände. Die Anschlussführung wird erst nach `introduction.stage = done` aktiv.
 
@@ -112,7 +124,7 @@ Diese Trennung beschreibt Zuständigkeiten, keine Verpflichtung zu zehn abstrakt
 - Ein Boss plus acht Begleiter, darunter ein Panzerskorpion. Bestehendes Succubus-Sheet und reine Frame-Zuordnung wiederverwenden; keine klassische Simulation importieren.
 - 850 Basis-HP, Wellen-HP-Skalierung plus B13-Bossfaktor (in Welle 15 etwa 8.148 HP), Tempo 32, 10 % Rüstung. Erreicht sie den Kern, verliert dieser 20 Leben: Niederlage, kein Bossmeilenstein.
 - Innerhalb von 200 Weltpixeln wählt sie den Turm mit der höchsten Grund-DPS. Herzfaden kündigt das Ziel 0,8 Sekunden an; anschließend 4,5 Sekunden lang 40 % weniger Feuerrate. Während Ankündigung und Wirkung bleibt sie stehen. Cooldown 11 Sekunden ab Ankündigung, nach Unterbrechung 6 Sekunden.
-- Jeder Frosttreffer unterbricht eine laufende Ankündigung oder Verführung und verlangsamt normal. Verkauf des Zielturms beendet den Zauber. Alle Timer laufen in Simulationszeit und bleiben über Pause/Reload erhalten.
+- Frosttreffer verlangsamen Rosenspiegel, ohne Ankündigung oder Verführung zu unterbrechen. Verkauf des Zielturms beendet den Zauber. Alle Timer laufen in Simulationszeit und bleiben über Pause/Reload erhalten.
 - Erst wenn Boss und alle Begleiter besiegt sind, steigt `bossVictories`. Beim ersten Mal einmalig 750 Gold; kein Wisp-Multiplikator und kein künstlicher Anstieg der Live-Einkommensanzeige. Wiederholbar sind nur gewöhnliches Gegner- und Wellen-Gold.
 - Bosswellen zählen nie als Farm-/Offline-Nachweis. Nach Niederlage bleibt der Wiederholungsversuch bewusst: Vorstoß oder Chronik → Boss herausfordern. Eine Herausforderung wird erst am nächsten Wellenübergang gestartet; keine laufende Welle wird abgeschnitten.
 - Schema 8 speichert Bosszähler, vorgemerkte Herausforderung sowie Zauberphase, Ziel-UID, Restdauer und Cooldown. Alte Welle-15-Rekorde bleiben erhalten, erzeugen aber weder Bossprämie noch Bosssieg. Ein laufender Altversuch behält sein altes Rezept und wird regulär beendet; die Chronik erlaubt anschließend die echte Herausforderung.

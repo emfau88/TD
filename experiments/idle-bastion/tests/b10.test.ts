@@ -18,14 +18,14 @@ test('earned boss clear rewards once, records the milestone, and stays outside s
   assert.equal(waveCount(15), 9); assert.equal(waveCount(15,4),20);
 });
 
-test('interrupted/reloaded boss keeps health, skill and deterministic combat; no premature victory', () => {
+test('reloaded boss keeps health, skill and deterministic combat; no premature victory', () => {
   assert.ok(opening.duringCharm, 'A visible charm channel must occur');
   const a = IdleBattle.restore(opening.duringCharm)!; assert.ok(a);
   const b = IdleBattle.restore(JSON.parse(JSON.stringify(a.snapshot())))!;
   assert.deepEqual(a.snapshot(), b.snapshot()); assert.equal(b.bossVictories,0);
   for(let i=0;i<800;i++){a.update(BASE.stepSeconds);b.update(BASE.stepSeconds);a.drainEvents();b.drainEvents();}
   assert.deepEqual(a.snapshot(), b.snapshot());
-  assert.ok(opening.interrupts>0,'Frost really interrupts the boss');
+  assert.equal(opening.interrupts,0,'Frost must not interrupt the dance');
 });
 
 test('boss escaping forces farming without a first victory; retry is explicit and saveable', () => {
@@ -62,7 +62,7 @@ test('old wave-15 record is never a boss victory; an explicit repeat pays no sec
 });
 
 
-test('B11 earned boss follow-up opens the clearing within the 8–11 minute target and retains farming', () => {
+test('B11 earned boss follow-up opens the clearing within the 8â€“11 minute target and retains farming', () => {
   const b=IdleBattle.restore(opening.b.snapshot())!;
   for(let i=0;i<4000 && b.gold<900;i++){b.update(BASE.stepSeconds);b.drainEvents();}
   assert.equal(b.unlockClearing(),true);

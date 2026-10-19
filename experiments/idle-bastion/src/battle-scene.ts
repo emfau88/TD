@@ -43,6 +43,13 @@ export class BattleScene extends Phaser.Scene {
   private mara!: Phaser.GameObjects.Image;
   private maraShadow!: Phaser.GameObjects.Ellipse;
   private wisp!: Phaser.GameObjects.Image;
+  private wispArrivalAt: number | null = null;
+  private wispAge = 0;
+  private followingWisp = false;
+  private get wispPose() {
+    const b = this.sim, age = this.wispArrivalAt === b.wispArrival.at ? this.wispAge : Math.max(0, b.elapsed - (b.wispArrival.at ?? b.elapsed));
+    return wispPose(b.layout, b.wispArrival.at === null ? b.elapsed : b.wispArrival.at + age, b.settlement.warehouseBuilt, b.wispArrival.at);
+  }
   private wispName!: Phaser.GameObjects.Text;
   private combatEffects!: CombatEffects;
   private buildKind?: TowerId;
@@ -134,6 +141,16 @@ export class BattleScene extends Phaser.Scene {
       else this.sim.update(Math.min(rawSeconds, 0.08));
     }
     if (!this.readyToDraw) return;
+    if (this.wispArrivalAt !== this.sim.wispArrival.at) {
+      this.wispArrivalAt = this.sim.wispArrival.at;
+      this.wispAge = Math.max(0, this.sim.elapsed - (this.wispArrivalAt ?? this.sim.elapsed));
+    }
+    // Cosmetic arrival keeps moving during the greeting's learning pause.
+    if (!this.paused && this.wispArrivalAt !== null) this.wispAge += Math.min(rawSeconds, 0.08);
+    if (this.followingWisp) {
+      if (this.wispPose.arriving && !this.sim.wispArrival.met) this.focusPoint(this.wispPose);
+      else this.followingWisp = false;
+    }
     if (this.pendingTap && (this.hooks.canRender?.() ?? true)) { const tap = this.pendingTap; this.pendingTap = undefined; this.selectAtPointer(tap); }
     if (this.hooks.canRender?.() ?? true) this.drawActors();
     this.hudElapsed += Math.min(rawSeconds, 0.08);
@@ -210,6 +227,10 @@ export class BattleScene extends Phaser.Scene {
     const pad = this.sim.layout.towerPads.find(pad => pad.id === padId);
     if (pad) this.focusPoint(cellCenter(this.sim.layout, pad.cell));
   }
+  followWispArrival(): void {
+    this.followingWisp = !this.sim.wispArrival.met && this.wispPose.arriving;
+    this.focusObject('wisp');
+  }
   focusObject(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing'): void {
     if (kind !== 'clearing' && (this.portraitCamera || this.sim.clearing.unlocked)) this.focusPoint(this.objectPoint(kind));
   }
@@ -219,7 +240,7 @@ export class BattleScene extends Phaser.Scene {
   }
   private objectPoint(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
     if (kind === 'clearing') return { x: 1080, y: 524 };
-    if (kind === 'wisp') return wispPose(this.sim.layout, this.sim.elapsed, this.sim.settlement.warehouseBuilt, this.sim.wispArrival.at);
+    if (kind === 'wisp') return this.wispPose;
     if (kind === 'mara') return { x: this.sim.mara.x, y: this.sim.mara.y - 20 };
     if (kind === 'settlement' || kind === 'warehouse') {
       const plot = this.sim.layout.plots.find(plot => plot.id === (kind === 'warehouse' ? 'warehouse' : 'workshop'))!;
@@ -268,6 +289,7 @@ export class BattleScene extends Phaser.Scene {
     if (old !== zoom) this.hooks.changed();
   }
   private beginPointer(pointer: Phaser.Input.Pointer): void {
+    this.followingWisp = false;
     if (pointer.leftButtonDown()) this.dragOrigin = { x: pointer.x, y: pointer.y, dragging: false };
   }
   private cancelPointer(): void { this.dragOrigin = undefined; }
@@ -297,7 +319,7 @@ export class BattleScene extends Phaser.Scene {
     }
     const pad = this.sim.layout.towerPads.find(value => value.cell.x === Math.floor(point.x / size) && value.cell.y === Math.floor(point.y / size));
     if (this.buildKind) { this.setSelected(pad?.id); this.hooks.select(pad?.id); return; }
-    const wisp = wispPose(this.sim.layout, this.sim.elapsed, this.sim.settlement.warehouseBuilt, this.sim.wispArrival.at);
+    const wisp = this.wispPose;
     if (this.sim.wispUnlocked && Math.hypot(point.x - wisp.x, point.y - (wisp.y - 18)) < 23) { this.hooks.selectWisp?.(); return; }
     const warehouse = this.sim.layout.plots.find(plot => plot.id === 'warehouse')!.footprint;
     if (this.sim.settlement.warehouseBuilt && point.x >= warehouse.x * size && point.x < (warehouse.x + warehouse.width) * size
@@ -423,7 +445,22 @@ export class BattleScene extends Phaser.Scene {
       view.weapon.setPosition(tower.x + tremble, tower.y - (tower.def.id === 2 ? 34 : 23)).setFrame(Math.max(0, frame)).setRotation((tower.def.id === 2 ? 0 : tower.angle) + wobble).setTint(tint);
       if (boosted) {
         const alpha = 0.45 + Math.sin(elapsed * 7) * 0.15;
+        // A warm, quiet aura distinguishes support from the boss's pink wobble.
+        this.effects.fillStyle(0xffdb79, alpha * 0.15).fillEllipse(tower.x, tower.y - 18, 43, 64);
+        this.effects.lineStyle(6, 0xffd46d, alpha * 0.22).strokeEllipse(tower.x, tower.y + 12, 43, 22);
         this.effects.lineStyle(2, 0xf5d58b, alpha).strokeEllipse(tower.x, tower.y + 12, 40, 19);
+        const source = { x: sim.mara.x, y: sim.mara.y - 21 }, goal = { x: tower.x, y: tower.y - 32 };
+        const length = Math.hypot(goal.x - source.x, goal.y - source.y);
+        const point = (t: number) => ({ x: source.x + (goal.x - source.x) * t,
+          y: source.y + (goal.y - source.y) * t - Math.sin(Math.PI * t) * Math.min(24, length * 0.28) });
+        const link = (width: number, opacity: number) => {
+          this.effects.lineStyle(width, 0xffdc83, opacity).beginPath().moveTo(source.x, source.y);
+          for (let i = 1; i <= 16; i++) { const p = point(i / 16); this.effects.lineTo(p.x, p.y); }
+          this.effects.strokePath();
+        };
+        link(5, 0.12); link(1.4, 0.7);
+        const spark = point(((MARA.duration - sim.mara.effectRemaining) * 0.7) % 1);
+        this.effects.fillStyle(0xfff2ba, 0.95).fillRect(spark.x - 2, spark.y - 2, 4, 4);
         this.effects.lineStyle(3, 0xffe3a5, 0.95).beginPath().arc(tower.x, tower.y + 3, 24, -Math.PI/2, -Math.PI/2 + Math.PI * 2 * sim.mara.effectRemaining / MARA.duration, false).strokePath();
         const spellAge = MARA.duration - sim.mara.effectRemaining;
         if (spellAge < 0.4) {
@@ -477,7 +514,7 @@ export class BattleScene extends Phaser.Scene {
     const boostedTower = sim.towers.find(t => sim.isMaraBoosted(t.uid));
     this.buffText.setVisible(!!boostedTower);
     if (boostedTower) this.buffText.setPosition(boostedTower.x, boostedTower.y - 60).setText(`✦ ${Math.ceil(sim.mara.effectRemaining)} s`);
-    const wisp = wispPose(sim.layout, elapsed, sim.settlement.warehouseBuilt, sim.wispArrival.at);
+    const wisp = this.wispPose;
     this.wisp.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y).setFrame(wisp.frame).setFlipX(wisp.flip).setDepth(wisp.y + 1002);
     this.wispName.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y + 13);
     const mara = sim.mara, acting = mara.effectRemaining > 0 && sim.isMaraBoosted(mara.effectTowerUid ?? -1);

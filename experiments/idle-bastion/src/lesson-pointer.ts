@@ -5,25 +5,39 @@ export class LessonPointer {
   show(target?: HTMLButtonElement | LessonPoint, key = ''): void {
     const button = target instanceof HTMLButtonElement ? target : undefined;
     if (this.button !== button) {
-      this.button?.classList.remove('lesson-click-target');
+      this.button?.classList.remove('lesson-click-target', 'lesson-inline-target');
       this.button = button;
       button?.classList.add('lesson-click-target');
+      button?.classList.toggle('lesson-inline-target', !!button.closest('.context-panel') && !button.classList.contains('icon-button'));
       if (button && !button.closest('[hidden]')) button.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     }
     this.arrow.hidden = true;
     if (!target) return;
     // Confirmation cards already have a clear action; keep the outline, not an arrow over their copy.
-    if (button?.closest('#wisp-arrival, #discovery-card')) return;
+    if (button?.closest('#wisp-arrival, #discovery-card, #onboarding-card')) return;
     let x: number, y: number;
+    const inline = !!button?.classList.contains('lesson-inline-target');
     if (button) {
       if (button.disabled || button.closest('[hidden]') || !button.getClientRects().length) return;
       const rect = button.getBoundingClientRect();
-      x = rect.left + rect.width / 2; y = rect.top + 3;
+      x = inline ? rect.left + 20 : rect.left + rect.width / 2; y = inline ? rect.top + rect.height / 2 : rect.top + 3;
     } else { ({ x, y } = target as LessonPoint); }
     if (x < 12 || x > innerWidth - 12 || y < 56 || y > innerHeight - 12) return;
-    this.arrow.dataset.mode = button ? 'button' : 'map';
+    this.arrow.dataset.mode = inline ? 'inline' : button ? 'button' : 'map';
     this.arrow.dataset.target = key || button?.id || '';
     this.arrow.style.left = `${x}px`; this.arrow.style.top = `${y}px`;
     this.arrow.hidden = false;
+    if (!inline) {
+      const overlapsCopy = () => {
+        const a = this.arrow.getBoundingClientRect();
+        return Array.from(document.querySelectorAll<HTMLElement>('.onboarding-card, .wisp-arrival, .context-panel, .combat-toast, .placement-help, .fallback-note'))
+          .filter(e => !e.hidden && e.getClientRects().length && !e.contains(button ?? null))
+          .some(e => { const r = e.getBoundingClientRect(); return a.left < r.right && a.right > r.left && a.top < r.bottom && a.bottom > r.top; });
+      };
+      if (overlapsCopy()) {
+        if (!button) this.arrow.dataset.mode = 'map-below';
+        if (button || overlapsCopy()) this.arrow.hidden = true;
+      }
+    }
   }
 }

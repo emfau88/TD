@@ -204,11 +204,11 @@ function syncUI(): void {
   const maraTarget = sim.towers.find(tower => tower.uid === mara.targetTowerUid);
   const targetName = maraTarget?.protected ? 'Startturm' : maraTarget?.def.name ?? 'Noch kein Turm';
   const inSpellRange = !!maraTarget && Math.hypot(mara.x - maraTarget.x, mara.y - maraTarget.y) <= MARA.range;
-  element('mara-brief').textContent = mara.effectRemaining > 0 ? `Buff · ${Math.ceil(mara.effectRemaining)} s` : mara.cooldownRemaining > 0 ? `Bereit in ${Math.ceil(mara.cooldownRemaining)} s` : 'Zauber bereit';
+  element('mara-brief').textContent = sim.maraIntroductionPending ? 'Nach Wisp' : mara.effectRemaining > 0 ? `Buff · ${Math.ceil(mara.effectRemaining)} s` : mara.cooldownRemaining > 0 ? `Bereit in ${Math.ceil(mara.cooldownRemaining)} s` : 'Zauber bereit';
   element<HTMLProgressElement>('mara-cooldown').value = MARA.cooldown - mara.cooldownRemaining;
-  element('mara-status').textContent = `Ziel: ${targetName}. ` + (mara.effectRemaining > 0 ? `Buff wirkt noch ${Math.ceil(mara.effectRemaining)} s.` : mara.cooldownRemaining > 0 ? `Abklingzeit: ${Math.ceil(mara.cooldownRemaining)} s.` : !inSpellRange ? 'Außerhalb der Zauberreichweite. Ziel erneut zuweisen oder näher laufen.' : mara.autoCast ? 'Bereit · wartet auf Gegner beim Ziel.' : 'Bereit · manuell auslösen.');
+  element('mara-status').textContent = sim.maraIntroductionPending ? 'Mara zeigt dir Übertakten nach Wisps Ankunft. Zuerst bauen wir die Verteidigung auf.' : `Ziel: ${targetName}. ` + (mara.effectRemaining > 0 ? `Buff wirkt noch ${Math.ceil(mara.effectRemaining)} s.` : mara.cooldownRemaining > 0 ? `Abklingzeit: ${Math.ceil(mara.cooldownRemaining)} s.` : !inSpellRange ? 'Außerhalb der Zauberreichweite. Ziel erneut zuweisen oder näher laufen.' : mara.autoCast ? 'Bereit · wartet auf Gegner beim Ziel.' : 'Bereit · manuell auslösen.');
   const auto = element<HTMLButtonElement>('mara-auto'); auto.disabled = blocked; auto.textContent = `Automatik: ${mara.autoCast ? 'Ein' : 'Aus'}`; auto.setAttribute('aria-pressed', String(mara.autoCast));
-  element<HTMLButtonElement>('cast-mara').disabled = blocked || live.paused || !inSpellRange || sim.phase !== 'wave' || mara.cooldownRemaining > 0 || !maraTarget || sim.isCharmed(maraTarget.uid);
+  element<HTMLButtonElement>('cast-mara').disabled = sim.maraIntroductionPending || blocked || live.paused || !inSpellRange || sim.phase !== 'wave' || mara.cooldownRemaining > 0 || !maraTarget || sim.isCharmed(maraTarget.uid);
   element<HTMLButtonElement>('move-mara').disabled = blocked;
   element('camera-zoom').setAttribute('aria-pressed', String(view.mapZoom > 1));
   element('camera-zoom').setAttribute('aria-label', view.mapZoom > 1 ? 'Karte weiter ansehen' : 'Karte näher ansehen');
@@ -321,15 +321,15 @@ function syncUI(): void {
   const warehouseNew = sim.warehouseUnlocked && !builtWarehouse && !(sim.tutorial.seen & (1 << 12)) && (!sim.discoveryActive || sim.discovery === 'warehouse');
   for (const id of ['settlement-tab','pick-warehouse']) element(id).classList.toggle('new-building',warehouseNew);
   element('settlement-tab').setAttribute('aria-label',warehouseNew ? 'Siedlung · Neues Gebäude verfügbar: Vorratslager' : 'Siedlung');
-  element('warehouse-card-price').textContent = builtWarehouse ? '✓ Gebaut' : sim.warehouseUnlocked ? String(SETTLEMENT.warehouseCost) : sim.wispUnlocked ? 'Welle 8' : 'Wisp & Welle 8';
+  element('warehouse-card-price').textContent = builtWarehouse ? 'âœ“ Gebaut' : sim.warehouseUnlocked ? String(SETTLEMENT.warehouseCost) : sim.wispUnlocked ? 'Welle 8' : 'Wisp & Welle 8';
   element('warehouse-description').textContent = builtWarehouse ? 'Wisp versorgt das Lager. Deine Vorräte sammeln automatisch während deiner Abwesenheit.'
     : 'Wenn du das Spiel schließt, sammelt deine sichere Verteidigung weiter. Das Lager verlängert das Sammeln von 2 auf 8 Stunden. Optional; es macht deine Türme nicht stärker.';
   element('warehouse-rate').textContent = certificate ? `${rateFormat.format(safeRate)} G/min` : 'Noch kein Nachweis';
-  element('warehouse-efficiency').textContent = builtWarehouse ? '65 % der Farmbasis' : '60 % → 65 %';
-  element('warehouse-cap').textContent = builtWarehouse ? 'Bis zu 8 Stunden' : '2 → 8 Stunden';
+  element('warehouse-efficiency').textContent = builtWarehouse ? '65 % der Farmbasis' : '60 % â†’ 65 %';
+  element('warehouse-cap').textContent = builtWarehouse ? 'Bis zu 8 Stunden' : '2 â†’ 8 Stunden';
   element('warehouse-preview').textContent = live.paused ? '0 Gold · Pause aktiv' : !certificate ? 'Zuerst sicher farmen'
-    : builtWarehouse ? `≈ ${currency.format(safeRate * 60 * WAREHOUSE_OFFLINE.efficiencyPermille / 1000)} Gold`
-    : `${currency.format(safeRate * 60 * 0.6)} → ${currency.format(safeRate * 60 * 0.65)} Gold`;
+    : builtWarehouse ? `â‰ˆ ${currency.format(safeRate * 60 * WAREHOUSE_OFFLINE.efficiencyPermille / 1000)} Gold`
+    : `${currency.format(safeRate * 60 * 0.6)} â†’ ${currency.format(safeRate * 60 * 0.65)} Gold`;
   element('warehouse-condition').textContent = !sim.warehouseUnlocked ? `Voraussetzung: ${sim.wispUnlocked ? 'Wisp ✓' : 'Wisp (Frost & Welle 5)'} · Welle 8 ${sim.highestCleared >= 8 ? '✓' : 'meistern'}.`
     : !builtWarehouse && sim.gold < SETTLEMENT.warehouseCost ? `Noch ${currency.format(SETTLEMENT.warehouseCost - sim.gold)} Gold. Die Vorschau gilt bei unveränderter Verteidigung; während einer Pause entsteht kein Ertrag.`
     : 'Vorschau bei unveränderter Verteidigung. Während einer Pause entsteht kein Offline-Ertrag.';
@@ -396,17 +396,17 @@ function syncUI(): void {
     : charm.phase === 'channel' ? `♥ ${charmTarget?.def.name}: 40 % langsamer · ${charm.remaining.toFixed(1)} s`
     : charm.phase === 'interrupted' ? 'Zauber unterbrochen!'
     : boss?.slowRemaining ? `Frost aktiv · 45 % langsamer · ${boss.slowRemaining.toFixed(1)} s`
-    : boss ? 'Frosttreffer unterbrechen ihre Verführung' : sim.bossQueued ? sim.bossWins(sim.wave) ? 'Boss und Begleiter besiegen · Wiederholung' : `Boss und Begleiter besiegen · ${currency.format(bossEncounter(sim.wave).firstReward)} Gold Erstprämie` : 'Besiege noch die übrigen Begleiter';
+    : boss ? 'Frost bremst ihren Vormarsch · der Tanz läuft weiter' : sim.bossQueued ? sim.bossWins(sim.wave) ? 'Boss und Begleiter besiegen · Wiederholung' : `Boss und Begleiter besiegen · ${currency.format(bossEncounter(sim.wave).firstReward)} Gold Erstprämie` : 'Besiege noch die übrigen Begleiter';
   element('boss-banner').dataset.phase = charm.phase;
   element('boss-support').textContent = `${Math.max(0, sim.remaining - (boss || sim.bossQueued ? 1 : 0))} Begleiter übrig · Fläche & Durchdringung`;
   document.getElementById('app')!.classList.toggle('context-open', contextOpen || Boolean(placementType || groundMode));
   updateOnboarding(live, { placing: Boolean(placementType || groundMode), contextOpen, catalogPanel, revealing: performance.now() < workshopRevealUntil });
   updateDiscoveryUI(live, contextOpen, Boolean(placementType || groundMode), catalogPanel);
-  // A real cast is saved in a short observation pause. Focus its actual target once.
+  // Focus the genuine cast once; its compact countdown runs with the battle.
   if (discovery !== focusedDiscovery) {
     focusedDiscovery = discovery ?? '';
-    if (discovery === 'wisp') scene?.focusObject('wisp');
-    if (discovery === 'mara-start') {
+    if (discovery === 'wisp') scene?.followWispArrival();
+    if (discovery === 'mara-start' || discovery === 'mara-effect') {
       contextOpen = false; placementType = undefined; groundMode = undefined;
       const target = sim.towers.find(t => t.uid === sim.mara.effectTowerUid);
       if (target) scene?.focusPad(target.padId);
@@ -447,13 +447,13 @@ function syncLessonPointer(): void {
     }
     if (contextOpen) {
       if (step === 'warehouse' && selectedPanel === 'warehouse' && !buildWarehouse.disabled) button('build-warehouse');
-      else if (step === 'mara-wait' && selectedPanel === 'mara' && !element<HTMLButtonElement>('cast-mara').disabled) button('cast-mara');
+      else if (step === 'mara-ready' && selectedPanel === 'mara' && !element<HTMLButtonElement>('cast-mara').disabled) button('cast-mara');
       else button('close-context');
       return;
     }
     if (step === 'wisp') button('meet-wisp');
-    else if (step === 'mara-start') button('discovery-next');
-    else if (step === 'mara-controls' || step === 'mara-wait' && !b.mara.autoCast) button('pick-mara');
+    else if (step === 'mara-start' || step === 'mara-wait') button('discovery-next');
+    else if (step === 'mara-controls' || step === 'mara-ready' && !b.mara.autoCast) button('pick-mara');
     else if (step === 'cannon') button(catalogPanel === 'tower' ? 'pick-cannon' : 'tower-tab');
     else if (step === 'warehouse') button(catalogPanel === 'settlement' ? 'pick-warehouse' : 'settlement-tab');
     else lessonPointer.show();
@@ -623,6 +623,9 @@ element('onboarding-primary').addEventListener('click', () => {
   if (stage === 'ready') { void perform(b => b.startDefense()); return; }
   if (b.lessonComplete) { void perform(b => b.continueLesson()); return; }
 
+}, { signal: lifetime.signal });
+element('dismiss-fallback').addEventListener('click', () => {
+  void perform(b => { b.dismissedDefeatAttempt = b.progress.lastDefeat?.attemptId ?? 0; }, true, true);
 }, { signal: lifetime.signal });
 element('discovery-next').addEventListener('click', () => {
   void perform(b => b.continueDiscovery(), false, true);

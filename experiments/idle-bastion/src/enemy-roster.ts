@@ -16,7 +16,7 @@ export const ENEMIES = Object.freeze({
   Firewasp: enemy('Firewasp', 'Feuerwespe', 26, 72, 12, 0, 1, 9, true, 'Sehr schneller Durchbrecher', 'Überlappende Reichweiten und Frost'),
   Scorpion: enemy('Scorpion', 'Panzerskorpion', 50, 40, 15, .45, 2, 11, false, '45 % Rüstung', 'Scharfschütze ignoriert Rüstung'),
   MagmaCrab: enemy('MagmaCrab', 'Magmakrabbe', 80, 30, 22, .25, 2, 13, false, 'Langsam, viele Lebenspunkte · 25 % Rüstung', 'Durchdringung und konzentrierter Schaden'),
-  Rosenspiegel: enemy('Rosenspiegel', 'Rosenspiegel', 850, 32, 80, .1, 20, 15, false, 'Boss · verführt einen Turm', 'Frost unterbricht ihren Tanz'),
+  Rosenspiegel: enemy('Rosenspiegel', 'Rosenspiegel', 850, 32, 80, .1, 20, 15, false, 'Boss · verführt einen Turm', 'Frost bremst den Vormarsch; ihr Tanz bleibt aktiv'),
   Clampbeetle: enemy('Clampbeetle', 'Panzerflieger', 48, 49, 18, .3, 2, 17, true, 'Beweglicher Panzer · 30 % Rüstung', 'Scharfschütze mit Frost absichern'),
   LanternJelly: enemy('LanternJelly', 'Laternenqualle', 38, 40, 17, 0, 1, 21, true, 'Heilt bis zu zwei verwundete Begleiter', 'Gruppen mit Flächenschaden unter Druck setzen'),
   Voidbutterfly: enemy('Voidbutterfly', 'Leerenfalter', 34, 76, 16, .1, 1, 28, true, 'Frost verlangsamt ihn nur um 20 %', 'Direktschaden und mehrere Schussbereiche', .8),

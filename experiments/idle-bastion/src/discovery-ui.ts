@@ -16,22 +16,24 @@ export function updateDiscoveryUI(live: BattleSession, contextOpen: boolean, pla
   let title = '', text = '', next = '', later = 'Später entdecken';
   switch (step) {
     case 'mara-wait':
-      title = 'Gleich zeigt Mara ihre Magie';
-      text = b.mara.autoCast ? `Deine Verteidigung läuft weiter. Beim nächsten Übertakten zeige ich dir den verstärkten Turm.${b.mara.cooldownRemaining > 0 ? ` Bereit in ${Math.ceil(b.mara.cooldownRemaining)} s.` : ' Mara wartet auf Gegner am Ziel.'}`
-        : 'Die Automatik ist aus. Öffne Maras Porträt: Dort kannst du Übertakten auslösen, sobald es bereit ist, oder die Automatik einschalten.';
-      break;
+      title = 'Jetzt zeigt Mara Übertakten';
+      text = 'Ein Turm schießt 8 Sekunden lang 50 % schneller. Nach deinem Tipp wartet Mara auf Gegner und zeigt dir den Zauber.';
+      next = 'Übertakten zeigen'; break;
+    case 'mara-ready':
+      title = b.mara.cooldownRemaining > 0 ? `Mara · bereit in ${Math.ceil(b.mara.cooldownRemaining)} s` : b.mara.autoCast ? 'Mara wartet auf Gegner am Ziel' : 'Mara · Zauber im Porträt auslösen';
+      later = '×'; break;
     case 'mara-start':
       title = 'Dieser Turm bekommt Übertakten';
       text = 'Mara hat gerade gezaubert. Der goldene Ring zeigt ihr Ziel: 8 Sekunden lang 50 % höhere Feuerrate. Sieh dir die Wirkung in Ruhe an.';
       next = 'Verstärkung ansehen'; break;
     case 'mara-effect':
       title = `Übertakten · ${Math.ceil(b.mara.effectRemaining)} s`;
-      text = 'Der leuchtende Turm schießt 50 % schneller. Sein goldener Ring und die Zahl darüber zeigen die verbleibende Wirkzeit.';
-      later = ''; break;
+      text = '+50 % Feuerrate · goldener Ring am Turm';
+      later = '×'; break;
     case 'mara-controls':
       title = 'Mara unterstützt automatisch';
-      text = 'Im Mara-Porträt findest du Automatik, manuelles Zaubern und Bewegung. Du kannst diese Einstellungen ansehen; nichts muss umgestellt werden.';
-      next = 'Weiter zu den Türmen'; later = ''; break;
+      text = 'Porträt: Automatik, Zauber und Bewegung.';
+      next = 'Weiter'; later = ''; break;
     case 'cannon':
       title = 'Neu: die Steinschleuder';
       text = catalog === 'tower' ? 'Sie trifft mehrere Gegner zugleich. Wähle unten die Steinschleuder und einen Platz bei Frost. Optional · 135 Gold.'
@@ -42,9 +44,11 @@ export function updateDiscoveryUI(live: BattleSession, contextOpen: boolean, pla
       text = 'Wenn du das Spiel schließt, sammelt deine sichere Verteidigung weiter. Das Lager verlängert das Sammeln von 2 auf 8 Stunden. Optional · 650 Gold.';
       break;
   }
+  card.dataset.strip = String(step === 'mara-ready' || step === 'mara-effect' || step === 'mara-controls');
+  el('discovery-copy').hidden = !text;
   el('discovery-title').textContent = title; el('discovery-copy').textContent = text;
   const primary = el<HTMLButtonElement>('discovery-next'), secondary = el<HTMLButtonElement>('discovery-later');
-  primary.textContent = next; primary.hidden = !next; secondary.textContent = later; secondary.hidden = !later;
+  primary.textContent = next; primary.hidden = !next; secondary.textContent = later; secondary.hidden = !later; secondary.setAttribute('aria-label', 'Erklärung schließen und später entdecken');
   primary.disabled = secondary.disabled = live.paused || !!live.error || live.suspended;
   if (contextOpen && step === 'mara-controls') { el('lesson-note').hidden = false; el('lesson-note').textContent = 'Automatik wartet auf Gegner. Manuelles Zaubern und Bewegung sind optional. Schließe das Fenster, wenn du fertig bist.'; }
 }

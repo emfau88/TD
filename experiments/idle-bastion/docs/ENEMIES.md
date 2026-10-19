@@ -10,7 +10,7 @@ Die Idle-Werte und Rollen liegen in `src/enemy-roster.ts`, die gemessenen Origin
 | 9 | Feuerwespe / Firewasp | Sehr schneller Durchbrecher; überlappende Schussbereiche |
 | 11 | Panzerskorpion / Scorpion | 45 % Rüstung; Scharfschütze |
 | 13 | Magmakrabbe / Magma Crab | Langsam, viele HP, 25 % Rüstung; Durchdringung und Direktschaden |
-| 15 / 25 | Rosenspiegel / Succubus Pixel v2 | Bestehende Bossbegegnungen; Frost unterbricht Turmverführung |
+| 15 / 25 | Rosenspiegel / Succubus Pixel v2 | Bestehende Bossbegegnungen; Frost verlangsamt Turmverführung |
 | 17 | Panzerflieger / Clampbeetle | Bewegliche 30-%-Rüstung; Scharfschütze und Frost |
 | 21 | Laternenqualle / Lantern Jelly Pixel v1 | Heilt verwundete Begleiter; Flächendruck |
 | 28 | Leerenfalter / Voidbutterfly | Schnell, Frost bremst nur um 20 %; Direktschaden |
