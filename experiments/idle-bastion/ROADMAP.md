@@ -12,7 +12,7 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
-| Aktives Umsetzungspaket | Anschlussführung Frost → Wisp → Mara → optionale Bauoptionen · umgesetzt und kompakt geprüft; Veröffentlichung folgt |
+| Aktives Umsetzungspaket | Anschlussführung Frost → Wisp → Mara → optionale Bauoptionen · geprüft, Commit `5db8cc6` gepusht; Pages wartet auf GitHub-Runner |
 | Nächster Schritt | Nutzerprobe des Einstiegs einschließlich Anschlussführung über „Frische Probe“; B14 und B12d-Umsetzung noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
@@ -105,7 +105,8 @@ Am 19.10.2026 nach Einschätzung ausdrücklich mit „ok so durchführen“ beau
 - [x] Falsches Lichtungsziel für Mara korrigieren; Hinweisüberlagerungen entfernen, freie Sicht auf den Lageraufbau erhalten.
 - [x] Snapshot 17 mit gespeicherten Phasen; alte Saves erhalten, keine Wiederholung für Veteranen, kein Offline-Ertrag während Lernpause.
 - [x] 15 fokussierte Einstiegs-/Anschlussprüfungen und zwei Saveprüfungen bestanden; Produktionsbuild erfolgreich. Kurzer echter UI-Ablauf ab legal vorbereitetem Wisp-Stand, separat Lagerplatzierung, Hochkant und Desktopansicht geprüft. Kein vollständiger neuer 15-Minuten-/Gerätetest.
-- [ ] Commit/Push/Pages und öffentliche Dateien verifizieren.
+- [x] Codecommit `5db8cc6` gepusht.
+- [ ] [Pages-Lauf 39279803452](https://github.com/emfau88/TD/actions/runs/39279803452) abschließen und öffentliche Dateien abgleichen. Am 19.10.2026 um 15:44 UTC noch `queued`, ohne gestartete Build-Schritte; der öffentliche Link liefert bei der anschließenden Prüfung noch `battle-OzF1aTOT.js` / `battle-BDiJOrpc.css`. Kein Deploymentfehler festgestellt, Veröffentlichung noch nicht bestätigt.
 
 [Prüfbericht und Screenshots](../../artifacts/idle-bastion/acceptance/onboarding/followup/REPORT.md). B14 und neue Gegnerproduktion bleiben unbegonnen.
 

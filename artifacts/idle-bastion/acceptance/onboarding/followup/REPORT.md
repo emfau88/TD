@@ -42,4 +42,4 @@ Kein neuer vollständiger Browserdurchlauf vom Start bis Welle 10, kein physisch
 
 ## Veröffentlichung
 
-Commit/Push/Pages-Verifikation folgt. [Normale Partie](https://emfau88.github.io/TD/idle-bastion/) · [Unabhängige frische Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1).
+Codecommit `5db8cc6` wurde erfolgreich gepusht. [Pages-Lauf 39279803452](https://github.com/emfau88/TD/actions/runs/39279803452) wartet am 19.10.2026 um 15:44 UTC noch auf einen Runner (`queued`, keine gestarteten Build-Schritte). Die anschließende öffentliche Prüfung liefert weiterhin die vorige Fassung `battle-OzF1aTOT.js` / `battle-BDiJOrpc.css`. Deshalb noch keine Behauptung eines abgeschlossenen Deployments oder eines öffentlichen Hash-Abgleichs. Nach erfolgreichem Lauf soll der Playlink automatisch den neuen Stand liefern; dieser Schritt ist in der Roadmap noch offen. [Normale Partie](https://emfau88.github.io/TD/idle-bastion/) · [Unabhängige frische Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1).
