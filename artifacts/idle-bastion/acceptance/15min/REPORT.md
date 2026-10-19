@@ -76,4 +76,6 @@ Der Einstieg zeigt schnell einen bezahlbaren Bau und eine sichtbare Technologie.
 
 ## Veröffentlichung
 
-Commit/Push und Pages-Veröffentlichung folgen nach diesem technisch abgeschlossenen Nachweis. Der bestehende [Playlink](https://emfau88.github.io/TD/idle-bastion/) bleibt gleich.
+Codecommit **`3ffd64b`** gepusht. [Pages-Lauf 39245665113](https://github.com/emfau88/TD/actions/runs/39245665113) erfolgreich; bestehendes Spiel und Idle-Slice im Workflow gebaut. Öffentlicher [Playlink](https://emfau88.github.io/TD/idle-bastion/) lädt das erwartete Bundle `battle-CTw5Oimz.js`, Canvas und Chronik mit B13-Ertragsbeschreibung. Keine Seiten-/Ressourcenfehler. [Öffentlicher Prüfnachweis](b13-public.json).
+
+Visueller Restbefund: In den Aufnahmen beim Werkstattbau und nach den Rückkehrkäufen ist oben mittig ein leerer dunkler Balken sichtbar; in der Aufnahme bei Minute 15 fehlt er. Die Ursache wurde in B13 nicht isoliert. Für die Darstellungsprüfung in B14 vorgemerkt; die B13-Aussage „keine Seitenfehler“ bezieht sich auf JavaScript-/Ladefehler, nicht auf vollständige grafische Fehlerfreiheit.

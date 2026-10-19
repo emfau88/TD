@@ -12,7 +12,7 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt |
-| Aktives Umsetzungspaket | B13 technisch abgeschlossen; Veröffentlichung läuft |
+| Aktives Umsetzungspaket | Keines · B13 abgeschlossen und veröffentlicht |
 | Nächster Schritt | B13 über den Playlink ausprobieren. B14 als nächstes Hauptpaket, noch nicht beauftragt; B12d bleibt vorgemerkt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
@@ -145,7 +145,7 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | Zusatz | B12b · Nordbogen/Kamera | Drei obere Baureihen und mobile Erreichbarkeit; sichere Kartenmigration | Nutzerauftrag | Veröffentlicht · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/MAP.md) |
 | Zusatz | B12c · Vorhandene Gegner | Unterschiedliche Rollen und gestaffelte Gegnergruppen | B12b; ausdrücklich beauftragt | Veröffentlicht · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/ENEMIES.md) |
 | Später | B12d · Gegnerproduktion | Einheitlicher Ablauf für neue Figuren | Nur vorgemerkt | Nicht begonnen |
-| P5 | B13 · Gesamter Spielverlauf | Gemessene 15-Minuten-Sitzung und Rückkehr mit legalen Aktionen | B12 | Technisch abgeschlossen · [B13-Nachweis](../../artifacts/idle-bastion/acceptance/15min/REPORT.md) |
+| P5 | B13 · Gesamter Spielverlauf | Gemessene 15-Minuten-Sitzung und Rückkehr mit legalen Aktionen | B12 | Veröffentlicht · [B13-Nachweis](../../artifacts/idle-bastion/acceptance/15min/REPORT.md) |
 | P5 | B14 · Stabilität und Lieferung | Geprüfte Builds, Regression, Laufzeit und ehrlicher Ergebnisbericht | B13 | Nicht begonnen |
 | Ende | G2 · Gesamtabnahme | Vollständiger Slice bewertet | B14 | **Offen** |
 
@@ -421,7 +421,7 @@ Historische Halteregel bis zur obigen G1-Freigabe: Während des Wartens nur P2 p
 
 ### B13 — Vollständiger legaler Verlauf und Balancekorrektur
 
-**Technisch abgeschlossen; Veröffentlichung läuft.** Am 19.10.2026 ausdrücklich einschließlich neuer Gegnerbalance, kompakter Tests und Commit/Push beauftragt.
+**Abgeschlossen und veröffentlicht.** Am 19.10.2026 ausdrücklich einschließlich neuer Gegnerbalance, kompakter Tests und Commit/Push beauftragt.
 
 **Voraussetzung:** B12. **Ergebnis:** Ein gemessener Spielverlauf statt lediglich vorhandener Einzelmechaniken.
 
@@ -434,7 +434,7 @@ Historische Halteregel bis zur obigen G1-Freigabe: Während des Wartens nur P2 p
 
 **Fertig, wenn:** Der Verlauf nachgewiesen und verständlich ist, mehrere spürbare Erfolge bietet und wesentliche Balanceprobleme behoben oder ausdrücklich offengelegt sind. Fehlender Echtzeitdurchlauf bleibt ein offener Nachweis.
 
-**Nachweis:** [B13-Bericht mit echten 15 Minuten, drei Modellvarianten, Rückkehrkäufen und Screenshots](../../artifacts/idle-bastion/acceptance/15min/REPORT.md). 24 gezielte Tests und Produktionsbuild bestanden. Nutzerbewertung bleibt offen; B14/G2 werden damit nicht vorweggenommen.
+**Nachweis:** [B13-Bericht mit echten 15 Minuten, drei Modellvarianten, Rückkehrkäufen und Screenshots](../../artifacts/idle-bastion/acceptance/15min/REPORT.md). 24 gezielte Tests und Produktionsbuild bestanden. Nutzerbewertung bleibt offen; B14/G2 werden damit nicht vorweggenommen. Codecommit `3ffd64b`, [Pages-Lauf 39245665113](https://github.com/emfau88/TD/actions/runs/39245665113) erfolgreich; öffentliches B13-Bundle und Chronik geprüft.
 
 ### B14 — Regression, Langzeitbetrieb und prüfbare Lieferung
 
@@ -443,6 +443,7 @@ Historische Halteregel bis zur obigen G1-Freigabe: Während des Wartens nur P2 p
 - [ ] Vollständige Speicher-/Offline-Matrix aus dem Abnahmeplan einschließlich zwei Tabs, Suspend, abgebrochener Claims und Speicherfehler abschließen.
 - [ ] Validierten Save-Export/Import fertigstellen und prüfen; fremde/defekte Daten abweisen, gültigen Stand nicht ohne bewusste Bestätigung ersetzen.
 - [ ] Bestehende Tests, TypeScript, Idle-Build und betroffene klassische Builds prüfen; heutige Waldversion zusätzlich im Browser öffnen. Historische JSDOM-Tests sind kein visueller Nachweis.
+- [ ] Gelegentlichen leeren dunklen Balken oben mittig aus B13-Aufnahmen bei Gegnerhinweisen eingrenzen und Darstellung korrigieren; siehe B13-Bericht.
 - [ ] Mindestens 30 Minuten ununterbrochenen Browserbetrieb plus längere beschleunigte Modellprüfung durchführen; Last, Browser, Gerät, Speicher sowie Objekt-/Eventgrenzen dokumentieren.
 - [ ] Separaten Idle-Build und möglichst eigenständiges HTML tatsächlich öffnen; gültige Startbefehle sowie Origin-/Dateipfadgrenzen der Speicherung dokumentieren.
 - [ ] Echte Screenshots aus erster Minute, Werkstatt, ungefähr Minute 15 und geöffneter Lichtung liefern; Grafikquellen und verwendete Assets nachvollziehbar zuordnen.
