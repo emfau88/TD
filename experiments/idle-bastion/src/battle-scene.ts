@@ -53,8 +53,7 @@ export class BattleScene extends Phaser.Scene {
   private buffText!: Phaser.GameObjects.Text;
   private maraName!: Phaser.GameObjects.Text;
   private learningMark!: Phaser.GameObjects.Graphics;
-  private learningLabel!: Phaser.GameObjects.Text;
-  private entryLabel!: Phaser.GameObjects.Text;
+  private learningTarget?: 'starter' | 'upgrade' | 'workshop' | 'research' | 'frost';
   private coreLabel!: Phaser.GameObjects.Text;
   private readonly towerViews = new Map<number, TowerView>();
   private readonly enemyViews = new Map<number, EnemyView>();
@@ -99,8 +98,6 @@ export class BattleScene extends Phaser.Scene {
       fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: '#fff3cf', stroke: '#20392c', strokeThickness: 2,
     }).setOrigin(0.5).setDepth(5001);
     this.learningMark = this.add.graphics().setDepth(4999);
-    this.learningLabel = this.add.text(0, 0, '', { fontFamily: 'Segoe UI', fontSize: '12px', fontStyle: 'bold', resolution: 2, color: '#ffe6a1', stroke: '#273326', strokeThickness: 3 }).setOrigin(.5, 1).setDepth(5002);
-    this.entryLabel = this.add.text(50, 192, 'Käfer kommen hier →', { fontFamily: 'Segoe UI', fontSize: '12px', resolution: 2, color: '#fff1b2', stroke: '#22382b', strokeThickness: 3 }).setDepth(5002);
     this.coreLabel = this.add.text(1100, 205, 'Diesen Kern schützen', { fontFamily: 'Segoe UI', fontSize: '12px', resolution: 2, color: '#fff1b2', stroke: '#22382b', strokeThickness: 3 }).setOrigin(1, 0).setDepth(5002);
     this.wisp = this.add.image(0, 0, KEYS.wisp, 0).setOrigin(0.5, 51 / 64).setScale(0.9);
     this.wispName = this.add.text(0, 0, 'Wisp · +10 % Gold', { fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: '#ffe0a0', stroke: '#20392c', strokeThickness: 2 }).setOrigin(0.5).setDepth(5001);
@@ -232,25 +229,27 @@ export class BattleScene extends Phaser.Scene {
     const pad = this.selectedPad();
     return pad ? cellCenter(this.sim.layout, pad.cell) : { x: 560, y: 320 };
   }
+  setLearningTarget(target?: 'starter' | 'upgrade' | 'workshop' | 'research' | 'frost'): void { this.learningTarget = target; }
+  private learningPoint(target: NonNullable<BattleScene['learningTarget']>): {x:number;y:number} | undefined {
+    if (target === 'upgrade') { const tower = this.sim.towers.find(t => t.protected); return tower && {x:tower.x,y:tower.y-25}; }
+    if (target === 'research') return this.objectPoint('settlement');
+    if (target === 'workshop') return cellCenter(this.sim.layout, this.sim.plots.workshop);
+    const pad = this.sim.layout.towerPads.find(p => p.id === (target === 'starter' ? 'cell-6-6' : this.sim.recommendedFrostPad));
+    return pad && cellCenter(this.sim.layout,pad.cell);
+  }
+  learningAnchor(target: NonNullable<BattleScene['learningTarget']>): {x:number;y:number} | undefined {
+    const point = this.learningPoint(target); if (!point) return;
+    const camera = this.cameras.main, canvas = this.game.canvas.getBoundingClientRect();
+    return {x:canvas.left+(camera.x+(point.x-camera.worldView.x)*camera.zoom)*canvas.width/this.scale.width,
+      y:canvas.top+(camera.y+(point.y-camera.worldView.y)*camera.zoom)*canvas.height/this.scale.height};
+  }
   private drawLearningMark(): void {
-    const b = this.sim, stage = b.introduction.stage;
-    this.learningMark.clear(); this.learningLabel.setVisible(false);
-    if (b.introduction.stage === 'done' || b.lessonComplete) return;
-    let point: {x:number;y:number} | undefined, label = '';
-    if (['welcome', 'build'].includes(stage)) {
-      const pad = b.layout.towerPads.find(p => p.id === 'tower-start')!; point = cellCenter(b.layout, pad.cell); label = 'Hier passt dein erster Turm';
-    } else if (stage === 'upgrade') { point = b.towers.find(t => t.protected); label = 'Antippen · einmal aufwerten'; }
-    else if (['workshop', 'research'].includes(stage) && b.learningPaused) { point = this.objectPoint('settlement'); label = stage === 'workshop' ? 'Platz für deine Werkstatt' : 'Hier Frost erforschen'; }
-    else if (stage === 'frost' && b.learningPaused && b.recommendedFrostPad) {
-      const pad = b.layout.towerPads.find(p => p.id === b.recommendedFrostPad)!; point = cellCenter(b.layout, pad.cell); label = 'Frost + Pfeile · hier kombinieren';
-    }
-    if (!point) return;
+    this.learningMark.clear();
+    if (!this.learningTarget) return;
+    const point = this.learningPoint(this.learningTarget); if (!point) return;
     const pulse = .75 + Math.sin(this.time.now / 300) * .15;
-    this.learningMark.fillStyle(0xffd778, .12).fillRect(point.x-19,point.y-19,38,38);
-    this.learningMark.lineStyle(2,0xffdf8a,pulse).strokeRect(point.x-20,point.y-20,40,40);
-    const y = point.y - (stage === 'upgrade' ? 70 : 34);
-    this.learningMark.fillStyle(0xffdf8a,pulse).fillTriangle(point.x-6,y,point.x+6,y,point.x,y+8);
-    this.learningLabel.setPosition(point.x,y-4).setText(label).setVisible(true);
+    this.learningMark.fillStyle(0xffd778,.10).fillCircle(point.x,point.y,21);
+    this.learningMark.lineStyle(2,0xffdf8a,pulse).strokeCircle(point.x,point.y,21);
   }
   uiAnchor(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
     const point = this.objectPoint(kind), camera = this.cameras.main;
@@ -301,12 +300,12 @@ export class BattleScene extends Phaser.Scene {
     const wisp = wispPose(this.sim.layout, this.sim.elapsed, this.sim.settlement.warehouseBuilt, this.sim.wispArrival.at);
     if (this.sim.wispUnlocked && Math.hypot(point.x - wisp.x, point.y - (wisp.y - 18)) < 23) { this.hooks.selectWisp?.(); return; }
     const warehouse = this.sim.layout.plots.find(plot => plot.id === 'warehouse')!.footprint;
-    if (this.sim.warehouseUnlocked && point.x >= warehouse.x * size && point.x < (warehouse.x + warehouse.width) * size
+    if (this.sim.settlement.warehouseBuilt && point.x >= warehouse.x * size && point.x < (warehouse.x + warehouse.width) * size
       && point.y >= (warehouse.y - 0.5) * size && point.y < (warehouse.y + warehouse.height) * size) {
       this.hooks.selectWarehouse?.(); return;
     }
     const workshop = this.sim.layout.plots.find(plot => plot.id === 'workshop')!.footprint;
-    if (point.x >= workshop.x * size && point.x < (workshop.x + workshop.width) * size
+    if (this.sim.settlement.workshopBuilt && point.x >= workshop.x * size && point.x < (workshop.x + workshop.width) * size
       && point.y >= (workshop.y - 1.2) * size && point.y < (workshop.y + workshop.height) * size) {
       this.hooks.selectWorkshop?.(); return;
     }
@@ -474,7 +473,7 @@ export class BattleScene extends Phaser.Scene {
     }
     this.combatEffects.update(elapsed + sim.introduction.preparationSeconds, shots, towers);
     this.drawLearningMark();
-    this.entryLabel.setVisible(sim.preparing); this.coreLabel.setVisible(sim.preparing);
+    this.coreLabel.setVisible(sim.preparing);
     const boostedTower = sim.towers.find(t => sim.isMaraBoosted(t.uid));
     this.buffText.setVisible(!!boostedTower);
     if (boostedTower) this.buffText.setPosition(boostedTower.x, boostedTower.y - 60).setText(`✦ ${Math.ceil(sim.mara.effectRemaining)} s`);

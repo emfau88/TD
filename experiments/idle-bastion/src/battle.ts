@@ -33,7 +33,7 @@ export const BASE = Object.freeze({
 });
 
 /** Prices are ordinary gold purchases; B07 measures the whole opening economy. */
-export const SETTLEMENT = Object.freeze({ workshopCost: 400, researchCost: 60, warehouseCost: 650, clearingCost: 900, workshopUpgradeCost: 1200, slowFactor: 0.55, slowSeconds: 2 });
+export const SETTLEMENT = Object.freeze({ workshopCost: 200, researchCost: 60, warehouseCost: 650, clearingCost: 900, workshopUpgradeCost: 1200, slowFactor: 0.55, slowSeconds: 2 });
 export const FROST = Object.freeze({ id: 2 as const, name: 'Frostkristall', cost: 110,
   damage: 7, range: 126, cooldown: 0.9, color: 0x8ce1ef });
 export const CANNON = Object.freeze({ id: 3 as const, name: 'Steinschleuder', cost: 135, damage: 28, range: 150, cooldown: 1.55, color: 0xe4b976 });

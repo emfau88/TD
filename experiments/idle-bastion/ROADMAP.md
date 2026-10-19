@@ -12,8 +12,8 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
-| Aktives Umsetzungspaket | Erweiterte Lernführung bis Frost · fertig geprüft; Commit/Push ausdrücklich beauftragt, Veröffentlichung wird geprüft |
-| Nächster Schritt | Erweiterte Lernführung veröffentlichen und über „Frische Probe“ testen; B14 und B12d-Umsetzung noch nicht beauftragt |
+| Aktives Umsetzungspaket | Interaktive Einstiegs-UX · umgesetzt; kompakte Mobil-/Freischaltungsprüfung und Veröffentlichung abschließen |
+| Nächster Schritt | Interaktive Einstiegs-UX veröffentlichen und über „Frische Probe“ testen; B14 und B12d-Umsetzung noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -60,9 +60,26 @@ Anschließend am 19.10.2026 ausdrücklich beauftragt. Zunächst lokal umgesetzt;
 - [x] Snapshot 16 speichert Lernschritt und Lernpause getrennt von der manuellen Pause. Reload setzt denselben Schritt fort; Lernpausen erzeugen kein Offline-Gold. Bereits laufende Schema-15-Partien behalten ihre Käufe und werden nicht in die erweiterte Anleitung gezwungen.
 - [x] Zehn gezielte Modell-/Save-Prüfungen, einschließlich kompletter Lernfolge an allen neun Startplätzen. Empfohlener Platz: 79,425 s Kampf + 58 s beispielhafte Begrüßung/Lesezeit = 2:17,425 bis zur ersten verstandenen Frost-Kombination.
 - [x] Produktionsbuild und vollständige mobile Browserfolge mit 20/20 Leben, Lernpause/Reload sowie Desktop-Upgradeansicht geprüft; [Ablauf und Aufnahmen](../../artifacts/idle-bastion/acceptance/onboarding/lessons/REPORT.md). Lokal auf Port 5191 bereit.
-- [ ] Beauftragten Commit/Push abschließen und die erweiterte Fassung auf GitHub Pages bestätigen.
+- [x] Lernführung als `c74b0b9` gepusht; [Pages-Lauf 39255621279](https://github.com/emfau88/TD/actions/runs/39255621279) erfolgreich. Öffentliches JavaScript und CSS stimmen bytegenau mit dem geprüften Build überein. Die folgenden UX-Nachbesserungen ersetzen Teile dieser ersten Lernfassung.
 
 Das frühere 90-Sekunden-Ziel ist für diese geänderte Lernfolge **keine maximale Lesezeit**. Kampfzeit und tatsächliche Lernpausen werden transparent getrennt dokumentiert; die sichtbare Spielzeit enthält beides. Keine neue G2-Freigabe und kein neuer 15-Minuten-Nachweis.
+
+### Einstiegs-UX nach der Spielprobe — Klickziel und sichtbare Handlung
+
+Am 19.10.2026 zusätzlich beauftragt: direkte Pfeilführung, keine Karten-Platzhalter, weniger verdeckte Action und Leerlauf, Bau ohne doppelte Bestätigung mit sichtbarer Animation, Mara nach Wisp und neue Bauoptionen im Menü kenntlich machen. Bestehende Spielstände behalten ihre Käufe; kein Reset, keine nachträgliche Preiserstattung.
+
+- [x] Ein mitwandernder goldener Pfeil zeigt jeweils genau das anklickbare Feld, den Turm oder den echten Aktionsbutton. Beim Sparen kein Klickauftrag. Empfehlung und Vorschau verdecken Mara nicht.
+- [x] Ein Tipp auf ein gültiges Feld im aktiven Baumodus baut direkt. Freie Standortwahl bleibt; bestehende Gebäude werden weiterhin ausdrücklich versetzt.
+- [x] „Käfer kommen hier“, Werkbank, Pfähle, Bauschilder und Lagerkasten entfernt; leere Bauflächen haben keine unsichtbaren Anklickbereiche mehr.
+- [x] Sparphase: 41 px hohe Leiste am oberen HUD statt großer Mara-Karte. Werkstatt I von 400 auf 200 Gold gesenkt. Ausgangsplatz im Modell: Werkstatt bei 27,85 statt 52,55 s Kampfzeit; keine garantierte Echtspielerzeit.
+- [x] Nach dem Bau kompakte Rückmeldung oben; das Gebäude bleibt sichtbar. Staub/Aufbau läuft mit visueller Zeit auch während der Lernpause. Forschung folgt erst nach „Weiter“ und eigenem Sparziel.
+- [x] Übertakten bekommt nach bestätigter Wisp-Ankunft eine eigene Erklärung mit aktuellem Effekt/Restzeit und Kamerasprung zum Zauberturm. Unterstützung bleibt während des Baueinstiegs automatisch.
+- [x] Freigeschaltetes Lager trägt „Neu“ an Siedlung und Baukarte. Beim Öffnen bestätigen und speichern, auch wenn gleichzeitig ein anderer Speicherschritt läuft.
+- [x] Gezielter kompletter Lernablauf an allen neun Startplätzen und Preis-/Speicherrundlauf erfolgreich. Mobile Echtzeitfolge mit direktem Bau: 20/20 Leben, erste Frost-Kombination nach 56,075 s Kampfzeit. Vorherige Prüfversuche hatten zu kurze/zu frühe Browserwartebedingungen; anschließend korrigiert. Keine neue 15-Minuten-Abnahme.
+- [x] Kurze Freischaltungsprobe: Wisp vor Mara; Lager-Neuhinweis nach Öffnen und Reload bestätigt. Screenshots und Prüfbericht dokumentiert.
+- [ ] Interaktive Nachbesserung committen/pushen und Pages bestätigen.
+
+Nachweis und Bilder: [Interaktive Lernführung](../../artifacts/idle-bastion/acceptance/onboarding/interaction/REPORT.md).
 
 ## B12b — Nordbogen und mobile Kamera
 

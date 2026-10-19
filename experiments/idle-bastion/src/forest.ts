@@ -103,38 +103,16 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
     const point = cellCenter(layout, cell);
     track(scene.add.image(point.x, point.y, KEYS.grass, 'flowers').setScale(0.65).setDepth(3));
   });
-  // Repair markers belong only to the damaged site; the courtyard stays open.
-  const stakes = track(scene.add.graphics().setDepth(4));
-  stakes.fillStyle(0x745445, 0.9);
-  for (const x of [workshop.footprint.x * size + 5, (workshop.footprint.x + workshop.footprint.width) * size - 5]) {
-    for (const y of [workshop.footprint.y * size + 7, (workshop.footprint.y + workshop.footprint.height) * size - 7]) {
-      stakes.fillRect(x - 2, y - 7, 4, 9).fillStyle(0xd8ba7b, 0.8).fillRect(x - 3, y - 8, 6, 3).fillStyle(0x745445, 0.9);
-    }
-  }
   const workshopX = (workshop.footprint.x + workshop.footprint.width / 2) * size;
   const workshopY = (workshop.blockingBody.y + workshop.blockingBody.height) * size;
   const building = track(scene.add.image(workshopX, workshopY, KEYS.workshop)
     .setOrigin(0.5, 112/128).setDepth(workshopY + 1000));
-  const workbench = track(scene.add.graphics().setDepth(workshopY + 1000));
-  workbench.fillStyle(0x67472b).fillRect(workshopX - 18, workshopY - 6, 4, 16).fillRect(workshopX + 14, workshopY - 6, 4, 16);
-  workbench.fillStyle(0xac8250).fillRect(workshopX - 23, workshopY - 10, 46, 7);
-  workbench.fillStyle(0x775b3c).fillRect(workshopX + 23, workshopY + 2, 22, 5).fillRect(workshopX + 27, workshopY - 2, 17, 4);
-  workbench.fillStyle(0xd0c6aa).fillRect(workshopX - 5, workshopY - 14, 12, 4);
   const annex = track(scene.add.graphics().setDepth(workshopY + 1001));
   drawWorkshopAnnex(annex, workshopX, workshopY);
   const dust = track(scene.add.graphics().setDepth(workshopY + 1002));
-  const plotLabel = track(scene.add.text(workshopX,
-    (workshop.footprint.y + workshop.footprint.height) * size - 7, 'Werkstatt bauen · 400 Gold', {
-      fontFamily: 'Segoe UI, sans-serif', fontSize: '10px', color: '#e1d0a8', stroke: '#304a32', strokeThickness: 3,
-    }).setOrigin(0.5).setDepth(workshopY + 1003));
   const warehouse = layout.plots.find(plot => plot.id === 'warehouse')!;
   const warehouseX = (warehouse.footprint.x + warehouse.footprint.width / 2) * size;
   const warehouseY = (warehouse.blockingBody.y + warehouse.blockingBody.height) * size;
-  const warehouseMark = track(scene.add.graphics().setDepth(4));
-  warehouseMark.lineStyle(1, 0xe1c481, 0.7).strokeRoundedRect(warehouseX - 31, warehouseY - 8, 62, 21, 3);
-  const warehouseLabel = track(scene.add.text(warehouseX, warehouseY + 25, 'Lager bauen', {
-    fontFamily: 'Segoe UI, sans-serif', fontSize: '10px', color: '#f0dfb2', stroke: '#304a32', strokeThickness: 3,
-  }).setOrigin(0.5).setDepth(warehouseY + 1003));
   const warehouseBuilding = track(scene.add.image(warehouseX, warehouseY, KEYS.warehouse)
     .setOrigin(0.5, 80/96).setDepth(warehouseY + 1000));
   const warehouseDust = track(scene.add.graphics().setDepth(warehouseY + 1002));
@@ -144,16 +122,20 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   const coreWeapon = track(scene.add.image(goal.x, goal.y - 39, KEYS.coreWeapon, 0).setScale(0.7).setDepth(goal.y + 1001));
   const entrance = cellCenter(layout, layout.road.cells[0]);
   track(scene.add.text(8, entrance.y - 15, '➜', { fontSize: '24px', color: '#35533b' }).setDepth(10));
+  let lastVisualTime = scene.time.now, workshopAge = Infinity, warehouseAge = Infinity;
+  let shownWorkshopBuild: number | null | undefined, shownWarehouseBuild: number | null | undefined;
   return {
-    update(elapsed, built, builtAt, warehouseBuilt, warehouseBuiltAt, warehouseUnlocked, workshopUpgraded = false, upgradedAt = null) {
+    update(elapsed, built, builtAt, warehouseBuilt, warehouseBuiltAt, _warehouseUnlocked, workshopUpgraded = false, upgradedAt = null) {
       annex.setVisible(workshopUpgraded);
       pond?.setFrame(loopFrame(elapsed, 10)); coreWeapon.setFrame(loopFrame(elapsed, 10));
-      building.setVisible(built); workbench.setVisible(!built);
-      stakes.setVisible(!built);
-      plotLabel.setVisible(!built);
+      building.setVisible(built);
       warehouseBuilding.setVisible(warehouseBuilt);
-      warehouseMark.setVisible(warehouseUnlocked && !warehouseBuilt);
-      warehouseLabel.setVisible(warehouseUnlocked && !warehouseBuilt);
+      // Construction is presentation: learning pauses freeze combat, not the dust.
+      const visualDelta = Math.max(0, (scene.time.now - lastVisualTime) / 1000); lastVisualTime = scene.time.now;
+      const lastBuild = workshopUpgraded ? upgradedAt : builtAt;
+      workshopAge = shownWorkshopBuild === lastBuild ? workshopAge + visualDelta : lastBuild === null ? Infinity : elapsed - lastBuild;
+      warehouseAge = shownWarehouseBuild === warehouseBuiltAt ? warehouseAge + visualDelta : warehouseBuiltAt === null ? Infinity : elapsed - warehouseBuiltAt;
+      shownWorkshopBuild = lastBuild; shownWarehouseBuild = warehouseBuiltAt;
       const construct = (g: Phaser.GameObjects.Graphics, image: Phaser.GameObjects.Image, x: number, y: number, width: number, age: number, exists: boolean) => {
         g.clear(); image.setAlpha(1);
         if (!exists || age < 0 || age > 1.6) return;
@@ -171,9 +153,8 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
         }
       };
       construct(warehouseDust, warehouseBuilding, warehouseX, warehouseY, 64,
-        warehouseBuiltAt === null ? 10 : elapsed - warehouseBuiltAt, warehouseBuilt);
-      const lastBuild = workshopUpgraded ? upgradedAt : builtAt;
-      construct(dust, building, workshopX, workshopY, 95, lastBuild === null ? 10 : elapsed - lastBuild, built);
+        warehouseAge, warehouseBuilt);
+      construct(dust, building, workshopX, workshopY, 95, workshopAge, built);
     },
     destroy() { for (const object of objects) object.destroy(); for (const key of textureKeys) scene.textures.remove(key); },
   };

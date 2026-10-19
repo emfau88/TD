@@ -2,6 +2,8 @@
 
 Getrennte neue Partie: [Frische Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1). Commit und Veröffentlichungsnachweis stehen in der [Roadmap](../../../../../experiments/idle-bastion/ROADMAP.md).
 
+> Historischer Nachweis der ersten Lernfassung mit 400-Gold-Werkstatt. Die anschließende [interaktive Überarbeitung](../interaction/REPORT.md) ergänzt Klickpfeile, direkten Bau, kompakte Hinweise und den Preis von 200 Gold.
+
 ## Was ein neuer Spieler erlebt
 
 1. Mara begrüßt; ein goldener Rahmen mit Pfeil zeigt den empfohlenen kostenlosen Waldwächter-Platz. Erst der ausdrückliche Start lässt Gegner erscheinen.

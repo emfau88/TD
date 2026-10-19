@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { BASE, IdleBattle, type BattleSnapshot } from '../src/battle';
+import { BASE, IdleBattle, SETTLEMENT, type BattleSnapshot } from '../src/battle';
 import { createIdleLayout } from '../src/layout';
 
 const jsonCopy = <T>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
@@ -11,7 +11,7 @@ test('a legally funded Frost run stays saveable through long wave tails and wave
   sim.assignMara(archer.uid);
   for (let step = 0; step < 6500 && sim.wave < 16; step++) {
     if (archer.level === 1 && sim.gold >= 60) sim.upgrade(archer.uid);
-    if (!sim.settlement.workshopBuilt && sim.gold >= 400) sim.buildWorkshop();
+    if (!sim.settlement.workshopBuilt && sim.gold >= SETTLEMENT.workshopCost) sim.buildWorkshop();
     if (sim.settlement.workshopBuilt && !sim.settlement.frostResearched && sim.gold >= 60) sim.researchFrost();
     if (sim.settlement.frostResearched && sim.canBuild('tower-02', 2)) sim.build('tower-02', 2);
     if (sim.settlement.frostResearched && sim.canBuild('tower-04')) sim.build('tower-04');

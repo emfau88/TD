@@ -1,4 +1,4 @@
-import { IdleBattle, upgradeCost, type TowerId } from '../../src/battle';
+import { IdleBattle, SETTLEMENT, upgradeCost, type TowerId } from '../../src/battle';
 import { certifyFarm, defenseFingerprint, type FarmCertificate } from '../../src/farming';
 export type Purchase = { type: 'build'; pad: string; kind: TowerId } | { type: 'upgrade'; uid: number } | { type: 'workshop' | 'research' | 'warehouse' | 'workshop2' | 'clearing' | 'advance' };
 export type Approach = 'guided' | 'alternative' | 'watch';
@@ -11,7 +11,7 @@ export function nextPurchase(b: IdleBattle, approach: Approach = 'guided'): Purc
   if(!archer)return build(archerPad,1);
   if(archer.level<2)return up(archer.uid);
   if(approach==='alternative' && !b.towers.some(t=>t.padId==='cell-10-3'))return build('cell-10-3',1);
-  if(!b.settlement.workshopBuilt)return b.gold>=400?{type:'workshop'}:undefined;
+  if(!b.settlement.workshopBuilt)return b.gold>=SETTLEMENT.workshopCost?{type:'workshop'}:undefined;
   if(!b.settlement.frostResearched)return b.gold>=60?{type:'research'}:undefined;
   if(!b.towers.some(t=>t.def.id===2))return build('tower-02',2);
   if(!b.towers.some(t=>t.def.id===3))return build('tower-09',3);

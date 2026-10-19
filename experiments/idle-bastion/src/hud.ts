@@ -12,6 +12,8 @@ export function tutorialStep(battle: IdleBattle): number {
   if (!battle.towers.some(tower => tower.def.id === 2) && !battle.tutorial.frostSeen) return 5;
   if (!battle.tutorial.frostSeen) return 6;
   if (!battle.wispUnlocked) return 7;
+  // Reuse the retired clearing-hint slot; saves need no new schema or tutorial reset.
+  if (battle.wispArrival.met && !battle.tutorial.hidden && !(battle.tutorial.seen & (1 << 15))) return 15;
   if (!battle.towers.some(tower => tower.def.id === 3)) return 8;
   if (!battle.settlement.warehouseBuilt) return battle.warehouseUnlocked ? 12 : 13;
   if (battle.highestCleared < 10) return 9;
@@ -23,9 +25,9 @@ export function tutorialStep(battle: IdleBattle): number {
 }
 const HINTS = [
   'Ich bin Mara. Unser Startturm greift automatisch an. Beobachte die ersten Käfer — für jeden besiegten Gegner erhalten wir Gold.',
-  'Wähle unten den Waldwächter, dann ein Feld am Weg und bestätige die Vorschau. Ich empfehle die Nordostkurve; der Nordbogen daneben bleibt dann für Frost frei.',
+  'Wähle unten den Waldwächter, dann tippe auf ein freies Feld am Weg, um direkt zu bauen. Ich empfehle die Nordostkurve; der Nordbogen daneben bleibt dann für Frost frei.',
   'Ein Upgrade erhöht den Schaden sofort. Wähle einen Waldwächter und werte ihn für 60 Gold auf. Ich unterstütze meinen zugewiesenen Turm automatisch.',
-  'Baue unsere Werkstatt. Öffne Siedlung, wähle einen Platz und bestätige den Bau. Sie eröffnet die Frostforschung; dafür muss kein weiterer Turm gekauft werden.',
+  'Baue unsere Werkstatt. Öffne Siedlung, wähle die Werkstatt und tippe auf einen freien Platz. Sie eröffnet die Frostforschung; dafür muss kein weiterer Turm gekauft werden.',
   'Die Werkstatt steht! Erforsche Frostfassung. Damit erhalten wir einen Kontrollturm und können alle Türme bis Level 6 verbessern.',
   'Setze einen Frostkristall an eine Kurve, wo auch ein Waldwächter angreift. Sind alle Plätze belegt, kannst du einen gekauften Turm für 70 % verkaufen.',
   'Die blauen Treffer bremsen Käfer zwei Sekunden lang um 45 %. Andere Türme bekommen dadurch mehr Zeit zum Angreifen.',
@@ -37,11 +39,13 @@ const HINTS = [
   'Das Vorratslager sammelt länger: 65 % der sicheren Farmbasis für bis zu acht Stunden. Öffne Siedlung, prüfe die Vorschau und baue es für 650 Gold. Die besseren Werte gelten für die nächste Abwesenheit.',
   'Nach gemeisterter Welle 8 kannst du ein Vorratslager bauen. Verbessere deine Verteidigung und spare dann 650 Gold. Wisp versorgt später beide Gebäude.',
   'Rosenspiegel erwartet uns in Welle 15. Ihr Herzfaden kündigt an, welchen Turm sie verführt. Frost unterbricht ihren Zauber; Flächentreffer räumen Begleiter ab, Scharfschützen durchdringen ihre Rüstung. Die erste vollständige Bosswelle bringt einmalig 750 Gold.',
-  'Rosenspiegel ist besiegt. Öffne unter Siedlung die östliche Lichtung für 900 Gold. Zwei neue Plätze sichern den letzten Wegabschnitt. Mit Lichtung ansehen und Zur Verteidigung wechselst du zwischen den Bereichen.',
+  'Jetzt übernimmt Wisp die Versorgung. Meine Magie heißt Übertakten: acht Sekunden lang 50 % mehr Feuerrate. Goldener Ring und Restsekunden zeigen den verstärkten Turm. Automatisch zaubere ich nur bei Gegnern; über mein Porträt kannst du auch selbst auslösen.',
   'Baue die Werkstatt für 1.200 Gold zur Stufe II aus. Der neue Arbeitsplatz ermöglicht Turmlevel 7–20; die nächste Herausforderung wartet in Welle 25.',
   'Rosenspiegel kehrt in Welle 25 mit einer größeren Begleitgruppe zurück. Höhere Turmlevel und unsere vier Rollen helfen. Für den ersten Sieg gibt es einmalig 1.200 Gold.',
 ] as const;
-export const tutorialHint = (battle: IdleBattle): string => HINTS[tutorialStep(battle)];
+export const tutorialHint = (battle: IdleBattle): string => tutorialStep(battle) === 15 && battle.mara.effectRemaining > 0
+  ? `Übertakten wirkt jetzt: +50 % Feuerrate, noch ${Math.ceil(battle.mara.effectRemaining)} Sekunden. Der goldene Ring zeigt meinen Zielturm. Über mein Porträt kannst du später auch manuell zaubern; die Automatik wartet auf Gegner.`
+  : HINTS[tutorialStep(battle)];
 export function nextObjective(battle: IdleBattle): string {
   const remaining = (cost: number) => battle.gold >= cost ? `${cost} Gold · bereit` : `noch ${cost - battle.gold} Gold`;
   switch (tutorialStep(battle)) {
@@ -59,7 +63,7 @@ export function nextObjective(battle: IdleBattle): string {
     case 9: return 'Welle 10 meistern: Scharfschütze.';
     case 10: return 'Scharfschütze bauen · 170 Gold · Rüstung durchdringen.';
     case 14: return battle.highestCleared < 14 ? 'Verteidigung für Rosenspiegel in Welle 15 vorbereiten.' : 'Rosenspiegel besiegen · 750 Gold Erstprämie · Frost unterbricht ihre Verführung.';
-    case 15: return `Östliche Lichtung öffnen · ${remaining(SETTLEMENT.clearingCost)} · optionale Erweiterung.`;
+    case 15: return 'Mara kennenlernen: Übertakten verstärkt einen Turm für acht Sekunden.';
     case 16: return `Werkstatt II ausbauen · ${remaining(SETTLEMENT.workshopUpgradeCost)} · Turmlevel 7–20.`;
     case 17: return 'Rosenspiegels Rückkehr in Welle 25 vorbereiten · Turmlevel 7–20 verfügbar.';
     default: return battle.mode === 'farm' ? 'Verteidigung ausbauen, dann bewusst erneut vorstoßen.'
