@@ -12,7 +12,7 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
-| Aktives Umsetzungspaket | Echte Menüführung und Werkstatt-Bausatz · Prüfung abgeschlossen, Veröffentlichung läuft |
+| Aktives Umsetzungspaket | Echte Menüführung und Werkstatt-Bausatz · geprüft und auf GitHub Pages veröffentlicht |
 | Nächster Schritt | Nutzerprobe des überarbeiteten Einstiegs über „Frische Probe“; B14 und B12d-Umsetzung noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
@@ -90,7 +90,7 @@ Am 19.10.2026 ausdrücklich beauftragt: „Ja so umsetzen“. Ersetzt die vorher
 - [x] Kostenloser Werkstatt-Bausatz nach Startturm-Level 2 und erstem Wellensieg. Einmaliger Verbrauch, reloadfest, keine rückwirkende Erstattung; normaler Baupreis außerhalb der Anleitung bleibt 200 Gold.
 - [x] Kleine Erklärungen am oberen Rand; nach Werkstattbau 1,8 Sekunden freie Sicht auf die Konstruktion. Erst anschließend bewusst zur Forschung weitergehen. Überspringen über das Spielmenü.
 - [x] Elf gezielte Einstiegs-/Saveprüfungen bestanden, einschließlich aller neun Startplätze und alter Saves. Produktionsbuild erfolgreich. Mobile echte 1×-Menüfolge mit Reload bis Frost: 20/20 Leben, keine Browserfehler; Desktop-Menüführung separat kurz geprüft.
-- [ ] Commit/Push und erfolgreiche Pages-Veröffentlichung bestätigen.
+- [x] Codecommit `82a5a99` gepusht; [Pages-Lauf 39268268295](https://github.com/emfau88/TD/actions/runs/39268268295) erfolgreich. Öffentliches `battle-OzF1aTOT.js` und `battle-BDiJOrpc.css` stimmen per SHA-256 mit dem geprüften Build überein.
 
 [Prüfung und Screenshots der echten Menüfolge](../../artifacts/idle-bastion/acceptance/onboarding/menu-guide/REPORT.md). B14 und weitere Gegnerproduktion bleiben unbegonnen; keine neue 15-Minuten- oder reale Geräteabnahme behauptet.
 

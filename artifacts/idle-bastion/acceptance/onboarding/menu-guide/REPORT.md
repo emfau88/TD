@@ -31,3 +31,7 @@ Bestehende Originalgrafiken verwendet. Keine neuen Imagegen-Assets. Ältere Beri
 ![Forschung am tatsächlichen Aktionsbutton](desktop-research.png)
 
 ![Desktop: Menüführung zur Werkstatt](desktop-settlement-tab.png)
+
+## Veröffentlichung
+
+Codecommit `82a5a99`; [GitHub Pages 39268268295](https://github.com/emfau88/TD/actions/runs/39268268295) erfolgreich. Öffentlicher Playlink liefert `battle-OzF1aTOT.js` und `battle-BDiJOrpc.css`; beide per SHA-256 identisch zum lokalen Build. HTML enthält die neue Menüführung. [Normale Partie](https://emfau88.github.io/TD/idle-bastion/) · [Unabhängige frische Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1).
