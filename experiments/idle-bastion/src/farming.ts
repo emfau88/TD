@@ -86,7 +86,7 @@ function prove(battle: IdleBattle, wave: number, fingerprint: string): FarmCerti
 }
 
 export function certifyFarm(battle: IdleBattle, previous?: FarmCertificate): FarmCertificate | undefined {
-  if (battle.layout.version !== LAYOUT_VERSION) return undefined;
+  if (battle.preparing || battle.layout.version !== LAYOUT_VERSION) return undefined;
   const fingerprint = defenseFingerprint(battle);
   // A newer leaky victory must not erase an older still-valid safe proof.
   let best = isFarmCertificateValid(previous, battle) ? { ...previous! } : undefined;

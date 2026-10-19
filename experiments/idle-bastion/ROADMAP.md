@@ -11,9 +11,9 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten |
-| Aktives Umsetzungspaket | Keines · HUD-Nachbesserung veröffentlicht; Einstieg und neue Gegner nur als Vorschläge |
-| Nächster Schritt | Einstiegsvorschlag und drei neue Gegner besprechen. B14 und B12d-Umsetzung noch nicht beauftragt |
+| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
+| Aktives Umsetzungspaket | Neuer Einstieg nach B13 · implementiert, Veröffentlichung läuft |
+| Nächster Schritt | Neuen Einstieg über „Frische Probe“ testen. B14 und B12d-Umsetzung noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -21,27 +21,29 @@ Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen.
 
 ## Nachbesserung nach B13 — HUD und nächste Gestaltungsschritte
 
-Am 19.10.2026 beauftragt: leeren HUD-Balken beheben, vorhandene Gegner auflisten und drei neue Einheiten mit effizientem Produktionsablauf vorschlagen. Anschließend um Vorschlag für einen verständlicheren Start ergänzt. Kein Umsetzungsauftrag für neues Onboarding oder neue Gegner.
+Am 19.10.2026 beauftragt: leeren HUD-Balken beheben, vorhandene Gegner auflisten und drei neue Einheiten mit effizientem Produktionsablauf vorschlagen. Anschließend um Vorschlag für einen verständlicheren Start ergänzt. Der Einstieg wurde anschließend ausdrücklich zur Umsetzung freigegeben; neue Gegner bleiben Vorschläge.
 
 - [x] HUD-Balken reproduziert: unterer Hinweis erzeugt im WebGL-Bereich ein vertikal gespiegeltes schwarzes Rechteck. Minimale Transparenz ausschließlich am Hinweis umgeht die fehlerhafte Überdeckung; nach mehreren Zeichenzyklen geprüft.
 - [x] Produktionsbuild und kurze Desktop-/Hochkantprobe bestanden; [Befund, Vorher/Nachher und Prüfumfang](../../artifacts/idle-bastion/acceptance/ui/HUD.md).
 - [x] Codecommit `b003fca` gepusht; [Pages-Lauf 39248529885](https://github.com/emfau88/TD/actions/runs/39248529885) erfolgreich. Öffentlicher Playlink liefert `battle-D7MtO5wm.css` mit der Korrektur aus.
 - [x] Vollständigen Gegnerbestand und drei Kandidaten mit Produktionsablauf in [ENEMIES.md](docs/ENEMIES.md#vorschlag-drei-weitere-einheiten) festhalten.
-- [x] Einstiegsvorschlag unten festhalten; Umsetzung bleibt offen.
+- [x] Einstiegsvorschlag festhalten; nach anschließender Freigabe wie unten umgesetzt.
 
-### Einstiegsvorschlag — erst ankommen, dann verteidigen
+### Neuer Einstieg — erst ankommen, dann verteidigen
 
-Der bestehende Start erzeugt automatisch einen geschützten Waldwächter, Mara und kurz darauf Welle 1. Maras Vorstellung existiert als Tipp, ist auf Mobile aber zunächst eingeklappt und konkurriert mit dem sofort laufenden Kampf. Daher ist das Problem der Ablauf, nicht nur ein fehlender Text.
+Am 19.10.2026 ausdrücklich beauftragt: Mara vorstellen, ersten Turm selbst bauen, bestehende Spielstände erhalten; kompakt prüfen, Roadmap aktualisieren und veröffentlichen.
 
-**Empfohlener Ablauf, noch nicht umgesetzt:**
+- [x] Ruhige Karte ohne Turm und Gegner; kurze Mara-Begrüßung auch auf Hochkant direkt sichtbar. Keine Wartezeit oder Dialogserie.
+- [x] Kostenlosen Waldwächter-Bausatz selbst auf einem von neun sicheren frühen Feldern platzieren; Reichweite und Baubestätigung, 75 Startgold bleiben erhalten. Vor dem Kampf kostenlos korrigierbar.
+- [x] Nach dem Bau zurück zur Karte; erst „Verteidigung starten“ beginnt Welle 1. Eintritt/Kern erklären, danach normale automatische Wellenfolge.
+- [x] Maras Fernzauber im echten Kampf anbieten, Wirkzeit am Turm zeigen, Automatik erklären und ausdrücklich einschalten lassen. Direkter Wechsel zur Automatik oder manuelles Weiterspielen möglich.
+- [x] Bauphase und Geschenk atomar speichern; Reload/Schreibfehler dürfen weder Geschenk duplizieren noch Kampf vorzeitig starten. Vor dem Start kein Kampf-/Farm-/Offline-Ertrag.
+- [x] Altsaves ohne erneute Einführung übernehmen; Geld, Türme, Boss-/Wellenfortschritt, Kampfzustand und historische Offline-Ansprüche erhalten. Schema 15, Kampfregeln unverändert 10.
+- [x] Neun gezielte Modell-/Speicherprüfungen und vier bestehende Regressionen bestanden. Einschließlich angenommener acht Sekunden Begrüßung/Bau: Werkstatt bei 86 s, Frostforschung bei 102,25 s im legalen Modelllauf. Keine neue Preisänderung nötig; keine garantierte Echtspielerzeit.
+- [x] Produktionsbuild und kurze Desktop-/Hochkantprobe inklusive Bau, Reload, erstem Zauber und altem B13-Spielstand bestanden; Bilder/Prüfgrenzen im Bericht.
+- [ ] Commit/Push und GitHub-Pages-Veröffentlichung bestätigen.
 
-1. Ruhige Karte ohne Gegner und ohne fertigen Turm. Mara steht sichtbar am Weg und begrüßt den Spieler in einer kurzen, auch mobil offenen Karte: „Ich bin Mara. Ich unterstütze deine Türme mit Magie. Hilf mir, den Hain zu verteidigen.“ Aktion: „Erste Verteidigung bauen“. Keine erzwungene Wartezeit oder Dialogserie.
-2. Ein kostenloser Waldwächter-Bausatz ersetzt den bisherigen geschenkten Startturm; Startgold bleibt erhalten. Den Spieler selbst bauen lassen, wenige gute Felder samt Reichweite empfehlen. Vor dem ersten Start kostenlos korrigierbar; kein Goldverlust durch eine Lernentscheidung. Der erste Turm muss einen erreichbaren frühen Wegabschnitt abdecken.
-3. Nach dem Bau zurück zur freien Karte. Klarer Button „Verteidigung starten“; erst danach kommt Welle 1. Eine kurze Vorschau zeigt, wo die Käfer eintreten und welchen Kern wir schützen. Ab dann folgen normale Wellen automatisch; nicht jede Welle manuell starten lassen.
-4. Erste Treffer und Gold sichtbar erleben. Maras Fernzauber einmal im passenden Kampfmoment anbieten: Turm markieren, kurze Verstärkung und Restdauer sehen. Danach die bereits vorhandene gegnerabhängige Automatik erklären. Freie Bewegung und Zauberwirkung verständlich voneinander trennen.
-5. Erst danach nächster Kauf und Werkstatt. Weitere Panels bei Bedarf; kein vollständiges Regelmenü am Anfang. Schnelle Spieler können die Begrüßung überspringen und direkt bauen, ohne einen automatischen Kampfstart auszulösen.
-
-**Bei späterer Umsetzung beachten:** Startzustand und Bausatz atomar speichern; Reload darf weder Geschenk duplizieren noch die Bauphase überspringen. Vor erstem Kampf kein Farm-/Offline-Ertrag. Bestehende Spielstände behalten ihren Fortschritt und werden nicht ins Tutorial gezwungen. Den 90-Sekunden-Einstieg einschließlich Begrüßung/Bau neu messen und Ökonomie abstimmen; den bisherigen Messbeginn nicht stillschweigend auf „nach dem Tutorial“ verschieben. Sicherheit gegen Fehlkäufe/-platzierungen und mobile Bedienung mitprüfen.
+Ablauf, Spielaufnahmen und genaue Prüfgrenzen: [Einstiegsbericht](../../artifacts/idle-bastion/acceptance/onboarding/REPORT.md). Die frühere G1-Freigabe bleibt bestehen; dieser Zusatz ist keine neue Nutzerabnahme des gesamten Slice.
 
 ## B12b — Nordbogen und mobile Kamera
 

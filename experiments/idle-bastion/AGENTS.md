@@ -13,3 +13,5 @@
 11. Die Roadmap gliedert P1–P5 in B01–B14. Voraussetzungen beachten, gewöhnliche Pakete ohne neue Einzelabnahme nacheinander bearbeiten; G1 sperrt B08–B14 bis zur ausdrücklichen Nutzerfreigabe. Nach Unterbrechung beim nächsten offenen Schritt des aktuellen Pakets fortsetzen.
 
 12. Zusätzlich beauftragt am 18.10.2026: B12b Nordbogen/mobile Kamera, danach B12c Integration vorhandener Gegner, jeweils kompakte Tests und Commit/Push. B12d standardisierte Produktion neuer Gegner nur vormerken. Status und Reihenfolge stehen in ROADMAP.md.
+
+13. Am 19.10.2026 zusätzlich ausdrücklich beauftragt: ruhiger neuer Einstieg mit Mara und selbst gebautem kostenlosem Startturm, bestehende Spielstände erhalten, kompakte Tests, Roadmap, Commit/Push/Pages. Neue Gegnerproduktion und B14 bleiben separat.

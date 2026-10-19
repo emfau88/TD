@@ -19,6 +19,8 @@ export function recommendedUpgrade(battle: IdleBattle) {
   return area || [...battle.towers].filter(t => t.level < battle.maxLevel).sort((a,b) => upgradeCost(a)-upgradeCost(b))[0];
 }
 export function currentGoal(battle: IdleBattle): Goal {
+  if (battle.preparing) return { title: 'Deine erste Verteidigung', detail: 'Mara kennenlernen · kostenlosen Startturm platzieren', action: 'archer', label: 'Startturm platzieren' };
+
   const need = (price: number) => battle.gold >= price ? 'Bereit' : `Noch ${gold(price - battle.gold)} Gold`;
   switch (tutorialStep(battle)) {
     case 0: case 1: return { title: 'Verstärke die Verteidigung', detail: `${need(75)} · Waldwächter bauen`, cost: 75, action: 'archer', label: 'Waldwächter auswählen' };

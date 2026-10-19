@@ -1,0 +1,61 @@
+[
+  {
+    "mobile": false,
+    "welcome": {
+      "wave": 0,
+      "towers": 0
+    },
+    "built": {
+      "uid": 1,
+      "padId": "cell-6-6",
+      "kind": 1,
+      "level": 1,
+      "cooldown": 0,
+      "spent": 0,
+      "kills": 0,
+      "angle": 0,
+      "protected": true
+    },
+    "goldAfterBuild": 75,
+    "reloadedStage": "ready",
+    "completed": {
+      "stage": "done",
+      "preparationSeconds": 1.8261859999999979
+    },
+    "spellRemaining": 7.174999999999988,
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "mobile": true,
+    "welcome": {
+      "wave": 0,
+      "towers": 0
+    },
+    "built": {
+      "uid": 1,
+      "padId": "cell-6-6",
+      "kind": 1,
+      "level": 1,
+      "cooldown": 0,
+      "spent": 0,
+      "kills": 0,
+      "angle": 0,
+      "protected": true
+    },
+    "goldAfterBuild": 75,
+    "reloadedStage": "ready",
+    "completed": {
+      "stage": "done",
+      "preparationSeconds": 2.089986666666665
+    },
+    "spellRemaining": 7.149999999999988,
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "legacy": true,
+    "wave": "27",
+    "onboardingVisible": false
+  }
+]

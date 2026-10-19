@@ -1,3 +1,4 @@
+import { updateOnboarding } from './onboarding-ui';
 import { introducedEnemy } from './enemy-roster';
 import { MARA } from './mara';
 import type { GridCell } from './layout';
@@ -78,6 +79,7 @@ const progressUI = createProgressUI(action => {
   else if (action === 'upgrade' && session) {
     const towers = session.battle.towers;
     const tower = recommendedUpgrade(session.battle) ?? towers[0];
+    if (!tower) return;
     selectedPadId = tower.padId; scene?.setSelected(selectedPadId); openContext('tower');
   }
 }, lifetime.signal);
@@ -102,6 +104,8 @@ function syncUI(): void {
   const view = scene;
   const unavailable = !ready || !live || live.busy || Boolean(live.error) || live.suspended;
   build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = unavailable;
+  if (!ready || !live || live.error || live.suspended || live.paused)
+    element<HTMLButtonElement>('onboarding-primary').disabled = element<HTMLButtonElement>('onboarding-secondary').disabled = true;
   element<HTMLButtonElement>('build-cannon').disabled = element<HTMLButtonElement>('build-sniper').disabled = unavailable;
   buildFrost.disabled = buildWorkshop.disabled = buildWarehouse.disabled = researchFrost.disabled = unavailable;
   if (!ready || !live || !view) return;
@@ -133,17 +137,18 @@ function syncUI(): void {
     element(`${kind}-tab`).setAttribute('aria-selected', String(catalogPanel === kind));
     element(`${kind}-tab`).tabIndex = catalogPanel === kind ? 0 : -1;
   }
-  const blocked = unavailable || view.paused || sim.phase === 'defeat';
+  const blocked = unavailable || view.paused || sim.phase === 'defeat' || sim.preparing;
   view?.setPlacement(placementType, groundMode, groundCandidate);
   element('placement-help').hidden = !(placementType || groundMode) || live.awaitingResume;
   element('placement-text').textContent = groundMode === 'mara' ? 'Mara · begehbares Ziel antippen'
     : groundMode ? `${groundMode === 'workshop' ? 'Werkstatt' : 'Lager'} · Position in der Siedlungsfläche wählen`
+    : sim.preparing ? 'Startturm · helles Feld antippen, Reichweite prüfen und kostenlos bestätigen'
     : `${towerDefinition(placementType ?? 1).name} · Feld am Weg wählen, Reichweite prüfen und bestätigen`;
   const confirm = element<HTMLButtonElement>('confirm-placement');
   confirm.hidden = !groundMode && !(placementType && selectedPadId);
   if (groundMode === 'mara') confirm.hidden = true;
   const groundBuilt = groundMode === 'workshop' ? sim.settlement.workshopBuilt : sim.settlement.warehouseBuilt;
-  confirm.textContent = groundMode ? groundBuilt ? 'Hier versetzen' : `Hier bauen · ${groundMode === 'workshop' ? SETTLEMENT.workshopCost : SETTLEMENT.warehouseCost} Gold` : `Hier bauen · ${towerDefinition(placementType ?? 1).cost} Gold`;
+  confirm.textContent = groundMode ? groundBuilt ? 'Hier versetzen' : `Hier bauen · ${groundMode === 'workshop' ? SETTLEMENT.workshopCost : SETTLEMENT.warehouseCost} Gold` : sim.preparing ? sim.towers.length ? 'Hierher versetzen · kostenlos' : 'Hier bauen · kostenlos' : `Hier bauen · ${towerDefinition(placementType ?? 1).cost} Gold`;
   confirm.disabled = unavailable || sim.phase === 'defeat' || (!groundMode && live.paused) || (groundMode ? !groundCandidate || !sim.canPositionBuilding(groundMode === 'warehouse' ? 'warehouse' : 'workshop', groundCandidate)
     || (groundBuilt ? !live.paused : sim.gold < (groundMode === 'workshop' ? SETTLEMENT.workshopCost : SETTLEMENT.warehouseCost))
     : !selectedPadId || !sim.canBuild(selectedPadId, placementType));
@@ -171,13 +176,14 @@ function syncUI(): void {
   }
   const certificate = live.certificate;
   element('next-objective').textContent = nextObjective(sim);
-  element('play-time').textContent = `${Math.floor(sim.elapsed / 60)}:${String(Math.floor(sim.elapsed % 60)).padStart(2, '0')}`;
+  const playSeconds = sim.elapsed + sim.introduction.preparationSeconds;
+  element('play-time').textContent = `${Math.floor(playSeconds / 60)}:${String(Math.floor(playSeconds % 60)).padStart(2, '0')}`;
   const hintStep = tutorialStep(sim);
   const mobile = window.matchMedia('(max-width: 700px)').matches;
   if (hintStep !== mobileHintStep) { mobileHintStep = hintStep; mobileHintOpen = false; }
   element('wisp-arrival').hidden = !sim.wispUnlocked || sim.wispArrival.met || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
   element('pick-wisp').classList.toggle('new-companion', sim.wispUnlocked && !sim.wispArrival.met);
-  const hintAvailable = (sim.wispArrival.met || !sim.wispUnlocked) && !sim.bossActive && !sim.tutorial.hidden && !(sim.tutorial.seen & (1 << hintStep)) && !contextOpen && !placementType && !live.awaitingResume;
+  const hintAvailable = sim.introduction.stage === 'done' && (sim.wispArrival.met || !sim.wispUnlocked) && !sim.bossActive && !sim.tutorial.hidden && !(sim.tutorial.seen & (1 << hintStep)) && !contextOpen && !placementType && !live.awaitingResume;
   element('tutorial-card').hidden = !hintAvailable || (mobile && !mobileHintOpen);
   element('mobile-hint').hidden = !mobile || !hintAvailable || mobileHintOpen;
   element('mobile-hint').setAttribute('aria-expanded', String(mobileHintOpen));
@@ -185,7 +191,7 @@ function syncUI(): void {
   element('tutorial-card').dataset.step = String(hintStep);
   const mara = sim.mara;
   const maraTarget = sim.towers.find(tower => tower.uid === mara.targetTowerUid);
-  const targetName = maraTarget?.protected ? 'Startturm' : maraTarget?.def.name ?? 'Startturm';
+  const targetName = maraTarget?.protected ? 'Startturm' : maraTarget?.def.name ?? 'Noch kein Turm';
   const inSpellRange = !!maraTarget && Math.hypot(mara.x - maraTarget.x, mara.y - maraTarget.y) <= MARA.range;
   element('mara-brief').textContent = mara.effectRemaining > 0 ? `Buff · ${Math.ceil(mara.effectRemaining)} s` : mara.cooldownRemaining > 0 ? `Bereit in ${Math.ceil(mara.cooldownRemaining)} s` : 'Zauber bereit';
   element<HTMLProgressElement>('mara-cooldown').value = MARA.cooldown - mara.cooldownRemaining;
@@ -359,12 +365,12 @@ function syncUI(): void {
     element('combat-message').textContent = `Neu: ${newcomer.name} · ${newcomer.counter}. Mehr in der Chronik.`;
     toastUntil = performance.now() + 6500;
   }
-  element('combat-message').hidden = performance.now() > toastUntil || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
+  element('combat-message').hidden = sim.introduction.stage !== 'done' || performance.now() > toastUntil || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
   progressUI.update(live);
   const boss = sim.bossEnemy, charm = sim.bossCharm;
   const showBoss = sim.bossActive && !live.awaitingResume && !contextOpen && !placementType;
   element('boss-banner').hidden = !showBoss;
-  document.querySelector<HTMLElement>('.goal-ribbon')!.hidden = showBoss;
+  document.querySelector<HTMLElement>('.goal-ribbon')!.hidden = showBoss || sim.introduction.stage !== 'done';
   element('boss-title').textContent = `${bossEncounter(sim.wave).title} · Welle ${sim.wave}`;
   element('boss-health').textContent = boss ? `${currency.format(Math.ceil(boss.hp))} / ${currency.format(Math.ceil(boss.maxHp))}` : sim.bossQueued ? 'Im Anmarsch' : 'Boss gefallen';
   const health = element<HTMLProgressElement>('boss-health-bar');
@@ -378,6 +384,7 @@ function syncUI(): void {
   element('boss-banner').dataset.phase = charm.phase;
   element('boss-support').textContent = `${Math.max(0, sim.remaining - (boss || sim.bossQueued ? 1 : 0))} Begleiter übrig · Fläche & Durchdringung`;
   document.getElementById('app')!.classList.toggle('context-open', contextOpen || Boolean(placementType || groundMode));
+  updateOnboarding(live, Boolean(placementType || groundMode), contextOpen);
   positionContext();
 }
 
@@ -398,31 +405,35 @@ function positionContext(): void {
 
 function closeContext(): void { groundMode = undefined; groundCandidate = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); syncUI(); }
 function openContext(kind: typeof selectedPanel): void {
+  if (session?.battle.preparing) return;
   groundMode = undefined; groundCandidate = undefined; placementType = undefined; selectedPanel = kind; contextOpen = true;
   if (kind !== 'tower') { selectedPadId = undefined; scene?.setSelected(); }
   scene?.focusObject(kind); syncUI();
 }
 function startPlacement(kind: TowerId): void {
   if (!session || !ready) return;
+  if (session.battle.preparing && kind !== 1) return;
+  if (session.battle.introduction.stage === 'welcome') { void perform(b => b.beginIntroduction()).then(() => { if (session?.battle.introduction.stage === 'build') startPlacement(kind); }); return; }
   if (kind === 2 && !session.battle.settlement.frostResearched) { catalogPanel = 'settlement'; openContext('settlement'); return; }
   if (!session.battle.isTowerUnlocked(kind)) { if (kind === 3) openContext('wisp'); else { element('combat-message').textContent = 'Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.'; toastUntil = performance.now() + 6000; syncUI(); } return; }
   if (placementType === kind) { placementType = undefined; closeContext(); return; }
   groundMode = undefined; groundCandidate = undefined; catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
-  const preferred = kind === 1 ? 'tower-03' : kind === 2 ? 'tower-09' : kind === 3 ? 'tower-10' : 'tower-11';
-  const pads = session.battle.layout.towerPads.filter(pad => session!.battle.isPadUnlocked(pad.id) && !session!.battle.towers.some(tower => tower.padId === pad.id));
+  const preferred = session.battle.preparing ? 'tower-start' : kind === 1 ? 'tower-03' : kind === 2 ? 'tower-09' : kind === 3 ? 'tower-10' : 'tower-11';
+  const pads = session.battle.layout.towerPads.filter(pad => session!.battle.preparing ? session!.battle.isStarterLocation(pad.id) : session!.battle.isPadUnlocked(pad.id) && !session!.battle.towers.some(tower => tower.padId === pad.id));
   if (!pads.length) { placementType = undefined; selectedPadId = 'tower-03'; scene?.setSelected(selectedPadId); openContext('tower'); }
   else scene?.focusPad(pads.find(pad => pad.id === preferred)?.id ?? pads[0].id);
   syncUI();
 }
 async function placeTower(padId: string, kind: TowerId = 1): Promise<boolean> {
   const live = session;
-  if (!live || live.battle.towers.some(tower => tower.padId === padId)) return false;
+  if (!live || !live.battle.preparing && live.battle.towers.some(tower => tower.padId === padId)) return false;
   await perform(battle => battle.build(padId, kind));
   const built = session === live && !live.error && live.battle.towers.some(tower => tower.padId === padId);
   if (built) { scene?.focusObject('tower'); placementType = undefined; closeContext(); }
   return built;
 }
 async function selectPad(padId?: string): Promise<void> {
+  if (session?.battle.preparing && !placementType) return;
   selectedPadId = padId; selectedPanel = 'tower'; scene?.setSelected(padId);
   if (!padId) { contextOpen = false; syncUI(); return; }
   const kind = placementType;
@@ -497,18 +508,30 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
 async function perform(action: (battle: IdleBattle) => unknown, allowPaused = false): Promise<void> {
   const live = session;
   if (!ready || !live || (!allowPaused && live.paused) || live.error || document.hidden || live.awaitingResume || live.suspended) return;
-  const completion = live.command(action);
+  const completion = live.command(action, live.battle.introduction.stage !== 'done');
   syncUI(); await completion;
   scene?.refresh(); syncUI();
 }
 function startGroundPlacement(id: 'workshop' | 'warehouse' | 'mara'): void {
-  if (!session || !ready) return;
+  if (!session || !ready || session.battle.preparing) return;
   placementType = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); groundMode = id;
   groundCandidate = id === 'mara' ? undefined : { ...session.battle.plots[id] };
   scene?.focusObject(id === 'workshop' ? 'settlement' : id); syncUI();
 }
+element('onboarding-primary').addEventListener('click', () => {
+  const stage = session?.battle.introduction.stage;
+  if (stage === 'welcome' || stage === 'build') { startPlacement(1); return; }
+  if (stage === 'ready') { void perform(b => b.startDefense()); return; }
+  if (stage === 'practice') { void perform(b => b.castMaraNow()); return; }
+  if (stage === 'auto') void perform(b => b.finishIntroduction(true));
+}, { signal: lifetime.signal });
+element('onboarding-secondary').addEventListener('click', () => {
+  const stage = session?.battle.introduction.stage;
+  if (stage === 'ready') startPlacement(1);
+  else void perform(b => b.finishIntroduction(stage === 'practice'));
+}, { signal: lifetime.signal });
 for (const id of ['workshop', 'warehouse', 'mara'] as const) element(`move-${id}`).addEventListener('click', () => startGroundPlacement(id), { signal: lifetime.signal });
-element('mara-auto').addEventListener('click', () => { void perform(b => { b.mara.autoCast = !b.mara.autoCast; }); }, { signal: lifetime.signal });
+element('mara-auto').addEventListener('click', () => { void perform(b => { if (!b.finishIntroduction(!b.mara.autoCast)) b.mara.autoCast = !b.mara.autoCast; }); }, { signal: lifetime.signal });
 element('cast-mara').addEventListener('click', () => { void perform(b => b.castMaraNow()).then(() => closeContext()); }, { signal: lifetime.signal });
 element('meet-wisp').addEventListener('click', () => { void perform(b => { if (b.wispUnlocked) b.wispArrival.met = true; }, true); }, { signal: lifetime.signal });
 element('confirm-placement').addEventListener('click', () => {

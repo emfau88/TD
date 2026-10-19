@@ -8,12 +8,12 @@ button { border-radius:0; }
 .ui-icon { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; flex:0 0 auto; vertical-align:middle; }
 .ui-icon svg { display:block; width:100%; height:100%; overflow:visible; filter:drop-shadow(0 2px 0 #0007); }
 /* Every framed surface creates its own stacking context, so art cannot cover text. */
-.app-header,.command-dock,.boss-banner,.goal-ribbon,.tutorial-card,.context-panel,.return-dialog,dialog,.placement-help,.combat-toast,.fallback-note,.error-panel,
+.onboarding-card,.app-header,.command-dock,.boss-banner,.goal-ribbon,.tutorial-card,.context-panel,.return-dialog,dialog,.placement-help,.combat-toast,.fallback-note,.error-panel,
 .build-card,.companion-card,.icon-button,.map-controls button,.context-tabs button,.auto-battle,.mobile-hint-toggle,.action-stack button,.tutorial-actions button,.primary-action,.advance-button,.journal-goal {
   isolation:isolate; border-color:transparent; background:#111c20; border-radius:0;
 }
 .build-card,.companion-card,.icon-button,.map-controls button,.context-tabs button,.auto-battle,.action-stack button,.tutorial-actions button,.primary-action,.advance-button,.journal-goal { position:relative; }
-.app-header::before,.command-dock::before,.boss-banner::before,.goal-ribbon::before,.tutorial-card::before,.context-panel::before,.return-dialog::before,dialog::before,.placement-help::before,.combat-toast::before,.fallback-note::before,.error-panel::before,
+.onboarding-card::before,.app-header::before,.command-dock::before,.boss-banner::before,.goal-ribbon::before,.tutorial-card::before,.context-panel::before,.return-dialog::before,dialog::before,.placement-help::before,.combat-toast::before,.fallback-note::before,.error-panel::before,
 .build-card::before,.companion-card::before,.icon-button::before,.map-controls button::before,.context-tabs button::before,.auto-battle::after,.mobile-hint-toggle::before,.action-stack button::before,.tutorial-actions button::before,.primary-action::before,.advance-button::before,.journal-goal::before {
   content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; border:12px solid transparent; border-image:var(--ui-panel) 14% fill / 12px / 0 stretch;
 }
@@ -145,6 +145,7 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 /* Avoid Chromium opaque-overlay occlusion over WebGL: it can leave a mirrored
    black rectangle in the map. Fractional opacity preserves the framed toast. */
 .combat-toast { color:#f7dc9e; opacity:.999; }
+.onboarding-card { opacity:.999; }
 @media (max-width:1150px) {
  .app-header { padding-inline:16px; } .resource-strip { gap:6px; } .resource-tile { padding-inline:8px; }
  .catalog { width:410px; } .companion-card { min-width:170px; }
@@ -312,4 +313,24 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
   .wisp-arrival p { margin: 4px 0 6px; }
   .wisp-arrival canvas { width: 36px; height: 45px; }
   #placement-help { left: 8px; right: 8px; max-width: none; font-size: 12px; }
+}
+
+/* A compact invitation stays open on phones, while the map remains interactive. */
+.onboarding-card { position:absolute; z-index:16; left:14px; bottom:calc(var(--dock) + 14px); width:410px; max-width:calc(100% - 28px); padding:16px; display:flex; gap:12px; border:1px solid transparent; }
+.onboarding-card > canvas { width:48px; height:60px; flex:0 0 48px; image-rendering:pixelated; }
+.onboarding-card h2 { font-family:var(--display); font-size:23px; margin:5px 0 8px; }
+.onboarding-card p { font-size:13px; line-height:1.5; color:#e0d8c3; }
+.onboarding-actions { display:flex; flex-wrap:wrap; gap:7px; margin-top:12px; }
+.onboarding-actions button { font-size:12px; min-height:40px; }
+#onboarding-secondary { background:transparent; color:#d6c79f; }
+.preparing #settlement-tab,.preparing #pick-frost,.preparing #pick-cannon,.preparing #pick-sniper,.preparing #pick-wisp,.preparing #catalog-next,.preparing .battle-status { display:none; }
+.preparing #pick-archer { max-width:320px; }
+.preparing .catalog { flex:1; }
+@media (max-width:700px) {
+ .onboarding-card { left:8px; bottom:calc(var(--dock) + 10px); width:calc(100% - 16px); max-width:none; padding:12px; gap:8px; }
+ .onboarding-card > canvas { width:36px; height:45px; flex-basis:36px; }
+ .onboarding-card h2 { font-size:21px; }
+ .onboarding-card p { font-size:12px; line-height:1.45; }
+ .onboarding-actions button { min-height:44px; }
+ .preparing #placement-help { max-width:calc(100% - 16px); width:calc(100% - 16px); }
 }

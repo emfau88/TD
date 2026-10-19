@@ -1,8 +1,19 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Einstieg nach B13: Vorbereitung und Speichermigration
+
+Aktuell **Snapshot 15**, weiterhin **Kampfregeln 10**, Layout 4. `IdleBattle.newGame()` erzeugt einen turmlosen Start; der reine Kampf-Konstruktor bleibt für bestehende Modellproben/Migration erhalten. Browser-Sessions verwenden immer den geführten Start.
+
+- `introduction.stage`: `welcome → build → ready → practice → auto → done`. Alternative: während der Zauberlektion direkt Automatik einschalten. Nur `welcome/build/ready` stoppen Kampfticks; aktive Vorbereitungszeit wird separat gespeichert und zur angezeigten Spielzeit addiert.
+- Ein geschützter Waldwächter UID 1 aus einem kostenlosen Bausatz; nur neun überprüfte frühe Felder. Vor dem Start kostenlos versetzbar, keine weiteren Käufe. 75 Gold bleiben erhalten. Bausatzverbrauch, Position und Phase werden gemeinsam durch die Session bestätigt/bei Schreibfehler zurückgerollt.
+- `startDefense()` beginnt genau einmal den ersten Versuch. Maras erste manuelle Verstärkung wird nur mit Gegnern in Turmreichweite angeboten; danach Wahl zwischen bestehender gegnerabhängiger Automatik und manuellem Spiel.
+- Kein Farmnachweis/Offline-Ertrag vor dem ersten Kampf. Wiederherstellen einer Vorbereitung erzeugt keinen leeren Rückkehrdialog; normale laufende Partien behalten die bisherigen Rückkehrregeln.
+- Schema 14 wird vollständig gegen seine bisherigen Regeln validiert; Migration ergänzt nur `introduction: { stage: 'done', preparationSeconds: 0 }` und Schema 15. Keine Wirtschafts-/Kampfregeländerung, daher keine Entwertung bestehender Farmbelege. Ältere unterstützte Schemas durchlaufen die vorhandene Kette; kein zusätzlicher Turm oder Tutorialzwang.
+- [Gezielter Nachweis und Aufnahmen](../../../artifacts/idle-bastion/acceptance/onboarding/REPORT.md). Die folgenden historischen Abschnitte dokumentieren ihre jeweils ursprünglichen Versionen.
+
 ## B13: Balance mit dem erweiterten Gegnerkader
 
-Aktuell: Schema **14**, Kampfregeln **10**, Layout **4**. `src/balance.ts` bündelt die Kurve. Die Einführung der Arten und die Wellenrezepte aus B12c bleiben erhalten.
+B13-Basis: Schema **14**, Kampfregeln **10**, Layout **4**. `src/balance.ts` bündelt die Kurve. Die Einführung der Arten und die Wellenrezepte aus B12c bleiben erhalten.
 
 - Bis Welle 15: weiterhin Faktor `1,16^(Welle−1)`. Nur Rosenspiegel in Welle 15 hat zusätzlich 20 % HP (rund 8.148 statt 6.790). Keine Änderung der ersten fünf Wellen, Turmwerte, Preise oder Heilfähigkeiten.
 - Ab Welle 16: HP-Faktor `1,16^14 × 1,13^(Welle−15)`, weiterhin bei 100.000 begrenzt. Das entschärft die Häufung von Rüstung/Heilung nach Welle 20, ohne ihre Gegenmittel zu entfernen.

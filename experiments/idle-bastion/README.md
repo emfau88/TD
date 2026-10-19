@@ -1,6 +1,6 @@
 # SPIRE: Idle Bastion — überarbeiteter Entwicklungsauftrag
 
-Stand: 17.10.2026 · Umsetzungsstand und Freigaben: siehe [Roadmap](ROADMAP.md).
+Stand: 19.10.2026 · Umsetzungsstand und Freigaben: siehe [Roadmap](ROADMAP.md).
 
 Dieses Dokument ersetzt für Idle Bastion den ursprünglichen langen Auftrag. Es bündelt die anschließend gemeinsam besprochenen Entscheidungen einschließlich der wachsenden, scrollbar erschlossenen Karte. Die bestehende klassische SPIRE-Roadmap wird dadurch nicht verändert. Eine spätere ausdrückliche Startaufforderung autorisiert die Umsetzung bis zur ersten Zwischenabnahme, nicht das Überspringen dieser Abnahme.
 
@@ -40,12 +40,12 @@ Prioritäten: verständlicher Einstieg → korrekte Wirtschaft und Speicherung �
 | --- | --- |
 | Welt | Eigene Waldkarte, 40er Zellen; Startbereich 28×16, östliche Lichtung um 4 Spalten auf 32×16; Obergrenze 36×16 im Slice |
 | Kamera | Vorwiegend horizontales Verschieben; am Desktop alle Einstiegsziele gemeinsam sichtbar. Hochkant lesbarer Ausschnitt, Übersicht und direkter Kamerafokus über Bau-/Figurenkarten |
-| Turmplätze | Freie Rasterwahl bis zu drei Zellen vom Gegnerweg entfernt, auf beiden Seiten ab Spielbeginn. Weg, Wasser, Bäume, Felsen und Siedlungsfläche bleiben frei von Türmen; geschützter Startturm bleibt erhalten. Vorschau mit tatsächlicher Reichweite und ausdrücklicher Baubestätigung |
+| Turmplätze | Freie Rasterwahl bis zu drei Zellen vom Gegnerweg entfernt, auf beiden Seiten ab Spielbeginn. Weg, Wasser, Bäume, Felsen und Siedlungsfläche bleiben frei von Türmen; geschützter Startturm wird beim ersten Einstieg selbst aus einem kostenlosen Bausatz platziert. Vorschau mit tatsächlicher Reichweite und ausdrücklicher Baubestätigung |
 | Türme | Waldwächter (Allrounder), Frostkristall (Verlangsamung), Steinschleuder (Fläche), Scharfschütze (Rüstung) |
 | Turmlevel | Ziel der ersten 15 Minuten: Level 1–10; anschließend normale Schadensupgrades bis Level 20. Zahlenlevel getrennt von 3 vorhandenen Grafikstufen. Keine automatische Ausgabe von Gold für Upgrades |
 | Gebäude | Werkstatt I, eine sichtbare Verbesserung zur Werkstatt II, Vorratslager I; frei wählbare Grundstücke innerhalb der Siedlungsfläche, Versetzen bei Pause, kurze Bauanimation, kein Ressourcen-Bauzeitspiel |
 | Figuren | Mara sofort, Wisp später; keine Charakterlevel, Ausrüstung oder Beziehungswerte im Slice |
-| Wellen | Automatischer Start und Fortsetzung, kurze feste Pause; Niederlage führt automatisch zum sicheren Farmen, erneuter Vorstoß zunächst manuell |
+| Wellen | Erster Start ausdrücklich nach dem eigenen Turmbau; danach automatische Fortsetzung, kurze feste Pause; Niederlage führt automatisch zum sicheren Farmen, erneuter Vorstoß zunächst manuell |
 | Leben | Kern startet jeden Wellenversuch mit 20/20; Türme und Gebäude werden nicht beschädigt |
 | Geschwindigkeit | 1×; Pause hält Simulation und Produktion an. Keine spielerseitige 2×-Option im Slice |
 | Währung | Nur Gold. Keine zweite Bauressource, Prestige-Währung, Premiumwährung oder Beuteinventare |
@@ -61,8 +61,8 @@ Zeiten sind Ziele für einen neuen Spielstand bei 1× und zügigen normalen Ents
 
 | Zeitfenster | Ereignis und nachvollziehbarer Nutzen |
 | --- | --- |
-| 0–10 s | Wald direkt öffnen, vorhandener Waldwächter kämpft, Mara sichtbar, erste Goldbelohnung. Geschützter Startturm sichert eine tragfähige Basis |
-| spätestens 20 s | Spieler kann einen zweiten Waldwächter kaufen und platzieren; Startgold reicht dafür ohne Warten |
+| 0–10 s | Mara begrüßt auf ruhiger Karte. Kostenlosen Waldwächter selbst bauen, Reichweite prüfen und „Verteidigung starten“ wählen. Kein Zeitdruck; erst dann kommen Gegner |
+| etwa 10–20 s | Erste Käfer und Gold; Maras Fernzauber mit sichtbarer Wirkzeit ausprobieren oder direkt Automatik wählen. Ein zweiter Waldwächter ist aus den erhaltenen 75 Startgold sofort bezahlbar |
 | 30–60 s | Erstes normales Turmupgrade; Schaden und Trefferwirkung sind nachvollziehbar. Mara erklärt den Bau einer Werkstatt |
 | 60–90 s | Werkstatt I ist durch regulär verdientes Gold erreichbar und wird bei Befolgen des Hinweises sichtbar gebaut |
 | nach Bau, spätestens etwa 120–150 s | Erste Technologie „Frostfassung“ kaufen: Frostkristall freigeschaltet, zugleich normale Turmlevel 4–6 zugänglich. Der neue Turm verlangsamt Gegner sichtbar |
@@ -76,7 +76,7 @@ Zeiten sind Ziele für einen neuen Spielstand bei 1× und zügigen normalen Ents
 
 Die Wellen- und Preiskurve wird auf diese Fenster abgestimmt; bei einem Zielkonflikt zuerst Erträge, Kampfdauer und Kosten ändern. Kleine datenbezogene Anpassungen sind erlaubt und mit Vorher/Nachher-Zeiten zu dokumentieren. Reihenfolge, Charakterrollen und Freigabegrenzen bleiben verbindlich.
 
-**Umgesetzte Einstiegspreise:** 75 Startgold plus kostenloser Startturm; Waldwächter 75, Frostkristall 110, erstes Upgrade 60, Werkstatt I 400, Frostfassung 60. Die Werkstatt-Hypothese 220 wurde nach Messung des gesamten Kaufablaufs auf 400 angehoben. Der tatsächliche 1×-Browserverlauf und die verschiedenen Spielweisen stehen im [90-Sekunden-Bericht](../../artifacts/idle-bastion/acceptance/90s/REPORT.md). Steinschleuder/Scharfschütze kosten 135/170 Gold, Lager I 650 und die östliche Lichtung 900. Im legalen Modellablauf war die Lichtung nach 9:42 Minuten bezahlbar; das ist keine garantierte Zeit für jede Spielweise. Werkstatt II: 1.200 Gold; B13 hat diesen Preis mit der neuen Ertragskurve geprüft. Rosenspiegel gewährt einmalig 750 Gold Erstprämie ohne Wisp-Bonus; die gemessenen Zeiten und Grenzen mit dem erweiterten Gegnerkader stehen im [B13-Bericht](../../artifacts/idle-bastion/acceptance/15min/REPORT.md).
+**Umgesetzte Einstiegspreise:** 75 Startgold plus ein kostenloser, selbst platzierter Startturm; Waldwächter 75, Frostkristall 110, erstes Upgrade 60, Werkstatt I 400, Frostfassung 60. Die Werkstatt-Hypothese 220 wurde nach Messung des gesamten Kaufablaufs auf 400 angehoben. Die neue Begrüßungs-/Bauphase zählt zur Einstiegszeit; mit acht Sekunden Vorbereitung erreicht der legale Modelllauf die Werkstatt bei 86 Sekunden, die Forschung bei 102,25 Sekunden ([Einstiegsbericht](../../artifacts/idle-bastion/acceptance/onboarding/REPORT.md)). Der historische 1×-Browserverlauf und die verschiedenen Spielweisen stehen im [90-Sekunden-Bericht](../../artifacts/idle-bastion/acceptance/90s/REPORT.md). Steinschleuder/Scharfschütze kosten 135/170 Gold, Lager I 650 und die östliche Lichtung 900. Im legalen Modellablauf war die Lichtung nach 9:42 Minuten bezahlbar; das ist keine garantierte Zeit für jede Spielweise. Werkstatt II: 1.200 Gold; B13 hat diesen Preis mit der neuen Ertragskurve geprüft. Rosenspiegel gewährt einmalig 750 Gold Erstprämie ohne Wisp-Bonus; die gemessenen Zeiten und Grenzen mit dem erweiterten Gegnerkader stehen im [B13-Bericht](../../artifacts/idle-bastion/acceptance/15min/REPORT.md).
 
 ## Rollen und Entscheidungen
 
@@ -85,12 +85,12 @@ Die Wellen- und Preiskurve wird auf diese Fenster abgestimmt; bei einem Zielkonf
 - **Werkstatt:** Erste Forschung eröffnet mit Frost eine neue taktische Kombination und höhere Level; keine frühe verzweigte Spezialisierung, die den Scharfschützen überflüssig macht. Werkstatt II ist ein späterer sichtbarer Erfolg mit neuer Levelgrenze.
 - **Lager:** Eine Vorschau zeigt sichere Basis, Effizienz, Zeitlimit und beispielsweise den Ertrag nach einer Stunde. Die Verbesserung wirkt ab Kauf, nicht rückwirkend auf bereits vergangene Abwesenheit.
 - **Platzierung:** Verlangsamung, Mehrfachabdeckung und Flächenschaden müssen sich lohnen. Numerische Level dürfen nicht irgendwann die gesamte Karte abdecken.
-- **Farming:** Kein Game-over und keine Löschung der Siedlung. Geschützter Startturm kann nicht verkauft/verschoben werden; andere Türme sind für 70 % ihrer Investition verkäuflich. Kein kostenloses Umplatzieren während einer Welle.
+- **Farming:** Kein Game-over und keine Löschung der Siedlung. Geschützter Startturm kann vor dem ersten Kampf kostenlos versetzt, danach nicht verkauft/verschoben werden; andere Türme sind für 70 % ihrer Investition verkäuflich. Kein kostenloses Umplatzieren während einer Welle.
 - **Fortschritt:** Erstbesiegungen und Freischaltungen sind einmalig; normale neue Farmdurchläufe dürfen erneut gewöhnliches Gold erzeugen. Ein wiederhergestellter alter Durchlauf darf dieselbe Belohnung nicht erneut vergeben.
 
 ## Tutorial und Rückkehr
 
-Mara führt mit kurzen Kommentaren, einem aktuellen Ziel und dezenten Markierungen durch: Kampf → zweiter Turm → Upgrade → Werkstatt → Frostfassung → Wisp → Lager/Offline → Lichtung. Kampf läuft dabei weiter. Erledigte Schritte werden aus dem Zustand erkannt; eine alternative zulässige Turmposition oder ein früher erfüllter Schritt blockiert nichts.
+Mara begrüßt neue Spieler auf ruhiger Karte: eigener kostenloser Turm → ausdrücklicher Verteidigungsstart → erster Fernzauber und Automatik. Danach führen kurze Kommentare und ein aktuelles Ziel durch: zweiter Turm → Upgrade → Werkstatt → Frostfassung → Wisp → Lager/Offline → Lichtung. Ab dem ersten Start läuft der Kampf dabei weiter. Bestehende Spielstände überspringen die neue Einführung vollständig. Erledigte Schritte werden aus dem Zustand erkannt; eine alternative zulässige Turmposition oder ein früher erfüllter Schritt blockiert nichts.
 
 Tutorial überspringen blendet Hilfen aus und verändert keine Freischaltbedingungen. „Hinweise erneut ansehen“ spielt die Erklärungen zustandsbezogen erneut ab, vergibt keine Ressourcen und setzt die Wirtschaft nicht zurück. Fortschritt, Hinweise und einmalige Belohnungen werden gespeichert.
 

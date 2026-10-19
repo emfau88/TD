@@ -12,6 +12,8 @@ import type { BattleSaveStore, SaveEnvelope, WriterLease } from './save-store';
 export type SessionStore = Pick<BattleSaveStore,
   'load' | 'save' | 'recoverBackup' | 'close' | 'acquireWriter' | 'renewWriter' | 'releaseWriter'>;
 export interface SessionOptions {
+  /** Non-interactive combat fixtures can opt out; browser sessions always guide new players. */
+  guidedStart?: boolean;
   recover?: boolean;
   now?: () => number;
   ownerId?: string;
@@ -96,7 +98,8 @@ export class BattleSession {
    */
   static async open(store?: SessionStore, options: SessionOptions = {}): Promise<BattleSession> {
     const now = options.now ?? Date.now;
-    if (!store) return new BattleSession(new IdleBattle(), undefined, now);
+    const fresh = () => options.guidedStart === false ? new IdleBattle() : IdleBattle.newGame();
+    if (!store) return new BattleSession(fresh(), undefined, now);
     const manager = options.locks === undefined
       ? (typeof navigator === 'undefined' ? undefined : navigator.locks) : options.locks;
     const releaseWeb = await webWriterLock(manager);
@@ -117,12 +120,12 @@ export class BattleSession {
         const battle = IdleBattle.restore(loaded.save.battle);
         if (!battle) throw new SessionLoadError('Der gespeicherte Kampf ist ungültig.', false);
         const session = new BattleSession(battle, store, now, writer, undefined, loaded.save);
-        session.currentOffline = reserveOffline(session.currentOffline, now());
+        session.currentOffline = battle.preparing ? createOfflineState(now()) : reserveOffline(session.currentOffline, now());
         session.waitingForResume = !!session.currentOffline.window;
         await session.commit();
         return session;
       }
-      const session = new BattleSession(new IdleBattle(), store, now, writer, undefined);
+      const session = new BattleSession(fresh(), store, now, writer, undefined);
       // Initial commit is mandatory even if the model equals its constructor.
       await session.commit(true);
       return session;
@@ -150,6 +153,7 @@ export class BattleSession {
     if (this.closed || this.closing || this.currentError || this.transitioning
       || (!!this.store && !this.currentWriter) || this.currentPaused || this.currentSuspended || this.waitingForResume
       || !Number.isFinite(dtSeconds) || dtSeconds <= 0) return;
+    if (dtSeconds > GAP_SECONDS && this.currentBattle.preparing) return;
     if (dtSeconds > GAP_SECONDS) {
       // Temporary play has no offline economy. Discard the unattended gap.
       if (this.temporary) return;
@@ -176,7 +180,12 @@ export class BattleSession {
   /** Caller callbacks mutate synchronously; acknowledgement follows commit.
    * Concurrent clicks and purchases in the return dialog are rejected.
    */
-  async command(fn: (battle: IdleBattle) => unknown): Promise<boolean> {
+  async command(fn: (battle: IdleBattle) => unknown, waitForSave = false): Promise<boolean> {
+    // Intro buttons stay tappable across background checkpoints. Revalidate the
+    // action after that write; ordinary concurrent purchases still fail fast.
+    if (waitForSave && this.pendingWrite) {
+      try { await this.pendingWrite; } catch { return false; }
+    }
     if (this.unavailable()) return false;
     const before = this.currentBattle.snapshot();
     const oldEvents = this.currentBattle.events.slice();

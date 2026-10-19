@@ -51,7 +51,7 @@ test('schema 10 preserves money, old tower positions, ongoing combat and cooldow
   assert.equal(restored.gold, snap.gold); assert.deepEqual(restored.snapshot().towers, snap.towers);
   assert.deepEqual(restored.snapshot().enemies, snap.enemies); assert.deepEqual(restored.snapshot().shots, snap.shots);
   assert.equal(restored.mara.cooldownRemaining, snap.mara.cooldownRemaining);
-  assert.deepEqual(restored.liveClearedWaves, []); assert.equal(restored.snapshot().schemaVersion, 14);
+  assert.deepEqual(restored.liveClearedWaves, []); assert.equal(restored.snapshot().schemaVersion, 15);
   assert.ok(IdleBattle.restore(restored.snapshot()));
 });
 

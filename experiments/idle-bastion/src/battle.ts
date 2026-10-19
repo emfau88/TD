@@ -74,8 +74,11 @@ export interface BattleEvent {
 }
 
 /** Only scalar IDs and fired payloads cross the save boundary. UI events are transient. */
+export type IntroductionStage = 'welcome' | 'build' | 'ready' | 'practice' | 'auto' | 'done';
+export interface Introduction { stage: IntroductionStage; preparationSeconds: number }
 export interface BattleSnapshot {
-  schemaVersion: 14; rulesVersion: 10; layoutVersion: 3 | 4;
+  introduction: Introduction;
+  schemaVersion: 15; rulesVersion: 10; layoutVersion: 3 | 4;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
@@ -123,6 +126,7 @@ export function sellValue(tower: Pick<Tower, 'spent'>): number {
 }
 
 export class IdleBattle {
+  introduction: Introduction = { stage: 'done', preparationSeconds: 0 };
   gold: number = BASE.startGold;
   goldRemainderUnits = 0;
   rewardRemainderUnits = 0;
@@ -178,13 +182,59 @@ export class IdleBattle {
     this.mara = createMara(layout, this.towers[0].uid);
   }
 
+  /** Sessions use this factory. The bare constructor retains an already deployed
+   * defense for migration and deterministic combat probes. */
+  static newGame(): IdleBattle {
+    const battle = new IdleBattle();
+    battle.towers = []; battle.uid = 1;
+    battle.introduction = { stage: 'welcome', preparationSeconds: 0 };
+    battle.mara.targetTowerUid = 0; battle.mara.autoCast = false;
+    return battle;
+  }
+  get preparing(): boolean { return ['welcome', 'build', 'ready'].includes(this.introduction.stage); }
+  beginIntroduction(): boolean {
+    if (this.introduction.stage !== 'welcome') return false;
+    this.introduction.stage = 'build'; return true;
+  }
+  /** A small early corridor keeps the free defense useful even without Mara. */
+  isStarterLocation(id: string): boolean {
+    const pad = this.layout.towerPads.find(p => p.id === id);
+    return !!pad && this.isPadUnlocked(id) && pad.cell.x >= 3 && pad.cell.x <= 7
+      && [4, 6].includes(pad.cell.y)
+      && !this.towers.some(t => t.padId === id && !t.protected);
+  }
+  private placeStarter(id: string): Tower | undefined {
+    if (!['build', 'ready'].includes(this.introduction.stage) || !this.isStarterLocation(id)) return undefined;
+    let tower = this.towers.find(t => t.protected);
+    if (tower) Object.assign(tower, { padId: id, ...cellCenter(this.layout, this.layout.towerPads.find(p => p.id === id)!.cell) });
+    else { tower = this.createTower(id, true); this.towers.push(tower); }
+    this.mara.targetTowerUid = tower.uid;
+    this.introduction.stage = 'ready';
+    this.events.push({ type: 'build', tower, x: tower.x, y: tower.y, amount: 0 });
+    return tower;
+  }
+  startDefense(): boolean {
+    if (this.introduction.stage !== 'ready' || this.towers.length !== 1) return false;
+    this.introduction.stage = 'practice'; this.startAttempt(); return true;
+  }
+  get canPracticeSpell(): boolean {
+    const target = this.towers.find(t => t.uid === this.mara.targetTowerUid);
+    return this.phase === 'wave' && !!target && !this.isCharmed(target.uid)
+      && this.mara.cooldownRemaining <= 0 && distance(this.mara, target) <= MARA.range
+      && this.enemies.some(e => e.hp > 0 && distance(e, target) <= stats(target).range);
+  }
+  finishIntroduction(autoCast: boolean): boolean {
+    if (!['practice', 'auto'].includes(this.introduction.stage)) return false;
+    this.mara.autoCast = autoCast; this.introduction.stage = 'done'; this.tutorial.seen |= 1; return true;
+  }
+
   /** Only the shipped closed/open layouts cross the save boundary. */
   snapshot(): BattleSnapshot {
     if (JSON.stringify(this.layout) !== JSON.stringify(battleLayout(this.clearing.unlocked, this.plots, this.layout.version as 3 | 4))) {
-      throw new Error('Unsupported battle layout for snapshot version 14.');
+      throw new Error('Unsupported battle layout for snapshot version 15.');
     }
     return {
-      schemaVersion: 14, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4, layoutId: this.clearing.unlocked ? 'east32' : 'start28',
+      schemaVersion: 15, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4, layoutId: this.clearing.unlocked ? 'east32' : 'start28',
       clearing: { ...this.clearing },
       bossVictories: this.bossVictories, secondBossVictories: this.secondBossVictories, bossChallengeWave: this.bossChallengeWave, bossChallengeRequested: this.bossChallengeRequested, bossCharm: { ...this.bossCharm },
       progress: cloneProgress(this.progress), rewardRemainderUnits: this.rewardRemainderUnits, waveRecipeVersion: this.waveRecipeVersion,
@@ -281,7 +331,7 @@ export class IdleBattle {
         wispArrival: { at: value.settlement.frostResearched && value.highestCleared >= 5 ? value.elapsed : null, met: false },
         mara: { ...value.mara, autoCast: true, effectTowerUid: value.mara.effectRemaining > 0 ? value.mara.targetTowerUid : null } };
     }
-    if (isRecord(value) && (value.schemaVersion === 11 || value.schemaVersion === 12 || value.schemaVersion === 13 || value.schemaVersion === 14) && validPlotPositions(value.plots)) {
+    if (isRecord(value) && (value.schemaVersion === 11 || value.schemaVersion === 12 || value.schemaVersion === 13 || value.schemaVersion === 14 || value.schemaVersion === 15) && validPlotPositions(value.plots)) {
       if (value.layoutVersion !== 3 && value.layoutVersion !== 4) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion));
       if (value.schemaVersion === 11) {
@@ -298,7 +348,12 @@ export class IdleBattle {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 13, model.layout.version as 3 | 4)) return undefined;
       value = { ...value, schemaVersion: 14, rulesVersion: BATTLE_RULES_VERSION, liveClearedWaves: [], farmWave: 1 };
     }
+    if (isRecord(value) && value.schemaVersion === 14) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 14, model.layout.version as 3 | 4)) return undefined;
+      value = { ...value, schemaVersion: 15, introduction: { stage: 'done', preparationSeconds: 0 } };
+    }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4)) return undefined;
+    model.introduction = { ...value.introduction };
     model.plots = structuredClone(value.plots); model.wispArrival = { ...value.wispArrival };
     model.clearing = { ...value.clearing };
     model.secondBossVictories = value.secondBossVictories; model.bossChallengeWave = value.bossChallengeWave;
@@ -381,6 +436,7 @@ export class IdleBattle {
   get maxLevel(): number { return this.settlement.workshopUpgraded ? BASE.maxLevel : this.settlement.frostResearched ? 6 : 3; }
 
   buildWorkshop(): boolean {
+    if (this.preparing) return false;
     if (this.phase === 'defeat' || this.settlement.workshopBuilt || this.gold < SETTLEMENT.workshopCost) return false;
     this.gold -= SETTLEMENT.workshopCost;
     this.settlement.workshopBuilt = true; this.settlement.builtAt = this.elapsed;
@@ -388,6 +444,7 @@ export class IdleBattle {
     return true;
   }
   researchFrost(): boolean {
+    if (this.preparing) return false;
     if (this.phase === 'defeat' || !this.settlement.workshopBuilt || this.settlement.frostResearched || this.gold < SETTLEMENT.researchCost) return false;
     this.gold -= SETTLEMENT.researchCost; this.settlement.frostResearched = true;
     this.events.push({ type: 'research', amount: SETTLEMENT.researchCost });
@@ -397,6 +454,7 @@ export class IdleBattle {
 
   get warehouseUnlocked(): boolean { return this.wispUnlocked && this.highestCleared >= 8; }
   buildWarehouse(): boolean {
+    if (this.preparing) return false;
     if (this.phase === 'defeat' || !this.warehouseUnlocked || this.settlement.warehouseBuilt || this.gold < SETTLEMENT.warehouseCost) return false;
     this.gold -= SETTLEMENT.warehouseCost;
     this.settlement.warehouseBuilt = true; this.settlement.warehouseBuiltAt = this.elapsed;
@@ -406,6 +464,7 @@ export class IdleBattle {
 
   get clearingAvailable(): boolean { return this.bossVictories > 0; }
   unlockClearing(): boolean {
+    if (this.preparing) return false;
     if (this.phase === 'defeat' || !this.clearingAvailable || this.clearing.unlocked || this.gold < SETTLEMENT.clearingCost) return false;
     this.gold -= SETTLEMENT.clearingCost;
     this.clearing = { unlocked: true, openedAt: this.elapsed };
@@ -417,6 +476,7 @@ export class IdleBattle {
   }
 
   upgradeWorkshop(): boolean {
+    if (this.preparing) return false;
     if (this.phase === 'defeat' || !this.settlement.frostResearched
       || this.settlement.workshopUpgraded || this.gold < SETTLEMENT.workshopUpgradeCost) return false;
     this.gold -= SETTLEMENT.workshopUpgradeCost;
@@ -444,15 +504,19 @@ export class IdleBattle {
   movementBlocked(): readonly GridCell[] {
     return [...getForestBlockedCells(this.layout), ...this.towers.map(t => ({ x: Math.floor(t.x / 40), y: Math.floor(t.y / 40) }))];
   }
-  moveMaraTo(cell: GridCell): boolean { return moveMara(this.mara, cell, this.layout, this.movementBlocked()); }
+  moveMaraTo(cell: GridCell): boolean { return !this.preparing && moveMara(this.mara, cell, this.layout, this.movementBlocked()); }
   castMaraNow(): boolean {
     const target = this.towers.find(t => t.uid === this.mara.targetTowerUid);
-    return this.phase === 'wave' && !!target && !this.isCharmed(target.uid) && castMara(this.mara, target);
+    const cast = this.phase === 'wave' && !!target && !this.isCharmed(target.uid)
+      && (this.introduction.stage !== 'practice' || this.canPracticeSpell) && castMara(this.mara, target);
+    if (cast && this.introduction.stage === 'practice') this.introduction.stage = 'auto';
+    return cast;
   }
   canPositionBuilding(id: 'workshop' | 'warehouse', cell: GridCell): boolean {
     return validPlotPositions({ ...this.plots, [id]: cell });
   }
   positionBuilding(id: 'workshop' | 'warehouse', cell: GridCell): boolean {
+    if (this.preparing) return false;
     if (!this.canPositionBuilding(id, cell)) return false;
     const plots = { ...this.plots, [id]: { ...cell } }, layout = battleLayout(this.clearing.unlocked, plots, this.layout.version as 3 | 4);
     // Reject an obstruction of Mara's current cell; interrupted routes stop safely.
@@ -504,6 +568,7 @@ export class IdleBattle {
   }
 
   canBuild(padId: string, kind: TowerId = 1): boolean {
+    if (this.preparing) return kind === 1 && ['build', 'ready'].includes(this.introduction.stage) && this.isStarterLocation(padId);
     const pad = this.layout.towerPads.find(candidate => candidate.id === padId);
     return this.phase !== 'defeat' && !!pad && this.isPadUnlocked(pad.id)
       && isUnlockedCell(this.layout, pad.cell) && !this.towers.some(tower => tower.padId === padId)
@@ -513,6 +578,7 @@ export class IdleBattle {
   }
 
   build(padId: string, kind: TowerId = 1): Tower | undefined {
+    if (this.preparing) return kind === 1 ? this.placeStarter(padId) : undefined;
     if (!this.canBuild(padId, kind)) return undefined;
     const tower = this.createTower(padId, false, kind);
     this.gold -= tower.def.cost;
@@ -525,7 +591,7 @@ export class IdleBattle {
 
   upgrade(uid: number): boolean {
     const tower = this.towers.find(candidate => candidate.uid === uid);
-    if (this.phase === 'defeat' || !tower || tower.level >= this.maxLevel) return false;
+    if (this.preparing || this.phase === 'defeat' || !tower || tower.level >= this.maxLevel) return false;
     const cost = upgradeCost(tower);
     if (this.gold < cost) return false;
     this.gold -= cost;
@@ -555,6 +621,7 @@ export class IdleBattle {
    */
   update(dt: number): void {
     if (!Number.isFinite(dt) || dt <= 0) return;
+    if (this.preparing) { this.introduction.preparationSeconds += dt; return; }
     this.pendingTime += dt;
     const count = Math.floor((this.pendingTime + 1e-9) / BASE.stepSeconds);
     this.pendingTime -= count * BASE.stepSeconds;
@@ -863,12 +930,12 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 = 0, layoutVersion: 1 | 2 | 3 | 4 = legacy ? 2 : LAYOUT_VERSION,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 = 0, layoutVersion: 1 | 2 | 3 | 4 = legacy ? 2 : LAYOUT_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
-  if (!isRecord(value) || value.schemaVersion !== (legacy || 14) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
+  if (!isRecord(value) || value.schemaVersion !== (legacy || 15) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy === 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
     || value.layoutVersion !== layoutVersion || value.layoutId !== (layout.bounds.columns === 32 ? 'east32' : 'start28')) return false;
-  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10]).includes(value.waveRecipeVersion as number))) return false;
+  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy === 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10]).includes(value.waveRecipeVersion as number))) return false;
   if ((!legacy || legacy >= 9) && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
     || value.clearing.unlocked !== (layout.bounds.columns === 32)
     || (value.clearing.unlocked ? !integerIn(value.bossVictories, 1) || !numberIn(value.clearing.openedAt, 0, value.elapsed as number) : value.clearing.openedAt !== null))) return false;
@@ -878,6 +945,18 @@ function validSnapshot(
     if (unlocked ? !numberIn(value.wispArrival.at, 0, value.elapsed as number) : value.wispArrival.at !== null || value.wispArrival.met) return false;
   }
   if (!legacy && layoutVersion === 3 && (value.waveRecipeVersion as number) >= 8) return false;
+  if (!legacy && (!isRecord(value.introduction)
+    || !['welcome', 'build', 'ready', 'practice', 'auto', 'done'].includes(value.introduction.stage as string)
+    || !numberIn(value.introduction.preparationSeconds, 0, Number.MAX_SAFE_INTEGER))) return false;
+  const intro = !legacy ? value.introduction as unknown as Introduction : undefined;
+  const unbuilt = intro?.stage === 'welcome' || intro?.stage === 'build';
+  const preparing = unbuilt || intro?.stage === 'ready';
+  if (preparing && (value.wave !== 0 || value.elapsed !== 0 || value.gold !== BASE.startGold || value.earned !== 0
+    || value.goldRemainderUnits !== 0 || value.rewardRemainderUnits !== 0 || value.pendingTime !== 0
+    || value.uid !== (unbuilt ? 1 : 2) || !isRecord(value.mara) || value.mara.autoCast !== false
+    || value.mara.cooldownRemaining !== 0 || value.mara.effectRemaining !== 0
+    || !isRecord(value.settlement) || value.settlement.workshopBuilt !== false)) return false;
+  if (intro && ['practice', 'auto'].includes(intro.stage) && (value.wave === 0 || !isRecord(value.mara) || value.mara.autoCast !== false)) return false;
   const original = legacy === 2 || legacy === 3;
   if (!original) {
     if (!isRecord(value.settlement) || typeof value.settlement.workshopBuilt !== 'boolean'
@@ -922,7 +1001,7 @@ function validSnapshot(
   if (value.farmWave !== 1 && !value.liveClearedWaves.includes(value.farmWave)) return false;
   if ((!legacy || legacy >= 5) && !validProgress(value.progress, value.attemptId, value.elapsed as number)) return false;
   if (!integerIn(value.gold) || !integerIn(value.earned) || !integerIn(value.kills)
-    || !integerIn(value.wave) || !integerIn(value.uid, 2)
+    || !integerIn(value.wave) || !integerIn(value.uid, unbuilt ? 1 : 2)
     || !integerIn(value.ticks) || !numberIn(value.elapsed, 0, Number.MAX_SAFE_INTEGER)
     || value.elapsed !== value.ticks * BASE.stepSeconds
     || !numberIn(value.pendingTime, 0, BASE.stepSeconds) || value.pendingTime >= BASE.stepSeconds
@@ -934,10 +1013,11 @@ function validSnapshot(
   if ((value.phase === 'defeat') !== (value.lives === 0)) return false;
   if ((value.phase === 'wave' || value.phase === 'defeat') && value.wave === 0) return false;
   if (value.phase !== 'intermission' && value.intermissionRemaining !== 0) return false;
-  if (!Array.isArray(value.towers) || value.towers.length < 1 || value.towers.length > (modern ? layout.towerPads.length : legacy && legacy < 6 ? 4 : layoutVersion === 1 ? 8 : layout.bounds.columns === 32 ? 13 : 11)
+  if (!Array.isArray(value.towers) || value.towers.length < (unbuilt ? 0 : 1) || value.towers.length > (modern ? layout.towerPads.length : legacy && legacy < 6 ? 4 : layoutVersion === 1 ? 8 : layout.bounds.columns === 32 ? 13 : 11)
     || !Array.isArray(value.enemies) || value.enemies.length > BASE.waves.maxCount
     || !Array.isArray(value.shots) || value.shots.length > 1024
     || !Array.isArray(value.queue) || value.queue.length > BASE.waves.maxCount) return false;
+  if (preparing && value.towers.length !== (unbuilt ? 0 : 1)) return false;
   if (value.phase === 'intermission' && (value.queue.length || value.enemies.length || value.shots.length)) return false;
   if (value.phase === 'wave' && value.queue.length + value.enemies.length === 0) return false;
   if (value.phase === 'defeat' && value.shots.length) return false;
@@ -970,7 +1050,8 @@ function validSnapshot(
     const pad = layout.towerPads.find(candidate => candidate.id === tower.padId);
     if (modern && pad && getForestBlockedCells(layout).some(c => c.x === pad.cell.x && c.y === pad.cell.y)) return false;
     if (!pad || !padUnlocked(pad.availability, legacy && legacy < 6 ? 0 : value.highestCleared, (!legacy || legacy >= 9) && layout.bounds.columns === 32) || !isUnlockedCell(layout, pad.cell)) return false;
-    if (tower.protected !== pad.isStarter || (tower.protected && (tower.uid !== 1 || def.id !== 1))) return false;
+    if ((legacy && tower.protected !== pad.isStarter) || (tower.protected && (tower.uid !== 1 || def.id !== 1))) return false;
+    if (preparing && (!tower.protected || tower.level !== 1 || pad.cell.x < 3 || pad.cell.x > 7 || ![4, 6].includes(pad.cell.y))) return false;
     if (tower.protected) protectedCount++;
     let expectedSpent = tower.protected ? 0 : def.cost;
     for (let level = 1; level < tower.level; level++) expectedSpent += upgradeCost({ def, level });
@@ -979,8 +1060,9 @@ function validSnapshot(
     towerIds.add(tower.uid);
     towerKills += tower.kills;
   }
-  if (protectedCount !== 1 || towerKills > value.kills) return false;
-  if (legacy !== 2 && !(modern ? validMara : validLegacyMara)(value.mara, value.towers.map(tower => ({ ...tower,
+  if (protectedCount !== (unbuilt ? 0 : 1) || towerKills > value.kills) return false;
+  if (unbuilt && (!isRecord(value.mara) || Object.entries({ ...createMara(layout, 0), autoCast: false }).some(([key, expected]) => JSON.stringify((value.mara as Record<string, unknown>)[key]) !== JSON.stringify(expected)))) return false;
+  if (!unbuilt && legacy !== 2 && !(modern ? validMara : validLegacyMara)(value.mara, value.towers.map(tower => ({ ...tower,
     ...cellCenter(layout, layout.towerPads.find(pad => pad.id === tower.padId)!.cell) })), layout, [...getForestBlockedCells(layout), ...(modern ? value.towers.map(t => layout.towerPads.find(p => p.id === t.padId)!.cell) : [])])) return false;
   if (!legacy || legacy >= 8) {
     const charm = value.bossCharm;

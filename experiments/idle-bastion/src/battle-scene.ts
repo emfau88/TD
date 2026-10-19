@@ -52,6 +52,8 @@ export class BattleScene extends Phaser.Scene {
   private ghostWeapon!: Phaser.GameObjects.Image;
   private buffText!: Phaser.GameObjects.Text;
   private maraName!: Phaser.GameObjects.Text;
+  private entryLabel!: Phaser.GameObjects.Text;
+  private coreLabel!: Phaser.GameObjects.Text;
   private readonly towerViews = new Map<number, TowerView>();
   private readonly enemyViews = new Map<number, EnemyView>();
   private readonly shotViews = new Map<number, Phaser.GameObjects.Image>();
@@ -94,6 +96,8 @@ export class BattleScene extends Phaser.Scene {
     this.maraName = this.add.text(0, 0, 'Mara', {
       fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: '#fff3cf', stroke: '#20392c', strokeThickness: 2,
     }).setOrigin(0.5).setDepth(5001);
+    this.entryLabel = this.add.text(50, 192, 'Käfer kommen hier →', { fontFamily: 'Segoe UI', fontSize: '12px', resolution: 2, color: '#fff1b2', stroke: '#22382b', strokeThickness: 3 }).setDepth(5002);
+    this.coreLabel = this.add.text(1100, 205, 'Diesen Kern schützen', { fontFamily: 'Segoe UI', fontSize: '12px', resolution: 2, color: '#fff1b2', stroke: '#22382b', strokeThickness: 3 }).setOrigin(1, 0).setDepth(5002);
     this.wisp = this.add.image(0, 0, KEYS.wisp, 0).setOrigin(0.5, 51 / 64).setScale(0.9);
     this.wispName = this.add.text(0, 0, 'Wisp · +10 % Gold', { fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: '#ffe0a0', stroke: '#20392c', strokeThickness: 2 }).setOrigin(0.5).setDepth(5001);
     this.input.on('pointerdown', this.beginPointer, this);
@@ -138,7 +142,7 @@ export class BattleScene extends Phaser.Scene {
       this.hooks.changed();
     }
   }
-  acceptEvents(events: readonly BattleEvent[]): void { if (this.readyToDraw) this.combatEffects.accept(events, this.sim.elapsed); }
+  acceptEvents(events: readonly BattleEvent[]): void { if (this.readyToDraw) this.combatEffects.accept(events, this.sim.elapsed + this.sim.introduction.preparationSeconds); }
   setPlacement(kind?: TowerId, ground?: 'mara' | 'workshop' | 'warehouse', cell?: GridCell): void {
     this.buildKind = kind; this.groundMode = ground; this.groundCell = cell;
   }
@@ -324,7 +328,7 @@ export class BattleScene extends Phaser.Scene {
       return;
     }
     if (this.buildKind) for (const pad of this.sim.layout.towerPads) {
-      if (!this.sim.isPadUnlocked(pad.id) || this.sim.towers.some(t => t.padId === pad.id)) continue;
+      if (!this.sim.isPadUnlocked(pad.id) || this.sim.preparing && !this.sim.isStarterLocation(pad.id) || this.sim.towers.some(t => t.padId === pad.id)) continue;
       g.fillStyle(0xf1d696, 0.12).fillRect(pad.cell.x * size + 2, pad.cell.y * size + 2, size - 4, size - 4);
       g.lineStyle(1, 0xf1d696, 0.4).strokeRect(pad.cell.x * size + 2, pad.cell.y * size + 2, size - 4, size - 4);
     }
@@ -444,7 +448,8 @@ export class BattleScene extends Phaser.Scene {
       const target = sim.enemies.find(enemy => enemy.uid === shot.target);
       if (target) view.setRotation(Math.atan2(target.y - shot.y, target.x - shot.x) + Math.PI / 2);
     }
-    this.combatEffects.update(elapsed, shots, towers);
+    this.combatEffects.update(elapsed + sim.introduction.preparationSeconds, shots, towers);
+    this.entryLabel.setVisible(sim.preparing); this.coreLabel.setVisible(sim.preparing);
     const boostedTower = sim.towers.find(t => sim.isMaraBoosted(t.uid));
     this.buffText.setVisible(!!boostedTower);
     if (boostedTower) this.buffText.setPosition(boostedTower.x, boostedTower.y - 60).setText(`✦ ${Math.ceil(sim.mara.effectRemaining)} s`);

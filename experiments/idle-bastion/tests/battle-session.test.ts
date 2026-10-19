@@ -68,7 +68,7 @@ class ControlledStore implements SessionStore {
   close(): void { this.closed = true; }
 }
 const open = (store: SessionStore, options: SessionOptions = {}) => BattleSession.open(store, {
-  now: () => store instanceof ControlledStore ? store.clock : 1000, locks: null, ...options,
+  now: () => store instanceof ControlledStore ? store.clock : 1000, locks: null, guidedStart: false, ...options,
 });
 const fixture = (battle: IdleBattle, revision = 1, paused = false): SaveEnvelope => ({
   schemaVersion: 2, revision, writtenAt: 1000, paused, battle: battle.snapshot(), offline: createOfflineState(1000),
@@ -94,7 +94,7 @@ test('fresh persistent session commits before exposure and temporary play is exp
   assert.equal(session.revision, 1);
   assert.equal(store.writes.length, 1);
   assert.ok(session.writer);
-  const temporary = await BattleSession.open(undefined, { now: () => 1000 });
+  const temporary = await BattleSession.open(undefined, { now: () => 1000, guidedStart: false });
   assert.equal(temporary.temporary, true);
   assert.equal(temporary.writer, undefined);
   assert.equal(await temporary.command(battle => battle.build('tower-02')), true);
@@ -441,7 +441,7 @@ test('a backwards clock cannot replay reserved offline time or move its cursor b
 
 test('temporary play discards a large frame gap without offline gold or a return dialog', async () => {
   let now = 1000;
-  const session = await BattleSession.open(undefined, { now: () => now });
+  const session = await BattleSession.open(undefined, { now: () => now, guidedStart: false });
   await firstClear(session);
   assert.ok(session.certificate);
   const before = session.battle.snapshot(), offline = session.offline;
