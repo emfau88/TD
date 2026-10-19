@@ -12,8 +12,8 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
-| Aktives Umsetzungspaket | Interaktive Einstiegs-UX · umgesetzt; kompakte Mobil-/Freischaltungsprüfung und Veröffentlichung abschließen |
-| Nächster Schritt | Interaktive Einstiegs-UX veröffentlichen und über „Frische Probe“ testen; B14 und B12d-Umsetzung noch nicht beauftragt |
+| Aktives Umsetzungspaket | Interaktive Einstiegs-UX · geprüft und auf GitHub Pages veröffentlicht |
+| Nächster Schritt | Nutzerprobe des überarbeiteten Einstiegs über „Frische Probe“; B14 und B12d-Umsetzung noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -77,7 +77,7 @@ Am 19.10.2026 zusätzlich beauftragt: direkte Pfeilführung, keine Karten-Platzh
 - [x] Freigeschaltetes Lager trägt „Neu“ an Siedlung und Baukarte. Beim Öffnen bestätigen und speichern, auch wenn gleichzeitig ein anderer Speicherschritt läuft.
 - [x] Gezielter kompletter Lernablauf an allen neun Startplätzen und Preis-/Speicherrundlauf erfolgreich. Mobile Echtzeitfolge mit direktem Bau: 20/20 Leben, erste Frost-Kombination nach 56,075 s Kampfzeit. Vorherige Prüfversuche hatten zu kurze/zu frühe Browserwartebedingungen; anschließend korrigiert. Keine neue 15-Minuten-Abnahme.
 - [x] Kurze Freischaltungsprobe: Wisp vor Mara; Lager-Neuhinweis nach Öffnen und Reload bestätigt. Screenshots und Prüfbericht dokumentiert.
-- [ ] Interaktive Nachbesserung committen/pushen und Pages bestätigen.
+- [x] Codecommit `c6c1298` gepusht; [Pages-Lauf 39259455687](https://github.com/emfau88/TD/actions/runs/39259455687) erfolgreich. Öffentliches `battle-B8NnYoh6.js` und `battle-CSs5GZ7O.css` stimmen bytegenau mit dem finalen lokalen Build überein; Klickpfeil und kompakte Sparanzeige sind auf dem Playlink enthalten.
 
 Nachweis und Bilder: [Interaktive Lernführung](../../artifacts/idle-bastion/acceptance/onboarding/interaction/REPORT.md).
 
