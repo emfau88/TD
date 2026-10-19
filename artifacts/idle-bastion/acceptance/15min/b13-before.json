@@ -1,0 +1,672 @@
+[
+  {
+    "approach": "guided",
+    "times": {
+      "workshop": 79,
+      "research": 96,
+      "wisp": 96,
+      "warehouse": 245,
+      "boss-victory": 333,
+      "clearing": 423,
+      "workshop-upgrade": 573
+    },
+    "losses": [
+      {
+        "at": 611,
+        "wave": 22
+      },
+      {
+        "at": 744,
+        "wave": 23
+      },
+      {
+        "at": 816,
+        "wave": 23
+      }
+    ],
+    "record": 23,
+    "mode": "advance",
+    "farm": 21,
+    "gold": 398,
+    "levels": [
+      {
+        "pad": "tower-start",
+        "kind": 1,
+        "level": 5,
+        "kills": 121
+      },
+      {
+        "pad": "tower-03",
+        "kind": 1,
+        "level": 5,
+        "kills": 72
+      },
+      {
+        "pad": "tower-02",
+        "kind": 2,
+        "level": 3,
+        "kills": 26
+      },
+      {
+        "pad": "tower-09",
+        "kind": 3,
+        "level": 4,
+        "kills": 138
+      },
+      {
+        "pad": "cell-14-7",
+        "kind": 4,
+        "level": 4,
+        "kills": 46
+      }
+    ],
+    "log": [
+      {
+        "at": 0,
+        "type": "build",
+        "pad": "tower-03",
+        "kind": 1,
+        "gold": 0
+      },
+      {
+        "at": 9,
+        "type": "upgrade",
+        "uid": 2,
+        "gold": 10
+      },
+      {
+        "at": 78,
+        "type": "workshop",
+        "gold": 8
+      },
+      {
+        "at": 95,
+        "type": "research",
+        "gold": 9
+      },
+      {
+        "at": 113,
+        "type": "build",
+        "pad": "tower-02",
+        "kind": 2,
+        "gold": 11
+      },
+      {
+        "at": 128,
+        "type": "build",
+        "pad": "tower-09",
+        "kind": 3,
+        "gold": 4
+      },
+      {
+        "at": 135,
+        "type": "upgrade",
+        "uid": 1,
+        "gold": 6
+      },
+      {
+        "at": 142,
+        "type": "upgrade",
+        "uid": 1,
+        "gold": 12
+      },
+      {
+        "at": 154,
+        "type": "upgrade",
+        "uid": 2,
+        "gold": 1
+      },
+      {
+        "at": 159,
+        "type": "upgrade",
+        "uid": 249,
+        "gold": 39
+      },
+      {
+        "at": 166,
+        "type": "upgrade",
+        "uid": 288,
+        "gold": 8
+      },
+      {
+        "at": 178,
+        "type": "upgrade",
+        "uid": 288,
+        "gold": 2
+      },
+      {
+        "at": 244,
+        "type": "warehouse",
+        "gold": 11
+      },
+      {
+        "at": 264,
+        "type": "build",
+        "pad": "cell-14-7",
+        "kind": 4,
+        "gold": 0
+      },
+      {
+        "at": 268,
+        "type": "upgrade",
+        "uid": 842,
+        "gold": 11
+      },
+      {
+        "at": 292,
+        "type": "upgrade",
+        "uid": 842,
+        "gold": 9
+      },
+      {
+        "at": 333,
+        "type": "upgrade",
+        "uid": 842,
+        "gold": 544
+      },
+      {
+        "at": 334,
+        "type": "upgrade",
+        "uid": 288,
+        "gold": 240
+      },
+      {
+        "at": 335,
+        "type": "upgrade",
+        "uid": 1,
+        "gold": 71
+      },
+      {
+        "at": 348,
+        "type": "upgrade",
+        "uid": 2,
+        "gold": 5
+      },
+      {
+        "at": 422,
+        "type": "clearing",
+        "gold": 8
+      },
+      {
+        "at": 572,
+        "type": "workshop2",
+        "gold": 16
+      },
+      {
+        "at": 628,
+        "type": "upgrade",
+        "uid": 249,
+        "gold": 10
+      },
+      {
+        "at": 699,
+        "type": "upgrade",
+        "uid": 1,
+        "gold": 8
+      },
+      {
+        "at": 823,
+        "type": "upgrade",
+        "uid": 2,
+        "gold": 2
+      }
+    ]
+  },
+  {
+    "approach": "alternative",
+    "times": {
+      "workshop": 76,
+      "research": 85,
+      "wisp": 85,
+      "warehouse": 230,
+      "boss-victory": 284,
+      "clearing": 401,
+      "workshop-upgrade": 633
+    },
+    "losses": [
+      {
+        "at": 615,
+        "wave": 23
+      },
+      {
+        "at": 688,
+        "wave": 23
+      },
+      {
+        "at": 760,
+        "wave": 23
+      }
+    ],
+    "record": 23,
+    "mode": "advance",
+    "farm": 1,
+    "gold": 258,
+    "levels": [
+      {
+        "pad": "tower-start",
+        "kind": 1,
+        "level": 5,
+        "kills": 121
+      },
+      {
+        "pad": "cell-7-6",
+        "kind": 1,
+        "level": 5,
+        "kills": 114
+      },
+      {
+        "pad": "cell-10-3",
+        "kind": 1,
+        "level": 4,
+        "kills": 70
+      },
+      {
+        "pad": "tower-02",
+        "kind": 2,
+        "level": 3,
+        "kills": 11
+      },
+      {
+        "pad": "tower-09",
+        "kind": 3,
+        "level": 4,
+        "kills": 78
+      },
+      {
+        "pad": "cell-14-7",
+        "kind": 4,
+        "level": 4,
+        "kills": 35
+      }
+    ],
+    "log": [
+      {
+        "at": 0,
+        "type": "build",
+        "pad": "cell-7-6",
+        "kind": 1,
+        "gold": 0
+      },
+      {
+        "at": 9,
+        "type": "upgrade",
+        "uid": 2,
+        "gold": 10
+      },
+      {
+        "at": 21,
+        "type": "build",
+        "pad": "cell-10-3",
+        "kind": 1,
+        "gold": 15
+      },
+      {
+        "at": 75,
+        "type": "workshop",
+        "gold": 2
+      },
+      {
+        "at": 84,
+        "type": "research",
+        "gold": 6
+      },
+      {
+        "at": 95,
+        "type": "build",
+        "pad": "tower-02",
+        "kind": 2,
+        "gold": 47
+      },
+      {
+        "at": 110,
+        "type": "build",
+        "pad": "tower-09",
+        "kind": 3,
+        "gold": 15
+      },
+      {
+        "at": 113,
+        "type": "upgrade",
+        "uid": 1,
+        "gold": 24
+      },
+      {
+        "at": 125,
+        "type": "upgrade",
+        "uid": 1,
+        "gold": 4
+      },
+      {
+        "at": 130,
+        "type": "upgrade",
+        "uid": 2,
+        "gold": 16
+      },
+      {
+        "at": 138,
+        "type": "upgrade",
+        "uid": 42,
+        "gold": 7
+      },
+      {
+        "at": 147,
+        "type": "upgrade",
+        "uid": 42,
+        "gold": 2
+      },
+      {
+        "at": 152,
+        "type": "upgrade",
+        "uid": 273,
+        "gold": 4
+      },
+      {
+        "at": 158,
+        "type": "upgrade",
+        "uid": 341,
+        "gold": 6
+      },
+      {
+        "at": 172,
+        "type": "upgrade",
+        "uid": 341,
+        "gold": 8
+      },
+      {
+        "at": 229,
+        "type": "warehouse",
+        "gold": 5
+      },
+      {
+        "at": 244,
+        "type": "build",
+        "pad": "cell-14-7",
+        "kind": 4,
+        "gold": 4
+      },
+      {
+        "at": 251,
+        "type": "upgrade",
+        "uid": 1119,
+        "gold": 11
+      },
+      {
+        "at": 284,
+        "type": "upgrade",
+        "uid": 1119,
+        "gold": 691
+      },
+      {
+        "at": 285,
+        "type": "upgrade",
+        "uid": 1119,
+        "gold": 308
+      },
+      {
+        "at": 286,
+        "type": "upgrade",
+        "uid": 341,
+        "gold": 4
+      },
+      {
+        "at": 304,
+        "type": "upgrade",
+        "uid": 1,
+        "gold": 20
+      },
+      {
+        "at": 320,
+        "type": "upgrade",
+        "uid": 2,
+        "gold": 23
+      },
+      {
+        "at": 330,
+        "type": "upgrade",
+        "uid": 42,
+        "gold": 4
+      },
+      {
+        "at": 400,
+        "type": "clearing",
+        "gold": 0
+      },
+      {
+        "at": 632,
+        "type": "workshop2",
+        "gold": 32
+      },
+      {
+        "at": 657,
+        "type": "upgrade",
+        "uid": 273,
+        "gold": 5
+      },
+      {
+        "at": 778,
+        "type": "upgrade",
+        "uid": 1,
+        "gold": 26
+      },
+      {
+        "at": 850,
+        "type": "upgrade",
+        "uid": 2,
+        "gold": 12
+      }
+    ]
+  },
+  {
+    "approach": "watch",
+    "times": {
+      "workshop": 183,
+      "research": 185,
+      "wisp": 185,
+      "warehouse": 346,
+      "boss-victory": 428,
+      "clearing": 539,
+      "workshop-upgrade": 726
+    },
+    "losses": [
+      {
+        "at": 707,
+        "wave": 22
+      },
+      {
+        "at": 775,
+        "wave": 22
+      },
+      {
+        "at": 842,
+        "wave": 22
+      }
+    ],
+    "record": 21,
+    "mode": "advance",
+    "farm": 20,
+    "gold": 43,
+    "levels": [
+      {
+        "pad": "tower-start",
+        "kind": 1,
+        "level": 5,
+        "kills": 114
+      },
+      {
+        "pad": "tower-03",
+        "kind": 1,
+        "level": 5,
+        "kills": 74
+      },
+      {
+        "pad": "tower-02",
+        "kind": 2,
+        "level": 3,
+        "kills": 19
+      },
+      {
+        "pad": "tower-09",
+        "kind": 3,
+        "level": 4,
+        "kills": 127
+      },
+      {
+        "pad": "cell-14-7",
+        "kind": 4,
+        "level": 4,
+        "kills": 48
+      }
+    ],
+    "log": [
+      {
+        "at": 180,
+        "type": "build",
+        "pad": "tower-03",
+        "kind": 1,
+        "gold": 503
+      },
+      {
+        "at": 181,
+        "type": "upgrade",
+        "uid": 225,
+        "gold": 443
+      },
+      {
+        "at": 182,
+        "type": "workshop",
+        "gold": 54
+      },
+      {
+        "at": 184,
+        "type": "research",
+        "gold": 5
+      },
+      {
+        "at": 193,
+        "type": "build",
+        "pad": "tower-02",
+        "kind": 2,
+        "gold": 1
+      },
+      {
+        "at": 216,
+        "type": "build",
+        "pad": "tower-09",
+        "kind": 3,
+        "gold": 38
+      },
+      {
+        "at": 227,
+        "type": "upgrade",
+        "uid": 1,
+        "gold": 9
+      },
+      {
+        "at": 236,
+        "type": "upgrade",
+        "uid": 1,
+        "gold": 5
+      },
+      {
+        "at": 244,
+        "type": "upgrade",
+        "uid": 225,
+        "gold": 0
+      },
+      {
+        "at": 254,
+        "type": "upgrade",
+        "uid": 256,
+        "gold": 8
+      },
+      {
+        "at": 259,
+        "type": "upgrade",
+        "uid": 342,
+        "gold": 43
+      },
+      {
+        "at": 278,
+        "type": "upgrade",
+        "uid": 342,
+        "gold": 0
+      },
+      {
+        "at": 345,
+        "type": "warehouse",
+        "gold": 5
+      },
+      {
+        "at": 360,
+        "type": "build",
+        "pad": "cell-14-7",
+        "kind": 4,
+        "gold": 1
+      },
+      {
+        "at": 364,
+        "type": "upgrade",
+        "uid": 938,
+        "gold": 34
+      },
+      {
+        "at": 428,
+        "type": "upgrade",
+        "uid": 938,
+        "gold": 799
+      },
+      {
+        "at": 429,
+        "type": "upgrade",
+        "uid": 938,
+        "gold": 416
+      },
+      {
+        "at": 430,
+        "type": "upgrade",
+        "uid": 342,
+        "gold": 112
+      },
+      {
+        "at": 440,
+        "type": "upgrade",
+        "uid": 1,
+        "gold": 5
+      },
+      {
+        "at": 452,
+        "type": "upgrade",
+        "uid": 225,
+        "gold": 47
+      },
+      {
+        "at": 538,
+        "type": "clearing",
+        "gold": 10
+      },
+      {
+        "at": 725,
+        "type": "workshop2",
+        "gold": 19
+      },
+      {
+        "at": 759,
+        "type": "upgrade",
+        "uid": 256,
+        "gold": 10
+      },
+      {
+        "at": 859,
+        "type": "upgrade",
+        "uid": 1,
+        "gold": 2
+      },
+      {
+        "at": 890,
+        "type": "upgrade",
+        "uid": 225,
+        "gold": 6
+      }
+    ]
+  }
+]

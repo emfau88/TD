@@ -1,0 +1,154 @@
+TAP version 13
+# Subtest: B13 keeps entry recipes/rewards intact, softens later HP and bounds income
+ok 1 - B13 keeps entry recipes/rewards intact, softens later HP and bounds income
+  ---
+  duration_ms: 1.2258
+  type: 'test'
+  ...
+# Subtest: v13 active boss/queue/HP and money survive migration without a mid-wave balance switch
+ok 2 - v13 active boss/queue/HP and money survive migration without a mid-wave balance switch
+  ---
+  duration_ms: 215.006
+  type: 'test'
+  ...
+# Subtest: an upgrade reproves the formerly safe wave even when the latest two clears are unsafe
+ok 3 - an upgrade reproves the formerly safe wave even when the latest two clears are unsafe
+  ---
+  duration_ms: 980.9148
+  type: 'test'
+  ...
+# Subtest: workshop II objective and its action select the same useful area-damage investment
+ok 4 - workshop II objective and its action select the same useful area-damage investment
+  ---
+  duration_ms: 1424.0122
+  type: 'test'
+  ...
+# Subtest: six staged introductions, unchanged opening and boss escorts, bounded varied late recipes
+ok 5 - six staged introductions, unchanged opening and boss escorts, bounded varied late recipes
+  ---
+  duration_ms: 3.9226
+  type: 'test'
+  ...
+# Subtest: all original movement tags resolve through frameMap, with correct sizes, timings and facing
+ok 6 - all original movement tags resolve through frameMap, with correct sizes, timings and facing
+  ---
+  duration_ms: 2.125
+  type: 'test'
+  ...
+# Subtest: healing cast is saved exactly, bounded to two escorts, capped and protected against stacking
+ok 7 - healing cast is saved exactly, bounded to two escorts, capped and protected against stacking
+  ---
+  duration_ms: 228.8698
+  type: 'test'
+  ...
+# Subtest: a killed healer cannot pulse later in that tick, and no boss can be healed
+ok 8 - a killed healer cannot pulse later in that tick, and no boss can be healed
+  ---
+  duration_ms: 115.6881
+  type: 'test'
+  ...
+# Subtest: void resists slow, while all four towers can target flying enemies
+ok 9 - void resists slow, while all four towers can target flying enemies
+  ---
+  duration_ms: 308.3436
+  type: 'test'
+  ...
+# Subtest: published v12 combat survives migration, old queue completes and next attempt uses current rules
+ok 10 - published v12 combat survives migration, old queue completes and next attempt uses current rules
+  ---
+  duration_ms: 99.8164
+  type: 'test'
+  ...
+# Subtest: derived HP tolerates browser Math.pow rounding, but still rejects modified stats
+ok 11 - derived HP tolerates browser Math.pow rounding, but still rejects modified stats
+  ---
+  duration_ms: 59.0081
+  type: 'test'
+  ...
+# Subtest: 30 seconds, 10 minutes, 1 hour and 3 hours reserve 60% with the same two-hour cap
+ok 12 - 30 seconds, 10 minutes, 1 hour and 3 hours reserve 60% with the same two-hour cap
+  ---
+  duration_ms: 5.3601
+  type: 'test'
+  ...
+# Subtest: explicit pause and absence without a certified autonomous rate generate no gold
+ok 13 - explicit pause and absence without a certified autonomous rate generate no gold
+  ---
+  duration_ms: 0.4919
+  type: 'test'
+  ...
+# Subtest: closing and reopening before claim consumes only the remaining cap of the original window
+ok 14 - closing and reopening before claim consumes only the remaining cap of the original window
+  ---
+  duration_ms: 0.5053
+  type: 'test'
+  ...
+# Subtest: claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+ok 15 - claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+  ---
+  duration_ms: 1.4901
+  type: 'test'
+  ...
+# Subtest: backwards clock jumps never move the high-water cursor back or repay a reserved interval
+ok 16 - backwards clock jumps never move the high-water cursor back or repay a reserved interval
+  ---
+  duration_ms: 1.2783
+  type: 'test'
+  ...
+# Subtest: the certificate and paused state are frozen at the original departure
+ok 17 - the certificate and paused state are frozen at the original departure
+  ---
+  duration_ms: 0.3802
+  type: 'test'
+  ...
+# Subtest: confirmed active checkpoints and absence share a single non-overlapping time boundary
+ok 18 - confirmed active checkpoints and absence share a single non-overlapping time boundary
+  ---
+  duration_ms: 0.4235
+  type: 'test'
+  ...
+# Subtest: exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+ok 19 - exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+  ---
+  duration_ms: 0.7178
+  type: 'test'
+  ...
+# Subtest: fractional units carry into future windows even when the certified rate changes
+ok 20 - fractional units carry into future windows even when the certified rate changes
+  ---
+  duration_ms: 0.608
+  type: 'test'
+  ...
+# Subtest: invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+ok 21 - invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+  ---
+  duration_ms: 1.545
+  type: 'test'
+  ...
+# Subtest: the first B04 schema-one policy defaults migrate without resetting a pending absence window
+ok 22 - the first B04 schema-one policy defaults migrate without resetting a pending absence window
+  ---
+  duration_ms: 0.3836
+  type: 'test'
+  ...
+# Subtest: policy migration never replaces an explicitly contradictory or malformed saved policy
+ok 23 - policy migration never replaces an explicitly contradictory or malformed saved policy
+  ---
+  duration_ms: 0.3271
+  type: 'test'
+  ...
+# Subtest: known historical departure proofs retain their original production basis
+ok 24 - known historical departure proofs retain their original production basis
+  ---
+  duration_ms: 0.9004
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3378.2975

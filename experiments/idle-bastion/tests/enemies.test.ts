@@ -94,14 +94,14 @@ test('void resists slow, while all four towers can target flying enemies', () =>
   }
 });
 
-test('published v12 combat survives migration, old queue completes and next attempt uses rule 9', () => {
+test('published v12 combat survives migration, old queue completes and next attempt uses current rules', () => {
   const b=IdleBattle.restore(legacy);assert.ok(b);
-  assert.equal(b.snapshot().schemaVersion,13);assert.equal(b.waveRecipeVersion,8);assert.equal(b.gold,legacy.gold);
+  assert.equal(b.snapshot().schemaVersion,14);assert.equal(b.waveRecipeVersion,8);assert.equal(b.gold,legacy.gold);
   assert.deepEqual(b.snapshot().queue,legacy.queue);assert.deepEqual(b.snapshot().shots,legacy.shots);
   assert.deepEqual(b.snapshot().enemies.map(({healCooldown,healRemaining,healLockout,...e})=>e),legacy.enemies);
   assert.deepEqual(b.liveClearedWaves,[]);
   for(let i=0;i<4000&&b.wave===1;i++)b.update(.025);
-  assert.equal(b.waveRecipeVersion,9);assert.ok(IdleBattle.restore(b.snapshot()));
+  assert.equal(b.waveRecipeVersion,10);assert.ok(IdleBattle.restore(b.snapshot()));
   const fresh=new IdleBattle();for(let i=0;i<5000&&!fresh.liveClearedWaves.includes(1);i++)fresh.update(.025);
   assert.equal(certifyFarm(fresh)?.wave,1);
 });

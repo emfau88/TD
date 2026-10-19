@@ -1,3 +1,4 @@
+import { BALANCE } from './balance';
 /** Conservative, bounded, Phaser-free proofs. A probe never mutates the live
  * model, issues its rewards or consumes its renderer/tutorial event stream.
  */
@@ -17,12 +18,12 @@ export interface FarmCertificate {
   durationMs: number;
 }
 
-export const MAX_FARM_CANDIDATES = 3;
+export const MAX_FARM_CANDIDATES = 4;
 export const MAX_FARM_PROBE_STEPS = 8000;
 const STEP_MS = BASE.stepSeconds * 1000;
 export const farmRewardGold = (certificate: FarmCertificate): number => certificate.rewardGold + (certificate.rewardRemainderUnits ?? 0) / 1000;
 export const farmRewardUnits = (certificate: FarmCertificate): bigint => BigInt(certificate.rewardGold) * 1000n + BigInt(certificate.rewardRemainderUnits ?? 0);
-const MAX_PROBE_REWARD = 2.2 * (BASE.waves.maxCount * Math.max(...Object.values(BASE.enemies).map(def => def.gold)) + BASE.waves.maxReward);
+const MAX_PROBE_REWARD = 2.2 * BALANCE.maxRewardFactor * (BASE.waves.maxCount * Math.max(...Object.values(BASE.enemies).map(def => def.gold)) + BASE.waves.maxReward);
 
 /** Ignores transient HP, cooldowns, currency, IDs and kill statistics. Every
  * economically relevant placement/level/rule/layout change invalidates a proof.
@@ -39,8 +40,10 @@ export function defenseFingerprint(battle: IdleBattle): string {
 function candidateWaves(battle: IdleBattle, previous?: FarmCertificate): number[] {
   const completed = battle.liveClearedWaves.filter(wave => isNormalFarmWave(wave) && wave <= battle.highestCleared)
     .sort((a, b) => b - a);
+  // A changed fingerprint invalidates the old proof, not the right to test its
+  // previously safe wave again. Never reuse its old rate without two new clears.
   const preferred = previous?.wave ?? completed[1];
-  return [...new Set([completed[0], preferred, completed.includes(1) ? 1 : undefined])]
+  return [...new Set([completed[0], preferred, completed[1], completed.includes(1) ? 1 : undefined])]
     .filter((wave): wave is number => wave !== undefined).slice(0, MAX_FARM_CANDIDATES);
 }
 
@@ -87,7 +90,7 @@ export function certifyFarm(battle: IdleBattle, previous?: FarmCertificate): Far
   const fingerprint = defenseFingerprint(battle);
   // A newer leaky victory must not erase an older still-valid safe proof.
   let best = isFarmCertificateValid(previous, battle) ? { ...previous! } : undefined;
-  for (const wave of candidateWaves(battle, best)) {
+  for (const wave of candidateWaves(battle, previous)) {
     if (best?.wave === wave) continue;
     const proof = prove(battle, wave, fingerprint);
     if (proof && (!best || farmRewardGold(proof) * best.durationMs > farmRewardGold(best) * proof.durationMs)) best = proof;

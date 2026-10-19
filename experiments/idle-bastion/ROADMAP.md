@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 18.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08–B12 und die zusätzlichen Überarbeitungen B12a–B12c veröffentlicht.**
+Stand: 19.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08–B12 und die zusätzlichen Überarbeitungen B12a–B12c veröffentlicht.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -11,13 +11,13 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen |
-| Aktives Umsetzungspaket | Keines offen: B12b Karten/Kamera und B12c vorhandene Gegner abgeschlossen und veröffentlicht |
-| Nächster Schritt | Spielerfeedback zur veröffentlichten Fassung; B12d Gegner-Produktion vorgemerkt. B13/B14 weiterhin separat zu beauftragen |
+| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt |
+| Aktives Umsetzungspaket | B13 technisch abgeschlossen; Veröffentlichung läuft |
+| Nächster Schritt | B13 über den Playlink ausprobieren. B14 als nächstes Hauptpaket, noch nicht beauftragt; B12d bleibt vorgemerkt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
-Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. G1 ist freigegeben. B11 ist am 18.10.2026 ausdrücklich mit kompakten Tests und Commit/Push/Pages beauftragt. B12 wurde anschließend ausdrücklich mit denselben Vorgaben beauftragt. B13/B14 bleiben separat. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. G1 ist freigegeben. B11 ist am 18.10.2026 ausdrücklich mit kompakten Tests und Commit/Push/Pages beauftragt. B12 wurde anschließend ausdrücklich mit denselben Vorgaben beauftragt. B13 ist am 19.10.2026 beauftragt; B14 bleibt separat. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
 
 ## B12b — Nordbogen und mobile Kamera
 
@@ -54,7 +54,7 @@ Nur als nächster Ausbau geplant; keine neue Bildproduktion beauftragt. Vorhande
 
 ## B12a — Freie Verteidigung und verständliche Begleiter
 
-Am 18.10.2026 ausdrücklich beauftragt: beidseits des Gegnerwegs bis zu drei Felder tief bauen, Maras Fernzauber mit sinnvoller Automatik, Wisps Ankunft, optionale östliche Lichtung, eigene Gebäudepositionen und Bauanimationen, Frostatlas korrigieren und Projektile verbessern. B13/B14 bleiben separat.
+Am 18.10.2026 ausdrücklich beauftragt: beidseits des Gegnerwegs bis zu drei Felder tief bauen, Maras Fernzauber mit sinnvoller Automatik, Wisps Ankunft, optionale östliche Lichtung, eigene Gebäudepositionen und Bauanimationen, Frostatlas korrigieren und Projektile verbessern. B13 ist am 19.10.2026 beauftragt; B14 bleibt separat.
 
 - [x] Freie geeignete Rasterfelder ab Beginn, Hindernisse und Weg schützen; bestehende Türme erhalten.
 - [x] Tatsächliche Reichweite/Vorschau, ausdrückliche Bestätigung, Rückkehr zur Karte und kompakte mobile Bedienung.
@@ -140,12 +140,12 @@ Die Zahl erledigter Kästchen ist keine belastbare Prozent- oder Zeitangabe. Abs
 | P3 | B09 · Lager und Rückkehr | Zweites Gebäude und befriedigender Wiedereinstieg | B08 | Abgeschlossen |
 | P4 | B10 · Erste Bossherausforderung | Lesbarer Boss verlangt die verfügbaren Turmrollen | B09 | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/B10.md) |
 | P4 | B11 · Wachsende Karte | Echte seitliche Freischaltung mit zwei nützlichen Turmplätzen | B10 | Abgeschlossen · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/B11.md) |
-| P4 | B12 · Ausbau und Fortsetzung | Werkstatt II, spätere Level und Fortschritt nach Minute 15 | B11 | Abgeschlossen; B13-Balance offen |
+| P4 | B12 · Ausbau und Fortsetzung | Werkstatt II, spätere Level und Fortschritt nach Minute 15 | B11 | Abgeschlossen; B13-Balance geprüft |
 | Zusatz | B12a · Freie Verteidigung | Wegstreifen, Fernzauber, Einführung, Siedlungsbau und Originaleffekte | Zusätzlicher Nutzerauftrag | Veröffentlicht · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/REDESIGN.md) |
-| Zusatz | B12b · Nordbogen/Kamera | Drei obere Baureihen und mobile Erreichbarkeit; sichere Kartenmigration | Nutzerauftrag | Geprüft · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/MAP.md) |
-| Zusatz | B12c · Vorhandene Gegner | Unterschiedliche Rollen und gestaffelte Gegnergruppen | B12b; ausdrücklich beauftragt | Als Nächstes |
+| Zusatz | B12b · Nordbogen/Kamera | Drei obere Baureihen und mobile Erreichbarkeit; sichere Kartenmigration | Nutzerauftrag | Veröffentlicht · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/MAP.md) |
+| Zusatz | B12c · Vorhandene Gegner | Unterschiedliche Rollen und gestaffelte Gegnergruppen | B12b; ausdrücklich beauftragt | Veröffentlicht · [Nachweis](../../artifacts/idle-bastion/acceptance/p4/ENEMIES.md) |
 | Später | B12d · Gegnerproduktion | Einheitlicher Ablauf für neue Figuren | Nur vorgemerkt | Nicht begonnen |
-| P5 | B13 · Gesamter Spielverlauf | Gemessene 15-Minuten-Sitzung und Rückkehr mit legalen Aktionen | B12 | Nicht begonnen |
+| P5 | B13 · Gesamter Spielverlauf | Gemessene 15-Minuten-Sitzung und Rückkehr mit legalen Aktionen | B12 | Technisch abgeschlossen · [B13-Nachweis](../../artifacts/idle-bastion/acceptance/15min/REPORT.md) |
 | P5 | B14 · Stabilität und Lieferung | Geprüfte Builds, Regression, Laufzeit und ehrlicher Ergebnisbericht | B13 | Nicht begonnen |
 | Ende | G2 · Gesamtabnahme | Vollständiger Slice bewertet | B14 | **Offen** |
 
@@ -421,16 +421,20 @@ Historische Halteregel bis zur obigen G1-Freigabe: Während des Wartens nur P2 p
 
 ### B13 — Vollständiger legaler Verlauf und Balancekorrektur
 
+**Technisch abgeschlossen; Veröffentlichung läuft.** Am 19.10.2026 ausdrücklich einschließlich neuer Gegnerbalance, kompakter Tests und Commit/Push beauftragt.
+
 **Voraussetzung:** B12. **Ergebnis:** Ein gemessener Spielverlauf statt lediglich vorhandener Einzelmechaniken.
 
-- [ ] Einen echten 15-Minuten-Durchlauf im Browser mit frischem Save, regulären Aktionen und 1× durchführen; Ladezeit getrennt erfassen.
-- [ ] Tatsächliche Zeiten für Werkstatt, Frostfassung, Wisp, Lager, Boss, Lichtung und Werkstatt II protokollieren und gegen den Auftrag prüfen; den abgenommenen Einstieg nach späteren Balanceänderungen gezielt erneut verifizieren.
-- [ ] Fortschritt über die Sitzung verteilen; unnötige Wartezeiten, unklare Ziele und bedeutungslose Käufe beheben.
-- [ ] Alternative Investitionen und anfängliches Zuschauen mit dem vollständigen System auf Sackgassen prüfen; die Varianten müssen nicht gleich schnell sein.
-- [ ] Rückkehrsitzung aus regulärem Fortschritt weiterführen; simulierte Abwesenheit ausdrücklich kennzeichnen und echte nachfolgende Käufe zeigen.
-- [ ] Drei wichtigste spielerische Schwächen benennen; nach Änderungen nur betroffene Prüfungen wiederholen, keinen simulierten Durchlauf als Echtzeitplaytest ausgeben.
+- [x] Einen echten 15-Minuten-Durchlauf im Browser mit frischem Save, regulären Aktionen und 1× durchführen; Ladezeit getrennt erfassen.
+- [x] Tatsächliche Zeiten für Werkstatt, Frostfassung, Wisp, Lager, Boss, Lichtung und Werkstatt II protokollieren und gegen den Auftrag prüfen; den abgenommenen Einstieg nach späteren Balanceänderungen gezielt erneut verifizieren.
+- [x] Fortschritt über die Sitzung verteilen; unnötige Wartezeiten, unklare Ziele und bedeutungslose Käufe beheben.
+- [x] Alternative Investitionen und anfängliches Zuschauen mit dem vollständigen System auf Sackgassen prüfen; die Varianten müssen nicht gleich schnell sein.
+- [x] Rückkehrsitzung aus regulärem Fortschritt weiterführen; simulierte Abwesenheit ausdrücklich kennzeichnen und echte nachfolgende Käufe zeigen.
+- [x] Drei wichtigste spielerische Schwächen benennen; nach Änderungen nur betroffene Prüfungen wiederholen, keinen simulierten Durchlauf als Echtzeitplaytest ausgeben.
 
 **Fertig, wenn:** Der Verlauf nachgewiesen und verständlich ist, mehrere spürbare Erfolge bietet und wesentliche Balanceprobleme behoben oder ausdrücklich offengelegt sind. Fehlender Echtzeitdurchlauf bleibt ein offener Nachweis.
+
+**Nachweis:** [B13-Bericht mit echten 15 Minuten, drei Modellvarianten, Rückkehrkäufen und Screenshots](../../artifacts/idle-bastion/acceptance/15min/REPORT.md). 24 gezielte Tests und Produktionsbuild bestanden. Nutzerbewertung bleibt offen; B14/G2 werden damit nicht vorweggenommen.
 
 ### B14 — Regression, Langzeitbetrieb und prüfbare Lieferung
 

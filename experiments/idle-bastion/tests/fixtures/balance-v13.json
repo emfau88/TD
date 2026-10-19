@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 13,
+  "plots": {
+    "workshop": {
+      "x": 3,
+      "y": 11
+    },
+    "warehouse": {
+      "x": 8,
+      "y": 12
+    }
+  },
+  "wispArrival": {
+    "at": null,
+    "met": false
+  },
+  "rulesVersion": 9,
+  "layoutVersion": 4,
+  "layoutId": "start28",
+  "clearing": {
+    "unlocked": false,
+    "openedAt": null
+  },
+  "bossVictories": 1,
+  "secondBossVictories": 0,
+  "bossChallengeWave": 15,
+  "bossChallengeRequested": false,
+  "bossCharm": {
+    "phase": "channel",
+    "targetUid": 1,
+    "remaining": 1.5000000000000022,
+    "cooldown": 7.199999999999946
+  },
+  "progress": {
+    "sinceAttempt": 1,
+    "sinceSeconds": 0,
+    "battleGold": 0,
+    "totals": {
+      "advance": {
+        "attempts": 1,
+        "wins": 0,
+        "losses": 0
+      },
+      "farm": {
+        "attempts": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "waves": [
+      {
+        "wave": 25,
+        "advance": {
+          "attempts": 1,
+          "wins": 0,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      }
+    ],
+    "lastDefeat": null
+  },
+  "rewardRemainderUnits": 0,
+  "waveRecipeVersion": 9,
+  "goldRemainderUnits": 0,
+  "mode": "advance",
+  "highestCleared": 24,
+  "attemptId": 1,
+  "liveClearedWaves": [],
+  "farmWave": 1,
+  "advanceRequested": false,
+  "gold": 75,
+  "lives": 20,
+  "wave": 25,
+  "phase": "wave",
+  "elapsed": 5,
+  "ticks": 200,
+  "pendingTime": 0,
+  "uid": 12,
+  "intermissionRemaining": 0,
+  "kills": 0,
+  "earned": 0,
+  "queue": [
+    "Leafbug",
+    "Firebug",
+    "Scorpion",
+    "Leafbug",
+    "Firebug",
+    "Leafbug"
+  ],
+  "spawnTimer": 0.30000000000000304,
+  "towers": [
+    {
+      "uid": 1,
+      "padId": "tower-start",
+      "kind": 1,
+      "level": 1,
+      "cooldown": 0.01499999999999957,
+      "spent": 0,
+      "kills": 0,
+      "angle": -0.7293513123832582,
+      "protected": true
+    }
+  ],
+  "enemies": [
+    {
+      "uid": 2,
+      "x": 228.125,
+      "y": 220,
+      "hp": 803.674008992465,
+      "maxHp": 845.674008992465,
+      "distance": 208.125,
+      "total": 1520,
+      "segment": 0,
+      "speed": 45,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "Leafbug"
+    },
+    {
+      "uid": 3,
+      "x": 213.5,
+      "y": 220,
+      "hp": 845.674008992465,
+      "maxHp": 845.674008992465,
+      "distance": 193.5,
+      "total": 1520,
+      "segment": 0,
+      "speed": 45,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "Leafbug"
+    },
+    {
+      "uid": 4,
+      "x": 24.800000000000004,
+      "y": 220,
+      "hp": 29950.954485149803,
+      "maxHp": 29950.954485149803,
+      "distance": 4.8,
+      "total": 1520,
+      "segment": 0,
+      "speed": 32,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "Rosenspiegel"
+    },
+    {
+      "uid": 6,
+      "x": 124.625,
+      "y": 220,
+      "hp": 845.674008992465,
+      "maxHp": 845.674008992465,
+      "distance": 104.625,
+      "total": 1520,
+      "segment": 0,
+      "speed": 45,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "Leafbug"
+    },
+    {
+      "uid": 7,
+      "x": 100,
+      "y": 220,
+      "hp": 1761.8208520676355,
+      "maxHp": 1761.8208520676355,
+      "distance": 80,
+      "total": 1520,
+      "segment": 0,
+      "speed": 40,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "Scorpion"
+    },
+    {
+      "uid": 9,
+      "x": 113.80000000000015,
+      "y": 220,
+      "hp": 1198.0381794059922,
+      "maxHp": 1198.0381794059922,
+      "distance": 93.80000000000008,
+      "total": 1520,
+      "segment": 0,
+      "speed": 56,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "Firebug"
+    },
+    {
+      "uid": 11,
+      "x": 21.125,
+      "y": 220,
+      "hp": 845.674008992465,
+      "maxHp": 845.674008992465,
+      "distance": 1.125,
+      "total": 1520,
+      "segment": 0,
+      "speed": 45,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "Leafbug"
+    }
+  ],
+  "shots": [],
+  "mara": {
+    "x": 220,
+    "y": 300,
+    "path": [],
+    "targetTowerUid": 1,
+    "direction": "up",
+    "cooldownRemaining": 0,
+    "effectRemaining": 0,
+    "unreachable": false,
+    "autoCast": true,
+    "effectTowerUid": null
+  },
+  "settlement": {
+    "workshopBuilt": false,
+    "frostResearched": false,
+    "builtAt": null,
+    "warehouseBuilt": false,
+    "warehouseBuiltAt": null,
+    "workshopUpgraded": false,
+    "upgradedAt": null
+  },
+  "tutorial": {
+    "hidden": false,
+    "seen": 0,
+    "builtTower": false,
+    "upgradedTower": false,
+    "frostSeen": false
+  }
+}

@@ -1,3 +1,4 @@
+import { BALANCE, healthMultiplier, battleReward } from './balance';
 import { ENEMIES, regularEnemy, enemyId, JELLY_HEAL, type EnemyDef } from './enemy-roster';
 export type { EnemyDef } from './enemy-roster';
 /** Phaser-free B02 battle model.
@@ -25,7 +26,7 @@ export const BASE = Object.freeze({
   }),
   enemies: ENEMIES,
   waves: Object.freeze({
-    firstCount: 6, maxCount: 28, hpGrowth: 1.16, maxHpMultiplier: 100000,
+    firstCount: 6, maxCount: 28, hpGrowth: BALANCE.entryGrowth, maxHpMultiplier: BALANCE.maxHpMultiplier,
     spawnInterval: 1.2, minSpawnInterval: 0.75, firstSpawnDelay: 0.15,
     rewardBase: 20, rewardPerWave: 2, maxReward: 250,
   }),
@@ -38,7 +39,7 @@ export const FROST = Object.freeze({ id: 2 as const, name: 'Frostkristall', cost
 export const CANNON = Object.freeze({ id: 3 as const, name: 'Steinschleuder', cost: 135, damage: 28, range: 150, cooldown: 1.55, color: 0xe4b976 });
 export const SNIPER = Object.freeze({ id: 4 as const, name: 'Scharfschütze', cost: 170, damage: 53, range: 190, cooldown: 1.85, color: 0xd9c8ee });
 export const SPLASH_RADIUS = 52;
-export const BATTLE_RULES_VERSION = 9 as const;
+export const BATTLE_RULES_VERSION = 10 as const;
 export const LIVE_CANDIDATE_LIMIT = 32;
 /** Reserved boss milestones never contribute repeatable offline production. */
 export const isNormalFarmWave = (wave: number): boolean => Number.isSafeInteger(wave) && wave >= 1 && wave !== 15 && wave !== 25;
@@ -74,12 +75,12 @@ export interface BattleEvent {
 
 /** Only scalar IDs and fired payloads cross the save boundary. UI events are transient. */
 export interface BattleSnapshot {
-  schemaVersion: 13; rulesVersion: 9; layoutVersion: 3 | 4;
+  schemaVersion: 14; rulesVersion: 10; layoutVersion: 3 | 4;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
   progress: ProgressRecord;
-  rewardRemainderUnits: number; waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9;
+  rewardRemainderUnits: number; waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   goldRemainderUnits: number; mode: BattleMode; highestCleared: number; attemptId: number;
   liveClearedWaves: number[]; farmWave: number; advanceRequested: boolean;
   gold: number; lives: number; wave: number; phase: Phase; elapsed: number;
@@ -125,7 +126,7 @@ export class IdleBattle {
   gold: number = BASE.startGold;
   goldRemainderUnits = 0;
   rewardRemainderUnits = 0;
-  waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 = 9;
+  waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 = 10;
   plots: PlotPositions = structuredClone(DEFAULT_PLOTS);
   wispArrival = { at: null as number | null, met: false };
   clearing = { unlocked: false, openedAt: null as number | null };
@@ -180,10 +181,10 @@ export class IdleBattle {
   /** Only the shipped closed/open layouts cross the save boundary. */
   snapshot(): BattleSnapshot {
     if (JSON.stringify(this.layout) !== JSON.stringify(battleLayout(this.clearing.unlocked, this.plots, this.layout.version as 3 | 4))) {
-      throw new Error('Unsupported battle layout for snapshot version 13.');
+      throw new Error('Unsupported battle layout for snapshot version 14.');
     }
     return {
-      schemaVersion: 13, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4, layoutId: this.clearing.unlocked ? 'east32' : 'start28',
+      schemaVersion: 14, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4, layoutId: this.clearing.unlocked ? 'east32' : 'start28',
       clearing: { ...this.clearing },
       bossVictories: this.bossVictories, secondBossVictories: this.secondBossVictories, bossChallengeWave: this.bossChallengeWave, bossChallengeRequested: this.bossChallengeRequested, bossCharm: { ...this.bossCharm },
       progress: cloneProgress(this.progress), rewardRemainderUnits: this.rewardRemainderUnits, waveRecipeVersion: this.waveRecipeVersion,
@@ -280,7 +281,7 @@ export class IdleBattle {
         wispArrival: { at: value.settlement.frostResearched && value.highestCleared >= 5 ? value.elapsed : null, met: false },
         mara: { ...value.mara, autoCast: true, effectTowerUid: value.mara.effectRemaining > 0 ? value.mara.targetTowerUid : null } };
     }
-    if (isRecord(value) && (value.schemaVersion === 11 || value.schemaVersion === 12 || value.schemaVersion === 13) && validPlotPositions(value.plots)) {
+    if (isRecord(value) && (value.schemaVersion === 11 || value.schemaVersion === 12 || value.schemaVersion === 13 || value.schemaVersion === 14) && validPlotPositions(value.plots)) {
       if (value.layoutVersion !== 3 && value.layoutVersion !== 4) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion));
       if (value.schemaVersion === 11) {
@@ -290,8 +291,12 @@ export class IdleBattle {
     }
     if (isRecord(value) && value.schemaVersion === 12) {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 12, model.layout.version as 3 | 4)) return undefined;
-      value = { ...value, schemaVersion: 13, rulesVersion: BATTLE_RULES_VERSION, liveClearedWaves: [], farmWave: 1,
+      value = { ...value, schemaVersion: 13, rulesVersion: 9, liveClearedWaves: [], farmWave: 1,
         enemies: value.enemies.map(e => ({ ...e, healCooldown: 0, healRemaining: 0, healLockout: 0 })) };
+    }
+    if (isRecord(value) && value.schemaVersion === 13) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 13, model.layout.version as 3 | 4)) return undefined;
+      value = { ...value, schemaVersion: 14, rulesVersion: BATTLE_RULES_VERSION, liveClearedWaves: [], farmWave: 1 };
     }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4)) return undefined;
     model.plots = structuredClone(value.plots); model.wispArrival = { ...value.wispArrival };
@@ -589,7 +594,7 @@ export class IdleBattle {
   /** Fractional battle rewards and the shared wallet retain all tenths. Offline
    * receipts and sales bypass this method; certificates already include Wisp. */
   private creditBattleReward(base: number): number {
-    const units = base * (this.wispUnlocked ? 1100 : 1000);
+    const units = battleReward(base, this.wave, this.waveRecipeVersion) * (this.wispUnlocked ? 1100 : 1000);
     const wallet = this.goldRemainderUnits + units, reward = this.rewardRemainderUnits + units;
     const gold = Math.floor(wallet / 1000), earned = Math.floor(reward / 1000);
     if (![this.gold + gold, this.earned + earned, this.progress.battleGold + earned].every(Number.isSafeInteger)) throw new Error('Invalid battle reward.');
@@ -624,7 +629,7 @@ export class IdleBattle {
   }
 
   private spawn(def: EnemyDef): void {
-    const multiplier = Math.min(BASE.waves.maxHpMultiplier, Math.pow(BASE.waves.hpGrowth, this.wave - 1));
+    const multiplier = healthMultiplier(this.wave, this.waveRecipeVersion, def.id === 'Rosenspiegel');
     const maxHp = def.hp * multiplier;
     this.enemies.push({
       uid: this.uid++, def, ...this.path[0], hp: maxHp, maxHp,
@@ -858,12 +863,12 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 = 0, layoutVersion: 1 | 2 | 3 | 4 = legacy ? 2 : LAYOUT_VERSION,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 = 0, layoutVersion: 1 | 2 | 3 | 4 = legacy ? 2 : LAYOUT_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
-  if (!isRecord(value) || value.schemaVersion !== (legacy || 13) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
+  if (!isRecord(value) || value.schemaVersion !== (legacy || 14) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
     || value.layoutVersion !== layoutVersion || value.layoutId !== (layout.bounds.columns === 32 ? 'east32' : 'start28')) return false;
-  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9]).includes(value.waveRecipeVersion as number))) return false;
+  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10]).includes(value.waveRecipeVersion as number))) return false;
   if ((!legacy || legacy >= 9) && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
     || value.clearing.unlocked !== (layout.bounds.columns === 32)
     || (value.clearing.unlocked ? !integerIn(value.bossVictories, 1) || !numberIn(value.clearing.openedAt, 0, value.elapsed as number) : value.clearing.openedAt !== null))) return false;
@@ -1002,10 +1007,10 @@ function validSnapshot(
     if (enemy.defId === 'Scorpion' && ((legacy && legacy < 6) || value.waveRecipeVersion === 3 || value.wave < 11)) return false;
     const def = BASE.enemies[enemy.defId];
     if (def.firstWave > value.wave || def.firstWave >= 6 && !['Scorpion', 'Rosenspiegel'].includes(def.id) && (value.waveRecipeVersion as number) < 9) return false;
-    if (!legacy && (!numberIn(enemy.healLockout, 0, JELLY_HEAL.lockout)
+    if ((!legacy || legacy >= 13) && (!numberIn(enemy.healLockout, 0, JELLY_HEAL.lockout)
       || !numberIn(enemy.healRemaining, 0, def.id === 'LanternJelly' ? JELLY_HEAL.cast : 0)
       || !numberIn(enemy.healCooldown, 0, def.id === 'LanternJelly' ? JELLY_HEAL.cooldown : 0))) return false;
-    const expectedHp = def.hp * Math.min(BASE.waves.maxHpMultiplier, Math.pow(BASE.waves.hpGrowth, value.wave - 1));
+    const expectedHp = def.hp * healthMultiplier(value.wave, (legacy && legacy < 6 ? 3 : value.waveRecipeVersion) as number, def.id === 'Rosenspiegel');
     if (!sameComputedStat(enemy.maxHp, expectedHp) || (value.wave < 4 && enemy.defId !== 'Leafbug')) return false;
     if (enemy.hp === 0 && (value.phase !== 'defeat' || enemy.segment !== path.length - 1)) return false;
     if (enemy.segment === path.length - 1) {

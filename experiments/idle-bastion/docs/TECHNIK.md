@@ -1,5 +1,18 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## B13: Balance mit dem erweiterten Gegnerkader
+
+Aktuell: Schema **14**, Kampfregeln **10**, Layout **4**. `src/balance.ts` bündelt die Kurve. Die Einführung der Arten und die Wellenrezepte aus B12c bleiben erhalten.
+
+- Bis Welle 15: weiterhin Faktor `1,16^(Welle−1)`. Nur Rosenspiegel in Welle 15 hat zusätzlich 20 % HP (rund 8.148 statt 6.790). Keine Änderung der ersten fünf Wellen, Turmwerte, Preise oder Heilfähigkeiten.
+- Ab Welle 16: HP-Faktor `1,16^14 × 1,13^(Welle−15)`, weiterhin bei 100.000 begrenzt. Das entschärft die Häufung von Rüstung/Heilung nach Welle 20, ohne ihre Gegenmittel zu entfernen.
+- Gewöhnliche Gegner- und Abschlussbelohnungen ab Welle 16: `min(4; 2 + 0,12 × (Welle−16))`. Zuerst auf ganzes Basisgold runden, anschließend Wisps 10 % einmal anwenden. Erstprämien, Verkäufe und Offline-Gutschriften werden nicht nochmals multipliziert. Offline nutzt bereits die gemessene erhöhte Farmrate.
+- Neuzertifizierung prüft höchstens vier Kandidaten: jüngste normale Welle, frühere sichere Welle, zweitjüngste und Welle 1. Nach einer Änderung wird die alte sichere Welle erneut vollständig bewiesen; ihre frühere Rate wird nicht blind übernommen. Zwei schadensfreie Zyklen ohne Mara bleiben Pflicht.
+- Ein laufender alter Versuch behält HP, Spawnfolge und gewöhnliches Gold seines Rezeptstands. Erst der nächste Versuch verwendet Regeln 10. Aktive Farmnachweise müssen neu verdient werden; bereits entstandene Offline-Ansprüche behalten ihre historische Rate. Geld, Käufe und Bossprämien werden nicht zurückgesetzt.
+- Werkstatt II empfiehlt zunächst die Steinschleuder bis Level 7. Zielanzeige und Zielknopf benutzen dieselbe Auswahl. Alle Käufe bleiben manuell; die Lichtung bleibt optional.
+
+Messwerte, Varianten und Grenzen: [B13-Bericht](../../../artifacts/idle-bastion/acceptance/15min/REPORT.md). Das ist eine Abstimmung des ersten Spielabschnitts, keine validierte Endlosbalance.
+
 ## Verbindliche Ergänzung nach B12: Bauflächen, Figuren und Siedlung
 
 Diese am 18.10.2026 beauftragten Regeln ersetzen die bisherigen festen Bauplätze, Maras Turmnachbarschaft und die Lichtung als Voraussetzung für Werkstatt II. Historische Migrationsabschnitte unten beschreiben weiterhin ihre jeweilige alte Version.
@@ -63,7 +76,7 @@ Diese Trennung beschreibt Zuständigkeiten, keine Verpflichtung zu zehn abstrakt
 ### Erster Boss: Rosenspiegel (Welle 15)
 
 - Ein Boss plus acht Begleiter, darunter ein Panzerskorpion. Bestehendes Succubus-Sheet und reine Frame-Zuordnung wiederverwenden; keine klassische Simulation importieren.
-- 850 Basis-HP, normale Wellen-HP-Skalierung (in Welle 15 etwa 6.790 HP), Tempo 32, 10 % Rüstung. Erreicht sie den Kern, verliert dieser 20 Leben: Niederlage, kein Bossmeilenstein.
+- 850 Basis-HP, Wellen-HP-Skalierung plus B13-Bossfaktor (in Welle 15 etwa 8.148 HP), Tempo 32, 10 % Rüstung. Erreicht sie den Kern, verliert dieser 20 Leben: Niederlage, kein Bossmeilenstein.
 - Innerhalb von 200 Weltpixeln wählt sie den Turm mit der höchsten Grund-DPS. Herzfaden kündigt das Ziel 0,8 Sekunden an; anschließend 4,5 Sekunden lang 40 % weniger Feuerrate. Während Ankündigung und Wirkung bleibt sie stehen. Cooldown 11 Sekunden ab Ankündigung, nach Unterbrechung 6 Sekunden.
 - Jeder Frosttreffer unterbricht eine laufende Ankündigung oder Verführung und verlangsamt normal. Verkauf des Zielturms beendet den Zauber. Alle Timer laufen in Simulationszeit und bleiben über Pause/Reload erhalten.
 - Erst wenn Boss und alle Begleiter besiegt sind, steigt `bossVictories`. Beim ersten Mal einmalig 750 Gold; kein Wisp-Multiplikator und kein künstlicher Anstieg der Live-Einkommensanzeige. Wiederholbar sind nur gewöhnliches Gegner- und Wellen-Gold.
@@ -97,7 +110,7 @@ Im sichtbaren Kampf unterstützt Mara weiterhin automatisch. Die Offline-Grundla
 - Vier Typen: Waldwächter, Frostkristall, Steinschleuder, Scharfschütze. Ihre Rollen bleiben Allrounder, Kontrolle, Flächenschaden und Rüstungsdurchdringung.
 - Zielbereich der ersten 15 Minuten sind numerische Level 1–10. Die erste Werkstatttechnologie erschließt den Frostkristall und Level 4–6; Werkstatt II öffnet Level 7–20. Level 11–20 dienen als einfache Schadensupgrades für das Weiterspielen ohne zusätzliche Fähigkeiten oder Grafikstufen.
 - Gewöhnliche Level erhöhen vor allem Schaden. Reichweite höchstens Basis + 30 Weltpixel, dauerhafter Feuerratenbonus aus Leveln höchstens +30 %. Keine unbegrenzte Exponentialskalierung aus dem klassischen Dreistufensystem übernehmen.
-- Sichtbare Turmstufen sind getrennt vom Zahlenlevel: Darstellung 1 auf Level 1–3, Darstellung 2 auf 4–7, Darstellung 3 ab 8.
+- Sichtbare Turmstufen sind getrennt vom Zahlenlevel: Darstellung 1 auf Level 1–3, Darstellung 2 auf 4–6, Darstellung 3 ab 7.
 - Keine automatische Investition und keine automatische Turmaufrüstung. Keine Spezialisierungsbäume im Slice.
 - Mara unterstützt einen zugewiesenen Turm; zunächst den Startturm. Sie läuft auf gültigem Weg zum Einsatzort und aktiviert dort automatisch Übertakten.
 - Übertakten: 8 Sekunden lang 1,5-fache Feuerrate, 30 Sekunden Cooldown ab Aktivierung. Nach Ablauf automatisch erneut einsetzen, sobald Ziel, Entfernung und Kampfphase passen.

@@ -1,0 +1,552 @@
+{
+  "slot": "b13-live-1792408675129",
+  "viewport": "1600x1000",
+  "speed": 1,
+  "started": "2026-10-19T11:17:55.298Z",
+  "times": {
+    "workshop": 80.75,
+    "research": 100.15,
+    "wisp": 100.15,
+    "warehouse": 249.97500000000002,
+    "boss": 350.45000000000005,
+    "clearing": 404.27500000000003,
+    "workshop2": 454.975,
+    "secondBoss": 808.4000000000001
+  },
+  "actions": [
+    {
+      "at": 0.25,
+      "type": "build",
+      "pad": "tower-03",
+      "kind": 1,
+      "goldBefore": 75,
+      "goldAfter": 0
+    },
+    {
+      "at": 8.625,
+      "type": "upgrade",
+      "uid": 3,
+      "goldBefore": 70,
+      "goldAfter": 10
+    },
+    {
+      "at": 77.825,
+      "type": "workshop",
+      "goldBefore": 408,
+      "goldAfter": 8
+    },
+    {
+      "at": 94.125,
+      "type": "research",
+      "goldBefore": 69,
+      "goldAfter": 85
+    },
+    {
+      "at": 96.95,
+      "type": "research",
+      "goldBefore": 93,
+      "goldAfter": 73
+    },
+    {
+      "at": 113,
+      "type": "build",
+      "pad": "tower-02",
+      "kind": 2,
+      "goldBefore": 114,
+      "goldAfter": 136
+    },
+    {
+      "at": 116.9,
+      "type": "build",
+      "pad": "tower-02",
+      "kind": 2,
+      "goldBefore": 145,
+      "goldAfter": 47
+    },
+    {
+      "at": 132.625,
+      "type": "build",
+      "pad": "tower-09",
+      "kind": 3,
+      "goldBefore": 142,
+      "goldAfter": 29
+    },
+    {
+      "at": 137.85,
+      "type": "upgrade",
+      "uid": 1,
+      "goldBefore": 60,
+      "goldAfter": 72
+    },
+    {
+      "at": 140.125,
+      "type": "upgrade",
+      "uid": 1,
+      "goldBefore": 82,
+      "goldAfter": 43
+    },
+    {
+      "at": 144.025,
+      "type": "upgrade",
+      "uid": 1,
+      "goldBefore": 100,
+      "goldAfter": 6
+    },
+    {
+      "at": 157.22500000000002,
+      "type": "upgrade",
+      "uid": 3,
+      "goldBefore": 97,
+      "goldAfter": 33
+    },
+    {
+      "at": 161.625,
+      "type": "upgrade",
+      "uid": 263,
+      "goldBefore": 92,
+      "goldAfter": 32
+    },
+    {
+      "at": 168.82500000000002,
+      "type": "upgrade",
+      "uid": 309,
+      "goldBefore": 62,
+      "goldAfter": 74
+    },
+    {
+      "at": 171.25,
+      "type": "upgrade",
+      "uid": 309,
+      "goldBefore": 74,
+      "goldAfter": 32
+    },
+    {
+      "at": 184.47500000000002,
+      "type": "upgrade",
+      "uid": 309,
+      "goldBefore": 173,
+      "goldAfter": 182
+    },
+    {
+      "at": 186.85000000000002,
+      "type": "upgrade",
+      "uid": 309,
+      "goldBefore": 182,
+      "goldAfter": 13
+    },
+    {
+      "at": 247.125,
+      "type": "warehouse",
+      "goldBefore": 655,
+      "goldAfter": 72
+    },
+    {
+      "at": 268.925,
+      "type": "build",
+      "pad": "cell-14-7",
+      "kind": 4,
+      "goldBefore": 181,
+      "goldAfter": 214
+    },
+    {
+      "at": 272.575,
+      "type": "build",
+      "pad": "cell-14-7",
+      "kind": 4,
+      "goldBefore": 234,
+      "goldAfter": 73
+    },
+    {
+      "at": 275.225,
+      "type": "upgrade",
+      "uid": 893,
+      "goldBefore": 90,
+      "goldAfter": 54
+    },
+    {
+      "at": 296.65000000000003,
+      "type": "upgrade",
+      "uid": 893,
+      "goldBefore": 216,
+      "goldAfter": 11
+    },
+    {
+      "at": 350.45000000000005,
+      "type": "upgrade",
+      "uid": 893,
+      "goldBefore": 921,
+      "goldAfter": 538
+    },
+    {
+      "at": 353.475,
+      "type": "upgrade",
+      "uid": 309,
+      "goldBefore": 538,
+      "goldAfter": 254
+    },
+    {
+      "at": 356.3,
+      "type": "upgrade",
+      "uid": 1,
+      "goldBefore": 254,
+      "goldAfter": 102
+    },
+    {
+      "at": 361.20000000000005,
+      "type": "upgrade",
+      "uid": 3,
+      "goldBefore": 171,
+      "goldAfter": 39
+    },
+    {
+      "at": 400.90000000000003,
+      "type": "clearing",
+      "goldBefore": 919,
+      "goldAfter": 217
+    },
+    {
+      "at": 449.65000000000003,
+      "type": "workshop2",
+      "goldBefore": 1222,
+      "goldAfter": 1245
+    },
+    {
+      "at": 451.925,
+      "type": "workshop2",
+      "goldBefore": 1245,
+      "goldAfter": 92
+    },
+    {
+      "at": 472.70000000000005,
+      "type": "upgrade",
+      "uid": 309,
+      "goldBefore": 614,
+      "goldAfter": 671
+    },
+    {
+      "at": 474.90000000000003,
+      "type": "upgrade",
+      "uid": 309,
+      "goldBefore": 671,
+      "goldAfter": 124
+    },
+    {
+      "at": 506.425,
+      "type": "upgrade",
+      "uid": 309,
+      "goldBefore": 997,
+      "goldAfter": 221
+    },
+    {
+      "at": 541.0500000000001,
+      "type": "upgrade",
+      "uid": 309,
+      "goldBefore": 1192,
+      "goldAfter": 11
+    },
+    {
+      "at": 554.775,
+      "type": "upgrade",
+      "uid": 263,
+      "goldBefore": 191,
+      "goldAfter": 215
+    },
+    {
+      "at": 557.525,
+      "type": "upgrade",
+      "uid": 263,
+      "goldBefore": 248,
+      "goldAfter": 222
+    },
+    {
+      "at": 563.475,
+      "type": "upgrade",
+      "uid": 1,
+      "goldBefore": 357,
+      "goldAfter": 53
+    },
+    {
+      "at": 572.1,
+      "type": "upgrade",
+      "uid": 3,
+      "goldBefore": 344,
+      "goldAfter": 398
+    },
+    {
+      "at": 574.525,
+      "type": "upgrade",
+      "uid": 3,
+      "goldBefore": 422,
+      "goldAfter": 230
+    },
+    {
+      "at": 582.6750000000001,
+      "type": "upgrade",
+      "uid": 1,
+      "goldBefore": 577,
+      "goldAfter": 30
+    },
+    {
+      "at": 606.1,
+      "type": "upgrade",
+      "uid": 3,
+      "goldBefore": 556,
+      "goldAfter": 116
+    },
+    {
+      "at": 625.25,
+      "type": "upgrade",
+      "uid": 1,
+      "goldBefore": 858,
+      "goldAfter": 202
+    },
+    {
+      "at": 644.75,
+      "type": "upgrade",
+      "uid": 3,
+      "goldBefore": 682,
+      "goldAfter": 82
+    },
+    {
+      "at": 656.1750000000001,
+      "type": "upgrade",
+      "uid": 893,
+      "goldBefore": 717,
+      "goldAfter": 28
+    },
+    {
+      "at": 740.475,
+      "type": "advance",
+      "goldBefore": 433,
+      "goldAfter": 433
+    },
+    {
+      "at": 808.4000000000001,
+      "type": "upgrade",
+      "uid": 1,
+      "goldBefore": 2548,
+      "goldAfter": 2548
+    },
+    {
+      "at": 810.325,
+      "type": "upgrade",
+      "uid": 1,
+      "goldBefore": 2548,
+      "goldAfter": 1682
+    },
+    {
+      "at": 813.1750000000001,
+      "type": "upgrade",
+      "uid": 3,
+      "goldBefore": 1682,
+      "goldAfter": 1710
+    },
+    {
+      "at": 815.85,
+      "type": "upgrade",
+      "uid": 3,
+      "goldBefore": 1710,
+      "goldAfter": 844
+    },
+    {
+      "at": 829.225,
+      "type": "upgrade",
+      "uid": 1,
+      "goldBefore": 1240,
+      "goldAfter": 174
+    },
+    {
+      "at": 864.825,
+      "type": "upgrade",
+      "uid": 3,
+      "goldBefore": 1187,
+      "goldAfter": 44
+    }
+  ],
+  "minutes": [
+    {
+      "elapsed": 0.25,
+      "wallSeconds": 0.786,
+      "wave": 1,
+      "record": 0,
+      "gold": 75,
+      "farm": 1,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 60.775000000000006,
+      "wallSeconds": 62.892,
+      "wave": 5,
+      "record": 4,
+      "gold": 289,
+      "farm": 2,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 120.22500000000001,
+      "wallSeconds": 122.761,
+      "wave": 7,
+      "record": 6,
+      "gold": 59,
+      "farm": 2,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 180.22500000000002,
+      "wallSeconds": 182.277,
+      "wave": 10,
+      "record": 10,
+      "gold": 165,
+      "farm": 7,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 240,
+      "wallSeconds": 242.517,
+      "wave": 13,
+      "record": 12,
+      "gold": 567,
+      "farm": 12,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 300.175,
+      "wallSeconds": 303.033,
+      "wave": 15,
+      "record": 14,
+      "gold": 28,
+      "farm": 13,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 361.20000000000005,
+      "wallSeconds": 363.648,
+      "wave": 16,
+      "record": 15,
+      "gold": 171,
+      "farm": 13,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 420.35,
+      "wallSeconds": 422.663,
+      "wave": 18,
+      "record": 17,
+      "gold": 413,
+      "farm": 17,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 480.3,
+      "wallSeconds": 482.585,
+      "wave": 20,
+      "record": 19,
+      "gold": 332,
+      "farm": 18,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 541.0500000000001,
+      "wallSeconds": 543.695,
+      "wave": 21,
+      "record": 21,
+      "gold": 1192,
+      "farm": 20,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 600.125,
+      "wallSeconds": 602.664,
+      "wave": 23,
+      "record": 22,
+      "gold": 325,
+      "farm": 22,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 660.225,
+      "wallSeconds": 662.954,
+      "wave": 25,
+      "record": 24,
+      "gold": 28,
+      "farm": 24,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 720.9250000000001,
+      "wallSeconds": 723.522,
+      "wave": 25,
+      "record": 24,
+      "gold": 433,
+      "farm": 24,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 780.85,
+      "wallSeconds": 783.641,
+      "wave": 25,
+      "record": 24,
+      "gold": 839,
+      "farm": 24,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 840.7,
+      "wallSeconds": 843.661,
+      "wave": 26,
+      "record": 25,
+      "gold": 555,
+      "farm": 24,
+      "mode": "advance"
+    },
+    {
+      "elapsed": 900.75,
+      "wallSeconds": 903.216,
+      "wave": 27,
+      "record": 26,
+      "gold": 1135,
+      "farm": 24,
+      "mode": "advance"
+    }
+  ],
+  "errors": [],
+  "loadMs": 970,
+  "activeStart": 1792408676269,
+  "final": {
+    "elapsed": 900.75,
+    "record": 26,
+    "wave": 27,
+    "farm": 24,
+    "mode": "advance",
+    "gold": 1135,
+    "levels": [
+      {
+        "kind": 1,
+        "pad": "tower-start",
+        "level": 9
+      },
+      {
+        "kind": 1,
+        "pad": "tower-03",
+        "level": 9
+      },
+      {
+        "kind": 2,
+        "pad": "tower-02",
+        "level": 3
+      },
+      {
+        "kind": 3,
+        "pad": "tower-09",
+        "level": 7
+      },
+      {
+        "kind": 4,
+        "pad": "cell-14-7",
+        "level": 5
+      }
+    ],
+    "wallSeconds": 903.218
+  },
+  "finished": "2026-10-19T11:32:59.774Z"
+}

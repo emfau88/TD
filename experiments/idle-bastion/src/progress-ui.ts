@@ -13,6 +13,11 @@ const number = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 const gold = (value: number) => number.format(value);
 const padNames: Record<string, string> = { 'tower-start': 'Startturm', 'tower-02': 'Nordwest', 'tower-03': 'Nordost', 'tower-04': 'Südkurve', 'tower-05': 'Nordweg', 'tower-06': 'Engpass', 'tower-07': 'Südweg', 'tower-08': 'Kernwache', 'tower-09': 'Nordbogen', 'tower-10': 'Mittelpass', 'tower-11': 'Südbogen', 'tower-east-01': 'Östlicher Sporn', 'tower-east-02': 'Ostbogen' };
 interface Goal { title: string; detail: string; action: GoalAction; cost?: number; label: string }
+/** Keep the objective and its action focused on the same useful upgrade. */
+export function recommendedUpgrade(battle: IdleBattle) {
+  const area = battle.settlement.workshopUpgraded && battle.towers.find(t => t.def.id === 3 && t.level < 7);
+  return area || [...battle.towers].filter(t => t.level < battle.maxLevel).sort((a,b) => upgradeCost(a)-upgradeCost(b))[0];
+}
 export function currentGoal(battle: IdleBattle): Goal {
   const need = (price: number) => battle.gold >= price ? 'Bereit' : `Noch ${gold(price - battle.gold)} Gold`;
   switch (tutorialStep(battle)) {
@@ -39,7 +44,7 @@ export function currentGoal(battle: IdleBattle): Goal {
     case 16: return { title: 'Werkstatt II ausbauen', detail: `${need(SETTLEMENT.workshopUpgradeCost)} · Turmlevel 7–20`, cost: SETTLEMENT.workshopUpgradeCost, action: 'workshop', label: 'Werkstatt ausbauen' };
     case 17: if (battle.highestCleared >= 24 && !battle.bossActive && battle.mode !== 'farm') return { title: 'Rosenspiegels Rückkehr', detail: 'Welle 25 · 1.200 Gold Erstprämie', action: 'boss', label: 'Bossherausforderung ansehen' };
     default: {
-      const tower = [...battle.towers].filter(t => t.level < battle.maxLevel).sort((a,b) => upgradeCost(a)-upgradeCost(b))[0];
+      const tower = recommendedUpgrade(battle);
       if (tower) { const cost = upgradeCost(tower); return { title: `${padNames[tower.padId] ?? tower.def.name} auf Level ${tower.level+1}`, detail: `${need(cost)} · ${battle.secondBossVictories ? `nächster Vorstoß: Welle ${battle.nextAdvanceWave}` : 'für Rosenspiegels Rückkehr · Welle 25'}`, cost, action: 'upgrade', label: 'Turm aufwerten' }; }
       if (battle.layout.towerPads.some(p => battle.isPadUnlocked(p.id) && !battle.towers.some(t => t.padId === p.id))) return { title: 'Freie Bauplätze verstärken', detail: `${need(75)} · weitere Schussbereiche nutzen`, cost: 75, action: 'archer', label: 'Waldwächter platzieren' };
       return { title: 'Verteidigung vollständig ausgebaut', detail: `Sicher farmen oder Welle ${battle.nextAdvanceWave} versuchen`, action: 'progress', label: 'Fortschritt und Vorstoß ansehen' };

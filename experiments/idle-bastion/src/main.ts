@@ -16,7 +16,7 @@ import { offlinePolicy, WAREHOUSE_OFFLINE } from './offline';
 import { farmRewardGold } from './farming';
 import { ART } from './art';
 import { drawDockArt } from './dock-art';
-import { createProgressUI } from './progress-ui';
+import { createProgressUI, recommendedUpgrade } from './progress-ui';
 
 const element = <T extends HTMLElement = HTMLElement>(id: string): T => {
   const value = document.getElementById(id);
@@ -77,7 +77,7 @@ const progressUI = createProgressUI(action => {
   else if (action === 'workshop') { catalogPanel = 'settlement'; openContext('settlement'); }
   else if (action === 'upgrade' && session) {
     const towers = session.battle.towers;
-    const tower = [...towers].filter(t => t.level < session!.battle.maxLevel).sort((a, b) => upgradeCost(a) - upgradeCost(b))[0] ?? towers[0];
+    const tower = recommendedUpgrade(session.battle) ?? towers[0];
     selectedPadId = tower.padId; scene?.setSelected(selectedPadId); openContext('tower');
   }
 }, lifetime.signal);

@@ -4,11 +4,11 @@
 
 [▶ Im Browser spielen](https://emfau88.github.io/TD/idle-bastion/) · [Frische Probe starten](https://emfau88.github.io/TD/idle-bastion/?fresh=1)
 
-Die Idle-Vorschau enthält automatischen Kampf, Mara, Wisp, vier Turmrollen, Upgrades, Werkstatt I/II, Turmlevel bis 20, Frostforschung und Vorratslager I sowie Rosenspiegel als ersten Boss in Welle 15. Wisp bringt nach Frostfassung und Welle 5 automatisch +10 % Kampf-Gold und die Steinschleuder; ab Welle 10 kommt der Scharfschütze hinzu. Fünf Bauplätze sind anfangs verfügbar, je drei weitere öffnen bei Welle 5 und 10. Nordbogen, Mittelpass und Südbogen erleichtern gemeinsame Schussbereiche für Frost- und Schadenstürme. Folge Maras Hinweisen bis zum ersten Frosttreffer. Gold und Kampf werden lokal im Browser gespeichert; „Frische Probe“ öffnet eine getrennte neue Partie und bewahrt den bisherigen Stand. Nur ein Tab pro Partie kann gleichzeitig spielen.
+Die Idle-Vorschau enthält automatischen Kampf, Mara, Wisp, vier Turmrollen, Upgrades, Werkstatt I/II, Turmlevel bis 20, Frostforschung und Vorratslager I sowie Rosenspiegel als ersten Boss in Welle 15. Wisp bringt nach Frostfassung und Welle 5 automatisch +10 % Kampf-Gold und die Steinschleuder; ab Welle 10 kommt der Scharfschütze hinzu. Geeignete Felder bis zu drei Reihen beidseits des Wegs sind von Anfang an bebaubar. Überlappende Schussbereiche verbinden Frost- und Schadenstürme. Folge Maras Hinweisen bis zum ersten Frosttreffer. Gold und Kampf werden lokal im Browser gespeichert; „Frische Probe“ öffnet eine getrennte neue Partie und bewahrt den bisherigen Stand. Nur ein Tab pro Partie kann gleichzeitig spielen.
 
 Die Karte steht im Mittelpunkt: illustriertes Messing-/Schiefer-HUD, Baudock und Details erst bei Auswahl. Vier erzeugte UI-Assets, einheitliche Pixel-Symbole und eine lokal geladene Pixelschrift greifen die Mockups auf. Goldzufluss, Wellenrekord, Vorstoß/Farmen und nächstes Ziel sind direkt sichtbar; das Buchsymbol öffnet Ertragsdetails, Begleiter und die gespeicherte Wellenchronik. Alte Spielstände bleiben erhalten, frühere nicht aufgezeichnete Versuche werden als unbekannt behandelt. Hochkant gibt es einen verschiebbaren Kartenausschnitt und große Aktionsflächen. Funktional in schmalen Browseransichten geprüft; eine vollständige Smartphone-/Safari-Abnahme steht noch aus. [Aktuelle Premium-Oberfläche und Prüfung](artifacts/idle-bastion/acceptance/ui/PREMIUM.md) · [Fortschrittsinformationen](artifacts/idle-bastion/acceptance/ui/PROGRESS.md).
 
-Nach der freigegebenen ersten Zwischenabnahme sind B08–B12 zum Testen enthalten. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht.
+Nach der freigegebenen ersten Zwischenabnahme sind B08–B13 zum Testen enthalten. [Auftrag und Roadmap](experiments/idle-bastion/ROADMAP.md) · [Gemessener Ablauf und bekannte Grenzen](artifacts/idle-bastion/acceptance/90s/REPORT.md). Der Playlink wird aus `codex/idle-bastion-vertical-slice` veröffentlicht.
 
 Rosenspiegels Verführung zeigt nun das größere Tanzfenster mit dem Original-HD-Tanzatlas aus dem Hauptspiel. Der betroffene Turm leuchtet und wackelt; Herzfaden, aufsteigende Herzen und Restdauer zeigen die Wirkung. [Darstellung und Spielaufnahmen](artifacts/idle-bastion/acceptance/p4/B10_VISUALS.md).
 
@@ -24,7 +24,11 @@ Der Nordbogen liegt jetzt zwei Felder tiefer: drei zusammenhängende Baureihen o
 
 Sechs weitere vorhandene Gegnertypen erscheinen gestaffelt: **Flugheuschrecke (6), Feuerwespe (9), Magmakrabbe (13), Panzerflieger (17), Laternenqualle (21), Leerenfalter (28)**. Schwarm, Tempo, Rüstung, Heilung und Frostresistenz sorgen für unterschiedliche Kombinationen. Alle Türme treffen Flieger. Die Chronik erklärt Zusammensetzung und Gegenmittel. [Gegnerregeln](experiments/idle-bastion/docs/ENEMIES.md) · [Prüfung und Spielaufnahmen](artifacts/idle-bastion/acceptance/p4/ENEMIES.md).
 
+B13 stimmt die neue Gegnermischung auf die ersten 15 Minuten ab: mehr gewöhnliches Gold und sanfteres HP-Wachstum ab Welle 16, ein leicht stärkerer erster Boss sowie zuverlässigere Neuwahl der Farmbasis nach Upgrades. Die Chronik erklärt die Erträge. Laufende alte Wellen enden mit ihren bisherigen Werten; Käufe und Offline-Ansprüche bleiben erhalten. [15-Minuten-Verlauf, Rückkehrprobe und Grenzen](artifacts/idle-bastion/acceptance/15min/REPORT.md).
+
 ### Entwicklung von Idle Bastion
+
+![Regulärer B13-Spielstand nach 15 Minuten](artifacts/idle-bastion/acceptance/15min/b13-minute15.png)
 
 ![Vorhandene Panzer- und Fluggegner im Idle-Kampf](artifacts/idle-bastion/acceptance/p4/enemies-30.png)
 
