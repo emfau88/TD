@@ -1,0 +1,20 @@
+[
+  {
+    "view": "430x932, DPR 2, touch",
+    "complete": true,
+    "lives": 20,
+    "record": 2,
+    "gold": 3,
+    "combatSeconds": 79.42500000000001,
+    "learningSeconds": 7.4778266666666955,
+    "pauseReload": true,
+    "wispDeferred": true,
+    "errors": []
+  },
+  {
+    "view": "1600x1000",
+    "seed": "actual earned mobile upgrade pause",
+    "highlightedUpgrade": true,
+    "overflow": false
+  }
+]

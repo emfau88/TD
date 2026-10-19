@@ -23,7 +23,7 @@ test('B13 keeps entry recipes/rewards intact, softens later HP and bounds income
 test('v13 active boss/queue/HP and money survive migration without a mid-wave balance switch', () => {
   const old=JSON.parse(readFileSync(new URL('./fixtures/balance-v13.json',import.meta.url),'utf8'));
   const b=IdleBattle.restore(old)!;assert.ok(b);
-  const saved=b.snapshot();assert.equal(saved.schemaVersion,15);assert.equal(saved.rulesVersion,10);
+  const saved=b.snapshot();assert.equal(saved.schemaVersion,16);assert.equal(saved.rulesVersion,10);
   assert.equal(saved.waveRecipeVersion,9);assert.equal(saved.gold,old.gold);
   for(const field of ['enemies','shots','queue','bossCharm','towers'] as const)assert.deepEqual(saved[field],old[field]);
   assert.deepEqual(saved.liveClearedWaves,[]);assert.equal(saved.farmWave,1);

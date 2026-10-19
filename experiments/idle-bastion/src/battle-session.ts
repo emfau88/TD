@@ -120,7 +120,7 @@ export class BattleSession {
         const battle = IdleBattle.restore(loaded.save.battle);
         if (!battle) throw new SessionLoadError('Der gespeicherte Kampf ist ungültig.', false);
         const session = new BattleSession(battle, store, now, writer, undefined, loaded.save);
-        session.currentOffline = battle.preparing ? createOfflineState(now()) : reserveOffline(session.currentOffline, now());
+        session.currentOffline = (battle.preparing || battle.learningPaused) ? createOfflineState(now()) : reserveOffline(session.currentOffline, now());
         session.waitingForResume = !!session.currentOffline.window;
         await session.commit();
         return session;
@@ -153,7 +153,7 @@ export class BattleSession {
     if (this.closed || this.closing || this.currentError || this.transitioning
       || (!!this.store && !this.currentWriter) || this.currentPaused || this.currentSuspended || this.waitingForResume
       || !Number.isFinite(dtSeconds) || dtSeconds <= 0) return;
-    if (dtSeconds > GAP_SECONDS && this.currentBattle.preparing) return;
+    if (dtSeconds > GAP_SECONDS && (this.currentBattle.preparing || this.currentBattle.learningPaused)) return;
     if (dtSeconds > GAP_SECONDS) {
       // Temporary play has no offline economy. Discard the unattended gap.
       if (this.temporary) return;
@@ -172,7 +172,7 @@ export class BattleSession {
     this.currentBattle.update(seconds);
     this.checkpointSeconds += seconds;
     this.refreshFarm();
-    if (before !== this.economicState() || this.checkpointSeconds >= CHECKPOINT_SECONDS) {
+    if (before !== this.economicState() || (!this.currentBattle.preparing && !this.currentBattle.learningPaused && this.checkpointSeconds >= CHECKPOINT_SECONDS)) {
       void this.commit().catch(() => undefined);
     }
   }
@@ -245,7 +245,7 @@ export class BattleSession {
         this.currentBattle.creditOfflineUnits(claimed.amountUnits);
         next = claimed.state;
       }
-      this.currentOffline = activateOffline(next, this.now(), this.currentCertificate, this.currentPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
+      this.currentOffline = activateOffline(next, this.now(), this.currentCertificate, this.currentPaused || this.currentBattle.learningPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
       this.waitingForResume = false;
       await this.commit();
       return true;
@@ -287,7 +287,7 @@ export class BattleSession {
       try {
         if (this.pendingWrite) await this.pendingWrite;
         if (this.currentError) throw this.currentError;
-        if (!this.waitingForResume) this.currentOffline = beginAbsence(this.currentOffline, this.now(), this.currentCertificate, this.currentPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
+        if (!this.waitingForResume) this.currentOffline = beginAbsence(this.currentOffline, this.now(), this.currentCertificate, this.currentPaused || this.currentBattle.learningPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
         await this.commit();
       } finally {
         await this.releaseOwnership();
@@ -310,7 +310,7 @@ export class BattleSession {
   }
   private economicState(): string {
     const b = this.currentBattle;
-    return `${b.gold}/${b.goldRemainderUnits}/${b.earned}/${b.kills}/${b.lives}/${b.wave}/${b.phase}/${b.mode}/${b.attemptId}/${b.tutorial.frostSeen}`;
+    return `${b.introduction.stage}/${b.learningPaused}/${b.gold}/${b.goldRemainderUnits}/${b.earned}/${b.kills}/${b.lives}/${b.wave}/${b.phase}/${b.mode}/${b.attemptId}/${b.tutorial.frostSeen}`;
   }
   private refreshFarm(): void {
     const key = `${defenseFingerprint(this.currentBattle)}/${this.currentBattle.liveClearedWaves.join(',')}`;
@@ -325,7 +325,7 @@ export class BattleSession {
       await this.heartbeat();
       const end = this.now();
       const start = Math.max(this.currentOffline.baseline.at, end - Math.floor(seconds * 1000));
-      this.currentOffline = beginAbsence(this.currentOffline, start, this.currentCertificate, this.currentPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
+      this.currentOffline = beginAbsence(this.currentOffline, start, this.currentCertificate, this.currentPaused || this.currentBattle.learningPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
       this.currentOffline = reserveOffline(this.currentOffline, end);
       await this.commit();
     } catch (error) { this.fail(asError(error), true); throw error; }
@@ -336,7 +336,7 @@ export class BattleSession {
     if (this.currentError) return Promise.reject(this.currentError);
     const snapshot = this.currentBattle.snapshot(), paused = this.currentPaused;
     if (!this.waitingForResume && !this.currentSuspended) {
-      this.currentOffline = checkpointActive(this.currentOffline, this.now(), this.currentCertificate, paused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
+      this.currentOffline = checkpointActive(this.currentOffline, this.now(), this.currentCertificate, paused || this.currentBattle.learningPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
     }
     const offline = clone(this.currentOffline);
     if (!force && same(snapshot, this.committedSnapshot) && paused === this.committedPaused && same(offline, this.committedOffline)) return Promise.resolve();

@@ -40,12 +40,12 @@ Prioritäten: verständlicher Einstieg → korrekte Wirtschaft und Speicherung �
 | --- | --- |
 | Welt | Eigene Waldkarte, 40er Zellen; Startbereich 28×16, östliche Lichtung um 4 Spalten auf 32×16; Obergrenze 36×16 im Slice |
 | Kamera | Vorwiegend horizontales Verschieben; am Desktop alle Einstiegsziele gemeinsam sichtbar. Hochkant lesbarer Ausschnitt, Übersicht und direkter Kamerafokus über Bau-/Figurenkarten |
-| Turmplätze | Freie Rasterwahl bis zu drei Zellen vom Gegnerweg entfernt, auf beiden Seiten ab Spielbeginn. Weg, Wasser, Bäume, Felsen und Siedlungsfläche bleiben frei von Türmen; geschützter Startturm wird beim ersten Einstieg selbst aus einem kostenlosen Bausatz platziert. Vorschau mit tatsächlicher Reichweite und ausdrücklicher Baubestätigung |
+| Turmplätze | Freie Rasterwahl bis zu drei Zellen vom Gegnerweg entfernt, auf beiden Seiten; während der ersten Lernschritte werden geeignete Kombinationsplätze geführt angeboten. Weg, Wasser, Bäume, Felsen und Siedlungsfläche bleiben frei von Türmen; geschützter Startturm wird beim ersten Einstieg selbst aus einem kostenlosen Bausatz platziert. Vorschau mit tatsächlicher Reichweite und ausdrücklicher Baubestätigung |
 | Türme | Waldwächter (Allrounder), Frostkristall (Verlangsamung), Steinschleuder (Fläche), Scharfschütze (Rüstung) |
 | Turmlevel | Ziel der ersten 15 Minuten: Level 1–10; anschließend normale Schadensupgrades bis Level 20. Zahlenlevel getrennt von 3 vorhandenen Grafikstufen. Keine automatische Ausgabe von Gold für Upgrades |
 | Gebäude | Werkstatt I, eine sichtbare Verbesserung zur Werkstatt II, Vorratslager I; frei wählbare Grundstücke innerhalb der Siedlungsfläche, Versetzen bei Pause, kurze Bauanimation, kein Ressourcen-Bauzeitspiel |
 | Figuren | Mara sofort, Wisp später; keine Charakterlevel, Ausrüstung oder Beziehungswerte im Slice |
-| Wellen | Erster Start ausdrücklich nach dem eigenen Turmbau; danach automatische Fortsetzung, kurze feste Pause; Niederlage führt automatisch zum sicheren Farmen, erneuter Vorstoß zunächst manuell |
+| Wellen | Erster Start ausdrücklich nach dem eigenen Turmbau; danach automatische Fortsetzung, während der Anleitung Wiederholung bis Welle 2 und gezielte Lernpausen; Niederlage führt automatisch zum sicheren Farmen, erneuter Vorstoß zunächst manuell |
 | Leben | Kern startet jeden Wellenversuch mit 20/20; Türme und Gebäude werden nicht beschädigt |
 | Geschwindigkeit | 1×; Pause hält Simulation und Produktion an. Keine spielerseitige 2×-Option im Slice |
 | Währung | Nur Gold. Keine zweite Bauressource, Prestige-Währung, Premiumwährung oder Beuteinventare |
@@ -57,15 +57,15 @@ Die Kartenmaße sind ein konkreter Layout-Ausgangspunkt, kein Anlass, bestehende
 
 ## Einstieg und Fortschritt
 
-Zeiten sind Ziele für einen neuen Spielstand bei 1× und zügigen normalen Entscheidungen. Freischaltungen beruhen auf tatsächlich erfüllten Bedingungen, niemals auf abgelaufenen Tutorial-Zeitgebern. Alternative sinnvolle Käufe dürfen Ziele verzögern, aber keine Sackgasse erzeugen.
+Die erste Lernfolge wurde nachträglich um ausdrückliche Lese-/Baupausen ergänzt. Dafür gilt keine starre 90-Sekunden-Grenze: Am empfohlenen Platz benötigt sie im Modell 79,425 Sekunden Kampfzeit; mit acht Sekunden Begrüßung/Bau und fünfmal zehn Sekunden Lesezeit insgesamt rund 2:17 Minuten bis zur Frost-Kombination. Die folgenden späteren Zeitfenster sind historische Richtwerte bei 1× und zügigen Entscheidungen. Freischaltungen beruhen auf tatsächlich erfüllten Bedingungen, niemals auf abgelaufenen Tutorial-Zeitgebern. Alternative sinnvolle Käufe dürfen Ziele verzögern, aber keine Sackgasse erzeugen.
 
 | Zeitfenster | Ereignis und nachvollziehbarer Nutzen |
 | --- | --- |
 | 0–10 s | Mara begrüßt auf ruhiger Karte. Kostenlosen Waldwächter selbst bauen, Reichweite prüfen und „Verteidigung starten“ wählen. Kein Zeitdruck; erst dann kommen Gegner |
-| etwa 10–20 s | Erste Käfer und Gold; Maras Fernzauber mit sichtbarer Wirkzeit ausprobieren oder direkt Automatik wählen. Ein zweiter Waldwächter ist aus den erhaltenen 75 Startgold sofort bezahlbar |
-| 30–60 s | Erstes normales Turmupgrade; Schaden und Trefferwirkung sind nachvollziehbar. Mara erklärt den Bau einer Werkstatt |
-| 60–90 s | Werkstatt I ist durch regulär verdientes Gold erreichbar und wird bei Befolgen des Hinweises sichtbar gebaut |
-| nach Bau, spätestens etwa 120–150 s | Erste Technologie „Frostfassung“ kaufen: Frostkristall freigeschaltet, zugleich normale Turmlevel 4–6 zugänglich. Der neue Turm verlangsamt Gegner sichtbar |
+| Nach dem ersten Käfer | Lernpause: Startturm antippen und genau einmal für 60 Gold auf Level 2 verbessern; erst mit Weiter geht es weiter |
+| Danach | Auf 400 Gold für die Werkstatt sparen. Höchstens Welle 2 wiederholen, statt den Spieler während des Lesens in stärkere Wellen zu drängen |
+| Sobald 400 Gold bereitliegen | Lernpause: Werkstatt selbst platzieren und bauen, Nutzen erklären; anschließend bewusst fortsetzen |
+| Anschließend | Je eine Lernpause bei bezahlbarer Frostforschung (60 Gold) und Frostbau (110 Gold). Echte Forschungsschaltfläche und überlappenden Frostplatz zeigen. Ersten Frosttreffer verstehen, dann freie Verteidigung |
 | 2–4 min | Nach erster Technologie und gemeisterter Welle 5 Wisp kostenlos freischalten; zusätzlich Steinschleuder verfügbar |
 | 4–6 min | Vorratslager I nach Wisp und Welle 8 baubar; Offline-Vorteil anhand konkreter Vorschau erklären. Scharfschütze ab gemeisterter Welle 10 verfügbar |
 | 7–10 min | Erster Bosssieg als Ziel; die Begegnung kann früher beginnen. Welle 15: vorhandene Succubus „Rosenspiegel“ mit angekündigter Turmverführung, Frost-Unterbrechung und kleiner Begleitgruppe; lesbare Bossanzeige, kein neues Spritepaket |
@@ -76,7 +76,7 @@ Zeiten sind Ziele für einen neuen Spielstand bei 1× und zügigen normalen Ents
 
 Die Wellen- und Preiskurve wird auf diese Fenster abgestimmt; bei einem Zielkonflikt zuerst Erträge, Kampfdauer und Kosten ändern. Kleine datenbezogene Anpassungen sind erlaubt und mit Vorher/Nachher-Zeiten zu dokumentieren. Reihenfolge, Charakterrollen und Freigabegrenzen bleiben verbindlich.
 
-**Umgesetzte Einstiegspreise:** 75 Startgold plus ein kostenloser, selbst platzierter Startturm; Waldwächter 75, Frostkristall 110, erstes Upgrade 60, Werkstatt I 400, Frostfassung 60. Die Werkstatt-Hypothese 220 wurde nach Messung des gesamten Kaufablaufs auf 400 angehoben. Die neue Begrüßungs-/Bauphase zählt zur Einstiegszeit; mit acht Sekunden Vorbereitung erreicht der legale Modelllauf die Werkstatt bei 86 Sekunden, die Forschung bei 102,25 Sekunden ([Einstiegsbericht](../../artifacts/idle-bastion/acceptance/onboarding/REPORT.md)). Der historische 1×-Browserverlauf und die verschiedenen Spielweisen stehen im [90-Sekunden-Bericht](../../artifacts/idle-bastion/acceptance/90s/REPORT.md). Steinschleuder/Scharfschütze kosten 135/170 Gold, Lager I 650 und die östliche Lichtung 900. Im legalen Modellablauf war die Lichtung nach 9:42 Minuten bezahlbar; das ist keine garantierte Zeit für jede Spielweise. Werkstatt II: 1.200 Gold; B13 hat diesen Preis mit der neuen Ertragskurve geprüft. Rosenspiegel gewährt einmalig 750 Gold Erstprämie ohne Wisp-Bonus; die gemessenen Zeiten und Grenzen mit dem erweiterten Gegnerkader stehen im [B13-Bericht](../../artifacts/idle-bastion/acceptance/15min/REPORT.md).
+**Umgesetzte Einstiegspreise:** 75 Startgold plus ein kostenloser, selbst platzierter Startturm; Waldwächter 75, Frostkristall 110, erstes Upgrade 60, Werkstatt I 400, Frostfassung 60. Die Werkstatt-Hypothese 220 wurde nach Messung des gesamten Kaufablaufs auf 400 angehoben. Die erste Einstiegsversion erreichte im Modell die Werkstatt nach 86 Sekunden. Die erweiterte Lernfolge trennt nun Kampf- und Lesezeit transparent und kommt mit nur einem auf Level 2 verbesserten Waldwächter bis zur ersten Frost-Kombination aus ([Einstiegsbericht](../../artifacts/idle-bastion/acceptance/onboarding/REPORT.md)). Der historische 1×-Browserverlauf und die verschiedenen Spielweisen stehen im [90-Sekunden-Bericht](../../artifacts/idle-bastion/acceptance/90s/REPORT.md). Steinschleuder/Scharfschütze kosten 135/170 Gold, Lager I 650 und die östliche Lichtung 900. Im legalen Modellablauf war die Lichtung nach 9:42 Minuten bezahlbar; das ist keine garantierte Zeit für jede Spielweise. Werkstatt II: 1.200 Gold; B13 hat diesen Preis mit der neuen Ertragskurve geprüft. Rosenspiegel gewährt einmalig 750 Gold Erstprämie ohne Wisp-Bonus; die gemessenen Zeiten und Grenzen mit dem erweiterten Gegnerkader stehen im [B13-Bericht](../../artifacts/idle-bastion/acceptance/15min/REPORT.md).
 
 ## Rollen und Entscheidungen
 
@@ -90,7 +90,7 @@ Die Wellen- und Preiskurve wird auf diese Fenster abgestimmt; bei einem Zielkonf
 
 ## Tutorial und Rückkehr
 
-Mara begrüßt neue Spieler auf ruhiger Karte: eigener kostenloser Turm → ausdrücklicher Verteidigungsstart → erster Fernzauber und Automatik. Danach führen kurze Kommentare und ein aktuelles Ziel durch: zweiter Turm → Upgrade → Werkstatt → Frostfassung → Wisp → Lager/Offline → Lichtung. Ab dem ersten Start läuft der Kampf dabei weiter. Bestehende Spielstände überspringen die neue Einführung vollständig. Erledigte Schritte werden aus dem Zustand erkannt; eine alternative zulässige Turmposition oder ein früher erfüllter Schritt blockiert nichts.
+Mara begrüßt neue Spieler auf ruhiger Karte: eigener kostenloser Turm → ausdrücklicher Verteidigungsstart → einmal Level 2 → Werkstatt → Frostforschung → Frostturm → erster Frosttreffer. Jeder bezahlbare Lernschritt pausiert den Kampf bis zur ausdrücklichen Fortsetzung. Während des Sparens laufen frühe Übungswellen weiter; Mara unterstützt automatisch. Danach folgen Wisp → Lager/Offline → Lichtung im normalen Spiel. Bestehende Spielstände überspringen die neue Einführung vollständig. Erledigte Schritte werden aus dem Zustand erkannt; eine alternative zulässige Turmposition oder ein früher erfüllter Schritt blockiert nichts.
 
 Tutorial überspringen blendet Hilfen aus und verändert keine Freischaltbedingungen. „Hinweise erneut ansehen“ spielt die Erklärungen zustandsbezogen erneut ab, vergibt keine Ressourcen und setzt die Wirtschaft nicht zurück. Fortschritt, Hinweise und einmalige Belohnungen werden gespeichert.
 
@@ -114,7 +114,7 @@ Dazu gehören reale Screenshots (erste Minute, Werkstatt, ungefähr Minute 15), 
 
 Im Wurzelverzeichnis des isolierten Worktrees `npm ci` ausführen, falls die Abhängigkeiten fehlen. `npm run idle:dev` startet die technische Kampfprobe auf `http://127.0.0.1:5190/`. `npm run idle:test` prüft Geometrie, Kampfsimulation, Wiederherstellung und Speichertransaktionen. `npm run idle:build` erzeugt `experiments/idle-bastion/dist/`; `npm run idle:preview` öffnet den Server auf Port 5191.
 
-Die Startseite zeigt den kompletten ersten Kreislauf mit automatischem Kampf, Mara, Turmbau, Werkstatt und Frosttechnik. [Im Browser testen](https://emfau88.github.io/TD/idle-bastion/) · [Frische unabhängige Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1). Die gemessene Werkstattzeit beträgt 1:23, die erste Frostwirkung 2:04; [B07-Bericht und Screenshots](../../artifacts/idle-bastion/acceptance/90s/REPORT.md).
+Die Startseite zeigt den kompletten ersten Kreislauf mit automatischem Kampf, Mara, Turmbau, Werkstatt und Frosttechnik. [Im Browser testen](https://emfau88.github.io/TD/idle-bastion/) · [Frische unabhängige Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1). Im historischen B07-Verlauf betrug die Werkstattzeit 1:23, die erste Frostwirkung 2:04; [B07-Bericht und Screenshots](../../artifacts/idle-bastion/acceptance/90s/REPORT.md).
 
 [Die Entwicklung in Spielaufnahmen](../../README.md#entwicklung-von-idle-bastion) zeigt den Weg vom neutralen Kartenrahmen bis zur großen Kartenansicht. Vor dem Werkstattbau stehen nur Werkbank und Material bereit. Nach dem Bau verschwinden die Bauplatzpfosten und die Platzbeschriftung; das Gebäude selbst bleibt zur Auswahl anklickbar.
 

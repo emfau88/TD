@@ -6,7 +6,6 @@ import {IdleBattle} from '../src/battle';
 import {BattleSession, type SessionStore} from '../src/battle-session';
 import {openBattleStore} from '../src/save-store';
 import {certifyFarm} from '../src/farming';
-import {nextPurchase,purchase} from './helpers/balance-run';
 const restore=(b:IdleBattle)=>{const copy=IdleBattle.restore(b.snapshot());assert.ok(copy);assert.deepEqual(copy.snapshot(),b.snapshot());return copy;};
 
 test('preparation persists without combat, production or repeated gifts',()=>{
@@ -20,24 +19,39 @@ test('preparation persists without combat, production or repeated gifts',()=>{
  assert.ok(b.build('cell-6-6'));assert.equal(b.towers.length,1);assert.equal(b.towers[0].uid,1);assert.equal(b.gold,75);b=restore(b);
  b.update(3600);assert.equal(b.wave,0);assert.equal(certifyFarm(b),undefined);
  assert.equal(b.startDefense(),true);assert.equal(b.startDefense(),false);assert.equal(b.wave,1);b=restore(b);
- assert.ok(b.build('tower-start'));assert.equal(b.gold,0);assert.equal(b.towers.filter(t=>t.protected).length,1);restore(b);
+ b.skipLessons();assert.ok(b.build('tower-start'));assert.equal(b.gold,0);assert.equal(b.towers.filter(t=>t.protected).length,1);restore(b);
 });
 
 test('all offered first placements clear wave one without manual support',()=>{
  const candidates=IdleBattle.newGame().layout.towerPads.filter(p=>IdleBattle.newGame().isStarterLocation(p.id));assert.ok(candidates.length>=3);
- for(const p of candidates){const b=IdleBattle.newGame();b.beginIntroduction();assert.ok(b.build(p.id));b.startDefense();
+ for(const p of candidates){const b=IdleBattle.newGame();b.beginIntroduction();assert.ok(b.build(p.id));b.startDefense();b.skipLessons();b.mara.autoCast=false;
   for(let i=0;i<2400&&!b.highestCleared&&b.phase!=='defeat';i++)b.update(.025);
   assert.equal(b.highestCleared,1,p.id);assert.equal(b.lives,20,p.id);restore(b);
  }
 });
 
-test('Mara lesson casts against real opponents, preserves effect and permits explicit automation',()=>{
- const b=IdleBattle.newGame();b.beginIntroduction();b.build('tower-start');b.startDefense();
- assert.equal(b.castMaraNow(),false);
- for(let i=0;i<500&&!b.canPracticeSpell;i++)b.update(.025);
- assert.equal(b.canPracticeSpell,true);assert.equal(b.castMaraNow(),true);assert.equal(b.introduction.stage,'auto');assert.equal(b.mara.autoCast,false);
- const resumed=restore(b);assert.equal(resumed.mara.effectTowerUid,1);assert.ok(resumed.mara.effectRemaining>0);
- assert.equal(resumed.finishIntroduction(true),true);assert.equal(resumed.mara.autoCast,true);assert.equal(resumed.finishIntroduction(true),false);restore(resumed);
+test('all starter locations survive the complete guided purchase sequence with real learning pauses',()=>{
+ const locations=IdleBattle.newGame().layout.towerPads.filter(p=>IdleBattle.newGame().isStarterLocation(p.id));
+ for(const location of locations){
+  const b=IdleBattle.newGame();b.update(8);b.beginIntroduction();b.build(location.id);b.startDefense();let pauses=0,workshop=0;
+  for(let i=0;i<16000&&b.guiding;i++){
+   b.update(.025);assert.equal(b.lives,20,`${location.id} leaked in ${b.introduction.stage}`);assert.ok(b.wave<=2);assert.equal(b.wispUnlocked,false);
+   if(!b.learningPaused)continue;
+   const before=b.snapshot();b.update(10);const after=b.snapshot();after.introduction.preparationSeconds=before.introduction.preparationSeconds;assert.deepEqual(after,before,'reading must freeze combat and income');
+   if(b.introduction.stage!=='observe')assert.equal(b.continueLesson(),false);
+   switch(b.introduction.stage){
+    case 'upgrade': assert.equal(b.upgrade(1),true);assert.equal(b.upgrade(1),false);break;
+    case 'workshop': assert.equal(b.buildWorkshop(),true);workshop=b.elapsed;break;
+    case 'research': assert.equal(b.researchFrost(),true);break;
+    case 'frost': assert.ok(b.recommendedFrostPad);assert.ok(b.build(b.recommendedFrostPad!,2));break;
+    case 'observe': break;
+   }
+   assert.equal(b.lessonComplete,true);assert.equal(b.learningPaused,true);restore(b);
+   assert.equal(b.continueLesson(),true);restore(b);pauses++;
+  }
+  assert.equal(b.introduction.stage,'done',location.id);assert.equal(pauses,5);assert.equal(b.towers.length,2);assert.equal(b.towers[0].level,2);assert.ok(b.tutorial.frostSeen);
+  if(location.id==='tower-start')console.log(JSON.stringify({workshopCombatSeconds:workshop,completeCombatSeconds:b.elapsed,learningAndPreparationSeconds:b.introduction.preparationSeconds,totalSeconds:b.elapsed+b.introduction.preparationSeconds}));
+ }
 });
 
 test('pre-start state cannot smuggle money, combat, extra towers or unassigned active Mara',()=>{
@@ -51,7 +65,7 @@ test('pre-start state cannot smuggle money, combat, extra towers or unassigned a
 test('real v14 veteran and its historical offline basis survive the schema-only migration',async()=>{
  const old=JSON.parse(readFileSync('artifacts/idle-bastion/acceptance/15min/b13-browser-save.json','utf8'));
  const before=structuredClone(old);const b=IdleBattle.restore(old.battle)!;assert.ok(b);assert.deepEqual(old,before);
- assert.deepEqual(b.introduction,{stage:'done',preparationSeconds:0});
+ assert.deepEqual(b.introduction,{stage:'done',preparationSeconds:0,halted:false});
  const current:any=b.snapshot();delete current.introduction;current.schemaVersion=14;assert.deepEqual(current,old.battle);
  const factory=new IDBFactory(),store=await openBattleStore(factory,'intro-legacy',()=>old.writtenAt);
  const writer=(await store.acquireWriter('fixture'))!;await store.save(b.snapshot(),old.paused,0,{writer,offline:old.offline});
@@ -76,20 +90,14 @@ test('rejected first-build transaction rolls back the kit and complete preparati
  assert.equal(await live.command(b=>b.build('tower-start')),false);assert.deepEqual(live.battle.snapshot(),before);assert.equal(live.battle.towers.length,0);assert.equal(live.battle.gold,75);await live.close().catch(()=>undefined);
 });
 
-test('opening measurement includes eight seconds of welcome and building',()=>{
- const b=IdleBattle.newGame();b.update(4);b.beginIntroduction();b.update(4);b.build('tower-start');b.startDefense();
- let workshop=0,research=0;
- for(let i=0;i<600&&!research;i++){
-  if(b.canPracticeSpell&&b.introduction.stage==='practice')b.castMaraNow();
-  if(b.introduction.stage==='auto')b.finishIntroduction(true);
-  const next=nextPurchase(b);if(next)purchase(b,next);b.update(.25);
-  if(b.settlement.workshopBuilt&&!workshop)workshop=b.elapsed+b.introduction.preparationSeconds;
-  if(b.settlement.frostResearched)research=b.elapsed+b.introduction.preparationSeconds;
+test('schema 15 saves preserve preparation and completed play without forcing the extended lessons',()=>{
+ for(const phase of ['welcome','ready','done'] as const){
+  const b=phase==='done'?new IdleBattle():IdleBattle.newGame();if(phase==='ready'){b.beginIntroduction();b.build('cell-6-6')}
+  const old:any=b.snapshot();old.schemaVersion=15;delete old.introduction.halted;
+  const loaded=IdleBattle.restore(old)!;assert.ok(loaded);assert.equal(loaded.introduction.stage,phase);assert.equal(loaded.learningPaused,false);
+  const current:any=loaded.snapshot();current.schemaVersion=15;delete current.introduction.halted;assert.deepEqual(current,old);
  }
- assert.ok(workshop>8&&workshop<=90,`Workshop at ${workshop}`);assert.ok(research>workshop&&research<=150,`Research at ${research}`);
- console.log(JSON.stringify({preparationSeconds:8,workshopIncludingPreparation:workshop,researchIncludingPreparation:research}));
 });
-
 
 test('intro command waits for a background write, then rechecks and consumes the kit once',async()=>{
  const store=await openBattleStore(new IDBFactory(),'intro-queued',()=>1000);let release:()=>void=()=>{};let hold=false;let entered!:()=>void;const entering=new Promise<void>(r=>entered=r);
@@ -99,4 +107,14 @@ test('intro command waits for a background write, then rechecks and consumes the
  const placing=live.command(b=>b.build('tower-start'),true);assert.equal(live.battle.towers.length,0);
  release();assert.equal(await writing,true);assert.equal(await placing,true);assert.equal(live.battle.towers.length,1);assert.equal(live.battle.gold,75);
  await live.close();
+});
+
+
+test('learning pause survives return without idle income and stays distinct from manual pause',async()=>{
+ const factory=new IDBFactory();let now=1000;let store=await openBattleStore(factory,'lesson-return',()=>now),live=await BattleSession.open(store,{now:()=>now,locks:null});
+ await live.command(b=>{b.beginIntroduction();b.build('tower-start');b.startDefense();while(!b.learningPaused)b.update(.025)});
+ const before=live.battle.snapshot();await live.close();now+=3600000;
+ store=await openBattleStore(factory,'lesson-return',()=>now);live=await BattleSession.open(store,{now:()=>now,locks:null});
+ assert.equal(live.paused,false);assert.equal(live.battle.learningPaused,true);assert.equal(live.awaitingResume,false);assert.equal(live.pendingReward,null);assert.deepEqual(live.battle.snapshot(),before);
+ await live.command(b=>b.upgrade(1));assert.equal(live.battle.learningPaused,true);await live.command(b=>b.continueLesson());assert.equal(live.battle.learningPaused,false);await live.close();
 });

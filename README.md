@@ -4,7 +4,9 @@
 
 [▶ Im Browser spielen](https://emfau88.github.io/TD/idle-bastion/) · [Frische Probe starten](https://emfau88.github.io/TD/idle-bastion/?fresh=1)
 
-Neu: Mara begrüßt dich zuerst auf einer ruhigen Karte. Baue deinen kostenlosen Startturm selbst und starte die Verteidigung bewusst; die 75 Startgold bleiben erhalten. Danach lernst du ihren Fernzauber und die Automatik kennen. Bestehende Partien laufen unverändert weiter — den Einstieg testest du mit **„Frische Probe starten“** oben. [Ablauf und neue Spielaufnahmen](artifacts/idle-bastion/acceptance/onboarding/REPORT.md).
+**Geführter Einstieg:** Lernpausen für Level 2, Werkstatt, Forschung und Frostbau; klare Markierungen und Sparziele, frühe Übungswellen bis zur fertigen Kombination. [Lernfolge, Prüfung und Aufnahmen](artifacts/idle-bastion/acceptance/onboarding/lessons/REPORT.md).
+
+Neu: Mara begrüßt dich zuerst auf einer ruhigen Karte. Baue deinen kostenlosen Startturm selbst und starte die Verteidigung bewusst; die 75 Startgold bleiben erhalten. Danach führt sie dich mit Lernpausen durch Upgrade, Werkstatt und die erste Frost-Kombination; währenddessen unterstützt sie automatisch. Bestehende Partien laufen unverändert weiter — den Einstieg testest du mit **„Frische Probe starten“** oben. [Ablauf und neue Spielaufnahmen](artifacts/idle-bastion/acceptance/onboarding/REPORT.md).
 
 Die Idle-Vorschau enthält automatischen Kampf, Mara, Wisp, vier Turmrollen, Upgrades, Werkstatt I/II, Turmlevel bis 20, Frostforschung und Vorratslager I sowie Rosenspiegel als ersten Boss in Welle 15. Wisp bringt nach Frostfassung und Welle 5 automatisch +10 % Kampf-Gold und die Steinschleuder; ab Welle 10 kommt der Scharfschütze hinzu. Nach dem geführten ersten Bau sind geeignete Felder bis zu drei Reihen beidseits des Wegs bebaubar. Überlappende Schussbereiche verbinden Frost- und Schadenstürme. Folge Maras Hinweisen bis zum ersten Frosttreffer. Gold und Kampf werden lokal im Browser gespeichert; „Frische Probe“ öffnet eine getrennte neue Partie und bewahrt den bisherigen Stand. Nur ein Tab pro Partie kann gleichzeitig spielen.
 

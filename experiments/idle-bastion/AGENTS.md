@@ -15,3 +15,5 @@
 12. Zusätzlich beauftragt am 18.10.2026: B12b Nordbogen/mobile Kamera, danach B12c Integration vorhandener Gegner, jeweils kompakte Tests und Commit/Push. B12d standardisierte Produktion neuer Gegner nur vormerken. Status und Reihenfolge stehen in ROADMAP.md.
 
 13. Am 19.10.2026 zusätzlich ausdrücklich beauftragt: ruhiger neuer Einstieg mit Mara und selbst gebautem kostenlosem Startturm, bestehende Spielstände erhalten, kompakte Tests, Roadmap, Commit/Push/Pages. Neue Gegnerproduktion und B14 bleiben separat.
+
+14. Anschließend ausdrücklich beauftragt: Einstieg bis Upgrade/Werkstatt/Forschung/Frost mit konkreter Führung und Lernpausen verbessern. Zunächst lokal umsetzen und kompakt prüfen; anschließend am 19.10.2026 ausdrücklich zum Commit und Push freigegeben. Veröffentlichungsnachweise stehen in der Roadmap.

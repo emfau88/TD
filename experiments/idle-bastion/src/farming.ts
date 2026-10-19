@@ -49,6 +49,7 @@ function candidateWaves(battle: IdleBattle, previous?: FarmCertificate): number[
 
 function prove(battle: IdleBattle, wave: number, fingerprint: string): FarmCertificate | undefined {
   const snapshot = battle.snapshot();
+  snapshot.introduction = { ...snapshot.introduction, stage: 'done', halted: false };
   snapshot.mode = 'farm'; snapshot.farmWave = wave; snapshot.advanceRequested = false;
   snapshot.wave = wave; snapshot.phase = 'intermission'; snapshot.lives = BASE.coreLives;
   snapshot.enemies = []; snapshot.shots = []; snapshot.queue = [];

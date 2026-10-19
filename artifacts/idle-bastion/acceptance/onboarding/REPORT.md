@@ -1,5 +1,7 @@
 # Neuer Einstieg mit Mara — 19.10.2026
 
+Diese erste Fassung wurde als `f538b5c` veröffentlicht ([erfolgreicher Pages-Lauf](https://github.com/emfau88/TD/actions/runs/39252243815)). Die anschließende [Erweiterung mit Lernpausen bis Frost](lessons/REPORT.md) ersetzt die manuelle Zauberlektion dieser ersten Fassung; aktuelle Veröffentlichungsnachweise stehen in der [Roadmap](../../../../experiments/idle-bastion/ROADMAP.md).
+
 ## Ergebnis
 
 Neue Partien öffnen ruhig und ohne fertigen Turm. Mara stellt sich direkt vor; der Spieler baut einen kostenlosen Waldwächter auf einem von neun geprüften frühen Feldern. Die 75 Startgold bleiben erhalten. Vor dem ersten Kampf ist der Turm kostenlos versetzbar. Erst „Verteidigung starten“ beginnt Welle 1; danach folgen die bisherigen automatischen Wellen.

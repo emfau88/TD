@@ -142,7 +142,8 @@ function syncUI(): void {
   element('placement-help').hidden = !(placementType || groundMode) || live.awaitingResume;
   element('placement-text').textContent = groundMode === 'mara' ? 'Mara · begehbares Ziel antippen'
     : groundMode ? `${groundMode === 'workshop' ? 'Werkstatt' : 'Lager'} · Position in der Siedlungsfläche wählen`
-    : sim.preparing ? 'Startturm · helles Feld antippen, Reichweite prüfen und kostenlos bestätigen'
+    : sim.preparing ? 'Startturm · goldenes Feld empfohlen · antippen und kostenlos bestätigen'
+    : sim.guiding ? 'Lernpause · Frost neben dem Waldwächter bauen · goldenes Feld empfohlen'
     : `${towerDefinition(placementType ?? 1).name} · Feld am Weg wählen, Reichweite prüfen und bestätigen`;
   const confirm = element<HTMLButtonElement>('confirm-placement');
   confirm.hidden = !groundMode && !(placementType && selectedPadId);
@@ -413,13 +414,15 @@ function openContext(kind: typeof selectedPanel): void {
 function startPlacement(kind: TowerId): void {
   if (!session || !ready) return;
   if (session.battle.preparing && kind !== 1) return;
+  if (session.battle.guiding && kind === 1) { if (session.battle.introduction.stage === 'upgrade') showLearningTower(); return; }
+  if (session.battle.guiding && (kind !== 2 || session.battle.introduction.stage !== 'frost')) return;
   if (session.battle.introduction.stage === 'welcome') { void perform(b => b.beginIntroduction()).then(() => { if (session?.battle.introduction.stage === 'build') startPlacement(kind); }); return; }
   if (kind === 2 && !session.battle.settlement.frostResearched) { catalogPanel = 'settlement'; openContext('settlement'); return; }
   if (!session.battle.isTowerUnlocked(kind)) { if (kind === 3) openContext('wisp'); else { element('combat-message').textContent = 'Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.'; toastUntil = performance.now() + 6000; syncUI(); } return; }
   if (placementType === kind) { placementType = undefined; closeContext(); return; }
   groundMode = undefined; groundCandidate = undefined; catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
-  const preferred = session.battle.preparing ? 'tower-start' : kind === 1 ? 'tower-03' : kind === 2 ? 'tower-09' : kind === 3 ? 'tower-10' : 'tower-11';
-  const pads = session.battle.layout.towerPads.filter(pad => session!.battle.preparing ? session!.battle.isStarterLocation(pad.id) : session!.battle.isPadUnlocked(pad.id) && !session!.battle.towers.some(tower => tower.padId === pad.id));
+  const preferred = session.battle.preparing ? 'tower-start' : session.battle.guiding && kind === 2 ? session.battle.recommendedFrostPad : kind === 1 ? 'tower-03' : kind === 2 ? 'tower-09' : kind === 3 ? 'tower-10' : 'tower-11';
+  const pads = session.battle.layout.towerPads.filter(pad => session!.battle.preparing ? session!.battle.isStarterLocation(pad.id) : session!.battle.guiding ? session!.battle.isLearningFrostLocation(pad.id) : session!.battle.isPadUnlocked(pad.id) && !session!.battle.towers.some(tower => tower.padId === pad.id));
   if (!pads.length) { placementType = undefined; selectedPadId = 'tower-03'; scene?.setSelected(selectedPadId); openContext('tower'); }
   else scene?.focusPad(pads.find(pad => pad.id === preferred)?.id ?? pads[0].id);
   syncUI();
@@ -518,20 +521,28 @@ function startGroundPlacement(id: 'workshop' | 'warehouse' | 'mara'): void {
   groundCandidate = id === 'mara' ? undefined : { ...session.battle.plots[id] };
   scene?.focusObject(id === 'workshop' ? 'settlement' : id); syncUI();
 }
+function showLearningTower(): void {
+  const tower = session?.battle.towers.find(t => t.protected); if (!tower) return;
+  selectedPadId = tower.padId; scene?.setSelected(tower.padId); openContext('tower'); scene?.focusPad(tower.padId);
+}
 element('onboarding-primary').addEventListener('click', () => {
-  const stage = session?.battle.introduction.stage;
+  const b = session?.battle; if (!b) return;
+  const stage = b.introduction.stage;
   if (stage === 'welcome' || stage === 'build') { startPlacement(1); return; }
   if (stage === 'ready') { void perform(b => b.startDefense()); return; }
-  if (stage === 'practice') { void perform(b => b.castMaraNow()); return; }
-  if (stage === 'auto') void perform(b => b.finishIntroduction(true));
+  if (b.lessonComplete) { void perform(b => b.continueLesson()); return; }
+  if (!b.learningPaused) return;
+  if (stage === 'upgrade') showLearningTower();
+  if (stage === 'workshop') { catalogPanel = 'settlement'; startGroundPlacement('workshop'); }
+  if (stage === 'research') { catalogPanel = 'settlement'; openContext('settlement'); }
+  if (stage === 'frost') startPlacement(2);
 }, { signal: lifetime.signal });
 element('onboarding-secondary').addEventListener('click', () => {
-  const stage = session?.battle.introduction.stage;
-  if (stage === 'ready') startPlacement(1);
-  else void perform(b => b.finishIntroduction(stage === 'practice'));
+  if (session?.battle.introduction.stage === 'ready') startPlacement(1);
+  else void perform(b => b.skipLessons());
 }, { signal: lifetime.signal });
 for (const id of ['workshop', 'warehouse', 'mara'] as const) element(`move-${id}`).addEventListener('click', () => startGroundPlacement(id), { signal: lifetime.signal });
-element('mara-auto').addEventListener('click', () => { void perform(b => { if (!b.finishIntroduction(!b.mara.autoCast)) b.mara.autoCast = !b.mara.autoCast; }); }, { signal: lifetime.signal });
+element('mara-auto').addEventListener('click', () => { void perform(b => { b.mara.autoCast = !b.mara.autoCast; }); }, { signal: lifetime.signal });
 element('cast-mara').addEventListener('click', () => { void perform(b => b.castMaraNow()).then(() => closeContext()); }, { signal: lifetime.signal });
 element('meet-wisp').addEventListener('click', () => { void perform(b => { if (b.wispUnlocked) b.wispArrival.met = true; }, true); }, { signal: lifetime.signal });
 element('confirm-placement').addEventListener('click', () => {
@@ -552,7 +563,7 @@ buildWarehouse.addEventListener('click', () => { startGroundPlacement('warehouse
 buildWorkshop.addEventListener('click', () => { startGroundPlacement('workshop'); }, { signal: lifetime.signal });
 element('upgrade-workshop').addEventListener('click', () => { void perform(battle => battle.upgradeWorkshop()); }, { signal: lifetime.signal });
 element('replay-first-boss').addEventListener('click', () => { void perform(b => b.requestBossChallenge(15)).then(() => { if (session?.battle.bossChallengeRequested) element<HTMLDialogElement>('chronicle').close(); }); }, { signal: lifetime.signal });
-researchFrost.addEventListener('click', () => { void perform(battle => battle.researchFrost()); }, { signal: lifetime.signal });
+researchFrost.addEventListener('click', () => { void perform(battle => battle.researchFrost()).then(() => { if (session?.battle.guiding && session.battle.lessonComplete) closeContext(); }); }, { signal: lifetime.signal });
 padChoice.addEventListener('change', () => { placementType = undefined; void selectPad(padChoice.value || undefined); }, { signal: lifetime.signal });
 for (const kind of ['tower', 'settlement'] as const) {
   element(`${kind}-tab`).addEventListener('click', () => { catalogPanel = kind; placementType = undefined; closeContext(); }, { signal: lifetime.signal });
@@ -617,7 +628,7 @@ element('new-probe').addEventListener('click', () => {
   const url = new URL(location.href); url.searchParams.set('probe', crypto.randomUUID());
   void (session?.suspend() ?? Promise.resolve()).then(() => location.assign(url));
 }, { signal: lifetime.signal });
-upgrade.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.upgrade(tower.uid); }); }, { signal: lifetime.signal });
+upgrade.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.upgrade(tower.uid); }).then(() => { if (session?.battle.guiding && session.battle.lessonComplete) closeContext(); }); }, { signal: lifetime.signal });
 sell.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.sell(tower.uid); }); }, { signal: lifetime.signal });
 advance.addEventListener('click', () => { void perform(battle => battle.requestAdvance()); }, { signal: lifetime.signal });
 assignMara.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.assignMara(tower.uid); }); }, { signal: lifetime.signal });

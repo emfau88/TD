@@ -1,8 +1,18 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Erweiterte Lernführung (Snapshot 16)
+
+Kampfregeln bleiben 10. Neue Partien folgen `welcome/build/ready → combat → upgrade → workshop → research → frost → observe → done`. `introduction.halted` ist die separate Lernpause; sie stoppt Gegner, Geschosse, Cooldowns, Wellentimer und Produktion, lässt aber den geführten Kauf zu. Nach der Aktion bleibt sie bis zur ausdrücklichen Fortsetzung aktiv. Eine Pause beginnt erst, wenn der nächste Kauf bezahlbar ist. Die vorhandene Vorbereitungszeit zählt nun auch Lern-/Lesezeit und wird zur sichtbaren Gesamtspielzeit addiert.
+
+Während der Anleitung sind nur das erste Level-2-Upgrade und die jeweiligen Werkstatt-/Frostkäufe offen. „Ohne Anleitung weiterspielen“ beendet diese Einschränkung ohne Geschenke. Ab gemeisterter Welle 2 wird regulär Welle 2 gefarmt, bis die Kombination steht; keine abweichenden Gegnerwerte/Belohnungen. Farmnachweise prüfen weiterhin den echten Kampf ohne Lernpausen und ohne Mara-Bonus. Nach Abschluss wird der normale Vorstoß vorgemerkt. Wisp kann daher erst nach dem Lernabschluss und Welle 5 auftauchen.
+
+Goldener Feldrahmen, Pfeil, Kamera und hervorgehobene echte Bedienelemente zeigen die Handlung. Der erste Frostplatz liegt etwas vor dem Waldwächter: So trifft Frost vor dessen tödlichen Pfeilen. Außerhalb der Anleitung bleibt die bisherige freie Platzierung bestehen.
+
+Der Eintritt in eine Lernpause wird sofort atomar mit dem Kampfergebnis bestätigt; reine Lesezeit benötigt keine ständig flackernden Speichersperren und wird bei Aktion/Verlassen mitgespeichert. Lernpausen werden für Offline-Zeit als angehalten behandelt. Wiederkehr in eine Lernpause überspringt den leeren Offline-Dialog. Snapshot 15 wird zunächst nach seinen bisherigen Regeln validiert: vorbereitende Partien bleiben in der Vorbereitung, bereits begonnene Partien erhalten `done`, alle behalten Geld, Käufe und Kampfzustand. Keine erneute Einführung für Veteranen.
+
 ## Einstieg nach B13: Vorbereitung und Speichermigration
 
-Aktuell **Snapshot 15**, weiterhin **Kampfregeln 10**, Layout 4. `IdleBattle.newGame()` erzeugt einen turmlosen Start; der reine Kampf-Konstruktor bleibt für bestehende Modellproben/Migration erhalten. Browser-Sessions verwenden immer den geführten Start.
+Erste Einstiegsversion: **Snapshot 15**, weiterhin **Kampfregeln 10**, Layout 4. `IdleBattle.newGame()` erzeugt einen turmlosen Start; der reine Kampf-Konstruktor bleibt für bestehende Modellproben/Migration erhalten. Browser-Sessions verwenden immer den geführten Start.
 
 - `introduction.stage`: `welcome → build → ready → practice → auto → done`. Alternative: während der Zauberlektion direkt Automatik einschalten. Nur `welcome/build/ready` stoppen Kampfticks; aktive Vorbereitungszeit wird separat gespeichert und zur angezeigten Spielzeit addiert.
 - Ein geschützter Waldwächter UID 1 aus einem kostenlosen Bausatz; nur neun überprüfte frühe Felder. Vor dem Start kostenlos versetzbar, keine weiteren Käufe. 75 Gold bleiben erhalten. Bausatzverbrauch, Position und Phase werden gemeinsam durch die Session bestätigt/bei Schreibfehler zurückgerollt.

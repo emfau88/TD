@@ -12,8 +12,8 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
-| Aktives Umsetzungspaket | Neuer Einstieg nach B13 · implementiert, Veröffentlichung läuft |
-| Nächster Schritt | Neuen Einstieg über „Frische Probe“ testen. B14 und B12d-Umsetzung noch nicht beauftragt |
+| Aktives Umsetzungspaket | Erweiterte Lernführung bis Frost · fertig geprüft; Commit/Push ausdrücklich beauftragt, Veröffentlichung wird geprüft |
+| Nächster Schritt | Erweiterte Lernführung veröffentlichen und über „Frische Probe“ testen; B14 und B12d-Umsetzung noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -41,9 +41,28 @@ Am 19.10.2026 ausdrücklich beauftragt: Mara vorstellen, ersten Turm selbst baue
 - [x] Altsaves ohne erneute Einführung übernehmen; Geld, Türme, Boss-/Wellenfortschritt, Kampfzustand und historische Offline-Ansprüche erhalten. Schema 15, Kampfregeln unverändert 10.
 - [x] Neun gezielte Modell-/Speicherprüfungen und vier bestehende Regressionen bestanden. Einschließlich angenommener acht Sekunden Begrüßung/Bau: Werkstatt bei 86 s, Frostforschung bei 102,25 s im legalen Modelllauf. Keine neue Preisänderung nötig; keine garantierte Echtspielerzeit.
 - [x] Produktionsbuild und kurze Desktop-/Hochkantprobe inklusive Bau, Reload, erstem Zauber und altem B13-Spielstand bestanden; Bilder/Prüfgrenzen im Bericht.
-- [ ] Commit/Push und GitHub-Pages-Veröffentlichung bestätigen.
+- [x] Erste Einstiegsversion als `f538b5c` gepusht; [Pages-Lauf 39252243815](https://github.com/emfau88/TD/actions/runs/39252243815) erfolgreich. Die anschließend beauftragte Erweiterung wird separat unten dokumentiert.
 
 Ablauf, Spielaufnahmen und genaue Prüfgrenzen: [Einstiegsbericht](../../artifacts/idle-bastion/acceptance/onboarding/REPORT.md). Die frühere G1-Freigabe bleibt bestehen; dieser Zusatz ist keine neue Nutzerabnahme des gesamten Slice.
+
+### Erweiterung: geführt vom Waldwächter bis zur Frost-Kombination
+
+Anschließend am 19.10.2026 ausdrücklich beauftragt. Zunächst lokal umgesetzt; Commit und Push anschließend ausdrücklich freigegeben. Diese Erweiterung ersetzt die manuelle Zauberlektion und die hektische freie Kaufphase der ersten Einstiegsversion. Bestehende bereits gestartete Partien werden nicht zurückgesetzt.
+
+- [x] Goldmarkierung und kurzer Hinweis zeigen einen guten ersten Bauplatz; Kamera führt beim Bauen und Auswählen zum Ziel.
+- [x] Nach dem ersten verdienten Gold echte Lernpause: Startturm antippen und **genau einmal auf Level 2** verbessern. Der echte Upgradebutton wird hervorgehoben.
+- [x] Danach klares Sparziel **400 Gold für die Werkstatt**, mit fehlendem Betrag und Fortschritt. Keine konkurrierenden Kaufaufträge.
+- [x] Bezahlbare Werkstatt, Forschung **60 Gold** und Frostturm **110 Gold** bekommen eigene gespeicherte Lernpausen. Nach jeder Aktion ausdrücklich „Weiter“; keine unbemerkte Wiederaufnahme.
+- [x] Forschung in der echten Werkstatt markieren. Frost vor/neben dem Waldwächter empfehlen; erst nach einem sichtbaren verlangsamenden Treffer zur freien Verteidigung wechseln.
+- [x] Während der Anleitung gewöhnliche Wellen 1–2 wiederholen, ohne Extra-Gold oder künstliche Unverwundbarkeit. Alle neun Startplätze überstehen die vollständige Lernfolge verlustfrei. Danach normaler Vorstoß ab Welle 3.
+- [x] Mara unterstützt automatisch; manuelle Zauber/Bewegung werden optional nach der Baulektion zugänglich. Wisp erscheint regulär nach Frostforschung/Welle 5 und kollidiert damit nicht mit dem Frost-Lernschritt.
+- [x] Anleitung kann ab Kampfbeginn übersprungen werden. Währenddessen gezielte Käufe, danach freie Bauflächen und Upgrades. Keine zusätzlichen geschenkten Ressourcen.
+- [x] Snapshot 16 speichert Lernschritt und Lernpause getrennt von der manuellen Pause. Reload setzt denselben Schritt fort; Lernpausen erzeugen kein Offline-Gold. Bereits laufende Schema-15-Partien behalten ihre Käufe und werden nicht in die erweiterte Anleitung gezwungen.
+- [x] Zehn gezielte Modell-/Save-Prüfungen, einschließlich kompletter Lernfolge an allen neun Startplätzen. Empfohlener Platz: 79,425 s Kampf + 58 s beispielhafte Begrüßung/Lesezeit = 2:17,425 bis zur ersten verstandenen Frost-Kombination.
+- [x] Produktionsbuild und vollständige mobile Browserfolge mit 20/20 Leben, Lernpause/Reload sowie Desktop-Upgradeansicht geprüft; [Ablauf und Aufnahmen](../../artifacts/idle-bastion/acceptance/onboarding/lessons/REPORT.md). Lokal auf Port 5191 bereit.
+- [ ] Beauftragten Commit/Push abschließen und die erweiterte Fassung auf GitHub Pages bestätigen.
+
+Das frühere 90-Sekunden-Ziel ist für diese geänderte Lernfolge **keine maximale Lesezeit**. Kampfzeit und tatsächliche Lernpausen werden transparent getrennt dokumentiert; die sichtbare Spielzeit enthält beides. Keine neue G2-Freigabe und kein neuer 15-Minuten-Nachweis.
 
 ## B12b — Nordbogen und mobile Kamera
 
