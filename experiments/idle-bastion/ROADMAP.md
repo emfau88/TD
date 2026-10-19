@@ -1,8 +1,10 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 19.10.2026 · **B01–B07 sowie B07a/B07b einschließlich mobiler und Premium-Nachbesserung veröffentlicht. G1 freigegeben; B08–B12 und die zusätzlichen Überarbeitungen B12a–B12c veröffentlicht.**
+Stand: 19.10.2026 · **B01–B13 und beauftragte Nachbesserungen veröffentlicht; B14/G2 offen. Akt II als Plan B15–B22 ergänzt, noch keine Umsetzungsfreigabe. B12d bleibt separat.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
+
+Neu: [Akt II — Pakete B15–B22, Bestand und Parkliste](#akt-ii) · [Kompakte Gestaltungs- und Technikentscheidungen](docs/AKT_II.md). Alle bisherigen Pakete, Nachweise und Entscheidungen bleiben erhalten.
 
 ## Aktueller Stand
 
@@ -12,8 +14,9 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
-| Aktives Umsetzungspaket | Hinweise, Figurenauftritte, Bosstanz und klare Pixelziffern · `c164a11` veröffentlicht und öffentliche Dateien abgeglichen |
-| Nächster Schritt | Nutzerprobe des Einstiegs einschließlich Anschlussführung über „Frische Probe“; B14 und B12d-Umsetzung noch nicht beauftragt |
+| Aktueller Auftrag | Roadmap um Akt II, vorhandene Türme und Figuren erweitern; Kern/HQ und verbündete Einheiten als Zukunftsideen vormerken. Ausschließlich Dokumentation |
+| Letzte veröffentlichte Spielfassung | Hinweise, Figurenauftritte, Bosstanz und klare Pixelziffern · `c164a11`; öffentliche Dateien abgeglichen |
+| Nächster Schritt | Akt-II-Plan besprechen; erstes neues Inhaltspaket wäre B15 nach ausdrücklichem Startauftrag. B14/G2 und B12d bleiben getrennt offen; kein automatischer Umsetzungsstart |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -595,3 +598,178 @@ Für jedes abgeschlossene Paket im Bericht festhalten:
 
 
 | 17.10.2026 | B02 umgesetzt und geprüft; Nutzer beauftragt anschließend ausdrücklich B03 |
+
+
+<a id="akt-ii"></a>
+
+## P6 — Akt II: Taverne, neue Verteidigung und eine echte Ostfront
+
+**Planung vom 19.10.2026, keine Umsetzungsfreigabe.** Der Nutzer beauftragt die Erweiterung dieser Roadmap, einschließlich bisher ungenutzter Türme. Kern/HQ und verbündete Einheiten werden ausdrücklich nur als spätere Ideen notiert. B14, G2 und die Gegnerproduktion B12d werden durch diesen Plan weder abgeschlossen noch automatisch gestartet.
+
+**Ziel:** Nach dem bisherigen Ausbau folgen ungefähr zwischen Welle 26 und 40 neue Entscheidungen: Ilyra rekrutieren, weitere Turmrollen kennenlernen, die Ostverteidigung vorbereiten und zwei Fronten meistern. Das ist ein überschaubarer zweiter Akt, kein Versprechen einer fertigen Endlosbalance. Bestehender Inhalt wird erhalten; insbesondere tritt der Leerenfalter bereits ab Welle 28 auf.
+
+Die folgenden Pakete ergänzen die alten Checklisten. Die bisherigen Grenzen „eine Front“, „höchstens 36 Spalten“ und „keine Taverne“ beschreiben Akt I; die geplanten Abweichungen gelten ausschließlich für einen später beauftragten Akt II. Fachentscheidungen und Quellen: [AKT_II.md](docs/AKT_II.md). Paketstatus bleibt ausschließlich hier.
+
+### Geprüfter Bestand und Auswahl
+
+- [x] Vier bisher spielerisch ungenutzte Türme in den klassischen Daten samt Originalgrafiken identifiziert; Idle unterstützt derzeit nur Turmtypen 1–4.
+- [x] Ilyra und Runa samt älteren Fähigkeiten und Rohgrafiken geprüft; noch keine fertigen Idle-Figuren.
+- [x] Bestehende Karten-, Save- und Farmgrenzen geprüft; zwei Fronten benötigen gezielte Änderungen über eine bloße Kartenverbreiterung hinaus.
+
+| Bestand | Möglicher Nutzen | Entscheidung für den Plan |
+| --- | --- | --- |
+| Sturmlicht / Turm 05 | Kettenblitz über mehrere getrennte Ziele | Erster zusätzlicher Turm, B16 |
+| Schnellfeuer / Turm 06 | Sehr schneller Einzelschaden | Reserve; überschneidet sich derzeit mit Waldwächter und Mara |
+| Glutwerfer / Turm 07 | Bodenzone und anhaltender Brandschaden, Kombination mit Frost | Zweiter zusätzlicher Turm, B20 |
+| Sonnenobelisk / Turm 08 | Schwerer Flächen-/Durchschlagsangriff | Reserve; seine Grafik stellt bereits den Kern dar. Erst eigene Rolle und unterscheidbare Darstellung festlegen |
+| Ilyra, Himmelsritterin | Gezielte Sternensalve, besonders wirksam gegen Flieger | Erste garantierte Rekrutin der Taverne, B15 |
+| Runa, Moorhexe | Kontrollzone/Nebelschleier | Spätere alternative Rekrutin; nicht gleichzeitig mit Ilyra einführen, Überschneidung mit Frost vermeiden |
+
+Alte Preise, Reichweiten und Schadenswerte sind Referenzen, keine zugesagte Idle-Balance. Die aktuelle Idle-Steinschleuder trifft auch Flieger; neue Rollen dürfen diese bestehende Funktion nicht stillschweigend entfernen.
+
+### Reihenfolge und Paketgröße
+
+M = abgegrenzter Funktionsausbau, L = mehrere zusammenhängende Systeme. Das sind relative Größen, keine Stunden- oder Ein-Durchlauf-Zusagen. Große Pakete haben explizite Teilschritte; nur das vollständige Ergebnis schließt das Paket ab.
+
+| Paket | Ergebnis | Größe | Abhängigkeit | Status |
+| --- | --- | --- | --- | --- |
+| B15 | Taverne und verständlich eingeführte Ilyra | M–L, zwei Teilschritte | Bestehender Akt I; ausdrücklicher Startauftrag | Geplant |
+| B16 | Sturmlicht als neue taktische Turmrolle | M | B15 | Geplant |
+| B17 | Große Ostkarte und passende Kamera | M | B15; gemeinsam mit B18 vorbereiten | Geplant, bis B19 nur Entwicklung |
+| B18 | Zwei Kampfrouten, sichere Saves und Farming | L, zwei Teilschritte | B17; relevante offene Speicherrisiken aus B14 klären | Geplant |
+| B19 | Vorbereitbarer, bewusst geöffneter Ostangriff | M | B15–B18 | Geplant; erste öffentliche Ostfront |
+| B20 | Glutwerfer und belastbarer Brandschaden | M | B19 | Geplant |
+| B21 | Wellen 26–40, Zusammenspiel und Akt-II-Boss | L, Wellen und Boss getrennt bearbeiten | B19/B20 | Geplant |
+| B22 | Kompakte Gesamtprobe und prüfbare Lieferung | M | B15–B21 | Geplant |
+
+B15/B16 können eigenständig spielbar veröffentlicht werden. B17/B18 dürfen in Zwischenständen keine kostenpflichtige leere Erweiterung und keine unfertige Front aktivieren. Die Ostfront wird erst mit B19 angeboten. Erforderliche Speicherreparaturen gehen der Einführung neuer Routen vor; das ersetzt nicht die übrigen offenen B14-Nachweise.
+
+### B15 — Taverne und Ilyras erste Rekrutierung
+
+**Ergebnis:** Die Siedlung bekommt einen neuen Zweck, der Spieler lernt genau eine neue Kampffigur kennen. **Teilschritte:** zuerst Figur/Fähigkeit intern, danach Gebäude, Kauf und Einführung als vollständiger Spielerablauf.
+
+- [ ] Ilyras vorhandene Rohgrafik vermessen, passende Posen ausschneiden und Maßstab, Fußpunkt sowie Bewegungsrichtung an Mara ausrichten. Keine neue Figurenserie produzieren.
+- [ ] Gezielte Sternensalve mit sichtbarem Zielgebiet, verständlicher Reichweite, Abklingzeit und Flug-/Treffereffekt einbauen. Gegen Flieger besonders wirksam; Stärke mit dem Verteidigungsfortschritt abstimmen, ohne eigenes Heldenlevelsystem.
+- [ ] Figur darf sich bewegen und einen Bereich unterstützen, ohne dauerhaft an einem Turm zu kleben. Wirkungszentrum/Zielwahl eindeutig erklären; keine versehentlichen doppelten Killbelohnungen oder zirkulären Verstärkungen mit Mara.
+- [ ] Taverne nach dem tatsächlich besiegten Boss von Welle 25 anbieten. Der erste Bau enthält eine garantierte Rekrutierung von Ilyra; keine zweite Sparhürde, Zufallsauswahl oder Wartezeit.
+- [ ] Frei wählbaren gültigen Bauplatz in der Siedlung ermöglichen. Falls die Fläche zu klein ist, lokal erweitern; bestehende Werkstatt/Lager nicht versetzen und Taverne nicht von einer schon geöffneten Ostfront abhängig machen.
+- [ ] Kurzer Auftritt, Name, Rolle und eine echte Anwendung; Hinweise an realen Menüpunkten. Bauanimation und Ankunft sichtbar lassen, mobile Kampfzone freihalten.
+- [ ] Bau, Kosten und Rekrutierung atomar speichern. Altsaves erhalten keine ungefragte Rekrutierung; Wisp bleibt Wirtschaftsbegleiter, zwei Kampffiguren reichen vorerst.
+- [ ] Genau ein passendes Tavernenasset bei Umsetzung bedarfsgerecht planen, vorhandene Gebäude als Stilreferenz verwenden. Frühere Bildbudgets nicht als neue Freigabe behandeln.
+- [ ] Kompakt prüfen: Kauf/Rekrutierung samt Reload, eine Boden-/Fliegeranwendung, keine doppelte Belohnung und kurze Hochkantansicht.
+
+**Fertig, wenn:** Ein Spieler baut die Taverne, versteht Ilyras Nutzen und kann sie wirksam einsetzen; ein Reload verliert oder dupliziert weder Gold noch Figur.
+
+### B16 — Sturmlicht: Kettenblitz mit eigener Aufgabe
+
+**Ergebnis:** Ein fünfter Turm verbindet auseinandergezogene Gegnergruppen, ohne Steinschleuder oder Scharfschütze zu ersetzen.
+
+- [ ] Originalgrafiken von Turm 05 samt drei Ausbaustufen und Treffereffekten übernehmen; Animation, Fußpunkt und Richtungen im tatsächlichen Spielmaßstab prüfen.
+- [ ] Bis zu drei verschiedene Ziele mit begrenzter Sprungreichweite und abnehmendem Schaden treffen; Reihenfolge deterministisch, kein mehrfacher Treffer desselben Gegners innerhalb einer Kette.
+- [ ] Verteilte Ziele als Stärke, Einzelziele als Schwäche abstimmen. Kein zusätzlicher kostenloser Rüstungsdurchschlag und keine Unterbrechung von Bosszaubern.
+- [ ] Nach Ilyras Einführung ungefähr um Welle 28 über die bestehende Werkstatt freischalten; verständliche Rollenbeschreibung und lesbare Ketten. Kein Pflichtkauf vor Öffnung der Ostfront.
+- [ ] Turmtyp, Upgrades und laufende Angriffe vollständig speichern; Treffer bei Verkauf oder Reload weder verschwinden lassen noch doppelt abrechnen.
+- [ ] Kompakt prüfen: Kette mit wenigen/vielen Zielen, Upgrade/Mara-Wechselwirkung, Reload während eines Angriffs und kurze Sichtprüfung.
+
+**Fertig, wenn:** Sturmlicht schafft eine erkennbare neue Bauentscheidung und übersteht Save/Reload mit korrekten Treffern und Kosten.
+
+### B17 — Ostgebiet und Kamera vorbereiten
+
+**Ergebnis:** Eine taktisch nutzbare zweite Kartenhälfte. Noch keine öffentliche Freischaltung ohne B18/B19.
+
+- [ ] Von der heutigen 28/32×16-Karte auf ungefähr 56×16 planen: östlich des Kerns ähnlich viel Raum wie westlich. Endmaß nach Weg-/Bauflächenprobe festlegen; 40er Zellen und bestehende Weltkoordinaten erhalten.
+- [ ] Kern bei seiner bisherigen Position belassen; eigene Oststrecke führt von rechts zum selben Kern. Mindestens zwei unterscheidbare Abschnitte mit sinnvoll kombinierbaren Turmplätzen und bis zu drei bebaubaren Zellen beiderseits des Weges vorsehen.
+- [ ] Genügend Platz über den oberen Wegabschnitten und für mobile Auswahl lassen; keine unerreichbare Reihe am Bildschirmrand. Alte Turm- und Gebäudeplätze auch in der bisherigen Lichtung erhalten.
+- [ ] Bereits für 900 Gold erworbene Lichtung als bestehenden Gebietsbesitz anerkennen. Kein zweiter Kauf derselben Fläche; bisherige Belohnungen behalten. Spieler ohne Lichtung erhalten einen einmaligen, transparenten Zugang, keine doppelte Gebühr.
+- [ ] Originalgelände wiederverwenden; keine neue Biomproduktion. Vorbereitungsfläche soll sichtbar einen Zweck haben, bevor dort Gegner erscheinen.
+- [ ] Direkte Kameraziele West / Kern / Ost und normale Verschiebung vorsehen. Hochkant im lesbaren Maßstab bleiben; vollständige Karte nur auf ausdrücklichen Übersichtswunsch, kein dauerndes automatisches Hin- und Herspringen.
+- [ ] Kompakt prüfen: alte frei platzierte Objekte nach Migration, bebaubare Kombinationen an beiden Seiten und eine normale Hochkantansicht. Geometrie bis B19 nur intern aktivieren.
+
+**Fertig, wenn:** Beide Seiten sind erreichbar und spielerisch nutzbar, ohne bisherige Bauten zu verlieren oder die Karte dauerhaft kleinzoomen zu müssen.
+
+### B18 — Zwei Routen, ein sicherer Spielstand
+
+**Ergebnis:** Technisch belastbare Zwei-Fronten-Wellen. **Teilschritte:** zuerst Routen/Kampf, anschließend Save, Farmnachweise und Migration. Keine allgemeine Engine-Neuentwicklung.
+
+- [ ] Jeder Spawn/Gegner bekommt eine eindeutige Route mit lokalem Wegfortschritt. Alte laufende Westwellen einschließlich Projektilen und Effekten exakt weiterführen.
+- [ ] Turmpriorität nach tatsächlicher Reststrecke zum gemeinsamen Kern auf beiden Wegen berechnen; vorhandene Geschosse, Flächen, Ketten, Mara/Ilyra und Bossfähigkeiten überprüfen.
+- [ ] Wellen beschreiben West-, Ost- oder gemischte Zusammensetzung bei gemeinsamem Gesamtbudget. Genau eine Wellenbelohnung, ein Goldkonto, ein Kern und eine sichtbare Wellenzahl.
+- [ ] Frontzugang, Vorbereitungszustand, Routenzuordnung und aktive Fähigkeiten versioniert speichern. Wellenrekord allein darf keine nie errungene neue Belohnung oder neue Bossfreigabe erzeugen.
+- [ ] Historische Offline-Ansprüche mit ihrer ursprünglichen Grundlage erhalten. Neue sichere Farmbasis nur für die tatsächlich geprüfte Verteidigung und Wellenzusammensetzung zertifizieren; ein Westnachweis beweist keine Zwei-Fronten-Welle.
+- [ ] Bewusst gewählte reine West-Farmwellen bleiben zulässig, wenn genau dieses Rezept gespielt und vergütet wird. Keine stillen zusätzlichen Ostspawns während alter Farmversuche.
+- [ ] Farm-/Offline-Nachweis ohne zeitweilige Mara-/Ilyra-Aktivfähigkeiten führen; dauerhafte reguläre Wirtschaftseffekte getrennt berücksichtigen. Keine Offline-Bosse oder automatischen neuen Gebietsfreischaltungen.
+- [ ] Niederlage führt in einen wirklich sicheren Zustand zurück, erneuter Vorstoß bleibt bewusst. Keine endlose Verlustschleife oder dauerhafte Sackgasse durch einen ungeschickten Ausbau.
+- [ ] Relevante noch offene Speicherfehler aus B14 vor Veröffentlichung beheben. Kompakte gezielte Prüfungen für beide Routen, laufenden Save, einmalige Belohnung, alte Offline-Ansprüche und sichere Rückfallwelle; offene B14-Gesamtprüfung ehrlich offen lassen.
+
+**Fertig, wenn:** Eine gemischte Welle kann exakt geladen und korrekt beendet werden; Farmen bleibt nach Niederlage und Migration verlässlich und vergütet nur nachgewiesene Leistung.
+
+### B19 — Die Ostfront bewusst eröffnen
+
+**Ergebnis:** Ein verständlicher neuer Spielabschnitt statt überraschender Gegner nach einem Update.
+
+- [ ] Nach Taverne/Ilyra und dem vorgesehenen Fortschritt die Ostverteidigung anbieten. Erst Gelände ansehen, Türme/Unterstützung vorbereiten, dann ausdrücklich „Ostfront öffnen“ wählen.
+- [ ] Vorbereitung ohne bereits laufenden Ostangriff ermöglichen; bei zu wenig Gold auf der bestehenden Westseite weiterfarmen können. Keine automatische Öffnung beim Laden eines fortgeschrittenen Saves.
+- [ ] Zuerst einzelne Ostangriffe, danach wechselnde Schwerpunkte einführen. Vorhandene Gegner mit unterschiedlichen Rollen verwenden; nicht einfach die volle Westwelle rechts duplizieren.
+- [ ] West / Kern / Ost direkt erreichbar machen; kompakte Anzeige der aktiven Front und einer tatsächlichen Gefahr. Wesentliche Informationen kostenlos, ohne Spähergebäude oder dauerhafte zweite Seitenleiste.
+- [ ] Hinweise kurz und schließbar, Pfeile an echten Bedienelementen; Taverne, Ilyra, neues Gebiet und erster Doppelangriff nacheinander erklären. Keine zweite lange Bauanleitung über der Kampfzone.
+- [ ] Veteranen jenseits Welle 40 behalten Rekord und Besitz. Erstmalige Ost-Einführung nach bewusstem Einstieg staffeln; Zuordnung zu ihrer bestehenden Wellenzahl/Schwierigkeit ausdrücklich festlegen, ohne zweite sichtbare Wellenzählung oder erfundene Bossabschlüsse.
+- [ ] Kompakt prüfen: erster Zugang, Reload während Vorbereitung, geringe Goldreserve, Einführung für Veteranen und Wechsel zwischen beiden Fronten im Hochkantformat.
+
+**Fertig, wenn:** Der Spieler weiß, warum er nach Osten geht, kann sich vorbereiten und erkennt, wo gerade Unterstützung gebraucht wird. Erst damit B17–B19 öffentlich aktivieren.
+
+### B20 — Glutwerfer und anhaltender Schaden
+
+**Ergebnis:** Ein sechster Turm belohnt das Zusammenhalten von Bodengegnern mit Frost und unterscheidet sich von direktem Flächenschaden.
+
+- [ ] Originalturm 07 mit seinen gemeinsam genutzten Projektil-/Treffergrafiken korrekt einbinden; Spritesheets nicht als vollständige Einzelbilder darstellen.
+- [ ] Kleine Bodenzone plus klar sichtbaren Brandschaden über Zeit umsetzen. Gleichartige Brände stapeln nicht unbegrenzt: stärkste Quelle gilt, erneuter Treffer erneuert die Dauer nach einer dokumentierten Regel.
+- [ ] Kombination mit Frost abstimmen; weder Feuer noch Frost unterbrechen bestehende Bosszauber. Flieger bleiben die erkennbare Schwäche des Glutwerfers.
+- [ ] Brandquelle, Schadensgrundlage und Restdauer mitführen; Verkauf des Ursprungsturms und Reload dürfen keine doppelten Belohnungen, verschwundenen Treffer oder unendlichen Brände erzeugen.
+- [ ] Forschung ungefähr um Welle 33–35 anbieten. Klarer Nutzen ohne Pflichtkauf und ohne neue Währung oder weiteres Forschungsgebäude.
+- [ ] Kompakt prüfen: überlappende Brände, Frost-Kombination, Reload/Verkauf während Brand und letzter Kill; Darstellung auf normalem Desktop und Hochkant kurz ansehen.
+
+**Fertig, wenn:** Feuer und Frost ergeben eine sichtbare, gespeicherte und ausgewogen vergütete Kombination; andere Verteidigungen bleiben sinnvoll.
+
+### B21 — Gestalteter Verlauf bis Welle 40
+
+**Ergebnis:** Neue Rollen und zwei Fronten tragen mehrere echte Spielentscheidungen. **Teilschritte:** zuerst Wellen/Wirtschaft, danach ein eigener Bossabschnitt.
+
+- [ ] Meilensteinfolge aus [AKT_II.md](docs/AKT_II.md) abstimmen: Boss 25 → Taverne/Ilyra → Sturmlicht → vorbereitete Ostfront → Glutwerfer → ausgewählte Doppelangriffe → Boss 40. Richtwerte anhand tatsächlich erreichbarer Käufe korrigieren.
+- [ ] Neue Gegnerzusammensetzungen statt pauschaler HP-Sprünge nutzen; Bodenschwärme, Rüstung und Flieger stellen unterschiedliche Fragen. Vorhandene Einführung des Leerenfalters ab Welle 28 berücksichtigen.
+- [ ] Gesamtbelastung beider Fronten budgetieren; anfangs abwechselnde Schwerpunkte, später kurze gleichzeitige Herausforderungen. Kein dauernder Zwang, beide Kartenseiten hektisch zu bedienen.
+- [ ] Für Welle 40 einen Boss mit einer gut angekündigten neuen Mechanik planen, bevorzugt zeitlich begrenzter Gruppenschutz mit sichtbarem Auslaufen. Vorhandene passende Grafik zuerst prüfen; kein bloßer alter Boss mit mehr Leben. Während der Lernphase keine volle zweite Bossfront.
+- [ ] Boss-/Farmregeln über die bisherigen Sonderfälle 15/25 hinaus erweitern; Boss 40 nie als sichere Offline-Farmbasis zählen. Bisherige Suchgrenze bis Welle 32 gezielt anpassen, Berechnungsaufwand weiterhin begrenzen.
+- [ ] Kosten und Einkommen für Taverne, Türme und Verteidigung abstimmen. Bestehenden Einstieg nicht verlängern, keine zusätzliche Währung und keine Pflicht zum mehrfachen Leerkaufen vor dem ersten Ostangriff.
+- [ ] Zwei unterschiedliche Verteidigungsansätze und eine überwiegend automatische Spielweise prüfen; Ostfront darf bewusst aufgeschoben werden. Farmen und alternative Ausgaben müssen einen Ausweg bieten.
+- [ ] Einen legalen Modellverlauf samt gezielten Browserproben neuer Meilensteine dokumentieren. Simulationszeit, echte Bedienzeit und angenommene Entscheidungen unterscheiden; keine unbelegten 40-Wellen- oder Endlosbalance-Versprechen.
+
+**Fertig, wenn:** Der neue Verlauf bietet nachvollziehbare Abwechslung und mindestens zwei tragfähige Spielweisen; der Boss ist verständlich und Niederlagen bleiben behebbar.
+
+### B22 — Kompakte Gesamtprobe und Lieferung von Akt II
+
+**Ergebnis:** Eine über den Playlink prüfbare Erweiterung mit nachvollziehbaren Grenzen.
+
+- [ ] Neue Risiken gezielt zusammen prüfen: alte freie Gebäudepositionen/gekaufte Lichtung, hoher Rekord, Erst-Rekrutierung, Frontvorbereitung, laufende Zwei-Fronten-Welle und konservative Offline-Basis. Keine alten Prüfungen ohne Änderungsbezug immer wieder ausführen.
+- [ ] Einen regulären Verlauf durch die neuen Meilensteine prüfen; automatische Modellprüfung und tatsächliche Spielerbedienung klar auseinanderhalten. Build und kurze Desktop-/Hochkantprobe durchführen, keine Matrix aus Sondergrößen.
+- [ ] Verständlichkeit und Darstellung direkt prüfen: sichtbare Bauten, freie Kampfzone, lesbare Zahlen, kurze Hinweise, klare Wirkungsdauer und Auswahl beider Fronten. Technische Funktion allein genügt nicht.
+- [ ] Änderungen mit wenigen aussagekräftigen Spielaufnahmen und kompaktem Bericht festhalten; README/Playlink aktuell halten. Commit/Push und tatsächlichen Pages-Stand bei Umsetzung verifizieren.
+- [ ] Offene Fehler, Balancegrenzen und ungetestete Fälle nennen. B14/G2 bleiben getrennt, solange deren eigene Nachweise bzw. Nutzerbewertung fehlen; B22 ersetzt sie nicht rückwirkend.
+
+**Fertig, wenn:** Akt II ist öffentlich nachvollziehbar spielbar, Spielstände bleiben erhalten und der Nutzer kann Taverne, neue Türme und Ostfront gezielt bewerten. Kein automatischer Start eines weiteren Akts.
+
+### Parkliste — spätere Ideen, keine Zusage für Akt II
+
+| Idee | Möglicher Nutzen | Grenze / nächste sinnvolle Prüfung |
+| --- | --- | --- |
+| Runa in der Taverne | Alternative Kontrollfigur | Erst nach Ilyra; gegen Frost abgrenzen. Auswahl/Wechsel statt beliebig vieler gleichzeitig aktiver Figuren |
+| Schnellfeuer | Alternative für konzentrierten Schaden | Zuerst eigenen Nutzen gegenüber Waldwächter/Mara belegen |
+| Sonnenobelisk | Später schwerer Spezialturm | Eigene Kampfrolle und klare Unterscheidung zum gleich aussehenden Kern nötig |
+| Späherposten / Grenzwacht | Spätere Erkundung oder Wahl einer Herausforderung | Unverzichtbare Frontübersicht bleibt Bestandteil des kostenlosen HUD; kein reiner Zahlenbonus als Baugrund |
+| Runenatelier | Eventuell alternative Turmspezialisierungen | Zuerst bestehende Werkstatt nutzen; kein zweites Gebäude für dieselbe Upgrade-Funktion |
+| Weitere Gegnerproduktion B12d | Neue erkennbare Gegnerrollen über die bestehende Pipeline | Eigenständiger Auftrag, keine Voraussetzung für die zwei geplanten Türme oder die erste Ostfront |
+| Kern/HQ nutzbar machen — Nutzeridee | Zentrale Interaktion, etwa eine Verteidigungsfähigkeit oder eine spätere Ausbauentscheidung | Nur vorgemerkt: konkrete Funktion erst nach Spielbedarf auswählen. Kein zusätzliches Pflichtmenü im Einstieg und keine vorgezogene Kern-Mechanik |
+| Wachstube/Kaserne mit verbündeten Einheiten — Nutzeridee | Gelegentlich eigene Einheiten aussenden, die auf der Lane den Gegnern entgegenlaufen | Später kleiner Prototyp auf einer Route. Echte Gefechte brauchen Zielwahl und Angriffe der Gegner, Lebenspunkte, Reichweiten, Blockieren/Ausweichen, Tod/Weiterlaufen, passende Animationen sowie Save-/Farmregeln. Nicht als einfache Spawn-Grafik unterschätzen |
+
+Bei verbündeten Einheiten zuerst klären, ob sie Gegner tatsächlich aufhalten und bekämpfen oder nur einen zeitlich begrenzten Effekt darstellen. Das sind unterschiedliche Spielsysteme. Echte Einheiten sollen neue Entscheidungen schaffen, keine dauerhafte automatische Wegsperre oder kostenlose Goldschleife. Der Kern könnte später ihr Ausgangspunkt sein; damit ist noch weder Kaserne noch HQ-Ausbau fest beschlossen.
+
+Nicht in Akt II: Heldenausrüstung/-level, Gacha, zusätzliche Prestige-Währung, Dungeons, viele weitere Regionen oder eine große neue Assetserie. Diese Parkliste ist kein versteckter Arbeitsauftrag.

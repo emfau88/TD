@@ -4,11 +4,18 @@ Stand: 19.10.2026 · Umsetzungsstand und Freigaben: siehe [Roadmap](ROADMAP.md).
 
 Dieses Dokument ersetzt für Idle Bastion den ursprünglichen langen Auftrag. Es bündelt die anschließend gemeinsam besprochenen Entscheidungen einschließlich der wachsenden, scrollbar erschlossenen Karte. Die bestehende klassische SPIRE-Roadmap wird dadurch nicht verändert. Eine spätere ausdrückliche Startaufforderung autorisiert die Umsetzung bis zur ersten Zwischenabnahme, nicht das Überspringen dieser Abnahme.
 
+## Geplanter Ausbau nach Akt I
+
+Am 19.10.2026 wurde die Roadmap um [Akt II, B15–B22](ROADMAP.md#akt-ii) erweitert: Taverne mit Ilyra, die vorhandenen Türme Sturmlicht und Glutwerfer, eine große vorbereitbare Ostfront und gestalteter Fortschritt bis ungefähr Welle 40. [AKT_II.md](docs/AKT_II.md) hält Bestand, Spielregeln und technische Grenzen kompakt fest. Schnellfeuer, Sonnenobelisk, Runa sowie nutzbarer Kern/HQ und verbündete Einheiten stehen als spätere Ideen auf der Parkliste.
+
+Das ist ein Planungsauftrag, keine Freigabe zur Umsetzung dieser Inhalte. Die folgenden ursprünglichen Umfangsgrenzen beschreiben Akt I und bleiben als Grundlage erhalten; geplante Erweiterungen sind ausdrücklich in Akt II abgegrenzt. B14/G2 und B12d bleiben getrennt offen. Die spätere ausdrückliche Autorisierung für Commit/Push auf dem Idle-Branch gilt weiterhin; historische Aussagen zur ersten Planungsaufgabe sind keine neue Veröffentlichungssperre.
+
 ## Verbindliche Unterlagen
 
 | Dokument | Zweck |
 | --- | --- |
-| [ROADMAP.md](ROADMAP.md) | 14 Arbeitspakete mit Checklisten, Abhängigkeiten, Abschlusskriterien und verbindlicher Zwischenabnahme |
+| [ROADMAP.md](ROADMAP.md) | B01–B14 samt Nachbesserungen sowie geplanter Akt II B15–B22; Checklisten, Abhängigkeiten, Abschlusskriterien und Abnahmen |
+| [docs/AKT_II.md](docs/AKT_II.md) | Geplanter Ausbau: vorhandene Türme/Figuren, Taverne, Ostfront, Save-/Farmgrenzen und Zukunftsideen |
 | [docs/TECHNIK.md](docs/TECHNIK.md) | Kampf, Wirtschaft, Save, Offline-Zeit und Farmregeln |
 | [docs/ART_DIRECTION.md](docs/ART_DIRECTION.md) | Karte, Kamera, Originalmaßstab und begrenzte Gebäudeproduktion |
 | [docs/ENEMIES.md](docs/ENEMIES.md) | Vorhandene Gegner, Einführung, Rollen, Originalatlanten und Speicherschutz |
