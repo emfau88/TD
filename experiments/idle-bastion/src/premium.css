@@ -8,12 +8,12 @@ button { border-radius:0; }
 .ui-icon { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; flex:0 0 auto; vertical-align:middle; }
 .ui-icon svg { display:block; width:100%; height:100%; overflow:visible; filter:drop-shadow(0 2px 0 #0007); }
 /* Every framed surface creates its own stacking context, so art cannot cover text. */
-.onboarding-card,.app-header,.command-dock,.boss-banner,.goal-ribbon,.tutorial-card,.context-panel,.return-dialog,dialog,.placement-help,.combat-toast,.fallback-note,.error-panel,
+.wisp-arrival,.onboarding-card,.app-header,.command-dock,.boss-banner,.goal-ribbon,.tutorial-card,.context-panel,.return-dialog,dialog,.placement-help,.combat-toast,.fallback-note,.error-panel,
 .build-card,.companion-card,.icon-button,.map-controls button,.context-tabs button,.auto-battle,.mobile-hint-toggle,.action-stack button,.tutorial-actions button,.primary-action,.advance-button,.journal-goal {
   isolation:isolate; border-color:transparent; background:#111c20; border-radius:0;
 }
 .build-card,.companion-card,.icon-button,.map-controls button,.context-tabs button,.auto-battle,.action-stack button,.tutorial-actions button,.primary-action,.advance-button,.journal-goal { position:relative; }
-.onboarding-card::before,.app-header::before,.command-dock::before,.boss-banner::before,.goal-ribbon::before,.tutorial-card::before,.context-panel::before,.return-dialog::before,dialog::before,.placement-help::before,.combat-toast::before,.fallback-note::before,.error-panel::before,
+.wisp-arrival::before,.onboarding-card::before,.app-header::before,.command-dock::before,.boss-banner::before,.goal-ribbon::before,.tutorial-card::before,.context-panel::before,.return-dialog::before,dialog::before,.placement-help::before,.combat-toast::before,.fallback-note::before,.error-panel::before,
 .build-card::before,.companion-card::before,.icon-button::before,.map-controls button::before,.context-tabs button::before,.auto-battle::after,.mobile-hint-toggle::before,.action-stack button::before,.tutorial-actions button::before,.primary-action::before,.advance-button::before,.journal-goal::before {
   content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; border:12px solid transparent; border-image:var(--ui-panel) 14% fill / 12px / 0 stretch;
 }
@@ -300,7 +300,7 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 #placement-pads { display: none; }
 #placement-help { max-width: min(620px, calc(100vw - 24px)); flex-wrap: wrap; }
 #confirm-placement { white-space: nowrap; }
-.wisp-arrival { position: fixed; z-index: 18; left: 16px; bottom: 184px; max-width: 440px; display: flex; gap: 12px; padding: 14px; color: #f6e6c4; background: #30291fee; border: 2px solid #bc975d; box-shadow: 0 5px 18px #0008; border-radius: 5px; }
+.wisp-arrival { position: fixed; z-index: 18; left: 16px; bottom: 184px; max-width: 440px; display: flex; gap: 12px; padding: 14px; color: #f6e6c4; background: #111c20; border: 1px solid transparent; box-shadow: 0 5px 18px #0008; border-radius: 0; opacity:.999; }
 .wisp-arrival[hidden] { display: none; }
 .wisp-arrival canvas { width: 48px; height: 60px; flex: 0 0 auto; image-rendering: pixelated; }
 .wisp-arrival strong { color: #f7d98b; }
@@ -388,3 +388,8 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 .onboarding-actions.empty { display:none; }
 .onboarding-card[data-compact="true"] > div { min-width:0; }
 .lesson-savings progress[hidden] { display:none; }
+
+/* Follow-up lessons share the small upper card and keep the battlefield visible. */
+.wisp-arrival { top:calc(var(--header) + 9px); bottom:auto; width:350px; max-width:calc(100% - 120px); }
+#discovery-later { background:transparent; color:#d6c79f; }
+@media(max-width:700px) { .wisp-arrival { left:8px; right:auto; width:calc(100% - 104px); max-width:320px; } }

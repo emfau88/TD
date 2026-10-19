@@ -11,11 +11,11 @@ export function tutorialStep(battle: IdleBattle): number {
   if (!battle.settlement.frostResearched) return 4;
   if (!battle.towers.some(tower => tower.def.id === 2) && !battle.tutorial.frostSeen) return 5;
   if (!battle.tutorial.frostSeen) return 6;
-  if (!battle.wispUnlocked) return 7;
-  // Reuse the retired clearing-hint slot; saves need no new schema or tutorial reset.
-  if (battle.wispArrival.met && !battle.tutorial.hidden && !(battle.tutorial.seen & (1 << 15))) return 15;
-  if (!battle.towers.some(tower => tower.def.id === 3)) return 8;
-  if (!battle.settlement.warehouseBuilt) return battle.warehouseUnlocked ? 12 : 13;
+  if (!battle.wispUnlocked || !battle.wispArrival.met) return 7;
+  // Keep the retired clearing-hint bit as Mara's hint; preserve existing seen flags.
+  if (battle.wispArrival.met && !battle.tutorial.hidden && (battle.discoveryActive && battle.discovery.startsWith('mara-') || !(battle.tutorial.seen & (1 << 15)))) return 15;
+  if (!battle.towers.some(tower => tower.def.id === 3) && !(['warehouse','done'].includes(battle.discovery) && (battle.tutorial.seen & (1 << 8)))) return 8;
+  if (!battle.settlement.warehouseBuilt && !(battle.discovery === 'done' && (battle.tutorial.seen & (1 << 12)))) return battle.warehouseUnlocked ? 12 : 13;
   if (battle.highestCleared < 10) return 9;
   if (!battle.towers.some(tower => tower.def.id === 4)) return 10;
   if (!battle.bossVictories) return 14;
@@ -56,7 +56,7 @@ export function nextObjective(battle: IdleBattle): string {
     case 4: return `Nächstes Ziel: Frostfassung erforschen · ${remaining(SETTLEMENT.researchCost)}.`;
     case 5: return `Nächstes Ziel: Frostkristall an einem freien Platz bauen · ${remaining(FROST.cost)}.`;
     case 6: return 'Nächstes Ziel: den ersten blauen Frosttreffer im Kampf beobachten.';
-    case 7: return 'Welle 5 meistern: Wisp, Steinschleuder.';
+    case 7: return battle.wispUnlocked ? 'Wisp begrüßen · +10 % Kampf-Gold, arbeitet automatisch.' : 'Deine Kombination arbeitet. Welle 5 meistern, dann kommt Wisp.';
     case 8: return 'Wisp arbeitet: +10 % Kampf-Gold. Steinschleuder bauen · 135 Gold.';
     case 12: return `Vorratslager bauen · ${remaining(SETTLEMENT.warehouseCost)} · 65 % Offline-Ertrag für bis zu 8 Stunden.`;
     case 13: return 'Welle 8 meistern: Vorratslager freischalten.';

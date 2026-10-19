@@ -66,7 +66,7 @@ test('real v14 veteran and its historical offline basis survive the schema-only 
  const old=JSON.parse(readFileSync('artifacts/idle-bastion/acceptance/15min/b13-browser-save.json','utf8'));
  const before=structuredClone(old);const b=IdleBattle.restore(old.battle)!;assert.ok(b);assert.deepEqual(old,before);
  assert.deepEqual(b.introduction,{stage:'done',preparationSeconds:0,halted:false});
- const current:any=b.snapshot();delete current.introduction;current.schemaVersion=14;assert.deepEqual(current,old.battle);
+ const current:any=b.snapshot();delete current.introduction;delete current.discovery;current.schemaVersion=14;assert.deepEqual(current,old.battle);
  const factory=new IDBFactory(),store=await openBattleStore(factory,'intro-legacy',()=>old.writtenAt);
  const writer=(await store.acquireWriter('fixture'))!;await store.save(b.snapshot(),old.paused,0,{writer,offline:old.offline});
  const loaded=await store.load();assert.equal(loaded.kind,'valid');if(loaded.kind==='valid')assert.deepEqual(loaded.save.offline,old.offline);
@@ -93,9 +93,9 @@ test('rejected first-build transaction rolls back the kit and complete preparati
 test('schema 15 saves preserve preparation and completed play without forcing the extended lessons',()=>{
  for(const phase of ['welcome','ready','done'] as const){
   const b=phase==='done'?new IdleBattle():IdleBattle.newGame();if(phase==='ready'){b.beginIntroduction();b.build('cell-6-6')}
-  const old:any=b.snapshot();old.schemaVersion=15;delete old.introduction.halted;
+  const old:any=b.snapshot();old.schemaVersion=15;delete old.discovery;delete old.introduction.halted;
   const loaded=IdleBattle.restore(old)!;assert.ok(loaded);assert.equal(loaded.introduction.stage,phase);assert.equal(loaded.learningPaused,false);
-  const current:any=loaded.snapshot();current.schemaVersion=15;delete current.introduction.halted;assert.deepEqual(current,old);
+  const current:any=loaded.snapshot();current.schemaVersion=15;delete current.discovery;delete current.introduction.halted;assert.deepEqual(current,old);
  }
 });
 

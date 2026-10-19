@@ -310,7 +310,7 @@ export class BattleSession {
   }
   private economicState(): string {
     const b = this.currentBattle;
-    return `${b.introduction.stage}/${b.learningPaused}/${b.gold}/${b.goldRemainderUnits}/${b.earned}/${b.kills}/${b.lives}/${b.wave}/${b.phase}/${b.mode}/${b.attemptId}/${b.tutorial.frostSeen}`;
+    return `${b.introduction.stage}/${b.discovery}/${b.learningPaused}/${b.gold}/${b.goldRemainderUnits}/${b.earned}/${b.kills}/${b.lives}/${b.wave}/${b.phase}/${b.mode}/${b.attemptId}/${b.tutorial.frostSeen}`;
   }
   private refreshFarm(): void {
     const key = `${defenseFingerprint(this.currentBattle)}/${this.currentBattle.liveClearedWaves.join(',')}`;

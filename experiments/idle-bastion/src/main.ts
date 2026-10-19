@@ -1,3 +1,4 @@
+import { discoveryStep, updateDiscoveryUI } from './discovery-ui';
 import { LessonPointer } from './lesson-pointer';
 import { updateOnboarding } from './onboarding-ui';
 import { introducedEnemy } from './enemy-roster';
@@ -29,6 +30,7 @@ mountUIIcons();
 const lessonPointer = new LessonPointer();
 let focusedLesson = "";
 let workshopRevealUntil = 0;
+let focusedDiscovery = '';
 const lifetime = new AbortController();
 const currency = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 const preciseCurrency = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 3 });
@@ -77,6 +79,7 @@ let lifecycle = Promise.resolve();
 let retryTimer: number | undefined;
 const progressUI = createProgressUI(action => {
   if (action === 'archer' || action === 'frost' || action === 'cannon' || action === 'sniper') startPlacement(({ archer: 1, frost: 2, cannon: 3, sniper: 4 } as const)[action]);
+  else if (action === 'mara' || action === 'wisp') openContext(action);
   else if (action === 'clearing') { catalogPanel = 'settlement'; openContext('clearing'); }
   else if (action === 'warehouse') { catalogPanel = 'settlement'; openContext('warehouse'); }
   else if (action === 'workshop') { catalogPanel = 'settlement'; openContext('settlement'); }
@@ -184,12 +187,12 @@ function syncUI(): void {
   element('next-objective').textContent = nextObjective(sim);
   const playSeconds = sim.elapsed + sim.introduction.preparationSeconds;
   element('play-time').textContent = `${Math.floor(playSeconds / 60)}:${String(Math.floor(playSeconds % 60)).padStart(2, '0')}`;
-  const hintStep = tutorialStep(sim);
+  const hintStep = tutorialStep(sim), discovery = discoveryStep(sim);
   const mobile = window.matchMedia('(max-width: 700px)').matches;
   if (hintStep !== mobileHintStep) { mobileHintStep = hintStep; mobileHintOpen = hintStep === 15; }
   element('wisp-arrival').hidden = !sim.wispUnlocked || sim.wispArrival.met || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
   element('pick-wisp').classList.toggle('new-companion', sim.wispUnlocked && !sim.wispArrival.met);
-  const hintAvailable = sim.introduction.stage === 'done' && (sim.wispArrival.met || !sim.wispUnlocked) && !sim.bossActive && !sim.tutorial.hidden && !(sim.tutorial.seen & (1 << hintStep)) && !contextOpen && !placementType && !live.awaitingResume;
+  const hintAvailable = sim.introduction.stage === 'done' && !sim.discoveryActive && (sim.wispArrival.met || !sim.wispUnlocked) && !sim.bossActive && !sim.tutorial.hidden && !(sim.tutorial.seen & (1 << hintStep)) && !contextOpen && !placementType && !live.awaitingResume;
   element('tutorial-card').hidden = !hintAvailable || (mobile && !mobileHintOpen);
   element('mobile-hint').hidden = !mobile || !hintAvailable || mobileHintOpen;
   element('mobile-hint').setAttribute('aria-expanded', String(mobileHintOpen));
@@ -315,12 +318,12 @@ function syncUI(): void {
   const safeRate = certificate ? farmRewardGold(certificate) * 60000 / certificate.durationMs : 0;
   element('pick-warehouse').classList.toggle('locked', !sim.warehouseUnlocked);
   element('pick-warehouse').classList.toggle('researched', builtWarehouse);
-  const warehouseNew = sim.warehouseUnlocked && !builtWarehouse && !(sim.tutorial.seen & (1 << 12));
+  const warehouseNew = sim.warehouseUnlocked && !builtWarehouse && !(sim.tutorial.seen & (1 << 12)) && (!sim.discoveryActive || sim.discovery === 'warehouse');
   for (const id of ['settlement-tab','pick-warehouse']) element(id).classList.toggle('new-building',warehouseNew);
   element('settlement-tab').setAttribute('aria-label',warehouseNew ? 'Siedlung · Neues Gebäude verfügbar: Vorratslager' : 'Siedlung');
   element('warehouse-card-price').textContent = builtWarehouse ? '✓ Gebaut' : sim.warehouseUnlocked ? String(SETTLEMENT.warehouseCost) : sim.wispUnlocked ? 'Welle 8' : 'Wisp & Welle 8';
   element('warehouse-description').textContent = builtWarehouse ? 'Wisp versorgt das Lager. Deine Vorräte sammeln automatisch während deiner Abwesenheit.'
-    : 'Sammle länger und mit höherem Ertrag. Der Ausbau gilt ab Kauf für künftige Abwesenheiten.';
+    : 'Wenn du das Spiel schließt, sammelt deine sichere Verteidigung weiter. Das Lager verlängert das Sammeln von 2 auf 8 Stunden. Optional; es macht deine Türme nicht stärker.';
   element('warehouse-rate').textContent = certificate ? `${rateFormat.format(safeRate)} G/min` : 'Noch kein Nachweis';
   element('warehouse-efficiency').textContent = builtWarehouse ? '65 % der Farmbasis' : '60 % → 65 %';
   element('warehouse-cap').textContent = builtWarehouse ? 'Bis zu 8 Stunden' : '2 → 8 Stunden';
@@ -377,12 +380,13 @@ function syncUI(): void {
     element('combat-message').textContent = `Neu: ${newcomer.name} · ${newcomer.counter}. Mehr in der Chronik.`;
     toastUntil = performance.now() + 6500;
   }
-  element('combat-message').hidden = sim.introduction.stage !== 'done' || performance.now() > toastUntil || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
+  element('combat-message').hidden = sim.introduction.stage !== 'done' || !!discovery || performance.now() > toastUntil || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
+  if (!element('combat-message').hidden) { element('tutorial-card').hidden = true; element('mobile-hint').hidden = true; }
   progressUI.update(live);
   const boss = sim.bossEnemy, charm = sim.bossCharm;
   const showBoss = sim.bossActive && !live.awaitingResume && !contextOpen && !placementType;
   element('boss-banner').hidden = !showBoss;
-  document.querySelector<HTMLElement>('.goal-ribbon')!.hidden = showBoss || sim.introduction.stage !== 'done' || hintStep === 15 && !element('tutorial-card').hidden;
+  document.querySelector<HTMLElement>('.goal-ribbon')!.hidden = showBoss || sim.introduction.stage !== 'done' || !!discovery || !element('wisp-arrival').hidden || hintStep === 15 && !element('tutorial-card').hidden;
   element('boss-title').textContent = `${bossEncounter(sim.wave).title} · Welle ${sim.wave}`;
   element('boss-health').textContent = boss ? `${currency.format(Math.ceil(boss.hp))} / ${currency.format(Math.ceil(boss.maxHp))}` : sim.bossQueued ? 'Im Anmarsch' : 'Boss gefallen';
   const health = element<HTMLProgressElement>('boss-health-bar');
@@ -397,6 +401,19 @@ function syncUI(): void {
   element('boss-support').textContent = `${Math.max(0, sim.remaining - (boss || sim.bossQueued ? 1 : 0))} Begleiter übrig · Fläche & Durchdringung`;
   document.getElementById('app')!.classList.toggle('context-open', contextOpen || Boolean(placementType || groundMode));
   updateOnboarding(live, { placing: Boolean(placementType || groundMode), contextOpen, catalogPanel, revealing: performance.now() < workshopRevealUntil });
+  updateDiscoveryUI(live, contextOpen, Boolean(placementType || groundMode), catalogPanel);
+  // A real cast is saved in a short observation pause. Focus its actual target once.
+  if (discovery !== focusedDiscovery) {
+    focusedDiscovery = discovery ?? '';
+    if (discovery === 'wisp') scene?.focusObject('wisp');
+    if (discovery === 'mara-start') {
+      contextOpen = false; placementType = undefined; groundMode = undefined;
+      const target = sim.towers.find(t => t.uid === sim.mara.effectTowerUid);
+      if (target) scene?.focusPad(target.padId);
+      element('context-panel').hidden = true; element('placement-help').hidden = true;
+      updateDiscoveryUI(live, false, false, catalogPanel);
+    }
+  }
   positionContext();
   syncLessonPointer();
 }
@@ -405,7 +422,7 @@ function syncLessonPointer(): void {
   const b = session?.battle;
   scene?.setLearningTarget();
   const blocked = !b || !scene || session?.paused || session?.error || session?.suspended || session?.awaitingResume
-    || performance.now() < workshopRevealUntil || document.querySelector('dialog[open]') || b.introduction.stage === 'done';
+    || performance.now() < workshopRevealUntil || document.querySelector('dialog[open]') || b.introduction.stage === 'done' && !discoveryStep(b);
   if (blocked) { lessonPointer.show(); return; }
   const button = (id: string) => lessonPointer.show(element<HTMLButtonElement>(id));
   const stage = b.introduction.stage;
@@ -414,12 +431,34 @@ function syncLessonPointer(): void {
     if (stage === 'upgrade') { const tower = b.towers.find(t => t.protected); if (tower) scene!.focusPad(tower.padId); }
     if (stage === 'research') scene!.focusObject('settlement');
   }
-  const world = (kind: 'starter' | 'upgrade' | 'workshop' | 'research' | 'frost') => {
+  const world = (kind: 'starter' | 'upgrade' | 'workshop' | 'research' | 'frost' | 'cannon' | 'warehouse') => {
     const point = scene!.learningAnchor(kind), at = point && document.elementFromPoint(point.x,point.y);
     // If the player pans away, the real overview control brings the target back.
     if (!point || at !== game?.canvas) { button('camera-reset'); return; }
     scene!.setLearningTarget(kind); lessonPointer.show(point,kind);
   };
+  if (stage === 'done') {
+    const step = discoveryStep(b);
+    if (placementType || groundMode) {
+      if (step === 'cannon' && placementType === 3) world('cannon');
+      else if (step === 'warehouse' && groundMode === 'warehouse') world('warehouse');
+      else lessonPointer.show();
+      return;
+    }
+    if (contextOpen) {
+      if (step === 'warehouse' && selectedPanel === 'warehouse' && !buildWarehouse.disabled) button('build-warehouse');
+      else if (step === 'mara-wait' && selectedPanel === 'mara' && !element<HTMLButtonElement>('cast-mara').disabled) button('cast-mara');
+      else button('close-context');
+      return;
+    }
+    if (step === 'wisp') button('meet-wisp');
+    else if (step === 'mara-start') button('discovery-next');
+    else if (step === 'mara-controls' || step === 'mara-wait' && !b.mara.autoCast) button('pick-mara');
+    else if (step === 'cannon') button(catalogPanel === 'tower' ? 'pick-cannon' : 'tower-tab');
+    else if (step === 'warehouse') button(catalogPanel === 'settlement' ? 'pick-warehouse' : 'settlement-tab');
+    else lessonPointer.show();
+    return;
+  }
   if (placementType) { world(b.preparing ? 'starter' : 'frost'); return; }
   if (groundMode) { if (groundMode === 'workshop') world('workshop'); else lessonPointer.show(); return; }
   if (contextOpen) {
@@ -473,7 +512,7 @@ function startPlacement(kind: TowerId): void {
   if (!session.battle.isTowerUnlocked(kind)) { if (kind === 3) openContext('wisp'); else { element('combat-message').textContent = 'Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.'; toastUntil = performance.now() + 6000; syncUI(); } return; }
   if (placementType === kind) { placementType = undefined; closeContext(); return; }
   groundMode = undefined; groundCandidate = undefined; catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
-  const preferred = session.battle.preparing ? 'cell-6-6' : session.battle.guiding && kind === 2 ? session.battle.recommendedFrostPad : kind === 1 ? 'tower-03' : kind === 2 ? 'tower-09' : kind === 3 ? 'tower-10' : 'tower-11';
+  const preferred = session.battle.preparing ? 'cell-6-6' : session.battle.guiding && kind === 2 ? session.battle.recommendedFrostPad : kind === 1 ? 'tower-03' : kind === 2 ? 'tower-09' : kind === 3 ? session.battle.recommendedCannonPad ?? 'tower-10' : 'tower-11';
   const pads = session.battle.layout.towerPads.filter(pad => session!.battle.preparing ? session!.battle.isStarterLocation(pad.id) : session!.battle.guiding ? session!.battle.isLearningFrostLocation(pad.id) : session!.battle.isPadUnlocked(pad.id) && !session!.battle.towers.some(tower => tower.padId === pad.id));
   if (!pads.length) { placementType = undefined; selectedPadId = 'tower-03'; scene?.setSelected(selectedPadId); openContext('tower'); }
   else { selectedPadId = pads.find(pad => pad.id === preferred)?.id ?? pads[0].id; scene?.setSelected(selectedPadId); scene?.focusPad(selectedPadId); }
@@ -505,7 +544,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
   element('app-error').hidden = true; element('load-actions').hidden = true; element('error-panel').hidden = true;
   try {
     gameResize?.disconnect(); gameResize = undefined;
-    game?.destroy(true); game = undefined; scene = undefined; focusedLesson = ""; lessonPointer.show();
+    game?.destroy(true); game = undefined; scene = undefined; focusedLesson = ""; focusedDiscovery = ""; lessonPointer.show();
     const previous = session; session = undefined;
     await previous?.close().catch(() => undefined);
     store?.close(); store = options.temporary ? undefined : await openBattleStore(undefined, databaseName);
@@ -563,7 +602,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
 async function perform(action: (battle: IdleBattle) => unknown, allowPaused = false, waitForSave = false): Promise<void> {
   const live = session;
   if (!ready || !live || (!allowPaused && live.paused) || live.error || document.hidden || live.awaitingResume || live.suspended) return;
-  const completion = live.command(action, waitForSave || live.battle.introduction.stage !== 'done');
+  const completion = live.command(action, waitForSave || live.battle.introduction.stage !== 'done' || live.battle.discoveryActive);
   syncUI(); await completion;
   scene?.refresh(); syncUI();
 }
@@ -585,6 +624,12 @@ element('onboarding-primary').addEventListener('click', () => {
   if (b.lessonComplete) { void perform(b => b.continueLesson()); return; }
 
 }, { signal: lifetime.signal });
+element('discovery-next').addEventListener('click', () => {
+  void perform(b => b.continueDiscovery(), false, true);
+}, { signal: lifetime.signal });
+element('discovery-later').addEventListener('click', () => {
+  void perform(b => b.dismissDiscovery(), false, true);
+}, { signal: lifetime.signal });
 element('onboarding-secondary').addEventListener('click', () => {
   if (session?.battle.introduction.stage === 'ready') startPlacement(1);
   else void perform(b => b.skipLessons());
@@ -592,7 +637,7 @@ element('onboarding-secondary').addEventListener('click', () => {
 for (const id of ['workshop', 'warehouse', 'mara'] as const) element(`move-${id}`).addEventListener('click', () => startGroundPlacement(id), { signal: lifetime.signal });
 element('mara-auto').addEventListener('click', () => { void perform(b => { b.mara.autoCast = !b.mara.autoCast; }); }, { signal: lifetime.signal });
 element('cast-mara').addEventListener('click', () => { void perform(b => b.castMaraNow()).then(() => closeContext()); }, { signal: lifetime.signal });
-element('meet-wisp').addEventListener('click', () => { void perform(b => { if (b.wispUnlocked) b.wispArrival.met = true; }, true, true); }, { signal: lifetime.signal });
+element('meet-wisp').addEventListener('click', () => { void perform(b => { b.meetWisp(); }, true, true); }, { signal: lifetime.signal });
 element('confirm-placement').addEventListener('click', () => {
   if (placementType && selectedPadId) { void placeTower(selectedPadId, placementType); return; }
   const id = groundMode, cell = groundCandidate;

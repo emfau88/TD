@@ -40,7 +40,7 @@ export function updateOnboarding(live: BattleSession, view: { placing: boolean; 
     case 'frost': copy = complete ? ['Frost und Pfeile wirken zusammen', 'Lass uns einen Treffer ansehen: Langsame Gegner bleiben länger im Pfeilhagel.', 'Weiter · Kombination ansehen']
       : catalogPanel === 'tower' ? ['Wähle den Frostkristall', 'Tippe unten auf den Frostkristall. Danach wählen wir einen Platz mit überlappender Reichweite.', '']
       : ['Zurück zu deinen Türmen', 'Öffne unten „Türme“. Der erforschte Frostkristall ist jetzt dort verfügbar.', '']; break;
-    default: copy = complete ? ['Deine erste Kombination arbeitet', 'Frost bremst, Pfeile verursachen Schaden. Du kannst jetzt frei bauen und aufwerten. Nach Welle 5 stellt sich Wisp vor.', 'Selbst weiterspielen']
+    default: copy = complete ? ['Deine erste Kombination arbeitet', 'Deine Kombination funktioniert. Lass sie zunächst kämpfen; Bauen und Upgrades sind jetzt frei. Nach Welle 5 stellt sich Wisp vor.', 'Selbst weiterspielen']
       : ['Achte auf den blauen Treffer', 'Frost bremst die Gegner und gibt dem Waldwächter mehr Zeit.', ''];
   }
   el('onboarding-title').textContent = copy[0]; el('onboarding-copy').textContent = copy[1]; primary.textContent = copy[2];

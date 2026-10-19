@@ -53,7 +53,7 @@ export class BattleScene extends Phaser.Scene {
   private buffText!: Phaser.GameObjects.Text;
   private maraName!: Phaser.GameObjects.Text;
   private learningMark!: Phaser.GameObjects.Graphics;
-  private learningTarget?: 'starter' | 'upgrade' | 'workshop' | 'research' | 'frost';
+  private learningTarget?: 'starter' | 'upgrade' | 'workshop' | 'research' | 'frost' | 'cannon' | 'warehouse';
   private coreLabel!: Phaser.GameObjects.Text;
   private readonly towerViews = new Map<number, TowerView>();
   private readonly enemyViews = new Map<number, EnemyView>();
@@ -229,12 +229,12 @@ export class BattleScene extends Phaser.Scene {
     const pad = this.selectedPad();
     return pad ? cellCenter(this.sim.layout, pad.cell) : { x: 560, y: 320 };
   }
-  setLearningTarget(target?: 'starter' | 'upgrade' | 'workshop' | 'research' | 'frost'): void { this.learningTarget = target; }
+  setLearningTarget(target?: 'starter' | 'upgrade' | 'workshop' | 'research' | 'frost' | 'cannon' | 'warehouse'): void { this.learningTarget = target; }
   private learningPoint(target: NonNullable<BattleScene['learningTarget']>): {x:number;y:number} | undefined {
     if (target === 'upgrade') { const tower = this.sim.towers.find(t => t.protected); return tower && {x:tower.x,y:tower.y-25}; }
     if (target === 'research') return this.objectPoint('settlement');
-    if (target === 'workshop') return cellCenter(this.sim.layout, this.sim.plots.workshop);
-    const pad = this.sim.layout.towerPads.find(p => p.id === (target === 'starter' ? 'cell-6-6' : this.sim.recommendedFrostPad));
+    if (target === 'workshop' || target === 'warehouse') return cellCenter(this.sim.layout, this.sim.plots[target]);
+    const pad = this.sim.layout.towerPads.find(p => p.id === (target === 'starter' ? 'cell-6-6' : target === 'cannon' ? this.sim.recommendedCannonPad : this.sim.recommendedFrostPad));
     return pad && cellCenter(this.sim.layout,pad.cell);
   }
   learningAnchor(target: NonNullable<BattleScene['learningTarget']>): {x:number;y:number} | undefined {

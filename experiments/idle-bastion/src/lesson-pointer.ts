@@ -12,6 +12,8 @@ export class LessonPointer {
     }
     this.arrow.hidden = true;
     if (!target) return;
+    // Confirmation cards already have a clear action; keep the outline, not an arrow over their copy.
+    if (button?.closest('#wisp-arrival, #discovery-card')) return;
     let x: number, y: number;
     if (button) {
       if (button.disabled || button.closest('[hidden]') || !button.getClientRects().length) return;

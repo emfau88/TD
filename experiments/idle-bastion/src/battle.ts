@@ -76,9 +76,12 @@ export interface BattleEvent {
 /** Only scalar IDs and fired payloads cross the save boundary. UI events are transient. */
 export type IntroductionStage = 'welcome' | 'build' | 'ready' | 'combat' | 'upgrade' | 'workshop' | 'research' | 'frost' | 'observe' | 'done';
 export interface Introduction { stage: IntroductionStage; preparationSeconds: number; halted: boolean }
+export const DISCOVERY_STAGES = ['off', 'wisp', 'mara-wait', 'mara-start', 'mara-effect', 'mara-controls', 'cannon', 'warehouse', 'done'] as const;
+export type DiscoveryStage = typeof DISCOVERY_STAGES[number];
 export interface BattleSnapshot {
+  discovery: DiscoveryStage;
   introduction: Introduction;
-  schemaVersion: 16; rulesVersion: 10; layoutVersion: 3 | 4;
+  schemaVersion: 17; rulesVersion: 10; layoutVersion: 3 | 4;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
@@ -126,6 +129,7 @@ export function sellValue(tower: Pick<Tower, 'spent'>): number {
 }
 
 export class IdleBattle {
+  discovery: DiscoveryStage = 'off';
   introduction: Introduction = { stage: 'done', preparationSeconds: 0, halted: false };
   gold: number = BASE.startGold;
   goldRemainderUnits = 0;
@@ -186,7 +190,7 @@ export class IdleBattle {
    * defense for migration and deterministic combat probes. */
   static newGame(): IdleBattle {
     const battle = new IdleBattle();
-    battle.towers = []; battle.uid = 1;
+    battle.towers = []; battle.uid = 1; battle.discovery = 'wisp';
     battle.introduction = { stage: 'welcome', preparationSeconds: 0, halted: false };
     battle.mara.targetTowerUid = 0; battle.mara.autoCast = false;
     return battle;
@@ -218,7 +222,7 @@ export class IdleBattle {
     this.introduction.stage = 'combat'; this.mara.autoCast = true; this.startAttempt(); return true;
   }
   get guiding(): boolean { return !this.preparing && this.introduction.stage !== 'done'; }
-  get learningPaused(): boolean { return this.introduction.halted; }
+  get learningPaused(): boolean { return this.introduction.halted || this.discoveryPaused; }
   get lessonComplete(): boolean {
     switch (this.introduction.stage) {
       case 'upgrade': return this.towers.some(t => t.protected && t.level >= 2);
@@ -251,16 +255,64 @@ export class IdleBattle {
   continueLesson(): boolean {
     if (!this.learningPaused || !this.lessonComplete) return false;
     const next: Partial<Record<IntroductionStage, IntroductionStage>> = { upgrade: 'workshop', workshop: 'research', research: 'frost', frost: 'observe' };
-    if (this.introduction.stage === 'observe') return this.skipLessons();
+    if (this.introduction.stage === 'observe') return this.skipLessons(false);
     this.introduction.stage = next[this.introduction.stage]!; this.introduction.halted = false;
     this.updateLesson(); return true;
   }
-  skipLessons(): boolean {
+  skipLessons(skipDiscovery = true): boolean {
     if (!this.guiding) return false;
     this.introduction.stage = 'done'; this.introduction.halted = false;
+    if (skipDiscovery) this.discovery = 'off';
     this.tutorial.seen |= 127;
     if (this.mode === 'farm') this.advanceRequested = true;
     return true;
+  }
+  get discoveryActive(): boolean {
+    return this.introduction.stage === 'done' && !this.tutorial.hidden && !['off', 'done'].includes(this.discovery);
+  }
+  get discoveryPaused(): boolean {
+    return this.discoveryActive && (this.discovery === 'mara-start'
+      || this.discovery === 'wisp' && this.wispUnlocked && !this.wispArrival.met && this.phase === 'intermission');
+  }
+  meetWisp(): boolean {
+    if (!this.wispUnlocked || this.wispArrival.met) return false;
+    this.wispArrival.met = true;
+    if (this.discovery === 'wisp') this.discovery = 'mara-wait';
+    return true;
+  }
+  continueDiscovery(): boolean {
+    if (!this.discoveryActive) return false;
+    if (this.discovery === 'mara-start') { this.discovery = 'mara-effect'; return true; }
+    return this.dismissDiscovery();
+  }
+  dismissDiscovery(): boolean {
+    if (!this.discoveryActive) return false;
+    if (this.discovery.startsWith('mara-')) { this.tutorial.seen |= 1 << 15; this.discovery = 'cannon'; }
+    else if (this.discovery === 'cannon') { this.tutorial.seen |= 1 << 8; this.discovery = 'warehouse'; }
+    else if (this.discovery === 'warehouse') { this.tutorial.seen |= 1 << 12; this.discovery = 'done'; }
+    else return false;
+    this.updateDiscovery(); return true;
+  }
+  private updateDiscovery(): void {
+    if (!this.discoveryActive) return;
+    if (this.discovery === 'wisp' && this.wispArrival.met) this.discovery = 'mara-wait';
+    // Catch a genuine new activation, never an old buff or a reset cooldown.
+    if (this.discovery === 'mara-wait' && this.phase === 'wave' && this.mara.effectRemaining >= MARA.duration - 1e-6)
+      this.discovery = 'mara-start';
+    if (this.discovery === 'mara-effect' && this.mara.effectRemaining <= 1e-9) this.discovery = 'mara-controls';
+    if (this.discovery === 'cannon' && this.towers.some(t => t.def.id === 3)) {
+      this.tutorial.seen |= 1 << 8; this.discovery = 'warehouse';
+    }
+    if (this.discovery === 'warehouse' && this.settlement.warehouseBuilt) {
+      this.tutorial.seen |= 1 << 12; this.discovery = 'done';
+    }
+  }
+  get recommendedCannonPad(): string | undefined {
+    const frost = this.towers.find(t => t.def.id === 2), starter = this.towers.find(t => t.protected);
+    const near = frost ?? starter;
+    return near && this.layout.towerPads.filter(p => this.isPadUnlocked(p.id) && !this.towers.some(t => t.padId === p.id)
+      && distance(cellCenter(this.layout, p.cell), this.mara) > 20)
+      .sort((a,b) => distance(cellCenter(this.layout,a.cell),near) - distance(cellCenter(this.layout,b.cell),near))[0]?.id;
   }
   isLearningFrostLocation(id: string): boolean {
     const starter = this.towers.find(t => t.protected), pad = this.layout.towerPads.find(p => p.id === id);
@@ -276,10 +328,10 @@ export class IdleBattle {
   /** Only the shipped closed/open layouts cross the save boundary. */
   snapshot(): BattleSnapshot {
     if (JSON.stringify(this.layout) !== JSON.stringify(battleLayout(this.clearing.unlocked, this.plots, this.layout.version as 3 | 4))) {
-      throw new Error('Unsupported battle layout for snapshot version 16.');
+      throw new Error('Unsupported battle layout for snapshot version 17.');
     }
     return {
-      schemaVersion: 16, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4, layoutId: this.clearing.unlocked ? 'east32' : 'start28',
+      schemaVersion: 17, discovery: this.discovery, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4, layoutId: this.clearing.unlocked ? 'east32' : 'start28',
       clearing: { ...this.clearing },
       bossVictories: this.bossVictories, secondBossVictories: this.secondBossVictories, bossChallengeWave: this.bossChallengeWave, bossChallengeRequested: this.bossChallengeRequested, bossCharm: { ...this.bossCharm },
       progress: cloneProgress(this.progress), rewardRemainderUnits: this.rewardRemainderUnits, waveRecipeVersion: this.waveRecipeVersion,
@@ -376,7 +428,7 @@ export class IdleBattle {
         wispArrival: { at: value.settlement.frostResearched && value.highestCleared >= 5 ? value.elapsed : null, met: false },
         mara: { ...value.mara, autoCast: true, effectTowerUid: value.mara.effectRemaining > 0 ? value.mara.targetTowerUid : null } };
     }
-    if (isRecord(value) && (value.schemaVersion === 11 || value.schemaVersion === 12 || value.schemaVersion === 13 || value.schemaVersion === 14 || value.schemaVersion === 15 || value.schemaVersion === 16) && validPlotPositions(value.plots)) {
+    if (isRecord(value) && (value.schemaVersion === 11 || value.schemaVersion === 12 || value.schemaVersion === 13 || value.schemaVersion === 14 || value.schemaVersion === 15 || value.schemaVersion === 16 || value.schemaVersion === 17) && validPlotPositions(value.plots)) {
       if (value.layoutVersion !== 3 && value.layoutVersion !== 4) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion));
       if (value.schemaVersion === 11) {
@@ -403,7 +455,15 @@ export class IdleBattle {
       value = { ...value, schemaVersion: 16, introduction: { ...old,
         stage: ['welcome', 'build', 'ready'].includes(old.stage) ? old.stage : 'done', halted: false } };
     }
+    if (isRecord(value) && value.schemaVersion === 16) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 16, model.layout.version as 3 | 4)) return undefined;
+      // Only unfinished new-player openings gain the follow-up. Veterans retain their flow.
+      const early = value.highestCleared < 5 && !value.tutorial.hidden
+        && (value.introduction.stage !== 'done' || value.introduction.preparationSeconds > 0);
+      value = { ...value, schemaVersion: 17, discovery: early ? 'wisp' : 'off' };
+    }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4)) return undefined;
+    model.discovery = value.discovery;
     model.introduction = { ...value.introduction };
     model.plots = structuredClone(value.plots); model.wispArrival = { ...value.wispArrival };
     model.clearing = { ...value.clearing };
@@ -673,7 +733,7 @@ export class IdleBattle {
    */
   update(dt: number): void {
     if (!Number.isFinite(dt) || dt <= 0) return;
-    this.updateLesson();
+    this.updateLesson(); this.updateDiscovery();
     if (this.preparing || this.learningPaused) { this.introduction.preparationSeconds += dt; return; }
     this.pendingTime += dt;
     const count = Math.floor((this.pendingTime + 1e-9) / BASE.stepSeconds);
@@ -683,7 +743,7 @@ export class IdleBattle {
       this.ticks++;
       this.elapsed = this.ticks * BASE.stepSeconds;
       this.tick(BASE.stepSeconds);
-      this.updateLesson();
+      this.updateLesson(); this.updateDiscovery();
       if (this.learningPaused) { this.introduction.preparationSeconds += (count - index - 1) * BASE.stepSeconds; break; }
     }
   }
@@ -989,10 +1049,10 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 = 0, layoutVersion: 1 | 2 | 3 | 4 = legacy ? 2 : LAYOUT_VERSION,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 = 0, layoutVersion: 1 | 2 | 3 | 4 = legacy ? 2 : LAYOUT_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
-  if (!isRecord(value) || value.schemaVersion !== (legacy || 16) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
+  if (!isRecord(value) || value.schemaVersion !== (legacy || 17) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
     || value.layoutVersion !== layoutVersion || value.layoutId !== (layout.bounds.columns === 32 ? 'east32' : 'start28')) return false;
   if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10]).includes(value.waveRecipeVersion as number))) return false;
   if ((!legacy || legacy >= 9) && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
@@ -1004,11 +1064,12 @@ function validSnapshot(
     if (unlocked ? !numberIn(value.wispArrival.at, 0, value.elapsed as number) : value.wispArrival.at !== null || value.wispArrival.met) return false;
   }
   if (!legacy && layoutVersion === 3 && (value.waveRecipeVersion as number) >= 8) return false;
-  const hasIntro = !legacy || legacy === 15;
+  if (!legacy && !DISCOVERY_STAGES.includes(value.discovery as DiscoveryStage)) return false;
+  const hasIntro = !legacy || legacy >= 15;
   if (hasIntro && (!isRecord(value.introduction)
     || !(legacy === 15 ? ['welcome', 'build', 'ready', 'practice', 'auto', 'done'] : ['welcome', 'build', 'ready', 'combat', 'upgrade', 'workshop', 'research', 'frost', 'observe', 'done']).includes(value.introduction.stage as string)
     || !numberIn(value.introduction.preparationSeconds, 0, Number.MAX_SAFE_INTEGER)
-    || !legacy && typeof value.introduction.halted !== 'boolean')) return false;
+    || (!legacy || legacy === 16) && typeof value.introduction.halted !== 'boolean')) return false;
   const intro = hasIntro ? value.introduction as unknown as Introduction : undefined;
   const unbuilt = intro?.stage === 'welcome' || intro?.stage === 'build';
   const preparing = unbuilt || intro?.stage === 'ready';
@@ -1018,8 +1079,11 @@ function validSnapshot(
     || value.mara.cooldownRemaining !== 0 || value.mara.effectRemaining !== 0
     || !isRecord(value.settlement) || value.settlement.workshopBuilt !== false)) return false;
   if (legacy === 15 && intro && ['practice', 'auto'].includes(intro.stage) && (value.wave === 0 || !isRecord(value.mara) || value.mara.autoCast !== false)) return false;
-  if (!legacy && intro && ((intro.halted && (preparing || ['combat', 'done'].includes(intro.stage)))
+  if ((!legacy || legacy === 16) && intro && ((intro.halted && (preparing || ['combat', 'done'].includes(intro.stage)))
     || (!preparing && intro.stage !== 'done' && value.wave === 0))) return false;
+  if (!legacy && ['mara-wait','mara-start','mara-effect','mara-controls','cannon','warehouse'].includes(value.discovery as string)
+    && (intro?.stage !== 'done' || !isRecord(value.wispArrival) || value.wispArrival.met !== true)) return false;
+  if (!legacy && value.discovery === 'mara-start' && (!isRecord(value.mara) || !(Number(value.mara.effectRemaining) > 0) || value.phase !== 'wave')) return false;
   const original = legacy === 2 || legacy === 3;
   if (!original) {
     if (!isRecord(value.settlement) || typeof value.settlement.workshopBuilt !== 'boolean'

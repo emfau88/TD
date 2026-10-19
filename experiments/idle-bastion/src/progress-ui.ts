@@ -7,7 +7,7 @@ import { offlinePolicy } from './offline';
 import { IncomeWindow, HISTORY_LIMIT, type AttemptMode } from './progress';
 import { tutorialStep } from './hud';
 
-export type GoalAction = 'archer' | 'upgrade' | 'workshop' | 'warehouse' | 'frost' | 'cannon' | 'sniper' | 'boss' | 'clearing' | 'progress';
+export type GoalAction = 'archer' | 'upgrade' | 'workshop' | 'warehouse' | 'frost' | 'cannon' | 'sniper' | 'boss' | 'clearing' | 'progress' | 'mara' | 'wisp';
 const el = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id)! as T;
 const number = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 const gold = (value: number) => number.format(value);
@@ -33,16 +33,16 @@ export function currentGoal(battle: IdleBattle): Goal {
     case 4: return { title: 'Frostfassung erforschen', detail: `${need(SETTLEMENT.researchCost)} · Frostturm & Level 4–6`, cost: SETTLEMENT.researchCost, action: 'workshop', label: 'Forschung ansehen' };
     case 5: return { title: 'Frost und Pfeile kombinieren', detail: `${need(FROST.cost)} · Frostkristall platzieren`, cost: FROST.cost, action: 'frost', label: 'Frostkristall auswählen' };
     case 6: return { title: 'Die Frosttechnik wirkt', detail: 'Ersten Frosttreffer beobachten · Gegner werden langsamer', action: 'progress', label: 'Fortschritt ansehen' };
-    case 7: return { title: 'Wisp für die Werkstatt gewinnen', detail: 'Welle 5 meistern · +10 % Gold', action: 'upgrade', label: 'Verteidigung verbessern' };
+    case 7: return battle.wispUnlocked ? { title: 'Wisp ist angekommen', detail: '+10 % Kampf-Gold · arbeitet selbstständig', action: 'wisp', label: 'Wisp kennenlernen' } : { title: 'Deine Kombination arbeitet', detail: 'Welle 5 erreichen · Bauen und Upgrades sind jetzt frei', action: 'progress', label: 'Fortschritt ansehen' };
     case 8: return { title: 'Käfergruppen gemeinsam treffen', detail: `${need(135)} · Steinschleuder neben Frost`, cost: 135, action: 'cannon', label: 'Steinschleuder auswählen' };
-    case 12: return { title: 'Vorräte für deine Rückkehr', detail: `${need(SETTLEMENT.warehouseCost)} · 65 % Ertrag für 8 Stunden`, cost: SETTLEMENT.warehouseCost, action: 'warehouse', label: 'Vorratslager ansehen' };
+    case 12: return { title: 'Vorräte für deine Rückkehr', detail: `${need(SETTLEMENT.warehouseCost)} · optional: 2 → 8 Stunden sammeln`, cost: SETTLEMENT.warehouseCost, action: 'warehouse', label: 'Vorratslager ansehen' };
     case 13: return { title: 'Den Weg bis Welle 8 sichern', detail: 'Vorratslager freischalten · längere Offline-Erträge', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 9: return { title: 'Den Weg bis Welle 10 sichern', detail: 'Scharfschütze freischalten', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 10: return { title: 'Für Rüstung gewappnet', detail: `${need(170)} · Scharfschütze durchdringt Panzer`, cost: 170, action: 'sniper', label: 'Scharfschütze auswählen' };
     case 14: return battle.highestCleared >= 14
       ? { title: 'Rosenspiegel stellt sich dir', detail: 'Welle 15 · 750 Gold Erstprämie · Frost unterbricht', action: 'boss', label: 'Bossherausforderung ansehen' }
       : { title: 'Bereite dich auf Rosenspiegel vor', detail: 'Boss in Welle 15 · Frost, Fläche und Durchdringung', action: 'upgrade', label: 'Verteidigung verbessern' };
-    case 15: return { title: 'Die östliche Lichtung öffnen', detail: `${need(SETTLEMENT.clearingCost)} · optionale Erweiterung`, cost: SETTLEMENT.clearingCost, action: 'clearing', label: 'Lichtung öffnen' };
+    case 15: return { title: 'Maras Übertakten kennenlernen', detail: '8 Sekunden · +50 % Feuerrate · Automatik wartet auf Gegner', action: 'mara', label: 'Maras Zauber ansehen' };
     case 16: return { title: 'Werkstatt II ausbauen', detail: `${need(SETTLEMENT.workshopUpgradeCost)} · Turmlevel 7–20`, cost: SETTLEMENT.workshopUpgradeCost, action: 'workshop', label: 'Werkstatt ausbauen' };
     case 17: if (battle.highestCleared >= 24 && !battle.bossActive && battle.mode !== 'farm') return { title: 'Rosenspiegels Rückkehr', detail: 'Welle 25 · 1.200 Gold Erstprämie', action: 'boss', label: 'Bossherausforderung ansehen' };
     default: {

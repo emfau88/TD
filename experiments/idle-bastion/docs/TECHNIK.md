@@ -1,6 +1,19 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
-## Erweiterte Lernführung (Snapshot 16)
+## Anschlussführung nach Frost (Snapshot 17)
+
+Kampfregeln 10 und Layout 4 bleiben unverändert. Das gespeicherte Feld `discovery` führt neue Partien durch `wisp → mara-wait → mara-start → mara-effect → mara-controls → cannon → warehouse → done`; `off` bleibt für reine Kampfmodelle und fortgeschrittene ältere Spielstände. Die Anschlussführung wird erst nach `introduction.stage = done` aktiv.
+
+- Nach Frost: freie Bau-/Upgradeentscheidungen und Ziel Welle 5. Wisp pausiert einmal an der Wellengrenze, bis die Begrüßung bestätigt ist. Sein Bonus wirkt unverändert automatisch; keine zusätzliche Belohnung durch den Dialog.
+- Mara: tatsächliche nächste Aktivierung abwarten. Bei der echten achtsekündigen Verstärkung startet eine kurze Beobachtungspause, Kamera auf dem betroffenen Turm. „Verstärkung ansehen“ lässt Wirkung und normalen 30-Sekunden-Cooldown weiterlaufen. Keine künstliche Aktivierung oder Gratis-Rücksetzung. Restzeit am Turm und im kleinen Hinweis; anschließend optional das echte Mara-Porträt für Automatik/manuelles Zaubern/Bewegen.
+- Steinschleuder: Pfeil zu Tab/Baukarte, anschließend ein verfügbarer Platz nahe Frost. Andere gültige Plätze bleiben erlaubt. Lager: ab Welle 8 „Neu“ bei Siedlung/Baukarte → Vorschau → Platzierung. Beide Käufe sind optional und lassen sich auf später verschieben; kein Sparzwang und keine künstliche Pause bis zum Kauf. Bereits gebaute Optionen werden übersprungen.
+- Ein Hinweis zur Zeit: keine alten Tutorialkarten oder konkurrierenden Ziele während der Anschlusslektion; beim Platzieren verschwinden die Erklärungen. Während der Bauerfolgsmeldung bleibt der alte mobile Tippknopf verborgen. Begrüßung/Weiter werden hervorgehoben, ohne einen Pfeil über den Erklärungstext zu legen.
+- `learningPaused` umfasst die beiden Anschluss-Pausen. Session bestätigt Phasenwechsel sofort atomar, behandelt diese Zeit als Pause für Offline-Erträge und unterdrückt leere Rückkehrdialoge. Farmbeweise schalten `discovery` aus. Das bestehende Fortschrittsbit 15 und `currentGoal` verweisen beide auf Mara statt fälschlich auf die Lichtung.
+- Migration: Schema 16 wird zuerst unverändert validiert. Neue Spieler vor Welle 5 mit begonnener Einführung/Vorbereitungszeit und sichtbarer Anleitung erhalten `wisp`; fortgeschrittene Partien `off`. Geld, Käufe, Gegner, Timer und bereits bestätigte Begrüßungen bleiben erhalten. Frühere unterstützte Formate durchlaufen die bestehende Kette. Keine Wirtschaftsänderung und keine Entwertung vorhandener Farmbelege.
+
+[Nachweis und Ansichten](../../../artifacts/idle-bastion/acceptance/onboarding/followup/REPORT.md).
+
+## Erweiterte Lernführung (ursprünglich Snapshot 16)
 
 Kampfregeln bleiben 10. Neue Partien folgen `welcome/build/ready → combat → upgrade → workshop → research → frost → observe → done`. `introduction.halted` ist die separate Lernpause; sie stoppt Gegner, Geschosse, Cooldowns, Wellentimer und Produktion, lässt aber den geführten Kauf zu. Nach der Aktion bleibt sie bis zur ausdrücklichen Fortsetzung aktiv. Eine Pause beginnt, wenn der nächste Kauf bezahlbar ist; die Werkstatt wartet stattdessen auf das erste Level-2-Upgrade und die erste abgeschlossene Welle. Die vorhandene Vorbereitungszeit zählt nun auch Lern-/Lesezeit und wird zur sichtbaren Gesamtspielzeit addiert.
 

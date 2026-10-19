@@ -12,8 +12,8 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
-| Aktives Umsetzungspaket | Echte Menüführung und Werkstatt-Bausatz · geprüft und auf GitHub Pages veröffentlicht |
-| Nächster Schritt | Nutzerprobe des überarbeiteten Einstiegs über „Frische Probe“; B14 und B12d-Umsetzung noch nicht beauftragt |
+| Aktives Umsetzungspaket | Anschlussführung Frost → Wisp → Mara → optionale Bauoptionen · umgesetzt und kompakt geprüft; Veröffentlichung folgt |
+| Nächster Schritt | Nutzerprobe des Einstiegs einschließlich Anschlussführung über „Frische Probe“; B14 und B12d-Umsetzung noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -93,6 +93,21 @@ Am 19.10.2026 ausdrücklich beauftragt: „Ja so umsetzen“. Ersetzt die vorher
 - [x] Codecommit `82a5a99` gepusht; [Pages-Lauf 39268268295](https://github.com/emfau88/TD/actions/runs/39268268295) erfolgreich. Öffentliches `battle-OzF1aTOT.js` und `battle-BDiJOrpc.css` stimmen per SHA-256 mit dem geprüften Build überein.
 
 [Prüfung und Screenshots der echten Menüfolge](../../artifacts/idle-bastion/acceptance/onboarding/menu-guide/REPORT.md). B14 und weitere Gegnerproduktion bleiben unbegonnen; keine neue 15-Minuten- oder reale Geräteabnahme behauptet.
+
+### Anschluss nach Frost — Wisp, Mara und nächste Bauoptionen
+
+Am 19.10.2026 nach Einschätzung ausdrücklich mit „ok so durchführen“ beauftragt.
+
+- [x] Nach Frost keine nächste Pflichtkaufkette: freie Verteidigung, verständliches Ziel Welle 5.
+- [x] Wisp einmal an der Wellengrenze begrüßen; +10 % Kampf-Gold und automatische Rolle erklären, andere Hinweise zurückhalten.
+- [x] Nächsten echten Mara-Zauber in kurzer Pause sichtbar machen; Kamera auf Ziel, acht Sekunden Wirkung/Restdauer, danach echte Porträtbedienung optional anbieten. Cooldown bleibt unverändert.
+- [x] Steinschleuder über Türme/Baukarte/Platz bei Frost zeigen; Lager ab Welle 8 über Siedlung/Neu/Baukarte/Vorschau/Platzierung. Beide optional, „Später entdecken“ ohne Zielschleife.
+- [x] Falsches Lichtungsziel für Mara korrigieren; Hinweisüberlagerungen entfernen, freie Sicht auf den Lageraufbau erhalten.
+- [x] Snapshot 17 mit gespeicherten Phasen; alte Saves erhalten, keine Wiederholung für Veteranen, kein Offline-Ertrag während Lernpause.
+- [x] 15 fokussierte Einstiegs-/Anschlussprüfungen und zwei Saveprüfungen bestanden; Produktionsbuild erfolgreich. Kurzer echter UI-Ablauf ab legal vorbereitetem Wisp-Stand, separat Lagerplatzierung, Hochkant und Desktopansicht geprüft. Kein vollständiger neuer 15-Minuten-/Gerätetest.
+- [ ] Commit/Push/Pages und öffentliche Dateien verifizieren.
+
+[Prüfbericht und Screenshots](../../artifacts/idle-bastion/acceptance/onboarding/followup/REPORT.md). B14 und neue Gegnerproduktion bleiben unbegonnen.
 
 ## B12b — Nordbogen und mobile Kamera
 
