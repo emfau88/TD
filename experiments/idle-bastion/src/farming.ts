@@ -61,6 +61,7 @@ function prove(battle: IdleBattle, wave: number, fingerprint: string): FarmCerti
   snapshot.progress = createProgress(snapshot.attemptId, 0); snapshot.rewardRemainderUnits = 0;
   if (snapshot.settlement.workshopUpgraded) snapshot.settlement.upgradedAt = 0;
   if (snapshot.settlement.warehouseBuilt) snapshot.settlement.warehouseBuiltAt = 0;
+  if (snapshot.settlement.tavernBuilt) snapshot.settlement.tavernBuiltAt = 0;
   if (snapshot.clearing.unlocked) snapshot.clearing.openedAt = 0;
   if (snapshot.wispArrival.at !== null) snapshot.wispArrival.at = 0;
   snapshot.gold = 0; snapshot.goldRemainderUnits = 0; snapshot.earned = 0; snapshot.kills = 0;

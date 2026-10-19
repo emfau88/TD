@@ -10,7 +10,7 @@ import { BossCharmView, charmAge } from './boss-visuals';
 import { wispPose } from './wisp';
 import Phaser from 'phaser';
 import { BASE, IdleBattle, stats, towerDefinition, visualStage, type BattleEvent, type TowerId, type Enemy, type Tower } from './battle';
-import { cellCenter, SETTLEMENT_ZONE, type GridCell, type TowerPad } from './layout';
+import { cellCenter, SETTLEMENT_ZONE, TAVERN_ZONE, buildingWidth, type BuildingId, type GridCell, type TowerPad } from './layout';
 import { KEYS, MARA_FOOT, SCALE, enemyFrame, enemyFlip, loopFrame, maraFrame, towerArt, preloadArt, prepareArt } from './art';
 import { createForest, type ForestView } from './forest';
 
@@ -23,6 +23,7 @@ export interface BattleSceneHooks {
   readonly selectWisp?: () => void;
   readonly selectMara?: () => void;
   readonly selectWorkshop?: () => void;
+  readonly selectTavern?: () => void;
   readonly selectWarehouse?: () => void;
   readonly selectClearing?: () => void;
   readonly ground?: (cell: GridCell) => void;
@@ -53,7 +54,7 @@ export class BattleScene extends Phaser.Scene {
   private wispName!: Phaser.GameObjects.Text;
   private combatEffects!: CombatEffects;
   private buildKind?: TowerId;
-  private groundMode?: 'mara' | 'workshop' | 'warehouse';
+  private groundMode?: 'mara' | BuildingId;
   private groundCell?: GridCell;
   private ghostBase!: Phaser.GameObjects.Image;
   private ghostWeapon!: Phaser.GameObjects.Image;
@@ -161,7 +162,7 @@ export class BattleScene extends Phaser.Scene {
     }
   }
   acceptEvents(events: readonly BattleEvent[]): void { if (this.readyToDraw) this.combatEffects.accept(events, this.sim.elapsed + this.sim.introduction.preparationSeconds); }
-  setPlacement(kind?: TowerId, ground?: 'mara' | 'workshop' | 'warehouse', cell?: GridCell): void {
+  setPlacement(kind?: TowerId, ground?: 'mara' | BuildingId, cell?: GridCell): void {
     this.buildKind = kind; this.groundMode = ground; this.groundCell = cell;
   }
   setSelected(padId?: string): void {
@@ -231,17 +232,21 @@ export class BattleScene extends Phaser.Scene {
     this.followingWisp = !this.sim.wispArrival.met && this.wispPose.arriving;
     this.focusObject('wisp');
   }
-  focusObject(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing'): void {
+  focusObject(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'clearing'): void {
     if (kind !== 'clearing' && (this.portraitCamera || this.sim.clearing.unlocked)) this.focusPoint(this.objectPoint(kind));
   }
   private focusPoint(point: { x: number; y: number }): void {
     if (this.overview) { this.overview = false; this.relativeZoom = 1; this.resizeCamera(); }
     this.cameras.main.centerOn(point.x, this.portraitCamera ? point.y - 20 : this.sim.layout.bounds.height / 2);
   }
-  private objectPoint(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
+  private objectPoint(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
     if (kind === 'clearing') return { x: 1080, y: 524 };
     if (kind === 'wisp') return this.wispPose;
     if (kind === 'mara') return { x: this.sim.mara.x, y: this.sim.mara.y - 20 };
+    if (kind === 'tavern') {
+      const cell = this.sim.plots.tavern ?? this.sim.recommendedTavernPlot ?? { x: 6, y: 10 };
+      return { x: (cell.x + 1.5) * 40, y: (cell.y + 1) * 40 - 35 };
+    }
     if (kind === 'settlement' || kind === 'warehouse') {
       const plot = this.sim.layout.plots.find(plot => plot.id === (kind === 'warehouse' ? 'warehouse' : 'workshop'))!;
       return { x: (plot.footprint.x + plot.footprint.width / 2) * this.sim.layout.cellSize,
@@ -272,7 +277,7 @@ export class BattleScene extends Phaser.Scene {
     this.learningMark.fillStyle(0xffd778,.10).fillCircle(point.x,point.y,21);
     this.learningMark.lineStyle(2,0xffdf8a,pulse).strokeCircle(point.x,point.y,21);
   }
-  uiAnchor(kind: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
+  uiAnchor(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
     const point = this.objectPoint(kind), camera = this.cameras.main;
     return { x: camera.x + (point.x - camera.worldView.x) * camera.zoom, y: camera.y + (point.y - camera.worldView.y) * camera.zoom };
   }
@@ -321,15 +326,15 @@ export class BattleScene extends Phaser.Scene {
     if (this.buildKind) { this.setSelected(pad?.id); this.hooks.select(pad?.id); return; }
     const wisp = this.wispPose;
     if (this.sim.wispUnlocked && Math.hypot(point.x - wisp.x, point.y - (wisp.y - 18)) < 23) { this.hooks.selectWisp?.(); return; }
-    const warehouse = this.sim.layout.plots.find(plot => plot.id === 'warehouse')!.footprint;
-    if (this.sim.settlement.warehouseBuilt && point.x >= warehouse.x * size && point.x < (warehouse.x + warehouse.width) * size
-      && point.y >= (warehouse.y - 0.5) * size && point.y < (warehouse.y + warehouse.height) * size) {
-      this.hooks.selectWarehouse?.(); return;
-    }
-    const workshop = this.sim.layout.plots.find(plot => plot.id === 'workshop')!.footprint;
-    if (this.sim.settlement.workshopBuilt && point.x >= workshop.x * size && point.x < (workshop.x + workshop.width) * size
-      && point.y >= (workshop.y - 1.2) * size && point.y < (workshop.y + workshop.height) * size) {
-      this.hooks.selectWorkshop?.(); return;
+    for (const plot of [...this.sim.layout.plots].sort((a, b) => b.blockingBody.y - a.blockingBody.y)) {
+      const area = plot.footprint;
+      if (this.sim.settlement[`${plot.id}Built`] && point.x >= area.x * size && point.x < (area.x + area.width) * size
+        && point.y >= (area.y - (plot.id === 'warehouse' ? 0.5 : 1.2)) * size && point.y < (area.y + area.height) * size) {
+        if (plot.id === 'tavern') this.hooks.selectTavern?.();
+        else if (plot.id === 'warehouse') this.hooks.selectWarehouse?.();
+        else this.hooks.selectWorkshop?.();
+        return;
+      }
     }
     if (Math.hypot(point.x - this.sim.mara.x, point.y - (this.sim.mara.y - 18)) < 23) {
       this.hooks.selectMara?.(); return;
@@ -360,15 +365,16 @@ export class BattleScene extends Phaser.Scene {
       if (this.groundMode === 'mara') {
         g.lineStyle(1.5, 0xf2daa0, 0.6).strokeCircle(this.sim.mara.x, this.sim.mara.y, MARA.range);
       } else {
-        g.fillStyle(0xffdc8c, 0.10).fillRect(SETTLEMENT_ZONE.x * size, SETTLEMENT_ZONE.y * size, SETTLEMENT_ZONE.width * size, SETTLEMENT_ZONE.height * size);
+        const zone = this.groundMode === 'tavern' ? TAVERN_ZONE : SETTLEMENT_ZONE;
+        g.fillStyle(0xffdc8c, 0.10).fillRect(zone.x * size, zone.y * size, zone.width * size, zone.height * size);
       }
       if (this.groundCell && this.groundMode !== 'mara') {
-        const id = this.groundMode, cell = this.groundCell, width = id === 'workshop' ? 3 : 2;
+        const id = this.groundMode, cell = this.groundCell, width = buildingWidth(id);
         const valid = this.sim.canPositionBuilding(id, cell);
         g.lineStyle(2, valid ? 0xe9ce88 : 0xeb7272, 0.9).strokeRect(cell.x * size, cell.y * size, width * size, 2 * size);
-        this.ghostBase.setVisible(true).setTexture(id === 'workshop' ? KEYS.workshop : KEYS.warehouse)
+        this.ghostBase.setVisible(true).setTexture(id === 'workshop' && this.sim.settlement.workshopUpgraded ? KEYS.workshopUpgraded : KEYS[id])
           .setPosition((cell.x + width / 2) * size, (cell.y + 1) * size).setScale(1)
-          .setOrigin(0.5, id === 'workshop' ? 112/128 : 80/96).setAlpha(0.65).setTint(valid ? 0xffffff : 0xff8888);
+          .setOrigin(0.5, id === 'warehouse' ? 80/96 : 112/128).setAlpha(0.65).setTint(valid ? 0xffffff : 0xff8888);
       }
       return;
     }
@@ -423,7 +429,7 @@ export class BattleScene extends Phaser.Scene {
     const sim = this.sim, elapsed = sim.elapsed;
     // Read the complete confirmed model. Rollback can replace its identity and
     // move time backwards; UID maps are reconciled rather than replaying events.
-    this.forest?.update(elapsed, sim.settlement.workshopBuilt, sim.settlement.builtAt, sim.settlement.warehouseBuilt, sim.settlement.warehouseBuiltAt, sim.warehouseUnlocked, sim.settlement.workshopUpgraded, sim.settlement.upgradedAt);
+    this.forest?.update(elapsed, sim.settlement.workshopBuilt, sim.settlement.builtAt, sim.settlement.warehouseBuilt, sim.settlement.warehouseBuiltAt, sim.warehouseUnlocked, sim.settlement.workshopUpgraded, sim.settlement.upgradedAt, sim.settlement.tavernBuilt, sim.settlement.tavernBuiltAt);
     this.effects.clear();
     const towers = new Set(sim.towers.map(tower => tower.uid));
     for (const [uid, view] of this.towerViews) if (!towers.has(uid)) { view.base.destroy(); view.weapon.destroy(); this.towerViews.delete(uid); }

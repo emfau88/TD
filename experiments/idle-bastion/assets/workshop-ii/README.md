@@ -1,0 +1,13 @@
+# Werkstatt II — Imagegen-Asset
+
+Erstellt am 19.10.2026 mit dem eingebauten Imagegen-Werkzeug, eine Generierung für dieses Gebäude. Keine behauptete Modell-Unterversion. Zusammen mit dem anderen B15a-Gebäude insgesamt zwei Bilder erzeugt.
+
+- Referenz: vorhandene [Werkstatt I](../workshop/workshop-i.png) und tatsächliche Idle-Spielansicht (Perspektive, Palette und Maßstab).
+- [Unverändertes Original](raw/workshop-ii.png), [Laufzeitbild](workshop-ii.png), [reproduzierbare technische Aufbereitung](pack.ps1).
+- Laufzeit: 128 × 128 RGBA, sichtbare Silhouette 100 × 79, Fußanker (64, 112); keine Geländeplatte, Figuren oder Texte eingebrannt.
+- Alpha-Grenze 128; Quellausschnitt (x, y, Breite, Höhe): 117, 276, 1046, 829. Nächster-Nachbar-Skalierung, harte Alpha-Kante; keine nachgezeichneten Gebäudeteile.
+- Im Produktionsbuild auf Desktop 1440 × 960 und Hochkant 430 × 932/DPR 2 ansehen; [B15-Bericht](../../../../artifacts/idle-bastion/acceptance/b15/REPORT.md) dokumentiert die abschließende Prüfung.
+
+## Vollständiger Prompt
+
+Use case: style-transfer. Create exactly ONE WORKSHOP LEVEL II sprite, an upgraded version of the workshop in input image 1 for the SPIRE game. Image 1 is the existing Workshop I sprite: preserve its frontal slight overhead camera, roof orientation, center door, horizontal ground baseline, dark navy-brown pixel outlines, red-orange roof tiles, timber and grey stone palette. Image 2 is a current gameplay screenshot for palette and relative scale only, do not reproduce it. Upgrade the SAME small building within the same ground footprint: sturdier stone lower walls, a more substantial neatly capped chimney on the right, reinforced timber doorway, a prominent readable hammer/anvil sign, and one warmly glowing recessed forge/work window integrated into the front wall. Give it a crafted, more capable workshop identity, clearly different from a tavern. Keep a recognizable red-orange roof, do not turn it into a mansion, castle or separate pair of buildings. All improvements are part of one coherent building sprite, no detached side annex. Runtime silhouette will be roughly 100 pixels wide and 85 pixels tall in a 128x128 frame; small enlarged reference-scale sprite artwork with big readable pixel clusters and modest detail. Ground anchor is the midpoint of the front floor edge. No ground tile, grass, UI, lettering, characters, giant glow, extra decorations or large soft shadows. Genuine transparent alpha, full silhouette and margin. Crisp pixel-art material shapes suited to nearest-neighbor reduction, not painterly or photorealistic. Output only the finished upgraded workshop, not a comparison or spritesheet.

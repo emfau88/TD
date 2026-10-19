@@ -3,7 +3,7 @@ import { LessonPointer } from './lesson-pointer';
 import { updateOnboarding } from './onboarding-ui';
 import { introducedEnemy } from './enemy-roster';
 import { MARA } from './mara';
-import type { GridCell } from './layout';
+import type { BuildingId, GridCell } from './layout';
 import Phaser from 'phaser';
 import { bossEncounter } from './boss';
 import './battle.css';
@@ -62,11 +62,14 @@ let game: Phaser.Game | undefined;
 let gameResize: ResizeObserver | undefined;
 let store: BattleSaveStore | undefined;
 let selectedPadId: string | undefined;
-let selectedPanel: 'tower' | 'settlement' | 'warehouse' | 'mara' | 'wisp' | 'clearing' = 'tower';
+let selectedPanel: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'clearing' = 'tower';
 let catalogPanel: 'tower' | 'settlement' = 'tower';
 let contextOpen = false;
 let placementType: TowerId | undefined;
-let groundMode: 'mara' | 'workshop' | 'warehouse' | undefined;
+let groundMode: 'mara' | BuildingId | undefined;
+const buildingName = (id: BuildingId): string => ({ workshop: 'Werkstatt', warehouse: 'Lager', tavern: 'Taverne' })[id];
+const buildingBuilt = (b: IdleBattle, id: BuildingId): boolean => b.settlement[`${id}Built`];
+const buildingCost = (b: IdleBattle, id: BuildingId): number => id === 'workshop' ? b.workshopBuildCost : SETTLEMENT[`${id}Cost`];
 let groundCandidate: GridCell | undefined;
 let toastUntil = 0;
 const announcedEnemies = new Set<string>();
@@ -128,6 +131,7 @@ function syncUI(): void {
   element('tower-panel').hidden = selectedPanel !== 'tower';
   element('clearing-panel').hidden = selectedPanel !== 'clearing';
   element('region-navigation').hidden = !sim.clearing.unlocked || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
+  element('tavern-panel').hidden = selectedPanel !== 'tavern';
   element('warehouse-panel').hidden = selectedPanel !== 'warehouse';
   element('settlement-panel').hidden = selectedPanel !== 'settlement';
   element('wisp-panel').hidden = selectedPanel !== 'wisp';
@@ -148,18 +152,18 @@ function syncUI(): void {
   view?.setPlacement(placementType, groundMode, groundCandidate);
   element('placement-help').hidden = !(placementType || groundMode) || live.awaitingResume;
   element('placement-text').textContent = groundMode === 'mara' ? 'Mara · begehbares Ziel antippen'
-    : groundMode && (groundMode === 'workshop' ? sim.settlement.workshopBuilt : sim.settlement.warehouseBuilt) ? 'Neuen Standort wählen und Versetzen bestätigen'
-    : groundMode ? `${groundMode === 'workshop' ? 'Werkstatt' : 'Lager'} · freien Platz antippen · ${groundMode === 'workshop' && sim.workshopKitAvailable ? 'kostenloser Bausatz' : `${groundMode === 'workshop' ? sim.workshopBuildCost : SETTLEMENT.warehouseCost} Gold`}`
+    : groundMode && buildingBuilt(sim, groundMode) ? 'Neuen Standort wählen und Versetzen bestätigen'
+    : groundMode ? `${buildingName(groundMode)} · freien Platz antippen · ${groundMode === 'workshop' && sim.workshopKitAvailable ? 'kostenloser Bausatz' : `${buildingCost(sim, groundMode)} Gold`}`
     : sim.preparing ? 'Startturm · Pfeil zeigt einen guten Platz · antippen und kostenlos bauen'
     : sim.guiding ? 'Frostkristall · goldenes Feld antippen und bauen · 110 Gold'
     : `${towerDefinition(placementType ?? 1).name} · freies Feld am Weg antippen und direkt bauen`;
   const confirm = element<HTMLButtonElement>('confirm-placement');
-  confirm.hidden = !groundMode || groundMode === 'mara' || !(groundMode === 'workshop' ? sim.settlement.workshopBuilt : sim.settlement.warehouseBuilt);
+  confirm.hidden = !groundMode || groundMode === 'mara' || !buildingBuilt(sim, groundMode);
   if (groundMode === 'mara') confirm.hidden = true;
-  const groundBuilt = groundMode === 'workshop' ? sim.settlement.workshopBuilt : sim.settlement.warehouseBuilt;
-  confirm.textContent = groundMode ? groundBuilt ? 'Hier versetzen' : `Hier bauen · ${groundMode === 'workshop' ? sim.workshopBuildCost : SETTLEMENT.warehouseCost} Gold` : sim.preparing ? sim.towers.length ? 'Hierher versetzen · kostenlos' : 'Hier bauen · kostenlos' : `Hier bauen · ${towerDefinition(placementType ?? 1).cost} Gold`;
-  confirm.disabled = unavailable || sim.phase === 'defeat' || (!groundMode && live.paused) || (groundMode ? !groundCandidate || !sim.canPositionBuilding(groundMode === 'warehouse' ? 'warehouse' : 'workshop', groundCandidate)
-    || (groundBuilt ? !live.paused : sim.gold < (groundMode === 'workshop' ? sim.workshopBuildCost : SETTLEMENT.warehouseCost))
+  const groundBuilt = !!groundMode && groundMode !== 'mara' && buildingBuilt(sim, groundMode);
+  confirm.textContent = groundMode ? groundBuilt ? 'Hier versetzen' : `Hier bauen · ${buildingCost(sim, groundMode === 'mara' ? 'workshop' : groundMode)} Gold` : sim.preparing ? sim.towers.length ? 'Hierher versetzen · kostenlos' : 'Hier bauen · kostenlos' : `Hier bauen · ${towerDefinition(placementType ?? 1).cost} Gold`;
+  confirm.disabled = unavailable || sim.phase === 'defeat' || (!groundMode && live.paused) || (groundMode ? !groundCandidate || !sim.canPositionBuilding(groundMode === 'mara' ? 'workshop' : groundMode, groundCandidate)
+    || (groundBuilt ? !live.paused : sim.gold < buildingCost(sim, groundMode === 'mara' ? 'workshop' : groundMode))
     : !selectedPadId || !sim.canBuild(selectedPadId, placementType));
   element('pick-archer').setAttribute('aria-pressed', String(placementType === 1));
   element('pick-frost').setAttribute('aria-pressed', String(placementType === 2));
@@ -249,7 +253,7 @@ function syncUI(): void {
   const tower = sim.towers.find(value => value.padId === selectedPadId);
   const pad = sim.layout.towerPads.find(value => value.id === selectedPadId);
   padChoice.value = selectedPadId ?? '';
-  element('selection-title').textContent = selectedPanel === 'clearing' ? 'Östliche Lichtung' : selectedPanel === 'warehouse' ? 'Vorratslager' : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
+  element('selection-title').textContent = selectedPanel === 'tavern' ? 'Taverne' : selectedPanel === 'clearing' ? 'Östliche Lichtung' : selectedPanel === 'warehouse' ? 'Vorratslager' : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
     : tower ? `${tower.def.name} · Level ${tower.level}` : pad ? 'Freier Bauplatz' : 'Bauplatz wählen';
   element('tower-name').textContent = tower?.def.name ?? 'Turm wählen';
   element('tower-role').textContent = tower?.def.id === 4 ? 'Bevorzugt Rüstung · ignoriert 100 % davon' : tower?.def.id === 3 ? 'Flächentreffer · 52 Reichweite um das Ziel' : tower?.def.id === 2 ? 'Frosttreffer · 45 % langsamer für 2 s' : 'Zuverlässige Pfeile · Allrounder';
@@ -283,7 +287,7 @@ function syncUI(): void {
     : (pad && sim.isPadUnlocked(pad.id)) && sim.gold < 75 ? `Noch ${currency.format(75 - sim.gold)} Gold bis zum Waldwächter.` : '';
   const settlement = sim.settlement;
   const workshopIcon = element<HTMLImageElement>('workshop-icon');
-  const workshopSource = ART.workshop;
+  const workshopSource = sim.settlement.workshopUpgraded ? ART.workshopUpgraded : ART.workshop;
   if (workshopIcon.getAttribute('src') !== workshopSource) workshopIcon.src = workshopSource;
   element('workshop-card-title').textContent = settlement.workshopUpgraded ? 'Werkstatt II' : settlement.workshopBuilt ? 'Werkstatt I' : 'Werkstatt I';
   element('workshop-card-copy').textContent = settlement.workshopUpgraded ? 'Turmlevel bis 20' : settlement.frostResearched ? 'Werkstatt II ausbauen' : settlement.frostResearched ? 'Frosttechnik verfügbar' : settlement.workshopBuilt ? 'Frostfassung erforschen' : 'Bauen & forschen';
@@ -308,28 +312,47 @@ function syncUI(): void {
   element('choose-frost').hidden = !settlement.frostResearched;
   const warehouseIcon = element<HTMLImageElement>('warehouse-icon');
   if (warehouseIcon.getAttribute('src') !== ART.warehouse) warehouseIcon.src = ART.warehouse;
-  for (const id of ['workshop', 'warehouse'] as const) {
+  for (const id of ['workshop', 'warehouse', 'tavern'] as const) {
     const button = element<HTMLButtonElement>(`move-${id}`);
-    button.hidden = !(id === 'workshop' ? settlement.workshopBuilt : settlement.warehouseBuilt);
+    button.hidden = !buildingBuilt(sim, id);
     button.disabled = unavailable || !live.paused;
-    button.textContent = live.paused ? `${id === 'workshop' ? 'Werkstatt' : 'Lager'} versetzen` : 'Zum Versetzen pausieren';
+    button.textContent = live.paused ? `${buildingName(id)} versetzen` : 'Zum Versetzen pausieren';
   }
   const builtWarehouse = settlement.warehouseBuilt;
   const safeRate = certificate ? farmRewardGold(certificate) * 60000 / certificate.durationMs : 0;
   element('pick-warehouse').classList.toggle('locked', !sim.warehouseUnlocked);
   element('pick-warehouse').classList.toggle('researched', builtWarehouse);
   const warehouseNew = sim.warehouseUnlocked && !builtWarehouse && !(sim.tutorial.seen & (1 << 12)) && (!sim.discoveryActive || sim.discovery === 'warehouse');
-  for (const id of ['settlement-tab','pick-warehouse']) element(id).classList.toggle('new-building',warehouseNew);
-  element('settlement-tab').setAttribute('aria-label',warehouseNew ? 'Siedlung · Neues Gebäude verfügbar: Vorratslager' : 'Siedlung');
-  element('warehouse-card-price').textContent = builtWarehouse ? 'âœ“ Gebaut' : sim.warehouseUnlocked ? String(SETTLEMENT.warehouseCost) : sim.wispUnlocked ? 'Welle 8' : 'Wisp & Welle 8';
+  const tavernNew = sim.tavernUnlocked && !settlement.tavernBuilt && !settlement.tavernSeen;
+  element('pick-warehouse').classList.toggle('new-building', warehouseNew);
+  element('pick-tavern').classList.toggle('new-building', tavernNew);
+  element('settlement-tab').classList.toggle('new-building', warehouseNew || tavernNew);
+  element('settlement-tab').setAttribute('aria-label', tavernNew ? 'Siedlung · Neues Gebäude verfügbar: Taverne' : warehouseNew ? 'Siedlung · Neues Gebäude verfügbar: Vorratslager' : 'Siedlung');
+  element<HTMLImageElement>('tavern-icon').src = ART.tavern;
+  element<HTMLImageElement>('tavern-portrait').src = ART.tavern;
+  element('pick-tavern').hidden = sim.highestCleared < 24 && !sim.tavernUnlocked;
+  element('pick-tavern').classList.toggle('locked', !sim.tavernUnlocked);
+  element('pick-tavern').classList.toggle('researched', settlement.tavernBuilt);
+  element('tavern-card-price').textContent = settlement.tavernBuilt ? '✓ Gebaut' : sim.tavernUnlocked ? currency.format(SETTLEMENT.tavernCost) : 'Boss 25';
+  element('tavern-description').textContent = settlement.tavernBuilt
+    ? 'Ein neuer Treffpunkt in deiner Siedlung. Noch sind keine Gäste zur Rekrutierung verfügbar.'
+    : 'Ein Treffpunkt für künftige Gefährten. Der Bau ist optional: Aktuell gibt es noch keine Rekrutierung oder Kampfboni.';
+  element('tavern-condition').textContent = settlement.tavernBuilt ? 'Die erste Rekrutierung wird später ohne weitere Goldkosten verfügbar.'
+    : !sim.tavernUnlocked ? 'Rosenspiegels Rückkehr in Welle 25 besiegen, dann für 1.200 Gold bauen.'
+    : sim.gold < SETTLEMENT.tavernCost ? `Noch ${currency.format(SETTLEMENT.tavernCost - sim.gold)} Gold. Du kannst erst deine Verteidigung weiter ausbauen.`
+    : 'Boss 25 besiegt · 1.200 Gold verfügbar. Bauplatz selbst wählen.';
+  const buildTavern = element<HTMLButtonElement>('build-tavern');
+  buildTavern.hidden = settlement.tavernBuilt;
+  buildTavern.disabled = blocked || !sim.tavernUnlocked || sim.gold < SETTLEMENT.tavernCost;
+  element('warehouse-card-price').textContent = builtWarehouse ? '✓ Gebaut' : sim.warehouseUnlocked ? String(SETTLEMENT.warehouseCost) : sim.wispUnlocked ? 'Welle 8' : 'Wisp & Welle 8';
   element('warehouse-description').textContent = builtWarehouse ? 'Wisp versorgt das Lager. Deine Vorräte sammeln automatisch während deiner Abwesenheit.'
     : 'Wenn du das Spiel schließt, sammelt deine sichere Verteidigung weiter. Das Lager verlängert das Sammeln von 2 auf 8 Stunden. Optional; es macht deine Türme nicht stärker.';
   element('warehouse-rate').textContent = certificate ? `${rateFormat.format(safeRate)} G/min` : 'Noch kein Nachweis';
-  element('warehouse-efficiency').textContent = builtWarehouse ? '65 % der Farmbasis' : '60 % â†’ 65 %';
-  element('warehouse-cap').textContent = builtWarehouse ? 'Bis zu 8 Stunden' : '2 â†’ 8 Stunden';
+  element('warehouse-efficiency').textContent = builtWarehouse ? '65 % der Farmbasis' : '60 % → 65 %';
+  element('warehouse-cap').textContent = builtWarehouse ? 'Bis zu 8 Stunden' : '2 → 8 Stunden';
   element('warehouse-preview').textContent = live.paused ? '0 Gold · Pause aktiv' : !certificate ? 'Zuerst sicher farmen'
-    : builtWarehouse ? `â‰ˆ ${currency.format(safeRate * 60 * WAREHOUSE_OFFLINE.efficiencyPermille / 1000)} Gold`
-    : `${currency.format(safeRate * 60 * 0.6)} â†’ ${currency.format(safeRate * 60 * 0.65)} Gold`;
+    : builtWarehouse ? `≈ ${currency.format(safeRate * 60 * WAREHOUSE_OFFLINE.efficiencyPermille / 1000)} Gold`
+    : `${currency.format(safeRate * 60 * 0.6)} → ${currency.format(safeRate * 60 * 0.65)} Gold`;
   element('warehouse-condition').textContent = !sim.warehouseUnlocked ? `Voraussetzung: ${sim.wispUnlocked ? 'Wisp ✓' : 'Wisp (Frost & Welle 5)'} · Welle 8 ${sim.highestCleared >= 8 ? '✓' : 'meistern'}.`
     : !builtWarehouse && sim.gold < SETTLEMENT.warehouseCost ? `Noch ${currency.format(SETTLEMENT.warehouseCost - sim.gold)} Gold. Die Vorschau gilt bei unveränderter Verteidigung; während einer Pause entsteht kein Ertrag.`
     : 'Vorschau bei unveränderter Verteidigung. Während einer Pause entsteht kein Offline-Ertrag.';
@@ -355,7 +378,7 @@ function syncUI(): void {
   const relevantEvents = sim.drainEvents();
   scene?.acceptEvents(relevantEvents);
   if (relevantEvents.some(event => event.type === 'map-update')) { selectedPadId = undefined; placementType = undefined; closeContext(); }
-  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'boss-victory', 'clearing', 'workshop-upgrade', 'map-update'].includes(event.type)).at(-1);
+  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'tavern', 'boss-victory', 'clearing', 'workshop-upgrade', 'map-update'].includes(event.type)).at(-1);
   if (message) toastUntil = performance.now() + 4500;
   if (message) element('combat-message').textContent = message.type === 'clear' ? `Welle ${message.wave} geschafft · +${currency.format(message.amount ?? 0)} Gold Abschlussbonus.`
     : message.type === 'kill' ? `Gegner besiegt · +${currency.format(message.amount ?? 0)} Gold.`
@@ -369,6 +392,7 @@ function syncUI(): void {
     : message.type === 'upgrade' ? `${message.tower?.def.name} verbessert. Der nächste Schuss nutzt den höheren Schaden.`
     : message.type === 'workshop-upgrade' ? 'Werkstatt II fertig! Turmlevel 7–20 sind jetzt verfügbar.'
     : message.type === 'workshop' ? 'Die Werkstatt ist fertig! Frostfassung ist jetzt erforschbar.'
+    : message.type === 'tavern' ? 'Die Taverne steht! Ein neuer Treffpunkt für deine Siedlung.'
     : message.type === 'warehouse' ? 'Vorratslager gebaut! Künftig 65 % Offline-Ertrag für bis zu 8 Stunden.'
     : message.type === 'research' ? 'Frostfassung erforscht! Baue einen Frostkristall oder verbessere Türme bis Level 6.'
     : message.type === 'sell' ? `Turm verkauft · +${currency.format(message.amount ?? 0)} Gold. Die sichere Farmbasis wird neu geprüft.`
@@ -499,6 +523,8 @@ function openContext(kind: typeof selectedPanel): void {
   groundMode = undefined; groundCandidate = undefined; placementType = undefined; selectedPanel = kind; contextOpen = true;
   if (kind !== 'tower') { selectedPadId = undefined; scene?.setSelected(); }
   scene?.focusObject(kind); syncUI();
+  if (kind === 'tavern' && session?.battle.tavernUnlocked && !session.battle.settlement.tavernSeen)
+    void perform(b => { b.settlement.tavernSeen = true; }, true, true);
   if (kind === 'warehouse' && session?.battle.warehouseUnlocked && !(session.battle.tutorial.seen & (1 << 12)))
     void perform(b => { b.tutorial.seen |= 1 << 12; }, true, true);
 }
@@ -564,10 +590,11 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
       canRender: () => !live.busy,
       changed: syncUI,
       select(padId) { void selectPad(padId); },
-      ground(cell) { if (groundMode === 'mara') { let accepted = false; void perform(b => { accepted = b.moveMaraTo(cell); }).then(() => { if (accepted && !live.error) closeContext(); else { element('placement-text').textContent = 'Dorthin führt kein freier Weg. Wähle ein anderes Feld.'; } }); } else { groundCandidate = cell; const id = groundMode; if (id && !live.battle.settlement[id === 'workshop' ? 'workshopBuilt' : 'warehouseBuilt']) void placeBuilding(id, cell); else syncUI(); } },
+      ground(cell) { if (groundMode === 'mara') { let accepted = false; void perform(b => { accepted = b.moveMaraTo(cell); }).then(() => { if (accepted && !live.error) closeContext(); else { element('placement-text').textContent = 'Dorthin führt kein freier Weg. Wähle ein anderes Feld.'; } }); } else { groundCandidate = cell; const id = groundMode; if (id && !buildingBuilt(live.battle, id)) void placeBuilding(id, cell); else syncUI(); } },
       selectWisp() { openContext('wisp'); },
       selectMara() { openContext('mara'); },
       selectClearing() { catalogPanel = 'settlement'; openContext('clearing'); },
+      selectTavern() { catalogPanel = 'settlement'; openContext('tavern'); },
       selectWarehouse() { catalogPanel = 'settlement'; openContext('warehouse'); },
       selectWorkshop() { catalogPanel = 'settlement'; openContext('settlement'); },
       ready() { ready = true; drawDockArt(view); view.setSelected(selectedPadId); syncUI(); },
@@ -606,10 +633,10 @@ async function perform(action: (battle: IdleBattle) => unknown, allowPaused = fa
   syncUI(); await completion;
   scene?.refresh(); syncUI();
 }
-function startGroundPlacement(id: 'workshop' | 'warehouse' | 'mara'): void {
+function startGroundPlacement(id: BuildingId | 'mara'): void {
   if (!session || !ready || session.battle.preparing) return;
   placementType = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); groundMode = id;
-  groundCandidate = id === 'mara' ? undefined : { ...session.battle.plots[id] };
+  groundCandidate = id === 'mara' ? undefined : id === 'tavern' ? session.battle.recommendedTavernPlot : { ...session.battle.plots[id] };
   scene?.focusObject(id === 'workshop' ? 'settlement' : id); syncUI();
 }
 function showLearningTower(): void {
@@ -637,7 +664,7 @@ element('onboarding-secondary').addEventListener('click', () => {
   if (session?.battle.introduction.stage === 'ready') startPlacement(1);
   else void perform(b => b.skipLessons());
 }, { signal: lifetime.signal });
-for (const id of ['workshop', 'warehouse', 'mara'] as const) element(`move-${id}`).addEventListener('click', () => startGroundPlacement(id), { signal: lifetime.signal });
+for (const id of ['workshop', 'warehouse', 'tavern', 'mara'] as const) element(`move-${id}`).addEventListener('click', () => startGroundPlacement(id), { signal: lifetime.signal });
 element('mara-auto').addEventListener('click', () => { void perform(b => { b.mara.autoCast = !b.mara.autoCast; }); }, { signal: lifetime.signal });
 element('cast-mara').addEventListener('click', () => { void perform(b => b.castMaraNow()).then(() => closeContext()); }, { signal: lifetime.signal });
 element('meet-wisp').addEventListener('click', () => { void perform(b => { b.meetWisp(); }, true, true); }, { signal: lifetime.signal });
@@ -646,22 +673,26 @@ element('confirm-placement').addEventListener('click', () => {
   const id = groundMode, cell = groundCandidate;
   if (cell && id && id !== 'mara') void placeBuilding(id, cell);
 }, { signal: lifetime.signal });
-async function placeBuilding(id: 'workshop' | 'warehouse', cell: GridCell): Promise<void> {
+async function placeBuilding(id: BuildingId, cell: GridCell): Promise<void> {
   const live = session; if (!live || live.battle.phase === 'defeat' || !live.battle.canPositionBuilding(id, cell)) return;
-  const built = live.battle.settlement[id === 'workshop' ? 'workshopBuilt' : 'warehouseBuilt'];
-  if (!built && live.battle.gold < (id === 'workshop' ? live.battle.workshopBuildCost : SETTLEMENT.warehouseCost)) return;
-  if (id === 'workshop' && !built) workshopRevealUntil = performance.now() + 1800;
+  const built = buildingBuilt(live.battle, id);
+  if (!built && live.battle.gold < buildingCost(live.battle, id)) return;
+  let accepted = false;
+  if (!built) workshopRevealUntil = performance.now() + 1800;
   await perform(b => {
-    const built = id === 'workshop' ? b.settlement.workshopBuilt : b.settlement.warehouseBuilt;
-    if (built && !live.paused) return;
-    if (!built && (b.gold < (id === 'workshop' ? b.workshopBuildCost : SETTLEMENT.warehouseCost) || id === 'warehouse' && !b.warehouseUnlocked)) return;
+    if (buildingBuilt(b, id)) { if (live.paused) accepted = b.positionBuilding(id, cell); return; }
+    if (id === 'tavern') { accepted = b.buildTavern(cell); return; }
+    if (b.gold < buildingCost(b, id) || id === 'warehouse' && !b.warehouseUnlocked) return;
     if (!b.positionBuilding(id, cell)) return;
-    if (!built) { if (id === 'workshop') b.buildWorkshop(); else b.buildWarehouse(); }
-  }, true);
-  scene?.focusObject(id === 'workshop' ? 'settlement' : 'warehouse'); closeContext();
+    accepted = id === 'workshop' ? b.buildWorkshop() : b.buildWarehouse();
+  }, true, true);
+  if (accepted && !live.error) { scene?.focusObject(id === 'workshop' ? 'settlement' : id); closeContext(); }
+  else { workshopRevealUntil = 0; element('placement-text').textContent = 'Hier ist kein freier Zugang. Wähle einen anderen Platz.'; }
 }
 build.addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId); }, { signal: lifetime.signal });
 buildFrost.addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId, 2); }, { signal: lifetime.signal });
+element('build-tavern').addEventListener('click', () => startGroundPlacement('tavern'), { signal: lifetime.signal });
+element('pick-tavern').addEventListener('click', () => openContext('tavern'), { signal: lifetime.signal });
 buildWarehouse.addEventListener('click', () => { startGroundPlacement('warehouse'); }, { signal: lifetime.signal });
 buildWorkshop.addEventListener('click', () => { startGroundPlacement('workshop'); }, { signal: lifetime.signal });
 element('upgrade-workshop').addEventListener('click', () => { void perform(battle => battle.upgradeWorkshop()); }, { signal: lifetime.signal });
@@ -669,7 +700,7 @@ element('replay-first-boss').addEventListener('click', () => { void perform(b =>
 researchFrost.addEventListener('click', () => { void perform(battle => battle.researchFrost()).then(() => { if (session?.battle.guiding && session.battle.lessonComplete) closeContext(); }); }, { signal: lifetime.signal });
 padChoice.addEventListener('change', () => { placementType = undefined; void selectPad(padChoice.value || undefined); }, { signal: lifetime.signal });
 for (const kind of ['tower', 'settlement'] as const) {
-  element(`${kind}-tab`).addEventListener('click', () => { catalogPanel = kind; placementType = undefined; closeContext(); }, { signal: lifetime.signal });
+  element(`${kind}-tab`).addEventListener('click', () => { catalogPanel = kind; placementType = undefined; closeContext(); if (kind === 'settlement' && session?.battle.tavernUnlocked && !session.battle.settlement.tavernSeen) element('pick-tavern').scrollIntoView({ block: 'nearest', inline: 'nearest' }); }, { signal: lifetime.signal });
   element(`${kind}-tab`).addEventListener('keydown', event => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
     event.preventDefault(); const other = kind === 'tower' ? 'settlement' : 'tower';

@@ -42,8 +42,10 @@ export const ART = Object.freeze({
   frostWeapon: new URL('../../../public/assets/Tower 02 - Level 01 - Weapon.png', import.meta.url).href,
   frostWeapon2: new URL('../../../public/assets/Tower 02 - Level 02 - Weapon.png', import.meta.url).href,
   frostProjectile: new URL('../../../public/assets/Tower 02 - Level 01 - Projectile.png', import.meta.url).href,
+  tavern: new URL('../assets/tavern/tavern-i.png', import.meta.url).href,
   warehouse: new URL('../assets/warehouse/warehouse-i.png', import.meta.url).href,
   workshop: new URL('../assets/workshop/workshop-i.png', import.meta.url).href,
+  workshopUpgraded: new URL('../assets/workshop-ii/workshop-ii.png', import.meta.url).href,
   workshopDamaged: new URL('../assets/workshop/workshop-damaged.png', import.meta.url).href,
 });
 export const KEYS = Object.freeze({
@@ -66,7 +68,7 @@ export const KEYS = Object.freeze({
   core: 'idle-core', coreWeapon: 'idle-core-weapon', maraSource: 'idle-mara-source', mara: 'idle-mara',
   weapon2: 'idle-weapon-2', frostTower: 'idle-frost-tower', frostWeapon: 'idle-frost-weapon',
   frostWeapon2: 'idle-frost-weapon-2', frostProjectile: 'idle-frost-projectile',
-  warehouse: 'idle-warehouse', workshop: 'idle-workshop', workshopDamaged: 'idle-workshop-damaged',
+  tavern: 'idle-tavern', warehouse: 'idle-warehouse', workshop: 'idle-workshop', workshopUpgraded: 'idle-workshop-ii', workshopDamaged: 'idle-workshop-damaged',
 });
 export const SCALE = Object.freeze({ tile: 0.625, tree: 0.8, tower: 0.63, enemy: 0.83, mara: 1, projectile: 0.45 });
 export const LEAF_FRAMES = Object.freeze([0,1,2,3,4,5,8,9,10,11,12,13,16,17,18,19,20,21,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,56,57,58,59,60,61,62,64,65,66,67,68,69,70]);
@@ -97,7 +99,9 @@ export function preloadArt(scene: Phaser.Scene): void {
   scene.load.image(KEYS.water, ART.water);
   scene.load.image(KEYS.maraSource, ART.maraSource);
   scene.load.image(KEYS.workshop, ART.workshop);
+  scene.load.image(KEYS.workshopUpgraded, ART.workshopUpgraded);
   scene.load.image(KEYS.warehouse, ART.warehouse);
+  scene.load.image(KEYS.tavern, ART.tavern);
   scene.load.image(KEYS.workshopDamaged, ART.workshopDamaged);
   for (const [key, url, width, height] of [
     [KEYS.weapon3, ART.weapon3, 96, 96], [KEYS.frostWeapon3, ART.frostWeapon3, 64, 64], [KEYS.cannonWeapon3, ART.cannonWeapon3, 96, 96], [KEYS.sniperWeapon3, ART.sniperWeapon3, 128, 128], [KEYS.bossDance, ART.bossDance, 128, 128], [KEYS.boss, ART.boss, 64, 64], [KEYS.wisp, ART.wisp, 64, 64], [KEYS.scorpion, ART.scorpion, 64, 64],

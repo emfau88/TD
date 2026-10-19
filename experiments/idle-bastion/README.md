@@ -8,7 +8,7 @@ Dieses Dokument ersetzt für Idle Bastion den ursprünglichen langen Auftrag. Es
 
 Am 19.10.2026 wurde die Roadmap um [Akt II, B15–B22](ROADMAP.md#akt-ii) erweitert: Taverne mit Ilyra, die vorhandenen Türme Sturmlicht und Glutwerfer, eine große vorbereitbare Ostfront und gestalteter Fortschritt bis ungefähr Welle 40. [AKT_II.md](docs/AKT_II.md) hält Bestand, Spielregeln und technische Grenzen kompakt fest. Schnellfeuer, Sonnenobelisk, Runa sowie nutzbarer Kern/HQ und verbündete Einheiten stehen als spätere Ideen auf der Parkliste.
 
-Das ist ein Planungsauftrag, keine Freigabe zur Umsetzung dieser Inhalte. Die folgenden ursprünglichen Umfangsgrenzen beschreiben Akt I und bleiben als Grundlage erhalten; geplante Erweiterungen sind ausdrücklich in Akt II abgegrenzt. B14/G2 und B12d bleiben getrennt offen. Die spätere ausdrückliche Autorisierung für Commit/Push auf dem Idle-Branch gilt weiterhin; historische Aussagen zur ersten Planungsaufgabe sind keine neue Veröffentlichungssperre.
+Anschließend wurde B15a ausdrücklich zur Umsetzung freigegeben: Taverne ohne Ilyra, ein neues Werkstatt-II-Asset und Gebäudebeschriftungen. Taverne nach tatsächlichem Sieg über Boss 25 für 1.200 Gold; derzeit optional ohne Rekrutierung oder Kampfbonus. B15b/Ilyra und weitere Akt-II-Funktionen bleiben geplant. Die folgenden ursprünglichen Umfangsgrenzen beschreiben Akt I und bleiben als Grundlage erhalten; geplante Erweiterungen sind ausdrücklich in Akt II abgegrenzt. B14/G2 und B12d bleiben getrennt offen. Die spätere ausdrückliche Autorisierung für Commit/Push auf dem Idle-Branch gilt weiterhin; historische Aussagen zur ersten Planungsaufgabe sind keine neue Veröffentlichungssperre.
 
 ## Verbindliche Unterlagen
 

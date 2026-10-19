@@ -320,3 +320,11 @@ Mobile: vorhandener Maßstab, ein Feld vertikaler Kamerarand, Y-Fokus auf ausgew
 ## Gegnererweiterung B12c
 
 Aktuell Schema 13 / Regeln 9, Layout 4 (Layout 3 nur für noch laufende Altversuche). Sechs vorhandene Figuren ergänzen die normalen Wellen; Regeln, Richtungen, Heilung und Migrationsgrenzen stehen kompakt in [ENEMIES.md](ENEMIES.md). Der nächste Versuch wechselt auf die neuen Gegnerrezepte. Historische Offline-Belege bleiben erhalten. Gleichzeitige Gegner sind weiterhin auf 28 begrenzt; Quallen auf zwei pro Welle.
+
+## Snapshot 19: optionale Taverne
+
+Schema 18 wird vor der Übernahme validiert und um tavernBuilt=false, tavernBuiltAt=null, tavernSeen=false ergänzt. Der optionale plots.tavern existiert erst nach dem Bau; alte Siedlungsplätze und alle laufenden Kampfwerte bleiben erhalten. Der Besitz erfordert einen tatsächlich verbuchten Sieg über Boss 25 und eine gültige 3×2-Position. Regeln 10 und Layoutrevision 4 bleiben unverändert, weil kein alter Weg oder Platz geändert wird.
+
+buildTavern prüft Freischaltung, Zustand, Gold und Gelände, reserviert Gebäude samt Hof und zieht genau 1.200 Gold ab. Die bestehende BattleSession speichert die gesamte Aktion atomar; fehlgeschlagene Transaktion setzt auch Position und Kosten zurück. Freies Versetzen nutzt die vorhandene UI-Pause. Die zusätzliche südliche Hofreihe ist ausschließlich Tavernenfläche; alte Werkstatt-/Lagerzonen bleiben unverändert. Alle legalen bisherigen Kombinationen lassen dort mindestens einen Tavernenstandort zu.
+
+Der Farmklon normalisiert tavernBuiltAt wie andere reine Bauzeitstempel. Die Taverne hat in B15a keinen Kampf-/Offline-Bonus und keine Rekrutierung; ihre erste spätere Rekrutierung wird in B15b aus vorhandenem Besitz abgeleitet, ohne zweiten Gebäudekauf. Keine Änderung historischer Offline-Ansprüche.

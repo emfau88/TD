@@ -15,7 +15,7 @@ export interface TowerPad {
   readonly availability: PadAvailability; readonly isStarter: boolean;
 }
 export interface BuildingPlot {
-  readonly id: 'workshop' | 'warehouse';
+  readonly id: 'workshop' | 'warehouse' | 'tavern';
   readonly footprint: GridRect; readonly blockingBody: GridRect;
   readonly courtyard: GridRect; readonly entrance: GridCell;
 }
@@ -147,7 +147,11 @@ export function findFootpath(
 
 export const LAYOUT_VERSION = 4 as const;
 export const SETTLEMENT_ZONE: GridRect = { x: 2, y: 10, width: 9, height: 4 };
-export type PlotPositions = Record<BuildingPlot['id'], GridCell>;
+// The tavern may use one extra courtyard row; existing building sites stay unchanged.
+export const TAVERN_ZONE: GridRect = { ...SETTLEMENT_ZONE, height: 5 };
+export type BuildingId = BuildingPlot['id'];
+export type PlotPositions = Record<'workshop' | 'warehouse', GridCell> & { tavern?: GridCell };
+export const buildingWidth = (id: BuildingId): number => id === 'warehouse' ? 2 : 3;
 export const DEFAULT_PLOTS: PlotPositions = { workshop: { x: 3, y: 11 }, warehouse: { x: 8, y: 12 } };
 export function createIdleLayout(options: { readonly unlockedColumns?: number; readonly version?: 1 | 2 | 3 | 4; readonly plots?: PlotPositions } = {}): IdleLayout {
   const cellSize = 40, rows = 16, startColumns = 28, maxColumns = 36;
@@ -190,9 +194,14 @@ export function createIdleLayout(options: { readonly unlockedColumns?: number; r
       courtyard: rect(8, 13, 2, 1), entrance: cell(8, 13),
     }),
   ]);
+  if (version >= 3 && options.plots?.tavern) {
+    const { x, y } = options.plots.tavern;
+    plots = [...plots, { id: 'tavern', footprint: rect(x, y, 3, 2), blockingBody: rect(x, y, 3, 1),
+      courtyard: rect(x, y + 1, 3, 1), entrance: cell(x + 1, y + 1) }];
+  }
   if (version >= 3) {
     plots = plots.map(plot => {
-      const destination = options.plots?.[plot.id] ?? DEFAULT_PLOTS[plot.id];
+      const destination = options.plots?.[plot.id] ?? DEFAULT_PLOTS[plot.id] ?? plot.footprint;
       const dx = destination.x - plot.footprint.x, dy = destination.y - plot.footprint.y;
       const shift = <T extends GridCell>(p: T): T => ({ ...p, x: p.x + dx, y: p.y + dy });
       return { ...plot, footprint: shift(plot.footprint), blockingBody: shift(plot.blockingBody),
@@ -269,11 +278,12 @@ export function validPlotPositions(positions: unknown): positions is PlotPositio
   if (!positions || typeof positions !== 'object') return false;
   const p = positions as PlotPositions;
   const occupied = new Set<string>();
-  for (const id of ['workshop', 'warehouse'] as const) {
+  for (const id of ['workshop', 'warehouse', 'tavern'] as const) {
+    if (id === 'tavern' && p.tavern === undefined) continue;
     const pos = p[id];
     if (!pos || !integerCell(pos)) return false;
-    for (const cell of cellsInRect({ ...pos, width: id === 'workshop' ? 3 : 2, height: 2 })) {
-      if (!rectContains(SETTLEMENT_ZONE, cell) || occupied.has(key(cell))) return false;
+    for (const cell of cellsInRect({ ...pos, width: buildingWidth(id), height: 2 })) {
+      if (!rectContains(id === 'tavern' ? TAVERN_ZONE : SETTLEMENT_ZONE, cell) || occupied.has(key(cell))) return false;
       occupied.add(key(cell));
     }
   }
@@ -281,7 +291,7 @@ export function validPlotPositions(positions: unknown): positions is PlotPositio
 }
 const battleLayouts = new Map<string, IdleLayout>();
 export function battleLayout(expanded: boolean, plots: PlotPositions = DEFAULT_PLOTS, version: 3 | 4 = LAYOUT_VERSION): IdleLayout {
-  const key = JSON.stringify([version, expanded, plots.workshop.x, plots.workshop.y, plots.warehouse.x, plots.warehouse.y]);
+  const key = JSON.stringify([version, expanded, plots.workshop.x, plots.workshop.y, plots.warehouse.x, plots.warehouse.y, plots.tavern?.x, plots.tavern?.y]);
   let layout = battleLayouts.get(key);
   if (!layout) { layout = createIdleLayout({ unlockedColumns: expanded ? 32 : 28, plots, version }); battleLayouts.set(key, layout); }
   return layout;

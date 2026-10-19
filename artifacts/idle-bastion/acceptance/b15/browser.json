@@ -1,0 +1,32 @@
+[
+  {
+    "name": "desktop",
+    "viewport": {
+      "width": 1440,
+      "height": 960,
+      "dpr": 1
+    },
+    "placement": {
+      "x": 6,
+      "y": 10
+    },
+    "reload": true,
+    "oneTapBuild": true,
+    "errors": []
+  },
+  {
+    "name": "mobile",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "dpr": 2
+    },
+    "placement": {
+      "x": 6,
+      "y": 10
+    },
+    "reload": true,
+    "oneTapBuild": true,
+    "errors": []
+  }
+]

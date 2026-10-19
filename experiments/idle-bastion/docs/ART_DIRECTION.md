@@ -184,3 +184,11 @@ Sechs vorhandene Figuren, keine neuen generierten Bilder. Gemeinsame explizite M
 ## Kleine Lesbarkeitskorrektur am 19.10.2026
 
 Die Original-Pixelschrift bleibt erhalten. Nur 2, 5 und 8 werden durch drei eigene klarere Pixelglyphen gleicher Breite ersetzt (`SpireClearDigits.ttf`, CSS-Unicode-Bereich). Keine vollständige neue Schrift oder Grafikserie. Maras aktiver Buff verwendet warme Goldverbindung, kleinen wandernden Lichtpunkt und sanfte Turmaura. Quelle ist Maras echte Position, Ziel ausschließlich `effectTowerUid`; Darstellung endet mit dem tatsächlichen Effekt. Bossverführung behält Rosa/Herzen und Wackeln, damit beide Effekte unterscheidbar bleiben.
+
+## Gebäudeergänzung B15a
+
+Taverne und Werkstatt II verwenden jeweils ein eigenes transparentes Imagegen-Bild. [Taverne: Original, Prompt, Packen](../assets/tavern/README.md), [Werkstatt II: Original, Prompt, Packen](../assets/workshop-ii/README.md). Beide 128 × 128, sichtbare Breite 100 px, Fußanker (64, 112); gleiche frontale Perspektive, dunkle Konturen, Stein/Holz und lesbare Dachflächen wie Werkstatt I. Werkstatt II erhält eine integrierte Esse und kräftigere Steinbasis, die Taverne ein burgunderfarbenes Dach mit warmen Fenstern und Krugschild.
+
+Der alte programmatisch gezeichnete Werkstattanbau wird nicht mehr gerendert. Beim Upgrade wechseln Gebäude und Baukartenbild zum fertigen Werkstatt-II-Asset; Grundfläche und Eingang bleiben identisch. Kurzer vorhandener Bau-/Staubeffekt bleibt erhalten.
+
+Gebäudenamen erscheinen unter dem gebauten Objekt (Werkstatt I/II, Lager I, Taverne), 11 px, mit heller Schrift, dunkler Kontur und zweifacher Textauflösung. Keine Schilder vor dem Bau und kein großer Kasten; Beschriftung erst nach den 1,6 Sekunden der Bauanimation. Figuren und ihre Namen behalten einen eigenen Abstand. Die endgültigen Desktop-/Hochkantbilder stehen im B15-Bericht.

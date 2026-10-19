@@ -9,7 +9,7 @@ export type { EnemyDef } from './enemy-roster';
  * B03 adds exact persistence; B04 owns advance/farm attempts and fractional offline credit.
  */
 import { BOSS, freshCharm, isBossWave, bossEncounter, type BossWave, type BossCharm } from './boss';
-import { LAYOUT_VERSION, cellCenter, createIdleLayout, isUnlockedCell, battleLayout, DEFAULT_PLOTS, validPlotPositions, type PlotPositions, type GridCell, type IdleLayout } from './layout';
+import { LAYOUT_VERSION, cellCenter, createIdleLayout, isUnlockedCell, battleLayout, DEFAULT_PLOTS, validPlotPositions, TAVERN_ZONE, type BuildingId, type PlotPositions, type GridCell, type IdleLayout } from './layout';
 import { getForestBlockedCells } from './forest-world';
 import { MARA, createMara, cloneMara, assignMaraTarget, stepMara, validMara, migrateMaraLayout, moveMara, castMara, type MaraState } from './mara';
 import { validMara as validLegacyMara, migrateMaraLayout as migrateLegacyMaraLayout } from './mara-legacy';
@@ -33,7 +33,7 @@ export const BASE = Object.freeze({
 });
 
 /** Prices are ordinary gold purchases; B07 measures the whole opening economy. */
-export const SETTLEMENT = Object.freeze({ workshopCost: 200, researchCost: 60, warehouseCost: 650, clearingCost: 900, workshopUpgradeCost: 1200, slowFactor: 0.55, slowSeconds: 2 });
+export const SETTLEMENT = Object.freeze({ workshopCost: 200, researchCost: 60, warehouseCost: 650, tavernCost: 1200, clearingCost: 900, workshopUpgradeCost: 1200, slowFactor: 0.55, slowSeconds: 2 });
 export const FROST = Object.freeze({ id: 2 as const, name: 'Frostkristall', cost: 110,
   damage: 7, range: 126, cooldown: 0.9, color: 0x8ce1ef });
 export const CANNON = Object.freeze({ id: 3 as const, name: 'Steinschleuder', cost: 135, damage: 28, range: 150, cooldown: 1.55, color: 0xe4b976 });
@@ -68,7 +68,7 @@ export interface Shot {
   speed: number; damage: number; level: number; kind: TowerId;
 }
 export interface BattleEvent {
-  type: 'build' | 'upgrade' | 'sell' | 'fire' | 'hit' | 'kill' | 'escape' | 'wave' | 'clear' | 'defeat' | 'workshop' | 'research' | 'wisp' | 'pads' | 'warehouse' | 'boss-victory' | 'boss-interrupt' | 'clearing' | 'workshop-upgrade' | 'map-update';
+  type: 'build' | 'upgrade' | 'sell' | 'fire' | 'hit' | 'kill' | 'escape' | 'wave' | 'clear' | 'defeat' | 'workshop' | 'research' | 'wisp' | 'pads' | 'warehouse' | 'tavern' | 'boss-victory' | 'boss-interrupt' | 'clearing' | 'workshop-upgrade' | 'map-update';
   tower?: Tower; enemy?: Enemy; shot?: Shot; x?: number; y?: number;
   amount?: number; wave?: number;
 }
@@ -82,7 +82,7 @@ export interface BattleSnapshot {
   discovery: DiscoveryStage;
   dismissedDefeatAttempt: number;
   introduction: Introduction;
-  schemaVersion: 18; rulesVersion: 10; layoutVersion: 3 | 4;
+  schemaVersion: 19; rulesVersion: 10; layoutVersion: 3 | 4;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
@@ -97,7 +97,7 @@ export interface BattleSnapshot {
   enemies: (Omit<Enemy, 'def'> & { defId: EnemyDef['id'] })[];
   shots: Shot[];
   mara: MaraState;
-  settlement: { workshopBuilt: boolean; frostResearched: boolean; builtAt: number | null; warehouseBuilt: boolean; warehouseBuiltAt: number | null; workshopUpgraded: boolean; upgradedAt: number | null };
+  settlement: { workshopBuilt: boolean; frostResearched: boolean; builtAt: number | null; warehouseBuilt: boolean; warehouseBuiltAt: number | null; tavernBuilt: boolean; tavernBuiltAt: number | null; tavernSeen: boolean; workshopUpgraded: boolean; upgradedAt: number | null };
   tutorial: { hidden: boolean; seen: number; builtTower: boolean; upgradedTower: boolean; frostSeen: boolean };
 }
 
@@ -162,7 +162,7 @@ export class IdleBattle {
   enemies: Enemy[] = [];
   shots: Shot[] = [];
   events: BattleEvent[] = [];
-  settlement = { workshopBuilt: false, frostResearched: false, builtAt: null as number | null, warehouseBuilt: false, warehouseBuiltAt: null as number | null, workshopUpgraded: false, upgradedAt: null as number | null };
+  settlement = { workshopBuilt: false, frostResearched: false, builtAt: null as number | null, warehouseBuilt: false, warehouseBuiltAt: null as number | null, tavernBuilt: false, tavernBuiltAt: null as number | null, tavernSeen: false, workshopUpgraded: false, upgradedAt: null as number | null };
   tutorial = { hidden: false, seen: 0, builtTower: false, upgradedTower: false, frostSeen: false };
   intermissionRemaining: number = BASE.firstWaveDelay;
   private uid = 1;
@@ -334,10 +334,10 @@ export class IdleBattle {
   /** Only the shipped closed/open layouts cross the save boundary. */
   snapshot(): BattleSnapshot {
     if (JSON.stringify(this.layout) !== JSON.stringify(battleLayout(this.clearing.unlocked, this.plots, this.layout.version as 3 | 4))) {
-      throw new Error('Unsupported battle layout for snapshot version 18.');
+      throw new Error('Unsupported battle layout for snapshot version 19.');
     }
     return {
-      schemaVersion: 18, discovery: this.discovery, dismissedDefeatAttempt: this.dismissedDefeatAttempt, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4, layoutId: this.clearing.unlocked ? 'east32' : 'start28',
+      schemaVersion: 19, discovery: this.discovery, dismissedDefeatAttempt: this.dismissedDefeatAttempt, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4, layoutId: this.clearing.unlocked ? 'east32' : 'start28',
       clearing: { ...this.clearing },
       bossVictories: this.bossVictories, secondBossVictories: this.secondBossVictories, bossChallengeWave: this.bossChallengeWave, bossChallengeRequested: this.bossChallengeRequested, bossCharm: { ...this.bossCharm },
       progress: cloneProgress(this.progress), rewardRemainderUnits: this.rewardRemainderUnits, waveRecipeVersion: this.waveRecipeVersion,
@@ -434,7 +434,7 @@ export class IdleBattle {
         wispArrival: { at: value.settlement.frostResearched && value.highestCleared >= 5 ? value.elapsed : null, met: false },
         mara: { ...value.mara, autoCast: true, effectTowerUid: value.mara.effectRemaining > 0 ? value.mara.targetTowerUid : null } };
     }
-    if (isRecord(value) && (value.schemaVersion === 11 || value.schemaVersion === 12 || value.schemaVersion === 13 || value.schemaVersion === 14 || value.schemaVersion === 15 || value.schemaVersion === 16 || value.schemaVersion === 17 || value.schemaVersion === 18) && validPlotPositions(value.plots)) {
+    if (isRecord(value) && (value.schemaVersion === 11 || value.schemaVersion === 12 || value.schemaVersion === 13 || value.schemaVersion === 14 || value.schemaVersion === 15 || value.schemaVersion === 16 || value.schemaVersion === 17 || value.schemaVersion === 18 || value.schemaVersion === 19) && validPlotPositions(value.plots)) {
       if (value.layoutVersion !== 3 && value.layoutVersion !== 4) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion));
       if (value.schemaVersion === 11) {
@@ -471,6 +471,11 @@ export class IdleBattle {
     if (isRecord(value) && value.schemaVersion === 17) {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 17, model.layout.version as 3 | 4)) return undefined;
       value = { ...value, schemaVersion: 18, dismissedDefeatAttempt: 0 };
+    }
+    if (isRecord(value) && value.schemaVersion === 18) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 18, model.layout.version as 3 | 4)) return undefined;
+      value = { ...value, schemaVersion: 19, settlement: { ...value.settlement,
+        tavernBuilt: false, tavernBuiltAt: null, tavernSeen: false } };
     }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4)) return undefined;
     model.discovery = value.discovery; model.dismissedDefeatAttempt = value.dismissedDefeatAttempt;
@@ -585,6 +590,26 @@ export class IdleBattle {
     return true;
   }
 
+  get tavernUnlocked(): boolean { return this.secondBossVictories > 0; }
+  get recommendedTavernPlot(): GridCell | undefined {
+    if (this.plots.tavern) return this.plots.tavern;
+    for (let y = TAVERN_ZONE.y; y < TAVERN_ZONE.y + TAVERN_ZONE.height - 1; y++)
+      for (let x = TAVERN_ZONE.x; x < TAVERN_ZONE.x + TAVERN_ZONE.width - 2; x++)
+        if (this.canPositionBuilding('tavern', { x, y })) return { x, y };
+    return undefined;
+  }
+  buildTavern(cell: GridCell): boolean {
+    if (this.preparing || this.phase === 'defeat' || !this.tavernUnlocked
+      || this.settlement.tavernBuilt || this.gold < SETTLEMENT.tavernCost) return false;
+    // Placement and purchase form one command; failed placement costs nothing.
+    if (!this.applyBuildingPosition('tavern', cell)) return false;
+    this.gold -= SETTLEMENT.tavernCost;
+    this.settlement.tavernBuilt = true; this.settlement.tavernBuiltAt = this.elapsed;
+    this.settlement.tavernSeen = true;
+    this.events.push({ type: 'tavern', amount: SETTLEMENT.tavernCost });
+    return true;
+  }
+
   get clearingAvailable(): boolean { return this.bossVictories > 0; }
   unlockClearing(): boolean {
     if (this.preparing) return false;
@@ -632,10 +657,14 @@ export class IdleBattle {
     const target = this.towers.find(t => t.uid === this.mara.targetTowerUid);
     return !this.maraIntroductionPending && this.phase === 'wave' && !!target && !this.isCharmed(target.uid) && castMara(this.mara, target);
   }
-  canPositionBuilding(id: 'workshop' | 'warehouse', cell: GridCell): boolean {
+  canPositionBuilding(id: BuildingId, cell: GridCell): boolean {
     return validPlotPositions({ ...this.plots, [id]: cell });
   }
-  positionBuilding(id: 'workshop' | 'warehouse', cell: GridCell): boolean {
+  positionBuilding(id: BuildingId, cell: GridCell): boolean {
+    if (id === 'tavern' && !this.settlement.tavernBuilt) return false;
+    return this.applyBuildingPosition(id, cell);
+  }
+  private applyBuildingPosition(id: BuildingId, cell: GridCell): boolean {
     if (this.preparing) return false;
     if (!this.canPositionBuilding(id, cell)) return false;
     const plots = { ...this.plots, [id]: { ...cell } }, layout = battleLayout(this.clearing.unlocked, plots, this.layout.version as 3 | 4);
@@ -1058,10 +1087,10 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 = 0, layoutVersion: 1 | 2 | 3 | 4 = legacy ? 2 : LAYOUT_VERSION,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 = 0, layoutVersion: 1 | 2 | 3 | 4 = legacy ? 2 : LAYOUT_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
-  if (!isRecord(value) || value.schemaVersion !== (legacy || 18) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
+  if (!isRecord(value) || value.schemaVersion !== (legacy || 19) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
     || value.layoutVersion !== layoutVersion || value.layoutId !== (layout.bounds.columns === 32 ? 'east32' : 'start28')) return false;
   if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10]).includes(value.waveRecipeVersion as number))) return false;
   if ((!legacy || legacy >= 9) && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
@@ -1073,8 +1102,8 @@ function validSnapshot(
     if (unlocked ? !numberIn(value.wispArrival.at, 0, value.elapsed as number) : value.wispArrival.at !== null || value.wispArrival.met) return false;
   }
   if (!legacy && layoutVersion === 3 && (value.waveRecipeVersion as number) >= 8) return false;
-  if ((!legacy || legacy === 17) && (!DISCOVERY_STAGES.includes(value.discovery as DiscoveryStage) || legacy === 17 && value.discovery === 'mara-ready')) return false;
-  if (!legacy && !integerIn(value.dismissedDefeatAttempt, 0, Number(value.attemptId))) return false;
+  if ((!legacy || legacy >= 17) && (!DISCOVERY_STAGES.includes(value.discovery as DiscoveryStage) || legacy === 17 && value.discovery === 'mara-ready')) return false;
+  if ((!legacy || legacy >= 18) && !integerIn(value.dismissedDefeatAttempt, 0, Number(value.attemptId))) return false;
   const hasIntro = !legacy || legacy >= 15;
   if (hasIntro && (!isRecord(value.introduction)
     || !(legacy === 15 ? ['welcome', 'build', 'ready', 'practice', 'auto', 'done'] : ['welcome', 'build', 'ready', 'combat', 'upgrade', 'workshop', 'research', 'frost', 'observe', 'done']).includes(value.introduction.stage as string)
@@ -1091,9 +1120,9 @@ function validSnapshot(
   if (legacy === 15 && intro && ['practice', 'auto'].includes(intro.stage) && (value.wave === 0 || !isRecord(value.mara) || value.mara.autoCast !== false)) return false;
   if ((!legacy || legacy >= 16) && intro && ((intro.halted && (preparing || ['combat', 'done'].includes(intro.stage)))
     || (!preparing && intro.stage !== 'done' && value.wave === 0))) return false;
-  if ((!legacy || legacy === 17) && ['mara-wait','mara-ready','mara-start','mara-effect','mara-controls','cannon','warehouse'].includes(value.discovery as string)
+  if ((!legacy || legacy >= 17) && ['mara-wait','mara-ready','mara-start','mara-effect','mara-controls','cannon','warehouse'].includes(value.discovery as string)
     && (intro?.stage !== 'done' || !isRecord(value.wispArrival) || value.wispArrival.met !== true)) return false;
-  if ((!legacy || legacy === 17) && value.discovery === 'mara-start' && (!isRecord(value.mara) || !(Number(value.mara.effectRemaining) > 0) || value.phase !== 'wave')) return false;
+  if ((!legacy || legacy >= 17) && value.discovery === 'mara-start' && (!isRecord(value.mara) || !(Number(value.mara.effectRemaining) > 0) || value.phase !== 'wave')) return false;
   const original = legacy === 2 || legacy === 3;
   if (!original) {
     if (!isRecord(value.settlement) || typeof value.settlement.workshopBuilt !== 'boolean'
@@ -1124,6 +1153,14 @@ function validSnapshot(
       || (value.bossChallengeWave !== 15 && value.bossChallengeWave !== 25)
       || (value.bossChallengeRequested && value.bossChallengeWave === 25 && !(value.bossVictories as number))) return false;
   }
+  if (!legacy) {
+    const settlement = value.settlement as BattleSnapshot['settlement'];
+    if (typeof settlement.tavernBuilt !== 'boolean' || typeof settlement.tavernSeen !== 'boolean'
+      || settlement.tavernSeen && !(value.secondBossVictories as number)
+      || settlement.tavernBuilt !== Boolean((value.plots as PlotPositions).tavern)
+      || (settlement.tavernBuilt ? !(value.secondBossVictories as number)
+        || !numberIn(settlement.tavernBuiltAt, 0, value.elapsed as number) : settlement.tavernBuiltAt !== null)) return false;
+  } else if (modern && (value.plots as PlotPositions).tavern !== undefined) return false;
   const levelLimit = (modern || legacy === 10) && (value.settlement as BattleSnapshot['settlement']).workshopUpgraded ? 20 : !original && (value.settlement as BattleSnapshot['settlement']).frostResearched ? 6 : 3;
   if (!integerIn(value.goldRemainderUnits, 0, 999) || (value.mode !== 'advance' && value.mode !== 'farm')
     || !integerIn(value.highestCleared, 0, Number.MAX_SAFE_INTEGER - 1) || !integerIn(value.attemptId)

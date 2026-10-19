@@ -1,6 +1,6 @@
 # Akt II — Gestaltungs- und Technikentscheidungen
 
-Planungsstand: 19.10.2026. Ergänzung zum ursprünglichen Akt-I-Auftrag; keine Umsetzung beauftragt. Checklisten, Abhängigkeiten und Freigaben stehen ausschließlich in [ROADMAP.md, P6](../ROADMAP.md#akt-ii). Dieser Text hält Entscheidungen und überprüfte Ausgangspunkte fest, keine zweite Fortschrittsliste.
+Stand: 19.10.2026. Ergänzung zum ursprünglichen Akt-I-Auftrag. Anschließend ausdrücklich beauftragt: B15a nur Taverne ohne Ilyra sowie Werkstatt-II-Grafik und Gebäudenamen; übrige Inhalte bleiben geplant. Checklisten, Abhängigkeiten und Freigaben stehen ausschließlich in [ROADMAP.md, P6](../ROADMAP.md#akt-ii). Dieser Text hält Entscheidungen und überprüfte Ausgangspunkte fest, keine zweite Fortschrittsliste.
 
 ## Bestand statt unnötiger Neuproduktion
 
@@ -17,11 +17,17 @@ Die erste Wahl sind **Sturmlicht und Glutwerfer**: Ketten und Brand erweitern di
 
 ## Taverne und Figuren
 
-Nach dem tatsächlich besiegten Boss von Welle 25 wird die Taverne im Siedlungsmenü angeboten. Der Bau enthält Ilyras erste Rekrutierung: ein nachvollziehbarer Kauf statt zweimal sparen. Keine Zufallsauswahl, Seltenheiten, Ausrüstung oder Rekrutierungstimer. Die Taverne steht auf einem selbst gewählten gültigen Siedlungsplatz. Bei Platzmangel wird die Siedlung lokal erweitert; vorhandene Gebäude bleiben stehen, und die Ostfront ist keine Voraussetzung.
+Nach dem tatsächlich besiegten Boss von Welle 25 wird die Taverne im Siedlungsmenü angeboten, mit „Neu“-Markierung an Tab und Baukarte. Preis: 1.200 Gold, entsprechend der einmaligen Bossbelohnung. B15a liefert auf ausdrücklichen Nutzerwunsch nur das Gebäude: optionaler Treffpunkt, noch ohne Gäste oder Kampfbonus; der Kaufdialog sagt das offen. Ilyras erste Rekrutierung folgt mit B15b ohne zweite Goldzahlung für bestehende Tavernenbesitzer. Keine Zufallsauswahl, Seltenheiten, Ausrüstung oder Rekrutierungstimer. Die Taverne steht auf einem selbst gewählten gültigen Siedlungsplatz. Bei Platzmangel wird die Siedlung lokal erweitert; vorhandene Gebäude bleiben stehen, und die Ostfront ist keine Voraussetzung.
 
 Ilyra ergänzt Mara durch direkten Flächenschaden, besonders gegen Flieger. Eine kurze Vorstellung und eine sichtbar ausgelöste Sternensalve erklären ihren Nutzen. Sie bewegt sich unabhängig von Türmen; Zielgebiet und Wirkungsradius müssen vom gewählten Standort aus verständlich sein. Manuelle Anwendung zuerst; eine ausdrücklich wählbare Automatik wirkt erst bei geeigneten Gegnern. Kein unbemerkter Zauber vor der Vorstellung oder im leeren Wellenzwischenraum.
 
-Die Fähigkeit wächst mit nachvollziehbarem Verteidigungsfortschritt, ohne ein neues Heldenlevelsystem. Die konkrete Skalierung wird in B15 festgelegt und mit normalen Turmkäufen verglichen; alte Kampagnen-Schadenszahlen sind kein Idle-Balanceziel. Temporäre Mara-Verstärkung darf Ilyra nicht zirkulär hochskalieren. Wisp bleibt Wirtschaftsfigur. Für Akt II reichen Mara und Ilyra als zwei Kampffiguren; Runa wäre später eine austauschbare Alternative, nicht automatisch eine dritte Pflichtfigur.
+Die Fähigkeit wächst mit nachvollziehbarem Verteidigungsfortschritt, ohne ein neues Heldenlevelsystem. Die konkrete Skalierung wird in B15b festgelegt und mit normalen Turmkäufen verglichen; alte Kampagnen-Schadenszahlen sind kein Idle-Balanceziel. Temporäre Mara-Verstärkung darf Ilyra nicht zirkulär hochskalieren. Wisp bleibt Wirtschaftsfigur. Für Akt II reichen Mara und Ilyra als zwei Kampffiguren; Runa wäre später eine austauschbare Alternative, nicht automatisch eine dritte Pflichtfigur.
+
+## Forschungsfreischaltungen und sichtbarer Besitz
+
+Neue Türme werden in der vorhandenen Werkstatt bewusst für Gold erforscht. Fortschrittsbedingungen machen die Forschung verfügbar, sie schenken nicht automatisch den Turmtyp: Sturmlicht nach Ilyras Einführung ungefähr ab Welle 28, Glutwerfer ungefähr Welle 33–35. Preise mit dem normalen Einkommen abstimmen; Forschung und anschließender Turmbau sind getrennte, klar beschriftete Käufe.
+
+In B16 erhalten erforschte Technologien kleine passende Icons mit Häkchen in der Werkstatt. Antippen zeigt Name und Wirkung; gesperrte Einträge sind gedimmt und nennen ihre Voraussetzung. Vorhandene Frost-/Turmforschung einbeziehen, B20 ergänzt Glutwerfer. Keine zusätzliche permanente HUD-Leiste. Diese Icons und Turmfreischaltungen sind vorgemerkt, nicht Teil der Tavernenimplementierung.
 
 ## Große Osthälfte mit gemeinsamem Kern
 
@@ -52,7 +58,7 @@ Ein Goldkonto, ein Kern, eine sichtbare Wellenzahl. Ostgegner bekommen andere Zu
 
 ## Technische Leitplanken
 
-Ausgangspunkt sind Snapshot 18, Layout 4 und Kampfregeln 10. Die neue Umsetzung braucht passende Versionen und Migrationen; diese Planungsdatei verändert keine davon. Idle hat derzeit einen gemeinsamen Weg und lokale Gegner-Wegstrecken. Pro Gegner/Spawn muss eine Route gespeichert werden; Zielpriorität richtet sich nach der tatsächlichen verbleibenden Strecke zum Kern. Die ältere klassische Simulation kann als Referenz dienen, wird aber nicht als ganzes zweites Kampfsystem importiert.
+Ausgangspunkt vor B15a waren Snapshot 18, Layout 4 und Kampfregeln 10. B15a ergänzt Snapshot 19 mit optionalem Tavernenplatz und Besitz; Layout 4 und Kampfregeln 10 bleiben erhalten. Weitere Mechaniken benötigen passende Versionen und Migrationen. Idle hat derzeit einen gemeinsamen Weg und lokale Gegner-Wegstrecken. Pro Gegner/Spawn muss eine Route gespeichert werden; Zielpriorität richtet sich nach der tatsächlichen verbleibenden Strecke zum Kern. Die ältere klassische Simulation kann als Referenz dienen, wird aber nicht als ganzes zweites Kampfsystem importiert.
 
 Aktive Ketten, Brände und Figurenfähigkeiten müssen bei Save/Reload, Turmverkauf und letzten Treffern korrekt bleiben. Pro Gegner genau eine Killbelohnung, pro Welle genau eine Abschlussbelohnung. Taverne/Rekrutierung und Frontzugang werden atomar gespeichert; alte laufende Westwellen werden nicht nachträglich um Ostspawns ergänzt.
 
@@ -62,7 +68,7 @@ Die Prüfung bleibt auf geänderte Risiken begrenzt: ein geeigneter Modellverlau
 
 ## Darstellung und Assetbedarf
 
-[ART_DIRECTION.md](ART_DIRECTION.md) und die vorhandenen Spielgrafiken bleiben verbindliche Referenzen. Sturmlicht/Glutwerfer brauchen vorhandene Atlanten und passende Effekte, keine neu generierten Turmbilder. Ilyra braucht eine saubere Aufbereitung ihres Bestandsbildes. Für die Taverne ist voraussichtlich ein neues Gebäudeasset nötig: Perspektive, Grundfläche, Eingang, Pixelmaßstab und Schatten vor der späteren Generierung festlegen; Gebäude auf transparenter Fläche, keine mitgemalte Benutzeroberfläche. Frühere ausgeschöpfte Imagegen-Budgets gelten nicht als neue Assetfreigabe. Jetzt werden keine Bilder erzeugt.
+[ART_DIRECTION.md](ART_DIRECTION.md) und die vorhandenen Spielgrafiken bleiben verbindliche Referenzen. Sturmlicht/Glutwerfer brauchen vorhandene Atlanten und passende Effekte, keine neu generierten Turmbilder. Ilyra braucht eine saubere Aufbereitung ihres Bestandsbildes. B15a nutzt je ein ausdrücklich benötigtes Imagegen-Gebäude für Taverne und Werkstatt II: transparente 128er Frames, Fußpunkt (64, 112), Stilreferenz Werkstatt I und tatsächliches Spiel. Werkstatt II ersetzt den gezeichneten Anbau vollständig. Namen für Werkstatt I/II, Lager I und Taverne werden im Spiel gerendert und erscheinen erst nach dem Aufbau. Frühere ausgeschöpfte Bildbudgets gelten nicht als Freigabe für weitere Serien.
 
 Neue Gebäude nutzen freie Siedlungsplätze, die bestehende kurze Bauanimation und eine sofort sichtbare fertige Ansicht. Ankündigungen dürfen weder die Bauanimation noch Kämpfe verdecken. Drei Grafikstufen bedeuten keine Pflicht zu drei weiteren Bildgenerationen. Für Boss 40 erst den vorhandenen Gegnerbestand prüfen; falls er visuell nicht trägt, einen einzelnen konkreten Bedarf benennen statt vorsorglich neue Serien zu produzieren.
 

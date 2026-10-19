@@ -4,6 +4,25 @@
 
 [▶ Im Browser spielen](https://emfau88.github.io/TD/idle-bastion/) · [Frische Probe starten](https://emfau88.github.io/TD/idle-bastion/?fresh=1)
 
+**Neu – Siedlung nach Boss 25:** Nach dem tatsächlichen Sieg wird die **Taverne für 1.200 Gold** unter Siedlung freigeschaltet. Frei platzierbar und dauerhaft gespeichert; vorerst optionaler Treffpunkt **ohne Ilyra oder Kampfbonus**. Die erste Rekrutierung folgt später ohne weitere Goldkosten. Werkstatt II hat ein eigenes Imagegen-Gebäude erhalten; Werkstatt I/II, Lager und Taverne sind direkt auf der Karte beschriftet. [Prüfumfang und Nachweise](artifacts/idle-bastion/acceptance/b15/REPORT.md) · [Aktuelle Roadmap](experiments/idle-bastion/ROADMAP.md#akt-ii).
+
+<details open>
+<summary>Vier aktuelle Spielaufnahmen – Desktop und Hochkant</summary>
+
+Siedlungsübersicht mit Werkstatt II, Lager und neuer Taverne:
+
+![Aktuelle Siedlung auf dem Desktop](artifacts/idle-bastion/acceptance/b15/desktop-built.png)
+
+Der Aufbau bleibt nach dem direkten Kartenklick sichtbar:
+
+![Bauanimation der Taverne](artifacts/idle-bastion/acceptance/b15/desktop-construction.png)
+
+Hochkant: Gebäudeansicht und ehrliche Kaufbeschreibung. Browseransicht 430 × 932; kein Test auf einem physischen Smartphone.
+
+<img src="artifacts/idle-bastion/acceptance/b15/mobile-built.png" alt="Siedlung mit Gebäudenamen in Hochkant" width="300"> <img src="artifacts/idle-bastion/acceptance/b15/mobile-offer.png" alt="Tavernen-Baumenü mit Preis und aktuellem Funktionsumfang" width="300">
+
+</details>
+
 **Geführter Einstieg:** Ein mitwandernder Pfeil zeigt die echten Menüpunkte: **Siedlung → Werkstatt → Kartenplatz**; entsprechend Türme, Upgrade und Forschung. Nach Level 2 und der ersten geschafften Welle gibt es den einmaligen kostenlosen Werkstatt-Bausatz. Kurze Hinweise und Lernpausen lassen Zeit zum Orientieren; die Bauanimation bleibt sichtbar. [Klickfolge, Prüfung und Aufnahmen](artifacts/idle-bastion/acceptance/onboarding/menu-guide/REPORT.md).
 
 **Nach dem Frostturm:** Wisp läuft nach Welle 5 vom eigenen Kern an und stellt sich in Ruhe vor. Erst nach ihrer Ankündigung zeigt Mara ihren echten Zauber am Turm mit Ring und kompakter, schließbarer Restzeitanzeige. Pfeile führen anschließend zur optionalen Steinschleuder und später über **Siedlung → Lager** zur Offline-Vorsorge. Beides darf auf später verschoben werden. [Ablauf, Prüfung und neue Aufnahmen](artifacts/idle-bastion/acceptance/onboarding/followup/REPORT.md).

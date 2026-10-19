@@ -96,7 +96,10 @@ test('Wisp has one persisted arrival and greeting, independent of his immediate 
 
 test('new construction and chosen building positions survive the real IndexedDB transaction boundary', async () => {
   const store = await openBattleStore(new IDBFactory(), 'redesign');
+  // This construction fixture starts after deployment, outside the first-tower lesson.
+  await store.save(new IdleBattle().snapshot(), false, 0);
   const session = await BattleSession.open(store, { now: () => 10000, ownerId: 'redesign', locks: null });
+  await session.resumeActive();
   assert.ok(await session.command(b => b.build('cell-8-3')));
   const snap = session.battle.snapshot(); const loaded = await store.load(); assert.equal(loaded.kind, 'valid');
   if (loaded.kind === 'valid') assert.deepEqual(loaded.save.battle, snap);

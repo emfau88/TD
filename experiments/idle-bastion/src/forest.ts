@@ -2,13 +2,12 @@
  * All decoration comes from the same pure world used by companion navigation.
  */
 import type Phaser from 'phaser';
-import { drawWorkshopAnnex } from './workshop-annex';
 import { clearWaterBackdrop, waterTileSource } from '../../../reference/src/terrain';
 import { KEYS, SCALE, loopFrame } from './art';
 import { getForestWorld } from './forest-world';
 import { cellCenter, createIdleLayout, type GridCell, type IdleLayout } from './layout';
 
-export interface ForestView { update(elapsed: number, built: boolean, builtAt: number | null, warehouseBuilt: boolean, warehouseBuiltAt: number | null, warehouseUnlocked: boolean, workshopUpgraded?: boolean, upgradedAt?: number | null): void; destroy(): void }
+export interface ForestView { update(elapsed: number, built: boolean, builtAt: number | null, warehouseBuilt: boolean, warehouseBuiltAt: number | null, warehouseUnlocked: boolean, workshopUpgraded?: boolean, upgradedAt?: number | null, tavernBuilt?: boolean, tavernBuiltAt?: number | null): void; destroy(): void }
 const cellKey = ({ x, y }: GridCell) => `${x},${y}`;
 /** Source quadrants are chosen from occupied N/E/S/W neighbours. */
 export function roadSource(position: GridCell, road: ReadonlySet<string>): readonly [number, number] {
@@ -107,8 +106,6 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   const workshopY = (workshop.blockingBody.y + workshop.blockingBody.height) * size;
   const building = track(scene.add.image(workshopX, workshopY, KEYS.workshop)
     .setOrigin(0.5, 112/128).setDepth(workshopY + 1000));
-  const annex = track(scene.add.graphics().setDepth(workshopY + 1001));
-  drawWorkshopAnnex(annex, workshopX, workshopY);
   const dust = track(scene.add.graphics().setDepth(workshopY + 1002));
   const warehouse = layout.plots.find(plot => plot.id === 'warehouse')!;
   const warehouseX = (warehouse.footprint.x + warehouse.footprint.width / 2) * size;
@@ -116,25 +113,43 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   const warehouseBuilding = track(scene.add.image(warehouseX, warehouseY, KEYS.warehouse)
     .setOrigin(0.5, 80/96).setDepth(warehouseY + 1000));
   const warehouseDust = track(scene.add.graphics().setDepth(warehouseY + 1002));
+  const tavern = layout.plots.find(plot => plot.id === 'tavern');
+  const tavernX = tavern ? (tavern.footprint.x + 1.5) * size : 0;
+  const tavernY = tavern ? (tavern.blockingBody.y + 1) * size : 0;
+  const tavernBuilding = tavern ? track(scene.add.image(tavernX, tavernY, KEYS.tavern)
+    .setOrigin(0.5, 112/128).setDepth(tavernY + 1000)) : undefined;
+  const tavernDust = tavern ? track(scene.add.graphics().setDepth(tavernY + 1002)) : undefined;
+  const buildingLabel = (x: number, y: number, name: string) => track(scene.add.text(x, y + 11, name, {
+    fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2,
+    color: '#fff0cb', stroke: '#27231d', strokeThickness: 3,
+  }).setOrigin(0.5).setDepth(5000).setVisible(false));
+  const workshopLabel = buildingLabel(workshopX, workshopY, 'Werkstatt I');
+  const warehouseLabel = buildingLabel(warehouseX, warehouseY, 'Lager I');
+  const tavernLabel = tavern ? buildingLabel(tavernX, tavernY, 'Taverne') : undefined;
   const goal = cellCenter(layout, layout.core);
   track(scene.add.ellipse(goal.x, goal.y + 5, 37, 16, 0xffd79b, 0.13).setDepth(900));
   track(scene.add.image(goal.x, goal.y + 3, KEYS.core, 2).setScale(0.65).setOrigin(0.5, 0.78).setDepth(goal.y + 1000));
   const coreWeapon = track(scene.add.image(goal.x, goal.y - 39, KEYS.coreWeapon, 0).setScale(0.7).setDepth(goal.y + 1001));
   const entrance = cellCenter(layout, layout.road.cells[0]);
   track(scene.add.text(8, entrance.y - 15, '➜', { fontSize: '24px', color: '#35533b' }).setDepth(10));
-  let lastVisualTime = scene.time.now, workshopAge = Infinity, warehouseAge = Infinity;
-  let shownWorkshopBuild: number | null | undefined, shownWarehouseBuild: number | null | undefined;
+  let lastVisualTime = scene.time.now, workshopAge = Infinity, warehouseAge = Infinity, tavernAge = Infinity;
+  let shownWorkshopBuild: number | null | undefined, shownWarehouseBuild: number | null | undefined, shownTavernBuild: number | null | undefined;
   return {
-    update(elapsed, built, builtAt, warehouseBuilt, warehouseBuiltAt, _warehouseUnlocked, workshopUpgraded = false, upgradedAt = null) {
-      annex.setVisible(workshopUpgraded);
+    update(elapsed, built, builtAt, warehouseBuilt, warehouseBuiltAt, _warehouseUnlocked, workshopUpgraded = false, upgradedAt = null, tavernBuilt = false, tavernBuiltAt = null) {
+      const workshopTexture = workshopUpgraded ? KEYS.workshopUpgraded : KEYS.workshop;
+      if (building.texture.key !== workshopTexture) building.setTexture(workshopTexture);
+      workshopLabel.setText(workshopUpgraded ? 'Werkstatt II' : 'Werkstatt I');
       pond?.setFrame(loopFrame(elapsed, 10)); coreWeapon.setFrame(loopFrame(elapsed, 10));
       building.setVisible(built);
       warehouseBuilding.setVisible(warehouseBuilt);
+      tavernBuilding?.setVisible(tavernBuilt);
       // Construction is presentation: learning pauses freeze combat, not the dust.
       const visualDelta = Math.max(0, (scene.time.now - lastVisualTime) / 1000); lastVisualTime = scene.time.now;
       const lastBuild = workshopUpgraded ? upgradedAt : builtAt;
       workshopAge = shownWorkshopBuild === lastBuild ? workshopAge + visualDelta : lastBuild === null ? Infinity : elapsed - lastBuild;
       warehouseAge = shownWarehouseBuild === warehouseBuiltAt ? warehouseAge + visualDelta : warehouseBuiltAt === null ? Infinity : elapsed - warehouseBuiltAt;
+      tavernAge = shownTavernBuild === tavernBuiltAt ? tavernAge + visualDelta : tavernBuiltAt === null ? Infinity : elapsed - tavernBuiltAt;
+      shownTavernBuild = tavernBuiltAt;
       shownWorkshopBuild = lastBuild; shownWarehouseBuild = warehouseBuiltAt;
       const construct = (g: Phaser.GameObjects.Graphics, image: Phaser.GameObjects.Image, x: number, y: number, width: number, age: number, exists: boolean) => {
         g.clear(); image.setAlpha(1);
@@ -154,7 +169,12 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
       };
       construct(warehouseDust, warehouseBuilding, warehouseX, warehouseY, 64,
         warehouseAge, warehouseBuilt);
+      if (tavernDust && tavernBuilding) construct(tavernDust, tavernBuilding, tavernX, tavernY, 100, tavernAge, tavernBuilt);
       construct(dust, building, workshopX, workshopY, 95, workshopAge, built);
+      // Names appear after construction; no permanent panels or empty-site labels.
+      workshopLabel.setVisible(built && workshopAge > 1.6);
+      warehouseLabel.setVisible(warehouseBuilt && warehouseAge > 1.6);
+      tavernLabel?.setVisible(tavernBuilt && tavernAge > 1.6);
     },
     destroy() { for (const object of objects) object.destroy(); for (const key of textureKeys) scene.textures.remove(key); },
   };

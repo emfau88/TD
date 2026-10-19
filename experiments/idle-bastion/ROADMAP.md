@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 19.10.2026 · **B01–B13 und beauftragte Nachbesserungen veröffentlicht; B14/G2 offen. Akt II als Plan B15–B22 ergänzt, noch keine Umsetzungsfreigabe. B12d bleibt separat.**
+Stand: 19.10.2026 · **B01–B13 und beauftragte Nachbesserungen veröffentlicht; B14/G2 offen. Akt II: B15a (Taverne ohne Ilyra) beauftragt und lokal umgesetzt; B15b–B22 bleiben geplant. B12d bleibt separat.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -14,9 +14,9 @@ Neu: [Akt II — Pakete B15–B22, Bestand und Parkliste](#akt-ii) · [Kompakte 
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
-| Aktueller Auftrag | Roadmap um Akt II, vorhandene Türme und Figuren erweitern; Kern/HQ und verbündete Einheiten als Zukunftsideen vormerken. Ausschließlich Dokumentation |
+| Aktueller Auftrag | B15a: Taverne ohne Ilyra; zusätzlich echtes Werkstatt-II-Asset und Gebäudenamen. Freischaltungen und Forschungsicons im Plan ergänzen; kompakte Prüfung, Commit/Push/Pages |
 | Letzte veröffentlichte Spielfassung | Hinweise, Figurenauftritte, Bosstanz und klare Pixelziffern · `c164a11`; öffentliche Dateien abgeglichen |
-| Nächster Schritt | Akt-II-Plan besprechen; erstes neues Inhaltspaket wäre B15 nach ausdrücklichem Startauftrag. B14/G2 und B12d bleiben getrennt offen; kein automatischer Umsetzungsstart |
+| Nächster Schritt | B15a veröffentlichen. Danach B15b: Ilyra erst nach weiterem Startauftrag; B16-Forschung und Icons ebenfalls nur geplant. B14/G2 und B12d bleiben getrennt offen |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -604,7 +604,7 @@ Für jedes abgeschlossene Paket im Bericht festhalten:
 
 ## P6 — Akt II: Taverne, neue Verteidigung und eine echte Ostfront
 
-**Planung vom 19.10.2026, keine Umsetzungsfreigabe.** Der Nutzer beauftragt die Erweiterung dieser Roadmap, einschließlich bisher ungenutzter Türme. Kern/HQ und verbündete Einheiten werden ausdrücklich nur als spätere Ideen notiert. B14, G2 und die Gegnerproduktion B12d werden durch diesen Plan weder abgeschlossen noch automatisch gestartet.
+**Planung vom 19.10.2026; anschließend B15a ausdrücklich beauftragt, ohne Ilyra.** Die ursprüngliche Roadmap-Erweiterung einschließlich bisher ungenutzter Türme bleibt erhalten; nur der unten abgegrenzte Teil ist zur Umsetzung freigegeben. Kern/HQ und verbündete Einheiten werden ausdrücklich nur als spätere Ideen notiert. B14, G2 und die Gegnerproduktion B12d werden durch diesen Plan weder abgeschlossen noch automatisch gestartet.
 
 **Ziel:** Nach dem bisherigen Ausbau folgen ungefähr zwischen Welle 26 und 40 neue Entscheidungen: Ilyra rekrutieren, weitere Turmrollen kennenlernen, die Ostverteidigung vorbereiten und zwei Fronten meistern. Das ist ein überschaubarer zweiter Akt, kein Versprechen einer fertigen Endlosbalance. Bestehender Inhalt wird erhalten; insbesondere tritt der Leerenfalter bereits ab Welle 28 auf.
 
@@ -633,8 +633,8 @@ M = abgegrenzter Funktionsausbau, L = mehrere zusammenhängende Systeme. Das sin
 
 | Paket | Ergebnis | Größe | Abhängigkeit | Status |
 | --- | --- | --- | --- | --- |
-| B15 | Taverne und verständlich eingeführte Ilyra | M–L, zwei Teilschritte | Bestehender Akt I; ausdrücklicher Startauftrag | Geplant |
-| B16 | Sturmlicht als neue taktische Turmrolle | M | B15 | Geplant |
+| B15 | Taverne und verständlich eingeführte Ilyra | M–L, zwei Teilschritte | Bestehender Akt I | Teilweise: B15a lokal umgesetzt; B15b offen |
+| B16 | Sturmlicht als neue taktische Turmrolle | M | B15b / Ilyras Einführung | Geplant |
 | B17 | Große Ostkarte und passende Kamera | M | B15; gemeinsam mit B18 vorbereiten | Geplant, bis B19 nur Entwicklung |
 | B18 | Zwei Kampfrouten, sichere Saves und Farming | L, zwei Teilschritte | B17; relevante offene Speicherrisiken aus B14 klären | Geplant |
 | B19 | Vorbereitbarer, bewusst geöffneter Ostangriff | M | B15–B18 | Geplant; erste öffentliche Ostfront |
@@ -646,16 +646,34 @@ B15/B16 können eigenständig spielbar veröffentlicht werden. B17/B18 dürfen i
 
 ### B15 — Taverne und Ilyras erste Rekrutierung
 
-**Ergebnis:** Die Siedlung bekommt einen neuen Zweck, der Spieler lernt genau eine neue Kampffigur kennen. **Teilschritte:** zuerst Figur/Fähigkeit intern, danach Gebäude, Kauf und Einführung als vollständiger Spielerablauf.
+**Gesamtziel bleibt:** Die Siedlung bekommt einen neuen Zweck und eine verständlich eingeführte Kampffigur. **Geänderte Reihenfolge auf Nutzerwunsch:** zuerst B15a nur Taverne; danach separat B15b Ilyra. Das Gesamtpaket ist erst mit der Rekrutierung fertig.
+
+#### B15a — Gebäude, noch ohne Rekrutierung
+
+Am 19.10.2026 ausdrücklich beauftragt; anschließend um Werkstatt-II-Asset und Gebäudebeschriftungen ergänzt.
+
+- [x] Tatsächlicher Sieg gegen Boss 25 schaltet Taverne frei; ein hoher Rekord allein genügt nicht. Baupreis 1.200 Gold, entsprechend der einmaligen Bossbelohnung.
+- [x] Neue Option an Siedlung/Baukarte markieren und nach Öffnen speichern. Vor Boss 25 gesperrt; keine neue Pflichtaufgabe oder Tutorial-Unterbrechung.
+- [x] Frei platzieren und bei Pause versetzen. Eine zusätzliche südliche Hofreihe nur für die Taverne ermöglicht bei allen bisherigen legalen Gebäudeanordnungen Platz, ohne alte Gebäude zu verschieben.
+- [x] Ein Tipp baut; Menü schließt, kurze Bauanimation sichtbar. Kein leerer Platzhalter vor dem Bau.
+- [x] Ehrliche Kaufbeschreibung: derzeit Treffpunkt, noch keine Gäste, Rekrutierung oder Kampfboni. Die spätere erste Rekrutierung ist im Bau enthalten, kein zweiter Goldkauf.
+- [x] Ein Tavernenasset und ein separates Werkstatt-II-Asset mit Imagegen erzeugen; Werkstatt II ersetzt den gezeichneten Anbau. Gebaute Werkstatt I/II, Lager I und Taverne dezent auf der Karte beschriften; Namen erst nach Bauanimation zeigen.
+- [x] Schema 19: Altsaves aus 18 behalten Gebäude, Figuren, Gold und Fortschritt; Bau/Gold/Position atomar speichern. Kein kostenloser Tavernenbesitz durch Migration, kein Eingriff in Kampfregeln 10.
+- [x] Fünf gezielte Tavernenprüfungen und vier bestehende Speicher-/Bauprüfungen bestanden; Produktionsbuild bestanden. Kurzer Browsercheck auf Desktop und Hochkant mit direktem Bau und Reload; keine zusätzliche Vollabnahme.
+- [ ] Commit, Push und öffentliche Pages-Fassung bestätigen; [Bericht und Aufnahmen](../../artifacts/idle-bastion/acceptance/b15/REPORT.md).
+
+#### B15b — Ilyra, separat offen
+
+Die folgenden ursprünglichen Anforderungen bleiben erhalten; Figurenimplementierung ist mit B15a ausdrücklich noch nicht beauftragt.
 
 - [ ] Ilyras vorhandene Rohgrafik vermessen, passende Posen ausschneiden und Maßstab, Fußpunkt sowie Bewegungsrichtung an Mara ausrichten. Keine neue Figurenserie produzieren.
 - [ ] Gezielte Sternensalve mit sichtbarem Zielgebiet, verständlicher Reichweite, Abklingzeit und Flug-/Treffereffekt einbauen. Gegen Flieger besonders wirksam; Stärke mit dem Verteidigungsfortschritt abstimmen, ohne eigenes Heldenlevelsystem.
 - [ ] Figur darf sich bewegen und einen Bereich unterstützen, ohne dauerhaft an einem Turm zu kleben. Wirkungszentrum/Zielwahl eindeutig erklären; keine versehentlichen doppelten Killbelohnungen oder zirkulären Verstärkungen mit Mara.
-- [ ] Taverne nach dem tatsächlich besiegten Boss von Welle 25 anbieten. Der erste Bau enthält eine garantierte Rekrutierung von Ilyra; keine zweite Sparhürde, Zufallsauswahl oder Wartezeit.
-- [ ] Frei wählbaren gültigen Bauplatz in der Siedlung ermöglichen. Falls die Fläche zu klein ist, lokal erweitern; bestehende Werkstatt/Lager nicht versetzen und Taverne nicht von einer schon geöffneten Ostfront abhängig machen.
+- [ ] Ilyras garantierte erste Rekrutierung an die bereits gebaute Taverne anschließen; für Besitzer aus B15a ohne weitere Goldkosten. Kein automatischer Auftritt ohne bewusste Einführung, keine Zufallsauswahl oder Wartezeit.
+- [x] Gebäudeplatzierung und lokale Flächenreserve in B15a umgesetzt, unabhängig von einer geöffneten Ostfront; vorhandene Gebäude bleiben stehen.
 - [ ] Kurzer Auftritt, Name, Rolle und eine echte Anwendung; Hinweise an realen Menüpunkten. Bauanimation und Ankunft sichtbar lassen, mobile Kampfzone freihalten.
 - [ ] Bau, Kosten und Rekrutierung atomar speichern. Altsaves erhalten keine ungefragte Rekrutierung; Wisp bleibt Wirtschaftsbegleiter, zwei Kampffiguren reichen vorerst.
-- [ ] Genau ein passendes Tavernenasset bei Umsetzung bedarfsgerecht planen, vorhandene Gebäude als Stilreferenz verwenden. Frühere Bildbudgets nicht als neue Freigabe behandeln.
+- [x] Passendes Tavernenasset in B15a erstellt; vorhandene Werkstatt und Spielansicht als Stilreferenz, Original/Prompt/Aufbereitung dokumentiert.
 - [ ] Kompakt prüfen: Kauf/Rekrutierung samt Reload, eine Boden-/Fliegeranwendung, keine doppelte Belohnung und kurze Hochkantansicht.
 
 **Fertig, wenn:** Ein Spieler baut die Taverne, versteht Ilyras Nutzen und kann sie wirksam einsetzen; ein Reload verliert oder dupliziert weder Gold noch Figur.
@@ -667,7 +685,8 @@ B15/B16 können eigenständig spielbar veröffentlicht werden. B17/B18 dürfen i
 - [ ] Originalgrafiken von Turm 05 samt drei Ausbaustufen und Treffereffekten übernehmen; Animation, Fußpunkt und Richtungen im tatsächlichen Spielmaßstab prüfen.
 - [ ] Bis zu drei verschiedene Ziele mit begrenzter Sprungreichweite und abnehmendem Schaden treffen; Reihenfolge deterministisch, kein mehrfacher Treffer desselben Gegners innerhalb einer Kette.
 - [ ] Verteilte Ziele als Stärke, Einzelziele als Schwäche abstimmen. Kein zusätzlicher kostenloser Rüstungsdurchschlag und keine Unterbrechung von Bosszaubern.
-- [ ] Nach Ilyras Einführung ungefähr um Welle 28 über die bestehende Werkstatt freischalten; verständliche Rollenbeschreibung und lesbare Ketten. Kein Pflichtkauf vor Öffnung der Ostfront.
+- [ ] Nach Ilyras Einführung ungefähr ab Welle 28 die Sturmlicht-Forschung in der bestehenden Werkstatt anbieten. Die Welle macht Forschung verfügbar; erst ein bewusster Goldkauf schaltet den Turm frei. Rollenbeschreibung, Forschungspreis und Baupreis unterscheiden; kein Pflichtkauf vor Öffnung der Ostfront.
+- [ ] Erforschte Technologien in der Werkstatt als kleine passende Icons mit Häkchen zeigen; Antippen erklärt Name und Nutzen. Gesperrte Forschung gedimmt mit Voraussetzung. Keine zusätzliche dauerhafte HUD-Leiste; vorhandene Frost-/Turmforschung konsistent einbeziehen.
 - [ ] Turmtyp, Upgrades und laufende Angriffe vollständig speichern; Treffer bei Verkauf oder Reload weder verschwinden lassen noch doppelt abrechnen.
 - [ ] Kompakt prüfen: Kette mit wenigen/vielen Zielen, Upgrade/Mara-Wechselwirkung, Reload während eines Angriffs und kurze Sichtprüfung.
 
@@ -725,7 +744,7 @@ B15/B16 können eigenständig spielbar veröffentlicht werden. B17/B18 dürfen i
 - [ ] Kleine Bodenzone plus klar sichtbaren Brandschaden über Zeit umsetzen. Gleichartige Brände stapeln nicht unbegrenzt: stärkste Quelle gilt, erneuter Treffer erneuert die Dauer nach einer dokumentierten Regel.
 - [ ] Kombination mit Frost abstimmen; weder Feuer noch Frost unterbrechen bestehende Bosszauber. Flieger bleiben die erkennbare Schwäche des Glutwerfers.
 - [ ] Brandquelle, Schadensgrundlage und Restdauer mitführen; Verkauf des Ursprungsturms und Reload dürfen keine doppelten Belohnungen, verschwundenen Treffer oder unendlichen Brände erzeugen.
-- [ ] Forschung ungefähr um Welle 33–35 anbieten. Klarer Nutzen ohne Pflichtkauf und ohne neue Währung oder weiteres Forschungsgebäude.
+- [ ] Glutwerfer-Forschung ungefähr um Welle 33–35 in der Werkstatt anbieten, danach ausdrücklich mit Gold erforschen; kein automatischer Turmzugang durch Wellennummer. In die Forschungsicons aus B16 aufnehmen. Klarer Nutzen ohne Pflichtkauf, neue Währung oder weiteres Forschungsgebäude.
 - [ ] Kompakt prüfen: überlappende Brände, Frost-Kombination, Reload/Verkauf während Brand und letzter Kill; Darstellung auf normalem Desktop und Hochkant kurz ansehen.
 
 **Fertig, wenn:** Feuer und Frost ergeben eine sichtbare, gespeicherte und ausgewogen vergütete Kombination; andere Verteidigungen bleiben sinnvoll.

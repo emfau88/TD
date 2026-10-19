@@ -408,3 +408,8 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 .lesson-inline-target { padding-left:42px !important; }
 #lesson-pointer[data-mode="inline"] { width:20px; height:30px; transform:translate(-50%,-50%) rotate(-90deg); }
 #lesson-pointer[data-mode="map-below"] { transform:translate(-50%,0) rotate(180deg); }
+
+/* B15: a compact building portrait, no extra HUD row. */
+.building-portrait { width:96px; height:96px; object-fit:contain; image-rendering:pixelated; float:right; margin:0 0 8px 10px; }
+#tavern-panel .primary-action { clear:both; }
+@media (max-width:700px) { .building-portrait { width:72px; height:72px; } }
