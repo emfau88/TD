@@ -142,7 +142,9 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 #history-table td { border-color:#6f806633; }
 #history-table tr.current-wave { background:#c6a45d12; color:#f4d496; }
 .fallback-note p,.map-help { color:#d1d8c8; }
-.combat-toast { color:#f7dc9e; }
+/* Avoid Chromium opaque-overlay occlusion over WebGL: it can leave a mirrored
+   black rectangle in the map. Fractional opacity preserves the framed toast. */
+.combat-toast { color:#f7dc9e; opacity:.999; }
 @media (max-width:1150px) {
  .app-header { padding-inline:16px; } .resource-strip { gap:6px; } .resource-tile { padding-inline:8px; }
  .catalog { width:410px; } .companion-card { min-width:170px; }

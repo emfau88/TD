@@ -11,13 +11,37 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Branch | `codex/idle-bastion-vertical-slice` |
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
-| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt |
-| Aktives Umsetzungspaket | Keines · B13 abgeschlossen und veröffentlicht |
-| Nächster Schritt | B13 über den Playlink ausprobieren. B14 als nächstes Hauptpaket, noch nicht beauftragt; B12d bleibt vorgemerkt |
+| Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten |
+| Aktives Umsetzungspaket | HUD-Nachbesserung nach B13; Einstieg und neue Gegner nur als Vorschläge |
+| Nächster Schritt | HUD-Korrektur veröffentlichen; Einstiegsvorschlag und drei neue Gegner besprechen. B14 und B12d-Umsetzung noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
 Vorhandene klassische Spielfunktionen zählen nicht als fertige Idle-Funktionen. B01–B07 sind abgeschlossen und die Fassung ist auf GitHub Pages testbar. G1 ist freigegeben. B11 ist am 18.10.2026 ausdrücklich mit kompakten Tests und Commit/Push/Pages beauftragt. B12 wurde anschließend ausdrücklich mit denselben Vorgaben beauftragt. B13 ist am 19.10.2026 beauftragt; B14 bleibt separat. Paketstatus und echte Freigaben werden ausschließlich hier geführt; Fachdateien beschreiben Regeln, keine konkurrierenden Fortschrittsstände.
+
+## Nachbesserung nach B13 — HUD und nächste Gestaltungsschritte
+
+Am 19.10.2026 beauftragt: leeren HUD-Balken beheben, vorhandene Gegner auflisten und drei neue Einheiten mit effizientem Produktionsablauf vorschlagen. Anschließend um Vorschlag für einen verständlicheren Start ergänzt. Kein Umsetzungsauftrag für neues Onboarding oder neue Gegner.
+
+- [x] HUD-Balken reproduziert: unterer Hinweis erzeugt im WebGL-Bereich ein vertikal gespiegeltes schwarzes Rechteck. Minimale Transparenz ausschließlich am Hinweis umgeht die fehlerhafte Überdeckung; nach mehreren Zeichenzyklen geprüft.
+- [x] Produktionsbuild und kurze Desktop-/Hochkantprobe bestanden; [Befund, Vorher/Nachher und Prüfumfang](../../artifacts/idle-bastion/acceptance/ui/HUD.md).
+- [ ] Commit/Push und Pages-Veröffentlichung bestätigen.
+- [x] Vollständigen Gegnerbestand und drei Kandidaten mit Produktionsablauf in [ENEMIES.md](docs/ENEMIES.md#vorschlag-drei-weitere-einheiten) festhalten.
+- [x] Einstiegsvorschlag unten festhalten; Umsetzung bleibt offen.
+
+### Einstiegsvorschlag — erst ankommen, dann verteidigen
+
+Der bestehende Start erzeugt automatisch einen geschützten Waldwächter, Mara und kurz darauf Welle 1. Maras Vorstellung existiert als Tipp, ist auf Mobile aber zunächst eingeklappt und konkurriert mit dem sofort laufenden Kampf. Daher ist das Problem der Ablauf, nicht nur ein fehlender Text.
+
+**Empfohlener Ablauf, noch nicht umgesetzt:**
+
+1. Ruhige Karte ohne Gegner und ohne fertigen Turm. Mara steht sichtbar am Weg und begrüßt den Spieler in einer kurzen, auch mobil offenen Karte: „Ich bin Mara. Ich unterstütze deine Türme mit Magie. Hilf mir, den Hain zu verteidigen.“ Aktion: „Erste Verteidigung bauen“. Keine erzwungene Wartezeit oder Dialogserie.
+2. Ein kostenloser Waldwächter-Bausatz ersetzt den bisherigen geschenkten Startturm; Startgold bleibt erhalten. Den Spieler selbst bauen lassen, wenige gute Felder samt Reichweite empfehlen. Vor dem ersten Start kostenlos korrigierbar; kein Goldverlust durch eine Lernentscheidung. Der erste Turm muss einen erreichbaren frühen Wegabschnitt abdecken.
+3. Nach dem Bau zurück zur freien Karte. Klarer Button „Verteidigung starten“; erst danach kommt Welle 1. Eine kurze Vorschau zeigt, wo die Käfer eintreten und welchen Kern wir schützen. Ab dann folgen normale Wellen automatisch; nicht jede Welle manuell starten lassen.
+4. Erste Treffer und Gold sichtbar erleben. Maras Fernzauber einmal im passenden Kampfmoment anbieten: Turm markieren, kurze Verstärkung und Restdauer sehen. Danach die bereits vorhandene gegnerabhängige Automatik erklären. Freie Bewegung und Zauberwirkung verständlich voneinander trennen.
+5. Erst danach nächster Kauf und Werkstatt. Weitere Panels bei Bedarf; kein vollständiges Regelmenü am Anfang. Schnelle Spieler können die Begrüßung überspringen und direkt bauen, ohne einen automatischen Kampfstart auszulösen.
+
+**Bei späterer Umsetzung beachten:** Startzustand und Bausatz atomar speichern; Reload darf weder Geschenk duplizieren noch die Bauphase überspringen. Vor erstem Kampf kein Farm-/Offline-Ertrag. Bestehende Spielstände behalten ihren Fortschritt und werden nicht ins Tutorial gezwungen. Den 90-Sekunden-Einstieg einschließlich Begrüßung/Bau neu messen und Ökonomie abstimmen; den bisherigen Messbeginn nicht stillschweigend auf „nach dem Tutorial“ verschieben. Sicherheit gegen Fehlkäufe/-platzierungen und mobile Bedienung mitprüfen.
 
 ## B12b — Nordbogen und mobile Kamera
 
@@ -44,7 +68,7 @@ Am 18.10.2026 ausdrücklich als nächster Schritt nach B12b beauftragt. Vorhande
 
 ## B12d — Wiederholbarer Produktionsablauf für neue Gegner (vorgemerkt)
 
-Nur als nächster Ausbau geplant; keine neue Bildproduktion beauftragt. Vorhandene Verfahren aus `GEGNER_PRODUKTIONSPLAN.md`, `scripts/pixel-atlas.mjs` und der Gegnerprobe weiterverwenden.
+Nur als nächster Ausbau geplant; keine neue Bildproduktion beauftragt. Vorhandene Verfahren aus `GEGNER_PRODUKTIONSPLAN.md`, `scripts/pixel-atlas.mjs` und der Gegnerprobe weiterverwenden. [Konkretisierter Vorschlag vom 19.10.: Mooskröte, Runenschnecke, Wurzeltrommler und gemeinsamer Ablauf](docs/ENEMIES.md#vorschlag-drei-weitere-einheiten).
 
 - [ ] Kurzen Standardsteckbrief für Rolle, Referenzen, Palette, sichtbare Größe und Anker festlegen.
 - [ ] Referenzpose und kleine Laufprobe vor vollständiger Richtungs-/Aktionsproduktion prüfen.
@@ -443,7 +467,7 @@ Historische Halteregel bis zur obigen G1-Freigabe: Während des Wartens nur P2 p
 - [ ] Vollständige Speicher-/Offline-Matrix aus dem Abnahmeplan einschließlich zwei Tabs, Suspend, abgebrochener Claims und Speicherfehler abschließen.
 - [ ] Validierten Save-Export/Import fertigstellen und prüfen; fremde/defekte Daten abweisen, gültigen Stand nicht ohne bewusste Bestätigung ersetzen.
 - [ ] Bestehende Tests, TypeScript, Idle-Build und betroffene klassische Builds prüfen; heutige Waldversion zusätzlich im Browser öffnen. Historische JSDOM-Tests sind kein visueller Nachweis.
-- [ ] Gelegentlichen leeren dunklen Balken oben mittig aus B13-Aufnahmen bei Gegnerhinweisen eingrenzen und Darstellung korrigieren; siehe B13-Bericht.
+- [x] Leeren dunklen Balken aus B13-Aufnahmen separat auf Nutzerauftrag eingegrenzt und korrigiert; Nachweis bei der HUD-Nachbesserung. B14 insgesamt bleibt nicht begonnen.
 - [ ] Mindestens 30 Minuten ununterbrochenen Browserbetrieb plus längere beschleunigte Modellprüfung durchführen; Last, Browser, Gerät, Speicher sowie Objekt-/Eventgrenzen dokumentieren.
 - [ ] Separaten Idle-Build und möglichst eigenständiges HTML tatsächlich öffnen; gültige Startbefehle sowie Origin-/Dateipfadgrenzen der Speicherung dokumentieren.
 - [ ] Echte Screenshots aus erster Minute, Werkstatt, ungefähr Minute 15 und geöffneter Lichtung liefern; Grafikquellen und verwendete Assets nachvollziehbar zuordnen.

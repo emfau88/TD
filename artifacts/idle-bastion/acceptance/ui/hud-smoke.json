@@ -1,0 +1,62 @@
+[
+  {
+    "mobile": false,
+    "toastOpacity": "0.999",
+    "canvas": {
+      "x": 0,
+      "y": 0,
+      "width": 1600,
+      "height": 1000,
+      "top": 0,
+      "right": 1600,
+      "bottom": 1000,
+      "left": 0
+    },
+    "toast": {
+      "x": 562.1328125,
+      "y": 802,
+      "width": 475.734375,
+      "height": 36,
+      "top": 802,
+      "right": 1037.8671875,
+      "bottom": 838,
+      "left": 562.1328125
+    },
+    "overflow": false,
+    "wave": "Welle 1\nVorstoß · Rekord 0",
+    "errors": [],
+    "chronicle": "opened and closed",
+    "camera": "zoom and overview clickable",
+    "toastHiddenAfter": true
+  },
+  {
+    "mobile": true,
+    "toastOpacity": "0.999",
+    "canvas": {
+      "x": 0,
+      "y": 56,
+      "width": 430,
+      "height": 780,
+      "top": 56,
+      "right": 430,
+      "bottom": 836,
+      "left": 0
+    },
+    "toast": {
+      "x": 8,
+      "y": 774,
+      "width": 352,
+      "height": 50,
+      "top": 774,
+      "right": 360,
+      "bottom": 824,
+      "left": 8
+    },
+    "overflow": false,
+    "wave": "Welle 1\nVorstoß · Rekord 0",
+    "errors": [],
+    "chronicle": "opened and closed",
+    "camera": "zoom and overview clickable",
+    "toastHiddenAfter": true
+  }
+]
