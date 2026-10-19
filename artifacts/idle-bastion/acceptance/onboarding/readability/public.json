@@ -1,0 +1,18 @@
+{
+  "commit": "c164a11d99b98196e6e4546efc24168b142551e6",
+  "run": "https://github.com/emfau88/TD/actions/runs/39293922617",
+  "checkedAt": "2026-10-19T17:26:37.489978+00:00",
+  "url": "https://emfau88.github.io/TD/idle-bastion/",
+  "assets": [
+    {
+      "name": "./assets/battle-UjNMMeNO.js",
+      "bytes": 191959,
+      "sha256": "6f49ce2a22244c7f1bbfa6b7363e391ca970a68a56b300c6f5a280847a2fc467"
+    },
+    {
+      "name": "./assets/battle-D_sO04i1.css",
+      "bytes": 52696,
+      "sha256": "841b1f597ff5383965c3542f0f9cec9b1af9a00d19cb957f12ba01e5bf3d5cd2"
+    }
+  ]
+}

@@ -12,7 +12,7 @@ Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspaket
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
-| Aktives Umsetzungspaket | Lesbare Hinweise, Wisp-Anlauf und ununterbrochener Bosstanz · umgesetzt und kompakt geprüft; Veröffentlichung folgt |
+| Aktives Umsetzungspaket | Hinweise, Figurenauftritte, Bosstanz und klare Pixelziffern · `c164a11` veröffentlicht und öffentliche Dateien abgeglichen |
 | Nächster Schritt | Nutzerprobe des Einstiegs einschließlich Anschlussführung über „Frische Probe“; B14 und B12d-Umsetzung noch nicht beauftragt |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
@@ -30,7 +30,7 @@ Am 19.10.2026 zusätzlich beauftragt; B14 bleibt separat.
 - [x] Zusätzlicher Auftrag: nur Ziffern 2/5/8 durch klare Pixelglyphen ersetzen, übrige Schrift erhalten. Maras aktiver Boost erhält Goldverbindung, wandernden Lichtpunkt und sanfte Turmaura; kurze Hochkantkontrolle bestanden.
 - [x] Mara zaubert im angeleiteten Einstieg erst nach ihrer Ankündigung nach Wisp. Wirkungsleiste nur rund 55 px hoch bei 430 px Breite, sofort schließbar.
 - [x] Save-Migration 17 → 18, laufende Effekte und Veteranen erhalten. 21 gezielte Modell-/Speicherprüfungen sowie Build und kurze Hochkant-/Desktopkontrolle bestanden. Ältere B10-Zeitvorgabe als Prüfgrenze dokumentiert.
-- [ ] Commit/Push und öffentliche Auslieferung bestätigen.
+- [x] Codecommit `c164a11` gepusht; [Pages-Lauf 39293922617](https://github.com/emfau88/TD/actions/runs/39293922617) erfolgreich. Öffentliche JS-/CSS-Dateien am 19.10.2026, 17:26 UTC bytegleich mit dem geprüften Build; [Nachweis](../../artifacts/idle-bastion/acceptance/onboarding/readability/public.json).
 
 [Bericht und Spielaufnahmen](../../artifacts/idle-bastion/acceptance/onboarding/readability/REPORT.md).
 

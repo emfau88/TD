@@ -36,4 +36,4 @@ Zusätzliche kurze Hochkantprobe nach dieser Ergänzung: Schrift geladen, Ziffer
 
 ## Veröffentlichung
 
-Commit/Push und öffentliche Auslieferung werden nach Abschluss ergänzt. [Playlink](https://emfau88.github.io/TD/idle-bastion/) · [Frische Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1).
+Codecommit `c164a11` gepusht. [Pages-Lauf 39293922617](https://github.com/emfau88/TD/actions/runs/39293922617) erfolgreich; öffentliche Dateien `battle-UjNMMeNO.js` und `battle-D_sO04i1.css` am 19.10.2026 um 17:26 UTC bytegleich mit dem lokalen Build geprüft ([Hashes](public.json)). [Playlink](https://emfau88.github.io/TD/idle-bastion/) · [Frische Probe](https://emfau88.github.io/TD/idle-bastion/?fresh=1).
