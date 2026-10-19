@@ -52,7 +52,7 @@ export function nextObjective(battle: IdleBattle): string {
     case 0: return 'Die Verteidigung läuft. Erste Käfer bringen Gold — dein zweiter Turm ist bereits bezahlbar.';
     case 1: return 'Nächstes Ziel: eigener Waldwächter auf einem hellen Bauplatz · 75 Gold.';
     case 2: return 'Nächstes Ziel: einen Waldwächter verbessern · 60 Gold.';
-    case 3: return `Nächstes Ziel: Werkstatt bauen · ${remaining(SETTLEMENT.workshopCost)}.`;
+    case 3: return `Nächstes Ziel: Werkstatt bauen · ${battle.workshopKitAvailable ? 'kostenloser Bausatz bereit' : remaining(battle.workshopBuildCost)}.`;
     case 4: return `Nächstes Ziel: Frostfassung erforschen · ${remaining(SETTLEMENT.researchCost)}.`;
     case 5: return `Nächstes Ziel: Frostkristall an einem freien Platz bauen · ${remaining(FROST.cost)}.`;
     case 6: return 'Nächstes Ziel: den ersten blauen Frosttreffer im Kampf beobachten.';

@@ -229,8 +229,15 @@ export class IdleBattle {
       default: return false;
     }
   }
+  /** The guided first workshop uses a single kit, consumed by workshopBuilt.
+   * Derived from existing saved milestones; no refund or new gift for veterans. */
+  get workshopKitAvailable(): boolean {
+    return this.guiding && this.introduction.stage === 'workshop' && !this.settlement.workshopBuilt
+      && this.highestCleared >= 1 && this.towers.some(t => t.protected && t.level >= 2);
+  }
+  get workshopBuildCost(): number { return this.workshopKitAvailable ? 0 : SETTLEMENT.workshopCost; }
   get lessonCost(): number {
-    return this.introduction.stage === 'upgrade' ? 60 : this.introduction.stage === 'workshop' ? SETTLEMENT.workshopCost
+    return this.introduction.stage === 'upgrade' ? 60 : this.introduction.stage === 'workshop' ? 0
       : this.introduction.stage === 'research' ? SETTLEMENT.researchCost : this.introduction.stage === 'frost' ? FROST.cost : 0;
   }
   /** Learning pauses are saved separately from the player's pause button. */
@@ -238,6 +245,7 @@ export class IdleBattle {
     if (!this.guiding || this.learningPaused) return;
     if (this.introduction.stage === 'combat' && this.kills > 0 && this.gold >= 60) this.introduction.stage = 'upgrade';
     if (this.introduction.stage === 'observe' ? this.tutorial.frostSeen
+      : this.introduction.stage === 'workshop' ? this.lessonComplete || this.workshopKitAvailable
       : this.introduction.stage !== 'combat' && (this.lessonComplete || this.gold >= this.lessonCost)) this.introduction.halted = true;
   }
   continueLesson(): boolean {
@@ -480,10 +488,12 @@ export class IdleBattle {
 
   buildWorkshop(): boolean {
     if (this.preparing || this.guiding && this.introduction.stage !== 'workshop') return false;
-    if (this.phase === 'defeat' || this.settlement.workshopBuilt || this.gold < SETTLEMENT.workshopCost) return false;
-    this.gold -= SETTLEMENT.workshopCost;
+    if (this.guiding && !this.workshopKitAvailable) return false;
+    const cost = this.workshopBuildCost;
+    if (this.phase === 'defeat' || this.settlement.workshopBuilt || this.gold < cost) return false;
+    this.gold -= cost;
     this.settlement.workshopBuilt = true; this.settlement.builtAt = this.elapsed;
-    this.events.push({ type: 'workshop', amount: SETTLEMENT.workshopCost });
+    this.events.push({ type: 'workshop', amount: cost });
     return true;
   }
   researchFrost(): boolean {

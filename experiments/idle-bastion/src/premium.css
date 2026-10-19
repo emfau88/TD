@@ -350,8 +350,8 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 /* One click cue at a time. It never intercepts taps or scales with the map. */
 #lesson-pointer { position:fixed; z-index:45; width:32px; height:48px; pointer-events:none; transform:translate(-50%,-100%); filter:drop-shadow(0 2px 2px #0009); }
 #lesson-pointer svg { width:100%; height:100%; display:block; }
-#lesson-pointer[data-mode="button"] { transform:translate(-50%,-50%) rotate(90deg); width:25px; height:38px; }
-.lesson-click-target { padding-right:48px !important; outline:2px solid #ffe19a; outline-offset:3px; box-shadow:0 0 12px #d4ab5555; }
+#lesson-pointer[data-mode="button"] { width:25px; height:38px; }
+.lesson-click-target { outline:2px solid #ffe19a; outline-offset:3px; box-shadow:0 0 12px #d4ab5555; }
 @media(prefers-reduced-motion:no-preference) { #lesson-pointer svg { animation:lesson-point .85s ease-in-out infinite alternate; } }
 @keyframes lesson-point { from { transform:translateY(-5px); } to { transform:translateY(0); } }
 .lesson-savings { position:absolute; z-index:16; top:calc(var(--header) + 9px); left:14px; width:254px; padding:8px 10px; background:#111c20ed; border:1px solid #a68b54; color:#e9dab5; pointer-events:none; opacity:.999; }
@@ -359,17 +359,17 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 .lesson-savings strong { font-weight:500; }.lesson-savings span { white-space:nowrap; color:#ffe19a; }
 .lesson-savings progress { display:block; width:100%; height:4px; margin-top:6px; }
 .saving #battle-phase { display:none; }
-.onboarding-card[data-complete="true"] { top:calc(var(--header) + 9px); bottom:auto; width:320px; padding:10px 12px; }
-.onboarding-card[data-complete="true"] > canvas,.onboarding-card[data-complete="true"] .eyebrow { display:none; }
-.onboarding-card[data-complete="true"] h2 { margin:0 0 5px; font-size:19px; }
-.onboarding-card[data-complete="true"] p { font-size:12px; line-height:1.35; }
-.onboarding-card[data-complete="true"] .onboarding-actions { margin-top:7px; }
+.onboarding-card[data-compact="true"] { top:calc(var(--header) + 9px); bottom:auto; width:320px; padding:10px 12px; }
+.onboarding-card[data-compact="true"] > canvas,.onboarding-card[data-compact="true"] .eyebrow { display:none; }
+.onboarding-card[data-compact="true"] h2 { margin:0 0 5px; font-size:19px; }
+.onboarding-card[data-compact="true"] p { font-size:12px; line-height:1.35; }
+.onboarding-card[data-compact="true"] .onboarding-actions { margin-top:7px; }
 @media(max-width:700px) {
  .lesson-savings { left:8px; width:calc(100% - 108px); max-width:290px; padding:7px 8px; }
  .lesson-savings > div { font-size:11px; }
- .onboarding-card[data-complete="true"] { left:8px; width:calc(100% - 104px); max-width:320px; padding:9px 10px; }
- .onboarding-card[data-complete="true"] h2 { font-size:17px; }
- .onboarding-card[data-complete="true"] .onboarding-actions button { min-height:36px; font-size:11px; }
+ .onboarding-card[data-compact="true"] { left:8px; width:calc(100% - 104px); max-width:320px; padding:9px 10px; }
+ .onboarding-card[data-compact="true"] h2 { font-size:17px; }
+ .onboarding-card[data-compact="true"] .onboarding-actions button { min-height:36px; font-size:11px; }
 }
 
 /* Unlock discovery belongs to the build menu, never to empty map plots. */
@@ -383,3 +383,8 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 @media(max-width:700px) { .tutorial-card[data-step="15"] { width:calc(100% - 104px); left:8px; padding:9px; } }
 
 .guiding #pad-choice,.guiding #selection-description { display:none; }
+
+/* Explanations stay above the action; the click cue lives at the actual control. */
+.onboarding-actions.empty { display:none; }
+.onboarding-card[data-compact="true"] > div { min-width:0; }
+.lesson-savings progress[hidden] { display:none; }

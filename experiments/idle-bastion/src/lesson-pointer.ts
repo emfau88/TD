@@ -16,7 +16,7 @@ export class LessonPointer {
     if (button) {
       if (button.disabled || button.closest('[hidden]') || !button.getClientRects().length) return;
       const rect = button.getBoundingClientRect();
-      x = rect.right - 25; y = rect.top + rect.height / 2;
+      x = rect.left + rect.width / 2; y = rect.top + 3;
     } else { ({ x, y } = target as LessonPoint); }
     if (x < 12 || x > innerWidth - 12 || y < 56 || y > innerHeight - 12) return;
     this.arrow.dataset.mode = button ? 'button' : 'map';

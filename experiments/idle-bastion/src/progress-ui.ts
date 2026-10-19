@@ -29,7 +29,7 @@ export function currentGoal(battle: IdleBattle): Goal {
       const cost = tower ? upgradeCost(tower) : 60;
       return { title: 'Dein erstes Turmupgrade', detail: `${need(cost)} · mehr Schaden`, cost, action: 'upgrade', label: 'Turm auswählen' };
     }
-    case 3: return { title: 'Die Werkstatt bauen', detail: `${need(SETTLEMENT.workshopCost)} · eröffnet Forschung`, cost: SETTLEMENT.workshopCost, action: 'workshop', label: 'Werkstatt ansehen' };
+    case 3: return { title: 'Die Werkstatt bauen', detail: `${battle.workshopKitAvailable ? 'Kostenloser Bausatz' : need(battle.workshopBuildCost)} · eröffnet Forschung`, cost: battle.workshopBuildCost, action: 'workshop', label: 'Werkstatt ansehen' };
     case 4: return { title: 'Frostfassung erforschen', detail: `${need(SETTLEMENT.researchCost)} · Frostturm & Level 4–6`, cost: SETTLEMENT.researchCost, action: 'workshop', label: 'Forschung ansehen' };
     case 5: return { title: 'Frost und Pfeile kombinieren', detail: `${need(FROST.cost)} · Frostkristall platzieren`, cost: FROST.cost, action: 'frost', label: 'Frostkristall auswählen' };
     case 6: return { title: 'Die Frosttechnik wirkt', detail: 'Ersten Frosttreffer beobachten · Gegner werden langsamer', action: 'progress', label: 'Fortschritt ansehen' };

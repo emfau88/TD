@@ -41,7 +41,7 @@ test('all starter locations survive the complete guided purchase sequence with r
    if(b.introduction.stage!=='observe')assert.equal(b.continueLesson(),false);
    switch(b.introduction.stage){
     case 'upgrade': assert.equal(b.upgrade(1),true);assert.equal(b.upgrade(1),false);break;
-    case 'workshop': assert.equal(b.buildWorkshop(),true);workshop=b.elapsed;break;
+    case 'workshop': { assert.ok(b.highestCleared >= 1); assert.equal(b.workshopBuildCost,0); const gold=b.gold; assert.equal(b.buildWorkshop(),true); assert.equal(b.gold,gold); assert.equal(b.buildWorkshop(),false); workshop=b.elapsed;break; }
     case 'research': assert.equal(b.researchFrost(),true);break;
     case 'frost': assert.ok(b.recommendedFrostPad);assert.ok(b.build(b.recommendedFrostPad!,2));break;
     case 'observe': break;
@@ -117,4 +117,19 @@ test('learning pause survives return without idle income and stays distinct from
  store=await openBattleStore(factory,'lesson-return',()=>now);live=await BattleSession.open(store,{now:()=>now,locks:null});
  assert.equal(live.paused,false);assert.equal(live.battle.learningPaused,true);assert.equal(live.awaitingResume,false);assert.equal(live.pendingReward,null);assert.deepEqual(live.battle.snapshot(),before);
  await live.command(b=>b.upgrade(1));assert.equal(live.battle.learningPaused,true);await live.command(b=>b.continueLesson());assert.equal(live.battle.learningPaused,false);await live.close();
+});
+
+
+test('workshop kit waits for first victory, survives reload and never refunds an existing workshop',()=>{
+ let b=IdleBattle.newGame();b.beginIntroduction();b.build('cell-6-6');b.startDefense();
+ while(!b.learningPaused)b.update(.025);
+ b.upgrade(1);b.continueLesson();
+ assert.equal(b.workshopKitAvailable,false);assert.equal(b.buildWorkshop(),false);
+ while(!b.learningPaused)b.update(.025);
+ b=restore(b);assert.equal(b.workshopKitAvailable,true);const gold=b.gold;
+ assert.equal(b.buildWorkshop(),true);assert.equal(b.gold,gold);b=restore(b);
+ assert.equal(b.workshopKitAvailable,false);assert.equal(b.buildWorkshop(),false);assert.equal(b.gold,gold);
+ b.continueLesson();b=restore(b);assert.equal(b.researchFrost(),true);assert.equal(b.gold,gold-60);
+ const veteran=new IdleBattle();veteran.gold=200;assert.equal(veteran.workshopBuildCost,200);
+ assert.equal(veteran.buildWorkshop(),true);assert.equal(veteran.gold,0);restore(veteran);
 });
