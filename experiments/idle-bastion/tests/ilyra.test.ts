@@ -51,7 +51,7 @@ test('saved windup and flight hit once, reward ground/air kills once, and reject
  assert.equal(b.castIlyraAt(b.enemies[0]),false);assert.equal(b.moveIlyraTo({x:4,y:5}),false);
  advance(b,.3);const snap=b.snapshot(),restored=IdleBattle.restore(snap)!;assert.ok(restored);
  const forged=structuredClone(snap);forged.ilyra!.volley!.damage++;assert.equal(IdleBattle.restore(forged),undefined);
- advance(b,.325);advance(restored,.325);assert.deepEqual(restored.snapshot(),b.snapshot());
+ advance(b,.525);advance(restored,.525);assert.deepEqual(restored.snapshot(),b.snapshot());
  assert.equal(b.kills-before,3);assert.equal(b.ilyra!.volley!.hit,true);assert.equal(b.ilyra!.introduction,'done');
  const afterHit=IdleBattle.restore(b.snapshot())!,earned=b.earned,kills=b.kills;
  advance(afterHit,.025);assert.equal(afterHit.earned,earned);assert.equal(afterHit.kills,kills);
@@ -62,7 +62,7 @@ test('air damage is 50 percent higher, scaling ignores Mara, and empty waves nev
  const b=volleyFixture(),v=b.ilyra!.volley!,source=v.damage;
  // High-health targets isolate damage from rewards; model invariants checked in the previous case.
  const ground=b.enemies[0],air=b.enemies.at(-1)!;ground.hp=air.hp=1000;
- advance(b,ILYRA.impact);assert.equal(1000-ground.hp,source);assert.equal(1000-air.hp,source*1.5);
+ advance(b,.825);assert.equal(1000-ground.hp,source);assert.equal(1000-air.hp,source*1.5);
  const power=b.ilyraPower.damage;b.mara.effectRemaining=8;assert.equal(b.ilyraPower.damage,power);
  assert.ok(ilyraDamage(1,8)>ilyraDamage(1,1));
  b.ilyra!.autoCast=true;b.ilyra!.cooldown=0;b.ilyra!.volley=null;b.enemies=[];(b as any).queue=[];
@@ -85,4 +85,20 @@ test('farm proof ignores recruited Ilyra and pending spells',()=>{
  const b=veteran();b.liveClearedWaves=[1];const before=certifyFarm(b);assert.ok(before);const fingerprint=defenseFingerprint(b);
  assert.ok(b.recruitIlyra());deploy(b);assert.ok(b.castIlyraAt(b.enemies[0]));
  assert.equal(defenseFingerprint(b),fingerprint);assert.deepEqual(certifyFarm(b),before);
+});
+
+
+test('slower volleys remain in flight at the old hit time; legacy saves finish once at their old pace',()=>{
+ const slow=volleyFixture();advance(slow,.625);
+ assert.equal(slow.ilyra!.volley!.hit,false);assert.ok(IdleBattle.restore(slow.snapshot()));
+ const bad=slow.snapshot();(bad.ilyra!.volley as any).pace=2;assert.equal(IdleBattle.restore(bad),undefined);
+ for(const hit of [false,true]){
+  const b=volleyFixture();if(hit)advance(b,.825);
+  const old:any=b.snapshot();old.schemaVersion=21;delete old.ilyra.volley.pace;
+  old.ilyra.volley.age=hit?.7:.3;old.ilyra.cooldown=28-old.ilyra.volley.age;
+  const restored=IdleBattle.restore(old)!;assert.ok(restored);assert.equal(restored.ilyra!.volley!.pace,undefined);
+  const kills=restored.kills;advance(restored,hit?.05:.325);
+  assert.equal(restored.kills-kills,hit?0:3);assert.equal(restored.ilyra!.volley!.hit,true);
+  assert.ok(IdleBattle.restore(restored.snapshot()));
+ }
 });

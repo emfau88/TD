@@ -1,6 +1,6 @@
 # Akt II — Gestaltungs- und Technikentscheidungen
 
-Stand: 20.10.2026. Ergänzung zum ursprünglichen Akt-I-Auftrag. B15a, F01, B17a und anschließend B15b einschließlich Tavernenübersicht aller Gefährten wurden ausdrücklich beauftragt; übrige Inhalte bleiben separat. Checklisten, Abhängigkeiten und Freigaben stehen ausschließlich in [ROADMAP.md, P6](../ROADMAP.md#akt-ii). Dieser Text hält Entscheidungen und überprüfte Ausgangspunkte fest, keine zweite Fortschrittsliste.
+Stand: 20.10.2026. Ergänzung zum ursprünglichen Akt-I-Auftrag. B15a, F01, B17a und anschließend B15b einschließlich Tavernenübersicht aller Gefährten wurden ausdrücklich beauftragt; übrige Inhalte bleiben separat. Checklisten, Abhängigkeiten und Freigaben stehen ausschließlich in [ROADMAP.md](../ROADMAP.md). Dieser Text hält Entscheidungen und überprüfte Ausgangspunkte fest, keine zweite Fortschrittsliste.
 
 ## Bestand statt unnötiger Neuproduktion
 
@@ -35,7 +35,7 @@ Die Roadmap-Ergänzung vom 20.10.2026 zieht eine nützliche Basisfläche als B17
 
 ## Große Osthälfte mit gemeinsamem Kern
 
-Ausgangspunkt ist die bisherige 28×16-Karte, mit Lichtung 32×16. Der geplante Gesamtumfang liegt ungefähr bei **56×16 Zellen** bei gleicher 40er Zellgröße. Der Kern bleibt an seiner bisherigen Position `(27, 6)`; rechts soll ähnlich viel sinnvoller Verteidigungsraum entstehen wie links. Das genaue Endmaß folgt aus einer Weg-/Bauflächenprobe, nicht aus dem Wunsch, möglichst viel Fläche hinzuzufügen.
+Ausgangspunkt ist nun die 40×16-Siedlungskarte aus B17a; alte Spielstände können noch 28×16 bzw. 32×16 verwenden. Der geplante Gesamtumfang liegt ungefähr bei **56×16 Zellen** bei gleicher 40er Zellgröße. Der Kern bleibt an seiner bisherigen Position `(27, 6)`; rechts soll ähnlich viel sinnvoller Verteidigungsraum entstehen wie links. Das genaue Endmaß folgt aus einer Weg-/Bauflächenprobe, nicht aus dem Wunsch, möglichst viel Fläche hinzuzufügen.
 
 Ein eigener Weg führt von rechts zum gemeinsamen Kern. Alte Koordinaten, Gebäude und auch in der bisherigen Lichtung gesetzte Türme bleiben gültig. Beide Wege brauchen gut kombinierbare Bauplätze bis drei Felder Tiefe, genügend Abstand zum oberen Kartenrand und mindestens zwei taktisch unterscheidbare Streckenabschnitte. Vorhandenes Gelände wiederverwenden; keine zweite Grafikwelt als Voraussetzung.
 

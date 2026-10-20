@@ -6,6 +6,8 @@
 
 [Ilyras Lauf- und Zauberanimationen ansehen](https://emfau88.github.io/TD/idle-bastion/ilyra-check.html) · Separate Vorschau neben Mara; die Figurenanimationen werden auch im Spiel verwendet.
 
+**Aktuelle Nachbesserung:** Ilyras Speerzwischenräume sind transparent korrigiert, die Sternensalve ist 35 % langsamer sichtbar. [Fortlaufende Roadmap](experiments/idle-bastion/ROADMAP.md) mit Effekt-Sortierung und den vorgemerkten Idle-Animationen; alte Nachweise bleiben archiviert.
+
 **Neu – Ilyra und alle Gefährten in der Taverne:** Nach dem Sieg über **Boss 25** die Taverne für **1.200 Gold** bauen; bestehende Besitzer können sie direkt öffnen. Dort Ilyra kennenlernen und **kostenlos rekrutieren**. Einen Standort am Weg wählen, danach mit „Sternensalve zielen“ eine Gegnergruppe treffen: 28 Sekunden Abklingzeit, besonders wirksam gegen Flieger. Nach der ersten Anwendung lässt sich eine gegnerabhängige Automatik einschalten. **Mara, Wisp und Ilyra** sind mit Rolle und Status in derselben Tavernenübersicht zu finden. Bestehende Saves bleiben erhalten. [Kompakter B15b-Bericht](artifacts/idle-bastion/acceptance/b15b/REPORT.md).
 
 <details open>
@@ -38,7 +40,7 @@ Die späte Siedlungsansicht verwendet einen vorbereiteten Besitz-/Umzugsprüfsta
 
 **Darstellung korrigiert:** Der Frostturm sitzt in Bauvorschau und allen drei Ausbaustufen auf gleicher Bodenhöhe wie seine Nachbartürme. [Kompakter Nachweis](artifacts/idle-bastion/acceptance/f01/REPORT.md).
 
-**B15a – ursprünglicher Stand der Siedlung nach Boss 25:** Nach dem tatsächlichen Sieg wird die **Taverne für 1.200 Gold** unter Siedlung freigeschaltet. Frei platzierbar und dauerhaft gespeichert; damals zunächst optionaler Treffpunkt **ohne Ilyra oder Kampfbonus**. B15b ergänzt jetzt die oben beschriebene kostenlose Rekrutierung. Werkstatt II hat ein eigenes Imagegen-Gebäude erhalten; Werkstatt I/II, Lager und Taverne sind direkt auf der Karte beschriftet. [Prüfumfang und Nachweise](artifacts/idle-bastion/acceptance/b15/REPORT.md) · [Aktuelle Roadmap](experiments/idle-bastion/ROADMAP.md#akt-ii).
+**B15a – ursprünglicher Stand der Siedlung nach Boss 25:** Nach dem tatsächlichen Sieg wird die **Taverne für 1.200 Gold** unter Siedlung freigeschaltet. Frei platzierbar und dauerhaft gespeichert; damals zunächst optionaler Treffpunkt **ohne Ilyra oder Kampfbonus**. B15b ergänzt jetzt die oben beschriebene kostenlose Rekrutierung. Werkstatt II hat ein eigenes Imagegen-Gebäude erhalten; Werkstatt I/II, Lager und Taverne sind direkt auf der Karte beschriftet. [Prüfumfang und Nachweise](artifacts/idle-bastion/acceptance/b15/REPORT.md) · [Aktuelle Roadmap](experiments/idle-bastion/ROADMAP.md).
 
 <details>
 <summary>B15 – frühere Spielaufnahmen vor dem Siedlungsumzug</summary>

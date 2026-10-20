@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "image": "ilyra-atlas.png",
   "frameSize": [
     64,
@@ -43,12 +43,12 @@
           7
         ],
         "durationsMs": [
-          180,
-          140,
-          200
+          243,
+          189,
+          270
         ],
         "loop": false,
-        "releaseAtMs": 180,
+        "releaseAtMs": 243,
         "returnTo": "idle"
       }
     },
@@ -84,12 +84,12 @@
           15
         ],
         "durationsMs": [
-          180,
-          140,
-          200
+          243,
+          189,
+          270
         ],
         "loop": false,
-        "releaseAtMs": 180,
+        "releaseAtMs": 243,
         "returnTo": "idle"
       }
     },
@@ -125,12 +125,12 @@
           23
         ],
         "durationsMs": [
-          180,
-          140,
-          200
+          243,
+          189,
+          270
         ],
         "loop": false,
-        "releaseAtMs": 180,
+        "releaseAtMs": 243,
         "returnTo": "idle"
       }
     },
@@ -166,12 +166,12 @@
           31
         ],
         "durationsMs": [
-          180,
-          140,
-          200
+          243,
+          189,
+          270
         ],
         "loop": false,
-        "releaseAtMs": 180,
+        "releaseAtMs": 243,
         "returnTo": "idle"
       }
     }

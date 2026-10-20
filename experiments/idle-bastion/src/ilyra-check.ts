@@ -108,7 +108,7 @@ async function start(){
     sprite(dc,mara,maraFrame,4,dx1,baseline,detailScale);sprite(dc,atlas,frame,data.columns,dx2,baseline,detailScale);
     label(dc,'Mara',dx1,height-10);label(dc,'Ilyra',dx2,height-10);
     world.dataset.frame=String(frame);world.dataset.action=action;world.dataset.direction=direction;
-    get('phase').textContent=action==='walk'?'Laufen · 8 Bilder/s':action==='cast'?(elapsed<180?'Zauber vorbereiten':elapsed<320?'Zauber auslösen':'Zauber ausklingen lassen'):'Stand';
+    get('phase').textContent=action==='walk'?'Laufen · 8 Bilder/s':action==='cast'?(elapsed<data.directions[direction].cast.durationsMs[0]?'Zauber vorbereiten':elapsed<data.directions[direction].cast.durationsMs[0]+data.directions[direction].cast.durationsMs[1]?'Zauber auslösen':'Zauber ausklingen lassen'):'Stand';
     requestAnimationFrame(draw);
   }
   resize();window.addEventListener('resize',resize);

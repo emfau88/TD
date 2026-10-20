@@ -84,7 +84,7 @@ export interface BattleSnapshot {
   dismissedDefeatAttempt: number;
   introduction: Introduction;
   ilyra: IlyraState | null;
-  schemaVersion: 21; rulesVersion: 10; layoutVersion: 3 | 4 | 5;
+  schemaVersion: 22; rulesVersion: 10; layoutVersion: 3 | 4 | 5;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32' | 'core40';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
@@ -340,10 +340,10 @@ export class IdleBattle {
   /** Only the shipped closed/open layouts cross the save boundary. */
   snapshot(): BattleSnapshot {
     if (JSON.stringify(this.layout) !== JSON.stringify(battleLayout(this.clearing.unlocked, this.plots, this.layout.version as 3 | 4 | 5))) {
-      throw new Error('Unsupported battle layout for snapshot version 21.');
+      throw new Error('Unsupported battle layout for snapshot version 22.');
     }
     return {
-      schemaVersion: 21, ilyra: this.ilyra ? cloneIlyra(this.ilyra) : null, discovery: this.discovery, dismissedDefeatAttempt: this.dismissedDefeatAttempt, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4 | 5, layoutId: this.layout.version === 5 ? 'core40' : this.clearing.unlocked ? 'east32' : 'start28',
+      schemaVersion: 22, ilyra: this.ilyra ? cloneIlyra(this.ilyra) : null, discovery: this.discovery, dismissedDefeatAttempt: this.dismissedDefeatAttempt, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4 | 5, layoutId: this.layout.version === 5 ? 'core40' : this.clearing.unlocked ? 'east32' : 'start28',
       clearing: { ...this.clearing },
       bossVictories: this.bossVictories, secondBossVictories: this.secondBossVictories, bossChallengeWave: this.bossChallengeWave, bossChallengeRequested: this.bossChallengeRequested, bossCharm: { ...this.bossCharm },
       progress: cloneProgress(this.progress), rewardRemainderUnits: this.rewardRemainderUnits, waveRecipeVersion: this.waveRecipeVersion,
@@ -496,9 +496,14 @@ export class IdleBattle {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 20, model.layout.version as 3 | 4 | 5)) return undefined;
       value = { ...value, schemaVersion: 21, ilyra: null };
     }
-    if (isRecord(value) && value.schemaVersion === 21) {
+    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22)) {
       if (![3, 4, 5].includes(value.layoutVersion as number) || !validPlotPositions(value.plots, value.layoutVersion as number)) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion as 3 | 4 | 5));
+    }
+    if (isRecord(value) && value.schemaVersion === 21) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 21, model.layout.version as 3 | 4 | 5)) return undefined;
+      // Keep an already flying legacy volley on its original clock: no lost or repeated hit.
+      value = { ...value, schemaVersion: 22 };
     }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5)) return undefined;
     model.ilyra = value.ilyra ? cloneIlyra(value.ilyra) : null;
@@ -662,7 +667,7 @@ export class IdleBattle {
   castIlyraAt(point: {x:number;y:number}): boolean {
     if (!this.canCastIlyra(point)) return false;
     const s = this.ilyra!;
-    s.volley = {x:point.x, y:point.y, originX:s.x, originY:s.y, age:0, hit:false, ...this.ilyraPower}; s.cooldown = ILYRA.cooldown;
+    s.volley = {x:point.x, y:point.y, originX:s.x, originY:s.y, age:0, pace:ILYRA.volleyPace, hit:false, ...this.ilyraPower}; s.cooldown = ILYRA.cooldown;
     s.direction = Math.abs(point.x-s.x)>Math.abs(point.y-s.y) ? point.x<s.x?'left':'right' : point.y<s.y?'up':'down';
     return true;
   }
@@ -674,7 +679,7 @@ export class IdleBattle {
     const s = this.ilyra; if (!s) return;
     stepIlyraMotion(s,dt);
     if (s.volley) {
-      const v=s.volley; v.age += dt;
+      const v=s.volley; v.age += dt/(v.pace??1);
       if (!v.hit && v.age >= ILYRA.impact) {
         v.hit = true;
         if (this.ilyraAbilities && this.phase === 'wave') {
@@ -1203,10 +1208,10 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
-  if (!isRecord(value) || value.schemaVersion !== (legacy || 21) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
+  if (!isRecord(value) || value.schemaVersion !== (legacy || 22) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
     || value.layoutVersion !== layoutVersion || value.layoutId !== (layoutVersion === 5 ? 'core40' : layout.bounds.columns === 32 ? 'east32' : 'start28') || legacy > 0 && legacy < 20 && layoutVersion === 5) return false;
   if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10]).includes(value.waveRecipeVersion as number))) return false;
   if ((!legacy || legacy >= 9) && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
@@ -1354,9 +1359,10 @@ function validSnapshot(
   if (unbuilt && (!isRecord(value.mara) || Object.entries({ ...createMara(layout, 0), autoCast: false }).some(([key, expected]) => JSON.stringify((value.mara as Record<string, unknown>)[key]) !== JSON.stringify(expected)))) return false;
   if (!unbuilt && legacy !== 2 && !(modern ? validMara : validLegacyMara)(value.mara, value.towers.map(tower => ({ ...tower,
     ...cellCenter(layout, layout.towerPads.find(pad => pad.id === tower.padId)!.cell) })), layout, [...getForestBlockedCells(layout), ...(modern ? value.towers.map(t => layout.towerPads.find(p => p.id === t.padId)!.cell) : [])])) return false;
-  if (!legacy && value.ilyra !== null) {
+  if ((!legacy || legacy >= 21) && value.ilyra !== null) {
     const blocked=[...getForestBlockedCells(layout),...value.towers.map(t=>layout.towerPads.find(p=>p.id===t.padId)!.cell)];
     if (!(value.settlement as BattleSnapshot['settlement']).tavernBuilt || !validIlyra(value.ilyra,layout,blocked,ilyraDamage)) return false;
+    if (legacy === 21 && isRecord(value.ilyra) && isRecord(value.ilyra.volley) && value.ilyra.volley.pace !== undefined) return false;
   }
   if (!legacy || legacy >= 8) {
     const charm = value.bossCharm;

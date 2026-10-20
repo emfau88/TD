@@ -1,12 +1,12 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
-## Ilyra — Snapshot 21
+## Ilyra — Snapshot 22
 
 Schema 20 wird zuerst vollständig validiert, danach um `ilyra: null` ergänzt. Keine automatische Rekrutierung. Die gebaute Taverne berechtigt zur kostenlosen, atomar gespeicherten Rekrutierung; auch alte Besitzer zahlen nichts zusätzlich. Mara/Wisp werden in der Tavernenübersicht angezeigt, nicht erneut gekauft.
 
 Ilyra verwendet kardinale Fußwege, 110 px/s und denselben Hindernissatz wie Mara. Spawn nahe dem tatsächlichen Taverneneingang; Position, Restweg, Blickrichtung, Einführung und Automatik werden gespeichert. Bau auf ihrer aktuellen Zelle wird abgelehnt, ein durch Neubau blockierter Restweg wird gestoppt. Gebäudeumzug darf die Figur nicht verdeckt versetzen oder einschließen.
 
-Sternensalve: 210 px Zielreichweite, 72 px Trefferradius, 28 s Abklingzeit, 0,18 s Vorbereitung, Einschlag bei 0,60 s, Ausklang bis 0,95 s. Schaden pro getroffener Einheit: `round(max(70, 1.5 * höchste ungebuffte Turm-DPS))`; Flieger ×1,5, danach normale Rüstung. Keine Dauerfeuer-Grundattacke. Zielpunkt bleibt während des Flugs fest. Quelltyp/-stufe, berechneter Schaden, Ursprung, Alter und Trefferstatus werden eingefroren und validiert. Gemeinsame Killabrechnung verhindert doppelte Goldvergabe mit Turmprojektilen.
+Sternensalve: 210 px Zielreichweite, 72 px Trefferradius, 28 s Abklingzeit, Neue Salven: 0,243 s Vorbereitung, Einschlag bei 0,81 s, Ausklang bis 1,2825 s (35 % längere Darstellung). Die gespeicherte Phasenuhr `age` läuft mit `dt / pace`; `pace: 1.35` gilt für neue Salven. Schema 21 wird nach Validierung zu 22 übernommen; bereits fliegende Salven ohne `pace` behalten ihr altes Timing (0,18 / 0,60 / 0,95 s), Trefferstatus und verbleibenden Cooldown. Kein nachträgliches Verschieben oder Wiederholen von Treffern. Schaden pro getroffener Einheit: `round(max(70, 1.5 * höchste ungebuffte Turm-DPS))`; Flieger ×1,5, danach normale Rüstung. Keine Dauerfeuer-Grundattacke. Zielpunkt bleibt während des Flugs fest. Quelltyp/-stufe, berechneter Schaden, Ursprung, Phasenalter, Tempo und Trefferstatus werden eingefroren und validiert. Gemeinsame Killabrechnung verhindert doppelte Goldvergabe mit Turmprojektilen.
 
 Die erste Anwendung ist manuell. Nach bewusst gewähltem Standort und tatsächlich ausgelöster Salve erscheint die optionale Automatik. Sie wartet auf eine Gruppe (mindestens zwei normale Gegner), einen Flieger oder Boss in Reichweite. Nicht während Bewegung, Abklingzeit oder leerer Wellen wirken. Keine neue automatische Lernpause oder dauerhafte Hinweis-Kachel. Pfeil an den realen Standort-/Zauberbuttons, nach Auswahl freies Spielfeld; Zielkreis und Flugphase zeigen die Wirkung.
 

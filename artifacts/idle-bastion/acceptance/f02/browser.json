@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "view": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "recruitCost": 0,
+      "realMove": true,
+      "realTargetedCast": true,
+      "reloadDuringFlight": true,
+      "optionalAuto": true
+    },
+    {
+      "view": "mobile",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "recruitCost": 0,
+      "realMove": true,
+      "realTargetedCast": true,
+      "reloadDuringFlight": true,
+      "optionalAuto": true
+    }
+  ],
+  "errors": []
+}

@@ -1,7 +1,8 @@
 /** Idle-owned movement and saved volley timing. No rendering or reward logic. */
 import { cellCenter, findFootpath, isWalkableCell, type GridCell, type IdleLayout, type WorldPoint } from './layout';
-export const ILYRA = Object.freeze({ speed: 110, range: 210, radius: 72, cooldown: 28, windup: .18, impact: .6, duration: .95, airMultiplier: 1.5 });
-export interface IlyraVolley { x:number; y:number; originX:number; originY:number; age:number; damage:number; sourceKind:1|2|3|4; sourceLevel:number; hit:boolean }
+export const ILYRA = Object.freeze({ speed: 110, range: 210, radius: 72, cooldown: 28, windup: .18, impact: .6, duration: .95, volleyPace: 1.35 as const, airMultiplier: 1.5 });
+/** age uses the original animation clock; pace stretches real time. Legacy volleys omit it. */
+export interface IlyraVolley { x:number; y:number; originX:number; originY:number; age:number; pace?:1.35; damage:number; sourceKind:1|2|3|4; sourceLevel:number; hit:boolean }
 export interface IlyraState extends WorldPoint {
  x:number; y:number; path:WorldPoint[]; direction:'down'|'right'|'up'|'left';
  cooldown:number; autoCast:boolean; introduction:'move'|'cast'|'done'; volley:IlyraVolley|null;
@@ -54,10 +55,10 @@ export function validIlyra(value:unknown,layout:IdleLayout,blocked:readonly Grid
  if(s.volley!==null){
   const v=s.volley;if(!v||typeof v!=='object'||!number(v.x,0,layout.bounds.width-1)||!number(v.y,0,layout.bounds.height-1)
    ||!number(v.originX,0,layout.bounds.width-1)||!number(v.originY,0,layout.bounds.height-1)||!number(v.age,0,ILYRA.duration)
-   ||![1,2,3,4].includes(v.sourceKind)||!Number.isInteger(v.sourceLevel)||v.sourceLevel<1||v.sourceLevel>20
+   ||(v.pace!==undefined&&v.pace!==ILYRA.volleyPace)||![1,2,3,4].includes(v.sourceKind)||!Number.isInteger(v.sourceLevel)||v.sourceLevel<1||v.sourceLevel>20
    ||v.damage!==damageFor(v.sourceKind,v.sourceLevel)||typeof v.hit!=='boolean'||v.hit!==(v.age>=ILYRA.impact)
    ||Math.hypot(v.x-v.originX,v.y-v.originY)>ILYRA.range+1e-6||Math.hypot(v.originX-s.x,v.originY-s.y)>1e-6
-   ||s.introduction==='move'||s.cooldown<ILYRA.cooldown-v.age-1e-5)return false;
+   ||s.introduction==='move'||s.cooldown<ILYRA.cooldown-v.age*(v.pace??1)-1e-5)return false;
  }
  return true;
 }

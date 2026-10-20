@@ -29,6 +29,16 @@ try {
                         if ($sample.A -ge $threshold) { $color = [Drawing.Color]::FromArgb(255, $sample.R, $sample.G, $sample.B) }
                     }
                 }
+                # Hand-checked negative-space mask, after source sampling and before mirroring.
+                # Never erase a coloured body/weapon pixel if the source is changed later.
+                foreach ($run in $frame.clearRuns) {
+                    if ($y -eq $run[0] -and $x -ge $run[1] -and $x -le $run[2]) {
+                        if ($color.A -gt 0 -and [Math]::Max($color.R, [Math]::Max($color.G, $color.B)) -ge 65) {
+                            throw "Alpha repair overlaps artwork: $($frame.name) at $x,$y"
+                        }
+                        $color = [Drawing.Color]::Transparent
+                    }
+                }
                 if ($color.A -gt 0) {
                     $atlas.SetPixel($column*64+$x, $row*64+$y, $color)
                     $minX=[Math]::Min($minX,$x); $minY=[Math]::Min($minY,$y)
