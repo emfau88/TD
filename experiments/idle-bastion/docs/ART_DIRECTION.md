@@ -22,6 +22,7 @@ Alle Maße unten sind Spieleinheiten bei 100 % Weltmaßstab. Eine Zelle bleibt *
 | Wasser | Originalteile 32 × 32 aus zehn Konstruktionsframes | 20 × 20 je Teil; zwei Teile pro Spielzelle; vorhandene Anschlüsse und Animation übernehmen |
 | Bäume | Einzelzuschnitte 62 × 64 | Rahmen 49,6 × 51,2; Faktor 0,8; Mitte unten; vorhandene Platzierungsregel |
 | Waldwächter | Basis 64 × 128, Waffe 96 × 96 | Faktor 0,63; sichtbare Basis Stufe I ungefähr 40 × 62; Originalmontage beibehalten |
+| Frostkristall | Basis 64 × 192; drei Stufen | Faktor 0,63; Bodenanker (32 / 166,4) statt des bisherigen relativen 0,81-Ankers. Gemeinsamer unterer Abstand 25,6 Quellpixel wie bei den 128er Türmen; Kristall gemeinsam um 6,8544 Spieleinheiten angehoben. `towerMount()` gilt für Vorschau und fertigen Turm |
 | Wisp | 64 × 64 Frames | Faktor 0,9; sichtbare Silhouette ungefähr 23 × 30; Ursprung (0,5 / 51÷64) |
 | Mara | Vorhandene vermessene Quelle, 64 × 64 Laufzeitframes | Maßstab 1; sichtbare Höhe etwa 38–42; Fußpunkt (32 / 56) |
 | Rosenspiegel | `public/assets/Succubus Pixel v2.png` (vorhandener v3-Inhalt unter Kompatibilitätsnamen), reine Frame-Funktion aus `reference/src/succubus-art.ts` | 64 × 64 Frames; Faktor 1,15 als Boss, Fußpunkt (32 / 56). Vorhandenes Laufen und Tanzen; Herzfaden/Zielring als Canvas-Effekte; auf ausdrücklichen Nutzerwunsch zusätzlich 136 × 164 CSS-Pixel großes Tanzfenster mit dem Original-HD-Atlas |

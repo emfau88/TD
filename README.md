@@ -6,6 +6,8 @@
 
 [Ilyras Lauf- und Zauberanimationen ansehen](https://emfau88.github.io/TD/idle-bastion/ilyra-check.html) · Separate Vorschau neben Mara; Rekrutierung und Sternensalve sind noch nicht im Spiel.
 
+**Darstellung korrigiert:** Der Frostturm sitzt in Bauvorschau und allen drei Ausbaustufen auf gleicher Bodenhöhe wie seine Nachbartürme. [Kompakter Nachweis](artifacts/idle-bastion/acceptance/f01/REPORT.md).
+
 **Neu – Siedlung nach Boss 25:** Nach dem tatsächlichen Sieg wird die **Taverne für 1.200 Gold** unter Siedlung freigeschaltet. Frei platzierbar und dauerhaft gespeichert; vorerst optionaler Treffpunkt **ohne Ilyra oder Kampfbonus**. Die erste Rekrutierung folgt später ohne weitere Goldkosten. Werkstatt II hat ein eigenes Imagegen-Gebäude erhalten; Werkstatt I/II, Lager und Taverne sind direkt auf der Karte beschriftet. [Prüfumfang und Nachweise](artifacts/idle-bastion/acceptance/b15/REPORT.md) · [Aktuelle Roadmap](experiments/idle-bastion/ROADMAP.md#akt-ii).
 
 <details open>

@@ -11,7 +11,7 @@ import { wispPose } from './wisp';
 import Phaser from 'phaser';
 import { BASE, IdleBattle, stats, towerDefinition, visualStage, type BattleEvent, type TowerId, type Enemy, type Tower } from './battle';
 import { cellCenter, SETTLEMENT_ZONE, TAVERN_ZONE, buildingWidth, type BuildingId, type GridCell, type TowerPad } from './layout';
-import { KEYS, MARA_FOOT, SCALE, enemyFrame, enemyFlip, loopFrame, maraFrame, towerArt, preloadArt, prepareArt } from './art';
+import { KEYS, MARA_FOOT, SCALE, enemyFrame, enemyFlip, loopFrame, maraFrame, towerArt, towerMount, preloadArt, prepareArt } from './art';
 import { createForest, type ForestView } from './forest';
 
 export interface BattleSceneHooks {
@@ -394,10 +394,10 @@ export class BattleScene extends Phaser.Scene {
       if (Math.hypot(p.x - point.x, p.y - point.y) <= range) g.fillStyle(0xffe0a0, 0.2).fillRect(cell.x * size, cell.y * size, size, size);
     }
     if (!tower && this.buildKind) {
-      const art = towerArt(this.buildKind), valid = this.sim.canBuild(pad.id, this.buildKind);
-      this.ghostBase.setVisible(true).setTexture(art.base, 0).setPosition(point.x, point.y + 13).setScale(SCALE.tower)
-        .setOrigin(0.5, this.buildKind === 2 ? 0.81 : 0.8).setAlpha(0.75).setTint(valid ? 0xffffff : 0xff9999);
-      this.ghostWeapon.setVisible(true).setTexture(art.weapons[0], 0).setPosition(point.x, point.y - (this.buildKind === 2 ? 34 : 23))
+      const art = towerArt(this.buildKind), mount = towerMount(this.buildKind), valid = this.sim.canBuild(pad.id, this.buildKind);
+      this.ghostBase.setVisible(true).setTexture(art.base, 0).setPosition(point.x, point.y + mount.baseY).setScale(SCALE.tower)
+        .setOrigin(0.5, mount.originY).setAlpha(0.75).setTint(valid ? 0xffffff : 0xff9999);
+      this.ghostWeapon.setVisible(true).setTexture(art.weapons[0], 0).setPosition(point.x, point.y + mount.weaponY)
         .setScale(SCALE.tower).setAlpha(0.75).setTint(valid ? 0xffffff : 0xff9999);
     }
     g.lineStyle(2, 0xf2daa0, 0.95).strokeEllipse(point.x, point.y + 7, 35, 18);
@@ -406,9 +406,10 @@ export class BattleScene extends Phaser.Scene {
   private towerView(tower: Tower): TowerView {
     let view = this.towerViews.get(tower.uid);
     if (!view) {
+      const art = towerArt(tower.def.id, tower.visualStage), mount = towerMount(tower.def.id);
       view = {
-        base: this.add.image(tower.x, tower.y + 13, towerArt(tower.def.id).base, 0).setOrigin(0.5, 0.8).setScale(SCALE.tower).setDepth(tower.y + 1000),
-        weapon: this.add.image(tower.x, tower.y - 23, KEYS.weapon, 0).setScale(SCALE.tower).setDepth(tower.y + 1001),
+        base: this.add.image(tower.x, tower.y + mount.baseY, art.base, tower.visualStage - 1).setOrigin(0.5, mount.originY).setScale(SCALE.tower).setDepth(tower.y + 1000),
+        weapon: this.add.image(tower.x, tower.y + mount.weaponY, art.weapons[tower.visualStage - 1], 0).setScale(SCALE.tower).setDepth(tower.y + 1001),
       };
       this.towerViews.set(tower.uid, view);
     }
@@ -438,17 +439,17 @@ export class BattleScene extends Phaser.Scene {
       const charmed = sim.isCharmed(tower.uid);
       const boosted = sim.isMaraBoosted(tower.uid), firingCooldown = stat.cooldown / ((boosted ? 1.5 : 1) * (charmed ? BOSS.rateMultiplier : 1));
       const firingAge = elapsed - this.combatEffects.firedAt(tower.uid);
-      const art = towerArt(tower.def.id, tower.visualStage);
+      const art = towerArt(tower.def.id, tower.visualStage), mount = towerMount(tower.def.id);
       const frame = weaponFrame(tower.def.id, tower.visualStage, firingAge, elapsed, firingCooldown);
       const weaponKey = art.weapons[tower.visualStage - 1];
       if (view.weapon.texture.key !== weaponKey) view.weapon.setTexture(weaponKey);
-      view.base.setFrame(tower.visualStage - 1).setOrigin(0.5, tower.def.id === 2 ? 0.81 : 0.8);
+      view.base.setFrame(tower.visualStage - 1).setOrigin(0.5, mount.originY);
       const age = charmAge(sim.bossCharm), wobble = charmed ? Math.sin(age * 8) * 0.035 : 0;
       const tremble = charmed ? Math.sin(age * 31) * 0.65 : 0;
       const tint = charmed ? Phaser.Display.Color.GetColor(255, Math.round(192 + Math.sin(age * 5) * 22), Math.round(229 + Math.sin(age * 5) * 10))
         : boosted ? 0xffedbe : 0xffffff;
-      view.base.setPosition(tower.x + tremble * 0.6, tower.y + 13).setRotation(wobble * 0.4).setTint(tint);
-      view.weapon.setPosition(tower.x + tremble, tower.y - (tower.def.id === 2 ? 34 : 23)).setFrame(Math.max(0, frame)).setRotation((tower.def.id === 2 ? 0 : tower.angle) + wobble).setTint(tint);
+      view.base.setPosition(tower.x + tremble * 0.6, tower.y + mount.baseY).setRotation(wobble * 0.4).setTint(tint);
+      view.weapon.setPosition(tower.x + tremble, tower.y + mount.weaponY).setFrame(Math.max(0, frame)).setRotation((tower.def.id === 2 ? 0 : tower.angle) + wobble).setTint(tint);
       if (boosted) {
         const alpha = 0.45 + Math.sin(elapsed * 7) * 0.15;
         // A warm, quiet aura distinguishes support from the boss's pink wobble.

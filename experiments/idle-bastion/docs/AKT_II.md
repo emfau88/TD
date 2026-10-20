@@ -29,6 +29,10 @@ Neue Türme werden in der vorhandenen Werkstatt bewusst für Gold erforscht. For
 
 In B16 erhalten erforschte Technologien kleine passende Icons mit Häkchen in der Werkstatt. Antippen zeigt Name und Wirkung; gesperrte Einträge sind gedimmt und nennen ihre Voraussetzung. Vorhandene Frost-/Turmforschung einbeziehen, B20 ergänzt Glutwerfer. Keine zusätzliche permanente HUD-Leiste. Diese Icons und Turmfreischaltungen sind vorgemerkt, nicht Teil der Tavernenimplementierung.
 
+## Ergänzte Siedlungsplanung am Kern
+
+Die Roadmap-Ergänzung vom 20.10.2026 zieht eine nützliche Basisfläche als B17a vor: frei platzierbare Werkstatt, Lager und Taverne südlich/südöstlich des unveränderten Kerns, zunächst ohne Ostangriff. Ein reservierter Ostkorridor samt drei Reihen Turmbaufläche je Seite verhindert spätere Konflikte mit Gebäuden. Bestehende Gebäudeplätze bleiben in Altsaves bis zum bewussten kostenlosen Umzug gültig; bestehender Lichtungsbesitz wird erhalten und später angerechnet. Front/Basis-Kameraziele und positionsabhängige Tutorialführung gehören zum selben Paket. Der ursprüngliche große Ostkartenumfang unten wird als B17b weitergeführt. Verbindliche Reihenfolge, Checklisten und Umfang stehen ausschließlich in der Roadmap; derzeit ist nur der separate Frostturm-Fix beauftragt.
+
 ## Große Osthälfte mit gemeinsamem Kern
 
 Ausgangspunkt ist die bisherige 28×16-Karte, mit Lichtung 32×16. Der geplante Gesamtumfang liegt ungefähr bei **56×16 Zellen** bei gleicher 40er Zellgröße. Der Kern bleibt an seiner bisherigen Position `(27, 6)`; rechts soll ähnlich viel sinnvoller Verteidigungsraum entstehen wie links. Das genaue Endmaß folgt aus einer Weg-/Bauflächenprobe, nicht aus dem Wunsch, möglichst viel Fläche hinzuzufügen.

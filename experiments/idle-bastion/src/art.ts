@@ -71,6 +71,16 @@ export const KEYS = Object.freeze({
   tavern: 'idle-tavern', warehouse: 'idle-warehouse', workshop: 'idle-workshop', workshopUpgraded: 'idle-workshop-ii', workshopDamaged: 'idle-workshop-damaged',
 });
 export const SCALE = Object.freeze({ tile: 0.625, tree: 0.8, tower: 0.63, enemy: 0.83, mara: 1, projectile: 0.45 });
+// Keep the approved 128px tower mount and its 25.6px foreground inset.
+// Frost uses a 192px frame: using 0.81 put its feet 6.8544px too low.
+const towerFootInset = 128 * (1 - 0.8);
+const frostOriginY = (192 - towerFootInset) / 192;
+const frostLift = (frostOriginY - 0.81) * 192 * SCALE.tower;
+const normalMount = Object.freeze({ baseY: 13, originY: 0.8, weaponY: -23 });
+const frostMount = Object.freeze({ baseY: 13, originY: frostOriginY, weaponY: -34 - frostLift });
+/** Preview, first frame and live rendering must use the same source-space foot anchor. */
+export function towerMount(kind: number) { return kind === 2 ? frostMount : normalMount; }
+
 export const LEAF_FRAMES = Object.freeze([0,1,2,3,4,5,8,9,10,11,12,13,16,17,18,19,20,21,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,56,57,58,59,60,61,62,64,65,66,67,68,69,70]);
 export const FIRE_FRAMES = Object.freeze([0,1,2,3,4,5,11,12,13,14,15,16,22,23,24,25,26,27,33,34,35,36,37,38,39,40,44,45,46,47,48,49,50,51,55,56,57,58,59,60,61,62,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98]);
 export type EnemyDirection = 'up' | 'down' | 'side';

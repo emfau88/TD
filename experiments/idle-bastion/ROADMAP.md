@@ -635,14 +635,50 @@ M = abgegrenzter Funktionsausbau, L = mehrere zusammenhängende Systeme. Das sin
 | --- | --- | --- | --- | --- |
 | B15 | Taverne und verständlich eingeführte Ilyra | M–L, zwei Teilschritte | Bestehender Akt I | Teilweise: B15a veröffentlicht; B15b offen |
 | B16 | Sturmlicht als neue taktische Turmrolle | M | B15b / Ilyras Einführung | Geplant |
-| B17 | Große Ostkarte und passende Kamera | M | B15; gemeinsam mit B18 vorbereiten | Geplant, bis B19 nur Entwicklung |
+| B17 | B17a: Siedlung am Kern; B17b: große Ostkarte | M je Teilschritt | B17a nach F01; B17b mit B18 vorbereiten | Geplant; nur B17b bis B19 intern |
 | B18 | Zwei Kampfrouten, sichere Saves und Farming | L, zwei Teilschritte | B17; relevante offene Speicherrisiken aus B14 klären | Geplant |
 | B19 | Vorbereitbarer, bewusst geöffneter Ostangriff | M | B15–B18 | Geplant; erste öffentliche Ostfront |
 | B20 | Glutwerfer und belastbarer Brandschaden | M | B19 | Geplant |
 | B21 | Wellen 26–40, Zusammenspiel und Akt-II-Boss | L, Wellen und Boss getrennt bearbeiten | B19/B20 | Geplant |
 | B22 | Kompakte Gesamtprobe und prüfbare Lieferung | M | B15–B21 | Geplant |
 
-B15/B16 können eigenständig spielbar veröffentlicht werden. B17/B18 dürfen in Zwischenständen keine kostenpflichtige leere Erweiterung und keine unfertige Front aktivieren. Die Ostfront wird erst mit B19 angeboten. Erforderliche Speicherreparaturen gehen der Einführung neuer Routen vor; das ersetzt nicht die übrigen offenen B14-Nachweise.
+B15/B16 können eigenständig spielbar veröffentlicht werden. B17a darf die nützliche Siedlungsfläche nach eigener Beauftragung bereits veröffentlichen. B17b/B18 dürfen in Zwischenständen keine kostenpflichtige leere Erweiterung und keine unfertige Front aktivieren. Die Ostfront wird erst mit B19 angeboten. Erforderliche Speicherreparaturen gehen der Einführung neuer Routen vor; das ersetzt nicht die übrigen offenen B14-Nachweise.
+
+### Ergänzung vom 20.10.2026 — Frostturm und Siedlung am Kern
+
+**Auftrag:** Plan ergänzen und anschließend **F01/Frostturm umsetzen**. B17a/B17b werden hier geplant, durch diesen Auftrag noch nicht implementiert. Bestehende Pakete und Nachweise bleiben erhalten. Empfohlene Reihenfolge: F01 → B17a → B15b/Ilyras Einführung → B16 → B17b/B18 → B19. Die fertige Ilyra-Animationsvorschau bleibt unabhängig nutzbar.
+
+#### F01 — Frostturm auf denselben Boden setzen
+
+**Umfang klein, umgesetzt und kompakt geprüft.** Grafikrahmen 64×192 gegenüber 64×128 bei den anderen Türmen; die bisherigen Anker 0,81/0,8 erzeugen bei Faktor 0,63 einen relativen Versatz von 6,8544 Spieleinheiten nach unten.
+
+- [x] Einen gemeinsamen Montagevertrag für Bauvorschau, Erzeugung und laufende Darstellung verwenden; Frostsockel unten mit den übrigen Turmtypen ausrichten.
+- [x] Frostkristall um denselben Betrag mitführen, damit seine Position relativ zum Sockel erhalten bleibt. Rahmen/Animationen aller drei Stufen beibehalten.
+- [x] Baukoordinaten, Reichweiten, Auswahlzelle, Save-Schema und Kampfregeln unverändert lassen. Kein neues Asset.
+- [x] Kompakt prüfen: Produktionsbuild sowie Vorschau/Bau/Upgrade in drei Stufen neben anderen Türmen, ober- und unterhalb eines Wegs; Bau-Staub und eine Hochkantansicht mitprüfen.
+
+Nachweis: [F01-Bericht mit Messwerten und Spielansichten](../../artifacts/idle-bastion/acceptance/f01/REPORT.md). Tatsächliche Sprite-Unterkanten bei allen drei Vergleichstürmen/-stufen identisch (29,128 Spieleinheiten unter der Zellenmitte), Vorschau/Bau deckungsgleich. Produktionsbuild bestanden; keine zusätzliche Volltestsuite.
+
+**Fertig, wenn:** Vorschau und gebauter Frostturm denselben Platz zeigen und der Sockel in jeder Stufe auf gleicher Höhe wie die Nachbartürme steht.
+
+#### B17a — Siedlung am Kern, vorgezogener Kartenteil
+
+**Geplant; eigene Umsetzung noch offen.** Die Basisfläche bekommt sofort einen Nutzen durch bestehende Gebäude. Sie schaltet keine neue Angriffsroute frei.
+
+- [ ] Kern bei `(27, 6)`, 40er Zellen und bestehenden Westweg erhalten. Die Startkarte rechts um eine kompakte, von Anfang an zugängliche Basisfläche erweitern; Arbeitsmaß etwa 10–12 zusätzliche Spalten, Endmaß nach gemeinsamer Weg-/Gebäudeprobe.
+- [ ] Werkstatt, Lager und Taverne südlich/südöstlich des Kerns in einem frei bebaubaren Siedlungsbereich unterbringen. Vorplätze, Gehwege, Bauanimationen, Beschriftungen und Reserve für wenige spätere Gebäude einplanen; vorhandene Assets und Grundstücksgrößen übernehmen.
+- [ ] Den künftigen Ostweg zum Kern schon geometrisch reservieren, einschließlich bis zu drei Reihen Turmbaufläche auf beiden Seiten. Siedlung außerhalb dieses Korridors halten; reservierte Bereiche im aktuellen Spiel nicht als fertige Front oder bezahlbares leeres Gebiet anbieten.
+- [ ] Neue Spiele beginnen mit der neuen Siedlungsfläche. In Altsaves Gebäude, Stufen, Gold und Fortschritt erhalten; bisherigen Standort bis zu einem bewusst gewählten kostenlosen Umzug gültig lassen. Umzug nur in sicherer Pause, atomar speichern und zugängliche Eingänge garantieren. Türme und laufende Gegner nicht verschieben.
+- [ ] Bisher für 900 Gold gekaufte Lichtung samt gesetzten Türmen erhalten. Ihr Besitz wird für den späteren Ostzugang angerechnet; die kostenlose Basisfläche ersetzt diesen Gegenwert nicht durch einen erneuten Kauf. Genaue Anrechnung vor der Migration festlegen.
+- [ ] Kamera bekommt kompakte direkte Ziele Front/Basis, später West/Kern/Ost. Hochkant Maßstab erhalten. Bau-/Forschungsführung zeigt den realen Zielort, lässt den Aufbau sichtbar und bietet einfachen Rückweg; keine automatische Kamerafahrt bei jedem Ereignis.
+- [ ] Einführung mit Mara, Werkstatt/Frost, Wisp-Ankunft und später Ilyra an tatsächliche Gebäude-/Kernpositionen anbinden. Bestehende Lernpausen und klare Menüführung erhalten; keine zweite Pflichtanleitung, keine längere Sparphase.
+- [ ] Kompakt prüfen: ein frischer Einstieg bis Werkstatt, ein fortgeschrittener Save mit allen Gebäuden und gekaufter Lichtung, kostenloser Umzug samt Reload sowie Front/Basis-Wechsel in normalem Hochkant.
+
+**Fertig, wenn:** Die Basis ist als geschützte Siedlung am Kern verständlich, Gebäude bleiben frei platzierbar und erreichbar, der zukünftige Ostkorridor bleibt frei, und Altsaves verlieren keinen Besitz.
+
+#### B17b — Ostkarte auf dieser Basis fortführen
+
+Die ursprünglichen großen Ostkarten-/Kameraanforderungen unter B17 bleiben bestehen. Die neue Siedlung und ihr sicherer Umzug werden in B17a vorgezogen; Angaben zum Erhalt alter Gebäudeplätze gelten für die Übergangsphase bis zum freiwilligen Umzug. B17b erweitert anschließend östlich der Basis in Richtung des bisherigen Arbeitsziels von etwa 56×16 Zellen. B18 liefert Routen/Speicherung, B19 die bewusst eröffnete Ostfront. Keine Ostgegner durch B17a und keine zweite Zahlung für bereits erworbenes Gebiet.
 
 ### B15 — Taverne und Ilyras erste Rekrutierung
 
@@ -694,9 +730,9 @@ Die ursprünglichen Gameplay-Anforderungen bleiben erhalten; Figurenimplementier
 
 **Fertig, wenn:** Sturmlicht schafft eine erkennbare neue Bauentscheidung und übersteht Save/Reload mit korrekten Treffern und Kosten.
 
-### B17 — Ostgebiet und Kamera vorbereiten
+### B17 — Ostgebiet und Kamera vorbereiten (ursprünglicher Umfang, jetzt B17b)
 
-**Ergebnis:** Eine taktisch nutzbare zweite Kartenhälfte. Noch keine öffentliche Freischaltung ohne B18/B19.
+**Ergebnis:** Eine taktisch nutzbare zweite Kartenhälfte. Noch keine öffentliche Freischaltung der Ostfront ohne B18/B19. Die vorgezogene, bereits nutzbare Siedlungsfläche wird separat in B17a geplant (Ergänzung vom 20.10.2026).
 
 - [ ] Von der heutigen 28/32×16-Karte auf ungefähr 56×16 planen: östlich des Kerns ähnlich viel Raum wie westlich. Endmaß nach Weg-/Bauflächenprobe festlegen; 40er Zellen und bestehende Weltkoordinaten erhalten.
 - [ ] Kern bei seiner bisherigen Position belassen; eigene Oststrecke führt von rechts zum selben Kern. Mindestens zwei unterscheidbare Abschnitte mit sinnvoll kombinierbaren Turmplätzen und bis zu drei bebaubaren Zellen beiderseits des Weges vorsehen.
