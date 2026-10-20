@@ -1,0 +1,354 @@
+[
+  {
+    "id": 0,
+    "name": "down-idle",
+    "bounds": [
+      17,
+      11,
+      45,
+      56
+    ],
+    "opaquePixels": 760
+  },
+  {
+    "id": 1,
+    "name": "down-walk-1",
+    "bounds": [
+      18,
+      12,
+      47,
+      56
+    ],
+    "opaquePixels": 765
+  },
+  {
+    "id": 2,
+    "name": "down-walk-2",
+    "bounds": [
+      18,
+      12,
+      44,
+      56
+    ],
+    "opaquePixels": 735
+  },
+  {
+    "id": 3,
+    "name": "down-walk-3",
+    "bounds": [
+      18,
+      12,
+      46,
+      56
+    ],
+    "opaquePixels": 768
+  },
+  {
+    "id": 4,
+    "name": "down-walk-4",
+    "bounds": [
+      18,
+      11,
+      43,
+      56
+    ],
+    "opaquePixels": 713
+  },
+  {
+    "id": 5,
+    "name": "down-cast-prepare",
+    "bounds": [
+      17,
+      11,
+      48,
+      56
+    ],
+    "opaquePixels": 784
+  },
+  {
+    "id": 6,
+    "name": "down-cast-release",
+    "bounds": [
+      17,
+      13,
+      57,
+      56
+    ],
+    "opaquePixels": 844
+  },
+  {
+    "id": 7,
+    "name": "down-cast-recover",
+    "bounds": [
+      17,
+      11,
+      45,
+      56
+    ],
+    "opaquePixels": 760
+  },
+  {
+    "id": 8,
+    "name": "right-idle",
+    "bounds": [
+      14,
+      13,
+      41,
+      56
+    ],
+    "opaquePixels": 721
+  },
+  {
+    "id": 9,
+    "name": "right-walk-1",
+    "bounds": [
+      14,
+      14,
+      42,
+      56
+    ],
+    "opaquePixels": 696
+  },
+  {
+    "id": 10,
+    "name": "right-walk-2",
+    "bounds": [
+      15,
+      14,
+      42,
+      56
+    ],
+    "opaquePixels": 672
+  },
+  {
+    "id": 11,
+    "name": "right-walk-3",
+    "bounds": [
+      13,
+      14,
+      41,
+      56
+    ],
+    "opaquePixels": 707
+  },
+  {
+    "id": 12,
+    "name": "right-walk-4",
+    "bounds": [
+      13,
+      14,
+      40,
+      56
+    ],
+    "opaquePixels": 693
+  },
+  {
+    "id": 13,
+    "name": "right-cast-prepare",
+    "bounds": [
+      14,
+      12,
+      44,
+      57
+    ],
+    "opaquePixels": 731
+  },
+  {
+    "id": 14,
+    "name": "right-cast-release",
+    "bounds": [
+      12,
+      16,
+      59,
+      56
+    ],
+    "opaquePixels": 812
+  },
+  {
+    "id": 15,
+    "name": "right-cast-recover",
+    "bounds": [
+      14,
+      13,
+      41,
+      56
+    ],
+    "opaquePixels": 721
+  },
+  {
+    "id": 16,
+    "name": "up-idle",
+    "bounds": [
+      15,
+      14,
+      45,
+      56
+    ],
+    "opaquePixels": 757
+  },
+  {
+    "id": 17,
+    "name": "up-walk-1",
+    "bounds": [
+      15,
+      13,
+      45,
+      56
+    ],
+    "opaquePixels": 723
+  },
+  {
+    "id": 18,
+    "name": "up-walk-2",
+    "bounds": [
+      18,
+      13,
+      45,
+      56
+    ],
+    "opaquePixels": 703
+  },
+  {
+    "id": 19,
+    "name": "up-walk-3",
+    "bounds": [
+      15,
+      13,
+      44,
+      56
+    ],
+    "opaquePixels": 741
+  },
+  {
+    "id": 20,
+    "name": "up-walk-4",
+    "bounds": [
+      16,
+      13,
+      45,
+      56
+    ],
+    "opaquePixels": 719
+  },
+  {
+    "id": 21,
+    "name": "up-cast-prepare",
+    "bounds": [
+      17,
+      13,
+      47,
+      56
+    ],
+    "opaquePixels": 752
+  },
+  {
+    "id": 22,
+    "name": "up-cast-release",
+    "bounds": [
+      16,
+      13,
+      57,
+      56
+    ],
+    "opaquePixels": 802
+  },
+  {
+    "id": 23,
+    "name": "up-cast-recover",
+    "bounds": [
+      15,
+      14,
+      45,
+      56
+    ],
+    "opaquePixels": 757
+  },
+  {
+    "id": 24,
+    "name": "left-idle",
+    "bounds": [
+      23,
+      13,
+      50,
+      56
+    ],
+    "opaquePixels": 721
+  },
+  {
+    "id": 25,
+    "name": "left-walk-1",
+    "bounds": [
+      22,
+      14,
+      50,
+      56
+    ],
+    "opaquePixels": 696
+  },
+  {
+    "id": 26,
+    "name": "left-walk-2",
+    "bounds": [
+      22,
+      14,
+      49,
+      56
+    ],
+    "opaquePixels": 672
+  },
+  {
+    "id": 27,
+    "name": "left-walk-3",
+    "bounds": [
+      23,
+      14,
+      51,
+      56
+    ],
+    "opaquePixels": 707
+  },
+  {
+    "id": 28,
+    "name": "left-walk-4",
+    "bounds": [
+      24,
+      14,
+      51,
+      56
+    ],
+    "opaquePixels": 693
+  },
+  {
+    "id": 29,
+    "name": "left-cast-prepare",
+    "bounds": [
+      20,
+      12,
+      50,
+      57
+    ],
+    "opaquePixels": 731
+  },
+  {
+    "id": 30,
+    "name": "left-cast-release",
+    "bounds": [
+      5,
+      16,
+      52,
+      56
+    ],
+    "opaquePixels": 812
+  },
+  {
+    "id": 31,
+    "name": "left-cast-recover",
+    "bounds": [
+      23,
+      13,
+      50,
+      56
+    ],
+    "opaquePixels": 721
+  }
+]

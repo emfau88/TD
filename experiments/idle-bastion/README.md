@@ -10,6 +10,8 @@ Am 19.10.2026 wurde die Roadmap um [Akt II, B15–B22](ROADMAP.md#akt-ii) erweit
 
 Anschließend wurde B15a ausdrücklich zur Umsetzung freigegeben: Taverne ohne Ilyra, ein neues Werkstatt-II-Asset und Gebäudebeschriftungen. Taverne nach tatsächlichem Sieg über Boss 25 für 1.200 Gold; derzeit optional ohne Rekrutierung oder Kampfbonus. B15b/Ilyra und weitere Akt-II-Funktionen bleiben geplant. Die folgenden ursprünglichen Umfangsgrenzen beschreiben Akt I und bleiben als Grundlage erhalten; geplante Erweiterungen sind ausdrücklich in Akt II abgegrenzt. B14/G2 und B12d bleiben getrennt offen. Die spätere ausdrückliche Autorisierung für Commit/Push auf dem Idle-Branch gilt weiterhin; historische Aussagen zur ersten Planungsaufgabe sind keine neue Veröffentlichungssperre.
 
+Ilyras neue Animationen lassen sich separat in der [bewegten Vorschau](https://emfau88.github.io/TD/idle-bastion/ilyra-check.html) neben Mara ansehen. [Assetvertrag und Prompts](assets/ilyra/README.md); Rekrutierung und Sternensalve folgen im geplanten B15b.
+
 ## Verbindliche Unterlagen
 
 | Dokument | Zweck |

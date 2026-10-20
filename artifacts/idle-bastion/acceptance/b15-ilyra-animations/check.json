@@ -1,0 +1,73 @@
+{
+  "preview": "http://127.0.0.1:5191/ilyra-check.html",
+  "frameChecks": [
+    {
+      "direction": "down",
+      "walk": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "cast": [
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "direction": "right",
+      "walk": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "cast": [
+        "13",
+        "14",
+        "15"
+      ]
+    },
+    {
+      "direction": "up",
+      "walk": [
+        "17",
+        "18",
+        "19",
+        "20"
+      ],
+      "cast": [
+        "21",
+        "22",
+        "23"
+      ]
+    },
+    {
+      "direction": "left",
+      "walk": [
+        "25",
+        "26",
+        "27",
+        "28"
+      ],
+      "cast": [
+        "29",
+        "30",
+        "31"
+      ]
+    }
+  ],
+  "castReturnsToIdle": true,
+  "desktop": [
+    900,
+    950
+  ],
+  "mobile": [
+    430,
+    932
+  ],
+  "mobileDpr": 2,
+  "mobileOverflow": false,
+  "errors": []
+}

@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "image": "ilyra-atlas.png",
+  "frameSize": [
+    64,
+    64
+  ],
+  "columns": 8,
+  "foot": [
+    32,
+    56
+  ],
+  "directions": {
+    "down": {
+      "idle": {
+        "frames": [
+          0
+        ],
+        "durationsMs": [
+          1000
+        ],
+        "loop": true
+      },
+      "walk": {
+        "frames": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "durationsMs": [
+          125,
+          125,
+          125,
+          125
+        ],
+        "loop": true
+      },
+      "cast": {
+        "frames": [
+          5,
+          6,
+          7
+        ],
+        "durationsMs": [
+          180,
+          140,
+          200
+        ],
+        "loop": false,
+        "releaseAtMs": 180,
+        "returnTo": "idle"
+      }
+    },
+    "right": {
+      "idle": {
+        "frames": [
+          8
+        ],
+        "durationsMs": [
+          1000
+        ],
+        "loop": true
+      },
+      "walk": {
+        "frames": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "durationsMs": [
+          125,
+          125,
+          125,
+          125
+        ],
+        "loop": true
+      },
+      "cast": {
+        "frames": [
+          13,
+          14,
+          15
+        ],
+        "durationsMs": [
+          180,
+          140,
+          200
+        ],
+        "loop": false,
+        "releaseAtMs": 180,
+        "returnTo": "idle"
+      }
+    },
+    "up": {
+      "idle": {
+        "frames": [
+          16
+        ],
+        "durationsMs": [
+          1000
+        ],
+        "loop": true
+      },
+      "walk": {
+        "frames": [
+          17,
+          18,
+          19,
+          20
+        ],
+        "durationsMs": [
+          125,
+          125,
+          125,
+          125
+        ],
+        "loop": true
+      },
+      "cast": {
+        "frames": [
+          21,
+          22,
+          23
+        ],
+        "durationsMs": [
+          180,
+          140,
+          200
+        ],
+        "loop": false,
+        "releaseAtMs": 180,
+        "returnTo": "idle"
+      }
+    },
+    "left": {
+      "idle": {
+        "frames": [
+          24
+        ],
+        "durationsMs": [
+          1000
+        ],
+        "loop": true
+      },
+      "walk": {
+        "frames": [
+          25,
+          26,
+          27,
+          28
+        ],
+        "durationsMs": [
+          125,
+          125,
+          125,
+          125
+        ],
+        "loop": true
+      },
+      "cast": {
+        "frames": [
+          29,
+          30,
+          31
+        ],
+        "durationsMs": [
+          180,
+          140,
+          200
+        ],
+        "loop": false,
+        "releaseAtMs": 180,
+        "returnTo": "idle"
+      }
+    }
+  }
+}

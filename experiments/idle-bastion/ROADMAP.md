@@ -664,9 +664,11 @@ Am 19.10.2026 ausdrücklich beauftragt; anschließend um Werkstatt-II-Asset und 
 
 #### B15b — Ilyra, separat offen
 
-Die folgenden ursprünglichen Anforderungen bleiben erhalten; Figurenimplementierung ist mit B15a ausdrücklich noch nicht beauftragt.
+Die ursprünglichen Gameplay-Anforderungen bleiben erhalten; Figurenimplementierung ist mit B15a ausdrücklich noch nicht beauftragt. Am 20.10.2026 hat der Nutzer nach Ansicht der bestehenden Figuren ein neues erwachsenes Ilyra-Design, dessen vereinfachte Standpose und anschließend Lauf-/Zauberanimationen freigegeben. Damit ersetzt diese begrenzte Grafikbeauftragung den ursprünglichen Plan, ausschließlich Ilyras alte Rohgrafik auszuschneiden. Keine zusätzliche Figurenserie.
 
-- [ ] Ilyras vorhandene Rohgrafik vermessen, passende Posen ausschneiden und Maßstab, Fußpunkt sowie Bewegungsrichtung an Mara ausrichten. Keine neue Figurenserie produzieren.
+- [x] Ilyras freigegebene Erscheinung als Lauf-/Zauberposen erzeugt und in 32 Rahmen mit vier Blickrichtungen aufbereitet; Fußpunkt (32, 56), vier Laufphasen, drei Zauberphasen, gespiegelte Gegenrichtung. Originale, vollständige Prompts, Metadaten und reproduzierbare Packung unter [assets/ilyra](assets/ilyra/README.md).
+- [x] Separate Animationsvorschau neben Mara in 1× und vergrößert, mit Richtungs-/Aktionswahl und Einzelbildansicht. Produktionsbuild und ein kompakter Browserdurchlauf: alle Richtungen/Phasen, Zauber kehrt zum Stand zurück, Desktop und 430 × 932 bei DPR 2 ohne JavaScriptfehler oder horizontales Überlaufen. Kein echter Gerätetest oder Gameplay-Nachweis. [Kompakter Bericht und Bilder](../../artifacts/idle-bastion/acceptance/b15-ilyra-animations/REPORT.md) · [Bewegte Vorschau](https://emfau88.github.io/TD/idle-bastion/ilyra-check.html).
+- [ ] Laufzeitgrafik in die Figurensteuerung übernehmen; Laufgeschwindigkeit, Zauberbeginn und Rückkehr zum Stand mit der tatsächlichen Simulation synchronisieren. Nutzerabnahme der bewegten Darstellung noch offen.
 - [ ] Gezielte Sternensalve mit sichtbarem Zielgebiet, verständlicher Reichweite, Abklingzeit und Flug-/Treffereffekt einbauen. Gegen Flieger besonders wirksam; Stärke mit dem Verteidigungsfortschritt abstimmen, ohne eigenes Heldenlevelsystem.
 - [ ] Figur darf sich bewegen und einen Bereich unterstützen, ohne dauerhaft an einem Turm zu kleben. Wirkungszentrum/Zielwahl eindeutig erklären; keine versehentlichen doppelten Killbelohnungen oder zirkulären Verstärkungen mit Mara.
 - [ ] Ilyras garantierte erste Rekrutierung an die bereits gebaute Taverne anschließen; für Besitzer aus B15a ohne weitere Goldkosten. Kein automatischer Auftritt ohne bewusste Einführung, keine Zufallsauswahl oder Wartezeit.

@@ -1,0 +1,10 @@
+Edit the supplied WALK animation sheet (image 1). KEEP the same adult Ilyra design, colors, white hair, small gold goggles, white bodice, short blue skirt, boots, blue cape, cyan-tipped upright spear, pixel style, 4 columns x 3 rows and scale. Image 2 is the approved design reference.
+Fix ONE production problem: the poses are almost copies, especially the feet. Redraw the legs and free arm/cape so the four columns form a clearly readable WALK CYCLE rather than four stationary variants.
+Top row faces forward toward viewer, middle row faces right, bottom row faces away.
+COLUMN 1 = CONTACT: left leg extended forward, right leg back; legs visibly apart, left boot lower than right in front view. Side view front leg extended to the right.
+COLUMN 2 = PASSING: legs come TOGETHER directly under the pelvis, one knee BENT with foot lifted backward. Narrow silhouette around the legs. Side view only the planted leg reaches the floor; the other leg is visibly bent behind it.
+COLUMN 3 = OPPOSITE CONTACT: right leg extended forward, left leg back; opposite boot lower in front view; side view the opposite arm/leg is now in front.
+COLUMN 4 = OPPOSITE PASSING: again legs close together directly below hips; the OTHER knee bends and heel lifts. Not a wide stance.
+The bottom row's two feet must alternate like the front row, rather than the same white boot always showing in front.
+Columns 2 and 4 MUST have substantially narrower leg spacing than 1 and 3. Keep identical face, torso, weapon and head proportions between frames, aligned feet baseline, with <=1 logical pixel torso bob. Do not add fine details. No pose may have missing limbs. Maintain generous cell margins so every full sprite and entire spear fits within its own equally-sized cell.
+Output a usable 12-frame sprite atlas, crisp large pixel clusters, limited palette, genuine transparent background, no labels or borders.
