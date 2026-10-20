@@ -20,7 +20,7 @@ Schema 19 wird vor der Umstellung auf 20 vollständig nach seinen Regeln validie
 
 `clearing.unlocked` und `openedAt` bleiben unverändert der Nachweis eines alten Lichtungskaufs. `eastAccessCredit` leitet daraus 900 Gold **reservierte Zugangsgutschrift** ab. Kein zusätzliches ausgebbares Gold und kein neuer Kauf leerer Fläche. B19 muss diesen Betrag vor einem Zugangskauf abziehen. Die bisherigen östlichen Turmfelder bleiben auf der neuen Karte offen.
 
-Keine zusätzlichen Kamera-Navigationsbuttons: Ziehen/Touch verschiebt die Karte, Übersicht/Zoom bleiben vorhanden. Bauen und konkrete Lernschritte fokussieren die tatsächlichen Gebäude/Türme; die breitere Karte verkleinert nicht den Standardmaßstab. Wisp läuft vom Kern zum aktuellen Werkstatteingang und pendelt anschließend im tatsächlichen Siedlungsbereich.
+Keine zusätzlichen Kamera-Navigationsbuttons: Ziehen/Touch verschiebt die Karte, Übersicht/Zoom bleiben vorhanden. Normale Turmbau-Auswahlen behalten Ausschnitt und Zoom bei, ohne feste Platz-Vorauswahl je Turmtyp. Nur angeleiteter Start-/Frost-/Steinschleuderbau sowie konkrete Objektaktionen fokussieren ein Ziel; die breitere Karte verkleinert nicht den Standardmaßstab. Wisp läuft vom Kern zum aktuellen Werkstatteingang und pendelt anschließend im tatsächlichen Siedlungsbereich.
 
 
 ## Hinweise und Auftritte (Snapshot 18)

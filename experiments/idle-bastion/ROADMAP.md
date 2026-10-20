@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 20.10.2026 · **B01–B13 und beauftragte Nachbesserungen veröffentlicht; B14/G2 offen. Akt II: B15a, F01 und B17a veröffentlicht; B15b umgesetzt und kompakt geprüft. B16 und B17b–B22 bleiben geplant. B12d bleibt separat.**
+Stand: 20.10.2026 · **B01–B13 und beauftragte Nachbesserungen veröffentlicht; B14/G2 offen. Akt II: B15a, F01 und B17a veröffentlicht; B15b veröffentlicht und kompakt geprüft. B16 und B17b–B22 bleiben geplant. B12d bleibt separat.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -14,7 +14,7 @@ Neu: [Akt II — Pakete B15–B22, Bestand und Parkliste](#akt-ii) · [Kompakte 
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
-| Aktueller Auftrag | B15b: Ilyra rekrutieren, bewegen und Sternensalve einsetzen; Taverne mit Mara/Wisp/Ilyra. Kompakte Prüfung, Roadmap/README, Commit/Push/Pages |
+| Aktueller Auftrag | Nachbesserung Turmbau-Kamera: Ausschnitt und Zoom bei normaler Turmauswahl für alle Typen erhalten; kompakte Prüfung und Veröffentlichung |
 | Spielfassung dieses Branches | B15b Ilyra und Tavernenübersicht auf Basis von B17a · [Playlink](https://emfau88.github.io/TD/idle-bastion/) · [Prüfbericht](../../artifacts/idle-bastion/acceptance/b15b/REPORT.md) |
 | Nächster Schritt | B15b über den Playlink testen; anschließend B16/Sturmlicht nach Startauftrag. B17b/Ostgebiet, B14/G2 und B12d bleiben getrennt offen |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
@@ -721,6 +721,12 @@ Die ursprünglichen Gameplay-Anforderungen bleiben erhalten. Mit B15a war Figure
 - [x] Sechs neue gezielte Prüfungen, vier bestehende Speicher-/Umzugsfälle, Produktionsbuild und Desktop-/Hochkant-Browserdurchlauf. [Bericht und vier Ansichten](../../artifacts/idle-bastion/acceptance/b15b/REPORT.md). Kein physischer Gerätetest und keine neue vollständige Balanceabnahme.
 
 **Fertig, wenn:** Ein Spieler baut die Taverne, versteht Ilyras Nutzen und kann sie wirksam einsetzen; ein Reload verliert oder dupliziert weder Gold noch Figur.
+
+#### Nachbesserung vom 20.10.2026 — Kamera bei Turmbau
+
+- [x] Ursache: feste Standardplätze pro Turmtyp lösten bei jeder Bauauswahl `focusPad` aus; Scharfschütze auf `tower-11` (23,9) nahe dem Kern. Bei Waldwächter und anderen Türmen derselbe Mechanismus.
+- [x] Normale Bauauswahl behält Ausschnitt und Zoom, ohne versteckte Platz-Vorauswahl. Nur angeleiteter Start-/Frost-/Steinschleuderbau fokussiert seinen empfohlenen Platz.
+- [x] Vorher/Nachher im Browser geprüft: alle vier Turmkarten auf Desktop 1440×900 und Hochkant 430×932/DPR 2. Nachher unveränderte Kamera; Scharfschütze per Maus/Touch direkt baubar, Menü schließt, Startturm-Anleitung bleibt fokussiert. Keine JavaScriptfehler; Produktionsbuild erfolgreich. Kein neuer ausführlicher Spieldurchlauf nötig.
 
 ### B16 — Sturmlicht: Kettenblitz mit eigener Aufgabe
 

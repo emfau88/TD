@@ -555,10 +555,12 @@ function startPlacement(kind: TowerId): void {
   if (!session.battle.isTowerUnlocked(kind)) { if (kind === 3) openContext('wisp'); else { element('combat-message').textContent = 'Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.'; toastUntil = performance.now() + 6000; syncUI(); } return; }
   if (placementType === kind) { placementType = undefined; closeContext(); return; }
   ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
-  const preferred = session.battle.preparing ? 'cell-6-6' : session.battle.guiding && kind === 2 ? session.battle.recommendedFrostPad : kind === 1 ? 'tower-03' : kind === 2 ? 'tower-09' : kind === 3 ? session.battle.recommendedCannonPad ?? 'tower-10' : 'tower-11';
+  // Only guided construction suggests a location. Ordinary purchases keep the player's view.
+  const preferred = session.battle.preparing ? 'cell-6-6' : session.battle.guiding && kind === 2 ? session.battle.recommendedFrostPad
+    : discoveryStep(session.battle) === 'cannon' && kind === 3 ? session.battle.recommendedCannonPad : undefined;
   const pads = session.battle.layout.towerPads.filter(pad => session!.battle.preparing ? session!.battle.isStarterLocation(pad.id) : session!.battle.guiding ? session!.battle.isLearningFrostLocation(pad.id) : session!.battle.isPadUnlocked(pad.id) && !session!.battle.towers.some(tower => tower.padId === pad.id));
   if (!pads.length) { placementType = undefined; selectedPadId = 'tower-03'; scene?.setSelected(selectedPadId); openContext('tower'); }
-  else { selectedPadId = pads.find(pad => pad.id === preferred)?.id ?? pads[0].id; scene?.setSelected(selectedPadId); scene?.focusPad(selectedPadId); }
+  else if (preferred) { selectedPadId = pads.find(pad => pad.id === preferred)?.id ?? pads[0].id; scene?.setSelected(selectedPadId); scene?.focusPad(selectedPadId); }
   syncUI();
 }
 async function placeTower(padId: string, kind: TowerId = 1): Promise<boolean> {
