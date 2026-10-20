@@ -1,0 +1,30 @@
+import type { IdleBattle } from './battle';
+import { ILYRA } from './ilyra';
+const el = <T extends HTMLElement = HTMLElement>(id:string) => document.getElementById(id) as T;
+export function syncIlyraUI(b:IdleBattle,unavailable:boolean,paused:boolean):void {
+ const s=b.ilyra, busy=unavailable||b.phase==='defeat', ready=!!s&&!s.path.length&&!s.volley&&s.cooldown<=1e-9;
+ const status=!s?'Wartet in der Taverne':s.path.length?'Unterwegs zum gewählten Standort':s.volley?'Sternensalve unterwegs':s.cooldown>0?`Bereit in ${Math.ceil(s.cooldown)} s`:'Sternensalve bereit';
+ el('tavern-roster').hidden=!b.settlement.tavernBuilt;
+ el('roster-mara-status').textContent='Dabei · +50 % Turmtempo für 8 s';
+ el('roster-wisp-status').textContent=b.wispUnlocked?'Dabei · +10 % Kampf-Gold':'Frostfassung & Welle 5 meistern';
+ el('roster-ilyra-status').textContent=s?status:'Neu · kostenlos kennenlernen';
+ el('tavern-ilyra').classList.toggle('new-building',!s);
+ el('pick-ilyra').hidden=!s;
+ el<HTMLProgressElement>('ilyra-cooldown').value=ILYRA.cooldown-(s?.cooldown??0);
+ el('ilyra-brief').textContent=s?.introduction==='move'?'Standort wählen':s?.introduction==='cast'&&!s.path.length?'Erste Salve':s?.cooldown?`${Math.ceil(s.cooldown)} s`:'Bereit';
+ el('pick-ilyra').setAttribute('aria-label',`Ilyra · ${status}`);
+ el('ilyra-greeting').textContent=!s?'„Ich bin Ilyra. Meine Sternensalve trifft eine ganze Gruppe – besonders Flieger. Zeig mir, welchen Weg ich sichern soll.“':s.introduction==='move'?'Willkommen, Ilyra! Wähle ihren Standort nahe dem Gegnerweg. Sie läuft selbst dorthin und bleibt unabhängig von Türmen.':s.introduction==='cast'?'Öffne „Sternensalve zielen“ und tippe auf Gegner im blauen Kreis. Der kleine Zielkreis zeigt die Fläche des Einschlags.':'Wähle einen Standort und ziele auf eine Gegnergruppe. Optional wirkt Ilyra selbst, sobald Gruppen, Flieger oder ein Boss in Reichweite sind.';
+ el('ilyra-status').textContent=paused&&s?'Pause aktiv · zum Laufen und Zaubern den Kampf fortsetzen':s?.introduction==='move'?'1 / 2 · Standort wählen':s?.introduction==='cast'?`2 / 2 · Erste Salve selbst wirken · ${status}`:status;
+ const power=b.ilyraPower.damage;
+ el('ilyra-power').textContent=`${power} Flächenschaden · ${Math.round(power*ILYRA.airMultiplier)} gegen Flieger · ${ILYRA.cooldown} s Abklingzeit. Reichweite gut 5 Felder. Wächst mit deinem stärksten Turm.`;
+ el<HTMLButtonElement>('recruit-ilyra').hidden=!!s;
+ el<HTMLButtonElement>('recruit-ilyra').disabled=busy||!b.settlement.tavernBuilt||b.guiding||b.discoveryActive;
+ el('ilyra-commands').hidden=!s;
+ el<HTMLButtonElement>('move-ilyra').disabled=busy||!!s?.volley;
+ el<HTMLButtonElement>('aim-ilyra').disabled=busy||paused||!ready||s?.introduction==='move'||b.phase!=='wave';
+ el<HTMLButtonElement>('aim-ilyra').textContent=s?.cooldown?`Sternensalve · ${Math.ceil(s.cooldown)} s`:b.phase!=='wave'?'Sternensalve · wartet auf Gegner':'Sternensalve zielen';
+ el('ilyra-auto').hidden=s?.introduction!=='done';
+ el<HTMLButtonElement>('ilyra-auto').disabled=busy;
+ el('ilyra-auto').setAttribute('aria-pressed',String(!!s?.autoCast));
+ el('ilyra-auto').textContent=`Automatik: ${s?.autoCast?'Ein':'Aus'}`;
+}

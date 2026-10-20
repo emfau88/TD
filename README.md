@@ -4,11 +4,25 @@
 
 [▶ Im Browser spielen](https://emfau88.github.io/TD/idle-bastion/) · [Frische Probe starten](https://emfau88.github.io/TD/idle-bastion/?fresh=1)
 
-[Ilyras Lauf- und Zauberanimationen ansehen](https://emfau88.github.io/TD/idle-bastion/ilyra-check.html) · Separate Vorschau neben Mara; Rekrutierung und Sternensalve sind noch nicht im Spiel.
+[Ilyras Lauf- und Zauberanimationen ansehen](https://emfau88.github.io/TD/idle-bastion/ilyra-check.html) · Separate Vorschau neben Mara; die Figurenanimationen werden auch im Spiel verwendet.
+
+**Neu – Ilyra und alle Gefährten in der Taverne:** Nach dem Sieg über **Boss 25** die Taverne für **1.200 Gold** bauen; bestehende Besitzer können sie direkt öffnen. Dort Ilyra kennenlernen und **kostenlos rekrutieren**. Einen Standort am Weg wählen, danach mit „Sternensalve zielen“ eine Gegnergruppe treffen: 28 Sekunden Abklingzeit, besonders wirksam gegen Flieger. Nach der ersten Anwendung lässt sich eine gegnerabhängige Automatik einschalten. **Mara, Wisp und Ilyra** sind mit Rolle und Status in derselben Tavernenübersicht zu finden. Bestehende Saves bleiben erhalten. [Kompakter B15b-Bericht](artifacts/idle-bastion/acceptance/b15b/REPORT.md).
+
+<details open>
+<summary>B15b – Gefährten und Sternensalve im Spiel</summary>
+
+![Taverne mit Mara, Wisp und Ilyras kostenloser Rekrutierung](artifacts/idle-bastion/acceptance/b15b/desktop-tavern.png)
+
+![Ilyras Sternensalve mit sichtbarem Zielgebiet und Flugphase](artifacts/idle-bastion/acceptance/b15b/desktop-volley.png)
+
+<img src="artifacts/idle-bastion/acceptance/b15b/mobile-tavern.png" alt="Gefährtenübersicht in Hochkant" width="280"> <img src="artifacts/idle-bastion/acceptance/b15b/mobile-volley.png" alt="Sternensalve in Hochkant mit freiem Spielfeld" width="280">
+
+Vorbereiteter Funktionsprüfstand mit Boss-25-Freischaltung und Farmwelle 6; keine erspielte Balanceabnahme. Hochkant: Browseremulation 430 × 932 bei DPR 2.
+</details>
 
 **Neu – Siedlung am Kern:** Neue Partien haben rechts vom Kern Platz für Werkstatt, Lager und Taverne. Bestehende Spielstände behalten ihre Gebäudeplätze: **Pause → Siedlung → Siedlung am Kern → kostenlos verlegen** zieht die vorhandenen Gebäude gemeinsam um. Gold, Stufen, Türme und laufende Gegner bleiben erhalten. Ein alter Lichtungskauf wird mit 900 Gold auf den späteren Ostzugang angerechnet. Karte per Mausziehen/Touch verschieben; keine zusätzlichen Navigationsbuttons und noch keine Ostangriffe. [Kompakter Prüfbericht](artifacts/idle-bastion/acceptance/b17a/REPORT.md).
 
-<details open>
+<details>
 <summary>Siedlung am Kern – aktuelle Ansichten</summary>
 
 ![Werkstatt II, Lager und Taverne südöstlich des Kerns](artifacts/idle-bastion/acceptance/b17a/core-settlement-desktop.png)
@@ -24,7 +38,7 @@ Die späte Siedlungsansicht verwendet einen vorbereiteten Besitz-/Umzugsprüfsta
 
 **Darstellung korrigiert:** Der Frostturm sitzt in Bauvorschau und allen drei Ausbaustufen auf gleicher Bodenhöhe wie seine Nachbartürme. [Kompakter Nachweis](artifacts/idle-bastion/acceptance/f01/REPORT.md).
 
-**Neu – Siedlung nach Boss 25:** Nach dem tatsächlichen Sieg wird die **Taverne für 1.200 Gold** unter Siedlung freigeschaltet. Frei platzierbar und dauerhaft gespeichert; vorerst optionaler Treffpunkt **ohne Ilyra oder Kampfbonus**. Die erste Rekrutierung folgt später ohne weitere Goldkosten. Werkstatt II hat ein eigenes Imagegen-Gebäude erhalten; Werkstatt I/II, Lager und Taverne sind direkt auf der Karte beschriftet. [Prüfumfang und Nachweise](artifacts/idle-bastion/acceptance/b15/REPORT.md) · [Aktuelle Roadmap](experiments/idle-bastion/ROADMAP.md#akt-ii).
+**B15a – ursprünglicher Stand der Siedlung nach Boss 25:** Nach dem tatsächlichen Sieg wird die **Taverne für 1.200 Gold** unter Siedlung freigeschaltet. Frei platzierbar und dauerhaft gespeichert; damals zunächst optionaler Treffpunkt **ohne Ilyra oder Kampfbonus**. B15b ergänzt jetzt die oben beschriebene kostenlose Rekrutierung. Werkstatt II hat ein eigenes Imagegen-Gebäude erhalten; Werkstatt I/II, Lager und Taverne sind direkt auf der Karte beschriftet. [Prüfumfang und Nachweise](artifacts/idle-bastion/acceptance/b15/REPORT.md) · [Aktuelle Roadmap](experiments/idle-bastion/ROADMAP.md#akt-ii).
 
 <details>
 <summary>B15 – frühere Spielaufnahmen vor dem Siedlungsumzug</summary>

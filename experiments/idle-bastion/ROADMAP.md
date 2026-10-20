@@ -1,6 +1,6 @@
 # Roadmap und Arbeitschecklisten — SPIRE: Idle Bastion
 
-Stand: 19.10.2026 · **B01–B13 und beauftragte Nachbesserungen veröffentlicht; B14/G2 offen. Akt II: B15a (Taverne ohne Ilyra) veröffentlicht; B15b–B22 bleiben geplant. B12d bleibt separat.**
+Stand: 20.10.2026 · **B01–B13 und beauftragte Nachbesserungen veröffentlicht; B14/G2 offen. Akt II: B15a, F01 und B17a veröffentlicht; B15b umgesetzt und kompakt geprüft. B16 und B17b–B22 bleiben geplant. B12d bleibt separat.**
 
 Diese Datei ist das Arbeitsboard: Phasen geben die Reihenfolge vor, Arbeitspakete bündeln ein prüfbares Ergebnis, Checklisten machen die verbleibende Arbeit sichtbar. Die verbindlichen Spielregeln stehen im [Auftrag](README.md), technische Einzelheiten in [TECHNIK.md](docs/TECHNIK.md), Grafikregeln in [ART_DIRECTION.md](docs/ART_DIRECTION.md) und Prüfszenarien in [ABNAHME.md](docs/ABNAHME.md).
 
@@ -14,9 +14,9 @@ Neu: [Akt II — Pakete B15–B22, Bestand und Parkliste](#akt-ii) · [Kompakte 
 | Ausgangscommit | `5667aaeda3140e2797532894c524a32eb10af1cc` |
 | Ablage | `experiments/idle-bastion/` im eigenen Worktree |
 | Autorisierter Umfang | B01–B07, UI-Überarbeitung B07a und Fortschritts-/HUD-Ergänzung B07b einschließlich funktionalem Hochkant, zusätzlicher Premium-Überarbeitung mit 3–4 Imagegen-Assets und Commit/Push/Pages beauftragt. Zusätzlich B08–B12 ausdrücklich beauftragt; zusätzlich B12a ausdrücklich beauftragt: Bauflächen, Figuren, Siedlung und Kampfdarstellung. B12b Karten-/Kameraanpassung und anschließend B12c vorhandene Gegner ausdrücklich beauftragt; B12d Gegner-Pipeline nur planen. B13 am 19.10.2026 ausdrücklich beauftragt; anschließend HUD-Balken beheben und Gegner-/Einstiegsvorschläge ausarbeiten. Neuer Einstieg mit Mara und selbst gebautem Startturm ausdrücklich zur Umsetzung mit Save-Erhalt, kompakten Tests und Commit/Push beauftragt |
-| Aktueller Auftrag | B15a: Taverne ohne Ilyra; zusätzlich echtes Werkstatt-II-Asset und Gebäudenamen. Freischaltungen und Forschungsicons im Plan ergänzen; kompakte Prüfung, Commit/Push/Pages |
-| Letzte veröffentlichte Spielfassung | B15a: Taverne, Werkstatt-II-Grafik und Gebäudenamen · `d9f83d1`; öffentliche Spieldateien und beide neuen Gebäudeassets bytegleich abgeglichen |
-| Nächster Schritt | B15a über den Playlink testen. B15b: Ilyra erst nach weiterem Startauftrag; B16-Forschung und Icons ebenfalls nur geplant. B14/G2 und B12d bleiben getrennt offen |
+| Aktueller Auftrag | B15b: Ilyra rekrutieren, bewegen und Sternensalve einsetzen; Taverne mit Mara/Wisp/Ilyra. Kompakte Prüfung, Roadmap/README, Commit/Push/Pages |
+| Spielfassung dieses Branches | B15b Ilyra und Tavernenübersicht auf Basis von B17a · [Playlink](https://emfau88.github.io/TD/idle-bastion/) · [Prüfbericht](../../artifacts/idle-bastion/acceptance/b15b/REPORT.md) |
+| Nächster Schritt | B15b über den Playlink testen; anschließend B16/Sturmlicht nach Startauftrag. B17b/Ostgebiet, B14/G2 und B12d bleiben getrennt offen |
 | G1: 90-Sekunden-Zwischenabnahme | **Freigegeben am 18.10.2026; Wortlaut unten** |
 | G2: vollständiger Slice | **Offen; keine Nutzerfreigabe vorhanden** |
 
@@ -633,7 +633,7 @@ M = abgegrenzter Funktionsausbau, L = mehrere zusammenhängende Systeme. Das sin
 
 | Paket | Ergebnis | Größe | Abhängigkeit | Status |
 | --- | --- | --- | --- | --- |
-| B15 | Taverne und verständlich eingeführte Ilyra | M–L, zwei Teilschritte | Bestehender Akt I | Teilweise: B15a veröffentlicht; B15b offen |
+| B15 | Taverne und verständlich eingeführte Ilyra | M–L, zwei Teilschritte | Bestehender Akt I | B15a veröffentlicht; B15b umgesetzt und geprüft |
 | B16 | Sturmlicht als neue taktische Turmrolle | M | B15b / Ilyras Einführung | Geplant |
 | B17 | B17a: Siedlung am Kern; B17b: große Ostkarte | M je Teilschritt | B17a nach F01; B17b mit B18 vorbereiten | B17a umgesetzt; B17b geplant und bis B19 intern |
 | B18 | Zwei Kampfrouten, sichere Saves und Farming | L, zwei Teilschritte | B17; relevante offene Speicherrisiken aus B14 klären | Geplant |
@@ -700,21 +700,25 @@ Am 19.10.2026 ausdrücklich beauftragt; anschließend um Werkstatt-II-Asset und 
 - [x] Fünf gezielte Tavernenprüfungen und vier bestehende Speicher-/Bauprüfungen bestanden; Produktionsbuild bestanden. Kurzer Browsercheck auf Desktop und Hochkant mit direktem Bau und Reload; keine zusätzliche Vollabnahme.
 - [x] Codecommit `d9f83d1` gepusht; [Pages-Lauf 39306506798](https://github.com/emfau88/TD/actions/runs/39306506798) erfolgreich. Öffentliche JS-/CSS-Dateien und beide neuen Gebäudeassets am 19.10.2026, 18:56 UTC bytegleich mit dem lokalen Produktionsbuild; [öffentlicher Nachweis](../../artifacts/idle-bastion/acceptance/b15/public.json). README mit vier aktuellen Spielaufnahmen ergänzt; [Bericht](../../artifacts/idle-bastion/acceptance/b15/REPORT.md).
 
-#### B15b — Ilyra, separat offen
+#### B15b — Ilyra und Gefährtenübersicht
 
-Die ursprünglichen Gameplay-Anforderungen bleiben erhalten; Figurenimplementierung ist mit B15a ausdrücklich noch nicht beauftragt. Am 20.10.2026 hat der Nutzer nach Ansicht der bestehenden Figuren ein neues erwachsenes Ilyra-Design, dessen vereinfachte Standpose und anschließend Lauf-/Zauberanimationen freigegeben. Damit ersetzt diese begrenzte Grafikbeauftragung den ursprünglichen Plan, ausschließlich Ilyras alte Rohgrafik auszuschneiden. Keine zusätzliche Figurenserie.
+Die ursprünglichen Gameplay-Anforderungen bleiben erhalten. Mit B15a war Figurenimplementierung noch nicht beauftragt; am 20.10.2026 wurde B15b anschließend ausdrücklich freigegeben, zusätzlich mit Mara und Wisp in der Tavernenübersicht. Am 20.10.2026 hat der Nutzer nach Ansicht der bestehenden Figuren ein neues erwachsenes Ilyra-Design, dessen vereinfachte Standpose und anschließend Lauf-/Zauberanimationen freigegeben. Damit ersetzt diese begrenzte Grafikbeauftragung den ursprünglichen Plan, ausschließlich Ilyras alte Rohgrafik auszuschneiden. Keine zusätzliche Figurenserie.
 
 - [x] Ilyras freigegebene Erscheinung als Lauf-/Zauberposen erzeugt und in 32 Rahmen mit vier Blickrichtungen aufbereitet; Fußpunkt (32, 56), vier Laufphasen, drei Zauberphasen, gespiegelte Gegenrichtung. Originale, vollständige Prompts, Metadaten und reproduzierbare Packung unter [assets/ilyra](assets/ilyra/README.md).
 - [x] Separate Animationsvorschau neben Mara in 1× und vergrößert, mit Richtungs-/Aktionswahl und Einzelbildansicht. Produktionsbuild und ein kompakter Browserdurchlauf: alle Richtungen/Phasen, Zauber kehrt zum Stand zurück, Desktop und 430 × 932 bei DPR 2 ohne JavaScriptfehler oder horizontales Überlaufen. Kein echter Gerätetest oder Gameplay-Nachweis. [Kompakter Bericht und Bilder](../../artifacts/idle-bastion/acceptance/b15-ilyra-animations/REPORT.md) · [Bewegte Vorschau](https://emfau88.github.io/TD/idle-bastion/ilyra-check.html).
-- [ ] Laufzeitgrafik in die Figurensteuerung übernehmen; Laufgeschwindigkeit, Zauberbeginn und Rückkehr zum Stand mit der tatsächlichen Simulation synchronisieren. Nutzerabnahme der bewegten Darstellung noch offen.
-- [ ] Gezielte Sternensalve mit sichtbarem Zielgebiet, verständlicher Reichweite, Abklingzeit und Flug-/Treffereffekt einbauen. Gegen Flieger besonders wirksam; Stärke mit dem Verteidigungsfortschritt abstimmen, ohne eigenes Heldenlevelsystem.
-- [ ] Figur darf sich bewegen und einen Bereich unterstützen, ohne dauerhaft an einem Turm zu kleben. Wirkungszentrum/Zielwahl eindeutig erklären; keine versehentlichen doppelten Killbelohnungen oder zirkulären Verstärkungen mit Mara.
-- [ ] Ilyras garantierte erste Rekrutierung an die bereits gebaute Taverne anschließen; für Besitzer aus B15a ohne weitere Goldkosten. Kein automatischer Auftritt ohne bewusste Einführung, keine Zufallsauswahl oder Wartezeit.
+- [x] Laufzeitgrafik in die Figurensteuerung übernehmen; Laufgeschwindigkeit, Zauberbeginn und Rückkehr zum Stand mit der tatsächlichen Simulation synchronisieren. Bewegte Darstellung mit tatsächlicher Simulation verbunden; persönliche Nutzerabnahme bleibt offen.
+- [x] Gezielte Sternensalve mit sichtbarem Zielgebiet, verständlicher Reichweite, Abklingzeit und Flug-/Treffereffekt einbauen. Gegen Flieger besonders wirksam; Stärke mit dem Verteidigungsfortschritt abstimmen, ohne eigenes Heldenlevelsystem.
+- [x] Figur darf sich bewegen und einen Bereich unterstützen, ohne dauerhaft an einem Turm zu kleben. Wirkungszentrum/Zielwahl eindeutig erklären; keine versehentlichen doppelten Killbelohnungen oder zirkulären Verstärkungen mit Mara.
+- [x] Ilyras garantierte erste Rekrutierung an die bereits gebaute Taverne anschließen; für Besitzer aus B15a ohne weitere Goldkosten. Kein automatischer Auftritt ohne bewusste Einführung, keine Zufallsauswahl oder Wartezeit.
 - [x] Gebäudeplatzierung und lokale Flächenreserve in B15a umgesetzt, unabhängig von einer geöffneten Ostfront; vorhandene Gebäude bleiben stehen.
-- [ ] Kurzer Auftritt, Name, Rolle und eine echte Anwendung; Hinweise an realen Menüpunkten. Bauanimation und Ankunft sichtbar lassen, mobile Kampfzone freihalten.
-- [ ] Bau, Kosten und Rekrutierung atomar speichern. Altsaves erhalten keine ungefragte Rekrutierung; Wisp bleibt Wirtschaftsbegleiter, zwei Kampffiguren reichen vorerst.
+- [x] Kurzer Auftritt, Name, Rolle und eine echte Anwendung; Hinweise an realen Menüpunkten. Bauanimation und Ankunft sichtbar lassen, mobile Kampfzone freihalten.
+- [x] Bau, Kosten und Rekrutierung atomar speichern. Altsaves erhalten keine ungefragte Rekrutierung; Wisp bleibt Wirtschaftsbegleiter, zwei Kampffiguren reichen vorerst.
 - [x] Passendes Tavernenasset in B15a erstellt; vorhandene Werkstatt und Spielansicht als Stilreferenz, Original/Prompt/Aufbereitung dokumentiert.
-- [ ] Kompakt prüfen: Kauf/Rekrutierung samt Reload, eine Boden-/Fliegeranwendung, keine doppelte Belohnung und kurze Hochkantansicht.
+- [x] Kompakt prüfen: Kauf/Rekrutierung samt Reload, eine Boden-/Fliegeranwendung, keine doppelte Belohnung und kurze Hochkantansicht.
+
+- [x] Taverne zeigt Mara, Wisp und Ilyra mit Rolle und Status. Bestehende Tavernenbesitzer erhalten einen „Neu“-Hinweis; kein zweiter Kauf. Rekrutierung schließt das Menü, damit Ilyras Auftritt sichtbar bleibt.
+- [x] Erste Salve manuell; erst danach optionale Automatik. 28 s Abklingzeit, 210 px Reichweite, 72 px Radius; mindestens 70 bzw. 1,5 Sekunden ungebuffte Turm-DPS, gegen Flieger ×1,5. Garantierte Farm-/Offline-Erträge ohne Ilyras Fähigkeit.
+- [x] Sechs neue gezielte Prüfungen, vier bestehende Speicher-/Umzugsfälle, Produktionsbuild und Desktop-/Hochkant-Browserdurchlauf. [Bericht und vier Ansichten](../../artifacts/idle-bastion/acceptance/b15b/REPORT.md). Kein physischer Gerätetest und keine neue vollständige Balanceabnahme.
 
 **Fertig, wenn:** Ein Spieler baut die Taverne, versteht Ilyras Nutzen und kann sie wirksam einsetzen; ein Reload verliert oder dupliziert weder Gold noch Figur.
 

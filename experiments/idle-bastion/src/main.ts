@@ -3,6 +3,7 @@ import { LessonPointer } from './lesson-pointer';
 import { updateOnboarding } from './onboarding-ui';
 import { introducedEnemy } from './enemy-roster';
 import { MARA } from './mara';
+import { syncIlyraUI } from './ilyra-ui';
 import type { BuildingId, GridCell } from './layout';
 import Phaser from 'phaser';
 import { bossEncounter } from './boss';
@@ -62,11 +63,12 @@ let game: Phaser.Game | undefined;
 let gameResize: ResizeObserver | undefined;
 let store: BattleSaveStore | undefined;
 let selectedPadId: string | undefined;
-let selectedPanel: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'clearing' = 'tower';
+let selectedPanel: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'ilyra' | 'clearing' = 'tower';
 let catalogPanel: 'tower' | 'settlement' = 'tower';
 let contextOpen = false;
 let placementType: TowerId | undefined;
 let groundMode: 'mara' | BuildingId | undefined;
+let ilyraMode: 'move' | 'cast' | undefined;
 const buildingName = (id: BuildingId): string => ({ workshop: 'Werkstatt', warehouse: 'Lager', tavern: 'Taverne' })[id];
 const buildingBuilt = (b: IdleBattle, id: BuildingId): boolean => b.settlement[`${id}Built`];
 const buildingCost = (b: IdleBattle, id: BuildingId): number => id === 'workshop' ? b.workshopBuildCost : SETTLEMENT[`${id}Cost`];
@@ -131,6 +133,8 @@ function syncUI(): void {
   element('tower-panel').hidden = selectedPanel !== 'tower';
   element('clearing-panel').hidden = selectedPanel !== 'clearing';
   element('tavern-panel').hidden = selectedPanel !== 'tavern';
+  element('ilyra-panel').hidden = selectedPanel !== 'ilyra';
+  syncIlyraUI(sim, unavailable || live.awaitingResume, view.paused);
   element('warehouse-panel').hidden = selectedPanel !== 'warehouse';
   element('settlement-panel').hidden = selectedPanel !== 'settlement';
   element('wisp-panel').hidden = selectedPanel !== 'wisp';
@@ -149,8 +153,11 @@ function syncUI(): void {
   }
   const blocked = unavailable || view.paused || sim.phase === 'defeat' || sim.preparing;
   view?.setPlacement(placementType, groundMode, groundCandidate);
-  element('placement-help').hidden = !(placementType || groundMode) || live.awaitingResume;
-  element('placement-text').textContent = groundMode === 'mara' ? 'Mara · begehbares Ziel antippen'
+  view.setIlyraMode(ilyraMode);
+  element('placement-help').hidden = !(placementType || groundMode || ilyraMode) || live.awaitingResume;
+  element('placement-text').textContent = ilyraMode === 'move' ? 'Ilyra · freien Standort am Weg antippen · Ziehen verschiebt die Karte'
+    : ilyraMode === 'cast' ? 'Sternensalve · Gegner innerhalb der blauen Reichweite antippen'
+    : groundMode === 'mara' ? 'Mara · begehbares Ziel antippen'
     : groundMode && buildingBuilt(sim, groundMode) ? 'Neuen Standort wählen und Versetzen bestätigen'
     : groundMode ? `${buildingName(groundMode)} · freien Platz antippen · ${groundMode === 'workshop' && sim.workshopKitAvailable ? 'kostenloser Bausatz' : `${buildingCost(sim, groundMode)} Gold`}`
     : sim.preparing ? 'Startturm · Pfeil zeigt einen guten Platz · antippen und kostenlos bauen'
@@ -252,7 +259,7 @@ function syncUI(): void {
   const tower = sim.towers.find(value => value.padId === selectedPadId);
   const pad = sim.layout.towerPads.find(value => value.id === selectedPadId);
   padChoice.value = selectedPadId ?? '';
-  element('selection-title').textContent = selectedPanel === 'tavern' ? 'Taverne' : selectedPanel === 'clearing' ? 'Siedlung am Kern' : selectedPanel === 'warehouse' ? 'Vorratslager' : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
+  element('selection-title').textContent = selectedPanel === 'ilyra' ? 'Ilyra · Sternensalve' : selectedPanel === 'tavern' ? 'Taverne' : selectedPanel === 'clearing' ? 'Siedlung am Kern' : selectedPanel === 'warehouse' ? 'Vorratslager' : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
     : tower ? `${tower.def.name} · Level ${tower.level}` : pad ? 'Freier Bauplatz' : 'Bauplatz wählen';
   element('tower-name').textContent = tower?.def.name ?? 'Turm wählen';
   element('tower-role').textContent = tower?.def.id === 4 ? 'Bevorzugt Rüstung · ignoriert 100 % davon' : tower?.def.id === 3 ? 'Flächentreffer · 52 Reichweite um das Ziel' : tower?.def.id === 2 ? 'Frosttreffer · 45 % langsamer für 2 s' : 'Zuverlässige Pfeile · Allrounder';
@@ -322,21 +329,22 @@ function syncUI(): void {
   element('pick-warehouse').classList.toggle('locked', !sim.warehouseUnlocked);
   element('pick-warehouse').classList.toggle('researched', builtWarehouse);
   const warehouseNew = sim.warehouseUnlocked && !builtWarehouse && !(sim.tutorial.seen & (1 << 12)) && (!sim.discoveryActive || sim.discovery === 'warehouse');
-  const tavernNew = sim.tavernUnlocked && !settlement.tavernBuilt && !settlement.tavernSeen;
+  const ilyraNew = settlement.tavernBuilt && !sim.ilyra;
+  const tavernNew = ilyraNew || sim.tavernUnlocked && !settlement.tavernBuilt && !settlement.tavernSeen;
   element('pick-warehouse').classList.toggle('new-building', warehouseNew);
   element('pick-tavern').classList.toggle('new-building', tavernNew);
   element('settlement-tab').classList.toggle('new-building', warehouseNew || tavernNew);
-  element('settlement-tab').setAttribute('aria-label', tavernNew ? 'Siedlung · Neues Gebäude verfügbar: Taverne' : warehouseNew ? 'Siedlung · Neues Gebäude verfügbar: Vorratslager' : 'Siedlung');
+  element('settlement-tab').setAttribute('aria-label', ilyraNew ? 'Siedlung · Ilyra wartet in der Taverne' : tavernNew ? 'Siedlung · Neues Gebäude verfügbar: Taverne' : warehouseNew ? 'Siedlung · Neues Gebäude verfügbar: Vorratslager' : 'Siedlung');
   element<HTMLImageElement>('tavern-icon').src = ART.tavern;
   element<HTMLImageElement>('tavern-portrait').src = ART.tavern;
   element('pick-tavern').hidden = sim.highestCleared < 24 && !sim.tavernUnlocked;
   element('pick-tavern').classList.toggle('locked', !sim.tavernUnlocked);
   element('pick-tavern').classList.toggle('researched', settlement.tavernBuilt);
-  element('tavern-card-price').textContent = settlement.tavernBuilt ? '✓ Gebaut' : sim.tavernUnlocked ? currency.format(SETTLEMENT.tavernCost) : 'Boss 25';
+  element('tavern-card-price').textContent = settlement.tavernBuilt ? sim.ilyra ? 'Gefährten ansehen' : 'Ilyra wartet' : sim.tavernUnlocked ? currency.format(SETTLEMENT.tavernCost) : 'Boss 25';
   element('tavern-description').textContent = settlement.tavernBuilt
-    ? 'Ein neuer Treffpunkt in deiner Siedlung. Noch sind keine Gäste zur Rekrutierung verfügbar.'
-    : 'Ein Treffpunkt für künftige Gefährten. Der Bau ist optional: Aktuell gibt es noch keine Rekrutierung oder Kampfboni.';
-  element('tavern-condition').textContent = settlement.tavernBuilt ? 'Die erste Rekrutierung wird später ohne weitere Goldkosten verfügbar.'
+    ? 'Dein Treffpunkt für alle Gefährten. Wähle eine Figur für ihre Rolle und Befehle.'
+    : 'Hier lernst du Ilyra kennen: Ihre Sternensalve trifft Gegnergruppen und ist besonders stark gegen Flieger. Die Rekrutierung ist im Bau enthalten.';
+  element('tavern-condition').textContent = settlement.tavernBuilt ? sim.ilyra ? 'Mara verstärkt Türme · Wisp versorgt · Ilyra kämpft.' : 'Ilyra wartet auf dich. Kennenlernen und Rekrutierung sind kostenlos.'
     : !sim.tavernUnlocked ? 'Rosenspiegels Rückkehr in Welle 25 besiegen, dann für 1.200 Gold bauen.'
     : sim.gold < SETTLEMENT.tavernCost ? `Noch ${currency.format(SETTLEMENT.tavernCost - sim.gold)} Gold. Du kannst erst deine Verteidigung weiter ausbauen.`
     : 'Boss 25 besiegt · 1.200 Gold verfügbar. Bauplatz selbst wählen.';
@@ -448,6 +456,12 @@ function syncUI(): void {
 function syncLessonPointer(): void {
   const b = session?.battle;
   scene?.setLearningTarget();
+  if (b?.ilyra && b.ilyra.introduction !== 'done' && b.introduction.stage === 'done' && !discoveryStep(b)
+      && !session?.paused && !session?.error && !session?.suspended && !session?.awaitingResume && !document.querySelector('dialog[open]')) {
+    const id = contextOpen && selectedPanel === 'ilyra' ? b.ilyra.introduction === 'move' ? 'move-ilyra' : 'aim-ilyra' : !contextOpen && !ilyraMode && !placementType && !groundMode && !b.ilyra.path.length ? 'pick-ilyra' : undefined;
+    const target = id ? element<HTMLButtonElement>(id) : undefined;
+    lessonPointer.show(target && !target.disabled ? target : undefined); return;
+  }
   const blocked = !b || !scene || session?.paused || session?.error || session?.suspended || session?.awaitingResume
     || performance.now() < workshopRevealUntil || document.querySelector('dialog[open]') || b.introduction.stage === 'done' && !discoveryStep(b);
   if (blocked) { lessonPointer.show(); return; }
@@ -520,10 +534,10 @@ function positionContext(): void {
   panel.style.top = `${Math.max(top, Math.min(bottom - box.height, y - box.height / 2))}px`;
 }
 
-function closeContext(): void { groundMode = undefined; groundCandidate = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); syncUI(); }
+function closeContext(): void { ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); syncUI(); }
 function openContext(kind: typeof selectedPanel): void {
   if (session?.battle.preparing || performance.now() < workshopRevealUntil) return;
-  groundMode = undefined; groundCandidate = undefined; placementType = undefined; selectedPanel = kind; contextOpen = true;
+  ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; placementType = undefined; selectedPanel = kind; contextOpen = true;
   if (kind !== 'tower') { selectedPadId = undefined; scene?.setSelected(); }
   scene?.focusObject(kind); syncUI();
   if (kind === 'tavern' && session?.battle.tavernUnlocked && !session.battle.settlement.tavernSeen)
@@ -540,7 +554,7 @@ function startPlacement(kind: TowerId): void {
   if (kind === 2 && !session.battle.settlement.frostResearched) { catalogPanel = 'settlement'; openContext('settlement'); return; }
   if (!session.battle.isTowerUnlocked(kind)) { if (kind === 3) openContext('wisp'); else { element('combat-message').textContent = 'Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.'; toastUntil = performance.now() + 6000; syncUI(); } return; }
   if (placementType === kind) { placementType = undefined; closeContext(); return; }
-  groundMode = undefined; groundCandidate = undefined; catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
+  ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
   const preferred = session.battle.preparing ? 'cell-6-6' : session.battle.guiding && kind === 2 ? session.battle.recommendedFrostPad : kind === 1 ? 'tower-03' : kind === 2 ? 'tower-09' : kind === 3 ? session.battle.recommendedCannonPad ?? 'tower-10' : 'tower-11';
   const pads = session.battle.layout.towerPads.filter(pad => session!.battle.preparing ? session!.battle.isStarterLocation(pad.id) : session!.battle.guiding ? session!.battle.isLearningFrostLocation(pad.id) : session!.battle.isPadUnlocked(pad.id) && !session!.battle.towers.some(tower => tower.padId === pad.id));
   if (!pads.length) { placementType = undefined; selectedPadId = 'tower-03'; scene?.setSelected(selectedPadId); openContext('tower'); }
@@ -596,6 +610,15 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
       ground(cell) { if (groundMode === 'mara') { let accepted = false; void perform(b => { accepted = b.moveMaraTo(cell); }).then(() => { if (accepted && !live.error) closeContext(); else { element('placement-text').textContent = 'Dorthin führt kein freier Weg. Wähle ein anderes Feld.'; } }); } else { groundCandidate = cell; const id = groundMode; if (id && !buildingBuilt(live.battle, id)) void placeBuilding(id, cell); else syncUI(); } },
       selectWisp() { openContext('wisp'); },
       selectMara() { openContext('mara'); },
+      selectIlyra() { openContext('ilyra'); },
+      ilyraGround(point) {
+        const mode = ilyraMode; if (!mode) return;
+        let accepted = false;
+        void perform(b => { accepted = mode === 'move' ? b.moveIlyraTo({x:Math.floor(point.x/40),y:Math.floor(point.y/40)}) : b.castIlyraAt(point); }, mode === 'move', true).then(() => {
+          if (accepted && !live.error) closeContext();
+          else element('placement-text').textContent = mode === 'move' ? 'Kein freier Weg dorthin. Wähle einen anderen Standort.' : 'Wähle Gegner innerhalb der blauen Reichweite. Die Salve muss bereit sein.';
+        });
+      },
       selectClearing() { catalogPanel = 'settlement'; openContext('clearing'); },
       selectTavern() { catalogPanel = 'settlement'; openContext('tavern'); },
       selectWarehouse() { catalogPanel = 'settlement'; openContext('warehouse'); },
@@ -638,7 +661,7 @@ async function perform(action: (battle: IdleBattle) => unknown, allowPaused = fa
 }
 function startGroundPlacement(id: BuildingId | 'mara'): void {
   if (!session || !ready || session.battle.preparing) return;
-  placementType = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); groundMode = id;
+  ilyraMode = undefined; placementType = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); groundMode = id;
   groundCandidate = id === 'mara' ? undefined : id === 'tavern' ? session.battle.recommendedTavernPlot : { ...session.battle.plots[id] };
   scene?.focusObject(id === 'workshop' ? 'settlement' : id); syncUI();
 }
@@ -715,6 +738,19 @@ for (const [name, kind] of [['cannon', 3], ['sniper', 4]] as const) {
   element(`pick-${name}`).addEventListener('click', () => startPlacement(kind), { signal: lifetime.signal });
   element(`build-${name}`).addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId, kind); }, { signal: lifetime.signal });
 }
+for (const hero of ['mara','wisp','ilyra'] as const) element(`tavern-${hero}`).addEventListener('click', () => openContext(hero), { signal: lifetime.signal });
+element('pick-ilyra').addEventListener('click', () => openContext('ilyra'), { signal: lifetime.signal });
+element('recruit-ilyra').addEventListener('click', () => {
+  void perform(b => b.recruitIlyra(), true, true).then(() => { if (session?.battle.ilyra) { closeContext(); scene?.focusObject('ilyra'); element('combat-message').textContent = 'Ilyra ist dabei. Wähle ihr Porträt, um ihren Standort am Weg festzulegen.'; toastUntil = performance.now() + 4500; syncUI(); } });
+}, { signal: lifetime.signal });
+for (const mode of ['move','cast'] as const) element(mode === 'move' ? 'move-ilyra' : 'aim-ilyra').addEventListener('click', () => {
+  const b = session?.battle; if (!b?.ilyra) return;
+  placementType = undefined; groundMode = undefined; groundCandidate = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); ilyraMode = mode;
+  const starter = b.towers.find(t => t.protected);
+  if (mode === 'move' && b.ilyra.introduction === 'move' && starter) scene?.focusPad(starter.padId); else scene?.focusObject('ilyra');
+  syncUI();
+}, { signal: lifetime.signal });
+element('ilyra-auto').addEventListener('click', () => { void perform(b => b.setIlyraAuto(!b.ilyra?.autoCast), true, true); }, { signal: lifetime.signal });
 element('pick-wisp').addEventListener('click', () => openContext('wisp'), { signal: lifetime.signal });
 element('challenge-boss').addEventListener('click', () => {
   void perform(b => b.requestBossChallenge(b.nextBossWave)).then(() => { if (session?.battle.bossChallengeRequested) element<HTMLDialogElement>('chronicle').close(); });

@@ -1,6 +1,6 @@
 # Akt II — Gestaltungs- und Technikentscheidungen
 
-Stand: 19.10.2026. Ergänzung zum ursprünglichen Akt-I-Auftrag. Anschließend ausdrücklich beauftragt: B15a nur Taverne ohne Ilyra sowie Werkstatt-II-Grafik und Gebäudenamen; übrige Inhalte bleiben geplant. Checklisten, Abhängigkeiten und Freigaben stehen ausschließlich in [ROADMAP.md, P6](../ROADMAP.md#akt-ii). Dieser Text hält Entscheidungen und überprüfte Ausgangspunkte fest, keine zweite Fortschrittsliste.
+Stand: 20.10.2026. Ergänzung zum ursprünglichen Akt-I-Auftrag. B15a, F01, B17a und anschließend B15b einschließlich Tavernenübersicht aller Gefährten wurden ausdrücklich beauftragt; übrige Inhalte bleiben separat. Checklisten, Abhängigkeiten und Freigaben stehen ausschließlich in [ROADMAP.md, P6](../ROADMAP.md#akt-ii). Dieser Text hält Entscheidungen und überprüfte Ausgangspunkte fest, keine zweite Fortschrittsliste.
 
 ## Bestand statt unnötiger Neuproduktion
 
@@ -21,7 +21,7 @@ Nach dem tatsächlich besiegten Boss von Welle 25 wird die Taverne im Siedlungsm
 
 Ilyra ergänzt Mara durch direkten Flächenschaden, besonders gegen Flieger. Eine kurze Vorstellung und eine sichtbar ausgelöste Sternensalve erklären ihren Nutzen. Sie bewegt sich unabhängig von Türmen; Zielgebiet und Wirkungsradius müssen vom gewählten Standort aus verständlich sein. Manuelle Anwendung zuerst; eine ausdrücklich wählbare Automatik wirkt erst bei geeigneten Gegnern. Kein unbemerkter Zauber vor der Vorstellung oder im leeren Wellenzwischenraum.
 
-Die Fähigkeit wächst mit nachvollziehbarem Verteidigungsfortschritt, ohne ein neues Heldenlevelsystem. Die konkrete Skalierung wird in B15b festgelegt und mit normalen Turmkäufen verglichen; alte Kampagnen-Schadenszahlen sind kein Idle-Balanceziel. Temporäre Mara-Verstärkung darf Ilyra nicht zirkulär hochskalieren. Wisp bleibt Wirtschaftsfigur. Für Akt II reichen Mara und Ilyra als zwei Kampffiguren; Runa wäre später eine austauschbare Alternative, nicht automatisch eine dritte Pflichtfigur.
+Die Fähigkeit wächst mit nachvollziehbarem Verteidigungsfortschritt, ohne ein neues Heldenlevelsystem. B15b legt 28 s Abklingzeit, 210 px Reichweite, 72 px Radius und mindestens 70 Schaden bzw. 1,5 Sekunden ungebuffte DPS des stärksten Turms fest. Flieger erhalten 50 % mehr Schaden; die erste Anwendung ist manuell, geeignete Gegner aktivieren eine optional eingeschaltete Automatik. Farm-/Offline-Nachweise rechnen ohne die Salve; alte Kampagnen-Schadenszahlen sind kein Idle-Balanceziel. Temporäre Mara-Verstärkung darf Ilyra nicht zirkulär hochskalieren. Wisp bleibt Wirtschaftsfigur. Für Akt II reichen Mara und Ilyra als zwei Kampffiguren; Runa wäre später eine austauschbare Alternative, nicht automatisch eine dritte Pflichtfigur.
 
 ## Forschungsfreischaltungen und sichtbarer Besitz
 
@@ -31,7 +31,7 @@ In B16 erhalten erforschte Technologien kleine passende Icons mit Häkchen in de
 
 ## Ergänzte Siedlungsplanung am Kern
 
-Die Roadmap-Ergänzung vom 20.10.2026 zieht eine nützliche Basisfläche als B17a vor: frei platzierbare Werkstatt, Lager und Taverne südlich/südöstlich des unveränderten Kerns, zunächst ohne Ostangriff. Ein reservierter Ostkorridor samt drei Reihen Turmbaufläche je Seite verhindert spätere Konflikte mit Gebäuden. Bestehende Gebäudeplätze bleiben in Altsaves bis zum bewussten kostenlosen Umzug gültig; bestehender Lichtungsbesitz wird erhalten und später angerechnet. Front/Basis-Kameraziele und positionsabhängige Tutorialführung gehören zum selben Paket. Der ursprüngliche große Ostkartenumfang unten wird als B17b weitergeführt. Verbindliche Reihenfolge, Checklisten und Umfang stehen ausschließlich in der Roadmap; derzeit ist nur der separate Frostturm-Fix beauftragt.
+Die Roadmap-Ergänzung vom 20.10.2026 zieht eine nützliche Basisfläche als B17a vor: frei platzierbare Werkstatt, Lager und Taverne südlich/südöstlich des unveränderten Kerns, zunächst ohne Ostangriff. Ein reservierter Ostkorridor samt drei Reihen Turmbaufläche je Seite verhindert spätere Konflikte mit Gebäuden. Bestehende Gebäudeplätze bleiben in Altsaves bis zum bewussten kostenlosen Umzug gültig; bestehender Lichtungsbesitz wird erhalten und später angerechnet. Auf ausdrücklichen Nutzerwunsch gibt es keine zusätzlichen Front-/Basis-Buttons: Mausziehen/Touch bleiben die Navigation, echte Bau-/Lernaktionen dürfen einmalig fokussieren. Der ursprüngliche große Ostkartenumfang unten wird als B17b weitergeführt. Verbindliche Reihenfolge, Checklisten und Umfang stehen ausschließlich in der Roadmap; B17b und die tatsächliche Ostfront bleiben separat.
 
 ## Große Osthälfte mit gemeinsamem Kern
 
@@ -41,7 +41,7 @@ Ein eigener Weg führt von rechts zum gemeinsamen Kern. Alte Koordinaten, Gebäu
 
 Wer die bisherige Lichtung für 900 Gold gekauft hat, behält Zugang und Gegenwert. Dieselbe Fläche wird nicht erneut verkauft. Für Spieler ohne Lichtung gibt es einen einmaligen Zugang; konkrete Kosten und eventuelle Voraussetzungen werden mit Taverne und Startverteidigung abgestimmt. Gebietsbesitz und Beginn der Angriffe sind getrennt: **erst vorbereiten, dann bewusst öffnen**. Bis zur Freigabe wird im Westen weitergespielt/gefarmt. Ein Update startet niemals ungefragt die Ostfront.
 
-Die Kamera bleibt im normalen lesbaren Maßstab. West / Kern / Ost sind direkt anwählbar, die Gesamtübersicht bleibt optional. Eine kleine Anzeige zeigt aktive Fronten und tatsächliche Gefahr; essenzielle Informationen brauchen kein gekauftes Spähergebäude. Keine dauerhafte Seitenleiste, kein automatisches Hin- und Herspringen und kein Zwang, die ganze Karte ständig herauszuzoomen.
+Die Kamera bleibt im normalen lesbaren Maßstab. Mausziehen und Touch erschließen West / Kern / Ost; die vorhandene Gesamtübersicht bleibt optional. Keine zusätzlichen Front-/Basis-Buttons. Eine kleine Anzeige zeigt aktive Fronten und tatsächliche Gefahr; essenzielle Informationen brauchen kein gekauftes Spähergebäude. Keine dauerhafte Seitenleiste, kein automatisches Hin- und Herspringen und kein Zwang, die ganze Karte ständig herauszuzoomen.
 
 ## Geplanter Spannungsbogen
 

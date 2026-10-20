@@ -33,4 +33,4 @@ Die drei Animationserzeugungen umfassen einen verworfenen ersten Laufentwurf, ei
 
 [Bewegte Vorschau auf GitHub Pages](https://emfau88.github.io/TD/idle-bastion/ilyra-check.html), lokal unter `/ilyra-check.html` mit `npm run idle:dev` oder nach `npm run idle:build` mit `npm run idle:preview`. Sie zeigt echte Spielgröße neben Mara und eine ganzzahlig vergrößerte Detailansicht; Richtung, Aktion, Pause und Einzelbilder lassen sich auswählen. Es werden keine Spielstände gelesen oder geschrieben.
 
-Die Vorschau ist bewusst ein eigener Einstiegspunkt. Die Spielszene importiert Ilyras Atlas noch nicht. Rekrutierung, Auftritt und Sternensalve bleiben bei B15b in der [Roadmap](../../ROADMAP.md). Prüfung und Nutzerabnahme werden ausschließlich dort geführt.
+Die Vorschau bleibt ein eigener Einstiegspunkt. Die Spielszene lädt denselben Atlas: `ilyraFrame` steuert Richtung/Laufen sowie die 0,18/0,14/0,20 Sekunden langen Zauberphasen anhand der Simulation. `IlyraView` zeichnet die gespeicherte Salve; Pause und Reload verwenden denselben Zeitstand. Prüfung und Nutzerabnahme stehen unter B15b in der [Roadmap](../../ROADMAP.md).

@@ -11,6 +11,7 @@ import { TREE_FRAMES } from '../../../reference/src/terrain';
 export { MARA_FOOT };
 
 export const ART = Object.freeze({
+  ilyra: new URL('../assets/ilyra/ilyra-atlas.png', import.meta.url).href,
   sniperWeapon3: new URL('../../../public/assets/Tower 04 - Level 03 - Weapon.png', import.meta.url).href,
   cannonWeapon3: new URL('../../../public/assets/Tower 03 - Level 03 - Weapon.png', import.meta.url).href,
   frostWeapon3: new URL('../../../public/assets/Tower 02 - Level 03 - Weapon.png', import.meta.url).href,
@@ -49,6 +50,7 @@ export const ART = Object.freeze({
   workshopDamaged: new URL('../assets/workshop/workshop-damaged.png', import.meta.url).href,
 });
 export const KEYS = Object.freeze({
+  ilyra: 'idle-ilyra',
   sniperWeapon3: 'idle-sniperWeapon3',
   cannonWeapon3: 'idle-cannonWeapon3',
   frostWeapon3: 'idle-frostWeapon3',
@@ -105,6 +107,7 @@ export function maraDestination(index: number) {
 export function preloadArt(scene: Phaser.Scene): void {
   preloadTowerSheets(scene);
   preloadEnemySheets(scene);
+  scene.load.spritesheet(KEYS.ilyra, ART.ilyra, {frameWidth:64,frameHeight:64});
   scene.load.image(KEYS.grass, ART.grass);
   scene.load.image(KEYS.water, ART.water);
   scene.load.image(KEYS.maraSource, ART.maraSource);

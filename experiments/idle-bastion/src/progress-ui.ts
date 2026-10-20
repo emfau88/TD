@@ -97,7 +97,9 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       el('journal-goal-title').textContent = goal.title;
       el('journal-goal-copy').textContent = goal.detail;
       el('journal-goal-action').textContent = goal.label;
-      el('journal-companions-count').textContent = `${b.wispUnlocked ? 2 : 1} verfügbar`;
+      el('journal-companions-count').textContent = `${1 + Number(b.wispUnlocked) + Number(!!b.ilyra)} verfügbar`;
+      el('journal-ilyra').hidden = !b.ilyra;
+      el('journal-ilyra-order').textContent = b.ilyra ? `Freie Bewegung · ${b.ilyra.autoCast ? 'Automatik' : 'manuelle Sternensalve'} · besonders wirksam gegen Flieger. Kein garantierter Offline-Bonus.` : '';
       el('journal-wisp-order').textContent = b.wispUnlocked ? `Auftrag: ${b.settlement.warehouseBuilt ? 'Werkstatt und Lager' : 'Werkstatt'} versorgen · +10 % Kampf-Gold. Bereits in Live-Ertrag und Farmbasis enthalten.` : 'Kommt kostenlos nach Frostfassung und gemeisterter Welle 5.';
       const target = b.towers.find(t => t.uid === b.mara.targetTowerUid);
       const assignment = target ? padNames[target.padId] ?? target.def.name : 'Startturm';

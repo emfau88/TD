@@ -14,6 +14,7 @@ export function drawDockArt(scene: Phaser.Scene): void {
         frame.cutWidth, frame.cutHeight, x, y, width, height);
     };
     if (canvas.dataset.icon === 'mara') draw(KEYS.mara, -8, 0, 80, 80);
+    else if (canvas.dataset.icon === 'ilyra') draw(KEYS.ilyra, -8, 0, 80, 80);
     else if (canvas.dataset.icon === 'wisp') draw(KEYS.wisp, -8, 0, 80, 80);
     else if (canvas.dataset.icon === 'cannon' || canvas.dataset.icon === 'sniper') {
       const cannon = canvas.dataset.icon === 'cannon';

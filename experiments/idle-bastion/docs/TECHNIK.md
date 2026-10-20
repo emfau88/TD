@@ -1,5 +1,17 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Ilyra — Snapshot 21
+
+Schema 20 wird zuerst vollständig validiert, danach um `ilyra: null` ergänzt. Keine automatische Rekrutierung. Die gebaute Taverne berechtigt zur kostenlosen, atomar gespeicherten Rekrutierung; auch alte Besitzer zahlen nichts zusätzlich. Mara/Wisp werden in der Tavernenübersicht angezeigt, nicht erneut gekauft.
+
+Ilyra verwendet kardinale Fußwege, 110 px/s und denselben Hindernissatz wie Mara. Spawn nahe dem tatsächlichen Taverneneingang; Position, Restweg, Blickrichtung, Einführung und Automatik werden gespeichert. Bau auf ihrer aktuellen Zelle wird abgelehnt, ein durch Neubau blockierter Restweg wird gestoppt. Gebäudeumzug darf die Figur nicht verdeckt versetzen oder einschließen.
+
+Sternensalve: 210 px Zielreichweite, 72 px Trefferradius, 28 s Abklingzeit, 0,18 s Vorbereitung, Einschlag bei 0,60 s, Ausklang bis 0,95 s. Schaden pro getroffener Einheit: `round(max(70, 1.5 * höchste ungebuffte Turm-DPS))`; Flieger ×1,5, danach normale Rüstung. Keine Dauerfeuer-Grundattacke. Zielpunkt bleibt während des Flugs fest. Quelltyp/-stufe, berechneter Schaden, Ursprung, Alter und Trefferstatus werden eingefroren und validiert. Gemeinsame Killabrechnung verhindert doppelte Goldvergabe mit Turmprojektilen.
+
+Die erste Anwendung ist manuell. Nach bewusst gewähltem Standort und tatsächlich ausgelöster Salve erscheint die optionale Automatik. Sie wartet auf eine Gruppe (mindestens zwei normale Gegner), einen Flieger oder Boss in Reichweite. Nicht während Bewegung, Abklingzeit oder leerer Wellen wirken. Keine neue automatische Lernpause oder dauerhafte Hinweis-Kachel. Pfeil an den realen Standort-/Zauberbuttons, nach Auswahl freies Spielfeld; Zielkreis und Flugphase zeigen die Wirkung.
+
+Farmprüfungen entfernen gespeicherte Salven und deaktivieren Ilyras Fähigkeit ausdrücklich. Rekrutierung, Bewegung und Automatik verändern keinen Farmfingerabdruck oder historischen Offline-Anspruch; eine neue sichere Welle muss weiterhin ohne aktive Heldenfähigkeiten bewiesen werden. Kampfregeln 10 und bestehende Wellen bleiben unverändert.
+
 ## Siedlung am Kern — Snapshot 20, neue Partien mit Layout 5
 
 `IdleBattle.newGame()` verwendet `core40`: 40×16 Zellen, Kern (27,6), unveränderter Westweg und Kampfregeln 10. Der reine Kampf-Konstruktor und explizite Layouts 3/4 bleiben für historische Migrationen und Prüfmodelle verfügbar. Gebäude liegen frei innerhalb (30,10)–(38,14); der spätere Ostkorridor (28,3)–(39,9) enthält keine Siedlungsgebäude. Vorhandene Waldgrafiken bilden den neuen Rand, ein schmaler Fußweg verbindet Kern und Höfe. Es gibt noch keine Ostgegner oder zweite Route.

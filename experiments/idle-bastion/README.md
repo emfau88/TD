@@ -2,7 +2,7 @@
 
 **Siedlung am Kern:** Neue Partien erhalten eine 40×16-Karte mit Werkstatt, Lager und Taverne südöstlich des Kerns. Altsaves behalten ihre Plätze bis zum kostenlosen Umzug unter **Siedlung → Siedlung am Kern** bei manueller Pause. Mausziehen/Touch statt zusätzlicher Navigationsbuttons; die Ostfront folgt später. Die älteren Slice-Angaben unten bleiben als Entwicklungshistorie erhalten.
 
-Stand: 19.10.2026 · Umsetzungsstand und Freigaben: siehe [Roadmap](ROADMAP.md).
+Stand: 20.10.2026 · Umsetzungsstand und Freigaben: siehe [Roadmap](ROADMAP.md).
 
 Dieses Dokument ersetzt für Idle Bastion den ursprünglichen langen Auftrag. Es bündelt die anschließend gemeinsam besprochenen Entscheidungen einschließlich der wachsenden, scrollbar erschlossenen Karte. Die bestehende klassische SPIRE-Roadmap wird dadurch nicht verändert. Eine spätere ausdrückliche Startaufforderung autorisiert die Umsetzung bis zur ersten Zwischenabnahme, nicht das Überspringen dieser Abnahme.
 
@@ -10,9 +10,9 @@ Dieses Dokument ersetzt für Idle Bastion den ursprünglichen langen Auftrag. Es
 
 Am 19.10.2026 wurde die Roadmap um [Akt II, B15–B22](ROADMAP.md#akt-ii) erweitert: Taverne mit Ilyra, die vorhandenen Türme Sturmlicht und Glutwerfer, eine große vorbereitbare Ostfront und gestalteter Fortschritt bis ungefähr Welle 40. [AKT_II.md](docs/AKT_II.md) hält Bestand, Spielregeln und technische Grenzen kompakt fest. Schnellfeuer, Sonnenobelisk, Runa sowie nutzbarer Kern/HQ und verbündete Einheiten stehen als spätere Ideen auf der Parkliste.
 
-Anschließend wurde B15a ausdrücklich zur Umsetzung freigegeben: Taverne ohne Ilyra, ein neues Werkstatt-II-Asset und Gebäudebeschriftungen. Taverne nach tatsächlichem Sieg über Boss 25 für 1.200 Gold; derzeit optional ohne Rekrutierung oder Kampfbonus. B15b/Ilyra und weitere Akt-II-Funktionen bleiben geplant. Die folgenden ursprünglichen Umfangsgrenzen beschreiben Akt I und bleiben als Grundlage erhalten; geplante Erweiterungen sind ausdrücklich in Akt II abgegrenzt. B14/G2 und B12d bleiben getrennt offen. Die spätere ausdrückliche Autorisierung für Commit/Push auf dem Idle-Branch gilt weiterhin; historische Aussagen zur ersten Planungsaufgabe sind keine neue Veröffentlichungssperre.
+Anschließend wurde B15a ausdrücklich zur Umsetzung freigegeben: Taverne ohne Ilyra, ein neues Werkstatt-II-Asset und Gebäudebeschriftungen. Taverne nach tatsächlichem Sieg über Boss 25 für 1.200 Gold. Im anschließend beauftragten B15b lernt man dort Ilyra kennen und rekrutiert sie kostenlos; Mara und Wisp bleiben in derselben Gefährtenübersicht sichtbar. Ilyra bewegt sich frei und wirkt eine gezielte Sternensalve mit Fliegerbonus. Erst selbst ausprobieren, anschließend optional die gegnerabhängige Automatik einschalten. Weitere Akt-II-Funktionen bleiben separat. Die folgenden ursprünglichen Umfangsgrenzen beschreiben Akt I und bleiben als Grundlage erhalten; geplante Erweiterungen sind ausdrücklich in Akt II abgegrenzt. B14/G2 und B12d bleiben getrennt offen. Die spätere ausdrückliche Autorisierung für Commit/Push auf dem Idle-Branch gilt weiterhin; historische Aussagen zur ersten Planungsaufgabe sind keine neue Veröffentlichungssperre.
 
-Ilyras neue Animationen lassen sich separat in der [bewegten Vorschau](https://emfau88.github.io/TD/idle-bastion/ilyra-check.html) neben Mara ansehen. [Assetvertrag und Prompts](assets/ilyra/README.md); Rekrutierung und Sternensalve folgen im geplanten B15b.
+Ilyras neue Animationen lassen sich separat in der [bewegten Vorschau](https://emfau88.github.io/TD/idle-bastion/ilyra-check.html) neben Mara ansehen. [Assetvertrag und Prompts](assets/ilyra/README.md); [B15b-Prüfbericht und Spielaufnahmen](../../artifacts/idle-bastion/acceptance/b15b/REPORT.md).
 
 ## Verbindliche Unterlagen
 

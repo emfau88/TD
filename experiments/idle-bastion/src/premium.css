@@ -304,7 +304,7 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 .wisp-arrival p { margin: 6px 0 10px; line-height: 1.4; }
 .new-companion::after { content: 'Neu'; position: absolute; right: 3px; top: 3px; padding: 2px 4px; border-radius: 3px; background: #edc77a; color: #282117; font-size: 10px; }
 .companion-card { position: relative; }
-#mara-cooldown { display: block; width: 100%; height: 4px; margin-top: 3px; accent-color: #edc77a; }
+#mara-cooldown, #ilyra-cooldown { display: block; width: 100%; height: 4px; margin-top: 3px; accent-color: #edc77a; }
 @media (max-width: 700px) {
   .wisp-arrival { left: 8px; right: 8px; bottom: 104px; max-width: none; padding: 9px; gap: 8px; font-size: 12px; }
   .wisp-arrival p { margin: 4px 0 6px; }
@@ -409,3 +409,21 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 .building-portrait { width:96px; height:96px; object-fit:contain; image-rendering:pixelated; float:right; margin:0 0 8px 10px; }
 #tavern-panel .primary-action { clear:both; }
 @media (max-width:700px) { .building-portrait { width:72px; height:72px; } }
+
+/* Companion roster lives in the tavern, not in a permanent HUD panel. */
+.tavern-roster { clear:both; display:grid; gap:7px; margin:12px 0; }
+.tavern-roster .roster-entry { width:100%; display:grid; grid-template-columns:40px 1fr 12px; gap:9px; align-items:center; padding:7px 10px; text-align:left; background:#10282c; border:1px solid #7f7654; }
+.roster-entry canvas { width:36px; height:45px; image-rendering:pixelated; }
+.roster-entry strong { display:block; font:600 14px/1.35 'Segoe UI',sans-serif; color:#f0dfb3; }
+.roster-entry small { display:block; font:12px/1.4 'Segoe UI',sans-serif; color:#bed4d8; margin-top:3px; }
+.hero-introduction { display:flex; gap:12px; align-items:center; }
+.hero-introduction canvas { flex:0 0 auto; width:64px; height:80px; image-rendering:pixelated; }
+.hero-introduction p { margin:5px 0; }
+@media(max-width:700px) {
+ .tavern-roster { gap:5px; margin:8px 0; }
+ .tavern-roster .roster-entry { padding:5px 8px; grid-template-columns:32px 1fr 10px; }
+ .roster-entry canvas { width:30px; height:38px; }
+ .hero-introduction canvas { width:48px; height:60px; }
+ #ilyra-panel p { font-size:12px; line-height:1.4; }
+ #ilyra-panel .action-stack { gap:5px; }
+}

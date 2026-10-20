@@ -1,3 +1,5 @@
+import { ILYRA } from './ilyra';
+import { IlyraView } from './ilyra-view';
 import { ENEMY_SHEETS } from './enemy-art';
 import { JELLY_HEAL } from './enemy-roster';
 import { jellyFrame } from '../../../reference/src/jelly-art';
@@ -22,11 +24,13 @@ export interface BattleSceneHooks {
   readonly canRender?: () => boolean;
   readonly selectWisp?: () => void;
   readonly selectMara?: () => void;
+  readonly selectIlyra?: () => void;
   readonly selectWorkshop?: () => void;
   readonly selectTavern?: () => void;
   readonly selectWarehouse?: () => void;
   readonly selectClearing?: () => void;
   readonly ground?: (cell: GridCell) => void;
+  readonly ilyraGround?: (point: {x:number;y:number}) => void;
 }
 const colors = { gold: 0xd9bd79, text: '#eae5ce', muted: '#91a58e', panel: '#183424' };
 type TowerView = { base: Phaser.GameObjects.Image; weapon: Phaser.GameObjects.Image };
@@ -41,6 +45,8 @@ export class BattleScene extends Phaser.Scene {
   private selection!: Phaser.GameObjects.Graphics;
   private effects!: Phaser.GameObjects.Graphics;
   private bossCharmView!: BossCharmView;
+  private ilyraView!: IlyraView;
+  private ilyraMode?: 'move'|'cast';
   private mara!: Phaser.GameObjects.Image;
   private maraShadow!: Phaser.GameObjects.Ellipse;
   private wisp!: Phaser.GameObjects.Image;
@@ -96,6 +102,7 @@ export class BattleScene extends Phaser.Scene {
     this.effects = this.add.graphics().setDepth(5500);
     this.bossCharmView = new BossCharmView(this, this.pixelDensity);
     this.combatEffects = new CombatEffects(this);
+    this.ilyraView = new IlyraView(this);
     this.ghostBase = this.add.image(0, 0, KEYS.tower).setVisible(false).setDepth(5900);
     this.ghostWeapon = this.add.image(0, 0, KEYS.weapon).setVisible(false).setDepth(5901);
     this.buffText = this.add.text(0, 0, '', { fontFamily: 'Segoe UI', fontSize: '12px', fontStyle: 'bold',
@@ -162,6 +169,7 @@ export class BattleScene extends Phaser.Scene {
     }
   }
   acceptEvents(events: readonly BattleEvent[]): void { if (this.readyToDraw) this.combatEffects.accept(events, this.sim.elapsed + this.sim.introduction.preparationSeconds); }
+  setIlyraMode(mode?: 'move'|'cast'): void { this.ilyraMode=mode; }
   setPlacement(kind?: TowerId, ground?: 'mara' | BuildingId, cell?: GridCell): void {
     this.buildKind = kind; this.groundMode = ground; this.groundCell = cell;
   }
@@ -233,15 +241,16 @@ export class BattleScene extends Phaser.Scene {
     this.followingWisp = !this.sim.wispArrival.met && this.wispPose.arriving;
     this.focusObject('wisp');
   }
-  focusObject(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'clearing'): void {
+  focusObject(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'ilyra' | 'clearing'): void {
     if (kind !== 'clearing' && (this.portraitCamera || this.sim.clearing.unlocked || this.sim.layout.version === 5)) this.focusPoint(this.objectPoint(kind));
   }
   private focusPoint(point: { x: number; y: number }): void {
     if (this.overview) { this.overview = false; this.relativeZoom = 1; this.resizeCamera(); }
     this.cameras.main.centerOn(point.x, this.portraitCamera ? point.y - 20 : this.sim.layout.bounds.height / 2);
   }
-  private objectPoint(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
+  private objectPoint(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'ilyra' | 'clearing'): { x: number; y: number } {
     if (kind === 'clearing') return this.sim.layout.version === 5 ? { x: 1340, y: 400 } : { x: 1080, y: 524 };
+    if (kind === 'ilyra') return this.sim.ilyra ?? this.objectPoint('tavern');
     if (kind === 'wisp') return this.wispPose;
     if (kind === 'mara') return { x: this.sim.mara.x, y: this.sim.mara.y - 20 };
     if (kind === 'tavern') {
@@ -278,7 +287,7 @@ export class BattleScene extends Phaser.Scene {
     this.learningMark.fillStyle(0xffd778,.10).fillCircle(point.x,point.y,21);
     this.learningMark.lineStyle(2,0xffdf8a,pulse).strokeCircle(point.x,point.y,21);
   }
-  uiAnchor(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
+  uiAnchor(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'ilyra' | 'clearing'): { x: number; y: number } {
     const point = this.objectPoint(kind), camera = this.cameras.main;
     return { x: camera.x + (point.x - camera.worldView.x) * camera.zoom, y: camera.y + (point.y - camera.worldView.y) * camera.zoom };
   }
@@ -318,10 +327,12 @@ export class BattleScene extends Phaser.Scene {
   private selectAtPointer(pointer: { x: number; y: number }): void {
     if (this.hooks.canRender?.() === false) { this.pendingTap = { x: pointer.x, y: pointer.y }; return; }
     const point = this.cameras.main.getWorldPoint(pointer.x, pointer.y), size = this.sim.layout.cellSize;
+    if (this.ilyraMode) { this.hooks.ilyraGround?.(point); return; }
     if (this.groundMode) { this.hooks.ground?.({ x: Math.floor(point.x / size), y: Math.floor(point.y / size) }); return; }
     if (this.bossCharmView.contains(point)) return;
     const pad = this.sim.layout.towerPads.find(value => value.cell.x === Math.floor(point.x / size) && value.cell.y === Math.floor(point.y / size));
     if (this.buildKind) { this.setSelected(pad?.id); this.hooks.select(pad?.id); return; }
+    if (this.ilyraView.contains(point)) { this.hooks.selectIlyra?.(); return; }
     const wisp = this.wispPose;
     if (this.sim.wispUnlocked && Math.hypot(point.x - wisp.x, point.y - (wisp.y - 18)) < 23) { this.hooks.selectWisp?.(); return; }
     for (const plot of [...this.sim.layout.plots].sort((a, b) => b.blockingBody.y - a.blockingBody.y)) {
@@ -359,6 +370,15 @@ export class BattleScene extends Phaser.Scene {
   private drawSelection(): void {
     const g = this.selection; g.clear(); this.ghostBase.setVisible(false); this.ghostWeapon.setVisible(false);
     const size = this.sim.layout.cellSize;
+    if (this.ilyraMode && this.sim.ilyra) {
+      const s=this.sim.ilyra, pointer=this.input.activePointer, point=this.cameras.main.getWorldPoint(pointer.x,pointer.y);
+      if(this.ilyraMode==='cast'){
+        g.lineStyle(1.5,0x91d5f7,.65).strokeCircle(s.x,s.y,ILYRA.range);
+        const valid=this.sim.canCastIlyra(point),color=valid?0xb8eaff:0xe59c8a;
+        g.fillStyle(color,.1).fillCircle(point.x,point.y,ILYRA.radius);g.lineStyle(2,color,.85).strokeCircle(point.x,point.y,ILYRA.radius);
+      }else{g.lineStyle(1.5,0x91d5f7,.55).strokeCircle(point.x,point.y,ILYRA.range);g.lineStyle(2,0xc5eaff,.9).strokeCircle(point.x,point.y,12);}
+      return;
+    }
     if (this.groundMode) {
       if (this.groundMode === 'mara') {
         g.lineStyle(1.5, 0xf2daa0, 0.6).strokeCircle(this.sim.mara.x, this.sim.mara.y, MARA.range);
@@ -522,6 +542,7 @@ export class BattleScene extends Phaser.Scene {
     const wisp = this.wispPose;
     this.wisp.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y).setFrame(wisp.frame).setFlipX(wisp.flip).setDepth(wisp.y + 1002);
     this.wispName.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y + 13);
+    this.ilyraView.update(sim);
     const mara = sim.mara, acting = mara.effectRemaining > 0 && sim.isMaraBoosted(mara.effectTowerUid ?? -1);
     this.mara.setPosition(mara.x, mara.y).setFrame(maraFrame(mara.direction, mara.path.length > 0, acting, elapsed)).setDepth(mara.y + 1002);
     this.maraShadow.setPosition(mara.x, mara.y + 1).setDepth(mara.y + 999);

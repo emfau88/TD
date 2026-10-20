@@ -1,3 +1,4 @@
+import { ILYRA, createIlyra, cloneIlyra, moveIlyra, stepIlyraMotion, validIlyra, ilyraCell, type IlyraState } from './ilyra';
 import { BALANCE, healthMultiplier, battleReward } from './balance';
 import { ENEMIES, regularEnemy, enemyId, JELLY_HEAL, type EnemyDef } from './enemy-roster';
 export type { EnemyDef } from './enemy-roster';
@@ -82,7 +83,8 @@ export interface BattleSnapshot {
   discovery: DiscoveryStage;
   dismissedDefeatAttempt: number;
   introduction: Introduction;
-  schemaVersion: 20; rulesVersion: 10; layoutVersion: 3 | 4 | 5;
+  ilyra: IlyraState | null;
+  schemaVersion: 21; rulesVersion: 10; layoutVersion: 3 | 4 | 5;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32' | 'core40';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
@@ -130,6 +132,7 @@ export function sellValue(tower: Pick<Tower, 'spent'>): number {
 }
 
 export class IdleBattle {
+  ilyra: IlyraState | null = null;
   discovery: DiscoveryStage = 'off';
   dismissedDefeatAttempt = 0;
   introduction: Introduction = { stage: 'done', preparationSeconds: 0, halted: false };
@@ -174,10 +177,12 @@ export class IdleBattle {
   private pathLength: number;
   readonly mara: MaraState;
   private readonly maraBonus: boolean;
+  private readonly ilyraAbilities: boolean;
 
-  constructor(public layout: IdleLayout = createIdleLayout(), options: { maraBonus?: boolean } = {}) {
+  constructor(public layout: IdleLayout = createIdleLayout(), options: { maraBonus?: boolean; ilyraAbilities?: boolean } = {}) {
     this.plots = Object.fromEntries(layout.plots.map(p => [p.id, { x: p.footprint.x, y: p.footprint.y }])) as PlotPositions;
     this.maraBonus = options.maraBonus !== false;
+    this.ilyraAbilities = options.ilyraAbilities !== false;
     this.path = layout.road.waypoints.map(position => cellCenter(layout, position));
     this.pathLength = this.path.slice(1).reduce((sum, point, index) => sum + distance(this.path[index], point), 0);
     if (this.path.length < 2 || this.pathLength <= 0) throw new Error('Battle requires a non-empty enemy route.');
@@ -335,10 +340,10 @@ export class IdleBattle {
   /** Only the shipped closed/open layouts cross the save boundary. */
   snapshot(): BattleSnapshot {
     if (JSON.stringify(this.layout) !== JSON.stringify(battleLayout(this.clearing.unlocked, this.plots, this.layout.version as 3 | 4 | 5))) {
-      throw new Error('Unsupported battle layout for snapshot version 20.');
+      throw new Error('Unsupported battle layout for snapshot version 21.');
     }
     return {
-      schemaVersion: 20, discovery: this.discovery, dismissedDefeatAttempt: this.dismissedDefeatAttempt, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4 | 5, layoutId: this.layout.version === 5 ? 'core40' : this.clearing.unlocked ? 'east32' : 'start28',
+      schemaVersion: 21, ilyra: this.ilyra ? cloneIlyra(this.ilyra) : null, discovery: this.discovery, dismissedDefeatAttempt: this.dismissedDefeatAttempt, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4 | 5, layoutId: this.layout.version === 5 ? 'core40' : this.clearing.unlocked ? 'east32' : 'start28',
       clearing: { ...this.clearing },
       bossVictories: this.bossVictories, secondBossVictories: this.secondBossVictories, bossChallengeWave: this.bossChallengeWave, bossChallengeRequested: this.bossChallengeRequested, bossCharm: { ...this.bossCharm },
       progress: cloneProgress(this.progress), rewardRemainderUnits: this.rewardRemainderUnits, waveRecipeVersion: this.waveRecipeVersion,
@@ -364,7 +369,7 @@ export class IdleBattle {
   /** Reject malformed/newer snapshots before exposing a model. Rebuilding refs
    * never fires commands, combat ticks, purchases or reward/UI events.
    */
-  static restore(value: unknown, options: { maraBonus?: boolean } = {}): IdleBattle | undefined {
+  static restore(value: unknown, options: { maraBonus?: boolean; ilyraAbilities?: boolean } = {}): IdleBattle | undefined {
     // v1 carried no reliable live-clear evidence. Preserve its exact combat and
     // progress estimate, but never invent farm certificates from old wave numbers.
     if (isRecord(value) && value.schemaVersion === 1 && value.rulesVersion === 1) {
@@ -487,7 +492,16 @@ export class IdleBattle {
       if (![3, 4, 5].includes(value.layoutVersion as number) || !validPlotPositions(value.plots, value.layoutVersion as number)) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion as 3 | 4 | 5));
     }
+    if (isRecord(value) && value.schemaVersion === 20) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 20, model.layout.version as 3 | 4 | 5)) return undefined;
+      value = { ...value, schemaVersion: 21, ilyra: null };
+    }
+    if (isRecord(value) && value.schemaVersion === 21) {
+      if (![3, 4, 5].includes(value.layoutVersion as number) || !validPlotPositions(value.plots, value.layoutVersion as number)) return undefined;
+      model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion as 3 | 4 | 5));
+    }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5)) return undefined;
+    model.ilyra = value.ilyra ? cloneIlyra(value.ilyra) : null;
     model.discovery = value.discovery; model.dismissedDefeatAttempt = value.dismissedDefeatAttempt;
     model.introduction = { ...value.introduction };
     model.plots = structuredClone(value.plots); model.wispArrival = { ...value.wispArrival };
@@ -622,6 +636,65 @@ export class IdleBattle {
     return true;
   }
 
+  recruitIlyra(): boolean {
+    if (!this.settlement.tavernBuilt || this.ilyra || this.guiding || this.discoveryActive || this.phase === 'defeat') return false;
+    const state = createIlyra(this.layout), entrance = ilyraCell(state), blocked = this.movementBlocked();
+    const candidates: GridCell[] = [];
+    for (let y = entrance.y - 3; y <= entrance.y + 3; y++) for (let x = entrance.x - 3; x <= entrance.x + 3; x++) candidates.push({ x, y });
+    const spawn = candidates.sort((a,b) => distance(a,entrance)-distance(b,entrance))
+      .find(c => findFootpath(this.layout, {x:this.layout.core.x-1,y:this.layout.core.y}, c, blocked));
+    if (!spawn) return false;
+    Object.assign(state, cellCenter(this.layout,spawn)); this.ilyra = state; return true;
+  }
+  moveIlyraTo(cell: GridCell): boolean {
+    return !!this.ilyra && moveIlyra(this.ilyra,cell,this.layout,this.movementBlocked());
+  }
+  get ilyraPower(): { damage: number; sourceKind: TowerId; sourceLevel: number } {
+    const tower = [...this.towers].sort((a,b) => stats(b).damage/stats(b).cooldown-stats(a).damage/stats(a).cooldown || a.uid-b.uid)[0];
+    return { damage: ilyraDamage(tower?.def.id ?? 1,tower?.level ?? 1), sourceKind: tower?.def.id ?? 1, sourceLevel: tower?.level ?? 1 };
+  }
+  canCastIlyra(point: {x:number;y:number}): boolean {
+    const s = this.ilyra;
+    return !!s && this.ilyraAbilities && s.introduction !== 'move' && !s.path.length && !s.volley && s.cooldown <= 1e-9 && this.phase === 'wave'
+      && Number.isFinite(point.x) && Number.isFinite(point.y) && point.x >= 0 && point.y >= 0 && point.x < this.layout.bounds.width && point.y < this.layout.bounds.height
+      && distance(s,point) <= ILYRA.range && this.enemies.some(e => e.hp > 0 && distance(e,point) <= ILYRA.radius);
+  }
+  castIlyraAt(point: {x:number;y:number}): boolean {
+    if (!this.canCastIlyra(point)) return false;
+    const s = this.ilyra!;
+    s.volley = {x:point.x, y:point.y, originX:s.x, originY:s.y, age:0, hit:false, ...this.ilyraPower}; s.cooldown = ILYRA.cooldown;
+    s.direction = Math.abs(point.x-s.x)>Math.abs(point.y-s.y) ? point.x<s.x?'left':'right' : point.y<s.y?'up':'down';
+    return true;
+  }
+  setIlyraAuto(enabled: boolean): boolean {
+    if (!this.ilyra || this.ilyra.introduction !== 'done') return false;
+    this.ilyra.autoCast = enabled; return true;
+  }
+  private stepIlyra(dt: number): void {
+    const s = this.ilyra; if (!s) return;
+    stepIlyraMotion(s,dt);
+    if (s.volley) {
+      const v=s.volley; v.age += dt;
+      if (!v.hit && v.age >= ILYRA.impact) {
+        v.hit = true;
+        if (this.ilyraAbilities && this.phase === 'wave') {
+          for (const enemy of this.enemies) if (enemy.hp > 0 && distance(enemy,v) <= ILYRA.radius) {
+            enemy.hp=Math.max(0,enemy.hp-v.damage*(enemy.def.flying?ILYRA.airMultiplier:1)*(1-enemy.def.armor));
+            if (enemy.hp<=0) this.rewardKill(enemy);
+          }
+        }
+        if (this.ilyraAbilities) s.introduction='done';
+      }
+      if (v.age>=ILYRA.duration)s.volley=null;
+    }
+    if (this.ilyraAbilities && s.autoCast && !s.path.length && !s.volley && s.cooldown <= 1e-9 && this.phase === 'wave') {
+      const candidates=this.enemies.filter(e=>e.hp>0&&distance(e,s)<=ILYRA.range).map(e=>({e,
+        score:this.enemies.filter(n=>n.hp>0&&distance(n,e)<=ILYRA.radius).reduce((sum,n)=>sum+(n.def.flying?2:1),0)}));
+      const target=candidates.sort((a,b)=>b.score-a.score||b.e.distance-a.e.distance||a.e.uid-b.e.uid)[0];
+      if(target&&(target.score>=2||target.e.def.id==='Rosenspiegel'))this.castIlyraAt(target.e);
+    }
+  }
+
   get clearingAvailable(): boolean { return this.layout.version !== 5 && this.bossVictories > 0; }
   /** Reserved credit, not spendable gold. B19 must deduct it from east access. */
   get eastAccessCredit(): number { return this.clearing.unlocked ? SETTLEMENT.clearingCost : 0; }
@@ -687,6 +760,9 @@ export class IdleBattle {
     if (layout.version === 5 && !layout.plots.every(p => findFootpath(layout, { x: layout.core.x - 1, y: layout.core.y }, p.entrance, blocked))) return false;
     const mara = migrateMaraLayout(this.mara, this.towers, layout, blocked);
     if (!mara || Math.hypot(mara.x - this.mara.x, mara.y - this.mara.y) > 1e-6) return false;
+    const ilyra = this.ilyra ? cloneIlyra(this.ilyra) : null;
+    if (ilyra && !validIlyra(ilyra,layout,blocked,ilyraDamage)) { ilyra.path=[]; if (!validIlyra(ilyra,layout,blocked,ilyraDamage)) return false; }
+    this.ilyra=ilyra;
     this.plots = plots; this.layout = layout; Object.assign(this.mara, mara);
     return true;
   }
@@ -700,6 +776,9 @@ export class IdleBattle {
     if (!layout.plots.every(p => findFootpath(layout, { x: layout.core.x - 1, y: layout.core.y }, p.entrance, blocked))) return false;
     const mara = migrateMaraLayout(this.mara, this.towers, layout, blocked);
     if (!mara || Math.hypot(mara.x - this.mara.x, mara.y - this.mara.y) > 1e-6) return false;
+    const ilyra = this.ilyra ? cloneIlyra(this.ilyra) : null;
+    if (ilyra && !validIlyra(ilyra,layout,blocked,ilyraDamage)) { ilyra.path=[]; if (!validIlyra(ilyra,layout,blocked,ilyraDamage)) return false; }
+    this.ilyra=ilyra;
     this.plots = plots; this.useLayout(layout); Object.assign(this.mara, mara);
     return true;
   }
@@ -752,6 +831,7 @@ export class IdleBattle {
     return this.phase !== 'defeat' && !!pad && this.isPadUnlocked(pad.id)
       && isUnlockedCell(this.layout, pad.cell) && !this.towers.some(tower => tower.padId === padId)
       && !(Math.floor(this.mara.x / 40) === pad.cell.x && Math.floor(this.mara.y / 40) === pad.cell.y)
+      && !(this.ilyra && ilyraCell(this.ilyra).x === pad.cell.x && ilyraCell(this.ilyra).y === pad.cell.y)
       && this.isTowerUnlocked(kind)
       && this.gold >= towerDefinition(kind).cost;
   }
@@ -763,6 +843,7 @@ export class IdleBattle {
     this.gold -= tower.def.cost;
     this.towers.push(tower);
     if (this.mara.path.some(p => Math.floor(p.x / 40) === Math.floor(tower.x / 40) && Math.floor(p.y / 40) === Math.floor(tower.y / 40))) this.mara.path = [];
+    if (this.ilyra?.path.some(p => ilyraCell(p).x === Math.floor(tower.x / 40) && ilyraCell(p).y === Math.floor(tower.y / 40))) this.ilyra.path = [];
     this.tutorial.builtTower = true;
     this.events.push({ type: 'build', tower, x: tower.x, y: tower.y, amount: tower.def.cost });
     return tower;
@@ -950,8 +1031,12 @@ export class IdleBattle {
     }
     this.events.push({ type: 'hit', shot, enemy, x: enemy.x, y: enemy.y, amount: shot.damage });
     if (enemy.hp > 0) return;
+    this.rewardKill(enemy, shot.towerUid);
+  }
+
+  private rewardKill(enemy: Enemy, towerUid?: number): void {
     if (enemy.def.id === 'Rosenspiegel') this.bossCharm = freshCharm();
-    const owner = this.towers.find(tower => tower.uid === shot.towerUid);
+    const owner = this.towers.find(tower => tower.uid === towerUid);
     if (owner) owner.kills++;
     const amount = this.creditBattleReward(enemy.def.gold);
     this.kills++;
@@ -993,6 +1078,7 @@ export class IdleBattle {
     const boostedSeconds = stepMara(this.mara, maraTarget, this.layout, this.movementBlocked(),
       dt, this.phase === 'wave', this.maraBonus,
       !this.maraIntroductionPending && !this.isCharmed(maraTarget.uid) && this.enemies.some(e => e.hp > 0 && distance(e, maraTarget!) <= stats(maraTarget!).range));
+    if (this.phase !== 'wave') this.stepIlyra(dt);
     if (this.phase === 'defeat') {
       this.mode = 'farm'; this.bossCharm = freshCharm(); this.bossChallengeRequested = false;
       this.lives = BASE.coreLives;
@@ -1035,6 +1121,7 @@ export class IdleBattle {
       this.events.push({ type: 'defeat', wave: this.wave });
       return;
     }
+    this.stepIlyra(dt);
     for (const tower of this.towers) {
       const support = tower.uid === effectTowerUid ? boostedSeconds * (MARA.fireRate - 1) : 0;
       tower.cooldown = Math.max(0, tower.cooldown - (dt + support) * (this.isCharmed(tower.uid) ? BOSS.rateMultiplier : 1));
@@ -1116,11 +1203,11 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
-  if (!isRecord(value) || value.schemaVersion !== (legacy || 20) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
-    || value.layoutVersion !== layoutVersion || value.layoutId !== (layoutVersion === 5 ? 'core40' : layout.bounds.columns === 32 ? 'east32' : 'start28') || legacy > 0 && layoutVersion === 5) return false;
+  if (!isRecord(value) || value.schemaVersion !== (legacy || 21) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
+    || value.layoutVersion !== layoutVersion || value.layoutId !== (layoutVersion === 5 ? 'core40' : layout.bounds.columns === 32 ? 'east32' : 'start28') || legacy > 0 && legacy < 20 && layoutVersion === 5) return false;
   if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10]).includes(value.waveRecipeVersion as number))) return false;
   if ((!legacy || legacy >= 9) && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
     || layoutVersion !== 5 && value.clearing.unlocked !== (layout.bounds.columns === 32)
@@ -1267,6 +1354,10 @@ function validSnapshot(
   if (unbuilt && (!isRecord(value.mara) || Object.entries({ ...createMara(layout, 0), autoCast: false }).some(([key, expected]) => JSON.stringify((value.mara as Record<string, unknown>)[key]) !== JSON.stringify(expected)))) return false;
   if (!unbuilt && legacy !== 2 && !(modern ? validMara : validLegacyMara)(value.mara, value.towers.map(tower => ({ ...tower,
     ...cellCenter(layout, layout.towerPads.find(pad => pad.id === tower.padId)!.cell) })), layout, [...getForestBlockedCells(layout), ...(modern ? value.towers.map(t => layout.towerPads.find(p => p.id === t.padId)!.cell) : [])])) return false;
+  if (!legacy && value.ilyra !== null) {
+    const blocked=[...getForestBlockedCells(layout),...value.towers.map(t=>layout.towerPads.find(p=>p.id===t.padId)!.cell)];
+    if (!(value.settlement as BattleSnapshot['settlement']).tavernBuilt || !validIlyra(value.ilyra,layout,blocked,ilyraDamage)) return false;
+  }
   if (!legacy || legacy >= 8) {
     const charm = value.bossCharm;
     if (!isRecord(charm) || !['idle', 'windup', 'channel', 'interrupted'].includes(charm.phase as string)
@@ -1323,4 +1414,9 @@ function validSnapshot(
   // References may point at removed source/target entities, but never at a projectile.
   const shotIds = new Set(value.shots.map(shot => shot.uid));
   return value.shots.every(shot => !shotIds.has(shot.towerUid) && !shotIds.has(shot.target));
+}
+
+/** 1.5 seconds of the strongest unboosted tower DPS, independent of Mara. */
+export function ilyraDamage(kind: TowerId, level: number): number {
+ const power=stats({def:towerDefinition(kind),level}); return Math.round(Math.max(70,1.5*power.damage/power.cooldown));
 }
