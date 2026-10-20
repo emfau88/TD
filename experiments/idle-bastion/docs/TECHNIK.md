@@ -1,5 +1,16 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Siedlung am Kern — Snapshot 20, neue Partien mit Layout 5
+
+`IdleBattle.newGame()` verwendet `core40`: 40×16 Zellen, Kern (27,6), unveränderter Westweg und Kampfregeln 10. Der reine Kampf-Konstruktor und explizite Layouts 3/4 bleiben für historische Migrationen und Prüfmodelle verfügbar. Gebäude liegen frei innerhalb (30,10)–(38,14); der spätere Ostkorridor (28,3)–(39,9) enthält keine Siedlungsgebäude. Vorhandene Waldgrafiken bilden den neuen Rand, ein schmaler Fußweg verbindet Kern und Höfe. Es gibt noch keine Ostgegner oder zweite Route.
+
+Schema 19 wird vor der Umstellung auf 20 vollständig nach seinen Regeln validiert. Positionen, alte Karte, Gold, Figuren und laufende Gegner bleiben erhalten. „Siedlung am Kern“ verlegt alle vorhandenen Gebäude erst bei bewusstem Klick in manueller Pause und nach der laufenden Einführung. `BattleSession.relocateSettlement()` bestätigt Lage und neue Karte atomar; Schreibfehler rollen zurück. Türme, Gegner, Timer, Gebäudelevel und Preise ändern sich nicht. Die alten Versionen und Grundstücke bleiben bis dahin gültig. Historische Offline-Ansprüche behalten ihre ursprüngliche Grundlage; die neue Verteidigung wird anhand ihres geänderten Kartenfingerabdrucks neu geprüft.
+
+`clearing.unlocked` und `openedAt` bleiben unverändert der Nachweis eines alten Lichtungskaufs. `eastAccessCredit` leitet daraus 900 Gold **reservierte Zugangsgutschrift** ab. Kein zusätzliches ausgebbares Gold und kein neuer Kauf leerer Fläche. B19 muss diesen Betrag vor einem Zugangskauf abziehen. Die bisherigen östlichen Turmfelder bleiben auf der neuen Karte offen.
+
+Keine zusätzlichen Kamera-Navigationsbuttons: Ziehen/Touch verschiebt die Karte, Übersicht/Zoom bleiben vorhanden. Bauen und konkrete Lernschritte fokussieren die tatsächlichen Gebäude/Türme; die breitere Karte verkleinert nicht den Standardmaßstab. Wisp läuft vom Kern zum aktuellen Werkstatteingang und pendelt anschließend im tatsächlichen Siedlungsbereich.
+
+
 ## Hinweise und Auftritte (Snapshot 18)
 
 `dismissedDefeatAttempt` speichert den geschlossenen verlorenen Versuch. Nur eine spätere Niederlage darf den Hinweis erneut öffnen. Schema 17 wird vor der Migration validiert; danach wird dieses Feld mit 0 ergänzt. Geld, Käufe, aktive Effekte, Timer und historische Offline-Ansprüche bleiben erhalten.

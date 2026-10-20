@@ -130,7 +130,6 @@ function syncUI(): void {
   const sim = live.battle;
   element('tower-panel').hidden = selectedPanel !== 'tower';
   element('clearing-panel').hidden = selectedPanel !== 'clearing';
-  element('region-navigation').hidden = !sim.clearing.unlocked || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
   element('tavern-panel').hidden = selectedPanel !== 'tavern';
   element('warehouse-panel').hidden = selectedPanel !== 'warehouse';
   element('settlement-panel').hidden = selectedPanel !== 'settlement';
@@ -253,7 +252,7 @@ function syncUI(): void {
   const tower = sim.towers.find(value => value.padId === selectedPadId);
   const pad = sim.layout.towerPads.find(value => value.id === selectedPadId);
   padChoice.value = selectedPadId ?? '';
-  element('selection-title').textContent = selectedPanel === 'tavern' ? 'Taverne' : selectedPanel === 'clearing' ? 'Östliche Lichtung' : selectedPanel === 'warehouse' ? 'Vorratslager' : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
+  element('selection-title').textContent = selectedPanel === 'tavern' ? 'Taverne' : selectedPanel === 'clearing' ? 'Siedlung am Kern' : selectedPanel === 'warehouse' ? 'Vorratslager' : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
     : tower ? `${tower.def.name} · Level ${tower.level}` : pad ? 'Freier Bauplatz' : 'Bauplatz wählen';
   element('tower-name').textContent = tower?.def.name ?? 'Turm wählen';
   element('tower-role').textContent = tower?.def.id === 4 ? 'Bevorzugt Rüstung · ignoriert 100 % davon' : tower?.def.id === 3 ? 'Flächentreffer · 52 Reichweite um das Ziel' : tower?.def.id === 2 ? 'Frosttreffer · 45 % langsamer für 2 s' : 'Zuverlässige Pfeile · Allrounder';
@@ -358,20 +357,24 @@ function syncUI(): void {
     : 'Vorschau bei unveränderter Verteidigung. Während einer Pause entsteht kein Offline-Ertrag.';
   buildWarehouse.hidden = builtWarehouse;
   buildWarehouse.disabled = blocked || !sim.warehouseUnlocked || sim.gold < SETTLEMENT.warehouseCost;
-  const clearing = sim.clearing.unlocked;
-  element('pick-clearing').classList.toggle('locked', !sim.clearingAvailable);
-  element('pick-clearing').classList.toggle('researched', clearing);
-  element('clearing-card-price').textContent = clearing ? '✓ Geöffnet' : sim.clearingAvailable ? String(SETTLEMENT.clearingCost) : 'Boss 15';
-  element('clearing-description').textContent = clearing
-    ? 'Die optionale Lichtung ist geöffnet. Du kannst am letzten Wegabschnitt weiter bauen. Neue Herausforderungen folgen in einem späteren Ausbau.'
-    : 'Optional: mehr Platz östlich des Kerns. Die Werkstatt lässt sich auch ohne diese Erweiterung ausbauen.';
-  element('clearing-condition').textContent = clearing ? 'Geöffnet · die Verteidigung läuft weiter.'
-    : !sim.clearingAvailable ? 'Voraussetzung: Rosenspiegel in Welle 15 besiegen. Danach einmalig 900 Gold.'
-    : sim.gold < SETTLEMENT.clearingCost ? `Bosssieg geschafft. Noch ${currency.format(SETTLEMENT.clearingCost - sim.gold)} Gold.`
-    : 'Bosssieg geschafft · 900 Gold verfügbar. Bereit zum Erschließen.';
-  element('unlock-clearing').hidden = clearing;
-  element<HTMLButtonElement>('unlock-clearing').disabled = blocked || !sim.clearingAvailable || sim.gold < SETTLEMENT.clearingCost;
-  element('show-clearing').hidden = !clearing;
+  const atCore = sim.layout.version === 5;
+  const relocatingBlocked = unavailable || live.awaitingResume || sim.layout.version !== 4 || sim.preparing || sim.guiding || sim.discoveryActive;
+  element('pick-clearing').hidden = atCore && !sim.eastAccessCredit;
+  element('pick-clearing').classList.toggle('researched', atCore);
+  element('clearing-card-title').textContent = atCore ? 'Ostzugang' : 'Siedlung am Kern';
+  element('clearing-card-copy').textContent = atCore ? 'Für den späteren Ausbau' : 'Gebäude kostenlos umziehen';
+  element('clearing-card-price').textContent = atCore ? '900 G Gutschrift' : 'Kostenlos';
+  element('clearing-title').textContent = atCore ? 'Ostzugang vorgemerkt' : 'Siedlung am Kern';
+  element('clearing-description').textContent = atCore
+    ? 'Dein früherer Lichtungskauf zählt beim späteren Öffnen der Ostfront mit 900 Gold. Diese Gutschrift ist für den Zugang reserviert.'
+    : 'Werkstatt, Lager und Taverne ziehen gemeinsam in die geschützte Siedlung südöstlich des Kerns. Gebäudelevel, Gold und Verteidigung bleiben erhalten. Die Gebäude kannst du dort bei Pause frei versetzen.';
+  element('clearing-condition').textContent = atCore ? 'Die Ostfront folgt in einem späteren Ausbau.'
+    : sim.guiding || sim.preparing || sim.discoveryActive ? 'Beende zuerst die laufende Einführung.'
+    : sim.layout.version !== 4 ? 'Nach dem laufenden Wellenversuch verfügbar.'
+    : `Zum Umzug den Kampf mit Pause anhalten.${sim.eastAccessCredit ? ' Dein Lichtungskauf bleibt als 900-Gold-Gutschrift für den späteren Ostzugang erhalten.' : ''}`;
+  element('unlock-clearing').hidden = atCore;
+  element<HTMLButtonElement>('unlock-clearing').disabled = relocatingBlocked || !live.paused;
+  element('show-clearing').hidden = !atCore;
   element('layout-status').textContent = view.paused ? 'Kampf angehalten.'
     : sim.mode === 'farm' ? `Sicheres Farmen · Welle ${sim.farmWave}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang.`
     : `Automatischer Vorstoß · höchste geschaffte Welle ${sim.highestCleared}.`;
@@ -720,9 +723,14 @@ element('catalog-next').addEventListener('click', () => { const list = element(`
 element('pick-archer').addEventListener('click', () => startPlacement(1), { signal: lifetime.signal });
 element('pick-frost').addEventListener('click', () => startPlacement(2), { signal: lifetime.signal });
 element('pick-clearing').addEventListener('click', () => openContext('clearing'), { signal: lifetime.signal });
-element('unlock-clearing').addEventListener('click', () => { void perform(b => b.unlockClearing()); }, { signal: lifetime.signal });
-for (const id of ['show-clearing', 'visit-clearing']) element(id).addEventListener('click', () => { placementType = undefined; closeContext(); scene?.showClearing(); }, { signal: lifetime.signal });
-element('return-defense').addEventListener('click', () => { placementType = undefined; closeContext(); scene?.showDefense(); }, { signal: lifetime.signal });
+element('unlock-clearing').addEventListener('click', async () => {
+  const live = session; if (!live || !live.paused || live.busy || live.error) return;
+  const completion = live.relocateSettlement(); syncUI();
+  const moved = await completion; scene?.refresh();
+  if (moved) { closeContext(); scene?.showBase(); }
+  syncUI();
+}, { signal: lifetime.signal });
+element('show-clearing').addEventListener('click', () => { placementType = undefined; closeContext(); scene?.showBase(); }, { signal: lifetime.signal });
 
 element('pick-warehouse').addEventListener('click', () => openContext('warehouse'), { signal: lifetime.signal });
 element('pick-workshop').addEventListener('click', () => {
@@ -776,7 +784,15 @@ upgrade.addEventListener('click', () => { void perform(battle => { const tower =
 sell.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.sell(tower.uid); }); }, { signal: lifetime.signal });
 advance.addEventListener('click', () => { void perform(battle => battle.requestAdvance()); }, { signal: lifetime.signal });
 assignMara.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.assignMara(tower.uid); }); }, { signal: lifetime.signal });
-element('camera-reset').addEventListener('click', () => { placementType = undefined; closeContext(); scene?.resetCamera(); syncUI(); }, { signal: lifetime.signal });
+element('camera-reset').addEventListener('click', () => {
+  const b = session?.battle;
+  if (groundMode && groundMode !== 'mara') scene?.focusObject(groundMode === 'workshop' ? 'settlement' : groundMode);
+  else if (placementType && selectedPadId) scene?.focusPad(selectedPadId);
+  else if (b?.learningPaused && b.introduction.stage === 'research') scene?.focusObject('settlement');
+  else if (b?.learningPaused && b.introduction.stage === 'upgrade') { const tower = b.towers.find(t => t.protected); if (tower) scene?.focusPad(tower.padId); }
+  else { placementType = undefined; closeContext(); scene?.resetCamera(); }
+  syncUI();
+}, { signal: lifetime.signal });
 element('camera-zoom').addEventListener('click', () => { if (scene) scene.setMapZoom(scene.mapZoom > 1 ? 1 : 1.15); syncUI(); }, { signal: lifetime.signal });
 pause.addEventListener('click', () => { if (session) { const completion = session.setPaused(!session.paused); syncUI(); void completion.then(syncUI); } }, { signal: lifetime.signal });
 claim.addEventListener('click', () => {

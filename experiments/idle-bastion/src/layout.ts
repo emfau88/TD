@@ -21,7 +21,7 @@ export interface BuildingPlot {
 }
 export interface IdleLayout {
   readonly cellSize: number;
-  readonly version?: 1 | 2 | 3 | 4;
+  readonly version?: 1 | 2 | 3 | 4 | 5;
   readonly startBounds: GridBounds; readonly bounds: GridBounds; readonly maxBounds: GridBounds;
   readonly road: { readonly waypoints: readonly GridCell[]; readonly cells: readonly GridCell[] };
   readonly core: GridCell; readonly towerPads: readonly TowerPad[];
@@ -146,6 +146,16 @@ export function findFootpath(
 }
 
 export const LAYOUT_VERSION = 4 as const;
+// Layout 4 remains the legacy west map. Layout 5 adds a free core settlement.
+export const CORE_LAYOUT_VERSION = 5 as const;
+export const CORE_SETTLEMENT_ZONE: GridRect = { x: 30, y: 10, width: 9, height: 5 };
+export const FUTURE_EAST_CORRIDOR: GridRect = { x: 28, y: 3, width: 12, height: 7 };
+export const CORE_PLOTS: PlotPositions = { workshop: { x: 30, y: 11 }, warehouse: { x: 34, y: 12 } };
+export const CORE_TAVERN_PLOT: GridCell = { x: 36, y: 10 };
+export const CORE_ACCESS = pathCells([{ x: 27, y: 7 }, { x: 29, y: 7 }, { x: 29, y: 13 }, { x: 38, y: 13 }]);
+export function settlementZone(layout: Pick<IdleLayout, 'version'>, id: BuildingId): GridRect {
+  return layout.version === 5 ? CORE_SETTLEMENT_ZONE : id === 'tavern' ? TAVERN_ZONE : SETTLEMENT_ZONE;
+}
 export const SETTLEMENT_ZONE: GridRect = { x: 2, y: 10, width: 9, height: 4 };
 // The tavern may use one extra courtyard row; existing building sites stay unchanged.
 export const TAVERN_ZONE: GridRect = { ...SETTLEMENT_ZONE, height: 5 };
@@ -153,13 +163,13 @@ export type BuildingId = BuildingPlot['id'];
 export type PlotPositions = Record<'workshop' | 'warehouse', GridCell> & { tavern?: GridCell };
 export const buildingWidth = (id: BuildingId): number => id === 'warehouse' ? 2 : 3;
 export const DEFAULT_PLOTS: PlotPositions = { workshop: { x: 3, y: 11 }, warehouse: { x: 8, y: 12 } };
-export function createIdleLayout(options: { readonly unlockedColumns?: number; readonly version?: 1 | 2 | 3 | 4; readonly plots?: PlotPositions } = {}): IdleLayout {
-  const cellSize = 40, rows = 16, startColumns = 28, maxColumns = 36;
+export function createIdleLayout(options: { readonly unlockedColumns?: number; readonly version?: 1 | 2 | 3 | 4 | 5; readonly plots?: PlotPositions } = {}): IdleLayout {
+  const version = options.version ?? LAYOUT_VERSION;
+  const cellSize = 40, rows = 16, startColumns = version === 5 ? 40 : 28, maxColumns = version === 5 ? 40 : 36;
   const columns = options.unlockedColumns ?? startColumns;
   if (!Number.isInteger(columns) || columns < startColumns || columns > maxColumns) {
-    throw new Error('Unlocked columns must be an integer from 28 through 36.');
+    throw new Error(`Unlocked columns must be an integer from ${startColumns} through ${maxColumns}.`);
   }
-  const version = options.version ?? LAYOUT_VERSION;
   const northRow = version >= 4 ? 4 : 2;
   const waypoints = Object.freeze([
     cell(0, 5), cell(7, 5), cell(7, northRow), cell(15, northRow),
@@ -201,7 +211,7 @@ export function createIdleLayout(options: { readonly unlockedColumns?: number; r
   }
   if (version >= 3) {
     plots = plots.map(plot => {
-      const destination = options.plots?.[plot.id] ?? DEFAULT_PLOTS[plot.id] ?? plot.footprint;
+      const destination = options.plots?.[plot.id] ?? (version === 5 ? CORE_PLOTS : DEFAULT_PLOTS)[plot.id] ?? plot.footprint;
       const dx = destination.x - plot.footprint.x, dy = destination.y - plot.footprint.y;
       const shift = <T extends GridCell>(p: T): T => ({ ...p, x: p.x + dx, y: p.y + dy });
       return { ...plot, footprint: shift(plot.footprint), blockingBody: shift(plot.blockingBody),
@@ -213,7 +223,7 @@ export function createIdleLayout(options: { readonly unlockedColumns?: number; r
       const distance = Math.min(...road.map(p => Math.abs(p.x - x) + Math.abs(p.y - y)));
       if (distance < 1 || distance > 3 || rectContains(SETTLEMENT_ZONE, { x, y })) continue;
       const old = towerPads.find(p => p.cell.x === x && p.cell.y === y);
-      candidates.push(pad(old?.id ?? `cell-${x}-${y}`, x, y, x >= 28 ? 'east-clearing' : 'initial', old?.isStarter));
+      candidates.push(pad(old?.id ?? `cell-${x}-${y}`, x, y, x >= 28 && version !== 5 ? 'east-clearing' : 'initial', old?.isStarter));
     }
     towerPads = Object.freeze(candidates);
   }
@@ -274,7 +284,7 @@ export function validateLayout(layout: IdleLayout): readonly string[] {
 }
 
 /** Terrain is authored independently of these candidates; the model excludes solids. */
-export function validPlotPositions(positions: unknown): positions is PlotPositions {
+export function validPlotPositions(positions: unknown, version: number = LAYOUT_VERSION): positions is PlotPositions {
   if (!positions || typeof positions !== 'object') return false;
   const p = positions as PlotPositions;
   const occupied = new Set<string>();
@@ -283,16 +293,16 @@ export function validPlotPositions(positions: unknown): positions is PlotPositio
     const pos = p[id];
     if (!pos || !integerCell(pos)) return false;
     for (const cell of cellsInRect({ ...pos, width: buildingWidth(id), height: 2 })) {
-      if (!rectContains(id === 'tavern' ? TAVERN_ZONE : SETTLEMENT_ZONE, cell) || occupied.has(key(cell))) return false;
+      if (!rectContains(version === 5 ? CORE_SETTLEMENT_ZONE : id === 'tavern' ? TAVERN_ZONE : SETTLEMENT_ZONE, cell) || occupied.has(key(cell))) return false;
       occupied.add(key(cell));
     }
   }
   return true;
 }
 const battleLayouts = new Map<string, IdleLayout>();
-export function battleLayout(expanded: boolean, plots: PlotPositions = DEFAULT_PLOTS, version: 3 | 4 = LAYOUT_VERSION): IdleLayout {
+export function battleLayout(expanded: boolean, plots: PlotPositions = DEFAULT_PLOTS, version: 3 | 4 | 5 = LAYOUT_VERSION): IdleLayout {
   const key = JSON.stringify([version, expanded, plots.workshop.x, plots.workshop.y, plots.warehouse.x, plots.warehouse.y, plots.tavern?.x, plots.tavern?.y]);
   let layout = battleLayouts.get(key);
-  if (!layout) { layout = createIdleLayout({ unlockedColumns: expanded ? 32 : 28, plots, version }); battleLayouts.set(key, layout); }
+  if (!layout) { layout = createIdleLayout({ unlockedColumns: version === 5 ? 40 : expanded ? 32 : 28, plots, version }); battleLayouts.set(key, layout); }
   return layout;
 }

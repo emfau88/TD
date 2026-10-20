@@ -33,7 +33,7 @@ export function updateOnboarding(live: BattleSession, view: { placing: boolean; 
       : ['Tippe auf deinen Waldwächter', 'Die Welle wartet. Öffne den markierten Turm und verbessere ihn einmal für 60 Gold auf Level 2.', '']; break;
     case 'workshop': copy = complete ? ['Deine Werkstatt steht', 'Hier erforschst du neue Turmtypen. Dein gespartes Gold verwenden wir für Frosttechnik.', 'Weiter · Frosttechnik entdecken']
       : waiting ? ['Die erste Welle läuft', 'Nach dem Sieg steht dein kostenloser Werkstatt-Bausatz bereit.', '']
-      : catalogPanel === 'settlement' ? ['Wähle die Werkstatt', 'Tippe unten auf die Werkstatt-Karte. Anschließend setzt du den kostenlosen Bausatz auf die Wiese.', '']
+      : catalogPanel === 'settlement' ? ['Wähle die Werkstatt', 'Tippe unten auf die Werkstatt-Karte. Die Kamera zeigt dir die Siedlungswiese am Kern. Dort setzt du den kostenlosen Bausatz.', '']
       : ['Dein Werkstatt-Bausatz ist bereit', 'Öffne unten „Siedlung“. Dort findest du deine Gebäude. Die Welle wartet.', '']; break;
     case 'research': copy = complete ? ['Frostkristall freigeschaltet', 'Jetzt bauen wir den neuen Turm neben deinen Waldwächter. Er kostet 110 Gold.', 'Weiter · Frostturm bauen']
       : ['Öffne deine Werkstatt', 'Tippe auf das neue Gebäude auf der Karte. Dort erforschst du die Frostfassung für 60 Gold.', '']; break;

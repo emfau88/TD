@@ -1,0 +1,44 @@
+{
+  "opening": {
+    "stage": "frost",
+    "plots": {
+      "workshop": {
+        "x": 30,
+        "y": 11
+      },
+      "warehouse": {
+        "x": 34,
+        "y": 12
+      }
+    },
+    "lives": 20,
+    "columns": 40
+  },
+  "mobile": {
+    "width": 430,
+    "height": 932,
+    "dpr": 2,
+    "touchPanPixels": 216.6153846153852
+  },
+  "migration": {
+    "gold": 1045,
+    "buildings": {
+      "workshop": {
+        "x": 30,
+        "y": 11
+      },
+      "warehouse": {
+        "x": 34,
+        "y": 12
+      },
+      "tavern": {
+        "x": 36,
+        "y": 10
+      }
+    },
+    "towers": 6,
+    "reloaded": true,
+    "paidAccessCredit": 900
+  },
+  "errors": []
+}

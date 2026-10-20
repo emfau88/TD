@@ -83,3 +83,9 @@ Runa, Schnellfeuer und Sonnenobelisk bleiben Kandidaten für einen späteren Aus
 **Nutzeridee Kern/HQ:** Eine spätere Interaktion mit dem Kern könnte einen zentralen Befehl, eine Verteidigungsfähigkeit oder eine Ausbauwahl anbieten. Noch keine konkrete Funktion beschlossen; den frühen Einstieg damit nicht zusätzlich belasten.
 
 **Nutzeridee Wachstube/Kaserne:** Gelegentlich verbündete Einheiten vom Kern oder Gebäude auf die Lane schicken. Echte Begegnungen brauchen Gegnerangriffe/Zielwahl, eigene Lebenspunkte und Animationen, Regeln für Blockieren, Tod und Weiterlaufen sowie Speicherung und Farmbewertung. Erst später einen kleinen Prototyp auf einer Route prüfen. Eine nur vorbeilaufende Darstellung mit Flächeneffekt wäre technisch einfacher, ist aber kein gleichwertiger Ersatz für tatsächliche Kämpfe. Diese Idee gehört nicht zum Umfang B15–B22.
+
+## Konkretisierung B17a vom 20.10.2026
+
+Neue Partien nutzen 40×16 Zellen mit freier Siedlung südöstlich des unveränderten Kerns. Ältere Karten wechseln erst mit dem freiwilligen, kostenlosen Umzug aller Gebäude in manueller Pause. Der alte Lichtungskauf bleibt als 900-Gold-Anrechnung für B19 erhalten. Eine neue Zahlung für die reine Basisfläche entfällt. Der Ostkorridor einschließlich drei möglicher Turmreihen je Seite bleibt von Gebäuden frei; B17b führt die große Erweiterung von hier aus weiter.
+
+Die ursprünglich vorgesehenen Front-/Basis-Buttons entfallen auf ausdrücklichen Nutzerwunsch: Mausziehen und Touch reichen. Der bestehende Bau-/Tutorialfokus bleibt gezielt erhalten, ebenso der Hochkantmaßstab. Diese Entscheidung gilt auch als Ausgangspunkt für die spätere Ostfront; keine vorsorgliche weitere Navigationsleiste.

@@ -6,12 +6,28 @@
 
 [Ilyras Lauf- und Zauberanimationen ansehen](https://emfau88.github.io/TD/idle-bastion/ilyra-check.html) · Separate Vorschau neben Mara; Rekrutierung und Sternensalve sind noch nicht im Spiel.
 
+**Neu – Siedlung am Kern:** Neue Partien haben rechts vom Kern Platz für Werkstatt, Lager und Taverne. Bestehende Spielstände behalten ihre Gebäudeplätze: **Pause → Siedlung → Siedlung am Kern → kostenlos verlegen** zieht die vorhandenen Gebäude gemeinsam um. Gold, Stufen, Türme und laufende Gegner bleiben erhalten. Ein alter Lichtungskauf wird mit 900 Gold auf den späteren Ostzugang angerechnet. Karte per Mausziehen/Touch verschieben; keine zusätzlichen Navigationsbuttons und noch keine Ostangriffe. [Kompakter Prüfbericht](artifacts/idle-bastion/acceptance/b17a/REPORT.md).
+
+<details open>
+<summary>Siedlung am Kern – aktuelle Ansichten</summary>
+
+![Werkstatt II, Lager und Taverne südöstlich des Kerns](artifacts/idle-bastion/acceptance/b17a/core-settlement-desktop.png)
+
+Der erste Werkstattbau bleibt während der Lernpause frei sichtbar:
+
+![Werkstatt entsteht beim angeleiteten Einstieg](artifacts/idle-bastion/acceptance/b17a/workshop-building-desktop.png)
+
+<img src="artifacts/idle-bastion/acceptance/b17a/core-settlement-mobile.png" alt="Siedlungsansicht in Hochkant" width="300">
+
+Die späte Siedlungsansicht verwendet einen vorbereiteten Besitz-/Umzugsprüfstand. Hochkant: Browseremulation 430 × 932, kein physischer Gerätetest.
+</details>
+
 **Darstellung korrigiert:** Der Frostturm sitzt in Bauvorschau und allen drei Ausbaustufen auf gleicher Bodenhöhe wie seine Nachbartürme. [Kompakter Nachweis](artifacts/idle-bastion/acceptance/f01/REPORT.md).
 
 **Neu – Siedlung nach Boss 25:** Nach dem tatsächlichen Sieg wird die **Taverne für 1.200 Gold** unter Siedlung freigeschaltet. Frei platzierbar und dauerhaft gespeichert; vorerst optionaler Treffpunkt **ohne Ilyra oder Kampfbonus**. Die erste Rekrutierung folgt später ohne weitere Goldkosten. Werkstatt II hat ein eigenes Imagegen-Gebäude erhalten; Werkstatt I/II, Lager und Taverne sind direkt auf der Karte beschriftet. [Prüfumfang und Nachweise](artifacts/idle-bastion/acceptance/b15/REPORT.md) · [Aktuelle Roadmap](experiments/idle-bastion/ROADMAP.md#akt-ii).
 
-<details open>
-<summary>Vier aktuelle Spielaufnahmen – Desktop und Hochkant</summary>
+<details>
+<summary>B15 – frühere Spielaufnahmen vor dem Siedlungsumzug</summary>
 
 Siedlungsübersicht mit Werkstatt II, Lager und neuer Taverne:
 

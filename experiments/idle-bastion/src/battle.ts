@@ -9,7 +9,7 @@ export type { EnemyDef } from './enemy-roster';
  * B03 adds exact persistence; B04 owns advance/farm attempts and fractional offline credit.
  */
 import { BOSS, freshCharm, isBossWave, bossEncounter, type BossWave, type BossCharm } from './boss';
-import { LAYOUT_VERSION, cellCenter, createIdleLayout, isUnlockedCell, battleLayout, DEFAULT_PLOTS, validPlotPositions, TAVERN_ZONE, type BuildingId, type PlotPositions, type GridCell, type IdleLayout } from './layout';
+import { LAYOUT_VERSION, cellCenter, createIdleLayout, isUnlockedCell, battleLayout, DEFAULT_PLOTS, CORE_PLOTS, CORE_TAVERN_PLOT, validPlotPositions, settlementZone, findFootpath, type BuildingId, type PlotPositions, type GridCell, type IdleLayout } from './layout';
 import { getForestBlockedCells } from './forest-world';
 import { MARA, createMara, cloneMara, assignMaraTarget, stepMara, validMara, migrateMaraLayout, moveMara, castMara, type MaraState } from './mara';
 import { validMara as validLegacyMara, migrateMaraLayout as migrateLegacyMaraLayout } from './mara-legacy';
@@ -82,8 +82,8 @@ export interface BattleSnapshot {
   discovery: DiscoveryStage;
   dismissedDefeatAttempt: number;
   introduction: Introduction;
-  schemaVersion: 19; rulesVersion: 10; layoutVersion: 3 | 4;
-  plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32';
+  schemaVersion: 20; rulesVersion: 10; layoutVersion: 3 | 4 | 5;
+  plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32' | 'core40';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
   progress: ProgressRecord;
@@ -176,6 +176,7 @@ export class IdleBattle {
   private readonly maraBonus: boolean;
 
   constructor(public layout: IdleLayout = createIdleLayout(), options: { maraBonus?: boolean } = {}) {
+    this.plots = Object.fromEntries(layout.plots.map(p => [p.id, { x: p.footprint.x, y: p.footprint.y }])) as PlotPositions;
     this.maraBonus = options.maraBonus !== false;
     this.path = layout.road.waypoints.map(position => cellCenter(layout, position));
     this.pathLength = this.path.slice(1).reduce((sum, point, index) => sum + distance(this.path[index], point), 0);
@@ -191,7 +192,7 @@ export class IdleBattle {
   /** Sessions use this factory. The bare constructor retains an already deployed
    * defense for migration and deterministic combat probes. */
   static newGame(): IdleBattle {
-    const battle = new IdleBattle();
+    const battle = new IdleBattle(battleLayout(false, CORE_PLOTS, 5));
     battle.towers = []; battle.uid = 1; battle.discovery = 'wisp';
     battle.introduction = { stage: 'welcome', preparationSeconds: 0, halted: false };
     battle.mara.targetTowerUid = 0; battle.mara.autoCast = false;
@@ -333,11 +334,11 @@ export class IdleBattle {
 
   /** Only the shipped closed/open layouts cross the save boundary. */
   snapshot(): BattleSnapshot {
-    if (JSON.stringify(this.layout) !== JSON.stringify(battleLayout(this.clearing.unlocked, this.plots, this.layout.version as 3 | 4))) {
-      throw new Error('Unsupported battle layout for snapshot version 19.');
+    if (JSON.stringify(this.layout) !== JSON.stringify(battleLayout(this.clearing.unlocked, this.plots, this.layout.version as 3 | 4 | 5))) {
+      throw new Error('Unsupported battle layout for snapshot version 20.');
     }
     return {
-      schemaVersion: 19, discovery: this.discovery, dismissedDefeatAttempt: this.dismissedDefeatAttempt, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4, layoutId: this.clearing.unlocked ? 'east32' : 'start28',
+      schemaVersion: 20, discovery: this.discovery, dismissedDefeatAttempt: this.dismissedDefeatAttempt, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4 | 5, layoutId: this.layout.version === 5 ? 'core40' : this.clearing.unlocked ? 'east32' : 'start28',
       clearing: { ...this.clearing },
       bossVictories: this.bossVictories, secondBossVictories: this.secondBossVictories, bossChallengeWave: this.bossChallengeWave, bossChallengeRequested: this.bossChallengeRequested, bossCharm: { ...this.bossCharm },
       progress: cloneProgress(this.progress), rewardRemainderUnits: this.rewardRemainderUnits, waveRecipeVersion: this.waveRecipeVersion,
@@ -477,7 +478,16 @@ export class IdleBattle {
       value = { ...value, schemaVersion: 19, settlement: { ...value.settlement,
         tavernBuilt: false, tavernBuiltAt: null, tavernSeen: false } };
     }
-    if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4)) return undefined;
+    if (isRecord(value) && value.schemaVersion === 19) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 19, model.layout.version as 3 | 4)) return undefined;
+      // Existing settlements stay exactly where they are until a voluntary move.
+      value = { ...value, schemaVersion: 20 };
+    }
+    if (isRecord(value) && value.schemaVersion === 20) {
+      if (![3, 4, 5].includes(value.layoutVersion as number) || !validPlotPositions(value.plots, value.layoutVersion as number)) return undefined;
+      model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion as 3 | 4 | 5));
+    }
+    if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5)) return undefined;
     model.discovery = value.discovery; model.dismissedDefeatAttempt = value.dismissedDefeatAttempt;
     model.introduction = { ...value.introduction };
     model.plots = structuredClone(value.plots); model.wispArrival = { ...value.wispArrival };
@@ -593,8 +603,10 @@ export class IdleBattle {
   get tavernUnlocked(): boolean { return this.secondBossVictories > 0; }
   get recommendedTavernPlot(): GridCell | undefined {
     if (this.plots.tavern) return this.plots.tavern;
-    for (let y = TAVERN_ZONE.y; y < TAVERN_ZONE.y + TAVERN_ZONE.height - 1; y++)
-      for (let x = TAVERN_ZONE.x; x < TAVERN_ZONE.x + TAVERN_ZONE.width - 2; x++)
+    if (this.layout.version === 5 && this.canPositionBuilding('tavern', CORE_TAVERN_PLOT)) return CORE_TAVERN_PLOT;
+    const zone = settlementZone(this.layout, 'tavern');
+    for (let y = zone.y; y < zone.y + zone.height - 1; y++)
+      for (let x = zone.x; x < zone.x + zone.width - 2; x++)
         if (this.canPositionBuilding('tavern', { x, y })) return { x, y };
     return undefined;
   }
@@ -610,7 +622,9 @@ export class IdleBattle {
     return true;
   }
 
-  get clearingAvailable(): boolean { return this.bossVictories > 0; }
+  get clearingAvailable(): boolean { return this.layout.version !== 5 && this.bossVictories > 0; }
+  /** Reserved credit, not spendable gold. B19 must deduct it from east access. */
+  get eastAccessCredit(): number { return this.clearing.unlocked ? SETTLEMENT.clearingCost : 0; }
   unlockClearing(): boolean {
     if (this.preparing) return false;
     if (this.phase === 'defeat' || !this.clearingAvailable || this.clearing.unlocked || this.gold < SETTLEMENT.clearingCost) return false;
@@ -618,7 +632,7 @@ export class IdleBattle {
     this.clearing = { unlocked: true, openedAt: this.elapsed };
     // The same route/core and all existing actors remain in place. Opening land
     // only removes old border obstacles; existing Mara routes remain legal.
-    this.layout = battleLayout(true, this.plots, this.layout.version as 3 | 4);
+    this.layout = battleLayout(true, this.plots, this.layout.version as 3 | 4 | 5);
     this.events.push({ type: 'clearing', amount: SETTLEMENT.clearingCost });
     return true;
   }
@@ -658,7 +672,7 @@ export class IdleBattle {
     return !this.maraIntroductionPending && this.phase === 'wave' && !!target && !this.isCharmed(target.uid) && castMara(this.mara, target);
   }
   canPositionBuilding(id: BuildingId, cell: GridCell): boolean {
-    return validPlotPositions({ ...this.plots, [id]: cell });
+    return validPlotPositions({ ...this.plots, [id]: cell }, this.layout.version);
   }
   positionBuilding(id: BuildingId, cell: GridCell): boolean {
     if (id === 'tavern' && !this.settlement.tavernBuilt) return false;
@@ -667,11 +681,26 @@ export class IdleBattle {
   private applyBuildingPosition(id: BuildingId, cell: GridCell): boolean {
     if (this.preparing) return false;
     if (!this.canPositionBuilding(id, cell)) return false;
-    const plots = { ...this.plots, [id]: { ...cell } }, layout = battleLayout(this.clearing.unlocked, plots, this.layout.version as 3 | 4);
+    const plots = { ...this.plots, [id]: { ...cell } }, layout = battleLayout(this.clearing.unlocked, plots, this.layout.version as 3 | 4 | 5);
     // Reject an obstruction of Mara's current cell; interrupted routes stop safely.
-    const mara = migrateMaraLayout(this.mara, this.towers, layout, this.movementBlocked());
+    const blocked = [...getForestBlockedCells(layout), ...this.towers.map(t => ({ x: Math.floor(t.x / 40), y: Math.floor(t.y / 40) }))];
+    if (layout.version === 5 && !layout.plots.every(p => findFootpath(layout, { x: layout.core.x - 1, y: layout.core.y }, p.entrance, blocked))) return false;
+    const mara = migrateMaraLayout(this.mara, this.towers, layout, blocked);
     if (!mara || Math.hypot(mara.x - this.mara.x, mara.y - this.mara.y) > 1e-6) return false;
     this.plots = plots; this.layout = layout; Object.assign(this.mara, mara);
+    return true;
+  }
+
+  /** Called through the paused, atomic session command. No economy or combat changes. */
+  relocateSettlement(): boolean {
+    if (this.layout.version !== 4 || this.preparing || this.guiding || this.discoveryActive) return false;
+    const plots: PlotPositions = { ...structuredClone(CORE_PLOTS), ...(this.plots.tavern ? { tavern: { ...CORE_TAVERN_PLOT } } : {}) };
+    const layout = battleLayout(this.clearing.unlocked, plots, 5);
+    const blocked = [...getForestBlockedCells(layout), ...this.towers.map(t => ({ x: Math.floor(t.x / 40), y: Math.floor(t.y / 40) }))];
+    if (!layout.plots.every(p => findFootpath(layout, { x: layout.core.x - 1, y: layout.core.y }, p.entrance, blocked))) return false;
+    const mara = migrateMaraLayout(this.mara, this.towers, layout, blocked);
+    if (!mara || Math.hypot(mara.x - this.mara.x, mara.y - this.mara.y) > 1e-6) return false;
+    this.plots = plots; this.useLayout(layout); Object.assign(this.mara, mara);
     return true;
   }
 
@@ -1087,17 +1116,17 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 = 0, layoutVersion: 1 | 2 | 3 | 4 = legacy ? 2 : LAYOUT_VERSION,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
-  if (!isRecord(value) || value.schemaVersion !== (legacy || 19) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
-    || value.layoutVersion !== layoutVersion || value.layoutId !== (layout.bounds.columns === 32 ? 'east32' : 'start28')) return false;
+  if (!isRecord(value) || value.schemaVersion !== (legacy || 20) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
+    || value.layoutVersion !== layoutVersion || value.layoutId !== (layoutVersion === 5 ? 'core40' : layout.bounds.columns === 32 ? 'east32' : 'start28') || legacy > 0 && layoutVersion === 5) return false;
   if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10]).includes(value.waveRecipeVersion as number))) return false;
   if ((!legacy || legacy >= 9) && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
-    || value.clearing.unlocked !== (layout.bounds.columns === 32)
+    || layoutVersion !== 5 && value.clearing.unlocked !== (layout.bounds.columns === 32)
     || (value.clearing.unlocked ? !integerIn(value.bossVictories, 1) || !numberIn(value.clearing.openedAt, 0, value.elapsed as number) : value.clearing.openedAt !== null))) return false;
   if (modern) {
-    if (!validPlotPositions(value.plots) || !isRecord(value.wispArrival) || typeof value.wispArrival.met !== 'boolean') return false;
+    if (!validPlotPositions(value.plots, layoutVersion) || !isRecord(value.wispArrival) || typeof value.wispArrival.met !== 'boolean') return false;
     const unlocked = isRecord(value.settlement) && value.settlement.frostResearched && (value.highestCleared as number) >= 5;
     if (unlocked ? !numberIn(value.wispArrival.at, 0, value.elapsed as number) : value.wispArrival.at !== null || value.wispArrival.met) return false;
   }
@@ -1153,7 +1182,7 @@ function validSnapshot(
       || (value.bossChallengeWave !== 15 && value.bossChallengeWave !== 25)
       || (value.bossChallengeRequested && value.bossChallengeWave === 25 && !(value.bossVictories as number))) return false;
   }
-  if (!legacy) {
+  if (!legacy || legacy >= 19) {
     const settlement = value.settlement as BattleSnapshot['settlement'];
     if (typeof settlement.tavernBuilt !== 'boolean' || typeof settlement.tavernSeen !== 'boolean'
       || settlement.tavernSeen && !(value.secondBossVictories as number)
@@ -1199,7 +1228,7 @@ function validSnapshot(
     || value.attemptId !== 0 || value.mode !== 'advance' || value.liveClearedWaves.length > 0)) return false;
   if (value.wave > 0 && (value.attemptId < 1 || value.wave > value.highestCleared + 1)) return false;
 
-  const count = value.wave === 0 ? 0 : waveCount(value.wave, (legacy && legacy < 6 ? 3 : value.waveRecipeVersion) as 3 | 4 | 5 | 6 | 7);
+  const count = value.wave === 0 ? 0 : waveCount(value.wave, (legacy && legacy < 6 ? 3 : value.waveRecipeVersion) as 3 | 4 | 5 | 5 | 6 | 7);
   if (value.queue.length + value.enemies.length > count) return false;
   for (let index = 0; index < value.queue.length; index++) {
     const recipeIndex = count - value.queue.length + index;

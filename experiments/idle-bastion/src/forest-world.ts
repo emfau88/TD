@@ -1,7 +1,7 @@
 /** B05's authored clearing. Rendering and Mara navigation consume exactly the
  * same solid cells. This adds no unlocks and never changes the enemy route.
  */
-import { SETTLEMENT_ZONE, createIdleLayout, cellsInRect, getTowerApproachCells, isUnlockedCell, type GridCell, type IdleLayout } from './layout';
+import { CORE_ACCESS, CORE_SETTLEMENT_ZONE, rectContains, SETTLEMENT_ZONE, createIdleLayout, cellsInRect, getTowerApproachCells, isUnlockedCell, type GridCell, type IdleLayout } from './layout';
 
 export interface ForestWorld {
   readonly trees: readonly GridCell[];
@@ -17,6 +17,24 @@ const cell = (x: number, y: number): GridCell => Object.freeze({ x, y });
 export function getForestWorld(layout: IdleLayout): ForestWorld {
   const cached = cache.get(layout);
   if (cached) return cached;
+  if (layout.version === 5) {
+    // Reuse the exact west woods. Extending the map may clear cells, never add
+    // obstacles to an old defense or a saved companion route.
+    const old = getForestWorld(createIdleLayout({ version: 4, unlockedColumns: 32 }));
+    const access = new Set(CORE_ACCESS.map(key));
+    const open = (p: GridCell) => rectContains(CORE_SETTLEMENT_ZONE, p) || access.has(key(p))
+      || p.x === 31 && p.y >= 5 && p.y <= 13;
+    const trees = old.trees.filter(p => !open(p));
+    const rocks = old.rocks.filter(p => !open(p));
+    for (let x = 32; x < 40; x++) for (const y of [0, 1, 15]) trees.push(cell(x, y));
+    for (let y = 2; y < 15; y++) trees.push(cell(39, y));
+    for (const [x, y] of [[33,2],[34,2],[36,2],[37,3],[38,3],[34,4],[35,4],[37,5],[38,6],[35,8],[37,8]]) trees.push(cell(x,y));
+    rocks.push(cell(33,3), cell(36,7));
+    const flowers = [...old.flowers, cell(32,9), cell(34,9), cell(38,9)].filter(p =>
+      !layout.plots.some(plot => rectContains(plot.footprint, p)));
+    const result: ForestWorld = { trees, rocks, water: old.water, flowers, blocked: [...trees, ...rocks, ...old.water] };
+    cache.set(layout, result); return result;
+  }
   // Preserve the authored woods and pond when adding free construction candidates.
   // The settlement zone stays clear so moving a building never uproots scenery.
   const terrainLayout = (layout.version ?? 1) >= 3 ? createIdleLayout({ version: 2, unlockedColumns: layout.bounds.columns }) : layout;

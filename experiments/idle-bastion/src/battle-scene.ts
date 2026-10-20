@@ -10,7 +10,7 @@ import { BossCharmView, charmAge } from './boss-visuals';
 import { wispPose } from './wisp';
 import Phaser from 'phaser';
 import { BASE, IdleBattle, stats, towerDefinition, visualStage, type BattleEvent, type TowerId, type Enemy, type Tower } from './battle';
-import { cellCenter, SETTLEMENT_ZONE, TAVERN_ZONE, buildingWidth, type BuildingId, type GridCell, type TowerPad } from './layout';
+import { cellCenter, settlementZone, buildingWidth, type BuildingId, type GridCell, type TowerPad } from './layout';
 import { KEYS, MARA_FOOT, SCALE, enemyFrame, enemyFlip, loopFrame, maraFrame, towerArt, towerMount, preloadArt, prepareArt } from './art';
 import { createForest, type ForestView } from './forest';
 
@@ -183,9 +183,10 @@ export class BattleScene extends Phaser.Scene {
     camera.setScroll(camera.clampX(scrollX), camera.clampY(scrollY));
   }
   showClearing(): void {
-    if (this.sim.clearing.unlocked) this.focusPoint({ x: 1140, y: 320 });
+    this.showBase();
   }
-  showDefense(): void { this.focusPoint({ x: this.portraitCamera ? 280 : this.sim.layout.startBounds.width / 2, y: this.portraitCamera ? 220 : 320 }); }
+  showBase(): void { this.focusPoint(this.sim.layout.version === 5 ? { x: 1340, y: 400 } : { x: 300, y: 460 }); }
+  showDefense(): void { this.focusPoint({ x: this.portraitCamera ? 280 : 560, y: this.portraitCamera ? 220 : 320 }); }
   resetCamera(): void {
     this.relativeZoom = 1; this.overview = true; this.resizeCamera();
     this.cameras.main.centerOn(this.sim.layout.bounds.width / 2, this.sim.layout.bounds.height / 2);
@@ -208,11 +209,11 @@ export class BattleScene extends Phaser.Scene {
     const viewHeight = Math.max(1, Math.min(this.scale.height, bottom) - top);
     camera.setViewport(0, top, this.scale.width, viewHeight);
     this.baseZoom = portrait && !this.overview ? Math.max(this.scale.height / height, this.scale.width / 640)
-      : Math.min(this.scale.width / (this.overview ? width : this.sim.layout.startBounds.width), viewHeight / height);
+      : Math.min(this.scale.width / (this.overview ? width : 1120), viewHeight / height);
     camera.setZoom(this.baseZoom * this.relativeZoom);
     this.fitCameraBounds();
     const initialY = portrait && !this.overview ? camera.displayHeight / 2 - 40 : height / 2;
-    camera.centerOn(!center || changedOrientation ? portrait ? 280 : this.sim.layout.startBounds.width / 2 : center.x,
+    camera.centerOn(!center || changedOrientation ? portrait ? 280 : 560 : center.x,
       !center || changedOrientation ? initialY : center.y);
     this.cameraFitted = true; this.hooks.changed();
   }
@@ -224,7 +225,7 @@ export class BattleScene extends Phaser.Scene {
     camera.setBounds(-padX, -padY, width + padX * 2, height + padY * 2);
   }
   focusPad(padId: string): void {
-    if (!this.portraitCamera && !this.sim.clearing.unlocked) return;
+    if (!this.portraitCamera && !this.sim.clearing.unlocked && this.sim.layout.version !== 5) return;
     const pad = this.sim.layout.towerPads.find(pad => pad.id === padId);
     if (pad) this.focusPoint(cellCenter(this.sim.layout, pad.cell));
   }
@@ -233,14 +234,14 @@ export class BattleScene extends Phaser.Scene {
     this.focusObject('wisp');
   }
   focusObject(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'clearing'): void {
-    if (kind !== 'clearing' && (this.portraitCamera || this.sim.clearing.unlocked)) this.focusPoint(this.objectPoint(kind));
+    if (kind !== 'clearing' && (this.portraitCamera || this.sim.clearing.unlocked || this.sim.layout.version === 5)) this.focusPoint(this.objectPoint(kind));
   }
   private focusPoint(point: { x: number; y: number }): void {
     if (this.overview) { this.overview = false; this.relativeZoom = 1; this.resizeCamera(); }
     this.cameras.main.centerOn(point.x, this.portraitCamera ? point.y - 20 : this.sim.layout.bounds.height / 2);
   }
   private objectPoint(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'clearing'): { x: number; y: number } {
-    if (kind === 'clearing') return { x: 1080, y: 524 };
+    if (kind === 'clearing') return this.sim.layout.version === 5 ? { x: 1340, y: 400 } : { x: 1080, y: 524 };
     if (kind === 'wisp') return this.wispPose;
     if (kind === 'mara') return { x: this.sim.mara.x, y: this.sim.mara.y - 20 };
     if (kind === 'tavern') {
@@ -319,9 +320,6 @@ export class BattleScene extends Phaser.Scene {
     const point = this.cameras.main.getWorldPoint(pointer.x, pointer.y), size = this.sim.layout.cellSize;
     if (this.groundMode) { this.hooks.ground?.({ x: Math.floor(point.x / size), y: Math.floor(point.y / size) }); return; }
     if (this.bossCharmView.contains(point)) return;
-    if (!this.sim.clearing.unlocked && point.x > this.sim.layout.startBounds.width - 120 && point.y >= 505 && point.y <= 545) {
-      this.hooks.selectClearing?.(); return;
-    }
     const pad = this.sim.layout.towerPads.find(value => value.cell.x === Math.floor(point.x / size) && value.cell.y === Math.floor(point.y / size));
     if (this.buildKind) { this.setSelected(pad?.id); this.hooks.select(pad?.id); return; }
     const wisp = this.wispPose;
@@ -365,7 +363,7 @@ export class BattleScene extends Phaser.Scene {
       if (this.groundMode === 'mara') {
         g.lineStyle(1.5, 0xf2daa0, 0.6).strokeCircle(this.sim.mara.x, this.sim.mara.y, MARA.range);
       } else {
-        const zone = this.groundMode === 'tavern' ? TAVERN_ZONE : SETTLEMENT_ZONE;
+        const zone = settlementZone(this.sim.layout, this.groundMode);
         g.fillStyle(0xffdc8c, 0.10).fillRect(zone.x * size, zone.y * size, zone.width * size, zone.height * size);
       }
       if (this.groundCell && this.groundMode !== 'mara') {

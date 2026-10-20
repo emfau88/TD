@@ -207,6 +207,11 @@ export class BattleSession {
     }
   }
 
+  async relocateSettlement(): Promise<boolean> {
+    if (!this.currentPaused) return false;
+    return this.command(battle => battle.relocateSettlement(), true);
+  }
+
   async setPaused(paused: boolean): Promise<boolean> {
     if (this.unavailable() || this.currentPaused === paused) return false;
     this.currentPaused = paused;

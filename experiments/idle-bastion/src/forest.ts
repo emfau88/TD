@@ -5,7 +5,7 @@ import type Phaser from 'phaser';
 import { clearWaterBackdrop, waterTileSource } from '../../../reference/src/terrain';
 import { KEYS, SCALE, loopFrame } from './art';
 import { getForestWorld } from './forest-world';
-import { cellCenter, createIdleLayout, type GridCell, type IdleLayout } from './layout';
+import { cellCenter, CORE_ACCESS, findFootpath, createIdleLayout, type GridCell, type IdleLayout } from './layout';
 
 export interface ForestView { update(elapsed: number, built: boolean, builtAt: number | null, warehouseBuilt: boolean, warehouseBuiltAt: number | null, warehouseUnlocked: boolean, workshopUpgraded?: boolean, upgradedAt?: number | null, tavernBuilt?: boolean, tavernBuiltAt?: number | null): void; destroy(): void }
 const cellKey = ({ x, y }: GridCell) => `${x},${y}`;
@@ -43,6 +43,24 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
     const [x, y] = roadSource(position, road);
     context.drawImage(source, x, y, 64, 64, position.x * size, position.y * size, size, size);
   }
+  if (layout.version === 5) {
+    // A narrow village footpath is visually distinct from the broad enemy lane.
+    const trail = new Map(CORE_ACCESS.map(p => [cellKey(p), p]));
+    for (const plot of layout.plots) for (const p of findFootpath(layout, { x: 29, y: 13 }, plot.entrance, world.blocked) ?? []) trail.set(cellKey(p), p);
+    for (const p of trail.values()) {
+      if (layout.plots.some(plot => p.y === plot.blockingBody.y && p.x >= plot.blockingBody.x && p.x < plot.blockingBody.x + plot.blockingBody.width)) continue;
+      const x = p.x * size, y = p.y * size;
+      context.save(); context.beginPath();
+      context.rect(x + 11, y + 11, 18, 18);
+      if (trail.has(`${p.x - 1},${p.y}`)) context.rect(x, y + 11, 20, 18);
+      if (trail.has(`${p.x + 1},${p.y}`)) context.rect(x + 20, y + 11, 20, 18);
+      if (trail.has(`${p.x},${p.y - 1}`)) context.rect(x + 11, y, 18, 20);
+      if (trail.has(`${p.x},${p.y + 1}`)) context.rect(x + 11, y + 20, 18, 20);
+      context.clip(); context.globalAlpha = .7;
+      context.drawImage(source, 576, 64, 64, 64, x, y, size, size);
+      context.restore();
+    }
+  }
   const workshop = layout.plots.find(plot => plot.id === 'workshop')!;
   ground.refresh();
   track(scene.add.image(0, 0, ground.key).setOrigin(0).setDepth(0));
@@ -77,14 +95,6 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   shade.context.fillStyle = gradient; shade.context.fillRect(0, 0, layout.bounds.width, layout.bounds.height); shade.refresh();
   track(scene.add.image(0, 0, shade.key).setOrigin(0).setDepth(2));
 
-  if (layout.bounds.columns > layout.startBounds.columns) {
-    track(scene.add.text(1195, 184, 'Östliche Lichtung', { fontFamily: 'Segoe UI, sans-serif', fontSize: '12px',
-      fontStyle: 'bold', resolution: 2, color: '#f1dfaf', stroke: '#233e2d', strokeThickness: 3 }).setOrigin(0.5).setDepth(5000));
-  } else {
-    track(scene.add.text(layout.startBounds.width - 16, 524, 'Lichtung →', { fontFamily: 'Segoe UI, sans-serif', fontSize: '12px',
-      fontStyle: 'bold', resolution: 2, color: '#f1dfaf', backgroundColor: '#243d29', padding: { x: 7, y: 5 },
-      stroke: '#233e2d', strokeThickness: 2 }).setOrigin(1, 0.5).setDepth(5000));
-  }
   // Keep existing tree variants/offsets when removing the old eastern border.
   const originalTrees = getForestWorld(createIdleLayout()).trees;
   const originalTreeIndices = new Map(originalTrees.map((cell, index) => [cellKey(cell), index]));

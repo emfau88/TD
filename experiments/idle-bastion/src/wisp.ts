@@ -25,7 +25,7 @@ export function wispPose(layout: IdleLayout, elapsed: number, warehouseBuilt = f
   let route = cache.get(warehouseBuilt);
   if (!route) {
     const start = layout.plots.find(plot => plot.id === 'workshop')!.entrance;
-    route = (findFootpath(layout, start, warehouseBuilt ? layout.plots.find(plot => plot.id === 'warehouse')!.entrance : { x: 5, y: 12 }, getForestBlockedCells(layout)) ?? [start]).map(cell => cellCenter(layout, cell));
+    route = (findFootpath(layout, start, warehouseBuilt ? layout.plots.find(plot => plot.id === 'warehouse')!.entrance : layout.version === 5 ? { x: 29, y: start.y } : { x: 5, y: 12 }, getForestBlockedCells(layout)) ?? [start]).map(cell => cellCenter(layout, cell));
     if (!route.length) route = [cellCenter(layout, start)];
     cache.set(warehouseBuilt, route);
   }
