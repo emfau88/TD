@@ -76,6 +76,7 @@ export class BattleSession {
   private renewal?: Promise<void>;
   private suspension?: Promise<void>;
   private transitioning = false;
+  private actionPending = false;
 
   private constructor(
     battle: IdleBattle, private readonly store: SessionStore | undefined,
@@ -139,6 +140,8 @@ export class BattleSession {
   get battle(): IdleBattle { return this.currentBattle; }
   get paused(): boolean { return this.currentPaused; }
   get busy(): boolean { return !!this.pendingWrite || this.transitioning; }
+  /** Background checkpoints do not make controls unavailable. */
+  get inputBusy(): boolean { return this.actionPending || this.transitioning; }
   get error(): Error | undefined { return this.currentError; }
   get revision(): number { return this.currentRevision; }
   get temporary(): boolean { return !this.store; }
@@ -177,34 +180,31 @@ export class BattleSession {
     }
   }
 
-  /** Caller callbacks mutate synchronously; acknowledgement follows commit.
+  /** After any background write, callbacks mutate synchronously; acknowledgement follows commit.
    * Concurrent clicks and purchases in the return dialog are rejected.
    */
-  async command(fn: (battle: IdleBattle) => unknown, waitForSave = false): Promise<boolean> {
-    // Intro buttons stay tappable across background checkpoints. Revalidate the
-    // action after that write; ordinary concurrent purchases still fail fast.
-    if (waitForSave && this.pendingWrite) {
-      try { await this.pendingWrite; } catch { return false; }
-    }
-    if (this.unavailable()) return false;
-    const before = this.currentBattle.snapshot();
-    const oldEvents = this.currentBattle.events.slice();
-    try {
-      const result = fn(this.currentBattle);
-      if (result && typeof (result as { then?: unknown }).then === 'function') throw new Error('Spielbefehle müssen synchron sein.');
-      this.refreshFarm();
-      if (same(before, this.currentBattle.snapshot())) return false;
-      await this.commit();
-      return true;
-    } catch (value) {
-      if (!this.currentError) {
-        this.currentBattle = IdleBattle.restore(before)!;
-        this.currentBattle.events = oldEvents;
+  async command(fn: (battle: IdleBattle) => unknown, waitForSave = true): Promise<boolean> {
+    return this.runAction(async () => {
+      if (this.unavailable()) return false;
+      const before = this.currentBattle.snapshot();
+      const oldEvents = this.currentBattle.events.slice();
+      try {
+        const result = fn(this.currentBattle);
+        if (result && typeof (result as { then?: unknown }).then === 'function') throw new Error('Spielbefehle müssen synchron sein.');
         this.refreshFarm();
-        this.fail(asError(value), false);
+        if (same(before, this.currentBattle.snapshot())) return false;
+        await this.commit();
+        return true;
+      } catch (value) {
+        if (!this.currentError) {
+          this.currentBattle = IdleBattle.restore(before)!;
+          this.currentBattle.events = oldEvents;
+          this.refreshFarm();
+          this.fail(asError(value), false);
+        }
+        return false;
       }
-      return false;
-    }
+    }, waitForSave);
   }
 
   async relocateSettlement(): Promise<boolean> {
@@ -213,27 +213,31 @@ export class BattleSession {
   }
 
   async setPaused(paused: boolean): Promise<boolean> {
-    if (this.unavailable() || this.currentPaused === paused) return false;
-    this.currentPaused = paused;
-    this.pendingSeconds = 0;
-    try { await this.commit(); return true; } catch { return false; }
+    return this.runAction(async () => {
+      if (this.unavailable() || this.currentPaused === paused) return false;
+      this.currentPaused = paused;
+      this.pendingSeconds = 0;
+      try { await this.commit(); return true; } catch { return false; }
+    });
   }
 
   /** Claim reserves any additional elapsed part of the SAME window and credits
    * it with the pending amount atomically. Claim alone never starts a new cap.
    */
   async claimOffline(): Promise<boolean> {
-    if (this.closed || this.closing || this.currentError || this.currentSuspended || this.busy || !this.waitingForResume) return false;
-    try {
-      this.currentOffline = reserveOffline(this.currentOffline, this.now());
-      const reward = this.currentOffline.pendingReward;
-      if (!reward) return false;
-      const claimed = claimReward(this.currentOffline, reward.id);
-      this.currentOffline = claimed.state;
-      this.currentBattle.creditOfflineUnits(claimed.amountUnits);
-      await this.commit();
-      return true;
-    } catch (error) { this.fail(asError(error), true); return false; }
+    return this.runAction(async () => {
+      if (this.closed || this.closing || this.currentError || this.currentSuspended || this.busy || !this.waitingForResume) return false;
+      try {
+        this.currentOffline = reserveOffline(this.currentOffline, this.now());
+        const reward = this.currentOffline.pendingReward;
+        if (!reward) return false;
+        const claimed = claimReward(this.currentOffline, reward.id);
+        this.currentOffline = claimed.state;
+        this.currentBattle.creditOfflineUnits(claimed.amountUnits);
+        await this.commit();
+        return true;
+      } catch (error) { this.fail(asError(error), true); return false; }
+    });
   }
 
   /** Actual continuation ends the window. A pending dialog reward must first
@@ -241,20 +245,22 @@ export class BattleSession {
    * with activation, avoiding an endless chain of tiny return dialogs.
    */
   async resumeActive(): Promise<boolean> {
-    if (this.closed || this.closing || this.currentError || this.currentSuspended || this.busy
-      || !this.waitingForResume || this.currentOffline.pendingReward) return false;
-    try {
-      let next = reserveOffline(this.currentOffline, this.now());
-      if (next.pendingReward) {
-        const claimed = claimReward(next, next.pendingReward.id);
-        this.currentBattle.creditOfflineUnits(claimed.amountUnits);
-        next = claimed.state;
-      }
-      this.currentOffline = activateOffline(next, this.now(), this.currentCertificate, this.currentPaused || this.currentBattle.learningPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
-      this.waitingForResume = false;
-      await this.commit();
-      return true;
-    } catch (error) { this.fail(asError(error), true); return false; }
+    return this.runAction(async () => {
+      if (this.closed || this.closing || this.currentError || this.currentSuspended || this.busy
+        || !this.waitingForResume || this.currentOffline.pendingReward) return false;
+      try {
+        let next = reserveOffline(this.currentOffline, this.now());
+        if (next.pendingReward) {
+          const claimed = claimReward(next, next.pendingReward.id);
+          this.currentBattle.creditOfflineUnits(claimed.amountUnits);
+          next = claimed.state;
+        }
+        this.currentOffline = activateOffline(next, this.now(), this.currentCertificate, this.currentPaused || this.currentBattle.learningPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
+        this.waitingForResume = false;
+        await this.commit();
+        return true;
+      } catch (error) { this.fail(asError(error), true); return false; }
+    });
   }
 
   /** Browser calls about once per second. Renewal never grants a new epoch to
@@ -309,6 +315,25 @@ export class BattleSession {
     finally { this.closed = true; this.store?.close(); }
   }
 
+  /** Reserve exactly one user action before awaiting a background write.
+   * Validation stays inside the operation and runs against the committed state.
+   * Other taps cannot join the queue and duplicate a purchase or reward.
+   */
+  private async runAction(action: () => Promise<boolean>, waitForSave = true): Promise<boolean> {
+    if (this.inputBusy) return false;
+    this.actionPending = true;
+    try {
+      if (waitForSave) {
+        while (this.pendingWrite) {
+          try { await this.pendingWrite; } catch { return false; }
+        }
+      }
+      return await action();
+    } finally {
+      this.actionPending = false;
+      this.onChange?.();
+    }
+  }
   private unavailable(): boolean {
     return this.closed || this.closing || this.busy || !!this.currentError || this.currentSuspended
       || this.waitingForResume || (!!this.store && !this.currentWriter);
@@ -359,13 +384,13 @@ export class BattleSession {
       } catch (value) { this.fail(asError(value), true); throw this.currentError; }
     }).then(() => {
       this.pendingWrite = undefined;
-      this.onChange?.();
+      if (!this.actionPending) this.onChange?.();
       const seconds = this.pendingSeconds;
       this.pendingSeconds = 0;
       if (seconds > 0 && !this.closing) this.advance(seconds);
     }, error => {
       this.pendingWrite = undefined;
-      this.onChange?.();
+      if (!this.actionPending) this.onChange?.();
       throw error;
     });
     this.pendingWrite = task;

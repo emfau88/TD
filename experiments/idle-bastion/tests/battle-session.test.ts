@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { IDBFactory } from 'fake-indexeddb';
 import { IdleBattle, type BattleSnapshot } from '../src/battle';
+import { TavernInteractions } from '../src/tavern-interactions';
 import { BattleSession, SessionLoadError, SessionOwnershipError, type SessionOptions, type SessionStore } from '../src/battle-session';
 import { createOfflineState, type OfflineState } from '../src/offline';
 import { openBattleStore, type LoadResult, type SaveEnvelope, type WriterLease } from '../src/save-store';
@@ -456,4 +457,65 @@ test('temporary play discards a large frame gap without offline gold or a return
   assert.equal(await session.claimOffline(), false);
   session.advance(0.025);
   assert.ok(session.battle.elapsed > before.elapsed);
+});
+
+async function holdCheckpoint(session: BattleSession, store: ControlledStore): Promise<void> {
+  store.gate = true;
+  for (let i = 0; i < 4 && !session.busy; i++) session.advance(.25);
+  await tick();
+  assert.equal(session.busy, true);
+  assert.equal(session.inputBusy, false);
+  assert.ok(store.pending);
+}
+
+test('background checkpoint accepts exactly one queued purchase and validates it after saving', async () => {
+  const store = new ControlledStore(), session = await open(store);
+  await holdCheckpoint(session, store);
+  let calls = 0;
+  const purchase = session.command(b => { calls++; b.build('tower-02'); });
+  assert.equal(session.inputBusy, true); assert.equal(calls, 0);
+  assert.equal(await session.command(b => b.build('tower-03')), false);
+  store.gate = false; store.pending!.confirm();
+  assert.equal(await purchase, true); assert.equal(calls, 1);
+  assert.equal(store.current!.battle.gold, 0); assert.equal(session.inputBusy, false);
+  await session.close();
+});
+
+test('failed background write rejects the queued action without invoking its mutation', async () => {
+  const store = new ControlledStore(), session = await open(store);
+  await holdCheckpoint(session, store);
+  let calls = 0;
+  const purchase = session.command(() => { calls++; });
+  store.pending!.reject(new Error('checkpoint failed'));
+  assert.equal(await purchase, false); assert.equal(calls, 0);
+  assert.equal(session.inputBusy, false); assert.ok(session.error);
+  assert.equal(session.battle.gold, 75);
+  await assert.rejects(session.close(), /checkpoint failed/);
+});
+
+test('pause click during a checkpoint persists exactly once', async () => {
+  const store = new ControlledStore(), session = await open(store);
+  await holdCheckpoint(session, store);
+  const pause = session.setPaused(true);
+  assert.equal(await session.setPaused(false), false);
+  store.gate = false; store.pending!.confirm();
+  assert.equal(await pause, true); assert.equal(session.paused, true);
+  assert.equal(store.current!.paused, true); assert.equal(session.inputBusy, false);
+  await session.close();
+});
+
+test('gift click during autosave remains responsive without duplicate gifts or points', async () => {
+  const b = new IdleBattle(); b.update(4); b.highestCleared = 12;
+  b.buildTavern(b.recommendedTavernPlot!);
+  const store = new ControlledStore(); store.current = fixture(b);
+  const session = await open(store); await resume(session);
+  const ui = new TavernInteractions();
+  await holdCheckpoint(session, store);
+  const gift = ui.run(session, 'gift');
+  assert.equal(await ui.run(session, 'gift'), null);
+  store.gate = false; store.pending!.confirm();
+  assert.equal((await gift)?.points, 12);
+  assert.equal(session.battle.social.points.mara, 12); assert.equal(session.battle.social.gifts, 0);
+  assert.equal(store.current!.battle.social.points.mara, 12);
+  await session.close();
 });

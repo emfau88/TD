@@ -4,7 +4,7 @@ import type { Companion, Interaction, InteractionResult } from './tavern-social'
 export class TavernInteractions {
   pending = false;
   async run(session: BattleSession, action: Interaction, who: Companion = 'mara'): Promise<InteractionResult | null> {
-    if (this.pending || session.busy || session.error || session.suspended || session.awaitingResume) return null;
+    if (this.pending || session.inputBusy || session.error || session.suspended || session.awaitingResume) return null;
     const offer = session.battle.companionOffer(who, action);
     if (!offer.accepted) return null;
     if (!offer.points) return offer;

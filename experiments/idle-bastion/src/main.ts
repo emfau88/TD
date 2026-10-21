@@ -116,7 +116,7 @@ window.addEventListener('error', event => showError(`Ein unerwarteter Fehler ist
 function syncUI(): void {
   const live = session;
   const view = scene;
-  const unavailable = !ready || !live || live.busy || Boolean(live.error) || live.suspended;
+  const unavailable = !ready || !live || live.inputBusy || Boolean(live.error) || live.suspended;
   build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = unavailable;
   if (!ready || !live || live.error || live.suspended || live.paused)
     element<HTMLButtonElement>('onboarding-primary').disabled = element<HTMLButtonElement>('onboarding-secondary').disabled = true;
@@ -131,7 +131,7 @@ function syncUI(): void {
     : live.temporary ? 'Temporäre Probe · kein Speichern und kein Offline-Ertrag'
     : live.busy ? 'Wird gespeichert …' : '1× · dieser Tab ist aktiv · lokal gespeichert';
   tavernUI.update();
-  if (live.busy) return;
+  if (live.inputBusy) return;
   const sim = live.battle;
   element('tower-panel').hidden = selectedPanel !== 'tower';
   element('clearing-panel').hidden = selectedPanel !== 'clearing';
@@ -668,7 +668,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     element('save-status').textContent = ownership ? 'Anderer Tab ist aktiv' : 'Spielstand konnte nicht geladen werden';
   } finally { booting = false; }
 }
-async function perform(action: (battle: IdleBattle) => unknown, allowPaused = false, waitForSave = false): Promise<void> {
+async function perform(action: (battle: IdleBattle) => unknown, allowPaused = false, waitForSave = true): Promise<void> {
   const live = session;
   if (!ready || !live || (!allowPaused && live.paused) || live.error || document.hidden || live.awaitingResume || live.suspended) return;
   const completion = live.command(action, waitForSave || live.battle.introduction.stage !== 'done' || live.battle.discoveryActive);
@@ -777,7 +777,7 @@ element('pick-archer').addEventListener('click', () => startPlacement(1), { sign
 element('pick-frost').addEventListener('click', () => startPlacement(2), { signal: lifetime.signal });
 element('pick-clearing').addEventListener('click', () => openContext('clearing'), { signal: lifetime.signal });
 element('unlock-clearing').addEventListener('click', async () => {
-  const live = session; if (!live || !live.paused || live.busy || live.error) return;
+  const live = session; if (!live || !live.paused || live.inputBusy || live.error) return;
   const completion = live.relocateSettlement(); syncUI();
   const moved = await completion; scene?.refresh();
   if (moved) { closeContext(); scene?.showBase(); }
@@ -850,7 +850,7 @@ element('camera-zoom').addEventListener('click', () => { if (scene) scene.setMap
 pause.addEventListener('click', () => { if (session) { const completion = session.setPaused(!session.paused); syncUI(); void completion.then(syncUI); } }, { signal: lifetime.signal });
 claim.addEventListener('click', () => {
   const live = session;
-  if (!live || live.busy || live.error || document.hidden) return;
+  if (!live || live.inputBusy || live.error || document.hidden) return;
   const complete = async () => {
     if (live.pendingReward) await live.claimOffline();
     if (!live.error && !document.hidden) await live.resumeActive();

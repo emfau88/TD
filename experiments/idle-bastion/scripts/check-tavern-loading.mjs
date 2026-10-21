@@ -42,8 +42,7 @@ try {
   assert.deepEqual(requests.slice(4).map(url => url.split('/').pop()), ['ilyra-atlas.webp', 'ilyra-reactions.webp']);
   console.log('PASS: overview only two small portraits; full images only for selected companion.');
 
-  // Read-only diagnosis of the existing flicker: real coordinator + real UI.
-  // Deliberately not a regression assertion requiring the bug to remain present.
+  // Regression check: a real background checkpoint must not dim available controls.
   document.querySelector('[data-do="back"]').click();
   document.querySelector('[data-do="mara"]').click(); await settle();
   const snapshot = () => ({ busy: session.busy,
@@ -53,7 +52,9 @@ try {
   ui.update(); console.log('before checkpoint', JSON.stringify(snapshot()));
   for (let i = 0; i < 4; i++) { session.advance(.25); if (session.busy) break; }
   ui.update(); console.log('during checkpoint', JSON.stringify(snapshot()));
+  assert.deepEqual(snapshot(), { busy: true, talkDisabled: false, unlockedHeartDisabled: false, lockedHeartDisabled: true });
   await settle(); ui.update(); console.log('after checkpoint', JSON.stringify(snapshot()));
+  assert.deepEqual(snapshot(), { busy: false, talkDisabled: false, unlockedHeartDisabled: false, lockedHeartDisabled: true });
 } finally {
   ui?.destroy(); await session?.close(); await server.close(); dom.window.close();
 }

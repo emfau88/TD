@@ -175,7 +175,7 @@ export class TavernUI {
     unlock.hidden = !this.newMoment || !!this.moment;
     if (this.newMoment) unlock.textContent = `Neuer Moment: ${this.content.moments[this.newMoment - 1]!.title} →`;
     this.dialog.dataset.reacting = String(this.animation.reacting);
-    const blocked = this.pending || session.busy || !!session.error || session.suspended || session.awaitingResume || !this.animation.ready || this.animation.reacting;
+    const blocked = this.pending || session.inputBusy || !!session.error || session.suspended || session.awaitingResume || !this.animation.ready || this.animation.reacting;
     unlock.disabled = blocked;
     this.get<HTMLButtonElement>('[data-do="story-next"]').disabled = blocked;
     for (const moment of this.content.moments) {
@@ -203,7 +203,7 @@ export class TavernUI {
   }
   private startMoment(heart: number): void {
     const session = this.ports.session();
-    if (!session || this.pending || session.busy || !this.animation.ready || this.animation.reacting || !this.content.moment(this.points, heart)) return;
+    if (!session || this.pending || session.inputBusy || !this.animation.ready || this.animation.reacting || !this.content.moment(this.points, heart)) return;
     this.show('character'); this.moment = { heart, beat: 0 };
     if (this.newMoment === heart) this.newMoment = undefined;
     this.renderBeat();
@@ -232,7 +232,7 @@ export class TavernUI {
   }
   private async act(action: Interaction, region: TouchRegion = 'shoulder'): Promise<void> {
     const session = this.ports.session();
-    if (!session || this.pending || session.busy || session.error || session.suspended || session.awaitingResume || !this.animation.ready || this.animation.reacting) return;
+    if (!session || this.pending || session.inputBusy || session.error || session.suspended || session.awaitingResume || !this.animation.ready || this.animation.reacting) return;
     if (this.moment) return;
     const who = this.selected, content = this.content, beforePoints = this.points;
     const offer = session.battle.companionOffer(this.selected, action); if (!offer.accepted) return;
