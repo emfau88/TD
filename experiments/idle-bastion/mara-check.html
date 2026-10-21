@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#17181b"><title>Mara · Tavernenprobe · SPIRE</title></head>
+<body><main>
+<header><div><span class="eyebrow">SPIRE · DIE TAVERNE</span><h1>Ein Moment mit Mara</h1></div><a class="back" href="./">Zum Spiel <span aria-hidden="true">↗</span></a></header>
+<section class="experience" aria-label="Mara Animationsvorschau">
+<div class="stage" id="stage"><div class="arch" aria-hidden="true"></div><span class="stage-label">MARA <span>Die Tüftlerin</span></span><canvas id="mara" width="384" height="512" aria-label="Mara atmet ruhig und blinzelt. Tippe auf ihre rechte Bildschulter, um eine Reaktion auszulösen."></canvas><button id="shoulder" class="hotspot" aria-label="Maras Schulter berühren" disabled><span aria-hidden="true">✧</span></button><span class="hint" id="hint">Tippe auf die markierte Schulter</span></div>
+<div class="conversation"><span class="eyebrow">ZEIT FÜR EINE KLEINE PAUSE</span><h2>Schön, dass du da bist.</h2><p class="line" id="line" aria-live="polite">Mara legt ihre Arbeit für einen Moment beiseite.</p><button class="primary" id="touch" disabled>Schulter berühren <span aria-hidden="true">✧</span></button><div class="secondary"><button id="pause" aria-pressed="false" disabled>Animation pausieren</button><span id="state" role="status">Wird geladen …</span></div><p class="note">Animationsprobe · noch ohne Zuneigung oder Geschenke.<br>Dein Spielstand bleibt unberührt.</p><p id="error" role="alert" hidden></p></div>
+</section>
+<details id="frames"><summary>Einzelbilder &amp; Atlas ansehen</summary><div class="inspect"><label for="frame">Einzelbild <output id="frame-number">1 / 12</output></label><input id="frame" type="range" min="0" max="11" value="0" step="1" disabled><p>Der Regler hält die Animation an. Mit „Animation fortsetzen“ geht es weiter.</p><a id="atlas-link" target="_blank" rel="noopener">PNG-Atlas öffnen</a> · <a id="metadata-link" download="mara-atlas.json">Frame-Daten</a><span class="tech">12 gezeichnete Frames · 4 Idle- / 8 Reaktionszeichnungen</span></div></details>
+<footer>T01 · Visuelle Probe · Idle und eine Berührungsreaktion</footer>
+</main><script type="module" src="/src/mara-check.ts"></script></body></html>

@@ -19,6 +19,7 @@ export default defineConfig({
         layout: fileURLToPath(new URL('./layout.html', import.meta.url)),
         assets: fileURLToPath(new URL('./asset-check.html', import.meta.url)),
         ilyra: fileURLToPath(new URL('./ilyra-check.html', import.meta.url)),
+        mara: fileURLToPath(new URL('./mara-check.html', import.meta.url)),
       },
     },
   },

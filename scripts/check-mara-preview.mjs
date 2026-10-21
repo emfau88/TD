@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import {build} from 'esbuild';
+import {JSDOM} from 'jsdom';
+const root=resolve('experiments/idle-bastion');
+const compiled=await build({entryPoints:[resolve(root,'src/mara-check.ts')],bundle:true,write:false,format:'iife',loader:{'.css':'empty','.png':'dataurl'},plugins:[{name:'metadata-url',setup(b){b.onResolve({filter:/\?url$/},()=>({path:'metadata-url',namespace:'test'}));b.onLoad({filter:/.*/,namespace:'test'},()=>({contents:'export default "./mara-atlas.json";'}));}}]});
+const dom=new JSDOM(await readFile(resolve(root,'mara-check.html'),'utf8'),{url:'https://preview.test/mara-check.html',runScripts:'outside-only',pretendToBeVisual:true});
+const w=dom.window; let now=1000, next=1, ready;
+const raf=new Map(); const drawings=[];
+w.requestAnimationFrame=fn=>{const id=next++;raf.set(id,fn);return id;};
+w.cancelAnimationFrame=id=>raf.delete(id);
+w.HTMLCanvasElement.prototype.getContext=()=>({clearRect(){},drawImage(...args){drawings.push(args);},imageSmoothingEnabled:false});
+w.ResizeObserver=class{observe(){}};
+w.Image=class{naturalWidth=1254;naturalHeight=1254;set src(value){ready=()=>this.onload();}};
+Object.defineProperty(w,'localStorage',{get(){throw new Error('Preview must not access saves');}});
+Object.defineProperty(w,'indexedDB',{get(){throw new Error('Preview must not access saves');}});
+w.eval(compiled.outputFiles[0].text); ready();
+const q=id=>w.document.getElementById(id);
+const advance=ms=>{for(let i=0;i<ms;i+=20){now+=20;const tasks=[...raf.values()];raf.clear();for(const task of tasks)task(now);}};
+const frame=()=>Number(q('mara').dataset.frame);
+assert.equal(q('touch').disabled,false);
+const idleFrames=new Set();for(let i=0;i<250;i++){advance(20);idleFrames.add(frame());}
+assert.deepEqual([...idleFrames].sort(),[0,1,2,3]);
+q('touch').click(); assert.equal(q('touch').disabled,true);
+advance(500); const midway=frame();q('touch').click();assert.equal(frame(),midway);
+assert.ok(midway>=4 && midway<=8);
+advance(1800);assert.equal(q('touch').disabled,false);assert.equal(q('state').textContent,'Ruhe');
+q('pause').click(); const frozen=frame();advance(1000);assert.equal(frame(),frozen);
+q('frame').value='8';q('frame').dispatchEvent(new w.Event('input'));assert.equal(frame(),8);advance(1000);assert.equal(frame(),8);
+q('shoulder').click();assert.equal(q('pause').getAttribute('aria-pressed'),'false');advance(2300);assert.equal(q('state').textContent,'Ruhe');
+let hidden=true;Object.defineProperty(w.document,'hidden',{get:()=>hidden,configurable:true});w.document.dispatchEvent(new w.Event('visibilitychange'));assert.equal(raf.size,0);
+hidden=false;w.document.dispatchEvent(new w.Event('visibilitychange'));assert.equal(raf.size,1);
+const meta=JSON.parse(await readFile(resolve(root,'assets/mara-tavern/mara-atlas.json'),'utf8'));
+for(const f of meta.frames){assert.ok(f.x>=0&&f.y>=0&&f.x+f.width<=1254&&f.y+f.height<=1254);}
+assert.ok(drawings.length>12);dom.window.close();
+console.log('PASS: 4 idle drawings, reaction/rapid-click guard/return, pause/scrub/touch resume, hidden-tab lifecycle, atlas bounds; no save access.');

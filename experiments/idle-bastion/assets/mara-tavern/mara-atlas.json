@@ -1,0 +1,181 @@
+{
+  "image": "mara-atlas.png",
+  "width": 1254,
+  "height": 1254,
+  "canvas": {
+    "width": 384,
+    "height": 512,
+    "anchorX": 192,
+    "anchorY": 360
+  },
+  "frames": [
+    {
+      "x": 0,
+      "y": 0,
+      "width": 314,
+      "height": 418,
+      "anchorX": 191,
+      "anchorY": 300
+    },
+    {
+      "x": 314,
+      "y": 0,
+      "width": 313,
+      "height": 418,
+      "anchorX": 192,
+      "anchorY": 295
+    },
+    {
+      "x": 627,
+      "y": 0,
+      "width": 313,
+      "height": 418,
+      "anchorX": 191,
+      "anchorY": 300
+    },
+    {
+      "x": 940,
+      "y": 0,
+      "width": 314,
+      "height": 418,
+      "anchorX": 192,
+      "anchorY": 301
+    },
+    {
+      "x": 0,
+      "y": 418,
+      "width": 314,
+      "height": 418,
+      "anchorX": 191,
+      "anchorY": 300
+    },
+    {
+      "x": 314,
+      "y": 418,
+      "width": 313,
+      "height": 418,
+      "anchorX": 192,
+      "anchorY": 301
+    },
+    {
+      "x": 627,
+      "y": 418,
+      "width": 313,
+      "height": 418,
+      "anchorX": 192,
+      "anchorY": 300
+    },
+    {
+      "x": 940,
+      "y": 418,
+      "width": 314,
+      "height": 418,
+      "anchorX": 199,
+      "anchorY": 306
+    },
+    {
+      "x": 0,
+      "y": 836,
+      "width": 314,
+      "height": 418,
+      "anchorX": 198,
+      "anchorY": 308
+    },
+    {
+      "x": 314,
+      "y": 836,
+      "width": 313,
+      "height": 418,
+      "anchorX": 202,
+      "anchorY": 311
+    },
+    {
+      "x": 627,
+      "y": 836,
+      "width": 313,
+      "height": 418,
+      "anchorX": 198,
+      "anchorY": 305
+    },
+    {
+      "x": 940,
+      "y": 836,
+      "width": 314,
+      "height": 418,
+      "anchorX": 192,
+      "anchorY": 301
+    }
+  ],
+  "idle": [
+    [
+      0,
+      1700
+    ],
+    [
+      1,
+      900
+    ],
+    [
+      0,
+      800
+    ],
+    [
+      2,
+      100
+    ],
+    [
+      3,
+      140
+    ],
+    [
+      0,
+      1000
+    ]
+  ],
+  "touch": [
+    [
+      0,
+      80
+    ],
+    [
+      4,
+      160
+    ],
+    [
+      5,
+      160
+    ],
+    [
+      6,
+      160
+    ],
+    [
+      7,
+      200
+    ],
+    [
+      8,
+      300
+    ],
+    [
+      7,
+      140
+    ],
+    [
+      9,
+      180
+    ],
+    [
+      10,
+      180
+    ],
+    [
+      11,
+      160
+    ],
+    [
+      0,
+      220
+    ]
+  ]
+}
