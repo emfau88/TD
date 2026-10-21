@@ -2,7 +2,7 @@
 
 Planungsstand: 21.10.2026. Geprüfter Ausgangspunkt: `61b95c0` auf `codex/idle-bastion-vertical-slice`.
 
-Dieses Dokument hält Fachregeln und Abnahmekriterien fest. **Die einzige Arbeits- und Statusliste mit Checkboxen bleibt [ROADMAP.md](../ROADMAP.md), T01–T07.** Nach dem Dokumentationsauftrag wurde T01 am 21.10.2026 ausdrücklich zur Umsetzung mit kompakter Prüfung, Commit/Push und Vorschaulink beauftragt. Die visuelle Nutzerabnahme einschließlich Haarkorrektur (`fcc7bc1`) wurde am 21.10.2026 ausdrücklich erteilt; siehe Roadmap und T01-Bericht. T02/T03 wurden umgesetzt; T04 wurde am 21.10.2026 visuell freigegeben und zum Commit/Push beauftragt. T05 und auf ausdrücklichen Anschlussauftrag T06 sind umgesetzt; T07 benötigt weiterhin einen separaten Startauftrag; der ältere zitierte Auftrag aus einem anderen Chat begründete selbst keine Freigabe.
+Dieses Dokument hält Fachregeln und Abnahmekriterien fest. **Die einzige Arbeits- und Statusliste mit Checkboxen bleibt [ROADMAP.md](../ROADMAP.md), T01–T07.** Nach dem Dokumentationsauftrag wurde T01 am 21.10.2026 ausdrücklich zur Umsetzung mit kompakter Prüfung, Commit/Push und Vorschaulink beauftragt. Die visuelle Nutzerabnahme einschließlich Haarkorrektur (`fcc7bc1`) wurde am 21.10.2026 ausdrücklich erteilt; siehe Roadmap und T01-Bericht. T02/T03 wurden umgesetzt; T04 wurde am 21.10.2026 visuell freigegeben und zum Commit/Push beauftragt. T05 und auf ausdrücklichen Anschlussauftrag T06 sind umgesetzt; T07 wurde anschließend mit „comitte, dann t07 go“ ausdrücklich gestartet und gemeinsam technisch geprüft; der ältere zitierte Auftrag aus einem anderen Chat begründete selbst keine Freigabe.
 
 ## Quellen und Grenzen
 
@@ -75,7 +75,7 @@ Die fünf Herzen sind zugleich die Einstiege in die persönlichen Momente. Noch 
 
 Freischaltungen werden ausschließlich aus den gespeicherten Punkten abgeleitet. Nach Reload sind alle verdienten Momente wieder verfügbar, auch wenn eine Szene zuvor abgebrochen wurde. Wiederholen kostet nichts und erzeugt keine Punkte; es gibt keine zusätzlichen Scene-Seen-Flags und keine Snapshot-Migration. Sprechen/Berühren bleiben nach dem Punktebudget und bei fünf Herzen verfügbar. Geschenke bei voller Zuneigung bleiben gesperrt.
 
-Die T03-Balance bleibt nach der kompakten Prüfung bestehen: 40 Punkte mit einem Geschenk je Aktivitätsabschnitt ergeben fünf Herzen nach vier Abschnitten; ohne Geschenke sechs. Das ist eine überprüfte Modellrechnung. Die langfristige subjektive Spielbalance bleibt Teil der gemeinsamen T07-Abnahme.
+Die T03-Balance bleibt nach der kompakten Prüfung bestehen: 40 Punkte mit einem Geschenk je Aktivitätsabschnitt ergeben fünf Herzen nach vier Abschnitten; ohne Geschenke sechs. Das ist eine überprüfte Modellrechnung. T07 bestätigt die technischen Grenzen und den gemeinsamen Ablauf; die langfristige subjektive Spielbalance bleibt durch tatsächliche Spielsitzungen zu bewerten.
 
 ## Oberfläche und Hintergrundkampf
 

@@ -14,6 +14,8 @@ Dieses Dokument ersetzt für Idle Bastion den ursprünglichen langen Auftrag. Es
 
 **T06:** Ilyra erhält nach regulärer Rekrutierung eigene große Animationen und fünf Herzmomente. Beide Gefährtinnen nutzen denselben Geschenkbestand und haben getrennte Zuneigung. [Tavernen-Vorschau ohne Spielstandzugriff](https://emfau88.github.io/TD/idle-bastion/tavern-check.html?hero=ilyra) · [Prüfbericht](../../artifacts/idle-bastion/acceptance/t06/REPORT.md) · [Atlanten und Prompts](assets/ilyra-tavern/README.md).
 
+**T07:** Gemeinsame Prüfung im tatsächlichen Spiel abgeschlossen: Speicherfortsetzung, getrennter Figurenfortschritt, Kampfhinweise und Hochkantbedienung. [Nachweis und Aufnahmen](../../artifacts/idle-bastion/acceptance/t07/REPORT.md).
+
 ## Geplanter Ausbau nach Akt I
 
 Am 19.10.2026 wurde die Roadmap um [Akt II, B15–B22](ROADMAP.md) erweitert: Taverne mit Ilyra, die vorhandenen Türme Sturmlicht und Glutwerfer, eine große vorbereitbare Ostfront und gestalteter Fortschritt bis ungefähr Welle 40. [AKT_II.md](docs/AKT_II.md) hält Bestand, Spielregeln und technische Grenzen kompakt fest. Schnellfeuer, Sonnenobelisk, Runa sowie nutzbarer Kern/HQ und verbündete Einheiten stehen als spätere Ideen auf der Parkliste.
@@ -28,7 +30,7 @@ Ilyras neue Animationen lassen sich separat in der [bewegten Vorschau](https://e
 | --- | --- |
 | [ROADMAP.md](ROADMAP.md) | B01–B14 samt Nachbesserungen sowie geplanter Akt II B15–B22; Checklisten, Abhängigkeiten, Abschlusskriterien und Abnahmen |
 | [docs/AKT_II.md](docs/AKT_II.md) | Geplanter Ausbau: vorhandene Türme/Figuren, Taverne, Ostfront, Save-/Farmgrenzen und Zukunftsideen |
-| [docs/TAVERNE_INTERAKTION.md](docs/TAVERNE_INTERAKTION.md) | Geplanter Tavernen-Ausbau T01–T07: frühere Freischaltung, Zuneigung/Geschenke, abgenommene Grafikprobe T01; Tavernenstufen, soziales System und Figureninhalte T02–T06 umgesetzt; gemeinsame Abnahme T07 offen |
+| [docs/TAVERNE_INTERAKTION.md](docs/TAVERNE_INTERAKTION.md) | Geplanter Tavernen-Ausbau T01–T07: frühere Freischaltung, Zuneigung/Geschenke, abgenommene Grafikprobe T01; Tavernenstufen, soziales System und Figureninhalte T02–T06 umgesetzt; gemeinsame technische Prüfung T07 abgeschlossen |
 | [docs/TECHNIK.md](docs/TECHNIK.md) | Kampf, Wirtschaft, Save, Offline-Zeit und Farmregeln |
 | [docs/ART_DIRECTION.md](docs/ART_DIRECTION.md) | Karte, Kamera, Originalmaßstab und begrenzte Gebäudeproduktion |
 | [docs/ENEMIES.md](docs/ENEMIES.md) | Vorhandene Gegner, Einführung, Rollen, Originalatlanten und Speicherschutz |
