@@ -1,5 +1,5 @@
 import './mara-check.css';
-import atlasUrl from '../assets/mara-tavern/mara-atlas.png';
+import atlasUrl from '../assets/runtime/mara-atlas.webp';
 import metadata from '../assets/mara-tavern/mara-atlas.json';
 import metadataUrl from '../assets/mara-tavern/mara-atlas.json?url';
 

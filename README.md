@@ -21,6 +21,8 @@
 
 [▶ Taverne mit Ilyra direkt ansehen – ohne Zugriff auf deinen Spielstand](https://emfau88.github.io/TD/idle-bastion/tavern-check.html?hero=ilyra) · [Prüfbericht](artifacts/idle-bastion/acceptance/t06/REPORT.md) · [Atlanten und Prompts](experiments/idle-bastion/assets/ilyra-tavern/README.md).
 
+**Kürzere Bildladewege:** Verlustfreie WebP-Bilder und kleine Tavernenporträts reduzieren den Idle-Build von 15,95 auf 12,77 MB; große Animationen laden erst bei Figurenwahl. Grafikqualität und Spielstände bleiben erhalten. [Messwerte und Prüfung](artifacts/idle-bastion/acceptance/image-loading/REPORT.md).
+
 **T07 – gemeinsam geprüft:** Taverne im laufenden Spiel, schließbare Kampfhinweise, Pause/Neuladen und getrennte Zuneigung von Mara und Ilyra sind geprüft. 25 gezielte Tests und Produktionsbuild bestanden. [Bericht und aktuelle Spielaufnahmen](artifacts/idle-bastion/acceptance/t07/REPORT.md).
 
 <details open>

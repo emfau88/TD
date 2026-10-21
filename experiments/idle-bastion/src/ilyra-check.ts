@@ -8,7 +8,7 @@ type Atlas = {columns:number;frameSize:number[];foot:number[];directions:Record<
 const urls = {
   atlas:new URL('../assets/ilyra/ilyra-atlas.png',import.meta.url).href,
   clips:new URL('../assets/ilyra/animations.json',import.meta.url).href,
-  mara:new URL('../../../public/assets/Hero Mara.png',import.meta.url).href,
+  mara:new URL('../assets/runtime/mara-game.webp',import.meta.url).href,
   grass:new URL('../../../public/assets/Grass Tileset.png',import.meta.url).href,
 };
 const get = <T extends HTMLElement>(id:string) => document.getElementById(id) as T;

@@ -1,12 +1,14 @@
 import type { Companion } from './tavern-social';
-import ilyraAtlas from '../assets/ilyra-tavern/ilyra-atlas.png';
+import maraPortrait from '../assets/runtime/mara-portrait.webp';
+import ilyraPortrait from '../assets/runtime/ilyra-portrait.webp';
+import ilyraAtlas from '../assets/runtime/ilyra-atlas.webp';
 import ilyraMetadata from '../assets/ilyra-tavern/ilyra-atlas.json';
 import ilyraReactions from '../assets/ilyra-tavern/ilyra-reactions.json';
-import ilyraExtra from '../assets/ilyra-tavern/ilyra-reactions.png';
-import atlasUrl from '../assets/mara-tavern/mara-atlas.png';
+import ilyraExtra from '../assets/runtime/ilyra-reactions.webp';
+import atlasUrl from '../assets/runtime/mara-atlas.webp';
 import metadata from '../assets/mara-tavern/mara-atlas.json';
 import reactions from '../assets/tavern-ui/mara-reactions.json';
-import reactionsUrl from '../assets/tavern-ui/mara-reactions.png';
+import reactionsUrl from '../assets/runtime/mara-reactions.webp';
 
 export type TouchRegion = 'hand' | 'hair' | 'shoulder';
 export const MARA_REACTIONS = {
@@ -95,9 +97,9 @@ export class TavernAnimation {
   }
 }
 export async function drawCompanionPortrait(canvas: HTMLCanvasElement, who: Companion): Promise<void> {
-  const image = await load(atlases[who].base);
+  // Overview portraits must not fetch either full animation atlas.
+  const image = await load(who === 'mara' ? maraPortrait : ilyraPortrait);
   const ctx = canvas.getContext('2d'); if (!ctx) return;
   ctx.imageSmoothingEnabled = false;
-  const crop = who === 'mara' ? [82, 0, 170, 200] : [140, 8, 170, 200];
-  ctx.drawImage(image, crop[0]!, crop[1]!, crop[2]!, crop[3]!, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
 }

@@ -21,7 +21,7 @@
 #tavern-dialog .tv-warning { display:flex; gap:10px; align-items:center; padding:8px 14px; background:#483327; font-size:13px; border-bottom:1px solid #b07f49; }
 #tavern-dialog .tv-warning span { flex:1; } #tavern-dialog .tv-warning button { min-height:36px; }
 #tavern-dialog .tv-error { padding:10px 18px; background:#642c2c; }
-#tavern-dialog .tv-room { min-height:174px; padding:26px 28px; background:linear-gradient(90deg,#151512e8,#171b1d88 55%,#1b17150a),url('../assets/tavern-ui/room.png') center 54%/cover; border-bottom:1px solid #6c5638; }
+#tavern-dialog .tv-room { min-height:174px; padding:26px 28px; background:linear-gradient(90deg,#151512e8,#171b1d88 55%,#1b17150a),url('../assets/runtime/room.webp') center 54%/cover; border-bottom:1px solid #6c5638; }
 #tavern-dialog .tv-room span { color:#e3c98c; font-size:10px; letter-spacing:2px; }
 #tavern-dialog .tv-room h3 { font-size:32px; margin-top:8px; }
 #tavern-dialog .tv-room p { color:#e0d7c2; font-size:13px; }
@@ -43,7 +43,7 @@
 #tavern-dialog progress::-webkit-progress-bar { background:#31403b; border-radius:4px; }
 #tavern-dialog progress::-webkit-progress-value { background:linear-gradient(90deg,#9f6d50,#e1be7a); border-radius:4px; }
 #tavern-dialog .tv-character-body { display:grid; grid-template-columns:1.05fr 1fr; min-height:470px; }
-#tavern-dialog .tv-stage { position:relative; display:flex; align-items:center; justify-content:center; min-width:0; min-height:0; background:linear-gradient(#181b1c19,#111e22b3),url('../assets/tavern-ui/room.png') 40% center/cover; overflow:hidden; }
+#tavern-dialog .tv-stage { position:relative; display:flex; align-items:center; justify-content:center; min-width:0; min-height:0; background:linear-gradient(#181b1c19,#111e22b3),url('../assets/runtime/room.webp') 40% center/cover; overflow:hidden; }
 #tavern-dialog .tv-figure { position:relative; height:460px; max-height:100%; width:100%; display:flex; justify-content:center; }
 #tavern-dialog .tv-figure canvas { height:100%; width:auto; max-width:100%; object-fit:contain; image-rendering:pixelated; }
 #tavern-dialog .tv-stage-caption { position:absolute; bottom:8px; left:0; right:0; text-align:center; color:#ded1b0; font-size:11px; text-shadow:0 1px 3px #000; }

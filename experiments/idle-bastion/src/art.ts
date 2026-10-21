@@ -37,7 +37,7 @@ export const ART = Object.freeze({
   firebug: new URL('../../../public/assets/Firebug.png', import.meta.url).href,
   core: new URL('../../../public/assets/Tower 08.png', import.meta.url).href,
   coreWeapon: new URL('../../../public/assets/Tower 08 - Level 03 - Weapon.png', import.meta.url).href,
-  maraSource: new URL('../../../public/assets/Hero Mara.png', import.meta.url).href,
+  maraSource: new URL('../assets/runtime/mara-game.webp', import.meta.url).href,
   weapon2: new URL('../../../public/assets/Tower 01 - Level 02 - Weapon.png', import.meta.url).href,
   frostTower: new URL('../../../public/assets/Tower 02.png', import.meta.url).href,
   frostWeapon: new URL('../../../public/assets/Tower 02 - Level 01 - Weapon.png', import.meta.url).href,
