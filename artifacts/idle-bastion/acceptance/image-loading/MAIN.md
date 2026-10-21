@@ -12,4 +12,4 @@ Prüfung: alle sechs generierten Weiterleitungsskripte mit echten URL-Parametern
 
 Hauptspiel: https://emfau88.github.io/TD/
 Archiv: https://github.com/emfau88/TD/tree/archive/classic-td-2026-10-21
-Veröffentlichungsnachweis wird nach erfolgreichem Pages-Lauf ergänzt.
+Veröffentlicht als `f9c1d30`, [Pages-Lauf 39641086379 erfolgreich](https://github.com/emfau88/TD/actions/runs/39641086379). Öffentliche Hauptseite antwortet mit HTTP 200 und aktuellem Spieleinstieg. Im Browser leitet der alte Tavernenlink auf `/TD/tavern-check.html?hero=ilyra&v=f9c1d30` weiter; Übersicht mit Ilyra lädt. Lokaler main-Checkout ebenfalls per Fast-forward aktualisiert; vorhandene ungetrackte Benutzeranhänge unverändert.
