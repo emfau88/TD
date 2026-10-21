@@ -103,3 +103,31 @@
 
 #tavern-dialog[data-reacting="true"] .tv-hotspot { visibility:hidden; }
 @media(max-width:700px) { #tavern-dialog[data-screen="character"],#tavern-dialog[data-screen="touch"] { top:8px; bottom:auto; margin:0 auto; } }
+
+/* T05: earned hearts are the small, persistent entry points to personal scenes. */
+#tavern-dialog .tv-heart-buttons { display:flex; gap:4px; flex-shrink:0; }
+#tavern-dialog .tv-heart-buttons button { position:relative; width:44px; height:44px; min-height:44px; padding:2px; background:#16282a; border-color:#53615a; }
+#tavern-dialog .tv-heart-buttons span { font:24px Arial; color:#bb9988; }
+#tavern-dialog .tv-heart-buttons small { position:absolute; bottom:2px; right:4px; font:9px Arial; letter-spacing:0; }
+#tavern-dialog .tv-heart-buttons .unlocked { border-color:#c9a570; background:linear-gradient(#574131,#2b2924); }
+#tavern-dialog .tv-heart-buttons .unlocked span { color:#e8a68c; }
+#tavern-dialog .tv-moment-hint { font-size:11px; color:#bfc3b4; margin:6px 0 0; line-height:1.35; }
+#tavern-dialog .tv-story-heading { margin-bottom:16px; }
+#tavern-dialog .tv-story-heading h3 { margin-top:7px; font-size:24px; }
+#tavern-dialog .tv-story-controls { display:flex; gap:8px; margin-top:auto; padding-top:20px; }
+#tavern-dialog .tv-story-controls button:first-child { background:linear-gradient(#685438,#413a2b); }
+#tavern-dialog .tv-story-controls button { flex:1; font-size:13px; }
+#tavern-dialog .tv-unlock { text-align:left; margin-bottom:12px; font-size:12px; background:#4a3b2b; border-color:#d0ac71; }
+#tavern-dialog[data-story="true"] .tv-dialogue { min-height:150px; }
+@media(max-width:700px) {
+  #tavern-dialog .tv-bond { padding:6px 12px; }
+  #tavern-dialog .tv-bond>div { gap:8px; }
+  #tavern-dialog [data-text="points"] { text-align:right; font-size:10px; line-height:1.45; }
+  #tavern-dialog .tv-stage { height:clamp(220px,37dvh,330px); }
+  #tavern-dialog .tv-moment-hint { font-size:10px; }
+  #tavern-dialog .tv-story-heading { margin-bottom:8px; }
+  #tavern-dialog .tv-story-heading h3 { font-size:22px; }
+  #tavern-dialog .tv-story-controls { padding-top:12px; }
+  #tavern-dialog[data-story="true"] .tv-dialogue { min-height:64px; }
+  #tavern-dialog .tv-unlock { min-height:40px; margin:4px 0; font-size:11px; }
+}

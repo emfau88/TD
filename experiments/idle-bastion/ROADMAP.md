@@ -2,7 +2,7 @@
 
 Stand: 21.10.2026 · Branch `codex/idle-bastion-vertical-slice` · [Spiel testen](https://emfau88.github.io/TD/idle-bastion/)
 
-**Aktuell:** T01 visuell abgenommen. T02 umgesetzt: früher kostenloser Tavernenbau, Stufe II nach Boss 25 und Bestandsschutz ([Prüfbericht](../../artifacts/idle-bastion/acceptance/t02/REPORT.md)). T03 ist umgesetzt: gespeicherte soziale Basis mit erster Sitzungsbalance ([Prüfbericht](../../artifacts/idle-bastion/acceptance/t03/REPORT.md)). T04 ist umgesetzt und am 21.10.2026 visuell freigegeben ([Entwurf und Prüfbericht](../../artifacts/idle-bastion/acceptance/t04/REPORT.md)); Commit/Push sind ausdrücklich beauftragt. Nächster beauftragter Schritt: T05. T06–T07, F03–F05 und übrige Akt-II-Pakete nicht automatisch starten. B14/G2 bleiben offen.
+**Aktuell:** T01 visuell abgenommen. T02 umgesetzt: früher kostenloser Tavernenbau, Stufe II nach Boss 25 und Bestandsschutz ([Prüfbericht](../../artifacts/idle-bastion/acceptance/t02/REPORT.md)). T03 ist umgesetzt: gespeicherte soziale Basis mit erster Sitzungsbalance ([Prüfbericht](../../artifacts/idle-bastion/acceptance/t03/REPORT.md)). T04 ist umgesetzt und am 21.10.2026 visuell freigegeben ([Entwurf und Prüfbericht](../../artifacts/idle-bastion/acceptance/t04/REPORT.md)); Commit/Push sind ausdrücklich beauftragt. T05 ist umgesetzt: fünf persönliche Mara-Momente, Herz-Freischaltungen und stufenabhängige Reaktionen ([Prüfbericht](../../artifacts/idle-bastion/acceptance/t05/REPORT.md)). T06–T07, F03–F05 und übrige Akt-II-Pakete nicht automatisch starten. B14/G2 bleiben offen.
 
 Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvolle Bearbeitungsreihenfolge; vorhandene Bulk-IDs bleiben erhalten. `[x]` = umgesetzt und geprüft, `[ ]` = offen. Bisherige Arbeit wird nicht gelöscht: [vollständiges Archiv mit alten Checklisten, Entscheidungen und Abnahmen](ROADMAP_ARCHIVE_2026-10-20.md). Fachregeln: [Auftrag](README.md), [Technik](docs/TECHNIK.md), [Grafik](docs/ART_DIRECTION.md), [Akt II](docs/AKT_II.md), [Tavernenplan](docs/TAVERNE_INTERAKTION.md), [Abnahmeplan](docs/ABNAHME.md).
 
@@ -61,11 +61,13 @@ Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvo
 
   - [x] Nutzerfreigabe für Gestaltung und neue Hand-/Haarreaktionen am 21.10.2026 erteilt; Commit/Push ausdrücklich beauftragt. [Desktop-/Hochkantaufnahmen](../../artifacts/idle-bastion/acceptance/t04/REPORT.md).
 
-- [ ] **19 · T05 — Maras fünf Herzstufen. Beauftragt am 21.10.2026; folgt nach Veröffentlichung von T04.**
-  - [ ] Für jede Stufe konkrete neue Dialoge, Posen/Reaktionen oder kurze persönliche Szene definieren; anfangs Hand/Haare/Schulter, spätere Nähe stufenweise.
-  - [ ] Nur tatsächlich benötigte zusätzliche Animationen herstellen; passende Reaktionen wiederverwenden, keine Vollproduktion aller Bereich-mal-Stufe-Kombinationen.
-  - [ ] Verlauf über die in T03 definierten aktiven Sitzungen prüfen und Werte nachstellen; kein endlos belohntes Antippen und keine langen künstlichen Wartezeiten.
-  - [ ] Sichtbare Belohnung jeder Stufe, Reload und eindeutige gesperrte/verfügbare Aktionen prüfen. Erst mit fünf ausgearbeiteten Stufen als vollständiges Mara-System bezeichnen.
+- [x] **19 · T05 — Maras fünf Herzstufen. Umgesetzt am 21.10.2026.**
+  - [x] Für jede Stufe konkrete neue Dialoge, Posen/Reaktionen oder kurze persönliche Szene definieren; anfangs Hand/Haare/Schulter, spätere Nähe stufenweise.
+  - [x] Freigegebene Hand-/Haar-/Schulteranimationen wiederverwendet; keine weitere Assetserie benötigt.
+  - [x] Verlauf über die in T03 definierten aktiven Sitzungen prüfen und Werte nachstellen; kein endlos belohntes Antippen und keine langen künstlichen Wartezeiten.
+  - [x] Sichtbare Belohnung jeder Stufe, Reload und eindeutige gesperrte/verfügbare Aktionen prüfen. Erst mit fünf ausgearbeiteten Stufen als vollständiges Mara-System bezeichnen.
+
+  - Fünf eigenständige Drei-Abschnitt-Momente, sechs Begrüßungs-/Dialogstufen und wieder abspielbare Freischaltungen. [Inhalte und Regeln](docs/TAVERNE_INTERAKTION.md#maras-fünf-ausgearbeitete-herzstufen-t05).
 
 - [ ] **20 · T06 — Ilyras Taverneninteraktionen. Geplant; benötigt T05.**
   - [ ] Freigegebene Ilyra-Identität übernehmen; eigene Referenz/Idle/Reaktionsprobe visuell prüfen, danach erforderliche Inhalte für fünf Herzstufen ergänzen.

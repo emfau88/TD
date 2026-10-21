@@ -14,6 +14,8 @@
 
 **Vorbereitet für den nächsten Tavernen-Ausbau:** Zuneigung und ein gemeinsamer Geschenkbestand werden bereits gespeichert. Start-/Bossgeschenke werden einmalig vergeben, reguläre Geschenke begrenzt durch gewonnene Live-Wellen erspielt. **T04: In der gebauten Taverne stehen Sprechen, Berühren und Schenken mit Maras großer Animation bereit.** Übersicht, Hand-/Haar-/Schulterreaktionen, kompakte Hochkantansicht und schließbarer Kampfhinweis sind am 21.10.2026 visuell freigegeben. [Entwurf und Screenshots](artifacts/idle-bastion/acceptance/t04/REPORT.md). [Regeln und erste Balance](experiments/idle-bastion/docs/TAVERNE_INTERAKTION.md).
 
+**T05 – Maras fünf Herz-Momente:** Jedes verdiente Herz öffnet einen eigenen persönlichen Moment; dafür das Herz in Maras Ansicht antippen. Begrüßungen, Gespräche und Berührungsreaktionen entwickeln sich mit dem Vertrauen. Verdiente Momente bleiben nach Reload kostenlos wieder abspielbar. [Inhalte und kompakter Prüfbericht](artifacts/idle-bastion/acceptance/t05/REPORT.md).
+
 
 <details open>
 <summary>B15b – Gefährten und Sternensalve im Spiel</summary>

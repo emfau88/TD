@@ -26,7 +26,7 @@ Wisp behält seine vorhandenen Bedingungen (Frostforschung und abgeschlossene We
 
 Alte gebaute Tavernen werden Stufe II, auch ohne Ilyra: keine zweite Zahlung, kein erzwungener Umzug. Bestehende Rekrutierungen bleiben erhalten. Veteranen ohne Taverne erhalten bei erfülltem Fortschritt den noch unverbrauchten Bausatzanspruch. Startgeschenk sowie belegte alte Boss-Geschenkansprüche können einmalig nachgereicht werden; dedizierte gespeicherte Ansprüche verhindern Wiederholungen. Ein Wellenrekord allein ersetzt keinen tatsächlichen Bossnachweis. Gold, Gebäude, Lernfortschritt, laufender Kampf und Offline-Ansprüche erhalten.
 
-T02 speichert die Tavernenstufe in Snapshot 23. Weil es nur eine Taverne und keinen Abriss gibt, ist `tavernBuilt` zugleich der dauerhafte Bausatzverbrauch; der noch offene Anspruch wird aus gemeisterter Welle 12 und fehlendem Gebäude abgeleitet. Stufe I zeigt zunächst die Gefährtenverwaltung; T03 ergänzt die gespeicherte Geschenk-/Zuneigungsbasis, bedienbare Mara-Interaktionen folgen in T04. Keine vorgetäuschte soziale Freischaltung im aktuellen Menü.
+T02 speichert die Tavernenstufe in Snapshot 23. Weil es nur eine Taverne und keinen Abriss gibt, ist `tavernBuilt` zugleich der dauerhafte Bausatzverbrauch; der noch offene Anspruch wird aus gemeisterter Welle 12 und fehlendem Gebäude abgeleitet. Stufe I zeigt zunächst die Gefährtenverwaltung; T03 ergänzt die gespeicherte Geschenk-/Zuneigungsbasis, T04 ergänzt die bedienbaren Mara-Interaktionen. Keine vorgetäuschte soziale Freischaltung im aktuellen Menü.
 
 ## Zuneigung und Geschenke
 
@@ -58,6 +58,24 @@ Snapshot **24** ergänzt `social` mit Punkten, Geschenkbestand, permanenten Meil
 Für T04: `companionOffer()` liefert den aktuellen Annahme-/Punkte-/Sperrstatus, `interactCompanion()` führt die Aktion innerhalb von `BattleSession.command()` aus. Geschenkverbrauch, Punkte und Budget sind **eine Transaktion**. Erst nach erfolgreicher Speicherung belohnte Reaktion zeigen. Bei ausgeschöpftem Gesprächs-/Berührungsbudget ist die Reaktion weiter erlaubt (`accepted: true`, `points: 0`), benötigt aber keinen Save; der unveränderte Sessionzustand liefert dann erwartungsgemäß kein Schreib-Acknowledgement. Geschenke ohne Punktegewinn werden nicht verbraucht. Nur vorhandene Figuren dürfen interagieren; Ilyra muss tatsächlich rekrutiert sein. Wisp hat keine sozialen Werte. Freischaltungen einzelner Berührungsbereiche und sichtbare Herz-Inhalte gehören zu T04/T05; T03 enthält keine zusätzlichen Bildassets oder Menüs.
 
 Fünf Herzen brauchen fünf konkrete wahrnehmbare Freischaltungen. Mögliche Staffelung: vertrautere Begrüßung, zusätzliche Gesichtsreaktion, weitere Nähe/Hand an der Taille, kurze Umarmung, persönliche romantische Abschlussszene. Genaue Zuordnung und Inhalte vor Produktion in T05 festlegen. Anfangs Hand, Haare und Schulter; abweichende Mockup-Zonen nicht automatisch übernehmen. Gesperrte Bereiche geben keine Punkte; zurückhaltende Reaktionen passen zum aktuellen Verhältnis. Mara bleibt direkt/neckisch, Ilyra eher reserviert. Keine große Film- oder Szenenbibliothek.
+
+## Maras fünf ausgearbeitete Herzstufen (T05)
+
+| Herzen / Punkte | Persönlicher Moment | Entwicklung |
+| --- | --- | --- |
+| 1 / 10 | Ein Platz am Feuer | Mara erzählt von ihrer ersten Nacht im Hain und hält einen Platz frei. |
+| 2 / 35 | Mein Glücksstück | Das Zahnrad ihrer ersten misslungenen Uhr erklärt, warum ihr Unvollkommenes wichtig ist. |
+| 3 / 70 | Was ich nicht reparieren kann | Sie spricht über Angst um den Hain und Vertrauen zum Spieler. |
+| 4 / 110 | Bleib noch ein bisschen | Sie nimmt bewusst frei und lädt zu einer ruhigen, gegenseitig gewollten Nähe ein. |
+| 5 / 160 | Unser Morgen | Frühstückspläne und ein persönliches Liebesgeständnis schließen den ersten Beziehungsbogen. |
+
+Jeder Moment enthält drei kurze, manuell weitergeschaltete Abschnitte mit den bereits freigegebenen Schulter-, Hand- und Haarreaktionen. Zusätzlich gibt es für 0–5 Herzen jeweils eine eigene Begrüßung, zwei wechselnde Gesprächsantworten sowie eigene Geschenk-/Hand-/Haar-/Schulterantworten. Quelle: `src/tavern-mara-content.ts`. Es wurden keine neuen Grafikassets produziert; die bestehenden Atlanten bleiben unverändert.
+
+Die fünf Herzen sind zugleich die Einstiege in die persönlichen Momente. Noch gesperrte Herzen nennen Titel und Punkteschwelle, der nächste Inhalt steht sichtbar unter dem Fortschritt. Nach verdientem Herz erscheint ein kleiner optionaler Einstieg zum neuen Moment. Keine automatische Unterbrechung oder zusätzliche Pause. Zurück, Schließen und Kampfverwaltung bleiben erreichbar.
+
+Freischaltungen werden ausschließlich aus den gespeicherten Punkten abgeleitet. Nach Reload sind alle verdienten Momente wieder verfügbar, auch wenn eine Szene zuvor abgebrochen wurde. Wiederholen kostet nichts und erzeugt keine Punkte; es gibt keine zusätzlichen Scene-Seen-Flags und keine Snapshot-Migration. Sprechen/Berühren bleiben nach dem Punktebudget und bei fünf Herzen verfügbar. Geschenke bei voller Zuneigung bleiben gesperrt.
+
+Die T03-Balance bleibt nach der kompakten Prüfung bestehen: 40 Punkte mit einem Geschenk je Aktivitätsabschnitt ergeben fünf Herzen nach vier Abschnitten; ohne Geschenke sechs. Das ist eine überprüfte Modellrechnung. Die langfristige subjektive Spielbalance bleibt Teil der gemeinsamen T07-Abnahme.
 
 ## Oberfläche und Hintergrundkampf
 

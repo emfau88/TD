@@ -10,6 +10,8 @@ Dieses Dokument ersetzt für Idle Bastion den ursprünglichen langen Auftrag. Es
 
 **T04 visuell freigegeben:** Tavernenübersicht, große Mara-Ansicht, Sprechen/Berühren/Schenken und kompakter Kampfhinweis sind umgesetzt und am 21.10.2026 ausdrücklich zur Veröffentlichung freigegeben. [Aufnahmen und Prüfbericht](../../artifacts/idle-bastion/acceptance/t04/REPORT.md).
 
+**T05:** Maras fünf Herzen schalten fünf persönliche, wieder abspielbare Momente frei. Begrüßung und Aktionsantworten passen zur jeweiligen Stufe; Freischaltungen bleiben aus den gespeicherten Punkten ableitbar. [Prüfbericht](../../artifacts/idle-bastion/acceptance/t05/REPORT.md).
+
 ## Geplanter Ausbau nach Akt I
 
 Am 19.10.2026 wurde die Roadmap um [Akt II, B15–B22](ROADMAP.md) erweitert: Taverne mit Ilyra, die vorhandenen Türme Sturmlicht und Glutwerfer, eine große vorbereitbare Ostfront und gestalteter Fortschritt bis ungefähr Welle 40. [AKT_II.md](docs/AKT_II.md) hält Bestand, Spielregeln und technische Grenzen kompakt fest. Schnellfeuer, Sonnenobelisk, Runa sowie nutzbarer Kern/HQ und verbündete Einheiten stehen als spätere Ideen auf der Parkliste.

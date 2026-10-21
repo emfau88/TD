@@ -5,9 +5,9 @@ import reactionsUrl from '../assets/tavern-ui/mara-reactions.png';
 
 export type TouchRegion = 'hand' | 'hair' | 'shoulder';
 export const MARA_REACTIONS = {
-  hand: { minHearts: 0, x: 137, y: 381, label: 'Hand', line: 'Du kannst meine Hand nehmen. Aber meine Werkzeuge bleiben bei mir.' },
-  hair: { minHearts: 0, x: 117, y: 220, label: 'Haare', line: 'Vorsichtig mit dem Zopf … den habe ich heute ausnahmsweise ordentlich geflochten.' },
-  shoulder: { minHearts: 0, x: 270, y: 242, label: 'Schulter', line: 'He … du hättest auch einfach meinen Namen sagen können.' },
+  hand: { minHearts: 0, x: 137, y: 381, label: 'Hand' },
+  hair: { minHearts: 0, x: 117, y: 220, label: 'Haare' },
+  shoulder: { minHearts: 0, x: 270, y: 242, label: 'Schulter' },
 } as const;
 type Frame = { x: number; y: number; width: number; height: number; anchorX: number; anchorY: number };
 const load = (src: string) => new Promise<HTMLImageElement>((resolve, reject) => {
