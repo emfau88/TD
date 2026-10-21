@@ -1,10 +1,16 @@
-# Spire — Herz aus Splittern
+# SPIRE · Idle Bastion
 
-## Idle Bastion ausprobieren
+**Hauptstand: `main`.** Idle Bastion ist das aktuelle Spiel. [▶ Jetzt spielen](https://emfau88.github.io/TD/) · [Roadmap](experiments/idle-bastion/ROADMAP.md). Bisherige `/idle-bastion/`-Spiel- und Vorschaulinks werden weitergeleitet; Spielstände verwenden unveränderte Speicherkennungen auf derselben Domain.
+
+Lokal: `npm install`, danach `npm run dev`. `npm run build` erzeugt die Veröffentlichung unter `dist/`, `npm run preview` zeigt diesen Build. Der aktive Code liegt weiterhin unter `experiments/idle-bastion/`; keine riskante Massenverschiebung der Quellen. `npm test` betrifft das aktuelle Spiel.
+
+Der ursprüngliche klassische Stand bleibt im [Archiv-Tag](https://github.com/emfau88/TD/tree/archive/classic-td-2026-10-21) erhalten. Historische Quellen/Anleitungen unten und `classic:*`-/`reference:*`-Befehle bleiben nachvollziehbar, werden aber nicht mehr zusätzlich als Hauptspiel ausgeliefert. Künftige Sounds und Interaktionsfreischaltungen sind noch zu besprechen.
+
+## Das aktuelle Hauptspiel
 
 [Mara in der Taverne ansehen — Idle und Berührungsreaktion](https://emfau88.github.io/TD/idle-bastion/mara-check.html) · Separate T01-Animationsprobe mit antippbarer Schulter und Einzelbildansicht. Seit T04 auch in der gebauten Taverne verfügbar; visuell freigegeben am 21.10.2026.
 
-[▶ Im Browser spielen](https://emfau88.github.io/TD/idle-bastion/) · [Frische Probe starten](https://emfau88.github.io/TD/idle-bastion/?fresh=1)
+[▶ Im Browser spielen](https://emfau88.github.io/TD/) · [Frische Probe starten](https://emfau88.github.io/TD/?fresh=1)
 
 [Ilyras Lauf- und Zauberanimationen ansehen](https://emfau88.github.io/TD/idle-bastion/ilyra-check.html) · Separate Vorschau neben Mara; die Figurenanimationen werden auch im Spiel verwendet.
 

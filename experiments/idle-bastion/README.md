@@ -2,6 +2,8 @@
 
 **Siedlung am Kern:** Neue Partien erhalten eine 40×16-Karte mit Werkstatt, Lager und Taverne südöstlich des Kerns. Altsaves behalten ihre Plätze bis zum kostenlosen Umzug unter **Siedlung → Siedlung am Kern** bei manueller Pause. Mausziehen/Touch statt zusätzlicher Navigationsbuttons; die Ostfront folgt später. Die älteren Slice-Angaben unten bleiben als Entwicklungshistorie erhalten.
 
+Hauptspiel seit 21.10.2026: `main`, [Hauptadresse](https://emfau88.github.io/TD/). Code bleibt in diesem Verzeichnis; frühere Branch-/Isolationsangaben unten beschreiben die Entwicklungshistorie. Die ausdrückliche Übernahmefreigabe ersetzt die frühere Merge-Sperre.
+
 Stand: 21.10.2026 · Umsetzungsstand und Freigaben: siehe [Roadmap](ROADMAP.md).
 
 Dieses Dokument ersetzt für Idle Bastion den ursprünglichen langen Auftrag. Es bündelt die anschließend gemeinsam besprochenen Entscheidungen einschließlich der wachsenden, scrollbar erschlossenen Karte. Die bestehende klassische SPIRE-Roadmap wird dadurch nicht verändert. Eine spätere ausdrückliche Startaufforderung autorisiert die Umsetzung bis zur ersten Zwischenabnahme, nicht das Überspringen dieser Abnahme.
