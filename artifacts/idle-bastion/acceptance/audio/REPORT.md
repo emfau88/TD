@@ -15,3 +15,9 @@ Ausgewählte lokale Audiodateien eingebunden, Lautstärke je Klang, Musikwechsel
 Keine subjektive Hörprüfung behauptet. Mobile Layoutprüfung ist Browser-Hochkant, kein physischer Gerätetest. Die ursprünglichen Quellen bleiben unverändert, Runtime-OGGs wurden ohne zusätzliche verlustbehaftete Kompression dekodiert.
 
 ![Toneinstellungen](settings.png)
+
+## Nachtrag: Menürahmen beim Scrollen
+
+Vom Nutzer gemeldeten Fehler reproduziert: Die absolut positionierte Rahmengrafik war nur so hoch wie der sichtbare Dialog und scrollte mit dem überlangen Inhalt weg. Das Spielmenü hat jetzt eine feste äußere Hülle mit Überschrift/Schließen und einen separaten inneren Scrollbereich. Visuell bis zum unteren Text geprüft: äußerer Scrollstand 0, innerer Scrollstand erreicht das Ende, vollständiger Rahmen und Schließen-Button bleiben sichtbar. Produktionsbuild erneut bestanden; keine zusätzliche Testsuite für diese kleine Layoutkorrektur.
+
+![Vollständiger Rahmen am Ende des Menüinhalts](menu-scrolled.png)

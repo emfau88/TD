@@ -121,6 +121,11 @@ progress::-webkit-progress-value { background:linear-gradient(90deg,#9b753c,#f1d
 .subtle-action::before { opacity:.6; }
 .return-dialog { position:relative; }
 .return-dialog,dialog { box-shadow:0 18px 70px #000b; }
+/* Keep the decorative frame on a stationary shell; only the contents scroll. */
+#game-menu { overflow:hidden; }
+#game-menu[open] { display:flex; flex-direction:column; }
+#game-menu > .context-header { flex:none; }
+#game-menu > .menu-content { min-height:0; overflow-y:auto; overscroll-behavior:contain; padding-right:6px; }
 dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3px); }
 #chronicle { padding-inline:26px; scrollbar-color:#8f855e #111d22; }
 .chronicle-header { background:#132127; border-bottom-color:#c2a26b55; padding-top:24px; }
