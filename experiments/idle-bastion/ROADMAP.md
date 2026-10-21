@@ -2,7 +2,7 @@
 
 Stand: 21.10.2026 · Branch `codex/idle-bastion-vertical-slice` · [Spiel testen](https://emfau88.github.io/TD/idle-bastion/)
 
-**Aktuell:** T01 wurde am 21.10.2026 ausdrücklich einschließlich Commit/Push und Vorschaulink beauftragt. Mara-Atlas, isolierte Vorschau, Build und kompakte Steuerungsprüfung sind erstellt; Browser-/Veröffentlichungsnachweis folgt. **Nach T01 auf die visuelle Nutzerfreigabe warten.** T02–T07, F03–F05 und übrige Akt-II-Pakete nicht automatisch starten. B14/G2 bleiben offen.
+**Aktuell:** T01 wurde am 21.10.2026 ausdrücklich einschließlich Commit/Push und Vorschaulink beauftragt. Mara-Atlas und isolierte Vorschau sind als `89fa694` veröffentlicht; Build, kompakte Steuerungsprüfung und Pages-Browserprüfung (Desktop/Hochkant) bestanden. [Nachweis](../../artifacts/idle-bastion/acceptance/t01/REPORT.md). **Nach T01 auf die visuelle Nutzerfreigabe warten.** T02–T07, F03–F05 und übrige Akt-II-Pakete nicht automatisch starten. B14/G2 bleiben offen.
 
 Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvolle Bearbeitungsreihenfolge; vorhandene Bulk-IDs bleiben erhalten. `[x]` = umgesetzt und geprüft, `[ ]` = offen. Bisherige Arbeit wird nicht gelöscht: [vollständiges Archiv mit alten Checklisten, Entscheidungen und Abnahmen](ROADMAP_ARCHIVE_2026-10-20.md). Fachregeln: [Auftrag](README.md), [Technik](docs/TECHNIK.md), [Grafik](docs/ART_DIRECTION.md), [Akt II](docs/AKT_II.md), [Tavernenplan](docs/TAVERNE_INTERAKTION.md), [Abnahmeplan](docs/ABNAHME.md).
 
@@ -34,11 +34,11 @@ Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvo
 
 - [x] **14 · F02 — Ilyras Darstellung und lesbare Salve.** Schwarze Verbindungen zwischen Körper und Speer gezielt transparent korrigiert (78 Pixel, übrige Figur/Anker unverändert). Neue Salven laufen 35 % länger; Schaden und 28-s-Cooldown bleiben gleich, alte laufende Salven behalten ihr Timing. Acht gezielte Tests, Build, kurze Desktop-/Hochkantprobe und Atlasvergleich bestanden. [Bericht und Vorher/Nachher](../../artifacts/idle-bastion/acceptance/f02/REPORT.md). Keine Idle-Animation umgesetzt.
 
-- [ ] **15 · T01 — Mara-Animationsprobe. Umsetzung beauftragt; visuelle Abnahme offen.** Kleine isolierte Qualitätsprobe, keine Gameplay-/Save-Änderung. [Vorschau](https://emfau88.github.io/TD/idle-bastion/mara-check.html) · [Nachweis](../../artifacts/idle-bastion/acceptance/t01/REPORT.md). [Grafikvertrag und Abnahme](docs/TAVERNE_INTERAKTION.md#animation-und-visuelle-zwischenabnahme).
+- [ ] **15 · T01 — Mara-Animationsprobe. Geliefert und technisch geprüft; visuelle Nutzerabnahme offen.** Kleine isolierte Qualitätsprobe, keine Gameplay-/Save-Änderung. [Vorschau](https://emfau88.github.io/TD/idle-bastion/mara-check.html) · [Nachweis](../../artifacts/idle-bastion/acceptance/t01/REPORT.md). [Grafikvertrag und Abnahme](docs/TAVERNE_INTERAKTION.md#animation-und-visuelle-zwischenabnahme).
   - [x] Original-Mara als verbindliche Referenz verwenden; Bildausschnitt, Pixelmaßstab, Anker und Assetbedarf vor Produktion festlegen.
   - [x] Eine ruhige echte Idle-Animation und genau eine Schulter-Berührungsreaktion mit Kopf-, Arm-/Schulter- und Körperbewegung samt sauberer Rückkehr produzieren; keine weiteren Reaktionen/Figuren.
   - [x] Separate HTML-Vorschau mit Antippen/Klick, Einzelbildern bzw. Atlas und dokumentierten Framezeiten liefern; schnelle Wiederholungen dürfen die Animation nicht zerreißen.
-  - [ ] Kurz auf Desktop und normalem mobilem Hochkant prüfen: Identität, Transparenz, Bewegung, Loop, Lesbarkeit und Ladeverhalten. Vorschau erst nach Veröffentlichungsfreigabe committen/pushen und erreichbaren Link prüfen; keine erfundene Abnahme.
+  - [x] Kurz auf Desktop und normalem mobilem Hochkant prüfen: Identität, Transparenz, Bewegung, Loop, Lesbarkeit und Ladeverhalten. Vorschau erst nach Veröffentlichungsfreigabe committen/pushen und erreichbaren Link prüfen; keine erfundene Abnahme.
   - [ ] **Visuelle Nutzerabnahme dokumentieren. Hier anhalten.** Bei unzureichendem Ergebnis zuerst Produktionsmethode korrigieren; T02–T07 nicht automatisch beginnen.
 
 - [ ] **16 · T02 — Tavernenstufen und Bestandsschutz. Geplant; nach T01-Abnahme und Startauftrag.**
