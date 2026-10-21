@@ -71,5 +71,13 @@ try {
   audio.setCompanion('ilyra');assert.equal(voice.paused,true);assert.equal(voice.getAttribute('src'),null);
   audio.touchCompanion('ilyra');await settle();assert.equal(plays,beforeTouch+1);
   audio.destroy();audio=undefined;assert.equal(document.querySelectorAll('audio').length,0);
+  localStorage.removeItem('spire-audio-mix-v1');
+  const beforePreview = requests;
+  audio = new GameAudio({ combat:false }); audio.setState(true,false);
+  document.dispatchEvent(new dom.window.Event('pointerdown')); await settle();
+  assert.equal(requests-beforePreview,3,'tavern preview loads only click/craft/gift effects');
+  assert.equal(document.querySelector('[data-spire-music=field]'),null,'preview never fetches field music');
+  audio.setTavern(true); await settle();
+  assert.equal(document.querySelector('[data-spire-music=tavern]').paused,false);
   console.log('PASS: gesture/lazy loading, music crossfade, mute, pause, hidden tab, ownership, storage, boss voice edges/channel/end and cleanup.');
 } finally {audio?.destroy();await server.close();dom.window.close();}

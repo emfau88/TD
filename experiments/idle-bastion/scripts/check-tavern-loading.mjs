@@ -7,6 +7,7 @@ import { JSDOM } from 'jsdom';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dom = new JSDOM('<!doctype html><body></body>', { url: 'http://localhost/' });
 const requests = [];
+let holdReactions = false; const held = [];
 const paint = { clearRect() {}, drawImage() {}, imageSmoothingEnabled: false };
 for (const key of ['window', 'document', 'HTMLElement', 'HTMLCanvasElement', 'AbortController']) globalThis[key] = dom.window[key];
 globalThis.ResizeObserver = class { observe() {} disconnect() {} };
@@ -14,7 +15,7 @@ globalThis.requestAnimationFrame = () => 1;
 globalThis.cancelAnimationFrame = () => {};
 globalThis.Image = class {
   width = 170; height = 200;
-  set src(value) { requests.push(value); queueMicrotask(() => this.onload?.()); }
+  set src(value) { requests.push(value); if (holdReactions && /(?:shoulder|reactions)\.webp$/.test(value)) held.push(() => this.onload?.()); else queueMicrotask(() => this.onload?.()); }
 };
 dom.window.HTMLCanvasElement.prototype.getContext = () => paint;
 dom.window.HTMLDialogElement.prototype.showModal = function () { this.open = true; };
@@ -37,11 +38,11 @@ try {
   assert.equal(requests.length, 2);
   assert.ok(requests.every(url => url.endsWith('-portrait.webp')), 'overview loads only portraits');
   document.querySelector('[data-do="mara"]').click(); await settle();
-  assert.deepEqual(requests.slice(2).map(url => url.split('/').pop()), ['mara-atlas.webp', 'mara-reactions.webp']);
+  assert.deepEqual(requests.slice(2).map(url => url.split('/').pop()), ['mara-idle.webp']);
   document.querySelector('[data-do="back"]').click();
   document.querySelector('[data-do="ilyra"]').click(); await settle();
-  assert.deepEqual(requests.slice(4).map(url => url.split('/').pop()), ['ilyra-atlas.webp', 'ilyra-reactions.webp']);
-  console.log('PASS: overview only two small portraits; full images only for selected companion.');
+  assert.deepEqual(requests.slice(3).map(url => url.split('/').pop()), ['ilyra-idle.webp']);
+  console.log('PASS: overview only two small portraits; only the selected idle loads before any interaction.');
   const fill = document.querySelector('.tv-bond-fill');
   assert.equal(fill.style.transition, 'none', 'new companion opens at saved position without replay');
   b.social.points.ilyra = 12; ui.update();
@@ -65,11 +66,32 @@ try {
   assert.deepEqual(snapshot(), { busy: true, talkDisabled: false, unlockedHeartDisabled: false, lockedHeartDisabled: true });
   await settle(); ui.update(); console.log('after checkpoint', JSON.stringify(snapshot()));
   assert.deepEqual(snapshot(), { busy: false, talkDisabled: false, unlockedHeartDisabled: false, lockedHeartDisabled: true });
-  document.querySelector('[data-do="touch"]').click();
+  holdReactions = true;
+  document.querySelector('[data-do="touch"]').click(); await settle();
+  assert.equal(held.length, 2, 'reaction sheets load on demand');
+  assert.equal(document.querySelector('[data-region="hand"]').disabled, true);
+  assert.equal(document.querySelector('[data-action="talk"]').disabled, false, 'idle and conversation do not wait for reactions');
+  document.querySelector('[data-region="hand"]').click(); await settle();
+  assert.deepEqual(touches, [], 'no reward or voice before the animation can play');
+  holdReactions = false; held.splice(0).forEach(release => release()); await settle();
   document.querySelector('[data-region="hand"]').click();await settle();await settle();
   assert.deepEqual(touches,['mara'],'successful touch triggers one voice cue');
   document.querySelector('[data-region="hand"]').click();await settle();
   assert.deepEqual(touches,['mara'],'blocked repeated tap does not trigger a voice');
+  assert.equal(document.querySelectorAll('.tv-heart-buttons svg').length, 5, 'updating hearts preserves their graphics');
+  // A late image response must not reopen a character after returning to overview.
+  document.querySelector('[data-do="back"]').click(); document.querySelector('[data-do="back"]').click();
+  document.querySelector('[data-do="ilyra"]').click(); await settle();
+  holdReactions = true; document.querySelector('[data-moment="1"]').click(); await settle();
+  document.querySelector('[data-do="back"]').click();
+  held.splice(0).forEach(release => release()); await settle();
+  assert.equal(ui.dialog.dataset.screen, 'overview');
+  holdReactions = false;
+  document.querySelector('[data-do="ilyra"]').click(); await settle();
+  document.querySelector('[data-moment="1"]').click(); await settle();
+  assert.equal(ui.dialog.dataset.story, 'true', 'heart scene waits for its own reaction sheets');
+  assert.equal(ui.dialog.dataset.reacting, 'true');
+  console.log('PASS: deferred reactions, safe late responses and preserved heart scenes.');
 } finally {
   ui?.destroy(); await session?.close(); await server.close(); dom.window.close();
 }

@@ -21,15 +21,22 @@ PORTRAITS = {
     "mara-portrait.webp": (SOURCES["mara-atlas.webp"], (82, 0, 252, 200)),
     "ilyra-portrait.webp": (SOURCES["ilyra-atlas.webp"], (140, 8, 310, 208)),
 }
+SLICES = {
+    "mara-idle.webp": (SOURCES["mara-atlas.webp"], (0, 0, 1254, 418)),
+    "mara-shoulder.webp": (SOURCES["mara-atlas.webp"], (0, 418, 1254, 1254)),
+    "ilyra-idle.webp": (SOURCES["ilyra-atlas.webp"], (0, 0, 1448, 362)),
+    "ilyra-shoulder.webp": (SOURCES["ilyra-atlas.webp"], (0, 362, 1448, 1086)),
+}
 
 def main():
     check = argparse.ArgumentParser()
     check.add_argument("--check", action="store_true")
+    check.add_argument("--slices-only", action="store_true")
     args = check.parse_args()
     if not args.check:
         OUT.mkdir(exist_ok=True)
-    for name in [*SOURCES, *PORTRAITS]:
-        source, crop = (SOURCES[name], None) if name in SOURCES else PORTRAITS[name]
+    for name in (SLICES if args.slices_only else [*SOURCES, *PORTRAITS, *SLICES]):
+        source, crop = (SOURCES[name], None) if name in SOURCES else {**PORTRAITS, **SLICES}[name]
         with Image.open(source) as original:
             expected = original.convert("RGBA")
         if crop:

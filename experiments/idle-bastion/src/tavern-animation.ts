@@ -1,11 +1,13 @@
 import type { Companion } from './tavern-social';
 import maraPortrait from '../assets/runtime/mara-portrait.webp';
 import ilyraPortrait from '../assets/runtime/ilyra-portrait.webp';
-import ilyraAtlas from '../assets/runtime/ilyra-atlas.webp';
+import ilyraAtlas from '../assets/runtime/ilyra-idle.webp';
+import ilyraShoulder from '../assets/runtime/ilyra-shoulder.webp';
 import ilyraMetadata from '../assets/ilyra-tavern/ilyra-atlas.json';
 import ilyraReactions from '../assets/ilyra-tavern/ilyra-reactions.json';
 import ilyraExtra from '../assets/runtime/ilyra-reactions.webp';
-import atlasUrl from '../assets/runtime/mara-atlas.webp';
+import atlasUrl from '../assets/runtime/mara-idle.webp';
+import maraShoulder from '../assets/runtime/mara-shoulder.webp';
 import metadata from '../assets/mara-tavern/mara-atlas.json';
 import reactions from '../assets/tavern-ui/mara-reactions.json';
 import reactionsUrl from '../assets/runtime/mara-reactions.webp';
@@ -22,16 +24,21 @@ export const ILYRA_REACTIONS = {
   shoulder: { minHearts: 0, x: 181, y: 258, label: 'Schulter' },
 } as const;
 const atlases = {
-  mara: { base: atlasUrl, extra: reactionsUrl, metadata, reactions, scale: 1, extraScale: 1, targetX: 192 },
-  ilyra: { base: ilyraAtlas, extra: ilyraExtra, metadata: ilyraMetadata, reactions: ilyraReactions, scale: 1.1, extraScale: 1.17, targetX: 240 },
+  mara: { base: atlasUrl, shoulder:maraShoulder, extra: reactionsUrl, metadata, reactions, scale: 1, extraScale: 1, targetX: 192 },
+  ilyra: { base: ilyraAtlas, shoulder:ilyraShoulder, extra: ilyraExtra, metadata: ilyraMetadata, reactions: ilyraReactions, scale: 1.1, extraScale: 1.17, targetX: 240 },
 };
+export const companionPortrait = (who:Companion) => who==='mara'?maraPortrait:ilyraPortrait;
 type Frame = { x: number; y: number; width: number; height: number; anchorX: number; anchorY: number };
-const load = (src: string) => new Promise<HTMLImageElement>((resolve, reject) => {
-  const image = new Image(); image.onload = () => resolve(image); image.onerror = () => reject(new Error('Charaktergrafik konnte nicht geladen werden.')); image.src = src;
+const load = (src: string,priority:'high'|'low'='low') => new Promise<HTMLImageElement>((resolve, reject) => {
+  const image = new Image(); image.fetchPriority=priority; image.onload = () => resolve(image); image.onerror = () => reject(new Error('Charaktergrafik konnte nicht geladen werden.')); image.src = src;
 });
 export class TavernAnimation {
   private base?: HTMLImageElement;
   private extra?: HTMLImageElement;
+  private shoulder?: HTMLImageElement;
+  private reactionLoad?: Promise<boolean>;
+  loadingReactions = false;
+  get reactionsReady():boolean {return !!this.extra && !!this.shoulder;}
   private request = 0;
   private last = 0;
   private elapsed = 0;
@@ -49,15 +56,30 @@ export class TavernAnimation {
     const art = atlases[who];
     const generation = ++this.generation;
     this.active = true; this.clip = 'idle'; this.elapsed = 0; this.last = 0;
+    delete this.canvas.dataset.error; delete this.canvas.dataset.reactionError; this.changed();
     try {
-      const [base, extra] = await Promise.all([load(art.base), load(art.extra)]);
+      const base = await load(art.base,'high');
       if (generation !== this.generation || !this.active) return;
-      this.base = base; this.extra = extra;
-      this.ready = true; delete this.canvas.dataset.error; this.displayed = ''; this.changed(); this.request = requestAnimationFrame(this.tick);
+      this.base = base;
+      this.ready = true; this.displayed = ''; this.draw(art.metadata.idle[0][0]); this.changed(); this.request = requestAnimationFrame(this.tick);
     } catch { if (generation === this.generation) { this.ready = false; this.canvas.dataset.error = 'true'; this.changed(); } }
   }
-  play(region: TouchRegion): void { if (this.ready && !this.reacting) { this.clip = region; this.elapsed = 0; this.changed(); } }
-  stop(): void { this.active = false; this.generation++; cancelAnimationFrame(this.request); this.request = 0; this.ready = false; this.clip = 'idle'; this.base = undefined; this.extra = undefined; }
+  prepareReactions():Promise<boolean> {
+    if(this.reactionsReady)return Promise.resolve(true);
+    if(!this.ready||!this.active)return Promise.resolve(false);
+    if(this.reactionLoad)return this.reactionLoad;
+    const generation=this.generation,art=atlases[this.who];
+    this.loadingReactions=true;delete this.canvas.dataset.reactionError;this.changed();
+    this.reactionLoad=Promise.all([load(art.shoulder),load(art.extra)]).then(([shoulder,extra])=>{
+      if(generation!==this.generation||!this.active)return false;
+      this.shoulder=shoulder;this.extra=extra;return true;
+    }).catch(()=>{if(generation===this.generation)this.canvas.dataset.reactionError='true';return false;}).finally(()=>{
+      if(generation===this.generation){this.loadingReactions=false;this.reactionLoad=undefined;this.changed();}
+    });
+    return this.reactionLoad;
+  }
+  play(region: TouchRegion): void { if (this.ready && this.reactionsReady && !this.reacting) { this.clip = region; this.elapsed = 0; this.changed(); } }
+  stop(): void { this.active = false; this.generation++; cancelAnimationFrame(this.request); this.request = 0; this.ready = false; this.clip = 'idle'; this.base = undefined; this.extra = undefined; this.shoulder=undefined;this.reactionLoad=undefined;this.loadingReactions=false; }
   private tick = (now: number): void => {
     if (!this.active) return;
     if (!document.hidden) {
@@ -91,7 +113,8 @@ export class TavernAnimation {
         art.targetX - resting.anchorX * art.scale, 360 - resting.anchorY * art.scale, 100 * art.scale, resting.height * art.scale);
     }
     const inset = this.who === 'ilyra' ? 100 : 0;
-    ctx.drawImage((extra ? this.extra : this.base)!, frame.x + inset, frame.y, frame.width - inset, frame.height,
+    const shoulder = !extra && frame.y>0;
+    ctx.drawImage((extra ? this.extra : shoulder?this.shoulder:this.base)!, frame.x + inset, frame.y-(shoulder?art.metadata.frames[0].height:0), frame.width - inset, frame.height,
       art.targetX + (inset - frame.anchorX) * scale, 360 - frame.anchorY * scale, (frame.width - inset) * scale, frame.height * scale);
     this.canvas.dataset.frame = `${this.who}:${key}`;
   }

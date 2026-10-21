@@ -6,7 +6,7 @@ import { BattleSession } from './battle-session';
 import { TavernUI } from './tavern-ui';
 const session = await BattleSession.open(undefined, { guidedStart: false });
 const b = session.battle;
-const audio = new GameAudio(); audio.setState(true, false);
+const audio = new GameAudio({ combat:false }); audio.setState(true, false);
 b.update(4); b.highestCleared = 12; b.gold = 2500; b.settlement.workshopBuilt = true; b.settlement.frostResearched = true;
 b.update(0.05); b.buildTavern(b.recommendedTavernPlot!);
 const notice = document.getElementById('review-notice')!;

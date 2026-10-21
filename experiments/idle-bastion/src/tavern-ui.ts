@@ -2,7 +2,7 @@ import { COMPANIONS } from './tavern-companions';
 import { TavernInteractions } from './tavern-interactions';
 import type { BattleSession } from './battle-session';
 import { hearts, SOCIAL, type Interaction, type Companion } from './tavern-social';
-import { TavernAnimation, drawCompanionPortrait, type TouchRegion } from './tavern-animation';
+import { TavernAnimation, drawCompanionPortrait, companionPortrait, type TouchRegion } from './tavern-animation';
 import './tavern-ui.css';
 
 type Destination = 'tavern' | 'mara' | 'wisp' | 'ilyra';
@@ -46,9 +46,9 @@ export class TavernUI {
         <footer class="tv-overview-footer"><button type="button" data-do="wisp">Wisp · Gefährtenverwaltung ↗</button><button type="button" data-do="building">Gebäude & Ausbau ↗</button></footer>
       </section>
       <section class="tv-character" hidden>
-        <div class="tv-bond"><div><div class="tv-heart-buttons" role="group" aria-label="Maras persönliche Momente">${this.content.moments.map(moment => `<button type="button" data-moment="${moment.heart}"><span aria-hidden="true">♡</span><small>${moment.heart}</small></button>`).join('')}</div><span data-text="points"></span></div><div class="tv-bond-track" title="Ein Abschnitt pro Herz"><progress max="160" value="0" aria-label="Maras Zuneigung"></progress><span class="tv-bond-fill" aria-hidden="true"></span><span class="tv-bond-marks" aria-hidden="true"></span></div><p class="tv-moment-hint" data-text="moment-hint"></p></div>
+        <div class="tv-bond"><div class="tv-bond-visual"><div class="tv-heart-buttons" role="group" aria-label="Maras persönliche Momente">${this.content.moments.map(moment => `<button type="button" data-moment="${moment.heart}"><svg viewBox="0 0 40 38" aria-hidden="true"><path class="tv-heart-shape" d="M20 34C16 30 3 22 3 12C3 2 15 0 20 9C25 0 37 2 37 12C37 22 24 30 20 34Z"/><path class="tv-heart-shine" d="M8 13C7 8 12 5 16 10"/></svg></button>`).join('')}</div><div class="tv-bond-track" title="Ein Abschnitt pro Herz"><progress max="160" value="0" aria-label="Maras Zuneigung"></progress><span class="tv-bond-fill" aria-hidden="true"></span><span class="tv-bond-marks" aria-hidden="true"></span></div></div><div class="tv-bond-copy"><span data-text="points"></span><p class="tv-moment-hint" data-text="moment-hint"></p></div></div>
         <div class="tv-character-body">
-          <div class="tv-stage"><div class="tv-figure"><canvas width="384" height="512" aria-label="Mara, animierte Charakteransicht"></canvas>${Object.entries(this.content.reactions).map(([key, value]) => `<button type="button" class="tv-hotspot" data-region="${key}" aria-label="${value.label} berühren"><span aria-hidden="true"></span><em>${value.label}</em></button>`).join('')}</div><span class="tv-stage-caption">Mara · Tüftlerin des Hains</span></div>
+          <div class="tv-stage"><div class="tv-figure"><img class="tv-loading-portrait" alt="" aria-hidden="true" hidden><canvas width="384" height="512" aria-label="Mara, animierte Charakteransicht"></canvas>${Object.entries(this.content.reactions).map(([key, value]) => `<button type="button" class="tv-hotspot" data-region="${key}" aria-label="${value.label} berühren"><span aria-hidden="true"></span><em>${value.label}</em></button>`).join('')}</div><span class="tv-load-status" role="status" hidden></span><span class="tv-stage-caption">Mara · Tüftlerin des Hains</span></div>
           <div class="tv-conversation"><div class="tv-story-heading" hidden><small data-text="story-step"></small><h3 data-text="story-title"></h3></div><div class="tv-dialogue"><small>MARA</small><p data-text="line">Da bist du ja. Setz dich einen Moment zu mir.</p></div><p class="tv-result" data-text="result" role="status"></p><button type="button" data-do="new-moment" class="tv-unlock" hidden></button><div class="tv-story-controls" hidden><button type="button" data-do="story-next">Weiter</button><button type="button" data-do="story-exit">Zurück zu Mara</button></div><p class="tv-touch-help" hidden>Tippe auf Hand, Haare oder Schulter. Ziehen löst keine Berührung aus.</p><div class="tv-actions"><button type="button" data-action="talk"><span>Sprechen</span><small data-text="talk"></small></button><button type="button" data-do="touch"><span>Berühren</span><small data-text="touch"></small></button><button type="button" data-action="gift"><span>Schenken</span><small data-text="gift"></small></button></div><div class="tv-gifts"><details><summary><span data-text="gift-summary">Geschenke & Details</span></summary><p data-text="stock"></p><p>Geschenke sind für die hier ausgewählte Gefährtin. Du erhältst sie bei Meilensteinen und begrenzt nach gewonnenen Wellen. Gespräche und Berührungen sind auch ohne weitere Punkte möglich. Neue Belohnungen nach 20 Minuten laufender Spielzeit; Pause und Offline-Zeit zählen nicht.</p><p data-text="renewal"></p><button type="button" class="tv-combat-link" data-do="mara-combat">Mara im Kampf verwalten ↗</button></details></div></div>
         </div>
       </section>`;
@@ -63,10 +63,10 @@ export class TavernUI {
       if (!target || target.disabled) return;
       const action = target.dataset.action as Interaction | undefined;
       if (action) { void this.act(action); return; }
-      if (target.dataset.moment) { this.startMoment(Number(target.dataset.moment)); return; }
+      if (target.dataset.moment) { void this.startMoment(Number(target.dataset.moment)); return; }
       if (target.dataset.region) { if (!this.dragged) void this.act('touch', target.dataset.region as TouchRegion); return; }
       switch (target.dataset.do) {
-        case 'new-moment': if (this.newMoment) this.startMoment(this.newMoment); break;
+        case 'new-moment': if (this.newMoment) void this.startMoment(this.newMoment); break;
         case 'story-next': this.nextBeat(); break;
         case 'story-exit': this.endMoment(); break;
         case 'close': this.close(); break;
@@ -118,8 +118,10 @@ export class TavernUI {
     this.get('.tv-back').setAttribute('aria-label', screen === 'touch' ? `Zurück zu ${this.content.name}s Charakteransicht` : 'Zurück zur Tavernenübersicht');
     this.get('#tv-title').textContent = screen === 'overview' ? 'Die Taverne' : screen === 'touch' ? `Ein Moment mit ${this.content.name}` : this.content.name;
     this.get('.tv-touch-help').hidden = screen !== 'touch';
-    if (screen === 'overview') this.animation.stop();
+    if (screen === 'overview') { this.generation++; this.pending = false; this.animation.stop(); }
     else if (wasOverview) { this.text('line', this.content.stage(this.points).greeting); this.text('result', ''); void this.animation.start(this.selected); }
+    if (screen === 'touch') void this.animation.prepareReactions();
+    this.get<HTMLImageElement>('.tv-loading-portrait').src = companionPortrait(this.selected);
     this.get('.tv-stage-caption').textContent = `${this.content.name} · ${this.content.role}`;
     this.get('.tv-dialogue small').textContent = this.content.name.toUpperCase();
     this.get('.tv-heart-buttons').setAttribute('aria-label', `${this.content.name}s persönliche Momente`);
@@ -158,7 +160,7 @@ export class TavernUI {
     }
     this.text('mara-greeting', COMPANIONS.mara.stage(b.social.points.mara).greeting);
     const next = SOCIAL.heartThresholds.find(value => value > points);
-    this.text('points', `${this.content.stage(points).name} · ${points} / ${next ?? 160}`);
+    this.text('points', `${count} von 5 Herzen · ${next ? `noch ${next - points} Zuneigung` : 'Vertrautheit vollendet'}`);
     const progress = this.get<HTMLProgressElement>('progress'); progress.max = 160; progress.value = points;
     progress.setAttribute('aria-valuetext', `${points} Zuneigung · ${count} von 5 Herzen`);
     if (this.bondCompanion !== this.selected || this.bondPoints !== points) {
@@ -200,8 +202,6 @@ export class TavernUI {
       button.classList.toggle('unlocked', available);
       button.setAttribute('aria-label', `${moment.heart} ${moment.heart === 1 ? 'Herz' : 'Herzen'}: ${moment.title}${available ? ' · Moment erleben' : ` · ab ${SOCIAL.heartThresholds[moment.heart - 1]} Zuneigung`}`);
       button.title = button.getAttribute('aria-label')!;
-      const icon = button.querySelector('span')!, symbol = available ? '♥' : '♡';
-      if (icon.textContent !== symbol) icon.textContent = symbol;
     }
     for (const action of ['talk', 'touch', 'gift'] as const) {
       const offer = b.companionOffer(this.selected, action);
@@ -212,13 +212,25 @@ export class TavernUI {
     this.get('[data-do="touch"]').setAttribute('aria-pressed', String(this.screen === 'touch'));
     for (const key of Object.keys(this.content.reactions) as TouchRegion[]) {
       const button = this.get<HTMLButtonElement>(`[data-region="${key}"]`);
-      button.hidden = this.screen !== 'touch'; button.disabled = blocked || count < this.content.reactions[key].minHearts;
+      button.hidden = this.screen !== 'touch'; button.disabled = blocked || !this.animation.reactionsReady || count < this.content.reactions[key].minHearts;
     }
+    this.get('.tv-loading-portrait').hidden = this.animation.ready;
+    const loading = this.get('.tv-load-status');
+    const failedReaction = !!this.get('.tv-figure canvas').dataset.reactionError;
+    loading.hidden = this.animation.ready && !this.animation.loadingReactions && !failedReaction;
+    const loadingText = this.get('.tv-figure canvas').dataset.error ? 'Figur nicht geladen. Taverne erneut öffnen.' : !this.animation.ready ? `${this.content.name} wird geladen …` : this.animation.loadingReactions ? 'Berührungen werden geladen …' : failedReaction ? 'Laden fehlgeschlagen. Berühren erneut öffnen.' : '';
+    if (loading.textContent !== loadingText) loading.textContent = loadingText;
     if (this.get('.tv-figure canvas').dataset.error) this.text('result', 'Animation konnte nicht geladen werden. Bitte Taverne schließen und erneut öffnen.');
   }
-  private startMoment(heart: number): void {
+  private async startMoment(heart: number): Promise<void> {
     const session = this.ports.session();
     if (!session || this.pending || session.inputBusy || !this.animation.ready || this.animation.reacting || !this.content.moment(this.points, heart)) return;
+    const generation = this.generation;
+    this.pending = true; this.update();
+    const ready = await this.animation.prepareReactions();
+    if (generation !== this.generation || !this.isOpen) return;
+    this.pending = false;
+    if (!ready) { this.update(); return; }
     this.show('character'); this.moment = { heart, beat: 0 };
     if (this.newMoment === heart) this.newMoment = undefined;
     this.renderBeat();
@@ -248,7 +260,7 @@ export class TavernUI {
   private async act(action: Interaction, region: TouchRegion = 'shoulder'): Promise<void> {
     const session = this.ports.session();
     if (!session || this.pending || session.inputBusy || session.error || session.suspended || session.awaitingResume || !this.animation.ready || this.animation.reacting) return;
-    if (this.moment) return;
+    if (this.moment || action === 'touch' && !this.animation.reactionsReady) return;
     const who = this.selected, content = this.content, beforePoints = this.points;
     const offer = session.battle.companionOffer(this.selected, action); if (!offer.accepted) return;
     this.pending = true; const generation = this.generation; this.update();

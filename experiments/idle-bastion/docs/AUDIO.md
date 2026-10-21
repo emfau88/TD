@@ -37,3 +37,6 @@
 Nächste sinnvolle Ergänzungen nach Hörfeedback: ein seltener Siegshinweis, eigener erfolgreicher Forschungs-/Freischaltklang, kurzer Steinschleuder-Abwurf. Ilyras Tavernenstimmen erst nach Auswahl der vorbereiteten Hmms-Clips; kein allgemeines Lachen auf jede Berührung legen. Elektrischer Kettenblitz/Feuerstoß erst mit den späteren Türmen.
 
 Technische Pegelmessung und reale Browserwiedergabe wurden geprüft. Klangcharakter, musikalische Loopgrenzen und endgültige Mischung benötigen die Hörbewertung des Nutzers; keine subjektive Hörabnahme des Agenten behauptet. [Kompakter Prüfbericht](../../../artifacts/idle-bastion/acceptance/audio/REPORT.md).
+
+
+Die isolierte `tavern-check.html` lädt nach der ersten Geste nur Klick, Handwerk und Geschenk vor (drei statt 18 Kurzklänge). Feldmusik wird dort nicht gestartet. Tavernenmusik und Maras einzelne nächste Stimme bleiben bedarfsabhängig. Das Hauptspiel behält seine Kampfklänge und bisherigen Lautstärke-/Überlappungsgrenzen.

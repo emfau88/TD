@@ -35,7 +35,7 @@ export class GameAudio {
   private status?: HTMLElement;
   private disposed = false;
 
-  constructor() {
+  constructor(private readonly options: { combat?: boolean } = {}) {
     try { this.mix = readMix(JSON.parse(localStorage.getItem(MIX_KEY) ?? 'null')); }
     catch { this.mix = readMix(null); }
     const signal = this.lifetime.signal;
@@ -70,7 +70,7 @@ export class GameAudio {
       if (!this.unlocked) {
         this.unlocked = true;
         // Small effects warm once; long music never enters an AudioBuffer.
-        for(const cue of Object.keys(CUES) as Cue[]) if ((cue==='charm'?this.mix.voices:this.mix.effects)>0) void this.load(cue);
+        for(const cue of (this.options.combat === false ? ['click','craft','gift'] : Object.keys(CUES)) as Cue[]) if ((cue==='charm'?this.mix.voices:this.mix.effects)>0) void this.load(cue);
       }
       this.setStatus(''); this.refresh();
     } catch { this.setStatus('Ton noch gesperrt. Tippe auf „Ton testen“.'); }
@@ -121,7 +121,7 @@ export class GameAudio {
   }
   private refreshMusic(): void {
     clearTimeout(this.musicTimer);
-    if(this.mix.music===0) { for(const track of this.tracks.values()) { track.element.pause(); track.gain.gain.value=0; } return; }
+    if(this.mix.music===0 || this.options.combat === false && this.music === 'field') { for(const track of this.tracks.values()) { track.element.pause(); track.gain.gain.value=0; } return; }
     let track=this.tracks.get(this.music);
     if(!track) {
       const element=new Audio(); element.preload='none'; element.loop=true;
