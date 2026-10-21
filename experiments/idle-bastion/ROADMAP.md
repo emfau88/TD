@@ -2,7 +2,7 @@
 
 Stand: 21.10.2026 · Branch `codex/idle-bastion-vertical-slice` · [Spiel testen](https://emfau88.github.io/TD/idle-bastion/)
 
-**Aktuell:** T01 visuell abgenommen. T02 umgesetzt: früher kostenloser Tavernenbau, Stufe II nach Boss 25 und Bestandsschutz ([Prüfbericht](../../artifacts/idle-bastion/acceptance/t02/REPORT.md)). T03 wurde anschließend mit „danach weiter mit t03“ ausdrücklich beauftragt und ist der nächste aktive Bulk. T04–T07, F03–F05 und übrige Akt-II-Pakete nicht automatisch starten. B14/G2 bleiben offen.
+**Aktuell:** T01 visuell abgenommen. T02 umgesetzt: früher kostenloser Tavernenbau, Stufe II nach Boss 25 und Bestandsschutz ([Prüfbericht](../../artifacts/idle-bastion/acceptance/t02/REPORT.md)). T03 ist umgesetzt: gespeicherte soziale Basis mit erster Sitzungsbalance ([Prüfbericht](../../artifacts/idle-bastion/acceptance/t03/REPORT.md)). Nächster geplanter Bulk: T04, bedienbare Tavernenansicht und Mara-Animation; noch nicht gestartet. T04–T07, F03–F05 und übrige Akt-II-Pakete nicht automatisch starten. B14/G2 bleiben offen.
 
 Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvolle Bearbeitungsreihenfolge; vorhandene Bulk-IDs bleiben erhalten. `[x]` = umgesetzt und geprüft, `[ ]` = offen. Bisherige Arbeit wird nicht gelöscht: [vollständiges Archiv mit alten Checklisten, Entscheidungen und Abnahmen](ROADMAP_ARCHIVE_2026-10-20.md). Fachregeln: [Auftrag](README.md), [Technik](docs/TECHNIK.md), [Grafik](docs/ART_DIRECTION.md), [Akt II](docs/AKT_II.md), [Tavernenplan](docs/TAVERNE_INTERAKTION.md), [Abnahmeplan](docs/ABNAHME.md).
 
@@ -47,11 +47,11 @@ Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvo
   - [x] Bereits gebaute alte Taverne als II erhalten, ohne erneute Zahlung; alte Rekrutierung, Positionen, Gold und Offline-Ansprüche bewahren. Veteranen ohne Taverne erhalten bei erfülltem Fortschritt den Bausatzanspruch.
   - [x] Gezielt neue/alte Saves mit und ohne Taverne/Ilyra, Reload und doppelte Bau-/Ausbauaktionen prüfen; bestehende Kampfeinführung erhalten.
 
-- [ ] **17 · T03 — Zuneigung, Geschenke und Balancebasis. Beauftragt am 21.10.2026; in Arbeit.**
-  - [ ] Punkte je Figur, daraus abgeleitete fünf Herzstufen, gemeinsamer Geschenkbestand, Einmalansprüche und begrenzte Interaktionsbelohnungen im bestehenden transaktionalen Save speichern.
-  - [ ] Startgeschenk und Boss-15-/Boss-25-Geschenke einmalig vergeben, belegte alte Ansprüche berücksichtigen; kein zusätzliches Bossgold, keine Farm-/Offline-Duplikate. Verbrauch und Zuneigung gemeinsam speichern/zurückrollen.
-  - [ ] Ziel von ungefähr 3–5 aktiven Spielsitzungen je Figur konkretisieren: Sitzungsdauer, Herzschwellen, Interaktionsgrenzen und begrenzte regulär erspielbare Geschenkquelle festlegen. Frühere Tageslimits/Zahlen sind verworfen, nicht implementieren.
-  - [ ] Reload/Mehrfachklick/Schreibfehler und Zeitgrenzen gezielt prüfen; Neustart ist keine neue Belohnungssitzung. Keine Kampfboni, kein Zuneigungsverfall oder Login-Zwang.
+- [x] **17 · T03 — Zuneigung, Geschenke und Balancebasis. Umgesetzt am 21.10.2026; ausdrücklich nach T02 beauftragt.**
+  - [x] Punkte je Figur, daraus abgeleitete fünf Herzstufen, gemeinsamer Geschenkbestand, Einmalansprüche und begrenzte Interaktionsbelohnungen im bestehenden transaktionalen Save speichern.
+  - [x] Startgeschenk und Boss-15-/Boss-25-Geschenke einmalig vergeben, belegte alte Ansprüche berücksichtigen; kein zusätzliches Bossgold, keine Farm-/Offline-Duplikate. Verbrauch und Zuneigung gemeinsam speichern/zurückrollen.
+  - [x] Ziel von ungefähr 3–5 aktiven Spielsitzungen je Figur konkretisieren: Sitzungsdauer, Herzschwellen, Interaktionsgrenzen und begrenzte regulär erspielbare Geschenkquelle festlegen. Frühere Tageslimits/Zahlen sind verworfen, nicht implementieren.
+  - [x] Reload/Mehrfachklick/Schreibfehler und Zeitgrenzen gezielt prüfen; Neustart ist keine neue Belohnungssitzung. Keine Kampfboni, kein Zuneigungsverfall oder Login-Zwang.
 
 - [ ] **18 · T04 — Kompakte Taverne mit Mara. Geplant; benötigt T01-Abnahme und T03.**
   - [ ] Ein Tavernenfenster mit Übersicht, Charakteransicht und darin umschaltbarem Berührungsmodus; Sprechen/Berühren/Schenken, Empfängerin und Geschenkbestand klar darstellen.

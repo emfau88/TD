@@ -1,5 +1,10 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Tavernenstufen und soziale Basis — Snapshot 24
+
+T02 führte Snapshot 23 ein: kostenloser Taverne-I-Bausatz nach gemeisterter Welle 12, II-Ausbau für 1.200 Gold nach echtem Boss-25-Sieg, alte bezahlte Tavernen automatisch II. T03 ergänzt Snapshot 24 mit `social` aus `tavern-social.ts`. Punkte, gemeinsamer Geschenkbestand, einmalige Meilensteinansprüche und begrenzte Aktions-/Wellenbelohnungen werden zusammen mit dem Kampf transaktional gespeichert. Grenzen richten sich nach gespeicherten Live-Schritten, nicht nach der Systemuhr. Soziale Werte wirken nicht auf Kampf/Farmen/Offline; interne Farmproben deaktivieren soziale Belohnungen ausdrücklich. Datenvertrag, Balance und T04-Schnittstelle stehen in [TAVERNE_INTERAKTION.md](TAVERNE_INTERAKTION.md). Die folgenden älteren Technikabschnitte bleiben als Herkunft erhalten.
+
+
 ## Ilyra — Snapshot 22
 
 Schema 20 wird zuerst vollständig validiert, danach um `ilyra: null` ergänzt. Keine automatische Rekrutierung. Die gebaute Taverne berechtigt zur kostenlosen, atomar gespeicherten Rekrutierung; auch alte Besitzer zahlen nichts zusätzlich. Mara/Wisp werden in der Tavernenübersicht angezeigt, nicht erneut gekauft.

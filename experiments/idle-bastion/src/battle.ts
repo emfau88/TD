@@ -1,3 +1,4 @@
+import { createSocial, grantMilestoneGifts, stepSocial, recordSocialClear, interact, interactionOffer, validSocial, type SocialState, type SocialAccess, type Companion, type Interaction, type InteractionResult } from './tavern-social';
 import { ILYRA, createIlyra, cloneIlyra, moveIlyra, stepIlyraMotion, validIlyra, ilyraCell, type IlyraState } from './ilyra';
 import { BALANCE, healthMultiplier, battleReward } from './balance';
 import { ENEMIES, regularEnemy, enemyId, JELLY_HEAL, type EnemyDef } from './enemy-roster';
@@ -84,7 +85,8 @@ export interface BattleSnapshot {
   dismissedDefeatAttempt: number;
   introduction: Introduction;
   ilyra: IlyraState | null;
-  schemaVersion: 23; rulesVersion: 10; layoutVersion: 3 | 4 | 5;
+  social: SocialState;
+  schemaVersion: 24; rulesVersion: 10; layoutVersion: 3 | 4 | 5;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32' | 'core40';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
@@ -177,12 +179,15 @@ export class IdleBattle {
   private pathLength: number;
   readonly mara: MaraState;
   private readonly maraBonus: boolean;
+  social = createSocial();
+  private readonly socialRewards: boolean;
   private readonly ilyraAbilities: boolean;
 
-  constructor(public layout: IdleLayout = createIdleLayout(), options: { maraBonus?: boolean; ilyraAbilities?: boolean } = {}) {
+  constructor(public layout: IdleLayout = createIdleLayout(), options: { maraBonus?: boolean; ilyraAbilities?: boolean; socialRewards?: boolean } = {}) {
     this.plots = Object.fromEntries(layout.plots.map(p => [p.id, { x: p.footprint.x, y: p.footprint.y }])) as PlotPositions;
     this.maraBonus = options.maraBonus !== false;
     this.ilyraAbilities = options.ilyraAbilities !== false;
+    this.socialRewards = options.socialRewards !== false;
     this.path = layout.road.waypoints.map(position => cellCenter(layout, position));
     this.pathLength = this.path.slice(1).reduce((sum, point, index) => sum + distance(this.path[index], point), 0);
     if (this.path.length < 2 || this.pathLength <= 0) throw new Error('Battle requires a non-empty enemy route.');
@@ -340,10 +345,10 @@ export class IdleBattle {
   /** Only the shipped closed/open layouts cross the save boundary. */
   snapshot(): BattleSnapshot {
     if (JSON.stringify(this.layout) !== JSON.stringify(battleLayout(this.clearing.unlocked, this.plots, this.layout.version as 3 | 4 | 5))) {
-      throw new Error('Unsupported battle layout for snapshot version 23.');
+      throw new Error('Unsupported battle layout for snapshot version 24.');
     }
     return {
-      schemaVersion: 23, ilyra: this.ilyra ? cloneIlyra(this.ilyra) : null, discovery: this.discovery, dismissedDefeatAttempt: this.dismissedDefeatAttempt, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4 | 5, layoutId: this.layout.version === 5 ? 'core40' : this.clearing.unlocked ? 'east32' : 'start28',
+      schemaVersion: 24, social: structuredClone(this.social), ilyra: this.ilyra ? cloneIlyra(this.ilyra) : null, discovery: this.discovery, dismissedDefeatAttempt: this.dismissedDefeatAttempt, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4 | 5, layoutId: this.layout.version === 5 ? 'core40' : this.clearing.unlocked ? 'east32' : 'start28',
       clearing: { ...this.clearing },
       bossVictories: this.bossVictories, secondBossVictories: this.secondBossVictories, bossChallengeWave: this.bossChallengeWave, bossChallengeRequested: this.bossChallengeRequested, bossCharm: { ...this.bossCharm },
       progress: cloneProgress(this.progress), rewardRemainderUnits: this.rewardRemainderUnits, waveRecipeVersion: this.waveRecipeVersion,
@@ -369,7 +374,7 @@ export class IdleBattle {
   /** Reject malformed/newer snapshots before exposing a model. Rebuilding refs
    * never fires commands, combat ticks, purchases or reward/UI events.
    */
-  static restore(value: unknown, options: { maraBonus?: boolean; ilyraAbilities?: boolean } = {}): IdleBattle | undefined {
+  static restore(value: unknown, options: { maraBonus?: boolean; ilyraAbilities?: boolean; socialRewards?: boolean } = {}): IdleBattle | undefined {
     // v1 carried no reliable live-clear evidence. Preserve its exact combat and
     // progress estimate, but never invent farm certificates from old wave numbers.
     if (isRecord(value) && value.schemaVersion === 1 && value.rulesVersion === 1) {
@@ -496,7 +501,7 @@ export class IdleBattle {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 20, model.layout.version as 3 | 4 | 5)) return undefined;
       value = { ...value, schemaVersion: 21, ilyra: null };
     }
-    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23)) {
+    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23 || value.schemaVersion === 24)) {
       if (![3, 4, 5].includes(value.layoutVersion as number) || !validPlotPositions(value.plots, value.layoutVersion as number)) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion as 3 | 4 | 5));
     }
@@ -511,7 +516,15 @@ export class IdleBattle {
       value = { ...value, schemaVersion: 23, settlement: { ...value.settlement,
         tavernLevel: value.settlement.tavernBuilt ? 2 : 0 } };
     }
+    if (isRecord(value) && value.schemaVersion === 23) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 23, model.layout.version as 3 | 4 | 5)) return undefined;
+      const social = createSocial();
+      if (model.socialRewards) grantMilestoneGifts(social, { tavernBuilt: value.settlement.tavernBuilt,
+        ilyraRecruited: value.ilyra !== null, boss15: value.bossVictories > 0, boss25: value.secondBossVictories > 0 });
+      value = { ...value, schemaVersion: 24, social };
+    }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5)) return undefined;
+    model.social = structuredClone(value.social);
     model.ilyra = value.ilyra ? cloneIlyra(value.ilyra) : null;
     model.discovery = value.discovery; model.dismissedDefeatAttempt = value.dismissedDefeatAttempt;
     model.introduction = { ...value.introduction };
@@ -625,6 +638,18 @@ export class IdleBattle {
     return true;
   }
 
+  get socialAccess(): SocialAccess {
+    return { tavernBuilt: this.settlement.tavernBuilt, ilyraRecruited: !!this.ilyra,
+      boss15: this.bossVictories > 0, boss25: this.secondBossVictories > 0 };
+  }
+  companionOffer(who: Companion, action: Interaction): InteractionResult {
+    return interactionOffer(this.social, this.socialAccess, who, action);
+  }
+  interactCompanion(who: Companion, action: Interaction): InteractionResult {
+    if (!this.socialRewards) return { accepted: false, points: 0, reason: 'locked' };
+    return interact(this.social, this.socialAccess, who, action);
+  }
+
   get tavernUnlocked(): boolean { return this.highestCleared >= 12; }
   // One building, no demolition: persisted ownership also records kit consumption.
   get tavernKitAvailable(): boolean { return this.tavernUnlocked && !this.settlement.tavernBuilt; }
@@ -645,6 +670,7 @@ export class IdleBattle {
     if (!this.applyBuildingPosition('tavern', cell)) return false;
     this.settlement.tavernBuilt = true; this.settlement.tavernLevel = 1; this.settlement.tavernBuiltAt = this.elapsed;
     this.settlement.tavernSeen = true;
+    if (this.socialRewards) grantMilestoneGifts(this.social, this.socialAccess);
     this.events.push({ type: 'tavern', amount: SETTLEMENT.tavernCost });
     return true;
   }
@@ -913,6 +939,7 @@ export class IdleBattle {
     for (let index = 0; index < count; index++) {
       this.ticks++;
       this.elapsed = this.ticks * BASE.stepSeconds;
+      if (this.socialRewards && this.settlement.tavernBuilt) stepSocial(this.social);
       this.tick(BASE.stepSeconds);
       this.updateLesson(); this.updateDiscovery();
       if (this.learningPaused) { this.introduction.preparationSeconds += (count - index - 1) * BASE.stepSeconds; break; }
@@ -1185,6 +1212,10 @@ export class IdleBattle {
       }
       const previousRecord = this.highestCleared, hadWisp = this.wispUnlocked;
       this.highestCleared = Math.max(this.highestCleared, this.wave);
+      if (this.socialRewards) {
+        grantMilestoneGifts(this.social, this.socialAccess);
+        if (this.settlement.tavernBuilt && isNormalFarmWave(this.wave)) recordSocialClear(this.social, this.attemptId);
+      }
       if ([5, 10].some(wave => previousRecord < wave && this.highestCleared >= wave)) this.events.push({ type: 'pads', wave: this.highestCleared });
       if (!hadWisp && this.wispUnlocked) this.welcomeWisp();
       if (this.waveRecipeVersion === BATTLE_RULES_VERSION && isNormalFarmWave(this.wave) && !this.liveClearedWaves.includes(this.wave)) {
@@ -1225,10 +1256,10 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
-  if (!isRecord(value) || value.schemaVersion !== (legacy || 23) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
+  if (!isRecord(value) || value.schemaVersion !== (legacy || 24) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
     || value.layoutVersion !== layoutVersion || value.layoutId !== (layoutVersion === 5 ? 'core40' : layout.bounds.columns === 32 ? 'east32' : 'start28') || legacy > 0 && legacy < 20 && layoutVersion === 5) return false;
   if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10]).includes(value.waveRecipeVersion as number))) return false;
   if ((!legacy || legacy >= 9) && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
@@ -1293,8 +1324,8 @@ function validSnapshot(
   }
   if (!legacy || legacy >= 19) {
     const settlement = value.settlement as BattleSnapshot['settlement'];
-    const eligible = legacy ? (value.secondBossVictories as number) > 0 : (value.highestCleared as number) >= 12;
-    if (!legacy && (!integerIn(settlement.tavernLevel, 0, 2)
+    const eligible = legacy && legacy < 23 ? (value.secondBossVictories as number) > 0 : (value.highestCleared as number) >= 12;
+    if ((!legacy || legacy >= 23) && (!integerIn(settlement.tavernLevel, 0, 2)
       || settlement.tavernBuilt !== (settlement.tavernLevel > 0)
       || settlement.tavernLevel === 2 && !(value.secondBossVictories as number))) return false;
     if (typeof settlement.tavernBuilt !== 'boolean' || typeof settlement.tavernSeen !== 'boolean'
@@ -1303,6 +1334,11 @@ function validSnapshot(
       || (settlement.tavernBuilt ? !eligible
         || !numberIn(settlement.tavernBuiltAt, 0, value.elapsed as number) : settlement.tavernBuiltAt !== null)) return false;
   } else if (modern && (value.plots as PlotPositions).tavern !== undefined) return false;
+  if (!legacy && !validSocial(value.social, {
+    tavernBuilt: (value.settlement as BattleSnapshot['settlement']).tavernBuilt,
+    ilyraRecruited: value.ilyra !== null,
+    boss15: (value.bossVictories as number) > 0, boss25: (value.secondBossVictories as number) > 0,
+  }, value.attemptId as number)) return false;
   const levelLimit = (modern || legacy === 10) && (value.settlement as BattleSnapshot['settlement']).workshopUpgraded ? 20 : !original && (value.settlement as BattleSnapshot['settlement']).frostResearched ? 6 : 3;
   if (!integerIn(value.goldRemainderUnits, 0, 999) || (value.mode !== 'advance' && value.mode !== 'farm')
     || !integerIn(value.highestCleared, 0, Number.MAX_SAFE_INTEGER - 1) || !integerIn(value.attemptId)
@@ -1383,7 +1419,7 @@ function validSnapshot(
   if ((!legacy || legacy >= 21) && value.ilyra !== null) {
     const blocked=[...getForestBlockedCells(layout),...value.towers.map(t=>layout.towerPads.find(p=>p.id===t.padId)!.cell)];
     if (!(value.settlement as BattleSnapshot['settlement']).tavernBuilt
-      || !legacy && (value.settlement as BattleSnapshot['settlement']).tavernLevel !== 2 || !validIlyra(value.ilyra,layout,blocked,ilyraDamage)) return false;
+      || (!legacy || legacy >= 23) && (value.settlement as BattleSnapshot['settlement']).tavernLevel !== 2 || !validIlyra(value.ilyra,layout,blocked,ilyraDamage)) return false;
     if (legacy === 21 && isRecord(value.ilyra) && isRecord(value.ilyra.volley) && value.ilyra.volley.pace !== undefined) return false;
   }
   if (!legacy || legacy >= 8) {

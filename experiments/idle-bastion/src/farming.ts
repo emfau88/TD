@@ -67,7 +67,7 @@ function prove(battle: IdleBattle, wave: number, fingerprint: string): FarmCerti
   if (snapshot.wispArrival.at !== null) snapshot.wispArrival.at = 0;
   snapshot.gold = 0; snapshot.goldRemainderUnits = 0; snapshot.earned = 0; snapshot.kills = 0;
   snapshot.towers = snapshot.towers.map(tower => ({ ...tower, cooldown: stats({ def: towerDefinition(tower.kind), level: tower.level }).cooldown, kills: 0 }));
-  const probe = IdleBattle.restore(snapshot, { maraBonus: false, ilyraAbilities: false });
+  const probe = IdleBattle.restore(snapshot, { maraBonus: false, ilyraAbilities: false, socialRewards: false });
   if (!probe) return undefined;
   let clears = 0;
   for (let step = 1; step <= MAX_FARM_PROBE_STEPS; step++) {

@@ -12,6 +12,9 @@
 
 **Taverne I ab Welle 12, Ilyra nach Boss 25:** Nach erfolgreich gemeisterter **Welle 12** unter Siedlung den **kostenlosen Tavernenbausatz** platzieren. Nach dem tatsächlichen Sieg über **Boss 25** für **1.200 Gold auf Taverne II ausbauen**. Bereits früher bezahlte Tavernen sind automatisch Stufe II, ohne zweite Zahlung. Dort Ilyra kennenlernen und **kostenlos rekrutieren**. Einen Standort am Weg wählen, danach mit „Sternensalve zielen“ eine Gegnergruppe treffen: 28 Sekunden Abklingzeit, besonders wirksam gegen Flieger. Nach der ersten Anwendung lässt sich eine gegnerabhängige Automatik einschalten. **Mara, Wisp und Ilyra** sind mit Rolle und Status in derselben Tavernenübersicht zu finden. Bestehende Saves bleiben erhalten. [Kompakter B15b-Bericht](artifacts/idle-bastion/acceptance/b15b/REPORT.md).
 
+**Vorbereitet für den nächsten Tavernen-Ausbau:** Zuneigung und ein gemeinsamer Geschenkbestand werden bereits gespeichert. Start-/Bossgeschenke werden einmalig vergeben, reguläre Geschenke begrenzt durch gewonnene Live-Wellen erspielt. **Sprechen, Berühren, Schenken und Maras große Animation sind im Hauptspiel noch nicht bedienbar; die Oberfläche folgt mit T04.** [Regeln und erste Balance](experiments/idle-bastion/docs/TAVERNE_INTERAKTION.md).
+
+
 <details open>
 <summary>B15b – Gefährten und Sternensalve im Spiel</summary>
 

@@ -1,3 +1,4 @@
+import { grantMilestoneGifts } from '../src/tavern-social';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
@@ -57,6 +58,7 @@ test('old schema 18 preserves actors, free plots, coins and progress; invalid ne
   const b = veteran(); b.positionBuilding('warehouse', { x: 8, y: 10 });
   const now = b.snapshot(), old: any = structuredClone(now); old.schemaVersion = 18;
   delete old.settlement.tavernLevel; delete old.settlement.tavernBuilt; delete old.settlement.tavernBuiltAt; delete old.settlement.tavernSeen;
+  grantMilestoneGifts(now.social, b.socialAccess);
   assert.deepEqual(IdleBattle.restore(old)!.snapshot(), now);
   const invalid = b.snapshot(); invalid.settlement.tavernBuilt = true;
   assert.equal(IdleBattle.restore(invalid), undefined);
@@ -115,6 +117,7 @@ test('schema 22 owners become II once; nonowners keep kit, old recruitment, gold
     if (mode === 'recruited') assert.ok(b.recruitIlyra());
     const expected = b.snapshot(), old: any = structuredClone(expected);
     old.schemaVersion = 22; delete old.settlement.tavernLevel;
+    grantMilestoneGifts(expected.social, b.socialAccess);
     const untouched = structuredClone(old), restored = IdleBattle.restore(old)!;
     assert.deepEqual(old, untouched); assert.deepEqual(restored.snapshot(), expected);
     assert.equal(restored.tavernKitAvailable, mode === 'unbuilt');

@@ -26,15 +26,36 @@ Wisp behält seine vorhandenen Bedingungen (Frostforschung und abgeschlossene We
 
 Alte gebaute Tavernen werden Stufe II, auch ohne Ilyra: keine zweite Zahlung, kein erzwungener Umzug. Bestehende Rekrutierungen bleiben erhalten. Veteranen ohne Taverne erhalten bei erfülltem Fortschritt den noch unverbrauchten Bausatzanspruch. Startgeschenk sowie belegte alte Boss-Geschenkansprüche können einmalig nachgereicht werden; dedizierte gespeicherte Ansprüche verhindern Wiederholungen. Ein Wellenrekord allein ersetzt keinen tatsächlichen Bossnachweis. Gold, Gebäude, Lernfortschritt, laufender Kampf und Offline-Ansprüche erhalten.
 
-T02 speichert die Tavernenstufe in Snapshot 23. Weil es nur eine Taverne und keinen Abriss gibt, ist `tavernBuilt` zugleich der dauerhafte Bausatzverbrauch; der noch offene Anspruch wird aus gemeisterter Welle 12 und fehlendem Gebäude abgeleitet. Stufe I zeigt zunächst die Gefährtenverwaltung; Geschenke folgen in T03, bedienbare Mara-Interaktionen in T04. Keine vorgetäuschte soziale Freischaltung im aktuellen Menü.
+T02 speichert die Tavernenstufe in Snapshot 23. Weil es nur eine Taverne und keinen Abriss gibt, ist `tavernBuilt` zugleich der dauerhafte Bausatzverbrauch; der noch offene Anspruch wird aus gemeisterter Welle 12 und fehlendem Gebäude abgeleitet. Stufe I zeigt zunächst die Gefährtenverwaltung; T03 ergänzt die gespeicherte Geschenk-/Zuneigungsbasis, bedienbare Mara-Interaktionen folgen in T04. Keine vorgetäuschte soziale Freischaltung im aktuellen Menü.
 
 ## Zuneigung und Geschenke
 
-Ziel ist sinnvoller Fortschritt über ungefähr **3–5 aktive Spielsitzungen je Figur**, nicht 13 oder mehr Pflichtbesuche an unterschiedlichen Kalendertagen. Die durchschnittliche aktive Sitzungsdauer und daraus abgeleitete Werte werden in T03 konkretisiert und in T05 anhand des gesamten Ablaufs geprüft. Neustart/Reload zählt nicht als zusätzliche Sitzung.
+Ziel ist sinnvoller Fortschritt über ungefähr **3–5 aktive Spielsitzungen je Figur**, nicht 13 oder mehr Pflichtbesuche an unterschiedlichen Kalendertagen. Die erste T03-Balance rechnet mit etwa 20 Minuten aktiv laufendem Spiel pro Sitzung; das tatsächliche Spielgefühl und die Inhalte werden mit T04/T05 geprüft. Neustart/Reload zählt nicht als zusätzliche Sitzung.
 
 Die früher vorgeschlagenen Schwellen 20/60/120/200/300 und zwei Gespräche plus drei Berührungen täglich sind **nicht beschlossen und nicht zu übernehmen**. Vor Umsetzung Werte, Wiederholungsregeln und begrenzte Geschenkquelle gemeinsam dokumentieren; keine versteckte Pflicht zum täglichen Login. Nach ausgeschöpfter Punktebelohnung bleiben Dialog/Animation verfügbar und zeigen transparent, dass aktuell keine weiteren Punkte entstehen. Keine Zuneigungsverluste durch Abwesenheit.
 
-Genau ein Gegenstand `Geschenk`, gemeinsamer Bestand, bewusst ausgewählte Empfängerin. Neben Start- und Bossgeschenken soll eine begrenzte Quelle durch reguläres aktives Spielen verfügbar werden. Kandidat: gespeicherter Fortschrittszähler für tatsächlich gespielte Wellen mit begrenzter Ausgabe; Intervall und Obergrenze in T03 festlegen. Keine Belohnung durch interne Farmnachweise, automatisches Reload oder unbegrenzte Offline-Nachberechnung. Gespräche/Berührungen ermöglichen Fortschritt ohne Geschenke.
+Genau ein Gegenstand `Geschenk`, gemeinsamer Bestand, bewusst ausgewählte Empfängerin. Neben Start- und Bossgeschenken soll eine begrenzte Quelle durch reguläres aktives Spielen verfügbar werden. T03 verwendet zehn tatsächlich gewonnene normale Wellen pro Geschenk, höchstens zwei Geschenke je Aktivitätsabschnitt; live gespieltes Farmen zählt mit, Bosswiederholungen nicht. Keine Belohnung durch interne Farmnachweise, automatisches Reload oder unbegrenzte Offline-Nachberechnung. Gespräche/Berührungen ermöglichen Fortschritt ohne Geschenke.
+
+### Erste Balance und Speichervertrag (T03)
+
+| Regel | Wert / Verhalten |
+| --- | --- |
+| Herzen | Ab 10 / 35 / 70 / 110 / 160 Punkten; je Figur separat, aus Punkten abgeleitet |
+| Belohnungsabschnitt | 20 Minuten tatsächlich laufende Simulation ab gebauter Taverne; gespeichert als 48.000 Schritte à 25 ms |
+| Sprechen | Zweimal je Figur/Abschnitt, je +8 Punkte |
+| Berühren | Dreimal je Figur/Abschnitt, je +4 Punkte |
+| Schenken | Maximal zweimal je Figur/Abschnitt, je ein gemeinsames Geschenk für +12 Punkte |
+| Regelmäßige Geschenke | Je zehn normale gewonnene Live-Wellen ein Geschenk, maximal zwei je Abschnitt; Wiederholungsversuche anhand gespeicherter Versuch-ID dedupliziert |
+| Vorrat | Maximal 20 gemeinsame Geschenke; bei vollem Vorrat pausiert regulärer Erwerb. Noch offene Meilensteingeschenke werden aufgeschoben, nicht gelöscht |
+| Meilensteine | Je eins für den ersten Tavernenbau und echte Boss-15-/Boss-25-Siege; nachträgliche Ansprüche alter Saves genau einmal, kein zusätzliches Gold |
+
+Mit 2 Gesprächen + 3 Berührungen + 1 Geschenk entstehen **40 Punkte pro Figur/Abschnitt**, also fünf Herzen nach vier Abschnitten. Zwei Figuren können aus zwei regulären Geschenken je Abschnitt parallel vorankommen. Ohne Geschenke sind sechs Abschnitte nötig. Dies ist ein rechnerischer Ausgangspunkt, keine bereits visuell oder im vollständigen Spielablauf abgenommene Balance. Belohnungen können innerhalb des Abschnitts frei verteilt werden; neue Kalenderdaten, Reload und erneutes Öffnen erzeugen keinen neuen Abschnitt. Eine längere Sitzung kann mehrere Abschnitte umfassen.
+
+Manuelle Pause, Lernpause, geschlossener/verborgener Tab und Offline-Nachberechnung füllen keine Budgets auf. Die vorhandene Session unterbindet die Simulation in diesen Zuständen. Der Abschnitt zählt laufendes Spiel inklusive automatischem Live-Farmen, keine nachgewiesenen Maus-/Touch-Aktivitäten. Es gibt keine Uhrzeitabhängigkeit, keinen Verfall und keinen Login-Zwang. Reguläre Wellenfortschritte beginnen pro Abschnitt neu; alte Überschüsse werden nicht nachträglich in zusätzliche Geschenke umgerechnet.
+
+Snapshot **24** ergänzt `social` mit Punkten, Geschenkbestand, permanenten Meilensteinansprüchen, Aktivitätszähler, Aktionsbudgets und letzter vergüteter Wellenversuch-ID. Migration 23 → 24 erhält vorhandene Gold-/Boss-/Gebäude-/Figuren-/Offline-Daten. Farmnachweise verwenden ausdrücklich `socialRewards: false`; Zuneigung verändert weder Kampfwerte noch Verteidigungsfingerabdruck.
+
+Für T04: `companionOffer()` liefert den aktuellen Annahme-/Punkte-/Sperrstatus, `interactCompanion()` führt die Aktion innerhalb von `BattleSession.command()` aus. Geschenkverbrauch, Punkte und Budget sind **eine Transaktion**. Erst nach erfolgreicher Speicherung belohnte Reaktion zeigen. Bei ausgeschöpftem Gesprächs-/Berührungsbudget ist die Reaktion weiter erlaubt (`accepted: true`, `points: 0`), benötigt aber keinen Save; der unveränderte Sessionzustand liefert dann erwartungsgemäß kein Schreib-Acknowledgement. Geschenke ohne Punktegewinn werden nicht verbraucht. Nur vorhandene Figuren dürfen interagieren; Ilyra muss tatsächlich rekrutiert sein. Wisp hat keine sozialen Werte. Freischaltungen einzelner Berührungsbereiche und sichtbare Herz-Inhalte gehören zu T04/T05; T03 enthält keine zusätzlichen Bildassets oder Menüs.
 
 Fünf Herzen brauchen fünf konkrete wahrnehmbare Freischaltungen. Mögliche Staffelung: vertrautere Begrüßung, zusätzliche Gesichtsreaktion, weitere Nähe/Hand an der Taille, kurze Umarmung, persönliche romantische Abschlussszene. Genaue Zuordnung und Inhalte vor Produktion in T05 festlegen. Anfangs Hand, Haare und Schulter; abweichende Mockup-Zonen nicht automatisch übernehmen. Gesperrte Bereiche geben keine Punkte; zurückhaltende Reaktionen passen zum aktuellen Verhältnis. Mara bleibt direkt/neckisch, Ilyra eher reserviert. Keine große Film- oder Szenenbibliothek.
 
