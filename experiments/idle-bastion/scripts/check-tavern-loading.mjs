@@ -41,6 +41,15 @@ try {
   document.querySelector('[data-do="ilyra"]').click(); await settle();
   assert.deepEqual(requests.slice(4).map(url => url.split('/').pop()), ['ilyra-atlas.webp', 'ilyra-reactions.webp']);
   console.log('PASS: overview only two small portraits; full images only for selected companion.');
+  const fill = document.querySelector('.tv-bond-fill');
+  assert.equal(fill.style.transition, 'none', 'new companion opens at saved position without replay');
+  b.social.points.ilyra = 12; ui.update();
+  assert.equal(fill.style.transition, '', 'reward uses the stylesheet transition');
+  assert.ok(Math.abs(parseFloat(fill.style.width) - 21.6) < .001, 'first heart crossed smoothly into second section');
+  b.social.points.ilyra = 160; ui.update(); assert.equal(fill.style.width, '100%');
+  assert.equal(document.querySelector('progress').value, 160);
+  console.log('PASS: bond bar snaps on companion change, animates rewards, crosses thresholds and reaches full.');
+
 
   // Regression check: a real background checkpoint must not dim available controls.
   document.querySelector('[data-do="back"]').click();

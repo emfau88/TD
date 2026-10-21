@@ -25,6 +25,8 @@ export class TavernUI {
   private newMoment?: number;
   private conversationTurn: Record<Companion, number> = { mara: 0, ilyra: 0 };
   private selected: Companion = 'mara';
+  private bondCompanion?: Companion;
+  private bondPoints = -1;
   private get content() { return COMPANIONS[this.selected]; }
   private get points() { return this.ports.session()?.battle.social.points[this.selected] ?? 0; }
   constructor(private readonly ports: Ports) {
@@ -44,7 +46,7 @@ export class TavernUI {
         <footer class="tv-overview-footer"><button type="button" data-do="wisp">Wisp · Gefährtenverwaltung ↗</button><button type="button" data-do="building">Gebäude & Ausbau ↗</button></footer>
       </section>
       <section class="tv-character" hidden>
-        <div class="tv-bond"><div><div class="tv-heart-buttons" role="group" aria-label="Maras persönliche Momente">${this.content.moments.map(moment => `<button type="button" data-moment="${moment.heart}"><span aria-hidden="true">♡</span><small>${moment.heart}</small></button>`).join('')}</div><span data-text="points"></span></div><progress max="160" value="0" aria-label="Maras Zuneigung"></progress><p class="tv-moment-hint" data-text="moment-hint"></p></div>
+        <div class="tv-bond"><div><div class="tv-heart-buttons" role="group" aria-label="Maras persönliche Momente">${this.content.moments.map(moment => `<button type="button" data-moment="${moment.heart}"><span aria-hidden="true">♡</span><small>${moment.heart}</small></button>`).join('')}</div><span data-text="points"></span></div><div class="tv-bond-track" title="Ein Abschnitt pro Herz"><progress max="160" value="0" aria-label="Maras Zuneigung"></progress><span class="tv-bond-fill" aria-hidden="true"></span><span class="tv-bond-marks" aria-hidden="true"></span></div><p class="tv-moment-hint" data-text="moment-hint"></p></div>
         <div class="tv-character-body">
           <div class="tv-stage"><div class="tv-figure"><canvas width="384" height="512" aria-label="Mara, animierte Charakteransicht"></canvas>${Object.entries(this.content.reactions).map(([key, value]) => `<button type="button" class="tv-hotspot" data-region="${key}" aria-label="${value.label} berühren"><span aria-hidden="true"></span><em>${value.label}</em></button>`).join('')}</div><span class="tv-stage-caption">Mara · Tüftlerin des Hains</span></div>
           <div class="tv-conversation"><div class="tv-story-heading" hidden><small data-text="story-step"></small><h3 data-text="story-title"></h3></div><div class="tv-dialogue"><small>MARA</small><p data-text="line">Da bist du ja. Setz dich einen Moment zu mir.</p></div><p class="tv-result" data-text="result" role="status"></p><button type="button" data-do="new-moment" class="tv-unlock" hidden></button><div class="tv-story-controls" hidden><button type="button" data-do="story-next">Weiter</button><button type="button" data-do="story-exit">Zurück zu Mara</button></div><p class="tv-touch-help" hidden>Tippe auf Hand, Haare oder Schulter. Ziehen löst keine Berührung aus.</p><div class="tv-actions"><button type="button" data-action="talk"><span>Sprechen</span><small data-text="talk"></small></button><button type="button" data-do="touch"><span>Berühren</span><small data-text="touch"></small></button><button type="button" data-action="gift"><span>Schenken</span><small data-text="gift"></small></button></div><div class="tv-gifts"><span data-text="stock"></span><details><summary>Geschenke & Zuneigung</summary><p>Geschenke sind für die hier ausgewählte Gefährtin. Du erhältst sie bei Meilensteinen und begrenzt nach gewonnenen Wellen. Gespräche und Berührungen sind auch ohne weitere Punkte möglich. Neue Belohnungen nach 20 Minuten laufender Spielzeit; Pause und Offline-Zeit zählen nicht.</p><p data-text="renewal"></p></details></div><button type="button" class="tv-combat-link" data-do="mara-combat">Mara im Kampf verwalten ↗</button></div>
@@ -93,6 +95,7 @@ export class TavernUI {
       this.portraitsStarted = true;
       for (const who of ['mara', 'ilyra'] as const) void drawCompanionPortrait(this.get(`.tv-${who} canvas`), who).catch(() => { this.portraitsStarted = false; });
     }
+    this.bondCompanion = undefined;
     this.opener = document.activeElement instanceof HTMLElement ? document.activeElement : undefined;
     this.lastLives = session.battle.lives; this.lastPhase = session.battle.phase; this.lastDefeat = session.battle.progress.lastDefeat?.attemptId ?? 0;
     this.get('.tv-warning').hidden = true; this.dialog.showModal(); this.show('overview'); this.get<HTMLButtonElement>('[data-do="close"]').focus();
@@ -155,7 +158,17 @@ export class TavernUI {
     this.text('mara-greeting', COMPANIONS.mara.stage(b.social.points.mara).greeting);
     const next = SOCIAL.heartThresholds.find(value => value > points);
     this.text('points', `${this.content.stage(points).name} · ${points} / ${next ?? 160}`);
-    const progress = this.get<HTMLProgressElement>('progress'); progress.max = next ?? 160; progress.value = points;
+    const progress = this.get<HTMLProgressElement>('progress'); progress.max = 160; progress.value = points;
+    progress.setAttribute('aria-valuetext', `${points} Zuneigung · ${count} von 5 Herzen`);
+    if (this.bondCompanion !== this.selected || this.bondPoints !== points) {
+      // Five equal visual sections; interpolate within each actual heart threshold.
+      const lower = count ? SOCIAL.heartThresholds[count - 1]! : 0;
+      const section = count >= 5 ? 5 : count + (points - lower) / (SOCIAL.heartThresholds[count]! - lower);
+      const fill = this.get('.tv-bond-fill');
+      fill.style.transition = this.bondCompanion === this.selected ? '' : 'none';
+      fill.style.width = `${Math.max(0, Math.min(100, section * 20))}%`;
+      this.bondCompanion = this.selected; this.bondPoints = points;
+    }
     this.text('stock', `Geschenke: ${b.social.gifts} · Empfängerin: ${this.content.name}`);
     this.text('renewal', `Nächster Abschnitt in ${Math.ceil((SOCIAL.windowTicks - b.social.window.ticks) / 2400)} Min. laufender Spielzeit.`);
     this.text('ilyra-lock', b.ilyra ? COMPANIONS.ilyra.stage(b.social.points.ilyra).greeting : b.secondBossVictories ? b.settlement.tavernLevel === 2 ? 'Bereit für deine Einladung. Rekrutiere sie in der Gefährtenverwaltung.' : 'Boss 25 besiegt. Baue die Taverne auf Stufe II aus.' : 'Nach Boss 25 und dem Ausbau auf Taverne II rekrutierbar.');

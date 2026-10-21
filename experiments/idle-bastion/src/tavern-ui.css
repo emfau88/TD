@@ -39,9 +39,11 @@
 #tavern-dialog .tv-bond { padding:10px 22px; border-bottom:1px solid #66553b; }
 #tavern-dialog .tv-bond>div { display:flex; align-items:center; gap:16px; }
 #tavern-dialog [data-text="points"] { font-size:12px; color:#d0c4a9; }
-#tavern-dialog progress { display:block; height:5px; width:100%; margin-top:5px; border:0; border-radius:4px; background:#31403b; accent-color:#d5ac6b; }
-#tavern-dialog progress::-webkit-progress-bar { background:#31403b; border-radius:4px; }
-#tavern-dialog progress::-webkit-progress-value { background:linear-gradient(90deg,#9f6d50,#e1be7a); border-radius:4px; }
+#tavern-dialog .tv-bond-track { position:relative; height:9px; margin:0 20px 7px; border:1px solid #80546a; border-radius:5px; overflow:hidden; background:#30232d; box-shadow:inset 0 1px 3px #0008; }
+#tavern-dialog .tv-bond-track progress { position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+#tavern-dialog .tv-bond-fill { display:block; height:100%; width:0; border-radius:4px; background:linear-gradient(90deg,#b94879,#e986b0); box-shadow:inset 0 1px 0 #ffd7e577; transition:width 700ms cubic-bezier(.22,.61,.36,1); }
+#tavern-dialog .tv-bond-marks { position:absolute; inset:0; background:repeating-linear-gradient(90deg,transparent 0,transparent calc(20% - 1px),#f6c7db66 calc(20% - 1px),#f6c7db66 20%); pointer-events:none; }
+@media (prefers-reduced-motion:reduce) { #tavern-dialog .tv-bond-fill { transition:none!important; } }
 #tavern-dialog .tv-character-body { display:grid; grid-template-columns:1.05fr 1fr; min-height:470px; }
 #tavern-dialog .tv-stage { position:relative; display:flex; align-items:center; justify-content:center; min-width:0; min-height:0; background:linear-gradient(#181b1c19,#111e22b3),url('../assets/runtime/room.webp') 40% center/cover; overflow:hidden; }
 #tavern-dialog .tv-figure { position:relative; height:460px; max-height:100%; width:100%; display:flex; justify-content:center; }
