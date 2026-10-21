@@ -11,21 +11,29 @@ test('four tower roles use launch/actual hit; splash and unrelated events do not
     {type:'fire',shot:shot(3)},{type:'hit',shot:shot(3)},{type:'hit',shot:shot(3)},
     {type:'fire',shot:shot(4)},{type:'hit',shot:shot(4)},
     {type:'escape'},{type:'kill'},{type:'wave'},{type:'workshop'},
-  ]),['shoot1','hit1','iceLaunch','iceHit','stone','shoot2','hit2','alarm','craft']);
+  ]),['shoot1','hit1','iceLaunch','stone','shoot2','hit2','alarm','craft']);
 });
 test('combat bursts are bounded and core warning has its own cooldown',()=>{
   const limiter=new CueLimiter();
   assert.equal(limiter.allow('shoot1',0,0),true);
   assert.equal(limiter.allow('shoot1',20,1),false);
-  assert.equal(limiter.allow('iceHit',30,3),false);
+  assert.equal(limiter.allow('iceLaunch',30,3),false);
   assert.equal(limiter.allow('alarm',30,3),true);
   assert.equal(limiter.allow('alarm',100,3),false);
   assert.equal(limiter.allow('alarm',1230,3),true);
   limiter.reset();
   for(let i=0;i<8;i++) assert.equal(limiter.allow(i%2?'hit1':'shoot1',i*110,0),true);
-  assert.equal(limiter.allow('iceHit',890,0),false);
-  assert.equal(limiter.allow('iceHit',1100,0),true);
+  assert.equal(limiter.allow('iceLaunch',890,0),false);
+  assert.equal(limiter.allow('iceLaunch',1100,0),true);
 });
+test('frost buildup cannot overlap itself across multiple towers',()=>{
+  const limiter=new CueLimiter();
+  assert.equal(limiter.allow('iceLaunch',0,0),true);
+  assert.equal(limiter.allow('iceLaunch',1199,0),false);
+  assert.equal(limiter.allow('iceLaunch',1299,0),false);
+  assert.equal(limiter.allow('iceLaunch',1300,0),true);
+});
+
 test('saved effects and gift stock are silent; only new spells/received gifts make cues',()=>{
   const b=new IdleBattle(), observer=new AudioObserver();
   b.mara.cooldownRemaining=20;b.mara.effectRemaining=5;b.social.gifts=3;

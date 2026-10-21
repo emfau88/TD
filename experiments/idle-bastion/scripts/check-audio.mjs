@@ -31,7 +31,7 @@ try {
   audio=new GameAudio();audio.setState(true,true);
   assert.equal(contexts,0);assert.equal(requests,0);assert.equal(plays,0);
   document.dispatchEvent(new dom.window.Event('pointerdown'));await settle();
-  assert.equal(contexts,1);assert.equal(requests,18);assert.equal(plays,1);
+  assert.equal(contexts,1);assert.equal(requests,17);assert.equal(plays,1);
   const field=document.querySelector('[data-spire-music=field]');assert.equal(field.paused,false);
   audio.setTavern(true);await settle();
   const tavern=document.querySelector('[data-spire-music=tavern]');assert.equal(tavern.paused,false);

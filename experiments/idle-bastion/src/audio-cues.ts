@@ -17,8 +17,7 @@ export const CUES = {
   shoot2: { file:'bow-2-shoot.wav', gain:.23, gap:200, combat:true },
   hit1: { file:'bow-1-hit.wav', gain:.12, gap:200, combat:true },
   hit2: { file:'bow-2-hit.wav', gain:.18, gap:250, combat:true },
-  iceLaunch: { file:'ice-launch.wav', gain:.25, gap:350, combat:true },
-  iceHit: { file:'ice-hit.wav', gain:.2, gap:350, combat:true },
+  iceLaunch: { file:'ice-buildup.wav', gain:.2, gap:1300, combat:true },
   stone: { file:'stone-hit.wav', gain:.22, gap:350, combat:true },
 } as const;
 export type Cue = keyof typeof CUES;
@@ -44,7 +43,8 @@ export function battleCues(events: readonly BattleEvent[]): Cue[] {
       else if (e.shot.kind === 2) cues.push('iceLaunch');
     } else if (e.type === 'hit' && e.shot && !hits.has(e.shot.uid)) {
       hits.add(e.shot.uid); // A stone's area damage makes many hit events, but one impact sound.
-      cues.push(({1:'hit1',2:'iceHit',3:'stone',4:'hit2'} as const)[e.shot.kind]);
+      // Frost uses one restrained launch sound, without a second impact layer.
+      if (e.shot.kind !== 2) cues.push(({1:'hit1',3:'stone',4:'hit2'} as const)[e.shot.kind]);
     }
   }
   return cues;

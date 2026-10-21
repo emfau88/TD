@@ -1,6 +1,6 @@
 # Erste Audiostufe · 21.10.2026
 
-30 ausgewählte Spieldateien, keine neue Spielmechanik. Quellen, Urheber, Lizenzen und Bearbeitungen stehen vollständig auf [Audioquellen](../audio-credits.html), auch aus dem Spielmenü erreichbar. Weitere 24 Stimmenclips stehen ausschließlich zur Nutzerauswahl in der [Hörvergleichsseite](https://emfau88.github.io/TD/voice-check.html).
+29 ausgewählte Spieldateien, keine neue Spielmechanik. Quellen, Urheber, Lizenzen und Bearbeitungen stehen vollständig auf [Audioquellen](../audio-credits.html), auch aus dem Spielmenü erreichbar. Weitere 24 Stimmenclips stehen ausschließlich zur Nutzerauswahl in der [Hörvergleichsseite](https://emfau88.github.io/TD/voice-check.html).
 
 | Situation | Originaldatei / Auswahl | Umsetzung |
 | --- | --- | --- |
@@ -8,7 +8,7 @@
 | Offene Taverne | inn_music.mp3 | Überblendung, leisere Kampfgeräusche |
 | Waldwächter | Bow Arrow Draw / Shoot / Hit 01 | Kurzer Spannakzent vor Folgeschüssen, Abschuss und tatsächlicher Treffer |
 | Scharfschütze | Bow Arrow Draw / Shoot / Hit 02 | Eigene Variante derselben Folge |
-| Frostturm | Ice Shard Projectile Launch 01 / Impact 01 | Abschuss und Einschlag |
+| Frostturm | Single_Fantasy SFX Pack Vol 1_Ice Spell_Buildup.wav | Unverändert, 1,2 s; leiser Abschuss (Gain 0,2), global mindestens 1,3 s Abstand, kein Einschlagton |
 | Steinschleuder | break_stone.wav | Ein Klang je Einschlag, nicht je Opfer des Flächenschadens |
 | Gebäude auswählen; Siedlungsbau/-ausbau, Forschung | craft.ogg | Dezentes Handwerksgeräusch |
 | Turm tatsächlich gebaut, einschließlich Startturm | 707864__lizelle__hammer-on-wood.wav | Auf 1,17 s gekürzt: Ausschnitt 0,23–1,75 s, Tempo ×1,3 ohne Tonhöhenänderung, kurze Schnittblenden |
@@ -39,4 +39,6 @@ Nächste sinnvolle Ergänzungen nach Hörfeedback: ein seltener Siegshinweis, ei
 Technische Pegelmessung und reale Browserwiedergabe wurden geprüft. Klangcharakter, musikalische Loopgrenzen und endgültige Mischung benötigen die Hörbewertung des Nutzers; keine subjektive Hörabnahme des Agenten behauptet. [Kompakter Prüfbericht](../../../artifacts/idle-bastion/acceptance/audio/REPORT.md).
 
 
-Die isolierte `tavern-check.html` lädt nach der ersten Geste nur Klick, Handwerk und Geschenk vor (drei statt 18 Kurzklänge). Feldmusik wird dort nicht gestartet. Tavernenmusik und Maras einzelne nächste Stimme bleiben bedarfsabhängig. Das Hauptspiel behält seine Kampfklänge und bisherigen Lautstärke-/Überlappungsgrenzen.
+Die isolierte `tavern-check.html` lädt nach der ersten Geste nur Klick, Handwerk und Geschenk vor (drei statt 17 Kurzklänge). Feldmusik wird dort nicht gestartet. Tavernenmusik und Maras einzelne nächste Stimme bleiben bedarfsabhängig. Das Hauptspiel behält seine Kampfklänge und bisherigen Lautstärke-/Überlappungsgrenzen.
+
+Frostkorrektur: ausdrücklich gewählte Ice-Spell-Buildup-Datei bytegleich übernommen, beide bisherigen Frostdateien entfernt. Sieben gezielte Audio-Tests, Audio-Lifecycle und Produktionsbuild bestanden; keine subjektive Hörabnahme behauptet. Die synthetischen Hörproben bleiben außerhalb des Spiels.
