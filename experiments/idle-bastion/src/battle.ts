@@ -34,7 +34,7 @@ export const BASE = Object.freeze({
 });
 
 /** Prices are ordinary gold purchases; B07 measures the whole opening economy. */
-export const SETTLEMENT = Object.freeze({ workshopCost: 200, researchCost: 60, warehouseCost: 650, tavernCost: 1200, clearingCost: 900, workshopUpgradeCost: 1200, slowFactor: 0.55, slowSeconds: 2 });
+export const SETTLEMENT = Object.freeze({ workshopCost: 200, researchCost: 60, warehouseCost: 650, tavernCost: 0, tavernUpgradeCost: 1200, clearingCost: 900, workshopUpgradeCost: 1200, slowFactor: 0.55, slowSeconds: 2 });
 export const FROST = Object.freeze({ id: 2 as const, name: 'Frostkristall', cost: 110,
   damage: 7, range: 126, cooldown: 0.9, color: 0x8ce1ef });
 export const CANNON = Object.freeze({ id: 3 as const, name: 'Steinschleuder', cost: 135, damage: 28, range: 150, cooldown: 1.55, color: 0xe4b976 });
@@ -69,7 +69,7 @@ export interface Shot {
   speed: number; damage: number; level: number; kind: TowerId;
 }
 export interface BattleEvent {
-  type: 'build' | 'upgrade' | 'sell' | 'fire' | 'hit' | 'kill' | 'escape' | 'wave' | 'clear' | 'defeat' | 'workshop' | 'research' | 'wisp' | 'pads' | 'warehouse' | 'tavern' | 'boss-victory' | 'boss-interrupt' | 'clearing' | 'workshop-upgrade' | 'map-update';
+  type: 'build' | 'upgrade' | 'sell' | 'fire' | 'hit' | 'kill' | 'escape' | 'wave' | 'clear' | 'defeat' | 'workshop' | 'research' | 'wisp' | 'pads' | 'warehouse' | 'tavern' | 'tavern-upgrade' | 'boss-victory' | 'boss-interrupt' | 'clearing' | 'workshop-upgrade' | 'map-update';
   tower?: Tower; enemy?: Enemy; shot?: Shot; x?: number; y?: number;
   amount?: number; wave?: number;
 }
@@ -84,7 +84,7 @@ export interface BattleSnapshot {
   dismissedDefeatAttempt: number;
   introduction: Introduction;
   ilyra: IlyraState | null;
-  schemaVersion: 22; rulesVersion: 10; layoutVersion: 3 | 4 | 5;
+  schemaVersion: 23; rulesVersion: 10; layoutVersion: 3 | 4 | 5;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32' | 'core40';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
@@ -99,7 +99,7 @@ export interface BattleSnapshot {
   enemies: (Omit<Enemy, 'def'> & { defId: EnemyDef['id'] })[];
   shots: Shot[];
   mara: MaraState;
-  settlement: { workshopBuilt: boolean; frostResearched: boolean; builtAt: number | null; warehouseBuilt: boolean; warehouseBuiltAt: number | null; tavernBuilt: boolean; tavernBuiltAt: number | null; tavernSeen: boolean; workshopUpgraded: boolean; upgradedAt: number | null };
+  settlement: { workshopBuilt: boolean; frostResearched: boolean; builtAt: number | null; warehouseBuilt: boolean; warehouseBuiltAt: number | null; tavernBuilt: boolean; tavernLevel: 0 | 1 | 2; tavernBuiltAt: number | null; tavernSeen: boolean; workshopUpgraded: boolean; upgradedAt: number | null };
   tutorial: { hidden: boolean; seen: number; builtTower: boolean; upgradedTower: boolean; frostSeen: boolean };
 }
 
@@ -165,7 +165,7 @@ export class IdleBattle {
   enemies: Enemy[] = [];
   shots: Shot[] = [];
   events: BattleEvent[] = [];
-  settlement = { workshopBuilt: false, frostResearched: false, builtAt: null as number | null, warehouseBuilt: false, warehouseBuiltAt: null as number | null, tavernBuilt: false, tavernBuiltAt: null as number | null, tavernSeen: false, workshopUpgraded: false, upgradedAt: null as number | null };
+  settlement = { workshopBuilt: false, frostResearched: false, builtAt: null as number | null, warehouseBuilt: false, warehouseBuiltAt: null as number | null, tavernBuilt: false, tavernLevel: 0 as 0 | 1 | 2, tavernBuiltAt: null as number | null, tavernSeen: false, workshopUpgraded: false, upgradedAt: null as number | null };
   tutorial = { hidden: false, seen: 0, builtTower: false, upgradedTower: false, frostSeen: false };
   intermissionRemaining: number = BASE.firstWaveDelay;
   private uid = 1;
@@ -340,10 +340,10 @@ export class IdleBattle {
   /** Only the shipped closed/open layouts cross the save boundary. */
   snapshot(): BattleSnapshot {
     if (JSON.stringify(this.layout) !== JSON.stringify(battleLayout(this.clearing.unlocked, this.plots, this.layout.version as 3 | 4 | 5))) {
-      throw new Error('Unsupported battle layout for snapshot version 22.');
+      throw new Error('Unsupported battle layout for snapshot version 23.');
     }
     return {
-      schemaVersion: 22, ilyra: this.ilyra ? cloneIlyra(this.ilyra) : null, discovery: this.discovery, dismissedDefeatAttempt: this.dismissedDefeatAttempt, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4 | 5, layoutId: this.layout.version === 5 ? 'core40' : this.clearing.unlocked ? 'east32' : 'start28',
+      schemaVersion: 23, ilyra: this.ilyra ? cloneIlyra(this.ilyra) : null, discovery: this.discovery, dismissedDefeatAttempt: this.dismissedDefeatAttempt, introduction: { ...this.introduction }, plots: structuredClone(this.plots), wispArrival: { ...this.wispArrival }, rulesVersion: BATTLE_RULES_VERSION, layoutVersion: this.layout.version as 3 | 4 | 5, layoutId: this.layout.version === 5 ? 'core40' : this.clearing.unlocked ? 'east32' : 'start28',
       clearing: { ...this.clearing },
       bossVictories: this.bossVictories, secondBossVictories: this.secondBossVictories, bossChallengeWave: this.bossChallengeWave, bossChallengeRequested: this.bossChallengeRequested, bossCharm: { ...this.bossCharm },
       progress: cloneProgress(this.progress), rewardRemainderUnits: this.rewardRemainderUnits, waveRecipeVersion: this.waveRecipeVersion,
@@ -496,7 +496,7 @@ export class IdleBattle {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 20, model.layout.version as 3 | 4 | 5)) return undefined;
       value = { ...value, schemaVersion: 21, ilyra: null };
     }
-    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22)) {
+    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23)) {
       if (![3, 4, 5].includes(value.layoutVersion as number) || !validPlotPositions(value.plots, value.layoutVersion as number)) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion as 3 | 4 | 5));
     }
@@ -504,6 +504,12 @@ export class IdleBattle {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 21, model.layout.version as 3 | 4 | 5)) return undefined;
       // Keep an already flying legacy volley on its original clock: no lost or repeated hit.
       value = { ...value, schemaVersion: 22 };
+    }
+    if (isRecord(value) && value.schemaVersion === 22) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 22, model.layout.version as 3 | 4 | 5)) return undefined;
+      // Legacy owners already paid 1,200 gold after boss 25. Never charge them twice.
+      value = { ...value, schemaVersion: 23, settlement: { ...value.settlement,
+        tavernLevel: value.settlement.tavernBuilt ? 2 : 0 } };
     }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5)) return undefined;
     model.ilyra = value.ilyra ? cloneIlyra(value.ilyra) : null;
@@ -619,7 +625,11 @@ export class IdleBattle {
     return true;
   }
 
-  get tavernUnlocked(): boolean { return this.secondBossVictories > 0; }
+  get tavernUnlocked(): boolean { return this.highestCleared >= 12; }
+  // One building, no demolition: persisted ownership also records kit consumption.
+  get tavernKitAvailable(): boolean { return this.tavernUnlocked && !this.settlement.tavernBuilt; }
+  get tavernUpgradeUnlocked(): boolean { return this.secondBossVictories > 0; }
+  get ilyraRecruitable(): boolean { return this.settlement.tavernLevel === 2 && this.tavernUpgradeUnlocked && !this.ilyra; }
   get recommendedTavernPlot(): GridCell | undefined {
     if (this.plots.tavern) return this.plots.tavern;
     if (this.layout.version === 5 && this.canPositionBuilding('tavern', CORE_TAVERN_PLOT)) return CORE_TAVERN_PLOT;
@@ -630,19 +640,26 @@ export class IdleBattle {
     return undefined;
   }
   buildTavern(cell: GridCell): boolean {
-    if (this.preparing || this.phase === 'defeat' || !this.tavernUnlocked
-      || this.settlement.tavernBuilt || this.gold < SETTLEMENT.tavernCost) return false;
-    // Placement and purchase form one command; failed placement costs nothing.
+    if (this.preparing || this.phase === 'defeat' || !this.tavernKitAvailable) return false;
+    // Placement and kit consumption form one saved command.
     if (!this.applyBuildingPosition('tavern', cell)) return false;
-    this.gold -= SETTLEMENT.tavernCost;
-    this.settlement.tavernBuilt = true; this.settlement.tavernBuiltAt = this.elapsed;
+    this.settlement.tavernBuilt = true; this.settlement.tavernLevel = 1; this.settlement.tavernBuiltAt = this.elapsed;
     this.settlement.tavernSeen = true;
     this.events.push({ type: 'tavern', amount: SETTLEMENT.tavernCost });
     return true;
   }
 
+  upgradeTavern(): boolean {
+    if (this.preparing || this.phase === 'defeat' || !this.tavernUpgradeUnlocked
+      || this.settlement.tavernLevel !== 1 || this.gold < SETTLEMENT.tavernUpgradeCost) return false;
+    this.gold -= SETTLEMENT.tavernUpgradeCost;
+    this.settlement.tavernLevel = 2;
+    this.events.push({ type: 'tavern-upgrade', amount: SETTLEMENT.tavernUpgradeCost });
+    return true;
+  }
+
   recruitIlyra(): boolean {
-    if (!this.settlement.tavernBuilt || this.ilyra || this.guiding || this.discoveryActive || this.phase === 'defeat') return false;
+    if (!this.ilyraRecruitable || this.guiding || this.discoveryActive || this.phase === 'defeat') return false;
     const state = createIlyra(this.layout), entrance = ilyraCell(state), blocked = this.movementBlocked();
     const candidates: GridCell[] = [];
     for (let y = entrance.y - 3; y <= entrance.y + 3; y++) for (let x = entrance.x - 3; x <= entrance.x + 3; x++) candidates.push({ x, y });
@@ -1208,10 +1225,10 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
-  if (!isRecord(value) || value.schemaVersion !== (legacy || 22) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
+  if (!isRecord(value) || value.schemaVersion !== (legacy || 23) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
     || value.layoutVersion !== layoutVersion || value.layoutId !== (layoutVersion === 5 ? 'core40' : layout.bounds.columns === 32 ? 'east32' : 'start28') || legacy > 0 && legacy < 20 && layoutVersion === 5) return false;
   if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10]).includes(value.waveRecipeVersion as number))) return false;
   if ((!legacy || legacy >= 9) && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
@@ -1276,10 +1293,14 @@ function validSnapshot(
   }
   if (!legacy || legacy >= 19) {
     const settlement = value.settlement as BattleSnapshot['settlement'];
+    const eligible = legacy ? (value.secondBossVictories as number) > 0 : (value.highestCleared as number) >= 12;
+    if (!legacy && (!integerIn(settlement.tavernLevel, 0, 2)
+      || settlement.tavernBuilt !== (settlement.tavernLevel > 0)
+      || settlement.tavernLevel === 2 && !(value.secondBossVictories as number))) return false;
     if (typeof settlement.tavernBuilt !== 'boolean' || typeof settlement.tavernSeen !== 'boolean'
-      || settlement.tavernSeen && !(value.secondBossVictories as number)
+      || settlement.tavernSeen && !eligible
       || settlement.tavernBuilt !== Boolean((value.plots as PlotPositions).tavern)
-      || (settlement.tavernBuilt ? !(value.secondBossVictories as number)
+      || (settlement.tavernBuilt ? !eligible
         || !numberIn(settlement.tavernBuiltAt, 0, value.elapsed as number) : settlement.tavernBuiltAt !== null)) return false;
   } else if (modern && (value.plots as PlotPositions).tavern !== undefined) return false;
   const levelLimit = (modern || legacy === 10) && (value.settlement as BattleSnapshot['settlement']).workshopUpgraded ? 20 : !original && (value.settlement as BattleSnapshot['settlement']).frostResearched ? 6 : 3;
@@ -1361,7 +1382,8 @@ function validSnapshot(
     ...cellCenter(layout, layout.towerPads.find(pad => pad.id === tower.padId)!.cell) })), layout, [...getForestBlockedCells(layout), ...(modern ? value.towers.map(t => layout.towerPads.find(p => p.id === t.padId)!.cell) : [])])) return false;
   if ((!legacy || legacy >= 21) && value.ilyra !== null) {
     const blocked=[...getForestBlockedCells(layout),...value.towers.map(t=>layout.towerPads.find(p=>p.id===t.padId)!.cell)];
-    if (!(value.settlement as BattleSnapshot['settlement']).tavernBuilt || !validIlyra(value.ilyra,layout,blocked,ilyraDamage)) return false;
+    if (!(value.settlement as BattleSnapshot['settlement']).tavernBuilt
+      || !legacy && (value.settlement as BattleSnapshot['settlement']).tavernLevel !== 2 || !validIlyra(value.ilyra,layout,blocked,ilyraDamage)) return false;
     if (legacy === 21 && isRecord(value.ilyra) && isRecord(value.ilyra.volley) && value.ilyra.volley.pace !== undefined) return false;
   }
   if (!legacy || legacy >= 8) {

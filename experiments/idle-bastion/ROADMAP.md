@@ -2,7 +2,7 @@
 
 Stand: 21.10.2026 · Branch `codex/idle-bastion-vertical-slice` · [Spiel testen](https://emfau88.github.io/TD/idle-bastion/)
 
-**Aktuell:** T01 einschließlich Haarkorrektur (`fcc7bc1`) wurde am 21.10.2026 vom Nutzer ausdrücklich visuell freigegeben („freigabe erteilt“). T01 ist abgeschlossen. [Nachweis](../../artifacts/idle-bastion/acceptance/t01/REPORT.md). **Nächster geplanter Bulk: T02 — Tavernenstufen und Bestandsschutz; eigener Startauftrag steht aus.** T02–T07, F03–F05 und übrige Akt-II-Pakete nicht automatisch starten. B14/G2 bleiben offen.
+**Aktuell:** T01 visuell abgenommen. T02 umgesetzt: früher kostenloser Tavernenbau, Stufe II nach Boss 25 und Bestandsschutz ([Prüfbericht](../../artifacts/idle-bastion/acceptance/t02/REPORT.md)). T03 wurde anschließend mit „danach weiter mit t03“ ausdrücklich beauftragt und ist der nächste aktive Bulk. T04–T07, F03–F05 und übrige Akt-II-Pakete nicht automatisch starten. B14/G2 bleiben offen.
 
 Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvolle Bearbeitungsreihenfolge; vorhandene Bulk-IDs bleiben erhalten. `[x]` = umgesetzt und geprüft, `[ ]` = offen. Bisherige Arbeit wird nicht gelöscht: [vollständiges Archiv mit alten Checklisten, Entscheidungen und Abnahmen](ROADMAP_ARCHIVE_2026-10-20.md). Fachregeln: [Auftrag](README.md), [Technik](docs/TECHNIK.md), [Grafik](docs/ART_DIRECTION.md), [Akt II](docs/AKT_II.md), [Tavernenplan](docs/TAVERNE_INTERAKTION.md), [Abnahmeplan](docs/ABNAHME.md).
 
@@ -41,13 +41,13 @@ Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvo
   - [x] Kurz auf Desktop und normalem mobilem Hochkant prüfen: Identität, Transparenz, Bewegung, Loop, Lesbarkeit und Ladeverhalten. Vorschau erst nach Veröffentlichungsfreigabe committen/pushen und erreichbaren Link prüfen; keine erfundene Abnahme.
   - [x] **Visuelle Nutzerabnahme am 21.10.2026:** „freigabe erteilt“ zur Vorschau `fcc7bc1`. T01 abgeschlossen; T02–T07 nicht automatisch beginnen.
 
-- [ ] **16 · T02 — Tavernenstufen und Bestandsschutz. Geplant; nach T01-Abnahme und Startauftrag.**
-  - [ ] Nach erfolgreich abgeschlossener Welle 12 einmaligen kostenlosen Taverne-I-Bausatz anbieten; optionaler Siedlungshinweis, keine neue Pflichtpause.
-  - [ ] Ausbau auf II für 1.200 Gold erst nach tatsächlichem Boss-25-Sieg; Ilyra erst mit II und Bossnachweis bewusst kostenlos rekrutieren. Befehle, Save-Prüfung und UI gemeinsam anpassen.
-  - [ ] Bereits gebaute alte Taverne als II erhalten, ohne erneute Zahlung; alte Rekrutierung, Positionen, Gold und Offline-Ansprüche bewahren. Veteranen ohne Taverne erhalten bei erfülltem Fortschritt den Bausatzanspruch.
-  - [ ] Gezielt neue/alte Saves mit und ohne Taverne/Ilyra, Reload und doppelte Bau-/Ausbauaktionen prüfen; bestehende Kampfeinführung erhalten.
+- [x] **16 · T02 — Tavernenstufen und Bestandsschutz. Umgesetzt am 21.10.2026; ausdrücklich mit „ja go“ beauftragt.**
+  - [x] Nach erfolgreich abgeschlossener Welle 12 einmaligen kostenlosen Taverne-I-Bausatz anbieten; optionaler Siedlungshinweis, keine neue Pflichtpause.
+  - [x] Ausbau auf II für 1.200 Gold erst nach tatsächlichem Boss-25-Sieg; Ilyra erst mit II und Bossnachweis bewusst kostenlos rekrutieren. Befehle, Save-Prüfung und UI gemeinsam anpassen.
+  - [x] Bereits gebaute alte Taverne als II erhalten, ohne erneute Zahlung; alte Rekrutierung, Positionen, Gold und Offline-Ansprüche bewahren. Veteranen ohne Taverne erhalten bei erfülltem Fortschritt den Bausatzanspruch.
+  - [x] Gezielt neue/alte Saves mit und ohne Taverne/Ilyra, Reload und doppelte Bau-/Ausbauaktionen prüfen; bestehende Kampfeinführung erhalten.
 
-- [ ] **17 · T03 — Zuneigung, Geschenke und Balancebasis. Geplant; benötigt T02.**
+- [ ] **17 · T03 — Zuneigung, Geschenke und Balancebasis. Beauftragt am 21.10.2026; in Arbeit.**
   - [ ] Punkte je Figur, daraus abgeleitete fünf Herzstufen, gemeinsamer Geschenkbestand, Einmalansprüche und begrenzte Interaktionsbelohnungen im bestehenden transaktionalen Save speichern.
   - [ ] Startgeschenk und Boss-15-/Boss-25-Geschenke einmalig vergeben, belegte alte Ansprüche berücksichtigen; kein zusätzliches Bossgold, keine Farm-/Offline-Duplikate. Verbrauch und Zuneigung gemeinsam speichern/zurückrollen.
   - [ ] Ziel von ungefähr 3–5 aktiven Spielsitzungen je Figur konkretisieren: Sitzungsdauer, Herzschwellen, Interaktionsgrenzen und begrenzte regulär erspielbare Geschenkquelle festlegen. Frühere Tageslimits/Zahlen sind verworfen, nicht implementieren.
@@ -103,4 +103,4 @@ Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvo
 
 - [ ] **35 · Spätere Ideen — bewusst geparkt.** Runa als alternative Kontrollgefährtin (gegen Frost abgrenzen, Auswahl/Wechsel statt Figurenpflicht); Schnellfeuer/Sonnenobelisk erst mit eigener Rolle und vom Kern unterscheidbarer Grafik. Späherposten für optionale Herausforderungen, Runenatelier nur bei Bedarf jenseits der Werkstatt. Kern/HQ mit sinnvoller Interaktion. Wachstube/Kaserne mit verbündeten Lane-Einheiten erst als kleiner Prototyp: echte Gefechte brauchen Gegnerangriffe/Zielwahl, Blockieren, Leben/Tod, Animationen und Save-/Farmregeln. Kein bloßer Spawn als fertiges Kampfsystem. Nicht beschlossen: Ausrüstung/Heldenlevel, Gacha, zusätzliche Währungen, PvP, mehrere Biome, Prestige oder ein weiterer Akt.
 
-Pro begonnenem Paket: konkretes Ergebnis umsetzen, nur betroffene Risiken kompakt prüfen, Status/Nachweis hier aktualisieren. Save-Bestand und klassisches Spiel erhalten. Bestehende Commit-/Push-/Pages-Autorisierung gilt für zuvor beauftragte Arbeiten; T01 ist separat zur Umsetzung und Veröffentlichung beauftragt, T02–T07 bleiben ohne Startfreigabe. Kein Merge nach `main`. Unbeauftragte Punkte und Nutzerabnahmen bleiben offen.
+Pro begonnenem Paket: konkretes Ergebnis umsetzen, nur betroffene Risiken kompakt prüfen, Status/Nachweis hier aktualisieren. Save-Bestand und klassisches Spiel erhalten. Bestehende Commit-/Push-/Pages-Autorisierung gilt für zuvor beauftragte Arbeiten; T01 ist separat zur Umsetzung und Veröffentlichung beauftragt, T02 und anschließend T03 sind ausdrücklich beauftragt; T04–T07 bleiben ohne Startfreigabe. Kein Merge nach `main`. Unbeauftragte Punkte und Nutzerabnahmen bleiben offen.

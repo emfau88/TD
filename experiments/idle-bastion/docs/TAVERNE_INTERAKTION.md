@@ -2,7 +2,7 @@
 
 Planungsstand: 21.10.2026. Geprüfter Ausgangspunkt: `61b95c0` auf `codex/idle-bastion-vertical-slice`.
 
-Dieses Dokument hält Fachregeln und Abnahmekriterien fest. **Die einzige Arbeits- und Statusliste mit Checkboxen bleibt [ROADMAP.md](../ROADMAP.md), T01–T07.** Nach dem Dokumentationsauftrag wurde T01 am 21.10.2026 ausdrücklich zur Umsetzung mit kompakter Prüfung, Commit/Push und Vorschaulink beauftragt. Die visuelle Nutzerabnahme einschließlich Haarkorrektur (`fcc7bc1`) wurde am 21.10.2026 ausdrücklich erteilt; siehe Roadmap und T01-Bericht. T02–T07 benötigen weiterhin einen separaten Startauftrag; der ältere zitierte Auftrag aus einem anderen Chat begründete selbst keine Freigabe.
+Dieses Dokument hält Fachregeln und Abnahmekriterien fest. **Die einzige Arbeits- und Statusliste mit Checkboxen bleibt [ROADMAP.md](../ROADMAP.md), T01–T07.** Nach dem Dokumentationsauftrag wurde T01 am 21.10.2026 ausdrücklich zur Umsetzung mit kompakter Prüfung, Commit/Push und Vorschaulink beauftragt. Die visuelle Nutzerabnahme einschließlich Haarkorrektur (`fcc7bc1`) wurde am 21.10.2026 ausdrücklich erteilt; siehe Roadmap und T01-Bericht. T02 und danach T03 wurden ausdrücklich gestartet; T04–T07 benötigen weiterhin einen separaten Startauftrag; der ältere zitierte Auftrag aus einem anderen Chat begründete selbst keine Freigabe.
 
 ## Quellen und Grenzen
 
@@ -25,6 +25,8 @@ Optionales, kompaktes System für die erwachsenen Figuren Mara und Ilyra: Gespr�
 Wisp behält seine vorhandenen Bedingungen (Frostforschung und abgeschlossene Welle 5). Der bestehende Boss-25-Goldpreis wird nicht nochmals vergeben. Ausbau behält Grundstück und Position, eine zusätzliche Gebäude-Assetserie ist keine Voraussetzung; Stufe und Nutzen müssen klar sichtbar sein.
 
 Alte gebaute Tavernen werden Stufe II, auch ohne Ilyra: keine zweite Zahlung, kein erzwungener Umzug. Bestehende Rekrutierungen bleiben erhalten. Veteranen ohne Taverne erhalten bei erfülltem Fortschritt den noch unverbrauchten Bausatzanspruch. Startgeschenk sowie belegte alte Boss-Geschenkansprüche können einmalig nachgereicht werden; dedizierte gespeicherte Ansprüche verhindern Wiederholungen. Ein Wellenrekord allein ersetzt keinen tatsächlichen Bossnachweis. Gold, Gebäude, Lernfortschritt, laufender Kampf und Offline-Ansprüche erhalten.
+
+T02 speichert die Tavernenstufe in Snapshot 23. Weil es nur eine Taverne und keinen Abriss gibt, ist `tavernBuilt` zugleich der dauerhafte Bausatzverbrauch; der noch offene Anspruch wird aus gemeisterter Welle 12 und fehlendem Gebäude abgeleitet. Stufe I zeigt zunächst die Gefährtenverwaltung; Geschenke folgen in T03, bedienbare Mara-Interaktionen in T04. Keine vorgetäuschte soziale Freischaltung im aktuellen Menü.
 
 ## Zuneigung und Geschenke
 

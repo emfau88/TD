@@ -2,7 +2,7 @@
 
 Stand: 20.10.2026. Ergänzung zum ursprünglichen Akt-I-Auftrag. B15a, F01, B17a und anschließend B15b einschließlich Tavernenübersicht aller Gefährten wurden ausdrücklich beauftragt; übrige Inhalte bleiben separat. Checklisten, Abhängigkeiten und Freigaben stehen ausschließlich in [ROADMAP.md](../ROADMAP.md). Dieser Text hält Entscheidungen und überprüfte Ausgangspunkte fest, keine zweite Fortschrittsliste.
 
-**Planergänzung vom 21.10.2026:** [Taverneninteraktionen](TAVERNE_INTERAKTION.md) beschreiben die geplante frühere Taverne I nach Welle 12, den Ausbau auf II/Ilyra nach Boss 25 und das optionale soziale System. Die bisherigen Bauangaben unten dokumentieren den bislang implementierten Stand; die neue Planung ist noch nicht umgesetzt. Checklisten/Freigaben ausschließlich in der Roadmap (T01–T07).
+**Planergänzung vom 21.10.2026:** [Taverneninteraktionen](TAVERNE_INTERAKTION.md) beschreiben die geplante frühere Taverne I nach Welle 12, den Ausbau auf II/Ilyra nach Boss 25 und das optionale soziale System. T02 setzt bereits den kostenlosen Bau nach Welle 12 und Ausbau II nach Boss 25 um; alte bezahlte Tavernen werden II. Die bisherigen Bauangaben unten sind historische B15-Entscheidungen. Das soziale System folgt separat. Checklisten/Freigaben ausschließlich in der Roadmap (T01–T07).
 
 ## Bestand statt unnötiger Neuproduktion
 

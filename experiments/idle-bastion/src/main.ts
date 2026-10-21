@@ -259,7 +259,7 @@ function syncUI(): void {
   const tower = sim.towers.find(value => value.padId === selectedPadId);
   const pad = sim.layout.towerPads.find(value => value.id === selectedPadId);
   padChoice.value = selectedPadId ?? '';
-  element('selection-title').textContent = selectedPanel === 'ilyra' ? 'Ilyra · Sternensalve' : selectedPanel === 'tavern' ? 'Taverne' : selectedPanel === 'clearing' ? 'Siedlung am Kern' : selectedPanel === 'warehouse' ? 'Vorratslager' : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
+  element('selection-title').textContent = selectedPanel === 'ilyra' ? 'Ilyra · Sternensalve' : selectedPanel === 'tavern' ? `Taverne ${sim.settlement.tavernLevel === 2 ? 'II' : 'I'}` : selectedPanel === 'clearing' ? 'Siedlung am Kern' : selectedPanel === 'warehouse' ? 'Vorratslager' : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
     : tower ? `${tower.def.name} · Level ${tower.level}` : pad ? 'Freier Bauplatz' : 'Bauplatz wählen';
   element('tower-name').textContent = tower?.def.name ?? 'Turm wählen';
   element('tower-role').textContent = tower?.def.id === 4 ? 'Bevorzugt Rüstung · ignoriert 100 % davon' : tower?.def.id === 3 ? 'Flächentreffer · 52 Reichweite um das Ziel' : tower?.def.id === 2 ? 'Frosttreffer · 45 % langsamer für 2 s' : 'Zuverlässige Pfeile · Allrounder';
@@ -329,28 +329,37 @@ function syncUI(): void {
   element('pick-warehouse').classList.toggle('locked', !sim.warehouseUnlocked);
   element('pick-warehouse').classList.toggle('researched', builtWarehouse);
   const warehouseNew = sim.warehouseUnlocked && !builtWarehouse && !(sim.tutorial.seen & (1 << 12)) && (!sim.discoveryActive || sim.discovery === 'warehouse');
-  const ilyraNew = settlement.tavernBuilt && !sim.ilyra;
-  const tavernNew = ilyraNew || sim.tavernUnlocked && !settlement.tavernBuilt && !settlement.tavernSeen;
+  const ilyraNew = sim.ilyraRecruitable;
+  const tavernUpgradeNew = settlement.tavernLevel === 1 && sim.tavernUpgradeUnlocked;
+  const tavernNew = ilyraNew || tavernUpgradeNew || sim.tavernUnlocked && !settlement.tavernBuilt && !settlement.tavernSeen;
   element('pick-warehouse').classList.toggle('new-building', warehouseNew);
   element('pick-tavern').classList.toggle('new-building', tavernNew);
   element('settlement-tab').classList.toggle('new-building', warehouseNew || tavernNew);
-  element('settlement-tab').setAttribute('aria-label', ilyraNew ? 'Siedlung · Ilyra wartet in der Taverne' : tavernNew ? 'Siedlung · Neues Gebäude verfügbar: Taverne' : warehouseNew ? 'Siedlung · Neues Gebäude verfügbar: Vorratslager' : 'Siedlung');
+  element('settlement-tab').setAttribute('aria-label', ilyraNew ? 'Siedlung · Ilyra wartet in der Taverne' : tavernUpgradeNew ? 'Siedlung · Taverne II verfügbar' : tavernNew ? 'Siedlung · Kostenloser Tavernenbausatz verfügbar' : warehouseNew ? 'Siedlung · Neues Gebäude verfügbar: Vorratslager' : 'Siedlung');
   element<HTMLImageElement>('tavern-icon').src = ART.tavern;
   element<HTMLImageElement>('tavern-portrait').src = ART.tavern;
-  element('pick-tavern').hidden = sim.highestCleared < 24 && !sim.tavernUnlocked;
+  element('pick-tavern').hidden = sim.highestCleared < 11 && !sim.tavernUnlocked;
   element('pick-tavern').classList.toggle('locked', !sim.tavernUnlocked);
   element('pick-tavern').classList.toggle('researched', settlement.tavernBuilt);
-  element('tavern-card-price').textContent = settlement.tavernBuilt ? sim.ilyra ? 'Gefährten ansehen' : 'Ilyra wartet' : sim.tavernUnlocked ? currency.format(SETTLEMENT.tavernCost) : 'Boss 25';
+  element('tavern-card-price').textContent = settlement.tavernBuilt
+    ? ilyraNew ? 'II · Ilyra wartet' : tavernUpgradeNew ? 'II ausbauen · 1.200' : `Stufe ${settlement.tavernLevel === 2 ? 'II' : 'I'} · Gefährten`
+    : sim.tavernUnlocked ? 'Kostenloser Bausatz' : 'Nach Welle 12';
   element('tavern-description').textContent = settlement.tavernBuilt
     ? 'Dein Treffpunkt für alle Gefährten. Wähle eine Figur für ihre Rolle und Befehle.'
-    : 'Hier lernst du Ilyra kennen: Ihre Sternensalve trifft Gegnergruppen und ist besonders stark gegen Flieger. Die Rekrutierung ist im Bau enthalten.';
-  element('tavern-condition').textContent = settlement.tavernBuilt ? sim.ilyra ? 'Mara verstärkt Türme · Wisp versorgt · Ilyra kämpft.' : 'Ilyra wartet auf dich. Kennenlernen und Rekrutierung sind kostenlos.'
-    : !sim.tavernUnlocked ? 'Rosenspiegels Rückkehr in Welle 25 besiegen, dann für 1.200 Gold bauen.'
-    : sim.gold < SETTLEMENT.tavernCost ? `Noch ${currency.format(SETTLEMENT.tavernCost - sim.gold)} Gold. Du kannst erst deine Verteidigung weiter ausbauen.`
-    : 'Boss 25 besiegt · 1.200 Gold verfügbar. Bauplatz selbst wählen.';
+    : 'Nach Welle 12 erhältst du einen kostenlosen Bausatz. Hier findest du deine Gefährten und ihre Fähigkeiten.';
+  element('tavern-condition').textContent = !settlement.tavernBuilt
+    ? sim.tavernUnlocked ? 'Bausatz verfügbar · kein Gold nötig. Wähle einen freien Platz in deiner Siedlung.' : 'Welle 12 erfolgreich abschließen. Der Bausatz bleibt verfügbar, bis du bauen möchtest.'
+    : settlement.tavernLevel === 1
+      ? sim.tavernUpgradeUnlocked ? 'Boss 25 besiegt. Mit Taverne II kannst du Ilyra kostenlos rekrutieren.' : 'Nächstes Ziel: Boss 25 besiegen, dann für 1.200 Gold zu Taverne II ausbauen und Ilyra rekrutieren.'
+      : sim.ilyra ? 'Mara verstärkt Türme · Wisp versorgt · Ilyra kämpft.' : 'Taverne II · Ilyra kennenlernen und kostenlos rekrutieren.';
   const buildTavern = element<HTMLButtonElement>('build-tavern');
   buildTavern.hidden = settlement.tavernBuilt;
-  buildTavern.disabled = blocked || !sim.tavernUnlocked || sim.gold < SETTLEMENT.tavernCost;
+  buildTavern.disabled = blocked || !sim.tavernKitAvailable;
+  const upgradeTavern = element<HTMLButtonElement>('upgrade-tavern');
+  upgradeTavern.hidden = settlement.tavernLevel !== 1;
+  upgradeTavern.disabled = blocked || !sim.tavernUpgradeUnlocked || sim.gold < SETTLEMENT.tavernUpgradeCost;
+  upgradeTavern.textContent = !sim.tavernUpgradeUnlocked ? 'Taverne II · erst nach Boss 25'
+    : sim.gold < SETTLEMENT.tavernUpgradeCost ? `Taverne II · noch ${currency.format(SETTLEMENT.tavernUpgradeCost - sim.gold)} Gold` : 'Taverne II ausbauen · 1.200 Gold';
   element('warehouse-card-price').textContent = builtWarehouse ? '✓ Gebaut' : sim.warehouseUnlocked ? String(SETTLEMENT.warehouseCost) : sim.wispUnlocked ? 'Welle 8' : 'Wisp & Welle 8';
   element('warehouse-description').textContent = builtWarehouse ? 'Wisp versorgt das Lager. Deine Vorräte sammeln automatisch während deiner Abwesenheit.'
     : 'Wenn du das Spiel schließt, sammelt deine sichere Verteidigung weiter. Das Lager verlängert das Sammeln von 2 auf 8 Stunden. Optional; es macht deine Türme nicht stärker.';
@@ -389,7 +398,7 @@ function syncUI(): void {
   const relevantEvents = sim.drainEvents();
   scene?.acceptEvents(relevantEvents);
   if (relevantEvents.some(event => event.type === 'map-update')) { selectedPadId = undefined; placementType = undefined; closeContext(); }
-  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'tavern', 'boss-victory', 'clearing', 'workshop-upgrade', 'map-update'].includes(event.type)).at(-1);
+  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'tavern', 'tavern-upgrade', 'boss-victory', 'clearing', 'workshop-upgrade', 'map-update'].includes(event.type)).at(-1);
   if (message) toastUntil = performance.now() + 4500;
   if (message) element('combat-message').textContent = message.type === 'clear' ? `Welle ${message.wave} geschafft · +${currency.format(message.amount ?? 0)} Gold Abschlussbonus.`
     : message.type === 'kill' ? `Gegner besiegt · +${currency.format(message.amount ?? 0)} Gold.`
@@ -403,6 +412,7 @@ function syncUI(): void {
     : message.type === 'upgrade' ? `${message.tower?.def.name} verbessert. Der nächste Schuss nutzt den höheren Schaden.`
     : message.type === 'workshop-upgrade' ? 'Werkstatt II fertig! Turmlevel 7–20 sind jetzt verfügbar.'
     : message.type === 'workshop' ? 'Die Werkstatt ist fertig! Frostfassung ist jetzt erforschbar.'
+    : message.type === 'tavern-upgrade' ? 'Taverne II fertig! Du kannst jetzt Ilyra kennenlernen und kostenlos rekrutieren.'
     : message.type === 'tavern' ? 'Die Taverne steht! Ein neuer Treffpunkt für deine Siedlung.'
     : message.type === 'warehouse' ? 'Vorratslager gebaut! Künftig 65 % Offline-Ertrag für bis zu 8 Stunden.'
     : message.type === 'research' ? 'Frostfassung erforscht! Baue einen Frostkristall oder verbessere Türme bis Level 6.'
@@ -719,6 +729,7 @@ async function placeBuilding(id: BuildingId, cell: GridCell): Promise<void> {
 }
 build.addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId); }, { signal: lifetime.signal });
 buildFrost.addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId, 2); }, { signal: lifetime.signal });
+element('upgrade-tavern').addEventListener('click', () => { void perform(b => b.upgradeTavern(), true, true); }, { signal: lifetime.signal });
 element('build-tavern').addEventListener('click', () => startGroundPlacement('tavern'), { signal: lifetime.signal });
 element('pick-tavern').addEventListener('click', () => openContext('tavern'), { signal: lifetime.signal });
 buildWarehouse.addEventListener('click', () => { startGroundPlacement('warehouse'); }, { signal: lifetime.signal });

@@ -11,7 +11,7 @@ import { certifyFarm, defenseFingerprint } from '../src/farming';
 function veteran() {
  const b=new IdleBattle();b.update(4);b.gold=12000;b.highestCleared=25;b.bossVictories=1;b.secondBossVictories=1;
  b.buildWorkshop();b.researchFrost();b.update(.025);b.wispArrival.met=true;b.discovery='off';
- assert.ok(b.buildTavern(b.recommendedTavernPlot!));assert.ok(IdleBattle.restore(b.snapshot()));return b;
+ assert.ok(b.buildTavern(b.recommendedTavernPlot!));assert.ok(b.upgradeTavern());assert.ok(IdleBattle.restore(b.snapshot()));return b;
 }
 function recruited() {const b=veteran();assert.ok(b.recruitIlyra());return b;}
 function deploy(b:IdleBattle) {
