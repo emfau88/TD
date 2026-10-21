@@ -12,9 +12,16 @@ const ui = new TavernUI({ session: () => session, navigate: where => { notice.te
 session.onChange = () => ui.update();
 document.getElementById('review-hearts')!.addEventListener('change', event => {
   const count = Number((event.target as HTMLSelectElement).value);
-  b.social.points.mara = count ? SOCIAL.heartThresholds[count - 1]! : 0;
-  notice.textContent = `Temporärer Teststand: ${count} Herzen. Zum Ansehen Taverne öffnen und Mara auswählen.`;
+  b.social.points.mara = b.social.points.ilyra = count ? SOCIAL.heartThresholds[count - 1]! : 0;
+  notice.textContent = `Temporärer Teststand: ${count} Herzen. Zum Ansehen Taverne öffnen und eine Gefährtin auswählen.`;
 });
+function recruitForPreview() {
+  b.highestCleared = 25; b.bossVictories = 1; b.secondBossVictories = 1; b.gold = 2500;
+  b.wispArrival.met = true; b.discovery = 'off'; b.upgradeTavern(); b.recruitIlyra();
+  notice.textContent = 'Temporärer Teststand: Boss 25 besiegt, Taverne II, Ilyra rekrutiert. Kein echter Spielstand verändert.';
+}
+document.getElementById('review-ilyra')!.addEventListener('click', () => { recruitForPreview(); ui.open(); });
+
 document.getElementById('review-open')!.addEventListener('click', () => ui.open());
 document.getElementById('review-damage')!.addEventListener('click', () => { ui.open(); setTimeout(() => { b.lives = Math.max(1, b.lives - 2); ui.update(); }, 1800); });
 // Isolated design fixture: no persistent store, no offline reward or main save access.
@@ -22,5 +29,6 @@ let last = 0, frame = 0;
 function tick(now: number) { if (last && !document.hidden) session.advance(Math.min(.1, (now - last) / 1000)); last = now; ui.update(); frame = requestAnimationFrame(tick); }
 // Keep the review fixture quiet so layout approval is independent of combat strength.
 await session.setPaused(true);
+if (new URLSearchParams(location.search).get('hero') === 'ilyra') recruitForPreview();
 frame = requestAnimationFrame(tick); ui.open();
 if (import.meta.hot) import.meta.hot.dispose(() => { cancelAnimationFrame(frame); ui.destroy(); void session.close(); });

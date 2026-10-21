@@ -47,9 +47,14 @@
 #tavern-dialog .tv-figure { position:relative; height:460px; max-height:100%; width:100%; display:flex; justify-content:center; }
 #tavern-dialog .tv-figure canvas { height:100%; width:auto; max-width:100%; object-fit:contain; image-rendering:pixelated; }
 #tavern-dialog .tv-stage-caption { position:absolute; bottom:8px; left:0; right:0; text-align:center; color:#ded1b0; font-size:11px; text-shadow:0 1px 3px #000; }
-#tavern-dialog .tv-hotspot { position:absolute; transform:translate(-50%,-50%); width:44px; height:44px; padding:0; border-radius:50%; border:2px solid #f4d69a; background:#142528a6; box-shadow:0 0 0 5px #f0c67b24; }
-#tavern-dialog .tv-hotspot span { font-size:24px; }
-#tavern-dialog .tv-hotspot em { position:absolute; left:50%; top:47px; transform:translateX(-50%); font:11px Arial; background:#122025ed; padding:3px 6px; border-radius:3px; color:#f7e5bc; pointer-events:none; }
+/* Small visible markers; the invisible 44px target stays easy to tap. */
+#tavern-dialog .tv-hotspot { position:absolute; transform:translate(-50%,-50%); display:grid; place-items:center; width:44px; height:44px; padding:0; border-radius:50%; border:0; background:transparent; box-shadow:none; }
+#tavern-dialog .tv-hotspot:hover:not(:disabled) { border:0; background:transparent; }
+#tavern-dialog .tv-hotspot span { display:block; position:relative; width:14px; height:14px; border:1px solid #e6ca8c; border-radius:50%; background:#2030328c; box-shadow:0 1px 3px #0008; opacity:.85; }
+#tavern-dialog .tv-hotspot span::after { content:''; position:absolute; inset:4px; border-radius:50%; background:#f4d997; }
+#tavern-dialog .tv-hotspot em { display:none; position:absolute; left:50%; top:37px; transform:translateX(-50%); font:11px Arial; background:#122025ed; padding:3px 6px; border-radius:3px; color:#f7e5bc; pointer-events:none; white-space:nowrap; }
+#tavern-dialog .tv-hotspot:focus-visible em { display:block; }
+@media(hover:hover) { #tavern-dialog .tv-hotspot:hover em { display:block; } #tavern-dialog .tv-hotspot:hover span { opacity:1; } }
 #tavern-dialog .tv-conversation { display:flex; flex-direction:column; padding:30px 24px 18px; background:linear-gradient(150deg,#26302d,#102024); min-width:0; }
 #tavern-dialog .tv-dialogue { border-left:2px solid #a58651; padding-left:16px; min-height:122px; }
 #tavern-dialog .tv-dialogue p { font-size:16px; line-height:1.65; color:#f0e3cc; }

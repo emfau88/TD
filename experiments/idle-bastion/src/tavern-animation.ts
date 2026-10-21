@@ -1,3 +1,8 @@
+import type { Companion } from './tavern-social';
+import ilyraAtlas from '../assets/ilyra-tavern/ilyra-atlas.png';
+import ilyraMetadata from '../assets/ilyra-tavern/ilyra-atlas.json';
+import ilyraReactions from '../assets/ilyra-tavern/ilyra-reactions.json';
+import ilyraExtra from '../assets/ilyra-tavern/ilyra-reactions.png';
 import atlasUrl from '../assets/mara-tavern/mara-atlas.png';
 import metadata from '../assets/mara-tavern/mara-atlas.json';
 import reactions from '../assets/tavern-ui/mara-reactions.json';
@@ -9,6 +14,15 @@ export const MARA_REACTIONS = {
   hair: { minHearts: 0, x: 117, y: 220, label: 'Haare' },
   shoulder: { minHearts: 0, x: 270, y: 242, label: 'Schulter' },
 } as const;
+export const ILYRA_REACTIONS = {
+  hand: { minHearts: 0, x: 330, y: 423, label: 'Hand' },
+  hair: { minHearts: 0, x: 139, y: 171, label: 'Haare' },
+  shoulder: { minHearts: 0, x: 181, y: 258, label: 'Schulter' },
+} as const;
+const atlases = {
+  mara: { base: atlasUrl, extra: reactionsUrl, metadata, reactions, scale: 1, extraScale: 1, targetX: 192 },
+  ilyra: { base: ilyraAtlas, extra: ilyraExtra, metadata: ilyraMetadata, reactions: ilyraReactions, scale: 1.1, extraScale: 1.17, targetX: 240 },
+};
 type Frame = { x: number; y: number; width: number; height: number; anchorX: number; anchorY: number };
 const load = (src: string) => new Promise<HTMLImageElement>((resolve, reject) => {
   const image = new Image(); image.onload = () => resolve(image); image.onerror = () => reject(new Error('Charaktergrafik konnte nicht geladen werden.')); image.src = src;
@@ -23,14 +37,18 @@ export class TavernAnimation {
   private clip: 'idle' | TouchRegion = 'idle';
   private displayed = '';
   private generation = 0;
+  private who: Companion = 'mara';
   ready = false;
   get reacting(): boolean { return this.clip !== 'idle'; }
   constructor(private readonly canvas: HTMLCanvasElement, private readonly changed: () => void) {}
-  async start(): Promise<void> {
+  async start(who: Companion = 'mara'): Promise<void> {
+    this.stop(); this.who = who;
+    this.canvas.getContext('2d')?.clearRect(0, 0, 384, 512);
+    const art = atlases[who];
     const generation = ++this.generation;
     this.active = true; this.clip = 'idle'; this.elapsed = 0; this.last = 0;
     try {
-      const [base, extra] = await Promise.all([load(atlasUrl), load(reactionsUrl)]);
+      const [base, extra] = await Promise.all([load(art.base), load(art.extra)]);
       if (generation !== this.generation || !this.active) return;
       this.base = base; this.extra = extra;
       this.ready = true; delete this.canvas.dataset.error; this.displayed = ''; this.changed(); this.request = requestAnimationFrame(this.tick);
@@ -42,8 +60,9 @@ export class TavernAnimation {
     if (!this.active) return;
     if (!document.hidden) {
       if (this.last) this.elapsed += Math.min(80, now - this.last);
-      const clip = this.clip === 'idle' ? metadata.idle : this.clip === 'shoulder' ? metadata.touch
-        : reactions[this.clip];
+      const art = atlases[this.who];
+      const clip = this.clip === 'idle' ? art.metadata.idle : this.clip === 'shoulder' ? art.metadata.touch
+        : art.reactions[this.clip];
       const total = clip.reduce((sum, pair) => sum + pair[1]!, 0);
       if (this.elapsed >= total) { this.elapsed = 0; this.clip = 'idle'; this.changed(); }
       else {
@@ -59,17 +78,26 @@ export class TavernAnimation {
     if (key === this.displayed) return;
     this.displayed = key;
     const extra = this.clip === 'hand' || this.clip === 'hair';
-    let frame: Frame = metadata.frames[index]!;
-    if (extra) frame = reactions.frames[index]!;
+    const art = atlases[this.who], scale = extra ? art.extraScale : art.scale;
+    const frame: Frame = (extra ? art.reactions : art.metadata).frames[index]!;
     const ctx = this.canvas.getContext('2d'); if (!ctx) return;
     ctx.clearRect(0, 0, 384, 512); ctx.imageSmoothingEnabled = false;
-    ctx.drawImage((extra ? this.extra : this.base)!, frame.x, frame.y, frame.width, frame.height,
-      192 - frame.anchorX, 360 - frame.anchorY, frame.width, frame.height);
-    this.canvas.dataset.frame = key;
+    if (this.who === 'ilyra') {
+      // The set-down spear is a static prop, not part of her gesture or breathing.
+      const resting = ilyraMetadata.frames[0]!;
+      ctx.drawImage(this.base!, 0, 0, 100, resting.height,
+        art.targetX - resting.anchorX * art.scale, 360 - resting.anchorY * art.scale, 100 * art.scale, resting.height * art.scale);
+    }
+    const inset = this.who === 'ilyra' ? 100 : 0;
+    ctx.drawImage((extra ? this.extra : this.base)!, frame.x + inset, frame.y, frame.width - inset, frame.height,
+      art.targetX + (inset - frame.anchorX) * scale, 360 - frame.anchorY * scale, (frame.width - inset) * scale, frame.height * scale);
+    this.canvas.dataset.frame = `${this.who}:${key}`;
   }
 }
-export async function drawMaraPortrait(canvas: HTMLCanvasElement): Promise<void> {
-  const image = await load(atlasUrl);
+export async function drawCompanionPortrait(canvas: HTMLCanvasElement, who: Companion): Promise<void> {
+  const image = await load(atlases[who].base);
   const ctx = canvas.getContext('2d'); if (!ctx) return;
-  ctx.imageSmoothingEnabled = false; ctx.drawImage(image, 82, 0, 170, 200, 0, 0, canvas.width, canvas.height);
+  ctx.imageSmoothingEnabled = false;
+  const crop = who === 'mara' ? [82, 0, 170, 200] : [140, 8, 170, 200];
+  ctx.drawImage(image, crop[0]!, crop[1]!, crop[2]!, crop[3]!, 0, 0, canvas.width, canvas.height);
 }

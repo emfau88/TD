@@ -2,7 +2,7 @@
 
 Planungsstand: 21.10.2026. Geprüfter Ausgangspunkt: `61b95c0` auf `codex/idle-bastion-vertical-slice`.
 
-Dieses Dokument hält Fachregeln und Abnahmekriterien fest. **Die einzige Arbeits- und Statusliste mit Checkboxen bleibt [ROADMAP.md](../ROADMAP.md), T01–T07.** Nach dem Dokumentationsauftrag wurde T01 am 21.10.2026 ausdrücklich zur Umsetzung mit kompakter Prüfung, Commit/Push und Vorschaulink beauftragt. Die visuelle Nutzerabnahme einschließlich Haarkorrektur (`fcc7bc1`) wurde am 21.10.2026 ausdrücklich erteilt; siehe Roadmap und T01-Bericht. T02/T03 wurden umgesetzt; T04 wurde am 21.10.2026 visuell freigegeben und zum Commit/Push beauftragt. T05 ist als nächster Schritt gestartet; T06/T07 benötigen weiterhin einen separaten Startauftrag; der ältere zitierte Auftrag aus einem anderen Chat begründete selbst keine Freigabe.
+Dieses Dokument hält Fachregeln und Abnahmekriterien fest. **Die einzige Arbeits- und Statusliste mit Checkboxen bleibt [ROADMAP.md](../ROADMAP.md), T01–T07.** Nach dem Dokumentationsauftrag wurde T01 am 21.10.2026 ausdrücklich zur Umsetzung mit kompakter Prüfung, Commit/Push und Vorschaulink beauftragt. Die visuelle Nutzerabnahme einschließlich Haarkorrektur (`fcc7bc1`) wurde am 21.10.2026 ausdrücklich erteilt; siehe Roadmap und T01-Bericht. T02/T03 wurden umgesetzt; T04 wurde am 21.10.2026 visuell freigegeben und zum Commit/Push beauftragt. T05 und auf ausdrücklichen Anschlussauftrag T06 sind umgesetzt; T07 benötigt weiterhin einen separaten Startauftrag; der ältere zitierte Auftrag aus einem anderen Chat begründete selbst keine Freigabe.
 
 ## Quellen und Grenzen
 
@@ -122,3 +122,19 @@ T01 ist eine kleine Funktionsprobe mit hohem Grafikrisiko. T02/T03/T04 sind mitt
 Die bisher genannten 5–10 Produktionstage für alles sind eine unbestätigte grobe Schätzung, keine Lieferzusage. Erst nach T01 anhand tatsächlicher Framequalität, Korrekturschleifen und Wiederverwendbarkeit neu schätzen. Keine Assetserie vor dieser Entscheidung.
 
 Später und nicht in T01–T07: Zimmer, Möbel, Outfits, Kartenspiel, weitere Charaktere oder große zusätzliche Szenen. Keine Umsetzung allein wegen einer Darstellung im Mockup. Neue Türme/Ostfront bleiben eigene Roadmap-Pakete; das soziale System blockiert keine Ilyra-Rekrutierung durch zusätzliche Herzvoraussetzungen.
+
+## Ilyras persönliche Momente (T06)
+
+Zugang erst nach der regulären Rekrutierung (tatsächlicher Boss-25-Sieg und Taverne II). Gemeinsamer Geschenkbestand, getrennte gespeicherte Punkte/Budgets. Keine zusätzliche Herzvoraussetzung für ihre Kampffähigkeit; keine Kampfboni. UI, Transaktionen und Abspieltechnik sind mit Mara geteilt. Ilyra bekommt eine zurückhaltendere Stimme: Wache abgeben, Vertrauen, Zugehörigkeit, bewusst gewählte Nähe.
+
+| Herz | Zuneigung | Moment |
+| --- | --- | --- |
+| 1 | 10 | Die Wache darf warten |
+| 2 | 35 | Ein Stern ohne Namen |
+| 3 | 70 | Was hinter der Ruhe liegt |
+| 4 | 110 | Ein Schritt auf dich zu |
+| 5 | 160 | Hier möchte ich bleiben |
+
+Jeder Moment hat drei manuell weitergeschaltete Abschnitte. Wiederholen verändert weder Punkte noch Geschenke. Sechs Stufen eigener Begrüßungen, je zwei Gesprächsantworten sowie eigene Geschenk-/Berührungsantworten. Neue große Idle-/Hand-/Haar-/Schulterframes ausschließlich in der Taverne; die kleinen Kampffiguren-Idle-Pakete F04/F05 bleiben separat offen. Nutzerwunsch nach visueller Probe: dezente 14-px-Goldmarkierungen über unsichtbaren 44-px-Touchflächen, Labels nur bei Maus-/Tastaturfokus. Das gilt für beide Figuren.
+
+Die separate `tavern-check.html?hero=ilyra` verwendet eine temporäre Sitzung ohne Speicheradapter. Herzstufen-Auswahl und Boss-25-Vorbereitung sind ausschließlich dort vorhanden. Das eigentliche Spiel erhält diese Testfreischaltungen nicht. [Assetvertrag/Prompts](../assets/ilyra-tavern/README.md), [Prüfbericht](../../../artifacts/idle-bastion/acceptance/t06/REPORT.md).

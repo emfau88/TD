@@ -12,12 +12,26 @@
 
 **Taverne I ab Welle 12, Ilyra nach Boss 25:** Nach erfolgreich gemeisterter **Welle 12** unter Siedlung den **kostenlosen Tavernenbausatz** platzieren. Nach dem tatsächlichen Sieg über **Boss 25** für **1.200 Gold auf Taverne II ausbauen**. Bereits früher bezahlte Tavernen sind automatisch Stufe II, ohne zweite Zahlung. Dort Ilyra kennenlernen und **kostenlos rekrutieren**. Einen Standort am Weg wählen, danach mit „Sternensalve zielen“ eine Gegnergruppe treffen: 28 Sekunden Abklingzeit, besonders wirksam gegen Flieger. Nach der ersten Anwendung lässt sich eine gegnerabhängige Automatik einschalten. **Mara, Wisp und Ilyra** sind mit Rolle und Status in derselben Tavernenübersicht zu finden. Bestehende Saves bleiben erhalten. [Kompakter B15b-Bericht](artifacts/idle-bastion/acceptance/b15b/REPORT.md).
 
-**Vorbereitet für den nächsten Tavernen-Ausbau:** Zuneigung und ein gemeinsamer Geschenkbestand werden bereits gespeichert. Start-/Bossgeschenke werden einmalig vergeben, reguläre Geschenke begrenzt durch gewonnene Live-Wellen erspielt. **T04: In der gebauten Taverne stehen Sprechen, Berühren und Schenken mit Maras großer Animation bereit.** Übersicht, Hand-/Haar-/Schulterreaktionen, kompakte Hochkantansicht und schließbarer Kampfhinweis sind am 21.10.2026 visuell freigegeben. [Entwurf und Screenshots](artifacts/idle-bastion/acceptance/t04/REPORT.md). [Regeln und erste Balance](experiments/idle-bastion/docs/TAVERNE_INTERAKTION.md).
+**Zuneigung und Geschenke:** Zuneigung und ein gemeinsamer Geschenkbestand werden bereits gespeichert. Start-/Bossgeschenke werden einmalig vergeben, reguläre Geschenke begrenzt durch gewonnene Live-Wellen erspielt. **T04: In der gebauten Taverne stehen Sprechen, Berühren und Schenken mit Maras großer Animation bereit.** Übersicht, Hand-/Haar-/Schulterreaktionen, kompakte Hochkantansicht und schließbarer Kampfhinweis sind am 21.10.2026 visuell freigegeben. [Entwurf und Screenshots](artifacts/idle-bastion/acceptance/t04/REPORT.md). [Regeln und erste Balance](experiments/idle-bastion/docs/TAVERNE_INTERAKTION.md).
 
 **T05 – Maras fünf Herz-Momente:** Jedes verdiente Herz öffnet einen eigenen persönlichen Moment; dafür das Herz in Maras Ansicht antippen. Begrüßungen, Gespräche und Berührungsreaktionen entwickeln sich mit dem Vertrauen. Verdiente Momente bleiben nach Reload kostenlos wieder abspielbar. [Inhalte und kompakter Prüfbericht](artifacts/idle-bastion/acceptance/t05/REPORT.md).
 
 
+**T06 – Ilyra in der Taverne:** Nach ihrer regulären Rekrutierung mit Ilyra sprechen, Hand/Haare/Schulter berühren und Geschenke überreichen. Eigene große Idle-/Reaktionsanimationen und fünf persönliche Herzmomente; Zuneigung bleibt pro Gefährtin getrennt. Die kleinen Goldmarkierungen verdecken wenig, ihre Touchflächen bleiben groß.
+
+[▶ Taverne mit Ilyra direkt ansehen – ohne Zugriff auf deinen Spielstand](https://emfau88.github.io/TD/idle-bastion/tavern-check.html?hero=ilyra) · [Prüfbericht](artifacts/idle-bastion/acceptance/t06/REPORT.md) · [Atlanten und Prompts](experiments/idle-bastion/assets/ilyra-tavern/README.md).
+
 <details open>
+<summary>T06 – Ilyras neue Tavernenansicht</summary>
+
+![Ilyras erster persönlicher Moment](artifacts/idle-bastion/acceptance/t06/ilyra-desktop.png)
+
+<img src="artifacts/idle-bastion/acceptance/t06/ilyra-touch-mobile.png" alt="Dezente Berührungsmarkierungen in Hochkant" width="280"> <img src="artifacts/idle-bastion/acceptance/t06/ilyra-five-mobile.png" alt="Ilyras fünfter Herzmoment" width="280">
+
+Isolierter Teststand, kein durchgespielter Welle-25-Lauf. Hochkant im Browser mit 390 × 844 geprüft.
+</details>
+
+<details>
 <summary>B15b – Gefährten und Sternensalve im Spiel</summary>
 
 ![Taverne mit Mara, Wisp und Ilyras kostenloser Rekrutierung](artifacts/idle-bastion/acceptance/b15b/desktop-tavern.png)

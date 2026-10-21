@@ -1,8 +1,8 @@
 import { hearts, SOCIAL, type Interaction } from './tavern-social';
 import type { TouchRegion } from './tavern-animation';
 
-export interface MaraBeat { line: string; clip: TouchRegion }
-export interface MaraMoment { heart: number; title: string; beats: readonly MaraBeat[] }
+import type { TavernMoment } from './tavern-content';
+export type MaraMoment = TavernMoment;
 /** Five authored rewards; replay is read-only, unlocked entirely by saved points. */
 export const MARA_MOMENTS: readonly MaraMoment[] = [
   { heart: 1, title: 'Ein Platz am Feuer', beats: [
