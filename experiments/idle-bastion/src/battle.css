@@ -43,3 +43,11 @@ dialog { max-height:calc(100svh - 24px); overflow-y:auto; }
   .auto-battle .toggle-dot { display:none; }
   #pad-choice { font-size:16px; }
 }
+/* Audio settings stay inside the existing menu, not on top of the map. */
+#audio-controls { margin:12px 0; padding:12px; border:1px solid #8f774e; display:grid; gap:8px; font:14px Arial,sans-serif; }
+#audio-controls label { display:grid; grid-template-columns:1fr auto; align-items:center; gap:4px 12px; }
+#audio-controls input[type=range] { grid-column:1/-1; width:100%; min-height:32px; accent-color:#d1ac76; }
+#audio-controls .audio-mute { display:flex; min-height:44px; }
+#audio-controls small,#audio-controls [role=status] { font-size:12px; line-height:1.4; }
+#audio-controls [role=status]:empty { display:none; }
+#audio-controls a { color:#e2c990; min-height:32px; display:flex; align-items:center; }

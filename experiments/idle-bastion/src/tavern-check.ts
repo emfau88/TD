@@ -1,3 +1,4 @@
+import { GameAudio } from './game-audio';
 import { SOCIAL } from './tavern-social';
 import './battle.css';
 import './premium.css';
@@ -5,10 +6,11 @@ import { BattleSession } from './battle-session';
 import { TavernUI } from './tavern-ui';
 const session = await BattleSession.open(undefined, { guidedStart: false });
 const b = session.battle;
+const audio = new GameAudio(); audio.setState(true, false);
 b.update(4); b.highestCleared = 12; b.gold = 2500; b.settlement.workshopBuilt = true; b.settlement.frostResearched = true;
 b.update(0.05); b.buildTavern(b.recommendedTavernPlot!);
 const notice = document.getElementById('review-notice')!;
-const ui = new TavernUI({ session: () => session, navigate: where => { notice.textContent = `In der Spielansicht öffnet sich jetzt: ${where === 'tavern' ? 'Gebäude, Ausbau und Rekrutierung' : where + ' · Kampfverwaltung'}.`; } });
+const ui = new TavernUI({ session: () => session, onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift'), navigate: where => { notice.textContent = `In der Spielansicht öffnet sich jetzt: ${where === 'tavern' ? 'Gebäude, Ausbau und Rekrutierung' : where + ' · Kampfverwaltung'}.`; } });
 session.onChange = () => ui.update();
 document.getElementById('review-hearts')!.addEventListener('change', event => {
   const count = Number((event.target as HTMLSelectElement).value);
@@ -31,4 +33,4 @@ function tick(now: number) { if (last && !document.hidden) session.advance(Math.
 await session.setPaused(true);
 if (new URLSearchParams(location.search).get('hero') === 'ilyra') recruitForPreview();
 frame = requestAnimationFrame(tick); ui.open();
-if (import.meta.hot) import.meta.hot.dispose(() => { cancelAnimationFrame(frame); ui.destroy(); void session.close(); });
+if (import.meta.hot) import.meta.hot.dispose(() => { cancelAnimationFrame(frame); ui.destroy(); audio.destroy(); void session.close(); });

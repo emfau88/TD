@@ -6,7 +6,7 @@ import { TavernAnimation, drawCompanionPortrait, type TouchRegion } from './tave
 import './tavern-ui.css';
 
 type Destination = 'tavern' | 'mara' | 'wisp' | 'ilyra';
-interface Ports { session: () => BattleSession | undefined; navigate: (where: Destination) => void }
+interface Ports { session: () => BattleSession | undefined; navigate: (where: Destination) => void; onOpenChange?: (open:boolean) => void; onGift?: () => void }
 export class TavernUI {
   readonly dialog: HTMLDialogElement;
   private readonly lifetime = new AbortController();
@@ -49,7 +49,7 @@ export class TavernUI {
         <div class="tv-bond"><div><div class="tv-heart-buttons" role="group" aria-label="Maras persönliche Momente">${this.content.moments.map(moment => `<button type="button" data-moment="${moment.heart}"><span aria-hidden="true">♡</span><small>${moment.heart}</small></button>`).join('')}</div><span data-text="points"></span></div><div class="tv-bond-track" title="Ein Abschnitt pro Herz"><progress max="160" value="0" aria-label="Maras Zuneigung"></progress><span class="tv-bond-fill" aria-hidden="true"></span><span class="tv-bond-marks" aria-hidden="true"></span></div><p class="tv-moment-hint" data-text="moment-hint"></p></div>
         <div class="tv-character-body">
           <div class="tv-stage"><div class="tv-figure"><canvas width="384" height="512" aria-label="Mara, animierte Charakteransicht"></canvas>${Object.entries(this.content.reactions).map(([key, value]) => `<button type="button" class="tv-hotspot" data-region="${key}" aria-label="${value.label} berühren"><span aria-hidden="true"></span><em>${value.label}</em></button>`).join('')}</div><span class="tv-stage-caption">Mara · Tüftlerin des Hains</span></div>
-          <div class="tv-conversation"><div class="tv-story-heading" hidden><small data-text="story-step"></small><h3 data-text="story-title"></h3></div><div class="tv-dialogue"><small>MARA</small><p data-text="line">Da bist du ja. Setz dich einen Moment zu mir.</p></div><p class="tv-result" data-text="result" role="status"></p><button type="button" data-do="new-moment" class="tv-unlock" hidden></button><div class="tv-story-controls" hidden><button type="button" data-do="story-next">Weiter</button><button type="button" data-do="story-exit">Zurück zu Mara</button></div><p class="tv-touch-help" hidden>Tippe auf Hand, Haare oder Schulter. Ziehen löst keine Berührung aus.</p><div class="tv-actions"><button type="button" data-action="talk"><span>Sprechen</span><small data-text="talk"></small></button><button type="button" data-do="touch"><span>Berühren</span><small data-text="touch"></small></button><button type="button" data-action="gift"><span>Schenken</span><small data-text="gift"></small></button></div><div class="tv-gifts"><span data-text="stock"></span><details><summary>Geschenke & Zuneigung</summary><p>Geschenke sind für die hier ausgewählte Gefährtin. Du erhältst sie bei Meilensteinen und begrenzt nach gewonnenen Wellen. Gespräche und Berührungen sind auch ohne weitere Punkte möglich. Neue Belohnungen nach 20 Minuten laufender Spielzeit; Pause und Offline-Zeit zählen nicht.</p><p data-text="renewal"></p></details></div><button type="button" class="tv-combat-link" data-do="mara-combat">Mara im Kampf verwalten ↗</button></div>
+          <div class="tv-conversation"><div class="tv-story-heading" hidden><small data-text="story-step"></small><h3 data-text="story-title"></h3></div><div class="tv-dialogue"><small>MARA</small><p data-text="line">Da bist du ja. Setz dich einen Moment zu mir.</p></div><p class="tv-result" data-text="result" role="status"></p><button type="button" data-do="new-moment" class="tv-unlock" hidden></button><div class="tv-story-controls" hidden><button type="button" data-do="story-next">Weiter</button><button type="button" data-do="story-exit">Zurück zu Mara</button></div><p class="tv-touch-help" hidden>Tippe auf Hand, Haare oder Schulter. Ziehen löst keine Berührung aus.</p><div class="tv-actions"><button type="button" data-action="talk"><span>Sprechen</span><small data-text="talk"></small></button><button type="button" data-do="touch"><span>Berühren</span><small data-text="touch"></small></button><button type="button" data-action="gift"><span>Schenken</span><small data-text="gift"></small></button></div><div class="tv-gifts"><details><summary><span data-text="gift-summary">Geschenke & Details</span></summary><p data-text="stock"></p><p>Geschenke sind für die hier ausgewählte Gefährtin. Du erhältst sie bei Meilensteinen und begrenzt nach gewonnenen Wellen. Gespräche und Berührungen sind auch ohne weitere Punkte möglich. Neue Belohnungen nach 20 Minuten laufender Spielzeit; Pause und Offline-Zeit zählen nicht.</p><p data-text="renewal"></p><button type="button" class="tv-combat-link" data-do="mara-combat">Mara im Kampf verwalten ↗</button></details></div></div>
         </div>
       </section>`;
     document.body.append(this.dialog);
@@ -57,7 +57,7 @@ export class TavernUI {
     this.observer = new ResizeObserver(() => this.positionHotspots()); this.observer.observe(this.get('.tv-stage'));
     const options = { signal: this.lifetime.signal };
     this.dialog.addEventListener('cancel', event => { event.preventDefault(); this.back(); }, options);
-    this.dialog.addEventListener('close', () => { this.animation.stop(); this.generation++; }, options);
+    this.dialog.addEventListener('close', () => { this.animation.stop(); this.generation++; this.ports.onOpenChange?.(false); }, options);
     this.dialog.addEventListener('click', event => {
       const target = (event.target as HTMLElement).closest<HTMLButtonElement>('button');
       if (!target || target.disabled) return;
@@ -98,7 +98,7 @@ export class TavernUI {
     this.bondCompanion = undefined;
     this.opener = document.activeElement instanceof HTMLElement ? document.activeElement : undefined;
     this.lastLives = session.battle.lives; this.lastPhase = session.battle.phase; this.lastDefeat = session.battle.progress.lastDefeat?.attemptId ?? 0;
-    this.get('.tv-warning').hidden = true; this.dialog.showModal(); this.show('overview'); this.get<HTMLButtonElement>('[data-do="close"]').focus();
+    this.get('.tv-warning').hidden = true; this.dialog.showModal(); this.ports.onOpenChange?.(true); this.show('overview'); this.get<HTMLButtonElement>('[data-do="close"]').focus();
   }
   close(): void { this.animation.stop(); this.dialog.close(); this.generation++; this.opener?.focus(); }
   private back(): void { if (this.moment) { this.endMoment(); return; } if (this.screen === 'touch') this.show('character'); else if (this.screen === 'character') this.show('overview'); else this.close(); }
@@ -169,6 +169,7 @@ export class TavernUI {
       fill.style.width = `${Math.max(0, Math.min(100, section * 20))}%`;
       this.bondCompanion = this.selected; this.bondPoints = points;
     }
+    this.text('gift-summary', `Geschenke: ${b.social.gifts} · Details`);
     this.text('stock', `Geschenke: ${b.social.gifts} · Empfängerin: ${this.content.name}`);
     this.text('renewal', `Nächster Abschnitt in ${Math.ceil((SOCIAL.windowTicks - b.social.window.ticks) / 2400)} Min. laufender Spielzeit.`);
     this.text('ilyra-lock', b.ilyra ? COMPANIONS.ilyra.stage(b.social.points.ilyra).greeting : b.secondBossVictories ? b.settlement.tavernLevel === 2 ? 'Bereit für deine Einladung. Rekrutiere sie in der Gefährtenverwaltung.' : 'Boss 25 besiegt. Baue die Taverne auf Stufe II aus.' : 'Nach Boss 25 und dem Ausbau auf Taverne II rekrutierbar.');
@@ -259,6 +260,7 @@ export class TavernUI {
       const afterHearts = hearts(session.battle.social.points[who]);
       if (afterHearts > hearts(beforePoints)) this.newMoment = afterHearts;
       this.text('result', result.points ? `+${result.points} Zuneigung zu ${content.name}${action === 'gift' ? ' · 1 Geschenk überreicht' : ''}` : offer.reason === 'complete' ? `Alle Herzen erreicht. ${content.name} freut sich trotzdem über deinen Besuch.` : `${content.name} freut sich über deine Nähe. Für diesen Abschnitt gibt es keine weiteren Punkte.`);
+      if (action === 'gift' && result.points > 0) this.ports.onGift?.();
       if (action === 'touch') this.animation.play(region);
     } finally { this.pending = false; this.update(); }
   }

@@ -4,9 +4,13 @@
 
 Lokal: `npm install`, danach `npm run dev`. `npm run build` erzeugt die Veröffentlichung unter `dist/`, `npm run preview` zeigt diesen Build. Der aktive Code liegt weiterhin unter `experiments/idle-bastion/`; keine riskante Massenverschiebung der Quellen. `npm test` betrifft das aktuelle Spiel.
 
-Der ursprüngliche klassische Stand bleibt im [Archiv-Tag](https://github.com/emfau88/TD/tree/archive/classic-td-2026-10-21) erhalten. Historische Quellen/Anleitungen unten und `classic:*`-/`reference:*`-Befehle bleiben nachvollziehbar, werden aber nicht mehr zusätzlich als Hauptspiel ausgeliefert. Künftige Sounds und Interaktionsfreischaltungen sind noch zu besprechen.
+Der ursprüngliche klassische Stand bleibt im [Archiv-Tag](https://github.com/emfau88/TD/tree/archive/classic-td-2026-10-21) erhalten. Historische Quellen/Anleitungen unten und `classic:*`-/`reference:*`-Befehle bleiben nachvollziehbar, werden aber nicht mehr zusätzlich als Hauptspiel ausgeliefert.
 
 ## Das aktuelle Hauptspiel
+
+**Neu: dezenter Ton und mehr Platz für die Gefährtinnen.** Karten-/Tavernenmusik, vier Turmrollen, Heldenzauber, Gebäude, Kernalarm, Geschenke und UI-Klicks sind vertont. Im Spielmenü Musik und Effekte getrennt regeln oder alles stummschalten; Stimmen folgen erst nach Clip-Auswahl. Musik lädt/startet nach der ersten Bedienung, Tavernenmusik erst dort. [Soundzuordnung und Technik](experiments/idle-bastion/docs/AUDIO.md) · [Audioquellen und Lizenzen](https://emfau88.github.io/TD/audio-credits.html).
+
+Die mobile Charakteransicht gibt der Figur mehr Raum; Herzen und Aktionen bleiben erreichbar, Geschenkdetails lassen sich aufklappen. [Mobile Prüfung](artifacts/idle-bastion/acceptance/t08/REPORT.md). Weitere Zuneigungsreaktionen und zusätzliche Berührungszonen sind ausschließlich in der [Roadmap](experiments/idle-bastion/ROADMAP.md) vorgemerkt.
 
 [Mara in der Taverne ansehen — Idle und Berührungsreaktion](https://emfau88.github.io/TD/idle-bastion/mara-check.html) · Separate T01-Animationsprobe mit antippbarer Schulter und Einzelbildansicht. Seit T04 auch in der gebauten Taverne verfügbar; visuell freigegeben am 21.10.2026.
 

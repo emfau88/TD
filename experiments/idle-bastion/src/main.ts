@@ -1,3 +1,4 @@
+import { GameAudio } from './game-audio';
 import { TavernUI } from './tavern-ui';
 import { discoveryStep, updateDiscoveryUI } from './discovery-ui';
 import { LessonPointer } from './lesson-pointer';
@@ -34,6 +35,8 @@ let focusedLesson = "";
 let workshopRevealUntil = 0;
 let focusedDiscovery = '';
 const lifetime = new AbortController();
+const audio = new GameAudio();
+audio.bindControls(element('audio-controls'));
 const currency = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 const preciseCurrency = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 3 });
 const rateFormat = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 1 });
@@ -80,7 +83,7 @@ let padListKey = '';
 let mobileHintOpen = false;
 let mobileHintStep = -1;
 let ready = false;
-const tavernUI = new TavernUI({ session: () => session, navigate: kind => openContext(kind, true) });
+const tavernUI = new TavernUI({ session: () => session, navigate: kind => openContext(kind, true), onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift') });
 let booting = false;
 let lifecycle = Promise.resolve();
 let retryTimer: number | undefined;
@@ -116,6 +119,7 @@ window.addEventListener('error', event => showError(`Ein unerwarteter Fehler ist
 function syncUI(): void {
   const live = session;
   const view = scene;
+  audio.setState(ready && !!live && !live.error && !live.suspended && !live.awaitingResume, !!live && !live.paused && !live.battle.learningPaused && !live.battle.preparing);
   const unavailable = !ready || !live || live.inputBusy || Boolean(live.error) || live.suspended;
   build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = unavailable;
   if (!ready || !live || live.error || live.suspended || live.paused)
@@ -400,6 +404,7 @@ function syncUI(): void {
     : `Automatischer Vorstoß · höchste geschaffte Welle ${sim.highestCleared}.`;
   const relevantEvents = sim.drainEvents();
   scene?.acceptEvents(relevantEvents);
+  audio.accept(relevantEvents, sim);
   if (relevantEvents.some(event => event.type === 'map-update')) { selectedPadId = undefined; placementType = undefined; closeContext(); }
   const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'tavern', 'tavern-upgrade', 'boss-victory', 'clearing', 'workshop-upgrade', 'map-update'].includes(event.type)).at(-1);
   if (message) toastUntil = performance.now() + 4500;
@@ -550,6 +555,7 @@ function positionContext(): void {
 function closeContext(): void { ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); syncUI(); }
 function openContext(kind: typeof selectedPanel, buildingControls = false): void {
   if (session?.battle.preparing || performance.now() < workshopRevealUntil) return;
+  if (session && (kind === 'settlement' && session.battle.settlement.workshopBuilt || kind === 'warehouse' && session.battle.settlement.warehouseBuilt || kind === 'tavern' && buildingControls && session.battle.settlement.tavernBuilt)) audio.play('craft');
   ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; placementType = undefined; selectedPanel = kind; contextOpen = true;
   if (kind !== 'tower') { selectedPadId = undefined; scene?.setSelected(); }
   if (kind === 'tavern' && session?.battle.settlement.tavernBuilt && !buildingControls) { contextOpen = false; syncUI(); tavernUI.open(); return; }
@@ -598,7 +604,7 @@ async function selectPad(padId?: string): Promise<void> {
 async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ownershipRetries = 6): Promise<void> {
   if (booting || document.hidden) return;
   if (retryTimer !== undefined) { clearTimeout(retryTimer); retryTimer = undefined; }
-  booting = true; ready = false;
+  booting = true; ready = false; audio.setState(false, false);
   build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = true;
   element('app-error').hidden = true; element('load-actions').hidden = true; element('error-panel').hidden = true;
   try {
@@ -878,5 +884,5 @@ window.addEventListener('pagehide', () => { void session?.suspend().catch(() => 
 const heartbeat = window.setInterval(() => {
   if (!document.hidden && session && !session.suspended) void session.heartbeat().catch(() => syncUI());
 }, 1000);
-if (import.meta.hot) import.meta.hot.dispose(() => { tavernUI.destroy(); lifetime.abort(); clearInterval(heartbeat); clearTimeout(retryTimer); game?.destroy(true); void session?.close().catch(() => undefined); });
+if (import.meta.hot) import.meta.hot.dispose(() => { tavernUI.destroy(); audio.destroy(); lifetime.abort(); clearInterval(heartbeat); clearTimeout(retryTimer); game?.destroy(true); void session?.close().catch(() => undefined); });
 void boot();
