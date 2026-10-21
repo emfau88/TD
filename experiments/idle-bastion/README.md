@@ -6,7 +6,7 @@ Stand: 20.10.2026 · Umsetzungsstand und Freigaben: siehe [Roadmap](ROADMAP.md).
 
 Dieses Dokument ersetzt für Idle Bastion den ursprünglichen langen Auftrag. Es bündelt die anschließend gemeinsam besprochenen Entscheidungen einschließlich der wachsenden, scrollbar erschlossenen Karte. Die bestehende klassische SPIRE-Roadmap wird dadurch nicht verändert. Eine spätere ausdrückliche Startaufforderung autorisiert die Umsetzung bis zur ersten Zwischenabnahme, nicht das Überspringen dieser Abnahme.
 
-[Mara: Idle und Schulterreaktion ausprobieren](https://emfau88.github.io/TD/idle-bastion/mara-check.html) · Separate T01-Probe ohne Spielstandzugriff; visuelle Abnahme offen. [Atlas und Produktionshinweise](assets/mara-tavern/README.md).
+[Mara: Idle und Schulterreaktion ausprobieren](https://emfau88.github.io/TD/idle-bastion/mara-check.html) · Separate T01-Probe ohne Spielstandzugriff; visuell freigegeben am 21.10.2026. [Atlas und Produktionshinweise](assets/mara-tavern/README.md).
 
 ## Geplanter Ausbau nach Akt I
 
@@ -22,7 +22,7 @@ Ilyras neue Animationen lassen sich separat in der [bewegten Vorschau](https://e
 | --- | --- |
 | [ROADMAP.md](ROADMAP.md) | B01–B14 samt Nachbesserungen sowie geplanter Akt II B15–B22; Checklisten, Abhängigkeiten, Abschlusskriterien und Abnahmen |
 | [docs/AKT_II.md](docs/AKT_II.md) | Geplanter Ausbau: vorhandene Türme/Figuren, Taverne, Ostfront, Save-/Farmgrenzen und Zukunftsideen |
-| [docs/TAVERNE_INTERAKTION.md](docs/TAVERNE_INTERAKTION.md) | Geplanter Tavernen-Ausbau T01–T07: frühere Freischaltung, Zuneigung/Geschenke, Grafikprobe und visuelle Zwischenabnahme; noch keine Umsetzung |
+| [docs/TAVERNE_INTERAKTION.md](docs/TAVERNE_INTERAKTION.md) | Geplanter Tavernen-Ausbau T01–T07: frühere Freischaltung, Zuneigung/Geschenke, abgenommene Grafikprobe T01; weitere Integration T02–T07 geplant |
 | [docs/TECHNIK.md](docs/TECHNIK.md) | Kampf, Wirtschaft, Save, Offline-Zeit und Farmregeln |
 | [docs/ART_DIRECTION.md](docs/ART_DIRECTION.md) | Karte, Kamera, Originalmaßstab und begrenzte Gebäudeproduktion |
 | [docs/ENEMIES.md](docs/ENEMIES.md) | Vorhandene Gegner, Einführung, Rollen, Originalatlanten und Speicherschutz |

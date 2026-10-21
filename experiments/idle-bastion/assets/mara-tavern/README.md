@@ -2,7 +2,7 @@
 
 [Interaktive Vorschau](https://emfau88.github.io/TD/idle-bastion/mara-check.html) · [PNG-Atlas](mara-atlas.png) · [Frame-Metadaten](mara-atlas.json) · [Exakte Prompts](PROMPTS.md)
 
-Stand 21.10.2026. Technische Vorschau, visuelle Nutzerabnahme offen. Kein Ersatz der Kartenfigur und keine Tavernen-/Save-Integration.
+Stand 21.10.2026. Technische Vorschau, visuelle Nutzerabnahme am 21.10.2026 erteilt. Kein Ersatz der Kartenfigur und keine Tavernen-/Save-Integration.
 
 Originalreferenz: `public/assets/Hero Mara.png`. Tavernen-Berührungsmockup nur für Ausschnitt/Präsentationsqualität; keine Schutzbrille übernommen. Erwachsene Mara mit rotem Zopf, grünen Augen, türkisfarbenem Umhang/Schal und burgunderfarbener Lederkleidung.
 
@@ -18,6 +18,6 @@ Kompakte Prüfung: `node scripts/check-mara-preview.mjs`, danach `npm run idle:b
 
 Nutzerfeedback: übrige Darstellung gefällt, ausschließlich glitschende Haarbereiche nachbessern. Ein weiterer Imagegen-Aufruf beruhigt die Haarzeichnung. Da dessen Gesamtbild auch andere Details veränderte, wird es nicht vollständig übernommen. `apply-hair-pass.cjs` übernimmt nur ausgewählte kupferrote Haarpixel aus `sources/hair-pass.png`; `sources/hair-selection.png` dokumentiert die Auswahl. Nach innen auslaufende Gewichtung vermeidet harte Schnittkanten, außerhalb der Maske bleibt der Originalatlas aus Commit `8481d5b` bytegenau erhalten. Gesicht, Hautbereiche und gekreuzter Arm werden zusätzlich ausgespart. Keine Verschiebung, Verformung oder neue Animation.
 
-45.836 geänderte Pixel innerhalb der Auswahl, null geänderte Pixel außerhalb. Unabhängiger dekodierter Vergleich bestanden. Frame-Metadaten, Timing, UI und Laufzeitcode unverändert. Steuerungsprüfung und Idle-Build bestanden; weitere visuelle Abnahme bleibt beim Nutzer. Die Referenzfassung ist weiterhin in Git verfügbar.
+45.836 geänderte Pixel innerhalb der Auswahl, null geänderte Pixel außerhalb. Unabhängiger dekodierter Vergleich bestanden. Frame-Metadaten, Timing, UI und Laufzeitcode unverändert. Steuerungsprüfung und Idle-Build bestanden; diese Fassung wurde am 21.10.2026 vom Nutzer visuell freigegeben. Die Referenzfassung ist weiterhin in Git verfügbar.
 
 Reproduktion: Sharp als Assetwerkzeug verfügbar machen und im Repo `node experiments/idle-bastion/assets/mara-tavern/apply-hair-pass.cjs` ausführen. Kein zusätzliches Paket im Spiel/Build benötigt.

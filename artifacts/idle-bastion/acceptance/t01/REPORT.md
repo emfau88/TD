@@ -1,6 +1,6 @@
 # T01 — Mara Animationsprobe
 
-Stand: 21.10.2026. Ausschließlich separate Vorschau; visuelle Nutzerabnahme offen.
+Stand: 21.10.2026. Separate Vorschau einschließlich Haarkorrektur vom Nutzer visuell freigegeben.
 
 Geliefert: ein transparenter, mit Imagegen erzeugter Atlas mit zwölf echten Zeichnungen, vier für Idle/Blinzeln und acht für eine Schulterreaktion. Eine gezielte Generierung korrigierte den zunächst wechselnden Arm. Rendering registriert die Frames am Gürtel, ohne die Bilder zu verformen. Metadaten und exakte Prompts liegen bei den Assets.
 
@@ -26,4 +26,8 @@ Die Frames wurden als Atlas und in der dargestellten Reaktionspose angesehen. Da
 
 ## Haar-Nachbesserung vom 21.10.2026
 
-Nach Nutzerfeedback nur die Haarzeichnung nachgebessert. Imagegen-Kandidat über eine begrenzte Haarmaske mit dem abgenommenen Original verbunden; unerwünschte Änderungen an anderen Bildbereichen nicht übernommen. Unabhängiger RGBA-Vergleich: 45.836 geänderte Pixel innerhalb der Maske, null außerhalb. UI, Framepositionen, Zeitablauf und Spiellogik unverändert. Kompakte Steuerungsprüfung und Build bestanden; visuelle Gesamtfreigabe weiterhin offen. Die Screenshots oben zeigen die erste Vorschau, nicht diese kleine Nachbesserung.
+Nach Nutzerfeedback nur die Haarzeichnung nachgebessert. Imagegen-Kandidat über eine begrenzte Haarmaske mit dem abgenommenen Original verbunden; unerwünschte Änderungen an anderen Bildbereichen nicht übernommen. Unabhängiger RGBA-Vergleich: 45.836 geänderte Pixel innerhalb der Maske, null außerhalb. UI, Framepositionen, Zeitablauf und Spiellogik unverändert. Kompakte Steuerungsprüfung und Build bestanden; visuelle Gesamtfreigabe anschließend erteilt (siehe unten). Die Screenshots oben zeigen die erste Vorschau, nicht diese kleine Nachbesserung.
+
+## Visuelle Nutzerfreigabe
+
+Am 21.10.2026 erteilte der Nutzer ausdrücklich „freigabe erteilt“. Bezug: die veröffentlichte Mara-Vorschau `mara-check.html?v=fcc7bc1`, einschließlich der gezielten Haarkorrektur. T01 ist damit technisch und visuell abgeschlossen. Diese Freigabe gilt für Mara mit Idle und einer Schulterreaktion; sie startet T02 oder weitere Reaktionen/Figuren nicht automatisch.
