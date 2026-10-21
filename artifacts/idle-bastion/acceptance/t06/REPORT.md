@@ -25,3 +25,9 @@ Keine komplette Kampagne, kein physisches Smartphone und keine neue Langzeitbala
 <img src="ilyra-touch-mobile.png" width="280" alt="Dezente Markierungen im Hochkantformat"> <img src="ilyra-five-mobile.png" width="280" alt="Fünfte Herzszene in Hochkant">
 
 [Spiel](https://emfau88.github.io/TD/idle-bastion/) · [Isolierte Ilyra-Tavernenprobe](https://emfau88.github.io/TD/idle-bastion/tavern-check.html?hero=ilyra). GitHub-Pages-Veröffentlichung über den bestehenden Branch-Workflow; Abschlussstatus im Chat nach Push prüfen.
+
+## Nachkorrektur: rosa Herzen
+
+Auf Nutzerwunsch ersetzen kleine rosa Herzen (18 px) die Goldpunkte, damit sie sich von Ilyras goldenem Schmuck unterscheiden. Unsichtbare 44-px-Touchflächen und Verhalten bleiben erhalten; gemeinsame CSS-Regel für Mara und Ilyra. Lokal im Browser visuell geprüft, keine Logikänderung und keine neue Testserie. Die älteren Screenshots oben dokumentieren den vorherigen Punktestand.
+
+![Rosa Herzen als dezente Interaktionsmarker](pink-hearts.png)

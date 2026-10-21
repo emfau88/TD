@@ -17,7 +17,7 @@
 **T05 – Maras fünf Herz-Momente:** Jedes verdiente Herz öffnet einen eigenen persönlichen Moment; dafür das Herz in Maras Ansicht antippen. Begrüßungen, Gespräche und Berührungsreaktionen entwickeln sich mit dem Vertrauen. Verdiente Momente bleiben nach Reload kostenlos wieder abspielbar. [Inhalte und kompakter Prüfbericht](artifacts/idle-bastion/acceptance/t05/REPORT.md).
 
 
-**T06 – Ilyra in der Taverne:** Nach ihrer regulären Rekrutierung mit Ilyra sprechen, Hand/Haare/Schulter berühren und Geschenke überreichen. Eigene große Idle-/Reaktionsanimationen und fünf persönliche Herzmomente; Zuneigung bleibt pro Gefährtin getrennt. Die kleinen Goldmarkierungen verdecken wenig, ihre Touchflächen bleiben groß.
+**T06 – Ilyra in der Taverne:** Nach ihrer regulären Rekrutierung mit Ilyra sprechen, Hand/Haare/Schulter berühren und Geschenke überreichen. Eigene große Idle-/Reaktionsanimationen und fünf persönliche Herzmomente; Zuneigung bleibt pro Gefährtin getrennt. Die kleinen rosa Herzen verdecken wenig, ihre Touchflächen bleiben groß.
 
 [▶ Taverne mit Ilyra direkt ansehen – ohne Zugriff auf deinen Spielstand](https://emfau88.github.io/TD/idle-bastion/tavern-check.html?hero=ilyra) · [Prüfbericht](artifacts/idle-bastion/acceptance/t06/REPORT.md) · [Atlanten und Prompts](experiments/idle-bastion/assets/ilyra-tavern/README.md).
 

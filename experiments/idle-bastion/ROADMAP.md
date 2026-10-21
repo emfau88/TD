@@ -73,7 +73,7 @@ Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvo
   - [x] Eigene große Ilyra mit Idle sowie Hand-/Haar-/Schulterreaktion; freigegebene erwachsene Identität erhalten. Zwei ausgewählte Imagegen-Atlanten, feste Gürtelanker und ruhender Speer. Nutzer am 21.10.2026: „sieht gut aus“.
   - [x] Fünf eigene Drei-Abschnitt-Momente und sechs Dialogstufen. Gemeinsame Technik/Geschenke, getrennte Zuneigung; erst nach tatsächlicher Rekrutierung zugänglich. Mara/Wisp und reguläre Boss-25-Rekrutierung bleiben erhalten.
   - [x] Desktop/Hochkant, Transparenz, Figurenwechsel, Ladebudget und gezielte Speicher-/Transaktionsprüfungen. Keine Änderung an Sternensalve, Standort, Einführung oder Automatik.
-  - [x] Nutzerkorrektur: kleine goldene 14-px-Markierungen, weiterhin 44-px-Touchflächen; keine dauerhaft verdeckenden Beschriftungen. Gilt auch für Mara.
+  - [x] Nutzerkorrektur: kleine rosa Herzen (18 px), klar von goldenem Charakterschmuck unterscheidbar, weiterhin 44-px-Touchflächen; keine dauerhaft verdeckenden Beschriftungen. Gilt auch für Mara.
   - [Nachweis und Screenshots](../../artifacts/idle-bastion/acceptance/t06/REPORT.md) · [Isolierte Vorschau ohne Savezugriff](https://emfau88.github.io/TD/idle-bastion/tavern-check.html?hero=ilyra) · [Atlanten/Prompts](assets/ilyra-tavern/README.md).
 
 - [ ] **21 · T07 — Gemeinsame Abnahme und Veröffentlichung. Geplant; benötigt T06.**
