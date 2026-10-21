@@ -6,7 +6,7 @@ import { TavernAnimation, drawCompanionPortrait, type TouchRegion } from './tave
 import './tavern-ui.css';
 
 type Destination = 'tavern' | 'mara' | 'wisp' | 'ilyra';
-interface Ports { session: () => BattleSession | undefined; navigate: (where: Destination) => void; onOpenChange?: (open:boolean) => void; onGift?: () => void }
+interface Ports { session: () => BattleSession | undefined; navigate: (where: Destination) => void; onOpenChange?: (open:boolean) => void; onGift?: () => void; onCompanion?: (who:Companion|null) => void; onTouch?: (who:Companion) => void }
 export class TavernUI {
   readonly dialog: HTMLDialogElement;
   private readonly lifetime = new AbortController();
@@ -100,7 +100,7 @@ export class TavernUI {
     this.lastLives = session.battle.lives; this.lastPhase = session.battle.phase; this.lastDefeat = session.battle.progress.lastDefeat?.attemptId ?? 0;
     this.get('.tv-warning').hidden = true; this.dialog.showModal(); this.ports.onOpenChange?.(true); this.show('overview'); this.get<HTMLButtonElement>('[data-do="close"]').focus();
   }
-  close(): void { this.animation.stop(); this.dialog.close(); this.generation++; this.opener?.focus(); }
+  close(): void { this.ports.onCompanion?.(null); this.animation.stop(); this.dialog.close(); this.generation++; this.opener?.focus(); }
   private back(): void { if (this.moment) { this.endMoment(); return; } if (this.screen === 'touch') this.show('character'); else if (this.screen === 'character') this.show('overview'); else this.close(); }
   private navigate(where: Destination): void { this.close(); this.ports.navigate(where); }
   private select(who: Companion): void {
@@ -109,6 +109,7 @@ export class TavernUI {
     this.screen = 'overview'; this.show('character');
   }
   private show(screen: typeof this.screen): void {
+    this.ports.onCompanion?.(screen==='overview'?null:this.selected);
     const wasOverview = this.screen === 'overview'; this.screen = screen;
     this.moment = undefined;
     this.dialog.dataset.screen = screen;
@@ -261,7 +262,7 @@ export class TavernUI {
       if (afterHearts > hearts(beforePoints)) this.newMoment = afterHearts;
       this.text('result', result.points ? `+${result.points} Zuneigung zu ${content.name}${action === 'gift' ? ' · 1 Geschenk überreicht' : ''}` : offer.reason === 'complete' ? `Alle Herzen erreicht. ${content.name} freut sich trotzdem über deinen Besuch.` : `${content.name} freut sich über deine Nähe. Für diesen Abschnitt gibt es keine weiteren Punkte.`);
       if (action === 'gift' && result.points > 0) this.ports.onGift?.();
-      if (action === 'touch') this.animation.play(region);
+      if (action === 'touch') { this.animation.play(region); this.ports.onTouch?.(who); }
     } finally { this.pending = false; this.update(); }
   }
   destroy(): void { this.animation.stop(); this.observer.disconnect(); this.lifetime.abort(); this.dialog.remove(); }

@@ -83,7 +83,7 @@ let padListKey = '';
 let mobileHintOpen = false;
 let mobileHintStep = -1;
 let ready = false;
-const tavernUI = new TavernUI({ session: () => session, navigate: kind => openContext(kind, true), onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift') });
+const tavernUI = new TavernUI({ session: () => session, navigate: kind => openContext(kind, true), onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift'), onCompanion: who => audio.setCompanion(who), onTouch: who => audio.touchCompanion(who) });
 let booting = false;
 let lifecycle = Promise.resolve();
 let retryTimer: number | undefined;

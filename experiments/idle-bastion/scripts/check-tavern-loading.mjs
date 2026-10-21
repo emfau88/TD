@@ -30,7 +30,8 @@ try {
   b.update(4); b.highestCleared = 25; b.gold = 12000; b.bossVictories = 1; b.secondBossVictories = 1;
   b.buildTavern(b.recommendedTavernPlot); b.upgradeTavern(); b.recruitIlyra();
   b.social.points.mara = 12;
-  ui = new TavernUI({ session: () => session, navigate() {} });
+  const touches=[];
+  ui = new TavernUI({ session: () => session, navigate() {}, onTouch:who=>touches.push(who) });
   assert.equal(requests.length, 0, 'no portrait or animation request before opening');
   ui.open(); await settle();
   assert.equal(requests.length, 2);
@@ -64,6 +65,11 @@ try {
   assert.deepEqual(snapshot(), { busy: true, talkDisabled: false, unlockedHeartDisabled: false, lockedHeartDisabled: true });
   await settle(); ui.update(); console.log('after checkpoint', JSON.stringify(snapshot()));
   assert.deepEqual(snapshot(), { busy: false, talkDisabled: false, unlockedHeartDisabled: false, lockedHeartDisabled: true });
+  document.querySelector('[data-do="touch"]').click();
+  document.querySelector('[data-region="hand"]').click();await settle();await settle();
+  assert.deepEqual(touches,['mara'],'successful touch triggers one voice cue');
+  document.querySelector('[data-region="hand"]').click();await settle();
+  assert.deepEqual(touches,['mara'],'blocked repeated tap does not trigger a voice');
 } finally {
   ui?.destroy(); await session?.close(); await server.close(); dom.window.close();
 }

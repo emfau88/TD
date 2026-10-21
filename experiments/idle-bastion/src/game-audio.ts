@@ -1,5 +1,6 @@
 import { AudioObserver, CUES, CueLimiter, readMix, type AudioMix, type Cue, battleCues } from './audio-cues';
 import type { BattleEvent, IdleBattle } from './battle';
+import { MaraVoice } from './mara-voice';
 
 // URL imports emit files but do not fetch them. Music streams only after a user gesture.
 const files = import.meta.glob('../assets/audio/*.{wav,mp3}', { eager:true, query:'?url', import:'default' }) as Record<string,string>;
@@ -17,6 +18,8 @@ export class GameAudio {
   private combat?: GainNode;
   private voices?: GainNode;
   private charmActive = false;
+  private companion: 'mara'|'ilyra'|null = null;
+  private maraVoice?: MaraVoice;
   private tracks = new Map<Music,Track>();
   private music: Music = 'field';
   private buffers = new Map<Cue,Promise<AudioBuffer | undefined>>();
@@ -83,6 +86,8 @@ export class GameAudio {
     this.music=music; this.refresh();
     if(open) this.play('craft');
   }
+  setCompanion(who:'mara'|'ilyra'|null):void {this.companion=who;this.refresh();}
+  touchCompanion(who:'mara'|'ilyra'):void {if(who==='mara')this.maraVoice?.play();}
   setMix(mix:Partial<AudioMix>): void {
     this.mix=readMix({...this.mix,...mix});
     try { localStorage.setItem(MIX_KEY,JSON.stringify(this.mix)); } catch { /* Private browsing: keep session settings. */ }
@@ -95,6 +100,7 @@ export class GameAudio {
     gain.gain.linearRampToValueAtTime(value,time+seconds);
   }
   private silence(): void {
+    this.maraVoice?.setState(false,0);
     this.epoch++; clearTimeout(this.musicTimer);
     for(const voice of [...this.active]) this.stop(voice);
     for(const track of this.tracks.values()) { track.element.pause(); track.gain.gain.cancelScheduledValues(this.context!.currentTime); track.gain.gain.value=0; }
@@ -104,6 +110,9 @@ export class GameAudio {
   private refresh(): void {
     if(!this.context) return;
     if(!this.canPlay()) { this.silence(); return; }
+    const maraReady=this.music==='tavern'&&this.companion==='mara'&&this.mix.voices>0;
+    if(maraReady&&!this.maraVoice)this.maraVoice=new MaraVoice(this.context,this.master!);
+    this.maraVoice?.setState(maraReady,this.mix.voices);
     this.ramp(this.master!,1); this.ramp(this.effects!,this.mix.effects);
     this.ramp(this.voices!,this.mix.voices*(this.music==='tavern'?.3:1));
     this.ramp(this.combat!,this.music==='tavern'?.12:1);
@@ -188,6 +197,7 @@ export class GameAudio {
   }
   destroy(): void {
     this.disposed=true;this.silence();this.lifetime.abort();
+    this.maraVoice?.destroy();
     for(const track of this.tracks.values()){track.source.disconnect();track.gain.disconnect();track.element.removeAttribute('src');track.element.load();track.element.remove();}
     this.buffers.clear();void this.context?.close();
   }

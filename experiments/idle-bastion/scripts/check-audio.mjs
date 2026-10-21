@@ -58,6 +58,18 @@ try {
   assert.equal([...audio.active].filter(v=>v.speech).length,0,'end/interruption stops laugh');
   audio.setMix({voices:0});battle.bossCharm.phase='windup';audio.accept([],battle);await settle();
   assert.equal(starts,beforeDance+1,'voice slider mutes later laughs');
+  const {nextVoiceIndex}=await server.ssrLoadModule('/src/mara-voice.ts');
+  for(let previous=0;previous<10;previous++)for(const roll of [0,.2,.5,.99])assert.notEqual(nextVoiceIndex(10,previous,()=>roll),previous);
+  assert.equal(document.querySelector('[data-spire-voice=mara]'),null,'no Mara clips loaded on map/overview');
+  audio.setMix({voices:.55});audio.setState(true,false);audio.setCompanion('mara');
+  const voice=document.querySelector('[data-spire-voice=mara]');
+  assert.ok(voice.src.includes('flirty_'));assert.equal(voice.paused,true,'selection preloads without autoplay');
+  const beforeTouch=plays;audio.touchCompanion('mara');await settle();
+  assert.equal(plays,beforeTouch+1,'Mara speaks during an accepted touch even with combat paused');
+  audio.touchCompanion('mara');await settle();assert.equal(plays,beforeTouch+1,'rapid touches do not overlap voice');
+  const lastLine=voice.src;voice.onended();assert.notEqual(voice.src,lastLine,'next line never repeats directly');
+  audio.setCompanion('ilyra');assert.equal(voice.paused,true);assert.equal(voice.getAttribute('src'),null);
+  audio.touchCompanion('ilyra');await settle();assert.equal(plays,beforeTouch+1);
   audio.destroy();audio=undefined;assert.equal(document.querySelectorAll('audio').length,0);
   console.log('PASS: gesture/lazy loading, music crossfade, mute, pause, hidden tab, ownership, storage, boss voice edges/channel/end and cleanup.');
 } finally {audio?.destroy();await server.close();dom.window.close();}

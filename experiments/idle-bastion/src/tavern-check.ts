@@ -10,7 +10,7 @@ const audio = new GameAudio(); audio.setState(true, false);
 b.update(4); b.highestCleared = 12; b.gold = 2500; b.settlement.workshopBuilt = true; b.settlement.frostResearched = true;
 b.update(0.05); b.buildTavern(b.recommendedTavernPlot!);
 const notice = document.getElementById('review-notice')!;
-const ui = new TavernUI({ session: () => session, onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift'), navigate: where => { notice.textContent = `In der Spielansicht öffnet sich jetzt: ${where === 'tavern' ? 'Gebäude, Ausbau und Rekrutierung' : where + ' · Kampfverwaltung'}.`; } });
+const ui = new TavernUI({ session: () => session, onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift'), onCompanion: who => audio.setCompanion(who), onTouch: who => audio.touchCompanion(who), navigate: where => { notice.textContent = `In der Spielansicht öffnet sich jetzt: ${where === 'tavern' ? 'Gebäude, Ausbau und Rekrutierung' : where + ' · Kampfverwaltung'}.`; } });
 session.onChange = () => ui.update();
 document.getElementById('review-hearts')!.addEventListener('change', event => {
   const count = Number((event.target as HTMLSelectElement).value);

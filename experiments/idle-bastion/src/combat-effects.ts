@@ -1,6 +1,7 @@
 import type Phaser from 'phaser';
 import { visualStage, type BattleEvent } from './battle';
 import { TOWER_SHEETS, towerSheet } from './tower-atlas';
+import { worldEffectDepth } from './world-depth';
 
 type Effect = { sprite: Phaser.GameObjects.Image; at: number; frames: readonly number[]; duration: number };
 /** Cosmetic, bounded effects follow confirmed simulation time, including pause. */
@@ -21,7 +22,7 @@ export class CombatEffects {
       if ((e.type === 'build' || e.type === 'upgrade') && e.tower) {
         const sheet = TOWER_SHEETS.construction;
         // The last transition contains only dust: no premature Wisp or wrong tower silhouette.
-        this.add(sheet.key, e.tower.x, e.tower.y + 14, sheet.frameMap.slice(28, 33), elapsed, 0.55, 0.55, 0.8);
+        this.add(sheet.key, e.tower.x, e.tower.y + 14, sheet.frameMap.slice(28, 33), elapsed, 0.55, 0.55, 0.8, e.tower.y);
       }
       if (e.type === 'hit' && e.shot && !hits.has(e.shot.uid)) {
         hits.add(e.shot.uid);
@@ -31,9 +32,9 @@ export class CombatEffects {
       }
     }
   }
-  private add(key: string, x: number, y: number, frames: readonly number[], at: number, duration: number, scale: number, origin = 0.5): void {
+  private add(key: string, x: number, y: number, frames: readonly number[], at: number, duration: number, scale: number, origin = 0.5, groundY = y): void {
     if (this.effects.length >= 96) this.effects.shift()!.sprite.destroy();
-    this.effects.push({ sprite: this.scene.add.image(x, y, key, frames[0]).setScale(scale).setOrigin(0.5, origin).setDepth(5502), at, frames, duration });
+    this.effects.push({ sprite: this.scene.add.image(x, y, key, frames[0]).setScale(scale).setOrigin(0.5, origin).setDepth(worldEffectDepth(groundY)), at, frames, duration });
   }
   update(elapsed: number, shots: ReadonlySet<number>, towers: ReadonlySet<number>): void {
     for (const id of this.shots.keys()) if (!shots.has(id)) this.shots.delete(id);

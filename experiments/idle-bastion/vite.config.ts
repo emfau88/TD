@@ -22,6 +22,7 @@ export default defineConfig({
         tavern: fileURLToPath(new URL('./tavern-check.html', import.meta.url)),
         audioCredits: fileURLToPath(new URL('./audio-credits.html', import.meta.url)),
         voiceCheck: fileURLToPath(new URL('./voice-check.html', import.meta.url)),
+        effectsCheck: fileURLToPath(new URL('./effects-check.html', import.meta.url)),
         mara: fileURLToPath(new URL('./mara-check.html', import.meta.url)),
       },
     },
