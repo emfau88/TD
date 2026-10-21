@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SPIRE · Stimmen auswählen</title>
+<style>
+:root{color-scheme:dark;font:16px/1.5 system-ui,sans-serif;color:#f5e9df;background:#18151b}
+*{box-sizing:border-box}body{max-width:1080px;margin:0 auto;padding:24px 18px 60px}h1{font:32px Georgia,serif;margin:8px 0}h2{font:24px Georgia,serif}p{color:#cbbbba}a{color:#efb6c9}header{max-width:720px}.eyebrow{color:#dda8ba;letter-spacing:.13em;font-size:12px;text-transform:uppercase}.clips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px}article{background:#252029;border:1px solid #58434d;border-radius:12px;padding:16px}article:has(input:checked){border-color:#f1a7c6;background:#332530}article p{font-size:13px;margin:4px 0 12px}audio{display:block;width:100%;height:42px}label{display:flex;align-items:center;gap:10px;min-height:44px;cursor:pointer;font-weight:600}input{width:20px;height:20px;accent-color:#e99cbb}textarea{display:block;width:100%;min-height:70px;padding:12px;border:1px solid #795565;border-radius:8px;background:#211a22;color:#f5dbe6;font:16px system-ui}.selection{margin:26px 0;padding:18px;border:1px solid #795565;border-radius:12px}.selection h2{margin:0}footer{margin-top:32px;font-size:14px}
+</style></head>
+<body><header><span class="eyebrow">SPIRE · Hörvergleich</span><h1>Welche Stimme passt?</h1>
+<p>24 einzelne „Hmms“ aus zwei Aufnahmen. Höre die Varianten an und merke deine Favoriten vor. Die Clips sind noch keiner Figur oder Berührung zugeordnet und werden im Spiel nicht geladen.</p>
+<p>Teile mir anschließend einfach die Kennungen mit, zum Beispiel „Mara: A02, Ilyra: B07“. Es läuft immer nur ein Clip gleichzeitig.</p></header>
+<section class="selection"><h2>Dein Merkzettel</h2><p id="count" aria-live="polite">Noch keine Favoriten ausgewählt.</p><textarea id="selection" readonly aria-label="Ausgewählte Clip-Kennungen" placeholder="Hier erscheinen deine Favoriten."></textarea></section>
+<main id="clips"></main>
+<footer><p>Originalaufnahmen von esperar: <a href="https://freesound.org/people/esperar/sounds/170767/">Hmms various 1 (A)</a> · <a href="https://freesound.org/people/esperar/sounds/170766/">Hmms various 2 (B)</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.<br>Nur getrennt, Pausen gekürzt und Schnittkanten kurz ein-/ausgeblendet; keine Änderung von Tonhöhe oder Tempo. Deine Auswahl bleibt nur während dieses Seitenbesuchs erhalten.</p><a href="./index.html">Zum Spiel</a> · <a href="./audio-credits.html">Alle Audioquellen</a></footer>
+<script type="module" src="/src/voice-check.ts"></script></body></html>

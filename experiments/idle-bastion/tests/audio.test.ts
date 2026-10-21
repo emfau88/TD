@@ -43,3 +43,22 @@ test('settings tolerate invalid storage and never exceed safe slider range',()=>
   assert.deepEqual(readMix(null),DEFAULT_MIX);
   assert.deepEqual(readMix({music:Infinity,effects:-1,voices:2,muted:'false'}),{music:.16,effects:0,voices:1,muted:false});
 });
+
+test('tower build and upgrade have distinct cues; settlement keeps craft',()=>{
+  assert.deepEqual(battleCues([{type:'build'},{type:'upgrade'},{type:'workshop'}]),['build','upgrade','craft']);
+});
+
+test('boss laugh starts once per dance, never on load or windup-to-channel',()=>{
+  const b=new IdleBattle(), observer=new AudioObserver();
+  observer.update(b,true);
+  b.bossCharm.phase='windup';b.bossCharm.targetUid=1;
+  assert.deepEqual(observer.update(b,true),['charm']);
+  b.bossCharm.phase='channel';
+  assert.deepEqual(observer.update(b,true),[]);
+  assert.deepEqual(new AudioObserver().update(b,true),[],'loaded dance remains silent');
+  b.bossCharm.phase='idle';observer.update(b,true);
+  b.bossCharm.phase='windup';
+  assert.deepEqual(observer.update(b,true),['charm'],'next dance on same tower sounds again');
+  observer.update(b,false);
+  assert.deepEqual(observer.update(b,true),[],'resuming does not restart laugh');
+});

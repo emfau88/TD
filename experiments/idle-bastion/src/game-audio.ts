@@ -7,7 +7,7 @@ const url = (file:string) => files[`../assets/audio/${file}`]!;
 const MIX_KEY = 'spire-audio-mix-v1';
 type Music = 'field'|'tavern';
 type Track = { element:HTMLAudioElement; gain:GainNode; source:MediaElementAudioSourceNode };
-type Voice = { source:AudioBufferSourceNode; gain:GainNode; combat:boolean };
+type Voice = { source:AudioBufferSourceNode; gain:GainNode; combat:boolean; speech:boolean };
 
 export class GameAudio {
   mix: AudioMix;
@@ -15,6 +15,8 @@ export class GameAudio {
   private master?: GainNode;
   private effects?: GainNode;
   private combat?: GainNode;
+  private voices?: GainNode;
+  private charmActive = false;
   private tracks = new Map<Music,Track>();
   private music: Music = 'field';
   private buffers = new Map<Cue,Promise<AudioBuffer | undefined>>();
@@ -53,8 +55,9 @@ export class GameAudio {
         const Context = window.AudioContext ?? (window as unknown as {webkitAudioContext: typeof AudioContext}).webkitAudioContext;
         if (!Context) { this.setStatus('Audio wird in diesem Browser nicht unterstützt.'); return; }
         const ctx = this.context = new Context();
-        this.master = ctx.createGain(); this.effects = ctx.createGain(); this.combat = ctx.createGain();
+        this.master = ctx.createGain(); this.effects = ctx.createGain(); this.combat = ctx.createGain(); this.voices = ctx.createGain();
         this.effects.connect(this.master); this.combat.connect(this.effects);
+        this.voices.connect(this.master);
         // A safety ceiling for overlapping transient effects, not automatic loudness boosting.
         const compressor = ctx.createDynamicsCompressor(); compressor.threshold.value=-6; compressor.ratio.value=8;
         this.master.connect(compressor); compressor.connect(ctx.destination);
@@ -64,7 +67,7 @@ export class GameAudio {
       if (!this.unlocked) {
         this.unlocked = true;
         // Small effects warm once; long music never enters an AudioBuffer.
-        if (this.mix.effects > 0) for(const cue of Object.keys(CUES) as Cue[]) void this.load(cue);
+        for(const cue of Object.keys(CUES) as Cue[]) if ((cue==='charm'?this.mix.voices:this.mix.effects)>0) void this.load(cue);
       }
       this.setStatus(''); this.refresh();
     } catch { this.setStatus('Ton noch gesperrt. Tippe auf „Ton testen“.'); }
@@ -102,8 +105,9 @@ export class GameAudio {
     if(!this.context) return;
     if(!this.canPlay()) { this.silence(); return; }
     this.ramp(this.master!,1); this.ramp(this.effects!,this.mix.effects);
+    this.ramp(this.voices!,this.mix.voices*(this.music==='tavern'?.3:1));
     this.ramp(this.combat!,this.music==='tavern'?.12:1);
-    if(!this.running || this.mix.effects===0) for(const voice of [...this.active]) if(voice.combat || this.mix.effects===0) this.stop(voice);
+    for(const voice of [...this.active]) if(!this.running && voice.combat || (voice.speech?this.mix.voices:this.mix.effects)===0) this.stop(voice);
     this.refreshMusic();
   }
   private refreshMusic(): void {
@@ -135,21 +139,23 @@ export class GameAudio {
   }
   play(cue:Cue): void { void this.start(cue); }
   private async start(cue:Cue): Promise<void> {
-    const spec=CUES[cue];
-    if(!this.canPlay() || this.mix.effects===0 || spec.combat && !this.running) return;
+    const spec=CUES[cue], speech=cue==='charm', combat=spec.combat || speech;
+    const available=()=>this.canPlay() && (speech?this.mix.voices:this.mix.effects)>0 && (!combat || this.running) && (!speech || this.charmActive);
+    if(!available()) return;
     const requested=performance.now(), epoch=this.epoch;
     const buffer=await this.load(cue);
-    if(!buffer || epoch!==this.epoch || !this.canPlay() || this.mix.effects===0 || spec.combat && !this.running || performance.now()-requested>250) return;
+    if(!buffer || epoch!==this.epoch || !available() || performance.now()-requested>250) return;
     const fighting=[...this.active].filter(v=>v.combat).length;
     if(!this.limiter.allow(cue,performance.now(),fighting)) return;
+    if(speech) for(const voice of [...this.active]) if(voice.speech) this.stop(voice);
     if(this.active.size>=6) {
-      const victim=[...this.active].find(v=>v.combat) ?? (cue==='alarm'?[...this.active][0]:undefined);
+      const victim=[...this.active].find(v=>v.combat && !v.speech) ?? (cue==='alarm'||speech?[...this.active][0]:undefined);
       if(!victim) return; this.stop(victim);
     }
     const source=this.context!.createBufferSource(),gain=this.context!.createGain();
     source.buffer=buffer; gain.gain.value=spec.gain;
-    source.connect(gain); gain.connect(spec.combat?this.combat!:this.effects!);
-    const voice={source,gain,combat:spec.combat}; this.active.add(voice);
+    source.connect(gain); gain.connect(speech?this.voices!:spec.combat?this.combat!:this.effects!);
+    const voice={source,gain,combat,speech}; this.active.add(voice);
     source.onended=()=>{this.active.delete(voice);source.disconnect();gain.disconnect();};
     if(cue==='draw1'||cue==='draw2') {
       // Short final draw accent during the existing cooldown, not a delayed projectile.
@@ -160,6 +166,8 @@ export class GameAudio {
   }
   private stop(voice:Voice): void { voice.source.stop(); this.active.delete(voice); }
   accept(events:readonly BattleEvent[],b:IdleBattle): void {
+    this.charmActive=['windup','channel'].includes(b.bossCharm.phase);
+    if(!this.charmActive) for(const voice of [...this.active]) if(voice.speech) this.stop(voice);
     for(const cue of battleCues(events)) this.play(cue);
     for(const cue of this.observer.update(b,this.running)) this.play(cue);
   }

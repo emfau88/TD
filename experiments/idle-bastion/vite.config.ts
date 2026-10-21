@@ -21,6 +21,7 @@ export default defineConfig({
         ilyra: fileURLToPath(new URL('./ilyra-check.html', import.meta.url)),
         tavern: fileURLToPath(new URL('./tavern-check.html', import.meta.url)),
         audioCredits: fileURLToPath(new URL('./audio-credits.html', import.meta.url)),
+        voiceCheck: fileURLToPath(new URL('./voice-check.html', import.meta.url)),
         mara: fileURLToPath(new URL('./mara-check.html', import.meta.url)),
       },
     },

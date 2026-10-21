@@ -4,6 +4,9 @@ import { stats } from './battle';
 export const CUES = {
   click: { file:'click.wav', gain:.22, gap:80, combat:false },
   craft: { file:'craft.wav', gain:.4, gap:450, combat:false },
+  build: { file:'tower-build.wav', gain:.5, gap:200, combat:false },
+  upgrade: { file:'tower-upgrade.wav', gain:.45, gap:140, combat:false },
+  charm: { file:'succubus-laugh.mp3', gain:.7, gap:1000, combat:false },
   gift: { file:'gift.wav', gain:.9, gap:600, combat:false },
   alarm: { file:'alarm.wav', gain:.7, gap:1200, combat:false },
   mara: { file:'mara-spell.wav', gain:.65, gap:1500, combat:true },
@@ -32,7 +35,9 @@ export function battleCues(events: readonly BattleEvent[]): Cue[] {
   const cues: Cue[] = [], hits = new Set<number>();
   for (const e of events) {
     if (e.type === 'escape') cues.push('alarm');
-    else if (['build','upgrade','workshop','warehouse','tavern','research','workshop-upgrade','tavern-upgrade'].includes(e.type)) cues.push('craft');
+    else if (e.type === 'build') cues.push('build');
+    else if (e.type === 'upgrade') cues.push('upgrade');
+    else if (['workshop','warehouse','tavern','research','workshop-upgrade','tavern-upgrade'].includes(e.type)) cues.push('craft');
     else if (e.type === 'fire' && e.shot) {
       if (e.shot.kind === 1) cues.push('shoot1');
       else if (e.shot.kind === 4) cues.push('shoot2');
@@ -47,15 +52,17 @@ export function battleCues(events: readonly BattleEvent[]): Cue[] {
 
 /** State edges catch manual AND automatic spells without replaying loaded effects. */
 export class AudioObserver {
-  private previous?: { battle:IdleBattle; mara:number; ilyra:number; gifts:number };
+  private previous?: { battle:IdleBattle; mara:number; ilyra:number; gifts:number; charm:boolean; target:number|null };
   private drawing = new Set<number>();
   update(b: IdleBattle, running: boolean): Cue[] {
-    const next = { battle:b, mara:b.mara.cooldownRemaining, ilyra:b.ilyra?.cooldown ?? 0, gifts:b.social.gifts };
+    const next = { battle:b, mara:b.mara.cooldownRemaining, ilyra:b.ilyra?.cooldown ?? 0, gifts:b.social.gifts,
+      charm:['windup','channel'].includes(b.bossCharm.phase), target:b.bossCharm.targetUid };
     const before = this.previous; this.previous = next;
     if (!before || before.battle !== b) { this.drawing.clear(); return []; }
     const cues: Cue[] = [];
     if (next.gifts > before.gifts) cues.push('gift');
     if (!running) { this.drawing.clear(); return cues; }
+    if (next.charm && (!before.charm || before.target !== next.target)) cues.push('charm');
     if (next.mara > before.mara + .1 && b.mara.effectRemaining > 0) cues.push('mara');
     if (next.ilyra > before.ilyra + .1 && b.ilyra?.volley) cues.push('ilyra');
     const drawing = new Set<number>();
