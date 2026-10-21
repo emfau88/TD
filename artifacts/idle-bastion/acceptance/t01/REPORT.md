@@ -23,3 +23,7 @@ Die Frames wurden als Atlas und in der dargestellten Reaktionspose angesehen. Da
 ![Desktop-Vorschau](desktop.jpg)
 
 <img src="mobile.jpg" width="300" alt="Mara im Hochkant-Viewport"> <img src="mobile-reaction.jpg" width="300" alt="Einzelbild der Schulterreaktion, Animation bewusst pausiert">
+
+## Haar-Nachbesserung vom 21.10.2026
+
+Nach Nutzerfeedback nur die Haarzeichnung nachgebessert. Imagegen-Kandidat über eine begrenzte Haarmaske mit dem abgenommenen Original verbunden; unerwünschte Änderungen an anderen Bildbereichen nicht übernommen. Unabhängiger RGBA-Vergleich: 45.836 geänderte Pixel innerhalb der Maske, null außerhalb. UI, Framepositionen, Zeitablauf und Spiellogik unverändert. Kompakte Steuerungsprüfung und Build bestanden; visuelle Gesamtfreigabe weiterhin offen. Die Screenshots oben zeigen die erste Vorschau, nicht diese kleine Nachbesserung.
