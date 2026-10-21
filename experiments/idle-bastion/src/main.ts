@@ -1,3 +1,4 @@
+import { TavernUI } from './tavern-ui';
 import { discoveryStep, updateDiscoveryUI } from './discovery-ui';
 import { LessonPointer } from './lesson-pointer';
 import { updateOnboarding } from './onboarding-ui';
@@ -79,6 +80,7 @@ let padListKey = '';
 let mobileHintOpen = false;
 let mobileHintStep = -1;
 let ready = false;
+const tavernUI = new TavernUI({ session: () => session, navigate: kind => openContext(kind, true) });
 let booting = false;
 let lifecycle = Promise.resolve();
 let retryTimer: number | undefined;
@@ -128,6 +130,7 @@ function syncUI(): void {
     : live.suspended ? 'Abwesend · Kampf angehalten'
     : live.temporary ? 'Temporäre Probe · kein Speichern und kein Offline-Ertrag'
     : live.busy ? 'Wird gespeichert …' : '1× · dieser Tab ist aktiv · lokal gespeichert';
+  tavernUI.update();
   if (live.busy) return;
   const sim = live.battle;
   element('tower-panel').hidden = selectedPanel !== 'tower';
@@ -545,10 +548,11 @@ function positionContext(): void {
 }
 
 function closeContext(): void { ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); syncUI(); }
-function openContext(kind: typeof selectedPanel): void {
+function openContext(kind: typeof selectedPanel, buildingControls = false): void {
   if (session?.battle.preparing || performance.now() < workshopRevealUntil) return;
   ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; placementType = undefined; selectedPanel = kind; contextOpen = true;
   if (kind !== 'tower') { selectedPadId = undefined; scene?.setSelected(); }
+  if (kind === 'tavern' && session?.battle.settlement.tavernBuilt && !buildingControls) { contextOpen = false; syncUI(); tavernUI.open(); return; }
   scene?.focusObject(kind); syncUI();
   if (kind === 'tavern' && session?.battle.tavernUnlocked && !session.battle.settlement.tavernSeen)
     void perform(b => { b.settlement.tavernSeen = true; }, true, true);
@@ -799,7 +803,7 @@ element('placement-pads').addEventListener('click', event => {
 const menu = element<HTMLDialogElement>('game-menu');
 element('open-menu').addEventListener('click', () => menu.showModal(), { signal: lifetime.signal });
 element('close-menu').addEventListener('click', () => menu.close(), { signal: lifetime.signal });
-document.addEventListener('keydown', event => { if (event.key === 'Escape' && !menu.open) { placementType = undefined; closeContext(); } }, { signal: lifetime.signal });
+document.addEventListener('keydown', event => { if (event.key === 'Escape' && !menu.open && !tavernUI.isOpen) { placementType = undefined; closeContext(); } }, { signal: lifetime.signal });
 element('fullscreen').addEventListener('click', async () => {
   try {
     if (document.fullscreenElement) await document.exitFullscreen();
@@ -874,5 +878,5 @@ window.addEventListener('pagehide', () => { void session?.suspend().catch(() => 
 const heartbeat = window.setInterval(() => {
   if (!document.hidden && session && !session.suspended) void session.heartbeat().catch(() => syncUI());
 }, 1000);
-if (import.meta.hot) import.meta.hot.dispose(() => { lifetime.abort(); clearInterval(heartbeat); clearTimeout(retryTimer); game?.destroy(true); void session?.close().catch(() => undefined); });
+if (import.meta.hot) import.meta.hot.dispose(() => { tavernUI.destroy(); lifetime.abort(); clearInterval(heartbeat); clearTimeout(retryTimer); game?.destroy(true); void session?.close().catch(() => undefined); });
 void boot();

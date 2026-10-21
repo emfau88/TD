@@ -2,7 +2,7 @@
 
 Stand: 21.10.2026 · Branch `codex/idle-bastion-vertical-slice` · [Spiel testen](https://emfau88.github.io/TD/idle-bastion/)
 
-**Aktuell:** T01 visuell abgenommen. T02 umgesetzt: früher kostenloser Tavernenbau, Stufe II nach Boss 25 und Bestandsschutz ([Prüfbericht](../../artifacts/idle-bastion/acceptance/t02/REPORT.md)). T03 ist umgesetzt: gespeicherte soziale Basis mit erster Sitzungsbalance ([Prüfbericht](../../artifacts/idle-bastion/acceptance/t03/REPORT.md)). Nächster geplanter Bulk: T04, bedienbare Tavernenansicht und Mara-Animation; noch nicht gestartet. T04–T07, F03–F05 und übrige Akt-II-Pakete nicht automatisch starten. B14/G2 bleiben offen.
+**Aktuell:** T01 visuell abgenommen. T02 umgesetzt: früher kostenloser Tavernenbau, Stufe II nach Boss 25 und Bestandsschutz ([Prüfbericht](../../artifacts/idle-bastion/acceptance/t02/REPORT.md)). T03 ist umgesetzt: gespeicherte soziale Basis mit erster Sitzungsbalance ([Prüfbericht](../../artifacts/idle-bastion/acceptance/t03/REPORT.md)). T04 ist umgesetzt und am 21.10.2026 visuell freigegeben ([Entwurf und Prüfbericht](../../artifacts/idle-bastion/acceptance/t04/REPORT.md)); Commit/Push sind ausdrücklich beauftragt. Nächster beauftragter Schritt: T05. T06–T07, F03–F05 und übrige Akt-II-Pakete nicht automatisch starten. B14/G2 bleiben offen.
 
 Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvolle Bearbeitungsreihenfolge; vorhandene Bulk-IDs bleiben erhalten. `[x]` = umgesetzt und geprüft, `[ ]` = offen. Bisherige Arbeit wird nicht gelöscht: [vollständiges Archiv mit alten Checklisten, Entscheidungen und Abnahmen](ROADMAP_ARCHIVE_2026-10-20.md). Fachregeln: [Auftrag](README.md), [Technik](docs/TECHNIK.md), [Grafik](docs/ART_DIRECTION.md), [Akt II](docs/AKT_II.md), [Tavernenplan](docs/TAVERNE_INTERAKTION.md), [Abnahmeplan](docs/ABNAHME.md).
 
@@ -53,13 +53,15 @@ Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvo
   - [x] Ziel von ungefähr 3–5 aktiven Spielsitzungen je Figur konkretisieren: Sitzungsdauer, Herzschwellen, Interaktionsgrenzen und begrenzte regulär erspielbare Geschenkquelle festlegen. Frühere Tageslimits/Zahlen sind verworfen, nicht implementieren.
   - [x] Reload/Mehrfachklick/Schreibfehler und Zeitgrenzen gezielt prüfen; Neustart ist keine neue Belohnungssitzung. Keine Kampfboni, kein Zuneigungsverfall oder Login-Zwang.
 
-- [ ] **18 · T04 — Kompakte Taverne mit Mara. Geplant; benötigt T01-Abnahme und T03.**
-  - [ ] Ein Tavernenfenster mit Übersicht, Charakteransicht und darin umschaltbarem Berührungsmodus; Sprechen/Berühren/Schenken, Empfängerin und Geschenkbestand klar darstellen.
-  - [ ] Freigegebene Idle-/Berührungsanimation integrieren; weitere benötigte Einstiegsreaktionen für Hand/Haare erst jetzt produzieren. Reaktionen über Figur/Bereich/Herzstufe als Daten konfigurieren.
-  - [ ] Ilyras Sperrbedingungen nennen, Wisp über Gefährtenverwaltung erreichbar halten; Gebäudeverschieben und schnelle Kampfsteuerung außerhalb der romantischen Ansicht erhalten.
-  - [ ] Kampf läuft grundsätzlich weiter, bestehende Pause bleibt bestehen; kleiner Status und schließbarer Hinweis bei Kernschaden/Niederlage mit Rückweg zum Kampf. Hochkant, Touchflächen, Zurück/Schließen und ungestörte Animation prüfen.
+- [x] **18 · T04 — Kompakte Taverne mit Mara. Umgesetzt und visuell freigegeben am 21.10.2026.**
+  - [x] Ein Tavernenfenster mit Übersicht, Charakteransicht und darin umschaltbarem Berührungsmodus; Sprechen/Berühren/Schenken, Empfängerin und Geschenkbestand klar darstellen.
+  - [x] Freigegebene Idle-/Berührungsanimation integrieren; weitere benötigte Einstiegsreaktionen für Hand/Haare erst jetzt produzieren. Reaktionen über Figur/Bereich/Herzstufe als Daten konfigurieren.
+  - [x] Ilyras Sperrbedingungen nennen, Wisp über Gefährtenverwaltung erreichbar halten; Gebäudeverschieben und schnelle Kampfsteuerung außerhalb der romantischen Ansicht erhalten.
+  - [x] Kampf läuft grundsätzlich weiter, bestehende Pause bleibt bestehen; kleiner Status und schließbarer Hinweis bei Kernschaden/Niederlage mit Rückweg zum Kampf. Hochkant, Touchflächen, Zurück/Schließen und ungestörte Animation prüfen.
 
-- [ ] **19 · T05 — Maras fünf Herzstufen. Geplant; benötigt T04.**
+  - [x] Nutzerfreigabe für Gestaltung und neue Hand-/Haarreaktionen am 21.10.2026 erteilt; Commit/Push ausdrücklich beauftragt. [Desktop-/Hochkantaufnahmen](../../artifacts/idle-bastion/acceptance/t04/REPORT.md).
+
+- [ ] **19 · T05 — Maras fünf Herzstufen. Beauftragt am 21.10.2026; folgt nach Veröffentlichung von T04.**
   - [ ] Für jede Stufe konkrete neue Dialoge, Posen/Reaktionen oder kurze persönliche Szene definieren; anfangs Hand/Haare/Schulter, spätere Nähe stufenweise.
   - [ ] Nur tatsächlich benötigte zusätzliche Animationen herstellen; passende Reaktionen wiederverwenden, keine Vollproduktion aller Bereich-mal-Stufe-Kombinationen.
   - [ ] Verlauf über die in T03 definierten aktiven Sitzungen prüfen und Werte nachstellen; kein endlos belohntes Antippen und keine langen künstlichen Wartezeiten.
@@ -103,4 +105,4 @@ Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvo
 
 - [ ] **35 · Spätere Ideen — bewusst geparkt.** Runa als alternative Kontrollgefährtin (gegen Frost abgrenzen, Auswahl/Wechsel statt Figurenpflicht); Schnellfeuer/Sonnenobelisk erst mit eigener Rolle und vom Kern unterscheidbarer Grafik. Späherposten für optionale Herausforderungen, Runenatelier nur bei Bedarf jenseits der Werkstatt. Kern/HQ mit sinnvoller Interaktion. Wachstube/Kaserne mit verbündeten Lane-Einheiten erst als kleiner Prototyp: echte Gefechte brauchen Gegnerangriffe/Zielwahl, Blockieren, Leben/Tod, Animationen und Save-/Farmregeln. Kein bloßer Spawn als fertiges Kampfsystem. Nicht beschlossen: Ausrüstung/Heldenlevel, Gacha, zusätzliche Währungen, PvP, mehrere Biome, Prestige oder ein weiterer Akt.
 
-Pro begonnenem Paket: konkretes Ergebnis umsetzen, nur betroffene Risiken kompakt prüfen, Status/Nachweis hier aktualisieren. Save-Bestand und klassisches Spiel erhalten. Bestehende Commit-/Push-/Pages-Autorisierung gilt für zuvor beauftragte Arbeiten; T01 ist separat zur Umsetzung und Veröffentlichung beauftragt, T02 und anschließend T03 sind ausdrücklich beauftragt; T04–T07 bleiben ohne Startfreigabe. Kein Merge nach `main`. Unbeauftragte Punkte und Nutzerabnahmen bleiben offen.
+Pro begonnenem Paket: konkretes Ergebnis umsetzen, nur betroffene Risiken kompakt prüfen, Status/Nachweis hier aktualisieren. Save-Bestand und klassisches Spiel erhalten. Bestehende Commit-/Push-/Pages-Autorisierung gilt für zuvor beauftragte Arbeiten; T01 ist separat zur Umsetzung und Veröffentlichung beauftragt, T02 und anschließend T03 sind ausdrücklich beauftragt; T04 ist ausdrücklich visuell freigegeben und zur Veröffentlichung beauftragt; T05 ist als nächster Schritt gestartet. T06–T07 bleiben ohne Startfreigabe. Kein Merge nach `main`. Unbeauftragte Punkte und Nutzerabnahmen bleiben offen.

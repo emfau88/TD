@@ -2,7 +2,7 @@
 
 ## Idle Bastion ausprobieren
 
-[Mara in der Taverne ansehen — Idle und Berührungsreaktion](https://emfau88.github.io/TD/idle-bastion/mara-check.html) · Separate T01-Animationsprobe mit antippbarer Schulter und Einzelbildansicht. Noch nicht im Hauptspiel; visuell freigegeben am 21.10.2026.
+[Mara in der Taverne ansehen — Idle und Berührungsreaktion](https://emfau88.github.io/TD/idle-bastion/mara-check.html) · Separate T01-Animationsprobe mit antippbarer Schulter und Einzelbildansicht. Seit T04 auch in der gebauten Taverne verfügbar; visuell freigegeben am 21.10.2026.
 
 [▶ Im Browser spielen](https://emfau88.github.io/TD/idle-bastion/) · [Frische Probe starten](https://emfau88.github.io/TD/idle-bastion/?fresh=1)
 
@@ -12,7 +12,7 @@
 
 **Taverne I ab Welle 12, Ilyra nach Boss 25:** Nach erfolgreich gemeisterter **Welle 12** unter Siedlung den **kostenlosen Tavernenbausatz** platzieren. Nach dem tatsächlichen Sieg über **Boss 25** für **1.200 Gold auf Taverne II ausbauen**. Bereits früher bezahlte Tavernen sind automatisch Stufe II, ohne zweite Zahlung. Dort Ilyra kennenlernen und **kostenlos rekrutieren**. Einen Standort am Weg wählen, danach mit „Sternensalve zielen“ eine Gegnergruppe treffen: 28 Sekunden Abklingzeit, besonders wirksam gegen Flieger. Nach der ersten Anwendung lässt sich eine gegnerabhängige Automatik einschalten. **Mara, Wisp und Ilyra** sind mit Rolle und Status in derselben Tavernenübersicht zu finden. Bestehende Saves bleiben erhalten. [Kompakter B15b-Bericht](artifacts/idle-bastion/acceptance/b15b/REPORT.md).
 
-**Vorbereitet für den nächsten Tavernen-Ausbau:** Zuneigung und ein gemeinsamer Geschenkbestand werden bereits gespeichert. Start-/Bossgeschenke werden einmalig vergeben, reguläre Geschenke begrenzt durch gewonnene Live-Wellen erspielt. **Sprechen, Berühren, Schenken und Maras große Animation sind im Hauptspiel noch nicht bedienbar; die Oberfläche folgt mit T04.** [Regeln und erste Balance](experiments/idle-bastion/docs/TAVERNE_INTERAKTION.md).
+**Vorbereitet für den nächsten Tavernen-Ausbau:** Zuneigung und ein gemeinsamer Geschenkbestand werden bereits gespeichert. Start-/Bossgeschenke werden einmalig vergeben, reguläre Geschenke begrenzt durch gewonnene Live-Wellen erspielt. **T04: In der gebauten Taverne stehen Sprechen, Berühren und Schenken mit Maras großer Animation bereit.** Übersicht, Hand-/Haar-/Schulterreaktionen, kompakte Hochkantansicht und schließbarer Kampfhinweis sind am 21.10.2026 visuell freigegeben. [Entwurf und Screenshots](artifacts/idle-bastion/acceptance/t04/REPORT.md). [Regeln und erste Balance](experiments/idle-bastion/docs/TAVERNE_INTERAKTION.md).
 
 
 <details open>

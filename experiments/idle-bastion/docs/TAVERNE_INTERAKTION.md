@@ -2,7 +2,7 @@
 
 Planungsstand: 21.10.2026. Geprüfter Ausgangspunkt: `61b95c0` auf `codex/idle-bastion-vertical-slice`.
 
-Dieses Dokument hält Fachregeln und Abnahmekriterien fest. **Die einzige Arbeits- und Statusliste mit Checkboxen bleibt [ROADMAP.md](../ROADMAP.md), T01–T07.** Nach dem Dokumentationsauftrag wurde T01 am 21.10.2026 ausdrücklich zur Umsetzung mit kompakter Prüfung, Commit/Push und Vorschaulink beauftragt. Die visuelle Nutzerabnahme einschließlich Haarkorrektur (`fcc7bc1`) wurde am 21.10.2026 ausdrücklich erteilt; siehe Roadmap und T01-Bericht. T02 und danach T03 wurden ausdrücklich gestartet; T04–T07 benötigen weiterhin einen separaten Startauftrag; der ältere zitierte Auftrag aus einem anderen Chat begründete selbst keine Freigabe.
+Dieses Dokument hält Fachregeln und Abnahmekriterien fest. **Die einzige Arbeits- und Statusliste mit Checkboxen bleibt [ROADMAP.md](../ROADMAP.md), T01–T07.** Nach dem Dokumentationsauftrag wurde T01 am 21.10.2026 ausdrücklich zur Umsetzung mit kompakter Prüfung, Commit/Push und Vorschaulink beauftragt. Die visuelle Nutzerabnahme einschließlich Haarkorrektur (`fcc7bc1`) wurde am 21.10.2026 ausdrücklich erteilt; siehe Roadmap und T01-Bericht. T02/T03 wurden umgesetzt; T04 wurde am 21.10.2026 visuell freigegeben und zum Commit/Push beauftragt. T05 ist als nächster Schritt gestartet; T06/T07 benötigen weiterhin einen separaten Startauftrag; der ältere zitierte Auftrag aus einem anderen Chat begründete selbst keine Freigabe.
 
 ## Quellen und Grenzen
 
