@@ -46,10 +46,20 @@ test('all starter locations survive the complete guided purchase sequence with r
     case 'frost': assert.ok(b.recommendedFrostPad);assert.ok(b.build(b.recommendedFrostPad!,2));break;
     case 'observe': break;
    }
+   if(b.introduction.stage==='done') { assert.equal(b.learningPaused,false); restore(b); break; }
    assert.equal(b.lessonComplete,true);assert.equal(b.learningPaused,true);restore(b);
    assert.equal(b.continueLesson(),true);restore(b);pauses++;
   }
-  assert.equal(b.introduction.stage,'done',location.id);assert.equal(pauses,5);assert.equal(b.towers.length,2);assert.equal(b.towers[0].level,2);assert.ok(b.tutorial.frostSeen);
+  assert.equal(b.introduction.stage,'done',location.id);assert.equal(pauses,3);assert.equal(b.towers.length,2);assert.equal(b.towers[0].level,2);
+  assert.equal(b.discovery,'wisp'); b.drainEvents();
+  for(let i=0;i<2400&&!b.tutorial.frostSeen;i++)b.update(.025);
+  assert.ok(b.tutorial.frostSeen);assert.equal(b.drainEvents().filter(e=>e.type==='frost-tip').length,1);
+  assert.equal(b.learningPaused,false);b.update(1);assert.equal(b.drainEvents().filter(e=>e.type==='frost-tip').length,0);
+  for(const stage of ['frost','observe'] as const) {
+   const saved=b.snapshot();saved.introduction={...saved.introduction,stage,halted:true};
+   const old=IdleBattle.restore(saved)!;assert.ok(old);old.update(.025);
+   assert.equal(old.introduction.stage,'done');assert.equal(old.learningPaused,false);assert.equal(old.gold,b.gold);
+  }
   if(location.id==='tower-start')console.log(JSON.stringify({workshopCombatSeconds:workshop,completeCombatSeconds:b.elapsed,learningAndPreparationSeconds:b.introduction.preparationSeconds,totalSeconds:b.elapsed+b.introduction.preparationSeconds}));
  }
 });

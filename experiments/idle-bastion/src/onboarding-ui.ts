@@ -5,7 +5,7 @@ export function updateOnboarding(live: BattleSession, view: { placing: boolean; 
   const b = live.battle, stage = b.introduction.stage, active = stage !== 'done', complete = b.lessonComplete;
   el('app').classList.toggle('preparing', b.preparing); el('app').classList.toggle('guiding', b.guiding);
   el('app').classList.toggle('introducing', active); el('app').dataset.intro = stage;
-  el('onboarding-card').hidden = !active || placing || contextOpen || revealing || live.awaitingResume;
+  el('onboarding-card').hidden = !active || stage === 'observe' || stage === 'frost' && complete || placing || contextOpen || revealing || live.awaitingResume;
   el('onboarding-card').dataset.compact = String(stage !== 'welcome');
   el('onboarding-card').dataset.stage = stage;
   el('onboarding-card').dataset.complete = String(complete);
@@ -37,11 +37,9 @@ export function updateOnboarding(live: BattleSession, view: { placing: boolean; 
       : ['Dein Werkstatt-Bausatz ist bereit', 'Öffne unten „Siedlung“. Dort findest du deine Gebäude. Die Welle wartet.', '']; break;
     case 'research': copy = complete ? ['Frostkristall freigeschaltet', 'Jetzt bauen wir den neuen Turm neben deinen Waldwächter. Er kostet 110 Gold.', 'Weiter · Frostturm bauen']
       : ['Öffne deine Werkstatt', 'Tippe auf das neue Gebäude auf der Karte. Dort erforschst du die Frostfassung für 60 Gold.', '']; break;
-    case 'frost': copy = complete ? ['Frost und Pfeile wirken zusammen', 'Lass uns einen Treffer ansehen: Langsame Gegner bleiben länger im Pfeilhagel.', 'Weiter · Kombination ansehen']
-      : catalogPanel === 'tower' ? ['Wähle den Frostkristall', 'Tippe unten auf den Frostkristall. Danach wählen wir einen Platz mit überlappender Reichweite.', '']
+    case 'frost': copy = catalogPanel === 'tower' ? ['Wähle den Frostkristall', 'Tippe unten auf den Frostkristall. Danach wählen wir einen Platz mit überlappender Reichweite.', '']
       : ['Zurück zu deinen Türmen', 'Öffne unten „Türme“. Der erforschte Frostkristall ist jetzt dort verfügbar.', '']; break;
-    default: copy = complete ? ['Deine erste Kombination arbeitet', 'Deine Kombination funktioniert. Lass sie zunächst kämpfen; Bauen und Upgrades sind jetzt frei. Nach Welle 5 stellt sich Wisp vor.', 'Selbst weiterspielen']
-      : ['Achte auf den blauen Treffer', 'Frost bremst die Gegner und gibt dem Waldwächter mehr Zeit.', ''];
+    default: copy = ['', '', ''];
   }
   el('onboarding-title').textContent = copy[0]; el('onboarding-copy').textContent = copy[1]; primary.textContent = copy[2];
   primary.hidden = !copy[2]; primary.disabled ||= waiting || revealing;

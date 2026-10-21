@@ -22,6 +22,7 @@ export interface BattleSceneHooks {
   readonly ready: () => void;
   readonly advance?: (seconds: number) => void;
   readonly canRender?: () => boolean;
+  readonly canSelect?: () => boolean;
   readonly selectWisp?: () => void;
   readonly selectMara?: () => void;
   readonly selectIlyra?: () => void;
@@ -159,6 +160,7 @@ export class BattleScene extends Phaser.Scene {
       if (this.wispPose.arriving && !this.sim.wispArrival.met) this.focusPoint(this.wispPose);
       else this.followingWisp = false;
     }
+    if (this.hooks.canSelect?.() === false) this.pendingTap = undefined;
     if (this.pendingTap && (this.hooks.canRender?.() ?? true)) { const tap = this.pendingTap; this.pendingTap = undefined; this.selectAtPointer(tap); }
     if (this.hooks.canRender?.() ?? true) this.drawActors();
     this.hudElapsed += Math.min(rawSeconds, 0.08);
@@ -171,6 +173,7 @@ export class BattleScene extends Phaser.Scene {
   acceptEvents(events: readonly BattleEvent[]): void { if (this.readyToDraw) this.combatEffects.accept(events, this.sim.elapsed + this.sim.introduction.preparationSeconds); }
   setIlyraMode(mode?: 'move'|'cast'): void { this.ilyraMode=mode; }
   setPlacement(kind?: TowerId, ground?: 'mara' | BuildingId, cell?: GridCell): void {
+    if (this.buildKind !== kind || this.groundMode !== ground) this.pendingTap = undefined;
     this.buildKind = kind; this.groundMode = ground; this.groundCell = cell;
   }
   setSelected(padId?: string): void {
@@ -305,6 +308,7 @@ export class BattleScene extends Phaser.Scene {
   }
   private beginPointer(pointer: Phaser.Input.Pointer): void {
     this.followingWisp = false;
+    if (this.hooks.canSelect?.() === false) { this.dragOrigin = undefined; return; }
     if (pointer.leftButtonDown()) this.dragOrigin = { x: pointer.x, y: pointer.y, dragging: false };
   }
   private cancelPointer(): void { this.dragOrigin = undefined; }
@@ -325,6 +329,8 @@ export class BattleScene extends Phaser.Scene {
     this.setMapZoom(this.mapZoom + (dy < 0 ? 0.05 : -0.05), pointer.x, pointer.y);
   }
   private selectAtPointer(pointer: { x: number; y: number }): void {
+    // Never replay input from a purchase as a selection of its newly built tower.
+    if (this.hooks.canSelect?.() === false) { this.pendingTap = undefined; return; }
     if (this.hooks.canRender?.() === false) { this.pendingTap = { x: pointer.x, y: pointer.y }; return; }
     const point = this.cameras.main.getWorldPoint(pointer.x, pointer.y), size = this.sim.layout.cellSize;
     if (this.ilyraMode) { this.hooks.ilyraGround?.(point); return; }

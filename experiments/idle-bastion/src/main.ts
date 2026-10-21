@@ -406,7 +406,7 @@ function syncUI(): void {
   scene?.acceptEvents(relevantEvents);
   audio.accept(relevantEvents, sim);
   if (relevantEvents.some(event => event.type === 'map-update')) { selectedPadId = undefined; placementType = undefined; closeContext(); }
-  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'tavern', 'tavern-upgrade', 'boss-victory', 'clearing', 'workshop-upgrade', 'map-update'].includes(event.type)).at(-1);
+  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['frost-tip', 'defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'tavern', 'tavern-upgrade', 'boss-victory', 'clearing', 'workshop-upgrade', 'map-update'].includes(event.type)).at(-1);
   if (message) toastUntil = performance.now() + 4500;
   if (message) element('combat-message').textContent = message.type === 'clear' ? `Welle ${message.wave} geschafft · +${currency.format(message.amount ?? 0)} Gold Abschlussbonus.`
     : message.type === 'kill' ? `Gegner besiegt · +${currency.format(message.amount ?? 0)} Gold.`
@@ -416,6 +416,7 @@ function syncUI(): void {
     : message.type === 'clearing' ? 'Östliche Lichtung geöffnet! Optionale Fläche verfügbar · Lichtung ansehen.'
     : message.type === 'wisp' ? 'Wisp ist da! +10 % Kampf-Gold und die Steinschleuder sind jetzt verfügbar.'
     : message.type === 'pads' ? `Welle ${message.wave} gemeistert${message.wave === 10 ? ' · Scharfschütze verfügbar' : ''}.`
+    : message.type === 'frost-tip' ? 'Frost hält Gegner länger in Reichweite deiner Pfeile.'
     : message.type === 'build' ? `${message.tower?.def.name} gebaut und einsatzbereit.`
     : message.type === 'upgrade' ? `${message.tower?.def.name} verbessert. Der nächste Schuss nutzt den höheren Schaden.`
     : message.type === 'workshop-upgrade' ? 'Werkstatt II fertig! Turmlevel 7–20 sind jetzt verfügbar.'
@@ -627,6 +628,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     const view = new BattleScene(() => live.battle, {
       advance(seconds) { live.advance(seconds); },
       canRender: () => !live.busy,
+      canSelect: () => !live.inputBusy && !live.error && !live.suspended && !live.awaitingResume,
       changed: syncUI,
       select(padId) { void selectPad(padId); },
       ground(cell) { if (groundMode === 'mara') { let accepted = false; void perform(b => { accepted = b.moveMaraTo(cell); }).then(() => { if (accepted && !live.error) closeContext(); else { element('placement-text').textContent = 'Dorthin führt kein freier Weg. Wähle ein anderes Feld.'; } }); } else { groundCandidate = cell; const id = groundMode; if (id && !buildingBuilt(live.battle, id)) void placeBuilding(id, cell); else syncUI(); } },

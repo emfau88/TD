@@ -70,7 +70,7 @@ export interface Shot {
   speed: number; damage: number; level: number; kind: TowerId;
 }
 export interface BattleEvent {
-  type: 'build' | 'upgrade' | 'sell' | 'fire' | 'hit' | 'kill' | 'escape' | 'wave' | 'clear' | 'defeat' | 'workshop' | 'research' | 'wisp' | 'pads' | 'warehouse' | 'tavern' | 'tavern-upgrade' | 'boss-victory' | 'boss-interrupt' | 'clearing' | 'workshop-upgrade' | 'map-update';
+  type: 'frost-tip' | 'build' | 'upgrade' | 'sell' | 'fire' | 'hit' | 'kill' | 'escape' | 'wave' | 'clear' | 'defeat' | 'workshop' | 'research' | 'wisp' | 'pads' | 'warehouse' | 'tavern' | 'tavern-upgrade' | 'boss-victory' | 'boss-interrupt' | 'clearing' | 'workshop-upgrade' | 'map-update';
   tower?: Tower; enemy?: Enemy; shot?: Shot; x?: number; y?: number;
   amount?: number; wave?: number;
 }
@@ -259,10 +259,13 @@ export class IdleBattle {
   }
   /** Learning pauses are saved separately from the player's pause button. */
   private updateLesson(): void {
+    // Finish old saved confirmation screens too, without requiring an obsolete click.
+    if (this.introduction.stage === 'observe' || this.introduction.stage === 'frost' && this.lessonComplete) {
+      this.skipLessons(false); return;
+    }
     if (!this.guiding || this.learningPaused) return;
     if (this.introduction.stage === 'combat' && this.kills > 0 && this.gold >= 60) this.introduction.stage = 'upgrade';
-    if (this.introduction.stage === 'observe' ? this.tutorial.frostSeen
-      : this.introduction.stage === 'workshop' ? this.lessonComplete || this.workshopKitAvailable
+    if (this.introduction.stage === 'workshop' ? this.lessonComplete || this.workshopKitAvailable
       : this.introduction.stage !== 'combat' && (this.lessonComplete || this.gold >= this.lessonCost)) this.introduction.halted = true;
   }
   continueLesson(): boolean {
@@ -894,6 +897,7 @@ export class IdleBattle {
     if (this.ilyra?.path.some(p => ilyraCell(p).x === Math.floor(tower.x / 40) && ilyraCell(p).y === Math.floor(tower.y / 40))) this.ilyra.path = [];
     this.tutorial.builtTower = true;
     this.events.push({ type: 'build', tower, x: tower.x, y: tower.y, amount: tower.def.cost });
+    if (kind === 2 && this.introduction.stage === 'frost') this.skipLessons(false);
     return tower;
   }
 
@@ -1076,7 +1080,9 @@ export class IdleBattle {
     if (enemy.hp <= 0) return;
     enemy.hp = Math.max(0, enemy.hp - shot.damage * (shot.kind === 4 ? 1 : 1 - enemy.def.armor));
     if (shot.kind === 2 && enemy.hp > 0) {
-      enemy.slowRemaining = SETTLEMENT.slowSeconds; this.tutorial.frostSeen = true;
+      enemy.slowRemaining = SETTLEMENT.slowSeconds;
+      if (!this.tutorial.frostSeen && !this.tutorial.hidden && this.discovery !== 'off') this.events.push({ type: 'frost-tip' });
+      this.tutorial.frostSeen = true;
     }
     this.events.push({ type: 'hit', shot, enemy, x: enemy.x, y: enemy.y, amount: shot.damage });
     if (enemy.hp > 0) return;
