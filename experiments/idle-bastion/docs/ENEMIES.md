@@ -1,5 +1,21 @@
 # Vorhandene Gegner im Idle-Spiel
 
+## Wave-Rework W01 — 23.10.2026
+
+Aktuell **zwölf normale Arten und Rosenspiegel**, Snapshot 25 / Kampfregeln 11. Ergänzt: Waldgoblin ab 19 (36 HP, Tempo 66, keine Rüstung, 13 Basisgold), Knochenwächter ab 26 (55 HP, Tempo 44, 25 % Rüstung, 17 Basisgold), Waldkultist ab 32 (42 HP, Tempo 39, keine Rüstung, 18 Basisgold). Beide Heilerarten verwenden dieselbe begrenzte Heilregel und denselben gespeicherten Ziel-Lockout; sie heilen weder sich noch andere Heiler oder Bosse.
+
+`src/wave-recipes.ts` kombiniert vier Familien mit einem kleinen Typenrepertoire, Mengen und Spawnprofilen. Die ersten 40 Wellen werden deterministisch aus diesem Baukasten abgeleitet; höchstens 33 normale Rezepte ab Welle 6 werden zwischengespeichert. Die kurze abgeleitete Historie bevorzugt länger nicht verwendete Arten. Keine Zufallsquelle, keine Abhängigkeit von Farmversuch oder Ladezeit, keine 40 handgeschriebenen Wellen. Ab Welle 41 bleibt nur ein zusätzliches Rezept im Cache.
+
+Meist zwei, höchstens drei Arten; maximal 28 Gegner und zwei Heiler insgesamt. Neue Arten erhalten genau zwei Plätze und werden direkt in der nächsten regulären Welle wiederverwendet. Unterschiedliche Gruppengrößen, Binnenabstände von 0,34–0,48 s, Pausen von 1,45–1,6 s und Panzerfolgen mit 0,95/1,1 s. Die Gegneranzahl berücksichtigt Rüstung und Tempo; bestehende HP-Grundkurve und Gegnerwerte bleiben erhalten. Welle 40 ist eine Elite-Panzermischung mit Knochenwächtern, Goblins und Kultist, höherem Mengenbudget und Goldprämie; keine neue Bossmechanik.
+
+Tutorialwellen 1–5 und Bossrezepte 15/25 bleiben exakt erhalten. Alle Rezepte bis einschließlich Regeln 10 bleiben einschließlich Einführung, Anzahl, Spawnzeiten, HP und Gold reproduzierbar. Schema 24 wird zuerst mit den bisherigen Regeln validiert, dann zu 25 migriert: laufende Spawnliste, Gegner, Heilzeiten, Schüsse, Geld und Akteure bleiben erhalten. Nur aktuelle Farmbelege verfallen; historische Offline-Grundlagen bleiben gültig. Neue Rezepte beginnen erst mit dem nächsten Versuch.
+
+Die Abschlussprämie gleicht unterschiedliche Typenwerte aus und berücksichtigt die längeren robusten Gruppen; Kill-Gold und Wisp werden weiterhin normal abgerechnet. Die tatsächliche Goldrate bleibt von Verteidigung, Schusszeit und schadensfreien Abschlüssen abhängig.
+
+[Quellen, tatsächliche CC0-Lizenzen und Import](../assets/lucifer/README.md) · [separate Vorschau](../enemy-check.html) · [Messungen, Screenshots und Grenzen](../../../artifacts/idle-bastion/acceptance/wave-rework/REPORT.md).
+
+Die folgenden Abschnitte bewahren den vorherigen Bestand und frühere Produktionsideen als Herkunft. Ihre Viererrotation und Versionsangaben beschreiben den Stand vor W01; Mooskröte, Schnecke und Trommler gehören nicht zur aktuellen Umsetzung.
+
 Die Idle-Werte und Rollen liegen in `src/enemy-roster.ts`, die gemessenen Originalanimationen in `src/enemy-art.ts`. Das klassische Spiel wird nicht verändert. Keine neuen Bildgenerierungen für dieses Paket.
 
 | Erste Welle | Figur / Originalasset | Rolle und Gegenmittel |

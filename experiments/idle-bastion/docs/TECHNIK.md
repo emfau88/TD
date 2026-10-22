@@ -1,5 +1,11 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Wave-Rework — Snapshot 25 / Regeln 11
+
+Die neue Rezeptversion verwendet `wave-recipes.ts`; Regeln 3–10 bleiben unverändert verfügbar. Neue aktuelle Saves enthalten Schema 25 und Regeln 11, eine laufende alte Welle behält ihre `waveRecipeVersion`. V24 wird vor der Migration vollständig unter Regeln 10 validiert. Queue, Spawnrestzeit, Gegnerwerte/Heilzeiten, Geschosse, Goldreste, Boss-/Figuren-/Gebäudezustände bleiben erhalten. `liveClearedWaves` wird geleert und die aktuelle Farmwahl auf 1 gesetzt; neue sichere Nachweise brauchen zwei verlustfreie Durchläufe ohne aktive Heldenfähigkeiten. Die neue Version muss auch an der nativen Save-Grenze und in Offline-Proof-Validierung bekannt sein. Historische Offline-Ansprüche 1–10 behalten ihre ursprüngliche Grundlage; 11 ist für neue Ansprüche zulässig.
+
+Keine neue Savekennung, Datenbankversion, Route oder Ostfront. Die vorhandenen drei Heiltimer gelten auch für den Kultisten; die Ziel-Lockouts sind für beide Arten gemeinsam. Wellenzahlen und Spawnintervalle werden beim Laden anhand der gespeicherten Rezeptversion validiert. Weitere Details und Nachweise: [Gegner](ENEMIES.md), [W01-Bericht](../../../artifacts/idle-bastion/acceptance/wave-rework/REPORT.md).
+
 ## Tavernenstufen und soziale Basis — Snapshot 24
 
 T02 führte Snapshot 23 ein: kostenloser Taverne-I-Bausatz nach gemeisterter Welle 12, II-Ausbau für 1.200 Gold nach echtem Boss-25-Sieg, alte bezahlte Tavernen automatisch II. T03 ergänzt Snapshot 24 mit `social` aus `tavern-social.ts`. Punkte, gemeinsamer Geschenkbestand, einmalige Meilensteinansprüche und begrenzte Aktions-/Wellenbelohnungen werden zusammen mit dem Kampf transaktional gespeichert. Grenzen richten sich nach gespeicherten Live-Schritten, nicht nach der Systemuhr. Soziale Werte wirken nicht auf Kampf/Farmen/Offline; interne Farmproben deaktivieren soziale Belohnungen ausdrücklich. Datenvertrag, Balance und T04-Schnittstelle stehen in [TAVERNE_INTERAKTION.md](TAVERNE_INTERAKTION.md). Die folgenden älteren Technikabschnitte bleiben als Herkunft erhalten.

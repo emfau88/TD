@@ -1,5 +1,15 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**W01 · Wave-Rework und Foozle-Gegner — 23.10.2026, ausdrücklich beauftragt und umgesetzt.** Separater Branch `codex/wave-rework` ab `76c114e`; lokale Tavernenarbeiten erhalten. [Prüfbericht, Messungen und Spielaufnahmen](../../artifacts/idle-bastion/acceptance/wave-rework/REPORT.md).
+
+- [x] Vorab veralteten Gegner-Migrationstest ohne Abschwächung korrigiert: damaliger Stand 24, sieben Prüfungen erfolgreich.
+- [x] Paket 1: vier deterministische Familien, unterschiedliche Mengen/Spawnrhythmen, zwei bis drei Arten, frühe Wiederholung neuer Arten und bessere Kaderabdeckung; Einstieg 1–5 und Bossrezepte 15/25 erhalten, Elite 40 ohne neue Fähigkeit.
+- [x] Paket 2: Goblin zunächst im Originalvergleich geprüft; drei kostenlose Foozle-Archive samt tatsächlichen CC0-Readmes gesichert. Waldgoblin 19, Knochenwächter 26, Waldkultist 32; Originalanimationen, vier echte Ansichten, gemeinsam begrenzte Heilung. Zusammen 22.477 Bytes Laufzeitgrafiken; separate `enemy-check.html` ohne Savezugriff.
+- [x] Paket 3: Schema 25 / Regeln 11 mit Erhalt laufender alter Kämpfe und historischer Offline-Ansprüche. Sieben neue Prüfungen erfolgreich, relevanter Vergleich 96/102 gegenüber 85/95 im Ausgangsstand; sechs verbleibende bekannte Legacy-/Tutorial-Fixtures, keine neue fehlgeschlagene Testbezeichnung. Drei bezahlte Strategien schaffen Welle 40 nach 17:13–19:16 ohne Niederlage; 180 feste Vergleichskämpfe. TypeScript/Produktionsbuild und reale Desktop-/Mobilansichten einschließlich Reload geprüft. HP-Grundkurve unverändert, Sprung im rüstungsbereinigten HP-Volumen 29→30 von +140 % auf +12 % reduziert.
+- [ ] Visuelle Nutzerbewertung und subjektive Balanceabnahme. Technische Prüfung und eigene Sichtprüfung ersetzen diese nicht. Keine Ostfront oder weitere Systeme aus diesem Auftrag ableiten; sechs alte Legacy-Fixtures bleiben im allgemeinen Prüfrückstand.
+
+Die folgenden bestehenden Pakete und offenen Arbeiten behalten ihren bisherigen Status.
+
 Stand: 21.10.2026 · Hauptstand `main` · [Spiel testen](https://emfau88.github.io/TD/)
 
 **Aktuell:** T01–T07 sind umgesetzt und kompakt gemeinsam geprüft. T01/T04 und Ilyras Gestaltung wurden vom Nutzer visuell freigegeben; T07 ergänzt die technische Integration im tatsächlichen Spiel einschließlich Speicherfortsetzung, Kampfhinweisen und Hochkantbedienung. [T07-Nachweis](../../artifacts/idle-bastion/acceptance/t07/REPORT.md). Verlustfreie Bilder und gezieltes Nachladen sind zusätzlich umgesetzt. Button-Flackern durch Autosave ist auf anschließenden Auftrag behoben. Das aktuelle Spiel ist nach main übernommen und unter der Hauptadresse veröffentlicht; F03 korrigiert jetzt die Weltebenen von Einschlägen und Ilyras Salve. T08 verbessert die mobile Charakteransicht; A01 ergänzt die erste dezente Audiostufe; A02 ergänzt Bau-/Upgradeklänge, Bosslachen und die separate Stimmenauswahl. T09/T10 sind nur vorgemerkt. B14/G2 und eine subjektive Langzeitbewertung bleiben offen.

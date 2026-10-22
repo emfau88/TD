@@ -1,5 +1,7 @@
 # SPIRE: Idle Bastion — überarbeiteter Entwicklungsauftrag
 
+**Wave-Rework W01:** Zwölf normale Gegnertypen, vier deterministische Wellenfamilien und eine Elitewelle 40. Neue Originalgegner: Waldgoblin (19), Knochenwächter (26), Waldkultist (32). [Gegnervergleich ohne Spielstandzugriff](enemy-check.html) · [Quellen/CC0/Import](assets/lucifer/README.md) · [Prüfbericht und tatsächliche Spielaufnahmen](../../artifacts/idle-bastion/acceptance/wave-rework/REPORT.md). Paketstatus und Veröffentlichungsstand stehen in der Roadmap.
+
 **Siedlung am Kern:** Neue Partien erhalten eine 40×16-Karte mit Werkstatt, Lager und Taverne südöstlich des Kerns. Altsaves behalten ihre Plätze bis zum kostenlosen Umzug unter **Siedlung → Siedlung am Kern** bei manueller Pause. Mausziehen/Touch statt zusätzlicher Navigationsbuttons; die Ostfront folgt später. Die älteren Slice-Angaben unten bleiben als Entwicklungshistorie erhalten.
 
 Hauptspiel seit 21.10.2026: `main`, [Hauptadresse](https://emfau88.github.io/TD/). Code bleibt in diesem Verzeichnis; frühere Branch-/Isolationsangaben unten beschreiben die Entwicklungshistorie. Die ausdrückliche Übernahmefreigabe ersetzt die frühere Merge-Sperre.

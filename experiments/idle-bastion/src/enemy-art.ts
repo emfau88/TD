@@ -2,13 +2,18 @@ import type Phaser from 'phaser';
 import { jellyFrame } from '../../../reference/src/jelly-art';
 import { succubusFrame } from '../../../reference/src/succubus-art';
 import type { EnemyId } from './enemy-roster';
+import { LUCIFER_FRAMES } from './lucifer-frames';
 export type EnemyDirection = 'up' | 'down' | 'side';
-interface EnemySheet { key: string; url: string; width: number; height: number; scale: number; facesLeft: boolean; move: Record<EnemyDirection, { frames: readonly number[]; durations: readonly number[] }> }
+interface Clip { frames: readonly number[]; durations: readonly number[] }
+interface EnemySheet { key: string; url: string; width: number; height: number; scale: number; facesLeft: boolean; move: Record<EnemyDirection, Clip> & {left?: Clip}; heal?: Record<EnemyDirection, Clip> & {left?: Clip} }
 /** Extracted from public/assets/manifest.json. Logical tags resolve through frameMap.
  * Voidbutterfly's second Idle group is the source pack's directional movement.
  * Side artwork was visually checked; left-facing sheets invert horizontal mirroring.
  */
 export const ENEMY_SHEETS: Record<EnemyId, EnemySheet> = {
+  ForestGoblin: { ...LUCIFER_FRAMES.ForestGoblin, key:'idle-enemy-ForestGoblin', url:new URL('../assets/lucifer/ForestGoblin.png',import.meta.url).href },
+  BoneGuard: { ...LUCIFER_FRAMES.BoneGuard, key:'idle-enemy-BoneGuard', url:new URL('../assets/lucifer/BoneGuard.png',import.meta.url).href },
+  ForestCultist: { ...LUCIFER_FRAMES.ForestCultist, key:'idle-enemy-ForestCultist', url:new URL('../assets/lucifer/ForestCultist.png',import.meta.url).href },
   Leafbug: { ...{"key": "idle-enemy-Leafbug", "width": 64, "height": 64, "scale": 0.83, "facesLeft": false, "move": {"down": {"frames": [24, 25, 26, 27, 28, 29, 30, 31], "durations": [100, 100, 100, 100, 100, 100, 100, 100]}, "up": {"frames": [32, 33, 34, 35, 36, 37, 38, 39], "durations": [100, 100, 100, 100, 100, 100, 100, 100]}, "side": {"frames": [40, 41, 42, 43, 44, 45, 46, 47], "durations": [100, 100, 100, 100, 100, 100, 100, 100]}}}, url: new URL('../../../public/assets/Leafbug.png', import.meta.url).href },
   Firebug: { ...{"key": "idle-enemy-Firebug", "width": 128, "height": 64, "scale": 0.83, "facesLeft": false, "move": {"down": {"frames": [33, 34, 35, 36, 37, 38, 39, 40], "durations": [100, 100, 100, 100, 100, 100, 100, 100]}, "up": {"frames": [44, 45, 46, 47, 48, 49, 50, 51], "durations": [100, 100, 100, 100, 100, 100, 100, 100]}, "side": {"frames": [55, 56, 57, 58, 59, 60, 61, 62], "durations": [100, 100, 100, 100, 100, 100, 100, 100]}}}, url: new URL('../../../public/assets/Firebug.png', import.meta.url).href },
   Scorpion: { ...{"key": "idle-enemy-Scorpion", "width": 64, "height": 64, "scale": 0.83, "facesLeft": true, "move": {"down": {"frames": [24, 25, 26, 27, 28, 29, 30, 31], "durations": [100, 100, 100, 100, 100, 100, 100, 100]}, "up": {"frames": [32, 33, 34, 35, 36, 37, 38, 39], "durations": [100, 100, 100, 100, 100, 100, 100, 100]}, "side": {"frames": [40, 41, 42, 43, 44, 45, 46, 47], "durations": [100, 100, 100, 100, 100, 100, 100, 100]}}}, url: new URL('../../../public/assets/Scorpion.png', import.meta.url).href },
@@ -23,14 +28,23 @@ export const ENEMY_SHEETS: Record<EnemyId, EnemySheet> = {
 export function preloadEnemySheets(scene: Phaser.Scene): void {
   for (const s of Object.values(ENEMY_SHEETS)) scene.load.spritesheet(s.key, s.url, { frameWidth: s.width, frameHeight: s.height });
 }
-export function enemyFrame(kind: EnemyId, direction: EnemyDirection, elapsed: number): number {
+export function enemyFrame(kind: EnemyId, direction: EnemyDirection, elapsed: number, movingLeft = false): number {
   if (kind === 'Rosenspiegel') return succubusFrame('move', direction, elapsed * 1000);
   if (kind === 'LanternJelly') return jellyFrame('move', direction, elapsed * 1000);
-  const { frames, durations } = ENEMY_SHEETS[kind].move[direction];
-  let time = Math.max(0, elapsed * 1000) % durations.reduce((sum, ms) => sum + ms, 0);
+  const clips = ENEMY_SHEETS[kind].move;
+  return clipFrame(direction === 'side' && movingLeft && clips.left ? clips.left : clips[direction],elapsed*1000);
+}
+function clipFrame({frames,durations}: Clip, elapsed: number): number {
+  let time = Math.max(0, elapsed) % durations.reduce((sum, ms) => sum + ms, 0);
   for (let i = 0; i < frames.length; i++) { if (time < durations[i]) return frames[i]; time -= durations[i]; }
   return frames[0];
 }
+export function enemyHealFrame(kind: EnemyId, direction: EnemyDirection, elapsed: number, movingLeft = false): number {
+  if (kind === 'LanternJelly') return jellyFrame('heal',direction,elapsed*1000);
+  const clips=ENEMY_SHEETS[kind].heal;
+  return clips ? clipFrame(direction==='side' && movingLeft && clips.left ? clips.left : clips[direction],elapsed*1000) : enemyFrame(kind,direction,elapsed,movingLeft);
+}
 export function enemyFlip(kind: EnemyId, direction: EnemyDirection, movingLeft: boolean): boolean {
+  if (ENEMY_SHEETS[kind].move.left) return false;
   return direction === 'side' && (ENEMY_SHEETS[kind].facesLeft ? !movingLeft : movingLeft);
 }

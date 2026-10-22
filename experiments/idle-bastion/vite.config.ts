@@ -16,6 +16,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         battle: fileURLToPath(new URL('./index.html', import.meta.url)),
+        enemies: fileURLToPath(new URL('./enemy-check.html', import.meta.url)),
         layout: fileURLToPath(new URL('./layout.html', import.meta.url)),
         assets: fileURLToPath(new URL('./asset-check.html', import.meta.url)),
         ilyra: fileURLToPath(new URL('./ilyra-check.html', import.meta.url)),
