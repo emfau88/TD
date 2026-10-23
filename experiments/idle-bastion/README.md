@@ -5,8 +5,10 @@ Originalbewegungen und zwei kosmetische Moospilz-Kappenfarben. Die ersten 40 Wel
 bleiben identisch zu W02. [Gemeinsame bewegte Vorschau](enemy-lab.html) ·
 [Import und Lizenzen](assets/local-monsters/README.md) ·
 [Prüfbericht mit echten Spielaufnahmen](../../artifacts/idle-bastion/acceptance/local-enemy-assets/REPORT.md).
-Shroom Men mit allen fünf Figuren und 96 Farbvarianten ist ausschließlich nach
-lokalem Import sichtbar; keine eingeschränkt weitergebbaren Sprites im Build.
+Die optionale lokale Galerie vergleicht ausschließlich Frakassets-Kandidaten.
+Der Laufzeitimport benötigt nur das Frakassets-Archiv; Moospilz behält beide Kappenfarben.
+Die Merge-Vorbereitung korrigiert die Begleitung in Welle 46 und die Farmkandidatenauswahl
+mit Schema 28 / Regeln 14; historische laufende Kämpfe bleiben erhalten.
 
 
 **Wave-Rework 2.0 / Endlos-Grundlage:** Lebendigere Gruppen bis 28 Gegner, etwas höhere Ausbauanforderungen, gestraffte Goldrate und fortlaufende Turmlevel nach Werkstatt II. Welle 40 bleibt ein Zwischenmeilenstein. [W02-Prüfbericht](../../artifacts/idle-bastion/acceptance/wave-rework-v2/REPORT.md).

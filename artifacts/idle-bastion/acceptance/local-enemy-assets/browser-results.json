@@ -3,29 +3,11 @@
   "previews": [
     {
       "device": "desktop",
-      "variants": [
-        {
-          "name": "dotcap Farbvariante",
-          "count": 15
-        },
-        {
-          "name": "gillcap Farbvariante",
-          "count": 15
-        },
-        {
-          "name": "mushmanflat Farbvariante",
-          "count": 22
-        },
-        {
-          "name": "mushmanpointy Farbvariante",
-          "count": 22
-        },
-        {
-          "name": "mushmanskullshroom Farbvariante",
-          "count": 22
-        }
+      "cards": 26,
+      "palettes": [
+        "Rote Kappe",
+        "Moosgrüne Kappe"
       ],
-      "total": 96,
       "resolutions": [
         16,
         32,
@@ -42,29 +24,11 @@
     },
     {
       "device": "mobile",
-      "variants": [
-        {
-          "name": "dotcap Farbvariante",
-          "count": 15
-        },
-        {
-          "name": "gillcap Farbvariante",
-          "count": 15
-        },
-        {
-          "name": "mushmanflat Farbvariante",
-          "count": 22
-        },
-        {
-          "name": "mushmanpointy Farbvariante",
-          "count": 22
-        },
-        {
-          "name": "mushmanskullshroom Farbvariante",
-          "count": 22
-        }
+      "cards": 26,
+      "palettes": [
+        "Rote Kappe",
+        "Moosgrüne Kappe"
       ],
-      "total": 96,
       "resolutions": [
         16,
         32,
@@ -85,6 +49,8 @@
       "device": "desktop",
       "wave": 42,
       "intro": true,
+      "historical": false,
+      "recipeVersion": 14,
       "enemyCount": 6,
       "queue": 15,
       "species": [
@@ -100,21 +66,25 @@
       "device": "desktop",
       "wave": 46,
       "intro": true,
+      "historical": false,
+      "recipeVersion": 14,
       "enemyCount": 11,
       "queue": 12,
       "species": [
         "Scorpion",
-        "LanternJelly",
-        "WoodSpider"
+        "WoodSpider",
+        "LanternJelly"
       ],
       "rAFmedian": 2.800000000000182,
-      "rAFp95": 5.599999999999909,
+      "rAFp95": 5.5,
       "pausedReload": true
     },
     {
       "device": "desktop",
       "wave": 50,
       "intro": true,
+      "historical": false,
+      "recipeVersion": 14,
       "enemyCount": 4,
       "queue": 17,
       "species": [
@@ -130,6 +100,8 @@
       "device": "desktop",
       "wave": 54,
       "intro": false,
+      "historical": false,
+      "recipeVersion": 14,
       "enemyCount": 22,
       "queue": 0,
       "species": [
@@ -138,13 +110,15 @@
         "HornedBat"
       ],
       "rAFmedian": 2.7999999999999545,
-      "rAFp95": 2.900000000000091,
+      "rAFp95": 8.299999999999955,
       "pausedReload": true
     },
     {
       "device": "desktop",
       "wave": 54,
       "intro": true,
+      "historical": false,
+      "recipeVersion": 14,
       "enemyCount": 11,
       "queue": 16,
       "species": [
@@ -152,7 +126,24 @@
         "EmberBomb",
         "HornedBat"
       ],
-      "rAFmedian": 2.799999999999727,
+      "rAFmedian": 2.7999999999999545,
+      "rAFp95": 5.5,
+      "pausedReload": true
+    },
+    {
+      "device": "desktop",
+      "wave": 46,
+      "intro": true,
+      "historical": true,
+      "recipeVersion": 13,
+      "enemyCount": 11,
+      "queue": 12,
+      "species": [
+        "Scorpion",
+        "LanternJelly",
+        "WoodSpider"
+      ],
+      "rAFmedian": 2.800000000000182,
       "rAFp95": 5.5,
       "pausedReload": true
     },
@@ -160,6 +151,8 @@
       "device": "mobile",
       "wave": 54,
       "intro": false,
+      "historical": false,
+      "recipeVersion": 14,
       "enemyCount": 22,
       "queue": 0,
       "species": [
@@ -168,13 +161,15 @@
         "HornedBat"
       ],
       "rAFmedian": 2.799999999999727,
-      "rAFp95": 2.900000000000091,
+      "rAFp95": 5.599999999999909,
       "pausedReload": true
     },
     {
       "device": "mobile",
       "wave": 54,
       "intro": true,
+      "historical": false,
+      "recipeVersion": 14,
       "enemyCount": 11,
       "queue": 16,
       "species": [
@@ -182,8 +177,8 @@
         "EmberBomb",
         "HornedBat"
       ],
-      "rAFmedian": 2.800000000000182,
-      "rAFp95": 5.599999999999909,
+      "rAFmedian": 2.799999999999727,
+      "rAFp95": 3,
       "pausedReload": true
     }
   ]

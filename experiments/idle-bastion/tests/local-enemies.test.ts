@@ -11,7 +11,7 @@ import { createOfflineState, beginAbsence, reserveOffline, claimOffline, restore
 const read=(file:string)=>JSON.parse(readFileSync(new URL('../../../artifacts/idle-bastion/acceptance/'+file,import.meta.url),'utf8'));
 const seed=read('wave-rework-v2/earned-balanced-late.json');
 const added=['MossShroom','WoodSpider','HornedBat','EmberBomb'] as const;
-function encounter(wave:number,version:12|13=13){
+function encounter(wave:number,version:12|13|14=BATTLE_RULES_VERSION){
  const prep=IdleBattle.restore(seed)!.snapshot();prep.highestCleared=wave-1;prep.wave=wave-1;prep.phase='intermission';prep.mode='advance';prep.advanceRequested=false;prep.queue=[];prep.enemies=[];prep.shots=[];prep.intermissionRemaining=0;prep.spawnTimer=0;prep.lives=BASE.coreLives;prep.liveClearedWaves=prep.liveClearedWaves.filter(w=>w<wave);prep.farmWave=1;
  const b=IdleBattle.restore(prep)!;assert.ok(b);b.update(.025);
  const s=b.snapshot();s.waveRecipeVersion=version;s.enemies=[];s.shots=[];s.spawnTimer=.15;
@@ -36,7 +36,7 @@ test('rules 12 stay byte-for-byte reproducible against the captured original 100
 test('new introductions repeat immediately; later recipes retain all sixteen species, two healer and 28 enemy caps',()=>{
  assert.equal(ENEMY_ROSTER.length,17);
  for(const id of added){const w=ENEMIES[id].firstWave;assert.equal(introducedEnemy(w,12),undefined);assert.equal(introducedEnemy(w,13)?.id,id);
-  for(const n of [w,w+1])assert.equal(waveRecipe(n).enemies.filter(e=>e===id).length,2,`${id} at ${n}`);
+  for(const n of [w,w+1]){assert.equal(waveRecipe(n,13).enemies.filter(e=>e===id).length,2,`legacy ${id} at ${n}`);assert.equal(waveRecipe(n).enemies.filter(e=>e===id).length,n===46?15:2,`${id} at ${n}`);}
  }
  const expected=new Map<number,string>();
  for(let w=41;w<=250;w++){
@@ -93,10 +93,10 @@ test('every new species survives live save/reload deterministically; new farm pr
  }
  const b=IdleBattle.restore(seed)!;const old=read('wave-rework-v2/played-balanced.json').farm;
  assert.equal(isFarmCertificateValid(old,b),false);const before=b.snapshot(),proof=certifyFarm(b,old);assert.ok(proof&&isFarmCertificateValid(proof,b));assert.deepEqual(before,b.snapshot());
- assert.equal(proof.rulesVersion,13);
+ assert.equal(proof.rulesVersion,BATTLE_RULES_VERSION);
 });
-test('both historical rules-12 and current rules-13 offline receipts keep their exact amounts and one-claim boundary',()=>{
- for(const version of [12,13]){
+test('both historical and current offline receipts keep their exact amounts and one-claim boundary',()=>{
+ for(const version of [12,13,14]){
   const proof={wave:29,rulesVersion:version,fingerprint:'departure',rewardGold:100,rewardRemainderUnits:250,durationMs:10000};
   const offline=reserveOffline(beginAbsence(createOfflineState(1000),1000,proof,false),31000);
   assert.ok(restoreOffline(offline));const receipt=offline.pendingReward!.id,claimed=claimOffline(offline,receipt);assert.equal(claimed.amountUnits,180450);assert.equal(claimOffline(claimed.state,receipt).amountUnits,0);

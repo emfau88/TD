@@ -44,23 +44,8 @@ Im Repository-Stamm mit Python 3 und Pillow:
 python experiments/idle-bastion/scripts/import-local-enemies.py --runtime
 ```
 
-Der Import liest `%USERPROFILE%\Downloads`; `--downloads PATH` ändert den Ort.
-Kein Netzwerkzugriff. Ohne `--runtime` wird ausschließlich die private Galerie
-regeneriert. Zum normalen Bauen werden weder Downloads noch Python benötigt.
-
-## Shroom Men bleibt privat
-
-[The Game Smith · Shroom Men](https://not-a-kappa-games.itch.io/shroom-men)
-erlaubt Spielnutzung und Bearbeitung, schränkt eigenständige Asset-Weitergabe ein.
-Die öffentliche Repository-Weitergabe ist nicht eindeutig geregelt. Daher sind
-**sämtliche Shroom-Men-Originale, Farbvarianten, Sporen und Vergleichsbilder** nur
-unter `.local-assets/` lokal gespeichert, in Git ignoriert und nicht im Build.
-Vor einer öffentlichen Integration ist eine ausdrückliche Klärung mit dem
-Urheber erforderlich. Das ist kein Ausschluss einer erlaubten Spielnutzung.
-
-Die fünf Figuren und 96 Originalpaletten sind lokal in `enemy-lab.html` wählbar;
-sie teilen fünf Clipsätze. Ein Pilz im Spiel ist ausschließlich das separat
-lizenzierte Frakassets-Original. `ShroomShadows.png` wird wegen des vorhandenen
-SPIRE-Bodenschattens nicht verwendet; Sporeburst erhält keinen zusätzlichen
-Kampfzweck. Das lokale Foozle-Skeleton-ZIP ist mit der bereits integrierten
-Quelle byteidentisch und wird nicht erneut importiert.
+Der Import liest ausschließlich `free_monster_pack_frakassets.zip` aus
+`%USERPROFILE%\Downloads`; `--downloads PATH` ändert den Ort. Kein Netzwerkzugriff.
+`--runtime` erzeugt nur die vier Laufzeitatlanten. Ohne Schalter oder mit
+`--gallery` wird die optionale lokale Frakassets-Galerie regeneriert. Beide
+Schalter zusammen erzeugen beides. Andere Archive sind nicht erforderlich. Zum normalen Bauen werden weder Downloads noch Python benötigt.

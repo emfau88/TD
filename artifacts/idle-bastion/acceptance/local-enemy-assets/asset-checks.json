@@ -101,78 +101,6 @@
       "losslessOriginalFrames": true
     }
   ],
-  "shrooms": [
-    {
-      "character": "dotcap",
-      "variants": 15,
-      "walkFrames": 4,
-      "advertisedColumns": 5,
-      "transparentFifthMovementCell": true,
-      "allPalettesChecked": true,
-      "examples": [
-        "chocolatechip",
-        "dalmatian",
-        "diceroll",
-        "domino"
-      ]
-    },
-    {
-      "character": "gillcap",
-      "variants": 15,
-      "walkFrames": 4,
-      "advertisedColumns": 5,
-      "transparentFifthMovementCell": true,
-      "allPalettesChecked": true,
-      "examples": [
-        "blackmolly",
-        "bluegill",
-        "browntrout",
-        "clownfish"
-      ]
-    },
-    {
-      "character": "mushmanflat",
-      "variants": 22,
-      "walkFrames": 4,
-      "advertisedColumns": 5,
-      "transparentFifthMovementCell": true,
-      "allPalettesChecked": true,
-      "examples": [
-        "beetrootboogie",
-        "blancslate",
-        "blueberryberet",
-        "butterscotchbeanie"
-      ]
-    },
-    {
-      "character": "mushmanpointy",
-      "variants": 22,
-      "walkFrames": 4,
-      "advertisedColumns": 5,
-      "transparentFifthMovementCell": true,
-      "allPalettesChecked": true,
-      "examples": [
-        "berrybadidea",
-        "bluesteel",
-        "boneblood",
-        "cocoaloco"
-      ]
-    },
-    {
-      "character": "mushmanskullshroom",
-      "variants": 22,
-      "walkFrames": 4,
-      "advertisedColumns": 5,
-      "transparentFifthMovementCell": true,
-      "allPalettesChecked": true,
-      "examples": [
-        "badtothebone",
-        "beeafraid",
-        "bluescreenofdeath",
-        "bruisealmighty"
-      ]
-    }
-  ],
   "frakCandidates": [
     {
       "id": "biter-plant-red",
@@ -258,6 +186,5 @@
       ]
     }
   ],
-  "runtimePngBytes": 52769,
-  "shroomDuplicateFilesIgnored": 59
+  "runtimePngBytes": 52769
 }

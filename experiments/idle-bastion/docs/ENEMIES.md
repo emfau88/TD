@@ -2,10 +2,11 @@
 
 ## Aktueller Zusatz E01 · lokale Pakete, 23.10.2026
 
-Schema **27**, Kampfregeln **13**, sechzehn normale Arten plus vorhandene Bossfigur.
+Schema **28**, Kampfregeln **14**, sechzehn normale Arten plus vorhandene Bossfigur.
 W02 bleibt bis Welle 40 einschließlich Bossen/Elite exakt erhalten. Alle alten
-Regeln 3–12 bleiben für laufende Versuche lesbar; Regeln 12 sind in
-`wave-recipes-v12.ts` auch jenseits von 40 eingefroren.
+Regeln 3–13 bleiben für laufende Versuche lesbar; Regeln 12 sind in
+`wave-recipes-v12.ts` auch jenseits von 40 eingefroren. Regeln 13 sind in
+`wave-recipes-v13.ts` erhalten, einschließlich der alten Welle 46.
 
 | Ab Welle | ID / Anzeige | HP · Tempo · Rüstung · Gold · Kernschaden |
 | --- | --- | --- |
@@ -14,8 +15,10 @@ Regeln 3–12 bleiben für laufende Versuche lesbar; Regeln 12 sind in
 | 50 | HornedBat / Hornfledermaus | 24 · 74 · 0 % · 12 · 1; fliegend |
 | 54 | EmberBomb / Zunderläufer | 60 · 36 · 25 % · 18 · 2 |
 
-Je zwei Einführungsplätze, direkte Wiederholung in der nächsten Welle, danach
-familienabhängige Kombinationen aus höchstens drei Arten. Alle sechzehn normalen
+Zwei Einführungsplätze, direkte Wiederholung in der nächsten Welle, danach
+familienabhängige Kombinationen aus höchstens drei Arten. In Welle 46 übernimmt
+die neue Spinne zusätzlich die leichte Begleitung: sieben Skorpione, 15 Spinnen,
+zwei Quallen statt der versehentlichen 20-Skorpion-Mischung. Sonstige Rezepte bleiben gleich. Alle sechzehn normalen
 Arten treten in den geprüften späten 51-Wellen-Fenstern wieder auf. Vier Familien,
 maximal 28 Gegner und zwei Heiler bleiben erhalten. Spawnrhythmen und gesamtes
 Kill-/Abschlussbudget derselben Welle bleiben zu W02 gleich; geprüft 41–250.
@@ -27,8 +30,8 @@ keine Elitewerte. Alle vier Arten verwenden vorhandene Bewegung/Kampfmechaniken.
 
 48er Top-down-Grafiken von Frakassets (CC BY 4.0), kompakt in 64er Zellen gepackt,
 vier echte Ansichten, Originaltimings und JSON-Pivots. Eine vorhandene Schattenebene.
-Shroom Men wird nur in der lokalen Galerie verglichen; fünf Figuren/96 Paletten,
-keine öffentlichen Laufzeitsprites wegen ungeklärter Repository-Weitergabe.
+Die optionale lokale Galerie vergleicht die zehn Frakassets-Kandidaten.
+Der Import benötigt ausschließlich das Frakassets-Archiv.
 [Assetvertrag, Quellen und Lizenz](../assets/local-monsters/README.md) ·
 [Vergleichsvorschau](../enemy-lab.html) ·
 [Prüfergebnisse](../../../artifacts/idle-bastion/acceptance/local-enemy-assets/REPORT.md).

@@ -1,7 +1,7 @@
-/** Rules 13 add four late species. The balanced opening and historical attempts
- * still use the frozen rules-12 recipes, including their encounter rewards. */
+/** Rules 14 correct support introduction escorts; older recipes remain frozen. */
 import { ENEMIES, introducedEnemy, isHealer, type EnemyId } from './enemy-roster';
-import { waveRecipeV12, spawnGapV12, clearRewardV12 } from './wave-recipes-v12';
+import { waveRecipeV12 } from './wave-recipes-v12';
+import { waveRecipeV13, spawnGapV13, clearRewardV13 } from './wave-recipes-v13';
 import type { WaveFamily, WaveRecipe } from './wave-recipes-v11';
 export { FAMILY_NAMES, enemyPressure, type WaveFamily, type WaveRecipe } from './wave-recipes-v11';
 const ORDER: readonly WaveFamily[] = ['swarm','rush','armor','swarm','armor','rush','support','armor','swarm','rush','armor','rush','swarm','support','rush','armor','rush'];
@@ -25,9 +25,12 @@ function laterRecipe(wave: number): WaveRecipe {
   const choices = PAIRS[family].filter(pair => pair.every(id => ENEMIES[id].firstWave <= wave));
   let types = [...choices[occurrence(wave,family) % choices.length]];
   if (special) {
-    types = types.filter(id => id !== special);
-    // Keep two introduction slots and at most three silhouettes in the wave.
-    types = types.slice(0,2);
+    const healer=types.find(id=>isHealer(ENEMIES[id]));
+    // A light newcomer takes the escort role; truncating [healer,tank,escort]
+    // used to drop the escort and fill almost every slot with tanks at wave 46.
+    if(healer && types.length===3 && !isHealer(ENEMIES[special]) && ENEMIES[special].armor===0) {
+      types=[healer,types.find(id=>!isHealer(ENEMIES[id])&&id!==special)!,special];
+    } else types=types.filter(id=>id!==special).slice(0,2);
   }
   const healers = types.filter(id => isHealer(ENEMIES[id]));
   const ordinary = types.filter(id => !isHealer(ENEMIES[id]));
@@ -41,14 +44,14 @@ function laterRecipe(wave: number): WaveRecipe {
   return Object.freeze({ ...base, enemies:Object.freeze(enemies), clearGold:Math.max(20,targetGold-killGold) });
 }
 let lastWave=-1, lastRecipe: WaveRecipe;
-export function waveRecipe(wave: number, version=13): WaveRecipe {
-  if (version <= 12 || wave <= 40) return waveRecipeV12(wave,version<=12?version:12);
+export function waveRecipe(wave: number, version=14): WaveRecipe {
+  if (version <= 13 || wave <= 40) return waveRecipeV13(wave,version<=13?version:13);
   if (lastWave !== wave) { lastRecipe=laterRecipe(wave); lastWave=wave; }
   return lastRecipe;
 }
 export function spawnGap(wave: number, spawned: number, version: number): number {
-  return version>=13 && wave>40 ? waveRecipe(wave,version).gaps[spawned-1]??1 : spawnGapV12(wave,spawned,version);
+  return version>=14 && wave>40 ? waveRecipe(wave,version).gaps[spawned-1]??1 : spawnGapV13(wave,spawned,version);
 }
 export function clearReward(wave: number, version: number): number {
-  return version>=13 && wave>40 ? waveRecipe(wave,version).clearGold : clearRewardV12(wave,version);
+  return version>=14 && wave>40 ? waveRecipe(wave,version).clearGold : clearRewardV13(wave,version);
 }

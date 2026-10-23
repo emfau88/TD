@@ -1,52 +1,7 @@
 [
   {
-    "file": "dotcap-colorways.zip",
-    "sha256": "35fb11769a4bbf94f6e9db773af50ab0f0a1beffd5f7b8caa36cd9763896674e",
-    "bytes": 291204
-  },
-  {
-    "file": "gillcap-colorways.zip",
-    "sha256": "bc08b4a79972f467dfad2ee1cb0249d9bddb551ffde1fdaa0057c02b4b88e7b3",
-    "bytes": 301729
-  },
-  {
-    "file": "mushmanflat-colorways.zip",
-    "sha256": "bfba3bae2d4ae09d4fb7409948a65bd100f00164cb86aa251d3b7a3d12d0776d",
-    "bytes": 1571181
-  },
-  {
-    "file": "mushmanpointy-colorways.zip",
-    "sha256": "e5fca0a10a209110a0d64f31abacab2170cfcf449845357aabfa30ee543e5686",
-    "bytes": 457084
-  },
-  {
-    "file": "mushmanskullshroom-colorways.zip",
-    "sha256": "4897ff1e2bbf1b2f793631f7b6ba2c1496d40f78f12298ace057b58470891d17",
-    "bytes": 424186
-  },
-  {
-    "file": "sporeburst-colorways.zip",
-    "sha256": "7e377fbebcb944638976d81cf668801d33bee12c81ed97428bf2979226b485af",
-    "bytes": 21502
-  },
-  {
-    "file": "ShroomShadows.png",
-    "sha256": "d3a3e6426ad7064527489192ad349eb9861ea12609520b7fa3d2ef454c8c5142",
-    "bytes": 2774
-  },
-  {
     "file": "free_monster_pack_frakassets.zip",
     "sha256": "c95f4de43478194a2daa9d70d0e545e0ffc55031469e7bb74746cbd2b7ae5c5d",
     "bytes": 13905403
-  },
-  {
-    "file": "Foozle_2DC0018_Lucifer_Skeleton_Grunt_Pixel_Art.zip",
-    "sha256": "ac0541d55feccb1a44b44ad929e6273e4a0d7fcfe08164910c203c2a7ac29481",
-    "bytes": 1114698
-  },
-  {
-    "file": "Foozle_2DC0030_Legend_EnemyPack_1.zip",
-    "sha256": "9c8bce086d15962c7dde524de249a058e425252549f8e6bcaf16a6d4c6644f4f",
-    "bytes": 43028
   }
 ]

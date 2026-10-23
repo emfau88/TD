@@ -18,5 +18,5 @@ reference/succubus-dist/
 reference/Spire-Succubus.html
 experiments/idle-bastion/dist/
 
-# Private local asset comparisons: never publish restricted source sprites.
+# Optional local source comparisons, generated probes and temporary files.
 experiments/idle-bastion/.local-assets/

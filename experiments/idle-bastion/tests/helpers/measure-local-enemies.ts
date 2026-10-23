@@ -2,10 +2,10 @@
 import { mkdirSync,readFileSync,writeFileSync } from 'node:fs';
 import { IdleBattle,stats,upgradeCost } from '../../src/battle';
 import { certifyFarm,defenseFingerprint,type FarmCertificate } from '../../src/farming';
-const output='artifacts/idle-bastion/acceptance/local-enemy-assets';mkdirSync(output,{recursive:true});
+const output=process.env.SPIRE_ASSET_OUTPUT??'artifacts/idle-bastion/acceptance/local-enemy-assets';mkdirSync(output,{recursive:true});
 const seed=JSON.parse(readFileSync('artifacts/idle-bastion/acceptance/wave-rework-v2/earned-balanced-late.json','utf8'));
 const b=IdleBattle.restore(seed)!;if(!b)throw Error('Paid source failed migration');
-const started=b.elapsed,losses:unknown[]=[],buys:unknown[]=[],clears:unknown[]=[],seen=new Set<string>();
+const started=b.elapsed,losses:unknown[]=[],buys:unknown[]=[],clears:unknown[]=[],farmSelections:unknown[]=[],seen=new Set<string>();
 let proof:FarmCertificate|undefined,key='',lastInvestment=-1,retry=-1,failurePower=0;
 const power=()=>b.towers.reduce((sum,t)=>sum+stats(t).damage/stats(t).cooldown*(t.def.id===3?2:t.def.id===2?.5:1),0);
 const peaks=new Map<number,number>(),introScores=new Map<number,number>();
@@ -15,7 +15,7 @@ for(let second=0;second<10800&&b.highestCleared<56;second++){
   const t=candidates[0];if(t&&b.gold>=upgradeCost(t)){const cost=upgradeCost(t);if(b.upgrade(t.uid)){lastInvestment=second;buys.push({at:b.elapsed,uid:t.uid,level:t.level,cost,gold:b.gold});}}
  }
  const nextKey=defenseFingerprint(b)+'/'+b.liveClearedWaves.join(',');
- if(nextKey!==key){proof=certifyFarm(b,proof);b.setFarmWave(proof?.wave??1);key=nextKey;}
+ if(nextKey!==key){const before=b.farmWave;proof=certifyFarm(b,proof);b.setFarmWave(proof?.wave??1);if(before!==b.farmWave||!key)farmSelections.push({at:b.elapsed,from:before,to:b.farmWave,proofWave:proof?.wave});key=nextKey;}
  if(b.mode==='farm'&&lastInvestment>retry&&power()>=failurePower*1.2){b.requestAdvance();retry=lastInvestment;}
  b.update(1);
  for(const e of b.drainEvents()){
@@ -30,7 +30,7 @@ for(let second=0;second<10800&&b.highestCleared<56;second++){
   peaks.set(b.wave,b.enemies.length);writeFileSync(`${output}/view-wave${b.wave}.json`,JSON.stringify(b.snapshot(),null,2));
  }
 }
-const result={source:'wave-rework-v2/earned-balanced-late.json',giftedGold:0,secondsAfter40:b.elapsed-started,record:b.highestCleared,losses,purchases:buys,clears,
+const result={source:'wave-rework-v2/earned-balanced-late.json',giftedGold:0,secondsAfter40:b.elapsed-started,record:b.highestCleared,losses,purchases:buys,clears,farmSelections,wave1FarmClears:clears.filter((r:any)=>r.mode==='farm'&&r.wave===1).length,
  levels:b.towers.map(t=>({kind:t.def.id,level:t.level,pad:t.padId})),gold:b.gold,earned:b.earned,farm:proof,seen:[...seen],peaks:Object.fromEntries(peaks)};
 writeFileSync(`${output}/paid-continuation.json`,JSON.stringify(result,null,2));writeFileSync(`${output}/earned-late.json`,JSON.stringify(b.snapshot(),null,2));
-console.log(JSON.stringify({secondsAfter40:result.secondsAfter40,record:b.highestCleared,defeats:losses.length,purchases:buys.length,newSpecies:[...seen].filter(id=>['MossShroom','WoodSpider','HornedBat','EmberBomb'].includes(id)),peaks:result.peaks}));
+console.log(JSON.stringify({secondsAfter40:result.secondsAfter40,record:b.highestCleared,defeats:losses.length,purchases:buys.length,wave1FarmClears:result.wave1FarmClears,newSpecies:[...seen].filter(id=>['MossShroom','WoodSpider','HornedBat','EmberBomb'].includes(id)),peaks:result.peaks}));

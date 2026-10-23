@@ -13,5 +13,9 @@
   ],
   "publicGallery": true,
   "creditsReachableFromGame": true,
-  "pauseAndStep": true
+  "pauseAndStep": true,
+  "palettes": [
+    "Rote Kappe",
+    "Moosgrüne Kappe"
+  ]
 }

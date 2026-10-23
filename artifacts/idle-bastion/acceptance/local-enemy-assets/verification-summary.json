@@ -4,9 +4,14 @@
     "pass": 110,
     "fail": 9
   },
-  "current": {
+  "beforeMergePreparation": {
     "tests": 126,
     "pass": 117,
+    "fail": 9
+  },
+  "current": {
+    "pass": 122,
+    "tests": 131,
     "fail": 9
   },
   "newFailures": [],
@@ -21,12 +26,30 @@
     "battle schema two migrates without rewriting the historical absence proof or pending receipt",
     "session return across the Mara rule update pays the historical rate once and starts with no invented current proof"
   ],
+  "schemaVersion": 28,
+  "rulesVersion": 14,
+  "targeted": {
+    "pass": 25,
+    "tests": 25,
+    "fail": 0
+  },
   "build": {
-    "privateShroomPNGs": 0,
-    "sourceArchives": 0,
-    "newPngBytes": 52769,
     "newTextures": 4,
+    "runtimeImportRequiredArchives": 1,
+    "sourceArchives": 0,
+    "success": true,
+    "creditsPage": true,
     "estimatedDecodedTextureBytes": 2621440,
-    "creditsPage": true
+    "newPngBytes": 52769,
+    "localComparisonDirectories": 0
+  },
+  "browser": {
+    "productionPreview": true,
+    "pausedReloadProbes": 8,
+    "denseWave54LivingEnemies": 22,
+    "mobileViewport": "390x844",
+    "desktop": "1600x1000",
+    "physicalPhoneTest": false,
+    "success": true
   }
 }
