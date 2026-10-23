@@ -18,7 +18,7 @@ Die 441,8 MB Atlanten verteilen sich auf Ilyras ursprüngliche Hüftbewegung (13
 
 Der Entwurf hätte **482,9 MB neue eindeutige LFS-Inhalte** benötigt. Nach der Reduzierung bleiben davon nur **9,84 MB notwendige Quellen**. Bereits vorhandene gleiche Texturen/PSB-Dateien verwenden denselben Git-LFS-Inhalt, auch wenn mehrere Unity-Projekte sie unter eigenen Pfaden benötigen.
 
-Der übrige neue Git-Inhalt ist überwiegend stark komprimierbarer Text. Das lokale Sicherungsbundle des bisherigen Commits ist nur **4,52 MB** groß, obwohl die entpackten Clips und Rig-Daten viel größer sind. Zusammen ergibt sich eine erwartete neue Übertragung von ungefähr **14–15 MB**, zuzüglich kleiner Protokollanteile. Die endgültige Übertragung wird beim Push geprüft; dies ist kein Versprechen über die Größe eines vollständigen erstmaligen Repository-Downloads.
+Der übrige neue Git-Inhalt ist überwiegend stark komprimierbarer Text. Das lokale Sicherungsbundle des bisherigen Commits ist nur **4,52 MB** groß, obwohl die entpackten Clips und Rig-Daten viel größer sind. Zusammen ergibt sich eine erwartete neue Übertragung von ungefähr **14–15 MB**, zuzüglich kleiner Protokollanteile. **Push bestätigt:** Commit `785ea45f54e763bcb8a921716cfa18ee0443e8de` liegt auf GitHub auf `codex/tavern-idle-smoothing`; alle 9 neuen LFS-Objekte (9.840.838 Bytes) wurden übertragen. Das reduzierte Git-Bundle umfasst 4.485.244 Bytes, zusammen also rund **14,3 MB** neue Sicherungsdaten. Dies ist keine Aussage über die Größe eines vollständigen erstmaligen Repository-Downloads.
 
 Die beiden jeweils ca. 32 MB großen `.anim`-Clips sind bearbeitbare YAML-Quellen. Sie bleiben erhalten und werden von Git komprimiert. Sie werden nicht als verlustbehaftete Vorschau behandelt.
 

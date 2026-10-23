@@ -2,6 +2,8 @@
 
 Reduzierte Sicherung auf `codex/tavern-idle-smoothing`, aufbauend auf dem bereits veröffentlichten `f9c4fc3`. Der bisherige, nie erfolgreich gepushte Entwurf `ab9e5cf` wird mit ausdrücklicher Nutzerfreigabe ersetzt. Veröffentlichte Commits bleiben unverändert. Keine Spielintegration und kein Merge nach main.
 
+**Sicherung bestätigt:** `785ea45` wurde erfolgreich per normalem Fast-forward auf den Tavernenbranch gepusht. GitHub-Ref anschließend geprüft; main und englischer Branch bleiben auf `d61c56b`. Alle 350 ausgewählten Unity-/Bildquellen stimmen mit den ursprünglichen Prüfsummen überein. Der ursprüngliche Entwurf bleibt lokal im Sicherungsbranch und Backup.
+
 ## Vollständig erhaltene Quellen
 
 - `experiments/idle-bastion/ANIMATIONS_INVENTAR.md` und aktuelle Roadmap.
