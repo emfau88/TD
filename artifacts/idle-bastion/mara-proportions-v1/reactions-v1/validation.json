@@ -1,0 +1,242 @@
+{
+  "preservedFiles": 366,
+  "preservedFilesChanged": [],
+  "mesh": {
+    "states": 292,
+    "triangles": 545456,
+    "folded": 0,
+    "minRatio": 0.3603892922401428,
+    "maxRatio": 1.3213038444519043,
+    "layers": [
+      {
+        "name": "CapeBack",
+        "order": 0,
+        "layer": 0
+      },
+      {
+        "name": "CapeL",
+        "order": 1,
+        "layer": 0
+      },
+      {
+        "name": "CapeR",
+        "order": 2,
+        "layer": 0
+      },
+      {
+        "name": "HairBack",
+        "order": 3,
+        "layer": 0
+      },
+      {
+        "name": "Hips",
+        "order": 4,
+        "layer": 0
+      },
+      {
+        "name": "Torso",
+        "order": 5,
+        "layer": 0
+      },
+      {
+        "name": "Head",
+        "order": 6,
+        "layer": 0
+      },
+      {
+        "name": "Scarf",
+        "order": 7,
+        "layer": 0
+      },
+      {
+        "name": "ForearmL",
+        "order": 8,
+        "layer": 0
+      },
+      {
+        "name": "ForearmR",
+        "order": 9,
+        "layer": 0
+      },
+      {
+        "name": "HandL",
+        "order": 10,
+        "layer": 0
+      },
+      {
+        "name": "HandR",
+        "order": 11,
+        "layer": 0
+      },
+      {
+        "name": "HairL",
+        "order": 12,
+        "layer": 0
+      },
+      {
+        "name": "HairR",
+        "order": 13,
+        "layer": 0
+      },
+      {
+        "name": "Braid",
+        "order": 14,
+        "layer": 0
+      },
+      {
+        "name": "EyeL",
+        "order": 15,
+        "layer": 0
+      },
+      {
+        "name": "EyeR",
+        "order": 16,
+        "layer": 0
+      },
+      {
+        "name": "BrowL",
+        "order": 17,
+        "layer": 0
+      },
+      {
+        "name": "BrowR",
+        "order": 18,
+        "layer": 0
+      },
+      {
+        "name": "Mouth",
+        "order": 19,
+        "layer": 0
+      },
+      {
+        "name": "HairFront",
+        "order": 20,
+        "layer": 0
+      }
+    ]
+  },
+  "clips": {
+    "head": {
+      "samplesPerVersion": 61,
+      "oldExportDifferences": [],
+      "endpoints": {
+        "before": {
+          "firstVsIdle": {
+            "pixels": 0,
+            "maxChannel": 0,
+            "meanChannel": 0.0
+          },
+          "lastVsIdle": {
+            "pixels": 0,
+            "maxChannel": 0,
+            "meanChannel": 0.0
+          },
+          "firstVsLast": {
+            "pixels": 0,
+            "maxChannel": 0,
+            "meanChannel": 0.0
+          }
+        },
+        "after": {
+          "firstVsIdle": {
+            "pixels": 0,
+            "maxChannel": 0,
+            "meanChannel": 0.0
+          },
+          "lastVsIdle": {
+            "pixels": 0,
+            "maxChannel": 0,
+            "meanChannel": 0.0
+          },
+          "firstVsLast": {
+            "pixels": 0,
+            "maxChannel": 0,
+            "meanChannel": 0.0
+          }
+        }
+      },
+      "headPixelsUnchanged": true,
+      "jointMotionIdentical": true,
+      "jointCoverage": {
+        "before": {
+          "UpperArmL": 255,
+          "ForearmL": 255,
+          "HandL": 255,
+          "UpperArmR": 255,
+          "ForearmR": 255,
+          "HandR": 255
+        },
+        "after": {
+          "UpperArmL": 255,
+          "ForearmL": 255,
+          "HandL": 255,
+          "UpperArmR": 255,
+          "ForearmR": 255,
+          "HandR": 255
+        }
+      }
+    },
+    "touch": {
+      "samplesPerVersion": 85,
+      "oldExportDifferences": [],
+      "endpoints": {
+        "before": {
+          "firstVsIdle": {
+            "pixels": 0,
+            "maxChannel": 0,
+            "meanChannel": 0.0
+          },
+          "lastVsIdle": {
+            "pixels": 0,
+            "maxChannel": 0,
+            "meanChannel": 0.0
+          },
+          "firstVsLast": {
+            "pixels": 0,
+            "maxChannel": 0,
+            "meanChannel": 0.0
+          }
+        },
+        "after": {
+          "firstVsIdle": {
+            "pixels": 0,
+            "maxChannel": 0,
+            "meanChannel": 0.0
+          },
+          "lastVsIdle": {
+            "pixels": 0,
+            "maxChannel": 0,
+            "meanChannel": 0.0
+          },
+          "firstVsLast": {
+            "pixels": 0,
+            "maxChannel": 0,
+            "meanChannel": 0.0
+          }
+        }
+      },
+      "headPixelsUnchanged": true,
+      "jointMotionIdentical": true,
+      "jointCoverage": {
+        "before": {
+          "UpperArmL": 255,
+          "ForearmL": 255,
+          "HandL": 255,
+          "UpperArmR": 255,
+          "ForearmR": 255,
+          "HandR": 255
+        },
+        "after": {
+          "UpperArmL": 255,
+          "ForearmL": 255,
+          "HandL": 255,
+          "UpperArmR": 255,
+          "ForearmR": 255,
+          "HandR": 255
+        }
+      }
+    }
+  },
+  "newAtlasBytes": 98765898,
+  "losslessRoundtripAllPages": true
+}

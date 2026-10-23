@@ -1,0 +1,372 @@
+{
+  "width": 768,
+  "height": 1024,
+  "fps": 30,
+  "framesPerPage": 8,
+  "clips": {
+    "idle": {
+      "duration": 5,
+      "count": 150,
+      "last": 149,
+      "versions": {
+        "before": {
+          "pages": [
+            "../../idle-rig/preview/before-00.webp",
+            "../../idle-rig/preview/before-01.webp",
+            "../../idle-rig/preview/before-02.webp",
+            "../../idle-rig/preview/before-03.webp",
+            "../../idle-rig/preview/before-04.webp",
+            "../../idle-rig/preview/before-05.webp",
+            "../../idle-rig/preview/before-06.webp",
+            "../../idle-rig/preview/before-07.webp",
+            "../../idle-rig/preview/before-08.webp",
+            "../../idle-rig/preview/before-09.webp",
+            "../../idle-rig/preview/before-10.webp",
+            "../../idle-rig/preview/before-11.webp",
+            "../../idle-rig/preview/before-12.webp",
+            "../../idle-rig/preview/before-13.webp",
+            "../../idle-rig/preview/before-14.webp",
+            "../../idle-rig/preview/before-15.webp",
+            "../../idle-rig/preview/before-16.webp",
+            "../../idle-rig/preview/before-17.webp",
+            "../../idle-rig/preview/before-18.webp"
+          ]
+        },
+        "after": {
+          "pages": [
+            "../../idle-rig/preview/after-00.webp",
+            "../../idle-rig/preview/after-01.webp",
+            "../../idle-rig/preview/after-02.webp",
+            "../../idle-rig/preview/after-03.webp",
+            "../../idle-rig/preview/after-04.webp",
+            "../../idle-rig/preview/after-05.webp",
+            "../../idle-rig/preview/after-06.webp",
+            "../../idle-rig/preview/after-07.webp",
+            "../../idle-rig/preview/after-08.webp",
+            "../../idle-rig/preview/after-09.webp",
+            "../../idle-rig/preview/after-10.webp",
+            "../../idle-rig/preview/after-11.webp",
+            "../../idle-rig/preview/after-12.webp",
+            "../../idle-rig/preview/after-13.webp",
+            "../../idle-rig/preview/after-14.webp",
+            "../../idle-rig/preview/after-15.webp",
+            "../../idle-rig/preview/after-16.webp",
+            "../../idle-rig/preview/after-17.webp",
+            "../../idle-rig/preview/after-18.webp"
+          ]
+        }
+      }
+    },
+    "head": {
+      "duration": 2.0,
+      "count": 60,
+      "last": 60,
+      "versions": {
+        "before": {
+          "pages": [
+            "head-before-00.webp",
+            "head-before-01.webp",
+            "head-before-02.webp",
+            "head-before-03.webp",
+            "head-before-04.webp",
+            "head-before-05.webp",
+            "head-before-06.webp",
+            "head-before-07.webp"
+          ]
+        },
+        "after": {
+          "pages": [
+            "head-after-00.webp",
+            "head-after-01.webp",
+            "head-after-02.webp",
+            "head-after-03.webp",
+            "head-after-04.webp",
+            "head-after-05.webp",
+            "head-after-06.webp",
+            "head-after-07.webp"
+          ]
+        }
+      }
+    },
+    "touch": {
+      "duration": 2.8,
+      "count": 84,
+      "last": 84,
+      "versions": {
+        "before": {
+          "pages": [
+            "touch-before-00.webp",
+            "touch-before-01.webp",
+            "touch-before-02.webp",
+            "touch-before-03.webp",
+            "touch-before-04.webp",
+            "touch-before-05.webp",
+            "touch-before-06.webp",
+            "touch-before-07.webp",
+            "touch-before-08.webp",
+            "touch-before-09.webp",
+            "touch-before-10.webp"
+          ]
+        },
+        "after": {
+          "pages": [
+            "touch-after-00.webp",
+            "touch-after-01.webp",
+            "touch-after-02.webp",
+            "touch-after-03.webp",
+            "touch-after-04.webp",
+            "touch-after-05.webp",
+            "touch-after-06.webp",
+            "touch-after-07.webp",
+            "touch-after-08.webp",
+            "touch-after-09.webp",
+            "touch-after-10.webp"
+          ]
+        }
+      }
+    },
+    "glance": {
+      "duration": 3.8,
+      "count": 114,
+      "last": 114,
+      "versions": {
+        "before": {
+          "pages": [
+            "glance-before-00.webp",
+            "glance-before-01.webp",
+            "glance-before-02.webp",
+            "glance-before-03.webp",
+            "glance-before-04.webp",
+            "glance-before-05.webp",
+            "glance-before-06.webp",
+            "glance-before-07.webp",
+            "glance-before-08.webp",
+            "glance-before-09.webp",
+            "glance-before-10.webp",
+            "glance-before-11.webp",
+            "glance-before-12.webp",
+            "glance-before-13.webp",
+            "glance-before-14.webp"
+          ]
+        },
+        "after": {
+          "pages": [
+            "glance-after-00.webp",
+            "glance-after-01.webp",
+            "glance-after-02.webp",
+            "glance-after-03.webp",
+            "glance-after-04.webp",
+            "glance-after-05.webp",
+            "glance-after-06.webp",
+            "glance-after-07.webp",
+            "glance-after-08.webp",
+            "glance-after-09.webp",
+            "glance-after-10.webp",
+            "glance-after-11.webp",
+            "glance-after-12.webp",
+            "glance-after-13.webp",
+            "glance-after-14.webp"
+          ]
+        }
+      }
+    },
+    "tease": {
+      "duration": 3.4,
+      "count": 102,
+      "last": 102,
+      "versions": {
+        "before": {
+          "pages": [
+            "tease-before-00.webp",
+            "tease-before-01.webp",
+            "tease-before-02.webp",
+            "tease-before-03.webp",
+            "tease-before-04.webp",
+            "tease-before-05.webp",
+            "tease-before-06.webp",
+            "tease-before-07.webp",
+            "tease-before-08.webp",
+            "tease-before-09.webp",
+            "tease-before-10.webp",
+            "tease-before-11.webp",
+            "tease-before-12.webp"
+          ]
+        },
+        "after": {
+          "pages": [
+            "tease-after-00.webp",
+            "tease-after-01.webp",
+            "tease-after-02.webp",
+            "tease-after-03.webp",
+            "tease-after-04.webp",
+            "tease-after-05.webp",
+            "tease-after-06.webp",
+            "tease-after-07.webp",
+            "tease-after-08.webp",
+            "tease-after-09.webp",
+            "tease-after-10.webp",
+            "tease-after-11.webp",
+            "tease-after-12.webp"
+          ]
+        }
+      }
+    },
+    "joy": {
+      "duration": 4.2,
+      "count": 126,
+      "last": 126,
+      "versions": {
+        "before": {
+          "pages": [
+            "joy-before-00.webp",
+            "joy-before-01.webp",
+            "joy-before-02.webp",
+            "joy-before-03.webp",
+            "joy-before-04.webp",
+            "joy-before-05.webp",
+            "joy-before-06.webp",
+            "joy-before-07.webp",
+            "joy-before-08.webp",
+            "joy-before-09.webp",
+            "joy-before-10.webp",
+            "joy-before-11.webp",
+            "joy-before-12.webp",
+            "joy-before-13.webp",
+            "joy-before-14.webp",
+            "joy-before-15.webp"
+          ]
+        },
+        "after": {
+          "pages": [
+            "joy-after-00.webp",
+            "joy-after-01.webp",
+            "joy-after-02.webp",
+            "joy-after-03.webp",
+            "joy-after-04.webp",
+            "joy-after-05.webp",
+            "joy-after-06.webp",
+            "joy-after-07.webp",
+            "joy-after-08.webp",
+            "joy-after-09.webp",
+            "joy-after-10.webp",
+            "joy-after-11.webp",
+            "joy-after-12.webp",
+            "joy-after-13.webp",
+            "joy-after-14.webp",
+            "joy-after-15.webp"
+          ]
+        }
+      }
+    },
+    "hip": {
+      "duration": 5.0,
+      "count": 150,
+      "last": 150,
+      "versions": {
+        "before": {
+          "pages": [
+            "hip-before-00.webp",
+            "hip-before-01.webp",
+            "hip-before-02.webp",
+            "hip-before-03.webp",
+            "hip-before-04.webp",
+            "hip-before-05.webp",
+            "hip-before-06.webp",
+            "hip-before-07.webp",
+            "hip-before-08.webp",
+            "hip-before-09.webp",
+            "hip-before-10.webp",
+            "hip-before-11.webp",
+            "hip-before-12.webp",
+            "hip-before-13.webp",
+            "hip-before-14.webp",
+            "hip-before-15.webp",
+            "hip-before-16.webp",
+            "hip-before-17.webp",
+            "hip-before-18.webp"
+          ]
+        },
+        "after": {
+          "pages": [
+            "hip-after-00.webp",
+            "hip-after-01.webp",
+            "hip-after-02.webp",
+            "hip-after-03.webp",
+            "hip-after-04.webp",
+            "hip-after-05.webp",
+            "hip-after-06.webp",
+            "hip-after-07.webp",
+            "hip-after-08.webp",
+            "hip-after-09.webp",
+            "hip-after-10.webp",
+            "hip-after-11.webp",
+            "hip-after-12.webp",
+            "hip-after-13.webp",
+            "hip-after-14.webp",
+            "hip-after-15.webp",
+            "hip-after-16.webp",
+            "hip-after-17.webp",
+            "hip-after-18.webp"
+          ]
+        }
+      }
+    },
+    "giggle": {
+      "duration": 5.4,
+      "count": 162,
+      "last": 162,
+      "versions": {
+        "before": {
+          "pages": [
+            "giggle-before-00.webp",
+            "giggle-before-01.webp",
+            "giggle-before-02.webp",
+            "giggle-before-03.webp",
+            "giggle-before-04.webp",
+            "giggle-before-05.webp",
+            "giggle-before-06.webp",
+            "giggle-before-07.webp",
+            "giggle-before-08.webp",
+            "giggle-before-09.webp",
+            "giggle-before-10.webp",
+            "giggle-before-11.webp",
+            "giggle-before-12.webp",
+            "giggle-before-13.webp",
+            "giggle-before-14.webp",
+            "giggle-before-15.webp",
+            "giggle-before-16.webp",
+            "giggle-before-17.webp",
+            "giggle-before-18.webp",
+            "giggle-before-19.webp",
+            "giggle-before-20.webp"
+          ]
+        },
+        "after": {
+          "pages": [
+            "giggle-after-00.webp",
+            "giggle-after-01.webp",
+            "giggle-after-02.webp",
+            "giggle-after-03.webp",
+            "giggle-after-04.webp",
+            "giggle-after-05.webp",
+            "giggle-after-06.webp",
+            "giggle-after-07.webp",
+            "giggle-after-08.webp",
+            "giggle-after-09.webp",
+            "giggle-after-10.webp",
+            "giggle-after-11.webp",
+            "giggle-after-12.webp",
+            "giggle-after-13.webp",
+            "giggle-after-14.webp",
+            "giggle-after-15.webp",
+            "giggle-after-16.webp",
+            "giggle-after-17.webp",
+            "giggle-after-18.webp",
+            "giggle-after-19.webp",
+            "giggle-after-20.webp"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+export/
+preview/*.webp
+qa/*.png
+__pycache__/
+*.log
+mesh-audit*.json

@@ -128,7 +128,7 @@ function tick(now){
   if(player.started||oldKey!==player.key||hadPending!==!!player.pending)renderControls();
 }
 try{
-  [manifest,content]=await Promise.all(['manifest.json','content.json'].map(async u=>{const r=await fetch(u);if(!r.ok)throw Error(u);return r.json();}));
+  [manifest,content]=await Promise.all(['manifest.json','content.json'].map(async u=>{const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw Error(u);return r.json();}));
   const q=new URLSearchParams(location.search);hero=q.get('hero')==='ilyra'?'ilyra':'mara';heart=Math.max(0,Math.min(2,Number(q.get('hearts'))||0));heart=Math.floor(heart);
   choose();requestAnimationFrame(tick);
 }catch(e){fail('Die Vorschau konnte nicht geladen werden. Bitte die Seite neu laden.');$('#retry').onclick=()=>location.reload();console.error(e);}

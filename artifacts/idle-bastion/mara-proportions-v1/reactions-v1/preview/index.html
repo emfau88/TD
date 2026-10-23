@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mara · Animationen im Proportionsvergleich</title><link rel="icon" href="data:,"><link rel="stylesheet" href="style.css"></head>
+<body><main>
+<div class="eyebrow">SPIRE · separate Vorschau</div>
+<h1>Mara: Arm- und Handproportionen</h1>
+<p class="intro">Die bisherigen Bewegungen mit der freigegebenen Grundform: schlankere Oberarme, leicht vollere Unterarme und größere Hände.</p>
+<nav aria-label="Animation auswählen"><button data-clip="idle" aria-pressed="false">M01 · Idle</button><button data-clip="head" aria-pressed="true">M02 · Kopfreaktion</button><button data-clip="touch" aria-pressed="false">M03 · Berührung</button><button data-clip="glance" aria-pressed="false">M04 · Blickkontakt</button><button data-clip="giggle" aria-pressed="false">M05 · Kichern</button><button data-clip="joy" aria-pressed="false">M06 · Aufrichten und Abfedern</button><button data-clip="tease" aria-pressed="false">M07 · Necken</button><button data-clip="hip" aria-pressed="false">M08 · Hand an die Hüfte</button></nav>
+<div class="pair"><section class="panel"><h2>Vorher <small>Bisherige Arm- und Handform</small></h2><canvas id="before" width="768" height="1024" aria-label="Bisherige Mara"></canvas></section><section class="panel"><h2>Nachher <small>Freigegebene M01-Proportionen</small></h2><canvas id="after" width="768" height="1024" aria-label="Mara mit neuen Proportionen"></canvas></section></div>
+<div class="controls"><button id="play" disabled>Wird geladen …</button><button id="restart" disabled>Neu starten</button><label>Tempo <select id="speed"><option value="1">Normal</option><option value="0.5">Halb</option></select></label><label><input type="checkbox" id="return"> Mit Idle-Rückkehr</label><label><input type="checkbox" id="detail"> Arme vergrößern</label><label><input type="checkbox" id="dark"> Dunkel</label></div>
+<div class="timeline"><input type="range" id="scrub" min="0" max="60" value="0" aria-label="Gemeinsamer Zeitpunkt"><output id="time">0,00 s</output><span id="phase">Kopfreaktion</span></div>
+<p id="status" role="status">Die ersten Bilder werden geladen …</p>
+<p class="note">M01–M08 sind vom Nutzer freigegeben. Beide Seiten laufen synchron; der Regler zeigt auch die Endposen. Alte Fassungen bleiben als Vergleich erhalten. Das Hauptspiel ist unverändert.</p>
+<p class="note"><a href="../../idle-rig/preview/">Bisheriger Idle-Vergleich</a> · <a href="../README.md">Quellen und Prüfung</a></p>
+</main><script type="module" src="comparison.js"></script></body></html>

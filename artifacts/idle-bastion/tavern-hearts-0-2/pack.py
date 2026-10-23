@@ -13,16 +13,16 @@ from PIL import Image
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-M = 'mara-rig-v2/'
+M = 'mara-proportions-v1/reactions-v1/preview'
 I = 'ilyra-rig-prep/'
 SOURCES = {
     'mara': {
-        'idle': (M+'body-comparison', ['comparisons','Idle','after'], 'Ruhe', 0),
-        'head': (M+'head-comparison', ['clips','after'], 'Kopfreaktion', 0),
-        'touch': (M+'body-comparison', ['comparisons','TouchReaction','after'], 'Berührung', 0),
-        'variant': (M+'gesture-study', ['comparisons','Idle','after'], 'Blickkontakt', 2),
-        'joy': (M+'chest-physics', ['clips','after'], 'Freudiges Aufrichten', 2),
-        'giggle': (M+'physics-gestures', ['clips','giggle'], 'Kichern', 2),
+        'idle': (M, ['clips','idle'], 'Ruhe', 0),
+        'head': (M, ['clips','head'], 'Kopfreaktion', 0),
+        'touch': (M, ['clips','touch'], 'Berührung', 0),
+        'variant': (M, ['clips','glance'], 'Blickkontakt', 2),
+        'joy': (M, ['clips','joy'], 'Freudiges Aufrichten', 2),
+        'giggle': (M, ['clips','giggle'], 'Kichern', 2),
     },
     'ilyra': {
         'idle': (I+'hip-v1/preview', ['clips','idle'], 'Ruhe', 0),
@@ -41,6 +41,8 @@ def source(hero, key):
     clip = manifest
     for k in keys:
         clip = clip[k]
+    if hero=='mara':
+        clip={**clip,**clip['versions']['after']}
     return path.parent, manifest, clip, label, heart
 
 def original_frame(hero, key, n, cache=None):
@@ -48,12 +50,12 @@ def original_frame(hero, key, n, cache=None):
     if hero=='ilyra' and unified.exists():
         return Image.open(unified).convert('RGBA')
     folder, manifest, clip, _, _ = source(hero,key)
-    if 'pages' in clip:
+    if 'frames' in clip:
         p,x,y,w,h = clip['frames'][n]
         path = folder/clip['pages'][p]
     else:
         w,h = manifest['width'],manifest['height']
-        path = folder/clip['sheets'][n//8]
+        path = folder/clip.get('sheets',clip.get('pages'))[n//8]
         x,y = n%4*w,(n%8)//4*h
     if cache is not None and path in cache:
         page = cache[path]
@@ -63,7 +65,7 @@ def original_frame(hero, key, n, cache=None):
             cache.clear()
             cache[path] = page
     frame = page.crop((x,y,x+w,y+h))
-    if 'pages' in clip:
+    if 'frames' in clip:
         full = Image.new('RGBA',(768,1024))
         full.paste(frame,clip['crop'][:2])
         return full
@@ -104,7 +106,7 @@ def inspect():
 def pack(hero,key):
     folder, manifest, clip, label, heart = source(hero,key)
     fps=manifest['fps']; count=round(clip['duration']*fps)
-    out=HERE/'assets'/hero/key;out.mkdir(parents=True,exist_ok=True)
+    out=HERE/'assets'/('mara-proportions-v1' if hero=='mara' else hero)/key;out.mkdir(parents=True,exist_ok=True)
     pages=[]; cache={}; checks=0; rest_frames=[]
     rest=np.array(display(original_frame(hero,key,0),hero))
     for start in range(0,count,8):
@@ -128,11 +130,13 @@ def pack(hero,key):
 
 if __name__=='__main__':
     (HERE/'qa').mkdir(exist_ok=True)
-    inspect()
+    if '--mara-current' not in sys.argv:inspect()
     if '--inspect' not in sys.argv:
         data={'width':480,'height':800,'columns':4,'perPage':8,'heroes':{h:{} for h in SOURCES}};hashes={}
+        if '--mara-current' in sys.argv:data=json.loads((HERE/'manifest.json').read_text(encoding='utf-8'))
+        jobs=[(h,k) for h in SOURCES for k in SOURCES[h] if '--mara-current' not in sys.argv or h=='mara']
         with ThreadPoolExecutor(max_workers=3) as pool:
-            for hero,key,clip,hh in pool.map(lambda x:pack(*x),[(h,k) for h in SOURCES for k in SOURCES[h]]):
+            for hero,key,clip,hh in pool.map(lambda x:pack(*x),jobs):
                 data['heroes'][hero][key]=clip;hashes.update(hh)
         (HERE/'manifest.json').write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
-        (HERE/'qa'/'source-hashes.json').write_text(json.dumps(hashes,indent=2),encoding='utf-8')
+        (HERE/'qa'/('source-hashes-mara-current.json' if '--mara-current' in sys.argv else 'source-hashes.json')).write_text(json.dumps(hashes,indent=2),encoding='utf-8')

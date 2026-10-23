@@ -1,0 +1,15 @@
+{
+  "maraRoles": [
+    "idle",
+    "head",
+    "touch",
+    "variant",
+    "joy",
+    "giggle"
+  ],
+  "ilyraManifestUnchanged": true,
+  "previousMaraAtlasesRetained": true,
+  "totalBytes": 316362726,
+  "maraBytes": 160482944,
+  "mainGameChanged": false
+}

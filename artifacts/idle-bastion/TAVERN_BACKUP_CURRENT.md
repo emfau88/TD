@@ -1,5 +1,7 @@
 # Tavernen-Quellensicherung – 23.10.2026
 
+**Nachtrag:** Nach dieser Sicherung wurden Maras vorhandene Bewegungen M02–M08 auf die freigegebenen M01-Proportionen übertragen und vom Nutzer freigegeben. Der neue aktuelle Stand, das aktualisierte separate Testpaket und die Reproduktion sind in [reactions-v1/README.md](mara-proportions-v1/reactions-v1/README.md) dokumentiert. Die folgende Beschreibung bleibt der Beleg für die vorherige Sicherung `785ea45`; deren Originaldateien bleiben erhalten.
+
 Reduzierte Sicherung auf `codex/tavern-idle-smoothing`, aufbauend auf dem bereits veröffentlichten `f9c4fc3`. Der bisherige, nie erfolgreich gepushte Entwurf `ab9e5cf` wird mit ausdrücklicher Nutzerfreigabe ersetzt. Veröffentlichte Commits bleiben unverändert. Keine Spielintegration und kein Merge nach main.
 
 **Sicherung bestätigt:** `785ea45` wurde erfolgreich per normalem Fast-forward auf den Tavernenbranch gepusht. GitHub-Ref anschließend geprüft; main und englischer Branch bleiben auf `d61c56b`. Alle 350 ausgewählten Unity-/Bildquellen stimmen mit den ursprünglichen Prüfsummen überein. Der ursprüngliche Entwurf bleibt lokal im Sicherungsbranch und Backup.

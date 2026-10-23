@@ -1,0 +1,65 @@
+{
+  "key": "glance",
+  "samplesPerVersion": 115,
+  "foldedTriangles": 0,
+  "states": 230,
+  "oldExportDifferentFrames": [],
+  "jointMotionIdentical": true,
+  "headPixelsUnchanged": true,
+  "endpoints": {
+    "before": {
+      "firstVsIdle": {
+        "pixels": 0,
+        "maxChannel": 0,
+        "meanChannel": 0.0
+      },
+      "lastVsIdle": {
+        "pixels": 0,
+        "maxChannel": 0,
+        "meanChannel": 0.0
+      },
+      "firstVsLast": {
+        "pixels": 0,
+        "maxChannel": 0,
+        "meanChannel": 0.0
+      }
+    },
+    "after": {
+      "firstVsIdle": {
+        "pixels": 0,
+        "maxChannel": 0,
+        "meanChannel": 0.0
+      },
+      "lastVsIdle": {
+        "pixels": 0,
+        "maxChannel": 0,
+        "meanChannel": 0.0
+      },
+      "firstVsLast": {
+        "pixels": 0,
+        "maxChannel": 0,
+        "meanChannel": 0.0
+      }
+    }
+  },
+  "jointCoverage": {
+    "before": {
+      "UpperArmL": 255,
+      "ForearmL": 255,
+      "HandL": 255,
+      "UpperArmR": 255,
+      "ForearmR": 255,
+      "HandR": 255
+    },
+    "after": {
+      "UpperArmL": 255,
+      "ForearmL": 255,
+      "HandL": 255,
+      "UpperArmR": 255,
+      "ForearmR": 255,
+      "HandR": 255
+    }
+  },
+  "atlasBytes": 68057266,
+  "losslessRoundtripAllPages": true
+}
