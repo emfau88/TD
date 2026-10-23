@@ -1,12 +1,20 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Gezielte Farmsuche — 23.10.2026, separater Branch `codex/farm-search`.**
+
+- [x] Freigegebenes Sturmlicht `922aff6` konfliktfrei per Fast-forward nach main übernommen; Produktionsbuild und 135/147 Tests mit exakt zwölf bekannten Fehlern erneut geprüft. [Pages-Lauf erfolgreich](https://github.com/emfau88/TD/actions/runs/40007020205), Live-Seite erreichbar. Tavernen-Branch und lokale Änderungen unberührt.
+- [x] Zwölf bezahlte Verteidigungsstände bei 40/50/60/70 mit drei Aufstellungen, jeweils Rohsave und gültiger Nachweis: bisherige Auswahl gegen Zwischenkandidat und finale Variante verglichen. Acht von zwölf Ständen besser, vier unverändert; keine gemessene Einkommensverschlechterung. [Daten, Grenzen und Empfehlung](../../artifacts/idle-bastion/acceptance/farm-search/REPORT.md).
+- [x] Kleine Auswahlkorrektur in `farming.ts`; maximal vier Kandidaten, echte Live-Clears, zwei vollständige verlustfreie Durchläufe, Erhalt gültiger Belege. Wirtschaft, Wellen, HP, Preise und Speicherformate unverändert. Welle 1 nur bei rechnerisch ausgeschlossener Verbesserung als unnötige Zusatzprobe auslassen.
+- [x] Acht neue Tests, relevante Matrix 143/155 mit denselben zwölf bekannten Fehlern, Produktionsbuild und Chrome/IndexedDB auf Desktop und Mobilprofil bestanden. Rechenbudget unverändert, mittlerer Aufwand geringer; einzelne Proben etwas länger. Historische Ansprüche exakt einmal, laufende Kämpfe und Reload erhalten.
+- [ ] Nutzer bewertet Farmvergleich und gibt gegebenenfalls Merge frei. Farmoptimierung bleibt im eigenen Branch, keine Pages-Veröffentlichung. Große Endloswirtschaft erst separat nach Glutwerfer; keine zusätzlichen 3 % Gold umgesetzt.
+
 **B16 · Sturmlicht und kleiner Wirtschaftsaudit — 23.10.2026, eigener Branch ab aktuellem main.**
 
 - [x] Turm 05 mit vorhandenen drei Grafikstufen, begrenzter Dreierkette (80 Sprungreichweite, 100/65/42,25 %), Forschung nach gemeisterter 28 und Ilyra-Einführung. Forschung 900 / separater Bau 170 Gold, ohne neue Levelobergrenze. Kleine Forschungsicons in der bestehenden Werkstatt.
 - [x] Schema 29 / Regeln 15, alte laufende Kämpfe und Offline-Ansprüche erhalten. Verkauf/Upgrade während Ketten, Mara, Ilyras gespeicherte Turmquelle und sichere Farmproben geprüft. Keine Änderung an Wellen, bestehender Turmbalance, Farmwahl oder allgemeiner Wirtschaft.
 - [x] Neun neue B16-Tests erfolgreich; erweiterte Matrix 135/147 mit neun bereits bekannten und drei auf main separat nachgewiesenen Ilyra-Altfällen. Produktionsbuild, acht Desktop-/Mobil- und vier Produktionsproben einschließlich dichter Welle und exaktem Reload bestanden. [Implementierung und Ansichten](../../artifacts/idle-bastion/acceptance/b16/REPORT.md).
 - [x] Drei bezahlte Fortsetzungen 25→70 und 27 Rollenvergleiche; [Wirtschaftsaudit](../../artifacts/idle-bastion/acceptance/b16/ECONOMY.md) mit Goldraten, Wartezeiten und genau zwei nicht implementierten Vorschlägen.
-- [ ] Nutzer prüft die lokale Sturmlicht-Vorschau. Branch `codex/stormlight-b16` bleibt bis zur Freigabe getrennt; kein Merge und keine Pages-Veröffentlichung aus diesem Auftrag. Physische Smartphone-Leistung und weitere Endlosbalance bleiben offen.
+- [x] Am 23.10.2026 vom Nutzer visuell freigegeben; Commit `922aff6` auf main/Pages übernommen. Physische Smartphone-Leistung und weitere Endlosbalance bleiben offen.
 
 **E01 · Merge-Vorbereitung — 23.10.2026, im bestehenden Draft-PR #2.**
 

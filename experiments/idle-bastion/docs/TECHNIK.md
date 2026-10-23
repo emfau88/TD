@@ -1,5 +1,32 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Gezielte Farmsuche — unverändert Snapshot 29 / Regeln 15
+
+Nur die Auswahl der höchstens vier Kandidaten ändert sich. Neben dem höchsten
+belegten Live-Clear und der bisherigen Farmwahl wird der tatsächlich gespeicherte
+Clear am nächsten zur Mitte beider Wellen betrachtet; bei Gleichstand die kleinere
+Welle. Ohne nichttriviale frühere Auswahl bleibt die bestehende Wiederherstellung
+mit jüngeren Clears und Einstieg erhalten. Bosse, fehlende Clears und Wellen über
+dem Rekord bleiben ausgeschlossen. Eine vollständige Historien-Vollsuche findet
+nicht statt.
+
+Nachweisprüfung, Fingerabdruck und die zwei vollständigen verlustfreien Durchläufe
+bleiben identisch. Eine gültige alte Rate bleibt erhalten, bis eine bessere
+bewiesen ist. Die zusätzliche Welle-1-Probe darf entfallen, wenn ihre maximale
+Belohnung einschließlich Wisp selbst ohne jede Kampfzeit, nur mit den beiden
+Pflichtpausen, die schon bewiesene Rate nicht schlagen könnte. Diese Obergrenze
+erzeugt niemals einen Nachweis oder Gold. Ohne gültige bessere Rate wird der
+Einstieg weiterhin vollständig geprüft.
+
+Keine neue Schema-/Regelversion: Wellenrezepte, Kampfsimulation, Nachweisformat,
+Gültigkeitsregeln und Offline-Formeln sind unverändert. Ein Versionssprung würde
+hier gültige Nachweise unnötig entwerten. Die Sitzung prüft die Auswahl beim Laden
+und bei vorhandenen Verteidigungs-/Historienänderungen; kein neuer Timer. Bereits
+reservierte Abwesenheit behält ihre eingefrorene alte Grundlage. Erst zukünftige
+Abwesenheit kann von der neu belegten besseren Rate profitieren.
+
+[Messungen und Regressionen](../../../artifacts/idle-bastion/acceptance/farm-search/REPORT.md).
+
 ## B16 — Snapshot 29 / Regeln 15
 
 Sturmlicht ist Turm-ID 5. Forschung wird als `settlement.stormResearched` gespeichert;

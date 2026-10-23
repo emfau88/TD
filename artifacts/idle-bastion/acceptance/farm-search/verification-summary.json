@@ -1,0 +1,73 @@
+{
+  "mainCommit": "922aff633c615881ef068918676ab96aa90cb830",
+  "sturmlichtRelease": {
+    "build": "success",
+    "pass": 135,
+    "fail": 12,
+    "pagesRun": 40007020205,
+    "pagesConclusion": "success",
+    "httpStatus": 200
+  },
+  "farmBranch": "codex/farm-search",
+  "farmMerged": false,
+  "farmDeployed": false,
+  "schema": 29,
+  "rules": 15,
+  "caseCount": 24,
+  "distinctPaidSaves": 12,
+  "improvedSaves": 8,
+  "unchangedSaves": 4,
+  "worseSaves": 0,
+  "maximumCandidates": 4,
+  "proofCycles": 2,
+  "maxStepsPerCandidate": 8000,
+  "metrics": {
+    "raw": {
+      "meanMedianMsBefore": 94.54188333333276,
+      "meanMedianMsAfter": 83.40130833333448,
+      "maxMedianMsBefore": 127.35450000000128,
+      "maxMedianMsAfter": 96.7977000000028,
+      "stepsBefore": 64903,
+      "stepsAfter": 58663,
+      "maxPerCaseAddedMs": 3.805900000003021
+    },
+    "certified": {
+      "meanMedianMsBefore": 71.80695833333414,
+      "meanMedianMsAfter": 60.91163333333335,
+      "maxMedianMsBefore": 102.44470000000001,
+      "maxMedianMsAfter": 68.34500000000116,
+      "stepsBefore": 48255,
+      "stepsAfter": 42015,
+      "maxPerCaseAddedMs": 4.3266999999978
+    }
+  },
+  "newTests": {
+    "pass": 8,
+    "fail": 0
+  },
+  "matrix": {
+    "pass": 143,
+    "fail": 12,
+    "unexpectedFailures": []
+  },
+  "knownFailures": [
+    "bundled B05 atlases retain original dimensions and logical enemy frame maps",
+    "the real idle route uses the accepted connecting source quadrants for each turn and straight segment",
+    "snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history",
+    "real v14 veteran and its historical offline basis survive the schema-only migration",
+    "schema 15 saves preserve preparation and completed play without forcing the extended lessons",
+    "intro command waits for a background write, then rechecks and consumes the kit once",
+    "envelope one migrates read-only without production evidence and retains CAS revision protection",
+    "battle schema two migrates without rewriting the historical absence proof or pending receipt",
+    "session return across the Mara rule update pays the historical rate once and starts with no invented current proof",
+    "free conscious recruitment preserves veteran saves and rejects repeats; core settlement also supports it",
+    "saved windup and flight hit once, reward ground/air kills once, and reject forged damage",
+    "slower volleys remain in flight at the old hit time; legacy saves finish once at their old pace"
+  ],
+  "build": "success",
+  "browserProfiles": 2,
+  "nativeExactReload": true,
+  "historicalOfflinePaidOnce": true,
+  "generalEconomyChanged": false,
+  "balanceOrWaveRecipesChanged": false
+}

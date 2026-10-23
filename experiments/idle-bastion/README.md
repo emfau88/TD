@@ -1,13 +1,19 @@
 # SPIRE: Idle Bastion — überarbeiteter Entwicklungsauftrag
 
-**B16 · separate Sturmlicht-Vorschau:** Tower 05 mit drei Originalstufen, bis zu drei
+**B16 · Sturmlicht veröffentlicht:** Tower 05 mit drei Originalstufen, bis zu drei
 Kettenzielen, Werkstattforschung nach Welle 28/Ilyra (900 Gold) und separatem Bau
-(170 Gold). Eigener Branch `codex/stormlight-b16`, noch nicht auf main oder Pages.
+(170 Gold). Am 23.10.2026 visuell freigegeben und als `922aff6` auf main/Pages übernommen.
 [Lokaler Teststarter](stormlight-check.html) ·
 [Prüfbericht](../../artifacts/idle-bastion/acceptance/b16/REPORT.md) ·
 [Wirtschaftsaudit 25–70](../../artifacts/idle-bastion/acceptance/b16/ECONOMY.md).
 Der Audit ändert die bestehende Wirtschaft nicht. Allgemeine Upgradeoptik und
 parallele Tavernenanimationen bleiben unverändert.
+
+**Gezielte Farmsuche, separater Prüfbranch:** `codex/farm-search` prüft zusätzlich
+eine tatsächlich absolvierte Zwischenwelle und erhält gültige Nachweise. Höchstens
+vier Kandidaten, weiterhin zwei verlustfreie Durchläufe; keine Änderung der
+Goldkurve oder Kampfregeln. [Vergleich und Empfehlung](../../artifacts/idle-bastion/acceptance/farm-search/REPORT.md).
+Diese Farmoptimierung ist noch nicht auf main oder Pages.
 
 **Lokale Gegnerpakete E01:** Vier zusätzliche Frakassets-Arten ab Welle 42/46/50/54,
 Originalbewegungen und zwei kosmetische Moospilz-Kappenfarben. Die ersten 40 Wellen
