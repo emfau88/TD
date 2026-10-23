@@ -1,0 +1,32 @@
+{
+  "width": 768,
+  "height": 1280,
+  "fps": 30,
+  "frames": 180,
+  "duration": 6,
+  "sheets": [
+    "hip-sway-00.webp",
+    "hip-sway-01.webp",
+    "hip-sway-02.webp",
+    "hip-sway-03.webp",
+    "hip-sway-04.webp",
+    "hip-sway-05.webp",
+    "hip-sway-06.webp",
+    "hip-sway-07.webp",
+    "hip-sway-08.webp",
+    "hip-sway-09.webp",
+    "hip-sway-10.webp",
+    "hip-sway-11.webp",
+    "hip-sway-12.webp",
+    "hip-sway-13.webp",
+    "hip-sway-14.webp",
+    "hip-sway-15.webp",
+    "hip-sway-16.webp",
+    "hip-sway-17.webp",
+    "hip-sway-18.webp",
+    "hip-sway-19.webp",
+    "hip-sway-20.webp",
+    "hip-sway-21.webp",
+    "hip-sway-22.webp"
+  ]
+}

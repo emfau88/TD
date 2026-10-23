@@ -1,0 +1,134 @@
+{
+  "samples": 182,
+  "trianglesChecked": 2264808,
+  "foldedTriangles": 0,
+  "minAreaRatio": 0.7046574950218201,
+  "exactLoop": true,
+  "changedFrames": [
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149
+  ],
+  "differenceBounds": [
+    [
+      313,
+      234,
+      487,
+      286
+    ],
+    [
+      313,
+      234,
+      488,
+      286
+    ],
+    [
+      313,
+      234,
+      488,
+      286
+    ],
+    [
+      313,
+      234,
+      488,
+      286
+    ],
+    [
+      313,
+      234,
+      488,
+      286
+    ],
+    [
+      313,
+      234,
+      488,
+      286
+    ],
+    [
+      313,
+      234,
+      488,
+      286
+    ],
+    [
+      313,
+      234,
+      488,
+      286
+    ],
+    [
+      300,
+      234,
+      474,
+      285
+    ],
+    [
+      300,
+      234,
+      474,
+      285
+    ],
+    [
+      300,
+      234,
+      475,
+      285
+    ],
+    [
+      300,
+      234,
+      475,
+      285
+    ],
+    [
+      301,
+      234,
+      475,
+      285
+    ],
+    [
+      301,
+      234,
+      475,
+      285
+    ],
+    [
+      301,
+      234,
+      476,
+      285
+    ],
+    [
+      301,
+      234,
+      476,
+      285
+    ]
+  ],
+  "outsideEyesPixelIdentical": true,
+  "losslessAtlases": true,
+  "gifFrames": 120,
+  "gifBytes": 7343615,
+  "gifDurationMs": 6000,
+  "browser": {
+    "desktopBlinkAndScrub": true,
+    "cloudFileAccessConfirmed": true,
+    "cloudPageSavedAndReadBack": true,
+    "cloudPlaybackVisuallyVerified": false
+  }
+}

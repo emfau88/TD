@@ -1,0 +1,16 @@
+{
+  "desktop": "1200x850",
+  "portrait": "390x844",
+  "checked": [
+    "Herz 0: persoenliche Momente gesperrt",
+    "Herz 1: erster Moment verfuegbar",
+    "Herz 2: beide Momente, Scherzen und Zusatz-Idle",
+    "Mara: Sprechen, Moment, Geschenk/Freude, Scherzen/Kichern, Idle-Rueckkehr",
+    "Ilyra: Figurenwechsel, Hand-Hotspot, Geschenk/Freude, Momentfolge",
+    "automatische Zusatz-Idle und Nachladen im Serverprotokoll",
+    "mobiler Fokusbeschnitt behoben und erneut geprueft"
+  ],
+  "consoleErrors": 0,
+  "firstMaraAtlasBytes": 1337344,
+  "limitation": "Reaktionen warten auf neutrale Posen, bis zu einem Basis-Loop (5/6 s). Kein Produktionsgroessenbudget erreicht."
+}

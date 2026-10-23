@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mara · Proportionen vorher / nachher</title><link rel="icon" href="data:,">
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;color:#f0e8db;background:#151b1c;--gold:#e8bc7b}
+*{box-sizing:border-box}body{margin:0}main{max-width:1160px;padding:28px;margin:auto}header{display:flex;align-items:start;justify-content:space-between;gap:20px}h1{font:32px Georgia,serif;margin:5px 0 12px}p{color:#c4c5bc;line-height:1.5;margin:8px 0}.eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold)}.badge{font-size:12px;color:var(--gold);border:1px solid #b48f554d;border-radius:24px;padding:8px 12px;white-space:nowrap}button{font:inherit;font-size:13px;border:1px solid #d1b07650;border-radius:7px;padding:10px 15px;background:#293332;color:inherit;cursor:pointer}button[aria-pressed=true]{background:#57452c;border-color:var(--gold);color:#ffe1b7}button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}.controls{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 16px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{border:1px solid #dfbf892b;border-radius:13px;overflow:hidden;background:#222d2a}.caption{display:flex;justify-content:space-between;gap:10px;padding:13px 16px;border-bottom:1px solid #dfbf892b}.caption small{font-size:12px;color:#c7c0b2}.caption strong{font-weight:500;color:var(--gold)}.viewport{position:relative;aspect-ratio:3/4;overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#4a4b3c,#29312c 70%)}.viewport img{width:100%;height:100%;object-fit:contain;display:block;transform-origin:50% 73%;transition:transform .16s}.detail .viewport{aspect-ratio:1/1}.detail .viewport img{position:absolute;height:133.333%;top:-32%;transform:scale(1.33)}.light .viewport{background:#ddd9cf}.note{font-size:12px;line-height:1.6;padding:10px 0;color:#acb3ad}footer{margin-top:18px;border-top:1px solid #dfbf892b;padding-top:14px;font-size:12px;color:#aeb7b2}a{color:#e8bc7b}.single .pair{grid-template-columns:1fr;max-width:600px;margin:auto}.single .card:first-child{display:none}.single.show-before .card:first-child{display:block}.single.show-before .card:last-child{display:none}#flip{display:none}.single #flip{display:inline-block}
+@media(max-width:650px){main{padding:18px 12px}h1{font-size:25px}header{display:block}.badge{display:inline-block;margin-top:6px}.pair{gap:7px}.caption{padding:10px 8px;display:block;font-size:13px}.caption small{display:block;margin-top:3px;font-size:10px}.controls{gap:6px}.controls button{font-size:12px;padding:9px 11px}}
+.viewport .pose{width:100%;height:100%;transform-origin:50% 73%}.viewport .pose img{position:static;top:auto;height:100%;transform:none}.detail .viewport .pose{position:absolute;height:133.333%;top:-32%;transform:scale(1.33)}.registered{width:100%;height:100%;transform-origin:0 0;transform:translate(-1.0064%,.1772%) scale(.97443175)}.first-revision .registered{transform:translate(-1.1037%,.1334%) scale(1.0066457)}
+</style>
+</head>
+<body><main>
+<header><div><div class="eyebrow">SPIRE · Separate Zeichnungsprobe</div><h1>Mara: Arme &amp; Hände</h1><p>Oberarme etwas schlanker · Unterarme voller · Hände größer</p></div><span class="badge">Vorher / Nachher</span></header>
+<div class="controls" aria-label="Vergleichsansicht">
+<button id="detail" aria-pressed="false">Arme &amp; Hände vergrößern</button>
+<button id="single" aria-pressed="false">Einzelansicht zum Umschalten</button>
+<button id="flip">Nachher → Vorher</button>
+<button id="background" aria-pressed="false">Heller Hintergrund</button>
+<button id="first-draft" aria-pressed="false">Erste Probe zum Vergleich</button>
+</div>
+<section class="pair" aria-label="Statischer Proportionsvergleich">
+<article class="card"><div class="caption"><strong>Vorher</strong><small>Bestehende Ruhepose</small></div><div class="viewport"><div class="pose"><img src="before.png" width="768" height="1024" alt="Maras bisherige Ruhepose mit schmaleren Unterarmen und kleineren Händen"></div></div></article>
+<article class="card"><div class="caption"><strong>Nachher</strong><small id="version-label">Unterarme leicht zurückgenommen</small></div><div class="viewport"><div class="pose"><div class="registered"><img id="after" src="after-forearms-v2.png" width="1086" height="1448" alt="Maras korrigierte Arme mit weicheren Oberarmkonturen, leicht zurückgenommenen Unterarmen und größeren Händen"></div></div></div></article>
+</section>
+<p class="note">Für den Vergleich am Oberkörper ausgerichtet und gleichmäßig skaliert. Die neue Zeichnung wurde referenzbasiert bearbeitet und ist außerhalb der Arme nicht pixelidentisch. Noch keine Übernahme ins Rig oder in Animationen.</p>
+<footer>Die bisherigen Grafiken, Animationen und das Hauptspiel bleiben erhalten. <a href="http://127.0.0.1:5222/?hero=mara&amp;hearts=1">Zur unveränderten Tavernenprobe</a> · <a href="PROMPT.txt">Bearbeitungsprompt</a></footer>
+</main><script>
+const root=document.querySelector('main');
+for(const [id,cls] of [['detail','detail'],['single','single'],['background','light']])document.getElementById(id).onclick=e=>{const on=root.classList.toggle(cls);e.currentTarget.setAttribute('aria-pressed',String(on));};
+document.getElementById('flip').onclick=e=>{const before=root.classList.toggle('show-before');e.currentTarget.textContent=before?'Vorher → Nachher':'Nachher → Vorher';};
+document.getElementById('first-draft').onclick=e=>{const first=e.currentTarget.getAttribute('aria-pressed')!=='true';e.currentTarget.setAttribute('aria-pressed',String(first));root.classList.toggle('first-revision',first);document.getElementById('after').src=first?'after-source.png':'after-forearms-v2.png';document.getElementById('version-label').textContent=first?'Erste Probe · vollere Unterarme':'Unterarme leicht zurückgenommen';};
+</script></body></html>

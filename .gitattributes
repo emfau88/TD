@@ -167,3 +167,14 @@ experiments/idle-bastion/assets/mara-tavern/idle-study/** -text
 experiments/idle-bastion/assets/mara-tavern/rest-reference/** -text
 experiments/idle-bastion/assets/mara-tavern/unity-idle/** -text
 experiments/idle-bastion/assets/mara-tavern/unity-probe/** -text
+
+# Current full-quality source backups only; derived review media stays local.
+artifacts/idle-bastion/mara-proportions-v1/*.png filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-proportions-v1/idle-rig/unity/Assets/**/*.png filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-proportions-v1/idle-rig/unity/Assets/**/*.psb filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-proportions-v1/idle-rig/unity/Assets/**/*.psd filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/tavern-hearts-0-2/unity/Assets/**/*.png filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/tavern-hearts-0-2/unity/Assets/**/*.psb filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/tavern-hearts-0-2/unity/Assets/**/*.psd filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-proportions-v1/** -text
+artifacts/idle-bastion/tavern-hearts-0-2/** -text

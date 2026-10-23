@@ -1,0 +1,11 @@
+{
+    "method": "Continuous SpriteSkin, contact IK, acceleration-driven secondary motion",
+    "bones": 16,
+    "solverHz": 240,
+    "duration": 6.0,
+    "maxWristError": 0.000152587890625,
+    "maxUpperArmChange": 0.6715851426124573,
+    "maxForearmChange": 2.645477294921875,
+    "maxSpringLeft": 0.2937009632587433,
+    "maxSpringRight": 0.2821543216705322
+}

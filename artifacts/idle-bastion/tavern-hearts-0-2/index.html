@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SPIRE · Ein Abend in der Taverne</title><link rel="icon" href="data:,"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="shell">
+  <header><a class="wordmark" href="./">SPIRE<span>Ein Abend in der Taverne</span></a><span class="badge">Separate Vorschau · Herz 0–2</span></header>
+  <div class="selection">
+    <nav aria-label="Gefährtin"><button data-hero="mara" aria-pressed="true"><i class="dot mara"></i>Mara</button><button data-hero="ilyra" aria-pressed="false"><i class="dot ilyra"></i>Ilyra</button></nav>
+    <div class="hearts" role="group" aria-label="Herzstufe zum Testen"><span>Herzstufe</span><button data-heart="0" aria-pressed="true">0 <span>♡</span></button><button data-heart="1" aria-pressed="false">1 <span>♥</span></button><button data-heart="2" aria-pressed="false">2 <span>♥</span></button></div>
+  </div>
+  <main>
+    <section class="portrait" aria-label="Animierte Gefährtin">
+      <div class="window" aria-hidden="true"></div><div class="warmth" aria-hidden="true"></div>
+      <div class="figure"><canvas id="figure" width="480" height="800" aria-label="Mara in der Taverne"></canvas><div id="hotspots" hidden><button data-region="hair" aria-label="Haare berühren">Haare</button><button data-region="shoulder" aria-label="Schulter berühren">Schulter</button><button data-region="hand" aria-label="Hand berühren">Hand</button></div></div>
+      <div class="portrait-top"><span id="clip-label">Ruhe</span><button id="pause" aria-label="Animation pausieren" aria-pressed="false">Pause</button></div>
+      <div class="portrait-bottom"><span id="loading" role="status">Mara kommt ans Feuer …</span><button id="retry" hidden>Erneut laden</button></div>
+    </section>
+    <section class="conversation" aria-label="Gespräch und Interaktionen">
+      <div><p class="eyebrow" id="stage-name">Erste Begegnungen</p><h1 id="hero-name">Mara</h1><p class="stage-note" id="stage-note"></p></div>
+      <div class="dialogue"><span class="quote" aria-hidden="true">“</span><p id="line" aria-live="polite"></p><span id="moment-progress" hidden></span></div>
+      <div id="moment-controls" hidden><button id="next-beat" class="primary">Weiter</button><button id="end-moment">Zurück zum Gespräch</button></div>
+      <div id="actions" class="actions"><button data-action="talk" class="primary">Sprechen</button><button data-action="gift">Schenken</button><button id="touch-mode" aria-pressed="false">Berühren</button><button data-action="joke" id="joke" hidden>Scherzen</button></div>
+      <div id="touch-options" hidden><p>Wähle eine Stelle an der Figur oder hier:</p><div class="touch-buttons"><button data-touch="hair">Haare</button><button data-touch="shoulder">Schulter</button><button data-touch="hand">Hand</button></div></div>
+      <p class="feedback" id="feedback" aria-live="polite"></p>
+      <button id="cancel-next" hidden>Vorgemerkte Aktion verwerfen</button>
+      <div class="moments"><p class="eyebrow">Persönliche Momente</p><div id="moments"></div></div>
+      <details class="review"><summary>Animationen &amp; Zuordnung</summary><p id="mapping"></p><button id="variant" hidden>Zusätzliche Idle ansehen</button><p>Reaktionen beginnen an einer Ruheposition und kehren danach zur Idle zurück. Die zusätzliche Idle erscheint ab zwei Herzen gelegentlich von selbst.</p></details>
+    </section>
+  </main>
+  <footer>Testansicht mit vorhandenen Animationen. Herzen frei wählbar, Geschenke unbegrenzt. Keine Verbindung zum Spielstand.</footer>
+</div><script type="module" src="app.js?v=input2"></script>
+</body></html>

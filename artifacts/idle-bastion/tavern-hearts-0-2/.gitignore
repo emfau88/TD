@@ -1,0 +1,12 @@
+unity/Library/
+unity/Temp/
+unity/Logs/
+unity/Obj/
+unity/UserSettings/
+__pycache__/
+qa/server*.log
+# Reproducible review derivatives; sources, rig and manifests are backed up.
+/assets/
+/unity-export/
+/qa/*.png
+/qa/*.jpg

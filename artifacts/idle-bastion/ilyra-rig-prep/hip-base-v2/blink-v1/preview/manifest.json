@@ -1,0 +1,32 @@
+{
+  "width": 768,
+  "height": 1280,
+  "fps": 30,
+  "frames": 180,
+  "duration": 6,
+  "sheets": [
+    "../../motion/preview/hip-sway-00.webp",
+    "../../motion/preview/hip-sway-01.webp",
+    "../../motion/preview/hip-sway-02.webp",
+    "../../motion/preview/hip-sway-03.webp",
+    "../../motion/preview/hip-sway-04.webp",
+    "../../motion/preview/hip-sway-05.webp",
+    "hip-sway-06.webp",
+    "hip-sway-07.webp",
+    "../../motion/preview/hip-sway-08.webp",
+    "../../motion/preview/hip-sway-09.webp",
+    "../../motion/preview/hip-sway-10.webp",
+    "../../motion/preview/hip-sway-11.webp",
+    "../../motion/preview/hip-sway-12.webp",
+    "../../motion/preview/hip-sway-13.webp",
+    "../../motion/preview/hip-sway-14.webp",
+    "../../motion/preview/hip-sway-15.webp",
+    "../../motion/preview/hip-sway-16.webp",
+    "hip-sway-17.webp",
+    "hip-sway-18.webp",
+    "../../motion/preview/hip-sway-19.webp",
+    "../../motion/preview/hip-sway-20.webp",
+    "../../motion/preview/hip-sway-21.webp",
+    "../../motion/preview/hip-sway-22.webp"
+  ]
+}

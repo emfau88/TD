@@ -1,0 +1,16 @@
+**/Library/
+**/Temp/
+**/Logs/
+**/obj/
+**/Obj/
+**/UserSettings/
+**/__pycache__/
+*.log
+idle-rig/export/
+# Discarded technical native-Sprite experiment; retained locally.
+idle-rig/unity/Assets/Proportions/
+idle-rig/unity/Assets/Proportions.meta
+# Reproducible review output remains local; full-quality Unity/art sources are tracked.
+idle-rig/preview/*.webp
+idle-rig/preview/*.png
+comparison-desktop.png

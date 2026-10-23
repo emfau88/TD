@@ -1,0 +1,15 @@
+**/frames/
+**/gif-frames/
+**/__pycache__/
+*.log
+# Keep source artwork; generated playback atlases and review copies stay local.
+**/preview/*.webp
+**/preview/*.gif
+**/preview/*.mp4
+**/preview/*.png
+**/preview/*.jpg
+!/preview/ilyra-hand-on-hip.png
+**/palette.png
+hip-hand-v2/hand-detail.png
+hip-hand-v2/selection-mask.png
+hip-hand-v2/source-detail.png

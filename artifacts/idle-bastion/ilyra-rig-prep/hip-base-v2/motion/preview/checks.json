@@ -1,0 +1,32 @@
+{
+  "samples": 181,
+  "trianglesChecked": 2252364,
+  "foldedTriangles": 0,
+  "minAreaRatio": 0.7046574950218201,
+  "exactLoop": true,
+  "contactIK": {
+    "method": "Continuous SpriteSkin, contact IK, acceleration-driven secondary motion",
+    "bones": 16,
+    "solverHz": 240,
+    "duration": 6.0,
+    "maxWristError": 0.000152587890625,
+    "maxUpperArmChange": 0.6715851426124573,
+    "maxForearmChange": 2.645477294921875,
+    "maxSpringLeft": 0.2937009632587433,
+    "maxSpringRight": 0.2821543216705322
+  },
+  "losslessAtlases": true,
+  "gifFrames": 120,
+  "gifBytes": 11096029,
+  "gifDurationMs": 6000,
+  "sourcePreserved": true,
+  "browser": {
+    "desktop": true,
+    "viewport390x844": true,
+    "pauseScrubRest": true,
+    "zoom": true,
+    "loopPlayback": true,
+    "consoleErrors": [],
+    "gifDecodedFrameInspected": 40
+  }
+}

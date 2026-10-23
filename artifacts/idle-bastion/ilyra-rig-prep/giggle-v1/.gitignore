@@ -1,0 +1,7 @@
+preview/frames/
+__pycache__/
+*.log
+# Rebuild from the saved Unity scene; do not upload duplicated review media.
+preview/*.webp
+preview/*.png
+preview/*.gif

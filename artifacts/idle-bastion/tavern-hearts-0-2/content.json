@@ -1,0 +1,160 @@
+{
+  "mara": {
+    "stages": [
+      {
+        "name": "Erste Begegnungen",
+        "greeting": "Da bist du ja. Setz dich einen Moment zu mir.",
+        "talk": [
+          "Weißt du, was ich an diesem Ort mag? Dass wir ihn gemeinsam aufbauen.",
+          "An einem guten Turm hört man, ob alles stimmt. Bei Menschen ist das schwieriger. Mit dir rede ich aber gern."
+        ],
+        "gift": "Für mich? Das hätte ich jetzt nicht erwartet. Danke, dass du an mich gedacht hast.",
+        "hand": "Du kannst meine Hand nehmen. Aber meine Werkzeuge bleiben bei mir.",
+        "hair": "Vorsichtig mit dem Zopf … den habe ich heute ausnahmsweise ordentlich geflochten.",
+        "shoulder": "He … du hättest auch einfach meinen Namen sagen können."
+      },
+      {
+        "name": "Willkommen am Feuer",
+        "greeting": "Dein Platz ist noch frei. Ich hatte gehofft, dass du vorbeischaust.",
+        "talk": [
+          "Heute habe ich Wisp erklärt, warum man Schrauben sortiert. Er hat mir erklärt, warum Gold schöner glänzt. Unentschieden.",
+          "Die Laterne über der Tür flackert nicht mehr. Ich glaube, langsam wird aus diesem Ort ein Zuhause."
+        ],
+        "gift": "Du hast an mich gedacht? Das ist fast besser als das Geschenk. Fast.",
+        "hand": "Warme Hände. Du warst wohl nicht den ganzen Tag an der Werkbank.",
+        "hair": "So ordentlich bleibt der Zopf sonst nie lange. Heute gebe ich mir offenbar mehr Mühe.",
+        "shoulder": "Das tut gut. Zwischen all den Plänen vergesse ich manchmal, kurz durchzuatmen."
+      },
+      {
+        "name": "Ein kleines Vertrauen",
+        "greeting": "Schön, dich zu sehen. Ich habe dir etwas zu erzählen.",
+        "talk": [
+          "Mein Glückszahnrad ist noch da. Nein, du darfst es nicht in einen Turm einbauen. Manches behalte ich einfach für mich.",
+          "Früher habe ich meine Pausen meistens allein verbracht. Inzwischen sehe ich öfter zur Tür. Seltsam, oder?"
+        ],
+        "gift": "Das behalte ich. Und nein, ich zerlege es nicht sofort in seine Einzelteile.",
+        "hand": "Du musst nicht gleich wieder loslassen. Wir haben einen Moment.",
+        "hair": "Wenn du so vorsichtig bist, darfst du das ruhig öfter machen.",
+        "shoulder": "Bei dir darf ich wohl auch mal die Schultern sinken lassen."
+      }
+    ],
+    "moments": [
+      {
+        "heart": 1,
+        "title": "Ein Platz am Feuer",
+        "beats": [
+          {
+            "line": "Den Stuhl neben mir halte ich sonst für meine Werkzeugtasche frei. Heute darfst du dort sitzen. Die Tasche wird es überleben.",
+            "clip": "shoulder"
+          },
+          {
+            "line": "Als ich in den Hain kam, kannte ich hier niemanden. Ich habe die ganze erste Nacht an einer kaputten Laterne geschraubt, nur um beschäftigt auszusehen.",
+            "clip": "hair"
+          },
+          {
+            "line": "Du musst übrigens nichts repariert haben wollen, um vorbeizukommen. Für dich ist hier auch einfach so ein Platz.",
+            "clip": "hand"
+          }
+        ]
+      },
+      {
+        "heart": 2,
+        "title": "Mein Glücksstück",
+        "beats": [
+          {
+            "line": "Meine erste selbst gebaute Uhr ging jeden Tag sieben Minuten nach. Ich habe sie trotzdem jahrelang getragen. Furchtbar unvernünftig, ich weiß.",
+            "clip": "hand"
+          },
+          {
+            "line": "Das kleine Zahnrad daraus habe ich behalten. Es erinnert mich daran, dass etwas nicht perfekt sein muss, um mir wichtig zu sein.",
+            "clip": "hair"
+          },
+          {
+            "line": "Dass du wiederkommst, ist mir auch wichtig. So. Jetzt weißt du es. Und wehe, du grinst zu breit.",
+            "clip": "shoulder"
+          }
+        ]
+      }
+    ],
+    "joke": "Gut, der war nicht schlecht. Erzähl ihn bloß nicht Wisp – sonst muss ich ihn morgen wieder hören."
+  },
+  "ilyra": {
+    "stages": [
+      {
+        "name": "Ein vorsichtiger Anfang",
+        "greeting": "Du bist willkommen. Ich gewöhne mich noch an die Ruhe hier.",
+        "talk": [
+          "Der Hain klingt nachts anders. Ich kenne inzwischen die Vögel, die vor dem Morgen singen.",
+          "Mara hat mir einen Platz am Feuer gezeigt. Ich glaube, sie merkt, wenn jemand nicht weiß, wohin mit sich."
+        ],
+        "gift": "Du hast etwas für mich mitgebracht? Danke. Ich weiß die Aufmerksamkeit zu schätzen.",
+        "hand": "So ist es in Ordnung. Lass mir nur einen Augenblick, mich daran zu gewöhnen.",
+        "hair": "Vorsichtig … die silbernen Strähnen verfangen sich leicht an der Brille.",
+        "shoulder": "Du hast mich überrascht. Es ist gut. Ich bin es nur nicht gewohnt, die Wache abzugeben."
+      },
+      {
+        "name": "Geteilte Stille",
+        "greeting": "Heute darf die Wache warten. Ich habe mir diesen Platz ausgesucht.",
+        "talk": [
+          "Früher hätte ich nach einer Einladung einen Vorwand zum Gehen gesucht. Heute habe ich mir diesen Platz ausgesucht.",
+          "Du kannst auch einfach neben mir sitzen. Mit dir fühlt sich Stille nicht nach Alleinsein an."
+        ],
+        "gift": "Ich werde es aufbewahren. Es erinnert mich daran, dass hier jemand an mich denkt.",
+        "hand": "Du brauchst nicht so vorsichtig zu fragen. Meine Hand bleibt noch einen Moment hier.",
+        "hair": "Danke. Im Wind hätte ich die Strähne längst wieder vor den Augen.",
+        "shoulder": "Jetzt erkenne ich dich, ohne mich umzudrehen. Darüber freue ich mich mehr, als ich erwartet hätte."
+      },
+      {
+        "name": "Unter unserem Stern",
+        "greeting": "Der Himmel ist heute klar. Vielleicht haben wir später Zeit.",
+        "talk": [
+          "Unser kleiner Stern hat noch immer keinen Namen. Vielleicht braucht er auch keinen, solange wir wissen, welcher gemeint ist.",
+          "Ich habe auf meinen Reisen viel gesehen. Seltsamerweise möchte ich dir zuerst von den kleinen Dingen erzählen."
+        ],
+        "gift": "Du hast dir gemerkt, was mir gefällt. Das ist nicht selbstverständlich. Danke.",
+        "hand": "Komm. Ich zeige dir später den Weg zum schiefen Baum. Bis dahin kannst du sie gern halten.",
+        "hair": "Bei dir muss ich nicht bei jeder Bewegung zusammenzucken. Das fühlt sich neu an.",
+        "shoulder": "Ein wenig näher ist in Ordnung. Ich werde es dir sagen, wenn ich Abstand brauche."
+      }
+    ],
+    "moments": [
+      {
+        "heart": 1,
+        "title": "Die Wache darf warten",
+        "beats": [
+          {
+            "line": "Eine alte Gewohnheit: Ich behalte die Tür immer im Blick. Hier kann ich versuchen, die Wache einmal abzugeben.",
+            "clip": "shoulder"
+          },
+          {
+            "line": "Die anderen haben mich eingeladen, bevor sie wussten, ob ich bleiben würde. Das ist mir lange nicht passiert.",
+            "clip": "hair"
+          },
+          {
+            "line": "Setz dich. Du musst die Stille nicht füllen. Ich finde es angenehm, sie mit dir zu teilen.",
+            "clip": "hand"
+          }
+        ]
+      },
+      {
+        "heart": 2,
+        "title": "Ein Stern ohne Namen",
+        "beats": [
+          {
+            "line": "Nördlich vom Hain steht ein schiefer Baum. Von dort sieht man einen kleinen Stern, den das Feuer hier unten überstrahlt.",
+            "clip": "hand"
+          },
+          {
+            "line": "Ich habe ihn auf jeder meiner Reisen gesucht. Solange ich ihn fand, fühlte ich mich weniger verloren. Seinen Namen kenne ich bis heute nicht.",
+            "clip": "hair"
+          },
+          {
+            "line": "Wenn deine Wache vorbei ist, zeige ich ihn dir. Nur dir. Manche Geschichten erzähle ich lieber unter freiem Himmel.",
+            "clip": "shoulder"
+          }
+        ]
+      }
+    ],
+    "joke": "Damit habe ich nicht gerechnet. Du bringst mich noch dazu, meine ernste Miene ganz zu vergessen."
+  }
+}

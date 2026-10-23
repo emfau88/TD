@@ -1,0 +1,17 @@
+{
+  "sourceSize": [
+    971,
+    1619
+  ],
+  "beforeWhiteGlovePixels": 10943,
+  "afterWhiteGlovePixels": 13226,
+  "whiteGloveAreaRatio": 1.2086265192360413,
+  "changedPixels": 17664,
+  "differenceBounds": [
+    232,
+    927,
+    423,
+    1070
+  ],
+  "outsideSelectionIdentical": true
+}

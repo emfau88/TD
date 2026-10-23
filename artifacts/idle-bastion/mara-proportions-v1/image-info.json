@@ -1,0 +1,50 @@
+{
+  "before.png": {
+    "size": [
+      768,
+      1024
+    ],
+    "mode": "RGBA",
+    "alphaBox": [
+      122,
+      76,
+      663,
+      994
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "a1db08f001e97cf8132da5d80bf89bc875d64be175884eb747e349b9e194c594"
+  },
+  "after-source.png": {
+    "size": [
+      1086,
+      1448
+    ],
+    "mode": "RGBA",
+    "alphaBox": [
+      0,
+      33,
+      1054,
+      1401
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "1ff79c00fbbc1f28b518452c30a093d4f2d9c2afa4bc6f2bcd5a46418b711a83"
+  },
+  "after-forearms-v2.png": {
+    "size": [
+      1086,
+      1448
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "e548c29497c82c89142f2db4e63db316cb55bd0a890c3e70bcf5f68c89903cab"
+  }
+}

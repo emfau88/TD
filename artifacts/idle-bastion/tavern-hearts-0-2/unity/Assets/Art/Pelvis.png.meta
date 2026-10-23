@@ -1,0 +1,423 @@
+fileFormatVersion: 2
+guid: 80062d1d57750104da03d72e49a70adb
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones:
+    - name: Root
+      guid: 1739a0b1895a15890c3921d4f53945fd
+      position: {x: 384, y: 430, z: 0}
+      rotation: {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
+      length: 200
+      parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: Chest
+      guid: 34a3af595b587e19e5955616953355cd
+      position: {x: 199.99998, y: 0.000011920929, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 0.99999994}
+      length: 140
+      parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: Neck
+      guid: 8327825da500fd41fe0f9985b47237cf
+      position: {x: 144.99998, y: 0.0000086426735, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 0.99999994}
+      length: 65
+      parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: Head
+      guid: 2519c68cb2e37cc0bea1b8ffd225e3bf
+      position: {x: 69.99999, y: 0.000004172325, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 0.99999994}
+      length: 200
+      parentId: 2
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: UpperArmImageLeft
+      guid: a9ffee513314f11f9d8b87c24bef8d6c
+      position: {x: 94.999985, y: 168, z: 0}
+      rotation: {x: 0, y: 0, z: -0.99560213, w: -0.09368233}
+      length: 241.23433
+      parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: ForearmImageLeft
+      guid: 168624a850afe2433f41443b913da1d8
+      position: {x: 241.23431, y: -0.0000012516975, z: 0}
+      rotation: {x: 0, y: 0, z: 0.0700834, w: 0.9975411}
+      length: 211.23683
+      parentId: 4
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: HandImageLeft
+      guid: 87bb48d2dd928e5510ff6cb5e58b07e7
+      position: {x: 211.23683, y: 0.000009417534, z: 0}
+      rotation: {x: 0, y: 0, z: 0.027325107, w: 0.9996266}
+      length: 137.00365
+      parentId: 5
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: UpperArmImageRight
+      guid: 93c008695d6a36a809b66a85aa6a20cc
+      position: {x: 95.00001, y: -167.99998, z: 0}
+      rotation: {x: 0, y: 0, z: -0.99560213, w: 0.09368233}
+      length: 241.23433
+      parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: ForearmImageRight
+      guid: 33bcb8ef62cf5a2cee1f569dcddac2d4
+      position: {x: 241.23431, y: -0.000012874603, z: 0}
+      rotation: {x: 0, y: 0, z: -0.07008353, w: 0.9975411}
+      length: 211.23683
+      parentId: 7
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: HandImageRight
+      guid: 1506f4dbe1a0f4cef358754105ca4277
+      position: {x: 211.23685, y: 0.000054061413, z: 0}
+      rotation: {x: 0, y: 0, z: -0.027325109, w: 0.99962664}
+      length: 137.00365
+      parentId: 8
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: ThighImageLeft
+      guid: cf8937df457a70bfbcf54595f5a054d9
+      position: {x: -70, y: 93.99999, z: 0}
+      rotation: {x: 0, y: 0, z: -0.99999994, w: 0}
+      length: 310
+      parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: ThighImageRight
+      guid: 634012b1d309dbe4d7ef94f77dce3b88
+      position: {x: -69.99999, y: -94, z: 0}
+      rotation: {x: 0, y: 0, z: -0.99999994, w: 0}
+      length: 310
+      parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: SkirtImageLeft
+      guid: 5512f48838b8fd5439264517ce3e6604
+      position: {x: -0.0000039339066, y: 65.99999, z: 0}
+      rotation: {x: 0, y: 0, z: -0.9713951, w: -0.23746917}
+      length: 169.06804
+      parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: SkirtLeftTip
+      guid: 290091c842a18f27abc8111e9f1fce58
+      position: {x: 169.06804, y: 0.000012874603, z: 0}
+      rotation: {x: 0, y: 0, z: 0.20140308, w: 0.97950846}
+      length: 135.36986
+      parentId: 12
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: SkirtImageRight
+      guid: a8ad5484cc7a8bd3e91af68f3e73296e
+      position: {x: 0.0000039339066, y: -65.99999, z: 0}
+      rotation: {x: 0, y: 0, z: -0.9713951, w: 0.23746917}
+      length: 169.06804
+      parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: SkirtRightTip
+      guid: c46c89c050a6d680660bac3cf50f3a8e
+      position: {x: 169.06804, y: -0.0000039339066, z: 0}
+      rotation: {x: 0, y: 0, z: -0.20140308, w: 0.97950846}
+      length: 135.36986
+      parentId: 14
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: SkirtCenter
+      guid: 1157bffe3fc511523ffed0561ba62d47
+      position: {x: -9.999999, y: -0.00000059604645, z: 0}
+      rotation: {x: 0, y: 0, z: -0.99999994, w: 0}
+      length: 260
+      parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: CapeBack
+      guid: e47d62a4b59005607c630b9f3856d83b
+      position: {x: 129.99998, y: 0.000007748604, z: 0}
+      rotation: {x: 0, y: 0, z: -0.99999994, w: 0}
+      length: 230
+      parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: CapeLeftTip
+      guid: 471a4dbea741c4b57e2fbe8dc82acb7b
+      position: {x: 219.99998, y: -134, z: 0}
+      rotation: {x: 0, y: 0, z: -0.23937635, w: 0.9709269}
+      length: 225.88715
+      parentId: 17
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: CapeRightTip
+      guid: 8050eb1344ad349fb1238c99498d791c
+      position: {x: 220, y: 133.99998, z: 0}
+      rotation: {x: 0, y: 0, z: 0.2393764, w: 0.9709268}
+      length: 225.88715
+      parentId: 17
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: HairBack
+      guid: bd0d9319069e59a5d79074fe2f560e30
+      position: {x: 94.99999, y: 0.0000056624413, z: 0}
+      rotation: {x: 0, y: 0, z: -0.99999994, w: 0}
+      length: 260
+      parentId: 3
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: HairBackTip
+      guid: e6e74648b766bda7273a6d092180eedb
+      position: {x: 259.99997, y: -0.000015497208, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 0.99999994}
+      length: 280
+      parentId: 20
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: HairLockImageLeft
+      guid: fa9c6e538840e3ac033910db8bcf3cbd
+      position: {x: 71.99999, y: 90, z: 0}
+      rotation: {x: 0, y: 0, z: -0.9870874, w: -0.16018221}
+      length: 139.14021
+      parentId: 3
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: HairLeftTip
+      guid: 3a000a967a956aa9a391faca32649287
+      position: {x: 139.14021, y: -0.000013113022, z: 0}
+      rotation: {x: 0, y: 0, z: 0.21767297, w: 0.9760217}
+      length: 85.58621
+      parentId: 22
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: HairLockImageRight
+      guid: aab0166adca9dbb782b85b6dc715a893
+      position: {x: 72, y: -89.99999, z: 0}
+      rotation: {x: 0, y: 0, z: -0.9870874, w: 0.1601823}
+      length: 139.14021
+      parentId: 3
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: HairRightTip
+      guid: 5c5d3d6736ed3b81205f2887e0c55520
+      position: {x: 139.14021, y: -0.000013113022, z: 0}
+      rotation: {x: 0, y: 0, z: -0.21767306, w: 0.9760217}
+      length: 85.58621
+      parentId: 24
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: ChestSoftLeft
+      guid: 1cd3cfd2110d4579b120869bf8b74f26
+      position: {x: -0.000003695488, y: 61.999996, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 0.99999994}
+      length: 40
+      parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: ChestSoftRight
+      guid: c39942f25d10020650c7708452d3426d
+      position: {x: 0.000003695488, y: -61.999996, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 0.99999994}
+      length: 40
+      parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices:
+    - {x: 211, y: 288}
+    - {x: 560, y: 288}
+    - {x: 211, y: 573}
+    - {x: 560, y: 573}
+    indices: 000000000100000002000000010000000300000002000000
+    edges:
+    - {x: 0, y: 1}
+    - {x: 0, y: 2}
+    - {x: 1, y: 2}
+    - {x: 1, y: 3}
+    - {x: 2, y: 3}
+    weights:
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 0
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 0
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 0
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 0
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

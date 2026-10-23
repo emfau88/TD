@@ -1,0 +1,96 @@
+{
+  "clips": [
+    {
+      "hero": "mara",
+      "clip": "idle",
+      "frames": 150,
+      "bytes": 34091740,
+      "restMaxChannelDifference": 0
+    },
+    {
+      "hero": "mara",
+      "clip": "head",
+      "frames": 60,
+      "bytes": 14764860,
+      "restMaxChannelDifference": 0
+    },
+    {
+      "hero": "mara",
+      "clip": "touch",
+      "frames": 84,
+      "bytes": 20317938,
+      "restMaxChannelDifference": 0
+    },
+    {
+      "hero": "mara",
+      "clip": "variant",
+      "frames": 114,
+      "bytes": 26354546,
+      "restMaxChannelDifference": 0
+    },
+    {
+      "hero": "mara",
+      "clip": "joy",
+      "frames": 126,
+      "bytes": 27477548,
+      "restMaxChannelDifference": 0
+    },
+    {
+      "hero": "mara",
+      "clip": "giggle",
+      "frames": 162,
+      "bytes": 35098998,
+      "restMaxChannelDifference": 0
+    },
+    {
+      "hero": "ilyra",
+      "clip": "idle",
+      "frames": 180,
+      "bytes": 41115146,
+      "restMaxChannelDifference": 0
+    },
+    {
+      "hero": "ilyra",
+      "clip": "head",
+      "frames": 84,
+      "bytes": 17909646,
+      "restMaxChannelDifference": 5
+    },
+    {
+      "hero": "ilyra",
+      "clip": "touch",
+      "frames": 96,
+      "bytes": 20635016,
+      "restMaxChannelDifference": 5
+    },
+    {
+      "hero": "ilyra",
+      "clip": "variant",
+      "frames": 144,
+      "bytes": 32137852,
+      "restMaxChannelDifference": 5
+    },
+    {
+      "hero": "ilyra",
+      "clip": "joy",
+      "frames": 96,
+      "bytes": 18797468,
+      "restMaxChannelDifference": 5
+    },
+    {
+      "hero": "ilyra",
+      "clip": "giggle",
+      "frames": 120,
+      "bytes": 25284654,
+      "restMaxChannelDifference": 5
+    }
+  ],
+  "totalBytes": 313985412,
+  "frames": 1416,
+  "sourceFilesUnchanged": 304,
+  "unitySamples": 732,
+  "trianglesChecked": 7151640,
+  "foldedTriangles": 0,
+  "endpoints": "exact within each clip; Ilyra cross-clip rounding 105 pixels, mean 0.00011 channel levels, max RGB 5/255 and alpha 1/255",
+  "storageAPIs": "none"
+}

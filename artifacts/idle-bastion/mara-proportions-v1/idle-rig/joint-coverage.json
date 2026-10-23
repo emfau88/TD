@@ -1,0 +1,10 @@
+{
+  "samples": 604,
+  "lowestJointAlpha": 255,
+  "checkedJoints": [
+    "ForearmL",
+    "ForearmR",
+    "HandL",
+    "HandR"
+  ]
+}

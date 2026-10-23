@@ -1,0 +1,26 @@
+{
+  "before": {
+    "frames": 151,
+    "loopExact": true
+  },
+  "after": {
+    "frames": 151,
+    "loopExact": true
+  },
+  "atlasBytes": 86498104,
+  "originalSourceFilesUnchanged": 110,
+  "headPixelsUnchangedAllFrames": true,
+  "torsoCentreUnchangedAllFrames": false,
+  "torsoCentreMaxMeanChannelDelta": 0.010636363636363637,
+  "torsoCentreMaxChannelDelta": 24,
+  "changedHandPixelsAtRest": 20835,
+  "baselineMatchesPreviousExport": true,
+  "mesh": {
+    "states": 302,
+    "triangles": 564136,
+    "folded": 0,
+    "minRatio": 0.9932430386543274,
+    "maxRatio": 1.0710577964782715
+  },
+  "jointMotionIdentical": true
+}

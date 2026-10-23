@@ -1,0 +1,149 @@
+{
+  "base": "f9c4fc3",
+  "commit": "ab9e5cf",
+  "groups": {
+    "1 Unity-Quellen: Grafik, Rig, Clips, Importdaten, Projekteinstellungen": {
+      "files": 343,
+      "bytes": 279419513,
+      "new_unique_lfs_bytes": 2981430,
+      "new_unique_git_text_bytes": 79509377
+    },
+    "2 Grafikquellen ausserhalb Unity": {
+      "files": 10,
+      "bytes": 9057588,
+      "new_unique_lfs_bytes": 6859408,
+      "new_unique_git_text_bytes": 3783
+    },
+    "3 Scripts, Manifeste, Dokumentation und Vorschauseiten": {
+      "files": 61,
+      "bytes": 498164,
+      "new_unique_lfs_bytes": 0,
+      "new_unique_git_text_bytes": 490318
+    },
+    "4 Reproduzierbare Vorschauatlanten": {
+      "files": 103,
+      "bytes": 441796860,
+      "new_unique_lfs_bytes": 439855548,
+      "new_unique_git_text_bytes": 0
+    },
+    "5 Reproduzierbare GIF- und Videokopien": {
+      "files": 4,
+      "bytes": 24891105,
+      "new_unique_lfs_bytes": 24891105,
+      "new_unique_git_text_bytes": 0
+    },
+    "6 Pruefbilder und Messprotokolle": {
+      "files": 60,
+      "bytes": 13736787,
+      "new_unique_lfs_bytes": 8329125,
+      "new_unique_git_text_bytes": 3878827
+    }
+  },
+  "excludedDerived": {
+    "artifacts/idle-bastion/mara-proportions-v1/idle-rig/export": {
+      "files": 302,
+      "bytes": 216792188
+    },
+    "artifacts/idle-bastion/tavern-hearts-0-2/assets": {
+      "files": 181,
+      "bytes": 313985412
+    },
+    "artifacts/idle-bastion/tavern-hearts-0-2/unity-export": {
+      "files": 738,
+      "bytes": 654630710
+    },
+    "artifacts/idle-bastion/ilyra-rig-prep/giggle-v1/preview/frames": {
+      "files": 122,
+      "bytes": 108258158
+    },
+    "artifacts/idle-bastion/ilyra-rig-prep/hip-base-v2/motion/preview/frames": {
+      "files": 181,
+      "bytes": 190078867
+    },
+    "artifacts/idle-bastion/ilyra-rig-prep/hip-base-v2/motion/gif-frames": {
+      "files": 120,
+      "bytes": 43323682
+    },
+    "artifacts/idle-bastion/ilyra-rig-prep/hip-base-v2/blink-v1/preview/frames": {
+      "files": 182,
+      "bytes": 191099242
+    },
+    "artifacts/idle-bastion/ilyra-rig-prep/hip-base-v2/blink-v1/gif-frames": {
+      "files": 120,
+      "bytes": 29260566
+    },
+    "artifacts/idle-bastion/ilyra-rig-prep/hip-base-v2/hip-hand-v2/preview/frames": {
+      "files": 182,
+      "bytes": 191127220
+    }
+  },
+  "largest": [
+    {
+      "path": "artifacts/idle-bastion/ilyra-rig-prep/hip-v1/unity/Assets/HipBaseBlink/IlyraHandOnHipBlink.anim",
+      "bytes": 32067080,
+      "group": "1 Unity-Quellen: Grafik, Rig, Clips, Importdaten, Projekteinstellungen"
+    },
+    {
+      "path": "artifacts/idle-bastion/ilyra-rig-prep/hip-v1/unity/Assets/HipBaseV2/IlyraHandOnHipSway.anim",
+      "bytes": 32065429,
+      "group": "1 Unity-Quellen: Grafik, Rig, Clips, Importdaten, Projekteinstellungen"
+    },
+    {
+      "path": "artifacts/idle-bastion/ilyra-rig-prep/hip-base-v2/motion/preview/Ilyra-Hand-an-der-Huefte.gif",
+      "bytes": 11096029,
+      "group": "5 Reproduzierbare GIF- und Videokopien"
+    },
+    {
+      "path": "artifacts/idle-bastion/tavern-hearts-0-2/unity/Assets/Art/Ilyra.psb",
+      "bytes": 11081604,
+      "group": "1 Unity-Quellen: Grafik, Rig, Clips, Importdaten, Projekteinstellungen"
+    },
+    {
+      "path": "artifacts/idle-bastion/tavern-hearts-0-2/unity/Assets/Clips/IlyraIdle.anim",
+      "bytes": 8813773,
+      "group": "1 Unity-Quellen: Grafik, Rig, Clips, Importdaten, Projekteinstellungen"
+    },
+    {
+      "path": "artifacts/idle-bastion/mara-proportions-v1/idle-rig/unity/Assets/Art/Mara.psb",
+      "bytes": 7546202,
+      "group": "1 Unity-Quellen: Grafik, Rig, Clips, Importdaten, Projekteinstellungen"
+    },
+    {
+      "path": "artifacts/idle-bastion/ilyra-rig-prep/hip-base-v2/blink-v1/preview/Ilyra-Hueftpose-mit-Blinzeln.gif",
+      "bytes": 7343615,
+      "group": "5 Reproduzierbare GIF- und Videokopien"
+    },
+    {
+      "path": "artifacts/idle-bastion/tavern-hearts-0-2/unity/Assets/Clips/IlyraHipBoth.anim",
+      "bytes": 7327086,
+      "group": "1 Unity-Quellen: Grafik, Rig, Clips, Importdaten, Projekteinstellungen"
+    },
+    {
+      "path": "artifacts/idle-bastion/tavern-hearts-0-2/unity/Assets/Clips/IlyraHipRight.anim",
+      "bytes": 7318755,
+      "group": "1 Unity-Quellen: Grafik, Rig, Clips, Importdaten, Projekteinstellungen"
+    },
+    {
+      "path": "artifacts/idle-bastion/tavern-hearts-0-2/unity/Assets/Clips/IlyraHipLeft.anim",
+      "bytes": 7316053,
+      "group": "1 Unity-Quellen: Grafik, Rig, Clips, Importdaten, Projekteinstellungen"
+    },
+    {
+      "path": "artifacts/idle-bastion/tavern-hearts-0-2/unity/Assets/Clips/IlyraHip.anim",
+      "bytes": 7312556,
+      "group": "1 Unity-Quellen: Grafik, Rig, Clips, Importdaten, Projekteinstellungen"
+    },
+    {
+      "path": "artifacts/idle-bastion/tavern-hearts-0-2/unity/Assets/Clips/IlyraIdleVariant.anim",
+      "bytes": 7017392,
+      "group": "1 Unity-Quellen: Grafik, Rig, Clips, Importdaten, Projekteinstellungen"
+    }
+  ],
+  "totals": {
+    "files": 581,
+    "bytes": 769400017,
+    "new_unique_lfs_bytes": 482916616,
+    "new_unique_git_text_bytes": 83882305
+  },
+  "excludedDerivedBytes": 1938556045
+}

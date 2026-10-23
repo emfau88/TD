@@ -1,0 +1,24 @@
+{
+  "samples": 182,
+  "trianglesChecked": 2264808,
+  "foldedTriangles": 0,
+  "minAreaRatio": 0.7046574950218201,
+  "exactLoop": true,
+  "jointSamplesIdentical": true,
+  "allowedHandRegion": [
+    170,
+    725,
+    360,
+    870
+  ],
+  "differenceBounds": [
+    171,
+    733,
+    348,
+    850
+  ],
+  "changedFrames": 181,
+  "outsideHandPixelIdentical": true,
+  "losslessAtlases": true,
+  "gifExportSkipped": true
+}

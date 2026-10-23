@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ilyra · Hüfthand vorher / nachher</title>
+<style>
+*{box-sizing:border-box}body{max-width:1080px;margin:auto;padding:20px;background:#162130;color:#f0f3f8;font:16px/1.5 system-ui}h1{font-size:25px;margin:0}p{color:#c6d2df;margin:10px 0}a{color:#b3d5ff}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:840px;margin:18px auto}.panel{min-width:0}.label{margin:0 0 6px;font-size:14px;letter-spacing:.08em;text-align:center}.stage{aspect-ratio:3/5;background:#e6e0d4;border-radius:10px;overflow:hidden}.stage canvas{display:block;width:100%}.dark .stage{background:#172436}.zoom .stage canvas{width:250%;max-width:none;transform:translate(-5%,-44%)}nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}button{font:inherit;padding:9px 13px;background:#2a4059;color:white;border:1px solid #7591af;border-radius:8px;cursor:pointer}button:disabled{opacity:.5;cursor:wait}input{width:100%}#error{color:#ffc3b6}small{color:#c0ccda}@media(max-width:600px){body{padding:12px}h1{font-size:22px}.comparison{gap:6px;margin:14px auto}.stage{border-radius:6px}nav{gap:6px}button{padding:8px 10px}}
+</style>
+<h1>Ilyra · Hüfthand vorher / nachher</h1>
+<p>Größere Hand an derselben Hüftpose. Bewegung und Blinzeln laufen synchron.</p>
+<div class="comparison" id="comparison">
+ <section class="panel"><h2 class="label">VORHER</h2><div class="stage"><canvas width="768" height="1280" id="before" aria-label="Bisherige Hüftanimation"></canvas></div></section>
+ <section class="panel"><h2 class="label">NACHHER</h2><div class="stage"><canvas width="768" height="1280" id="after" aria-label="Hüftanimation mit vergrößerter Hand"></canvas></div></section>
+</div>
+<nav><button id="pause" disabled>Pause</button><button id="rest" disabled>Anfang</button><button id="zoom">Hand vergrößern</button><button id="bg">Dunkler Hintergrund</button></nav>
+<label for="frame">Zeit · <output id="time">0,00 / 6,00 s</output></label>
+<input id="frame" type="range" min="0" max="179" value="0" disabled>
+<p id="error" role="status">Bilder werden geladen …</p>
+<p><small>Separate Vorschau. Die bisherige Animation bleibt erhalten.</small></p>
+<script>
+const $=s=>document.querySelector(s);
+const players=[{id:'before',manifest:'../../blink-v1/preview/manifest.json',cache:new Map()},{id:'after',manifest:'manifest.json',cache:new Map()}];
+let frame=0,requested=-1,playing=false,ready=false,origin=0,token=0;
+async function load(player,index){
+ const src=new URL(player.data.sheets[index],player.url).href;
+ if(!player.cache.has(src))player.cache.set(src,new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Ein Animationsbild konnte nicht geladen werden.'));im.src=src}));
+ const promise=player.cache.get(src);player.cache.delete(src);player.cache.set(src,promise);
+ while(player.cache.size>4)player.cache.delete(player.cache.keys().next().value);
+ return promise;
+}
+function stop(){playing=false;$('#pause').textContent='Weiter'}
+async function draw(n){
+ requested=n;const id=++token;
+ try{
+  const sheet=Math.floor(n/8),images=await Promise.all(players.map(p=>load(p,sheet)));
+  if(id!==token)return;
+  players.forEach((p,i)=>{p.ctx.clearRect(0,0,768,1280);p.ctx.drawImage(images[i],n%4*768,Math.floor(n%8/4)*1280,768,1280,0,0,768,1280);load(p,(sheet+1)%p.data.sheets.length).catch(()=>{})});
+  frame=n;$('#frame').value=n;$('#time').textContent=(n/30).toFixed(2).replace('.',',')+' / 6,00 s';$('#error').textContent='';
+ }catch(e){stop();requested=-1;$('#error').textContent=e.message}
+}
+$('#pause').onclick=()=>{if(!ready)return;if(playing)stop();else{playing=true;origin=performance.now()-frame/30*1000;$('#pause').textContent='Pause'}};
+$('#rest').onclick=()=>{if(ready){stop();frame=0;draw(frame)}};
+$('#frame').oninput=e=>{if(ready){stop();frame=+e.target.value;draw(frame)}};
+$('#zoom').onclick=()=>{$('#zoom').textContent=$('#comparison').classList.toggle('zoom')?'Ganze Figur':'Hand vergrößern'};
+$('#bg').onclick=()=>{$('#bg').textContent=$('#comparison').classList.toggle('dark')?'Heller Hintergrund':'Dunkler Hintergrund'};
+Promise.all(players.map(async p=>{p.url=new URL(p.manifest,location.href);const response=await fetch(p.url);if(!response.ok)throw Error('Animationsdaten fehlen.');p.data=await response.json();p.ctx=$('#'+p.id).getContext('2d');if(p.data.frames!==180||p.data.fps!==30)throw Error('Die Vergleichsanimationen passen zeitlich nicht zusammen.')})).then(async()=>{await draw(0);ready=true;$('#pause').disabled=false;$('#rest').disabled=false;$('#frame').disabled=false;playing=true;origin=performance.now()}).catch(e=>$('#error').textContent=e.message);
+function tick(t){if(playing){const n=Math.floor(Math.max(0,t-origin)*.03)%180;if(n!==requested)draw(n)}requestAnimationFrame(tick)}
+requestAnimationFrame(tick);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});
+</script>
+</html>

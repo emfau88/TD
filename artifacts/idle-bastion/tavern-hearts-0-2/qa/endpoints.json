@@ -1,0 +1,187 @@
+{
+  "mara": {
+    "idle": {
+      "restDifference": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "lastToFirst": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "count": 150
+    },
+    "head": {
+      "restDifference": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "lastToFirst": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "count": 60
+    },
+    "touch": {
+      "restDifference": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "lastToFirst": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "count": 84
+    },
+    "variant": {
+      "restDifference": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "lastToFirst": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "count": 114
+    },
+    "joy": {
+      "restDifference": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "lastToFirst": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "count": 126
+    },
+    "giggle": {
+      "restDifference": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "lastToFirst": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "count": 162
+    }
+  },
+  "ilyra": {
+    "idle": {
+      "restDifference": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "lastToFirst": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "count": 180
+    },
+    "head": {
+      "restDifference": {
+        "pixels": 105,
+        "meanChannelDelta": 0.00011,
+        "box": [
+          348,
+          416,
+          402,
+          641
+        ]
+      },
+      "lastToFirst": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "count": 84
+    },
+    "touch": {
+      "restDifference": {
+        "pixels": 105,
+        "meanChannelDelta": 0.00011,
+        "box": [
+          348,
+          416,
+          402,
+          641
+        ]
+      },
+      "lastToFirst": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "count": 96
+    },
+    "variant": {
+      "restDifference": {
+        "pixels": 105,
+        "meanChannelDelta": 0.00011,
+        "box": [
+          348,
+          416,
+          402,
+          641
+        ]
+      },
+      "lastToFirst": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "count": 144
+    },
+    "joy": {
+      "restDifference": {
+        "pixels": 105,
+        "meanChannelDelta": 0.00011,
+        "box": [
+          348,
+          416,
+          402,
+          641
+        ]
+      },
+      "lastToFirst": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "count": 96
+    },
+    "giggle": {
+      "restDifference": {
+        "pixels": 105,
+        "meanChannelDelta": 0.00011,
+        "box": [
+          348,
+          416,
+          402,
+          641
+        ]
+      },
+      "lastToFirst": {
+        "pixels": 0,
+        "meanChannelDelta": 0.0,
+        "box": null
+      },
+      "count": 120
+    }
+  }
+}
