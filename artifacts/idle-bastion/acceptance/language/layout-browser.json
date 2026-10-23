@@ -1,0 +1,677 @@
+[
+  {
+    "width": 320,
+    "view": "battle",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "tower-tab",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "settlement-tab",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "menu",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "chronicle",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "stormlight",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "tavern",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "mara",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "ilyra",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "battle",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "tower-tab",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "settlement-tab",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "menu",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "chronicle",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "stormlight",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "tavern",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "mara",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "view": "ilyra",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 320,
+    "errors": [],
+    "preferenceReload": true
+  },
+  {
+    "width": 390,
+    "native": {
+      "farmWave": 26,
+      "creditedUnits": 2820000,
+      "exactReload": true,
+      "languageIndependentProof": true,
+      "doubleCredit": false
+    }
+  },
+  {
+    "width": 390,
+    "view": "battle",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "tower-tab",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "settlement-tab",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "menu",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "chronicle",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "stormlight",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "tavern",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "mara",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "ilyra",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "battle",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "tower-tab",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "settlement-tab",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "menu",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "chronicle",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "stormlight",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "tavern",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "mara",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "view": "ilyra",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 390,
+    "errors": [],
+    "preferenceReload": true
+  },
+  {
+    "width": 768,
+    "view": "battle",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "tower-tab",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "settlement-tab",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "menu",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "chronicle",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "stormlight",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "tavern",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "mara",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "ilyra",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "battle",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "tower-tab",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "settlement-tab",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "menu",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "chronicle",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "stormlight",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "tavern",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "mara",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "view": "ilyra",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 768,
+    "errors": [],
+    "preferenceReload": true
+  },
+  {
+    "width": 844,
+    "view": "battle",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "tower-tab",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "settlement-tab",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "menu",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "chronicle",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "stormlight",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "tavern",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "mara",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "ilyra",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "battle",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "tower-tab",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "settlement-tab",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "menu",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "chronicle",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "stormlight",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "tavern",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "mara",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "view": "ilyra",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 844,
+    "errors": [],
+    "preferenceReload": true
+  },
+  {
+    "width": 1440,
+    "native": {
+      "farmWave": 26,
+      "creditedUnits": 2820000,
+      "exactReload": true,
+      "languageIndependentProof": true,
+      "doubleCredit": false
+    }
+  },
+  {
+    "width": 1440,
+    "view": "battle",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "tower-tab",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "settlement-tab",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "menu",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "chronicle",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "stormlight",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "tavern",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "mara",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "ilyra",
+    "lang": "en",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "battle",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "tower-tab",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "settlement-tab",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "menu",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "chronicle",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "stormlight",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "tavern",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "mara",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "view": "ilyra",
+    "lang": "de",
+    "bodyOverflow": false,
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "errors": [],
+    "preferenceReload": true
+  }
+]

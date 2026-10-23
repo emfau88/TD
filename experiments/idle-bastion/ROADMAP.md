@@ -1,12 +1,20 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**L01 · Englisch als Standard, Deutsch im Spielmenü — 23.10.2026, `codex/english-default`.**
+
+- [x] Gemeinsamer Textkatalog für Spieloberfläche, Einführung, Chronik, Gegner-/Turmnamen und Mara-/Ilyra-Dialoge; Englisch als ausdrücklicher Standard, Deutsch sofort im vorhandenen Menü wählbar. Sprachwahl getrennt vom Spielstand gespeichert.
+- [x] Zahlenformatierung und dynamische/cachende Ansichten wechseln mit; Spielregeln, IDs, Goldwirtschaft, Farmbelege und Speicherformat unverändert. Keine Vermischung mit paralleler Tavernenanimation.
+- [x] Überlange Turmkarten und zusammengedrückte Gebäudekarten korrigiert; Smartphone-Hochkant, Tablet, Querformat und Desktop in beiden Sprachen geprüft. Zusätzlich Starterkarte im echten Produktionsbuild geprüft.
+- [x] Produktionsbuild, fünf neue Sprachtests, zwei Goldanzeigetests und relevante Matrix 156/168 mit genau denselben zwölf bekannten Fehlern; native IndexedDB-Fortsetzung, unveränderter Farmnachweis und einmalige historische Offline-Auszahlung erfolgreich. [Prüfung und Ansichten](../../artifacts/idle-bastion/acceptance/language/REPORT.md).
+- [x] Nutzer hat am 23.10.2026 Commit/Push und Merge nach main freigegeben; ergänzend GitHub-README aktualisiert und Rückkehrgold lesbarer dargestellt. Veröffentlichung nach Abschluss der Zusatzprüfung.
+
 **Gezielte Farmsuche — 23.10.2026, separater Branch `codex/farm-search`.**
 
 - [x] Freigegebenes Sturmlicht `922aff6` konfliktfrei per Fast-forward nach main übernommen; Produktionsbuild und 135/147 Tests mit exakt zwölf bekannten Fehlern erneut geprüft. [Pages-Lauf erfolgreich](https://github.com/emfau88/TD/actions/runs/40007020205), Live-Seite erreichbar. Tavernen-Branch und lokale Änderungen unberührt.
 - [x] Zwölf bezahlte Verteidigungsstände bei 40/50/60/70 mit drei Aufstellungen, jeweils Rohsave und gültiger Nachweis: bisherige Auswahl gegen Zwischenkandidat und finale Variante verglichen. Acht von zwölf Ständen besser, vier unverändert; keine gemessene Einkommensverschlechterung. [Daten, Grenzen und Empfehlung](../../artifacts/idle-bastion/acceptance/farm-search/REPORT.md).
 - [x] Kleine Auswahlkorrektur in `farming.ts`; maximal vier Kandidaten, echte Live-Clears, zwei vollständige verlustfreie Durchläufe, Erhalt gültiger Belege. Wirtschaft, Wellen, HP, Preise und Speicherformate unverändert. Welle 1 nur bei rechnerisch ausgeschlossener Verbesserung als unnötige Zusatzprobe auslassen.
 - [x] Acht neue Tests, relevante Matrix 143/155 mit denselben zwölf bekannten Fehlern, Produktionsbuild und Chrome/IndexedDB auf Desktop und Mobilprofil bestanden. Rechenbudget unverändert, mittlerer Aufwand geringer; einzelne Proben etwas länger. Historische Ansprüche exakt einmal, laufende Kämpfe und Reload erhalten.
-- [ ] Nutzer bewertet Farmvergleich und gibt gegebenenfalls Merge frei. Farmoptimierung bleibt im eigenen Branch, keine Pages-Veröffentlichung. Große Endloswirtschaft erst separat nach Glutwerfer; keine zusätzlichen 3 % Gold umgesetzt.
+- [x] Farmvergleich und Commit `96a005b` am 23.10.2026 freigegeben und nach main übernommen. Große Endloswirtschaft erst separat nach Glutwerfer; keine zusätzlichen 3 % Gold umgesetzt.
 
 **B16 · Sturmlicht und kleiner Wirtschaftsaudit — 23.10.2026, eigener Branch ab aktuellem main.**
 

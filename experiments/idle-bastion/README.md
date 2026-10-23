@@ -1,5 +1,11 @@
 # SPIRE: Idle Bastion — überarbeiteter Entwicklungsauftrag
 
+**Sprachwahl:** Das Hauptspiel startet auf Englisch.
+Im Spielmenü lässt sich sofort auf Deutsch wechseln; die Wahl bleibt auf diesem
+Browser gespeichert. Der Spielstand und seine Farm-/Offline-Grundlage ändern sich
+nicht. [Prüfbericht und Bildschirmansichten](../../artifacts/idle-bastion/acceptance/language/REPORT.md).
+[Normal spielen](https://emfau88.github.io/TD/) · [Frische Partie beginnen](https://emfau88.github.io/TD/?fresh=1). Die frische Partie erhält den bisherigen Hauptspielstand.
+
 **B16 · Sturmlicht veröffentlicht:** Tower 05 mit drei Originalstufen, bis zu drei
 Kettenzielen, Werkstattforschung nach Welle 28/Ilyra (900 Gold) und separatem Bau
 (170 Gold). Am 23.10.2026 visuell freigegeben und als `922aff6` auf main/Pages übernommen.
@@ -9,11 +15,11 @@ Kettenzielen, Werkstattforschung nach Welle 28/Ilyra (900 Gold) und separatem Ba
 Der Audit ändert die bestehende Wirtschaft nicht. Allgemeine Upgradeoptik und
 parallele Tavernenanimationen bleiben unverändert.
 
-**Gezielte Farmsuche, separater Prüfbranch:** `codex/farm-search` prüft zusätzlich
+**Gezielte Farmsuche:** Seit der freigegebenen Übernahme von `96a005b` prüft das Hauptspiel zusätzlich
 eine tatsächlich absolvierte Zwischenwelle und erhält gültige Nachweise. Höchstens
 vier Kandidaten, weiterhin zwei verlustfreie Durchläufe; keine Änderung der
 Goldkurve oder Kampfregeln. [Vergleich und Empfehlung](../../artifacts/idle-bastion/acceptance/farm-search/REPORT.md).
-Diese Farmoptimierung ist noch nicht auf main oder Pages.
+Die Farmoptimierung wurde am 23.10.2026 für main/Pages freigegeben.
 
 **Lokale Gegnerpakete E01:** Vier zusätzliche Frakassets-Arten ab Welle 42/46/50/54,
 Originalbewegungen und zwei kosmetische Moospilz-Kappenfarben. Die ersten 40 Wellen

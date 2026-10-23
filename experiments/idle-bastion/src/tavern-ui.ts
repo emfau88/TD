@@ -1,3 +1,5 @@
+import { t, onLanguageChange } from './i18n';
+import { bindStaticTranslations } from './i18n-dom';
 import { COMPANIONS } from './tavern-companions';
 import { TavernInteractions } from './tavern-interactions';
 import type { BattleSession } from './battle-session';
@@ -9,6 +11,11 @@ type Destination = 'tavern' | 'mara' | 'wisp' | 'ilyra';
 interface Ports { session: () => BattleSession | undefined; navigate: (where: Destination) => void; onOpenChange?: (open:boolean) => void; onGift?: () => void; onCompanion?: (who:Companion|null) => void; onTouch?: (who:Companion) => void }
 export class TavernUI {
   readonly dialog: HTMLDialogElement;
+  private lineSource = '';
+  private resultSource: () => string = () => '';
+  private result(source = this.resultSource): void { this.resultSource = source; this.text('result', source()); }
+  private readonly unbindLanguage: () => void;
+  private readonly unbindStatic: () => void;
   private readonly lifetime = new AbortController();
   private readonly animation: TavernAnimation;
   private readonly observer: ResizeObserver;
@@ -53,6 +60,8 @@ export class TavernUI {
         </div>
       </section>`;
     document.body.append(this.dialog);
+    this.unbindStatic = bindStaticTranslations(this.dialog);
+    this.unbindLanguage = onLanguageChange(() => this.refreshLanguage());
     this.animation = new TavernAnimation(this.get<HTMLCanvasElement>('.tv-figure canvas'), () => this.update());
     this.observer = new ResizeObserver(() => this.positionHotspots()); this.observer.observe(this.get('.tv-stage'));
     const options = { signal: this.lifetime.signal };
@@ -84,11 +93,31 @@ export class TavernUI {
     this.dialog.addEventListener('pointermove', event => { if (this.pointer && Math.hypot(event.clientX - this.pointer[0], event.clientY - this.pointer[1]) > 12) this.dragged = true; }, options);
     this.dialog.addEventListener('pointercancel', () => { this.dragged = true; }, options);
   }
+  private refreshLanguage(): void {
+    const screen = this.screen;
+    this.get('#tv-title').textContent = screen === 'overview' ? t('Die Taverne') : screen === 'touch' ? t('Ein Moment mit {0}', this.content.name) : this.content.name;
+    this.get('.tv-stage-caption').textContent = t("{0} · {1}", this.content.name, this.content.role);
+    this.get('.tv-dialogue small').textContent = t(this.content.name.toUpperCase());
+    this.get('.tv-heart-buttons').setAttribute('aria-label', t("{0}s persönliche Momente", this.content.name));
+    this.get('progress').setAttribute('aria-label', t("{0}s Zuneigung", this.content.name));
+    this.get('.tv-figure canvas').setAttribute('aria-label', t("{0}, animierte Charakteransicht", this.content.name));
+    this.get('[data-do=story-exit]').textContent = t("Zurück zu {0}", this.content.name);
+    this.get('[data-do=mara-combat]').textContent = t("{0} im Kampf verwalten ↗", this.content.name);
+    if (this.lineSource) this.text('line', this.lineSource);
+    const moment = this.moment && this.content.moment(this.points, this.moment.heart);
+    if (moment && this.moment) {
+      this.text('story-title', moment.title);
+      this.text('story-step', t('{0} {1} · {2} / {3}', moment.heart, moment.heart === 1 ? t('HERZ') : t('HERZEN'), this.moment.beat + 1, moment.beats.length));
+      this.get('[data-do=story-next]').textContent = this.moment.beat === moment.beats.length - 1 ? t('Moment beenden') : t('Weiter');
+    }
+    this.result();
+    this.update();
+  }
   private pointer?: number[];
   private dragged = false;
   get isOpen(): boolean { return this.dialog.open; }
   private get<T extends HTMLElement = HTMLElement>(selector: string): T { return this.dialog.querySelector<T>(selector)!; }
-  private text(key: string, value: string): void { const node = this.get(`[data-text="${key}"]`); if (node.textContent !== value) node.textContent = value; }
+  private text(key: string, value: string): void { if (key === 'line') this.lineSource = value; const node = this.get(`[data-text="${key}"]`); const translated = t(value); if (node.textContent !== translated) node.textContent = translated; }
   open(): void {
     const session = this.ports.session(); if (!session?.battle.settlement.tavernBuilt || this.isOpen) return;
     if (!this.portraitsStarted) {
@@ -115,20 +144,14 @@ export class TavernUI {
     this.dialog.dataset.screen = screen;
     this.get('.tv-overview').hidden = screen !== 'overview'; this.get('.tv-character').hidden = screen === 'overview';
     this.get('.tv-back').hidden = screen === 'overview';
-    this.get('.tv-back').setAttribute('aria-label', screen === 'touch' ? `Zurück zu ${this.content.name}s Charakteransicht` : 'Zurück zur Tavernenübersicht');
-    this.get('#tv-title').textContent = screen === 'overview' ? 'Die Taverne' : screen === 'touch' ? `Ein Moment mit ${this.content.name}` : this.content.name;
+    this.get('.tv-back').setAttribute('aria-label', t(screen === 'touch' ? t("Zurück zu {0}s Charakteransicht", this.content.name) : t('Zurück zur Tavernenübersicht')));
+    this.get('#tv-title').textContent = t(screen === 'overview' ? t('Die Taverne') : screen === 'touch' ? t("Ein Moment mit {0}", this.content.name) : this.content.name);
     this.get('.tv-touch-help').hidden = screen !== 'touch';
     if (screen === 'overview') { this.generation++; this.pending = false; this.animation.stop(); }
-    else if (wasOverview) { this.text('line', this.content.stage(this.points).greeting); this.text('result', ''); void this.animation.start(this.selected); }
+    else if (wasOverview) { this.text('line', this.content.stage(this.points).greeting); this.result(() => ''); void this.animation.start(this.selected); }
     if (screen === 'touch') void this.animation.prepareReactions();
     this.get<HTMLImageElement>('.tv-loading-portrait').src = companionPortrait(this.selected);
-    this.get('.tv-stage-caption').textContent = `${this.content.name} · ${this.content.role}`;
-    this.get('.tv-dialogue small').textContent = this.content.name.toUpperCase();
-    this.get('.tv-heart-buttons').setAttribute('aria-label', `${this.content.name}s persönliche Momente`);
-    this.get('progress').setAttribute('aria-label', `${this.content.name}s Zuneigung`);
-    this.get('.tv-figure canvas').setAttribute('aria-label', `${this.content.name}, animierte Charakteransicht`);
-    this.get('[data-do=story-exit]').textContent = `Zurück zu ${this.content.name}`;
-    this.get('[data-do=mara-combat]').textContent = `${this.content.name} im Kampf verwalten ↗`;
+    this.refreshLanguage();
     this.update(); this.positionHotspots();
     if (screen !== 'overview') this.get<HTMLButtonElement>('[data-do="back"]').focus();
   }
@@ -146,13 +169,13 @@ export class TavernUI {
     const b = session.battle;
     const defeated = this.lastPhase !== 'defeat' && b.phase === 'defeat' || (b.progress.lastDefeat?.attemptId ?? 0) > this.lastDefeat;
     if (b.lives < this.lastLives || defeated) {
-      this.text('warning', defeated ? 'Vorstoß gescheitert. Deine Verteidigung braucht dich.' : `Dein Kern nimmt Schaden · ${b.lives}/20 Leben.`);
+      this.text('warning', defeated ? t('Vorstoß gescheitert. Deine Verteidigung braucht dich.') : t("Dein Kern nimmt Schaden · {0}/20 Leben.", b.lives));
       this.get('.tv-warning').hidden = false;
     }
     this.lastLives = b.lives; this.lastPhase = b.phase; this.lastDefeat = b.progress.lastDefeat?.attemptId ?? 0;
-    this.text('combat', `Welle ${b.wave} · ♥ ${b.lives}/20 · ${session.paused ? 'Pausiert' : session.suspended || session.awaitingResume ? 'Kampf angehalten' : b.learningPaused ? 'Lernpause' : 'Kampf läuft'}`);
+    this.text('combat', t("Welle {0} · ♥ {1}/20 · {2}", b.wave, b.lives, session.paused ? t('Pausiert') : session.suspended || session.awaitingResume ? t('Kampf angehalten') : b.learningPaused ? t('Lernpause') : t('Kampf läuft')));
     const error = this.get('.tv-error'); error.hidden = !session.error && !session.suspended && !session.awaitingResume;
-    error.textContent = session.error ? 'Speichern fehlgeschlagen. Bitte kehre zum Kampf zurück, um den Spielstand zu prüfen.' : 'Sitzung angehalten. Bitte kehre zum Kampf zurück.';
+    error.textContent = t(session.error ? t('Speichern fehlgeschlagen. Bitte kehre zum Kampf zurück, um den Spielstand zu prüfen.') : t('Sitzung angehalten. Bitte kehre zum Kampf zurück.'));
     const points = this.points, count = hearts(points);
     for (const who of ['mara', 'ilyra'] as const) {
       const n = hearts(b.social.points[who]);
@@ -160,9 +183,9 @@ export class TavernUI {
     }
     this.text('mara-greeting', COMPANIONS.mara.stage(b.social.points.mara).greeting);
     const next = SOCIAL.heartThresholds.find(value => value > points);
-    this.text('points', `${count} von 5 Herzen · ${next ? `noch ${next - points} Zuneigung` : 'Vertrautheit vollendet'}`);
+    this.text('points', t("{0} von 5 Herzen · {1}", count, next ? t("noch {0} Zuneigung", next - points) : t('Vertrautheit vollendet')));
     const progress = this.get<HTMLProgressElement>('progress'); progress.max = 160; progress.value = points;
-    progress.setAttribute('aria-valuetext', `${points} Zuneigung · ${count} von 5 Herzen`);
+    progress.setAttribute('aria-valuetext', t("{0} Zuneigung · {1} von 5 Herzen", points, count));
     if (this.bondCompanion !== this.selected || this.bondPoints !== points) {
       // Five equal visual sections; interpolate within each actual heart threshold.
       const lower = count ? SOCIAL.heartThresholds[count - 1]! : 0;
@@ -172,16 +195,16 @@ export class TavernUI {
       fill.style.width = `${Math.max(0, Math.min(100, section * 20))}%`;
       this.bondCompanion = this.selected; this.bondPoints = points;
     }
-    this.text('gift-summary', `Geschenke: ${b.social.gifts} · Details`);
-    this.text('stock', `Geschenke: ${b.social.gifts} · Empfängerin: ${this.content.name}`);
-    this.text('renewal', `Nächster Abschnitt in ${Math.ceil((SOCIAL.windowTicks - b.social.window.ticks) / 2400)} Min. laufender Spielzeit.`);
-    this.text('ilyra-lock', b.ilyra ? COMPANIONS.ilyra.stage(b.social.points.ilyra).greeting : b.secondBossVictories ? b.settlement.tavernLevel === 2 ? 'Bereit für deine Einladung. Rekrutiere sie in der Gefährtenverwaltung.' : 'Boss 25 besiegt. Baue die Taverne auf Stufe II aus.' : 'Nach Boss 25 und dem Ausbau auf Taverne II rekrutierbar.');
-    this.get('[data-do="ilyra"]').textContent = b.ilyra ? 'Zeit mit Ilyra verbringen →' : b.ilyraRecruitable ? 'Ilyra kennenlernen →' : 'Rekrutierung & Ausbau →';
+    this.text('gift-summary', t("Geschenke: {0} · Details", b.social.gifts));
+    this.text('stock', t("Geschenke: {0} · Empfängerin: {1}", b.social.gifts, this.content.name));
+    this.text('renewal', t("Nächster Abschnitt in {0} Min. laufender Spielzeit.", Math.ceil((SOCIAL.windowTicks - b.social.window.ticks) / 2400)));
+    this.text('ilyra-lock', b.ilyra ? COMPANIONS.ilyra.stage(b.social.points.ilyra).greeting : b.secondBossVictories ? b.settlement.tavernLevel === 2 ? t('Bereit für deine Einladung. Rekrutiere sie in der Gefährtenverwaltung.') : t('Boss 25 besiegt. Baue die Taverne auf Stufe II aus.') : t('Nach Boss 25 und dem Ausbau auf Taverne II rekrutierbar.'));
+    this.get('[data-do="ilyra"]').textContent = t(b.ilyra ? t('Zeit mit Ilyra verbringen →') : b.ilyraRecruitable ? t('Ilyra kennenlernen →') : t('Rekrutierung & Ausbau →'));
     this.get<HTMLButtonElement>('[data-do="wisp"]').disabled = !b.wispUnlocked;
     const nextMoment = this.content.next(points);
-    this.text('moment-hint', nextMoment ? `${count ? 'Herz antippen: Moment erleben. ' : ''}Als Nächstes: „${nextMoment.title}“ · ${nextMoment.points} Zuneigung.` : 'Fünf persönliche Momente · zum Wiedererleben ein Herz antippen.');
+    this.text('moment-hint', nextMoment ? t("{0}Als Nächstes: „{1}“ · {2} Zuneigung.", count ? t('Herz antippen: Moment erleben. ') : '', nextMoment.title, nextMoment.points) : t('Fünf persönliche Momente · zum Wiedererleben ein Herz antippen.'));
     this.dialog.dataset.story = String(!!this.moment);
-    this.get('.tv-back').setAttribute('aria-label', this.moment ? `Zurück zu ${this.content.name}` : this.screen === 'touch' ? `Zurück zu ${this.content.name}s Charakteransicht` : 'Zurück zur Tavernenübersicht');
+    this.get('.tv-back').setAttribute('aria-label', t(this.moment ? t("Zurück zu {0}", this.content.name) : this.screen === 'touch' ? t("Zurück zu {0}s Charakteransicht", this.content.name) : t('Zurück zur Tavernenübersicht')));
     this.get('.tv-story-heading').hidden = !this.moment;
     this.get('.tv-story-controls').hidden = !this.moment;
     this.get('.tv-actions').hidden = !!this.moment;
@@ -190,7 +213,7 @@ export class TavernUI {
     this.get('.tv-touch-help').hidden = this.screen !== 'touch' || !!this.moment;
     const unlock = this.get<HTMLButtonElement>('[data-do="new-moment"]');
     unlock.hidden = !this.newMoment || !!this.moment;
-    if (this.newMoment) unlock.textContent = `Neuer Moment: ${this.content.moments[this.newMoment - 1]!.title} →`;
+    if (this.newMoment) unlock.textContent = t("Neuer Moment: {0} →", this.content.moments[this.newMoment - 1]!.title);
     this.dialog.dataset.reacting = String(this.animation.reacting);
     const blocked = this.pending || session.inputBusy || !!session.error || session.suspended || session.awaitingResume || !this.animation.ready || this.animation.reacting;
     unlock.disabled = blocked;
@@ -200,12 +223,12 @@ export class TavernUI {
       const available = !!this.content.moment(points, moment.heart);
       button.disabled = blocked || !available;
       button.classList.toggle('unlocked', available);
-      button.setAttribute('aria-label', `${moment.heart} ${moment.heart === 1 ? 'Herz' : 'Herzen'}: ${moment.title}${available ? ' · Moment erleben' : ` · ab ${SOCIAL.heartThresholds[moment.heart - 1]} Zuneigung`}`);
-      button.title = button.getAttribute('aria-label')!;
+      button.setAttribute('aria-label', t("{0} {1}: {2}{3}", moment.heart, moment.heart === 1 ? t('Herz') : t('Herzen'), moment.title, available ? t(' · Moment erleben') : t(" · ab {0} Zuneigung", SOCIAL.heartThresholds[moment.heart - 1])));
+      button.title = t(button.getAttribute('aria-label')!);
     }
     for (const action of ['talk', 'touch', 'gift'] as const) {
       const offer = b.companionOffer(this.selected, action);
-      this.text(action, offer.points ? `+${offer.points} Zuneigung${action === 'gift' ? ' · 1 Geschenk' : ''}` : offer.reason === 'no-gift' ? 'Kein Geschenk' : offer.reason === 'complete' ? 'Herzen vollständig' : action === 'gift' ? 'Abschnitt ausgeschöpft' : 'Ohne weitere Punkte');
+      this.text(action, offer.points ? t("+{0} Zuneigung{1}", offer.points, action === 'gift' ? t(' · 1 Geschenk') : '') : offer.reason === 'no-gift' ? t('Kein Geschenk') : offer.reason === 'complete' ? t('Herzen vollständig') : action === 'gift' ? t('Abschnitt ausgeschöpft') : t('Ohne weitere Punkte'));
       const button = this.get<HTMLButtonElement>(action === 'touch' ? '[data-do="touch"]' : `[data-action="${action}"]`);
       button.disabled = blocked || !offer.accepted;
     }
@@ -218,9 +241,9 @@ export class TavernUI {
     const loading = this.get('.tv-load-status');
     const failedReaction = !!this.get('.tv-figure canvas').dataset.reactionError;
     loading.hidden = this.animation.ready && !this.animation.loadingReactions && !failedReaction;
-    const loadingText = this.get('.tv-figure canvas').dataset.error ? 'Figur nicht geladen. Taverne erneut öffnen.' : !this.animation.ready ? `${this.content.name} wird geladen …` : this.animation.loadingReactions ? 'Berührungen werden geladen …' : failedReaction ? 'Laden fehlgeschlagen. Berühren erneut öffnen.' : '';
-    if (loading.textContent !== loadingText) loading.textContent = loadingText;
-    if (this.get('.tv-figure canvas').dataset.error) this.text('result', 'Animation konnte nicht geladen werden. Bitte Taverne schließen und erneut öffnen.');
+    const loadingText = this.get('.tv-figure canvas').dataset.error ? t('Figur nicht geladen. Taverne erneut öffnen.') : !this.animation.ready ? t("{0} wird geladen …", this.content.name) : this.animation.loadingReactions ? t('Berührungen werden geladen …') : failedReaction ? t('Laden fehlgeschlagen. Berühren erneut öffnen.') : '';
+    if (loading.textContent !== loadingText) loading.textContent = t(loadingText);
+    if (this.get('.tv-figure canvas').dataset.error) this.result(() => t('Animation konnte nicht geladen werden. Bitte Taverne schließen und erneut öffnen.'));
   }
   private async startMoment(heart: number): Promise<void> {
     const session = this.ports.session();
@@ -241,9 +264,9 @@ export class TavernUI {
     if (!moment) { this.endMoment(); return; }
     const beat = moment.beats[this.moment.beat]!;
     this.text('story-title', moment.title);
-    this.text('story-step', `${moment.heart} ${moment.heart === 1 ? 'HERZ' : 'HERZEN'} · ${this.moment.beat + 1} / ${moment.beats.length}`);
+    this.text('story-step', t("{0} {1} · {2} / {3}", moment.heart, moment.heart === 1 ? t('HERZ') : t('HERZEN'), this.moment.beat + 1, moment.beats.length));
     this.text('line', beat.line);
-    this.get('[data-do="story-next"]').textContent = this.moment.beat === moment.beats.length - 1 ? 'Moment beenden' : 'Weiter';
+    this.get('[data-do="story-next"]').textContent = t(this.moment.beat === moment.beats.length - 1 ? t('Moment beenden') : t('Weiter'));
     this.animation.play(beat.clip); this.update();
   }
   private nextBeat(): void {
@@ -255,7 +278,7 @@ export class TavernUI {
   private endMoment(): void {
     this.moment = undefined;
     this.text('line', this.content.stage(this.points).greeting);
-    this.text('result', 'Deine Momente bleiben über die Herzen verfügbar.'); this.update();
+    this.result(() => t('Deine Momente bleiben über die Herzen verfügbar.')); this.update();
   }
   private async act(action: Interaction, region: TouchRegion = 'shoulder'): Promise<void> {
     const session = this.ports.session();
@@ -272,10 +295,10 @@ export class TavernUI {
       if (action === 'talk') this.conversationTurn[who]++;
       const afterHearts = hearts(session.battle.social.points[who]);
       if (afterHearts > hearts(beforePoints)) this.newMoment = afterHearts;
-      this.text('result', result.points ? `+${result.points} Zuneigung zu ${content.name}${action === 'gift' ? ' · 1 Geschenk überreicht' : ''}` : offer.reason === 'complete' ? `Alle Herzen erreicht. ${content.name} freut sich trotzdem über deinen Besuch.` : `${content.name} freut sich über deine Nähe. Für diesen Abschnitt gibt es keine weiteren Punkte.`);
+      this.result(() => result.points ? t("+{0} Zuneigung zu {1}{2}", result.points, content.name, action === 'gift' ? t(' · 1 Geschenk überreicht') : '') : offer.reason === 'complete' ? t("Alle Herzen erreicht. {0} freut sich trotzdem über deinen Besuch.", content.name) : t("{0} freut sich über deine Nähe. Für diesen Abschnitt gibt es keine weiteren Punkte.", content.name));
       if (action === 'gift' && result.points > 0) this.ports.onGift?.();
       if (action === 'touch') { this.animation.play(region); this.ports.onTouch?.(who); }
     } finally { this.pending = false; this.update(); }
   }
-  destroy(): void { this.animation.stop(); this.observer.disconnect(); this.lifetime.abort(); this.dialog.remove(); }
+  destroy(): void { this.unbindLanguage(); this.unbindStatic(); this.animation.stop(); this.observer.disconnect(); this.lifetime.abort(); this.dialog.remove(); }
 }

@@ -1,5 +1,95 @@
 # SPIRE · Idle Bastion
 
+Ein Endlos-Idle-Tower-Defense-Spiel im Pixelwald: Verteidigung bauen, automatische
+Wellen überstehen, sichere Wellen farmen und mit neuen Upgrades weiter vorstoßen.
+**Welle 40 ist ein Zwischenziel.** Der veröffentlichte Hauptstand liegt auf `main`.
+
+**[▶ Spielen / gespeicherte Partie fortsetzen](https://emfau88.github.io/TD/)** ·
+**[✦ Frische Partie beginnen](https://emfau88.github.io/TD/?fresh=1)**
+
+Der Frischstart-Link öffnet einen eigenen neuen Speicherplatz und erhält die bisherige
+Partie. Die daraus erzeugte Adresse mit `?probe=…` lässt sich zum Fortsetzen dieser
+neuen Partie als Lesezeichen speichern. Der normale Playlink öffnet weiterhin den
+Hauptspielstand. Spielstände liegen lokal in diesem Browser; das Löschen der
+Website-Daten löscht auch diese Stände.
+
+## Aktueller Spielumfang
+
+- **Englisch als Standard**, Deutsch im vorhandenen Spielmenü unter **Language / Sprache**.
+  Die Auswahl wirkt sofort und bleibt nach Neuladen erhalten. Tutorial, HUD, Bau/Forschung,
+  Chronik, Gegnerbeschreibungen und Mara-/Ilyra-Dialoge sind übersetzt.
+- **Fünf Türme:** Waldwächter / Grove Warden, Frostkristall / Frost Crystal,
+  Steinschleuder / Stone Slinger, Scharfschütze / Sharpshooter und
+  **Sturmlicht / Stormlight** mit einer begrenzten Dreier-Kettenblitzfolge.
+  Sturmlicht-Forschung nach gemeisterter Welle 28 und Ilyras Einführung:
+  900 Gold Forschung, danach separat 170 Gold für einen Turm.
+- **Vier Wellenfamilien:** Schwarm, Ansturm, Panzer und Unterstützung mit unterschiedlichen
+  Gruppen und Spawnrhythmen. Maximal 28 Gegner, 16 reguläre Gegnertypen, Bosskämpfe in
+  Welle 15/25 und Elitewelle 40. Weitere Gegner erscheinen nach 40; keine implementierte Ostfront.
+- **Sieben ergänzte Gegner:** Waldgoblin (19), Knochenwächter (26), Waldkultist (32),
+  Moospilz (42, rote/grüne Kappe), Waldspinne (46), Hornfledermaus (50) und Zunderläufer (54).
+- **Fortlaufende Turm-Upgrades:** Werkstatt II ermöglicht Level ab 7; die frühere
+  feste Level-20-Grenze ist entfernt. Die spätere Endloswirtschaft wird weiter abgestimmt.
+- **Farmen und Offline-Fortschritt:** Die Farmsuche prüft höchstens vier tatsächlich
+  geschaffte Wellen, einschließlich einer geeigneten Zwischenwelle, und bestätigt
+  Sicherheit mit zwei vollständigen verlustfreien Durchläufen. Gültige Nachweise und
+  historische Ansprüche bleiben erhalten. Ohne Lager 60 % der sicheren Farmrate bis
+  zwei Stunden, mit Lager 65 % bis acht Stunden; eine gespeicherte Pause erzeugt kein Offline-Gold.
+  Rückkehrbeträge sind kompakt und ohne lange Nachkommastellen dargestellt;
+  der genaue Betrag lässt sich aufklappen und wird vollständig gutgeschrieben.
+- **Siedlung und Gefährten:** Werkstatt, Vorratslager, Taverne sowie Mara, Wisp und Ilyra.
+  Kostenloser Tavernenbausatz nach Welle 12, Taverne II/Ilyra nach Boss 25.
+  Gespräche, Berührungsreaktionen, Geschenke und je fünf persönliche Herzmomente.
+- **Desktop und Mobil:** verschiebbare Karte, kompakter Baukatalog, Musik/Effekte/Stimmen
+  getrennt regelbar. Bestehende Grafiken und Animationen; keine neuen Assets durch die Sprachumstellung.
+
+## Vorschauen und Dokumentation
+
+[Bewegte Gegnervorschau](https://emfau88.github.io/TD/enemy-lab.html) ·
+[Sturmlicht-Teststarter](https://emfau88.github.io/TD/stormlight-check.html) ·
+[Tavernenprobe mit Ilyra](https://emfau88.github.io/TD/tavern-check.html?hero=ilyra) ·
+[Audioquellen](https://emfau88.github.io/TD/audio-credits.html) ·
+[Gegnergrafiken und Lizenzen](https://emfau88.github.io/TD/enemy-credits.html)
+
+[Fortlaufende Roadmap](experiments/idle-bastion/ROADMAP.md) ist die einzige aktuelle
+Aufgabenliste. [Technik und Speicherregeln](experiments/idle-bastion/docs/TECHNIK.md) ·
+[Sprachwahl und Layoutprüfung](artifacts/idle-bastion/acceptance/language/REPORT.md) ·
+[Farmvergleich](artifacts/idle-bastion/acceptance/farm-search/REPORT.md) ·
+[Sturmlicht und Wirtschaftsaudit](artifacts/idle-bastion/acceptance/b16/ECONOMY.md).
+
+## Lokal starten und prüfen
+
+Node.js 22 und npm:
+
+```sh
+npm ci
+npm run dev
+npm run build
+npm run preview
+npm test
+```
+
+Der aktive Spielcode bleibt unter `experiments/idle-bastion/`. `npm run build` erzeugt
+`dist/` mit dem Spiel im Wurzelpfad. GitHub Pages veröffentlicht ausschließlich `main`.
+Alte `/idle-bastion/`-Adressen leiten einschließlich Query/Hash auf die Hauptadresse um;
+bestehende Speicherkennungen bleiben erhalten.
+
+Die gezielte Sprach-/Speichermatrix hat zwölf bereits bekannte Altfälle, getrennt im
+[Prüfbericht](artifacts/idle-bastion/acceptance/language/REPORT.md) dokumentiert. Eine grüne
+Gesamtsuite oder vollständige Abnahme auf physischer Smartphone-Hardware wird nicht behauptet.
+
+`classic:*` und `reference:*` sind historische Werkzeuge. Der frühere klassische Stand
+ist über den [Archiv-Tag](https://github.com/emfau88/TD/tree/archive/classic-td-2026-10-21)
+erhalten. Originalquellen und ältere Nachweise bleiben nachvollziehbar.
+
+<details>
+<summary>Historische Entwicklungsnotizen und frühere README (bis 23.10.2026)</summary>
+
+**Archiv, kein aktueller Funktions- oder Veröffentlichungsstand.** Angaben unten zu
+vier Türmen, Level 20, früheren Freischaltungen, dem alten Spiel und alten
+Entwicklungsbranches wurden durch die aktuelle Übersicht oben ersetzt. Die damaligen
+Aufnahmen, Links und Regeln bleiben hier als Entwicklungsgeschichte erhalten.
+
 **Hauptstand: `main`.** Idle Bastion ist das aktuelle Spiel. [▶ Jetzt spielen](https://emfau88.github.io/TD/) · [Roadmap](experiments/idle-bastion/ROADMAP.md). Bisherige `/idle-bastion/`-Spiel- und Vorschaulinks werden weitergeleitet; Spielstände verwenden unveränderte Speicherkennungen auf derselben Domain.
 
 Lokal: `npm install`, danach `npm run dev`. `npm run build` erzeugt die Veröffentlichung unter `dist/`, `npm run preview` zeigt diesen Build. Der aktive Code liegt weiterhin unter `experiments/idle-bastion/`; keine riskante Massenverschiebung der Quellen. `npm test` betrifft das aktuelle Spiel.
@@ -326,3 +416,6 @@ Die Originalordner der Foozle-Pakete bleiben erhalten. Die jeweiligen `Readme.tx
 Soundeffekte werden lokal erzeugt. Es werden keine externen Schrift- oder Sounddateien benötigt. Node.js 22 oder neuer wird für die Entwicklungswerkzeuge verwendet.
 
 Die [Nordbogen-Anpassung und mobile Kamera](artifacts/idle-bastion/acceptance/p4/MAP.md) schaffen drei freie Reihen oberhalb des Wegs und erleichtern die Turmauswahl auf dem Handy.
+
+
+</details>

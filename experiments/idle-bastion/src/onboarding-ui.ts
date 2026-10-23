@@ -1,3 +1,4 @@
+import { t } from './i18n';
 import type { BattleSession } from './battle-session';
 const el = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id)! as T;
 export function updateOnboarding(live: BattleSession, view: { placing: boolean; contextOpen: boolean; catalogPanel: 'tower' | 'settlement'; revealing: boolean }): void {
@@ -17,57 +18,57 @@ export function updateOnboarding(live: BattleSession, view: { placing: boolean; 
   el('app').classList.toggle('saving', saving);
   el('onboarding-card').hidden ||= saving;
   el('lesson-savings').hidden = !saving || placing || contextOpen || live.awaitingResume;
-  el('lesson-savings-label').textContent = stage === 'workshop' ? 'Erste Welle überstehen' : stage === 'research' ? 'Spare auf Frostforschung' : 'Spare auf den Frostturm';
-  el('lesson-savings-value').textContent = stage === 'workshop' ? 'Bausatz danach' : `${Math.min(Math.floor(b.gold), b.lessonCost)} / ${b.lessonCost} G`;
+  el('lesson-savings-label').textContent = t(stage === 'workshop' ? t('Erste Welle überstehen') : stage === 'research' ? t('Spare auf Frostforschung') : t('Spare auf den Frostturm'));
+  el('lesson-savings-value').textContent = t(stage === 'workshop' ? t('Bausatz danach') : t("{0} / {1} G", Math.min(Math.floor(b.gold), b.lessonCost), b.lessonCost));
   const savings = el<HTMLProgressElement>('lesson-savings-progress'); savings.max = Math.max(1,b.lessonCost); savings.value = Math.min(b.gold,b.lessonCost); savings.hidden = stage === 'workshop';
   secondary.hidden ||= complete;
   const progress = ['welcome', 'build', 'ready'].includes(stage) ? 1 : ['combat', 'upgrade'].includes(stage) ? 2 : stage === 'workshop' ? 3 : stage === 'research' ? 4 : stage === 'frost' ? 5 : 6;
-  el('onboarding-eyebrow').textContent = `Mara · Schritt ${progress} von 6${b.learningPaused ? ' · Lernpause' : ''}`;
+  el('onboarding-eyebrow').textContent = t("Mara · Schritt {0} von 6{1}", progress, b.learningPaused ? t(' · Lernpause') : '');
   let copy: [string, string, string];
   switch (stage) {
-    case 'welcome': copy = ['Willkommen im alten Hain', 'Ich bin Mara. Gemeinsam schützen wir diesen Wald. Ich zeige dir, wie du deinen ersten Turm baust. Bis dahin kommen keine Gegner.', 'Los geht’s']; break;
-    case 'build': copy = ['Wähle deinen Waldwächter', 'Tippe unten im Menü „Türme“ auf den kostenlosen Startturm. Danach wählen wir einen Platz am Weg.', '']; break;
-    case 'ready': copy = ['Dein Turm ist bereit', 'Er schießt selbst. Ich unterstütze ihn mit Magie und halte für Erklärungen den Kampf an.', 'Verteidigung starten']; break;
-    case 'combat': copy = ['Dein Turm kämpft selbst', 'Jeder besiegte Käfer bringt Gold. Nach dem ersten Treffer zeige ich dir das Upgrade.', '']; break;
-    case 'upgrade': copy = complete ? ['Level 2 genügt zunächst', 'Jetzt überstehen wir die erste Welle. Danach habe ich einen kostenlosen Werkstatt-Bausatz für dich.', 'Weiter · Welle beenden']
-      : ['Tippe auf deinen Waldwächter', 'Die Welle wartet. Öffne den markierten Turm und verbessere ihn einmal für 60 Gold auf Level 2.', '']; break;
-    case 'workshop': copy = complete ? ['Deine Werkstatt steht', 'Hier erforschst du neue Turmtypen. Dein gespartes Gold verwenden wir für Frosttechnik.', 'Weiter · Frosttechnik entdecken']
-      : waiting ? ['Die erste Welle läuft', 'Nach dem Sieg steht dein kostenloser Werkstatt-Bausatz bereit.', '']
-      : catalogPanel === 'settlement' ? ['Wähle die Werkstatt', 'Tippe unten auf die Werkstatt-Karte. Die Kamera zeigt dir die Siedlungswiese am Kern. Dort setzt du den kostenlosen Bausatz.', '']
-      : ['Dein Werkstatt-Bausatz ist bereit', 'Öffne unten „Siedlung“. Dort findest du deine Gebäude. Die Welle wartet.', '']; break;
-    case 'research': copy = complete ? ['Frostkristall freigeschaltet', 'Jetzt bauen wir den neuen Turm neben deinen Waldwächter. Er kostet 110 Gold.', 'Weiter · Frostturm bauen']
-      : ['Öffne deine Werkstatt', 'Tippe auf das neue Gebäude auf der Karte. Dort erforschst du die Frostfassung für 60 Gold.', '']; break;
-    case 'frost': copy = catalogPanel === 'tower' ? ['Wähle den Frostkristall', 'Tippe unten auf den Frostkristall. Danach wählen wir einen Platz mit überlappender Reichweite.', '']
-      : ['Zurück zu deinen Türmen', 'Öffne unten „Türme“. Der erforschte Frostkristall ist jetzt dort verfügbar.', '']; break;
+    case 'welcome': copy = [t('Willkommen im alten Hain'), t('Ich bin Mara. Gemeinsam schützen wir diesen Wald. Ich zeige dir, wie du deinen ersten Turm baust. Bis dahin kommen keine Gegner.'), t('Los geht’s')]; break;
+    case 'build': copy = [t('Wähle deinen Waldwächter'), t('Tippe unten im Menü „Türme“ auf den kostenlosen Startturm. Danach wählen wir einen Platz am Weg.'), '']; break;
+    case 'ready': copy = [t('Dein Turm ist bereit'), t('Er schießt selbst. Ich unterstütze ihn mit Magie und halte für Erklärungen den Kampf an.'), t('Verteidigung starten')]; break;
+    case 'combat': copy = [t('Dein Turm kämpft selbst'), t('Jeder besiegte Käfer bringt Gold. Nach dem ersten Treffer zeige ich dir das Upgrade.'), '']; break;
+    case 'upgrade': copy = complete ? [t('Level 2 genügt zunächst'), t('Jetzt überstehen wir die erste Welle. Danach habe ich einen kostenlosen Werkstatt-Bausatz für dich.'), t('Weiter · Welle beenden')]
+      : [t('Tippe auf deinen Waldwächter'), t('Die Welle wartet. Öffne den markierten Turm und verbessere ihn einmal für 60 Gold auf Level 2.'), '']; break;
+    case 'workshop': copy = complete ? [t('Deine Werkstatt steht'), t('Hier erforschst du neue Turmtypen. Dein gespartes Gold verwenden wir für Frosttechnik.'), t('Weiter · Frosttechnik entdecken')]
+      : waiting ? [t('Die erste Welle läuft'), t('Nach dem Sieg steht dein kostenloser Werkstatt-Bausatz bereit.'), '']
+      : catalogPanel === 'settlement' ? [t('Wähle die Werkstatt'), t('Tippe unten auf die Werkstatt-Karte. Die Kamera zeigt dir die Siedlungswiese am Kern. Dort setzt du den kostenlosen Bausatz.'), '']
+      : [t('Dein Werkstatt-Bausatz ist bereit'), t('Öffne unten „Siedlung“. Dort findest du deine Gebäude. Die Welle wartet.'), '']; break;
+    case 'research': copy = complete ? [t('Frostkristall freigeschaltet'), t('Jetzt bauen wir den neuen Turm neben deinen Waldwächter. Er kostet 110 Gold.'), t('Weiter · Frostturm bauen')]
+      : [t('Öffne deine Werkstatt'), t('Tippe auf das neue Gebäude auf der Karte. Dort erforschst du die Frostfassung für 60 Gold.'), '']; break;
+    case 'frost': copy = catalogPanel === 'tower' ? [t('Wähle den Frostkristall'), t('Tippe unten auf den Frostkristall. Danach wählen wir einen Platz mit überlappender Reichweite.'), '']
+      : [t('Zurück zu deinen Türmen'), t('Öffne unten „Türme“. Der erforschte Frostkristall ist jetzt dort verfügbar.'), '']; break;
     default: copy = ['', '', ''];
   }
-  el('onboarding-title').textContent = copy[0]; el('onboarding-copy').textContent = copy[1]; primary.textContent = copy[2];
+  el('onboarding-title').textContent = t(copy[0]); el('onboarding-copy').textContent = t(copy[1]); primary.textContent = t(copy[2]);
   primary.hidden = !copy[2]; primary.disabled ||= waiting || revealing;
-  secondary.hidden = stage !== 'ready'; secondary.textContent = 'Standort ändern · kostenlos';
+  secondary.hidden = stage !== 'ready'; secondary.textContent = t('Standort ändern · kostenlos');
   el('skip-lessons').hidden = !b.guiding;
   el('onboarding-actions')?.classList.toggle('empty', primary.hidden && secondary.hidden);
   el('lesson-goal').hidden = true;
   el('lesson-note').hidden = !b.guiding || !contextOpen;
-  el('lesson-note').textContent = stage === 'upgrade' ? 'Die Welle wartet. Einmal „Aufwerten“ genügt.'
-    : stage === 'research' ? 'Die Welle wartet. Erforsche hier die Frostfassung.' : 'Schließe die Auswahl, um den nächsten Klick zu sehen.';
-  el('archer-price').textContent = b.preparing ? stage === 'ready' ? 'Kostenlos versetzen' : '1 kostenloser Bausatz' : b.guiding ? 'Einmal auf Level 2' : '75';
-  el('archer-title').textContent = b.preparing ? 'Startturm' : 'Waldwächter';
-  el('pick-archer').setAttribute('aria-label', b.preparing ? 'Kostenlosen Startturm platzieren oder versetzen' : b.guiding ? 'Startturm und erstes Upgrade ansehen' : 'Waldwächter platzieren · 75 Gold');
+  el('lesson-note').textContent = t(stage === 'upgrade' ? t('Die Welle wartet. Einmal „Aufwerten“ genügt.')
+    : stage === 'research' ? t('Die Welle wartet. Erforsche hier die Frostfassung.') : t('Schließe die Auswahl, um den nächsten Klick zu sehen.'));
+  el('archer-price').textContent = t(b.preparing ? stage === 'ready' ? t('Kostenlos versetzen') : t('1 kostenloser Bausatz') : b.guiding ? t('Einmal auf Level 2') : '75');
+  el('archer-title').textContent = t(b.preparing ? t('Startturm') : t('Waldwächter'));
+  el('pick-archer').setAttribute('aria-label', t(b.preparing ? t('Kostenlosen Startturm platzieren oder versetzen') : b.guiding ? t('Startturm und erstes Upgrade ansehen') : t('Waldwächter platzieren · 75 Gold')));
   if (b.guiding) {
     el<HTMLButtonElement>('pick-archer').disabled = stage !== 'upgrade';
     el<HTMLButtonElement>('pick-frost').disabled = stage !== 'frost' || !b.learningPaused || complete;
-    el('wave-mode').textContent = b.learningPaused ? 'Lernpause' : 'Lernphase';
-    el('battle-phase').textContent = b.learningPaused ? 'Lernpause · Die Welle wartet' : stage === 'workshop' ? 'Erste Welle · danach Werkstatt bauen' : 'Übungswellen 1–2';
+    el('wave-mode').textContent = t(b.learningPaused ? t('Lernpause') : t('Lernphase'));
+    el('battle-phase').textContent = t(b.learningPaused ? t('Lernpause · Die Welle wartet') : stage === 'workshop' ? t('Erste Welle · danach Werkstatt bauen') : t('Übungswellen 1–2'));
     if (stage !== 'upgrade' || complete) el<HTMLButtonElement>('upgrade').disabled = true;
     el<HTMLButtonElement>('sell').disabled = true;
     el<HTMLButtonElement>('research-frost').disabled ||= stage !== 'research';
     el<HTMLButtonElement>('build-workshop').disabled ||= stage !== 'workshop';
   } else { el<HTMLButtonElement>('pick-archer').disabled = false; el<HTMLButtonElement>('pick-frost').disabled = false; }
-  if (b.learningPaused) { el('pause-state').textContent = 'LERNPAUSE'; el<HTMLButtonElement>('pause').disabled = true; }
+  if (b.learningPaused) { el('pause-state').textContent = t('LERNPAUSE'); el<HTMLButtonElement>('pause').disabled = true; }
   if (b.preparing) {
-    el('wave').textContent = '—'; el('wave-mode').textContent = 'Vorbereitung';
-    el('record-wave').textContent = 'Noch kein Kampf'; el('live-income').textContent = 'Startkapital · 0 G/min';
-    el('battle-phase').textContent = 'Erst bauen, dann Verteidigung starten'; el('pause-state').textContent = 'BEREIT';
+    el('wave').textContent = t('—'); el('wave-mode').textContent = t('Vorbereitung');
+    el('record-wave').textContent = t('Noch kein Kampf'); el('live-income').textContent = t('Startkapital · 0 G/min');
+    el('battle-phase').textContent = t('Erst bauen, dann Verteidigung starten'); el('pause-state').textContent = t('BEREIT');
     el<HTMLButtonElement>('pause').disabled = true;
   }
 }

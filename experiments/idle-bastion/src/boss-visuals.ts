@@ -1,3 +1,4 @@
+import { t } from './i18n';
 import Phaser from 'phaser';
 import { succubusDanceFrame, SUCCUBUS_DANCE_SCALE } from '../../../reference/src/succubus-art';
 import { KEYS } from './art';
@@ -71,7 +72,7 @@ export class BossCharmView {
     pixelHeart(this.backing, -49, -65, 8, active ? 1 : 0.45);
     pixelHeart(this.backing, 49, -65, 8, active ? 1 : 0.45);
     this.clip.setFrame(succubusDanceFrame(age * 1000));
-    this.caption.setText(`${active ? 'Verführt' : 'Wirkt Zauber'} · ${charm.remaining.toFixed(1)} s`);
+    this.caption.setText(t("{0} · {1} s", active ? t('Verführt') : t('Wirkt Zauber'), charm.remaining.toFixed(1)));
     this.backing.fillStyle(0x170d25, 1).fillRect(-51, 55, 102, 3);
     this.backing.fillStyle(0xf598d6, 0.95).fillRect(-51, 55, 102 * charm.remaining / (active ? BOSS.channel : BOSS.windup), 3);
 

@@ -1,0 +1,35 @@
+[
+  {
+    "width": 320,
+    "mobile": true,
+    "freshIsolated": true,
+    "errors": [],
+    "cardIssues": [],
+    "defaultEnglish": true,
+    "germanSelectable": true,
+    "saved": "de",
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "mobile": true,
+    "freshIsolated": true,
+    "errors": [],
+    "cardIssues": [],
+    "defaultEnglish": true,
+    "germanSelectable": true,
+    "saved": "de",
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "mobile": false,
+    "freshIsolated": true,
+    "errors": [],
+    "cardIssues": [],
+    "defaultEnglish": true,
+    "germanSelectable": true,
+    "saved": "de",
+    "overflow": false
+  }
+]

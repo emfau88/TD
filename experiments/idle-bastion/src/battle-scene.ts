@@ -1,3 +1,4 @@
+import { t } from './i18n';
 import { ILYRA } from './ilyra';
 import { IlyraView } from './ilyra-view';
 import { ENEMY_SHEETS } from './enemy-art';
@@ -94,6 +95,11 @@ export class BattleScene extends Phaser.Scene {
 
   constructor(private readonly readBattle: () => IdleBattle, private readonly hooks: BattleSceneHooks, private readonly pixelDensity = 1) { super('IdleBattle'); }
   preload(): void { preloadArt(this); }
+  refreshLanguage(): void {
+    this.coreLabel?.setText(t('Diesen Kern schützen'));
+    this.wispName?.setText(t('Wisp · +10 % Gold'));
+  }
+
   create(): void {
     prepareArt(this);
     const { width, height } = this.sim.layout.bounds;
@@ -115,9 +121,9 @@ export class BattleScene extends Phaser.Scene {
       fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: '#fff3cf', stroke: '#20392c', strokeThickness: 2,
     }).setOrigin(0.5).setDepth(5001);
     this.learningMark = this.add.graphics().setDepth(4999);
-    this.coreLabel = this.add.text(1100, 205, 'Diesen Kern schützen', { fontFamily: 'Segoe UI', fontSize: '12px', resolution: 2, color: '#fff1b2', stroke: '#22382b', strokeThickness: 3 }).setOrigin(1, 0).setDepth(5002);
+    this.coreLabel = this.add.text(1100, 205, t('Diesen Kern schützen'), { fontFamily: 'Segoe UI', fontSize: '12px', resolution: 2, color: '#fff1b2', stroke: '#22382b', strokeThickness: 3 }).setOrigin(1, 0).setDepth(5002);
     this.wisp = this.add.image(0, 0, KEYS.wisp, 0).setOrigin(0.5, 51 / 64).setScale(0.9);
-    this.wispName = this.add.text(0, 0, 'Wisp · +10 % Gold', { fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: '#ffe0a0', stroke: '#20392c', strokeThickness: 2 }).setOrigin(0.5).setDepth(5001);
+    this.wispName = this.add.text(0, 0, t('Wisp · +10 % Gold'), { fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: '#ffe0a0', stroke: '#20392c', strokeThickness: 2 }).setOrigin(0.5).setDepth(5001);
     this.input.on('pointerdown', this.beginPointer, this);
     this.input.on('pointerup', this.endPointer, this);
     this.input.on('pointerupoutside', this.cancelPointer, this);
@@ -371,7 +377,7 @@ export class BattleScene extends Phaser.Scene {
       let label = this.padLabels.get(tower.padId);
       if (!label) { label = this.add.text(0, 0, '', { fontFamily: 'Segoe UI', fontSize: '11px', fontStyle: 'bold', resolution: 2,
         color: colors.text, stroke: '#233e2d', strokeThickness: 2 }).setOrigin(0.5).setDepth(5000); this.padLabels.set(tower.padId, label); }
-      label.setPosition(tower.x, tower.y + 22).setText(`Lv. ${tower.level}`);
+      label.setPosition(tower.x, tower.y + 22).setText(t("Lv. {0}", tower.level));
     }
   }
   private drawSelection(): void {
@@ -546,7 +552,7 @@ export class BattleScene extends Phaser.Scene {
     this.coreLabel.setVisible(sim.preparing);
     const boostedTower = sim.towers.find(t => sim.isMaraBoosted(t.uid));
     this.buffText.setVisible(!!boostedTower);
-    if (boostedTower) this.buffText.setPosition(boostedTower.x, boostedTower.y - 60).setText(`✦ ${Math.ceil(sim.mara.effectRemaining)} s`);
+    if (boostedTower) this.buffText.setPosition(boostedTower.x, boostedTower.y - 60).setText(t("✦ {0} s", Math.ceil(sim.mara.effectRemaining)));
     const wisp = this.wispPose;
     this.wisp.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y).setFrame(wisp.frame).setFlipX(wisp.flip).setDepth(wisp.y + 1002);
     this.wispName.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y + 13);
@@ -554,7 +560,7 @@ export class BattleScene extends Phaser.Scene {
     const mara = sim.mara, acting = mara.effectRemaining > 0 && sim.isMaraBoosted(mara.effectTowerUid ?? -1);
     this.mara.setPosition(mara.x, mara.y).setFrame(maraFrame(mara.direction, mara.path.length > 0, acting, elapsed)).setDepth(mara.y + 1002);
     this.maraShadow.setPosition(mara.x, mara.y + 1).setDepth(mara.y + 999);
-    this.maraName.setPosition(mara.x, mara.y + 13).setText(acting ? 'Mara · Übertakten' : mara.unreachable ? 'Mara · kein Zugang' : 'Mara');
+    this.maraName.setPosition(mara.x, mara.y + 13).setText(t(acting ? t('Mara · Übertakten') : mara.unreachable ? t('Mara · kein Zugang') : 'Mara'));
     this.bossCharmView.draw(sim, this.portraitCamera);
     this.drawSelection();
   }

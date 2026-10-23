@@ -1,5 +1,39 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Sprache als reine Darstellungseinstellung
+
+`src/i18n.ts` und `src/locales/en.ts` halten vollständige deutsche Quelltexte und
+englische Übersetzungen mit nummerierten Platzhaltern zusammen. Neue sichtbare
+Texte über `t(...)` ausgeben und den englischen Eintrag ergänzen; Definitionen,
+Gegner-/Turm-IDs, gespeicherte Enums und Zahlenwerte niemals übersetzen. Mara und
+Ilyra behalten ihre unveränderten Inhaltsdaten; übersetzt wird erst bei der Anzeige.
+Die Abdeckungsprüfung umfasst alle Gegnerbeschreibungen und Dialogstufen.
+
+Standard ist ausdrücklich `en`, unabhängig von `navigator.language`. Nur `de`
+aktiviert Deutsch. `spire-language-v1` liegt separat in localStorage; blockierter
+Zugriff lässt die Auswahl für die aktuelle Sitzung funktionieren. Snapshot 29,
+Kampfregeln 15, IndexedDB-Namen, Nachweise und Offline-Ansprüche bleiben identisch.
+Kein Schemawechsel und keine erneute Farmzertifizierung durch den Sprachwechsel.
+
+Statische DOM-Texte und zugängliche Beschriftungen werden einmal gebunden;
+Sprachwechsel aktualisieren bestehende Knoten. Kein MutationObserver und kein
+wiederholter Scan im Kampftakt. Dynamische Ansichten erhalten ihre Texte aus dem
+Katalog; Chronik- und Bauplatzcaches berücksichtigen die Sprache. Formatierer
+werden pro Sprache wiederverwendet. Ein Wechsel startet keine Charakteranimation
+oder Geschichte neu. Rückmeldungen halten ihre Textvorlage, nicht übersetzte IDs.
+
+Die Sprachwahl ist eine Geräte-/Browserpräferenz und wird nicht mit einer
+exportierten Partie übertragen. Technische Vorschauseiten, historische Dokumente,
+Lizenzoriginale und bestehende Audioaufnahmen bleiben in ihrer Originalsprache.
+[Reproduzierbare Prüfung](../../../artifacts/idle-bastion/acceptance/language/REPORT.md).
+
+`reward-display.ts` formatiert ausschließlich die Rückkehranzeige: ganze Goldstücke
+mit schmalem Tausenderabstand; tatsächliche Millionen/Milliarden mit explizitem
+Näherungszeichen und Größenwort. Exakte Nachkommastellen werden aus den unveränderten
+ganzzahligen Währungseinheiten zusammengesetzt und bleiben aufklappbar. Keine Änderung
+an `amountUnits`, Rundungsresten, Reservierung oder Auszahlung. Der Dialog bleibt auch
+bei niedriger Querformat-Höhe innerhalb des Bildschirms und scrollbar.
+
 ## Gezielte Farmsuche — unverändert Snapshot 29 / Regeln 15
 
 Nur die Auswahl der höchstens vier Kandidaten ändert sich. Neben dem höchsten
