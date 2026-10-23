@@ -20,7 +20,7 @@ import { createProgress, cloneProgress, recordAttempt, validProgress, type Progr
 
 export const BASE = Object.freeze({
   stepSeconds: 0.025, startGold: 75, coreLives: 20,
-  firstWaveDelay: 0.25, intermissionSeconds: 2, maxLevel: 20, maxProjectiles: 1024,
+  firstWaveDelay: 0.25, intermissionSeconds: 2, maxLevel: Infinity, maxProjectiles: 1024,
   firstUpgradeCost: 60, laterUpgradePriceFactor: 1.25, refundRate: 0.7,
   maxRangeBonus: 30, maxFireRateMultiplier: 1.3, projectileSpeed: 480,
   tower: Object.freeze({
@@ -42,8 +42,8 @@ export const FROST = Object.freeze({ id: 2 as const, name: 'Frostkristall', cost
 export const CANNON = Object.freeze({ id: 3 as const, name: 'Steinschleuder', cost: 135, damage: 28, range: 150, cooldown: 1.55, color: 0xe4b976 });
 export const SNIPER = Object.freeze({ id: 4 as const, name: 'Scharfschütze', cost: 170, damage: 53, range: 190, cooldown: 1.85, color: 0xd9c8ee });
 export const SPLASH_RADIUS = 52;
-export const BATTLE_RULES_VERSION = 11 as const;
-export const BATTLE_SCHEMA_VERSION = 25 as const;
+export const BATTLE_RULES_VERSION = 12 as const;
+export const BATTLE_SCHEMA_VERSION = 26 as const;
 export const LIVE_CANDIDATE_LIMIT = 32;
 /** Reserved boss milestones never contribute repeatable offline production. */
 export const isNormalFarmWave = (wave: number): boolean => Number.isSafeInteger(wave) && wave >= 1 && wave !== 15 && wave !== 25;
@@ -54,8 +54,8 @@ export type TowerDef = typeof BASE.tower | typeof FROST | typeof CANNON | typeof
 export const towerDefinition = (id: TowerId): TowerDef => ({ 1: BASE.tower, 2: FROST, 3: CANNON, 4: SNIPER })[id];
 export const padUnlocked = (availability: string, wave: number, clearing = false): boolean => availability === 'initial' || availability === 'wave-5' && wave >= 5 || availability === 'wave-10' && wave >= 10 || availability === 'east-clearing' && clearing;
 export const towerUnlocked = (kind: TowerId, frost: boolean, wave: number): boolean => kind === 1 || kind === 2 && frost || kind === 3 && frost && wave >= 5 || kind === 4 && wave >= 10;
-export const waveCount = (wave: number, recipe: number = BATTLE_RULES_VERSION): number => isBossWave(wave, recipe) ? bossEncounter(wave).count : recipe >= 11 && wave >= 6 ? waveRecipe(wave).enemies.length : Math.min(BASE.waves.maxCount, BASE.waves.firstCount + wave - 1);
-export const waveEnemy = (wave: number, index: number, recipe: number = BATTLE_RULES_VERSION): EnemyDef => isBossWave(wave, recipe) && index === 2 ? BASE.enemies.Rosenspiegel : recipe >= 11 && wave >= 6 && !isBossWave(wave, recipe) ? ENEMIES[waveRecipe(wave).enemies[index]] : regularEnemy(wave, index, recipe);
+export const waveCount = (wave: number, recipe: number = BATTLE_RULES_VERSION): number => isBossWave(wave, recipe) ? bossEncounter(wave).count : recipe >= 11 && wave >= 6 ? waveRecipe(wave, recipe).enemies.length : Math.min(BASE.waves.maxCount, BASE.waves.firstCount + wave - 1);
+export const waveEnemy = (wave: number, index: number, recipe: number = BATTLE_RULES_VERSION): EnemyDef => isBossWave(wave, recipe) && index === 2 ? BASE.enemies.Rosenspiegel : recipe >= 11 && wave >= 6 && !isBossWave(wave, recipe) ? ENEMIES[waveRecipe(wave, recipe).enemies[index]] : regularEnemy(wave, index, recipe);
 export interface Tower {
   uid: number; padId: string; x: number; y: number; def: TowerDef;
   level: number; visualStage: 1 | 2 | 3; cooldown: number; spent: number;
@@ -88,12 +88,12 @@ export interface BattleSnapshot {
   introduction: Introduction;
   ilyra: IlyraState | null;
   social: SocialState;
-  schemaVersion: 25; rulesVersion: 11; layoutVersion: 3 | 4 | 5;
+  schemaVersion: 26; rulesVersion: 12; layoutVersion: 3 | 4 | 5;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32' | 'core40';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
   progress: ProgressRecord;
-  rewardRemainderUnits: number; waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+  rewardRemainderUnits: number; waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   goldRemainderUnits: number; mode: BattleMode; highestCleared: number; attemptId: number;
   liveClearedWaves: number[]; farmWave: number; advanceRequested: boolean;
   gold: number; lives: number; wave: number; phase: Phase; elapsed: number;
@@ -108,27 +108,27 @@ export interface BattleSnapshot {
 }
 
 const distance = (a: { x: number; y: number }, b: { x: number; y: number }): number => Math.hypot(a.x - b.x, a.y - b.y);
-const DAMAGE_MULTIPLIERS = Object.freeze([1, 1.75, 2.8, 4.1, 5.7, 7.5, ...Array.from({ length: 14 }, (_, i) => 7.5 * Math.pow(1.3, i + 1))]);
+const DAMAGE_MULTIPLIERS = Object.freeze([1, 1.75, 2.8, 4.1, 5.7, 7.5]);
 export const visualStage = (level: number): 1 | 2 | 3 => level >= 7 ? 3 : level >= 4 ? 2 : 1;
 // Immutable layout geometry is shared by restored models; never rerun footpath search per frame.
 const SNAPSHOT_LAYOUT = createIdleLayout({ version: 2 });
 const EXPANDED_LAYOUT = createIdleLayout({ version: 2, unlockedColumns: 32 });
 const OLD_LAYOUT = createIdleLayout({ version: 1 });
 
-/** Levels 1–3 / 4–6 / 7–20 use the three existing art stages.
+/** Levels 1–3 / 4–6 / 7+ use the three existing art stages.
  * Explicit clamps prevent accidental unbounded range/fire rate in later levels.
  */
 export function stats(tower: Pick<Tower, 'def' | 'level'>) {
-  const level = Math.max(1, Math.min(BASE.maxLevel, Math.floor(tower.level)));
+  const level = Math.max(1, Math.floor(tower.level));
   return {
-    damage: tower.def.damage * DAMAGE_MULTIPLIERS[level - 1],
+    damage: tower.def.damage * (level <= 6 ? DAMAGE_MULTIPLIERS[level - 1] : 7.5 * Math.pow(1.3, level - 6)),
     range: tower.def.range + Math.min(BASE.maxRangeBonus, (level - 1) * 15),
     cooldown: tower.def.cooldown / Math.min(BASE.maxFireRateMultiplier, Math.pow(1.13, level - 1)),
   };
 }
 export function upgradeCost(tower: Pick<Tower, 'def' | 'level'>): number {
   return tower.level === 1 ? BASE.firstUpgradeCost
-    : tower.level >= 6 ? Math.round(tower.def.cost * 8.75 * Math.pow(1.32, Math.min(19, tower.level) - 6))
+    : tower.level >= 6 ? Math.round(tower.def.cost * 8.75 * Math.pow(1.32, tower.level - 6))
     : Math.round(tower.def.cost * BASE.laterUpgradePriceFactor * Math.pow(1.8, tower.level - 2));
 }
 export function sellValue(tower: Pick<Tower, 'spent'>): number {
@@ -143,7 +143,7 @@ export class IdleBattle {
   gold: number = BASE.startGold;
   goldRemainderUnits = 0;
   rewardRemainderUnits = 0;
-  waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 = BATTLE_RULES_VERSION;
+  waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 = BATTLE_RULES_VERSION;
   plots: PlotPositions = structuredClone(DEFAULT_PLOTS);
   wispArrival = { at: null as number | null, met: false };
   clearing = { unlocked: false, openedAt: null as number | null };
@@ -506,7 +506,7 @@ export class IdleBattle {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 20, model.layout.version as 3 | 4 | 5)) return undefined;
       value = { ...value, schemaVersion: 21, ilyra: null };
     }
-    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23 || value.schemaVersion === 24 || value.schemaVersion === 25)) {
+    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23 || value.schemaVersion === 24 || value.schemaVersion === 25 || value.schemaVersion === 26)) {
       if (![3, 4, 5].includes(value.layoutVersion as number) || !validPlotPositions(value.plots, value.layoutVersion as number)) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion as 3 | 4 | 5));
     }
@@ -531,9 +531,13 @@ export class IdleBattle {
     if (isRecord(value) && value.schemaVersion === 24) {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 24, model.layout.version as 3 | 4 | 5)) return undefined;
       // Preserve the in-flight recipe, timer, wallet and every projectile. Only
-      // current farm evidence expires; offline departure proofs live separately.
-      value = { ...value, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION,
-        liveClearedWaves: [], farmWave: 1 };
+      // farm rates expire; validated clear history remains a set of candidates
+      // for fresh two-cycle proofs. Offline departure entitlements live separately.
+      value = { ...value, schemaVersion: 25, rulesVersion: 11 };
+    }
+    if (isRecord(value) && value.schemaVersion === 25) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 25, model.layout.version as 3 | 4 | 5)) return undefined;
+      value = { ...value, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION };
     }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5)) return undefined;
     model.social = structuredClone(value.social);
@@ -915,7 +919,7 @@ export class IdleBattle {
     if (this.preparing || this.phase === 'defeat' || !tower || tower.level >= this.maxLevel) return false;
     if (this.guiding && (this.introduction.stage !== 'upgrade' || !tower.protected || tower.level !== 1)) return false;
     const cost = upgradeCost(tower);
-    if (this.gold < cost) return false;
+    if (!Number.isSafeInteger(cost) || !Number.isSafeInteger(tower.spent + cost) || this.gold < cost) return false;
     this.gold -= cost;
     tower.spent += cost;
     tower.level++;
@@ -1261,7 +1265,7 @@ const integerIn = (value: unknown, min = 0, max = Number.MAX_SAFE_INTEGER): valu
 const near = (left: number, right: number): boolean => Math.abs(left - right) <= 1e-6;
 // Math.pow may differ by a few ulps across browser/runtime versions. Preserve
 // saved payloads exactly, but tolerate only rounding noise when checking derived stats.
-const sameComputedStat = (value: unknown, expected: number): boolean => typeof value === 'number' && Number.isFinite(value)
+const sameComputedStat = (value: unknown, expected: number): boolean => typeof value === 'number' && Number.isFinite(value) && Number.isFinite(expected)
   && Math.abs(value - expected) <= Math.max(1, Math.abs(expected)) * Number.EPSILON * 8;
 
 /** Limits follow the finite shipped rules, rather than trusting serialized stats.
@@ -1270,12 +1274,12 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  * in the same tick; it is discarded normally on the following tick.
  */
 function validSnapshot(
-  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
+  value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
-  if (!isRecord(value) || value.schemaVersion !== (legacy || BATTLE_SCHEMA_VERSION) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
+  if (!isRecord(value) || value.schemaVersion !== (legacy || BATTLE_SCHEMA_VERSION) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy === 25 ? 11 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : BATTLE_RULES_VERSION)
     || value.layoutVersion !== layoutVersion || value.layoutId !== (layoutVersion === 5 ? 'core40' : layout.bounds.columns === 32 ? 'east32' : 'start28') || legacy > 0 && legacy < 20 && layoutVersion === 5) return false;
-  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10, 11]).includes(value.waveRecipeVersion as number))) return false;
+  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy === 25 ? [3, 4, 5, 6, 7, 8, 9, 10, 11] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]).includes(value.waveRecipeVersion as number))) return false;
   if ((!legacy || legacy >= 9) && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
     || layoutVersion !== 5 && value.clearing.unlocked !== (layout.bounds.columns === 32)
     || (value.clearing.unlocked ? !integerIn(value.bossVictories, 1) || !numberIn(value.clearing.openedAt, 0, value.elapsed as number) : value.clearing.openedAt !== null))) return false;
@@ -1353,7 +1357,7 @@ function validSnapshot(
     ilyraRecruited: value.ilyra !== null,
     boss15: (value.bossVictories as number) > 0, boss25: (value.secondBossVictories as number) > 0,
   }, value.attemptId as number)) return false;
-  const levelLimit = (modern || legacy === 10) && (value.settlement as BattleSnapshot['settlement']).workshopUpgraded ? 20 : !original && (value.settlement as BattleSnapshot['settlement']).frostResearched ? 6 : 3;
+  const levelLimit = (modern || legacy === 10) && (value.settlement as BattleSnapshot['settlement']).workshopUpgraded ? (legacy ? 20 : Number.MAX_SAFE_INTEGER) : !original && (value.settlement as BattleSnapshot['settlement']).frostResearched ? 6 : 3;
   if (!integerIn(value.goldRemainderUnits, 0, 999) || (value.mode !== 'advance' && value.mode !== 'farm')
     || !integerIn(value.highestCleared, 0, Number.MAX_SAFE_INTEGER - 1) || !integerIn(value.attemptId)
     || !integerIn(value.farmWave, 1) || !isNormalFarmWave(value.farmWave)
@@ -1419,9 +1423,11 @@ function validSnapshot(
     if ((legacy && legacy < 15 && tower.protected !== pad.isStarter) || (tower.protected && (tower.uid !== 1 || def.id !== 1))) return false;
     if (preparing && (!tower.protected || tower.level !== 1 || pad.cell.x < 3 || pad.cell.x > 7 || ![4, 6].includes(pad.cell.y))) return false;
     if (tower.protected) protectedCount++;
+    // Reject impossible numeric levels before summing rounded, historical prices.
+    if (tower.level > 1 && !Number.isSafeInteger(upgradeCost({ def, level: tower.level - 1 }))) return false;
     let expectedSpent = tower.protected ? 0 : def.cost;
     for (let level = 1; level < tower.level; level++) expectedSpent += upgradeCost({ def, level });
-    if (tower.spent !== expectedSpent) return false;
+    if (!Number.isSafeInteger(expectedSpent) || tower.spent !== expectedSpent) return false;
     pads.add(tower.padId);
     towerIds.add(tower.uid);
     towerKills += tower.kills;
@@ -1433,7 +1439,7 @@ function validSnapshot(
   if ((!legacy || legacy >= 21) && value.ilyra !== null) {
     const blocked=[...getForestBlockedCells(layout),...value.towers.map(t=>layout.towerPads.find(p=>p.id===t.padId)!.cell)];
     if (!(value.settlement as BattleSnapshot['settlement']).tavernBuilt
-      || (!legacy || legacy >= 23) && (value.settlement as BattleSnapshot['settlement']).tavernLevel !== 2 || !validIlyra(value.ilyra,layout,blocked,ilyraDamage)) return false;
+      || (!legacy || legacy >= 23) && (value.settlement as BattleSnapshot['settlement']).tavernLevel !== 2 || !validIlyra(value.ilyra,layout,blocked,ilyraDamage,legacy ? 20 : Number.MAX_SAFE_INTEGER)) return false;
     if (legacy === 21 && isRecord(value.ilyra) && isRecord(value.ilyra.volley) && value.ilyra.volley.pace !== undefined) return false;
   }
   if (!legacy || legacy >= 8) {
@@ -1487,8 +1493,8 @@ function validSnapshot(
     if (!isRecord(shot) || !takeId(shot.uid) || !integerIn(shot.towerUid, 1, shot.uid - 1)
       || !integerIn(shot.target, 2, shot.uid - 1) || towerIds.has(shot.target) || enemyIds.has(shot.towerUid)
       || !numberIn(shot.x, 0, layout.bounds.width) || !numberIn(shot.y, 0, layout.bounds.height)
-      || !integerIn(shot.level, 1, levelLimit) || shot.speed !== BASE.projectileSpeed
-      || !sameComputedStat(shot.damage, def.damage * DAMAGE_MULTIPLIERS[shot.level - 1])) return false;
+      || !integerIn(shot.level, 1, levelLimit) || shot.level > 1 && !Number.isSafeInteger(upgradeCost({def,level:shot.level-1})) || shot.speed !== BASE.projectileSpeed
+      || !sameComputedStat(shot.damage, stats({ def, level: shot.level }).damage)) return false;
   }
   // References may point at removed source/target entities, but never at a projectile.
   const shotIds = new Set(value.shots.map(shot => shot.uid));
@@ -1497,5 +1503,6 @@ function validSnapshot(
 
 /** 1.5 seconds of the strongest unboosted tower DPS, independent of Mara. */
 export function ilyraDamage(kind: TowerId, level: number): number {
+ if(level>1&&!Number.isSafeInteger(upgradeCost({def:towerDefinition(kind),level:level-1})))return NaN;
  const power=stats({def:towerDefinition(kind),level}); return Math.round(Math.max(70,1.5*power.damage/power.cooldown));
 }

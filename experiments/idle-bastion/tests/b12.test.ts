@@ -15,10 +15,10 @@ function eligible() {
   b.buildWarehouse(); b.unlockClearing(); return b;
 }
 
-test('Workshop II charges once after clearing and unlocks bounded level 7–20 / three art stages',()=>{
+test('Workshop II charges once after clearing and unlocks continuing level 7+ / three bounded art stages',()=>{
   const b=eligible(); b.gold=1199; assert.equal(b.upgradeWorkshop(),false);
   b.gold=1200; assert.equal(b.upgradeWorkshop(),true); assert.equal(b.gold,0);
-  assert.equal(b.upgradeWorkshop(),false); assert.equal(b.maxLevel,20);
+  assert.equal(b.upgradeWorkshop(),false); assert.equal(b.maxLevel,Infinity);
   const early=new IdleBattle(); early.gold=100000;early.buildWorkshop();early.researchFrost();
   assert.equal(early.upgradeWorkshop(),false); assert.equal(early.maxLevel,6);
   b.gold=10000000;
@@ -31,7 +31,7 @@ test('Workshop II charges once after clearing and unlocks bounded level 7–20 /
       if(level>6)assert.equal(s.range,stats({...t,level:6}).range);
       if(level<20){const old=s.damage,price=upgradeCost(t),money=b.gold;assert.equal(b.upgrade(t.uid),true);assert.equal(b.gold,money-price);assert.ok(stats(t).damage>old);}
     }
-    assert.equal(b.upgrade(t.uid),false);
+    assert.equal(b.upgrade(t.uid),true); assert.equal(t.level,21);
   }
   assert.deepEqual(IdleBattle.restore(b.snapshot())!.snapshot(),b.snapshot());
   const bad=b.snapshot();bad.settlement.upgradedAt=b.elapsed+1;assert.equal(IdleBattle.restore(bad),undefined);
@@ -111,18 +111,19 @@ test('earned continuation opens Workshop II around minute 13 and keeps an afford
   }
   assert.ok(workshopAt>=600&&workshopAt<=795,'Workshop II around minutes 10–13');
   assert.ok(b.highestCleared>=20,'Wave 25 is the next visible milestone after wave 20');
-  assert.ok(proof);assert.equal(b.maxLevel,20);assert.equal(currentGoal(b).action,'upgrade');
+  assert.ok(proof);assert.equal(b.maxLevel,Infinity);assert.equal(currentGoal(b).action,'upgrade');
   assert.ok(currentGoal(b).cost!>0);assert.ok(IdleBattle.restore(b.snapshot()));
   console.log('B12 earned continuation:',{workshopAt,at15:b.highestCleared,levels:b.towers.map(t=>t.level),nextCost:currentGoal(b).cost});
 });
 
-test('late waves and fully upgraded goals remain bounded without fictitious unlocks',()=>{
+test('late waves retain bounded populations and level 20 still offers a real next upgrade',()=>{
   const b=eligible();b.upgradeWorkshop();b.gold=100000000;b.secondBossVictories=1;b.highestCleared=25;b.attemptId=2;
-  for(const pad of b.layout.towerPads){const t=b.towers.find(t=>t.padId===pad.id)??b.build(pad.id)!;while(t.level<20)b.upgrade(t.uid);}
-  assert.equal(currentGoal(b).action,'progress');assert.equal(currentGoal(b).cost,undefined);
-  assert.equal(waveCount(1000000),BASE.waves.maxCount);
+  for(const [pad,kind] of [['tower-02',2],['tower-03',3],['tower-07',4]] as const)assert.ok(b.build(pad,kind));
+  for(const t of b.towers)while(t.level<20)assert.equal(b.upgrade(t.uid),true);
+  assert.equal(currentGoal(b).action,'upgrade');assert.ok(currentGoal(b).cost!>0);
+  assert.ok(waveCount(1000000)>=18&&waveCount(1000000)<=BASE.waves.maxCount);
   assert.ok(Number.isSafeInteger(upgradeCost({def:towerDefinition(4),level:20})));
   b.wave=999999;b.highestCleared=999999;b.update(60);
   assert.ok(b.enemies.length<=BASE.waves.maxCount);assert.ok(b.shots.length<=BASE.maxProjectiles);
-  assert.ok(b.enemies.every(e=>Number.isFinite(e.hp)&&e.hp<=BASE.enemies.Rosenspiegel.hp*BASE.waves.maxHpMultiplier));
+  assert.ok(b.enemies.every(e=>Number.isFinite(e.hp)&&e.hp>BASE.waves.maxHpMultiplier));
 });

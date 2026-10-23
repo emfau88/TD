@@ -1,5 +1,13 @@
 # Vorhandene Gegner im Idle-Spiel
 
+## Wave-Rework 2.0 — 23.10.2026
+
+Aktuell Snapshot 26 / Regeln 12. Die zwölf Arten, Originalanimationen, Einführungen 19/26/32, gemeinsamen Heilsperren und die separate Vorschau bleiben erhalten. Fortgeschrittene Schwärme haben 28 Gegner, Anstürme 27–28, Panzer 21–22, Unterstützung 23–24; Elite 40 hat 26. Frühe Wellen wachsen schrittweise in diese Bereiche. Höchstens drei Arten und insgesamt zwei Heiler, weiterhin maximal 28 pro Welle.
+
+Kompaktere Vierer-/Fünfergruppen im Schwarm (0,26 s / 1,15 s Pause), Drei-/Vierergruppen im Ansturm (0,30 / 1,25 s), Panzer-Dreiergruppen (0,60 / 1,30 s) und unterstützte Vierergruppen (0,38 / 1,35 s) unterscheiden Tempo und Flächenwirkung. Elite 40 nutzt Vierergruppen (0,42 / 1,25 s). Schwerere Gruppen werden durch mehr leichte Begleitung begrenzt, ohne globale HP-Senkung. Kill- und Abschlussgold teilen sich das bisherige Begegnungsbudget; erste Kurve bis 40 unverändert.
+
+`wave-recipes-v11.ts` bewahrt das erste Rework für alte laufende Versuche. Auch nach Welle 40 entstehen gültige Familien und Mischungen, ohne wachsendes Rezeptarchiv. [Messungen, Farm-/Save-Verhalten, Langzeitgrenzen und Screenshots](../../../artifacts/idle-bastion/acceptance/wave-rework-v2/REPORT.md). Der folgende W01-Abschnitt dokumentiert den ersten Umbau und seine damaligen Mengen, Versionen und Migrationsregeln.
+
 ## Wave-Rework W01 — 23.10.2026
 
 Aktuell **zwölf normale Arten und Rosenspiegel**, Snapshot 25 / Kampfregeln 11. Ergänzt: Waldgoblin ab 19 (36 HP, Tempo 66, keine Rüstung, 13 Basisgold), Knochenwächter ab 26 (55 HP, Tempo 44, 25 % Rüstung, 17 Basisgold), Waldkultist ab 32 (42 HP, Tempo 39, keine Rüstung, 18 Basisgold). Beide Heilerarten verwenden dieselbe begrenzte Heilregel und denselben gespeicherten Ziel-Lockout; sie heilen weder sich noch andere Heiler oder Bosse.

@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+ok 1 - frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+  ---
+  duration_ms: 13.3331
+  type: 'test'
+  ...
+# Subtest: larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+ok 2 - larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+  ---
+  duration_ms: 35.7261
+  type: 'test'
+  ...
+# Subtest: a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts rules 12
+ok 3 - a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts rules 12
+  ---
+  duration_ms: 121.6759
+  type: 'test'
+  ...
+# Subtest: level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+ok 4 - level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+  ---
+  duration_ms: 59.9229
+  type: 'test'
+  ...
+# Subtest: old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+ok 5 - old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+  ---
+  duration_ms: 678.1116
+  type: 'test'
+  ...
+# Subtest: HP continues past the old plateau; machine guards and old level curves remain explicit
+ok 6 - HP continues past the old plateau; machine guards and old level curves remain explicit
+  ---
+  duration_ms: 23.941
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1552.8028

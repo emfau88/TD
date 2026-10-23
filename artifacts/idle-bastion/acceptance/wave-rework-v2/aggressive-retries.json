@@ -1,0 +1,242 @@
+[
+  {
+    "approach": "balanced",
+    "seconds": 1983,
+    "losses": [
+      {
+        "at": 1079,
+        "wave": 36
+      },
+      {
+        "at": 1129,
+        "wave": 36
+      },
+      {
+        "at": 1205,
+        "wave": 36
+      },
+      {
+        "at": 1280,
+        "wave": 36
+      },
+      {
+        "at": 1572,
+        "wave": 40
+      },
+      {
+        "at": 1622,
+        "wave": 40
+      },
+      {
+        "at": 1718,
+        "wave": 40
+      },
+      {
+        "at": 1813,
+        "wave": 40
+      },
+      {
+        "at": 1909,
+        "wave": 40
+      }
+    ],
+    "farmSeconds": 268,
+    "levels": [
+      {
+        "kind": 1,
+        "pad": "tower-start",
+        "level": 13
+      },
+      {
+        "kind": 1,
+        "pad": "tower-03",
+        "level": 13
+      },
+      {
+        "kind": 2,
+        "pad": "tower-02",
+        "level": 3
+      },
+      {
+        "kind": 3,
+        "pad": "tower-09",
+        "level": 11
+      },
+      {
+        "kind": 4,
+        "pad": "cell-14-7",
+        "level": 10
+      }
+    ]
+  },
+  {
+    "approach": "archers",
+    "seconds": 2304,
+    "losses": [
+      {
+        "at": 967,
+        "wave": 36
+      },
+      {
+        "at": 1018,
+        "wave": 36
+      },
+      {
+        "at": 1092,
+        "wave": 36
+      },
+      {
+        "at": 1166,
+        "wave": 36
+      },
+      {
+        "at": 1238,
+        "wave": 36
+      },
+      {
+        "at": 1499,
+        "wave": 40
+      },
+      {
+        "at": 1544,
+        "wave": 40
+      },
+      {
+        "at": 1615,
+        "wave": 40
+      },
+      {
+        "at": 1707,
+        "wave": 40
+      },
+      {
+        "at": 1778,
+        "wave": 40
+      },
+      {
+        "at": 1848,
+        "wave": 40
+      },
+      {
+        "at": 1940,
+        "wave": 40
+      },
+      {
+        "at": 2032,
+        "wave": 40
+      },
+      {
+        "at": 2123,
+        "wave": 40
+      },
+      {
+        "at": 2213,
+        "wave": 40
+      }
+    ],
+    "farmSeconds": 421,
+    "levels": [
+      {
+        "kind": 1,
+        "pad": "tower-start",
+        "level": 13
+      },
+      {
+        "kind": 1,
+        "pad": "cell-7-6",
+        "level": 13
+      },
+      {
+        "kind": 1,
+        "pad": "cell-10-3",
+        "level": 13
+      },
+      {
+        "kind": 2,
+        "pad": "tower-02",
+        "level": 3
+      },
+      {
+        "kind": 3,
+        "pad": "tower-09",
+        "level": 11
+      },
+      {
+        "kind": 4,
+        "pad": "cell-14-7",
+        "level": 10
+      }
+    ]
+  },
+  {
+    "approach": "area",
+    "seconds": 1784,
+    "losses": [
+      {
+        "at": 1177,
+        "wave": 40
+      },
+      {
+        "at": 1227,
+        "wave": 40
+      },
+      {
+        "at": 1297,
+        "wave": 40
+      },
+      {
+        "at": 1387,
+        "wave": 40
+      },
+      {
+        "at": 1459,
+        "wave": 40
+      },
+      {
+        "at": 1529,
+        "wave": 40
+      },
+      {
+        "at": 1600,
+        "wave": 40
+      },
+      {
+        "at": 1692,
+        "wave": 40
+      }
+    ],
+    "farmSeconds": 225,
+    "levels": [
+      {
+        "kind": 1,
+        "pad": "tower-start",
+        "level": 11
+      },
+      {
+        "kind": 1,
+        "pad": "tower-03",
+        "level": 11
+      },
+      {
+        "kind": 2,
+        "pad": "tower-02",
+        "level": 3
+      },
+      {
+        "kind": 3,
+        "pad": "tower-09",
+        "level": 11
+      },
+      {
+        "kind": 3,
+        "pad": "cell-10-3",
+        "level": 10
+      },
+      {
+        "kind": 4,
+        "pad": "cell-14-7",
+        "level": 10
+      }
+    ]
+  }
+]

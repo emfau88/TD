@@ -76,7 +76,7 @@ test('Mara waits for combat at her target, casts remotely, retains her buff whil
 
 test('buildings occupy chosen non-overlapping settlement footprints; Workshop II does not require the east', () => {
   const b = rich(); assert.equal(b.clearing.unlocked, false);
-  assert.ok(b.upgradeWorkshop()); assert.equal(b.maxLevel, 20); assert.equal(tutorialStep(b), 14);
+  assert.ok(b.upgradeWorkshop()); assert.equal(b.maxLevel, Infinity); assert.equal(tutorialStep(b), 14);
   assert.ok(b.positionBuilding('workshop', { x: 2, y: 10 }));
   assert.equal(b.positionBuilding('warehouse', { x: 3, y: 10 }), false);
   assert.equal(b.positionBuilding('workshop', { x: 5, y: 5 }), false);

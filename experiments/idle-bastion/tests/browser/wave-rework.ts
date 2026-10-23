@@ -1,10 +1,10 @@
 /** Real Phaser/browser views in isolated contexts and probe slots; no production save access. */
 import { readFileSync,writeFileSync,mkdirSync } from 'node:fs';
 import { createOfflineState } from '../../src/offline';
-import { IdleBattle } from '../../src/battle';
+import { IdleBattle, BATTLE_SCHEMA_VERSION } from '../../src/battle';
 const {chromium}=await import(process.env.PLAYWRIGHT_MODULE??'playwright');
 const base=process.env.SPIRE_TEST_URL??'http://127.0.0.1:5194';
-const output='artifacts/idle-bastion/acceptance/wave-rework';mkdirSync(output,{recursive:true});
+const output=process.env.SPIRE_ARTIFACTS??'artifacts/idle-bastion/acceptance/wave-rework';const densityOnly=process.env.SPIRE_DENSITY_ONLY==='1';mkdirSync(output,{recursive:true});
 const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH??'C:/Program Files/Google/Chrome/Application/chrome.exe'});
 const report:{errors:string[];views:unknown[];preview:unknown[];checks:unknown[]}={errors:[],views:[],preview:[],checks:[]};
 try{
@@ -22,7 +22,7 @@ try{
   const before=await page.locator('#status').innerText();await page.locator('#step').click();await page.waitForTimeout(100);const after=await page.locator('#status').innerText();
   if(before===after)throw Error('Preview frame step did not advance');
   await page.screenshot({path:`${output}/enemy-preview-${device}.png`,fullPage:true});
-  for(const wave of (device==='desktop'?[19,26,32,40]:[32,40])){
+  for(const wave of (densityOnly?[40]:device==='desktop'?[19,26,32,40]:[32,40])){
    const battle=JSON.parse(readFileSync(`${output}/view-wave${wave}.json`,'utf8'));if(!IdleBattle.restore(battle))throw Error('Invalid captured paid snapshot');
    const slot=`wave-rework-${device}-${wave}`,now=Date.now(),offline=createOfflineState(now);offline.baseline.paused=true;
    await page.evaluate(async({slot,battle,now,offline}:{slot:string;battle:unknown;now:number;offline:unknown})=>{
@@ -47,11 +47,11 @@ try{
    if(wave===40){await page.locator('#pause').click();await page.waitForFunction(()=>document.querySelector('#wave-mode')?.textContent==='Elite');}
    await page.screenshot({path:`${output}/game-wave${wave}-${device}.png`,fullPage:true});
    if(wave===40)await page.locator('#pause').click();
-   report.views.push({device,wave,enemies:battle.enemies.map((e:{defId:string})=>e.defId),viewport,canvas:await page.locator('#game canvas').boundingBox()});
-   if(wave===32){
+   report.views.push({device,wave,density:battle.enemies.length,queue:battle.queue.length,enemies:battle.enemies.map((e:{defId:string})=>e.defId),viewport,canvas:await page.locator('#game canvas').boundingBox()});
+   if(wave===32||densityOnly&&wave===40){
     await page.locator('#pause').click();await page.waitForTimeout(1400);await page.locator('#pause').click();
     const read=()=>page.evaluate(async(slot:string)=>new Promise<any>((resolve,reject)=>{const r=indexedDB.open(`spire-idle-bastion-probe-${slot}`,1);r.onsuccess=()=>{const db=r.result,q=db.transaction('saves').objectStore('saves').get('default');q.onsuccess=()=>{db.close();resolve(q.result);};q.onerror=()=>reject(q.error);};r.onerror=()=>reject(r.error);}),slot);
-    const saved=await read();if(!IdleBattle.restore(saved.battle)||saved.battle.schemaVersion!==25)throw Error('Live browser checkpoint invalid');
+    const saved=await read();if(!IdleBattle.restore(saved.battle)||saved.battle.schemaVersion!==BATTLE_SCHEMA_VERSION)throw Error('Live browser checkpoint invalid');
     await page.reload();await page.locator('#game canvas').waitFor();await page.waitForTimeout(400);const resumed=await read();
     if(resumed.battle.gold!==saved.battle.gold||resumed.battle.attemptId!==saved.battle.attemptId||JSON.stringify(resumed.battle.queue)!==JSON.stringify(saved.battle.queue))throw Error('Paused reload altered wallet, attempt or queue');
     report.checks.push({device,pausedReload:true,schema:saved.battle.schemaVersion,rules:saved.battle.rulesVersion,attempt:saved.battle.attemptId});

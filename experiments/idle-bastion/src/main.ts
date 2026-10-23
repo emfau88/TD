@@ -296,25 +296,25 @@ function syncUI(): void {
     return `<div><dt>Schaden</dt><dd>${values.damage.toFixed(1)}</dd></div><div><dt>Reichweite</dt><dd>${values.range}</dd></div><div><dt>Angriff alle</dt><dd>${values.cooldown.toFixed(2)} s</dd></div><div><dt>Abschüsse</dt><dd>${tower.kills}</dd></div>`;
   })() : '';
   element('action-hint').textContent = blocked ? live.error ? 'Der letzte bestätigte Spielstand bleibt erhalten.' : live.awaitingResume ? 'Setze die Verteidigung über den Rückkehrbeleg fort.' : 'Setze den Kampf fort, um zu bauen oder aufzuwerten.'
-    : tower ? tower.level >= sim.maxLevel ? sim.settlement.frostResearched ? sim.settlement.workshopUpgraded ? 'Level 20 erreicht · höchster Ausbau.' : 'Werkstatt II erschließt Level 7–20.' : 'Frostfassung erschließt Level 4–6.' : sim.gold < upgradeCost(tower) ? `Noch ${currency.format(upgradeCost(tower) - sim.gold)} Gold bis zum nächsten Level.` : 'Mehr Schaden verbessert die Verteidigung sofort.'
+    : tower ? tower.level >= sim.maxLevel ? sim.settlement.frostResearched ? sim.settlement.workshopUpgraded ? 'Weitere Upgrades benötigen mehr Gold.' : 'Werkstatt II erschließt weitere Turmlevel.' : 'Frostfassung erschließt Level 4–6.' : sim.gold < upgradeCost(tower) ? `Noch ${currency.format(upgradeCost(tower) - sim.gold)} Gold bis zum nächsten Level.` : 'Mehr Schaden verbessert die Verteidigung sofort.'
     : (pad && sim.isPadUnlocked(pad.id)) && sim.gold < 75 ? `Noch ${currency.format(75 - sim.gold)} Gold bis zum Waldwächter.` : '';
   const settlement = sim.settlement;
   const workshopIcon = element<HTMLImageElement>('workshop-icon');
   const workshopSource = sim.settlement.workshopUpgraded ? ART.workshopUpgraded : ART.workshop;
   if (workshopIcon.getAttribute('src') !== workshopSource) workshopIcon.src = workshopSource;
   element('workshop-card-title').textContent = settlement.workshopUpgraded ? 'Werkstatt II' : settlement.workshopBuilt ? 'Werkstatt I' : 'Werkstatt I';
-  element('workshop-card-copy').textContent = settlement.workshopUpgraded ? 'Turmlevel bis 20' : settlement.frostResearched ? 'Werkstatt II ausbauen' : settlement.frostResearched ? 'Frosttechnik verfügbar' : settlement.workshopBuilt ? 'Frostfassung erforschen' : 'Bauen & forschen';
+  element('workshop-card-copy').textContent = settlement.workshopUpgraded ? 'Fortlaufende Turmlevel' : settlement.frostResearched ? 'Werkstatt II ausbauen' : settlement.frostResearched ? 'Frosttechnik verfügbar' : settlement.workshopBuilt ? 'Frostfassung erforschen' : 'Bauen & forschen';
   element('workshop-card-price').textContent = settlement.workshopUpgraded ? '✓ Ausgebaut' : settlement.frostResearched ? currency.format(SETTLEMENT.workshopUpgradeCost) : settlement.frostResearched ? '✓ Erforscht' : `${settlement.workshopBuilt ? SETTLEMENT.researchCost : sim.workshopKitAvailable ? 'Bausatz · kostenlos' : SETTLEMENT.workshopCost}`;
   element('pick-workshop').classList.toggle('researched', settlement.frostResearched);
   element('workshop-title').textContent = settlement.workshopUpgraded ? 'Werkstatt II' : settlement.workshopBuilt ? 'Werkstatt I' : 'Werkstatt bauen';
-  element('workshop-description').textContent = settlement.workshopUpgraded ? 'Der neue Arbeitsplatz erschließt Turmlevel 7–20. Höhere Level erhöhen den Schaden; Reichweite und Feuerrate bleiben begrenzt.' : settlement.frostResearched
+  element('workshop-description').textContent = settlement.workshopUpgraded ? 'Der neue Arbeitsplatz erschließt Turmlevel ab 7. Höhere Level erhöhen den Schaden; Reichweite und Feuerrate bleiben begrenzt.' : settlement.frostResearched
     ? 'Frostfassung erforscht · Frostkristall und Turmlevel 4–6 sind verfügbar.'
     : settlement.workshopBuilt ? 'Frostfassung erschließt den Frostkristall und Turmlevel 4–6.' : 'Wähle eine Position in der Siedlung und baue die Werkstatt. Sie eröffnet die Frostforschung.';
   const upgradeWorkshop = element<HTMLButtonElement>('upgrade-workshop');
   upgradeWorkshop.hidden = !settlement.frostResearched || settlement.workshopUpgraded;
   upgradeWorkshop.disabled = blocked || sim.gold < SETTLEMENT.workshopUpgradeCost;
   element('workshop-upgrade-condition').hidden = !settlement.frostResearched || settlement.workshopUpgraded;
-  element('workshop-upgrade-condition').textContent = sim.gold < SETTLEMENT.workshopUpgradeCost ? `Noch ${currency.format(SETTLEMENT.workshopUpgradeCost-sim.gold)} Gold für Werkstatt II.` : 'Bereit zum Ausbau · Turmlevel 7–20 freischalten.';
+  element('workshop-upgrade-condition').textContent = sim.gold < SETTLEMENT.workshopUpgradeCost ? `Noch ${currency.format(SETTLEMENT.workshopUpgradeCost-sim.gold)} Gold für Werkstatt II.` : 'Bereit zum Ausbau · Turmlevel ab 7 freischalten.';
   buildWorkshop.hidden = settlement.workshopBuilt;
   buildWorkshop.textContent = sim.workshopKitAvailable ? 'Werkstatt platzieren · kostenloser Bausatz' : `Werkstatt platzieren · ${sim.workshopBuildCost} Gold`;
   buildWorkshop.disabled = blocked || sim.gold < sim.workshopBuildCost;
@@ -419,7 +419,7 @@ function syncUI(): void {
     : message.type === 'frost-tip' ? 'Frost hält Gegner länger in Reichweite deiner Pfeile.'
     : message.type === 'build' ? `${message.tower?.def.name} gebaut und einsatzbereit.`
     : message.type === 'upgrade' ? `${message.tower?.def.name} verbessert. Der nächste Schuss nutzt den höheren Schaden.`
-    : message.type === 'workshop-upgrade' ? 'Werkstatt II fertig! Turmlevel 7–20 sind jetzt verfügbar.'
+    : message.type === 'workshop-upgrade' ? 'Werkstatt II fertig! Turmlevel ab 7 sind jetzt verfügbar.'
     : message.type === 'workshop' ? 'Die Werkstatt ist fertig! Frostfassung ist jetzt erforschbar.'
     : message.type === 'tavern-upgrade' ? 'Taverne II fertig! Du kannst jetzt Ilyra kennenlernen und kostenlos rekrutieren.'
     : message.type === 'tavern' ? 'Die Taverne steht! Ein neuer Treffpunkt für deine Siedlung.'

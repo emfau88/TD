@@ -1,3 +1,5 @@
+import { healthMultiplier } from '../src/balance';
+import { BATTLE_SCHEMA_VERSION } from '../src/battle';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { BASE, IdleBattle, isNormalFarmWave, upgradeCost } from '../src/battle';
@@ -131,7 +133,7 @@ test('snapshot v1 migration retains combat exactly and invents neither a certifi
   const legacy = { ...old, schemaVersion: 1, layoutVersion: 1, rulesVersion: 1 };
   const migrated = IdleBattle.restore(legacy, { maraBonus: false })!;
   assert.ok(migrated);
-  assert.equal(migrated.snapshot().schemaVersion, 10);
+  assert.equal(migrated.snapshot().schemaVersion, BATTLE_SCHEMA_VERSION);
   assert.equal(migrated.highestCleared, 1);
   assert.equal(migrated.attemptId, 2);
   assert.deepEqual(migrated.liveClearedWaves, []);
@@ -213,7 +215,7 @@ test('bounded live history pins both entry evidence and the currently certified 
   snapshot.liveClearedWaves = [1, 3, ...Array.from({ length: 31 }, (_, index) => index + 18).filter(wave => wave !== 25)];
   assert.equal(snapshot.liveClearedWaves.length, 32);
   const target = snapshot.enemies.find(enemy => enemy.uid === snapshot.shots[0].target)!;
-  target.maxHp = BASE.enemies[target.defId].hp * Math.min(BASE.waves.maxHpMultiplier, Math.pow(BASE.waves.hpGrowth, 48));
+  target.maxHp = BASE.enemies[target.defId].hp * healthMultiplier(49, snapshot.waveRecipeVersion, false);
   target.hp = 1;
   snapshot.enemies = [target]; snapshot.queue = [];
   snapshot.shots = [snapshot.shots[0]];

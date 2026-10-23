@@ -44,7 +44,7 @@ export function currentGoal(battle: IdleBattle): Goal {
       ? { title: 'Rosenspiegel stellt sich dir', detail: 'Welle 15 · 750 Gold Erstprämie · Frost verlangsamt', action: 'boss', label: 'Bossherausforderung ansehen' }
       : { title: 'Bereite dich auf Rosenspiegel vor', detail: 'Boss in Welle 15 · Frost, Fläche und Durchdringung', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 15: return { title: 'Maras Übertakten kennenlernen', detail: '8 Sekunden · +50 % Feuerrate · Automatik wartet auf Gegner', action: 'mara', label: 'Maras Zauber ansehen' };
-    case 16: return { title: 'Werkstatt II ausbauen', detail: `${need(SETTLEMENT.workshopUpgradeCost)} · Turmlevel 7–20`, cost: SETTLEMENT.workshopUpgradeCost, action: 'workshop', label: 'Werkstatt ausbauen' };
+    case 16: return { title: 'Werkstatt II ausbauen', detail: `${need(SETTLEMENT.workshopUpgradeCost)} · Turmlevel ab 7`, cost: SETTLEMENT.workshopUpgradeCost, action: 'workshop', label: 'Werkstatt ausbauen' };
     case 17: if (battle.highestCleared >= 24 && !battle.bossActive && battle.mode !== 'farm') return { title: 'Rosenspiegels Rückkehr', detail: 'Welle 25 · 1.200 Gold Erstprämie', action: 'boss', label: 'Bossherausforderung ansehen' };
     default: {
       const tower = recommendedUpgrade(battle);

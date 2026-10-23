@@ -1,6 +1,8 @@
 # SPIRE: Idle Bastion — überarbeiteter Entwicklungsauftrag
 
-**Wave-Rework W01:** Zwölf normale Gegnertypen, vier deterministische Wellenfamilien und eine Elitewelle 40. Neue Originalgegner: Waldgoblin (19), Knochenwächter (26), Waldkultist (32). [Gegnervergleich ohne Spielstandzugriff](enemy-check.html) · [Quellen/CC0/Import](assets/lucifer/README.md) · [Prüfbericht und tatsächliche Spielaufnahmen](../../artifacts/idle-bastion/acceptance/wave-rework/REPORT.md). Paketstatus und Veröffentlichungsstand stehen in der Roadmap.
+**Wave-Rework 2.0 / Endlos-Grundlage:** Lebendigere Gruppen bis 28 Gegner, etwas höhere Ausbauanforderungen, gestraffte Goldrate und fortlaufende Turmlevel nach Werkstatt II. Welle 40 bleibt ein Zwischenmeilenstein. [W02-Prüfbericht](../../artifacts/idle-bastion/acceptance/wave-rework-v2/REPORT.md).
+
+**Erstes Wave-Rework W01 (Herkunft):** Zwölf normale Gegnertypen, vier deterministische Wellenfamilien und eine Elitewelle 40. Neue Originalgegner: Waldgoblin (19), Knochenwächter (26), Waldkultist (32). [Gegnervergleich ohne Spielstandzugriff](enemy-check.html) · [Quellen/CC0/Import](assets/lucifer/README.md) · [Prüfbericht und tatsächliche Spielaufnahmen](../../artifacts/idle-bastion/acceptance/wave-rework/REPORT.md). Paketstatus und Veröffentlichungsstand stehen in der Roadmap.
 
 **Siedlung am Kern:** Neue Partien erhalten eine 40×16-Karte mit Werkstatt, Lager und Taverne südöstlich des Kerns. Altsaves behalten ihre Plätze bis zum kostenlosen Umzug unter **Siedlung → Siedlung am Kern** bei manueller Pause. Mausziehen/Touch statt zusätzlicher Navigationsbuttons; die Ostfront folgt später. Die älteren Slice-Angaben unten bleiben als Entwicklungshistorie erhalten.
 

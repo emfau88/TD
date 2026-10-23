@@ -1,5 +1,15 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**W02 · Wave-Rework 2.0 / Balancing — 23.10.2026, im bestehenden Draft-PR #1 beauftragt.** SPIRE ist ein Endlos-Idle-TD; Welle 40 bleibt Zwischenziel. [Aktueller Bericht, Messungen und Spielaufnahmen](../../artifacts/idle-bastion/acceptance/wave-rework-v2/REPORT.md).
+
+- [x] Größere Familiengruppen, dichtere Spawnvarianten und leichte Begleitung statt extremer Mengenreduktion; Kader/Originalanimationen, Einführungen, Bosse und Tutorial erhalten.
+- [x] Gesamtes Kill-/Abschlussbudget, effektive sichere Goldrate etwa 11 % unter W01; keine Änderung historischer Offline-Ansprüche. Schema 26 / Regeln 12, eingefrorene alte Rezepte und frisch geprüfte Farmraten aus validierten Altkandidaten.
+- [x] Level-20-Kauf-/Schadens-/Preisgrenzen und Ilyras Quelllevelbegrenzung entfernt; HP wächst nach dem alten Plateau weiter. Numeric-/Save-Grenzen bleiben streng. Langzeitwirtschaft über 40 gesondert dokumentiert, keine neue Architektur.
+- [x] Drei bezahlte Strategien bis 40: 26:11–30:33 Modellminuten, zwei/drei Niederlagen und bewusstes Farmen; Turmlevel bis 11–14. 270 identische Vergleichskämpfe plus 180 Turm-Ablationen. 13/13 Wave-Tests, relevante Matrix 87/94 gegenüber 80/88 vor W02; sieben alte Fehler getrennt dokumentiert, weitere alte Ausbau-/Layoutfixtures ebenfalls offengelegt. Produktionsbuild, dichte Desktop-/Hochkantansichten und Save/Reload geprüft.
+- [ ] Visuelle Nutzerbewertung und ungeskriptete Balance-/Offline-Rückkehrprobe. Separat später: Gold-/Kostenkurve jenseits 40 und größere Zahlenrepräsentation. `main` weder mergen noch veröffentlichen.
+
+Der folgende W01-Abschnitt bewahrt den ersten Rework und seine damaligen Prüfergebnisse.
+
 **W01 · Wave-Rework und Foozle-Gegner — 23.10.2026, ausdrücklich beauftragt und umgesetzt.** Separater Branch `codex/wave-rework` ab `76c114e`; lokale Tavernenarbeiten erhalten. [Prüfbericht, Messungen und Spielaufnahmen](../../artifacts/idle-bastion/acceptance/wave-rework/REPORT.md).
 
 - [x] Vorab veralteten Gegner-Migrationstest ohne Abschwächung korrigiert: damaliger Stand 24, sieben Prüfungen erfolgreich.

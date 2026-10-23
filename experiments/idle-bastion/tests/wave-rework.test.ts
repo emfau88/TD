@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { IdleBattle, BASE, BATTLE_RULES_VERSION, waveCount, waveEnemy } from '../src/battle';
+import { IdleBattle, BASE, BATTLE_RULES_VERSION, BATTLE_SCHEMA_VERSION, waveCount, waveEnemy } from '../src/battle';
 import { ENEMIES, ENEMY_ROSTER, isHealer, JELLY_HEAL } from '../src/enemy-roster';
 import { waveRecipe, spawnGap, clearReward } from '../src/wave-recipes';
 import { healthMultiplier } from '../src/balance';
@@ -59,20 +59,20 @@ test('opening recipes are reproducible in reverse order, bounded, readable and r
 
 test('a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly',()=>{
   const b=IdleBattle.restore(old);assert.ok(b);
-  const s=b.snapshot();assert.equal(s.schemaVersion,25);assert.equal(s.rulesVersion,11);assert.equal(s.waveRecipeVersion,10);
+  const s=b.snapshot();assert.equal(s.schemaVersion,BATTLE_SCHEMA_VERSION);assert.equal(s.rulesVersion,BATTLE_RULES_VERSION);assert.equal(s.waveRecipeVersion,10);
   for(const key of ['queue','enemies','shots','towers','spawnTimer','gold','goldRemainderUnits','rewardRemainderUnits','earned','mara','ilyra','social','settlement','elapsed','bossCharm'] as const)assert.deepEqual(s[key],old[key],key);
   assert.deepEqual(s.liveClearedWaves,[]);assert.equal(s.farmWave,1);
   const bad=structuredClone(old);bad.queue[0]=bad.queue[0]==='Leafbug'?'Firebug':'Leafbug';assert.equal(IdleBattle.restore(bad),undefined);
   const badHp=structuredClone(old);badHp.enemies[0].maxHp+=1;assert.equal(IdleBattle.restore(badHp),undefined);
   b.update(.1);assert.ok(IdleBattle.restore(b.snapshot()));
   const attempt=b.attemptId;for(let i=0;i<8000&&b.attemptId===attempt;i++)b.update(.025);
-  assert.ok(b.attemptId>attempt);assert.equal(b.waveRecipeVersion,11);assert.ok(IdleBattle.restore(b.snapshot()));
+  assert.ok(b.attemptId>attempt);assert.equal(b.waveRecipeVersion,BATTLE_RULES_VERSION);assert.ok(IdleBattle.restore(b.snapshot()));
 });
 
 test('both healer species share target locks, exclude each other and bosses, and resume their exact saved cast',()=>{
   const b=new IdleBattle();b.highestCleared=39;b.bossVictories=1;b.secondBossVictories=1;b.update(18);
   const cult=b.enemies.find(e=>e.def.id==='ForestCultist')!;assert.ok(cult);
-  const jelly=b.enemies.find(e=>e.def.id==='BoneGuard')!;jelly.def=ENEMIES.LanternJelly;jelly.speed=jelly.def.speed;jelly.maxHp=jelly.def.hp*healthMultiplier(40,11,false);jelly.hp=jelly.maxHp;
+  const jelly=b.enemies.find(e=>e.def.id==='BoneGuard')!;jelly.def=ENEMIES.LanternJelly;jelly.speed=jelly.def.speed;jelly.maxHp=jelly.def.hp*healthMultiplier(40,BATTLE_RULES_VERSION,false);jelly.hp=jelly.maxHp;
   const targets=b.enemies.filter(e=>!isHealer(e.def)&&Math.hypot(e.x-cult.x,e.y-cult.y)<=100).slice(0,2);assert.equal(targets.length,2);
   // A simultaneous cast at the same path position, rather than a different target set.
   Object.assign(jelly,{x:cult.x,y:cult.y,distance:cult.distance,segment:cult.segment,direction:cult.direction,flip:cult.flip});
@@ -89,7 +89,7 @@ test('both healer species share target locks, exclude each other and bosses, and
 });
 
 test('historical and current offline entitlements retain their exact amount and can only be claimed once',()=>{
-  for(const rulesVersion of [10,11]){
+  for(const rulesVersion of [10,11,12]){
     const certificate={wave:1,fingerprint:'historical-or-current',rulesVersion,rewardGold:100,durationMs:10000};
     let state=beginAbsence(createOfflineState(1000),1000,certificate,false);
     state=reserveOffline(state,61000);assert.ok(state.pendingReward);const rewardId=state.pendingReward.id;

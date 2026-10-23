@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: all forty historical recipes remain exact; entry, bosses, HP and old spawn clocks stay intact
+ok 1 - all forty historical recipes remain exact; entry, bosses, HP and old spawn clocks stay intact
+  ---
+  duration_ms: 2.2331
+  type: 'test'
+  ...
+# Subtest: opening recipes are reproducible in reverse order, bounded, readable and repeat every introduction promptly
+ok 2 - opening recipes are reproducible in reverse order, bounded, readable and repeat every introduction promptly
+  ---
+  duration_ms: 7.2648
+  type: 'test'
+  ...
+# Subtest: a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly
+ok 3 - a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly
+  ---
+  duration_ms: 119.0874
+  type: 'test'
+  ...
+# Subtest: both healer species share target locks, exclude each other and bosses, and resume their exact saved cast
+ok 4 - both healer species share target locks, exclude each other and bosses, and resume their exact saved cast
+  ---
+  duration_ms: 57.368
+  type: 'test'
+  ...
+# Subtest: historical and current offline entitlements retain their exact amount and can only be claimed once
+ok 5 - historical and current offline entitlements retain their exact amount and can only be claimed once
+  ---
+  duration_ms: 1.4045
+  type: 'test'
+  ...
+# Subtest: native save boundary migrates v24 and pays its pending historical offline claim exactly once
+ok 6 - native save boundary migrates v24 and pays its pending historical offline claim exactly once
+  ---
+  duration_ms: 24.4072
+  type: 'test'
+  ...
+# Subtest: three compact original atlases have real directional clips and stable nonmirrored left views
+ok 7 - three compact original atlases have real directional clips and stable nonmirrored left views
+  ---
+  duration_ms: 4.3419
+  type: 'test'
+  ...
+# Subtest: frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+ok 8 - frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+  ---
+  duration_ms: 9.6269
+  type: 'test'
+  ...
+# Subtest: larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+ok 9 - larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+  ---
+  duration_ms: 33.2262
+  type: 'test'
+  ...
+# Subtest: a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts rules 12
+ok 10 - a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts rules 12
+  ---
+  duration_ms: 125.9106
+  type: 'test'
+  ...
+# Subtest: level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+ok 11 - level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+  ---
+  duration_ms: 63.579
+  type: 'test'
+  ...
+# Subtest: old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+ok 12 - old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+  ---
+  duration_ms: 354.9308
+  type: 'test'
+  ...
+# Subtest: HP continues past the old plateau; machine guards and old level curves remain explicit
+ok 13 - HP continues past the old plateau; machine guards and old level curves remain explicit
+  ---
+  duration_ms: 25.0492
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1364.0563
