@@ -1,0 +1,50 @@
+[
+  {
+    "hero": "mara",
+    "format": "WEBP",
+    "quality": 90,
+    "sourceBytes": 1983210,
+    "bytes": 506620,
+    "seconds": 0.59
+  },
+  {
+    "hero": "mara",
+    "format": "WEBP",
+    "quality": 95,
+    "sourceBytes": 1983210,
+    "bytes": 669024,
+    "seconds": 0.62
+  },
+  {
+    "hero": "mara",
+    "format": "AVIF",
+    "quality": 90,
+    "sourceBytes": 1983210,
+    "bytes": 791405,
+    "seconds": 0.35
+  },
+  {
+    "hero": "ilyra",
+    "format": "WEBP",
+    "quality": 90,
+    "sourceBytes": 1923250,
+    "bytes": 482664,
+    "seconds": 0.58
+  },
+  {
+    "hero": "ilyra",
+    "format": "WEBP",
+    "quality": 95,
+    "sourceBytes": 1923250,
+    "bytes": 619028,
+    "seconds": 0.59
+  },
+  {
+    "hero": "ilyra",
+    "format": "AVIF",
+    "quality": 90,
+    "sourceBytes": 1923250,
+    "bytes": 726501,
+    "seconds": 0.31
+  }
+]

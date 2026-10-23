@@ -1,5 +1,7 @@
 # Tavernenanimationen – verwendbarer Bestand für Mara und Ilyra
 
+**Ergänzung 24.10.2026:** Alle 15 brauchbaren Bewegungen liegen zusätzlich als kompakte Spielfassung (WebP 90, unveränderte 30 fps) unter `assets/tavern-rig/` vor: 114,55 MB statt 532,35 MB der ausgewählten Exporte. Die [lokale Probe im echten Tavernenrahmen](http://127.0.0.1:5224/tavern-rig-check.html?hero=mara) enthält beide Figuren einschließlich Ilyras Hüftpose. Originalquellen/alte Animationen erhalten, normaler Spieleinstieg noch nicht umgeschaltet. Aktueller Abnahmestatus in der Roadmap; [Technik und Größen](../../artifacts/idle-bastion/tavern-integration-v1/README.md).
+
 **Sicherungshinweis (23.10.2026):** Die hier genannten PNGs/Atlanten und Vergleichsmedien sind lokal vorhanden. Die neue GitHub-Sicherung enthält deren vollständige bearbeitbare Quellen, Steuerung und Re-Exportverfahren; große reproduzierbare Medienkopien bleiben lokal. [Umfang und Wiederherstellung](../../artifacts/idle-bastion/TAVERN_BACKUP_CURRENT.md).
 
 Stand: **23.10.2026**, geprüft im lokalen Worktree `C:/Users/madde/Documents/TowerDefense`, Branch `codex/tavern-idle-smoothing`, Ausgangscommit vor der aktuellen Angleichung `510a5cc`. Auch die noch nicht committeten Dateien sind berücksichtigt.

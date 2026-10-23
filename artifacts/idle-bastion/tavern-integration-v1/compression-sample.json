@@ -1,0 +1,14 @@
+{
+  "clip": "mara/idle",
+  "sourceBytes": 34736818,
+  "animatedWebpBytes": 33259200,
+  "sourceFrames": 150,
+  "encodedFrames": 141,
+  "durationMs": 5000,
+  "visibleRgbaExact": true,
+  "resolution": [
+    480,
+    800
+  ],
+  "note": "Size feasibility only. Browser player still uses approved atlases; controlled playback/transition handling needs a separate implementation."
+}

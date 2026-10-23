@@ -1,0 +1,16 @@
+/* Local review uses the real tavern shell. The higher positions leave
+   10 source pixels below the crop, plus the visible foreground rail. */
+#tavern-dialog[data-artwork="rigged"] .tv-stage { isolation:isolate; align-self:stretch; }
+#tavern-dialog[data-artwork="rigged"] .tv-figure { position:absolute; inset:0; height:100%; max-height:none; align-items:flex-end; }
+#tavern-dialog[data-artwork="rigged"] .tv-figure canvas { height:100%; width:auto; max-width:none; max-height:none; aspect-ratio:24/35; object-fit:fill; image-rendering:auto; flex:none; }
+#tavern-dialog[data-artwork="rigged"] .tv-stage::after { content:''; position:absolute; z-index:3; left:0; right:0; bottom:0; height:16px; border-top:2px solid #a8854e; background:linear-gradient(#34413b,#18282b 5px,#102025); box-shadow:0 -7px 15px #0b151d55; pointer-events:none; }
+#tavern-dialog[data-artwork="rigged"] .tv-stage-caption { z-index:4; bottom:3px; font-size:10px; letter-spacing:.04em; }
+#tavern-dialog[data-artwork="rigged"] .tv-guest canvas { image-rendering:auto; }
+#tavern-dialog[data-artwork="rigged"] .tv-loading-portrait { image-rendering:auto; }
+#tavern-dialog .tv-gestures { display:flex; flex-wrap:wrap; gap:7px; margin:10px 0 0; }
+#tavern-dialog .tv-gestures button { flex:1; font-size:12px; padding:8px; background:#26332f; }
+@media(max-width:700px) {
+  #tavern-dialog[data-artwork="rigged"] .tv-stage::after { height:10px; }
+  #tavern-dialog .tv-gestures { gap:6px; margin-top:6px; }
+  #tavern-dialog .tv-gestures button { min-height:40px; padding:5px; font-size:11px; }
+}

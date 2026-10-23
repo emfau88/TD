@@ -1,0 +1,158 @@
+{
+  "sourceBytes": 532347634,
+  "outputBytes": 114554104,
+  "frames": 1848,
+  "clips": [
+    {
+      "hero": "mara",
+      "clip": "idle",
+      "frames": 150,
+      "sourceBytes": 34736818,
+      "outputBytes": 9483778,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.4156,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "mara",
+      "clip": "head",
+      "frames": 60,
+      "sourceBytes": 14986062,
+      "outputBytes": 3896874,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.4172,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "mara",
+      "clip": "touch",
+      "frames": 84,
+      "sourceBytes": 20692346,
+      "outputBytes": 5383692,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.4514,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "mara",
+      "clip": "variant",
+      "frames": 114,
+      "sourceBytes": 26737494,
+      "outputBytes": 7290576,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.4158,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "mara",
+      "clip": "joy",
+      "frames": 126,
+      "sourceBytes": 27821494,
+      "outputBytes": 7961820,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.438,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "mara",
+      "clip": "giggle",
+      "frames": 162,
+      "sourceBytes": 35508730,
+      "outputBytes": 10197078,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.442,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "ilyra",
+      "clip": "idle",
+      "frames": 180,
+      "sourceBytes": 41115146,
+      "outputBytes": 10414546,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.2504,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "ilyra",
+      "clip": "head",
+      "frames": 84,
+      "sourceBytes": 17909646,
+      "outputBytes": 4847566,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.2644,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "ilyra",
+      "clip": "touch",
+      "frames": 96,
+      "sourceBytes": 20635016,
+      "outputBytes": 5550172,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.2521,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "ilyra",
+      "clip": "variant",
+      "frames": 144,
+      "sourceBytes": 32137852,
+      "outputBytes": 8323986,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.2332,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "ilyra",
+      "clip": "joy",
+      "frames": 96,
+      "sourceBytes": 18797468,
+      "outputBytes": 5465812,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.2774,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "ilyra",
+      "clip": "giggle",
+      "frames": 120,
+      "sourceBytes": 25284654,
+      "outputBytes": 6959678,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.2407,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "mara",
+      "clip": "tease",
+      "frames": 102,
+      "sourceBytes": 39204040,
+      "outputBytes": 6566216,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.3732,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "mara",
+      "clip": "hip",
+      "frames": 150,
+      "sourceBytes": 42341020,
+      "outputBytes": 9441694,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.4149,
+      "sourcesUnchanged": true
+    },
+    {
+      "hero": "ilyra",
+      "clip": "hip",
+      "frames": 180,
+      "sourceBytes": 134439848,
+      "outputBytes": 12770616,
+      "alphaExact": true,
+      "visibleMeanRgbError": 3.1265,
+      "sourcesUnchanged": true
+    }
+  ],
+  "note": "Size includes cropping/normalizing native extras and lossy RGB compression; alpha and 30fps preserved."
+}

@@ -1,0 +1,2 @@
+# Runtime images must be real files for direct static hosting, never LFS pointers.
+*.webp -filter -diff -merge -text

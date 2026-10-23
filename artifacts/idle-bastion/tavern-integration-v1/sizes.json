@@ -1,0 +1,110 @@
+{
+  "unit": "decimal MB = 1000000 bytes",
+  "baseTwelveBytes": 316362726,
+  "allFifteenBytes": 532347634,
+  "basePackageAllWebpBytes": 474468356,
+  "clips": [
+    {
+      "hero": "mara",
+      "clip": "idle",
+      "frames": 150,
+      "bytes": 34736818,
+      "firstPageBytes": 1386378
+    },
+    {
+      "hero": "mara",
+      "clip": "head",
+      "frames": 60,
+      "bytes": 14986062,
+      "firstPageBytes": 1967974
+    },
+    {
+      "hero": "mara",
+      "clip": "touch",
+      "frames": 84,
+      "bytes": 20692346,
+      "firstPageBytes": 1994334
+    },
+    {
+      "hero": "mara",
+      "clip": "variant",
+      "frames": 114,
+      "bytes": 26737494,
+      "firstPageBytes": 1338786
+    },
+    {
+      "hero": "mara",
+      "clip": "joy",
+      "frames": 126,
+      "bytes": 27821494,
+      "firstPageBytes": 2038938
+    },
+    {
+      "hero": "mara",
+      "clip": "giggle",
+      "frames": 162,
+      "bytes": 35508730,
+      "firstPageBytes": 2049982
+    },
+    {
+      "hero": "ilyra",
+      "clip": "idle",
+      "frames": 180,
+      "bytes": 41115146,
+      "firstPageBytes": 1675096
+    },
+    {
+      "hero": "ilyra",
+      "clip": "head",
+      "frames": 84,
+      "bytes": 17909646,
+      "firstPageBytes": 1322896
+    },
+    {
+      "hero": "ilyra",
+      "clip": "touch",
+      "frames": 96,
+      "bytes": 20635016,
+      "firstPageBytes": 1534068
+    },
+    {
+      "hero": "ilyra",
+      "clip": "variant",
+      "frames": 144,
+      "bytes": 32137852,
+      "firstPageBytes": 1117342
+    },
+    {
+      "hero": "ilyra",
+      "clip": "joy",
+      "frames": 96,
+      "bytes": 18797468,
+      "firstPageBytes": 1478572
+    },
+    {
+      "hero": "ilyra",
+      "clip": "giggle",
+      "frames": 120,
+      "bytes": 25284654,
+      "firstPageBytes": 1403104
+    },
+    {
+      "hero": "mara",
+      "clip": "tease",
+      "frames": 102,
+      "bytes": 39204040
+    },
+    {
+      "hero": "mara",
+      "clip": "hip",
+      "frames": 150,
+      "bytes": 42341020
+    },
+    {
+      "hero": "ilyra",
+      "clip": "hip",
+      "frames": 180,
+      "bytes": 134439848
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+[
+  {
+    "hero": "mara",
+    "clip": "idle",
+    "frames": 150,
+    "topMin": 25.0,
+    "legEndMin": 710.0,
+    "canvasBottom": 700,
+    "extraClearanceMin": 10.0
+  },
+  {
+    "hero": "mara",
+    "clip": "head",
+    "frames": 60,
+    "topMin": 25.0,
+    "legEndMin": 710.0,
+    "canvasBottom": 700,
+    "extraClearanceMin": 10.0
+  },
+  {
+    "hero": "mara",
+    "clip": "touch",
+    "frames": 84,
+    "topMin": 27.0,
+    "legEndMin": 710.0,
+    "canvasBottom": 700,
+    "extraClearanceMin": 10.0
+  },
+  {
+    "hero": "mara",
+    "clip": "variant",
+    "frames": 114,
+    "topMin": 25.0,
+    "legEndMin": 710.0,
+    "canvasBottom": 700,
+    "extraClearanceMin": 10.0
+  },
+  {
+    "hero": "mara",
+    "clip": "joy",
+    "frames": 126,
+    "topMin": 17.0,
+    "legEndMin": 710.0,
+    "canvasBottom": 700,
+    "extraClearanceMin": 10.0
+  },
+  {
+    "hero": "mara",
+    "clip": "giggle",
+    "frames": 162,
+    "topMin": 27.0,
+    "legEndMin": 710.0,
+    "canvasBottom": 700,
+    "extraClearanceMin": 10.0
+  },
+  {
+    "hero": "ilyra",
+    "clip": "idle",
+    "frames": 180,
+    "topMin": 43.0,
+    "legEndMin": 721.0,
+    "canvasBottom": 700,
+    "extraClearanceMin": 21.0
+  },
+  {
+    "hero": "ilyra",
+    "clip": "head",
+    "frames": 84,
+    "topMin": 44.0,
+    "legEndMin": 721.0,
+    "canvasBottom": 700,
+    "extraClearanceMin": 21.0
+  },
+  {
+    "hero": "ilyra",
+    "clip": "touch",
+    "frames": 96,
+    "topMin": 43.0,
+    "legEndMin": 721.0,
+    "canvasBottom": 700,
+    "extraClearanceMin": 21.0
+  },
+  {
+    "hero": "ilyra",
+    "clip": "variant",
+    "frames": 144,
+    "topMin": 44.0,
+    "legEndMin": 721.0,
+    "canvasBottom": 700,
+    "extraClearanceMin": 21.0
+  },
+  {
+    "hero": "ilyra",
+    "clip": "joy",
+    "frames": 96,
+    "topMin": 33.0,
+    "legEndMin": 710.0,
+    "canvasBottom": 700,
+    "extraClearanceMin": 10.0
+  },
+  {
+    "hero": "ilyra",
+    "clip": "giggle",
+    "frames": 120,
+    "topMin": 42.0,
+    "legEndMin": 721.0,
+    "canvasBottom": 700,
+    "extraClearanceMin": 21.0
+  },
+  {
+    "hero": "mara",
+    "clip": "hip",
+    "frames": 150,
+    "topMin": 27.25,
+    "legEndMin": 709.0,
+    "canvasBottom": 700,
+    "extraClearanceMin": 9.0
+  },
+  {
+    "hero": "mara",
+    "clip": "tease",
+    "frames": 102,
+    "topMin": 25.75,
+    "legEndMin": 709.75,
+    "canvasBottom": 700,
+    "extraClearanceMin": 9.75
+  },
+  {
+    "hero": "ilyra",
+    "clip": "hip",
+    "frames": 180,
+    "topMin": 3.75,
+    "legEndMin": 753.75,
+    "canvasBottom": 700,
+    "extraClearanceMin": 53.75
+  }
+]

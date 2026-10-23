@@ -4,13 +4,14 @@ import type { BattleSession } from './battle-session';
 import { hearts, SOCIAL, type Interaction, type Companion } from './tavern-social';
 import { TavernAnimation, drawCompanionPortrait, companionPortrait, type TouchRegion } from './tavern-animation';
 import './tavern-ui.css';
+import type { TavernPlayer, TavernPresentation } from './tavern-presentation';
 
 type Destination = 'tavern' | 'mara' | 'wisp' | 'ilyra';
-interface Ports { session: () => BattleSession | undefined; navigate: (where: Destination) => void; onOpenChange?: (open:boolean) => void; onGift?: () => void; onCompanion?: (who:Companion|null) => void; onTouch?: (who:Companion) => void }
+interface Ports { presentation?: TavernPresentation; session: () => BattleSession | undefined; navigate: (where: Destination) => void; onOpenChange?: (open:boolean) => void; onGift?: () => void; onCompanion?: (who:Companion|null) => void; onTouch?: (who:Companion) => void }
 export class TavernUI {
   readonly dialog: HTMLDialogElement;
   private readonly lifetime = new AbortController();
-  private readonly animation: TavernAnimation;
+  private readonly animation: TavernPlayer;
   private readonly observer: ResizeObserver;
   private screen: 'overview' | 'character' | 'touch' = 'overview';
   private pending = false;
@@ -32,6 +33,7 @@ export class TavernUI {
   constructor(private readonly ports: Ports) {
     this.dialog = document.createElement('dialog'); this.dialog.id = 'tavern-dialog';
     this.dialog.setAttribute('aria-labelledby', 'tv-title');
+    this.dialog.dataset.artwork = ports.presentation?.kind ?? 'legacy';
     this.dialog.innerHTML = `
       <header class="tv-header"><button type="button" data-do="back" class="tv-back" aria-label="Zurück zur Tavernenübersicht">‹</button><div><small>DER ALTE HAIN</small><h2 id="tv-title">Die Taverne</h2></div><button type="button" data-do="close" class="tv-close" aria-label="Taverne schließen">×</button></header>
       <div class="tv-combat"><span data-text="combat"></span><button type="button" data-do="close">Zum Kampf ↗</button></div>
@@ -53,7 +55,15 @@ export class TavernUI {
         </div>
       </section>`;
     document.body.append(this.dialog);
-    this.animation = new TavernAnimation(this.get<HTMLCanvasElement>('.tv-figure canvas'), () => this.update());
+    this.animation = ports.presentation?.create(this.get<HTMLCanvasElement>('.tv-figure canvas'), () => this.update()) ?? new TavernAnimation(this.get<HTMLCanvasElement>('.tv-figure canvas'), () => this.update());
+    if (ports.presentation) {
+      const gestures = document.createElement('div'); gestures.className = 'tv-gestures';
+      gestures.setAttribute('aria-label', 'Vertraute Gesten');
+      for (const gesture of ports.presentation.gestures) {
+        const button = document.createElement('button'); button.type = 'button'; button.dataset.gesture = gesture.key; button.textContent = gesture.label; gestures.append(button);
+      }
+      this.get('.tv-actions').after(gestures);
+    }
     this.observer = new ResizeObserver(() => this.positionHotspots()); this.observer.observe(this.get('.tv-stage'));
     const options = { signal: this.lifetime.signal };
     this.dialog.addEventListener('cancel', event => { event.preventDefault(); this.back(); }, options);
@@ -63,6 +73,11 @@ export class TavernUI {
       if (!target || target.disabled) return;
       const action = target.dataset.action as Interaction | undefined;
       if (action) { void this.act(action); return; }
+      if (target.dataset.gesture) {
+        const gesture = this.ports.presentation?.gestures.find(g => g.key === target.dataset.gesture);
+        if (gesture && (!gesture.companion || gesture.companion === this.selected) && hearts(this.points) >= gesture.minHearts) { this.animation.gesture?.(gesture.key); this.text('line', gesture.line[this.selected]); this.update(); }
+        return;
+      }
       if (target.dataset.moment) { void this.startMoment(Number(target.dataset.moment)); return; }
       if (target.dataset.region) { if (!this.dragged) void this.act('touch', target.dataset.region as TouchRegion); return; }
       switch (target.dataset.do) {
@@ -93,7 +108,7 @@ export class TavernUI {
     const session = this.ports.session(); if (!session?.battle.settlement.tavernBuilt || this.isOpen) return;
     if (!this.portraitsStarted) {
       this.portraitsStarted = true;
-      for (const who of ['mara', 'ilyra'] as const) void drawCompanionPortrait(this.get(`.tv-${who} canvas`), who).catch(() => { this.portraitsStarted = false; });
+      for (const who of ['mara', 'ilyra'] as const) void (this.ports.presentation?.drawPortrait ?? drawCompanionPortrait)(this.get(`.tv-${who} canvas`), who).catch(() => { this.portraitsStarted = false; });
     }
     this.bondCompanion = undefined;
     this.opener = document.activeElement instanceof HTMLElement ? document.activeElement : undefined;
@@ -112,7 +127,7 @@ export class TavernUI {
     this.ports.onCompanion?.(screen==='overview'?null:this.selected);
     const wasOverview = this.screen === 'overview'; this.screen = screen;
     this.moment = undefined;
-    this.dialog.dataset.screen = screen;
+    this.dialog.dataset.screen = screen; this.dialog.dataset.companion = this.selected;
     this.get('.tv-overview').hidden = screen !== 'overview'; this.get('.tv-character').hidden = screen === 'overview';
     this.get('.tv-back').hidden = screen === 'overview';
     this.get('.tv-back').setAttribute('aria-label', screen === 'touch' ? `Zurück zu ${this.content.name}s Charakteransicht` : 'Zurück zur Tavernenübersicht');
@@ -121,7 +136,7 @@ export class TavernUI {
     if (screen === 'overview') { this.generation++; this.pending = false; this.animation.stop(); }
     else if (wasOverview) { this.text('line', this.content.stage(this.points).greeting); this.text('result', ''); void this.animation.start(this.selected); }
     if (screen === 'touch') void this.animation.prepareReactions();
-    this.get<HTMLImageElement>('.tv-loading-portrait').src = companionPortrait(this.selected);
+    this.get<HTMLImageElement>('.tv-loading-portrait').src = (this.ports.presentation?.portrait ?? companionPortrait)(this.selected);
     this.get('.tv-stage-caption').textContent = `${this.content.name} · ${this.content.role}`;
     this.get('.tv-dialogue small').textContent = this.content.name.toUpperCase();
     this.get('.tv-heart-buttons').setAttribute('aria-label', `${this.content.name}s persönliche Momente`);
@@ -136,8 +151,9 @@ export class TavernUI {
     const canvas = this.get<HTMLCanvasElement>('.tv-figure canvas');
     for (const [key, value] of Object.entries(this.content.reactions)) {
       const target = this.get(`[data-region="${key}"]`);
-      target.style.left = `${canvas.offsetLeft + canvas.clientWidth * value.x / 384}px`;
-      target.style.top = `${canvas.offsetTop + canvas.clientHeight * value.y / 512}px`;
+      const anchor = this.ports.presentation?.anchors(this.selected)[key as TouchRegion] ?? value;
+      target.style.left = `${canvas.offsetLeft + canvas.clientWidth * anchor.x / canvas.width}px`;
+      target.style.top = `${canvas.offsetTop + canvas.clientHeight * anchor.y / canvas.height}px`;
     }
   }
   update(): void {
@@ -154,6 +170,7 @@ export class TavernUI {
     const error = this.get('.tv-error'); error.hidden = !session.error && !session.suspended && !session.awaitingResume;
     error.textContent = session.error ? 'Speichern fehlgeschlagen. Bitte kehre zum Kampf zurück, um den Spielstand zu prüfen.' : 'Sitzung angehalten. Bitte kehre zum Kampf zurück.';
     const points = this.points, count = hearts(points);
+    this.animation.setHearts?.(count);
     for (const who of ['mara', 'ilyra'] as const) {
       const n = hearts(b.social.points[who]);
       this.text(`${who}-hearts`, who === 'ilyra' && !b.ilyra ? '' : `${'♥'.repeat(n)}${'♡'.repeat(5 - n)}`);
@@ -194,6 +211,15 @@ export class TavernUI {
     this.dialog.dataset.reacting = String(this.animation.reacting);
     const blocked = this.pending || session.inputBusy || !!session.error || session.suspended || session.awaitingResume || !this.animation.ready || this.animation.reacting;
     unlock.disabled = blocked;
+    const gestures = this.dialog.querySelector<HTMLElement>('.tv-gestures');
+    if (gestures) {
+      gestures.hidden = !!this.moment || count < 2 || this.screen === 'touch';
+      for (const gesture of this.ports.presentation!.gestures) {
+        const button = this.get<HTMLButtonElement>(`[data-gesture="${gesture.key}"]`);
+        button.hidden = !!gesture.companion && gesture.companion !== this.selected;
+        button.disabled = this.pending || session.inputBusy || !!session.error || session.suspended || session.awaitingResume || !this.animation.ready || count < gesture.minHearts;
+      }
+    }
     this.get<HTMLButtonElement>('[data-do="story-next"]').disabled = blocked;
     for (const moment of this.content.moments) {
       const button = this.get<HTMLButtonElement>(`[data-moment="${moment.heart}"]`);
@@ -275,6 +301,7 @@ export class TavernUI {
       this.text('result', result.points ? `+${result.points} Zuneigung zu ${content.name}${action === 'gift' ? ' · 1 Geschenk überreicht' : ''}` : offer.reason === 'complete' ? `Alle Herzen erreicht. ${content.name} freut sich trotzdem über deinen Besuch.` : `${content.name} freut sich über deine Nähe. Für diesen Abschnitt gibt es keine weiteren Punkte.`);
       if (action === 'gift' && result.points > 0) this.ports.onGift?.();
       if (action === 'touch') { this.animation.play(region); this.ports.onTouch?.(who); }
+      else this.animation.act?.(action);
     } finally { this.pending = false; this.update(); }
   }
   destroy(): void { this.animation.stop(); this.observer.disconnect(); this.lifetime.abort(); this.dialog.remove(); }
