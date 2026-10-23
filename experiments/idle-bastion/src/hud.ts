@@ -40,7 +40,7 @@ const HINTS = [
   'Nach gemeisterter Welle 8 kannst du ein Vorratslager bauen. Verbessere deine Verteidigung und spare dann 650 Gold. Wisp versorgt später beide Gebäude.',
   'Rosenspiegel erwartet uns in Welle 15. Ihr Herzfaden kündigt an, welchen Turm sie verführt. Frost bremst ihren Vormarsch; Flächentreffer räumen Begleiter ab, Scharfschützen durchdringen ihre Rüstung. Die erste vollständige Bosswelle bringt einmalig 750 Gold.',
   'Jetzt übernimmt Wisp die Versorgung. Meine Magie heißt Übertakten: acht Sekunden lang 50 % mehr Feuerrate. Goldener Ring und Restsekunden zeigen den verstärkten Turm. Automatisch zaubere ich nur bei Gegnern; über mein Porträt kannst du auch selbst auslösen.',
-  'Baue die Werkstatt für 1.200 Gold zur Stufe II aus. Der neue Arbeitsplatz ermöglicht Turmlevel 7–20; die nächste Herausforderung wartet in Welle 25.',
+  'Baue die Werkstatt für 1.200 Gold zur Stufe II aus. Der neue Arbeitsplatz ermöglicht weitere Turmlevel ab 7; die nächste Herausforderung wartet in Welle 25.',
   'Rosenspiegel kehrt in Welle 25 mit einer größeren Begleitgruppe zurück. Höhere Turmlevel und unsere vier Rollen helfen. Für den ersten Sieg gibt es einmalig 1.200 Gold.',
 ] as const;
 export const tutorialHint = (battle: IdleBattle): string => tutorialStep(battle) === 15 && battle.mara.effectRemaining > 0
@@ -64,9 +64,9 @@ export function nextObjective(battle: IdleBattle): string {
     case 10: return 'Scharfschütze bauen · 170 Gold · Rüstung durchdringen.';
     case 14: return battle.highestCleared < 14 ? 'Verteidigung für Rosenspiegel in Welle 15 vorbereiten.' : 'Rosenspiegel besiegen · 750 Gold Erstprämie · Frost bremst ihren Vormarsch.';
     case 15: return 'Mara kennenlernen: Übertakten verstärkt einen Turm für acht Sekunden.';
-    case 16: return `Werkstatt II ausbauen · ${remaining(SETTLEMENT.workshopUpgradeCost)} · Turmlevel 7–20.`;
-    case 17: return 'Rosenspiegels Rückkehr in Welle 25 vorbereiten · Turmlevel 7–20 verfügbar.';
+    case 16: return `Werkstatt II ausbauen · ${remaining(SETTLEMENT.workshopUpgradeCost)} · weitere Turmlevel ab 7.`;
+    case 17: return 'Rosenspiegels Rückkehr in Welle 25 vorbereiten · weitere Turmlevel ab 7 verfügbar.';
     default: return battle.mode === 'farm' ? 'Verteidigung ausbauen, dann bewusst erneut vorstoßen.'
-      : 'Frost und Pfeile arbeiten zusammen. Weitere Upgrades bis Level 20 sind verfügbar.';
+      : 'Frost und Pfeile arbeiten zusammen. Weitere Turm-Upgrades sind verfügbar.';
   }
 }

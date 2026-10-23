@@ -1,0 +1,346 @@
+{
+  "ForestGoblin": {
+    "archive": "goblin.zip",
+    "sha256": "cb96ec91dba20c7cbc55d60cb8d15dea1b342cd32966788f23fa6f6475fef07b",
+    "runtimeBytes": 7235,
+    "frames": 24,
+    "sources": {
+      "move/down": {
+        "png": "Foozle_2DC0015_Lucifer_Goblin_Berserker_Pixel_Art/Down/Png/GoblinDownRun.png",
+        "aseprite": "Foozle_2DC0015_Lucifer_Goblin_Berserker_Pixel_Art/Down/Ase/GoblinDownRun.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      },
+      "move/up": {
+        "png": "Foozle_2DC0015_Lucifer_Goblin_Berserker_Pixel_Art/Up/Png/GoblinUpRun.png",
+        "aseprite": "Foozle_2DC0015_Lucifer_Goblin_Berserker_Pixel_Art/Up/Ase/GoblinUpRun.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      },
+      "move/side": {
+        "png": "Foozle_2DC0015_Lucifer_Goblin_Berserker_Pixel_Art/Right/Png/GoblinRightRun.png",
+        "aseprite": "Foozle_2DC0015_Lucifer_Goblin_Berserker_Pixel_Art/Right/Ase/GoblinRightRun.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      },
+      "move/left": {
+        "png": "Foozle_2DC0015_Lucifer_Goblin_Berserker_Pixel_Art/Left/Png/GoblinLeftRun.png",
+        "aseprite": "Foozle_2DC0015_Lucifer_Goblin_Berserker_Pixel_Art/Left/Ase/GoblinLeftRun.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      }
+    }
+  },
+  "BoneGuard": {
+    "archive": "skeleton.zip",
+    "sha256": "ac0541d55feccb1a44b44ad929e6273e4a0d7fcfe08164910c203c2a7ac29481",
+    "runtimeBytes": 7060,
+    "frames": 24,
+    "sources": {
+      "move/down": {
+        "png": "Foozle_2DC0018_Lucifer_Skeleton_Grunt_Pixel_Art/Down/Png/SkeletonWithSwordDownWalk.png",
+        "aseprite": "Foozle_2DC0018_Lucifer_Skeleton_Grunt_Pixel_Art/Down/Ase/SkeletonWithSwordDownWalk.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      },
+      "move/up": {
+        "png": "Foozle_2DC0018_Lucifer_Skeleton_Grunt_Pixel_Art/Up/Png/SkeletonWithSwordUpWalk.png",
+        "aseprite": "Foozle_2DC0018_Lucifer_Skeleton_Grunt_Pixel_Art/Up/Ase/SkeletonWithSwordUpWalk.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      },
+      "move/side": {
+        "png": "Foozle_2DC0018_Lucifer_Skeleton_Grunt_Pixel_Art/Right/Png/SkeletonWithSwordRightRun.png",
+        "aseprite": "Foozle_2DC0018_Lucifer_Skeleton_Grunt_Pixel_Art/Right/Ase/SkeletonWithSwordRightRun.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      },
+      "move/left": {
+        "png": "Foozle_2DC0018_Lucifer_Skeleton_Grunt_Pixel_Art/Left/Png/SkeletonWithSwordLefttRun.png",
+        "aseprite": "Foozle_2DC0018_Lucifer_Skeleton_Grunt_Pixel_Art/Left/Ase/SkeletonWithSwordLefttRun.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      }
+    }
+  },
+  "ForestCultist": {
+    "archive": "cultist.zip",
+    "sha256": "23acc0eee2f076771857253eec2234e01074220fc233056d6e978832c37cb123",
+    "runtimeBytes": 8182,
+    "frames": 48,
+    "sources": {
+      "move/down": {
+        "png": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Down/Png/CultistDownWalk.png",
+        "aseprite": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Down/Ase/CultistDownWalk.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      },
+      "heal/down": {
+        "png": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Down/Png/CultistDownAttack01.png",
+        "aseprite": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Down/Ase/CultistDownAttack01.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      },
+      "move/up": {
+        "png": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Up/Png/CultistUpRun.png",
+        "aseprite": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Up/Ase/CultistUpRun.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      },
+      "heal/up": {
+        "png": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Up/Png/CultistUpAttack01.png",
+        "aseprite": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Up/Ase/CultistUpAttack01.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      },
+      "move/side": {
+        "png": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Right/Png/CultistRightWalk.png",
+        "aseprite": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Right/Ase/CultistRightWalk.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      },
+      "heal/side": {
+        "png": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Right/Png/CultistRightAttack01.png",
+        "aseprite": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Right/Ase/CultistRightAttack01.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      },
+      "move/left": {
+        "png": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Left/Png/CultistLeftWalk.png",
+        "aseprite": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Left/Ase/CultistLeftWalk.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      },
+      "heal/left": {
+        "png": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Left/Png/CultistLeftAttack01.png",
+        "aseprite": "Foozle_2DC0013_Lucifer_Cultist_Pixel_Art/Left/Ase/CultistLeftAttack01.aseprite",
+        "sourceFrames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "sourceFrameSize": [
+          48,
+          48
+        ],
+        "offset": [
+          8,
+          0
+        ]
+      }
+    }
+  }
+}

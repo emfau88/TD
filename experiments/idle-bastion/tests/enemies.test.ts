@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { IdleBattle, waveEnemy, waveCount, towerDefinition } from '../src/battle';
-import { ENEMIES, ENEMY_ROSTER, JELLY_HEAL, introducedEnemy } from '../src/enemy-roster';
+import { IdleBattle, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION, waveEnemy, waveCount, towerDefinition } from '../src/battle';
+import { ENEMIES, ENEMY_ROSTER, JELLY_HEAL, introducedEnemy, isHealer } from '../src/enemy-roster';
 import { ENEMY_SHEETS, enemyFrame, enemyFlip } from '../src/enemy-art';
 import { jellyFrame } from '../../../reference/src/jelly-art';
 import { certifyFarm } from '../src/farming';
@@ -10,7 +10,7 @@ import { certifyFarm } from '../src/farming';
 const legacy = JSON.parse(readFileSync(new URL('./fixtures/enemies-v12.json', import.meta.url), 'utf8'));
 const manifest = JSON.parse(readFileSync(new URL('../../../public/assets/manifest.json', import.meta.url), 'utf8'));
 function lateBattle() {
-  const b = new IdleBattle(); b.highestCleared = 30; b.bossVictories = 1; b.secondBossVictories = 1;
+  const b = new IdleBattle(); b.highestCleared = 20; b.bossVictories = 1; b.secondBossVictories = 0;
   b.update(7); return b;
 }
 const healStep = (b: IdleBattle, dt: number) => (b as unknown as { stepHealers(dt: number): void }).stepHealers(dt);
@@ -22,17 +22,17 @@ function woundedGroup(b: IdleBattle) {
   return {healer, allies};
 }
 
-test('six staged introductions, unchanged opening and boss escorts, bounded varied late recipes', () => {
-  const expected = new Map([[6,'FlyingLocust'],[9,'Firewasp'],[13,'MagmaCrab'],[17,'Clampbeetle'],[21,'LanternJelly'],[28,'Voidbutterfly']]);
-  for (const [wave, id] of expected) { assert.equal(introducedEnemy(wave)?.id,id); assert.equal(waveEnemy(wave,2).id,id); }
+test('staged introductions, unchanged opening and boss escorts, bounded varied late recipes', () => {
+  const expected = new Map([[6,'FlyingLocust'],[9,'Firewasp'],[13,'MagmaCrab'],[17,'Clampbeetle'],[21,'LanternJelly'],[28,'Voidbutterfly'],[19,'ForestGoblin'],[26,'BoneGuard'],[32,'ForestCultist'],[42,'MossShroom'],[46,'WoodSpider'],[50,'HornedBat'],[54,'EmberBomb']]);
+  for (const [wave, id] of expected) { assert.equal(introducedEnemy(wave,BATTLE_RULES_VERSION)?.id,id); assert.equal(waveEnemy(wave,2).id,id); }
   for (const wave of [1,2,3,4,5,15,25]) for (let i=0;i<waveCount(wave);i++) assert.deepEqual(waveEnemy(wave,i),waveEnemy(wave,i,8));
   const seen=new Set<string>();
   for (let wave=1;wave<=64;wave++) {
     assert.ok(waveCount(wave)<=28); let healers=0;
-    for(let i=0;i<waveCount(wave);i++) {const e=waveEnemy(wave,i);assert.ok(e.firstWave<=wave); if(e.id==='LanternJelly') healers++; if(wave>28) seen.add(e.id);}
+    for(let i=0;i<waveCount(wave);i++) {const e=waveEnemy(wave,i);assert.ok(e.firstWave<=wave); if(isHealer(e)) healers++; if(wave>28) seen.add(e.id);}
     assert.ok(healers<=2);
   }
-  assert.equal(seen.size,9); assert.ok(!seen.has('Rosenspiegel'));
+  assert.deepEqual([...seen].sort(),ENEMY_ROSTER.filter(e=>e.id!=='Rosenspiegel').map(e=>e.id).sort());
 });
 
 test('all original movement tags resolve through frameMap, with correct sizes, timings and facing', () => {
@@ -85,7 +85,7 @@ test('void resists slow, while all four towers can target flying enemies', () =>
     const b=lateBattle(), enemy=b.enemies[0];enemy.def=def;enemy.speed=def.speed;enemy.slowRemaining=2;
     const at=enemy.distance;b.update(.025);assert.ok(Math.abs(enemy.distance-at-def.speed*def.slowFactor*.025)<1e-6);
   }
-  assert.ok(ENEMY_ROSTER.filter(e=>e.flying).length===5);
+  assert.deepEqual(ENEMY_ROSTER.filter(e=>e.flying).map(e=>e.id).sort(),['FlyingLocust','Firewasp','Clampbeetle','LanternJelly','Voidbutterfly','HornedBat'].sort());
   // Targeting in the shared tower loop has no ground/air filter; each kind fires at the same isolated flyer.
   for(const kind of [1,2,3,4] as const) {
     const c=new IdleBattle();c.highestCleared=9;c.update(.5);const e=c.enemies[0];e.def=ENEMIES.Firewasp;
@@ -96,12 +96,12 @@ test('void resists slow, while all four towers can target flying enemies', () =>
 
 test('published v12 combat survives migration, old queue completes and next attempt uses current rules', () => {
   const b=IdleBattle.restore(legacy);assert.ok(b);
-  assert.equal(b.snapshot().schemaVersion,16);assert.equal(b.waveRecipeVersion,8);assert.equal(b.gold,legacy.gold);
+  assert.equal(b.snapshot().schemaVersion,BATTLE_SCHEMA_VERSION);assert.equal(b.waveRecipeVersion,8);assert.equal(b.gold,legacy.gold);
   assert.deepEqual(b.snapshot().queue,legacy.queue);assert.deepEqual(b.snapshot().shots,legacy.shots);
   assert.deepEqual(b.snapshot().enemies.map(({healCooldown,healRemaining,healLockout,...e})=>e),legacy.enemies);
   assert.deepEqual(b.liveClearedWaves,[]);
   for(let i=0;i<4000&&b.wave===1;i++)b.update(.025);
-  assert.equal(b.waveRecipeVersion,10);assert.ok(IdleBattle.restore(b.snapshot()));
+  assert.equal(b.waveRecipeVersion,BATTLE_RULES_VERSION);assert.ok(IdleBattle.restore(b.snapshot()));
   const fresh=new IdleBattle();for(let i=0;i<5000&&!fresh.liveClearedWaves.includes(1);i++)fresh.update(.025);
   assert.equal(certifyFarm(fresh)?.wave,1);
 });

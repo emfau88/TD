@@ -1,0 +1,4980 @@
+{
+  "recipes": [
+    {
+      "wave": 1,
+      "family": "entry",
+      "old": {
+        "count": 6,
+        "counts": {
+          "Leafbug": 6
+        },
+        "hp": 144,
+        "armoredHp": 144,
+        "spawnSeconds": 6.15,
+        "gold": 70
+      },
+      "current": {
+        "count": 6,
+        "counts": {
+          "Leafbug": 6
+        },
+        "hp": 144,
+        "armoredHp": 144,
+        "spawnSeconds": 6.15,
+        "gold": 70
+      }
+    },
+    {
+      "wave": 2,
+      "family": "entry",
+      "old": {
+        "count": 7,
+        "counts": {
+          "Leafbug": 7
+        },
+        "hp": 194.88,
+        "armoredHp": 194.88,
+        "spawnSeconds": 7.2,
+        "gold": 80
+      },
+      "current": {
+        "count": 7,
+        "counts": {
+          "Leafbug": 7
+        },
+        "hp": 194.88,
+        "armoredHp": 194.88,
+        "spawnSeconds": 7.2,
+        "gold": 80
+      }
+    },
+    {
+      "wave": 3,
+      "family": "entry",
+      "old": {
+        "count": 8,
+        "counts": {
+          "Leafbug": 8
+        },
+        "hp": 258.35519999999997,
+        "armoredHp": 258.35519999999997,
+        "spawnSeconds": 8.200000000000001,
+        "gold": 90
+      },
+      "current": {
+        "count": 8,
+        "counts": {
+          "Leafbug": 8
+        },
+        "hp": 258.35519999999997,
+        "armoredHp": 258.35519999999997,
+        "spawnSeconds": 8.200000000000001,
+        "gold": 90
+      }
+    },
+    {
+      "wave": 4,
+      "family": "entry",
+      "old": {
+        "count": 9,
+        "counts": {
+          "Leafbug": 6,
+          "Firebug": 3
+        },
+        "hp": 383.9804159999999,
+        "armoredHp": 383.9804159999999,
+        "spawnSeconds": 9.15,
+        "gold": 109
+      },
+      "current": {
+        "count": 9,
+        "counts": {
+          "Leafbug": 6,
+          "Firebug": 3
+        },
+        "hp": 383.9804159999999,
+        "armoredHp": 383.9804159999999,
+        "spawnSeconds": 9.15,
+        "gold": 109
+      }
+    },
+    {
+      "wave": 5,
+      "family": "entry",
+      "old": {
+        "count": 10,
+        "counts": {
+          "Leafbug": 7,
+          "Firebug": 3
+        },
+        "hp": 488.8726271999997,
+        "armoredHp": 488.8726271999997,
+        "spawnSeconds": 10.049999999999999,
+        "gold": 119
+      },
+      "current": {
+        "count": 10,
+        "counts": {
+          "Leafbug": 7,
+          "Firebug": 3
+        },
+        "hp": 488.8726271999997,
+        "armoredHp": 488.8726271999997,
+        "spawnSeconds": 10.049999999999999,
+        "gold": 119
+      }
+    },
+    {
+      "wave": 6,
+      "family": "swarm",
+      "old": {
+        "count": 11,
+        "counts": {
+          "Leafbug": 8,
+          "FlyingLocust": 2,
+          "Firebug": 1
+        },
+        "hp": 558.6908809215997,
+        "armoredHp": 558.6908809215997,
+        "spawnSeconds": 7.340000000000002,
+        "gold": 125
+      },
+      "current": {
+        "count": 11,
+        "counts": {
+          "Leafbug": 8,
+          "FlyingLocust": 2,
+          "Firebug": 1
+        },
+        "hp": 558.6908809215997,
+        "armoredHp": 558.6908809215997,
+        "spawnSeconds": 5.7700000000000005,
+        "gold": 153
+      }
+    },
+    {
+      "wave": 7,
+      "family": "rush",
+      "old": {
+        "count": 12,
+        "counts": {
+          "Leafbug": 6,
+          "Firebug": 5,
+          "FlyingLocust": 1
+        },
+        "hp": 813.7563718205437,
+        "armoredHp": 813.7563718205437,
+        "spawnSeconds": 7.660000000000002,
+        "gold": 146
+      },
+      "current": {
+        "count": 10,
+        "counts": {
+          "Firebug": 8,
+          "FlyingLocust": 2
+        },
+        "hp": 760.1556527185917,
+        "armoredHp": 760.1556527185917,
+        "spawnSeconds": 7.83,
+        "gold": 171
+      }
+    },
+    {
+      "wave": 8,
+      "family": "swarm",
+      "old": {
+        "count": 13,
+        "counts": {
+          "Leafbug": 5,
+          "FlyingLocust": 4,
+          "Firebug": 4
+        },
+        "hp": 949.6098307807638,
+        "armoredHp": 949.6098307807638,
+        "spawnSeconds": 9.310000000000002,
+        "gold": 156
+      },
+      "current": {
+        "count": 13,
+        "counts": {
+          "Leafbug": 9,
+          "FlyingLocust": 4
+        },
+        "hp": 836.5610414021013,
+        "armoredHp": 836.5610414021013,
+        "spawnSeconds": 8.01,
+        "gold": 179
+      }
+    },
+    {
+      "wave": 9,
+      "family": "rush",
+      "old": {
+        "count": 14,
+        "counts": {
+          "Leafbug": 10,
+          "Firewasp": 2,
+          "Firebug": 2
+        },
+        "hp": 1180.2293611132347,
+        "armoredHp": 1180.2293611132347,
+        "spawnSeconds": 9.630000000000003,
+        "gold": 164
+      },
+      "current": {
+        "count": 10,
+        "counts": {
+          "Firebug": 7,
+          "Firewasp": 2,
+          "FlyingLocust": 1
+        },
+        "hp": 1016.3086165141746,
+        "armoredHp": 1016.3086165141746,
+        "spawnSeconds": 8.35,
+        "gold": 198
+      }
+    },
+    {
+      "wave": 10,
+      "family": "swarm",
+      "old": {
+        "count": 15,
+        "counts": {
+          "Leafbug": 10,
+          "Firebug": 5
+        },
+        "hp": 1559.2141226262625,
+        "armoredHp": 1559.2141226262625,
+        "spawnSeconds": 9.950000000000003,
+        "gold": 175
+      },
+      "current": {
+        "count": 15,
+        "counts": {
+          "Leafbug": 10,
+          "Firewasp": 2,
+          "FlyingLocust": 3
+        },
+        "hp": 1338.6423686937667,
+        "armoredHp": 1338.6423686937667,
+        "spawnSeconds": 8.69,
+        "gold": 205
+      }
+    },
+    {
+      "wave": 11,
+      "family": "armor",
+      "old": {
+        "count": 16,
+        "counts": {
+          "Leafbug": 9,
+          "Scorpion": 5,
+          "Firebug": 2
+        },
+        "hp": 2355.7063319990534,
+        "armoredHp": 3258.0453253592636,
+        "spawnSeconds": 11.600000000000003,
+        "gold": 211
+      },
+      "current": {
+        "count": 12,
+        "counts": {
+          "Leafbug": 10,
+          "Scorpion": 2
+        },
+        "hp": 1499.88792674097,
+        "armoredHp": 1860.8235240850536,
+        "spawnSeconds": 10.6,
+        "gold": 249
+      }
+    },
+    {
+      "wave": 12,
+      "family": "swarm",
+      "old": {
+        "count": 17,
+        "counts": {
+          "Leafbug": 6,
+          "FlyingLocust": 6,
+          "Firebug": 5
+        },
+        "hp": 2220.892875995512,
+        "armoredHp": 2220.892875995512,
+        "spawnSeconds": 11.920000000000003,
+        "gold": 201
+      },
+      "current": {
+        "count": 10,
+        "counts": {
+          "Firebug": 7,
+          "Scorpion": 2,
+          "FlyingLocust": 1
+        },
+        "hp": 1831.980759461736,
+        "armoredHp": 2250.6660523808728,
+        "spawnSeconds": 4.32,
+        "gold": 231
+      }
+    },
+    {
+      "wave": 13,
+      "family": "armor",
+      "old": {
+        "count": 18,
+        "counts": {
+          "Leafbug": 10,
+          "MagmaCrab": 2,
+          "Scorpion": 3,
+          "Firebug": 3
+        },
+        "hp": 3870.2896312740218,
+        "armoredHp": 4915.39014985099,
+        "spawnSeconds": 12.240000000000004,
+        "gold": 248
+      },
+      "current": {
+        "count": 10,
+        "counts": {
+          "Scorpion": 4,
+          "MagmaCrab": 2,
+          "Leafbug": 4
+        },
+        "hp": 2706.828331075083,
+        "armoredHp": 3994.766319545151,
+        "spawnSeconds": 10.049999999999999,
+        "gold": 278
+      }
+    },
+    {
+      "wave": 14,
+      "family": "swarm",
+      "old": {
+        "count": 19,
+        "counts": {
+          "Scorpion": 5,
+          "Leafbug": 8,
+          "MagmaCrab": 3,
+          "Firebug": 3
+        },
+        "hp": 5398.460432923077,
+        "armoredHp": 7357.781067785001,
+        "spawnSeconds": 13.890000000000004,
+        "gold": 286
+      },
+      "current": {
+        "count": 12,
+        "counts": {
+          "Firebug": 8,
+          "MagmaCrab": 2,
+          "FlyingLocust": 2
+        },
+        "hp": 3250.0935259434846,
+        "armoredHp": 3617.3357322647826,
+        "spawnSeconds": 6.11,
+        "gold": 257
+      }
+    },
+    {
+      "wave": 15,
+      "family": "boss",
+      "old": {
+        "count": 9,
+        "counts": {
+          "Leafbug": 5,
+          "Rosenspiegel": 1,
+          "Scorpion": 1,
+          "Firebug": 2
+        },
+        "hp": 10048.297628260183,
+        "armoredHp": 11280.311766330338,
+        "spawnSeconds": 5.370000000000001,
+        "gold": 207
+      },
+      "current": {
+        "count": 9,
+        "counts": {
+          "Leafbug": 5,
+          "Rosenspiegel": 1,
+          "Scorpion": 1,
+          "Firebug": 2
+        },
+        "hp": 10048.297628260183,
+        "armoredHp": 11280.311766330338,
+        "spawnSeconds": 5.370000000000001,
+        "gold": 207
+      }
+    },
+    {
+      "wave": 16,
+      "family": "armor",
+      "old": {
+        "count": 21,
+        "counts": {
+          "Leafbug": 7,
+          "FlyingLocust": 7,
+          "Firebug": 7
+        },
+        "hp": 4928.138847920485,
+        "armoredHp": 4928.138847920485,
+        "spawnSeconds": 14.530000000000005,
+        "gold": 496
+      },
+      "current": {
+        "count": 11,
+        "counts": {
+          "Scorpion": 5,
+          "Leafbug": 6
+        },
+        "hp": 3556.202758389507,
+        "armoredHp": 5402.408620497581,
+        "spawnSeconds": 11.149999999999999,
+        "gold": 646
+      }
+    },
+    {
+      "wave": 17,
+      "family": "rush",
+      "old": {
+        "count": 22,
+        "counts": {
+          "Leafbug": 12,
+          "Clampbeetle": 2,
+          "Scorpion": 4,
+          "Firebug": 4
+        },
+        "hp": 7343.4684371210715,
+        "armoredHp": 9432.065304302258,
+        "spawnSeconds": 16.180000000000003,
+        "gold": 614
+      },
+      "current": {
+        "count": 20,
+        "counts": {
+          "FlyingLocust": 14,
+          "Clampbeetle": 2,
+          "Firewasp": 4
+        },
+        "hp": 4895.645624747382,
+        "armoredHp": 5315.272392582872,
+        "spawnSeconds": 17.999999999999996,
+        "gold": 643
+      }
+    },
+    {
+      "wave": 18,
+      "family": "swarm",
+      "old": {
+        "count": 23,
+        "counts": {
+          "Scorpion": 4,
+          "Leafbug": 7,
+          "MagmaCrab": 4,
+          "Firebug": 4,
+          "Clampbeetle": 4
+        },
+        "hp": 11709.568393458278,
+        "armoredHp": 15773.212113463691,
+        "spawnSeconds": 16.500000000000004,
+        "gold": 843
+      },
+      "current": {
+        "count": 20,
+        "counts": {
+          "Leafbug": 14,
+          "Clampbeetle": 2,
+          "Firebug": 4
+        },
+        "hp": 6546.2941412247055,
+        "armoredHp": 7020.4723888788085,
+        "spawnSeconds": 11.649999999999999,
+        "gold": 694
+      }
+    },
+    {
+      "wave": 19,
+      "family": "rush",
+      "old": {
+        "count": 24,
+        "counts": {
+          "MagmaCrab": 3,
+          "Leafbug": 7,
+          "Firebug": 5,
+          "Scorpion": 3,
+          "Clampbeetle": 3,
+          "FlyingLocust": 3
+        },
+        "hp": 12137.843552415861,
+        "armoredHp": 15581.781605120448,
+        "spawnSeconds": 16.820000000000004,
+        "gold": 850
+      },
+      "current": {
+        "count": 22,
+        "counts": {
+          "FlyingLocust": 15,
+          "ForestGoblin": 2,
+          "Firewasp": 5
+        },
+        "hp": 6537.76551857593,
+        "armoredHp": 6537.76551857593,
+        "spawnSeconds": 19.929999999999996,
+        "gold": 779
+      }
+    },
+    {
+      "wave": 20,
+      "family": "swarm",
+      "old": {
+        "count": 25,
+        "counts": {
+          "Leafbug": 9,
+          "FlyingLocust": 8,
+          "Firebug": 4,
+          "Clampbeetle": 4
+        },
+        "hp": 10360.404831349646,
+        "armoredHp": 11571.361240208695,
+        "spawnSeconds": 18.470000000000002,
+        "gold": 793
+      },
+      "current": {
+        "count": 24,
+        "counts": {
+          "Leafbug": 16,
+          "ForestGoblin": 2,
+          "Firebug": 6
+        },
+        "hp": 9712.879529390293,
+        "armoredHp": 9712.879529390293,
+        "spawnSeconds": 12.409999999999998,
+        "gold": 831
+      }
+    },
+    {
+      "wave": 21,
+      "family": "support",
+      "old": {
+        "count": 26,
+        "counts": {
+          "Leafbug": 14,
+          "LanternJelly": 2,
+          "Scorpion": 5,
+          "Firebug": 5
+        },
+        "hp": 13835.849724775113,
+        "armoredHp": 17237.36435335291,
+        "spawnSeconds": 18.790000000000003,
+        "gold": 883
+      },
+      "current": {
+        "count": 12,
+        "counts": {
+          "MagmaCrab": 6,
+          "LanternJelly": 2,
+          "Firebug": 4
+        },
+        "hp": 11507.70193454853,
+        "armoredHp": 14168.442266236054,
+        "spawnSeconds": 7.400000000000001,
+        "gold": 1014
+      }
+    },
+    {
+      "wave": 22,
+      "family": "armor",
+      "old": {
+        "count": 27,
+        "counts": {
+          "Scorpion": 5,
+          "Leafbug": 9,
+          "MagmaCrab": 5,
+          "Firebug": 4,
+          "Clampbeetle": 4
+        },
+        "hp": 22437.02543949649,
+        "armoredHp": 30332.537687267264,
+        "spawnSeconds": 19.110000000000003,
+        "gold": 1193
+      },
+      "current": {
+        "count": 14,
+        "counts": {
+          "Scorpion": 6,
+          "LanternJelly": 2,
+          "Leafbug": 6
+        },
+        "hp": 9771.568868122422,
+        "armoredHp": 14384.022704473911,
+        "spawnSeconds": 12.499999999999998,
+        "gold": 1123
+      }
+    },
+    {
+      "wave": 23,
+      "family": "swarm",
+      "old": {
+        "count": 28,
+        "counts": {
+          "MagmaCrab": 4,
+          "Leafbug": 7,
+          "LanternJelly": 2,
+          "Scorpion": 4,
+          "Firebug": 5,
+          "Clampbeetle": 3,
+          "FlyingLocust": 3
+        },
+        "hp": 24164.71398129491,
+        "armoredHp": 31214.89278480602,
+        "spawnSeconds": 20.76,
+        "gold": 1250
+      },
+      "current": {
+        "count": 23,
+        "counts": {
+          "Firebug": 16,
+          "FlyingLocust": 7
+        },
+        "hp": 14524.309633748431,
+        "armoredHp": 14524.309633748431,
+        "spawnSeconds": 13.929999999999998,
+        "gold": 1061
+      }
+    },
+    {
+      "wave": 24,
+      "family": "rush",
+      "old": {
+        "count": 28,
+        "counts": {
+          "Leafbug": 9,
+          "FlyingLocust": 10,
+          "Firebug": 5,
+          "Clampbeetle": 4
+        },
+        "hp": 18667.98475352865,
+        "armoredHp": 20642.417221033702,
+        "spawnSeconds": 20.76,
+        "gold": 1064
+      },
+      "current": {
+        "count": 22,
+        "counts": {
+          "Firebug": 15,
+          "Firewasp": 7
+        },
+        "hp": 16604.428598254264,
+        "armoredHp": 16604.428598254264,
+        "spawnSeconds": 18.07,
+        "gold": 1155
+      }
+    },
+    {
+      "wave": 25,
+      "family": "boss",
+      "old": {
+        "count": 13,
+        "counts": {
+          "Leafbug": 7,
+          "Rosenspiegel": 1,
+          "Scorpion": 2,
+          "Firebug": 3
+        },
+        "hp": 33079.28506582852,
+        "armoredHp": 37858.49954172442,
+        "spawnSeconds": 9.310000000000002,
+        "gold": 831
+      },
+      "current": {
+        "count": 13,
+        "counts": {
+          "Leafbug": 7,
+          "Rosenspiegel": 1,
+          "Scorpion": 2,
+          "Firebug": 3
+        },
+        "hp": 33079.28506582852,
+        "armoredHp": 37858.49954172442,
+        "spawnSeconds": 9.310000000000002,
+        "gold": 831
+      }
+    },
+    {
+      "wave": 26,
+      "family": "swarm",
+      "old": {
+        "count": 28,
+        "counts": {
+          "Scorpion": 5,
+          "Leafbug": 9,
+          "MagmaCrab": 5,
+          "Firebug": 5,
+          "Clampbeetle": 4
+        },
+        "hp": 37624.70420389039,
+        "armoredHp": 50498.12856131241,
+        "spawnSeconds": 20.76,
+        "gold": 1461
+      },
+      "current": {
+        "count": 24,
+        "counts": {
+          "Leafbug": 16,
+          "BoneGuard": 2,
+          "ForestGoblin": 6
+        },
+        "hp": 21753.697055995253,
+        "armoredHp": 22877.127420389374,
+        "spawnSeconds": 14.269999999999998,
+        "gold": 1224
+      }
+    },
+    {
+      "wave": 27,
+      "family": "armor",
+      "old": {
+        "count": 28,
+        "counts": {
+          "MagmaCrab": 4,
+          "Leafbug": 7,
+          "LanternJelly": 2,
+          "Scorpion": 4,
+          "Firebug": 5,
+          "Clampbeetle": 3,
+          "FlyingLocust": 3
+        },
+        "hp": 39399.92843969935,
+        "armoredHp": 50895.05892460559,
+        "spawnSeconds": 20.76,
+        "gold": 1494
+      },
+      "current": {
+        "count": 16,
+        "counts": {
+          "Clampbeetle": 7,
+          "BoneGuard": 2,
+          "FlyingLocust": 7
+        },
+        "hp": 20288.53960075907,
+        "armoredHp": 26543.595609639284,
+        "spawnSeconds": 14.399999999999997,
+        "gold": 1446
+      }
+    },
+    {
+      "wave": 28,
+      "family": "rush",
+      "old": {
+        "count": 28,
+        "counts": {
+          "Leafbug": 15,
+          "Voidbutterfly": 2,
+          "Scorpion": 5,
+          "Firebug": 6
+        },
+        "hp": 34506.4434786562,
+        "armoredHp": 42804.46107141856,
+        "spawnSeconds": 20.76,
+        "gold": 1279
+      },
+      "current": {
+        "count": 21,
+        "counts": {
+          "Firebug": 14,
+          "Voidbutterfly": 2,
+          "Firewasp": 5
+        },
+        "hp": 26368.869506365394,
+        "armoredHp": 26664.465142111003,
+        "spawnSeconds": 19.449999999999996,
+        "gold": 1363
+      }
+    },
+    {
+      "wave": 29,
+      "family": "support",
+      "old": {
+        "count": 28,
+        "counts": {
+          "Firebug": 5,
+          "Firewasp": 9,
+          "FlyingLocust": 5,
+          "Leafbug": 5,
+          "Voidbutterfly": 4
+        },
+        "hp": 33598.79099713145,
+        "armoredHp": 34266.83713391652,
+        "spawnSeconds": 20.76,
+        "gold": 1388
+      },
+      "current": {
+        "count": 10,
+        "counts": {
+          "MagmaCrab": 7,
+          "Voidbutterfly": 2,
+          "LanternJelly": 1
+        },
+        "hp": 29443.151058012554,
+        "armoredHp": 38029.50875727948,
+        "spawnSeconds": 6.500000000000001,
+        "gold": 1536
+      }
+    },
+    {
+      "wave": 30,
+      "family": "armor",
+      "old": {
+        "count": 28,
+        "counts": {
+          "Scorpion": 5,
+          "Leafbug": 9,
+          "MagmaCrab": 5,
+          "Firebug": 5,
+          "Clampbeetle": 4
+        },
+        "hp": 61346.087288499315,
+        "armoredHp": 82335.86597360713,
+        "spawnSeconds": 20.76,
+        "gold": 1699
+      },
+      "current": {
+        "count": 16,
+        "counts": {
+          "Scorpion": 7,
+          "Leafbug": 9
+        },
+        "hp": 28275.150981507013,
+        "armoredHp": 42580.76061718755,
+        "spawnSeconds": 14.399999999999997,
+        "gold": 1621
+      }
+    },
+    {
+      "wave": 31,
+      "family": "swarm",
+      "old": {
+        "count": 28,
+        "counts": {
+          "MagmaCrab": 4,
+          "Leafbug": 5,
+          "LanternJelly": 2,
+          "Scorpion": 4,
+          "Firebug": 4,
+          "Clampbeetle": 3,
+          "FlyingLocust": 3,
+          "Voidbutterfly": 3
+        },
+        "hp": 65369.55135219292,
+        "armoredHp": 84751.82933538467,
+        "spawnSeconds": 20.76,
+        "gold": 1813
+      },
+      "current": {
+        "count": 26,
+        "counts": {
+          "Leafbug": 18,
+          "ForestGoblin": 8
+        },
+        "hp": 40644.280633487804,
+        "armoredHp": 40644.280633487804,
+        "spawnSeconds": 16.209999999999997,
+        "gold": 1472
+      }
+    },
+    {
+      "wave": 32,
+      "family": "support",
+      "old": {
+        "count": 28,
+        "counts": {
+          "Leafbug": 9,
+          "FlyingLocust": 10,
+          "Firebug": 5,
+          "Clampbeetle": 4
+        },
+        "hp": 49627.795661283984,
+        "armoredHp": 54876.71418880871,
+        "spawnSeconds": 20.76,
+        "gold": 1457
+      },
+      "current": {
+        "count": 10,
+        "counts": {
+          "MagmaCrab": 8,
+          "ForestCultist": 2
+        },
+        "hp": 46183.19287759592,
+        "armoredHp": 59791.5001711785,
+        "spawnSeconds": 6.500000000000001,
+        "gold": 1720
+      }
+    },
+    {
+      "wave": 33,
+      "family": "armor",
+      "old": {
+        "count": 28,
+        "counts": {
+          "Firebug": 5,
+          "Firewasp": 9,
+          "FlyingLocust": 5,
+          "Leafbug": 5,
+          "Voidbutterfly": 4
+        },
+        "hp": 54781.942048728386,
+        "armoredHp": 55871.17364501889,
+        "spawnSeconds": 20.76,
+        "gold": 1592
+      },
+      "current": {
+        "count": 16,
+        "counts": {
+          "Clampbeetle": 7,
+          "ForestCultist": 2,
+          "FlyingLocust": 7
+        },
+        "hp": 40365.64150958934,
+        "armoredHp": 50745.37789776947,
+        "spawnSeconds": 14.399999999999997,
+        "gold": 1796
+      }
+    },
+    {
+      "wave": 34,
+      "family": "rush",
+      "old": {
+        "count": 28,
+        "counts": {
+          "Scorpion": 5,
+          "Leafbug": 9,
+          "MagmaCrab": 5,
+          "Firebug": 5,
+          "Clampbeetle": 4
+        },
+        "hp": 100023.17640065457,
+        "armoredHp": 134246.4566264634,
+        "spawnSeconds": 20.76,
+        "gold": 1888
+      },
+      "current": {
+        "count": 22,
+        "counts": {
+          "Firebug": 15,
+          "Firewasp": 7
+        },
+        "hp": 56364.851847925864,
+        "armoredHp": 56364.851847925864,
+        "spawnSeconds": 18.07,
+        "gold": 1632
+      }
+    },
+    {
+      "wave": 35,
+      "family": "swarm",
+      "old": {
+        "count": 28,
+        "counts": {
+          "MagmaCrab": 4,
+          "Leafbug": 5,
+          "LanternJelly": 2,
+          "Scorpion": 4,
+          "Firebug": 4,
+          "Clampbeetle": 3,
+          "FlyingLocust": 3,
+          "Voidbutterfly": 3
+        },
+        "hp": 106583.32837729031,
+        "armoredHp": 138185.6211305685,
+        "spawnSeconds": 20.76,
+        "gold": 1940
+      },
+      "current": {
+        "count": 26,
+        "counts": {
+          "Leafbug": 18,
+          "ForestGoblin": 8
+        },
+        "hp": 66269.42697033596,
+        "armoredHp": 66269.42697033596,
+        "spawnSeconds": 14.199999999999998,
+        "gold": 1592
+      }
+    },
+    {
+      "wave": 36,
+      "family": "support",
+      "old": {
+        "count": 28,
+        "counts": {
+          "Leafbug": 9,
+          "FlyingLocust": 10,
+          "Firebug": 5,
+          "Clampbeetle": 4
+        },
+        "hp": 80916.81114819604,
+        "armoredHp": 89475.03428836513,
+        "spawnSeconds": 20.76,
+        "gold": 1524
+      },
+      "current": {
+        "count": 12,
+        "counts": {
+          "BoneGuard": 10,
+          "LanternJelly": 1,
+          "ForestCultist": 1
+        },
+        "hp": 65523.89591691966,
+        "armoredHp": 84591.69631602327,
+        "spawnSeconds": 7.100000000000001,
+        "gold": 1792
+      }
+    },
+    {
+      "wave": 37,
+      "family": "rush",
+      "old": {
+        "count": 28,
+        "counts": {
+          "Firebug": 5,
+          "Firewasp": 9,
+          "FlyingLocust": 5,
+          "Leafbug": 5,
+          "Voidbutterfly": 4
+        },
+        "hp": 89320.51081500095,
+        "armoredHp": 91096.4741879308,
+        "spawnSeconds": 20.76,
+        "gold": 1624
+      },
+      "current": {
+        "count": 21,
+        "counts": {
+          "Firewasp": 14,
+          "Voidbutterfly": 7
+        },
+        "hp": 70751.24672451393,
+        "armoredHp": 73859.18262714114,
+        "spawnSeconds": 16.47,
+        "gold": 1656
+      }
+    },
+    {
+      "wave": 38,
+      "family": "armor",
+      "old": {
+        "count": 28,
+        "counts": {
+          "Scorpion": 5,
+          "Leafbug": 9,
+          "MagmaCrab": 5,
+          "Firebug": 5,
+          "Clampbeetle": 4
+        },
+        "hp": 163085.149509642,
+        "armoredHp": 218885.30476545807,
+        "spawnSeconds": 20.76,
+        "gold": 1920
+      },
+      "current": {
+        "count": 16,
+        "counts": {
+          "Scorpion": 7,
+          "Leafbug": 9
+        },
+        "hp": 75167.91093033986,
+        "armoredHp": 113198.5757923011,
+        "spawnSeconds": 14.399999999999997,
+        "gold": 1844
+      }
+    },
+    {
+      "wave": 39,
+      "family": "rush",
+      "old": {
+        "count": 28,
+        "counts": {
+          "MagmaCrab": 4,
+          "Leafbug": 5,
+          "LanternJelly": 2,
+          "Scorpion": 4,
+          "Firebug": 4,
+          "Clampbeetle": 3,
+          "FlyingLocust": 3,
+          "Voidbutterfly": 3
+        },
+        "hp": 173781.30418513587,
+        "armoredHp": 225308.0085348502,
+        "spawnSeconds": 20.76,
+        "gold": 1972
+      },
+      "current": {
+        "count": 23,
+        "counts": {
+          "Firebug": 16,
+          "FlyingLocust": 7
+        },
+        "hp": 102648.02423370717,
+        "armoredHp": 102648.02423370717,
+        "spawnSeconds": 18.55,
+        "gold": 1672
+      }
+    },
+    {
+      "wave": 40,
+      "family": "armor",
+      "old": {
+        "count": 28,
+        "counts": {
+          "Leafbug": 9,
+          "FlyingLocust": 10,
+          "Firebug": 5,
+          "Clampbeetle": 4
+        },
+        "hp": 131932.72518248737,
+        "armoredHp": 145886.6821610244,
+        "spawnSeconds": 20.76,
+        "gold": 1556
+      },
+      "current": {
+        "count": 16,
+        "counts": {
+          "BoneGuard": 7,
+          "ForestGoblin": 8,
+          "ForestCultist": 1
+        },
+        "hp": 121249.22687079494,
+        "armoredHp": 143011.90861683508,
+        "spawnSeconds": 16.649999999999995,
+        "gold": 2084
+      }
+    }
+  ],
+  "played": [
+    {
+      "approach": "balanced",
+      "seconds": 1156,
+      "record": 40,
+      "milestones": {
+        "wave1": 9,
+        "wave2": 21,
+        "wave3": 37,
+        "wave4": 57,
+        "wave5": 78,
+        "wave6": 98,
+        "wave7": 115,
+        "wave8": 128,
+        "wave9": 144,
+        "wave10": 160,
+        "wave11": 179,
+        "wave12": 198,
+        "wave13": 221,
+        "wave14": 244,
+        "boss15": 307,
+        "wave15": 307,
+        "wave16": 331,
+        "wave17": 358,
+        "wave18": 381,
+        "wave19": 407,
+        "wave20": 431,
+        "wave21": 459,
+        "wave22": 483,
+        "wave23": 508,
+        "wave24": 535,
+        "boss25": 593,
+        "wave25": 593,
+        "wave26": 619,
+        "wave27": 645,
+        "wave28": 674,
+        "wave29": 706,
+        "wave30": 736,
+        "wave31": 767,
+        "wave32": 803,
+        "wave33": 837,
+        "wave34": 872,
+        "wave35": 918,
+        "wave36": 966,
+        "wave37": 1006,
+        "wave38": 1057,
+        "wave39": 1106,
+        "wave40": 1156
+      },
+      "losses": [],
+      "levels": [
+        {
+          "kind": 1,
+          "pad": "tower-start",
+          "level": 10
+        },
+        {
+          "kind": 1,
+          "pad": "tower-03",
+          "level": 10
+        },
+        {
+          "kind": 2,
+          "pad": "tower-02",
+          "level": 3
+        },
+        {
+          "kind": 3,
+          "pad": "tower-09",
+          "level": 10
+        },
+        {
+          "kind": 4,
+          "pad": "cell-14-7",
+          "level": 10
+        }
+      ],
+      "farm": {
+        "wave": 33,
+        "fingerprint": "{\"rulesVersion\":11,\"layoutVersion\":5,\"layout\":{\"columns\":40,\"plots\":{\"workshop\":{\"x\":30,\"y\":11},\"warehouse\":{\"x\":34,\"y\":12}}},\"blocked\":[{\"x\":0,\"y\":0},{\"x\":0,\"y\":15},{\"x\":0,\"y\":14},{\"x\":1,\"y\":0},{\"x\":1,\"y\":15},{\"x\":1,\"y\":14},{\"x\":2,\"y\":0},{\"x\":2,\"y\":15},{\"x\":2,\"y\":14},{\"x\":3,\"y\":0},{\"x\":3,\"y\":15},{\"x\":4,\"y\":0},{\"x\":4,\"y\":15},{\"x\":4,\"y\":14},{\"x\":5,\"y\":0},{\"x\":5,\"y\":15},{\"x\":5,\"y\":14},{\"x\":6,\"y\":15},{\"x\":6,\"y\":14},{\"x\":7,\"y\":15},{\"x\":7,\"y\":14},{\"x\":8,\"y\":15},{\"x\":9,\"y\":15},{\"x\":9,\"y\":14},{\"x\":10,\"y\":15},{\"x\":10,\"y\":14},{\"x\":11,\"y\":15},{\"x\":11,\"y\":14},{\"x\":12,\"y\":15},{\"x\":12,\"y\":14},{\"x\":13,\"y\":15},{\"x\":14,\"y\":15},{\"x\":14,\"y\":14},{\"x\":15,\"y\":15},{\"x\":15,\"y\":14},{\"x\":16,\"y\":15},{\"x\":16,\"y\":14},{\"x\":17,\"y\":0},{\"x\":17,\"y\":15},{\"x\":17,\"y\":14},{\"x\":18,\"y\":0},{\"x\":18,\"y\":15},{\"x\":19,\"y\":0},{\"x\":19,\"y\":15},{\"x\":19,\"y\":14},{\"x\":20,\"y\":0},{\"x\":20,\"y\":15},{\"x\":20,\"y\":14},{\"x\":21,\"y\":0},{\"x\":21,\"y\":15},{\"x\":21,\"y\":14},{\"x\":22,\"y\":0},{\"x\":22,\"y\":15},{\"x\":22,\"y\":14},{\"x\":23,\"y\":0},{\"x\":23,\"y\":15},{\"x\":24,\"y\":0},{\"x\":24,\"y\":15},{\"x\":24,\"y\":14},{\"x\":25,\"y\":0},{\"x\":25,\"y\":15},{\"x\":25,\"y\":14},{\"x\":26,\"y\":0},{\"x\":26,\"y\":15},{\"x\":26,\"y\":14},{\"x\":27,\"y\":0},{\"x\":27,\"y\":15},{\"x\":27,\"y\":14},{\"x\":0,\"y\":1},{\"x\":27,\"y\":1},{\"x\":0,\"y\":2},{\"x\":27,\"y\":2},{\"x\":1,\"y\":2},{\"x\":26,\"y\":2},{\"x\":0,\"y\":3},{\"x\":1,\"y\":3},{\"x\":0,\"y\":7},{\"x\":1,\"y\":7},{\"x\":0,\"y\":8},{\"x\":1,\"y\":8},{\"x\":0,\"y\":9},{\"x\":0,\"y\":10},{\"x\":1,\"y\":10},{\"x\":0,\"y\":11},{\"x\":1,\"y\":11},{\"x\":0,\"y\":12},{\"x\":1,\"y\":12},{\"x\":0,\"y\":13},{\"x\":27,\"y\":13},{\"x\":5,\"y\":1},{\"x\":18,\"y\":1},{\"x\":19,\"y\":1},{\"x\":20,\"y\":1},{\"x\":19,\"y\":2},{\"x\":20,\"y\":2},{\"x\":21,\"y\":1},{\"x\":24,\"y\":1},{\"x\":25,\"y\":1},{\"x\":24,\"y\":2},{\"x\":10,\"y\":8},{\"x\":11,\"y\":8},{\"x\":18,\"y\":4},{\"x\":19,\"y\":4},{\"x\":20,\"y\":4},{\"x\":18,\"y\":5},{\"x\":19,\"y\":5},{\"x\":20,\"y\":5},{\"x\":21,\"y\":5},{\"x\":19,\"y\":6},{\"x\":20,\"y\":6},{\"x\":21,\"y\":6},{\"x\":20,\"y\":7},{\"x\":22,\"y\":7},{\"x\":1,\"y\":9},{\"x\":2,\"y\":9},{\"x\":11,\"y\":12},{\"x\":12,\"y\":12},{\"x\":13,\"y\":12},{\"x\":12,\"y\":13},{\"x\":13,\"y\":13},{\"x\":18,\"y\":13},{\"x\":19,\"y\":13},{\"x\":21,\"y\":13},{\"x\":22,\"y\":13},{\"x\":23,\"y\":13},{\"x\":24,\"y\":13},{\"x\":25,\"y\":12},{\"x\":28,\"y\":0},{\"x\":28,\"y\":15},{\"x\":28,\"y\":14},{\"x\":29,\"y\":0},{\"x\":29,\"y\":15},{\"x\":29,\"y\":14},{\"x\":30,\"y\":0},{\"x\":30,\"y\":15},{\"x\":31,\"y\":0},{\"x\":31,\"y\":15},{\"x\":31,\"y\":1},{\"x\":31,\"y\":2},{\"x\":31,\"y\":3},{\"x\":31,\"y\":4},{\"x\":29,\"y\":1},{\"x\":30,\"y\":2},{\"x\":29,\"y\":3},{\"x\":30,\"y\":4},{\"x\":32,\"y\":0},{\"x\":32,\"y\":1},{\"x\":32,\"y\":15},{\"x\":33,\"y\":0},{\"x\":33,\"y\":1},{\"x\":33,\"y\":15},{\"x\":34,\"y\":0},{\"x\":34,\"y\":1},{\"x\":34,\"y\":15},{\"x\":35,\"y\":0},{\"x\":35,\"y\":1},{\"x\":35,\"y\":15},{\"x\":36,\"y\":0},{\"x\":36,\"y\":1},{\"x\":36,\"y\":15},{\"x\":37,\"y\":0},{\"x\":37,\"y\":1},{\"x\":37,\"y\":15},{\"x\":38,\"y\":0},{\"x\":38,\"y\":1},{\"x\":38,\"y\":15},{\"x\":39,\"y\":0},{\"x\":39,\"y\":1},{\"x\":39,\"y\":15},{\"x\":39,\"y\":2},{\"x\":39,\"y\":3},{\"x\":39,\"y\":4},{\"x\":39,\"y\":5},{\"x\":39,\"y\":6},{\"x\":39,\"y\":7},{\"x\":39,\"y\":8},{\"x\":39,\"y\":9},{\"x\":39,\"y\":10},{\"x\":39,\"y\":11},{\"x\":39,\"y\":12},{\"x\":39,\"y\":13},{\"x\":39,\"y\":14},{\"x\":33,\"y\":2},{\"x\":34,\"y\":2},{\"x\":36,\"y\":2},{\"x\":37,\"y\":3},{\"x\":38,\"y\":3},{\"x\":34,\"y\":4},{\"x\":35,\"y\":4},{\"x\":37,\"y\":5},{\"x\":38,\"y\":6},{\"x\":35,\"y\":8},{\"x\":37,\"y\":8},{\"x\":17,\"y\":2},{\"x\":23,\"y\":3},{\"x\":3,\"y\":9},{\"x\":16,\"y\":13},{\"x\":24,\"y\":12},{\"x\":30,\"y\":5},{\"x\":33,\"y\":3},{\"x\":36,\"y\":7},{\"x\":2,\"y\":1},{\"x\":3,\"y\":1},{\"x\":4,\"y\":1},{\"x\":2,\"y\":2},{\"x\":3,\"y\":2},{\"x\":4,\"y\":2},{\"x\":2,\"y\":3},{\"x\":3,\"y\":3},{\"x\":4,\"y\":3}],\"maraTarget\":1,\"settlement\":{\"workshopBuilt\":true,\"frostResearched\":true,\"builtAt\":46},\"wisp\":true,\"towers\":[[\"cell-14-7\",4,10,false],[\"tower-02\",2,3,false],[\"tower-03\",1,10,false],[\"tower-09\",3,10,false],[\"tower-start\",1,10,true]]}",
+        "rulesVersion": 11,
+        "rewardGold": 3951,
+        "rewardRemainderUnits": 200,
+        "durationMs": 53100
+      },
+      "clears": [
+        {
+          "wave": 1,
+          "at": 9,
+          "seconds": 10,
+          "gold": 70
+        },
+        {
+          "wave": 2,
+          "at": 21,
+          "seconds": 12,
+          "gold": 80
+        },
+        {
+          "wave": 3,
+          "at": 37,
+          "seconds": 16,
+          "gold": 90
+        },
+        {
+          "wave": 4,
+          "at": 57,
+          "seconds": 20,
+          "gold": 109
+        },
+        {
+          "wave": 5,
+          "at": 78,
+          "seconds": 21,
+          "gold": 119
+        },
+        {
+          "wave": 6,
+          "at": 98,
+          "seconds": 20,
+          "gold": 168.29999999999995
+        },
+        {
+          "wave": 7,
+          "at": 115,
+          "seconds": 17,
+          "gold": 188.10000000000002
+        },
+        {
+          "wave": 8,
+          "at": 128,
+          "seconds": 13,
+          "gold": 196.89999999999998
+        },
+        {
+          "wave": 9,
+          "at": 144,
+          "seconds": 16,
+          "gold": 217.79999999999995
+        },
+        {
+          "wave": 10,
+          "at": 160,
+          "seconds": 16,
+          "gold": 225.5
+        },
+        {
+          "wave": 11,
+          "at": 179,
+          "seconds": 19,
+          "gold": 273.9000000000001
+        },
+        {
+          "wave": 12,
+          "at": 198,
+          "seconds": 19,
+          "gold": 254.0999999999999
+        },
+        {
+          "wave": 13,
+          "at": 221,
+          "seconds": 23,
+          "gold": 305.8000000000002
+        },
+        {
+          "wave": 14,
+          "at": 244,
+          "seconds": 23,
+          "gold": 282.6999999999998
+        },
+        {
+          "wave": 15,
+          "at": 307,
+          "seconds": 63,
+          "gold": 977.7000000000003
+        },
+        {
+          "wave": 16,
+          "at": 331,
+          "seconds": 24,
+          "gold": 710.5999999999995
+        },
+        {
+          "wave": 17,
+          "at": 358,
+          "seconds": 27,
+          "gold": 707.3000000000002
+        },
+        {
+          "wave": 18,
+          "at": 381,
+          "seconds": 23,
+          "gold": 763.4000000000005
+        },
+        {
+          "wave": 19,
+          "at": 407,
+          "seconds": 26,
+          "gold": 856.8999999999996
+        },
+        {
+          "wave": 20,
+          "at": 431,
+          "seconds": 24,
+          "gold": 914.1000000000004
+        },
+        {
+          "wave": 21,
+          "at": 459,
+          "seconds": 28,
+          "gold": 1115.3999999999996
+        },
+        {
+          "wave": 22,
+          "at": 483,
+          "seconds": 24,
+          "gold": 1235.2999999999993
+        },
+        {
+          "wave": 23,
+          "at": 508,
+          "seconds": 25,
+          "gold": 1167.1000000000004
+        },
+        {
+          "wave": 24,
+          "at": 535,
+          "seconds": 27,
+          "gold": 1270.5
+        },
+        {
+          "wave": 25,
+          "at": 593,
+          "seconds": 58,
+          "gold": 2114.1000000000004
+        },
+        {
+          "wave": 26,
+          "at": 619,
+          "seconds": 26,
+          "gold": 1346.3999999999996
+        },
+        {
+          "wave": 27,
+          "at": 645,
+          "seconds": 26,
+          "gold": 1590.6000000000004
+        },
+        {
+          "wave": 28,
+          "at": 674,
+          "seconds": 29,
+          "gold": 1499.2999999999993
+        },
+        {
+          "wave": 29,
+          "at": 706,
+          "seconds": 32,
+          "gold": 1689.6000000000022
+        },
+        {
+          "wave": 30,
+          "at": 736,
+          "seconds": 30,
+          "gold": 1783.0999999999985
+        },
+        {
+          "wave": 31,
+          "at": 767,
+          "seconds": 31,
+          "gold": 1619.2000000000007
+        },
+        {
+          "wave": 32,
+          "at": 803,
+          "seconds": 36,
+          "gold": 1892
+        },
+        {
+          "wave": 33,
+          "at": 837,
+          "seconds": 34,
+          "gold": 1975.5999999999985
+        },
+        {
+          "wave": 34,
+          "at": 872,
+          "seconds": 35,
+          "gold": 1795.2000000000007
+        },
+        {
+          "wave": 35,
+          "at": 918,
+          "seconds": 46,
+          "gold": 1623.5999999999985
+        },
+        {
+          "wave": 36,
+          "at": 966,
+          "seconds": 48,
+          "gold": 1597.2000000000044
+        },
+        {
+          "wave": 37,
+          "at": 1006,
+          "seconds": 40,
+          "gold": 1311.199999999997
+        },
+        {
+          "wave": 38,
+          "at": 1057,
+          "seconds": 51,
+          "gold": 1821.5999999999985
+        },
+        {
+          "wave": 39,
+          "at": 1106,
+          "seconds": 49,
+          "gold": 1333.2000000000044
+        },
+        {
+          "wave": 40,
+          "at": 1156,
+          "seconds": 50,
+          "gold": 1570.7999999999956
+        }
+      ],
+      "purchases": [
+        {
+          "at": 0,
+          "type": "build",
+          "pad": "tower-03",
+          "kind": 1,
+          "gold": 0
+        },
+        {
+          "at": 9,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 10
+        },
+        {
+          "at": 46,
+          "type": "workshop",
+          "gold": 7
+        },
+        {
+          "at": 57,
+          "type": "research",
+          "gold": 29
+        },
+        {
+          "at": 77,
+          "type": "build",
+          "pad": "tower-02",
+          "kind": 2,
+          "gold": 0
+        },
+        {
+          "at": 98,
+          "type": "build",
+          "pad": "tower-09",
+          "kind": 3,
+          "gold": 71
+        },
+        {
+          "at": 99,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 11
+        },
+        {
+          "at": 114,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 21
+        },
+        {
+          "at": 115,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 11
+        },
+        {
+          "at": 123,
+          "type": "upgrade",
+          "uid": 161,
+          "gold": 6
+        },
+        {
+          "at": 127,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 1
+        },
+        {
+          "at": 140,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 2
+        },
+        {
+          "at": 185,
+          "type": "warehouse",
+          "gold": 10
+        },
+        {
+          "at": 198,
+          "type": "build",
+          "pad": "cell-14-7",
+          "kind": 4,
+          "gold": 70
+        },
+        {
+          "at": 199,
+          "type": "upgrade",
+          "uid": 571,
+          "gold": 10
+        },
+        {
+          "at": 221,
+          "type": "upgrade",
+          "uid": 571,
+          "gold": 103
+        },
+        {
+          "at": 244,
+          "type": "upgrade",
+          "uid": 571,
+          "gold": 3
+        },
+        {
+          "at": 307,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 676
+        },
+        {
+          "at": 308,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 507
+        },
+        {
+          "at": 309,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 338
+        },
+        {
+          "at": 343,
+          "type": "workshop2",
+          "gold": 2
+        },
+        {
+          "at": 358,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 9
+        },
+        {
+          "at": 396,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 49
+        },
+        {
+          "at": 430,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 21
+        },
+        {
+          "at": 431,
+          "type": "upgrade",
+          "uid": 161,
+          "gold": 241
+        },
+        {
+          "at": 442,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 0
+        },
+        {
+          "at": 453,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 45
+        },
+        {
+          "at": 459,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 201
+        },
+        {
+          "at": 479,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 57
+        },
+        {
+          "at": 483,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 233
+        },
+        {
+          "at": 500,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 27
+        },
+        {
+          "at": 508,
+          "type": "upgrade",
+          "uid": 571,
+          "gold": 55
+        },
+        {
+          "at": 535,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 460
+        },
+        {
+          "at": 556,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 0
+        },
+        {
+          "at": 593,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 565
+        },
+        {
+          "at": 614,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 40
+        },
+        {
+          "at": 640,
+          "type": "upgrade",
+          "uid": 571,
+          "gold": 82
+        },
+        {
+          "at": 661,
+          "type": "upgrade",
+          "uid": 571,
+          "gold": 7
+        },
+        {
+          "at": 700,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 72
+        },
+        {
+          "at": 721,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 20
+        },
+        {
+          "at": 736,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 27
+        },
+        {
+          "at": 793,
+          "type": "upgrade",
+          "uid": 571,
+          "gold": 28
+        },
+        {
+          "at": 827,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 71
+        },
+        {
+          "at": 872,
+          "type": "upgrade",
+          "uid": 571,
+          "gold": 695
+        },
+        {
+          "at": 945,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 50
+        },
+        {
+          "at": 1057,
+          "type": "upgrade",
+          "uid": 571,
+          "gold": 911
+        }
+      ]
+    },
+    {
+      "approach": "archers",
+      "seconds": 1033,
+      "record": 40,
+      "milestones": {
+        "wave1": 9,
+        "wave2": 21,
+        "wave3": 34,
+        "wave4": 49,
+        "wave5": 64,
+        "wave6": 78,
+        "wave7": 93,
+        "wave8": 105,
+        "wave9": 118,
+        "wave10": 132,
+        "wave11": 149,
+        "wave12": 162,
+        "wave13": 184,
+        "wave14": 202,
+        "boss15": 250,
+        "wave15": 250,
+        "wave16": 271,
+        "wave17": 296,
+        "wave18": 317,
+        "wave19": 343,
+        "wave20": 367,
+        "wave21": 392,
+        "wave22": 413,
+        "wave23": 436,
+        "wave24": 461,
+        "boss25": 509,
+        "wave25": 509,
+        "wave26": 533,
+        "wave27": 557,
+        "wave28": 582,
+        "wave29": 609,
+        "wave30": 637,
+        "wave31": 667,
+        "wave32": 708,
+        "wave33": 735,
+        "wave34": 764,
+        "wave35": 799,
+        "wave36": 843,
+        "wave37": 883,
+        "wave38": 934,
+        "wave39": 983,
+        "wave40": 1033
+      },
+      "losses": [],
+      "levels": [
+        {
+          "kind": 1,
+          "pad": "tower-start",
+          "level": 10
+        },
+        {
+          "kind": 1,
+          "pad": "cell-7-6",
+          "level": 10
+        },
+        {
+          "kind": 1,
+          "pad": "cell-10-3",
+          "level": 10
+        },
+        {
+          "kind": 2,
+          "pad": "tower-02",
+          "level": 3
+        },
+        {
+          "kind": 3,
+          "pad": "tower-09",
+          "level": 10
+        },
+        {
+          "kind": 4,
+          "pad": "cell-14-7",
+          "level": 9
+        }
+      ],
+      "farm": {
+        "wave": 33,
+        "fingerprint": "{\"rulesVersion\":11,\"layoutVersion\":5,\"layout\":{\"columns\":40,\"plots\":{\"workshop\":{\"x\":30,\"y\":11},\"warehouse\":{\"x\":34,\"y\":12}}},\"blocked\":[{\"x\":0,\"y\":0},{\"x\":0,\"y\":15},{\"x\":0,\"y\":14},{\"x\":1,\"y\":0},{\"x\":1,\"y\":15},{\"x\":1,\"y\":14},{\"x\":2,\"y\":0},{\"x\":2,\"y\":15},{\"x\":2,\"y\":14},{\"x\":3,\"y\":0},{\"x\":3,\"y\":15},{\"x\":4,\"y\":0},{\"x\":4,\"y\":15},{\"x\":4,\"y\":14},{\"x\":5,\"y\":0},{\"x\":5,\"y\":15},{\"x\":5,\"y\":14},{\"x\":6,\"y\":15},{\"x\":6,\"y\":14},{\"x\":7,\"y\":15},{\"x\":7,\"y\":14},{\"x\":8,\"y\":15},{\"x\":9,\"y\":15},{\"x\":9,\"y\":14},{\"x\":10,\"y\":15},{\"x\":10,\"y\":14},{\"x\":11,\"y\":15},{\"x\":11,\"y\":14},{\"x\":12,\"y\":15},{\"x\":12,\"y\":14},{\"x\":13,\"y\":15},{\"x\":14,\"y\":15},{\"x\":14,\"y\":14},{\"x\":15,\"y\":15},{\"x\":15,\"y\":14},{\"x\":16,\"y\":15},{\"x\":16,\"y\":14},{\"x\":17,\"y\":0},{\"x\":17,\"y\":15},{\"x\":17,\"y\":14},{\"x\":18,\"y\":0},{\"x\":18,\"y\":15},{\"x\":19,\"y\":0},{\"x\":19,\"y\":15},{\"x\":19,\"y\":14},{\"x\":20,\"y\":0},{\"x\":20,\"y\":15},{\"x\":20,\"y\":14},{\"x\":21,\"y\":0},{\"x\":21,\"y\":15},{\"x\":21,\"y\":14},{\"x\":22,\"y\":0},{\"x\":22,\"y\":15},{\"x\":22,\"y\":14},{\"x\":23,\"y\":0},{\"x\":23,\"y\":15},{\"x\":24,\"y\":0},{\"x\":24,\"y\":15},{\"x\":24,\"y\":14},{\"x\":25,\"y\":0},{\"x\":25,\"y\":15},{\"x\":25,\"y\":14},{\"x\":26,\"y\":0},{\"x\":26,\"y\":15},{\"x\":26,\"y\":14},{\"x\":27,\"y\":0},{\"x\":27,\"y\":15},{\"x\":27,\"y\":14},{\"x\":0,\"y\":1},{\"x\":27,\"y\":1},{\"x\":0,\"y\":2},{\"x\":27,\"y\":2},{\"x\":1,\"y\":2},{\"x\":26,\"y\":2},{\"x\":0,\"y\":3},{\"x\":1,\"y\":3},{\"x\":0,\"y\":7},{\"x\":1,\"y\":7},{\"x\":0,\"y\":8},{\"x\":1,\"y\":8},{\"x\":0,\"y\":9},{\"x\":0,\"y\":10},{\"x\":1,\"y\":10},{\"x\":0,\"y\":11},{\"x\":1,\"y\":11},{\"x\":0,\"y\":12},{\"x\":1,\"y\":12},{\"x\":0,\"y\":13},{\"x\":27,\"y\":13},{\"x\":5,\"y\":1},{\"x\":18,\"y\":1},{\"x\":19,\"y\":1},{\"x\":20,\"y\":1},{\"x\":19,\"y\":2},{\"x\":20,\"y\":2},{\"x\":21,\"y\":1},{\"x\":24,\"y\":1},{\"x\":25,\"y\":1},{\"x\":24,\"y\":2},{\"x\":10,\"y\":8},{\"x\":11,\"y\":8},{\"x\":18,\"y\":4},{\"x\":19,\"y\":4},{\"x\":20,\"y\":4},{\"x\":18,\"y\":5},{\"x\":19,\"y\":5},{\"x\":20,\"y\":5},{\"x\":21,\"y\":5},{\"x\":19,\"y\":6},{\"x\":20,\"y\":6},{\"x\":21,\"y\":6},{\"x\":20,\"y\":7},{\"x\":22,\"y\":7},{\"x\":1,\"y\":9},{\"x\":2,\"y\":9},{\"x\":11,\"y\":12},{\"x\":12,\"y\":12},{\"x\":13,\"y\":12},{\"x\":12,\"y\":13},{\"x\":13,\"y\":13},{\"x\":18,\"y\":13},{\"x\":19,\"y\":13},{\"x\":21,\"y\":13},{\"x\":22,\"y\":13},{\"x\":23,\"y\":13},{\"x\":24,\"y\":13},{\"x\":25,\"y\":12},{\"x\":28,\"y\":0},{\"x\":28,\"y\":15},{\"x\":28,\"y\":14},{\"x\":29,\"y\":0},{\"x\":29,\"y\":15},{\"x\":29,\"y\":14},{\"x\":30,\"y\":0},{\"x\":30,\"y\":15},{\"x\":31,\"y\":0},{\"x\":31,\"y\":15},{\"x\":31,\"y\":1},{\"x\":31,\"y\":2},{\"x\":31,\"y\":3},{\"x\":31,\"y\":4},{\"x\":29,\"y\":1},{\"x\":30,\"y\":2},{\"x\":29,\"y\":3},{\"x\":30,\"y\":4},{\"x\":32,\"y\":0},{\"x\":32,\"y\":1},{\"x\":32,\"y\":15},{\"x\":33,\"y\":0},{\"x\":33,\"y\":1},{\"x\":33,\"y\":15},{\"x\":34,\"y\":0},{\"x\":34,\"y\":1},{\"x\":34,\"y\":15},{\"x\":35,\"y\":0},{\"x\":35,\"y\":1},{\"x\":35,\"y\":15},{\"x\":36,\"y\":0},{\"x\":36,\"y\":1},{\"x\":36,\"y\":15},{\"x\":37,\"y\":0},{\"x\":37,\"y\":1},{\"x\":37,\"y\":15},{\"x\":38,\"y\":0},{\"x\":38,\"y\":1},{\"x\":38,\"y\":15},{\"x\":39,\"y\":0},{\"x\":39,\"y\":1},{\"x\":39,\"y\":15},{\"x\":39,\"y\":2},{\"x\":39,\"y\":3},{\"x\":39,\"y\":4},{\"x\":39,\"y\":5},{\"x\":39,\"y\":6},{\"x\":39,\"y\":7},{\"x\":39,\"y\":8},{\"x\":39,\"y\":9},{\"x\":39,\"y\":10},{\"x\":39,\"y\":11},{\"x\":39,\"y\":12},{\"x\":39,\"y\":13},{\"x\":39,\"y\":14},{\"x\":33,\"y\":2},{\"x\":34,\"y\":2},{\"x\":36,\"y\":2},{\"x\":37,\"y\":3},{\"x\":38,\"y\":3},{\"x\":34,\"y\":4},{\"x\":35,\"y\":4},{\"x\":37,\"y\":5},{\"x\":38,\"y\":6},{\"x\":35,\"y\":8},{\"x\":37,\"y\":8},{\"x\":17,\"y\":2},{\"x\":23,\"y\":3},{\"x\":3,\"y\":9},{\"x\":16,\"y\":13},{\"x\":24,\"y\":12},{\"x\":30,\"y\":5},{\"x\":33,\"y\":3},{\"x\":36,\"y\":7},{\"x\":2,\"y\":1},{\"x\":3,\"y\":1},{\"x\":4,\"y\":1},{\"x\":2,\"y\":2},{\"x\":3,\"y\":2},{\"x\":4,\"y\":2},{\"x\":2,\"y\":3},{\"x\":3,\"y\":3},{\"x\":4,\"y\":3}],\"maraTarget\":1,\"settlement\":{\"workshopBuilt\":true,\"frostResearched\":true,\"builtAt\":49},\"wisp\":true,\"towers\":[[\"cell-10-3\",1,10,false],[\"cell-14-7\",4,9,false],[\"cell-7-6\",1,10,false],[\"tower-02\",2,3,false],[\"tower-09\",3,10,false],[\"tower-start\",1,10,true]]}",
+        "rulesVersion": 11,
+        "rewardGold": 3951,
+        "rewardRemainderUnits": 200,
+        "durationMs": 49350
+      },
+      "clears": [
+        {
+          "wave": 1,
+          "at": 9,
+          "seconds": 10,
+          "gold": 70
+        },
+        {
+          "wave": 2,
+          "at": 21,
+          "seconds": 12,
+          "gold": 80
+        },
+        {
+          "wave": 3,
+          "at": 34,
+          "seconds": 13,
+          "gold": 90
+        },
+        {
+          "wave": 4,
+          "at": 49,
+          "seconds": 15,
+          "gold": 109
+        },
+        {
+          "wave": 5,
+          "at": 64,
+          "seconds": 15,
+          "gold": 119
+        },
+        {
+          "wave": 6,
+          "at": 78,
+          "seconds": 14,
+          "gold": 168.29999999999995
+        },
+        {
+          "wave": 7,
+          "at": 93,
+          "seconds": 15,
+          "gold": 188.10000000000002
+        },
+        {
+          "wave": 8,
+          "at": 105,
+          "seconds": 12,
+          "gold": 196.89999999999998
+        },
+        {
+          "wave": 9,
+          "at": 118,
+          "seconds": 13,
+          "gold": 217.79999999999995
+        },
+        {
+          "wave": 10,
+          "at": 132,
+          "seconds": 14,
+          "gold": 225.5
+        },
+        {
+          "wave": 11,
+          "at": 149,
+          "seconds": 17,
+          "gold": 273.9000000000001
+        },
+        {
+          "wave": 12,
+          "at": 162,
+          "seconds": 13,
+          "gold": 254.0999999999999
+        },
+        {
+          "wave": 13,
+          "at": 184,
+          "seconds": 22,
+          "gold": 305.8000000000002
+        },
+        {
+          "wave": 14,
+          "at": 202,
+          "seconds": 18,
+          "gold": 282.6999999999998
+        },
+        {
+          "wave": 15,
+          "at": 250,
+          "seconds": 48,
+          "gold": 977.7000000000003
+        },
+        {
+          "wave": 16,
+          "at": 271,
+          "seconds": 21,
+          "gold": 710.5999999999995
+        },
+        {
+          "wave": 17,
+          "at": 296,
+          "seconds": 25,
+          "gold": 707.3000000000002
+        },
+        {
+          "wave": 18,
+          "at": 317,
+          "seconds": 21,
+          "gold": 763.4000000000005
+        },
+        {
+          "wave": 19,
+          "at": 343,
+          "seconds": 26,
+          "gold": 856.8999999999996
+        },
+        {
+          "wave": 20,
+          "at": 367,
+          "seconds": 24,
+          "gold": 914.1000000000004
+        },
+        {
+          "wave": 21,
+          "at": 392,
+          "seconds": 25,
+          "gold": 1115.3999999999996
+        },
+        {
+          "wave": 22,
+          "at": 413,
+          "seconds": 21,
+          "gold": 1235.2999999999993
+        },
+        {
+          "wave": 23,
+          "at": 436,
+          "seconds": 23,
+          "gold": 1167.1000000000004
+        },
+        {
+          "wave": 24,
+          "at": 461,
+          "seconds": 25,
+          "gold": 1270.5
+        },
+        {
+          "wave": 25,
+          "at": 509,
+          "seconds": 48,
+          "gold": 2114.1000000000004
+        },
+        {
+          "wave": 26,
+          "at": 533,
+          "seconds": 24,
+          "gold": 1346.3999999999996
+        },
+        {
+          "wave": 27,
+          "at": 557,
+          "seconds": 24,
+          "gold": 1590.6000000000004
+        },
+        {
+          "wave": 28,
+          "at": 582,
+          "seconds": 25,
+          "gold": 1499.2999999999993
+        },
+        {
+          "wave": 29,
+          "at": 609,
+          "seconds": 27,
+          "gold": 1689.6000000000022
+        },
+        {
+          "wave": 30,
+          "at": 637,
+          "seconds": 28,
+          "gold": 1783.0999999999985
+        },
+        {
+          "wave": 31,
+          "at": 667,
+          "seconds": 30,
+          "gold": 1619.2000000000007
+        },
+        {
+          "wave": 32,
+          "at": 708,
+          "seconds": 41,
+          "gold": 1892
+        },
+        {
+          "wave": 33,
+          "at": 735,
+          "seconds": 27,
+          "gold": 1975.5999999999985
+        },
+        {
+          "wave": 34,
+          "at": 764,
+          "seconds": 29,
+          "gold": 1795.2000000000007
+        },
+        {
+          "wave": 35,
+          "at": 799,
+          "seconds": 35,
+          "gold": 1751.2000000000007
+        },
+        {
+          "wave": 36,
+          "at": 843,
+          "seconds": 44,
+          "gold": 1522.3999999999978
+        },
+        {
+          "wave": 37,
+          "at": 883,
+          "seconds": 40,
+          "gold": 1469.5999999999985
+        },
+        {
+          "wave": 38,
+          "at": 934,
+          "seconds": 51,
+          "gold": 1826
+        },
+        {
+          "wave": 39,
+          "at": 983,
+          "seconds": 49,
+          "gold": 1333.2000000000044
+        },
+        {
+          "wave": 40,
+          "at": 1033,
+          "seconds": 50,
+          "gold": 1570.7999999999956
+        }
+      ],
+      "purchases": [
+        {
+          "at": 0,
+          "type": "build",
+          "pad": "cell-7-6",
+          "kind": 1,
+          "gold": 0
+        },
+        {
+          "at": 9,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 10
+        },
+        {
+          "at": 21,
+          "type": "build",
+          "pad": "cell-10-3",
+          "kind": 1,
+          "gold": 15
+        },
+        {
+          "at": 49,
+          "type": "workshop",
+          "gold": 14
+        },
+        {
+          "at": 60,
+          "type": "research",
+          "gold": 8
+        },
+        {
+          "at": 72,
+          "type": "build",
+          "pad": "tower-02",
+          "kind": 2,
+          "gold": 8
+        },
+        {
+          "at": 83,
+          "type": "build",
+          "pad": "tower-09",
+          "kind": 3,
+          "gold": 8
+        },
+        {
+          "at": 89,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 6
+        },
+        {
+          "at": 93,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 30
+        },
+        {
+          "at": 100,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 0
+        },
+        {
+          "at": 105,
+          "type": "upgrade",
+          "uid": 42,
+          "gold": 73
+        },
+        {
+          "at": 110,
+          "type": "upgrade",
+          "uid": 42,
+          "gold": 3
+        },
+        {
+          "at": 115,
+          "type": "upgrade",
+          "uid": 187,
+          "gold": 2
+        },
+        {
+          "at": 118,
+          "type": "upgrade",
+          "uid": 224,
+          "gold": 77
+        },
+        {
+          "at": 128,
+          "type": "upgrade",
+          "uid": 224,
+          "gold": 7
+        },
+        {
+          "at": 162,
+          "type": "warehouse",
+          "gold": 11
+        },
+        {
+          "at": 184,
+          "type": "build",
+          "pad": "cell-14-7",
+          "kind": 4,
+          "gold": 147
+        },
+        {
+          "at": 185,
+          "type": "upgrade",
+          "uid": 693,
+          "gold": 87
+        },
+        {
+          "at": 199,
+          "type": "upgrade",
+          "uid": 693,
+          "gold": 15
+        },
+        {
+          "at": 250,
+          "type": "upgrade",
+          "uid": 693,
+          "gold": 751
+        },
+        {
+          "at": 251,
+          "type": "upgrade",
+          "uid": 224,
+          "gold": 447
+        },
+        {
+          "at": 252,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 278
+        },
+        {
+          "at": 253,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 109
+        },
+        {
+          "at": 261,
+          "type": "upgrade",
+          "uid": 42,
+          "gold": 24
+        },
+        {
+          "at": 296,
+          "type": "workshop2",
+          "gold": 158
+        },
+        {
+          "at": 314,
+          "type": "upgrade",
+          "uid": 224,
+          "gold": 0
+        },
+        {
+          "at": 343,
+          "type": "upgrade",
+          "uid": 224,
+          "gold": 248
+        },
+        {
+          "at": 375,
+          "type": "upgrade",
+          "uid": 224,
+          "gold": 13
+        },
+        {
+          "at": 381,
+          "type": "upgrade",
+          "uid": 187,
+          "gold": 49
+        },
+        {
+          "at": 387,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 14
+        },
+        {
+          "at": 392,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 350
+        },
+        {
+          "at": 393,
+          "type": "upgrade",
+          "uid": 42,
+          "gold": 46
+        },
+        {
+          "at": 413,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 734
+        },
+        {
+          "at": 414,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 187
+        },
+        {
+          "at": 428,
+          "type": "upgrade",
+          "uid": 42,
+          "gold": 28
+        },
+        {
+          "at": 436,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 151
+        },
+        {
+          "at": 455,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 56
+        },
+        {
+          "at": 461,
+          "type": "upgrade",
+          "uid": 42,
+          "gold": 110
+        },
+        {
+          "at": 509,
+          "type": "upgrade",
+          "uid": 693,
+          "gold": 1535
+        },
+        {
+          "at": 510,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 669
+        },
+        {
+          "at": 520,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 23
+        },
+        {
+          "at": 533,
+          "type": "upgrade",
+          "uid": 42,
+          "gold": 283
+        },
+        {
+          "at": 557,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 731
+        },
+        {
+          "at": 572,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 5
+        },
+        {
+          "at": 588,
+          "type": "upgrade",
+          "uid": 42,
+          "gold": 7
+        },
+        {
+          "at": 609,
+          "type": "upgrade",
+          "uid": 693,
+          "gold": 395
+        },
+        {
+          "at": 637,
+          "type": "upgrade",
+          "uid": 693,
+          "gold": 690
+        },
+        {
+          "at": 664,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 74
+        },
+        {
+          "at": 698,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 15
+        },
+        {
+          "at": 722,
+          "type": "upgrade",
+          "uid": 42,
+          "gold": 31
+        },
+        {
+          "at": 735,
+          "type": "upgrade",
+          "uid": 224,
+          "gold": 91
+        },
+        {
+          "at": 772,
+          "type": "upgrade",
+          "uid": 693,
+          "gold": 14
+        },
+        {
+          "at": 828,
+          "type": "upgrade",
+          "uid": 224,
+          "gold": 68
+        },
+        {
+          "at": 883,
+          "type": "upgrade",
+          "uid": 693,
+          "gold": 15
+        },
+        {
+          "at": 983,
+          "type": "upgrade",
+          "uid": 224,
+          "gold": 457
+        }
+      ]
+    },
+    {
+      "approach": "area",
+      "seconds": 1063,
+      "record": 40,
+      "milestones": {
+        "wave1": 9,
+        "wave2": 21,
+        "wave3": 37,
+        "wave4": 57,
+        "wave5": 78,
+        "wave6": 98,
+        "wave7": 115,
+        "wave8": 128,
+        "wave9": 144,
+        "wave10": 160,
+        "wave11": 178,
+        "wave12": 192,
+        "wave13": 214,
+        "wave14": 233,
+        "boss15": 290,
+        "wave15": 290,
+        "wave16": 311,
+        "wave17": 335,
+        "wave18": 356,
+        "wave19": 382,
+        "wave20": 404,
+        "wave21": 428,
+        "wave22": 452,
+        "wave23": 474,
+        "wave24": 500,
+        "boss25": 558,
+        "wave25": 558,
+        "wave26": 582,
+        "wave27": 607,
+        "wave28": 634,
+        "wave29": 661,
+        "wave30": 690,
+        "wave31": 718,
+        "wave32": 748,
+        "wave33": 776,
+        "wave34": 808,
+        "wave35": 838,
+        "wave36": 882,
+        "wave37": 913,
+        "wave38": 964,
+        "wave39": 1013,
+        "wave40": 1063
+      },
+      "losses": [],
+      "levels": [
+        {
+          "kind": 1,
+          "pad": "tower-start",
+          "level": 10
+        },
+        {
+          "kind": 1,
+          "pad": "tower-03",
+          "level": 10
+        },
+        {
+          "kind": 2,
+          "pad": "tower-02",
+          "level": 3
+        },
+        {
+          "kind": 3,
+          "pad": "tower-09",
+          "level": 10
+        },
+        {
+          "kind": 3,
+          "pad": "cell-10-3",
+          "level": 9
+        },
+        {
+          "kind": 4,
+          "pad": "cell-14-7",
+          "level": 9
+        }
+      ],
+      "farm": {
+        "wave": 33,
+        "fingerprint": "{\"rulesVersion\":11,\"layoutVersion\":5,\"layout\":{\"columns\":40,\"plots\":{\"workshop\":{\"x\":30,\"y\":11},\"warehouse\":{\"x\":34,\"y\":12}}},\"blocked\":[{\"x\":0,\"y\":0},{\"x\":0,\"y\":15},{\"x\":0,\"y\":14},{\"x\":1,\"y\":0},{\"x\":1,\"y\":15},{\"x\":1,\"y\":14},{\"x\":2,\"y\":0},{\"x\":2,\"y\":15},{\"x\":2,\"y\":14},{\"x\":3,\"y\":0},{\"x\":3,\"y\":15},{\"x\":4,\"y\":0},{\"x\":4,\"y\":15},{\"x\":4,\"y\":14},{\"x\":5,\"y\":0},{\"x\":5,\"y\":15},{\"x\":5,\"y\":14},{\"x\":6,\"y\":15},{\"x\":6,\"y\":14},{\"x\":7,\"y\":15},{\"x\":7,\"y\":14},{\"x\":8,\"y\":15},{\"x\":9,\"y\":15},{\"x\":9,\"y\":14},{\"x\":10,\"y\":15},{\"x\":10,\"y\":14},{\"x\":11,\"y\":15},{\"x\":11,\"y\":14},{\"x\":12,\"y\":15},{\"x\":12,\"y\":14},{\"x\":13,\"y\":15},{\"x\":14,\"y\":15},{\"x\":14,\"y\":14},{\"x\":15,\"y\":15},{\"x\":15,\"y\":14},{\"x\":16,\"y\":15},{\"x\":16,\"y\":14},{\"x\":17,\"y\":0},{\"x\":17,\"y\":15},{\"x\":17,\"y\":14},{\"x\":18,\"y\":0},{\"x\":18,\"y\":15},{\"x\":19,\"y\":0},{\"x\":19,\"y\":15},{\"x\":19,\"y\":14},{\"x\":20,\"y\":0},{\"x\":20,\"y\":15},{\"x\":20,\"y\":14},{\"x\":21,\"y\":0},{\"x\":21,\"y\":15},{\"x\":21,\"y\":14},{\"x\":22,\"y\":0},{\"x\":22,\"y\":15},{\"x\":22,\"y\":14},{\"x\":23,\"y\":0},{\"x\":23,\"y\":15},{\"x\":24,\"y\":0},{\"x\":24,\"y\":15},{\"x\":24,\"y\":14},{\"x\":25,\"y\":0},{\"x\":25,\"y\":15},{\"x\":25,\"y\":14},{\"x\":26,\"y\":0},{\"x\":26,\"y\":15},{\"x\":26,\"y\":14},{\"x\":27,\"y\":0},{\"x\":27,\"y\":15},{\"x\":27,\"y\":14},{\"x\":0,\"y\":1},{\"x\":27,\"y\":1},{\"x\":0,\"y\":2},{\"x\":27,\"y\":2},{\"x\":1,\"y\":2},{\"x\":26,\"y\":2},{\"x\":0,\"y\":3},{\"x\":1,\"y\":3},{\"x\":0,\"y\":7},{\"x\":1,\"y\":7},{\"x\":0,\"y\":8},{\"x\":1,\"y\":8},{\"x\":0,\"y\":9},{\"x\":0,\"y\":10},{\"x\":1,\"y\":10},{\"x\":0,\"y\":11},{\"x\":1,\"y\":11},{\"x\":0,\"y\":12},{\"x\":1,\"y\":12},{\"x\":0,\"y\":13},{\"x\":27,\"y\":13},{\"x\":5,\"y\":1},{\"x\":18,\"y\":1},{\"x\":19,\"y\":1},{\"x\":20,\"y\":1},{\"x\":19,\"y\":2},{\"x\":20,\"y\":2},{\"x\":21,\"y\":1},{\"x\":24,\"y\":1},{\"x\":25,\"y\":1},{\"x\":24,\"y\":2},{\"x\":10,\"y\":8},{\"x\":11,\"y\":8},{\"x\":18,\"y\":4},{\"x\":19,\"y\":4},{\"x\":20,\"y\":4},{\"x\":18,\"y\":5},{\"x\":19,\"y\":5},{\"x\":20,\"y\":5},{\"x\":21,\"y\":5},{\"x\":19,\"y\":6},{\"x\":20,\"y\":6},{\"x\":21,\"y\":6},{\"x\":20,\"y\":7},{\"x\":22,\"y\":7},{\"x\":1,\"y\":9},{\"x\":2,\"y\":9},{\"x\":11,\"y\":12},{\"x\":12,\"y\":12},{\"x\":13,\"y\":12},{\"x\":12,\"y\":13},{\"x\":13,\"y\":13},{\"x\":18,\"y\":13},{\"x\":19,\"y\":13},{\"x\":21,\"y\":13},{\"x\":22,\"y\":13},{\"x\":23,\"y\":13},{\"x\":24,\"y\":13},{\"x\":25,\"y\":12},{\"x\":28,\"y\":0},{\"x\":28,\"y\":15},{\"x\":28,\"y\":14},{\"x\":29,\"y\":0},{\"x\":29,\"y\":15},{\"x\":29,\"y\":14},{\"x\":30,\"y\":0},{\"x\":30,\"y\":15},{\"x\":31,\"y\":0},{\"x\":31,\"y\":15},{\"x\":31,\"y\":1},{\"x\":31,\"y\":2},{\"x\":31,\"y\":3},{\"x\":31,\"y\":4},{\"x\":29,\"y\":1},{\"x\":30,\"y\":2},{\"x\":29,\"y\":3},{\"x\":30,\"y\":4},{\"x\":32,\"y\":0},{\"x\":32,\"y\":1},{\"x\":32,\"y\":15},{\"x\":33,\"y\":0},{\"x\":33,\"y\":1},{\"x\":33,\"y\":15},{\"x\":34,\"y\":0},{\"x\":34,\"y\":1},{\"x\":34,\"y\":15},{\"x\":35,\"y\":0},{\"x\":35,\"y\":1},{\"x\":35,\"y\":15},{\"x\":36,\"y\":0},{\"x\":36,\"y\":1},{\"x\":36,\"y\":15},{\"x\":37,\"y\":0},{\"x\":37,\"y\":1},{\"x\":37,\"y\":15},{\"x\":38,\"y\":0},{\"x\":38,\"y\":1},{\"x\":38,\"y\":15},{\"x\":39,\"y\":0},{\"x\":39,\"y\":1},{\"x\":39,\"y\":15},{\"x\":39,\"y\":2},{\"x\":39,\"y\":3},{\"x\":39,\"y\":4},{\"x\":39,\"y\":5},{\"x\":39,\"y\":6},{\"x\":39,\"y\":7},{\"x\":39,\"y\":8},{\"x\":39,\"y\":9},{\"x\":39,\"y\":10},{\"x\":39,\"y\":11},{\"x\":39,\"y\":12},{\"x\":39,\"y\":13},{\"x\":39,\"y\":14},{\"x\":33,\"y\":2},{\"x\":34,\"y\":2},{\"x\":36,\"y\":2},{\"x\":37,\"y\":3},{\"x\":38,\"y\":3},{\"x\":34,\"y\":4},{\"x\":35,\"y\":4},{\"x\":37,\"y\":5},{\"x\":38,\"y\":6},{\"x\":35,\"y\":8},{\"x\":37,\"y\":8},{\"x\":17,\"y\":2},{\"x\":23,\"y\":3},{\"x\":3,\"y\":9},{\"x\":16,\"y\":13},{\"x\":24,\"y\":12},{\"x\":30,\"y\":5},{\"x\":33,\"y\":3},{\"x\":36,\"y\":7},{\"x\":2,\"y\":1},{\"x\":3,\"y\":1},{\"x\":4,\"y\":1},{\"x\":2,\"y\":2},{\"x\":3,\"y\":2},{\"x\":4,\"y\":2},{\"x\":2,\"y\":3},{\"x\":3,\"y\":3},{\"x\":4,\"y\":3}],\"maraTarget\":1,\"settlement\":{\"workshopBuilt\":true,\"frostResearched\":true,\"builtAt\":46},\"wisp\":true,\"towers\":[[\"cell-10-3\",3,9,false],[\"cell-14-7\",4,9,false],[\"tower-02\",2,3,false],[\"tower-03\",1,10,false],[\"tower-09\",3,10,false],[\"tower-start\",1,10,true]]}",
+        "rulesVersion": 11,
+        "rewardGold": 3951,
+        "rewardRemainderUnits": 200,
+        "durationMs": 52500
+      },
+      "clears": [
+        {
+          "wave": 1,
+          "at": 9,
+          "seconds": 10,
+          "gold": 70
+        },
+        {
+          "wave": 2,
+          "at": 21,
+          "seconds": 12,
+          "gold": 80
+        },
+        {
+          "wave": 3,
+          "at": 37,
+          "seconds": 16,
+          "gold": 90
+        },
+        {
+          "wave": 4,
+          "at": 57,
+          "seconds": 20,
+          "gold": 109
+        },
+        {
+          "wave": 5,
+          "at": 78,
+          "seconds": 21,
+          "gold": 119
+        },
+        {
+          "wave": 6,
+          "at": 98,
+          "seconds": 20,
+          "gold": 168.29999999999995
+        },
+        {
+          "wave": 7,
+          "at": 115,
+          "seconds": 17,
+          "gold": 188.10000000000002
+        },
+        {
+          "wave": 8,
+          "at": 128,
+          "seconds": 13,
+          "gold": 196.89999999999998
+        },
+        {
+          "wave": 9,
+          "at": 144,
+          "seconds": 16,
+          "gold": 217.79999999999995
+        },
+        {
+          "wave": 10,
+          "at": 160,
+          "seconds": 16,
+          "gold": 225.5
+        },
+        {
+          "wave": 11,
+          "at": 178,
+          "seconds": 18,
+          "gold": 273.9000000000001
+        },
+        {
+          "wave": 12,
+          "at": 192,
+          "seconds": 14,
+          "gold": 254.0999999999999
+        },
+        {
+          "wave": 13,
+          "at": 214,
+          "seconds": 22,
+          "gold": 305.8000000000002
+        },
+        {
+          "wave": 14,
+          "at": 233,
+          "seconds": 19,
+          "gold": 282.6999999999998
+        },
+        {
+          "wave": 15,
+          "at": 290,
+          "seconds": 57,
+          "gold": 977.7000000000003
+        },
+        {
+          "wave": 16,
+          "at": 311,
+          "seconds": 21,
+          "gold": 710.5999999999995
+        },
+        {
+          "wave": 17,
+          "at": 335,
+          "seconds": 24,
+          "gold": 707.3000000000002
+        },
+        {
+          "wave": 18,
+          "at": 356,
+          "seconds": 21,
+          "gold": 763.4000000000005
+        },
+        {
+          "wave": 19,
+          "at": 382,
+          "seconds": 26,
+          "gold": 856.8999999999996
+        },
+        {
+          "wave": 20,
+          "at": 404,
+          "seconds": 22,
+          "gold": 914.1000000000004
+        },
+        {
+          "wave": 21,
+          "at": 428,
+          "seconds": 24,
+          "gold": 1115.3999999999996
+        },
+        {
+          "wave": 22,
+          "at": 452,
+          "seconds": 24,
+          "gold": 1235.2999999999993
+        },
+        {
+          "wave": 23,
+          "at": 474,
+          "seconds": 22,
+          "gold": 1167.1000000000004
+        },
+        {
+          "wave": 24,
+          "at": 500,
+          "seconds": 26,
+          "gold": 1270.5
+        },
+        {
+          "wave": 25,
+          "at": 558,
+          "seconds": 58,
+          "gold": 2114.1000000000004
+        },
+        {
+          "wave": 26,
+          "at": 582,
+          "seconds": 24,
+          "gold": 1346.3999999999996
+        },
+        {
+          "wave": 27,
+          "at": 607,
+          "seconds": 25,
+          "gold": 1590.6000000000004
+        },
+        {
+          "wave": 28,
+          "at": 634,
+          "seconds": 27,
+          "gold": 1499.2999999999993
+        },
+        {
+          "wave": 29,
+          "at": 661,
+          "seconds": 27,
+          "gold": 1689.6000000000022
+        },
+        {
+          "wave": 30,
+          "at": 690,
+          "seconds": 29,
+          "gold": 1783.0999999999985
+        },
+        {
+          "wave": 31,
+          "at": 718,
+          "seconds": 28,
+          "gold": 1619.2000000000007
+        },
+        {
+          "wave": 32,
+          "at": 748,
+          "seconds": 30,
+          "gold": 1892
+        },
+        {
+          "wave": 33,
+          "at": 776,
+          "seconds": 28,
+          "gold": 1975.5999999999985
+        },
+        {
+          "wave": 34,
+          "at": 808,
+          "seconds": 32,
+          "gold": 1795.2000000000007
+        },
+        {
+          "wave": 35,
+          "at": 838,
+          "seconds": 30,
+          "gold": 1751.2000000000007
+        },
+        {
+          "wave": 36,
+          "at": 882,
+          "seconds": 44,
+          "gold": 1746.7999999999993
+        },
+        {
+          "wave": 37,
+          "at": 913,
+          "seconds": 31,
+          "gold": 1821.5999999999985
+        },
+        {
+          "wave": 38,
+          "at": 964,
+          "seconds": 51,
+          "gold": 1927.2000000000044
+        },
+        {
+          "wave": 39,
+          "at": 1013,
+          "seconds": 49,
+          "gold": 1597.199999999997
+        },
+        {
+          "wave": 40,
+          "at": 1063,
+          "seconds": 50,
+          "gold": 1702.800000000003
+        }
+      ],
+      "purchases": [
+        {
+          "at": 0,
+          "type": "build",
+          "pad": "tower-03",
+          "kind": 1,
+          "gold": 0
+        },
+        {
+          "at": 9,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 10
+        },
+        {
+          "at": 46,
+          "type": "workshop",
+          "gold": 7
+        },
+        {
+          "at": 57,
+          "type": "research",
+          "gold": 29
+        },
+        {
+          "at": 77,
+          "type": "build",
+          "pad": "tower-02",
+          "kind": 2,
+          "gold": 0
+        },
+        {
+          "at": 98,
+          "type": "build",
+          "pad": "tower-09",
+          "kind": 3,
+          "gold": 71
+        },
+        {
+          "at": 99,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 11
+        },
+        {
+          "at": 114,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 21
+        },
+        {
+          "at": 115,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 11
+        },
+        {
+          "at": 123,
+          "type": "upgrade",
+          "uid": 161,
+          "gold": 6
+        },
+        {
+          "at": 127,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 1
+        },
+        {
+          "at": 140,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 2
+        },
+        {
+          "at": 160,
+          "type": "build",
+          "pad": "cell-10-3",
+          "kind": 3,
+          "gold": 227
+        },
+        {
+          "at": 161,
+          "type": "upgrade",
+          "uid": 434,
+          "gold": 167
+        },
+        {
+          "at": 164,
+          "type": "upgrade",
+          "uid": 434,
+          "gold": 7
+        },
+        {
+          "at": 211,
+          "type": "warehouse",
+          "gold": 2
+        },
+        {
+          "at": 214,
+          "type": "build",
+          "pad": "cell-14-7",
+          "kind": 4,
+          "gold": 12
+        },
+        {
+          "at": 223,
+          "type": "upgrade",
+          "uid": 655,
+          "gold": 10
+        },
+        {
+          "at": 233,
+          "type": "upgrade",
+          "uid": 655,
+          "gold": 22
+        },
+        {
+          "at": 290,
+          "type": "upgrade",
+          "uid": 655,
+          "gold": 616
+        },
+        {
+          "at": 291,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 312
+        },
+        {
+          "at": 292,
+          "type": "upgrade",
+          "uid": 434,
+          "gold": 8
+        },
+        {
+          "at": 307,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 59
+        },
+        {
+          "at": 311,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 381
+        },
+        {
+          "at": 346,
+          "type": "workshop2",
+          "gold": 19
+        },
+        {
+          "at": 356,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 105
+        },
+        {
+          "at": 389,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 13
+        },
+        {
+          "at": 419,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 12
+        },
+        {
+          "at": 425,
+          "type": "upgrade",
+          "uid": 161,
+          "gold": 48
+        },
+        {
+          "at": 428,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 384
+        },
+        {
+          "at": 429,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 80
+        },
+        {
+          "at": 450,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 5
+        },
+        {
+          "at": 452,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 221
+        },
+        {
+          "at": 466,
+          "type": "upgrade",
+          "uid": 434,
+          "gold": 62
+        },
+        {
+          "at": 474,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 185
+        },
+        {
+          "at": 492,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 18
+        },
+        {
+          "at": 500,
+          "type": "upgrade",
+          "uid": 655,
+          "gold": 111
+        },
+        {
+          "at": 558,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 666
+        },
+        {
+          "at": 570,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 49
+        },
+        {
+          "at": 582,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 280
+        },
+        {
+          "at": 605,
+          "type": "upgrade",
+          "uid": 434,
+          "gold": 47
+        },
+        {
+          "at": 620,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 17
+        },
+        {
+          "at": 634,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 100
+        },
+        {
+          "at": 661,
+          "type": "upgrade",
+          "uid": 434,
+          "gold": 609
+        },
+        {
+          "at": 687,
+          "type": "upgrade",
+          "uid": 655,
+          "gold": 20
+        },
+        {
+          "at": 704,
+          "type": "upgrade",
+          "uid": 655,
+          "gold": 25
+        },
+        {
+          "at": 739,
+          "type": "upgrade",
+          "uid": 1,
+          "gold": 215
+        },
+        {
+          "at": 748,
+          "type": "upgrade",
+          "uid": 2,
+          "gold": 158
+        },
+        {
+          "at": 776,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 76
+        },
+        {
+          "at": 808,
+          "type": "upgrade",
+          "uid": 434,
+          "gold": 312
+        },
+        {
+          "at": 838,
+          "type": "upgrade",
+          "uid": 655,
+          "gold": 99
+        },
+        {
+          "at": 894,
+          "type": "upgrade",
+          "uid": 434,
+          "gold": 17
+        },
+        {
+          "at": 964,
+          "type": "upgrade",
+          "uid": 221,
+          "gold": 820
+        },
+        {
+          "at": 1028,
+          "type": "upgrade",
+          "uid": 655,
+          "gold": 14
+        }
+      ]
+    }
+  ],
+  "fixed": [
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 26,
+      "version": 10,
+      "win": true,
+      "leaks": 3,
+      "seconds": 56.474999999997976,
+      "reward": 1514.7000000000007,
+      "goldPerMinute": 1609.2430278885047
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 26,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 28.474999999999564,
+      "reward": 1346.3999999999996,
+      "goldPerMinute": 2837.0149253731765
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 27,
+      "version": 10,
+      "win": true,
+      "leaks": 5,
+      "seconds": 59.24999999999782,
+      "reward": 1467.3999999999996,
+      "goldPerMinute": 1485.974683544358
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 27,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 28.649999999999554,
+      "reward": 1590.6000000000004,
+      "goldPerMinute": 3331.0994764398433
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 28,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 41.57499999999882,
+      "reward": 1406.8999999999996,
+      "goldPerMinute": 2030.4028863500266
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 28,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 30.424999999999454,
+      "reward": 1499.2999999999993,
+      "goldPerMinute": 2956.7132292523115
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 29,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 34.44999999999923,
+      "reward": 1526.7999999999993,
+      "goldPerMinute": 2659.158200290334
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 29,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 37.34999999999906,
+      "reward": 1689.6000000000004,
+      "goldPerMinute": 2714.2168674699483
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 30,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 56.89999999999784
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 30,
+      "version": 11,
+      "win": true,
+      "leaks": 3,
+      "seconds": 50.849999999998296,
+      "reward": 1690.7000000000007,
+      "goldPerMinute": 1994.9262536873835
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 31,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 57.24999999999782
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 31,
+      "version": 11,
+      "win": true,
+      "leaks": 5,
+      "seconds": 48.29999999999844,
+      "reward": 1391.5,
+      "goldPerMinute": 1728.5714285714844
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 32,
+      "version": 10,
+      "win": true,
+      "leaks": 16,
+      "seconds": 53.149999999998165,
+      "reward": 980.1000000000004,
+      "goldPerMinute": 1106.415804327414
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 32,
+      "version": 11,
+      "win": true,
+      "leaks": 10,
+      "seconds": 61.3749999999977,
+      "reward": 1419,
+      "goldPerMinute": 1387.2097759674655
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 33,
+      "version": 10,
+      "win": true,
+      "leaks": 14,
+      "seconds": 47.57499999999848,
+      "reward": 1056,
+      "goldPerMinute": 1331.7919075144935
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 33,
+      "version": 11,
+      "win": true,
+      "leaks": 14,
+      "seconds": 52.999999999998174,
+      "reward": 1342,
+      "goldPerMinute": 1519.2452830189202
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 34,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 51.42499999999815
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 34,
+      "version": 11,
+      "win": true,
+      "leaks": 14,
+      "seconds": 45.99999999999857,
+      "reward": 1100,
+      "goldPerMinute": 1434.7826086956968
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 35,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 48.42499999999832
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 35,
+      "version": 11,
+      "win": true,
+      "leaks": 18,
+      "seconds": 49.42499999999838,
+      "reward": 1007.6000000000004,
+      "goldPerMinute": 1223.1866464340314
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 36,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 45.77499999999847
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 36,
+      "version": 11,
+      "win": false,
+      "leaks": 20,
+      "seconds": 47.77499999999836
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 37,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 41.824999999998695
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 37,
+      "version": 11,
+      "win": true,
+      "leaks": 18,
+      "seconds": 40.57499999999888,
+      "reward": 765.6000000000004,
+      "goldPerMinute": 1132.125693160845
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 38,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 47.474999999998374
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 38,
+      "version": 11,
+      "win": true,
+      "leaks": 18,
+      "seconds": 56.62499999999797,
+      "reward": 1421.2000000000007,
+      "goldPerMinute": 1505.9072847682667
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 39,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 47.22499999999839
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 39,
+      "version": 11,
+      "win": false,
+      "leaks": 20,
+      "seconds": 46.89999999999841
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 40,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 43.224999999998616
+    },
+    {
+      "approach": "balanced",
+      "stage": "mid",
+      "wave": 40,
+      "version": 11,
+      "win": false,
+      "leaks": 20,
+      "seconds": 47.449999999998376
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 26,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 34.349999999999234,
+      "reward": 1607.0999999999985,
+      "goldPerMinute": 2807.161572052462
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 26,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 23.24999999999986,
+      "reward": 1346.4000000000015,
+      "goldPerMinute": 3474.580645161315
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 27,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 35.724999999999156,
+      "reward": 1643.4000000000015,
+      "goldPerMinute": 2760.0839748076255
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 27,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 23.29999999999986,
+      "reward": 1590.5999999999985,
+      "goldPerMinute": 4095.9656652360727
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 28,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 31.599999999999387,
+      "reward": 1406.9000000000015,
+      "goldPerMinute": 2671.329113924105
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 28,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 25.89999999999971,
+      "reward": 1499.300000000003,
+      "goldPerMinute": 3473.2818532818987
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 29,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 28.599999999999557,
+      "reward": 1526.800000000003,
+      "goldPerMinute": 3203.076923076979
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 29,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 24.649999999999782,
+      "reward": 1689.5999999999985,
+      "goldPerMinute": 4112.616632860073
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 30,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 37.77499999999904,
+      "reward": 1868.9000000000015,
+      "goldPerMinute": 2968.471211118542
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 30,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 28.074999999999587,
+      "reward": 1783.0999999999985,
+      "goldPerMinute": 3810.721282279661
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 31,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 38.97499999999897,
+      "reward": 1994.300000000003,
+      "goldPerMinute": 3070.1218729955954
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 31,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 27.449999999999623,
+      "reward": 1619.2000000000044,
+      "goldPerMinute": 3539.234972677654
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 32,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 32.999999999999304,
+      "reward": 1602.7000000000044,
+      "goldPerMinute": 2914.0000000000696
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 32,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 27.64999999999961,
+      "reward": 1892,
+      "goldPerMinute": 4105.605786618503
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 33,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 30.724999999999437,
+      "reward": 1751.2000000000044,
+      "goldPerMinute": 3419.7558991050346
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 33,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 26.524999999999675,
+      "reward": 1975.5999999999985,
+      "goldPerMinute": 4468.8407163054235
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 34,
+      "version": 10,
+      "win": true,
+      "leaks": 13,
+      "seconds": 58.89999999999784,
+      "reward": 1522.4000000000015,
+      "goldPerMinute": 1550.8319185060006
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 34,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 32.12499999999936,
+      "reward": 1795.2000000000044,
+      "goldPerMinute": 3352.9027237354835
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 35,
+      "version": 10,
+      "win": true,
+      "leaks": 15,
+      "seconds": 59.24999999999782,
+      "reward": 1430,
+      "goldPerMinute": 1448.101265822838
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 35,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 33.349999999999284,
+      "reward": 1751.2000000000044,
+      "goldPerMinute": 3150.5847076462524
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 36,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 41.49999999999883,
+      "reward": 1676.4000000000015,
+      "goldPerMinute": 2423.7108433735643
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 36,
+      "version": 11,
+      "win": true,
+      "leaks": 8,
+      "seconds": 44.39999999999866,
+      "reward": 1672,
+      "goldPerMinute": 2259.4594594595274
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 37,
+      "version": 10,
+      "win": true,
+      "leaks": 6,
+      "seconds": 47.57499999999848,
+      "reward": 1482.800000000003,
+      "goldPerMinute": 1870.0578034682715
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 37,
+      "version": 11,
+      "win": true,
+      "leaks": 9,
+      "seconds": 40.57499999999888,
+      "reward": 1328.800000000003,
+      "goldPerMinute": 1964.9537892791714
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 38,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 56.89999999999784
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 38,
+      "version": 11,
+      "win": true,
+      "leaks": 6,
+      "seconds": 50.849999999998296,
+      "reward": 1821.5999999999985,
+      "goldPerMinute": 2149.3805309735217
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 39,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 52.024999999998116
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 39,
+      "version": 11,
+      "win": true,
+      "leaks": 11,
+      "seconds": 48.89999999999841,
+      "reward": 1333.2000000000044,
+      "goldPerMinute": 1635.8282208589544
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 40,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 51.149999999998165
+    },
+    {
+      "approach": "balanced",
+      "stage": "late",
+      "wave": 40,
+      "version": 11,
+      "win": true,
+      "leaks": 15,
+      "seconds": 49.974999999998346,
+      "reward": 1570.800000000003,
+      "goldPerMinute": 1885.9029514758038
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 26,
+      "version": 10,
+      "win": true,
+      "leaks": 4,
+      "seconds": 67.1749999999977,
+      "reward": 1466.2999999999993,
+      "goldPerMinute": 1309.6836620767097
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 26,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 25.499999999999734,
+      "reward": 1346.3999999999996,
+      "goldPerMinute": 3168.000000000032
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 27,
+      "version": 10,
+      "win": true,
+      "leaks": 10,
+      "seconds": 59.24999999999782,
+      "reward": 1276,
+      "goldPerMinute": 1292.1518987342247
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 27,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 27.14999999999964,
+      "reward": 1590.6000000000004,
+      "goldPerMinute": 3515.138121547009
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 28,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 37.149999999999075,
+      "reward": 1406.8999999999996,
+      "goldPerMinute": 2272.2476446837704
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 28,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 28.974999999999536,
+      "reward": 1499.2999999999993,
+      "goldPerMinute": 3104.676445211437
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 29,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 33.64999999999927,
+      "reward": 1526.7999999999993,
+      "goldPerMinute": 2722.377414561722
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 29,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 42.074999999998795,
+      "reward": 1689.6000000000004,
+      "goldPerMinute": 2409.411764705952
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 30,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 56.424999999997866
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 30,
+      "version": 11,
+      "win": true,
+      "leaks": 2,
+      "seconds": 51.199999999998276,
+      "reward": 1722.6000000000004,
+      "goldPerMinute": 2018.6718750000684
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 31,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 54.27499999999799
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 31,
+      "version": 11,
+      "win": true,
+      "leaks": 9,
+      "seconds": 48.29999999999844,
+      "reward": 1238.6000000000004,
+      "goldPerMinute": 1538.633540372721
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 32,
+      "version": 10,
+      "win": true,
+      "leaks": 16,
+      "seconds": 53.149999999998165,
+      "reward": 975.7000000000007,
+      "goldPerMinute": 1101.448730009446
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 32,
+      "version": 11,
+      "win": true,
+      "leaks": 12,
+      "seconds": 61.3749999999977,
+      "reward": 1324.3999999999996,
+      "goldPerMinute": 1294.7291242363005
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 33,
+      "version": 10,
+      "win": true,
+      "leaks": 14,
+      "seconds": 47.57499999999848,
+      "reward": 1069.2000000000007,
+      "goldPerMinute": 1348.4393063584255
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 33,
+      "version": 11,
+      "win": true,
+      "leaks": 14,
+      "seconds": 51.79999999999824,
+      "reward": 1342,
+      "goldPerMinute": 1554.4401544402072
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 34,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 52.749999999998074
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 34,
+      "version": 11,
+      "win": true,
+      "leaks": 15,
+      "seconds": 45.99999999999857,
+      "reward": 1047.2000000000007,
+      "goldPerMinute": 1365.9130434783042
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 35,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 48.42499999999832
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 35,
+      "version": 11,
+      "win": true,
+      "leaks": 18,
+      "seconds": 49.42499999999838,
+      "reward": 1007.6000000000004,
+      "goldPerMinute": 1223.1866464340314
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 36,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 45.77499999999847
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 36,
+      "version": 11,
+      "win": false,
+      "leaks": 20,
+      "seconds": 42.39999999999866
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 37,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 41.824999999998695
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 37,
+      "version": 11,
+      "win": true,
+      "leaks": 19,
+      "seconds": 40.57499999999888,
+      "reward": 712.7999999999993,
+      "goldPerMinute": 1054.0480591497508
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 38,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 48.524999999998315
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 38,
+      "version": 11,
+      "win": false,
+      "leaks": 20,
+      "seconds": 54.62499999999797
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 39,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 47.22499999999839
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 39,
+      "version": 11,
+      "win": false,
+      "leaks": 20,
+      "seconds": 46.89999999999841
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 40,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 43.224999999998616
+    },
+    {
+      "approach": "archers",
+      "stage": "mid",
+      "wave": 40,
+      "version": 11,
+      "win": false,
+      "leaks": 20,
+      "seconds": 47.57499999999837
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 26,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 30.949999999999424,
+      "reward": 1607.1000000000058,
+      "goldPerMinute": 3115.5411954766446
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 26,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 21.974999999999934,
+      "reward": 1346.4000000000015,
+      "goldPerMinute": 3676.1774744027452
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 27,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 31.099999999999415,
+      "reward": 1643.4000000000015,
+      "goldPerMinute": 3170.5466237942746
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 27,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 21.824999999999942,
+      "reward": 1590.6000000000058,
+      "goldPerMinute": 4372.783505154666
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 28,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 28.57499999999956,
+      "reward": 1406.9000000000015,
+      "goldPerMinute": 2954.120734908185
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 28,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 25.349999999999742,
+      "reward": 1499.300000000003,
+      "goldPerMinute": 3548.639053254481
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 29,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 27.12499999999964,
+      "reward": 1526.800000000003,
+      "goldPerMinute": 3377.253456221249
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 29,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 20.725000000000005,
+      "reward": 1689.6000000000058,
+      "goldPerMinute": 4891.483715319678
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 30,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 33.824999999999264,
+      "reward": 1868.9000000000015,
+      "goldPerMinute": 3315.121951219587
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 30,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 24.49999999999979,
+      "reward": 1783.1000000000058,
+      "goldPerMinute": 4366.775510204133
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 31,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 36.274999999999125,
+      "reward": 1994.300000000003,
+      "goldPerMinute": 3298.635423845708
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 31,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 26.049999999999702,
+      "reward": 1619.2000000000044,
+      "goldPerMinute": 3729.4433781190546
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 32,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 30.724999999999437,
+      "reward": 1602.7000000000044,
+      "goldPerMinute": 3129.7640358015306
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 32,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 24.449999999999793,
+      "reward": 1892,
+      "goldPerMinute": 4642.944785276113
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 33,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 28.89999999999954,
+      "reward": 1751.2000000000044,
+      "goldPerMinute": 3635.7093425606204
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 33,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 24.649999999999782,
+      "reward": 1975.6000000000058,
+      "goldPerMinute": 4808.762677484844
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 34,
+      "version": 10,
+      "win": true,
+      "leaks": 7,
+      "seconds": 56.474999999997976,
+      "reward": 1799.6000000000058,
+      "goldPerMinute": 1911.9256308101676
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 34,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 27.8249999999996,
+      "reward": 1795.2000000000044,
+      "goldPerMinute": 3871.0512129380704
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 35,
+      "version": 10,
+      "win": true,
+      "leaks": 15,
+      "seconds": 59.24999999999782,
+      "reward": 1381.6000000000058,
+      "goldPerMinute": 1399.088607594994
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 35,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 30.174999999999468,
+      "reward": 1751.2000000000044,
+      "goldPerMinute": 3482.0878210439805
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 36,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 37.42499999999906,
+      "reward": 1676.4000000000015,
+      "goldPerMinute": 2687.615230460992
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 36,
+      "version": 11,
+      "win": true,
+      "leaks": 6,
+      "seconds": 44.49999999999866,
+      "reward": 1746.800000000003,
+      "goldPerMinute": 2355.2359550562546
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 37,
+      "version": 10,
+      "win": true,
+      "leaks": 2,
+      "seconds": 40.79999999999887,
+      "reward": 1680.800000000003,
+      "goldPerMinute": 2471.764705882426
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 37,
+      "version": 11,
+      "win": true,
+      "leaks": 5,
+      "seconds": 39.974999999998914,
+      "reward": 1540,
+      "goldPerMinute": 2311.44465290813
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 38,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 65.1749999999977
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 38,
+      "version": 11,
+      "win": true,
+      "leaks": 6,
+      "seconds": 50.849999999998296,
+      "reward": 1826,
+      "goldPerMinute": 2154.572271386503
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 39,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 52.549999999998086
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 39,
+      "version": 11,
+      "win": true,
+      "leaks": 7,
+      "seconds": 48.89999999999841,
+      "reward": 1509.2000000000044,
+      "goldPerMinute": 1851.7791411043602
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 40,
+      "version": 10,
+      "win": true,
+      "leaks": 19,
+      "seconds": 53.149999999998165,
+      "reward": 946,
+      "goldPerMinute": 1067.9209783631602
+    },
+    {
+      "approach": "archers",
+      "stage": "late",
+      "wave": 40,
+      "version": 11,
+      "win": true,
+      "leaks": 15,
+      "seconds": 49.974999999998346,
+      "reward": 1570.800000000003,
+      "goldPerMinute": 1885.9029514758038
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 26,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 41.14999999999885,
+      "reward": 1607.1000000000004,
+      "goldPerMinute": 2343.2806804374904
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 26,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 25.89999999999971,
+      "reward": 1346.3999999999996,
+      "goldPerMinute": 3119.0733590733926
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 27,
+      "version": 10,
+      "win": true,
+      "leaks": 3,
+      "seconds": 50.07499999999834,
+      "reward": 1536.7000000000007,
+      "goldPerMinute": 1841.2780828757484
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 27,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 27.14999999999964,
+      "reward": 1590.6000000000004,
+      "goldPerMinute": 3515.138121547009
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 28,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 37.72499999999904,
+      "reward": 1406.8999999999996,
+      "goldPerMinute": 2237.6143141153643
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 28,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 29.924999999999482,
+      "reward": 1499.2999999999993,
+      "goldPerMinute": 3006.115288220602
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 29,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 32.27499999999935,
+      "reward": 1526.7999999999993,
+      "goldPerMinute": 2838.3578621224415
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 29,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 34.54999999999922,
+      "reward": 1689.6000000000004,
+      "goldPerMinute": 2934.1823444284314
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 30,
+      "version": 10,
+      "win": true,
+      "leaks": 19,
+      "seconds": 67.1749999999977,
+      "reward": 1111,
+      "goldPerMinute": 992.3334573874549
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 30,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 38.67499999999899,
+      "reward": 1783.1000000000004,
+      "goldPerMinute": 2766.283128636143
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 31,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 71.02499999999903
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 31,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 35.34999999999918,
+      "reward": 1619.2000000000007,
+      "goldPerMinute": 2748.2885431400937
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 32,
+      "version": 10,
+      "win": true,
+      "leaks": 9,
+      "seconds": 50.699999999998305,
+      "reward": 1246.2999999999993,
+      "goldPerMinute": 1474.9112426035988
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 32,
+      "version": 11,
+      "win": true,
+      "leaks": 2,
+      "seconds": 61.3749999999977,
+      "reward": 1797.3999999999996,
+      "goldPerMinute": 1757.1323828921225
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 33,
+      "version": 10,
+      "win": true,
+      "leaks": 7,
+      "seconds": 47.57499999999848,
+      "reward": 1399.2000000000007,
+      "goldPerMinute": 1764.6242774567047
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 33,
+      "version": 11,
+      "win": true,
+      "leaks": 14,
+      "seconds": 52.999999999998174,
+      "reward": 1342,
+      "goldPerMinute": 1519.2452830189202
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 34,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 52.749999999998074
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 34,
+      "version": 11,
+      "win": true,
+      "leaks": 13,
+      "seconds": 45.99999999999857,
+      "reward": 1148.3999999999996,
+      "goldPerMinute": 1497.9130434783067
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 35,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 48.42499999999832
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 35,
+      "version": 11,
+      "win": true,
+      "leaks": 13,
+      "seconds": 49.42499999999838,
+      "reward": 1227.6000000000004,
+      "goldPerMinute": 1490.2579666161346
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 36,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 48.699999999998305
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 36,
+      "version": 11,
+      "win": false,
+      "leaks": 20,
+      "seconds": 47.999999999998344
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 37,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 43.224999999998616
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 37,
+      "version": 11,
+      "win": true,
+      "leaks": 18,
+      "seconds": 40.57499999999888,
+      "reward": 765.6000000000004,
+      "goldPerMinute": 1132.125693160845
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 38,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 48.7749999999983
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 38,
+      "version": 11,
+      "win": true,
+      "leaks": 18,
+      "seconds": 56.62499999999797,
+      "reward": 1421.2000000000007,
+      "goldPerMinute": 1505.9072847682667
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 39,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 47.22499999999839
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 39,
+      "version": 11,
+      "win": true,
+      "leaks": 19,
+      "seconds": 48.89999999999841,
+      "reward": 963.6000000000004,
+      "goldPerMinute": 1182.3312883435972
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 40,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 44.67499999999853
+    },
+    {
+      "approach": "area",
+      "stage": "mid",
+      "wave": 40,
+      "version": 11,
+      "win": false,
+      "leaks": 20,
+      "seconds": 47.449999999998376
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 26,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 31.599999999999387,
+      "reward": 1607.0999999999985,
+      "goldPerMinute": 3051.455696202588
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 26,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 22.22499999999992,
+      "reward": 1346.3999999999942,
+      "goldPerMinute": 3634.8256467941483
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 27,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 32.34999999999934,
+      "reward": 1643.3999999999942,
+      "goldPerMinute": 3048.0370942813497
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 27,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 22.624999999999897,
+      "reward": 1590.5999999999985,
+      "goldPerMinute": 4218.165745856369
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 28,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 31.424999999999397,
+      "reward": 1406.8999999999942,
+      "goldPerMinute": 2686.205250596699
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 28,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 24.974999999999763,
+      "reward": 1499.2999999999956,
+      "goldPerMinute": 3601.9219219219453
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 29,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 27.14999999999964,
+      "reward": 1526.7999999999956,
+      "goldPerMinute": 3374.1436464088747
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 29,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 23.549999999999844,
+      "reward": 1689.5999999999985,
+      "goldPerMinute": 4304.713375796203
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 30,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 35.59999999999916,
+      "reward": 1868.8999999999942,
+      "goldPerMinute": 3149.8314606742215
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 30,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 25.72499999999972,
+      "reward": 1783.0999999999985,
+      "goldPerMinute": 4158.833819242024
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 31,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 35.899999999999146,
+      "reward": 1994.2999999999956,
+      "goldPerMinute": 3333.091922005643
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 31,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 25.624999999999726,
+      "reward": 1619.199999999997,
+      "goldPerMinute": 3791.2975609756436
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 32,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 28.674999999999553,
+      "reward": 1602.699999999997,
+      "goldPerMinute": 3353.5135135135597
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 32,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 25.22499999999975,
+      "reward": 1892,
+      "goldPerMinute": 4500.297324083295
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 33,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 29.649999999999498,
+      "reward": 1751.199999999997,
+      "goldPerMinute": 3543.743676222651
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 33,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 26.224999999999692,
+      "reward": 1975.5999999999985,
+      "goldPerMinute": 4519.961868446189
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 34,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 45.17499999999862,
+      "reward": 2076.7999999999956,
+      "goldPerMinute": 2758.339789706775
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 34,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 28.72499999999955,
+      "reward": 1795.199999999997,
+      "goldPerMinute": 3749.7650130548827
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 35,
+      "version": 10,
+      "win": true,
+      "leaks": 7,
+      "seconds": 59.24999999999782,
+      "reward": 1790.7999999999956,
+      "goldPerMinute": 1813.468354430442
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 35,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 27.64999999999961,
+      "reward": 1751.199999999997,
+      "goldPerMinute": 3800.0723327306077
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 36,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 33.0499999999993,
+      "reward": 1676.3999999999942,
+      "goldPerMinute": 3043.3888048412036
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 36,
+      "version": 11,
+      "win": true,
+      "leaks": 2,
+      "seconds": 44.49999999999866,
+      "reward": 1896.3999999999942,
+      "goldPerMinute": 2556.9438202247884
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 37,
+      "version": 10,
+      "win": true,
+      "leaks": 0,
+      "seconds": 32.27499999999935,
+      "reward": 1786.3999999999942,
+      "goldPerMinute": 3320.9604957397923
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 37,
+      "version": 11,
+      "win": true,
+      "leaks": 0,
+      "seconds": 28.39999999999957,
+      "reward": 1821.5999999999985,
+      "goldPerMinute": 3848.4507042254077
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 38,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 56.424999999997866
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 38,
+      "version": 11,
+      "win": true,
+      "leaks": 3,
+      "seconds": 50.849999999998296,
+      "reward": 1927.199999999997,
+      "goldPerMinute": 2273.9823008850285
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 39,
+      "version": 10,
+      "win": false,
+      "leaks": 20,
+      "seconds": 57.24999999999782
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 39,
+      "version": 11,
+      "win": true,
+      "leaks": 5,
+      "seconds": 48.89999999999841,
+      "reward": 1597.199999999997,
+      "goldPerMinute": 1959.754601227054
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 40,
+      "version": 10,
+      "win": true,
+      "leaks": 12,
+      "seconds": 50.699999999998305,
+      "reward": 1227.5999999999985,
+      "goldPerMinute": 1452.7810650888043
+    },
+    {
+      "approach": "area",
+      "stage": "late",
+      "wave": 40,
+      "version": 11,
+      "win": true,
+      "leaks": 12,
+      "seconds": 49.974999999998346,
+      "reward": 1702.7999999999956,
+      "goldPerMinute": 2044.38219109561
+    }
+  ]
+}

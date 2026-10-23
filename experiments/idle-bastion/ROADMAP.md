@@ -1,5 +1,44 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**E01 · Merge-Vorbereitung — 23.10.2026, im bestehenden Draft-PR #2.**
+
+- [x] Shroom-Men-Vergleichsfunktionen und erzeugte lokale Kopien entfernt. Alle vier Frakassets-Arten samt roter/grüner Moospilzkappe bytegenau erhalten; Laufzeitimport mit ausschließlich einem Frakassets-ZIP erfolgreich.
+- [x] Ursache Welle 46 nachgewiesen: leichte Begleitung durch Einführungskürzung verloren. Jetzt sieben Skorpione, 15 Spinnen und zwei Quallen; gleiches Tempo/Goldbudget, alle anderen Rezepte unverändert. Schema 28/Regeln 14, historische Version 13 eingefroren.
+- [x] Ursache 157 Farmdurchläufe auf Welle 1 nachgewiesen: fehlendes Zertifikat im Rohsave-Messlauf, gespeicherte Farmwahl 29 nicht geprüft. Gespeicherte Auswahl und ein weiterer jüngerer Kandidat werden frisch nachgewiesen, weiterhin höchstens vier Prüfungen. Wiederholter bezahlter Lauf bis 56: null Farmdurchläufe auf 1, 68:16 statt 99:34 zusätzliche Modellminuten.
+- [x] Produktionsbuild, Produktionsvorschau, Desktop-/Mobilansichten und aktuelle/historische Save-/Reload-/Farmnachweise geprüft. 25/25 gezielte Tests; größere Matrix 122/131 mit exakt neun bekannten Fehlern, separat dokumentiert. [Abschlussbericht für Draft-PR #2](../../artifacts/idle-bastion/acceptance/local-enemy-assets/merge-ready/REPORT.md). Kein Merge nach main aus diesem Auftrag.
+
+
+**E01 · Lokale Gegnerpakete — 23.10.2026, separat ab Wave-Rework W02 umgesetzt.**
+Branch `codex/local-enemy-assets` ab `796f02e`; bestehender Draft-PR #1 und `main`
+bleiben erhalten. [Prüfbericht und tatsächliche Spielansichten](../../artifacts/idle-bastion/acceptance/local-enemy-assets/REPORT.md).
+
+- [x] Alle lokalen Pakete ausgewertet, Archive/Quellen/Lizenzen geprüft; Skeleton-ZIP identisch, keine zweite Kopie. Nicht benötigte lokale Figuren-/Palettenvergleiche auf Nutzerauftrag entfernt; Originaldownloads bleiben unverändert.
+- [x] Gemeinsame mobile Vorschau mit Richtungen, Auflösungen, Original-/Spielgröße, Palette, Pause/Einzelbild. Vier passende CC-BY-Frakassets-Gegner mit JSON-Originaltiming und vier Ansichten, zusammen 52.769 PNG-Bytes. Credits/Änderungen dokumentiert.
+- [x] Moospilz 42, Waldspinne 46, Hornfledermaus 50, Zunderläufer 54; unmittelbare Wiederholung, alte Arten regelmäßig, 28er-/Heilergrenzen. Wellen 1–40 und Wirtschaft unverändert; Schema 27/Regeln 13, alte laufende Rezepte einschließlich Version 12 nach 40 erhalten.
+- [x] 20/20 Wave-/Asset-Tests, relevante Matrix 117/126 gegenüber 110/119 mit denselben neun alten Fehlern. Bezahlte Fortsetzung 40→56, sechs Niederlagen/24 Upgrades; echte Desktop-/Mobilansichten, dichte Welle 54, exakter pausierter Reload und Produktionsbuild geprüft. HP-Savegrenze an bereits fortlaufende Regeln-12-Kurve angeglichen.
+- [ ] Subjektive Nutzerbewertung der neuen Stil-/Größenkombination; echte Smartphone-Hardwareprüfung bei Gelegenheit. Langzeitwirtschaft nach 40 bleibt eigener Punkt aus W02.
+
+
+**W02 · Wave-Rework 2.0 / Balancing — 23.10.2026, im bestehenden Draft-PR #1 beauftragt.** SPIRE ist ein Endlos-Idle-TD; Welle 40 bleibt Zwischenziel. [Aktueller Bericht, Messungen und Spielaufnahmen](../../artifacts/idle-bastion/acceptance/wave-rework-v2/REPORT.md).
+
+- [x] Größere Familiengruppen, dichtere Spawnvarianten und leichte Begleitung statt extremer Mengenreduktion; Kader/Originalanimationen, Einführungen, Bosse und Tutorial erhalten.
+- [x] Gesamtes Kill-/Abschlussbudget, effektive sichere Goldrate etwa 11 % unter W01; keine Änderung historischer Offline-Ansprüche. Schema 26 / Regeln 12, eingefrorene alte Rezepte und frisch geprüfte Farmraten aus validierten Altkandidaten.
+- [x] Level-20-Kauf-/Schadens-/Preisgrenzen und Ilyras Quelllevelbegrenzung entfernt; HP wächst nach dem alten Plateau weiter. Numeric-/Save-Grenzen bleiben streng. Langzeitwirtschaft über 40 gesondert dokumentiert, keine neue Architektur.
+- [x] Drei bezahlte Strategien bis 40: 26:11–30:33 Modellminuten, zwei/drei Niederlagen und bewusstes Farmen; Turmlevel bis 11–14. 270 identische Vergleichskämpfe plus 180 Turm-Ablationen. 13/13 Wave-Tests, relevante Matrix 87/94 gegenüber 80/88 vor W02; sieben alte Fehler getrennt dokumentiert, weitere alte Ausbau-/Layoutfixtures ebenfalls offengelegt. Produktionsbuild, dichte Desktop-/Hochkantansichten und Save/Reload geprüft.
+- [ ] Visuelle Nutzerbewertung und ungeskriptete Balance-/Offline-Rückkehrprobe. Separat später: Gold-/Kostenkurve jenseits 40 und größere Zahlenrepräsentation. `main` weder mergen noch veröffentlichen.
+
+Der folgende W01-Abschnitt bewahrt den ersten Rework und seine damaligen Prüfergebnisse.
+
+**W01 · Wave-Rework und Foozle-Gegner — 23.10.2026, ausdrücklich beauftragt und umgesetzt.** Separater Branch `codex/wave-rework` ab `76c114e`; lokale Tavernenarbeiten erhalten. [Prüfbericht, Messungen und Spielaufnahmen](../../artifacts/idle-bastion/acceptance/wave-rework/REPORT.md).
+
+- [x] Vorab veralteten Gegner-Migrationstest ohne Abschwächung korrigiert: damaliger Stand 24, sieben Prüfungen erfolgreich.
+- [x] Paket 1: vier deterministische Familien, unterschiedliche Mengen/Spawnrhythmen, zwei bis drei Arten, frühe Wiederholung neuer Arten und bessere Kaderabdeckung; Einstieg 1–5 und Bossrezepte 15/25 erhalten, Elite 40 ohne neue Fähigkeit.
+- [x] Paket 2: Goblin zunächst im Originalvergleich geprüft; drei kostenlose Foozle-Archive samt tatsächlichen CC0-Readmes gesichert. Waldgoblin 19, Knochenwächter 26, Waldkultist 32; Originalanimationen, vier echte Ansichten, gemeinsam begrenzte Heilung. Zusammen 22.477 Bytes Laufzeitgrafiken; separate `enemy-check.html` ohne Savezugriff.
+- [x] Paket 3: Schema 25 / Regeln 11 mit Erhalt laufender alter Kämpfe und historischer Offline-Ansprüche. Sieben neue Prüfungen erfolgreich, relevanter Vergleich 96/102 gegenüber 85/95 im Ausgangsstand; sechs verbleibende bekannte Legacy-/Tutorial-Fixtures, keine neue fehlgeschlagene Testbezeichnung. Drei bezahlte Strategien schaffen Welle 40 nach 17:13–19:16 ohne Niederlage; 180 feste Vergleichskämpfe. TypeScript/Produktionsbuild und reale Desktop-/Mobilansichten einschließlich Reload geprüft. HP-Grundkurve unverändert, Sprung im rüstungsbereinigten HP-Volumen 29→30 von +140 % auf +12 % reduziert.
+- [ ] Visuelle Nutzerbewertung und subjektive Balanceabnahme. Technische Prüfung und eigene Sichtprüfung ersetzen diese nicht. Keine Ostfront oder weitere Systeme aus diesem Auftrag ableiten; sechs alte Legacy-Fixtures bleiben im allgemeinen Prüfrückstand.
+
+Die folgenden bestehenden Pakete und offenen Arbeiten behalten ihren bisherigen Status.
+
 Stand: 21.10.2026 · Hauptstand `main` · [Spiel testen](https://emfau88.github.io/TD/)
 
 **Aktuell:** T01–T07 sind umgesetzt und kompakt gemeinsam geprüft. T01/T04 und Ilyras Gestaltung wurden vom Nutzer visuell freigegeben; T07 ergänzt die technische Integration im tatsächlichen Spiel einschließlich Speicherfortsetzung, Kampfhinweisen und Hochkantbedienung. [T07-Nachweis](../../artifacts/idle-bastion/acceptance/t07/REPORT.md). Verlustfreie Bilder und gezieltes Nachladen sind zusätzlich umgesetzt. Button-Flackern durch Autosave ist auf anschließenden Auftrag behoben. Das aktuelle Spiel ist nach main übernommen und unter der Hauptadresse veröffentlicht; F03 korrigiert jetzt die Weltebenen von Einschlägen und Ilyras Salve. T08 verbessert die mobile Charakteransicht; A01 ergänzt die erste dezente Audiostufe; A02 ergänzt Bau-/Upgradeklänge, Bosslachen und die separate Stimmenauswahl. T09/T10 sind nur vorgemerkt. B14/G2 und eine subjektive Langzeitbewertung bleiben offen.

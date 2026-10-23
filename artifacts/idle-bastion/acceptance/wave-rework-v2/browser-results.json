@@ -1,0 +1,141 @@
+{
+  "errors": [],
+  "views": [
+    {
+      "device": "desktop",
+      "wave": 40,
+      "density": 21,
+      "queue": 2,
+      "enemies": [
+        "BoneGuard",
+        "ForestCultist",
+        "ForestGoblin",
+        "ForestGoblin",
+        "ForestGoblin",
+        "ForestGoblin",
+        "ForestGoblin",
+        "BoneGuard",
+        "ForestGoblin",
+        "ForestGoblin",
+        "BoneGuard",
+        "ForestGoblin",
+        "ForestGoblin",
+        "ForestCultist",
+        "ForestGoblin",
+        "ForestGoblin",
+        "ForestGoblin",
+        "BoneGuard",
+        "ForestGoblin",
+        "ForestGoblin",
+        "BoneGuard"
+      ],
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "canvas": {
+        "x": 0,
+        "y": 0,
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "device": "mobile",
+      "wave": 40,
+      "density": 21,
+      "queue": 2,
+      "enemies": [
+        "BoneGuard",
+        "ForestCultist",
+        "ForestGoblin",
+        "ForestGoblin",
+        "ForestGoblin",
+        "ForestGoblin",
+        "ForestGoblin",
+        "BoneGuard",
+        "ForestGoblin",
+        "ForestGoblin",
+        "BoneGuard",
+        "ForestGoblin",
+        "ForestGoblin",
+        "ForestCultist",
+        "ForestGoblin",
+        "ForestGoblin",
+        "ForestGoblin",
+        "BoneGuard",
+        "ForestGoblin",
+        "ForestGoblin",
+        "BoneGuard"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "canvas": {
+        "x": 0,
+        "y": 56,
+        "width": 390,
+        "height": 692
+      }
+    }
+  ],
+  "preview": [
+    {
+      "device": "desktop",
+      "direction": "side",
+      "status": "Läuft · Rechts · 1× · 0.3 s · Originalframes, keine Spiegelung der neuen Figuren"
+    },
+    {
+      "device": "desktop",
+      "direction": "left",
+      "status": "Läuft · Links · 1× · 0.5 s · Originalframes, keine Spiegelung der neuen Figuren"
+    },
+    {
+      "device": "desktop",
+      "direction": "up",
+      "status": "Läuft · Oben · 1× · 0.6 s · Originalframes, keine Spiegelung der neuen Figuren"
+    },
+    {
+      "device": "desktop",
+      "direction": "down",
+      "status": "Läuft · Unten · 1× · 0.8 s · Originalframes, keine Spiegelung der neuen Figuren"
+    },
+    {
+      "device": "mobile",
+      "direction": "side",
+      "status": "Läuft · Rechts · 1× · 0.2 s · Originalframes, keine Spiegelung der neuen Figuren"
+    },
+    {
+      "device": "mobile",
+      "direction": "left",
+      "status": "Läuft · Links · 1× · 0.4 s · Originalframes, keine Spiegelung der neuen Figuren"
+    },
+    {
+      "device": "mobile",
+      "direction": "up",
+      "status": "Läuft · Oben · 1× · 0.6 s · Originalframes, keine Spiegelung der neuen Figuren"
+    },
+    {
+      "device": "mobile",
+      "direction": "down",
+      "status": "Läuft · Unten · 1× · 0.7 s · Originalframes, keine Spiegelung der neuen Figuren"
+    }
+  ],
+  "checks": [
+    {
+      "device": "desktop",
+      "pausedReload": true,
+      "schema": 26,
+      "rules": 12,
+      "attempt": 52
+    },
+    {
+      "device": "mobile",
+      "pausedReload": true,
+      "schema": 26,
+      "rules": 12,
+      "attempt": 52
+    }
+  ]
+}

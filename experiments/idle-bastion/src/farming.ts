@@ -42,9 +42,16 @@ function candidateWaves(battle: IdleBattle, previous?: FarmCertificate): number[
     .sort((a, b) => b - a);
   // A changed fingerprint invalidates the old proof, not the right to test its
   // previously safe wave again. Never reuse its old rate without two new clears.
-  const preferred = previous?.wave ?? completed[1];
-  return [...new Set([completed[0], preferred, completed[1], completed.includes(1) ? 1 : undefined])]
-    .filter((wave): wave is number => wave !== undefined).slice(0, MAX_FARM_CANDIDATES);
+  const preferred = previous && previous.wave > 1 && completed.includes(previous.wave) ? previous.wave
+    : battle.farmWave > 1 && completed.includes(battle.farmWave) ? battle.farmWave : undefined;
+  // A raw save may have no departure certificate. Re-prove its selected wave;
+  // recovery can try one more recent clear before the conservative entry.
+  // Keep the established candidate set while a current proof still survives.
+  const recovery = !isFarmCertificateValid(previous, battle);
+  const entry = completed.includes(1) ? [1] : [];
+  const candidates = [...new Set([completed[0], preferred, completed[1], ...(recovery ? [completed[2]] : [])])]
+    .filter((wave): wave is number => wave !== undefined && wave !== 1 && completed.includes(wave));
+  return [...candidates.slice(0, MAX_FARM_CANDIDATES-entry.length), ...entry];
 }
 
 function prove(battle: IdleBattle, wave: number, fingerprint: string): FarmCertificate | undefined {

@@ -1,0 +1,141 @@
+{
+  "fixed": {
+    "10": {
+      "wins": 57,
+      "safe": 36,
+      "escapes": 700,
+      "lostLives": 876
+    },
+    "11": {
+      "wins": 81,
+      "safe": 45,
+      "escapes": 462,
+      "lostLives": 576
+    },
+    "12": {
+      "wins": 63,
+      "safe": 33,
+      "escapes": 787,
+      "lostLives": 892
+    }
+  },
+  "safePaired11to12": {
+    "cases": 33,
+    "oldGpm": 3885.998161521128,
+    "newGpm": 3468.21712041865
+  },
+  "allThreeSafe": {
+    "10": {
+      "cases": 26,
+      "gpm": 3091.9225826418656,
+      "seconds": 32.982692307691615,
+      "meanEnemies": 6.807772895648315,
+      "peak": 12.461538461538462,
+      "escapes": 0,
+      "lostLives": 0
+    },
+    "11": {
+      "cases": 26,
+      "gpm": 4023.4871942550285,
+      "seconds": 24.914423076922844,
+      "meanEnemies": 5.344031469496725,
+      "peak": 9.73076923076923,
+      "escapes": 0,
+      "lostLives": 0
+    },
+    "12": {
+      "cases": 26,
+      "gpm": 3618.1691291872785,
+      "seconds": 27.04615384615349,
+      "meanEnemies": 7.182751663566512,
+      "peak": 13.807692307692308,
+      "escapes": 0,
+      "lostLives": 0
+    }
+  },
+  "allThreeWin": {
+    "10": {
+      "cases": 50,
+      "gpm": 2587.1459301331515,
+      "seconds": 40.153999999998916,
+      "meanEnemies": 7.5722898958245,
+      "peak": 14.46,
+      "escapes": 84,
+      "lostLives": 116
+    },
+    "11": {
+      "cases": 50,
+      "gpm": 3505.716303874295,
+      "seconds": 29.474999999999508,
+      "meanEnemies": 5.779983439880745,
+      "peak": 10.8,
+      "escapes": 32,
+      "lostLives": 44
+    },
+    "12": {
+      "cases": 50,
+      "gpm": 2840.3763795542186,
+      "seconds": 33.93849999999925,
+      "meanEnemies": 8.082652950366631,
+      "peak": 15.64,
+      "escapes": 153,
+      "lostLives": 174
+    }
+  },
+  "ablations": {
+    "0": {
+      "wins": 12,
+      "safe": 9,
+      "escapes": 94,
+      "lostLives": 111
+    },
+    "2": {
+      "wins": 11,
+      "safe": 7,
+      "escapes": 103,
+      "lostLives": 120
+    },
+    "3": {
+      "wins": 8,
+      "safe": 3,
+      "escapes": 163,
+      "lostLives": 183
+    },
+    "4": {
+      "wins": 9,
+      "safe": 6,
+      "escapes": 112,
+      "lostLives": 145
+    }
+  },
+  "scaling": [
+    {
+      "wave": 40,
+      "hpMultiplier": 169.5793382808321,
+      "illustrativeLevel": 12,
+      "nextArcherCost": 3471,
+      "gold": 2001
+    },
+    {
+      "wave": 50,
+      "hpMultiplier": 575.6484917327014,
+      "illustrativeLevel": 17,
+      "nextArcherCost": 13912,
+      "gold": 1878
+    },
+    {
+      "wave": 75,
+      "hpMultiplier": 12221.329637479512,
+      "illustrativeLevel": 29,
+      "nextArcherCost": 389287,
+      "gold": 1884
+    },
+    {
+      "wave": 100,
+      "hpMultiplier": 259465.45548718274,
+      "illustrativeLevel": 40,
+      "nextArcherCost": 8252451,
+      "gold": 2084
+    }
+  ]
+}

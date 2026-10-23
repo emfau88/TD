@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 24,
+  "social": {
+    "points": {
+      "mara": 0,
+      "ilyra": 0
+    },
+    "gifts": 0,
+    "claimed": {
+      "opening": false,
+      "boss15": false,
+      "boss25": false
+    },
+    "window": {
+      "ticks": 0,
+      "used": {
+        "mara": {
+          "talk": 0,
+          "touch": 0,
+          "gift": 0
+        },
+        "ilyra": {
+          "talk": 0,
+          "touch": 0,
+          "gift": 0
+        }
+      },
+      "earnedGifts": 0,
+      "clearProgress": 0
+    },
+    "lastClearAttempt": 0
+  },
+  "ilyra": null,
+  "discovery": "off",
+  "dismissedDefeatAttempt": 0,
+  "introduction": {
+    "stage": "done",
+    "preparationSeconds": 0,
+    "halted": false
+  },
+  "plots": {
+    "workshop": {
+      "x": 3,
+      "y": 11
+    },
+    "warehouse": {
+      "x": 8,
+      "y": 12
+    }
+  },
+  "wispArrival": {
+    "at": null,
+    "met": false
+  },
+  "rulesVersion": 10,
+  "layoutVersion": 4,
+  "layoutId": "start28",
+  "clearing": {
+    "unlocked": false,
+    "openedAt": null
+  },
+  "bossVictories": 1,
+  "secondBossVictories": 1,
+  "bossChallengeWave": 15,
+  "bossChallengeRequested": false,
+  "bossCharm": {
+    "phase": "idle",
+    "targetUid": null,
+    "remaining": 0,
+    "cooldown": 0
+  },
+  "progress": {
+    "sinceAttempt": 1,
+    "sinceSeconds": 0,
+    "battleGold": 0,
+    "totals": {
+      "advance": {
+        "attempts": 1,
+        "wins": 0,
+        "losses": 0
+      },
+      "farm": {
+        "attempts": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "waves": [
+      {
+        "wave": 31,
+        "advance": {
+          "attempts": 1,
+          "wins": 0,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      }
+    ],
+    "lastDefeat": null
+  },
+  "rewardRemainderUnits": 0,
+  "waveRecipeVersion": 10,
+  "goldRemainderUnits": 0,
+  "mode": "advance",
+  "highestCleared": 30,
+  "attemptId": 1,
+  "liveClearedWaves": [],
+  "farmWave": 1,
+  "advanceRequested": false,
+  "gold": 75,
+  "lives": 20,
+  "wave": 31,
+  "phase": "wave",
+  "elapsed": 7,
+  "ticks": 280,
+  "pendingTime": 0,
+  "uid": 23,
+  "intermissionRemaining": 0,
+  "kills": 0,
+  "earned": 0,
+  "queue": [
+    "Leafbug",
+    "LanternJelly",
+    "Scorpion",
+    "Firebug",
+    "Clampbeetle",
+    "FlyingLocust",
+    "Voidbutterfly",
+    "MagmaCrab",
+    "Leafbug",
+    "Leafbug",
+    "Scorpion",
+    "Firebug",
+    "Clampbeetle",
+    "FlyingLocust",
+    "Voidbutterfly",
+    "MagmaCrab",
+    "Leafbug",
+    "Firebug",
+    "Scorpion"
+  ],
+  "spawnTimer": 0.27000000000000157,
+  "towers": [
+    {
+      "uid": 1,
+      "padId": "tower-start",
+      "kind": 1,
+      "level": 1,
+      "cooldown": 0.2625000000000002,
+      "spent": 0,
+      "kills": 0,
+      "angle": 1.0716883540657034,
+      "protected": true
+    }
+  ],
+  "enemies": [
+    {
+      "uid": 2,
+      "x": 218.75,
+      "y": 220,
+      "hp": 3161.221827049052,
+      "maxHp": 4516.031181498646,
+      "distance": 198.75,
+      "total": 1520,
+      "segment": 0,
+      "speed": 30,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0.9,
+      "defId": "MagmaCrab"
+    },
+    {
+      "uid": 3,
+      "x": 300,
+      "y": 216.5,
+      "hp": 1296.0979157165696,
+      "maxHp": 1354.809354449594,
+      "distance": 283.5,
+      "total": 1520,
+      "segment": 1,
+      "speed": 45,
+      "slowRemaining": 0,
+      "direction": "up",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0.9750000000000035,
+      "defId": "Leafbug"
+    },
+    {
+      "uid": 4,
+      "x": 227,
+      "y": 220,
+      "hp": 2145.114811211857,
+      "maxHp": 2145.114811211857,
+      "distance": 207,
+      "total": 1520,
+      "segment": 0,
+      "speed": 40,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 2.5,
+      "healRemaining": 0.2,
+      "healLockout": 0,
+      "defId": "LanternJelly"
+    },
+    {
+      "uid": 6,
+      "x": 193,
+      "y": 220,
+      "hp": 2822.5194884366542,
+      "maxHp": 2822.5194884366542,
+      "distance": 173,
+      "total": 1520,
+      "segment": 0,
+      "speed": 40,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "Scorpion"
+    },
+    {
+      "uid": 8,
+      "x": 244.00000000000068,
+      "y": 220,
+      "hp": 1919.3132521369248,
+      "maxHp": 1919.3132521369248,
+      "distance": 224.0000000000006,
+      "total": 1520,
+      "segment": 0,
+      "speed": 56,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "Firebug"
+    },
+    {
+      "uid": 10,
+      "x": 200.07499999999942,
+      "y": 220,
+      "hp": 2709.618708899188,
+      "maxHp": 2709.618708899188,
+      "distance": 180.07499999999953,
+      "total": 1520,
+      "segment": 0,
+      "speed": 49,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "Clampbeetle"
+    },
+    {
+      "uid": 15,
+      "x": 147.57500000000002,
+      "y": 220,
+      "hp": 1129.0077953746616,
+      "maxHp": 1129.0077953746616,
+      "distance": 127.57500000000016,
+      "total": 1520,
+      "segment": 0,
+      "speed": 63,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "FlyingLocust"
+    },
+    {
+      "uid": 17,
+      "x": 151.10000000000022,
+      "y": 220,
+      "hp": 1919.3132521369248,
+      "maxHp": 1919.3132521369248,
+      "distance": 131.10000000000016,
+      "total": 1520,
+      "segment": 0,
+      "speed": 76,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "Voidbutterfly"
+    },
+    {
+      "uid": 19,
+      "x": 62,
+      "y": 220,
+      "hp": 4516.031181498646,
+      "maxHp": 4516.031181498646,
+      "distance": 42,
+      "total": 1520,
+      "segment": 0,
+      "speed": 30,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "MagmaCrab"
+    }
+  ],
+  "shots": [],
+  "mara": {
+    "x": 220,
+    "y": 300,
+    "path": [],
+    "targetTowerUid": 1,
+    "direction": "up",
+    "cooldownRemaining": 25.375000000000263,
+    "effectRemaining": 3.374999999999946,
+    "unreachable": false,
+    "autoCast": true,
+    "effectTowerUid": 1
+  },
+  "settlement": {
+    "workshopBuilt": false,
+    "frostResearched": false,
+    "builtAt": null,
+    "warehouseBuilt": false,
+    "warehouseBuiltAt": null,
+    "tavernBuilt": false,
+    "tavernLevel": 0,
+    "tavernBuiltAt": null,
+    "tavernSeen": false,
+    "workshopUpgraded": false,
+    "upgradedAt": null
+  },
+  "tutorial": {
+    "hidden": false,
+    "seen": 0,
+    "builtTower": false,
+    "upgradedTower": false,
+    "frostSeen": false
+  }
+}

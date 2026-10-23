@@ -1,3 +1,4 @@
+import { waveRecipe, FAMILY_NAMES } from './wave-recipes';
 import { ENEMY_ROSTER } from './enemy-roster';
 import { bossEncounter } from './boss';
 import { farmRewardGold } from './farming';
@@ -43,7 +44,7 @@ export function currentGoal(battle: IdleBattle): Goal {
       ? { title: 'Rosenspiegel stellt sich dir', detail: 'Welle 15 · 750 Gold Erstprämie · Frost verlangsamt', action: 'boss', label: 'Bossherausforderung ansehen' }
       : { title: 'Bereite dich auf Rosenspiegel vor', detail: 'Boss in Welle 15 · Frost, Fläche und Durchdringung', action: 'upgrade', label: 'Verteidigung verbessern' };
     case 15: return { title: 'Maras Übertakten kennenlernen', detail: '8 Sekunden · +50 % Feuerrate · Automatik wartet auf Gegner', action: 'mara', label: 'Maras Zauber ansehen' };
-    case 16: return { title: 'Werkstatt II ausbauen', detail: `${need(SETTLEMENT.workshopUpgradeCost)} · Turmlevel 7–20`, cost: SETTLEMENT.workshopUpgradeCost, action: 'workshop', label: 'Werkstatt ausbauen' };
+    case 16: return { title: 'Werkstatt II ausbauen', detail: `${need(SETTLEMENT.workshopUpgradeCost)} · Turmlevel ab 7`, cost: SETTLEMENT.workshopUpgradeCost, action: 'workshop', label: 'Werkstatt ausbauen' };
     case 17: if (battle.highestCleared >= 24 && !battle.bossActive && battle.mode !== 'farm') return { title: 'Rosenspiegels Rückkehr', detail: 'Welle 25 · 1.200 Gold Erstprämie', action: 'boss', label: 'Bossherausforderung ansehen' };
     default: {
       const tower = recommendedUpgrade(battle);
@@ -80,7 +81,7 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       el('live-income').textContent = rateText;
       el('gold-summary').title = `Laufender Goldzufluss aus Kampfbelohnungen. ${Math.floor(rate.seconds)} aktive Sekunden gemessen. Details öffnen.`;
       el('record-wave').textContent = `Rekord ${b.highestCleared}`;
-      el('wave-mode').textContent = live.paused ? 'Pause' : b.phase === 'defeat' ? 'Rückzug' : b.mode === 'farm' ? 'Farmen' : 'Vorstoß';
+      el('wave-mode').textContent = live.paused ? 'Pause' : b.phase === 'defeat' ? 'Rückzug' : b.mode === 'farm' ? 'Farmen' : b.wave===40 && b.waveRecipeVersion>=11 ? 'Elite' : 'Vorstoß';
       el('wave-summary').setAttribute('aria-label', `Welle ${b.wave}, ${b.mode === 'farm' ? 'Farmen' : 'Vorstoß'}. Höchste besiegte Welle ${b.highestCleared}. Chronik öffnen`);
       const total = waveCount(b.wave, b.waveRecipeVersion);
       el<HTMLProgressElement>('wave-progress').max = Math.max(1, total);
@@ -136,9 +137,9 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
         enemiesKey = enemyKey;
         const counts = new Map<string, number>();
         for (let i = 0; i < (b.wave ? total : 0); i++) { const name = waveEnemy(b.wave, i, b.waveRecipeVersion).name; counts.set(name, (counts.get(name) ?? 0) + 1); }
-        el('journal-wave-enemies').textContent = b.wave ? `Zusammenstellung Welle ${b.wave}: ${[...counts].map(([name, n]) => `${n} × ${name}`).join(' · ')}` : 'Die erste Welle besteht aus Blattkäfern.';
-        const reached = Math.max(b.wave, b.highestCleared), next = ENEMY_ROSTER.find(e => e.id !== 'Rosenspiegel' && e.firstWave > reached);
-        el('journal-next-enemy').textContent = next ? `Nächster neuer Gegnertyp: ${next.name} ab Welle ${next.firstWave}.` : 'Alle neun normalen Gegnertypen verfügbar. Weitere Wellen wechseln zwischen Schwärmen, Tempo, Panzern und Unterstützung.';
+        el('journal-wave-enemies').textContent = b.wave ? `Zusammenstellung Welle ${b.wave}${b.waveRecipeVersion >= 11 && b.wave >= 6 && b.wave !== 15 && b.wave !== 25 ? ` · ${waveRecipe(b.wave).elite ? 'Elite · ' : ''}${FAMILY_NAMES[waveRecipe(b.wave).family]}` : ''}: ${[...counts].map(([name, n]) => `${n} × ${name}`).join(' · ')}` : 'Die erste Welle besteht aus Blattkäfern.';
+        const reached = Math.max(b.wave, b.highestCleared), next = ENEMY_ROSTER.filter(e => e.id !== 'Rosenspiegel' && e.firstWave > reached).sort((a,z) => a.firstWave-z.firstWave)[0];
+        el('journal-next-enemy').textContent = next ? `Nächster neuer Gegnertyp: ${next.name} ab Welle ${next.firstWave}.` : 'Alle normalen Gegnertypen verfügbar. Weitere Wellen wechseln zwischen Schwärmen, Tempo, Panzern und Unterstützung.';
         el('journal-enemy-roster').replaceChildren(...ENEMY_ROSTER.filter(e => e.id !== 'Rosenspiegel' && e.firstWave <= Math.max(1, reached)).map(e => {
           const item = document.createElement('li'), title = document.createElement('strong'), copy = document.createElement('p');
           title.textContent = `${e.name} · ab Welle ${e.firstWave}`;

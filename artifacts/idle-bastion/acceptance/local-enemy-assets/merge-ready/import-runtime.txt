@@ -1,0 +1,1 @@
+{"frakCreatures": 0, "runtime": true, "requiredArchives": 1}

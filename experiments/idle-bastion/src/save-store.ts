@@ -2,7 +2,7 @@
  * has completed its transaction and checked CAS revision plus writer epoch in
  * that same transaction. Database version stays 1; envelopes migrate explicitly.
  */
-import { IdleBattle, type BattleSnapshot } from './battle';
+import { IdleBattle, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION, type BattleSnapshot } from './battle';
 import { checkpointActive, createOfflineState, restoreOffline, type OfflineState } from './offline';
 
 export interface SaveEnvelope {
@@ -55,7 +55,7 @@ function inspect(value: unknown, present = value !== undefined): Inspection {
   }
   if (!knownSchema(value)) return { kind: 'corrupt', reason: 'The save envelope has no recognized schema.' };
   if (record(value.battle)) {
-    for (const [key, maximum] of [['schemaVersion', 24], ['rulesVersion', 10], ['layoutVersion', 5]] as const) {
+    for (const [key, maximum] of [['schemaVersion', BATTLE_SCHEMA_VERSION], ['rulesVersion', BATTLE_RULES_VERSION], ['layoutVersion', 5]] as const) {
       const version = value.battle[key];
       if (natural(version) && version > maximum) return { kind: 'unsupported', reason: `Battle ${key} ${version} requires a newer game version.` };
     }
@@ -66,7 +66,7 @@ function inspect(value: unknown, present = value !== undefined): Inspection {
     }
     for (const origin of [value.offline.baseline, value.offline.window]) {
       if (record(origin) && record(origin.certificate) && natural(origin.certificate.rulesVersion)
-        && origin.certificate.rulesVersion > 10) {
+        && origin.certificate.rulesVersion > BATTLE_RULES_VERSION) {
         return { kind: 'unsupported', reason: 'The offline production proof requires a newer game version.' };
       }
     }

@@ -1,5 +1,43 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Merge-Vorbereitung E01 — Snapshot 28 / Regeln 14
+
+Vier Frakassets-Gegner und beide Moospilz-Paletten bleiben unverändert. Regeln 14
+korrigieren ausschließlich Welle 46: Die neue Waldspinne übernimmt die leichte
+Begleitung, damit eine gekürzte Einführungsmischung nicht beinahe nur aus Panzern
+besteht. Alte Regeln 13 sind vollständig in `wave-recipes-v13.ts` eingefroren.
+Schema 27 wird unter Regeln 13 validiert und ohne Veränderung der laufenden
+Queue, Gegner, Heilung, Geschosse und Wallet auf 28 migriert. Der nächste Versuch
+verwendet 14. Historische Offline-Basen bis 13 behalten ihre exakten Ansprüche.
+
+Farmkandidaten bleiben auf vier begrenzt und brauchen zwei sichere Durchläufe
+unter aktuellen Regeln, ohne Gefährtenbonus. Bei fehlendem Abreisezertifikat wird
+nun auch die gespeicherte Farmwahl frisch geprüft. Bei fehlendem oder ungültigem
+Nachweis nutzt ein weiterer jüngerer Kandidat einen bisher ungenutzten Prüfplatz.
+Bei gültigem Nachweis bleibt die bisherige Auswahlstrategie erhalten. Die
+Rückfalloption 1 bleibt reserviert. Es werden ausschließlich zuvor
+validierte Live-Clears geprüft; alte Zertifikate verleihen keine Freischaltungen.
+Die Offline-Effizienz, Wellenbelohnungen und Upgradepreise bleiben unverändert.
+
+
+## Wave-Rework 2.0 — Snapshot 26 / Regeln 12
+
+SPIRE ist ein Endlos-Idle-TD; Welle 40 ist ein Elite-Zwischenziel. `wave-recipes.ts` erhält die vier Familien und erhöht ihre sichtbaren Gruppen. Das erste Rework ist unverändert in `wave-recipes-v11.ts` eingefroren. Gespeicherte Regeln 3–11 bleiben anhand ihrer eigenen Anzahl, Reihenfolge, Spawnzeiten, HP und Belohnungen gültig. Aktuelle Versuche beginnen mit Regeln 12; 1–5 und Bosskämpfe 15/25 bleiben unverändert.
+
+Schemas 24 und 25 werden zuerst unter ihren jeweiligen Regeln validiert. Laufende Queue, Timer, HP, Projektile, Heilung, Geld, Figuren und Gebäude bleiben exakt erhalten. Bereits validierte `liveClearedWaves` bleiben **Kandidaten**, keine übernommenen Farmraten. Der geänderte Fingerabdruck verwirft alte Zertifikate; `certifyFarm` ermittelt zwei vollständige verlustfreie Durchläufe unter Regeln 12, bevor eine neue Rate gilt. Dadurch bleiben fortgeschrittene Spieler nach einem Update nicht unnötig auf Farmwelle 1 hängen. Bereits reservierte Offline-Ansprüche und Abreisewerte bis einschließlich Regeln 11 werden nicht rückwirkend neu berechnet; Regeln 12 sind für neue Ansprüche zulässig.
+
+Mehr Kill-Gold ersetzt Abschlussgold statt es zusätzlich aufzuschlagen. Die gemeinsame Belohnung wird von Welle 21 bis 25 schrittweise auf Faktor 0,96 gestrafft; Boss 25 ist ausgenommen. Wisp und Offline-Effizienz bleiben unverändert. Die erste HP-Kurve bis 40 ist identisch; danach wächst sie weiter um 13 % statt beim alten Multiplikator 100.000 zu stagnieren. Ein reiner Maschinenschutz begrenzt HP auf `Number.MAX_VALUE / 1024` pro Multiplikator, sodass auch Boss-Grundwerte endlich bleiben.
+
+Werkstatt II hat keine Level-20-Spielgrenze mehr. Ab 7 wachsen Schaden ×1,30 und Upgradepreis ×1,32 weiter; Reichweite/Feuerrate sowie drei Grafikstufen bleiben begrenzt. Kauf und Save-Validierung verlangen sichere ganzzahlige Preise und Investitionssummen, auch für gespeicherte Projektile und Ilyras Quelllevel. Es wird keine neue feste Spiellevelgrenze eingeführt. Wallet/Offline-Ganzzahlen und exponentielle Kosten sind damit noch keine unbegrenzte Zahlenarchitektur. Der Belohnungsfaktor bleibt vorerst bei 4 gedeckelt: Die Langzeitwirtschaft muss separat weiterentwickelt werden.
+
+[W02-Bericht mit Messungen, Einschränkungen und Spielansichten](../../../artifacts/idle-bastion/acceptance/wave-rework-v2/REPORT.md). Die folgenden W01- und älteren Abschnitte sind historische Herkunft; insbesondere das dortige Leeren der Kandidatenliste gilt seit W02 nicht mehr.
+
+## Wave-Rework — Snapshot 25 / Regeln 11
+
+Die neue Rezeptversion verwendet `wave-recipes.ts`; Regeln 3–10 bleiben unverändert verfügbar. Neue aktuelle Saves enthalten Schema 25 und Regeln 11, eine laufende alte Welle behält ihre `waveRecipeVersion`. V24 wird vor der Migration vollständig unter Regeln 10 validiert. Queue, Spawnrestzeit, Gegnerwerte/Heilzeiten, Geschosse, Goldreste, Boss-/Figuren-/Gebäudezustände bleiben erhalten. `liveClearedWaves` wird geleert und die aktuelle Farmwahl auf 1 gesetzt; neue sichere Nachweise brauchen zwei verlustfreie Durchläufe ohne aktive Heldenfähigkeiten. Die neue Version muss auch an der nativen Save-Grenze und in Offline-Proof-Validierung bekannt sein. Historische Offline-Ansprüche 1–10 behalten ihre ursprüngliche Grundlage; 11 ist für neue Ansprüche zulässig.
+
+Keine neue Savekennung, Datenbankversion, Route oder Ostfront. Die vorhandenen drei Heiltimer gelten auch für den Kultisten; die Ziel-Lockouts sind für beide Arten gemeinsam. Wellenzahlen und Spawnintervalle werden beim Laden anhand der gespeicherten Rezeptversion validiert. Weitere Details und Nachweise: [Gegner](ENEMIES.md), [W01-Bericht](../../../artifacts/idle-bastion/acceptance/wave-rework/REPORT.md).
+
 ## Tavernenstufen und soziale Basis — Snapshot 24
 
 T02 führte Snapshot 23 ein: kostenloser Taverne-I-Bausatz nach gemeisterter Welle 12, II-Ausbau für 1.200 Gold nach echtem Boss-25-Sieg, alte bezahlte Tavernen automatisch II. T03 ergänzt Snapshot 24 mit `social` aus `tavern-social.ts`. Punkte, gemeinsamer Geschenkbestand, einmalige Meilensteinansprüche und begrenzte Aktions-/Wellenbelohnungen werden zusammen mit dem Kampf transaktional gespeichert. Grenzen richten sich nach gespeicherten Live-Schritten, nicht nach der Systemuhr. Soziale Werte wirken nicht auf Kampf/Farmen/Offline; interne Farmproben deaktivieren soziale Belohnungen ausdrücklich. Datenvertrag, Balance und T04-Schnittstelle stehen in [TAVERNE_INTERAKTION.md](TAVERNE_INTERAKTION.md). Die folgenden älteren Technikabschnitte bleiben als Herkunft erhalten.

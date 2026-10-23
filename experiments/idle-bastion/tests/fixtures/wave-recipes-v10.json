@@ -1,0 +1,162 @@
+[
+  {
+    "wave": 1,
+    "enemies": "Leafbug,Leafbug,Leafbug,Leafbug,Leafbug,Leafbug"
+  },
+  {
+    "wave": 2,
+    "enemies": "Leafbug,Leafbug,Leafbug,Leafbug,Leafbug,Leafbug,Leafbug"
+  },
+  {
+    "wave": 3,
+    "enemies": "Leafbug,Leafbug,Leafbug,Leafbug,Leafbug,Leafbug,Leafbug,Leafbug"
+  },
+  {
+    "wave": 4,
+    "enemies": "Leafbug,Leafbug,Firebug,Leafbug,Leafbug,Firebug,Leafbug,Leafbug,Firebug"
+  },
+  {
+    "wave": 5,
+    "enemies": "Leafbug,Leafbug,Firebug,Leafbug,Leafbug,Firebug,Leafbug,Leafbug,Firebug,Leafbug"
+  },
+  {
+    "wave": 6,
+    "enemies": "Leafbug,Leafbug,FlyingLocust,Leafbug,Leafbug,Firebug,Leafbug,Leafbug,FlyingLocust,Leafbug,Leafbug"
+  },
+  {
+    "wave": 7,
+    "enemies": "Leafbug,Leafbug,Firebug,Leafbug,Firebug,Firebug,FlyingLocust,Leafbug,Firebug,Leafbug,Leafbug,Firebug"
+  },
+  {
+    "wave": 8,
+    "enemies": "Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Firebug,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Firebug,Leafbug"
+  },
+  {
+    "wave": 9,
+    "enemies": "Leafbug,Leafbug,Firewasp,Leafbug,Leafbug,Firebug,Leafbug,Leafbug,Firewasp,Leafbug,Leafbug,Firebug,Leafbug,Leafbug"
+  },
+  {
+    "wave": 10,
+    "enemies": "Leafbug,Leafbug,Firebug,Firebug,Leafbug,Leafbug,Leafbug,Leafbug,Firebug,Firebug,Leafbug,Leafbug,Leafbug,Leafbug,Firebug"
+  },
+  {
+    "wave": 11,
+    "enemies": "Leafbug,Leafbug,Scorpion,Leafbug,Scorpion,Firebug,Leafbug,Leafbug,Scorpion,Scorpion,Leafbug,Firebug,Leafbug,Leafbug,Scorpion,Leafbug"
+  },
+  {
+    "wave": 12,
+    "enemies": "Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Firebug,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Firebug,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug"
+  },
+  {
+    "wave": 13,
+    "enemies": "Leafbug,Leafbug,MagmaCrab,Leafbug,Scorpion,Firebug,Leafbug,Leafbug,MagmaCrab,Scorpion,Leafbug,Firebug,Leafbug,Leafbug,Scorpion,Leafbug,Leafbug,Firebug"
+  },
+  {
+    "wave": 14,
+    "enemies": "Scorpion,Leafbug,MagmaCrab,Firebug,Scorpion,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Leafbug,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Leafbug,Leafbug,Scorpion"
+  },
+  {
+    "wave": 15,
+    "enemies": "Leafbug,Leafbug,Rosenspiegel,Leafbug,Scorpion,Firebug,Leafbug,Leafbug,Firebug"
+  },
+  {
+    "wave": 16,
+    "enemies": "Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Firebug,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Firebug,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Firebug,Leafbug,FlyingLocust,Firebug"
+  },
+  {
+    "wave": 17,
+    "enemies": "Leafbug,Leafbug,Clampbeetle,Leafbug,Scorpion,Firebug,Leafbug,Leafbug,Clampbeetle,Scorpion,Leafbug,Firebug,Leafbug,Leafbug,Scorpion,Leafbug,Leafbug,Firebug,Leafbug,Scorpion,Firebug,Leafbug"
+  },
+  {
+    "wave": 18,
+    "enemies": "Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle"
+  },
+  {
+    "wave": 19,
+    "enemies": "MagmaCrab,Leafbug,Firebug,Scorpion,Firebug,Clampbeetle,FlyingLocust,Leafbug,MagmaCrab,Leafbug,Leafbug,Scorpion,Firebug,Clampbeetle,FlyingLocust,Leafbug,MagmaCrab,Leafbug,Leafbug,Scorpion,Firebug,Clampbeetle,FlyingLocust,Firebug"
+  },
+  {
+    "wave": 20,
+    "enemies": "Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug"
+  },
+  {
+    "wave": 21,
+    "enemies": "Leafbug,Leafbug,LanternJelly,Leafbug,Scorpion,Firebug,Leafbug,Leafbug,LanternJelly,Scorpion,Leafbug,Firebug,Leafbug,Leafbug,Scorpion,Leafbug,Leafbug,Firebug,Leafbug,Scorpion,Firebug,Leafbug,Leafbug,Firebug,Scorpion,Leafbug"
+  },
+  {
+    "wave": 22,
+    "enemies": "Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab"
+  },
+  {
+    "wave": 23,
+    "enemies": "MagmaCrab,Leafbug,LanternJelly,Scorpion,Firebug,Clampbeetle,FlyingLocust,Leafbug,MagmaCrab,Leafbug,LanternJelly,Scorpion,Firebug,Clampbeetle,FlyingLocust,Leafbug,MagmaCrab,Leafbug,Leafbug,Scorpion,Firebug,Clampbeetle,FlyingLocust,Firebug,MagmaCrab,Leafbug,Firebug,Scorpion"
+  },
+  {
+    "wave": 24,
+    "enemies": "Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust"
+  },
+  {
+    "wave": 25,
+    "enemies": "Leafbug,Leafbug,Rosenspiegel,Leafbug,Scorpion,Firebug,Leafbug,Leafbug,Firebug,Scorpion,Leafbug,Firebug,Leafbug"
+  },
+  {
+    "wave": 26,
+    "enemies": "Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug"
+  },
+  {
+    "wave": 27,
+    "enemies": "MagmaCrab,Leafbug,LanternJelly,Scorpion,Firebug,Clampbeetle,FlyingLocust,Leafbug,MagmaCrab,Leafbug,LanternJelly,Scorpion,Firebug,Clampbeetle,FlyingLocust,Leafbug,MagmaCrab,Leafbug,Leafbug,Scorpion,Firebug,Clampbeetle,FlyingLocust,Firebug,MagmaCrab,Leafbug,Firebug,Scorpion"
+  },
+  {
+    "wave": 28,
+    "enemies": "Leafbug,Leafbug,Voidbutterfly,Leafbug,Scorpion,Firebug,Leafbug,Leafbug,Voidbutterfly,Scorpion,Leafbug,Firebug,Leafbug,Leafbug,Scorpion,Leafbug,Leafbug,Firebug,Leafbug,Scorpion,Firebug,Leafbug,Leafbug,Firebug,Scorpion,Leafbug,Firebug,Leafbug"
+  },
+  {
+    "wave": 29,
+    "enemies": "Firebug,Firewasp,FlyingLocust,Leafbug,Voidbutterfly,Firewasp,Firebug,Firewasp,FlyingLocust,Leafbug,Voidbutterfly,Firewasp,Firebug,Firewasp,FlyingLocust,Leafbug,Voidbutterfly,Firewasp,Firebug,Firewasp,FlyingLocust,Leafbug,Voidbutterfly,Firewasp,Firebug,Firewasp,FlyingLocust,Leafbug"
+  },
+  {
+    "wave": 30,
+    "enemies": "Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug"
+  },
+  {
+    "wave": 31,
+    "enemies": "MagmaCrab,Leafbug,LanternJelly,Scorpion,Firebug,Clampbeetle,FlyingLocust,Voidbutterfly,MagmaCrab,Leafbug,LanternJelly,Scorpion,Firebug,Clampbeetle,FlyingLocust,Voidbutterfly,MagmaCrab,Leafbug,Leafbug,Scorpion,Firebug,Clampbeetle,FlyingLocust,Voidbutterfly,MagmaCrab,Leafbug,Firebug,Scorpion"
+  },
+  {
+    "wave": 32,
+    "enemies": "Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust"
+  },
+  {
+    "wave": 33,
+    "enemies": "Firebug,Firewasp,FlyingLocust,Leafbug,Voidbutterfly,Firewasp,Firebug,Firewasp,FlyingLocust,Leafbug,Voidbutterfly,Firewasp,Firebug,Firewasp,FlyingLocust,Leafbug,Voidbutterfly,Firewasp,Firebug,Firewasp,FlyingLocust,Leafbug,Voidbutterfly,Firewasp,Firebug,Firewasp,FlyingLocust,Leafbug"
+  },
+  {
+    "wave": 34,
+    "enemies": "Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug"
+  },
+  {
+    "wave": 35,
+    "enemies": "MagmaCrab,Leafbug,LanternJelly,Scorpion,Firebug,Clampbeetle,FlyingLocust,Voidbutterfly,MagmaCrab,Leafbug,LanternJelly,Scorpion,Firebug,Clampbeetle,FlyingLocust,Voidbutterfly,MagmaCrab,Leafbug,Leafbug,Scorpion,Firebug,Clampbeetle,FlyingLocust,Voidbutterfly,MagmaCrab,Leafbug,Firebug,Scorpion"
+  },
+  {
+    "wave": 36,
+    "enemies": "Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust"
+  },
+  {
+    "wave": 37,
+    "enemies": "Firebug,Firewasp,FlyingLocust,Leafbug,Voidbutterfly,Firewasp,Firebug,Firewasp,FlyingLocust,Leafbug,Voidbutterfly,Firewasp,Firebug,Firewasp,FlyingLocust,Leafbug,Voidbutterfly,Firewasp,Firebug,Firewasp,FlyingLocust,Leafbug,Voidbutterfly,Firewasp,Firebug,Firewasp,FlyingLocust,Leafbug"
+  },
+  {
+    "wave": 38,
+    "enemies": "Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug,Clampbeetle,Leafbug,Scorpion,Leafbug,MagmaCrab,Firebug"
+  },
+  {
+    "wave": 39,
+    "enemies": "MagmaCrab,Leafbug,LanternJelly,Scorpion,Firebug,Clampbeetle,FlyingLocust,Voidbutterfly,MagmaCrab,Leafbug,LanternJelly,Scorpion,Firebug,Clampbeetle,FlyingLocust,Voidbutterfly,MagmaCrab,Leafbug,Leafbug,Scorpion,Firebug,Clampbeetle,FlyingLocust,Voidbutterfly,MagmaCrab,Leafbug,Firebug,Scorpion"
+  },
+  {
+    "wave": 40,
+    "enemies": "Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust,Leafbug,Clampbeetle,Leafbug,FlyingLocust,Firebug,FlyingLocust"
+  }
+]

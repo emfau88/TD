@@ -1,5 +1,69 @@
 # Vorhandene Gegner im Idle-Spiel
 
+## Aktueller Zusatz E01 · lokale Pakete, 23.10.2026
+
+Schema **28**, Kampfregeln **14**, sechzehn normale Arten plus vorhandene Bossfigur.
+W02 bleibt bis Welle 40 einschließlich Bossen/Elite exakt erhalten. Alle alten
+Regeln 3–13 bleiben für laufende Versuche lesbar; Regeln 12 sind in
+`wave-recipes-v12.ts` auch jenseits von 40 eingefroren. Regeln 13 sind in
+`wave-recipes-v13.ts` erhalten, einschließlich der alten Welle 46.
+
+| Ab Welle | ID / Anzeige | HP · Tempo · Rüstung · Gold · Kernschaden |
+| --- | --- | --- |
+| 42 | MossShroom / Moospilz | 28 · 43 · 0 % · 9 · 1 |
+| 46 | WoodSpider / Waldspinne | 30 · 64 · 0 % · 12 · 1 |
+| 50 | HornedBat / Hornfledermaus | 24 · 74 · 0 % · 12 · 1; fliegend |
+| 54 | EmberBomb / Zunderläufer | 60 · 36 · 25 % · 18 · 2 |
+
+Zwei Einführungsplätze, direkte Wiederholung in der nächsten Welle, danach
+familienabhängige Kombinationen aus höchstens drei Arten. In Welle 46 übernimmt
+die neue Spinne zusätzlich die leichte Begleitung: sieben Skorpione, 15 Spinnen,
+zwei Quallen statt der versehentlichen 20-Skorpion-Mischung. Sonstige Rezepte bleiben gleich. Alle sechzehn normalen
+Arten treten in den geprüften späten 51-Wellen-Fenstern wieder auf. Vier Familien,
+maximal 28 Gegner und zwei Heiler bleiben erhalten. Spawnrhythmen und gesamtes
+Kill-/Abschlussbudget derselben Welle bleiben zu W02 gleich; geprüft 41–250.
+Turmwerte, Upgradepreise, HP-Kurve und Offline-Quoten werden nicht geändert.
+
+Die rote und grüne Moospilzkappe verwenden eine gemeinsame Definition und dieselben
+Animationsdaten. Die Farbe wird aus der gespeicherten UID abgeleitet; sie hat
+keine Elitewerte. Alle vier Arten verwenden vorhandene Bewegung/Kampfmechaniken.
+
+48er Top-down-Grafiken von Frakassets (CC BY 4.0), kompakt in 64er Zellen gepackt,
+vier echte Ansichten, Originaltimings und JSON-Pivots. Eine vorhandene Schattenebene.
+Die optionale lokale Galerie vergleicht die zehn Frakassets-Kandidaten.
+Der Import benötigt ausschließlich das Frakassets-Archiv.
+[Assetvertrag, Quellen und Lizenz](../assets/local-monsters/README.md) ·
+[Vergleichsvorschau](../enemy-lab.html) ·
+[Prüfergebnisse](../../../artifacts/idle-bastion/acceptance/local-enemy-assets/REPORT.md).
+
+Die folgenden älteren Abschnitte dokumentieren die Entwicklung vor E01; ihre
+Bestandszahlen und Versionsstände sind historisch.
+
+
+## Wave-Rework 2.0 — 23.10.2026
+
+Aktuell Snapshot 26 / Regeln 12. Die zwölf Arten, Originalanimationen, Einführungen 19/26/32, gemeinsamen Heilsperren und die separate Vorschau bleiben erhalten. Fortgeschrittene Schwärme haben 28 Gegner, Anstürme 27–28, Panzer 21–22, Unterstützung 23–24; Elite 40 hat 26. Frühe Wellen wachsen schrittweise in diese Bereiche. Höchstens drei Arten und insgesamt zwei Heiler, weiterhin maximal 28 pro Welle.
+
+Kompaktere Vierer-/Fünfergruppen im Schwarm (0,26 s / 1,15 s Pause), Drei-/Vierergruppen im Ansturm (0,30 / 1,25 s), Panzer-Dreiergruppen (0,60 / 1,30 s) und unterstützte Vierergruppen (0,38 / 1,35 s) unterscheiden Tempo und Flächenwirkung. Elite 40 nutzt Vierergruppen (0,42 / 1,25 s). Schwerere Gruppen werden durch mehr leichte Begleitung begrenzt, ohne globale HP-Senkung. Kill- und Abschlussgold teilen sich das bisherige Begegnungsbudget; erste Kurve bis 40 unverändert.
+
+`wave-recipes-v11.ts` bewahrt das erste Rework für alte laufende Versuche. Auch nach Welle 40 entstehen gültige Familien und Mischungen, ohne wachsendes Rezeptarchiv. [Messungen, Farm-/Save-Verhalten, Langzeitgrenzen und Screenshots](../../../artifacts/idle-bastion/acceptance/wave-rework-v2/REPORT.md). Der folgende W01-Abschnitt dokumentiert den ersten Umbau und seine damaligen Mengen, Versionen und Migrationsregeln.
+
+## Wave-Rework W01 — 23.10.2026
+
+Aktuell **zwölf normale Arten und Rosenspiegel**, Snapshot 25 / Kampfregeln 11. Ergänzt: Waldgoblin ab 19 (36 HP, Tempo 66, keine Rüstung, 13 Basisgold), Knochenwächter ab 26 (55 HP, Tempo 44, 25 % Rüstung, 17 Basisgold), Waldkultist ab 32 (42 HP, Tempo 39, keine Rüstung, 18 Basisgold). Beide Heilerarten verwenden dieselbe begrenzte Heilregel und denselben gespeicherten Ziel-Lockout; sie heilen weder sich noch andere Heiler oder Bosse.
+
+`src/wave-recipes.ts` kombiniert vier Familien mit einem kleinen Typenrepertoire, Mengen und Spawnprofilen. Die ersten 40 Wellen werden deterministisch aus diesem Baukasten abgeleitet; höchstens 33 normale Rezepte ab Welle 6 werden zwischengespeichert. Die kurze abgeleitete Historie bevorzugt länger nicht verwendete Arten. Keine Zufallsquelle, keine Abhängigkeit von Farmversuch oder Ladezeit, keine 40 handgeschriebenen Wellen. Ab Welle 41 bleibt nur ein zusätzliches Rezept im Cache.
+
+Meist zwei, höchstens drei Arten; maximal 28 Gegner und zwei Heiler insgesamt. Neue Arten erhalten genau zwei Plätze und werden direkt in der nächsten regulären Welle wiederverwendet. Unterschiedliche Gruppengrößen, Binnenabstände von 0,34–0,48 s, Pausen von 1,45–1,6 s und Panzerfolgen mit 0,95/1,1 s. Die Gegneranzahl berücksichtigt Rüstung und Tempo; bestehende HP-Grundkurve und Gegnerwerte bleiben erhalten. Welle 40 ist eine Elite-Panzermischung mit Knochenwächtern, Goblins und Kultist, höherem Mengenbudget und Goldprämie; keine neue Bossmechanik.
+
+Tutorialwellen 1–5 und Bossrezepte 15/25 bleiben exakt erhalten. Alle Rezepte bis einschließlich Regeln 10 bleiben einschließlich Einführung, Anzahl, Spawnzeiten, HP und Gold reproduzierbar. Schema 24 wird zuerst mit den bisherigen Regeln validiert, dann zu 25 migriert: laufende Spawnliste, Gegner, Heilzeiten, Schüsse, Geld und Akteure bleiben erhalten. Nur aktuelle Farmbelege verfallen; historische Offline-Grundlagen bleiben gültig. Neue Rezepte beginnen erst mit dem nächsten Versuch.
+
+Die Abschlussprämie gleicht unterschiedliche Typenwerte aus und berücksichtigt die längeren robusten Gruppen; Kill-Gold und Wisp werden weiterhin normal abgerechnet. Die tatsächliche Goldrate bleibt von Verteidigung, Schusszeit und schadensfreien Abschlüssen abhängig.
+
+[Quellen, tatsächliche CC0-Lizenzen und Import](../assets/lucifer/README.md) · [separate Vorschau](../enemy-check.html) · [Messungen, Screenshots und Grenzen](../../../artifacts/idle-bastion/acceptance/wave-rework/REPORT.md).
+
+Die folgenden Abschnitte bewahren den vorherigen Bestand und frühere Produktionsideen als Herkunft. Ihre Viererrotation und Versionsangaben beschreiben den Stand vor W01; Mooskröte, Schnecke und Trommler gehören nicht zur aktuellen Umsetzung.
+
 Die Idle-Werte und Rollen liegen in `src/enemy-roster.ts`, die gemessenen Originalanimationen in `src/enemy-art.ts`. Das klassische Spiel wird nicht verändert. Keine neuen Bildgenerierungen für dieses Paket.
 
 | Erste Welle | Figur / Originalasset | Rolle und Gegenmittel |

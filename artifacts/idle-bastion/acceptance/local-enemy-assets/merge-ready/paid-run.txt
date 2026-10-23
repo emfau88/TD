@@ -1,0 +1,1 @@
+{"secondsAfter40":4096,"record":56,"defeats":6,"purchases":24,"wave1FarmClears":0,"newSpecies":["MossShroom","WoodSpider","HornedBat","EmberBomb"],"peaks":{"42":16,"46":19,"50":17,"54":22,"55":16,"56":20}}

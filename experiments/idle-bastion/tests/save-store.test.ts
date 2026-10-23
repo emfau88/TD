@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { IDBFactory } from 'fake-indexeddb';
-import { IdleBattle } from '../src/battle';
+import { IdleBattle, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION } from '../src/battle';
 import { beginAbsence, claimOffline, createOfflineState, reserveOffline } from '../src/offline';
 import { BattleSession } from '../src/battle-session';
 import {
@@ -161,7 +161,7 @@ test('a future battle rules version inside schema one is protected as unsupporte
   const store = await openBattleStore(factory, DB_NAME);
   const first = await store.save(fixture().snapshot(), false, 0);
   await store.save(first.battle, false, 1);
-  const future = { ...first, revision: 7, battle: { ...first.battle, rulesVersion: 7 } };
+  const future = { ...first, revision: 7, battle: { ...first.battle, rulesVersion: BATTLE_RULES_VERSION + 1 } };
   await rawWrite(factory, 'default', future);
   assert.equal((await store.load()).kind, 'unsupported');
   await assert.rejects(store.recoverBackup(), SaveUnsupportedError);
@@ -537,7 +537,7 @@ test('session return across the Mara rule update pays the historical rate once a
   await reloaded.close();
 });
 
-test('future battle schema eleven and future historical proof rules seven remain protected', async () => {
+test('future battle schema and historical proof versions remain protected', async () => {
   for (const kind of ['battle-schema', 'offline-proof'] as const) {
     const factory = new IDBFactory();
     const store = await openBattleStore(factory, DB_NAME);
@@ -545,12 +545,12 @@ test('future battle schema eleven and future historical proof rules seven remain
     await store.save(first.battle, false, 1);
     const future = structuredClone(first);
     if (kind === 'battle-schema') {
-      (future.battle as { schemaVersion: number }).schemaVersion = 11;
+      (future.battle as { schemaVersion: number }).schemaVersion = BATTLE_SCHEMA_VERSION + 1;
     } else {
       const basis = { wave: 1, fingerprint: 'future-proof', rulesVersion: 2, rewardGold: 200, durationMs: 120_000 };
       future.offline = beginAbsence(createOfflineState(1000), 1000, basis, false);
-      future.offline.baseline.certificate!.rulesVersion = 7;
-      future.offline.window!.certificate!.rulesVersion = 7;
+      future.offline.baseline.certificate!.rulesVersion = BATTLE_RULES_VERSION + 1;
+      future.offline.window!.certificate!.rulesVersion = BATTLE_RULES_VERSION + 1;
     }
     await rawWrite(factory, 'default', future);
     assert.equal((await store.load()).kind, 'unsupported');

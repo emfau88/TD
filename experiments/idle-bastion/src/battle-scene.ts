@@ -2,7 +2,7 @@ import { ILYRA } from './ilyra';
 import { IlyraView } from './ilyra-view';
 import { ENEMY_SHEETS } from './enemy-art';
 import { JELLY_HEAL } from './enemy-roster';
-import { jellyFrame } from '../../../reference/src/jelly-art';
+import { enemyHealFrame } from './enemy-art';
 import { MARA } from './mara';
 import { CombatEffects } from './combat-effects';
 import { projectileDepth } from './world-depth';
@@ -506,14 +506,14 @@ export class BattleScene extends Phaser.Scene {
     for (const enemy of sim.enemies) {
       const view = this.enemyView(enemy);
       const lift = enemy.def.flying ? 7 + Math.sin(elapsed * 5 + enemy.uid) * 1.5 : 0;
-      view.sprite.setPosition(enemy.x, enemy.y - lift).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(enemy.y + 1000);
+      view.sprite.setPosition(enemy.x, enemy.y - lift).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed, enemy.flip, enemy.uid)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(enemy.y + 1000);
       if (enemy.def.id === 'Rosenspiegel') {
         const casting = sim.bossCharm.phase === 'windup' || sim.bossCharm.phase === 'channel';
         if (casting) view.sprite.setFrame(succubusFrame('dance', 'down', charmAge(sim.bossCharm) * 1000)).setFlipX(false);
         this.effects.lineStyle(2, 0xdb80cd, 0.8).strokeEllipse(enemy.x, enemy.y + 3, 34, 13);
       }
       if (enemy.healRemaining > 0) {
-        view.sprite.setFrame(jellyFrame('heal', enemy.direction, (JELLY_HEAL.cast - enemy.healRemaining) * 1000));
+        view.sprite.setFrame(enemyHealFrame(enemy.def.id, enemy.direction, JELLY_HEAL.cast - enemy.healRemaining, enemy.flip));
         const charge = 1 - enemy.healRemaining / JELLY_HEAL.cast;
         this.effects.lineStyle(2, 0x9aefb3, .7).strokeEllipse(enemy.x, enemy.y + 7, 22 + charge * 26, 10 + charge * 10);
       }

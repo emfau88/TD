@@ -1,5 +1,20 @@
 # SPIRE: Idle Bastion — überarbeiteter Entwicklungsauftrag
 
+**Lokale Gegnerpakete E01:** Vier zusätzliche Frakassets-Arten ab Welle 42/46/50/54,
+Originalbewegungen und zwei kosmetische Moospilz-Kappenfarben. Die ersten 40 Wellen
+bleiben identisch zu W02. [Gemeinsame bewegte Vorschau](enemy-lab.html) ·
+[Import und Lizenzen](assets/local-monsters/README.md) ·
+[Prüfbericht mit echten Spielaufnahmen](../../artifacts/idle-bastion/acceptance/local-enemy-assets/REPORT.md).
+Die optionale lokale Galerie vergleicht ausschließlich Frakassets-Kandidaten.
+Der Laufzeitimport benötigt nur das Frakassets-Archiv; Moospilz behält beide Kappenfarben.
+Die Merge-Vorbereitung korrigiert die Begleitung in Welle 46 und die Farmkandidatenauswahl
+mit Schema 28 / Regeln 14; historische laufende Kämpfe bleiben erhalten.
+
+
+**Wave-Rework 2.0 / Endlos-Grundlage:** Lebendigere Gruppen bis 28 Gegner, etwas höhere Ausbauanforderungen, gestraffte Goldrate und fortlaufende Turmlevel nach Werkstatt II. Welle 40 bleibt ein Zwischenmeilenstein. [W02-Prüfbericht](../../artifacts/idle-bastion/acceptance/wave-rework-v2/REPORT.md).
+
+**Erstes Wave-Rework W01 (Herkunft):** Zwölf normale Gegnertypen, vier deterministische Wellenfamilien und eine Elitewelle 40. Neue Originalgegner: Waldgoblin (19), Knochenwächter (26), Waldkultist (32). [Gegnervergleich ohne Spielstandzugriff](enemy-check.html) · [Quellen/CC0/Import](assets/lucifer/README.md) · [Prüfbericht und tatsächliche Spielaufnahmen](../../artifacts/idle-bastion/acceptance/wave-rework/REPORT.md). Paketstatus und Veröffentlichungsstand stehen in der Roadmap.
+
 **Siedlung am Kern:** Neue Partien erhalten eine 40×16-Karte mit Werkstatt, Lager und Taverne südöstlich des Kerns. Altsaves behalten ihre Plätze bis zum kostenlosen Umzug unter **Siedlung → Siedlung am Kern** bei manueller Pause. Mausziehen/Touch statt zusätzlicher Navigationsbuttons; die Ostfront folgt später. Die älteren Slice-Angaben unten bleiben als Entwicklungshistorie erhalten.
 
 Hauptspiel seit 21.10.2026: `main`, [Hauptadresse](https://emfau88.github.io/TD/). Code bleibt in diesem Verzeichnis; frühere Branch-/Isolationsangaben unten beschreiben die Entwicklungshistorie. Die ausdrückliche Übernahmefreigabe ersetzt die frühere Merge-Sperre.
