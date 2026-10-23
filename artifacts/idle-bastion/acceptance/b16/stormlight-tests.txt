@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: research is a separate once-only paid unlock after wave 28 and Ilyra; upgrades remain unbounded
+ok 1 - research is a separate once-only paid unlock after wave 28 and Ilyra; upgrades remain unbounded
+  ---
+  duration_ms: 97.3727
+  type: 'test'
+  ...
+# Subtest: a chain hits three distinct live targets, nearest first, with bounded range and 100/65/42 percent damage
+ok 2 - a chain hits three distinct live targets, nearest first, with bounded range and 100/65/42 percent damage
+  ---
+  duration_ms: 38.0976
+  type: 'test'
+  ...
+# Subtest: in-flight hops survive upgrade, sale and reload exactly; forged payloads and visited IDs are rejected
+ok 3 - in-flight hops survive upgrade, sale and reload exactly; forged payloads and visited IDs are rejected
+  ---
+  duration_ms: 51.5148
+  type: 'test'
+  ...
+# Subtest: Mara accelerates the fifth tower without increasing its per-chain target or damage cap; armor still applies
+ok 4 - Mara accelerates the fifth tower without increasing its per-chain target or damage cap; armor still applies
+  ---
+  duration_ms: 37.5835
+  type: 'test'
+  ...
+# Subtest: new farm proofs exclude active heroes; historical receipts remain exactly once and recipes are unchanged
+ok 5 - new farm proofs exclude active heroes; historical receipts remain exactly once and recipes are unchanged
+  ---
+  duration_ms: 85.9057
+  type: 'test'
+  ...
+# Subtest: schema 28 live queues and wallets migrate unchanged without granting research or rewriting shots
+ok 6 - schema 28 live queues and wallets migrate unchanged without granting research or rewriting shots
+  ---
+  duration_ms: 49.025
+  type: 'test'
+  ...
+# Subtest: research is atomic across a failed native save, then remains paid and owned after reopening
+ok 7 - research is atomic across a failed native save, then remains paid and owned after reopening
+  ---
+  duration_ms: 74.6161
+  type: 'test'
+  ...
+# Subtest: all three original art stages retain source frame maps, PNG dimensions and the shared floor anchor
+ok 8 - all three original art stages retain source frame maps, PNG dimensions and the shared floor anchor
+  ---
+  duration_ms: 9.7325
+  type: 'test'
+  ...
+# Subtest: Ilyra can retain the fifth tower as a sold volley source without counting chain damage twice
+ok 9 - Ilyra can retain the fifth tower as a sold volley source without counting chain damage twice
+  ---
+  duration_ms: 38.5069
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1212.3098

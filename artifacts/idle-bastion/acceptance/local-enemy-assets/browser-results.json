@@ -1,0 +1,185 @@
+{
+  "errors": [],
+  "previews": [
+    {
+      "device": "desktop",
+      "cards": 26,
+      "palettes": [
+        "Rote Kappe",
+        "Moosgrüne Kappe"
+      ],
+      "resolutions": [
+        16,
+        32,
+        48,
+        64
+      ],
+      "directions": 4,
+      "pauseAndStep": true,
+      "bodyWidth": 1600,
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "device": "mobile",
+      "cards": 26,
+      "palettes": [
+        "Rote Kappe",
+        "Moosgrüne Kappe"
+      ],
+      "resolutions": [
+        16,
+        32,
+        48,
+        64
+      ],
+      "directions": 4,
+      "pauseAndStep": true,
+      "bodyWidth": 390,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "games": [
+    {
+      "device": "desktop",
+      "wave": 42,
+      "intro": true,
+      "historical": false,
+      "recipeVersion": 14,
+      "enemyCount": 6,
+      "queue": 15,
+      "species": [
+        "Scorpion",
+        "Leafbug",
+        "MossShroom"
+      ],
+      "rAFmedian": 2.800000000000182,
+      "rAFp95": 5.5,
+      "pausedReload": true
+    },
+    {
+      "device": "desktop",
+      "wave": 46,
+      "intro": true,
+      "historical": false,
+      "recipeVersion": 14,
+      "enemyCount": 11,
+      "queue": 12,
+      "species": [
+        "Scorpion",
+        "WoodSpider",
+        "LanternJelly"
+      ],
+      "rAFmedian": 2.800000000000182,
+      "rAFp95": 5.5,
+      "pausedReload": true
+    },
+    {
+      "device": "desktop",
+      "wave": 50,
+      "intro": true,
+      "historical": false,
+      "recipeVersion": 14,
+      "enemyCount": 4,
+      "queue": 17,
+      "species": [
+        "BoneGuard",
+        "WoodSpider",
+        "HornedBat"
+      ],
+      "rAFmedian": 2.7999999999999545,
+      "rAFp95": 2.900000000000091,
+      "pausedReload": true
+    },
+    {
+      "device": "desktop",
+      "wave": 54,
+      "intro": false,
+      "historical": false,
+      "recipeVersion": 14,
+      "enemyCount": 22,
+      "queue": 0,
+      "species": [
+        "EmberBomb",
+        "ForestGoblin",
+        "HornedBat"
+      ],
+      "rAFmedian": 2.7999999999999545,
+      "rAFp95": 8.299999999999955,
+      "pausedReload": true
+    },
+    {
+      "device": "desktop",
+      "wave": 54,
+      "intro": true,
+      "historical": false,
+      "recipeVersion": 14,
+      "enemyCount": 11,
+      "queue": 16,
+      "species": [
+        "ForestGoblin",
+        "EmberBomb",
+        "HornedBat"
+      ],
+      "rAFmedian": 2.7999999999999545,
+      "rAFp95": 5.5,
+      "pausedReload": true
+    },
+    {
+      "device": "desktop",
+      "wave": 46,
+      "intro": true,
+      "historical": true,
+      "recipeVersion": 13,
+      "enemyCount": 11,
+      "queue": 12,
+      "species": [
+        "Scorpion",
+        "LanternJelly",
+        "WoodSpider"
+      ],
+      "rAFmedian": 2.800000000000182,
+      "rAFp95": 5.5,
+      "pausedReload": true
+    },
+    {
+      "device": "mobile",
+      "wave": 54,
+      "intro": false,
+      "historical": false,
+      "recipeVersion": 14,
+      "enemyCount": 22,
+      "queue": 0,
+      "species": [
+        "EmberBomb",
+        "ForestGoblin",
+        "HornedBat"
+      ],
+      "rAFmedian": 2.799999999999727,
+      "rAFp95": 5.599999999999909,
+      "pausedReload": true
+    },
+    {
+      "device": "mobile",
+      "wave": 54,
+      "intro": true,
+      "historical": false,
+      "recipeVersion": 14,
+      "enemyCount": 11,
+      "queue": 16,
+      "species": [
+        "ForestGoblin",
+        "EmberBomb",
+        "HornedBat"
+      ],
+      "rAFmedian": 2.799999999999727,
+      "rAFp95": 3,
+      "pausedReload": true
+    }
+  ]
+}

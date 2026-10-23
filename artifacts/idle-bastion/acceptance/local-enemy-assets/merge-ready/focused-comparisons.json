@@ -1,0 +1,196 @@
+{
+  "recipes": [
+    {
+      "wave": 45,
+      "version": 13,
+      "count": 27,
+      "counts": {
+        "FlyingLocust": 17,
+        "Firewasp": 10
+      },
+      "effectiveHp": 187463.3631186121,
+      "budget": 431
+    },
+    {
+      "wave": 45,
+      "version": 14,
+      "count": 27,
+      "counts": {
+        "FlyingLocust": 17,
+        "Firewasp": 10
+      },
+      "effectiveHp": 187463.3631186121,
+      "budget": 431
+    },
+    {
+      "wave": 46,
+      "version": 13,
+      "count": 24,
+      "counts": {
+        "Scorpion": 20,
+        "WoodSpider": 2,
+        "LanternJelly": 2
+      },
+      "effectiveHp": 689935.6170553613,
+      "budget": 470
+    },
+    {
+      "wave": 46,
+      "version": 14,
+      "count": 24,
+      "counts": {
+        "Scorpion": 7,
+        "WoodSpider": 15,
+        "LanternJelly": 2
+      },
+      "effectiveHp": 410379.4566277375,
+      "budget": 470
+    },
+    {
+      "wave": 47,
+      "version": 13,
+      "count": 21,
+      "counts": {
+        "Clampbeetle": 7,
+        "FlyingLocust": 12,
+        "WoodSpider": 2
+      },
+      "effectiveHp": 311183.5588760024,
+      "budget": 481
+    },
+    {
+      "wave": 47,
+      "version": 14,
+      "count": 21,
+      "counts": {
+        "Clampbeetle": 7,
+        "FlyingLocust": 12,
+        "WoodSpider": 2
+      },
+      "effectiveHp": 311183.5588760024,
+      "budget": 481
+    }
+  ],
+  "fights": [
+    {
+      "source": "at40",
+      "wave": 45,
+      "version": 13,
+      "win": true,
+      "leakedLives": 17,
+      "seconds": 39.675000000000004,
+      "peak": 20,
+      "gold": 1101.0999999999913
+    },
+    {
+      "source": "at40",
+      "wave": 45,
+      "version": 14,
+      "win": true,
+      "leakedLives": 17,
+      "seconds": 39.675000000000004,
+      "peak": 20,
+      "gold": 1101.0999999999913
+    },
+    {
+      "source": "at40",
+      "wave": 46,
+      "version": 13,
+      "win": false,
+      "leakedLives": 20,
+      "seconds": 46.375,
+      "peak": 23,
+      "gold": 165
+    },
+    {
+      "source": "at40",
+      "wave": 46,
+      "version": 14,
+      "win": false,
+      "leakedLives": 20,
+      "seconds": 46.875,
+      "peak": 22,
+      "gold": 151.8000000000029
+    },
+    {
+      "source": "at40",
+      "wave": 47,
+      "version": 13,
+      "win": false,
+      "leakedLives": 20,
+      "seconds": 44.25,
+      "peak": 17,
+      "gold": 242
+    },
+    {
+      "source": "at40",
+      "wave": 47,
+      "version": 14,
+      "win": false,
+      "leakedLives": 20,
+      "seconds": 44.25,
+      "peak": 17,
+      "gold": 242
+    },
+    {
+      "source": "before46",
+      "wave": 45,
+      "version": 13,
+      "win": true,
+      "leakedLives": 10,
+      "seconds": 39.675000000000004,
+      "peak": 18,
+      "gold": 1382.699999999997
+    },
+    {
+      "source": "before46",
+      "wave": 45,
+      "version": 14,
+      "win": true,
+      "leakedLives": 10,
+      "seconds": 39.675000000000004,
+      "peak": 18,
+      "gold": 1382.699999999997
+    },
+    {
+      "source": "before46",
+      "wave": 46,
+      "version": 13,
+      "win": false,
+      "leakedLives": 20,
+      "seconds": 47.175000000000004,
+      "peak": 23,
+      "gold": 228.8000000000029
+    },
+    {
+      "source": "before46",
+      "wave": 46,
+      "version": 14,
+      "win": false,
+      "leakedLives": 20,
+      "seconds": 52.5,
+      "peak": 20,
+      "gold": 367.3999999999942
+    },
+    {
+      "source": "before46",
+      "wave": 47,
+      "version": 13,
+      "win": true,
+      "leakedLives": 16,
+      "seconds": 44.25,
+      "peak": 16,
+      "gold": 1412.3999999999942
+    },
+    {
+      "source": "before46",
+      "wave": 47,
+      "version": 14,
+      "win": true,
+      "leakedLives": 16,
+      "seconds": 44.25,
+      "peak": 16,
+      "gold": 1412.3999999999942
+    }
+  ]
+}

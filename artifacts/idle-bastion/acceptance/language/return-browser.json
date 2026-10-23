@@ -1,0 +1,170 @@
+[
+  {
+    "width": 320,
+    "lang": "en",
+    "absence": 61234,
+    "units": 2877998,
+    "headline": "+2 877 gold",
+    "exact": "+2 877.998 gold",
+    "bounds": {
+      "overflow": false,
+      "inside": true,
+      "dialogFits": true
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "lang": "en",
+    "absence": 28800000,
+    "units": 1353600000,
+    "headline": "≈ +1.3 million gold",
+    "exact": "+1 353 600 gold",
+    "bounds": {
+      "overflow": false,
+      "inside": true,
+      "dialogFits": true
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "lang": "de",
+    "absence": 61234,
+    "units": 2877998,
+    "headline": "+2 877 Gold",
+    "exact": "+2 877,998 Gold",
+    "bounds": {
+      "overflow": false,
+      "inside": true,
+      "dialogFits": true
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "lang": "de",
+    "absence": 28800000,
+    "units": 1353600000,
+    "headline": "≈ +1,3 Mio. Gold",
+    "exact": "+1 353 600 Gold",
+    "bounds": {
+      "overflow": false,
+      "inside": true,
+      "dialogFits": true
+    },
+    "errors": []
+  },
+  {
+    "width": 844,
+    "lang": "en",
+    "absence": 61234,
+    "units": 2877998,
+    "headline": "+2 877 gold",
+    "exact": "+2 877.998 gold",
+    "bounds": {
+      "overflow": false,
+      "inside": true,
+      "dialogFits": true
+    },
+    "errors": []
+  },
+  {
+    "width": 844,
+    "lang": "en",
+    "absence": 28800000,
+    "units": 1353600000,
+    "headline": "≈ +1.3 million gold",
+    "exact": "+1 353 600 gold",
+    "bounds": {
+      "overflow": false,
+      "inside": true,
+      "dialogFits": true
+    },
+    "errors": []
+  },
+  {
+    "width": 844,
+    "lang": "de",
+    "absence": 61234,
+    "units": 2877998,
+    "headline": "+2 877 Gold",
+    "exact": "+2 877,998 Gold",
+    "bounds": {
+      "overflow": false,
+      "inside": true,
+      "dialogFits": true
+    },
+    "errors": []
+  },
+  {
+    "width": 844,
+    "lang": "de",
+    "absence": 28800000,
+    "units": 1353600000,
+    "headline": "≈ +1,3 Mio. Gold",
+    "exact": "+1 353 600 Gold",
+    "bounds": {
+      "overflow": false,
+      "inside": true,
+      "dialogFits": true
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "lang": "en",
+    "absence": 61234,
+    "units": 2877998,
+    "headline": "+2 877 gold",
+    "exact": "+2 877.998 gold",
+    "bounds": {
+      "overflow": false,
+      "inside": true,
+      "dialogFits": true
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "lang": "en",
+    "absence": 28800000,
+    "units": 1353600000,
+    "headline": "≈ +1.3 million gold",
+    "exact": "+1 353 600 gold",
+    "bounds": {
+      "overflow": false,
+      "inside": true,
+      "dialogFits": true
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "lang": "de",
+    "absence": 61234,
+    "units": 2877998,
+    "headline": "+2 877 Gold",
+    "exact": "+2 877,998 Gold",
+    "bounds": {
+      "overflow": false,
+      "inside": true,
+      "dialogFits": true
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "lang": "de",
+    "absence": 28800000,
+    "units": 1353600000,
+    "headline": "≈ +1,3 Mio. Gold",
+    "exact": "+1 353 600 Gold",
+    "bounds": {
+      "overflow": false,
+      "inside": true,
+      "dialogFits": true
+    },
+    "errors": []
+  }
+]

@@ -1,0 +1,702 @@
+[
+  {
+    "approach": "control",
+    "milestone": 40,
+    "regular": {
+      "wave": 23,
+      "goldPerMinute": 3533.75
+    },
+    "best": {
+      "wave": 29,
+      "safe": true,
+      "goldPerMinute": 4594.976303317536
+    },
+    "candidates": [
+      {
+        "wave": 1,
+        "safe": true,
+        "goldPerMinute": 492.8
+      },
+      {
+        "wave": 8,
+        "safe": true,
+        "goldPerMinute": 1050.1333333333334
+      },
+      {
+        "wave": 9,
+        "safe": true,
+        "goldPerMinute": 1148.8351648351647
+      },
+      {
+        "wave": 10,
+        "safe": true,
+        "goldPerMinute": 1113.5802469135801
+      },
+      {
+        "wave": 11,
+        "safe": true,
+        "goldPerMinute": 1175.9570661896241
+      },
+      {
+        "wave": 12,
+        "safe": true,
+        "goldPerMinute": 1424.8598130841121
+      },
+      {
+        "wave": 13,
+        "safe": true,
+        "goldPerMinute": 1155.7795275590552
+      },
+      {
+        "wave": 14,
+        "safe": true,
+        "goldPerMinute": 1359.679358717435
+      },
+      {
+        "wave": 16,
+        "safe": true,
+        "goldPerMinute": 2432.867332382311
+      },
+      {
+        "wave": 17,
+        "safe": true,
+        "goldPerMinute": 2963.076923076923
+      },
+      {
+        "wave": 18,
+        "safe": true,
+        "goldPerMinute": 3125.72402044293
+      },
+      {
+        "wave": 19,
+        "safe": true,
+        "goldPerMinute": 3372.6108374384235
+      },
+      {
+        "wave": 20,
+        "safe": true,
+        "goldPerMinute": 3534.1935483870966
+      },
+      {
+        "wave": 21,
+        "safe": true,
+        "goldPerMinute": 2900.240963855422
+      },
+      {
+        "wave": 22,
+        "safe": true,
+        "goldPerMinute": 2858.698224852071
+      },
+      {
+        "wave": 23,
+        "safe": true,
+        "goldPerMinute": 3533.75
+      },
+      {
+        "wave": 24,
+        "safe": true,
+        "goldPerMinute": 3059.87525987526
+      },
+      {
+        "wave": 26,
+        "safe": true,
+        "goldPerMinute": 3810.810810810811
+      },
+      {
+        "wave": 27,
+        "safe": true,
+        "goldPerMinute": 3651.736526946108
+      },
+      {
+        "wave": 28,
+        "safe": true,
+        "goldPerMinute": 3887.0800450958286
+      },
+      {
+        "wave": 29,
+        "safe": true,
+        "goldPerMinute": 4594.976303317536
+      },
+      {
+        "wave": 30,
+        "safe": true,
+        "goldPerMinute": 3652.8596802841917
+      },
+      {
+        "wave": 31,
+        "safe": true,
+        "goldPerMinute": 3911.6230366492146
+      },
+      {
+        "wave": 32,
+        "safe": true,
+        "goldPerMinute": 3549.309504467912
+      },
+      {
+        "wave": 33,
+        "safe": true,
+        "goldPerMinute": 3936.0828300258845
+      },
+      {
+        "wave": 34,
+        "safe": true,
+        "goldPerMinute": 3681.8571428571427
+      },
+      {
+        "wave": 35,
+        "safe": true,
+        "goldPerMinute": 3989.911330049261
+      },
+      {
+        "wave": 36,
+        "safe": true,
+        "goldPerMinute": 2693.2700296735907
+      },
+      {
+        "wave": 37,
+        "safe": true,
+        "goldPerMinute": 2873.901098901099
+      },
+      {
+        "wave": 38,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 39,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 40,
+        "safe": false,
+        "goldPerMinute": 0
+      }
+    ]
+  },
+  {
+    "approach": "one-storm",
+    "milestone": 40,
+    "regular": {
+      "wave": 26,
+      "goldPerMinute": 3810.810810810811
+    },
+    "best": {
+      "wave": 29,
+      "safe": true,
+      "goldPerMinute": 4313.859844271413
+    },
+    "candidates": [
+      {
+        "wave": 1,
+        "safe": true,
+        "goldPerMinute": 492.8
+      },
+      {
+        "wave": 8,
+        "safe": true,
+        "goldPerMinute": 1050.1333333333334
+      },
+      {
+        "wave": 9,
+        "safe": true,
+        "goldPerMinute": 1148.8351648351647
+      },
+      {
+        "wave": 10,
+        "safe": true,
+        "goldPerMinute": 1113.5802469135801
+      },
+      {
+        "wave": 11,
+        "safe": true,
+        "goldPerMinute": 1175.9570661896241
+      },
+      {
+        "wave": 12,
+        "safe": true,
+        "goldPerMinute": 1320
+      },
+      {
+        "wave": 13,
+        "safe": true,
+        "goldPerMinute": 1155.7795275590552
+      },
+      {
+        "wave": 14,
+        "safe": true,
+        "goldPerMinute": 1359.679358717435
+      },
+      {
+        "wave": 16,
+        "safe": true,
+        "goldPerMinute": 2375.264623955432
+      },
+      {
+        "wave": 17,
+        "safe": true,
+        "goldPerMinute": 2963.076923076923
+      },
+      {
+        "wave": 18,
+        "safe": true,
+        "goldPerMinute": 2788.449848024316
+      },
+      {
+        "wave": 19,
+        "safe": true,
+        "goldPerMinute": 3372.6108374384235
+      },
+      {
+        "wave": 20,
+        "safe": true,
+        "goldPerMinute": 3231.858407079646
+      },
+      {
+        "wave": 21,
+        "safe": true,
+        "goldPerMinute": 2838.0707395498393
+      },
+      {
+        "wave": 22,
+        "safe": true,
+        "goldPerMinute": 2771.242829827916
+      },
+      {
+        "wave": 23,
+        "safe": true,
+        "goldPerMinute": 3628.235294117647
+      },
+      {
+        "wave": 24,
+        "safe": true,
+        "goldPerMinute": 3267.036625971143
+      },
+      {
+        "wave": 26,
+        "safe": true,
+        "goldPerMinute": 3810.810810810811
+      },
+      {
+        "wave": 27,
+        "safe": true,
+        "goldPerMinute": 3580.27397260274
+      },
+      {
+        "wave": 28,
+        "safe": true,
+        "goldPerMinute": 3617.8803777544595
+      },
+      {
+        "wave": 29,
+        "safe": true,
+        "goldPerMinute": 4313.859844271413
+      },
+      {
+        "wave": 30,
+        "safe": true,
+        "goldPerMinute": 3325.0767987065483
+      },
+      {
+        "wave": 31,
+        "safe": true,
+        "goldPerMinute": 3754.3718592964824
+      },
+      {
+        "wave": 32,
+        "safe": true,
+        "goldPerMinute": 2811.5830115830117
+      },
+      {
+        "wave": 33,
+        "safe": true,
+        "goldPerMinute": 3711.8958502847845
+      },
+      {
+        "wave": 34,
+        "safe": true,
+        "goldPerMinute": 2939.1874554526016
+      },
+      {
+        "wave": 35,
+        "safe": true,
+        "goldPerMinute": 3216.6481334392374
+      },
+      {
+        "wave": 36,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 37,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 38,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 39,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 40,
+        "safe": false,
+        "goldPerMinute": 0
+      }
+    ]
+  },
+  {
+    "approach": "one-storm",
+    "milestone": 60,
+    "regular": {
+      "wave": 26,
+      "goldPerMinute": 4764.976958525345
+    },
+    "best": {
+      "wave": 32,
+      "safe": true,
+      "goldPerMinute": 6313.872832369942
+    },
+    "candidates": [
+      {
+        "wave": 1,
+        "safe": true,
+        "goldPerMinute": 492.8
+      },
+      {
+        "wave": 26,
+        "safe": true,
+        "goldPerMinute": 4764.976958525345
+      },
+      {
+        "wave": 31,
+        "safe": true,
+        "goldPerMinute": 5738.248847926267
+      },
+      {
+        "wave": 32,
+        "safe": true,
+        "goldPerMinute": 6313.872832369942
+      },
+      {
+        "wave": 33,
+        "safe": true,
+        "goldPerMinute": 5489.675090252707
+      },
+      {
+        "wave": 34,
+        "safe": true,
+        "goldPerMinute": 5505.5807743658215
+      },
+      {
+        "wave": 35,
+        "safe": true,
+        "goldPerMinute": 6308.0373831775705
+      },
+      {
+        "wave": 36,
+        "safe": true,
+        "goldPerMinute": 6259.5310344827585
+      },
+      {
+        "wave": 37,
+        "safe": true,
+        "goldPerMinute": 5462.66318537859
+      },
+      {
+        "wave": 38,
+        "safe": true,
+        "goldPerMinute": 5265.185185185185
+      },
+      {
+        "wave": 39,
+        "safe": true,
+        "goldPerMinute": 4693.333333333333
+      },
+      {
+        "wave": 40,
+        "safe": true,
+        "goldPerMinute": 5680.258064516129
+      },
+      {
+        "wave": 41,
+        "safe": true,
+        "goldPerMinute": 4923.325635103926
+      },
+      {
+        "wave": 42,
+        "safe": true,
+        "goldPerMinute": 4657.916260954235
+      },
+      {
+        "wave": 43,
+        "safe": true,
+        "goldPerMinute": 5179.582822085889
+      },
+      {
+        "wave": 44,
+        "safe": true,
+        "goldPerMinute": 4039.0886075949365
+      },
+      {
+        "wave": 45,
+        "safe": true,
+        "goldPerMinute": 4986
+      },
+      {
+        "wave": 46,
+        "safe": true,
+        "goldPerMinute": 4402.437673130194
+      },
+      {
+        "wave": 47,
+        "safe": true,
+        "goldPerMinute": 4685.1773729626075
+      },
+      {
+        "wave": 48,
+        "safe": true,
+        "goldPerMinute": 4214.193548387097
+      },
+      {
+        "wave": 49,
+        "safe": true,
+        "goldPerMinute": 4764.946695095949
+      },
+      {
+        "wave": 50,
+        "safe": true,
+        "goldPerMinute": 4116.2
+      },
+      {
+        "wave": 51,
+        "safe": true,
+        "goldPerMinute": 4648.577319587629
+      },
+      {
+        "wave": 52,
+        "safe": true,
+        "goldPerMinute": 4225.524542829644
+      },
+      {
+        "wave": 53,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 54,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 55,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 56,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 57,
+        "safe": true,
+        "goldPerMinute": 2529.075630252101
+      },
+      {
+        "wave": 58,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 59,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 60,
+        "safe": false,
+        "goldPerMinute": 0
+      }
+    ]
+  },
+  {
+    "approach": "one-storm",
+    "milestone": 70,
+    "regular": {
+      "wave": 26,
+      "goldPerMinute": 4764.976958525345
+    },
+    "best": {
+      "wave": 43,
+      "safe": true,
+      "goldPerMinute": 6565.101088646968
+    },
+    "candidates": [
+      {
+        "wave": 1,
+        "safe": true,
+        "goldPerMinute": 492.8
+      },
+      {
+        "wave": 26,
+        "safe": true,
+        "goldPerMinute": 4764.976958525345
+      },
+      {
+        "wave": 41,
+        "safe": true,
+        "goldPerMinute": 6179.130434782609
+      },
+      {
+        "wave": 42,
+        "safe": true,
+        "goldPerMinute": 5935.086848635236
+      },
+      {
+        "wave": 43,
+        "safe": true,
+        "goldPerMinute": 6565.101088646968
+      },
+      {
+        "wave": 44,
+        "safe": true,
+        "goldPerMinute": 5288.751381215469
+      },
+      {
+        "wave": 45,
+        "safe": true,
+        "goldPerMinute": 5858.050734312416
+      },
+      {
+        "wave": 46,
+        "safe": true,
+        "goldPerMinute": 5473.98392652124
+      },
+      {
+        "wave": 47,
+        "safe": true,
+        "goldPerMinute": 5995.877300613497
+      },
+      {
+        "wave": 48,
+        "safe": true,
+        "goldPerMinute": 5289.7177914110425
+      },
+      {
+        "wave": 49,
+        "safe": true,
+        "goldPerMinute": 5566.027397260274
+      },
+      {
+        "wave": 50,
+        "safe": true,
+        "goldPerMinute": 5232.457627118644
+      },
+      {
+        "wave": 51,
+        "safe": true,
+        "goldPerMinute": 5671.8490566037735
+      },
+      {
+        "wave": 52,
+        "safe": true,
+        "goldPerMinute": 5614.219948849105
+      },
+      {
+        "wave": 53,
+        "safe": true,
+        "goldPerMinute": 5395.6626506024095
+      },
+      {
+        "wave": 54,
+        "safe": true,
+        "goldPerMinute": 5389.349112426035
+      },
+      {
+        "wave": 55,
+        "safe": true,
+        "goldPerMinute": 4671.896392229418
+      },
+      {
+        "wave": 56,
+        "safe": true,
+        "goldPerMinute": 4600.763819095478
+      },
+      {
+        "wave": 57,
+        "safe": true,
+        "goldPerMinute": 4578.498985801217
+      },
+      {
+        "wave": 58,
+        "safe": true,
+        "goldPerMinute": 4379.1469194312795
+      },
+      {
+        "wave": 59,
+        "safe": true,
+        "goldPerMinute": 4039.344262295082
+      },
+      {
+        "wave": 60,
+        "safe": true,
+        "goldPerMinute": 4822.808870116156
+      },
+      {
+        "wave": 61,
+        "safe": true,
+        "goldPerMinute": 4071.724137931035
+      },
+      {
+        "wave": 62,
+        "safe": true,
+        "goldPerMinute": 3429.317851959361
+      },
+      {
+        "wave": 63,
+        "safe": true,
+        "goldPerMinute": 3588.7787857641315
+      },
+      {
+        "wave": 64,
+        "safe": true,
+        "goldPerMinute": 2831.0991957104557
+      },
+      {
+        "wave": 65,
+        "safe": true,
+        "goldPerMinute": 2947.2485768500947
+      },
+      {
+        "wave": 66,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 67,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 68,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 69,
+        "safe": false,
+        "goldPerMinute": 0
+      },
+      {
+        "wave": 70,
+        "safe": false,
+        "goldPerMinute": 0
+      }
+    ]
+  }
+]

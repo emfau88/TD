@@ -1,3 +1,4 @@
+import { legacyFixtures, restoreHistorical, assertHistoricalFields } from './legacy-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { IDBFactory } from 'fake-indexeddb';
@@ -66,12 +67,13 @@ test('expanded battle with east towers and a moving Mara reloads exactly; forged
   assert.equal(IdleBattle.restore({...snap,clearing:{unlocked:false,openedAt:null}}),undefined);
 });
 
-test('schema-eight live save migrates closed without changing money, combat or boss progress', () => {
-  const b=eligible(), modern=b.snapshot(), {clearing,...core}=modern;
-  const old={...core,schemaVersion:8,rulesVersion:5,waveRecipeVersion:5}; const copy=structuredClone(old);
-  const migrated=IdleBattle.restore(old)!;
-  assert.deepEqual(migrated.snapshot(),{...modern,waveRecipeVersion:5});assert.deepEqual(old,copy);
+test('schema-eight live save migrates closed without changing money, combat or boss progress',() => {
+  const old=legacyFixtures().critical.midwave[8];
+  const migrated=restoreHistorical(old,{liveClearedWaves:[],farmWave:1});
+  assert.equal(migrated.waveRecipeVersion,5);
+  assert.deepEqual(migrated.clearing,{unlocked:false,openedAt:null});
   assert.equal(migrated.canBuild('tower-east-01'),false);
+  assert.equal(migrated.bossVictories,old.bossVictories);
 });
 
 test('failed persistent clearing purchase rolls back geometry and gold; committed purchase survives IndexedDB reload', async () => {

@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: all forty historical recipes remain exact; entry, bosses, HP and old spawn clocks stay intact
+ok 1 - all forty historical recipes remain exact; entry, bosses, HP and old spawn clocks stay intact
+  ---
+  duration_ms: 2.8952
+  type: 'test'
+  ...
+# Subtest: opening recipes are reproducible in reverse order, bounded, readable and repeat every introduction promptly
+ok 2 - opening recipes are reproducible in reverse order, bounded, readable and repeat every introduction promptly
+  ---
+  duration_ms: 8.2012
+  type: 'test'
+  ...
+# Subtest: a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly
+ok 3 - a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly
+  ---
+  duration_ms: 115.5758
+  type: 'test'
+  ...
+# Subtest: both healer species share target locks, exclude each other and bosses, and resume their exact saved cast
+ok 4 - both healer species share target locks, exclude each other and bosses, and resume their exact saved cast
+  ---
+  duration_ms: 46.342
+  type: 'test'
+  ...
+# Subtest: historical and current offline entitlements retain their exact amount and can only be claimed once
+ok 5 - historical and current offline entitlements retain their exact amount and can only be claimed once
+  ---
+  duration_ms: 1.6103
+  type: 'test'
+  ...
+# Subtest: native save boundary migrates v24 and pays its pending historical offline claim exactly once
+ok 6 - native save boundary migrates v24 and pays its pending historical offline claim exactly once
+  ---
+  duration_ms: 23.7635
+  type: 'test'
+  ...
+# Subtest: three compact original atlases have real directional clips and stable nonmirrored left views
+ok 7 - three compact original atlases have real directional clips and stable nonmirrored left views
+  ---
+  duration_ms: 6.6769
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 879.8685

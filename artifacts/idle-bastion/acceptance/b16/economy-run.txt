@@ -1,0 +1,3 @@
+{"approach":"control","record":70,"seconds":26860,"losses":18,"purchases":90,"farm":23}
+{"approach":"one-storm","record":70,"seconds":28487,"losses":18,"purchases":93,"farm":26}
+{"approach":"two-storms","record":70,"seconds":29021,"losses":18,"purchases":112,"farm":26}

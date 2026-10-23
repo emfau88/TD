@@ -1,0 +1,2051 @@
+TAP version 13
+# Subtest: bundled B05 atlases retain original dimensions and logical enemy frame maps
+not ok 1 - bundled B05 atlases retain original dimensions and logical enemy frame maps
+  ---
+  duration_ms: 33.015
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\local-enemy-assets\\experiments\\idle-bastion\\tests\\art.test.ts:8:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    'IFF' !== 'PNG'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'PNG'
+  actual: 'IFF'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\local-enemy-assets\experiments\idle-bastion\tests\art.test.ts:18:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: every measured Mara crop fits its own runtime cell and preserves the documented shared foot anchor
+ok 2 - every measured Mara crop fits its own runtime cell and preserves the documented shared foot anchor
+  ---
+  duration_ms: 2.1008
+  type: 'test'
+  ...
+# Subtest: animation frames depend only on simulation time, retain directions and repeat within the original frame maps
+ok 3 - animation frames depend only on simulation time, retain directions and repeat within the original frame maps
+  ---
+  duration_ms: 0.6782
+  type: 'test'
+  ...
+# Subtest: the real idle route uses the accepted connecting source quadrants for each turn and straight segment
+not ok 4 - the real idle route uses the accepted connecting source quadrants for each turn and straight segment
+  ---
+  duration_ms: 16.9208
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\local-enemy-assets\\experiments\\idle-bastion\\tests\\art.test.ts:57:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+      [
+    +   384,
+    -   320,
+        64
+      ]
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 320
+    1: 64
+  actual:
+    0: 384
+    1: 64
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\local-enemy-assets\experiments\idle-bastion\tests\art.test.ts:61:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a legally funded Frost run stays saveable through long wave tails and wave 15
+ok 5 - a legally funded Frost run stays saveable through long wave tails and wave 15
+  ---
+  duration_ms: 2983.9105
+  type: 'test'
+  ...
+# Subtest: JSON round trip preserves a live wave, its homing shots, IDs and deterministic later rewards
+ok 6 - JSON round trip preserves a live wave, its homing shots, IDs and deterministic later rewards
+  ---
+  duration_ms: 508.0938
+  type: 'test'
+  ...
+# Subtest: snapshot records are detached from the live model and from restored models
+ok 7 - snapshot records are detached from the live model and from restored models
+  ---
+  duration_ms: 28.0265
+  type: 'test'
+  ...
+# Subtest: a sold source retains its old shot level/damage and pays one kill after reload
+ok 8 - a sold source retains its old shot level/damage and pays one kill after reload
+  ---
+  duration_ms: 48.5832
+  type: 'test'
+  ...
+# Subtest: reload immediately before lethal impact and after its event never replays kill money
+ok 9 - reload immediately before lethal impact and after its event never replays kill money
+  ---
+  duration_ms: 71.3354
+  type: 'test'
+  ...
+# Subtest: last enemy and clear bonus cross the save boundary once; intermission resumes at the exact remainder
+ok 10 - last enemy and clear bonus cross the save boundary once; intermission resumes at the exact remainder
+  ---
+  duration_ms: 112.3356
+  type: 'test'
+  ...
+# Subtest: initial delay and sub-tick remainder persist without accelerating or dropping simulation time
+ok 11 - initial delay and sub-tick remainder persist without accelerating or dropping simulation time
+  ---
+  duration_ms: 45.6425
+  type: 'test'
+  ...
+# Subtest: real defeat including the escaped enemy restores and enters the identical farm transition
+ok 12 - real defeat including the escaped enemy restores and enters the identical farm transition
+  ---
+  duration_ms: 468.946
+  type: 'test'
+  ...
+# Subtest: every sampled route corner, enemy recipe and partial update remains valid through later waves
+ok 13 - every sampled route corner, enemy recipe and partial update remains valid through later waves
+  ---
+  duration_ms: 898.4466
+  type: 'test'
+  ...
+# Subtest: invalid resources, times, references, definitions and newer formats are rejected without mutating input
+ok 14 - invalid resources, times, references, definitions and newer formats are rejected without mutating input
+  ---
+  duration_ms: 49.6618
+  type: 'test'
+  ...
+# Subtest: layout changes cannot be silently serialized under the starting-layout identity
+ok 15 - layout changes cannot be silently serialized under the starting-layout identity
+  ---
+  duration_ms: 4.5341
+  type: 'test'
+  ...
+# Subtest: fresh persistent session commits before exposure and temporary play is explicit
+ok 16 - fresh persistent session commits before exposure and temporary play is explicit
+  ---
+  duration_ms: 185.8292
+  type: 'test'
+  ...
+# Subtest: purchase acknowledgement waits for commit and a concurrent click is rejected
+ok 17 - purchase acknowledgement waits for commit and a concurrent click is rejected
+  ---
+  duration_ms: 51.9014
+  type: 'test'
+  ...
+# Subtest: write rejection rolls back the complete battle and freezes further economic actions
+ok 18 - write rejection rolls back the complete battle and freezes further economic actions
+  ---
+  duration_ms: 112.7937
+  type: 'test'
+  ...
+# Subtest: a second tab cannot simulate, load rewards or replace the active writer
+ok 19 - a second tab cannot simulate, load rewards or replace the active writer
+  ---
+  duration_ms: 48.7958
+  type: 'test'
+  ...
+# Subtest: expired epoch is taken over and the waking old tab cannot renew or overwrite newer gold
+ok 20 - expired epoch is taken over and the waking old tab cannot renew or overwrite newer gold
+  ---
+  duration_ms: 50.8747
+  type: 'test'
+  ...
+# Subtest: wave boundaries commit immediately; pure combat checkpoints at one second and flush stores the remainder
+ok 21 - wave boundaries commit immediately; pure combat checkpoints at one second and flush stores the remainder
+  ---
+  duration_ms: 51.2373
+  type: 'test'
+  ...
+# Subtest: pause persists and a closed paused game receives no offline production
+ok 22 - pause persists and a closed paused game receives no offline production
+  ---
+  duration_ms: 120.7954
+  type: 'test'
+  ...
+# Subtest: corrupt/newer saves remain protected and backup recovery is explicit
+ok 23 - corrupt/newer saves remain protected and backup recovery is explicit
+  ---
+  duration_ms: 9.5661
+  type: 'test'
+  ...
+# Subtest: pending commits retain only bounded active time
+ok 24 - pending commits retain only bounded active time
+  ---
+  duration_ms: 46.7461
+  type: 'test'
+  ...
+# Subtest: kill/clear notifications wait for the complete reward commit and restore never replays them
+ok 25 - kill/clear notifications wait for the complete reward commit and restore never replays them
+  ---
+  duration_ms: 286.3736
+  type: 'test'
+  ...
+# Subtest: farm certificate appears only after live clear, revalidates on upgrade and survives reload without rewards
+ok 26 - farm certificate appears only after live clear, revalidates on upgrade and survives reload without rewards
+  ---
+  duration_ms: 118.0254
+  type: 'test'
+  ...
+# Subtest: suspend releases ownership, reserves 60% offline income and blocks combat until claim plus actual continuation
+ok 27 - suspend releases ownership, reserves 60% offline income and blocks combat until claim plus actual continuation
+  ---
+  duration_ms: 80.9942
+  type: 'test'
+  ...
+# Subtest: reload/claim without active continuation preserves the same two-hour budget
+ok 28 - reload/claim without active continuation preserves the same two-hour budget
+  ---
+  duration_ms: 86.0034
+  type: 'test'
+  ...
+# Subtest: failed offline claim rolls both gold and pending reward back for a safe later retry
+ok 29 - failed offline claim rolls both gold and pending reward back for a safe later retry
+  ---
+  duration_ms: 77.2308
+  type: 'test'
+  ...
+# Subtest: large frame gaps become absence and never fast-forward the live wave
+ok 30 - large frame gaps become absence and never fast-forward the live wave
+  ---
+  duration_ms: 57.9961
+  type: 'test'
+  ...
+# Subtest: actual IndexedDB integration rejects a second tab and preserves exact confirmed rewards across return
+ok 31 - actual IndexedDB integration rejects a second tab and preserves exact confirmed rewards across return
+  ---
+  duration_ms: 92.6668
+  type: 'test'
+  ...
+# Subtest: close is idempotent, stores the final combat state and releases the writer
+ok 32 - close is idempotent, stores the final combat state and releases the writer
+  ---
+  duration_ms: 31.3907
+  type: 'test'
+  ...
+# Subtest: Web Locks use a short gate, and an unavailable browser lock still permits valid IDB takeover
+ok 33 - Web Locks use a short gate, and an unavailable browser lock still permits valid IDB takeover
+  ---
+  duration_ms: 36.1588
+  type: 'test'
+  ...
+# Subtest: claims preserve the fixed absence window and continuation includes a later tail exactly once
+ok 34 - claims preserve the fixed absence window and continuation includes a later tail exactly once
+  ---
+  duration_ms: 70.7553
+  type: 'test'
+  ...
+# Subtest: a backwards clock cannot replay reserved offline time or move its cursor backwards
+ok 35 - a backwards clock cannot replay reserved offline time or move its cursor backwards
+  ---
+  duration_ms: 79.0288
+  type: 'test'
+  ...
+# Subtest: temporary play discards a large frame gap without offline gold or a return dialog
+ok 36 - temporary play discards a large frame gap without offline gold or a return dialog
+  ---
+  duration_ms: 67.0163
+  type: 'test'
+  ...
+# Subtest: background checkpoint accepts exactly one queued purchase and validates it after saving
+ok 37 - background checkpoint accepts exactly one queued purchase and validates it after saving
+  ---
+  duration_ms: 30.9481
+  type: 'test'
+  ...
+# Subtest: failed background write rejects the queued action without invoking its mutation
+ok 38 - failed background write rejects the queued action without invoking its mutation
+  ---
+  duration_ms: 37.708
+  type: 'test'
+  ...
+# Subtest: pause click during a checkpoint persists exactly once
+ok 39 - pause click during a checkpoint persists exactly once
+  ---
+  duration_ms: 40.1639
+  type: 'test'
+  ...
+# Subtest: gift click during autosave remains responsive without duplicate gifts or points
+ok 40 - gift click during autosave remains responsive without duplicate gifts or points
+  ---
+  duration_ms: 59.9985
+  type: 'test'
+  ...
+# Subtest: staged introductions, unchanged opening and boss escorts, bounded varied late recipes
+ok 41 - staged introductions, unchanged opening and boss escorts, bounded varied late recipes
+  ---
+  duration_ms: 16.0364
+  type: 'test'
+  ...
+# Subtest: all original movement tags resolve through frameMap, with correct sizes, timings and facing
+ok 42 - all original movement tags resolve through frameMap, with correct sizes, timings and facing
+  ---
+  duration_ms: 1.7175
+  type: 'test'
+  ...
+# Subtest: healing cast is saved exactly, bounded to two escorts, capped and protected against stacking
+ok 43 - healing cast is saved exactly, bounded to two escorts, capped and protected against stacking
+  ---
+  duration_ms: 170.7741
+  type: 'test'
+  ...
+# Subtest: a killed healer cannot pulse later in that tick, and no boss can be healed
+ok 44 - a killed healer cannot pulse later in that tick, and no boss can be healed
+  ---
+  duration_ms: 123.6773
+  type: 'test'
+  ...
+# Subtest: void resists slow, while all four towers can target flying enemies
+ok 45 - void resists slow, while all four towers can target flying enemies
+  ---
+  duration_ms: 284.9026
+  type: 'test'
+  ...
+# Subtest: published v12 combat survives migration, old queue completes and next attempt uses current rules
+ok 46 - published v12 combat survives migration, old queue completes and next attempt uses current rules
+  ---
+  duration_ms: 94.5404
+  type: 'test'
+  ...
+# Subtest: derived HP tolerates browser Math.pow rounding, but still rejects modified stats
+ok 47 - derived HP tolerates browser Math.pow rounding, but still rejects modified stats
+  ---
+  duration_ms: 53.3092
+  type: 'test'
+  ...
+# Subtest: no live completion means no certificate or fabricated starter rate
+ok 48 - no live completion means no certificate or fabricated starter rate
+  ---
+  duration_ms: 84.3303
+  type: 'test'
+  ...
+# Subtest: first real clear proves two conservative no-damage cycles including both pauses without touching live state or events
+ok 49 - first real clear proves two conservative no-damage cycles including both pauses without touching live state or events
+  ---
+  duration_ms: 156.1629
+  type: 'test'
+  ...
+# Subtest: combat timers and money do not invalidate a proof; a purchase or upgrade does
+ok 50 - combat timers and money do not invalidate a proof; a purchase or upgrade does
+  ---
+  duration_ms: 129.0153
+  type: 'test'
+  ...
+# Subtest: a harmful sale immediately invalidates the old defense and selects a genuinely safe lower proof
+ok 51 - a harmful sale immediately invalidates the old defense and selects a genuinely safe lower proof
+  ---
+  duration_ms: 503.1113
+  type: 'test'
+  ...
+# Subtest: a successful but damaged real wave is not safe; previous valid evidence survives a newer leaky clear
+ok 52 - a successful but damaged real wave is not safe; previous valid evidence survives a newer leaky clear
+  ---
+  duration_ms: 206.7241
+  type: 'test'
+  ...
+# Subtest: defeat returns to a fresh farm attempt, repeats it and never advances until the queued command crosses a boundary
+ok 53 - defeat returns to a fresh farm attempt, repeats it and never advances until the queued command crosses a boundary
+  ---
+  duration_ms: 347.9653
+  type: 'test'
+  ...
+# Subtest: snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history
+not ok 54 - snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history
+  ---
+  duration_ms: 87856.5999
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\local-enemy-assets\\experiments\\idle-bastion\\tests\\farming.test.ts:127:1'
+  failureType: 'testCodeFailure'
+  error: 'undefined == true'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\local-enemy-assets\experiments\idle-bastion\tests\farming.test.ts:135:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: offline thousandths survive repeated credits, spending and snapshots; invalid amounts are atomic
+ok 55 - offline thousandths survive repeated credits, spending and snapshots; invalid amounts are atomic
+  ---
+  duration_ms: 25.0295
+  type: 'test'
+  ...
+# Subtest: current progress and certificate fields reject invalid histories, references, versions and numeric limits
+ok 56 - current progress and certificate fields reject invalid histories, references, versions and numeric limits
+  ---
+  duration_ms: 38.4121
+  type: 'test'
+  ...
+# Subtest: a valid non-entry proof survives later leaky clears with unchanged defense
+ok 57 - a valid non-entry proof survives later leaky clears with unchanged defense
+  ---
+  duration_ms: 415.9258
+  type: 'test'
+  ...
+# Subtest: bounded live history pins both entry evidence and the currently certified farm wave
+ok 58 - bounded live history pins both entry evidence and the currently certified farm wave
+  ---
+  duration_ms: 29.1473
+  type: 'test'
+  ...
+# Subtest: rules 12 stay byte-for-byte reproducible against the captured original 100-wave table; opening 1–40 is unchanged
+ok 59 - rules 12 stay byte-for-byte reproducible against the captured original 100-wave table; opening 1–40 is unchanged
+  ---
+  duration_ms: 29.9436
+  type: 'test'
+  ...
+# Subtest: new introductions repeat immediately; later recipes retain all sixteen species, two healer and 28 enemy caps
+ok 60 - new introductions repeat immediately; later recipes retain all sixteen species, two healer and 28 enemy caps
+  ---
+  duration_ms: 102.272
+  type: 'test'
+  ...
+# Subtest: schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40
+ok 61 - schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40
+  ---
+  duration_ms: 172.3323
+  type: 'test'
+  ...
+# Subtest: schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly
+ok 62 - schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly
+  ---
+  duration_ms: 10.3033
+  type: 'test'
+  ...
+# Subtest: four compact atlases preserve metadata timings and genuine west views; cosmetic skins never change combat stats
+ok 63 - four compact atlases preserve metadata timings and genuine west views; cosmetic skins never change combat stats
+  ---
+  duration_ms: 12.3014
+  type: 'test'
+  ...
+# Subtest: every new species survives live save/reload deterministically; new farm proofs replace old rates without altering the model
+ok 64 - every new species survives live save/reload deterministically; new farm proofs replace old rates without altering the model
+  ---
+  duration_ms: 366.5342
+  type: 'test'
+  ...
+# Subtest: both historical rules-12 and current rules-13 offline receipts keep their exact amounts and one-claim boundary
+ok 65 - both historical rules-12 and current rules-13 offline receipts keep their exact amounts and one-claim boundary
+  ---
+  duration_ms: 1.9832
+  type: 'test'
+  ...
+# Subtest: 30 seconds, 10 minutes, 1 hour and 3 hours reserve 60% with the same two-hour cap
+ok 66 - 30 seconds, 10 minutes, 1 hour and 3 hours reserve 60% with the same two-hour cap
+  ---
+  duration_ms: 4.7843
+  type: 'test'
+  ...
+# Subtest: explicit pause and absence without a certified autonomous rate generate no gold
+ok 67 - explicit pause and absence without a certified autonomous rate generate no gold
+  ---
+  duration_ms: 2.9807
+  type: 'test'
+  ...
+# Subtest: closing and reopening before claim consumes only the remaining cap of the original window
+ok 68 - closing and reopening before claim consumes only the remaining cap of the original window
+  ---
+  duration_ms: 0.7345
+  type: 'test'
+  ...
+# Subtest: claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+ok 69 - claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+  ---
+  duration_ms: 1.0331
+  type: 'test'
+  ...
+# Subtest: backwards clock jumps never move the high-water cursor back or repay a reserved interval
+ok 70 - backwards clock jumps never move the high-water cursor back or repay a reserved interval
+  ---
+  duration_ms: 0.6259
+  type: 'test'
+  ...
+# Subtest: the certificate and paused state are frozen at the original departure
+ok 71 - the certificate and paused state are frozen at the original departure
+  ---
+  duration_ms: 0.407
+  type: 'test'
+  ...
+# Subtest: confirmed active checkpoints and absence share a single non-overlapping time boundary
+ok 72 - confirmed active checkpoints and absence share a single non-overlapping time boundary
+  ---
+  duration_ms: 0.4203
+  type: 'test'
+  ...
+# Subtest: exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+ok 73 - exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+  ---
+  duration_ms: 0.5423
+  type: 'test'
+  ...
+# Subtest: fractional units carry into future windows even when the certified rate changes
+ok 74 - fractional units carry into future windows even when the certified rate changes
+  ---
+  duration_ms: 0.4868
+  type: 'test'
+  ...
+# Subtest: invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+ok 75 - invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+  ---
+  duration_ms: 1.8379
+  type: 'test'
+  ...
+# Subtest: the first B04 schema-one policy defaults migrate without resetting a pending absence window
+ok 76 - the first B04 schema-one policy defaults migrate without resetting a pending absence window
+  ---
+  duration_ms: 0.4934
+  type: 'test'
+  ...
+# Subtest: policy migration never replaces an explicitly contradictory or malformed saved policy
+ok 77 - policy migration never replaces an explicitly contradictory or malformed saved policy
+  ---
+  duration_ms: 0.4246
+  type: 'test'
+  ...
+# Subtest: known historical departure proofs retain their original production basis
+ok 78 - known historical departure proofs retain their original production basis
+  ---
+  duration_ms: 1.1681
+  type: 'test'
+  ...
+# {"workshopCombatSeconds":7.7,"completeCombatSeconds":24.325000000000003,"learningAndPreparationSeconds":48.025,"totalSeconds":72.35}
+# Subtest: preparation persists without combat, production or repeated gifts
+ok 79 - preparation persists without combat, production or repeated gifts
+  ---
+  duration_ms: 121.4351
+  type: 'test'
+  ...
+# Subtest: all offered first placements clear wave one without manual support
+ok 80 - all offered first placements clear wave one without manual support
+  ---
+  duration_ms: 148.356
+  type: 'test'
+  ...
+# Subtest: all starter locations survive the complete guided purchase sequence with real learning pauses
+ok 81 - all starter locations survive the complete guided purchase sequence with real learning pauses
+  ---
+  duration_ms: 448.1966
+  type: 'test'
+  ...
+# Subtest: pre-start state cannot smuggle money, combat, extra towers or unassigned active Mara
+ok 82 - pre-start state cannot smuggle money, combat, extra towers or unassigned active Mara
+  ---
+  duration_ms: 1.6168
+  type: 'test'
+  ...
+# Subtest: real v14 veteran and its historical offline basis survive the schema-only migration
+not ok 83 - real v14 veteran and its historical offline basis survive the schema-only migration
+  ---
+  duration_ms: 58.6548
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\local-enemy-assets\\experiments\\idle-bastion\\tests\\onboarding.test.ts:75:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+
+      {
+        advanceRequested: false,
+        attemptId: 28,
+        bossChallengeRequested: false,
+        bossChallengeWave: 15,
+    ...
+        highestCleared: 26,
+    +   ilyra: null,
+        intermissionRemaining: 0,
+        kills: 483,
+        layoutId: 'east32',
+        layoutVersion: 4,
+        liveClearedWaves: [
+    ...
+        rewardRemainderUnits: 900,
+    +   rulesVersion: 13,
+    -   rulesVersion: 10,
+        schemaVersion: 14,
+        secondBossVictories: 1,
+        settlement: {
+          builtAt: 79.47500000000001,
+          frostResearched: true,
+    +     tavernBuilt: false,
+    +     tavernBuiltAt: null,
+    +     tavernLevel: 0,
+    +     tavernSeen: false,
+          upgradedAt: 453.625,
+          warehouseBuilt: true,
+          warehouseBuiltAt: 248.95000000000002,
+          workshopBuilt: true,
+          workshopUpgraded: true
+    ...
+        ],
+    +   social: {
+    +     claimed: {
+    +       boss15: true,
+    +       boss25: true,
+    +       opening: false
+    +     },
+    +     gifts: 2,
+    +     lastClearAttempt: 0,
+    +     points: {
+    +       ilyra: 0,
+    +       mara: 0
+    +     },
+    +     window: {
+    +       clearProgress: 0,
+    +       earnedGifts: 0,
+    +       ticks: 0,
+    +       used: {
+    +         ilyra: {
+    +           gift: 0,
+    +           talk: 0,
+    +           touch: 0
+    +         },
+    +         mara: {
+    +           gift: 0,
+    +           talk: 0,
+    +           touch: 0
+    +         }
+    +       }
+    +     }
+    +   },
+        spawnTimer: 0,
+        ticks: 36030,
+        towers: [
+          {
+            angle: 1.038267819197991,
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    schemaVersion: 14
+    plots:
+      workshop:
+        x: 3
+        y: 11
+      warehouse:
+        x: 8
+        y: 12
+    wispArrival:
+      at: 98.125
+      met: true
+    rulesVersion: 10
+    layoutVersion: 4
+    layoutId: 'east32'
+    clearing:
+      unlocked: true
+      openedAt: 402.3
+    bossVictories: 1
+    secondBossVictories: 1
+    bossChallengeWave: 15
+    bossChallengeRequested: false
+    bossCharm:
+      phase: 'idle'
+      targetUid: ~
+      remaining: 0
+      cooldown: 0
+    progress:
+      sinceAttempt: 1
+      sinceSeconds: 0
+      battleGold: 15276
+      totals:
+        advance:
+          attempts: 28
+          wins: 26
+          losses: 1
+        farm:
+          attempts: 0
+          wins: 0
+          losses: 0
+      waves:
+        0:
+          wave: 1
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        1:
+          wave: 2
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        2:
+          wave: 3
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        3:
+          wave: 4
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        4:
+          wave: 5
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        5:
+          wave: 6
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        6:
+          wave: 7
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        7:
+          wave: 8
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        8:
+          wave: 9
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        9:
+          wave: 10
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        10:
+          wave: 11
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        11:
+          wave: 12
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        12:
+          wave: 13
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        13:
+          wave: 14
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        14:
+          wave: 15
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        15:
+          wave: 16
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        16:
+          wave: 17
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        17:
+          wave: 18
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        18:
+          wave: 19
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        19:
+          wave: 20
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        20:
+          wave: 21
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        21:
+          wave: 22
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        22:
+          wave: 23
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        23:
+          wave: 24
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        24:
+          wave: 25
+          advance:
+            attempts: 2
+            wins: 1
+            losses: 1
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        25:
+          wave: 26
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        26:
+          wave: 27
+          advance:
+            attempts: 1
+            wins: 0
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+      lastDefeat:
+        wave: 25
+        attemptId: 25
+    rewardRemainderUnits: 900
+    waveRecipeVersion: 10
+    goldRemainderUnits: 900
+    mode: 'advance'
+    highestCleared: 26
+    attemptId: 28
+    liveClearedWaves:
+      0: 1
+      1: 2
+      2: 3
+      3: 4
+      4: 5
+      5: 6
+      6: 7
+      7: 8
+      8: 9
+      9: 10
+      10: 11
+      11: 12
+      12: 13
+      13: 14
+      14: 16
+      15: 17
+      16: 18
+      17: 19
+      18: 20
+      19: 21
+      20: 22
+      21: 23
+      22: 24
+      23: 26
+    farmWave: 24
+    advanceRequested: false
+    gold: 1135
+    lives: 20
+    wave: 27
+    phase: 'wave'
+    elapsed: 900.75
+    ticks: 36030
+    pendingTime: 0.00852666666662038
+    uid: 3701
+    intermissionRemaining: 0
+    kills: 483
+    earned: 17226
+    queue:
+    spawnTimer: 0
+    towers:
+      0:
+        uid: 1
+        padId: 'tower-start'
+        kind: 1
+        level: 9
+        cooldown: 0
+        spent: 3839
+        kills: 139
+        angle: 1.038267819197991
+        protected: true
+      1:
+        uid: 3
+        padId: 'tower-03'
+        kind: 1
+        level: 9
+        cooldown: 0.38653846153846144
+        spent: 3914
+        kills: 81
+        angle: 1.5301936537298781
+        protected: false
+      2:
+        uid: 263
+        padId: 'tower-02'
+        kind: 2
+        level: 3
+        cooldown: 0.6548320150364164
+        spent: 308
+        kills: 32
+        angle: 1.199552842645775
+        protected: false
+      3:
+        uid: 309
+        padId: 'tower-09'
+        kind: 3
+        level: 7
+        cooldown: 0.8673076923076928
+        spent: 3380
+        kills: 179
+        angle: 1.4905005893930556
+        protected: false
+      4:
+        uid: 893
+        padId: 'cell-14-7'
+        kind: 4
+        level: 5
+        cooldown: 0.2980769230769239
+        spent: 1515
+        kills: 52
+        angle: -0.9361882641873183
+        protected: false
+    enemies:
+      0:
+        uid: 3545
+        x: 583.3750000000039
+        y: 180
+        hp: 2552.652748397143
+        maxHp: 2769.7664983971426
+        distance: 603.3750000000039
+        total: 1520
+        segment: 2
+        speed: 30
+        slowRemaining: 0
+        direction: 'side'
+        flip: false
+        healCooldown: 0
+        healRemaining: 0
+        healLockout: 0
+        defId: 'MagmaCrab'
+      1:
+        uid: 3572
+        x: 620
+        y: 409.75000000000813
+        hp: 119.68289903828557
+        maxHp: 1661.8598990382854
+        distance: 869.7500000000105
+        total: 1520
+        segment: 3
+        speed: 49
+        slowRemaining: 0
+        direction: 'down'
+        flip: false
+        healCooldown: 0
+        healRemaining: 0
+        healLockout: 0
+        defId: 'Clampbeetle'
+      2:
+        uid: 3591
+        x: 444.25
+        y: 180
+        hp: 2250.7252483971424
+        maxHp: 2769.7664983971426
+        distance: 464.25
+        total: 1520
+        segment: 2
+        speed: 30
+        slowRemaining: 0
+        direction: 'side'
+        flip: false
+        healCooldown: 0
+        healRemaining: 0
+        healLockout: 0
+        defId: 'MagmaCrab'
+      3:
+        uid: 3611
+        x: 441.75000000000165
+        y: 180
+        hp: 740.7203114982143
+        maxHp: 1731.104061498214
+        distance: 461.75000000000165
+        total: 1520
+        segment: 2
+        speed: 40
+        slowRemaining: 1.4000000000000021
+        direction: 'side'
+        flip: false
+        healCooldown: 0
+        healRemaining: 0
+        healLockout: 0
+        defId: 'Scorpion'
+    shots:
+      0:
+        uid: 3700
+        towerUid: 263
+        target: 3591
+        x: 374.75373219918055
+        y: 198.60990374352085
+        speed: 480
+        damage: 19.599999999999998
+        level: 3
+        kind: 2
+    mara:
+      x: 220
+      y: 300
+      path:
+      targetTowerUid: 1
+      direction: 'up'
+      cooldownRemaining: 0.8250000000006358
+      effectRemaining: 0
+      unreachable: false
+      autoCast: true
+      effectTowerUid: ~
+    settlement:
+      workshopBuilt: true
+      frostResearched: true
+      builtAt: 79.47500000000001
+      warehouseBuilt: true
+      warehouseBuiltAt: 248.95000000000002
+      workshopUpgraded: true
+      upgradedAt: 453.625
+    tutorial:
+      hidden: true
+      seen: 0
+      builtTower: true
+      upgradedTower: true
+      frostSeen: true
+  actual:
+    schemaVersion: 14
+    social:
+      points:
+        mara: 0
+        ilyra: 0
+      gifts: 2
+      claimed:
+        opening: false
+        boss15: true
+        boss25: true
+      window:
+        ticks: 0
+        used:
+          mara:
+            talk: 0
+            touch: 0
+            gift: 0
+          ilyra:
+            talk: 0
+            touch: 0
+            gift: 0
+        earnedGifts: 0
+        clearProgress: 0
+      lastClearAttempt: 0
+    ilyra: ~
+    plots:
+      workshop:
+        x: 3
+        y: 11
+      warehouse:
+        x: 8
+        y: 12
+    wispArrival:
+      at: 98.125
+      met: true
+    rulesVersion: 13
+    layoutVersion: 4
+    layoutId: 'east32'
+    clearing:
+      unlocked: true
+      openedAt: 402.3
+    bossVictories: 1
+    secondBossVictories: 1
+    bossChallengeWave: 15
+    bossChallengeRequested: false
+    bossCharm:
+      phase: 'idle'
+      targetUid: ~
+      remaining: 0
+      cooldown: 0
+    progress:
+      sinceAttempt: 1
+      sinceSeconds: 0
+      battleGold: 15276
+      totals:
+        advance:
+          attempts: 28
+          wins: 26
+          losses: 1
+        farm:
+          attempts: 0
+          wins: 0
+          losses: 0
+      waves:
+        0:
+          wave: 1
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        1:
+          wave: 2
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        2:
+          wave: 3
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        3:
+          wave: 4
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        4:
+          wave: 5
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        5:
+          wave: 6
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        6:
+          wave: 7
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        7:
+          wave: 8
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        8:
+          wave: 9
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        9:
+          wave: 10
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        10:
+          wave: 11
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        11:
+          wave: 12
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        12:
+          wave: 13
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        13:
+          wave: 14
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        14:
+          wave: 15
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        15:
+          wave: 16
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        16:
+          wave: 17
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        17:
+          wave: 18
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        18:
+          wave: 19
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        19:
+          wave: 20
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        20:
+          wave: 21
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        21:
+          wave: 22
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        22:
+          wave: 23
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        23:
+          wave: 24
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        24:
+          wave: 25
+          advance:
+            attempts: 2
+            wins: 1
+            losses: 1
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        25:
+          wave: 26
+          advance:
+            attempts: 1
+            wins: 1
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+        26:
+          wave: 27
+          advance:
+            attempts: 1
+            wins: 0
+            losses: 0
+          farm:
+            attempts: 0
+            wins: 0
+            losses: 0
+      lastDefeat:
+        wave: 25
+        attemptId: 25
+    rewardRemainderUnits: 900
+    waveRecipeVersion: 10
+    goldRemainderUnits: 900
+    mode: 'advance'
+    highestCleared: 26
+    attemptId: 28
+    liveClearedWaves:
+      0: 1
+      1: 2
+      2: 3
+      3: 4
+      4: 5
+      5: 6
+      6: 7
+      7: 8
+      8: 9
+      9: 10
+      10: 11
+      11: 12
+      12: 13
+      13: 14
+      14: 16
+      15: 17
+      16: 18
+      17: 19
+      18: 20
+      19: 21
+      20: 22
+      21: 23
+      22: 24
+      23: 26
+    farmWave: 24
+    advanceRequested: false
+    gold: 1135
+    lives: 20
+    wave: 27
+    phase: 'wave'
+    elapsed: 900.75
+    ticks: 36030
+    pendingTime: 0.00852666666662038
+    uid: 3701
+    intermissionRemaining: 0
+    kills: 483
+    earned: 17226
+    queue:
+    spawnTimer: 0
+    towers:
+      0:
+        uid: 1
+        padId: 'tower-start'
+        kind: 1
+        level: 9
+        cooldown: 0
+        spent: 3839
+        kills: 139
+        angle: 1.038267819197991
+        protected: true
+      1:
+        uid: 3
+        padId: 'tower-03'
+        kind: 1
+        level: 9
+        cooldown: 0.38653846153846144
+        spent: 3914
+        kills: 81
+        angle: 1.5301936537298781
+        protected: false
+      2:
+        uid: 263
+        padId: 'tower-02'
+        kind: 2
+        level: 3
+        cooldown: 0.6548320150364164
+        spent: 308
+        kills: 32
+        angle: 1.199552842645775
+        protected: false
+      3:
+        uid: 309
+        padId: 'tower-09'
+        kind: 3
+        level: 7
+        cooldown: 0.8673076923076928
+        spent: 3380
+        kills: 179
+        angle: 1.4905005893930556
+        protected: false
+      4:
+        uid: 893
+        padId: 'cell-14-7'
+        kind: 4
+        level: 5
+        cooldown: 0.2980769230769239
+        spent: 1515
+        kills: 52
+        angle: -0.9361882641873183
+        protected: false
+    enemies:
+      0:
+        uid: 3545
+        x: 583.3750000000039
+        y: 180
+        hp: 2552.652748397143
+        maxHp: 2769.7664983971426
+        distance: 603.3750000000039
+        total: 1520
+        segment: 2
+        speed: 30
+        slowRemaining: 0
+        direction: 'side'
+        flip: false
+        healCooldown: 0
+        healRemaining: 0
+        healLockout: 0
+        defId: 'MagmaCrab'
+      1:
+        uid: 3572
+        x: 620
+        y: 409.75000000000813
+        hp: 119.68289903828557
+        maxHp: 1661.8598990382854
+        distance: 869.7500000000105
+        total: 1520
+        segment: 3
+        speed: 49
+        slowRemaining: 0
+        direction: 'down'
+        flip: false
+        healCooldown: 0
+        healRemaining: 0
+        healLockout: 0
+        defId: 'Clampbeetle'
+      2:
+        uid: 3591
+        x: 444.25
+        y: 180
+        hp: 2250.7252483971424
+        maxHp: 2769.7664983971426
+        distance: 464.25
+        total: 1520
+        segment: 2
+        speed: 30
+        slowRemaining: 0
+        direction: 'side'
+        flip: false
+        healCooldown: 0
+        healRemaining: 0
+        healLockout: 0
+        defId: 'MagmaCrab'
+      3:
+        uid: 3611
+        x: 441.75000000000165
+        y: 180
+        hp: 740.7203114982143
+        maxHp: 1731.104061498214
+        distance: 461.75000000000165
+        total: 1520
+        segment: 2
+        speed: 40
+        slowRemaining: 1.4000000000000021
+        direction: 'side'
+        flip: false
+        healCooldown: 0
+        healRemaining: 0
+        healLockout: 0
+        defId: 'Scorpion'
+    shots:
+      0:
+        uid: 3700
+        towerUid: 263
+        target: 3591
+        x: 374.75373219918055
+        y: 198.60990374352085
+        speed: 480
+        damage: 19.599999999999998
+        level: 3
+        kind: 2
+    mara:
+      x: 220
+      y: 300
+      path:
+      targetTowerUid: 1
+      direction: 'up'
+      cooldownRemaining: 0.8250000000006358
+      effectRemaining: 0
+      unreachable: false
+      autoCast: true
+      effectTowerUid: ~
+    settlement:
+      workshopBuilt: true
+      frostResearched: true
+      builtAt: 79.47500000000001
+      warehouseBuilt: true
+      warehouseBuiltAt: 248.95000000000002
+      workshopUpgraded: true
+      upgradedAt: 453.625
+      tavernBuilt: false
+      tavernBuiltAt: ~
+      tavernSeen: false
+      tavernLevel: 0
+    tutorial:
+      hidden: true
+      seen: 0
+      builtTower: true
+      upgradedTower: true
+      frostSeen: true
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\local-enemy-assets\experiments\idle-bastion\tests\onboarding.test.ts:79:156)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: session reload before start preserves the kit and avoids an empty return dialog
+ok 84 - session reload before start preserves the kit and avoids an empty return dialog
+  ---
+  duration_ms: 59.1775
+  type: 'test'
+  ...
+# Subtest: rejected first-build transaction rolls back the kit and complete preparation
+ok 85 - rejected first-build transaction rolls back the kit and complete preparation
+  ---
+  duration_ms: 10.3165
+  type: 'test'
+  ...
+# Subtest: schema 15 saves preserve preparation and completed play without forcing the extended lessons
+not ok 86 - schema 15 saves preserve preparation and completed play without forcing the extended lessons
+  ---
+  duration_ms: 160.889
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\local-enemy-assets\\experiments\\idle-bastion\\tests\\onboarding.test.ts:103:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+
+      b.beginIntroduction()
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\local-enemy-assets\experiments\idle-bastion\tests\onboarding.test.ts:107:48)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: intro command waits for a background write, then rechecks and consumes the kit once
+not ok 87 - intro command waits for a background write, then rechecks and consumes the kit once
+  ---
+  duration_ms: 8.4487
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\local-enemy-assets\\experiments\\idle-bastion\\tests\\onboarding.test.ts:112:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\local-enemy-assets\experiments\idle-bastion\tests\onboarding.test.ts:118:52)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: learning pause survives return without idle income and stays distinct from manual pause
+ok 88 - learning pause survives return without idle income and stays distinct from manual pause
+  ---
+  duration_ms: 22.4296
+  type: 'test'
+  ...
+# Subtest: workshop kit waits for first victory, survives reload and never refunds an existing workshop
+ok 89 - workshop kit waits for first victory, survives reload and never refunds an existing workshop
+  ---
+  duration_ms: 55.5128
+  type: 'test'
+  ...
+# Subtest: isolated native IndexedDB starts empty and restores a committed battle and explicit pause
+ok 90 - isolated native IndexedDB starts empty and restores a committed battle and explicit pause
+  ---
+  duration_ms: 173.1373
+  type: 'test'
+  ...
+# Subtest: each commit retains the last valid predecessor and advances revision monotonically
+ok 91 - each commit retains the last valid predecessor and advances revision monotonically
+  ---
+  duration_ms: 71.5369
+  type: 'test'
+  ...
+# Subtest: two connections racing the same revision have exactly one atomic CAS winner
+ok 92 - two connections racing the same revision have exactly one atomic CAS winner
+  ---
+  duration_ms: 56.691
+  type: 'test'
+  ...
+# Subtest: invalid new snapshots, pause values and revisions leave primary and backup untouched
+ok 93 - invalid new snapshots, pause values and revisions leave primary and backup untouched
+  ---
+  duration_ms: 50.8518
+  type: 'test'
+  ...
+# Subtest: newer primary schemas never fall back to backup or permit overwrite or recovery
+ok 94 - newer primary schemas never fall back to backup or permit overwrite or recovery
+  ---
+  duration_ms: 52.4353
+  type: 'test'
+  ...
+# Subtest: a future battle rules version inside schema one is protected as unsupported
+ok 95 - a future battle rules version inside schema one is protected as unsupported
+  ---
+  duration_ms: 38.0528
+  type: 'test'
+  ...
+# Subtest: load never writes: corrupt known primary offers explicit recovery and preserves its raw evidence
+ok 96 - load never writes: corrupt known primary offers explicit recovery and preserves its raw evidence
+  ---
+  duration_ms: 53.1905
+  type: 'test'
+  ...
+# Subtest: recovery rechecks current primary atomically and refuses a newer valid save
+ok 97 - recovery rechecks current primary atomically and refuses a newer valid save
+  ---
+  duration_ms: 52.0046
+  type: 'test'
+  ...
+# Subtest: unrecognized corruption or a bad backup is reported and cannot be silently replaced
+ok 98 - unrecognized corruption or a bad backup is reported and cannot be silently replaced
+  ---
+  duration_ms: 46.5507
+  type: 'test'
+  ...
+# Subtest: a save aborted after successful put request is never acknowledged and leaves prior data intact
+ok 99 - a save aborted after successful put request is never acknowledged and leaves prior data intact
+  ---
+  duration_ms: 46.6825
+  type: 'test'
+  ...
+# Subtest: unavailable storage, future database version and blocked opens reject clearly
+ok 100 - unavailable storage, future database version and blocked opens reject clearly
+  ---
+  duration_ms: 1.8602
+  type: 'test'
+  ...
+# Subtest: an explicitly stored undefined value is corruption rather than an absent primary
+ok 101 - an explicitly stored undefined value is corruption rather than an absent primary
+  ---
+  duration_ms: 27.8875
+  type: 'test'
+  ...
+# Subtest: writer acquisition is atomic, exclusive and requires a lease for all subsequent production writes
+ok 102 - writer acquisition is atomic, exclusive and requires a lease for all subsequent production writes
+  ---
+  duration_ms: 43.082
+  type: 'test'
+  ...
+# Subtest: expired writer takeover rejects the waking old tab even when its save revision still matches
+ok 103 - expired writer takeover rejects the waking old tab even when its save revision still matches
+  ---
+  duration_ms: 44.6429
+  type: 'test'
+  ...
+# Subtest: renewal extends the same epoch; expired writers cannot renew or save themselves back into ownership
+ok 104 - renewal extends the same epoch; expired writers cannot renew or save themselves back into ownership
+  ---
+  duration_ms: 34.7684
+  type: 'test'
+  ...
+# Subtest: lease epoch and release tombstone survive reopening the database
+ok 105 - lease epoch and release tombstone survive reopening the database
+  ---
+  duration_ms: 88.1201
+  type: 'test'
+  ...
+# Subtest: backup recovery checks the writer epoch in the same transaction as replacement
+ok 106 - backup recovery checks the writer epoch in the same transaction as replacement
+  ---
+  duration_ms: 62.8782
+  type: 'test'
+  ...
+# Subtest: malformed or future writer records are protected instead of being overwritten by acquisition
+ok 107 - malformed or future writer records are protected instead of being overwritten by acquisition
+  ---
+  duration_ms: 2.0471
+  type: 'test'
+  ...
+# Subtest: envelope one migrates read-only without production evidence and retains CAS revision protection
+not ok 108 - envelope one migrates read-only without production evidence and retains CAS revision protection
+  ---
+  duration_ms: 48.0272
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\local-enemy-assets\\experiments\\idle-bastion\\tests\\save-store.test.ts:416:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    'corrupt' !== 'valid'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'valid'
+  actual: 'corrupt'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\local-enemy-assets\experiments\idle-bastion\tests\save-store.test.ts:423:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: pending offline receipt and cleared claim persist atomically with actual gold across reloads
+ok 109 - pending offline receipt and cleared claim persist atomically with actual gold across reloads
+  ---
+  duration_ms: 46.3648
+  type: 'test'
+  ...
+# Subtest: a future offline schema is protected even with a valid predecessor
+ok 110 - a future offline schema is protected even with a valid predecessor
+  ---
+  duration_ms: 41.2381
+  type: 'test'
+  ...
+# Subtest: battle schema two migrates without rewriting the historical absence proof or pending receipt
+not ok 111 - battle schema two migrates without rewriting the historical absence proof or pending receipt
+  ---
+  duration_ms: 34.431
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\local-enemy-assets\\experiments\\idle-bastion\\tests\\save-store.test.ts:485:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    'corrupt' !== 'valid'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'valid'
+  actual: 'corrupt'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\local-enemy-assets\experiments\idle-bastion\tests\save-store.test.ts:495:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: session return across the Mara rule update pays the historical rate once and starts with no invented current proof
+not ok 112 - session return across the Mara rule update pays the historical rate once and starts with no invented current proof
+  ---
+  duration_ms: 32.7153
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\local-enemy-assets\\experiments\\idle-bastion\\tests\\save-store.test.ts:510:1'
+  failureType: 'testCodeFailure'
+  error: 'The saved battle state is invalid.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'SessionLoadError'
+  stack: |-
+    Function.open (C:\Users\madde\Documents\TowerDefense\.worktrees\local-enemy-assets\experiments\idle-bastion\src\battle-session.ts:119:77)
+    async TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\local-enemy-assets\experiments\idle-bastion\tests\save-store.test.ts:519:20)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: future battle schema and historical proof versions remain protected
+ok 113 - future battle schema and historical proof versions remain protected
+  ---
+  duration_ms: 91.9853
+  type: 'test'
+  ...
+# Subtest: all forty historical recipes remain exact; entry, bosses, HP and old spawn clocks stay intact
+ok 114 - all forty historical recipes remain exact; entry, bosses, HP and old spawn clocks stay intact
+  ---
+  duration_ms: 3.5457
+  type: 'test'
+  ...
+# Subtest: opening recipes are reproducible in reverse order, bounded, readable and repeat every introduction promptly
+ok 115 - opening recipes are reproducible in reverse order, bounded, readable and repeat every introduction promptly
+  ---
+  duration_ms: 14.1001
+  type: 'test'
+  ...
+# Subtest: a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly
+ok 116 - a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly
+  ---
+  duration_ms: 185.8157
+  type: 'test'
+  ...
+# Subtest: both healer species share target locks, exclude each other and bosses, and resume their exact saved cast
+ok 117 - both healer species share target locks, exclude each other and bosses, and resume their exact saved cast
+  ---
+  duration_ms: 82.0585
+  type: 'test'
+  ...
+# Subtest: historical and current offline entitlements retain their exact amount and can only be claimed once
+ok 118 - historical and current offline entitlements retain their exact amount and can only be claimed once
+  ---
+  duration_ms: 2.3589
+  type: 'test'
+  ...
+# Subtest: native save boundary migrates v24 and pays its pending historical offline claim exactly once
+ok 119 - native save boundary migrates v24 and pays its pending historical offline claim exactly once
+  ---
+  duration_ms: 32.6469
+  type: 'test'
+  ...
+# Subtest: three compact original atlases have real directional clips and stable nonmirrored left views
+ok 120 - three compact original atlases have real directional clips and stable nonmirrored left views
+  ---
+  duration_ms: 4.5033
+  type: 'test'
+  ...
+# Subtest: frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+ok 121 - frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+  ---
+  duration_ms: 18.4991
+  type: 'test'
+  ...
+# Subtest: larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+ok 122 - larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+  ---
+  duration_ms: 58.4065
+  type: 'test'
+  ...
+# Subtest: a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules
+ok 123 - a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules
+  ---
+  duration_ms: 197.5539
+  type: 'test'
+  ...
+# Subtest: level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+ok 124 - level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+  ---
+  duration_ms: 94.7634
+  type: 'test'
+  ...
+# Subtest: old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+ok 125 - old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+  ---
+  duration_ms: 508.7506
+  type: 'test'
+  ...
+# Subtest: HP continues past the old plateau; machine guards and old level curves remain explicit
+ok 126 - HP continues past the old plateau; machine guards and old level curves remain explicit
+  ---
+  duration_ms: 37.9511
+  type: 'test'
+  ...
+1..126
+# tests 126
+# suites 0
+# pass 117
+# fail 9
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 90664.151

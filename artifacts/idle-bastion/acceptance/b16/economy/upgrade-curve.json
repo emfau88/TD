@@ -1,0 +1,177 @@
+[
+  {
+    "level": 10,
+    "towers": [
+      {
+        "kind": 1,
+        "damage": 299.8905000000001,
+        "nextCost": 1992
+      },
+      {
+        "kind": 3,
+        "damage": 599.7810000000002,
+        "nextCost": 3586
+      },
+      {
+        "kind": 4,
+        "damage": 1135.2997500000004,
+        "nextCost": 4516
+      },
+      {
+        "kind": 5,
+        "damage": 556.9395000000002,
+        "nextCost": 4516
+      }
+    ]
+  },
+  {
+    "level": 15,
+    "towers": [
+      {
+        "kind": 1,
+        "damage": 1113.4724341650003,
+        "nextCost": 7984
+      },
+      {
+        "kind": 3,
+        "damage": 2226.9448683300006,
+        "nextCost": 14372
+      },
+      {
+        "kind": 4,
+        "damage": 4215.288500767501,
+        "nextCost": 18098
+      },
+      {
+        "kind": 5,
+        "damage": 2067.8773777350007,
+        "nextCost": 18098
+      }
+    ]
+  },
+  {
+    "level": 20,
+    "towers": [
+      {
+        "kind": 1,
+        "damage": 4134.245204984255,
+        "nextCost": 31997
+      },
+      {
+        "kind": 3,
+        "damage": 8268.49040996851,
+        "nextCost": 57594
+      },
+      {
+        "kind": 4,
+        "damage": 15651.07113315468,
+        "nextCost": 72526
+      },
+      {
+        "kind": 5,
+        "damage": 7677.883952113617,
+        "nextCost": 72526
+      }
+    ]
+  },
+  {
+    "level": 25,
+    "towers": [
+      {
+        "kind": 1,
+        "damage": 15350.163048942193,
+        "nextCost": 128225
+      },
+      {
+        "kind": 3,
+        "damage": 30700.326097884386,
+        "nextCost": 230806
+      },
+      {
+        "kind": 4,
+        "damage": 58111.33154242402,
+        "nextCost": 290644
+      },
+      {
+        "kind": 5,
+        "damage": 28507.445662321217,
+        "nextCost": 290644
+      }
+    ]
+  },
+  {
+    "level": 30,
+    "towers": [
+      {
+        "kind": 1,
+        "damage": 56994.08088930895,
+        "nextCost": 513859
+      },
+      {
+        "kind": 3,
+        "damage": 113988.1617786179,
+        "nextCost": 924946
+      },
+      {
+        "kind": 4,
+        "damage": 215763.30622381245,
+        "nextCost": 1164746
+      },
+      {
+        "kind": 5,
+        "damage": 105846.15022300233,
+        "nextCost": 1164746
+      }
+    ]
+  },
+  {
+    "level": 35,
+    "towers": [
+      {
+        "kind": 1,
+        "damage": 211615.0327563419,
+        "nextCost": 2059270
+      },
+      {
+        "kind": 3,
+        "damage": 423230.0655126838,
+        "nextCost": 3706686
+      },
+      {
+        "kind": 4,
+        "damage": 801114.0525775801,
+        "nextCost": 4667679
+      },
+      {
+        "kind": 5,
+        "damage": 392999.34654749214,
+        "nextCost": 4667679
+      }
+    ]
+  },
+  {
+    "level": 40,
+    "towers": [
+      {
+        "kind": 1,
+        "damage": 785711.8035720047,
+        "nextCost": 8252451
+      },
+      {
+        "kind": 3,
+        "damage": 1571423.6071440093,
+        "nextCost": 14854413
+      },
+      {
+        "kind": 4,
+        "damage": 2974480.399236875,
+        "nextCost": 18705557
+      },
+      {
+        "kind": 5,
+        "damage": 1459179.0637765802,
+        "nextCost": 18705557
+      }
+    ]
+  }
+]

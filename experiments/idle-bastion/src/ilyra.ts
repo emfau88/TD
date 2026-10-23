@@ -2,7 +2,7 @@
 import { cellCenter, findFootpath, isWalkableCell, type GridCell, type IdleLayout, type WorldPoint } from './layout';
 export const ILYRA = Object.freeze({ speed: 110, range: 210, radius: 72, cooldown: 28, windup: .18, impact: .6, duration: .95, volleyPace: 1.35 as const, airMultiplier: 1.5 });
 /** age uses the original animation clock; pace stretches real time. Legacy volleys omit it. */
-export interface IlyraVolley { x:number; y:number; originX:number; originY:number; age:number; pace?:1.35; damage:number; sourceKind:1|2|3|4; sourceLevel:number; hit:boolean }
+export interface IlyraVolley { x:number; y:number; originX:number; originY:number; age:number; pace?:1.35; damage:number; sourceKind:1|2|3|4|5; sourceLevel:number; hit:boolean }
 export interface IlyraState extends WorldPoint {
  x:number; y:number; path:WorldPoint[]; direction:'down'|'right'|'up'|'left';
  cooldown:number; autoCast:boolean; introduction:'move'|'cast'|'done'; volley:IlyraVolley|null;
@@ -36,7 +36,7 @@ export function ilyraFrame(state:IlyraState,time:number):number {
  return row+(state.path.length?1+Math.floor(time*8)%4:0);
 }
 const number=(v:unknown,min:number,max:number):v is number=>typeof v==='number'&&Number.isFinite(v)&&v>=min&&v<=max;
-export function validIlyra(value:unknown,layout:IdleLayout,blocked:readonly GridCell[],damageFor:(kind:1|2|3|4,level:number)=>number):boolean {
+export function validIlyra(value:unknown,layout:IdleLayout,blocked:readonly GridCell[],damageFor:(kind:1|2|3|4|5,level:number)=>number,maxSourceLevel=Number.MAX_SAFE_INTEGER,maxSourceKind=5):boolean {
  if(!value||typeof value!=='object'||Array.isArray(value))return false;
  const s=value as IlyraState;
  if(!number(s.x,0,layout.bounds.width-1)||!number(s.y,0,layout.bounds.height-1)||!Array.isArray(s.path)||s.path.length>640
@@ -55,8 +55,8 @@ export function validIlyra(value:unknown,layout:IdleLayout,blocked:readonly Grid
  if(s.volley!==null){
   const v=s.volley;if(!v||typeof v!=='object'||!number(v.x,0,layout.bounds.width-1)||!number(v.y,0,layout.bounds.height-1)
    ||!number(v.originX,0,layout.bounds.width-1)||!number(v.originY,0,layout.bounds.height-1)||!number(v.age,0,ILYRA.duration)
-   ||(v.pace!==undefined&&v.pace!==ILYRA.volleyPace)||![1,2,3,4].includes(v.sourceKind)||!Number.isInteger(v.sourceLevel)||v.sourceLevel<1||v.sourceLevel>20
-   ||v.damage!==damageFor(v.sourceKind,v.sourceLevel)||typeof v.hit!=='boolean'||v.hit!==(v.age>=ILYRA.impact)
+   ||(v.pace!==undefined&&v.pace!==ILYRA.volleyPace)||![1,2,3,4,5].includes(v.sourceKind)||v.sourceKind>maxSourceKind||!Number.isSafeInteger(v.sourceLevel)||v.sourceLevel<1||v.sourceLevel>maxSourceLevel
+   ||!Number.isFinite(v.damage)||v.damage!==damageFor(v.sourceKind,v.sourceLevel)||typeof v.hit!=='boolean'||v.hit!==(v.age>=ILYRA.impact)
    ||Math.hypot(v.x-v.originX,v.y-v.originY)>ILYRA.range+1e-6||Math.hypot(v.originX-s.x,v.originY-s.y)>1e-6
    ||s.introduction==='move'||s.cooldown<ILYRA.cooldown-v.age*(v.pace??1)-1e-5)return false;
  }

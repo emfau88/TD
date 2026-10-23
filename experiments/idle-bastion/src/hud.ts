@@ -1,3 +1,4 @@
+import { t } from './i18n';
 import { SETTLEMENT, FROST, type IdleBattle } from './battle';
 
 /** Objectives follow confirmed game state; help never grants money or unlocks. */
@@ -40,33 +41,33 @@ const HINTS = [
   'Nach gemeisterter Welle 8 kannst du ein Vorratslager bauen. Verbessere deine Verteidigung und spare dann 650 Gold. Wisp versorgt später beide Gebäude.',
   'Rosenspiegel erwartet uns in Welle 15. Ihr Herzfaden kündigt an, welchen Turm sie verführt. Frost bremst ihren Vormarsch; Flächentreffer räumen Begleiter ab, Scharfschützen durchdringen ihre Rüstung. Die erste vollständige Bosswelle bringt einmalig 750 Gold.',
   'Jetzt übernimmt Wisp die Versorgung. Meine Magie heißt Übertakten: acht Sekunden lang 50 % mehr Feuerrate. Goldener Ring und Restsekunden zeigen den verstärkten Turm. Automatisch zaubere ich nur bei Gegnern; über mein Porträt kannst du auch selbst auslösen.',
-  'Baue die Werkstatt für 1.200 Gold zur Stufe II aus. Der neue Arbeitsplatz ermöglicht Turmlevel 7–20; die nächste Herausforderung wartet in Welle 25.',
+  'Baue die Werkstatt für 1.200 Gold zur Stufe II aus. Der neue Arbeitsplatz ermöglicht weitere Turmlevel ab 7; die nächste Herausforderung wartet in Welle 25.',
   'Rosenspiegel kehrt in Welle 25 mit einer größeren Begleitgruppe zurück. Höhere Turmlevel und unsere vier Rollen helfen. Für den ersten Sieg gibt es einmalig 1.200 Gold.',
 ] as const;
 export const tutorialHint = (battle: IdleBattle): string => tutorialStep(battle) === 15 && battle.mara.effectRemaining > 0
-  ? `Übertakten wirkt jetzt: +50 % Feuerrate, noch ${Math.ceil(battle.mara.effectRemaining)} Sekunden. Der goldene Ring zeigt meinen Zielturm. Über mein Porträt kannst du später auch manuell zaubern; die Automatik wartet auf Gegner.`
-  : HINTS[tutorialStep(battle)];
+  ? t("Übertakten wirkt jetzt: +50 % Feuerrate, noch {0} Sekunden. Der goldene Ring zeigt meinen Zielturm. Über mein Porträt kannst du später auch manuell zaubern; die Automatik wartet auf Gegner.", Math.ceil(battle.mara.effectRemaining))
+  : t(HINTS[tutorialStep(battle)]);
 export function nextObjective(battle: IdleBattle): string {
-  const remaining = (cost: number) => battle.gold >= cost ? `${cost} Gold · bereit` : `noch ${cost - battle.gold} Gold`;
+  const remaining = (cost: number) => battle.gold >= cost ? t("{0} Gold · bereit", cost) : t("noch {0} Gold", cost - battle.gold);
   switch (tutorialStep(battle)) {
-    case 0: return 'Die Verteidigung läuft. Erste Käfer bringen Gold — dein zweiter Turm ist bereits bezahlbar.';
-    case 1: return 'Nächstes Ziel: eigener Waldwächter auf einem hellen Bauplatz · 75 Gold.';
-    case 2: return 'Nächstes Ziel: einen Waldwächter verbessern · 60 Gold.';
-    case 3: return `Nächstes Ziel: Werkstatt bauen · ${battle.workshopKitAvailable ? 'kostenloser Bausatz bereit' : remaining(battle.workshopBuildCost)}.`;
-    case 4: return `Nächstes Ziel: Frostfassung erforschen · ${remaining(SETTLEMENT.researchCost)}.`;
-    case 5: return `Nächstes Ziel: Frostkristall an einem freien Platz bauen · ${remaining(FROST.cost)}.`;
-    case 6: return 'Nächstes Ziel: den ersten blauen Frosttreffer im Kampf beobachten.';
-    case 7: return battle.wispUnlocked ? 'Wisp begrüßen · +10 % Kampf-Gold, arbeitet automatisch.' : 'Deine Kombination arbeitet. Welle 5 meistern, dann kommt Wisp.';
-    case 8: return 'Wisp arbeitet: +10 % Kampf-Gold. Steinschleuder bauen · 135 Gold.';
-    case 12: return `Vorratslager bauen · ${remaining(SETTLEMENT.warehouseCost)} · 65 % Offline-Ertrag für bis zu 8 Stunden.`;
-    case 13: return 'Welle 8 meistern: Vorratslager freischalten.';
-    case 9: return 'Welle 10 meistern: Scharfschütze.';
-    case 10: return 'Scharfschütze bauen · 170 Gold · Rüstung durchdringen.';
-    case 14: return battle.highestCleared < 14 ? 'Verteidigung für Rosenspiegel in Welle 15 vorbereiten.' : 'Rosenspiegel besiegen · 750 Gold Erstprämie · Frost bremst ihren Vormarsch.';
-    case 15: return 'Mara kennenlernen: Übertakten verstärkt einen Turm für acht Sekunden.';
-    case 16: return `Werkstatt II ausbauen · ${remaining(SETTLEMENT.workshopUpgradeCost)} · Turmlevel 7–20.`;
-    case 17: return 'Rosenspiegels Rückkehr in Welle 25 vorbereiten · Turmlevel 7–20 verfügbar.';
-    default: return battle.mode === 'farm' ? 'Verteidigung ausbauen, dann bewusst erneut vorstoßen.'
-      : 'Frost und Pfeile arbeiten zusammen. Weitere Upgrades bis Level 20 sind verfügbar.';
+    case 0: return t('Die Verteidigung läuft. Erste Käfer bringen Gold — dein zweiter Turm ist bereits bezahlbar.');
+    case 1: return t('Nächstes Ziel: eigener Waldwächter auf einem hellen Bauplatz · 75 Gold.');
+    case 2: return t('Nächstes Ziel: einen Waldwächter verbessern · 60 Gold.');
+    case 3: return t("Nächstes Ziel: Werkstatt bauen · {0}.", battle.workshopKitAvailable ? t('kostenloser Bausatz bereit') : remaining(battle.workshopBuildCost));
+    case 4: return t("Nächstes Ziel: Frostfassung erforschen · {0}.", remaining(SETTLEMENT.researchCost));
+    case 5: return t("Nächstes Ziel: Frostkristall an einem freien Platz bauen · {0}.", remaining(FROST.cost));
+    case 6: return t('Nächstes Ziel: den ersten blauen Frosttreffer im Kampf beobachten.');
+    case 7: return battle.wispUnlocked ? t('Wisp begrüßen · +10 % Kampf-Gold, arbeitet automatisch.') : t('Deine Kombination arbeitet. Welle 5 meistern, dann kommt Wisp.');
+    case 8: return t('Wisp arbeitet: +10 % Kampf-Gold. Steinschleuder bauen · 135 Gold.');
+    case 12: return t("Vorratslager bauen · {0} · 65 % Offline-Ertrag für bis zu 8 Stunden.", remaining(SETTLEMENT.warehouseCost));
+    case 13: return t('Welle 8 meistern: Vorratslager freischalten.');
+    case 9: return t('Welle 10 meistern: Scharfschütze.');
+    case 10: return t('Scharfschütze bauen · 170 Gold · Rüstung durchdringen.');
+    case 14: return battle.highestCleared < 14 ? t('Verteidigung für Rosenspiegel in Welle 15 vorbereiten.') : t('Rosenspiegel besiegen · 750 Gold Erstprämie · Frost bremst ihren Vormarsch.');
+    case 15: return t('Mara kennenlernen: Übertakten verstärkt einen Turm für acht Sekunden.');
+    case 16: return t("Werkstatt II ausbauen · {0} · weitere Turmlevel ab 7.", remaining(SETTLEMENT.workshopUpgradeCost));
+    case 17: return t('Rosenspiegels Rückkehr in Welle 25 vorbereiten · weitere Turmlevel ab 7 verfügbar.');
+    default: return battle.mode === 'farm' ? t('Verteidigung ausbauen, dann bewusst erneut vorstoßen.')
+      : t('Frost und Pfeile arbeiten zusammen. Weitere Turm-Upgrades sind verfügbar.');
   }
 }

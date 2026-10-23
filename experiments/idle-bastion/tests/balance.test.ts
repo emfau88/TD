@@ -1,7 +1,8 @@
+import { language, setLanguage } from '../src/i18n';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { IdleBattle } from '../src/battle';
+import { IdleBattle, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION, upgradeCost } from '../src/battle';
 import { BALANCE, battleReward, healthMultiplier } from '../src/balance';
 import { certifyFarm, isFarmCertificateValid } from '../src/farming';
 import { recommendedUpgrade, currentGoal } from '../src/progress-ui';
@@ -23,14 +24,14 @@ test('B13 keeps entry recipes/rewards intact, softens later HP and bounds income
 test('v13 active boss/queue/HP and money survive migration without a mid-wave balance switch', () => {
   const old=JSON.parse(readFileSync(new URL('./fixtures/balance-v13.json',import.meta.url),'utf8'));
   const b=IdleBattle.restore(old)!;assert.ok(b);
-  const saved=b.snapshot();assert.equal(saved.schemaVersion,16);assert.equal(saved.rulesVersion,10);
+  const saved=b.snapshot();assert.equal(saved.schemaVersion,BATTLE_SCHEMA_VERSION);assert.equal(saved.rulesVersion,BATTLE_RULES_VERSION);
   assert.equal(saved.waveRecipeVersion,9);assert.equal(saved.gold,old.gold);
   for(const field of ['enemies','shots','queue','bossCharm','towers'] as const)assert.deepEqual(saved[field],old[field]);
   assert.deepEqual(saved.liveClearedWaves,[]);assert.equal(saved.farmWave,1);
   b.update(.1);assert.ok(IdleBattle.restore(b.snapshot()));
   const attempt=b.attemptId;
   for(let s=0;s<300&&b.attemptId===attempt;s++)b.update(1);
-  assert.ok(b.attemptId>attempt);assert.equal(b.waveRecipeVersion,10);assert.ok(IdleBattle.restore(b.snapshot()));
+  assert.ok(b.attemptId>attempt);assert.equal(b.waveRecipeVersion,BATTLE_RULES_VERSION);assert.ok(IdleBattle.restore(b.snapshot()));
 });
 
 test('an upgrade reproves the formerly safe wave even when the latest two clears are unsafe', () => {
@@ -48,5 +49,12 @@ test('an upgrade reproves the formerly safe wave even when the latest two clears
 test('workshop II objective and its action select the same useful area-damage investment', () => {
   const {b}=runBalance('guided',180);b.settlement.workshopUpgraded=true;b.settlement.upgradedAt=b.elapsed;b.bossVictories=1;
   const tower=recommendedUpgrade(b)!;assert.equal(tower.def.id,3);
-  assert.match(currentGoal(b).title,new RegExp(`Level ${tower.level+1}`));
+  const previous=language(),before=b.snapshot();
+  try {
+    for(const lang of ['en','de'] as const){
+      setLanguage(lang);const goal=currentGoal(b);assert.equal(goal.action,'upgrade');
+      assert.ok(goal.title.endsWith((lang==='en'?'level ':'Level ')+(tower.level+1)),goal.title);
+      assert.equal(goal.cost,upgradeCost(tower));assert.deepEqual(b.snapshot(),before);
+    }
+  } finally {setLanguage(previous);}
 });

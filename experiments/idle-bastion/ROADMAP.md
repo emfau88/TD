@@ -1,5 +1,86 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Neue Tavernenfiguren im Hauptspiel — 24.10.2026, integriert und geprüft.**
+
+- Auf ausdrückliche Merge-Freigabe alle 15 brauchbaren Mara-/Ilyra-Animationen im normalen Spieleinstieg aktiviert. Hauptstand `5823a99` samt Gegner-/Wellenarbeit und Englisch/Deutsch erhalten; neue Gesten ebenfalls übersetzt. Alte Tavernenbilder/Renderer bleiben vorhanden und sind im Hauptspiel deaktiviert. Keine Änderungen an Kampf, Zuneigung, Freischaltungen oder Saveformat gegenüber diesem Hauptstand.
+- Gewählte WebP-Qualität 30: **48,63 MB** statt 64,26 MB (Q60) beziehungsweise 114,55 MB (Q90), weiterhin 30 fps. Stabiler Figurenrahmen, dreifache Berührungsherzen, bedarfsgesteuertes Laden. Originale und frühere Qualitätsfassungen erhalten.
+- Produktions-/Pages-Build und 35 gezielte Tavernen-/Save-/Sprachtests bestanden. Im echten Spiel über separaten Probe-Spielstand beide Figuren und Reaktionen sowie Deutsch/Englisch kontrolliert; Desktop und Hochkant geprüft. Keine Vollsuite behauptet; bekannte frühere Restfehler bleiben beim Testpflege-Paket dokumentiert. Merge/Veröffentlichung vom Nutzer beauftragt. [Prüfbericht und Größen](../../artifacts/idle-bastion/tavern-integration-v1/README.md), [aktueller Animationsbestand](ANIMATIONS_INVENTAR.md).
+
+**Kleines Testpflege-Paket — 23.10.2026, codex/test-refresh.**
+
+- [x] Kritische Save-/Offline-Migrationen, Boss-/Erstprämien und Kauf-Rollback mit gültigen historischen Fixtures wieder prüfbar; B10-Dateiabbruch entkoppelt. Drei Sprachprüfungen ausdrücklich Englisch/Deutsch. Kein Gameplay-, Balance-, Asset- oder Saveformat-Eingriff.
+- [x] Ein vollständiger Abschlusslauf: 291/308 bestanden, 17 bewusst zurückgestellte Bauflächen-/Mara-/Zeitprüfungen rot, keine Skips oder Dateiabbrüche. TypeScript und Produktionsbuild bestanden; Laufzeit diesmal rund 12 s statt vorher rund 238 s durch vermiedene Vorläufe. [Separater Abschlussbericht und Restfehler](../../artifacts/idle-bastion/acceptance/test-refresh/critical/REPORT.md). main und Tavernenarbeiten unberührt.
+
+- [x] Nutzer hat Commit, Push und saubere Übernahme nach main freigegeben. Die 17 Restbefunde bleiben ausdrücklich dokumentiert zurückgestellt; parallele Tavernenarbeiten bleiben auf ihrem eigenen Branch und werden nicht übernommen.
+
+**Gezielte Testpflege — 23.10.2026, lokaler Branch codex/test-refresh.**
+
+- [x] Die zwölf zuvor dokumentierten Fehler mit historisch gültigen Testdaten und weiterhin exakten Kampf-/Geld-/Saveprüfungen korrigiert; alle 12/12 bestanden. Grafik- und Wegannahmen aktualisiert, zweite Benutzeraktion während des Speicherns weiterhin abgewiesen. Keine Gameplay-, Asset- oder Speicherformatänderung.
+- [x] Vollständiges npm test erstmals für diesen Stand protokolliert: 264 bestanden, 38 Fehlschläge in unveränderten Tests außerhalb der bisherigen Teilmatrix, darunter Dateiabbruch B10 vor sechs Testfällen. Keine übersprungenen Tests; TypeScript und Produktionsbuild bestanden. [Ergebnisse, vollständige Fehlerliste und Protokolle](../../artifacts/idle-bastion/acceptance/test-refresh/REPORT.md). Die Gesamtsuite ist noch nicht grün; zusätzliche Befunde werden nicht aus dieser Aufgabe heraus durch Gameplayänderungen behoben.
+
+**L01 · Englisch als Standard, Deutsch im Spielmenü — 23.10.2026, `codex/english-default`.**
+
+- [x] Gemeinsamer Textkatalog für Spieloberfläche, Einführung, Chronik, Gegner-/Turmnamen und Mara-/Ilyra-Dialoge; Englisch als ausdrücklicher Standard, Deutsch sofort im vorhandenen Menü wählbar. Sprachwahl getrennt vom Spielstand gespeichert.
+- [x] Zahlenformatierung und dynamische/cachende Ansichten wechseln mit; Spielregeln, IDs, Goldwirtschaft, Farmbelege und Speicherformat unverändert. Keine Vermischung mit paralleler Tavernenanimation.
+- [x] Überlange Turmkarten und zusammengedrückte Gebäudekarten korrigiert; Smartphone-Hochkant, Tablet, Querformat und Desktop in beiden Sprachen geprüft. Zusätzlich Starterkarte im echten Produktionsbuild geprüft.
+- [x] Produktionsbuild, fünf neue Sprachtests, zwei Goldanzeigetests und relevante Matrix 156/168 mit genau denselben zwölf bekannten Fehlern; native IndexedDB-Fortsetzung, unveränderter Farmnachweis und einmalige historische Offline-Auszahlung erfolgreich. [Prüfung und Ansichten](../../artifacts/idle-bastion/acceptance/language/REPORT.md).
+- [x] Nutzer hat am 23.10.2026 Commit/Push und Merge nach main freigegeben; ergänzend GitHub-README aktualisiert und Rückkehrgold lesbarer dargestellt. Veröffentlichung nach Abschluss der Zusatzprüfung.
+
+**Gezielte Farmsuche — 23.10.2026, separater Branch `codex/farm-search`.**
+
+- [x] Freigegebenes Sturmlicht `922aff6` konfliktfrei per Fast-forward nach main übernommen; Produktionsbuild und 135/147 Tests mit exakt zwölf bekannten Fehlern erneut geprüft. [Pages-Lauf erfolgreich](https://github.com/emfau88/TD/actions/runs/40007020205), Live-Seite erreichbar. Tavernen-Branch und lokale Änderungen unberührt.
+- [x] Zwölf bezahlte Verteidigungsstände bei 40/50/60/70 mit drei Aufstellungen, jeweils Rohsave und gültiger Nachweis: bisherige Auswahl gegen Zwischenkandidat und finale Variante verglichen. Acht von zwölf Ständen besser, vier unverändert; keine gemessene Einkommensverschlechterung. [Daten, Grenzen und Empfehlung](../../artifacts/idle-bastion/acceptance/farm-search/REPORT.md).
+- [x] Kleine Auswahlkorrektur in `farming.ts`; maximal vier Kandidaten, echte Live-Clears, zwei vollständige verlustfreie Durchläufe, Erhalt gültiger Belege. Wirtschaft, Wellen, HP, Preise und Speicherformate unverändert. Welle 1 nur bei rechnerisch ausgeschlossener Verbesserung als unnötige Zusatzprobe auslassen.
+- [x] Acht neue Tests, relevante Matrix 143/155 mit denselben zwölf bekannten Fehlern, Produktionsbuild und Chrome/IndexedDB auf Desktop und Mobilprofil bestanden. Rechenbudget unverändert, mittlerer Aufwand geringer; einzelne Proben etwas länger. Historische Ansprüche exakt einmal, laufende Kämpfe und Reload erhalten.
+- [x] Farmvergleich und Commit `96a005b` am 23.10.2026 freigegeben und nach main übernommen. Große Endloswirtschaft erst separat nach Glutwerfer; keine zusätzlichen 3 % Gold umgesetzt.
+
+**B16 · Sturmlicht und kleiner Wirtschaftsaudit — 23.10.2026, eigener Branch ab aktuellem main.**
+
+- [x] Turm 05 mit vorhandenen drei Grafikstufen, begrenzter Dreierkette (80 Sprungreichweite, 100/65/42,25 %), Forschung nach gemeisterter 28 und Ilyra-Einführung. Forschung 900 / separater Bau 170 Gold, ohne neue Levelobergrenze. Kleine Forschungsicons in der bestehenden Werkstatt.
+- [x] Schema 29 / Regeln 15, alte laufende Kämpfe und Offline-Ansprüche erhalten. Verkauf/Upgrade während Ketten, Mara, Ilyras gespeicherte Turmquelle und sichere Farmproben geprüft. Keine Änderung an Wellen, bestehender Turmbalance, Farmwahl oder allgemeiner Wirtschaft.
+- [x] Neun neue B16-Tests erfolgreich; erweiterte Matrix 135/147 mit neun bereits bekannten und drei auf main separat nachgewiesenen Ilyra-Altfällen. Produktionsbuild, acht Desktop-/Mobil- und vier Produktionsproben einschließlich dichter Welle und exaktem Reload bestanden. [Implementierung und Ansichten](../../artifacts/idle-bastion/acceptance/b16/REPORT.md).
+- [x] Drei bezahlte Fortsetzungen 25→70 und 27 Rollenvergleiche; [Wirtschaftsaudit](../../artifacts/idle-bastion/acceptance/b16/ECONOMY.md) mit Goldraten, Wartezeiten und genau zwei nicht implementierten Vorschlägen.
+- [x] Am 23.10.2026 vom Nutzer visuell freigegeben; Commit `922aff6` auf main/Pages übernommen. Physische Smartphone-Leistung und weitere Endlosbalance bleiben offen.
+
+**E01 · Merge-Vorbereitung — 23.10.2026, im bestehenden Draft-PR #2.**
+
+- [x] Shroom-Men-Vergleichsfunktionen und erzeugte lokale Kopien entfernt. Alle vier Frakassets-Arten samt roter/grüner Moospilzkappe bytegenau erhalten; Laufzeitimport mit ausschließlich einem Frakassets-ZIP erfolgreich.
+- [x] Ursache Welle 46 nachgewiesen: leichte Begleitung durch Einführungskürzung verloren. Jetzt sieben Skorpione, 15 Spinnen und zwei Quallen; gleiches Tempo/Goldbudget, alle anderen Rezepte unverändert. Schema 28/Regeln 14, historische Version 13 eingefroren.
+- [x] Ursache 157 Farmdurchläufe auf Welle 1 nachgewiesen: fehlendes Zertifikat im Rohsave-Messlauf, gespeicherte Farmwahl 29 nicht geprüft. Gespeicherte Auswahl und ein weiterer jüngerer Kandidat werden frisch nachgewiesen, weiterhin höchstens vier Prüfungen. Wiederholter bezahlter Lauf bis 56: null Farmdurchläufe auf 1, 68:16 statt 99:34 zusätzliche Modellminuten.
+- [x] Produktionsbuild, Produktionsvorschau, Desktop-/Mobilansichten und aktuelle/historische Save-/Reload-/Farmnachweise geprüft. 25/25 gezielte Tests; größere Matrix 122/131 mit exakt neun bekannten Fehlern, separat dokumentiert. [Abschlussbericht für Draft-PR #2](../../artifacts/idle-bastion/acceptance/local-enemy-assets/merge-ready/REPORT.md). Kein Merge nach main aus diesem Auftrag.
+
+
+**E01 · Lokale Gegnerpakete — 23.10.2026, separat ab Wave-Rework W02 umgesetzt.**
+Branch `codex/local-enemy-assets` ab `796f02e`; bestehender Draft-PR #1 und `main`
+bleiben erhalten. [Prüfbericht und tatsächliche Spielansichten](../../artifacts/idle-bastion/acceptance/local-enemy-assets/REPORT.md).
+
+- [x] Alle lokalen Pakete ausgewertet, Archive/Quellen/Lizenzen geprüft; Skeleton-ZIP identisch, keine zweite Kopie. Nicht benötigte lokale Figuren-/Palettenvergleiche auf Nutzerauftrag entfernt; Originaldownloads bleiben unverändert.
+- [x] Gemeinsame mobile Vorschau mit Richtungen, Auflösungen, Original-/Spielgröße, Palette, Pause/Einzelbild. Vier passende CC-BY-Frakassets-Gegner mit JSON-Originaltiming und vier Ansichten, zusammen 52.769 PNG-Bytes. Credits/Änderungen dokumentiert.
+- [x] Moospilz 42, Waldspinne 46, Hornfledermaus 50, Zunderläufer 54; unmittelbare Wiederholung, alte Arten regelmäßig, 28er-/Heilergrenzen. Wellen 1–40 und Wirtschaft unverändert; Schema 27/Regeln 13, alte laufende Rezepte einschließlich Version 12 nach 40 erhalten.
+- [x] 20/20 Wave-/Asset-Tests, relevante Matrix 117/126 gegenüber 110/119 mit denselben neun alten Fehlern. Bezahlte Fortsetzung 40→56, sechs Niederlagen/24 Upgrades; echte Desktop-/Mobilansichten, dichte Welle 54, exakter pausierter Reload und Produktionsbuild geprüft. HP-Savegrenze an bereits fortlaufende Regeln-12-Kurve angeglichen.
+- [ ] Subjektive Nutzerbewertung der neuen Stil-/Größenkombination; echte Smartphone-Hardwareprüfung bei Gelegenheit. Langzeitwirtschaft nach 40 bleibt eigener Punkt aus W02.
+
+
+**W02 · Wave-Rework 2.0 / Balancing — 23.10.2026, im bestehenden Draft-PR #1 beauftragt.** SPIRE ist ein Endlos-Idle-TD; Welle 40 bleibt Zwischenziel. [Aktueller Bericht, Messungen und Spielaufnahmen](../../artifacts/idle-bastion/acceptance/wave-rework-v2/REPORT.md).
+
+- [x] Größere Familiengruppen, dichtere Spawnvarianten und leichte Begleitung statt extremer Mengenreduktion; Kader/Originalanimationen, Einführungen, Bosse und Tutorial erhalten.
+- [x] Gesamtes Kill-/Abschlussbudget, effektive sichere Goldrate etwa 11 % unter W01; keine Änderung historischer Offline-Ansprüche. Schema 26 / Regeln 12, eingefrorene alte Rezepte und frisch geprüfte Farmraten aus validierten Altkandidaten.
+- [x] Level-20-Kauf-/Schadens-/Preisgrenzen und Ilyras Quelllevelbegrenzung entfernt; HP wächst nach dem alten Plateau weiter. Numeric-/Save-Grenzen bleiben streng. Langzeitwirtschaft über 40 gesondert dokumentiert, keine neue Architektur.
+- [x] Drei bezahlte Strategien bis 40: 26:11–30:33 Modellminuten, zwei/drei Niederlagen und bewusstes Farmen; Turmlevel bis 11–14. 270 identische Vergleichskämpfe plus 180 Turm-Ablationen. 13/13 Wave-Tests, relevante Matrix 87/94 gegenüber 80/88 vor W02; sieben alte Fehler getrennt dokumentiert, weitere alte Ausbau-/Layoutfixtures ebenfalls offengelegt. Produktionsbuild, dichte Desktop-/Hochkantansichten und Save/Reload geprüft.
+- [ ] Visuelle Nutzerbewertung und ungeskriptete Balance-/Offline-Rückkehrprobe. Separat später: Gold-/Kostenkurve jenseits 40 und größere Zahlenrepräsentation. `main` weder mergen noch veröffentlichen.
+
+Der folgende W01-Abschnitt bewahrt den ersten Rework und seine damaligen Prüfergebnisse.
+
+**W01 · Wave-Rework und Foozle-Gegner — 23.10.2026, ausdrücklich beauftragt und umgesetzt.** Separater Branch `codex/wave-rework` ab `76c114e`; lokale Tavernenarbeiten erhalten. [Prüfbericht, Messungen und Spielaufnahmen](../../artifacts/idle-bastion/acceptance/wave-rework/REPORT.md).
+
+- [x] Vorab veralteten Gegner-Migrationstest ohne Abschwächung korrigiert: damaliger Stand 24, sieben Prüfungen erfolgreich.
+- [x] Paket 1: vier deterministische Familien, unterschiedliche Mengen/Spawnrhythmen, zwei bis drei Arten, frühe Wiederholung neuer Arten und bessere Kaderabdeckung; Einstieg 1–5 und Bossrezepte 15/25 erhalten, Elite 40 ohne neue Fähigkeit.
+- [x] Paket 2: Goblin zunächst im Originalvergleich geprüft; drei kostenlose Foozle-Archive samt tatsächlichen CC0-Readmes gesichert. Waldgoblin 19, Knochenwächter 26, Waldkultist 32; Originalanimationen, vier echte Ansichten, gemeinsam begrenzte Heilung. Zusammen 22.477 Bytes Laufzeitgrafiken; separate `enemy-check.html` ohne Savezugriff.
+- [x] Paket 3: Schema 25 / Regeln 11 mit Erhalt laufender alter Kämpfe und historischer Offline-Ansprüche. Sieben neue Prüfungen erfolgreich, relevanter Vergleich 96/102 gegenüber 85/95 im Ausgangsstand; sechs verbleibende bekannte Legacy-/Tutorial-Fixtures, keine neue fehlgeschlagene Testbezeichnung. Drei bezahlte Strategien schaffen Welle 40 nach 17:13–19:16 ohne Niederlage; 180 feste Vergleichskämpfe. TypeScript/Produktionsbuild und reale Desktop-/Mobilansichten einschließlich Reload geprüft. HP-Grundkurve unverändert, Sprung im rüstungsbereinigten HP-Volumen 29→30 von +140 % auf +12 % reduziert.
+- [ ] Visuelle Nutzerbewertung und subjektive Balanceabnahme. Technische Prüfung und eigene Sichtprüfung ersetzen diese nicht. Keine Ostfront oder weitere Systeme aus diesem Auftrag ableiten; sechs alte Legacy-Fixtures bleiben im allgemeinen Prüfrückstand.
+
+Die folgenden bestehenden Pakete und offenen Arbeiten behalten ihren bisherigen Status.
+
 Stand: 21.10.2026 · Hauptstand `main` · [Spiel testen](https://emfau88.github.io/TD/)
 
 **Tavernenrahmen, Berührungsherzen und WebP 30, 24.10.2026:** Nutzer bestätigt den korrigierten Rahmen; beide Figuren behalten beim Wechsel zu Berühren und während Reaktionen ihre Position/Skalierung. Desktop 1280 × 720 und Hochkant 390 × 844: Fenster/Bühne/Canvas jeweils ohne Maß- oder Positionsänderung. Auf Anschlussauftrag Herzen dreifach sichtbar vergrößert (54 px), Touchfläche 64 px. Weitere Kompression zunächst WebP 60: 64,26 MB; anschließend nach Qualitätsvergleich ausdrücklich **WebP 30 gewählt: 48,63 MB** für alle 15 Animationen, weiterhin 30 fps/1.848 Frames und exakte Transparenz. Originale und Qualität-90/60-Vergleiche lokal erhalten. Nutzer hat anschließend die echte Spielintegration und den Merge nach main ausdrücklich freigegeben, sofern die Prüfungen keine Einwände ergeben. Abgleich mit aktuellem main und dessen Übersetzung in Vorbereitung; vorherige Merge-Sperre für diesen Auftrag aufgehoben. [Messwerte und Quellen](../../artifacts/idle-bastion/tavern-integration-v1/README.md).
@@ -237,7 +318,7 @@ Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvo
 
 - [ ] **24 · F05 — Maras Idle-Animation. Nur vorgemerkt, eigener Punkt.** Passende ruhige Standbewegung aus ihrer vorhandenen Pixelart, gleiche Bodenanker und klarer Unterschied zwischen Ruhe, Laufen und Übertakten. Keine Gameplay-/Cooldown-Änderung; Pause und Übergänge prüfen. Separat umsetzbar, keine neue Figurengestaltung.
 
-- [ ] **25 · B16 — Sturmlicht und Forschungsicons. Geplant.** Vorhandenen Turm 05 mit drei Stufen verwenden; Kettenblitz auf bis zu drei verschiedene Ziele, begrenzte Sprungreichweite/abnehmender Schaden, kein Mehrfachtreffer und keine Bossunterbrechung. Nach Ilyras Einführung etwa ab Welle 28 Forschung in der Werkstatt anbieten, bewusst für Gold kaufen; Forschung und Baupreis unterscheiden. Kleine Icons mit Häkchen/antippbarem Nutzen zeigen erforschte Technologien, gesperrte nennen Voraussetzungen; Frost und vorhandene Forschung einbeziehen, keine neue HUD-Leiste. Fertig bei erkennbarer Rolle gegenüber Einzel-/Flächenschaden und korrektem Upgrade/Mara/Verkauf/Reload während einer Kette. [Fachentscheidungen](docs/AKT_II.md).
+- [x] **25 · B16 — Sturmlicht und Forschungsicons. Auf eigenem Branch umgesetzt; Nutzer-Sichtprüfung offen.** Vorhandenen Turm 05 mit drei Stufen verwenden; Kettenblitz auf bis zu drei verschiedene Ziele, begrenzte Sprungreichweite/abnehmender Schaden, kein Mehrfachtreffer und keine Bossunterbrechung. Nach Ilyras Einführung etwa ab Welle 28 Forschung in der Werkstatt anbieten, bewusst für Gold kaufen; Forschung und Baupreis unterscheiden. Kleine Icons mit Häkchen/antippbarem Nutzen zeigen erforschte Technologien, gesperrte nennen Voraussetzungen; Frost und vorhandene Forschung einbeziehen, keine neue HUD-Leiste. Fertig bei erkennbarer Rolle gegenüber Einzel-/Flächenschaden und korrektem Upgrade/Mara/Verkauf/Reload während einer Kette. [Fachentscheidungen](docs/AKT_II.md).
 
 - [ ] **26 · B14, vorgezogener Teil — Speicherrisiken vor zwei Routen. Geplant.** Nur die für Ostfront/alte Ansprüche relevanten offenen Speicherprobleme gezielt schließen: laufender Kampf, Tab-Eigentümerschaft, unterbrochene Claims/Schreibfehler und Bestandsschutz. Dieser Teil ist Voraussetzung für B18-Veröffentlichung, ersetzt nicht B14 insgesamt und keine G2-Nutzerabnahme.
 

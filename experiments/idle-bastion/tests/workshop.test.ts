@@ -1,3 +1,5 @@
+import { language, setLanguage } from '../src/i18n';
+import { legacyFixtures, restoreHistorical, assertHistoricalFields } from './legacy-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { BASE, FROST, SETTLEMENT, IdleBattle, stats } from '../src/battle';
@@ -65,19 +67,12 @@ test('Frost defense receives conservative farm proof and selling it invalidates 
   assert.equal(isFarmCertificateValid(proof, battle), false);
   assert.ok(certifyFarm(battle));
 });
-test('schema three preserves Mara and gold while migrating to damaged workshop and fresh live farm evidence', () => {
-  const battle = new IdleBattle(); battle.build('tower-02'); battle.assignMara(battle.towers[1].uid); battle.update(1.2);
-  const modern = battle.snapshot();
-  const { settlement, tutorial, ...old } = modern;
-  const legacy = { ...old, schemaVersion: 3, layoutVersion: 1, rulesVersion: 2,
-    towers: old.towers.map(({kind, ...tower}) => tower),
-    enemies: old.enemies.map(({slowRemaining, ...enemy}) => enemy),
-    shots: old.shots.map(({kind, ...shot}) => shot) };
-  const restored = IdleBattle.restore(legacy)!;
-  assert.ok(restored); assert.equal(restored.gold, battle.gold);
-  assert.deepEqual(restored.mara, battle.mara); assert.equal(restored.settlement.workshopBuilt, false);
-  assert.deepEqual(restored.liveClearedWaves, []);
-  assert.deepEqual(restored.snapshot().shots, modern.shots);
+test('schema three preserves Mara and gold while migrating to damaged workshop and fresh live farm evidence',() => {
+  const old=legacyFixtures().critical.walking3;
+  const restored=restoreHistorical(old,{liveClearedWaves:[],farmWave:1});
+  assert.equal(restored.gold,old.gold);assertHistoricalFields(restored.mara,old.mara);
+  assert.equal(restored.settlement.workshopBuilt,false);assert.deepEqual(restored.liveClearedWaves,[]);
+  assertHistoricalFields(restored.snapshot().shots,old.shots);
 });
 test('malformed unlocks, Frost payloads and slow timers are rejected', () => {
   const battle = unlocked(); battle.build('tower-02', 2);
@@ -96,7 +91,14 @@ test('tutorial accepts early actions and alternative pads; replay/skip preserve 
   assert.equal(tutorialStep(battle), 0);
   battle.build('tower-04'); until(battle, () => battle.gold >= 60);
   battle.upgrade(battle.towers[1].uid);
-  assert.equal(tutorialStep(battle), 3); assert.match(nextObjective(battle), /Werkstatt/);
+  assert.equal(tutorialStep(battle),3);
+  const previous=language(),unchanged=battle.snapshot();
+  try {
+    for(const lang of ['en','de'] as const){
+      setLanguage(lang);assert.match(nextObjective(battle),lang==='en'?/workshop/:/Werkstatt/);
+      assert.deepEqual(battle.snapshot(),unchanged);
+    }
+  } finally {setLanguage(previous);}
   const before = battle.snapshot(), fingerprint = defenseFingerprint(battle);
   battle.tutorial.hidden = true; battle.tutorial.seen = 255;
   let restored = IdleBattle.restore(battle.snapshot())!;

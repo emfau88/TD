@@ -1,6 +1,19 @@
 # Tavernenanimationen – verwendbarer Bestand für Mara und Ilyra
 
-**Ergänzung 24.10.2026:** Alle 15 brauchbaren Bewegungen liegen zusätzlich als kompakte Spielfassung (WebP 90, unveränderte 30 fps) unter `assets/tavern-rig/` vor: 114,55 MB statt 532,35 MB der ausgewählten Exporte. Die [lokale Probe im echten Tavernenrahmen](http://127.0.0.1:5224/tavern-rig-check.html?hero=mara) enthält beide Figuren einschließlich Ilyras Hüftpose. Originalquellen/alte Animationen erhalten, normaler Spieleinstieg noch nicht umgeschaltet. Aktueller Abnahmestatus in der Roadmap; [Technik und Größen](../../artifacts/idle-bastion/tavern-integration-v1/README.md).
+**Aktualisierung 24.10.2026:** Alle 15 brauchbaren Bewegungen sind nach ausdrücklicher Paketfreigabe im Spieleinstieg angebunden. Kompakte Spielfassung unter `assets/tavern-rig/`: **WebP 30, 48,63 MB, unverändert 30 fps**. Originalquellen/alte Animationen erhalten; der bisherige Tavernenrenderer ist im Hauptspiel deaktiviert. Die folgenden Detailtabellen dokumentieren die Quellen und Einzelprüfungen des früheren Stands vom 23.10.; ihre damaligen offenen Integrationsvermerke werden durch diese aktuelle Zuordnung ersetzt. Veröffentlichungs-/Abnahmestatus in der Roadmap; [Technik und Größen](../../artifacts/idle-bastion/tavern-integration-v1/README.md).
+
+| Aktueller Spieleinsatz | Mara | Ilyra | Auslöser |
+| --- | --- | --- | --- |
+| Basis-Idle | M01 | I01 | Ab Herz 0 |
+| Kopfreaktion | M02 | I02 | Sprechen / Haare |
+| Berührungsreaktion | M03 | I03 | Hand / Schulter; Geschenk unter Herz 2 |
+| Zweite Idle | M04 | I04 | Ab Herz 2 nach drei normalen Loops |
+| Kichern | M05 | I05 | Ab Herz 2: Zusammen lachen |
+| Freude / Nachbewegung | M06 | I06 | Geschenk ab Herz 2 |
+| Necken | M07 | – | Ab Herz 2: Ein wenig necken |
+| Hand an der Hüfte | M08 | I07 | Ab Herz 2: Ein Kompliment machen |
+
+Persönliche Herzmomente verwenden weiterhin die zugeordneten Kopf-/Berührungsreaktionen. Ilyras Hüftpose nutzt den ausdrücklich akzeptierten sichtbaren Wechsel der separaten Zeichnung; der verworfene Armübergang bleibt deaktiviert. [Lokale Spielrahmen-Vorschau](http://127.0.0.1:5224/tavern-rig-check.html?hero=mara).
 
 **Sicherungshinweis (23.10.2026):** Die hier genannten PNGs/Atlanten und Vergleichsmedien sind lokal vorhanden. Die neue GitHub-Sicherung enthält deren vollständige bearbeitbare Quellen, Steuerung und Re-Exportverfahren; große reproduzierbare Medienkopien bleiben lokal. [Umfang und Wiederherstellung](../../artifacts/idle-bastion/TAVERN_BACKUP_CURRENT.md).
 

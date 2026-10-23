@@ -13,7 +13,7 @@
 
 Erzeugen: `python experiments/idle-bastion/scripts/pack-tavern-rig.py`, danach bei Bedarf `python artifacts/idle-bastion/tavern-integration-v1/prepare-portraits.py`. Benötigt die lokal erhaltenen bzw. aus den gesicherten Unity-Quellen reproduzierten Prüfatlanten. Quellenzuordnung ist im Exportskript vollständig angegeben; vorhandene Quellen werden nicht überschrieben.
 
-Die lokale Abnahme verwendet `tavern-rig-check.html` mit der echten `TavernUI` und einem temporären `BattleSession` ohne persistierenden Store. Die reguläre Spiel-Einstiegsdatei verwendet bis zur weiteren Integrationsfreigabe weiterhin die bisherigen Animationen. Das neue Paket wird dort nicht vorab geladen.
+Die lokale Abnahme verwendet `tavern-rig-check.html` mit der echten `TavernUI` und einem temporären `BattleSession` ohne persistierenden Store. Nach ausdrücklicher Integrationsfreigabe verwendet auch `src/main.ts` diese Präsentation. Bildatlanten werden erst bei Bedarf geladen. Der bisherige Renderer und sämtliche alten Assets bleiben für historische Vorschauen erhalten; das Hauptspiel verwendet sie nicht mehr als Tavernenfiguren.
 
 Details und Messwerte: `artifacts/idle-bastion/tavern-integration-v1/README.md` und `runtime-size-report.json`.
 

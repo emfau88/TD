@@ -1,12 +1,13 @@
+import { t } from './i18n';
 import { ILYRA } from './ilyra';
 import { IlyraView } from './ilyra-view';
 import { ENEMY_SHEETS } from './enemy-art';
 import { JELLY_HEAL } from './enemy-roster';
-import { jellyFrame } from '../../../reference/src/jelly-art';
+import { enemyHealFrame } from './enemy-art';
 import { MARA } from './mara';
 import { CombatEffects } from './combat-effects';
 import { projectileDepth } from './world-depth';
-import { weaponFrame } from './tower-atlas';
+import { weaponFrame, towerSheet } from './tower-atlas';
 import { succubusFrame } from '../../../reference/src/succubus-art';
 import { BOSS } from './boss';
 import { BossCharmView, charmAge } from './boss-visuals';
@@ -94,6 +95,11 @@ export class BattleScene extends Phaser.Scene {
 
   constructor(private readonly readBattle: () => IdleBattle, private readonly hooks: BattleSceneHooks, private readonly pixelDensity = 1) { super('IdleBattle'); }
   preload(): void { preloadArt(this); }
+  refreshLanguage(): void {
+    this.coreLabel?.setText(t('Diesen Kern schützen'));
+    this.wispName?.setText(t('Wisp · +10 % Gold'));
+  }
+
   create(): void {
     prepareArt(this);
     const { width, height } = this.sim.layout.bounds;
@@ -115,9 +121,9 @@ export class BattleScene extends Phaser.Scene {
       fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: '#fff3cf', stroke: '#20392c', strokeThickness: 2,
     }).setOrigin(0.5).setDepth(5001);
     this.learningMark = this.add.graphics().setDepth(4999);
-    this.coreLabel = this.add.text(1100, 205, 'Diesen Kern schützen', { fontFamily: 'Segoe UI', fontSize: '12px', resolution: 2, color: '#fff1b2', stroke: '#22382b', strokeThickness: 3 }).setOrigin(1, 0).setDepth(5002);
+    this.coreLabel = this.add.text(1100, 205, t('Diesen Kern schützen'), { fontFamily: 'Segoe UI', fontSize: '12px', resolution: 2, color: '#fff1b2', stroke: '#22382b', strokeThickness: 3 }).setOrigin(1, 0).setDepth(5002);
     this.wisp = this.add.image(0, 0, KEYS.wisp, 0).setOrigin(0.5, 51 / 64).setScale(0.9);
-    this.wispName = this.add.text(0, 0, 'Wisp · +10 % Gold', { fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: '#ffe0a0', stroke: '#20392c', strokeThickness: 2 }).setOrigin(0.5).setDepth(5001);
+    this.wispName = this.add.text(0, 0, t('Wisp · +10 % Gold'), { fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: '#ffe0a0', stroke: '#20392c', strokeThickness: 2 }).setOrigin(0.5).setDepth(5001);
     this.input.on('pointerdown', this.beginPointer, this);
     this.input.on('pointerup', this.endPointer, this);
     this.input.on('pointerupoutside', this.cancelPointer, this);
@@ -371,7 +377,7 @@ export class BattleScene extends Phaser.Scene {
       let label = this.padLabels.get(tower.padId);
       if (!label) { label = this.add.text(0, 0, '', { fontFamily: 'Segoe UI', fontSize: '11px', fontStyle: 'bold', resolution: 2,
         color: colors.text, stroke: '#233e2d', strokeThickness: 2 }).setOrigin(0.5).setDepth(5000); this.padLabels.set(tower.padId, label); }
-      label.setPosition(tower.x, tower.y + 22).setText(`Lv. ${tower.level}`);
+      label.setPosition(tower.x, tower.y + 22).setText(t("Lv. {0}", tower.level));
     }
   }
   private drawSelection(): void {
@@ -506,14 +512,14 @@ export class BattleScene extends Phaser.Scene {
     for (const enemy of sim.enemies) {
       const view = this.enemyView(enemy);
       const lift = enemy.def.flying ? 7 + Math.sin(elapsed * 5 + enemy.uid) * 1.5 : 0;
-      view.sprite.setPosition(enemy.x, enemy.y - lift).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(enemy.y + 1000);
+      view.sprite.setPosition(enemy.x, enemy.y - lift).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed, enemy.flip, enemy.uid)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(enemy.y + 1000);
       if (enemy.def.id === 'Rosenspiegel') {
         const casting = sim.bossCharm.phase === 'windup' || sim.bossCharm.phase === 'channel';
         if (casting) view.sprite.setFrame(succubusFrame('dance', 'down', charmAge(sim.bossCharm) * 1000)).setFlipX(false);
         this.effects.lineStyle(2, 0xdb80cd, 0.8).strokeEllipse(enemy.x, enemy.y + 3, 34, 13);
       }
       if (enemy.healRemaining > 0) {
-        view.sprite.setFrame(jellyFrame('heal', enemy.direction, (JELLY_HEAL.cast - enemy.healRemaining) * 1000));
+        view.sprite.setFrame(enemyHealFrame(enemy.def.id, enemy.direction, JELLY_HEAL.cast - enemy.healRemaining, enemy.flip));
         const charge = 1 - enemy.healRemaining / JELLY_HEAL.cast;
         this.effects.lineStyle(2, 0x9aefb3, .7).strokeEllipse(enemy.x, enemy.y + 7, 22 + charge * 26, 10 + charge * 10);
       }
@@ -535,7 +541,7 @@ export class BattleScene extends Phaser.Scene {
     for (const [uid, view] of this.shotViews) if (!shots.has(uid)) { view.destroy(); this.shotViews.delete(uid); }
     for (const shot of sim.shots) {
       let view = this.shotViews.get(shot.uid);
-      if (!view) { view = this.add.image(shot.x, shot.y, towerArt(shot.kind, visualStage(shot.level)).projectile, 0).setScale(shot.kind >= 3 ? 0.85 : shot.kind === 2 ? 0.5 : SCALE.projectile); this.shotViews.set(shot.uid, view); }
+      if (!view) { view = this.add.image(shot.x, shot.y, towerArt(shot.kind, visualStage(shot.level)).projectile, 0).setScale(shot.kind === 5 ? 24 / towerSheet(5,visualStage(shot.level),'Projectile').width : shot.kind >= 3 ? 0.85 : shot.kind === 2 ? 0.5 : SCALE.projectile); this.shotViews.set(shot.uid, view); }
       view.setPosition(shot.x, shot.y).setFrame(loopFrame(this.combatEffects.shotAge(shot.uid, elapsed), towerArt(shot.kind, visualStage(shot.level)).shotFrames));
       const target = sim.enemies.find(enemy => enemy.uid === shot.target);
       view.setDepth(projectileDepth(shot,sim.towers.find(tower=>tower.uid===shot.towerUid),target));
@@ -546,7 +552,7 @@ export class BattleScene extends Phaser.Scene {
     this.coreLabel.setVisible(sim.preparing);
     const boostedTower = sim.towers.find(t => sim.isMaraBoosted(t.uid));
     this.buffText.setVisible(!!boostedTower);
-    if (boostedTower) this.buffText.setPosition(boostedTower.x, boostedTower.y - 60).setText(`✦ ${Math.ceil(sim.mara.effectRemaining)} s`);
+    if (boostedTower) this.buffText.setPosition(boostedTower.x, boostedTower.y - 60).setText(t("✦ {0} s", Math.ceil(sim.mara.effectRemaining)));
     const wisp = this.wispPose;
     this.wisp.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y).setFrame(wisp.frame).setFlipX(wisp.flip).setDepth(wisp.y + 1002);
     this.wispName.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y + 13);
@@ -554,7 +560,7 @@ export class BattleScene extends Phaser.Scene {
     const mara = sim.mara, acting = mara.effectRemaining > 0 && sim.isMaraBoosted(mara.effectTowerUid ?? -1);
     this.mara.setPosition(mara.x, mara.y).setFrame(maraFrame(mara.direction, mara.path.length > 0, acting, elapsed)).setDepth(mara.y + 1002);
     this.maraShadow.setPosition(mara.x, mara.y + 1).setDepth(mara.y + 999);
-    this.maraName.setPosition(mara.x, mara.y + 13).setText(acting ? 'Mara · Übertakten' : mara.unreachable ? 'Mara · kein Zugang' : 'Mara');
+    this.maraName.setPosition(mara.x, mara.y + 13).setText(t(acting ? t('Mara · Übertakten') : mara.unreachable ? t('Mara · kein Zugang') : 'Mara'));
     this.bossCharmView.draw(sim, this.portraitCamera);
     this.drawSelection();
   }

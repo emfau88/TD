@@ -1,0 +1,289 @@
+{
+  "baseCommit": "d61c56bdad432602f28c6af19cdc765045abede0",
+  "branch": "codex/test-refresh",
+  "focused": {
+    "tests": 12,
+    "pass": 12,
+    "fail": 0
+  },
+  "fullSuite": {
+    "command": "npm test",
+    "tests": 302,
+    "pass": 264,
+    "fail": 38,
+    "cancelled": 0,
+    "skipped": 0,
+    "durationMs": 238142.0038,
+    "exitCode": 1
+  },
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "failures": [
+    {
+      "title": "Wisp and pads unlock at permanent milestones, with no gift or repeated payment on reload",
+      "file": "experiments/idle-bastion/tests/b08.test.ts",
+      "line": 15,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "schema five midwave migration preserves combat and historical money, without certifying an old recipe",
+      "file": "experiments/idle-bastion/tests/b08.test.ts",
+      "line": 59,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "regular opening still funds workshop and Frost before Wisp; four roles remain saveable into armored waves",
+      "file": "experiments/idle-bastion/tests/b08.test.ts",
+      "line": 89,
+      "error": "'{\"workshop\":58.425000000000004,\"frost\":74.5,\"wisp\":78.92500000000001}'",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "warehouse has real unlock and price gates; old saves retain combat and renew farm evidence",
+      "file": "experiments/idle-bastion/tests/b09.test.ts",
+      "line": 32,
+      "error": "'undefined == true'",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "experiments\\\\idle-bastion\\\\tests\\\\b10.test.ts",
+      "file": "experiments/idle-bastion/tests/b10.test.ts",
+      "line": 1,
+      "error": "'test failed'",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "both new slots have useful level-one frost/damage overlap and accessible companion routes",
+      "file": "experiments/idle-bastion/tests/b11.test.ts",
+      "line": 33,
+      "error": "'cell-30-6: 6 world pixels with the core guard'",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "schema-eight live save migrates closed without changing money, combat or boss progress",
+      "file": "experiments/idle-bastion/tests/b11.test.ts",
+      "line": 69,
+      "error": "\"Cannot read properties of undefined (reading 'snapshot')\"",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "Workshop II charges once after clearing and unlocks continuing level 7+ / three bounded art stages",
+      "file": "experiments/idle-bastion/tests/b12.test.ts",
+      "line": 18,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "schema nine expanded live save migrates without changing combat, purchases or a historical wave-25 record",
+      "file": "experiments/idle-bastion/tests/b12.test.ts",
+      "line": 42,
+      "error": "'undefined == true'",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "second boss pays its own first reward once, survives reload, and never becomes an offline farm",
+      "file": "experiments/idle-bastion/tests/b12.test.ts",
+      "line": 55,
+      "error": "\"Cannot read properties of undefined (reading 'level')\"",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "second boss defeat preserves expansion and requires an explicit new advance",
+      "file": "experiments/idle-bastion/tests/b12.test.ts",
+      "line": 77,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "Workshop II persistent command rolls back on failure and survives a committed reload",
+      "file": "experiments/idle-bastion/tests/b12.test.ts",
+      "line": 86,
+      "error": "'The proposed battle save is invalid.'",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "earned continuation opens Workshop II around minute 13 and keeps an affordable next goal after minute 15",
+      "file": "experiments/idle-bastion/tests/b12.test.ts",
+      "line": 101,
+      "error": "'First victory should land in the 7–10 minute target'",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "workshop II objective and its action select the same useful area-damage investment",
+      "file": "experiments/idle-bastion/tests/balance.test.ts",
+      "line": 48,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "schema 10 preserves money, old tower positions, ongoing combat and cooldown, without inventing farm proof",
+      "file": "experiments/idle-bastion/tests/defense-redesign.test.ts",
+      "line": 47,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "schema 16 veteran preserves all saved fields without a new compulsory lesson",
+      "file": "experiments/idle-bastion/tests/discovery.test.ts",
+      "line": 51,
+      "error": "'undefined == true'",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "dismissed defeat stays dismissed after reload; schema 17 migrates without losing gold",
+      "file": "experiments/idle-bastion/tests/discovery.test.ts",
+      "line": 58,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "solid forest leaves the route, plots, every start pad and its approach accessible",
+      "file": "experiments/idle-bastion/tests/forest-world.test.ts",
+      "line": 7,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "start fixture has unique reservations, correct budget and an in-bounds road ending at the core",
+      "file": "experiments/idle-bastion/tests/layout.test.ts",
+      "line": 11,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "Mara has continuous legal footpaths to all active tower approaches and the workshop",
+      "file": "experiments/idle-bastion/tests/layout.test.ts",
+      "line": 73,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "unopened east cells reject walking and construction; expansion changes bounds but never routes enemies",
+      "file": "experiments/idle-bastion/tests/layout.test.ts",
+      "line": 92,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation",
+      "file": "experiments/idle-bastion/tests/mara.test.ts",
+      "line": 21,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage",
+      "file": "experiments/idle-bastion/tests/mara.test.ts",
+      "line": 40,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "assignment walks at 80px/s on cardinal safe ground, preserves cooldown and gives no bonus before arrival",
+      "file": "experiments/idle-bastion/tests/mara.test.ts",
+      "line": 55,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "retargeting halfway through a segment rejoins a centre and selling the target falls back to the starter without cooldown reset",
+      "file": "experiments/idle-bastion/tests/mara.test.ts",
+      "line": 83,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "blocked targets stay understandable and harmless, and a changed blocked route reroutes around real obstacles",
+      "file": "experiments/idle-bastion/tests/mara.test.ts",
+      "line": 107,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "old rule snapshots migrate once, preserve money and combat payloads and require fresh live farm evidence",
+      "file": "experiments/idle-bastion/tests/mara.test.ts",
+      "line": 164,
+      "error": "'undefined == true'",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads",
+      "file": "experiments/idle-bastion/tests/mara.test.ts",
+      "line": 205,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "legacy migration grants only proven milestone gifts once and preserves all battle data",
+      "file": "experiments/idle-bastion/tests/tavern-social.test.ts",
+      "line": 20,
+      "error": "\"Cannot read properties of undefined (reading 'social')\"",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "old envelopes retain their pending offline entitlement when social claims are migrated",
+      "file": "experiments/idle-bastion/tests/tavern-social.test.ts",
+      "line": 151,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "schema 23 early level-I owners migrate without inventing boss victories or upgrading the building",
+      "file": "experiments/idle-bastion/tests/tavern-social.test.ts",
+      "line": 176,
+      "error": "\"Cannot read properties of undefined (reading 'settlement')\"",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "old schema 18 preserves actors, free plots, coins and progress; invalid new ownership is rejected",
+      "file": "experiments/idle-bastion/tests/tavern.test.ts",
+      "line": 57,
+      "error": "\"Cannot read properties of undefined (reading 'snapshot')\"",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "schema 22 owners become II once; nonowners keep kit, old recruitment, gold and positions survive",
+      "file": "experiments/idle-bastion/tests/tavern.test.ts",
+      "line": 113,
+      "error": "\"Cannot read properties of undefined (reading 'snapshot')\"",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "companion UI explains locked Ilyra without an early recruitment offer",
+      "file": "experiments/idle-bastion/tests/tavern.test.ts",
+      "line": 154,
+      "error": "|-",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "layout-one live save migrates combat intact and reroutes Mara away from a newly reserved pad without resetting cooldown",
+      "file": "experiments/idle-bastion/tests/usability.test.ts",
+      "line": 38,
+      "error": "'false == true'",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "all eleven unlocked slots can hold towers and round-trip without moving the original eight",
+      "file": "experiments/idle-bastion/tests/usability.test.ts",
+      "line": 53,
+      "error": "'undefined == true'",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "schema three preserves Mara and gold while migrating to damaged workshop and fresh live farm evidence",
+      "file": "experiments/idle-bastion/tests/workshop.test.ts",
+      "line": 68,
+      "error": "'undefined == true'",
+      "unchangedFromMain": true
+    },
+    {
+      "title": "tutorial accepts early actions and alternative pads; replay/skip preserve economy and defense",
+      "file": "experiments/idle-bastion/tests/workshop.test.ts",
+      "line": 94,
+      "error": "|-",
+      "unchangedFromMain": true
+    }
+  ]
+}

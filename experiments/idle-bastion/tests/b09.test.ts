@@ -1,3 +1,4 @@
+import { legacyFixtures, restoreHistorical, assertHistoricalFields } from './legacy-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { IDBFactory } from 'fake-indexeddb';
@@ -29,22 +30,20 @@ const basis = certifyFarm(earned)!;
 const HOUR = 3600000, START = 1000;
 assert.ok(basis);
 
-test('warehouse has real unlock and price gates; old saves retain combat and renew farm evidence', () => {
-  const early = new IdleBattle(); early.gold = 650;
-  assert.equal(early.buildWarehouse(), false);
-  early.highestCleared = 8; assert.equal(early.buildWarehouse(), false, 'Wave alone is insufficient');
-  const modern = earned.snapshot(), { warehouseBuilt, warehouseBuiltAt, ...settlement } = modern.settlement;
-  const migrated = IdleBattle.restore({ ...modern, schemaVersion: 6, layoutVersion: 1, rulesVersion: 4, waveRecipeVersion: 4, settlement })!;
-  assert.ok(migrated); assert.deepEqual(migrated.liveClearedWaves, []);
-  assert.deepEqual(migrated.snapshot(), { ...modern, waveRecipeVersion: 4, liveClearedWaves: [], farmWave: 1 });
-  const fingerprint = defenseFingerprint(migrated), wallet = migrated.gold;
-  migrated.gold = 649; assert.equal(migrated.buildWarehouse(), false); migrated.gold = wallet;
-  assert.equal(migrated.buildWarehouse(), true);
-  assert.equal(migrated.gold, wallet - 650); assert.equal(migrated.buildWarehouse(), false);
-  assert.equal(defenseFingerprint(migrated), fingerprint, 'Offline building cannot invalidate battle evidence');
-  assert.deepEqual(IdleBattle.restore(migrated.snapshot())!.snapshot(), migrated.snapshot());
-  const invalid = migrated.snapshot(); invalid.settlement.warehouseBuiltAt = invalid.elapsed + 1;
-  assert.equal(IdleBattle.restore(invalid), undefined);
+test('warehouse has real unlock and price gates; old saves retain combat and renew farm evidence',() => {
+  const early=new IdleBattle();early.gold=650;assert.equal(early.buildWarehouse(),false);
+  early.highestCleared=8;assert.equal(early.buildWarehouse(),false,'wave alone is insufficient');
+  const old=legacyFixtures().critical.warehouse6;
+  const migrated=restoreHistorical(old,{liveClearedWaves:[],farmWave:1});
+  assert.equal(migrated.waveRecipeVersion,4);assert.deepEqual(migrated.liveClearedWaves,[]);
+  const fingerprint=defenseFingerprint(migrated),wallet=migrated.gold;
+  migrated.gold=649;assert.equal(migrated.buildWarehouse(),false);migrated.gold=wallet;
+  assert.equal(migrated.buildWarehouse(),true);assert.equal(migrated.gold,wallet-650);
+  const once=migrated.snapshot();assert.equal(migrated.buildWarehouse(),false);assert.deepEqual(migrated.snapshot(),once);
+  assert.equal(defenseFingerprint(migrated),fingerprint);
+  assert.deepEqual(IdleBattle.restore(once)!.snapshot(),once);
+  const invalid=migrated.snapshot();invalid.settlement.warehouseBuiltAt=invalid.elapsed+1;
+  assert.equal(IdleBattle.restore(invalid),undefined);
 });
 
 test('old 60% / 2h absence stays frozen; warehouse policy begins at the next active boundary', () => {

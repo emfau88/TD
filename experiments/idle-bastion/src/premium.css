@@ -263,7 +263,12 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 .warehouse-stats dd, .return-times dd { margin: 0; text-align: right; color: #f2dfab; }
 .warehouse-preview { padding-top: 10px; border-top: 1px solid #ad895b70; }
 #build-warehouse { width: 100%; }
-.return-gold { display: block; margin: 16px 0 8px; color: #f6cf73; font-size: clamp(26px, 5vw, 36px); }
+.return-gold { display: block; margin: 12px 0 8px; color: #f6cf73; font: 600 clamp(22px, 4vw, 28px)/1.25 'Segoe UI', sans-serif; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.return-amount-details { margin: 0 0 12px; font-size: 12px; }
+.return-amount-details summary { cursor: pointer; color: #d9c793; }
+.return-amount-details p { margin: 6px 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.return-amount-details small { line-height: 1.4; color: #bed4d8; }
+.return-dialog { max-height: calc(100svh - 40px); overflow-y: auto; }
 .return-times { padding: 12px 0; border-block: 1px solid #ad895b70; }
 @media (max-width: 700px) {
   #settlement-catalog .building-card { flex: 0 0 154px; min-width: 154px; }
@@ -432,4 +437,23 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
  .hero-introduction canvas { width:48px; height:60px; }
  #ilyra-panel p { font-size:12px; line-height:1.4; }
  #ilyra-panel .action-stack { gap:5px; }
+}
+
+/* Room for complete tower names and role descriptions in either language.
+   Keep the established horizontal catalog instead of shrinking the pixel font. */
+#tower-catalog .build-card { flex-basis: 196px; }
+.build-card strong { line-height: 1.2; }
+.build-card b { line-height: 1.15; }
+#settlement-catalog .building-card { flex: 0 0 250px; min-width: 250px; }
+#tower-catalog .build-card > span, #settlement-catalog .building-card > span { flex: 1; min-width: 0; }
+#tower-catalog .build-card small, #settlement-catalog .building-card small { white-space: normal; line-height: 1.15; }
+@media (max-width:700px) {
+  #tower-catalog .build-card { flex-basis: 148px; }
+  #settlement-catalog .building-card { flex-basis: 154px; min-width: 154px; }
+}
+
+@media (max-height:500px) and (orientation:landscape) {
+  #settlement-catalog .building-card img { width: 56px; height: 48px; }
+  #tower-catalog .build-card canvas { width: 36px; height: 45px; flex-basis: 36px; }
+  .build-card small { display: none; }
 }

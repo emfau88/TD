@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { IDBFactory } from 'fake-indexeddb';
-import { IdleBattle } from '../src/battle';
+import { legacyFixtures, assertHistoricalFields } from './legacy-fixtures';
+import { IdleBattle, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION } from '../src/battle';
 import { beginAbsence, claimOffline, createOfflineState, reserveOffline } from '../src/offline';
 import { BattleSession } from '../src/battle-session';
 import {
@@ -44,12 +45,6 @@ function fixture(): IdleBattle {
   battle.build('tower-02');
   battle.update(0.4);
   return battle;
-}
-function preMaraSnapshot(battle: IdleBattle, schemaVersion: 1 | 2): Record<string, unknown> {
-  return {
-    ...Object.fromEntries(Object.entries(battle.snapshot()).filter(([key]) => key !== 'mara')),
-    schemaVersion, layoutVersion: 1, rulesVersion: 1,
-  };
 }
 
 test('isolated native IndexedDB starts empty and restores a committed battle and explicit pause', async () => {
@@ -161,7 +156,7 @@ test('a future battle rules version inside schema one is protected as unsupporte
   const store = await openBattleStore(factory, DB_NAME);
   const first = await store.save(fixture().snapshot(), false, 0);
   await store.save(first.battle, false, 1);
-  const future = { ...first, revision: 7, battle: { ...first.battle, rulesVersion: 7 } };
+  const future = { ...first, revision: 7, battle: { ...first.battle, rulesVersion: BATTLE_RULES_VERSION + 1 } };
   await rawWrite(factory, 'default', future);
   assert.equal((await store.load()).kind, 'unsupported');
   await assert.rejects(store.recoverBackup(), SaveUnsupportedError);
@@ -415,7 +410,7 @@ test('malformed or future writer records are protected instead of being overwrit
 
 test('envelope one migrates read-only without production evidence and retains CAS revision protection', async () => {
   const factory = new IDBFactory();
-  const snapshot = preMaraSnapshot(fixture(), 1);
+  const snapshot = legacyFixtures().store.schema1;
   const legacy = { schemaVersion: 1, revision: 17, writtenAt: 10_000, paused: true, battle: snapshot };
   await rawWrite(factory, 'default', legacy);
   const store = await openBattleStore(factory, DB_NAME, () => 70_000);
@@ -424,7 +419,9 @@ test('envelope one migrates read-only without production evidence and retains CA
   if (result.kind !== 'valid') assert.fail('Known schema one must migrate.');
   assert.equal(result.save.schemaVersion, 2);
   assert.equal(result.save.revision, 17);
-  assert.equal(result.save.battle.schemaVersion, 10);
+  assert.equal(result.save.battle.schemaVersion, BATTLE_SCHEMA_VERSION);
+  assertHistoricalFields(result.save.battle,{...snapshot,schemaVersion:BATTLE_SCHEMA_VERSION,
+    rulesVersion:BATTLE_RULES_VERSION,layoutVersion:3});
   assert.deepEqual(result.save.battle.liveClearedWaves, []);
   assert.equal(result.save.offline.baseline.certificate, null);
   assert.equal(result.save.offline.baseline.paused, true);
@@ -484,8 +481,8 @@ test('a future offline schema is protected even with a valid predecessor', async
 
 test('battle schema two migrates without rewriting the historical absence proof or pending receipt', async () => {
   const factory = new IDBFactory();
-  const battle = fixture();
-  const oldBattle = preMaraSnapshot(battle, 2);
+  const oldBattle = legacyFixtures().store.schema2;
+  const battle = oldBattle;
   const basis = { wave: 1, fingerprint: 'pre-mara-rule-one-defense', rulesVersion: 1, rewardGold: 200, durationMs: 120_000 };
   const offline = reserveOffline(beginAbsence(createOfflineState(1000), 1000, basis, false), 31_000);
   const legacy = { schemaVersion: 2, revision: 12, writtenAt: 31_000, paused: false, battle: oldBattle, offline };
@@ -494,8 +491,10 @@ test('battle schema two migrates without rewriting the historical absence proof 
   const loaded = await store.load();
   assert.equal(loaded.kind, 'valid');
   if (loaded.kind !== 'valid') assert.fail('Known schema two must migrate.');
-  assert.equal(loaded.save.battle.schemaVersion, 10);
-  assert.equal(loaded.save.battle.rulesVersion, 6);
+  assert.equal(loaded.save.battle.schemaVersion, BATTLE_SCHEMA_VERSION);
+  assert.equal(loaded.save.battle.rulesVersion, BATTLE_RULES_VERSION);
+  assertHistoricalFields(loaded.save.battle,{...oldBattle,schemaVersion:BATTLE_SCHEMA_VERSION,
+    rulesVersion:BATTLE_RULES_VERSION,layoutVersion:3});
   assert.deepEqual(loaded.save.battle.liveClearedWaves, []);
   assert.equal(loaded.save.battle.gold, battle.gold);
   assert.equal(loaded.save.battle.elapsed, battle.elapsed);
@@ -510,14 +509,16 @@ test('battle schema two migrates without rewriting the historical absence proof 
 test('session return across the Mara rule update pays the historical rate once and starts with no invented current proof', async () => {
   const factory = new IDBFactory();
   let now = 61_000;
-  const battle = fixture();
-  const oldBattle = preMaraSnapshot(battle, 2);
+  const oldBattle = legacyFixtures().store.schema2;
+  const battle = oldBattle;
   const basis = { wave: 1, fingerprint: 'pre-mara-rule-one-defense', rulesVersion: 1, rewardGold: 200, durationMs: 120_000 };
   const offline = reserveOffline(beginAbsence(createOfflineState(1000), 1000, basis, false), 31_000);
   await rawWrite(factory, 'default', { schemaVersion: 2, revision: 12, writtenAt: 31_000, paused: false, battle: oldBattle, offline });
   const store = await openBattleStore(factory, DB_NAME, () => now);
   const returned = await BattleSession.open(store, { now: () => now, ownerId: 'rules-update-tab', locks: null });
-  assert.equal(returned.battle.snapshot().schemaVersion, 10);
+  assert.equal(returned.battle.snapshot().schemaVersion, BATTLE_SCHEMA_VERSION);
+  assert.equal(returned.battle.snapshot().rulesVersion, BATTLE_RULES_VERSION);
+  assert.equal(returned.battle.gold,oldBattle.gold);
   assert.equal(returned.certificate, null, 'The migrated defense needs new live evidence under current rules.');
   assert.equal(returned.offline.window?.certificate?.rulesVersion, 1);
   assert.equal(returned.offline.window?.certificate?.fingerprint, basis.fingerprint);
@@ -537,7 +538,7 @@ test('session return across the Mara rule update pays the historical rate once a
   await reloaded.close();
 });
 
-test('future battle schema eleven and future historical proof rules seven remain protected', async () => {
+test('future battle schema and historical proof versions remain protected', async () => {
   for (const kind of ['battle-schema', 'offline-proof'] as const) {
     const factory = new IDBFactory();
     const store = await openBattleStore(factory, DB_NAME);
@@ -545,12 +546,12 @@ test('future battle schema eleven and future historical proof rules seven remain
     await store.save(first.battle, false, 1);
     const future = structuredClone(first);
     if (kind === 'battle-schema') {
-      (future.battle as { schemaVersion: number }).schemaVersion = 11;
+      (future.battle as { schemaVersion: number }).schemaVersion = BATTLE_SCHEMA_VERSION + 1;
     } else {
       const basis = { wave: 1, fingerprint: 'future-proof', rulesVersion: 2, rewardGold: 200, durationMs: 120_000 };
       future.offline = beginAbsence(createOfflineState(1000), 1000, basis, false);
-      future.offline.baseline.certificate!.rulesVersion = 7;
-      future.offline.window!.certificate!.rulesVersion = 7;
+      future.offline.baseline.certificate!.rulesVersion = BATTLE_RULES_VERSION + 1;
+      future.offline.window!.certificate!.rulesVersion = BATTLE_RULES_VERSION + 1;
     }
     await rawWrite(factory, 'default', future);
     assert.equal((await store.load()).kind, 'unsupported');

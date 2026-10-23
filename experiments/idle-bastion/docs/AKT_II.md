@@ -4,13 +4,24 @@ Stand: 20.10.2026. Ergänzung zum ursprünglichen Akt-I-Auftrag. B15a, F01, B17a
 
 **Planergänzung vom 21.10.2026:** [Taverneninteraktionen](TAVERNE_INTERAKTION.md) beschreiben die geplante frühere Taverne I nach Welle 12, den Ausbau auf II/Ilyra nach Boss 25 und das optionale soziale System. T02 setzt bereits den kostenlosen Bau nach Welle 12 und Ausbau II nach Boss 25 um; alte bezahlte Tavernen werden II. Die bisherigen Bauangaben unten sind historische B15-Entscheidungen. Das soziale System folgt separat. Checklisten/Freigaben ausschließlich in der Roadmap (T01–T07).
 
+## Konkretisierung B16 vom 23.10.2026
+
+Eigener Branch ab main, zunächst ohne Veröffentlichung: Turm 05 erhält 26 Schaden,
+1,05 s Angriffsabstand, 144 Reichweite und getrennt 170 Gold Baupreis. Forschung
+kostet einmalig 900 Gold nach gemeisterter 28, Frostfassung und Ilyras abgeschlossener
+Einführung. Drei verschiedene Ziele, 80 Sprungreichweite und Schaden 100/65/42,25 %;
+kein Flächentreffer oder Kontrollbonus. Bestehende Ausbaukurve ohne neue Levelgrenze.
+Frost-/Sturmlicht-Icons liegen in der Werkstatt; Besitz und Nutzen sind antippbar.
+Wirtschaft 25–70 wird nur untersucht. B20, Ostfront und allgemeine Upgradeoptik
+bleiben außerhalb dieses Auftrags. Status und Freigabe ausschließlich in der Roadmap.
+
 ## Bestand statt unnötiger Neuproduktion
 
 | Quelle | Tatsächlich vorhanden | Konsequenz |
 | --- | --- | --- |
 | [Klassische Turmdaten](../../../reference/src/data.ts), [Kampflogik](../../../reference/src/simulation.ts) | Sturmlicht (05, Kette), Schnellfeuer (06), Glutwerfer (07, Brand), Sonnenobelisk (08, Fläche/Durchschlag) | Rollen und Algorithmen als Vorlage; alte Preise/Schadenswerte nicht ungeprüft nach Idle übernehmen |
 | [Assetmanifest](../../../public/assets/manifest.json) und `public/assets/Tower 05…08*.png` | Originalbasen, Ausbaustufen sowie zugehörige Projektile/Treffer; teilweise gemeinsam genutzte `Level X`-Grafiken | Zuerst Originalframes vermessen; kein Imagegen für bereits vorhandene Türme |
-| [Idle-Turmatlas](../src/tower-atlas.ts), [Idle-Grafiken](../src/art.ts) | Spielbare Turmtypen 1–4; Turm-08-Grafiken dienen bereits dem Kern | Neue IDs/Animationen müssen wirklich integriert werden; Sonnenobelisk später deutlich vom Kern unterscheiden |
+| [Idle-Turmatlas](../src/tower-atlas.ts), [Idle-Grafiken](../src/art.ts) | Spielbare Turmtypen 1–5 im B16-Branch; Turm-08-Grafiken dienen bereits dem Kern | Neue IDs/Animationen müssen wirklich integriert werden; Sonnenobelisk später deutlich vom Kern unterscheiden |
 | [Ältere Figuren](../../../src/companions.ts), [ältere Simulation](../../../src/simulation.ts) | Ilyra: Sternensalve mit stärkerem Fliegerschaden; Runa: Nebelschleier/Verlangsamung | Aus dem älteren Kampagnenstand übernehmen, nicht fälschlich als fertige Idle-Funktion zählen |
 | `public/assets/Hero Ilyra.png`, `public/assets/Hero Runa.png` | Rohbilder mit mehreren Richtungen/Posen | Ausschnitt, Fußpunkt, Skalierung und tatsächlich brauchbare Animationsphasen prüfen; noch kein fertiger Mara-kompatibler Atlas |
 | [Idle-Kampf](../src/battle.ts), [Karte](../src/layout.ts) | Ein Kampfweg; Steinschleuder trifft derzeit auch Flieger; freie Wegstreifen bis drei Zellen Tiefe | Zweite Route braucht mehr als einen rechten Spawn. Bestehende Turmleistungen und freie Positionen erhalten |

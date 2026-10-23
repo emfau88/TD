@@ -1,3 +1,4 @@
+import { legacyFixtures, restoreHistorical, assertHistoricalFields } from './legacy-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { enemyFlip } from '../src/art';
@@ -35,19 +36,15 @@ test('each added Frost position shares at least 60 road pixels with two existing
   }
 });
 
-test('layout-one live save migrates combat intact and reroutes Mara away from a newly reserved pad without resetting cooldown', () => {
-  const oldLayout=createIdleLayout({version:1}), b=new IdleBattle(), tower=b.build('tower-03')!;
-  b.update(4); const snapshot=b.snapshot();
-  snapshot.mara={...snapshot.mara,...cellCenter(oldLayout,{x:11,y:4}),cooldownRemaining:7,effectRemaining:0};
-  assignMaraTarget(snapshot.mara,tower,oldLayout,getForestBlockedCells(oldLayout));
-  assert.ok(validMara(snapshot.mara,b.towers,oldLayout,getForestBlockedCells(oldLayout)));
-  const old={...snapshot,schemaVersion:8,layoutVersion:1,rulesVersion:5,waveRecipeVersion:5}, restored=IdleBattle.restore(old)!;
-  assert.ok(restored);const modern=restored.snapshot();
-  assert.equal(modern.layoutVersion,2);assert.equal(modern.mara.cooldownRemaining,7);
+test('layout-one live save migrates combat intact and reroutes Mara away from a newly reserved pad without resetting cooldown',() => {
+  const fixtures=legacyFixtures().critical,old=fixtures.layoutOne8;
+  const expectedMara={...fixtures.layoutOne8ExpectedMara,autoCast:true,effectTowerUid:null};
+  const restored=restoreHistorical(old,{mara:expectedMara,liveClearedWaves:[],farmWave:1});
+  const modern=restored.snapshot();assert.equal(modern.layoutVersion,3);
+  assert.equal(modern.mara.cooldownRemaining,7);
   assert.ok(validMara(modern.mara,restored.towers,restored.layout,getForestBlockedCells(restored.layout)));
-  assert.notDeepEqual(modern.mara.path,snapshot.mara.path);
-  assert.deepEqual({...modern,mara:snapshot.mara,schemaVersion:8,layoutVersion:1,rulesVersion:5,waveRecipeVersion:5},old);
-  assert.deepEqual(IdleBattle.restore(modern)!.snapshot(),modern);
+  assert.notDeepEqual(modern.mara.path,old.mara.path);
+  assert.deepEqual(modern.mara,expectedMara);
 });
 
 test('all eleven unlocked slots can hold towers and round-trip without moving the original eight', () => {

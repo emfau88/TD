@@ -1,3 +1,4 @@
+import { t } from './i18n';
 import type Phaser from 'phaser';
 import { ILYRA, ilyraFrame } from './ilyra';
 import { KEYS } from './art';
@@ -25,7 +26,7 @@ export class IlyraView {
   for(const g of [this.ground,this.cast,this.impact,...this.stars])g.clear();if(!s)return;
   this.sprite.setPosition(s.x,s.y).setFrame(ilyraFrame(s,b.elapsed)).setDepth(s.y+1002);
   this.shadow.setPosition(s.x,s.y+1).setDepth(s.y+999);
-  this.name.setPosition(s.x,s.y+13).setText(s.volley?'Ilyra · Sternensalve':s.path.length?'Ilyra · unterwegs':'Ilyra');
+  this.name.setPosition(s.x,s.y+13).setText(t(s.volley?t('Ilyra · Sternensalve'):s.path.length?t('Ilyra · unterwegs'):'Ilyra'));
   const v=s.volley;if(!v)return;
   const fade=v.hit?Math.max(0,1-(v.age-ILYRA.impact)/(ILYRA.duration-ILYRA.impact)):1;
   this.ground.fillStyle(0x7ddcff,.09*fade).fillCircle(v.x,v.y,ILYRA.radius);

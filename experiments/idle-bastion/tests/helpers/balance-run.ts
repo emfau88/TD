@@ -21,7 +21,7 @@ export function nextPurchase(b: IdleBattle, approach: Approach = 'guided'): Purc
   if(!b.towers.some(t=>t.def.id===4))return build('cell-14-7',4);
   const preBoss=[...b.towers].sort((a,z)=>z.def.id-a.def.id).find(t=>t.level<(t.def.id===2?2:4));
   if(preBoss)return up(preBoss.uid);
-  if(b.bossVictories&&!b.clearing.unlocked)return b.gold>=900?{type:'clearing'}:undefined;
+  if(b.layout.version!==5&&b.bossVictories&&!b.clearing.unlocked)return b.gold>=900?{type:'clearing'}:undefined;
   if(b.bossVictories&&!b.settlement.workshopUpgraded)return b.gold>=1200?{type:'workshop2'}:undefined;
   const main=b.towers.find(t=>t.def.id===3);
   if(b.settlement.workshopUpgraded && main && main.level<7)return up(main.uid);

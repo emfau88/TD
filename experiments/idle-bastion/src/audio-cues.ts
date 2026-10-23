@@ -44,7 +44,7 @@ export function battleCues(events: readonly BattleEvent[]): Cue[] {
     } else if (e.type === 'hit' && e.shot && !hits.has(e.shot.uid)) {
       hits.add(e.shot.uid); // A stone's area damage makes many hit events, but one impact sound.
       // Frost uses one restrained launch sound, without a second impact layer.
-      if (e.shot.kind !== 2) cues.push(({1:'hit1',3:'stone',4:'hit2'} as const)[e.shot.kind]);
+      if (e.shot.kind !== 2 && e.shot.kind !== 5) cues.push(({1:'hit1',3:'stone',4:'hit2'} as const)[e.shot.kind]);
     }
   }
   return cues;

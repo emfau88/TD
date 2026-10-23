@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: paid defenses at 40/50/60/70 improve or retain income, with at most four genuine two-clear probes and no live mutation
+ok 1 - paid defenses at 40/50/60/70 improve or retain income, with at most four genuine two-clear probes and no live mutation
+  ---
+  duration_ms: 2389.3809
+  type: 'test'
+  ...
+# Subtest: sparse history picks an actually cleared midpoint, breaks ties downwards and never guesses missing waves
+ok 2 - sparse history picks an actually cleared midpoint, breaks ties downwards and never guesses missing waves
+  ---
+  duration_ms: 161.4764
+  type: 'test'
+  ...
+# Subtest: a leaky or economically worse midpoint preserves the exact valid proof without re-proving it
+ok 3 - a leaky or economically worse midpoint preserves the exact valid proof without re-proving it
+  ---
+  duration_ms: 91.9701
+  type: 'test'
+  ...
+# Subtest: upgrades or harmful sales require fresh proof, while an unsafe former choice cannot survive through its old rate
+ok 4 - upgrades or harmful sales require fresh proof, while an unsafe former choice cannot survive through its old rate
+  ---
+  duration_ms: 101.3232
+  type: 'test'
+  ...
+# Subtest: entry pruning never creates evidence: first clear still needs two cycles, and skipped entry cannot beat the proven rate
+ok 5 - entry pruning never creates evidence: first clear still needs two cycles, and skipped entry cannot beat the proven rate
+  ---
+  duration_ms: 191.4522
+  type: 'test'
+  ...
+# Subtest: native reload preserves the pending rules-14 receipt, pays it once and uses better proof only for future absence
+ok 6 - native reload preserves the pending rules-14 receipt, pays it once and uses better proof only for future absence
+  ---
+  duration_ms: 258.0341
+  type: 'test'
+  ...
+# Subtest: native reload preserves the pending rules-15 receipt, pays it once and uses better proof only for future absence
+ok 7 - native reload preserves the pending rules-15 receipt, pays it once and uses better proof only for future absence
+  ---
+  duration_ms: 184.4921
+  type: 'test'
+  ...
+# Subtest: current and historical in-flight combat resumes identically after a read-only farm search
+ok 8 - current and historical in-flight combat resumes identically after a read-only farm search
+  ---
+  duration_ms: 289.9798
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4235.4662

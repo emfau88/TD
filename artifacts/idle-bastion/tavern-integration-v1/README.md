@@ -1,6 +1,6 @@
 # Neue Tavernenfiguren im echten Spielrahmen
 
-Lokale Abnahme mit derselben `TavernUI`, deren CSS und bestehenden Herz-/Aktionsregeln. Eigener temporärer `BattleSession`, ohne persistierenden Store und ohne Zugriff auf bestehende Spielstände. Die neue Darstellung wird über eine optionale Präsentationsschnittstelle eingesetzt; normaler Spieleinstieg und alte Darstellung sind erhalten. Auftrag und Abnahme stehen ausschließlich in der zentralen Roadmap.
+Lokale Abnahme mit derselben `TavernUI`, deren CSS und bestehenden Herz-/Aktionsregeln. Eigener temporärer `BattleSession`, ohne persistierenden Store und ohne Zugriff auf bestehende Spielstände. Nach ausdrücklicher Freigabe vom 24.10.2026 ist die neue Präsentation zusätzlich im normalen `main.ts` angebunden; alte Darstellung und Originaldateien sind erhalten, im Hauptspiel aber deaktiviert. Auftrag und Abnahme stehen ausschließlich in der zentralen Roadmap.
 
 ## Öffnen
 
@@ -62,4 +62,10 @@ Berührungsherzen: Schriftgröße 18 → 54 px, klickbare Fläche 44 → 64 px; 
 - Browser: beide Figuren, Kopf-/Berührungsreaktion, laufende Ilyra-Hüftpose und Rückkehr zur Idle, Desktop sowie 390 × 844. Kompakte Fassung im Spielmaßstab betrachtet. Keine manuelle Einzelbildabnahme aller Frames behauptet.
 - Screenshots, große Codecproben, temporärer Build und Hashdetails bleiben unter ignoriertem `qa/`. Keine zusätzlichen PNG-Sequenzen versioniert.
 
-Der normale Spieleinstieg wird vor weiterer Freigabe nicht automatisch umgestellt. Kein Merge nach main. Vor Übernahme müssen die UI-Änderungen mit dem inzwischen fortgeschrittenen Hauptstand und dessen englischen Texten zusammengeführt und die Darstellung freigegeben werden.
+### Prüfung der beauftragten Spielintegration
+
+Mit Hauptstand `5823a99` zusammengeführt: neue optionale Darstellung in `main.ts` aktiviert, aktuelle englische/deutsche Oberfläche erhalten, neue Gestenlabels und Antworten übersetzt. Gegenüber diesem Hauptstand keine Änderung an Kampf, Wellen, Freischaltung, Zuneigungsregeln oder Saveformat. Alte Tavernen-Assets und Renderer erhalten.
+
+`npm run build` erfolgreich, einschließlich Pages-Packung. 35 gezielte Tests bestanden: Tavernen-Transaktionen, Mara-Inhalte, Ilyra, Save-Store und Sprache. Kein vollständiger neuer Test-Suite-Lauf; die im Hauptstand dokumentierten älteren Restfehler werden nicht als behoben behauptet. Produktions-JavaScript enthält keine Verweise auf die lokalen Qualität-90-Kopien oder Original-Vergleichsordner.
+
+Im tatsächlichen Spieleinstieg über vorhandene UI-Testvorbereitung (`tests/browser/tavern-session.html`) eigenen `probe`-Spielstand angelegt, Kampf pausiert, Taverne über Siedlungsmenü geöffnet: neue Ilyra/Kopfreaktion in Englisch und Mara/Berührungsreaktion in Deutsch sichtbar, vergrößerte Herzen, Hauptspiel-Hintergrund, Desktop und Hochkant. Vorhandene Nutzerpartie nicht geöffnet/verändert. Nachweise `qa/main-*-q30.png`, `qa/integration-tests.tap`, `qa/integration-build.log`. Veröffentlichung erst nach Abschluss des beauftragten Merges; Nachweis in der Roadmap.

@@ -1,0 +1,155 @@
+TAP version 13
+# Subtest: Workshop II charges once after clearing and unlocks continuing level 7+ / three bounded art stages
+not ok 1 - Workshop II charges once after clearing and unlocks continuing level 7+ / three bounded art stages
+  ---
+  duration_ms: 114.1443
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\wave-rework\\experiments\\idle-bastion\\tests\\b12.test.ts:1:795'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\wave-rework\experiments\idle-bastion\tests\b12.test.ts:23:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: late waves retain bounded populations and level 20 still offers a real next upgrade
+ok 2 - late waves retain bounded populations and level 20 still offers a real next upgrade
+  ---
+  duration_ms: 216.487
+  type: 'test'
+  ...
+# Subtest: a dense Frost / damage combination builds, charges once and survives exact continuation
+ok 3 - a dense Frost / damage combination builds, charges once and survives exact continuation
+  ---
+  duration_ms: 166.5443
+  type: 'test'
+  ...
+# Subtest: schema 10 preserves money, old tower positions, ongoing combat and cooldown, without inventing farm proof
+not ok 4 - schema 10 preserves money, old tower positions, ongoing combat and cooldown, without inventing farm proof
+  ---
+  duration_ms: 68.0434
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\wave-rework\\experiments\\idle-bastion\\tests\\defense-redesign.test.ts:1:2268'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+
+      [
+        {
+          defId: 'Leafbug',
+          direction: 'side',
+          distance: 74.25,
+          flip: false,
+    +     healCooldown: 0,
+    +     healLockout: 0,
+    +     healRemaining: 0,
+          hp: 24,
+          maxHp: 24,
+          segment: 0,
+          slowRemaining: 0,
+          speed: 45,
+    ...
+          flip: false,
+    +     healCooldown: 0,
+    +     healLockout: 0,
+    +     healRemaining: 0,
+          hp: 24,
+          maxHp: 24,
+          segment: 0,
+          slowRemaining: 0,
+          speed: 45,
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0:
+      uid: 3
+      x: 94.25
+      y: 220
+      hp: 24
+      maxHp: 24
+      distance: 74.25
+      total: 1680
+      segment: 0
+      speed: 45
+      slowRemaining: 0
+      direction: 'side'
+      flip: false
+      defId: 'Leafbug'
+    1:
+      uid: 4
+      x: 40.25
+      y: 220
+      hp: 24
+      maxHp: 24
+      distance: 20.25
+      total: 1680
+      segment: 0
+      speed: 45
+      slowRemaining: 0
+      direction: 'side'
+      flip: false
+      defId: 'Leafbug'
+  actual:
+    0:
+      uid: 3
+      x: 94.25
+      y: 220
+      hp: 24
+      maxHp: 24
+      distance: 74.25
+      total: 1680
+      segment: 0
+      speed: 45
+      slowRemaining: 0
+      direction: 'side'
+      flip: false
+      healCooldown: 0
+      healRemaining: 0
+      healLockout: 0
+      defId: 'Leafbug'
+    1:
+      uid: 4
+      x: 40.25
+      y: 220
+      hp: 24
+      maxHp: 24
+      distance: 20.25
+      total: 1680
+      segment: 0
+      speed: 45
+      slowRemaining: 0
+      direction: 'side'
+      flip: false
+      healCooldown: 0
+      healRemaining: 0
+      healLockout: 0
+      defId: 'Leafbug'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\wave-rework\experiments\idle-bastion\tests\defense-redesign.test.ts:52:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 2
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1525.3331

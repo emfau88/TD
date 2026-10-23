@@ -1,3 +1,4 @@
+import { t } from './i18n';
 /** Selective reuse of the accepted woodland's original ground/shore montage.
  * All decoration comes from the same pure world used by companion navigation.
  */
@@ -129,13 +130,13 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   const tavernBuilding = tavern ? track(scene.add.image(tavernX, tavernY, KEYS.tavern)
     .setOrigin(0.5, 112/128).setDepth(tavernY + 1000)) : undefined;
   const tavernDust = tavern ? track(scene.add.graphics().setDepth(tavernY + 1002)) : undefined;
-  const buildingLabel = (x: number, y: number, name: string) => track(scene.add.text(x, y + 11, name, {
+  const buildingLabel = (x: number, y: number, name: string) => track(scene.add.text(x, y + 11, t(name), {
     fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2,
     color: '#fff0cb', stroke: '#27231d', strokeThickness: 3,
   }).setOrigin(0.5).setDepth(5000).setVisible(false));
-  const workshopLabel = buildingLabel(workshopX, workshopY, 'Werkstatt I');
-  const warehouseLabel = buildingLabel(warehouseX, warehouseY, 'Lager I');
-  const tavernLabel = tavern ? buildingLabel(tavernX, tavernY, 'Taverne') : undefined;
+  const workshopLabel = buildingLabel(workshopX, workshopY, t('Werkstatt I'));
+  const warehouseLabel = buildingLabel(warehouseX, warehouseY, t('Lager I'));
+  const tavernLabel = tavern ? buildingLabel(tavernX, tavernY, t('Taverne')) : undefined;
   const goal = cellCenter(layout, layout.core);
   track(scene.add.ellipse(goal.x, goal.y + 5, 37, 16, 0xffd79b, 0.13).setDepth(900));
   track(scene.add.image(goal.x, goal.y + 3, KEYS.core, 2).setScale(0.65).setOrigin(0.5, 0.78).setDepth(goal.y + 1000));
@@ -148,7 +149,8 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
     update(elapsed, built, builtAt, warehouseBuilt, warehouseBuiltAt, _warehouseUnlocked, workshopUpgraded = false, upgradedAt = null, tavernBuilt = false, tavernBuiltAt = null, tavernLevel = 1) {
       const workshopTexture = workshopUpgraded ? KEYS.workshopUpgraded : KEYS.workshop;
       if (building.texture.key !== workshopTexture) building.setTexture(workshopTexture);
-      workshopLabel.setText(workshopUpgraded ? 'Werkstatt II' : 'Werkstatt I');
+      warehouseLabel.setText(t('Lager I'));
+      workshopLabel.setText(t(workshopUpgraded ? t('Werkstatt II') : t('Werkstatt I')));
       pond?.setFrame(loopFrame(elapsed, 10)); coreWeapon.setFrame(loopFrame(elapsed, 10));
       building.setVisible(built);
       warehouseBuilding.setVisible(warehouseBuilt);
@@ -184,7 +186,7 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
       // Names appear after construction; no permanent panels or empty-site labels.
       workshopLabel.setVisible(built && workshopAge > 1.6);
       warehouseLabel.setVisible(warehouseBuilt && warehouseAge > 1.6);
-      tavernLabel?.setText(`Taverne ${tavernLevel === 2 ? 'II' : 'I'}`).setVisible(tavernBuilt && tavernAge > 1.6);
+      tavernLabel?.setText(t("Taverne {0}", tavernLevel === 2 ? 'II' : 'I')).setVisible(tavernBuilt && tavernAge > 1.6);
     },
     destroy() { for (const object of objects) object.destroy(); for (const key of textureKeys) scene.textures.remove(key); },
   };

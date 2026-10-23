@@ -1,11 +1,12 @@
-import { BALANCE } from './balance';
+import { BALANCE, battleReward } from './balance';
 /** Conservative, bounded, Phaser-free proofs. A probe never mutates the live
  * model, issues its rewards or consumes its renderer/tutorial event stream.
  */
 import { LAYOUT_VERSION } from './layout';
+import { clearReward } from './wave-recipes';
 import { createProgress } from './progress';
 import { getForestBlockedCells } from './forest-world';
-import { BASE, BATTLE_RULES_VERSION, IdleBattle, isNormalFarmWave, stats, towerDefinition } from './battle';
+import { BASE, BATTLE_RULES_VERSION, IdleBattle, isNormalFarmWave, stats, towerDefinition, waveCount, waveEnemy } from './battle';
 
 export interface FarmCertificate {
   wave: number;
@@ -24,6 +25,13 @@ const STEP_MS = BASE.stepSeconds * 1000;
 export const farmRewardGold = (certificate: FarmCertificate): number => certificate.rewardGold + (certificate.rewardRemainderUnits ?? 0) / 1000;
 export const farmRewardUnits = (certificate: FarmCertificate): bigint => BigInt(certificate.rewardGold) * 1000n + BigInt(certificate.rewardRemainderUnits ?? 0);
 const MAX_PROBE_REWARD = 2.2 * BALANCE.maxRewardFactor * (BASE.waves.maxCount * Math.max(...Object.values(BASE.enemies).map(def => def.gold)) + BASE.waves.maxReward);
+// A generous upper bound for two entry clears: every reward including Wisp's
+// 10%, rounded upwards, with zero combat time and only the mandatory pauses.
+// This can discard an economically dominated fallback, never certify a wave.
+const MAX_ENTRY_REWARD = Math.ceil(2.2 * (
+  battleReward(clearReward(1, BATTLE_RULES_VERSION), 1, BATTLE_RULES_VERSION)
+  + Array.from({ length: waveCount(1) }, (_, index) => battleReward(waveEnemy(1, index).gold, 1, BATTLE_RULES_VERSION))
+    .reduce((sum, gold) => sum + gold, 0)));
 
 /** Ignores transient HP, cooldowns, currency, IDs and kill statistics. Every
  * economically relevant placement/level/rule/layout change invalidates a proof.
@@ -31,7 +39,7 @@ const MAX_PROBE_REWARD = 2.2 * BALANCE.maxRewardFactor * (BASE.waves.maxCount * 
 export function defenseFingerprint(battle: IdleBattle): string {
   return JSON.stringify({
     rulesVersion: BATTLE_RULES_VERSION, layoutVersion: battle.layout.version, layout: { columns: battle.layout.bounds.columns, plots: battle.plots },
-    blocked: getForestBlockedCells(battle.layout), maraTarget: battle.mara.targetTowerUid, settlement: { workshopBuilt: battle.settlement.workshopBuilt, frostResearched: battle.settlement.frostResearched, builtAt: battle.settlement.builtAt }, wisp: battle.wispUnlocked,
+    blocked: getForestBlockedCells(battle.layout), maraTarget: battle.mara.targetTowerUid, settlement: { workshopBuilt: battle.settlement.workshopBuilt, frostResearched: battle.settlement.frostResearched, stormResearched: battle.settlement.stormResearched, builtAt: battle.settlement.builtAt }, wisp: battle.wispUnlocked,
     towers: battle.towers.map(tower => [tower.padId, tower.def.id, tower.level, tower.protected] as const)
       .sort((left, right) => left[0].localeCompare(right[0])),
   });
@@ -42,9 +50,20 @@ function candidateWaves(battle: IdleBattle, previous?: FarmCertificate): number[
     .sort((a, b) => b - a);
   // A changed fingerprint invalidates the old proof, not the right to test its
   // previously safe wave again. Never reuse its old rate without two new clears.
-  const preferred = previous?.wave ?? completed[1];
-  return [...new Set([completed[0], preferred, completed[1], completed.includes(1) ? 1 : undefined])]
-    .filter((wave): wave is number => wave !== undefined).slice(0, MAX_FARM_CANDIDATES);
+  const preferred = previous && previous.wave > 1 && completed.includes(previous.wave) ? previous.wave
+    : battle.farmWave > 1 && completed.includes(battle.farmWave) ? battle.farmWave : undefined;
+  // Spend one slot between the old safe choice and the frontier, rather than
+  // almost exclusively trying adjacent late clears. Only actual live clears
+  // qualify; prefer the lower wave when two are equally close to the midpoint.
+  const target = preferred === undefined ? undefined : (preferred + completed[0]) / 2;
+  const middle = target === undefined ? undefined : completed.filter(wave => wave > preferred! && wave < completed[0])
+    .sort((a, b) => Math.abs(a - target) - Math.abs(b - target) || a - b)[0];
+  // Without a non-entry selection, keep the existing recovery candidates.
+  const recovery = !isFarmCertificateValid(previous, battle);
+  const entry = completed.includes(1) ? [1] : [];
+  const candidates = [...new Set([completed[0], preferred, middle, completed[1], ...(recovery ? [completed[2]] : [])])]
+    .filter((wave): wave is number => wave !== undefined && wave !== 1 && completed.includes(wave));
+  return [...candidates.slice(0, MAX_FARM_CANDIDATES-entry.length), ...entry];
 }
 
 function prove(battle: IdleBattle, wave: number, fingerprint: string): FarmCertificate | undefined {
@@ -96,6 +115,8 @@ export function certifyFarm(battle: IdleBattle, previous?: FarmCertificate): Far
   let best = isFarmCertificateValid(previous, battle) ? { ...previous! } : undefined;
   for (const wave of candidateWaves(battle, previous)) {
     if (best?.wave === wave) continue;
+    if (wave === 1 && best && farmRewardGold(best) * (2 * BASE.intermissionSeconds * 1000)
+      >= MAX_ENTRY_REWARD * best.durationMs) continue;
     const proof = prove(battle, wave, fingerprint);
     if (proof && (!best || farmRewardGold(proof) * best.durationMs > farmRewardGold(best) * proof.durationMs)) best = proof;
   }

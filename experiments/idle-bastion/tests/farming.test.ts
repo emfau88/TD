@@ -1,3 +1,6 @@
+import { healthMultiplier } from '../src/balance';
+import { BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION } from '../src/battle';
+import { legacyFixtures, assertHistoricalFields } from './legacy-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { BASE, IdleBattle, isNormalFarmWave, upgradeCost } from '../src/battle';
@@ -123,35 +126,31 @@ test('defeat returns to a fresh farm attempt, repeats it and never advances unti
 });
 
 test('snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history', () => {
-  const battle = new IdleBattle(undefined, { maraBonus: false });
-  until(battle, () => battle.highestCleared === 1);
-  battle.update(2.5);
-  const modern = battle.snapshot();
-  const { mara, goldRemainderUnits, mode, highestCleared, attemptId, liveClearedWaves, farmWave, advanceRequested, ...old } = modern;
-  const legacy = { ...old, schemaVersion: 1, layoutVersion: 1, rulesVersion: 1 };
+  const { snapshot: legacy, continuation } = legacyFixtures().schema1;
+  const untouched = structuredClone(legacy);
+  assert.equal(legacy.schemaVersion, 1);
   const migrated = IdleBattle.restore(legacy, { maraBonus: false })!;
   assert.ok(migrated);
-  assert.equal(migrated.snapshot().schemaVersion, 10);
+  assert.deepEqual(legacy, untouched, 'loading must not mutate the historical input');
+  assertHistoricalFields(migrated.snapshot(), { ...legacy, schemaVersion: BATTLE_SCHEMA_VERSION,
+    rulesVersion: BATTLE_RULES_VERSION, layoutVersion: 3 });
   assert.equal(migrated.highestCleared, 1);
   assert.equal(migrated.attemptId, 2);
   assert.deepEqual(migrated.liveClearedWaves, []);
   assert.equal(certifyFarm(migrated), undefined);
   assert.equal(migrated.goldRemainderUnits, 0);
-  battle.drainEvents();
   assert.deepEqual(migrated.drainEvents(), []);
-  for (let step = 0; step < 80; step++) {
-    battle.update(0.025); migrated.update(0.025);
-    const a = battle.snapshot(), b = migrated.snapshot();
-    assert.deepEqual(b.towers, a.towers);
-    assert.deepEqual(b.enemies, a.enemies);
-    assert.deepEqual(b.shots, a.shots);
-    assert.deepEqual(b.queue, a.queue);
-    assert.equal(b.gold, a.gold);
-    assert.equal(b.pendingTime, a.pendingTime);
-    assert.equal(b.attemptId, a.attemptId);
+  assert.ok(migrated.towers.every(t => t.def.id === 1));
+  assert.ok(migrated.enemies.every(e => e.slowRemaining === 0
+    && e.healCooldown === 0 && e.healRemaining === 0 && e.healLockout === 0));
+  assert.equal(continuation.length, 80);
+  for (const frame of continuation) {
+    migrated.update(.025);
+    assertHistoricalFields(migrated.snapshot(), frame.state);
+    assertHistoricalFields(migrated.drainEvents(), frame.events, 'historical combat events');
   }
+  assert.deepEqual(IdleBattle.restore(migrated.snapshot(), { maraBonus: false })!.snapshot(), migrated.snapshot());
   assert.equal(IdleBattle.restore({ ...legacy, gold: -1 }), undefined);
-  assert.deepEqual(migrated.drainEvents(), battle.drainEvents());
 });
 
 test('offline thousandths survive repeated credits, spending and snapshots; invalid amounts are atomic', () => {
@@ -213,7 +212,7 @@ test('bounded live history pins both entry evidence and the currently certified 
   snapshot.liveClearedWaves = [1, 3, ...Array.from({ length: 31 }, (_, index) => index + 18).filter(wave => wave !== 25)];
   assert.equal(snapshot.liveClearedWaves.length, 32);
   const target = snapshot.enemies.find(enemy => enemy.uid === snapshot.shots[0].target)!;
-  target.maxHp = BASE.enemies[target.defId].hp * Math.min(BASE.waves.maxHpMultiplier, Math.pow(BASE.waves.hpGrowth, 48));
+  target.maxHp = BASE.enemies[target.defId].hp * healthMultiplier(49, snapshot.waveRecipeVersion, false);
   target.hp = 1;
   snapshot.enemies = [target]; snapshot.queue = [];
   snapshot.shots = [snapshot.shots[0]];

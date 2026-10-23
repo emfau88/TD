@@ -1,6 +1,7 @@
+import { legacyFixtures, restoreHistorical, assertHistoricalFields } from './legacy-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { BASE, CANNON, SNIPER, IdleBattle, stats } from '../src/battle';
+import { BASE, CANNON, SNIPER, IdleBattle, stats, BATTLE_RULES_VERSION } from '../src/battle';
 import { certifyFarm, farmRewardGold, farmRewardUnits, defenseFingerprint } from '../src/farming';
 import { beginAbsence, createOfflineState, reserveOffline, claimOffline, restoreOffline } from '../src/offline';
 const until = (b: IdleBattle, condition: () => boolean, limit = 240) => {
@@ -56,17 +57,16 @@ test('sniper prioritizes armor and its projectile ignores mitigation', () => {
   shot.x = target.x; shot.y = target.y; b.update(BASE.stepSeconds);
   assert.equal(target.hp, 47);
 });
-test('schema five midwave migration preserves combat and historical money, without certifying an old recipe', () => {
-  const b = new IdleBattle(); b.build('tower-02'); until(b, () => b.shots.length > 0);
-  const modern = b.snapshot();
-  const { rewardRemainderUnits, waveRecipeVersion, ...old } = modern;
-  const migrated = IdleBattle.restore({ ...old, schemaVersion: 5, layoutVersion: 1, rulesVersion: 3 })!;
-  assert.ok(migrated); assert.equal(migrated.waveRecipeVersion, 3);
-  assert.deepEqual(migrated.snapshot().shots, modern.shots); assert.deepEqual(migrated.snapshot().queue, modern.queue);
-  assert.deepEqual(migrated.progress, b.progress); assert.equal(migrated.gold, b.gold);
-  until(migrated, () => migrated.phase === 'intermission');
-  assert.deepEqual(migrated.liveClearedWaves, []);
-  until(migrated, () => migrated.phase === 'wave'); assert.equal(migrated.waveRecipeVersion, 6);
+test('schema five midwave migration preserves combat and historical money, without certifying an old recipe',() => {
+  const old=legacyFixtures().critical.midwave[5];
+  const migrated=restoreHistorical(old,{liveClearedWaves:[],farmWave:1});
+  assert.equal(migrated.waveRecipeVersion,3);assert.deepEqual(migrated.liveClearedWaves,[]);
+  assert.equal(certifyFarm(migrated),undefined);
+  assert.deepEqual(migrated.progress,old.progress);assert.equal(migrated.gold,old.gold);
+  until(migrated,()=>migrated.phase==='intermission');
+  assert.deepEqual(migrated.liveClearedWaves,[]);
+  until(migrated,()=>migrated.phase==='wave');
+  assert.equal(migrated.waveRecipeVersion,BATTLE_RULES_VERSION);
   assert.ok(IdleBattle.restore(migrated.snapshot()));
 });
 test('Wisp adds precisely ten percent to farm production and offline uses that rate once', () => {

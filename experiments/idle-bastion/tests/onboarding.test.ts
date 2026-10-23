@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {IDBFactory} from 'fake-indexeddb';
-import {IdleBattle} from '../src/battle';
+import {IdleBattle, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION} from '../src/battle';
+import {legacyFixtures, assertHistoricalFields} from './legacy-fixtures';
 import {BattleSession, type SessionStore} from '../src/battle-session';
 import {openBattleStore} from '../src/save-store';
 import {certifyFarm} from '../src/farming';
@@ -76,7 +77,15 @@ test('real v14 veteran and its historical offline basis survive the schema-only 
  const old=JSON.parse(readFileSync('artifacts/idle-bastion/acceptance/15min/b13-browser-save.json','utf8'));
  const before=structuredClone(old);const b=IdleBattle.restore(old.battle)!;assert.ok(b);assert.deepEqual(old,before);
  assert.deepEqual(b.introduction,{stage:'done',preparationSeconds:0,halted:false});
- const current:any=b.snapshot();delete current.introduction;delete current.discovery;delete current.dismissedDefeatAttempt;current.schemaVersion=14;assert.deepEqual(current,old.battle);
+ const current=b.snapshot();
+ assertHistoricalFields(current,{...old.battle,schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:BATTLE_RULES_VERSION});
+ assert.equal(current.discovery,'off');assert.equal(current.dismissedDefeatAttempt,0);assert.equal(current.ilyra,null);
+ assert.deepEqual(current.settlement,{...old.battle.settlement,tavernBuilt:false,tavernBuiltAt:null,
+  tavernSeen:false,tavernLevel:0,stormResearched:false});
+ assert.deepEqual(current.social,{points:{mara:0,ilyra:0},gifts:2,
+  claimed:{opening:false,boss15:true,boss25:true},lastClearAttempt:0,
+  window:{ticks:0,earnedGifts:0,clearProgress:0,used:{mara:{talk:0,gift:0,touch:0},ilyra:{talk:0,gift:0,touch:0}}}});
+ assert.deepEqual(IdleBattle.restore(current)!.snapshot(),current);
  const factory=new IDBFactory(),store=await openBattleStore(factory,'intro-legacy',()=>old.writtenAt);
  const writer=(await store.acquireWriter('fixture'))!;await store.save(b.snapshot(),old.paused,0,{writer,offline:old.offline});
  const loaded=await store.load();assert.equal(loaded.kind,'valid');if(loaded.kind==='valid')assert.deepEqual(loaded.save.offline,old.offline);
@@ -102,20 +111,35 @@ test('rejected first-build transaction rolls back the kit and complete preparati
 
 test('schema 15 saves preserve preparation and completed play without forcing the extended lessons',()=>{
  for(const phase of ['welcome','ready','done'] as const){
-  const b=phase==='done'?new IdleBattle():IdleBattle.newGame();if(phase==='ready'){b.beginIntroduction();b.build('cell-6-6')}
-  const old:any=b.snapshot();old.schemaVersion=15;delete old.discovery;delete old.dismissedDefeatAttempt;delete old.introduction.halted;
+  const old=legacyFixtures().schema15[phase],untouched=structuredClone(old);
+  assert.equal(old.schemaVersion,15);
   const loaded=IdleBattle.restore(old)!;assert.ok(loaded);assert.equal(loaded.introduction.stage,phase);assert.equal(loaded.learningPaused,false);
-  const current:any=loaded.snapshot();current.schemaVersion=15;delete current.discovery;delete current.dismissedDefeatAttempt;delete current.introduction.halted;assert.deepEqual(current,old);
+  assertHistoricalFields(loaded.snapshot(),{...old,schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:BATTLE_RULES_VERSION});
+  assert.deepEqual(old,untouched);assert.equal(loaded.introduction.halted,false);
+  assert.equal(loaded.gold,old.gold);assert.equal(loaded.towers.length,old.towers.length);
+  assert.equal(loaded.ilyra,null);assert.equal(loaded.settlement.tavernLevel,0);assert.equal(loaded.settlement.stormResearched,false);
+  assert.deepEqual(IdleBattle.restore(loaded.snapshot())!.snapshot(),loaded.snapshot());
  }
 });
 
 test('intro command waits for a background write, then rechecks and consumes the kit once',async()=>{
  const store=await openBattleStore(new IDBFactory(),'intro-queued',()=>1000);let release:()=>void=()=>{};let hold=false;let entered!:()=>void;const entering=new Promise<void>(r=>entered=r);
  const wrapped:SessionStore={load:()=>store.load(),save:async(...a)=>{if(hold){hold=false;entered();await new Promise<void>(r=>release=r)}return store.save(...a)},recoverBackup:(...a)=>store.recoverBackup(...a),close:()=>store.close(),acquireWriter:(...a)=>store.acquireWriter(...a),renewWriter:(...a)=>store.renewWriter(...a),releaseWriter:(...a)=>store.releaseWriter(...a)};
- const live=await BattleSession.open(wrapped,{now:()=>1000,locks:null});hold=true;
- const writing=live.command(b=>b.beginIntroduction());await entering;assert.equal(live.busy,true);
- const placing=live.command(b=>b.build('tower-start'),true);assert.equal(live.battle.towers.length,0);
- release();assert.equal(await writing,true);assert.equal(await placing,true);assert.equal(live.battle.towers.length,1);assert.equal(live.battle.gold,75);
+ const live=await BattleSession.open(wrapped,{now:()=>1000,locks:null});
+ assert.equal(await live.command(b=>b.beginIntroduction()),true);
+ live.advance(.25);hold=true;
+ const writing=live.flush();await entering;assert.equal(live.busy,true);assert.equal(live.inputBusy,false);
+ let placements=0;
+ const placing=live.command(b=>{placements++;return b.build('tower-start')},true);
+ assert.equal(placements,0);assert.equal(live.battle.towers.length,0);assert.equal(live.inputBusy,true);
+ assert.equal(await live.command(b=>b.build('cell-6-6'),true),false,'second user action must not join the queue');
+ release();await writing;assert.equal(await placing,true);assert.equal(placements,1);
+ assert.equal(live.battle.towers.length,1);assert.equal(live.battle.gold,75);
+ assert.equal(live.battle.introduction.stage,'ready');assert.equal(live.battle.towers[0].protected,true);
+ const before=live.battle.snapshot();
+ assert.equal(await live.command(b=>b.build('tower-start'),true),false);assert.deepEqual(live.battle.snapshot(),before);
+ const loaded=await store.load();assert.equal(loaded.kind,'valid');
+ if(loaded.kind==='valid')assert.deepEqual(loaded.save.battle,before);
  await live.close();
 });
 

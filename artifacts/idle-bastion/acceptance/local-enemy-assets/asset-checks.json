@@ -1,0 +1,190 @@
+{
+  "selected": [
+    {
+      "enemy": "MossShroom",
+      "source": "mushroom-monster-red",
+      "action": "Walk",
+      "sourceSize": 48,
+      "frames": 32,
+      "pngBytes": 19195,
+      "bodyWidth": [
+        16,
+        20
+      ],
+      "bodyHeight": [
+        19,
+        23
+      ],
+      "bottomPixel": [
+        39,
+        47
+      ],
+      "pivot": [
+        32,
+        43
+      ],
+      "losslessOriginalFrames": true
+    },
+    {
+      "enemy": "WoodSpider",
+      "source": "fuzzy-spider-purple",
+      "action": "Walk",
+      "sourceSize": 48,
+      "frames": 32,
+      "pngBytes": 14561,
+      "bodyWidth": [
+        29,
+        37
+      ],
+      "bodyHeight": [
+        24,
+        33
+      ],
+      "bottomPixel": [
+        49,
+        56
+      ],
+      "pivot": [
+        32,
+        43
+      ],
+      "losslessOriginalFrames": true
+    },
+    {
+      "enemy": "HornedBat",
+      "source": "horned-bat-purple",
+      "action": "Idle",
+      "sourceSize": 48,
+      "frames": 24,
+      "pngBytes": 10269,
+      "bodyWidth": [
+        15,
+        44
+      ],
+      "bodyHeight": [
+        16,
+        33
+      ],
+      "bottomPixel": [
+        43,
+        57
+      ],
+      "pivot": [
+        32,
+        43
+      ],
+      "losslessOriginalFrames": true
+    },
+    {
+      "enemy": "EmberBomb",
+      "source": "bomb-walker-black",
+      "action": "Walk",
+      "sourceSize": 48,
+      "frames": 32,
+      "pngBytes": 8744,
+      "bodyWidth": [
+        16,
+        17
+      ],
+      "bodyHeight": [
+        19,
+        27
+      ],
+      "bottomPixel": [
+        44,
+        47
+      ],
+      "pivot": [
+        32,
+        43
+      ],
+      "losslessOriginalFrames": true
+    }
+  ],
+  "frakCandidates": [
+    {
+      "id": "biter-plant-red",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    },
+    {
+      "id": "bomb-walker-black",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle",
+        "Walk"
+      ]
+    },
+    {
+      "id": "cobra-green",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    },
+    {
+      "id": "dragon-whelp-green",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    },
+    {
+      "id": "flame-wisp-orange",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    },
+    {
+      "id": "floating-eye-purple",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    },
+    {
+      "id": "fuzzy-spider-purple",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle",
+        "Walk"
+      ]
+    },
+    {
+      "id": "horned-bat-purple",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    },
+    {
+      "id": "mushroom-monster-red",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle",
+        "Walk"
+      ]
+    },
+    {
+      "id": "sandworm-pink",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    }
+  ],
+  "runtimePngBytes": 52769
+}
