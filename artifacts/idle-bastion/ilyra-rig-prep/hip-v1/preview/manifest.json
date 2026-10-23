@@ -1,0 +1,111 @@
+{
+  "width": 768,
+  "height": 1280,
+  "fps": 30,
+  "clips": {
+    "left": {
+      "frames": 150,
+      "duration": 5.0,
+      "sheets": [
+        "left-00.webp",
+        "left-01.webp",
+        "left-02.webp",
+        "left-03.webp",
+        "left-04.webp",
+        "left-05.webp",
+        "left-06.webp",
+        "left-07.webp",
+        "left-08.webp",
+        "left-09.webp",
+        "left-10.webp",
+        "left-11.webp",
+        "left-12.webp",
+        "left-13.webp",
+        "left-14.webp",
+        "left-15.webp",
+        "left-16.webp",
+        "left-17.webp",
+        "left-18.webp"
+      ]
+    },
+    "right": {
+      "frames": 150,
+      "duration": 5.0,
+      "sheets": [
+        "right-00.webp",
+        "right-01.webp",
+        "right-02.webp",
+        "right-03.webp",
+        "right-04.webp",
+        "right-05.webp",
+        "right-06.webp",
+        "right-07.webp",
+        "right-08.webp",
+        "right-09.webp",
+        "right-10.webp",
+        "right-11.webp",
+        "right-12.webp",
+        "right-13.webp",
+        "right-14.webp",
+        "right-15.webp",
+        "right-16.webp",
+        "right-17.webp",
+        "right-18.webp"
+      ]
+    },
+    "both": {
+      "frames": 150,
+      "duration": 5.0,
+      "sheets": [
+        "both-00.webp",
+        "both-01.webp",
+        "both-02.webp",
+        "both-03.webp",
+        "both-04.webp",
+        "both-05.webp",
+        "both-06.webp",
+        "both-07.webp",
+        "both-08.webp",
+        "both-09.webp",
+        "both-10.webp",
+        "both-11.webp",
+        "both-12.webp",
+        "both-13.webp",
+        "both-14.webp",
+        "both-15.webp",
+        "both-16.webp",
+        "both-17.webp",
+        "both-18.webp"
+      ]
+    },
+    "idle": {
+      "frames": 180,
+      "duration": 6.0,
+      "sheets": [
+        "idle-00.webp",
+        "idle-01.webp",
+        "idle-02.webp",
+        "idle-03.webp",
+        "idle-04.webp",
+        "idle-05.webp",
+        "idle-06.webp",
+        "idle-07.webp",
+        "idle-08.webp",
+        "idle-09.webp",
+        "idle-10.webp",
+        "idle-11.webp",
+        "idle-12.webp",
+        "idle-13.webp",
+        "idle-14.webp",
+        "idle-15.webp",
+        "idle-16.webp",
+        "idle-17.webp",
+        "idle-18.webp",
+        "idle-19.webp",
+        "idle-20.webp",
+        "idle-21.webp",
+        "idle-22.webp"
+      ]
+    }
+  }
+}

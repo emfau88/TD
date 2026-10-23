@@ -1,0 +1,13 @@
+{
+  "samples": 98,
+  "trianglesChecked": 957460,
+  "foldedTriangles": 0,
+  "minAreaRatio": 0.8145661354064941,
+  "minLayer": "TorsoArmsHands",
+  "exactLoop": true,
+  "losslessRGBA": true,
+  "returnMaxAlpha": 1.0,
+  "returnMaxComposite": 2.2627450980392183,
+  "previousFilesChanged": [],
+  "newAtlasBytes": 44757458
+}

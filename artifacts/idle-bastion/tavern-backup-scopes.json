@@ -1,0 +1,17 @@
+[
+  "artifacts/idle-bastion/ilyra-rig-prep",
+  "artifacts/idle-bastion/mara-rig-v2",
+  "artifacts/idle-bastion/unity-idle-probe",
+  "artifacts/idle-bastion/unity-mara-idle",
+  "artifacts/idle-bastion/acceptance/t11-rest",
+  "artifacts/idle-bastion/acceptance/t11-unity-idle",
+  "artifacts/idle-bastion/acceptance/t11-unity",
+  "artifacts/idle-bastion/acceptance/t11a",
+  "artifacts/idle-bastion/exports",
+  "experiments/idle-bastion/assets/ilyra-tavern/idle-study",
+  "experiments/idle-bastion/assets/ilyra-tavern/rest-reference",
+  "experiments/idle-bastion/assets/mara-tavern/idle-study",
+  "experiments/idle-bastion/assets/mara-tavern/rest-reference",
+  "experiments/idle-bastion/assets/mara-tavern/unity-idle",
+  "experiments/idle-bastion/assets/mara-tavern/unity-probe"
+]

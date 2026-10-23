@@ -1,0 +1,361 @@
+{
+  "canvas": [
+    768,
+    1280
+  ],
+  "backToFront": [
+    "CapeBack",
+    "HairBack",
+    "ThighImageLeft",
+    "ThighImageRight",
+    "Pelvis",
+    "SkirtImageLeft",
+    "SkirtImageRight",
+    "SkirtCenter",
+    "TorsoArmsHands",
+    "Head",
+    "HairLockImageLeft",
+    "HairLockImageRight",
+    "HairFrontGoggles"
+  ],
+  "parts": [
+    {
+      "name": "CapeBack",
+      "source": "lower",
+      "crop": [
+        872,
+        502,
+        1525,
+        988
+      ],
+      "size": [
+        600,
+        500
+      ],
+      "position": [
+        86,
+        491
+      ],
+      "sourceAnchor": [
+        1053,
+        520
+      ],
+      "target": [
+        252,
+        510
+      ]
+    },
+    {
+      "name": "HairBack",
+      "source": "head",
+      "crop": [
+        437,
+        50,
+        1104,
+        920
+      ],
+      "size": [
+        485,
+        770
+      ],
+      "position": [
+        142,
+        156
+      ],
+      "sourceAnchor": [
+        770,
+        55
+      ],
+      "target": [
+        384,
+        160
+      ]
+    },
+    {
+      "name": "ThighImageLeft",
+      "source": "lower",
+      "crop": [
+        508,
+        46,
+        736,
+        458
+      ],
+      "size": [
+        214,
+        387
+      ],
+      "position": [
+        175,
+        868
+      ],
+      "sourceAnchor": [
+        630,
+        80
+      ],
+      "target": [
+        290,
+        900
+      ]
+    },
+    {
+      "name": "ThighImageRight",
+      "source": "lower",
+      "crop": [
+        804,
+        46,
+        1030,
+        458
+      ],
+      "size": [
+        212,
+        387
+      ],
+      "position": [
+        388,
+        868
+      ],
+      "sourceAnchor": [
+        900,
+        80
+      ],
+      "target": [
+        478,
+        900
+      ]
+    },
+    {
+      "name": "Pelvis",
+      "source": "lower",
+      "crop": [
+        60,
+        88,
+        464,
+        416
+      ],
+      "size": [
+        347,
+        282
+      ],
+      "position": [
+        212,
+        708
+      ],
+      "sourceAnchor": [
+        260,
+        253
+      ],
+      "target": [
+        384,
+        850
+      ]
+    },
+    {
+      "name": "SkirtImageLeft",
+      "source": "lower",
+      "crop": [
+        21,
+        513,
+        352,
+        1000
+      ],
+      "size": [
+        248,
+        365
+      ],
+      "position": [
+        152,
+        797
+      ],
+      "sourceAnchor": [
+        330,
+        530
+      ],
+      "target": [
+        384,
+        810
+      ]
+    },
+    {
+      "name": "SkirtImageRight",
+      "source": "lower",
+      "crop": [
+        517,
+        510,
+        848,
+        998
+      ],
+      "size": [
+        248,
+        366
+      ],
+      "position": [
+        367,
+        795
+      ],
+      "sourceAnchor": [
+        540,
+        530
+      ],
+      "target": [
+        384,
+        810
+      ]
+    },
+    {
+      "name": "SkirtCenter",
+      "source": "lower",
+      "crop": [
+        1205,
+        57,
+        1337,
+        480
+      ],
+      "size": [
+        106,
+        338
+      ],
+      "position": [
+        331,
+        815
+      ],
+      "sourceAnchor": [
+        1271,
+        65
+      ],
+      "target": [
+        384,
+        821
+      ]
+    },
+    {
+      "name": "TorsoArmsHands",
+      "source": "torso",
+      "crop": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "size": [
+        573,
+        860
+      ],
+      "position": [
+        98,
+        344
+      ],
+      "sourceAnchor": [
+        512,
+        903
+      ],
+      "target": [
+        384,
+        850
+      ]
+    },
+    {
+      "name": "Head",
+      "source": "jaw",
+      "crop": [
+        205,
+        115,
+        1045,
+        1005
+      ],
+      "size": [
+        222,
+        235
+      ],
+      "position": [
+        272,
+        203
+      ],
+      "sourceAnchor": [
+        630,
+        995
+      ],
+      "target": [
+        384,
+        435
+      ]
+    },
+    {
+      "name": "HairLockImageLeft",
+      "source": "head",
+      "crop": [
+        70,
+        487,
+        358,
+        1003
+      ],
+      "size": [
+        141,
+        253
+      ],
+      "position": [
+        193,
+        352
+      ],
+      "sourceAnchor": [
+        277,
+        510
+      ],
+      "target": [
+        294,
+        363
+      ]
+    },
+    {
+      "name": "HairLockImageRight",
+      "source": "head",
+      "crop": [
+        1192,
+        484,
+        1467,
+        1007
+      ],
+      "size": [
+        135,
+        256
+      ],
+      "position": [
+        439,
+        350
+      ],
+      "sourceAnchor": [
+        1263,
+        510
+      ],
+      "target": [
+        474,
+        363
+      ]
+    },
+    {
+      "name": "HairFrontGoggles",
+      "source": "head",
+      "crop": [
+        1060,
+        76,
+        1525,
+        481
+      ],
+      "size": [
+        288,
+        251
+      ],
+      "position": [
+        242,
+        173
+      ],
+      "sourceAnchor": [
+        1290,
+        160
+      ],
+      "target": [
+        384,
+        225
+      ]
+    }
+  ]
+}

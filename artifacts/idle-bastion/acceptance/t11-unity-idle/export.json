@@ -1,0 +1,11 @@
+{
+  "durationMs": 8000,
+  "fps": 24,
+  "samples": 192,
+  "renderSize": [
+    768,
+    1024
+  ],
+  "loopEndpointExact": true,
+  "bytes": 29258706
+}

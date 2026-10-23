@@ -1,0 +1,30 @@
+{
+  "sourceOutsideEditRegionExact": true,
+  "fullFigureChangedBounds": [
+    98,
+    491,
+    660,
+    806
+  ],
+  "unchangedOtherLayers": true,
+  "originalFilesUnchanged": true,
+  "baselineHashes": {
+    "preview\\rest.png": "49b450d01e2ad29d6615fe6a00d02c8bd304b47beb0ebb595d834c2349d72b82",
+    "Ilyra.psb": "82ffecf86e46757baf037379e0a4ec57613817b8f57601581cdf92b6399b2e0e",
+    "art\\torso-continuous-source.png": "8f8c0b460be82c2d8d1d71992f5a345ff82d157634618d9b43d563d7bab476ab",
+    "layers\\CapeBack.png": "cf297fb2cf2f76fc70b2270b5f5d9f8ae175d8bb735e2008be6f229412f28b87",
+    "layers\\HairBack.png": "a348b2549bbeaed6d51d22470a27d01682694b3ec379f64d5edcf2a7093770f5",
+    "layers\\HairFrontGoggles.png": "fb19e5b78b6d19fbe1c01fe88891cc41e160b2d5d38236f9daa2fa0160fdefb5",
+    "layers\\HairLockImageLeft.png": "2df91d819d833f32d413cd34a18db9bba5bc765d2cd842ab1c7cdf3221cdc355",
+    "layers\\HairLockImageRight.png": "60d3ba7ff0267f65edcb74cbc743ceb274d9c04194cbcffbb88a5fea6dc4c101",
+    "layers\\Head.png": "aa7f5be2cd01f6c5970c58d7e062c7515ae792465f38fdd45261183bae7e3e86",
+    "layers\\Pelvis.png": "80bae5c356bbd319b4ceb84c63c0950514225216df16fc8741da561639b530fd",
+    "layers\\SkirtCenter.png": "ed273110244afdb327cdd0803753a480478ec3f4d18862d9f8bd1dcb9d21aaef",
+    "layers\\SkirtImageLeft.png": "07cdde0225769c9c7f4a27d2ed27cda197bd7a1551cb90ad9e493bb4aed65eb7",
+    "layers\\SkirtImageRight.png": "8b94243b268d3a9f675a7990ddd0ad3de704f36a52ce361fa450b17d1ff0b344",
+    "layers\\ThighImageLeft.png": "9990f6df09a584783677d39003c86150626eac44cc5ccdbcc5ebaf3f100b5789",
+    "layers\\ThighImageRight.png": "931707e24244713c4bc63295b32da083e7a0f1d0588be1197cc83802b5825673",
+    "layers\\TorsoArmsHands.png": "a0aa896ca98a8032f84df5b2d0deecb47d37d8f27b00a3b3a4066860beccbeca"
+  },
+  "newRigTestPerformed": false
+}

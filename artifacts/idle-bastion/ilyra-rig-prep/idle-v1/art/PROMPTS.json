@@ -1,0 +1,11 @@
+{
+  "tool": "Built-in Imagegen",
+  "reference": "../art/head-jaw-source.png",
+  "actualReferenceSize": [
+    1254,
+    1254
+  ],
+  "closed": "Precise localized image edit for a 2D game character eyelid swap. Edit this exact adult woman's head image, same 1280 x 1280 canvas and exact head registration. Change ONLY both eyes to gently fully CLOSED in a natural blink, upper eyelids descend to meet lower lids, keep eye corners at exact same positions. Smooth tan eyelid skin with delicate curved black lash line, no iris or white visible. Preserve eyebrows EXACTLY and entire rest of face, nose, lips, ears, earrings, outline, colors and shading pixel-faithfully. No expression change or smile change. No hair, no neck, no added objects. Transparent background preserved. This is a single closed-eye animation sprite of the identical head, not a redesign.",
+  "half": "Precise localized image edit for a 2D game character eyelid swap. Edit this exact adult woman's head image with same square canvas and exact registration. Change ONLY both eyes to HALF CLOSED in a natural blink: upper eyelid halfway down over blue irises, eyelid lower edge roughly through pupil center, lower eyelids and inner/outer eye corners remain fixed in place. Preserve eyebrows EXACTLY and entire rest of face, nose, lips, ears, earrings, outline, colors and shading. No squint, no sleepy expression, no smile change. No hair, no neck, no added objects. Transparent background preserved. This is a single intermediate blink sprite of the identical head, not a redesign.",
+  "note": "Localized eye regions only; outside those patches the original pixels are restored. Registered with the original head placement."
+}

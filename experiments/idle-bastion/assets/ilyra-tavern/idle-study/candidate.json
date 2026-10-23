@@ -1,0 +1,51 @@
+{
+  "width": 1920,
+  "height": 512,
+  "frameWidth": 384,
+  "frameHeight": 512,
+  "idle": [
+    [
+      0,
+      1600
+    ],
+    [
+      1,
+      230
+    ],
+    [
+      2,
+      340
+    ],
+    [
+      1,
+      260
+    ],
+    [
+      0,
+      1090
+    ],
+    [
+      3,
+      80
+    ],
+    [
+      4,
+      100
+    ],
+    [
+      3,
+      80
+    ],
+    [
+      0,
+      850
+    ]
+  ],
+  "labels": [
+    "Ruhe · Gesichtskorrektur",
+    "Atemzwischenpose",
+    "Kleine Einatmung",
+    "Halber Lidschlag",
+    "Augen geschlossen"
+  ]
+}

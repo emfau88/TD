@@ -1,0 +1,27 @@
+<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mara · Drei neue Gesten</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#20252c;color:#f5f1e7;font:16px system-ui,sans-serif}main{max-width:850px;margin:auto;padding:18px}h1{font-size:25px;margin:0 0 10px}p{color:#c9c8c3;line-height:1.5}nav,.controls{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}button,select{font:inherit;min-height:44px;padding:9px 14px;border:1px solid #69727e;border-radius:7px;background:#343d47;color:#fff;cursor:pointer}button[aria-pressed=true]{background:#477368;border-color:#a5d8cf}button:disabled{opacity:.55;cursor:wait}.stage{background:#e7e0d2;border-radius:10px;overflow:hidden}.stage canvas{display:block;margin:auto;width:100%;max-height:65vh;object-fit:contain}.dark .stage{background:#20252c;border:1px solid #69727e}.zoom .stage canvas{max-height:none}.controls{align-items:center}input[type=range]{flex:1;min-width:140px}output{font-variant-numeric:tabular-nums}a{color:#a5d8cf}.note{font-size:14px}@media(max-width:500px){main{padding:12px}h1{font-size:22px}nav button{flex:1;padding:9px 7px}.stage canvas{max-height:58vh}}
+</style>
+<main><h1>Mara · Drei neue Gesten</h1><p>Vorbeugen, Hand in die Hüfte und Kichern – jeweils mit der neuen Brustphysik.</p>
+<nav aria-label="Animation"><button data-clip="lean" aria-pressed="true">Vorbeugen</button><button data-clip="hip" aria-pressed="false">Hand in die Hüfte</button><button data-clip="giggle" aria-pressed="false">Kichern</button></nav>
+<div class="stage"><canvas id="canvas" width="768" height="1024" aria-label="Animierte Mara"></canvas></div>
+<div class="controls"><button id="play" disabled>Wird geladen …</button><button id="restart" disabled>Neu starten</button><label>Tempo <select id="speed"><option value="1">Normal</option><option value="0.5">Halb</option></select></label><label><input type="checkbox" id="dark"> Dunkel</label><label><input type="checkbox" id="zoom"> Groß</label></div>
+<div class="controls"><input id="scrub" aria-label="Zeitpunkt" type="range" value="0" min="0" max="150"><output id="time">0,00 s</output></div>
+<p id="status" role="status">Animation wird geladen …</p><p><a id="gif" href="Mara-lean.gif" download>Diese Geste als GIF</a> · <a href="../chest-physics/index.html">Bisheriger Physikvergleich</a></p>
+<p class="note">Separate Vorschau. Jede Geste kehrt zur selben Ruhepose zurück. Die Wiederholung dient der Abnahme.</p></main>
+<script type="module">
+const $=id=>document.getElementById(id),ctx=$('canvas').getContext('2d');
+const manifest=await fetch('manifest.json').then(r=>{if(!r.ok)throw Error(r.status);return r.json()});
+let current=null,pages=[],playing=false,t=0,last=0,loadId=0;
+const notes={lean:'Leichte Vorbeuge mit ruhigem Blickkontakt und verzögerter Rückkehr.',hip:'Hand an die Hüfte, Ellbogen nach außen und eine kleine Gewichtsverlagerung.',giggle:'Drei kurze Kicherimpulse mit Lächeln, Blinzeln und körperbedingtem Nachschwingen.'};
+function state(){$('play').textContent=playing?'Pause':'Abspielen'}
+function draw(){if(!current)return;const f=current.frames[Math.min(current.frames.length-1,Math.floor(t*30+1e-6))];ctx.clearRect(0,0,768,1024);ctx.drawImage(pages[f[0]],f[1],f[2],f[3],f[4],current.crop[0],current.crop[1],f[3],f[4]);$('scrub').value=Math.round(t*30);$('time').textContent=t.toFixed(2).replace('.',',')+' s'}
+async function select(key){const id=++loadId;playing=false;current=null;pages=[];ctx.clearRect(0,0,768,1024);$('play').disabled=$('restart').disabled=$('scrub').disabled=true;$('play').textContent='Wird geladen …';$('status').textContent='Animation wird geladen …';document.querySelectorAll('[data-clip]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.clip===key)));history.replaceState(null,'','?clip='+key);
+ try{const clip=manifest.clips[key];const loaded=await Promise.all(clip.pages.map(src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error(src));im.src=src})));if(id!==loadId)return;pages=loaded;current=clip;t=0;$('scrub').max=Math.round(clip.duration*30);$('gif').href=clip.gif;$('play').disabled=$('restart').disabled=$('scrub').disabled=false;$('status').textContent=notes[key];playing=true;state();draw()}catch(e){if(id===loadId)$('status').textContent='Laden fehlgeschlagen. Bitte erneut auswählen.';console.error(e)}
+}
+document.querySelectorAll('[data-clip]').forEach(b=>b.onclick=()=>select(b.dataset.clip));
+$('play').onclick=()=>{playing=!playing;state()};$('restart').onclick=()=>{t=0;playing=true;state();draw()};$('scrub').oninput=()=>{playing=false;t=Number($('scrub').value)/30;state();draw()};$('dark').onchange=()=>document.body.classList.toggle('dark',$('dark').checked);$('zoom').onchange=()=>document.body.classList.toggle('zoom',$('zoom').checked);
+function tick(now){const dt=last?Math.min((now-last)/1000,.1):0;last=now;if(playing&&current){t=(t+dt*Number($('speed').value))%current.cycle;draw()}requestAnimationFrame(tick)}requestAnimationFrame(tick);
+const initial=new URLSearchParams(location.search).get('clip');select(manifest.clips[initial]?initial:'lean');
+</script></html>

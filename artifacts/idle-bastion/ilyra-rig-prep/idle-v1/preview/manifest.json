@@ -1,0 +1,150 @@
+{
+  "width": 768,
+  "height": 1280,
+  "fps": 30,
+  "frames": 180,
+  "duration": 6,
+  "columns": 4,
+  "rows": 2,
+  "perSheet": 8,
+  "sheets": [
+    {
+      "file": "idle-00.webp",
+      "first": 0,
+      "count": 8,
+      "bytes": 2781950
+    },
+    {
+      "file": "idle-01.webp",
+      "first": 8,
+      "count": 8,
+      "bytes": 3420404
+    },
+    {
+      "file": "idle-02.webp",
+      "first": 16,
+      "count": 8,
+      "bytes": 3593784
+    },
+    {
+      "file": "idle-03.webp",
+      "first": 24,
+      "count": 8,
+      "bytes": 3685574
+    },
+    {
+      "file": "idle-04.webp",
+      "first": 32,
+      "count": 8,
+      "bytes": 3744368
+    },
+    {
+      "file": "idle-05.webp",
+      "first": 40,
+      "count": 8,
+      "bytes": 3698934
+    },
+    {
+      "file": "idle-06.webp",
+      "first": 48,
+      "count": 8,
+      "bytes": 3512398
+    },
+    {
+      "file": "idle-07.webp",
+      "first": 56,
+      "count": 8,
+      "bytes": 2958090
+    },
+    {
+      "file": "idle-08.webp",
+      "first": 64,
+      "count": 8,
+      "bytes": 3322598
+    },
+    {
+      "file": "idle-09.webp",
+      "first": 72,
+      "count": 8,
+      "bytes": 3632194
+    },
+    {
+      "file": "idle-10.webp",
+      "first": 80,
+      "count": 8,
+      "bytes": 3761262
+    },
+    {
+      "file": "idle-11.webp",
+      "first": 88,
+      "count": 8,
+      "bytes": 3732256
+    },
+    {
+      "file": "idle-12.webp",
+      "first": 96,
+      "count": 8,
+      "bytes": 3752940
+    },
+    {
+      "file": "idle-13.webp",
+      "first": 104,
+      "count": 8,
+      "bytes": 3660040
+    },
+    {
+      "file": "idle-14.webp",
+      "first": 112,
+      "count": 8,
+      "bytes": 3457586
+    },
+    {
+      "file": "idle-15.webp",
+      "first": 120,
+      "count": 8,
+      "bytes": 3383110
+    },
+    {
+      "file": "idle-16.webp",
+      "first": 128,
+      "count": 8,
+      "bytes": 3512822
+    },
+    {
+      "file": "idle-17.webp",
+      "first": 136,
+      "count": 8,
+      "bytes": 3554262
+    },
+    {
+      "file": "idle-18.webp",
+      "first": 144,
+      "count": 8,
+      "bytes": 3521684
+    },
+    {
+      "file": "idle-19.webp",
+      "first": 152,
+      "count": 8,
+      "bytes": 3376488
+    },
+    {
+      "file": "idle-20.webp",
+      "first": 160,
+      "count": 8,
+      "bytes": 3041556
+    },
+    {
+      "file": "idle-21.webp",
+      "first": 168,
+      "count": 8,
+      "bytes": 2214792
+    },
+    {
+      "file": "idle-22.webp",
+      "first": 176,
+      "count": 4,
+      "bytes": 619920
+    }
+  ]
+}

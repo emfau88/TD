@@ -1,0 +1,16 @@
+{
+  "hero": "mara",
+  "width": 384,
+  "height": 512,
+  "anchor": {
+    "x": 192,
+    "y": 360
+  },
+  "previewScale": 1,
+  "source": "../idle-study/candidate.png",
+  "sourceSha256": "25764a43d82c225d718a14a3be90c3f1ee911b2ab64a0a9cd0a18b8ec3990b45",
+  "sourceFrame": 0,
+  "bodySha256": "2e7ad60f301e5e8e59b6794378b5b4781709dbe28d350211855085d42009523f",
+  "description": "Mara R2: ruhige Augen, verbesserte Haarkontur",
+  "restSha256": "140eeab06380deba06051818c00411046600c771f56541ca4966cb349f4f068f"
+}

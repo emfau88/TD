@@ -1,0 +1,18 @@
+{
+  "Idle": {
+    "samples": 115,
+    "duration": 3.8,
+    "endpoint_exact": true,
+    "same_rest": true,
+    "transparent_pixels_inside_torso": 0
+  },
+  "TouchReaction": {
+    "samples": 85,
+    "duration": 2.8,
+    "endpoint_exact": true,
+    "same_rest": true,
+    "transparent_pixels_inside_torso": 0
+  },
+  "atlas_bytes": 76056206,
+  "original_assets_and_head_study_unchanged": true
+}

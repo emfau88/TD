@@ -1,0 +1,169 @@
+
+# Tavern animation experiments: preserve full-resolution sources and exports.
+artifacts/idle-bastion/ilyra-rig-prep/**/*.png filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/ilyra-rig-prep/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/ilyra-rig-prep/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/ilyra-rig-prep/**/*.webp filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/ilyra-rig-prep/**/*.gif filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/ilyra-rig-prep/**/*.psb filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/ilyra-rig-prep/**/*.psd filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/ilyra-rig-prep/**/*.zip filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/ilyra-rig-prep/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/ilyra-rig-prep/**/*.webm filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-rig-v2/**/*.png filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-rig-v2/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-rig-v2/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-rig-v2/**/*.webp filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-rig-v2/**/*.gif filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-rig-v2/**/*.psb filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-rig-v2/**/*.psd filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-rig-v2/**/*.zip filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-rig-v2/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/mara-rig-v2/**/*.webm filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-idle-probe/**/*.png filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-idle-probe/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-idle-probe/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-idle-probe/**/*.webp filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-idle-probe/**/*.gif filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-idle-probe/**/*.psb filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-idle-probe/**/*.psd filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-idle-probe/**/*.zip filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-idle-probe/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-idle-probe/**/*.webm filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-mara-idle/**/*.png filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-mara-idle/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-mara-idle/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-mara-idle/**/*.webp filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-mara-idle/**/*.gif filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-mara-idle/**/*.psb filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-mara-idle/**/*.psd filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-mara-idle/**/*.zip filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-mara-idle/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/unity-mara-idle/**/*.webm filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-rest/**/*.png filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-rest/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-rest/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-rest/**/*.webp filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-rest/**/*.gif filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-rest/**/*.psb filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-rest/**/*.psd filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-rest/**/*.zip filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-rest/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-rest/**/*.webm filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity-idle/**/*.png filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity-idle/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity-idle/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity-idle/**/*.webp filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity-idle/**/*.gif filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity-idle/**/*.psb filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity-idle/**/*.psd filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity-idle/**/*.zip filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity-idle/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity-idle/**/*.webm filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity/**/*.png filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity/**/*.webp filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity/**/*.gif filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity/**/*.psb filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity/**/*.psd filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity/**/*.zip filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11-unity/**/*.webm filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11a/**/*.png filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11a/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11a/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11a/**/*.webp filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11a/**/*.gif filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11a/**/*.psb filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11a/**/*.psd filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11a/**/*.zip filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11a/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/acceptance/t11a/**/*.webm filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/exports/**/*.png filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/exports/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/exports/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/exports/**/*.webp filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/exports/**/*.gif filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/exports/**/*.psb filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/exports/**/*.psd filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/exports/**/*.zip filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/exports/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+artifacts/idle-bastion/exports/**/*.webm filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/idle-study/**/*.png filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/idle-study/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/idle-study/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/idle-study/**/*.webp filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/idle-study/**/*.gif filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/idle-study/**/*.psb filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/idle-study/**/*.psd filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/idle-study/**/*.zip filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/idle-study/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/idle-study/**/*.webm filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/rest-reference/**/*.png filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/rest-reference/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/rest-reference/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/rest-reference/**/*.webp filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/rest-reference/**/*.gif filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/rest-reference/**/*.psb filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/rest-reference/**/*.psd filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/rest-reference/**/*.zip filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/rest-reference/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/ilyra-tavern/rest-reference/**/*.webm filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/idle-study/**/*.png filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/idle-study/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/idle-study/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/idle-study/**/*.webp filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/idle-study/**/*.gif filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/idle-study/**/*.psb filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/idle-study/**/*.psd filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/idle-study/**/*.zip filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/idle-study/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/idle-study/**/*.webm filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/rest-reference/**/*.png filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/rest-reference/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/rest-reference/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/rest-reference/**/*.webp filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/rest-reference/**/*.gif filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/rest-reference/**/*.psb filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/rest-reference/**/*.psd filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/rest-reference/**/*.zip filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/rest-reference/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/rest-reference/**/*.webm filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-idle/**/*.png filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-idle/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-idle/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-idle/**/*.webp filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-idle/**/*.gif filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-idle/**/*.psb filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-idle/**/*.psd filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-idle/**/*.zip filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-idle/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-idle/**/*.webm filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-probe/**/*.png filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-probe/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-probe/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-probe/**/*.webp filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-probe/**/*.gif filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-probe/**/*.psb filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-probe/**/*.psd filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-probe/**/*.zip filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-probe/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+experiments/idle-bastion/assets/mara-tavern/unity-probe/**/*.webm filter=lfs diff=lfs merge=lfs -text
+
+# Preserve exact bytes of archived Unity/text sources and hash baselines.
+artifacts/idle-bastion/ilyra-rig-prep/** -text
+artifacts/idle-bastion/mara-rig-v2/** -text
+artifacts/idle-bastion/unity-idle-probe/** -text
+artifacts/idle-bastion/unity-mara-idle/** -text
+artifacts/idle-bastion/acceptance/t11-rest/** -text
+artifacts/idle-bastion/acceptance/t11-unity-idle/** -text
+artifacts/idle-bastion/acceptance/t11-unity/** -text
+artifacts/idle-bastion/acceptance/t11a/** -text
+artifacts/idle-bastion/exports/** -text
+experiments/idle-bastion/assets/ilyra-tavern/idle-study/** -text
+experiments/idle-bastion/assets/ilyra-tavern/rest-reference/** -text
+experiments/idle-bastion/assets/mara-tavern/idle-study/** -text
+experiments/idle-bastion/assets/mara-tavern/rest-reference/** -text
+experiments/idle-bastion/assets/mara-tavern/unity-idle/** -text
+experiments/idle-bastion/assets/mara-tavern/unity-probe/** -text

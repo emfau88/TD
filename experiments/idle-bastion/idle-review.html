@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SPIRE · Idle-Vergleich · Entwurf</title></head>
+<body><main>
+<header><p class="eyebrow">SPIRE · lokale Grafikprobe · T11</p><h1>Ein ruhiger Moment.</h1><p>Mara & Ilyra · bestehende Idle-Loops im Vergleich. Entwurf zur visuellen Freigabe, nicht veröffentlicht.</p></header>
+<nav aria-label="Figur"><button data-hero="mara" aria-pressed="true">Mara</button><button data-hero="ilyra" aria-pressed="false">Ilyra</button></nav>
+<div class="toolbar"><button id="pause">Pausieren</button><button id="restart">Gemeinsam neu starten</button><label>Tempo <select id="speed"><option value="1">Normal</option><option value="0.5">Halb so schnell</option></select></label><button id="portrait" aria-pressed="false">Hochkantansicht</button><label>Hintergrund <select id="background"><option value="room">Taverne</option><option value="dark">Dunkel</option><option value="light">Hell</option></select></label></div>
+<div class="comparison" id="comparison">
+<section><h2>Vorher <span>ee1fd97</span></h2><div class="stage"><canvas id="before" width="384" height="512" role="img" aria-label="Bisherige Idle-Animation"></canvas></div><output id="before-state"></output></section>
+<section><h2>Nachher <span id="revision">Revision 2</span></h2><div class="stage"><canvas id="after" width="384" height="512" role="img" aria-label="Überarbeitete Idle-Animation"></canvas></div><output id="after-state"></output></section>
+</div>
+<div class="timeline"><label for="time">Loop prüfen</label><input id="time" type="range" min="0" max="1000" value="0"><output id="time-state"></output></div>
+<p id="note" class="note" role="status">Bilder werden geladen …</p>
+<div class="toolbar"><button id="blink-preview">Lidschlag prüfen</button><button id="seam-preview">Loop-Ende prüfen</button></div>
+<div class="toolbar"><label>Berührungsanschluss <select id="reaction"><option value="shoulder">Schulter</option><option value="hand">Hand</option><option value="hair">Haare</option></select></label><button id="touch">Reaktion vergleichen</button><button id="frames" aria-expanded="false">Einzelbilder ansehen</button></div>
+<div id="filmstrip" hidden></div>
+<footer>Kein Spielstandzugriff. Reaktionen werden erst beim Anfordern geladen. Beide Loops beginnen und enden in ihrer Ruhepose. Zweite Idle-Varianten folgen erst nach dieser Abnahme.</footer>
+</main><script type="module" src="/src/idle-review.ts"></script></body></html>

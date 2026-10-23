@@ -1,0 +1,442 @@
+fileFormatVersion: 2
+guid: 006e24f6e38326f438730376bb9da73b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones:
+    - name: Root
+      guid: 
+      position: {x: 192, y: 152, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      length: 0
+      parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: Torso
+      guid: 
+      position: {x: 0, y: 74, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      length: 30
+      parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: Neck
+      guid: 
+      position: {x: 0, y: 80, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      length: 30
+      parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: Head
+      guid: 
+      position: {x: -5, y: 19, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      length: 30
+      parentId: 2
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: Braid
+      guid: 
+      position: {x: -44, y: -28, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      length: 30
+      parentId: 3
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: BraidTip
+      guid: 
+      position: {x: -9, y: -63, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      length: 30
+      parentId: 4
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: LeftHair
+      guid: 
+      position: {x: -89, y: -33, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      length: 30
+      parentId: 3
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: RightHair
+      guid: 
+      position: {x: 54, y: -26, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      length: 30
+      parentId: 3
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: LeftCloth
+      guid: 
+      position: {x: -107, y: 1, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      length: 30
+      parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: RightCloth
+      guid: 
+      position: {x: 77, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      length: 30
+      parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: LeftHand
+      guid: 
+      position: {x: -62, y: -6, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      length: 30
+      parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
+    - name: RightHand
+      guid: 
+      position: {x: 86, y: -24, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      length: 30
+      parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices:
+    - {x: 0, y: 0}
+    - {x: 128, y: 0}
+    - {x: 256, y: 0}
+    - {x: 384, y: 0}
+    - {x: 0, y: 128}
+    - {x: 128, y: 128}
+    - {x: 256, y: 128}
+    - {x: 384, y: 128}
+    - {x: 0, y: 256}
+    - {x: 128, y: 256}
+    - {x: 256, y: 256}
+    - {x: 384, y: 256}
+    - {x: 0, y: 384}
+    - {x: 128, y: 384}
+    - {x: 256, y: 384}
+    - {x: 384, y: 384}
+    - {x: 0, y: 512}
+    - {x: 128, y: 512}
+    - {x: 256, y: 512}
+    - {x: 384, y: 512}
+    indices: 000000000100000004000000010000000500000004000000010000000200000005000000020000000600000005000000020000000300000006000000030000000700000006000000040000000500000008000000050000000900000008000000050000000600000009000000060000000a0000000900000006000000070000000a000000070000000b0000000a00000008000000090000000c000000090000000d0000000c000000090000000a0000000d0000000a0000000e0000000d0000000a0000000b0000000e0000000b0000000f0000000e0000000c0000000d000000100000000d00000011000000100000000d0000000e000000110000000e00000012000000110000000e0000000f000000120000000f0000001300000012000000
+    edges:
+    - {x: 0, y: 1}
+    - {x: 0, y: 4}
+    - {x: 1, y: 2}
+    - {x: 1, y: 5}
+    - {x: 2, y: 3}
+    - {x: 2, y: 6}
+    - {x: 4, y: 5}
+    - {x: 4, y: 8}
+    - {x: 5, y: 6}
+    - {x: 5, y: 9}
+    - {x: 6, y: 7}
+    - {x: 6, y: 10}
+    - {x: 8, y: 9}
+    - {x: 8, y: 12}
+    - {x: 9, y: 10}
+    - {x: 9, y: 13}
+    - {x: 10, y: 11}
+    - {x: 10, y: 14}
+    - {x: 12, y: 13}
+    - {x: 12, y: 16}
+    - {x: 13, y: 14}
+    - {x: 13, y: 17}
+    - {x: 14, y: 15}
+    - {x: 14, y: 18}
+    weights:
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    - 'weight[0]': 1
+      'weight[1]': 0
+      'weight[2]': 0
+      'weight[3]': 0
+      'boneIndex[0]': 3
+      'boneIndex[1]': 0
+      'boneIndex[2]': 0
+      'boneIndex[3]': 0
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,17 @@
+{
+  "after": {
+    "samples": 151,
+    "endpoint_exact": true,
+    "rest_pixels_changed": 0,
+    "transparent_pixels_inner_torso": 0,
+    "atlas_bytes": 53380116,
+    "gif_frames": 86,
+    "gif_bytes": 3559099
+  },
+  "previous_files_changed": [],
+  "browser": {
+    "comparison_loaded": true,
+    "pause_and_shared_scrub_checked": true,
+    "console_errors": 0
+  }
+}

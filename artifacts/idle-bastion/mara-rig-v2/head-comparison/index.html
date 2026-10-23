@@ -1,0 +1,25 @@
+<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mara · Kopfreaktion im Vergleich</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#20252c;color:#f5f1e7;font:16px system-ui,sans-serif}main{max-width:1080px;margin:auto;padding:20px}h1{font-size:24px;margin:0 0 8px}p{color:#c9c8c3;line-height:1.5;margin:8px 0 16px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel{background:#e7e0d2;color:#292a2b;border-radius:10px;overflow:hidden}.panel h2{font-size:17px;margin:14px 16px 4px}.panel small{display:block;margin:0 16px 8px}.panel canvas{display:block;width:100%;height:auto;max-height:65vh;object-fit:contain}.controls{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:16px 0}button,select,a{font:inherit}button,select{padding:10px 16px;min-height:44px;border:1px solid #606773;border-radius:7px;background:#343d47;color:white;cursor:pointer}input[type=range]{flex:1;min-width:180px}output{font-variant-numeric:tabular-nums}a{color:#a5d8cf}.dark .panel{background:#20252c;color:#eee;border:1px solid #61656b}.zoom .panel canvas{max-height:none}details{margin-top:18px}summary{cursor:pointer}li{line-height:1.7}@media(max-width:600px){main{padding:12px}.pair{gap:6px}.panel h2{font-size:15px;margin:10px 10px 4px;min-height:2.5em}.panel small{font-size:11px;margin:0 10px 6px;min-height:2.8em}h1{font-size:21px}}
+</style><main><h1>Mara · Kopfreaktion vorher / nachher</h1>
+<p>Gleiche Figur, gleichzeitiger Start, echte Abspielgeschwindigkeit. Die neue Geste bekommt mehr Zeit zum Ausklingen.</p>
+<div class="pair"><section class="panel"><h2>Vorher · bisheriger Stand</h2><small>1,6 Sekunden · unverändert</small><canvas id="before" width="768" height="1024"></canvas></section>
+<section class="panel"><h2>Nachher · organischer Versuch</h2><small>2,0 Sekunden · Körper folgt, Haare laufen nach</small><canvas id="after" width="768" height="1024"></canvas></section></div>
+<div class="controls"><button id="play" disabled>Wird geladen …</button><button id="restart" disabled>Beide neu starten</button><label>Tempo <select id="speed"><option value="1">Normal</option><option value="0.5">Halb</option></select></label><label><input id="dark" type="checkbox"> Dunkel</label><label><input id="zoom" type="checkbox"> Groß</label></div>
+<div class="controls"><input id="scrub" aria-label="Gemeinsamer Zeitpunkt" type="range" min="0" max="81" value="0"><output id="time">0,00 s</output></div>
+<p id="status" role="status">Beide Animationen werden geladen …</p>
+<details><summary>Was sich geändert hat</summary><ul><li>Kleine Vorbereitung vor der Kopfneigung, kurze Verweilzeit und längere Rückkehr.</li><li>Dezente Gegenbewegung von Brustkorb und Schultern bei ruhender Hüfte.</li><li>Zopf und Haarsträhnen reagieren mit zeitlichem Nachlauf.</li><li>Idle, Berührungsreaktion, Grafik und bisherige Vorschau bleiben erhalten.</li></ul></details>
+<p><a href="../preview/index.html">Bisherige drei Animationen öffnen</a> · <a href="Mara-Kopfreaktion-Vorher-Nachher.gif">Vergleich als GIF</a></p></main>
+<script type="module">
+const manifest=await fetch('manifest.json').then(r=>r.json());const cache={};let playing=false,t=0,last=0;
+const $=id=>document.getElementById(id);
+function draw(){for(const name of ['before','after']){const c=manifest.clips[name];const f=c.frames[Math.min(c.frames.length-1,Math.floor(t*30+1e-6))];const ctx=$(name).getContext('2d');ctx.clearRect(0,0,768,1024);ctx.drawImage(cache[name][f[0]],f[1],f[2],f[3],f[4],c.crop[0],c.crop[1],f[3],f[4]);} $('time').textContent=t.toFixed(2).replace('.',',')+' s';$('scrub').value=Math.round(t*30);}
+function state(){ $('play').textContent=playing?'Pause':'Abspielen'; }
+try{await Promise.all(['before','after'].map(async name=>{cache[name]=await Promise.all(manifest.clips[name].pages.map(src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=src;})));}));
+$('play').disabled=false;$('restart').disabled=false;$('status').textContent='Beide Clips starten gemeinsam. Nach der Rückkehr bleibt die Ruhepose bis zum nächsten Durchlauf stehen.';playing=true;state();draw();
+}catch(error){$('status').textContent='Laden fehlgeschlagen. Bitte die Seite neu laden.';console.error(error);}
+$('play').onclick=()=>{playing=!playing;state();};$('restart').onclick=()=>{t=0;playing=true;state();draw();};$('scrub').oninput=()=>{playing=false;t=Number($('scrub').value)/30;state();draw();};$('dark').onchange=()=>document.body.classList.toggle('dark',$('dark').checked);$('zoom').onchange=()=>document.body.classList.toggle('zoom',$('zoom').checked);
+function tick(now){const dt=last?Math.min((now-last)/1000,.1):0;last=now;if(playing){t=(t+dt*Number($('speed').value))%manifest.cycle;draw();}requestAnimationFrame(tick);}requestAnimationFrame(tick);
+</script></html>
+

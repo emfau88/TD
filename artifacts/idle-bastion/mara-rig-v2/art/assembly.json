@@ -1,0 +1,537 @@
+{
+  "canvas": [
+    768,
+    1024
+  ],
+  "frontToBack": [
+    "HairFront",
+    "Mouth",
+    "BrowR",
+    "BrowL",
+    "EyeR",
+    "EyeL",
+    "Braid",
+    "HairR",
+    "HairL",
+    "HandR",
+    "HandL",
+    "ForearmR",
+    "ForearmL",
+    "Scarf",
+    "Head",
+    "Torso",
+    "Hips",
+    "HairBack",
+    "CapeR",
+    "CapeL",
+    "CapeBack"
+  ],
+  "parts": [
+    {
+      "name": "CapeBack",
+      "crop": [
+        0,
+        0,
+        1390,
+        1132
+      ],
+      "size": [
+        506,
+        412
+      ],
+      "position": [
+        131,
+        395
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "Hips",
+      "crop": [
+        540,
+        60,
+        973,
+        441
+      ],
+      "size": [
+        390,
+        343
+      ],
+      "position": [
+        189,
+        655
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "UpperArmL",
+      "crop": [
+        272,
+        0,
+        533,
+        365
+      ],
+      "scale": 0.43,
+      "anchor": [
+        437,
+        70
+      ],
+      "target": [
+        251,
+        435
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "UpperArmR",
+      "crop": [
+        778,
+        0,
+        1040,
+        365
+      ],
+      "scale": 0.43,
+      "anchor": [
+        856,
+        70
+      ],
+      "target": [
+        518,
+        435
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "ForearmL",
+      "crop": [
+        298,
+        466,
+        500,
+        842
+      ],
+      "scale": 0.43,
+      "anchor": [
+        385,
+        455
+      ],
+      "target": [
+        196,
+        613
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "ForearmR",
+      "crop": [
+        811,
+        466,
+        1015,
+        842
+      ],
+      "scale": 0.43,
+      "anchor": [
+        920,
+        455
+      ],
+      "target": [
+        575,
+        613
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "HandL",
+      "crop": [
+        367,
+        850,
+        583,
+        1174
+      ],
+      "scale": 0.43,
+      "anchor": [
+        454,
+        892
+      ],
+      "target": [
+        218,
+        761
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "HandR",
+      "crop": [
+        730,
+        850,
+        949,
+        1174
+      ],
+      "scale": 0.43,
+      "anchor": [
+        857,
+        892
+      ],
+      "target": [
+        556,
+        761
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "Torso",
+      "crop": [
+        0,
+        0,
+        1086,
+        1448
+      ],
+      "size": [
+        768,
+        1024
+      ],
+      "position": [
+        0,
+        0
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "CapeL",
+      "crop": [
+        105,
+        723,
+        451,
+        1016
+      ],
+      "scale": 0.55,
+      "anchor": [
+        397,
+        754
+      ],
+      "target": [
+        238,
+        493
+      ],
+      "rotation": 20
+    },
+    {
+      "name": "CapeR",
+      "crop": [
+        677,
+        721,
+        1043,
+        1012
+      ],
+      "scale": 0.55,
+      "anchor": [
+        732,
+        753
+      ],
+      "target": [
+        533,
+        492
+      ],
+      "rotation": -20
+    },
+    {
+      "name": "HairBack",
+      "crop": [
+        480,
+        5,
+        987,
+        560
+      ],
+      "size": [
+        314,
+        344
+      ],
+      "position": [
+        228,
+        61
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "Head",
+      "crop": [
+        0,
+        0,
+        305,
+        435
+      ],
+      "size": [
+        259,
+        370
+      ],
+      "position": [
+        254,
+        88
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "EyeL",
+      "crop": [
+        0,
+        0,
+        305,
+        435
+      ],
+      "size": [
+        259,
+        370
+      ],
+      "position": [
+        254,
+        88
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "EyeR",
+      "crop": [
+        0,
+        0,
+        305,
+        435
+      ],
+      "size": [
+        259,
+        370
+      ],
+      "position": [
+        254,
+        88
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "BrowL",
+      "crop": [
+        0,
+        0,
+        305,
+        435
+      ],
+      "size": [
+        259,
+        370
+      ],
+      "position": [
+        254,
+        88
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "BrowR",
+      "crop": [
+        0,
+        0,
+        305,
+        435
+      ],
+      "size": [
+        259,
+        370
+      ],
+      "position": [
+        254,
+        88
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "Mouth",
+      "crop": [
+        0,
+        0,
+        305,
+        435
+      ],
+      "size": [
+        259,
+        370
+      ],
+      "position": [
+        254,
+        88
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "HairFront",
+      "crop": [
+        994,
+        65,
+        1518,
+        523
+      ],
+      "size": [
+        329,
+        288
+      ],
+      "position": [
+        216,
+        73
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "HairL",
+      "crop": [
+        346,
+        542,
+        576,
+        1013
+      ],
+      "size": [
+        106,
+        217
+      ],
+      "position": [
+        221,
+        288
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "HairR",
+      "crop": [
+        698,
+        554,
+        946,
+        1014
+      ],
+      "size": [
+        109,
+        202
+      ],
+      "position": [
+        473,
+        291
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "Braid",
+      "crop": [
+        84,
+        493,
+        290,
+        1001
+      ],
+      "size": [
+        135,
+        331
+      ],
+      "position": [
+        220,
+        316
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "EyeLHalf",
+      "crop": [
+        0,
+        0,
+        305,
+        435
+      ],
+      "size": [
+        259,
+        370
+      ],
+      "position": [
+        254,
+        88
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "EyeRHalf",
+      "crop": [
+        0,
+        0,
+        305,
+        435
+      ],
+      "size": [
+        259,
+        370
+      ],
+      "position": [
+        254,
+        88
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "EyeLClosed",
+      "crop": [
+        0,
+        0,
+        305,
+        435
+      ],
+      "size": [
+        259,
+        370
+      ],
+      "position": [
+        254,
+        88
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "EyeRClosed",
+      "crop": [
+        0,
+        0,
+        305,
+        435
+      ],
+      "size": [
+        259,
+        370
+      ],
+      "position": [
+        254,
+        88
+      ],
+      "rotation": 0
+    },
+    {
+      "name": "MouthSmile",
+      "crop": [
+        0,
+        0,
+        305,
+        435
+      ],
+      "size": [
+        259,
+        370
+      ],
+      "position": [
+        254,
+        88
+      ],
+      "rotation": 0
+    }
+  ],
+  "faceRegistration": [
+    [
+      1.0130609501793797,
+      0.0012865166424993804,
+      1.6147226241416963
+    ],
+    [
+      -0.0012865166424993804,
+      1.0130609501793797,
+      1.4003748983463524
+    ]
+  ]
+}

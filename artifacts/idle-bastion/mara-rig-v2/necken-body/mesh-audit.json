@@ -1,0 +1,15 @@
+{
+    "clips": [
+        {
+            "clip": "ReactionNeckenBody",
+            "minLayer": "HandR",
+            "minPixel": "(590.67, 273.67)",
+            "minAlpha": 0.0,
+            "samples": 103,
+            "trianglesChecked": 192404,
+            "foldedTriangles": 0,
+            "minAreaRatio": 0.35759079456329348,
+            "maxAreaRatio": 1.7882455587387086
+        }
+    ]
+}

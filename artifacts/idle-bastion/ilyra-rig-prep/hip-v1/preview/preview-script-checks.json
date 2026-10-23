@@ -1,0 +1,44 @@
+{
+  "initial": {
+    "clip": "left",
+    "frame": 0,
+    "playing": true,
+    "cacheSize": 3
+  },
+  "initialLoads": [
+    "left-00.webp",
+    "left-01.webp",
+    "idle-00.webp"
+  ],
+  "clips": [
+    {
+      "name": "left",
+      "return": {
+        "clip": "idle",
+        "frame": 0,
+        "playing": true,
+        "cacheSize": 4
+      }
+    },
+    {
+      "name": "right",
+      "return": {
+        "clip": "idle",
+        "frame": 0,
+        "playing": true,
+        "cacheSize": 4
+      }
+    },
+    {
+      "name": "both",
+      "return": {
+        "clip": "idle",
+        "frame": 0,
+        "playing": true,
+        "cacheSize": 4
+      }
+    }
+  ],
+  "scrubAndRest": true,
+  "maxCached": 4
+}

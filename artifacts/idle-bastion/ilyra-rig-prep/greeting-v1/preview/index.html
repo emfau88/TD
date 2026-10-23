@@ -1,0 +1,31 @@
+<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ilyra · Einladende Geste</title>
+<style>
+*{box-sizing:border-box}body{margin:0 auto;max-width:1100px;padding:20px;background:#15202d;color:#eef3fa;font:16px/1.5 system-ui}h1{font-size:25px;margin:0}p{color:#c0cddd}main{display:grid;grid-template-columns:minmax(0,660px) 1fr;gap:24px}.stage{--h:76vh;position:relative;width:min(100%,calc(var(--h)*.6));aspect-ratio:768/1280;max-height:var(--h);background:#e6e0d4;border-radius:12px;overflow:hidden;margin:auto}.stage canvas{display:block;width:100%;height:100%}.dark{background:#172436}.zoom{width:min(100%,calc(var(--h)*.78));aspect-ratio:768/990}.zoom canvas{position:absolute;width:100%;height:auto;top:-15%}button,select{font:inherit;padding:9px 12px;border:1px solid #7890aa;border-radius:8px;background:#2b4058;color:white;cursor:pointer}nav{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}label{display:block;margin:14px 0 6px}input{width:100%}a{color:#aed4ff}.small{font-size:13px}#error{color:#ffc8ba}@media(max-width:650px){body{padding:12px}h1{font-size:22px}main{grid-template-columns:1fr}.stage{--h:58vh}}
+</style>
+<h1>Ilyra · Einladende Geste</h1><p>Eine offene Handbewegung mit leichtem Kopfnicken. Danach kehrt Ilyra zur Idle zurück.</p>
+<main><div class="stage" id="stage"><canvas id="canvas" width="768" height="1280" aria-label="Ilyra mit Idle und einladender Geste"></canvas></div><aside>
+<nav><button id="react" disabled>Geste abspielen</button><button id="idle" disabled>Idle</button><button id="pause" disabled>Pause</button><button id="rest">Ruhepose</button></nav>
+<nav><button id="zoom">Vergrößern</button><button id="background">Dunkler Hintergrund</button></nav>
+<label for="frame"><span id="clipLabel">Idle</span> · <output id="counter">0,00 / 6,00 s</output></label><input id="frame" type="range" min="0" max="179" value="0" step="1">
+<label for="speed">Geschwindigkeit</label><select id="speed"><option value="1">Normal</option><option value="0.5">Halbes Tempo</option></select>
+<p id="error" role="status"></p><p class="small">Vorhandene offene Hand, kein Wechsel der Handzeichnung. Oberkörper und Haare folgen sanft; freigegebene Proportionen bleiben erhalten.</p>
+<p><a href="Ilyra-Einladung.gif">Reaktion als GIF</a></p><p class="small">Separates Experiment · Hauptspiel unverändert · kein Commit.<br><a href="../../forearm-hands-v2/preview/index.html">Freigegebener Proportionsvergleich</a></p>
+</aside></main>
+<script>
+const $=s=>document.querySelector(s),ctx=$('#canvas').getContext('2d'),cache=new Map();let data,ready=false,clip='idle',frame=0,speed=1,playing=false,origin=0,token=0;
+function load(src){if(!cache.has(src)){cache.set(src,new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Bild konnte nicht geladen werden.'));im.src=src}))}const p=cache.get(src);cache.delete(src);cache.set(src,p);while(cache.size>4)cache.delete(cache.keys().next().value);return p}
+function pause(){playing=false;$('#pause').textContent='Weiter'}
+function fail(e){pause();$('#error').textContent=e.message}
+async function draw(n){const request=++token,c=data.clips[clip],index=Math.floor(n/8);try{const im=await load(c.sheets[index]);if(request!==token)return;ctx.clearRect(0,0,768,1280);ctx.drawImage(im,n%4*768,Math.floor(n%8/4)*1280,768,1280,0,0,768,1280);frame=n;$('#frame').max=c.frames-1;$('#frame').value=n;$('#counter').textContent=(n/30).toFixed(2).replace('.',',')+' / '+c.duration.toFixed(2).replace('.',',')+' s';$('#clipLabel').textContent=clip==='idle'?'Idle':'Einladung';load(c.sheets[(index+1)%c.sheets.length]).catch(fail);if(clip==='greeting')load(data.clips.idle.sheets[0]).catch(fail)}catch(e){fail(e)}}
+async function start(name){if(!ready)return;pause();$('#error').textContent='';clip=name;frame=0;await draw(0);if($('#error').textContent)return;playing=true;origin=performance.now();$('#pause').textContent='Pause'}
+$('#react').onclick=()=>start('greeting');$('#idle').onclick=()=>start('idle');
+$('#pause').onclick=()=>{if(playing)pause();else if(ready){playing=true;origin=performance.now()-frame/30/speed*1000;$('#pause').textContent='Pause'}};
+$('#rest').onclick=()=>{if(ready){pause();draw(0)}};
+$('#frame').oninput=e=>{if(ready){pause();draw(+e.target.value)}};
+$('#speed').onchange=e=>{speed=+e.target.value;origin=performance.now()-frame/30/speed*1000};
+$('#background').onclick=()=>{$('#background').textContent=$('#stage').classList.toggle('dark')?'Heller Hintergrund':'Dunkler Hintergrund'};
+$('#zoom').onclick=()=>{$('#zoom').textContent=$('#stage').classList.toggle('zoom')?'Ganze Figur':'Vergrößern'};
+fetch('manifest.json').then(r=>r.json()).then(async m=>{data=m;await draw(0);ready=true;$('#react').disabled=false;$('#idle').disabled=false;$('#pause').disabled=false;await start('greeting')}).catch(fail);
+function tick(t){if(playing){const c=data.clips[clip];let n=Math.floor(Math.max(0,t-origin)*speed*.03);if(n>=c.frames){if(clip==='greeting'){clip='idle';origin=t;n=0}else n%=c.frames}if(n!==frame||n===0)draw(n)}requestAnimationFrame(tick)}requestAnimationFrame(tick);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)pause()});
+</script></html>

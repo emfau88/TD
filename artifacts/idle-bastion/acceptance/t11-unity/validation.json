@@ -1,0 +1,40 @@
+{
+  "unity": "6000.4.0f1",
+  "samples": 96,
+  "fps": 24,
+  "durationMs": 4000,
+  "renderSize": [
+    768,
+    1024
+  ],
+  "displaySize": [
+    384,
+    512
+  ],
+  "restExactRGBA": true,
+  "loopEndpointExactRGBA": true,
+  "webpLosslessVisibleRGBA": true,
+  "protectedRegionChangedPixels": {
+    "head_and_hair": 0,
+    "breast": 0,
+    "left_hand": 0,
+    "right_hand": 0,
+    "braid": 0,
+    "belt_anchor": 0
+  },
+  "changedBoundsAt2x": [
+    71,
+    583,
+    634,
+    829
+  ],
+  "maxChangedPixelsAt2x": 12213,
+  "maxAdjacentChangedPixelsAt2x": 2121,
+  "encodedFramesAfterDuplicateMerge": 93,
+  "sourceSHA256": "fe81cd9dac0e310e0cb305f8b4a7e0eee2a7dfe4e2619193d81725411b9b12d0",
+  "filesBytes": {
+    "cloth-slow.webp": 7640482,
+    "cloth.webp": 7640482,
+    "rest.webp": 158038
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "left": {
+    "samples": 152,
+    "trianglesChecked": 1468075,
+    "foldedTriangles": 0,
+    "minAreaRatio": 0.024139991030097008,
+    "minLayer": "TorsoArmsHands",
+    "exactLoop": true,
+    "losslessRGBA": true,
+    "returnMaxAlpha": 1.0,
+    "returnMaxComposite": 2.2627450980392183
+  },
+  "right": {
+    "samples": 152,
+    "trianglesChecked": 1467118,
+    "foldedTriangles": 0,
+    "minAreaRatio": 0.0011111468775197864,
+    "minLayer": "TorsoArmsHands",
+    "exactLoop": true,
+    "losslessRGBA": true,
+    "returnMaxAlpha": 1.0,
+    "returnMaxComposite": 2.2627450980392183
+  },
+  "both": {
+    "samples": 152,
+    "trianglesChecked": 1450153,
+    "foldedTriangles": 0,
+    "minAreaRatio": 0.0011106798192486167,
+    "minLayer": "TorsoArmsHands",
+    "exactLoop": true,
+    "losslessRGBA": true,
+    "returnMaxAlpha": 1.0,
+    "returnMaxComposite": 2.2627450980392183
+  },
+  "idle": {
+    "samples": 182,
+    "trianglesChecked": 1778140,
+    "foldedTriangles": 0,
+    "minAreaRatio": 0.8149018883705139,
+    "minLayer": "TorsoArmsHands",
+    "exactLoop": true,
+    "losslessRGBA": true
+  },
+  "previousFilesChanged": [],
+  "totalAtlasBytes": 349090678
+}

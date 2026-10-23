@@ -1,0 +1,26 @@
+{
+    "clips": [
+        {
+            "clip": "IdleBlickkontakt",
+            "minLayer": "Torso",
+            "minPixel": "(539.33, 355.33)",
+            "minAlpha": 0.0,
+            "samples": 115,
+            "trianglesChecked": 214820,
+            "foldedTriangles": 0,
+            "minAreaRatio": 0.9772358536720276,
+            "maxAreaRatio": 1.0244808197021485
+        },
+        {
+            "clip": "ReactionNecken",
+            "minLayer": "Torso",
+            "minPixel": "(539.33, 355.33)",
+            "minAlpha": 0.0,
+            "samples": 85,
+            "trianglesChecked": 158780,
+            "foldedTriangles": 0,
+            "minAreaRatio": 0.7929601073265076,
+            "maxAreaRatio": 1.1794675588607789
+        }
+    ]
+}

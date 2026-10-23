@@ -1,0 +1,22 @@
+{
+  "before": {
+    "samples": 91,
+    "trianglesChecked": 889070,
+    "foldedTriangles": 20,
+    "minAreaRatio": -0.07480698823928833,
+    "cropLossless": true
+  },
+  "after": {
+    "samples": 91,
+    "trianglesChecked": 975884,
+    "foldedTriangles": 0,
+    "minAreaRatio": 0.11262231320142746,
+    "cropLossless": true
+  },
+  "neutralMaxAlphaDifference": 1.0,
+  "neutralCompositeMAE": 0.032033183444818925,
+  "neutralChangedPixels": 919,
+  "changedPixelsOutsideArmArea": 0,
+  "previousFilesChanged": [],
+  "cropBytes": 39761756
+}

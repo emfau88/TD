@@ -1,0 +1,46 @@
+{
+  "threshold": 240,
+  "reference_interior_pixels": 287984,
+  "worst": [
+    [
+      617,
+      "frame-146.png"
+    ],
+    [
+      617,
+      "frame-144.png"
+    ],
+    [
+      616,
+      "frame-145.png"
+    ],
+    [
+      612,
+      "frame-147.png"
+    ],
+    [
+      608,
+      "frame-148.png"
+    ],
+    [
+      604,
+      "frame-149.png"
+    ],
+    [
+      604,
+      "frame-143.png"
+    ],
+    [
+      600,
+      "frame-150.png"
+    ],
+    [
+      595,
+      "frame-151.png"
+    ],
+    [
+      591,
+      "frame-142.png"
+    ]
+  ]
+}

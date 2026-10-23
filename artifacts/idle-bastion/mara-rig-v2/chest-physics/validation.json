@@ -1,0 +1,23 @@
+{
+  "before": {
+    "samples": 127,
+    "duration": 4.2,
+    "endpoint_exact": true,
+    "rest_diff_from_original_pixels": 0
+  },
+  "after": {
+    "samples": 127,
+    "duration": 4.2,
+    "endpoint_exact": true,
+    "rest_diff_from_original_pixels": 0
+  },
+  "atlas_bytes": 90008634,
+  "max_changed_pixels": 28900,
+  "peak_difference_frame": 20,
+  "face_changes": 0,
+  "changes_outside_chest_region": 4,
+  "new_transparent_pixels_inside_torso": 0,
+  "outside_region_max_channel_delta": 1,
+  "outside_region_alpha_changes": 0,
+  "previous_model_unchanged": true
+}

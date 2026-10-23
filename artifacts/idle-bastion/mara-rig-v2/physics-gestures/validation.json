@@ -1,0 +1,35 @@
+{
+  "lean": {
+    "samples": 151,
+    "endpoint_exact": true,
+    "rest_pixels_changed": 0,
+    "transparent_pixels_inner_torso": 0,
+    "atlas_bytes": 52516978,
+    "gif_frames": 90,
+    "gif_bytes": 3649269
+  },
+  "hip": {
+    "samples": 151,
+    "endpoint_exact": true,
+    "rest_pixels_changed": 0,
+    "transparent_pixels_inner_torso": 0,
+    "atlas_bytes": 57172852,
+    "gif_frames": 81,
+    "gif_bytes": 3651928
+  },
+  "giggle": {
+    "samples": 163,
+    "endpoint_exact": true,
+    "rest_pixels_changed": 0,
+    "transparent_pixels_inner_torso": 0,
+    "atlas_bytes": 57567162,
+    "gif_frames": 84,
+    "gif_bytes": 3860609
+  },
+  "previous_files_changed": [],
+  "browser": {
+    "desktop": "all three clips, pause, scrub and restart checked",
+    "portrait": "390 x 844 viewport; document scrollWidth equals clientWidth",
+    "console_errors": 0
+  }
+}

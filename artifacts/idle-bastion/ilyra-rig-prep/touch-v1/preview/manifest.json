@@ -1,0 +1,54 @@
+{
+  "width": 768,
+  "height": 1280,
+  "fps": 30,
+  "clips": {
+    "touch": {
+      "frames": 96,
+      "duration": 3.2,
+      "sheets": [
+        "touch-00.webp",
+        "touch-01.webp",
+        "touch-02.webp",
+        "touch-03.webp",
+        "touch-04.webp",
+        "touch-05.webp",
+        "touch-06.webp",
+        "touch-07.webp",
+        "touch-08.webp",
+        "touch-09.webp",
+        "touch-10.webp",
+        "touch-11.webp"
+      ]
+    },
+    "idle": {
+      "frames": 180,
+      "duration": 6.0,
+      "sheets": [
+        "idle-00.webp",
+        "idle-01.webp",
+        "idle-02.webp",
+        "idle-03.webp",
+        "idle-04.webp",
+        "idle-05.webp",
+        "idle-06.webp",
+        "idle-07.webp",
+        "idle-08.webp",
+        "idle-09.webp",
+        "idle-10.webp",
+        "idle-11.webp",
+        "idle-12.webp",
+        "idle-13.webp",
+        "idle-14.webp",
+        "idle-15.webp",
+        "idle-16.webp",
+        "idle-17.webp",
+        "idle-18.webp",
+        "idle-19.webp",
+        "idle-20.webp",
+        "idle-21.webp",
+        "idle-22.webp"
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+    "clips": [
+        {
+            "clip": "SpringPoseWithoutPhysicsTuned",
+            "minLayer": "HandR",
+            "minPixel": "(590.67, 273.67)",
+            "minAlpha": 0.0,
+            "samples": 127,
+            "trianglesChecked": 382778,
+            "foldedTriangles": 0,
+            "minAreaRatio": 0.8311827778816223,
+            "maxAreaRatio": 1.815662145614624
+        },
+        {
+            "clip": "SpringPoseWithPhysicsTuned",
+            "minLayer": "Torso",
+            "minPixel": "(324.67, 434.67)",
+            "minAlpha": 1.0,
+            "samples": 127,
+            "trianglesChecked": 382778,
+            "foldedTriangles": 0,
+            "minAreaRatio": 0.7926061749458313,
+            "maxAreaRatio": 1.815662145614624
+        }
+    ]
+}

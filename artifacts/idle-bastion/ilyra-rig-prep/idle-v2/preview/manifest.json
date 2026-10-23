@@ -1,0 +1,60 @@
+{
+  "width": 768,
+  "height": 1280,
+  "fps": 30,
+  "clips": {
+    "variant": {
+      "frames": 144,
+      "duration": 4.8,
+      "sheets": [
+        "variant-00.webp",
+        "variant-01.webp",
+        "variant-02.webp",
+        "variant-03.webp",
+        "variant-04.webp",
+        "variant-05.webp",
+        "variant-06.webp",
+        "variant-07.webp",
+        "variant-08.webp",
+        "variant-09.webp",
+        "variant-10.webp",
+        "variant-11.webp",
+        "variant-12.webp",
+        "variant-13.webp",
+        "variant-14.webp",
+        "variant-15.webp",
+        "variant-16.webp",
+        "variant-17.webp"
+      ]
+    },
+    "idle": {
+      "frames": 180,
+      "duration": 6.0,
+      "sheets": [
+        "../../touch-v1/preview/idle-00.webp",
+        "../../touch-v1/preview/idle-01.webp",
+        "../../touch-v1/preview/idle-02.webp",
+        "../../touch-v1/preview/idle-03.webp",
+        "../../touch-v1/preview/idle-04.webp",
+        "../../touch-v1/preview/idle-05.webp",
+        "../../touch-v1/preview/idle-06.webp",
+        "../../touch-v1/preview/idle-07.webp",
+        "../../touch-v1/preview/idle-08.webp",
+        "../../touch-v1/preview/idle-09.webp",
+        "../../touch-v1/preview/idle-10.webp",
+        "../../touch-v1/preview/idle-11.webp",
+        "../../touch-v1/preview/idle-12.webp",
+        "../../touch-v1/preview/idle-13.webp",
+        "../../touch-v1/preview/idle-14.webp",
+        "../../touch-v1/preview/idle-15.webp",
+        "../../touch-v1/preview/idle-16.webp",
+        "../../touch-v1/preview/idle-17.webp",
+        "../../touch-v1/preview/idle-18.webp",
+        "../../touch-v1/preview/idle-19.webp",
+        "../../touch-v1/preview/idle-20.webp",
+        "../../touch-v1/preview/idle-21.webp",
+        "../../touch-v1/preview/idle-22.webp"
+      ]
+    }
+  }
+}

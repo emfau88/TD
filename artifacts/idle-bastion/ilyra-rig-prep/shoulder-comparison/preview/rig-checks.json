@@ -1,0 +1,13 @@
+{
+  "samples": 25,
+  "trianglesChecked": 186350,
+  "foldedTriangles": 0,
+  "minAreaRatio": 0.5605581998825073,
+  "minLayer": "CapeBack",
+  "originalProjectAndPreviewUnchanged": true,
+  "sameJointPoses": true,
+  "sameRigCode": true,
+  "loopEndpointsExact": true,
+  "assemblyAlphaExact": true,
+  "assemblyMeanRGBDifference": 0.06681382921006944
+}

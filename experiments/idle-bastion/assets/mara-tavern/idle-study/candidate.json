@@ -1,0 +1,60 @@
+{
+  "width": 2304,
+  "height": 512,
+  "frameWidth": 384,
+  "frameHeight": 512,
+  "idle": [
+    [
+      0,
+      700
+    ],
+    [
+      1,
+      220
+    ],
+    [
+      2,
+      220
+    ],
+    [
+      3,
+      380
+    ],
+    [
+      2,
+      240
+    ],
+    [
+      1,
+      260
+    ],
+    [
+      0,
+      1180
+    ],
+    [
+      4,
+      60
+    ],
+    [
+      5,
+      90
+    ],
+    [
+      4,
+      70
+    ],
+    [
+      0,
+      1220
+    ]
+  ],
+  "labels": [
+    "Ruhe · Kontur R2",
+    "Einatmen · Anfang",
+    "Einatmen · Mitte",
+    "Einatmen · Ende",
+    "Lidschlag · halb",
+    "Lidschlag · geschlossen"
+  ]
+}

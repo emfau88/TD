@@ -1,0 +1,19 @@
+{
+  "layers": 13,
+  "canvas": [
+    768,
+    1280
+  ],
+  "psbSignature": "384250530002",
+  "layerCompositeExact": true,
+  "unity": {
+    "samples": 25,
+    "trianglesChecked": 187200,
+    "foldedTriangles": 0,
+    "minAreaRatio": 0.5605581998825073,
+    "minLayer": "CapeBack"
+  },
+  "jointTestEndMatchesStart": true,
+  "unityVsAssemblyMaxAlphaDifference": 0,
+  "unityVsAssemblyMeanAbsRGBDifference": 0.06718343098958333
+}

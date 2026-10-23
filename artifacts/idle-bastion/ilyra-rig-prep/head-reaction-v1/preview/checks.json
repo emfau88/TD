@@ -1,0 +1,56 @@
+{
+  "original": {
+    "samples": 85,
+    "trianglesChecked": 812770,
+    "foldedTriangles": 0,
+    "minAreaRatio": 0.673314094543457,
+    "minLayer": "TorsoArmsHands",
+    "endpointsExact": true,
+    "visibleRGBAExact": true
+  },
+  "balanced": {
+    "samples": 86,
+    "trianglesChecked": 822332,
+    "foldedTriangles": 0,
+    "minAreaRatio": 0.5268926024436951,
+    "minLayer": "TorsoArmsHands",
+    "endpointsExact": true,
+    "visibleRGBAExact": true
+  },
+  "idle": {
+    "samples": 182,
+    "trianglesChecked": 1740284,
+    "foldedTriangles": 0,
+    "minAreaRatio": 0.8172838091850281,
+    "minLayer": "TorsoArmsHands",
+    "endpointsExact": true,
+    "visibleRGBAExact": true
+  },
+  "originalJoinsApprovedIdle": true,
+  "balancedHeadJoinsBalancedIdle": false,
+  "returnRounding": {
+    "maxJointDifferencePixels": 0.0003662109375,
+    "maxAlphaDifference": 1.0,
+    "maxCompositedRGBDifference": 2.650980392156889,
+    "changedPixels": 195
+  },
+  "balancedReturnWithinRounding": true,
+  "approvedIdleUnchanged": true,
+  "armProportions": {
+    "before": {
+      "upperLeft": 241.2343401476268,
+      "forearmLeft": 211.23683535395168,
+      "wristLeftY": 1003.0,
+      "wristRightY": 1003.0,
+      "handLength": 137.00364947505105
+    },
+    "after": {
+      "upperLeft": 217.1109469879519,
+      "forearmLeft": 190.54853836975212,
+      "wristLeftY": 958.7509765625,
+      "wristRightY": 958.7509765625,
+      "handLength": 137.60523919096318
+    }
+  },
+  "totalAtlasBytes": 141375746
+}

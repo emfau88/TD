@@ -1,0 +1,9 @@
+# Ilyra – Mini-Hüpfer V3
+
+Auf Nutzerwunsch erneut kräftigeres Nachschwingen, als separate Variante. V1/V2 erhalten. Gegenüber V2: Federträgheit 1,9 → 2,5; Dämpfung 0,25 → 0,23; Sicherheitsgrenze 22 → 28 px. Frequenz weiterhin 2,25 Hz. Maximaler Hilfsknochen-Ausschlag 22,845/23,052 px, ohne Anschlag. Bestehende Mesh-Gewichte übernehmen die Bewegung anteilig. Keine Änderung an Sprung oder Armen; alle 26 übrigen Gelenke in 98 Zuständen exakt gleich zu V2.
+
+Eigene Quelle ../hip-v1/unity/Assets/Editor/BuildIlyraMiniHopV3.cs, Szene/Prefab IlyraMiniHopV3 und eigene Clips/Controller. Export mit Unity 6000.4.0f1: BuildIlyraMiniHopV3.Run und -spire-export. Anschließend pack.py und compare.py aus dem Repository-Wurzelverzeichnis ausführen. Vorschau: preview/index.html; synchroner V2/V3-Vergleich: preview/comparison.html. Die bestehende Idle wird aus ../hip-v1/preview geladen; Vergleich benötigt ../mini-hop-v2/preview.
+
+98 Zustände, 957.460 Dreiecksprüfungen ohne Faltungen, kleinster Flächenquotient 0,54617. Start-/Endbild pixelidentisch, Idle-Anschluss wie V2 (maximal 1/255 Alpha, 2,263/255 Composite). Verlustfreie WebP-Pixel geprüft. Vorherige Assets per Hash unverändert. Landung und Nachschwingen in Zwischenbildern und Browservergleich kontrolliert; Screenshot und GIF vorhanden. Unity meldete eine SearchDatabase-Ausnahme während der Editor-Indexierung; Export selbst vollständig und validiert. Restfederbewegung unter 0,023 px, mit bestehender weicher Endkorrektur ab 2,8 s.
+
+3,2 Sekunden, 30 fps, PNGs und verlustfreie Atlanten (45,5 MB). Ausschnitt endet an den Oberschenkeln, keine neue Ganzkörper-Sprungmechanik. Visuelle Abnahme offen. Nutzer hat die Sicherung aller bisherigen Animationsarbeiten per Commit/Push auf dem Tavernenbranch ausdrücklich autorisiert; kein Merge oder Push nach main.

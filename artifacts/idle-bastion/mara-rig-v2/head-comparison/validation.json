@@ -1,0 +1,14 @@
+{
+  "before": {
+    "frames": 49,
+    "endpoint_exact": true,
+    "duration": 1.6
+  },
+  "after": {
+    "frames": 61,
+    "endpoint_exact": true,
+    "duration": 2.0
+  },
+  "same_rest": true,
+  "original_assets_unchanged": true
+}

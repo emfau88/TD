@@ -1,0 +1,10 @@
+/Library/
+/Temp/
+/Logs/
+/UserSettings/
+/obj/
+/Export/
+/*.csproj
+/*.sln
+/*.slnx
+/*.log

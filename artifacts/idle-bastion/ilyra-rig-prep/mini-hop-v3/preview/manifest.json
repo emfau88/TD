@@ -1,0 +1,54 @@
+{
+  "width": 768,
+  "height": 1280,
+  "fps": 30,
+  "clips": {
+    "hop": {
+      "frames": 96,
+      "duration": 3.2,
+      "sheets": [
+        "hop-00.webp",
+        "hop-01.webp",
+        "hop-02.webp",
+        "hop-03.webp",
+        "hop-04.webp",
+        "hop-05.webp",
+        "hop-06.webp",
+        "hop-07.webp",
+        "hop-08.webp",
+        "hop-09.webp",
+        "hop-10.webp",
+        "hop-11.webp"
+      ]
+    },
+    "idle": {
+      "frames": 180,
+      "duration": 6.0,
+      "sheets": [
+        "../../hip-v1/preview/idle-00.webp",
+        "../../hip-v1/preview/idle-01.webp",
+        "../../hip-v1/preview/idle-02.webp",
+        "../../hip-v1/preview/idle-03.webp",
+        "../../hip-v1/preview/idle-04.webp",
+        "../../hip-v1/preview/idle-05.webp",
+        "../../hip-v1/preview/idle-06.webp",
+        "../../hip-v1/preview/idle-07.webp",
+        "../../hip-v1/preview/idle-08.webp",
+        "../../hip-v1/preview/idle-09.webp",
+        "../../hip-v1/preview/idle-10.webp",
+        "../../hip-v1/preview/idle-11.webp",
+        "../../hip-v1/preview/idle-12.webp",
+        "../../hip-v1/preview/idle-13.webp",
+        "../../hip-v1/preview/idle-14.webp",
+        "../../hip-v1/preview/idle-15.webp",
+        "../../hip-v1/preview/idle-16.webp",
+        "../../hip-v1/preview/idle-17.webp",
+        "../../hip-v1/preview/idle-18.webp",
+        "../../hip-v1/preview/idle-19.webp",
+        "../../hip-v1/preview/idle-20.webp",
+        "../../hip-v1/preview/idle-21.webp",
+        "../../hip-v1/preview/idle-22.webp"
+      ]
+    }
+  }
+}

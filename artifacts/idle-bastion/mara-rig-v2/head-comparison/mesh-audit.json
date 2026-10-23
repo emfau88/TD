@@ -1,0 +1,15 @@
+{
+    "clips": [
+        {
+            "clip": "HeadReactionOrganic",
+            "minLayer": "Torso",
+            "minPixel": "(539.33, 355.33)",
+            "minAlpha": 0.0,
+            "samples": 61,
+            "trianglesChecked": 113948,
+            "foldedTriangles": 0,
+            "minAreaRatio": 0.9495764970779419,
+            "maxAreaRatio": 1.047469973564148
+        }
+    ]
+}

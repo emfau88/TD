@@ -1,0 +1,7 @@
+{
+  "interiorMarginPixels": 9,
+  "fullyTransparentInteriorMaxPixels": 0,
+  "alphaBelow240MaxPixels": 4,
+  "note": "Four semi-transparent edge pixels at the moving image-right hand in the strongest pose; this conservative static interior mask is not a topology proof.",
+  "framesTested": 181
+}

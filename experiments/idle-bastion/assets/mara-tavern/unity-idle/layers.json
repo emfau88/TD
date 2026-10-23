@@ -1,0 +1,19 @@
+{
+  "canvas": [
+    384,
+    512
+  ],
+  "layersFrontToBack": [
+    "Head",
+    "Braid",
+    "LeftHair",
+    "RightHair",
+    "LeftHand",
+    "RightHand",
+    "LeftCloth",
+    "RightCloth",
+    "Hips",
+    "Torso",
+    "HiddenBody"
+  ]
+}

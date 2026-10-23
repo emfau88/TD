@@ -1,0 +1,16 @@
+<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mara · Idle und Berührung im Vergleich</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#20252c;color:#f5f1e7;font:16px system-ui,sans-serif}main{max-width:1080px;margin:auto;padding:20px}h1{font-size:24px;margin:0 0 8px}p{color:#c9c8c3;line-height:1.5;margin:8px 0 16px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel{background:#e7e0d2;color:#292a2b;border-radius:10px;overflow:hidden}.panel h2{font-size:17px;margin:14px 16px 4px}.panel small{display:block;margin:0 16px 8px}.panel canvas{display:block;width:100%;height:auto;max-height:65vh;object-fit:contain}.controls{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:16px 0}button,select,a{font:inherit}button,select{padding:10px 16px;min-height:44px;border:1px solid #606773;border-radius:7px;background:#343d47;color:white;cursor:pointer}input[type=range]{flex:1;min-width:180px}output{font-variant-numeric:tabular-nums}a{color:#a5d8cf}.dark .panel{background:#20252c;color:#eee;border:1px solid #61656b}.zoom .panel canvas{max-height:none}details{margin-top:18px}summary{cursor:pointer}li{line-height:1.7}@media(max-width:600px){main{padding:12px}.pair{gap:6px}.panel h2{font-size:15px;margin:10px 10px 4px;min-height:2.5em}.panel small{font-size:11px;margin:0 10px 6px;min-height:2.8em}h1{font-size:21px}}
+button[aria-pressed="true"]{border-color:#9ad9c2;background:#315349}</style><main><h1>Mara · organischere Bewegung</h1>
+<p>Gleiche Figur, gleichzeitiger Start, echte Abspielgeschwindigkeit. Links der bisherige Stand, rechts der neue Versuch.</p>
+<div class="controls"><button data-clip="Idle" aria-pressed="true">Idle vergleichen</button><button data-clip="TouchReaction" aria-pressed="false">Berührung vergleichen</button></div><div class="pair"><section class="panel"><h2>Vorher · bisheriger Stand</h2><small id="before-note">5,0 Sekunden · unverändert</small><canvas id="before" width="768" height="1024"></canvas></section>
+<section class="panel"><h2>Nachher · organischer Versuch</h2><small id="after-note">5,0 Sekunden · ruhigere Atmung</small><canvas id="after" width="768" height="1024"></canvas></section></div>
+<div class="controls"><button id="play" disabled>Wird geladen …</button><button id="restart" disabled>Beide neu starten</button><label>Tempo <select id="speed"><option value="1">Normal</option><option value="0.5">Halb</option></select></label><label><input id="dark" type="checkbox"> Dunkel</label><label><input id="zoom" type="checkbox"> Groß</label></div>
+<div class="controls"><input id="scrub" aria-label="Gemeinsamer Zeitpunkt" type="range" min="0" max="81" value="0"><output id="time">0,00 s</output></div>
+<p id="status" role="status">Beide Animationen werden geladen …</p>
+<p id="changes"></p>
+<p><a href="../preview/index.html">Bisherige drei Animationen öffnen</a> · <a href="../head-comparison/index.html">Kopfvergleich</a> · <a id="gif" href="Mara-Idle-Vorher-Nachher.gif">Vergleich als GIF</a></p></main>
+<script type="module" src="comparison.js"></script></html>
+
+

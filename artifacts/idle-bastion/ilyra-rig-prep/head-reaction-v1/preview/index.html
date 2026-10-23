@@ -1,0 +1,37 @@
+<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ilyra · Kopfreaktion und Armproportionen</title>
+<style>
+*{box-sizing:border-box}body{margin:0 auto;max-width:1120px;padding:20px;background:#15202d;color:#eef3fa;font:16px/1.5 system-ui}h1{font-size:25px;margin:0}p{color:#c0cddd;margin:8px 0 16px}main{display:grid;grid-template-columns:minmax(0,700px) 1fr;gap:22px}.stage{--h:76vh;position:relative;width:min(100%,calc(var(--h)*.6));aspect-ratio:768/1280;max-height:var(--h);background:#e6e0d4;border-radius:12px;overflow:hidden;margin:auto}.stage canvas{display:block;width:100%;height:100%}.dark{background:#172436}.zoom{width:min(100%,calc(var(--h)*.883));aspect-ratio:768/870}.zoom canvas{position:absolute;width:100%;height:auto;top:-15%}button,select{font:inherit;padding:9px 12px;border:1px solid #7890aa;border-radius:8px;background:#2b4058;color:white;cursor:pointer}nav{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}label{display:block;margin:14px 0 6px}input[type=range]{width:100%}a{color:#aed4ff}.small{font-size:13px}#error{color:#ffc8ba}#comparison{width:100%;border-radius:12px}*[hidden]{display:none!important}@media(max-width:650px){body{padding:12px}h1{font-size:22px}main{grid-template-columns:1fr}.stage{--h:60vh}}
+</style>
+<h1>Ilyra · Kopfreaktion</h1><p>Der Oberkörper folgt der Kopfneigung; Brust und Haare reagieren verzögert. Anschließend kehrt sie in die Idle zurück.</p>
+<main><section><div class="stage" id="stage"><canvas id="canvas" width="768" height="1280" aria-label="Ilyras Kopfreaktion mit anschließender Idle"></canvas></div><img id="comparison" src="arm-comparison.jpg" alt="Armlänge im Vergleich: bisher links, korrigiert rechts" hidden></section><aside>
+<nav><button id="react" disabled>Kopfreaktion abspielen</button><button id="pause" disabled>Pause</button><button id="rest">Ruhepose</button></nav>
+<label for="variant">Armlänge</label><select id="variant"><option value="balanced">Korrigiert</option><option value="original">Bisheriger Stand</option></select><nav><button id="compare">Arme vergleichen</button></nav>
+<nav><button id="zoom">Oberkörper vergrößern</button><button id="background">Dunkler Hintergrund</button></nav>
+<label for="frame"><span id="clipLabel">Kopfreaktion</span> · <output id="counter">0,00 / 2,80 s</output></label><input id="frame" type="range" min="0" max="83" value="0" step="1">
+<label for="speed">Geschwindigkeit</label><select id="speed"><option value="1">Normal</option><option value="0.5">Halbes Tempo</option></select>
+<p class="small" id="status">Ober- und Unterarme etwa 10 % kürzer, Handgröße beibehalten. Beide Varianten bleiben verfügbar.</p><p id="error" role="status"></p>
+<p><a href="Ilyra-Kopfreaktion.gif" download>Reaktion als GIF</a></p><p class="small">Separates Experiment · nichts am Hauptspiel geändert.<br><a href="../../idle-v1/preview/index.html">Bisherige freigegebene Idle</a></p>
+</aside></main>
+<script>
+const $=s=>document.querySelector(s),ctx=$('#canvas').getContext('2d'),cache=new Map();let data,ready=false,variant='balanced',clip='balanced',frame=0,speed=1,playing=false,origin=0,token=0;
+function load(src){if(!cache.has(src)){const p=new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Bild konnte nicht geladen werden.'));im.src=src});cache.set(src,p)}const p=cache.get(src);cache.delete(src);cache.set(src,p);while(cache.size>4)cache.delete(cache.keys().next().value);return p}
+function idle(){return variant==='balanced'?'idle':'oldIdle'}
+function showCanvas(){$('#comparison').hidden=true;$('#stage').hidden=false;$('#compare').textContent='Arme vergleichen'}
+function pause(){playing=false;$('#pause').textContent='Weiter'}
+function fail(e){pause();$('#error').textContent=e.message}
+async function draw(n){const request=++token,c=data.clips[clip],index=Math.floor(n/8);try{const im=await load(c.sheets[index]);if(request!==token)return;ctx.clearRect(0,0,768,1280);ctx.drawImage(im,n%8%4*768,Math.floor(n%8/4)*1280,768,1280,0,0,768,1280);frame=n;$('#frame').max=c.frames-1;$('#frame').value=n;$('#counter').textContent=(n/30).toFixed(2).replace('.',',')+' / '+c.duration.toFixed(2).replace('.',',')+' s';$('#clipLabel').textContent=clip==='idle'||clip==='oldIdle'?'Idle':'Kopfreaktion';load(c.sheets[(index+1)%c.sheets.length]).catch(fail);if(clip===variant)load(data.clips[idle()].sheets[0]).catch(fail)}catch(e){fail(e)}}
+async function start(){if(!ready)return;showCanvas();pause();$('#error').textContent='';clip=variant;frame=0;await draw(0);if($('#error').textContent)return;playing=true;origin=performance.now();$('#pause').textContent='Pause'}
+$('#react').onclick=start;
+$('#pause').onclick=()=>{if(playing)pause();else if(ready){showCanvas();playing=true;origin=performance.now()-frame/30/speed*1000;$('#pause').textContent='Pause'}};
+$('#rest').onclick=()=>{if(!ready)return;pause();showCanvas();clip=variant;draw(0)};
+$('#variant').onchange=e=>{variant=e.target.value;if(ready){pause();showCanvas();clip=variant;draw(0)}};
+$('#frame').oninput=e=>{if(ready){pause();showCanvas();draw(+e.target.value)}};
+$('#speed').onchange=e=>{speed=+e.target.value;origin=performance.now()-frame/30/speed*1000};
+$('#background').onclick=()=>{$('#background').textContent=$('#stage').classList.toggle('dark')?'Heller Hintergrund':'Dunkler Hintergrund'};
+$('#zoom').onclick=()=>{showCanvas();$('#zoom').textContent=$('#stage').classList.toggle('zoom')?'Ganze Figur':'Oberkörper vergrößern'};
+$('#compare').onclick=()=>{pause();const comparison=$('#comparison').hidden;$('#comparison').hidden=!comparison;$('#stage').hidden=comparison;$('#compare').textContent=comparison?'Zur Bewegung':'Arme vergleichen'};
+Promise.all([fetch('manifest.json').then(r=>r.json()),fetch('../../idle-v1/preview/manifest.json').then(r=>r.json())]).then(async([m,old])=>{data=m;data.clips.oldIdle={frames:old.frames,duration:old.duration,sheets:old.sheets.map(s=>'../../idle-v1/preview/'+s.file)};await draw(0);ready=true;$('#react').disabled=false;$('#pause').disabled=false}).catch(fail);
+function tick(t){if(playing){const c=data.clips[clip];let n=Math.floor(Math.max(0,t-origin)*speed*.03);if(n>=c.frames){if(clip===variant){clip=idle();origin=t;n=0}else n%=c.frames}if(n!==frame||n===0)draw(n)}requestAnimationFrame(tick)}requestAnimationFrame(tick);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)pause()});
+</script></html>

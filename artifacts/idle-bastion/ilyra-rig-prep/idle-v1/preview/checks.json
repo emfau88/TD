@@ -1,0 +1,25 @@
+{
+  "samples": 181,
+  "trianglesChecked": 1730722,
+  "foldedTriangles": 0,
+  "minAreaRatio": 0.9430006742477417,
+  "minLayer": "TorsoArmsHands",
+  "previousShoulderVariantUnchanged": true,
+  "loopEndpointsExact": true,
+  "blinkOutsideEyePatchesExact": true,
+  "blinkHalfChangedBounds": [
+    311,
+    544,
+    940,
+    698
+  ],
+  "blinkClosedChangedBounds": [
+    312,
+    544,
+    940,
+    698
+  ],
+  "atlasVisibleRGBAExact": true,
+  "webpTotalBytes": 75939012,
+  "webpHiddenRGBNote": "Fully transparent RGB is normalized for comparison; alpha and all visible RGB must match exactly."
+}

@@ -1,0 +1,13 @@
+{
+    "solverHz": 240,
+    "duration": 3.200000047683716,
+    "frequency": 2.25,
+    "damping": 0.23000000417232514,
+    "inertia": 2.5,
+    "limit": 28.0,
+    "maxLeft": 22.84486198425293,
+    "maxRight": 23.05174446105957,
+    "residualLeft": 0.022830303758382798,
+    "residualRight": 0.013526839204132557,
+    "settleCorrectionStarts": 2.799999952316284
+}

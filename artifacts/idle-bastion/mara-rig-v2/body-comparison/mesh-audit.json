@@ -1,0 +1,26 @@
+{
+    "clips": [
+        {
+            "clip": "IdleOrganic",
+            "minLayer": "CapeL",
+            "minPixel": "(268.67, 449.67)",
+            "minAlpha": 0.0,
+            "samples": 151,
+            "trianglesChecked": 282068,
+            "foldedTriangles": 0,
+            "minAreaRatio": 0.9932430386543274,
+            "maxAreaRatio": 1.0710577964782715
+        },
+        {
+            "clip": "TouchReactionOrganic",
+            "minLayer": "Torso",
+            "minPixel": "(539.33, 355.33)",
+            "minAlpha": 0.0,
+            "samples": 85,
+            "trianglesChecked": 158780,
+            "foldedTriangles": 0,
+            "minAreaRatio": 0.3603892922401428,
+            "maxAreaRatio": 1.2939808368682862
+        }
+    ]
+}

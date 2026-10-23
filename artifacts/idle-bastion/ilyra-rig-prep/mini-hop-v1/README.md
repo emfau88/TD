@@ -1,0 +1,11 @@
+# Ilyra – Mini-Hüpfer
+
+Separate 3,2-s-Probe nach dem vorläufigen Parken stärkerer Armbeugungen. Die bisherige Ruhegrundlage bleibt erhalten: kurze Vorbereitung (5 Pixel abwärts), kleiner Hub (18 Pixel aufwärts), Abfedern und gedämpfte Rückkehr. Kopf, Haare und Stoff folgen leicht verzögert; Arme bewegen sich höchstens 0,7 Grad, Unterarme höchstens 0,5 Grad. Brustfeder reagiert auf die Körperbeschleunigung, kein dauerhaftes Pulsieren.
+
+Quellen: ../hip-v1/unity/Assets/Editor/BuildIlyraMiniHop.cs; eigene Szene/Prefab Assets/IlyraMiniHop.unity/.prefab und eigene Körper-/Federclips/Controller in Assets/Clips/. Unveränderte Grafik TorsoHip0 und bisherige freigegebene Armproportionen. Die abgelehnte ArmBendStudy ist nicht eingebunden. Alle 210 vorherigen Quelldateien per Hash unverändert.
+
+Export: preview/frames mit transparenten 768×1280-PNGs, 30 fps; 96 abgespielte Frames, 98 exportierte Prüfzustände inklusive Endzustand. Verlustfreie WebP-Atlanten, GIF mit hellem Hintergrund und eigene HTML-Vorschau. Der Clip wird einmal abgespielt und kehrt zur passenden Idle zurück; manuell erneut auslösbar. Idle-Atlanten werden aus ../hip-v1/preview referenziert. Beim Weitergeben diese Abhängigkeit erhalten. Cache höchstens vier Atlasbilder; nächstes Blatt wird nachgeladen.
+
+Prüfung: 957.460 Dreiecksprüfungen ohne Faltungen, kleinster Flächenquotient 0,8146. Start-/Endbild pixelidentisch. Übergang zur Idle maximal 1/255 Alpha und 2,27/255 im Composite. Verlustfreier sichtbarer RGBA-Roundtrip geprüft. 240-Hz-Feder, Frequenz 2,25 Hz, Dämpfung 0,38, Trägheit 0,85: maximal 5,97/6,09 Pixel; Begrenzung bei 8 Pixeln wird nicht erreicht. Restschwingung vor Abschluss unter 0,00003 Pixel. Sprungspitze und Landung als PNG und im Browser geprüft; Desktop/Hochkant, Pause, Zeitregler, erneutes Auslösen und Rückkehr zur Idle geprüft. Keine protokollierten Browserfehler; Screenshots liegen in preview/.
+
+Grenzen: vorhandener Ausschnitt endet an den Oberschenkeln. Keine neue Knie-/Fußanimation und keine Behauptung einer überprüften Ganzkörper-Sprungmechanik. Lokale Qualitätsprobe mit ca. 44,8 MB neuen Atlanten, kein optimiertes Auslieferungspaket. Auslösen mitten in der Idle startet an der gemeinsamen Ruhepose; Spielintegration müsste den Einstieg koordinieren. Visuelle Nutzerabnahme offen. Keine weitere Armkorrektur, kein Commit/Push oder Eingriff ins Hauptspiel.

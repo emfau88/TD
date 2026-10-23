@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SPIRE · Kleine Unity-Probe · Mara</title>
+  <style>
+    @font-face{font-family:Pixel;src:url('./assets/ui/fonts/PixelifySans.ttf')}
+    *{box-sizing:border-box}body{margin:0;background:#0d191d;color:#e8dfc9;font:15px/1.5 system-ui,sans-serif}
+    main{max-width:960px;margin:auto;padding:24px}.eyebrow{color:#c7a76b;font-size:11px;letter-spacing:.15em;text-transform:uppercase;margin:0}
+    h1{font:34px/1.2 Pixel,serif;margin:7px 0 10px}h2{font:24px Pixel,serif;margin:10px 0}.intro{color:#b4bebc;margin:0 0 16px}
+    .toolbar{display:flex;gap:12px 22px;flex-wrap:wrap;align-items:center;margin:16px 0}label{display:flex;align-items:center;gap:7px;cursor:pointer;min-height:36px}
+    input{accent-color:#dfb768}select,button{font:inherit;color:inherit;background:#21363a;border:1px solid #62716b;border-radius:4px;padding:7px 12px;cursor:pointer}
+    .portraits{display:grid;grid-template-columns:1fr 1fr;gap:24px}figure{margin:0;min-width:0}.stage{display:flex;justify-content:center;overflow:hidden;border:1px solid #58605a;border-radius:6px;background:#d8ddd4}
+    .sprite{width:100%;max-width:384px;aspect-ratio:3/4;overflow:hidden;position:relative}.sprite img{display:block;width:100%;height:100%;image-rendering:pixelated}
+    body:has(#dark:checked) .stage{background:#15272e}body:has(#detail:checked) .sprite img{transform:scale(2);transform-origin:20% 68%}
+    figcaption{color:#b4bebc;font-size:13px;margin-top:8px}footer{border-top:1px solid #36494b;color:#96aaa9;font-size:13px;padding-top:15px;margin-top:24px}a{color:#e3be78}
+    @media(max-width:620px){main{padding:18px 16px}.portraits{grid-template-columns:1fr;gap:18px}h1{font-size:29px}}
+  </style>
+</head>
+<body><main>
+  <p class="eyebrow">SPIRE · separates Experiment · aus Unity gerendert</p>
+  <h1>Mara · sanfte Stoffbewegung</h1>
+  <p class="intro">Eine kleine Probe mit dem festen Ruhebild: Nur die freien Umhangränder bewegen sich. Gesicht, Haare, Brust und Hände bleiben fest.</p>
+  <div class="toolbar">
+    <button id="motion" aria-pressed="true">Bewegung anhalten</button>
+    <label>Tempo <select id="speed"><option value="1">Normal</option><option value="0.5">Halb so schnell</option></select></label>
+    <label><input type="checkbox" id="dark">Dunkler Hintergrund</label>
+    <label><input type="checkbox" id="detail">Stoff vergrößern</label>
+  </div>
+  <div class="portraits">
+    <figure><h2>Festes Ruhebild</h2><div class="stage"><div class="sprite"><img src="./assets/mara-tavern/unity-probe/rest.webp" width="768" height="1024" alt="Maras unverändertes Ruhebild"></div></div><figcaption>Dasselbe Bild als direkter Vergleich.</figcaption></figure>
+    <figure><h2>Unity-Probe</h2><div class="stage"><div class="sprite"><img id="animated" src="./assets/mara-tavern/unity-probe/cloth.webp" width="768" height="1024" alt="Mara mit sanft bewegten Umhangrändern"></div></div><figcaption id="caption">Vier Sekunden · durchgehender Loop · dezente Bewegung.</figcaption></figure>
+  </div>
+  <footer>Ein Methodentest, noch keine vollständige Idle: Atmung, Blinzeln und Gesten sind hier nicht enthalten. Nicht im veröffentlichten Spiel eingebunden.<br><a href="./rest-review.html">Zu den Ruhebildern von Mara und Ilyra</a></footer>
+</main>
+<script>
+  const picture = document.querySelector('#animated');
+  const button = document.querySelector('#motion');
+  const speed = document.querySelector('#speed');
+  const caption = document.querySelector('#caption');
+  let running = true;
+  function update() {
+    picture.src = './assets/mara-tavern/unity-probe/' + (running ? (speed.value === '1' ? 'cloth.webp' : 'cloth-slow.webp') : 'rest.webp');
+    button.textContent = running ? 'Bewegung anhalten' : 'Bewegung starten';
+    button.setAttribute('aria-pressed', String(running));
+    caption.textContent = running ? (speed.value === '1' ? 'Vier Sekunden · durchgehender Loop · dezente Bewegung.' : 'Halbes Tempo zum Prüfen der Konturen.') : 'Zurück im unveränderten Ruhebild.';
+  }
+  button.addEventListener('click', () => { running = !running; update(); });
+  speed.addEventListener('change', update);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { running = false; update(); }
+</script>
+</body></html>

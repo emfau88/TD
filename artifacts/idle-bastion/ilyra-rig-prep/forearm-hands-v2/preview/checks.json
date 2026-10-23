@@ -1,0 +1,48 @@
+{
+  "head": {
+    "samples": 86,
+    "trianglesChecked": 822332,
+    "foldedTriangles": 0,
+    "minAreaRatio": 0.5381367206573486,
+    "minLayer": "TorsoArmsHands",
+    "exactLoop": true,
+    "losslessRGBA": true
+  },
+  "idle": {
+    "samples": 182,
+    "trianglesChecked": 1740284,
+    "foldedTriangles": 0,
+    "minAreaRatio": 0.7264453172683716,
+    "minLayer": "TorsoArmsHands",
+    "exactLoop": true,
+    "losslessRGBA": true
+  },
+  "proportions": {
+    "before": {
+      "upper": 217.1109469879519,
+      "forearm": 190.54853836975212,
+      "hand": 137.60523919096318,
+      "elbow": [
+        175.49990844726562,
+        768.300048828125
+      ],
+      "wristY": 958.7509765625,
+      "fingerEndY": 1096.301025390625
+    },
+    "after": {
+      "upper": 217.1109469879519,
+      "forearm": 175.30464641856958,
+      "hand": 123.90442558153823,
+      "elbow": [
+        175.49990844726562,
+        768.300048828125
+      ],
+      "wristY": 943.514892578125,
+      "fingerEndY": 1067.349609375
+    }
+  },
+  "elbowAnchorDelta": 0.0,
+  "previousFilesChanged": [],
+  "returnMaxAlpha": 1.0,
+  "returnMaxComposite": 2.2627450980392183
+}

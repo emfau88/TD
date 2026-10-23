@@ -1,0 +1,11 @@
+# T11u.2 · vorgelegter Mara-Idle-Versuch
+
+21.10.2026. Nutzer wünscht ausdrücklich den aktuellen Versuch ohne weitere Korrekturschleife. Qualitätsfreigabe offen; die Entscheidung, das vorhandene Bild weiterzuverwenden statt eine neue optimale Rig-Pose zu erstellen, wurde vom Nutzer beanstandet und anerkannt.
+
+Unity 6000.4.0f1 mit offiziellen Paketen 2D Animation 14.0.3 und PSD Importer 13.0.2. Bearbeitbare Szene und Animation mit elf SpriteSkin-Ebenen, zwölf Knochen, sanfter Oberkörperbewegung, Kopf-/Haarbewegung und zwei Blinkereignissen über acht Sekunden. Das PSB bewahrt die getrennten Bildlagen; die Szene riggt die daraus vorbereiteten PNG-Lagen über Sprite-Editor-Metadaten. Es ist noch keine vollständig getrennte universelle Reaktionsfigur mit eigenen Ober-/Unterarmen und Mundvarianten.
+
+Bildbasis: sichtbare Originalpixel des festen Mara-Bildes, getrennte Ebenen mit schmalen Überlappungen. Drei eingebaute Imagegen-Aufrufe ergänzten ausschließlich eine Körper-Unterzeichnung sowie geschlossene und halb geschlossene Lider. Keine CLI/API-Verwendung. [Originalausgaben, Registrierung und vollständige Prompts](../../../../experiments/idle-bastion/assets/mara-tavern/unity-idle/PROMPTS.md). Die Lidvarianten verändern nur festgelegte Augenregionen; Kopf und Gesicht bewegen sich gemeinsam.
+
+Unity-Renderlauf beendet mit Code 0, alle elf SpriteSkins meldeten Ready. 193 transparente Bilder bei 768 × 1024/24 fps einschließlich Endbild; erstes und letztes Bild sind identisch. Verlustfreies animiertes WebP als reine Review-Datei (ca. 29 MB, noch nicht für das Spiel optimiert). Browser lädt beide Vergleichsbilder; [Desktopansicht](desktop.png). Keine weitere mobile oder umfangreiche Qualitätsrunde nach dem ausdrücklichen Wunsch, sofort zu zeigen. Sichtbare Ebenenübergänge sind weiter zu beurteilen; der Versuch wird nicht als fertig abgenommen ausgegeben.
+
+Beim ersten Kompilieren wurde eine nicht öffentliche Validierungseigenschaft verwendet und danach korrigiert. Unity meldete zusätzlich einen Editor-Suchindexfehler während des Starts; der Renderlauf selbst wurde vollständig abgeschlossen. Keine Änderung an Spielsteuerung, Berührungsreaktionen, Kampf oder Spielständen. Kein eigener Commit/Push. Weitere Arbeit wartet auf Nutzerfeedback; Status ausschließlich in der Roadmap.

@@ -1,0 +1,37 @@
+{
+    "clips": [
+        {
+            "clip": "Idle",
+            "minLayer": "CapeL",
+            "minPixel": "(268.67, 449.67)",
+            "minAlpha": 0.0,
+            "samples": 151,
+            "trianglesChecked": 282068,
+            "foldedTriangles": 0,
+            "minAreaRatio": 0.9795324206352234,
+            "maxAreaRatio": 1.0323140621185303
+        },
+        {
+            "clip": "HeadReaction",
+            "minLayer": "Braid",
+            "minPixel": "(231.33, 472.33)",
+            "minAlpha": 0.0,
+            "samples": 49,
+            "trianglesChecked": 91532,
+            "foldedTriangles": 0,
+            "minAreaRatio": 0.9557779431343079,
+            "maxAreaRatio": 1.0598876476287842
+        },
+        {
+            "clip": "TouchReaction",
+            "minLayer": "Torso",
+            "minPixel": "(539.33, 355.33)",
+            "minAlpha": 0.0,
+            "samples": 73,
+            "trianglesChecked": 136364,
+            "foldedTriangles": 0,
+            "minAreaRatio": 0.3153913617134094,
+            "maxAreaRatio": 1.349916696548462
+        }
+    ]
+}

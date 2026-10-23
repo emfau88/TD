@@ -1,0 +1,360 @@
+{
+  "canvas": [
+    768,
+    1280
+  ],
+  "coordinateSystem": "pixels, top-left origin; ImageLeft/Right means viewer side",
+  "bones": [
+    {
+      "name": "Root",
+      "parent": -1,
+      "point": [
+        384,
+        850
+      ],
+      "end": [
+        384,
+        650
+      ]
+    },
+    {
+      "name": "Chest",
+      "parent": 0,
+      "point": [
+        384,
+        650
+      ],
+      "end": [
+        384,
+        510
+      ]
+    },
+    {
+      "name": "Neck",
+      "parent": 1,
+      "point": [
+        384,
+        505
+      ],
+      "end": [
+        384,
+        440
+      ]
+    },
+    {
+      "name": "Head",
+      "parent": 2,
+      "point": [
+        384,
+        435
+      ],
+      "end": [
+        384,
+        235
+      ]
+    },
+    {
+      "name": "UpperArmImageLeft",
+      "parent": 1,
+      "point": [
+        216,
+        555
+      ],
+      "end": [
+        171,
+        792
+      ]
+    },
+    {
+      "name": "ForearmImageLeft",
+      "parent": 4,
+      "point": [
+        171,
+        792
+      ],
+      "end": [
+        161,
+        1003
+      ]
+    },
+    {
+      "name": "HandImageLeft",
+      "parent": 5,
+      "point": [
+        161,
+        1003
+      ],
+      "end": [
+        162,
+        1140
+      ]
+    },
+    {
+      "name": "UpperArmImageRight",
+      "parent": 1,
+      "point": [
+        552,
+        555
+      ],
+      "end": [
+        597,
+        792
+      ]
+    },
+    {
+      "name": "ForearmImageRight",
+      "parent": 7,
+      "point": [
+        597,
+        792
+      ],
+      "end": [
+        607,
+        1003
+      ]
+    },
+    {
+      "name": "HandImageRight",
+      "parent": 8,
+      "point": [
+        607,
+        1003
+      ],
+      "end": [
+        606,
+        1140
+      ]
+    },
+    {
+      "name": "ThighImageLeft",
+      "parent": 0,
+      "point": [
+        290,
+        920
+      ],
+      "end": [
+        290,
+        1230
+      ]
+    },
+    {
+      "name": "ThighImageRight",
+      "parent": 0,
+      "point": [
+        478,
+        920
+      ],
+      "end": [
+        478,
+        1230
+      ]
+    },
+    {
+      "name": "SkirtImageLeft",
+      "parent": 0,
+      "point": [
+        318,
+        850
+      ],
+      "end": [
+        240,
+        1000
+      ]
+    },
+    {
+      "name": "SkirtLeftTip",
+      "parent": 12,
+      "point": [
+        240,
+        1000
+      ],
+      "end": [
+        230,
+        1135
+      ]
+    },
+    {
+      "name": "SkirtImageRight",
+      "parent": 0,
+      "point": [
+        450,
+        850
+      ],
+      "end": [
+        528,
+        1000
+      ]
+    },
+    {
+      "name": "SkirtRightTip",
+      "parent": 14,
+      "point": [
+        528,
+        1000
+      ],
+      "end": [
+        538,
+        1135
+      ]
+    },
+    {
+      "name": "SkirtCenter",
+      "parent": 0,
+      "point": [
+        384,
+        860
+      ],
+      "end": [
+        384,
+        1120
+      ]
+    },
+    {
+      "name": "CapeBack",
+      "parent": 1,
+      "point": [
+        384,
+        520
+      ],
+      "end": [
+        384,
+        750
+      ]
+    },
+    {
+      "name": "CapeLeftTip",
+      "parent": 17,
+      "point": [
+        250,
+        740
+      ],
+      "end": [
+        145,
+        940
+      ]
+    },
+    {
+      "name": "CapeRightTip",
+      "parent": 17,
+      "point": [
+        518,
+        740
+      ],
+      "end": [
+        623,
+        940
+      ]
+    },
+    {
+      "name": "HairBack",
+      "parent": 3,
+      "point": [
+        384,
+        340
+      ],
+      "end": [
+        384,
+        600
+      ]
+    },
+    {
+      "name": "HairBackTip",
+      "parent": 20,
+      "point": [
+        384,
+        600
+      ],
+      "end": [
+        384,
+        880
+      ]
+    },
+    {
+      "name": "HairLockImageLeft",
+      "parent": 3,
+      "point": [
+        294,
+        363
+      ],
+      "end": [
+        250,
+        495
+      ]
+    },
+    {
+      "name": "HairLeftTip",
+      "parent": 22,
+      "point": [
+        250,
+        495
+      ],
+      "end": [
+        260,
+        580
+      ]
+    },
+    {
+      "name": "HairLockImageRight",
+      "parent": 3,
+      "point": [
+        474,
+        363
+      ],
+      "end": [
+        518,
+        495
+      ]
+    },
+    {
+      "name": "HairRightTip",
+      "parent": 24,
+      "point": [
+        518,
+        495
+      ],
+      "end": [
+        508,
+        580
+      ]
+    },
+    {
+      "name": "ChestSoftLeft",
+      "parent": 1,
+      "point": [
+        322,
+        650
+      ],
+      "end": [
+        322,
+        610
+      ]
+    },
+    {
+      "name": "ChestSoftRight",
+      "parent": 1,
+      "point": [
+        446,
+        650
+      ],
+      "end": [
+        446,
+        610
+      ]
+    }
+  ],
+  "layerOrder": [
+    "CapeBack",
+    "HairBack",
+    "ThighImageLeft",
+    "ThighImageRight",
+    "Pelvis",
+    "SkirtImageLeft",
+    "SkirtImageRight",
+    "SkirtCenter",
+    "TorsoArmsHands",
+    "Head",
+    "HairLockImageLeft",
+    "HairLockImageRight",
+    "HairFrontGoggles"
+  ]
+}

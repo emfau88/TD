@@ -1,0 +1,42 @@
+{
+  "width": 1536,
+  "height": 512,
+  "frameWidth": 384,
+  "frameHeight": 512,
+  "idle": [
+    [
+      0,
+      1300
+    ],
+    [
+      1,
+      240
+    ],
+    [
+      2,
+      400
+    ],
+    [
+      1,
+      260
+    ],
+    [
+      0,
+      1000
+    ],
+    [
+      3,
+      100
+    ],
+    [
+      0,
+      1340
+    ]
+  ],
+  "labels": [
+    "Original · Ruhe",
+    "Neu · Atemzwischenpose",
+    "Neu · kleine Einatmung",
+    "Original · Augen geschlossen"
+  ]
+}

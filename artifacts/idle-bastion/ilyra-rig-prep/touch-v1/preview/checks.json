@@ -1,0 +1,24 @@
+{
+  "touch": {
+    "samples": 98,
+    "trianglesChecked": 937076,
+    "foldedTriangles": 0,
+    "minAreaRatio": 0.1594785451889038,
+    "minLayer": "TorsoArmsHands",
+    "exactLoop": true,
+    "losslessRGBA": true
+  },
+  "idle": {
+    "samples": 182,
+    "trianglesChecked": 1740284,
+    "foldedTriangles": 0,
+    "minAreaRatio": 0.4737374484539032,
+    "minLayer": "TorsoArmsHands",
+    "exactLoop": true,
+    "losslessRGBA": true
+  },
+  "returnMaxAlpha": 1.0,
+  "returnMaxComposite": 2.2627450980392183,
+  "previousFilesChanged": [],
+  "totalAtlasBytes": 113616490
+}

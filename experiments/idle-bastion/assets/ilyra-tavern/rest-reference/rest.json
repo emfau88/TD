@@ -1,0 +1,17 @@
+{
+  "hero": "ilyra",
+  "width": 384,
+  "height": 512,
+  "anchor": {
+    "x": 240,
+    "y": 360
+  },
+  "previewScale": 1.1,
+  "source": "../idle-study/candidate.png",
+  "sourceSha256": "1a6571da9ccc81570e9d0c63c7363db7172a80c2072402449b84273c941fc78c",
+  "sourceFrame": 0,
+  "bodySha256": "6c3598ac937542e37582d94b8ee66fb2dafff9778bf8c17a9248999ec8f5a7e1",
+  "description": "Ilyra R1: ruhige Augen, lesbare Nase und Mund",
+  "restSha256": "6c3598ac937542e37582d94b8ee66fb2dafff9778bf8c17a9248999ec8f5a7e1",
+  "spearOmitted": "Ausdrücklicher Nutzerwunsch vom 21.10.2026: Ruhebild ohne Speer."
+}

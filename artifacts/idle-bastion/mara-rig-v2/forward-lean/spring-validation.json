@@ -1,0 +1,13 @@
+{
+    "clips": [
+        {
+            "clip": "ForwardLeanPhysics",
+            "duration": 5.0,
+            "maxLeft": 4.706797122955322,
+            "maxRight": 4.3205790519714359,
+            "residualLeft": 0.00020773620053660125,
+            "residualRight": 0.00010214473877567798,
+            "limitHits": 0
+        }
+    ]
+}
