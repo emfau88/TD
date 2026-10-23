@@ -1,3 +1,4 @@
+import { legacyFixtures, restoreHistorical, assertHistoricalFields } from './legacy-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { BASE, BATTLE_RULES_VERSION, IdleBattle } from '../src/battle';
@@ -161,28 +162,17 @@ test('effect and cooldown continue through wave pauses; waiting without simulati
   assert.deepEqual(restored.snapshot(), battle.snapshot());
 });
 
-test('old rule snapshots migrate once, preserve money and combat payloads and require fresh live farm evidence', () => {
-  const oldBattle = new IdleBattle(undefined, { maraBonus: false });
-  until(oldBattle, () => oldBattle.highestCleared === 1);
-  oldBattle.update(2.75);
-  const modern = oldBattle.snapshot();
-  const { mara, ...core } = modern;
-  const legacy = { ...core, schemaVersion: 2, layoutVersion: 1, rulesVersion: 1 };
-  const before = structuredClone(legacy), migrated = IdleBattle.restore(legacy)!;
-  assert.ok(migrated);
-  assert.equal(migrated.snapshot().schemaVersion, 10); assert.equal(BATTLE_RULES_VERSION, 6);
-  assert.deepEqual(migrated.liveClearedWaves, []); assert.equal(migrated.farmWave, 1);
-  assert.equal(certifyFarm(migrated), undefined);
-  assert.deepEqual(migrated.snapshot().towers, modern.towers);
-  assert.deepEqual(migrated.snapshot().enemies, modern.enemies);
-  assert.deepEqual(migrated.snapshot().shots, modern.shots);
-  assert.equal(migrated.gold, modern.gold); assert.equal(migrated.attemptId, modern.attemptId);
-  assert.equal(migrated.mara.targetTowerUid, migrated.towers[0].uid);
-  assert.equal(migrated.mara.cooldownRemaining, 0); assert.equal(migrated.mara.effectRemaining, 0);
-  assert.deepEqual(migrated.drainEvents(), []); assert.deepEqual(legacy, before);
-  assert.equal(IdleBattle.restore({ ...legacy, gold: -1 }), undefined);
-  assert.equal(IdleBattle.restore({ ...legacy, liveClearedWaves: [1, 1] }), undefined);
-  assert.equal(IdleBattle.restore({ ...legacy, rulesVersion: 2 }), undefined);
+test('old rule snapshots migrate once, preserve money and combat payloads and require fresh live farm evidence',() => {
+  const old=legacyFixtures().critical.preMara2;
+  const migrated=restoreHistorical(old,{liveClearedWaves:[],farmWave:1});
+  assert.deepEqual(migrated.liveClearedWaves,[]);assert.equal(migrated.farmWave,1);
+  assert.equal(certifyFarm(migrated),undefined);
+  assert.equal(migrated.mara.targetTowerUid,migrated.towers[0].uid);
+  assert.equal(migrated.mara.cooldownRemaining,0);assert.equal(migrated.mara.effectRemaining,0);
+  assert.deepEqual(migrated.drainEvents(),[]);
+  assert.equal(IdleBattle.restore({...old,gold:-1}),undefined);
+  assert.equal(IdleBattle.restore({...old,liveClearedWaves:[1,1]}),undefined);
+  assert.equal(IdleBattle.restore({...old,rulesVersion:2}),undefined);
 });
 
 test('Mara position and temporary effect never inflate a farm proof, while reassignment invalidates its fingerprint', () => {

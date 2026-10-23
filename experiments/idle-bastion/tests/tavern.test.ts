@@ -1,3 +1,5 @@
+import { language, setLanguage } from '../src/i18n';
+import { legacyFixtures, restoreHistorical, assertHistoricalFields } from './legacy-fixtures';
 import { grantMilestoneGifts } from '../src/tavern-social';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -54,20 +56,14 @@ test('upgrade needs actual boss 25 and 1,200 gold; recruitment needs level II; r
   assert.equal(IdleBattle.restore(forged), undefined);
 });
 
-test('old schema 18 preserves actors, free plots, coins and progress; invalid new ownership is rejected', () => {
-  const b = veteran(); b.positionBuilding('warehouse', { x: 8, y: 10 });
-  const now = b.snapshot(), old: any = structuredClone(now); old.schemaVersion = 18;
-  delete old.settlement.tavernLevel; delete old.settlement.tavernBuilt; delete old.settlement.tavernBuiltAt; delete old.settlement.tavernSeen;
-  grantMilestoneGifts(now.social, b.socialAccess);
-  assert.deepEqual(IdleBattle.restore(old)!.snapshot(), now);
-  const invalid = b.snapshot(); invalid.settlement.tavernBuilt = true;
-  assert.equal(IdleBattle.restore(invalid), undefined);
-  assert.equal(b.buildTavern(b.recommendedTavernPlot!), true);
-  assert.ok(b.upgradeTavern());
-  const forged = b.snapshot(); forged.secondBossVictories = 0;
-  assert.equal(IdleBattle.restore(forged), undefined);
-  assert.equal(b.positionBuilding('tavern', { x: 2, y: 13 }), true);
-  assert.deepEqual(IdleBattle.restore(b.snapshot())!.snapshot(), b.snapshot());
+test('old schema 18 preserves actors, free plots, coins and progress; invalid new ownership is rejected',() => {
+  const old=legacyFixtures().critical.beforeTavern18,b=restoreHistorical(old);
+  assert.equal(b.settlement.tavernBuilt,false);assert.equal(b.settlement.tavernLevel,0);
+  const invalid=b.snapshot();invalid.settlement.tavernBuilt=true;assert.equal(IdleBattle.restore(invalid),undefined);
+  assert.equal(b.buildTavern(b.recommendedTavernPlot!),true);assert.ok(b.upgradeTavern());
+  const forged=b.snapshot();forged.secondBossVictories=0;assert.equal(IdleBattle.restore(forged),undefined);
+  assert.equal(b.positionBuilding('tavern',{x:2,y:13}),true);
+  assert.deepEqual(IdleBattle.restore(b.snapshot())!.snapshot(),b.snapshot());
 });
 
 test('every legal pair of old settlement plots leaves a tavern site without moving either building', () => {
@@ -110,19 +106,14 @@ test('farm proof still works after a tavern built at nonzero combat time', () =>
 });
 
 // Downgraded fixtures omit the new field, like actual released schema-22 saves.
-test('schema 22 owners become II once; nonowners keep kit, old recruitment, gold and positions survive', () => {
-  for (const mode of ['unbuilt', 'built', 'recruited'] as const) {
-    const b = veteran(); b.discovery = 'off'; b.wispArrival.met = true;
-    if (mode !== 'unbuilt') { b.buildTavern(b.recommendedTavernPlot!); b.upgradeTavern(); }
-    if (mode === 'recruited') assert.ok(b.recruitIlyra());
-    const expected = b.snapshot(), old: any = structuredClone(expected);
-    old.schemaVersion = 22; delete old.settlement.tavernLevel;
-    grantMilestoneGifts(expected.social, b.socialAccess);
-    const untouched = structuredClone(old), restored = IdleBattle.restore(old)!;
-    assert.deepEqual(old, untouched); assert.deepEqual(restored.snapshot(), expected);
-    assert.equal(restored.tavernKitAvailable, mode === 'unbuilt');
-    assert.equal(restored.upgradeTavern(), false);
-    assert.deepEqual(IdleBattle.restore(restored.snapshot())!.snapshot(), expected);
+test('schema 22 owners become II once; nonowners keep kit, old recruitment, gold and positions survive',() => {
+  for(const mode of ['unbuilt','built','recruited']){
+    const old=legacyFixtures().critical.tavern22[mode],restored=restoreHistorical(old);
+    assert.equal(restored.settlement.tavernLevel,mode==='unbuilt'?0:2);
+    assert.equal(restored.tavernKitAvailable,mode==='unbuilt');
+    assert.equal(!!restored.ilyra,mode==='recruited');assert.equal(restored.gold,old.gold);
+    const before=restored.snapshot();assert.equal(restored.upgradeTavern(),false);
+    assert.deepEqual(restored.snapshot(),before);assert.deepEqual(IdleBattle.restore(before)!.snapshot(),before);
   }
 });
 
@@ -151,23 +142,28 @@ test('paid upgrade rolls back on save failure and survives reload without a seco
   store.close();
 });
 
-test('companion UI explains locked Ilyra without an early recruitment offer', () => {
-  const dom = new JSDOM(readFileSync(new URL('../index.html', import.meta.url), 'utf8'));
-  const original = Object.getOwnPropertyDescriptor(globalThis, 'document');
-  Object.defineProperty(globalThis, 'document', { value: dom.window.document, configurable: true });
+test('companion UI explains locked Ilyra without an early recruitment offer',() => {
+  const dom=new JSDOM(readFileSync(new URL('../index.html',import.meta.url),'utf8'));
+  const original=Object.getOwnPropertyDescriptor(globalThis,'document'),previous=language();
+  Object.defineProperty(globalThis,'document',{value:dom.window.document,configurable:true});
   try {
-    const b = veteran(); b.discovery = 'off'; b.buildTavern(b.recommendedTavernPlot!);
-    const recruit = document.getElementById('recruit-ilyra') as HTMLButtonElement;
-    syncIlyraUI(b, false, false);
-    assert.ok(recruit.hidden); assert.ok(recruit.disabled);
-    assert.match(document.getElementById('roster-ilyra-status')!.textContent!, /Taverne II & Boss 25/);
-    assert.equal(document.getElementById('tavern-ilyra')!.classList.contains('new-building'), false);
-    b.upgradeTavern(); syncIlyraUI(b, false, false);
-    assert.equal(recruit.hidden, false); assert.equal(recruit.disabled, false);
-    assert.ok(document.getElementById('tavern-ilyra')!.classList.contains('new-building'));
-    b.recruitIlyra(); syncIlyraUI(b, false, false); assert.ok(recruit.hidden);
+    for(const lang of ['en','de'] as const){
+      setLanguage(lang);
+      const b=veteran();b.discovery='off';b.buildTavern(b.recommendedTavernPlot!);
+      const before=b.snapshot(),recruit=document.getElementById('recruit-ilyra') as HTMLButtonElement;
+      syncIlyraUI(b,false,false);
+      assert.ok(recruit.hidden);assert.ok(recruit.disabled);
+      assert.equal(document.getElementById('roster-ilyra-status')!.textContent,lang==='en'?'Tavern II & Boss 25':'Taverne II & Boss 25');
+      assert.equal(document.getElementById('tavern-ilyra')!.classList.contains('new-building'),false);
+      assert.deepEqual(b.snapshot(),before);
+      b.upgradeTavern();syncIlyraUI(b,false,false);
+      assert.equal(recruit.hidden,false);assert.equal(recruit.disabled,false);
+      assert.ok(document.getElementById('tavern-ilyra')!.classList.contains('new-building'));
+      b.recruitIlyra();syncIlyraUI(b,false,false);assert.ok(recruit.hidden);
+    }
   } finally {
-    if (original) Object.defineProperty(globalThis, 'document', original); else Reflect.deleteProperty(globalThis, 'document');
+    setLanguage(previous);
+    if(original)Object.defineProperty(globalThis,'document',original);else Reflect.deleteProperty(globalThis,'document');
     dom.window.close();
   }
 });

@@ -1,3 +1,4 @@
+import { legacyFixtures, restoreHistorical, assertHistoricalFields } from './legacy-fixtures';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -49,18 +50,17 @@ test('Wisp learning pause survives absence without offline reward or repeated gr
 });
 
 test('schema 16 veteran preserves all saved fields without a new compulsory lesson',()=>{
- const b=atWisp();b.meetWisp();b.discovery='off';const old:any=b.snapshot();delete old.discovery;delete old.dismissedDefeatAttempt;old.schemaVersion=16;
- const copy=structuredClone(old), next=IdleBattle.restore(old)!;assert.ok(next);assert.equal(next.discovery,'off');
- const actual:any=next.snapshot();delete actual.discovery;delete actual.dismissedDefeatAttempt;actual.schemaVersion=16;assert.deepEqual(actual,copy);assert.deepEqual(old,copy);
+ const old=legacyFixtures().critical.veteran16,next=restoreHistorical(old);
+ assert.equal(next.discovery,'off');assert.equal(next.introduction.stage,'done');
+ assert.equal(next.learningPaused,false);assert.equal(next.wispArrival.met,true);
 });
 
 
 test('dismissed defeat stays dismissed after reload; schema 17 migrates without losing gold',()=>{
- const b=new IdleBattle();for(let i=0;i<20000&&!b.progress.lastDefeat;i++)b.update(.025);
- assert.ok(b.progress.lastDefeat);b.dismissedDefeatAttempt=b.progress.lastDefeat.attemptId;
+ const old=legacyFixtures().critical.defeat17,b=restoreHistorical(old);
+ assert.ok(b.progress.lastDefeat);assert.equal(b.dismissedDefeatAttempt,0);
+ assert.equal(b.gold,old.gold);b.dismissedDefeatAttempt=b.progress.lastDefeat!.attemptId;
  const next=restored(b);assert.equal(next.dismissedDefeatAttempt,next.progress.lastDefeat!.attemptId);
- const old:any=b.snapshot();delete old.dismissedDefeatAttempt;old.schemaVersion=17;
- const migrated=IdleBattle.restore(old)!;assert.ok(migrated);assert.equal(migrated.dismissedDefeatAttempt,0);assert.equal(migrated.gold,b.gold);
  const bad=b.snapshot();bad.dismissedDefeatAttempt=b.attemptId+1;assert.equal(IdleBattle.restore(bad),undefined);
 });
 

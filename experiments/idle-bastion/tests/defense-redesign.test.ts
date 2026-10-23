@@ -1,4 +1,5 @@
-import { defenseFingerprint } from '../src/farming';
+import { legacyFixtures, restoreHistorical, assertHistoricalFields } from './legacy-fixtures';
+import { defenseFingerprint, certifyFarm } from '../src/farming';
 import { tutorialStep } from '../src/hud';
 import assert from 'node:assert/strict';
 import test from 'node:test';
@@ -44,15 +45,14 @@ test('a dense Frost / damage combination builds, charges once and survives exact
   b.update(2); restored.update(2); assert.deepEqual(restored.snapshot(), b.snapshot());
 });
 
-test('schema 10 preserves money, old tower positions, ongoing combat and cooldown, without inventing farm proof', async () => {
-  const snap = JSON.parse(await readFile(new URL('./fixtures/map-v3.json', import.meta.url), 'utf8'));
-  const legacy = { ...snap, schemaVersion: 10, rulesVersion: 6, layoutVersion: 2, waveRecipeVersion: 6 };
-  const restored = IdleBattle.restore(legacy); assert.ok(restored);
-  assert.equal(restored.gold, snap.gold); assert.deepEqual(restored.snapshot().towers, snap.towers);
-  assert.deepEqual(restored.snapshot().enemies, snap.enemies); assert.deepEqual(restored.snapshot().shots, snap.shots);
-  assert.equal(restored.mara.cooldownRemaining, snap.mara.cooldownRemaining);
-  assert.deepEqual(restored.liveClearedWaves, []); assert.equal(restored.snapshot().schemaVersion, 16);
-  assert.ok(IdleBattle.restore(restored.snapshot()));
+test('schema 10 preserves money, old tower positions, ongoing combat and cooldown, without inventing farm proof',() => {
+  const old=legacyFixtures().critical.midwave[10];
+  const restored=restoreHistorical(old,{liveClearedWaves:[],farmWave:1});
+  assert.equal(restored.gold,old.gold);assert.deepEqual(restored.snapshot().towers,old.towers);
+  assertHistoricalFields(restored.snapshot().enemies,old.enemies);
+  assert.deepEqual(restored.snapshot().shots,old.shots);
+  assert.equal(restored.mara.cooldownRemaining,old.mara.cooldownRemaining);
+  assert.deepEqual(restored.liveClearedWaves,[]);assert.equal(certifyFarm(restored),undefined);
 });
 
 test('Mara waits for combat at her target, casts remotely, retains her buff while walking and changing target', () => {

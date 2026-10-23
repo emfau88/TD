@@ -1,5 +1,17 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Kleines Testpflege-Paket — 23.10.2026, codex/test-refresh.**
+
+- [x] Kritische Save-/Offline-Migrationen, Boss-/Erstprämien und Kauf-Rollback mit gültigen historischen Fixtures wieder prüfbar; B10-Dateiabbruch entkoppelt. Drei Sprachprüfungen ausdrücklich Englisch/Deutsch. Kein Gameplay-, Balance-, Asset- oder Saveformat-Eingriff.
+- [x] Ein vollständiger Abschlusslauf: 291/308 bestanden, 17 bewusst zurückgestellte Bauflächen-/Mara-/Zeitprüfungen rot, keine Skips oder Dateiabbrüche. TypeScript und Produktionsbuild bestanden; Laufzeit diesmal rund 12 s statt vorher rund 238 s durch vermiedene Vorläufe. [Separater Abschlussbericht und Restfehler](../../artifacts/idle-bastion/acceptance/test-refresh/critical/REPORT.md). main und Tavernenarbeiten unberührt.
+
+- [x] Nutzer hat Commit, Push und saubere Übernahme nach main freigegeben. Die 17 Restbefunde bleiben ausdrücklich dokumentiert zurückgestellt; parallele Tavernenarbeiten bleiben auf ihrem eigenen Branch und werden nicht übernommen.
+
+**Gezielte Testpflege — 23.10.2026, lokaler Branch codex/test-refresh.**
+
+- [x] Die zwölf zuvor dokumentierten Fehler mit historisch gültigen Testdaten und weiterhin exakten Kampf-/Geld-/Saveprüfungen korrigiert; alle 12/12 bestanden. Grafik- und Wegannahmen aktualisiert, zweite Benutzeraktion während des Speicherns weiterhin abgewiesen. Keine Gameplay-, Asset- oder Speicherformatänderung.
+- [x] Vollständiges npm test erstmals für diesen Stand protokolliert: 264 bestanden, 38 Fehlschläge in unveränderten Tests außerhalb der bisherigen Teilmatrix, darunter Dateiabbruch B10 vor sechs Testfällen. Keine übersprungenen Tests; TypeScript und Produktionsbuild bestanden. [Ergebnisse, vollständige Fehlerliste und Protokolle](../../artifacts/idle-bastion/acceptance/test-refresh/REPORT.md). Die Gesamtsuite ist noch nicht grün; zusätzliche Befunde werden nicht aus dieser Aufgabe heraus durch Gameplayänderungen behoben.
+
 **L01 · Englisch als Standard, Deutsch im Spielmenü — 23.10.2026, `codex/english-default`.**
 
 - [x] Gemeinsamer Textkatalog für Spieloberfläche, Einführung, Chronik, Gegner-/Turmnamen und Mara-/Ilyra-Dialoge; Englisch als ausdrücklicher Standard, Deutsch sofort im vorhandenen Menü wählbar. Sprachwahl getrennt vom Spielstand gespeichert.

@@ -1,3 +1,4 @@
+import { legacyFixtures, restoreHistorical, assertHistoricalFields } from './legacy-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { IDBFactory } from 'fake-indexeddb';
@@ -12,15 +13,23 @@ import { playOpening } from './helpers/earned-opening';
 function eligible() {
   const b=new IdleBattle(); b.update(4); b.gold=1000000;
   b.buildWorkshop(); b.researchFrost(); b.highestCleared=24; b.bossVictories=1;
-  b.buildWarehouse(); b.unlockClearing(); return b;
+  b.buildWarehouse(); b.unlockClearing();
+  // Directly setting a record bypasses the live clear which normally welcomes Wisp.
+  b.wispArrival.at=b.elapsed;
+  assert.ok(IdleBattle.restore(b.snapshot()));return b;
 }
 
-test('Workshop II charges once after clearing and unlocks continuing level 7+ / three bounded art stages',()=>{
+test('Workshop II charges once after Frost and unlocks continuing level 7+ / three bounded art stages',()=>{
   const b=eligible(); b.gold=1199; assert.equal(b.upgradeWorkshop(),false);
   b.gold=1200; assert.equal(b.upgradeWorkshop(),true); assert.equal(b.gold,0);
   assert.equal(b.upgradeWorkshop(),false); assert.equal(b.maxLevel,Infinity);
   const early=new IdleBattle(); early.gold=100000;early.buildWorkshop();early.researchFrost();
-  assert.equal(early.upgradeWorkshop(),false); assert.equal(early.maxLevel,6);
+  // Clearing is optional; Frost and the separate 1,200-gold purchase are required.
+  const noFrost=new IdleBattle();noFrost.gold=100000;noFrost.buildWorkshop();
+  assert.equal(noFrost.upgradeWorkshop(),false);
+  assert.equal(early.clearing.unlocked,false);assert.equal(early.maxLevel,6);
+  const before=early.gold;assert.equal(early.upgradeWorkshop(),true);
+  assert.equal(early.gold,before-SETTLEMENT.workshopUpgradeCost);assert.equal(early.maxLevel,Infinity);
   b.gold=10000000;
   for(const kind of [1,2,3,4] as const){
     const t=b.build(['tower-03','tower-02','tower-06','tower-07'][kind-1],kind)!;
@@ -39,13 +48,10 @@ test('Workshop II charges once after clearing and unlocks continuing level 7+ / 
   assert.deepEqual([1,3,4,6,7,20].map(visualStage),[1,1,2,2,3,3]);
 });
 
-test('schema nine expanded live save migrates without changing combat, purchases or a historical wave-25 record',()=>{
-  const b=eligible();b.build('tower-east-01',2);b.update(1);b.highestCleared=30;
-  const snap=b.snapshot();const {secondBossVictories,bossChallengeWave,...old}=snap;
-  const {workshopUpgraded,upgradedAt,...settlement}=old.settlement;
-  const legacy={...old,settlement,schemaVersion:9,rulesVersion:5,waveRecipeVersion:5};
-  const restored=IdleBattle.restore(legacy)!;assert.ok(restored);
-  assert.deepEqual(restored.snapshot(),{...snap,waveRecipeVersion:5,liveClearedWaves:[],farmWave:1});
+test('schema nine expanded live save migrates without changing combat, purchases or a historical wave-25 record',() => {
+  const old=legacyFixtures().critical.expanded9;
+  const restored=restoreHistorical(old,{liveClearedWaves:[],farmWave:1});
+  assert.equal(restored.waveRecipeVersion,5);assert.equal(restored.clearing.unlocked,true);
   assert.equal(restored.secondBossVictories,0);assert.equal(restored.nextAdvanceWave,25);
   assert.equal(restored.requestBossChallenge(25),true);
   assert.equal(IdleBattle.restore(restored.snapshot())!.bossChallengeWave,25);
@@ -54,10 +60,14 @@ test('schema nine expanded live save migrates without changing combat, purchases
 
 test('second boss pays its own first reward once, survives reload, and never becomes an offline farm',()=>{
   const b=eligible();b.upgradeWorkshop();
-  for(const pad of b.layout.towerPads){
-    const t=b.towers.find(t=>t.padId===pad.id)??b.build(pad.id,pad.id==='tower-02'?2:4)!;
-    while(t.level<7)b.upgrade(t.uid);
+  // Bounded rich unit defense isolates rewards/reload; earned balance is separate.
+  for(const id of ['tower-02','tower-03','tower-04','tower-06','tower-07','tower-08','tower-09','tower-10','tower-11']){
+    const kind=id==='tower-02'?2:4;
+    if(b.canBuild(id,kind))assert.ok(b.build(id,kind));
   }
+  assert.ok(b.towers.length>=8);
+  for(const t of b.towers)while(t.level<12)assert.equal(b.upgrade(t.uid),true);
+  assert.ok(IdleBattle.restore(b.snapshot()));
   assert.equal(b.requestBossChallenge(25),true);
   let live=b,seen=false,firstReward=-1;
   for(let i=0;i<12000&&!live.secondBossVictories;i++){

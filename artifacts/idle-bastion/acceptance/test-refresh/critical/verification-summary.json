@@ -1,0 +1,134 @@
+{
+  "baseCommit": "d61c56bdad432602f28c6af19cdc765045abede0",
+  "branch": "codex/test-refresh",
+  "scope": "critical migration/offline, boss/reward and purchase tests plus three bilingual assertions; no gameplay changes",
+  "fullSuite": {
+    "command": "npm test",
+    "tests": 308,
+    "pass": 291,
+    "fail": 17,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0,
+    "fileAborts": 0,
+    "durationMs": 11489.4274,
+    "exitCode": 1
+  },
+  "typecheck": "passed",
+  "productionBuild": {
+    "command": "npm run build",
+    "exitCode": 0
+  },
+  "productionSourceChanges": [],
+  "previousFullSuite": {
+    "tests": 302,
+    "pass": 264,
+    "fail": 38,
+    "durationMs": 238142.0038,
+    "fileAborts": 1
+  },
+  "failures": [
+    {
+      "title": "Wisp and pads unlock at permanent milestones, with no gift or repeated payment on reload",
+      "file": "experiments/idle-bastion/tests/b08.test.ts",
+      "line": 16,
+      "category": "old building/layout assumption"
+    },
+    {
+      "title": "regular opening still funds workshop and Frost before Wisp; four roles remain saveable into armored waves",
+      "file": "experiments/idle-bastion/tests/b08.test.ts",
+      "line": 89,
+      "category": "historical timing target"
+    },
+    {
+      "title": "B11 earned boss follow-up opens the clearing within the 8â€“11 minute target and retains farming",
+      "file": "experiments/idle-bastion/tests/b10.test.ts",
+      "line": 63,
+      "category": "historical timing target"
+    },
+    {
+      "title": "historical B10 timing target remains a separate balance finding",
+      "file": "experiments/idle-bastion/tests/b10.test.ts",
+      "line": 81,
+      "category": "historical timing target"
+    },
+    {
+      "title": "both new slots have useful level-one frost/damage overlap and accessible companion routes",
+      "file": "experiments/idle-bastion/tests/b11.test.ts",
+      "line": 34,
+      "category": "old building/layout assumption"
+    },
+    {
+      "title": "earned continuation opens Workshop II around minute 13 and keeps an affordable next goal after minute 15",
+      "file": "experiments/idle-bastion/tests/b12.test.ts",
+      "line": 111,
+      "category": "historical timing target"
+    },
+    {
+      "title": "solid forest leaves the route, plots, every start pad and its approach accessible",
+      "file": "experiments/idle-bastion/tests/forest-world.test.ts",
+      "line": 7,
+      "category": "old building/layout assumption"
+    },
+    {
+      "title": "start fixture has unique reservations, correct budget and an in-bounds road ending at the core",
+      "file": "experiments/idle-bastion/tests/layout.test.ts",
+      "line": 11,
+      "category": "old building/layout assumption"
+    },
+    {
+      "title": "Mara has continuous legal footpaths to all active tower approaches and the workshop",
+      "file": "experiments/idle-bastion/tests/layout.test.ts",
+      "line": 73,
+      "category": "old building/layout assumption"
+    },
+    {
+      "title": "unopened east cells reject walking and construction; expansion changes bounds but never routes enemies",
+      "file": "experiments/idle-bastion/tests/layout.test.ts",
+      "line": 92,
+      "category": "old building/layout assumption"
+    },
+    {
+      "title": "Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation",
+      "file": "experiments/idle-bastion/tests/mara.test.ts",
+      "line": 22,
+      "category": "old Mara contract"
+    },
+    {
+      "title": "overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage",
+      "file": "experiments/idle-bastion/tests/mara.test.ts",
+      "line": 41,
+      "category": "old Mara contract"
+    },
+    {
+      "title": "assignment walks at 80px/s on cardinal safe ground, preserves cooldown and gives no bonus before arrival",
+      "file": "experiments/idle-bastion/tests/mara.test.ts",
+      "line": 56,
+      "category": "old Mara contract"
+    },
+    {
+      "title": "retargeting halfway through a segment rejoins a centre and selling the target falls back to the starter without cooldown reset",
+      "file": "experiments/idle-bastion/tests/mara.test.ts",
+      "line": 84,
+      "category": "old Mara contract"
+    },
+    {
+      "title": "blocked targets stay understandable and harmless, and a changed blocked route reroutes around real obstacles",
+      "file": "experiments/idle-bastion/tests/mara.test.ts",
+      "line": 108,
+      "category": "old Mara contract"
+    },
+    {
+      "title": "Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads",
+      "file": "experiments/idle-bastion/tests/mara.test.ts",
+      "line": 195,
+      "category": "old Mara contract"
+    },
+    {
+      "title": "all eleven unlocked slots can hold towers and round-trip without moving the original eight",
+      "file": "experiments/idle-bastion/tests/usability.test.ts",
+      "line": 50,
+      "category": "old building/layout assumption"
+    }
+  ]
+}

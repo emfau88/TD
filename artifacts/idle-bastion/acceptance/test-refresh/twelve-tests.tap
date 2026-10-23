@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: bundled runtime atlases retain original dimensions and logical enemy frame maps
+ok 1 - bundled runtime atlases retain original dimensions and logical enemy frame maps
+  ---
+  duration_ms: 42.1463
+  type: 'test'
+  ...
+# Subtest: the real idle route uses the accepted connecting source quadrants for each turn and straight segment
+ok 2 - the real idle route uses the accepted connecting source quadrants for each turn and straight segment
+  ---
+  duration_ms: 42.0812
+  type: 'test'
+  ...
+# Subtest: snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history
+ok 3 - snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history
+  ---
+  duration_ms: 107.0259
+  type: 'test'
+  ...
+# Subtest: free conscious recruitment preserves veteran saves and rejects repeats; core settlement also supports it
+ok 4 - free conscious recruitment preserves veteran saves and rejects repeats; core settlement also supports it
+  ---
+  duration_ms: 245.5756
+  type: 'test'
+  ...
+# Subtest: saved windup and flight hit once, reward ground/air kills once, and reject forged damage
+ok 5 - saved windup and flight hit once, reward ground/air kills once, and reject forged damage
+  ---
+  duration_ms: 38.4612
+  type: 'test'
+  ...
+# Subtest: slower volleys remain in flight at the old hit time; legacy saves finish once at their old pace
+ok 6 - slower volleys remain in flight at the old hit time; legacy saves finish once at their old pace
+  ---
+  duration_ms: 41.4422
+  type: 'test'
+  ...
+# Subtest: real v14 veteran and its historical offline basis survive the schema-only migration
+ok 7 - real v14 veteran and its historical offline basis survive the schema-only migration
+  ---
+  duration_ms: 125.1845
+  type: 'test'
+  ...
+# Subtest: schema 15 saves preserve preparation and completed play without forcing the extended lessons
+ok 8 - schema 15 saves preserve preparation and completed play without forcing the extended lessons
+  ---
+  duration_ms: 72.8311
+  type: 'test'
+  ...
+# Subtest: intro command waits for a background write, then rechecks and consumes the kit once
+ok 9 - intro command waits for a background write, then rechecks and consumes the kit once
+  ---
+  duration_ms: 60.7071
+  type: 'test'
+  ...
+# Subtest: envelope one migrates read-only without production evidence and retains CAS revision protection
+ok 10 - envelope one migrates read-only without production evidence and retains CAS revision protection
+  ---
+  duration_ms: 92.796
+  type: 'test'
+  ...
+# Subtest: battle schema two migrates without rewriting the historical absence proof or pending receipt
+ok 11 - battle schema two migrates without rewriting the historical absence proof or pending receipt
+  ---
+  duration_ms: 17.3834
+  type: 'test'
+  ...
+# Subtest: session return across the Mara rule update pays the historical rate once and starts with no invented current proof
+ok 12 - session return across the Mara rule update pays the historical rate once and starts with no invented current proof
+  ---
+  duration_ms: 46.5607
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 977.1082

@@ -5,20 +5,30 @@ import { ART, FIRE_FRAMES, LEAF_FRAMES, MARA_FOOT, SCALE, enemyFrame, loopFrame,
 import { roadSource } from '../src/forest';
 import { createIdleLayout } from '../src/layout';
 
-test('bundled B05 atlases retain original dimensions and logical enemy frame maps', async () => {
+test('bundled runtime atlases retain original dimensions and logical enemy frame maps', async () => {
   const manifest = JSON.parse(await readFile(new URL('../../../public/assets/manifest.json', import.meta.url), 'utf8'));
   assert.deepEqual([...LEAF_FRAMES], manifest.Leafbug.frameMap);
   assert.deepEqual([...FIRE_FRAMES], manifest.Firebug.frameMap);
   const expected: Partial<Record<keyof typeof ART, readonly [number, number]>> = {
     grass: [1024, 1024], water: [4480, 448], tower: [192, 128], weapon: [576, 96],
-    projectile: [24, 40], leafbug: [512, 576], firebug: [1408, 576], core: [192, 192], maraSource: [1254, 1254],
+    projectile: [24, 40], leafbug: [512, 576], firebug: [1408, 576], core: [192, 192], maraSource: [1254, 1254], wisp: [576, 384],
   };
   for (const [key, dimensions] of Object.entries(expected)) {
-    const png = await readFile(new URL(ART[key as keyof typeof ART]));
-    assert.equal(png.subarray(1, 4).toString(), 'PNG');
-    assert.deepEqual([png.readUInt32BE(16), png.readUInt32BE(20)], dimensions, key);
+    const bytes = await readFile(new URL(ART[key as keyof typeof ART]));
+    if (key === 'maraSource') {
+      assert.ok(ART.maraSource.endsWith('.webp'));
+      assert.equal(bytes.toString('ascii', 0, 4), 'RIFF');
+      assert.equal(bytes.readUInt32LE(4) + 8, bytes.length, 'complete WebP container');
+      assert.equal(bytes.toString('ascii', 8, 16), 'WEBPVP8L', 'lossless Mara runtime atlas');
+      assert.equal(bytes[20], 0x2f);
+      const bits = bytes.readUInt32LE(21);
+      assert.deepEqual([(bits & 0x3fff) + 1, ((bits >>> 14) & 0x3fff) + 1], dimensions, key);
+    } else {
+      assert.deepEqual(bytes.subarray(0, 8), Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+      assert.deepEqual([bytes.readUInt32BE(16), bytes.readUInt32BE(20)], dimensions, key);
+    }
   }
-  assert.ok(Object.keys(ART).every(name => !name.toLowerCase().includes('wisp')));
+  assert.ok(ART.wisp.endsWith('Wisp%20-%20Animations.png'), 'the introduced Wisp is intentionally bundled');
   assert.equal(SCALE.tile * 64, 40);
   assert.equal(SCALE.tree * 62, 49.6);
   assert.equal(SCALE.tower, 0.63);
@@ -55,13 +65,18 @@ test('animation frames depend only on simulation time, retain directions and rep
 });
 
 test('the real idle route uses the accepted connecting source quadrants for each turn and straight segment', () => {
-  const layout = createIdleLayout(), road = new Set(layout.road.cells.map(cell => `${cell.x},${cell.y}`));
-  assert.deepEqual(roadSource({ x: 1, y: 5 }, road), [384, 64]);
-  assert.deepEqual(roadSource({ x: 7, y: 5 }, road), [448, 192]);
-  assert.deepEqual(roadSource({ x: 7, y: 2 }, road), [320, 64]);
-  assert.deepEqual(roadSource({ x: 15, y: 2 }, road), [448, 64]);
-  assert.deepEqual(roadSource({ x: 15, y: 8 }, road), [320, 128]);
-  assert.deepEqual(roadSource({ x: 15, y: 10 }, road), [320, 192]);
-  assert.deepEqual(roadSource({ x: 25, y: 10 }, road), [448, 192]);
-  assert.deepEqual(roadSource({ x: 25, y: 6 }, road), [320, 64]);
+  // All shipped routes remain loadable; their north bends intentionally differ.
+  for (const [version, north] of [[3, 2], [4, 4], [5, 4]] as const) {
+    const layout = createIdleLayout({ version });
+    const road = new Set(layout.road.cells.map(cell => cell.x + ',' + cell.y));
+    const cases: readonly [number, number, readonly [number, number]][] = [
+      [1, 5, [384, 64]], [7, 5, [448, 192]], [7, north, [320, 64]],
+      [15, north, [448, 64]], [15, 8, [320, 128]], [15, 10, [320, 192]],
+      [25, 10, [448, 192]], [25, 6, [320, 64]],
+    ];
+    for (const [x, y, source] of cases) {
+      assert.ok(road.has(x + ',' + y), 'layout ' + version + ': real road at ' + x + ',' + y);
+      assert.deepEqual(roadSource({ x, y }, road), source, 'layout ' + version + ': ' + x + ',' + y);
+    }
+  }
 });

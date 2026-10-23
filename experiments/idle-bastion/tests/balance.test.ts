@@ -1,7 +1,8 @@
+import { language, setLanguage } from '../src/i18n';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { IdleBattle, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION } from '../src/battle';
+import { IdleBattle, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION, upgradeCost } from '../src/battle';
 import { BALANCE, battleReward, healthMultiplier } from '../src/balance';
 import { certifyFarm, isFarmCertificateValid } from '../src/farming';
 import { recommendedUpgrade, currentGoal } from '../src/progress-ui';
@@ -48,5 +49,12 @@ test('an upgrade reproves the formerly safe wave even when the latest two clears
 test('workshop II objective and its action select the same useful area-damage investment', () => {
   const {b}=runBalance('guided',180);b.settlement.workshopUpgraded=true;b.settlement.upgradedAt=b.elapsed;b.bossVictories=1;
   const tower=recommendedUpgrade(b)!;assert.equal(tower.def.id,3);
-  assert.match(currentGoal(b).title,new RegExp(`Level ${tower.level+1}`));
+  const previous=language(),before=b.snapshot();
+  try {
+    for(const lang of ['en','de'] as const){
+      setLanguage(lang);const goal=currentGoal(b);assert.equal(goal.action,'upgrade');
+      assert.ok(goal.title.endsWith((lang==='en'?'level ':'Level ')+(tower.level+1)),goal.title);
+      assert.equal(goal.cost,upgradeCost(tower));assert.deepEqual(b.snapshot(),before);
+    }
+  } finally {setLanguage(previous);}
 });

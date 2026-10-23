@@ -1,3 +1,4 @@
+import { legacyFixtures, restoreHistorical, assertHistoricalFields } from './legacy-fixtures';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { IDBFactory } from 'fake-indexeddb';
@@ -17,23 +18,17 @@ function veteran(built = true) {
   assert.ok(IdleBattle.restore(b.snapshot())); return b;
 }
 
-test('legacy migration grants only proven milestone gifts once and preserves all battle data', () => {
-  for (const built of [false, true]) for (const recruited of [false, true]) {
-    if (recruited && !built) continue;
-    const b = veteran(built); if (recruited) b.recruitIlyra();
-    const legacy: any = b.snapshot(); legacy.schemaVersion = 23; delete legacy.social;
-    const original = structuredClone(legacy), loaded = IdleBattle.restore(legacy)!;
-    assert.deepEqual(legacy, original); assert.equal(loaded.social.gifts, built ? 3 : 2);
-    const upgraded: any = loaded.snapshot(); upgraded.schemaVersion = 23; delete upgraded.social;
-    assert.deepEqual(upgraded, original);
-    if (built) loaded.interactCompanion('mara', 'gift');
-    const once = loaded.snapshot(); assert.deepEqual(IdleBattle.restore(once)!.snapshot(), once);
+test('legacy migration grants only proven milestone gifts once and preserves all battle data',() => {
+  for(const mode of ['unbuilt','built','recruited']){
+    const old=legacyFixtures().critical.social[mode],loaded=restoreHistorical(old);
+    assert.equal(loaded.social.gifts,mode==='unbuilt'?2:3);
+    assert.equal(!!loaded.ilyra,mode==='recruited');
+    if(mode!=='unbuilt')loaded.interactCompanion('mara','gift');
+    const once=loaded.snapshot();assert.deepEqual(IdleBattle.restore(once)!.snapshot(),once);
   }
-  const b = veteran(false); b.bossVictories = 0; b.secondBossVictories = 0;
-  const legacy: any = b.snapshot(); legacy.schemaVersion = 23; delete legacy.social;
-  const loaded = IdleBattle.restore(legacy)!;
-  assert.equal(loaded.social.gifts, 0); // A high wave record is no boss proof.
-  assert.ok(loaded.buildTavern(loaded.recommendedTavernPlot!)); assert.equal(loaded.social.gifts, 1);
+  const loaded=restoreHistorical(legacyFixtures().critical.social.highRecordNoBoss);
+  assert.equal(loaded.social.gifts,0,'a high record alone is no boss proof');
+  assert.ok(loaded.buildTavern(loaded.recommendedTavernPlot!));assert.equal(loaded.social.gifts,1);
 });
 
 test('per-character allowances persist, gifts are shared, locked Ilyra and unsupported targets spend nothing', () => {
@@ -149,11 +144,9 @@ test('social gifts and points are one transaction, paused time gives no budget, 
 });
 
 test('old envelopes retain their pending offline entitlement when social claims are migrated', async () => {
-  const factory = new IDBFactory(), b = veteran(); b.liveClearedWaves = [1];
-  const proof = certifyFarm(b)!; assert.ok(proof);
-  let offline = createOfflineState(1000); offline = beginAbsence(offline, 1000, proof, false);
-  offline = reserveOffline(offline, 61000); assert.ok(offline.pendingReward);
-  const legacy: any = b.snapshot(); legacy.schemaVersion = 23; delete legacy.social;
+  const factory=new IDBFactory(),fixtures=legacyFixtures().critical;
+  const legacy=fixtures.social.built,offline=fixtures.socialOffline;
+  assert.ok(offline.pendingReward);assert.equal(offline.window.certificate.rulesVersion,10);
   const envelope = { schemaVersion: 2, revision: 7, writtenAt: 61000, paused: false, battle: legacy, offline };
   const db = await new Promise<IDBDatabase>((resolve, reject) => {
     const request = factory.open('t03-legacy', 1);
@@ -173,11 +166,9 @@ test('old envelopes retain their pending offline entitlement when social claims 
   store.close();
 });
 
-test('schema 23 early level-I owners migrate without inventing boss victories or upgrading the building', () => {
-  const b = veteran(false); b.highestCleared = 12; b.bossVictories = 0; b.secondBossVictories = 0;
-  b.buildTavern(b.recommendedTavernPlot!);
-  const old: any = b.snapshot(); old.schemaVersion = 23; delete old.social;
-  const restored = IdleBattle.restore(old)!;
-  assert.equal(restored.settlement.tavernLevel, 1); assert.equal(restored.social.gifts, 1);
-  assert.equal(restored.recruitIlyra(), false); assert.equal(restored.secondBossVictories, 0);
+test('schema 23 early level-I owners migrate without inventing boss victories or upgrading the building',() => {
+  const old=legacyFixtures().critical.social.early,restored=restoreHistorical(old);
+  assert.equal(restored.settlement.tavernLevel,1);assert.equal(restored.social.gifts,1);
+  assert.equal(restored.recruitIlyra(),false);assert.equal(restored.secondBossVictories,0);
+  assert.equal(restored.gold,old.gold);
 });

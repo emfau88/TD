@@ -1,7 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { IDBFactory } from 'fake-indexeddb';
-import { IdleBattle, BASE, ilyraDamage } from '../src/battle';
+import { IdleBattle, BASE, ilyraDamage, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION } from '../src/battle';
+import { legacyFixtures, assertHistoricalFields } from './legacy-fixtures';
+import { battleReward } from '../src/balance';
 import { ILYRA, stepIlyraMotion, ilyraCell } from '../src/ilyra';
 import { BattleSession } from '../src/battle-session';
 import { openBattleStore } from '../src/save-store';
@@ -29,8 +31,16 @@ function volleyFixture() {
 
 test('free conscious recruitment preserves veteran saves and rejects repeats; core settlement also supports it',()=>{
  const fresh=IdleBattle.newGame();assert.equal(fresh.ilyraPower.damage,70);assert.equal(fresh.recruitIlyra(),false);
- const b=veteran(),before=b.snapshot(),old:any=structuredClone(before);old.schemaVersion=20;delete old.ilyra;
- assert.deepEqual(IdleBattle.restore(old)!.snapshot(),before);
+ for (const old of Object.values(legacyFixtures().schema20) as Record<string, any>[]) {
+  const untouched=structuredClone(old), loaded=IdleBattle.restore(old)!;assert.ok(loaded);
+  assert.deepEqual(old,untouched);
+  assertHistoricalFields(loaded.snapshot(),{...old,schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:BATTLE_RULES_VERSION});
+  assert.equal(loaded.ilyra,null);assert.equal(loaded.settlement.tavernLevel,2);
+  const gold=loaded.gold;assert.ok(loaded.recruitIlyra());assert.equal(loaded.gold,gold);
+  const once=loaded.snapshot();assert.equal(loaded.recruitIlyra(),false);assert.deepEqual(loaded.snapshot(),once);
+  assert.deepEqual(IdleBattle.restore(once)!.snapshot(),once);
+ }
+ const b=veteran(),before=b.snapshot();
  assert.ok(b.recruitIlyra());assert.equal(b.gold,before.gold);assert.equal(b.ilyra!.autoCast,false);assert.equal(b.setIlyraAuto(true),false);
  const recruited=b.snapshot();assert.equal(b.recruitIlyra(),false);assert.deepEqual(b.snapshot(),recruited);
  assert.deepEqual(IdleBattle.restore(recruited)!.snapshot(),recruited);
@@ -51,8 +61,21 @@ test('saved windup and flight hit once, reward ground/air kills once, and reject
  assert.equal(b.castIlyraAt(b.enemies[0]),false);assert.equal(b.moveIlyraTo({x:4,y:5}),false);
  advance(b,.3);const snap=b.snapshot(),restored=IdleBattle.restore(snap)!;assert.ok(restored);
  const forged=structuredClone(snap);forged.ilyra!.volley!.damage++;assert.equal(IdleBattle.restore(forged),undefined);
- advance(b,.525);advance(restored,.525);assert.deepEqual(restored.snapshot(),b.snapshot());
- assert.equal(b.kills-before,3);assert.equal(b.ilyra!.volley!.hit,true);assert.equal(b.ilyra!.introduction,'done');
+ // Stop one tick before impact: later spawns are valid targets too.
+ advance(b,.5);advance(restored,.5);
+ const v=b.ilyra!.volley!, targets=b.enemies.filter(e=>Math.hypot(e.x-v.x,e.y-v.y)<=ILYRA.radius);
+ assert.ok(targets.length>snap.enemies.length, 'the denser wave adds targets during flight');
+ assert.ok(targets.some(e=>e.def.flying)&&targets.some(e=>!e.def.flying));
+ for(const e of targets)assert.ok(e.hp<=v.damage*(e.def.flying?ILYRA.airMultiplier:1)*(1-e.def.armor));
+ const targetIds=targets.map(e=>e.uid).sort((a,b)=>a-b);
+ const goldBefore=b.gold*1000+b.goldRemainderUnits, earnedBefore=b.earned*1000+b.rewardRemainderUnits;
+ const rewardUnits=targets.reduce((sum,e)=>sum+battleReward(e.def.gold,b.wave,b.waveRecipeVersion)*(b.wispUnlocked?1100:1000),0);
+ b.drainEvents();advance(b,.025);advance(restored,.025);assert.deepEqual(restored.snapshot(),b.snapshot());
+ const killEvents=b.drainEvents().filter(e=>e.type==='kill');
+ assert.deepEqual(killEvents.map(e=>e.enemy!.uid).sort((a,b)=>a-b),targetIds);
+ assert.equal(b.gold*1000+b.goldRemainderUnits-goldBefore,rewardUnits);
+ assert.equal(b.earned*1000+b.rewardRemainderUnits-earnedBefore,rewardUnits);
+ assert.equal(b.kills-before,targets.length);assert.equal(b.ilyra!.volley!.hit,true);assert.equal(b.ilyra!.introduction,'done');
  const afterHit=IdleBattle.restore(b.snapshot())!,earned=b.earned,kills=b.kills;
  advance(afterHit,.025);assert.equal(afterHit.earned,earned);assert.equal(afterHit.kills,kills);
  assert.ok(afterHit.setIlyraAuto(true));assert.ok(IdleBattle.restore(afterHit.snapshot()));
@@ -92,13 +115,19 @@ test('slower volleys remain in flight at the old hit time; legacy saves finish o
  const slow=volleyFixture();advance(slow,.625);
  assert.equal(slow.ilyra!.volley!.hit,false);assert.ok(IdleBattle.restore(slow.snapshot()));
  const bad=slow.snapshot();(bad.ilyra!.volley as any).pace=2;assert.equal(IdleBattle.restore(bad),undefined);
- for(const hit of [false,true]){
-  const b=volleyFixture();if(hit)advance(b,.825);
-  const old:any=b.snapshot();old.schemaVersion=21;delete old.ilyra.volley.pace;
-  old.ilyra.volley.age=hit?.7:.3;old.ilyra.cooldown=28-old.ilyra.volley.age;
-  const restored=IdleBattle.restore(old)!;assert.ok(restored);assert.equal(restored.ilyra!.volley!.pace,undefined);
-  const kills=restored.kills;advance(restored,hit?.05:.325);
-  assert.equal(restored.kills-kills,hit?0:3);assert.equal(restored.ilyra!.volley!.hit,true);
-  assert.ok(IdleBattle.restore(restored.snapshot()));
+ for(const [phase,fixture] of Object.entries(legacyFixtures().schema21) as [string,any][]){
+  const old=fixture.snapshot, untouched=structuredClone(old);
+  assert.equal(old.schemaVersion,21);assert.equal(old.ilyra.volley.hit,phase==='hit');
+  const restored=IdleBattle.restore(old)!;assert.ok(restored);assert.deepEqual(old,untouched);
+  assertHistoricalFields(restored.snapshot(),{...old,schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:BATTLE_RULES_VERSION});
+  assert.equal(restored.ilyra!.volley!.pace,undefined);
+  assert.deepEqual(restored.drainEvents(),[]);
+  const kills=restored.kills;advance(restored,fixture.steps*BASE.stepSeconds);
+  assert.equal(restored.kills-kills,phase==='hit'?0:3);
+  assertHistoricalFields(restored.snapshot(),fixture.expected);
+  assert.deepEqual(restored.ilyra,fixture.ilyra);
+  assertHistoricalFields(restored.drainEvents(),fixture.events,'legacy volley events');
+  assert.equal(restored.ilyra!.volley!.hit,true);
+  assert.deepEqual(IdleBattle.restore(restored.snapshot())!.snapshot(),restored.snapshot());
  }
 });
