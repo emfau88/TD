@@ -1,5 +1,16 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**E01 · Lokale Gegnerpakete — 23.10.2026, separat ab Wave-Rework W02 umgesetzt.**
+Branch `codex/local-enemy-assets` ab `796f02e`; bestehender Draft-PR #1 und `main`
+bleiben erhalten. [Prüfbericht und tatsächliche Spielansichten](../../artifacts/idle-bastion/acceptance/local-enemy-assets/REPORT.md).
+
+- [x] Alle lokalen Pakete ausgewertet, Archive/Quellen/Lizenzen geprüft; Skeleton-ZIP identisch, keine zweite Kopie. Fünf Shroom-Typen/96 eindeutige Originalpaletten lokal, private Sprites/Proben aus Git und Build ausgeschlossen.
+- [x] Gemeinsame mobile Vorschau mit Richtungen, Auflösungen, Original-/Spielgröße, Palette, Pause/Einzelbild. Vier passende CC-BY-Frakassets-Gegner mit JSON-Originaltiming und vier Ansichten, zusammen 52.769 PNG-Bytes. Credits/Änderungen dokumentiert.
+- [x] Moospilz 42, Waldspinne 46, Hornfledermaus 50, Zunderläufer 54; unmittelbare Wiederholung, alte Arten regelmäßig, 28er-/Heilergrenzen. Wellen 1–40 und Wirtschaft unverändert; Schema 27/Regeln 13, alte laufende Rezepte einschließlich Version 12 nach 40 erhalten.
+- [x] 20/20 Wave-/Asset-Tests, relevante Matrix 117/126 gegenüber 110/119 mit denselben neun alten Fehlern. Bezahlte Fortsetzung 40→56, sechs Niederlagen/24 Upgrades; echte Desktop-/Mobilansichten, dichte Welle 54, exakter pausierter Reload und Produktionsbuild geprüft. HP-Savegrenze an bereits fortlaufende Regeln-12-Kurve angeglichen.
+- [ ] Subjektive Nutzerbewertung der neuen Stil-/Größenkombination; echte Smartphone-Hardwareprüfung bei Gelegenheit. Shroom Men öffentlich erst nach eindeutiger Weitergabeklärung. Langzeitwirtschaft nach 40 bleibt eigener Punkt aus W02.
+
+
 **W02 · Wave-Rework 2.0 / Balancing — 23.10.2026, im bestehenden Draft-PR #1 beauftragt.** SPIRE ist ein Endlos-Idle-TD; Welle 40 bleibt Zwischenziel. [Aktueller Bericht, Messungen und Spielaufnahmen](../../artifacts/idle-bastion/acceptance/wave-rework-v2/REPORT.md).
 
 - [x] Größere Familiengruppen, dichtere Spawnvarianten und leichte Begleitung statt extremer Mengenreduktion; Kader/Originalanimationen, Einführungen, Bosse und Tutorial erhalten.

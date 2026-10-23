@@ -47,7 +47,7 @@ test('larger families retain bounded populations, healers, deterministic later w
   const lateFamilies=new Set(Array.from({length:17},(_,i)=>waveRecipe(41+i).family));assert.equal(lateFamilies.size,4);
 });
 
-test('a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts rules 12',()=>{
+test('a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules',()=>{
   const b=IdleBattle.restore(first);assert.ok(b);const current=b.snapshot();
   assert.equal(current.schemaVersion,BATTLE_SCHEMA_VERSION);assert.equal(current.rulesVersion,BATTLE_RULES_VERSION);assert.equal(current.waveRecipeVersion,11);
   for(const key of ['queue','enemies','shots','towers','spawnTimer','gold','earned','goldRemainderUnits','rewardRemainderUnits','mara','ilyra','social','settlement','elapsed','bossCharm'] as const)assert.deepEqual(current[key],first[key],key);
@@ -55,7 +55,7 @@ test('a genuine schema-25 active healer wave migrates intact, rejects corruption
   const bad=structuredClone(first);bad.queue[0]='Rosenspiegel';assert.equal(IdleBattle.restore(bad),undefined);
   const badHp=structuredClone(first);badHp.enemies[0].maxHp+=1;assert.equal(IdleBattle.restore(badHp),undefined);
   const attempt=b.attemptId;for(let i=0;i<8000&&b.attemptId===attempt;i++)b.update(.025);
-  assert.ok(b.attemptId>attempt);assert.equal(b.waveRecipeVersion,12);assert.ok(IdleBattle.restore(b.snapshot()));
+  assert.ok(b.attemptId>attempt);assert.equal(b.waveRecipeVersion,BATTLE_RULES_VERSION);assert.ok(IdleBattle.restore(b.snapshot()));
 });
 
 test('level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload',()=>{
@@ -90,7 +90,7 @@ test('old farm evidence cannot certify new waves; historical offline receipts re
   const previous=read('wave-rework-v2/baseline-v11/played-balanced.json').farm;
   assert.equal(isFarmCertificateValid(previous,earned),false);
   const before=earned.snapshot(),fresh=certifyFarm(earned,previous);assert.ok(fresh&&fresh.wave>1);
-  assert.equal(fresh.rulesVersion,12);assert.equal(isFarmCertificateValid(fresh,earned),true);assert.deepEqual(earned.snapshot(),before);
+  assert.equal(fresh.rulesVersion,BATTLE_RULES_VERSION);assert.equal(isFarmCertificateValid(fresh,earned),true);assert.deepEqual(earned.snapshot(),before);
   const factory=new IDBFactory(),name='w02-schema25';let store=await openBattleStore(factory,name,()=>31000);store.close();
   const offline=reserveOffline(beginAbsence(createOfflineState(1000),1000,legacyProof,false),31000);
   await new Promise<void>((resolve,reject)=>{const r=factory.open(name,1);r.onerror=()=>reject(r.error);r.onsuccess=()=>{
@@ -98,7 +98,7 @@ test('old farm evidence cannot certify new waves; historical offline receipts re
     tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>reject(tx.error);
   };});
   store=await openBattleStore(factory,name,()=>31000);const session=await BattleSession.open(store,{now:()=>31000,ownerId:'w02',locks:null});
-  assert.equal(session.certificate?.rulesVersion,12);assert.ok(isFarmCertificateValid(session.certificate!,session.battle));assert.equal(session.pendingReward?.amountUnits,180000);const gold=session.battle.gold;
+  assert.equal(session.certificate?.rulesVersion,BATTLE_RULES_VERSION);assert.ok(isFarmCertificateValid(session.certificate!,session.battle));assert.equal(session.pendingReward?.amountUnits,180000);const gold=session.battle.gold;
   assert.equal(await session.claimOffline(),true);assert.equal(session.battle.gold,gold+180);assert.equal(await session.claimOffline(),false);await session.close();
 });
 

@@ -2,15 +2,21 @@ import type Phaser from 'phaser';
 import { jellyFrame } from '../../../reference/src/jelly-art';
 import { succubusFrame } from '../../../reference/src/succubus-art';
 import type { EnemyId } from './enemy-roster';
+import { LOCAL_ENEMY_FRAMES } from './local-enemy-frames';
 import { LUCIFER_FRAMES } from './lucifer-frames';
 export type EnemyDirection = 'up' | 'down' | 'side';
 interface Clip { frames: readonly number[]; durations: readonly number[] }
-interface EnemySheet { key: string; url: string; width: number; height: number; scale: number; facesLeft: boolean; move: Record<EnemyDirection, Clip> & {left?: Clip}; heal?: Record<EnemyDirection, Clip> & {left?: Clip} }
+interface EnemySheet { key: string; url: string; width: number; height: number; scale: number; facesLeft: boolean; skins?: number; move: Record<EnemyDirection, Clip> & {left?: Clip}; heal?: Record<EnemyDirection, Clip> & {left?: Clip} }
 /** Extracted from public/assets/manifest.json. Logical tags resolve through frameMap.
  * Voidbutterfly's second Idle group is the source pack's directional movement.
  * Side artwork was visually checked; left-facing sheets invert horizontal mirroring.
  */
 export const ENEMY_SHEETS: Record<EnemyId, EnemySheet> = {
+  MossShroom: { ...LOCAL_ENEMY_FRAMES.MossShroom, url:new URL('../assets/local-monsters/MossShroom.png',import.meta.url).href },
+  WoodSpider: { ...LOCAL_ENEMY_FRAMES.WoodSpider, url:new URL('../assets/local-monsters/WoodSpider.png',import.meta.url).href },
+  HornedBat: { ...LOCAL_ENEMY_FRAMES.HornedBat, url:new URL('../assets/local-monsters/HornedBat.png',import.meta.url).href },
+  EmberBomb: { ...LOCAL_ENEMY_FRAMES.EmberBomb, url:new URL('../assets/local-monsters/EmberBomb.png',import.meta.url).href },
+
   ForestGoblin: { ...LUCIFER_FRAMES.ForestGoblin, key:'idle-enemy-ForestGoblin', url:new URL('../assets/lucifer/ForestGoblin.png',import.meta.url).href },
   BoneGuard: { ...LUCIFER_FRAMES.BoneGuard, key:'idle-enemy-BoneGuard', url:new URL('../assets/lucifer/BoneGuard.png',import.meta.url).href },
   ForestCultist: { ...LUCIFER_FRAMES.ForestCultist, key:'idle-enemy-ForestCultist', url:new URL('../assets/lucifer/ForestCultist.png',import.meta.url).href },
@@ -28,11 +34,11 @@ export const ENEMY_SHEETS: Record<EnemyId, EnemySheet> = {
 export function preloadEnemySheets(scene: Phaser.Scene): void {
   for (const s of Object.values(ENEMY_SHEETS)) scene.load.spritesheet(s.key, s.url, { frameWidth: s.width, frameHeight: s.height });
 }
-export function enemyFrame(kind: EnemyId, direction: EnemyDirection, elapsed: number, movingLeft = false): number {
+export function enemyFrame(kind: EnemyId, direction: EnemyDirection, elapsed: number, movingLeft = false, identity = 0): number {
   if (kind === 'Rosenspiegel') return succubusFrame('move', direction, elapsed * 1000);
   if (kind === 'LanternJelly') return jellyFrame('move', direction, elapsed * 1000);
   const clips = ENEMY_SHEETS[kind].move;
-  return clipFrame(direction === 'side' && movingLeft && clips.left ? clips.left : clips[direction],elapsed*1000);
+  return clipFrame(direction === 'side' && movingLeft && clips.left ? clips.left : clips[direction],elapsed*1000) + (identity % (ENEMY_SHEETS[kind].skins ?? 1)) * 32;
 }
 function clipFrame({frames,durations}: Clip, elapsed: number): number {
   let time = Math.max(0, elapsed) % durations.reduce((sum, ms) => sum + ms, 0);

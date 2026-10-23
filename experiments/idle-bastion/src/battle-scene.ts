@@ -506,7 +506,7 @@ export class BattleScene extends Phaser.Scene {
     for (const enemy of sim.enemies) {
       const view = this.enemyView(enemy);
       const lift = enemy.def.flying ? 7 + Math.sin(elapsed * 5 + enemy.uid) * 1.5 : 0;
-      view.sprite.setPosition(enemy.x, enemy.y - lift).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed, enemy.flip)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(enemy.y + 1000);
+      view.sprite.setPosition(enemy.x, enemy.y - lift).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed, enemy.flip, enemy.uid)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(enemy.y + 1000);
       if (enemy.def.id === 'Rosenspiegel') {
         const casting = sim.bossCharm.phase === 'windup' || sim.bossCharm.phase === 'channel';
         if (casting) view.sprite.setFrame(succubusFrame('dance', 'down', charmAge(sim.bossCharm) * 1000)).setFlipX(false);

@@ -1,5 +1,5 @@
 /** Idle-owned balance; the original enemy packs supply art, not mutable rules. */
-export type EnemyId = 'Leafbug' | 'Firebug' | 'Scorpion' | 'Rosenspiegel' | 'FlyingLocust' | 'Firewasp' | 'MagmaCrab' | 'Clampbeetle' | 'LanternJelly' | 'Voidbutterfly' | 'ForestGoblin' | 'BoneGuard' | 'ForestCultist';
+export type EnemyId = 'Leafbug' | 'Firebug' | 'Scorpion' | 'Rosenspiegel' | 'FlyingLocust' | 'Firewasp' | 'MagmaCrab' | 'Clampbeetle' | 'LanternJelly' | 'Voidbutterfly' | 'ForestGoblin' | 'BoneGuard' | 'ForestCultist' | 'MossShroom' | 'WoodSpider' | 'HornedBat' | 'EmberBomb';
 export interface EnemyDef {
   readonly id: EnemyId; readonly name: string; readonly hp: number; readonly speed: number;
   readonly gold: number; readonly armor: number; readonly lives: number;
@@ -23,12 +23,17 @@ export const ENEMIES = Object.freeze({
   ForestGoblin: enemy('ForestGoblin', 'Waldgoblin', 36, 66, 13, 0, 1, 19, false, 'Schneller Bodenläufer mit mittleren Lebenspunkten', 'Frost und überlappende Schussbereiche'),
   BoneGuard: enemy('BoneGuard', 'Knochenwächter', 55, 44, 17, .25, 2, 26, false, 'Mittelschwerer Wächter · 25 % Rüstung', 'Scharfschütze oder konzentriertes Feuer'),
   ForestCultist: enemy('ForestCultist', 'Waldkultist', 42, 39, 18, 0, 1, 32, false, 'Bodenheiler · teilt Heilsperren mit der Qualle', 'Flächenschaden gegen seine Begleitgruppe'),
+  MossShroom: enemy('MossShroom', 'Moospilz', 28, 43, 9, 0, 1, 42, false, 'Kleiner Waldläufer · zwei kosmetische Kappenfarben', 'Waldwächter und Flächenschaden'),
+  WoodSpider: enemy('WoodSpider', 'Waldspinne', 30, 64, 12, 0, 1, 46, false, 'Flinker, leichter Bodenläufer', 'Frost und überlappende Schussbereiche'),
+  HornedBat: enemy('HornedBat', 'Hornfledermaus', 24, 74, 12, 0, 1, 50, true, 'Schneller, leichter Flieger', 'Frost und konzentrierter Schaden'),
+  EmberBomb: enemy('EmberBomb', 'Zunderläufer', 60, 36, 18, .25, 2, 54, false, 'Langsamer Panzer · 25 % Rüstung, zwei Kernschaden', 'Scharfschütze und konzentriertes Feuer'),
 });
 export const isHealer = (def: EnemyDef): boolean => def.id === 'LanternJelly' || def.id === 'ForestCultist';
 export const ENEMY_ROSTER: readonly EnemyDef[] = Object.values(ENEMIES);
 export const enemyId = (value: unknown): value is EnemyId => typeof value === 'string' && Object.hasOwn(ENEMIES, value);
 export const introducedEnemy = (wave: number, recipe = 11): EnemyDef | undefined => ENEMY_ROSTER.find(e => e.firstWave === wave && e.id !== 'Rosenspiegel'
-  && (recipe >= 11 || !['ForestGoblin','BoneGuard','ForestCultist'].includes(e.id)));
+  && (recipe >= 11 || !['ForestGoblin','BoneGuard','ForestCultist'].includes(e.id))
+  && (recipe >= 13 || e.firstWave <= 40));
 const THEMES: readonly (readonly EnemyId[])[] = [
   ['Leafbug', 'FlyingLocust', 'Firebug', 'FlyingLocust', 'Leafbug', 'Clampbeetle'],
   ['Firebug', 'Firewasp', 'FlyingLocust', 'Leafbug', 'Voidbutterfly', 'Firewasp'],

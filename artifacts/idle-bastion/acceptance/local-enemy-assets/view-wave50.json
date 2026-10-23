@@ -1,0 +1,1167 @@
+{
+  "schemaVersion": 27,
+  "social": {
+    "points": {
+      "mara": 0,
+      "ilyra": 0
+    },
+    "gifts": 2,
+    "claimed": {
+      "opening": false,
+      "boss15": true,
+      "boss25": true
+    },
+    "window": {
+      "ticks": 0,
+      "used": {
+        "mara": {
+          "talk": 0,
+          "touch": 0,
+          "gift": 0
+        },
+        "ilyra": {
+          "talk": 0,
+          "touch": 0,
+          "gift": 0
+        }
+      },
+      "earnedGifts": 0,
+      "clearProgress": 0
+    },
+    "lastClearAttempt": 0
+  },
+  "ilyra": null,
+  "discovery": "off",
+  "dismissedDefeatAttempt": 0,
+  "introduction": {
+    "stage": "done",
+    "preparationSeconds": 0,
+    "halted": false
+  },
+  "plots": {
+    "workshop": {
+      "x": 30,
+      "y": 11
+    },
+    "warehouse": {
+      "x": 34,
+      "y": 12
+    }
+  },
+  "wispArrival": {
+    "at": 77.72500000000001,
+    "met": true
+  },
+  "rulesVersion": 13,
+  "layoutVersion": 5,
+  "layoutId": "core40",
+  "clearing": {
+    "unlocked": false,
+    "openedAt": null
+  },
+  "bossVictories": 1,
+  "secondBossVictories": 1,
+  "bossChallengeWave": 15,
+  "bossChallengeRequested": false,
+  "bossCharm": {
+    "phase": "idle",
+    "targetUid": null,
+    "remaining": 0,
+    "cooldown": 0
+  },
+  "progress": {
+    "sinceAttempt": 1,
+    "sinceSeconds": 0,
+    "battleGold": 211748,
+    "totals": {
+      "advance": {
+        "attempts": 57,
+        "wins": 49,
+        "losses": 7
+      },
+      "farm": {
+        "attempts": 243,
+        "wins": 243,
+        "losses": 0
+      }
+    },
+    "waves": [
+      {
+        "wave": 2,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 3,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 4,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 5,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 6,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 7,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 8,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 9,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 10,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 11,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 12,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 13,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 14,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 15,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 16,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 17,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 18,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 19,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 20,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 21,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 22,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 23,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 24,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 25,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 26,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 27,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 28,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 30,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 31,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 32,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 33,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 34,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 35,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 36,
+        "advance": {
+          "attempts": 3,
+          "wins": 1,
+          "losses": 2
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 37,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 38,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 39,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 29,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 18,
+          "wins": 18,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 40,
+        "advance": {
+          "attempts": 2,
+          "wins": 1,
+          "losses": 1
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 41,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 42,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 1,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 157,
+          "wins": 157,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 44,
+        "advance": {
+          "attempts": 2,
+          "wins": 1,
+          "losses": 1
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 45,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 43,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 68,
+          "wins": 68,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 46,
+        "advance": {
+          "attempts": 4,
+          "wins": 1,
+          "losses": 3
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 47,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 48,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 49,
+        "advance": {
+          "attempts": 1,
+          "wins": 1,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "wave": 50,
+        "advance": {
+          "attempts": 1,
+          "wins": 0,
+          "losses": 0
+        },
+        "farm": {
+          "attempts": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      }
+    ],
+    "lastDefeat": {
+      "wave": 46,
+      "attemptId": 267
+    }
+  },
+  "rewardRemainderUnits": 300,
+  "waveRecipeVersion": 13,
+  "goldRemainderUnits": 300,
+  "mode": "advance",
+  "highestCleared": 49,
+  "attemptId": 300,
+  "liveClearedWaves": [
+    1,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "farmWave": 43,
+  "advanceRequested": false,
+  "gold": 8376,
+  "lives": 20,
+  "wave": 50,
+  "phase": "wave",
+  "elapsed": 5701,
+  "ticks": 228040,
+  "pendingTime": 0,
+  "uid": 22156,
+  "intermissionRemaining": 0,
+  "kills": 4182,
+  "earned": 213698,
+  "queue": [],
+  "spawnTimer": 0,
+  "towers": [
+    {
+      "uid": 1,
+      "padId": "tower-start",
+      "kind": 1,
+      "level": 17,
+      "cooldown": 0.21153846153846134,
+      "spent": 42595,
+      "kills": 1832,
+      "angle": 1.0534904190281433,
+      "protected": true
+    },
+    {
+      "uid": 2,
+      "padId": "tower-03",
+      "kind": 1,
+      "level": 17,
+      "cooldown": 0.08653846153846137,
+      "spent": 42670,
+      "kills": 580,
+      "angle": -0.42493098203052204,
+      "protected": false
+    },
+    {
+      "uid": 162,
+      "padId": "tower-02",
+      "kind": 2,
+      "level": 3,
+      "cooldown": 0.6548320150364164,
+      "spent": 308,
+      "kills": 19,
+      "angle": 1.130045479015484,
+      "protected": false
+    },
+    {
+      "uid": 220,
+      "padId": "tower-09",
+      "kind": 3,
+      "level": 17,
+      "cooldown": 0.21730769230769226,
+      "spent": 76762,
+      "kills": 1330,
+      "angle": 1.1190099207695177,
+      "protected": false
+    },
+    {
+      "uid": 586,
+      "padId": "cell-14-7",
+      "kind": 4,
+      "level": 14,
+      "cooldown": 0.5230769230769241,
+      "spent": 40952,
+      "kills": 421,
+      "angle": -0.2895826548569087,
+      "protected": false
+    }
+  ],
+  "enemies": [
+    {
+      "uid": 22054,
+      "x": 578.4000000000059,
+      "y": 180,
+      "hp": 2159.809853115644,
+      "maxHp": 31660.667045298575,
+      "distance": 598.4000000000065,
+      "total": 1520,
+      "segment": 2,
+      "speed": 44,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "BoneGuard"
+    },
+    {
+      "uid": 22068,
+      "x": 498.595000000004,
+      "y": 180,
+      "hp": 27411.988114386157,
+      "maxHp": 31660.667045298575,
+      "distance": 518.5950000000046,
+      "total": 1520,
+      "segment": 2,
+      "speed": 44,
+      "slowRemaining": 1.5250000000000017,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "BoneGuard"
+    },
+    {
+      "uid": 22084,
+      "x": 530.4000000000019,
+      "y": 180.00000000000014,
+      "hp": 11584.949510764489,
+      "maxHp": 17269.45475198104,
+      "distance": 550.4000000000021,
+      "total": 1520,
+      "segment": 2,
+      "speed": 64,
+      "slowRemaining": 0.8000000000000034,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "WoodSpider"
+    },
+    {
+      "uid": 22088,
+      "x": 371.6000000000013,
+      "y": 180,
+      "hp": 30249.340734994435,
+      "maxHp": 31660.667045298575,
+      "distance": 391.6000000000019,
+      "total": 1520,
+      "segment": 2,
+      "speed": 44,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "BoneGuard"
+    },
+    {
+      "uid": 22092,
+      "x": 511.200000000003,
+      "y": 180.00000000000014,
+      "hp": 13505.917924503341,
+      "maxHp": 17269.45475198104,
+      "distance": 531.2000000000032,
+      "total": 1520,
+      "segment": 2,
+      "speed": 64,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "WoodSpider"
+    },
+    {
+      "uid": 22099,
+      "x": 428.0000000000018,
+      "y": 180.00000000000014,
+      "hp": 11624.149510764491,
+      "maxHp": 17269.45475198104,
+      "distance": 448.00000000000205,
+      "total": 1520,
+      "segment": 2,
+      "speed": 64,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "WoodSpider"
+    },
+    {
+      "uid": 22105,
+      "x": 300,
+      "y": 218.40000000000003,
+      "hp": 31660.667045298575,
+      "maxHp": 31660.667045298575,
+      "distance": 281.5999999999996,
+      "total": 1520,
+      "segment": 1,
+      "speed": 44,
+      "slowRemaining": 0,
+      "direction": "up",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "BoneGuard"
+    },
+    {
+      "uid": 22110,
+      "x": 351.2000000000007,
+      "y": 180.00000000000014,
+      "hp": 17269.45475198104,
+      "maxHp": 17269.45475198104,
+      "distance": 371.20000000000095,
+      "total": 1520,
+      "segment": 2,
+      "speed": 64,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "WoodSpider"
+    },
+    {
+      "uid": 22119,
+      "x": 300,
+      "y": 212.00000000000003,
+      "hp": 17269.45475198104,
+      "maxHp": 17269.45475198104,
+      "distance": 287.9999999999998,
+      "total": 1520,
+      "segment": 1,
+      "speed": 64,
+      "slowRemaining": 0,
+      "direction": "up",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "WoodSpider"
+    },
+    {
+      "uid": 22123,
+      "x": 191.5999999999994,
+      "y": 220,
+      "hp": 31660.667045298575,
+      "maxHp": 31660.667045298575,
+      "distance": 171.5999999999995,
+      "total": 1520,
+      "segment": 0,
+      "speed": 44,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "BoneGuard"
+    },
+    {
+      "uid": 22129,
+      "x": 231.19999999999945,
+      "y": 220,
+      "hp": 17269.45475198104,
+      "maxHp": 17269.45475198104,
+      "distance": 211.1999999999995,
+      "total": 1520,
+      "segment": 0,
+      "speed": 64,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "WoodSpider"
+    },
+    {
+      "uid": 22140,
+      "x": 147.99999999999974,
+      "y": 220,
+      "hp": 17269.45475198104,
+      "maxHp": 17269.45475198104,
+      "distance": 127.9999999999998,
+      "total": 1520,
+      "segment": 0,
+      "speed": 64,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "WoodSpider"
+    },
+    {
+      "uid": 22144,
+      "x": 109.59999999999988,
+      "y": 220,
+      "hp": 17269.45475198104,
+      "maxHp": 17269.45475198104,
+      "distance": 89.59999999999994,
+      "total": 1520,
+      "segment": 0,
+      "speed": 64,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "WoodSpider"
+    },
+    {
+      "uid": 22150,
+      "x": 55.200000000000045,
+      "y": 220,
+      "hp": 31660.667045298575,
+      "maxHp": 31660.667045298575,
+      "distance": 35.20000000000002,
+      "total": 1520,
+      "segment": 0,
+      "speed": 44,
+      "slowRemaining": 0,
+      "direction": "side",
+      "flip": false,
+      "healCooldown": 0,
+      "healRemaining": 0,
+      "healLockout": 0,
+      "defId": "BoneGuard"
+    }
+  ],
+  "shots": [
+    {
+      "uid": 22154,
+      "towerUid": 1,
+      "target": 22088,
+      "x": 340.0673919881974,
+      "y": 193.2008689719015,
+      "speed": 480,
+      "damage": 1881.7684137388505,
+      "level": 17,
+      "kind": 1
+    },
+    {
+      "uid": 22155,
+      "towerUid": 162,
+      "target": 22099,
+      "x": 374.258405614614,
+      "y": 196.94007852196418,
+      "speed": 480,
+      "damage": 19.599999999999998,
+      "level": 3,
+      "kind": 2
+    }
+  ],
+  "mara": {
+    "x": 220,
+    "y": 300,
+    "path": [],
+    "targetTowerUid": 1,
+    "direction": "up",
+    "cooldownRemaining": 14.025000000000768,
+    "effectRemaining": 0,
+    "unreachable": false,
+    "autoCast": true,
+    "effectTowerUid": null
+  },
+  "settlement": {
+    "workshopBuilt": true,
+    "frostResearched": true,
+    "builtAt": 46,
+    "warehouseBuilt": true,
+    "warehouseBuiltAt": 186,
+    "tavernBuilt": false,
+    "tavernLevel": 0,
+    "tavernBuiltAt": null,
+    "tavernSeen": false,
+    "workshopUpgraded": true,
+    "upgradedAt": 348
+  },
+  "tutorial": {
+    "hidden": false,
+    "seen": 0,
+    "builtTower": true,
+    "upgradedTower": true,
+    "frostSeen": true
+  }
+}

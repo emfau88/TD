@@ -138,8 +138,8 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
         const counts = new Map<string, number>();
         for (let i = 0; i < (b.wave ? total : 0); i++) { const name = waveEnemy(b.wave, i, b.waveRecipeVersion).name; counts.set(name, (counts.get(name) ?? 0) + 1); }
         el('journal-wave-enemies').textContent = b.wave ? `Zusammenstellung Welle ${b.wave}${b.waveRecipeVersion >= 11 && b.wave >= 6 && b.wave !== 15 && b.wave !== 25 ? ` · ${waveRecipe(b.wave).elite ? 'Elite · ' : ''}${FAMILY_NAMES[waveRecipe(b.wave).family]}` : ''}: ${[...counts].map(([name, n]) => `${n} × ${name}`).join(' · ')}` : 'Die erste Welle besteht aus Blattkäfern.';
-        const reached = Math.max(b.wave, b.highestCleared), next = ENEMY_ROSTER.find(e => e.id !== 'Rosenspiegel' && e.firstWave > reached);
-        el('journal-next-enemy').textContent = next ? `Nächster neuer Gegnertyp: ${next.name} ab Welle ${next.firstWave}.` : 'Alle neun normalen Gegnertypen verfügbar. Weitere Wellen wechseln zwischen Schwärmen, Tempo, Panzern und Unterstützung.';
+        const reached = Math.max(b.wave, b.highestCleared), next = ENEMY_ROSTER.filter(e => e.id !== 'Rosenspiegel' && e.firstWave > reached).sort((a,z) => a.firstWave-z.firstWave)[0];
+        el('journal-next-enemy').textContent = next ? `Nächster neuer Gegnertyp: ${next.name} ab Welle ${next.firstWave}.` : 'Alle normalen Gegnertypen verfügbar. Weitere Wellen wechseln zwischen Schwärmen, Tempo, Panzern und Unterstützung.';
         el('journal-enemy-roster').replaceChildren(...ENEMY_ROSTER.filter(e => e.id !== 'Rosenspiegel' && e.firstWave <= Math.max(1, reached)).map(e => {
           const item = document.createElement('li'), title = document.createElement('strong'), copy = document.createElement('p');
           title.textContent = `${e.name} · ab Welle ${e.firstWave}`;

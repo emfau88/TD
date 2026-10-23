@@ -1,0 +1,190 @@
+{
+  "errors": [],
+  "previews": [
+    {
+      "device": "desktop",
+      "variants": [
+        {
+          "name": "dotcap Farbvariante",
+          "count": 15
+        },
+        {
+          "name": "gillcap Farbvariante",
+          "count": 15
+        },
+        {
+          "name": "mushmanflat Farbvariante",
+          "count": 22
+        },
+        {
+          "name": "mushmanpointy Farbvariante",
+          "count": 22
+        },
+        {
+          "name": "mushmanskullshroom Farbvariante",
+          "count": 22
+        }
+      ],
+      "total": 96,
+      "resolutions": [
+        16,
+        32,
+        48,
+        64
+      ],
+      "directions": 4,
+      "pauseAndStep": true,
+      "bodyWidth": 1600,
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "device": "mobile",
+      "variants": [
+        {
+          "name": "dotcap Farbvariante",
+          "count": 15
+        },
+        {
+          "name": "gillcap Farbvariante",
+          "count": 15
+        },
+        {
+          "name": "mushmanflat Farbvariante",
+          "count": 22
+        },
+        {
+          "name": "mushmanpointy Farbvariante",
+          "count": 22
+        },
+        {
+          "name": "mushmanskullshroom Farbvariante",
+          "count": 22
+        }
+      ],
+      "total": 96,
+      "resolutions": [
+        16,
+        32,
+        48,
+        64
+      ],
+      "directions": 4,
+      "pauseAndStep": true,
+      "bodyWidth": 390,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "games": [
+    {
+      "device": "desktop",
+      "wave": 42,
+      "intro": true,
+      "enemyCount": 6,
+      "queue": 15,
+      "species": [
+        "Scorpion",
+        "Leafbug",
+        "MossShroom"
+      ],
+      "rAFmedian": 2.800000000000182,
+      "rAFp95": 5.5,
+      "pausedReload": true
+    },
+    {
+      "device": "desktop",
+      "wave": 46,
+      "intro": true,
+      "enemyCount": 11,
+      "queue": 12,
+      "species": [
+        "Scorpion",
+        "LanternJelly",
+        "WoodSpider"
+      ],
+      "rAFmedian": 2.800000000000182,
+      "rAFp95": 5.599999999999909,
+      "pausedReload": true
+    },
+    {
+      "device": "desktop",
+      "wave": 50,
+      "intro": true,
+      "enemyCount": 4,
+      "queue": 17,
+      "species": [
+        "BoneGuard",
+        "WoodSpider",
+        "HornedBat"
+      ],
+      "rAFmedian": 2.7999999999999545,
+      "rAFp95": 2.900000000000091,
+      "pausedReload": true
+    },
+    {
+      "device": "desktop",
+      "wave": 54,
+      "intro": false,
+      "enemyCount": 22,
+      "queue": 0,
+      "species": [
+        "EmberBomb",
+        "ForestGoblin",
+        "HornedBat"
+      ],
+      "rAFmedian": 2.7999999999999545,
+      "rAFp95": 2.900000000000091,
+      "pausedReload": true
+    },
+    {
+      "device": "desktop",
+      "wave": 54,
+      "intro": true,
+      "enemyCount": 11,
+      "queue": 16,
+      "species": [
+        "ForestGoblin",
+        "EmberBomb",
+        "HornedBat"
+      ],
+      "rAFmedian": 2.799999999999727,
+      "rAFp95": 5.5,
+      "pausedReload": true
+    },
+    {
+      "device": "mobile",
+      "wave": 54,
+      "intro": false,
+      "enemyCount": 22,
+      "queue": 0,
+      "species": [
+        "EmberBomb",
+        "ForestGoblin",
+        "HornedBat"
+      ],
+      "rAFmedian": 2.799999999999727,
+      "rAFp95": 2.900000000000091,
+      "pausedReload": true
+    },
+    {
+      "device": "mobile",
+      "wave": 54,
+      "intro": true,
+      "enemyCount": 11,
+      "queue": 16,
+      "species": [
+        "ForestGoblin",
+        "EmberBomb",
+        "HornedBat"
+      ],
+      "rAFmedian": 2.800000000000182,
+      "rAFp95": 5.599999999999909,
+      "pausedReload": true
+    }
+  ]
+}

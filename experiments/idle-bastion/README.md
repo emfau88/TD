@@ -1,5 +1,14 @@
 # SPIRE: Idle Bastion — überarbeiteter Entwicklungsauftrag
 
+**Lokale Gegnerpakete E01:** Vier zusätzliche Frakassets-Arten ab Welle 42/46/50/54,
+Originalbewegungen und zwei kosmetische Moospilz-Kappenfarben. Die ersten 40 Wellen
+bleiben identisch zu W02. [Gemeinsame bewegte Vorschau](enemy-lab.html) ·
+[Import und Lizenzen](assets/local-monsters/README.md) ·
+[Prüfbericht mit echten Spielaufnahmen](../../artifacts/idle-bastion/acceptance/local-enemy-assets/REPORT.md).
+Shroom Men mit allen fünf Figuren und 96 Farbvarianten ist ausschließlich nach
+lokalem Import sichtbar; keine eingeschränkt weitergebbaren Sprites im Build.
+
+
 **Wave-Rework 2.0 / Endlos-Grundlage:** Lebendigere Gruppen bis 28 Gegner, etwas höhere Ausbauanforderungen, gestraffte Goldrate und fortlaufende Turmlevel nach Werkstatt II. Welle 40 bleibt ein Zwischenmeilenstein. [W02-Prüfbericht](../../artifacts/idle-bastion/acceptance/wave-rework-v2/REPORT.md).
 
 **Erstes Wave-Rework W01 (Herkunft):** Zwölf normale Gegnertypen, vier deterministische Wellenfamilien und eine Elitewelle 40. Neue Originalgegner: Waldgoblin (19), Knochenwächter (26), Waldkultist (32). [Gegnervergleich ohne Spielstandzugriff](enemy-check.html) · [Quellen/CC0/Import](assets/lucifer/README.md) · [Prüfbericht und tatsächliche Spielaufnahmen](../../artifacts/idle-bastion/acceptance/wave-rework/REPORT.md). Paketstatus und Veröffentlichungsstand stehen in der Roadmap.

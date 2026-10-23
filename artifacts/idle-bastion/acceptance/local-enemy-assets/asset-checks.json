@@ -1,0 +1,263 @@
+{
+  "selected": [
+    {
+      "enemy": "MossShroom",
+      "source": "mushroom-monster-red",
+      "action": "Walk",
+      "sourceSize": 48,
+      "frames": 32,
+      "pngBytes": 19195,
+      "bodyWidth": [
+        16,
+        20
+      ],
+      "bodyHeight": [
+        19,
+        23
+      ],
+      "bottomPixel": [
+        39,
+        47
+      ],
+      "pivot": [
+        32,
+        43
+      ],
+      "losslessOriginalFrames": true
+    },
+    {
+      "enemy": "WoodSpider",
+      "source": "fuzzy-spider-purple",
+      "action": "Walk",
+      "sourceSize": 48,
+      "frames": 32,
+      "pngBytes": 14561,
+      "bodyWidth": [
+        29,
+        37
+      ],
+      "bodyHeight": [
+        24,
+        33
+      ],
+      "bottomPixel": [
+        49,
+        56
+      ],
+      "pivot": [
+        32,
+        43
+      ],
+      "losslessOriginalFrames": true
+    },
+    {
+      "enemy": "HornedBat",
+      "source": "horned-bat-purple",
+      "action": "Idle",
+      "sourceSize": 48,
+      "frames": 24,
+      "pngBytes": 10269,
+      "bodyWidth": [
+        15,
+        44
+      ],
+      "bodyHeight": [
+        16,
+        33
+      ],
+      "bottomPixel": [
+        43,
+        57
+      ],
+      "pivot": [
+        32,
+        43
+      ],
+      "losslessOriginalFrames": true
+    },
+    {
+      "enemy": "EmberBomb",
+      "source": "bomb-walker-black",
+      "action": "Walk",
+      "sourceSize": 48,
+      "frames": 32,
+      "pngBytes": 8744,
+      "bodyWidth": [
+        16,
+        17
+      ],
+      "bodyHeight": [
+        19,
+        27
+      ],
+      "bottomPixel": [
+        44,
+        47
+      ],
+      "pivot": [
+        32,
+        43
+      ],
+      "losslessOriginalFrames": true
+    }
+  ],
+  "shrooms": [
+    {
+      "character": "dotcap",
+      "variants": 15,
+      "walkFrames": 4,
+      "advertisedColumns": 5,
+      "transparentFifthMovementCell": true,
+      "allPalettesChecked": true,
+      "examples": [
+        "chocolatechip",
+        "dalmatian",
+        "diceroll",
+        "domino"
+      ]
+    },
+    {
+      "character": "gillcap",
+      "variants": 15,
+      "walkFrames": 4,
+      "advertisedColumns": 5,
+      "transparentFifthMovementCell": true,
+      "allPalettesChecked": true,
+      "examples": [
+        "blackmolly",
+        "bluegill",
+        "browntrout",
+        "clownfish"
+      ]
+    },
+    {
+      "character": "mushmanflat",
+      "variants": 22,
+      "walkFrames": 4,
+      "advertisedColumns": 5,
+      "transparentFifthMovementCell": true,
+      "allPalettesChecked": true,
+      "examples": [
+        "beetrootboogie",
+        "blancslate",
+        "blueberryberet",
+        "butterscotchbeanie"
+      ]
+    },
+    {
+      "character": "mushmanpointy",
+      "variants": 22,
+      "walkFrames": 4,
+      "advertisedColumns": 5,
+      "transparentFifthMovementCell": true,
+      "allPalettesChecked": true,
+      "examples": [
+        "berrybadidea",
+        "bluesteel",
+        "boneblood",
+        "cocoaloco"
+      ]
+    },
+    {
+      "character": "mushmanskullshroom",
+      "variants": 22,
+      "walkFrames": 4,
+      "advertisedColumns": 5,
+      "transparentFifthMovementCell": true,
+      "allPalettesChecked": true,
+      "examples": [
+        "badtothebone",
+        "beeafraid",
+        "bluescreenofdeath",
+        "bruisealmighty"
+      ]
+    }
+  ],
+  "frakCandidates": [
+    {
+      "id": "biter-plant-red",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    },
+    {
+      "id": "bomb-walker-black",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle",
+        "Walk"
+      ]
+    },
+    {
+      "id": "cobra-green",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    },
+    {
+      "id": "dragon-whelp-green",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    },
+    {
+      "id": "flame-wisp-orange",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    },
+    {
+      "id": "floating-eye-purple",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    },
+    {
+      "id": "fuzzy-spider-purple",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle",
+        "Walk"
+      ]
+    },
+    {
+      "id": "horned-bat-purple",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    },
+    {
+      "id": "mushroom-monster-red",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle",
+        "Walk"
+      ]
+    },
+    {
+      "id": "sandworm-pink",
+      "actions": [
+        "Attack",
+        "Hurt",
+        "Idle"
+      ]
+    }
+  ],
+  "runtimePngBytes": 52769,
+  "shroomDuplicateFilesIgnored": 59
+}
