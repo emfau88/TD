@@ -1,5 +1,25 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Merge-Vorbereitung E01 — Snapshot 28 / Regeln 14
+
+Vier Frakassets-Gegner und beide Moospilz-Paletten bleiben unverändert. Regeln 14
+korrigieren ausschließlich Welle 46: Die neue Waldspinne übernimmt die leichte
+Begleitung, damit eine gekürzte Einführungsmischung nicht beinahe nur aus Panzern
+besteht. Alte Regeln 13 sind vollständig in `wave-recipes-v13.ts` eingefroren.
+Schema 27 wird unter Regeln 13 validiert und ohne Veränderung der laufenden
+Queue, Gegner, Heilung, Geschosse und Wallet auf 28 migriert. Der nächste Versuch
+verwendet 14. Historische Offline-Basen bis 13 behalten ihre exakten Ansprüche.
+
+Farmkandidaten bleiben auf vier begrenzt und brauchen zwei sichere Durchläufe
+unter aktuellen Regeln, ohne Gefährtenbonus. Bei fehlendem Abreisezertifikat wird
+nun auch die gespeicherte Farmwahl frisch geprüft. Bei fehlendem oder ungültigem
+Nachweis nutzt ein weiterer jüngerer Kandidat einen bisher ungenutzten Prüfplatz.
+Bei gültigem Nachweis bleibt die bisherige Auswahlstrategie erhalten. Die
+Rückfalloption 1 bleibt reserviert. Es werden ausschließlich zuvor
+validierte Live-Clears geprüft; alte Zertifikate verleihen keine Freischaltungen.
+Die Offline-Effizienz, Wellenbelohnungen und Upgradepreise bleiben unverändert.
+
+
 ## Wave-Rework 2.0 — Snapshot 26 / Regeln 12
 
 SPIRE ist ein Endlos-Idle-TD; Welle 40 ist ein Elite-Zwischenziel. `wave-recipes.ts` erhält die vier Familien und erhöht ihre sichtbaren Gruppen. Das erste Rework ist unverändert in `wave-recipes-v11.ts` eingefroren. Gespeicherte Regeln 3–11 bleiben anhand ihrer eigenen Anzahl, Reihenfolge, Spawnzeiten, HP und Belohnungen gültig. Aktuelle Versuche beginnen mit Regeln 12; 1–5 und Bosskämpfe 15/25 bleiben unverändert.

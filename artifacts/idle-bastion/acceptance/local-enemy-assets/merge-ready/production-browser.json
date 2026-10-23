@@ -1,0 +1,21 @@
+{
+  "errors": [],
+  "privateRequests": [],
+  "loadedNewPNGs": [
+    "http://127.0.0.1:5197/assets/MossShroom-C7mlO_BL.png",
+    "http://127.0.0.1:5197/assets/WoodSpider-AsfcnwgW.png",
+    "http://127.0.0.1:5197/assets/HornedBat-Z6iG4iVE.png",
+    "http://127.0.0.1:5197/assets/EmberBomb-D-ksbHB-.png",
+    "http://127.0.0.1:5197/assets/MossShroom-C7mlO_BL.png",
+    "http://127.0.0.1:5197/assets/WoodSpider-AsfcnwgW.png",
+    "http://127.0.0.1:5197/assets/HornedBat-Z6iG4iVE.png",
+    "http://127.0.0.1:5197/assets/EmberBomb-D-ksbHB-.png"
+  ],
+  "publicGallery": true,
+  "creditsReachableFromGame": true,
+  "pauseAndStep": true,
+  "palettes": [
+    "Rote Kappe",
+    "Moosgrüne Kappe"
+  ]
+}

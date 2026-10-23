@@ -428,7 +428,7 @@ function syncUI(): void {
     : message.type === 'sell' ? `Turm verkauft · +${currency.format(message.amount ?? 0)} Gold. Die sichere Farmbasis wird neu geprüft.`
     : 'Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.';
   const startedWave = relevantEvents.find(e => e.type === 'wave');
-  const newcomer = startedWave && sim.waveRecipeVersion >= 9 && sim.mode === 'advance' && sim.highestCleared < sim.wave ? introducedEnemy(sim.wave) : undefined;
+  const newcomer = startedWave && sim.waveRecipeVersion >= 9 && sim.mode === 'advance' && sim.highestCleared < sim.wave ? introducedEnemy(sim.wave, sim.waveRecipeVersion) : undefined;
   if (!message && newcomer && newcomer.firstWave >= 6 && !announcedEnemies.has(newcomer.id)) {
     announcedEnemies.add(newcomer.id);
     element('combat-message').textContent = `Neu: ${newcomer.name} · ${newcomer.counter}. Mehr in der Chronik.`;

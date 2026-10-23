@@ -17,3 +17,6 @@ reference/Spire-Gegnerprobe.html
 reference/succubus-dist/
 reference/Spire-Succubus.html
 experiments/idle-bastion/dist/
+
+# Optional local source comparisons, generated probes and temporary files.
+experiments/idle-bastion/.local-assets/

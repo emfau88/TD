@@ -1,0 +1,55 @@
+{
+  "baseline": {
+    "tests": 119,
+    "pass": 110,
+    "fail": 9
+  },
+  "beforeMergePreparation": {
+    "tests": 126,
+    "pass": 117,
+    "fail": 9
+  },
+  "current": {
+    "pass": 122,
+    "tests": 131,
+    "fail": 9
+  },
+  "newFailures": [],
+  "knownFailures": [
+    "bundled B05 atlases retain original dimensions and logical enemy frame maps",
+    "the real idle route uses the accepted connecting source quadrants for each turn and straight segment",
+    "snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history",
+    "real v14 veteran and its historical offline basis survive the schema-only migration",
+    "schema 15 saves preserve preparation and completed play without forcing the extended lessons",
+    "intro command waits for a background write, then rechecks and consumes the kit once",
+    "envelope one migrates read-only without production evidence and retains CAS revision protection",
+    "battle schema two migrates without rewriting the historical absence proof or pending receipt",
+    "session return across the Mara rule update pays the historical rate once and starts with no invented current proof"
+  ],
+  "schemaVersion": 28,
+  "rulesVersion": 14,
+  "targeted": {
+    "pass": 25,
+    "tests": 25,
+    "fail": 0
+  },
+  "build": {
+    "newTextures": 4,
+    "runtimeImportRequiredArchives": 1,
+    "sourceArchives": 0,
+    "success": true,
+    "creditsPage": true,
+    "estimatedDecodedTextureBytes": 2621440,
+    "newPngBytes": 52769,
+    "localComparisonDirectories": 0
+  },
+  "browser": {
+    "productionPreview": true,
+    "pausedReloadProbes": 8,
+    "denseWave54LivingEnemies": 22,
+    "mobileViewport": "390x844",
+    "desktop": "1600x1000",
+    "physicalPhoneTest": false,
+    "success": true
+  }
+}

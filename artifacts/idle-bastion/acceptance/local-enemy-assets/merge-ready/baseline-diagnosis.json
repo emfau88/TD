@@ -1,0 +1,103 @@
+{
+  "seedFarmWave": 29,
+  "candidateHistory": [
+    1,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+  ],
+  "withoutPrevious": 1,
+  "withHistoricalPrevious": 29,
+  "candidates": [
+    {
+      "candidate": 1,
+      "selected": 1,
+      "goldPerMinute": 492.8
+    },
+    {
+      "candidate": 29,
+      "selected": 29,
+      "goldPerMinute": 4829.58904109589
+    },
+    {
+      "candidate": 38,
+      "selected": 38,
+      "goldPerMinute": 2978.5904761904762
+    },
+    {
+      "candidate": 39,
+      "selected": 1,
+      "goldPerMinute": 492.8
+    },
+    {
+      "candidate": 40,
+      "selected": 1,
+      "goldPerMinute": 492.8
+    }
+  ],
+  "originalContinuation": {
+    "seconds": 5974,
+    "defeats": 6,
+    "wave1FarmClears": 157,
+    "losses": [
+      {
+        "at": 2050,
+        "wave": 44,
+        "farm": 1
+      },
+      {
+        "at": 3781,
+        "wave": 46,
+        "farm": 43
+      },
+      {
+        "at": 4260,
+        "wave": 46,
+        "farm": 43
+      },
+      {
+        "at": 4869,
+        "wave": 46,
+        "farm": 43
+      },
+      {
+        "at": 5869,
+        "wave": 53,
+        "farm": 43
+      },
+      {
+        "at": 6641,
+        "wave": 54,
+        "farm": 43
+      }
+    ]
+  }
+}

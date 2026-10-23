@@ -45,7 +45,7 @@ test('opening recipes are reproducible in reverse order, bounded, readable and r
   assert.equal(families.size,4);assert.equal(waveRecipe(40).elite,true);
   for(let wave=40;wave>=6;wave--)if(signatures.has(wave))assert.equal(JSON.stringify(waveRecipe(wave)),signatures.get(wave));
   for(const e of ENEMY_ROSTER.filter(e=>e.firstWave>=6&&e.id!=='Rosenspiegel')){
-    assert.equal(ids(e.firstWave).filter(id=>id===e.id).length,2,e.name);
+    assert.equal(ids(e.firstWave).filter(id=>id===e.id).length,e.firstWave===46?15:2,e.name);
     const next=[e.firstWave+1,e.firstWave+2,e.firstWave+3].filter(w=>w!==15&&w!==25).slice(0,2);
     assert.ok(next.some(w=>ids(w).includes(e.id)),`${e.name} repeated`);
     let absence=0;
