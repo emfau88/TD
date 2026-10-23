@@ -6,7 +6,7 @@ import { enemyHealFrame } from './enemy-art';
 import { MARA } from './mara';
 import { CombatEffects } from './combat-effects';
 import { projectileDepth } from './world-depth';
-import { weaponFrame } from './tower-atlas';
+import { weaponFrame, towerSheet } from './tower-atlas';
 import { succubusFrame } from '../../../reference/src/succubus-art';
 import { BOSS } from './boss';
 import { BossCharmView, charmAge } from './boss-visuals';
@@ -535,7 +535,7 @@ export class BattleScene extends Phaser.Scene {
     for (const [uid, view] of this.shotViews) if (!shots.has(uid)) { view.destroy(); this.shotViews.delete(uid); }
     for (const shot of sim.shots) {
       let view = this.shotViews.get(shot.uid);
-      if (!view) { view = this.add.image(shot.x, shot.y, towerArt(shot.kind, visualStage(shot.level)).projectile, 0).setScale(shot.kind >= 3 ? 0.85 : shot.kind === 2 ? 0.5 : SCALE.projectile); this.shotViews.set(shot.uid, view); }
+      if (!view) { view = this.add.image(shot.x, shot.y, towerArt(shot.kind, visualStage(shot.level)).projectile, 0).setScale(shot.kind === 5 ? 24 / towerSheet(5,visualStage(shot.level),'Projectile').width : shot.kind >= 3 ? 0.85 : shot.kind === 2 ? 0.5 : SCALE.projectile); this.shotViews.set(shot.uid, view); }
       view.setPosition(shot.x, shot.y).setFrame(loopFrame(this.combatEffects.shotAge(shot.uid, elapsed), towerArt(shot.kind, visualStage(shot.level)).shotFrames));
       const target = sim.enemies.find(enemy => enemy.uid === shot.target);
       view.setDepth(projectileDepth(shot,sim.towers.find(tower=>tower.uid===shot.towerUid),target));

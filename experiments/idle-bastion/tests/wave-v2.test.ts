@@ -50,7 +50,8 @@ test('larger families retain bounded populations, healers, deterministic later w
 test('a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules',()=>{
   const b=IdleBattle.restore(first);assert.ok(b);const current=b.snapshot();
   assert.equal(current.schemaVersion,BATTLE_SCHEMA_VERSION);assert.equal(current.rulesVersion,BATTLE_RULES_VERSION);assert.equal(current.waveRecipeVersion,11);
-  for(const key of ['queue','enemies','shots','towers','spawnTimer','gold','earned','goldRemainderUnits','rewardRemainderUnits','mara','ilyra','social','settlement','elapsed','bossCharm'] as const)assert.deepEqual(current[key],first[key],key);
+  for(const key of ['queue','enemies','shots','towers','spawnTimer','gold','earned','goldRemainderUnits','rewardRemainderUnits','mara','ilyra','social','elapsed','bossCharm'] as const)assert.deepEqual(current[key],first[key],key);
+  assert.deepEqual(current.settlement,{...first.settlement,stormResearched:false});
   assert.deepEqual(current.liveClearedWaves,first.liveClearedWaves);assert.equal(current.farmWave,first.farmWave);
   const bad=structuredClone(first);bad.queue[0]='Rosenspiegel';assert.equal(IdleBattle.restore(bad),undefined);
   const badHp=structuredClone(first);badHp.enemies[0].maxHp+=1;assert.equal(IdleBattle.restore(badHp),undefined);

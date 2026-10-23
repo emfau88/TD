@@ -13,7 +13,7 @@ import './battle.css';
 import './progress.css';
 import './premium.css';
 import { mountUIIcons } from './ui-icons';
-import { SETTLEMENT, towerDefinition, type TowerId, stats, upgradeCost, sellValue, type IdleBattle } from './battle';
+import { STORM_CHAIN, STORMLIGHT, SETTLEMENT, towerDefinition, type TowerId, stats, upgradeCost, sellValue, type IdleBattle } from './battle';
 import { BattleScene } from './battle-scene';
 import { nextObjective, tutorialHint, tutorialStep } from './hud';
 import { BattleSession, SessionLoadError, SessionOwnershipError } from './battle-session';
@@ -67,6 +67,7 @@ let game: Phaser.Game | undefined;
 let gameResize: ResizeObserver | undefined;
 let store: BattleSaveStore | undefined;
 let selectedPadId: string | undefined;
+let selectedTechnology: 'frost'|'storm' = 'frost';
 let selectedPanel: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'ilyra' | 'clearing' = 'tower';
 let catalogPanel: 'tower' | 'settlement' = 'tower';
 let contextOpen = false;
@@ -183,12 +184,12 @@ function syncUI(): void {
   element('pick-frost').classList.toggle('locked', !sim.settlement.frostResearched);
   element('frost-lock').textContent = sim.settlement.frostResearched ? 'Verlangsamung' : 'Frostfassung nötig';
   element('frost-price').textContent = sim.settlement.frostResearched ? '110' : 'Forschung';
-  for (const [name, kind, role, condition] of [['cannon', 3, 'Flächenschaden', 'Frost & Welle 5'], ['sniper', 4, 'Ignoriert Rüstung', 'Welle 10 meistern']] as const) {
+  for (const [name, kind, role, condition] of [['cannon', 3, 'Flächenschaden', 'Frost & Welle 5'], ['sniper', 4, 'Ignoriert Rüstung', 'Welle 10 meistern'], ['storm', 5, 'Kette · höchstens drei Ziele', 'Werkstattforschung & Welle 28']] as const) {
     const unlocked = sim.isTowerUnlocked(kind);
     element(`pick-${name}`).classList.toggle('locked', !unlocked);
     element(`pick-${name}`).setAttribute('aria-pressed', String(placementType === kind));
     element(`${name}-lock`).textContent = unlocked ? role : condition;
-    element(`${name}-price`).textContent = unlocked ? String(towerDefinition(kind).cost) : kind === 3 ? sim.highestCleared < 5 ? 'Welle 5' : 'Forschung' : 'Welle 10';
+    element(`${name}-price`).textContent = unlocked ? String(towerDefinition(kind).cost) : kind === 3 ? sim.highestCleared < 5 ? 'Welle 5' : 'Forschung' : kind === 5 ? 'Forschung' : 'Welle 10';
   }
   const freePads = sim.layout.towerPads.filter(pad => sim.isPadUnlocked(pad.id) && !sim.towers.some(tower => tower.padId === pad.id));
   const padKey = freePads.map(pad => pad.id).join(',');
@@ -269,7 +270,7 @@ function syncUI(): void {
   element('selection-title').textContent = selectedPanel === 'ilyra' ? 'Ilyra · Sternensalve' : selectedPanel === 'tavern' ? `Taverne ${sim.settlement.tavernLevel === 2 ? 'II' : 'I'}` : selectedPanel === 'clearing' ? 'Siedlung am Kern' : selectedPanel === 'warehouse' ? 'Vorratslager' : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? 'Werkstatt'
     : tower ? `${tower.def.name} · Level ${tower.level}` : pad ? 'Freier Bauplatz' : 'Bauplatz wählen';
   element('tower-name').textContent = tower?.def.name ?? 'Turm wählen';
-  element('tower-role').textContent = tower?.def.id === 4 ? 'Bevorzugt Rüstung · ignoriert 100 % davon' : tower?.def.id === 3 ? 'Flächentreffer · 52 Reichweite um das Ziel' : tower?.def.id === 2 ? 'Frosttreffer · 45 % langsamer für 2 s' : 'Zuverlässige Pfeile · Allrounder';
+  element('tower-role').textContent = tower?.def.id === 5 ? 'Bis zu drei Ziele · 80 Sprungreichweite · 100/65/42 % Schaden' : tower?.def.id === 4 ? 'Bevorzugt Rüstung · ignoriert 100 % davon' : tower?.def.id === 3 ? 'Flächentreffer · 52 Reichweite um das Ziel' : tower?.def.id === 2 ? 'Frosttreffer · 45 % langsamer für 2 s' : 'Zuverlässige Pfeile · Allrounder';
   element('selection-description').textContent = selectedPanel !== 'tower' ? '' : tower
     ? tower.protected ? 'Dein erster Turm sichert die Grundverteidigung. Du kannst ihn verbessern.' : `${tower.def.name} verteidigt den Weg. Verbessere ihn oder investiere das Gold an anderer Stelle.`
     : (pad && sim.isPadUnlocked(pad.id)) ? 'Wähle einen freigeschalteten Turm für diesen Platz.'
@@ -279,7 +280,7 @@ function syncUI(): void {
   buildFrost.hidden = Boolean(tower) || !sim.settlement.frostResearched;
   build.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId);
   buildFrost.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId, 2);
-  for (const [name, kind] of [['cannon', 3], ['sniper', 4]] as const) {
+  for (const [name, kind] of [['cannon', 3], ['sniper', 4], ['storm', 5]] as const) {
     const button = element<HTMLButtonElement>(`build-${name}`);
     button.hidden = Boolean(tower) || !sim.isTowerUnlocked(kind);
     button.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId, kind);
@@ -323,6 +324,23 @@ function syncUI(): void {
   researchFrost.textContent = `Frostfassung erforschen · ${SETTLEMENT.researchCost} Gold`;
   researchFrost.disabled = blocked || sim.gold < SETTLEMENT.researchCost;
   element('choose-frost').hidden = !settlement.frostResearched;
+  const techVisible=settlement.workshopBuilt&&!sim.guiding;
+  element('research-icons').hidden=!techVisible;element('research-details').hidden=!techVisible;
+  for(const tech of ['frost','storm'] as const){
+    const researched=tech==='frost'?settlement.frostResearched:settlement.stormResearched;
+    const available=tech==='frost'?settlement.workshopBuilt:sim.stormResearchUnlocked;
+    element(`tech-${tech}`).classList.toggle('locked',!researched&&!available);
+    element(`tech-${tech}`).setAttribute('aria-pressed',String(selectedTechnology===tech));
+    element(`tech-${tech}-status`).textContent=researched?'✓ Erforscht':available?'Erforschbar':'Gesperrt';
+  }
+  element('research-details').textContent=selectedTechnology==='frost'
+    ? settlement.frostResearched?'✓ Frostfassung: Frostkristall und Turmlevel 4–6 verfügbar.':'Frostfassung: Werkstatt nötig · 60 Gold. Verlangsamt Gegner und erschließt Turmlevel 4–6.'
+    : settlement.stormResearched?`✓ Sturmlicht: bis zu drei Ziele, 80 Sprungreichweite, sinkender Schaden. Turmbau separat: ${STORMLIGHT.cost} Gold.`
+    : `Sturmlicht: Frostfassung, gemeisterte Welle ${STORM_CHAIN.wave} und abgeschlossene Ilyra-Einführung nötig. Forschung ${STORM_CHAIN.researchCost} Gold; Turmbau separat ${STORMLIGHT.cost} Gold.`;
+  const stormResearch=element<HTMLButtonElement>('research-storm');
+  stormResearch.hidden=!techVisible||settlement.stormResearched;
+  stormResearch.disabled=blocked||!sim.stormResearchUnlocked||sim.gold<STORM_CHAIN.researchCost;
+
   const warehouseIcon = element<HTMLImageElement>('warehouse-icon');
   if (warehouseIcon.getAttribute('src') !== ART.warehouse) warehouseIcon.src = ART.warehouse;
   for (const id of ['workshop', 'warehouse', 'tavern'] as const) {
@@ -424,7 +442,7 @@ function syncUI(): void {
     : message.type === 'tavern-upgrade' ? 'Taverne II fertig! Du kannst jetzt Ilyra kennenlernen und kostenlos rekrutieren.'
     : message.type === 'tavern' ? 'Die Taverne steht! Ein neuer Treffpunkt für deine Siedlung.'
     : message.type === 'warehouse' ? 'Vorratslager gebaut! Künftig 65 % Offline-Ertrag für bis zu 8 Stunden.'
-    : message.type === 'research' ? 'Frostfassung erforscht! Baue einen Frostkristall oder verbessere Türme bis Level 6.'
+    : message.type === 'research' && message.technology === 'storm' ? 'Sturmlicht erforscht! Der Turmbau ist jetzt im Baukatalog verfügbar.' : message.type === 'research' ? 'Frostfassung erforscht! Baue einen Frostkristall oder verbessere Türme bis Level 6.'
     : message.type === 'sell' ? `Turm verkauft · +${currency.format(message.amount ?? 0)} Gold. Die sichere Farmbasis wird neu geprüft.`
     : 'Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.';
   const startedWave = relevantEvents.find(e => e.type === 'wave');
@@ -573,7 +591,7 @@ function startPlacement(kind: TowerId): void {
   if (session.battle.guiding && (kind !== 2 || session.battle.introduction.stage !== 'frost')) return;
   if (session.battle.introduction.stage === 'welcome') { void perform(b => b.beginIntroduction()).then(() => { if (session?.battle.introduction.stage === 'build') startPlacement(kind); }); return; }
   if (kind === 2 && !session.battle.settlement.frostResearched) { catalogPanel = 'settlement'; openContext('settlement'); return; }
-  if (!session.battle.isTowerUnlocked(kind)) { if (kind === 3) openContext('wisp'); else { element('combat-message').textContent = 'Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.'; toastUntil = performance.now() + 6000; syncUI(); } return; }
+  if (!session.battle.isTowerUnlocked(kind)) { if (kind === 5) {selectedTechnology='storm';catalogPanel='settlement';openContext('settlement');} else if (kind === 3) openContext('wisp'); else { element('combat-message').textContent = 'Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.'; toastUntil = performance.now() + 6000; syncUI(); } return; }
   if (placementType === kind) { placementType = undefined; closeContext(); return; }
   ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
   // Only guided construction suggests a location. Ordinary purchases keep the player's view.
@@ -759,7 +777,7 @@ for (const kind of ['tower', 'settlement'] as const) {
   }, { signal: lifetime.signal });
 }
 element('choose-frost').addEventListener('click', () => startPlacement(2), { signal: lifetime.signal });
-for (const [name, kind] of [['cannon', 3], ['sniper', 4]] as const) {
+for (const [name, kind] of [['cannon', 3], ['sniper', 4], ['storm', 5]] as const) {
   element(`pick-${name}`).addEventListener('click', () => startPlacement(kind), { signal: lifetime.signal });
   element(`build-${name}`).addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId, kind); }, { signal: lifetime.signal });
 }
@@ -783,6 +801,8 @@ element('challenge-boss').addEventListener('click', () => {
 element('catalog-next').addEventListener('click', () => { const list = element(`${catalogPanel}-catalog`); list.scrollTo({ left: list.scrollLeft >= list.scrollWidth - list.clientWidth - 2 ? 0 : list.scrollLeft + list.clientWidth, behavior: 'smooth' }); }, { signal: lifetime.signal });
 element('pick-archer').addEventListener('click', () => startPlacement(1), { signal: lifetime.signal });
 element('pick-frost').addEventListener('click', () => startPlacement(2), { signal: lifetime.signal });
+element('research-storm').addEventListener('click', () => {void perform(b=>b.researchStorm());}, {signal:lifetime.signal});
+for(const tech of ['frost','storm'] as const)element(`tech-${tech}`).addEventListener('click',()=>{selectedTechnology=tech;syncUI();},{signal:lifetime.signal});
 element('pick-clearing').addEventListener('click', () => openContext('clearing'), { signal: lifetime.signal });
 element('unlock-clearing').addEventListener('click', async () => {
   const live = session; if (!live || !live.paused || live.inputBusy || live.error) return;

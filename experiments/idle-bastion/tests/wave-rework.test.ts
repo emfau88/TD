@@ -60,7 +60,8 @@ test('opening recipes are reproducible in reverse order, bounded, readable and r
 test('a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly',()=>{
   const b=IdleBattle.restore(old);assert.ok(b);
   const s=b.snapshot();assert.equal(s.schemaVersion,BATTLE_SCHEMA_VERSION);assert.equal(s.rulesVersion,BATTLE_RULES_VERSION);assert.equal(s.waveRecipeVersion,10);
-  for(const key of ['queue','enemies','shots','towers','spawnTimer','gold','goldRemainderUnits','rewardRemainderUnits','earned','mara','ilyra','social','settlement','elapsed','bossCharm'] as const)assert.deepEqual(s[key],old[key],key);
+  for(const key of ['queue','enemies','shots','towers','spawnTimer','gold','goldRemainderUnits','rewardRemainderUnits','earned','mara','ilyra','social','elapsed','bossCharm'] as const)assert.deepEqual(s[key],old[key],key);
+  assert.deepEqual(s.settlement,{...old.settlement,stormResearched:false});
   assert.deepEqual(s.liveClearedWaves,[]);assert.equal(s.farmWave,1);
   const bad=structuredClone(old);bad.queue[0]=bad.queue[0]==='Leafbug'?'Firebug':'Leafbug';assert.equal(IdleBattle.restore(bad),undefined);
   const badHp=structuredClone(old);badHp.enemies[0].maxHp+=1;assert.equal(IdleBattle.restore(badHp),undefined);

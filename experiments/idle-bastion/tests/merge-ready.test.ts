@@ -25,16 +25,16 @@ test('only wave 46 changes under rules 14: retain a light escort, healer cap, ex
 });
 test('a genuine schema-27 wave 46 keeps its old tank-heavy queue and live values, then adopts rules 14',()=>{
  const original=structuredClone(active),b=IdleBattle.restore(original);assert.ok(b);assert.deepEqual(original,active);
- assert.equal(b.waveRecipeVersion,13);assert.deepEqual(b.snapshot(),{...active,schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:BATTLE_RULES_VERSION});
+ assert.equal(b.waveRecipeVersion,13);assert.deepEqual(b.snapshot(),{...active,schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:BATTLE_RULES_VERSION,settlement:{...active.settlement,stormResearched:false}});
  const clone=IdleBattle.restore(b.snapshot())!;for(let i=0;i<100;i++){b.update(.025);clone.update(.025);}assert.deepEqual(b.snapshot(),clone.snapshot());
  const bad=structuredClone(active);bad.queue[0]='WoodSpider';assert.equal(IdleBattle.restore(bad),undefined);
  const corrupt=structuredClone(active);corrupt.enemies[0].maxHp++;assert.equal(IdleBattle.restore(corrupt),undefined);
  const attempt=b.attemptId;for(let i=0;i<8000&&b.attemptId===attempt;i++)b.update(.025);
- assert.ok(b.attemptId>attempt);assert.equal(b.waveRecipeVersion,14);assert.ok(IdleBattle.restore(b.snapshot()));
+ assert.ok(b.attemptId>attempt);assert.equal(b.waveRecipeVersion,BATTLE_RULES_VERSION);assert.ok(IdleBattle.restore(b.snapshot()));
 });
 test('raw restore re-proves saved farm 29 even without a departure certificate, with no live model or reward mutation',()=>{
  const b=IdleBattle.restore(seed)!;assert.equal(b.farmWave,29);const before=b.snapshot(),events=structuredClone(b.events);
- const proof=certifyFarm(b);assert.ok(proof);assert.equal(proof.wave,29);assert.equal(proof.rulesVersion,14);assert.ok(isFarmCertificateValid(proof,b));
+ const proof=certifyFarm(b);assert.ok(proof);assert.equal(proof.wave,29);assert.equal(proof.rulesVersion,BATTLE_RULES_VERSION);assert.ok(isFarmCertificateValid(proof,b));
  assert.deepEqual(b.snapshot(),before);assert.deepEqual(b.events,events);
  const invalid={...proof,wave:999,fingerprint:'untrusted-old-proof'};
  assert.equal(certifyFarm(b,invalid)?.wave,29);assert.deepEqual(b.snapshot(),before);
@@ -52,7 +52,7 @@ test('native schema-27 reload retains its rules-13 offline claim and credits the
  await new Promise<void>((resolve,reject)=>{const r=factory.open(name,1);r.onerror=()=>reject(r.error);r.onsuccess=()=>{const db=r.result,tx=db.transaction('saves','readwrite');tx.objectStore('saves').put({schemaVersion:2,revision:1,writtenAt:now,paused:false,battle:active,offline},'default');tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>reject(tx.error);};});
  store=await openBattleStore(factory,name,()=>now);const session=await BattleSession.open(store,{now:()=>now,ownerId:'merge-v27',locks:null});
  assert.equal(session.battle.waveRecipeVersion,13);assert.deepEqual(session.battle.snapshot().queue,active.queue);
- assert.equal(session.certificate?.rulesVersion,14);assert.ok(isFarmCertificateValid(session.certificate!,session.battle));
+ assert.equal(session.certificate?.rulesVersion,BATTLE_RULES_VERSION);assert.ok(isFarmCertificateValid(session.certificate!,session.battle));
  assert.equal(session.pendingReward?.amountUnits,180450);const units=session.battle.gold*1000+session.battle.goldRemainderUnits;
  assert.equal(await session.claimOffline(),true);assert.equal(session.battle.gold*1000+session.battle.goldRemainderUnits-units,180450);
  assert.equal(await session.claimOffline(),false);await session.close();

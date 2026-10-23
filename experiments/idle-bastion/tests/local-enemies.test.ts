@@ -11,7 +11,7 @@ import { createOfflineState, beginAbsence, reserveOffline, claimOffline, restore
 const read=(file:string)=>JSON.parse(readFileSync(new URL('../../../artifacts/idle-bastion/acceptance/'+file,import.meta.url),'utf8'));
 const seed=read('wave-rework-v2/earned-balanced-late.json');
 const added=['MossShroom','WoodSpider','HornedBat','EmberBomb'] as const;
-function encounter(wave:number,version:12|13|14=BATTLE_RULES_VERSION){
+function encounter(wave:number,version:12|13|14|15=BATTLE_RULES_VERSION){
  const prep=IdleBattle.restore(seed)!.snapshot();prep.highestCleared=wave-1;prep.wave=wave-1;prep.phase='intermission';prep.mode='advance';prep.advanceRequested=false;prep.queue=[];prep.enemies=[];prep.shots=[];prep.intermissionRemaining=0;prep.spawnTimer=0;prep.lives=BASE.coreLives;prep.liveClearedWaves=prep.liveClearedWaves.filter(w=>w<wave);prep.farmWave=1;
  const b=IdleBattle.restore(prep)!;assert.ok(b);b.update(.025);
  const s=b.snapshot();s.waveRecipeVersion=version;s.enemies=[];s.shots=[];s.spawnTimer=.15;

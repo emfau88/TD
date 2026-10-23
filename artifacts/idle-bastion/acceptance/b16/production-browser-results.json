@@ -1,0 +1,54 @@
+{
+  "errors": [],
+  "samples": [
+    {
+      "device": "desktop",
+      "sample": "research",
+      "pausedReload": true,
+      "research": true,
+      "initialLivingEnemies": 0,
+      "bodyWidth": 1600,
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "device": "desktop",
+      "sample": "dense",
+      "pausedReload": true,
+      "research": true,
+      "initialLivingEnemies": 16,
+      "bodyWidth": 1600,
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "device": "mobile",
+      "sample": "research",
+      "pausedReload": true,
+      "research": true,
+      "initialLivingEnemies": 0,
+      "bodyWidth": 390,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "device": "mobile",
+      "sample": "dense",
+      "pausedReload": true,
+      "research": true,
+      "initialLivingEnemies": 16,
+      "bodyWidth": 390,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "launcherVerified": false
+}

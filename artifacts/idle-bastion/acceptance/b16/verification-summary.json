@@ -1,0 +1,70 @@
+{
+  "baseMain": "6307fb3621d8a56c1a4ae83f01fefafcf369e598",
+  "branch": "codex/stormlight-b16",
+  "schema": 29,
+  "rules": 15,
+  "tower": {
+    "firstResearchAfterClearedWave": 28,
+    "cooldown": 1.05,
+    "jumpRange": 80,
+    "maxTargets": 3,
+    "damage": 26,
+    "range": 144,
+    "researchCost": 900,
+    "decay": 0.65,
+    "buildCost": 170,
+    "id": 5
+  },
+  "newTests": {
+    "pass": 9,
+    "fail": 0,
+    "tests": 9
+  },
+  "matrix": {
+    "pass": 135,
+    "newFailures": [],
+    "fail": 12,
+    "tests": 147
+  },
+  "knownPreviousNine": [
+    "bundled B05 atlases retain original dimensions and logical enemy frame maps",
+    "the real idle route uses the accepted connecting source quadrants for each turn and straight segment",
+    "snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history",
+    "real v14 veteran and its historical offline basis survive the schema-only migration",
+    "schema 15 saves preserve preparation and completed play without forcing the extended lessons",
+    "intro command waits for a background write, then rechecks and consumes the kit once",
+    "envelope one migrates read-only without production evidence and retains CAS revision protection",
+    "battle schema two migrates without rewriting the historical absence proof or pending receipt",
+    "session return across the Mara rule update pays the historical rate once and starts with no invented current proof"
+  ],
+  "additionalPreexistingIlyraFailures": [
+    "free conscious recruitment preserves veteran saves and rejects repeats; core settlement also supports it",
+    "saved windup and flight hit once, reward ground/air kills once, and reject forged damage",
+    "slower volleys remain in flight at the old hit time; legacy saves finish once at their old pace"
+  ],
+  "build": "success",
+  "desktopViewport": "1600x1000",
+  "mobileViewport": "390x844",
+  "devBrowserSamples": 8,
+  "productionBrowserSamples": 4,
+  "decodedTowerTextureBytes": 8003584,
+  "sourcePngBytes": 43431.0,
+  "sourcePngHashes": {
+    "Tower 05 - Level 01 - Weapon.png": "3cca00c101d2fd8bc2009347850ba0b3847212b8bf3ca0c55dd0ce17ae57e59f",
+    "Tower 05 - Level 02 - Weapon.png": "1eae710ffdf29b9b71b5a072ec5246fbb65a615737d61a1f1a498bccd63bdbfb",
+    "Tower 05.png": "f2822cd0ac2f2823e430a753c2a8dcb91e5d0e6646fc313dd5204333280abd6b",
+    "Tower 05 - Level 03 - Projectile - Impact.png": "7b66d332bd336c97fa79d999a59d3b35263ef54b0918062e8b75809ab0b01f7a",
+    "Tower 05 - Level 03 - Projectile.png": "51ec7a6de71f9318bb703820d0e9b236e51852a5b90669e9c702cfb4e81a957f",
+    "Tower 05 - Level 02 - Projectile.png": "856dcd29138ae9652c8e207ca599cc327c92a12373789fec9cab5fe7568d782d",
+    "Tower 05 - Level 01 - Projectile.png": "bb4e9dd655287e157d4a4ae36d873fc32e41f6fb33f4884a0c42ca56f50fc07d",
+    "Tower 05 - Level 03 - Weapon.png": "d776d6f7e5b3dde5ce6ae08edee828b9bbe4548ea8eaeae85820819db61daa17",
+    "Tower 05 - Level 02 - Projectile - Impact.png": "0c62a3b0392d5f096afe46ca3bd8bb5ba1bf44b88c91990c70f98468eed041bf",
+    "Tower 05 - Level 01 - Projectile - Impact.png": "d034056eb0606b924b65bb1677237b845bc9f19113188bc9c50c90afbea066d9"
+  },
+  "mainMerged": false,
+  "pagesDeployed": false,
+  "generalEconomyRulesChanged": false,
+  "completeResearchAndBuildUiPayment": 1070,
+  "originalTowerGraphicsUnchanged": true,
+  "fullSaveFixturesBundledInProduction": false
+}

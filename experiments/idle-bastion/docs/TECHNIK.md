@@ -1,5 +1,27 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## B16 — Snapshot 29 / Regeln 15
+
+Sturmlicht ist Turm-ID 5. Forschung wird als `settlement.stormResearched` gespeichert;
+Schema 28 wird vor Migration vollständig unter Regeln 14 validiert und erhält
+anschließend `false`. Bestehende Kämpfe behalten ihre Rezeptversion und Werte.
+Regeln 15 erzeugen dieselben Rezepte/HP/Belohnungen wie 14. Keine neue Savekennung.
+
+Eine Kette bleibt ein normaler gespeicherter Schuss mit unverändertem Abschusslevel
+und Grundschaden plus `chainHits`. Höchstens zwei bereits abgearbeitete IDs im
+aktiven Schuss, keine Duplikate/aktuelle Ziel-ID, keine Turm-/Geschossreferenzen.
+Neue Ziele können nach dem Abschuss gespawnt sein; sie werden gegen die globale
+UID-Grenze statt die frühere Schuss-ID validiert. Jeder Hop sucht das nächste
+lebende ungetroffene Ziel innerhalb 80, multipliziert den Schaden um 0,65 und
+endet spätestens nach dem dritten Treffer. Kein Reset bei Verkauf/Upgrade/Reload.
+
+Mara nutzt dieselbe Feuerrate. Ilyras gespeicherte Quelle darf ab aktuellem Schema
+ID 5 verwenden; historische Formate bleiben auf IDs 1–4 beschränkt. Für ihre
+Schadensbasis zählt nur die einzelne ungebuffte Turm-DPS. Neue Farmnachweise
+entstehen unter 15 mit Forschungsbesitz im Fingerabdruck; historische Ansprüche
+bis 14 bleiben unverändert einmalig zahlbar. Suchregel und Wirtschaftsformeln
+bleiben gleich. [Prüfung und Audit](../../../artifacts/idle-bastion/acceptance/b16/REPORT.md).
+
 ## Merge-Vorbereitung E01 — Snapshot 28 / Regeln 14
 
 Vier Frakassets-Gegner und beide Moospilz-Paletten bleiben unverändert. Regeln 14

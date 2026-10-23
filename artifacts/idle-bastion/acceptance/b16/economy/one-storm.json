@@ -1,0 +1,1290 @@
+{
+  "approach": "one-storm",
+  "source": "wave-rework-v2/earned-balanced-mid.json",
+  "giftedResources": 0,
+  "record": 70,
+  "secondsAfter25": 28487,
+  "farmSeconds": 25408,
+  "purchases": [
+    {
+      "at": 609,
+      "action": "tavern",
+      "cost": 0,
+      "gold": 1762
+    },
+    {
+      "at": 609,
+      "action": "tavern-II",
+      "cost": 1200,
+      "gold": 562
+    },
+    {
+      "at": 609,
+      "action": "recruit-Ilyra",
+      "cost": 0,
+      "gold": 562
+    },
+    {
+      "at": 627,
+      "action": "upgrade",
+      "cost": 1181,
+      "gold": 76,
+      "kind": 3,
+      "level": 7,
+      "uid": 220
+    },
+    {
+      "at": 663,
+      "action": "upgrade",
+      "cost": 1559,
+      "gold": 23,
+      "kind": 3,
+      "level": 8,
+      "uid": 220
+    },
+    {
+      "at": 711,
+      "action": "research-storm",
+      "cost": 900,
+      "gold": 1013
+    },
+    {
+      "at": 711,
+      "action": "build",
+      "cost": 170,
+      "gold": 843,
+      "kind": 5,
+      "pad": "cell-24-7"
+    },
+    {
+      "at": 713,
+      "action": "upgrade",
+      "cost": 60,
+      "gold": 783,
+      "kind": 5,
+      "level": 2,
+      "uid": 2991
+    },
+    {
+      "at": 715,
+      "action": "upgrade",
+      "cost": 213,
+      "gold": 618,
+      "kind": 5,
+      "level": 3,
+      "uid": 2991
+    },
+    {
+      "at": 717,
+      "action": "upgrade",
+      "cost": 383,
+      "gold": 296,
+      "kind": 5,
+      "level": 4,
+      "uid": 2991
+    },
+    {
+      "at": 727,
+      "action": "upgrade",
+      "cost": 689,
+      "gold": 54,
+      "kind": 5,
+      "level": 5,
+      "uid": 2991
+    },
+    {
+      "at": 767,
+      "action": "upgrade",
+      "cost": 1239,
+      "gold": 49,
+      "kind": 5,
+      "level": 6,
+      "uid": 2991
+    },
+    {
+      "at": 815,
+      "action": "upgrade",
+      "cost": 1488,
+      "gold": 29,
+      "kind": 5,
+      "level": 7,
+      "uid": 2991
+    },
+    {
+      "at": 845,
+      "action": "upgrade",
+      "cost": 1143,
+      "gold": 359,
+      "kind": 1,
+      "level": 9,
+      "uid": 2
+    },
+    {
+      "at": 913,
+      "action": "upgrade",
+      "cost": 1239,
+      "gold": 231,
+      "kind": 4,
+      "level": 6,
+      "uid": 586
+    },
+    {
+      "at": 983,
+      "action": "upgrade",
+      "cost": 2058,
+      "gold": 43,
+      "kind": 3,
+      "level": 9,
+      "uid": 220
+    },
+    {
+      "at": 1055,
+      "action": "upgrade",
+      "cost": 1964,
+      "gold": 343,
+      "kind": 5,
+      "level": 8,
+      "uid": 2991
+    },
+    {
+      "at": 1125,
+      "action": "upgrade",
+      "cost": 1488,
+      "gold": 53,
+      "kind": 4,
+      "level": 7,
+      "uid": 586
+    },
+    {
+      "at": 1155,
+      "action": "upgrade",
+      "cost": 1509,
+      "gold": 332,
+      "kind": 1,
+      "level": 10,
+      "uid": 1
+    },
+    {
+      "at": 1177,
+      "action": "upgrade",
+      "cost": 1509,
+      "gold": 116,
+      "kind": 1,
+      "level": 10,
+      "uid": 2
+    },
+    {
+      "at": 1229,
+      "action": "upgrade",
+      "cost": 2717,
+      "gold": 28,
+      "kind": 3,
+      "level": 10,
+      "uid": 220
+    },
+    {
+      "at": 1309,
+      "action": "upgrade",
+      "cost": 2592,
+      "gold": 1,
+      "kind": 5,
+      "level": 9,
+      "uid": 2991
+    },
+    {
+      "at": 1395,
+      "action": "upgrade",
+      "cost": 1964,
+      "gold": 207,
+      "kind": 4,
+      "level": 8,
+      "uid": 586
+    },
+    {
+      "at": 1507,
+      "action": "upgrade",
+      "cost": 1992,
+      "gold": 149,
+      "kind": 1,
+      "level": 11,
+      "uid": 1
+    },
+    {
+      "at": 1537,
+      "action": "upgrade",
+      "cost": 1992,
+      "gold": 116,
+      "kind": 1,
+      "level": 11,
+      "uid": 2
+    },
+    {
+      "at": 1605,
+      "action": "upgrade",
+      "cost": 3586,
+      "gold": 408,
+      "kind": 3,
+      "level": 11,
+      "uid": 220
+    },
+    {
+      "at": 1659,
+      "action": "upgrade",
+      "cost": 3421,
+      "gold": 71,
+      "kind": 5,
+      "level": 10,
+      "uid": 2991
+    },
+    {
+      "at": 1747,
+      "action": "upgrade",
+      "cost": 2592,
+      "gold": 16,
+      "kind": 4,
+      "level": 9,
+      "uid": 586
+    },
+    {
+      "at": 1871,
+      "action": "upgrade",
+      "cost": 2630,
+      "gold": 681,
+      "kind": 1,
+      "level": 12,
+      "uid": 1
+    },
+    {
+      "at": 1971,
+      "action": "upgrade",
+      "cost": 2630,
+      "gold": 74,
+      "kind": 1,
+      "level": 12,
+      "uid": 2
+    },
+    {
+      "at": 2039,
+      "action": "upgrade",
+      "cost": 4734,
+      "gold": 11,
+      "kind": 3,
+      "level": 12,
+      "uid": 220
+    },
+    {
+      "at": 2115,
+      "action": "upgrade",
+      "cost": 4516,
+      "gold": 26,
+      "kind": 5,
+      "level": 11,
+      "uid": 2991
+    },
+    {
+      "at": 2171,
+      "action": "upgrade",
+      "cost": 3421,
+      "gold": 128,
+      "kind": 4,
+      "level": 10,
+      "uid": 586
+    },
+    {
+      "at": 2287,
+      "action": "upgrade",
+      "cost": 3471,
+      "gold": 111,
+      "kind": 1,
+      "level": 13,
+      "uid": 1
+    },
+    {
+      "at": 2343,
+      "action": "upgrade",
+      "cost": 3471,
+      "gold": 64,
+      "kind": 1,
+      "level": 13,
+      "uid": 2
+    },
+    {
+      "at": 2441,
+      "action": "upgrade",
+      "cost": 6249,
+      "gold": 50,
+      "kind": 3,
+      "level": 13,
+      "uid": 220
+    },
+    {
+      "at": 2535,
+      "action": "upgrade",
+      "cost": 5961,
+      "gold": 110,
+      "kind": 5,
+      "level": 12,
+      "uid": 2991
+    },
+    {
+      "at": 2719,
+      "action": "upgrade",
+      "cost": 4516,
+      "gold": 207,
+      "kind": 4,
+      "level": 11,
+      "uid": 586
+    },
+    {
+      "at": 2791,
+      "action": "upgrade",
+      "cost": 4582,
+      "gold": 2,
+      "kind": 1,
+      "level": 14,
+      "uid": 1
+    },
+    {
+      "at": 2857,
+      "action": "upgrade",
+      "cost": 4582,
+      "gold": 90,
+      "kind": 1,
+      "level": 14,
+      "uid": 2
+    },
+    {
+      "at": 2983,
+      "action": "upgrade",
+      "cost": 8248,
+      "gold": 53,
+      "kind": 3,
+      "level": 14,
+      "uid": 220
+    },
+    {
+      "at": 3149,
+      "action": "upgrade",
+      "cost": 7869,
+      "gold": 101,
+      "kind": 5,
+      "level": 13,
+      "uid": 2991
+    },
+    {
+      "at": 3239,
+      "action": "upgrade",
+      "cost": 5961,
+      "gold": 403,
+      "kind": 4,
+      "level": 12,
+      "uid": 586
+    },
+    {
+      "at": 3327,
+      "action": "upgrade",
+      "cost": 6049,
+      "gold": 51,
+      "kind": 1,
+      "level": 15,
+      "uid": 1
+    },
+    {
+      "at": 3405,
+      "action": "upgrade",
+      "cost": 6049,
+      "gold": 9,
+      "kind": 1,
+      "level": 15,
+      "uid": 2
+    },
+    {
+      "at": 3717,
+      "action": "upgrade",
+      "cost": 10888,
+      "gold": 56,
+      "kind": 3,
+      "level": 15,
+      "uid": 220
+    },
+    {
+      "at": 3853,
+      "action": "upgrade",
+      "cost": 10387,
+      "gold": 9,
+      "kind": 5,
+      "level": 14,
+      "uid": 2991
+    },
+    {
+      "at": 3959,
+      "action": "upgrade",
+      "cost": 7869,
+      "gold": 51,
+      "kind": 4,
+      "level": 13,
+      "uid": 586
+    },
+    {
+      "at": 4065,
+      "action": "upgrade",
+      "cost": 7984,
+      "gold": 94,
+      "kind": 1,
+      "level": 16,
+      "uid": 1
+    },
+    {
+      "at": 4301,
+      "action": "upgrade",
+      "cost": 7984,
+      "gold": 20,
+      "kind": 1,
+      "level": 16,
+      "uid": 2
+    },
+    {
+      "at": 4485,
+      "action": "upgrade",
+      "cost": 14372,
+      "gold": 47,
+      "kind": 3,
+      "level": 16,
+      "uid": 220
+    },
+    {
+      "at": 4659,
+      "action": "upgrade",
+      "cost": 13710,
+      "gold": 19,
+      "kind": 5,
+      "level": 15,
+      "uid": 2991
+    },
+    {
+      "at": 4791,
+      "action": "upgrade",
+      "cost": 10387,
+      "gold": 73,
+      "kind": 4,
+      "level": 14,
+      "uid": 586
+    },
+    {
+      "at": 4971,
+      "action": "upgrade",
+      "cost": 10539,
+      "gold": 64,
+      "kind": 1,
+      "level": 17,
+      "uid": 1
+    },
+    {
+      "at": 5105,
+      "action": "upgrade",
+      "cost": 10539,
+      "gold": 21,
+      "kind": 1,
+      "level": 17,
+      "uid": 2
+    },
+    {
+      "at": 5347,
+      "action": "upgrade",
+      "cost": 18971,
+      "gold": 111,
+      "kind": 3,
+      "level": 17,
+      "uid": 220
+    },
+    {
+      "at": 5577,
+      "action": "upgrade",
+      "cost": 18098,
+      "gold": 51,
+      "kind": 5,
+      "level": 16,
+      "uid": 2991
+    },
+    {
+      "at": 5831,
+      "action": "upgrade",
+      "cost": 13710,
+      "gold": 79,
+      "kind": 4,
+      "level": 15,
+      "uid": 586
+    },
+    {
+      "at": 6007,
+      "action": "upgrade",
+      "cost": 13912,
+      "gold": 14,
+      "kind": 1,
+      "level": 18,
+      "uid": 1
+    },
+    {
+      "at": 6183,
+      "action": "upgrade",
+      "cost": 13912,
+      "gold": 190,
+      "kind": 1,
+      "level": 18,
+      "uid": 2
+    },
+    {
+      "at": 6497,
+      "action": "upgrade",
+      "cost": 25041,
+      "gold": 6,
+      "kind": 3,
+      "level": 18,
+      "uid": 220
+    },
+    {
+      "at": 6903,
+      "action": "upgrade",
+      "cost": 23889,
+      "gold": 73,
+      "kind": 5,
+      "level": 17,
+      "uid": 2991
+    },
+    {
+      "at": 7131,
+      "action": "upgrade",
+      "cost": 18098,
+      "gold": 70,
+      "kind": 4,
+      "level": 16,
+      "uid": 586
+    },
+    {
+      "at": 7361,
+      "action": "upgrade",
+      "cost": 18364,
+      "gold": 215,
+      "kind": 1,
+      "level": 19,
+      "uid": 1
+    },
+    {
+      "at": 7593,
+      "action": "upgrade",
+      "cost": 18364,
+      "gold": 146,
+      "kind": 1,
+      "level": 19,
+      "uid": 2
+    },
+    {
+      "at": 8155,
+      "action": "upgrade",
+      "cost": 33054,
+      "gold": 95,
+      "kind": 3,
+      "level": 19,
+      "uid": 220
+    },
+    {
+      "at": 8549,
+      "action": "upgrade",
+      "cost": 31533,
+      "gold": 40,
+      "kind": 5,
+      "level": 18,
+      "uid": 2991
+    },
+    {
+      "at": 8853,
+      "action": "upgrade",
+      "cost": 23889,
+      "gold": 168,
+      "kind": 4,
+      "level": 17,
+      "uid": 586
+    },
+    {
+      "at": 9157,
+      "action": "upgrade",
+      "cost": 24240,
+      "gold": 117,
+      "kind": 1,
+      "level": 20,
+      "uid": 1
+    },
+    {
+      "at": 9589,
+      "action": "upgrade",
+      "cost": 24240,
+      "gold": 94,
+      "kind": 1,
+      "level": 20,
+      "uid": 2
+    },
+    {
+      "at": 10137,
+      "action": "upgrade",
+      "cost": 43632,
+      "gold": 25,
+      "kind": 3,
+      "level": 20,
+      "uid": 220
+    },
+    {
+      "at": 10663,
+      "action": "upgrade",
+      "cost": 41624,
+      "gold": 143,
+      "kind": 5,
+      "level": 19,
+      "uid": 2991
+    },
+    {
+      "at": 11061,
+      "action": "upgrade",
+      "cost": 31533,
+      "gold": 340,
+      "kind": 4,
+      "level": 18,
+      "uid": 586
+    },
+    {
+      "at": 11543,
+      "action": "upgrade",
+      "cost": 31997,
+      "gold": 46,
+      "kind": 1,
+      "level": 21,
+      "uid": 1
+    },
+    {
+      "at": 11943,
+      "action": "upgrade",
+      "cost": 31997,
+      "gold": 63,
+      "kind": 1,
+      "level": 21,
+      "uid": 2
+    },
+    {
+      "at": 12671,
+      "action": "upgrade",
+      "cost": 57594,
+      "gold": 19,
+      "kind": 3,
+      "level": 21,
+      "uid": 220
+    },
+    {
+      "at": 13363,
+      "action": "upgrade",
+      "cost": 54944,
+      "gold": 101,
+      "kind": 5,
+      "level": 20,
+      "uid": 2991
+    },
+    {
+      "at": 13921,
+      "action": "upgrade",
+      "cost": 41624,
+      "gold": 135,
+      "kind": 4,
+      "level": 19,
+      "uid": 586
+    },
+    {
+      "at": 14455,
+      "action": "upgrade",
+      "cost": 42236,
+      "gold": 66,
+      "kind": 1,
+      "level": 22,
+      "uid": 1
+    },
+    {
+      "at": 14987,
+      "action": "upgrade",
+      "cost": 42236,
+      "gold": 158,
+      "kind": 1,
+      "level": 22,
+      "uid": 2
+    },
+    {
+      "at": 15943,
+      "action": "upgrade",
+      "cost": 76024,
+      "gold": 65,
+      "kind": 3,
+      "level": 22,
+      "uid": 220
+    },
+    {
+      "at": 16927,
+      "action": "upgrade",
+      "cost": 72526,
+      "gold": 83,
+      "kind": 5,
+      "level": 21,
+      "uid": 2991
+    },
+    {
+      "at": 17619,
+      "action": "upgrade",
+      "cost": 54944,
+      "gold": 4,
+      "kind": 4,
+      "level": 20,
+      "uid": 586
+    },
+    {
+      "at": 18321,
+      "action": "upgrade",
+      "cost": 55751,
+      "gold": 315,
+      "kind": 1,
+      "level": 23,
+      "uid": 1
+    },
+    {
+      "at": 19021,
+      "action": "upgrade",
+      "cost": 55751,
+      "gold": 142,
+      "kind": 1,
+      "level": 23,
+      "uid": 2
+    },
+    {
+      "at": 20427,
+      "action": "upgrade",
+      "cost": 100352,
+      "gold": 16,
+      "kind": 3,
+      "level": 23,
+      "uid": 220
+    },
+    {
+      "at": 21633,
+      "action": "upgrade",
+      "cost": 95734,
+      "gold": 26,
+      "kind": 5,
+      "level": 22,
+      "uid": 2991
+    },
+    {
+      "at": 22547,
+      "action": "upgrade",
+      "cost": 72526,
+      "gold": 78,
+      "kind": 4,
+      "level": 21,
+      "uid": 586
+    },
+    {
+      "at": 23473,
+      "action": "upgrade",
+      "cost": 73591,
+      "gold": 17,
+      "kind": 1,
+      "level": 24,
+      "uid": 1
+    },
+    {
+      "at": 24571,
+      "action": "upgrade",
+      "cost": 73591,
+      "gold": 47,
+      "kind": 1,
+      "level": 24,
+      "uid": 2
+    },
+    {
+      "at": 26239,
+      "action": "upgrade",
+      "cost": 132464,
+      "gold": 227,
+      "kind": 3,
+      "level": 24,
+      "uid": 220
+    },
+    {
+      "at": 27831,
+      "action": "upgrade",
+      "cost": 126369,
+      "gold": 66,
+      "kind": 5,
+      "level": 23,
+      "uid": 2991
+    },
+    {
+      "at": 29037,
+      "action": "upgrade",
+      "cost": 95734,
+      "gold": 92,
+      "kind": 4,
+      "level": 22,
+      "uid": 586
+    }
+  ],
+  "losses": [
+    {
+      "wave": 36,
+      "at": 1104,
+      "farm": 26
+    },
+    {
+      "wave": 40,
+      "at": 1490,
+      "farm": 26
+    },
+    {
+      "wave": 44,
+      "at": 1937,
+      "farm": 26
+    },
+    {
+      "wave": 44,
+      "at": 2250,
+      "farm": 26
+    },
+    {
+      "wave": 46,
+      "at": 2698,
+      "farm": 26
+    },
+    {
+      "wave": 46,
+      "at": 3048,
+      "farm": 26
+    },
+    {
+      "wave": 50,
+      "at": 3667,
+      "farm": 26
+    },
+    {
+      "wave": 53,
+      "at": 4257,
+      "farm": 26
+    },
+    {
+      "wave": 53,
+      "at": 4849,
+      "farm": 26
+    },
+    {
+      "wave": 54,
+      "at": 5690,
+      "farm": 26
+    },
+    {
+      "wave": 56,
+      "at": 6644,
+      "farm": 26
+    },
+    {
+      "wave": 59,
+      "at": 7799,
+      "farm": 26
+    },
+    {
+      "wave": 61,
+      "at": 9335,
+      "farm": 26
+    },
+    {
+      "wave": 62,
+      "at": 11162,
+      "farm": 26
+    },
+    {
+      "wave": 62,
+      "at": 13416,
+      "farm": 26
+    },
+    {
+      "wave": 63,
+      "at": 16043,
+      "farm": 26
+    },
+    {
+      "wave": 66,
+      "at": 19228,
+      "farm": 26
+    },
+    {
+      "wave": 70,
+      "at": 23716,
+      "farm": 26
+    }
+  ],
+  "samples": [
+    {
+      "milestone": 25,
+      "elapsedAfter25": 1,
+      "gold": 562,
+      "earned": 14291,
+      "farmWave": 23,
+      "safeGoldPerMinute": 2815.2697095435683,
+      "cheapestUpgrade": {
+        "kind": 1,
+        "level": 8,
+        "cost": 1143,
+        "minutesAtRate": 0.40600017686593565,
+        "waitWithWalletMinutes": 0.206374543096333
+      },
+      "levels": [
+        {
+          "kind": 1,
+          "level": 9,
+          "pad": "tower-start"
+        },
+        {
+          "kind": 1,
+          "level": 8,
+          "pad": "tower-03"
+        },
+        {
+          "kind": 2,
+          "level": 2,
+          "pad": "tower-02"
+        },
+        {
+          "kind": 3,
+          "level": 6,
+          "pad": "tower-09"
+        },
+        {
+          "kind": 4,
+          "level": 5,
+          "pad": "cell-14-7"
+        }
+      ]
+    },
+    {
+      "milestone": 28,
+      "elapsedAfter25": 101,
+      "gold": 1913,
+      "earned": 18382,
+      "farmWave": 26,
+      "safeGoldPerMinute": 2957.1020019065777,
+      "cheapestUpgrade": {
+        "kind": 1,
+        "level": 8,
+        "cost": 1143,
+        "minutesAtRate": 0.386527079303675,
+        "waitWithWalletMinutes": 0
+      },
+      "levels": [
+        {
+          "kind": 1,
+          "level": 9,
+          "pad": "tower-start"
+        },
+        {
+          "kind": 1,
+          "level": 8,
+          "pad": "tower-03"
+        },
+        {
+          "kind": 2,
+          "level": 2,
+          "pad": "tower-02"
+        },
+        {
+          "kind": 3,
+          "level": 8,
+          "pad": "tower-09"
+        },
+        {
+          "kind": 4,
+          "level": 5,
+          "pad": "cell-14-7"
+        }
+      ]
+    },
+    {
+      "milestone": 30,
+      "elapsedAfter25": 197,
+      "gold": 1433,
+      "earned": 21556,
+      "farmWave": 26,
+      "safeGoldPerMinute": 2957.1020019065777,
+      "cheapestUpgrade": {
+        "kind": 1,
+        "level": 8,
+        "cost": 1143,
+        "minutesAtRate": 0.386527079303675,
+        "waitWithWalletMinutes": 0
+      },
+      "levels": [
+        {
+          "kind": 1,
+          "level": 9,
+          "pad": "tower-start"
+        },
+        {
+          "kind": 1,
+          "level": 8,
+          "pad": "tower-03"
+        },
+        {
+          "kind": 2,
+          "level": 2,
+          "pad": "tower-02"
+        },
+        {
+          "kind": 3,
+          "level": 8,
+          "pad": "tower-09"
+        },
+        {
+          "kind": 4,
+          "level": 5,
+          "pad": "cell-14-7"
+        },
+        {
+          "kind": 5,
+          "level": 6,
+          "pad": "cell-24-7"
+        }
+      ]
+    },
+    {
+      "milestone": 40,
+      "elapsedAfter25": 1112,
+      "gold": 2174,
+      "earned": 52959,
+      "farmWave": 26,
+      "safeGoldPerMinute": 3810.810810810811,
+      "cheapestUpgrade": {
+        "kind": 4,
+        "level": 8,
+        "cost": 2592,
+        "minutesAtRate": 0.6801702127659575,
+        "waitWithWalletMinutes": 0.10968794326241135
+      },
+      "levels": [
+        {
+          "kind": 1,
+          "level": 11,
+          "pad": "tower-start"
+        },
+        {
+          "kind": 1,
+          "level": 11,
+          "pad": "tower-03"
+        },
+        {
+          "kind": 2,
+          "level": 2,
+          "pad": "tower-02"
+        },
+        {
+          "kind": 3,
+          "level": 11,
+          "pad": "tower-09"
+        },
+        {
+          "kind": 4,
+          "level": 8,
+          "pad": "cell-14-7"
+        },
+        {
+          "kind": 5,
+          "level": 10,
+          "pad": "cell-24-7"
+        }
+      ]
+    },
+    {
+      "milestone": 50,
+      "elapsedAfter25": 3514,
+      "gold": 2326,
+      "earned": 177770,
+      "farmWave": 26,
+      "safeGoldPerMinute": 4561.764705882353,
+      "cheapestUpgrade": {
+        "kind": 1,
+        "level": 15,
+        "cost": 7984,
+        "minutesAtRate": 1.7501998710509348,
+        "waitWithWalletMinutes": 1.2403094777562862
+      },
+      "levels": [
+        {
+          "kind": 1,
+          "level": 16,
+          "pad": "tower-start"
+        },
+        {
+          "kind": 1,
+          "level": 15,
+          "pad": "tower-03"
+        },
+        {
+          "kind": 2,
+          "level": 2,
+          "pad": "tower-02"
+        },
+        {
+          "kind": 3,
+          "level": 15,
+          "pad": "tower-09"
+        },
+        {
+          "kind": 4,
+          "level": 13,
+          "pad": "cell-14-7"
+        },
+        {
+          "kind": 5,
+          "level": 14,
+          "pad": "cell-24-7"
+        }
+      ]
+    },
+    {
+      "milestone": 60,
+      "elapsedAfter25": 8663,
+      "gold": 3985,
+      "earned": 542035,
+      "farmWave": 26,
+      "safeGoldPerMinute": 4764.976958525345,
+      "cheapestUpgrade": {
+        "kind": 1,
+        "level": 19,
+        "cost": 24240,
+        "minutesAtRate": 5.087117988394585,
+        "waitWithWalletMinutes": 4.25080754352031
+      },
+      "levels": [
+        {
+          "kind": 1,
+          "level": 20,
+          "pad": "tower-start"
+        },
+        {
+          "kind": 1,
+          "level": 19,
+          "pad": "tower-03"
+        },
+        {
+          "kind": 2,
+          "level": 2,
+          "pad": "tower-02"
+        },
+        {
+          "kind": 3,
+          "level": 19,
+          "pad": "tower-09"
+        },
+        {
+          "kind": 4,
+          "level": 17,
+          "pad": "cell-14-7"
+        },
+        {
+          "kind": 5,
+          "level": 18,
+          "pad": "cell-24-7"
+        }
+      ]
+    },
+    {
+      "milestone": 70,
+      "elapsedAfter25": 28487,
+      "gold": 1983,
+      "earned": 2069047,
+      "farmWave": 26,
+      "safeGoldPerMinute": 4764.976958525345,
+      "cheapestUpgrade": {
+        "kind": 1,
+        "level": 24,
+        "cost": 97140,
+        "minutesAtRate": 20.38624758220503,
+        "waitWithWalletMinutes": 19.97008607350097
+      },
+      "levels": [
+        {
+          "kind": 1,
+          "level": 24,
+          "pad": "tower-start"
+        },
+        {
+          "kind": 1,
+          "level": 24,
+          "pad": "tower-03"
+        },
+        {
+          "kind": 2,
+          "level": 2,
+          "pad": "tower-02"
+        },
+        {
+          "kind": 3,
+          "level": 24,
+          "pad": "tower-09"
+        },
+        {
+          "kind": 4,
+          "level": 22,
+          "pad": "cell-14-7"
+        },
+        {
+          "kind": 5,
+          "level": 23,
+          "pad": "cell-24-7"
+        }
+      ]
+    }
+  ],
+  "farmCounts": {
+    "26": 1539
+  },
+  "finalFarm": {
+    "wave": 26,
+    "fingerprint": "{\"rulesVersion\":15,\"layoutVersion\":5,\"layout\":{\"columns\":40,\"plots\":{\"workshop\":{\"x\":30,\"y\":11},\"warehouse\":{\"x\":34,\"y\":12},\"tavern\":{\"x\":36,\"y\":10}}},\"blocked\":[{\"x\":0,\"y\":0},{\"x\":0,\"y\":15},{\"x\":0,\"y\":14},{\"x\":1,\"y\":0},{\"x\":1,\"y\":15},{\"x\":1,\"y\":14},{\"x\":2,\"y\":0},{\"x\":2,\"y\":15},{\"x\":2,\"y\":14},{\"x\":3,\"y\":0},{\"x\":3,\"y\":15},{\"x\":4,\"y\":0},{\"x\":4,\"y\":15},{\"x\":4,\"y\":14},{\"x\":5,\"y\":0},{\"x\":5,\"y\":15},{\"x\":5,\"y\":14},{\"x\":6,\"y\":15},{\"x\":6,\"y\":14},{\"x\":7,\"y\":15},{\"x\":7,\"y\":14},{\"x\":8,\"y\":15},{\"x\":9,\"y\":15},{\"x\":9,\"y\":14},{\"x\":10,\"y\":15},{\"x\":10,\"y\":14},{\"x\":11,\"y\":15},{\"x\":11,\"y\":14},{\"x\":12,\"y\":15},{\"x\":12,\"y\":14},{\"x\":13,\"y\":15},{\"x\":14,\"y\":15},{\"x\":14,\"y\":14},{\"x\":15,\"y\":15},{\"x\":15,\"y\":14},{\"x\":16,\"y\":15},{\"x\":16,\"y\":14},{\"x\":17,\"y\":0},{\"x\":17,\"y\":15},{\"x\":17,\"y\":14},{\"x\":18,\"y\":0},{\"x\":18,\"y\":15},{\"x\":19,\"y\":0},{\"x\":19,\"y\":15},{\"x\":19,\"y\":14},{\"x\":20,\"y\":0},{\"x\":20,\"y\":15},{\"x\":20,\"y\":14},{\"x\":21,\"y\":0},{\"x\":21,\"y\":15},{\"x\":21,\"y\":14},{\"x\":22,\"y\":0},{\"x\":22,\"y\":15},{\"x\":22,\"y\":14},{\"x\":23,\"y\":0},{\"x\":23,\"y\":15},{\"x\":24,\"y\":0},{\"x\":24,\"y\":15},{\"x\":24,\"y\":14},{\"x\":25,\"y\":0},{\"x\":25,\"y\":15},{\"x\":25,\"y\":14},{\"x\":26,\"y\":0},{\"x\":26,\"y\":15},{\"x\":26,\"y\":14},{\"x\":27,\"y\":0},{\"x\":27,\"y\":15},{\"x\":27,\"y\":14},{\"x\":0,\"y\":1},{\"x\":27,\"y\":1},{\"x\":0,\"y\":2},{\"x\":27,\"y\":2},{\"x\":1,\"y\":2},{\"x\":26,\"y\":2},{\"x\":0,\"y\":3},{\"x\":1,\"y\":3},{\"x\":0,\"y\":7},{\"x\":1,\"y\":7},{\"x\":0,\"y\":8},{\"x\":1,\"y\":8},{\"x\":0,\"y\":9},{\"x\":0,\"y\":10},{\"x\":1,\"y\":10},{\"x\":0,\"y\":11},{\"x\":1,\"y\":11},{\"x\":0,\"y\":12},{\"x\":1,\"y\":12},{\"x\":0,\"y\":13},{\"x\":27,\"y\":13},{\"x\":5,\"y\":1},{\"x\":18,\"y\":1},{\"x\":19,\"y\":1},{\"x\":20,\"y\":1},{\"x\":19,\"y\":2},{\"x\":20,\"y\":2},{\"x\":21,\"y\":1},{\"x\":24,\"y\":1},{\"x\":25,\"y\":1},{\"x\":24,\"y\":2},{\"x\":10,\"y\":8},{\"x\":11,\"y\":8},{\"x\":18,\"y\":4},{\"x\":19,\"y\":4},{\"x\":20,\"y\":4},{\"x\":18,\"y\":5},{\"x\":19,\"y\":5},{\"x\":20,\"y\":5},{\"x\":21,\"y\":5},{\"x\":19,\"y\":6},{\"x\":20,\"y\":6},{\"x\":21,\"y\":6},{\"x\":20,\"y\":7},{\"x\":22,\"y\":7},{\"x\":1,\"y\":9},{\"x\":2,\"y\":9},{\"x\":11,\"y\":12},{\"x\":12,\"y\":12},{\"x\":13,\"y\":12},{\"x\":12,\"y\":13},{\"x\":13,\"y\":13},{\"x\":18,\"y\":13},{\"x\":19,\"y\":13},{\"x\":21,\"y\":13},{\"x\":22,\"y\":13},{\"x\":23,\"y\":13},{\"x\":24,\"y\":13},{\"x\":25,\"y\":12},{\"x\":28,\"y\":0},{\"x\":28,\"y\":15},{\"x\":28,\"y\":14},{\"x\":29,\"y\":0},{\"x\":29,\"y\":15},{\"x\":29,\"y\":14},{\"x\":30,\"y\":0},{\"x\":30,\"y\":15},{\"x\":31,\"y\":0},{\"x\":31,\"y\":15},{\"x\":31,\"y\":1},{\"x\":31,\"y\":2},{\"x\":31,\"y\":3},{\"x\":31,\"y\":4},{\"x\":29,\"y\":1},{\"x\":30,\"y\":2},{\"x\":29,\"y\":3},{\"x\":30,\"y\":4},{\"x\":32,\"y\":0},{\"x\":32,\"y\":1},{\"x\":32,\"y\":15},{\"x\":33,\"y\":0},{\"x\":33,\"y\":1},{\"x\":33,\"y\":15},{\"x\":34,\"y\":0},{\"x\":34,\"y\":1},{\"x\":34,\"y\":15},{\"x\":35,\"y\":0},{\"x\":35,\"y\":1},{\"x\":35,\"y\":15},{\"x\":36,\"y\":0},{\"x\":36,\"y\":1},{\"x\":36,\"y\":15},{\"x\":37,\"y\":0},{\"x\":37,\"y\":1},{\"x\":37,\"y\":15},{\"x\":38,\"y\":0},{\"x\":38,\"y\":1},{\"x\":38,\"y\":15},{\"x\":39,\"y\":0},{\"x\":39,\"y\":1},{\"x\":39,\"y\":15},{\"x\":39,\"y\":2},{\"x\":39,\"y\":3},{\"x\":39,\"y\":4},{\"x\":39,\"y\":5},{\"x\":39,\"y\":6},{\"x\":39,\"y\":7},{\"x\":39,\"y\":8},{\"x\":39,\"y\":9},{\"x\":39,\"y\":10},{\"x\":39,\"y\":11},{\"x\":39,\"y\":12},{\"x\":39,\"y\":13},{\"x\":39,\"y\":14},{\"x\":33,\"y\":2},{\"x\":34,\"y\":2},{\"x\":36,\"y\":2},{\"x\":37,\"y\":3},{\"x\":38,\"y\":3},{\"x\":34,\"y\":4},{\"x\":35,\"y\":4},{\"x\":37,\"y\":5},{\"x\":38,\"y\":6},{\"x\":35,\"y\":8},{\"x\":37,\"y\":8},{\"x\":17,\"y\":2},{\"x\":23,\"y\":3},{\"x\":3,\"y\":9},{\"x\":16,\"y\":13},{\"x\":24,\"y\":12},{\"x\":30,\"y\":5},{\"x\":33,\"y\":3},{\"x\":36,\"y\":7},{\"x\":2,\"y\":1},{\"x\":3,\"y\":1},{\"x\":4,\"y\":1},{\"x\":2,\"y\":2},{\"x\":3,\"y\":2},{\"x\":4,\"y\":2},{\"x\":2,\"y\":3},{\"x\":3,\"y\":3},{\"x\":4,\"y\":3}],\"maraTarget\":1,\"settlement\":{\"workshopBuilt\":true,\"frostResearched\":true,\"stormResearched\":true,\"builtAt\":46},\"wisp\":true,\"towers\":[[\"cell-14-7\",4,22,false],[\"cell-24-7\",5,23,false],[\"tower-02\",2,2,false],[\"tower-03\",1,24,false],[\"tower-09\",3,24,false],[\"tower-start\",1,24,true]]}",
+    "rulesVersion": 15,
+    "rewardGold": 2585,
+    "rewardRemainderUnits": 0,
+    "durationMs": 32550
+  },
+  "finalLevels": [
+    {
+      "kind": 1,
+      "level": 24,
+      "pad": "tower-start"
+    },
+    {
+      "kind": 1,
+      "level": 24,
+      "pad": "tower-03"
+    },
+    {
+      "kind": 2,
+      "level": 2,
+      "pad": "tower-02"
+    },
+    {
+      "kind": 3,
+      "level": 24,
+      "pad": "tower-09"
+    },
+    {
+      "kind": 4,
+      "level": 22,
+      "pad": "cell-14-7"
+    },
+    {
+      "kind": 5,
+      "level": 23,
+      "pad": "cell-24-7"
+    }
+  ]
+}

@@ -1,5 +1,13 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**B16 · Sturmlicht und kleiner Wirtschaftsaudit — 23.10.2026, eigener Branch ab aktuellem main.**
+
+- [x] Turm 05 mit vorhandenen drei Grafikstufen, begrenzter Dreierkette (80 Sprungreichweite, 100/65/42,25 %), Forschung nach gemeisterter 28 und Ilyra-Einführung. Forschung 900 / separater Bau 170 Gold, ohne neue Levelobergrenze. Kleine Forschungsicons in der bestehenden Werkstatt.
+- [x] Schema 29 / Regeln 15, alte laufende Kämpfe und Offline-Ansprüche erhalten. Verkauf/Upgrade während Ketten, Mara, Ilyras gespeicherte Turmquelle und sichere Farmproben geprüft. Keine Änderung an Wellen, bestehender Turmbalance, Farmwahl oder allgemeiner Wirtschaft.
+- [x] Neun neue B16-Tests erfolgreich; erweiterte Matrix 135/147 mit neun bereits bekannten und drei auf main separat nachgewiesenen Ilyra-Altfällen. Produktionsbuild, acht Desktop-/Mobil- und vier Produktionsproben einschließlich dichter Welle und exaktem Reload bestanden. [Implementierung und Ansichten](../../artifacts/idle-bastion/acceptance/b16/REPORT.md).
+- [x] Drei bezahlte Fortsetzungen 25→70 und 27 Rollenvergleiche; [Wirtschaftsaudit](../../artifacts/idle-bastion/acceptance/b16/ECONOMY.md) mit Goldraten, Wartezeiten und genau zwei nicht implementierten Vorschlägen.
+- [ ] Nutzer prüft die lokale Sturmlicht-Vorschau. Branch `codex/stormlight-b16` bleibt bis zur Freigabe getrennt; kein Merge und keine Pages-Veröffentlichung aus diesem Auftrag. Physische Smartphone-Leistung und weitere Endlosbalance bleiben offen.
+
 **E01 · Merge-Vorbereitung — 23.10.2026, im bestehenden Draft-PR #2.**
 
 - [x] Shroom-Men-Vergleichsfunktionen und erzeugte lokale Kopien entfernt. Alle vier Frakassets-Arten samt roter/grüner Moospilzkappe bytegenau erhalten; Laufzeitimport mit ausschließlich einem Frakassets-ZIP erfolgreich.
@@ -155,7 +163,7 @@ Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvo
 
 - [ ] **24 · F05 — Maras Idle-Animation. Nur vorgemerkt, eigener Punkt.** Passende ruhige Standbewegung aus ihrer vorhandenen Pixelart, gleiche Bodenanker und klarer Unterschied zwischen Ruhe, Laufen und Übertakten. Keine Gameplay-/Cooldown-Änderung; Pause und Übergänge prüfen. Separat umsetzbar, keine neue Figurengestaltung.
 
-- [ ] **25 · B16 — Sturmlicht und Forschungsicons. Geplant.** Vorhandenen Turm 05 mit drei Stufen verwenden; Kettenblitz auf bis zu drei verschiedene Ziele, begrenzte Sprungreichweite/abnehmender Schaden, kein Mehrfachtreffer und keine Bossunterbrechung. Nach Ilyras Einführung etwa ab Welle 28 Forschung in der Werkstatt anbieten, bewusst für Gold kaufen; Forschung und Baupreis unterscheiden. Kleine Icons mit Häkchen/antippbarem Nutzen zeigen erforschte Technologien, gesperrte nennen Voraussetzungen; Frost und vorhandene Forschung einbeziehen, keine neue HUD-Leiste. Fertig bei erkennbarer Rolle gegenüber Einzel-/Flächenschaden und korrektem Upgrade/Mara/Verkauf/Reload während einer Kette. [Fachentscheidungen](docs/AKT_II.md).
+- [x] **25 · B16 — Sturmlicht und Forschungsicons. Auf eigenem Branch umgesetzt; Nutzer-Sichtprüfung offen.** Vorhandenen Turm 05 mit drei Stufen verwenden; Kettenblitz auf bis zu drei verschiedene Ziele, begrenzte Sprungreichweite/abnehmender Schaden, kein Mehrfachtreffer und keine Bossunterbrechung. Nach Ilyras Einführung etwa ab Welle 28 Forschung in der Werkstatt anbieten, bewusst für Gold kaufen; Forschung und Baupreis unterscheiden. Kleine Icons mit Häkchen/antippbarem Nutzen zeigen erforschte Technologien, gesperrte nennen Voraussetzungen; Frost und vorhandene Forschung einbeziehen, keine neue HUD-Leiste. Fertig bei erkennbarer Rolle gegenüber Einzel-/Flächenschaden und korrektem Upgrade/Mara/Verkauf/Reload während einer Kette. [Fachentscheidungen](docs/AKT_II.md).
 
 - [ ] **26 · B14, vorgezogener Teil — Speicherrisiken vor zwei Routen. Geplant.** Nur die für Ostfront/alte Ansprüche relevanten offenen Speicherprobleme gezielt schließen: laufender Kampf, Tab-Eigentümerschaft, unterbrochene Claims/Schreibfehler und Bestandsschutz. Dieser Teil ist Voraussetzung für B18-Veröffentlichung, ersetzt nicht B14 insgesamt und keine G2-Nutzerabnahme.
 

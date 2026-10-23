@@ -1,5 +1,6 @@
 import type Phaser from 'phaser';
 import { KEYS } from './art';
+import {towerSheet} from './tower-atlas';
 
 /** The dock shows the same original frames as the world; no new asset set. */
 export function drawDockArt(scene: Phaser.Scene): void {
@@ -13,7 +14,9 @@ export function drawDockArt(scene: Phaser.Scene): void {
       context.drawImage(frame.source.image as CanvasImageSource, frame.cutX, frame.cutY,
         frame.cutWidth, frame.cutHeight, x, y, width, height);
     };
-    if (canvas.dataset.icon === 'mara') draw(KEYS.mara, -8, 0, 80, 80);
+    if (canvas.dataset.icon === 'storm') {
+      draw(KEYS.stormTower,12,0,40,80);draw(towerSheet(5,1,'Weapon').key,2,-5,60,60);
+    } else if (canvas.dataset.icon === 'mara') draw(KEYS.mara, -8, 0, 80, 80);
     else if (canvas.dataset.icon === 'ilyra') draw(KEYS.ilyra, -8, 0, 80, 80);
     else if (canvas.dataset.icon === 'wisp') draw(KEYS.wisp, -8, 0, 80, 80);
     else if (canvas.dataset.icon === 'cannon' || canvas.dataset.icon === 'sniper') {

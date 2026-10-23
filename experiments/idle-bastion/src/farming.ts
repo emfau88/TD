@@ -31,7 +31,7 @@ const MAX_PROBE_REWARD = 2.2 * BALANCE.maxRewardFactor * (BASE.waves.maxCount * 
 export function defenseFingerprint(battle: IdleBattle): string {
   return JSON.stringify({
     rulesVersion: BATTLE_RULES_VERSION, layoutVersion: battle.layout.version, layout: { columns: battle.layout.bounds.columns, plots: battle.plots },
-    blocked: getForestBlockedCells(battle.layout), maraTarget: battle.mara.targetTowerUid, settlement: { workshopBuilt: battle.settlement.workshopBuilt, frostResearched: battle.settlement.frostResearched, builtAt: battle.settlement.builtAt }, wisp: battle.wispUnlocked,
+    blocked: getForestBlockedCells(battle.layout), maraTarget: battle.mara.targetTowerUid, settlement: { workshopBuilt: battle.settlement.workshopBuilt, frostResearched: battle.settlement.frostResearched, stormResearched: battle.settlement.stormResearched, builtAt: battle.settlement.builtAt }, wisp: battle.wispUnlocked,
     towers: battle.towers.map(tower => [tower.padId, tower.def.id, tower.level, tower.protected] as const)
       .sort((left, right) => left[0].localeCompare(right[0])),
   });
