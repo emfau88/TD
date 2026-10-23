@@ -1,6 +1,7 @@
 {
+  "quality": 30,
   "sourceBytes": 532347634,
-  "outputBytes": 114554104,
+  "outputBytes": 48631068,
   "frames": 1848,
   "clips": [
     {
@@ -8,9 +9,9 @@
       "clip": "idle",
       "frames": 150,
       "sourceBytes": 34736818,
-      "outputBytes": 9483778,
+      "outputBytes": 3689196,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.4156,
+      "visibleMeanRgbError": 6.5862,
       "sourcesUnchanged": true
     },
     {
@@ -18,9 +19,9 @@
       "clip": "head",
       "frames": 60,
       "sourceBytes": 14986062,
-      "outputBytes": 3896874,
+      "outputBytes": 1584022,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.4172,
+      "visibleMeanRgbError": 6.6109,
       "sourcesUnchanged": true
     },
     {
@@ -28,9 +29,9 @@
       "clip": "touch",
       "frames": 84,
       "sourceBytes": 20692346,
-      "outputBytes": 5383692,
+      "outputBytes": 2156428,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.4514,
+      "visibleMeanRgbError": 6.6792,
       "sourcesUnchanged": true
     },
     {
@@ -38,9 +39,9 @@
       "clip": "variant",
       "frames": 114,
       "sourceBytes": 26737494,
-      "outputBytes": 7290576,
+      "outputBytes": 2876046,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.4158,
+      "visibleMeanRgbError": 6.581,
       "sourcesUnchanged": true
     },
     {
@@ -48,9 +49,9 @@
       "clip": "joy",
       "frames": 126,
       "sourceBytes": 27821494,
-      "outputBytes": 7961820,
+      "outputBytes": 3101210,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.438,
+      "visibleMeanRgbError": 6.6189,
       "sourcesUnchanged": true
     },
     {
@@ -58,9 +59,9 @@
       "clip": "giggle",
       "frames": 162,
       "sourceBytes": 35508730,
-      "outputBytes": 10197078,
+      "outputBytes": 3956126,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.442,
+      "visibleMeanRgbError": 6.6306,
       "sourcesUnchanged": true
     },
     {
@@ -68,9 +69,9 @@
       "clip": "idle",
       "frames": 180,
       "sourceBytes": 41115146,
-      "outputBytes": 10414546,
+      "outputBytes": 4740102,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.2504,
+      "visibleMeanRgbError": 6.5864,
       "sourcesUnchanged": true
     },
     {
@@ -78,9 +79,9 @@
       "clip": "head",
       "frames": 84,
       "sourceBytes": 17909646,
-      "outputBytes": 4847566,
+      "outputBytes": 2209614,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.2644,
+      "visibleMeanRgbError": 6.6121,
       "sourcesUnchanged": true
     },
     {
@@ -88,9 +89,9 @@
       "clip": "touch",
       "frames": 96,
       "sourceBytes": 20635016,
-      "outputBytes": 5550172,
+      "outputBytes": 2525908,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.2521,
+      "visibleMeanRgbError": 6.5922,
       "sourcesUnchanged": true
     },
     {
@@ -98,9 +99,9 @@
       "clip": "variant",
       "frames": 144,
       "sourceBytes": 32137852,
-      "outputBytes": 8323986,
+      "outputBytes": 3791304,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.2332,
+      "visibleMeanRgbError": 6.5773,
       "sourcesUnchanged": true
     },
     {
@@ -108,9 +109,9 @@
       "clip": "joy",
       "frames": 96,
       "sourceBytes": 18797468,
-      "outputBytes": 5465812,
+      "outputBytes": 2427564,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.2774,
+      "visibleMeanRgbError": 6.6034,
       "sourcesUnchanged": true
     },
     {
@@ -118,9 +119,9 @@
       "clip": "giggle",
       "frames": 120,
       "sourceBytes": 25284654,
-      "outputBytes": 6959678,
+      "outputBytes": 3152526,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.2407,
+      "visibleMeanRgbError": 6.5539,
       "sourcesUnchanged": true
     },
     {
@@ -128,9 +129,9 @@
       "clip": "tease",
       "frames": 102,
       "sourceBytes": 39204040,
-      "outputBytes": 6566216,
+      "outputBytes": 2714962,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.3732,
+      "visibleMeanRgbError": 6.5338,
       "sourcesUnchanged": true
     },
     {
@@ -138,9 +139,9 @@
       "clip": "hip",
       "frames": 150,
       "sourceBytes": 42341020,
-      "outputBytes": 9441694,
+      "outputBytes": 3658086,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.4149,
+      "visibleMeanRgbError": 6.5804,
       "sourcesUnchanged": true
     },
     {
@@ -148,9 +149,9 @@
       "clip": "hip",
       "frames": 180,
       "sourceBytes": 134439848,
-      "outputBytes": 12770616,
+      "outputBytes": 6047974,
       "alphaExact": true,
-      "visibleMeanRgbError": 3.1265,
+      "visibleMeanRgbError": 6.2595,
       "sourcesUnchanged": true
     }
   ],

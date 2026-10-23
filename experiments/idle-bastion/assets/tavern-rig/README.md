@@ -4,8 +4,8 @@
 
 - 1.848 Frames, unverändert 30 fps und ursprüngliche Clipdauer.
 - Einheitlicher Ausschnitt 480 × 700, acht Frames je Atlas (1920 × 1400).
-- WebP RGB verlustbehaftet, Qualität 90, Methode 5; Alpha pixelgenau unverändert gegenüber der vorbereiteten Darstellung.
-- Animationsatlanten: **114.554.104 Byte** statt 532.347.634 Byte der ausgewählten Ausgangsexporte (**78,5 % weniger**). Hinzu kommen Manifest und zwei kleine Übersichtsporträts.
+- WebP RGB verlustbehaftet, Qualität 30, Methode 5; Alpha pixelgenau unverändert gegenüber der vorbereiteten Darstellung.
+- Animationsatlanten: **48.631.068 Byte** (Mara 23.736.076, Ilyra 24.894.992). Zuvor Qualität 90: 114.554.104 Byte; Qualität 60: 64.260.840 Byte. Gegenüber Qualität 60 nochmals **24,32 % weniger**. Hinzu kommen Manifest und zwei kleine Übersichtsporträts.
 - Die Ersparnis umfasst Kompression, den im Rahmen verdeckten unteren Bildbereich und die Anpassung der drei höher aufgelösten Zusatzposen auf dieselbe Spielauflösung. Sie ist keine reine Codec-Ersparnis bei identischer Auflösung aller Quellen.
 - Jede Pose behält ihren zeitlichen Ablauf und Körperanker. Mara sitzt 48 Bildpixel, Ilyra 30 Bildpixel höher als in der ersten Integrationsprobe. Für beide bleibt eine kleine Reserve unter dem Ausschnitt plus Vordergrundrahmen.
 - Originalgrafiken, Unity-Projekte, Clips und ältere Exporte sind erhalten. Diese Dateien sind Ableitungen, keine neuen Master.
@@ -16,3 +16,5 @@ Erzeugen: `python experiments/idle-bastion/scripts/pack-tavern-rig.py`, danach b
 Die lokale Abnahme verwendet `tavern-rig-check.html` mit der echten `TavernUI` und einem temporären `BattleSession` ohne persistierenden Store. Die reguläre Spiel-Einstiegsdatei verwendet bis zur weiteren Integrationsfreigabe weiterhin die bisherigen Animationen. Das neue Paket wird dort nicht vorab geladen.
 
 Details und Messwerte: `artifacts/idle-bastion/tavern-integration-v1/README.md` und `runtime-size-report.json`.
+
+Die Qualität-30-Fassung wurde nach einem Vergleich der Stufen 60/30/10 ausdrücklich gewählt. Alle ursprünglichen Exporte und die lokalen Qualität-90/60-Kopien bleiben erhalten. Reproduktion anderer Qualitätsstufen über `--quality`, separater Ausgabeordner über `--output` und Bericht über `--report`.

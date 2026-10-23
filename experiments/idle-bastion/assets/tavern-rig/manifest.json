@@ -3,7 +3,7 @@
   "height": 700,
   "columns": 4,
   "perPage": 8,
-  "codec": "WebP lossy quality 90 / alpha lossless",
+  "codec": "WebP lossy quality 30 / alpha lossless",
   "heroes": {
     "mara": {
       "idle": {
@@ -46,7 +46,7 @@
           "mara/idle/17.webp",
           "mara/idle/18.webp"
         ],
-        "bytes": 9483778
+        "bytes": 3689196
       },
       "head": {
         "label": "Kopfreaktion",
@@ -68,7 +68,7 @@
           "mara/head/06.webp",
           "mara/head/07.webp"
         ],
-        "bytes": 3896874
+        "bytes": 1584022
       },
       "touch": {
         "label": "BerÃ¼hrung",
@@ -94,7 +94,7 @@
           "mara/touch/09.webp",
           "mara/touch/10.webp"
         ],
-        "bytes": 5383692
+        "bytes": 2156428
       },
       "variant": {
         "label": "Blickkontakt",
@@ -132,7 +132,7 @@
           "mara/variant/13.webp",
           "mara/variant/14.webp"
         ],
-        "bytes": 7290576
+        "bytes": 2876046
       },
       "joy": {
         "label": "Freudiges Aufrichten",
@@ -172,7 +172,7 @@
           "mara/joy/14.webp",
           "mara/joy/15.webp"
         ],
-        "bytes": 7961820
+        "bytes": 3101210
       },
       "giggle": {
         "label": "Kichern",
@@ -218,7 +218,7 @@
           "mara/giggle/19.webp",
           "mara/giggle/20.webp"
         ],
-        "bytes": 10197078
+        "bytes": 3956126
       },
       "tease": {
         "label": "Necken",
@@ -244,7 +244,7 @@
           "mara/tease/11.webp",
           "mara/tease/12.webp"
         ],
-        "bytes": 6566216
+        "bytes": 2714962
       },
       "hip": {
         "label": "Hand an die Hüfte",
@@ -276,7 +276,7 @@
           "mara/hip/17.webp",
           "mara/hip/18.webp"
         ],
-        "bytes": 9441694
+        "bytes": 3658086
       }
     },
     "ilyra": {
@@ -315,7 +315,7 @@
           "ilyra/idle/21.webp",
           "ilyra/idle/22.webp"
         ],
-        "bytes": 10414546
+        "bytes": 4740102
       },
       "head": {
         "label": "Kopfreaktion",
@@ -346,7 +346,7 @@
           "ilyra/head/09.webp",
           "ilyra/head/10.webp"
         ],
-        "bytes": 4847566
+        "bytes": 2209614
       },
       "touch": {
         "label": "BerÃ¼hrung",
@@ -383,7 +383,7 @@
           "ilyra/touch/10.webp",
           "ilyra/touch/11.webp"
         ],
-        "bytes": 5550172
+        "bytes": 2525908
       },
       "variant": {
         "label": "Gewichtswechsel",
@@ -434,7 +434,7 @@
           "ilyra/variant/16.webp",
           "ilyra/variant/17.webp"
         ],
-        "bytes": 8323986
+        "bytes": 3791304
       },
       "joy": {
         "label": "Kleiner HÃ¼pfer",
@@ -466,7 +466,7 @@
           "ilyra/joy/10.webp",
           "ilyra/joy/11.webp"
         ],
-        "bytes": 5465812
+        "bytes": 2427564
       },
       "giggle": {
         "label": "Kichern",
@@ -507,7 +507,7 @@
           "ilyra/giggle/13.webp",
           "ilyra/giggle/14.webp"
         ],
-        "bytes": 6959678
+        "bytes": 3152526
       },
       "hip": {
         "label": "Hand an die Hüfte",
@@ -543,7 +543,7 @@
           "ilyra/hip/21.webp",
           "ilyra/hip/22.webp"
         ],
-        "bytes": 12770616
+        "bytes": 6047974
       }
     }
   }

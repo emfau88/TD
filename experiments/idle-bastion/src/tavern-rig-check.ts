@@ -30,8 +30,15 @@ const comparison = document.querySelector<HTMLAnchorElement>('#quality-switch')!
 comparison.hidden = !import.meta.env.DEV;
 const qualityUrl = new URL(location.href);
 if (qualityUrl.searchParams.get('quality') === 'source') {
-  qualityUrl.searchParams.delete('quality'); comparison.textContent = 'Kompakte Spielfassung ansehen (WebP 90)';
+  qualityUrl.searchParams.delete('quality'); comparison.textContent = 'Kompakte Spielfassung ansehen (WebP 30)';
 } else qualityUrl.searchParams.set('quality', 'source');
 comparison.href = qualityUrl.href;
+const previousQuality = document.querySelector<HTMLAnchorElement>('#quality90-switch')!;
+previousQuality.hidden = !import.meta.env.DEV;
+const previousUrl = new URL(location.href);
+if (previousUrl.searchParams.get('quality') === '90') {
+  previousUrl.searchParams.delete('quality'); previousQuality.textContent = 'Neue Fassung: WebP Qualität 30 ansehen';
+} else previousUrl.searchParams.set('quality', '90');
+previousQuality.href = previousUrl.href;
 show(new URLSearchParams(location.search).get('hero') === 'ilyra' ? 'ilyra' : 'mara');
 if (import.meta.hot) import.meta.hot.dispose(() => { ui.destroy(); void session.close(); });

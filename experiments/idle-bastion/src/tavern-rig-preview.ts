@@ -16,6 +16,9 @@ async function clipsFor(who: Companion): Promise<Clips> {
   if (import.meta.env.DEV && new URLSearchParams(location.search).get('quality') === 'source') {
     return (await import('./tavern-rig-source-preview')).sourceClips(who);
   }
+  if (import.meta.env.DEV && new URLSearchParams(location.search).get('quality') === '90') {
+    return (await import('./tavern-rig-source-preview')).quality90Clips(who);
+  }
   const response = await fetch(packageUrl);
   if (!response.ok) throw Error('Animationsdaten fehlen');
   const manifest = await response.json(), clips: Clips = {};

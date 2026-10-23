@@ -8,6 +8,7 @@ Lokale Abnahme mit derselben `TavernUI`, deren CSS und bestehenden Herz-/Aktions
 
 - [Mara](http://127.0.0.1:5224/tavern-rig-check.html?hero=mara)
 - [Ilyra](http://127.0.0.1:5224/tavern-rig-check.html?hero=ilyra)
+- [Bisherige WebP-Qualität 90](http://127.0.0.1:5224/tavern-rig-check.html?hero=mara&quality=90) – lokale Sicherung unter `qa/quality90/`, nicht Teil des Produktionsbuilds.
 - [Originalexport zum Vergleich](http://127.0.0.1:5224/tavern-rig-check.html?hero=mara&quality=source) – nur lokal im Dev-Modus, benötigt die erhaltenen Originalatlanten.
 
 Zurück-Pfeil: Figur wechseln. Nach Schließen der Taverne lässt sich die Test-Herzstufe wählen. Sprechen/Haare zeigen die Kopfreaktion, Hand/Schulter die Berührung, Schenken ab Herz 2 die Freude. „Zusammen lachen“ zeigt Kichern, „Ein Kompliment machen“ die Hüftpose. Mara hat zusätzlich „Ein wenig necken“. Die zusätzliche Idle läuft nach drei normalen Loops. Gestenbuttons können eine Folgegeste vormerken; reguläre Spielaktionen behalten ihre bestehende Transaktionssperre während Reaktionen.
@@ -34,6 +35,24 @@ Alle Angaben dezimale MB, ohne Originalprojekte/Caches/alte Vergleiche.
 Zwei Atlasproben: WebP 90 sparte etwa 75 %, WebP 95 etwa 67 %. AVIF 90 war bei den getesteten Einstellungen größer; daraus folgt kein allgemeiner Codec-Vergleich. Verlustfreies animiertes WebP sparte an Maras vollständiger Idle nur 4,3 %. Nutzer akzeptierte praktisch unsichtbare verlustbehaftete Kompression und beauftragte die Durchführung. Daten: `sizes.json`, `lossy-samples.json`, `compression-sample.json`, `runtime-size-report.json`. Sichtbare Abnahme bleibt beim Nutzer.
 
 Standardmäßig werden die kompakten Dateien unter `experiments/idle-bastion/assets/tavern-rig/` verwendet. Kein LFS für diese Runtime-Dateien. Der optionale lokale Originalvergleich wird im Produktionsbuild entfernt. Start lädt ausgewählte Idle und nächste Atlas-Seite; Reaktionen nur bedarfsgesteuert. Höchstens acht aktive Bildreferenzen im Player, pausierte Wiedergabe bei verborgenem Dokument. Browserinterne Caches sind davon unabhängig.
+
+### Weitere Kompression vom 24.10.2026
+
+Nach der obigen ersten Qualität-90-Fassung wurden alle Atlanten direkt aus denselben erhaltenen Ausgangsexporten neu erzeugt. Keine erneute Kompression bereits verlustbehafteter Bilder.
+
+| Fassung | Animationsatlanten |
+| --- | ---: |
+| WebP 90 | 114,55 MB |
+| WebP 60 | 64,26 MB |
+| **WebP 30, vom Nutzer gewählt** | **48,63 MB** |
+
+Qualität 30 spart gegenüber Qualität 60 weitere 15,63 MB / 24,32 %, gegenüber Qualität 90 insgesamt 57,55 %. Weiterhin alle 15 Clips, 1.848 Frames, 30 fps, identische Anker und exaktes Alpha. Quelldateien per SHA-256 unverändert. Alle 236 Atlanten gegen Manifest geprüft. `quality60-size-comparison.json`, `quality30-size-comparison.json` und `runtime-size-report.json` enthalten die tatsächlichen Größen. Unter ignoriertem `qa/` bleiben Qualität 90/60, niedrigere Codecproben und gleiche Vergleichsframes erhalten. Qualität 0 ergab in sechs Proben etwa 29 MB hochgerechnet, aber deutlich sichtbare Blöcke; nicht ausgewählt.
+
+### Stabiler Rahmen und größere Berührungsherzen
+
+Die neue Darstellung erhält eine vom Bildschirm abhängige, inhaltlich feste Fenster-/Bühnenhöhe. Im Hochkantlayout hat der Textbereich eine eigene feste Höhe; längere Texte und Details scrollen innerhalb dieser Fläche. Titel und Zuneigungsbereich verändern die Bühnenmaße beim Moduswechsel nicht. Dadurch ändern weder Antworttext noch Gesten-/Berührungshinweise den Figurenmaßstab. Alte Darstellungen bleiben durch `data-artwork="rigged"` von den CSS-Änderungen getrennt.
+
+Berührungsherzen: Schriftgröße 18 → 54 px, klickbare Fläche 44 → 64 px; unveränderte Anker an Hand, Haar und Schulter. Bei beiden Figuren jeweils Charakteransicht, Berührungsmodus und laufende Berührungsreaktion in 1280 × 720 und 390 × 844 geprüft: Fenster, Bühne und Canvas haben zwischen den Zuständen exakt identische Positionen und Maße. Screenshots und DOM-Messwerte unter `qa/stable-*`; keine Änderung an Bewegungsframes, Zuneigung oder Speicherung.
 
 ## Kompakte Prüfungen und Grenzen
 

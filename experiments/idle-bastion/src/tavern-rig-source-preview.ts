@@ -8,6 +8,14 @@ type Clip = { count: number; fps: number; pages: string[]; restFrames: number[];
 type Clips = Record<string, Clip>;
 type Entry = { image: HTMLImageElement; ready: boolean; failed: boolean; promise: Promise<boolean> };
 async function json(url: string) { const response = await fetch(url, { cache: 'no-store' }); if (!response.ok) throw Error('Animationsdaten fehlen'); return response.json(); }
+export async function quality90Clips(who: Companion): Promise<Clips> {
+  const url = new URL('../../../artifacts/idle-bastion/tavern-integration-v1/qa/quality90/manifest.json', import.meta.url).href;
+  const manifest = await json(url), clips: Clips = {};
+  for (const [key, value] of Object.entries(manifest.heroes[who]) as [string, Clip][]) {
+    clips[key] = { ...value, pages: value.pages.map(page => new URL(page, url).href), width: 480, height: 700, placement: [0, 0, 480, 700] };
+  }
+  return clips;
+}
 export async function sourceClips(who: Companion): Promise<Clips> {
   const manifest = await json(packageUrl), clips: Clips = {};
   for (const [key, value] of Object.entries(manifest.heroes[who]) as [string, Clip][]) {

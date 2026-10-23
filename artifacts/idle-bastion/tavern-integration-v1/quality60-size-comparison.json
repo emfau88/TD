@@ -1,0 +1,109 @@
+{
+  "quality90Bytes": 114554104,
+  "quality60Bytes": 64260840,
+  "clips": [
+    {
+      "hero": "mara",
+      "clip": "idle",
+      "quality90Bytes": 9483778,
+      "quality60Bytes": 5015302
+    },
+    {
+      "hero": "mara",
+      "clip": "head",
+      "quality90Bytes": 3896874,
+      "quality60Bytes": 2112240
+    },
+    {
+      "hero": "mara",
+      "clip": "touch",
+      "quality90Bytes": 5383692,
+      "quality60Bytes": 2896014
+    },
+    {
+      "hero": "mara",
+      "clip": "variant",
+      "quality90Bytes": 7290576,
+      "quality60Bytes": 3889538
+    },
+    {
+      "hero": "mara",
+      "clip": "joy",
+      "quality90Bytes": 7961820,
+      "quality60Bytes": 4214312
+    },
+    {
+      "hero": "mara",
+      "clip": "giggle",
+      "quality90Bytes": 10197078,
+      "quality60Bytes": 5380696
+    },
+    {
+      "hero": "mara",
+      "clip": "tease",
+      "quality90Bytes": 6566216,
+      "quality60Bytes": 3592392
+    },
+    {
+      "hero": "mara",
+      "clip": "hip",
+      "quality90Bytes": 9441694,
+      "quality60Bytes": 4985022
+    },
+    {
+      "hero": "ilyra",
+      "clip": "idle",
+      "quality90Bytes": 10414546,
+      "quality60Bytes": 6155468
+    },
+    {
+      "hero": "ilyra",
+      "clip": "head",
+      "quality90Bytes": 4847566,
+      "quality60Bytes": 2867484
+    },
+    {
+      "hero": "ilyra",
+      "clip": "touch",
+      "quality90Bytes": 5550172,
+      "quality60Bytes": 3277434
+    },
+    {
+      "hero": "ilyra",
+      "clip": "variant",
+      "quality90Bytes": 8323986,
+      "quality60Bytes": 4917100
+    },
+    {
+      "hero": "ilyra",
+      "clip": "joy",
+      "quality90Bytes": 5465812,
+      "quality60Bytes": 3186288
+    },
+    {
+      "hero": "ilyra",
+      "clip": "giggle",
+      "quality90Bytes": 6959678,
+      "quality60Bytes": 4089580
+    },
+    {
+      "hero": "ilyra",
+      "clip": "hip",
+      "quality90Bytes": 12770616,
+      "quality60Bytes": 7681970
+    }
+  ],
+  "savedBytes": 50293264,
+  "reductionPercent": 43.9,
+  "wholePackageBytes": 64456744,
+  "perHero": {
+    "mara": {
+      "quality90Bytes": 60221728,
+      "quality60Bytes": 32085516
+    },
+    "ilyra": {
+      "quality90Bytes": 54332376,
+      "quality60Bytes": 32175324
+    }
+  }
+}

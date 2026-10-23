@@ -1,10 +1,11 @@
 """Produce the review/runtime derivative; never modify the approved sources.
 
-WebP quality 90 / exact alpha, 30 fps, eight frames per atlas. Normalize the
+WebP quality 30 by default / exact alpha, 30 fps, eight frames per atlas. Normalize the
 three native-resolution extras to the same 480x700 display/anchor as the probe.
 """
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
+import argparse
 import hashlib
 import json
 import numpy as np
@@ -15,6 +16,7 @@ ROOT = GAME.parents[1]
 ART = ROOT / 'artifacts' / 'idle-bastion'
 OUT = GAME / 'assets' / 'tavern-rig'
 REPORT = ART / 'tavern-integration-v1'
+QUALITY = 30
 
 
 def sources():
@@ -59,7 +61,7 @@ def pack(job):
                 placed.paste(frame, position)
                 sheet.paste(placed, (i % 4 * 480, i // 4 * 700))
         path = target / f'{page_no:02}.webp'
-        sheet.save(path, lossless=False, quality=90, method=5, alpha_quality=100)
+        sheet.save(path, lossless=False, quality=QUALITY, method=5, alpha_quality=100)
         with Image.open(path) as encoded:
             a, b = np.array(sheet), np.array(encoded.convert('RGBA'))
         assert np.array_equal(a[:, :, 3], b[:, :, 3]), f'Alpha changed: {path}'
@@ -78,7 +80,15 @@ def pack(job):
 
 
 if __name__ == '__main__':
-    data = dict(width=480, height=700, columns=4, perPage=8, codec='WebP lossy quality 90 / alpha lossless',
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--quality', type=int, choices=range(0, 101), default=30, metavar='0..100')
+    parser.add_argument('--output', type=Path, default=OUT)
+    parser.add_argument('--report', type=Path, default=REPORT / 'runtime-size-report.json')
+    args = parser.parse_args()
+    QUALITY, OUT = args.quality, args.output.resolve()
+    args.report.parent.mkdir(parents=True, exist_ok=True)
+    (REPORT / 'qa').mkdir(parents=True, exist_ok=True)
+    data = dict(width=480, height=700, columns=4, perPage=8, codec=f'WebP lossy quality {QUALITY} / alpha lossless',
                 heroes={'mara': {}, 'ilyra': {}})
     metrics, hashes = [], {}
     with ThreadPoolExecutor(max_workers=3) as pool:
@@ -87,9 +97,9 @@ if __name__ == '__main__':
             metrics.append(row)
             hashes.update(source_hashes)
     (OUT / 'manifest.json').write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    report = dict(sourceBytes=sum(r['sourceBytes'] for r in metrics), outputBytes=sum(r['outputBytes'] for r in metrics),
+    report = dict(quality=QUALITY, sourceBytes=sum(r['sourceBytes'] for r in metrics), outputBytes=sum(r['outputBytes'] for r in metrics),
                   frames=sum(r['frames'] for r in metrics), clips=metrics,
                   note='Size includes cropping/normalizing native extras and lossy RGB compression; alpha and 30fps preserved.')
-    (REPORT / 'runtime-size-report.json').write_text(json.dumps(report, indent=2) + '\n')
-    (REPORT / 'qa/runtime-source-hashes.json').write_text(json.dumps(hashes, indent=2) + '\n')
+    args.report.write_text(json.dumps(report, indent=2) + '\n')
+    (REPORT / f'qa/runtime-source-hashes-q{QUALITY}.json').write_text(json.dumps(hashes, indent=2) + '\n')
     print(json.dumps({k: v for k, v in report.items() if k != 'clips'}, indent=2))
