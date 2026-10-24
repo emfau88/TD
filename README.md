@@ -17,7 +17,7 @@ Website-Daten löscht auch diese Stände.
 
 **[▶ Testauswahl öffnen](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html)**
 
-Die Vorschau ist vorbereitet; die Veröffentlichung steht noch aus.
+Die Vorschau ist online und auf Desktop sowie Mobil geprüft.
 
 | Direktstart | Vorbereiteter Einstieg |
 | --- | --- |

@@ -70,12 +70,18 @@ für die Probe verändert.
   zu einer verständlichen Meldung und erneut bedienbaren Startbuttons, ohne Rückfall
   auf das Hauptspiel. `VITE_FEATURE_PREVIEW=1` isoliert auch den Standardspeicher der
   Vorschau; reguläre Builds behalten ihren bestehenden Speicher.
-- **Veröffentlichung vorbereitet:** der manuelle Branch-Workflow ergänzt nur
+- **Veröffentlichung:** der manuelle Branch-Workflow ergänzt nur
   `previews/frost-hero/` im letzten erfolgreichen Main-Pages-Artefakt. Aktueller Main-SHA
   muss zum Artefakt passen und wird vor Veröffentlichung erneut geprüft.
   Lokal mit dem echten Artefakt aus Lauf `40138921675` geprüft: alle **401 bestehenden
   Dateien bytegenau erhalten**. Keine Main-Übernahme; ein späteres Main-Deployment
   kann die temporäre Vorschau entfernen.
-- **Noch offen:** `github-pages` erlaubt diesen Branch noch nicht. README kennzeichnet
-  den Link deshalb bis zur genehmigten Freigabe und erfolgreichen Veröffentlichung
-  ausdrücklich als ausstehend.
+- **Öffentlich bestätigt:** Nutzer hat die Erweiterung der Pages-Freigabe um genau
+  `codex/frost-kit-hero-controls` ausdrücklich genehmigt. [Workflow 40142615154](https://github.com/emfau88/TD/actions/runs/40142615154)
+  hat Commit `9b745c9c39ac8b6b32453f1735ab921a310d7773` erfolgreich unter
+  [Testauswahl](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html)
+  veröffentlicht. Alle sechs Desktop-/Mobil-Einstiege und die Speicherfehlerprüfung
+  auf der öffentlichen URL erneut bestanden. Die Hashprüfung im Deployment bestätigt
+  401 unveränderte Main-Dateien; die öffentliche Hauptseite war vor und nach der
+  Veröffentlichung bytegleich (SHA-256 `140ab09a52dbf7d9dd23620778fd300c75405b5c9f273a748f768ea05be501ec`).
+  Main bleibt `537b5e8c9cf09b696b41644da4c56dbc8633d720`; kein Merge.
