@@ -42,7 +42,7 @@ Smartphone-Hochkant: derselbe reale Aufbau mit sichtbarer Anlaufstrecke.
 
 ![Smartphone, Variante B](mobile-en-guided-pair.png)
 
-Weitere Aufnahmen: [Desktop vor dem ersten Angriff](desktop-de-enemy-approach.png), [Smartphone vor dem ersten Angriff](mobile-en-enemy-approach.png), [gespeicherter neuer Startturm Desktop](desktop-de-new-ready.png), [gespeicherter neuer Startturm Smartphone](mobile-en-new-ready.png).
+Weitere Aufnahmen: [Desktop vor dem ersten Angriff](desktop-de-enemy-approach.png), [Smartphone vor dem ersten Angriff](mobile-en-enemy-approach.png), [gespeicherter neuer Startturm Desktop](desktop-de-new-ready.png), [gespeicherter neuer Startturm Smartphone](mobile-en-new-ready.png), [Smartphone nach Kampf-Reload](mobile-en-combat-reload.png).
 
 ## Geänderte Dateien
 
