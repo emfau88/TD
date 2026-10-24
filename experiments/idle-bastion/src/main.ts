@@ -8,6 +8,9 @@ import { rigPreviewPresentation } from './tavern-rig-preview';
 import { discoveryStep, updateDiscoveryUI } from './discovery-ui';
 import { LessonPointer } from './lesson-pointer';
 import { updateOnboarding } from './onboarding-ui';
+import { MaraIntro } from './mara-intro';
+import { prepareIntroPortraits } from './intro-portraits';
+import './mara-intro.css';
 import { QuickWinGuidance, workshopGoldMissing, type QuickWinNotice } from './quick-win-guidance';
 import './quick-win-guidance.css';
 import { introducedEnemy } from './enemy-roster';
@@ -72,6 +75,9 @@ const probeSlot = entryURL.searchParams.get('probe');
 // Explicit fresh probes keep the user's main game and its offline clock intact.
 const databaseName = probeSlot && /^[a-z0-9-]{1,60}$/.test(probeSlot) ? `spire-idle-bastion-probe-${probeSlot}` : 'spire-idle-bastion';
 let session: BattleSession | undefined;
+let intro: MaraIntro | undefined;
+let introPortraits: string[] = [];
+let finishingIntro = false;
 let scene: BattleScene | undefined;
 let game: Phaser.Game | undefined;
 let gameResize: ResizeObserver | undefined;
@@ -140,6 +146,10 @@ function syncUI(): void {
   const view = scene;
   audio.setState(ready && !!live && !live.error && !live.suspended && !live.awaitingResume, !!live && !live.paused && !live.battle.learningPaused && !live.battle.preparing);
   const unavailable = !ready || !live || live.inputBusy || Boolean(live.error) || live.suspended;
+  if (intro?.active) {
+    element<HTMLButtonElement>('intro-skip').disabled = unavailable || finishingIntro || !!live?.awaitingResume;
+    element<HTMLButtonElement>('onboarding-primary').disabled = unavailable || finishingIntro || !!live?.awaitingResume;
+  }
   build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = unavailable;
   if (!ready || !live || live.error || live.suspended || live.paused)
     element<HTMLButtonElement>('onboarding-primary').disabled = element<HTMLButtonElement>('onboarding-secondary').disabled = true;
@@ -493,7 +503,8 @@ function syncUI(): void {
   element('boss-banner').dataset.phase = charm.phase;
   element('boss-support').textContent = t("{0} Begleiter übrig · Fläche & Durchdringung", Math.max(0, sim.remaining - (boss || sim.bossQueued ? 1 : 0)));
   document.getElementById('app')!.classList.toggle('context-open', contextOpen || Boolean(placementType || groundMode));
-  updateOnboarding(live, { placing: Boolean(placementType || groundMode), contextOpen, catalogPanel, revealing: performance.now() < workshopRevealUntil });
+  updateOnboarding(live, { placing: Boolean(placementType || groundMode), contextOpen, catalogPanel, revealing: performance.now() < workshopRevealUntil, intro, portraits: introPortraits });
+  syncIntroCamera();
   updateDiscoveryUI(live, contextOpen, Boolean(placementType || groundMode), catalogPanel);
   const quickHintVisible = quickWins.update({
     cannonUnlocked: sim.isTowerUnlocked(3), cannonBuilt: sim.towers.some(value => value.def.id === 3),
@@ -527,6 +538,7 @@ function syncUI(): void {
 }
 
 function syncLessonPointer(): void {
+  if (intro?.active && session?.battle.introduction.stage === 'welcome') { scene?.setLearningTarget(); lessonPointer.show(); return; }
   const b = session?.battle;
   scene?.setLearningTarget();
   if (b?.ilyra && b.ilyra.introduction !== 'done' && b.introduction.stage === 'done' && !discoveryStep(b)
@@ -639,6 +651,7 @@ function openContext(kind: typeof selectedPanel, buildingControls = false): void
     void perform(b => { b.tutorial.seen |= 1 << 12; }, true, true);
 }
 function startPlacement(kind: TowerId): void {
+  if (intro?.active) return;
   if (!session || !ready) return;
   if (session.battle.preparing && kind !== 1) return;
   if (session.battle.guiding && kind === 1) { if (session.battle.introduction.stage === 'upgrade') showLearningTower(); return; }
@@ -692,6 +705,12 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     store?.close(); store = options.temporary ? undefined : await openBattleStore(undefined, databaseName);
     const live = await BattleSession.open(store, { recover: options.recover });
     session = live;
+    let preferences: Storage | undefined;
+    try { if (!live.temporary) preferences = localStorage; } catch { /* Optional UI preferences. */ }
+    intro = new MaraIntro(databaseName, live.origin, live.battle.introduction.stage, preferences);
+    finishingIntro = false;
+    const portraitsReady = intro.active ? prepareIntroPortraits() : Promise.resolve([]);
+    updateOnboarding(live, { placing: false, contextOpen: false, catalogPanel, revealing: false, intro });
     progressUI.reset();
     if (document.hidden && !live.temporary) { await live.suspend(); return; }
     if (live.battle.wave > 0) showCombatMessage(() => t('Gespeicherte Verteidigung geladen. Gold, Türme und laufender Kampf sind wieder da.'));
@@ -713,7 +732,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
         loadingScreen()?.fail(message, () => { void boot(options); }, () => loadingScreen()?.dismiss());
       },
       canRender: () => !live.busy,
-      canSelect: () => !live.inputBusy && !live.error && !live.suspended && !live.awaitingResume,
+      canSelect: () => !intro?.active && !live.inputBusy && !live.error && !live.suspended && !live.awaitingResume,
       changed: syncUI,
       select(padId) { void selectPad(padId); },
       ground(cell) { if (groundMode === 'mara') { let accepted = false; void perform(b => { accepted = b.moveMaraTo(cell); }).then(() => { if (accepted && !live.error) closeContext(); else { element('placement-text').textContent = t('Dorthin führt kein freier Weg. Wähle ein anderes Feld.'); } }); } else { groundCandidate = cell; const id = groundMode; if (id && !buildingBuilt(live.battle, id)) void placeBuilding(id, cell); else syncUI(); } },
@@ -732,12 +751,15 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
       selectTavern() { catalogPanel = 'settlement'; openContext('tavern'); },
       selectWarehouse() { catalogPanel = 'settlement'; openContext('warehouse'); },
       selectWorkshop() { catalogPanel = 'settlement'; openContext('settlement'); },
-      ready() {
+      async ready() {
         if (scene !== view || session !== live) return;
         try {
+          introPortraits = await portraitsReady;
+          if (scene !== view || session !== live) return;
           ready = true; drawDockArt(view); view.setSelected(selectedPadId); syncUI();
           if (['ready', 'combat', 'upgrade', 'frost', 'observe'].includes(live.battle.introduction.stage)) view.focusGuidedDefense();
           loadingScreen()?.complete();
+          if (intro?.active) element('onboarding-primary').focus({ preventScroll: true });
         }
         catch { ready = false; view.paused = true; showError(t('Das Spiel konnte nicht gestartet werden. Bitte versuche es erneut.')); }
       },
@@ -772,6 +794,29 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     element('save-status').textContent = t(ownership ? t('Anderer Tab ist aktiv') : t('Spielstand konnte nicht geladen werden'));
   } finally { booting = false; }
 }
+function syncIntroCamera(): void {
+  if (!ready || !scene) return;
+  const active = intro?.active && session?.battle.introduction.stage === 'welcome';
+  document.querySelector<HTMLElement>('.command-dock')!.inert = !!active;
+  scene.presentIntro(active ? intro!.step : null, element('onboarding-card').getBoundingClientRect());
+}
+const introResize = new ResizeObserver(syncIntroCamera);
+introResize.observe(element('onboarding-card'));
+lifetime.signal.addEventListener('abort', () => introResize.disconnect(), { once: true });
+async function finishIntro(): Promise<void> {
+  const live = session, flow = intro;
+  if (!ready || !live || !flow?.active || finishingIntro || live.inputBusy || live.error || live.suspended || live.awaitingResume || document.hidden) return;
+  finishingIntro = true;
+  const saved = await live.command(b => b.beginIntroduction());
+  if (session !== live) return;
+  if (saved) {
+    flow.complete(); catalogPanel = 'tower'; contextOpen = false;
+    syncUI(); scene?.focusGuidedDefense();
+    element('pick-archer').focus({ preventScroll: true });
+  }
+  finishingIntro = false; syncUI();
+}
+element('intro-skip').addEventListener('click', () => { void finishIntro(); }, { signal: lifetime.signal });
 async function perform(action: (battle: IdleBattle) => unknown, allowPaused = false, waitForSave = true): Promise<void> {
   const live = session;
   if (!ready || !live || (!allowPaused && live.paused) || live.error || document.hidden || live.awaitingResume || live.suspended) return;
@@ -792,7 +837,14 @@ function showLearningTower(): void {
 element('onboarding-primary').addEventListener('click', () => {
   const b = session?.battle; if (!b) return;
   const stage = b.introduction.stage;
-  if (stage === 'welcome') { void perform(b => b.beginIntroduction()); return; }
+  if (stage === 'welcome') {
+    if (intro?.active) {
+      if (!ready || finishingIntro || session?.inputBusy || session?.error || session?.suspended) return;
+      if (intro.step < 2) { intro.next(); syncUI(); }
+      else void finishIntro();
+    } else void perform(b => b.beginIntroduction());
+    return;
+  }
   if (stage === 'ready') { void perform(b => b.startDefense()).then(() => scene?.focusGuidedDefense()); return; }
   if (b.lessonComplete) {
     void perform(b => b.continueLesson()).then(() => {

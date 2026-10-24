@@ -53,6 +53,8 @@ async function webWriterLock(manager?: Pick<LockManager, 'request'> | null): Pro
 }
 
 export class BattleSession {
+  /** Runtime provenance only; never added to the combat save. */
+  origin: 'new' | 'loaded' | 'recovered' = 'new';
   onChange?: () => void;
   onError?: (error: Error) => void;
   private currentBattle: IdleBattle;
@@ -121,6 +123,7 @@ export class BattleSession {
         const battle = IdleBattle.restore(loaded.save.battle);
         if (!battle) throw new SessionLoadError('Der gespeicherte Kampf ist ungültig.', false);
         const session = new BattleSession(battle, store, now, writer, undefined, loaded.save);
+        session.origin = options.recover ? 'recovered' : 'loaded';
         session.currentOffline = (battle.preparing || battle.learningPaused) ? createOfflineState(now()) : reserveOffline(session.currentOffline, now());
         session.waitingForResume = !!session.currentOffline.window;
         await session.commit();

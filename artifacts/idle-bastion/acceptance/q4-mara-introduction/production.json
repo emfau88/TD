@@ -1,0 +1,76 @@
+{
+  "results": [
+    {
+      "label": "cold browser cache",
+      "loadMs": 2054.3051,
+      "totalTransferBytes": 2904374,
+      "portraits": [
+        {
+          "name": "http://127.0.0.1:5246/assets/welcome-DeuGEsEa.webp",
+          "transfer": 26792,
+          "encoded": 26492,
+          "duration": 8.099999994039536
+        },
+        {
+          "name": "http://127.0.0.1:5246/assets/focused-C0g1YKg1.webp",
+          "transfer": 27486,
+          "encoded": 27186,
+          "duration": 7.600000008940697
+        },
+        {
+          "name": "http://127.0.0.1:5246/assets/mischievous-PzG1MOWq.webp",
+          "transfer": 27294,
+          "encoded": 26994,
+          "duration": 8.700000002980232
+        }
+      ],
+      "portraitTransferBytes": 81572
+    },
+    {
+      "cameraVideo": "C:\\Users\\madde\\.codex\\worktrees\\q4-mara-introduction\\TowerDefense\\qa\\q4-mara-introduction\\production\\video\\page@37001e938189278eb9a868267d1541d7.webm",
+      "note": "Final 5 seconds contain the controlled camera pan and scene 3; real production renderer."
+    },
+    {
+      "label": "warm browser cache, new independent game slot",
+      "loadMs": 1441.9022000000004,
+      "totalTransferBytes": 24300,
+      "portraits": [
+        {
+          "name": "http://127.0.0.1:5246/assets/welcome-DeuGEsEa.webp",
+          "transfer": 300,
+          "encoded": 26492,
+          "duration": 2.4000000059604645
+        },
+        {
+          "name": "http://127.0.0.1:5246/assets/focused-C0g1YKg1.webp",
+          "transfer": 300,
+          "encoded": 27186,
+          "duration": 4.0999999940395355
+        },
+        {
+          "name": "http://127.0.0.1:5246/assets/mischievous-PzG1MOWq.webp",
+          "transfer": 300,
+          "encoded": 26994,
+          "duration": 5.299999997019768
+        },
+        {
+          "name": "http://127.0.0.1:5246/assets/welcome-DeuGEsEa.webp",
+          "transfer": 300,
+          "encoded": 26492,
+          "duration": 6.700000002980232
+        }
+      ],
+      "portraitTransferBytes": 1200
+    },
+    {
+      "label": "returning build save",
+      "introPortraitRequests": 0,
+      "passed": true
+    },
+    {
+      "label": "320px phone menu and language switch",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

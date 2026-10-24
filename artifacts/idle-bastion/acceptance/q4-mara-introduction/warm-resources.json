@@ -1,0 +1,488 @@
+[
+  {
+    "name": "http://127.0.0.1:5246/assets/battle-QQSxzws-.js",
+    "transfer": 300,
+    "encoded": 2177,
+    "duration": 4.0999999940395355
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/modulepreload-polyfill-B5Qt9EMX.js",
+    "transfer": 300,
+    "encoded": 711,
+    "duration": 6.5
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/startup-BVKb_0Ob.js",
+    "transfer": 300,
+    "encoded": 657,
+    "duration": 8.300000011920929
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/battle-BsMO3WAq.css",
+    "transfer": 300,
+    "encoded": 1428,
+    "duration": 5
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/workshop-i-uJu0mMae.png",
+    "transfer": 300,
+    "encoded": 19591,
+    "duration": 2.5
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/PixelifySans-lrcDQVzA.ttf",
+    "transfer": 300,
+    "encoded": 79160,
+    "duration": 50.1000000089407
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/main-BpdCoTfU.js",
+    "transfer": 300,
+    "encoded": 56508,
+    "duration": 3
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/layout-CC7XhIDS.js",
+    "transfer": 300,
+    "encoded": 2832,
+    "duration": 3.5999999940395355
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/i18n-DYadE7hG.js",
+    "transfer": 300,
+    "encoded": 60587,
+    "duration": 3.199999988079071
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/enemy-roster-DR_2AUr-.js",
+    "transfer": 300,
+    "encoded": 1703,
+    "duration": 5.100000008940697
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/mara-atlas-DXVCz37-.js",
+    "transfer": 300,
+    "encoded": 1008,
+    "duration": 6.9000000059604645
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/tavern-ui-DIONJDYa.js",
+    "transfer": 300,
+    "encoded": 25614,
+    "duration": 5.5
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/tavern-ui-BLPXlLBm.css",
+    "transfer": 300,
+    "encoded": 14069,
+    "duration": 5.799999997019768
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/phaser.esm-BTGbtjln.js",
+    "transfer": 300,
+    "encoded": 371538,
+    "duration": 11.5
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/ilyra-view-BskTfpXD.js",
+    "transfer": 300,
+    "encoded": 2061,
+    "duration": 8.799999997019768
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/art-Cii1j2AA.js",
+    "transfer": 300,
+    "encoded": 91089,
+    "duration": 10.399999991059303
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/enemy-art--p5fOmzJ.js",
+    "transfer": 300,
+    "encoded": 1877,
+    "duration": 10.900000005960464
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/style-assets-DXiWRFfK.js",
+    "transfer": 300,
+    "encoded": 722,
+    "duration": 11.799999997019768
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/main-D277Vve0.css",
+    "transfer": 300,
+    "encoded": 5550,
+    "duration": 13.900000005960464
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/brass-panel-CyDnkN1Z.webp",
+    "transfer": 300,
+    "encoded": 30068,
+    "duration": 2.5
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/inset-card-B4t5wluD.webp",
+    "transfer": 300,
+    "encoded": 37628,
+    "duration": 2.7000000029802322
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/gold-coin-Y7iV1dBZ.webp",
+    "transfer": 300,
+    "encoded": 82366,
+    "duration": 2.5999999940395355
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/gold-action-CnVGY0tm.webp",
+    "transfer": 300,
+    "encoded": 46280,
+    "duration": 2.3999999910593033
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/welcome-DeuGEsEa.webp",
+    "transfer": 300,
+    "encoded": 26492,
+    "duration": 2.4000000059604645
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/focused-C0g1YKg1.webp",
+    "transfer": 300,
+    "encoded": 27186,
+    "duration": 4.0999999940395355
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/mischievous-PzG1MOWq.webp",
+    "transfer": 300,
+    "encoded": 26994,
+    "duration": 5.299999997019768
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2002%20-%20Level%2001%20-%20Weapon-BbwNkdu6.png",
+    "transfer": 300,
+    "encoded": 5935,
+    "duration": 2.1000000089406967
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2002%20-%20Level%2002%20-%20Weapon-DpsCWqwS.png",
+    "transfer": 300,
+    "encoded": 8892,
+    "duration": 2.5
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2002%20-%20Level%2003%20-%20Weapon-zdjXydyS.png",
+    "transfer": 300,
+    "encoded": 11301,
+    "duration": 3.2000000029802322
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2004%20-%20Level%2001%20-%20Weapon-D7-OJvLM.png",
+    "transfer": 300,
+    "encoded": 7711,
+    "duration": 3.5
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2004%20-%20Level%2002%20-%20Weapon-D5MMvqw0.png",
+    "transfer": 300,
+    "encoded": 8466,
+    "duration": 4.100000008940697
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2004%20-%20Level%2003%20-%20Weapon-CrAFZSb_.png",
+    "transfer": 300,
+    "encoded": 8915,
+    "duration": 2.2000000029802322
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2005%20-%20Level%2001%20-%20Weapon-BC7IJUl1.png",
+    "transfer": 300,
+    "encoded": 8817,
+    "duration": 2.5
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2005%20-%20Level%2002%20-%20Weapon-BGpyWLgZ.png",
+    "transfer": 300,
+    "encoded": 8869,
+    "duration": 3.3999999910593033
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2005%20-%20Level%2003%20-%20Weapon-D5DdpOIP.png",
+    "transfer": 300,
+    "encoded": 8891,
+    "duration": 4.5999999940395355
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%20Construction-BTBuqOfv.png",
+    "transfer": 300,
+    "encoded": 58945,
+    "duration": 7
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/MossShroom-C7mlO_BL.png",
+    "transfer": 300,
+    "encoded": 19195,
+    "duration": 8
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/WoodSpider-AsfcnwgW.png",
+    "transfer": 300,
+    "encoded": 14561,
+    "duration": 5.9000000059604645
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/HornedBat-Z6iG4iVE.png",
+    "transfer": 300,
+    "encoded": 10269,
+    "duration": 8.700000002980232
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/EmberBomb-D-ksbHB-.png",
+    "transfer": 300,
+    "encoded": 8744,
+    "duration": 9.400000005960464
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/ForestGoblin-BWXwY1EF.png",
+    "transfer": 300,
+    "encoded": 7235,
+    "duration": 10.199999988079071
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/BoneGuard-Bkckv2zq.png",
+    "transfer": 300,
+    "encoded": 7060,
+    "duration": 11
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/ForestCultist-Cd5sbEC-.png",
+    "transfer": 300,
+    "encoded": 8182,
+    "duration": 11.799999997019768
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Leafbug-CFzpWCQW.png",
+    "transfer": 300,
+    "encoded": 18608,
+    "duration": 12.700000002980232
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Firebug-e9o0Z8q_.png",
+    "transfer": 300,
+    "encoded": 46815,
+    "duration": 13.5
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Scorpion-BS9EH7_B.png",
+    "transfer": 300,
+    "encoded": 35130,
+    "duration": 14.400000005960464
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Flying%20Locust-CiL6Y5kL.png",
+    "transfer": 300,
+    "encoded": 46508,
+    "duration": 15.600000008940697
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Firewasp-BMqEsc73.png",
+    "transfer": 300,
+    "encoded": 54275,
+    "duration": 16.69999998807907
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Magma%20Crab-Bf6s5u-Z.png",
+    "transfer": 300,
+    "encoded": 38036,
+    "duration": 17.799999997019768
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Clampbeetle-BsUFA0D2.png",
+    "transfer": 300,
+    "encoded": 47508,
+    "duration": 9.400000005960464
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Voidbutterfly-CMVn9i8r.png",
+    "transfer": 300,
+    "encoded": 39303,
+    "duration": 11.099999994039536
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Lantern%20Jelly%20Pixel%20v1-htZNiiEL.png",
+    "transfer": 300,
+    "encoded": 18961,
+    "duration": 12
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Succubus%20Pixel%20v2-fYZveenX.png",
+    "transfer": 300,
+    "encoded": 26646,
+    "duration": 12.599999994039536
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/ilyra-atlas-Dxs8RkpH.png",
+    "transfer": 300,
+    "encoded": 66261,
+    "duration": 13.5
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Grass%20Tileset-D7wBwTkP.png",
+    "transfer": 300,
+    "encoded": 64459,
+    "duration": 14.400000005960464
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Animated%20water%20tiles-CuCKvf_L.png",
+    "transfer": 300,
+    "encoded": 38753,
+    "duration": 15.400000005960464
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/mara-game-F4SIexT0.webp",
+    "transfer": 300,
+    "encoded": 996436,
+    "duration": 16.899999991059303
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/workshop-i-uJu0mMae.png",
+    "transfer": 300,
+    "encoded": 19591,
+    "duration": 17.299999997019768
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/workshop-ii-B7iG3M66.png",
+    "transfer": 300,
+    "encoded": 19779,
+    "duration": 3.5999999940395355
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/warehouse-i-DgfKbOoQ.png",
+    "transfer": 300,
+    "encoded": 9178,
+    "duration": 5.600000008940697
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/tavern-i-uo0DWSEK.png",
+    "transfer": 300,
+    "encoded": 19511,
+    "duration": 7
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/workshop-damaged-DRXKEyvo.png",
+    "transfer": 300,
+    "encoded": 19603,
+    "duration": 8.600000008940697
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2002%20-%20Level%2003%20-%20Weapon-zdjXydyS.png",
+    "transfer": 300,
+    "encoded": 11301,
+    "duration": 9.5
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2004%20-%20Level%2003%20-%20Weapon-CrAFZSb_.png",
+    "transfer": 300,
+    "encoded": 8915,
+    "duration": 10.300000011920929
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Succubus%20Dance%20HD%20v1-zZVESNoA.png",
+    "transfer": 300,
+    "encoded": 20589,
+    "duration": 7.200000002980232
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Succubus%20Pixel%20v2-fYZveenX.png",
+    "transfer": 300,
+    "encoded": 26646,
+    "duration": 11.200000002980232
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Wisp%20-%20Animations-CYSRtkq2.png",
+    "transfer": 300,
+    "encoded": 12335,
+    "duration": 12.199999988079071
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Scorpion-BS9EH7_B.png",
+    "transfer": 300,
+    "encoded": 35130,
+    "duration": 13.099999994039536
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2005-D6IBJa30.png",
+    "transfer": 300,
+    "encoded": 4313,
+    "duration": 13.900000005960464
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2003-DqhIKTZb.png",
+    "transfer": 300,
+    "encoded": 4931,
+    "duration": 14.599999994039536
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2004%20-%20Level%2001%20-%20Weapon-D7-OJvLM.png",
+    "transfer": 300,
+    "encoded": 7711,
+    "duration": 2.2000000029802322
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2004%20-%20Level%2002%20-%20Weapon-D5MMvqw0.png",
+    "transfer": 300,
+    "encoded": 8466,
+    "duration": 2
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Leafbug-CFzpWCQW.png",
+    "transfer": 300,
+    "encoded": 18608,
+    "duration": 2.6000000089406967
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Firebug-e9o0Z8q_.png",
+    "transfer": 300,
+    "encoded": 46815,
+    "duration": 3.7000000029802322
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2002-CMUFd2ie.png",
+    "transfer": 300,
+    "encoded": 4252,
+    "duration": 4.700000002980232
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2002%20-%20Level%2001%20-%20Weapon-BbwNkdu6.png",
+    "transfer": 300,
+    "encoded": 5935,
+    "duration": 5.4000000059604645
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/Tower%2002%20-%20Level%2002%20-%20Weapon-DpsCWqwS.png",
+    "transfer": 300,
+    "encoded": 8892,
+    "duration": 6.299999997019768
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/workshop-i-uJu0mMae.png",
+    "transfer": 300,
+    "encoded": 19591,
+    "duration": 3
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/warehouse-i-DgfKbOoQ.png",
+    "transfer": 300,
+    "encoded": 9178,
+    "duration": 4.200000002980232
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/tavern-i-uo0DWSEK.png",
+    "transfer": 300,
+    "encoded": 19511,
+    "duration": 5.299999997019768
+  },
+  {
+    "name": "http://127.0.0.1:5246/assets/welcome-DeuGEsEa.webp",
+    "transfer": 300,
+    "encoded": 26492,
+    "duration": 6.700000002980232
+  }
+]

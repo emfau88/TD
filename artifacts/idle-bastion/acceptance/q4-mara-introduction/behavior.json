@@ -1,0 +1,292 @@
+[
+  {
+    "name": "skip scene 1, no deferred camera or tutorial skip, reload",
+    "step": null,
+    "stage": "build",
+    "panning": false,
+    "camera": {
+      "x": -170,
+      "y": -372,
+      "zoom": 1.625
+    },
+    "gold": 75,
+    "towers": 0,
+    "card": {
+      "x": 8,
+      "y": 65,
+      "width": 286,
+      "height": 94.5625,
+      "top": 65,
+      "right": 294,
+      "bottom": 159.5625,
+      "left": 8
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 56,
+      "top": 0,
+      "right": 390,
+      "bottom": 56,
+      "left": 0
+    },
+    "freeWorld": {
+      "left": -18.76923076923077,
+      "top": -94.76923076923076,
+      "right": 458.7692307692308,
+      "bottom": -110.76923076923076
+    },
+    "viewport": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  {
+    "name": "skip scene 2, no deferred camera or tutorial skip, reload",
+    "step": null,
+    "stage": "build",
+    "panning": false,
+    "camera": {
+      "x": -170,
+      "y": -372,
+      "zoom": 1.625
+    },
+    "gold": 75,
+    "towers": 0,
+    "card": {
+      "x": 8,
+      "y": 65,
+      "width": 286,
+      "height": 94.5625,
+      "top": 65,
+      "right": 294,
+      "bottom": 159.5625,
+      "left": 8
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 56,
+      "top": 0,
+      "right": 390,
+      "bottom": 56,
+      "left": 0
+    },
+    "freeWorld": {
+      "left": -18.76923076923077,
+      "top": -94.76923076923076,
+      "right": 458.7692307692308,
+      "bottom": -110.76923076923076
+    },
+    "viewport": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  {
+    "name": "skip scene 3, no deferred camera or tutorial skip, reload",
+    "step": null,
+    "stage": "build",
+    "panning": false,
+    "camera": {
+      "x": -170,
+      "y": -372,
+      "zoom": 1.625
+    },
+    "gold": 75,
+    "towers": 0,
+    "card": {
+      "x": 8,
+      "y": 65,
+      "width": 286,
+      "height": 94.5625,
+      "top": 65,
+      "right": 294,
+      "bottom": 159.5625,
+      "left": 8
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 56,
+      "top": 0,
+      "right": 390,
+      "bottom": 56,
+      "left": 0
+    },
+    "freeWorld": {
+      "left": -18.76923076923077,
+      "top": -94.76923076923076,
+      "right": 458.7692307692308,
+      "bottom": -110.76923076923076
+    },
+    "viewport": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  {
+    "name": "responsive scene 3",
+    "step": 2,
+    "stage": "welcome",
+    "panning": false,
+    "camera": {
+      "x": -319.77639751552795,
+      "y": -212.29813664596273,
+      "zoom": 1.61
+    },
+    "gold": 75,
+    "towers": 0,
+    "card": {
+      "x": 476,
+      "y": 60,
+      "width": 360,
+      "height": 322,
+      "top": 60,
+      "right": 836,
+      "bottom": 382,
+      "left": 476
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 844,
+      "height": 52,
+      "top": 0,
+      "right": 844,
+      "bottom": 52,
+      "left": 0
+    },
+    "freeWorld": {
+      "left": 1.2422406716202186,
+      "top": 11.242239715959073,
+      "right": 1047.204964297324,
+      "bottom": -6.149064477342421
+    },
+    "viewport": {
+      "width": 844,
+      "height": 390
+    }
+  },
+  {
+    "name": "responsive scene 3",
+    "step": 2,
+    "stage": "welcome",
+    "panning": false,
+    "camera": {
+      "x": -1.6662780756975053,
+      "y": -120.29113235408408,
+      "zoom": 1.005234375
+    },
+    "gold": 75,
+    "towers": 0,
+    "card": {
+      "x": 8,
+      "y": 277.046875,
+      "width": 304,
+      "height": 282.953125,
+      "top": 277.046875,
+      "right": 312,
+      "bottom": 560,
+      "left": 8
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 56,
+      "top": 0,
+      "right": 320,
+      "bottom": 56,
+      "left": 0
+    },
+    "freeWorld": {
+      "left": 1.9895812602516496,
+      "top": 11.989579860912215,
+      "right": 634.6778625883533,
+      "bottom": 408.0104139724829
+    },
+    "viewport": {
+      "width": 320,
+      "height": 568
+    }
+  },
+  {
+    "name": "responsive scene 3",
+    "step": 2,
+    "stage": "welcome",
+    "panning": false,
+    "camera": {
+      "x": -130,
+      "y": -366.6666666666667,
+      "zoom": 1.5
+    },
+    "gold": 75,
+    "towers": 0,
+    "card": {
+      "x": 8,
+      "y": 546.4375,
+      "width": 374,
+      "height": 289.5625,
+      "top": 546.4375,
+      "right": 382,
+      "bottom": 836,
+      "left": 8
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 56,
+      "top": 0,
+      "right": 390,
+      "bottom": 56,
+      "left": 0
+    },
+    "freeWorld": {
+      "left": 3.1484291947551593,
+      "top": 214.64885379861474,
+      "right": 1224.7448254856552,
+      "bottom": 1689.498240106652
+    },
+    "viewport": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  {
+    "name": "rapid next aborts pan; language switch retains step; rotation and small phone"
+  },
+  {
+    "name": "reduced motion, keyboard next and skip"
+  },
+  {
+    "name": "new portrait downloads fail: existing portrait, usable UI",
+    "elapsedMs": 7891
+  },
+  {
+    "name": "all portrait downloads fail: existing Mara canvas, usable UI",
+    "elapsedMs": 3954
+  },
+  {
+    "name": "blocked UI storage: in-memory intro, reload uses safe legacy welcome"
+  },
+  {
+    "name": "legacy welcome: no new introduction"
+  },
+  {
+    "name": "legacy build: no new introduction"
+  },
+  {
+    "name": "legacy ready: no new introduction"
+  },
+  {
+    "name": "legacy combat: no new introduction"
+  },
+  {
+    "name": "legacy done: no new introduction"
+  }
+]

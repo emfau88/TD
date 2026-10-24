@@ -1,5 +1,17 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Q4 · Hochwertige Einführung mit Mara — 24.10.2026, Umsetzung ausdrücklich beauftragt.**
+
+Drei Szenen, verbindliche DE-/EN-Dialoge, konsistente Mara-Porträts, responsive Darstellung und sichere Übergabe an das bestehende Tutorial werden auf `codex/q4-mara-introduction` umgesetzt. Basis: `main` / `be155d8` einschließlich Q1–Q3. Der [Q4-Detailplan mit Bulks und Checkboxen](docs/Q4_MARA_EINFUEHRUNG_PLAN.md) dokumentiert Fortschritt und Nachweise. Imagegen und Commit/Push auf den Arbeitsbranch sind freigegeben; weitere Zwischenfreigaben entfallen. Abschließende echte Desktop-/Mobilaufnahmen werden vorgelegt. **Update 25.10.: Der Nutzer hat den direkten Merge ausdrücklich freigegeben.** Offline-Mara bleibt ein separates Folgepaket.
+
+- [x] Q4-Bulks 0–4: drei Szenen mit freigegebenen DE-/EN-Texten, responsiver Dialog, drei konsistente Mara-Porträts, UI-Introfortschritt mit Altstandsschutz, kontrollierte Kamera und Übergang nach `build` implementiert.
+- [x] Nutzerkorrektur: Schal/Kette in allen drei Porträts berichtigt; grünen Außenrand der neuen Intro-Kamera behoben. Originalquellen erhalten.
+- [x] Nutzeranpassung vom 25.10.: mobile Lebensanzeige unter dem Kern, keine schwebende Kartenüberlagerung. Neue Aufnahmen/Ankerprüfung bestanden; Desktop-Anzeige und Lebensregeln bleiben erhalten.
+- [x] Erste Ingame-Prüfung: alle Szenen und Reloads auf Desktop/Hochkant in DE/EN, Intro-Skip, Sprachwechsel, Drehung/kleines Smartphone, reduzierte Bewegung; vollständiger echter Tutorialablauf bis Frost bestanden.
+- [x] Bulk 5 abgeschlossen: Produktionsbuild, Fehler-/Altstandfälle, Produktionsmessung, 12 DE-/EN-Szenenbilder und Kameraaufnahme. 326/343 Tests, exakt dieselben 17 Altfehler, keine neuen; finale Session-/Introprüfung 32/32. [Bericht und Nachweise](../../artifacts/idle-bastion/acceptance/q4-mara-introduction/REPORT.md).
+- [ ] Bulk 6 läuft: Commit/Push, ausdrücklich freigegebene Übernahme nach main, Pages-Veröffentlichung und öffentlicher Spielstart. Merge-Freigabe am 25.10.: „ja dann merge einfach direkt mit“.
+
+
 **Q3 · Tutorial-Turmpositionen — 24.10.2026, Variante B nach Ingame-Vergleich zur Umsetzung freigegeben.**
 
 - [x] Isolierter Branch `codex/tutorial-tower-positions` ab aktuellem main `b246605` mit bereits integrierten A1/Q1/Q2. Neue Empfehlung: Waldwächter auf Feld (10,5), Frostkristall auf (8,5), beide vier Felder weiter rechts und eine Reihe nördlich der bisherigen Standardplätze. Eng begrenzte alternative Startplätze bleiben frei wählbar.

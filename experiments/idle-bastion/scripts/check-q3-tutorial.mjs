@@ -80,7 +80,15 @@ try {
     await page.addInitScript(lang => localStorage.setItem('spire-language-v1', lang), lang);
     await inspectSceneBeforeMain(page);
     await page.goto(`${base}/?fresh=1`); await ready(page); await stage(page, 'welcome');
-    await continueCard(page); await stage(page, 'build');
+    // Q4 extends welcome with three presentation steps; legacy welcomes still
+    // advance once. Do not bypass the actual intro or mutate the battle model.
+    while (await page.locator('#app').getAttribute('data-intro') === 'welcome') {
+      const before = await page.locator('#app').getAttribute('data-mara-intro');
+      await continueCard(page);
+      await page.waitForFunction(before => document.querySelector('#app').dataset.intro !== 'welcome'
+        || document.querySelector('#app').dataset.maraIntro !== before, before);
+    }
+    await stage(page, 'build');
     await page.locator('#pick-archer').click(); await clickMapHint(page, 'starter'); await stage(page, 'ready');
     const built = await summary(page);
     assert.equal(built.towers[0].pad, 'cell-10-5'); assert.equal(built.towers[0].protected, true); assert.equal(built.towers[0].spent, 0); assert.equal(built.gold, 75);

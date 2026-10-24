@@ -212,6 +212,7 @@ test('corrupt/newer saves remain protected and backup recovery is explicit', asy
   await assert.rejects(open(store), error => error instanceof SessionLoadError && error.canRecover);
   assert.equal(store.recovered, 0);
   const recovered = await open(store, { recover: true });
+  assert.equal(recovered.origin, 'recovered');
   assert.equal(store.recovered, 1);
   assert.equal(recovered.paused, true);
 });

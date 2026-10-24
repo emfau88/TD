@@ -18,6 +18,7 @@ import { cellCenter, settlementZone, buildingWidth, type BuildingId, type GridCe
 import { KEYS, MARA_FOOT, SCALE, enemyFrame, enemyFlip, loopFrame, maraFrame, towerArt, towerMount, preloadArt, prepareArt } from './art';
 import { createForest, type ForestView } from './forest';
 import { tutorialDefenseFrame, tutorialDefenseZoom } from './tutorial-camera';
+import type { IntroStep } from './mara-intro';
 
 export interface BattleSceneHooks {
   readonly changed: () => void;
@@ -76,6 +77,7 @@ export class BattleScene extends Phaser.Scene {
   private learningMark!: Phaser.GameObjects.Graphics;
   private learningTarget?: 'starter' | 'upgrade' | 'workshop' | 'research' | 'frost' | 'cannon' | 'warehouse';
   private coreLabel!: Phaser.GameObjects.Text;
+  private coreHealthLabel!: Phaser.GameObjects.Text;
   private readonly towerViews = new Map<number, TowerView>();
   private readonly enemyViews = new Map<number, EnemyView>();
   private readonly shotViews = new Map<number, Phaser.GameObjects.Image>();
@@ -95,6 +97,9 @@ export class BattleScene extends Phaser.Scene {
   private cameraFitted = false;
   private guidedDefenseFrame = false;
   private guidedDefensePad?: string;
+  private introStep: IntroStep | null = null;
+  private introRect?: DOMRect;
+  private introFrameKey = '';
   private renderedLayout?: IdleBattle['layout'];
   private readonly preventMiddleScroll = (event: MouseEvent) => { if (event.button === 1) event.preventDefault(); };
   private readonly preventWheel = (event: WheelEvent) => { if (!event.ctrlKey) event.preventDefault(); };
@@ -144,6 +149,8 @@ export class BattleScene extends Phaser.Scene {
     }).setOrigin(0.5).setDepth(5001);
     this.learningMark = this.add.graphics().setDepth(4999);
     this.coreLabel = this.add.text(1100, 205, t('Diesen Kern schützen'), { fontFamily: 'Segoe UI', fontSize: '12px', resolution: 2, color: '#fff1b2', stroke: '#22382b', strokeThickness: 3 }).setOrigin(1, 0).setDepth(5002);
+    this.coreHealthLabel = this.add.text(0, 0, '', { fontFamily: 'Segoe UI, sans-serif', fontSize: '14px', fontStyle: 'bold',
+      resolution: 2, color: '#f2e7cc', backgroundColor: '#142b27', padding: { x: 6, y: 4 } }).setOrigin(.5, 0).setDepth(5003);
     this.wisp = this.add.image(0, 0, KEYS.wisp, 0).setOrigin(0.5, 51 / 64).setScale(0.9);
     this.wispName = this.add.text(0, 0, t('Wisp · +10 % Gold'), { fontFamily: 'Segoe UI, sans-serif', fontSize: '11px', fontStyle: 'bold', resolution: 2, color: '#ffe0a0', stroke: '#20392c', strokeThickness: 2 }).setOrigin(0.5).setDepth(5001);
     this.input.on('pointerdown', this.beginPointer, this);
@@ -254,6 +261,7 @@ export class BattleScene extends Phaser.Scene {
     this.hooks.changed();
   }
   private resizeCamera(): void {
+    if (this.introStep !== null) { this.frameIntro(false); return; }
     const camera = this.cameras.main, { width, height } = this.sim.layout.bounds;
     const portrait = this.scale.width / this.pixelDensity <= 700 && window.innerHeight > window.innerWidth;
     const changedOrientation = portrait !== this.portraitCamera;
@@ -340,8 +348,82 @@ export class BattleScene extends Phaser.Scene {
     return {x:canvas.left+(camera.x+(point.x-camera.worldView.x)*camera.zoom)*canvas.width/this.scale.width,
       y:canvas.top+(camera.y+(point.y-camera.worldView.y)*camera.zoom)*canvas.height/this.scale.height};
   }
+  /** The DOM supplies its measured rectangle; render pixels and CSS pixels are
+   * deliberately converted in one place. Resizing cancels, never queues a pan. */
+  presentIntro(step: IntroStep | null, rect: DOMRect): void {
+    if (!this.readyToDraw) return;
+    const previous = this.introStep;
+    this.introStep = step; this.introRect = rect;
+    if (step === null) {
+      if (previous !== null) {
+        this.cameras.main.panEffect.reset(); this.introFrameKey = '';
+        this.learningMark.clear(); this.resizeCamera(); this.focusGuidedDefense();
+      }
+      return;
+    }
+    const key = [step, rect.left, rect.top, rect.width, rect.height, this.scale.width, this.scale.height,
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches].join(':');
+    if (key === this.introFrameKey) return;
+    this.introFrameKey = key;
+    this.frameIntro(previous === 0 && step === 1);
+  }
+  private frameIntro(animate: boolean): void {
+    if (this.introStep === null || !this.introRect) return;
+    const camera = this.cameras.main, canvas = this.game.canvas.getBoundingClientRect(), dialog = this.introRect;
+    const header = document.querySelector('.app-header')!.getBoundingClientRect();
+    const top = Math.max(0, header.bottom - canvas.top + 8) * this.pixelDensity;
+    const side = window.innerHeight <= 500 && window.innerWidth > window.innerHeight;
+    const width = Math.max(1, side ? (dialog.left - canvas.left - 8) * this.pixelDensity : this.scale.width);
+    const height = Math.max(1, (side ? canvas.bottom - 8 : dialog.top - 12) * this.pixelDensity - canvas.top * this.pixelDensity - top);
+    // Render behind the card too. Only the target framing uses the unoccluded
+    // rectangle, avoiding a hard cut in the world along the dialog's top edge.
+    camera.panEffect.reset(); camera.setViewport(0, 0, this.scale.width, this.scale.height);
+    const bounds = this.sim.layout.bounds;
+    const zoom = Math.max(width / bounds.width, height / bounds.height,
+      Math.min(width / (window.innerWidth <= 700 || side ? 520 : 1050), height / 400));
+    camera.setZoom(zoom);
+    // Only the parts covered by the HUD/dialog may extend beyond the map.
+    // Generic tutorial headroom here exposed the green renderer background.
+    camera.setBounds(0, -top / zoom, bounds.width + (this.scale.width - width) / zoom,
+      bounds.height + (this.scale.height - height) / zoom);
+    const core = cellCenter(this.sim.layout, this.sim.layout.core);
+    const defense = this.defenseFrame();
+    const target = this.introStep === 0 ? { x: core.x, y: core.y - 20 }
+      : { x: defense?.x ?? core.x, y: (defense?.y ?? core.y) + 20 };
+    target.x += (this.scale.width - width) / (2 * zoom);
+    target.y += (this.scale.height / 2 - top - height / 2) / zoom;
+    if (animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) camera.pan(target.x, target.y, 1200, 'Sine.easeInOut', true);
+    else camera.centerOn(target.x, target.y);
+    this.cameraFitted = true;
+  }
+  private drawIntroMark(): void {
+    const graphics = this.learningMark, layout = this.sim.layout;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const alpha = reduced ? .85 : .75 + Math.sin(this.time.now / 600) * .12;
+    const ring = (point: { x: number; y: number }, radius: number) => {
+      graphics.fillStyle(0xffd778, .08).fillCircle(point.x, point.y, radius);
+      graphics.lineStyle(2, 0xffdf8a, alpha).strokeCircle(point.x, point.y, radius);
+    };
+    if (this.introStep === 0) { ring(cellCenter(layout, layout.core), 48); return; }
+    const points = layout.road.waypoints.map(cell => cellCenter(layout, cell));
+    const spawn = points[0]!;
+    graphics.lineStyle(2, 0xe18e79, .9).strokeCircle(spawn.x, spawn.y, 17);
+    graphics.fillStyle(0xe6a38d, .85).fillTriangle(spawn.x + 20, spawn.y - 6, spawn.x + 20, spawn.y + 6, spawn.x + 29, spawn.y);
+    if (this.introStep === 1) {
+      let offset = reduced ? 16 : (this.time.now / 60) % 48;
+      for (let i = 1; i < points.length; i++) {
+        const a = points[i - 1]!, b = points[i]!, length = Math.hypot(b.x - a.x, b.y - a.y);
+        for (; offset < length; offset += 48) graphics.fillStyle(0xffe0a0, .6).fillCircle(a.x + (b.x - a.x) * offset / length, a.y + (b.y - a.y) * offset / length, 3);
+        offset -= length;
+      }
+    } else {
+      const pad = layout.towerPads.find(pad => pad.id === this.sim.recommendedStarterPad);
+      if (pad) ring(cellCenter(layout, pad.cell), 23);
+    }
+  }
   private drawLearningMark(): void {
     this.learningMark.clear();
+    if (this.introStep !== null) { this.drawIntroMark(); return; }
     if (!this.learningTarget) return;
     const point = this.learningPoint(this.learningTarget); if (!point) return;
     const pulse = .75 + Math.sin(this.time.now / 300) * .15;
@@ -353,6 +435,7 @@ export class BattleScene extends Phaser.Scene {
     return { x: camera.x + (point.x - camera.worldView.x) * camera.zoom, y: camera.y + (point.y - camera.worldView.y) * camera.zoom };
   }
   setMapZoom(value: number, pointerX = this.scale.width / 2, pointerY = this.scale.height / 2): void {
+    if (this.introStep !== null) return;
     if (!this.readyToDraw || !Number.isFinite(value)) return;
     if (this.guidedDefenseFrame) { this.guidedDefenseFrame = false; this.resizeCamera(); }
     if (this.overview) { this.overview = false; this.resizeCamera(); }
@@ -376,6 +459,7 @@ export class BattleScene extends Phaser.Scene {
     if (drag && !drag.dragging && pointer.button === 0) this.selectAtPointer(pointer);
   }
   private panAtPointer(pointer: Phaser.Input.Pointer): void {
+    if (this.introStep !== null) return;
     if (this.dragOrigin && pointer.leftButtonDown()
       && Math.hypot(pointer.x - this.dragOrigin.x, pointer.y - this.dragOrigin.y) >= 6 * this.pixelDensity) this.dragOrigin.dragging = true;
     if (!pointer.middleButtonDown() && !(pointer.leftButtonDown() && this.dragOrigin?.dragging)) return;
@@ -602,6 +686,12 @@ export class BattleScene extends Phaser.Scene {
     this.combatEffects.update(elapsed + sim.introduction.preparationSeconds, shots, towers);
     this.drawLearningMark();
     this.coreLabel.setVisible(sim.preparing);
+    // On phones health belongs to the core, not to a floating screen badge.
+    // Keep its type readable at any map zoom; the world camera clips it naturally.
+    const core = cellCenter(sim.layout, sim.layout.core);
+    this.coreHealthLabel.setVisible(this.scale.width / this.pixelDensity <= 700)
+      .setPosition(core.x, core.y + 48).setScale(this.pixelDensity / this.cameras.main.zoom)
+      .setText(`♥ ${sim.lives} / ${BASE.coreLives}`);
     const boostedTower = sim.towers.find(t => sim.isMaraBoosted(t.uid));
     this.buffText.setVisible(!!boostedTower);
     if (boostedTower) this.buffText.setPosition(boostedTower.x, boostedTower.y - 60).setText(t("✦ {0} s", Math.ceil(sim.mara.effectRemaining)));

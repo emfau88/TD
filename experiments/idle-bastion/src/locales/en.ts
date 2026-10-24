@@ -3,6 +3,16 @@
 import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
   ...startupEnglish,
+  'Ah, da bist du ja! Ich bin Mara. Willkommen im alten Hain. Den Kern dort müssen wir beschützen. Eigentlich ist es hier ziemlich friedlich. Eigentlich.': "Ah, there you are! I'm Mara. Welcome to the Old Grove. We need to protect that core. It's usually quite peaceful here. Usually.",
+  'Die Angreifer kommen von hier und folgen dem Weg zum Kern. Eine verlorene Welle? Dein Ausbau bleibt erhalten. Wir verstärken die Türme und versuchen es wieder.': "Enemies enter here and follow this path to the core. Lose a wave? What you've built stays. We strengthen the towers and try again.",
+  'Du baust die Türme, die kämpfen von allein. Und ich? Ich habe noch ein paar Zauber im Ärmel. Aber eins nach dem anderen – fangen wir mit deinem Waldwächter an!': "You build the towers, and they fight on their own. And me? I've got a few spells up my sleeve. But one thing at a time—let's start with your Grove Warden!",
+  'Der Weg zum Kern': 'The path to the core',
+  'Unsere erste Verteidigung': 'Our first defense',
+  'Ersten Turm bauen': 'Build your first tower',
+  'Intro überspringen': 'Skip intro',
+  'Mara · {0} von 3': 'Mara · {0} of 3',
+  'Dein Waldwächter steht. Starte die Verteidigung, wenn du bereit bist.': "Your Grove Warden is in place. Start the defense when you're ready.",
+  'Dein erstes Gefecht': 'Your first battle',
   "NEU": "NEW",
   "Steinschleuder: Flächenschaden gegen Gruppen. Frost hält Gegner länger im Trefferbereich.": "Stone Slinger: area damage against groups. Frost keeps enemies in the impact area longer.",
   "Steinschleuder: Frostfassung und gemeisterte Welle 5 nötig.": "Stone Slinger: Frost Mount and cleared Wave 5 required.",

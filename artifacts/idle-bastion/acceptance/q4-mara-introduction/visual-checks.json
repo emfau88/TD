@@ -1,0 +1,885 @@
+{
+  "checks": [
+    {
+      "name": "desktop-de: scene 1",
+      "step": 0,
+      "stage": "welcome",
+      "text": "Ah, da bist du ja! Ich bin Mara. Willkommen im alten Hain. Den Kern dort müssen wir beschützen. Eigentlich ist es hier ziemlich friedlich. Eigentlich.",
+      "card": {
+        "x": 300,
+        "y": 551.25,
+        "width": 680,
+        "height": 230.75,
+        "top": 551.25,
+        "right": 980,
+        "bottom": 782,
+        "left": 300
+      },
+      "copy": {
+        "x": 471,
+        "y": 633,
+        "width": 486,
+        "height": 72,
+        "top": 633,
+        "right": 957,
+        "bottom": 705,
+        "left": 471
+      },
+      "portrait": {
+        "src": "http://127.0.0.1:5245/assets/intro/mara/welcome.webp?t=1792878630367",
+        "loaded": true,
+        "rect": {
+          "x": 317,
+          "y": 587.625,
+          "width": 136,
+          "height": 160,
+          "top": 587.625,
+          "right": 453,
+          "bottom": 747.625,
+          "left": 317
+        }
+      },
+      "core": {
+        "x": 700.9374999999999,
+        "y": 330.7875
+      },
+      "spawn": {
+        "x": -549.8375000000002,
+        "y": 284.46250000000003
+      },
+      "starter": {
+        "x": -86.58750000000015,
+        "y": 284.46250000000003
+      },
+      "health": {
+        "visible": false,
+        "text": "♥ 20 / 20",
+        "screen": {
+          "x": 700.9374999999999,
+          "y": 386.3775
+        },
+        "domClip": "none"
+      },
+      "camera": {
+        "x": 494.7652455477605,
+        "y": -25.623313545601718,
+        "width": 1105.2347544522395,
+        "height": 690.7717215326497,
+        "panning": false
+      },
+      "overflow": false,
+      "gold": 75,
+      "towers": 0,
+      "resources": []
+    },
+    {
+      "name": "desktop-de: scene 2",
+      "step": 1,
+      "stage": "welcome",
+      "text": "Die Angreifer kommen von hier und folgen dem Weg zum Kern. Eine verlorene Welle? Dein Ausbau bleibt erhalten. Wir verstärken die Türme und versuchen es wieder.",
+      "card": {
+        "x": 300,
+        "y": 551.25,
+        "width": 680,
+        "height": 230.75,
+        "top": 551.25,
+        "right": 980,
+        "bottom": 782,
+        "left": 300
+      },
+      "copy": {
+        "x": 471,
+        "y": 633,
+        "width": 486,
+        "height": 72,
+        "top": 633,
+        "right": 957,
+        "bottom": 705,
+        "left": 471
+      },
+      "portrait": {
+        "src": "http://127.0.0.1:5245/assets/intro/mara/focused.webp?t=1792878632317",
+        "loaded": true,
+        "rect": {
+          "x": 317,
+          "y": 587.625,
+          "width": 136,
+          "height": 160,
+          "top": 587.625,
+          "right": 453,
+          "bottom": 747.625,
+          "left": 317
+        }
+      },
+      "core": {
+        "x": 1273.9375,
+        "y": 365.53125
+      },
+      "spawn": {
+        "x": 23.1625,
+        "y": 319.20625
+      },
+      "starter": {
+        "x": 486.4125,
+        "y": 319.20625
+      },
+      "health": {
+        "visible": false,
+        "text": "♥ 20 / 20",
+        "screen": {
+          "x": 1273.9375,
+          "y": 421.12125
+        },
+        "domClip": "none"
+      },
+      "camera": {
+        "x": 0,
+        "y": -55.62331354560172,
+        "width": 1105.2347544522395,
+        "height": 690.7717215326497,
+        "panning": false
+      },
+      "overflow": false,
+      "gold": 75,
+      "towers": 0,
+      "resources": []
+    },
+    {
+      "name": "desktop-de: scene 3",
+      "step": 2,
+      "stage": "welcome",
+      "text": "Du baust die Türme, die kämpfen von allein. Und ich? Ich habe noch ein paar Zauber im Ärmel. Aber eins nach dem anderen – fangen wir mit deinem Waldwächter an!",
+      "card": {
+        "x": 300,
+        "y": 551.25,
+        "width": 680,
+        "height": 230.75,
+        "top": 551.25,
+        "right": 980,
+        "bottom": 782,
+        "left": 300
+      },
+      "copy": {
+        "x": 471,
+        "y": 633,
+        "width": 486,
+        "height": 72,
+        "top": 633,
+        "right": 957,
+        "bottom": 705,
+        "left": 471
+      },
+      "portrait": {
+        "src": "http://127.0.0.1:5245/assets/intro/mara/mischievous.webp?t=1792878634299",
+        "loaded": true,
+        "rect": {
+          "x": 317,
+          "y": 587.625,
+          "width": 136,
+          "height": 160,
+          "top": 587.625,
+          "right": 453,
+          "bottom": 747.625,
+          "left": 317
+        }
+      },
+      "core": {
+        "x": 1273.9375,
+        "y": 365.53125
+      },
+      "spawn": {
+        "x": 23.1625,
+        "y": 319.20625
+      },
+      "starter": {
+        "x": 486.4125,
+        "y": 319.20625
+      },
+      "health": {
+        "visible": false,
+        "text": "♥ 20 / 20",
+        "screen": {
+          "x": 1273.9375,
+          "y": 421.12125
+        },
+        "domClip": "none"
+      },
+      "camera": {
+        "x": 0,
+        "y": -55.62331354560172,
+        "width": 1105.2347544522395,
+        "height": 690.7717215326497,
+        "panning": false
+      },
+      "overflow": false,
+      "gold": 75,
+      "towers": 0,
+      "resources": []
+    },
+    {
+      "name": "desktop-de: visual capture and core health anchoring",
+      "passed": true
+    },
+    {
+      "name": "desktop-en: scene 1",
+      "step": 0,
+      "stage": "welcome",
+      "text": "Ah, there you are! I'm Mara. Welcome to the Old Grove. We need to protect that core. It's usually quite peaceful here. Usually.",
+      "card": {
+        "x": 300,
+        "y": 575.25,
+        "width": 680,
+        "height": 206.75,
+        "top": 575.25,
+        "right": 980,
+        "bottom": 782,
+        "left": 300
+      },
+      "copy": {
+        "x": 471,
+        "y": 657,
+        "width": 486,
+        "height": 48,
+        "top": 657,
+        "right": 957,
+        "bottom": 705,
+        "left": 471
+      },
+      "portrait": {
+        "src": "http://127.0.0.1:5245/assets/intro/mara/welcome.webp?t=1792878630367",
+        "loaded": true,
+        "rect": {
+          "x": 317,
+          "y": 599.625,
+          "width": 136,
+          "height": 160,
+          "top": 599.625,
+          "right": 453,
+          "bottom": 759.625,
+          "left": 317
+        }
+      },
+      "core": {
+        "x": 670.9375000000001,
+        "y": 343.98749999999995
+      },
+      "spawn": {
+        "x": -644.6374999999998,
+        "y": 295.2625
+      },
+      "starter": {
+        "x": -157.38749999999985,
+        "y": 295.2625
+      },
+      "health": {
+        "visible": false,
+        "text": "♥ 20 / 20",
+        "screen": {
+          "x": 670.9375000000001,
+          "y": 402.4575
+        },
+        "domClip": "none"
+      },
+      "camera": {
+        "x": 549.2047203694201,
+        "y": -22.39096972806567,
+        "width": 1050.79527963058,
+        "height": 656.7470497691124,
+        "panning": false
+      },
+      "overflow": false,
+      "gold": 75,
+      "towers": 0,
+      "resources": []
+    },
+    {
+      "name": "desktop-en: scene 2",
+      "step": 1,
+      "stage": "welcome",
+      "text": "Enemies enter here and follow this path to the core. Lose a wave? What you've built stays. We strengthen the towers and try again.",
+      "card": {
+        "x": 300,
+        "y": 575.25,
+        "width": 680,
+        "height": 206.75,
+        "top": 575.25,
+        "right": 980,
+        "bottom": 782,
+        "left": 300
+      },
+      "copy": {
+        "x": 471,
+        "y": 657,
+        "width": 486,
+        "height": 48,
+        "top": 657,
+        "right": 957,
+        "bottom": 705,
+        "left": 471
+      },
+      "portrait": {
+        "src": "http://127.0.0.1:5245/assets/intro/mara/focused.webp?t=1792878632317",
+        "loaded": true,
+        "rect": {
+          "x": 317,
+          "y": 599.625,
+          "width": 136,
+          "height": 160,
+          "top": 599.625,
+          "right": 453,
+          "bottom": 759.625,
+          "left": 317
+        }
+      },
+      "core": {
+        "x": 1339.9375,
+        "y": 380.53124999999994
+      },
+      "spawn": {
+        "x": 24.362499999999997,
+        "y": 331.80625
+      },
+      "starter": {
+        "x": 511.6125,
+        "y": 331.80625
+      },
+      "health": {
+        "visible": false,
+        "text": "♥ 20 / 20",
+        "screen": {
+          "x": 1339.9375,
+          "y": 439.00125
+        },
+        "domClip": "none"
+      },
+      "camera": {
+        "x": 0,
+        "y": -52.39096972806567,
+        "width": 1050.79527963058,
+        "height": 656.7470497691124,
+        "panning": false
+      },
+      "overflow": false,
+      "gold": 75,
+      "towers": 0,
+      "resources": []
+    },
+    {
+      "name": "desktop-en: scene 3",
+      "step": 2,
+      "stage": "welcome",
+      "text": "You build the towers, and they fight on their own. And me? I've got a few spells up my sleeve. But one thing at a time—let's start with your Grove Warden!",
+      "card": {
+        "x": 300,
+        "y": 551.25,
+        "width": 680,
+        "height": 230.75,
+        "top": 551.25,
+        "right": 980,
+        "bottom": 782,
+        "left": 300
+      },
+      "copy": {
+        "x": 471,
+        "y": 633,
+        "width": 486,
+        "height": 72,
+        "top": 633,
+        "right": 957,
+        "bottom": 705,
+        "left": 471
+      },
+      "portrait": {
+        "src": "http://127.0.0.1:5245/assets/intro/mara/mischievous.webp?t=1792878634299",
+        "loaded": true,
+        "rect": {
+          "x": 317,
+          "y": 587.625,
+          "width": 136,
+          "height": 160,
+          "top": 587.625,
+          "right": 453,
+          "bottom": 747.625,
+          "left": 317
+        }
+      },
+      "core": {
+        "x": 1273.9375,
+        "y": 365.53125
+      },
+      "spawn": {
+        "x": 23.1625,
+        "y": 319.20625
+      },
+      "starter": {
+        "x": 486.4125,
+        "y": 319.20625
+      },
+      "health": {
+        "visible": false,
+        "text": "♥ 20 / 20",
+        "screen": {
+          "x": 1273.9375,
+          "y": 421.12125
+        },
+        "domClip": "none"
+      },
+      "camera": {
+        "x": 0,
+        "y": -55.62331354560172,
+        "width": 1105.2347544522395,
+        "height": 690.7717215326497,
+        "panning": false
+      },
+      "overflow": false,
+      "gold": 75,
+      "towers": 0,
+      "resources": []
+    },
+    {
+      "name": "desktop-en: visual capture and core health anchoring",
+      "passed": true
+    },
+    {
+      "name": "mobile-de: scene 1",
+      "step": 0,
+      "stage": "welcome",
+      "text": "Ah, da bist du ja! Ich bin Mara. Willkommen im alten Hain. Den Kern dort müssen wir beschützen. Eigentlich ist es hier ziemlich friedlich. Eigentlich.",
+      "card": {
+        "x": 8,
+        "y": 546.4375,
+        "width": 374,
+        "height": 289.5625,
+        "top": 546.4375,
+        "right": 382,
+        "bottom": 836,
+        "left": 8
+      },
+      "copy": {
+        "x": 23,
+        "y": 675.4375,
+        "width": 344,
+        "height": 89.5625,
+        "top": 675.4375,
+        "right": 367,
+        "bottom": 765,
+        "left": 23
+      },
+      "portrait": {
+        "src": "http://127.0.0.1:5245/assets/intro/mara/welcome.webp?t=1792878630367",
+        "loaded": true,
+        "rect": {
+          "x": 23,
+          "y": 561.4375,
+          "width": 88,
+          "height": 104,
+          "top": 561.4375,
+          "right": 111,
+          "bottom": 665.4375,
+          "left": 23
+        }
+      },
+      "core": {
+        "x": 195,
+        "y": 259
+      },
+      "spawn": {
+        "x": -615,
+        "y": 229
+      },
+      "starter": {
+        "x": -315,
+        "y": 229
+      },
+      "health": {
+        "visible": true,
+        "text": "♥ 20 / 20",
+        "screen": {
+          "x": 195,
+          "y": 295
+        },
+        "domClip": "inset(50%)"
+      },
+      "camera": {
+        "x": 840,
+        "y": -85.33333333333331,
+        "width": 520,
+        "height": 1125.3333333333333,
+        "panning": false
+      },
+      "overflow": false,
+      "gold": 75,
+      "towers": 0,
+      "resources": []
+    },
+    {
+      "name": "mobile-de: scene 2",
+      "step": 1,
+      "stage": "welcome",
+      "text": "Die Angreifer kommen von hier und folgen dem Weg zum Kern. Eine verlorene Welle? Dein Ausbau bleibt erhalten. Wir verstärken die Türme und versuchen es wieder.",
+      "card": {
+        "x": 8,
+        "y": 546.4375,
+        "width": 374,
+        "height": 289.5625,
+        "top": 546.4375,
+        "right": 382,
+        "bottom": 836,
+        "left": 8
+      },
+      "copy": {
+        "x": 23,
+        "y": 675.4375,
+        "width": 344,
+        "height": 89.5625,
+        "top": 675.4375,
+        "right": 367,
+        "bottom": 765,
+        "left": 23
+      },
+      "portrait": {
+        "src": "http://127.0.0.1:5245/assets/intro/mara/focused.webp?t=1792878632317",
+        "loaded": true,
+        "rect": {
+          "x": 23,
+          "y": 561.4375,
+          "width": 88,
+          "height": 104,
+          "top": 561.4375,
+          "right": 111,
+          "bottom": 665.4375,
+          "left": 23
+        }
+      },
+      "core": {
+        "x": 825,
+        "y": 259
+      },
+      "spawn": {
+        "x": 15,
+        "y": 229
+      },
+      "starter": {
+        "x": 315,
+        "y": 229
+      },
+      "health": {
+        "visible": true,
+        "text": "♥ 20 / 20",
+        "screen": {
+          "x": 825,
+          "y": 295
+        },
+        "domClip": "inset(50%)"
+      },
+      "camera": {
+        "x": 0,
+        "y": -85.33333333333331,
+        "width": 520,
+        "height": 1125.3333333333333,
+        "panning": false
+      },
+      "overflow": false,
+      "gold": 75,
+      "towers": 0,
+      "resources": []
+    },
+    {
+      "name": "mobile-de: scene 3",
+      "step": 2,
+      "stage": "welcome",
+      "text": "Du baust die Türme, die kämpfen von allein. Und ich? Ich habe noch ein paar Zauber im Ärmel. Aber eins nach dem anderen – fangen wir mit deinem Waldwächter an!",
+      "card": {
+        "x": 8,
+        "y": 546.4375,
+        "width": 374,
+        "height": 289.5625,
+        "top": 546.4375,
+        "right": 382,
+        "bottom": 836,
+        "left": 8
+      },
+      "copy": {
+        "x": 23,
+        "y": 675.4375,
+        "width": 344,
+        "height": 89.5625,
+        "top": 675.4375,
+        "right": 367,
+        "bottom": 765,
+        "left": 23
+      },
+      "portrait": {
+        "src": "http://127.0.0.1:5245/assets/intro/mara/mischievous.webp?t=1792878634299",
+        "loaded": true,
+        "rect": {
+          "x": 23,
+          "y": 561.4375,
+          "width": 88,
+          "height": 104,
+          "top": 561.4375,
+          "right": 111,
+          "bottom": 665.4375,
+          "left": 23
+        }
+      },
+      "core": {
+        "x": 825,
+        "y": 259
+      },
+      "spawn": {
+        "x": 15,
+        "y": 229
+      },
+      "starter": {
+        "x": 315,
+        "y": 229
+      },
+      "health": {
+        "visible": true,
+        "text": "♥ 20 / 20",
+        "screen": {
+          "x": 825,
+          "y": 295
+        },
+        "domClip": "inset(50%)"
+      },
+      "camera": {
+        "x": 0,
+        "y": -85.33333333333331,
+        "width": 520,
+        "height": 1125.3333333333333,
+        "panning": false
+      },
+      "overflow": false,
+      "gold": 75,
+      "towers": 0,
+      "resources": []
+    },
+    {
+      "name": "mobile-de: visual capture and core health anchoring",
+      "passed": true
+    },
+    {
+      "name": "mobile-en: scene 1",
+      "step": 0,
+      "stage": "welcome",
+      "text": "Ah, there you are! I'm Mara. Welcome to the Old Grove. We need to protect that core. It's usually quite peaceful here. Usually.",
+      "card": {
+        "x": 8,
+        "y": 568.828125,
+        "width": 374,
+        "height": 267.171875,
+        "top": 568.828125,
+        "right": 382,
+        "bottom": 836,
+        "left": 8
+      },
+      "copy": {
+        "x": 23,
+        "y": 697.828125,
+        "width": 344,
+        "height": 67.171875,
+        "top": 697.828125,
+        "right": 367,
+        "bottom": 765,
+        "left": 23
+      },
+      "portrait": {
+        "src": "http://127.0.0.1:5245/assets/intro/mara/welcome.webp?t=1792878630367",
+        "loaded": true,
+        "rect": {
+          "x": 23,
+          "y": 583.828125,
+          "width": 88,
+          "height": 104,
+          "top": 583.828125,
+          "right": 111,
+          "bottom": 687.828125,
+          "left": 23
+        }
+      },
+      "core": {
+        "x": 194.99999999999997,
+        "y": 264.21142578125
+      },
+      "spawn": {
+        "x": -636.6474609375,
+        "y": 233.40966796874997
+      },
+      "starter": {
+        "x": -328.6298828125,
+        "y": 233.40966796874997
+      },
+      "health": {
+        "visible": true,
+        "text": "♥ 20 / 20",
+        "screen": {
+          "x": 194.99999999999997,
+          "y": 301.17353515624995
+        },
+        "domClip": "inset(50%)"
+      },
+      "camera": {
+        "x": 846.7676991851876,
+        "y": -83.1121397546051,
+        "width": 506.46460162962495,
+        "height": 1096.041343013855,
+        "panning": false
+      },
+      "overflow": false,
+      "gold": 75,
+      "towers": 0,
+      "resources": []
+    },
+    {
+      "name": "mobile-en: scene 2",
+      "step": 1,
+      "stage": "welcome",
+      "text": "Enemies enter here and follow this path to the core. Lose a wave? What you've built stays. We strengthen the towers and try again.",
+      "card": {
+        "x": 8,
+        "y": 568.828125,
+        "width": 374,
+        "height": 267.171875,
+        "top": 568.828125,
+        "right": 382,
+        "bottom": 836,
+        "left": 8
+      },
+      "copy": {
+        "x": 23,
+        "y": 697.828125,
+        "width": 344,
+        "height": 67.171875,
+        "top": 697.828125,
+        "right": 367,
+        "bottom": 765,
+        "left": 23
+      },
+      "portrait": {
+        "src": "http://127.0.0.1:5245/assets/intro/mara/focused.webp?t=1792878632317",
+        "loaded": true,
+        "rect": {
+          "x": 23,
+          "y": 583.828125,
+          "width": 88,
+          "height": 104,
+          "top": 583.828125,
+          "right": 111,
+          "bottom": 687.828125,
+          "left": 23
+        }
+      },
+      "core": {
+        "x": 847.04833984375,
+        "y": 264.21142578125
+      },
+      "spawn": {
+        "x": 15.40087890625,
+        "y": 233.40966796874997
+      },
+      "starter": {
+        "x": 323.41845703125,
+        "y": 233.40966796874997
+      },
+      "health": {
+        "visible": true,
+        "text": "♥ 20 / 20",
+        "screen": {
+          "x": 847.04833984375,
+          "y": 301.17353515624995
+        },
+        "domClip": "inset(50%)"
+      },
+      "camera": {
+        "x": 0,
+        "y": -83.1121397546051,
+        "width": 506.46460162962495,
+        "height": 1096.041343013855,
+        "panning": false
+      },
+      "overflow": false,
+      "gold": 75,
+      "towers": 0,
+      "resources": []
+    },
+    {
+      "name": "mobile-en: scene 3",
+      "step": 2,
+      "stage": "welcome",
+      "text": "You build the towers, and they fight on their own. And me? I've got a few spells up my sleeve. But one thing at a time—let's start with your Grove Warden!",
+      "card": {
+        "x": 8,
+        "y": 546.4375,
+        "width": 374,
+        "height": 289.5625,
+        "top": 546.4375,
+        "right": 382,
+        "bottom": 836,
+        "left": 8
+      },
+      "copy": {
+        "x": 23,
+        "y": 675.4375,
+        "width": 344,
+        "height": 89.5625,
+        "top": 675.4375,
+        "right": 367,
+        "bottom": 765,
+        "left": 23
+      },
+      "portrait": {
+        "src": "http://127.0.0.1:5245/assets/intro/mara/mischievous.webp?t=1792878634299",
+        "loaded": true,
+        "rect": {
+          "x": 23,
+          "y": 561.4375,
+          "width": 88,
+          "height": 104,
+          "top": 561.4375,
+          "right": 111,
+          "bottom": 665.4375,
+          "left": 23
+        }
+      },
+      "core": {
+        "x": 825,
+        "y": 259
+      },
+      "spawn": {
+        "x": 15,
+        "y": 229
+      },
+      "starter": {
+        "x": 315,
+        "y": 229
+      },
+      "health": {
+        "visible": true,
+        "text": "♥ 20 / 20",
+        "screen": {
+          "x": 825,
+          "y": 295
+        },
+        "domClip": "inset(50%)"
+      },
+      "camera": {
+        "x": 0,
+        "y": -85.33333333333331,
+        "width": 520,
+        "height": 1125.3333333333333,
+        "panning": false
+      },
+      "overflow": false,
+      "gold": 75,
+      "towers": 0,
+      "resources": []
+    },
+    {
+      "name": "mobile-en: visual capture and core health anchoring",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

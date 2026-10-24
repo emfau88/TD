@@ -1,0 +1,50 @@
+/* One onboarding card, with a larger portrait only for the three opening scenes. */
+.mara-intro-active .world { top:0; bottom:0; }
+.mara-intro-active .command-dock,.mara-intro-active .map-controls { visibility:hidden; pointer-events:none; }
+#onboarding-card.mara-intro {
+  left:50%; bottom:max(18px,env(safe-area-inset-bottom)); transform:translateX(-50%);
+  width:min(680px,calc(100% - 32px)); padding:20px 22px 18px 16px; gap:18px;
+  display:grid; grid-template-columns:136px minmax(0,1fr); align-items:center;
+  border:1px solid #aa8b58; border-radius:6px;
+  background:linear-gradient(135deg,#192d29fa,#111c20fc 75%);
+  box-shadow:0 12px 36px #0008,inset 0 0 0 3px #ddbf7830;
+}
+#intro-portrait { width:136px; height:160px; object-fit:contain; align-self:center; filter:drop-shadow(0 4px 8px #0006); }
+#onboarding-card.mara-intro>div { min-width:0; }
+#onboarding-card.mara-intro .eyebrow { color:#d9be85; font-size:12px; letter-spacing:.08em; }
+#onboarding-card.mara-intro h2 { margin:5px 0 9px; color:#f0d8a2; font-size:23px; line-height:1.12; }
+#onboarding-card.mara-intro p { margin:0; font:16px/1.5 var(--body,Arial,sans-serif); color:#f2eee1; }
+#onboarding-card.mara-intro .onboarding-actions { display:flex; flex-wrap:wrap; align-items:center; gap:6px 12px; margin-top:14px; }
+#onboarding-card.mara-intro button { min-height:44px; font-size:14px; }
+#onboarding-card.mara-intro #intro-skip { border:0; box-shadow:none; background:transparent; color:#c8bd9f; padding:8px 2px; font-size:12px; }
+#onboarding-card.mara-intro button:focus-visible { outline:2px solid #ffdb8b; outline-offset:3px; }
+#onboarding-card.mara-intro>canvas { width:96px; height:120px; }
+#onboarding-card [hidden] { display:none!important; }
+@media(max-width:700px) {
+  #onboarding-card.mara-intro { width:calc(100% - 16px); bottom:max(8px,env(safe-area-inset-bottom)); padding:14px; gap:10px 12px; grid-template-columns:88px minmax(0,1fr); align-items:start; }
+  #intro-portrait { width:88px; height:104px; align-self:center; grid-row:1/span 2; }
+  #onboarding-card.mara-intro>div { display:contents; }
+  #onboarding-card.mara-intro .eyebrow { align-self:end; grid-column:2; grid-row:1; padding-top:7px; }
+  #onboarding-card.mara-intro h2 { grid-column:2; grid-row:2; align-self:start; margin:0; font-size:23px; }
+  #onboarding-card.mara-intro p { grid-column:1/-1; font-size:16px; line-height:1.4; }
+  #onboarding-card.mara-intro .onboarding-actions { grid-column:1/-1; margin-top:2px; justify-content:space-between; gap:4px; }
+  #onboarding-card.mara-intro #intro-skip { padding-inline:6px; }
+}
+@media(max-width:360px) {
+  .mara-intro-active #fullscreen { display:none; }
+  .mara-intro-active #wave-summary small { display:none; }
+  #onboarding-card.mara-intro { padding:11px; grid-template-columns:72px minmax(0,1fr); gap:8px 10px; }
+  #intro-portrait { width:72px; height:85px; }
+  #onboarding-card.mara-intro h2 { font-size:21px; margin-bottom:2px; }
+  #onboarding-card.mara-intro .onboarding-actions { gap:0; }
+  #onboarding-card.mara-intro button { font-size:13px; }
+}
+@media(max-height:500px) and (orientation:landscape) {
+  #onboarding-card.mara-intro { left:auto; right:8px; top:calc(var(--header) + 8px); bottom:8px; transform:none; width:360px; padding:12px; grid-template-columns:64px 1fr; gap:8px; }
+  #intro-portrait { width:64px; height:76px; grid-row:1/span 2; }
+  #onboarding-card.mara-intro>div { display:contents; }
+  #onboarding-card.mara-intro .eyebrow { grid-column:2; grid-row:1; align-self:start; }
+  #onboarding-card.mara-intro h2 { grid-column:2; grid-row:2; align-self:start; font-size:21px; margin:0; }
+  #onboarding-card.mara-intro p,#onboarding-card.mara-intro .onboarding-actions { grid-column:1/-1; }
+  #onboarding-card.mara-intro p { font-size:15px; line-height:1.3; }
+}
