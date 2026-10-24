@@ -20,3 +20,4 @@ experiments/idle-bastion/dist/
 
 # Optional local source comparisons, generated probes and temporary files.
 experiments/idle-bastion/.local-assets/
+qa/quick-wins-q1-q2/

@@ -1,5 +1,12 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Quick Wins Q1 + Q2 — 24.10.2026, isolierter Branch `codex/quick-wins-q1-q2` ab main `908a41b`.**
+
+- [x] **Q1 · Ladebildschirm:** Vorhandene Werkstattgrafik/Pixel-Schrift, dunkler Hain und warme Goldakzente; Desktop/Hochkant. Schlanker Einstieg vor dem Spielimport; echte fertig geladene Phaser-Grafikdateien als Zähler/Balken, Speicher- und Aufbauphasen ohne erfundene Prozentwerte. Bedienung erst nach vollständiger Szene freigeben. Begrenzt wartende Downloads, Erkennung fehlender/ungültiger Bilder, verständlicher Fehler mit Retry sowie Rückweg zur bestehenden Speicherprüfung. Auch fehlgeschlagener Spiel-/Einstiegsmodulimport wird abgefangen. Keine vollständigen Tavernenanimationen beim Start laden.
+- [x] **Q2 · Zwei kurze Hinweise:** Steinschleuder ab tatsächlicher Freischaltung mit NEU-Marke, Fläche-/Frost-Erklärung und optionalem Katalogsprung; Schließen erhält die Marke bis zur Inspektion/zum Bau. Werkstatt-II-Hinweis ab erstem Level-6-Turm, direkte Werkstattansicht, tatsächliche 1.200 Gold und fehlender Betrag; einmalige Lesebestätigung, kein Pflichtkauf. Deutsch/Englisch, UI-Präferenzen je Spielslot; Speicherformat, Preise und Freischaltungen erhalten.
+- [x] Produktions-/Pages-Build, zehn neue UI-/Ladetests, 36 Browserprüfungen auf Desktop/Hochkant in beiden Sprachen, vier zusätzliche Produktionsproben mit neuer/gespeicherter Einführung. Echter Teilfortschritt von 101 Grafikdateien, Grafik-/Decode-/Modulfehler und Retry, positive Offline-Auszahlung genau einmal geprüft. Gesamtsuite des separaten Q1/Q2-Stands: 301/318, genau dieselben 17 bestehenden Fehler wie main 291/308. [Bericht, Dateien, Testergebnisse und Screenshots](../../artifacts/idle-bastion/acceptance/quick-wins-q1-q2/REPORT.md).
+- [x] Nutzer hat anschließend die gemeinsame Übernahme der abgeschlossenen Pakete A1 und Q1/Q2 nach main ausdrücklich freigegeben. Zusammenführung und kombinierte Abschlussprüfung vor dem Main-Push; A1 wurde nicht aus dem ursprünglichen Quick-Wins-Auftrag eigenständig übernommen.
+
 **Neue Tavernenfiguren im Hauptspiel — 24.10.2026, integriert und geprüft.**
 
 - Auf ausdrückliche Merge-Freigabe alle 15 brauchbaren Mara-/Ilyra-Animationen im normalen Spieleinstieg aktiviert. Hauptstand `5823a99` samt Gegner-/Wellenarbeit und Englisch/Deutsch erhalten; neue Gesten ebenfalls übersetzt. Alte Tavernenbilder/Renderer bleiben vorhanden und sind im Hauptspiel deaktiviert. Keine Änderungen an Kampf, Zuneigung, Freischaltungen oder Saveformat gegenüber diesem Hauptstand.

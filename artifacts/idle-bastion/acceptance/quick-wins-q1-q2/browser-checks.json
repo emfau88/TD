@@ -1,0 +1,152 @@
+{
+  "checks": [
+    {
+      "name": "desktop: fresh boot and real asset progress",
+      "heldProgress": {
+        "value": 87,
+        "max": 101
+      },
+      "resourceSamples": 101
+    },
+    {
+      "name": "desktop/de: cannon stays locked before wave 5"
+    },
+    {
+      "name": "desktop/de: cannon dismissal, persistent NEW and catalogue inspection"
+    },
+    {
+      "name": "desktop/de: cannon direct catalogue action remains optional"
+    },
+    {
+      "name": "desktop/de: no early workshop notice at level 5"
+    },
+    {
+      "name": "desktop/de: level 6 workshop guidance and missing 400 Gold; read persists"
+    },
+    {
+      "name": "desktop/de: workshop affordable at unchanged 1200 Gold"
+    },
+    {
+      "name": "desktop/de: no repeated workshop hint after expansion"
+    },
+    {
+      "name": "desktop/en: cannon stays locked before wave 5"
+    },
+    {
+      "name": "desktop/en: cannon dismissal, persistent NEW and catalogue inspection"
+    },
+    {
+      "name": "desktop/en: cannon direct catalogue action remains optional"
+    },
+    {
+      "name": "desktop/en: no early workshop notice at level 5"
+    },
+    {
+      "name": "desktop/en: level 6 workshop guidance and missing 400 Gold; read persists"
+    },
+    {
+      "name": "desktop/en: workshop affordable at unchanged 1200 Gold"
+    },
+    {
+      "name": "desktop/en: no repeated workshop hint after expansion"
+    },
+    {
+      "name": "desktop: existing offline reward claimed once",
+      "minimumRewardUnits": 2956800,
+      "displayed": "+2 959 gold",
+      "goldAfterClaim": 3765
+    },
+    {
+      "name": "mobile: fresh boot and real asset progress",
+      "heldProgress": {
+        "value": 92,
+        "max": 101
+      },
+      "resourceSamples": 101
+    },
+    {
+      "name": "mobile/de: cannon stays locked before wave 5"
+    },
+    {
+      "name": "mobile/de: cannon dismissal, persistent NEW and catalogue inspection"
+    },
+    {
+      "name": "mobile/de: cannon direct catalogue action remains optional"
+    },
+    {
+      "name": "mobile/de: no early workshop notice at level 5"
+    },
+    {
+      "name": "mobile/de: level 6 workshop guidance and missing 400 Gold; read persists"
+    },
+    {
+      "name": "mobile/de: workshop affordable at unchanged 1200 Gold"
+    },
+    {
+      "name": "mobile/de: no repeated workshop hint after expansion"
+    },
+    {
+      "name": "mobile/en: cannon stays locked before wave 5"
+    },
+    {
+      "name": "mobile/en: cannon dismissal, persistent NEW and catalogue inspection"
+    },
+    {
+      "name": "mobile/en: cannon direct catalogue action remains optional"
+    },
+    {
+      "name": "mobile/en: no early workshop notice at level 5"
+    },
+    {
+      "name": "mobile/en: level 6 workshop guidance and missing 400 Gold; read persists"
+    },
+    {
+      "name": "mobile/en: workshop affordable at unchanged 1200 Gold"
+    },
+    {
+      "name": "mobile/en: no repeated workshop hint after expansion"
+    },
+    {
+      "name": "mobile: existing offline reward claimed once",
+      "minimumRewardUnits": 2956800,
+      "displayed": "+2 959 gold",
+      "goldAfterClaim": 3764
+    },
+    {
+      "name": "loading http failure and retry",
+      "attempts": 2
+    },
+    {
+      "name": "loading decode failure and retry",
+      "attempts": 2
+    },
+    {
+      "name": "main module download failure and retry"
+    },
+    {
+      "name": "bootstrap module download failure and retry"
+    },
+    {
+      "name": "acceptance complete",
+      "checks": 36
+    }
+  ],
+  "screenshots": [
+    "desktop-loading.png",
+    "desktop-de-cannon-notice.png",
+    "desktop-de-workshop-notice.png",
+    "desktop-de-workshop-details.png",
+    "desktop-en-cannon-notice.png",
+    "desktop-en-workshop-notice.png",
+    "desktop-en-workshop-details.png",
+    "mobile-loading.png",
+    "mobile-de-cannon-notice.png",
+    "mobile-de-workshop-notice.png",
+    "mobile-de-workshop-details.png",
+    "mobile-en-cannon-notice.png",
+    "mobile-en-workshop-notice.png",
+    "mobile-en-workshop-details.png",
+    "mobile-loading-http-error.png",
+    "mobile-loading-decode-error.png"
+  ]
+}

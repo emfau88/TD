@@ -1,6 +1,23 @@
 /** English UI catalog. German source messages are the shared keys and German fallback.
  * Keep placeholders and game values intact; never use these strings as simulation IDs. */
+import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
+  ...startupEnglish,
+  "NEU": "NEW",
+  "Steinschleuder: Flächenschaden gegen Gruppen. Frost hält Gegner länger im Trefferbereich.": "Stone Slinger: area damage against groups. Frost keeps enemies in the impact area longer.",
+  "Steinschleuder: Frostfassung und gemeisterte Welle 5 nötig.": "Stone Slinger: Frost Mount and cleared Wave 5 required.",
+  "Steinschleuder · NEU · Flächenschaden, mit Frost kombinieren": "Stone Slinger · NEW · area damage, combine with Frost",
+  "Neue Baumöglichkeit: Steinschleuder": "New build option: Stone Slinger",
+  "Werkstatt II ansehen": "View Workshop II",
+  "Level 6 erreicht · Werkstatt II": "Level 6 reached · Workshop II",
+  "Dein Turm ist auf Level 6. Werkstatt II erschließt Turmlevel ab 7.": "Your tower has reached Level 6. Workshop II unlocks tower levels from 7 onward.",
+  "Flächenschaden trifft mehrere Gegner. Mit Frost bleiben Gruppen länger im Trefferbereich. Der Bau ist optional.": "Area damage hits several enemies. Frost keeps groups in the impact area longer. Building one is optional.",
+  "Ausbau: {0} Gold · noch {1} Gold.": "Upgrade: {0} gold · {1} more gold needed.",
+  "Ausbau: {0} Gold · bereit.": "Upgrade: {0} gold · ready.",
+  "Werkstatt öffnen": "Open Workshop",
+  "Im Baukatalog ansehen": "View in build catalogue",
+  "Hinweis schließen": "Dismiss hint",
+  "Werkstatt II kostet {0} Gold und erschließt Turmlevel ab 7.": "Workshop II costs {0} gold and unlocks tower levels from 7 onward.",
   "Vertraute Gesten": "Familiar gestures",
   "Zusammen lachen": "Share a laugh",
   "Ein Kompliment machen": "Give a compliment",

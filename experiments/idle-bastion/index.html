@@ -5,9 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#111c20" />
   <title>SPIRE · Idle Bastion — Der alte Hain</title>
+  <link rel="stylesheet" href="/src/loading-screen.css" />
 </head>
 <body>
-  <div id="app">
+  <section id="boot-screen" data-phase="modules" aria-label="SPIRE: Idle Bastion" aria-busy="true">
+    <div class="boot-panel"><div class="boot-art" aria-hidden="true"></div><small id="boot-eyebrow" class="boot-eyebrow">The Old Grove</small><h1>SPIRE<span>Idle Bastion</span></h1><div class="boot-rule" aria-hidden="true">✦</div><p id="boot-phase" role="status" aria-live="polite">The forest awakens…</p><progress id="boot-progress" aria-label="Game artwork"></progress><small id="boot-count"></small><p id="boot-error" role="alert" hidden></p><div class="boot-actions"><button id="boot-retry" type="button" hidden>Try again</button><button id="boot-recovery" type="button" hidden>Check saved game</button></div><noscript>JavaScript is required to play. / Zum Spielen bitte JavaScript aktivieren.</noscript></div>
+  </section>
+  <div id="app" inert>
     <main class="world" aria-label="Der alte Hain"><div id="game" role="img" aria-label="Waldlichtung. Bauplatz, Turm oder Werkstatt auswählen. Karte zum Verschieben ziehen."></div></main>
     <header class="app-header">
       <div class="brand"><span class="brand-mark" aria-hidden="true"><span class="ui-icon" data-ui-icon="tower"></span></span><h1><strong>SPIRE</strong><span> · Der alte Hain</span></h1></div>
@@ -104,6 +108,23 @@
     </dialog>
     <section id="error-panel" class="error-panel" role="alert" hidden><h2>Verteidigung angehalten</h2><p id="app-error" hidden></p><div id="load-actions" class="action-stack" hidden><button id="recover-save" type="button" hidden>Letzten gültigen Stand laden</button><button id="activate-session" type="button" hidden>Hier erneut aktivieren</button><button id="temporary-session" type="button">Ohne Speicherung testen</button></div></section>
   </div>
-  <script type="module" src="/src/main.ts"></script>
+  <script>
+    // The recovery action must also work if the small entry module itself fails.
+    window.addEventListener('error', function (event) {
+      if (!(event.target instanceof HTMLScriptElement) || event.target.type !== 'module') return;
+      var root = document.getElementById('boot-screen');
+      if (!root || root.hidden) return;
+      var de = false;
+      try { de = localStorage.getItem('spire-language-v1') === 'de'; } catch (_) {}
+      root.dataset.phase = 'error'; root.setAttribute('aria-busy', 'false');
+      document.getElementById('boot-phase').textContent = de ? 'Der Start wurde unterbrochen.' : 'Startup was interrupted.';
+      var error = document.getElementById('boot-error');
+      error.textContent = de ? 'Das Spiel konnte nicht gestartet werden. Bitte versuche es erneut.' : 'The game could not start. Please try again.'; error.hidden = false;
+      var retry = document.getElementById('boot-retry');
+      retry.textContent = de ? 'Erneut versuchen' : 'Try again'; retry.hidden = false;
+      retry.onclick = function () { window.location.reload(); };
+    }, true);
+  </script>
+  <script type="module" src="/src/bootstrap.ts"></script>
 </body>
 </html>

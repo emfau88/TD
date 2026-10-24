@@ -1,0 +1,74 @@
+[
+  {
+    "mobile": false,
+    "lang": "en",
+    "partial": {
+      "value": 87,
+      "max": 101
+    },
+    "bounds": {
+      "x": 380,
+      "y": 130.34375,
+      "width": 520,
+      "height": 539.296875
+    },
+    "existingSavePreserved": true,
+    "returnVisible": false,
+    "tavernImages": [],
+    "errors": []
+  },
+  {
+    "mobile": false,
+    "lang": "de",
+    "partial": {
+      "value": 91,
+      "max": 101
+    },
+    "bounds": {
+      "x": 380,
+      "y": 130.34375,
+      "width": 520,
+      "height": 539.296875
+    },
+    "existingSavePreserved": true,
+    "returnVisible": false,
+    "tavernImages": [],
+    "errors": []
+  },
+  {
+    "mobile": true,
+    "lang": "en",
+    "partial": {
+      "value": 92,
+      "max": 101
+    },
+    "bounds": {
+      "x": 20,
+      "y": 178.046875,
+      "width": 350,
+      "height": 487.890625
+    },
+    "existingSavePreserved": true,
+    "returnVisible": false,
+    "tavernImages": [],
+    "errors": []
+  },
+  {
+    "mobile": true,
+    "lang": "de",
+    "partial": {
+      "value": 93,
+      "max": 101
+    },
+    "bounds": {
+      "x": 20,
+      "y": 178.046875,
+      "width": 350,
+      "height": 487.890625
+    },
+    "existingSavePreserved": true,
+    "returnVisible": false,
+    "tavernImages": [],
+    "errors": []
+  }
+]

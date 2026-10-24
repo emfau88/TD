@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Q1 + Q2 · isolierte Spieltests</title></head>
+<body style="font:16px/1.5 system-ui;max-width:900px;margin:32px auto;padding:0 16px;background:#15221f;color:#ead6ac">
+  <h1>Q1 + Q2 · isolierte Spieltests</h1>
+  <p>Nur im lokalen Entwicklungsserver. Jeder Klick erstellt einen neuen Probe-Spielstand; bestehende Partien werden nicht geöffnet oder verändert. Der Link führt anschließend in den normalen Spieleinstieg.</p>
+  <label>Sprache <select id="fixture-language"><option value="en">English</option><option value="de">Deutsch</option></select></label>
+  <p><button id="cannon-locked" data-fixture="cannon-locked">Vor Steinschleuder-Freischaltung (Welle 4)</button> <button id="cannon" data-fixture="cannon">Steinschleuder neu (Welle 5)</button></p>
+  <p><button id="workshop-level5" data-fixture="workshop-level5">Werkstatt I · höchster Turm Level 5</button> <button id="workshop-poor" data-fixture="workshop-poor">Werkstatt I · Turm Level 6 · 800 Gold</button> <button id="workshop-ready" data-fixture="workshop-ready">Werkstatt I · Turm Level 6 · 1.200 Gold</button> <button id="workshop-owned" data-fixture="workshop-owned">Werkstatt II bereits vorhanden</button></p>
+  <p><button id="offline" data-fixture="offline">Vorhandener Stand mit 10 Minuten Offline-Anspruch</button></p>
+  <p id="result" role="status"></p><pre id="fixture-details" style="white-space:pre-wrap"></pre>
+  <script type="module" src="./quick-wins-session.ts"></script>
+</body></html>

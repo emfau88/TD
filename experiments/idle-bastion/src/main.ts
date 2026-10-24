@@ -1,4 +1,5 @@
 import { offlineGoldDisplay } from './reward-display';
+import { loadingScreen } from './loading-screen';
 import { t, numberFormat, onLanguageChange, language } from './i18n';
 import { bindStaticTranslations, mountLanguageSettings } from './i18n-dom';
 import { GameAudio } from './game-audio';
@@ -7,6 +8,8 @@ import { rigPreviewPresentation } from './tavern-rig-preview';
 import { discoveryStep, updateDiscoveryUI } from './discovery-ui';
 import { LessonPointer } from './lesson-pointer';
 import { updateOnboarding } from './onboarding-ui';
+import { QuickWinGuidance, workshopGoldMissing, type QuickWinNotice } from './quick-win-guidance';
+import './quick-win-guidance.css';
 import { introducedEnemy } from './enemy-roster';
 import { MARA } from './mara';
 import { syncIlyraUI } from './ilyra-ui';
@@ -97,6 +100,7 @@ let mobileHintOpen = false;
 let mobileHintStep = -1;
 let ready = false;
 const tavernUI = new TavernUI({ session: () => session, presentation: rigPreviewPresentation, navigate: kind => openContext(kind, true), onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift'), onCompanion: who => audio.setCompanion(who), onTouch: who => audio.touchCompanion(who) });
+const quickWins = new QuickWinGuidance(databaseName, { action: openQuickWin, dismissed: acknowledgeQuickWin }, lifetime.signal);
 let booting = false;
 let lifecycle = Promise.resolve();
 let retryTimer: number | undefined;
@@ -126,6 +130,8 @@ function showError(message: string, canRecover = false, ownership = false): void
   recover.hidden = !canRecover;
   element('activate-session').hidden = !ownership;
   element('temporary-session').hidden = ownership;
+  const startup = loadingScreen();
+  if (!ready && startup?.visible) startup.fail(t(message), () => window.location.reload(), () => startup.dismiss());
 }
 window.addEventListener('error', event => showError(t("Ein unerwarteter Fehler ist aufgetreten: {0}", event.message)), { signal: lifetime.signal });
 
@@ -139,7 +145,7 @@ function syncUI(): void {
     element<HTMLButtonElement>('onboarding-primary').disabled = element<HTMLButtonElement>('onboarding-secondary').disabled = true;
   element<HTMLButtonElement>('build-cannon').disabled = element<HTMLButtonElement>('build-sniper').disabled = unavailable;
   buildFrost.disabled = buildWorkshop.disabled = buildWarehouse.disabled = researchFrost.disabled = unavailable;
-  if (!ready || !live || !view) { lessonPointer.show(); return; }
+  if (!ready || !live || !view) { quickWins.hide(); lessonPointer.show(); return; }
   view.paused = live.paused || document.hidden || Boolean(live.error) || live.suspended || live.awaitingResume;
   const saveStatus = element('save-status');
   saveStatus.dataset.revision = String(live.revision);
@@ -324,13 +330,13 @@ function syncUI(): void {
   element('pick-workshop').classList.toggle('researched', settlement.frostResearched);
   element('workshop-title').textContent = t(settlement.workshopUpgraded ? t('Werkstatt II') : settlement.workshopBuilt ? t('Werkstatt I') : t('Werkstatt bauen'));
   element('workshop-description').textContent = t(settlement.workshopUpgraded ? t('Der neue Arbeitsplatz erschließt Turmlevel ab 7. Höhere Level erhöhen den Schaden; Reichweite und Feuerrate bleiben begrenzt.') : settlement.frostResearched
-    ? t('Frostfassung erforscht · Frostkristall und Turmlevel 4–6 sind verfügbar.')
+    ? t('Werkstatt II kostet {0} Gold und erschließt Turmlevel ab 7.', currency.format(SETTLEMENT.workshopUpgradeCost))
     : settlement.workshopBuilt ? t('Frostfassung erschließt den Frostkristall und Turmlevel 4–6.') : t('Wähle eine Position in der Siedlung und baue die Werkstatt. Sie eröffnet die Frostforschung.'));
   const upgradeWorkshop = element<HTMLButtonElement>('upgrade-workshop');
   upgradeWorkshop.hidden = !settlement.frostResearched || settlement.workshopUpgraded;
   upgradeWorkshop.disabled = blocked || sim.gold < SETTLEMENT.workshopUpgradeCost;
   element('workshop-upgrade-condition').hidden = !settlement.frostResearched || settlement.workshopUpgraded;
-  element('workshop-upgrade-condition').textContent = t(sim.gold < SETTLEMENT.workshopUpgradeCost ? t("Noch {0} Gold für Werkstatt II.", currency.format(SETTLEMENT.workshopUpgradeCost-sim.gold)) : t('Bereit zum Ausbau · Turmlevel ab 7 freischalten.'));
+  element('workshop-upgrade-condition').textContent = t(sim.gold < SETTLEMENT.workshopUpgradeCost ? t("Noch {0} Gold für Werkstatt II.", currency.format(workshopGoldMissing(sim.gold))) : t('Bereit zum Ausbau · Turmlevel ab 7 freischalten.'));
   buildWorkshop.hidden = settlement.workshopBuilt;
   buildWorkshop.textContent = t(sim.workshopKitAvailable ? t('Werkstatt platzieren · kostenloser Bausatz') : t("Werkstatt platzieren · {0} Gold", sim.workshopBuildCost));
   buildWorkshop.disabled = blocked || sim.gold < sim.workshopBuildCost;
@@ -489,6 +495,21 @@ function syncUI(): void {
   document.getElementById('app')!.classList.toggle('context-open', contextOpen || Boolean(placementType || groundMode));
   updateOnboarding(live, { placing: Boolean(placementType || groundMode), contextOpen, catalogPanel, revealing: performance.now() < workshopRevealUntil });
   updateDiscoveryUI(live, contextOpen, Boolean(placementType || groundMode), catalogPanel);
+  const quickHintVisible = quickWins.update({
+    cannonUnlocked: sim.isTowerUnlocked(3), cannonBuilt: sim.towers.some(value => value.def.id === 3),
+    workshopAvailable: settlement.workshopBuilt && settlement.frostResearched && !settlement.workshopUpgraded,
+    levelSix: sim.towers.some(value => value.level >= 6), gold: sim.gold, tutorialSeen: sim.tutorial.seen,
+  }, {
+    suppressed: contextOpen || Boolean(placementType || groundMode || ilyraMode) || live.awaitingResume || !!live.error || live.suspended
+      || sim.introduction.stage !== 'done' || !!discovery && discovery !== 'cannon' || sim.bossActive
+      || !element('wisp-arrival').hidden || performance.now() < workshopRevealUntil || !!document.querySelector('dialog[open]'),
+    towerAtCap: contextOpen && selectedPanel === 'tower' && !!tower && tower.level >= 6,
+  });
+  if (quickHintVisible) {
+    for (const id of ['tutorial-card', 'mobile-hint', 'combat-message']) element(id).hidden = true;
+    document.querySelector<HTMLElement>('.goal-ribbon')!.hidden = true;
+    if (discovery === 'cannon') element('discovery-card').hidden = true;
+  }
   // Focus the genuine cast once; its compact countdown runs with the battle.
   if (discovery !== focusedDiscovery) {
     focusedDiscovery = discovery ?? '';
@@ -587,10 +608,28 @@ function positionContext(): void {
 }
 
 function closeContext(): void { ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); syncUI(); }
+function acknowledgeQuickWin(notice: QuickWinNotice): void {
+  const b = session?.battle;
+  if (!b) return;
+  const bit = 1 << (notice === 'cannon' ? 8 : 16);
+  if (!(b.tutorial.seen & bit) || notice === 'cannon' && discoveryStep(b) === 'cannon')
+    void perform(battle => { battle.tutorial.seen |= bit; if (notice === 'cannon' && discoveryStep(battle) === 'cannon') battle.dismissDiscovery(); }, true, true);
+  else syncUI();
+}
+function inspectCannon(): void { quickWins.inspectCannon(); acknowledgeQuickWin('cannon'); }
+function openQuickWin(notice: QuickWinNotice): void {
+  acknowledgeQuickWin(notice);
+  if (notice === 'workshop') { catalogPanel = 'settlement'; openContext('settlement'); return; }
+  catalogPanel = 'tower'; placementType = undefined; closeContext();
+  const card = element<HTMLButtonElement>('pick-cannon'); card.scrollIntoView({ block: 'nearest', inline: 'nearest' }); card.focus({ preventScroll: true });
+}
 function openContext(kind: typeof selectedPanel, buildingControls = false): void {
   if (session?.battle.preparing || performance.now() < workshopRevealUntil) return;
   if (session && (kind === 'settlement' && session.battle.settlement.workshopBuilt || kind === 'warehouse' && session.battle.settlement.warehouseBuilt || kind === 'tavern' && buildingControls && session.battle.settlement.tavernBuilt)) audio.play('craft');
   ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; placementType = undefined; selectedPanel = kind; contextOpen = true;
+  if (kind === 'settlement' && session?.battle.settlement.frostResearched && !session.battle.settlement.workshopUpgraded && session.battle.towers.some(tower => tower.level >= 6)) {
+    quickWins.inspectWorkshop(); acknowledgeQuickWin('workshop');
+  }
   if (kind !== 'tower') { selectedPadId = undefined; scene?.setSelected(); }
   if (kind === 'tavern' && session?.battle.settlement.tavernBuilt && !buildingControls) { contextOpen = false; syncUI(); tavernUI.open(); return; }
   scene?.focusObject(kind); syncUI();
@@ -639,6 +678,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
   if (booting || document.hidden) return;
   if (retryTimer !== undefined) { clearTimeout(retryTimer); retryTimer = undefined; }
   booting = true; ready = false; audio.setState(false, false);
+  loadingScreen()?.begin('save', language());
   build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = true;
   element('app-error').hidden = true; element('load-actions').hidden = true; element('error-panel').hidden = true;
   try {
@@ -659,7 +699,16 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     const pixelDensity = Math.min(2, Math.max(1, Math.round(window.devicePixelRatio || 1)));
     const host = element('game');
     const view = new BattleScene(() => live.battle, {
-      advance(seconds) { live.advance(seconds); },
+      advance(seconds) { if (ready && session === live) live.advance(seconds); },
+      loadProgress(completed, total) { if (scene === view && session === live) loadingScreen()?.progress(completed, total); },
+      preparing() { if (scene === view && session === live) loadingScreen()?.begin('render', language()); },
+      loadError() {
+        if (scene !== view || session !== live) return;
+        ready = false; view.paused = true; syncUI();
+        const message = t('Spielgrafiken konnten nicht geladen werden. Bitte versuche es erneut.');
+        showError(message);
+        loadingScreen()?.fail(message, () => { void boot(options); }, () => loadingScreen()?.dismiss());
+      },
       canRender: () => !live.busy,
       canSelect: () => !live.inputBusy && !live.error && !live.suspended && !live.awaitingResume,
       changed: syncUI,
@@ -680,12 +729,18 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
       selectTavern() { catalogPanel = 'settlement'; openContext('tavern'); },
       selectWarehouse() { catalogPanel = 'settlement'; openContext('warehouse'); },
       selectWorkshop() { catalogPanel = 'settlement'; openContext('settlement'); },
-      ready() { ready = true; drawDockArt(view); view.setSelected(selectedPadId); syncUI(); },
+      ready() {
+        if (scene !== view || session !== live) return;
+        try { ready = true; drawDockArt(view); view.setSelected(selectedPadId); syncUI(); loadingScreen()?.complete(); }
+        catch { ready = false; view.paused = true; showError(t('Das Spiel konnte nicht gestartet werden. Bitte versuche es erneut.')); }
+      },
     }, pixelDensity);
     scene = view;
+    loadingScreen()?.begin('assets', language());
     game = new Phaser.Game({
       type: Phaser.AUTO, parent: 'game', width: Math.round(host.clientWidth * pixelDensity), height: Math.round(host.clientHeight * pixelDensity),
       backgroundColor: '#183424', pixelArt: true, roundPixels: true, render: { antialias: false }, audio: { noAudio: true },
+      loader: { timeout: 15000, maxRetries: 1 },
       scene: [view], scale: { mode: Phaser.Scale.NONE, zoom: 1 / pixelDensity, autoCenter: Phaser.Scale.CENTER_BOTH },
     });
     const activeGame = game;
@@ -699,6 +754,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     const message = error instanceof Error ? error.message : String(error);
     const ownership = error instanceof SessionOwnershipError;
     if (ownership && ownershipRetries > 0) {
+      loadingScreen()?.begin('save', language());
       element('save-status').textContent = t('Schreibfreigabe wird geprüft …');
       element('layout-status').textContent = t('Warte kurz auf die Freigabe der bisherigen Registerkarte.');
       retryTimer = window.setTimeout(() => { void boot(options, ownershipRetries - 1); }, 1000);
@@ -793,7 +849,7 @@ for (const kind of ['tower', 'settlement'] as const) {
 }
 element('choose-frost').addEventListener('click', () => startPlacement(2), { signal: lifetime.signal });
 for (const [name, kind] of [['cannon', 3], ['sniper', 4], ['storm', 5]] as const) {
-  element(`pick-${name}`).addEventListener('click', () => startPlacement(kind), { signal: lifetime.signal });
+  element(`pick-${name}`).addEventListener('click', () => { if (kind === 3 && session?.battle.isTowerUnlocked(3)) inspectCannon(); startPlacement(kind); }, { signal: lifetime.signal });
   element(`build-${name}`).addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId, kind); }, { signal: lifetime.signal });
 }
 for (const hero of ['mara','wisp','ilyra'] as const) element(`tavern-${hero}`).addEventListener('click', () => openContext(hero), { signal: lifetime.signal });
@@ -922,5 +978,5 @@ const heartbeat = window.setInterval(() => {
   if (!document.hidden && session && !session.suspended) void session.heartbeat().catch(() => syncUI());
 }, 1000);
 const unbindDynamicLanguage = onLanguageChange(() => { showCombatMessage(); syncUI(); scene?.refreshLanguage(); });
-if (import.meta.hot) import.meta.hot.dispose(() => { unbindStaticLanguage(); unmountLanguage(); unbindDynamicLanguage(); tavernUI.destroy(); audio.destroy(); lifetime.abort(); clearInterval(heartbeat); clearTimeout(retryTimer); game?.destroy(true); void session?.close().catch(() => undefined); });
+if (import.meta.hot) import.meta.hot.dispose(() => { loadingScreen()?.dismiss(); unbindStaticLanguage(); unmountLanguage(); unbindDynamicLanguage(); quickWins.destroy(); tavernUI.destroy(); audio.destroy(); lifetime.abort(); clearInterval(heartbeat); clearTimeout(retryTimer); game?.destroy(true); void session?.close().catch(() => undefined); });
 void boot();

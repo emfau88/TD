@@ -1,0 +1,27 @@
+@font-face { font-family:"Spire Loading"; src:url('../assets/ui/fonts/PixelifySans.ttf') format('truetype'); font-weight:400 700; font-display:swap; }
+#boot-screen { position:fixed; z-index:1000; inset:0; display:grid; place-items:center; overflow:auto; padding:32px 20px; box-sizing:border-box; color:#e9dec4; background:radial-gradient(ellipse at 50% 42%,#344231 0,#172a27 39%,#0a151b 80%); font:15px/1.6 "Segoe UI",Arial,sans-serif; }
+#boot-screen[hidden],#boot-screen [hidden] { display:none!important; }
+#boot-screen::before { content:''; position:fixed; inset:14px; border:1px solid #bda46b32; pointer-events:none; }
+#boot-screen .boot-panel { position:relative; width:min(100%,520px); box-sizing:border-box; padding:28px 40px 32px; text-align:center; border:1px solid #a98b534d; background:linear-gradient(150deg,#142124c9,#101b20ed); box-shadow:0 24px 100px #0006,inset 0 0 60px #96784908; }
+#boot-screen .boot-panel::before,#boot-screen .boot-panel::after { content:''; position:absolute; height:1px; width:46%; left:27%; background:linear-gradient(90deg,transparent,#d7b677,transparent); }
+#boot-screen .boot-panel::before { top:-1px; } #boot-screen .boot-panel::after { bottom:-1px; }
+#boot-screen .boot-art { width:176px; height:176px; margin:0 auto 8px; background:radial-gradient(ellipse at 50% 74%,#d9ac5830,transparent 69%),url('../assets/workshop/workshop-i.png') center/contain no-repeat; image-rendering:pixelated; filter:drop-shadow(0 8px 18px #0006); }
+#boot-screen .boot-eyebrow { display:block; color:#bea878; font-size:10px; text-transform:uppercase; letter-spacing:.28em; }
+#boot-screen h1 { display:block; margin:10px 0 0; font:500 70px/1.05 "Spire Loading",Georgia,serif; letter-spacing:.12em; color:#f1d398; text-shadow:0 3px 0 #090f15; }
+#boot-screen h1 span { display:block; margin-top:7px; font:400 22px/1.4 "Spire Loading",Georgia,serif; letter-spacing:.12em; color:#d6bc8e; }
+#boot-screen .boot-rule { display:flex; align-items:center; justify-content:center; gap:12px; margin:20px auto; color:#b7975c; }
+#boot-screen .boot-rule::before,#boot-screen .boot-rule::after { content:''; width:62px; height:1px; background:linear-gradient(90deg,transparent,#9a8055); } #boot-screen .boot-rule::after { transform:rotate(180deg); }
+#boot-phase { min-height:24px; margin:0 0 16px; font-size:14px; color:#e6dbc2; }
+#boot-progress { display:block; appearance:none; width:100%; height:5px; border:1px solid #8a744b; border-radius:0; overflow:hidden; background:#0a1317; color:#d6b578; }
+#boot-progress::-webkit-progress-bar { background:#0a1317; }
+#boot-progress::-webkit-progress-value { background:linear-gradient(90deg,#9b7847,#efce8e); }
+#boot-progress::-moz-progress-bar { background:linear-gradient(90deg,#9b7847,#efce8e); }
+#boot-progress:indeterminate { background:repeating-linear-gradient(110deg,#0a1317 0 12px,#9b784766 12px 24px); }
+#boot-count { display:block; min-height:20px; margin-top:9px; font-size:11px; color:#aeb4a5; font-variant-numeric:tabular-nums; }
+#boot-error { margin:14px 0 0; color:#f0c69b; font-size:14px; line-height:1.6; }
+#boot-screen .boot-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-top:18px; }
+#boot-screen button { min-height:44px; padding:10px 16px; border:1px solid #a68a55; background:#2b332e; color:#f1dfb8; font:14px "Segoe UI",Arial,sans-serif; cursor:pointer; }
+#boot-screen button:hover { background:#394137; } #boot-screen button:focus-visible { outline:2px solid #f6dca1; outline-offset:4px; }
+#boot-screen[data-phase="error"] #boot-progress { display:none; }
+@media(max-width:600px) { #boot-screen { padding:24px 20px; } #boot-screen .boot-panel { padding:24px 23px 28px; } #boot-screen .boot-art { width:148px; height:148px; } #boot-screen h1 { font-size:58px; } #boot-screen h1 span { font-size:20px; } }
+@media(max-height:600px) { #boot-screen { padding-block:14px; } #boot-screen .boot-panel { padding-block:18px; } #boot-screen .boot-art { width:92px; height:92px; } #boot-screen h1 { font-size:46px; } #boot-screen .boot-rule { margin-block:10px; } }

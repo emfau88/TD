@@ -22,6 +22,9 @@ export interface BattleSceneHooks {
   readonly changed: () => void;
   readonly select: (padId?: string) => void;
   readonly ready: () => void;
+  readonly loadProgress?: (completed: number, total: number) => void;
+  readonly preparing?: () => void;
+  readonly loadError?: () => void;
   readonly advance?: (seconds: number) => void;
   readonly canRender?: () => boolean;
   readonly canSelect?: () => boolean;
@@ -79,6 +82,8 @@ export class BattleScene extends Phaser.Scene {
   private readonly padMarks = new Map<string, Phaser.GameObjects.Graphics>();
   private selectedPadId?: string;
   private readyToDraw = false;
+  private requiredTextures: string[] = [];
+  private loadingFailed = false;
   private pendingTap?: { x: number; y: number };
   private hudElapsed = 0;
   private dragOrigin?: { x: number; y: number; dragging: boolean };
@@ -94,13 +99,27 @@ export class BattleScene extends Phaser.Scene {
   get mapZoom(): number { return this.relativeZoom; }
 
   constructor(private readonly readBattle: () => IdleBattle, private readonly hooks: BattleSceneHooks, private readonly pixelDensity = 1) { super('IdleBattle'); }
-  preload(): void { preloadArt(this); }
+  preload(): void {
+    let completed = 0;
+    this.load.on(Phaser.Loader.Events.FILE_COMPLETE, () => { this.hooks.loadProgress?.(++completed, this.requiredTextures.length); });
+    this.load.on(Phaser.Loader.Events.FILE_LOAD_ERROR, () => this.failLoading());
+    preloadArt(this);
+    this.requiredTextures = [...this.load.list].map(file => file.key);
+    this.hooks.loadProgress?.(0, this.requiredTextures.length);
+  }
+  private failLoading(): void {
+    this.paused = true; this.readyToDraw = false;
+    if (!this.loadingFailed) { this.loadingFailed = true; this.hooks.loadError?.(); }
+  }
   refreshLanguage(): void {
     this.coreLabel?.setText(t('Diesen Kern schützen'));
     this.wispName?.setText(t('Wisp · +10 % Gold'));
   }
 
   create(): void {
+    // COMPLETE may follow a failed download or a 200 response with invalid pixels.
+    if (this.loadingFailed || this.requiredTextures.some(key => !this.textures.exists(key))) { this.failLoading(); return; }
+    this.hooks.preparing?.();
     prepareArt(this);
     const { width, height } = this.sim.layout.bounds;
     this.cameras.main.setBounds(0, 0, width, height).setScroll(0, 0);
@@ -151,12 +170,12 @@ export class BattleScene extends Phaser.Scene {
     this.refresh(); this.hooks.ready(); this.hooks.changed();
   }
   update(_time: number, delta: number): void {
+    if (!this.readyToDraw) return;
     const rawSeconds = Number.isFinite(delta) ? Math.max(0, delta / 1000) : 0;
     if (!this.paused) {
       if (this.hooks.advance) this.hooks.advance(rawSeconds);
       else this.sim.update(Math.min(rawSeconds, 0.08));
     }
-    if (!this.readyToDraw) return;
     if (this.wispArrivalAt !== this.sim.wispArrival.at) {
       this.wispArrivalAt = this.sim.wispArrival.at;
       this.wispAge = Math.max(0, this.sim.elapsed - (this.wispArrivalAt ?? this.sim.elapsed));
