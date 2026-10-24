@@ -2,6 +2,8 @@
 
 24.10.2026 · Basis `origin/main` **908a41b** · Arbeitsbranch `codex/quick-wins-q1-q2`.
 
+Dieser Bericht hält den damaligen Q1/Q2-Abschluss fest. Das anschließend separat freigegebene Q3 verändert die Tutorialplätze und Kamera; sein aktueller Nachweis steht im [Q3-Bericht](../tutorial-tower-positions/REPORT.md).
+
 Beim Arbeitsbeginn war A1 noch nicht in main enthalten. Q1/Q2 wurden zunächst vollständig darauf isoliert umgesetzt. Anschließend hat der Nutzer die gemeinsame Übernahme der abgeschlossenen Pakete A1 und Q1/Q2 ausdrücklich freigegeben. Q3 ist separat zur temporären Variantenansicht beauftragt; seine Turmempfehlungen werden hier nicht geändert.
 
 ## Umsetzung

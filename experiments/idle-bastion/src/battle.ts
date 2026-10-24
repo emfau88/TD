@@ -16,6 +16,7 @@ import { LAYOUT_VERSION, cellCenter, createIdleLayout, isUnlockedCell, battleLay
 import { getForestBlockedCells } from './forest-world';
 import { MARA, createMara, cloneMara, assignMaraTarget, stepMara, validMara, migrateMaraLayout, moveMara, castMara, type MaraState } from './mara';
 import { validMara as validLegacyMara, migrateMaraLayout as migrateLegacyMaraLayout } from './mara-legacy';
+import { TUTORIAL_STARTER_CELL, LEGACY_TUTORIAL_STARTER_CELL, isLegacyStarterCell, isShiftedStarterCell, isPreparingStarterCell } from './tutorial-placement';
 import { createProgress, cloneProgress, recordAttempt, validProgress, type ProgressRecord } from './progress';
 
 export const BASE = Object.freeze({
@@ -221,12 +222,32 @@ export class IdleBattle {
     if (this.introduction.stage !== 'welcome') return false;
     this.introduction.stage = 'build'; return true;
   }
-  /** A small early corridor keeps the free defense useful even without Mara. */
+  /** Old unbuilt saves have no placement marker. Accept their bounded corridor
+   * before placement; after placement the saved tower selects its own family. */
   isStarterLocation(id: string): boolean {
     const pad = this.layout.towerPads.find(p => p.id === id);
-    return !!pad && this.isPadUnlocked(id) && pad.cell.x >= 3 && pad.cell.x <= 7
-      && [4, 6].includes(pad.cell.y)
-      && !this.towers.some(t => t.padId === id && !t.protected);
+    if (!pad || !this.isPadUnlocked(id) || this.towers.some(t => t.padId === id && !t.protected)) return false;
+    const starter = this.towers.find(tower => tower.protected);
+    if (starter) {
+      const cell = { x: Math.floor(starter.x / this.layout.cellSize), y: Math.floor(starter.y / this.layout.cellSize) };
+      return isLegacyStarterCell(cell) ? isLegacyStarterCell(pad.cell) : isShiftedStarterCell(cell) && isShiftedStarterCell(pad.cell);
+    }
+    return isPreparingStarterCell(pad.cell, this.layout.version === 5);
+  }
+  /** UI offers the new small corridor, or the family of an existing starter. */
+  isPreferredStarterLocation(id: string): boolean {
+    const pad = this.layout.towerPads.find(p => p.id === id);
+    if (!pad || !this.isStarterLocation(id)) return false;
+    const starter = this.towers.find(tower => tower.protected);
+    const legacy = starter ? isLegacyStarterCell({ x: Math.floor(starter.x / this.layout.cellSize), y: Math.floor(starter.y / this.layout.cellSize) }) : this.layout.version !== 5;
+    return legacy ? isLegacyStarterCell(pad.cell) : isShiftedStarterCell(pad.cell);
+  }
+  get recommendedStarterPad(): string | undefined {
+    const starter = this.towers.find(tower => tower.protected);
+    if (starter) return starter.padId;
+    const target = this.layout.version === 5 ? TUTORIAL_STARTER_CELL : LEGACY_TUTORIAL_STARTER_CELL;
+    return this.layout.towerPads.filter(pad => this.isPreferredStarterLocation(pad.id))
+      .sort((a, b) => distance(a.cell, target) - distance(b.cell, target))[0]?.id;
   }
   private placeStarter(id: string): Tower | undefined {
     if (!['build', 'ready'].includes(this.introduction.stage) || !this.isStarterLocation(id)) return undefined;
@@ -344,7 +365,10 @@ export class IdleBattle {
   }
   isLearningFrostLocation(id: string): boolean {
     const starter = this.towers.find(t => t.protected), pad = this.layout.towerPads.find(p => p.id === id);
-    return !!starter && !!pad && this.isPadUnlocked(id) && [4, 6].includes(pad.cell.y) && !this.towers.some(t => t.padId === id)
+    if (!starter || !pad) return false;
+    const starterCell = { x: Math.floor(starter.x / this.layout.cellSize), y: Math.floor(starter.y / this.layout.cellSize) };
+    const rows = isLegacyStarterCell(starterCell) ? [4, 6] : [starterCell.y - 2, starterCell.y, starterCell.y + 2];
+    return this.isPadUnlocked(id) && rows.includes(pad.cell.y) && !this.towers.some(t => t.padId === id)
       && cellCenter(this.layout, pad.cell).x <= starter.x - 40 && distance(starter, cellCenter(this.layout, pad.cell)) <= 100;
   }
   get recommendedFrostPad(): string | undefined {
@@ -1467,7 +1491,7 @@ function validSnapshot(
     if (modern && pad && getForestBlockedCells(layout).some(c => c.x === pad.cell.x && c.y === pad.cell.y)) return false;
     if (!pad || !padUnlocked(pad.availability, legacy && legacy < 6 ? 0 : value.highestCleared, (!legacy || legacy >= 9) && layout.bounds.columns === 32) || !isUnlockedCell(layout, pad.cell)) return false;
     if ((legacy && legacy < 15 && tower.protected !== pad.isStarter) || (tower.protected && (tower.uid !== 1 || def.id !== 1))) return false;
-    if (preparing && (!tower.protected || tower.level !== 1 || pad.cell.x < 3 || pad.cell.x > 7 || ![4, 6].includes(pad.cell.y))) return false;
+    if (preparing && (!tower.protected || tower.level !== 1 || !isPreparingStarterCell(pad.cell, !legacy && layoutVersion === 5))) return false;
     if (tower.protected) protectedCount++;
     // Reject impossible numeric levels before summing rounded, historical prices.
     if (tower.level > 1 && !Number.isSafeInteger(upgradeCost({ def, level: tower.level - 1 }))) return false;

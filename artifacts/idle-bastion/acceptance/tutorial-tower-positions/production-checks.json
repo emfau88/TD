@@ -1,0 +1,55 @@
+{
+  "base": "http://127.0.0.1:5243",
+  "checks": [
+    {
+      "profile": "desktop",
+      "probe": "q3-smoke-1792875461459-c3a73091",
+      "bootDismissed": true,
+      "canvas": true,
+      "productionUninstrumented": true,
+      "realBuild": true,
+      "readyReload": true,
+      "built": {
+        "gold": 75,
+        "stage": "ready",
+        "schema": 29,
+        "rules": 15,
+        "towers": [
+          {
+            "padId": "cell-10-5",
+            "kind": 1,
+            "level": 1,
+            "protected": true,
+            "spent": 0
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "profile": "mobile",
+      "probe": "q3-smoke-1792875473632-9556d613",
+      "bootDismissed": true,
+      "canvas": true,
+      "productionUninstrumented": true,
+      "realBuild": true,
+      "readyReload": true,
+      "built": {
+        "gold": 75,
+        "stage": "ready",
+        "schema": 29,
+        "rules": 15,
+        "towers": [
+          {
+            "padId": "cell-10-5",
+            "kind": 1,
+            "level": 1,
+            "protected": true,
+            "spent": 0
+          }
+        ]
+      },
+      "errors": []
+    }
+  ]
+}

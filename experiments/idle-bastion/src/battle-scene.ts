@@ -17,6 +17,7 @@ import { BASE, IdleBattle, stats, towerDefinition, visualStage, type BattleEvent
 import { cellCenter, settlementZone, buildingWidth, type BuildingId, type GridCell, type TowerPad } from './layout';
 import { KEYS, MARA_FOOT, SCALE, enemyFrame, enemyFlip, loopFrame, maraFrame, towerArt, towerMount, preloadArt, prepareArt } from './art';
 import { createForest, type ForestView } from './forest';
+import { tutorialDefenseFrame, tutorialDefenseZoom } from './tutorial-camera';
 
 export interface BattleSceneHooks {
   readonly changed: () => void;
@@ -92,6 +93,8 @@ export class BattleScene extends Phaser.Scene {
   private overview = false;
   private portraitCamera = false;
   private cameraFitted = false;
+  private guidedDefenseFrame = false;
+  private guidedDefensePad?: string;
   private renderedLayout?: IdleBattle['layout'];
   private readonly preventMiddleScroll = (event: MouseEvent) => { if (event.button === 1) event.preventDefault(); };
   private readonly preventWheel = (event: WheelEvent) => { if (!event.ctrlKey) event.preventDefault(); };
@@ -208,6 +211,8 @@ export class BattleScene extends Phaser.Scene {
   }
   refresh(): void {
     if (!this.readyToDraw || this.hooks.canRender?.() === false) return;
+    // Keep the entrance visible after the lesson. Deliberate focus, overview or
+    // zoom actions restore the normal camera; completing a step must not jump it.
     this.syncLayout(); this.refreshLabels(); this.drawSelection(); this.drawActors();
   }
   private syncLayout(): void {
@@ -223,8 +228,27 @@ export class BattleScene extends Phaser.Scene {
     this.showBase();
   }
   showBase(): void { this.focusPoint(this.sim.layout.version === 5 ? { x: 1340, y: 400 } : { x: 300, y: 460 }); }
-  showDefense(): void { this.focusPoint({ x: this.portraitCamera ? 280 : 560, y: this.portraitCamera ? 220 : 320 }); }
+  showDefense(): void {
+    if (this.sim.preparing || this.sim.guiding) this.focusGuidedDefense();
+    else this.focusPoint({ x: this.portraitCamera ? 280 : 560, y: this.portraitCamera ? 220 : 320 });
+  }
+  private defenseFrame(padId?: string) {
+    const pad = this.sim.layout.towerPads.find(pad => pad.id === (padId ?? this.sim.recommendedStarterPad));
+    const starter = this.sim.towers.find(tower => tower.protected) ?? (pad && cellCenter(this.sim.layout, pad.cell));
+    if (!starter) return undefined;
+    const frostPad = this.sim.layout.towerPads.find(pad => pad.id === this.sim.recommendedFrostPad);
+    const frost = this.sim.towers.find(tower => tower.def.id === 2) ?? (frostPad && cellCenter(this.sim.layout, frostPad.cell));
+    return tutorialDefenseFrame(cellCenter(this.sim.layout, this.sim.layout.road.waypoints[0]!), starter, frost);
+  }
+  focusGuidedDefense(padId?: string): void {
+    if (!this.readyToDraw || !this.sim.preparing && !this.sim.guiding) return;
+    const frame = this.defenseFrame(padId); if (!frame) return;
+    this.guidedDefenseFrame = true; this.guidedDefensePad = padId; this.overview = false; this.relativeZoom = 1;
+    this.resizeCamera();
+    this.cameras.main.centerOn(frame.x, this.portraitCamera ? frame.y : this.sim.layout.bounds.height / 2);
+  }
   resetCamera(): void {
+    this.guidedDefenseFrame = false;
     this.relativeZoom = 1; this.overview = true; this.resizeCamera();
     this.cameras.main.centerOn(this.sim.layout.bounds.width / 2, this.sim.layout.bounds.height / 2);
     this.hooks.changed();
@@ -247,21 +271,27 @@ export class BattleScene extends Phaser.Scene {
     camera.setViewport(0, top, this.scale.width, viewHeight);
     this.baseZoom = portrait && !this.overview ? Math.max(this.scale.height / height, this.scale.width / 640)
       : Math.min(this.scale.width / (this.overview ? width : 1120), viewHeight / height);
+    const defense = this.guidedDefenseFrame && portrait ? this.defenseFrame(this.guidedDefensePad) : undefined;
+    if (defense) this.baseZoom = tutorialDefenseZoom(this.baseZoom, this.scale.width, viewHeight, defense);
     camera.setZoom(this.baseZoom * this.relativeZoom);
     this.fitCameraBounds();
     const initialY = portrait && !this.overview ? camera.displayHeight / 2 - 40 : height / 2;
-    camera.centerOn(!center || changedOrientation ? portrait ? 280 : 560 : center.x,
-      !center || changedOrientation ? initialY : center.y);
+    camera.centerOn(!center || changedOrientation ? defense?.x ?? (portrait ? 280 : 560) : center.x,
+      !center || changedOrientation ? defense?.y ?? initialY : center.y);
     this.cameraFitted = true; this.hooks.changed();
   }
   private fitCameraBounds(): void {
     const camera = this.cameras.main, { width, height } = this.sim.layout.bounds;
-    const padX = Math.max(0, (camera.displayWidth - width) / 2);
+    const padX = Math.max(this.guidedDefenseFrame && this.portraitCamera ? 40 : 0, (camera.displayWidth - width) / 2);
     // One cell of headroom lets tall north-row towers clear the objective ribbon.
     const padY = Math.max(this.portraitCamera && !this.overview ? 40 : 0, (camera.displayHeight - height) / 2);
     camera.setBounds(-padX, -padY, width + padX * 2, height + padY * 2);
   }
   focusPad(padId: string): void {
+    if ((this.sim.preparing || this.sim.guiding) && (this.sim.isPreferredStarterLocation(padId)
+      || this.sim.isLearningFrostLocation(padId) || this.sim.towers.some(tower => tower.padId === padId && (tower.protected || tower.def.id === 2)))) {
+      this.focusGuidedDefense(padId); return;
+    }
     if (!this.portraitCamera && !this.sim.clearing.unlocked && this.sim.layout.version !== 5) return;
     const pad = this.sim.layout.towerPads.find(pad => pad.id === padId);
     if (pad) this.focusPoint(cellCenter(this.sim.layout, pad.cell));
@@ -271,9 +301,11 @@ export class BattleScene extends Phaser.Scene {
     this.focusObject('wisp');
   }
   focusObject(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'ilyra' | 'clearing'): void {
+    if (kind === 'tower' && (this.sim.preparing || this.sim.guiding)) { this.focusGuidedDefense(); return; }
     if (kind !== 'clearing' && (this.portraitCamera || this.sim.clearing.unlocked || this.sim.layout.version === 5)) this.focusPoint(this.objectPoint(kind));
   }
   private focusPoint(point: { x: number; y: number }): void {
+    if (this.guidedDefenseFrame) { this.guidedDefenseFrame = false; this.resizeCamera(); }
     if (this.overview) { this.overview = false; this.relativeZoom = 1; this.resizeCamera(); }
     this.cameras.main.centerOn(point.x, this.portraitCamera ? point.y - 20 : this.sim.layout.bounds.height / 2);
   }
@@ -299,7 +331,7 @@ export class BattleScene extends Phaser.Scene {
     if (target === 'upgrade') { const tower = this.sim.towers.find(t => t.protected); return tower && {x:tower.x,y:tower.y-25}; }
     if (target === 'research') return this.objectPoint('settlement');
     if (target === 'workshop' || target === 'warehouse') return cellCenter(this.sim.layout, this.sim.plots[target]);
-    const pad = this.sim.layout.towerPads.find(p => p.id === (target === 'starter' ? 'cell-6-6' : target === 'cannon' ? this.sim.recommendedCannonPad : this.sim.recommendedFrostPad));
+    const pad = this.sim.layout.towerPads.find(p => p.id === (target === 'starter' ? this.sim.recommendedStarterPad : target === 'cannon' ? this.sim.recommendedCannonPad : this.sim.recommendedFrostPad));
     return pad && cellCenter(this.sim.layout,pad.cell);
   }
   learningAnchor(target: NonNullable<BattleScene['learningTarget']>): {x:number;y:number} | undefined {
@@ -322,6 +354,7 @@ export class BattleScene extends Phaser.Scene {
   }
   setMapZoom(value: number, pointerX = this.scale.width / 2, pointerY = this.scale.height / 2): void {
     if (!this.readyToDraw || !Number.isFinite(value)) return;
+    if (this.guidedDefenseFrame) { this.guidedDefenseFrame = false; this.resizeCamera(); }
     if (this.overview) { this.overview = false; this.resizeCamera(); }
     const camera = this.cameras.main, old = camera.zoom;
     this.relativeZoom = Math.round(Phaser.Math.Clamp(value, 1, 1.15) * 100) / 100;
@@ -429,7 +462,7 @@ export class BattleScene extends Phaser.Scene {
       return;
     }
     if (this.buildKind) for (const pad of this.sim.layout.towerPads) {
-      if (!this.sim.isPadUnlocked(pad.id) || this.sim.preparing && !this.sim.isStarterLocation(pad.id) || this.sim.guiding && !this.sim.isLearningFrostLocation(pad.id) || this.sim.towers.some(t => t.padId === pad.id)) continue;
+      if (!this.sim.isPadUnlocked(pad.id) || this.sim.preparing && !this.sim.isPreferredStarterLocation(pad.id) || this.sim.guiding && !this.sim.isLearningFrostLocation(pad.id) || this.sim.towers.some(t => t.padId === pad.id)) continue;
       g.fillStyle(0xf1d696, 0.12).fillRect(pad.cell.x * size + 2, pad.cell.y * size + 2, size - 4, size - 4);
       g.lineStyle(1, 0xf1d696, 0.4).strokeRect(pad.cell.x * size + 2, pad.cell.y * size + 2, size - 4, size - 4);
     }

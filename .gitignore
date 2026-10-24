@@ -1,4 +1,5 @@
 node_modules/
+qa/tutorial-tower-positions/
 dist/
 Spire.html
 *.log

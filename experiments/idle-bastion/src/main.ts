@@ -649,9 +649,9 @@ function startPlacement(kind: TowerId): void {
   if (placementType === kind) { placementType = undefined; closeContext(); return; }
   ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
   // Only guided construction suggests a location. Ordinary purchases keep the player's view.
-  const preferred = session.battle.preparing ? 'cell-6-6' : session.battle.guiding && kind === 2 ? session.battle.recommendedFrostPad
+  const preferred = session.battle.preparing ? session.battle.recommendedStarterPad : session.battle.guiding && kind === 2 ? session.battle.recommendedFrostPad
     : discoveryStep(session.battle) === 'cannon' && kind === 3 ? session.battle.recommendedCannonPad : undefined;
-  const pads = session.battle.layout.towerPads.filter(pad => session!.battle.preparing ? session!.battle.isStarterLocation(pad.id) : session!.battle.guiding ? session!.battle.isLearningFrostLocation(pad.id) : session!.battle.isPadUnlocked(pad.id) && !session!.battle.towers.some(tower => tower.padId === pad.id));
+  const pads = session.battle.layout.towerPads.filter(pad => session!.battle.preparing ? session!.battle.isPreferredStarterLocation(pad.id) : session!.battle.guiding ? session!.battle.isLearningFrostLocation(pad.id) : session!.battle.isPadUnlocked(pad.id) && !session!.battle.towers.some(tower => tower.padId === pad.id));
   if (!pads.length) { placementType = undefined; selectedPadId = 'tower-03'; scene?.setSelected(selectedPadId); openContext('tower'); }
   else if (preferred) { selectedPadId = pads.find(pad => pad.id === preferred)?.id ?? pads[0].id; scene?.setSelected(selectedPadId); scene?.focusPad(selectedPadId); }
   syncUI();
@@ -659,9 +659,12 @@ function startPlacement(kind: TowerId): void {
 async function placeTower(padId: string, kind: TowerId = 1): Promise<boolean> {
   const live = session;
   if (!live || live.paused || !live.battle.preparing && live.battle.towers.some(tower => tower.padId === padId)) return false;
+  // Building Frost completes the lesson synchronously. Preserve the already
+  // framed entrance instead of treating that completion as a normal map focus.
+  const finishingFrostLesson = kind === 2 && live.battle.guiding && live.battle.introduction.stage === 'frost';
   await perform(battle => battle.build(padId, kind));
   const built = session === live && !live.error && live.battle.towers.some(tower => tower.padId === padId);
-  if (built) { scene?.focusObject('tower'); placementType = undefined; closeContext(); }
+  if (built) { if (!finishingFrostLesson) scene?.focusObject('tower'); placementType = undefined; closeContext(); }
   return built;
 }
 async function selectPad(padId?: string): Promise<void> {
@@ -731,7 +734,11 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
       selectWorkshop() { catalogPanel = 'settlement'; openContext('settlement'); },
       ready() {
         if (scene !== view || session !== live) return;
-        try { ready = true; drawDockArt(view); view.setSelected(selectedPadId); syncUI(); loadingScreen()?.complete(); }
+        try {
+          ready = true; drawDockArt(view); view.setSelected(selectedPadId); syncUI();
+          if (['ready', 'combat', 'upgrade', 'frost', 'observe'].includes(live.battle.introduction.stage)) view.focusGuidedDefense();
+          loadingScreen()?.complete();
+        }
         catch { ready = false; view.paused = true; showError(t('Das Spiel konnte nicht gestartet werden. Bitte versuche es erneut.')); }
       },
     }, pixelDensity);
@@ -786,8 +793,12 @@ element('onboarding-primary').addEventListener('click', () => {
   const b = session?.battle; if (!b) return;
   const stage = b.introduction.stage;
   if (stage === 'welcome') { void perform(b => b.beginIntroduction()); return; }
-  if (stage === 'ready') { void perform(b => b.startDefense()); return; }
-  if (b.lessonComplete) { void perform(b => b.continueLesson()); return; }
+  if (stage === 'ready') { void perform(b => b.startDefense()).then(() => scene?.focusGuidedDefense()); return; }
+  if (b.lessonComplete) {
+    void perform(b => b.continueLesson()).then(() => {
+      if (session && ['combat', 'workshop', 'frost', 'observe'].includes(session.battle.introduction.stage)) scene?.focusGuidedDefense();
+    }); return;
+  }
 
 }, { signal: lifetime.signal });
 element('dismiss-fallback').addEventListener('click', () => {
