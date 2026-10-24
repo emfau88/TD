@@ -1,0 +1,27 @@
+/* REVIEW ONLY. Imported exclusively by this local art-preview entry. */
+.goal-ribbon,.tutorial-card,.onboarding-card,.combat-toast,.quick-win-notice,#placement-help,#context-panel,#lesson-pointer,.wisp-arrival,#mobile-hint { display:none!important; }
+.world,.command-dock,.app-header,.map-controls { pointer-events:none; }
+#art-label { position:fixed; z-index:100; top:calc(var(--header) + 12px); left:14px; padding:7px 11px; color:#f6dfaa; background:#102028e8; border:1px solid #8d794e; font-size:11px; letter-spacing:.08em; }
+#art-panel { position:fixed; z-index:101; isolation:isolate; bottom:calc(var(--dock) + 14px); left:14px; display:flex; align-items:center; gap:12px; width:326px; min-height:104px; padding:12px 16px 12px 12px; background:#111c20; border:1px solid transparent; box-shadow:0 4px 16px #0006; }
+#art-panel::before { content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;border:12px solid transparent;border-image:var(--ui-panel) 14% fill /12px/0 stretch; }
+#spell-disc { position:relative; width:78px; height:78px; flex:0 0 78px; padding:0; border:0; background:none; border-radius:50%; }
+#spell-disc::before { display:none; }
+#spell-disc img { display:block; width:100%; height:100%; image-rendering:pixelated; }
+#spell-shade { position:absolute; inset:15%; border-radius:50%; background:conic-gradient(transparent 0deg var(--reveal),#07131ee0 var(--reveal) 360deg); }
+#spell-disc.ready { filter:drop-shadow(0 0 5px #f0d38f55); }
+#spell-number { position:absolute; inset:0; display:grid; place-items:center; font:600 28px var(--display); color:#fff4d6; text-shadow:0 2px 2px #000,2px 0 2px #000,-2px 0 2px #000,0 -2px 2px #000; }
+.art-copy { min-width:0; flex:1; }
+#art-name { font:500 22px var(--display); color:#f3deb0; line-height:1.1; }
+#art-status { font-size:12px; color:#c4dce7; line-height:1.45; margin:6px 0; }
+#art-auto { display:inline-block; color:#c6bd9e; border:1px solid #6f746a; padding:2px 6px; font-size:9px; letter-spacing:.09em; }
+#art-auto.on { color:#dbedbd; border-color:#719468; background:#263d2c; }
+#art-modes { position:fixed; right:12px; top:calc(var(--header) + 62px); z-index:101; width:168px; padding:8px; background:#13232be8; border:1px solid #75694d; }
+#art-modes select { width:100%; font:12px system-ui; background:#172d37; color:#f3deb0; min-height:34px; }
+.capture #art-modes { display:none; }
+@media(max-width:700px) {
+ #art-label { left:8px; top:calc(var(--header) + 10px); font-size:9px; padding:6px 8px; max-width:calc(100% - 72px); }
+ #art-panel { bottom:calc(var(--dock) + 12px); left:8px; width:calc(100% - 80px); gap:8px; padding:9px 11px 9px 8px; min-height:96px; }
+ #spell-disc { width:70px; height:70px; flex-basis:70px; }
+ #art-name { font-size:20px; } #art-status { font-size:11px; margin:5px 0; }
+ #spell-number { font-size:26px; }
+}

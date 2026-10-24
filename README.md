@@ -13,6 +13,31 @@ neuen Partie als Lesezeichen speichern. Der normale Playlink öffnet weiterhin d
 Hauptspielstand. Spielstände liegen lokal in diesem Browser; das Löschen der
 Website-Daten löscht auch diese Stände.
 
+## Neue Grafikprobe · Bilder & animierte Clips
+
+**[▶ Handy-Galerie öffnen: alle Bilder und Videos](https://emfau88.github.io/TD/previews/frost-hero/art-review/)**
+
+**Nur Entwurf, noch nicht ins Spiel eingebaut.** Acht neue Imagegen-Grafiken in einer
+separaten Ingame-Vorschau: runde Zauberbuttons, radialer Cooldown, Figuren-/Wegmarkierungen,
+Maras Lichtimpuls mit Turmeffekt sowie animierte Sternprojektile und Einschläge.
+
+- [Radialer Cooldown · 16-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/#cooldown)
+- [Mara: Zauber und Turmverstärkung · 10-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/#mara)
+- [Sternensalve: Flug und Einschlag · 10-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/#ilyra)
+
+<a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-cooldown.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-cooldown.png" width="180" alt="Runder Zauberbutton mit radialem Cooldown"></a>
+<a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-ready.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-ready.png" width="180" alt="Sternensalve bereit"></a>
+<a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-mara-path.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-mara-path.png" width="180" alt="Maras Bodensiegel und Wegmarkierungen"></a>
+
+![Maras Lichtimpuls in der Ingame-Gestaltungsprobe](artifacts/idle-bastion/previews/ability-art/screenshots/desktop-mara-cast.png)
+![Sternensalve im Flug in der Ingame-Gestaltungsprobe](artifacts/idle-bastion/previews/ability-art/screenshots/desktop-ilyra-flight.png)
+
+[Alle sieben Screenshots](artifacts/idle-bastion/previews/ability-art/screenshots) ·
+[Grafiken und Prompts](artifacts/idle-bastion/previews/ability-art/PROMPTS.md) ·
+[Umfang und Prüfung](artifacts/idle-bastion/previews/ability-art/REVIEW.md).
+Die Clips zeigen wiederholte Effektproben in einer für den Vergleich angehaltenen Szene;
+sie verändern keine Abklingzeiten oder Kampfwerte im Spiel.
+
 ## Frost & Figuren direkt testen · dieser Branch
 
 **[▶ Testauswahl öffnen](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html)**

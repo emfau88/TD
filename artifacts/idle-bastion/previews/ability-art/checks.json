@@ -1,0 +1,45 @@
+[
+  {
+    "size": "mobile",
+    "mode": "ilyra-cooldown",
+    "overflow": false
+  },
+  {
+    "size": "mobile",
+    "mode": "ilyra-ready",
+    "overflow": false
+  },
+  {
+    "size": "mobile",
+    "mode": "mara-path",
+    "overflow": false
+  },
+  {
+    "size": "mobile",
+    "errors": []
+  },
+  {
+    "size": "desktop",
+    "mode": "mara-cast",
+    "overflow": false
+  },
+  {
+    "size": "desktop",
+    "mode": "mara-buff",
+    "overflow": false
+  },
+  {
+    "size": "desktop",
+    "mode": "ilyra-flight",
+    "overflow": false
+  },
+  {
+    "size": "desktop",
+    "mode": "ilyra-impact",
+    "overflow": false
+  },
+  {
+    "size": "desktop",
+    "errors": []
+  }
+]

@@ -1,5 +1,10 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Zauber-/Markierungsgrafik · 25.10.2026, ausschließlich Gestaltungsprobe zur Nutzerabnahme.**
+
+- [x] Nutzer beauftragt Imagegen-Grafiken, Ingame-Screenshots und animierte Projektile/Einschläge als Vorschau. Acht transparente Originale, sieben Screenshots und drei Clips erstellt; getrennte lokale Darstellung, keine finale Integration. [Grafikprobe und Grenzen](../../artifacts/idle-bastion/previews/ability-art/REVIEW.md).
+- [ ] Bilder/Clips auf dem bestehenden Branch und als mobile Galerie veröffentlichen und die öffentlichen Links prüfen. Umsetzung ins Spiel erst nach gesonderter Freigabe; der vorher begonnene lokale rechteckige Button-Entwurf bleibt unveröffentlicht.
+
 **Frost-Quick-Win + A2 Figurensteuerung · 25.10.2026, freigegeben für separaten Arbeitsbranch `codex/frost-kit-hero-controls`; kein Merge nach main.**
 
 - [x] Paket 1: einmaliger kostenloser Tutorial-Frost, gespeicherter Verbrauch und korrekte Verkaufserstattung; Schema 29 bleibt kompatibel, Forschung 60 und weitere Frosttürme 110 Gold.
