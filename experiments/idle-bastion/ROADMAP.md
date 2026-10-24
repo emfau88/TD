@@ -1,5 +1,13 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**A1 · Tavernen-Polish und Stabilität — 24.10.2026, isolierter Branch `codex/tavern-a1-polish` ab aktuellem main `908a41b`.**
+
+- [x] Begrenzter, priorisierter Atlas-Cache mit Decode vor Wiedergabe, gezieltem Vorladen häufiger Reaktionen und größerem Start-/Laufpuffer. Zwei parallele Downloads, höchstens 14 gehaltene/angefragte Bildseiten. Seltene Gesten bleiben bedarfsgesteuert; Originale und alle 15 bestehenden Animationen erhalten.
+- [x] Höchstens zwei Versuche je Atlas mit Zeitgrenze; gescheiterte Einträge freigeben, kontrolliert auf Idle oder richtiges Porträt zurückfallen. Neue explizite Aktion darf erneut laden. Ladeversuche lösen keine Spieltransaktion aus. Canvas, alte Bildkennungen und Downloads bei Figurenwechsel synchron zurücksetzen; passendes Ladeporträt vor Playerstart einsetzen.
+- [x] Antworten deutlicher, mobil 15 statt 13 px, dezente kurze Hervorhebung und Rücksetzen ausschließlich des Textscrollbereichs. Figurenmaße und Bedienwege erhalten; Englisch/Deutsch berücksichtigt.
+- [x] Build, Loader-/Tavernen-/Save-/Sprachregression und regulärer Spielablauf mit getrenntem Probe-Save geprüft. Gesamtsuite: 296/313 erfolgreich, genau dieselben 17 bestehenden Fehler wie main (291/308), keine neuen Fehler/Skips. Desktop 1280×800 und Smartphone-Hochkant 390×844 im Chrome, beide Figuren, Wiederholung, schnelle Wechsel und simulierte Erst-/Folgeatlasfehler geprüft. Native Smartphone-Hardware und subjektive Nutzer-Sichtfreigabe bleiben offen.
+- [ ] Nutzer-Sichtfreigabe und gesonderte Übernahme nach main. Dieser Auftrag autorisiert ausschließlich Commit/Push auf den Arbeitsbranch. [Vorher-/Nachher-Bericht, Messdaten und Screenshots](../../artifacts/idle-bastion/acceptance/tavern-a1/REPORT.md).
+
 **Neue Tavernenfiguren im Hauptspiel — 24.10.2026, integriert und geprüft.**
 
 - Auf ausdrückliche Merge-Freigabe alle 15 brauchbaren Mara-/Ilyra-Animationen im normalen Spieleinstieg aktiviert. Hauptstand `5823a99` samt Gegner-/Wellenarbeit und Englisch/Deutsch erhalten; neue Gesten ebenfalls übersetzt. Alte Tavernenbilder/Renderer bleiben vorhanden und sind im Hauptspiel deaktiviert. Keine Änderungen an Kampf, Zuneigung, Freischaltungen oder Saveformat gegenüber diesem Hauptstand.

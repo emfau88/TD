@@ -1,0 +1,602 @@
+[
+  {
+    "hero": "mara",
+    "mobile": false,
+    "cache": "cold",
+    "idleMs": 1451,
+    "initialTransferBytes": 561968,
+    "prefetchTransferBytes": 980676,
+    "actions": [
+      {
+        "action": "talk",
+        "waitMs": 1101,
+        "playMs": 2002,
+        "maxGapMs": 42,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "touch",
+        "waitMs": 23,
+        "playMs": 2802,
+        "maxGapMs": 48,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "gift",
+        "waitMs": 18,
+        "playMs": 4199,
+        "maxGapMs": 45,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "giggle",
+        "waitMs": 1198,
+        "playMs": 5403,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "hip",
+        "waitMs": 1255,
+        "playMs": 5002,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      }
+    ],
+    "repeatWaitMs": 13,
+    "transferBytes": 15328992,
+    "payloadBytes": 15304392,
+    "imageRequests": 83,
+    "errors": []
+  },
+  {
+    "hero": "mara",
+    "mobile": false,
+    "cache": "warm",
+    "idleMs": 326,
+    "initialTransferBytes": 0,
+    "prefetchTransferBytes": 207796,
+    "actions": [
+      {
+        "action": "talk",
+        "waitMs": 283,
+        "playMs": 2002,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "touch",
+        "waitMs": 24,
+        "playMs": 2802,
+        "maxGapMs": 39,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "gift",
+        "waitMs": 21,
+        "playMs": 4199,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "giggle",
+        "waitMs": 186,
+        "playMs": 5402,
+        "maxGapMs": 40,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "hip",
+        "waitMs": 261,
+        "playMs": 5002,
+        "maxGapMs": 37,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      }
+    ],
+    "repeatWaitMs": 70,
+    "transferBytes": 208096,
+    "payloadBytes": 19933526,
+    "imageRequests": 104,
+    "errors": []
+  },
+  {
+    "hero": "ilyra",
+    "mobile": false,
+    "cache": "cold",
+    "idleMs": 1475,
+    "initialTransferBytes": 593378,
+    "prefetchTransferBytes": 994902,
+    "actions": [
+      {
+        "action": "talk",
+        "waitMs": 1050,
+        "playMs": 2802,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "touch",
+        "waitMs": 105,
+        "playMs": 3202,
+        "maxGapMs": 39,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "gift",
+        "waitMs": 50,
+        "playMs": 3202,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "giggle",
+        "waitMs": 1221,
+        "playMs": 4002,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "hip",
+        "waitMs": 1337,
+        "playMs": 6002,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      }
+    ],
+    "repeatWaitMs": 47,
+    "transferBytes": 17240772,
+    "payloadBytes": 18533562,
+    "imageRequests": 87,
+    "errors": []
+  },
+  {
+    "hero": "ilyra",
+    "mobile": false,
+    "cache": "warm",
+    "idleMs": 311,
+    "initialTransferBytes": 0,
+    "prefetchTransferBytes": 218648,
+    "actions": [
+      {
+        "action": "talk",
+        "waitMs": 282,
+        "playMs": 2803,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "touch",
+        "waitMs": 57,
+        "playMs": 3202,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "gift",
+        "waitMs": 55,
+        "playMs": 3202,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "giggle",
+        "waitMs": 342,
+        "playMs": 4002,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      },
+      {
+        "action": "hip",
+        "waitMs": 323,
+        "playMs": 6002,
+        "maxGapMs": 40,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "17px"
+        }
+      }
+    ],
+    "repeatWaitMs": 132,
+    "transferBytes": 218948,
+    "payloadBytes": 23105512,
+    "imageRequests": 107,
+    "errors": []
+  },
+  {
+    "hero": "mara",
+    "mobile": true,
+    "cache": "cold",
+    "idleMs": 1455,
+    "initialTransferBytes": 561968,
+    "prefetchTransferBytes": 980676,
+    "actions": [
+      {
+        "action": "talk",
+        "waitMs": 1079,
+        "playMs": 2002,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "touch",
+        "waitMs": 28,
+        "playMs": 2802,
+        "maxGapMs": 38,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "gift",
+        "waitMs": 20,
+        "playMs": 4199,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "giggle",
+        "waitMs": 1209,
+        "playMs": 5402,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "hip",
+        "waitMs": 1255,
+        "playMs": 5002,
+        "maxGapMs": 37,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      }
+    ],
+    "repeatWaitMs": 19,
+    "transferBytes": 15328992,
+    "payloadBytes": 16018534,
+    "imageRequests": 87,
+    "errors": []
+  },
+  {
+    "hero": "mara",
+    "mobile": true,
+    "cache": "warm",
+    "idleMs": 327,
+    "initialTransferBytes": 0,
+    "prefetchTransferBytes": 207796,
+    "actions": [
+      {
+        "action": "talk",
+        "waitMs": 284,
+        "playMs": 2002,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "touch",
+        "waitMs": 17,
+        "playMs": 2802,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "gift",
+        "waitMs": 21,
+        "playMs": 4198,
+        "maxGapMs": 37,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "giggle",
+        "waitMs": 210,
+        "playMs": 5402,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "hip",
+        "waitMs": 259,
+        "playMs": 5002,
+        "maxGapMs": 44,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      }
+    ],
+    "repeatWaitMs": 71,
+    "transferBytes": 208096,
+    "payloadBytes": 20570358,
+    "imageRequests": 107,
+    "errors": []
+  },
+  {
+    "hero": "ilyra",
+    "mobile": true,
+    "cache": "cold",
+    "idleMs": 1480,
+    "initialTransferBytes": 593378,
+    "prefetchTransferBytes": 994902,
+    "actions": [
+      {
+        "action": "talk",
+        "waitMs": 1053,
+        "playMs": 2801,
+        "maxGapMs": 39,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "touch",
+        "waitMs": 63,
+        "playMs": 3202,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "gift",
+        "waitMs": 52,
+        "playMs": 3202,
+        "maxGapMs": 37,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "giggle",
+        "waitMs": 1218,
+        "playMs": 4002,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "hip",
+        "waitMs": 1351,
+        "playMs": 6002,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      }
+    ],
+    "repeatWaitMs": 13,
+    "transferBytes": 17240772,
+    "payloadBytes": 18766756,
+    "imageRequests": 88,
+    "errors": []
+  },
+  {
+    "hero": "ilyra",
+    "mobile": true,
+    "cache": "warm",
+    "idleMs": 328,
+    "initialTransferBytes": 0,
+    "prefetchTransferBytes": 218648,
+    "actions": [
+      {
+        "action": "talk",
+        "waitMs": 279,
+        "playMs": 2802,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "touch",
+        "waitMs": 51,
+        "playMs": 3202,
+        "maxGapMs": 37,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "gift",
+        "waitMs": 51,
+        "playMs": 3202,
+        "maxGapMs": 36,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "giggle",
+        "waitMs": 343,
+        "playMs": 4002,
+        "maxGapMs": 40,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      },
+      {
+        "action": "hip",
+        "waitMs": 332,
+        "playMs": 6002,
+        "maxGapMs": 40,
+        "stallsOver100ms": 0,
+        "reply": {
+          "visible": true,
+          "scroll": 0,
+          "font": "15px"
+        }
+      }
+    ],
+    "repeatWaitMs": 136,
+    "transferBytes": 218948,
+    "payloadBytes": 23531416,
+    "imageRequests": 109,
+    "errors": []
+  }
+]

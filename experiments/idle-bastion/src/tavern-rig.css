@@ -25,6 +25,11 @@
 #tavern-dialog[data-artwork="rigged"] .tv-hotspot em { top:61px; }
 #tavern-dialog[data-artwork="rigged"] .tv-guest canvas { image-rendering:auto; }
 #tavern-dialog[data-artwork="rigged"] .tv-loading-portrait { image-rendering:auto; }
+#tavern-dialog[data-artwork="rigged"] .tv-dialogue { padding:12px 14px; border-left:2px solid #c3a170; border-radius:0 4px 4px 0; background:linear-gradient(110deg,#bfa16a13,transparent); }
+#tavern-dialog[data-artwork="rigged"] .tv-dialogue p { font-size:17px; line-height:1.6; color:#fff0db; }
+#tavern-dialog[data-artwork="rigged"] .tv-dialogue[data-reply="true"] { animation:tv-reply 1.6s ease-out; }
+@keyframes tv-reply { 0% { box-shadow:inset 0 0 0 1px #e9c99066; background-color:#b89b6330; } 100% { box-shadow:inset 0 0 0 1px transparent; background-color:transparent; } }
+@media(prefers-reduced-motion:reduce) { #tavern-dialog[data-artwork="rigged"] .tv-dialogue[data-reply="true"] { animation:none; outline:1px solid #c3a17077; } }
 #tavern-dialog .tv-gestures { display:flex; flex-wrap:wrap; gap:7px; margin:10px 0 0; }
 #tavern-dialog .tv-gestures button { flex:1; font-size:12px; padding:8px; background:#26332f; }
 @media(max-width:700px) {
@@ -34,6 +39,8 @@
   #tavern-dialog[data-artwork="rigged"] .tv-character-body { display:grid; grid-template-columns:minmax(0,1fr); grid-template-rows:minmax(0,1fr) clamp(180px,26dvh,240px); }
   #tavern-dialog[data-artwork="rigged"] .tv-stage { min-height:0; }
   #tavern-dialog[data-artwork="rigged"] .tv-conversation { max-height:none; }
+  #tavern-dialog[data-artwork="rigged"] .tv-dialogue { padding:8px 10px; }
+  #tavern-dialog[data-artwork="rigged"] .tv-dialogue p { font-size:15px; line-height:1.5; }
   #tavern-dialog[data-artwork="rigged"] .tv-stage::after { height:10px; }
   #tavern-dialog .tv-gestures { gap:6px; margin-top:6px; }
   #tavern-dialog .tv-gestures button { min-height:40px; padding:5px; font-size:11px; }

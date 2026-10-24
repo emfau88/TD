@@ -1,0 +1,94 @@
+[
+  {
+    "hero": "mara",
+    "mobile": false,
+    "headAttempts": 5,
+    "giftAttempts": 2,
+    "failed": {
+      "points": 43,
+      "stock": "Gifts: 20 · Recipient: Mara",
+      "reacting": "false",
+      "cache": 12
+    },
+    "giftAfter": {
+      "points": 63,
+      "stock": "Gifts: 19 · Recipient: Mara",
+      "reacting": "false",
+      "cache": 14
+    },
+    "switches": 6,
+    "wrongDraws": 0,
+    "portraitFallback": true,
+    "cacheLimit": 14,
+    "errors": []
+  },
+  {
+    "hero": "ilyra",
+    "mobile": false,
+    "headAttempts": 5,
+    "giftAttempts": 2,
+    "failed": {
+      "points": 43,
+      "stock": "Gifts: 20 · Recipient: Ilyra",
+      "reacting": "false",
+      "cache": 12
+    },
+    "giftAfter": {
+      "points": 63,
+      "stock": "Gifts: 19 · Recipient: Ilyra",
+      "reacting": "false",
+      "cache": 14
+    },
+    "switches": 6,
+    "wrongDraws": 0,
+    "portraitFallback": true,
+    "cacheLimit": 14,
+    "errors": []
+  },
+  {
+    "hero": "mara",
+    "mobile": true,
+    "headAttempts": 5,
+    "giftAttempts": 2,
+    "failed": {
+      "points": 43,
+      "stock": "Gifts: 20 · Recipient: Mara",
+      "reacting": "false",
+      "cache": 12
+    },
+    "giftAfter": {
+      "points": 63,
+      "stock": "Gifts: 19 · Recipient: Mara",
+      "reacting": "false",
+      "cache": 14
+    },
+    "switches": 6,
+    "wrongDraws": 0,
+    "portraitFallback": true,
+    "cacheLimit": 14,
+    "errors": []
+  },
+  {
+    "hero": "ilyra",
+    "mobile": true,
+    "headAttempts": 5,
+    "giftAttempts": 2,
+    "failed": {
+      "points": 43,
+      "stock": "Gifts: 20 · Recipient: Ilyra",
+      "reacting": "false",
+      "cache": 12
+    },
+    "giftAfter": {
+      "points": 63,
+      "stock": "Gifts: 19 · Recipient: Ilyra",
+      "reacting": "false",
+      "cache": 14
+    },
+    "switches": 6,
+    "wrongDraws": 0,
+    "portraitFallback": true,
+    "cacheLimit": 14,
+    "errors": []
+  }
+]
