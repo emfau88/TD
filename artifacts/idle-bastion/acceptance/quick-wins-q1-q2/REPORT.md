@@ -26,6 +26,8 @@ Kampfregeln, Wirtschaft, Preise, Freischaltungen, Charaktersteuerung und Animati
 
 Reproduktion: `PLAYWRIGHT_MODULE` auf eine vorhandene Playwright-Installation setzen, `BASE_URL=http://127.0.0.1:5242`, dann `node experiments/idle-bastion/scripts/check-quick-wins.mjs`. Vorbereitete getrennte Teststände: `/tests/browser/quick-wins-session.html`, nur im Entwicklungsserver und nicht in den Produktionsinputs. Rohprotokolle/temporäre Produktionsproben liegen unter ignoriertem `qa/quick-wins-q1-q2/`.
 
+**Freigegebene gemeinsame Übernahme:** A1 einschließlich des späteren Roadmap-Vermerks aus `1eb6a93` mit Q1/Q2 aus `e0d2578` zusammengeführt. Nur die Roadmap und die beiden QA-Ausschlüsse mussten unter Erhalt beider Inhalte aufgelöst werden; kein Codekonflikt. Kombinierter Produktions-/Pages-Build erfolgreich, Gesamtsuite **306/323** mit exakt denselben 17 Altfehlern, erneut **36/36 Browserprüfungen** erfolgreich. [Kombinierte Browserbelege](combined-browser-checks.json). Damit bleiben auch A1 und die spätere Hand-/Schulter-Nachbesserung erhalten. Q3 verändert weiterhin weder den regulären Positionscode noch die Tutorial-Kamera.
+
 ## Geänderte Dateien
 
 | Bereich | Dateien |

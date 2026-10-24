@@ -32,5 +32,14 @@
     "blocked targets stay understandable and harmless, and a changed blocked route reroutes around real obstacles",
     "Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads",
     "all eleven unlocked slots can hold towers and round-trip without moving the original eight"
-  ]
+  ],
+  "combinedWithA1": {
+    "tests": 323,
+    "failed": 17,
+    "sameFailureNames": true,
+    "build": "PASS",
+    "skipped": 0,
+    "browserChecks": 36,
+    "passed": 306
+  }
 }
