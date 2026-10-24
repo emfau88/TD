@@ -16,6 +16,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -34,5 +35,56 @@ jobs:
         with:
           path: dist
       - name: Publish GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  feature-preview:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/codex/frost-kit-hero-controls'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}previews/frost-hero/feature-check.html
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Build isolated feature preview
+        run: npm run build
+        env:
+          VITE_FEATURE_PREVIEW: '1'
+      - name: Preserve main artifact and add preview subdirectory
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          main_sha="$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq .sha)"
+          run_json="$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/idle-bastion-pages.yml/runs?branch=main&status=success&per_page=1")"
+          run_id="$(jq -r '.workflow_runs[0].id' <<< "$run_json")"
+          artifact_sha="$(jq -r '.workflow_runs[0].head_sha' <<< "$run_json")"
+          test "$main_sha" = "$artifact_sha" || { echo 'Main has no matching successful Pages build yet.'; exit 1; }
+          gh run download "$run_id" --repo "$GITHUB_REPOSITORY" --name github-pages --dir "$RUNNER_TEMP/main-pages"
+          mkdir "$RUNNER_TEMP/preview-site"
+          tar -xf "$RUNNER_TEMP/main-pages/artifact.tar" -C "$RUNNER_TEMP/preview-site"
+          node scripts/package-feature-preview.mjs "$RUNNER_TEMP/preview-site" dist "$GITHUB_SHA" "$main_sha"
+          echo "PREVIEW_MAIN_SHA=$main_sha" >> "$GITHUB_ENV"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/preview-site
+      - name: Ensure main did not advance while packaging
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: test "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq .sha)" = "$PREVIEW_MAIN_SHA"
+      - name: Publish preserved main and feature preview
         id: deployment
         uses: actions/deploy-pages@v4

@@ -48,3 +48,34 @@ Nach bewusstem Zielklick zeigt die Leiste den Laufstatus. „Sternensalve zielen
 Alle Browserläufe verwenden getrennte Probe-Slots. Nutzer-Spielstände wurden nicht verändert. A2 verändert keine Geschwindigkeiten, Reichweiten, Schadenswerte, Abklingzeiten, Freischaltungen oder Q4-Inhalte; vorhandene Bewegungs-/Zaubermodelle bleiben erhalten. Es benötigt keine zusätzlichen Savefelder gegenüber Frost-Schema 30.
 
 **Grenzen:** Touch wurde in Chrome emuliert, nicht auf einem physischen Smartphone geprüft. Technische und visuelle Eigenprüfung ersetzen keine Nutzerfreigabe. Die 17 vorhandenen Altfehler bleiben offen und sind kein Bestandteil dieser beiden Pakete.
+
+## Ergänzung: direkte Testeinstiege in der README
+
+`feature-check.html` stellt drei Szenarien bereit. Frost wird über das reale Tutorial
+bis zum kostenlosen Bau vorbereitet (25 Gold, Forschung bezahlt). Die beiden
+Figurenproben verwenden den aufgezeichneten verdienten Welle-40-Stand aus W02:
+Taverne bauen, 1.200 Gold für Stufe II bezahlen, Ilyra rekrutieren (620 Gold Rest).
+Die Steuerungsprobe führt außerdem ihre tatsächliche Bewegung und erste Salve aus;
+beim bereitgestellten Kampfmoment sind 1.007 Gold vorhanden. Keine Kampfwerte werden
+für die Probe verändert.
+
+- **Prüfung:** fünf neue Modell-/Speichertests bestanden; zusammen mit Figurensteuerung
+  und Sprache **13/13** gezielte Prüfungen erfolgreich. Produktionsbuild erfolgreich.
+  Alle drei Einstiege im gebündelten Build unter `/TD/previews/frost-hero/` geprüft:
+  Chrome 1280×800/Deutsch und 390×844/Touch/Englisch, ohne JavaScript-/Ressourcenfehler
+  oder horizontalen Überlauf. Testauswahl und Spielansichten visuell geprüft.
+- **Speicher:** jeder Start erhält einen neuen UUID-Probe-Slot; gespeicherte Testadresse
+  kann fortgesetzt werden. Ein Hauptspielstand-Sentinel blieb bei allen Einstiegen
+  und beim Aufruf ohne Testparameter unverändert. Fehlender Website-Speicher führt
+  zu einer verständlichen Meldung und erneut bedienbaren Startbuttons, ohne Rückfall
+  auf das Hauptspiel. `VITE_FEATURE_PREVIEW=1` isoliert auch den Standardspeicher der
+  Vorschau; reguläre Builds behalten ihren bestehenden Speicher.
+- **Veröffentlichung vorbereitet:** der manuelle Branch-Workflow ergänzt nur
+  `previews/frost-hero/` im letzten erfolgreichen Main-Pages-Artefakt. Aktueller Main-SHA
+  muss zum Artefakt passen und wird vor Veröffentlichung erneut geprüft.
+  Lokal mit dem echten Artefakt aus Lauf `40138921675` geprüft: alle **401 bestehenden
+  Dateien bytegenau erhalten**. Keine Main-Übernahme; ein späteres Main-Deployment
+  kann die temporäre Vorschau entfernen.
+- **Noch offen:** `github-pages` erlaubt diesen Branch noch nicht. README kennzeichnet
+  den Link deshalb bis zur genehmigten Freigabe und erfolgreichen Veröffentlichung
+  ausdrücklich als ausstehend.

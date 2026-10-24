@@ -74,7 +74,8 @@ if (entryURL.searchParams.has('fresh')) {
 }
 const probeSlot = entryURL.searchParams.get('probe');
 // Explicit fresh probes keep the user's main game and its offline clock intact.
-const databaseName = probeSlot && /^[a-z0-9-]{1,60}$/.test(probeSlot) ? `spire-idle-bastion-probe-${probeSlot}` : 'spire-idle-bastion';
+const defaultDatabaseName = import.meta.env.VITE_FEATURE_PREVIEW === '1' ? 'spire-idle-bastion-preview-frost-heroes' : 'spire-idle-bastion';
+const databaseName = probeSlot && /^[a-z0-9-]{1,60}$/.test(probeSlot) ? `spire-idle-bastion-probe-${probeSlot}` : defaultDatabaseName;
 let session: BattleSession | undefined;
 let intro: MaraIntro | undefined;
 let introPortraits: string[] = [];

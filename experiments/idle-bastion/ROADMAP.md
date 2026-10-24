@@ -7,6 +7,8 @@
 - [x] Paket 2: direkte Figurenwahl, wiederholbare Bodenbefehle, Objekt-/Moduspriorität, Desktop-Rechtsklick und mobile Drag-Abgrenzung; ×/Esc, gleichmäßige Pausenbedienung und Schutz vor verspäteten Befehlen.
 - [x] Paket 2: Ilyras erste Bewegung mit erreichbarer Empfehlung am tatsächlichen Gegnerweg, Ankunft abwarten und ausdrückliches Zielen ohne Menüumweg; Reload und fehlende Ziele bleiben verständlich.
 - [x] Paket 2: Desktop-/Hochkantprüfung, Reload unterwegs, erste bewusste Salve, Eingabekonflikte und verzögerte Befehle bestanden; 51/51 gezielte Tests, Gesamtsuite 334/351 mit denselben 17 Altfehlern, Q4-/Tutorialregression und Produktionsbuild erfolgreich. [Bericht und Aufnahmen](../../artifacts/idle-bastion/acceptance/hero-controls/REPORT.md). Separates A2-Paket auf dem freigegebenen Arbeitsbranch; keine Main-Übernahme.
+- [x] Zusatzauftrag: README-Teststarter mit drei direkten Szenarien (Frost, beide Figuren, Ilyra-Einführung), jeweils neuem Probe-Slot. Produktionsbuild, fünf Modell-/Speichertests und sechs Desktop-/Touch-Einstiege bestanden; fehlender Speicher bleibt auf der Testauswahl. Auch die nackte Vorschauadresse verwendet einen separaten Standardspeicher. Vorschau-Paket erhält alle 401 Dateien des erfolgreichen Main-Artefakts bytegenau.
+- [ ] Öffentlichen README-Testlink aktivieren: manueller Pages-Workflow auf genau diesem Branch vorbereitet; bestehende `github-pages`-Umgebung erlaubt bisher nur `main` und den alten Entwicklungsbranch. Gezielte Branch-Freigabe zur Veröffentlichung noch ausstehend. Main-Merge bleibt ausgeschlossen.
 
 **Q4 · Hochwertige Einführung mit Mara — 25.10.2026, umgesetzt, nach Freigabe auf main und veröffentlicht.**
 

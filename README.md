@@ -13,6 +13,31 @@ neuen Partie als Lesezeichen speichern. Der normale Playlink öffnet weiterhin d
 Hauptspielstand. Spielstände liegen lokal in diesem Browser; das Löschen der
 Website-Daten löscht auch diese Stände.
 
+## Frost & Figuren direkt testen · dieser Branch
+
+**[▶ Testauswahl öffnen](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html)**
+
+Die Vorschau ist vorbereitet; die Veröffentlichung steht noch aus.
+
+| Direktstart | Vorbereiteter Einstieg |
+| --- | --- |
+| [Kostenloser Frost](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html?scenario=frost) | Forschung bezahlt, 25 Gold, erster kostenloser Frostbausatz. Den Tutorialhinweisen folgen. |
+| [Figurensteuerung](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html?scenario=heroes) | Mara und Ilyra bereit: Figur antippen, freien Boden wählen, unterwegs ein neues Ziel setzen. |
+| [Ilyras Einführung](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html?scenario=ilyra) | Frisch rekrutierte Ilyra: Standortempfehlung, Ankunft und erste selbst gezielte Sternensalve. |
+
+Jeder Start erzeugt einen **eigenen neuen Testspielstand**. Deine normale Partie bleibt
+erhalten. Falls eine Rückkehrkarte erscheint, **Fortsetzen** wählen. Die Porträts unten
+helfen beim Finden der Figuren; zweiter Figurentipp öffnet das Menü. Rechtsklick bewegt
+die gewählte Figur, Esc beendet ihre Auswahl; auf Mobilgeräten verschiebt Ziehen die Karte.
+Die Testauswahl bietet Deutsch/Englisch.
+
+Die Figurentests verwenden eine aufgezeichnete Verteidigung nach Welle 40 und bezahlen
+Taverne II regulär. Es sind Bedienproben, keine Balance-Messungen. Zum Zurücksetzen erneut
+einen Direktstart öffnen; zum Fortsetzen die erzeugte Spieladresse mit `?probe=…` speichern.
+Die Vorschau gehört ausschließlich zu `codex/frost-kit-hero-controls`; sie übernimmt
+keine Änderungen nach `main`. Ein späteres Main-Deployment kann diese temporäre Vorschau
+wieder entfernen.
+
 ## Aktueller Spielumfang
 
 - **Englisch als Standard**, Deutsch im vorhandenen Spielmenü unter **Language / Sprache**.
