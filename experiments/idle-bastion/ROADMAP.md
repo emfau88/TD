@@ -4,9 +4,9 @@
 
 - [x] Paket 1: einmaliger kostenloser Tutorial-Frost, gespeicherter Verbrauch und korrekte Verkaufserstattung; Schema 29 bleibt kompatibel, Forschung 60 und weitere Frosttürme 110 Gold.
 - [x] Paket 1: 44/44 gezielte Prüfungen, Gesamtsuite 331/348 mit denselben 17 Altfehlern, Produktionsbuild und echte Desktop-/Hochkantabläufe bestanden. [Nachweise](../../artifacts/idle-bastion/acceptance/frost-kit/REPORT.md). Separater Frost-Commit vor Beginn von A2.
-- [ ] Paket 2: direkte Figurenwahl, wiederholbare Bodenbefehle, Objekt-/Moduspriorität, Desktop-Rechtsklick und mobile Drag-Abgrenzung.
-- [ ] Paket 2: Ilyras erste Bewegung mit sinnvoller Empfehlung, Ankunft abwarten und ausdrückliches Zielen ohne Menüumweg.
-- [ ] Paket 2: Desktop-/Hochkantprüfung, Reloads, gezielte Regression, Produktionsbuild und separater Commit; Branch pushen.
+- [x] Paket 2: direkte Figurenwahl, wiederholbare Bodenbefehle, Objekt-/Moduspriorität, Desktop-Rechtsklick und mobile Drag-Abgrenzung; ×/Esc, gleichmäßige Pausenbedienung und Schutz vor verspäteten Befehlen.
+- [x] Paket 2: Ilyras erste Bewegung mit erreichbarer Empfehlung am tatsächlichen Gegnerweg, Ankunft abwarten und ausdrückliches Zielen ohne Menüumweg; Reload und fehlende Ziele bleiben verständlich.
+- [x] Paket 2: Desktop-/Hochkantprüfung, Reload unterwegs, erste bewusste Salve, Eingabekonflikte und verzögerte Befehle bestanden; 51/51 gezielte Tests, Gesamtsuite 334/351 mit denselben 17 Altfehlern, Q4-/Tutorialregression und Produktionsbuild erfolgreich. [Bericht und Aufnahmen](../../artifacts/idle-bastion/acceptance/hero-controls/REPORT.md). Separates A2-Paket auf dem freigegebenen Arbeitsbranch; keine Main-Übernahme.
 
 **Q4 · Hochwertige Einführung mit Mara — 25.10.2026, umgesetzt, nach Freigabe auf main und veröffentlicht.**
 

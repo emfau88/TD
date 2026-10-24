@@ -1,5 +1,6 @@
 import { t } from './i18n';
 import { ILYRA } from './ilyra';
+import type { ControlledHero } from './hero-controls';
 import { IlyraView } from './ilyra-view';
 import { ENEMY_SHEETS } from './enemy-art';
 import { JELLY_HEAL } from './enemy-roster';
@@ -39,6 +40,8 @@ export interface BattleSceneHooks {
   readonly selectClearing?: () => void;
   readonly ground?: (cell: GridCell) => void;
   readonly ilyraGround?: (point: {x:number;y:number}) => void;
+  readonly heroGround?: (cell: GridCell) => void;
+  readonly canControlHero?: () => boolean;
 }
 const colors = { gold: 0xd9bd79, text: '#eae5ce', muted: '#91a58e', panel: '#183424' };
 type TowerView = { base: Phaser.GameObjects.Image; weapon: Phaser.GameObjects.Image };
@@ -55,6 +58,8 @@ export class BattleScene extends Phaser.Scene {
   private bossCharmView!: BossCharmView;
   private ilyraView!: IlyraView;
   private ilyraMode?: 'move'|'cast';
+  private selectedHero?: ControlledHero;
+  private heroSuggestion?: { x: number; y: number };
   private mara!: Phaser.GameObjects.Image;
   private maraShadow!: Phaser.GameObjects.Ellipse;
   private wisp!: Phaser.GameObjects.Image;
@@ -87,9 +92,9 @@ export class BattleScene extends Phaser.Scene {
   private readyToDraw = false;
   private requiredTextures: string[] = [];
   private loadingFailed = false;
-  private pendingTap?: { x: number; y: number };
+  private pendingTap?: { x: number; y: number; secondary: boolean };
   private hudElapsed = 0;
-  private dragOrigin?: { x: number; y: number; dragging: boolean };
+  private dragOrigin?: { x: number; y: number; dragging: boolean; button: number };
   private relativeZoom = 1;
   private baseZoom = 1;
   private overview = false;
@@ -103,6 +108,10 @@ export class BattleScene extends Phaser.Scene {
   private renderedLayout?: IdleBattle['layout'];
   private readonly preventMiddleScroll = (event: MouseEvent) => { if (event.button === 1) event.preventDefault(); };
   private readonly preventWheel = (event: WheelEvent) => { if (!event.ctrlKey) event.preventDefault(); };
+  private readonly preventHeroContextMenu = (event: MouseEvent) => {
+    if (this.selectedHero && !this.buildKind && !this.groundMode && !this.ilyraMode
+      && this.hooks.canSelect?.() !== false && this.hooks.canControlHero?.() !== false) event.preventDefault();
+  };
   private get sim(): IdleBattle { return this.readBattle(); }
   get mapZoom(): number { return this.relativeZoom; }
 
@@ -161,10 +170,12 @@ export class BattleScene extends Phaser.Scene {
     this.scale.on('resize', this.resizeCamera, this);
     this.game.canvas.addEventListener('wheel', this.preventWheel, { passive: false });
     this.game.canvas.addEventListener('mousedown', this.preventMiddleScroll);
+    this.game.canvas.addEventListener('contextmenu', this.preventHeroContextMenu);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
       this.readyToDraw = false;
       this.game.canvas.removeEventListener('wheel', this.preventWheel);
       this.game.canvas.removeEventListener('mousedown', this.preventMiddleScroll);
+      this.game.canvas.removeEventListener('contextmenu', this.preventHeroContextMenu);
       this.input.off('pointerdown', this.beginPointer, this);
       this.input.off('pointerup', this.endPointer, this);
       this.input.off('pointerupoutside', this.cancelPointer, this);
@@ -197,7 +208,7 @@ export class BattleScene extends Phaser.Scene {
       else this.followingWisp = false;
     }
     if (this.hooks.canSelect?.() === false) this.pendingTap = undefined;
-    if (this.pendingTap && (this.hooks.canRender?.() ?? true)) { const tap = this.pendingTap; this.pendingTap = undefined; this.selectAtPointer(tap); }
+    if (this.pendingTap && (this.hooks.canRender?.() ?? true)) { const tap = this.pendingTap; this.pendingTap = undefined; this.selectAtPointer(tap, tap.secondary); }
     if (this.hooks.canRender?.() ?? true) this.drawActors();
     this.hudElapsed += Math.min(rawSeconds, 0.08);
     if (this.hudElapsed >= 0.1) {
@@ -207,9 +218,20 @@ export class BattleScene extends Phaser.Scene {
     }
   }
   acceptEvents(events: readonly BattleEvent[]): void { if (this.readyToDraw) this.combatEffects.accept(events, this.sim.elapsed + this.sim.introduction.preparationSeconds); }
-  setIlyraMode(mode?: 'move'|'cast'): void { this.ilyraMode=mode; }
+  invalidatePointer(): void { this.pendingTap = undefined; this.dragOrigin = undefined; }
+  setIlyraMode(mode?: 'move'|'cast'): void { if (this.ilyraMode !== mode) this.invalidatePointer(); this.ilyraMode=mode; }
+  setHeroSelection(hero?: ControlledHero, suggestion?: { x: number; y: number }): void {
+    if (this.selectedHero !== hero) this.invalidatePointer();
+    this.selectedHero = hero; this.heroSuggestion = suggestion;
+  }
+  showHeroPosition(point: { x: number; y: number }): void { this.invalidatePointer(); this.focusPoint(point); }
+  worldAnchor(point: { x: number; y: number }): { x: number; y: number } {
+    const camera = this.cameras.main, canvas = this.game.canvas.getBoundingClientRect();
+    return { x: canvas.left + (camera.x + (point.x - camera.worldView.x) * camera.zoom) * canvas.width / this.scale.width,
+      y: canvas.top + (camera.y + (point.y - camera.worldView.y) * camera.zoom) * canvas.height / this.scale.height };
+  }
   setPlacement(kind?: TowerId, ground?: 'mara' | BuildingId, cell?: GridCell): void {
-    if (this.buildKind !== kind || this.groundMode !== ground) this.pendingTap = undefined;
+    if (this.buildKind !== kind || this.groundMode !== ground) this.invalidatePointer();
     this.buildKind = kind; this.groundMode = ground; this.groundCell = cell;
   }
   setSelected(padId?: string): void {
@@ -261,6 +283,7 @@ export class BattleScene extends Phaser.Scene {
     this.hooks.changed();
   }
   private resizeCamera(): void {
+    this.invalidatePointer();
     if (this.introStep !== null) { this.frameIntro(false); return; }
     const camera = this.cameras.main, { width, height } = this.sim.layout.bounds;
     const portrait = this.scale.width / this.pixelDensity <= 700 && window.innerHeight > window.innerWidth;
@@ -313,6 +336,7 @@ export class BattleScene extends Phaser.Scene {
     if (kind !== 'clearing' && (this.portraitCamera || this.sim.clearing.unlocked || this.sim.layout.version === 5)) this.focusPoint(this.objectPoint(kind));
   }
   private focusPoint(point: { x: number; y: number }): void {
+    this.invalidatePointer();
     if (this.guidedDefenseFrame) { this.guidedDefenseFrame = false; this.resizeCamera(); }
     if (this.overview) { this.overview = false; this.relativeZoom = 1; this.resizeCamera(); }
     this.cameras.main.centerOn(point.x, this.portraitCamera ? point.y - 20 : this.sim.layout.bounds.height / 2);
@@ -437,6 +461,7 @@ export class BattleScene extends Phaser.Scene {
   setMapZoom(value: number, pointerX = this.scale.width / 2, pointerY = this.scale.height / 2): void {
     if (this.introStep !== null) return;
     if (!this.readyToDraw || !Number.isFinite(value)) return;
+    this.invalidatePointer();
     if (this.guidedDefenseFrame) { this.guidedDefenseFrame = false; this.resizeCamera(); }
     if (this.overview) { this.overview = false; this.resizeCamera(); }
     const camera = this.cameras.main, old = camera.zoom;
@@ -451,18 +476,21 @@ export class BattleScene extends Phaser.Scene {
   private beginPointer(pointer: Phaser.Input.Pointer): void {
     this.followingWisp = false;
     if (this.hooks.canSelect?.() === false) { this.dragOrigin = undefined; return; }
-    if (pointer.leftButtonDown()) this.dragOrigin = { x: pointer.x, y: pointer.y, dragging: false };
+    this.pendingTap = undefined;
+    if (pointer.leftButtonDown() || pointer.rightButtonDown()) this.dragOrigin = { x: pointer.x, y: pointer.y, dragging: false, button: pointer.button };
   }
   private cancelPointer(): void { this.dragOrigin = undefined; }
   private endPointer(pointer: Phaser.Input.Pointer): void {
     const drag = this.dragOrigin; this.dragOrigin = undefined;
-    if (drag && !drag.dragging && pointer.button === 0) this.selectAtPointer(pointer);
+    if (drag && !drag.dragging && pointer.button === drag.button) this.selectAtPointer(pointer, pointer.button === 2);
   }
   private panAtPointer(pointer: Phaser.Input.Pointer): void {
     if (this.introStep !== null) return;
-    if (this.dragOrigin && pointer.leftButtonDown()
-      && Math.hypot(pointer.x - this.dragOrigin.x, pointer.y - this.dragOrigin.y) >= 6 * this.pixelDensity) this.dragOrigin.dragging = true;
+    if (this.dragOrigin && Math.hypot(pointer.x - this.dragOrigin.x, pointer.y - this.dragOrigin.y) >= 6 * this.pixelDensity) {
+      this.dragOrigin.dragging = true; this.pendingTap = undefined;
+    }
     if (!pointer.middleButtonDown() && !(pointer.leftButtonDown() && this.dragOrigin?.dragging)) return;
+    this.pendingTap = undefined;
     const camera = this.cameras.main;
     camera.setScroll(camera.clampX(camera.scrollX - (pointer.x - pointer.prevPosition.x) / camera.zoom),
       camera.clampY(camera.scrollY - (pointer.y - pointer.prevPosition.y) / camera.zoom));
@@ -471,23 +499,25 @@ export class BattleScene extends Phaser.Scene {
     if ((pointer.event as WheelEvent).ctrlKey || !dy) return;
     this.setMapZoom(this.mapZoom + (dy < 0 ? 0.05 : -0.05), pointer.x, pointer.y);
   }
-  private selectAtPointer(pointer: { x: number; y: number }): void {
+  private selectAtPointer(pointer: { x: number; y: number }, secondary = false): void {
     // Never replay input from a purchase as a selection of its newly built tower.
     if (this.hooks.canSelect?.() === false) { this.pendingTap = undefined; return; }
-    if (this.hooks.canRender?.() === false) { this.pendingTap = { x: pointer.x, y: pointer.y }; return; }
+    if (secondary && (!this.selectedHero || this.buildKind || this.groundMode || this.ilyraMode || this.hooks.canControlHero?.() === false)) return;
+    if (this.hooks.canRender?.() === false) { this.pendingTap = { x: pointer.x, y: pointer.y, secondary }; return; }
     const point = this.cameras.main.getWorldPoint(pointer.x, pointer.y), size = this.sim.layout.cellSize;
     if (this.ilyraMode) { this.hooks.ilyraGround?.(point); return; }
     if (this.groundMode) { this.hooks.ground?.({ x: Math.floor(point.x / size), y: Math.floor(point.y / size) }); return; }
     if (this.bossCharmView.contains(point)) return;
     const pad = this.sim.layout.towerPads.find(value => value.cell.x === Math.floor(point.x / size) && value.cell.y === Math.floor(point.y / size));
     if (this.buildKind) { this.setSelected(pad?.id); this.hooks.select(pad?.id); return; }
-    if (this.ilyraView.contains(point)) { this.hooks.selectIlyra?.(); return; }
+    if (this.ilyraView.contains(point)) { if (!secondary) this.hooks.selectIlyra?.(); return; }
     const wisp = this.wispPose;
-    if (this.sim.wispUnlocked && Math.hypot(point.x - wisp.x, point.y - (wisp.y - 18)) < 23) { this.hooks.selectWisp?.(); return; }
+    if (this.sim.wispUnlocked && Math.hypot(point.x - wisp.x, point.y - (wisp.y - 18)) < 23) { if (!secondary) this.hooks.selectWisp?.(); return; }
     for (const plot of [...this.sim.layout.plots].sort((a, b) => b.blockingBody.y - a.blockingBody.y)) {
       const area = plot.footprint;
       if (this.sim.settlement[`${plot.id}Built`] && point.x >= area.x * size && point.x < (area.x + area.width) * size
         && point.y >= (area.y - (plot.id === 'warehouse' ? 0.5 : 1.2)) * size && point.y < (area.y + area.height) * size) {
+        if (secondary) return;
         if (plot.id === 'tavern') this.hooks.selectTavern?.();
         else if (plot.id === 'warehouse') this.hooks.selectWarehouse?.();
         else this.hooks.selectWorkshop?.();
@@ -495,7 +525,7 @@ export class BattleScene extends Phaser.Scene {
       }
     }
     if (Math.hypot(point.x - this.sim.mara.x, point.y - (this.sim.mara.y - 18)) < 23) {
-      this.hooks.selectMara?.(); return;
+      if (!secondary) this.hooks.selectMara?.(); return;
     }
     // A tower's visible body extends above its ground tile. Prefer an occupied
     // ground tile, then the frontmost visible tower, so all three rows are tappable.
@@ -504,7 +534,11 @@ export class BattleScene extends Phaser.Scene {
         const view = this.towerViews.get(t.uid);
         return view?.base.getBounds().contains(point.x, point.y) || view?.weapon.getBounds().contains(point.x, point.y);
       });
-    this.setSelected(tower?.padId); this.hooks.select(tower?.padId);
+    if (tower) { if (!secondary) { this.setSelected(tower.padId); this.hooks.select(tower.padId); } return; }
+    if (this.selectedHero && this.hooks.canControlHero?.() !== false) {
+      this.hooks.heroGround?.({ x: Math.floor(point.x / size), y: Math.floor(point.y / size) }); return;
+    }
+    if (!secondary) { this.setSelected(); this.hooks.select(); }
   }
   private refreshLabels(): void {
     const present = new Set(this.sim.towers.map(t => t.padId));
@@ -519,6 +553,26 @@ export class BattleScene extends Phaser.Scene {
   private drawSelection(): void {
     const g = this.selection; g.clear(); this.ghostBase.setVisible(false); this.ghostWeapon.setVisible(false);
     const size = this.sim.layout.cellSize;
+    if (this.selectedHero) {
+      const actor = this.selectedHero === 'mara' ? this.sim.mara : this.sim.ilyra;
+      if (actor) {
+        const color = this.selectedHero === 'mara' ? 0xffdd83 : 0x91d5f7;
+        g.fillStyle(color, .22).fillEllipse(actor.x, actor.y + 2, 36, 18);
+        g.lineStyle(2.5, color, 1).strokeEllipse(actor.x, actor.y + 2, 38, 20);
+        g.lineStyle(1, color, .4).strokeCircle(actor.x, actor.y, this.selectedHero === 'mara' ? MARA.range : ILYRA.range);
+        const destination = actor.path.at(-1);
+        if (destination) { g.lineStyle(2, color, .85).strokeCircle(destination.x, destination.y, 12); g.lineBetween(destination.x - 5, destination.y, destination.x + 5, destination.y); }
+        if (this.selectedHero === 'ilyra' && this.heroSuggestion && !actor.path.length && this.sim.ilyra?.introduction !== 'done' && !this.ilyraMode) {
+          const p = this.heroSuggestion;
+          g.lineStyle(2, 0xffdd83, .9).strokeRect(p.x - size / 2 + 2, p.y - size / 2 + 2, size - 4, size - 4);
+          g.lineStyle(1, 0x91d5f7, .3).strokeCircle(p.x, p.y, ILYRA.range);
+          for (const cell of this.sim.layout.road.cells) {
+            const at = cellCenter(this.sim.layout, cell);
+            if (Math.hypot(at.x - p.x, at.y - p.y) <= ILYRA.range) g.fillStyle(0x91d5f7, .15).fillRect(cell.x * size, cell.y * size, size, size);
+          }
+        }
+      }
+    }
     if (this.ilyraMode && this.sim.ilyra) {
       const s=this.sim.ilyra, pointer=this.input.activePointer, point=this.cameras.main.getWorldPoint(pointer.x,pointer.y);
       if(this.ilyraMode==='cast'){

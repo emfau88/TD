@@ -1,0 +1,879 @@
+{
+  "checks": [
+    {
+      "name": "desktop-de: select / second tap / two routes / pause / invalid / right click",
+      "detail": {
+        "hero": "mara",
+        "context": false,
+        "gold": 620,
+        "elapsed": 1833,
+        "mara": {
+          "x": 220,
+          "y": 300,
+          "path": [
+            {
+              "x": 180,
+              "y": 300
+            }
+          ],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 0,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": null,
+        "camera": {
+          "x": -80,
+          "y": -80,
+          "zoom": 1.1428571428571428
+        },
+        "text": "Kein freier Weg dorthin. Wähle einen anderen Standort.",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "desktop-de: dragging does not move hero",
+      "detail": {
+        "hero": "mara",
+        "context": false,
+        "gold": 620,
+        "elapsed": 1833,
+        "mara": {
+          "x": 220,
+          "y": 300,
+          "path": [
+            {
+              "x": 180,
+              "y": 300
+            }
+          ],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 0,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": null,
+        "camera": {
+          "x": -80,
+          "y": -80,
+          "zoom": 1.1428571428571428
+        },
+        "text": "Kein freier Weg dorthin. Wähle einen anderen Standort.",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "desktop-de: HUD, build and dialog end movement selection",
+      "detail": {
+        "context": false,
+        "gold": 620,
+        "elapsed": 1833,
+        "mara": {
+          "x": 220,
+          "y": 300,
+          "path": [
+            {
+              "x": 180,
+              "y": 300
+            }
+          ],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 0,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": null,
+        "camera": {
+          "x": -80,
+          "y": -80,
+          "zoom": 1.1428571428571428
+        },
+        "text": "Waldwächter · freies Feld am Weg antippen und direkt bauen",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "desktop-de: real recruitment, paid tavern, walking reload and disabled premature cast",
+      "detail": {
+        "hero": "ilyra",
+        "context": false,
+        "gold": 973,
+        "elapsed": 1833.15,
+        "mara": {
+          "x": 208,
+          "y": 300,
+          "path": [
+            {
+              "x": 180,
+              "y": 300
+            }
+          ],
+          "targetTowerUid": 1,
+          "direction": "left",
+          "cooldownRemaining": 0,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": {
+          "x": 1483.5,
+          "y": 460,
+          "path": [
+            {
+              "x": 1460,
+              "y": 460
+            },
+            {
+              "x": 1420,
+              "y": 460
+            },
+            {
+              "x": 1380,
+              "y": 460
+            },
+            {
+              "x": 1340,
+              "y": 460
+            },
+            {
+              "x": 1340,
+              "y": 420
+            },
+            {
+              "x": 1300,
+              "y": 420
+            },
+            {
+              "x": 1260,
+              "y": 420
+            },
+            {
+              "x": 1220,
+              "y": 420
+            },
+            {
+              "x": 1180,
+              "y": 420
+            },
+            {
+              "x": 1140,
+              "y": 420
+            },
+            {
+              "x": 1100,
+              "y": 420
+            },
+            {
+              "x": 1060,
+              "y": 420
+            },
+            {
+              "x": 1020,
+              "y": 420
+            },
+            {
+              "x": 980,
+              "y": 420
+            },
+            {
+              "x": 940,
+              "y": 420
+            },
+            {
+              "x": 900,
+              "y": 420
+            },
+            {
+              "x": 860,
+              "y": 420
+            },
+            {
+              "x": 820,
+              "y": 420
+            },
+            {
+              "x": 780,
+              "y": 420
+            },
+            {
+              "x": 740,
+              "y": 420
+            },
+            {
+              "x": 700,
+              "y": 420
+            },
+            {
+              "x": 660,
+              "y": 420
+            },
+            {
+              "x": 620,
+              "y": 420
+            },
+            {
+              "x": 580,
+              "y": 420
+            },
+            {
+              "x": 540,
+              "y": 420
+            },
+            {
+              "x": 500,
+              "y": 420
+            },
+            {
+              "x": 460,
+              "y": 420
+            },
+            {
+              "x": 420,
+              "y": 420
+            },
+            {
+              "x": 380,
+              "y": 420
+            },
+            {
+              "x": 340,
+              "y": 420
+            },
+            {
+              "x": 300,
+              "y": 420
+            },
+            {
+              "x": 260,
+              "y": 420
+            },
+            {
+              "x": 220,
+              "y": 420
+            },
+            {
+              "x": 180,
+              "y": 420
+            },
+            {
+              "x": 180,
+              "y": 380
+            },
+            {
+              "x": 180,
+              "y": 340
+            },
+            {
+              "x": 180,
+              "y": 300
+            },
+            {
+              "x": 180,
+              "y": 260
+            },
+            {
+              "x": 180,
+              "y": 220
+            },
+            {
+              "x": 180,
+              "y": 180
+            }
+          ],
+          "direction": "left",
+          "cooldown": 0,
+          "autoCast": false,
+          "introduction": "cast",
+          "volley": null
+        },
+        "suggestion": {
+          "x": 180,
+          "y": 180
+        },
+        "camera": {
+          "x": -80,
+          "y": -80,
+          "zoom": 1.1428571428571428
+        },
+        "text": "Ilyra läuft · Ein neues Bodenziel ersetzt den Weg.",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "desktop-de: arrival and explicit first volley complete without menu detour",
+      "detail": {
+        "hero": "ilyra",
+        "context": false,
+        "gold": 1360,
+        "elapsed": 1848.7250000000001,
+        "mara": {
+          "x": 180,
+          "y": 300,
+          "path": [],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 16.60000000000076,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": {
+          "x": 180,
+          "y": 180,
+          "path": [],
+          "direction": "right",
+          "cooldown": 27.15000000000005,
+          "autoCast": false,
+          "introduction": "done",
+          "volley": {
+            "x": 389.3750076275315,
+            "y": 180.00000625848742,
+            "originX": 180,
+            "originY": 180,
+            "age": 0.6296296296296291,
+            "pace": 1.35,
+            "hit": true,
+            "damage": 2784,
+            "sourceKind": 1,
+            "sourceLevel": 14
+          }
+        },
+        "suggestion": {
+          "x": 180,
+          "y": 180
+        },
+        "camera": {
+          "x": -80,
+          "y": -80,
+          "zoom": 1.1428571428571428
+        },
+        "text": "Ilyra · Sternensalve läuft. Danach kannst du sie wieder bewegen.",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "desktop-de: hero switching, tower priority, volley movement lock, Escape and context menu scope",
+      "detail": {
+        "context": false,
+        "gold": 1360,
+        "elapsed": 1848.7250000000001,
+        "mara": {
+          "x": 180,
+          "y": 300,
+          "path": [],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 16.60000000000076,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": {
+          "x": 180,
+          "y": 180,
+          "path": [],
+          "direction": "right",
+          "cooldown": 27.15000000000005,
+          "autoCast": false,
+          "introduction": "done",
+          "volley": {
+            "x": 389.3750076275315,
+            "y": 180.00000625848742,
+            "originX": 180,
+            "originY": 180,
+            "age": 0.6296296296296291,
+            "pace": 1.35,
+            "hit": true,
+            "damage": 2784,
+            "sourceKind": 1,
+            "sourceLevel": 14
+          }
+        },
+        "camera": {
+          "x": -80,
+          "y": -80,
+          "zoom": 1.1428571428571428
+        },
+        "text": "Waldwächter · freies Feld am Weg antippen und direkt bauen",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "mobile-en: select / second tap / two routes / pause / invalid / right click",
+      "detail": {
+        "hero": "mara",
+        "context": false,
+        "gold": 620,
+        "elapsed": 1833,
+        "mara": {
+          "x": 220,
+          "y": 300,
+          "path": [
+            {
+              "x": 260,
+              "y": 300
+            }
+          ],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 0,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": null,
+        "camera": {
+          "x": 25,
+          "y": -66,
+          "zoom": 1.08125
+        },
+        "text": "No clear path there. Choose another position.",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "mobile-en: dragging does not move hero",
+      "detail": {
+        "hero": "mara",
+        "context": false,
+        "gold": 620,
+        "elapsed": 1833,
+        "mara": {
+          "x": 220,
+          "y": 300,
+          "path": [
+            {
+              "x": 260,
+              "y": 300
+            }
+          ],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 0,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": null,
+        "camera": {
+          "x": -14.653179190751445,
+          "y": -66,
+          "zoom": 1.08125
+        },
+        "text": "No clear path there. Choose another position.",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "mobile-en: HUD, build and dialog end movement selection",
+      "detail": {
+        "context": false,
+        "gold": 620,
+        "elapsed": 1833,
+        "mara": {
+          "x": 220,
+          "y": 300,
+          "path": [
+            {
+              "x": 260,
+              "y": 300
+            }
+          ],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 0,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": null,
+        "camera": {
+          "x": 25,
+          "y": -66,
+          "zoom": 1.08125
+        },
+        "text": "Grove Warden · Tap an empty tile along the path to build",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "mobile-en: real recruitment, paid tavern, walking reload and disabled premature cast",
+      "detail": {
+        "hero": "ilyra",
+        "context": false,
+        "gold": 922,
+        "elapsed": 1833.025,
+        "mara": {
+          "x": 222,
+          "y": 300,
+          "path": [
+            {
+              "x": 260,
+              "y": 300
+            }
+          ],
+          "targetTowerUid": 1,
+          "direction": "right",
+          "cooldownRemaining": 0,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": {
+          "x": 1497.25,
+          "y": 460,
+          "path": [
+            {
+              "x": 1460,
+              "y": 460
+            },
+            {
+              "x": 1420,
+              "y": 460
+            },
+            {
+              "x": 1380,
+              "y": 460
+            },
+            {
+              "x": 1340,
+              "y": 460
+            },
+            {
+              "x": 1340,
+              "y": 420
+            },
+            {
+              "x": 1300,
+              "y": 420
+            },
+            {
+              "x": 1260,
+              "y": 420
+            },
+            {
+              "x": 1220,
+              "y": 420
+            },
+            {
+              "x": 1180,
+              "y": 420
+            },
+            {
+              "x": 1140,
+              "y": 420
+            },
+            {
+              "x": 1100,
+              "y": 420
+            },
+            {
+              "x": 1060,
+              "y": 420
+            },
+            {
+              "x": 1020,
+              "y": 420
+            },
+            {
+              "x": 980,
+              "y": 420
+            },
+            {
+              "x": 940,
+              "y": 420
+            },
+            {
+              "x": 900,
+              "y": 420
+            },
+            {
+              "x": 860,
+              "y": 420
+            },
+            {
+              "x": 820,
+              "y": 420
+            },
+            {
+              "x": 780,
+              "y": 420
+            },
+            {
+              "x": 740,
+              "y": 420
+            },
+            {
+              "x": 700,
+              "y": 420
+            },
+            {
+              "x": 660,
+              "y": 420
+            },
+            {
+              "x": 620,
+              "y": 420
+            },
+            {
+              "x": 580,
+              "y": 420
+            },
+            {
+              "x": 540,
+              "y": 420
+            },
+            {
+              "x": 500,
+              "y": 420
+            },
+            {
+              "x": 460,
+              "y": 420
+            },
+            {
+              "x": 420,
+              "y": 420
+            },
+            {
+              "x": 380,
+              "y": 420
+            },
+            {
+              "x": 340,
+              "y": 420
+            },
+            {
+              "x": 300,
+              "y": 420
+            },
+            {
+              "x": 260,
+              "y": 420
+            },
+            {
+              "x": 220,
+              "y": 420
+            },
+            {
+              "x": 180,
+              "y": 420
+            },
+            {
+              "x": 180,
+              "y": 380
+            },
+            {
+              "x": 180,
+              "y": 340
+            },
+            {
+              "x": 180,
+              "y": 300
+            },
+            {
+              "x": 180,
+              "y": 260
+            },
+            {
+              "x": 180,
+              "y": 220
+            },
+            {
+              "x": 180,
+              "y": 180
+            }
+          ],
+          "direction": "left",
+          "cooldown": 0,
+          "autoCast": false,
+          "introduction": "cast",
+          "volley": null
+        },
+        "suggestion": {
+          "x": 180,
+          "y": 180
+        },
+        "camera": {
+          "x": 85,
+          "y": -66,
+          "zoom": 1.08125
+        },
+        "text": "Ilyra is walking · A new ground destination replaces her route.",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "mobile-en: arrival and explicit first volley complete without menu detour",
+      "detail": {
+        "hero": "ilyra",
+        "context": false,
+        "gold": 1259,
+        "elapsed": 1848.525,
+        "mara": {
+          "x": 260,
+          "y": 300,
+          "path": [],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 16.80000000000075,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": {
+          "x": 180,
+          "y": 180,
+          "path": [],
+          "direction": "right",
+          "cooldown": 27.175000000000047,
+          "autoCast": false,
+          "introduction": "done",
+          "volley": {
+            "x": 389.99001166680006,
+            "y": 179.9999938259232,
+            "originX": 180,
+            "originY": 180,
+            "age": 0.6111111111111106,
+            "pace": 1.35,
+            "hit": true,
+            "damage": 2784,
+            "sourceKind": 1,
+            "sourceLevel": 14
+          }
+        },
+        "suggestion": {
+          "x": 180,
+          "y": 180
+        },
+        "camera": {
+          "x": 85,
+          "y": -66,
+          "zoom": 1.08125
+        },
+        "text": "Ilyra · Star Volley is underway. She can move again afterwards.",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "mobile-en: hero switching, tower priority, volley movement lock, Escape and context menu scope",
+      "detail": {
+        "context": false,
+        "gold": 1259,
+        "elapsed": 1848.525,
+        "mara": {
+          "x": 260,
+          "y": 300,
+          "path": [],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 16.80000000000075,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": {
+          "x": 180,
+          "y": 180,
+          "path": [],
+          "direction": "right",
+          "cooldown": 27.175000000000047,
+          "autoCast": false,
+          "introduction": "done",
+          "volley": {
+            "x": 389.99001166680006,
+            "y": 179.9999938259232,
+            "originX": 180,
+            "originY": 180,
+            "age": 0.6111111111111106,
+            "pace": 1.35,
+            "hit": true,
+            "damage": 2784,
+            "sourceKind": 1,
+            "sourceLevel": 14
+          }
+        },
+        "camera": {
+          "x": 25,
+          "y": -66,
+          "zoom": 1.08125
+        },
+        "text": "Grove Warden · Tap an empty tile along the path to build",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "Hero control acceptance complete",
+      "detail": {
+        "errors": []
+      }
+    }
+  ],
+  "errors": []
+}

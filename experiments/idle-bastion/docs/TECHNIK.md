@@ -1,5 +1,26 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## A2 · Direkte Figurensteuerung
+
+Die Auswahl ist flüchtiger UI-Zustand. Bestehende `moveMaraTo`, `moveIlyraTo` und
+`castIlyraAt` bleiben die einzigen Modellbefehle; kein weiterer Schemawechsel oder
+geänderte Kampfwerte. Ausdrückliche Bau-/Platzierungs-/Zielmodi haben Vorrang,
+danach anklickbare Objekte, erst dann Bodenbewegung. Zweiter Figurentipp öffnet das
+Menü ohne Kamerafokus; Dock-Menüs behalten ihren Fokus. Maus-/Touch-Drag erzeugt
+keinen Laufbefehl. Rechtsklick unterdrückt das Kontextmenü ausschließlich am Canvas
+bei aktiver, bedienbarer Figurenwahl.
+
+Moduswechsel, Kamerabewegung und Dialog-/Session-Sperren verwerfen wartende
+Pointerbefehle. Eine UI-Generation prüft außerdem den Zustand erneut, wenn eine
+Sessiontransaktion erst nach einem Hintergrundsave ausgeführt werden kann.
+Manuelle Pause erlaubt gespeicherte Wegplanung; Lernpausen erlauben sie nicht.
+
+`hero-controls.ts` berechnet ausschließlich Darstellungsempfehlungen aus dem
+tatsächlichen Weg, Turmreichweiten und dem bestehenden Pathfinder. Ilyras gespeicherte
+Einführungsstufe `cast` bedeutet weiterhin „Laufbefehl akzeptiert“; die Oberfläche
+prüft zusätzlich leeren Laufpfad, keine aktive Salve, Bereitschaft und echte Ziele.
+Eine Empfehlung löst weder Bewegung noch Zauber aus. Keine neuen Steuerungs-Savefelder.
+
 ## Tutorial-Frostbausatz · Schema 30
 
 Die angeleitete Frostphase gewährt genau einen kostenlosen Bausatz nach der weiterhin

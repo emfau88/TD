@@ -1,0 +1,161 @@
+{
+  "checks": [
+    {
+      "name": "desktop-de: select / second tap / two routes / pause / invalid / right click",
+      "detail": {
+        "hero": "mara",
+        "context": false,
+        "gold": 620,
+        "elapsed": 1833,
+        "mara": {
+          "x": 220,
+          "y": 300,
+          "path": [
+            {
+              "x": 180,
+              "y": 300
+            }
+          ],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 0,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": null,
+        "camera": {
+          "x": -80,
+          "y": -80,
+          "zoom": 1.1428571428571428
+        },
+        "text": "Kein freier Weg dorthin. Wähle einen anderen Standort.",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "desktop-de: delayed command and deferred pointer cannot survive a build-mode switch",
+      "detail": {
+        "context": false,
+        "gold": 620,
+        "elapsed": 1833,
+        "mara": {
+          "x": 220,
+          "y": 300,
+          "path": [
+            {
+              "x": 180,
+              "y": 300
+            }
+          ],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 0,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": null,
+        "camera": {
+          "x": -80,
+          "y": -80,
+          "zoom": 1.1428571428571428
+        },
+        "text": "Waldwächter · freies Feld am Weg antippen und direkt bauen",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "mobile-en: select / second tap / two routes / pause / invalid / right click",
+      "detail": {
+        "hero": "mara",
+        "context": false,
+        "gold": 620,
+        "elapsed": 1833,
+        "mara": {
+          "x": 220,
+          "y": 300,
+          "path": [
+            {
+              "x": 260,
+              "y": 300
+            }
+          ],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 0,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": null,
+        "camera": {
+          "x": 25,
+          "y": -66,
+          "zoom": 1.08125
+        },
+        "text": "No clear path there. Choose another position.",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "mobile-en: delayed command and deferred pointer cannot survive a build-mode switch",
+      "detail": {
+        "context": false,
+        "gold": 620,
+        "elapsed": 1833,
+        "mara": {
+          "x": 220,
+          "y": 300,
+          "path": [
+            {
+              "x": 260,
+              "y": 300
+            }
+          ],
+          "targetTowerUid": 1,
+          "direction": "up",
+          "cooldownRemaining": 0,
+          "effectRemaining": 0,
+          "unreachable": false,
+          "autoCast": true,
+          "effectTowerUid": null
+        },
+        "ilyra": null,
+        "camera": {
+          "x": 25,
+          "y": -66,
+          "zoom": 1.08125
+        },
+        "text": "Grove Warden · Tap an empty tile along the path to build",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false
+      }
+    },
+    {
+      "name": "Hero control acceptance complete",
+      "detail": {
+        "errors": []
+      }
+    }
+  ],
+  "errors": []
+}

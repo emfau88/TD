@@ -186,6 +186,22 @@ Die Chronik (Buchsymbol oder Gold-/Wellenanzeige) erklärt laufenden Goldzufluss
 
 ### Lesbare Hinweise und Figurenauftritte
 
+Mara oder Ilyra auf der Karte einmal antippen: Die Figur erhält einen Auswahlring.
+Freien Boden antippen, um sie dorthin zu schicken; weitere Ziele ersetzen ihren Weg.
+Erneutes Antippen derselben Figur öffnet ihr Menü. Die Porträts im Dock öffnen weiter
+direkt die bisherigen Menüs. Desktop: Auch Rechtsklick auf freien Boden bewegt die
+gewählte Figur. Ziehen verschiebt die Karte; × oder Esc beendet die Auswahl.
+Türme und Gebäude behalten ihre Aktionen. Bei manueller Pause lassen sich Wege planen;
+Lernen, Dialoge und Rückkehr sperren Bewegungsbefehle. Maras Turmzuweisung bleibt beim
+Laufen erhalten; außerhalb ihrer Zauberreichweite erscheint ein Hinweis.
+
+Ilyras Einführung markiert einen erreichbaren Platz am tatsächlich verteidigten Weg.
+Nach ihrer Ankunft führt „Sternensalve zielen“ in der kleinen Auswahlleiste direkt zur
+bewussten Zielwahl. Ohne passende Gegner wartet die Einführung. Während einer laufenden
+Salve kann Ilyra nicht laufen; anschließend bleibt sie ausgewählt. Laufwege und der
+Einführungsfortschritt überstehen Reloads; bei unvollständiger Einführung wird nach dem
+Rückkehrdialog ihre Bedienhilfe erneut angeboten.
+
 Niederlagenhinweise lassen sich per × schließen und bleiben für diesen verlorenen Versuch auch nach Reload geschlossen; die Chronik behält das Ergebnis. Eine spätere Niederlage kann erneut informieren. Wisp läuft bei seiner ersten Ankunft vom eigenen Kern zur Siedlung, während seine Begrüßung den Kampf anhält. Die Kamera folgt ihm auf Hochkant; eigenes Verschieben beendet das Folgen.
 
 Bei angeleiteten neuen Partien wartet Mara mit dem Zaubern bis zur Einführung nach Wisp. „Übertakten zeigen“ gibt den nächsten echten Zauber bei Gegnerkontakt frei; dann zeigt eine kleine schließbare Leiste die acht Sekunden Wirkung. Übersprungene Anleitung und Veteranen bleiben frei spielbar. Rosenspiegels Tanz wird von Frost nicht abgebrochen; das Tanzfenster ist um 15 % kleiner. Pfeile stehen an echten Bedienelementen mit freiem Rand oder weichen Erklärungstexten aus. [Prüfung und Ansichten](../../artifacts/idle-bastion/acceptance/onboarding/readability/REPORT.md).

@@ -1,0 +1,333 @@
+{
+  "checks": [
+    {
+      "name": "desktop/de: real starter, ready reload and visible approach",
+      "built": {
+        "stage": "ready",
+        "gold": 75,
+        "elapsed": 0,
+        "lives": 20,
+        "kills": 0,
+        "shots": 0,
+        "highestCleared": 0,
+        "starter": "cell-10-5",
+        "frost": "tower-02",
+        "towers": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 1,
+            "protected": true,
+            "spent": 0,
+            "world": {
+              "x": 420,
+              "y": 220
+            },
+            "screen": {
+              "x": 480,
+              "y": 285.7142857142857
+            },
+            "body": {
+              "left": 445.43999999999994,
+              "top": 224.8685714285714,
+              "right": 514.56,
+              "bottom": 319.0034285714285
+            },
+            "visible": true
+          }
+        ],
+        "enemies": [],
+        "view": {
+          "x": 0,
+          "y": -30,
+          "width": 1120,
+          "height": 700,
+          "top": 68,
+          "bottom": 664,
+          "guided": true,
+          "zoom": 1
+        },
+        "visibleApproachWorldPixels": 268
+      },
+      "approach": {
+        "stage": "combat",
+        "gold": 75,
+        "elapsed": 1.7000000000000002,
+        "lives": 20,
+        "kills": 0,
+        "shots": 0,
+        "highestCleared": 0,
+        "starter": "cell-10-5",
+        "frost": "tower-02",
+        "towers": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 1,
+            "protected": true,
+            "spent": 0,
+            "world": {
+              "x": 420,
+              "y": 220
+            },
+            "screen": {
+              "x": 480,
+              "y": 285.7142857142857
+            },
+            "body": {
+              "left": 445.43999999999994,
+              "top": 224.8685714285714,
+              "right": 514.56,
+              "bottom": 319.0034285714285
+            },
+            "visible": true
+          }
+        ],
+        "enemies": [
+          {
+            "world": {
+              "x": 90.875,
+              "y": 220
+            },
+            "screen": {
+              "x": 103.85714285714285,
+              "y": 285.7142857142857
+            }
+          },
+          {
+            "world": {
+              "x": 36.875,
+              "y": 220
+            },
+            "screen": {
+              "x": 42.14285714285714,
+              "y": 285.7142857142857
+            }
+          }
+        ],
+        "view": {
+          "x": 0,
+          "y": -30,
+          "width": 1120,
+          "height": 700,
+          "top": 68,
+          "bottom": 664,
+          "guided": true,
+          "zoom": 1
+        },
+        "visibleApproachWorldPixels": 268
+      }
+    },
+    {
+      "name": "desktop/de: active combat reload retains full defense framing",
+      "stage": "combat",
+      "gold": 75,
+      "elapsed": 1.05,
+      "lives": 20,
+      "kills": 0,
+      "shots": 0,
+      "highestCleared": 0,
+      "starter": "cell-10-5",
+      "frost": "tower-02",
+      "towers": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 1,
+          "protected": true,
+          "spent": 0,
+          "world": {
+            "x": 420,
+            "y": 220
+          },
+          "screen": {
+            "x": 480,
+            "y": 285.7142857142857
+          },
+          "body": {
+            "left": 445.43999999999994,
+            "top": 224.8685714285714,
+            "right": 514.56,
+            "bottom": 319.0034285714285
+          },
+          "visible": true
+        }
+      ],
+      "enemies": [
+        {
+          "world": {
+            "x": 61.625,
+            "y": 220
+          },
+          "screen": {
+            "x": 70.42857142857143,
+            "y": 285.7142857142857
+          }
+        }
+      ],
+      "view": {
+        "x": 0,
+        "y": -30,
+        "width": 1120,
+        "height": 700,
+        "top": 68,
+        "bottom": 664,
+        "guided": true,
+        "zoom": 1
+      },
+      "visibleApproachWorldPixels": 268
+    },
+    {
+      "name": "desktop/de: real guided upgrade, free workshop, Frost research and final pair",
+      "stage": "done",
+      "gold": 25,
+      "elapsed": 12.15,
+      "lives": 20,
+      "kills": 6,
+      "shots": 0,
+      "highestCleared": 1,
+      "starter": "cell-10-5",
+      "frost": "cell-9-5",
+      "towers": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 2,
+          "protected": true,
+          "spent": 60,
+          "world": {
+            "x": 420,
+            "y": 220
+          },
+          "screen": {
+            "x": 480,
+            "y": 285.7142857142857
+          },
+          "body": {
+            "left": 445.43999999999994,
+            "top": 224.8685714285714,
+            "right": 514.56,
+            "bottom": 319.0034285714285
+          },
+          "visible": true
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 1,
+          "protected": false,
+          "spent": 0,
+          "world": {
+            "x": 340,
+            "y": 220
+          },
+          "screen": {
+            "x": 388.57142857142856,
+            "y": 285.7142857142857
+          },
+          "body": {
+            "left": 365.53142857142853,
+            "top": 180.76342857142856,
+            "right": 411.6114285714285,
+            "bottom": 319.0034285714286
+          },
+          "visible": true
+        }
+      ],
+      "enemies": [],
+      "view": {
+        "x": 0,
+        "y": -30,
+        "width": 1120,
+        "height": 700,
+        "top": 68,
+        "bottom": 664,
+        "guided": true,
+        "zoom": 1
+      },
+      "visibleApproachWorldPixels": 268
+    },
+    {
+      "name": "desktop/de: old ready preparation retained",
+      "stage": "ready",
+      "gold": 75,
+      "elapsed": 0,
+      "lives": 20,
+      "kills": 0,
+      "shots": 0,
+      "highestCleared": 0,
+      "starter": "cell-6-6",
+      "frost": "cell-4-6",
+      "towers": [
+        {
+          "pad": "cell-6-6",
+          "kind": 1,
+          "level": 1,
+          "protected": true,
+          "spent": 0,
+          "world": {
+            "x": 260,
+            "y": 260
+          },
+          "screen": {
+            "x": 297.1428571428571,
+            "y": 331.4285714285714
+          },
+          "body": {
+            "left": 262.5828571428571,
+            "top": 270.5828571428571,
+            "right": 331.7028571428571,
+            "bottom": 364.71771428571424
+          },
+          "visible": true
+        }
+      ],
+      "enemies": [],
+      "view": {
+        "x": 0,
+        "y": -30,
+        "width": 1120,
+        "height": 700,
+        "top": 68,
+        "bottom": 664,
+        "guided": true,
+        "zoom": 1
+      },
+      "visibleApproachWorldPixels": 268
+    },
+    {
+      "name": "desktop/de: old build preparation retained",
+      "stage": "build",
+      "gold": 75,
+      "elapsed": 0,
+      "lives": 20,
+      "kills": 0,
+      "shots": 0,
+      "highestCleared": 0,
+      "starter": "cell-10-5",
+      "towers": [],
+      "enemies": [],
+      "view": {
+        "x": 0,
+        "y": -30,
+        "width": 1120,
+        "height": 700,
+        "top": 68,
+        "bottom": 664,
+        "guided": false,
+        "zoom": 1
+      },
+      "visibleApproachWorldPixels": 268
+    },
+    {
+      "name": "Q3 tutorial acceptance complete"
+    }
+  ],
+  "screenshots": [
+    "desktop-de-new-ready.png",
+    "desktop-de-enemy-approach.png",
+    "desktop-de-combat-reload.png",
+    "desktop-de-free-frost-kit.png",
+    "desktop-de-guided-pair.png"
+  ]
+}

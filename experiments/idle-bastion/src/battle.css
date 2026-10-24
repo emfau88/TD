@@ -64,3 +64,8 @@ dialog { max-height:calc(100svh - 24px); overflow-y:auto; }
 .language-settings { display: grid; grid-template-columns: 1fr minmax(120px, 1fr); gap: 8px 12px; align-items: center; margin: 12px 0; }
 .language-settings select { min-height: 44px; width: 100%; }
 .language-settings small { grid-column: 1 / -1; opacity: .8; }
+.hero-selected { outline: 2px solid #b9e7ef; outline-offset: -3px; }
+.placement-help[data-hero]:not([data-hero=""]) { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.placement-help[data-hero]:not([data-hero=""]) #placement-text { flex: 1 1 240px; }
+.placement-help #hero-aim, .placement-help #hero-location { min-height: 36px; padding: 5px 9px; }
+.placement-help[hidden] { display: none !important; }
