@@ -1,0 +1,76 @@
+{
+  "results": [
+    {
+      "label": "cold browser cache",
+      "loadMs": 3284.6888,
+      "totalTransferBytes": 2859778,
+      "portraits": [
+        {
+          "name": "https://emfau88.github.io/TD/assets/welcome-DeuGEsEa.webp",
+          "transfer": 26792,
+          "encoded": 26492,
+          "duration": 175.90000000596046
+        },
+        {
+          "name": "https://emfau88.github.io/TD/assets/focused-C0g1YKg1.webp",
+          "transfer": 27486,
+          "encoded": 27186,
+          "duration": 188
+        },
+        {
+          "name": "https://emfau88.github.io/TD/assets/mischievous-PzG1MOWq.webp",
+          "transfer": 27294,
+          "encoded": 26994,
+          "duration": 165.19999998807907
+        },
+        {
+          "name": "https://emfau88.github.io/TD/assets/welcome-DeuGEsEa.webp",
+          "transfer": 0,
+          "encoded": 26492,
+          "duration": 1.5
+        }
+      ],
+      "portraitTransferBytes": 81572
+    },
+    {
+      "cameraVideo": "C:\\Users\\madde\\.codex\\worktrees\\q4-mara-introduction\\TowerDefense\\qa\\q4-mara-introduction\\public\\video\\page@9703e19aabac5593bcb3a5c47f4c73b1.webm",
+      "note": "Final 5 seconds contain the controlled camera pan and scene 3; real production renderer."
+    },
+    {
+      "label": "warm browser cache, new independent game slot",
+      "loadMs": 1610.5202999999983,
+      "totalTransferBytes": 0,
+      "portraits": [
+        {
+          "name": "https://emfau88.github.io/TD/assets/welcome-DeuGEsEa.webp",
+          "transfer": 0,
+          "encoded": 26492,
+          "duration": 0.6000000089406967
+        },
+        {
+          "name": "https://emfau88.github.io/TD/assets/focused-C0g1YKg1.webp",
+          "transfer": 0,
+          "encoded": 27186,
+          "duration": 1.2000000029802322
+        },
+        {
+          "name": "https://emfau88.github.io/TD/assets/mischievous-PzG1MOWq.webp",
+          "transfer": 0,
+          "encoded": 26994,
+          "duration": 1.300000011920929
+        }
+      ],
+      "portraitTransferBytes": 0
+    },
+    {
+      "label": "returning build save",
+      "introPortraitRequests": 0,
+      "passed": true
+    },
+    {
+      "label": "320px phone menu and language switch",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

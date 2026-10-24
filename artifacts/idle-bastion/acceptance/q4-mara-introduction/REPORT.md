@@ -2,7 +2,7 @@
 
 Stand: 25.10.2026. Arbeitsbranch: `codex/q4-mara-introduction`. Basis: `main` / `be155d868217fcaea150a7436047597757a54641` (A1 sowie Q1–Q3 enthalten).
 
-**Die Umsetzung ist geprüft. Der Nutzer hat den direkten Merge am 25.10.2026 ausdrücklich freigegeben („ja dann merge einfach direkt mit“). Commit, Übernahme und Veröffentlichungsnachweis werden im Abschlussabschnitt ergänzt.**
+**Die Umsetzung ist geprüft. Der Nutzer hat den direkten Merge am 25.10.2026 ausdrücklich freigegeben („ja dann merge einfach direkt mit“). Implementierungscommit und main-Übernahme: `56c59d3581378b8a48ed08aebfeb59b7586ec0ce`. Pages-Veröffentlichung und öffentliche Desktop-/Mobilprobe erfolgreich, siehe Abschluss.**
 
 ## Umsetzung
 
@@ -72,4 +72,6 @@ Alle `src/`, `assets/`, `tests/` und `scripts/`-Angaben beziehen sich auf `exper
 
 **Empfehlung: mergen.** Die Änderungen sind klar begrenzt, die echten Abläufe und der Produktionsbuild bestehen, Speicher-/Offline-Regeln wurden nicht verändert, und gegenüber main gibt es keine zusätzlichen Regressionstestfehler. Die gemeldeten visuellen Korrekturen sind umgesetzt. Die bekannte rote Gesamtsuite bleibt separat dokumentiert; sie ist kein durch Q4 entstandener Blocker.
 
-Der Nutzer hat den direkten Merge nach dieser Einschätzung ausdrücklich freigegeben. Die ursprünglich vorgesehene weitere Zwischen-/Merge-Abnahme ist dadurch aufgehoben. Veröffentlichung und Commit-Nachweis: werden nach dem tatsächlichen Push ergänzt.
+Der Nutzer hat den direkten Merge nach dieser Einschätzung ausdrücklich freigegeben. Die ursprünglich vorgesehene weitere Zwischen-/Merge-Abnahme ist dadurch aufgehoben. Implementierungscommit: `56c59d3581378b8a48ed08aebfeb59b7586ec0ce`, gepusht auf `codex/q4-mara-introduction` und per Fast-forward auf main übernommen. GitHub-Pages-Lauf [40138526811](https://github.com/emfau88/TD/actions/runs/40138526811) **erfolgreich**. Die öffentliche Seite wurde mit einem separaten Testspielstand auf Desktop/Englisch und Hochkant/Deutsch geprüft: alle drei Szenen, Bilder, Übergang zum Bau, Skip/Reload, warmer Cache und Sprachwechsel auf 320 px bestanden; keine Browserfehler. [Live-Desktop](public-desktop.json), [Live-Mobil](public-mobile.json).
+
+[Veröffentlichtes Spiel](https://emfau88.github.io/TD/) · [Einführung in separatem Testspielstand öffnen](https://emfau88.github.io/TD/?fresh=1). Alle beauftragten Q4-Bulks sind erledigt; Offline-Mara bleibt ein separates Folgepaket.

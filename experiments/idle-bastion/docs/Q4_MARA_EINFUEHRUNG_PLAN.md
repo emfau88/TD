@@ -14,7 +14,7 @@ Die [Roadmap](../ROADMAP.md) bleibt die zentrale Projektübersicht für Reihenfo
 - **Kartenrand behoben:** Intro-Headroom außerhalb der Karte zeigte grünen Renderer-Hintergrund. Sichtbaren Kartenausschnitt auf echte Kartenfläche begrenzt; neue Hochkantaufnahmen ohne diese Streifen geprüft. Reguläre Q3-Kampf-/Baukamera bleibt erhalten.
 - **Weitere Nutzeranpassung (25.10.):** Lebensanzeige auf schmalen mobilen Ansichten direkt unter dem tatsächlichen Kern statt schwebend bei `Header + 52 px`. Phaser-Text wandert mit der Karte, Desktop-HUD und Lebensregeln bleiben erhalten. Betroffene Screenshots erneuert; Kernanker, konstante Lesbarkeit, offscreen Verhalten und Desktop-HUD geprüft.
 - **Technischer Zwischenstand:** Produktionsbuild bestanden; 343 Tests / 326 bestanden / 17 bekannte Altfehler. Der Namensvergleich bestätigt exakt dieselben Altfehler; keine neuen Fehler. Zusätzliche finale Session-/Introprüfung: 32/32.
-- **Bulk 6 läuft:** Commit/Push, ausdrücklich freigegebene Integration nach main und Veröffentlichungsprüfung. [Fertiger Bericht, Bilder, Video und Testnachweise](../../../artifacts/idle-bastion/acceptance/q4-mara-introduction/REPORT.md).
+- **Bulk 6 abgeschlossen:** Implementierungscommit `56c59d3` auf Arbeitsbranch und main; Pages erfolgreich veröffentlicht, öffentlicher Desktop-/Mobilstart geprüft. [Fertiger Bericht, Bilder, Video und Testnachweise](../../../artifacts/idle-bastion/acceptance/q4-mara-introduction/REPORT.md).
 
 ## Ziel und verbindlicher Umfang
 
@@ -149,12 +149,12 @@ Voraussetzung: erfüllter ausdrücklicher Implementierungsauftrag; keine Zwische
 ### Bulk 6 · Abschluss und Veröffentlichung
 
 - [x] Umsetzungsbericht, Assetquellen, tatsächliche Testergebnisse und offene Einschränkungen vervollständigen; Roadmap aktualisieren.
-- [ ] Nach entsprechender Beauftragung Änderungen auf dem Arbeitsbranch committen und pushen; Commit-SHA dokumentieren.
+- [x] Implementierung und Nachweise committed/gepusht: `56c59d3581378b8a48ed08aebfeb59b7586ec0ce` auf `codex/q4-mara-introduction`.
 - [x] Ausdrückliche Freigabe des endgültigen Merge erhalten: Nutzer am 25.10. „ja dann merge einfach direkt mit“.
-- [ ] Erst nach dieser Freigabe den aktuellen Main-Stand prüfen und den freigegebenen Umfang integrieren.
-- [ ] Veröffentlichung und öffentlichen Spielstart einschließlich Desktop-/Mobilprobe prüfen.
+- [x] Nach expliziter Freigabe aktuellen main geprüft und ohne Konflikt per Fast-forward von `be155d8` auf `56c59d3` übernommen.
+- [x] GitHub Pages erfolgreich veröffentlicht (Lauf 40138526811); öffentliche Seite auf Desktop/EN und Hochkant/DE einschließlich Sprachwechsel, Save/Reload und Intro→Build geprüft. Keine Browserfehler.
 
-**Merge-Freigabe:** erteilt am 25.10.2026. **Commit/Veröffentlichung:** in Arbeit; Nachweis wird nach erfolgreicher Übernahme ergänzt.
+**Merge-Freigabe:** erteilt am 25.10.2026. **Commit:** `56c59d3581378b8a48ed08aebfeb59b7586ec0ce`, Arbeitsbranch und main. **Veröffentlichung:** [GitHub-Pages-Lauf 40138526811 erfolgreich](https://github.com/emfau88/TD/actions/runs/40138526811). [Live-Spiel](https://emfau88.github.io/TD/) und [Intro in separatem Testspielstand](https://emfau88.github.io/TD/?fresh=1) öffentlich geprüft. Alle Q4-Bulks erledigt; nur das separate Offline-Folgepaket bleibt offen.
 
 ## Verbindliche Dialoge und Szenen
 
