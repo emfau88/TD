@@ -1,0 +1,12 @@
+[
+  {
+    "hero": "mara",
+    "attempts": 2,
+    "suppressed": true
+  },
+  {
+    "hero": "ilyra",
+    "attempts": 2,
+    "suppressed": true
+  }
+]

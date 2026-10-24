@@ -1,6 +1,7 @@
 import type { Companion, Interaction } from './tavern-social';
 import type { TouchRegion } from './tavern-animation';
 import type { TavernPlayer, TavernPresentation } from './tavern-presentation';
+import { TavernAtlasCache, type AtlasEntry } from './tavern-atlas-cache';
 import './tavern-rig.css';
 
 const packageUrl = new URL('../assets/tavern-rig/manifest.json', import.meta.url).href;
@@ -11,15 +12,14 @@ const portraits = {
 };
 type Clip = { count: number; fps: number; pages: string[]; restFrames: number[]; width: number; height: number; placement: [number, number, number, number] };
 type Clips = Record<string, Clip>;
-type Entry = { image: HTMLImageElement; ready: boolean; failed: boolean; promise: Promise<boolean> };
-async function clipsFor(who: Companion): Promise<Clips> {
+async function clipsFor(who: Companion, signal: AbortSignal): Promise<Clips> {
   if (import.meta.env.DEV && new URLSearchParams(location.search).get('quality') === 'source') {
     return (await import('./tavern-rig-source-preview')).sourceClips(who);
   }
   if (import.meta.env.DEV && new URLSearchParams(location.search).get('quality') === '90') {
     return (await import('./tavern-rig-source-preview')).quality90Clips(who);
   }
-  const response = await fetch(packageUrl);
+  const response = await fetch(packageUrl, { signal: AbortSignal.any([signal, AbortSignal.timeout(5000)]) });
   if (!response.ok) throw Error('Animationsdaten fehlen');
   const manifest = await response.json(), clips: Clips = {};
   for (const [key, clip] of Object.entries(manifest.heroes[who]) as [string, Clip][]) {
@@ -47,99 +47,174 @@ export class RigPreviewPlayer implements TavernPlayer {
   private loops = 0;
   private count = 0;
   private clips: Clips = {};
-  private cache = new Map<string, Entry>();
-  get reacting() { return this.key !== 'idle'; }
+  private cache = new TavernAtlasCache();
+  private failed = new Set<string>();
+  private idleStill = false;
+  private pendingReady = false;
+  private preparing?: Promise<boolean>;
+  private warmTimer?: ReturnType<typeof setTimeout>;
+  private manifestAbort?: AbortController;
+  private intent = 0;
+  get reacting() { return this.key !== 'idle' || this.pending !== null; }
   get reactionsReady() { return this.ready; }
   constructor(private canvas: HTMLCanvasElement, private changed: () => void) { canvas.width = 480; canvas.height = 700; }
-  setHearts(count: number) { this.count = count; }
+  setHearts(count: number) { const previous = this.count; this.count = count; if (previous < 2 && count >= 2 && this.ready) this.prime(); }
   async start(who: Companion = 'mara') {
     this.stop(); const generation = this.generation; this.active = true;
+    this.manifestAbort = new AbortController();
+    const signal = this.manifestAbort.signal;
+    this.canvas.dataset.companion = who;
     delete this.canvas.dataset.error; delete this.canvas.dataset.reactionError;
     this.canvas.getContext('2d')?.clearRect(0, 0, 480, 700);
     try {
-      const clips = await clipsFor(who);
+      let clips: Clips;
+      try { clips = await clipsFor(who, signal); }
+      catch { if (signal.aborted) return; clips = await clipsFor(who, signal); }
       if (!this.active || generation !== this.generation) return;
       this.clips = clips;
-      if (!await this.page('idle', 0).promise) throw Error('Idle fehlt');
+      if (!await this.buffer('idle', 2)) {
+        if (!this.active || generation !== this.generation) return;
+        // A portrait remains usable even when the first idle atlas is unavailable.
+        this.idleStill = true; this.canvas.dataset.error = 'true';
+      }
       if (!this.active || generation !== this.generation) return;
       this.ready = true; this.draw(); this.changed(); this.request = requestAnimationFrame(this.tick);
+      this.warmTimer = setTimeout(() => { if (this.active && generation === this.generation) this.prime(); }, 200);
     } catch { if (generation === this.generation) { this.canvas.dataset.error = 'true'; this.changed(); } }
   }
   stop() {
     this.active = false; this.generation++; cancelAnimationFrame(this.request);
+    this.manifestAbort?.abort(); clearTimeout(this.warmTimer); this.intent++;
     this.ready = false; this.loadingReactions = false; this.key = 'idle'; this.frame = 0; this.pending = null;
     this.returnFrames = []; this.loops = 0; this.last = 0; this.elapsed = 0; this.cache.clear();
+    this.failed.clear(); this.clips = {}; this.idleStill = false; this.pendingReady = false; this.preparing = undefined;
+    // stop() is synchronous: no old character can survive until the next fetch/RAF.
+    this.canvas.getContext('2d')?.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    for (const key of ['clip', 'frame', 'companion', 'cachedPages', 'error', 'reactionError']) delete this.canvas.dataset[key];
   }
-  async prepareReactions() {
-    if (!this.ready) return false;
-    const generation = this.generation; this.loadingReactions = true; this.changed();
-    const result = await Promise.all([this.page('head', 0).promise, this.page('touch', 0).promise]);
-    if (generation !== this.generation) return false;
-    this.loadingReactions = false; this.changed(); return result.every(Boolean);
+  prepareReactions(): Promise<boolean> {
+    if (!this.ready) return Promise.resolve(false);
+    if (this.preparing) return this.preparing;
+    const generation = this.generation;
+    this.failed.delete('head'); this.failed.delete('touch'); delete this.canvas.dataset.reactionError;
+    this.loadingReactions = true; this.changed();
+    this.preparing = Promise.all([this.buffer('head', 3), this.buffer('touch', 3)]).then(result => generation === this.generation && result.every(Boolean)).finally(() => {
+      if (generation === this.generation) { this.preparing = undefined; this.loadingReactions = !!this.pending; this.changed(); }
+    });
+    return this.preparing;
   }
   play(region: TouchRegion) { this.enqueue(region === 'hair' ? 'head' : 'touch'); }
   act(action: Interaction) { this.enqueue(action === 'talk' ? 'head' : this.count >= 2 ? 'joy' : 'touch'); }
   gesture(key: string) { if (this.count >= 2) this.enqueue(key); }
   private enqueue(key: string) {
     if (!this.ready || !this.clips[key]) return;
-    this.pending = key; this.page(key, 0);
-    if (this.key === 'idle' && !this.returnFrames.length) {
-      const neutral = this.clips.idle!.restFrames.reduce((a, b) => Math.abs(b - this.frame) < Math.abs(a - this.frame) ? b : a);
-      const from = this.frame, steps = Math.min(8, Math.abs(neutral - from));
-      for (let i = 1; i <= steps; i++) { const t = i / steps; this.returnFrames.push(Math.round(from + (neutral - from) * t * t * (3 - 2 * t))); }
-      for (const frame of this.returnFrames) this.page('idle', frame);
-      this.elapsed = 0;
-    }
-    this.changed();
-  }
-  private page(key: string, frame: number): Entry {
-    const url = this.clips[key]!.pages[Math.floor(frame / 8)]!;
-    const cached = this.cache.get(url); if (cached) return cached;
-    const image = new Image(), generation = this.generation;
-    const entry: Entry = { image, ready: false, failed: false, promise: Promise.resolve(false) };
-    entry.promise = new Promise(resolve => {
-      image.onload = () => { entry.ready = true; resolve(true); };
-      image.onerror = () => { entry.failed = true; if (generation === this.generation) { this.canvas.dataset.reactionError = 'true'; this.changed(); } resolve(false); };
+    this.failed.delete(key); delete this.canvas.dataset.reactionError;
+    this.pending = key; this.pendingReady = false; this.returnFrames = []; this.loadingReactions = true;
+    const generation = this.generation, intent = ++this.intent;
+    // Stale idle look-ahead must not occupy the download slots after a tap.
+    this.cache.retainLoads([...this.urls(key, 0, this.startPages(key)), ...this.urls(this.key, this.frame, this.key === 'idle' ? 2 : 4), this.clips.idle!.pages[0]!]);
+    this.prime(); this.changed();
+    void this.buffer(key, this.startPages(key)).then(ready => {
+      if (!ready || generation !== this.generation || intent !== this.intent || this.pending !== key) return;
+      this.pendingReady = true;
+      if (this.key === 'idle' && !this.idleStill) {
+        const neutral = this.clips.idle!.restFrames.reduce((a, b) => Math.abs(b - this.frame) < Math.abs(a - this.frame) ? b : a);
+        const from = this.frame, steps = Math.min(8, Math.abs(neutral - from));
+        for (let i = 1; i <= steps; i++) { const t = i / steps; this.returnFrames.push(Math.round(from + (neutral - from) * t * t * (3 - 2 * t))); }
+      }
+      this.elapsed = 0; this.prime(); this.changed();
     });
-    image.decoding = 'async'; image.src = url; this.cache.set(url, entry); return entry;
+  }
+  private startPages(_key: string) { return 4; }
+  private urls(key: string, start: number, pages: number) { return this.clips[key]!.pages.slice(Math.floor(start / 8), Math.floor(start / 8) + pages); }
+  private workingSet() {
+    const urls = new Set([this.clips.idle!.pages[0]!]);
+    const current = this.returnFrames.length ? [this.clips.idle!.pages[Math.floor(this.frame / 8)]!, ...this.returnFrames.map(frame => this.clips.idle!.pages[Math.floor(frame / 8)]!)] : this.urls(this.key, this.frame, this.key === 'idle' ? this.pending ? 2 : 3 : 4);
+    for (const url of current) urls.add(url);
+    if (this.pending) for (const url of this.urls(this.pending, 0, this.startPages(this.pending))) urls.add(url);
+    return urls;
+  }
+  private buffer(key: string, pages: number) {
+    const urls = this.urls(key, 0, pages), keep = this.workingSet();
+    for (const url of urls) keep.add(url);
+    this.cache.pin(keep);
+    return Promise.all(urls.map(url => this.load(key, url, 2).promise)).then(results => results.every(Boolean));
+  }
+  private load(key: string, url: string, priority = 1): AtlasEntry {
+    const entry = this.cache.request(url, priority), generation = this.generation;
+    void entry.promise.then(ready => {
+      if (!ready && entry.state === 'failed' && this.active && generation === this.generation) this.fail(key);
+    });
+    return entry;
+  }
+  private fail(key: string) {
+    this.failed.add(key);
+    if (key === 'idle') this.idleStill = true;
+    // Background warm-up failures stay quiet until the corresponding action.
+    if (key !== this.key && key !== this.pending) return;
+    this.canvas.dataset.reactionError = 'true';
+    this.pending = null; this.pendingReady = false; this.returnFrames = []; this.loadingReactions = false;
+    this.key = 'idle'; this.frame = 0; this.elapsed = 0;
+    if (this.cache.peek(this.clips.idle!.pages[0]!)?.state !== 'ready') this.canvas.dataset.error = 'true';
+    this.draw(); this.changed();
+  }
+  private prime() {
+    if (!this.active || !this.clips.idle) return;
+    const keep = this.workingSet();
+    const common = !this.pending ? ['head', 'touch', ...(this.count >= 2 ? ['joy'] : [])].filter(key => key !== this.key && !this.failed.has(key)) : [];
+    const warmPages = (key: string) => this.key === 'idle' ? key === 'head' ? 4 : 2 : ['head', 'touch', 'joy'].includes(this.key) ? 4 : 3;
+    for (const key of common) for (const url of this.urls(key, 0, warmPages(key))) keep.add(url);
+    this.cache.pin(keep);
+    if (this.pending) for (const url of this.urls(this.pending, 0, this.startPages(this.pending))) this.load(this.pending, url, 4);
+    if (!this.failed.has(this.key)) {
+      const offsets = this.key === 'idle' ? this.pending ? [0, 8] : [0, 8, 16] : [0, 8, 16, 24];
+      const frames = this.returnFrames.length ? this.returnFrames : offsets.map(offset => this.frame + offset).filter(frame => frame < this.clips[this.key]!.count);
+      for (const [index, frame] of frames.entries()) this.load(this.key, this.clips[this.key]!.pages[Math.floor(frame / 8)]!, this.returnFrames.length || this.key !== 'idle' ? 3 : index < 2 ? 2 : 0);
+    }
+    for (const key of common) for (const url of this.urls(key, 0, warmPages(key))) this.load(key, url, key === 'joy' ? 0 : 1);
+    this.canvas.dataset.cachedPages = String(this.cache.size);
   }
   private beginPending() {
-    if (!this.pending || !this.page(this.pending, 0).ready) return false;
-    this.key = this.pending; this.pending = null; this.frame = 0; this.elapsed = 0; this.returnFrames = []; this.loops = 0; this.changed(); return true;
+    if (!this.pending || !this.pendingReady) return false;
+    this.key = this.pending; this.pending = null; this.pendingReady = false; this.loadingReactions = false;
+    this.frame = 0; this.elapsed = 0; this.returnFrames = []; this.loops = 0; this.changed(); return true;
   }
   private tick = (now: number) => {
     this.request = requestAnimationFrame(this.tick);
     const dt = this.last ? Math.min(.1, (now - this.last) / 1000) : 0; this.last = document.hidden ? 0 : now;
     if (!this.active || !this.ready || document.hidden) return;
     this.elapsed += dt;
-    if (this.pending && this.key === 'idle' && !this.returnFrames.length) { if (this.beginPending()) this.draw(); return; }
+    if (this.pendingReady && this.key === 'idle' && !this.returnFrames.length) { if (this.beginPending()) this.draw(); return; }
+    if (this.idleStill && this.key === 'idle' && !this.returnFrames.length) return;
     if (this.elapsed < 1 / this.clips[this.key]!.fps) return;
-    if (this.pending && this.key === 'idle' && this.returnFrames.length) {
-      if (!this.page(this.pending, 0).ready || !this.page('idle', this.returnFrames[0]!).ready) { this.elapsed = 0; return; }
+    if (this.pendingReady && this.key === 'idle' && this.returnFrames.length) {
+      if (this.cache.peek(this.clips.idle!.pages[Math.floor(this.returnFrames[0]! / 8)]!)?.state !== 'ready') { this.elapsed = 0; return; }
       this.frame = this.returnFrames.shift()!;
     } else if (this.frame + 1 < this.clips[this.key]!.count) {
-      if (!this.page(this.key, this.frame + 1).ready) { this.elapsed = 0; return; }
+      if (this.cache.peek(this.clips[this.key]!.pages[Math.floor((this.frame + 1) / 8)]!)?.state !== 'ready') { this.elapsed = 0; return; }
       this.frame++;
-    } else if (this.pending) {
-      if (!this.beginPending()) { this.elapsed = 0; return; }
+    } else if (this.pendingReady) {
+      this.beginPending();
     } else {
-      if (!this.page('idle', 0).ready) { this.elapsed = 0; return; }
       this.loops = this.key === 'idle' ? this.loops + 1 : 0; this.key = 'idle'; this.frame = 0; this.changed();
-      if (this.count >= 2 && this.loops >= 3) this.enqueue('variant');
+      if (this.count >= 2 && this.loops >= 3 && !this.pending && !this.failed.has('variant')) this.enqueue('variant');
     }
     this.elapsed = Math.max(0, this.elapsed - 1 / this.clips[this.key]!.fps); this.draw();
   };
   private draw() {
-    const clip = this.clips[this.key]!, entry = this.page(this.key, this.frame), ctx = this.canvas.getContext('2d');
-    if (!entry.ready || !ctx) return;
+    this.prime();
+    const clip = this.clips[this.key]!, entry = this.cache.peek(clip.pages[Math.floor(this.frame / 8)]!), ctx = this.canvas.getContext('2d');
+    if (entry?.state !== 'ready' || !ctx) {
+      if (this.key === 'idle' && this.idleStill && !this.canvas.dataset.error) {
+        this.canvas.dataset.error = 'true'; this.canvas.dataset.clip = 'idle'; this.canvas.dataset.frame = '0';
+        ctx?.clearRect(0, 0, 480, 700); this.changed();
+      }
+      return;
+    }
     ctx.clearRect(0, 0, 480, 700); ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
     ctx.drawImage(entry.image, this.frame % 4 * clip.width, Math.floor(this.frame % 8 / 4) * clip.height, clip.width, clip.height, ...clip.placement);
     this.canvas.dataset.clip = this.key; this.canvas.dataset.frame = String(this.frame);
-    const page = Math.floor(this.frame / 8), keep = new Set([clip.pages[page], clip.pages[page + 1], this.clips.idle!.pages[0]]);
-    if (clip.pages[page + 1]) this.page(this.key, (page + 1) * 8);
-    if (this.pending) keep.add(this.clips[this.pending]!.pages[0]);
-    for (const frame of this.returnFrames) keep.add(this.clips.idle!.pages[Math.floor(frame / 8)]);
-    for (const [url, cached] of this.cache) { if (this.cache.size <= 8) break; if (!keep.has(url) && cached.ready) this.cache.delete(url); }
+    delete this.canvas.dataset.error;
   }
 }
 

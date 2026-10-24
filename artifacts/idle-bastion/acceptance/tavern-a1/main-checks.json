@@ -1,0 +1,30 @@
+[
+  {
+    "mobile": false,
+    "hero": "mara",
+    "points": 12,
+    "reload": true,
+    "errors": []
+  },
+  {
+    "mobile": false,
+    "hero": "ilyra",
+    "points": 12,
+    "reload": true,
+    "errors": []
+  },
+  {
+    "mobile": true,
+    "hero": "mara",
+    "points": 12,
+    "reload": true,
+    "errors": []
+  },
+  {
+    "mobile": true,
+    "hero": "ilyra",
+    "points": 12,
+    "reload": true,
+    "errors": []
+  }
+]
