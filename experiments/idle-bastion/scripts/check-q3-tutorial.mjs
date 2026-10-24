@@ -118,6 +118,12 @@ try {
     await clickMapHint(page, 'research'); await page.locator('#research-frost').click();
     await continueCard(page); await stage(page, 'frost');
     await page.waitForFunction(() => window.__q3Scene.readBattle().learningPaused);
+    const beforeFrost = await summary(page); assert.ok(beforeFrost.gold < 110);
+    await page.locator('#tower-tab').click();
+    assert.match(await page.locator('#frost-price').textContent(), /kostenlos|free/);
+    await shot(page, `${view}-${lang}-free-frost-kit`);
+    await page.reload(); await ready(page); await stage(page, 'frost');
+    if (await page.locator('#return-card').isVisible()) await page.locator('#claim-offline').click();
     await page.locator('#tower-tab').click(); await page.locator('#pick-frost').click();
     await clickMapHint(page, 'frost');
     await page.waitForFunction(() => window.__q3Scene.readBattle().towers.some(tower => tower.def.id === 2));
@@ -125,11 +131,15 @@ try {
     if (!await page.locator('#pause').evaluate(node => node.classList.contains('paused'))) await page.locator('#pause').click();
     await page.waitForFunction(() => document.querySelector('#pause').classList.contains('paused'));
     const pair = await summary(page);
-    assert.deepEqual(pair.towers.map(t => [t.pad, t.kind, t.level, t.spent]), [['cell-10-5', 1, 2, 60], ['tower-02', 2, 1, 110]]);
+    assert.deepEqual(pair.towers.map(t => [t.pad, t.kind, t.level, t.spent]), [['cell-10-5', 1, 2, 60], ['tower-02', 2, 1, 0]]);
+    assert.equal(pair.gold, beforeFrost.gold);
     assert.ok(pair.towers.every(tower => tower.visible), 'both actual guided towers must be in the visible map');
     assert.ok(pair.visibleApproachWorldPixels >= 160, 'mobile/desktop must retain a meaningful approach');
     await shot(page, `${view}-${lang}-guided-pair`);
     record(`${view}/${lang}: real guided upgrade, free workshop, Frost research and final pair`, pair);
+    await page.reload(); await ready(page); await stage(page, 'done');
+    assert.deepEqual((await summary(page)).towers.map(t => [t.pad, t.kind, t.level, t.spent]), pair.towers.map(t => [t.pad, t.kind, t.level, t.spent]));
+    if (await page.locator('#return-card').isVisible()) { await page.locator('#claim-offline').click(); await page.locator('#return-card').waitFor({ state: 'hidden' }); }
     if (mobile) {
       await page.setViewportSize({ width: 844, height: 390 }); const landscape = await summary(page);
       assert.ok(landscape.towers.every(tower => tower.visible));

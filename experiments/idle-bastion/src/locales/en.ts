@@ -3,6 +3,10 @@
 import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
   ...startupEnglish,
+  'Frostkristall · goldenes Feld antippen · 1 kostenloser Bausatz': 'Frost Crystal · tap a golden tile · 1 free kit',
+  'Frostkristall · 1 kostenloser Bausatz': 'Frost Crystal · 1 free kit',
+  'Frostkristall · 110 Gold': 'Frost Crystal · 110 gold',
+  'Für deinen ersten Frostkristall bekommst du einen kostenlosen Bausatz. Weitere kosten 110 Gold.': 'You get one free kit for your first Frost Crystal. Further towers cost 110 gold.',
   'Ah, da bist du ja! Ich bin Mara. Willkommen im alten Hain. Den Kern dort müssen wir beschützen. Eigentlich ist es hier ziemlich friedlich. Eigentlich.': "Ah, there you are! I'm Mara. Welcome to the Old Grove. We need to protect that core. It's usually quite peaceful here. Usually.",
   'Die Angreifer kommen von hier und folgen dem Weg zum Kern. Eine verlorene Welle? Dein Ausbau bleibt erhalten. Wir verstärken die Türme und versuchen es wieder.': "Enemies enter here and follow this path to the core. Lose a wave? What you've built stays. We strengthen the towers and try again.",
   'Du baust die Türme, die kämpfen von allein. Und ich? Ich habe noch ein paar Zauber im Ärmel. Aber eins nach dem anderen – fangen wir mit deinem Waldwächter an!': "You build the towers, and they fight on their own. And me? I've got a few spells up my sleeve. But one thing at a time—let's start with your Grove Warden!",

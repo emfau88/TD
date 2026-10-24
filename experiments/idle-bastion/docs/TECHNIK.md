@@ -1,5 +1,16 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Tutorial-Frostbausatz · Schema 30
+
+Die angeleitete Frostphase gewährt genau einen kostenlosen Bausatz nach der weiterhin
+60 Gold teuren Forschung. `tutorialFrostUid` speichert die UID des kostenlosen Turms
+auch nach Verkauf; dessen `spent` enthält ausschließlich bezahlte Upgrades. Bau,
+Verbrauch und Tutorialabschluss werden gemeinsam durch die bestehende Sessiontransaktion
+gespeichert und bei Speicherfehler vollständig zurückgerollt. Überspringen beendet die
+Berechtigung. Alte bezahlte Türme werden nicht umbewertet. Schema 29 erhält nur den
+fehlenden Null-Marker, danach greift die aktuelle vollständige Validierung inklusive
+Sturmlicht und Ilyra; Regeln 15 und bestehende Offline-Ansprüche bleiben erhalten.
+
 ## Sprache als reine Darstellungseinstellung
 
 `src/i18n.ts` und `src/locales/en.ts` halten vollständige deutsche Quelltexte und

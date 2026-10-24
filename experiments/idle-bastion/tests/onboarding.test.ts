@@ -58,6 +58,8 @@ test('all starter locations survive the complete guided purchase sequence with r
   assert.equal(b.learningPaused,false);b.update(1);assert.equal(b.drainEvents().filter(e=>e.type==='frost-tip').length,0);
   for(const stage of ['frost','observe'] as const) {
    const saved=b.snapshot();saved.introduction={...saved.introduction,stage,halted:true};
+   // Obsolete confirmation screens belonged to paid Frost, before kits existed.
+   saved.tutorialFrostUid=null;saved.towers.find(t=>t.kind===2)!.spent+=110;
    const old=IdleBattle.restore(saved)!;assert.ok(old);old.update(.025);
    assert.equal(old.introduction.stage,'done');assert.equal(old.learningPaused,false);assert.equal(old.gold,b.gold);
   }

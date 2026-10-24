@@ -1,5 +1,5 @@
 import { t } from './i18n';
-import { SETTLEMENT, FROST, type IdleBattle } from './battle';
+import { SETTLEMENT, type IdleBattle } from './battle';
 
 /** Objectives follow confirmed game state; help never grants money or unlocks. */
 export function tutorialStep(battle: IdleBattle): number {
@@ -55,7 +55,7 @@ export function nextObjective(battle: IdleBattle): string {
     case 2: return t('Nächstes Ziel: einen Waldwächter verbessern · 60 Gold.');
     case 3: return t("Nächstes Ziel: Werkstatt bauen · {0}.", battle.workshopKitAvailable ? t('kostenloser Bausatz bereit') : remaining(battle.workshopBuildCost));
     case 4: return t("Nächstes Ziel: Frostfassung erforschen · {0}.", remaining(SETTLEMENT.researchCost));
-    case 5: return t("Nächstes Ziel: Frostkristall an einem freien Platz bauen · {0}.", remaining(FROST.cost));
+    case 5: return t("Nächstes Ziel: Frostkristall an einem freien Platz bauen · {0}.", battle.frostKitAvailable ? t('1 kostenloser Bausatz') : remaining(battle.towerBuildCost(2)));
     case 6: return t('Nächstes Ziel: den ersten blauen Frosttreffer im Kampf beobachten.');
     case 7: return battle.wispUnlocked ? t('Wisp begrüßen · +10 % Kampf-Gold, arbeitet automatisch.') : t('Deine Kombination arbeitet. Welle 5 meistern, dann kommt Wisp.');
     case 8: return t('Wisp arbeitet: +10 % Kampf-Gold. Steinschleuder bauen · 135 Gold.');

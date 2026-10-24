@@ -1,5 +1,13 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Frost-Quick-Win + A2 Figurensteuerung · 25.10.2026, freigegeben für separaten Arbeitsbranch `codex/frost-kit-hero-controls`; kein Merge nach main.**
+
+- [x] Paket 1: einmaliger kostenloser Tutorial-Frost, gespeicherter Verbrauch und korrekte Verkaufserstattung; Schema 29 bleibt kompatibel, Forschung 60 und weitere Frosttürme 110 Gold.
+- [x] Paket 1: 44/44 gezielte Prüfungen, Gesamtsuite 331/348 mit denselben 17 Altfehlern, Produktionsbuild und echte Desktop-/Hochkantabläufe bestanden. [Nachweise](../../artifacts/idle-bastion/acceptance/frost-kit/REPORT.md). Separater Frost-Commit vor Beginn von A2.
+- [ ] Paket 2: direkte Figurenwahl, wiederholbare Bodenbefehle, Objekt-/Moduspriorität, Desktop-Rechtsklick und mobile Drag-Abgrenzung.
+- [ ] Paket 2: Ilyras erste Bewegung mit sinnvoller Empfehlung, Ankunft abwarten und ausdrückliches Zielen ohne Menüumweg.
+- [ ] Paket 2: Desktop-/Hochkantprüfung, Reloads, gezielte Regression, Produktionsbuild und separater Commit; Branch pushen.
+
 **Q4 · Hochwertige Einführung mit Mara — 25.10.2026, umgesetzt, nach Freigabe auf main und veröffentlicht.**
 
 Drei Szenen, verbindliche DE-/EN-Dialoge, konsistente Mara-Porträts, responsive Darstellung und sichere Übergabe an das bestehende Tutorial wurden auf `codex/q4-mara-introduction` umgesetzt und freigegeben nach main übernommen. Basis: `main` / `be155d8` einschließlich Q1–Q3. Der [Q4-Detailplan mit Bulks und Checkboxen](docs/Q4_MARA_EINFUEHRUNG_PLAN.md) dokumentiert Fortschritt und Nachweise. Imagegen und Commit/Push auf den Arbeitsbranch sind freigegeben; weitere Zwischenfreigaben entfallen. Echte Desktop-/Mobilaufnahmen, Kameraaufnahme und finaler Bericht liegen im Nachweispaket vor. **Update 25.10.: Der Nutzer hat den direkten Merge ausdrücklich freigegeben.** Offline-Mara bleibt ein separates Folgepaket.

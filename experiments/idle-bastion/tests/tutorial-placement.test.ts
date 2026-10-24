@@ -44,7 +44,7 @@ test('every offered new starter cell clears wave one without Mara or another pur
   }
 });
 
-test('actual guided Variant B reaches Frost with unchanged costs and reloads at every purchase', () => {
+test('actual guided Variant B reaches its free Frost kit and reloads at every purchase', () => {
   let battle = IdleBattle.newGame(); const costs: Record<string, number> = {};
   battle.beginIntroduction(); const startGold = battle.gold;
   assert.ok(battle.build(battle.recommendedStarterPad!)); costs.starter = startGold - battle.gold;
@@ -66,8 +66,8 @@ test('actual guided Variant B reaches Frost with unchanged costs and reloads at 
   assert.equal(battle.introduction.stage, 'done');
   assert.deepEqual(battle.towers.map(tower => tower.padId), ['cell-10-5', 'tower-02']);
   assert.deepEqual(battle.towers.map(tower => tower.level), [2, 1]);
-  assert.deepEqual(costs, { starter: 0, upgrade: 60, workshop: 0, research: 60, frost: 110 });
-  assert.equal(battle.gold, 75 + battle.earned - 230);
+  assert.deepEqual(costs, { starter: 0, upgrade: 60, workshop: 0, research: 60, frost: 0 });
+  assert.equal(battle.gold, 75 + battle.earned - 120);
   assert.equal(battle.snapshot().schemaVersion, BATTLE_SCHEMA_VERSION);
   assert.equal(battle.snapshot().rulesVersion, BATTLE_RULES_VERSION);
   reload(battle);

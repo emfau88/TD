@@ -49,7 +49,7 @@ export function updateOnboarding(live: BattleSession, view: { placing: boolean; 
       : waiting ? [t('Die erste Welle läuft'), t('Nach dem Sieg steht dein kostenloser Werkstatt-Bausatz bereit.'), '']
       : catalogPanel === 'settlement' ? [t('Wähle die Werkstatt'), t('Tippe unten auf die Werkstatt-Karte. Die Kamera zeigt dir die Siedlungswiese am Kern. Dort setzt du den kostenlosen Bausatz.'), '']
       : [t('Dein Werkstatt-Bausatz ist bereit'), t('Öffne unten „Siedlung“. Dort findest du deine Gebäude. Die Welle wartet.'), '']; break;
-    case 'research': copy = complete ? [t('Frostkristall freigeschaltet'), t('Jetzt bauen wir den neuen Turm neben deinen Waldwächter. Er kostet 110 Gold.'), t('Weiter · Frostturm bauen')]
+    case 'research': copy = complete ? [t('Frostkristall freigeschaltet'), t('Für deinen ersten Frostkristall bekommst du einen kostenlosen Bausatz. Weitere kosten 110 Gold.'), t('Weiter · Frostturm bauen')]
       : [t('Öffne deine Werkstatt'), t('Tippe auf das neue Gebäude auf der Karte. Dort erforschst du die Frostfassung für 60 Gold.'), '']; break;
     case 'frost': copy = catalogPanel === 'tower' ? [t('Wähle den Frostkristall'), t('Tippe unten auf den Frostkristall. Danach wählen wir einen Platz mit überlappender Reichweite.'), '']
       : [t('Zurück zu deinen Türmen'), t('Öffne unten „Türme“. Der erforschte Frostkristall ist jetzt dort verfügbar.'), '']; break;

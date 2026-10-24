@@ -197,13 +197,13 @@ function syncUI(): void {
     : groundMode && buildingBuilt(sim, groundMode) ? t('Neuen Standort wählen und Versetzen bestätigen')
     : groundMode ? t("{0} · freien Platz antippen · {1}", buildingName(groundMode), groundMode === 'workshop' && sim.workshopKitAvailable ? t('kostenloser Bausatz') : t("{0} Gold", buildingCost(sim, groundMode)))
     : sim.preparing ? t('Startturm · Pfeil zeigt einen guten Platz · antippen und kostenlos bauen')
-    : sim.guiding ? t('Frostkristall · goldenes Feld antippen und bauen · 110 Gold')
+    : sim.guiding ? t('Frostkristall · goldenes Feld antippen · 1 kostenloser Bausatz')
     : t("{0} · freies Feld am Weg antippen und direkt bauen", towerDefinition(placementType ?? 1).name));
   const confirm = element<HTMLButtonElement>('confirm-placement');
   confirm.hidden = !groundMode || groundMode === 'mara' || !buildingBuilt(sim, groundMode);
   if (groundMode === 'mara') confirm.hidden = true;
   const groundBuilt = !!groundMode && groundMode !== 'mara' && buildingBuilt(sim, groundMode);
-  confirm.textContent = t(groundMode ? groundBuilt ? t('Hier versetzen') : t("Hier bauen · {0} Gold", buildingCost(sim, groundMode === 'mara' ? 'workshop' : groundMode)) : sim.preparing ? sim.towers.length ? t('Hierher versetzen · kostenlos') : t('Hier bauen · kostenlos') : t("Hier bauen · {0} Gold", towerDefinition(placementType ?? 1).cost));
+  confirm.textContent = t(groundMode ? groundBuilt ? t('Hier versetzen') : t("Hier bauen · {0} Gold", buildingCost(sim, groundMode === 'mara' ? 'workshop' : groundMode)) : sim.preparing ? sim.towers.length ? t('Hierher versetzen · kostenlos') : t('Hier bauen · kostenlos') : sim.towerBuildCost(placementType ?? 1) === 0 ? t('Hier bauen · kostenlos') : t("Hier bauen · {0} Gold", sim.towerBuildCost(placementType ?? 1)));
   confirm.disabled = unavailable || sim.phase === 'defeat' || (!groundMode && live.paused) || (groundMode ? !groundCandidate || !sim.canPositionBuilding(groundMode === 'mara' ? 'workshop' : groundMode, groundCandidate)
     || (groundBuilt ? !live.paused : sim.gold < buildingCost(sim, groundMode === 'mara' ? 'workshop' : groundMode))
     : !selectedPadId || !sim.canBuild(selectedPadId, placementType));
@@ -211,7 +211,8 @@ function syncUI(): void {
   element('pick-frost').setAttribute('aria-pressed', String(placementType === 2));
   element('pick-frost').classList.toggle('locked', !sim.settlement.frostResearched);
   element('frost-lock').textContent = t(sim.settlement.frostResearched ? t('Verlangsamung') : t('Frostfassung nötig'));
-  element('frost-price').textContent = t(sim.settlement.frostResearched ? '110' : t('Forschung'));
+  element('frost-price').textContent = sim.frostKitAvailable ? t('1 kostenloser Bausatz') : t(sim.settlement.frostResearched ? '110' : t('Forschung'));
+  element('pick-frost').setAttribute('aria-label', sim.frostKitAvailable ? t('Frostkristall · 1 kostenloser Bausatz') : t('Frostkristall · 110 Gold'));
   for (const [name, kind, role, condition] of [['cannon', 3, t('Flächenschaden'), t('Frost & Welle 5')], ['sniper', 4, t('Ignoriert Rüstung'), t('Welle 10 meistern')], ['storm', 5, t('Kette · höchstens drei Ziele'), t('Werkstattforschung & Welle 28')]] as const) {
     const unlocked = sim.isTowerUnlocked(kind);
     element(`pick-${name}`).classList.toggle('locked', !unlocked);

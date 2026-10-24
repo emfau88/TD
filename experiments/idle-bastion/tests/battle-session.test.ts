@@ -3,6 +3,7 @@ import test from 'node:test';
 import { IDBFactory } from 'fake-indexeddb';
 import { IdleBattle, type BattleSnapshot } from '../src/battle';
 import { TavernInteractions } from '../src/tavern-interactions';
+import { guidedFrost } from './helpers/guided-frost';
 import { BattleSession, SessionLoadError, SessionOwnershipError, type SessionOptions, type SessionStore } from '../src/battle-session';
 import { createOfflineState, type OfflineState } from '../src/offline';
 import { openBattleStore, type LoadResult, type SaveEnvelope, type WriterLease } from '../src/save-store';
@@ -73,6 +74,25 @@ const open = (store: SessionStore, options: SessionOptions = {}) => BattleSessio
 });
 const fixture = (battle: IdleBattle, revision = 1, paused = false): SaveEnvelope => ({
   schemaVersion: 2, revision, writtenAt: 1000, paused, battle: battle.snapshot(), offline: createOfflineState(1000),
+});
+test('free Frost commit includes consumption and tutorial exit; duplicate and failed writes cannot duplicate the kit', async () => {
+  for (const fail of [false, true]) {
+    const store = new ControlledStore(); store.current = fixture(guidedFrost());
+    const session = await open(store); await resume(session);
+    const before = session.battle.snapshot(); store.gate = true;
+    const pending = session.command(b => b.build(b.recommendedFrostPad!, 2), true);
+    await tick(); assert.equal(await session.command(b => b.build(b.recommendedFrostPad!, 2), true), false);
+    assert.equal(store.current!.battle.tutorialFrostUid, null);
+    if (fail) store.pending!.reject(new Error('Controlled Frost write failure')); else store.pending!.confirm();
+    assert.equal(await pending, !fail);
+    if (fail) { assert.deepEqual(session.battle.snapshot(), before); assert.equal(store.current!.battle.tutorialFrostUid, null); }
+    else {
+      const saved = IdleBattle.restore(store.current!.battle)!; assert.ok(saved);
+      assert.equal(saved.gold, before.gold); assert.equal(saved.introduction.stage, 'done');
+      assert.equal(saved.towers.filter(t => t.def.id === 2).length, 1);
+      assert.equal(saved.tutorialFrostUid, saved.towers.at(-1)!.uid);
+    }
+  }
 });
 async function resume(session: BattleSession): Promise<void> {
   if (session.pendingReward) assert.equal(await session.claimOffline(), true);
@@ -325,6 +345,18 @@ test('reload/claim without active continuation preserves the same two-hour budge
   assert.equal(returned.pendingReward?.amountUnits ?? 0, 0);
   assert.equal(returned.battle.gold * 1000 + returned.battle.goldRemainderUnits, balance);
   assert.ok(first > 0);
+});
+
+test('schema 29 migration preserves an already reserved offline reward exactly once', async () => {
+  const store = new ControlledStore(), session = await open(store);
+  await firstClear(session); await session.suspend(); store.clock += 60000;
+  const reserved = await open(store), reward = copy(reserved.pendingReward!); await reserved.suspend();
+  const old = store.current!.battle as any; old.schemaVersion = 29; delete old.tutorialFrostUid;
+  const before = old.gold * 1000 + old.goldRemainderUnits;
+  const returned = await open(store); assert.deepEqual(returned.pendingReward, reward);
+  assert.equal(returned.battle.tutorialFrostUid, null);
+  assert.equal(await returned.claimOffline(), true); assert.equal(await returned.claimOffline(), false);
+  assert.equal(returned.battle.gold * 1000 + returned.battle.goldRemainderUnits, before + reward.amountUnits);
 });
 
 test('failed offline claim rolls both gold and pending reward back for a safe later retry', async () => {

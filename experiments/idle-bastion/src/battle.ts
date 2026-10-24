@@ -46,7 +46,7 @@ export const STORMLIGHT = Object.freeze({ id: 5 as const, name: 'Sturmlicht', co
 export const STORM_CHAIN = Object.freeze({ targets: 3, range: 80, decay: 0.65, researchCost: 900, wave: 28 });
 export const SPLASH_RADIUS = 52;
 export const BATTLE_RULES_VERSION = 15 as const;
-export const BATTLE_SCHEMA_VERSION = 29 as const;
+export const BATTLE_SCHEMA_VERSION = 30 as const;
 export const LIVE_CANDIDATE_LIMIT = 32;
 /** Reserved boss milestones never contribute repeatable offline production. */
 export const isNormalFarmWave = (wave: number): boolean => Number.isSafeInteger(wave) && wave >= 1 && wave !== 15 && wave !== 25;
@@ -94,7 +94,9 @@ export interface BattleSnapshot {
   introduction: Introduction;
   ilyra: IlyraState | null;
   social: SocialState;
-  schemaVersion: 29; rulesVersion: 15; layoutVersion: 3 | 4 | 5;
+  schemaVersion: 30; rulesVersion: 15; layoutVersion: 3 | 4 | 5;
+  /** Retained after sale; only this tower's base construction was free. */
+  tutorialFrostUid: number | null;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32' | 'core40';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
@@ -143,6 +145,7 @@ export function sellValue(tower: Pick<Tower, 'spent'>): number {
 }
 
 export class IdleBattle {
+  tutorialFrostUid: number | null = null;
   ilyra: IlyraState | null = null;
   discovery: DiscoveryStage = 'off';
   dismissedDefeatAttempt = 0;
@@ -282,9 +285,14 @@ export class IdleBattle {
       && this.highestCleared >= 1 && this.towers.some(t => t.protected && t.level >= 2);
   }
   get workshopBuildCost(): number { return this.workshopKitAvailable ? 0 : SETTLEMENT.workshopCost; }
+  get frostKitAvailable(): boolean {
+    return this.guiding && this.introduction.stage === 'frost' && this.settlement.frostResearched
+      && this.tutorialFrostUid === null && !this.towers.some(t => t.def.id === 2);
+  }
+  towerBuildCost(kind: TowerId): number { return kind === 2 && this.frostKitAvailable ? 0 : towerDefinition(kind).cost; }
   get lessonCost(): number {
     return this.introduction.stage === 'upgrade' ? 60 : this.introduction.stage === 'workshop' ? 0
-      : this.introduction.stage === 'research' ? SETTLEMENT.researchCost : this.introduction.stage === 'frost' ? FROST.cost : 0;
+      : this.introduction.stage === 'research' ? SETTLEMENT.researchCost : this.introduction.stage === 'frost' ? this.towerBuildCost(2) : 0;
   }
   /** Learning pauses are saved separately from the player's pause button. */
   private updateLesson(): void {
@@ -402,7 +410,7 @@ export class IdleBattle {
       enemies: this.enemies.map(({ def, ...enemy }) => ({ ...enemy, defId: def.id })),
       shots: this.shots.map(shot => cloneShot(shot)),
       mara: cloneMara(this.mara),
-      settlement: { ...this.settlement }, tutorial: { ...this.tutorial },
+      settlement: { ...this.settlement }, tutorial: { ...this.tutorial }, tutorialFrostUid: this.tutorialFrostUid,
     };
   }
 
@@ -536,7 +544,7 @@ export class IdleBattle {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 20, model.layout.version as 3 | 4 | 5)) return undefined;
       value = { ...value, schemaVersion: 21, ilyra: null };
     }
-    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23 || value.schemaVersion === 24 || value.schemaVersion === 25 || value.schemaVersion === 26 || value.schemaVersion === 27 || value.schemaVersion === 28 || value.schemaVersion === 29)) {
+    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23 || value.schemaVersion === 24 || value.schemaVersion === 25 || value.schemaVersion === 26 || value.schemaVersion === 27 || value.schemaVersion === 28 || value.schemaVersion === 29 || value.schemaVersion === 30)) {
       if (![3, 4, 5].includes(value.layoutVersion as number) || !validPlotPositions(value.plots, value.layoutVersion as number)) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion as 3 | 4 | 5));
     }
@@ -581,10 +589,17 @@ export class IdleBattle {
     }
     if (isRecord(value) && value.schemaVersion === 28) {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 28, model.layout.version as 3 | 4 | 5)) return undefined;
-      value = { ...value, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION,
+      value = { ...value, schemaVersion: 29, rulesVersion: BATTLE_RULES_VERSION,
         settlement: { ...value.settlement, stormResearched: false } };
     }
+    // Schema 29 already has all current combat rules, including Sturmlicht and
+    // Ilyra sourceKind 5. Validate it with the current validator after adding
+    // only the absent kit marker; never route it through older combat rules.
+    if (isRecord(value) && value.schemaVersion === 29) {
+      value = { ...value, schemaVersion: BATTLE_SCHEMA_VERSION, tutorialFrostUid: null };
+    }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5)) return undefined;
+    model.tutorialFrostUid = value.tutorialFrostUid;
     model.social = structuredClone(value.social);
     model.ilyra = value.ilyra ? cloneIlyra(value.ilyra) : null;
     model.discovery = value.discovery; model.dismissedDefeatAttempt = value.dismissedDefeatAttempt;
@@ -949,19 +964,22 @@ export class IdleBattle {
       && !(Math.floor(this.mara.x / 40) === pad.cell.x && Math.floor(this.mara.y / 40) === pad.cell.y)
       && !(this.ilyra && ilyraCell(this.ilyra).x === pad.cell.x && ilyraCell(this.ilyra).y === pad.cell.y)
       && this.isTowerUnlocked(kind)
-      && this.gold >= towerDefinition(kind).cost;
+      && this.gold >= this.towerBuildCost(kind);
   }
 
   build(padId: string, kind: TowerId = 1): Tower | undefined {
     if (this.preparing) return kind === 1 ? this.placeStarter(padId) : undefined;
     if (!this.canBuild(padId, kind)) return undefined;
+    const cost = this.towerBuildCost(kind), freeFrost = kind === 2 && this.frostKitAvailable;
     const tower = this.createTower(padId, false, kind);
-    this.gold -= tower.def.cost;
+    tower.spent = cost;
+    if (freeFrost) this.tutorialFrostUid = tower.uid;
+    this.gold -= cost;
     this.towers.push(tower);
     if (this.mara.path.some(p => Math.floor(p.x / 40) === Math.floor(tower.x / 40) && Math.floor(p.y / 40) === Math.floor(tower.y / 40))) this.mara.path = [];
     if (this.ilyra?.path.some(p => ilyraCell(p).x === Math.floor(tower.x / 40) && ilyraCell(p).y === Math.floor(tower.y / 40))) this.ilyra.path = [];
     this.tutorial.builtTower = true;
-    this.events.push({ type: 'build', tower, x: tower.x, y: tower.y, amount: tower.def.cost });
+    this.events.push({ type: 'build', tower, x: tower.x, y: tower.y, amount: cost });
     if (kind === 2 && this.introduction.stage === 'frost') this.skipLessons(false);
     return tower;
   }
@@ -1378,6 +1396,9 @@ function validSnapshot(
     && (intro?.stage !== 'done' || !isRecord(value.wispArrival) || value.wispArrival.met !== true)) return false;
   if ((!legacy || legacy >= 17) && value.discovery === 'mara-start' && (!isRecord(value.mara) || !(Number(value.mara.effectRemaining) > 0) || value.phase !== 'wave')) return false;
   const original = legacy === 2 || legacy === 3;
+  const frostKitUid = !legacy ? value.tutorialFrostUid : null;
+  if (!legacy && frostKitUid !== null && (!integerIn(frostKitUid, 2, Number(value.uid) - 1)
+    || intro?.stage !== 'done' || !isRecord(value.settlement) || !value.settlement.frostResearched)) return false;
   if (!original) {
     if (!isRecord(value.settlement) || typeof value.settlement.workshopBuilt !== 'boolean'
       || typeof value.settlement.frostResearched !== 'boolean'
@@ -1495,7 +1516,8 @@ function validSnapshot(
     if (tower.protected) protectedCount++;
     // Reject impossible numeric levels before summing rounded, historical prices.
     if (tower.level > 1 && !Number.isSafeInteger(upgradeCost({ def, level: tower.level - 1 }))) return false;
-    let expectedSpent = tower.protected ? 0 : def.cost;
+    if (tower.uid === frostKitUid && (def.id !== 2 || tower.protected)) return false;
+    let expectedSpent = tower.protected || tower.uid === frostKitUid ? 0 : def.cost;
     for (let level = 1; level < tower.level; level++) expectedSpent += upgradeCost({ def, level });
     if (!Number.isSafeInteger(expectedSpent) || tower.spent !== expectedSpent) return false;
     pads.add(tower.padId);
@@ -1503,6 +1525,7 @@ function validSnapshot(
     towerKills += tower.kills;
   }
   if (protectedCount !== (unbuilt ? 0 : 1) || towerKills > value.kills) return false;
+  if (frostKitUid !== null && [...value.enemies, ...value.shots].some(entity => entity.uid === frostKitUid)) return false;
   if (unbuilt && (!isRecord(value.mara) || Object.entries({ ...createMara(layout, 0), autoCast: false }).some(([key, expected]) => JSON.stringify((value.mara as Record<string, unknown>)[key]) !== JSON.stringify(expected)))) return false;
   if (!unbuilt && legacy !== 2 && !(modern ? validMara : validLegacyMara)(value.mara, value.towers.map(tower => ({ ...tower,
     ...cellCenter(layout, layout.towerPads.find(pad => pad.id === tower.padId)!.cell) })), layout, [...getForestBlockedCells(layout), ...(modern ? value.towers.map(t => layout.towerPads.find(p => p.id === t.padId)!.cell) : [])])) return false;
