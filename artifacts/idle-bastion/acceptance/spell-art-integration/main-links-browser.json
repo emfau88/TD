@@ -1,0 +1,48 @@
+[
+  {
+    "normalBuild": true,
+    "workflow": 40150021798,
+    "source": "dbe3f3e89e702421abfc4ff1fa1b01d82ebfacae",
+    "mainIndexSha256": "826f6df010b6106638752e687698102869317328c4289442b0f2538184d354c2"
+  },
+  {
+    "mobile": false,
+    "scenario": "heroes",
+    "legacyRedirect": true,
+    "spellArtLoaded": true,
+    "isolatedProbe": true
+  },
+  {
+    "mobile": false,
+    "scenario": "ilyra",
+    "legacyRedirect": true,
+    "spellArtLoaded": true,
+    "isolatedProbe": true
+  },
+  {
+    "mobile": false,
+    "galleryRedirect": true,
+    "videoPlays": true,
+    "errors": []
+  },
+  {
+    "mobile": true,
+    "scenario": "heroes",
+    "legacyRedirect": true,
+    "spellArtLoaded": true,
+    "isolatedProbe": true
+  },
+  {
+    "mobile": true,
+    "scenario": "ilyra",
+    "legacyRedirect": true,
+    "spellArtLoaded": true,
+    "isolatedProbe": true
+  },
+  {
+    "mobile": true,
+    "galleryRedirect": true,
+    "videoPlays": true,
+    "errors": []
+  }
+]

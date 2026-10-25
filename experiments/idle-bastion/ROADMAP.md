@@ -1,5 +1,10 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Frost, Figuren und Zauberoptik · am 25.10.2026 für Main freigegeben und veröffentlicht.**
+
+- [x] Nutzerfreigabe „Ok go“ nach abschließender Merge-Prüfung. Geprüften Branchstand `dbe3f3e` ohne Konflikte und ohne neue Spieländerungen nach `main` übernommen; [regulärer Main-Deploy 40150021798](https://github.com/emfau88/TD/actions/runs/40150021798) erfolgreich.
+- [x] Öffentliches Hauptspiel erneut geprüft: Version-29-Saveübernahme mit unverändertem Gold/Türmen und Reload auf Desktop/Touch, Q4-Neueinstieg bei 1280/390/320 Pixeln, alle drei getrennten Teststarts sowie alte Test-/Galerieadressen mit geladenen Grafiken und Videowiedergabe. Keine gefundenen Browser-/Ressourcenfehler. [Release-Nachweis](../../artifacts/idle-bastion/acceptance/spell-art-integration/MAIN_RELEASE.md). Die bekannten 17 Altfehler und die fehlende Prüfung auf physischer Smartphone-Hardware bleiben ausdrücklich dokumentiert.
+
 **Zauberoptik · tatsächliche Integration und abschließende Merge-Prüfung, 25.10.2026.**
 
 - [x] Nach positiver Rückmeldung zur V3-Gestaltung und Klärung des Gesamtziels auf dem Arbeitsbranch integriert: runde Zauberaktionen, enge Bodenringe/Wegzeichen, wiederholte Mara-Impulse mit ganzem Turm-Glow/Funken und Ilyras neun Sterne mit tatsächlicher AoE-Fläche. Acht Laufzeitgrafiken zusammen 168.708 Bytes; keine neuen Kampf-/Savewerte.

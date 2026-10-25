@@ -1,10 +1,12 @@
 # Frost, Figuren und Zauberoptik: vollständige Merge-Prüfung
 
-25.10.2026 · Arbeitsbranch `codex/frost-kit-hero-controls`.
+25.10.2026 · Ausgangsbranch `codex/frost-kit-hero-controls`.
 Verglichen mit Main `537b5e8c9cf09b696b41644da4c56dbc8633d720`.
-**Kein Main-Merge durchgeführt.**
+**Nach Nutzerfreigabe auf Main übernommen und veröffentlicht.**
+[Main-Release und öffentliche Nachprüfung](MAIN_RELEASE.md).
 
 Geprüfte Integration: `5e0589f9b5d8c81affcc9eb15fa6fb64e88553a8`.
+Die folgenden Vorschau-Nachweise stammen aus der Prüfung vor der Übernahme:
 [Spielbare Vorschau](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html) ·
 [erfolgreicher Pages-Lauf](https://github.com/emfau88/TD/actions/runs/40149636478).
 Alle drei öffentlichen Testeinstiege wurden anschließend erneut auf Desktop/Touch
@@ -18,7 +20,8 @@ denselben SHA-256. [Veröffentlichungsnachweis](publication.json) ·
 **Technisch zur Übernahme empfohlen.** Die besprochene Optik ist jetzt im echten
 Spiel eingebunden. Es wurden keine zusätzlichen blockierenden Fehler gegenüber
 Main gefunden. Der Branch enthält den aktuellen Main-Stand; Konfliktauflösung
-ist für diese Basis nicht erforderlich. Die abschließende Merge-Freigabe fehlt weiterhin.
+war für diese Basis nicht erforderlich. Der Nutzer hat anschließend mit „Ok go“
+freigegeben; der gesamte Branchstand `dbe3f3e` wurde übernommen.
 
 Die Testsuite ist nicht vollständig grün: **17 bereits auf Main vorhandene Fehler**
 bleiben offen. Die Prüfung umfasst Desktop und mobile Browseremulation, keine
@@ -87,7 +90,6 @@ Ein späterer Rückwechsel auf den alten Main-Code könnte neue Version-30-Saves
 lesen. Er überschreibt sie dabei nicht. Falls nach Veröffentlichung ein Rollback
 nötig wird, muss die Version-30-Lesefähigkeit erhalten bleiben.
 
-**Empfehlung:** Den geprüften Gesamtstand nach Nutzerfreigabe gemeinsam übernehmen.
-Ein Merge nur der früheren Grafikdateien würde nicht ausreichen; diese Integration
-enthält die dazugehörigen echten UI- und Renderwege. Die 17 bestehenden Altfehler
-bleiben eine separate offene Qualitätsaufgabe.
+**Freigabe umgesetzt:** Der vollständige geprüfte Stand mit echten UI- und Renderwegen
+ist auf Main veröffentlicht. Die 17 bestehenden Altfehler bleiben eine separate
+offene Qualitätsaufgabe.

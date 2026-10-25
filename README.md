@@ -15,12 +15,12 @@ Website-Daten löscht auch diese Stände.
 
 ## Zauberoptik · spielbare Integration und bisherige Entwürfe
 
-**[▶ Handy-Galerie öffnen: alle Bilder und Videos](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=3)**
+**[▶ Handy-Galerie öffnen: alle Bilder und Videos](https://emfau88.github.io/TD/art-review/?v=3)**
 
-**Auf diesem Branch jetzt ins echte Spiel eingebaut:** runde Zauberbuttons mit radialem
+**Im Hauptspiel enthalten:** runde Zauberbuttons mit radialem
 Cooldown, enge Figuren-/Wegmarkierungen, Maras wiederkehrende Lichtimpulse mit Turm-Glow
 und Funken sowie neun animierte Sternprojektile über Ilyras tatsächlicher Trefferfläche.
-Über die [Figuren-Testauswahl](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html?scenario=heroes)
+Über die [Figuren-Testauswahl](https://emfau88.github.io/TD/feature-check.html?scenario=heroes)
 direkt ausprobieren. [Integrations- und Merge-Prüfung](artifacts/idle-bastion/acceptance/spell-art-integration/REPORT.md).
 Die folgende Galerie dokumentiert die zuvor gezeigten Entwürfe; aktuelle Spielaufnahmen stehen im Prüfbericht.
 
@@ -33,9 +33,9 @@ der Glow sanft aus.
 Lichtimpulse über Maras gesamte acht Sekunden Buffdauer und neun Sterne über Ilyras
 wirklicher Trefferfläche (Radius 72). Der radiale Cooldown bleibt wie gezeigt.
 
-- [Radialer Cooldown · 16-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=3#cooldown)
-- [Mara: Zauber und Turmverstärkung · 10-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=3#mara)
-- [Sternensalve: Flug und Einschlag · 10-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=3#ilyra)
+- [Radialer Cooldown · 16-Sekunden-Clip](https://emfau88.github.io/TD/art-review/?v=3#cooldown)
+- [Mara: Zauber und Turmverstärkung · 10-Sekunden-Clip](https://emfau88.github.io/TD/art-review/?v=3#mara)
+- [Sternensalve: Flug und Einschlag · 10-Sekunden-Clip](https://emfau88.github.io/TD/art-review/?v=3#ilyra)
 
 <a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-cooldown-v2.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-cooldown-v2.png" width="180" alt="Runder Zauberbutton mit radialem Cooldown"></a>
 <a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-ready-v2.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-ready-v2.png" width="180" alt="Sternensalve bereit"></a>
@@ -52,17 +52,17 @@ wirklicher Trefferfläche (Radius 72). Der radiale Cooldown bleibt wie gezeigt.
 Die Clips zeigen wiederholte Effektproben in einer für den Vergleich angehaltenen Szene;
 sie verändern keine Abklingzeiten oder Kampfwerte im Spiel.
 
-## Frost & Figuren direkt testen · dieser Branch
+## Frost & Figuren direkt testen
 
-**[▶ Testauswahl öffnen](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html)**
+**[▶ Testauswahl öffnen](https://emfau88.github.io/TD/feature-check.html)**
 
-Die Vorschau ist online und auf Desktop sowie Mobil geprüft.
+Die Teststarts verwenden das veröffentlichte Hauptspiel und sind auf Desktop sowie in mobiler Browseremulation geprüft.
 
 | Direktstart | Vorbereiteter Einstieg |
 | --- | --- |
-| [Kostenloser Frost](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html?scenario=frost) | Forschung bezahlt, 25 Gold, erster kostenloser Frostbausatz. Den Tutorialhinweisen folgen. |
-| [Figurensteuerung](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html?scenario=heroes) | Mara und Ilyra bereit: Figur antippen, freien Boden wählen, unterwegs ein neues Ziel setzen. |
-| [Ilyras Einführung](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html?scenario=ilyra) | Frisch rekrutierte Ilyra: Standortempfehlung, Ankunft und erste selbst gezielte Sternensalve. |
+| [Kostenloser Frost](https://emfau88.github.io/TD/feature-check.html?scenario=frost) | Forschung bezahlt, 25 Gold, erster kostenloser Frostbausatz. Den Tutorialhinweisen folgen. |
+| [Figurensteuerung](https://emfau88.github.io/TD/feature-check.html?scenario=heroes) | Mara und Ilyra bereit: Figur antippen, freien Boden wählen, unterwegs ein neues Ziel setzen. |
+| [Ilyras Einführung](https://emfau88.github.io/TD/feature-check.html?scenario=ilyra) | Frisch rekrutierte Ilyra: Standortempfehlung, Ankunft und erste selbst gezielte Sternensalve. |
 
 Jeder Start erzeugt einen **eigenen neuen Testspielstand**. Deine normale Partie bleibt
 erhalten. Falls eine Rückkehrkarte erscheint, **Fortsetzen** wählen. Die Porträts unten
@@ -73,9 +73,8 @@ Die Testauswahl bietet Deutsch/Englisch.
 Die Figurentests verwenden eine aufgezeichnete Verteidigung nach Welle 40 und bezahlen
 Taverne II regulär. Es sind Bedienproben, keine Balance-Messungen. Zum Zurücksetzen erneut
 einen Direktstart öffnen; zum Fortsetzen die erzeugte Spieladresse mit `?probe=…` speichern.
-Die Vorschau gehört zu `codex/frost-kit-hero-controls`; ein Main-Merge ist noch nicht erfolgt.
-Nach einer späteren Übernahme leitet der normale Build die obigen Test-/Galerielinks
-auf die dann veröffentlichten Testseiten weiter. Teststarts bleiben eigene Probe-Spielstände.
+Die früher geteilten Test-/Galerielinks unter `/previews/frost-hero/` leiten auf
+diese Hauptadressen weiter. Teststarts bleiben eigene Probe-Spielstände.
 
 ## Aktueller Spielumfang
 
