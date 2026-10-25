@@ -1,0 +1,17 @@
+{
+  "gifFrames": 9,
+  "uniquePoses": 8,
+  "loopMs": 3200,
+  "infiniteLoop": true,
+  "identicalEndpoints": true,
+  "binaryAlpha": true,
+  "sourceAssetsAndAnimationCodeUnchanged": [
+    "experiments/idle-bastion/assets/ilyra/ilyra-atlas.png",
+    "experiments/idle-bastion/assets/ilyra/sources/stand-approved.png",
+    "experiments/idle-bastion/src/ilyra-view.ts",
+    "experiments/idle-bastion/src/ilyra.ts"
+  ],
+  "textHashNewlines": "LF",
+  "baseCommit": "f5b4a6f99e73b769e96eb5abb30b7690b768500b",
+  "productionIntegration": false
+}

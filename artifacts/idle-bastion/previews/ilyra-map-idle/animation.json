@@ -1,0 +1,131 @@
+{
+  "previewOnly": true,
+  "directions": [
+    "down"
+  ],
+  "frameSize": [
+    64,
+    64
+  ],
+  "foot": [
+    32,
+    56
+  ],
+  "uniquePoses": 8,
+  "sequence": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    0
+  ],
+  "durationsMs": [
+    850,
+    200,
+    220,
+    380,
+    340,
+    280,
+    220,
+    260,
+    450
+  ],
+  "loopMs": 3200,
+  "firstLastIdentical": true,
+  "sourceScale": 0.109,
+  "sourceAlphaThreshold": 200,
+  "sourceAnchorX": [
+    199,
+    199,
+    203,
+    185,
+    199,
+    211,
+    211,
+    199
+  ],
+  "sourceFootY": [
+    494,
+    495,
+    495,
+    495,
+    469,
+    469,
+    469,
+    469
+  ],
+  "plantedFrames": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "plantedSpearX": 21,
+  "gifSize": [
+    390,
+    680
+  ],
+  "bounds": [
+    [
+      17,
+      10,
+      45,
+      56
+    ],
+    [
+      13,
+      5,
+      49,
+      56
+    ],
+    [
+      17,
+      10,
+      44,
+      56
+    ],
+    [
+      17,
+      10,
+      46,
+      56
+    ],
+    [
+      17,
+      9,
+      47,
+      56
+    ],
+    [
+      17,
+      8,
+      49,
+      56
+    ],
+    [
+      16,
+      10,
+      44,
+      56
+    ],
+    [
+      16,
+      9,
+      45,
+      56
+    ]
+  ],
+  "basis": {
+    "experiments/idle-bastion/assets/ilyra/ilyra-atlas.png": "d9dd36f31be79cc18b7a84d1b36a000accad15236e9ff65d65520cc9f71af851",
+    "experiments/idle-bastion/assets/ilyra/sources/stand-approved.png": "3f6b6430f739fcf248960a612b84b5c9776e9fa4c71efe30a94cfc2fae2a8556",
+    "experiments/idle-bastion/src/ilyra-view.ts": "e6651c4cdb74d0cc385287fbcb26409548117b2076c33b2c93268e46856b6b04",
+    "experiments/idle-bastion/src/ilyra.ts": "3c73390230af2c1817ef6b06f54506cf26b0d963949137aada4976f8d1bf19df"
+  },
+  "textHashNewlines": "LF",
+  "sourceSha256": "c103f1abe0bb54a4b6d7c0c2fd2cc71a69a81ef72127df3a7610aeb72689ccf3",
+  "gifBytes": 98092
+}

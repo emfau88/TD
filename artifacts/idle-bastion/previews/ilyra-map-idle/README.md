@@ -1,0 +1,38 @@
+# Ilyra · Speer-Idle auf der Karte
+
+**Nur Vorschau**, Branch `codex/ilyra-map-idle-preview`, Basis `main/f5b4a6f`. Kein Merge, kein Pages-Deployment und keine Einbindung ins Spiel. Die große Tavernenfigur wurde nicht als Kartenfigur verwendet.
+
+## Handy-Vorschau
+
+- **[Ilyra-Speer-Idle-Handy.gif](Ilyra-Speer-Idle-Handy.gif)** — 390×680, 98.092 Bytes, endloser **3,2-Sekunden-Loop**.
+- [Lokale Ansichtsseite](index.html), [acht Posen](contact-sheet.png), [Standbild](preview.png).
+- Oben: **1× Kartenmaßstab** bei Darstellung des GIFs in seiner nativen Breite von 390 Pixeln. Links unverändert der echte aktuelle Ilyra-Stand, rechts die animierte Probe. Originalrasen und Waldwächter im bisherigen Maßstab helfen beim Größenvergleich. Das ist eine separat zusammengesetzte Kartenprobe, keine heimliche Ingame-Integration.
+- Unten: exakt dieselben gepackten Frames **4× per Nearest Neighbor**, damit sich Hüfte, Speergriff und Beinstellung am Handy beurteilen lassen. Kleinere Bildschirme verkleinern die gesamte Vorschau proportional.
+
+## Verwendete Repo-Assets
+
+1. `experiments/idle-bastion/assets/ilyra/ilyra-atlas.png`: **tatsächlich geladener Laufzeitatlas**, Hauptreferenz für Figur, Stil und Maßstab; Frame 0 unverändert im GIF zum Vergleich.
+2. `experiments/idle-bastion/assets/ilyra/sources/stand-approved.png`: zugehörige freigegebene große Designreferenz, ergänzend zur Kartenfigur.
+3. `public/assets/Grass Tileset.png`, Ausschnitt (128,64)–(192,128), als 40×40-Spielzelle; `Tower 01.png` und `Tower 01 - Level 01 - Weapon.png` mit dem bisherigen Faktor 0,63.
+
+Geprüft gegen `src/art.ts`, `src/ilyra-view.ts`, `src/ilyra.ts` und den Assetvertrag: Laufzeitrahmen 64×64, Maßstab 1, Fußpunkt **(32,56)**, Körper grob 37–39 Pixel hoch. Speer und angehobene Hand dürfen darüber hinausragen; alle Vorschauposen bleiben vollständig innerhalb des 64×64-Rahmens.
+
+## Bewegung / Dateien
+
+**Acht unterschiedliche Posen:** starke Ausgangspose → Speer anheben → Schaftende aufsetzen → Hüfte deutlich nach außen → kurze Drehgeste am hoch gehaltenen Speer mit angewinkeltem Bein → spielerisch öffnen → Speer aufnehmen → starke Idle-Pose. Die Speerachse ist während der vier gepflanzten Posen auf x≈21 registriert. Die Bewegung bleibt aufrecht und nicht explizit; keine Kleideränderung oder zusätzliche Figur.
+
+Das GIF hat **neun Bildphasen**, weil die erste Pose als identische Endpause wiederkehrt. Dauern: **850 / 200 / 220 / 380 / 340 / 280 / 220 / 260 / 450 ms**. Kein bloßes Wackeln/Skalieren eines unveränderten Sprites und keine vielen unlesbaren Zwischenbilder.
+
+- `source/poses.png`: unverändertes generiertes Rohblatt mit echter Alphatransparenz.
+- `prompt.txt`: vollständiger Prompt des **eingebauten Imagegen-Werkzeugs**, mit beiden oben genannten Referenzen. Kein CLI-/API-Fallback.
+- `frames/00.png`–`07.png`, `idle-preview.png`: separate binär transparente 64×64-Frames / 512×64-Vorschauatlas.
+- `animation.json`: vermessene Quellanker, gemeinsamer Faktor 0,109, Zeitfolge, Rahmen und Quellhashes.
+- `build_preview.py`: reproduzierbare technische Packung und GIF-Montage mit Python/Pillow, Windows-Segoe-UI für Vorschautexte. Ausführen mit `python artifacts/idle-bastion/previews/ilyra-map-idle/build_preview.py`. Die Posen stammen aus Imagegen; das Skript zeichnet keine Ersatzfigur und überschreibt keine Produktionsassets.
+
+## Prüfung und Integrationsgrenze
+
+[Technische Prüfung](checks.json): GIF decodiert mit neun Frames und 3.200 ms, Endlosschleife, erstes/letztes Bild pixelgleich, binäre Alpha-Frames, kein Rahmen angeschnitten. Laufzeitatlas, freigegebene Standquelle und Ilyra-Animations-/Zeichencode stimmen per SHA-256 weiter exakt mit Main überein (bei Textdateien Zeilenenden auf LF normalisiert).
+
+[Browserprüfung](browser-checks.json): lokale GIF-Seite bei **390 und 320 Pixeln** geladen; tatsächliche Animation durch mehrere zeitversetzte Bilder bestätigt; keine horizontale Überbreite/JavaScript-Fehler, Poseübersicht erreichbar. Mobile Chrome-Emulation; keine physische Smartphone- oder Nutzerabnahme behauptet. Produktionsbuild/Vollsuite nicht erneut ausgeführt, da ausschließlich Previewdateien, Roadmap und QA-Ignore ergänzt wurden.
+
+**Noch nicht direkt als vollständiger Runtime-Ersatz integrierbar:** nur eine Frontrichtung, bewusst wenige Schlüsselposen, keine Idle-Auslöseplanung und keine Übergänge aus den anderen Blickrichtungen. Der 64×64-Atlas ist für einen späteren Prototyp vorbereitet; Auswahl, weitere Richtungen und Einbindung brauchen erst die visuelle Freigabe. Lauf-, Kampf- und Zauberanimationen sowie Gameplay bleiben unverändert.
