@@ -17,12 +17,15 @@ import { introducedEnemy } from './enemy-roster';
 import { MARA } from './mara';
 import { heroWorldAvailable, recommendIlyraPosition, ilyraFirstTarget, type ControlledHero } from './hero-controls';
 import { syncIlyraUI } from './ilyra-ui';
+import { syncVolleyAction } from './volley-action';
+import { syncMaraAction } from './mara-action';
 import type { BuildingId, GridCell } from './layout';
 import Phaser from 'phaser';
 import { bossEncounter } from './boss';
 import './battle.css';
 import './progress.css';
 import './premium.css';
+import './spell-actions.css';
 import { mountUIIcons } from './ui-icons';
 import { STORM_CHAIN, STORMLIGHT, SETTLEMENT, towerDefinition, type TowerId, stats, upgradeCost, sellValue, type IdleBattle } from './battle';
 import { BattleScene } from './battle-scene';
@@ -218,7 +221,10 @@ function syncUI(): void {
   element('placement-help').title = selectedHero ? t('Desktop: Auch Rechtsklick auf freien Boden bewegt die gewählte Figur. Esc beendet die Auswahl.') : '';
   const heroAim = element<HTMLButtonElement>('hero-aim'), heroLocation = element<HTMLButtonElement>('hero-location');
   heroAim.hidden = selectedHero !== 'ilyra' || !!ilyraMode;
-  heroAim.disabled = unavailable || live.paused || !ilyraFirstTarget(sim);
+  syncVolleyAction(heroAim, sim, unavailable, view.paused);
+  const heroMaraCast = element<HTMLButtonElement>('hero-mara-cast');
+  heroMaraCast.hidden = selectedHero !== 'mara' || !!ilyraMode;
+  syncMaraAction(heroMaraCast, sim, unavailable || !heroContextAvailable(), view.paused);
   heroLocation.hidden = selectedHero !== 'ilyra' || sim.ilyra?.introduction === 'done' || !!ilyraMode || !heroSuggestion;
   heroLocation.disabled = unavailable;
   element('placement-help').dataset.hero = selectedHero ?? '';
@@ -279,7 +285,7 @@ function syncUI(): void {
   element<HTMLProgressElement>('mara-cooldown').value = MARA.cooldown - mara.cooldownRemaining;
   element('mara-status').textContent = t(sim.maraIntroductionPending ? t('Mara zeigt dir Übertakten nach Wisps Ankunft. Zuerst bauen wir die Verteidigung auf.') : t("Ziel: {0}. ", targetName) + (mara.effectRemaining > 0 ? t("Buff wirkt noch {0} s.", Math.ceil(mara.effectRemaining)) : mara.cooldownRemaining > 0 ? t("Abklingzeit: {0} s.", Math.ceil(mara.cooldownRemaining)) : !inSpellRange ? t('Außerhalb der Zauberreichweite. Ziel erneut zuweisen oder näher laufen.') : mara.autoCast ? t('Bereit · wartet auf Gegner beim Ziel.') : t('Bereit · manuell auslösen.')));
   const auto = element<HTMLButtonElement>('mara-auto'); auto.disabled = blocked; auto.textContent = t("Automatik: {0}", mara.autoCast ? t('Ein') : t('Aus')); auto.setAttribute('aria-pressed', String(mara.autoCast));
-  element<HTMLButtonElement>('cast-mara').disabled = sim.maraIntroductionPending || blocked || live.paused || !inSpellRange || sim.phase !== 'wave' || mara.cooldownRemaining > 0 || !maraTarget || sim.isCharmed(maraTarget.uid);
+  syncMaraAction(element<HTMLButtonElement>('cast-mara'), sim, unavailable, view.paused);
   element<HTMLButtonElement>('move-mara').disabled = unavailable || !heroContextAvailable();
   element('camera-zoom').setAttribute('aria-pressed', String(view.mapZoom > 1));
   element('camera-zoom').setAttribute('aria-label', t(view.mapZoom > 1 ? t('Karte weiter ansehen') : t('Karte näher ansehen')));
@@ -1026,6 +1032,11 @@ for (const mode of ['move','cast'] as const) element(mode === 'move' ? 'move-ily
   if (mode === 'cast') aimIlyra(); else { selectHero('ilyra'); if (heroSuggestion) scene?.showHeroPosition(heroSuggestion); }
 }, { signal: lifetime.signal });
 element('hero-aim').addEventListener('click', aimIlyra, { signal: lifetime.signal });
+element('hero-mara-cast').addEventListener('click', () => {
+  const generation=heroGeneration;
+  if(selectedHero!=='mara'||!heroContextAvailable()||session?.inputBusy||session?.paused)return;
+  void perform(b => { if(generation===heroGeneration&&selectedHero==='mara'&&heroContextAvailable())b.castMaraNow(); });
+}, { signal: lifetime.signal });
 element('hero-location').addEventListener('click', () => { if (selectedHero === 'ilyra' && heroSuggestion) scene?.showHeroPosition(heroSuggestion); }, { signal: lifetime.signal });
 element('ilyra-auto').addEventListener('click', () => { void perform(b => b.setIlyraAuto(!b.ilyra?.autoCast), true, true); }, { signal: lifetime.signal });
 element('pick-wisp').addEventListener('click', () => openContext('wisp'), { signal: lifetime.signal });

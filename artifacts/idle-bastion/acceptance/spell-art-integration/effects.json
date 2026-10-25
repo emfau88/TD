@@ -1,0 +1,74 @@
+[
+  {
+    "name": "desktop-de: actual Mara buff / pause / read-only bounded renderer",
+    "unchanged": true,
+    "count": 45
+  },
+  {
+    "name": "desktop-de: saved buff reload / retarget keeps original tower / sale and charm clear glow",
+    "retained": true,
+    "sold": true,
+    "hidden": true,
+    "charmClearsGlow": true,
+    "originalUnchanged": true
+  },
+  {
+    "name": "desktop-de: natural expiration removes all glow and pulse objects"
+  },
+  {
+    "name": "desktop-de: nine real volley projectiles / paused save reload / renderer changes no model data",
+    "heads": 9,
+    "count": 39
+  },
+  {
+    "name": "desktop-de: actual impact timing and volley cleanup"
+  },
+  {
+    "name": "desktop-de: actual map button casts once and stays selected through cooldown",
+    "auto": false,
+    "owner": 2,
+    "target": 2,
+    "remaining": 7.949999999999999
+  },
+  {
+    "name": "desktop-de: no browser/resource errors or overflow",
+    "errors": [],
+    "bad": []
+  },
+  {
+    "name": "mobile-en: actual Mara buff / pause / read-only bounded renderer",
+    "unchanged": true,
+    "count": 45
+  },
+  {
+    "name": "mobile-en: saved buff reload / retarget keeps original tower / sale and charm clear glow",
+    "retained": true,
+    "sold": true,
+    "hidden": true,
+    "charmClearsGlow": true,
+    "originalUnchanged": true
+  },
+  {
+    "name": "mobile-en: natural expiration removes all glow and pulse objects"
+  },
+  {
+    "name": "mobile-en: nine real volley projectiles / paused save reload / renderer changes no model data",
+    "heads": 9,
+    "count": 39
+  },
+  {
+    "name": "mobile-en: actual impact timing and volley cleanup"
+  },
+  {
+    "name": "mobile-en: actual map button casts once and stays selected through cooldown",
+    "auto": false,
+    "owner": 2,
+    "target": 2,
+    "remaining": 7.949999999999999
+  },
+  {
+    "name": "mobile-en: no browser/resource errors or overflow",
+    "errors": [],
+    "bad": []
+  }
+]

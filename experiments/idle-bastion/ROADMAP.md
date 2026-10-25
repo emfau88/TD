@@ -1,5 +1,11 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Zauberoptik · tatsächliche Integration und abschließende Merge-Prüfung, 25.10.2026.**
+
+- [x] Nach positiver Rückmeldung zur V3-Gestaltung und Klärung des Gesamtziels auf dem Arbeitsbranch integriert: runde Zauberaktionen, enge Bodenringe/Wegzeichen, wiederholte Mara-Impulse mit ganzem Turm-Glow/Funken und Ilyras neun Sterne mit tatsächlicher AoE-Fläche. Acht Laufzeitgrafiken zusammen 168.708 Bytes; keine neuen Kampf-/Savewerte.
+- [x] Echter Desktop-/Touch-Ablauf, Pause/Reload, Zielwechsel, Verkauf, Bossverzauberung, Buffende, Salvenende, manueller Mara-Kartenbutton und begrenzte Sprite-Pools geprüft. Normaler Produktionsbuild, Q4-Neueinstieg und Version-29-Saveübernahme erfolgreich. Gesamtsuite 345/362: exakt dieselben 17 Altfehler wie Main, keine neuen und keine Skips. [Ergebnis, Grenzen und aktuelle Aufnahmen](../../artifacts/idle-bastion/acceptance/spell-art-integration/REPORT.md).
+- [x] Geteilte Test-/Galerielinks für den späteren normalen Main-Build erhalten. Main bleibt unverändert; Übernahme weiterhin erst nach ausdrücklicher Freigabe. Physische Smartphone-Prüfung ist nicht erfolgt.
+
 **Zauber-/Markierungsgrafik · 25.10.2026, ausschließlich Gestaltungsprobe zur Nutzerabnahme.**
 
 - [x] V3 (`790344b`) veröffentlicht und öffentlich bei 320/390/1280 Pixeln samt Videowiedergabe geprüft; Main unverändert. Anschließender Nutzerauftrag: **nur Merge-Prüfung, noch nicht mergen**. Normales Produktionspaket erfolgreich, Branch 339/356 und Main 326/343 mit exakt denselben 17 Altfehlern. Alte Saves, Reload, Q4-Neustart, Probe-Isolation und Schema-30-Rückwechsel-Schutz geprüft. [Merge-Prüfbericht und Umfang](../../artifacts/idle-bastion/acceptance/frost-hero-merge-review/REPORT.md). Für das Gesamtziel bleibt echte Grafikintegration samt Prüfung vor Merge offen.

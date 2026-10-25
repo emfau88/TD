@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "desktop-de: select / second tap / two routes / pause / invalid / right click",
+    "desktop-de: dragging does not move hero",
+    "desktop-de: HUD, build and dialog end movement selection",
+    "desktop-de: real recruitment, paid tavern, walking reload and disabled premature cast",
+    "desktop-de: arrival and explicit first volley complete without menu detour",
+    "desktop-de: hero switching, tower priority, volley movement lock, Escape and context menu scope",
+    "mobile-en: select / second tap / two routes / pause / invalid / right click",
+    "mobile-en: dragging does not move hero",
+    "mobile-en: HUD, build and dialog end movement selection",
+    "mobile-en: real recruitment, paid tavern, walking reload and disabled premature cast",
+    "mobile-en: arrival and explicit first volley complete without menu detour",
+    "mobile-en: hero switching, tower priority, volley movement lock, Escape and context menu scope",
+    "Hero control acceptance complete"
+  ],
+  "errors": []
+}

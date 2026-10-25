@@ -1,5 +1,25 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Zauber- und Markierungsdarstellung
+
+`HeroMarks`, `MaraSpellView` und `IlyraSpellView` lesen den laufenden Battle-Zustand;
+sie ändern weder Schaden noch Timer noch gespeicherte Felder. Animationen verwenden
+die Simulationszeit, damit Pause und Reload die tatsächlich gültigen Phasen zeigen.
+Mara bleibt über `effectTowerUid` an den verstärkten Turm gebunden, auch nach neuer
+Zuweisung. Verkauf/Verzauberung blenden den Glow aus; nach natürlichem Ablauf folgt
+nur ein optischer Ausklang von 0,4 Sekunden. Ilyras neun Sterne illustrieren weiterhin
+einen einzigen Flächentreffer mit Radius 72, keine neun zusätzlichen Treffer.
+
+Die Bildobjekte werden in begrenzten Pools wiederverwendet (60 Markierungen,
+je 64 Mara-/Ilyra-Effektbilder). Turmüberzüge übernehmen Frame, Anker, Drehung und
+Maßstab beider echten Turmsprites. Bodenmarkierungen liegen unter den Weltobjekten;
+Projektile und Einschläge sortieren nach ihrem Bodenpunkt.
+
+`spell-button.ts` erhält native Buttons und zeigt den wirklichen Cooldown radial
+mit Restsekunden, Handlungsgrund und Automatikstatus. Auswahl- und Menüaktionen
+nutzen dieselben Zustände. `assets/spells/` enthält acht kleine WebP-Ableitungen
+der freigegebenen Originale; die separate Mediengalerie wird nicht vom Spiel geladen.
+
 ## A2 · Direkte Figurensteuerung
 
 Die Auswahl ist flüchtiger UI-Zustand. Bestehende `moveMaraTo`, `moveIlyraTo` und

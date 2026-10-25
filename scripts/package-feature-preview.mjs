@@ -1,8 +1,7 @@
 /** Add a temporary branch preview to an unchanged, successful main Pages artifact. */
 import { cp, lstat, readFile, readdir, realpath, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { dirname, join, relative, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { join, relative, resolve } from 'node:path';
 
 const [mainPath, branchPath, branchSha, mainSha] = process.argv.slice(2);
 if (!mainPath || !branchPath || !/^[a-f0-9]{40}$/.test(branchSha ?? '') || !/^[a-f0-9]{40}$/.test(mainSha ?? '')) {
@@ -27,11 +26,8 @@ async function hashes(directory, prefix = '') {
 }
 const original = await hashes(main);
 await cp(branch, target, { recursive: true, errorOnExist: true, force: false });
-// Static art-review media only; the gameplay build never imports this prototype.
-const review = resolve(dirname(fileURLToPath(import.meta.url)), '../artifacts/idle-bastion/previews/ability-art');
-for (const name of ['index.html', 'assets', 'screenshots', 'videos']) {
-  await cp(join(review, name), join(target, 'art-review', name), { recursive: true, errorOnExist: true, force: false });
-}
+// The normal packager already includes the separate static gallery.
+await readFile(join(target, 'art-review', 'index.html'));
 await writeFile(join(target, 'feature-preview.json'), JSON.stringify({ branch: 'codex/frost-kit-hero-controls', branchSha, mainSha }, null, 2) + '\n');
 const combined = await hashes(main);
 for (const [file, digest] of original) if (combined.get(file) !== digest) throw new Error(`Main artifact changed: ${file}`);

@@ -1,0 +1,43 @@
+[
+  {
+    "width": 1280,
+    "freshQ4": true,
+    "skipAndReload": true,
+    "normalDatabase": true,
+    "noOverflow": true
+  },
+  {
+    "width": 1280,
+    "legacyMainLoaded": true,
+    "goldAndTowersPreserved": true,
+    "reload": true,
+    "probeIsolated": true,
+    "legacyRedirect": true,
+    "errors": [],
+    "bad": []
+  },
+  {
+    "width": 390,
+    "freshQ4": true,
+    "skipAndReload": true,
+    "normalDatabase": true,
+    "noOverflow": true
+  },
+  {
+    "width": 390,
+    "legacyMainLoaded": true,
+    "goldAndTowersPreserved": true,
+    "reload": true,
+    "probeIsolated": true,
+    "legacyRedirect": true,
+    "errors": [],
+    "bad": []
+  },
+  {
+    "width": 320,
+    "freshQ4": true,
+    "skipAndReload": true,
+    "normalDatabase": true,
+    "noOverflow": true
+  }
+]

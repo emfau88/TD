@@ -1,10 +1,11 @@
 import { t } from './i18n';
 import type { IdleBattle } from './battle';
 import { ILYRA } from './ilyra';
-import { heroWorldAvailable, ilyraFirstTarget } from './hero-controls';
+import { heroWorldAvailable } from './hero-controls';
+import { syncVolleyAction } from './volley-action';
 const el = <T extends HTMLElement = HTMLElement>(id:string) => document.getElementById(id) as T;
 export function syncIlyraUI(b:IdleBattle,unavailable:boolean,paused:boolean):void {
- const s=b.ilyra, busy=unavailable||b.phase==='defeat', ready=!!s&&!s.path.length&&!s.volley&&s.cooldown<=1e-9;
+ const s=b.ilyra, busy=unavailable||b.phase==='defeat';
  const locked = b.settlement.tavernLevel < 2 || !b.tavernUpgradeUnlocked;
  const status=!s ? locked ? t('Benötigt Taverne II und Sieg über Boss 25') : t('Wartet in der Taverne'):s.path.length?t('Unterwegs zum gewählten Standort'):s.volley?t('Sternensalve unterwegs'):s.cooldown>0?t("Bereit in {0} s", Math.ceil(s.cooldown)):t('Sternensalve bereit');
  el('tavern-roster').hidden=!b.settlement.tavernBuilt;
@@ -25,8 +26,7 @@ export function syncIlyraUI(b:IdleBattle,unavailable:boolean,paused:boolean):voi
  el<HTMLButtonElement>('recruit-ilyra').disabled=busy||!b.ilyraRecruitable||b.guiding||b.discoveryActive;
  el('ilyra-commands').hidden=!s;
  el<HTMLButtonElement>('move-ilyra').disabled=busy||!!s?.volley||!heroWorldAvailable(b);
- el<HTMLButtonElement>('aim-ilyra').disabled=busy||paused||!ready||!heroWorldAvailable(b)||!ilyraFirstTarget(b);
- el<HTMLButtonElement>('aim-ilyra').textContent = t(s?.cooldown?t("Sternensalve · {0} s", Math.ceil(s.cooldown)):!ilyraFirstTarget(b)?t('Sternensalve · wartet auf Gegner'):t('Sternensalve zielen'));
+ syncVolleyAction(el<HTMLButtonElement>('aim-ilyra'), b, busy, paused);
  el('ilyra-auto').hidden=s?.introduction!=='done';
  el<HTMLButtonElement>('ilyra-auto').disabled=busy;
  el('ilyra-auto').setAttribute('aria-pressed',String(!!s?.autoCast));

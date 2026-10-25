@@ -13,6 +13,22 @@ const existing = await lstat(output).catch(error => { if (error.code !== 'ENOENT
 if (existing && (existing.isSymbolicLink() || await realpath(output) !== output)) throw new Error('Output must be the real repository dist directory');
 await rm(output, { recursive: true, force: true });
 await cp(source, output, { recursive: true });
+// Static review media are loaded only when the gallery is opened, never by the game.
+const review = join(root, 'artifacts', 'idle-bastion', 'previews', 'ability-art');
+for (const name of ['index.html', 'assets', 'screenshots', 'videos']) {
+  await cp(join(review, name), join(output, 'art-review', name), { recursive: true });
+}
+function redirect(target) {
+  return `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SPIRE · Weiter</title></head><body><p><a id="continue" href="${target}">Weiter zu SPIRE</a></p><script>const target=new URL(${JSON.stringify(target)},location.href);target.search=location.search;target.hash=location.hash;document.getElementById('continue').href=target.href;location.replace(target.href);</script></body></html>`;
+}
+// Preserve shared README test/gallery links after the temporary branch preview becomes main.
+// Preview builds are themselves nested at this address and do not need these aliases.
+if (process.env.VITE_FEATURE_PREVIEW !== '1') {
+  const legacyPreview = join(output, 'previews', 'frost-hero');
+  await mkdir(join(legacyPreview, 'art-review'), { recursive: true });
+  await writeFile(join(legacyPreview, 'feature-check.html'), redirect('../../feature-check.html'));
+  await writeFile(join(legacyPreview, 'art-review', 'index.html'), redirect('../../../art-review/'));
+}
 const aliases = join(output, 'idle-bastion');
 await mkdir(aliases);
 for (const name of await readdir(source)) {

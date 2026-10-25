@@ -13,13 +13,16 @@ neuen Partie als Lesezeichen speichern. Der normale Playlink öffnet weiterhin d
 Hauptspielstand. Spielstände liegen lokal in diesem Browser; das Löschen der
 Website-Daten löscht auch diese Stände.
 
-## Grafikprobe V3 · Bilder & animierte Clips
+## Zauberoptik · spielbare Integration und bisherige Entwürfe
 
 **[▶ Handy-Galerie öffnen: alle Bilder und Videos](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=3)**
 
-**Nur Entwurf, noch nicht ins Spiel eingebaut.** Acht neue Imagegen-Grafiken in einer
-separaten Ingame-Vorschau: runde Zauberbuttons, radialer Cooldown, Figuren-/Wegmarkierungen,
-Maras wiederkehrende Lichtimpulse mit Turmeffekt sowie animierte Sternprojektile und Einschläge.
+**Auf diesem Branch jetzt ins echte Spiel eingebaut:** runde Zauberbuttons mit radialem
+Cooldown, enge Figuren-/Wegmarkierungen, Maras wiederkehrende Lichtimpulse mit Turm-Glow
+und Funken sowie neun animierte Sternprojektile über Ilyras tatsächlicher Trefferfläche.
+Über die [Figuren-Testauswahl](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html?scenario=heroes)
+direkt ausprobieren. [Integrations- und Merge-Prüfung](artifacts/idle-bastion/acceptance/spell-art-integration/REPORT.md).
+Die folgende Galerie dokumentiert die zuvor gezeigten Entwürfe; aktuelle Spielaufnahmen stehen im Prüfbericht.
 
 **Neu in V3:** Maras Licht umhüllt jetzt den gesamten verstärkten Turm. Ein transparenter
 Goldton und weicher Konturschein bleiben während des Buffs sichtbar. Jeder Treffer
@@ -70,9 +73,9 @@ Die Testauswahl bietet Deutsch/Englisch.
 Die Figurentests verwenden eine aufgezeichnete Verteidigung nach Welle 40 und bezahlen
 Taverne II regulär. Es sind Bedienproben, keine Balance-Messungen. Zum Zurücksetzen erneut
 einen Direktstart öffnen; zum Fortsetzen die erzeugte Spieladresse mit `?probe=…` speichern.
-Die Vorschau gehört ausschließlich zu `codex/frost-kit-hero-controls`; sie übernimmt
-keine Änderungen nach `main`. Ein späteres Main-Deployment kann diese temporäre Vorschau
-wieder entfernen.
+Die Vorschau gehört zu `codex/frost-kit-hero-controls`; ein Main-Merge ist noch nicht erfolgt.
+Nach einer späteren Übernahme leitet der normale Build die obigen Test-/Galerielinks
+auf die dann veröffentlichten Testseiten weiter. Teststarts bleiben eigene Probe-Spielstände.
 
 ## Aktueller Spielumfang
 

@@ -1,5 +1,10 @@
 # Frost & Figuren: Prüfung vor einer Main-Übernahme
 
+**Aktualisierung:** Die damals noch fehlende echte Grafikintegration ist inzwischen
+auf dem Arbeitsbranch enthalten und geprüft. Maßgeblich für den vollständigen
+Stand ist der [aktuelle Integrations- und Merge-Prüfbericht](../spell-art-integration/REPORT.md).
+Der folgende Bericht dokumentiert unverändert die frühere Prüfung des V3-Prototypstands.
+
 25.10.2026. **Nur geprüft, kein Merge und keine finale Integration der Grafikproben.**
 Geprüfter Branch: `codex/frost-kit-hero-controls` / `790344b610dcd15827ec7dda67d62f4b1e7759a0`.
 Aktueller Main: `537b5e8c9cf09b696b41644da4c56dbc8633d720`.

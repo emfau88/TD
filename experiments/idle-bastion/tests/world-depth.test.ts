@@ -30,17 +30,25 @@ test('projectile height does not put launch behind its own tower, or hit in fron
 });
 
 test('Ilyra separates floor, lifted flight and impact; removing her clears all spell drawing',()=>{
-  const graphics:{depth:number;draws:number}[]=[];
+  const graphics:{depth:number;draws:number}[]=[],images:{depth:number;visible:boolean;key:string}[]=[];
   // Separate fluent nodes ensure depths are recorded on the actual renderer objects.
   const make=()=>{const data={depth:0,draws:0};const p=new Proxy(data,{get(t,k){if(k in t)return t[k as keyof typeof t];return (...args:unknown[])=>{if(k==='setDepth')t.depth=Number(args[0]);else if(k==='clear')t.draws=0;else if(['fillCircle','strokeCircle','lineBetween','fillRect'].includes(String(k)))t.draws++;return p;};}});return p;};
-  const scene={add:{image:make,ellipse:make,text:make,graphics(){const g=make();graphics.push(g);return g;}}};
+  const image=(_x:number,_y:number,key:string)=>{
+    const data={depth:0,visible:true,key};
+    const p=new Proxy(data,{get(t,k){if(k in t)return t[k as keyof typeof t];return (...args:unknown[])=>{
+      if(k==='setDepth')t.depth=Number(args[0]);else if(k==='setVisible')t.visible=Boolean(args[0]);else if(k==='setTexture')t.key=String(args[0]);return p;
+    };}});images.push(p);return p;
+  };
+  const scene={add:{image,ellipse:make,text:make,graphics(){const g=make();graphics.push(g);return g;}}};
   const view=new IlyraView(scene as unknown as Phaser.Scene);
   const b={elapsed:1,ilyra:{x:140,y:350,path:[],direction:'right',volley:{originX:140,originY:350,x:350,y:340,age:.42,hit:false}}} as unknown as IdleBattle;
   view.update(b);
-  const drawn=graphics.filter(g=>g.draws);
-  assert.ok(drawn.some(g=>g.depth===groundEffectDepth));
-  assert.ok(drawn.filter(g=>g.depth!==groundEffectDepth).every(g=>g.depth>295+1001&&g.depth<375+1000));
+  assert.ok(graphics.some(g=>g.draws&&g.depth===groundEffectDepth));
+  const flight=images.filter(i=>i.visible&&i.key==='spell-star-projectile');
+  assert.equal(flight.length,27,'nine heads with two trailing sprites each');
+  assert.ok(flight.every(g=>g.depth>288+1001&&g.depth<393+1000),'sort by interpolated ground point, not lifted sprite position');
   b.ilyra!.volley!.hit=true;b.ilyra!.volley!.age=.73;view.update(b);
-  assert.ok(graphics.some(g=>g.draws&&g.depth===worldEffectDepth(340)));
-  b.ilyra=undefined as never;view.update(b);assert.ok(graphics.every(g=>g.draws===0));
+  assert.ok(images.some(g=>g.visible&&g.key==='spell-star-impact'&&g.depth===worldEffectDepth(340)));
+  assert.ok(!images.some(g=>g.visible&&g.key==='spell-star-projectile'));
+  b.ilyra=undefined as never;view.update(b);assert.ok(graphics.every(g=>g.draws===0));assert.ok(images.every(g=>!g.visible));
 });

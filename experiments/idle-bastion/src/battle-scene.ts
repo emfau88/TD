@@ -2,6 +2,9 @@ import { t } from './i18n';
 import { ILYRA } from './ilyra';
 import type { ControlledHero } from './hero-controls';
 import { IlyraView } from './ilyra-view';
+import { preloadSpellArt } from './spell-art';
+import { HeroMarks } from './hero-marks';
+import { MaraSpellView } from './mara-spell-view';
 import { ENEMY_SHEETS } from './enemy-art';
 import { JELLY_HEAL } from './enemy-roster';
 import { enemyHealFrame } from './enemy-art';
@@ -57,6 +60,8 @@ export class BattleScene extends Phaser.Scene {
   private effects!: Phaser.GameObjects.Graphics;
   private bossCharmView!: BossCharmView;
   private ilyraView!: IlyraView;
+  private heroMarks!: HeroMarks;
+  private maraSpell!: MaraSpellView;
   private ilyraMode?: 'move'|'cast';
   private selectedHero?: ControlledHero;
   private heroSuggestion?: { x: number; y: number };
@@ -121,6 +126,7 @@ export class BattleScene extends Phaser.Scene {
     this.load.on(Phaser.Loader.Events.FILE_COMPLETE, () => { this.hooks.loadProgress?.(++completed, this.requiredTextures.length); });
     this.load.on(Phaser.Loader.Events.FILE_LOAD_ERROR, () => this.failLoading());
     preloadArt(this);
+    preloadSpellArt(this);
     this.requiredTextures = [...this.load.list].map(file => file.key);
     this.hooks.loadProgress?.(0, this.requiredTextures.length);
   }
@@ -147,6 +153,8 @@ export class BattleScene extends Phaser.Scene {
     this.bossCharmView = new BossCharmView(this, this.pixelDensity);
     this.combatEffects = new CombatEffects(this);
     this.ilyraView = new IlyraView(this);
+    this.heroMarks = new HeroMarks(this);
+    this.maraSpell = new MaraSpellView(this);
     this.ghostBase = this.add.image(0, 0, KEYS.tower).setVisible(false).setDepth(5900);
     this.ghostWeapon = this.add.image(0, 0, KEYS.weapon).setVisible(false).setDepth(5901);
     this.buffText = this.add.text(0, 0, '', { fontFamily: 'Segoe UI', fontSize: '12px', fontStyle: 'bold',
@@ -183,6 +191,7 @@ export class BattleScene extends Phaser.Scene {
       this.input.off('wheel', this.zoomAtPointer, this);
       this.scale.off('resize', this.resizeCamera, this);
       this.bossCharmView.destroy(); this.combatEffects.destroy();
+      this.heroMarks.destroy(); this.maraSpell.destroy(); this.ilyraView.destroy();
       this.forest?.destroy(); this.forest = undefined;
       this.padLabels.clear(); this.padMarks.clear(); this.towerViews.clear(); this.enemyViews.clear(); this.shotViews.clear();
     });
@@ -552,16 +561,13 @@ export class BattleScene extends Phaser.Scene {
   }
   private drawSelection(): void {
     const g = this.selection; g.clear(); this.ghostBase.setVisible(false); this.ghostWeapon.setVisible(false);
+    this.heroMarks.update(this.sim, this.selectedHero);
     const size = this.sim.layout.cellSize;
     if (this.selectedHero) {
       const actor = this.selectedHero === 'mara' ? this.sim.mara : this.sim.ilyra;
       if (actor) {
         const color = this.selectedHero === 'mara' ? 0xffdd83 : 0x91d5f7;
-        g.fillStyle(color, .22).fillEllipse(actor.x, actor.y + 2, 36, 18);
-        g.lineStyle(2.5, color, 1).strokeEllipse(actor.x, actor.y + 2, 38, 20);
         g.lineStyle(1, color, .4).strokeCircle(actor.x, actor.y, this.selectedHero === 'mara' ? MARA.range : ILYRA.range);
-        const destination = actor.path.at(-1);
-        if (destination) { g.lineStyle(2, color, .85).strokeCircle(destination.x, destination.y, 12); g.lineBetween(destination.x - 5, destination.y, destination.x + 5, destination.y); }
         if (this.selectedHero === 'ilyra' && this.heroSuggestion && !actor.path.length && this.sim.ilyra?.introduction !== 'done' && !this.ilyraMode) {
           const p = this.heroSuggestion;
           g.lineStyle(2, 0xffdd83, .9).strokeRect(p.x - size / 2 + 2, p.y - size / 2 + 2, size - 4, size - 4);
@@ -668,35 +674,11 @@ export class BattleScene extends Phaser.Scene {
       const age = charmAge(sim.bossCharm), wobble = charmed ? Math.sin(age * 8) * 0.035 : 0;
       const tremble = charmed ? Math.sin(age * 31) * 0.65 : 0;
       const tint = charmed ? Phaser.Display.Color.GetColor(255, Math.round(192 + Math.sin(age * 5) * 22), Math.round(229 + Math.sin(age * 5) * 10))
-        : boosted ? 0xffedbe : 0xffffff;
+        : 0xffffff;
       view.base.setPosition(tower.x + tremble * 0.6, tower.y + mount.baseY).setRotation(wobble * 0.4).setTint(tint);
       view.weapon.setPosition(tower.x + tremble, tower.y + mount.weaponY).setFrame(Math.max(0, frame)).setRotation((tower.def.id === 2 ? 0 : tower.angle) + wobble).setTint(tint);
-      if (boosted) {
-        const alpha = 0.45 + Math.sin(elapsed * 7) * 0.15;
-        // A warm, quiet aura distinguishes support from the boss's pink wobble.
-        this.effects.fillStyle(0xffdb79, alpha * 0.15).fillEllipse(tower.x, tower.y - 18, 43, 64);
-        this.effects.lineStyle(6, 0xffd46d, alpha * 0.22).strokeEllipse(tower.x, tower.y + 12, 43, 22);
-        this.effects.lineStyle(2, 0xf5d58b, alpha).strokeEllipse(tower.x, tower.y + 12, 40, 19);
-        const source = { x: sim.mara.x, y: sim.mara.y - 21 }, goal = { x: tower.x, y: tower.y - 32 };
-        const length = Math.hypot(goal.x - source.x, goal.y - source.y);
-        const point = (t: number) => ({ x: source.x + (goal.x - source.x) * t,
-          y: source.y + (goal.y - source.y) * t - Math.sin(Math.PI * t) * Math.min(24, length * 0.28) });
-        const link = (width: number, opacity: number) => {
-          this.effects.lineStyle(width, 0xffdc83, opacity).beginPath().moveTo(source.x, source.y);
-          for (let i = 1; i <= 16; i++) { const p = point(i / 16); this.effects.lineTo(p.x, p.y); }
-          this.effects.strokePath();
-        };
-        link(5, 0.12); link(1.4, 0.7);
-        const spark = point(((MARA.duration - sim.mara.effectRemaining) * 0.7) % 1);
-        this.effects.fillStyle(0xfff2ba, 0.95).fillRect(spark.x - 2, spark.y - 2, 4, 4);
-        this.effects.lineStyle(3, 0xffe3a5, 0.95).beginPath().arc(tower.x, tower.y + 3, 24, -Math.PI/2, -Math.PI/2 + Math.PI * 2 * sim.mara.effectRemaining / MARA.duration, false).strokePath();
-        const spellAge = MARA.duration - sim.mara.effectRemaining;
-        if (spellAge < 0.4) {
-          const f = spellAge / 0.4;
-          this.effects.fillStyle(0xffe8a7, 1).fillCircle(sim.mara.x + (tower.x - sim.mara.x) * f, sim.mara.y - 15 + (tower.y - sim.mara.y) * f, 5);
-        }
-      }
     }
+    this.maraSpell.update(sim, this.towerViews);
     const enemies = new Set(sim.enemies.map(enemy => enemy.uid));
     for (const [uid, view] of this.enemyViews) if (!enemies.has(uid)) { view.sprite.destroy(); view.shadow.destroy(); this.enemyViews.delete(uid); }
     for (const enemy of sim.enemies) {
@@ -754,7 +736,7 @@ export class BattleScene extends Phaser.Scene {
     this.wispName.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y + 13);
     this.ilyraView.update(sim);
     const mara = sim.mara, acting = mara.effectRemaining > 0 && sim.isMaraBoosted(mara.effectTowerUid ?? -1);
-    this.mara.setPosition(mara.x, mara.y).setFrame(maraFrame(mara.direction, mara.path.length > 0, acting, elapsed)).setDepth(mara.y + 1002);
+    this.mara.setPosition(mara.x, mara.y).setFrame(maraFrame(this.maraSpell.castDirection ?? mara.direction, mara.path.length > 0, !!this.maraSpell.castDirection, elapsed)).setDepth(mara.y + 1002);
     this.maraShadow.setPosition(mara.x, mara.y + 1).setDepth(mara.y + 999);
     this.maraName.setPosition(mara.x, mara.y + 13).setText(t(acting ? t('Mara · Übertakten') : mara.unreachable ? t('Mara · kein Zugang') : 'Mara'));
     this.bossCharmView.draw(sim, this.portraitCamera);

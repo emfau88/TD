@@ -188,8 +188,9 @@ function maraEffect(age:number,time:number){
 function render(){
  if(!scene||!visual||!scene.textures.exists('art-ilyra-ring'))return;
  clearArt();scene.selection.clear();scene.effects.clear();scene.buffText.setVisible(false);
- // Hide only the former Ilyra effect graphics; keep her genuine character sprite and cast frames.
- for(const g of [scene.ilyraView.ground,scene.ilyraView.cast,scene.ilyraView.impact,...scene.ilyraView.stars])g.clear();
+ // Hide the live spell layers; this archived prototype supplies its own posed effects.
+ scene.ilyraView.spell.sprites.begin();scene.ilyraView.spell.field.clear();
+ scene.maraSpell.sprites.begin();scene.heroMarks.sprites.begin();scene.heroMarks.light.clear();
  const time=(performance.now()-started)/1000;
  el('art-label').textContent=`ENTWURF V3 · ${labels[mode]}`;
  const mara=mode.startsWith('mara');selection(mara?'mara':'ilyra',time);

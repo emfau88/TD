@@ -1,0 +1,14 @@
+[
+  {
+    "legacyTestLink": true,
+    "probeIsolated": true
+  },
+  {
+    "legacyGalleryLink": true,
+    "queryAndHashPreserved": true,
+    "images": true,
+    "videoPlays": true,
+    "noOverflow": true,
+    "errors": []
+  }
+]
