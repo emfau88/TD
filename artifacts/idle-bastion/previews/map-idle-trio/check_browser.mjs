@@ -16,6 +16,7 @@ try{
   for(const id of ['mara-hip','mara-hair','ilyra-hip']){
    await p.locator(`nav a[href="#${id}"]`).click();
    const img=p.locator(`#${id} img`);await img.evaluate(i=>i.decode());
+   assert.ok((await img.getAttribute('src')).endsWith('-V2.gif'));
    assert.equal((await img.boundingBox()).width,width);
    const hashes=[];
    for(let i=0;i<4;i++){
@@ -24,11 +25,11 @@ try{
    }
    assert.ok(new Set(hashes).size>1,`${id} must animate`);
    assert.equal(await p.locator(`#${id} a[download]`).getAttribute('href'),await img.getAttribute('src'));
-   await img.screenshot({path:`qa/ilyra-map-idle/trio/${id}-${width}.png`});
+   await img.screenshot({path:`qa/ilyra-map-idle/trio/${id}-${width}-v2.png`});
    results.push({pose:id,width,loads:true,animates:true,downloadTargetsGif:true,noHorizontalOverflow:true});
   }
   assert.deepEqual(errors,[]);await context.close();
  }
- await writeFile(join(here,'browser-checks.json'),JSON.stringify({mobileEmulation:true,physicalPhone:false,errors:[],results},null,2)+'\n');
+ await writeFile(join(here,'browser-checks-v2.json'),JSON.stringify({version:2,mobileEmulation:true,physicalPhone:false,errors:[],results},null,2)+'\n');
  console.log(JSON.stringify(results));
 }finally{await browser.close();}

@@ -1,0 +1,56 @@
+{
+  "version": 2,
+  "mobileEmulation": true,
+  "physicalPhone": false,
+  "errors": [],
+  "results": [
+    {
+      "pose": "mara-hip",
+      "width": 320,
+      "loads": true,
+      "animates": true,
+      "downloadTargetsGif": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "pose": "mara-hair",
+      "width": 320,
+      "loads": true,
+      "animates": true,
+      "downloadTargetsGif": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "pose": "ilyra-hip",
+      "width": 320,
+      "loads": true,
+      "animates": true,
+      "downloadTargetsGif": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "pose": "mara-hip",
+      "width": 390,
+      "loads": true,
+      "animates": true,
+      "downloadTargetsGif": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "pose": "mara-hair",
+      "width": 390,
+      "loads": true,
+      "animates": true,
+      "downloadTargetsGif": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "pose": "ilyra-hip",
+      "width": 390,
+      "loads": true,
+      "animates": true,
+      "downloadTargetsGif": true,
+      "noHorizontalOverflow": true
+    }
+  ]
+}

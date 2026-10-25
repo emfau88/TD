@@ -1,0 +1,82 @@
+{
+  "version": 2,
+  "poses": [
+    {
+      "pose": "mara-hip",
+      "gif": "Mara-Hip-Shift-Handy-V2.gif",
+      "frames": 53,
+      "loopMs": 3400,
+      "bytes": 402998,
+      "endpointsIdentical": true,
+      "keyBoundariesContinuous": true,
+      "midpointMaximumMeanDelta": 0.00128173828125,
+      "feetFixed": true,
+      "headFixed": true,
+      "spearFixed": false,
+      "noClipping": true,
+      "motionStepMsMax": 50,
+      "equalTime50msImageDelta": {
+        "before": {
+          "maxMeanRgbJump": 7.104654947916667,
+          "p95MeanRgbJump": 4.7737386067708325
+        },
+        "after": {
+          "maxMeanRgbJump": 1.243408203125,
+          "p95MeanRgbJump": 1.0248779296875
+        }
+      }
+    },
+    {
+      "pose": "mara-hair",
+      "gif": "Mara-Hair-Adjust-Handy-V2.gif",
+      "frames": 49,
+      "loopMs": 3200,
+      "bytes": 369418,
+      "endpointsIdentical": true,
+      "keyBoundariesContinuous": true,
+      "midpointMaximumMeanDelta": 0.00164794921875,
+      "feetFixed": true,
+      "headFixed": true,
+      "spearFixed": false,
+      "noClipping": true,
+      "motionStepMsMax": 50,
+      "equalTime50msImageDelta": {
+        "before": {
+          "maxMeanRgbJump": 4.8681640625,
+          "p95MeanRgbJump": 4.174031575520834
+        },
+        "after": {
+          "maxMeanRgbJump": 1.0701497395833333,
+          "p95MeanRgbJump": 0.6379150390625
+        }
+      }
+    },
+    {
+      "pose": "ilyra-hip",
+      "gif": "Ilyra-Hip-Shift-Handy-V2.gif",
+      "frames": 62,
+      "loopMs": 3900,
+      "bytes": 382297,
+      "endpointsIdentical": true,
+      "keyBoundariesContinuous": true,
+      "midpointMaximumMeanDelta": 0.00103759765625,
+      "feetFixed": true,
+      "headFixed": true,
+      "spearFixed": true,
+      "noClipping": true,
+      "motionStepMsMax": 50,
+      "equalTime50msImageDelta": {
+        "before": {
+          "maxMeanRgbJump": 5.209798177083333,
+          "p95MeanRgbJump": 4.54609375
+        },
+        "after": {
+          "maxMeanRgbJump": 1.0227864583333333,
+          "p95MeanRgbJump": 0.5975911458333334
+        }
+      }
+    }
+  ],
+  "protectedPathsUnchanged": true,
+  "metricCaveat": "Equal-time frame differences measure abrupt image changes, not subjective flicker quality or a physical phone test."
+}

@@ -2,7 +2,27 @@
 
 Nur Prototypen auf `codex/map-idle-trio-preview`, ausgehend vom freigegebenen Speer-Vorschau-Stand `ed6a4e3` (Spielbasis Main `f5b4a6f`). Kein Merge, Deployment oder Einbau ins Spiel. Die bereits akzeptierte Ilyra-Speer-/Pole-Vorschau bleibt unverändert.
 
-## Handy-GIFs
+## V2 · Korrektur des Flimmerns
+
+Nach Nutzerfeedback zu allen drei Loops wurde nur die Vorschau-Aufbereitung korrigiert. Keine neuen Zeichnungen oder generierten Posen. Die ursprünglichen Quellen, Schlüsselbilder und V1-GIFs bleiben erhalten.
+
+| Aktuelle Vorschau | GIF-Frames | Loop | Größe |
+| --- | ---: | ---: | ---: |
+| [Mara Hip Shift V2](Mara-Hip-Shift-Handy-V2.gif) | 53 | 3,40 s | 402.998 Bytes |
+| [Mara Hair Adjust V2](Mara-Hair-Adjust-Handy-V2.gif) | 49 | 3,20 s | 369.418 Bytes |
+| [Ilyra Hip Shift V2](Ilyra-Hip-Shift-Handy-V2.gif) | 62 | 3,90 s | 382.297 Bytes |
+
+Ursache: Der V1-Renderer wechselte bei der Hälfte jedes Übergangs abrupt von der ersten zur zweiten Quellzeichnung. Unterschiedliche kleine Highlights, Gesichtszüge und Konturen wurden dadurch schlagartig sichtbar. Nächste-Nachbar-Abtastung plus binäre Zwischenbild-Alpha-Schwelle verstärkten die Pixelsprünge. Die bisherigen Prüfungen für Füße/Speer/Loop allein erfassten dieses Problem nicht.
+
+V2 verwendet durchgängige, beidseitig bewegungsangepasste Interpolation für Körper und Arme, vormultipliziertes Alpha, Subpixel-Abtastung und eine einheitliche Rekonstruktionsfilterung. Die bewegten Abschnitte bekommen 40–50 ms pro Bild, entsprechend etwa 20–25 fps. Looplängen und Gestenphasen bleiben erhalten. Kopf/Gesicht und obere Haare kommen durchgehend aus derselben Ruhepose; damit entfällt dort das Detailflackern vollständig. Die Kopfbewegung ist bewusst zurückgenommen, während Hüftverlagerung und Armgesten erhalten bleiben. Die bewegten Körperkonturen sind etwas weicher als bei V1. Füße, Ilyras Speer und die gemeinsame GIF-Palette bleiben stabil.
+
+[V2-Medienprüfung](stable-checks.json): kein harter Wechsel in der Übergangsmitte, identische Anschlüsse zwischen Schlüsselphasen und am Loopende, fester Kopf/Fuß/Speer, freie Bildränder, ursprüngliche Quellen/Produktionsdateien und akzeptierte Pole-Vorschau unverändert. Bei gleichmäßiger 50-ms-Abtastung sinkt der größte mittlere RGB-Bildsprung der 1×-Figur von 7,10 auf 1,24 (Mara Hip), 4,87 auf 1,07 (Hair) und 5,21 auf 1,02 (Ilyra Hip). Das belegt kleinere abrupte Bildänderungen, ersetzt aber keine subjektive Nutzerfreigabe.
+
+[V2-Browserprüfung](browser-checks-v2.json): alle drei neuen GIFs laden und animieren bei 320×568 und 390×844 ohne horizontalen Überlauf oder Seitenfehler; Downloadziele geprüft. Mobile Emulation, kein physisches Handy. Die [Übersicht](index.html) zeigt jetzt V2. Kontaktbögen und Einzelbilder liegen unter `<Pose>/stable/`. Weiterhin nur Vorschau, kein Merge/Deployment. Kein Produktionsbuild oder Spieltestlauf nötig, da der Spielcode und seine Assets unverändert sind.
+
+Reproduktion der Korrektur: `python artifacts/idle-bastion/previews/map-idle-trio/build_stable.py`, anschließend `check_stable.py` und `node artifacts/idle-bastion/previews/map-idle-trio/check_browser.mjs`. Die bestehende V1-Aufbereitung bleibt separat reproduzierbar.
+
+## Ursprüngliche Handy-GIFs · V1
 
 | Pose | Datei | GIF-Frames | Loop | Größe |
 | --- | --- | ---: | ---: | ---: |
