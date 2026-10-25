@@ -1,0 +1,13 @@
+Create ONE transparent pixel-art animation sprite sheet for a small top-down fantasy tower-defense MAP character. This is an adult character (late twenties). Use the supplied actual INGAME sprite sheet as authoritative identity, proportions, costume, palette and art style. Preserve clothing coverage and all existing equipment. No redesign, no portrait/tavern illustration. Crisp broad pixel clusters, dark outline, restrained palette, no blur. The final body will be only about 38-40 pixels tall, so prioritize unmistakable arm silhouettes and hip offsets, not fingers or facial micro-details.
+
+OUTPUT exactly 8 full-body poses in 4 columns x 2 rows on a 1536x1024 transparent sheet. Each cell 384x512. Read left-to-right then next row. Same character exactly once per cell, identical scale, front/three-quarter view like first idle frame in reference. Body head-to-foot height around 360px; feet at y=465 in EVERY cell, left boot center x=170 and right boot center x=230 in EVERY cell, neutral pelvis centered x=200. Both boots ALWAYS planted at those same positions, no walking, sliding, foot crossing, leg teleport or leg-length changes. Keep all equipment inside cell. No background, ground, shadows, particles, grid, captions or labels. True alpha transparency. Pose 8 matches pose 1 for loop closure. This is a new preview sheet, not edits to existing walk/cast frames.
+
+MARA: red/copper hair with long braid, teal cape/scarf and light fur collar, dark burgundy top, brown gloves and boots, trousers, brass belt, small teal potion vials. The turquoise-headed wrench in her image-right hand remains steady and readable; no casting glow. Cheeky, charming, slightly flirty, confident, calm.
+Pose 1 original neutral map idle, free image-left hand low at side.
+Pose 2 free image-left elbow starts opening away from torso, hand approaches waist, hip starts shifting toward image-left.
+Pose 3 hand clearly rests on outside hip/side, elbow visibly juts out as triangular negative space, hips displaced image-left, shoulders countertilt image-right.
+Pose 4 fullest but natural hip shift, planted boots unchanged; clear S-shaped balance, hand resting firmly on hip, head playful tilt, wrench arm steady.
+Pose 5 small living followthrough of same pose, braid/cape settles a little, keep strong hip silhouette.
+Pose 6 smoothly reduce hip offset, hand begins leaving hip, elbow narrows.
+Pose 7 return weight towards center, hand descends to side.
+Pose 8 same original neutral idle as pose 1. No jumping, new props or exaggerated comedy.

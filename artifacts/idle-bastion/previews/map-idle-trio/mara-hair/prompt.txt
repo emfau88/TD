@@ -1,0 +1,13 @@
+Create ONE transparent pixel-art animation sprite sheet for a small top-down fantasy tower-defense MAP character. This is an adult character (late twenties). Use the supplied actual INGAME sprite sheet as authoritative identity, proportions, costume, palette and art style. Preserve clothing coverage and all existing equipment. No redesign, no portrait/tavern illustration. Crisp broad pixel clusters, dark outline, restrained palette, no blur. The final body will be only about 38-40 pixels tall, so prioritize unmistakable arm silhouettes and hip offsets, not fingers or facial micro-details.
+
+OUTPUT exactly 8 full-body poses in 4 columns x 2 rows on a 1536x1024 transparent sheet. Each cell 384x512. Read left-to-right then next row. Same character exactly once per cell, identical scale, front/three-quarter view like first idle frame in reference. Body head-to-foot height around 360px; feet at y=465 in EVERY cell, left boot center x=170 and right boot center x=230 in EVERY cell, neutral pelvis centered x=200. Both boots ALWAYS planted at those same positions, no walking, sliding, foot crossing, leg teleport or leg-length changes. Keep all equipment inside cell. No background, ground, shadows, particles, grid, captions or labels. True alpha transparency. Pose 8 matches pose 1 for loop closure. This is a new preview sheet, not edits to existing walk/cast frames.
+
+MARA: red/copper hair and long braid, teal cape/scarf and light fur collar, burgundy top, brown gloves and boots, dark trousers, brass belt and teal potion vials. Keep turquoise-headed wrench steady in image-right hand, no spell effects. Charming, coquettish and playful but grounded.
+Pose 1 original neutral map idle, free image-left hand low at side.
+Pose 2 free image-left elbow lifts clearly outward, forearm crossing upward towards shoulder, head upright.
+Pose 3 elbow at shoulder height and separated from torso, hand touches hair at image-left temple, clear raised bent-arm silhouette.
+Pose 4 fingers/hand sweep a small lock back above the ear, elbow opens outward; do NOT cover the face. Head tilts gently toward lifted hand.
+Pose 5 hair-adjust finishes with hand at back/side of head, bent elbow remains unmistakable; braid and loose hair have a small followthrough.
+Pose 6 free hand slides down from hair towards shoulder, elbow starts lowering.
+Pose 7 arm relaxes back down, hair settles.
+Pose 8 same neutral idle as pose 1. Movement must be readable from arm shape at tiny map size. No finger detail as main action, no floating detached hand, no jumping, no full body turns.

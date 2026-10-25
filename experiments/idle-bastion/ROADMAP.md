@@ -1,12 +1,18 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Mara/Ilyra · drei weitere Karten-Idles · 25.10.2026, nur Vorschau auf `codex/map-idle-trio-preview`. Kein Merge/Deployment.**
+
+- [x] Mara Hip Shift mit Hand an der Seite, Mara Hair Adjust und Ilyra Hip Shift aus den tatsächlichen Laufzeitsprites und zugehörigen Referenzen erstellt. Je sieben Schlüsselposen mit Zwischenbildern, feste Fußanker; Ilyras Speer bleibt stabil. Akzeptierte Speer-/Pole-Vorschau vollständig erhalten.
+- [x] Drei separate Handy-GIFs mit Kartenmaßstab neben Originalsprite und 4×-Detail: 18/20/22 exportierte Frames, 3,4/3,2/3,9 Sekunden. Medienprüfung und alle sechs mobilen Browserfälle bei 320/390 Pixeln bestanden. [GIFs, Quellen, Reproduktion und Grenzen](../../artifacts/idle-bastion/previews/map-idle-trio/README.md).
+- [ ] Visuelle Nutzerabnahme der drei neuen Posen. Ausschließlich frontale Prototypen; keine Spielintegration, keine Gameplay-/Lauf-/Kampf-/Zauberänderungen.
+
 **Ilyra · Karten-Idle mit Speer · 25.10.2026, ausschließlich Vorschau auf `codex/ilyra-map-idle-preview` ab Main `f5b4a6f`. Kein Merge/Deployment.**
 
 - [x] Tatsächlichen Kartenatlas und Zeichenmaßstab gelesen; acht klare Schlüsselposen aus der Laufzeit-Ilyra und ihrer zugehörigen freigegebenen Standreferenz abgeleitet. Speer heben/setzen, deutlicher Hüftakzent, kurze Drehgeste mit gebeugtem Bein, Rückkehr in Idle. 64×64-Vorschauframes mit Fußpunkt (32,56), gemeinsame Skalierung und feste Speerachse während der Geste.
 - [x] Handy-GIF 390×680 mit 3,2-s-Loop: oben 1× neben unverändertem Originalsprite und Originalrasen/Turm, unten 4×-Detail. Acht Posen, neun GIF-Phasen einschließlich identischer Ruhe-Endpunkte, ca. 98 KB. GIF-Wiedergabe bei 390/320 Pixeln, Alpha, Rahmenränder und Erhalt der Produktionsassets geprüft. [GIF, Quellen und Aufbereitung](../../artifacts/idle-bastion/previews/ilyra-map-idle/README.md).
 - [x] Nutzerkorrektur der Vorschau: dunkles Speerschaft-Flackern durch gezielte Abtastung des goldenen Quellstreifens korrigiert. Dieselben acht Posen mit 16 interpolierten Zwischenbildern, unverändert 3,2 Sekunden; V2-GIF ca. 234 KB, weiterhin Originalmaßstab plus Detailansicht. Rohquelle/V1 und Produktionsdateien erhalten; Medienprüfung und mobile Vorschauseite bei 390/320 Pixeln geprüft.
 - [x] V3 nach Nutzerfeedback: Hüftpose um 720 ms mit kleinem weiterlaufenden Bewegungsbogen verlängert; beim Rückweg festen Idle-Unterkörper und auslaufende Oberkörperinterpolation verwendet, damit Beine/Füße nicht mehr zusammenrutschen. 33 Frames / 3,92 s; Schaftfarbe, bewegter Akzent, fester Rückkehrstand, Loop und mobile Darstellung bei 320/390 Pixeln geprüft. Frühere Vorschauen erhalten.
-- [ ] Visuelle Nutzerabnahme der V3. Nur Frontrichtung/Prototyp; keine Integration, kein Austausch der Lauf-/Kampf-/Zaubergrafik und keine Gameplayänderung. Weitere Richtungen, Idle-Auslöseplanung und Übergänge erst nach gesonderter Freigabe.
+- [x] Visuelle Nutzerabnahme der V3: „Ja das ist super“. Nur Frontrichtung/Prototyp; keine Integration, kein Austausch der Lauf-/Kampf-/Zaubergrafik und keine Gameplayänderung. Weitere Richtungen, Idle-Auslöseplanung und Übergänge erst nach gesonderter Freigabe.
 
 **Quick Win · Maras erste Offline-Begrüßung · 25.10.2026, Branch `codex/mara-offline-welcome` ab Main `a732403`; Main-Übernahme und Pages nach mobiler Dialogkorrektur ausdrücklich freigegeben.**
 

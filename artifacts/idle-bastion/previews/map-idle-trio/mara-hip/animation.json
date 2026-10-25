@@ -1,0 +1,98 @@
+{
+  "previewOnly": true,
+  "frameSize": [
+    64,
+    64
+  ],
+  "foot": [
+    32,
+    56
+  ],
+  "sourceAnchors": [
+    [
+      205.25,
+      484
+    ],
+    [
+      202.5,
+      484
+    ],
+    [
+      199.0,
+      484
+    ],
+    [
+      199.75,
+      484
+    ],
+    [
+      200.25,
+      452
+    ],
+    [
+      200.75,
+      452
+    ],
+    [
+      197.25,
+      452
+    ]
+  ],
+  "sourceScale": 0.09,
+  "authoredPoses": 7,
+  "intermediates": 14,
+  "frames": 22,
+  "durationsMs": [
+    650,
+    80,
+    80,
+    80,
+    80,
+    100,
+    80,
+    100,
+    120,
+    100,
+    200,
+    200,
+    200,
+    130,
+    140,
+    130,
+    100,
+    120,
+    100,
+    100,
+    110,
+    400
+  ],
+  "loopMs": 3400,
+  "gifFrames": 18,
+  "gifDurationsMs": [
+    730,
+    80,
+    80,
+    80,
+    100,
+    180,
+    120,
+    100,
+    200,
+    530,
+    140,
+    130,
+    100,
+    120,
+    100,
+    100,
+    110,
+    400
+  ],
+  "fixedBootsY": 51,
+  "source": "source/poses-v2.png",
+  "sourceSha256": "5c0131d4e6dc9b83b6db55df4413e471038d70fd86eb2b11b72ace934cafb4cf",
+  "fixedSpearRight": null,
+  "gif": "Mara-Hip-Shift-Handy.gif",
+  "gifBytes": 121989,
+  "method": "Imagegen key poses, shared scale/boot anchor, binary alpha; nearest-source DIS interpolation, no crossfade"
+}

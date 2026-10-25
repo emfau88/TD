@@ -1,0 +1,14 @@
+Create ONE transparent pixel-art animation sprite sheet for a small top-down fantasy tower-defense MAP character. This is an adult character (late twenties). Use the supplied actual INGAME sprite sheet as authoritative identity, proportions, costume, palette and art style. Preserve clothing coverage and all existing equipment. No redesign, no portrait/tavern illustration. Crisp broad pixel clusters, dark outline, restrained palette, no blur. The final body will be only about 38-40 pixels tall, so prioritize unmistakable arm silhouettes and hip offsets, not fingers or facial micro-details.
+
+OUTPUT exactly 8 full-body poses in 4 columns x 2 rows on a 1536x1024 transparent sheet. Each cell 384x512. Read left-to-right then next row. Same character exactly once per cell, identical scale, front/three-quarter view like first idle frame in reference. Body head-to-foot height around 360px; feet at y=465 in EVERY cell, left boot center x=170 and right boot center x=230 in EVERY cell, neutral pelvis centered x=200. Both boots ALWAYS planted at those same positions, no walking, sliding, foot crossing, leg teleport or leg-length changes. Keep all equipment inside cell. No background, ground, shadows, particles, grid, captions or labels. True alpha transparency. Pose 8 matches pose 1 for loop closure. This is a new preview sheet, not edits to existing walk/cast frames.
+
+ILYRA: first reference is actual runtime atlas; second is larger approved design for clarification only. White flowing hair, warm skin, gold goggles/head ornament, blue-white-gold outfit and boots, blue cape, gold-shafted blue crystal spear held in image-left hand. SAME modest costume coverage as reference, no nudity. Adult confident elegance, openly flirtatious strong pose, more deliberate and poised than playful Mara.
+The spear stays rigid vertical at image-left, gold shaft consistently visible, same blade and butt positions throughout, normal waist/chest-height grip. No lifting spear, NO POLE DANCE, no dancing around it, no high grip. This is a separate elegant HIP SHIFT.
+Pose 1 strong neutral map idle with feet firmly planted, free hand relaxed beside body.
+Pose 2 hips begin clearly shifting toward image-right, upper torso counterbalances subtly image-left.
+Pose 3 free hand rests lightly at high outer hip, elbow forms readable silhouette, pronounced hip offset.
+Pose 4 strongest elegant contrapposto S-curve: confident upright open chest/shoulders, hip clearly extended to image-right, one knee softened but boots stay fixed; poised and tasteful, no bending over.
+Pose 5 small graceful settling movement with cape/hair followthrough, maintain hip silhouette rather than freezing.
+Pose 6 release hip pose gradually, free hand comes away, torso centers.
+Pose 7 almost neutral balance, hand relaxing.
+Pose 8 same original neutral idle as pose 1. No change to perspective, no pole dance, no casts or attacks.

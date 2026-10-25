@@ -1,0 +1,100 @@
+{
+  "previewOnly": true,
+  "frameSize": [
+    64,
+    64
+  ],
+  "foot": [
+    32,
+    56
+  ],
+  "sourceAnchors": [
+    [
+      196.0,
+      483
+    ],
+    [
+      193.75,
+      482
+    ],
+    [
+      194.75,
+      483
+    ],
+    [
+      194.75,
+      483
+    ],
+    [
+      196.75,
+      451
+    ],
+    [
+      194.25,
+      451
+    ],
+    [
+      196.25,
+      451
+    ]
+  ],
+  "sourceScale": 0.09,
+  "authoredPoses": 7,
+  "intermediates": 14,
+  "frames": 22,
+  "durationsMs": [
+    650,
+    80,
+    100,
+    80,
+    100,
+    120,
+    100,
+    100,
+    100,
+    100,
+    150,
+    160,
+    150,
+    100,
+    120,
+    100,
+    80,
+    100,
+    80,
+    90,
+    100,
+    440
+  ],
+  "loopMs": 3200,
+  "gifFrames": 20,
+  "gifDurationsMs": [
+    730,
+    100,
+    80,
+    100,
+    120,
+    100,
+    100,
+    100,
+    100,
+    150,
+    160,
+    150,
+    100,
+    120,
+    100,
+    80,
+    100,
+    170,
+    100,
+    440
+  ],
+  "fixedBootsY": 51,
+  "source": "source/poses.png",
+  "sourceSha256": "4dc3e89215323ca6b788be546ade479343fb84e6c711a95b1b9db986b56dc5f3",
+  "fixedSpearRight": null,
+  "gif": "Mara-Hair-Adjust-Handy.gif",
+  "gifBytes": 127845,
+  "method": "Imagegen key poses, shared scale/boot anchor, binary alpha; nearest-source DIS interpolation, no crossfade"
+}

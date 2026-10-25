@@ -1,0 +1,102 @@
+{
+  "previewOnly": true,
+  "frameSize": [
+    64,
+    64
+  ],
+  "foot": [
+    32,
+    56
+  ],
+  "sourceAnchors": [
+    [
+      216.0,
+      498
+    ],
+    [
+      201.5,
+      499
+    ],
+    [
+      189.5,
+      500
+    ],
+    [
+      180.5,
+      500
+    ],
+    [
+      216.0,
+      497
+    ],
+    [
+      200.75,
+      497
+    ],
+    [
+      186.0,
+      497
+    ]
+  ],
+  "sourceScale": 0.095,
+  "authoredPoses": 7,
+  "intermediates": 14,
+  "frames": 22,
+  "durationsMs": [
+    650,
+    100,
+    120,
+    100,
+    120,
+    120,
+    120,
+    140,
+    160,
+    140,
+    210,
+    230,
+    210,
+    130,
+    140,
+    130,
+    120,
+    120,
+    120,
+    120,
+    130,
+    470
+  ],
+  "loopMs": 3900,
+  "gifFrames": 22,
+  "gifDurationsMs": [
+    650,
+    100,
+    120,
+    100,
+    120,
+    120,
+    120,
+    140,
+    160,
+    140,
+    210,
+    230,
+    210,
+    130,
+    140,
+    130,
+    120,
+    120,
+    120,
+    120,
+    130,
+    470
+  ],
+  "fixedBootsY": 51,
+  "source": "source/poses.png",
+  "sourceSha256": "bedc3c3c74057ea772a8d7833b031b14a6f1dcc85fa07b58c5bd52ccdfeb2b14",
+  "fixedSpearRight": 26,
+  "gif": "Ilyra-Hip-Shift-Handy.gif",
+  "gifBytes": 130868,
+  "method": "Imagegen key poses, shared scale/boot anchor, binary alpha; nearest-source DIS interpolation, no crossfade"
+}

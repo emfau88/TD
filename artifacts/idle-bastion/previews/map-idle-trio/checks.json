@@ -1,0 +1,58 @@
+{
+  "previewOnly": true,
+  "poses": [
+    {
+      "pose": "mara-hip",
+      "gif": "Mara-Hip-Shift-Handy.gif",
+      "frames": 18,
+      "sampledFrames": 22,
+      "uniqueFrames": 20,
+      "loopMs": 3400,
+      "identicalEndpoints": true,
+      "binaryAlpha": true,
+      "noClipping": true,
+      "fixedBoots": true,
+      "fixedSpear": false,
+      "bytes": 121989
+    },
+    {
+      "pose": "mara-hair",
+      "gif": "Mara-Hair-Adjust-Handy.gif",
+      "frames": 20,
+      "sampledFrames": 22,
+      "uniqueFrames": 21,
+      "loopMs": 3200,
+      "identicalEndpoints": true,
+      "binaryAlpha": true,
+      "noClipping": true,
+      "fixedBoots": true,
+      "fixedSpear": false,
+      "bytes": 127845
+    },
+    {
+      "pose": "ilyra-hip",
+      "gif": "Ilyra-Hip-Shift-Handy.gif",
+      "frames": 22,
+      "sampledFrames": 22,
+      "uniqueFrames": 21,
+      "loopMs": 3900,
+      "identicalEndpoints": true,
+      "binaryAlpha": true,
+      "noClipping": true,
+      "fixedBoots": true,
+      "fixedSpear": true,
+      "bytes": 130868
+    }
+  ],
+  "approvedPolePreviewFilesUnchanged": 103,
+  "productionReferencesUnchanged": [
+    "experiments/idle-bastion/assets/runtime/mara-game.webp",
+    "experiments/idle-bastion/assets/ilyra/ilyra-atlas.png",
+    "experiments/idle-bastion/assets/ilyra/sources/stand-approved.png",
+    "experiments/idle-bastion/src/art.ts",
+    "experiments/idle-bastion/src/ilyra-view.ts",
+    "experiments/idle-bastion/src/ilyra.ts",
+    "reference/src/style-assets.ts"
+  ],
+  "baseCommit": "ed6a4e3f1411217363f156be735c3901445305df"
+}
