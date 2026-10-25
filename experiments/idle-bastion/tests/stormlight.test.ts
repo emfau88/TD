@@ -8,7 +8,7 @@ import {BattleSession} from '../src/battle-session';
 import {towerSheet} from '../src/tower-atlas';
 import {towerArt,towerMount,KEYS} from '../src/art';
 import {stepIlyraMotion} from '../src/ilyra';
-import {IdleBattle,BASE,STORMLIGHT,STORM_CHAIN,stats,upgradeCost,sellValue,waveCount,waveEnemy,BATTLE_RULES_VERSION,type Enemy,type Shot} from '../src/battle';
+import {IdleBattle,BASE,STORMLIGHT,STORM_CHAIN,stats,upgradeCost,sellValue,waveCount,waveEnemy,BATTLE_RULES_VERSION, BATTLE_SCHEMA_VERSION,type Enemy,type Shot} from '../src/battle';
 import {certifyFarm,isFarmCertificateValid} from '../src/farming';
 import {waveRecipe} from '../src/wave-recipes';
 import {beginAbsence,createOfflineState,reserveOffline,claimOffline,restoreOffline} from '../src/offline';
@@ -54,8 +54,8 @@ test('in-flight hops survive upgrade, sale and reload exactly; forged payloads a
  const b=liveChain(),shot=b.shots.find(s=>s.kind===5&&s.chainHits!.length>0)!,owner=b.towers.find(t=>t.uid===shot.towerUid)!;
  const damage=shot.damage;assert.ok(b.upgrade(owner.uid));assert.equal(shot.damage,damage);assert.ok(b.sell(owner.uid));
  const saved=b.snapshot(),clone=IdleBattle.restore(saved);assert.ok(clone);assert.deepEqual(clone.snapshot(),saved);
- const schema29:any=structuredClone(saved);schema29.schemaVersion=29;delete schema29.tutorialFrostUid;
- assert.deepEqual(IdleBattle.restore(schema29)?.snapshot(),saved,'schema 29 retains active chain shots');
+ const schema29:any=structuredClone(saved);schema29.schemaVersion=29;schema29.rulesVersion=15;schema29.waveRecipeVersion=15;delete schema29.tutorialFrostUid;
+ assert.deepEqual(IdleBattle.restore(schema29)?.snapshot(),{...saved,waveRecipeVersion:15},'schema 29 retains active chain shots');
  const bad=structuredClone(saved),payload=bad.shots.find(s=>s.uid===shot.uid)!;payload.damage++;assert.equal(IdleBattle.restore(bad),undefined);
  for(const hits of [[shot.target],[1],Array(3).fill(shot.target)]){const invalid=structuredClone(saved);invalid.shots.find(s=>s.uid===shot.uid)!.chainHits=hits;assert.equal(IdleBattle.restore(invalid),undefined);}
  for(let i=0;i<100;i++){b.update(.025);clone.update(.025);}assert.deepEqual(clone.snapshot(),b.snapshot());
@@ -89,7 +89,7 @@ test('new farm proofs exclude active heroes; historical receipts remain exactly 
 test('schema 28 live queues and wallets migrate unchanged without granting research or rewriting shots',()=>{
  const old=JSON.parse(readFileSync(new URL('../../../artifacts/idle-bastion/acceptance/local-enemy-assets/merge-ready/view-wave54.json',import.meta.url),'utf8'));
  const b=IdleBattle.restore(old);assert.ok(b);assert.equal(b.settlement.stormResearched,false);assert.equal(b.isTowerUnlocked(5),false);
- assert.deepEqual(b.snapshot(),{...old,schemaVersion:30,tutorialFrostUid:null,rulesVersion:15,settlement:{...old.settlement,stormResearched:false}});
+ assert.deepEqual(b.snapshot(),{...old,schemaVersion:BATTLE_SCHEMA_VERSION,tutorialFrostUid:null,rulesVersion:BATTLE_RULES_VERSION,settlement:{...old.settlement,stormResearched:false}});
  const forged=structuredClone(old);forged.towers[1].kind=5;assert.equal(IdleBattle.restore(forged),undefined);
 });
 
@@ -123,7 +123,7 @@ test('Ilyra can retain the fifth tower as a sold volley source without counting 
  b.mode='farm';b.farmWave=6;b.liveClearedWaves=[1,6];(b as any).startAttempt();b.update(.9);
  assert.equal(b.ilyraPower.sourceKind,5);assert.equal(b.ilyraPower.damage,Math.round(1.5*stats(storm).damage/stats(storm).cooldown));
  assert.ok(b.castIlyraAt(b.enemies[0]));assert.ok(b.sell(storm.uid));const clone=IdleBattle.restore(b.snapshot());assert.ok(clone);
- const schema29:any=b.snapshot();schema29.schemaVersion=29;delete schema29.tutorialFrostUid;
- assert.deepEqual(IdleBattle.restore(schema29)?.snapshot(),b.snapshot(),'schema 29 retains Ilyra sourceKind 5 after sale');
+ const schema29:any=b.snapshot();schema29.schemaVersion=29;schema29.rulesVersion=15;schema29.waveRecipeVersion=15;delete schema29.tutorialFrostUid;
+ assert.deepEqual(IdleBattle.restore(schema29)?.snapshot(),{...b.snapshot(),waveRecipeVersion:15},'schema 29 retains Ilyra sourceKind 5 after sale');
  for(let i=0;i<40;i++){b.update(.025);clone.update(.025);}assert.deepEqual(clone.snapshot(),b.snapshot());assert.equal(b.ilyra!.volley!.hit,true);
 });

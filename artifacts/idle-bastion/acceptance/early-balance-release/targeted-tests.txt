@@ -1,0 +1,580 @@
+TAP version 13
+# Subtest: a legally funded Frost run stays saveable through long wave tails and wave 15
+ok 1 - a legally funded Frost run stays saveable through long wave tails and wave 15
+  ---
+  duration_ms: 3481.364
+  type: 'test'
+  ...
+# Subtest: JSON round trip preserves a live wave, its homing shots, IDs and deterministic later rewards
+ok 2 - JSON round trip preserves a live wave, its homing shots, IDs and deterministic later rewards
+  ---
+  duration_ms: 561.6073
+  type: 'test'
+  ...
+# Subtest: snapshot records are detached from the live model and from restored models
+ok 3 - snapshot records are detached from the live model and from restored models
+  ---
+  duration_ms: 30.2009
+  type: 'test'
+  ...
+# Subtest: a sold source retains its old shot level/damage and pays one kill after reload
+ok 4 - a sold source retains its old shot level/damage and pays one kill after reload
+  ---
+  duration_ms: 54.6738
+  type: 'test'
+  ...
+# Subtest: reload immediately before lethal impact and after its event never replays kill money
+ok 5 - reload immediately before lethal impact and after its event never replays kill money
+  ---
+  duration_ms: 63.7181
+  type: 'test'
+  ...
+# Subtest: last enemy and clear bonus cross the save boundary once; intermission resumes at the exact remainder
+ok 6 - last enemy and clear bonus cross the save boundary once; intermission resumes at the exact remainder
+  ---
+  duration_ms: 136.3521
+  type: 'test'
+  ...
+# Subtest: initial delay and sub-tick remainder persist without accelerating or dropping simulation time
+ok 7 - initial delay and sub-tick remainder persist without accelerating or dropping simulation time
+  ---
+  duration_ms: 48.9389
+  type: 'test'
+  ...
+# Subtest: real defeat including the escaped enemy restores and enters the identical farm transition
+ok 8 - real defeat including the escaped enemy restores and enters the identical farm transition
+  ---
+  duration_ms: 477.9687
+  type: 'test'
+  ...
+# Subtest: every sampled route corner, enemy recipe and partial update remains valid through later waves
+ok 9 - every sampled route corner, enemy recipe and partial update remains valid through later waves
+  ---
+  duration_ms: 979.2948
+  type: 'test'
+  ...
+# Subtest: invalid resources, times, references, definitions and newer formats are rejected without mutating input
+ok 10 - invalid resources, times, references, definitions and newer formats are rejected without mutating input
+  ---
+  duration_ms: 41.9851
+  type: 'test'
+  ...
+# Subtest: layout changes cannot be silently serialized under the starting-layout identity
+ok 11 - layout changes cannot be silently serialized under the starting-layout identity
+  ---
+  duration_ms: 4.1754
+  type: 'test'
+  ...
+# Subtest: free Frost commit includes consumption and tutorial exit; duplicate and failed writes cannot duplicate the kit
+ok 12 - free Frost commit includes consumption and tutorial exit; duplicate and failed writes cannot duplicate the kit
+  ---
+  duration_ms: 501.1729
+  type: 'test'
+  ...
+# Subtest: fresh persistent session commits before exposure and temporary play is explicit
+ok 13 - fresh persistent session commits before exposure and temporary play is explicit
+  ---
+  duration_ms: 102.4662
+  type: 'test'
+  ...
+# Subtest: purchase acknowledgement waits for commit and a concurrent click is rejected
+ok 14 - purchase acknowledgement waits for commit and a concurrent click is rejected
+  ---
+  duration_ms: 51.307
+  type: 'test'
+  ...
+# Subtest: write rejection rolls back the complete battle and freezes further economic actions
+ok 15 - write rejection rolls back the complete battle and freezes further economic actions
+  ---
+  duration_ms: 100.0561
+  type: 'test'
+  ...
+# Subtest: a second tab cannot simulate, load rewards or replace the active writer
+ok 16 - a second tab cannot simulate, load rewards or replace the active writer
+  ---
+  duration_ms: 50.4456
+  type: 'test'
+  ...
+# Subtest: expired epoch is taken over and the waking old tab cannot renew or overwrite newer gold
+ok 17 - expired epoch is taken over and the waking old tab cannot renew or overwrite newer gold
+  ---
+  duration_ms: 50.5483
+  type: 'test'
+  ...
+# Subtest: wave boundaries commit immediately; pure combat checkpoints at one second and flush stores the remainder
+ok 18 - wave boundaries commit immediately; pure combat checkpoints at one second and flush stores the remainder
+  ---
+  duration_ms: 54.089
+  type: 'test'
+  ...
+# Subtest: pause persists and a closed paused game receives no offline production
+ok 19 - pause persists and a closed paused game receives no offline production
+  ---
+  duration_ms: 126.7649
+  type: 'test'
+  ...
+# Subtest: corrupt/newer saves remain protected and backup recovery is explicit
+ok 20 - corrupt/newer saves remain protected and backup recovery is explicit
+  ---
+  duration_ms: 7.0999
+  type: 'test'
+  ...
+# Subtest: pending commits retain only bounded active time
+ok 21 - pending commits retain only bounded active time
+  ---
+  duration_ms: 45.288
+  type: 'test'
+  ...
+# Subtest: kill/clear notifications wait for the complete reward commit and restore never replays them
+ok 22 - kill/clear notifications wait for the complete reward commit and restore never replays them
+  ---
+  duration_ms: 240.7021
+  type: 'test'
+  ...
+# Subtest: farm certificate appears only after live clear, revalidates on upgrade and survives reload without rewards
+ok 23 - farm certificate appears only after live clear, revalidates on upgrade and survives reload without rewards
+  ---
+  duration_ms: 104.0599
+  type: 'test'
+  ...
+# Subtest: suspend releases ownership, reserves 60% offline income and blocks combat until claim plus actual continuation
+ok 24 - suspend releases ownership, reserves 60% offline income and blocks combat until claim plus actual continuation
+  ---
+  duration_ms: 77.6946
+  type: 'test'
+  ...
+# Subtest: reload/claim without active continuation preserves the same two-hour budget
+ok 25 - reload/claim without active continuation preserves the same two-hour budget
+  ---
+  duration_ms: 79.6252
+  type: 'test'
+  ...
+# Subtest: schema 29 migration preserves an already reserved offline reward exactly once
+ok 26 - schema 29 migration preserves an already reserved offline reward exactly once
+  ---
+  duration_ms: 80.1166
+  type: 'test'
+  ...
+# Subtest: failed offline claim rolls both gold and pending reward back for a safe later retry
+ok 27 - failed offline claim rolls both gold and pending reward back for a safe later retry
+  ---
+  duration_ms: 78.0532
+  type: 'test'
+  ...
+# Subtest: large frame gaps become absence and never fast-forward the live wave
+ok 28 - large frame gaps become absence and never fast-forward the live wave
+  ---
+  duration_ms: 65.7518
+  type: 'test'
+  ...
+# Subtest: actual IndexedDB integration rejects a second tab and preserves exact confirmed rewards across return
+ok 29 - actual IndexedDB integration rejects a second tab and preserves exact confirmed rewards across return
+  ---
+  duration_ms: 110.9135
+  type: 'test'
+  ...
+# Subtest: close is idempotent, stores the final combat state and releases the writer
+ok 30 - close is idempotent, stores the final combat state and releases the writer
+  ---
+  duration_ms: 32.8794
+  type: 'test'
+  ...
+# Subtest: Web Locks use a short gate, and an unavailable browser lock still permits valid IDB takeover
+ok 31 - Web Locks use a short gate, and an unavailable browser lock still permits valid IDB takeover
+  ---
+  duration_ms: 32.8109
+  type: 'test'
+  ...
+# Subtest: claims preserve the fixed absence window and continuation includes a later tail exactly once
+ok 32 - claims preserve the fixed absence window and continuation includes a later tail exactly once
+  ---
+  duration_ms: 64.0986
+  type: 'test'
+  ...
+# Subtest: a backwards clock cannot replay reserved offline time or move its cursor backwards
+ok 33 - a backwards clock cannot replay reserved offline time or move its cursor backwards
+  ---
+  duration_ms: 73.4643
+  type: 'test'
+  ...
+# Subtest: temporary play discards a large frame gap without offline gold or a return dialog
+ok 34 - temporary play discards a large frame gap without offline gold or a return dialog
+  ---
+  duration_ms: 62.0044
+  type: 'test'
+  ...
+# Subtest: background checkpoint accepts exactly one queued purchase and validates it after saving
+ok 35 - background checkpoint accepts exactly one queued purchase and validates it after saving
+  ---
+  duration_ms: 32.5138
+  type: 'test'
+  ...
+# Subtest: failed background write rejects the queued action without invoking its mutation
+ok 36 - failed background write rejects the queued action without invoking its mutation
+  ---
+  duration_ms: 33.4093
+  type: 'test'
+  ...
+# Subtest: pause click during a checkpoint persists exactly once
+ok 37 - pause click during a checkpoint persists exactly once
+  ---
+  duration_ms: 30.4596
+  type: 'test'
+  ...
+# Subtest: gift click during autosave remains responsive without duplicate gifts or points
+ok 38 - gift click during autosave remains responsive without duplicate gifts or points
+  ---
+  duration_ms: 63.9588
+  type: 'test'
+  ...
+# Subtest: rules 3â€“15 match main for 910 encounters; current rules change only waves 10 and 20
+ok 39 - rules 3â€“15 match main for 910 encounters; current rules change only waves 10 and 20
+  ---
+  duration_ms: 145.8859
+  type: 'test'
+  ...
+# Subtest: wave 10 has 22 enemies in four short groups; wave 20 trades exactly three beetles with nearly equal rewards
+ok 40 - wave 10 has 22 enemies in four short groups; wave 20 trades exactly three beetles with nearly equal rewards
+  ---
+  duration_ms: 1.2846
+  type: 'test'
+  ...
+# Subtest: real schema-30 fights resume with identical old movement, projectiles, timers and money until their boundary
+ok 41 - real schema-30 fights resume with identical old movement, projectiles, timers and money until their boundary
+  ---
+  duration_ms: 452.3168
+  type: 'test'
+  ...
+# Subtest: new wave 10/20 and both boss snapshots reload exactly; downgrade and forged old queues are rejected
+ok 42 - new wave 10/20 and both boss snapshots reload exactly; downgrade and forged old queues are rejected
+  ---
+  duration_ms: 79.9949
+  type: 'test'
+  ...
+# Subtest: old farm departure remains payable once through native save migration; fresh proof needs two current clears
+ok 43 - old farm departure remains payable once through native save migration; fresh proof needs two current clears
+  ---
+  duration_ms: 537.064
+  type: 'test'
+  ...
+# Subtest: earned release runs retain the first five waves and win both bosses without new losses or money farming
+ok 44 - earned release runs retain the first five waves and win both bosses without new losses or money farming
+  ---
+  duration_ms: 16.9491
+  type: 'test'
+  ...
+# Subtest: paid defenses at 40/50/60/70 improve or retain income, with at most four genuine two-clear probes and no live mutation
+ok 45 - paid defenses at 40/50/60/70 improve or retain income, with at most four genuine two-clear probes and no live mutation
+  ---
+  duration_ms: 3431.5752
+  type: 'test'
+  ...
+# Subtest: sparse history picks an actually cleared midpoint, breaks ties downwards and never guesses missing waves
+ok 46 - sparse history picks an actually cleared midpoint, breaks ties downwards and never guesses missing waves
+  ---
+  duration_ms: 195.0624
+  type: 'test'
+  ...
+# Subtest: a leaky or economically worse midpoint preserves the exact valid proof without re-proving it
+ok 47 - a leaky or economically worse midpoint preserves the exact valid proof without re-proving it
+  ---
+  duration_ms: 110.3514
+  type: 'test'
+  ...
+# Subtest: upgrades or harmful sales require fresh proof, while an unsafe former choice cannot survive through its old rate
+ok 48 - upgrades or harmful sales require fresh proof, while an unsafe former choice cannot survive through its old rate
+  ---
+  duration_ms: 121.5008
+  type: 'test'
+  ...
+# Subtest: entry pruning never creates evidence: first clear still needs two cycles, and skipped entry cannot beat the proven rate
+ok 49 - entry pruning never creates evidence: first clear still needs two cycles, and skipped entry cannot beat the proven rate
+  ---
+  duration_ms: 218.3014
+  type: 'test'
+  ...
+# Subtest: native reload preserves the pending rules-14 receipt, pays it once and uses better proof only for future absence
+ok 50 - native reload preserves the pending rules-14 receipt, pays it once and uses better proof only for future absence
+  ---
+  duration_ms: 332.5689
+  type: 'test'
+  ...
+# Subtest: native reload preserves the pending rules-15 receipt, pays it once and uses better proof only for future absence
+ok 51 - native reload preserves the pending rules-15 receipt, pays it once and uses better proof only for future absence
+  ---
+  duration_ms: 270.234
+  type: 'test'
+  ...
+# Subtest: current and historical in-flight combat resumes identically after a read-only farm search
+ok 52 - current and historical in-flight combat resumes identically after a read-only farm search
+  ---
+  duration_ms: 340.5735
+  type: 'test'
+  ...
+# Subtest: earned Frost kit is immediately affordable, atomic and consumed through sale and reload
+ok 53 - earned Frost kit is immediately affordable, atomic and consumed through sale and reload
+  ---
+  duration_ms: 267.2345
+  type: 'test'
+  ...
+# Subtest: only paid upgrades contribute to the free kit refund; forged free towers are rejected
+ok 54 - only paid upgrades contribute to the free kit refund; forged free towers are rejected
+  ---
+  duration_ms: 102.425
+  type: 'test'
+  ...
+# Subtest: schema 29 unfinished guidance gains eligibility; completed and paid saves retain prices
+ok 55 - schema 29 unfinished guidance gains eligibility; completed and paid saves retain prices
+  ---
+  duration_ms: 76.9485
+  type: 'test'
+  ...
+# Subtest: rules 12 stay byte-for-byte reproducible against the captured original 100-wave table; rules 13â€“15 keep opening 1â€“40 unchanged
+ok 56 - rules 12 stay byte-for-byte reproducible against the captured original 100-wave table; rules 13â€“15 keep opening 1â€“40 unchanged
+  ---
+  duration_ms: 33.0779
+  type: 'test'
+  ...
+# Subtest: new introductions repeat immediately; later recipes retain all sixteen species, two healer and 28 enemy caps
+ok 57 - new introductions repeat immediately; later recipes retain all sixteen species, two healer and 28 enemy caps
+  ---
+  duration_ms: 131.077
+  type: 'test'
+  ...
+# Subtest: schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40
+ok 58 - schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40
+  ---
+  duration_ms: 247.8289
+  type: 'test'
+  ...
+# Subtest: schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly
+ok 59 - schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly
+  ---
+  duration_ms: 22.1952
+  type: 'test'
+  ...
+# Subtest: four compact atlases preserve metadata timings and genuine west views; cosmetic skins never change combat stats
+ok 60 - four compact atlases preserve metadata timings and genuine west views; cosmetic skins never change combat stats
+  ---
+  duration_ms: 11.9885
+  type: 'test'
+  ...
+# Subtest: every new species survives live save/reload deterministically; new farm proofs replace old rates without altering the model
+ok 61 - every new species survives live save/reload deterministically; new farm proofs replace old rates without altering the model
+  ---
+  duration_ms: 420.9073
+  type: 'test'
+  ...
+# Subtest: both historical and current offline receipts keep their exact amounts and one-claim boundary
+ok 62 - both historical and current offline receipts keep their exact amounts and one-claim boundary
+  ---
+  duration_ms: 2.7824
+  type: 'test'
+  ...
+# Subtest: 30 seconds, 10 minutes, 1 hour and 3 hours reserve 60% with the same two-hour cap
+ok 63 - 30 seconds, 10 minutes, 1 hour and 3 hours reserve 60% with the same two-hour cap
+  ---
+  duration_ms: 5.0432
+  type: 'test'
+  ...
+# Subtest: explicit pause and absence without a certified autonomous rate generate no gold
+ok 64 - explicit pause and absence without a certified autonomous rate generate no gold
+  ---
+  duration_ms: 0.7669
+  type: 'test'
+  ...
+# Subtest: closing and reopening before claim consumes only the remaining cap of the original window
+ok 65 - closing and reopening before claim consumes only the remaining cap of the original window
+  ---
+  duration_ms: 0.6553
+  type: 'test'
+  ...
+# Subtest: claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+ok 66 - claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+  ---
+  duration_ms: 0.9355
+  type: 'test'
+  ...
+# Subtest: backwards clock jumps never move the high-water cursor back or repay a reserved interval
+ok 67 - backwards clock jumps never move the high-water cursor back or repay a reserved interval
+  ---
+  duration_ms: 0.6244
+  type: 'test'
+  ...
+# Subtest: the certificate and paused state are frozen at the original departure
+ok 68 - the certificate and paused state are frozen at the original departure
+  ---
+  duration_ms: 0.3006
+  type: 'test'
+  ...
+# Subtest: confirmed active checkpoints and absence share a single non-overlapping time boundary
+ok 69 - confirmed active checkpoints and absence share a single non-overlapping time boundary
+  ---
+  duration_ms: 0.455
+  type: 'test'
+  ...
+# Subtest: exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+ok 70 - exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+  ---
+  duration_ms: 0.5511
+  type: 'test'
+  ...
+# Subtest: fractional units carry into future windows even when the certified rate changes
+ok 71 - fractional units carry into future windows even when the certified rate changes
+  ---
+  duration_ms: 0.5261
+  type: 'test'
+  ...
+# Subtest: invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+ok 72 - invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+  ---
+  duration_ms: 1.4417
+  type: 'test'
+  ...
+# Subtest: the first B04 schema-one policy defaults migrate without resetting a pending absence window
+ok 73 - the first B04 schema-one policy defaults migrate without resetting a pending absence window
+  ---
+  duration_ms: 0.3988
+  type: 'test'
+  ...
+# Subtest: policy migration never replaces an explicitly contradictory or malformed saved policy
+ok 74 - policy migration never replaces an explicitly contradictory or malformed saved policy
+  ---
+  duration_ms: 0.4166
+  type: 'test'
+  ...
+# Subtest: known historical departure proofs retain their original production basis
+ok 75 - known historical departure proofs retain their original production basis
+  ---
+  duration_ms: 4.0588
+  type: 'test'
+  ...
+# Subtest: research is a separate once-only paid unlock after wave 28 and Ilyra; upgrades remain unbounded
+ok 76 - research is a separate once-only paid unlock after wave 28 and Ilyra; upgrades remain unbounded
+  ---
+  duration_ms: 179.9502
+  type: 'test'
+  ...
+# Subtest: a chain hits three distinct live targets, nearest first, with bounded range and 100/65/42 percent damage
+ok 77 - a chain hits three distinct live targets, nearest first, with bounded range and 100/65/42 percent damage
+  ---
+  duration_ms: 72.2606
+  type: 'test'
+  ...
+# Subtest: in-flight hops survive upgrade, sale and reload exactly; forged payloads and visited IDs are rejected
+ok 78 - in-flight hops survive upgrade, sale and reload exactly; forged payloads and visited IDs are rejected
+  ---
+  duration_ms: 105.1486
+  type: 'test'
+  ...
+# Subtest: Mara accelerates the fifth tower without increasing its per-chain target or damage cap; armor still applies
+ok 79 - Mara accelerates the fifth tower without increasing its per-chain target or damage cap; armor still applies
+  ---
+  duration_ms: 60.8891
+  type: 'test'
+  ...
+# Subtest: new farm proofs exclude active heroes; historical receipts remain exactly once and recipes are unchanged
+ok 80 - new farm proofs exclude active heroes; historical receipts remain exactly once and recipes are unchanged
+  ---
+  duration_ms: 136.2485
+  type: 'test'
+  ...
+# Subtest: schema 28 live queues and wallets migrate unchanged without granting research or rewriting shots
+ok 81 - schema 28 live queues and wallets migrate unchanged without granting research or rewriting shots
+  ---
+  duration_ms: 81.6046
+  type: 'test'
+  ...
+# Subtest: research is atomic across a failed native save, then remains paid and owned after reopening
+ok 82 - research is atomic across a failed native save, then remains paid and owned after reopening
+  ---
+  duration_ms: 120.3957
+  type: 'test'
+  ...
+# Subtest: all three original art stages retain source frame maps, PNG dimensions and the shared floor anchor
+ok 83 - all three original art stages retain source frame maps, PNG dimensions and the shared floor anchor
+  ---
+  duration_ms: 14.9427
+  type: 'test'
+  ...
+# Subtest: Ilyra can retain the fifth tower as a sold volley source without counting chain damage twice
+ok 84 - Ilyra can retain the fifth tower as a sold volley source without counting chain damage twice
+  ---
+  duration_ms: 64.4892
+  type: 'test'
+  ...
+# Subtest: new recommendation uses Variant B while legacy constructor and compatibility placements stay intact
+ok 85 - new recommendation uses Variant B while legacy constructor and compatibility placements stay intact
+  ---
+  duration_ms: 160.3356
+  type: 'test'
+  ...
+# Subtest: every offered new starter cell clears wave one without Mara or another purchase
+ok 86 - every offered new starter cell clears wave one without Mara or another purchase
+  ---
+  duration_ms: 204.1963
+  type: 'test'
+  ...
+# Subtest: actual guided Variant B reaches its free Frost kit and reloads at every purchase
+ok 87 - actual guided Variant B reaches its free Frost kit and reloads at every purchase
+  ---
+  duration_ms: 58.8223
+  type: 'test'
+  ...
+# Subtest: already placed legacy starter and historical ready saves retain their location and Frost recommendation
+ok 88 - already placed legacy starter and historical ready saves retain their location and Frost recommendation
+  ---
+  duration_ms: 77.3834
+  type: 'test'
+  ...
+# Subtest: preparation validation admits only the old bounded corridor or new Variant B family
+ok 89 - preparation validation admits only the old bounded corridor or new Variant B family
+  ---
+  duration_ms: 1.8031
+  type: 'test'
+  ...
+# Subtest: frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+ok 90 - frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+  ---
+  duration_ms: 21.1982
+  type: 'test'
+  ...
+# Subtest: larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+ok 91 - larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+  ---
+  duration_ms: 63.5274
+  type: 'test'
+  ...
+# Subtest: a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules
+ok 92 - a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules
+  ---
+  duration_ms: 228.7777
+  type: 'test'
+  ...
+# Subtest: level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+ok 93 - level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+  ---
+  duration_ms: 108.312
+  type: 'test'
+  ...
+# Subtest: old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+ok 94 - old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+  ---
+  duration_ms: 606.8405
+  type: 'test'
+  ...
+# Subtest: HP continues past the old plateau; machine guards and old level curves remain explicit
+ok 95 - HP continues past the old plateau; machine guards and old level curves remain explicit
+  ---
+  duration_ms: 32.5751
+  type: 'test'
+  ...
+1..95
+# tests 95
+# suites 0
+# pass 95
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6480.5235

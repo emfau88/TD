@@ -1,0 +1,91 @@
+{
+  "baselineCommit": "c9a722c2d644a28885369a298a88fce410229510",
+  "baseline": {
+    "tests": 362,
+    "pass": 345,
+    "fail": 17,
+    "skipped": 0,
+    "cancelled": 0,
+    "failures": [
+      "B11 earned boss follow-up opens the clearing within the 8Ã¢â‚¬â€œ11 minute target and retains farming",
+      "Mara has continuous legal footpaths to all active tower approaches and the workshop",
+      "Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads",
+      "Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation",
+      "Wisp and pads unlock at permanent milestones, with no gift or repeated payment on reload",
+      "all eleven unlocked slots can hold towers and round-trip without moving the original eight",
+      "assignment walks at 80px/s on cardinal safe ground, preserves cooldown and gives no bonus before arrival",
+      "blocked targets stay understandable and harmless, and a changed blocked route reroutes around real obstacles",
+      "both new slots have useful level-one frost/damage overlap and accessible companion routes",
+      "earned continuation opens Workshop II around minute 13 and keeps an affordable next goal after minute 15",
+      "historical B10 timing target remains a separate balance finding",
+      "overclock reduces the existing firing cooldown at 1.5Ã— and does not reset a shot or alter damage",
+      "regular opening still funds workshop and Frost before Wisp; four roles remain saveable into armored waves",
+      "retargeting halfway through a segment rejoins a centre and selling the target falls back to the starter without cooldown reset",
+      "solid forest leaves the route, plots, every start pad and its approach accessible",
+      "start fixture has unique reservations, correct budget and an in-bounds road ending at the core",
+      "unopened east cells reject walking and construction; expansion changes bounds but never routes enemies"
+    ],
+    "logSha256": "4adc2666aeb1e3fbd11fc879d0f66fb08c10530a4309b3f36eed2648b038b7ee"
+  },
+  "final": {
+    "tests": 368,
+    "pass": 351,
+    "fail": 17,
+    "skipped": 0,
+    "cancelled": 0,
+    "failures": [
+      "B11 earned boss follow-up opens the clearing within the 8Ã¢â‚¬â€œ11 minute target and retains farming",
+      "Mara has continuous legal footpaths to all active tower approaches and the workshop",
+      "Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads",
+      "Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation",
+      "Wisp and pads unlock at permanent milestones, with no gift or repeated payment on reload",
+      "all eleven unlocked slots can hold towers and round-trip without moving the original eight",
+      "assignment walks at 80px/s on cardinal safe ground, preserves cooldown and gives no bonus before arrival",
+      "blocked targets stay understandable and harmless, and a changed blocked route reroutes around real obstacles",
+      "both new slots have useful level-one frost/damage overlap and accessible companion routes",
+      "earned continuation opens Workshop II around minute 13 and keeps an affordable next goal after minute 15",
+      "historical B10 timing target remains a separate balance finding",
+      "overclock reduces the existing firing cooldown at 1.5Ã— and does not reset a shot or alter damage",
+      "regular opening still funds workshop and Frost before Wisp; four roles remain saveable into armored waves",
+      "retargeting halfway through a segment rejoins a centre and selling the target falls back to the starter without cooldown reset",
+      "solid forest leaves the route, plots, every start pad and its approach accessible",
+      "start fixture has unique reservations, correct budget and an in-bounds road ending at the core",
+      "unopened east cells reject walking and construction; expansion changes bounds but never routes enemies"
+    ],
+    "logSha256": "1e79a9dede1e40375cf9a3449b0d8f89e621b619f73aff77001005b4a789f0bd"
+  },
+  "targeted": {
+    "tests": 95,
+    "pass": 95,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "failures": [],
+    "logSha256": "07bd40b2c2abb95cd9eccaa029d52b3ed0e773569b1747d788e7254f56dea534"
+  },
+  "addedFailures": [],
+  "removedFailures": [],
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "pagesPackaged": true
+  },
+  "runs": {
+    "baseline": 9,
+    "boss15": 8,
+    "economy": 8,
+    "selected": 9,
+    "w10": 8,
+    "w10-boss15": 8,
+    "w10-economy-w20": 8,
+    "w10-w20": 8,
+    "w20": 8
+  },
+  "runCount": 74,
+  "productionMatchesCombinedHypothesis": 8,
+  "baselineBReproducedExactly": true,
+  "visualUserApproval": "not performed",
+  "mainMerged": false,
+  "deployed": false,
+  "logNormalization": "UTF-8, LF, trailing whitespace removed; results unchanged"
+}

@@ -11,14 +11,14 @@ import { createOfflineState, beginAbsence, reserveOffline, claimOffline, restore
 const read=(file:string)=>JSON.parse(readFileSync(new URL('../../../artifacts/idle-bastion/acceptance/'+file,import.meta.url),'utf8'));
 const seed=read('wave-rework-v2/earned-balanced-late.json');
 const added=['MossShroom','WoodSpider','HornedBat','EmberBomb'] as const;
-function encounter(wave:number,version:12|13|14|15=BATTLE_RULES_VERSION){
+function encounter(wave:number,version:12|13|14|15|16=BATTLE_RULES_VERSION){
  const prep=IdleBattle.restore(seed)!.snapshot();prep.highestCleared=wave-1;prep.wave=wave-1;prep.phase='intermission';prep.mode='advance';prep.advanceRequested=false;prep.queue=[];prep.enemies=[];prep.shots=[];prep.intermissionRemaining=0;prep.spawnTimer=0;prep.lives=BASE.coreLives;prep.liveClearedWaves=prep.liveClearedWaves.filter(w=>w<wave);prep.farmWave=1;
  const b=IdleBattle.restore(prep)!;assert.ok(b);b.update(.025);
  const s=b.snapshot();s.waveRecipeVersion=version;s.enemies=[];s.shots=[];s.spawnTimer=.15;
  s.queue=Array.from({length:waveCount(wave,version)},(_,i)=>waveEnemy(wave,i,version).id);
  return IdleBattle.restore(s)!;
 }
-test('rules 12 stay byte-for-byte reproducible against the captured original 100-wave table; opening 1–40 is unchanged',()=>{
+test('rules 12 stay byte-for-byte reproducible against the captured original 100-wave table; rules 13–15 keep opening 1–40 unchanged',()=>{
  for(const row of read('wave-rework-v2/balance-results.json').recipes){
   const w=row.wave,expected=row.versions.find((r:{version:number})=>r.version===12),ids=Array.from({length:waveCount(w,12)},(_,i)=>waveEnemy(w,i,12));
   const counts:Record<string,number>={};for(const e of ids)counts[e.id]=(counts[e.id]??0)+1;
@@ -26,7 +26,7 @@ test('rules 12 stay byte-for-byte reproducible against the captured original 100
   assert.equal(ids.reduce((n,e)=>n+battleReward(e.gold,w,12),battleReward(clearReward(w,12),w,12)),expected.gold);
   assert.equal(.15+ids.slice(1).reduce((n,_,i)=>n+spawnGap(w,i+1,12),0),expected.spawnSeconds);
   if(w<=40){
-   assert.deepEqual(Array.from({length:waveCount(w)},(_,i)=>waveEnemy(w,i).id),ids.map(e=>e.id));
+   assert.deepEqual(Array.from({length:waveCount(w,15)},(_,i)=>waveEnemy(w,i,15).id),ids.map(e=>e.id));
    assert.equal(clearReward(w,13),clearReward(w,12));
    assert.equal(healthMultiplier(w,13,false),healthMultiplier(w,12,false));
    assert.deepEqual(ids.map((_,i)=>spawnGap(w,i+1,13)),ids.map((_,i)=>spawnGap(w,i+1,12)));

@@ -1,4 +1,4 @@
-/** Rules 14 correct support introduction escorts; older recipes remain frozen. */
+/** Rules 16 sharpen waves 10/20; every earlier recipe remains frozen. */
 import { ENEMIES, introducedEnemy, isHealer, type EnemyId } from './enemy-roster';
 import { waveRecipeV12 } from './wave-recipes-v12';
 import { waveRecipeV13, spawnGapV13, clearRewardV13 } from './wave-recipes-v13';
@@ -43,15 +43,41 @@ function laterRecipe(wave: number): WaveRecipe {
   const killGold = enemies.reduce((sum,id) => sum+ENEMIES[id].gold,0);
   return Object.freeze({ ...base, enemies:Object.freeze(enemies), clearGold:Math.max(20,targetGold-killGold) });
 }
+/** Only these two regular encounters change. Reuse the frozen opening as the
+ * source so older queues, rewards and spawn clocks still validate exactly. */
+const earlyRecipes = new Map<number, WaveRecipe>();
+function earlyRecipe(wave: 10 | 20): WaveRecipe {
+  const cached = earlyRecipes.get(wave);
+  if (cached) return cached;
+  const old = waveRecipeV13(wave), enemies = [...old.enemies];
+  let gaps = [...old.gaps], clearGold = old.clearGold;
+  if (wave === 10) {
+    enemies.push(...Array<EnemyId>(7).fill('FlyingLocust'));
+    // Four groups of 6/6/5/5; the last spawn stays at 8.70 seconds.
+    gaps = enemies.map((_, i) => [5, 11, 16].includes(i) ? 1.05 : .30);
+    clearGold = 20;
+  } else {
+    const leaves = enemies.map((id, i) => id === 'Leafbug' ? i : -1).filter(i => i >= 0);
+    // Spread the three known armored flyers through the existing spawn order.
+    for (const index of [0, 5, 10]) enemies[leaves[index]] = 'Clampbeetle';
+    clearGold = Math.max(20, clearGold - 30);
+  }
+  const recipe = Object.freeze({ ...old, enemies: Object.freeze(enemies), gaps: Object.freeze(gaps), clearGold });
+  earlyRecipes.set(wave, recipe);
+  return recipe;
+}
 let lastWave=-1, lastRecipe: WaveRecipe;
-export function waveRecipe(wave: number, version=14): WaveRecipe {
+export function waveRecipe(wave: number, version=16): WaveRecipe {
+  if (version >= 16 && (wave === 10 || wave === 20)) return earlyRecipe(wave);
   if (version <= 13 || wave <= 40) return waveRecipeV13(wave,version<=13?version:13);
   if (lastWave !== wave) { lastRecipe=laterRecipe(wave); lastWave=wave; }
   return lastRecipe;
 }
 export function spawnGap(wave: number, spawned: number, version: number): number {
+  if (version >= 16 && (wave === 10 || wave === 20)) return earlyRecipe(wave).gaps[spawned - 1] ?? 1;
   return version>=14 && wave>40 ? waveRecipe(wave,version).gaps[spawned-1]??1 : spawnGapV13(wave,spawned,version);
 }
 export function clearReward(wave: number, version: number): number {
+  if (version >= 16 && (wave === 10 || wave === 20)) return earlyRecipe(wave).clearGold;
   return version>=14 && wave>40 ? waveRecipe(wave,version).clearGold : clearRewardV13(wave,version);
 }

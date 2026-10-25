@@ -351,7 +351,7 @@ test('schema 29 migration preserves an already reserved offline reward exactly o
   const store = new ControlledStore(), session = await open(store);
   await firstClear(session); await session.suspend(); store.clock += 60000;
   const reserved = await open(store), reward = copy(reserved.pendingReward!); await reserved.suspend();
-  const old = store.current!.battle as any; old.schemaVersion = 29; delete old.tutorialFrostUid;
+  const old = store.current!.battle as any; old.schemaVersion = 29; old.rulesVersion = 15; old.waveRecipeVersion = 15; delete old.tutorialFrostUid;
   const before = old.gold * 1000 + old.goldRemainderUnits;
   const returned = await open(store); assert.deepEqual(returned.pendingReward, reward);
   assert.equal(returned.battle.tutorialFrostUid, null);

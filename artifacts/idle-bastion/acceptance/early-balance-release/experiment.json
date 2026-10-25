@@ -1,0 +1,44 @@
+{
+  "base": "c9a722c2d644a28885369a298a88fce410229510",
+  "stepSeconds": 0.025,
+  "variants": {
+    "baseline": [],
+    "w10": [
+      "w10"
+    ],
+    "boss15": [
+      "boss15"
+    ],
+    "economy": [
+      "economy"
+    ],
+    "w20": [
+      "w20"
+    ],
+    "w10-boss15": [
+      "w10",
+      "boss15"
+    ],
+    "w10-w20": [
+      "w10",
+      "w20"
+    ],
+    "w10-economy-w20": [
+      "w10",
+      "economy",
+      "w20"
+    ]
+  },
+  "selected": "w10-w20",
+  "mainProfiles": [
+    "A",
+    "B",
+    "C",
+    "minimal",
+    "B-no-mara",
+    "B-freeze15",
+    "C-20s",
+    "B-poor-placement"
+  ],
+  "extraControl": "A-direct-retry: baseline and selected only"
+}

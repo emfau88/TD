@@ -30,7 +30,7 @@ test('opening recipes are reproducible in reverse order, bounded, readable and r
     if(wave===15||wave===25)continue;
     const r=waveRecipe(wave);signatures.set(wave,JSON.stringify(r));families.add(r.family);
     assert.ok(r.enemies.length<=28&&r.enemies.length>=6);
-    assert.ok(new Set(r.enemies).size<=3,`types in wave ${wave}`);
+    assert.ok(new Set(r.enemies).size<=(wave===20?4:3),`types in wave ${wave}`);
     assert.ok(r.enemies.filter(id=>isHealer(ENEMIES[id])).length<=2);
     for(const id of r.enemies)assert.ok(ENEMIES[id].firstWave<=wave);
     assert.ok(r.gaps.every(gap=>gap>=.25&&gap<=1.65));

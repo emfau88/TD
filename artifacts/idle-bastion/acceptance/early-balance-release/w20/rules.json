@@ -1,0 +1,291 @@
+[
+  {
+    "wave": 1,
+    "count": {
+      "Leafbug": 6
+    },
+    "maximumDamage": 6,
+    "hp": 144,
+    "spawnSeconds": 6.15,
+    "gold": 70
+  },
+  {
+    "wave": 2,
+    "count": {
+      "Leafbug": 7
+    },
+    "maximumDamage": 7,
+    "hp": 194.88,
+    "spawnSeconds": 7.2,
+    "gold": 80
+  },
+  {
+    "wave": 3,
+    "count": {
+      "Leafbug": 8
+    },
+    "maximumDamage": 8,
+    "hp": 258.35519999999997,
+    "spawnSeconds": 8.2,
+    "gold": 90
+  },
+  {
+    "wave": 4,
+    "count": {
+      "Leafbug": 6,
+      "Firebug": 3
+    },
+    "maximumDamage": 9,
+    "hp": 383.9804159999999,
+    "spawnSeconds": 9.15,
+    "gold": 109
+  },
+  {
+    "wave": 5,
+    "count": {
+      "Leafbug": 7,
+      "Firebug": 3
+    },
+    "maximumDamage": 10,
+    "hp": 488.8726271999997,
+    "spawnSeconds": 10.05,
+    "gold": 119
+  },
+  {
+    "wave": 6,
+    "count": {
+      "Leafbug": 8,
+      "FlyingLocust": 2,
+      "Firebug": 1
+    },
+    "maximumDamage": 11,
+    "hp": 558.6908809215997,
+    "spawnSeconds": 5.77,
+    "gold": 168.3
+  },
+  {
+    "wave": 7,
+    "count": {
+      "Firebug": 8,
+      "FlyingLocust": 2
+    },
+    "maximumDamage": 10,
+    "hp": 760.1556527185917,
+    "spawnSeconds": 7.83,
+    "gold": 188.1
+  },
+  {
+    "wave": 8,
+    "count": {
+      "Leafbug": 9,
+      "FlyingLocust": 4
+    },
+    "maximumDamage": 13,
+    "hp": 836.5610414021013,
+    "spawnSeconds": 8.01,
+    "gold": 196.9
+  },
+  {
+    "wave": 9,
+    "count": {
+      "Firebug": 7,
+      "Firewasp": 2,
+      "FlyingLocust": 1
+    },
+    "maximumDamage": 10,
+    "hp": 1016.3086165141746,
+    "spawnSeconds": 8.35,
+    "gold": 217.8
+  },
+  {
+    "wave": 10,
+    "count": {
+      "Leafbug": 10,
+      "Firewasp": 2,
+      "FlyingLocust": 3
+    },
+    "maximumDamage": 15,
+    "hp": 1338.6423686937667,
+    "spawnSeconds": 8.69,
+    "gold": 225.5
+  },
+  {
+    "wave": 11,
+    "count": {
+      "Leafbug": 12,
+      "Scorpion": 2
+    },
+    "maximumDamage": 16,
+    "hp": 1711.6368105161657,
+    "spawnSeconds": 10.75,
+    "gold": 273.9
+  },
+  {
+    "wave": 12,
+    "count": {
+      "Firebug": 10,
+      "FlyingLocust": 5,
+      "Scorpion": 2
+    },
+    "maximumDamage": 19,
+    "hp": 2763.3229332663054,
+    "spawnSeconds": 6.98,
+    "gold": 254.1
+  },
+  {
+    "wave": 13,
+    "count": {
+      "Scorpion": 5,
+      "Leafbug": 9,
+      "MagmaCrab": 2
+    },
+    "maximumDamage": 23,
+    "hp": 3715.9529281864075,
+    "spawnSeconds": 12.65,
+    "gold": 305.8
+  },
+  {
+    "wave": 14,
+    "count": {
+      "Firebug": 11,
+      "FlyingLocust": 6,
+      "MagmaCrab": 2
+    },
+    "maximumDamage": 21,
+    "hp": 4503.307555014913,
+    "spawnSeconds": 7.5,
+    "gold": 282.7
+  },
+  {
+    "wave": 15,
+    "count": {
+      "Leafbug": 5,
+      "Rosenspiegel": 1,
+      "Scorpion": 1,
+      "Firebug": 2
+    },
+    "maximumDamage": 29,
+    "hp": 10048.297628260183,
+    "spawnSeconds": 5.37,
+    "gold": 227.7
+  },
+  {
+    "wave": 16,
+    "count": {
+      "Scorpion": 6,
+      "Leafbug": 12
+    },
+    "maximumDamage": 24,
+    "hp": 5307.226451606676,
+    "spawnSeconds": 13.85,
+    "gold": 710.6
+  },
+  {
+    "wave": 17,
+    "count": {
+      "FlyingLocust": 13,
+      "Firewasp": 7,
+      "Clampbeetle": 2
+    },
+    "maximumDamage": 24,
+    "hp": 5487.202804404358,
+    "spawnSeconds": 11.2,
+    "gold": 706.2
+  },
+  {
+    "wave": 18,
+    "count": {
+      "Leafbug": 14,
+      "Firebug": 7,
+      "Clampbeetle": 2
+    },
+    "maximumDamage": 25,
+    "hp": 7721.86104686717,
+    "spawnSeconds": 10.32,
+    "gold": 764.5
+  },
+  {
+    "wave": 19,
+    "count": {
+      "FlyingLocust": 15,
+      "Firewasp": 7,
+      "ForestGoblin": 2
+    },
+    "maximumDamage": 24,
+    "hp": 7214.984257551923,
+    "spawnSeconds": 11.8,
+    "gold": 855.8
+  },
+  {
+    "wave": 20,
+    "count": {
+      "Clampbeetle": 3,
+      "Firebug": 8,
+      "ForestGoblin": 2,
+      "Leafbug": 12
+    },
+    "maximumDamage": 28,
+    "hp": 11419.991689101313,
+    "spawnSeconds": 9.95,
+    "gold": 914.1
+  },
+  {
+    "wave": 21,
+    "count": {
+      "MagmaCrab": 7,
+      "Firebug": 14,
+      "LanternJelly": 2
+    },
+    "maximumDamage": 30,
+    "hp": 18492.145305228278,
+    "spawnSeconds": 13.36,
+    "gold": 1103.3
+  },
+  {
+    "wave": 22,
+    "count": {
+      "Scorpion": 9,
+      "Leafbug": 11,
+      "LanternJelly": 2
+    },
+    "maximumDamage": 31,
+    "hp": 14845.268088109064,
+    "spawnSeconds": 17.65,
+    "gold": 1207.8
+  },
+  {
+    "wave": 23,
+    "count": {
+      "Firebug": 19,
+      "FlyingLocust": 9
+    },
+    "maximumDamage": 28,
+    "hp": 17539.5902887079,
+    "spawnSeconds": 12.51,
+    "gold": 1130.8
+  },
+  {
+    "wave": 24,
+    "count": {
+      "Firebug": 19,
+      "Firewasp": 8
+    },
+    "maximumDamage": 27,
+    "hp": 20491.592518654837,
+    "spawnSeconds": 15.55,
+    "gold": 1226.5
+  },
+  {
+    "wave": 25,
+    "count": {
+      "Leafbug": 7,
+      "Rosenspiegel": 1,
+      "Scorpion": 2,
+      "Firebug": 3
+    },
+    "maximumDamage": 34,
+    "hp": 33079.28506582852,
+    "spawnSeconds": 9.31,
+    "gold": 914.1
+  }
+]

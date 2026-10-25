@@ -32,7 +32,7 @@ test('larger families retain bounded populations, healers, deterministic later w
   for(let wave=6;wave<=250;wave++){
     if(wave===15||wave===25)continue;
     const r=waveRecipe(wave);signatures.set(wave,JSON.stringify(r));
-    assert.ok(r.enemies.length<=28);assert.ok(new Set(r.enemies).size<=3);
+    assert.ok(r.enemies.length<=28);assert.ok(new Set(r.enemies).size<=(wave===20?4:3));
     assert.ok(r.enemies.every(id=>ENEMIES[id].firstWave<=wave));
     assert.ok(r.enemies.filter(id=>isHealer(ENEMIES[id])).length<=2);
     assert.ok(r.gaps.every(gap=>gap>=.25&&gap<=1.65));

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { IdleBattle, sellValue } from '../src/battle';
+import { IdleBattle, sellValue, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION } from '../src/battle';
 import { guidedFrost } from './helpers/guided-frost';
 
 const reload = (b: IdleBattle) => { const next = IdleBattle.restore(b.snapshot()); assert.ok(next); assert.deepEqual(next.snapshot(), b.snapshot()); return next; };
@@ -31,14 +31,14 @@ test('only paid upgrades contribute to the free kit refund; forged free towers a
   assert.equal(IdleBattle.restore(missing.snapshot()), undefined);
 });
 test('schema 29 unfinished guidance gains eligibility; completed and paid saves retain prices', () => {
-  const b = guidedFrost(), old: any = b.snapshot(); old.schemaVersion = 29; delete old.tutorialFrostUid;
+  const b = guidedFrost(), old: any = b.snapshot(); old.schemaVersion = 29; old.rulesVersion = 15; old.waveRecipeVersion = 15; delete old.tutorialFrostUid;
   const unchanged = structuredClone(old), migrated = IdleBattle.restore(old)!;
   assert.ok(migrated); assert.equal(migrated.frostKitAvailable, true); assert.deepEqual(old, unchanged);
-  assert.deepEqual(migrated.snapshot(), { ...old, schemaVersion: 30, tutorialFrostUid: null });
+  assert.deepEqual(migrated.snapshot(), { ...old, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION, tutorialFrostUid: null });
   b.skipLessons(); assert.equal(b.frostKitAvailable, false);
   b.discovery = 'off'; for (let i = 0; i < 8000 && b.gold < 110; i++) b.update(.025);
   const paid = b.build(b.recommendedFrostPad!, 2)!; assert.equal(paid.spent, 110);
-  const paidOld: any = b.snapshot(); paidOld.schemaVersion = 29; delete paidOld.tutorialFrostUid;
+  const paidOld: any = b.snapshot(); paidOld.schemaVersion = 29; paidOld.rulesVersion = 15; paidOld.waveRecipeVersion = 15; delete paidOld.tutorialFrostUid;
   const next = IdleBattle.restore(paidOld)!; assert.ok(next); assert.equal(next.towerBuildCost(2), 110);
   assert.equal(next.towers.find(t => t.uid === paid.uid)!.spent, 110); reload(next);
 });

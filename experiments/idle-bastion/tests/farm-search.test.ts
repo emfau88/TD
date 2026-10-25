@@ -107,7 +107,7 @@ for (const historicalRules of [14, 15]) test(`native reload preserves the pendin
   await store.save(before, false, 0, { offline }); store.close();
   store = await openBattleStore(factory, name, () => now);
   let session = await BattleSession.open(store, { now: () => now, locks: null });
-  assert.equal(BATTLE_SCHEMA_VERSION, 30); assert.equal(BATTLE_RULES_VERSION, 15);
+  assert.equal(session.battle.snapshot().schemaVersion, BATTLE_SCHEMA_VERSION); assert.equal(session.certificate?.rulesVersion, BATTLE_RULES_VERSION);
   assert.equal(session.certificate?.wave, 36); assert.deepEqual(session.pendingReward, receipt);
   assert.deepEqual(session.battle.snapshot(), { ...before, farmWave: 36 });
   const units = session.battle.gold * 1000 + session.battle.goldRemainderUnits;

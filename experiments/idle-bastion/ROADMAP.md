@@ -1,5 +1,12 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Early Balance Release Pass · 25.10.2026, isolierter Branch `codex/early-balance-release` ab Main `c9a722c`; kein Merge/Deployment.**
+
+- [x] Alten Audit gelesen und aktuelle Gratis-Frost-Basis mit echter Engine neu gemessen; acht Profile, vier Einzelhypothesen und drei Kombinationen, 74 Läufe inklusive Produktionsabgleich und direkter Wiederanlaufkontrolle. Reguläres Gold/Käufe und vollständige Messdaten archiviert.
+- [x] Nur W10 (22 Gegner, nahezu gleiches Spawnfenster) und W20 (drei bekannte Panzerflieger statt Blattkäfer, kompensiertes Abschlussgold) übernommen. Boss-15-Kanalbewegung wegen neuer Niederlagen, Goldglättung wegen fehlenden Spannungsgewinns abgelehnt. A weiterhin drei Boss-15-Niederlagen; B/C ohne Farming bis 25. Direkte A-Kontrolle ebenfalls ohne Farmzwang. Niedrigere spätere Farmrate offen dokumentiert.
+- [x] Schema 31 / Regeln 16 mit eingefrorenen laufenden Altversuchen und historischen Offlineansprüchen. 95/95 gezielte Regressionen, Vollsuite 351/368 mit exakt denselben 17 Altfehlern, Produktionsbuild bestanden. [Bericht, Vorher/Nachher und Reproduktion](../../artifacts/idle-bastion/acceptance/early-balance-release/REPORT.md).
+- [ ] Main-Übernahme und visuelle Nutzerfreigabe bleiben separat; dieser Auftrag autorisiert ausschließlich Commit/Push des geprüften Arbeitsbranches.
+
 **Frost, Figuren und Zauberoptik · am 25.10.2026 für Main freigegeben und veröffentlicht.**
 
 - [x] Nutzerfreigabe „Ok go“ nach abschließender Merge-Prüfung. Geprüften Branchstand `dbe3f3e` ohne Konflikte und ohne neue Spieländerungen nach `main` übernommen; [regulärer Main-Deploy 40150021798](https://github.com/emfau88/TD/actions/runs/40150021798) erfolgreich.

@@ -1,5 +1,26 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Early Balance Release — Snapshot 31 / Regeln 16
+
+Neue Versuche ändern ausschließlich Welle 10 (22 Gegner, vier Gruppen, Abschlussgold 20)
+und Welle 20 (drei Blattkäfer durch Panzerflieger ersetzen, Abschlussgold minus 30).
+`wave-recipes.ts` bindet diese beiden Rezepte an Version 16; alle älteren Rezepte,
+HP-Kurven, Preise, Boss-/Heldenfähigkeiten und Goldfaktoren bleiben unverändert.
+
+Schema 29 erhält zunächst `tutorialFrostUid: null` und wird wie Schema 30 vollständig
+unter Regeln 15 geprüft. Danach wechseln ausschließlich Schema-/globale Regelversion
+auf 31/16. Laufende Rezeptversion, Queue, Gegner, Geschosse, Timer, Geld, Gratis-Frost
+und Live-Clear-Kandidaten bleiben erhalten; erst neue Versuche starten unter 16.
+Der native Store erkennt die neue Obergrenze über die zentralen Konstanten und
+schützt zukünftige Formate weiter vor Überschreiben.
+
+Der neue Fingerabdruck verlangt frische Farmbelege aus zwei verlustfreien Kämpfen
+ohne aktive Heldenboni. Bereits eingefrorene Abreise-/Offlineansprüche unter Regeln
+1–15 behalten ihren Betrag und ihre Einmal-Auszahlung. Neue Ansprüche akzeptieren
+Regeln 16; keine Datenbank-/Savekennung oder Offlineformel ändert sich.
+[Messungen und Migrationsnachweise](../../../artifacts/idle-bastion/acceptance/early-balance-release/REPORT.md).
+Die folgenden Versionsangaben dokumentieren die jeweiligen früheren Änderungen.
+
 ## Zauber- und Markierungsdarstellung
 
 `HeroMarks`, `MaraSpellView` und `IlyraSpellView` lesen den laufenden Battle-Zustand;
