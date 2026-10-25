@@ -1,0 +1,42 @@
+{
+  "uniquePoses": 4,
+  "frames": [
+    {
+      "down": 0,
+      "ms": 1100
+    },
+    {
+      "down": 1,
+      "ms": 200
+    },
+    {
+      "down": 2,
+      "ms": 260
+    },
+    {
+      "down": 3,
+      "ms": 480
+    },
+    {
+      "down": 2,
+      "ms": 260
+    },
+    {
+      "down": 1,
+      "ms": 200
+    }
+  ],
+  "loopMs": 2500,
+  "sourceUnmodified": true,
+  "desktop": [
+    700,
+    610
+  ],
+  "mobile": [
+    390,
+    590
+  ],
+  "noOverflow": true,
+  "errors": [],
+  "previewOnly": true
+}

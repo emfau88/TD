@@ -1,4 +1,8 @@
-# Mara · Idle-Entwurf, Frontansicht
+# Mara · Idle-Entwurf V1, Frontansicht
+
+**Aktuell ist [V2 mit gröberer Bewegung und stabilen Originalpixeln](v2/README.md).**
+Der Nutzer empfand V1 als zu kleinteilig und glitchartig. Diese Fassung bleibt als
+vorheriger Entwurf erhalten.
 
 25.10.2026 · Separate Animationsvorschau für die kleine Spielfigur.
 

@@ -2,11 +2,11 @@
 
 ## Mara · neuer Idle-Entwurf auf diesem Vorschau-Branch
 
-![Maras bisherige Standpose links, neuer Idle-Entwurf rechts](artifacts/idle-bastion/previews/mara-idle/mara-idle-comparison.gif)
+![Original links, gröbere Idle-Bewegung V2 rechts](artifacts/idle-bastion/previews/mara-idle/v2/mara-idle-v2.gif)
 
-Frontansicht mit ruhigem Atmen und kurzem Blinzeln; oben 4× vergrößert, unten in
-Spielgröße. Separate Vorschau, noch nicht im Hauptspiel eingebaut.
-[Video, Spritesheet und Produktionsdaten](artifacts/idle-bastion/previews/mara-idle/README.md).
+**V2:** Vier klare Körperhaltungen mit bis zu drei Pixeln Bewegung und unveränderten
+Originaldetails; oben 4× vergrößert, unten in Spielgröße. Separate Vorschau,
+noch nicht im Hauptspiel eingebaut. [V2 als GIF/Video](artifacts/idle-bastion/previews/mara-idle/v2/README.md).
 
 Ein Endlos-Idle-Tower-Defense-Spiel im Pixelwald: Verteidigung bauen, automatische
 Wellen überstehen, sichere Wellen farmen und mit neuen Upgrades weiter vorstoßen.
