@@ -75,6 +75,13 @@ veröffentlicht. Main und die spielbare Branch-Testversion erhalten keine neuen 
   übernommene Buffdauer in den [Aufnahmewerten](checks-v2.json) festgehalten.
   Drei erneute Browseraufnahmen ohne JavaScript-Fehler. Screenshots visuell geprüft;
   subjektive Nutzerabnahme weiterhin offen.
+- **V2 veröffentlicht:** [Pages-Lauf 40145778412](https://github.com/emfau88/TD/actions/runs/40145778412)
+  erfolgreich, Medienstand `f57f3eebfd915198e1bbb04e1c09f2144d467ace`. Öffentliche
+  Galerie bei 320/390/1280 Pixeln ohne Überlauf; alle Bilder geladen und drei
+  Videoansichten abgespielt, keine JS-/Ressourcenfehler. [Öffentliche V2-Prüfwerte](gallery-checks-v2.json).
+  Main weiterhin `537b5e8c9cf09b696b41644da4c56dbc8633d720`; öffentliche Hauptseite
+  erneut bytegleich mit dem ursprünglichen Main-Artefakt. Ausschließlich Medien,
+  Darstellungsprototyp und Dokumentation committed; keine Gameplay-Dateien integriert.
 
 - Transparenz aller acht Originale geprüft: zwischen 38,9 % und 92,4 % vollständig
   transparente Pixel. Kein aufgemalter schwarzer oder Schachbrett-Hintergrund.
