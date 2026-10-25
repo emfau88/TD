@@ -1,5 +1,7 @@
 # Mara · Erste positive Offline-Rückkehr
 
+Nachtrag: Die Überlagerung des Farmbasis-Texts bei 320×568 wurde auf Nutzerhinweis korrigiert; anschließender Merge/Pages ausdrücklich freigegeben. [Mobile-Nachprüfung](MOBILE_FIX.md). Der folgende Bericht dokumentiert den ursprünglichen Branchstand.
+
 25.10.2026 · Branch `codex/mara-offline-welcome`, Basis `main/a732403`. Kein Merge und kein Deployment.
 
 Der bestehende Rückkehrdialog erhält einmal pro Spielstand das vorhandene Porträt `assets/intro/mara/mischievous.webp` und einen kurzen Spruch:

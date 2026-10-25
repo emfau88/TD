@@ -2,8 +2,10 @@
 .return-mara img { width:72px; height:90px; object-fit:contain; flex:none; }
 .return-mara strong { color:var(--gold); font-size:12px; }
 .return-dialog .return-mara p { margin:4px 0 0; line-height:1.45; }
-/* The original return action stays reachable on short phone viewports. */
-.return-dialog #claim-offline { position:sticky; bottom:0; z-index:1; }
+/* Scroll the copy independently; the action reserves its own space below it. */
+.return-overlay .return-dialog { display:flex; flex-direction:column; overflow:hidden; }
+.return-content { min-height:0; overflow-y:auto; }
+.return-dialog #claim-offline { flex-shrink:0; }
 @media (max-width:480px) {
   .return-mara { gap:8px; }
   .return-mara img { width:60px; height:76px; }
