@@ -1,0 +1,48 @@
+{
+  "url": "http://127.0.0.1:24753/?v=2",
+  "results": [
+    {
+      "width": 320,
+      "noOverflow": true
+    },
+    {
+      "width": 390,
+      "noOverflow": true
+    },
+    {
+      "width": 1280,
+      "noOverflow": true
+    },
+    {
+      "index": 0,
+      "time": 1.214806,
+      "duration": 16,
+      "width": 390,
+      "height": 844,
+      "ready": 4,
+      "error": null
+    },
+    {
+      "index": 1,
+      "time": 1.21613,
+      "duration": 9.96,
+      "width": 640,
+      "height": 540,
+      "ready": 4,
+      "error": null
+    },
+    {
+      "index": 2,
+      "time": 1.220038,
+      "duration": 10,
+      "width": 640,
+      "height": 540,
+      "ready": 4,
+      "error": null
+    },
+    {
+      "errors": [],
+      "bad": []
+    }
+  ]
+}

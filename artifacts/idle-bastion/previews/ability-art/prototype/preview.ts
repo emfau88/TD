@@ -5,6 +5,8 @@ import { createFeatureProbe } from '../../src/feature-probes';
 import { openBattleStore } from '../../src/save-store';
 import { setLanguage } from '../../src/i18n';
 import { maraFrame } from '../../src/art';
+import { ILYRA } from '../../src/ilyra';
+import { MARA } from '../../src/mara';
 import earned from '../../../../artifacts/idle-bastion/acceptance/wave-rework-v2/earned-balanced-late.json?raw';
 import './preview.css';
 
@@ -72,57 +74,78 @@ function disc(hero:'mara'|'ilyra',remaining:number,status:string,auto=false){
 }
 function selection(hero:'mara'|'ilyra',time:number){
  const a=hero==='mara'?visual.mara:visual.ilyra!;
- sprite(`${hero}-ring`,a.x,a.y+3,58,24,.85+.08*Math.sin(time*2),900);
+ // Same tight footprint as the original selection ellipse, with the generated ornament.
+ const light=scene.add.graphics().setDepth(900);
+ light.fillStyle(hero==='mara'?0xffd97a:0x9ce2ff,.21).fillEllipse(a.x,a.y+2,32,14);sprites.push(light);
+ sprite(`${hero}-ring`,a.x,a.y+2,42,22,.32,900).setBlendMode(1);
+ sprite(`${hero}-ring`,a.x,a.y+2,38,20,1,901);
+ sprite(`${hero}-ring`,a.x,a.y+2,38,20,.64+.04*Math.sin(time*2),902).setBlendMode(1);
 }
 function starVolley(age:number,time:number){
  const a=visual.ilyra!, candidates=visual.enemies.filter(e=>Math.hypot(e.x-a.x,e.y-a.y)<205);
  const target=candidates.sort((l,r)=>r.x-l.x)[0]??{x:a.x+150,y:a.y+40};
- const x=target.x,y=target.y;
- const pace=1.35, logical=age/pace;
- if(logical>=.95){a.volley=null;return;}
- a.volley={x,y,originX:a.x,originY:a.y,age:logical,pace:1.35,hit:logical>=.6,...visual.ilyraPower};
- sprite('ilyra-ring',x,y+2,144,68,logical<.6?.24:Math.max(0,.32-(logical-.6)),900);
- if(logical<.18){sprite('star-impact',a.x,a.y-24,18+logical*60,18+logical*60,.7,1003+a.y,logical);return;}
- if(logical<.6){
-  for(let i=-1;i<=1;i++){
-   const t=Math.max(0,Math.min(1,(logical-.18)/.42-i*.025));
-   const at=(f:number)=>({x:a.x+(x-a.x)*f+i*18*Math.sin(Math.PI*f),y:a.y-24+(y-a.y+24)*f-Math.sin(Math.PI*f)*(25+i*8)});
-   const p=at(t),prev=at(Math.max(0,t-.04));const angle=Math.atan2(p.y-prev.y,p.x-prev.x);
-   // Pulse/twinkle, changing tail length and detached fading motes, not a static translated icon.
-   const pulse=1+.09*Math.sin(time*29+i*2);
-   for(let j=3;j>=1;j--){const q=at(Math.max(0,t-j*.035));sprite('star-projectile',q.x,q.y,21-j*3,9-j,.1+.05*(4-j),1003+q.y,angle);}
-   sprite('star-projectile',p.x,p.y,(33+i*3)*pulse,15*pulse,.94,1003+p.y,angle);
-   sprite('star-impact',p.x+5*Math.cos(angle),p.y+5*Math.sin(angle),9*pulse,9*pulse,.65,1005+p.y,time*2);
+ const x=target.x,y=target.y,radius=ILYRA.radius,logical=age/ILYRA.volleyPace;
+ if(logical>=ILYRA.duration){a.volley=null;return;}
+ const hit=logical>=ILYRA.impact;
+ a.volley={x,y,originX:a.x,originY:a.y,age:logical,pace:ILYRA.volleyPace,hit,...visual.ilyraPower};
+ const fade=hit?Math.max(0,1-(logical-ILYRA.impact)/(ILYRA.duration-ILYRA.impact)):1;
+ // Game damage uses an actual circle in world coordinates, not a flattened ellipse.
+ const field=scene.add.graphics().setDepth(900);sprites.push(field);
+ field.fillStyle(0x99dfff,(hit?.16:.065)*fade).fillCircle(x,y,radius);
+ field.lineStyle(5,0x8bdbff,.13*fade).strokeCircle(x,y,radius);
+ field.lineStyle(1.5,0xbbeeff,.7*fade).strokeCircle(x,y,radius);
+ for(let i=0;i<12;i++){
+  const angle=i*Math.PI/6,px=x+Math.cos(angle)*radius,py=y+Math.sin(angle)*radius;
+  sprite('star-impact',px,py,i%3===0?9:5,i%3===0?9:5,.76*fade,901,Math.PI/4);
+ }
+ const points=[{x,y},...Array.from({length:8},(_,i)=>({x:x+Math.cos(i*Math.PI/4)*radius*.72,y:y+Math.sin(i*Math.PI/4)*radius*.72}))];
+ (window as any).artReview.effectSpec={ring:[38,20],radius,center:{x,y},points,impact:ILYRA.impact*ILYRA.volleyPace,maraBuff:MARA.duration};
+ if(logical<ILYRA.windup){sprite('star-impact',a.x,a.y-24,18+logical*60,18+logical*60,.7,1003+a.y,logical);return;}
+ if(!hit){
+  for(const [i,dest] of points.entries()){
+   // Slightly staggered departures, all nine arrive at the ONE model damage instant.
+   const delay=(i%3)*.018,span=ILYRA.impact-ILYRA.windup-delay;
+   const t=Math.max(0,Math.min(1,(logical-ILYRA.windup-delay)/span));
+   const at=(f:number)=>({x:a.x+(dest.x-a.x)*f+Math.sin(Math.PI*f)*(i%2?7:-7),y:a.y-24+(dest.y-a.y+24)*f-Math.sin(Math.PI*f)*(24+(i%3)*7)});
+   const p=at(t),prev=at(Math.max(0,t-.04)),angle=Math.atan2(p.y-prev.y,p.x-prev.x),pulse=1+.08*Math.sin(time*29+i*2);
+   for(let j=2;j>=1;j--){const q=at(Math.max(0,t-j*.035));sprite('star-projectile',q.x,q.y,13-j*2,6,.15*(3-j),1003+q.y,angle);}
+   sprite('star-projectile',p.x,p.y,(i===0?27:21)*pulse,10*pulse,.96,1003+p.y,angle);
   }
- }else if(logical<.95){
-  const f=(logical-.6)/.35, fade=1-f;
-  sprite('star-impact',x,y-8,30+f*56,30+f*56,Math.sin(Math.PI*(.15+f*.85))*.9,1003+y,f*.12);
-  sprite('ilyra-ring',x,y+4,40+f*90,20+f*42,fade*.6,900);
-  for(let i=0;i<8;i++){const angle=i*Math.PI/4+.15,rad=12+f*48;
-   sprite('star-impact',x+Math.cos(angle)*rad,y-7+Math.sin(angle)*rad*.65,7-3*f,7-3*f,fade*.8,1004+y,angle+f);
+ }else{
+  const f=(logical-ILYRA.impact)/(ILYRA.duration-ILYRA.impact);
+  field.lineStyle(2,0xdff6ff,fade*.6).strokeCircle(x,y,Math.min(radius,12+f*radius*1.8));
+  for(const [i,p]of points.entries()){
+   sprite('star-impact',p.x,p.y-5,(i===0?30:18)+f*10,(i===0?30:18)+f*10,fade*.86,1003+p.y,f*.15);
+   const angle=i*Math.PI/4;const reach=8+f*10;
+   sprite('star-impact',p.x+Math.cos(angle)*reach,p.y+Math.sin(angle)*reach,5,5,fade*.6,1004+p.y,angle);
+  }
+  for(const e of visual.enemies.filter(e=>e.hp>0&&Math.hypot(e.x-x,e.y-y)<=radius)){
+   sprite('star-impact',e.x,e.y-17,14+f*7,14+f*7,fade*.85,1005+e.y);
   }
  }
 }
 function maraEffect(age:number,time:number){
  const a=visual.mara, tower=visual.towers.find(t=>t.uid===a.targetTowerUid)??visual.towers[0];
  const start={x:a.x,y:a.y-22},end={x:tower.x,y:tower.y-28};
- const flight=.55;
- if(age<flight){
+ const flight=.55,interval=1,phase=age%interval;
+ // Repeated visual support pulses over the existing eight-second buff, no extra casts.
+ if(age<MARA.duration&&phase<flight){
   scene.mara.setFrame(maraFrame('left',false,true,visual.elapsed));
-  const t=age/flight,at=(f:number)=>({x:start.x+(end.x-start.x)*f,y:start.y+(end.y-start.y)*f-Math.sin(Math.PI*f)*28});
+  const t=phase/flight,at=(f:number)=>({x:start.x+(end.x-start.x)*f,y:start.y+(end.y-start.y)*f-Math.sin(Math.PI*f)*28});
   const p=at(t),prev=at(Math.max(0,t-.04)),angle=Math.atan2(p.y-prev.y,p.x-prev.x);
   sprite('mara-mote',start.x,start.y,14+Math.sin(t*Math.PI)*8,12,.55*(1-t),1003+a.y,-Math.PI/2);
   for(let j=3;j>=1;j--){const q=at(Math.max(0,t-j*.05));sprite('mara-mote',q.x,q.y,18-j*3,9-j,.12*(4-j),1003+q.y,angle);}
   sprite('mara-mote',p.x,p.y,28*(1+.06*Math.sin(time*30)),17,.96,1003+p.y,angle);
  }
- if(age>=flight&&age<8.55){
-  const t=age-flight,fade=Math.min(1,t/.18,(8-t)/.7),pulse=.73+Math.sin(time*3)*.08;
+ if(age<MARA.duration){
+  const t=age,fade=Math.min(1,t/.18,(MARA.duration-t)/.45),pulse=.73+Math.sin(time*3)*.08;
   sprite('mara-ring',tower.x,tower.y+12,66,29,fade*pulse,900);
   const views=scene.towerViews.get(tower.uid);views?.weapon.setTint(0xffe6a1);
   for(let i=0;i<3;i++){const p=(t*.28+i/3)%1;
    sprite('mara-mote',tower.x+Math.sin(i*2.1+t)*15,tower.y+4-p*44,10,7,fade*Math.sin(p*Math.PI)*.42,1004+tower.y,-Math.PI/2);
   }
-  if(t<.5)sprite('mara-ring',tower.x,tower.y+10,32+t*86,16+t*38,(1-t/.5)*.8,900);
+  const arrival=phase-flight;
+  if(arrival>=0&&arrival<.35)sprite('mara-ring',tower.x,tower.y+10,38+arrival*70,18+arrival*30,(1-arrival/.35)*.65*fade,900);
  }
 }
 function render(){
@@ -131,7 +154,7 @@ function render(){
  // Hide only the former Ilyra effect graphics; keep her genuine character sprite and cast frames.
  for(const g of [scene.ilyraView.ground,scene.ilyraView.cast,scene.ilyraView.impact,...scene.ilyraView.stars])g.clear();
  const time=(performance.now()-started)/1000;
- el('art-label').textContent=`ENTWURF · ${labels[mode]}`;
+ el('art-label').textContent=`ENTWURF V2 · ${labels[mode]}`;
  const mara=mode.startsWith('mara');selection(mara?'mara':'ilyra',time);
  visual.ilyra!.volley=null;
  if(mode==='ilyra-ready')disc('ilyra',0,'Bereit · Ziel wählen');
@@ -150,12 +173,12 @@ function render(){
   const p=visual.mara.path.at(-1);if(p)sprite('destination',p.x,p.y+2,27,18,.95,900);
  }
  if(mode==='mara-cast'||mode==='mara-buff'||mode==='mara-animated'){
-  const age=mode==='mara-cast'?.27:mode==='mara-buff'?2.2:time%10;
-  maraEffect(age,time);disc('mara',Math.max(0,30-age),age<.55?'Lichtimpuls zum Turm':age<8.55?`Turm verstärkt · ${Math.ceil(8.55-age)} s`:'Verstärkung klingt aus',true);
+  const age=mode==='mara-cast'?.27:mode==='mara-buff'?2.27:time%10;
+  maraEffect(age,time);disc('mara',Math.max(0,MARA.cooldown-age),age<MARA.duration?`Lichtimpulse · Buff ${Math.ceil(MARA.duration-age)} s`:'Verstärkung beendet',true);
  }
  if(mode==='ilyra-flight'||mode==='ilyra-impact'||mode==='ilyra-animated'){
-  const age=mode==='ilyra-flight'?.55:mode==='ilyra-impact'?.98:time%2.8;
-  starVolley(age,time);disc('ilyra',Math.max(0,28-age),age<.81?'Sternensalve unterwegs':age<1.3?'Sternenlicht klingt aus':'Lädt sich wieder auf');
+  const age=mode==='ilyra-flight'?.68:mode==='ilyra-impact'?.94:time%3.2;
+  starVolley(age,time);disc('ilyra',Math.max(0,ILYRA.cooldown-age),age<ILYRA.impact*ILYRA.volleyPace?'Sternenfächer · Flächentreffer':age<ILYRA.duration*ILYRA.volleyPace?'Gesamte Fläche getroffen':'Lädt sich wieder auf');
  }
 }
 

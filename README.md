@@ -13,26 +13,30 @@ neuen Partie als Lesezeichen speichern. Der normale Playlink öffnet weiterhin d
 Hauptspielstand. Spielstände liegen lokal in diesem Browser; das Löschen der
 Website-Daten löscht auch diese Stände.
 
-## Neue Grafikprobe · Bilder & animierte Clips
+## Grafikprobe V2 · Bilder & animierte Clips
 
-**[▶ Handy-Galerie öffnen: alle Bilder und Videos](https://emfau88.github.io/TD/previews/frost-hero/art-review/)**
+**[▶ Handy-Galerie öffnen: alle Bilder und Videos](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=2)**
 
 **Nur Entwurf, noch nicht ins Spiel eingebaut.** Acht neue Imagegen-Grafiken in einer
 separaten Ingame-Vorschau: runde Zauberbuttons, radialer Cooldown, Figuren-/Wegmarkierungen,
-Maras Lichtimpuls mit Turmeffekt sowie animierte Sternprojektile und Einschläge.
+Maras wiederkehrende Lichtimpulse mit Turmeffekt sowie animierte Sternprojektile und Einschläge.
 
-- [Radialer Cooldown · 16-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/#cooldown)
-- [Mara: Zauber und Turmverstärkung · 10-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/#mara)
-- [Sternensalve: Flug und Einschlag · 10-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/#ilyra)
+**Nach deinem Feedback:** engere, kräftiger leuchtende Figurenringe (38×20 statt 58×24),
+Lichtimpulse über Maras gesamte acht Sekunden Buffdauer und neun Sterne über Ilyras
+wirklicher Trefferfläche (Radius 72). Der radiale Cooldown bleibt wie gezeigt.
 
-<a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-cooldown.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-cooldown.png" width="180" alt="Runder Zauberbutton mit radialem Cooldown"></a>
-<a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-ready.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-ready.png" width="180" alt="Sternensalve bereit"></a>
-<a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-mara-path.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-mara-path.png" width="180" alt="Maras Bodensiegel und Wegmarkierungen"></a>
+- [Radialer Cooldown · 16-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=2#cooldown)
+- [Mara: Zauber und Turmverstärkung · 10-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=2#mara)
+- [Sternensalve: Flug und Einschlag · 10-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=2#ilyra)
 
-![Maras Lichtimpuls in der Ingame-Gestaltungsprobe](artifacts/idle-bastion/previews/ability-art/screenshots/desktop-mara-cast.png)
-![Sternensalve im Flug in der Ingame-Gestaltungsprobe](artifacts/idle-bastion/previews/ability-art/screenshots/desktop-ilyra-flight.png)
+<a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-cooldown-v2.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-cooldown-v2.png" width="180" alt="Runder Zauberbutton mit radialem Cooldown"></a>
+<a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-ready-v2.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-ready-v2.png" width="180" alt="Sternensalve bereit"></a>
+<a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-mara-path-v2.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-mara-path-v2.png" width="180" alt="Maras Bodensiegel und Wegmarkierungen"></a>
 
-[Alle sieben Screenshots](artifacts/idle-bastion/previews/ability-art/screenshots) ·
+![Maras Lichtimpuls in der Ingame-Gestaltungsprobe](artifacts/idle-bastion/previews/ability-art/screenshots/desktop-mara-cast-v2.png)
+![Sternensalve im Flug in der Ingame-Gestaltungsprobe](artifacts/idle-bastion/previews/ability-art/screenshots/desktop-ilyra-flight-v2.png)
+
+[Screenshots beider Entwürfe](artifacts/idle-bastion/previews/ability-art/screenshots) ·
 [Grafiken und Prompts](artifacts/idle-bastion/previews/ability-art/PROMPTS.md) ·
 [Umfang und Prüfung](artifacts/idle-bastion/previews/ability-art/REVIEW.md).
 Die Clips zeigen wiederholte Effektproben in einer für den Vergleich angehaltenen Szene;
