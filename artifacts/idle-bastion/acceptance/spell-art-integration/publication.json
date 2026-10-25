@@ -1,0 +1,11 @@
+{
+  "preview": {
+    "branch": "codex/frost-kit-hero-controls",
+    "branchSha": "5e0589f9b5d8c81affcc9eb15fa6fb64e88553a8",
+    "mainSha": "537b5e8c9cf09b696b41644da4c56dbc8633d720"
+  },
+  "mainIndexUnchanged": true,
+  "mainIndexSha256": "140ab09a52dbf7d9dd23620778fd300c75405b5c9f273a748f768ea05be501ec",
+  "checkedAt": "2026-10-25T01:12:51.118Z",
+  "workflow": "https://github.com/emfau88/TD/actions/runs/40149636478"
+}

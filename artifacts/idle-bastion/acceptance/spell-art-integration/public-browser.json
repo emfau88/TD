@@ -1,0 +1,57 @@
+[
+  {
+    "mobile": false,
+    "scenario": "frost",
+    "probe": "review-frost-439bc9e7-6639-4c07-bcbe-ccbe3b48b233",
+    "gold": 25,
+    "stage": "frost",
+    "ui": "Frostkristall · goldenes Feld antippen · 1 kostenloser Bausatz"
+  },
+  {
+    "mobile": false,
+    "scenario": "heroes",
+    "probe": "review-heroes-2e98cd00-39fa-4011-9ae0-1b037357f4e2",
+    "gold": 1007,
+    "stage": "done",
+    "ilyra": "done",
+    "ui": "Waldwächter · freies Feld am Weg antippen und direkt bauen"
+  },
+  {
+    "mobile": false,
+    "scenario": "ilyra",
+    "probe": "review-ilyra-34f9b1dd-2af9-4e63-9611-3d1af8a4ca61",
+    "gold": 620,
+    "stage": "done",
+    "ilyra": "move",
+    "ui": "Ilyra · Markiertes Feld antippen. Dort erreicht sie den Gegnerweg."
+  },
+  {
+    "mobile": true,
+    "scenario": "frost",
+    "probe": "review-frost-64aa71e0-2c2e-4e38-afdd-b2c3ad922f88",
+    "gold": 25,
+    "stage": "frost",
+    "ui": "Frost Crystal · tap a golden tile · 1 free kit"
+  },
+  {
+    "mobile": true,
+    "scenario": "heroes",
+    "probe": "review-heroes-3057023c-440f-42e6-a00f-ed36190ce08b",
+    "gold": 1007,
+    "stage": "done",
+    "ilyra": "done",
+    "ui": "Grove Warden · Tap an empty tile along the path to build"
+  },
+  {
+    "mobile": true,
+    "scenario": "ilyra",
+    "probe": "review-ilyra-6e64cbf4-6269-4ff0-93ee-18bb8754f325",
+    "gold": 620,
+    "stage": "done",
+    "ilyra": "move",
+    "ui": "Ilyra · Tap the marked tile. It puts the enemy path within reach."
+  },
+  {
+    "storageFailure": "stays on launcher with retry; no main fallback"
+  }
+]

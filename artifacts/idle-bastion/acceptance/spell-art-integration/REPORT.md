@@ -4,6 +4,15 @@
 Verglichen mit Main `537b5e8c9cf09b696b41644da4c56dbc8633d720`.
 **Kein Main-Merge durchgeführt.**
 
+Geprüfte Integration: `5e0589f9b5d8c81affcc9eb15fa6fb64e88553a8`.
+[Spielbare Vorschau](https://emfau88.github.io/TD/previews/frost-hero/feature-check.html) ·
+[erfolgreicher Pages-Lauf](https://github.com/emfau88/TD/actions/runs/40149636478).
+Alle drei öffentlichen Testeinstiege wurden anschließend erneut auf Desktop/Touch
+einschließlich Grafikladung und Speicherisolation geprüft. Der Workflow erhielt
+alle **401 Main-Dateien bytegleich**; die öffentliche Main-Hauptseite hat weiterhin
+denselben SHA-256. [Veröffentlichungsnachweis](publication.json) ·
+[öffentliche Bedienprobe](public-browser.json).
+
 ## Ergebnis
 
 **Technisch zur Übernahme empfohlen.** Die besprochene Optik ist jetzt im echten

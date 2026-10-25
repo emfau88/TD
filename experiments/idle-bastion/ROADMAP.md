@@ -5,6 +5,7 @@
 - [x] Nach positiver Rückmeldung zur V3-Gestaltung und Klärung des Gesamtziels auf dem Arbeitsbranch integriert: runde Zauberaktionen, enge Bodenringe/Wegzeichen, wiederholte Mara-Impulse mit ganzem Turm-Glow/Funken und Ilyras neun Sterne mit tatsächlicher AoE-Fläche. Acht Laufzeitgrafiken zusammen 168.708 Bytes; keine neuen Kampf-/Savewerte.
 - [x] Echter Desktop-/Touch-Ablauf, Pause/Reload, Zielwechsel, Verkauf, Bossverzauberung, Buffende, Salvenende, manueller Mara-Kartenbutton und begrenzte Sprite-Pools geprüft. Normaler Produktionsbuild, Q4-Neueinstieg und Version-29-Saveübernahme erfolgreich. Gesamtsuite 345/362: exakt dieselben 17 Altfehler wie Main, keine neuen und keine Skips. [Ergebnis, Grenzen und aktuelle Aufnahmen](../../artifacts/idle-bastion/acceptance/spell-art-integration/REPORT.md).
 - [x] Geteilte Test-/Galerielinks für den späteren normalen Main-Build erhalten. Main bleibt unverändert; Übernahme weiterhin erst nach ausdrücklicher Freigabe. Physische Smartphone-Prüfung ist nicht erfolgt.
+- [x] Integration `5e0589f` auf dem Arbeitsbranch veröffentlicht; [Pages-Lauf 40149636478](https://github.com/emfau88/TD/actions/runs/40149636478) erfolgreich. Alle drei öffentlichen Teststarts auf Desktop/Touch mit Grafikladung und Speicherisolation erneut bestanden. Alle 401 Main-Dateien bytegleich erhalten, Main-Ref unverändert.
 
 **Zauber-/Markierungsgrafik · 25.10.2026, ausschließlich Gestaltungsprobe zur Nutzerabnahme.**
 
