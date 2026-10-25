@@ -95,6 +95,10 @@ veröffentlicht. Main und die spielbare Branch-Testversion erhalten keine neuen 
   geprüft, nach Ablauf keine Lichtlagen mehr sichtbar. [Aufnahmewerte](checks-v3.json).
   Neue Mara-Videoaufnahme ohne JavaScript-Fehler. Physische Smartphone-Abnahme und
   endgültige Nutzerfreigabe bleiben offen; keine finale Gameplay-Integration.
+- **V3 öffentlich:** Medienstand `790344b`, [Pages-Lauf 40146831537](https://github.com/emfau88/TD/actions/runs/40146831537)
+  erfolgreich. Galerie bei 320/390/1280 Pixeln ohne Überlauf; alle Bilder geladen,
+  alle drei Videoansichten abgespielt, keine JS-/Ressourcenfehler.
+  [Öffentliche V3-Prüfwerte](gallery-checks-v3.json). Main weiterhin bytegleich.
 
 - **V2:** Alle sieben Aufnahmezustände ohne JavaScript-Fehler und horizontalen Überlauf.
   Radius 72, neun Ziele innerhalb der Fläche, gemeinsamer Trefferzeitpunkt und die

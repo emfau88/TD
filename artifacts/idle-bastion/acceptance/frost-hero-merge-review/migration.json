@@ -1,0 +1,8 @@
+{
+  "fromSchema": 29,
+  "toSchema": 30,
+  "forwardPreservesAllOtherBattleFields": true,
+  "offlinePreserved": true,
+  "oldMainRejectsNewSaveWithoutOverwrite": true,
+  "newBuildReloadsSameSave": true
+}
