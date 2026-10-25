@@ -2,6 +2,7 @@
  * Keep placeholders and game values intact; never use these strings as simulation IDs. */
 import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
+  'Da bist du ja! Ich habe auf dein Gold aufgepasst. Nachgezählt habe ich es nur dreimal. Na gut, viermal.': "There you are! I've been guarding your gold. I only counted it three times. All right, four.",
   "Übertakten": "Overclock",
   "AUTO EIN": "AUTO ON",
   "AUTO AUS": "AUTO OFF",

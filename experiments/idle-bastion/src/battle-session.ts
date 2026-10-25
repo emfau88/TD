@@ -79,6 +79,9 @@ export class BattleSession {
   private suspension?: Promise<void>;
   private transitioning = false;
   private actionPending = false;
+  private maraOfflineWelcomeSeen = false;
+  private committedMaraOfflineWelcomeSeen = false;
+  private showingMaraOfflineWelcome = false;
 
   private constructor(
     battle: IdleBattle, private readonly store: SessionStore | undefined,
@@ -89,6 +92,7 @@ export class BattleSession {
     this.committedSnapshot = battle.snapshot();
     this.committedPaused = this.currentPaused = save?.paused ?? false;
     this.currentRevision = save?.revision ?? 0;
+    this.committedMaraOfflineWelcomeSeen = this.maraOfflineWelcomeSeen = save?.maraOfflineWelcomeSeen === true;
     this.currentOffline = clone(save?.offline ?? createOfflineState(now()));
     this.committedOffline = clone(this.currentOffline);
     this.currentWriter = writer;
@@ -154,6 +158,7 @@ export class BattleSession {
   get writer(): WriterLease | undefined { return this.currentWriter && { ...this.currentWriter }; }
   get suspended(): boolean { return this.currentSuspended; }
   get awaitingResume(): boolean { return this.waitingForResume; }
+  get showMaraOfflineWelcome(): boolean { return this.showingMaraOfflineWelcome && this.waitingForResume && !this.currentError; }
 
   advance(dtSeconds: number): void {
     if (this.closed || this.closing || this.currentError || this.transitioning
@@ -260,6 +265,7 @@ export class BattleSession {
         }
         this.currentOffline = activateOffline(next, this.now(), this.currentCertificate, this.currentPaused || this.currentBattle.learningPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
         this.waitingForResume = false;
+        this.showingMaraOfflineWelcome = false;
         await this.commit();
         return true;
       } catch (error) { this.fail(asError(error), true); return false; }
@@ -367,22 +373,30 @@ export class BattleSession {
   private commit(force = false): Promise<void> {
     if (this.pendingWrite) return this.pendingWrite;
     if (this.currentError) return Promise.reject(this.currentError);
+    // Persist alongside the reserved receipt before exposing the return dialog.
+    // Reloading an unclaimed receipt must not replay the greeting.
+    if (this.waitingForResume && !this.maraOfflineWelcomeSeen && (this.currentOffline.pendingReward?.amountUnits ?? 0) > 0) {
+      this.maraOfflineWelcomeSeen = true;
+      this.showingMaraOfflineWelcome = true;
+    }
+    const maraOfflineWelcomeSeen = this.maraOfflineWelcomeSeen;
     const snapshot = this.currentBattle.snapshot(), paused = this.currentPaused;
     if (!this.waitingForResume && !this.currentSuspended) {
       this.currentOffline = checkpointActive(this.currentOffline, this.now(), this.currentCertificate, paused || this.currentBattle.learningPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
     }
     const offline = clone(this.currentOffline);
-    if (!force && same(snapshot, this.committedSnapshot) && paused === this.committedPaused && same(offline, this.committedOffline)) return Promise.resolve();
+    if (!force && same(snapshot, this.committedSnapshot) && paused === this.committedPaused && same(offline, this.committedOffline) && maraOfflineWelcomeSeen === this.committedMaraOfflineWelcomeSeen) return Promise.resolve();
     const task = Promise.resolve().then(async () => {
       try {
         if (this.store) {
           if (!this.currentWriter) throw new SessionOwnershipError('Dieser Tab besitzt keine Schreibberechtigung mehr.');
-          const save = await this.store.save(snapshot, paused, this.currentRevision, { writer: this.currentWriter, offline });
+          const save = await this.store.save(snapshot, paused, this.currentRevision, { writer: this.currentWriter, offline, maraOfflineWelcomeSeen });
           this.currentRevision = save.revision;
         }
         this.committedSnapshot = snapshot;
         this.committedPaused = paused;
         this.committedOffline = clone(offline);
+        this.committedMaraOfflineWelcomeSeen = maraOfflineWelcomeSeen;
         this.checkpointSeconds = 0;
       } catch (value) { this.fail(asError(value), true); throw this.currentError; }
     }).then(() => {
@@ -404,6 +418,8 @@ export class BattleSession {
       this.currentBattle = IdleBattle.restore(this.committedSnapshot)!;
       this.currentPaused = this.committedPaused;
       this.currentOffline = clone(this.committedOffline);
+      this.maraOfflineWelcomeSeen = this.committedMaraOfflineWelcomeSeen;
+      this.showingMaraOfflineWelcome = false;
       this.farmKey = '';
       this.refreshFarm();
       this.waitingForResume = !!this.currentOffline.window;

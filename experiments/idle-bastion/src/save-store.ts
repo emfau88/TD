@@ -8,6 +8,8 @@ import { checkpointActive, createOfflineState, restoreOffline, type OfflineState
 export interface SaveEnvelope {
   schemaVersion: 2; revision: number; writtenAt: number; paused: boolean;
   battle: BattleSnapshot; offline: OfflineState;
+  /** Optional presentation history; absent in older saves. No economic effect. */
+  maraOfflineWelcomeSeen?: boolean;
 }
 export type LoadResult =
   | { kind: 'empty' }
@@ -16,7 +18,7 @@ export type LoadResult =
   | { kind: 'unsupported'; reason: string }
   | { kind: 'corrupt'; reason: string };
 export interface WriterLease { ownerId: string; epoch: number; expiresAt: number }
-export interface SaveOptions { writer?: WriterLease; offline?: OfflineState }
+export interface SaveOptions { writer?: WriterLease; offline?: OfflineState; maraOfflineWelcomeSeen?: boolean }
 export interface BattleSaveStore {
   load(): Promise<LoadResult>;
   save(snapshot: BattleSnapshot, paused: boolean, expectedRevision: number, options?: SaveOptions): Promise<SaveEnvelope>;
@@ -84,6 +86,7 @@ function inspect(value: unknown, present = value !== undefined): Inspection {
     kind: 'valid', save: {
       schemaVersion: 2, revision: value.revision, writtenAt: value.writtenAt,
       paused: value.paused, battle: restored.snapshot(), offline,
+      ...(value.maraOfflineWelcomeSeen === true ? { maraOfflineWelcomeSeen: true } : {}),
     },
   };
 }
@@ -180,6 +183,8 @@ function createStore(db: IDBDatabase, clock: () => number): BattleSaveStore {
             const offline = proposedOffline ?? (current.kind === 'valid' ? current.save.offline
               : checkpointActive(createOfflineState(now), now, null, paused));
             written = { schemaVersion: 2, revision: nextRevision(revision), writtenAt: now, paused, battle, offline };
+            // Monotone even when a caller only writes combat/offline fields.
+            if (options.maraOfflineWelcomeSeen === true || current.kind === 'valid' && current.save.maraOfflineWelcomeSeen === true) written.maraOfflineWelcomeSeen = true;
             if (current.kind === 'valid') store.put(current.save, BACKUP);
             store.put(written, PRIMARY);
           } catch (error) { fail(error); }

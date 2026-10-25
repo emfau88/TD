@@ -10,6 +10,9 @@ import { LessonPointer } from './lesson-pointer';
 import { updateOnboarding } from './onboarding-ui';
 import { MaraIntro } from './mara-intro';
 import { prepareIntroPortraits } from './intro-portraits';
+import maraOfflinePortrait from '../assets/intro/mara/mischievous.webp';
+import { updateOfflineWelcome } from './offline-welcome';
+import './offline-welcome.css';
 import './mara-intro.css';
 import { QuickWinGuidance, workshopGoldMissing, type QuickWinNotice } from './quick-win-guidance';
 import './quick-win-guidance.css';
@@ -309,6 +312,7 @@ function syncUI(): void {
   advance.textContent = t(sim.bossChallengeRequested ? t('Boss am Wellenwechsel vorgemerkt') : sim.advanceRequested ? t('Vorstoß vorgemerkt') : t("Erneut vorstoßen · Welle {0}", sim.nextAdvanceWave));
   advance.disabled = unavailable || view.paused || sim.advanceRequested || sim.bossChallengeRequested;
   element('return-card').hidden = !live.awaitingResume;
+  updateOfflineWelcome(element('return-mara'), live.showMaraOfflineWelcome, maraOfflinePortrait);
   if (live.awaitingResume) {
     const reward = live.pendingReward;
     const departure = live.offline.window ?? live.offline.baseline, basis = departure.certificate;

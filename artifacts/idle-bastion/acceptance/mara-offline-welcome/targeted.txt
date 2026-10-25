@@ -1,0 +1,424 @@
+TAP version 13
+# Subtest: free Frost commit includes consumption and tutorial exit; duplicate and failed writes cannot duplicate the kit
+ok 1 - free Frost commit includes consumption and tutorial exit; duplicate and failed writes cannot duplicate the kit
+  ---
+  duration_ms: 272.9043
+  type: 'test'
+  ...
+# Subtest: fresh persistent session commits before exposure and temporary play is explicit
+ok 2 - fresh persistent session commits before exposure and temporary play is explicit
+  ---
+  duration_ms: 59.6139
+  type: 'test'
+  ...
+# Subtest: purchase acknowledgement waits for commit and a concurrent click is rejected
+ok 3 - purchase acknowledgement waits for commit and a concurrent click is rejected
+  ---
+  duration_ms: 36.2428
+  type: 'test'
+  ...
+# Subtest: write rejection rolls back the complete battle and freezes further economic actions
+ok 4 - write rejection rolls back the complete battle and freezes further economic actions
+  ---
+  duration_ms: 61.0646
+  type: 'test'
+  ...
+# Subtest: a second tab cannot simulate, load rewards or replace the active writer
+ok 5 - a second tab cannot simulate, load rewards or replace the active writer
+  ---
+  duration_ms: 27.5821
+  type: 'test'
+  ...
+# Subtest: expired epoch is taken over and the waking old tab cannot renew or overwrite newer gold
+ok 6 - expired epoch is taken over and the waking old tab cannot renew or overwrite newer gold
+  ---
+  duration_ms: 31.2338
+  type: 'test'
+  ...
+# Subtest: wave boundaries commit immediately; pure combat checkpoints at one second and flush stores the remainder
+ok 7 - wave boundaries commit immediately; pure combat checkpoints at one second and flush stores the remainder
+  ---
+  duration_ms: 37.4791
+  type: 'test'
+  ...
+# Subtest: pause persists and a closed paused game receives no offline production
+ok 8 - pause persists and a closed paused game receives no offline production
+  ---
+  duration_ms: 76.3514
+  type: 'test'
+  ...
+# Subtest: corrupt/newer saves remain protected and backup recovery is explicit
+ok 9 - corrupt/newer saves remain protected and backup recovery is explicit
+  ---
+  duration_ms: 5.8716
+  type: 'test'
+  ...
+# Subtest: pending commits retain only bounded active time
+ok 10 - pending commits retain only bounded active time
+  ---
+  duration_ms: 36.2291
+  type: 'test'
+  ...
+# Subtest: kill/clear notifications wait for the complete reward commit and restore never replays them
+ok 11 - kill/clear notifications wait for the complete reward commit and restore never replays them
+  ---
+  duration_ms: 232.0173
+  type: 'test'
+  ...
+# Subtest: farm certificate appears only after live clear, revalidates on upgrade and survives reload without rewards
+ok 12 - farm certificate appears only after live clear, revalidates on upgrade and survives reload without rewards
+  ---
+  duration_ms: 104.5332
+  type: 'test'
+  ...
+# Subtest: suspend releases ownership, reserves 60% offline income and blocks combat until claim plus actual continuation
+ok 13 - suspend releases ownership, reserves 60% offline income and blocks combat until claim plus actual continuation
+  ---
+  duration_ms: 64.8143
+  type: 'test'
+  ...
+# Subtest: reload/claim without active continuation preserves the same two-hour budget
+ok 14 - reload/claim without active continuation preserves the same two-hour budget
+  ---
+  duration_ms: 64.3785
+  type: 'test'
+  ...
+# Subtest: schema 29 migration preserves an already reserved offline reward exactly once
+ok 15 - schema 29 migration preserves an already reserved offline reward exactly once
+  ---
+  duration_ms: 62.7063
+  type: 'test'
+  ...
+# Subtest: failed offline claim rolls both gold and pending reward back for a safe later retry
+ok 16 - failed offline claim rolls both gold and pending reward back for a safe later retry
+  ---
+  duration_ms: 63.2947
+  type: 'test'
+  ...
+# Subtest: large frame gaps become absence and never fast-forward the live wave
+ok 17 - large frame gaps become absence and never fast-forward the live wave
+  ---
+  duration_ms: 57.002
+  type: 'test'
+  ...
+# Subtest: actual IndexedDB integration rejects a second tab and preserves exact confirmed rewards across return
+ok 18 - actual IndexedDB integration rejects a second tab and preserves exact confirmed rewards across return
+  ---
+  duration_ms: 94.8541
+  type: 'test'
+  ...
+# Subtest: close is idempotent, stores the final combat state and releases the writer
+ok 19 - close is idempotent, stores the final combat state and releases the writer
+  ---
+  duration_ms: 25.7214
+  type: 'test'
+  ...
+# Subtest: Web Locks use a short gate, and an unavailable browser lock still permits valid IDB takeover
+ok 20 - Web Locks use a short gate, and an unavailable browser lock still permits valid IDB takeover
+  ---
+  duration_ms: 33.0471
+  type: 'test'
+  ...
+# Subtest: claims preserve the fixed absence window and continuation includes a later tail exactly once
+ok 21 - claims preserve the fixed absence window and continuation includes a later tail exactly once
+  ---
+  duration_ms: 101.2341
+  type: 'test'
+  ...
+# Subtest: a backwards clock cannot replay reserved offline time or move its cursor backwards
+ok 22 - a backwards clock cannot replay reserved offline time or move its cursor backwards
+  ---
+  duration_ms: 116.2938
+  type: 'test'
+  ...
+# Subtest: temporary play discards a large frame gap without offline gold or a return dialog
+ok 23 - temporary play discards a large frame gap without offline gold or a return dialog
+  ---
+  duration_ms: 176.1071
+  type: 'test'
+  ...
+# Subtest: background checkpoint accepts exactly one queued purchase and validates it after saving
+ok 24 - background checkpoint accepts exactly one queued purchase and validates it after saving
+  ---
+  duration_ms: 73.1575
+  type: 'test'
+  ...
+# Subtest: failed background write rejects the queued action without invoking its mutation
+ok 25 - failed background write rejects the queued action without invoking its mutation
+  ---
+  duration_ms: 66.9851
+  type: 'test'
+  ...
+# Subtest: pause click during a checkpoint persists exactly once
+ok 26 - pause click during a checkpoint persists exactly once
+  ---
+  duration_ms: 73.9078
+  type: 'test'
+  ...
+# Subtest: gift click during autosave remains responsive without duplicate gifts or points
+ok 27 - gift click during autosave remains responsive without duplicate gifts or points
+  ---
+  duration_ms: 121.9207
+  type: 'test'
+  ...
+# Subtest: first positive return persists the greeting before claim; unclaimed reload never repeats or changes its gold
+ok 28 - first positive return persists the greeting before claim; unclaimed reload never repeats or changes its gold
+  ---
+  duration_ms: 1180.8754
+  type: 'test'
+  ...
+# Subtest: zero, paused and sub-gold returns: zero does not consume it; even a positive fraction qualifies
+ok 29 - zero, paused and sub-gold returns: zero does not consume it; even a positive fraction qualifies
+  ---
+  duration_ms: 1763.1054
+  type: 'test'
+  ...
+# Subtest: a second absence within the same session cannot reuse the first visible greeting
+ok 30 - a second absence within the same session cannot reuse the first visible greeting
+  ---
+  duration_ms: 310.8955
+  type: 'test'
+  ...
+# Subtest: failed greeting persistence leaves the old receipt and eligibility intact
+ok 31 - failed greeting persistence leaves the old receipt and eligibility intact
+  ---
+  duration_ms: 606.8241
+  type: 'test'
+  ...
+# Subtest: return greeting uses DE/EN, hides for ineligible saves, and adds no interaction gate
+ok 32 - return greeting uses DE/EN, hides for ineligible saves, and adds no interaction gate
+  ---
+  duration_ms: 438.0618
+  type: 'test'
+  ...
+# Subtest: 30 seconds, 10 minutes, 1 hour and 3 hours reserve 60% with the same two-hour cap
+ok 33 - 30 seconds, 10 minutes, 1 hour and 3 hours reserve 60% with the same two-hour cap
+  ---
+  duration_ms: 3.508
+  type: 'test'
+  ...
+# Subtest: explicit pause and absence without a certified autonomous rate generate no gold
+ok 34 - explicit pause and absence without a certified autonomous rate generate no gold
+  ---
+  duration_ms: 0.3527
+  type: 'test'
+  ...
+# Subtest: closing and reopening before claim consumes only the remaining cap of the original window
+ok 35 - closing and reopening before claim consumes only the remaining cap of the original window
+  ---
+  duration_ms: 0.4806
+  type: 'test'
+  ...
+# Subtest: claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+ok 36 - claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+  ---
+  duration_ms: 0.9728
+  type: 'test'
+  ...
+# Subtest: backwards clock jumps never move the high-water cursor back or repay a reserved interval
+ok 37 - backwards clock jumps never move the high-water cursor back or repay a reserved interval
+  ---
+  duration_ms: 0.6315
+  type: 'test'
+  ...
+# Subtest: the certificate and paused state are frozen at the original departure
+ok 38 - the certificate and paused state are frozen at the original departure
+  ---
+  duration_ms: 0.2483
+  type: 'test'
+  ...
+# Subtest: confirmed active checkpoints and absence share a single non-overlapping time boundary
+ok 39 - confirmed active checkpoints and absence share a single non-overlapping time boundary
+  ---
+  duration_ms: 0.3481
+  type: 'test'
+  ...
+# Subtest: exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+ok 40 - exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+  ---
+  duration_ms: 0.4427
+  type: 'test'
+  ...
+# Subtest: fractional units carry into future windows even when the certified rate changes
+ok 41 - fractional units carry into future windows even when the certified rate changes
+  ---
+  duration_ms: 0.4132
+  type: 'test'
+  ...
+# Subtest: invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+ok 42 - invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+  ---
+  duration_ms: 1.5623
+  type: 'test'
+  ...
+# Subtest: the first B04 schema-one policy defaults migrate without resetting a pending absence window
+ok 43 - the first B04 schema-one policy defaults migrate without resetting a pending absence window
+  ---
+  duration_ms: 0.2543
+  type: 'test'
+  ...
+# Subtest: policy migration never replaces an explicitly contradictory or malformed saved policy
+ok 44 - policy migration never replaces an explicitly contradictory or malformed saved policy
+  ---
+  duration_ms: 0.3771
+  type: 'test'
+  ...
+# Subtest: known historical departure proofs retain their original production basis
+ok 45 - known historical departure proofs retain their original production basis
+  ---
+  duration_ms: 0.8094
+  type: 'test'
+  ...
+# Subtest: isolated native IndexedDB starts empty and restores a committed battle and explicit pause
+ok 46 - isolated native IndexedDB starts empty and restores a committed battle and explicit pause
+  ---
+  duration_ms: 123.3718
+  type: 'test'
+  ...
+# Subtest: each commit retains the last valid predecessor and advances revision monotonically
+ok 47 - each commit retains the last valid predecessor and advances revision monotonically
+  ---
+  duration_ms: 51.5016
+  type: 'test'
+  ...
+# Subtest: two connections racing the same revision have exactly one atomic CAS winner
+ok 48 - two connections racing the same revision have exactly one atomic CAS winner
+  ---
+  duration_ms: 39.228
+  type: 'test'
+  ...
+# Subtest: invalid new snapshots, pause values and revisions leave primary and backup untouched
+ok 49 - invalid new snapshots, pause values and revisions leave primary and backup untouched
+  ---
+  duration_ms: 31.1108
+  type: 'test'
+  ...
+# Subtest: newer primary schemas never fall back to backup or permit overwrite or recovery
+ok 50 - newer primary schemas never fall back to backup or permit overwrite or recovery
+  ---
+  duration_ms: 29.6451
+  type: 'test'
+  ...
+# Subtest: a future battle rules version inside schema one is protected as unsupported
+ok 51 - a future battle rules version inside schema one is protected as unsupported
+  ---
+  duration_ms: 31.4011
+  type: 'test'
+  ...
+# Subtest: load never writes: corrupt known primary offers explicit recovery and preserves its raw evidence
+ok 52 - load never writes: corrupt known primary offers explicit recovery and preserves its raw evidence
+  ---
+  duration_ms: 38.6594
+  type: 'test'
+  ...
+# Subtest: recovery rechecks current primary atomically and refuses a newer valid save
+ok 53 - recovery rechecks current primary atomically and refuses a newer valid save
+  ---
+  duration_ms: 39.8161
+  type: 'test'
+  ...
+# Subtest: unrecognized corruption or a bad backup is reported and cannot be silently replaced
+ok 54 - unrecognized corruption or a bad backup is reported and cannot be silently replaced
+  ---
+  duration_ms: 35.0859
+  type: 'test'
+  ...
+# Subtest: a save aborted after successful put request is never acknowledged and leaves prior data intact
+ok 55 - a save aborted after successful put request is never acknowledged and leaves prior data intact
+  ---
+  duration_ms: 35.1869
+  type: 'test'
+  ...
+# Subtest: unavailable storage, future database version and blocked opens reject clearly
+ok 56 - unavailable storage, future database version and blocked opens reject clearly
+  ---
+  duration_ms: 1.8539
+  type: 'test'
+  ...
+# Subtest: an explicitly stored undefined value is corruption rather than an absent primary
+ok 57 - an explicitly stored undefined value is corruption rather than an absent primary
+  ---
+  duration_ms: 26.2695
+  type: 'test'
+  ...
+# Subtest: writer acquisition is atomic, exclusive and requires a lease for all subsequent production writes
+ok 58 - writer acquisition is atomic, exclusive and requires a lease for all subsequent production writes
+  ---
+  duration_ms: 32.8324
+  type: 'test'
+  ...
+# Subtest: expired writer takeover rejects the waking old tab even when its save revision still matches
+ok 59 - expired writer takeover rejects the waking old tab even when its save revision still matches
+  ---
+  duration_ms: 38.7736
+  type: 'test'
+  ...
+# Subtest: renewal extends the same epoch; expired writers cannot renew or save themselves back into ownership
+ok 60 - renewal extends the same epoch; expired writers cannot renew or save themselves back into ownership
+  ---
+  duration_ms: 32.8496
+  type: 'test'
+  ...
+# Subtest: lease epoch and release tombstone survive reopening the database
+ok 61 - lease epoch and release tombstone survive reopening the database
+  ---
+  duration_ms: 55.4916
+  type: 'test'
+  ...
+# Subtest: backup recovery checks the writer epoch in the same transaction as replacement
+ok 62 - backup recovery checks the writer epoch in the same transaction as replacement
+  ---
+  duration_ms: 33.6886
+  type: 'test'
+  ...
+# Subtest: malformed or future writer records are protected instead of being overwritten by acquisition
+ok 63 - malformed or future writer records are protected instead of being overwritten by acquisition
+  ---
+  duration_ms: 1.3245
+  type: 'test'
+  ...
+# Subtest: envelope one migrates read-only without production evidence and retains CAS revision protection
+ok 64 - envelope one migrates read-only without production evidence and retains CAS revision protection
+  ---
+  duration_ms: 34.7103
+  type: 'test'
+  ...
+# Subtest: pending offline receipt and cleared claim persist atomically with actual gold across reloads
+ok 65 - pending offline receipt and cleared claim persist atomically with actual gold across reloads
+  ---
+  duration_ms: 43.3615
+  type: 'test'
+  ...
+# Subtest: a future offline schema is protected even with a valid predecessor
+ok 66 - a future offline schema is protected even with a valid predecessor
+  ---
+  duration_ms: 40.1441
+  type: 'test'
+  ...
+# Subtest: battle schema two migrates without rewriting the historical absence proof or pending receipt
+ok 67 - battle schema two migrates without rewriting the historical absence proof or pending receipt
+  ---
+  duration_ms: 14.283
+  type: 'test'
+  ...
+# Subtest: session return across the Mara rule update pays the historical rate once and starts with no invented current proof
+ok 68 - session return across the Mara rule update pays the historical rate once and starts with no invented current proof
+  ---
+  duration_ms: 40.6472
+  type: 'test'
+  ...
+# Subtest: future battle schema and historical proof versions remain protected
+ok 69 - future battle schema and historical proof versions remain protected
+  ---
+  duration_ms: 79.3671
+  type: 'test'
+  ...
+1..69
+# tests 69
+# suites 0
+# pass 69
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10308.5763

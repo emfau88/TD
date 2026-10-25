@@ -1,0 +1,72 @@
+[
+  {
+    "lang": "de",
+    "width": 1280,
+    "height": 800,
+    "kind": "positive",
+    "onceOnly": true,
+    "reload": true,
+    "immediateClaim": true,
+    "goldExact": true,
+    "favicon200": true,
+    "noFaviconIcoRequest": true,
+    "errors": [],
+    "bad": []
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "height": 844,
+    "kind": "positive",
+    "onceOnly": true,
+    "reload": true,
+    "immediateClaim": true,
+    "goldExact": true,
+    "favicon200": true,
+    "noFaviconIcoRequest": true,
+    "errors": [],
+    "bad": []
+  },
+  {
+    "lang": "de",
+    "width": 320,
+    "height": 568,
+    "kind": "positive",
+    "onceOnly": true,
+    "reload": true,
+    "immediateClaim": true,
+    "goldExact": true,
+    "favicon200": true,
+    "noFaviconIcoRequest": true,
+    "errors": [],
+    "bad": []
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "height": 844,
+    "kind": "zero",
+    "onceOnly": true,
+    "reload": true,
+    "immediateClaim": true,
+    "goldExact": true,
+    "favicon200": true,
+    "noFaviconIcoRequest": true,
+    "errors": [],
+    "bad": []
+  },
+  {
+    "lang": "de",
+    "width": 390,
+    "height": 844,
+    "kind": "delayed-portrait",
+    "onceOnly": true,
+    "reload": true,
+    "immediateClaim": true,
+    "goldExact": true,
+    "favicon200": true,
+    "noFaviconIcoRequest": true,
+    "errors": [],
+    "bad": []
+  }
+]

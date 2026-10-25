@@ -1,5 +1,11 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Quick Win · Maras erste Offline-Begrüßung · 25.10.2026, Branch `codex/mara-offline-welcome` ab Main `a732403`; keine Merge-/Deploymentfreigabe.**
+
+- [x] Vorhandenes schelmisches Mara-Porträt und kurzer DE-/EN-Spruch im bestehenden Rückkehrdialog. Einmal pro Spielstand beim ersten positiven angebotenen Offline-Ertrag, auch bei Goldbruchteilen; Null-/Pausenertrag verbraucht die Begrüßung nicht. Reload vor/nach Einsammeln und spätere Abwesenheiten wiederholen sie nicht. Kein zusätzlicher Klick oder Wartezeit.
+- [x] Optionale Darstellungsmarkierung im bestehenden Save-Umschlag atomar mit dem Rückkehrbeleg gespeichert. Kampf-/Offline-Schema, Regeln, Ertragsformeln und Nachweise unverändert. Bestehendes SPIRE-Emblem als relatives Favicon eingebunden; keine neuen Spielgrafiken oder Sprachdateien.
+- [x] 69/69 gezielte Tests, Vollsuite 356/373 mit exakt denselben 17 Altfehlern, Produktionsbuild bestanden. Fünf echte Browserabläufe inklusive DE/EN bei 1280/390/320 Pixeln, Nullertrag, Reload und verzögertem Porträt; Einsammeln sofort erreichbar, keine Browser-/Ressourcenfehler oder `favicon.ico`-Anfrage. [Prüfbericht und Aufnahmen](../../artifacts/idle-bastion/acceptance/mara-offline-welcome/REPORT.md). Technische Eigenprüfung; visuelle Nutzerabnahme und Main-Übernahme bleiben separat.
+
 **Early Balance Release Pass · 25.10.2026, nach ausdrücklicher Nutzerfreigabe auf Main übernommen und veröffentlicht.**
 
 - [x] Alten Audit gelesen und aktuelle Gratis-Frost-Basis mit echter Engine neu gemessen; acht Profile, vier Einzelhypothesen und drei Kombinationen, 74 Läufe inklusive Produktionsabgleich und direkter Wiederanlaufkontrolle. Reguläres Gold/Käufe und vollständige Messdaten archiviert.

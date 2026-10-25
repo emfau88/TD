@@ -1,5 +1,21 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Einmalige Offline-Begrüßung
+
+Der bestehende Save-Umschlag 2 kann `maraOfflineWelcomeSeen: true` enthalten.
+Fehlendes Feld in alten Spielständen bedeutet noch nicht begrüßt; Kampf-Snapshot 31,
+Regeln 16 und Offline-Schema 1 bleiben unverändert. Die Markierung gehört zur
+Darstellung, nicht in Farmfingerabdruck, Offlineformeln oder Goldkonto.
+
+Die Session bestätigt die Markierung zusammen mit dem ersten positiven reservierten
+Rückkehrbeleg, bevor der Dialog verfügbar wird. Nur die aktuelle Session zeigt dann
+das vorhandene Mara-Porträt und DE-/EN-Text. Ein Reload auch vor dem Einsammeln zeigt
+weiter denselben Anspruch, aber keine zweite Begrüßung. Nullertrag bleibt unmarkiert;
+Goldbruchteile zählen als positiv. Der Store erhält eine gesetzte Markierung auch bei
+Schreibvorgängen ohne dieses optionale Feld. Schreibfehler rollen den Sessionzustand
+zurück; der bisherige Beleg und die Begrüßungsberechtigung bleiben erhalten.
+Kein Zusatzdialog, Lesetimer oder Warten auf das Porträt vor dem Einsammeln.
+
 ## Early Balance Release — Snapshot 31 / Regeln 16
 
 Neue Versuche ändern ausschließlich Welle 10 (22 Gegner, vier Gruppen, Abschlussgold 20)
