@@ -1,8 +1,28 @@
 # SPIRE · Grafikprobe für Zauber und Markierungen
 
-25.10.2026 · **V2 nach Nutzerfeedback. Entwurf zur visuellen Nutzerabnahme, keine Gameplay-Integration.**
+25.10.2026 · **V3 nach Nutzerfeedback. Entwurf zur visuellen Nutzerabnahme, keine Gameplay-Integration.**
 
-[Mobile Galerie mit Videos](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=2)
+[Mobile Galerie mit Videos](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=3#mara)
+
+## V3: Glow über dem gesamten Turm und Trefferfunken
+
+Mara verstärkt den Turm optisch durch einen transparenten Goldüberzug (`#ffcd69`)
+und einen weichen Konturschein an Sockel, Turmkörper und Waffe. Beide tatsächlichen
+Sprites liefern ihre Silhouette einschließlich Frame, Drehung und Anker; keine
+rechteckige Lichtplatte. Steinstruktur, Schatten und Konturen bleiben erkennbar.
+Die Lichtlagen werden wiederverwendet und beeinflussen weder Originalgrafik noch
+Spielzustand. Der frühere alleinige Waffentint entfällt in dieser Probe.
+
+Jeder eintreffende Lichtimpuls hellt den Glow kurz auf (0,28 s) und erzeugt fünf
+kleine goldene Funken mit 0,4 s Ausklang. Zwischen den Treffern bleibt das Turmlicht
+ruhig bestehen. Nach der unveränderten Buffdauer von acht Sekunden endet der
+Nachschub; die Beleuchtung klingt in 0,4 s aus. Dieser optische Nachlauf verlängert
+die Verstärkung nicht. Bei Ansichtswechsel werden die Lichtlagen sofort ausgeblendet.
+
+Sechs neue Aufnahmen zeigen Buff, Treffer und Buffende auf Desktop und in Hochkant.
+Der neue Mara-Clip umfasst zehn Sekunden, zusätzlich mit 640×540-Handyausschnitt.
+Die Galerie verwendet weiter die unveränderten V2-Clips für Cooldown und Ilyra.
+Frühere Medien und Imagegen-Originale bleiben erhalten; keine neue Assetgenerierung.
 
 ## V2: Änderungen nach Feedback
 
@@ -69,6 +89,12 @@ Der frühere lokale Entwurf für den rechteckigen Cooldown-Button wird nicht mit
 veröffentlicht. Main und die spielbare Branch-Testversion erhalten keine neuen Effekte.
 
 ## Nachweise
+
+- **V3 lokal:** Sechs Aufnahmezustände auf Desktop 1280×800 und Hochkant 390×844
+  ohne JavaScript-Fehler oder Überlauf. Ganz-Turm-Glow und Trefferfunken visuell
+  geprüft, nach Ablauf keine Lichtlagen mehr sichtbar. [Aufnahmewerte](checks-v3.json).
+  Neue Mara-Videoaufnahme ohne JavaScript-Fehler. Physische Smartphone-Abnahme und
+  endgültige Nutzerfreigabe bleiben offen; keine finale Gameplay-Integration.
 
 - **V2:** Alle sieben Aufnahmezustände ohne JavaScript-Fehler und horizontalen Überlauf.
   Radius 72, neun Ziele innerhalb der Fläche, gemeinsamer Trefferzeitpunkt und die

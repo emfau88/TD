@@ -1,0 +1,88 @@
+[
+  {
+    "size": "mobile",
+    "mode": "mara-buff",
+    "noOverflow": true,
+    "spec": {
+      "age": 2.27,
+      "buffDuration": 8,
+      "fade": 1,
+      "hit": 0,
+      "glowParts": 2,
+      "lightLayers": 36
+    }
+  },
+  {
+    "size": "mobile",
+    "mode": "mara-impact",
+    "noOverflow": true,
+    "spec": {
+      "age": 2.67,
+      "buffDuration": 8,
+      "fade": 1,
+      "hit": 0.5714285714285718,
+      "glowParts": 2,
+      "lightLayers": 36
+    }
+  },
+  {
+    "size": "mobile",
+    "mode": "mara-ended",
+    "noOverflow": true,
+    "spec": {
+      "age": 8.6,
+      "buffDuration": 8,
+      "fade": 0,
+      "hit": 0,
+      "glowParts": 0,
+      "lightLayers": 0
+    }
+  },
+  {
+    "size": "mobile",
+    "errors": []
+  },
+  {
+    "size": "desktop",
+    "mode": "mara-buff",
+    "noOverflow": true,
+    "spec": {
+      "age": 2.27,
+      "buffDuration": 8,
+      "fade": 1,
+      "hit": 0,
+      "glowParts": 2,
+      "lightLayers": 36
+    }
+  },
+  {
+    "size": "desktop",
+    "mode": "mara-impact",
+    "noOverflow": true,
+    "spec": {
+      "age": 2.67,
+      "buffDuration": 8,
+      "fade": 1,
+      "hit": 0.5714285714285718,
+      "glowParts": 2,
+      "lightLayers": 36
+    }
+  },
+  {
+    "size": "desktop",
+    "mode": "mara-ended",
+    "noOverflow": true,
+    "spec": {
+      "age": 8.6,
+      "buffDuration": 8,
+      "fade": 0,
+      "hit": 0,
+      "glowParts": 0,
+      "lightLayers": 0
+    }
+  },
+  {
+    "size": "desktop",
+    "errors": []
+  }
+]

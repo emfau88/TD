@@ -13,30 +13,37 @@ neuen Partie als Lesezeichen speichern. Der normale Playlink öffnet weiterhin d
 Hauptspielstand. Spielstände liegen lokal in diesem Browser; das Löschen der
 Website-Daten löscht auch diese Stände.
 
-## Grafikprobe V2 · Bilder & animierte Clips
+## Grafikprobe V3 · Bilder & animierte Clips
 
-**[▶ Handy-Galerie öffnen: alle Bilder und Videos](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=2)**
+**[▶ Handy-Galerie öffnen: alle Bilder und Videos](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=3)**
 
 **Nur Entwurf, noch nicht ins Spiel eingebaut.** Acht neue Imagegen-Grafiken in einer
 separaten Ingame-Vorschau: runde Zauberbuttons, radialer Cooldown, Figuren-/Wegmarkierungen,
 Maras wiederkehrende Lichtimpulse mit Turmeffekt sowie animierte Sternprojektile und Einschläge.
 
-**Nach deinem Feedback:** engere, kräftiger leuchtende Figurenringe (38×20 statt 58×24),
+**Neu in V3:** Maras Licht umhüllt jetzt den gesamten verstärkten Turm. Ein transparenter
+Goldton und weicher Konturschein bleiben während des Buffs sichtbar. Jeder Treffer
+hellt das Leuchten kurz auf und erzeugt fünf kleine goldene Funken; beim Ende klingt
+der Glow sanft aus.
+
+**Aus V2 beibehalten:** engere, kräftiger leuchtende Figurenringe (38×20 statt 58×24),
 Lichtimpulse über Maras gesamte acht Sekunden Buffdauer und neun Sterne über Ilyras
 wirklicher Trefferfläche (Radius 72). Der radiale Cooldown bleibt wie gezeigt.
 
-- [Radialer Cooldown · 16-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=2#cooldown)
-- [Mara: Zauber und Turmverstärkung · 10-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=2#mara)
-- [Sternensalve: Flug und Einschlag · 10-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=2#ilyra)
+- [Radialer Cooldown · 16-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=3#cooldown)
+- [Mara: Zauber und Turmverstärkung · 10-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=3#mara)
+- [Sternensalve: Flug und Einschlag · 10-Sekunden-Clip](https://emfau88.github.io/TD/previews/frost-hero/art-review/?v=3#ilyra)
 
 <a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-cooldown-v2.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-cooldown-v2.png" width="180" alt="Runder Zauberbutton mit radialem Cooldown"></a>
 <a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-ready-v2.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-ilyra-ready-v2.png" width="180" alt="Sternensalve bereit"></a>
 <a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-mara-path-v2.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-mara-path-v2.png" width="180" alt="Maras Bodensiegel und Wegmarkierungen"></a>
 
-![Maras Lichtimpuls in der Ingame-Gestaltungsprobe](artifacts/idle-bastion/previews/ability-art/screenshots/desktop-mara-cast-v2.png)
+<a href="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-mara-impact-v3.png"><img src="artifacts/idle-bastion/previews/ability-art/screenshots/mobile-mara-impact-v3.png" width="230" alt="Mara: ganzer Turm leuchtet, mit goldenen Trefferfunken"></a>
+
+![Maras neuer Glow über dem gesamten Turm und Trefferfunken](artifacts/idle-bastion/previews/ability-art/screenshots/desktop-mara-impact-v3.png)
 ![Sternensalve im Flug in der Ingame-Gestaltungsprobe](artifacts/idle-bastion/previews/ability-art/screenshots/desktop-ilyra-flight-v2.png)
 
-[Screenshots beider Entwürfe](artifacts/idle-bastion/previews/ability-art/screenshots) ·
+[Screenshots aller Entwürfe](artifacts/idle-bastion/previews/ability-art/screenshots) ·
 [Grafiken und Prompts](artifacts/idle-bastion/previews/ability-art/PROMPTS.md) ·
 [Umfang und Prüfung](artifacts/idle-bastion/previews/ability-art/REVIEW.md).
 Die Clips zeigen wiederholte Effektproben in einer für den Vergleich angehaltenen Szene;
