@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-25T16:35:08.934Z",
+  "gameLoaded": true,
+  "reload": true,
+  "errors": [],
+  "httpErrors": [],
+  "nonGameFavicon404": [
+    {
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "url": "https://emfau88.github.io/favicon.ico",
+      "line": 0,
+      "column": 0,
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  ]
+}

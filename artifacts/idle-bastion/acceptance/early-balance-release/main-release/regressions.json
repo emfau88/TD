@@ -1,0 +1,30 @@
+{
+  "sourceCommit": "d84a34504535b49f5127f0eb0090a65fdda58db6",
+  "tests": 368,
+  "passed": 351,
+  "failed": 17,
+  "skipped": 0,
+  "addedFailures": [],
+  "removedFailures": [],
+  "failures": [
+    "B11 earned boss follow-up opens the clearing within the 8â€“11 minute target and retains farming",
+    "Mara has continuous legal footpaths to all active tower approaches and the workshop",
+    "Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads",
+    "Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation",
+    "Wisp and pads unlock at permanent milestones, with no gift or repeated payment on reload",
+    "all eleven unlocked slots can hold towers and round-trip without moving the original eight",
+    "assignment walks at 80px/s on cardinal safe ground, preserves cooldown and gives no bonus before arrival",
+    "blocked targets stay understandable and harmless, and a changed blocked route reroutes around real obstacles",
+    "both new slots have useful level-one frost/damage overlap and accessible companion routes",
+    "earned continuation opens Workshop II around minute 13 and keeps an affordable next goal after minute 15",
+    "historical B10 timing target remains a separate balance finding",
+    "overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage",
+    "regular opening still funds workshop and Frost before Wisp; four roles remain saveable into armored waves",
+    "retargeting halfway through a segment rejoins a centre and selling the target falls back to the starter without cooldown reset",
+    "solid forest leaves the route, plots, every start pad and its approach accessible",
+    "start fixture has unique reservations, correct budget and an in-bounds road ending at the core",
+    "unopened east cells reject walking and construction; expansion changes bounds but never routes enemies"
+  ],
+  "buildPassed": true,
+  "nameComparison": "Historical JSON test names decoded once from Windows-1252/UTF-8 mojibake; exact comparison thereafter"
+}

@@ -1,11 +1,11 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
-**Early Balance Release Pass · 25.10.2026, isolierter Branch `codex/early-balance-release` ab Main `c9a722c`; kein Merge/Deployment.**
+**Early Balance Release Pass · 25.10.2026, nach ausdrücklicher Nutzerfreigabe auf Main übernommen und veröffentlicht.**
 
 - [x] Alten Audit gelesen und aktuelle Gratis-Frost-Basis mit echter Engine neu gemessen; acht Profile, vier Einzelhypothesen und drei Kombinationen, 74 Läufe inklusive Produktionsabgleich und direkter Wiederanlaufkontrolle. Reguläres Gold/Käufe und vollständige Messdaten archiviert.
 - [x] Nur W10 (22 Gegner, nahezu gleiches Spawnfenster) und W20 (drei bekannte Panzerflieger statt Blattkäfer, kompensiertes Abschlussgold) übernommen. Boss-15-Kanalbewegung wegen neuer Niederlagen, Goldglättung wegen fehlenden Spannungsgewinns abgelehnt. A weiterhin drei Boss-15-Niederlagen; B/C ohne Farming bis 25. Direkte A-Kontrolle ebenfalls ohne Farmzwang. Niedrigere spätere Farmrate offen dokumentiert.
 - [x] Schema 31 / Regeln 16 mit eingefrorenen laufenden Altversuchen und historischen Offlineansprüchen. 95/95 gezielte Regressionen, Vollsuite 351/368 mit exakt denselben 17 Altfehlern, Produktionsbuild bestanden. [Bericht, Vorher/Nachher und Reproduktion](../../artifacts/idle-bastion/acceptance/early-balance-release/REPORT.md).
-- [ ] Main-Übernahme und visuelle Nutzerfreigabe bleiben separat; dieser Auftrag autorisiert ausschließlich Commit/Push des geprüften Arbeitsbranches.
+- [x] Nach gesondertem Merge-/Deploymentauftrag den geprüften Spielstand `d84a345` per Fast-forward von `c9a722c` auf `main` übernommen. [Pages-Lauf 40211593873](https://github.com/emfau88/TD/actions/runs/40211593873) erfolgreich; keine weiteren Balanceänderungen. Produktionsbuild und Vollsuite erneut geprüft: 351/368, exakt dieselben 17 Altfehler. Öffentliche Desktop-/Hochkantproben, alte und neue W10-/W20-Saves samt Reload sowie historische/aktuelle Offline-Auszahlung genau einmal bestanden. Alle 20 geladenen JS-/CSS-Dateien bytegleich zum CI-Artefakt; separate Favicon-404 außerhalb des Spielpfads dokumentiert. [Veröffentlichungsnachweis](../../artifacts/idle-bastion/acceptance/early-balance-release/MAIN_RELEASE.md). Keine Prüfung auf physischer Smartphone-Hardware und keine zusätzliche visuelle Nutzerabnahme behauptet.
 
 **Frost, Figuren und Zauberoptik · am 25.10.2026 für Main freigegeben und veröffentlicht.**
 

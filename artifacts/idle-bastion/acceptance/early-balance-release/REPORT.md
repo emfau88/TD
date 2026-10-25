@@ -1,5 +1,7 @@
 # SPIRE · Early Balance Release Pass
 
+**Nachtrag:** Nach ausdrücklichem Folgeauftrag am 25.10.2026 auf `main` übernommen und veröffentlicht. [Release-Prüfung und Deploymentnachweis](MAIN_RELEASE.md). Die folgende Untersuchung dokumentiert den zuvor geprüften Branchstand.
+
 **25.10.2026 · Empfehlung: nur Welle 10 und 20 übernehmen.** Auf dem isolierten Branch
 `codex/early-balance-release`, aus [main/c9a722c](https://github.com/emfau88/TD/commit/c9a722c2d644a28885369a298a88fce410229510).
 Kein Merge, kein Deployment. Der [vorherige Audit](https://github.com/emfau88/TD/blob/cde42e63f1b6b23784ae981d553517494d223c1c/artifacts/idle-bastion/acceptance/early-balance-audit/REPORT.md)

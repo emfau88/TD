@@ -1,0 +1,108 @@
+{
+  "run": 40211593873,
+  "sourceCommit": "d84a34504535b49f5127f0eb0090a65fdda58db6",
+  "allLoadedJsCssByteIdentical": true,
+  "checkedAssets": 20,
+  "assets": [
+    {
+      "path": "/TD/assets/battle-jOI04pLp.js",
+      "sha256": "759baf20a4707021cb5d2906f2879bb150fe2b68f7155dde4294830fc90fedd3",
+      "expected": "759baf20a4707021cb5d2906f2879bb150fe2b68f7155dde4294830fc90fedd3"
+    },
+    {
+      "path": "/TD/assets/modulepreload-polyfill-B5Qt9EMX.js",
+      "sha256": "d2a32840421496e872ade591618d2fa5c33797605d1aec04301717e5a90757d0",
+      "expected": "d2a32840421496e872ade591618d2fa5c33797605d1aec04301717e5a90757d0"
+    },
+    {
+      "path": "/TD/assets/battle-BsMO3WAq.css",
+      "sha256": "866e2fa557dd3beb3d14a7784028ebe439c543b01308a7cb9537e30304bf5762",
+      "expected": "866e2fa557dd3beb3d14a7784028ebe439c543b01308a7cb9537e30304bf5762"
+    },
+    {
+      "path": "/TD/assets/startup-BVKb_0Ob.js",
+      "sha256": "f937e3e2c2e3f53c277ab507fceb50678fb1fd5d65504c18910f779942390d31",
+      "expected": "f937e3e2c2e3f53c277ab507fceb50678fb1fd5d65504c18910f779942390d31"
+    },
+    {
+      "path": "/TD/assets/style-assets-DXiWRFfK.js",
+      "sha256": "9a52a581b07f43cd6993a881059d283a5bfd65a3e5cf144c3695f56af72e65c7",
+      "expected": "9a52a581b07f43cd6993a881059d283a5bfd65a3e5cf144c3695f56af72e65c7"
+    },
+    {
+      "path": "/TD/assets/layout-CC7XhIDS.js",
+      "sha256": "aaf5a6b208687e554dbee6e9cfeea872517fbecace40307cafad3c45b1a5f7c1",
+      "expected": "aaf5a6b208687e554dbee6e9cfeea872517fbecace40307cafad3c45b1a5f7c1"
+    },
+    {
+      "path": "/TD/assets/ilyra-view-Cxhl0EOh.js",
+      "sha256": "9490e568367d6208d29eb8e1b5a9c9f38fb8f3d01554598004353321fceba1fd",
+      "expected": "9490e568367d6208d29eb8e1b5a9c9f38fb8f3d01554598004353321fceba1fd"
+    },
+    {
+      "path": "/TD/assets/i18n-DsTELopR.js",
+      "sha256": "88b957e7d67b4315e61df0fa50984e5019ce13f910f9f37b0d3d77e5dc3bb2cc",
+      "expected": "88b957e7d67b4315e61df0fa50984e5019ce13f910f9f37b0d3d77e5dc3bb2cc"
+    },
+    {
+      "path": "/TD/assets/tavern-ui-CvT4f3Iz.css",
+      "sha256": "b338cd54d51d8a7d53aeebea46d82ba63b356e8eb434cafbb2f3776cb821f197",
+      "expected": "b338cd54d51d8a7d53aeebea46d82ba63b356e8eb434cafbb2f3776cb821f197"
+    },
+    {
+      "path": "/TD/assets/save-store-DIEC16k6.js",
+      "sha256": "d89aafb659f53527e990ea5ec4704db7ebb20b7a82362a4949fb9c84081eae72",
+      "expected": "d89aafb659f53527e990ea5ec4704db7ebb20b7a82362a4949fb9c84081eae72"
+    },
+    {
+      "path": "/TD/assets/enemy-roster-DR_2AUr-.js",
+      "sha256": "01e516e714b8a33532ef487ede703b79d9c01cf7403280defb21b62f1e26dd91",
+      "expected": "01e516e714b8a33532ef487ede703b79d9c01cf7403280defb21b62f1e26dd91"
+    },
+    {
+      "path": "/TD/assets/main-CGms69Kr.js",
+      "sha256": "0ab85740029c6c7c06da8deadb653a0396cefb23c9aa2037ba59453d3de456d1",
+      "expected": "0ab85740029c6c7c06da8deadb653a0396cefb23c9aa2037ba59453d3de456d1"
+    },
+    {
+      "path": "/TD/assets/art-Cii1j2AA.js",
+      "sha256": "2cdcb7e9e6ba16f2d1d698e7e14bce6394578ee03d738fe6a8588cebc8c8e2a1",
+      "expected": "2cdcb7e9e6ba16f2d1d698e7e14bce6394578ee03d738fe6a8588cebc8c8e2a1"
+    },
+    {
+      "path": "/TD/assets/main-CJOAXZGz.css",
+      "sha256": "d4ab7a68d39f8cc2ae219e0c7d43fcb568465b29f15f3e148df32bb6e90c7922",
+      "expected": "d4ab7a68d39f8cc2ae219e0c7d43fcb568465b29f15f3e148df32bb6e90c7922"
+    },
+    {
+      "path": "/TD/assets/mara-atlas-DXVCz37-.js",
+      "sha256": "432ee64b47c05d4b1dd2be8a7ef68e64aebd4cd5d8c1bff0af6e42544f3b11e3",
+      "expected": "432ee64b47c05d4b1dd2be8a7ef68e64aebd4cd5d8c1bff0af6e42544f3b11e3"
+    },
+    {
+      "path": "/TD/assets/offline-DO__68TY.js",
+      "sha256": "d80bb7dca317ff606efa9ffdd232f3dc242124413ad0cea7586a3b9f3e4b481e",
+      "expected": "d80bb7dca317ff606efa9ffdd232f3dc242124413ad0cea7586a3b9f3e4b481e"
+    },
+    {
+      "path": "/TD/assets/tavern-ui-BthwPvZw.js",
+      "sha256": "5db6f1739ef05b37d02740aead7f50e627c2d87a64de5173eadc6e923566b282",
+      "expected": "5db6f1739ef05b37d02740aead7f50e627c2d87a64de5173eadc6e923566b282"
+    },
+    {
+      "path": "/TD/assets/enemy-art--p5fOmzJ.js",
+      "sha256": "356a41877c8fa3d0b7054c29e86b2e33063158ac50e6ab6019887e175ce6aa22",
+      "expected": "356a41877c8fa3d0b7054c29e86b2e33063158ac50e6ab6019887e175ce6aa22"
+    },
+    {
+      "path": "/TD/assets/phaser.esm-BTGbtjln.js",
+      "sha256": "a9aaf981bfd2da2a4381c5bb73dd5064897ef0781500f2e2a7cfc72f0fe7c4f0",
+      "expected": "a9aaf981bfd2da2a4381c5bb73dd5064897ef0781500f2e2a7cfc72f0fe7c4f0"
+    },
+    {
+      "path": "/TD/assets/featureCheck-qOa7gt6-.js",
+      "sha256": "70735bafd24eb2f509908e3fc0f1a749adcd5fb92e91d6c81d522ca548f6a3a2",
+      "expected": "70735bafd24eb2f509908e3fc0f1a749adcd5fb92e91d6c81d522ca548f6a3a2"
+    }
+  ]
+}
