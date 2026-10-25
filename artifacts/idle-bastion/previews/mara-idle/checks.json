@@ -1,0 +1,28 @@
+{
+  "frames": 8,
+  "loopMs": 2620,
+  "desktop": [
+    700,
+    610
+  ],
+  "mobile": [
+    390,
+    590
+  ],
+  "noOverflow": true,
+  "errors": [],
+  "previewOnly": true,
+  "uniqueFrames": 8,
+  "bootContactRows": [
+    56,
+    56,
+    56,
+    56,
+    56,
+    56,
+    56,
+    56
+  ],
+  "transparentFrameBorders": true,
+  "gifSeconds": 2.68
+}

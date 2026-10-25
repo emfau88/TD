@@ -1,0 +1,20 @@
+<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mara · Idle-Entwurf</title>
+<style>body{margin:0;background:#0d191d;color:#efd6a1;font:16px system-ui;display:grid;justify-items:center;gap:16px;padding:18px}canvas{width:min(640px,100%);height:auto;image-rendering:pixelated;border-radius:12px}button{font:inherit;color:inherit;background:#21343b;border:1px solid #7a795f;border-radius:7px;padding:10px 20px;cursor:pointer}p{margin:0;font-size:14px;color:#a6c0bd;text-align:center;max-width:620px}</style>
+<canvas width="640" height="480" aria-label="Links Maras bisherige Standpose, rechts acht neue Idle-Posen; darunter beide in Spielgröße"></canvas>
+<button id="toggle">Pause</button><p>Frontansicht · 8 Posen · ruhige Schleife mit kurzem Blinzeln. Separater Entwurf zur Ansicht.</p>
+<script>
+const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d'),old=new Image(),sheet=new Image();old.src='original-front-64.png';sheet.src='mara-idle-front-64.png';
+const durations=[620,260,260,340,110,180,300,550],total=durations.reduce((a,b)=>a+b,0);let paused=false,time=0,last=performance.now(),fixed;
+function draw(ms){let n=ms%total,i=0;while(i<durations.length-1&&n>=durations[i])n-=durations[i++];ctx.imageSmoothingEnabled=false;
+ctx.fillStyle='#10252b';ctx.fillRect(0,0,640,480);ctx.fillStyle='#183238';ctx.fillRect(16,62,294,263);ctx.fillRect(330,62,294,263);
+ctx.fillStyle='#efd6a1';ctx.textAlign='center';ctx.font='600 22px system-ui';ctx.fillText('Mara · Idle-Entwurf',320,32);
+ctx.font='14px system-ui';ctx.fillStyle='#9fbab8';ctx.fillText('Bisher',163,59);ctx.fillText('Idle · 4× Ansicht',477,59);
+ctx.fillStyle='#0c1a21';for(const x of [163,477]){ctx.beginPath();ctx.ellipse(x,302,43,9,0,0,Math.PI*2);ctx.fill();}
+ctx.drawImage(old,35,78,256,256);ctx.drawImage(sheet,i*64,0,64,64,349,78,256,256);
+ctx.strokeStyle='#4b6260';ctx.beginPath();ctx.moveTo(36,346);ctx.lineTo(604,346);ctx.stroke();ctx.font='14px system-ui';ctx.fillStyle='#d7d7bd';ctx.fillText('Spielmaßstab · 64 × 64 Rahmen',320,374);
+ctx.fillStyle='#214438';ctx.fillRect(178,391,284,72);ctx.fillStyle='#152d2b';for(const x of [250,390]){ctx.beginPath();ctx.ellipse(x,449,11,3,0,0,Math.PI*2);ctx.fill();}
+ctx.drawImage(old,218,393);ctx.drawImage(sheet,i*64,0,64,64,358,393,64,64);window.previewFrame=i;}
+function step(now){if(!paused)time+=now-last;last=now;if(old.complete&&sheet.complete&&old.naturalWidth&&sheet.naturalWidth)draw(fixed??time);requestAnimationFrame(step);}requestAnimationFrame(step);
+document.querySelector('#toggle').onclick=()=>{paused=!paused;document.querySelector('#toggle').textContent=paused?'Abspielen':'Pause';};
+window.renderAt=ms=>{fixed=ms;draw(ms);};window.ready=Promise.all([old.decode(),sheet.decode()]);
+</script></html>

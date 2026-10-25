@@ -1,0 +1,168 @@
+{
+  "source": "sources/idle-front-v1.png",
+  "cell": [
+    64,
+    64
+  ],
+  "foot": [
+    32,
+    56
+  ],
+  "durationsMs": [
+    620,
+    260,
+    260,
+    340,
+    110,
+    180,
+    300,
+    550
+  ],
+  "loopMs": 2620,
+  "frames": [
+    {
+      "index": 0,
+      "source": {
+        "left": 85,
+        "top": 81,
+        "width": 272,
+        "height": 386
+      },
+      "sourceFoot": [
+        203.5,
+        464
+      ],
+      "scale": 0.1,
+      "frameFoot": [
+        32,
+        56
+      ]
+    },
+    {
+      "index": 1,
+      "source": {
+        "left": 465,
+        "top": 80,
+        "width": 270,
+        "height": 387
+      },
+      "sourceFoot": [
+        582.5,
+        464
+      ],
+      "scale": 0.1,
+      "frameFoot": [
+        32,
+        56
+      ]
+    },
+    {
+      "index": 2,
+      "source": {
+        "left": 840,
+        "top": 79,
+        "width": 269,
+        "height": 388
+      },
+      "sourceFoot": [
+        955.5,
+        464
+      ],
+      "scale": 0.1,
+      "frameFoot": [
+        32,
+        56
+      ]
+    },
+    {
+      "index": 3,
+      "source": {
+        "left": 1216,
+        "top": 76,
+        "width": 271,
+        "height": 391
+      },
+      "sourceFoot": [
+        1332.5,
+        464
+      ],
+      "scale": 0.1,
+      "frameFoot": [
+        32,
+        56
+      ]
+    },
+    {
+      "index": 4,
+      "source": {
+        "left": 85,
+        "top": 555,
+        "width": 274,
+        "height": 393
+      },
+      "sourceFoot": [
+        203.5,
+        945
+      ],
+      "scale": 0.1,
+      "frameFoot": [
+        32,
+        56
+      ]
+    },
+    {
+      "index": 5,
+      "source": {
+        "left": 465,
+        "top": 556,
+        "width": 274,
+        "height": 392
+      },
+      "sourceFoot": [
+        582.5,
+        945
+      ],
+      "scale": 0.1,
+      "frameFoot": [
+        32,
+        56
+      ]
+    },
+    {
+      "index": 6,
+      "source": {
+        "left": 840,
+        "top": 559,
+        "width": 269,
+        "height": 389
+      },
+      "sourceFoot": [
+        956,
+        945
+      ],
+      "scale": 0.1,
+      "frameFoot": [
+        32,
+        56
+      ]
+    },
+    {
+      "index": 7,
+      "source": {
+        "left": 1215,
+        "top": 557,
+        "width": 274,
+        "height": 391
+      },
+      "sourceFoot": [
+        1333.5,
+        945
+      ],
+      "scale": 0.1,
+      "frameFoot": [
+        32,
+        56
+      ]
+    }
+  ]
+}

@@ -1,5 +1,13 @@
 # SPIRE · Idle Bastion
 
+## Mara · neuer Idle-Entwurf auf diesem Vorschau-Branch
+
+![Maras bisherige Standpose links, neuer Idle-Entwurf rechts](artifacts/idle-bastion/previews/mara-idle/mara-idle-comparison.gif)
+
+Frontansicht mit ruhigem Atmen und kurzem Blinzeln; oben 4× vergrößert, unten in
+Spielgröße. Separate Vorschau, noch nicht im Hauptspiel eingebaut.
+[Video, Spritesheet und Produktionsdaten](artifacts/idle-bastion/previews/mara-idle/README.md).
+
 Ein Endlos-Idle-Tower-Defense-Spiel im Pixelwald: Verteidigung bauen, automatische
 Wellen überstehen, sichere Wellen farmen und mit neuen Upgrades weiter vorstoßen.
 **Welle 40 ist ein Zwischenziel.** Der veröffentlichte Hauptstand liegt auf `main`.
