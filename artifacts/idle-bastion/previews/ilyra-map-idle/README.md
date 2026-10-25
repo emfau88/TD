@@ -4,6 +4,9 @@
 
 ## Handy-Vorschau
 
+- **Aktuelle V2: [Ilyra-Speer-Idle-Handy-v2.gif](Ilyra-Speer-Idle-Handy-v2.gif)** — 390×680, 234.326 Bytes, weiterhin 3,2 Sekunden. Dieselben acht Schlüsselposen; 16 berechnete Zwischenbilder glätten die Übergänge. Der schmale goldene Speerkern wird aus seinem Quellbereich abgetastet, damit beim Verkleinern nicht nur die dunklen Außenkanten übrig bleiben. Außerhalb dieser ein Pixel breiten Schaftkorrektur bleiben die Schlüsselposen pixelgleich. Keine neue Bildgenerierung, keine neue Choreografie.
+- V2: [24 Bewegungsbilder](v2/contact-sheet.png), [Zeitfolge und Verfahren](v2/animation.json), [Medienprüfung](v2/checks.json), [mobile Browserprüfung](v2/browser-checks.json). Das GIF enthält zusätzlich die identische Ausgangspose als Endpause, insgesamt 25 Frames. Zwischenbilder verwenden Bewegungsinterpolation aus der jeweils näheren vorhandenen Pose, ohne Überblendung; harte Pixelkanten bleiben erhalten. Anker und Kartenmaßstab bleiben gleich. Dies ist eine Vorschauinterpolation, kein handgezeichneter, fertig freigegebener Produktionsatlas.
+- Reproduktion der V2: `python artifacts/idle-bastion/previews/ilyra-map-idle/build_smooth_preview.py` mit Pillow, numpy und opencv-python. Originalquelle und V1 bleiben erhalten; das Skript rekonstruiert zunächst V1 unverändert. Keine Änderungen an Spielcode oder Produktionsassets. Produktionsbuild/Vollsuite für diese reine Medienkorrektur nicht erneut ausgeführt.
 - **[Ilyra-Speer-Idle-Handy.gif](Ilyra-Speer-Idle-Handy.gif)** — 390×680, 98.092 Bytes, endloser **3,2-Sekunden-Loop**.
 - [Lokale Ansichtsseite](index.html), [acht Posen](contact-sheet.png), [Standbild](preview.png).
 - Oben: **1× Kartenmaßstab** bei Darstellung des GIFs in seiner nativen Breite von 390 Pixeln. Links unverändert der echte aktuelle Ilyra-Stand, rechts die animierte Probe. Originalrasen und Waldwächter im bisherigen Maßstab helfen beim Größenvergleich. Das ist eine separat zusammengesetzte Kartenprobe, keine heimliche Ingame-Integration.
@@ -17,7 +20,7 @@
 
 Geprüft gegen `src/art.ts`, `src/ilyra-view.ts`, `src/ilyra.ts` und den Assetvertrag: Laufzeitrahmen 64×64, Maßstab 1, Fußpunkt **(32,56)**, Körper grob 37–39 Pixel hoch. Speer und angehobene Hand dürfen darüber hinausragen; alle Vorschauposen bleiben vollständig innerhalb des 64×64-Rahmens.
 
-## Bewegung / Dateien
+## Ursprüngliche V1: Bewegung / Dateien
 
 **Acht unterschiedliche Posen:** starke Ausgangspose → Speer anheben → Schaftende aufsetzen → Hüfte deutlich nach außen → kurze Drehgeste am hoch gehaltenen Speer mit angewinkeltem Bein → spielerisch öffnen → Speer aufnehmen → starke Idle-Pose. Die Speerachse ist während der vier gepflanzten Posen auf x≈21 registriert. Die Bewegung bleibt aufrecht und nicht explizit; keine Kleideränderung oder zusätzliche Figur.
 

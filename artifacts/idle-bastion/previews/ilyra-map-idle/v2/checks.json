@@ -1,0 +1,39 @@
+{
+  "gifFrames": 25,
+  "distinctMotionFrames": 24,
+  "loopMs": 3200,
+  "infiniteLoop": true,
+  "identicalEndpoints": true,
+  "binaryAlpha": true,
+  "noClipping": true,
+  "sameEightKeyPosesOutsideShaft": true,
+  "plantedGoldShaftSamples": 150,
+  "originalV1FilesUnchanged": [
+    "source/poses.png",
+    "Ilyra-Speer-Idle-Handy.gif",
+    "idle-preview.png",
+    "preview.png",
+    "contact-sheet.png",
+    "build_preview.py",
+    "animation.json",
+    "checks.json",
+    "browser-checks.json",
+    "prompt.txt",
+    "frames/00.png",
+    "frames/01.png",
+    "frames/02.png",
+    "frames/03.png",
+    "frames/04.png",
+    "frames/05.png",
+    "frames/06.png",
+    "frames/07.png"
+  ],
+  "productionFilesUnchanged": [
+    "experiments/idle-bastion/assets/ilyra/ilyra-atlas.png",
+    "experiments/idle-bastion/assets/ilyra/sources/stand-approved.png",
+    "experiments/idle-bastion/src/ilyra-view.ts",
+    "experiments/idle-bastion/src/ilyra.ts"
+  ],
+  "sourceSha256": "c103f1abe0bb54a4b6d7c0c2fd2cc71a69a81ef72127df3a7610aeb72689ccf3",
+  "productionIntegration": false
+}

@@ -4,7 +4,8 @@
 
 - [x] Tatsächlichen Kartenatlas und Zeichenmaßstab gelesen; acht klare Schlüsselposen aus der Laufzeit-Ilyra und ihrer zugehörigen freigegebenen Standreferenz abgeleitet. Speer heben/setzen, deutlicher Hüftakzent, kurze Drehgeste mit gebeugtem Bein, Rückkehr in Idle. 64×64-Vorschauframes mit Fußpunkt (32,56), gemeinsame Skalierung und feste Speerachse während der Geste.
 - [x] Handy-GIF 390×680 mit 3,2-s-Loop: oben 1× neben unverändertem Originalsprite und Originalrasen/Turm, unten 4×-Detail. Acht Posen, neun GIF-Phasen einschließlich identischer Ruhe-Endpunkte, ca. 98 KB. GIF-Wiedergabe bei 390/320 Pixeln, Alpha, Rahmenränder und Erhalt der Produktionsassets geprüft. [GIF, Quellen und Aufbereitung](../../artifacts/idle-bastion/previews/ilyra-map-idle/README.md).
-- [ ] Visuelle Nutzerabnahme. Nur Frontrichtung/Prototyp; keine Integration, kein Austausch der Lauf-/Kampf-/Zaubergrafik und keine Gameplayänderung. Weitere Richtungen, Idle-Auslöseplanung und Übergänge erst nach gesonderter Freigabe.
+- [x] Nutzerkorrektur der Vorschau: dunkles Speerschaft-Flackern durch gezielte Abtastung des goldenen Quellstreifens korrigiert. Dieselben acht Posen mit 16 interpolierten Zwischenbildern, unverändert 3,2 Sekunden; V2-GIF ca. 234 KB, weiterhin Originalmaßstab plus Detailansicht. Rohquelle/V1 und Produktionsdateien erhalten; Medienprüfung und mobile Vorschauseite bei 390/320 Pixeln geprüft.
+- [ ] Visuelle Nutzerabnahme der V2. Nur Frontrichtung/Prototyp; keine Integration, kein Austausch der Lauf-/Kampf-/Zaubergrafik und keine Gameplayänderung. Weitere Richtungen, Idle-Auslöseplanung und Übergänge erst nach gesonderter Freigabe.
 
 **Quick Win · Maras erste Offline-Begrüßung · 25.10.2026, Branch `codex/mara-offline-welcome` ab Main `a732403`; Main-Übernahme und Pages nach mobiler Dialogkorrektur ausdrücklich freigegeben.**
 
