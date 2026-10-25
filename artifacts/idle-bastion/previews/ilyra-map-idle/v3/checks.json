@@ -1,0 +1,17 @@
+{
+  "gifFrames": 33,
+  "loopMs": 3920,
+  "infiniteLoop": true,
+  "identicalEndpoints": true,
+  "hipAccentAdditionalMovingMs": 720,
+  "hipFramesAllMoving": true,
+  "hipSpearAndFeetFixed": true,
+  "frontalReturnLowerBodyPixelIdentical": true,
+  "returnFromFrame": 23,
+  "goldShaftPreserved": true,
+  "binaryAlpha": true,
+  "noClipping": true,
+  "earlierSourcesAndPreviewsUnchanged": true,
+  "productionAssetsAndCodeUnchanged": true,
+  "productionIntegration": false
+}
