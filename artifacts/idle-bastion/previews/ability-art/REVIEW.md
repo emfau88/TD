@@ -57,7 +57,13 @@ veröffentlicht. Main und die spielbare Branch-Testversion erhalten keine neuen 
   [Browserprüfwerte](checks.json). Alle drei Clip-Aufnahmen ebenfalls ohne JavaScript-Fehler.
 - Lokale Galerie bei 320, 390 und 1280 Pixel Breite ohne Überlauf, alle Bilder geladen
   und alle drei Videoelemente tatsächlich abgespielt, ohne JS-/Ressourcenfehler.
-  Veröffentlichte Galerie und MP4-Wiedergabe werden nach dem Upload gesondert geprüft.
+  Die öffentliche Galerie wurde nach [Veröffentlichung 40144810616](https://github.com/emfau88/TD/actions/runs/40144810616)
+  erneut bei 320/390/1280 Pixeln geprüft: alle Bilder geladen, alle drei Videoansichten
+  (390×844 und zweimal 640×540) tatsächlich abgespielt, keine JS-/Ressourcenfehler.
+  [Öffentliche Prüfwerte](gallery-checks.json). Medienstand: `a0ea34f8636de1016d20276fbc5edc04d89ad555`.
+- Deployment erhält alle 401 Dateien des Main-Artefakts bytegenau; zusätzlich die
+  öffentliche Hauptseite nach Veröffentlichung gegen den vorherigen Stand verglichen.
+  Main bleibt `537b5e8c9cf09b696b41644da4c56dbc8633d720`.
 - Physisches Smartphone und endgültige Nutzerfreigabe stehen aus; Hochkantprüfung
   erfolgt in Chrome mit 390×844, die Galerie zusätzlich bei 320 Pixel Breite.
 

@@ -3,7 +3,7 @@
 **Zauber-/Markierungsgrafik · 25.10.2026, ausschließlich Gestaltungsprobe zur Nutzerabnahme.**
 
 - [x] Nutzer beauftragt Imagegen-Grafiken, Ingame-Screenshots und animierte Projektile/Einschläge als Vorschau. Acht transparente Originale, sieben Screenshots und drei Clips erstellt; getrennte lokale Darstellung, keine finale Integration. [Grafikprobe und Grenzen](../../artifacts/idle-bastion/previews/ability-art/REVIEW.md).
-- [ ] Bilder/Clips auf dem bestehenden Branch und als mobile Galerie veröffentlichen und die öffentlichen Links prüfen. Umsetzung ins Spiel erst nach gesonderter Freigabe; der vorher begonnene lokale rechteckige Button-Entwurf bleibt unveröffentlicht.
+- [x] Bilder/Clips auf dem bestehenden Branch und als [mobile Galerie](https://emfau88.github.io/TD/previews/frost-hero/art-review/) veröffentlicht: Commit `a0ea34f`, [Pages-Lauf 40144810616](https://github.com/emfau88/TD/actions/runs/40144810616). Öffentliche Galerie bei 320/390/1280 Pixeln geprüft, alle Bilder geladen und drei Videoansichten erfolgreich abgespielt; zusätzliche Detailausschnitte für Handy. Alle 401 Main-Dateien unverändert. Umsetzung ins Spiel erst nach gesonderter Freigabe; der vorher begonnene lokale rechteckige Button-Entwurf bleibt unveröffentlicht.
 
 **Frost-Quick-Win + A2 Figurensteuerung · 25.10.2026, freigegeben für separaten Arbeitsbranch `codex/frost-kit-hero-controls`; kein Merge nach main.**
 

@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:24753/TD/previews/frost-hero/art-review/",
+  "url": "https://emfau88.github.io/TD/previews/frost-hero/art-review/",
   "results": [
     {
       "width": 320,
@@ -15,7 +15,7 @@
     },
     {
       "index": 0,
-      "time": 1.219262,
+      "time": 1.223613,
       "duration": 15.96,
       "width": 390,
       "height": 844,
@@ -24,19 +24,19 @@
     },
     {
       "index": 1,
-      "time": 1.211897,
+      "time": 1.222245,
       "duration": 9.96,
-      "width": 1280,
-      "height": 800,
+      "width": 640,
+      "height": 540,
       "ready": 4,
       "error": null
     },
     {
       "index": 2,
-      "time": 1.221101,
+      "time": 1.21614,
       "duration": 9.96,
-      "width": 1280,
-      "height": 800,
+      "width": 640,
+      "height": 540,
       "ready": 4,
       "error": null
     },
