@@ -55,6 +55,8 @@ export class RigPreviewPlayer implements TavernPlayer {
   private warmTimer?: ReturnType<typeof setTimeout>;
   private manifestAbort?: AbortController;
   private intent = 0;
+  private blendFrom?: HTMLCanvasElement;
+  private blendSeconds = 0;
   get reacting() { return this.key !== 'idle' || this.pending !== null; }
   get reactionsReady() { return this.ready; }
   constructor(private canvas: HTMLCanvasElement, private changed: () => void) { canvas.width = 480; canvas.height = 700; }
@@ -88,6 +90,7 @@ export class RigPreviewPlayer implements TavernPlayer {
     this.ready = false; this.loadingReactions = false; this.key = 'idle'; this.frame = 0; this.pending = null;
     this.returnFrames = []; this.loops = 0; this.last = 0; this.elapsed = 0; this.cache.clear();
     this.failed.clear(); this.clips = {}; this.idleStill = false; this.pendingReady = false; this.preparing = undefined;
+    this.blendFrom = undefined; this.blendSeconds = 0;
     // stop() is synchronous: no old character can survive until the next fetch/RAF.
     this.canvas.getContext('2d')?.clearRect(0, 0, this.canvas.width, this.canvas.height);
     for (const key of ['clip', 'frame', 'companion', 'cachedPages', 'error', 'reactionError']) delete this.canvas.dataset[key];
@@ -176,6 +179,14 @@ export class RigPreviewPlayer implements TavernPlayer {
   }
   private beginPending() {
     if (!this.pending || !this.pendingReady) return false;
+    if (this.key !== 'idle') {
+      // A new action may replace any reaction, including the automatic variant.
+      // Blend the currently visible pose instead of snapping or waiting seconds.
+      this.blendFrom = document.createElement('canvas');
+      this.blendFrom.width = this.canvas.width; this.blendFrom.height = this.canvas.height;
+      this.blendFrom.getContext('2d')?.drawImage(this.canvas, 0, 0);
+      this.blendSeconds = 0;
+    }
     this.key = this.pending; this.pending = null; this.pendingReady = false; this.loadingReactions = false;
     this.frame = 0; this.elapsed = 0; this.returnFrames = []; this.loops = 0; this.changed(); return true;
   }
@@ -183,7 +194,12 @@ export class RigPreviewPlayer implements TavernPlayer {
     this.request = requestAnimationFrame(this.tick);
     const dt = this.last ? Math.min(.1, (now - this.last) / 1000) : 0; this.last = document.hidden ? 0 : now;
     if (!this.active || !this.ready || document.hidden) return;
+    if (this.blendFrom) {
+      this.blendSeconds += dt;
+      if (this.blendSeconds >= .16) this.blendFrom = undefined;
+    }
     this.elapsed += dt;
+    if (this.pendingReady && this.key !== 'idle') { if (this.beginPending()) this.draw(); return; }
     if (this.pendingReady && this.key === 'idle' && !this.returnFrames.length) { if (this.beginPending()) this.draw(); return; }
     if (this.idleStill && this.key === 'idle' && !this.returnFrames.length) return;
     if (this.elapsed < 1 / this.clips[this.key]!.fps) return;
@@ -213,6 +229,10 @@ export class RigPreviewPlayer implements TavernPlayer {
     }
     ctx.clearRect(0, 0, 480, 700); ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
     ctx.drawImage(entry.image, this.frame % 4 * clip.width, Math.floor(this.frame % 8 / 4) * clip.height, clip.width, clip.height, ...clip.placement);
+    if (this.blendFrom) {
+      ctx.save(); ctx.globalAlpha = Math.max(0, 1 - this.blendSeconds / .16);
+      ctx.drawImage(this.blendFrom, 0, 0); ctx.restore();
+    }
     this.canvas.dataset.clip = this.key; this.canvas.dataset.frame = String(this.frame);
     delete this.canvas.dataset.error;
   }

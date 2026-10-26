@@ -237,7 +237,7 @@ test('corrupt/newer saves remain protected and backup recovery is explicit', asy
   assert.equal(recovered.paused, true);
 });
 
-test('pending commits retain only bounded active time', async () => {
+test('pending commits preserve all active time in bounded batches, without creating offline time', async () => {
   const store = new ControlledStore(), session = await open(store);
   store.gate = true;
   session.advance(0.25);
@@ -247,8 +247,77 @@ test('pending commits retain only bounded active time', async () => {
   store.gate = false;
   store.pending!.confirm();
   await tick();
-  assert.equal(session.battle.elapsed, 0.5);
+  assert.equal(session.battle.elapsed, 10.25);
+  assert.equal(session.awaitingResume, false);
+  assert.equal(session.pendingReward, null);
   await session.flush();
+  assert.deepEqual(store.current!.battle, session.battle.snapshot());
+});
+
+test('60, 10 and 2 FPS produce the same saved combat and social time', async () => {
+  const snapshots: BattleSnapshot[] = [];
+  for (const fps of [60, 10, 2]) {
+    const store = new ControlledStore(), b = new IdleBattle();
+    b.update(4); b.highestCleared = 12;
+    assert.ok(b.buildTavern(b.recommendedTavernPlot!));
+    store.current = fixture(b);
+    const session = await open(store); await resume(session);
+    const before = session.battle.elapsed, socialTicks = session.battle.social.window.ticks;
+    for (let frame = 0; frame < fps * 10; frame++) {
+      session.advance(1 / fps); await tick();
+    }
+    await session.flush();
+    assert.equal(session.battle.elapsed - before, 10);
+    assert.equal(session.battle.social.window.ticks - socialTicks, 400);
+    assert.deepEqual(store.current!.battle, session.battle.snapshot());
+    snapshots.push(session.battle.snapshot());
+    await session.close();
+  }
+  assert.deepEqual(snapshots[1], snapshots[0]);
+  assert.deepEqual(snapshots[2], snapshots[0]);
+});
+
+test('flush, pause, hide and close finish queued active time before their boundary', async () => {
+  for (const boundary of ['flush', 'pause', 'hide', 'close'] as const) {
+    const store = new ControlledStore(), session = await open(store);
+    store.gate = true; session.advance(.25); await tick();
+    for (let frame = 0; frame < 4; frame++) session.advance(.25);
+    const finish = boundary === 'pause' ? session.setPaused(true)
+      : boundary === 'hide' ? session.suspend() : boundary === 'close' ? session.close() : session.flush();
+    store.gate = false; store.pending!.confirm(); await finish;
+    assert.equal(session.battle.elapsed, 1.25, boundary);
+    assert.deepEqual(store.current!.battle, session.battle.snapshot(), boundary);
+    assert.equal(session.pendingReward, null);
+    if (boundary === 'pause') {
+      session.advance(1); assert.equal(session.battle.elapsed, 1.25);
+      assert.equal(store.current!.paused, true);
+    }
+  }
+});
+
+test('a real absence follows queued active time without crediting either interval twice', async () => {
+  const store = new ControlledStore(), session = await open(store);
+  store.gate = true; session.advance(.25); await tick();
+  for (let frame = 0; frame < 3; frame++) { store.clock += 250; session.advance(.25); }
+  store.clock += 3000; session.advance(3);
+  store.gate = false; store.pending!.confirm(); await tick();
+  assert.equal(session.battle.elapsed, 1);
+  assert.equal(session.awaitingResume, true);
+  assert.equal(session.offline.window!.from, store.clock - 3000);
+  assert.equal(session.offline.window!.cursorHighWater, store.clock);
+  assert.equal(session.pendingReward?.amountUnits ?? 0, 0);
+  await resume(session); session.advance(.5); await session.flush();
+  assert.equal(session.battle.elapsed, 1.5);
+});
+
+test('failed checkpoint discards unconfirmed queued time and restores the saved combat', async () => {
+  const store = new ControlledStore(), session = await open(store), before = session.battle.snapshot();
+  store.gate = true; session.advance(.25); await tick();
+  session.advance(.5); session.advance(.5);
+  store.pending!.reject(new Error('Queued-time checkpoint failed')); await tick();
+  assert.deepEqual(session.battle.snapshot(), before);
+  session.advance(.5); assert.deepEqual(session.battle.snapshot(), before);
+  await assert.rejects(session.flush(), /checkpoint failed/);
 });
 
 test('kill/clear notifications wait for the complete reward commit and restore never replays them', async () => {

@@ -1,5 +1,22 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Aktive Echtzeit und Speichergrenzen — 26.10.2026
+
+Phasers Delta-Glättung ist im Hauptspiel ausgeschaltet: langsame Vordergrundframes
+werden nicht mehr durch ältere kürzere Zeitabstände ersetzt. Die Session erhält
+die volle beobachtete Framezeit. Bis einschließlich zwei Sekunden zählt sie als
+aktive Zeit; größere Lücken verwenden weiterhin den bestehenden Offlineweg
+(temporäre Partien ohne Offlinewirtschaft verwerfen solche Abwesenheiten).
+
+Aktive Zeit sammelt sich auch während Speicherungen verlustfrei in einer flüchtigen
+Warteschlange. Verarbeitung in höchstens 250-ms-Portionen mit unveränderten 25-ms-
+Kampfschritten; ein fälliger Save hält die weitere Verarbeitung bis zur Bestätigung
+an. Auch über zwei Sekunden angesammelte Live-Zeit bleibt Live-Zeit. Flush, Pause,
+Verbergen und Schließen schließen bereits angenommene Zeit vor ihrer Grenze ab.
+Speicherfehler verwerfen unbestätigte Zeit und stellen den bestätigten Kampf wieder
+her. Saveformate, Farmregeln, Offlineformeln und soziale Belohnungsbudgets bleiben
+unverändert. [Gezielte Nachweise](../../../artifacts/idle-bastion/acceptance/runtime-fixes/REPORT.md).
+
 ## Einmalige Offline-Begrüßung
 
 Der bestehende Save-Umschlag 2 kann `maraOfflineWelcomeSeen: true` enthalten.

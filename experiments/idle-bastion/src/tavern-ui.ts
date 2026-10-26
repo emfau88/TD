@@ -247,7 +247,7 @@ export class TavernUI {
     unlock.hidden = !this.newMoment || !!this.moment;
     if (this.newMoment) unlock.textContent = t("Neuer Moment: {0} →", this.content.moments[this.newMoment - 1]!.title);
     this.dialog.dataset.reacting = String(this.animation.reacting);
-    const blocked = this.pending || session.inputBusy || !!session.error || session.suspended || session.awaitingResume || !this.animation.ready || this.animation.reacting;
+    const blocked = this.pending || session.inputBusy || !!session.error || session.suspended || session.awaitingResume || !this.animation.ready;
     unlock.disabled = blocked;
     const gestures = this.dialog.querySelector<HTMLElement>('.tv-gestures');
     if (gestures) {
@@ -289,7 +289,7 @@ export class TavernUI {
   }
   private async startMoment(heart: number): Promise<void> {
     const session = this.ports.session();
-    if (!session || this.pending || session.inputBusy || !this.animation.ready || this.animation.reacting || !this.content.moment(this.points, heart)) return;
+    if (!session || this.pending || session.inputBusy || session.error || session.suspended || session.awaitingResume || !this.animation.ready || !this.content.moment(this.points, heart)) return;
     const generation = this.generation;
     this.pending = true; this.update();
     const ready = await this.animation.prepareReactions();
@@ -312,7 +312,7 @@ export class TavernUI {
     this.animation.play(beat.clip); this.update();
   }
   private nextBeat(): void {
-    if (!this.moment || this.animation.reacting) return;
+    if (!this.moment) return;
     const moment = this.content.moment(this.points, this.moment.heart);
     if (!moment || ++this.moment.beat >= moment.beats.length) { this.endMoment(); return; }
     this.renderBeat();
@@ -324,7 +324,7 @@ export class TavernUI {
   }
   private async act(action: Interaction, region: TouchRegion = 'shoulder'): Promise<void> {
     const session = this.ports.session();
-    if (!session || this.pending || session.inputBusy || session.error || session.suspended || session.awaitingResume || !this.animation.ready || this.animation.reacting) return;
+    if (!session || this.pending || session.inputBusy || session.error || session.suspended || session.awaitingResume || !this.animation.ready) return;
     if (this.moment || action === 'touch' && !this.animation.reactionsReady) return;
     const who = this.selected, content = this.content, beforePoints = this.points;
     const offer = session.battle.companionOffer(this.selected, action); if (!offer.accepted) return;

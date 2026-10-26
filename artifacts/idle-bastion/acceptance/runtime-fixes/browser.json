@@ -1,0 +1,31 @@
+[
+  {
+    "who": "mara",
+    "width": 1280,
+    "lang": "de",
+    "autoVariantInterrupted": true,
+    "interruptMs": 155,
+    "manualReactionInterrupted": true,
+    "storySkipped": true,
+    "duplicateGiftRejected": true,
+    "reloadExact": true,
+    "timing": {
+      "realSeconds": 10.05,
+      "simulationSeconds": 9.950000000000001,
+      "frameDelayMs": 480
+    },
+    "errors": []
+  },
+  {
+    "who": "ilyra",
+    "width": 390,
+    "lang": "en",
+    "autoVariantInterrupted": true,
+    "interruptMs": 119,
+    "manualReactionInterrupted": true,
+    "storySkipped": true,
+    "duplicateGiftRejected": true,
+    "reloadExact": true,
+    "errors": []
+  }
+]

@@ -879,6 +879,9 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     game = new Phaser.Game({
       type: Phaser.AUTO, parent: 'game', width: Math.round(host.clientWidth * pixelDensity), height: Math.round(host.clientHeight * pixelDensity),
       backgroundColor: '#183424', pixelArt: true, roundPixels: true, render: { antialias: false }, audio: { noAudio: true },
+      // BattleSession accounts for real active time and handles actual absence.
+      // Phaser's smoothing replaces slow frames with older, shorter deltas.
+      fps: { smoothStep: false },
       loader: { timeout: 15000, maxRetries: 1 },
       scene: [view], scale: { mode: Phaser.Scale.NONE, zoom: 1 / pixelDensity, autoCenter: Phaser.Scale.CENTER_BOTH },
     });

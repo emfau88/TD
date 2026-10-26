@@ -78,7 +78,7 @@ export class TavernAnimation {
     });
     return this.reactionLoad;
   }
-  play(region: TouchRegion): void { if (this.ready && this.reactionsReady && !this.reacting) { this.clip = region; this.elapsed = 0; this.changed(); } }
+  play(region: TouchRegion): void { if (this.ready && this.reactionsReady) { this.clip = region; this.elapsed = 0; this.changed(); } }
   stop(): void { this.active = false; this.generation++; cancelAnimationFrame(this.request); this.request = 0; this.ready = false; this.clip = 'idle'; this.base = undefined; this.extra = undefined; this.shoulder=undefined;this.reactionLoad=undefined;this.loadingReactions=false; }
   private tick = (now: number): void => {
     if (!this.active) return;

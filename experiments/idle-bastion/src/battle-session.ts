@@ -29,7 +29,7 @@ export class SessionOwnershipError extends Error {
     super(message); this.name = 'SessionOwnershipError';
   }
 }
-const MAX_FRAME_SECONDS = 0.25;
+const LIVE_BATCH_SECONDS = 0.25;
 const CHECKPOINT_SECONDS = 1;
 const GAP_SECONDS = 2;
 const same = (a: unknown, b: unknown): boolean => JSON.stringify(a) === JSON.stringify(b);
@@ -170,21 +170,28 @@ export class BattleSession {
       if (this.temporary) return;
       this.waitingForResume = true;
       this.transitioning = true;
-      this.pendingSeconds = 0;
       void this.handleGap(dtSeconds).catch(() => undefined);
       return;
     }
-    const seconds = Math.min(MAX_FRAME_SECONDS, dtSeconds);
-    if (this.pendingWrite) {
-      this.pendingSeconds = Math.min(MAX_FRAME_SECONDS, this.pendingSeconds + seconds);
-      return;
-    }
-    const before = this.economicState();
-    this.currentBattle.update(seconds);
-    this.checkpointSeconds += seconds;
-    this.refreshFarm();
-    if (before !== this.economicState() || (!this.currentBattle.preparing && !this.currentBattle.learningPaused && this.checkpointSeconds >= CHECKPOINT_SECONDS)) {
-      void this.commit().catch(() => undefined);
+    this.pendingSeconds += dtSeconds;
+    this.drainActiveTime();
+  }
+
+  /** Keep every observed active second, including time received during a write.
+   * Batches stop at a durable boundary; queued live time is never an offline gap.
+   * Suspension/close block NEW frames but still finish this already earned time.
+   */
+  private drainActiveTime(): void {
+    while (this.pendingSeconds > 1e-9 && !this.pendingWrite && !this.currentError) {
+      const seconds = Math.min(LIVE_BATCH_SECONDS, this.pendingSeconds);
+      this.pendingSeconds = Math.max(0, this.pendingSeconds - seconds);
+      const before = this.economicState();
+      this.currentBattle.update(seconds);
+      this.checkpointSeconds += seconds;
+      this.refreshFarm();
+      if (before !== this.economicState() || (!this.currentBattle.preparing && !this.currentBattle.learningPaused && this.checkpointSeconds >= CHECKPOINT_SECONDS)) {
+        void this.commit().catch(() => undefined);
+      }
     }
   }
 
@@ -288,8 +295,7 @@ export class BattleSession {
   }
 
   async flush(): Promise<void> {
-    this.pendingSeconds = 0;
-    if (this.pendingWrite) await this.pendingWrite;
+    while (this.pendingWrite) await this.pendingWrite;
     if (this.currentError) throw this.currentError;
     if (this.closed || this.currentSuspended) return;
     await this.commit();
@@ -302,10 +308,9 @@ export class BattleSession {
     if (this.suspension) return this.suspension;
     if (this.closed) return Promise.resolve();
     this.currentSuspended = true;
-    this.pendingSeconds = 0;
     this.suspension = (async () => {
       try {
-        if (this.pendingWrite) await this.pendingWrite;
+        while (this.pendingWrite) await this.pendingWrite;
         if (this.currentError) throw this.currentError;
         if (!this.waitingForResume) this.currentOffline = beginAbsence(this.currentOffline, this.now(), this.currentCertificate, this.currentPaused || this.currentBattle.learningPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
         await this.commit();
@@ -360,7 +365,7 @@ export class BattleSession {
   }
   private async handleGap(seconds: number): Promise<void> {
     try {
-      if (this.pendingWrite) await this.pendingWrite;
+      while (this.pendingWrite) await this.pendingWrite;
       await this.heartbeat();
       const end = this.now();
       const start = Math.max(this.currentOffline.baseline.at, end - Math.floor(seconds * 1000));
@@ -402,9 +407,7 @@ export class BattleSession {
     }).then(() => {
       this.pendingWrite = undefined;
       if (!this.actionPending) this.onChange?.();
-      const seconds = this.pendingSeconds;
-      this.pendingSeconds = 0;
-      if (seconds > 0 && !this.closing) this.advance(seconds);
+      this.drainActiveTime();
     }, error => {
       this.pendingWrite = undefined;
       if (!this.actionPending) this.onChange?.();

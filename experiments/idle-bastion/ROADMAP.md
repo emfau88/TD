@@ -1,5 +1,12 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Frosttext, Echtzeit und Tavernenbedienung · 26.10.2026, auf ausdrücklichen Auftrag direkt auf Main; Commit/Push autorisiert.**
+
+- [x] Bosschronik DE/EN korrigiert: Frost verlangsamt Rosenspiegels Vormarsch und unterbricht den Zauber nicht. Kampfregel unverändert.
+- [x] Phaser-Glättung für die Kampfzeit deaktiviert; vollständige aktive Framezeit und während Saves angesammelte Zeit in begrenzten Portionen verarbeiten. Flush/Pause/Verbergen/Schließen erhalten angenommene Live-Zeit; echte Abwesenheit und Fehler-Rollback getrennt geprüft. Keine Save-/Regel-/Wirtschaftsmigration.
+- [x] Laufende automatische und manuelle Tavernenreaktionen sperren Aktionen/Herzmomente nicht mehr. Neue Reaktion ersetzt die vorherige nach Laden mit kurzer Überblendung. Transaktionssperre, Belohnungsgrenzen und Geschenkverbrauch erhalten; keine Offline-Auffüllung oder neuen Inhalte.
+- [x] 71/71 gezielte Session-/Offline-/Tavernen-/Sprachtests; TypeScript und vollständiger Pages-Build bestanden. Desktop/DE/Mara und Smartphone-Hochkant/EN/Ilyra im echten Spieleinstieg mit getrennten nativen Spielständen geprüft: automatische/manuelle Unterbrechung, Weiter während Animation, Geschenk-Doppelklick und exakter Reload. Rund 2 FPS: 9,95 s Kampfzeit bei 10,05 s Echtzeit. Keine Browserfehler. [Bericht, Messdaten und Ansichten](../../artifacts/idle-bastion/acceptance/runtime-fixes/REPORT.md). Keine Vollsuite oder physische Smartphone-Abnahme behauptet; die übrigen Vorschläge aus dem Review bleiben unimplementiert.
+
 **Quick Win · Maras erste Offline-Begrüßung · 25.10.2026, Branch `codex/mara-offline-welcome` ab Main `a732403`; Main-Übernahme und Pages nach mobiler Dialogkorrektur ausdrücklich freigegeben.**
 
 - [x] Vorhandenes schelmisches Mara-Porträt und kurzer DE-/EN-Spruch im bestehenden Rückkehrdialog. Einmal pro Spielstand beim ersten positiven angebotenen Offline-Ertrag, auch bei Goldbruchteilen; Null-/Pausenertrag verbraucht die Begrüßung nicht. Reload vor/nach Einsammeln und spätere Abwesenheiten wiederholen sie nicht. Kein zusätzlicher Klick oder Wartezeit.

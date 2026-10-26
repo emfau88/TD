@@ -79,6 +79,17 @@ Die T03-Balance bleibt nach der kompakten Prüfung bestehen: 40 Punkte mit einem
 
 ## Oberfläche und Hintergrundkampf
 
+**Eingabekorrektur vom 26.10.2026:** Laufende Reaktionen einschließlich automatisch
+gestarteter Idle-Varianten sperren weder Aktionen noch freigeschaltete Herzmomente
+oder deren Weiter-Knopf. Eine neue bestätigte Aktion ersetzt die vorherige Reaktion,
+sobald ihre ersten Bildseiten geladen sind; der aktuelle Rig-Player blendet dabei
+160 ms von der sichtbaren Pose über. Während des Nachladens bleiben weitere Aktionen
+möglich; die neueste Animationsanforderung gilt. Punkte/Geschenke werden weiterhin
+ausschließlich nach erfolgreicher Spieltransaktion bestätigt, nie durch Animationen.
+Die Sperren während einer solchen Transaktion, bei Speicherfehlern, angehaltener
+Session und vor dem ersten Laden der Figur bleiben erhalten. Keine neuen Budgets,
+Offline-Auffüllung, Dialoginhalte oder Assets gehören zu dieser Korrektur.
+
 Ein Tavernenfenster mit Übersicht und Charakteransicht; Berühren ist ein Modus der Charakteransicht. Große, lesbare Figur und kurze Texte, keine dauerhaft zusätzliche HUD-Leiste. Warmes Raumgefühl mit vorhandenen Schiefer-/Messingrahmen; Raumillustration darf auf Hochkant nicht den Großteil der nutzbaren Höhe verbrauchen.
 
 Übersicht zeigt Mara und Ilyra, echte Herzstände und klare Sperrbedingungen. Charakteransicht bietet Sprechen, Berühren, Schenken sowie Empfängerin/Bestand. Keine scheinbar verdienten Herzen bei gesperrter Ilyra. Im Berührungsmodus Kopf bis ungefähr Knie, Gesicht/Hände/Schulter/Taille erreichbar; dezente Hotspots, keine Beschriftungswolke. Touchflächen an den tatsächlichen Figurenausschnitt koppeln; Ziehen/Scrollen nicht versehentlich als Berührung belohnen. Zurück/Schließen bleibt stets zugänglich.
