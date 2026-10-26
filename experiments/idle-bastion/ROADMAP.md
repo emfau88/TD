@@ -1,5 +1,11 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Ilyra · sieben Tavernenstimmen — 26.10.2026, auf ausdrücklichen Nutzerauftrag direkt auf Main; Commit/Push autorisiert.**
+
+- [x] Exakt giggle1, good1, goodboy1, lookonlyatme1, senpai1, sweetheart1 und wouldntyou1 aus „Voice 1“ bytegleich übernommen. Gemeinsamer Zufallspool für alle drei bestätigten Berührungen, keine direkte Wiederholung/Überlagerung, mindestens 2,5 Sekunden Abstand. Nur nächste Stimme der geöffneten Gefährtin vorladen; gemeinsame vorhandene Stop-/Reglerlogik.
+- [x] Alle sieben Originaldateien und Maras zehn Dateien technisch gemessen. Ilyras konstante Wiedergabepegel auf Maras Median −19,445 LUFS abgestimmt, ausreichende Peakreserve; Maras Pegel unverändert. DE-/EN-Hilfe, Quellen und reproduzierbare Kalibrierung ergänzt.
+- [x] 14/14 gezielte Audio-/Sprach-/Kalibrierungstests, TypeScript und kompletter Pages-Build bestanden. Im echten Spiel auf Desktop und Hochkant alle drei Zonen, Folge-Taps, Figurenwechsel, Mute, Stimmenregler null und Schließen geprüft; sieben MP3s dekodierbar, keine Browserfehler. [Prüfbericht](../../artifacts/idle-bastion/acceptance/ilyra-voice/REPORT.md). Karten-/Befehlsstimmen bleiben ein besprochener Vorschlag; keine Spiel-/Save-/Animationsänderungen.
+
 **Ilyra I03 · Ellbogenkorrektur — 26.10.2026, visuell freigegeben und zur Veröffentlichung beauftragt.**
 
 - [x] Nutzer hat den synchronen Vergleich mit „schon viel besser, so einbauen, comitten und pushen“ freigegeben. Zwölf Runtime-Atlanten bytegenau übernommen, davon neun verändert; übrige 14 Animationen unverändert. Gleiche 96 Frames bei 30 fps und gleiche Ruhepose/Handbewegung.

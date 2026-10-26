@@ -1,0 +1,151 @@
+{
+  "method": "FFmpeg loudnorm input measurement (EBU R128); constant playback gain per clip",
+  "targetLufs": -19.445,
+  "reference": "Median of the ten unchanged Mara source clips",
+  "sharedPlaybackGain": 0.7,
+  "subjectiveListeningApproval": false,
+  "mara": [
+    {
+      "file": "flirty_admiring_01.wav",
+      "bytes": 449094,
+      "sha256": "947d0eec45a0d5250599b8588c02ed7580cf45ba2489907ccc03aacf6ec5df12",
+      "integratedLufs": -25.32,
+      "truePeakDbtp": -2.99
+    },
+    {
+      "file": "flirty_admiring_02.wav",
+      "bytes": 452934,
+      "sha256": "a69d03b19eb14300178465ffb08c81086d8186c6eeb2123f334772ff6ce9f0e3",
+      "integratedLufs": -17.84,
+      "truePeakDbtp": -2.96
+    },
+    {
+      "file": "flirty_challenging_03.wav",
+      "bytes": 423970,
+      "sha256": "2aec3a1063320a6d5f70ab9ca62fe458ab894bb45a7305c2380bc1cecb5a2d13",
+      "integratedLufs": -16.36,
+      "truePeakDbtp": -2.99
+    },
+    {
+      "file": "flirty_condescending_04.wav",
+      "bytes": 462000,
+      "sha256": "18f4c7e3232c859ef8b696ea07263e09805c4a26793f24bdef9ebe9a91f3202d",
+      "integratedLufs": -18.91,
+      "truePeakDbtp": -2.98
+    },
+    {
+      "file": "flirty_coy_06.wav",
+      "bytes": 315904,
+      "sha256": "8b5904d1289e1b3c84a7363d1d4a119c68923eedb645357c7a5a45b52494b97a",
+      "integratedLufs": -21.42,
+      "truePeakDbtp": -3.0
+    },
+    {
+      "file": "flirty_endearing_07.wav",
+      "bytes": 499476,
+      "sha256": "711f5721e771650fb80d9c60ad97b994cc24ad6ba9b176b3278ceb163eeb0923",
+      "integratedLufs": -23.36,
+      "truePeakDbtp": -9.25
+    },
+    {
+      "file": "flirty_flustered_08.wav",
+      "bytes": 370862,
+      "sha256": "fed139f5be719cc75662e49ae085187b1d56fec5160591882617590c84f0cfd5",
+      "integratedLufs": -20.57,
+      "truePeakDbtp": -3.0
+    },
+    {
+      "file": "flirty_playful_09.wav",
+      "bytes": 532912,
+      "sha256": "f166947b97ac7402bfa06b2fc649cc1661669ad57cdbb8f7201fdcbe4d493ddc",
+      "integratedLufs": -19.81,
+      "truePeakDbtp": -2.99
+    },
+    {
+      "file": "flirty_respectful_10.wav",
+      "bytes": 353540,
+      "sha256": "25c2f01cb712fe13f82b5aed13d6c38378972f4ca6460be475e561c62e1af3b0",
+      "integratedLufs": -19.08,
+      "truePeakDbtp": -3.0
+    },
+    {
+      "file": "flirty_teasing_12.wav",
+      "bytes": 324144,
+      "sha256": "57d0e634fa99f20305afdb5e1ee66b2003914b6c4a5a05a676b4a583fc974c05",
+      "integratedLufs": -18.48,
+      "truePeakDbtp": -2.95
+    }
+  ],
+  "ilyra": [
+    {
+      "file": "voice1-giggle1.mp3",
+      "bytes": 54720,
+      "sha256": "b3d68de8da17601201c3e9a295eedfdce15b066351e4c2067d7d02501910df66",
+      "integratedLufs": -24.14,
+      "truePeakDbtp": -10.39,
+      "gainDb": 4.695,
+      "gain": 1.71691976,
+      "adjustedTruePeakDbtp": -5.695
+    },
+    {
+      "file": "voice1-good1.mp3",
+      "bytes": 29760,
+      "sha256": "7a003a9ca2a97d975fd7a1b3117fb659fa539cd481481dbdd652c988a435f2c5",
+      "integratedLufs": -23.86,
+      "truePeakDbtp": -13.78,
+      "gainDb": 4.415,
+      "gain": 1.66245539,
+      "adjustedTruePeakDbtp": -9.365
+    },
+    {
+      "file": "voice1-goodboy1.mp3",
+      "bytes": 54720,
+      "sha256": "dee6c436aee0f18685860ba787b840f85c726023adcf7deb1f6c2ac9e6e0e08d",
+      "integratedLufs": -23.92,
+      "truePeakDbtp": -10.76,
+      "gainDb": 4.475,
+      "gain": 1.67397898,
+      "adjustedTruePeakDbtp": -6.285
+    },
+    {
+      "file": "voice1-lookonlyatme1.mp3",
+      "bytes": 66240,
+      "sha256": "2f99d971f11690295b22164065c68a9c0749165e18d7c2686ac30b91d253f00c",
+      "integratedLufs": -21.76,
+      "truePeakDbtp": -11.89,
+      "gainDb": 2.315,
+      "gain": 1.30541921,
+      "adjustedTruePeakDbtp": -9.575
+    },
+    {
+      "file": "voice1-senpai1.mp3",
+      "bytes": 39360,
+      "sha256": "1bda4dba759d1710e516a83734eb937538c7f5df9dc4c522f7a0d69bec5ffef2",
+      "integratedLufs": -27.34,
+      "truePeakDbtp": -16.61,
+      "gainDb": 7.895,
+      "gain": 2.48170411,
+      "adjustedTruePeakDbtp": -8.715
+    },
+    {
+      "file": "voice1-sweetheart1.mp3",
+      "bytes": 43200,
+      "sha256": "b5c50dc3774b234627d0983b8c57c26c73b096d30f4fe975d00f5ae26ec09de1",
+      "integratedLufs": -29.79,
+      "truePeakDbtp": -21.35,
+      "gainDb": 10.345,
+      "gain": 3.29040988,
+      "adjustedTruePeakDbtp": -11.005
+    },
+    {
+      "file": "voice1-wouldntyou1.mp3",
+      "bytes": 37440,
+      "sha256": "03ac6a87a9080ffde7a025f71c0653999c7b7d58d6d7565ef76b75e35947f494",
+      "integratedLufs": -22.17,
+      "truePeakDbtp": -14.61,
+      "gainDb": 2.725,
+      "gain": 1.36851638,
+      "adjustedTruePeakDbtp": -11.885
+    }
+  ]
+}

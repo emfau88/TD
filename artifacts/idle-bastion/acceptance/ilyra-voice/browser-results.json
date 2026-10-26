@@ -1,0 +1,170 @@
+[
+  {
+    "width": 1280,
+    "regions": [
+      "hair",
+      "hand",
+      "shoulder"
+    ],
+    "noMapPreload": true,
+    "oneNextClip": true,
+    "noOverlap": true,
+    "switchStops": true,
+    "muteStops": true,
+    "zeroVolumeStops": true,
+    "closeStops": true,
+    "events": [
+      {
+        "who": "ilyra",
+        "src": "http://127.0.0.1:5235/assets/ilyra-voice/voice1-senpai1.mp3",
+        "gain": 0.9554560780525208,
+        "time": 2525.5
+      },
+      {
+        "who": "ilyra",
+        "src": "http://127.0.0.1:5235/assets/ilyra-voice/voice1-sweetheart1.mp3",
+        "gain": 1.2668077945709229,
+        "time": 6123.5999999996275
+      },
+      {
+        "who": "ilyra",
+        "src": "http://127.0.0.1:5235/assets/ilyra-voice/voice1-goodboy1.mp3",
+        "gain": 0.644481897354126,
+        "time": 9777.400000000373
+      },
+      {
+        "who": "mara",
+        "src": "http://127.0.0.1:5235/assets/mara-voice/flirty_admiring_01.wav",
+        "gain": 0.38499999046325684,
+        "time": 10337.900000000373
+      },
+      {
+        "who": "ilyra",
+        "src": "http://127.0.0.1:5235/assets/ilyra-voice/voice1-senpai1.mp3",
+        "gain": 0.9554560780525208,
+        "time": 13490.599999999627
+      },
+      {
+        "who": "ilyra",
+        "src": "http://127.0.0.1:5235/assets/ilyra-voice/voice1-sweetheart1.mp3",
+        "gain": 1.2668077945709229,
+        "time": 17512.800000000745
+      }
+    ],
+    "decoded": [
+      {
+        "file": "voice1-giggle1.mp3",
+        "duration": 1.368
+      },
+      {
+        "file": "voice1-good1.mp3",
+        "duration": 0.744
+      },
+      {
+        "file": "voice1-goodboy1.mp3",
+        "duration": 1.368
+      },
+      {
+        "file": "voice1-lookonlyatme1.mp3",
+        "duration": 1.656
+      },
+      {
+        "file": "voice1-senpai1.mp3",
+        "duration": 0.984
+      },
+      {
+        "file": "voice1-sweetheart1.mp3",
+        "duration": 1.08
+      },
+      {
+        "file": "voice1-wouldntyou1.mp3",
+        "duration": 0.936
+      }
+    ],
+    "errors": []
+  },
+  {
+    "width": 390,
+    "regions": [
+      "hair",
+      "hand",
+      "shoulder"
+    ],
+    "noMapPreload": true,
+    "oneNextClip": true,
+    "noOverlap": true,
+    "switchStops": true,
+    "muteStops": true,
+    "zeroVolumeStops": true,
+    "closeStops": true,
+    "events": [
+      {
+        "who": "ilyra",
+        "src": "http://127.0.0.1:5235/assets/ilyra-voice/voice1-lookonlyatme1.mp3",
+        "gain": 0.5025864243507385,
+        "time": 1932.800000000745
+      },
+      {
+        "who": "ilyra",
+        "src": "http://127.0.0.1:5235/assets/ilyra-voice/voice1-good1.mp3",
+        "gain": 0.6400453448295593,
+        "time": 5493.300000000745
+      },
+      {
+        "who": "ilyra",
+        "src": "http://127.0.0.1:5235/assets/ilyra-voice/voice1-goodboy1.mp3",
+        "gain": 0.644481897354126,
+        "time": 9417.199999999255
+      },
+      {
+        "who": "mara",
+        "src": "http://127.0.0.1:5235/assets/mara-voice/flirty_admiring_01.wav",
+        "gain": 0.38499999046325684,
+        "time": 9742.300000000745
+      },
+      {
+        "who": "ilyra",
+        "src": "http://127.0.0.1:5235/assets/ilyra-voice/voice1-sweetheart1.mp3",
+        "gain": 1.2668077945709229,
+        "time": 12689.900000000373
+      },
+      {
+        "who": "ilyra",
+        "src": "http://127.0.0.1:5235/assets/ilyra-voice/voice1-senpai1.mp3",
+        "gain": 0.9554560780525208,
+        "time": 16661
+      }
+    ],
+    "decoded": [
+      {
+        "file": "voice1-giggle1.mp3",
+        "duration": 1.368
+      },
+      {
+        "file": "voice1-good1.mp3",
+        "duration": 0.744
+      },
+      {
+        "file": "voice1-goodboy1.mp3",
+        "duration": 1.368
+      },
+      {
+        "file": "voice1-lookonlyatme1.mp3",
+        "duration": 1.656
+      },
+      {
+        "file": "voice1-senpai1.mp3",
+        "duration": 0.984
+      },
+      {
+        "file": "voice1-sweetheart1.mp3",
+        "duration": 1.08
+      },
+      {
+        "file": "voice1-wouldntyou1.mp3",
+        "duration": 0.936
+      }
+    ],
+    "errors": []
+  }
+]
