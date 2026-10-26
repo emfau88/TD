@@ -2,6 +2,27 @@
 
 Nur Prototypen auf `codex/map-idle-trio-preview`, ausgehend vom freigegebenen Speer-Vorschau-Stand `ed6a4e3` (Spielbasis Main `f5b4a6f`). Kein Merge, Deployment oder Einbau ins Spiel. Die bereits akzeptierte Ilyra-Speer-/Pole-Vorschau bleibt unverändert.
 
+## Ilyra Hip Shift · V4 · zusammenhängende Körperteile · 26.10.2026
+
+**[Neue Handy-Vorschau](Ilyra-Hip-Shift-Handy-V4.gif)** · [ungeglättete Ansicht mit Pause/Einzelbildern](ilyra-hip-v4.html) · [fünf Posen nebeneinander](ilyra-hip/parts-v4/contact-sheet.png). 304×600 Pixel, 53.116 Bytes, fünf unterschiedliche 64×64-Posen / neun GIF-Frames, **2,74 Sekunden**. Oben 1× neben dem Laufzeitsprite, unten dieselben Pixel 4× vergrößert.
+
+Die Darstellungsprobe wurde vom Nutzer als besser, aber nur etwa 6/10 bewertet. Daraufhin ausdrücklich beauftragt: ausschließlich Ilyras Hip Shift mit zusammenhängend bewegten Körperteilen und sauberen Übergangsposen neu aufbauen. Mara und die akzeptierte Speer-/Pole-Animation bleiben unverändert.
+
+V4 zerlegt die vorhandene neutrale Zeichnung `ilyra-hip/keys/00.png` in elf Ebenen: feste Bereiche, Gewand, Kopf, Arme, Oberkörper, Hüfte sowie Ober-/Unterschenkel. Die Zeichnung stammt aus der V1-Vorschau auf Basis des echten Laufzeitatlas `experiments/idle-bastion/assets/ilyra/ilyra-atlas.png` und `experiments/idle-bastion/assets/ilyra/sources/stand-approved.png`; keine neue Bildgenerierung. Hüfte zwei Kartenpixel nach rechts und einen nach unten, Oberkörper/Kopf dagegen nach links. Zwei verbundene Beinsegmente führen die Knie bei festem Fußpunkt nach. Jede Ebene wird nur starr verschoben oder gedreht, genau einmal mit nächstem Quellpixel abgetastet. Überlappende Originalpixel an den Gelenken, eine verdeckte Gewandfläche in vorhandener Farbe und eine lokale Nahtkorrektur schließen aufgedeckte Lücken. Keine zeilenweise Verformung, Bildmischung, Weichzeichnung oder neue Zwischenfarben in den Spriteframes.
+
+Fünf bewusst gesetzte Posen: Idle → Gewicht ansetzen → Hüfte verlagern → Schultern nachführen → Gegenpose. Danach derselbe Weg rückwärts. Die Gegenpose dauert 700 ms, die Übergänge jeweils 120–160 ms; die beiden identischen Idle-Endbilder ergeben über die Loopgrenze eine ruhige Pause von 1.200 ms. Die geringere Zahl klarer Posen ist Absicht. Rasterbedingte Ein-Pixel-Schritte bleiben möglich; **technische Schärfe ist keine visuelle Nutzerabnahme**. Nur frontaler Prototyp, noch kein integriertes Spielasset.
+
+Reproduktion und begrenzte Medienprüfung:
+
+```powershell
+python artifacts/idle-bastion/previews/map-idle-trio/build_ilyra_parts.py
+python artifacts/idle-bastion/previews/map-idle-trio/check_ilyra_parts.py
+```
+
+[Manifest](ilyra-hip/parts-v4/animation.json) · [Prüfergebnis](ilyra-hip/parts-v4/checks.json). Geprüft: neutrale Pose sichtbar identisch zur Quelle, ausschließlich Quellfarben/binäres Alpha, unveränderte Gesichtspixel, feste Füße/Speer, starre Teiltransformationen ohne Streckung, konstante Beinlängen, keine eingeschlossenen transparenten Löcher im Rumpf, identische Loop-Enden/Rückkehrposen, keine abgeschnittenen Pixel und exakte 4×-Pixelblöcke im dekodierten GIF. Alle bisherigen Mara-/Pole-/Spieldateien gegenüber `29d7d4c` unverändert. Nur Medien- und Vorschauseitenprüfung; keine neue Spieltestsuite oder Produktionsbuild erforderlich, da keine Laufzeitdatei geändert wurde. Visuelle Freigabe offen.
+
+Die [Browserprüfung](ilyra-hip/parts-v4/browser-checks.json) bestätigt Laden, native 304-Pixel-Breite, `image-rendering:pixelated`, keinen horizontalen Überlauf sowie Vor/Zurück, Auswahl der Gegenpose, Abspielen und Pause. [Aufnahme der Gegenpose](ilyra-hip/parts-v4/browser-frame-4.png). Prüfung im Desktop-In-App-Browser mit fester schmaler Vorschau; kein Test auf physischer Smartphone-Hardware.
+
 ## Darstellungsprobe nach erneutem Kontur-Feedback · 26.10.2026
 
 V3 wurde vom Nutzer weiterhin als verschwommen beziehungsweise glitchend an bewegten Konturen beanstandet. Die Prüfung auf scharfe Einzelpixel bestätigt keine sauber lesbare Bewegung. Die zeilenweise quantisierten Verschiebungen der V3 können Konturabschnitte zu unterschiedlichen Zeitpunkten springen lassen; dieser Bewegungsaspekt bleibt offen.

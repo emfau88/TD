@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ilyra · Hip Shift V4</title><link rel="icon" href="data:,">
+<style>*{box-sizing:border-box}body{margin:0;background:#101c24;color:#f3e7cf;font:14px system-ui,sans-serif}main{width:304px;margin:auto}header{padding:16px 8px 8px;line-height:1.5}h1{font-size:19px;margin:0 0 8px}p{margin:0 0 10px}button{background:#243c49;border:1px solid #58727e;color:#f3e7cf;padding:9px 12px;border-radius:6px;cursor:pointer}button[aria-pressed=true]{border-color:#e5c681;color:#e5c681}img{display:block;width:304px;height:600px;image-rendering:pixelated}a{color:#e5c681;display:block;padding:12px 8px}.stage{width:304px;height:280px;position:relative;border:1px solid #45606a;background:#1a2a35;margin-top:8px}canvas{position:absolute;left:23px;top:12px;width:256px;height:256px;image-rendering:pixelated}label{display:block;padding:10px 0}input{width:100%}.hint{color:#b6c8cc;font-size:12px;padding:4px 8px}nav{display:flex;gap:6px;flex-wrap:wrap}output{font-variant-numeric:tabular-nums}</style></head>
+<body><main><header><h1>Ilyra · Hip Shift V4</h1><p>Zusammenhängende Körperteile, feste Füße und fünf klare Posen. Nur Vorschau.</p></header>
+<img src="Ilyra-Hip-Shift-Handy-V4.gif" width="304" height="600" alt="Ilyras Hüftverlagerung: oben Kartenmaßstab neben dem Originalsprite, darunter vierfach vergrößert.">
+<a href="Ilyra-Hip-Shift-Handy-V4.gif" download>GIF speichern</a>
+<header><h1>Übergänge einzeln ansehen</h1><nav><button id="play" aria-pressed="false" disabled>Abspielen</button><button id="prev" disabled>← Bild</button><button id="next" disabled>Bild →</button></nav><label>Bild <output id="number">0</output> / 8<input id="frame" type="range" min="0" max="8" value="0" step="1" disabled></label></header>
+<div class="stage"><canvas id="sprite" width="256" height="256" aria-label="Ausgewähltes Einzelbild vierfach vergrößert"></canvas></div><p class="hint">Fünf Posen, Hin- und Rückweg, 2,74 Sekunden. Keine Bildmischung. Mara und Speer-Tanz unverändert.</p>
+</main><script>
+const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d'),slider=document.querySelector('#frame'),number=document.querySelector('#number'),play=document.querySelector('#play');
+let current=0,running=false,timer=null,images=[],durations=[];
+function draw(){ctx.imageSmoothingEnabled=false;ctx.clearRect(0,0,256,256);ctx.drawImage(images[current],0,0,256,256);slider.value=current;number.value=current;}
+function stop(){running=false;clearTimeout(timer);play.textContent='Abspielen';play.setAttribute('aria-pressed','false');}
+function step(){timer=setTimeout(()=>{current=(current+1)%images.length;draw();if(running)step();},durations[current]);}
+fetch('ilyra-hip/parts-v4/animation.json').then(response=>{if(!response.ok)throw Error('Manifest');return response.json();}).then(async manifest=>{
+durations=manifest.durationsMs;
+images=await Promise.all(Array.from({length:manifest.frames},(_,i)=>new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=reject;image.src=`ilyra-hip/parts-v4/${String(i).padStart(2,'0')}.png`;})));
+draw();document.querySelectorAll('button,input').forEach(control=>control.disabled=false);
+play.onclick=()=>{if(running)stop();else{running=true;play.textContent='Pause';play.setAttribute('aria-pressed','true');step();}};
+slider.oninput=()=>{stop();current=Number(slider.value);draw();};
+document.querySelector('#prev').onclick=()=>{stop();current=(current+images.length-1)%images.length;draw();};
+document.querySelector('#next').onclick=()=>{stop();current=(current+1)%images.length;draw();};
+}).catch(()=>{number.value='Ladefehler';document.querySelectorAll('button,input').forEach(control=>control.disabled=true);});
+</script></body></html>

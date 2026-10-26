@@ -1,0 +1,116 @@
+{
+  "version": 4,
+  "previewOnly": true,
+  "source": "ilyra-hip/keys/00.png",
+  "sourceSha256": "6cb0aab743d40f69680533fe35604f8a104f678bca5cb36e13b6cfd5b7267f28",
+  "method": "Anatomical cutout layers with rigid transforms and two-bone leg joints; fixed feet, no row remap/flow/blend/blur",
+  "parts": [
+    "fixed",
+    "cape",
+    "head",
+    "left_arm",
+    "torso",
+    "right_arm",
+    "pelvis",
+    "left_thigh",
+    "left_shin",
+    "right_thigh",
+    "right_shin"
+  ],
+  "poses": [
+    {
+      "label": "Idle",
+      "hip": [
+        0,
+        0
+      ],
+      "chest": 0,
+      "head": 0,
+      "cape": 0,
+      "arm": 0
+    },
+    {
+      "label": "Gewicht ansetzen",
+      "hip": [
+        1,
+        1
+      ],
+      "chest": 0,
+      "head": 0,
+      "cape": 0,
+      "arm": 0
+    },
+    {
+      "label": "Gewicht verlagern",
+      "hip": [
+        2,
+        1
+      ],
+      "chest": 0,
+      "head": 0,
+      "cape": 1,
+      "arm": 1,
+      "seam": true
+    },
+    {
+      "label": "Schultern nachf\u00fchren",
+      "hip": [
+        2,
+        1
+      ],
+      "chest": -0.5,
+      "head": 0,
+      "cape": 1,
+      "arm": 1
+    },
+    {
+      "label": "Gegenpose",
+      "hip": [
+        2,
+        1
+      ],
+      "chest": -1,
+      "head": -1,
+      "cape": 1,
+      "arm": 1
+    }
+  ],
+  "order": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    3,
+    2,
+    1,
+    0
+  ],
+  "durationsMs": [
+    600,
+    140,
+    160,
+    120,
+    700,
+    120,
+    160,
+    140,
+    600
+  ],
+  "gif": "Ilyra-Hip-Shift-Handy-V4.gif",
+  "frames": 9,
+  "loopMs": 2740,
+  "gifFrames": 9,
+  "gifDurationsMs": [
+    600,
+    140,
+    160,
+    120,
+    700,
+    120,
+    160,
+    140,
+    600
+  ],
+  "gifBytes": 53116
+}

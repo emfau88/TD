@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-26",
+  "page": "ilyra-hip-v4.html",
+  "browser": "Codex in-app browser",
+  "viewportCss": [1281, 721],
+  "devicePixelRatio": 1.0931249856948853,
+  "gifNaturalSize": [304, 600],
+  "gifDisplayedSizeCss": [303.98797607421875, 600],
+  "imageRendering": "pixelated",
+  "horizontalOverflow": false,
+  "checks": {
+    "gifAndFramesLoaded": true,
+    "nextChangedFrame0To1": true,
+    "sliderSelectedPeakFrame4": true,
+    "playAdvancedFrame0To3": true,
+    "pauseStoppedAtFrame8": true,
+    "previousChangedFrame8To7": true,
+    "screenshotOfFrame4": "browser-frame-4.png"
+  },
+  "consoleErrorsOrWarningsObserved": [],
+  "limits": "Fixed 304 CSS-pixel preview checked in the desktop in-app browser; no physical phone test or user visual approval."
+}

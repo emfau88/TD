@@ -1,0 +1,22 @@
+{
+  "version": 4,
+  "gif": "Ilyra-Hip-Shift-Handy-V4.gif",
+  "gifFrames": 9,
+  "uniqueSpriteFrames": 5,
+  "loopMs": 2740,
+  "sourceColoursOnly": true,
+  "binaryAlpha": true,
+  "neutralMatchesSource": true,
+  "faceMovesIntact": true,
+  "rigidPartsWithoutScaleOrShear": true,
+  "fixedFeetAndSpear": true,
+  "legLengthsPreserved": true,
+  "noEnclosedTorsoSeamHoles": true,
+  "exactFourfoldGifPixels": true,
+  "noClipping": true,
+  "identicalEndpoints": true,
+  "returnUsesSamePoses": true,
+  "productionMaraAndPoleUnchanged": true,
+  "comparisonBase": "29d7d4c60363368520435ec92834107fa0855cef",
+  "visualApproval": "Pending user review; technical properties do not prove attractive movement."
+}
