@@ -1,0 +1,75 @@
+{
+  "version": 3,
+  "previewOnly": true,
+  "source": "mara-hip/authored-v3/source/poses-revised.png",
+  "sourceSha256": "15af4415befc4a59697822b6b89eebb669f3dda370f019bf9070d1e858be44e3",
+  "method": "Four selected authored poses, same reverse path, shared stable head/wrench/boots, no deformation or frame blending",
+  "scale": 0.09,
+  "anchors": [
+    [
+      198.25,
+      479
+    ],
+    [
+      199.25,
+      479
+    ],
+    [
+      195.0,
+      479
+    ],
+    [
+      195.5,
+      479
+    ],
+    [
+      193.0,
+      476
+    ],
+    [
+      196.0,
+      476
+    ],
+    [
+      198.75,
+      476
+    ],
+    [
+      197.5,
+      476
+    ]
+  ],
+  "sourceOrder": [
+    0,
+    6,
+    1,
+    4,
+    1,
+    6,
+    0
+  ],
+  "uniquePoses": 4,
+  "frames": 7,
+  "durationsMs": [
+    850,
+    130,
+    180,
+    950,
+    180,
+    130,
+    450
+  ],
+  "gif": "Mara-Hip-Shift-Handy-V3.gif",
+  "gifFrames": 7,
+  "gifDurationsMs": [
+    850,
+    130,
+    180,
+    950,
+    180,
+    130,
+    450
+  ],
+  "loopMs": 2870,
+  "gifBytes": 44975
+}

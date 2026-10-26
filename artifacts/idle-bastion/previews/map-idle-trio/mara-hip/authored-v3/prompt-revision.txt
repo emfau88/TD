@@ -1,0 +1,14 @@
+Edit this Mara sprite sheet for ONE targeted correction: the hip shift must become plainly visible at a final character height of 38 pixels. Currently the pelvis stays almost centered and most panels look alike. Keep the same eight-cell layout, character identity, palette and scale.
+
+Preserve the first and last neutral drawings EXACTLY. Preserve the head/face/hair, raised wrench hand/tool and BOTH BOOTS exactly in all cells. Both feet remain planted; no horizontal sliding or altered boot spacing. No pose changes for the face or tool.
+
+Change ONLY the body/legs/free image-left arm for clear transition silhouettes:
+Cell 2 (top row second): free hand still halfway rising toward belt, elbow outside torso. Pelvis begins moving LEFT 12 output pixels.
+Cell 3: free hand arriving at hip, pelvis LEFT 24 pixels. Left elbow projects well outwards.
+Cell 4: FULL HIP SHIFT LEFT by 36 output pixels relative to the neutral belt center. Clear curved body line between the centered shoulders and offset waist/hip, weight onto image-left leg; image-right knee relaxed. Left hand firmly on the OUTER hip and left elbow widely outward, with a triangular transparent gap to the torso. The gesture must read clearly in silhouette.
+Cell 5 (bottom row first): same strong full hip pose, pelvis LEFT 36 pixels; very minor coherent settling of cloak only, do not change costume texture or highlights.
+Cell 6: return through LEFT 24 pixel pelvis, hand starts lowering, a clear transition.
+Cell 7: nearly neutral pelvis LEFT 12 pixels, free arm mostly lowered.
+Cell 8: exact copy of neutral cell1.
+
+The pelvis/waist actually changes position; do NOT only bend the arm. Keep connected, natural anatomy. Redraw clean final contours as deliberate pixel clusters. Hard opaque pixel edges, no blended double outlines, no blur, no translucent ghosts or gradients. Flat shared pixel palette, no microtexture. Transparent background. Eight full-body figures, each cell 384x512 in a 1536x1024 sheet, no labels, no magic glow. Confident cheeky relaxed mechanic, not slapstick.

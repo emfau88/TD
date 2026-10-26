@@ -1,0 +1,18 @@
+Create a clean hand-drawn PIXEL ANIMATION SPRITE SHEET for Mara, the adult red-haired mechanic in reference image 1 (the actual game sprite sheet). The FIRST character in that reference is the identity/proportion/costume reference, NOT the walking/casting frames. This is a new map idle, not a redesign. Preserve the copper braid, green eyes, teal gold-trimmed cloak with cream collar, burgundy top, brown gloves and boots, dark trousers, brass belt and small teal vials, mint wrench in image-right hand. No magic effects.
+
+CRITICAL: The finished character is seen at only 38 pixels tall in game. Draw for that actual resolution FIRST. Use strong simple flat pixel clusters and a dark single logical-pixel outline, a consistent restrained palette with NO changing texture/highlights/no dithering/no subpixel smudges. Do NOT draw a detailed high-resolution painting and pixelate it. The anatomy must move naturally between poses, with a strong readable silhouette and fixed feet. A connected coherent body, not rubber row distortion or dislocated puppet pieces.
+
+Layout: ONE 1536x1024 TRANSPARENT sheet, 4 columns x 2 rows, each cell 384x512. Treat each cell as a 48x64 logical-pixel canvas enlarged EIGHT times with nearest-neighbour. Visible character is about 38 logical pixels (304 output pixels) tall. Ground baseline at cell-local y=440. Both boot soles stay at exactly the same positions in ALL 8 cells: image-left sole center x=160, image-right sole center x=224. Copy the boots exactly. No shadows, ground, frames, grid, text, labels, or particles. All figures same scale. Preserve comfortable empty margins.
+
+Animation: slow confident playful HIP SHIFT with a clear hand-on-hip gesture. Free image-left arm forms a prominent triangle of EMPTY space between elbow and torso; visible even at 38 pixels tall. Hips move 3 logical pixels towards image-left while shoulders counterbalance 1 pixel image-right. The stable raised image-right wrench arm remains recognizable and consistent. No stepping, jumping, twitching, exaggerated grin, or changes in costume.
+8 sequential hand-drawn poses read left to right:
+1 Neutral grounded idle, free hand resting down at side. Front/three-quarter facing player, as reference.
+2 Preparation: free elbow opens visibly outward, forearm starts bending, pelvis begins shifting left, feet planted.
+3 Mid-transition: hand reaches belt side, elbow clearly outside the silhouette, halfway hip shift.
+4 Full pose: hand firmly on image-left hip, elbow projecting 3 logical pixels beyond the cloak edge, hips clearly left, shoulders gently opposite; relaxed confident balance, smile.
+5 Living follow-through: keep the exact full pose and facial features; only slight coherent settling of shoulders and braid by at most 1 logical pixel, no detail redraw.
+6 Release: halfway hip return and hand leaves waist, calm readable arm transition.
+7 Near neutral: hips almost centered, elbow lowers, hand beside body.
+8 EXACT COPY of pose 1 for a clean loop.
+
+Re-use the EXACT face/head pixel clusters throughout, moving the head as one connected shape when needed; do not change her face/eyes/hair highlights from frame to frame. Re-use costume colour clusters, do not make belt buckles/vials/cape patterns flicker. Prioritize a beautifully readable silhouette and coherent pose-to-pose motion over fine detail or frame count.

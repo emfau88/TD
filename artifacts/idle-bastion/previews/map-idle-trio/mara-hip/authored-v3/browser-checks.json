@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-26",
+  "page": "mara-hip-v3.html",
+  "browser": "Codex in-app browser",
+  "viewportCss": [1281, 721],
+  "gifNaturalSize": [304, 600],
+  "gifDisplayedSizeCss": [303.98797607421875, 600],
+  "imageRendering": "pixelated",
+  "horizontalOverflow": false,
+  "checks": {
+    "gifAndFramesLoaded": true,
+    "nextChangedFrame0To1": true,
+    "playAdvancedFrame0To6": true,
+    "pauseStoppedAtFrame3": true,
+    "previousChangedFrame3To2": true,
+    "sliderSelectedPeakFrame3": true,
+    "screenshotOfFrame3": "browser-frame-3.png"
+  },
+  "consoleErrorsOrWarningsObserved": [],
+  "limits": "Fixed 304 CSS-pixel preview checked in the desktop in-app browser; no physical phone test or user visual approval."
+}

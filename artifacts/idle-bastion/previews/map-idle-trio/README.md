@@ -2,7 +2,23 @@
 
 Nur Prototypen auf `codex/map-idle-trio-preview`, ausgehend vom freigegebenen Speer-Vorschau-Stand `ed6a4e3` (Spielbasis Main `f5b4a6f`). Kein Merge, Deployment oder Einbau ins Spiel. Die bereits akzeptierte Ilyra-Speer-/Pole-Vorschau bleibt unverändert.
 
-## Ilyra Hip Shift · V4 · zusammenhängende Körperteile · 26.10.2026
+## Mara · Hand an die Hüfte · neuer Versuch V3 · 26.10.2026
+
+**[Mara-Hip-Shift-Handy-V3.gif](Mara-Hip-Shift-Handy-V3.gif)** · [ungeglättete Ansicht mit Einzelbildsteuerung](mara-hip-v3.html) · [Kontaktbogen](mara-hip/authored-v3/contact-sheet.png). **304×600 Pixel, 44.975 Bytes, vier unterschiedliche Posen / sieben GIF-Frames, 2,87 Sekunden.** Oben 38 Pixel Figurenhöhe bei 1× neben dem echten Laufzeitsprite; unten 4×-Detail. Zusammengesetzte Maßstabsprobe, keine Spielintegration.
+
+Nach Ablehnung von Ilyra V4 wurde eine einzelne neue Mara-Idle-Probe beauftragt. Schwerpunkt ist die lesbare Arm-Silhouette: freie Hand an die Hüfte, Ellbogen nach außen, kleine Gewichtsverlagerung und ruhige Rückkehr. Die Kontur am Ellbogen verändert sich um mindestens zwei Kartenpixel; die gesamte Silhouette unterscheidet sich in der Hauptpose an 28 Pixeln. Das sind technische Größenbelege, keine automatische Bewertung der Animationsqualität.
+
+Grundlage ist ausschließlich Maras tatsächlich verwendete Laufzeitquelle `experiments/idle-bastion/assets/runtime/mara-game.webp`, erste frontale Idle-Pose. Der eingebaute **Imagegen** erzeugte ein neues Posenblatt und eine gezielte Revision für deutlichere Körperhaltung; [Prompt](mara-hip/authored-v3/prompt.txt), [Revisionsprompt](mara-hip/authored-v3/prompt-revision.txt) und beide unveränderten Rohquellen unter `mara-hip/authored-v3/source/` bleiben erhalten. Es werden vier unterscheidbare Zeichnungen aus dem revidierten Blatt verwendet: Zellen 0, 6, 1, 4; zurück über dieselben Posen. Nahezu identische alternative Zeichnungen wurden verworfen, weil sie vor allem Details wechseln lassen.
+
+Einheitlicher Maßstab 0,09, vermessene Fußanker, 32 gemeinsame Spritefarben ohne Dithering, binäres Alpha. Kopf/Gesicht, erhobenes Werkzeug und Stiefel stammen in allen Posen pixelgleich aus der neutralen Zeichnung. Direkt abgespielte Posen, keine berechnete Bildverformung, kein optischer Fluss, keine Überblendung und keine Weichzeichnung. Die Hauptpose steht 950 ms, der Grundstand insgesamt 1.300 ms über die Loopgrenze; die Übergänge dauern 130/180 ms. Das ist ein ruhiger, bewusst knapp gezeichneter Idle und keine flüssige 30-fps-Animation.
+
+Reproduktion: `python artifacts/idle-bastion/previews/map-idle-trio/build_mara_authored.py`, anschließend `check_mara_authored.py` im selben Ordner. [Manifest](mara-hip/authored-v3/animation.json) · [Medienprüfung](mara-hip/authored-v3/checks.json). Tatsächliche Kartengröße, feste Bereiche, Alpha/Palette, sichtbare Konturänderung, freie Ränder, identische Rückkehr-/Loopbilder und exakte 4×-Pixelblöcke des dekodierten GIF geprüft. Sämtliche Ilyra-Dateien einschließlich akzeptierter Speeranimation, Mara Hair Adjust, frühere Mara-GIFs und Produktionsdateien gegenüber `d4aad72` unverändert. Kein Spielbuild/Spieltestlauf für dieses reine Vorschaupaket; keine Änderungen an Lauf-/Kampf-/Zauberanimationen, Gameplay oder Saves. Visuelle Nutzerfreigabe offen, kein Merge/Deployment.
+
+Die [Browserprüfung](mara-hip/authored-v3/browser-checks.json) bestätigt Laden, native 304-Pixel-Breite ohne zusätzliche Verkleinerung, fehlenden horizontalen Überlauf, laufende Wiedergabe, Pause, Vor-/Rückschritt und Auswahl der Hauptpose. [Aufnahme](mara-hip/authored-v3/browser-frame-3.png). Desktop-In-App-Browser mit schmaler Vorschau, keine physische Handyprüfung.
+
+## Ilyra Hip Shift · V4 · vom Nutzer abgelehnt · 26.10.2026
+
+**Status:** Der Nutzer hat diese Fassung mit „gefällt mir nicht“ abgelehnt und stattdessen einen neuen Mara-Idle-Versuch beauftragt. V4 bleibt als unveränderte historische Vorschau erhalten; keine Integration oder weitere Ilyra-Bearbeitung.
 
 **[Neue Handy-Vorschau](Ilyra-Hip-Shift-Handy-V4.gif)** · [ungeglättete Ansicht mit Pause/Einzelbildern](ilyra-hip-v4.html) · [fünf Posen nebeneinander](ilyra-hip/parts-v4/contact-sheet.png). 304×600 Pixel, 53.116 Bytes, fünf unterschiedliche 64×64-Posen / neun GIF-Frames, **2,74 Sekunden**. Oben 1× neben dem Laufzeitsprite, unten dieselben Pixel 4× vergrößert.
 

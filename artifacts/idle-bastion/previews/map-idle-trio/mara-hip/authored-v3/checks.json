@@ -1,0 +1,19 @@
+{
+  "version": 3,
+  "gif": "Mara-Hip-Shift-Handy-V3.gif",
+  "frames": 7,
+  "uniquePoses": 4,
+  "loopMs": 2870,
+  "binaryAlpha": true,
+  "sharedSpriteColours": 32,
+  "unchangedHeadToolAndBoots": true,
+  "noClipping": true,
+  "mapHeightPixels": 38,
+  "silhouetteChangedPixels": 28,
+  "elbowOutlineShiftAtLeastTwoMapPixels": true,
+  "exactFourfoldGifPixels": true,
+  "identicalEndpoints": true,
+  "returnUsesSamePoses": true,
+  "productionIlyraPoleAndPreviousPreviewsUnchanged": true,
+  "visualApproval": "Pending user review; this check cannot certify the appeal of the movement."
+}
