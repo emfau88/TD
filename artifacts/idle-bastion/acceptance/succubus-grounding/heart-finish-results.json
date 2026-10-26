@@ -1,0 +1,65 @@
+{
+  "targetEffectsSourceUnchanged": true,
+  "cases": [
+    {
+      "width": 1280,
+      "fullCount": 3,
+      "stableWhilePaused": true,
+      "countsNonIncreasing": true,
+      "drops": [
+        {
+          "remaining": 1.0125,
+          "from": 3,
+          "to": 2,
+          "smallestPreviousAlpha": 0.01583333333333581
+        },
+        {
+          "remaining": 0.5375,
+          "from": 2,
+          "to": 1,
+          "smallestPreviousAlpha": 0.023749999999999494
+        },
+        {
+          "remaining": 0.05833333333333335,
+          "from": 1,
+          "to": 0,
+          "smallestPreviousAlpha": 0.003958333333333952
+        }
+      ],
+      "lastCount": 0,
+      "idleHeartCount": 0,
+      "panelHidden": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "fullCount": 3,
+      "stableWhilePaused": true,
+      "countsNonIncreasing": true,
+      "drops": [
+        {
+          "remaining": 1.0125,
+          "from": 3,
+          "to": 2,
+          "smallestPreviousAlpha": 0.01583333333333581
+        },
+        {
+          "remaining": 0.5375,
+          "from": 2,
+          "to": 1,
+          "smallestPreviousAlpha": 0.023749999999999494
+        },
+        {
+          "remaining": 0.05833333333333335,
+          "from": 1,
+          "to": 0,
+          "smallestPreviousAlpha": 0.003958333333333952
+        }
+      ],
+      "lastCount": 0,
+      "idleHeartCount": 0,
+      "panelHidden": true,
+      "errors": []
+    }
+  ]
+}

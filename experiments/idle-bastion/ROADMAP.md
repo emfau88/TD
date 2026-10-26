@@ -1,5 +1,10 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Succubus · sauberer Abschluss der fliegenden Herzen — 26.10.2026, Nachbesserung beauftragt.**
+
+- [x] Neue Herzen nur starten, wenn ihre unveränderte Flugzeit noch vollständig in den laufenden Zauber passt. Die letzten Herzen erreichen das Ziel und blenden im letzten Zehntel der Bahn weich aus; keine schwebenden Reste beim regulären Zauberende. Turmwirkung, Zauberdauer, Pause und gespeicherte Zeitbasis erhalten.
+- [x] TypeScript/Pages-Build und echte Browserprüfung bei 1280/390 px bestanden: drei Herzen laufen nacheinander bis auf null aus, kein Neustart kurz vor Ende, stabile Darstellung bei Pause, keine Browserfehler. Zielwirkungsblock bytegleich zum vorherigen Stand. Auf Nutzerwunsch keine neuen Videos; [Nachprüfung](../../artifacts/idle-bastion/acceptance/succubus-grounding/REPORT.md). Maras frühe Bewegung, Stimmen und kompaktes Menü bleiben ausschließlich Empfehlung.
+
 **Succubus · Herzbahn ohne Linie und korrekter Bodenkontakt — 26.10.2026, ausdrücklich beauftragt.**
 
 - [x] Sichtbare Verbindungslinie entfernt; bestehende fliegende Herzen folgen exakt derselben Bahn. Aufsteigende Herzen, Pulsieren, Glühen und Umriss am Turm unverändert. Rosenspiegels Schatten von y+9 und Bodenring von y+3 an den vorhandenen Fußanker gesetzt; andere Gegner und Tanzdarstellung unverändert.

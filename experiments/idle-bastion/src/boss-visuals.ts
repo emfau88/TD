@@ -81,8 +81,12 @@ export class BossCharmView {
       y: Phaser.Math.Linear(start.y, end.y, t) - Math.sin(t * Math.PI) * 26 });
     this.tether.setAlpha(opacity);
     if (active) for (let index = 0; index < 3; index++) {
-      const point = curve((age * 0.7 + index / 3) % 1);
-      pixelHeart(this.tether, point.x, point.y, 7, 0.95);
+      const progress = (age * 0.7 + index / 3) % 1;
+      // Stop launching in time for every heart to reach the tower before the
+      // channel ends. Saved spell time also keeps this stable on pause/reload.
+      if ((1 - progress) / 0.7 > charm.remaining) continue;
+      const point = curve(progress);
+      pixelHeart(this.tether, point.x, point.y, 7, 0.95 * Math.min(1, (1 - progress) / 0.1));
     }
     for (let index = 0; index < 5; index++) {
       const progress = (age / 1.65 + index / 5) % 1;
