@@ -1,0 +1,28 @@
+[
+  {
+    "width": 1280,
+    "shoulderStartsI03": true,
+    "handStartsI03": true,
+    "returnsToIdle": true,
+    "newActionInterrupts": true,
+    "rendered": {
+      "frame": 26,
+      "differingChannels": 0
+    },
+    "errors": [],
+    "failed": []
+  },
+  {
+    "width": 390,
+    "shoulderStartsI03": true,
+    "handStartsI03": true,
+    "returnsToIdle": true,
+    "newActionInterrupts": true,
+    "rendered": {
+      "frame": 26,
+      "differingChannels": 0
+    },
+    "errors": [],
+    "failed": []
+  }
+]

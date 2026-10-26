@@ -1,0 +1,34 @@
+{
+  "width": 480,
+  "height": 700,
+  "count": 96,
+  "fps": 30,
+  "before": [
+    "before/00.webp",
+    "before/01.webp",
+    "before/02.webp",
+    "before/03.webp",
+    "before/04.webp",
+    "before/05.webp",
+    "before/06.webp",
+    "before/07.webp",
+    "before/08.webp",
+    "before/09.webp",
+    "before/10.webp",
+    "before/11.webp"
+  ],
+  "after": [
+    "after/00.webp",
+    "after/01.webp",
+    "after/02.webp",
+    "after/03.webp",
+    "after/04.webp",
+    "after/05.webp",
+    "after/06.webp",
+    "after/07.webp",
+    "after/08.webp",
+    "after/09.webp",
+    "after/10.webp",
+    "after/11.webp"
+  ]
+}

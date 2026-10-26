@@ -1,0 +1,27 @@
+{
+  "byteExactWithApprovedPreview": true,
+  "metrics": {
+    "hero": "ilyra",
+    "clip": "touch",
+    "frames": 96,
+    "sourceBytes": 20081386,
+    "outputBytes": 2523804,
+    "alphaExact": true,
+    "visibleMeanRgbError": 6.5967,
+    "sourcesUnchanged": true
+  },
+  "sourceHashes": {
+    "artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/preview/lossless/00.webp": "82d4ab68c17fe3201b88500759c5c781b41c2d82fff9fd2a382e582259bccb44",
+    "artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/preview/lossless/01.webp": "be505b80c37d82f4f0e2f21eb04763a124d3c79f01b380cd51e547a0a7e41705",
+    "artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/preview/lossless/02.webp": "e165e2a0264fb92d49beb1acefb5739a193d17466787fa6d01bb8b0c1efa8e0d",
+    "artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/preview/lossless/03.webp": "83b4e8f2c2b048303c96efa1cfab0b5dfa2a2ffafc3eeae5911e2d40255c0e1f",
+    "artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/preview/lossless/04.webp": "56edd581e743593f096b6f2b1ba568f779bafd1eb37b37aed60d1f2aef15e822",
+    "artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/preview/lossless/05.webp": "040c68601273a28f80de89de40a0ffa309bf891220729fbb5ce2f1f71fbcfae0",
+    "artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/preview/lossless/06.webp": "452e7cd88d283ef4c79cc47fa56fdc415da42a66a546cbcfc3992e3ee561f9f5",
+    "artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/preview/lossless/07.webp": "b920457f037dedee73dedacfbf5d12e067193fb419b99944fadd9ac2cfb0532d",
+    "artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/preview/lossless/08.webp": "3fe59151105c422a8b4c234f2ea4ea35c33e80a9cebbfa2abb07178072bb10d8",
+    "artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/preview/lossless/09.webp": "a3b1d6a6953ce47d1ae3856cf99a3f479ce9d5b4e8566cd1b09b314d50a93ad8",
+    "artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/preview/lossless/10.webp": "be27d2ef63875d06a0f2171dc254e47745fc87e5f02a763d5aa0c19e9d75d918",
+    "artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/preview/lossless/11.webp": "96f219362868a75f8f7d217335cb664e45b4f1ff942a943ed7d70ef65eea6adf"
+  }
+}

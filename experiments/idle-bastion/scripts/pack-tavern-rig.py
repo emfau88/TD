@@ -25,6 +25,13 @@ def sources():
     result = []
     for hero, clips in m['heroes'].items():
         for key, c in clips.items():
+            if hero == 'ilyra' and key == 'touch':
+                corrected = ART / 'ilyra-rig-prep/touch-elbow-v2/preview'
+                pages = [f'lossless/{i:02d}.webp' for i in range((c['count'] + 7) // 8)]
+                if not all((corrected / page).is_file() for page in pages):
+                    raise FileNotFoundError('Rebuild approved I03 sources with touch-elbow-v2/pack_review.py first.')
+                result.append((hero, key, corrected, {**c, 'pages': pages}, (480, 700), (480, 700), (0, 0)))
+                continue
             result.append((hero, key, p, c, (480, 800), (480, 800), (0, -48 if hero == 'mara' else -30)))
     p = ART / 'mara-proportions-v1/reactions-v1/preview'
     m = json.loads((p / 'manifest.json').read_text())

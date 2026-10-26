@@ -1,0 +1,18 @@
+{
+  "beforeBytes": 2525908,
+  "afterBytes": 2523804,
+  "deltaBytes": -2104,
+  "changedAtlases": [
+    "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/01.webp",
+    "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/02.webp",
+    "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/03.webp",
+    "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/04.webp",
+    "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/05.webp",
+    "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/06.webp",
+    "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/07.webp",
+    "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/08.webp",
+    "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/09.webp"
+  ],
+  "allOtherAtlasHashesUnchanged": true,
+  "approvedPreviewByteExact": true
+}

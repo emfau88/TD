@@ -1,0 +1,9 @@
+unity/
+export/
+preview/before/
+preview/after/
+preview/lossless/
+preview/repacked/
+preview/*.png
+*.log
+__pycache__/

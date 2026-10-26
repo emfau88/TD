@@ -1,5 +1,12 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Ilyra I03 · Ellbogenkorrektur — 26.10.2026, visuell freigegeben und zur Veröffentlichung beauftragt.**
+
+- [x] Nutzer hat den synchronen Vergleich mit „schon viel besser, so einbauen, comitten und pushen“ freigegeben. Zwölf Runtime-Atlanten bytegenau übernommen, davon neun verändert; übrige 14 Animationen unverändert. Gleiche 96 Frames bei 30 fps und gleiche Ruhepose/Handbewegung.
+- [x] 98 native Zustände, 957.460 Dreiecksprüfungen ohne Faltungen, alle 28 ursprünglichen Gelenke exakt identisch und 160 Quelldateien unverändert. Regulärer Produktionspacker auf die korrigierte verlustfreie Quelle umgestellt und bytegenaue Reproduktion geprüft. TypeScript und kompletter Pages-Build bestanden.
+- [x] Im echten Spieleinstieg auf Desktop (1280 px) und Hochkant (390 px): Hand/Schulter starten I03, gezeichnete Spitzenpose pixelgenau zur freigegebenen Runtime-Datei, Rückkehr zur Idle und Unterbrechung durch Sprechen erfolgreich. Keine Browser-/Bildladefehler; getrennte Testspielstände.
+- [x] Quellen, reproduzierbarer Aufbau, Vergleich und Integrationsnachweise unter [I03-Korrektur](../../artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/README.md). Keine Spielregel-/Saveänderung. Commit/Push auf main ausdrücklich autorisiert.
+
 **Frosttext, Echtzeit und Tavernenbedienung · 26.10.2026, auf ausdrücklichen Auftrag direkt auf Main; Commit/Push autorisiert.**
 
 - [x] Bosschronik DE/EN korrigiert: Frost verlangsamt Rosenspiegels Vormarsch und unterbricht den Zauber nicht. Kampfregel unverändert.

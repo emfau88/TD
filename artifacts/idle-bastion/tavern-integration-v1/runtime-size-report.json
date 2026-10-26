@@ -1,7 +1,7 @@
 {
   "quality": 30,
-  "sourceBytes": 532347634,
-  "outputBytes": 48631068,
+  "sourceBytes": 531794004,
+  "outputBytes": 48628964,
   "frames": 1848,
   "clips": [
     {
@@ -88,10 +88,10 @@
       "hero": "ilyra",
       "clip": "touch",
       "frames": 96,
-      "sourceBytes": 20635016,
-      "outputBytes": 2525908,
+      "sourceBytes": 20081386,
+      "outputBytes": 2523804,
       "alphaExact": true,
-      "visibleMeanRgbError": 6.5922,
+      "visibleMeanRgbError": 6.5967,
       "sourcesUnchanged": true
     },
     {

@@ -1,5 +1,7 @@
 # Tavernenanimationen – verwendbarer Bestand für Mara und Ilyra
 
+**Aktualisierung 26.10.2026:** I03/Berührung verwendet die nach synchronem Vorher-/Nachher-Vergleich ausdrücklich freigegebene Ellbogenkorrektur. Gleiche 96 Frames bei 30 fps, Ruhepose und ursprüngliche Gelenkbewegungen unverändert; nur die Außenkontur am bildlinken Ellbogen während der Beugung korrigiert. I01/I02/I04–I07 und Mara unverändert. [Quellen und Prüfung](../../artifacts/idle-bastion/ilyra-rig-prep/touch-elbow-v2/README.md).
+
 **Aktualisierung 24.10.2026:** Alle 15 brauchbaren Bewegungen sind nach ausdrücklicher Paketfreigabe im Spieleinstieg angebunden. Kompakte Spielfassung unter `assets/tavern-rig/`: **WebP 30, 48,63 MB, unverändert 30 fps**. Originalquellen/alte Animationen erhalten; der bisherige Tavernenrenderer ist im Hauptspiel deaktiviert. Die folgenden Detailtabellen dokumentieren die Quellen und Einzelprüfungen des früheren Stands vom 23.10.; ihre damaligen offenen Integrationsvermerke werden durch diese aktuelle Zuordnung ersetzt. Veröffentlichungs-/Abnahmestatus in der Roadmap; [Technik und Größen](../../artifacts/idle-bastion/tavern-integration-v1/README.md).
 
 | Aktueller Spieleinsatz | Mara | Ilyra | Auslöser |

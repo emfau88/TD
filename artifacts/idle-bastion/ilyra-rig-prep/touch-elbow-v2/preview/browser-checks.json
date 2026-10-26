@@ -1,0 +1,13 @@
+{
+  "checks": {
+    "initialPeak": true,
+    "singleFrame": true,
+    "pauseStable": true,
+    "endFrame": true,
+    "fullView": true,
+    "detailView": true,
+    "mobileFits": true
+  },
+  "errors": [],
+  "failed": []
+}
