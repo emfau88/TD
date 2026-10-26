@@ -1,0 +1,24 @@
+{
+  "displayOnly": true,
+  "originalUserTab": {
+    "naturalWidth": 390,
+    "naturalHeight": 680,
+    "displayWidth": 318.9965515136719,
+    "displayHeight": 555.9891357421875,
+    "viewportWidth": 319,
+    "devicePixelRatio": 1.0931249856948853,
+    "imageRendering": "auto"
+  },
+  "pixelcheckTab": {
+    "naturalWidth": 304,
+    "displayWidth": 303.98797607421875,
+    "canvasDisplayWidth": 255.9891357421875,
+    "imageRendering": "pixelated",
+    "overflow": false,
+    "nextFrame": "0 to 1 confirmed",
+    "play": "running state and frame progression confirmed",
+    "pauseAndSlider": "paused frame 8 confirmed"
+  },
+  "motionUnchanged": true,
+  "interpretation": "Browser downsampling adds softness. This does not establish that display resampling explains all perceived contour glitches. V3 motion remains under review."
+}

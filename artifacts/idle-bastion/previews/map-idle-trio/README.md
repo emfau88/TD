@@ -2,7 +2,17 @@
 
 Nur Prototypen auf `codex/map-idle-trio-preview`, ausgehend vom freigegebenen Speer-Vorschau-Stand `ed6a4e3` (Spielbasis Main `f5b4a6f`). Kein Merge, Deployment oder Einbau ins Spiel. Die bereits akzeptierte Ilyra-Speer-/Pole-Vorschau bleibt unverändert.
 
-## Aktuell: ausschließlich Ilyra Hip Shift · V3 · 26.10.2026
+## Darstellungsprobe nach erneutem Kontur-Feedback · 26.10.2026
+
+V3 wurde vom Nutzer weiterhin als verschwommen beziehungsweise glitchend an bewegten Konturen beanstandet. Die Prüfung auf scharfe Einzelpixel bestätigt keine sauber lesbare Bewegung. Die zeilenweise quantisierten Verschiebungen der V3 können Konturabschnitte zu unterschiedlichen Zeitpunkten springen lassen; dieser Bewegungsaspekt bleibt offen.
+
+Zusätzlich direkt im geöffneten Nutzerbrowser gemessen: Das 390×680-GIF wurde mit `image-rendering:auto` auf 318,997×555,989 verkleinert. Die 4×-Detailansicht wurde dabei auf etwa 3,27 CSS-Pixel pro Sprite-Pixel umgerechnet. Diese zusätzliche Glättung muss getrennt von der Animation beurteilt werden.
+
+**[Unveränderte V3-Bewegung in einer 304-Pixel-GIF-Probe](Ilyra-Hip-Shift-Pixelcheck.gif)** · [lokale Ansicht ohne Bildglättung, mit Pause/Einzelbildern](ilyra-hip-pixelcheck.html). Keine V4, keine neue Pose und keine behauptete Behebung aller Konturprobleme. Nur die Präsentation wurde schmaler aufgebaut; Quellframes und Timing bleiben gleich. Die lokale HTML-Ansicht verwendet feste Pixelgrößen, `image-rendering:pixelated` und ausgeschaltete Canvas-Bildglättung. Die unveränderte V3 darf dadurch nicht als visuell abgenommen gelten.
+
+[Messwerte und tatsächlich geprüfte Bedienung](ilyra-hip/pixelcheck/browser-checks.json). GIF-Aufbereitung mit `build_ilyra_pixelcheck.py`; Manifest unter `ilyra-hip/pixelcheck/`. Im Browser wurden Laden, 304-Pixel-Darstellung, fehlender Überlauf, Einzelbildwechsel, Abspielen, Pause und Auswahl von Bild 8 geprüft. Die Bewegungsqualität bleibt zur Klärung offen. Kein Merge/Deployment und keine Änderung an Mara, Pole-Animation oder Spielassets.
+
+## Ilyra Hip Shift · V3 · weiterhin visuell beanstandet
 
 **[Ilyra-Hip-Shift-Handy-V3.gif](Ilyra-Hip-Shift-Handy-V3.gif)** · [eigene mobile Vorschauseite](ilyra-hip-v3.html). 390×680, 91.620 Bytes, 3,40 Sekunden, 15 exportierte GIF-Frames aus acht unterschiedlichen Pixelposen. Oben Kartenmaßstab neben dem originalen Laufzeitsprite, unten dieselben Pixel 4× vergrößert.
 

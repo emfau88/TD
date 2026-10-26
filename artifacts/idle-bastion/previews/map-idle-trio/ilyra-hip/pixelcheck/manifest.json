@@ -1,0 +1,15 @@
+{
+  "displayOnly": true,
+  "sourceAnimation": "ilyra-hip/rig-v3/animation.json",
+  "gif": "Ilyra-Hip-Shift-Pixelcheck.gif",
+  "size": [
+    304,
+    600
+  ],
+  "frames": 15,
+  "loopMs": 3400,
+  "sourceFramesUnchanged": true,
+  "sourceTimingUnchanged": true,
+  "reason": "The user-visible 390px GIF was scaled to 318.997px with image-rendering:auto.",
+  "visualAcceptance": "Not claimed; this isolates display resampling from animation contour changes."
+}
