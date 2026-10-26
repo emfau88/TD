@@ -2,7 +2,21 @@
 
 Nur Prototypen auf `codex/map-idle-trio-preview`, ausgehend vom freigegebenen Speer-Vorschau-Stand `ed6a4e3` (Spielbasis Main `f5b4a6f`). Kein Merge, Deployment oder Einbau ins Spiel. Die bereits akzeptierte Ilyra-Speer-/Pole-Vorschau bleibt unverändert.
 
-## V2 · Korrektur des Flimmerns
+## Aktuell: ausschließlich Ilyra Hip Shift · V3 · 26.10.2026
+
+**[Ilyra-Hip-Shift-Handy-V3.gif](Ilyra-Hip-Shift-Handy-V3.gif)** · [eigene mobile Vorschauseite](ilyra-hip-v3.html). 390×680, 91.620 Bytes, 3,40 Sekunden, 15 exportierte GIF-Frames aus acht unterschiedlichen Pixelposen. Oben Kartenmaßstab neben dem originalen Laufzeitsprite, unten dieselben Pixel 4× vergrößert.
+
+Nach ausdrücklicher Beschränkung auf Ilyra wurde ein neuer, einfacher Bewegungs-Rig aufgebaut. Er verwendet ausschließlich die vorhandene Ausgangszeichnung `ilyra-hip/keys/00.png`, ursprünglich abgeleitet aus dem Laufzeitatlas `experiments/idle-bastion/assets/ilyra/ilyra-atlas.png` und seiner freigegebenen Standreferenz. Keine neue Generierung und kein Wechsel zwischen unterschiedlich gezeichneten Figuren. Hüfte maximal drei Kartenpixel zur Seite, Kopf/Schulter bis einen Pixel dagegen; Knie gehen mit, Füße und Speer bleiben fest. Der Rückweg verwendet dieselben Posen in umgekehrter Reihenfolge.
+
+Die Verschiebungen werden zuerst auf ganze Pixel gerundet und dann ohne Farbinterpolation abgetastet. Das verhindert zusätzlich, dass halbe Pixelkoordinaten beim Runden abwechselnde Bildspalten verdoppeln. Der Kopf bewegt sich als zusammenhängende Zeichnung; er wird nicht mehr als unbeweglicher Ausschnitt auf den Körper geklebt. Keine Überblendung, Weichzeichnung, optischer Fluss oder teiltransparenten Sprite-Kanten. Bewusst wenige klare Posen statt künstlich erhöhter Bildzahl. Die Bewegung ist eine neue kontrollierte Umsetzung der Hüftgeste, keine pixelgenaue Rekonstruktion aller alten Ganzkörperposen.
+
+[Prüfung](ilyra-hip/rig-v3/checks.json): ausschließlich Originalfarben, Alpha nur 0/255, Gesicht beim Verschieben pixelgleich, exakte 4×-Pixelblöcke auch im decodierten GIF, feste Füße/Speer, identische Loop-Endpunkte und freie Ränder. [Mobile Browserprüfung](ilyra-hip/rig-v3/browser-checks.json): Wiedergabe, Breite und Download bei 320×568/390×844 bestanden. Kontaktbogen und mobile Aufnahmen geprüft; keine physische Handyprüfung. Schärfe ist technisch bestätigt, Natürlichkeit und gewünschte Wirkung bleiben zur visuellen Nutzerabnahme offen.
+
+Reproduktion: `build_ilyra_rig.py`, `check_ilyra_rig.py` und `check_ilyra_rig.mjs` in diesem Ordner. Einzelbilder und Manifest unter `ilyra-hip/rig-v3/`. Mara, sämtliche früheren GIFs, die akzeptierte Speer-/Pole-Animation und alle Produktionsassets bleiben unverändert. Nur Vorschau; kein Merge, keine Integration, kein Deployment, kein erneuter Spielbuild/Testlauf.
+
+## V2 · vom Nutzer wegen Unschärfe verworfen
+
+Die folgende V2 ist historisch dokumentiert und **keine akzeptierte Lösung**. Das Mischen und Filtern der Bildfarben erzeugte in bewegten Bereichen einen Nebelschleier. Kleinere gemessene Bildsprünge waren dafür kein ausreichendes Qualitätskriterium.
 
 Nach Nutzerfeedback zu allen drei Loops wurde nur die Vorschau-Aufbereitung korrigiert. Keine neuen Zeichnungen oder generierten Posen. Die ursprünglichen Quellen, Schlüsselbilder und V1-GIFs bleiben erhalten.
 

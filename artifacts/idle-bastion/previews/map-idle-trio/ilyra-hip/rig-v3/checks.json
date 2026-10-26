@@ -1,0 +1,17 @@
+{
+  "version": 3,
+  "gif": "Ilyra-Hip-Shift-Handy-V3.gif",
+  "gifFrames": 15,
+  "loopMs": 3400,
+  "uniqueSpriteFrames": 8,
+  "sourceColoursOnly": true,
+  "binaryAlpha": true,
+  "faceMovesWithoutRedrawing": true,
+  "exactFourfoldPixels": true,
+  "fixedFeetAndSpear": true,
+  "identicalEndpoints": true,
+  "returnUsesSamePoses": true,
+  "noClipping": true,
+  "productionMaraAndPoleUnchanged": true,
+  "visualApproval": "Pending user review; sharp pixels alone do not prove attractive animation."
+}
