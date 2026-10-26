@@ -646,7 +646,7 @@ export class BattleScene extends Phaser.Scene {
     let view = this.enemyViews.get(enemy.uid);
     if (!view) {
       view = { sprite: this.add.image(enemy.x, enemy.y, ENEMY_SHEETS[enemy.def.id].key).setScale(ENEMY_SHEETS[enemy.def.id].scale),
-        shadow: this.add.ellipse(enemy.x, enemy.y + 9, 23, 9, 0x263e30, 0.24) };
+        shadow: this.add.ellipse(enemy.x, enemy.y + (enemy.def.id === 'Rosenspiegel' ? 0 : 9), 23, 9, 0x263e30, 0.24) };
       if (enemy.def.id === 'Rosenspiegel') view.sprite.setOrigin(0.5, 56/64).setScale(1.15);
       this.enemyViews.set(enemy.uid, view);
     }
@@ -688,7 +688,7 @@ export class BattleScene extends Phaser.Scene {
       if (enemy.def.id === 'Rosenspiegel') {
         const casting = sim.bossCharm.phase === 'windup' || sim.bossCharm.phase === 'channel';
         if (casting) view.sprite.setFrame(succubusFrame('dance', 'down', charmAge(sim.bossCharm) * 1000)).setFlipX(false);
-        this.effects.lineStyle(2, 0xdb80cd, 0.8).strokeEllipse(enemy.x, enemy.y + 3, 34, 13);
+        this.effects.lineStyle(2, 0xdb80cd, 0.8).strokeEllipse(enemy.x, enemy.y, 34, 13);
       }
       if (enemy.healRemaining > 0) {
         view.sprite.setFrame(enemyHealFrame(enemy.def.id, enemy.direction, JELLY_HEAL.cast - enemy.healRemaining, enemy.flip));
@@ -702,7 +702,8 @@ export class BattleScene extends Phaser.Scene {
       }
       view.sprite.setTint(enemy.slowRemaining > 0 ? 0x83ddff : 0xffffff);
       if (enemy.slowRemaining > 0) this.effects.lineStyle(1.5, 0x96e8fa, 0.75).strokeEllipse(enemy.x, enemy.y + 7, 26, 10);
-      view.shadow.setPosition(enemy.x, enemy.y + 9).setDepth(enemy.y + 999);
+      // Rosenspiegel's opaque feet end at originY=56/64 in every walk/dance frame.
+      view.shadow.setPosition(enemy.x, enemy.y + (enemy.def.id === 'Rosenspiegel' ? 0 : 9)).setDepth(enemy.y + 999);
       if (enemy.hp < enemy.maxHp || enemy.def.id === 'Rosenspiegel') {
         const barY = enemy.y - lift - (enemy.def.id === 'Rosenspiegel' ? 55 : 25), fraction = Math.max(0, enemy.hp / enemy.maxHp);
         this.effects.fillStyle(0x263f33, 0.9).fillRect(enemy.x - 15, barY, 30, 5);

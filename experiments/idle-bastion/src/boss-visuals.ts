@@ -79,12 +79,7 @@ export class BossCharmView {
     const start = { x: boss.x, y: boss.y - 26 }, end = { x: target.x, y: target.y - 34 };
     const curve = (t: number) => ({ x: Phaser.Math.Linear(start.x, end.x, t),
       y: Phaser.Math.Linear(start.y, end.y, t) - Math.sin(t * Math.PI) * 26 });
-    this.tether.setAlpha(opacity).lineStyle(active ? 2 : 1, 0xf185c1, active ? 0.9 : 0.45);
-    for (let step = 0; step < 30; step++) {
-      if (!active && step % 4 >= 2) continue;
-      const from = curve(step / 30), to = curve((step + 1) / 30);
-      this.tether.lineBetween(from.x, from.y, to.x, to.y);
-    }
+    this.tether.setAlpha(opacity);
     if (active) for (let index = 0; index < 3; index++) {
       const point = curve((age * 0.7 + index / 3) % 1);
       pixelHeart(this.tether, point.x, point.y, 7, 0.95);

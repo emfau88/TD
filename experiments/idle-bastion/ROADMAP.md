@@ -1,5 +1,11 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Succubus · Herzbahn ohne Linie und korrekter Bodenkontakt — 26.10.2026, ausdrücklich beauftragt.**
+
+- [x] Sichtbare Verbindungslinie entfernt; bestehende fliegende Herzen folgen exakt derselben Bahn. Aufsteigende Herzen, Pulsieren, Glühen und Umriss am Turm unverändert. Rosenspiegels Schatten von y+9 und Bodenring von y+3 an den vorhandenen Fußanker gesetzt; andere Gegner und Tanzdarstellung unverändert.
+- [x] 36 Lauf-/Tanzframes auf gemeinsamen Fußpunkt geprüft; vorher/nachher im echten Spiel bei 1280/390 px ohne Browserfehler. TypeScript/Pages-Build bestanden. Zusätzlich fünf durch den vorherigen Audio-Commit beschädigte UTF-8-Meldungstexte repariert und 12/12 bestehende Audio-/Sprachtests bestanden. [Prüfbericht und Vergleich](../../artifacts/idle-bastion/acceptance/succubus-grounding/REPORT.md).
+- [x] Zusatzfragen nur untersucht: frische Partie spielt Musik nach erster Geste mit 16 %. Musikstart/-pegel sowie Maras Einführung, Steuerung und Menü bleiben funktional unverändert. Keine neue grafische Nutzerabnahme behauptet.
+
 **Mara/Ilyra · manuelle Befehlsstimmen und vollständige P-Reserve — 26.10.2026, ausdrücklich beauftragt auf Main.**
 
 - [x] Ilyras Auswahl-/Bewegungspool senpai1/2/3 + sweetheart1/2/3 und youremine1 für die manuelle Sternensalve ergänzt. Mara verwendet exakt die gewählten P11, P09, P07, P06, P03, P01, P14 bei Auswahl, erfolgreicher Bewegung/Zuweisung und manuellem Boost. Gemeinsamer Player und sieben Sekunden Abstand, keine Warteschlange/Überlagerung; keine Stimme für Automatik, Laden oder abgelehnte Befehle.

@@ -1,0 +1,98 @@
+[
+  {
+    "width": 1280,
+    "version": "before",
+    "shadowDelta": 9,
+    "frame": 9,
+    "footOrigin": 0.875,
+    "scale": 1.15,
+    "otherShadowDeltas": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9
+    ],
+    "targetUid": 15,
+    "remaining": 3.3,
+    "phase": "channel",
+    "errors": []
+  },
+  {
+    "width": 1280,
+    "version": "after",
+    "shadowDelta": 0,
+    "frame": 9,
+    "footOrigin": 0.875,
+    "scale": 1.15,
+    "otherShadowDeltas": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9
+    ],
+    "targetUid": 15,
+    "remaining": 3.3,
+    "phase": "channel",
+    "errors": []
+  },
+  {
+    "width": 390,
+    "version": "before",
+    "shadowDelta": 9,
+    "frame": 9,
+    "footOrigin": 0.875,
+    "scale": 1.15,
+    "otherShadowDeltas": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9
+    ],
+    "targetUid": 15,
+    "remaining": 3.3,
+    "phase": "channel",
+    "errors": []
+  },
+  {
+    "width": 390,
+    "version": "after",
+    "shadowDelta": 0,
+    "frame": 9,
+    "footOrigin": 0.875,
+    "scale": 1.15,
+    "otherShadowDeltas": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9
+    ],
+    "targetUid": 15,
+    "remaining": 3.3,
+    "phase": "channel",
+    "errors": []
+  },
+  {
+    "freshMusic": {
+      "beforeTap": 0,
+      "playing": true,
+      "time": 0.042361,
+      "slider": "16"
+    }
+  }
+]
