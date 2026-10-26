@@ -4,10 +4,15 @@ import { cellCenter, findFootpath, type GridCell, type WorldPoint } from './layo
 
 export type ControlledHero = 'mara' | 'ilyra';
 
+export function maraControlStage(b: IdleBattle): 'waiting' | 'lesson' | 'ready' {
+  if (b.preparing || b.guiding || b.maraIntroductionPending) return 'waiting';
+  if (b.discoveryActive && b.discovery.startsWith('mara-') && b.discovery !== 'mara-controls') return 'lesson';
+  return 'ready';
+}
+
 /** Manual pause allows route planning; guided pauses do not. */
 export function heroWorldAvailable(b: IdleBattle): boolean {
-  return !b.preparing && !b.guiding && !b.discoveryPaused && !b.maraIntroductionPending
-    && !(b.discoveryActive && b.discovery.startsWith('mara-')) && b.phase !== 'defeat';
+  return maraControlStage(b) === 'ready' && !b.discoveryPaused && b.phase !== 'defeat';
 }
 
 /** Presentation only. Uses actual road, occupied towers and the existing router.

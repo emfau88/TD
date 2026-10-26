@@ -2,6 +2,12 @@
  * Keep placeholders and game values intact; never use these strings as simulation IDs. */
 import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
+  "So funktioniert Übertakten": "How Overclock works",
+  "Mara zeigt dir gleich ihren Zauber. Danach kannst du sie selbst steuern.": "Mara will show you her spell next. Then you can control her yourself.",
+  "Nach Wisps Ankunft zeigt dir Mara ihren Zauber. Danach kannst du sie selbst steuern.": "After Wisp arrives, Mara will show you her spell. Then you can control her yourself.",
+  "Wirke jetzt Übertakten. Danach lernst du Maras Steuerung kennen.": "Cast Overclock now. Then you will learn how to control Mara.",
+  "Übertakten · noch {0} s. Danach kannst du Mara steuern.": "Overclock · {0} s left. Then you can control Mara.",
+  "Mara wartet auf Gegner, um dir Übertakten zu zeigen.": "Mara is waiting for enemies to demonstrate Overclock.",
   'Da bist du ja! Ich habe auf dein Gold aufgepasst. Nachgezählt habe ich es nur dreimal. Na gut, viermal.': "There you are! I've been guarding your gold. I only counted it three times. All right, four.",
   "Übertakten": "Overclock",
   "AUTO EIN": "AUTO ON",

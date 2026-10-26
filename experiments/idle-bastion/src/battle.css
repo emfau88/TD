@@ -69,3 +69,6 @@ dialog { max-height:calc(100svh - 24px); overflow-y:auto; }
 .placement-help[data-hero]:not([data-hero=""]) #placement-text { flex: 1 1 240px; }
 .placement-help #hero-aim, .placement-help #hero-location { min-height: 36px; padding: 5px 9px; }
 .placement-help[hidden] { display: none !important; }
+#mara-details { margin-top: 12px; color: #cdbfa7; font-size: 11px; line-height: 1.5; }
+#mara-details summary { cursor: pointer; padding: 6px 0; color: #edcea0; }
+#mara-details p { margin: 8px 0; }

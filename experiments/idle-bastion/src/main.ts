@@ -18,7 +18,7 @@ import { QuickWinGuidance, workshopGoldMissing, type QuickWinNotice } from './qu
 import './quick-win-guidance.css';
 import { introducedEnemy } from './enemy-roster';
 import { MARA } from './mara';
-import { heroWorldAvailable, recommendIlyraPosition, ilyraFirstTarget, type ControlledHero } from './hero-controls';
+import { heroWorldAvailable, maraControlStage, recommendIlyraPosition, ilyraFirstTarget, type ControlledHero } from './hero-controls';
 import { syncIlyraUI } from './ilyra-ui';
 import { syncVolleyAction } from './volley-action';
 import { syncMaraAction } from './mara-action';
@@ -287,6 +287,24 @@ function syncUI(): void {
   element('mara-brief').textContent = t(sim.maraIntroductionPending ? t('Nach Wisp') : mara.effectRemaining > 0 ? t("Buff · {0} s", Math.ceil(mara.effectRemaining)) : mara.cooldownRemaining > 0 ? t("Bereit in {0} s", Math.ceil(mara.cooldownRemaining)) : t('Zauber bereit'));
   element<HTMLProgressElement>('mara-cooldown').value = MARA.cooldown - mara.cooldownRemaining;
   element('mara-status').textContent = t(sim.maraIntroductionPending ? t('Mara zeigt dir Übertakten nach Wisps Ankunft. Zuerst bauen wir die Verteidigung auf.') : t("Ziel: {0}. ", targetName) + (mara.effectRemaining > 0 ? t("Buff wirkt noch {0} s.", Math.ceil(mara.effectRemaining)) : mara.cooldownRemaining > 0 ? t("Abklingzeit: {0} s.", Math.ceil(mara.cooldownRemaining)) : !inSpellRange ? t('Außerhalb der Zauberreichweite. Ziel erneut zuweisen oder näher laufen.') : mara.autoCast ? t('Bereit · wartet auf Gegner beim Ziel.') : t('Bereit · manuell auslösen.')));
+  const maraStage = maraControlStage(sim), fullMaraMenu = maraStage === 'ready';
+  element('mara-panel').dataset.stage = maraStage;
+  element('mara-title').textContent = t(fullMaraMenu ? 'Mara · Übertakten' : 'Mara');
+  element('mara-title').hidden = !fullMaraMenu;
+  const maraDetails = element<HTMLDetailsElement>('mara-details');
+  maraDetails.hidden = !fullMaraMenu;
+  if (!fullMaraMenu) maraDetails.open = false;
+  element('move-mara').hidden = element('mara-auto').hidden = !fullMaraMenu;
+  const manualLesson = maraStage === 'lesson' && sim.discovery === 'mara-ready' && !mara.autoCast;
+  element('cast-mara').hidden = !fullMaraMenu && !manualLesson;
+  element('mara-actions').hidden = !fullMaraMenu && !manualLesson;
+  if (maraStage === 'waiting') element('mara-status').textContent = t(sim.discovery === 'mara-wait'
+    ? 'Mara zeigt dir gleich ihren Zauber. Danach kannst du sie selbst steuern.'
+    : 'Nach Wisps Ankunft zeigt dir Mara ihren Zauber. Danach kannst du sie selbst steuern.');
+  else if (maraStage === 'lesson') element('mara-status').textContent = manualLesson
+    ? t('Wirke jetzt Übertakten. Danach lernst du Maras Steuerung kennen.')
+    : mara.effectRemaining > 0 ? t('Übertakten · noch {0} s. Danach kannst du Mara steuern.', Math.ceil(mara.effectRemaining))
+    : t('Mara wartet auf Gegner, um dir Übertakten zu zeigen.');
   const auto = element<HTMLButtonElement>('mara-auto'); auto.disabled = blocked; auto.textContent = t("Automatik: {0}", mara.autoCast ? t('Ein') : t('Aus')); auto.setAttribute('aria-pressed', String(mara.autoCast));
   syncMaraAction(element<HTMLButtonElement>('cast-mara'), sim, unavailable, view.paused);
   element<HTMLButtonElement>('move-mara').disabled = unavailable || !heroContextAvailable();
@@ -541,6 +559,7 @@ function syncUI(): void {
   updateOnboarding(live, { placing: Boolean(placementType || groundMode), contextOpen, catalogPanel, revealing: performance.now() < workshopRevealUntil, intro, portraits: introPortraits });
   syncIntroCamera();
   updateDiscoveryUI(live, contextOpen, Boolean(placementType || groundMode), catalogPanel);
+  if (selectedPanel === 'mara' && !fullMaraMenu) element('lesson-note').hidden = true;
   const quickHintVisible = quickWins.update({
     cannonUnlocked: sim.isTowerUnlocked(3), cannonBuilt: sim.towers.some(value => value.def.id === 3),
     workshopAvailable: settlement.workshopBuilt && settlement.frostResearched && !settlement.workshopUpgraded,
@@ -701,6 +720,13 @@ function selectHero(hero: ControlledHero, manual = false): void {
   syncUI();
 }
 function selectMapHero(hero: ControlledHero): void {
+  if (hero === 'mara' && session && maraControlStage(session.battle) !== 'ready') {
+    if (!ready || intro?.active || session.inputBusy || session.error || session.suspended || session.awaitingResume
+      || document.hidden || document.querySelector('dialog[open]')) return;
+    openContext('mara', false, false);
+    if (contextOpen && selectedPanel === 'mara') audio.commandHero('mara', 'select');
+    return;
+  }
   if (!heroContextAvailable()) { if (session?.battle.discoveryActive) openContext(hero); return; }
   if (selectedHero === hero) openContext(hero, false, false); else selectHero(hero, true);
 }
@@ -742,7 +768,7 @@ function openQuickWin(notice: QuickWinNotice): void {
   const card = element<HTMLButtonElement>('pick-cannon'); card.scrollIntoView({ block: 'nearest', inline: 'nearest' }); card.focus({ preventScroll: true });
 }
 function openContext(kind: typeof selectedPanel, buildingControls = false, focus = true): void {
-  if (session?.battle.preparing || performance.now() < workshopRevealUntil) return;
+  if (session?.battle.preparing && kind !== 'mara' || intro?.active || performance.now() < workshopRevealUntil) return;
   if (session && (kind === 'settlement' && session.battle.settlement.workshopBuilt || kind === 'warehouse' && session.battle.settlement.warehouseBuilt || kind === 'tavern' && buildingControls && session.battle.settlement.tavernBuilt)) audio.play('craft');
   clearHeroSelection(); ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; placementType = undefined; selectedPanel = kind; contextOpen = true;
   if (kind === 'settlement' && session?.battle.settlement.frostResearched && !session.battle.settlement.workshopUpgraded && session.battle.towers.some(tower => tower.level >= 6)) {
@@ -1087,6 +1113,7 @@ element('skip-lessons').addEventListener('click', () => {
   void perform(b => b.skipLessons(), true, true).then(() => element<HTMLDialogElement>('game-menu').close());
 }, { signal: lifetime.signal });
 element('pick-mara').addEventListener('click', () => {
+  if (session && maraControlStage(session.battle) !== 'ready') { selectMapHero('mara'); return; }
   openContext('mara');
   if(contextOpen&&selectedPanel==='mara')audio.commandHero('mara','select');
 }, { signal: lifetime.signal });

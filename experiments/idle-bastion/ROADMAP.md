@@ -1,5 +1,12 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Mara · lebendiger früher Auftritt und kompaktes Menü — 26.10.2026, Umsetzung und Main-Veröffentlichung beauftragt.**
+
+- [x] Vor der Zaubereinführung gelegentliche kurze Wege maximal ein Feld vom Startplatz, in Turmreichweite und auf freien Gehflächen; lange Ruhephasen/Blickwechsel. Vor der ersten Verteidigung zur Kamera gewandt. Normale gespeicherte Wege, kein neues Savefeld; mit Wisps Begrüßung stehen bleiben, nach Freischaltung keine automatische Übernahme manueller Bewegung.
+- [x] Antippen/Porträt mit vorhandenem leisen Stimmenpool und gemeinsamem Cooldown. Frühe Infokarte ohne gesperrte Befehle/Textwand; während des Zaubers nur aktuelle Erklärung bzw. notwendiger manueller Cast. Nach erster Wirkung sofort frei steuerbar, Erklärung im vollständigen Menü aufklappbar. Deutsch/Englisch.
+- [x] 24/24 gezielte Tests, Produktionsbuild und acht native Browserfälle bei 1280/390 px bestanden; reale Stimmen, Kartenklick, gespeicherter Laufweg, manuelle Einführung und Freischaltung mit Bewegung geprüft. Keine neuen Videos. [Bericht und Ansichten](../../artifacts/idle-bastion/acceptance/mara-early/REPORT.md).
+- [ ] Anschließend zusätzlich beauftragt: übrige Schatten prüfen/korrigieren; danach neue Einstiegsgestaltung mit Kernanimation, Hinweispfeilen, einzelner Mara an beiden Schauplätzen, Rasterfeld und Gesamtfortschritt. Noch keine Umsetzung dieser Folgeaufträge behauptet.
+
 **Succubus · sauberer Abschluss der fliegenden Herzen — 26.10.2026, Nachbesserung beauftragt.**
 
 - [x] Neue Herzen nur starten, wenn ihre unveränderte Flugzeit noch vollständig in den laufenden Zauber passt. Die letzten Herzen erreichen das Ziel und blenden im letzten Zehntel der Bahn weich aus; keine schwebenden Reste beim regulären Zauberende. Turmwirkung, Zauberdauer, Pause und gespeicherte Zeitbasis erhalten.

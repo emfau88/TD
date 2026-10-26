@@ -40,6 +40,30 @@ export function moveMara(mara: MaraState, destination: GridCell, layout: IdleLay
   mara.path = path; mara.unreachable = false;
   return true;
 }
+
+/** Quiet, bounded walks before the spell lesson. Uses ordinary saved routes;
+ * stays beside the starting spot and within range of the assigned tower. */
+export function prepareWaitingMara(mara: MaraState, target: MaraTarget, layout: IdleLayout,
+  blocked: readonly GridCell[], age: number, wander: boolean): void {
+  const home = cellCenter(layout, layout.maraStart), size = layout.cellSize;
+  if (Math.hypot(mara.x - home.x, mara.y - home.y) > size * 1.5 || mara.effectRemaining > 0) return;
+  const free = (cell: GridCell) => isWalkableCell(layout, cell)
+    && !blocked.some(p => p.x === cell.x && p.y === cell.y) && inRange(cellCenter(layout, cell), target);
+  const cycle = Math.floor(age / 26), phase = age % 26;
+  const offsets = [{ x: 1, y: 0 }, { x: 0, y: 1 }, { x: -1, y: 0 }];
+  const nearby = offsets.map((_, index) => offsets[(index + cycle) % offsets.length])
+    .map(offset => ({ x: layout.maraStart.x + offset.x, y: layout.maraStart.y + offset.y }));
+  const destination = wander && phase >= 5 && phase < 14
+    ? nearby.find(free) ?? layout.maraStart : layout.maraStart;
+  if (!free(destination)) return;
+  const point = cellCenter(layout, destination), endpoint = mara.path.at(-1) ?? mara;
+  if (!close(point.x, endpoint.x) || !close(point.y, endpoint.y)) {
+    const route = findFootpath(layout, cellOf(layout, mara), destination, blocked);
+    // No detours around buildings: this is a small idle gesture, not a patrol.
+    if (route && route.length <= 3) moveMara(mara, destination, layout, blocked);
+  }
+  if (!mara.path.length) mara.direction = phase < 9 || phase >= 20 ? 'down' : cycle % 2 ? 'left' : 'right';
+}
 export function assignMaraTarget(mara: MaraState, target: MaraTarget, layout: IdleLayout, blocked: readonly GridCell[]): void {
   mara.targetTowerUid = target.uid;
   if (inRange(mara, target)) { mara.unreachable = false; return; }

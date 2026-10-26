@@ -14,7 +14,7 @@ export type { EnemyDef } from './enemy-roster';
 import { BOSS, freshCharm, isBossWave, bossEncounter, type BossWave, type BossCharm } from './boss';
 import { LAYOUT_VERSION, cellCenter, createIdleLayout, isUnlockedCell, battleLayout, DEFAULT_PLOTS, CORE_PLOTS, CORE_TAVERN_PLOT, validPlotPositions, settlementZone, findFootpath, type BuildingId, type PlotPositions, type GridCell, type IdleLayout } from './layout';
 import { getForestBlockedCells } from './forest-world';
-import { MARA, createMara, cloneMara, assignMaraTarget, stepMara, validMara, migrateMaraLayout, moveMara, castMara, type MaraState } from './mara';
+import { MARA, createMara, cloneMara, assignMaraTarget, stepMara, validMara, migrateMaraLayout, moveMara, castMara, prepareWaitingMara, type MaraState } from './mara';
 import { validMara as validLegacyMara, migrateMaraLayout as migrateLegacyMaraLayout } from './mara-legacy';
 import { TUTORIAL_STARTER_CELL, LEGACY_TUTORIAL_STARTER_CELL, isLegacyStarterCell, isShiftedStarterCell, isPreparingStarterCell } from './tutorial-placement';
 import { createProgress, cloneProgress, recordAttempt, validProgress, type ProgressRecord } from './progress';
@@ -330,7 +330,7 @@ export class IdleBattle {
   meetWisp(): boolean {
     if (!this.wispUnlocked || this.wispArrival.met) return false;
     this.wispArrival.met = true;
-    if (this.discovery === 'wisp') this.discovery = 'mara-wait';
+    if (this.discovery === 'wisp') { this.discovery = 'mara-wait'; this.mara.path = []; }
     return true;
   }
   continueDiscovery(): boolean {
@@ -349,7 +349,7 @@ export class IdleBattle {
   }
   private updateDiscovery(): void {
     if (!this.discoveryActive) return;
-    if (this.discovery === 'wisp' && this.wispArrival.met) this.discovery = 'mara-wait';
+    if (this.discovery === 'wisp' && this.wispArrival.met) { this.discovery = 'mara-wait'; this.mara.path = []; }
     // Catch a genuine new activation, never an old buff or a reset cooldown.
     if (this.discovery === 'mara-ready' && this.phase === 'wave' && this.mara.effectRemaining >= MARA.duration - 1e-6)
       this.discovery = 'mara-effect';
@@ -1231,7 +1231,10 @@ export class IdleBattle {
       assignMaraTarget(this.mara, maraTarget, this.layout, getForestBlockedCells(this.layout));
     }
     const effectTowerUid = this.mara.effectTowerUid;
-    const boostedSeconds = stepMara(this.mara, maraTarget, this.layout, this.movementBlocked(),
+    const movementBlocked = this.movementBlocked();
+    if (this.maraIntroductionPending && this.discovery === 'wisp')
+      prepareWaitingMara(this.mara, maraTarget, this.layout, movementBlocked, this.elapsed, !this.wispUnlocked);
+    const boostedSeconds = stepMara(this.mara, maraTarget, this.layout, movementBlocked,
       dt, this.phase === 'wave', this.maraBonus,
       !this.maraIntroductionPending && !this.isCharmed(maraTarget.uid) && this.enemies.some(e => e.hp > 0 && distance(e, maraTarget!) <= stats(maraTarget!).range));
     if (this.phase !== 'wave') this.stepIlyra(dt);

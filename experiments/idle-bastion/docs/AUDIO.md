@@ -37,6 +37,11 @@
 
 ## Noch offen
 
+26.10.2026: Maras bewusste Auswahl auf der Karte oder über ihr Porträt bestätigt
+sie auch vor Freischaltung ihrer Steuerung mit dem vorhandenen Auswahlpool.
+Die frühe Infokarte vergibt keinen Bewegungsbefehl. Gleicher Pegel, gemeinsamer
+7-Sekunden-Abstand, Mute-/Tabschutz; ihre selbstständigen kleinen Wege bleiben stumm.
+
 Nächste sinnvolle Ergänzungen nach Hörfeedback: ein seltener Siegshinweis, eigener erfolgreicher Forschungs-/Freischaltklang, kurzer Steinschleuder-Abwurf. Elektrischer Kettenblitz/Feuerstoß erst mit den späteren Türmen.
 
 Technische Pegelmessung und reale Browserwiedergabe wurden geprüft. Klangcharakter, musikalische Loopgrenzen und endgültige Mischung benötigen die Hörbewertung des Nutzers; keine subjektive Hörabnahme des Agenten behauptet. [Kompakter Prüfbericht](../../../artifacts/idle-bastion/acceptance/audio/REPORT.md).

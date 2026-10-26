@@ -1,0 +1,66 @@
+[
+  {
+    "width": 1280,
+    "lang": "de",
+    "stage": "build",
+    "panelHeight": 122,
+    "text": "Nach Wisps Ankunft zeigt dir Mara ihren Zauber. Danach kannst du sie selbst steuern.",
+    "errors": []
+  },
+  {
+    "width": 1280,
+    "lang": "de",
+    "stage": "walking",
+    "panelHeight": 122,
+    "text": "Nach Wisps Ankunft zeigt dir Mara ihren Zauber. Danach kannst du sie selbst steuern.",
+    "errors": []
+  },
+  {
+    "width": 1280,
+    "lang": "de",
+    "stage": "manual",
+    "panelHeight": 226.578125,
+    "text": "Wirke jetzt Übertakten. Danach lernst du Maras Steuerung kennen.\n\nÜbertakten\nPausiert · Kampf fortsetzen\nAUTO AUS",
+    "errors": []
+  },
+  {
+    "width": 1280,
+    "lang": "de",
+    "stage": "effect",
+    "panelHeight": 122,
+    "text": "Übertakten · noch 1 s. Danach kannst du Mara steuern.",
+    "errors": []
+  },
+  {
+    "width": 390,
+    "lang": "en",
+    "stage": "build",
+    "panelHeight": 124,
+    "text": "After Wisp arrives, Mara will show you her spell. Then you can control her yourself.",
+    "errors": []
+  },
+  {
+    "width": 390,
+    "lang": "en",
+    "stage": "walking",
+    "panelHeight": 124,
+    "text": "After Wisp arrives, Mara will show you her spell. Then you can control her yourself.",
+    "errors": []
+  },
+  {
+    "width": 390,
+    "lang": "en",
+    "stage": "manual",
+    "panelHeight": 196,
+    "text": "Cast Overclock now. Then you will learn how to control Mara.\n\nOverclock\nPaused · resume battle\nAUTO OFF",
+    "errors": []
+  },
+  {
+    "width": 390,
+    "lang": "en",
+    "stage": "effect",
+    "panelHeight": 106,
+    "text": "Overclock · 1 s left. Then you can control Mara.",
+    "errors": []
+  }
+]

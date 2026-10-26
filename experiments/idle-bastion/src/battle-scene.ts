@@ -737,7 +737,8 @@ export class BattleScene extends Phaser.Scene {
     this.wispName.setVisible(sim.wispUnlocked).setPosition(wisp.x, wisp.y + 13);
     this.ilyraView.update(sim);
     const mara = sim.mara, acting = mara.effectRemaining > 0 && sim.isMaraBoosted(mara.effectTowerUid ?? -1);
-    this.mara.setPosition(mara.x, mara.y).setFrame(maraFrame(this.maraSpell.castDirection ?? mara.direction, mara.path.length > 0, !!this.maraSpell.castDirection, elapsed)).setDepth(mara.y + 1002);
+    const facing = sim.preparing && sim.maraIntroductionPending ? 'down' : mara.direction;
+    this.mara.setPosition(mara.x, mara.y).setFrame(maraFrame(this.maraSpell.castDirection ?? facing, mara.path.length > 0, !!this.maraSpell.castDirection, elapsed)).setDepth(mara.y + 1002);
     this.maraShadow.setPosition(mara.x, mara.y + 1).setDepth(mara.y + 999);
     this.maraName.setPosition(mara.x, mara.y + 13).setText(t(acting ? t('Mara · Übertakten') : mara.unreachable ? t('Mara · kein Zugang') : 'Mara'));
     this.bossCharmView.draw(sim, this.portraitCamera);

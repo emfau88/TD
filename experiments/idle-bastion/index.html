@@ -76,7 +76,11 @@
         <dl class="warehouse-stats"><div><dt>Sichere Farmbasis</dt><dd id="warehouse-rate"></dd></div><div><dt>Offline-Ertrag</dt><dd id="warehouse-efficiency"></dd></div><div><dt>Sammelzeit</dt><dd id="warehouse-cap"></dd></div><div class="warehouse-preview"><dt>Nach einer Stunde</dt><dd id="warehouse-preview"></dd></div></dl>
         <p id="warehouse-condition" class="hint"></p><button id="build-warehouse" class="primary-action" type="button">Lager platzieren · 650 Gold</button><button id="move-warehouse" type="button" hidden>Lager versetzen</button>
       </section>
-      <section id="mara-panel" aria-labelledby="mara-title" hidden><h3 id="mara-title">Mara · Übertakten</h3><p id="mara-status" role="status"></p><p>Mara zaubert über sechs Felder Entfernung: acht Sekunden lang 50 % mehr Feuerrate. Die Automatik wartet auf Gegner in Reichweite des Turms. Du kannst auch selbst auslösen.</p><p>Wähle einen Turm und dann „Als Zauberziel wählen“. Mara läuft bei Bedarf in Zauberreichweite. Ein aktiver Buff bleibt am Turm, auch wenn sie weiterläuft.</p><div class="action-stack"><button id="move-mara" type="button">Standort auf der Karte wählen</button><button id="mara-auto" type="button" aria-pressed="true">Automatik: Ein</button><button id="cast-mara" class="primary-action spell-button" type="button">Übertakten wirken</button></div></section>
+      <section id="mara-panel" aria-labelledby="mara-title" hidden>
+        <h3 id="mara-title">Mara · Übertakten</h3><p id="mara-status" role="status"></p>
+        <div id="mara-actions" class="action-stack"><button id="move-mara" type="button">Standort auf der Karte wählen</button><button id="mara-auto" type="button" aria-pressed="true">Automatik: Ein</button><button id="cast-mara" class="primary-action spell-button" type="button">Übertakten wirken</button></div>
+        <details id="mara-details"><summary>So funktioniert Übertakten</summary><p>Mara zaubert über sechs Felder Entfernung: acht Sekunden lang 50 % mehr Feuerrate. Die Automatik wartet auf Gegner in Reichweite des Turms. Du kannst auch selbst auslösen.</p><p>Wähle einen Turm und dann „Als Zauberziel wählen“. Mara läuft bei Bedarf in Zauberreichweite. Ein aktiver Buff bleibt am Turm, auch wenn sie weiterläuft.</p></details>
+      </section>
     </aside>
     <footer class="command-dock">
       <section class="catalog" aria-label="Bauen">
