@@ -1,0 +1,244 @@
+[
+  {
+    "id": "MossShroom",
+    "flying": false,
+    "frames": 64,
+    "bottoms": [
+      39,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47
+    ],
+    "minOffset": 5.81,
+    "maxOffset": 12.45
+  },
+  {
+    "id": "WoodSpider",
+    "flying": false,
+    "frames": 32,
+    "bottoms": [
+      49,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56
+    ],
+    "minOffset": 14.11,
+    "maxOffset": 19.92
+  },
+  {
+    "id": "HornedBat",
+    "flying": true,
+    "frames": 24,
+    "bottoms": [
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      50,
+      55,
+      56,
+      57
+    ],
+    "minOffset": 9.13,
+    "maxOffset": 20.75
+  },
+  {
+    "id": "EmberBomb",
+    "flying": false,
+    "frames": 32,
+    "bottoms": [
+      44,
+      46,
+      47
+    ],
+    "minOffset": 9.96,
+    "maxOffset": 12.45
+  },
+  {
+    "id": "ForestGoblin",
+    "flying": false,
+    "frames": 24,
+    "bottoms": [
+      39,
+      40,
+      41
+    ],
+    "minOffset": 5.81,
+    "maxOffset": 7.47
+  },
+  {
+    "id": "BoneGuard",
+    "flying": false,
+    "frames": 24,
+    "bottoms": [
+      37,
+      39,
+      40,
+      41
+    ],
+    "minOffset": 4.15,
+    "maxOffset": 7.47
+  },
+  {
+    "id": "ForestCultist",
+    "flying": false,
+    "frames": 48,
+    "bottoms": [
+      33,
+      34,
+      35,
+      37,
+      38,
+      39
+    ],
+    "minOffset": 0.83,
+    "maxOffset": 5.81
+  },
+  {
+    "id": "Leafbug",
+    "flying": false,
+    "frames": 24,
+    "bottoms": [
+      40,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+    ],
+    "minOffset": 6.64,
+    "maxOffset": 19.09
+  },
+  {
+    "id": "Firebug",
+    "flying": false,
+    "frames": 24,
+    "bottoms": [
+      49,
+      50,
+      58,
+      59
+    ],
+    "minOffset": 14.11,
+    "maxOffset": 22.41
+  },
+  {
+    "id": "Scorpion",
+    "flying": false,
+    "frames": 24,
+    "bottoms": [
+      51,
+      52,
+      53,
+      59,
+      60,
+      61
+    ],
+    "minOffset": 15.77,
+    "maxOffset": 24.07
+  },
+  {
+    "id": "FlyingLocust",
+    "flying": true,
+    "frames": 24,
+    "bottoms": [
+      51,
+      53,
+      55
+    ],
+    "minOffset": 15.77,
+    "maxOffset": 19.09
+  },
+  {
+    "id": "Firewasp",
+    "flying": true,
+    "frames": 24,
+    "bottoms": [
+      72,
+      73,
+      74,
+      75,
+      76,
+      79,
+      80
+    ],
+    "minOffset": 15.6,
+    "maxOffset": 20.8
+  },
+  {
+    "id": "MagmaCrab",
+    "flying": false,
+    "frames": 24,
+    "bottoms": [
+      50,
+      51,
+      55,
+      56,
+      60,
+      61
+    ],
+    "minOffset": 14.94,
+    "maxOffset": 24.07
+  },
+  {
+    "id": "Clampbeetle",
+    "flying": true,
+    "frames": 24,
+    "bottoms": [
+      57,
+      58,
+      59,
+      60,
+      62,
+      63
+    ],
+    "minOffset": 20.75,
+    "maxOffset": 25.73
+  },
+  {
+    "id": "Voidbutterfly",
+    "flying": true,
+    "frames": 12,
+    "bottoms": [
+      56,
+      58,
+      60
+    ],
+    "minOffset": 19.92,
+    "maxOffset": 23.24
+  },
+  {
+    "id": "LanternJelly",
+    "flying": true,
+    "frames": 30,
+    "bottoms": [
+      46,
+      47,
+      48,
+      49
+    ],
+    "minOffset": 11.62,
+    "maxOffset": 14.11
+  },
+  {
+    "id": "Rosenspiegel",
+    "flying": false,
+    "frames": 20,
+    "bottoms": [
+      56
+    ],
+    "minOffset": 0.0,
+    "maxOffset": 0.0
+  }
+]

@@ -5,6 +5,15 @@ import type { EnemyId } from './enemy-roster';
 import { LOCAL_ENEMY_FRAMES } from './local-enemy-frames';
 import { LUCIFER_FRAMES } from './lucifer-frames';
 export type EnemyDirection = 'up' | 'down' | 'side';
+// Measured in world pixels from the unchanged sprite anchor. Humanoid feet
+// differ from the insects' body centres. Flyers project below their entire
+// animated silhouette; their existing 5.5–8.5 px lift remains visibly airborne.
+const SHADOW_Y: Partial<Record<EnemyId, number>> = {
+  Rosenspiegel: 0, ForestGoblin: 7, BoneGuard: 6, ForestCultist: 4,
+  FlyingLocust: 20, Firewasp: 22, Clampbeetle: 27, Voidbutterfly: 25,
+  LanternJelly: 15, HornedBat: 22,
+};
+export const enemyShadowOffset = (kind: EnemyId): number => SHADOW_Y[kind] ?? 9;
 interface Clip { frames: readonly number[]; durations: readonly number[] }
 interface EnemySheet { key: string; url: string; width: number; height: number; scale: number; facesLeft: boolean; skins?: number; move: Record<EnemyDirection, Clip> & {left?: Clip}; heal?: Record<EnemyDirection, Clip> & {left?: Clip} }
 /** Extracted from public/assets/manifest.json. Logical tags resolve through frameMap.

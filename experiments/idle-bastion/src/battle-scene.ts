@@ -5,7 +5,7 @@ import { IlyraView } from './ilyra-view';
 import { preloadSpellArt } from './spell-art';
 import { HeroMarks } from './hero-marks';
 import { MaraSpellView } from './mara-spell-view';
-import { ENEMY_SHEETS } from './enemy-art';
+import { ENEMY_SHEETS, enemyShadowOffset } from './enemy-art';
 import { JELLY_HEAL } from './enemy-roster';
 import { enemyHealFrame } from './enemy-art';
 import { MARA } from './mara';
@@ -646,7 +646,7 @@ export class BattleScene extends Phaser.Scene {
     let view = this.enemyViews.get(enemy.uid);
     if (!view) {
       view = { sprite: this.add.image(enemy.x, enemy.y, ENEMY_SHEETS[enemy.def.id].key).setScale(ENEMY_SHEETS[enemy.def.id].scale),
-        shadow: this.add.ellipse(enemy.x, enemy.y + (enemy.def.id === 'Rosenspiegel' ? 0 : 9), 23, 9, 0x263e30, 0.24) };
+        shadow: this.add.ellipse(enemy.x, enemy.y + enemyShadowOffset(enemy.def.id), 23, 9, 0x263e30, 0.24) };
       if (enemy.def.id === 'Rosenspiegel') view.sprite.setOrigin(0.5, 56/64).setScale(1.15);
       this.enemyViews.set(enemy.uid, view);
     }
@@ -702,8 +702,7 @@ export class BattleScene extends Phaser.Scene {
       }
       view.sprite.setTint(enemy.slowRemaining > 0 ? 0x83ddff : 0xffffff);
       if (enemy.slowRemaining > 0) this.effects.lineStyle(1.5, 0x96e8fa, 0.75).strokeEllipse(enemy.x, enemy.y + 7, 26, 10);
-      // Rosenspiegel's opaque feet end at originY=56/64 in every walk/dance frame.
-      view.shadow.setPosition(enemy.x, enemy.y + (enemy.def.id === 'Rosenspiegel' ? 0 : 9)).setDepth(enemy.y + 999);
+      view.shadow.setPosition(enemy.x, enemy.y + enemyShadowOffset(enemy.def.id)).setDepth(enemy.y + 999);
       if (enemy.hp < enemy.maxHp || enemy.def.id === 'Rosenspiegel') {
         const barY = enemy.y - lift - (enemy.def.id === 'Rosenspiegel' ? 55 : 25), fraction = Math.max(0, enemy.hp / enemy.maxHp);
         this.effects.fillStyle(0x263f33, 0.9).fillRect(enemy.x - 15, barY, 30, 5);

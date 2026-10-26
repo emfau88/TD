@@ -1,0 +1,322 @@
+[
+  {
+    "width": 1280,
+    "observations": [
+      {
+        "id": "Leafbug",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "Firebug",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "FlyingLocust",
+        "flying": true,
+        "shadowOffset": 20,
+        "expected": 20,
+        "correctTexture": true,
+        "spriteLift": 6.467507919552929
+      },
+      {
+        "id": "Firewasp",
+        "flying": true,
+        "shadowOffset": 22,
+        "expected": 22,
+        "correctTexture": true,
+        "spriteLift": 5.5322964705816275
+      },
+      {
+        "id": "Scorpion",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "MagmaCrab",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "Rosenspiegel",
+        "flying": false,
+        "shadowOffset": 0,
+        "expected": 0,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "Clampbeetle",
+        "flying": true,
+        "shadowOffset": 27,
+        "expected": 27,
+        "correctTexture": true,
+        "spriteLift": 8.19365400030199
+      },
+      {
+        "id": "LanternJelly",
+        "flying": true,
+        "shadowOffset": 15,
+        "expected": 15,
+        "correctTexture": true,
+        "spriteLift": 6.880541966460328
+      },
+      {
+        "id": "Voidbutterfly",
+        "flying": true,
+        "shadowOffset": 25,
+        "expected": 25,
+        "correctTexture": true,
+        "spriteLift": 5.677259097746116
+      },
+      {
+        "id": "ForestGoblin",
+        "flying": false,
+        "shadowOffset": 7,
+        "expected": 7,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "BoneGuard",
+        "flying": false,
+        "shadowOffset": 6,
+        "expected": 6,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "ForestCultist",
+        "flying": false,
+        "shadowOffset": 4,
+        "expected": 4,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "MossShroom",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "WoodSpider",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "HornedBat",
+        "flying": true,
+        "shadowOffset": 22,
+        "expected": 22,
+        "correctTexture": true,
+        "spriteLift": 5.927590506855836
+      },
+      {
+        "id": "EmberBomb",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      }
+    ],
+    "actors": {
+      "mara": {
+        "minFootOffset": -1,
+        "maxFootOffset": 1,
+        "shadowOffset": 1
+      },
+      "ilyra": {
+        "minFootOffset": 0,
+        "maxFootOffset": 1,
+        "shadowOffset": 1
+      },
+      "wisp": {
+        "minFootOffset": -1.8,
+        "maxFootOffset": 0,
+        "shadowOffset": null
+      }
+    },
+    "modelUnchanged": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "observations": [
+      {
+        "id": "Leafbug",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "Firebug",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "FlyingLocust",
+        "flying": true,
+        "shadowOffset": 20,
+        "expected": 20,
+        "correctTexture": true,
+        "spriteLift": 6.467507919552929
+      },
+      {
+        "id": "Firewasp",
+        "flying": true,
+        "shadowOffset": 22,
+        "expected": 22,
+        "correctTexture": true,
+        "spriteLift": 5.5322964705816275
+      },
+      {
+        "id": "Scorpion",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "MagmaCrab",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "Rosenspiegel",
+        "flying": false,
+        "shadowOffset": 0,
+        "expected": 0,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "Clampbeetle",
+        "flying": true,
+        "shadowOffset": 27,
+        "expected": 27,
+        "correctTexture": true,
+        "spriteLift": 8.19365400030199
+      },
+      {
+        "id": "LanternJelly",
+        "flying": true,
+        "shadowOffset": 15,
+        "expected": 15,
+        "correctTexture": true,
+        "spriteLift": 6.880541966460328
+      },
+      {
+        "id": "Voidbutterfly",
+        "flying": true,
+        "shadowOffset": 25,
+        "expected": 25,
+        "correctTexture": true,
+        "spriteLift": 5.677259097746116
+      },
+      {
+        "id": "ForestGoblin",
+        "flying": false,
+        "shadowOffset": 7,
+        "expected": 7,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "BoneGuard",
+        "flying": false,
+        "shadowOffset": 6,
+        "expected": 6,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "ForestCultist",
+        "flying": false,
+        "shadowOffset": 4,
+        "expected": 4,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "MossShroom",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "WoodSpider",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      },
+      {
+        "id": "HornedBat",
+        "flying": true,
+        "shadowOffset": 22,
+        "expected": 22,
+        "correctTexture": true,
+        "spriteLift": 5.927590506855836
+      },
+      {
+        "id": "EmberBomb",
+        "flying": false,
+        "shadowOffset": 9,
+        "expected": 9,
+        "correctTexture": true,
+        "spriteLift": 0
+      }
+    ],
+    "actors": {
+      "mara": {
+        "minFootOffset": -1,
+        "maxFootOffset": 1,
+        "shadowOffset": 1
+      },
+      "ilyra": {
+        "minFootOffset": 0,
+        "maxFootOffset": 1,
+        "shadowOffset": 1
+      },
+      "wisp": {
+        "minFootOffset": -1.8,
+        "maxFootOffset": 0,
+        "shadowOffset": null
+      }
+    },
+    "modelUnchanged": true,
+    "errors": []
+  }
+]

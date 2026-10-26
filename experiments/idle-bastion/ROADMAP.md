@@ -1,11 +1,17 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Schattenprüfung · Gegner und Gefährten — 26.10.2026, Prüfung/Fixes und Veröffentlichung beauftragt.**
+
+- [x] Alle 17 Gegnertypen einschließlich Bewegungs-/Heilframes sowie Mara, Ilyra und Wisp vermessen. Waldkultist, Knochenwächter und Waldgoblin an ihren tatsächlichen Fußbereich angepasst. Käfer/Spinnen behalten ihren passenden Körperschwerpunkt; Mara/Ilyra bereits korrekt, Wisp ohne separat versetzte Schattenellipse.
+- [x] Auf ausdrücklichen Nutzerhinweis Flieger mit tieferer, je Art fester Bodenprojektion; vorhandene Flughöhe und Flügelbewegung bleiben erhalten, kein Mitwackeln des Schattens mit einzelnen Flügelframes. Positions-/Kampf-/Savewerte unverändert.
+- [x] TypeScript/Pages-Build und tatsächlicher Phaser-Renderer für alle 17 Arten bei 1280/390 px ohne Fehler geprüft, richtige Texturen und unverändertes Modell bestätigt. Keine neue Videoaufnahme. [Messungen und Vergleich](../../artifacts/idle-bastion/acceptance/shadow-audit/REPORT.md).
+
 **Mara · lebendiger früher Auftritt und kompaktes Menü — 26.10.2026, Umsetzung und Main-Veröffentlichung beauftragt.**
 
 - [x] Vor der Zaubereinführung gelegentliche kurze Wege maximal ein Feld vom Startplatz, in Turmreichweite und auf freien Gehflächen; lange Ruhephasen/Blickwechsel. Vor der ersten Verteidigung zur Kamera gewandt. Normale gespeicherte Wege, kein neues Savefeld; mit Wisps Begrüßung stehen bleiben, nach Freischaltung keine automatische Übernahme manueller Bewegung.
 - [x] Antippen/Porträt mit vorhandenem leisen Stimmenpool und gemeinsamem Cooldown. Frühe Infokarte ohne gesperrte Befehle/Textwand; während des Zaubers nur aktuelle Erklärung bzw. notwendiger manueller Cast. Nach erster Wirkung sofort frei steuerbar, Erklärung im vollständigen Menü aufklappbar. Deutsch/Englisch.
 - [x] 24/24 gezielte Tests, Produktionsbuild und acht native Browserfälle bei 1280/390 px bestanden; reale Stimmen, Kartenklick, gespeicherter Laufweg, manuelle Einführung und Freischaltung mit Bewegung geprüft. Keine neuen Videos. [Bericht und Ansichten](../../artifacts/idle-bastion/acceptance/mara-early/REPORT.md).
-- [ ] Anschließend zusätzlich beauftragt: übrige Schatten prüfen/korrigieren; danach neue Einstiegsgestaltung mit Kernanimation, Hinweispfeilen, einzelner Mara an beiden Schauplätzen, Rasterfeld und Gesamtfortschritt. Noch keine Umsetzung dieser Folgeaufträge behauptet.
+- [ ] Neue Einstiegsgestaltung mit Kernanimation, Hinweispfeilen, einzelner Mara an beiden Schauplätzen, Rasterfeld und Gesamtfortschritt zusätzlich beauftragt; Schattenprüfung siehe eigenen Abschluss oben. Einstieg noch in Arbeit.
 
 **Succubus · sauberer Abschluss der fliegenden Herzen — 26.10.2026, Nachbesserung beauftragt.**
 
