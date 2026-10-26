@@ -2,6 +2,8 @@
  * Keep placeholders and game values intact; never use these strings as simulation IDs. */
 import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
+  "Einführung {0}/{1}": "Tutorial {0}/{1}",
+  "Optionaler Einführungsschritt": "Optional tutorial step",
   "So funktioniert Übertakten": "How Overclock works",
   "Mara zeigt dir gleich ihren Zauber. Danach kannst du sie selbst steuern.": "Mara will show you her spell next. Then you can control her yourself.",
   "Nach Wisps Ankunft zeigt dir Mara ihren Zauber. Danach kannst du sie selbst steuern.": "After Wisp arrives, Mara will show you her spell. Then you can control her yourself.",

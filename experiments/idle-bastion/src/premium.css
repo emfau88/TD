@@ -355,9 +355,8 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 .guiding #advance { display:none; }
 
 /* One click cue at a time. It never intercepts taps or scales with the map. */
-#lesson-pointer { position:fixed; z-index:45; width:40px; height:60px; pointer-events:none; transform:translate(-50%,-100%); filter:drop-shadow(0 2px 1px #000) drop-shadow(0 0 3px #0009); }
+#lesson-pointer { position:fixed; z-index:45; width:34px; height:51px; pointer-events:none; transform:translate(-50%,-100%); filter:drop-shadow(0 2px 1px #000) drop-shadow(0 0 3px #0009); }
 #lesson-pointer svg { width:100%; height:100%; display:block; }
-#lesson-pointer[data-mode="button"] { width:34px; height:51px; }
 #lesson-pointer > span { position:absolute; left:50%; bottom:3px; width:32px; height:32px; border:2px solid #ffe5a5; border-radius:50%; box-shadow:0 0 5px #d4ab55; opacity:0; pointer-events:none; }
 .lesson-click-target { outline:2px solid #ffe19a; outline-offset:3px; box-shadow:0 0 12px #d4ab5555; }
 /* Two inward pulses on entry, one reminder after ten seconds; otherwise calm. */
@@ -415,6 +414,8 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 .lesson-inline-target { padding-left:42px !important; }
 #lesson-pointer[data-mode="inline"] { width:20px; height:30px; transform:translate(-50%,-50%) rotate(-90deg); }
 #lesson-pointer[data-mode="map-below"] { transform:translate(-50%,0) rotate(180deg); }
+#lesson-pointer[data-mode="map-right"] { transform:translate(25%,-50%) rotate(90deg); }
+#lesson-pointer[data-mode="map-left"] { transform:translate(-125%,-50%) rotate(-90deg); }
 
 /* B15: a compact building portrait, no extra HUD row. */
 .building-portrait { width:96px; height:96px; object-fit:contain; image-rendering:pixelated; float:right; margin:0 0 8px 10px; }

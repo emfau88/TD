@@ -1,6 +1,7 @@
 import { t } from './i18n';
 import type { BattleSession } from './battle-session';
 import { INTRO_COPY, type MaraIntro } from './mara-intro';
+import { tutorialProgress } from './tutorial-progress';
 const el = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id)! as T;
 export function updateOnboarding(live: BattleSession, view: { placing: boolean; contextOpen: boolean; catalogPanel: 'tower' | 'settlement'; revealing: boolean; intro?: MaraIntro; portraits?: string[] }): void {
   const { placing, contextOpen, catalogPanel, revealing } = view;
@@ -35,8 +36,8 @@ export function updateOnboarding(live: BattleSession, view: { placing: boolean; 
   el('lesson-savings-value').textContent = t(stage === 'workshop' ? t('Bausatz danach') : t("{0} / {1} G", Math.min(Math.floor(b.gold), b.lessonCost), b.lessonCost));
   const savings = el<HTMLProgressElement>('lesson-savings-progress'); savings.max = Math.max(1,b.lessonCost); savings.value = Math.min(b.gold,b.lessonCost); savings.hidden = stage === 'workshop';
   secondary.hidden ||= complete;
-  const progress = ['welcome', 'build', 'ready'].includes(stage) ? 1 : ['combat', 'upgrade'].includes(stage) ? 2 : stage === 'workshop' ? 3 : stage === 'research' ? 4 : stage === 'frost' ? 5 : 6;
-  el('onboarding-eyebrow').textContent = t("Mara · Schritt {0} von 6{1}", progress, b.learningPaused ? t(' · Lernpause') : '');
+  const progress = tutorialProgress(b, intro);
+  el('onboarding-eyebrow').textContent = progress ? t('Einführung {0}/{1}', progress.current, progress.total) : '';
   let copy: [string, string, string];
   switch (stage) {
     case 'welcome': copy = [t('Willkommen im alten Hain'), t('Ich bin Mara. Gemeinsam schützen wir diesen Wald. Ich zeige dir, wie du deinen ersten Turm baust. Bis dahin kommen keine Gegner.'), t('Los geht’s')]; break;
@@ -57,7 +58,6 @@ export function updateOnboarding(live: BattleSession, view: { placing: boolean; 
   }
   if (intro) {
     copy = [...INTRO_COPY[intro.step]];
-    el('onboarding-eyebrow').textContent = t('Mara · {0} von 3', intro.step + 1);
   }
   el('onboarding-title').textContent = t(copy[0]); el('onboarding-copy').textContent = t(copy[1]); primary.textContent = t(copy[2]);
   primary.hidden = !copy[2]; primary.disabled ||= waiting || revealing;

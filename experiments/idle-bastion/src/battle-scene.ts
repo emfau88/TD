@@ -108,6 +108,7 @@ export class BattleScene extends Phaser.Scene {
   private guidedDefenseFrame = false;
   private guidedDefensePad?: string;
   private introStep: IntroStep | null = null;
+  private introMaraTransition = false;
   private introRect?: DOMRect;
   private introFrameKey = '';
   private renderedLayout?: IdleBattle['layout'];
@@ -387,6 +388,7 @@ export class BattleScene extends Phaser.Scene {
     if (!this.readyToDraw) return;
     const previous = this.introStep;
     this.introStep = step; this.introRect = rect;
+    if (step !== 1) this.introMaraTransition = false;
     if (step === null) {
       if (previous !== null) {
         this.cameras.main.panEffect.reset(); this.introFrameKey = '';
@@ -425,23 +427,38 @@ export class BattleScene extends Phaser.Scene {
       : { x: defense?.x ?? core.x, y: (defense?.y ?? core.y) + 20 };
     target.x += (this.scale.width - width) / (2 * zoom);
     target.y += (this.scale.height / 2 - top - height / 2) / zoom;
-    if (animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) camera.pan(target.x, target.y, 1200, 'Sine.easeInOut', true);
+    this.introMaraTransition = animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.introMaraTransition) camera.pan(target.x, target.y, 1200, 'Sine.easeInOut', true);
     else camera.centerOn(target.x, target.y);
     this.cameraFitted = true;
+  }
+  introAnchor(): { x: number; y: number } | undefined {
+    if (this.introStep === null || this.cameras.main.panEffect.isRunning) return;
+    const layout = this.sim.layout;
+    if (this.introStep === 0) {
+      const core = cellCenter(layout, layout.core);
+      return this.worldAnchor({ x: core.x, y: core.y - 66 });
+    }
+    if (this.introStep === 1) return this.worldAnchor(cellCenter(layout, layout.road.cells[0]));
+    const pad = layout.towerPads.find(p => p.id === this.sim.recommendedStarterPad);
+    return pad && this.worldAnchor(cellCenter(layout, pad.cell));
+  }
+  private introMaraPose(): { x: number; y: number; alpha: number } {
+    const pan = this.cameras.main.panEffect;
+    const transitioning = this.introStep === 1 && this.introMaraTransition && pan.isRunning;
+    const atCore = this.introStep === 0 || transitioning && pan.progress < .5;
+    const position = atCore ? cellCenter(this.sim.layout, { x: this.sim.layout.core.x - 2, y: this.sim.layout.core.y }) : this.sim.mara;
+    // One sprite: fade out, relocate during the pan, then fade in. No save
+    // mutation, duplicate figure or accelerated world-spanning walking route.
+    const alpha = !transitioning ? 1 : pan.progress < .5 ? Math.max(0, 1 - pan.progress / .2) : Math.max(0, (pan.progress - .8) / .2);
+    return { x: position.x, y: position.y, alpha };
   }
   private drawIntroMark(): void {
     const graphics = this.learningMark, layout = this.sim.layout;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const alpha = reduced ? .85 : .75 + Math.sin(this.time.now / 600) * .12;
-    const ring = (point: { x: number; y: number }, radius: number) => {
-      graphics.fillStyle(0xffd778, .08).fillCircle(point.x, point.y, radius);
-      graphics.lineStyle(2, 0xffdf8a, alpha).strokeCircle(point.x, point.y, radius);
-    };
-    if (this.introStep === 0) { ring(cellCenter(layout, layout.core), 48); return; }
+    if (this.introStep === 0) return;
     const points = layout.road.waypoints.map(cell => cellCenter(layout, cell));
-    const spawn = points[0]!;
-    graphics.lineStyle(2, 0xe18e79, .9).strokeCircle(spawn.x, spawn.y, 17);
-    graphics.fillStyle(0xe6a38d, .85).fillTriangle(spawn.x + 20, spawn.y - 6, spawn.x + 20, spawn.y + 6, spawn.x + 29, spawn.y);
     if (this.introStep === 1) {
       let offset = reduced ? 16 : (this.time.now / 60) % 48;
       for (let i = 1; i < points.length; i++) {
@@ -451,7 +468,11 @@ export class BattleScene extends Phaser.Scene {
       }
     } else {
       const pad = layout.towerPads.find(pad => pad.id === this.sim.recommendedStarterPad);
-      if (pad) ring(cellCenter(layout, pad.cell), 23);
+      if (pad) {
+        const { x, y } = pad.cell, size = layout.cellSize;
+        graphics.fillStyle(0xffd778, .08).fillRect(x * size, y * size, size, size);
+        graphics.lineStyle(2, 0xffdf8a, alpha).strokeRect(x * size, y * size, size, size);
+      }
     }
   }
   private drawLearningMark(): void {
@@ -459,9 +480,15 @@ export class BattleScene extends Phaser.Scene {
     if (this.introStep !== null) { this.drawIntroMark(); return; }
     if (!this.learningTarget) return;
     const point = this.learningPoint(this.learningTarget); if (!point) return;
-    const pulse = .75 + Math.sin(this.time.now / 300) * .15;
-    this.learningMark.fillStyle(0xffd778,.10).fillCircle(point.x,point.y,21);
-    this.learningMark.lineStyle(2,0xffdf8a,pulse).strokeCircle(point.x,point.y,21);
+    const pulse = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? .85 : .75 + Math.sin(this.time.now / 300) * .15;
+    if (this.learningTarget === 'starter') {
+      const size = this.sim.layout.cellSize;
+      this.learningMark.fillStyle(0xffd778,.10).fillRect(point.x-size/2,point.y-size/2,size,size);
+      this.learningMark.lineStyle(2,0xffdf8a,pulse).strokeRect(point.x-size/2,point.y-size/2,size,size);
+    } else {
+      this.learningMark.fillStyle(0xffd778,.10).fillCircle(point.x,point.y,21);
+      this.learningMark.lineStyle(2,0xffdf8a,pulse).strokeCircle(point.x,point.y,21);
+    }
   }
   uiAnchor(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'ilyra' | 'clearing'): { x: number; y: number } {
     const point = this.objectPoint(kind), camera = this.cameras.main;
@@ -657,7 +684,7 @@ export class BattleScene extends Phaser.Scene {
     const sim = this.sim, elapsed = sim.elapsed;
     // Read the complete confirmed model. Rollback can replace its identity and
     // move time backwards; UID maps are reconciled rather than replaying events.
-    this.forest?.update(elapsed, sim.settlement.workshopBuilt, sim.settlement.builtAt, sim.settlement.warehouseBuilt, sim.settlement.warehouseBuiltAt, sim.warehouseUnlocked, sim.settlement.workshopUpgraded, sim.settlement.upgradedAt, sim.settlement.tavernBuilt, sim.settlement.tavernBuiltAt, sim.settlement.tavernLevel);
+    this.forest?.update(elapsed, sim.settlement.workshopBuilt, sim.settlement.builtAt, sim.settlement.warehouseBuilt, sim.settlement.warehouseBuiltAt, sim.warehouseUnlocked, sim.settlement.workshopUpgraded, sim.settlement.upgradedAt, sim.settlement.tavernBuilt, sim.settlement.tavernBuiltAt, sim.settlement.tavernLevel, elapsed + sim.introduction.preparationSeconds);
     this.effects.clear();
     const towers = new Set(sim.towers.map(tower => tower.uid));
     for (const [uid, view] of this.towerViews) if (!towers.has(uid)) { view.base.destroy(); view.weapon.destroy(); this.towerViews.delete(uid); }
@@ -737,9 +764,10 @@ export class BattleScene extends Phaser.Scene {
     this.ilyraView.update(sim);
     const mara = sim.mara, acting = mara.effectRemaining > 0 && sim.isMaraBoosted(mara.effectTowerUid ?? -1);
     const facing = sim.preparing && sim.maraIntroductionPending ? 'down' : mara.direction;
-    this.mara.setPosition(mara.x, mara.y).setFrame(maraFrame(this.maraSpell.castDirection ?? facing, mara.path.length > 0, !!this.maraSpell.castDirection, elapsed)).setDepth(mara.y + 1002);
-    this.maraShadow.setPosition(mara.x, mara.y + 1).setDepth(mara.y + 999);
-    this.maraName.setPosition(mara.x, mara.y + 13).setText(t(acting ? t('Mara · Übertakten') : mara.unreachable ? t('Mara · kein Zugang') : 'Mara'));
+    const pose = this.introMaraPose();
+    this.mara.setPosition(pose.x, pose.y).setAlpha(pose.alpha).setFrame(maraFrame(this.maraSpell.castDirection ?? facing, mara.path.length > 0, !!this.maraSpell.castDirection, elapsed)).setDepth(pose.y + 1002);
+    this.maraShadow.setPosition(pose.x, pose.y + 1).setAlpha(pose.alpha).setDepth(pose.y + 999);
+    this.maraName.setPosition(pose.x, pose.y + 13).setAlpha(pose.alpha).setText(t(acting ? t('Mara · Übertakten') : mara.unreachable ? t('Mara · kein Zugang') : 'Mara'));
     this.bossCharmView.draw(sim, this.portraitCamera);
     this.drawSelection();
   }

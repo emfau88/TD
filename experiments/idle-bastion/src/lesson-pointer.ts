@@ -24,15 +24,15 @@ export class LessonPointer {
       const rect = button.getBoundingClientRect();
       x = inline ? rect.left + 20 : rect.left + rect.width / 2; y = inline ? rect.top + rect.height / 2 : rect.top + 3;
     } else { ({ x, y } = target as LessonPoint); }
-    if (x < 12 || x > innerWidth - 12 || y < 56 || y > innerHeight - 12) { this.arrow.hidden = true; return; }
-    this.arrow.dataset.mode = inline ? 'inline' : button ? 'button' : 'map';
+    if (x < 0 || x > innerWidth || y < 56 || y > innerHeight - 12) { this.arrow.hidden = true; return; }
+    this.arrow.dataset.mode = inline ? 'inline' : button ? 'button' : x < 24 ? 'map-right' : x > innerWidth - 24 ? 'map-left' : 'map';
     this.arrow.dataset.target = key || button?.id || '';
     this.arrow.style.left = `${x}px`; this.arrow.style.top = `${y}px`;
     this.arrow.hidden = false;
     if (!inline) {
       const overlapsCopy = () => {
         const a = this.arrow.getBoundingClientRect();
-        return Array.from(document.querySelectorAll<HTMLElement>('.onboarding-card, .wisp-arrival, .context-panel, .combat-toast, .placement-help, .fallback-note'))
+        return Array.from(document.querySelectorAll<HTMLElement>('.app-header, .onboarding-card, .wisp-arrival, .context-panel, .combat-toast, .placement-help, .fallback-note'))
           .filter(e => !e.hidden && e.getClientRects().length && !e.contains(button ?? null))
           .some(e => { const r = e.getBoundingClientRect(); return a.left < r.right && a.right > r.left && a.top < r.bottom && a.bottom > r.top; });
       };

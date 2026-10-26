@@ -1,5 +1,13 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Einstieg · lebendiges HQ, einheitliche Hinweise und Gesamtfortschritt — 26.10.2026, Umsetzung und Main-Veröffentlichung beauftragt.**
+
+- [x] Vorhandene Kernspitze animiert bereits in der Begrüßung über die bestehende Vorbereitungszeit. Einzige Mara-Figur zunächst neben dem HQ; beim Kameraschwenk weich aus-/einblenden und an ihrem regulären Startpunkt zeigen. Kein Lauf quer über die Karte, keine Verdopplung oder Änderung ihrer gespeicherten Position.
+- [x] Gemeinsamer Tutorialpfeil an Kern, Spawn und erstem Bauplatz; laufende Wegpunkte erhalten. Erster Bauplatz auch während der Platzierung als sanft pulsierendes Rasterquadrat. Randpfeile drehen nach innen; Dialog/Kopfzeile bleiben frei. Reduzierte Bewegung berücksichtigt.
+- [x] Eine durchgehende Gesamtzahl von 14 Lernschritten, einschließlich der bestehenden optionalen Steinschleuder-/Lagerhinweise am Ende. Kein Neustart der Zählung nach den drei Begrüßungsszenen; DE/EN, Speicherfortsetzung und alte Spielstände erhalten.
+- [x] Nach Nutzerhinweis alle Karten-/Menüpfeile auf die vorhandenen 34 × 51 px vereinheitlicht; zusätzlicher Helligkeits-/Transparenzpuls des Einstiegs entfernt. Gemeinsame bestehende Hinweisimpulse; nur innerhalb von Aktionsbuttons weiter kleinere Pfeile.
+- [x] 14/14 gezielte Fortschritts-/Intro-/Sprachtests, Produktionsbuild sowie 24 native Browseransichten bei 1280×850, 390×844, 320×568 und 844×390 in DE/EN geprüft. Zusatzprüfungen für Überspringen, reduzierte Bewegung, Formatwechsel während des Schwenks und gleiche Pfeildarstellung. Keine neuen Videos. [Bericht und Ansichten](../../artifacts/idle-bastion/acceptance/intro-polish/REPORT.md).
+
 **Schattenprüfung · Gegner und Gefährten — 26.10.2026, Prüfung/Fixes und Veröffentlichung beauftragt.**
 
 - [x] Alle 17 Gegnertypen einschließlich Bewegungs-/Heilframes sowie Mara, Ilyra und Wisp vermessen. Waldkultist, Knochenwächter und Waldgoblin an ihren tatsächlichen Fußbereich angepasst. Käfer/Spinnen behalten ihren passenden Körperschwerpunkt; Mara/Ilyra bereits korrekt, Wisp ohne separat versetzte Schattenellipse.
@@ -11,12 +19,12 @@
 - [x] Vor der Zaubereinführung gelegentliche kurze Wege maximal ein Feld vom Startplatz, in Turmreichweite und auf freien Gehflächen; lange Ruhephasen/Blickwechsel. Vor der ersten Verteidigung zur Kamera gewandt. Normale gespeicherte Wege, kein neues Savefeld; mit Wisps Begrüßung stehen bleiben, nach Freischaltung keine automatische Übernahme manueller Bewegung.
 - [x] Antippen/Porträt mit vorhandenem leisen Stimmenpool und gemeinsamem Cooldown. Frühe Infokarte ohne gesperrte Befehle/Textwand; während des Zaubers nur aktuelle Erklärung bzw. notwendiger manueller Cast. Nach erster Wirkung sofort frei steuerbar, Erklärung im vollständigen Menü aufklappbar. Deutsch/Englisch.
 - [x] 24/24 gezielte Tests, Produktionsbuild und acht native Browserfälle bei 1280/390 px bestanden; reale Stimmen, Kartenklick, gespeicherter Laufweg, manuelle Einführung und Freischaltung mit Bewegung geprüft. Keine neuen Videos. [Bericht und Ansichten](../../artifacts/idle-bastion/acceptance/mara-early/REPORT.md).
-- [ ] Neue Einstiegsgestaltung mit Kernanimation, Hinweispfeilen, einzelner Mara an beiden Schauplätzen, Rasterfeld und Gesamtfortschritt zusätzlich beauftragt; Schattenprüfung siehe eigenen Abschluss oben. Einstieg noch in Arbeit.
+- [x] Neue Einstiegsgestaltung mit Kernanimation, Hinweispfeilen, einzelner Mara an beiden Schauplätzen, Rasterfeld und Gesamtfortschritt umgesetzt; eigener Abschluss oben, ebenso die Schattenprüfung.
 
 **Succubus · sauberer Abschluss der fliegenden Herzen — 26.10.2026, Nachbesserung beauftragt.**
 
 - [x] Neue Herzen nur starten, wenn ihre unveränderte Flugzeit noch vollständig in den laufenden Zauber passt. Die letzten Herzen erreichen das Ziel und blenden im letzten Zehntel der Bahn weich aus; keine schwebenden Reste beim regulären Zauberende. Turmwirkung, Zauberdauer, Pause und gespeicherte Zeitbasis erhalten.
-- [x] TypeScript/Pages-Build und echte Browserprüfung bei 1280/390 px bestanden: drei Herzen laufen nacheinander bis auf null aus, kein Neustart kurz vor Ende, stabile Darstellung bei Pause, keine Browserfehler. Zielwirkungsblock bytegleich zum vorherigen Stand. Auf Nutzerwunsch keine neuen Videos; [Nachprüfung](../../artifacts/idle-bastion/acceptance/succubus-grounding/REPORT.md). Maras frühe Bewegung, Stimmen und kompaktes Menü bleiben ausschließlich Empfehlung.
+- [x] TypeScript/Pages-Build und echte Browserprüfung bei 1280/390 px bestanden: drei Herzen laufen nacheinander bis auf null aus, kein Neustart kurz vor Ende, stabile Darstellung bei Pause, keine Browserfehler. Zielwirkungsblock bytegleich zum vorherigen Stand. Auf Nutzerwunsch keine neuen Videos; [Nachprüfung](../../artifacts/idle-bastion/acceptance/succubus-grounding/REPORT.md). Maras frühe Bewegung, Stimmen und kompaktes Menü sind im anschließenden Auftrag umgesetzt, siehe oben.
 
 **Succubus · Herzbahn ohne Linie und korrekter Bodenkontakt — 26.10.2026, ausdrücklich beauftragt.**
 

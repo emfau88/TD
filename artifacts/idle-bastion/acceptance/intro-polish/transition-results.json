@@ -1,0 +1,92 @@
+[
+  {
+    "variant": "reduced-motion",
+    "x": 220,
+    "y": 300,
+    "alpha": 1,
+    "count": 1,
+    "model": {
+      "x": 220,
+      "y": 300,
+      "elapsed": 0,
+      "gold": 75,
+      "stage": "build"
+    },
+    "progress": "Tutorial 4/14",
+    "openingPointer": {
+      "width": "34px",
+      "height": "51px",
+      "shadow": "drop-shadow(rgb(0, 0, 0) 0px 2px 1px) drop-shadow(rgba(0, 0, 0, 0.6) 0px 0px 3px)",
+      "animation": "none",
+      "opacity": "1"
+    },
+    "menuPointer": {
+      "width": "34px",
+      "height": "51px",
+      "shadow": "drop-shadow(rgb(0, 0, 0) 0px 2px 1px) drop-shadow(rgba(0, 0, 0, 0.6) 0px 0px 3px)",
+      "animation": "none",
+      "opacity": "1"
+    },
+    "errors": []
+  },
+  {
+    "variant": "resize-during-pan",
+    "x": 220,
+    "y": 300,
+    "alpha": 1,
+    "count": 1,
+    "model": {
+      "x": 220,
+      "y": 300,
+      "elapsed": 0,
+      "gold": 75,
+      "stage": "build"
+    },
+    "progress": "Tutorial 4/14",
+    "openingPointer": {
+      "width": "34px",
+      "height": "51px",
+      "shadow": "drop-shadow(rgb(0, 0, 0) 0px 2px 1px) drop-shadow(rgba(0, 0, 0, 0.6) 0px 0px 3px)",
+      "animation": "none",
+      "opacity": "1"
+    },
+    "menuPointer": {
+      "width": "34px",
+      "height": "51px",
+      "shadow": "drop-shadow(rgb(0, 0, 0) 0px 2px 1px) drop-shadow(rgba(0, 0, 0, 0.6) 0px 0px 3px)",
+      "animation": "none",
+      "opacity": "1"
+    },
+    "errors": []
+  },
+  {
+    "variant": "skip-welcome",
+    "x": 220,
+    "y": 300,
+    "alpha": 1,
+    "count": 1,
+    "model": {
+      "x": 220,
+      "y": 300,
+      "elapsed": 0,
+      "gold": 75,
+      "stage": "build"
+    },
+    "progress": "Tutorial 4/14",
+    "openingPointer": {
+      "width": "34px",
+      "height": "51px",
+      "shadow": "drop-shadow(rgb(0, 0, 0) 0px 2px 1px) drop-shadow(rgba(0, 0, 0, 0.6) 0px 0px 3px)",
+      "animation": "none",
+      "opacity": "1"
+    },
+    "menuPointer": {
+      "width": "34px",
+      "height": "51px",
+      "shadow": "drop-shadow(rgb(0, 0, 0) 0px 2px 1px) drop-shadow(rgba(0, 0, 0, 0.6) 0px 0px 3px)",
+      "animation": "none",
+      "opacity": "1"
+    },
+    "errors": []
+  }
+]

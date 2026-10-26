@@ -1,4 +1,7 @@
 /* One onboarding card, with a larger portrait only for the three opening scenes. */
+.tutorial-active #wave-summary #wave-mode,.tutorial-active #wave-summary .stat-divider { display:none; }
+.tutorial-active #wave-summary #record-wave { white-space:nowrap; }
+.mara-intro-active.tutorial-active #wave-summary small { display:block; }
 .mara-intro-active .world { top:0; bottom:0; }
 .mara-intro-active .command-dock,.mara-intro-active .map-controls { visibility:hidden; pointer-events:none; }
 #onboarding-card.mara-intro {

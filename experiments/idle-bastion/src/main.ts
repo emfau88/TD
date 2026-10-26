@@ -9,6 +9,7 @@ import { discoveryStep, updateDiscoveryUI } from './discovery-ui';
 import { LessonPointer } from './lesson-pointer';
 import { updateOnboarding } from './onboarding-ui';
 import { MaraIntro } from './mara-intro';
+import { tutorialProgress } from './tutorial-progress';
 import { prepareIntroPortraits } from './intro-portraits';
 import maraOfflinePortrait from '../assets/intro/mara/mischievous.webp';
 import { updateOfflineWelcome } from './offline-welcome';
@@ -559,6 +560,13 @@ function syncUI(): void {
   updateOnboarding(live, { placing: Boolean(placementType || groundMode), contextOpen, catalogPanel, revealing: performance.now() < workshopRevealUntil, intro, portraits: introPortraits });
   syncIntroCamera();
   updateDiscoveryUI(live, contextOpen, Boolean(placementType || groundMode), catalogPanel);
+  const tutorial = tutorialProgress(sim, intro);
+  element('app').classList.toggle('tutorial-active', !!tutorial);
+  if (tutorial) {
+    const label = t('Einführung {0}/{1}', tutorial.current, tutorial.total);
+    element('record-wave').textContent = label;
+    element('record-wave').title = tutorial.optional ? t('Optionaler Einführungsschritt') : label;
+  } else element('record-wave').removeAttribute('title');
   if (selectedPanel === 'mara' && !fullMaraMenu) element('lesson-note').hidden = true;
   const quickHintVisible = quickWins.update({
     cannonUnlocked: sim.isTowerUnlocked(3), cannonBuilt: sim.towers.some(value => value.def.id === 3),
@@ -592,7 +600,13 @@ function syncUI(): void {
 }
 
 function syncLessonPointer(): void {
-  if (intro?.active && session?.battle.introduction.stage === 'welcome') { scene?.setLearningTarget(); lessonPointer.show(); return; }
+  if (intro?.active && session?.battle.introduction.stage === 'welcome') {
+    scene?.setLearningTarget();
+    const point = scene?.introAnchor();
+    lessonPointer.show(point && !session.error && !session.suspended && !session.awaitingResume
+      && !document.querySelector('dialog[open]') ? point : undefined, ['intro-core', 'intro-spawn', 'intro-starter'][intro.step]);
+    return;
+  }
   const b = session?.battle;
   scene?.setLearningTarget();
   if (b?.ilyra && b.ilyra.introduction !== 'done' && b.introduction.stage === 'done' && !discoveryStep(b)

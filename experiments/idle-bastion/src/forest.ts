@@ -8,7 +8,7 @@ import { KEYS, SCALE, loopFrame } from './art';
 import { getForestWorld } from './forest-world';
 import { cellCenter, CORE_ACCESS, findFootpath, createIdleLayout, type GridCell, type IdleLayout } from './layout';
 
-export interface ForestView { update(elapsed: number, built: boolean, builtAt: number | null, warehouseBuilt: boolean, warehouseBuiltAt: number | null, warehouseUnlocked: boolean, workshopUpgraded?: boolean, upgradedAt?: number | null, tavernBuilt?: boolean, tavernBuiltAt?: number | null, tavernLevel?: number): void; destroy(): void }
+export interface ForestView { update(elapsed: number, built: boolean, builtAt: number | null, warehouseBuilt: boolean, warehouseBuiltAt: number | null, warehouseUnlocked: boolean, workshopUpgraded?: boolean, upgradedAt?: number | null, tavernBuilt?: boolean, tavernBuiltAt?: number | null, tavernLevel?: number, coreTime?: number): void; destroy(): void }
 const cellKey = ({ x, y }: GridCell) => `${x},${y}`;
 /** Source quadrants are chosen from occupied N/E/S/W neighbours. */
 export function roadSource(position: GridCell, road: ReadonlySet<string>): readonly [number, number] {
@@ -146,12 +146,12 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   let lastVisualTime = scene.time.now, workshopAge = Infinity, warehouseAge = Infinity, tavernAge = Infinity;
   let shownWorkshopBuild: number | null | undefined, shownWarehouseBuild: number | null | undefined, shownTavernBuild: number | null | undefined;
   return {
-    update(elapsed, built, builtAt, warehouseBuilt, warehouseBuiltAt, _warehouseUnlocked, workshopUpgraded = false, upgradedAt = null, tavernBuilt = false, tavernBuiltAt = null, tavernLevel = 1) {
+    update(elapsed, built, builtAt, warehouseBuilt, warehouseBuiltAt, _warehouseUnlocked, workshopUpgraded = false, upgradedAt = null, tavernBuilt = false, tavernBuiltAt = null, tavernLevel = 1, coreTime = elapsed) {
       const workshopTexture = workshopUpgraded ? KEYS.workshopUpgraded : KEYS.workshop;
       if (building.texture.key !== workshopTexture) building.setTexture(workshopTexture);
       warehouseLabel.setText(t('Lager I'));
       workshopLabel.setText(t(workshopUpgraded ? t('Werkstatt II') : t('Werkstatt I')));
-      pond?.setFrame(loopFrame(elapsed, 10)); coreWeapon.setFrame(loopFrame(elapsed, 10));
+      pond?.setFrame(loopFrame(elapsed, 10)); coreWeapon.setFrame(loopFrame(coreTime, 10));
       building.setVisible(built);
       warehouseBuilding.setVisible(warehouseBuilt);
       tavernBuilding?.setVisible(tavernBuilt);
