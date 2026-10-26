@@ -3,6 +3,7 @@ import { AudioObserver, CUES, CueLimiter, readMix, type AudioMix, type Cue, batt
 import type { BattleEvent, IdleBattle } from './battle';
 import { MaraVoice } from './mara-voice';
 import { IlyraVoice } from './ilyra-voice';
+import { HeroCommandVoice, type HeroVoiceCommand, type VoiceHero } from './hero-command-voice';
 
 // URL imports emit files but do not fetch them. Music streams only after a user gesture.
 const files = import.meta.glob('../assets/audio/*.{wav,mp3}', { eager:true, query:'?url', import:'default' }) as Record<string,string>;
@@ -23,6 +24,7 @@ export class GameAudio {
   private companion: 'mara'|'ilyra'|null = null;
   private maraVoice?: MaraVoice;
   private ilyraVoice?: IlyraVoice;
+  private heroCommandVoice?: HeroCommandVoice;
   private tracks = new Map<Music,Track>();
   private music: Music = 'field';
   private buffers = new Map<Cue,Promise<AudioBuffer | undefined>>();
@@ -59,7 +61,7 @@ export class GameAudio {
     try {
       if (!this.context) {
         const Context = window.AudioContext ?? (window as unknown as {webkitAudioContext: typeof AudioContext}).webkitAudioContext;
-        if (!Context) { this.setStatus(t('Audio wird in diesem Browser nicht unterstützt.')); return; }
+        if (!Context) { this.setStatus(t('Audio wird in diesem Browser nicht unterstÃ¼tzt.')); return; }
         const ctx = this.context = new Context();
         this.master = ctx.createGain(); this.effects = ctx.createGain(); this.combat = ctx.createGain(); this.voices = ctx.createGain();
         this.effects.connect(this.master); this.combat.connect(this.effects);
@@ -76,7 +78,7 @@ export class GameAudio {
         for(const cue of (this.options.combat === false ? ['click','craft','gift'] : Object.keys(CUES)) as Cue[]) if ((cue==='charm'?this.mix.voices:this.mix.effects)>0) void this.load(cue);
       }
       this.setStatus(''); this.refresh();
-    } catch { this.setStatus(t('Ton noch gesperrt. Tippe auf „Ton testen“.')); }
+    } catch { this.setStatus(t('Ton noch gesperrt. Tippe auf â€žTon testenâ€œ.')); }
   }
   private setStatus(text:string): void { if(this.status) this.status.textContent = t(text); }
   private canPlay(): boolean { return this.unlocked && this.context?.state === 'running' && this.allowed && !document.hidden && !this.mix.muted && !this.disposed; }
@@ -91,6 +93,12 @@ export class GameAudio {
   }
   setCompanion(who:'mara'|'ilyra'|null):void {this.companion=who;this.refresh();}
   touchCompanion(who:'mara'|'ilyra'):void {(who==='mara'?this.maraVoice:this.ilyraVoice)?.play();}
+  commandHero(who:VoiceHero,command:HeroVoiceCommand):void {
+    if(!this.canPlay()||this.music!=='field'||this.mix.voices===0)return;
+    this.heroCommandVoice??=new HeroCommandVoice(this.context!,this.master!);
+    this.heroCommandVoice.setState(true,this.mix.voices);
+    this.heroCommandVoice.play(who,command);
+  }
   setMix(mix:Partial<AudioMix>): void {
     this.mix=readMix({...this.mix,...mix});
     try { localStorage.setItem(MIX_KEY,JSON.stringify(this.mix)); } catch { /* Private browsing: keep session settings. */ }
@@ -105,6 +113,7 @@ export class GameAudio {
   private silence(): void {
     this.maraVoice?.setState(false,0);
     this.ilyraVoice?.setState(false,0);
+    this.heroCommandVoice?.setState(false,0);
     this.epoch++; clearTimeout(this.musicTimer);
     for(const voice of [...this.active]) this.stop(voice);
     for(const track of this.tracks.values()) { track.element.pause(); track.gain.gain.cancelScheduledValues(this.context!.currentTime); track.gain.gain.value=0; }
@@ -120,6 +129,7 @@ export class GameAudio {
     const ilyraReady=this.music==='tavern'&&this.companion==='ilyra'&&this.mix.voices>0;
     if(ilyraReady&&!this.ilyraVoice)this.ilyraVoice=new IlyraVoice(this.context,this.master!);
     this.ilyraVoice?.setState(ilyraReady,this.mix.voices);
+    this.heroCommandVoice?.setState(this.music==='field'&&this.mix.voices>0,this.mix.voices);
     this.ramp(this.master!,1); this.ramp(this.effects!,this.mix.effects);
     this.ramp(this.voices!,this.mix.voices*(this.music==='tavern'?.3:1));
     this.ramp(this.combat!,this.music==='tavern'?.12:1);
@@ -137,18 +147,18 @@ export class GameAudio {
       const gain=this.context!.createGain(); gain.gain.value=0;
       const source=this.context!.createMediaElementSource(element); source.connect(gain); gain.connect(this.master!);
       track={element,gain,source}; this.tracks.set(this.music,track);
-      element.addEventListener('error',()=>this.setStatus(t('Ein Musikstück konnte nicht geladen werden. Effekte bleiben verfügbar.')),{signal:this.lifetime.signal});
+      element.addEventListener('error',()=>this.setStatus(t('Ein MusikstÃ¼ck konnte nicht geladen werden. Effekte bleiben verfÃ¼gbar.')),{signal:this.lifetime.signal});
     }
     // Inn Music measures ~6 dB louder than Exploration, so compensate before the user's slider.
     for(const [kind,t] of this.tracks) this.ramp(t.gain,kind===this.music?this.mix.music*(kind==='tavern'?.5:1):0,.75);
-    if(track.element.paused) void track.element.play().catch(()=>this.setStatus(t('Musik noch gesperrt. Tippe auf „Ton testen“.')));
+    if(track.element.paused) void track.element.play().catch(()=>this.setStatus(t('Musik noch gesperrt. Tippe auf â€žTon testenâ€œ.')));
     this.musicTimer=window.setTimeout(()=>{ for(const [kind,t] of this.tracks) if(kind!==this.music) t.element.pause(); },800);
   }
   private load(cue:Cue): Promise<AudioBuffer|undefined> {
     let pending=this.buffers.get(cue);
     if(!pending) {
       pending=fetch(url(CUES[cue].file),{signal:this.lifetime.signal}).then(r=>{if(!r.ok)throw Error('Audio'); return r.arrayBuffer();})
-        .then(data=>this.context!.decodeAudioData(data)).catch(()=>{ if(!this.disposed) this.setStatus(t('Ein Klang konnte nicht geladen werden. Das Spiel läuft weiter.')); return undefined; });
+        .then(data=>this.context!.decodeAudioData(data)).catch(()=>{ if(!this.disposed) this.setStatus(t('Ein Klang konnte nicht geladen werden. Das Spiel lÃ¤uft weiter.')); return undefined; });
       this.buffers.set(cue,pending);
     }
     return pending;
@@ -206,6 +216,7 @@ export class GameAudio {
     this.disposed=true;this.silence();this.lifetime.abort();
     this.maraVoice?.destroy();
     this.ilyraVoice?.destroy();
+    this.heroCommandVoice?.destroy();
     for(const track of this.tracks.values()){track.source.disconnect();track.gain.disconnect();track.element.removeAttribute('src');track.element.load();track.element.remove();}
     this.buffers.clear();void this.context?.close();
   }

@@ -1,5 +1,11 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Mara/Ilyra · manuelle Befehlsstimmen und vollständige P-Reserve — 26.10.2026, ausdrücklich beauftragt auf Main.**
+
+- [x] Ilyras Auswahl-/Bewegungspool senpai1/2/3 + sweetheart1/2/3 und youremine1 für die manuelle Sternensalve ergänzt. Mara verwendet exakt die gewählten P11, P09, P07, P06, P03, P01, P14 bei Auswahl, erfolgreicher Bewegung/Zuweisung und manuellem Boost. Gemeinsamer Player und sieben Sekunden Abstand, keine Warteschlange/Überlagerung; keine Stimme für Automatik, Laden oder abgelehnte Befehle.
+- [x] Alle 14 Befehlsclips technisch angeglichen, rund 2,92 dB leiser als die Tavernenreaktionen; bestehende Musik-/Effekt-/Stimmenregler erhalten. Alle 32 P-Clips samt Schnittmanifest, Hashes, Quellenangabe und Hörseite als [Projektreserve](../../artifacts/idle-bastion/audio-reserve/pyro-vocals/README.md) abgelegt. Nur die ausgewählten sieben Mara-WAVs gehen ins Spielpaket.
+- [x] 19/19 gezielte Tests, TypeScript/Pages-Build und tatsächliche Auswahl-/Bewegungs-/Zauberabläufe auf Desktop/Mara und Hochkant/Ilyra bestanden. Alle 14 Clips dekodierbar, GainNode-Werte stimmen, Stop-/Reglerfälle geprüft; keine Browserfehler. [Prüfbericht](../../artifacts/idle-bastion/acceptance/hero-command-voice/REPORT.md). Keine Spielregel-/Saveänderung oder behauptete subjektive Hörabnahme.
+
 **Ilyra · sieben Tavernenstimmen — 26.10.2026, auf ausdrücklichen Nutzerauftrag direkt auf Main; Commit/Push autorisiert.**
 
 - [x] Exakt giggle1, good1, goodboy1, lookonlyatme1, senpai1, sweetheart1 und wouldntyou1 aus „Voice 1“ bytegleich übernommen. Gemeinsamer Zufallspool für alle drei bestätigten Berührungen, keine direkte Wiederholung/Überlagerung, mindestens 2,5 Sekunden Abstand. Nur nächste Stimme der geöffneten Gefährtin vorladen; gemeinsame vorhandene Stop-/Reglerlogik.

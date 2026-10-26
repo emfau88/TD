@@ -691,17 +691,18 @@ function heroSelectionText(b: IdleBattle): string {
     return t('Mara gewählt · Zugewiesener Turm außerhalb der Zauberreichweite. Boden: laufen.');
   return session?.paused ? t('Mara · Ziel wählbar; sie läuft nach dem Fortsetzen.') : t('Mara gewählt · Boden: laufen · erneut Mara: Menü');
 }
-function selectHero(hero: ControlledHero): void {
+function selectHero(hero: ControlledHero, manual = false): void {
   if (!heroContextAvailable() || session!.inputBusy || hero === 'ilyra' && !session!.battle.ilyra) return;
   clearHeroSelection(); selectedHero = hero;
   placementType = undefined; groundMode = undefined; groundCandidate = undefined; ilyraMode = undefined;
   contextOpen = false; selectedPadId = undefined; scene?.setSelected();
   if (hero === 'ilyra' && session!.battle.ilyra!.introduction !== 'done') heroSuggestion = recommendIlyraPosition(session!.battle);
+  if (manual) audio.commandHero(hero,'select');
   syncUI();
 }
 function selectMapHero(hero: ControlledHero): void {
   if (!heroContextAvailable()) { if (session?.battle.discoveryActive) openContext(hero); return; }
-  if (selectedHero === hero) openContext(hero, false, false); else selectHero(hero);
+  if (selectedHero === hero) openContext(hero, false, false); else selectHero(hero, true);
 }
 async function moveSelectedHero(cell: GridCell): Promise<void> {
   const hero = selectedHero, generation = heroGeneration;
@@ -714,13 +715,14 @@ async function moveSelectedHero(cell: GridCell): Promise<void> {
     accepted = hero === 'mara' ? b.moveMaraTo(cell) : b.moveIlyraTo(cell);
   }, true, true);
   if (generation !== heroGeneration || session?.error) return;
+  if (accepted) audio.commandHero(hero,'move');
   heroFeedback = accepted ? undefined : () => hero === 'ilyra' && session?.battle.ilyra?.volley
     ? t('Ilyra · Sternensalve läuft. Danach kannst du sie wieder bewegen.') : t('Kein freier Weg dorthin. Wähle einen anderen Standort.');
   heroFeedbackUntil = performance.now() + 3500; syncUI();
 }
 function aimIlyra(): void {
   if (!heroContextAvailable() || !session?.battle.ilyra || session.inputBusy || session.paused || !ilyraFirstTarget(session.battle)) return;
-  if (selectedHero !== 'ilyra') selectHero('ilyra');
+  if (selectedHero !== 'ilyra') selectHero('ilyra', true);
   heroGeneration++; ilyraMode = 'cast'; heroFeedback = undefined; contextOpen = false; syncUI();
 }
 function closeContext(): void { clearHeroSelection(); ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); syncUI(); }
@@ -853,7 +855,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
         let accepted = false;
         void perform(b => { if (generation !== heroGeneration || !heroContextAvailable() || live.paused) return; accepted = mode === 'move' ? b.moveIlyraTo({x:Math.floor(point.x/40),y:Math.floor(point.y/40)}) : b.castIlyraAt(point); }, mode === 'move', true).then(() => {
           if (generation !== heroGeneration) return;
-          if (accepted && !live.error) { ilyraMode = undefined; heroGeneration++; syncUI(); }
+          if (accepted && !live.error) { audio.commandHero('ilyra',mode); ilyraMode = undefined; heroGeneration++; syncUI(); }
           else { heroFeedback = () => t('Wähle Gegner innerhalb der blauen Reichweite. Die Salve muss bereit sein.'); heroFeedbackUntil = performance.now() + 3500; syncUI(); }
         });
       },
@@ -939,7 +941,7 @@ async function perform(action: (battle: IdleBattle) => unknown, allowPaused = fa
 }
 function startGroundPlacement(id: BuildingId | 'mara'): void {
   if (!session || !ready || session.battle.preparing) return;
-  if (id === 'mara') { selectHero('mara'); return; }
+  if (id === 'mara') { selectHero('mara', true); return; }
   clearHeroSelection();
   ilyraMode = undefined; placementType = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); groundMode = id;
   groundCandidate = id === 'tavern' ? session.battle.recommendedTavernPlot : { ...session.battle.plots[id] };
@@ -983,7 +985,13 @@ element('onboarding-secondary').addEventListener('click', () => {
 }, { signal: lifetime.signal });
 for (const id of ['workshop', 'warehouse', 'tavern', 'mara'] as const) element(`move-${id}`).addEventListener('click', () => startGroundPlacement(id), { signal: lifetime.signal });
 element('mara-auto').addEventListener('click', () => { void perform(b => { b.mara.autoCast = !b.mara.autoCast; }); }, { signal: lifetime.signal });
-element('cast-mara').addEventListener('click', () => { void perform(b => b.castMaraNow()).then(() => closeContext()); }, { signal: lifetime.signal });
+element('cast-mara').addEventListener('click', () => {
+  let accepted=false;const live=session;
+  void perform(b => {accepted=b.castMaraNow();}).then(() => {
+    if(accepted&&session===live&&!live?.error)audio.commandHero('mara','cast');
+    closeContext();
+  });
+}, { signal: lifetime.signal });
 element('meet-wisp').addEventListener('click', () => { void perform(b => { b.meetWisp(); }, true, true); }, { signal: lifetime.signal });
 element('confirm-placement').addEventListener('click', () => {
   if (placementType && selectedPadId) { void placeTower(selectedPadId, placementType); return; }
@@ -1031,18 +1039,23 @@ for (const [name, kind] of [['cannon', 3], ['sniper', 4], ['storm', 5]] as const
   element(`build-${name}`).addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId, kind); }, { signal: lifetime.signal });
 }
 for (const hero of ['mara','wisp','ilyra'] as const) element(`tavern-${hero}`).addEventListener('click', () => openContext(hero), { signal: lifetime.signal });
-element('pick-ilyra').addEventListener('click', () => openContext('ilyra'), { signal: lifetime.signal });
+element('pick-ilyra').addEventListener('click', () => {
+  openContext('ilyra');
+  if (session?.battle.ilyra && contextOpen && selectedPanel === 'ilyra') audio.commandHero('ilyra','select');
+}, { signal: lifetime.signal });
 element('recruit-ilyra').addEventListener('click', () => {
-  void perform(b => b.recruitIlyra(), true, true).then(() => { if (session?.battle.ilyra) { selectHero('ilyra'); if (heroSuggestion) scene?.showHeroPosition(heroSuggestion); syncUI(); } });
+  void perform(b => b.recruitIlyra(), true, true).then(() => { if (session?.battle.ilyra) { selectHero('ilyra', true); if (heroSuggestion) scene?.showHeroPosition(heroSuggestion); syncUI(); } });
 }, { signal: lifetime.signal });
 for (const mode of ['move','cast'] as const) element(mode === 'move' ? 'move-ilyra' : 'aim-ilyra').addEventListener('click', () => {
-  if (mode === 'cast') aimIlyra(); else { selectHero('ilyra'); if (heroSuggestion) scene?.showHeroPosition(heroSuggestion); }
+  if (mode === 'cast') aimIlyra(); else { selectHero('ilyra', true); if (heroSuggestion) scene?.showHeroPosition(heroSuggestion); }
 }, { signal: lifetime.signal });
 element('hero-aim').addEventListener('click', aimIlyra, { signal: lifetime.signal });
 element('hero-mara-cast').addEventListener('click', () => {
   const generation=heroGeneration;
   if(selectedHero!=='mara'||!heroContextAvailable()||session?.inputBusy||session?.paused)return;
-  void perform(b => { if(generation===heroGeneration&&selectedHero==='mara'&&heroContextAvailable())b.castMaraNow(); });
+  let accepted=false;
+  void perform(b => { if(generation===heroGeneration&&selectedHero==='mara'&&heroContextAvailable())accepted=b.castMaraNow(); })
+    .then(()=>{if(accepted&&generation===heroGeneration&&!session?.error)audio.commandHero('mara','cast');});
 }, { signal: lifetime.signal });
 element('hero-location').addEventListener('click', () => { if (selectedHero === 'ilyra' && heroSuggestion) scene?.showHeroPosition(heroSuggestion); }, { signal: lifetime.signal });
 element('ilyra-auto').addEventListener('click', () => { void perform(b => b.setIlyraAuto(!b.ilyra?.autoCast), true, true); }, { signal: lifetime.signal });
@@ -1073,7 +1086,10 @@ element('pick-workshop').addEventListener('click', () => {
 element('skip-lessons').addEventListener('click', () => {
   void perform(b => b.skipLessons(), true, true).then(() => element<HTMLDialogElement>('game-menu').close());
 }, { signal: lifetime.signal });
-element('pick-mara').addEventListener('click', () => openContext('mara'), { signal: lifetime.signal });
+element('pick-mara').addEventListener('click', () => {
+  openContext('mara');
+  if(contextOpen&&selectedPanel==='mara')audio.commandHero('mara','select');
+}, { signal: lifetime.signal });
 element('close-context').addEventListener('click', closeContext, { signal: lifetime.signal });
 element('cancel-placement').addEventListener('click', () => { placementType = undefined; closeContext(); }, { signal: lifetime.signal });
 element('placement-pads').addEventListener('click', event => {
@@ -1116,7 +1132,11 @@ element('new-probe').addEventListener('click', () => {
 upgrade.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.upgrade(tower.uid); }).then(() => { if (session?.battle.guiding && session.battle.lessonComplete) closeContext(); }); }, { signal: lifetime.signal });
 sell.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.sell(tower.uid); }); }, { signal: lifetime.signal });
 advance.addEventListener('click', () => { void perform(battle => battle.requestAdvance()); }, { signal: lifetime.signal });
-assignMara.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.assignMara(tower.uid); }); }, { signal: lifetime.signal });
+assignMara.addEventListener('click', () => {
+  let accepted=false;const live=session;
+  void perform(battle => {const tower=battle.towers.find(value=>value.padId===selectedPadId);accepted=!!tower&&battle.assignMara(tower.uid);})
+    .then(()=>{if(accepted&&session===live&&!live?.error)audio.commandHero('mara','move');});
+}, { signal: lifetime.signal });
 element('camera-reset').addEventListener('click', () => {
   const b = session?.battle;
   if (groundMode && groundMode !== 'mara') scene?.focusObject(groundMode === 'workshop' ? 'settlement' : groundMode);

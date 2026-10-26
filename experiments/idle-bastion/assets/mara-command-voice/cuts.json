@@ -1,0 +1,76 @@
+{
+  "pauseSeconds": 0.2,
+  "thresholdDb": -38,
+  "mergePauses": false,
+  "sourceCodec": "pcm_f32le",
+  "sampleRate": 44100,
+  "clips": [
+    {
+      "id": "P11",
+      "file": "clips/P11.wav",
+      "startSample": 872825,
+      "endSample": 937084,
+      "start": 19.791950113378686,
+      "end": 21.24907029478458,
+      "duration": 1.4571201814058956
+    },
+    {
+      "id": "P09",
+      "file": "clips/P09.wav",
+      "startSample": 704106,
+      "endSample": 754643,
+      "start": 15.966122448979592,
+      "end": 17.112086167800452,
+      "duration": 1.1459637188208618
+    },
+    {
+      "id": "P07",
+      "file": "clips/P07.wav",
+      "startSample": 502878,
+      "endSample": 549609,
+      "start": 11.40312925170068,
+      "end": 12.462789115646258,
+      "duration": 1.0596598639455783
+    },
+    {
+      "id": "P06",
+      "file": "clips/P06.wav",
+      "startSample": 424056,
+      "endSample": 469089,
+      "start": 9.61578231292517,
+      "end": 10.636938775510204,
+      "duration": 1.021156462585034
+    },
+    {
+      "id": "P03",
+      "file": "clips/P03.wav",
+      "startSample": 175712,
+      "endSample": 221513,
+      "start": 3.9843990929705217,
+      "end": 5.02297052154195,
+      "duration": 1.0385714285714285
+    },
+    {
+      "id": "P01",
+      "file": "clips/P01.wav",
+      "startSample": 0,
+      "endSample": 50810,
+      "start": 0.0,
+      "end": 1.1521541950113379,
+      "duration": 1.1521541950113379
+    },
+    {
+      "id": "P14",
+      "file": "clips/P14.wav",
+      "startSample": 1174856,
+      "endSample": 1231808,
+      "start": 26.640725623582767,
+      "end": 27.93215419501134,
+      "duration": 1.2914285714285714
+    }
+  ],
+  "source": "337997__pyro13djt__sexy-vocals.wav",
+  "sourceSha256": "7aface8316769754c8222ed1f17268ba50a644285869a78bc9b39e36d090a3a3",
+  "url": "https://freesound.org/people/pyro13djt/sounds/337997/",
+  "license": "CC0"
+}

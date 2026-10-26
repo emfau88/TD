@@ -1,0 +1,65 @@
+{
+  "decoded": [
+    {
+      "file": "voice1-senpai1.mp3",
+      "duration": 0.984
+    },
+    {
+      "file": "voice1-senpai2.mp3",
+      "duration": 0.984
+    },
+    {
+      "file": "voice1-senpai3.mp3",
+      "duration": 0.912
+    },
+    {
+      "file": "voice1-sweetheart1.mp3",
+      "duration": 1.08
+    },
+    {
+      "file": "voice1-sweetheart2.mp3",
+      "duration": 1.008
+    },
+    {
+      "file": "voice1-sweetheart3.mp3",
+      "duration": 1.104
+    },
+    {
+      "file": "voice1-youremine1.mp3",
+      "duration": 1.152
+    },
+    {
+      "file": "P11.wav",
+      "duration": 1.4571041666666666
+    },
+    {
+      "file": "P09.wav",
+      "duration": 1.1459583333333334
+    },
+    {
+      "file": "P07.wav",
+      "duration": 1.0596458333333334
+    },
+    {
+      "file": "P06.wav",
+      "duration": 1.0211458333333334
+    },
+    {
+      "file": "P03.wav",
+      "duration": 1.0385625
+    },
+    {
+      "file": "P01.wav",
+      "duration": 1.1521458333333334
+    },
+    {
+      "file": "P14.wav",
+      "duration": 1.2914166666666667
+    }
+  ],
+  "actualGameGainsMatch": true,
+  "tavernStopsAndBlocks": true,
+  "zeroVolumeBlocks": true,
+  "inactiveSessionBlocks": true,
+  "destroyRemovesPlayer": true
+}

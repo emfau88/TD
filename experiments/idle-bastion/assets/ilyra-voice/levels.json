@@ -3,6 +3,7 @@
   "targetLufs": -19.445,
   "reference": "Median of the ten unchanged Mara source clips",
   "sharedPlaybackGain": 0.7,
+  "commandPlaybackGain": 0.5,
   "subjectiveListeningApproval": false,
   "mara": [
     {
@@ -146,6 +147,150 @@
       "gainDb": 2.725,
       "gain": 1.36851638,
       "adjustedTruePeakDbtp": -11.885
+    }
+  ],
+  "commands": [
+    {
+      "file": "voice1-senpai1.mp3",
+      "bytes": 39360,
+      "sha256": "1bda4dba759d1710e516a83734eb937538c7f5df9dc4c522f7a0d69bec5ffef2",
+      "integratedLufs": -27.34,
+      "truePeakDbtp": -16.61,
+      "gainDb": 7.895,
+      "gain": 2.48170411,
+      "adjustedTruePeakDbtp": -8.715
+    },
+    {
+      "file": "voice1-senpai2.mp3",
+      "bytes": 39360,
+      "sha256": "e5490f32a40be761f7bcc3d1eaff0c0cc1bffa1e3a68b6a04a756d68cf35ab90",
+      "integratedLufs": -26.36,
+      "truePeakDbtp": -16.01,
+      "gainDb": 6.915,
+      "gain": 2.21691989,
+      "adjustedTruePeakDbtp": -9.095
+    },
+    {
+      "file": "voice1-senpai3.mp3",
+      "bytes": 36480,
+      "sha256": "76c8d5c1265dd47b67aa1d0ef31276293fe89a908aba50a5293081e124fba095",
+      "integratedLufs": -28.84,
+      "truePeakDbtp": -16.52,
+      "gainDb": 9.395,
+      "gain": 2.94951086,
+      "adjustedTruePeakDbtp": -7.125
+    },
+    {
+      "file": "voice1-sweetheart1.mp3",
+      "bytes": 43200,
+      "sha256": "b5c50dc3774b234627d0983b8c57c26c73b096d30f4fe975d00f5ae26ec09de1",
+      "integratedLufs": -29.79,
+      "truePeakDbtp": -21.35,
+      "gainDb": 10.345,
+      "gain": 3.29040988,
+      "adjustedTruePeakDbtp": -11.005
+    },
+    {
+      "file": "voice1-sweetheart2.mp3",
+      "bytes": 40320,
+      "sha256": "63a718a5b15247e7a77177ebd3285d09691500569847440bda42ac1eae2848d3",
+      "integratedLufs": -26.75,
+      "truePeakDbtp": -17.28,
+      "gainDb": 7.305,
+      "gain": 2.31872903,
+      "adjustedTruePeakDbtp": -9.975
+    },
+    {
+      "file": "voice1-sweetheart3.mp3",
+      "bytes": 44160,
+      "sha256": "87fdb45319f18ed7d307d13d4309008333618a4e1e12e509a545bf36f4c5e408",
+      "integratedLufs": -29.64,
+      "truePeakDbtp": -20.71,
+      "gainDb": 10.195,
+      "gain": 3.23407435,
+      "adjustedTruePeakDbtp": -10.515
+    },
+    {
+      "file": "voice1-youremine1.mp3",
+      "bytes": 46080,
+      "sha256": "16781b7514ff65ebd5be29172618224d00691f6d3f5e824dd930b1ce01e9ab4e",
+      "integratedLufs": -22.61,
+      "truePeakDbtp": -15.05,
+      "gainDb": 3.165,
+      "gain": 1.43962706,
+      "adjustedTruePeakDbtp": -11.885
+    }
+  ],
+  "maraCommands": [
+    {
+      "file": "P11.wav",
+      "bytes": 514164,
+      "sha256": "54b7ee635054227b4f457e6f826c72c26b9b97ded4937f0283cc00b643f122da",
+      "integratedLufs": -25.27,
+      "truePeakDbtp": -8.0,
+      "gainDb": 5.825,
+      "gain": 1.95546479,
+      "adjustedTruePeakDbtp": -2.175
+    },
+    {
+      "file": "P09.wav",
+      "bytes": 404388,
+      "sha256": "9ffa40a9c6b6e4e7a004793b8fce6ee06ebf71f50b2d4c2d7cef713a422e7801",
+      "integratedLufs": -25.58,
+      "truePeakDbtp": -16.01,
+      "gainDb": 6.135,
+      "gain": 2.02651583,
+      "adjustedTruePeakDbtp": -9.875
+    },
+    {
+      "file": "P07.wav",
+      "bytes": 373940,
+      "sha256": "b3043b6d8b38b7f847054dc967c360583f116fcc6de5dee819d7051ceae28d91",
+      "integratedLufs": -25.11,
+      "truePeakDbtp": -16.27,
+      "gainDb": 5.665,
+      "gain": 1.91977353,
+      "adjustedTruePeakDbtp": -10.605
+    },
+    {
+      "file": "P06.wav",
+      "bytes": 360356,
+      "sha256": "d2ffe48d24765724df39b900bebd3bd4c8be23766da4e8a4e07d300edb91f965",
+      "integratedLufs": -30.63,
+      "truePeakDbtp": -19.42,
+      "gainDb": 11.185,
+      "gain": 3.62451582,
+      "adjustedTruePeakDbtp": -8.235
+    },
+    {
+      "file": "P03.wav",
+      "bytes": 366500,
+      "sha256": "b201d0a8fa46488fd2f567df7249aeb72e09e38a9579b5049c12fe10160192d2",
+      "integratedLufs": -28.46,
+      "truePeakDbtp": -15.61,
+      "gainDb": 9.015,
+      "gain": 2.82325431,
+      "adjustedTruePeakDbtp": -6.595
+    },
+    {
+      "file": "P01.wav",
+      "bytes": 406572,
+      "sha256": "0661cf5e8976966268514ae61821b4cdec1264e096710a7865a08ca63dfa0629",
+      "integratedLufs": -24.37,
+      "truePeakDbtp": -9.87,
+      "gainDb": 4.925,
+      "gain": 1.76299061,
+      "adjustedTruePeakDbtp": -4.945
+    },
+    {
+      "file": "P14.wav",
+      "bytes": 455708,
+      "sha256": "9abb81bb11acfa311b47204c9808a06b3274247fe7261efdba01edb3f6979785",
+      "integratedLufs": -29.98,
+      "truePeakDbtp": -18.38,
+      "gainDb": 10.535,
+      "gain": 3.36317913,
+      "adjustedTruePeakDbtp": -7.845
     }
   ]
 }

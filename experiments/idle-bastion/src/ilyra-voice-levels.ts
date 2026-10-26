@@ -9,3 +9,21 @@ export const ILYRA_VOICE_GAINS = {
   'voice1-sweetheart1.mp3': 3.29040988,
   'voice1-wouldntyou1.mp3': 1.36851638,
 } as const;
+export const ILYRA_COMMAND_VOICE_GAINS = {
+  'voice1-senpai1.mp3': 2.48170411,
+  'voice1-senpai2.mp3': 2.21691989,
+  'voice1-senpai3.mp3': 2.94951086,
+  'voice1-sweetheart1.mp3': 3.29040988,
+  'voice1-sweetheart2.mp3': 2.31872903,
+  'voice1-sweetheart3.mp3': 3.23407435,
+  'voice1-youremine1.mp3': 1.43962706,
+} as const;
+export const MARA_COMMAND_VOICE_GAINS = {
+  'P11.wav': 1.95546479,
+  'P09.wav': 2.02651583,
+  'P07.wav': 1.91977353,
+  'P06.wav': 3.62451582,
+  'P03.wav': 2.82325431,
+  'P01.wav': 1.76299061,
+  'P14.wav': 3.36317913,
+} as const;

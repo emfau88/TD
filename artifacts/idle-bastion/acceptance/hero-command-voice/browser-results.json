@@ -1,0 +1,66 @@
+[
+  {
+    "hero": "mara",
+    "width": 1280,
+    "noMapPreload": true,
+    "sharedCooldown": true,
+    "rejectedMoveSilent": true,
+    "muteStops": true,
+    "events": [
+      {
+        "hero": "mara",
+        "command": "select",
+        "src": "http://127.0.0.1:5235/assets/mara-command-voice/P01.wav",
+        "time": 2480.9000000003725,
+        "gain": 0.48482242226600647
+      },
+      {
+        "hero": "mara",
+        "command": "move",
+        "src": "http://127.0.0.1:5235/assets/mara-command-voice/P06.wav",
+        "time": 10295.10000000149,
+        "gain": 0.9967418313026428
+      },
+      {
+        "hero": "mara",
+        "command": "cast",
+        "src": "http://127.0.0.1:5235/assets/mara-command-voice/P14.wav",
+        "time": 44924.70000000112,
+        "gain": 0.9248742461204529
+      }
+    ],
+    "errors": []
+  },
+  {
+    "hero": "ilyra",
+    "width": 390,
+    "noMapPreload": true,
+    "sharedCooldown": true,
+    "rejectedMoveSilent": true,
+    "muteStops": true,
+    "events": [
+      {
+        "hero": "ilyra",
+        "command": "select",
+        "src": "http://127.0.0.1:5235/assets/ilyra-voice/voice1-sweetheart2.mp3",
+        "time": 2114.9000000003725,
+        "gain": 0.6376504898071289
+      },
+      {
+        "hero": "ilyra",
+        "command": "move",
+        "src": "http://127.0.0.1:5235/assets/ilyra-voice/voice1-senpai1.mp3",
+        "time": 9936.699999999255,
+        "gain": 0.6824686527252197
+      },
+      {
+        "hero": "ilyra",
+        "command": "cast",
+        "src": "http://127.0.0.1:5235/assets/ilyra-voice/voice1-youremine1.mp3",
+        "time": 18277.699999999255,
+        "gain": 0.39589744806289673
+      }
+    ],
+    "errors": []
+  }
+]

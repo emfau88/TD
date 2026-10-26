@@ -1,0 +1,333 @@
+{
+  "pauseSeconds": 0.2,
+  "thresholdDb": -38,
+  "mergePauses": false,
+  "sourceCodec": "pcm_f32le",
+  "sampleRate": 44100,
+  "clips": [
+    {
+      "id": "P01",
+      "file": "clips/P01.wav",
+      "startSample": 0,
+      "endSample": 50810,
+      "start": 0.0,
+      "end": 1.1521541950113379,
+      "duration": 1.1521541950113379,
+      "sha256": "0661cf5e8976966268514ae61821b4cdec1264e096710a7865a08ca63dfa0629"
+    },
+    {
+      "id": "P02",
+      "file": "clips/P02.wav",
+      "startSample": 69000,
+      "endSample": 148425,
+      "start": 1.564625850340136,
+      "end": 3.3656462585034013,
+      "duration": 1.8010204081632653,
+      "sha256": "6288cd4db1dc44e5e466d4857090063edf3777246c2f3f3082e54ac727651e7f"
+    },
+    {
+      "id": "P03",
+      "file": "clips/P03.wav",
+      "startSample": 175712,
+      "endSample": 221513,
+      "start": 3.9843990929705217,
+      "end": 5.02297052154195,
+      "duration": 1.0385714285714285,
+      "sha256": "b201d0a8fa46488fd2f567df7249aeb72e09e38a9579b5049c12fe10160192d2"
+    },
+    {
+      "id": "P04",
+      "file": "clips/P04.wav",
+      "startSample": 240377,
+      "endSample": 312491,
+      "start": 5.450725623582766,
+      "end": 7.085963718820862,
+      "duration": 1.6352380952380952,
+      "sha256": "25f172a84f0dcfedb578be17c6e3951588de8410a90d88813ddb93d169c53601"
+    },
+    {
+      "id": "P05",
+      "file": "clips/P05.wav",
+      "startSample": 334231,
+      "endSample": 398984,
+      "start": 7.578934240362812,
+      "end": 9.047256235827664,
+      "duration": 1.4683219954648525,
+      "sha256": "bd5cf9b4abae5883a7871f7189fbc7007e5158c7f91a9962293cf0b2c47e1e7b"
+    },
+    {
+      "id": "P06",
+      "file": "clips/P06.wav",
+      "startSample": 424056,
+      "endSample": 469089,
+      "start": 9.61578231292517,
+      "end": 10.636938775510204,
+      "duration": 1.021156462585034,
+      "sha256": "d2ffe48d24765724df39b900bebd3bd4c8be23766da4e8a4e07d300edb91f965"
+    },
+    {
+      "id": "P07",
+      "file": "clips/P07.wav",
+      "startSample": 502878,
+      "endSample": 549609,
+      "start": 11.40312925170068,
+      "end": 12.462789115646258,
+      "duration": 1.0596598639455783,
+      "sha256": "b3043b6d8b38b7f847054dc967c360583f116fcc6de5dee819d7051ceae28d91"
+    },
+    {
+      "id": "P08",
+      "file": "clips/P08.wav",
+      "startSample": 570829,
+      "endSample": 624964,
+      "start": 12.943968253968254,
+      "end": 14.171519274376417,
+      "duration": 1.2275510204081632,
+      "sha256": "b2c29da506a68d0ea1e7938c1e67c5ec29264fb09d554728609b322e413bb515"
+    },
+    {
+      "id": "P09",
+      "file": "clips/P09.wav",
+      "startSample": 704106,
+      "endSample": 754643,
+      "start": 15.966122448979592,
+      "end": 17.112086167800452,
+      "duration": 1.1459637188208618,
+      "sha256": "9ffa40a9c6b6e4e7a004793b8fce6ee06ebf71f50b2d4c2d7cef713a422e7801"
+    },
+    {
+      "id": "P10",
+      "file": "clips/P10.wav",
+      "startSample": 772681,
+      "endSample": 852111,
+      "start": 17.52111111111111,
+      "end": 19.322244897959184,
+      "duration": 1.8011337868480726,
+      "sha256": "d66ce8648b7d84fbcb737a57691de30cc3213e904b715fb7054ef79ea5886b9b"
+    },
+    {
+      "id": "P11",
+      "file": "clips/P11.wav",
+      "startSample": 872825,
+      "endSample": 937084,
+      "start": 19.791950113378686,
+      "end": 21.24907029478458,
+      "duration": 1.4571201814058956,
+      "sha256": "54b7ee635054227b4f457e6f826c72c26b9b97ded4937f0283cc00b643f122da"
+    },
+    {
+      "id": "P12",
+      "file": "clips/P12.wav",
+      "startSample": 954060,
+      "endSample": 1048905,
+      "start": 21.634013605442178,
+      "end": 23.78469387755102,
+      "duration": 2.1506802721088434,
+      "sha256": "09d24a16271e05d449ec685ebd02b7a9f483788ed7219b78aa7dc214e15abb2f"
+    },
+    {
+      "id": "P13",
+      "file": "clips/P13.wav",
+      "startSample": 1072319,
+      "endSample": 1146332,
+      "start": 24.315623582766438,
+      "end": 25.99392290249433,
+      "duration": 1.6782993197278913,
+      "sha256": "aac00a40d0ea173d1aa5b8e363bc3a0b9168077c4d6163f12925f2e92cd8a2a3"
+    },
+    {
+      "id": "P14",
+      "file": "clips/P14.wav",
+      "startSample": 1174856,
+      "endSample": 1231808,
+      "start": 26.640725623582767,
+      "end": 27.93215419501134,
+      "duration": 1.2914285714285714,
+      "sha256": "9abb81bb11acfa311b47204c9808a06b3274247fe7261efdba01edb3f6979785"
+    },
+    {
+      "id": "P15",
+      "file": "clips/P15.wav",
+      "startSample": 1254654,
+      "endSample": 1324608,
+      "start": 28.450204081632652,
+      "end": 30.036462585034013,
+      "duration": 1.5862585034013605,
+      "sha256": "bdc0d77b772a1581457c9d3202163b016761f8545f17a4ab743fe4c521f6dc6b"
+    },
+    {
+      "id": "P16",
+      "file": "clips/P16.wav",
+      "startSample": 1343544,
+      "endSample": 1405438,
+      "start": 30.465850340136054,
+      "end": 31.869342403628117,
+      "duration": 1.4034920634920636,
+      "sha256": "0885e398e452f57167def2c4ed251a0d136de682846cb97e240d66f41057a3f6"
+    },
+    {
+      "id": "P17",
+      "file": "clips/P17.wav",
+      "startSample": 1478193,
+      "endSample": 1519785,
+      "start": 33.519115646258506,
+      "end": 34.46224489795918,
+      "duration": 0.9431292517006803,
+      "sha256": "f700674b9e31bc1331fdabd108228f38631af590f170584d3e5c58d8b83341f9"
+    },
+    {
+      "id": "P18",
+      "file": "clips/P18.wav",
+      "startSample": 1529572,
+      "endSample": 1655702,
+      "start": 34.684172335600906,
+      "end": 37.544263038548756,
+      "duration": 2.8600907029478457,
+      "sha256": "1d1876d1a88aacf1ee63c0afbb1c1d073a6c321b3560a370b8bdd6af19914820"
+    },
+    {
+      "id": "P19",
+      "file": "clips/P19.wav",
+      "startSample": 1665706,
+      "endSample": 1714038,
+      "start": 37.77111111111111,
+      "end": 38.86707482993197,
+      "duration": 1.0959637188208617,
+      "sha256": "26cff6f1bc420102acfd22e3331de546acb1d45e21d0e31c617d1387f244bc62"
+    },
+    {
+      "id": "P20",
+      "file": "clips/P20.wav",
+      "startSample": 1731360,
+      "endSample": 1787520,
+      "start": 39.25986394557823,
+      "end": 40.53333333333333,
+      "duration": 1.273469387755102,
+      "sha256": "f8d2489b00c1efaa107958d62f0a8094112e015879668c7843d7b5c3a5fc6656"
+    },
+    {
+      "id": "P21",
+      "file": "clips/P21.wav",
+      "startSample": 1830623,
+      "endSample": 1885879,
+      "start": 41.510725623582765,
+      "end": 42.76369614512472,
+      "duration": 1.2529705215419502,
+      "sha256": "1d1560b09a66df32dec31dea1535766d21f331c5afc7d0fbff0454a250fc6a89"
+    },
+    {
+      "id": "P22",
+      "file": "clips/P22.wav",
+      "startSample": 1984079,
+      "endSample": 2034150,
+      "start": 44.99045351473923,
+      "end": 46.125850340136054,
+      "duration": 1.1353968253968254,
+      "sha256": "2573bd8902b5b7a51979c9dc06cde0448395d3984df0e97948e55839cfe4cda4"
+    },
+    {
+      "id": "P23",
+      "file": "clips/P23.wav",
+      "startSample": 2049277,
+      "endSample": 2096963,
+      "start": 46.46886621315193,
+      "end": 47.55018140589569,
+      "duration": 1.081315192743764,
+      "sha256": "ee26f56101b77c883177e9d981001aa0711209eee8c6a7f01828c391761b1dd1"
+    },
+    {
+      "id": "P24",
+      "file": "clips/P24.wav",
+      "startSample": 2134179,
+      "endSample": 2189133,
+      "start": 48.39408163265306,
+      "end": 49.64020408163265,
+      "duration": 1.246122448979592,
+      "sha256": "ffeca5ec17cc52420a9ca183a57713ea960dff22b9943904ac86665d23fc2cd1"
+    },
+    {
+      "id": "P25",
+      "file": "clips/P25.wav",
+      "startSample": 2277373,
+      "endSample": 2324384,
+      "start": 51.64111111111111,
+      "end": 52.7071201814059,
+      "duration": 1.0660090702947846,
+      "sha256": "6987178ace2bbb274d8f0f61bfab077da547e1b974292a3915c84743017b06ef"
+    },
+    {
+      "id": "P26",
+      "file": "clips/P26.wav",
+      "startSample": 2347579,
+      "endSample": 2361623,
+      "start": 53.23308390022676,
+      "end": 53.55154195011338,
+      "duration": 0.3184580498866213,
+      "sha256": "ad18e34d36912c13914d26c4bd6908f5211045c908615a3620798054a18d5da6"
+    },
+    {
+      "id": "P27",
+      "file": "clips/P27.wav",
+      "startSample": 2372913,
+      "endSample": 2424067,
+      "start": 53.80755102040816,
+      "end": 54.96750566893424,
+      "duration": 1.159954648526077,
+      "sha256": "cc97c32add453a12b4a64fff5c39d664fc0f20a1b793b4fb9e5df21aded71e1c"
+    },
+    {
+      "id": "P28",
+      "file": "clips/P28.wav",
+      "startSample": 2453863,
+      "endSample": 2567001,
+      "start": 55.64315192743764,
+      "end": 58.20863945578231,
+      "duration": 2.565487528344671,
+      "sha256": "e32228a8986bedb53f979fec2bd311dfd0d7784a84d88b09bcffe8c3ef2aad24"
+    },
+    {
+      "id": "P29",
+      "file": "clips/P29.wav",
+      "startSample": 2586325,
+      "endSample": 2634168,
+      "start": 58.6468253968254,
+      "end": 59.731700680272105,
+      "duration": 1.084875283446712,
+      "sha256": "20ebb28be3bc95b65fc7f41732f1a6b12307e3cfba744d6f87491d3616789bc2"
+    },
+    {
+      "id": "P30",
+      "file": "clips/P30.wav",
+      "startSample": 2640998,
+      "endSample": 2668709,
+      "start": 59.88657596371882,
+      "end": 60.5149433106576,
+      "duration": 0.6283673469387755,
+      "sha256": "876021d6ebd6ad5969856c9c805d1350b604e5e7f323537ea07e31e855610528"
+    },
+    {
+      "id": "P31",
+      "file": "clips/P31.wav",
+      "startSample": 2680964,
+      "endSample": 2724565,
+      "start": 60.79283446712018,
+      "end": 61.781519274376414,
+      "duration": 0.9886848072562359,
+      "sha256": "0a08b5cdf7fffd8ceba17b195bc69ffaea0504297896a5f6f377c20c40f63738"
+    },
+    {
+      "id": "P32",
+      "file": "clips/P32.wav",
+      "startSample": 2733408,
+      "endSample": 2785141,
+      "start": 61.98204081632653,
+      "end": 63.15512471655329,
+      "duration": 1.1730839002267575,
+      "sha256": "6e53d7fa19a714660bb753c1028871d260a4c9e567ed0524f0bf5565d50a6417"
+    }
+  ],
+  "source": "337997__pyro13djt__sexy-vocals.wav",
+  "sourceSha256": "7aface8316769754c8222ed1f17268ba50a644285869a78bc9b39e36d090a3a3",
+  "url": "https://freesound.org/people/pyro13djt/sounds/337997/",
+  "license": "CC0"
+}

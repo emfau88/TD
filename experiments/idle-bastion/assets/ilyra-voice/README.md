@@ -9,7 +9,7 @@ In diesem Ordner lag keine Urheber-/Lizenzdatei; diese Dokumentation behauptet k
 Alle drei bestätigten Berührungen verwenden denselben Pool: keine direkte Wiederholung,
 keine Überlagerung, mindestens 2,5 Sekunden zwischen Starts. Nur die nächste Datei lädt
 in Ilyras Charakteransicht vor. Figurenwechsel, Schließen, Tabwechsel, Stimmenregler
-auf null und Stummschalten stoppen die Stimme. Kartenbefehle sind nicht vertont.
+auf null und Stummschalten stoppen die Stimme. Manuelle Kartenbefehle haben einen getrennten Pool (siehe unten).
 
 `levels.json` enthält SHA-256, EBU-R128-Lautheit und True Peak aller sieben Dateien und
 der zehn unveränderten Mara-Dateien. Zielwert ist deren Median −19,445 LUFS vor dem
@@ -26,3 +26,13 @@ python scripts/measure-tavern-voices.py --ffmpeg <Pfad-zu-ffmpeg.exe>
 
 Das erzeugt den Messbericht und `src/ilyra-voice-levels.ts` erneut; Audiodateien werden
 nur gelesen. [Browserprüfung](../../../../artifacts/idle-bastion/acceptance/ilyra-voice/REPORT.md).
+
+## Manuelle Befehle
+
+Zusätzlich senpai2/3, sweetheart2/3 und youremine1 bytegleich übernommen (206.400 Bytes).
+Auswahl und Bewegung verwenden senpai1/2/3 sowie sweetheart1/2/3, eine bestätigte
+manuelle Sternensalve youremine1. Die ursprünglichen sieben Tavernenclips bleiben
+unverändert ausgewählt. Derselbe Lautheitsreferenzwert, Befehlsfaktor 0,5 statt 0,7
+(rund 2,92 dB leiser als die Tavernenreaktionen), Stimmenregler und sieben Sekunden
+Mindestabstand gemeinsam mit Mara. Kein zusätzlicher Download beim Kartenstart.
+Automatische Zauber, automatische Einführungsauswahl und abgelehnte Befehle sind stumm.

@@ -193,7 +193,7 @@ export const english: Readonly<Record<string, string>> = {
   "Musik": "Music",
   "Effekte": "Effects",
   "Stimmen": "Voices",
-  "Stimmen regelt Bosslachen und die Tavernenreaktionen von Mara und Ilyra. Musik beginnt nach deinem ersten Tippen.": "Voices controls the boss's laughter and Mara's and Ilyra's tavern reactions. Music starts after your first tap.",
+  "Stimmen regelt Bosslachen, Tavernenreaktionen und Befehlsantworten von Mara und Ilyra. Musik beginnt nach deinem ersten Tippen.": "Voices controls boss laughter, tavern reactions and command responses from Mara and Ilyra. Music starts after your first tap.",
   "Ton testen": "Test audio",
   "Spielstand wird geladen …": "Loading saved game…",
   "Spielzeit": "Play time",
