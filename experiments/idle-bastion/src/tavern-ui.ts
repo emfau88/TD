@@ -309,7 +309,7 @@ export class TavernUI {
     this.text('story-step', t("{0} {1} · {2} / {3}", moment.heart, moment.heart === 1 ? t('HERZ') : t('HERZEN'), this.moment.beat + 1, moment.beats.length));
     this.text('line', beat.line);
     this.get('[data-do="story-next"]').textContent = t(this.moment.beat === moment.beats.length - 1 ? t('Moment beenden') : t('Weiter'));
-    this.animation.play(beat.clip); this.update();
+    this.animation.scene(beat.clip); this.update();
   }
   private nextBeat(): void {
     if (!this.moment) return;

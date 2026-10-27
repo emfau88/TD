@@ -1,3 +1,5 @@
+import { TOUCH_HEARTS } from './tavern-social';
+import type { TavernSceneClip } from './tavern-content';
 import type { Companion } from './tavern-social';
 import maraPortrait from '../assets/runtime/mara-portrait.webp';
 import ilyraPortrait from '../assets/runtime/ilyra-portrait.webp';
@@ -12,16 +14,17 @@ import metadata from '../assets/mara-tavern/mara-atlas.json';
 import reactions from '../assets/tavern-ui/mara-reactions.json';
 import reactionsUrl from '../assets/runtime/mara-reactions.webp';
 
-export type TouchRegion = 'hand' | 'hair' | 'shoulder';
+import type { TouchRegion } from './tavern-social';
+export type { TouchRegion } from './tavern-social';
 export const MARA_REACTIONS = {
-  hand: { minHearts: 0, x: 137, y: 381, label: 'Hand' },
-  hair: { minHearts: 0, x: 117, y: 220, label: 'Haare' },
-  shoulder: { minHearts: 0, x: 270, y: 242, label: 'Schulter' },
+  hand: { minHearts: TOUCH_HEARTS.hand, x: 137, y: 381, label: 'Hand' },
+  hair: { minHearts: TOUCH_HEARTS.hair, x: 117, y: 220, label: 'Haare' },
+  shoulder: { minHearts: TOUCH_HEARTS.shoulder, x: 270, y: 242, label: 'Schulter' },
 } as const;
 export const ILYRA_REACTIONS = {
-  hand: { minHearts: 0, x: 330, y: 423, label: 'Hand' },
-  hair: { minHearts: 0, x: 139, y: 171, label: 'Haare' },
-  shoulder: { minHearts: 0, x: 181, y: 258, label: 'Schulter' },
+  hand: { minHearts: TOUCH_HEARTS.hand, x: 330, y: 423, label: 'Hand' },
+  hair: { minHearts: TOUCH_HEARTS.hair, x: 139, y: 171, label: 'Haare' },
+  shoulder: { minHearts: TOUCH_HEARTS.shoulder, x: 181, y: 258, label: 'Schulter' },
 } as const;
 const atlases = {
   mara: { base: atlasUrl, shoulder:maraShoulder, extra: reactionsUrl, metadata, reactions, scale: 1, extraScale: 1, targetX: 192 },
@@ -77,6 +80,11 @@ export class TavernAnimation {
       if(generation===this.generation){this.loadingReactions=false;this.reactionLoad=undefined;this.changed();}
     });
     return this.reactionLoad;
+  }
+  scene(clip: TavernSceneClip): void {
+    if (!this.ready) return;
+    this.clip = clip === 'head' ? 'hair' : clip === 'touch' ? 'shoulder' : 'idle';
+    this.elapsed = 0; this.changed();
   }
   play(region: TouchRegion): void { if (this.ready && this.reactionsReady) { this.clip = region; this.elapsed = 0; this.changed(); } }
   stop(): void { this.active = false; this.generation++; cancelAnimationFrame(this.request); this.request = 0; this.ready = false; this.clip = 'idle'; this.base = undefined; this.extra = undefined; this.shoulder=undefined;this.reactionLoad=undefined;this.loadingReactions=false; }

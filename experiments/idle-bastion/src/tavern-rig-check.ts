@@ -14,7 +14,14 @@ battle.update(.05); battle.buildTavern(battle.recommendedTavernPlot!);
 battle.wispArrival.met = true; battle.discovery = 'off'; battle.upgradeTavern(); battle.recruitIlyra();
 battle.social.gifts = 20;
 const select = document.querySelector<HTMLSelectElement>('#review-hearts')!;
-function setHearts() { const count = Number(select.value); battle.social.points.mara = battle.social.points.ilyra = count ? SOCIAL.heartThresholds[count - 1]! : 0; }
+function setHearts() {
+  const count = Number(select.value);
+  for (const who of ['mara', 'ilyra'] as const) {
+    battle.social.points[who] = count ? SOCIAL.heartThresholds[count - 1]! : 0;
+    battle.social.reserves[who] = { talk: 3, touch: count >= 2 ? 3 : 0, clears: 0 };
+    battle.social.personal[who] = { clears: count >= 3 ? 30 : 0, claimed: count >= 3 };
+  }
+}
 setHearts(); await session.setPaused(true);
 const ui = new TavernUI({ session: () => session, presentation: rigPreviewPresentation, navigate: () => {} });
 session.onChange = () => ui.update();

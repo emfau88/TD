@@ -15,7 +15,7 @@ test('each earned heart unlocks one distinct three-beat moment, preserved across
     for (let replay = 0; replay < 3; replay++) {
       const moment: MaraMoment = maraMoment(restored.social.points.mara, index + 1)!;
       assert.ok(moment); assert.equal(moment.beats.length, 3);
-      assert.ok(moment.beats.every(beat => beat.line.length > 30 && ['hair', 'hand', 'shoulder'].includes(beat.clip)));
+      assert.ok(moment.beats.every(beat => beat.line.length > 30 && ['idle', 'head', 'touch'].includes(beat.clip)));
       assert.equal(maraMoment(restored.social.points.mara, index + 2), undefined);
     }
     assert.deepEqual(restored.snapshot(), snapshot);
@@ -29,7 +29,7 @@ test('all six relationship stages have distinct greetings and contextual actions
   assert.equal(new Set(points.map(p => maraStage(p).greeting)).size, 6);
   for (const p of points) {
     assert.notEqual(maraLine(p, 'talk', 'hand', 0), maraLine(p, 'talk', 'hand', 1));
-    assert.equal(maraLine(p, 'talk', 'hand', 0), maraLine(p, 'talk', 'hand', 2));
+    assert.equal(maraLine(p, 'talk', 'hand', 0), maraLine(p, 'talk', 'hand', 2 * (hearts(p) + 1)));
     for (const region of ['hand', 'hair', 'shoulder'] as const) assert.ok(maraLine(p, 'touch', region, 0).length > 20);
     assert.ok(maraLine(p, 'gift', 'hand', 0).length > 20);
   }

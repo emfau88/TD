@@ -1,3 +1,5 @@
+import { TOUCH_HEARTS } from './tavern-social';
+import { TOUCH_CLIPS, GESTURE_HEARTS, type TavernSceneClip } from './tavern-content';
 import type { Companion, Interaction } from './tavern-social';
 import type { TouchRegion } from './tavern-animation';
 import type { TavernPlayer, TavernPresentation } from './tavern-presentation';
@@ -101,14 +103,15 @@ export class RigPreviewPlayer implements TavernPlayer {
     const generation = this.generation;
     this.failed.delete('head'); this.failed.delete('touch'); delete this.canvas.dataset.reactionError;
     this.loadingReactions = true; this.changed();
-    this.preparing = Promise.all([this.buffer('head', 3), this.buffer('touch', 3)]).then(result => generation === this.generation && result.every(Boolean)).finally(() => {
+    this.preparing = Promise.all([this.buffer('head', 3), this.buffer('touch', 3), ...(this.count >= 4 ? [this.buffer('giggle', 3)] : [])]).then(result => generation === this.generation && result.every(Boolean)).finally(() => {
       if (generation === this.generation) { this.preparing = undefined; this.loadingReactions = !!this.pending; this.changed(); }
     });
     return this.preparing;
   }
-  play(region: TouchRegion) { this.enqueue(region === 'hair' ? 'head' : 'touch'); }
+  play(region: TouchRegion) { if (Object.hasOwn(TOUCH_HEARTS, region) && this.count >= TOUCH_HEARTS[region]) this.enqueue(TOUCH_CLIPS[region]); }
+  scene(clip: TavernSceneClip) { this.enqueue(clip); }
   act(action: Interaction) { this.enqueue(action === 'talk' ? 'head' : this.count >= 2 ? 'joy' : 'touch'); }
-  gesture(key: string) { if (this.count >= 2) this.enqueue(key); }
+  gesture(key: string) { if (Object.hasOwn(GESTURE_HEARTS, key) && this.count >= GESTURE_HEARTS[key]!) this.enqueue(key); }
   private enqueue(key: string) {
     if (!this.ready || !this.clips[key]) return;
     this.failed.delete(key); delete this.canvas.dataset.reactionError;
@@ -164,8 +167,10 @@ export class RigPreviewPlayer implements TavernPlayer {
   private prime() {
     if (!this.active || !this.clips.idle) return;
     const keep = this.workingSet();
-    const common = !this.pending ? ['head', 'touch', ...(this.count >= 2 ? ['joy'] : [])].filter(key => key !== this.key && !this.failed.has(key)) : [];
-    const warmPages = (key: string) => this.key === 'idle' ? key === 'head' ? 4 : 2 : ['head', 'touch', 'joy'].includes(this.key) ? 4 : 3;
+    const common = !this.pending ? ['head', 'touch', ...(this.count >= 2 ? ['joy'] : []), ...(this.count >= 4 ? ['giggle'] : [])].filter(key => key !== this.key && !this.failed.has(key)) : [];
+    // Divide spare decoded pages among previews; the active clip keeps priority.
+    const sparePerClip = Math.max(0, Math.floor((this.cache.limit - keep.size) / Math.max(1, common.length)));
+    const warmPages = (key: string) => Math.min(sparePerClip, this.key === 'idle' ? key === 'head' ? 4 : 2 : ['head', 'touch', 'joy'].includes(this.key) ? 4 : 3);
     for (const key of common) for (const url of this.urls(key, 0, warmPages(key))) keep.add(url);
     this.cache.pin(keep);
     if (this.pending) for (const url of this.urls(this.pending, 0, this.startPages(this.pending))) this.load(this.pending, url, 4);
@@ -248,8 +253,8 @@ export const rigPreviewPresentation: TavernPresentation = {
   },
   anchors: who => who === 'mara' ? { hair: { x: 143, y: 262 }, shoulder: { x: 350, y: 305 }, hand: { x: 370, y: 593 } } : { hair: { x: 174, y: 256 }, shoulder: { x: 342, y: 303 }, hand: { x: 384, y: 570 } },
   gestures: [
-    { key: 'giggle', label: 'Zusammen lachen', minHearts: 2, line: { mara: 'Gut, der war nicht schlecht. Erzähl ihn bloß nicht Wisp – sonst muss ich ihn morgen wieder hören.', ilyra: 'Damit habe ich nicht gerechnet. Du weißt, wie du mich zum Lachen bringst.' } },
-    { key: 'hip', label: 'Ein Kompliment machen', minHearts: 2, line: { mara: 'Na, wenn du mich so ansiehst, muss ja etwas dran sein.', ilyra: 'Du machst es mir nicht gerade leicht, ernst zu bleiben.' } },
-    { key: 'tease', label: 'Ein wenig necken', minHearts: 2, companion: 'mara', line: { mara: 'Pass nur auf. Den nächsten frechen Spruch habe ich schon bereit.', ilyra: '' } },
+    { key: 'giggle', label: 'Zusammen lachen', minHearts: GESTURE_HEARTS.giggle!, line: { mara: 'Gut, der war nicht schlecht. Erzähl ihn bloß nicht Wisp – sonst muss ich ihn morgen wieder hören.', ilyra: 'Damit habe ich nicht gerechnet. Du weißt, wie du mich zum Lachen bringst.' } },
+    { key: 'hip', label: 'Ein Kompliment machen', minHearts: GESTURE_HEARTS.hip!, line: { mara: 'Na, wenn du mich so ansiehst, muss ja etwas dran sein.', ilyra: 'Du machst es mir nicht gerade leicht, ernst zu bleiben.' } },
+    { key: 'tease', label: 'Ein wenig necken', minHearts: GESTURE_HEARTS.tease!, companion: 'mara', line: { mara: 'Pass nur auf. Den nächsten frechen Spruch habe ich schon bereit.', ilyra: '' } },
   ],
 };

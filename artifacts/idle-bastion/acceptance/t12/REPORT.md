@@ -9,3 +9,7 @@ Ausgangsbasis 67/67 bestehende Social-/Interaktions-/Save-/Sessiontests. Nach Um
 ## Geschenkvergabe und Aktionen
 
 35/35 gezielte Session-/Interaktionstests und TypeScript bestanden. Region und angezeigte Geschenkart bleiben über wartende Saves eindeutig; die Ausführung validiert erneut. Normale/persönliche Geschenkereignisse werden ausschließlich nach dauerhaftem Commit erzeugt. Kontrolliert verzögerte und abgewiesene Schreibvorgänge sowie Reload erzeugen keine verfrühten oder doppelten Meldungen.
+
+## Berührungen und Geschichte
+
+25/25 Content-/Social-/Atlas-Tests und TypeScript bestanden. Isolierter Chrome-UI-Test beider Figuren bei 0–5 Herzen: Schulter→touch, zusätzlich Haare→head und ab altem Herz 4 Hand→giggle. Kein Browserfehler; maximal 14 vorgehaltene Atlas-Seiten. Ein im ersten Test gefundener Cache-Überlauf beim zusätzlichen Vorladen wurde behoben. Erste Storyszene schaltet korrekt auf Ruhe statt Hand/Kichern. Desktop- und 390-px-Screenshots visuell geprüft: Figur, Dialog und Rückkehr zum Kampf sichtbar. Nachweis: touches-results.json und check-touches.mjs; Bilder touches-mara.png / touches-ilyra.png. Keine subjektive Nutzerabnahme behauptet.

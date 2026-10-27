@@ -1,3 +1,4 @@
+import type { TavernSceneClip } from './tavern-content';
 import type { Companion, Interaction } from './tavern-social';
 import type { TouchRegion } from './tavern-animation';
 
@@ -11,6 +12,7 @@ export interface TavernPlayer {
   stop(): void;
   prepareReactions(): Promise<boolean>;
   play(region: TouchRegion): void;
+  scene(clip: TavernSceneClip): void;
   setHearts?(count: number): void;
   act?(action: Interaction): void;
   gesture?(key: string): void;

@@ -4,7 +4,7 @@
 
 Fachliche Grundlage: [Umsetzungsplan mit Regeln, Quellen und Messwerten](docs/TAVERNE_DREI_HERZEN_PLAN.md). Die folgenden fünf Pakete ersetzen die bisherigen drei groben T12-Punkte. Alle Arbeitscheckboxen und der aktuelle Stand werden ausschließlich hier gepflegt; der Fachplan beschreibt Regeln und Prüffälle.
 
-**Aktueller Stand:** T12.1 und T12.2 geprüft. **Nächster Schritt:** T12.3 – Berührungen und Szenen. Paketcommits lokal auf Main; noch nicht gepusht.
+**Aktueller Stand:** T12.1 bis T12.3 geprüft. **Nächster Schritt:** T12.4 – Spielerführung und Oberfläche. Paketcommits lokal auf Main; noch nicht gepusht.
 
 - [x] Aktuellen Main-Stand und Abhängigkeiten von Geschenken, Herzschwellen, Zeitbudgets, Szenen, Berührungen, Hinweisen, Speicherung und Farming gelesen. 90 neue Engine-Farmzyklen und vorhandene Vorstoßdaten ausgewertet.
 - [x] Anschlusswunsch im Plan präzisiert: Freigeschaltete Berührungen bleiben dauerhaft gemeinsam nutzbar; Schulter/Kopf-Haare/Hand nutzen bei beiden Figuren touch/head/giggle. Die dritte Zone folgt erst mit Herz 4; Drei-Herzen-Grenze bleibt.
@@ -40,12 +40,14 @@ Nachweis T12.2: 35/35 gezielte Session-/Interaktionstests und TypeScript bestand
 
 Voraussetzung: T12.2. Schwerpunkt: Player-/Content-Schnittstellen, Rig-Player, beide Charakterinhalte und der dazu nötige Teil der TavernUI; Fachplan Abschnitte 4 und 5.
 
-- [ ] Kumulative Freischaltung anbinden: Herz 2 Schulter; Herz 3 zusätzlich Haare; vorhandene Herz-4-/5-Stände zusätzlich Hand. Alle freigeschalteten Hotspots gleichzeitig bedienbar halten, auch ohne Punktebudget und nach Figurenwechsel/Reload. Eine neue Zone füllt das gemeinsame Budget nicht auf.
-- [ ] Je Figur die feste aktive Zuordnung Schulter → touch, Haare → head, Hand → giggle herstellen. Vorhandene Clips passend nachladen; bei Ladefehlern keinen zweiten identischen Ersatzclip verwenden. Keine neuen Assets.
-- [ ] Aktives Berühren und Szenenwiedergabe trennen. Frühe Szenen mit Kopf/Ruhe darstellen; ernste Momente nicht durch Hand → Kichern verfälschen. Alle vorhandenen Texte, freigeschalteten Momente und früheren Gesprächsantworten erhalten; Gesten, Stimmen und automatische Idle passend begrenzen.
-- [ ] Beide Figuren gezielt auf 0/1/2/3 und bestehenden 4/5 Herzen prüfen: alle erlaubten Zonen, unterschiedliche aktive Clips, gesperrte Aktionen, Szenen und unveränderte Geschenk-/Gesprächsreaktionen. Technische Ergebnisse und kurzen Sichtvergleich dokumentieren.
+- [x] Kumulative Freischaltung anbinden: Herz 2 Schulter; Herz 3 zusätzlich Haare; vorhandene Herz-4-/5-Stände zusätzlich Hand. Alle freigeschalteten Hotspots gleichzeitig bedienbar halten, auch ohne Punktebudget und nach Figurenwechsel/Reload. Eine neue Zone füllt das gemeinsame Budget nicht auf.
+- [x] Je Figur die feste aktive Zuordnung Schulter → touch, Haare → head, Hand → giggle herstellen. Vorhandene Clips passend nachladen; bei Ladefehlern keinen zweiten identischen Ersatzclip verwenden. Keine neuen Assets.
+- [x] Aktives Berühren und Szenenwiedergabe trennen. Frühe Szenen mit Kopf/Ruhe darstellen; ernste Momente nicht durch Hand → Kichern verfälschen. Alle vorhandenen Texte, freigeschalteten Momente und früheren Gesprächsantworten erhalten; Gesten, Stimmen und automatische Idle passend begrenzen.
+- [x] Beide Figuren gezielt auf 0/1/2/3 und bestehenden 4/5 Herzen prüfen: alle erlaubten Zonen, unterschiedliche aktive Clips, gesperrte Aktionen, Szenen und unveränderte Geschenk-/Gesprächsreaktionen. Technische Ergebnisse und kurzen Sichtvergleich dokumentieren.
 
 **Abgeschlossen, wenn:** Berührungen sichtbar dauerhaft hinzukommen und die drei aktiven Stellen pro Figur unterschiedliche Bewegungen haben; die Story behält ihre passende Darstellung. Neue Beziehungen bleiben trotzdem auf drei Herzen begrenzt.
+
+Nachweis T12.3: 25/25 Content-/Social-/Atlas-Prüfungen und TypeScript bestanden. Chrome prüfte beide Figuren bei 0–5 Herzen, kumulative aktive Clips und Story-Ruhe ohne Seitenfehler; 1280-/390-px-Sichtprobe angesehen. Zusätzliches Vorladen bleibt innerhalb der bisherigen 14 Atlas-Seiten.
 
 **T12.4 · Spielerführung und Oberfläche vervollständigen**
 

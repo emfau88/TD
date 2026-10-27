@@ -5,29 +5,29 @@ import type { TavernMoment } from './tavern-content';
 /** Ilyra chooses trust slowly; her scenes share mechanics, never Mara's voice. */
 export const ILYRA_MOMENTS: readonly TavernMoment[] = [
   { heart: 1, title: 'Die Wache darf warten', beats: [
-    { line: 'Du siehst zu meinem Speer. Eine alte Gewohnheit: Ich lege ihn selten außer Reichweite. Hier kann ich es versuchen.', clip: 'shoulder' },
-    { line: 'Die anderen haben mich eingeladen, bevor sie wussten, ob ich bleiben würde. Das ist mir lange nicht passiert.', clip: 'hair' },
-    { line: 'Setz dich. Du musst die Stille nicht füllen. Ich finde es angenehm, sie mit dir zu teilen.', clip: 'hand' },
+    { line: 'Du siehst zu meinem Speer. Eine alte Gewohnheit: Ich lege ihn selten außer Reichweite. Hier kann ich es versuchen.', clip: 'head' },
+    { line: 'Die anderen haben mich eingeladen, bevor sie wussten, ob ich bleiben würde. Das ist mir lange nicht passiert.', clip: 'idle' },
+    { line: 'Setz dich. Du musst die Stille nicht füllen. Ich finde es angenehm, sie mit dir zu teilen.', clip: 'head' },
   ] },
   { heart: 2, title: 'Ein Stern ohne Namen', beats: [
-    { line: 'Nördlich vom Hain steht ein schiefer Baum. Von dort sieht man einen kleinen Stern, den das Feuer hier unten überstrahlt.', clip: 'hand' },
-    { line: 'Ich habe ihn auf jeder meiner Reisen gesucht. Solange ich ihn fand, fühlte ich mich weniger verloren. Seinen Namen kenne ich bis heute nicht.', clip: 'hair' },
-    { line: 'Wenn deine Wache vorbei ist, zeige ich ihn dir. Nur dir. Manche Geschichten erzähle ich lieber unter freiem Himmel.', clip: 'shoulder' },
+    { line: 'Nördlich vom Hain steht ein schiefer Baum. Von dort sieht man einen kleinen Stern, den das Feuer hier unten überstrahlt.', clip: 'head' },
+    { line: 'Ich habe ihn auf jeder meiner Reisen gesucht. Solange ich ihn fand, fühlte ich mich weniger verloren. Seinen Namen kenne ich bis heute nicht.', clip: 'head' },
+    { line: 'Wenn deine Wache vorbei ist, zeige ich ihn dir. Nur dir. Manche Geschichten erzähle ich lieber unter freiem Himmel.', clip: 'touch' },
   ] },
   { heart: 3, title: 'Was hinter der Ruhe liegt', beats: [
-    { line: 'Alle sagen, ich sei so ruhig. Meistens bedeutet das nur, dass ich meine Antwort länger mit mir herumtrage.', clip: 'shoulder' },
-    { line: 'Ich bin oft weitergezogen, bevor jemand fragen konnte, ob ich bleiben möchte. Abschiede schienen mir leichter, wenn ich sie selbst bestimmte.', clip: 'hair' },
-    { line: 'Hier ertappe ich mich dabei, für den nächsten Morgen zu planen. Du kommst in diesen Plänen erstaunlich oft vor.', clip: 'hand' },
+    { line: 'Alle sagen, ich sei so ruhig. Meistens bedeutet das nur, dass ich meine Antwort länger mit mir herumtrage.', clip: 'touch' },
+    { line: 'Ich bin oft weitergezogen, bevor jemand fragen konnte, ob ich bleiben möchte. Abschiede schienen mir leichter, wenn ich sie selbst bestimmte.', clip: 'head' },
+    { line: 'Hier ertappe ich mich dabei, für den nächsten Morgen zu planen. Du kommst in diesen Plänen erstaunlich oft vor.', clip: 'idle' },
   ] },
   { heart: 4, title: 'Ein Schritt auf dich zu', beats: [
-    { line: 'Heute habe ich mich gefragt, ob du wiederkommst. Dann fand ich es albern, nur auf dich zu warten. Also: Hier bin ich.', clip: 'hair' },
-    { line: 'Ich möchte deine Hand nehmen. Wenn du das auch möchtest. Einen mutigen Satz auszusprechen ist offenbar schwieriger als eine Wache zu übernehmen.', clip: 'hand' },
-    { line: 'Ja. So ist es gut. Wir können später noch zu unserem Stern gehen. Diesen Moment möchte ich erst einmal behalten.', clip: 'shoulder' },
+    { line: 'Heute habe ich mich gefragt, ob du wiederkommst. Dann fand ich es albern, nur auf dich zu warten. Also: Hier bin ich.', clip: 'head' },
+    { line: 'Ich möchte deine Hand nehmen. Wenn du das auch möchtest. Einen mutigen Satz auszusprechen ist offenbar schwieriger als eine Wache zu übernehmen.', clip: 'touch' },
+    { line: 'Ja. So ist es gut. Wir können später noch zu unserem Stern gehen. Diesen Moment möchte ich erst einmal behalten.', clip: 'touch' },
   ] },
   { heart: 5, title: 'Hier möchte ich bleiben', beats: [
-    { line: 'Früher habe ich morgens zuerst nach dem Weg aus einem Ort gesucht. Heute habe ich als Erstes nach dir gesehen.', clip: 'hair' },
-    { line: 'Ich bleibe nicht, weil du eine Wächterin brauchst. Ich bleibe, weil ich dich liebe. Das wollte ich klar sagen, ohne mich hinter schönen Sternengeschichten zu verstecken.', clip: 'hand' },
-    { line: 'Und morgen? Morgen sitzen wir wieder hier. Du darfst mir alles erzählen. Oder gar nichts. Ich bin gern bei dir.', clip: 'shoulder' },
+    { line: 'Früher habe ich morgens zuerst nach dem Weg aus einem Ort gesucht. Heute habe ich als Erstes nach dir gesehen.', clip: 'head' },
+    { line: 'Ich bleibe nicht, weil du eine Wächterin brauchst. Ich bleibe, weil ich dich liebe. Das wollte ich klar sagen, ohne mich hinter schönen Sternengeschichten zu verstecken.', clip: 'touch' },
+    { line: 'Und morgen? Morgen sitzen wir wieder hier. Du darfst mir alles erzählen. Oder gar nichts. Ich bin gern bei dir.', clip: 'touch' },
   ] },
 ];
 const stages = [
@@ -44,9 +44,10 @@ export function ilyraMoment(points: number, heart: number): TavernMoment | undef
 }
 export function ilyraLine(points: number, action: Interaction, region: TouchRegion, turn: number): string {
   const stage = ilyraStage(points);
-  return action === 'talk' ? stage.talk[Math.abs(turn) % stage.talk.length]! : action === 'gift' ? stage.gift : stage[region];
+  const talks = [stage, ...stages.slice(0, hearts(points))].flatMap(entry => entry.talk);
+  return action === 'talk' ? talks[Math.abs(turn) % talks.length]! : action === 'gift' ? stage.gift : stage[region];
 }
 export function nextIlyraMoment(points: number): { title: string; points: number } | undefined {
   const count = hearts(points), moment = ILYRA_MOMENTS[count];
-  return moment ? { title: moment.title, points: SOCIAL.heartThresholds[count]! } : undefined;
+  return count < 3 && moment ? { title: moment.title, points: SOCIAL.heartThresholds[count]! } : undefined;
 }

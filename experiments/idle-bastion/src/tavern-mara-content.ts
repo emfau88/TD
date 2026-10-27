@@ -6,29 +6,29 @@ export type MaraMoment = TavernMoment;
 /** Five authored rewards; replay is read-only, unlocked entirely by saved points. */
 export const MARA_MOMENTS: readonly MaraMoment[] = [
   { heart: 1, title: 'Ein Platz am Feuer', beats: [
-    { line: 'Den Stuhl neben mir halte ich sonst für meine Werkzeugtasche frei. Heute darfst du dort sitzen. Die Tasche wird es überleben.', clip: 'shoulder' },
-    { line: 'Als ich in den Hain kam, kannte ich hier niemanden. Ich habe die ganze erste Nacht an einer kaputten Laterne geschraubt, nur um beschäftigt auszusehen.', clip: 'hair' },
-    { line: 'Du musst übrigens nichts repariert haben wollen, um vorbeizukommen. Für dich ist hier auch einfach so ein Platz.', clip: 'hand' },
+    { line: 'Den Stuhl neben mir halte ich sonst für meine Werkzeugtasche frei. Heute darfst du dort sitzen. Die Tasche wird es überleben.', clip: 'head' },
+    { line: 'Als ich in den Hain kam, kannte ich hier niemanden. Ich habe die ganze erste Nacht an einer kaputten Laterne geschraubt, nur um beschäftigt auszusehen.', clip: 'idle' },
+    { line: 'Du musst übrigens nichts repariert haben wollen, um vorbeizukommen. Für dich ist hier auch einfach so ein Platz.', clip: 'head' },
   ] },
   { heart: 2, title: 'Mein Glücksstück', beats: [
-    { line: 'Meine erste selbst gebaute Uhr ging jeden Tag sieben Minuten nach. Ich habe sie trotzdem jahrelang getragen. Furchtbar unvernünftig, ich weiß.', clip: 'hand' },
-    { line: 'Das kleine Zahnrad daraus habe ich behalten. Es erinnert mich daran, dass etwas nicht perfekt sein muss, um mir wichtig zu sein.', clip: 'hair' },
-    { line: 'Dass du wiederkommst, ist mir auch wichtig. So. Jetzt weißt du es. Und wehe, du grinst zu breit.', clip: 'shoulder' },
+    { line: 'Meine erste selbst gebaute Uhr ging jeden Tag sieben Minuten nach. Ich habe sie trotzdem jahrelang getragen. Furchtbar unvernünftig, ich weiß.', clip: 'head' },
+    { line: 'Das kleine Zahnrad daraus habe ich behalten. Es erinnert mich daran, dass etwas nicht perfekt sein muss, um mir wichtig zu sein.', clip: 'head' },
+    { line: 'Dass du wiederkommst, ist mir auch wichtig. So. Jetzt weißt du es. Und wehe, du grinst zu breit.', clip: 'touch' },
   ] },
   { heart: 3, title: 'Was ich nicht reparieren kann', beats: [
-    { line: 'Wenn die Türme stehen, tue ich gern so, als hätte ich alles im Griff. Meistens überzeugt das sogar mich selbst.', clip: 'shoulder' },
-    { line: 'Aber wenn der Kern getroffen wird, habe ich Angst. Nicht um meine Werkstatt. Um die Leute, die wir hier nach Hause gebracht haben. Um dich.', clip: 'hair' },
-    { line: 'Du brauchst mir nichts zu versprechen. Bleib einfach einen Moment. Ich muss bei dir wohl nicht immer die Unerschrockene spielen.', clip: 'hand' },
+    { line: 'Wenn die Türme stehen, tue ich gern so, als hätte ich alles im Griff. Meistens überzeugt das sogar mich selbst.', clip: 'touch' },
+    { line: 'Aber wenn der Kern getroffen wird, habe ich Angst. Nicht um meine Werkstatt. Um die Leute, die wir hier nach Hause gebracht haben. Um dich.', clip: 'head' },
+    { line: 'Du brauchst mir nichts zu versprechen. Bleib einfach einen Moment. Ich muss bei dir wohl nicht immer die Unerschrockene spielen.', clip: 'idle' },
   ] },
   { heart: 4, title: 'Bleib noch ein bisschen', beats: [
-    { line: 'Ich habe die Werkstatt heute früher zugemacht. Nein, es ist nichts kaputt. Das ist genau der Punkt: Ich wollte Zeit für dich haben.', clip: 'hair' },
-    { line: 'Gib mir deine Hand. Nur wenn du möchtest. Es ist angenehm, einmal nichts festhalten zu müssen, das auseinanderfallen könnte.', clip: 'hand' },
-    { line: 'So gefällt mir das. Keine Pläne, keine Heldengeschichten. Du neben mir. Wenn du noch bleibst, beschwere ich mich bestimmt nicht.', clip: 'shoulder' },
+    { line: 'Ich habe die Werkstatt heute früher zugemacht. Nein, es ist nichts kaputt. Das ist genau der Punkt: Ich wollte Zeit für dich haben.', clip: 'head' },
+    { line: 'Gib mir deine Hand. Nur wenn du möchtest. Es ist angenehm, einmal nichts festhalten zu müssen, das auseinanderfallen könnte.', clip: 'touch' },
+    { line: 'So gefällt mir das. Keine Pläne, keine Heldengeschichten. Du neben mir. Wenn du noch bleibst, beschwere ich mich bestimmt nicht.', clip: 'touch' },
   ] },
   { heart: 5, title: 'Unser Morgen', beats: [
-    { line: 'Ich habe einen Plan für morgen. Erstaunlicherweise kommen darin weder Zahnräder noch Geschütztürme vor.', clip: 'hair' },
-    { line: 'Ich möchte mit dir frühstücken. Und herausfinden, ob du morgens genauso gut darin bist, mich zum Lächeln zu bringen.', clip: 'hand' },
-    { line: 'Ich habe mich in dich verliebt. Da, jetzt ist es raus. Für einmal muss ich daran nichts verbessern. Ich möchte einfach, dass du es weißt.', clip: 'shoulder' },
+    { line: 'Ich habe einen Plan für morgen. Erstaunlicherweise kommen darin weder Zahnräder noch Geschütztürme vor.', clip: 'head' },
+    { line: 'Ich möchte mit dir frühstücken. Und herausfinden, ob du morgens genauso gut darin bist, mich zum Lächeln zu bringen.', clip: 'touch' },
+    { line: 'Ich habe mich in dich verliebt. Da, jetzt ist es raus. Für einmal muss ich daran nichts verbessern. Ich möchte einfach, dass du es weißt.', clip: 'touch' },
   ] },
 ];
 const stages = [
@@ -45,9 +45,10 @@ export function maraMoment(points: number, heart: number): MaraMoment | undefine
 }
 export function maraLine(points: number, action: Interaction, region: TouchRegion, turn: number): string {
   const stage = maraStage(points);
-  return action === 'talk' ? stage.talk[Math.abs(turn) % stage.talk.length]! : action === 'gift' ? stage.gift : stage[region];
+  const talks = [stage, ...stages.slice(0, hearts(points))].flatMap(entry => entry.talk);
+  return action === 'talk' ? talks[Math.abs(turn) % talks.length]! : action === 'gift' ? stage.gift : stage[region];
 }
 export function nextMaraMoment(points: number): { title: string; points: number } | undefined {
   const count = hearts(points), moment = MARA_MOMENTS[count];
-  return moment ? { title: moment.title, points: SOCIAL.heartThresholds[count]! } : undefined;
+  return count < 3 && moment ? { title: moment.title, points: SOCIAL.heartThresholds[count]! } : undefined;
 }
