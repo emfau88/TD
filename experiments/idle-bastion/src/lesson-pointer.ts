@@ -32,7 +32,7 @@ export class LessonPointer {
     if (!inline) {
       const overlapsCopy = () => {
         const a = this.arrow.getBoundingClientRect();
-        return Array.from(document.querySelectorAll<HTMLElement>('.app-header, .onboarding-card, .wisp-arrival, .context-panel, .combat-toast, .placement-help, .fallback-note'))
+        return Array.from(document.querySelectorAll<HTMLElement>('.app-header, #tutorial-guide, .onboarding-card, .wisp-arrival, .context-panel, .combat-toast, .placement-help, .fallback-note'))
           .filter(e => !e.hidden && e.getClientRects().length && !e.contains(button ?? null))
           .some(e => { const r = e.getBoundingClientRect(); return a.left < r.right && a.right > r.left && a.top < r.bottom && a.bottom > r.top; });
       };

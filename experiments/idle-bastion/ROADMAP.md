@@ -1,5 +1,13 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Kompakte gemeinsame Tutorialführung und Pauseknopf · 28.10.2026:**
+
+- [x] Vorhandene Hinweise in einem kompakten Bereich zusammengeführt; Tutorialstand und nächstes Ziel bleiben zwischen den Schritten sichtbar, keine konkurrierenden Kacheln.
+- [x] Frosttipps, Wellenziele, echte Aktionsbuttons, Bau-/Menüführung und Speicherfortsetzung erhalten. Optionale Werkstatt-II-Empfehlung erst nach Tutorialende.
+- [x] 27/27 gezielte Tests, Produktionsbuild, 33 Entwicklungs-Browserfälle sowie Produktionsabläufe mit echtem Einstieg bei 390/320 px und sieben späteren Situationen bestanden; Desktop/Querformat/Touch und DE/EN geprüft. [Bericht und Screenshots](../../artifacts/idle-bastion/acceptance/tutorial-guide-2026-10-28/REPORT.md).
+- [x] Pauseknopf zentriert oben bei Wellen-/Ansichtssteuerung; Desktop/Mobil geprüft. Mobile Position per Screenshot vom Nutzer freigegeben, anschließend ausdrücklich Commit und Push beauftragt.
+- [ ] Geprüften Stand auf Main veröffentlichen und Live-Prüfung dokumentieren.
+
 **Turmwerte und Tutorial-Übergang · 27.10.2026, Nutzerwunsch:**
 
 - [x] Kleine Werte-Icons für Schaden, Reichweite, Angriffsintervall und Abschüsse im bestehenden Pixel-SVG-Stil ergänzen; Beschriftungen und echte Werte lesbar halten.

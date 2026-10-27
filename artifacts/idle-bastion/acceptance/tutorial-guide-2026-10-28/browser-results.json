@@ -1,0 +1,1025 @@
+[
+  {
+    "height": 93.28125,
+    "lang": "en",
+    "kind": "saving",
+    "source": "onboarding-card",
+    "text": "Tutorial 8/14\nOpen your workshop\n\nTap the new building on the map. Research Frost Setting there for 60 gold.",
+    "x": 8,
+    "bottom": 158.28125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 269,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": true
+    },
+    "model": {
+      "stage": "research",
+      "discovery": "wisp"
+    },
+    "cardWidth": 294,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 93.28125,
+    "lang": "en",
+    "kind": "frost",
+    "source": "onboarding-card",
+    "text": "Tutorial 9/14\nChoose the Frost Crystal\n\nTap the Frost Crystal below. Then we'll choose a spot with overlapping range.",
+    "x": 8,
+    "bottom": 158.28125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 269,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": true
+    },
+    "model": {
+      "stage": "frost",
+      "discovery": "wisp"
+    },
+    "cardWidth": 294,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 125.125,
+    "lang": "en",
+    "kind": "after-frost",
+    "source": "goal",
+    "text": "Tutorial 10/14\nFrost and arrows\nFrost keeps enemies within arrow range longer.\n›\n\nBeat wave 5 → Wisp · 1/5 cleared",
+    "x": 8,
+    "bottom": 190.125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 269,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "wisp"
+    },
+    "cardWidth": 294,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 125.125,
+    "lang": "en",
+    "kind": "wait-wisp",
+    "source": "goal",
+    "text": "Tutorial 10/14\nFrost and arrows\nFrost keeps enemies within arrow range longer.\n›\n\nBeat wave 5 → Wisp · 4/5 cleared",
+    "x": 8,
+    "bottom": 190.125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 269,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "wisp"
+    },
+    "cardWidth": 294,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 154.078125,
+    "lang": "en",
+    "kind": "wisp",
+    "source": "wisp-arrival",
+    "text": "Tutorial 10/14\nWisp · New to the grove\n\nI'm Wisp, and I'll handle the supplies. Your battles now earn 10% more gold. It all happens automatically.\n\nWelcome, Wisp!",
+    "x": 8,
+    "bottom": 219.078125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 269,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": true
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "wisp"
+    },
+    "cardWidth": 294,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 140.28125,
+    "lang": "en",
+    "kind": "mara",
+    "source": "discovery-card",
+    "text": "Tutorial 11/14\nMara's Overclock\n\nMara makes one tower fire 50% faster for 8 seconds.\n\nShow Overclock\nLater",
+    "x": 8,
+    "bottom": 205.28125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 269,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": true
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "mara-wait"
+    },
+    "cardWidth": 294,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 73.9375,
+    "lang": "en",
+    "kind": "mara-effect",
+    "source": "discovery-card",
+    "text": "Tutorial 11/14\nOverclock · 8 s\n\n+50% fire rate · Golden ring around the tower\n\n×",
+    "x": 8,
+    "bottom": 138.9375,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 269,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "mara-effect"
+    },
+    "cardWidth": 294,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 134.1875,
+    "lang": "en",
+    "kind": "mara-controls",
+    "source": "discovery-card",
+    "text": "Tutorial 12/14\nMara supports you automatically\n\nPortrait: auto-cast, spell and movement.\n\nContinue",
+    "x": 8,
+    "bottom": 199.1875,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 269,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "mara-controls"
+    },
+    "cardWidth": 294,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 157.078125,
+    "lang": "en",
+    "kind": "cannon",
+    "source": "quick-win-hint",
+    "text": "Tutorial 13/14\nNew: the Stone Slinger\n\nArea damage hits several enemies. Frost keeps groups in the impact area longer. Building one is optional.\n\nView in build catalogue\nLater",
+    "x": 8,
+    "bottom": 222.078125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 269,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "cannon"
+    },
+    "cardWidth": 294,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 125.125,
+    "lang": "en",
+    "kind": "wait-warehouse",
+    "source": "goal",
+    "text": "Tutorial 14/14\nStrengthen your defense\nBuild or upgrade towers. The Storehouse follows after wave 8.\n›\n\nBeat wave 8 → Storehouse · 5/8 cleared",
+    "x": 8,
+    "bottom": 190.125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 269,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "warehouse"
+    },
+    "cardWidth": 294,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 140.28125,
+    "lang": "en",
+    "kind": "warehouse",
+    "source": "discovery-card",
+    "text": "Tutorial 14/14\nNew: the Storehouse\n\nStores offline gold for up to 8 hours instead of 2. Optional · 650 gold.\n\nLater",
+    "x": 8,
+    "bottom": 205.28125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 269,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "warehouse"
+    },
+    "cardWidth": 294,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 110.078125,
+    "lang": "de",
+    "kind": "saving",
+    "source": "onboarding-card",
+    "text": "Einführung 8/14\nÖffne deine Werkstatt\n\nTippe auf das neue Gebäude auf der Karte. Dort erforschst du die Frostfassung für 60 Gold.",
+    "x": 8,
+    "bottom": 175.078125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 199,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": true
+    },
+    "model": {
+      "stage": "research",
+      "discovery": "wisp"
+    },
+    "cardWidth": 224,
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "lang": "de"
+    }
+  },
+  {
+    "height": 110.078125,
+    "lang": "de",
+    "kind": "frost",
+    "source": "onboarding-card",
+    "text": "Einführung 9/14\nWähle den Frostkristall\n\nTippe unten auf den Frostkristall. Danach wählen wir einen Platz mit überlappender Reichweite.",
+    "x": 8,
+    "bottom": 175.078125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 199,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": true
+    },
+    "model": {
+      "stage": "frost",
+      "discovery": "wisp"
+    },
+    "cardWidth": 224,
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "lang": "de"
+    }
+  },
+  {
+    "height": 125.125,
+    "lang": "de",
+    "kind": "after-frost",
+    "source": "goal",
+    "text": "Einführung 10/14\nFrost und Pfeile\nFrost hält Gegner länger in Reichweite deiner Pfeile.\n›\n\nWelle 5 meistern → Wisp · 1/5 geschafft",
+    "x": 8,
+    "bottom": 190.125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 199,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "wisp"
+    },
+    "cardWidth": 224,
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "lang": "de"
+    }
+  },
+  {
+    "height": 125.125,
+    "lang": "de",
+    "kind": "wait-wisp",
+    "source": "goal",
+    "text": "Einführung 10/14\nFrost und Pfeile\nFrost hält Gegner länger in Reichweite deiner Pfeile.\n›\n\nWelle 5 meistern → Wisp · 4/5 geschafft",
+    "x": 8,
+    "bottom": 190.125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 199,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "wisp"
+    },
+    "cardWidth": 224,
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "lang": "de"
+    }
+  },
+  {
+    "height": 170.875,
+    "lang": "de",
+    "kind": "wisp",
+    "source": "wisp-arrival",
+    "text": "Einführung 10/14\nWisp · Neu im Hain\n\nIch bin Wisp und kümmere mich um die Vorräte. Deine Kämpfe bringen ab jetzt 10 % mehr Gold. Das läuft automatisch.\n\nWillkommen, Wisp!",
+    "x": 8,
+    "bottom": 235.875,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 199,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": true
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "wisp"
+    },
+    "cardWidth": 224,
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "lang": "de"
+    }
+  },
+  {
+    "height": 140.28125,
+    "lang": "de",
+    "kind": "mara",
+    "source": "discovery-card",
+    "text": "Einführung 11/14\nMaras Übertakten\n\nMara lässt einen Turm 8 Sekunden lang 50 % schneller schießen.\n\nÜbertakten zeigen\nSpäter",
+    "x": 8,
+    "bottom": 205.28125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 199,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": true
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "mara-wait"
+    },
+    "cardWidth": 224,
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "lang": "de"
+    }
+  },
+  {
+    "height": 89.328125,
+    "lang": "de",
+    "kind": "mara-effect",
+    "source": "discovery-card",
+    "text": "Einführung 11/14\nÜbertakten · 8 s\n\n+50 % Feuerrate · goldener Ring am Turm\n\n×",
+    "x": 8,
+    "bottom": 154.328125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 199,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "mara-effect"
+    },
+    "cardWidth": 224,
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "lang": "de"
+    }
+  },
+  {
+    "height": 149.578125,
+    "lang": "de",
+    "kind": "mara-controls",
+    "source": "discovery-card",
+    "text": "Einführung 12/14\nMara unterstützt automatisch\n\nPorträt: Automatik, Zauber und Bewegung.\n\nWeiter",
+    "x": 8,
+    "bottom": 214.578125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 199,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "mara-controls"
+    },
+    "cardWidth": 224,
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "lang": "de"
+    }
+  },
+  {
+    "height": 173.875,
+    "lang": "de",
+    "kind": "cannon",
+    "source": "quick-win-hint",
+    "text": "Einführung 13/14\nNeu: die Steinschleuder\n\nFlächenschaden trifft mehrere Gegner. Mit Frost bleiben Gruppen länger im Trefferbereich. Der Bau ist optional.\n\nIm Baukatalog ansehen\nSpäter",
+    "x": 8,
+    "bottom": 238.875,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 199,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "cannon"
+    },
+    "cardWidth": 224,
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "lang": "de"
+    }
+  },
+  {
+    "height": 158.359375,
+    "lang": "de",
+    "kind": "wait-warehouse",
+    "source": "goal",
+    "text": "Einführung 14/14\nVerteidigung ausbauen\nBaue Türme oder werte sie auf. Das Lager folgt nach Welle 8.\n›\n\nWelle 8 meistern → Vorratslager · 5/8 geschafft",
+    "x": 8,
+    "bottom": 223.359375,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 199,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "warehouse"
+    },
+    "cardWidth": 224,
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "lang": "de"
+    }
+  },
+  {
+    "height": 140.28125,
+    "lang": "de",
+    "kind": "warehouse",
+    "source": "discovery-card",
+    "text": "Einführung 14/14\nNeu: Vorratslager\n\nSpeichert Offline-Gold bis zu 8 statt 2 Stunden. Optional · 650 Gold.\n\nSpäter",
+    "x": 8,
+    "bottom": 205.28125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 199,
+      "y": 7,
+      "w": 35,
+      "h": 40,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "warehouse"
+    },
+    "cardWidth": 224,
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "lang": "de"
+    }
+  },
+  {
+    "height": 98.4375,
+    "lang": "en",
+    "kind": "saving",
+    "source": "onboarding-card",
+    "text": "Tutorial 8/14\nOpen your workshop\n\nTap the new building on the map. Research Frost Setting there for 60 gold.",
+    "x": 14,
+    "bottom": 175.4375,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 1280,
+      "y": 12,
+      "w": 42,
+      "h": 42,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": true
+    },
+    "model": {
+      "stage": "research",
+      "discovery": "wisp"
+    },
+    "cardWidth": 320,
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 98.4375,
+    "lang": "en",
+    "kind": "frost",
+    "source": "onboarding-card",
+    "text": "Tutorial 9/14\nChoose the Frost Crystal\n\nTap the Frost Crystal below. Then we'll choose a spot with overlapping range.",
+    "x": 14,
+    "bottom": 175.4375,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 1280,
+      "y": 12,
+      "w": 42,
+      "h": 42,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": true
+    },
+    "model": {
+      "stage": "frost",
+      "discovery": "wisp"
+    },
+    "cardWidth": 320,
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 113.484375,
+    "lang": "en",
+    "kind": "after-frost",
+    "source": "goal",
+    "text": "Tutorial 10/14\nFrost and arrows\nFrost keeps enemies within arrow range longer.\n›\n\nBeat wave 5 → Wisp · 1/5 cleared",
+    "x": 14,
+    "bottom": 190.484375,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 1280,
+      "y": 12,
+      "w": 42,
+      "h": 42,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "wisp"
+    },
+    "cardWidth": 320,
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 113.484375,
+    "lang": "en",
+    "kind": "wait-wisp",
+    "source": "goal",
+    "text": "Tutorial 10/14\nFrost and arrows\nFrost keeps enemies within arrow range longer.\n›\n\nBeat wave 5 → Wisp · 4/5 cleared",
+    "x": 14,
+    "bottom": 190.484375,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 1280,
+      "y": 12,
+      "w": 42,
+      "h": 42,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "wisp"
+    },
+    "cardWidth": 320,
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 144.4375,
+    "lang": "en",
+    "kind": "wisp",
+    "source": "wisp-arrival",
+    "text": "Tutorial 10/14\nWisp · New to the grove\n\nI'm Wisp, and I'll handle the supplies. Your battles now earn 10% more gold. It all happens automatically.\n\nWelcome, Wisp!",
+    "x": 14,
+    "bottom": 221.4375,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 1280,
+      "y": 12,
+      "w": 42,
+      "h": 42,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": true
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "wisp"
+    },
+    "cardWidth": 320,
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 129.640625,
+    "lang": "en",
+    "kind": "mara",
+    "source": "discovery-card",
+    "text": "Tutorial 11/14\nMara's Overclock\n\nMara makes one tower fire 50% faster for 8 seconds.\n\nShow Overclock\nLater",
+    "x": 14,
+    "bottom": 206.640625,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 1280,
+      "y": 12,
+      "w": 42,
+      "h": 42,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": true
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "mara-wait"
+    },
+    "cardWidth": 320,
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 77.9375,
+    "lang": "en",
+    "kind": "mara-effect",
+    "source": "discovery-card",
+    "text": "Tutorial 11/14\nOverclock · 8 s\n\n+50% fire rate · Golden ring around the tower\n\n×",
+    "x": 14,
+    "bottom": 154.9375,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 1280,
+      "y": 12,
+      "w": 42,
+      "h": 42,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "mara-effect"
+    },
+    "cardWidth": 320,
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 120.9375,
+    "lang": "en",
+    "kind": "mara-controls",
+    "source": "discovery-card",
+    "text": "Tutorial 12/14\nMara supports you automatically\n\nPortrait: auto-cast, spell and movement.\n\nContinue",
+    "x": 14,
+    "bottom": 197.9375,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 1280,
+      "y": 12,
+      "w": 42,
+      "h": 42,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "mara-controls"
+    },
+    "cardWidth": 320,
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 163.234375,
+    "lang": "en",
+    "kind": "cannon",
+    "source": "quick-win-hint",
+    "text": "Tutorial 13/14\nNew: the Stone Slinger\n\nArea damage hits several enemies. Frost keeps groups in the impact area longer. Building one is optional.\n\nView in build catalogue\nLater",
+    "x": 14,
+    "bottom": 240.234375,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 1280,
+      "y": 12,
+      "w": 42,
+      "h": 42,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "cannon"
+    },
+    "cardWidth": 320,
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 130.28125,
+    "lang": "en",
+    "kind": "wait-warehouse",
+    "source": "goal",
+    "text": "Tutorial 14/14\nStrengthen your defense\nBuild or upgrade towers. The Storehouse follows after wave 8.\n›\n\nBeat wave 8 → Storehouse · 5/8 cleared",
+    "x": 14,
+    "bottom": 207.28125,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 1280,
+      "y": 12,
+      "w": 42,
+      "h": 42,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "warehouse"
+    },
+    "cardWidth": 320,
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "lang": "en"
+    }
+  },
+  {
+    "height": 146.4375,
+    "lang": "en",
+    "kind": "warehouse",
+    "source": "discovery-card",
+    "text": "Tutorial 14/14\nNew: the Storehouse\n\nStores offline gold for up to 8 hours instead of 2. Optional · 650 gold.\n\nLater",
+    "x": 14,
+    "bottom": 223.4375,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 1280,
+      "y": 12,
+      "w": 42,
+      "h": 42,
+      "dx": 0,
+      "dy": 0,
+      "afterWave": true,
+      "disabled": false
+    },
+    "model": {
+      "stage": "done",
+      "discovery": "warehouse"
+    },
+    "cardWidth": 320,
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "lang": "en"
+    }
+  }
+]

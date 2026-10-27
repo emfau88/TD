@@ -1,5 +1,26 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Gemeinsame Tutorialführung und Pause — 28.10.2026
+
+`TutorialGuide` führt die vorhandenen Hinweis-Elemente nach deren Aktualisierung
+in einer gemeinsamen kompakten Kachel zusammen. Die echten Buttons und Listener
+bleiben erhalten. Lernaktionen, Wisp, Boss-/Niederlagenhinweise und Entdeckungen
+haben Vorrang vor kurzen Kampftipps und dem normalen Ziel. Während der Wartewellen
+bleiben der Zähler und das konkrete Wellenziel sichtbar; der Frosthinweis bleibt
+lesbar. Die optionale Werkstatt-II-Empfehlung wartet bis zum Tutorialende, ohne
+sie als gelesen zu verbuchen.
+
+Bei geöffnetem Kontextmenü beziehungsweise beim Platzieren steht der Zähler im
+vorhandenen Bedienbereich statt in einer zweiten Kachel. Dialoge und Rückkehr-
+belege verdecken die Anleitung; nach Abschluss/Überspringen kehren die normalen
+Hinweise zurück. Die drei ersten Mara-Szenen behalten ihre Porträtdarstellung.
+Keine neuen Lernpausen, Fortschrittsregeln oder Speicherfelder.
+
+Der bestehende Pauseknopf sitzt in der Kopfzeile zwischen Chronik und Vollbild
+(auf schmalen Handys direkt neben der Wellenanzeige). Zentrierte SVG-Symbole für
+Pause/Fortsetzen und `aria-pressed` spiegeln denselben gespeicherten Pausenzustand.
+[Prüfbericht](../../../artifacts/idle-bastion/acceptance/tutorial-guide-2026-10-28/REPORT.md).
+
 ## Aktive Echtzeit und Speichergrenzen — 26.10.2026
 
 Phasers Delta-Glättung ist im Hauptspiel ausgeschaltet: langsame Vordergrundframes

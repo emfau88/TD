@@ -14,11 +14,11 @@ export function updateDiscoveryUI(live: BattleSession, contextOpen: boolean, pla
     el('wave-mode').textContent = t('Lernpause'); el('pause-state').textContent = t('LERNPAUSE');
     el('battle-phase').textContent = t(step === 'wisp' ? t('Wisp begrüßen · nächste Welle wartet') : t('Übertakten ansehen · Kampf wartet'));
   }
-  let title = '', text = '', next = '', later = t('Später entdecken');
+  let title = '', text = '', next = '', later = t('Später');
   switch (step) {
     case 'mara-wait':
-      title = t('Jetzt zeigt Mara Übertakten');
-      text = t('Ein Turm schießt 8 Sekunden lang 50 % schneller. Nach deinem Tipp wartet Mara auf Gegner und zeigt dir den Zauber.');
+      title = t('Maras Übertakten');
+      text = t('Mara lässt einen Turm 8 Sekunden lang 50 % schneller schießen.');
       next = t('Übertakten zeigen'); break;
     case 'mara-ready':
       title = b.mara.cooldownRemaining > 0 ? t("Mara · bereit in {0} s", Math.ceil(b.mara.cooldownRemaining)) : b.mara.autoCast ? t('Mara wartet auf Gegner am Ziel') : t('Mara · Zauber im Porträt auslösen');
@@ -41,8 +41,8 @@ export function updateDiscoveryUI(live: BattleSession, contextOpen: boolean, pla
         : t('Unter „Türme“ findest du jetzt die Steinschleuder. Sie trifft Gegnergruppen; Frost hält sie länger zusammen. Optional · 135 Gold.');
       break;
     case 'warehouse':
-      title = t('Neu in der Siedlung: Vorratslager');
-      text = t('Wenn du das Spiel schließt, sammelt deine sichere Verteidigung weiter. Das Lager verlängert das Sammeln von 2 auf 8 Stunden. Optional · 650 Gold.');
+      title = t('Neu: Vorratslager');
+      text = t('Speichert Offline-Gold bis zu 8 statt 2 Stunden. Optional · 650 Gold.');
       break;
   }
   card.dataset.strip = String(step === 'mara-ready' || step === 'mara-effect' || step === 'mara-controls');

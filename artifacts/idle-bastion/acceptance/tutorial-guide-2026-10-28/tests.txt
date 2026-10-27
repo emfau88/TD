@@ -1,0 +1,35 @@
+✔ Wisp pauses at the wave boundary; real Mara cast, countdown and optional purchases follow in order (275.5571ms)
+✔ optional Mara and cannon lessons can be deferred; old Mara hint maps to Mara, never the clearing (44.3522ms)
+✔ Wisp learning pause survives absence without offline reward or repeated greeting (148.8949ms)
+✔ schema 16 veteran preserves all saved fields without a new compulsory lesson (7.2264ms)
+✔ dismissed defeat stays dismissed after reload; schema 17 migrates without losing gold (6.8404ms)
+✔ Wisp arrives from the core side along the walkable route (39.8621ms)
+✔ English is the explicit default; language choices survive blocked preference storage (0.8678ms)
+✔ complete sentences retain every placeholder, whitespace and dynamic values in both languages (17.4642ms)
+✔ menu language switch preserves DOM identity, updates accessibility and persists only the preference (111.768ms)
+✔ language changes preserve an earned battle, farm proof and historical offline receipt exactly (288.7838ms)
+✔ all enemy descriptions and companion dialogue stages have translations, without translating IDs (1.1556ms)
+✔ quick-win notices follow real unlock and level-six state without changing either condition (0.8553ms)
+✔ dismissing cannon explanation retains NEW until inspection or an existing cannon (0.1453ms)
+✔ UI dismissals persist per slot, keep catalogue reminder and translate live content (118.4367ms)
+✔ blocked UI preference storage keeps dismissals in memory without affecting the game (13.7539ms)
+✔ optional workshop notice waits for tutorial completion without consuming its preference (0.197ms)
+✔ Frost tip and wave objective share one slot, keeping the real counter and model intact (233.2774ms)
+✔ moving the existing Wisp card preserves its button and event listener (72.0562ms)
+✔ step 14 waits on the cleared wave, not the current attempt, and survives restoration (100.2152ms)
+✔ an active lesson beats toasts, and a defeat notice beats optional discovery tips (42.8101ms)
+✔ menus and placement carry the counter without a second tutorial card (43.8404ms)
+✔ modal suppression and ending or skipping the tutorial restore the ordinary HUD (58.3816ms)
+✔ saving stages and temporarily absent presenters still show progress and an actionable next step (36.7646ms)
+✔ one total covers the three opening scenes and the earned building lessons (116.216ms)
+✔ discovery counts do not restart; optional lessons end the total and veterans get no new tutorial (136.7172ms)
+✔ the first upgrade resumes the same wave and survives reload without a confirmation (13.6099ms)
+✔ an older save waiting after level 2 releases only its obsolete learning pause (16.3856ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2331.2375

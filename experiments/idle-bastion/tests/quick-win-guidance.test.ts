@@ -87,3 +87,13 @@ test('blocked UI preference storage keeps dismissals in memory without affecting
     if (storageDescriptor) Object.defineProperty(globalThis, 'localStorage', storageDescriptor); else Reflect.deleteProperty(globalThis, 'localStorage');
   }
 });
+
+
+test('optional workshop notice waits for tutorial completion without consuming its preference', () => {
+  const value = state({ workshopAvailable:true, levelSix:true, cannonUnlocked:true, cannonBuilt:false });
+  const preferences = { cannonDismissed:false, cannonInspected:false, workshopDismissed:false };
+  const before = structuredClone(preferences);
+  assert.equal(quickWinNotice(value, preferences, false), 'cannon');
+  assert.deepEqual(preferences, before);
+  assert.equal(quickWinNotice(value, preferences), 'workshop');
+});

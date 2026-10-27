@@ -1,0 +1,15 @@
+/* The same pause control now lives beside the wave and fullscreen controls. */
+.header-actions #pause { display:grid; place-items:center; flex:0 0 auto; padding:0; gap:0; color:#d8e5b3; }
+.header-actions #pause svg { display:block; width:20px; height:20px; fill:currentColor; }
+.header-actions #pause .pause-play { display:none; }
+.header-actions #pause.paused { color:#f2d59b; }
+.header-actions #pause.paused .pause-bars { display:none; }
+.header-actions #pause.paused .pause-play { display:block; }
+@media(max-width:700px) {
+  .app-header .resource-strip { min-width:0; }
+  .app-header .gold-tile { min-width:0; overflow:hidden; }
+  .app-header .gold-tile > span:last-child { min-width:0; }
+  .app-header .gold-tile small { max-width:100%; overflow:hidden; text-overflow:ellipsis; }
+  .app-header .wave-tile { flex:0 0 auto; padding-inline:1px; }
+  .battle-status .advance-button { bottom:0; }
+}

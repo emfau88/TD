@@ -14,8 +14,8 @@ export interface QuickWinPreferences { cannonDismissed: boolean; cannonInspected
 const emptyPreferences = (): QuickWinPreferences => ({ cannonDismissed: false, cannonInspected: false, workshopDismissed: false });
 const currency = numberFormat({ maximumFractionDigits: 0 });
 export const workshopGoldMissing = (gold: number): number => Math.max(0, Math.ceil(SETTLEMENT.workshopUpgradeCost - gold));
-export function quickWinNotice(state: QuickWinSnapshot, preferences: QuickWinPreferences): QuickWinNotice | undefined {
-  if (state.workshopAvailable && state.levelSix && !preferences.workshopDismissed && !(state.tutorialSeen & (1 << 16))) return 'workshop';
+export function quickWinNotice(state: QuickWinSnapshot, preferences: QuickWinPreferences, includeWorkshop = true): QuickWinNotice | undefined {
+  if (includeWorkshop && state.workshopAvailable && state.levelSix && !preferences.workshopDismissed && !(state.tutorialSeen & (1 << 16))) return 'workshop';
   if (state.cannonUnlocked && !state.cannonBuilt && !preferences.cannonDismissed && !preferences.cannonInspected && !(state.tutorialSeen & (1 << 8))) return 'cannon';
 }
 export const cannonIsNew = (state: QuickWinSnapshot, preferences: QuickWinPreferences): boolean => state.cannonUnlocked && !state.cannonBuilt && !preferences.cannonInspected;
@@ -69,7 +69,7 @@ export class QuickWinGuidance {
     this.preferences[key] = true;
     try { globalThis.localStorage?.setItem(this.key, JSON.stringify(this.preferences)); } catch { /* UI remains usable without preference storage. */ }
   }
-  update(state: QuickWinSnapshot, view: { suppressed: boolean; towerAtCap: boolean }): boolean {
+  update(state: QuickWinSnapshot, view: { suppressed: boolean; towerAtCap: boolean; tutorialActive?: boolean }): boolean {
     if (state.cannonBuilt) this.inspectCannon();
     const isNew = cannonIsNew(state, this.preferences);
     this.badge.hidden = !isNew; this.tabBadge.hidden = !isNew;
@@ -81,7 +81,7 @@ export class QuickWinGuidance {
     this.tabBadge.setAttribute('aria-label', t('Neue Baumöglichkeit: Steinschleuder'));
     this.workshopLink.textContent = t('Werkstatt II ansehen');
     this.workshopLink.hidden = !state.workshopAvailable || !view.towerAtCap;
-    this.notice = quickWinNotice(state, this.preferences);
+    this.notice = quickWinNotice(state, this.preferences, !view.tutorialActive);
     this.element.hidden = view.suppressed || !this.notice;
     if (this.element.hidden) return false;
     const workshop = this.notice === 'workshop';

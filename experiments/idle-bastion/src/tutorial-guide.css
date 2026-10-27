@@ -1,0 +1,42 @@
+/* One compact tutorial slot. Keep original controls and their listeners. */
+#tutorial-guide { position:absolute; z-index:18; top:calc(var(--header) + 9px); left:14px; width:320px; max-width:calc(100% - 104px); padding:10px 12px; color:#e9dec5; border:1px solid #9d8355; background:linear-gradient(115deg,#24342ff7,#111f25f7); box-shadow:0 4px 12px #0005; }
+#tutorial-guide[hidden],#tutorial-guide [hidden],.guide-inline[hidden],.guide-context-next[hidden] { display:none!important; }
+#tutorial-guide .tutorial-step { margin:0 0 5px; font-size:11px; }
+#tutorial-guide .guide-content > * { position:static; inset:auto; transform:none; width:100%; min-width:0; max-width:none; max-height:none; padding:0; margin:0; border:0; border-radius:0; background:none; box-shadow:none; }
+#tutorial-guide .guide-content > *::before { display:none; }
+#tutorial-guide #onboarding-card,#tutorial-guide #discovery-card,#tutorial-guide #wisp-arrival { display:block; }
+#tutorial-guide :is(#onboarding-card,#wisp-arrival)>canvas { display:none; }
+#tutorial-guide :is([data-tutorial-progress],#onboarding-eyebrow,.goal-copy>.eyebrow) { display:none!important; }
+#tutorial-guide h2,#tutorial-guide #quick-win-title,#tutorial-guide #wisp-arrival strong,#tutorial-guide #goal-title { margin:0 0 4px; font:500 17px/1.15 var(--display); color:#f1d49d; }
+#tutorial-guide p,#tutorial-guide #goal-copy { margin:0; font:12px/1.4 Arial,sans-serif; color:#d1dbcf; }
+#tutorial-guide :is(.onboarding-actions,.quick-win-actions) { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:8px; }
+#tutorial-guide :is(.onboarding-actions,.quick-win-actions).empty { display:none; }
+#tutorial-guide button { min-height:40px; font-size:12px; }
+#tutorial-guide .onboarding-actions button { margin:0; }
+#tutorial-guide #meet-wisp { margin-top:8px; }
+#tutorial-guide .goal-ribbon { display:flex; gap:8px; align-items:center; }
+#tutorial-guide #goal-title,#tutorial-guide #goal-copy { white-space:normal; overflow:visible; text-overflow:clip; }
+#tutorial-guide .goal-copy { display:grid; padding:0; gap:3px; border:0; min-height:0; }
+#tutorial-guide #goal-action { flex:0 0 28px; width:28px; border:0; background:none; font-size:24px; }
+#tutorial-guide #combat-message { text-align:left; pointer-events:auto; }
+#tutorial-guide #fallback-note { display:flex; gap:7px; align-items:start; }
+#tutorial-guide .guide-next { margin-top:7px; padding-top:6px; border-top:1px solid #a68b5433; color:#e0c991; font-size:11px; line-height:1.35; }
+#tutorial-guide .lesson-savings > div { font-size:12px; gap:8px; }
+#tutorial-guide .lesson-savings progress { margin-top:6px; }
+#tutorial-guide .guide-idle { font-size:12px; }
+.guide-inline { display:block; }
+#placement-help > .guide-inline { width:100%; flex-basis:100%; margin-bottom:4px; }
+.guide-context-next { margin:6px 0; color:#d9c390; font:12px/1.4 Arial,sans-serif; }
+@media(max-width:700px) {
+  #tutorial-guide { left:8px; width:calc(100% - 96px); max-width:320px; padding:8px 9px; }
+  #tutorial-guide h2,#tutorial-guide #quick-win-title,#tutorial-guide #wisp-arrival strong,#tutorial-guide #goal-title { font-size:16px; }
+  #tutorial-guide :is(.onboarding-actions,.quick-win-actions) { gap:4px; margin-top:7px; }
+  #tutorial-guide button { min-height:40px; padding:7px 9px; font-size:11px; }
+  #tutorial-guide .goal-copy { padding:0; }
+  #tutorial-guide #goal-action { padding:0; min-width:20px; flex-basis:20px; width:20px; }
+  .unified-tutorial #battle-phase { display:none; }
+}
+@media(max-height:500px) and (orientation:landscape) {
+  #tutorial-guide { width:300px; padding:7px 10px; }
+  #tutorial-guide :is(.onboarding-actions,.quick-win-actions) { margin-top:5px; }
+}

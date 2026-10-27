@@ -14,6 +14,7 @@ import { LessonPointer } from './lesson-pointer';
 import { updateOnboarding } from './onboarding-ui';
 import { MaraIntro } from './mara-intro';
 import { tutorialProgress } from './tutorial-progress';
+import { TutorialGuide } from './tutorial-guide';
 import { prepareIntroPortraits } from './intro-portraits';
 import maraOfflinePortrait from '../assets/intro/mara/mischievous.webp';
 import { updateOfflineWelcome } from './offline-welcome';
@@ -34,6 +35,8 @@ import './battle.css';
 import './progress.css';
 import './premium.css';
 import './spell-actions.css';
+import './tutorial-guide.css';
+import './header-pause.css';
 import { mountUIIcons, uiIcon } from './ui-icons';
 import { STORM_CHAIN, STORMLIGHT, SETTLEMENT, towerDefinition, type TowerId, stats, upgradeCost, sellValue, type IdleBattle } from './battle';
 import { BattleScene } from './battle-scene';
@@ -127,6 +130,7 @@ let mobileHintStep = -1;
 let ready = false;
 const tavernUI = new TavernUI({ session: () => session, presentation: rigPreviewPresentation, navigate: kind => openContext(kind, true), onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift'), onCompanion: who => audio.setCompanion(who), onTouch: who => audio.touchCompanion(who) });
 const quickWins = new QuickWinGuidance(databaseName, { action: openQuickWin, dismissed: acknowledgeQuickWin }, lifetime.signal);
+const tutorialGuide = new TutorialGuide();
 let booting = false;
 let lifecycle = Promise.resolve();
 let retryTimer: number | undefined;
@@ -330,7 +334,9 @@ function syncUI(): void {
     : t("{0} · nächste Welle in {1} s", mode, Math.ceil(sim.intermissionRemaining)));
   element('pause-state').textContent = t(live.paused ? t('PAUSE') : t('EIN'));
   pause.classList.toggle('paused', live.paused);
+  pause.setAttribute('aria-pressed', String(live.paused));
   pause.setAttribute('aria-label', t(live.paused ? t('Auto-Kampf fortsetzen') : t('Auto-Kampf pausieren')));
+  pause.title = pause.getAttribute('aria-label')!;
   pause.disabled = unavailable || live.awaitingResume;
   advance.hidden = sim.mode !== 'farm';
   advance.textContent = t(sim.bossChallengeRequested ? t('Boss am Wellenwechsel vorgemerkt') : sim.advanceRequested ? t('Vorstoß vorgemerkt') : t("Erneut vorstoßen · Welle {0}", sim.nextAdvanceWave));
@@ -595,6 +601,7 @@ function syncUI(): void {
     suppressed: contextOpen || Boolean(placementType || groundMode || ilyraMode) || live.awaitingResume || !!live.error || live.suspended
       || sim.introduction.stage !== 'done' || !!discovery && discovery !== 'cannon' || sim.bossActive
       || !element('wisp-arrival').hidden || performance.now() < workshopRevealUntil || !!document.querySelector('dialog[open]'),
+    tutorialActive: !!tutorial,
     towerAtCap: contextOpen && selectedPanel === 'tower' && !!tower && tower.level >= 6,
   });
   if (quickHintVisible) {
@@ -615,6 +622,8 @@ function syncUI(): void {
       updateDiscoveryUI(live, false, false, catalogPanel);
     }
   }
+  tutorialGuide.update(sim, { intro, contextOpen, placing: Boolean(placementType || groundMode || ilyraMode || selectedHero),
+    blocked: live.awaitingResume || !!live.error || live.suspended || !!document.querySelector('dialog[open]'), paused: live.paused });
   positionContext();
   syncLessonPointer();
 }
