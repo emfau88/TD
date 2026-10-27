@@ -23,9 +23,9 @@ export function createFeatureProbe(scenario: FeatureScenario, earnedLate?: unkno
       b.update(.025);
       if (!b.learningPaused) continue;
       if (b.introduction.stage === 'upgrade') requireAction(b.upgrade(1), 'first upgrade');
-      if (b.introduction.stage === 'workshop') requireAction(b.buildWorkshop(), 'workshop');
-      if (b.introduction.stage === 'research') requireAction(b.researchFrost(), 'Frost research');
-      requireAction(b.continueLesson(), 'lesson');
+      else if (b.introduction.stage === 'workshop') requireAction(b.buildWorkshop(), 'workshop');
+      else if (b.introduction.stage === 'research') requireAction(b.researchFrost(), 'Frost research');
+      if (b.learningPaused) requireAction(b.continueLesson(), 'lesson');
     }
     requireAction(b.introduction.stage === 'frost' && b.learningPaused, 'Frost lesson');
     return b;

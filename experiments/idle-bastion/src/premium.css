@@ -471,3 +471,8 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 /* Keep the construction notice and gift badge in separate corners. */
 #pick-tavern.has-gifts.new-building::after { right:auto; left:5px; }
 :lang(en) .new-building::after { content:"New"; }
+
+/* The longer game title keeps the resource HUD clear. */
+.brand h1 { display:block; margin:0; line-height:1.15; text-transform:none; }
+.brand h1 strong { font-size:clamp(18px,2.1vw,28px); letter-spacing:.025em; }
+.brand h1 > span { display:block; margin-top:3px; font-size:10px; letter-spacing:.12em; }

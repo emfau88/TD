@@ -1,11 +1,17 @@
 import { startupLanguage, startupText } from './locales/startup';
 
-export type StartupPhase = 'modules' | 'save' | 'assets' | 'render';
+export type StartupPhase = 'modules' | 'save' | 'assets' | 'render' | 'audio';
 const phaseText: Record<StartupPhase, string> = {
   modules: 'Der Wald erwacht …', save: 'Spielstand wird initialisiert …',
-  assets: 'Verteidigung wird vorbereitet …', render: 'Die Lichtung wird aufgebaut …',
+  assets: 'Verteidigung wird vorbereitet …', render: 'Die Lichtung wird aufgebaut …', audio: 'Die Musik wird vorbereitet …',
 };
+const loadingQuips = [
+  'Wir bitten die Monster, sich höflich anzustellen …',
+  'Mara nennt es ein Feature. Ilyra sieht das anders.',
+  'Die Taverne wird aufgefüllt. Nur für die Moral.',
+] as const;
 export class LoadingScreen {
+  private readonly quip = loadingQuips[Math.floor(Math.random() * loadingQuips.length)]!;
   private timer?: ReturnType<typeof setTimeout>;
   private language = startupLanguage();
   private retry?: () => void;
@@ -24,6 +30,7 @@ export class LoadingScreen {
     this.host.setAttribute('aria-busy', 'true'); if (this.app) this.app.inert = true;
     this.get('#boot-phase').textContent = startupText(phaseText[phase], language);
     this.get('#boot-eyebrow').textContent = startupText('Der alte Hain', language);
+    const quip = this.get('#boot-quip'); quip.textContent = startupText(this.quip, language); quip.hidden = false;
     const progress = this.get<HTMLProgressElement>('#boot-progress');
     progress.removeAttribute('value'); progress.removeAttribute('aria-valuetext'); progress.setAttribute('aria-label', startupText('Spielgrafiken', language));
     this.get('#boot-count').textContent = ''; this.get('#boot-error').hidden = true;
@@ -42,13 +49,15 @@ export class LoadingScreen {
     progress.setAttribute('aria-valuetext', label); this.get('#boot-count').textContent = label;
     this.arm();
   }
-  fail(message = startupText('Das Spiel konnte nicht gestartet werden. Bitte versuche es erneut.', this.language), retry = () => window.location.reload(), recovery?: () => void): void {
+  fail(message = startupText('Das Spiel konnte nicht gestartet werden. Bitte versuche es erneut.', this.language), retry = () => window.location.reload(), recovery?: () => void, recoveryLabel = 'Spielstand prüfen'): void {
     clearTimeout(this.timer); this.host.hidden = false; this.host.dataset.phase = 'error';
     this.host.setAttribute('aria-busy', 'false');
     this.get('#boot-phase').textContent = startupText('Der Start wurde unterbrochen.', this.language);
+    this.get('#boot-quip').hidden = true;
     this.get<HTMLProgressElement>('#boot-progress').removeAttribute('value'); this.get<HTMLProgressElement>('#boot-progress').removeAttribute('aria-valuetext'); this.get('#boot-count').textContent = '';
     const error = this.get('#boot-error'); error.textContent = message; error.hidden = false;
     this.retry = retry; this.recovery = recovery;
+    this.recoveryButton.textContent = startupText(recoveryLabel, this.language);
     this.retryButton.hidden = false; this.recoveryButton.hidden = !recovery;
   }
   complete(): void { this.host.dataset.phase = 'ready'; this.dismiss(); }

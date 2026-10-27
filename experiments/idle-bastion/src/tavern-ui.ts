@@ -44,7 +44,7 @@ export class TavernUI {
     this.dialog.setAttribute('aria-labelledby', 'tv-title');
     this.dialog.dataset.artwork = ports.presentation?.kind ?? 'legacy';
     this.dialog.innerHTML = `
-      <header class="tv-header"><button type="button" data-do="back" class="tv-back" aria-label="Zurück zur Tavernenübersicht">‹</button><div><small>DER ALTE HAIN</small><h2 id="tv-title">Die Taverne</h2></div><button type="button" data-do="close" class="tv-close" aria-label="Taverne schließen">×</button></header>
+      <header class="tv-header"><button type="button" data-do="back" class="tv-back" aria-label="Zurück zur Tavernenübersicht">‹</button><div><small>DER ALTE HAIN</small><h2 id="tv-title">The Last Cozy Corner</h2></div><button type="button" data-do="close" class="tv-close" aria-label="Taverne schließen">×</button></header>
       <div class="tv-combat"><span data-text="combat"></span><button type="button" data-do="close">Zum Kampf ↗</button></div>
       <div class="tv-warning" role="status" hidden><span data-text="warning"></span><button type="button" data-do="close">Zum Kampf</button><button type="button" data-do="dismiss" aria-label="Kampfhinweis ausblenden">×</button></div>
       <div class="tv-error" role="alert" hidden></div>
@@ -114,7 +114,7 @@ export class TavernUI {
   }
   private refreshLanguage(): void {
     const screen = this.screen;
-    this.get('#tv-title').textContent = screen === 'overview' ? t('Die Taverne') : screen === 'touch' ? t('Ein Moment mit {0}', this.content.name) : this.content.name;
+    this.get('#tv-title').textContent = screen === 'overview' ? 'The Last Cozy Corner' : screen === 'touch' ? t('Ein Moment mit {0}', this.content.name) : this.content.name;
     this.get('.tv-stage-caption').textContent = t("{0} · {1}", this.content.name, this.content.role);
     this.get('.tv-dialogue small').textContent = t(this.content.name.toUpperCase());
     this.get('.tv-heart-buttons').setAttribute('aria-label', t("{0}s persönliche Momente", this.content.name));
@@ -174,7 +174,7 @@ export class TavernUI {
     this.get('.tv-overview').hidden = screen !== 'overview'; this.get('.tv-character').hidden = screen === 'overview';
     this.get('.tv-back').hidden = screen === 'overview';
     this.get('.tv-back').setAttribute('aria-label', t(screen === 'touch' ? t("Zurück zu {0}s Charakteransicht", this.content.name) : t('Zurück zur Tavernenübersicht')));
-    this.get('#tv-title').textContent = t(screen === 'overview' ? t('Die Taverne') : screen === 'touch' ? t("Ein Moment mit {0}", this.content.name) : this.content.name);
+    this.get('#tv-title').textContent = t(screen === 'overview' ? 'The Last Cozy Corner' : screen === 'touch' ? t("Ein Moment mit {0}", this.content.name) : this.content.name);
     this.get('.tv-touch-help').hidden = screen !== 'touch';
     // Install the new loading portrait before start() can synchronously notify UI.
     this.get<HTMLImageElement>('.tv-loading-portrait').src = (this.ports.presentation?.portrait ?? companionPortrait)(this.selected);

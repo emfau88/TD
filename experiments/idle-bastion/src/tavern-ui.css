@@ -191,3 +191,6 @@
   #tavern-dialog .tv-personal,#tavern-dialog .tv-chapter { font-size:11px; }
   #tavern-dialog .tv-gifts { font-size:11px; }
 }
+
+#tavern-dialog[data-screen="overview"] .tv-header > div { flex:1; min-width:0; }
+#tavern-dialog[data-screen="overview"] .tv-header h2 { white-space:normal; overflow:visible; text-overflow:clip; font-size:clamp(18px,3.7vw,28px); text-wrap:balance; }

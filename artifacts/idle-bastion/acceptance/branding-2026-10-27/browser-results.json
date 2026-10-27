@@ -1,0 +1,367 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "lang": "en",
+    "layout": {
+      "phase": "audio",
+      "inert": true,
+      "panel": {
+        "x": 410,
+        "y": 88.171875,
+        "right": 1030,
+        "bottom": 811.828125
+      },
+      "lines": [
+        {
+          "text": "Towers &",
+          "x": 439,
+          "right": 1001,
+          "overflow": false
+        },
+        {
+          "text": "Tantrums",
+          "x": 439,
+          "right": 1001,
+          "overflow": false
+        },
+        {
+          "text": "Build towers.",
+          "x": 585.828125,
+          "right": 670.515625,
+          "overflow": false
+        },
+        {
+          "text": "Make questionable friends.",
+          "x": 675.765625,
+          "right": 854.171875,
+          "overflow": false
+        }
+      ],
+      "quip": "Convincing the monsters to queue politely …",
+      "audioReady": 0,
+      "audioPaused": true
+    },
+    "header": {
+      "shown": true,
+      "right": 345.25,
+      "next": 762.109375
+    },
+    "errors": []
+  },
+  {
+    "width": 1280,
+    "height": 720,
+    "lang": "en",
+    "layout": {
+      "phase": "audio",
+      "inert": true,
+      "panel": {
+        "x": 210,
+        "y": 208,
+        "right": 1070,
+        "bottom": 512
+      },
+      "lines": [
+        {
+          "text": "Towers &",
+          "x": 652,
+          "right": 1051,
+          "overflow": false
+        },
+        {
+          "text": "Tantrums",
+          "x": 652,
+          "right": 1051,
+          "overflow": false
+        },
+        {
+          "text": "Build towers.",
+          "x": 735.203125,
+          "right": 808.609375,
+          "overflow": false
+        },
+        {
+          "text": "Make questionable friends.",
+          "x": 813.15625,
+          "right": 967.78125,
+          "overflow": false
+        }
+      ],
+      "quip": "Convincing the monsters to queue politely …",
+      "audioReady": 0,
+      "audioPaused": true
+    },
+    "header": {
+      "shown": true,
+      "right": 334.078125,
+      "next": 602.109375
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "lang": "en",
+    "layout": {
+      "phase": "audio",
+      "inert": true,
+      "panel": {
+        "x": 12,
+        "y": 163.53125,
+        "right": 378,
+        "bottom": 680.46875
+      },
+      "lines": [
+        {
+          "text": "Towers &",
+          "x": 27,
+          "right": 363,
+          "overflow": false
+        },
+        {
+          "text": "Tantrums",
+          "x": 27,
+          "right": 363,
+          "overflow": false
+        },
+        {
+          "text": "Build towers.",
+          "x": 69.765625,
+          "right": 148.8125,
+          "overflow": false
+        },
+        {
+          "text": "Make questionable friends.",
+          "x": 153.703125,
+          "right": 320.21875,
+          "overflow": false
+        }
+      ],
+      "quip": "Mara says it's a feature. Ilyra disagrees.",
+      "audioReady": 0,
+      "audioPaused": true
+    },
+    "header": {
+      "shown": false,
+      "right": 0,
+      "next": 8
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "height": 568,
+    "lang": "en",
+    "layout": {
+      "phase": "audio",
+      "inert": true,
+      "panel": {
+        "x": 12,
+        "y": 66.53125,
+        "right": 308,
+        "bottom": 501.46875
+      },
+      "lines": [
+        {
+          "text": "Towers &",
+          "x": 27,
+          "right": 293,
+          "overflow": false
+        },
+        {
+          "text": "Tantrums",
+          "x": 27,
+          "right": 293,
+          "overflow": false
+        },
+        {
+          "text": "Build towers.",
+          "x": 34.765625,
+          "right": 113.8125,
+          "overflow": false
+        },
+        {
+          "text": "Make questionable friends.",
+          "x": 118.703125,
+          "right": 285.21875,
+          "overflow": false
+        }
+      ],
+      "quip": "Stocking the tavern. Strictly for morale.",
+      "audioReady": 0,
+      "audioPaused": true
+    },
+    "header": {
+      "shown": false,
+      "right": 0,
+      "next": 8
+    },
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "lang": "en",
+    "layout": {
+      "phase": "audio",
+      "inert": true,
+      "panel": {
+        "x": 14,
+        "y": 50.328125,
+        "right": 830,
+        "bottom": 339.65625
+      },
+      "lines": [
+        {
+          "text": "Towers &",
+          "x": 434,
+          "right": 811,
+          "overflow": false
+        },
+        {
+          "text": "Tantrums",
+          "x": 434,
+          "right": 811,
+          "overflow": false
+        },
+        {
+          "text": "Build towers.",
+          "x": 506.203125,
+          "right": 579.609375,
+          "overflow": false
+        },
+        {
+          "text": "Make questionable friends.",
+          "x": 584.15625,
+          "right": 738.78125,
+          "overflow": false
+        }
+      ],
+      "quip": "Convincing the monsters to queue politely …",
+      "audioReady": 0,
+      "audioPaused": true
+    },
+    "header": {
+      "shown": true,
+      "right": 195.515625,
+      "next": 249.703125
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "lang": "de",
+    "layout": {
+      "phase": "audio",
+      "inert": true,
+      "panel": {
+        "x": 12,
+        "y": 163.53125,
+        "right": 378,
+        "bottom": 680.46875
+      },
+      "lines": [
+        {
+          "text": "Towers &",
+          "x": 27,
+          "right": 363,
+          "overflow": false
+        },
+        {
+          "text": "Tantrums",
+          "x": 27,
+          "right": 363,
+          "overflow": false
+        },
+        {
+          "text": "Build towers.",
+          "x": 69.765625,
+          "right": 148.8125,
+          "overflow": false
+        },
+        {
+          "text": "Make questionable friends.",
+          "x": 153.703125,
+          "right": 320.21875,
+          "overflow": false
+        }
+      ],
+      "quip": "Mara nennt es ein Feature. Ilyra sieht das anders.",
+      "audioReady": 0,
+      "audioPaused": true
+    },
+    "header": {
+      "shown": false,
+      "right": 0,
+      "next": 8
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "height": 568,
+    "lang": "de",
+    "layout": {
+      "phase": "audio",
+      "inert": true,
+      "panel": {
+        "x": 12,
+        "y": 66.53125,
+        "right": 308,
+        "bottom": 501.46875
+      },
+      "lines": [
+        {
+          "text": "Towers &",
+          "x": 27,
+          "right": 293,
+          "overflow": false
+        },
+        {
+          "text": "Tantrums",
+          "x": 27,
+          "right": 293,
+          "overflow": false
+        },
+        {
+          "text": "Build towers.",
+          "x": 34.765625,
+          "right": 113.8125,
+          "overflow": false
+        },
+        {
+          "text": "Make questionable friends.",
+          "x": 118.703125,
+          "right": 285.21875,
+          "overflow": false
+        }
+      ],
+      "quip": "Die Taverne wird aufgefüllt. Nur für die Moral.",
+      "audioReady": 0,
+      "audioPaused": true
+    },
+    "header": {
+      "shown": false,
+      "right": 0,
+      "next": 8
+    },
+    "errors": []
+  },
+  {
+    "mode": "muted",
+    "requests": 0,
+    "errors": []
+  },
+  {
+    "mode": "error",
+    "requests": 1,
+    "errors": []
+  },
+  {
+    "mode": "timeout",
+    "requests": 1,
+    "errors": []
+  }
+]

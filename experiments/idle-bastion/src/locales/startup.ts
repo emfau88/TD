@@ -1,6 +1,12 @@
 // Small enough for the entry screen before Phaser and the main text catalogue.
 export const startupEnglish: Record<string, string> = {
   'Der alte Hain': 'The Old Grove',
+  'Die Musik wird vorbereitet …': 'Getting the music ready…',
+  'Ohne Musik fortfahren': 'Continue without music',
+  'Die Musik ist noch nicht abspielbereit. Versuche es erneut oder starte ohne Musik.': 'The music is not ready to play. Try again or continue without music.',
+  'Wir bitten die Monster, sich höflich anzustellen …': 'Convincing the monsters to queue politely …',
+  'Mara nennt es ein Feature. Ilyra sieht das anders.': "Mara says it's a feature. Ilyra disagrees.",
+  'Die Taverne wird aufgefüllt. Nur für die Moral.': 'Stocking the tavern. Strictly for morale.',
   'Der Wald erwacht …': 'The forest awakens…',
   'Spielstand wird initialisiert …': 'Preparing your saved game…',
   'Verteidigung wird vorbereitet …': 'Preparing your defenses…',

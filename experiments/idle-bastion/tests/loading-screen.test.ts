@@ -105,3 +105,19 @@ test('startup phase, resource count and recovery controls use the selected Engli
   assert.equal(get('boot-retry').textContent, 'Try again');
   assert.equal(get('boot-recovery').textContent, 'Check saved game');
 });
+
+test('one loading joke persists through progress, translates, and gives errors the floor', t => {
+  t.mock.method(Math, 'random', () => .4);
+  const { screen, get } = fixture(t);
+  screen.begin('modules', 'en');
+  const joke = get('boot-quip').textContent;
+  assert.equal(joke, "Mara says it's a feature. Ilyra disagrees.");
+  screen.begin('save'); screen.progress(1, 10); screen.progress(9, 10);
+  assert.equal(get('boot-quip').textContent, joke);
+  screen.begin('render', 'de');
+  assert.equal(get('boot-quip').textContent, 'Mara nennt es ein Feature. Ilyra sieht das anders.');
+  screen.fail('Verbindung unterbrochen.');
+  assert.equal(get('boot-quip').hidden, true);
+  screen.begin('modules');
+  assert.equal(get('boot-quip').hidden, false);
+});

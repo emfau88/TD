@@ -1,6 +1,7 @@
 import { mountCredits } from './credits-ui';
 import { offlineGoldDisplay } from './reward-display';
 import { loadingScreen } from './loading-screen';
+import { startupText } from './locales/startup';
 import { t, numberFormat, onLanguageChange, language } from './i18n';
 import { bindStaticTranslations, mountLanguageSettings } from './i18n-dom';
 import { GameAudio } from './game-audio';
@@ -877,6 +878,16 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     updateOnboarding(live, { placing: false, contextOpen: false, catalogPanel, revealing: false, intro });
     progressUI.reset();
     if (document.hidden && !live.temporary) { await live.suspend(); return; }
+    // Resolve music before Phaser's boot waits on the browser's load event.
+    loadingScreen()?.begin('audio', language());
+    try { await audio.prepareStartupMusic(); }
+    catch {
+      if (session !== live) return;
+      loadingScreen()?.fail(startupText('Die Musik ist noch nicht abspielbereit. Versuche es erneut oder starte ohne Musik.', language()),
+        () => window.location.reload(), () => { audio.setMix({ music: 0 }); void boot(options); }, 'Ohne Musik fortfahren');
+      return;
+    }
+    if (session !== live) return;
     if (live.battle.wave > 0) showCombatMessage(() => t('Gespeicherte Verteidigung geladen. Gold, Türme und laufender Kampf sind wieder da.'));
     live.onChange = () => { if (session === live) { scene?.refresh(); syncUI(); } };
     live.onError = error => { if (session === live) { showError(t("Die Probe ist angehalten; der letzte bestätigte Stand bleibt erhalten. {0}", error.message), false, true); syncUI(); } };

@@ -1,4 +1,18 @@
-# Fortlaufende Roadmap — SPIRE: Idle Bastion
+# Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
+
+**Neuer Spielname und Ladebild · 27.10.2026, ausdrücklich beauftragt:**
+
+- [x] Towers & Tantrums / „Build towers. Make questionable friends.“ übernehmen; Taverne als The Last Cozy Corner benennen. Technische Speicherkennungen und URLs erhalten.
+- [x] Ein Lagerfeuerbild mit den bestehenden Figuren über Imagegen erstellen, Original/Prompt sichern und kleine WebP-Ausgaben einbinden; drei zufällige Ladezeilen mit deutscher Übersetzung.
+- [x] Auf Nutzerergänzung den Ladeabschluss an die Abspielbereitschaft aktivierter Hintergrundmusik koppeln; Stummzustand überspringt die Phase, echter Ladefehler bietet Wiederholen/Start ohne Musik.
+- [x] 19/19 gezielte Tests und Produktionsbuild bestanden; sieben Sprach-/Viewportkombinationen einschließlich 320 px und Querformat, drei Zufallstexte, verzögerte Musik, Stummstart, Ladefehler und Timeout im Browser geprüft. [Nachweis und Screenshots](../../artifacts/idle-bastion/acceptance/branding-2026-10-27/REPORT.md).
+- [ ] Geprüftes Paket auf Main committen/pushen und Pages-Veröffentlichung bestätigen.
+
+**GitHub-README · 27.10.2026, auf Nutzerwunsch aktualisiert:**
+
+- [x] Übersicht gekürzt, drei aktuelle Spielaufnahmen mit Herkunft/Datum ergänzt und frühere Bilder getrennt datiert; bisherige README als Archiv erhalten. Aktuelle Drei-Herzen-Etappe und entfernte Umzugsoption korrekt beschrieben.
+- [x] Bei Prüfung der Testlinks den Frost-Teststarter an den automatischen Upgrade-Abschluss angepasst; 5/5 vorhandene Teststarter-/Speichertests und Produktionsbuild bestanden.
+- [x] Drei aktuelle Produktionsbilder visuell geprüft, 16 lokale README-Verweise vorhanden und Frost-Teststarter im Browser bis zum Lernschritt geprüft. Veröffentlichung gemeinsam mit dem neuen Ladebild.
 
 **Einstiegs- und Bedienkorrekturen · 27.10.2026, Umsetzung und Commit/Push beauftragt:**
 

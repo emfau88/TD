@@ -50,3 +50,7 @@ Technische Pegelmessung und reale Browserwiedergabe wurden geprüft. Klangcharak
 Die isolierte `tavern-check.html` lädt nach der ersten Geste nur Klick, Handwerk und Geschenk vor (drei statt 17 Kurzklänge). Feldmusik wird dort nicht gestartet. Tavernenmusik und die einzelne nächste Stimme der ausgewählten Gefährtin bleiben bedarfsabhängig. Das Hauptspiel behält seine Kampfklänge und bisherigen Lautstärke-/Überlappungsgrenzen.
 
 Frostkorrektur: ausdrücklich gewählte Ice-Spell-Buildup-Datei bytegleich übernommen, beide bisherigen Frostdateien entfernt. Sieben gezielte Audio-Tests, Audio-Lifecycle und Produktionsbuild bestanden; keine subjektive Hörabnahme behauptet. Die synthetischen Hörproben bleiben außerhalb des Spiels.
+
+## Startbereitschaft · 27.10.2026
+
+Der Ladeabschluss wartet bei eingeschalteter Kartenmusik auf `HAVE_ENOUGH_DATA` / `canplaythrough`. Diese Browsermeldung bestätigt Abspielbereitschaft; sie behauptet keinen vollständigen Download der gesamten MP3. Stumm oder Musiklautstärke 0 überspringen die Wartephase. Wiedergabe bleibt an die erste Bedienung gebunden. Bei Ladefehler oder nach 25 Sekunden ohne Bereitschaft bleiben Wiederholen und ausdrücklich „Ohne Musik fortfahren“ erreichbar. Diese Wahl setzt ausschließlich die Musiklautstärke auf 0. Kein stillschweigendes Überspringen und keine künstliche Mindestladezeit.

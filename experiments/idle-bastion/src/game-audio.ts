@@ -81,6 +81,29 @@ export class GameAudio {
     element.load();
     return element;
   }
+  /** Keep the entry screen up until enabled map music can start without buffering. */
+  async prepareStartupMusic(): Promise<void> {
+    if (this.mix.muted || this.mix.music === 0 || this.options.combat === false) return;
+    const element = this.musicElement('field');
+    if (element.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA) return;
+    if (element.error || this.disposed) throw Error('Music unavailable');
+    await new Promise<void>((resolve, reject) => {
+      const finish = (error?: Error) => {
+        clearTimeout(timer);
+        element.removeEventListener('canplaythrough', ready);
+        element.removeEventListener('error', failed);
+        this.lifetime.signal.removeEventListener('abort', failed);
+        if (error) reject(error); else resolve();
+      };
+      const ready = () => { if (element.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA) finish(); };
+      const failed = () => finish(Error('Music unavailable'));
+      const timer = window.setTimeout(failed, 25000);
+      element.addEventListener('canplaythrough', ready);
+      element.addEventListener('error', failed);
+      this.lifetime.signal.addEventListener('abort', failed, { once: true });
+      ready();
+    });
+  }
   private warmEffects(): void {
     if (!this.canPlay()) return;
     for (const cue of (this.options.combat === false ? ['click','craft','gift'] : Object.keys(CUES)) as Cue[])
@@ -132,6 +155,13 @@ export class GameAudio {
   }
   setMix(mix:Partial<AudioMix>): void {
     this.mix=readMix({...this.mix,...mix});
+    if (this.mix.muted || this.mix.music === 0) {
+      for (const [kind, element] of this.musicElements) {
+        if (this.tracks.has(kind)) continue;
+        element.removeAttribute('src'); element.load(); element.remove();
+        this.musicElements.delete(kind);
+      }
+    }
     try { localStorage.setItem(MIX_KEY,JSON.stringify(this.mix)); } catch { /* Private browsing: keep session settings. */ }
     this.prepareAudio();
     if(!this.mix.muted) void this.unlock();

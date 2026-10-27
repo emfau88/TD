@@ -1,0 +1,44 @@
+import {chromium} from 'file:///C:/Users/madde/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+import assert from 'node:assert/strict';
+import {writeFile} from 'node:fs/promises';
+const out='artifacts/idle-bastion/readme/2026-10-27';
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:900}}),errors=[];
+page.on('pageerror',e=>errors.push(e.message));
+try {
+ await page.goto('http://127.0.0.1:5254/feature-check.html?scenario=heroes');
+ await page.waitForURL(/\?probe=/,{timeout:90000});
+ await page.locator('#boot-screen').waitFor({state:'hidden',timeout:90000});
+ if(await page.locator('#claim-offline').isVisible())await page.locator('#claim-offline').click();
+ const hideTips=page.getByRole('button',{name:'Hide tips',exact:true});
+ if(await hideTips.isVisible())await hideTips.click();
+ await page.locator('#camera-reset').click();
+ await page.waitForTimeout(1200);
+ if(await hideTips.isVisible())await hideTips.click();
+ await page.waitForTimeout(250);
+ await page.screenshot({path:out+'/game-desktop.png'});
+ await page.locator('#pause').click();
+ await page.locator('#settlement-tab').click();
+ await page.locator('#pick-tavern').click();
+ await page.locator('.tv-overview').waitFor({state:'visible'});
+ await page.setViewportSize({width:320,height:568});
+ await page.waitForTimeout(250);
+ assert.equal(await page.locator('#tv-title').innerText(),'The Last Cozy Corner');
+ const title=await page.locator('#tv-title').evaluate(e=>({scroll:e.scrollWidth,width:e.clientWidth}));
+ assert.ok(title.scroll<=title.width+1);
+ await page.screenshot({path:'artifacts/idle-bastion/acceptance/branding-2026-10-27/tavern-overview-320.png'});
+ await page.setViewportSize({width:1440,height:900});
+ await page.locator('[data-do=mara]').click();
+ await page.locator('.tv-character').waitFor({state:'visible'});
+ await page.locator('.tv-load-status').waitFor({state:'hidden',timeout:30000});
+ for(let i=0;i<3;i++){await page.locator('[data-action=talk]').click();await page.waitForTimeout(600);}
+ await page.locator('[data-action=gift]').click();
+ await page.waitForFunction(()=>document.querySelector('.tv-bond-copy').textContent.includes('2 hearts'));
+ await page.waitForTimeout(600);
+ await page.locator('.tv-load-status').waitFor({state:'hidden',timeout:45000});
+ await page.setViewportSize({width:390,height:844});
+ await page.waitForTimeout(1200);
+ await page.screenshot({path:out+'/tavern-mobile.png'});
+ await writeFile(out+'/capture.json',JSON.stringify({date:'2026-10-27',code:'Main working tree, branding update 2026-10-27',source:'Local production build, isolated heroes feature test with recorded wave-40 defense; Mara reaches two hearts through three talks and one gift',screenshots:['game-desktop.png','tavern-mobile.png'],errors},null,2)+'\n');
+ console.log(JSON.stringify({errors,tavern:await page.locator('.tv-bond-copy').innerText()}));
+} finally {await browser.close();}
