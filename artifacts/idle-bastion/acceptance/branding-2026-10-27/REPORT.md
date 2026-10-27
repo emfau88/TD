@@ -31,3 +31,9 @@
 [Desktop](loading-1440.png) · [Laptop](loading-1280.png) · [Hochkant](loading-390.png) · [Schmales Handy](loading-320.png) · [Querformat](loading-844.png) · [Fehlerfall](loading-error-320.png) · [Tavernenname](tavern-overview-320.png).
 
 Chrome mit Desktop-/Touch-Emulation, keine Behauptung einer physischen iOS-/Android-Abnahme. Arbeits- und Veröffentlichungsstatus ausschließlich in der [Roadmap](../../../../experiments/idle-bastion/ROADMAP.md).
+
+## Veröffentlichung
+
+Code-Commit `41b2abf`, Main-Push bestätigt. [Pages-Lauf 40591918369](https://github.com/emfau88/TD/actions/runs/40591918369) einschließlich Veröffentlichung erfolgreich. Die anschließende [Live-Prüfung](live-results.json) bei 1440/390 px bestätigt neuen Seitentitel, zwei Titelzeilen, Audio-ReadyState 4 vor der ersten Bedienung, alle drei frühen Klicktöne und aktive Musik vor dem ersten Turmbau; keine Seitenfehler. [Skript](check-live.mjs). `automationToSoundMs` enthält Bedienbarkeits-Wartezeit der Browserautomatisierung und ist keine reine Tonlatenz.
+
+Die tatsächliche [GitHub-README](https://github.com/emfau88/TD#readme) wurde im Browser geprüft: neuer Titel, drei aktuelle Bilder und zwei ausdrücklich historische Bilder im aufklappbaren Abschnitt; alle fünf geladen. [Ergebnis](readme-live.json) · [Skript](check-readme.mjs).

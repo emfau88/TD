@@ -6,7 +6,7 @@
 - [x] Ein Lagerfeuerbild mit den bestehenden Figuren über Imagegen erstellen, Original/Prompt sichern und kleine WebP-Ausgaben einbinden; drei zufällige Ladezeilen mit deutscher Übersetzung.
 - [x] Auf Nutzerergänzung den Ladeabschluss an die Abspielbereitschaft aktivierter Hintergrundmusik koppeln; Stummzustand überspringt die Phase, echter Ladefehler bietet Wiederholen/Start ohne Musik.
 - [x] 19/19 gezielte Tests und Produktionsbuild bestanden; sieben Sprach-/Viewportkombinationen einschließlich 320 px und Querformat, drei Zufallstexte, verzögerte Musik, Stummstart, Ladefehler und Timeout im Browser geprüft. [Nachweis und Screenshots](../../artifacts/idle-bastion/acceptance/branding-2026-10-27/REPORT.md).
-- [ ] Geprüftes Paket auf Main committen/pushen und Pages-Veröffentlichung bestätigen.
+- [x] Als `41b2abf` auf Main gepusht und über [Pages-Lauf 40591918369](https://github.com/emfau88/TD/actions/runs/40591918369) veröffentlicht. Live-Prüfung bei 1440/390 px bestätigt neuen Titel, abspielbereite Musik vor der Freigabe und frühe Klicktöne. GitHub-README mit drei aktuellen und zwei eingeklappten historischen Bildern online geprüft; alle Bilder geladen. Subjektive Nutzerbewertung bleibt offen.
 
 **GitHub-README · 27.10.2026, auf Nutzerwunsch aktualisiert:**
 
