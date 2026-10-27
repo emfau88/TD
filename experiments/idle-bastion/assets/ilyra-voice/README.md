@@ -4,7 +4,13 @@ Sieben am 26.10.2026 ausdrücklich gewählte Original-MP3s aus dem lokalen Nutze
 `SOUNDS/TD IDLE SPIRE/succubus/Voice 1`: `voice1-giggle1`, `voice1-good1`,
 `voice1-goodboy1`, `voice1-lookonlyatme1`, `voice1-senpai1`, `voice1-sweetheart1`,
 `voice1-wouldntyou1`. Zusammen 325.440 Bytes, bytegleich kopiert, nicht neu kodiert.
-In diesem Ordner lag keine Urheber-/Lizenzdatei; diese Dokumentation behauptet keine eigene Lizenz.
+Quelle: [Free Yandere Voice Pack / Voice Pack 02](https://maskedintrovert.itch.io/free-yandere-voice-pack)
+von **MaskedIntrovert**. Anbieterbedingungen am 27.10.2026 geprüft: persönliche und
+kommerzielle Verwendung erlaubt; keine eigenständige Verwendung, kein Weiterverkauf
+und kein Ausgeben als eigene Aufnahmen. Eigene Anbieterbedingungen, **nicht CC0**.
+Namensnennung, Quellenlink und Bedingungen stehen in den Audio-Credits im Spielmenü.
+Die Zuordnung beruht auf dem bereitgestellten Pack und den Dateinamen; ein zusätzlicher
+Bytevergleich mit dem Original-Downloadarchiv wurde hier nicht durchgeführt.
 
 Alle drei bestätigten Berührungen verwenden denselben Pool: keine direkte Wiederholung,
 keine Überlagerung, mindestens 2,5 Sekunden zwischen Starts. Nur die nächste Datei lädt

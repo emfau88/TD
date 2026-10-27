@@ -1,3 +1,4 @@
+import { mountCredits } from './credits-ui';
 import { offlineGoldDisplay } from './reward-display';
 import { loadingScreen } from './loading-screen';
 import { t, numberFormat, onLanguageChange, language } from './i18n';
@@ -55,6 +56,7 @@ let focusedLesson = "";
 let workshopRevealUntil = 0;
 let focusedDiscovery = '';
 const lifetime = new AbortController();
+mountCredits(lifetime.signal);
 const audio = new GameAudio();
 audio.bindControls(element('audio-controls'));
 const currency = numberFormat({ maximumFractionDigits: 0 });

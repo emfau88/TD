@@ -1,0 +1,12 @@
+.credits-link { background:transparent; border:0; padding:6px 0; color:#e5bc85; text-decoration:underline; text-align:left; cursor:pointer; }
+#credits-dialog { width:min(760px,calc(100vw - 24px)); max-height:calc(100svh - 24px); padding:16px; overflow:hidden; }
+#credits-dialog[open] { display:flex; flex-direction:column; }
+#credits-dialog .context-header { flex:none; }
+#credits-dialog h2 { font-size:18px; margin:0; }
+#credits-dialog .context-header button { min-width:44px; min-height:44px; }
+#credits-dialog .credits-content { min-height:0; overflow:auto; overscroll-behavior:contain; overflow-wrap:anywhere; font:14px/1.6 system-ui,sans-serif; }
+#credits-dialog .credits-content p { font:inherit; }
+#credits-dialog .credits-content h2 { margin:18px 0 8px; }
+#credits-dialog ul { padding-left:20px; margin:0; }
+#credits-dialog li { margin:14px 0; }
+#credits-dialog a { color:#e5bc85; text-decoration:underline; }

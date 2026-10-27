@@ -1135,5 +1135,8 @@ export const english: Readonly<Record<string, string>> = {
   "≈ +{0} Gold": "≈ +{0} gold",
   "{0} Mio.": "{0} million",
   "{0} Mrd.": "{0} billion",
-  "{0} Bio.": "{0} trillion"
+  "{0} Bio.": "{0} trillion",
+  "Audioquellen & Lizenzen": "Audio sources & licenses",
+  "Gegnergrafiken & Lizenzen": "Enemy artwork & licenses",
+  "Credits schließen": "Close credits"
 };

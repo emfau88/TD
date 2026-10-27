@@ -1,5 +1,12 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+
+**Credits im Spiel und Ilyra-Lizenz — 27.10.2026, beauftragt und umgesetzt.**
+
+- [x] MaskedIntrovert / Free Yandere Voice Pack mit Originalquelle und Anbieterbedingungen in Audio-Credits und Ilyra-README ergänzt. Persönliche/kommerzielle Verwendung, keine eigenständige Verwendung, kein Weiterverkauf/Urheberschaftsanspruch; ausdrücklich keine CC0-Lizenz. Kein behaupteter Bytevergleich mit dem Anbieterarchiv.
+- [x] Audio- und Gegnercredits aus den Einstellungen als scrollbares Fenster im Spiel; Schließen/Escape führt ins unveränderte Menü zurück. Dieselben mitgelieferten Quellen wie die bestehenden HTML-Seiten, keine Repository-Verlinkung. Urheber-/Lizenzlinks bleiben erreichbar. Spielmechanik, Stimmen und Speicherformat unverändert.
+- [x] Produktionsbuild bestanden. Gebautes Spiel bei 1280/390/320 px geprüft: beide Creditsansichten, DE-/EN-Bedienelemente, Schließen/Escape/Fokusrückgabe, kein neuer Tab beim Öffnen, kein GitHub-Repository-Link, sichtbarer Schließenknopf und keine Browserfehler. Credittexte bleiben wie bisher deutsch. [Messdaten](../../artifacts/idle-bastion/acceptance/credits/credits-check-results.json) · [Hochkantansicht](../../artifacts/idle-bastion/acceptance/credits/credits-390.png). Visuelle Eigenprüfung, keine zusätzliche Nutzerabnahme behauptet.
+
 **Einstieg · lebendiges HQ, einheitliche Hinweise und Gesamtfortschritt — 26.10.2026, Umsetzung und Main-Veröffentlichung beauftragt.**
 
 - [x] Vorhandene Kernspitze animiert bereits in der Begrüßung über die bestehende Vorbereitungszeit. Einzige Mara-Figur zunächst neben dem HQ; beim Kameraschwenk weich aus-/einblenden und an ihrem regulären Startpunkt zeigen. Kein Lauf quer über die Karte, keine Verdopplung oder Änderung ihrer gespeicherten Position.
