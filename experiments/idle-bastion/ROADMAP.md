@@ -5,7 +5,7 @@
 - [x] Schwarzen Außenhintergrund der Lagerfeuerszene durch echte Transparenz ersetzen; bestehende Figuren und Bildkomposition erhalten, Originale/Prompt sichern.
 - [x] Offene, zusammenhängende Gestaltung mit dezentem Licht, ruhiger Typografie und angepasstem Desktop-/Hochkantlayout statt verschachtelter Bildkästen.
 - [x] Abspielbereitschaft/Fehlerbedienung erhalten, 7/7 Ladebildtests und Produktionsbuild bestanden. Sieben Sprach-/Viewportkombinationen inklusive 320 px/Querformat, Musikverzögerung, Stummstart, Ladefehler und Timeout geprüft; README-Aufnahme aktualisiert. [Nachweis und Screenshots](../../artifacts/idle-bastion/acceptance/loading-polish-2026-10-27/REPORT.md).
-- [ ] Geprüften Stand auf Main veröffentlichen und Pages live kontrollieren.
+- [x] Als `dab4a90` auf Main gepusht und über [Pages-Lauf 40597316395](https://github.com/emfau88/TD/actions/runs/40597316395) veröffentlicht. Live-Prüfung bei 1440/390 px bestätigt neue freigestellte Grafik, transparenten Bildhintergrund, abspielbereite Musik und frühe Klicktöne ohne Seitenfehler. Subjektive Nutzerbewertung bleibt offen.
 
 **Neuer Spielname und Ladebild · 27.10.2026, ausdrücklich beauftragt:**
 

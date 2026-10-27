@@ -22,4 +22,8 @@ Die Oberfläche verwendet einen gemeinsamen dunklen Petrolhintergrund mit dezent
 
 [320 px Deutsch](loading-320-de.png) · [Querformat](loading-844.png) · [Musikfehler mit bedienbaren Buttons](loading-error-320.png)
 
-Browseremulation ersetzt keine physische Smartphone-Abnahme. Die subjektive Bewertung durch den Nutzer bleibt offen. Veröffentlichung und Live-Nachweis werden nach Pages ergänzt.
+Browseremulation ersetzt keine physische Smartphone-Abnahme. Die subjektive Bewertung durch den Nutzer bleibt offen. 
+
+## Veröffentlichung
+
+Commit `dab4a90` ist auf Main; [Pages-Lauf 40597316395](https://github.com/emfau88/TD/actions/runs/40597316395) erfolgreich. Anschließende Live-Probe bei 1440/390 px bestätigt das neue Cutout-Asset und transparenten CSS-Bildhintergrund, Musik-Abspielbereitschaft vor der ersten Geste sowie Musik und Klicktöne bei den ersten Tutorialbestätigungen. Keine Seitenfehler. [Live-Messungen](live-results.json).

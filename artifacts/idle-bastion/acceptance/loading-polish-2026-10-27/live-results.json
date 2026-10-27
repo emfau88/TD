@@ -1,0 +1,76 @@
+[
+  {
+    "width": 1440,
+    "bundle": "./assets/battle-C7QvgLfr.js",
+    "initial": {
+      "at": 3496,
+      "ready": 4,
+      "paused": true
+    },
+    "clicks": [
+      {
+        "label": "Continue",
+        "automationToSoundMs": 48,
+        "bufferDuration": 0.7579818594104308
+      },
+      {
+        "label": "Got it",
+        "automationToSoundMs": 18,
+        "bufferDuration": 0.7579818594104308
+      },
+      {
+        "label": "Build your first tower",
+        "automationToSoundMs": 2892,
+        "bufferDuration": 0.7579818594104308
+      }
+    ],
+    "audio": {
+      "currentTime": 5.652784,
+      "playing": [
+        {
+          "at": 3903.2000000001863,
+          "src": "https://emfau88.github.io/TD/assets/exploration-CiwinCny.mp3"
+        }
+      ],
+      "stage": "build"
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "bundle": "./assets/battle-C7QvgLfr.js",
+    "initial": {
+      "at": 5602.899999999441,
+      "ready": 4,
+      "paused": true
+    },
+    "clicks": [
+      {
+        "label": "Continue",
+        "automationToSoundMs": 45,
+        "bufferDuration": 0.7579818594104308
+      },
+      {
+        "label": "Got it",
+        "automationToSoundMs": 23,
+        "bufferDuration": 0.7579818594104308
+      },
+      {
+        "label": "Build your first tower",
+        "automationToSoundMs": 3720,
+        "bufferDuration": 0.7579818594104308
+      }
+    ],
+    "audio": {
+      "currentTime": 7.383946,
+      "playing": [
+        {
+          "at": 5676.199999999255,
+          "src": "https://emfau88.github.io/TD/assets/exploration-CiwinCny.mp3"
+        }
+      ],
+      "stage": "build"
+    },
+    "errors": []
+  }
+]
