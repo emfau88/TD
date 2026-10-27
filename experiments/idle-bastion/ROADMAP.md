@@ -4,7 +4,7 @@
 
 Fachliche Grundlage: [Umsetzungsplan mit Regeln, Quellen und Messwerten](docs/TAVERNE_DREI_HERZEN_PLAN.md). Die folgenden fünf Pakete ersetzen die bisherigen drei groben T12-Punkte. Alle Arbeitscheckboxen und der aktuelle Stand werden ausschließlich hier gepflegt; der Fachplan beschreibt Regeln und Prüffälle.
 
-**Aktueller Stand:** Plan gesichert; T12.1 in Arbeit. Ausgangspunkt `9b3807e`, Main/Remote synchron, 67/67 bestehende Social-/Interaktions-/Save-/Sessiontests bestanden. **Nächster Schritt:** Regeln und Schema-Migration. Die Pakete werden in der Reihenfolge 1 → 2 → 3 → 4 → 5 abgearbeitet. Es sind Arbeitsabschnitte, keine zusätzlichen Freigaberunden zwischen jedem Paket.
+**Aktueller Stand:** T12.1 geprüft; T12.2 in Arbeit. Ausgangspunkt `9b3807e`, Plancommit `bdea479`. **Nächster Schritt:** exakte Aktionsauswahl und gespeicherte Geschenkhinweise. Reihenfolge 1 → 2 → 3 → 4 → 5; keine zusätzlichen Freigaberunden zwischen den Paketen.
 
 - [x] Aktuellen Main-Stand und Abhängigkeiten von Geschenken, Herzschwellen, Zeitbudgets, Szenen, Berührungen, Hinweisen, Speicherung und Farming gelesen. 90 neue Engine-Farmzyklen und vorhandene Vorstoßdaten ausgewertet.
 - [x] Anschlusswunsch im Plan präzisiert: Freigeschaltete Berührungen bleiben dauerhaft gemeinsam nutzbar; Schulter/Kopf-Haare/Hand nutzen bei beiden Figuren touch/head/giggle. Die dritte Zone folgt erst mit Herz 4; Drei-Herzen-Grenze bleibt.
@@ -15,11 +15,13 @@ Fachliche Grundlage: [Umsetzungsplan mit Regeln, Quellen und Messwerten](docs/TA
 Voraussetzung: Umsetzungsauftrag liegt vor. Schwerpunkt: `tavern-social.ts`, Social-Snapshot/Restore in `battle.ts`; Fachplan Abschnitte 1, 2, 5 und 6.
 
 - [x] Aktuellen Main-Stand, Arbeitsverzeichnis und vorhandene Änderungen geprüft; auf ausdrücklichen Nutzerwunsch direkt auf `main`. Ausgangsbasis: 67/67 gezielte Prüfungen. Nächstes freies Schema 32; Kampfregeln bleiben 16.
-- [ ] Zentrale Social-Regeln und Angebotsgründe umsetzen: Grenzen 23/35/58/70, persönliche Belohnung nach 30 Siegen, normales Geschenk nach 10 Siegen, neue Auffüllreserven statt 20-Minuten-Fenster. Freischaltungen je Figur aus erhaltenen Punkten ableiten; drei Herzen als Etappengrenze mit Bestandsschutz.
-- [ ] Neue Daten validieren und alte Social-Spielstände migrieren: Punkte/Vorrat/Claims/Drop-Rest erhalten, Ilyra-Zugang respektieren, vorhandene Herzen 4/5 nicht zurücknehmen. Kampfregeln, laufende Wellen und Offlinebelege erhalten.
-- [ ] Grenz- und Migrationstests ausführen, insbesondere 23/34/35/58/69/70/109/110/160 Punkte und gesperrte Ilyra; tatsächliche Ergebnisse dokumentieren.
+- [x] Zentrale Social-Regeln und Angebotsgründe umsetzen: Grenzen 23/35/58/70, persönliche Belohnung nach 30 Siegen, normales Geschenk nach 10 Siegen, neue Auffüllreserven statt 20-Minuten-Fenster. Freischaltungen je Figur aus erhaltenen Punkten ableiten; drei Herzen als Etappengrenze mit Bestandsschutz.
+- [x] Neue Daten validieren und alte Social-Spielstände migrieren: Punkte/Vorrat/Claims/Drop-Rest erhalten, Ilyra-Zugang respektieren, vorhandene Herzen 4/5 nicht zurücknehmen. Kampfregeln, laufende Wellen und Offlinebelege erhalten.
+- [x] Grenz- und Migrationstests ausführen, insbesondere 23/34/35/58/69/70/109/110/160 Punkte und gesperrte Ilyra; tatsächliche Ergebnisse dokumentieren.
 
 **Abgeschlossen, wenn:** Neue Regeln und alte Spielstände zusammen konsistent funktionieren und die gezielten Prüfungen bestehen. Dieser Zwischenstand ist noch keine fertige Spieleroberfläche.
+
+Nachweis T12.1: Schema 32 / Regeln 16, 73/73 gezielte Social-/Interaktions-/Ilyra-/Save-/Sessiontests und TypeScript bestanden. Historische Social-Regeln isoliert erhalten; Altdaten werden explizit migriert. Minimale Lifecycle-Anbindung bereits für konsistente Snapshots enthalten.
 
 **T12.2 · Geschenkvergabe und sichere Spielaktionen anbinden**
 

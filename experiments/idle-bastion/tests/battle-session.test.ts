@@ -1,3 +1,4 @@
+import { createSocial as createLegacySocial } from '../src/tavern-social-legacy';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { IDBFactory } from 'fake-indexeddb';
@@ -254,7 +255,7 @@ test('pending commits preserve all active time in bounded batches, without creat
   assert.deepEqual(store.current!.battle, session.battle.snapshot());
 });
 
-test('60, 10 and 2 FPS produce the same saved combat and social time', async () => {
+test('60, 10 and 2 FPS produce the same saved combat and victory-based social progress', async () => {
   const snapshots: BattleSnapshot[] = [];
   for (const fps of [60, 10, 2]) {
     const store = new ControlledStore(), b = new IdleBattle();
@@ -262,13 +263,13 @@ test('60, 10 and 2 FPS produce the same saved combat and social time', async () 
     assert.ok(b.buildTavern(b.recommendedTavernPlot!));
     store.current = fixture(b);
     const session = await open(store); await resume(session);
-    const before = session.battle.elapsed, socialTicks = session.battle.social.window.ticks;
+    const before = session.battle.elapsed;
     for (let frame = 0; frame < fps * 10; frame++) {
       session.advance(1 / fps); await tick();
     }
     await session.flush();
     assert.equal(session.battle.elapsed - before, 10);
-    assert.equal(session.battle.social.window.ticks - socialTicks, 400);
+    assert.ok(session.battle.social.reserves.mara, 'the active companion retains her saved reserve');
     assert.deepEqual(store.current!.battle, session.battle.snapshot());
     snapshots.push(session.battle.snapshot());
     await session.close();
@@ -420,7 +421,7 @@ test('schema 29 migration preserves an already reserved offline reward exactly o
   const store = new ControlledStore(), session = await open(store);
   await firstClear(session); await session.suspend(); store.clock += 60000;
   const reserved = await open(store), reward = copy(reserved.pendingReward!); await reserved.suspend();
-  const old = store.current!.battle as any; old.schemaVersion = 29; old.rulesVersion = 15; old.waveRecipeVersion = 15; delete old.tutorialFrostUid;
+  const old = store.current!.battle as any; old.schemaVersion = 29; old.social = createLegacySocial(); old.rulesVersion = 15; old.waveRecipeVersion = 15; delete old.tutorialFrostUid;
   const before = old.gold * 1000 + old.goldRemainderUnits;
   const returned = await open(store); assert.deepEqual(returned.pendingReward, reward);
   assert.equal(returned.battle.tutorialFrostUid, null);
@@ -609,6 +610,7 @@ test('pause click during a checkpoint persists exactly once', async () => {
 test('gift click during autosave remains responsive without duplicate gifts or points', async () => {
   const b = new IdleBattle(); b.update(4); b.highestCleared = 12;
   b.buildTavern(b.recommendedTavernPlot!);
+  for (let i = 0; i < 3; i++) b.interactCompanion('mara', 'talk');
   const store = new ControlledStore(); store.current = fixture(b);
   const session = await open(store); await resume(session);
   const ui = new TavernInteractions();
@@ -617,7 +619,7 @@ test('gift click during autosave remains responsive without duplicate gifts or p
   assert.equal(await ui.run(session, 'gift'), null);
   store.gate = false; store.pending!.confirm();
   assert.equal((await gift)?.points, 12);
-  assert.equal(session.battle.social.points.mara, 12); assert.equal(session.battle.social.gifts, 0);
-  assert.equal(store.current!.battle.social.points.mara, 12);
+  assert.equal(session.battle.social.points.mara, 35); assert.equal(session.battle.social.gifts, 0);
+  assert.equal(store.current!.battle.social.points.mara, 35);
   await session.close();
 });

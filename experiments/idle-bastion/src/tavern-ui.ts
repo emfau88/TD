@@ -229,7 +229,7 @@ export class TavernUI {
     }
     this.text('gift-summary', t("Geschenke: {0} · Details", b.social.gifts));
     this.text('stock', t("Geschenke: {0} · Empfängerin: {1}", b.social.gifts, this.content.name));
-    this.text('renewal', t("Nächster Abschnitt in {0} Min. laufender Spielzeit.", Math.ceil((SOCIAL.windowTicks - b.social.window.ticks) / 2400)));
+    this.text('renewal', t("Neue Zuneigung nach noch {0} gewonnenen Wellen.", SOCIAL.clearsPerRefill - (b.social.reserves[this.selected]?.clears ?? 0)));
     this.text('ilyra-lock', b.ilyra ? COMPANIONS.ilyra.stage(b.social.points.ilyra).greeting : b.secondBossVictories ? b.settlement.tavernLevel === 2 ? t('Bereit für deine Einladung. Rekrutiere sie in der Gefährtenverwaltung.') : t('Boss 25 besiegt. Baue die Taverne auf Stufe II aus.') : t('Nach Boss 25 und dem Ausbau auf Taverne II rekrutierbar.'));
     this.get('[data-do="ilyra"]').textContent = t(b.ilyra ? t('Zeit mit Ilyra verbringen →') : b.ilyraRecruitable ? t('Ilyra kennenlernen →') : t('Rekrutierung & Ausbau →'));
     this.get<HTMLButtonElement>('[data-do="wisp"]').disabled = !b.wispUnlocked;

@@ -18,13 +18,14 @@ test('Ilyra requires actual recruitment; each transaction retains its recipient 
   const s = await veteran(), ui = new TavernInteractions(), b = s.battle;
   const locked = b.snapshot(); assert.equal(await ui.run(s, 'gift', 'ilyra'), null); assert.deepEqual(b.snapshot(), locked);
   assert.ok(b.recruitIlyra());
+  for (let i = 0; i < 3; i++) await ui.run(s, 'talk', 'ilyra');
   const pose = structuredClone(b.ilyra), maraBefore = b.social.points.mara, gifts = b.social.gifts;
   const gift = ui.run(s, 'gift', 'ilyra');
   assert.equal(await ui.run(s, 'gift', 'mara'), null); // A second tap/recipient cannot steal the pending gift.
-  assert.equal((await gift)?.points, 12); assert.equal(b.social.points.ilyra, 12);
+  assert.equal((await gift)?.points, 12); assert.equal(b.social.points.ilyra, 35);
   assert.equal(b.social.points.mara, maraBefore); assert.equal(b.social.gifts, gifts - 1);
   assert.equal((await ui.run(s, 'talk', 'mara'))?.points, 8);
-  assert.equal(b.social.points.ilyra, 12); assert.equal(b.social.points.mara, 8);
+  assert.equal(b.social.points.ilyra, 35); assert.equal(b.social.points.mara, 8);
   assert.deepEqual(b.ilyra, pose); assert.equal(s.paused, true);
   const restored = IdleBattle.restore(b.snapshot()); assert.ok(restored); assert.deepEqual(restored.social, b.social);
   await s.close();
