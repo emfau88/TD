@@ -128,3 +128,36 @@ test('deliberate map focus and zoom leave tutorial framing and restore normal sc
   scene.focusGuidedDefense(); scene.setMapZoom(1.15);
   assert.equal(scene.guidedDefenseFrame, false); near(camera.zoom, 658 / 640 * 1.15);
 });
+
+test('tutorial and overview camera viewports end at the real map on desktop and portrait', t => {
+  const { scene, camera, model } = cameraScene(t);
+  camera.setBounds = (x: number, y: number, width: number, height: number) => { camera.bounds = { x, y, width, height }; };
+  for (const [width, height] of [[390, 900], [320, 700], [1440, 900], [2560, 1080]]) {
+    Object.assign(globalThis.window, { innerWidth: width, innerHeight: height });
+    scene.scale = { width, height };
+    scene.game.canvas.getBoundingClientRect = () => ({ top: 0, bottom: height });
+    for (const overview of [false, true]) {
+      scene.overview = overview; scene.guidedDefenseFrame = !overview;
+      scene.resizeCamera();
+      assert.deepEqual(camera.bounds, { x: 0, y: 0, ...model.layout.bounds });
+      assert.ok(camera.displayWidth <= model.layout.bounds.width);
+      assert.ok(camera.displayHeight <= model.layout.bounds.height);
+      assert.ok(camera.x >= 0 && camera.y >= 0);
+      assert.ok(camera.x + camera.width <= width && camera.y + camera.height <= height);
+      if (overview) {
+        assert.ok(Math.abs(camera.width - model.layout.bounds.width * camera.zoom) < 1);
+        assert.ok(Math.abs(camera.height - model.layout.bounds.height * camera.zoom) < 1);
+      }
+    }
+  }
+});
+
+test('zooming out and back uses the full available viewport without accumulating an outside margin', t => {
+  const { scene, camera } = cameraScene(t);
+  scene.focusGuidedDefense();
+  scene.setMapZoom(1);
+  const normal = { x: camera.x, y: camera.y, width: camera.width, height: camera.height };
+  for (let i = 0; i < 3; i++) { scene.setMapZoom(1.15); scene.setMapZoom(1); }
+  assert.deepEqual({ x: camera.x, y: camera.y, width: camera.width, height: camera.height }, normal);
+  assert.equal(scene.mapViewport.width, 390); assert.equal(scene.mapViewport.height, 658);
+});

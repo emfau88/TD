@@ -105,6 +105,7 @@ export class BattleScene extends Phaser.Scene {
   private overview = false;
   private portraitCamera = false;
   private cameraFitted = false;
+  private mapViewport?: { x: number; y: number; width: number; height: number };
   private guidedDefenseFrame = false;
   private guidedDefensePad?: string;
   private introStep: IntroStep | null = null;
@@ -309,6 +310,7 @@ export class BattleScene extends Phaser.Scene {
     const top = portrait ? Math.max(0, (header?.bottom ?? canvas.top) - canvas.top) * this.pixelDensity : 0;
     const bottom = portrait ? Math.max(top + 1, ((dock?.top ?? canvas.bottom) - canvas.top) * this.pixelDensity) : this.scale.height;
     const viewHeight = Math.max(1, Math.min(this.scale.height, bottom) - top);
+    this.mapViewport = { x: 0, y: top, width: this.scale.width, height: viewHeight };
     camera.setViewport(0, top, this.scale.width, viewHeight);
     this.baseZoom = portrait && !this.overview ? Math.max(this.scale.height / height, this.scale.width / 640)
       : Math.min(this.scale.width / (this.overview ? width : 1120), viewHeight / height);
@@ -323,10 +325,14 @@ export class BattleScene extends Phaser.Scene {
   }
   private fitCameraBounds(): void {
     const camera = this.cameras.main, { width, height } = this.sim.layout.bounds;
-    const padX = Math.max(this.guidedDefenseFrame && this.portraitCamera ? 40 : 0, (camera.displayWidth - width) / 2);
-    // One cell of headroom lets tall north-row towers clear the objective ribbon.
-    const padY = Math.max(this.portraitCamera && !this.overview ? 40 : 0, (camera.displayHeight - height) / 2);
-    camera.setBounds(-padX, -padY, width + padX * 2, height + padY * 2);
+    const view = this.mapViewport ?? { x: 0, y: 0, width: this.scale.width, height: this.scale.height };
+    // Keep the rendered viewport inside the actual map even when zoomed out.
+    // Spare screen space belongs to the UI backdrop, never to walkable terrain.
+    const shownWidth = Math.min(view.width, Math.floor(width * camera.zoom));
+    const shownHeight = Math.min(view.height, Math.floor(height * camera.zoom));
+    camera.setViewport(Math.round(view.x + (view.width - shownWidth) / 2),
+      Math.round(view.y + (view.height - shownHeight) / 2), shownWidth, shownHeight);
+    camera.setBounds(0, 0, width, height);
   }
   focusPad(padId: string): void {
     if ((this.sim.preparing || this.sim.guiding) && (this.sim.isPreferredStarterLocation(padId)
@@ -501,12 +507,13 @@ export class BattleScene extends Phaser.Scene {
     if (this.guidedDefenseFrame) { this.guidedDefenseFrame = false; this.resizeCamera(); }
     if (this.overview) { this.overview = false; this.resizeCamera(); }
     const camera = this.cameras.main, old = camera.zoom;
+    const oldWidth = camera.width, oldHeight = camera.height;
     this.relativeZoom = Math.round(Phaser.Math.Clamp(value, 1, 1.15) * 100) / 100;
     const zoom = this.baseZoom * this.relativeZoom;
     camera.setZoom(zoom);
     this.fitCameraBounds();
-    camera.setScroll(camera.clampX(camera.scrollX + (pointerX - camera.x - camera.width / 2) * (1 / old - 1 / zoom)),
-      camera.clampY(camera.scrollY + (pointerY - camera.y - camera.height / 2) * (1 / old - 1 / zoom)));
+    camera.setScroll(camera.clampX(camera.scrollX + (oldWidth - camera.width) / 2 + (pointerX - camera.x - camera.width / 2) * (1 / old - 1 / zoom)),
+      camera.clampY(camera.scrollY + (oldHeight - camera.height) / 2 + (pointerY - camera.y - camera.height / 2) * (1 / old - 1 / zoom)));
     if (old !== zoom) this.hooks.changed();
   }
   private beginPointer(pointer: Phaser.Input.Pointer): void {

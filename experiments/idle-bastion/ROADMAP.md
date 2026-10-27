@@ -1,5 +1,13 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Kartenrand-Fix – 27.10.2026, beauftragt einschließlich Commit/Push:**
+
+- [x] Ursache aus der reinen Sichtprüfung bestätigt: zusätzlicher Kameraspielraum nach dem Intro und grüner Rendererhintergrund außerhalb der eigentlichen Karte.
+- [x] Kamera beim Fokussieren, Zoomen und Verschieben auf die tatsächliche Karte begrenzen; Übersicht vollständig erhalten und freie Bildschirmflächen klar absetzen.
+- [x] Desktop und Hochkant einschließlich Intro-Ende, Ziehen bis an alle Ränder, Zoom/Übersicht und Rotation prüfen; neue Screenshots und tatsächliche Ergebnisse dokumentieren.
+- [x] 19/19 gezielte Tests und Produktionsbuild einschließlich TypeScript bestanden; 94 tatsächliche Kameramessungen und separate Produktionsprobe ohne Seitenfehler. [Prüfbericht und Screenshots](../../artifacts/idle-bastion/acceptance/map-edge-fix-2026-10-27/REPORT.md).
+- [ ] Geprüften Kartenrand-Fix committen und auf Main pushen; Veröffentlichung anschließend bestätigen.
+
 **T12 · Erste Beziehungsetappe bis drei Herzen — 27.10.2026, Umsetzung direkt auf Main ausdrücklich beauftragt.**
 
 Fachliche Grundlage: [Umsetzungsplan mit Regeln, Quellen und Messwerten](docs/TAVERNE_DREI_HERZEN_PLAN.md). Die folgenden fünf Pakete ersetzen die bisherigen drei groben T12-Punkte. Alle Arbeitscheckboxen und der aktuelle Stand werden ausschließlich hier gepflegt; der Fachplan beschreibt Regeln und Prüffälle.
@@ -81,7 +89,7 @@ Die ältere Zielvorgabe aus T10 „alle drei Berührungen von Anfang an“ wird 
 
 **Zusatzauftrag Kartenrand – 27.10.2026, nur prüfen:**
 
-- [x] Linken Gegnerspawn im Intro und danach auf Desktop/Hochkant geprüft; [Screenshots und Befund](../../artifacts/idle-bastion/acceptance/map-edge-review-2026-10-27/REPORT.md). Hochkant nach dem Intro: grüner Außenstreifen links reproduziert, beim Ziehen breiter. Spezieller Intro-Fix weiterhin vorhanden, anschließender Kamerapfad erlaubt Außenraum. Keine Karten-/Kameraänderung vorgenommen; Umsetzung eines Fixes nicht beauftragt.
+- [x] Linken Gegnerspawn im Intro und danach auf Desktop/Hochkant geprüft; [Screenshots und Befund](../../artifacts/idle-bastion/acceptance/map-edge-review-2026-10-27/REPORT.md). Hochkant nach dem Intro: grüner Außenstreifen links reproduziert, beim Ziehen breiter. Spezieller Intro-Fix weiterhin vorhanden, anschließender Kamerapfad erlaubt Außenraum. In dieser reinen Prüfphase keine Karten-/Kameraänderung vorgenommen. Anschließend Fix einschließlich Commit/Push beauftragt; aktueller Stand oben unter Kartenrand-Fix.
 
 **Credits im Spiel und Ilyra-Lizenz — 27.10.2026, beauftragt und umgesetzt.**
 
