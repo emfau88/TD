@@ -22,6 +22,7 @@ Der geprüfte Ablauf führt vom frischen Start über hörbare frühe Bestätigun
 | Durchgängiger Einstieg | Turm über echte Maus/Touch-Aktion gebaut, Kampf gestartet, Upgradeziel geöffnet, Dropdown ausgeblendet, Upgrade ausgeführt, Menü geschlossen, Reload im nächsten Lernschritt. |
 | Spätere UI und Daten | Native IndexedDB mit isolierten validierten Testständen: Werkstatt am angetippten Grundflächenzentrum, Mara im Kamerabild, Tutorial 11/14 und 13/14, goldener Steinschleuderbutton mit mindestens 44 px Höhe sowie Geschenkhinweis an der Tavernenkarte. Alle drei Breiten geprüft. |
 | Produktion | npm run build einschließlich TypeScript erfolgreich. Unverändertes Produktionspaket separat auf Desktop und Hochkant: erste Desktop-Bestätigung per Enter, weitere Klicks/Touch, Musik, Bau/Upgrade/Reload, Audio-Credits, stumm/laut. Keine Seitenfehler. |
+| GitHub Pages | Code-Commit `a85870f` über [Lauf 40587206143](https://github.com/emfau88/TD/actions/runs/40587206143) veröffentlicht. Neue isolierte Chrome-Kontexte bei 1440/390 px: alle drei frühen Klicktöne tatsächlich gestartet, Musik vor dem Turmbau aktiv, neue Tavernenmarkierung vorhanden und alte Umzugsaktion entfernt; keine Seitenfehler. |
 | Sichtprüfung | Screenshots geprüft. Überdeckung des Geschenks durch Neu zunächst gefunden, korrigiert und die betroffenen Ansichten erneut geprüft. |
 
 Zwei ältere Testhelfer erwarteten nach dem Upgrade weiterhin die entfallene Bestätigung und versuchten anschließend verfrüht die Werkstatt zu bauen. Sie wurden an den nun atomaren Übergang angepasst. Der abschließende gezielte Lauf bestand vollständig. Eine anfänglich zu enge URL-Regel der Browser-Messanbindung wurde für Vites Modul-Zeitstempel erweitert; keine entsprechende Instrumentierung im Spielcode.
@@ -30,10 +31,12 @@ Die späteren UI-Stände sind ausdrücklich synthetische Teststände, der frühe
 
 ## Nachweise
 
-[Frischer Einstieg](fresh-results.json) · [Spätere Ansichten](later-results.json) · [Letzte Badge-/Buttonprüfung](badge-button-results.json) · [Produktionsprüfung](production-results.json) · [Umzugsoption entfernt](settlement-final-results.json) · [Buildausgabe](build-output.txt).
+[Frischer Einstieg](fresh-results.json) · [Spätere Ansichten](later-results.json) · [Letzte Badge-/Buttonprüfung](badge-button-results.json) · [Produktionsprüfung](production-results.json) · [Umzugsoption entfernt](settlement-final-results.json) · [Buildausgabe](build-output.txt) · [Live-Prüfung](live-results.json).
 
-[Prüfskript Einstieg](check-fresh.mjs) · [Spätere Ansichten](check-later.mjs) · [Badge-Nachprüfung](check-badges.mjs) · [Produktion](check-production.mjs) · [Umzugsoption](check-settlement.mjs).
+[Prüfskript Einstieg](check-fresh.mjs) · [Spätere Ansichten](check-later.mjs) · [Badge-Nachprüfung](check-badges.mjs) · [Produktion](check-production.mjs) · [Umzugsoption](check-settlement.mjs) · [GitHub Pages](check-live.mjs).
 
 [Intro 320 px](intro-320.png) · [Upgradeziel 390 px](upgrade-marker-390.png) · [Mara 390 px](mara-390.png) · [Steinschleuder 390 px](cannon-390.png) · [Geschenke 320 px](gift-320.png) · [Geschenke Desktop](gift-1440.png).
+
+Die Live-Messgröße `automationToSoundMs` enthält die automatische Wartezeit auf bedienbare Buttons; sie misst keine reine Tonlatenz. Der Live-Check identifiziert die veröffentlichte Oberfläche anhand ihrer neuen Bedienelemente, da der Linux-Build andere Bundle-Hashes als der lokale Windows-Build erzeugt.
 
 Visuelle Eigenprüfung und technische Wiedergabemessung; keine subjektive Hör- oder Nutzerabnahme behauptet. Schema und Kampfregeln unverändert. Aufgaben- und Veröffentlichungsstatus stehen ausschließlich in der [Roadmap](../../../../experiments/idle-bastion/ROADMAP.md).

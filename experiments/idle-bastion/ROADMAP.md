@@ -8,7 +8,7 @@
 - [x] Gebäude mittig am gewählten Bodenpunkt platzieren; Geschenkstatus dezent an der Tavernenkarte statt am Siedlungstab anzeigen.
 - [x] 76/76 gezielte Tests, Produktionsbuild und echte Desktop-/Touchabläufe bei 1440/390/320 px bestanden; Produktion separat mit Tastatur/Touch, Audio und Reload geprüft. [Prüfbericht und Screenshots](../../artifacts/idle-bastion/acceptance/entry-polish-2026-10-27/REPORT.md).
 - [x] Nach Nutzerergänzung alte Umzugskachel und Umzugsaktion aus der Spieloberfläche entfernt; Darstellung auch im älteren Teststand bei 1440/390/320 px geprüft.
-- [ ] Geprüfte Korrekturen committen, auf Main pushen und Pages-Veröffentlichung bestätigen.
+- [x] Korrekturen als `a85870f` auf Main gepusht und über [Pages-Lauf 40587206143](https://github.com/emfau88/TD/actions/runs/40587206143) veröffentlicht. Anschließende Live-Prüfung bei 1440/390 px bestätigt frühe Klicktöne, Musik vor dem Turmbau und entfernte Umzugsaktion. Roadmap und Prüfnachweis aktualisiert; subjektive Nutzerbewertung bleibt offen.
 
 **Kartenrand-Fix – 27.10.2026, beauftragt einschließlich Commit/Push:**
 

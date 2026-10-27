@@ -1,9 +1,7 @@
 import {chromium} from 'file:///C:/Users/madde/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 import assert from 'node:assert/strict';
-import {readFile,writeFile} from 'node:fs/promises';
+import {writeFile} from 'node:fs/promises';
 const out='artifacts/idle-bastion/acceptance/entry-polish-2026-10-27';
-const html=await readFile('dist/index.html','utf8');
-const expected=html.match(/assets\/main-[^" ]+\.js/)[0];
 const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--autoplay-policy=document-user-activation-required']});
 const results=[];
 try {for(const width of [1440,390]) {
@@ -17,7 +15,9 @@ try {for(const width of [1440,390]) {
  });
  await page.goto('https://emfau88.github.io/TD/?fresh=1&verify='+Date.now());
  await page.locator('#boot-screen').waitFor({state:'hidden',timeout:90000});
- assert.ok(await page.locator('script[src*="'+expected+'"]').count(),'Expected deployed bundle '+expected);
+ const bundle=await page.locator('script[type=module][src]').getAttribute('src');
+ assert.equal(await page.locator('#tavern-gift-badge').count(),1);
+ assert.equal(await page.locator('#unlock-clearing').count(),0);
  const initial=await page.evaluate(()=>({at:performance.now(),ready:document.querySelector('audio[data-spire-music]')?.readyState,paused:document.querySelector('audio[data-spire-music]')?.paused}));
  assert.equal(initial.paused,true);
  const clicks=[];
@@ -27,13 +27,13 @@ try {for(const width of [1440,390]) {
   if(width<700)await page.locator('#onboarding-primary').tap();else await page.locator('#onboarding-primary').click();
   await page.waitForFunction(n=>window.__starts.length>n,before.n,{timeout:2500});
   const source=await page.evaluate(n=>window.__starts[n],before.n);
-  clicks.push({label,delayMs:Math.round(source.at-before.at),bufferDuration:source.duration});
+  clicks.push({label,automationToSoundMs:Math.round(source.at-before.at),bufferDuration:source.duration});
  }
  await page.waitForFunction(()=>document.querySelector('audio[data-spire-music]')?.currentTime>1.5,null,{timeout:10000});
  const audio=await page.evaluate(()=>({currentTime:document.querySelector('audio[data-spire-music]').currentTime,playing:window.__playing,stage:document.getElementById('app').dataset.intro}));
  assert.equal(audio.stage,'build');
  assert.deepEqual(errors,[]);
- results.push({width,bundle:expected,initial,clicks,audio,errors});
+ results.push({width,bundle,initial,clicks,audio,errors});
  console.log('live audio passed '+width+' '+JSON.stringify(clicks));
  await page.close();
 }
