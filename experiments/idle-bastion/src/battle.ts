@@ -78,10 +78,11 @@ export interface Shot {
   chainHits?: number[];
 }
 export interface BattleEvent {
-  type: 'frost-tip' | 'build' | 'upgrade' | 'sell' | 'fire' | 'hit' | 'kill' | 'escape' | 'wave' | 'clear' | 'defeat' | 'workshop' | 'research' | 'wisp' | 'pads' | 'warehouse' | 'tavern' | 'tavern-upgrade' | 'boss-victory' | 'boss-interrupt' | 'clearing' | 'workshop-upgrade' | 'map-update';
+  type: 'gift-found' | 'personal-gift' | 'frost-tip' | 'build' | 'upgrade' | 'sell' | 'fire' | 'hit' | 'kill' | 'escape' | 'wave' | 'clear' | 'defeat' | 'workshop' | 'research' | 'wisp' | 'pads' | 'warehouse' | 'tavern' | 'tavern-upgrade' | 'boss-victory' | 'boss-interrupt' | 'clearing' | 'workshop-upgrade' | 'map-update';
   tower?: Tower; enemy?: Enemy; shot?: Shot; x?: number; y?: number;
   amount?: number; wave?: number;
   technology?: 'storm';
+  companion?: Companion;
 }
 
 /** Only scalar IDs and fired payloads cross the save boundary. UI events are transient. */

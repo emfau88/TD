@@ -623,3 +623,19 @@ test('gift click during autosave remains responsive without duplicate gifts or p
   assert.equal(store.current!.battle.social.points.mara, 35);
   await session.close();
 });
+
+test('new gift notices wait for a durable save and do not replay on restore', async () => {
+  const b = new IdleBattle(); b.update(4); b.highestCleared = 12; b.buildTavern(b.recommendedTavernPlot!);
+  const store = new ControlledStore(); store.current = fixture(b);
+  const session = await open(store); await resume(session); session.battle.drainEvents();
+  store.gate = true;
+  const command = session.command(battle => { battle.social.gifts++; }); await tick();
+  assert.equal(session.battle.drainEvents().some(e => e.type === 'gift-found'), false);
+  store.gate = false; store.pending!.confirm(); assert.equal(await command, true);
+  assert.deepEqual(session.battle.drainEvents().filter(e => e.type === 'gift-found'), [{ type: 'gift-found', amount: 1 }]);
+  assert.equal(IdleBattle.restore(store.current!.battle)!.drainEvents().length, 0);
+  store.gate = true;
+  const failed = session.command(battle => { battle.social.gifts++; }); await tick();
+  store.pending!.reject(new Error('gift save rejected')); assert.equal(await failed, false);
+  assert.equal(session.battle.drainEvents().some(e => e.type === 'gift-found'), false);
+});

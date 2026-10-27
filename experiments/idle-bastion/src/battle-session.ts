@@ -1,3 +1,4 @@
+import { COMPANION_IDS, personalGiftReady } from './tavern-social';
 /** B03/B04 transaction coordinator. Only the lease owner simulates or credits
  * gold. Complete combat, pause and offline state share one durable boundary.
  */
@@ -397,6 +398,16 @@ export class BattleSession {
           if (!this.currentWriter) throw new SessionOwnershipError('Dieser Tab besitzt keine Schreibberechtigung mehr.');
           const save = await this.store.save(snapshot, paused, this.currentRevision, { writer: this.currentWriter, offline, maraOfflineWelcomeSeen });
           this.currentRevision = save.revision;
+        }
+        // Publish gift notices only after the complete snapshot is durable.
+        const priorSocial = this.committedSnapshot.social;
+        if (snapshot.social.gifts > priorSocial.gifts) {
+          this.currentBattle.events.push({ type: 'gift-found', amount: snapshot.social.gifts - priorSocial.gifts });
+        }
+        for (const companion of COMPANION_IDS) {
+          if (personalGiftReady(snapshot.social, companion) && !personalGiftReady(priorSocial, companion)) {
+            this.currentBattle.events.push({ type: 'personal-gift', companion });
+          }
         }
         this.committedSnapshot = snapshot;
         this.committedPaused = paused;

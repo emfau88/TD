@@ -327,10 +327,10 @@ export class TavernUI {
     if (!session || this.pending || session.inputBusy || session.error || session.suspended || session.awaitingResume || !this.animation.ready) return;
     if (this.moment || action === 'touch' && !this.animation.reactionsReady) return;
     const who = this.selected, content = this.content, beforePoints = this.points;
-    const offer = session.battle.companionOffer(this.selected, action); if (!offer.accepted) return;
+    const offer = session.battle.companionOffer(this.selected, action, { region }); if (!offer.accepted) return;
     this.pending = true; const generation = this.generation; this.update();
     try {
-      const result = await this.interactions.run(session, action, who);
+      const result = await this.interactions.run(session, action, who, { region });
       if (!result) return;
       if (generation !== this.generation || !this.isOpen) return;
       this.text('line', content.line(beforePoints, action, region, this.conversationTurn[who]));

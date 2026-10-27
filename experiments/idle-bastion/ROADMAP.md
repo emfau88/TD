@@ -4,7 +4,7 @@
 
 Fachliche Grundlage: [Umsetzungsplan mit Regeln, Quellen und Messwerten](docs/TAVERNE_DREI_HERZEN_PLAN.md). Die folgenden fünf Pakete ersetzen die bisherigen drei groben T12-Punkte. Alle Arbeitscheckboxen und der aktuelle Stand werden ausschließlich hier gepflegt; der Fachplan beschreibt Regeln und Prüffälle.
 
-**Aktueller Stand:** T12.1 geprüft; T12.2 in Arbeit. Ausgangspunkt `9b3807e`, Plancommit `bdea479`. **Nächster Schritt:** exakte Aktionsauswahl und gespeicherte Geschenkhinweise. Reihenfolge 1 → 2 → 3 → 4 → 5; keine zusätzlichen Freigaberunden zwischen den Paketen.
+**Aktueller Stand:** T12.1 und T12.2 geprüft. **Nächster Schritt:** T12.3 – Berührungen und Szenen. Paketcommits lokal auf Main; noch nicht gepusht.
 
 - [x] Aktuellen Main-Stand und Abhängigkeiten von Geschenken, Herzschwellen, Zeitbudgets, Szenen, Berührungen, Hinweisen, Speicherung und Farming gelesen. 90 neue Engine-Farmzyklen und vorhandene Vorstoßdaten ausgewertet.
 - [x] Anschlusswunsch im Plan präzisiert: Freigeschaltete Berührungen bleiben dauerhaft gemeinsam nutzbar; Schulter/Kopf-Haare/Hand nutzen bei beiden Figuren touch/head/giggle. Die dritte Zone folgt erst mit Herz 4; Drei-Herzen-Grenze bleibt.
@@ -27,12 +27,14 @@ Nachweis T12.1: Schema 32 / Regeln 16, 73/73 gezielte Social-/Interaktions-/Ilyr
 
 Voraussetzung: T12.1. Schwerpunkt: `battle.ts`, `tavern-interactions.ts`, gegebenenfalls `battle-session.ts`; Fachplan Abschnitte 2, 5 und 6.
 
-- [ ] Tavernenbau, echte Bossnachweise und Ilyras Rekrutierung mit ihren einmaligen Geschenkansprüchen verbinden. Normale Zehner-Drops, Vorrat 20 und aufgeschobene Claims korrekt behandeln.
-- [ ] Genau einmal je normalem Live-Sieg die Auffüllung, normalen Drop-Fortschritt und persönlichen Zähler verarbeiten. Eigener Zählstart erst ab gespeichertem Herz 2; beide Figuren können gleichzeitig fortschreiten. Niederlage löscht nichts; Offline/interne Proben geben keinen Fortschritt.
-- [ ] Region und Geschenkart durch Vorschau und tatsächlichen Befehl reichen; Verbrauch, Punkte, Aufstieg und Claims atomar speichern. Erfolgsanzeigen erst nach bestätigter Speicherung ermöglichen; Aufstiegsbedingungen beim Ausführen erneut prüfen.
-- [ ] 29./30. Sieg, überlagerte Drops/Claims, voller Vorrat, Doppelklick, Savefehler, Reload und Schreibbesitz gezielt prüfen. Farmnachweis und Offline-Ertrag bei reinen Social-Aktionen unverändert nachweisen.
+- [x] Tavernenbau, echte Bossnachweise und Ilyras Rekrutierung mit ihren einmaligen Geschenkansprüchen verbinden. Normale Zehner-Drops, Vorrat 20 und aufgeschobene Claims korrekt behandeln.
+- [x] Genau einmal je normalem Live-Sieg die Auffüllung, normalen Drop-Fortschritt und persönlichen Zähler verarbeiten. Eigener Zählstart erst ab gespeichertem Herz 2; beide Figuren können gleichzeitig fortschreiten. Niederlage löscht nichts; Offline/interne Proben geben keinen Fortschritt.
+- [x] Region und Geschenkart durch Vorschau und tatsächlichen Befehl reichen; Verbrauch, Punkte, Aufstieg und Claims atomar speichern. Erfolgsanzeigen erst nach bestätigter Speicherung ermöglichen; Aufstiegsbedingungen beim Ausführen erneut prüfen.
+- [x] 29./30. Sieg, überlagerte Drops/Claims, voller Vorrat, Doppelklick, Savefehler, Reload und Schreibbesitz gezielt prüfen. Farmnachweis und Offline-Ertrag bei reinen Social-Aktionen unverändert nachweisen.
 
 **Abgeschlossen, wenn:** Beide Figuren im gespeicherten Spielmodell ihren schnellen Herz-2-Einstieg und den einmaligen Herz-3-Aufstieg korrekt absolvieren können; keine doppelte oder verlorene Belohnung.
+
+Nachweis T12.2: 35/35 gezielte Session-/Interaktionstests und TypeScript bestanden. Geschenkart und Region werden bei Ausführung erneut geprüft; neue Geschenkereignisse entstehen erst nach erfolgreichem Save und werden beim Laden nicht wiederholt. Lifecycle-Grenzen zusätzlich durch die 14 Social-Tests aus Paket 1 abgedeckt.
 
 **T12.3 · Gesammelte Berührungen und Story verbinden**
 

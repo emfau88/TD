@@ -27,3 +27,19 @@ test('unrewarded interactions remain playable without another save; failed save 
   assert.equal(await ui.run(s, 'gift'), null); assert.deepEqual(s.battle.snapshot(), snapshot);
   assert.equal(ui.pending, false); s.command = command; await s.close();
 });
+
+test('touch region and personal gift choice are checked at execution and cannot substitute another reward', async () => {
+  const s = await fixture(), ui = new TavernInteractions();
+  for (let i = 0; i < 3; i++) await ui.run(s, 'talk');
+  await ui.run(s, 'gift');
+  const before = s.battle.snapshot();
+  assert.equal(await ui.run(s, 'touch', 'mara', { region: 'hand' }), null);
+  assert.deepEqual(s.battle.snapshot(), before);
+  assert.equal((await ui.run(s, 'touch', 'mara', { region: 'shoulder' }))?.points, 4);
+  assert.equal(await ui.run(s, 'gift', 'mara', { gift: 'personal' }), null);
+  s.battle.social.points.mara = 58; s.battle.social.personal.mara.clears = 30;
+  const stock = s.battle.social.gifts;
+  assert.equal((await ui.run(s, 'gift', 'mara', { gift: 'personal' }))?.points, 12);
+  assert.equal(s.battle.social.gifts, stock); assert.equal(s.battle.social.points.mara, 70);
+  await s.close();
+});
