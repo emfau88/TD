@@ -6,13 +6,13 @@
 - [x] Kamera beim Fokussieren, Zoomen und Verschieben auf die tatsächliche Karte begrenzen; Übersicht vollständig erhalten und freie Bildschirmflächen klar absetzen.
 - [x] Desktop und Hochkant einschließlich Intro-Ende, Ziehen bis an alle Ränder, Zoom/Übersicht und Rotation prüfen; neue Screenshots und tatsächliche Ergebnisse dokumentieren.
 - [x] 19/19 gezielte Tests und Produktionsbuild einschließlich TypeScript bestanden; 94 tatsächliche Kameramessungen und separate Produktionsprobe ohne Seitenfehler. [Prüfbericht und Screenshots](../../artifacts/idle-bastion/acceptance/map-edge-fix-2026-10-27/REPORT.md).
-- [ ] Geprüften Kartenrand-Fix committen und auf Main pushen; Veröffentlichung anschließend bestätigen.
+- [x] Kartenrand-Fix als `e2a1575` auf Main gepusht und über [Pages-Lauf 40577782765](https://github.com/emfau88/TD/actions/runs/40577782765) erfolgreich veröffentlicht. Roadmap und Prüfnachweis sind aktualisiert. Subjektive Nutzerbewertung bleibt offen.
 
 **T12 · Erste Beziehungsetappe bis drei Herzen — 27.10.2026, Umsetzung direkt auf Main ausdrücklich beauftragt.**
 
 Fachliche Grundlage: [Umsetzungsplan mit Regeln, Quellen und Messwerten](docs/TAVERNE_DREI_HERZEN_PLAN.md). Die folgenden fünf Pakete ersetzen die bisherigen drei groben T12-Punkte. Alle Arbeitscheckboxen und der aktuelle Stand werden ausschließlich hier gepflegt; der Fachplan beschreibt Regeln und Prüffälle.
 
-**Aktueller Stand:** T12.1 bis T12.5 technisch abgeschlossen. 148/148 gezielte Tests, Produktionsbuild und Browserabläufe bestanden. Die geprüfte Paketreihe bis `dc3cb8a` ist auf Main gepusht. Pages läuft über den bestehenden Main-Workflow; endgültige Deploymentbestätigung im Abschlusschat. Subjektive Nutzerbewertung bleibt offen.
+**Aktueller Stand:** T12.1 bis T12.5 technisch abgeschlossen. 148/148 gezielte Tests, Produktionsbuild und Browserabläufe bestanden. Die geprüfte Paketreihe bis `dc3cb8a` und der Nachweisstand `5d13814` sind auf Main gepusht. Die Pages-Veröffentlichung wurde für beide bestätigt ([abschließender Lauf 40575005576](https://github.com/emfau88/TD/actions/runs/40575005576)). Subjektive Nutzerbewertung bleibt offen.
 
 - [x] Aktuellen Main-Stand und Abhängigkeiten von Geschenken, Herzschwellen, Zeitbudgets, Szenen, Berührungen, Hinweisen, Speicherung und Farming gelesen. 90 neue Engine-Farmzyklen und vorhandene Vorstoßdaten ausgewertet.
 - [x] Anschlusswunsch im Plan präzisiert: Freigeschaltete Berührungen bleiben dauerhaft gemeinsam nutzbar; Schulter/Kopf-Haare/Hand nutzen bei beiden Figuren touch/head/giggle. Die dritte Zone folgt erst mit Herz 4; Drei-Herzen-Grenze bleibt.
