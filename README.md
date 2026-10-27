@@ -23,8 +23,8 @@ Werkstatt, Lager sowie Taverne beim Kern. Welle 40 ist ein Zwischenziel; das Spi
 
 | Neuer Ladebildschirm | Mara in der Taverne |
 | --- | --- |
-| <a href="artifacts/idle-bastion/acceptance/branding-2026-10-27/loading-390.png"><img src="artifacts/idle-bastion/acceptance/branding-2026-10-27/loading-390.png" width="270" alt="Towers & Tantrums: Lagerfeuerbild, Untertitel und zufälliger Ladespruch in Hochkant"></a> | <a href="artifacts/idle-bastion/readme/2026-10-27/tavern-mobile.png"><img src="artifacts/idle-bastion/readme/2026-10-27/tavern-mobile.png" width="270" alt="Aktuelle Tavernenansicht: Mara, Herzen, Gespräche, Berührungen und Geschenke"></a> |
-| Lagerfeuer mit Mara, Ilyra und Wisp; drei zufällige Ladezeilen. | Gespräche, persönliche Momente und schrittweise freigeschaltete Berührungen. |
+| <a href="artifacts/idle-bastion/acceptance/loading-polish-2026-10-27/loading-390.png"><img src="artifacts/idle-bastion/acceptance/loading-polish-2026-10-27/loading-390.png" width="270" alt="Towers & Tantrums: Lagerfeuerbild, Untertitel und zufälliger Ladespruch in Hochkant"></a> | <a href="artifacts/idle-bastion/readme/2026-10-27/tavern-mobile.png"><img src="artifacts/idle-bastion/readme/2026-10-27/tavern-mobile.png" width="270" alt="Aktuelle Tavernenansicht: Mara, Herzen, Gespräche, Berührungen und Geschenke"></a> |
+| Freigestelltes Lagerfeuer mit Mara, Ilyra und Wisp; drei zufällige Ladezeilen. | Gespräche, persönliche Momente und schrittweise freigeschaltete Berührungen. |
 
 Alle drei Aufnahmen zeigen den Spielcode vom **27.10.2026**. Desktop und Taverne stammen
 aus dem lokalen Produktionsbuild mit einem vorbereiteten Testspielstand nach Welle 40.

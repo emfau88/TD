@@ -10,7 +10,24 @@
 </head>
 <body>
   <section id="boot-screen" data-phase="modules" aria-label="Towers &amp; Tantrums" aria-busy="true">
-    <div class="boot-panel"><img class="boot-art" src="./assets/loading/campfire-720.webp" srcset="./assets/loading/campfire-720.webp 720w, ./assets/loading/campfire-1200.webp 1200w" sizes="(max-width: 600px) 90vw, 600px" width="1536" height="1024" alt="" fetchpriority="high"><small id="boot-eyebrow" class="boot-eyebrow">The Old Grove</small><h1><span>Towers &amp;</span><span>Tantrums</span></h1><p class="boot-tagline"><span>Build towers.</span> <span>Make questionable friends.</span></p><p id="boot-quip">Convincing the monsters to queue politely …</p><p id="boot-phase" role="status" aria-live="polite">The forest awakens…</p><progress id="boot-progress" aria-label="Game artwork"></progress><small id="boot-count"></small><p id="boot-error" role="alert" hidden></p><div class="boot-actions"><button id="boot-retry" type="button" hidden>Try again</button><button id="boot-recovery" type="button" hidden>Check saved game</button></div><noscript>JavaScript is required to play. / Zum Spielen bitte JavaScript aktivieren.</noscript></div>
+    <div class="boot-panel">
+      <div class="boot-scene" aria-hidden="true"><img class="boot-art" src="./assets/loading/campfire-cutout-720.webp" srcset="./assets/loading/campfire-cutout-720.webp 720w, ./assets/loading/campfire-cutout-1200.webp 1200w" sizes="(max-width: 760px) 94vw, (max-width: 1200px) 54vw, 720px" width="1536" height="1024" alt="" fetchpriority="high"></div>
+      <div class="boot-copy">
+        <small id="boot-eyebrow" class="boot-eyebrow">The Old Grove</small>
+        <h1><span>Towers &amp;</span><span>Tantrums</span></h1>
+        <p class="boot-tagline"><span>Build towers.</span> <span>Make questionable friends.</span></p>
+        <span class="boot-divider" aria-hidden="true">✦</span>
+        <div class="boot-status">
+          <p id="boot-quip">Convincing the monsters to queue politely …</p>
+          <p id="boot-phase" role="status" aria-live="polite">The forest awakens…</p>
+          <progress id="boot-progress" aria-label="Game artwork"></progress>
+          <small id="boot-count"></small>
+          <p id="boot-error" role="alert" hidden></p>
+          <div class="boot-actions"><button id="boot-retry" type="button" hidden>Try again</button><button id="boot-recovery" type="button" hidden>Check saved game</button></div>
+          <noscript>JavaScript is required to play. / Zum Spielen bitte JavaScript aktivieren.</noscript>
+        </div>
+      </div>
+    </div>
   </section>
   <div id="app" inert>
     <main class="world" aria-label="Der alte Hain"><div id="game" role="img" aria-label="Waldlichtung. Bauplatz, Turm oder Werkstatt auswählen. Karte zum Verschieben ziehen."></div></main>

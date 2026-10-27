@@ -1,34 +1,73 @@
 @font-face { font-family:"Spire Loading"; src:url('../assets/ui/fonts/PixelifySans.ttf') format('truetype'); font-weight:400 700; font-display:swap; }
-#boot-screen { position:fixed; z-index:1000; inset:0; display:grid; place-items:center; overflow:auto; padding:24px 16px; box-sizing:border-box; color:#e9dec4; background:radial-gradient(ellipse at 50% 42%,#344231 0,#172a27 39%,#0a151b 80%); font:15px/1.6 "Segoe UI",Arial,sans-serif; }
+#boot-screen { position:fixed; z-index:1000; inset:0; display:grid; align-items:safe center; justify-items:center; overflow:auto; padding:40px 32px; box-sizing:border-box; color:#e9dec4; background:radial-gradient(ellipse at 30% 58%,#77532e24,transparent 52%),radial-gradient(ellipse at 68% 12%,#21413e60,transparent 65%),linear-gradient(155deg,#14242a,#09171d 72%); font:15px/1.6 "Segoe UI",Arial,sans-serif; }
 #boot-screen[hidden],#boot-screen [hidden] { display:none!important; }
-#boot-screen::before { content:''; position:fixed; inset:10px; border:1px solid #bda46b32; pointer-events:none; }
-#boot-screen .boot-panel { position:relative; width:min(100%,620px); box-sizing:border-box; padding:20px 28px 22px; text-align:center; border:1px solid #a98b5366; background:#101b20; box-shadow:0 24px 100px #0006; }
-#boot-screen .boot-art { display:block; width:100%; height:auto; aspect-ratio:3/2; object-fit:contain; margin:0 auto 16px; background:#000; border-radius:3px; }
-#boot-screen .boot-eyebrow { display:block; color:#bea878; font-size:10px; text-transform:uppercase; letter-spacing:.24em; }
-#boot-screen h1 { display:block; margin:7px 0 10px; font:700 clamp(38px,7vw,56px)/.96 "Spire Loading",Georgia,serif; letter-spacing:.035em; text-transform:none; color:#f1d398; text-shadow:0 3px 0 #090f15; }
+#boot-screen::before { content:''; position:fixed; inset:18px; border:1px solid #d9bd7f26; pointer-events:none; }
+#boot-screen::after { content:''; position:fixed; inset:18px; pointer-events:none; background:linear-gradient(#d8b873,#d8b873) left top/24px 1px no-repeat,linear-gradient(#d8b873,#d8b873) left top/1px 24px no-repeat,linear-gradient(#d8b873,#d8b873) right bottom/24px 1px no-repeat,linear-gradient(#d8b873,#d8b873) right bottom/1px 24px no-repeat; opacity:.65; }
+#boot-screen .boot-panel { position:relative; width:min(100%,1200px); display:grid; grid-template-columns:minmax(0,1.55fr) minmax(0,1fr); gap:clamp(20px,3vw,44px); align-items:center; box-sizing:border-box; }
+#boot-screen .boot-scene { position:relative; isolation:isolate; min-width:0; }
+#boot-screen .boot-scene::before { content:''; position:absolute; z-index:-1; inset:15% 8% -3%; background:radial-gradient(ellipse at 48% 70%,#d58a3e30,transparent 67%); filter:blur(18px); pointer-events:none; }
+#boot-screen .boot-art { display:block; width:100%; height:auto; aspect-ratio:3/2; object-fit:contain; background:transparent; filter:drop-shadow(0 14px 20px #0004); }
+#boot-screen .boot-copy { min-width:0; width:100%; max-width:440px; margin:auto; text-align:center; }
+#boot-screen .boot-eyebrow { display:block; margin-bottom:12px; color:#c8b587; font-size:10px; text-transform:uppercase; letter-spacing:.3em; }
+#boot-screen h1 { display:block; margin:0 0 16px; font:700 clamp(38px,4.5vw,64px)/1.02 "Spire Loading",Georgia,serif; letter-spacing:.035em; text-transform:none; color:#f4dca5; text-shadow:0 3px 0 #071116,0 10px 26px #0005; }
 #boot-screen h1 span { display:block; white-space:nowrap; }
-#boot-screen .boot-tagline { display:flex; justify-content:center; flex-wrap:wrap; gap:0 .35em; margin:0; color:#e2d1b1; font-size:15px; line-height:1.5; }
+#boot-screen .boot-tagline { display:flex; justify-content:center; flex-wrap:wrap; gap:0 .35em; margin:0; color:#e7dbc3; font-size:15px; line-height:1.6; }
 #boot-screen .boot-tagline span { white-space:nowrap; }
-#boot-quip { margin:18px auto 14px; max-width:38ch; min-height:3em; display:grid; place-items:center; color:#c6b690; font-size:13px; line-height:1.5; font-style:italic; text-wrap:balance; }
-#boot-phase { min-height:20px; margin:0 0 8px; font-size:12px; color:#b7c1b7; }
-#boot-progress { display:block; appearance:none; width:100%; height:5px; border:1px solid #8a744b; border-radius:0; overflow:hidden; background:#0a1317; color:#d6b578; }
-#boot-progress::-webkit-progress-bar { background:#0a1317; }
-#boot-progress::-webkit-progress-value { background:linear-gradient(90deg,#9b7847,#efce8e); }
-#boot-progress::-moz-progress-bar { background:linear-gradient(90deg,#9b7847,#efce8e); }
-#boot-progress:indeterminate { background:repeating-linear-gradient(110deg,#0a1317 0 12px,#9b784766 12px 24px); }
-#boot-count { display:block; min-height:16px; margin-top:6px; font-size:10px; color:#aeb4a5; font-variant-numeric:tabular-nums; }
-#boot-error { margin:14px 0 0; color:#f0c69b; font-size:14px; line-height:1.6; }
+#boot-screen .boot-divider { display:flex; align-items:center; justify-content:center; gap:12px; margin:22px auto; color:#c5a269; font-size:13px; line-height:1; }
+#boot-screen .boot-divider::before,#boot-screen .boot-divider::after { content:''; width:54px; height:1px; background:linear-gradient(90deg,transparent,#b9995c80); }
+#boot-screen .boot-divider::after { transform:rotate(180deg); }
+#boot-screen .boot-status { max-width:340px; margin:auto; }
+#boot-quip { display:grid; place-items:center; margin:0 0 20px; min-height:3em; color:#c7b996; font-size:13px; line-height:1.5; font-style:italic; text-wrap:balance; }
+#boot-phase { min-height:18px; margin:0 0 9px; color:#acbbb4; font-size:12px; line-height:1.5; }
+#boot-progress { display:block; appearance:none; width:100%; height:6px; border:1px solid #b99c5b66; border-radius:3px; overflow:hidden; background:#071419; color:#e7c17b; box-shadow:0 0 18px #dda8520c; }
+#boot-progress::-webkit-progress-bar { background:#071419; }
+#boot-progress::-webkit-progress-value { background:linear-gradient(90deg,#9b7847,#f2d397); }
+#boot-progress::-moz-progress-bar { background:linear-gradient(90deg,#9b7847,#f2d397); }
+#boot-progress:indeterminate { background:repeating-linear-gradient(110deg,#071419 0 12px,#b28a4c55 12px 24px); }
+#boot-count { display:block; min-height:16px; margin-top:6px; color:#91a39a; font-size:10px; font-variant-numeric:tabular-nums; }
+#boot-error { margin:14px 0 0; color:#f0c69b; font-size:14px; line-height:1.6; text-wrap:balance; }
 #boot-screen .boot-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; }
-#boot-screen .boot-actions:has(button:not([hidden])) { margin-top:14px; }
-#boot-screen button { min-height:44px; padding:10px 16px; border:1px solid #a68a55; background:#2b332e; color:#f1dfb8; font:14px "Segoe UI",Arial,sans-serif; cursor:pointer; }
-#boot-screen button:hover { background:#394137; } #boot-screen button:focus-visible { outline:2px solid #f6dca1; outline-offset:4px; }
+#boot-screen .boot-actions:has(button:not([hidden])) { margin-top:16px; }
+#boot-screen button { min-height:44px; padding:10px 16px; border:1px solid #b99a61; border-radius:3px; background:linear-gradient(#344039,#222f2e); color:#f4e2bc; font:14px "Segoe UI",Arial,sans-serif; cursor:pointer; box-shadow:inset 0 1px #e7ca8520,0 3px 10px #0002; }
+#boot-screen button:hover { background:#3c4a40; } #boot-screen button:focus-visible { outline:2px solid #f6dca1; outline-offset:4px; }
 #boot-screen[data-phase="error"] :is(#boot-progress,#boot-quip) { display:none; }
-@media(max-width:600px) { #boot-screen { padding:14px 12px; } #boot-screen .boot-panel { padding:14px 14px 16px; } #boot-screen .boot-art { margin-bottom:12px; } #boot-screen .boot-tagline { font-size:14px; } #boot-quip { margin-top:14px; } }
-@media(max-width:600px) and (max-height:650px) { #boot-screen .boot-art { max-height:150px; } #boot-screen h1 { font-size:38px; } #boot-quip { margin-block:10px; } }
-@media(min-width:650px) and (max-height:820px) {
-  #boot-screen { padding:14px; }
-  #boot-screen .boot-panel { width:min(100%,860px); display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); column-gap:24px; padding:18px; align-content:center; }
-  #boot-screen .boot-panel > * { grid-column:2; }
-  #boot-screen .boot-art { grid-column:1; grid-row:1 / span 9; margin:0; align-self:center; }
-  #boot-screen h1 { font-size:40px; } #boot-screen .boot-tagline { font-size:13px; } #boot-quip { margin-block:10px; }
+@media(max-width:760px) {
+  #boot-screen { padding:24px 18px; }
+  #boot-screen::before,#boot-screen::after { inset:10px; }
+  #boot-screen .boot-panel { width:min(100%,540px); grid-template-columns:minmax(0,1fr); gap:18px; }
+  #boot-screen .boot-art { max-height:36svh; }
+  #boot-screen .boot-copy { max-width:380px; }
+  #boot-screen h1 { font-size:clamp(36px,10.5vw,52px); margin-bottom:10px; }
+  #boot-screen .boot-eyebrow { margin-bottom:8px; font-size:9px; }
+  #boot-screen .boot-tagline { font-size:14px; }
+  #boot-screen .boot-divider { margin-block:16px; }
+  #boot-quip { margin-bottom:14px; }
+}
+@media(max-width:760px) and (max-height:680px) {
+  #boot-screen { padding:16px; }
+  #boot-screen .boot-panel { gap:10px; }
+  #boot-screen .boot-art { max-height:30svh; }
+  #boot-screen .boot-eyebrow { margin-bottom:6px; }
+  #boot-screen h1 { font-size:36px; margin-bottom:8px; }
+  #boot-screen .boot-tagline { font-size:13px; }
+  #boot-screen .boot-divider { display:none; }
+  #boot-screen .boot-status { margin-top:16px; }
+  #boot-quip { margin-bottom:10px; font-size:12px; }
+  #boot-phase { font-size:11px; }
+  #boot-screen[data-phase="error"] .boot-art { max-height:100px; }
+  #boot-screen[data-phase="error"] h1 { font-size:30px; }
+  #boot-screen[data-phase="error"] .boot-eyebrow { display:none; }
+}
+@media(min-width:761px) and (max-height:600px) {
+  #boot-screen { padding:22px; }
+  #boot-screen .boot-panel { grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:22px; }
+  #boot-screen .boot-art { max-height:calc(100svh - 54px); }
+  #boot-screen h1 { font-size:40px; margin-bottom:8px; }
+  #boot-screen .boot-eyebrow { margin-bottom:7px; }
+  #boot-screen .boot-tagline { font-size:13px; }
+  #boot-screen .boot-divider { margin-block:12px; }
+  #boot-quip { margin-bottom:10px; font-size:12px; }
+  #boot-screen[data-phase="error"] h1 { font-size:32px; }
+  #boot-screen[data-phase="error"] .boot-divider { display:none; }
+  #boot-screen[data-phase="error"] .boot-status { margin-top:10px; }
 }
