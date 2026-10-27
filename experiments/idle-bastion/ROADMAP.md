@@ -1,5 +1,73 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**T12 · Erste Beziehungsetappe bis drei Herzen — 27.10.2026, Umsetzung direkt auf Main ausdrücklich beauftragt.**
+
+Fachliche Grundlage: [Umsetzungsplan mit Regeln, Quellen und Messwerten](docs/TAVERNE_DREI_HERZEN_PLAN.md). Die folgenden fünf Pakete ersetzen die bisherigen drei groben T12-Punkte. Alle Arbeitscheckboxen und der aktuelle Stand werden ausschließlich hier gepflegt; der Fachplan beschreibt Regeln und Prüffälle.
+
+**Aktueller Stand:** Plan gesichert; T12.1 in Arbeit. Ausgangspunkt `9b3807e`, Main/Remote synchron, 67/67 bestehende Social-/Interaktions-/Save-/Sessiontests bestanden. **Nächster Schritt:** Regeln und Schema-Migration. Die Pakete werden in der Reihenfolge 1 → 2 → 3 → 4 → 5 abgearbeitet. Es sind Arbeitsabschnitte, keine zusätzlichen Freigaberunden zwischen jedem Paket.
+
+- [x] Aktuellen Main-Stand und Abhängigkeiten von Geschenken, Herzschwellen, Zeitbudgets, Szenen, Berührungen, Hinweisen, Speicherung und Farming gelesen. 90 neue Engine-Farmzyklen und vorhandene Vorstoßdaten ausgewertet.
+- [x] Anschlusswunsch im Plan präzisiert: Freigeschaltete Berührungen bleiben dauerhaft gemeinsam nutzbar; Schulter/Kopf-Haare/Hand nutzen bei beiden Figuren touch/head/giggle. Die dritte Zone folgt erst mit Herz 4; Drei-Herzen-Grenze bleibt.
+- [x] Aufgaben in fünf aufeinander aufbauende Pakete mit Abschlusskriterien und laufend pflegbaren Checkboxen gegliedert. Keine Implementierung oder Veröffentlichung aus diesem Dokumentationsauftrag.
+
+**T12.1 · Regeln und Spielstände vorbereiten**
+
+Voraussetzung: Umsetzungsauftrag liegt vor. Schwerpunkt: `tavern-social.ts`, Social-Snapshot/Restore in `battle.ts`; Fachplan Abschnitte 1, 2, 5 und 6.
+
+- [x] Aktuellen Main-Stand, Arbeitsverzeichnis und vorhandene Änderungen geprüft; auf ausdrücklichen Nutzerwunsch direkt auf `main`. Ausgangsbasis: 67/67 gezielte Prüfungen. Nächstes freies Schema 32; Kampfregeln bleiben 16.
+- [ ] Zentrale Social-Regeln und Angebotsgründe umsetzen: Grenzen 23/35/58/70, persönliche Belohnung nach 30 Siegen, normales Geschenk nach 10 Siegen, neue Auffüllreserven statt 20-Minuten-Fenster. Freischaltungen je Figur aus erhaltenen Punkten ableiten; drei Herzen als Etappengrenze mit Bestandsschutz.
+- [ ] Neue Daten validieren und alte Social-Spielstände migrieren: Punkte/Vorrat/Claims/Drop-Rest erhalten, Ilyra-Zugang respektieren, vorhandene Herzen 4/5 nicht zurücknehmen. Kampfregeln, laufende Wellen und Offlinebelege erhalten.
+- [ ] Grenz- und Migrationstests ausführen, insbesondere 23/34/35/58/69/70/109/110/160 Punkte und gesperrte Ilyra; tatsächliche Ergebnisse dokumentieren.
+
+**Abgeschlossen, wenn:** Neue Regeln und alte Spielstände zusammen konsistent funktionieren und die gezielten Prüfungen bestehen. Dieser Zwischenstand ist noch keine fertige Spieleroberfläche.
+
+**T12.2 · Geschenkvergabe und sichere Spielaktionen anbinden**
+
+Voraussetzung: T12.1. Schwerpunkt: `battle.ts`, `tavern-interactions.ts`, gegebenenfalls `battle-session.ts`; Fachplan Abschnitte 2, 5 und 6.
+
+- [ ] Tavernenbau, echte Bossnachweise und Ilyras Rekrutierung mit ihren einmaligen Geschenkansprüchen verbinden. Normale Zehner-Drops, Vorrat 20 und aufgeschobene Claims korrekt behandeln.
+- [ ] Genau einmal je normalem Live-Sieg die Auffüllung, normalen Drop-Fortschritt und persönlichen Zähler verarbeiten. Eigener Zählstart erst ab gespeichertem Herz 2; beide Figuren können gleichzeitig fortschreiten. Niederlage löscht nichts; Offline/interne Proben geben keinen Fortschritt.
+- [ ] Region und Geschenkart durch Vorschau und tatsächlichen Befehl reichen; Verbrauch, Punkte, Aufstieg und Claims atomar speichern. Erfolgsanzeigen erst nach bestätigter Speicherung ermöglichen; Aufstiegsbedingungen beim Ausführen erneut prüfen.
+- [ ] 29./30. Sieg, überlagerte Drops/Claims, voller Vorrat, Doppelklick, Savefehler, Reload und Schreibbesitz gezielt prüfen. Farmnachweis und Offline-Ertrag bei reinen Social-Aktionen unverändert nachweisen.
+
+**Abgeschlossen, wenn:** Beide Figuren im gespeicherten Spielmodell ihren schnellen Herz-2-Einstieg und den einmaligen Herz-3-Aufstieg korrekt absolvieren können; keine doppelte oder verlorene Belohnung.
+
+**T12.3 · Gesammelte Berührungen und Story verbinden**
+
+Voraussetzung: T12.2. Schwerpunkt: Player-/Content-Schnittstellen, Rig-Player, beide Charakterinhalte und der dazu nötige Teil der TavernUI; Fachplan Abschnitte 4 und 5.
+
+- [ ] Kumulative Freischaltung anbinden: Herz 2 Schulter; Herz 3 zusätzlich Haare; vorhandene Herz-4-/5-Stände zusätzlich Hand. Alle freigeschalteten Hotspots gleichzeitig bedienbar halten, auch ohne Punktebudget und nach Figurenwechsel/Reload. Eine neue Zone füllt das gemeinsame Budget nicht auf.
+- [ ] Je Figur die feste aktive Zuordnung Schulter → touch, Haare → head, Hand → giggle herstellen. Vorhandene Clips passend nachladen; bei Ladefehlern keinen zweiten identischen Ersatzclip verwenden. Keine neuen Assets.
+- [ ] Aktives Berühren und Szenenwiedergabe trennen. Frühe Szenen mit Kopf/Ruhe darstellen; ernste Momente nicht durch Hand → Kichern verfälschen. Alle vorhandenen Texte, freigeschalteten Momente und früheren Gesprächsantworten erhalten; Gesten, Stimmen und automatische Idle passend begrenzen.
+- [ ] Beide Figuren gezielt auf 0/1/2/3 und bestehenden 4/5 Herzen prüfen: alle erlaubten Zonen, unterschiedliche aktive Clips, gesperrte Aktionen, Szenen und unveränderte Geschenk-/Gesprächsreaktionen. Technische Ergebnisse und kurzen Sichtvergleich dokumentieren.
+
+**Abgeschlossen, wenn:** Berührungen sichtbar dauerhaft hinzukommen und die drei aktiven Stellen pro Figur unterschiedliche Bewegungen haben; die Story behält ihre passende Darstellung. Neue Beziehungen bleiben trotzdem auf drei Herzen begrenzt.
+
+**T12.4 · Spielerführung und Oberfläche vervollständigen**
+
+Voraussetzung: T12.3. Schwerpunkt: `tavern-ui.ts`, `main.ts`, betroffene CSS-/DE-/EN-Texte; Fachplan Abschnitte 3 und 4.
+
+- [ ] Zuneigung, persönliches Geschenkziel „X / 30 Siege“, normalen Vorrat, Empfängerin und konkrete Sperrgründe sichtbar zusammenführen. Nur tatsächlich mögliche Geschenkaktionen anbieten; alten 20-Minuten-Hilfetext ersetzen.
+- [ ] Geschenkbesitz und Einlösbarkeit getrennt darstellen. Siedlungstab, Tavernenkarte und Gefährtinnenkarten passend markieren; neue Geschenke nach Save kurz melden. Bestehende Bau-/Rekrutierungs-/Boss-/Niederlagenhinweise nicht verdrängen und beim Reload keine alten Geschenktoasts wiederholen.
+- [ ] Neue Berührung verständlich als zusätzliche Auswahl melden. Nach drei Herzen Fortsetzung in einem kommenden Update zeigen; keine nutzlosen Punkte-/Geschenkaufforderungen. Bestandsschutz für bereits höhere Beziehungen im selben UI berücksichtigen.
+- [ ] DE/EN sowie Desktop, 390 px und 320 px kontrollieren: Tastatur/Touch, Lesbarkeit, Figurwechsel, Geschenk bereit versus einlösbar, Reload und unverdeckte Rückkehr zum Kampf. Keine Pflichtunterbrechung einführen; konkrete Ergebnisse dokumentieren.
+
+**Abgeschlossen, wenn:** Der Spieler ohne technische Erklärung erkennt, was er besitzt, was er jetzt tun kann und wodurch der nächste Fortschritt entsteht.
+
+**T12.5 · Zusammenspiel, Zeitgefühl und Abschluss prüfen**
+
+Voraussetzung: T12.1–T12.4. Schwerpunkt: zusammenhängende Abläufe und die verbleibenden Risiken aus Fachplan Abschnitt 8.
+
+- [ ] Je einen vollständigen Mara- und Ilyra-Ablauf vom zugänglichen Einstieg über Herz 2 bis Herz 3 im echten Spiel prüfen, mit Reload und allen Momenten. Normales Live-Farming/Vorstoß und gemessene Zeitbedingungen protokollieren; keine starre 10-Minuten-Mindestdauer behaupten.
+- [ ] Paketübergreifend die neuen Regeln und Hinweise mit Altständen, ausgeschöpften Reserven, gleichzeitig fertigen Geschenken, Niederlage/Pause/Offline und getrenntem Figurenfortschritt prüfen. Bereits bestandene Einzelprüfungen nur bei betroffenen Folgeänderungen oder neuen Befunden wiederholen.
+- [ ] Produktionsbuild einschließlich TypeScript sowie den zusammengehörigen gezielten Regressionstestlauf ausführen. Nach den letzten Änderungen kurze Desktop-/Hochkantprobe; keine pauschale Vollsuite oder neue Videos ohne konkreten Bedarf.
+- [ ] Abschließenden Diff auf den vereinbarten Umfang prüfen und einen kompakten Ergebnisbericht unter `artifacts/idle-bastion/acceptance/t12/REPORT.md` anlegen. Tatsächliche Prüfungen, Messwerte, verbleibende Einschränkungen und echte visuelle Nutzerabnahme getrennt benennen; Bericht hier verlinken. Commit-/Veröffentlichungsstand nur dokumentieren, soweit tatsächlich beauftragt und erfolgt.
+
+**Abgeschlossen, wenn:** Der gesamte neue Ablauf technisch geprüft und nachvollziehbar vorführbar ist. Eine offene subjektive Nutzerbewertung oder eine noch nicht erfolgte Veröffentlichung wird ausdrücklich so benannt und nicht als erledigt ausgegeben.
+
+**So wird diese Liste beim Abarbeiten gepflegt:** Den aktuellen offenen Punkt bei Bedarf mit „in Arbeit“ kennzeichnen; eine Checkbox erst nach tatsächlich erledigter und passend geprüfter Arbeit setzen. Nach jedem Paket den aktuellen Stand und nächsten Schritt oben aktualisieren sowie einen kurzen Ergebnis-/Nachweisverweis beim Paket ergänzen. Bei einem Hindernis konkret Ursache und nächsten Lösungsversuch notieren; das Paket bleibt offen. Fachliche Änderungen zuerst im Fachplan festhalten und die betroffenen offenen Aufgaben hier nachziehen. Keine zweite Checkboxliste im Fachplan oder Prüfbericht führen; ein gegebenenfalls erstellter Paketcommit ist ein Nachweis, kein Ersatz für die Prüfung.
+
+Die ältere Zielvorgabe aus T10 „alle drei Berührungen von Anfang an“ wird für diese geplante erste Etappe durch T12 ersetzt. Zusätzliche Animationsproduktion T09/T10 bleibt zurückgestellt. Unverändert bleiben 30 Siege pro persönlichem Geschenk, die vorläufige Drei-Herzen-Grenze, der Erhalt vorhandener Inhalte und die Verwendung bereits vorhandener Animationen. Anschließend ausdrücklich beauftragt: direkt auf Main umsetzen, Plan zuerst und jedes geprüfte Paket separat committen; erst nach Gesamtprüfung pushen und veröffentlichen. Bei Rücknahme die Lesbarkeit migrierter Spielstände erhalten.
 
 **Credits im Spiel und Ilyra-Lizenz — 27.10.2026, beauftragt und umgesetzt.**
 
