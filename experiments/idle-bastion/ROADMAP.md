@@ -4,7 +4,7 @@
 
 Fachliche Grundlage: [Umsetzungsplan mit Regeln, Quellen und Messwerten](docs/TAVERNE_DREI_HERZEN_PLAN.md). Die folgenden fünf Pakete ersetzen die bisherigen drei groben T12-Punkte. Alle Arbeitscheckboxen und der aktuelle Stand werden ausschließlich hier gepflegt; der Fachplan beschreibt Regeln und Prüffälle.
 
-**Aktueller Stand:** T12.1 bis T12.4 geprüft. **Nächster Schritt:** T12.5 – Gesamtablauf, Zeitgefühl und Produktionsbuild. Paketcommits lokal auf Main; noch nicht gepusht.
+**Aktueller Stand:** T12.1 bis T12.5 technisch abgeschlossen. 148/148 gezielte Tests, Produktionsbuild und Browserabläufe bestanden. Direkte Veröffentlichung der geprüften Paketreihe auf Main ist beauftragt; tatsächliche Push-/Pages-Bestätigung im Abschlusschat. Subjektive Nutzerbewertung bleibt offen.
 
 - [x] Aktuellen Main-Stand und Abhängigkeiten von Geschenken, Herzschwellen, Zeitbudgets, Szenen, Berührungen, Hinweisen, Speicherung und Farming gelesen. 90 neue Engine-Farmzyklen und vorhandene Vorstoßdaten ausgewertet.
 - [x] Anschlusswunsch im Plan präzisiert: Freigeschaltete Berührungen bleiben dauerhaft gemeinsam nutzbar; Schulter/Kopf-Haare/Hand nutzen bei beiden Figuren touch/head/giggle. Die dritte Zone folgt erst mit Herz 4; Drei-Herzen-Grenze bleibt.
@@ -66,16 +66,22 @@ Nachweis T12.4: TypeScript und 9 gezielte i18n-/Geschenkstatus-/Interaktionsprü
 
 Voraussetzung: T12.1–T12.4. Schwerpunkt: zusammenhängende Abläufe und die verbleibenden Risiken aus Fachplan Abschnitt 8.
 
-- [ ] Je einen vollständigen Mara- und Ilyra-Ablauf vom zugänglichen Einstieg über Herz 2 bis Herz 3 im echten Spiel prüfen, mit Reload und allen Momenten. Normales Live-Farming/Vorstoß und gemessene Zeitbedingungen protokollieren; keine starre 10-Minuten-Mindestdauer behaupten.
-- [ ] Paketübergreifend die neuen Regeln und Hinweise mit Altständen, ausgeschöpften Reserven, gleichzeitig fertigen Geschenken, Niederlage/Pause/Offline und getrenntem Figurenfortschritt prüfen. Bereits bestandene Einzelprüfungen nur bei betroffenen Folgeänderungen oder neuen Befunden wiederholen.
-- [ ] Produktionsbuild einschließlich TypeScript sowie den zusammengehörigen gezielten Regressionstestlauf ausführen. Nach den letzten Änderungen kurze Desktop-/Hochkantprobe; keine pauschale Vollsuite oder neue Videos ohne konkreten Bedarf.
-- [ ] Abschließenden Diff auf den vereinbarten Umfang prüfen und einen kompakten Ergebnisbericht unter `artifacts/idle-bastion/acceptance/t12/REPORT.md` anlegen. Tatsächliche Prüfungen, Messwerte, verbleibende Einschränkungen und echte visuelle Nutzerabnahme getrennt benennen; Bericht hier verlinken. Commit-/Veröffentlichungsstand nur dokumentieren, soweit tatsächlich beauftragt und erfolgt.
+- [x] Je einen vollständigen Mara- und Ilyra-Ablauf vom zugänglichen Einstieg über Herz 2 bis Herz 3 im echten Spiel prüfen, mit Reload und allen Momenten. Normales Live-Farming/Vorstoß und gemessene Zeitbedingungen protokollieren; keine starre 10-Minuten-Mindestdauer behaupten.
+- [x] Paketübergreifend die neuen Regeln und Hinweise mit Altständen, ausgeschöpften Reserven, gleichzeitig fertigen Geschenken, Niederlage/Pause/Offline und getrenntem Figurenfortschritt prüfen. Bereits bestandene Einzelprüfungen nur bei betroffenen Folgeänderungen oder neuen Befunden wiederholen.
+- [x] Produktionsbuild einschließlich TypeScript sowie den zusammengehörigen gezielten Regressionstestlauf ausführen. Nach den letzten Änderungen kurze Desktop-/Hochkantprobe; keine pauschale Vollsuite oder neue Videos ohne konkreten Bedarf.
+- [x] Abschließenden Diff auf den vereinbarten Umfang prüfen und einen kompakten Ergebnisbericht unter `artifacts/idle-bastion/acceptance/t12/REPORT.md` anlegen. Tatsächliche Prüfungen, Messwerte, verbleibende Einschränkungen und echte visuelle Nutzerabnahme getrennt benennen; Bericht hier verlinken. Commit-/Veröffentlichungsstand nur dokumentieren, soweit tatsächlich beauftragt und erfolgt.
 
 **Abgeschlossen, wenn:** Der gesamte neue Ablauf technisch geprüft und nachvollziehbar vorführbar ist. Eine offene subjektive Nutzerbewertung oder eine noch nicht erfolgte Veröffentlichung wird ausdrücklich so benannt und nicht als erledigt ausgegeben.
+
+Nachweis T12.5: [Prüfbericht](../../artifacts/idle-bastion/acceptance/t12/REPORT.md). Mara: 30 Siege auf Farmwelle 12 in 8:33 aktiven Minuten; Ilyra: Welle 24 in 14:15 Minuten, ohne feste Zeitsperre. Native IndexedDB, Reload, alle drei Momente, Desktop/Hochkant und Touch im Produktionspaket geprüft. Kein Karten-/Kamerafix in T12.
 
 **So wird diese Liste beim Abarbeiten gepflegt:** Den aktuellen offenen Punkt bei Bedarf mit „in Arbeit“ kennzeichnen; eine Checkbox erst nach tatsächlich erledigter und passend geprüfter Arbeit setzen. Nach jedem Paket den aktuellen Stand und nächsten Schritt oben aktualisieren sowie einen kurzen Ergebnis-/Nachweisverweis beim Paket ergänzen. Bei einem Hindernis konkret Ursache und nächsten Lösungsversuch notieren; das Paket bleibt offen. Fachliche Änderungen zuerst im Fachplan festhalten und die betroffenen offenen Aufgaben hier nachziehen. Keine zweite Checkboxliste im Fachplan oder Prüfbericht führen; ein gegebenenfalls erstellter Paketcommit ist ein Nachweis, kein Ersatz für die Prüfung.
 
 Die ältere Zielvorgabe aus T10 „alle drei Berührungen von Anfang an“ wird für diese geplante erste Etappe durch T12 ersetzt. Zusätzliche Animationsproduktion T09/T10 bleibt zurückgestellt. Unverändert bleiben 30 Siege pro persönlichem Geschenk, die vorläufige Drei-Herzen-Grenze, der Erhalt vorhandener Inhalte und die Verwendung bereits vorhandener Animationen. Anschließend ausdrücklich beauftragt: direkt auf Main umsetzen, Plan zuerst und jedes geprüfte Paket separat committen; erst nach Gesamtprüfung pushen und veröffentlichen. Bei Rücknahme die Lesbarkeit migrierter Spielstände erhalten.
+
+**Zusatzauftrag Kartenrand – 27.10.2026, nur prüfen:**
+
+- [x] Linken Gegnerspawn im Intro und danach auf Desktop/Hochkant geprüft; [Screenshots und Befund](../../artifacts/idle-bastion/acceptance/map-edge-review-2026-10-27/REPORT.md). Hochkant nach dem Intro: grüner Außenstreifen links reproduziert, beim Ziehen breiter. Spezieller Intro-Fix weiterhin vorhanden, anschließender Kamerapfad erlaubt Außenraum. Keine Karten-/Kameraänderung vorgenommen; Umsetzung eines Fixes nicht beauftragt.
 
 **Credits im Spiel und Ilyra-Lizenz — 27.10.2026, beauftragt und umgesetzt.**
 

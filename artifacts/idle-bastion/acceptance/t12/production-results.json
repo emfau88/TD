@@ -1,0 +1,14 @@
+[
+  {
+    "width": 1440,
+    "touchEvent": false,
+    "chapter": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "touchEvent": true,
+    "chapter": true,
+    "errors": []
+  }
+]

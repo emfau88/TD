@@ -1,0 +1,64 @@
+[
+  {
+    "who": "mara",
+    "source": "clear15",
+    "half": {
+      "target": 15,
+      "seconds": 256.25,
+      "points": 58,
+      "farmWave": 12
+    },
+    "before": {
+      "target": 29,
+      "seconds": 495.75,
+      "points": 58,
+      "farmWave": 12
+    },
+    "end": {
+      "target": 30,
+      "seconds": 513,
+      "points": 58,
+      "farmWave": 12
+    },
+    "normalGiftNotices": 3,
+    "personalGiftNotices": 1,
+    "reloadAt15And70": true,
+    "moments": [
+      1,
+      2,
+      3
+    ],
+    "errors": []
+  },
+  {
+    "who": "ilyra",
+    "source": "clear25",
+    "half": {
+      "target": 15,
+      "seconds": 428.5,
+      "points": 58,
+      "farmWave": 24
+    },
+    "before": {
+      "target": 29,
+      "seconds": 826,
+      "points": 58,
+      "farmWave": 24
+    },
+    "end": {
+      "target": 30,
+      "seconds": 855,
+      "points": 58,
+      "farmWave": 24
+    },
+    "normalGiftNotices": 3,
+    "personalGiftNotices": 1,
+    "reloadAt15And70": true,
+    "moments": [
+      1,
+      2,
+      3
+    ],
+    "errors": []
+  }
+]
