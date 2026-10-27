@@ -1,5 +1,12 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Turmwerte und Tutorial-Übergang · 27.10.2026, Nutzerwunsch:**
+
+- [x] Kleine Werte-Icons für Schaden, Reichweite, Angriffsintervall und Abschüsse im bestehenden Pixel-SVG-Stil ergänzen; Beschriftungen und echte Werte lesbar halten.
+- [x] Produktionsbuild und echte Turmmenüs mit Aufwerten bei 1440/390/320 px geprüft, zusätzlich geöffnetes Menü in 844-px-Querformat. Kein Überlauf oder Seitenfehler; [Nachweis und Screenshots](../../artifacts/idle-bastion/acceptance/tower-stat-icons-2026-10-27/REPORT.md).
+- [ ] Icons auf Main/Pages veröffentlichen und live gegenprüfen.
+- [x] Tutorial-Lücke untersucht: nach Frostbau endet die große Lernkarte; Wisp wartet auf Frostforschung + Sieg in Welle 5, Lager später auf Welle 8. Der Zähler bleibt nur im kleinen Kopfzeilentext. Vorschlag an den Nutzer: sichtbarer kompakter Zwischenzielstreifen mit Tutorialzähler und konkreter Wellenvoraussetzung. Tutorialänderung aus dieser Nachfrage noch nicht umgesetzt.
+
 **Ladebild visuell verfeinern · 27.10.2026, Nutzerfeedback:**
 
 - [x] Schwarzen Außenhintergrund der Lagerfeuerszene durch echte Transparenz ersetzen; bestehende Figuren und Bildkomposition erhalten, Originale/Prompt sichern.

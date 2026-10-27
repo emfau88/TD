@@ -1,0 +1,437 @@
+
+> spire-defense@1.0.0 build
+> npm run idle:build && node scripts/package-pages.mjs
+
+
+> spire-defense@1.0.0 idle:build
+> tsc --project experiments/idle-bastion/tsconfig.json --noEmit && vite build --config experiments/idle-bastion/vite.config.ts
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 467 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/asset-check.html                                      0.99 kB │ gzip:   0.55 kB
+dist/enemy-credits.html                                    1.01 kB │ gzip:   0.61 kB
+dist/effects-check.html                                    1.69 kB │ gzip:   0.79 kB
+dist/tavern-check.html                                     1.71 kB │ gzip:   0.73 kB
+dist/enemy-check.html                                      2.49 kB │ gzip:   1.24 kB
+dist/mara-check.html                                       2.66 kB │ gzip:   1.33 kB
+dist/voice-check.html                                      2.87 kB │ gzip:   1.58 kB
+dist/audio-credits.html                                    3.50 kB │ gzip:   1.19 kB
+dist/enemy-lab.html                                        3.60 kB │ gzip:   1.62 kB
+dist/ilyra-check.html                                      3.88 kB │ gzip:   1.83 kB
+dist/layout.html                                           4.19 kB │ gzip:   1.49 kB
+dist/assets/Tower 02-CMUFd2ie.png                          4.25 kB
+dist/assets/Tower 05-D6IBJa30.png                          4.31 kB
+dist/feature-check.html                                    4.57 kB │ gzip:   2.10 kB
+dist/assets/Tower 03-DqhIKTZb.png                          4.93 kB
+dist/assets/Tower 02 - Level 01 - Weapon-BbwNkdu6.png      5.94 kB
+dist/assets/BoneGuard-Bkckv2zq.png                         7.06 kB
+dist/assets/ForestGoblin-BWXwY1EF.png                      7.24 kB
+dist/assets/ilyra-ring-CyehYaoT.webp                       7.45 kB
+dist/assets/Tower 04 - Level 01 - Weapon-D7-OJvLM.png      7.71 kB
+dist/assets/ForestCultist-Cd5sbEC-.png                     8.18 kB
+dist/assets/Tower 04 - Level 02 - Weapon-D5MMvqw0.png      8.47 kB
+dist/assets/star-projectile-DsRFyY88.webp                  8.67 kB
+dist/assets/EmberBomb-D-ksbHB-.png                         8.74 kB
+dist/assets/Tower 05 - Level 01 - Weapon-BC7IJUl1.png      8.82 kB
+dist/assets/Tower 05 - Level 02 - Weapon-BGpyWLgZ.png      8.87 kB
+dist/assets/Tower 05 - Level 03 - Weapon-D5DdpOIP.png      8.89 kB
+dist/assets/Tower 02 - Level 02 - Weapon-DpsCWqwS.png      8.89 kB
+dist/assets/Tower 04 - Level 03 - Weapon-CrAFZSb_.png      8.92 kB
+dist/assets/warehouse-i-DgfKbOoQ.png                       9.18 kB
+dist/assets/HornedBat-Z6iG4iVE.png                        10.27 kB
+dist/assets/mara-ring-Dg6kl00m.webp                       10.31 kB
+dist/assets/Tower 02 - Level 03 - Weapon-zdjXydyS.png     11.30 kB
+dist/assets/mara-mote-BNt_WOcN.webp                       11.34 kB
+dist/assets/Wisp - Animations-CYSRtkq2.png                12.34 kB
+dist/assets/manifest-D-qkdz88.json                        13.53 kB │ gzip:   1.74 kB
+dist/assets/WoodSpider-AsfcnwgW.png                       14.56 kB
+dist/assets/bow-1-hit-FDftjX1j.wav                        15.39 kB
+dist/assets/star-impact-DmPnDuwb.webp                     18.55 kB
+dist/assets/Leafbug-CFzpWCQW.png                          18.61 kB
+dist/assets/Lantern Jelly Pixel v1-htZNiiEL.png           18.96 kB
+dist/assets/MossShroom-C7mlO_BL.png                       19.20 kB
+dist/assets/tavern-i-uo0DWSEK.png                         19.51 kB
+dist/assets/workshop-i-uJu0mMae.png                       19.59 kB
+dist/assets/workshop-damaged-DRXKEyvo.png                 19.60 kB
+dist/assets/workshop-ii-B7iG3M66.png                      19.78 kB
+dist/assets/Succubus Dance HD v1-zZVESNoA.png             20.59 kB
+dist/assets/destination-Rbqlxewg.webp                     22.34 kB
+dist/assets/welcome-DeuGEsEa.webp                         26.49 kB
+dist/assets/Succubus Pixel v2-fYZveenX.png                26.65 kB
+dist/assets/mischievous-PzG1MOWq.webp                     26.99 kB
+dist/assets/focused-C0g1YKg1.webp                         27.19 kB
+dist/assets/voice1-good1-CotlMSyC.mp3                     29.76 kB
+dist/assets/brass-panel-CyDnkN1Z.webp                     30.07 kB
+dist/assets/bow-1-shoot-BOJRkDer.wav                      30.09 kB
+dist/assets/bow-2-shoot-DP8ZL1kL.wav                      30.09 kB
+dist/assets/bow-2-hit-Cv7ux4uZ.wav                        33.03 kB
+dist/index.html                                           34.74 kB │ gzip:   9.28 kB
+dist/assets/Scorpion-BS9EH7_B.png                         35.13 kB
+dist/assets/voice1-senpai3-BieW1yJE.mp3                   36.48 kB
+dist/assets/voice1-wouldntyou1-DVroU3Sq.mp3               37.44 kB
+dist/assets/inset-card-B4t5wluD.webp                      37.63 kB
+dist/assets/Magma Crab-Bf6s5u-Z.png                       38.04 kB
+dist/assets/Animated water tiles-CuCKvf_L.png             38.75 kB
+dist/assets/Voidbutterfly-CMVn9i8r.png                    39.30 kB
+dist/assets/voice1-senpai1-B_VpZ1Lw.mp3                   39.36 kB
+dist/assets/voice1-senpai2-DCrTf0Se.mp3                   39.36 kB
+dist/assets/voice1-sweetheart2-X1Z8NCRu.mp3               40.32 kB
+dist/assets/ilyra-spell-CEOL3G5A.webp                     41.49 kB
+dist/assets/voice1-sweetheart1-Br2QTfrs.mp3               43.20 kB
+dist/assets/voice1-sweetheart3-BLhAeAYK.mp3               44.16 kB
+dist/assets/voice1-youremine1-YYw4SzOy.mp3                46.08 kB
+dist/assets/gold-action-CnVGY0tm.webp                     46.28 kB
+dist/assets/Flying Locust-CiL6Y5kL.png                    46.51 kB
+dist/assets/Firebug-e9o0Z8q_.png                          46.82 kB
+dist/assets/Clampbeetle-BsUFA0D2.png                      47.51 kB
+dist/assets/mara-spell-D880q-fY.webp                      48.56 kB
+dist/assets/mara-portrait-3sByYzd_.webp                   49.18 kB
+dist/assets/20-fG5WmOtF.webp                              50.11 kB
+dist/assets/14-C169IIla.webp                              50.16 kB
+dist/assets/ilyra-portrait-Dt5g3fGL.webp                  53.97 kB
+dist/assets/Firewasp-BMqEsc73.png                         54.28 kB
+dist/assets/voice1-goodboy1-LE8e917B.mp3                  54.72 kB
+dist/assets/voice1-giggle1-DaAYpjWa.mp3                   54.72 kB
+dist/assets/Tower Construction-BTBuqOfv.png               58.95 kB
+dist/assets/Grass Tileset-D7wBwTkP.png                    64.46 kB
+dist/assets/a04-eH6Oxvku.wav                              64.98 kB
+dist/assets/voice1-lookonlyatme1-CV4lmqX2.mp3             66.24 kB
+dist/assets/ilyra-atlas-Dxs8RkpH.png                      66.26 kB
+dist/assets/b13-BY5ItK_F.wav                              67.89 kB
+dist/assets/b15-DnXjPQbN.wav                              69.46 kB
+dist/assets/b03-CF42BBA9.wav                              71.31 kB
+dist/assets/b05-BbE7RjOL.wav                              72.37 kB
+dist/assets/b12-Dm5-YHR8.wav                              72.89 kB
+dist/assets/b02-fpLjAII3.wav                              73.67 kB
+dist/assets/b11-Cte9K8hE.wav                              73.68 kB
+dist/assets/alarm-BUnyC44X.wav                            75.70 kB
+dist/assets/b04-JkBaqU4-.wav                              76.79 kB
+dist/assets/b06-B06nnqcy.wav                              77.19 kB
+dist/assets/b09-CQvR_frM.wav                              77.42 kB
+dist/assets/PixelifySans-lrcDQVzA.ttf                     79.16 kB
+dist/assets/10-DijIV9PY.webp                              82.02 kB
+dist/assets/gold-coin-Y7iV1dBZ.webp                       82.37 kB
+dist/assets/bow-1-draw-ZhOzlFKb.wav                       83.01 kB
+dist/assets/a05-B7RZv-nf.wav                              83.36 kB
+dist/assets/a03-ClCu6kHl.wav                              83.43 kB
+dist/assets/a01-CluB0ZUy.wav                              84.91 kB
+dist/assets/10-DNXkzBh-.webp                              85.35 kB
+dist/assets/22-xG2aCqDy.webp                              85.82 kB
+dist/assets/ilyra-portrait-oxD1dHzT.webp                  86.85 kB
+dist/assets/07-BDQM7bBG.webp                              87.10 kB
+dist/assets/a06-D1TQF9uf.wav                              88.22 kB
+dist/assets/a08-DOcRvRvq.wav                              88.27 kB
+dist/assets/bow-2-draw-CgaTNoex.wav                       88.89 kB
+dist/assets/a07-DLykKATB.wav                              90.95 kB
+dist/assets/b01-D1dNscQ0.wav                              91.20 kB
+dist/assets/mara-portrait-N5Y-sLK_.webp                   93.18 kB
+dist/assets/a02-BF-eL7hs.wav                              96.66 kB
+dist/assets/b08-B-HHZrR9.wav                             101.34 kB
+dist/assets/ice-buildup-DpQh8ebs.wav                     106.53 kB
+dist/assets/22-hMJhRpPL.webp                             111.70 kB
+dist/assets/b14-Crnz0rmW.wav                             117.27 kB
+dist/assets/b16-DJgN-AhL.wav                             119.33 kB
+dist/assets/b10-Cj1nnDBJ.wav                             119.50 kB
+dist/assets/campfire-cutout-720-SD7OAuPK.webp            126.91 kB
+dist/assets/18-CqpUzwF9.webp                             127.69 kB
+dist/assets/15-DxGBKOnr.webp                             127.91 kB
+dist/assets/12-UEYlboIN.webp                             128.57 kB
+dist/assets/b07-Bp-uRYjw.wav                             130.56 kB
+dist/assets/click-FRsBMxWh.wav                           133.91 kB
+dist/assets/succubus-laugh-DjFDkVXa.mp3                  161.33 kB
+dist/assets/14-Bt8q3jyR.webp                             164.45 kB
+dist/assets/19-CnDKaoGB.webp                             164.49 kB
+dist/assets/14-CuNTVydh.webp                             164.50 kB
+dist/assets/15-DB69SsOQ.webp                             164.56 kB
+dist/assets/18-CM4VOhqF.webp                             164.57 kB
+dist/assets/13-uoxgCC8d.webp                             164.60 kB
+dist/assets/16-0VeHhgJa.webp                             164.63 kB
+dist/assets/11-BgXXzpp9.webp                             164.65 kB
+dist/assets/17-DBYbHt7M.webp                             164.69 kB
+dist/assets/13-CchrW9s0.webp                             164.69 kB
+dist/assets/17-BpS5WOep.webp                             164.72 kB
+dist/assets/16-BK05b2yB.webp                             164.73 kB
+dist/assets/15-DthTF5D3.webp                             164.80 kB
+dist/assets/10-C95yxRP6.webp                             164.81 kB
+dist/assets/14-BQE5ayOZ.webp                             164.85 kB
+dist/assets/12-BUxH-dft.webp                             164.91 kB
+dist/assets/13-C_20XnqO.webp                             164.96 kB
+dist/assets/08-C1ymSb6s.webp                             168.60 kB
+dist/assets/11-BwQ7w_Lk.webp                             168.67 kB
+dist/assets/09-Dc2BzLIW.webp                             168.70 kB
+dist/assets/11-B9rvR9V8.webp                             168.70 kB
+dist/assets/10-BXJGFLcS.webp                             168.83 kB
+dist/assets/12-DrCkJFE2.webp                             168.83 kB
+dist/assets/17-a7riudUw.webp                             168.93 kB
+dist/assets/13-BuRgUXfA.webp                             168.94 kB
+dist/assets/09-mwPrzk_n.webp                             169.02 kB
+dist/assets/16-CMMjd4Ds.webp                             169.35 kB
+dist/assets/10-D4NArVWl.webp                             169.37 kB
+dist/assets/12-BmBm-d9e.webp                             169.64 kB
+dist/assets/13--Rhg6ZFI.webp                             169.94 kB
+dist/assets/12-CSbuVCW3.webp                             170.43 kB
+dist/assets/11-ByFhLjJd.webp                             172.55 kB
+dist/assets/00-B0U53G2C.webp                             172.95 kB
+dist/assets/07-DEnQsJcG.webp                             172.98 kB
+dist/assets/00-D83uv6Xn.webp                             174.39 kB
+dist/assets/00-BgUwXRyc.webp                             174.63 kB
+dist/assets/tower-upgrade-Dex3Isbs.wav                   176.51 kB
+dist/assets/08-D6D1yjaX.webp                             181.83 kB
+dist/assets/09-BW22WUk8.webp                             183.92 kB
+dist/assets/05-61aaGN2l.webp                             185.54 kB
+dist/assets/16-B5f7b2Fc.webp                             185.87 kB
+dist/assets/00-C6VJXXgm.webp                             186.23 kB
+dist/assets/07-BPLd1Gog.webp                             186.85 kB
+dist/assets/21-DI_NeRQJ.webp                             186.90 kB
+dist/assets/00-PJnxOm9z.webp                             187.19 kB
+dist/assets/06-EkbuhEkb.webp                             189.03 kB
+dist/assets/00-RiyLYVZy.webp                             190.40 kB
+dist/assets/04-JA71vDAk.webp                             191.82 kB
+dist/assets/15-LWxhoxCd.webp                             192.33 kB
+dist/assets/06-6rVOHJ2H.webp                             192.96 kB
+dist/assets/05-DHEwClQb.webp                             194.19 kB
+dist/assets/08-CB3-BOyY.webp                             195.46 kB
+dist/assets/06-yOSFv553.webp                             196.54 kB
+dist/assets/09-BOS8yY1l.webp                             196.79 kB
+dist/assets/15-Su4pV7YX.webp                             199.15 kB
+dist/assets/00-NCFrTTtH.webp                             199.99 kB
+dist/assets/04-BI4J_tsW.webp                             200.59 kB
+dist/assets/07-BJT1tvCd.webp                             200.78 kB
+dist/assets/09-DluzTsp6.webp                             201.57 kB
+dist/assets/07-GycC6_7t.webp                             201.58 kB
+dist/assets/09-r_Snw4CD.webp                             201.72 kB
+dist/assets/03-CK9fC-9p.webp                             202.32 kB
+dist/assets/05-DoAGGplE.webp                             202.52 kB
+dist/assets/14-ClgtNnxM.webp                             202.97 kB
+dist/assets/00-CdnOPx46.webp                             203.56 kB
+dist/assets/04-CiJgJaAs.webp                             203.76 kB
+dist/assets/10-D_j1p2uf.webp                             204.34 kB
+dist/assets/11-L-9OhCwB.webp                             204.95 kB
+dist/assets/13-DjdPIhCx.webp                             205.03 kB
+dist/assets/20-D_yAX4xz.webp                             205.08 kB
+dist/assets/11-BGlLKi9U.webp                             205.48 kB
+dist/assets/01-BXI4VCni.webp                             206.12 kB
+dist/assets/12-De63TEvc.webp                             206.31 kB
+dist/assets/05-Zop9qmVo.webp                             207.00 kB
+dist/assets/02-D5JvVyM0.webp                             207.25 kB
+dist/assets/12-opDDvKfz.webp                             207.28 kB
+dist/assets/04-CJgjtswk.webp                             207.50 kB
+dist/assets/11-CKhmoeI6.webp                             207.73 kB
+dist/assets/05-DZKnOHmV.webp                             207.79 kB
+dist/assets/03-BPkT-aq3.webp                             208.41 kB
+dist/assets/15-Cf5sKhJH.webp                             208.43 kB
+dist/assets/06-CY8llGqn.webp                             208.59 kB
+dist/assets/03-C_Hy9vzp.webp                             208.68 kB
+dist/assets/09-DFYaMuzb.webp                             208.75 kB
+dist/assets/05-CkybJsIr.webp                             208.88 kB
+dist/assets/04-D80-foyo.webp                             209.03 kB
+dist/assets/04-Bz5LIJMf.webp                             209.20 kB
+dist/assets/06-CY4zGSkf.webp                             209.30 kB
+dist/assets/11-YOmERUcy.webp                             209.49 kB
+dist/assets/07-BAxpcAwM.webp                             209.60 kB
+dist/assets/08-D72wPNNG.webp                             209.79 kB
+dist/assets/08-NHPO7zq0.webp                             209.92 kB
+dist/assets/19-C1YzpXCH.webp                             210.04 kB
+dist/assets/11-DbhgjhAz.webp                             210.14 kB
+dist/assets/14-YiQhXql4.webp                             210.62 kB
+dist/assets/02-Df-Jut01.webp                             210.77 kB
+dist/assets/00-DdEF44Ta.webp                             210.86 kB
+dist/assets/10-BAOqJAzF.webp                             210.92 kB
+dist/assets/01-BqJ7d13l.webp                             211.35 kB
+dist/assets/09-C6Abb8a1.webp                             211.38 kB
+dist/assets/08-CCapqxyM.webp                             211.61 kB
+dist/assets/00-DMg8pUA0.webp                             211.69 kB
+dist/assets/06-BMcHeMfG.webp                             211.75 kB
+dist/assets/06-BuZsbnjs.webp                             211.86 kB
+dist/assets/16-C2MBKuSN.webp                             212.06 kB
+dist/assets/01-ABFbV_38.webp                             212.17 kB
+dist/assets/00-CzYKPfVc.webp                             212.48 kB
+dist/assets/03-BhJCZvJ4.webp                             212.60 kB
+dist/assets/02-CGX3UucM.webp                             212.80 kB
+dist/assets/05-CtBgr_Jo.webp                             212.86 kB
+dist/assets/06-DjwcfKrW.webp                             213.14 kB
+dist/assets/17-Bkr58AeH.webp                             213.59 kB
+dist/assets/06-DLtAFBa0.webp                             213.67 kB
+dist/assets/02-Dgu2eW0E.webp                             213.74 kB
+dist/assets/01-RzPLXkxB.webp                             213.87 kB
+dist/assets/18-GXzFjyWJ.webp                             214.11 kB
+dist/assets/06-uryEeAl_.webp                             214.53 kB
+dist/assets/10-BtxtF39s.webp                             214.61 kB
+dist/assets/00-KKvId8_p.webp                             214.85 kB
+dist/assets/08-CdyfX-6J.webp                             215.03 kB
+dist/assets/05-f-QjMmE9.webp                             215.08 kB
+dist/assets/13-BHs4F68T.webp                             215.56 kB
+dist/assets/01-BxF5OWPD.webp                             215.67 kB
+dist/assets/03-BK3qfWGy.webp                             215.98 kB
+dist/assets/04-alz9Tddj.webp                             216.04 kB
+dist/assets/04-qor_xeCa.webp                             216.30 kB
+dist/assets/05-bu2NPHg4.webp                             216.40 kB
+dist/assets/07-DC-lNmo3.webp                             216.65 kB
+dist/assets/04-B0QXCqz9.webp                             216.77 kB
+dist/assets/02-BfmSoTEX.webp                             216.91 kB
+dist/assets/09-KZITpFMK.webp                             216.97 kB
+dist/assets/00-YFQRP7zK.webp                             217.16 kB
+dist/assets/08-DRzvucWr.webp                             217.38 kB
+dist/assets/07-2OWqy75r.webp                             217.48 kB
+dist/assets/09-qey0bJyF.webp                             217.66 kB
+dist/assets/03-BU1lqdwb.webp                             217.83 kB
+dist/assets/08-gdQKliub.webp                             217.94 kB
+dist/assets/10-DQhg7IwV.webp                             218.16 kB
+dist/assets/03-CC0EsC2P.webp                             218.25 kB
+dist/assets/03-BaezpKAh.webp                             218.25 kB
+dist/assets/04-BK-TvAN5.webp                             218.35 kB
+dist/assets/08-BDud60W8.webp                             218.60 kB
+dist/assets/09-qKZjptYg.webp                             218.65 kB
+dist/assets/09-uRZkvnSy.webp                             218.74 kB
+dist/assets/02-Bkty1FWD.webp                             218.75 kB
+dist/assets/03-BS_NSLGi.webp                             218.82 kB
+dist/assets/04-Cwxf9iXq.webp                             218.99 kB
+dist/assets/01-PFjU2_Fr.webp                             219.01 kB
+dist/assets/02-B1bfkBHB.webp                             219.04 kB
+dist/assets/14-DGMwgsuU.webp                             219.12 kB
+dist/assets/07-BzuQdqUb.webp                             219.15 kB
+dist/assets/10-CQmXUNoy.webp                             219.22 kB
+dist/assets/02-DaiODqHs.webp                             219.34 kB
+dist/assets/05-WE-Zt3fv.webp                             219.51 kB
+dist/assets/12-Brrd6iAp.webp                             219.67 kB
+dist/assets/07-LSqR2XWb.webp                             219.73 kB
+dist/assets/10-CDvl7-r_.webp                             219.79 kB
+dist/assets/08-BSiSFYpv.webp                             219.84 kB
+dist/assets/11-lCpdvt_z.webp                             220.19 kB
+dist/assets/02-CE-XXAmr.webp                             220.21 kB
+dist/assets/10-C_ewjij-.webp                             220.21 kB
+dist/assets/05-CQyZ3Eij.webp                             220.35 kB
+dist/assets/01-BBdJ-Uor.webp                             220.48 kB
+dist/assets/06-DKBZrmbO.webp                             220.59 kB
+dist/assets/01-CAYoWLY8.webp                             221.27 kB
+dist/assets/03-69pZDuQX.webp                             221.38 kB
+dist/assets/01-Dwo6b1NK.webp                             221.48 kB
+dist/assets/10-apVGdRLi.webp                             221.54 kB
+dist/assets/01-Buwni6Ir.webp                             222.31 kB
+dist/assets/07-Can73Gct.webp                             222.39 kB
+dist/assets/04-DPJl__Iv.webp                             222.83 kB
+dist/assets/08-D7nahnKQ.webp                             222.99 kB
+dist/assets/00-BSnxyMxx.webp                             223.02 kB
+dist/assets/06-B23YNN7B.webp                             223.14 kB
+dist/assets/06-96P3lHGG.webp                             223.69 kB
+dist/assets/11-CmcG6SAC.webp                             224.02 kB
+dist/assets/13-DDcDUkdV.webp                             224.07 kB
+dist/assets/05-D2XWRvme.webp                             224.34 kB
+dist/assets/07-B3dzW-Vy.webp                             224.87 kB
+dist/assets/12-CYfRCePL.webp                             224.97 kB
+dist/assets/02-Cy1HcOv_.webp                             225.26 kB
+dist/assets/08-CA5Cbw9W.webp                             225.33 kB
+dist/assets/03-C8izf-Ly.webp                             225.60 kB
+dist/assets/07-CwJr86vl.webp                             225.65 kB
+dist/assets/01-DQhZbdZG.webp                             225.73 kB
+dist/assets/05-DX2pe8Aw.webp                             226.37 kB
+dist/assets/02-C4ON-GMe.webp                             226.69 kB
+dist/assets/04-B5V9pbZm.webp                             227.03 kB
+dist/assets/03-ijWpL887.webp                             228.67 kB
+dist/assets/06-DOgGSMd5.webp                             229.81 kB
+dist/assets/07-C5RNbtgP.webp                             230.25 kB
+dist/assets/09-CgaUC2sA.webp                             231.24 kB
+dist/assets/00-BE0DJYw5.webp                             233.11 kB
+dist/assets/05-BPqHz09L.webp                             233.54 kB
+dist/assets/02-p0AHAY8r.webp                             233.75 kB
+dist/assets/01-CuJCTNsJ.webp                             234.27 kB
+dist/assets/03-CSFmfYfS.webp                             234.83 kB
+dist/assets/02-NjFk8li1.webp                             234.84 kB
+dist/assets/01-aiJ1r5j7.webp                             235.00 kB
+dist/assets/04-BSAngoQg.webp                             235.29 kB
+dist/assets/01-O6nqna7g.webp                             237.22 kB
+dist/assets/02-vSUtofBN.webp                             240.48 kB
+dist/assets/03-B0xcbXoQ.webp                             242.53 kB
+dist/assets/21-CoQAdJa0.webp                             250.89 kB
+dist/assets/07-CKA1SSGx.webp                             253.91 kB
+dist/assets/01-2aFN0cki.webp                             258.26 kB
+dist/assets/15-DoCTwuxW.webp                             259.45 kB
+dist/assets/campfire-cutout-1200-kNVngsoY.webp           261.47 kB
+dist/assets/14-97tydLRa.webp                             263.96 kB
+dist/assets/20-DTxPc4y7.webp                             266.37 kB
+dist/assets/02-BlwsGHt3.webp                             269.76 kB
+dist/assets/06-DMDsp-8o.webp                             270.96 kB
+dist/assets/08-DFBCaHQo.webp                             271.35 kB
+dist/assets/19-CH8ONb39.webp                             273.44 kB
+dist/assets/16-CwOAeBzc.webp                             273.46 kB
+dist/assets/03-Ei9T7VDb.webp                             274.47 kB
+dist/assets/05-C8xEgMAx.webp                             277.20 kB
+dist/assets/13-EjY_Yh45.webp                             277.44 kB
+dist/assets/18--jmWny07.webp                             277.53 kB
+dist/assets/17-DcRWuKoQ.webp                             277.89 kB
+dist/assets/04-COhCStz7.webp                             278.05 kB
+dist/assets/09-Cs2zL6ng.webp                             281.09 kB
+dist/assets/10-DWUIjYB2.webp                             281.91 kB
+dist/assets/12-BdwrWOlE.webp                             281.95 kB
+dist/assets/craft-C8wLxO8f.wav                           282.33 kB
+dist/assets/11-BRwb1iNU.webp                             283.82 kB
+dist/assets/flirty_coy_06-DeFsvw2j.wav                   315.90 kB
+dist/assets/flirty_teasing_12-Ygzwp_kI.wav               324.14 kB
+dist/assets/tower-build-Dq5ge1Nr.wav                     338.21 kB
+dist/assets/flirty_respectful_10--VM__6Gv.wav            353.54 kB
+dist/assets/gift-uU_FDK-_.wav                            353.69 kB
+dist/assets/P06-D_kNTr-g.wav                             360.36 kB
+dist/assets/P03-w7XQp1Wl.wav                             366.50 kB
+dist/assets/flirty_flustered_08-Baj6v9JE.wav             370.86 kB
+dist/assets/P07-DZbukRkT.wav                             373.94 kB
+dist/assets/P09-B6kTva43.wav                             404.39 kB
+dist/assets/P01-B_Wau3Jr.wav                             406.57 kB
+dist/assets/flirty_challenging_03-DmRIhSfM.wav           423.97 kB
+dist/assets/flirty_admiring_01-DiGfcPKM.wav              449.09 kB
+dist/assets/flirty_admiring_02-BFhY9n8z.wav              452.93 kB
+dist/assets/P14-d9SdqwWB.wav                             455.71 kB
+dist/assets/flirty_condescending_04-Xy-x8qxk.wav         462.00 kB
+dist/assets/flirty_endearing_07-CdFvSvyV.wav             499.48 kB
+dist/assets/P11-5atIlSLG.wav                             514.16 kB
+dist/assets/flirty_playful_09-BNzNF_Nd.wav               532.91 kB
+dist/assets/mara-idle-BMHlYQy5.webp                      534.80 kB
+dist/assets/mara-spell-BTJwHwqd.wav                      567.75 kB
+dist/assets/ilyra-idle-Bta_hzNX.webp                     598.10 kB
+dist/assets/ilyra-spell-BD3T5HeH.wav                     642.40 kB
+dist/assets/stone-hit-BHA-Kr8r.wav                       931.40 kB
+dist/assets/spire-emblem-J2ZV8Jb6.png                    962.26 kB
+dist/assets/mara-game-F4SIexT0.webp                      996.44 kB
+dist/assets/mara-shoulder-BTyna3Yw.webp                1,182.34 kB
+dist/assets/ilyra-shoulder-C4PNrADJ.webp               1,255.17 kB
+dist/assets/inn-music-Cuia2qEa.mp3                     1,325.34 kB
+dist/assets/mara-reactions-CLoe0qRz.webp               1,581.26 kB
+dist/assets/ilyra-reactions-DcFyyO5G.webp              1,718.11 kB
+dist/assets/mara-atlas-BgXd1_rP.webp                   1,737.77 kB
+dist/assets/room-BqYCVsOp.webp                         1,795.52 kB
+dist/assets/exploration-CiwinCny.mp3                   9,446.11 kB
+dist/assets/mara-DCNFsCnY.css                              4.26 kB │ gzip:   1.72 kB
+dist/assets/layout-C0meYMcD.css                            5.71 kB │ gzip:   1.98 kB
+dist/assets/battle-Bmzl7WRp.css                            6.11 kB │ gzip:   1.93 kB
+dist/assets/main-CCDbgdh1.css                             26.36 kB │ gzip:   6.61 kB
+dist/assets/tavern-ui-CtAvYQRM.css                        61.12 kB │ gzip:  14.67 kB
+dist/assets/modulepreload-polyfill-B5Qt9EMX.js             0.71 kB │ gzip:   0.40 kB
+dist/assets/style-assets-DXiWRFfK.js                       0.72 kB │ gzip:   0.33 kB
+dist/assets/mara-atlas-DXVCz37-.js                         1.01 kB │ gzip:   0.33 kB
+dist/assets/assets-BykZtIQl.js                             1.22 kB │ gzip:   0.68 kB
+dist/assets/startup-Bf8OBAo4.js                            1.76 kB │ gzip:   0.92 kB
+dist/assets/tavern-CHIParSE.js                             2.04 kB │ gzip:   1.09 kB
+dist/assets/effectsCheck-D4j3NMwb.js                       2.42 kB │ gzip:   1.31 kB
+dist/assets/enemies-Dh9cvNuk.js                            3.06 kB │ gzip:   1.59 kB
+dist/assets/enemy-roster-DR_2AUr-.js                       3.58 kB │ gzip:   1.70 kB
+dist/assets/enemyLab-mFn7hk-y.js                           4.48 kB │ gzip:   2.26 kB
+dist/assets/battle-B906bfr7.js                             5.72 kB │ gzip:   2.38 kB
+dist/assets/mara-CMd111Dw.js                               5.80 kB │ gzip:   1.96 kB
+dist/assets/ilyra-view-C4zDnAL6.js                         6.27 kB │ gzip:   2.71 kB
+dist/assets/layout-Cr6l3rXf.js                             6.72 kB │ gzip:   2.87 kB
+dist/assets/layout-Bs1sJLvI.js                             6.76 kB │ gzip:   3.09 kB
+dist/assets/ilyra-Be9bM-se.js                              8.62 kB │ gzip:   3.05 kB
+dist/assets/save-store-BoybJNlV.js                         9.39 kB │ gzip:   3.54 kB
+dist/assets/enemy-art-DrxVbNW5.js                          9.56 kB │ gzip:   1.95 kB
+dist/assets/voiceCheck-DUM3kL4Y.js                         9.89 kB │ gzip:   2.02 kB
+dist/assets/offline-BzRg44qx.js                           10.25 kB │ gzip:   3.73 kB
+dist/assets/featureCheck-CIydWdJf.js                      18.07 kB │ gzip:   3.05 kB
+dist/assets/tavern-ui-DIA_iSLA.js                         80.62 kB │ gzip:  25.16 kB
+dist/assets/art-Cl88Z87u.js                              142.19 kB │ gzip:  91.09 kB
+dist/assets/main-Dl_zQpiI.js                             198.51 kB │ gzip:  61.66 kB
+dist/assets/i18n-BHGvTUT-.js                             201.41 kB │ gzip:  65.69 kB
+dist/assets/phaser.esm-BTGbtjln.js                     1,387.44 kB │ gzip: 371.54 kB
+✓ built in 6.65s
+Current Towers & Tantrums build packaged at /; previous /idle-bastion/ links retain query and hash.

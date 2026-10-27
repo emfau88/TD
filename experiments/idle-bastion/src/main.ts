@@ -34,7 +34,7 @@ import './battle.css';
 import './progress.css';
 import './premium.css';
 import './spell-actions.css';
-import { mountUIIcons } from './ui-icons';
+import { mountUIIcons, uiIcon } from './ui-icons';
 import { STORM_CHAIN, STORMLIGHT, SETTLEMENT, towerDefinition, type TowerId, stats, upgradeCost, sellValue, type IdleBattle } from './battle';
 import { BattleScene } from './battle-scene';
 import { nextObjective, tutorialHint, tutorialStep } from './hud';
@@ -385,7 +385,12 @@ function syncUI(): void {
   sell.textContent = t(tower?.protected ? t('Geschützter Startturm') : t("Verkaufen · +{0} Gold", currency.format(tower ? sellValue(tower) : 0)));
   element('tower-stats').innerHTML = tower ? (() => {
     const values = stats(tower);
-    return `<div><dt>${t('Schaden')}</dt><dd>${damageFormat.format(values.damage)}</dd></div><div><dt>${t('Reichweite')}</dt><dd>${values.range}</dd></div><div><dt>${t('Angriff alle')}</dt><dd>${intervalFormat.format(values.cooldown)} s</dd></div><div><dt>${t('Abschüsse')}</dt><dd>${tower.kills}</dd></div>`;
+    return [
+      ['damage', t('Schaden'), damageFormat.format(values.damage)],
+      ['target', t('Reichweite'), values.range],
+      ['cooldown', t('Angriff alle'), `${intervalFormat.format(values.cooldown)} s`],
+      ['skull', t('Abschüsse'), tower.kills],
+    ].map(([icon, label, value]) => `<div><dt><span class="ui-icon tower-stat-icon" aria-hidden="true">${uiIcon(String(icon))}</span><span>${label}</span></dt><dd>${value}</dd></div>`).join('');
   })() : '';
   element('action-hint').textContent = t(blocked ? live.error ? t('Der letzte bestätigte Spielstand bleibt erhalten.') : live.awaitingResume ? t('Setze die Verteidigung über den Rückkehrbeleg fort.') : t('Setze den Kampf fort, um zu bauen oder aufzuwerten.')
     : tower ? tower.level >= sim.maxLevel ? sim.settlement.frostResearched ? sim.settlement.workshopUpgraded ? t('Weitere Upgrades benötigen mehr Gold.') : t('Werkstatt II erschließt weitere Turmlevel.') : t('Frostfassung erschließt Level 4–6.') : sim.gold < upgradeCost(tower) ? t("Noch {0} Gold bis zum nächsten Level.", currency.format(upgradeCost(tower) - sim.gold)) : t('Mehr Schaden verbessert die Verteidigung sofort.')
