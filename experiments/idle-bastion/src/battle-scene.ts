@@ -18,7 +18,7 @@ import { BossCharmView, charmAge } from './boss-visuals';
 import { wispPose } from './wisp';
 import Phaser from 'phaser';
 import { BASE, IdleBattle, stats, towerDefinition, visualStage, type BattleEvent, type TowerId, type Enemy, type Tower } from './battle';
-import { cellCenter, settlementZone, buildingWidth, type BuildingId, type GridCell, type TowerPad } from './layout';
+import { cellCenter, settlementZone, buildingWidth, centeredBuildingCell, type BuildingId, type GridCell, type TowerPad } from './layout';
 import { KEYS, MARA_FOOT, SCALE, enemyFrame, enemyFlip, loopFrame, maraFrame, towerArt, towerMount, preloadArt, prepareArt } from './art';
 import { createForest, type ForestView } from './forest';
 import { tutorialDefenseFrame, tutorialDefenseZoom } from './tutorial-camera';
@@ -351,11 +351,14 @@ export class BattleScene extends Phaser.Scene {
     if (kind === 'tower' && (this.sim.preparing || this.sim.guiding)) { this.focusGuidedDefense(); return; }
     if (kind !== 'clearing' && (this.portraitCamera || this.sim.clearing.unlocked || this.sim.layout.version === 5)) this.focusPoint(this.objectPoint(kind));
   }
-  private focusPoint(point: { x: number; y: number }): void {
+  focusMaraIntroduction(): void { this.focusPoint(this.objectPoint('mara'), true); }
+  private focusPoint(point: { x: number; y: number }, smooth = false): void {
     this.invalidatePointer();
     if (this.guidedDefenseFrame) { this.guidedDefenseFrame = false; this.resizeCamera(); }
     if (this.overview) { this.overview = false; this.relativeZoom = 1; this.resizeCamera(); }
-    this.cameras.main.centerOn(point.x, this.portraitCamera ? point.y - 20 : this.sim.layout.bounds.height / 2);
+    const y = this.portraitCamera ? point.y - 20 : this.sim.layout.bounds.height / 2;
+    if (smooth && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) this.cameras.main.pan(point.x, y, 450, 'Sine.easeInOut');
+    else this.cameras.main.centerOn(point.x, y);
   }
   private objectPoint(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'ilyra' | 'clearing'): { x: number; y: number } {
     if (kind === 'clearing') return this.sim.layout.version === 5 ? { x: 1340, y: 400 } : { x: 1080, y: 524 };
@@ -376,9 +379,12 @@ export class BattleScene extends Phaser.Scene {
   }
   setLearningTarget(target?: 'starter' | 'upgrade' | 'workshop' | 'research' | 'frost' | 'cannon' | 'warehouse'): void { this.learningTarget = target; }
   private learningPoint(target: NonNullable<BattleScene['learningTarget']>): {x:number;y:number} | undefined {
-    if (target === 'upgrade') { const tower = this.sim.towers.find(t => t.protected); return tower && {x:tower.x,y:tower.y-25}; }
+    if (target === 'upgrade') { const tower = this.sim.towers.find(t => t.protected); return tower && {x:tower.x,y:tower.y}; }
     if (target === 'research') return this.objectPoint('settlement');
-    if (target === 'workshop' || target === 'warehouse') return cellCenter(this.sim.layout, this.sim.plots[target]);
+    if (target === 'workshop' || target === 'warehouse') {
+      const cell = this.sim.plots[target], size = this.sim.layout.cellSize;
+      return { x:(cell.x + buildingWidth(target) / 2) * size, y:(cell.y + 1) * size };
+    }
     const pad = this.sim.layout.towerPads.find(p => p.id === (target === 'starter' ? this.sim.recommendedStarterPad : target === 'cannon' ? this.sim.recommendedCannonPad : this.sim.recommendedFrostPad));
     return pad && cellCenter(this.sim.layout,pad.cell);
   }
@@ -487,7 +493,7 @@ export class BattleScene extends Phaser.Scene {
     if (!this.learningTarget) return;
     const point = this.learningPoint(this.learningTarget); if (!point) return;
     const pulse = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? .85 : .75 + Math.sin(this.time.now / 300) * .15;
-    if (this.learningTarget === 'starter') {
+    if (this.learningTarget === 'starter' || this.learningTarget === 'upgrade') {
       const size = this.sim.layout.cellSize;
       this.learningMark.fillStyle(0xffd778,.10).fillRect(point.x-size/2,point.y-size/2,size,size);
       this.learningMark.lineStyle(2,0xffdf8a,pulse).strokeRect(point.x-size/2,point.y-size/2,size,size);
@@ -549,7 +555,10 @@ export class BattleScene extends Phaser.Scene {
     if (this.hooks.canRender?.() === false) { this.pendingTap = { x: pointer.x, y: pointer.y, secondary }; return; }
     const point = this.cameras.main.getWorldPoint(pointer.x, pointer.y), size = this.sim.layout.cellSize;
     if (this.ilyraMode) { this.hooks.ilyraGround?.(point); return; }
-    if (this.groundMode) { this.hooks.ground?.({ x: Math.floor(point.x / size), y: Math.floor(point.y / size) }); return; }
+    if (this.groundMode) {
+      this.hooks.ground?.(this.groundMode === 'mara' ? { x: Math.floor(point.x / size), y: Math.floor(point.y / size) }
+        : centeredBuildingCell(this.groundMode, point, size)); return;
+    }
     if (this.bossCharmView.contains(point)) return;
     const pad = this.sim.layout.towerPads.find(value => value.cell.x === Math.floor(point.x / size) && value.cell.y === Math.floor(point.y / size));
     if (this.buildKind) { this.setSelected(pad?.id); this.hooks.select(pad?.id); return; }

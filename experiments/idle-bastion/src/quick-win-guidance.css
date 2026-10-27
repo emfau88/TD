@@ -3,7 +3,7 @@
 .quick-win-hint p { margin:6px 0 0; font:12px/1.5 var(--ui,Arial,sans-serif); }
 #quick-win-cost { color:#e7c78b; }
 .quick-win-actions { display:flex; gap:8px; margin-top:10px; }
-.quick-win-actions button { min-height:36px; padding:6px 10px; font-size:12px; }
+.quick-win-actions button { min-height:44px; padding:8px 12px; font-size:12px; }
 #quick-win-dismiss { margin-left:auto; color:#c5c7b9; background:transparent; border-color:transparent; }
 #pick-cannon { position:relative; }
 .quick-win-new { position:absolute; top:4px; right:5px; padding:2px 4px; border:1px solid #f2d89a77; border-radius:2px; background:#d9b36a; color:#24281e; font:700 9px/1.2 Arial,sans-serif; letter-spacing:.04em; pointer-events:none; }
@@ -17,6 +17,6 @@
   .quick-win-hint strong { font-size:15px; }
   .quick-win-hint p { font-size:12px; }
   .quick-win-actions { gap:4px; flex-wrap:wrap; margin-top:8px; }
-  .quick-win-actions button { min-height:40px; font-size:11px; padding:6px 8px; }
+  .quick-win-actions button { min-height:44px; font-size:12px; padding:8px 10px; }
   .quick-win-new { font-size:8px; top:2px; right:3px; }
 }

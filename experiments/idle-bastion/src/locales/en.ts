@@ -166,6 +166,7 @@ export const english: Readonly<Record<string, string>> = {
   "Willkommen im alten Hain": "Welcome to the Old Grove",
   "Erste Verteidigung bauen": "Build your first defense",
   "Später entdecken": "Explore later",
+  "Später": "Later",
   "Wisp · Neu im Hain": "Wisp · New to the grove",
   "Ich bin Wisp und kümmere mich um die Vorräte. Deine Kämpfe bringen ab jetzt 10 % mehr Gold. Das läuft automatisch.": "I'm Wisp, and I'll handle the supplies. Your battles now earn 10% more gold. It all happens automatically.",
   "Bauplatz wählen": "Choose a building spot",

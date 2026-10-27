@@ -1,0 +1,92 @@
+[
+  {
+    "width": 1440,
+    "kind": "gift",
+    "data": {
+      "card": {
+        "x": 532,
+        "y": 809,
+        "width": 250,
+        "height": 78
+      },
+      "badge": {
+        "x": 755,
+        "y": 815,
+        "width": 21,
+        "height": 21
+      },
+      "tabGift": false
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "kind": "cannon",
+    "data": {
+      "height": 44,
+      "frame": "url(\"http://127.0.0.1:5252/assets/ui/gold-action.webp\")",
+      "primary": true
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "kind": "gift",
+    "data": {
+      "card": {
+        "x": 71,
+        "y": 842,
+        "width": 154,
+        "height": 54
+      },
+      "badge": {
+        "x": 202,
+        "y": 847,
+        "width": 18,
+        "height": 18
+      },
+      "tabGift": false
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "kind": "cannon",
+    "data": {
+      "height": 44,
+      "frame": "url(\"http://127.0.0.1:5252/assets/ui/gold-action.webp\")",
+      "primary": true
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "kind": "gift",
+    "data": {
+      "card": {
+        "x": 36,
+        "y": 842,
+        "width": 154,
+        "height": 54
+      },
+      "badge": {
+        "x": 167,
+        "y": 847,
+        "width": 18,
+        "height": 18
+      },
+      "tabGift": false
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "kind": "cannon",
+    "data": {
+      "height": 44,
+      "frame": "url(\"http://127.0.0.1:5252/assets/ui/gold-action.webp\")",
+      "primary": true
+    },
+    "errors": []
+  }
+]

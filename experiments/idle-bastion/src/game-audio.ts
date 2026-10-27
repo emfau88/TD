@@ -5,7 +5,7 @@ import { MaraVoice } from './mara-voice';
 import { IlyraVoice } from './ilyra-voice';
 import { HeroCommandVoice, type HeroVoiceCommand, type VoiceHero } from './hero-command-voice';
 
-// URL imports emit files but do not fetch them. Music streams only after a user gesture.
+// Prepare startup audio without playback; audible output still requires a user gesture.
 const files = import.meta.glob('../assets/audio/*.{wav,mp3}', { eager:true, query:'?url', import:'default' }) as Record<string,string>;
 const url = (file:string) => files[`../assets/audio/${file}`]!;
 const MIX_KEY = 'spire-audio-mix-v1';
@@ -26,6 +26,7 @@ export class GameAudio {
   private ilyraVoice?: IlyraVoice;
   private heroCommandVoice?: HeroCommandVoice;
   private tracks = new Map<Music,Track>();
+  private musicElements = new Map<Music,HTMLAudioElement>();
   private music: Music = 'field';
   private buffers = new Map<Cue,Promise<AudioBuffer | undefined>>();
   private active = new Set<Voice>();
@@ -43,6 +44,7 @@ export class GameAudio {
   constructor(private readonly options: { combat?: boolean } = {}) {
     try { this.mix = readMix(JSON.parse(localStorage.getItem(MIX_KEY) ?? 'null')); }
     catch { this.mix = readMix(null); }
+    this.prepareAudio();
     const signal = this.lifetime.signal;
     const unlock = () => { void this.unlock(); };
     document.addEventListener('pointerdown',unlock,{capture:true,signal});
@@ -51,13 +53,42 @@ export class GameAudio {
     window.addEventListener('pagehide',() => this.silence(),{signal});
     document.addEventListener('click', e => {
       const button = (e.target as HTMLElement).closest('button,summary');
-      if (!button || button.matches(':disabled') || button.closest('[data-audio-controls]')) return;
-      this.play('click');
+      if (!button || button.matches(':disabled') || button.matches('[data-audio-test]')) return;
+      void this.unlock().then(() => this.play('click'));
     },{capture:true,signal});
+  }
+  private prepareAudio(): void {
+    if (this.disposed || this.mix.muted || document.hidden) return;
+    if (this.mix.effects > 0 && !this.buffers.has('click') && window.OfflineAudioContext) {
+      // Decode the existing UI cue before the intro is clickable, without an audible context.
+      const pending = fetch(url(CUES.click.file), { signal:this.lifetime.signal })
+        .then(r => { if (!r.ok) throw Error('Audio'); return r.arrayBuffer(); })
+        .then(bytes => new OfflineAudioContext(1, 1, 44100).decodeAudioData(bytes))
+        .catch(() => { this.buffers.delete('click'); return undefined; });
+      this.buffers.set('click', pending);
+    }
+    if (this.mix.music > 0 && !(this.options.combat === false && this.music === 'field')) this.musicElement(this.music);
+  }
+  private musicElement(kind: Music): HTMLAudioElement {
+    let element = this.musicElements.get(kind);
+    if (element) return element;
+    element = new Audio(); element.preload = 'auto'; element.loop = true;
+    element.src = url(kind === 'field' ? 'exploration.mp3' : 'inn-music.mp3');
+    element.hidden = true; element.dataset.spireMusic = kind; document.body.append(element);
+    element.addEventListener('error', () => this.setStatus(t('Ein Musikstück konnte nicht geladen werden. Effekte bleiben verfügbar.')), {signal:this.lifetime.signal});
+    element.addEventListener('playing', () => this.warmEffects(), {signal:this.lifetime.signal});
+    this.musicElements.set(kind, element);
+    element.load();
+    return element;
+  }
+  private warmEffects(): void {
+    if (!this.canPlay()) return;
+    for (const cue of (this.options.combat === false ? ['click','craft','gift'] : Object.keys(CUES)) as Cue[])
+      if ((cue === 'charm' ? this.mix.voices : this.mix.effects) > 0) void this.load(cue);
   }
   private async unlock(): Promise<void> {
     if (this.disposed || document.hidden || this.mix.muted) return;
-    if (this.unlocked && this.context?.state === 'running') return;
+    if (this.unlocked && this.context?.state === 'running') { this.refresh(); return; }
     try {
       if (!this.context) {
         const Context = window.AudioContext ?? (window as unknown as {webkitAudioContext: typeof AudioContext}).webkitAudioContext;
@@ -74,10 +105,10 @@ export class GameAudio {
       if (this.disposed || this.context.state !== 'running') return;
       if (!this.unlocked) {
         this.unlocked = true;
-        // Small effects warm once; long music never enters an AudioBuffer.
-        for(const cue of (this.options.combat === false ? ['click','craft','gift'] : Object.keys(CUES)) as Cue[]) if ((cue==='charm'?this.mix.voices:this.mix.effects)>0) void this.load(cue);
+        if (this.mix.effects > 0) void this.load('click');
       }
       this.setStatus(''); this.refresh();
+      if (this.mix.music === 0 || this.options.combat === false && this.music === 'field') this.warmEffects();
     } catch { this.setStatus(t('Ton noch gesperrt. Tippe auf „Ton testen“.')); }
   }
   private setStatus(text:string): void { if(this.status) this.status.textContent = t(text); }
@@ -88,7 +119,7 @@ export class GameAudio {
   }
   setTavern(open:boolean): void {
     const music = open?'tavern':'field'; if(this.music===music) return;
-    this.music=music; this.refresh();
+    this.music=music; this.prepareAudio(); this.refresh();
     if(open) this.play('craft');
   }
   setCompanion(who:'mara'|'ilyra'|null):void {this.companion=who;this.refresh();}
@@ -102,6 +133,7 @@ export class GameAudio {
   setMix(mix:Partial<AudioMix>): void {
     this.mix=readMix({...this.mix,...mix});
     try { localStorage.setItem(MIX_KEY,JSON.stringify(this.mix)); } catch { /* Private browsing: keep session settings. */ }
+    this.prepareAudio();
     if(!this.mix.muted) void this.unlock();
     this.refresh();
   }
@@ -141,13 +173,11 @@ export class GameAudio {
     if(this.mix.music===0 || this.options.combat === false && this.music === 'field') { for(const track of this.tracks.values()) { track.element.pause(); track.gain.gain.value=0; } return; }
     let track=this.tracks.get(this.music);
     if(!track) {
-      const element=new Audio(); element.preload='none'; element.loop=true;
-      element.src=url(this.music==='field'?'exploration.mp3':'inn-music.mp3');
-      element.hidden=true; element.dataset.spireMusic=this.music; document.body.append(element);
+      const element=this.musicElement(this.music);
       const gain=this.context!.createGain(); gain.gain.value=0;
       const source=this.context!.createMediaElementSource(element); source.connect(gain); gain.connect(this.master!);
       track={element,gain,source}; this.tracks.set(this.music,track);
-      element.addEventListener('error',()=>this.setStatus(t('Ein Musikstück konnte nicht geladen werden. Effekte bleiben verfügbar.')),{signal:this.lifetime.signal});
+
     }
     // Inn Music measures ~6 dB louder than Exploration, so compensate before the user's slider.
     for(const [kind,t] of this.tracks) this.ramp(t.gain,kind===this.music?this.mix.music*(kind==='tavern'?.5:1):0,.75);
@@ -217,7 +247,9 @@ export class GameAudio {
     this.maraVoice?.destroy();
     this.ilyraVoice?.destroy();
     this.heroCommandVoice?.destroy();
-    for(const track of this.tracks.values()){track.source.disconnect();track.gain.disconnect();track.element.removeAttribute('src');track.element.load();track.element.remove();}
+    for(const track of this.tracks.values()){track.source.disconnect();track.gain.disconnect();}
+    for(const element of this.musicElements.values()){element.pause();element.removeAttribute('src');element.load();element.remove();}
+    this.musicElements.clear();
     this.buffers.clear();void this.context?.close();
   }
 }

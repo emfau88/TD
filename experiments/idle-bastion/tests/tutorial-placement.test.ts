@@ -61,7 +61,7 @@ test('actual guided Variant B reaches its free Frost kit and reloads at every pu
       assert.ok(battle.build(battle.recommendedFrostPad!, 2)); costs.frost = gold - battle.gold;
     }
     battle = reload(battle);
-    if (battle.guiding) { assert.equal(battle.lessonComplete, true); assert.equal(battle.continueLesson(), true); battle = reload(battle); }
+    if (battle.guiding && battle.learningPaused) { assert.equal(battle.lessonComplete, true); assert.equal(battle.continueLesson(), true); battle = reload(battle); }
   }
   assert.equal(battle.introduction.stage, 'done');
   assert.deepEqual(battle.towers.map(tower => tower.padId), ['cell-10-5', 'tower-02']);
@@ -99,4 +99,19 @@ test('preparation validation admits only the old bounded corridor or new Variant
   const battle = IdleBattle.newGame(); battle.beginIntroduction(); battle.build('cell-10-5');
   const snapshot = battle.snapshot(); snapshot.towers[0]!.padId = 'tower-03';
   assert.equal(IdleBattle.restore(snapshot), undefined);
+});
+
+test('multi-cell buildings snap their footprint centre to the chosen point', async () => {
+  const { centeredBuildingCell, buildingWidth } = await import('../src/layout');
+  for (const id of ['workshop', 'warehouse', 'tavern'] as const) {
+    const width = buildingWidth(id), origin = { x:24, y:11 };
+    const centre = { x:(origin.x + width / 2) * 40, y:(origin.y + 1) * 40 };
+    assert.deepEqual(centeredBuildingCell(id, centre, 40), origin);
+    for (const offset of [-19, 0, 19]) {
+      const point = { x:centre.x + offset, y:centre.y - offset };
+      const cell = centeredBuildingCell(id, point, 40);
+      assert.ok(Math.abs((cell.x + width / 2) * 40 - point.x) <= 20);
+      assert.ok(Math.abs((cell.y + 1) * 40 - point.y) <= 20);
+    }
+  }
 });

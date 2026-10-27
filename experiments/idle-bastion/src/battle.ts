@@ -298,6 +298,10 @@ export class IdleBattle {
   }
   /** Learning pauses are saved separately from the player's pause button. */
   private updateLesson(): void {
+    // Also release older saves parked on the former level-2 confirmation.
+    if (this.introduction.stage === 'upgrade' && this.lessonComplete) {
+      this.introduction.stage = 'workshop'; this.introduction.halted = false;
+    }
     // Finish old saved confirmation screens too, without requiring an obsolete click.
     if (this.introduction.stage === 'observe' || this.introduction.stage === 'frost' && this.lessonComplete) {
       this.skipLessons(false); return;
@@ -1011,6 +1015,7 @@ export class IdleBattle {
     tower.visualStage = visualStage(tower.level);
     this.tutorial.upgradedTower = true;
     this.events.push({ type: 'upgrade', tower, x: tower.x, y: tower.y, amount: cost });
+    if (this.introduction.stage === 'upgrade') this.updateLesson();
     return true;
   }
 

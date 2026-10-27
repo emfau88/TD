@@ -367,7 +367,9 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 .lesson-savings progress { display:block; width:100%; height:4px; margin-top:6px; }
 .saving #battle-phase { display:none; }
 .onboarding-card[data-compact="true"] { top:calc(var(--header) + 9px); bottom:auto; width:320px; padding:10px 12px; }
-.onboarding-card[data-compact="true"] > canvas,.onboarding-card[data-compact="true"] .eyebrow { display:none; }
+.onboarding-card[data-compact="true"] > canvas { display:none; }
+.tutorial-step { display:block; margin-bottom:5px; font:600 12px/1.3 Arial,sans-serif; letter-spacing:.03em; color:#e1c78f; }
+.tutorial-step[hidden] { display:none; }
 .onboarding-card[data-compact="true"] h2 { margin:0 0 5px; font-size:19px; }
 .onboarding-card[data-compact="true"] p { font-size:12px; line-height:1.35; }
 .onboarding-card[data-compact="true"] .onboarding-actions { margin-top:7px; }
@@ -460,7 +462,12 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 }
 
 /* Gift markers complement existing construction/recruitment notices. */
-#settlement-tab.has-gifts::before { content:'🎁'; margin-right:5px; font:13px Arial,sans-serif; }
-#settlement-tab.gift-ready,#pick-tavern.gift-ready { border-color:#edc77a; box-shadow:inset 0 0 0 1px #edc77a66; }
-#tavern-gift-note { white-space:normal; color:#dfcfa9; font-size:10px; }
-#pick-tavern.gift-ready #tavern-gift-note { color:#ffe3a4; }
+#tavern-gift-badge { position:absolute; top:5px; right:5px; display:grid; place-items:center; width:21px; height:21px; border:1px solid #8f8063; border-radius:3px; background:#152124; font:14px Arial,sans-serif; opacity:.65; pointer-events:none; }
+#tavern-gift-badge[hidden] { display:none; }
+#pick-tavern.gift-ready #tavern-gift-badge { opacity:1; border-color:#edc77a; }
+#pick-tavern > span:not(#tavern-gift-badge) > strong { padding-right:17px; }
+@media(max-width:700px) { #tavern-gift-badge { top:4px; right:4px; width:18px; height:18px; font-size:12px; } }
+
+/* Keep the construction notice and gift badge in separate corners. */
+#pick-tavern.has-gifts.new-building::after { right:auto; left:5px; }
+:lang(en) .new-building::after { content:"New"; }

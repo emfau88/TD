@@ -162,6 +162,10 @@ export const TAVERN_ZONE: GridRect = { ...SETTLEMENT_ZONE, height: 5 };
 export type BuildingId = BuildingPlot['id'];
 export type PlotPositions = Record<'workshop' | 'warehouse', GridCell> & { tavern?: GridCell };
 export const buildingWidth = (id: BuildingId): number => id === 'warehouse' ? 2 : 3;
+/** Snap the footprint centre to the chosen world point; saved plots remain top-left cells. */
+export function centeredBuildingCell(id: BuildingId, point: { x: number; y: number }, cellSize: number): GridCell {
+  return { x: Math.round(point.x / cellSize - buildingWidth(id) / 2), y: Math.round(point.y / cellSize - 1) };
+}
 export const DEFAULT_PLOTS: PlotPositions = { workshop: { x: 3, y: 11 }, warehouse: { x: 8, y: 12 } };
 export function createIdleLayout(options: { readonly unlockedColumns?: number; readonly version?: 1 | 2 | 3 | 4 | 5; readonly plots?: PlotPositions } = {}): IdleLayout {
   const version = options.version ?? LAYOUT_VERSION;

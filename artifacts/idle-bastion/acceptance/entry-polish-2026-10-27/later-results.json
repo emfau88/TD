@@ -1,0 +1,182 @@
+[
+  {
+    "width": 1440,
+    "kind": "workshop",
+    "data": {
+      "plot": {
+        "x": 30,
+        "y": 11
+      },
+      "stage": "workshop"
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "kind": "mara",
+    "data": {
+      "mara": {
+        "x": 220,
+        "y": 300
+      },
+      "view": {
+        "x": 0,
+        "y": 0.33333333333337123,
+        "width": 1120,
+        "height": 639.3333333333333
+      },
+      "step": "mara-wait"
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "kind": "cannon",
+    "data": {
+      "height": 44,
+      "frame": "url(\"http://127.0.0.1:5252/assets/ui/gold-action.webp\")",
+      "primary": true
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "kind": "gift",
+    "data": {
+      "card": {
+        "x": 532,
+        "y": 809,
+        "width": 250,
+        "height": 78
+      },
+      "badge": {
+        "x": 755,
+        "y": 815,
+        "width": 21,
+        "height": 21
+      },
+      "tabGift": false
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "kind": "workshop",
+    "data": {
+      "plot": {
+        "x": 30,
+        "y": 11
+      },
+      "stage": "workshop"
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "kind": "mara",
+    "data": {
+      "mara": {
+        "x": 220,
+        "y": 300
+      },
+      "view": {
+        "x": 53.155080213903744,
+        "y": 0,
+        "width": 333.6898395721925,
+        "height": 640
+      },
+      "step": "mara-wait"
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "kind": "cannon",
+    "data": {
+      "height": 44,
+      "frame": "url(\"http://127.0.0.1:5252/assets/ui/gold-action.webp\")",
+      "primary": true
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "kind": "gift",
+    "data": {
+      "card": {
+        "x": 71,
+        "y": 842,
+        "width": 154,
+        "height": 54
+      },
+      "badge": {
+        "x": 202,
+        "y": 847,
+        "width": 18,
+        "height": 18
+      },
+      "tabGift": false
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "kind": "workshop",
+    "data": {
+      "plot": {
+        "x": 30,
+        "y": 11
+      },
+      "stage": "workshop"
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "kind": "mara",
+    "data": {
+      "mara": {
+        "x": 220,
+        "y": 300
+      },
+      "view": {
+        "x": 83.10160427807486,
+        "y": 0,
+        "width": 273.7967914438503,
+        "height": 640
+      },
+      "step": "mara-wait"
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "kind": "cannon",
+    "data": {
+      "height": 44,
+      "frame": "url(\"http://127.0.0.1:5252/assets/ui/gold-action.webp\")",
+      "primary": true
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "kind": "gift",
+    "data": {
+      "card": {
+        "x": 36,
+        "y": 842,
+        "width": 154,
+        "height": 54
+      },
+      "badge": {
+        "x": 167,
+        "y": 847,
+        "width": 18,
+        "height": 18
+      },
+      "tabGift": false
+    },
+    "errors": []
+  }
+]

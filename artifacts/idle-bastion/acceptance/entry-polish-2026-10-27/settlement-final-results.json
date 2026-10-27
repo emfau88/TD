@@ -1,0 +1,62 @@
+[
+  {
+    "width": 1440,
+    "kind": "gift",
+    "data": {
+      "card": {
+        "x": 532,
+        "y": 809,
+        "width": 250,
+        "height": 78
+      },
+      "badge": {
+        "x": 755,
+        "y": 815,
+        "width": 21,
+        "height": 21
+      },
+      "tabGift": false
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "kind": "gift",
+    "data": {
+      "card": {
+        "x": 134,
+        "y": 842,
+        "width": 154,
+        "height": 54
+      },
+      "badge": {
+        "x": 265,
+        "y": 847,
+        "width": 18,
+        "height": 18
+      },
+      "tabGift": false
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "kind": "gift",
+    "data": {
+      "card": {
+        "x": 64,
+        "y": 842,
+        "width": 154,
+        "height": 54
+      },
+      "badge": {
+        "x": 195,
+        "y": 847,
+        "width": 18,
+        "height": 18
+      },
+      "tabGift": false
+    },
+    "errors": []
+  }
+]

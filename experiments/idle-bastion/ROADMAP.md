@@ -1,5 +1,15 @@
 # Fortlaufende Roadmap — SPIRE: Idle Bastion
 
+**Einstiegs- und Bedienkorrekturen · 27.10.2026, Umsetzung und Commit/Push beauftragt:**
+
+- [x] Musik/Klickton vor der ersten Bedienung vorbereiten, spätere Effekte nachladen; frühe Bestätigungen und Audio-Credits hörbar rückmelden.
+- [x] Tutorialzähler in den Hinweisen lesbar halten, spätere Aktionsbuttons vereinheitlichen und das Koordinaten-Dropdown im geöffneten Turmmenü ausblenden.
+- [x] Upgrade am Turmfuß quadratisch markieren, nach erfolgreichem erstem Upgrade automatisch fortsetzen und Maras Zaubereinführung einmalig fokussieren; Altstände erhalten.
+- [x] Gebäude mittig am gewählten Bodenpunkt platzieren; Geschenkstatus dezent an der Tavernenkarte statt am Siedlungstab anzeigen.
+- [x] 76/76 gezielte Tests, Produktionsbuild und echte Desktop-/Touchabläufe bei 1440/390/320 px bestanden; Produktion separat mit Tastatur/Touch, Audio und Reload geprüft. [Prüfbericht und Screenshots](../../artifacts/idle-bastion/acceptance/entry-polish-2026-10-27/REPORT.md).
+- [x] Nach Nutzerergänzung alte Umzugskachel und Umzugsaktion aus der Spieloberfläche entfernt; Darstellung auch im älteren Teststand bei 1440/390/320 px geprüft.
+- [ ] Geprüfte Korrekturen committen, auf Main pushen und Pages-Veröffentlichung bestätigen.
+
 **Kartenrand-Fix – 27.10.2026, beauftragt einschließlich Commit/Push:**
 
 - [x] Ursache aus der reinen Sichtprüfung bestätigt: zusätzlicher Kameraspielraum nach dem Intro und grüner Rendererhintergrund außerhalb der eigentlichen Karte.

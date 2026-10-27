@@ -38,7 +38,7 @@ export class QuickWinGuidance {
     this.element = document.createElement('section');
     this.element.id = 'quick-win-hint'; this.element.className = 'quick-win-hint'; this.element.hidden = true;
     this.element.setAttribute('aria-labelledby', 'quick-win-title');
-    this.element.innerHTML = '<div class="quick-win-copy" role="status" aria-live="polite"><strong id="quick-win-title"></strong><p id="quick-win-copy"></p><p id="quick-win-cost"></p></div><div class="quick-win-actions"><button id="quick-win-open" type="button"></button><button id="quick-win-dismiss" type="button"></button></div>';
+    this.element.innerHTML = '<div class="quick-win-copy" role="status" aria-live="polite"><span class="tutorial-step" data-tutorial-progress hidden></span><strong id="quick-win-title"></strong><p id="quick-win-copy"></p><p id="quick-win-cost"></p></div><div class="quick-win-actions"><button id="quick-win-open" class="primary-action" type="button"></button><button id="quick-win-dismiss" type="button"></button></div>';
     document.getElementById('app')!.append(this.element);
     this.badge = document.createElement('span'); this.badge.className = 'quick-win-new'; this.badge.hidden = true;
     document.getElementById('pick-cannon')!.append(this.badge);

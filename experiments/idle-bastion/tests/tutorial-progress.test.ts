@@ -15,9 +15,9 @@ test('one total covers the three opening scenes and the earned building lessons'
     b.update(.025); seen.add(tutorialProgress(b)!.current);
     if (!b.learningPaused) continue;
     if (b.introduction.stage === 'upgrade') assert.ok(b.upgrade(1));
-    if (b.introduction.stage === 'workshop') assert.ok(b.buildWorkshop());
-    if (b.introduction.stage === 'research') assert.ok(b.researchFrost());
-    assert.ok(b.continueLesson());
+    else if (b.introduction.stage === 'workshop') assert.ok(b.buildWorkshop());
+    else if (b.introduction.stage === 'research') assert.ok(b.researchFrost());
+    if (b.learningPaused) assert.ok(b.continueLesson());
   }
   assert.deepEqual([...seen], [6, 7, 8]); assert.equal(tutorialProgress(b)?.current, 9);
   const before = b.snapshot(); tutorialProgress(b); assert.deepEqual(b.snapshot(), before);
@@ -37,4 +37,29 @@ test('discovery counts do not restart; optional lessons end the total and vetera
   b.dismissDiscovery(); assert.equal(tutorialProgress(b), undefined);
   b.discovery = 'off'; assert.equal(tutorialProgress(b), undefined);
   b.discovery = 'mara-wait'; b.tutorial.hidden = true; assert.equal(tutorialProgress(b), undefined);
+});
+
+test('the first upgrade resumes the same wave and survives reload without a confirmation', () => {
+  const b = IdleBattle.newGame(); b.beginIntroduction(); b.build(b.recommendedStarterPad!); b.startDefense();
+  for (let i = 0; i < 4000 && !b.learningPaused; i++) b.update(.025);
+  assert.equal(b.introduction.stage, 'upgrade'); assert.equal(b.learningPaused, true);
+  const gold = b.gold, wave = b.wave;
+  assert.equal(b.upgrade(b.towers[0].uid), true);
+  assert.equal(b.gold, gold - 60); assert.equal(b.wave, wave);
+  assert.equal(b.introduction.stage, 'workshop'); assert.equal(b.learningPaused, false);
+  const restored = IdleBattle.restore(b.snapshot())!;
+  assert.ok(restored); const elapsed = restored.elapsed; restored.update(.1);
+  assert.ok(restored.elapsed > elapsed); assert.equal(restored.towers[0].level, 2);
+  assert.equal(restored.upgrade(restored.towers[0].uid), false, 'no second tutorial purchase');
+});
+
+test('an older save waiting after level 2 releases only its obsolete learning pause', () => {
+  const b = IdleBattle.newGame(); b.beginIntroduction(); b.build(b.recommendedStarterPad!); b.startDefense();
+  for (let i = 0; i < 4000 && !b.learningPaused; i++) b.update(.025);
+  b.upgrade(b.towers[0].uid);
+  b.introduction.stage = 'upgrade'; b.introduction.halted = true;
+  const old = IdleBattle.restore(b.snapshot())!; assert.ok(old);
+  const gold = old.gold; old.update(.025);
+  assert.equal(old.introduction.stage, 'workshop'); assert.equal(old.learningPaused, false);
+  assert.equal(old.gold, gold); assert.equal(old.towers[0].level, 2);
 });

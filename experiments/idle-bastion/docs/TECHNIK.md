@@ -583,3 +583,9 @@ Schema 18 wird vor der Übernahme validiert und um tavernBuilt=false, tavernBuil
 buildTavern prüft Freischaltung, Zustand, Gold und Gelände, reserviert Gebäude samt Hof und zieht genau 1.200 Gold ab. Die bestehende BattleSession speichert die gesamte Aktion atomar; fehlgeschlagene Transaktion setzt auch Position und Kosten zurück. Freies Versetzen nutzt die vorhandene UI-Pause. Die zusätzliche südliche Hofreihe ist ausschließlich Tavernenfläche; alte Werkstatt-/Lagerzonen bleiben unverändert. Alle legalen bisherigen Kombinationen lassen dort mindestens einen Tavernenstandort zu.
 
 Der Farmklon normalisiert tavernBuiltAt wie andere reine Bauzeitstempel. Die Taverne hat in B15a keinen Kampf-/Offline-Bonus und keine Rekrutierung; ihre erste spätere Rekrutierung wird in B15b aus vorhandenem Besitz abgeleitet, ohne zweiten Gebäudekauf. Keine Änderung historischer Offline-Ansprüche.
+
+## Einstieg und Bedienung · 27.10.2026
+
+Das erste Tutorial-Upgrade geht innerhalb derselben gespeicherten Aktion von Upgrade zu Werkstatt über und löst nur die Lernpause; dieselbe Welle läuft weiter. Frühere Bestätigungsstände wechseln beim nächsten aktiven Modelltick ebenfalls weiter. Die manuelle Spielerpause bleibt separat. Der 14-Ziele-Zähler bleibt unverändert.
+
+Gebäudeauswahl rechnet den angetippten Weltpunkt über centeredBuildingCell auf den nächstgelegenen Grundflächenmittelpunkt um; das Modell speichert weiterhin das linke obere Feld. Grundflächen, Kollisionen, Kosten, Kampfformeln und Speicherformat bleiben unverändert.

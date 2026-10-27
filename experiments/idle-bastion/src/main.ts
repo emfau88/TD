@@ -356,7 +356,8 @@ function syncUI(): void {
   const tower = sim.towers.find(value => value.padId === selectedPadId);
   const pad = sim.layout.towerPads.find(value => value.id === selectedPadId);
   padChoice.value = selectedPadId ?? '';
-  element('selection-title').textContent = t(selectedPanel === 'ilyra' ? t('Ilyra · Sternensalve') : selectedPanel === 'tavern' ? t("Taverne {0}", sim.settlement.tavernLevel === 2 ? 'II' : 'I') : selectedPanel === 'clearing' ? t('Siedlung am Kern') : selectedPanel === 'warehouse' ? t('Vorratslager') : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? t('Werkstatt')
+  padChoice.hidden = !!tower;
+  element('selection-title').textContent = t(selectedPanel === 'ilyra' ? t('Ilyra · Sternensalve') : selectedPanel === 'tavern' ? t("Taverne {0}", sim.settlement.tavernLevel === 2 ? 'II' : 'I') : selectedPanel === 'clearing' ? t('Ostzugang') : selectedPanel === 'warehouse' ? t('Vorratslager') : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? t('Werkstatt')
     : tower ? t("{0} · Level {1}", tower.def.name, tower.level) : pad ? t('Freier Bauplatz') : t('Bauplatz wählen'));
   element('tower-name').textContent = t(tower?.def.name ?? t('Turm wählen'));
   element('tower-role').textContent = t(tower?.def.id === 5 ? t('Bis zu drei Ziele · 80 Sprungreichweite · 100/65/42 % Schaden') : tower?.def.id === 4 ? t('Bevorzugt Rüstung · ignoriert 100 % davon') : tower?.def.id === 3 ? t('Flächentreffer · 52 Reichweite um das Ziel') : tower?.def.id === 2 ? t('Frosttreffer · 45 % langsamer für 2 s') : t('Zuverlässige Pfeile · Allrounder'));
@@ -452,10 +453,10 @@ function syncUI(): void {
   element('pick-warehouse').classList.toggle('new-building', warehouseNew);
   element('pick-tavern').classList.toggle('new-building', tavernNew);
   element('pick-tavern').classList.toggle('gift-ready', !!giftNames);
-  element('settlement-tab').classList.toggle('gift-ready', !!giftNames);
-  element('settlement-tab').classList.toggle('has-gifts', gifts.owned);
+  element('tavern-gift-badge').hidden = !gifts.owned;
+  element('pick-tavern').classList.toggle('has-gifts', gifts.owned);
   element('tavern-gift-note').hidden = !gifts.owned;
-  element('tavern-gift-note').textContent = giftLabel ? t('🎁 {0}', giftLabel) : '';
+  element('tavern-gift-note').textContent = giftLabel;
   element('settlement-tab').classList.toggle('new-building', warehouseNew || tavernNew);
   element('settlement-tab').setAttribute('aria-label', t(ilyraNew ? t('Siedlung · Ilyra wartet in der Taverne') : tavernUpgradeNew ? t('Siedlung · Taverne II verfügbar') : tavernNew ? t('Siedlung · Kostenloser Tavernenbausatz verfügbar') : warehouseNew ? t('Siedlung · Neues Gebäude verfügbar: Vorratslager') : t('Siedlung')));
   if (giftLabel) element('settlement-tab').setAttribute('aria-label', `${element('settlement-tab').getAttribute('aria-label')} · ${giftLabel}`);
@@ -499,22 +500,14 @@ function syncUI(): void {
   buildWarehouse.hidden = builtWarehouse;
   buildWarehouse.disabled = blocked || !sim.warehouseUnlocked || sim.gold < SETTLEMENT.warehouseCost;
   const atCore = sim.layout.version === 5;
-  const relocatingBlocked = unavailable || live.awaitingResume || sim.layout.version !== 4 || sim.preparing || sim.guiding || sim.discoveryActive;
-  element('pick-clearing').hidden = atCore && !sim.eastAccessCredit;
+  element('pick-clearing').hidden = !atCore || !sim.eastAccessCredit;
   element('pick-clearing').classList.toggle('researched', atCore);
-  element('clearing-card-title').textContent = t(atCore ? t('Ostzugang') : t('Siedlung am Kern'));
-  element('clearing-card-copy').textContent = t(atCore ? t('Für den späteren Ausbau') : t('Gebäude kostenlos umziehen'));
-  element('clearing-card-price').textContent = t(atCore ? t('900 G Gutschrift') : t('Kostenlos'));
-  element('clearing-title').textContent = t(atCore ? t('Ostzugang vorgemerkt') : t('Siedlung am Kern'));
-  element('clearing-description').textContent = t(atCore
-    ? t('Dein früherer Lichtungskauf zählt beim späteren Öffnen der Ostfront mit 900 Gold. Diese Gutschrift ist für den Zugang reserviert.')
-    : t('Werkstatt, Lager und Taverne ziehen gemeinsam in die geschützte Siedlung südöstlich des Kerns. Gebäudelevel, Gold und Verteidigung bleiben erhalten. Die Gebäude kannst du dort bei Pause frei versetzen.'));
-  element('clearing-condition').textContent = t(atCore ? t('Die Ostfront folgt in einem späteren Ausbau.')
-    : sim.guiding || sim.preparing || sim.discoveryActive ? t('Beende zuerst die laufende Einführung.')
-    : sim.layout.version !== 4 ? t('Nach dem laufenden Wellenversuch verfügbar.')
-    : t("Zum Umzug den Kampf mit Pause anhalten.{0}", sim.eastAccessCredit ? t(' Dein Lichtungskauf bleibt als 900-Gold-Gutschrift für den späteren Ostzugang erhalten.') : ''));
-  element('unlock-clearing').hidden = atCore;
-  element<HTMLButtonElement>('unlock-clearing').disabled = relocatingBlocked || !live.paused;
+  element('clearing-card-title').textContent = t('Ostzugang');
+  element('clearing-card-copy').textContent = t('Für den späteren Ausbau');
+  element('clearing-card-price').textContent = t('900 G Gutschrift');
+  element('clearing-title').textContent = t('Ostzugang vorgemerkt');
+  element('clearing-description').textContent = t('Dein früherer Lichtungskauf zählt beim späteren Öffnen der Ostfront mit 900 Gold. Diese Gutschrift ist für den Zugang reserviert.');
+  element('clearing-condition').textContent = t('Die Ostfront folgt in einem späteren Ausbau.');
   element('show-clearing').hidden = !atCore;
   element('layout-status').textContent = t(view.paused ? t('Kampf angehalten.')
     : sim.mode === 'farm' ? t("Sicheres Farmen · Welle {0}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang.", sim.farmWave)
@@ -578,6 +571,10 @@ function syncUI(): void {
   updateDiscoveryUI(live, contextOpen, Boolean(placementType || groundMode), catalogPanel);
   const tutorial = tutorialProgress(sim, intro);
   element('app').classList.toggle('tutorial-active', !!tutorial);
+  for (const badge of document.querySelectorAll<HTMLElement>('[data-tutorial-progress]')) {
+    badge.hidden = !tutorial;
+    badge.textContent = tutorial ? t('Einführung {0}/{1}', tutorial.current, tutorial.total) : '';
+  }
   if (tutorial) {
     const label = t('Einführung {0}/{1}', tutorial.current, tutorial.total);
     element('record-wave').textContent = label;
@@ -603,6 +600,7 @@ function syncUI(): void {
   if (discovery !== focusedDiscovery) {
     focusedDiscovery = discovery ?? '';
     if (discovery === 'wisp') scene?.followWispArrival();
+    if (discovery === 'mara-wait') scene?.focusMaraIntroduction();
     if (discovery === 'mara-start' || discovery === 'mara-effect') {
       contextOpen = false; placementType = undefined; groundMode = undefined;
       const target = sim.towers.find(t => t.uid === sim.mara.effectTowerUid);
@@ -798,6 +796,7 @@ function openQuickWin(notice: QuickWinNotice): void {
   const card = element<HTMLButtonElement>('pick-cannon'); card.scrollIntoView({ block: 'nearest', inline: 'nearest' }); card.focus({ preventScroll: true });
 }
 function openContext(kind: typeof selectedPanel, buildingControls = false, focus = true): void {
+  if (kind === 'clearing' && (session?.battle.layout.version !== 5 || !session.battle.eastAccessCredit)) return;
   if (session?.battle.preparing && kind !== 'mara' || intro?.active || performance.now() < workshopRevealUntil) return;
   if (session && (kind === 'settlement' && session.battle.settlement.workshopBuilt || kind === 'warehouse' && session.battle.settlement.warehouseBuilt || kind === 'tavern' && buildingControls && session.battle.settlement.tavernBuilt)) audio.play('craft');
   clearHeroSelection(); ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; placementType = undefined; selectedPanel = kind; contextOpen = true;
@@ -901,7 +900,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
       canControlHero: heroContextAvailable,
       changed: syncUI,
       select(padId) { void selectPad(padId); },
-      ground(cell) { if (groundMode === 'mara') { let accepted = false; void perform(b => { accepted = b.moveMaraTo(cell); }).then(() => { if (accepted && !live.error) closeContext(); else { element('placement-text').textContent = t('Dorthin führt kein freier Weg. Wähle ein anderes Feld.'); } }); } else { groundCandidate = cell; const id = groundMode; if (id && !buildingBuilt(live.battle, id)) void placeBuilding(id, cell); else syncUI(); } },
+      ground(cell) { if (groundMode === 'mara') { let accepted = false; void perform(b => { accepted = b.moveMaraTo(cell); }).then(() => { if (accepted && !live.error) closeContext(); else { element('placement-text').textContent = t('Dorthin führt kein freier Weg. Wähle ein anderes Feld.'); } }); } else { groundCandidate = cell; const id = groundMode; syncUI(); if (id && !buildingBuilt(live.battle, id)) void placeBuilding(id, cell); } },
       selectWisp() { openContext('wisp'); },
       selectMara() { selectMapHero('mara'); },
       selectIlyra() { selectMapHero('ilyra'); },
@@ -1125,13 +1124,6 @@ element('pick-frost').addEventListener('click', () => startPlacement(2), { signa
 element('research-storm').addEventListener('click', () => {void perform(b=>b.researchStorm());}, {signal:lifetime.signal});
 for(const tech of ['frost','storm'] as const)element(`tech-${tech}`).addEventListener('click',()=>{selectedTechnology=tech;syncUI();},{signal:lifetime.signal});
 element('pick-clearing').addEventListener('click', () => openContext('clearing'), { signal: lifetime.signal });
-element('unlock-clearing').addEventListener('click', async () => {
-  const live = session; if (!live || !live.paused || live.inputBusy || live.error) return;
-  const completion = live.relocateSettlement(); syncUI();
-  const moved = await completion; scene?.refresh();
-  if (moved) { closeContext(); scene?.showBase(); }
-  syncUI();
-}, { signal: lifetime.signal });
 element('show-clearing').addEventListener('click', () => { placementType = undefined; closeContext(); scene?.showBase(); }, { signal: lifetime.signal });
 
 element('pick-warehouse').addEventListener('click', () => openContext('warehouse'), { signal: lifetime.signal });
@@ -1186,7 +1178,13 @@ element('new-probe').addEventListener('click', () => {
   const url = new URL(location.href); url.searchParams.set('probe', crypto.randomUUID());
   void (session?.suspend() ?? Promise.resolve()).then(() => location.assign(url));
 }, { signal: lifetime.signal });
-upgrade.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.upgrade(tower.uid); }).then(() => { if (session?.battle.guiding && session.battle.lessonComplete) closeContext(); }); }, { signal: lifetime.signal });
+upgrade.addEventListener('click', () => {
+  const live = session, firstUpgrade = live?.battle.introduction.stage === 'upgrade';
+  let accepted = false;
+  void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); accepted = !!tower && battle.upgrade(tower.uid); }).then(() => {
+    if (session === live && !live?.error && accepted && firstUpgrade) { closeContext(); scene?.focusGuidedDefense(); }
+  });
+}, { signal: lifetime.signal });
 sell.addEventListener('click', () => { void perform(battle => { const tower = battle.towers.find(value => value.padId === selectedPadId); return tower && battle.sell(tower.uid); }); }, { signal: lifetime.signal });
 advance.addEventListener('click', () => { void perform(battle => battle.requestAdvance()); }, { signal: lifetime.signal });
 assignMara.addEventListener('click', () => {

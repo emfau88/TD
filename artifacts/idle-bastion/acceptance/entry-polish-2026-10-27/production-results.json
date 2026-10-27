@@ -1,0 +1,54 @@
+[
+  {
+    "width": 1440,
+    "label": "Continue",
+    "click": true
+  },
+  {
+    "width": 1440,
+    "label": "Got it",
+    "click": true
+  },
+  {
+    "width": 1440,
+    "label": "Build your first tower",
+    "click": true
+  },
+  {
+    "width": 1440,
+    "initial": {
+      "musicReady": 4,
+      "paused": true
+    },
+    "after": {
+      "stage": "workshop"
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "label": "Continue",
+    "click": true
+  },
+  {
+    "width": 390,
+    "label": "Got it",
+    "click": true
+  },
+  {
+    "width": 390,
+    "label": "Build your first tower",
+    "click": true
+  },
+  {
+    "width": 390,
+    "initial": {
+      "musicReady": 4,
+      "paused": true
+    },
+    "after": {
+      "stage": "workshop"
+    },
+    "errors": []
+  }
+]

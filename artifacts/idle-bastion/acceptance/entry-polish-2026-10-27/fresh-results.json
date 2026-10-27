@@ -1,0 +1,110 @@
+[
+  {
+    "width": 1440,
+    "label": "Continue",
+    "click": true
+  },
+  {
+    "width": 1440,
+    "label": "Got it",
+    "click": true
+  },
+  {
+    "width": 1440,
+    "label": "Build your first tower",
+    "click": true
+  },
+  {
+    "width": 1440,
+    "initial": {
+      "context": false,
+      "clickPrepared": true,
+      "musicReady": 4
+    },
+    "after": {
+      "level": 2,
+      "paused": false,
+      "stage": "workshop",
+      "world": {
+        "type": 5,
+        "x": 0,
+        "y": 0.33333333333337123,
+        "width": 1120,
+        "height": 639.3333333333333
+      }
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "label": "Continue",
+    "click": true
+  },
+  {
+    "width": 390,
+    "label": "Got it",
+    "click": true
+  },
+  {
+    "width": 390,
+    "label": "Build your first tower",
+    "click": true
+  },
+  {
+    "width": 390,
+    "initial": {
+      "context": false,
+      "clickPrepared": true,
+      "musicReady": 4
+    },
+    "after": {
+      "level": 2,
+      "paused": false,
+      "stage": "workshop",
+      "world": {
+        "type": 5,
+        "x": 0,
+        "y": 0,
+        "width": 480,
+        "height": 640
+      }
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "label": "Continue",
+    "click": true
+  },
+  {
+    "width": 320,
+    "label": "Got it",
+    "click": true
+  },
+  {
+    "width": 320,
+    "label": "Build your first tower",
+    "click": true
+  },
+  {
+    "width": 320,
+    "initial": {
+      "context": false,
+      "clickPrepared": true,
+      "musicReady": 4
+    },
+    "after": {
+      "level": 2,
+      "paused": false,
+      "stage": "workshop",
+      "world": {
+        "type": 5,
+        "x": 0,
+        "y": 0,
+        "width": 480,
+        "height": 639
+      }
+    },
+    "errors": []
+  }
+]
