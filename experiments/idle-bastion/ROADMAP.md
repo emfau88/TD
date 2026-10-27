@@ -6,7 +6,12 @@
 - [x] Frosttipps, Wellenziele, echte Aktionsbuttons, Bau-/Menüführung und Speicherfortsetzung erhalten. Optionale Werkstatt-II-Empfehlung erst nach Tutorialende.
 - [x] 27/27 gezielte Tests, Produktionsbuild, 33 Entwicklungs-Browserfälle sowie Produktionsabläufe mit echtem Einstieg bei 390/320 px und sieben späteren Situationen bestanden; Desktop/Querformat/Touch und DE/EN geprüft. [Bericht und Screenshots](../../artifacts/idle-bastion/acceptance/tutorial-guide-2026-10-28/REPORT.md).
 - [x] Pauseknopf zentriert oben bei Wellen-/Ansichtssteuerung; Desktop/Mobil geprüft. Mobile Position per Screenshot vom Nutzer freigegeben, anschließend ausdrücklich Commit und Push beauftragt.
-- [ ] Geprüften Stand auf Main veröffentlichen und Live-Prüfung dokumentieren.
+- [x] Als `0438c8e` auf Main gepusht und über [Pages-Lauf 40603849848](https://github.com/emfau88/TD/actions/runs/40603849848) erfolgreich veröffentlicht. Live bei 390/320 px geprüft: einheitliche Kachel, zentrierter Pauseknopf, Touch-Pause/Fortsetzen, Reload und Rückkehr zu normalen Hinweisen nach Tutorialende; keine Seitenfehler.
+
+**Vorgemerkt: Pfeile in Tutorialmeldungen · 28.10.2026, noch nicht umsetzen:**
+
+- [ ] Pfeilzeichen in den Tutorialmeldungen entfernen; wo zur Bedienung nötig durch kurze, natürliche Beschriftungen ersetzen. Die bestehenden Aktionen bleiben erreichbar.
+- [x] Größenfrage eingeordnet: 320 × 568 px ist die sehr kleine Handyansicht, 844 × 390 px Querformat; bei 390 × 844 px beansprucht die kompakte Kachel deutlich weniger Bildschirmfläche. Nutzer wünscht deshalb aktuell keine weitere Layoutänderung.
 
 **Turmwerte und Tutorial-Übergang · 27.10.2026, Nutzerwunsch:**
 

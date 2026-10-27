@@ -59,4 +59,14 @@ des Textes zur Lager-Wartephase.
 
 ## Veröffentlichung
 
-Commit/Push und Pages-Prüfung stehen noch aus.
+Spieländerung als `0438c8e` auf Main gepusht.
+[Pages-Lauf 40603849848](https://github.com/emfau88/TD/actions/runs/40603849848)
+erfolgreich. Anschließende Live-Prüfung auf GitHub Pages bei 390 × 844 (EN)
+und 320 × 568 (DE): kompakte Kachel, zentriertes Pausensymbol, Touch-Pause und
+Fortsetzen, Reload mit Zähler 10/14 sowie Tutorialabschluss mit normalem
+Werkstatt-II-Hinweis bestanden, keine JavaScript-Seitenfehler.
+[Live-Daten](live-results.json) · [390-px-Aufnahme](live-wait-wisp-390.png).
+
+Anschließender Nutzerwunsch: Pfeile in Tutorialmeldungen nur für später vormerken.
+Dazu wurde ausschließlich die Roadmap ergänzt; keine weitere Layout- oder
+Pfeiländerung vorgenommen.

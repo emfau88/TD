@@ -1,0 +1,40 @@
+[
+  {
+    "width": 390,
+    "name": "wait-wisp",
+    "source": "goal",
+    "text": "Tutorial 10/14\nFrost and arrows\nFrost keeps enemies within arrow range longer.\n›\n\nBeat wave 5 → Wisp · 4/5 cleared",
+    "height": 125.125,
+    "cardWidth": 294,
+    "right": 302,
+    "mapLeft": 309,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 271,
+      "right": 306,
+      "disabled": false,
+      "dx": 0,
+      "dy": 0
+    }
+  },
+  {
+    "width": 320,
+    "name": "warehouse",
+    "source": "discovery-card",
+    "text": "Einführung 14/14\nNeu: Vorratslager\n\nSpeichert Offline-Gold bis zu 8 statt 2 Stunden. Optional · 650 Gold.\n\nSpäter",
+    "height": 140.28125,
+    "cardWidth": 224,
+    "right": 232,
+    "mapLeft": 239,
+    "overflow": false,
+    "outside": [],
+    "pause": {
+      "x": 201,
+      "right": 236,
+      "disabled": false,
+      "dx": 0,
+      "dy": 0
+    }
+  }
+]
