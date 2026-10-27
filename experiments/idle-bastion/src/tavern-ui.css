@@ -176,3 +176,18 @@
   #tavern-dialog [data-text="points"] { font-size:11px; }
   #tavern-dialog .tv-moment-hint { display:none; }
 }
+
+/* Owned gifts are quiet; an actionable recipient gets the accent. */
+#tavern-dialog .tv-guest.gift-ready { border-color:#edc77a; }
+#tavern-dialog .tv-gift-badge:empty,#tavern-dialog .tv-personal:empty,#tavern-dialog .tv-chapter:empty { display:none; }
+#tavern-dialog .tv-gift-badge { color:#e8d5a4; font-size:11px; margin:4px 0; }
+#tavern-dialog .gift-ready .tv-gift-badge { color:#ffe3a4; }
+#tavern-dialog .tv-personal,#tavern-dialog .tv-chapter { margin:4px 0 0; font-size:12px; line-height:1.35; color:#e7d7ac; }
+#tavern-dialog .tv-heart-buttons .future { opacity:.35; }
+#tavern-dialog .tv-heart-buttons .future .tv-heart-shape { stroke-dasharray:3 3; }
+#tavern-dialog .tv-gifts > p { margin:4px 0; }
+#tavern-dialog .tv-unlock { white-space:normal; }
+@media(max-width:700px) {
+  #tavern-dialog .tv-personal,#tavern-dialog .tv-chapter { font-size:11px; }
+  #tavern-dialog .tv-gifts { font-size:11px; }
+}

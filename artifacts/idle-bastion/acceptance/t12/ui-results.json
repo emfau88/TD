@@ -1,0 +1,29 @@
+[
+  {
+    "width": 1280,
+    "lang": "de",
+    "personalBeforeAffectionRetained": true,
+    "keyboardGift": true,
+    "heartThreeReload": true,
+    "noHorizontalOverflow": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "lang": "en",
+    "personalBeforeAffectionRetained": true,
+    "keyboardGift": true,
+    "heartThreeReload": true,
+    "noHorizontalOverflow": true,
+    "errors": []
+  },
+  {
+    "width": 320,
+    "lang": "de",
+    "personalBeforeAffectionRetained": true,
+    "keyboardGift": true,
+    "heartThreeReload": true,
+    "noHorizontalOverflow": true,
+    "errors": []
+  }
+]

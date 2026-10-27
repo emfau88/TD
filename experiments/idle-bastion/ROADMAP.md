@@ -4,7 +4,7 @@
 
 Fachliche Grundlage: [Umsetzungsplan mit Regeln, Quellen und Messwerten](docs/TAVERNE_DREI_HERZEN_PLAN.md). Die folgenden fünf Pakete ersetzen die bisherigen drei groben T12-Punkte. Alle Arbeitscheckboxen und der aktuelle Stand werden ausschließlich hier gepflegt; der Fachplan beschreibt Regeln und Prüffälle.
 
-**Aktueller Stand:** T12.1 bis T12.3 geprüft. **Nächster Schritt:** T12.4 – Spielerführung und Oberfläche. Paketcommits lokal auf Main; noch nicht gepusht.
+**Aktueller Stand:** T12.1 bis T12.4 geprüft. **Nächster Schritt:** T12.5 – Gesamtablauf, Zeitgefühl und Produktionsbuild. Paketcommits lokal auf Main; noch nicht gepusht.
 
 - [x] Aktuellen Main-Stand und Abhängigkeiten von Geschenken, Herzschwellen, Zeitbudgets, Szenen, Berührungen, Hinweisen, Speicherung und Farming gelesen. 90 neue Engine-Farmzyklen und vorhandene Vorstoßdaten ausgewertet.
 - [x] Anschlusswunsch im Plan präzisiert: Freigeschaltete Berührungen bleiben dauerhaft gemeinsam nutzbar; Schulter/Kopf-Haare/Hand nutzen bei beiden Figuren touch/head/giggle. Die dritte Zone folgt erst mit Herz 4; Drei-Herzen-Grenze bleibt.
@@ -53,12 +53,14 @@ Nachweis T12.3: 25/25 Content-/Social-/Atlas-Prüfungen und TypeScript bestanden
 
 Voraussetzung: T12.3. Schwerpunkt: `tavern-ui.ts`, `main.ts`, betroffene CSS-/DE-/EN-Texte; Fachplan Abschnitte 3 und 4.
 
-- [ ] Zuneigung, persönliches Geschenkziel „X / 30 Siege“, normalen Vorrat, Empfängerin und konkrete Sperrgründe sichtbar zusammenführen. Nur tatsächlich mögliche Geschenkaktionen anbieten; alten 20-Minuten-Hilfetext ersetzen.
-- [ ] Geschenkbesitz und Einlösbarkeit getrennt darstellen. Siedlungstab, Tavernenkarte und Gefährtinnenkarten passend markieren; neue Geschenke nach Save kurz melden. Bestehende Bau-/Rekrutierungs-/Boss-/Niederlagenhinweise nicht verdrängen und beim Reload keine alten Geschenktoasts wiederholen.
-- [ ] Neue Berührung verständlich als zusätzliche Auswahl melden. Nach drei Herzen Fortsetzung in einem kommenden Update zeigen; keine nutzlosen Punkte-/Geschenkaufforderungen. Bestandsschutz für bereits höhere Beziehungen im selben UI berücksichtigen.
-- [ ] DE/EN sowie Desktop, 390 px und 320 px kontrollieren: Tastatur/Touch, Lesbarkeit, Figurwechsel, Geschenk bereit versus einlösbar, Reload und unverdeckte Rückkehr zum Kampf. Keine Pflichtunterbrechung einführen; konkrete Ergebnisse dokumentieren.
+- [x] Zuneigung, persönliches Geschenkziel „X / 30 Siege“, normalen Vorrat, Empfängerin und konkrete Sperrgründe sichtbar zusammenführen. Nur tatsächlich mögliche Geschenkaktionen anbieten; alten 20-Minuten-Hilfetext ersetzen.
+- [x] Geschenkbesitz und Einlösbarkeit getrennt darstellen. Siedlungstab, Tavernenkarte und Gefährtinnenkarten passend markieren; neue Geschenke nach Save kurz melden. Bestehende Bau-/Rekrutierungs-/Boss-/Niederlagenhinweise nicht verdrängen und beim Reload keine alten Geschenktoasts wiederholen.
+- [x] Neue Berührung verständlich als zusätzliche Auswahl melden. Nach drei Herzen Fortsetzung in einem kommenden Update zeigen; keine nutzlosen Punkte-/Geschenkaufforderungen. Bestandsschutz für bereits höhere Beziehungen im selben UI berücksichtigen.
+- [x] DE/EN sowie Desktop, 390 px und 320 px kontrollieren: Tastatur/Touch, Lesbarkeit, Figurwechsel, Geschenk bereit versus einlösbar, Reload und unverdeckte Rückkehr zum Kampf. Keine Pflichtunterbrechung einführen; konkrete Ergebnisse dokumentieren.
 
 **Abgeschlossen, wenn:** Der Spieler ohne technische Erklärung erkennt, was er besitzt, was er jetzt tun kann und wodurch der nächste Fortschritt entsteht.
+
+Nachweis T12.4: TypeScript und 9 gezielte i18n-/Geschenkstatus-/Interaktionsprüfungen bestanden. Echte Hauptspieloberfläche mit isolierten IndexedDB-Spielständen: DE/EN, 1280/390/320 px, Geschenk bereit versus einlösbar, Tastaturübergabe, zusätzliche Berührung und Reload geprüft. Mobile Fortschrittszeile und Übersetzung nach Sichtprobe korrigiert; wiederholte Probe ohne Browserfehler oder horizontales Überlaufen.
 
 **T12.5 · Zusammenspiel, Zeitgefühl und Abschluss prüfen**
 

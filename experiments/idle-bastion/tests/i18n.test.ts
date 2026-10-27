@@ -32,6 +32,9 @@ test('complete sentences retain every placeholder, whitespace and dynamic values
   setLanguage('en');
   assert.equal(t('{0} auf Level {1}', 'Waldwächter', 12), 'Grove Warden to level 12');
   assert.equal(formatter.format(1234.5), '1,234.5');
+  assert.equal(t(' · Neu: {0} berühren', 'Haare'), ' · New: touch Hair');
+  assert.equal(t(' · in einem kommenden Update'), ' · in a future update');
+  assert.equal(t(' · Persönliches Geschenk überreicht'), ' · Personal gift given');
   assert.equal(t(' · Lernpause'), ' · Tutorial pause'); assert.equal(t(' '), ' ');
   setLanguage('de');
   assert.equal(t('{0} auf Level {1}', 'Waldwächter', 12), 'Waldwächter auf Level 12');

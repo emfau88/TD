@@ -458,3 +458,9 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
   #tower-catalog .build-card canvas { width: 36px; height: 45px; flex-basis: 36px; }
   .build-card small { display: none; }
 }
+
+/* Gift markers complement existing construction/recruitment notices. */
+#settlement-tab.has-gifts::before { content:'🎁'; margin-right:5px; font:13px Arial,sans-serif; }
+#settlement-tab.gift-ready,#pick-tavern.gift-ready { border-color:#edc77a; box-shadow:inset 0 0 0 1px #edc77a66; }
+#tavern-gift-note { white-space:normal; color:#dfcfa9; font-size:10px; }
+#pick-tavern.gift-ready #tavern-gift-note { color:#ffe3a4; }

@@ -3,7 +3,8 @@ import { bindStaticTranslations } from './i18n-dom';
 import { COMPANIONS } from './tavern-companions';
 import { TavernInteractions } from './tavern-interactions';
 import type { BattleSession } from './battle-session';
-import { hearts, SOCIAL, type Interaction, type Companion } from './tavern-social';
+import { hearts, SOCIAL, personalGiftReady, availableTouches, type Interaction, type Companion } from './tavern-social';
+import { tavernGiftStatus } from './tavern-gift-status';
 import { TavernAnimation, drawCompanionPortrait, companionPortrait, type TouchRegion } from './tavern-animation';
 import './tavern-ui.css';
 import type { TavernPlayer, TavernPresentation } from './tavern-presentation';
@@ -50,16 +51,16 @@ export class TavernUI {
       <section class="tv-overview">
         <div class="tv-room"><span>EIN MOMENT AM FEUER</span><h3>Unter Gefährten.</h3><p>Ein Gespräch. Ein kleines Geschenk.<br>Und Zeit, einander kennenzulernen.</p></div>
         <div class="tv-guests">
-          <button type="button" class="tv-guest tv-mara" data-do="mara"><canvas width="136" height="160" aria-hidden="true"></canvas><div><small>DEINE TÜFTLERIN</small><h3>Mara</h3><span data-text="mara-hearts" class="tv-hearts"></span><p data-text="mara-greeting">„Schön, dass du vorbeischaust.“</p><strong>Zeit mit Mara verbringen →</strong></div></button>
-          <article class="tv-guest tv-ilyra"><canvas width="136" height="160" aria-hidden="true"></canvas><div><small>STERNENWÄCHTERIN</small><h3>Ilyra</h3><span data-text="ilyra-hearts" class="tv-hearts"></span><p data-text="ilyra-lock"></p><button type="button" data-do="ilyra" class="tv-small">Rekrutierung ansehen →</button></div></article>
+          <button type="button" class="tv-guest tv-mara" data-do="mara"><canvas width="136" height="160" aria-hidden="true"></canvas><div><small>DEINE TÜFTLERIN</small><h3>Mara</h3><span data-text="mara-hearts" class="tv-hearts"></span><p class="tv-gift-badge" data-text="mara-gift"></p><p data-text="mara-greeting">„Schön, dass du vorbeischaust.“</p><strong>Zeit mit Mara verbringen →</strong></div></button>
+          <article class="tv-guest tv-ilyra"><canvas width="136" height="160" aria-hidden="true"></canvas><div><small>STERNENWÄCHTERIN</small><h3>Ilyra</h3><span data-text="ilyra-hearts" class="tv-hearts"></span><p class="tv-gift-badge" data-text="ilyra-gift"></p><p data-text="ilyra-lock"></p><button type="button" data-do="ilyra" class="tv-small">Rekrutierung ansehen →</button></div></article>
         </div>
         <footer class="tv-overview-footer"><button type="button" data-do="wisp">Wisp · Gefährtenverwaltung ↗</button><button type="button" data-do="building">Gebäude & Ausbau ↗</button></footer>
       </section>
       <section class="tv-character" hidden>
-        <div class="tv-bond"><div class="tv-bond-visual"><div class="tv-heart-buttons" role="group" aria-label="Maras persönliche Momente">${this.content.moments.map(moment => `<button type="button" data-moment="${moment.heart}"><svg viewBox="0 0 40 38" aria-hidden="true"><path class="tv-heart-shape" d="M20 34C16 30 3 22 3 12C3 2 15 0 20 9C25 0 37 2 37 12C37 22 24 30 20 34Z"/><path class="tv-heart-shine" d="M8 13C7 8 12 5 16 10"/></svg></button>`).join('')}</div><div class="tv-bond-track" title="Ein Abschnitt pro Herz"><progress max="160" value="0" aria-label="Maras Zuneigung"></progress><span class="tv-bond-fill" aria-hidden="true"></span><span class="tv-bond-marks" aria-hidden="true"></span></div></div><div class="tv-bond-copy"><span data-text="points"></span><p class="tv-moment-hint" data-text="moment-hint"></p></div></div>
+        <div class="tv-bond"><div class="tv-bond-visual"><div class="tv-heart-buttons" role="group" aria-label="Maras persönliche Momente">${this.content.moments.map(moment => `<button type="button" data-moment="${moment.heart}"><svg viewBox="0 0 40 38" aria-hidden="true"><path class="tv-heart-shape" d="M20 34C16 30 3 22 3 12C3 2 15 0 20 9C25 0 37 2 37 12C37 22 24 30 20 34Z"/><path class="tv-heart-shine" d="M8 13C7 8 12 5 16 10"/></svg></button>`).join('')}</div><div class="tv-bond-track" title="Ein Abschnitt pro Herz"><progress max="160" value="0" aria-label="Maras Zuneigung"></progress><span class="tv-bond-fill" aria-hidden="true"></span><span class="tv-bond-marks" aria-hidden="true"></span></div></div><div class="tv-bond-copy"><span data-text="points"></span><p class="tv-personal" data-text="personal"></p><p class="tv-chapter" data-text="chapter"></p><p class="tv-moment-hint" data-text="moment-hint"></p></div></div>
         <div class="tv-character-body">
           <div class="tv-stage"><div class="tv-figure"><img class="tv-loading-portrait" alt="" aria-hidden="true" hidden><canvas width="384" height="512" aria-label="Mara, animierte Charakteransicht"></canvas>${Object.entries(this.content.reactions).map(([key, value]) => `<button type="button" class="tv-hotspot" data-region="${key}" aria-label="${value.label} berühren"><span aria-hidden="true"></span><em>${value.label}</em></button>`).join('')}</div><span class="tv-load-status" role="status" hidden></span><span class="tv-stage-caption">Mara · Tüftlerin des Hains</span></div>
-          <div class="tv-conversation"><div class="tv-story-heading" hidden><small data-text="story-step"></small><h3 data-text="story-title"></h3></div><div class="tv-dialogue"><small>MARA</small><p data-text="line">Da bist du ja. Setz dich einen Moment zu mir.</p></div><p class="tv-result" data-text="result" role="status"></p><button type="button" data-do="new-moment" class="tv-unlock" hidden></button><div class="tv-story-controls" hidden><button type="button" data-do="story-next">Weiter</button><button type="button" data-do="story-exit">Zurück zu Mara</button></div><p class="tv-touch-help" hidden>Tippe auf Hand, Haare oder Schulter. Ziehen löst keine Berührung aus.</p><div class="tv-actions"><button type="button" data-action="talk"><span>Sprechen</span><small data-text="talk"></small></button><button type="button" data-do="touch"><span>Berühren</span><small data-text="touch"></small></button><button type="button" data-action="gift"><span>Schenken</span><small data-text="gift"></small></button></div><div class="tv-gifts"><details><summary><span data-text="gift-summary">Geschenke & Details</span></summary><p data-text="stock"></p><p>Geschenke sind für die hier ausgewählte Gefährtin. Du erhältst sie bei Meilensteinen und begrenzt nach gewonnenen Wellen. Gespräche und Berührungen sind auch ohne weitere Punkte möglich. Neue Belohnungen nach 20 Minuten laufender Spielzeit; Pause und Offline-Zeit zählen nicht.</p><p data-text="renewal"></p><button type="button" class="tv-combat-link" data-do="mara-combat">Mara im Kampf verwalten ↗</button></details></div></div>
+          <div class="tv-conversation"><div class="tv-story-heading" hidden><small data-text="story-step"></small><h3 data-text="story-title"></h3></div><div class="tv-dialogue"><small>MARA</small><p data-text="line">Da bist du ja. Setz dich einen Moment zu mir.</p></div><p class="tv-result" data-text="result" role="status"></p><button type="button" data-do="new-moment" class="tv-unlock" hidden></button><div class="tv-story-controls" hidden><button type="button" data-do="story-next">Weiter</button><button type="button" data-do="story-exit">Zurück zu Mara</button></div><p class="tv-touch-help" hidden></p><div class="tv-actions"><button type="button" data-action="talk"><span>Sprechen</span><small data-text="talk"></small></button><button type="button" data-do="touch"><span>Berühren</span><small data-text="touch"></small></button><button type="button" data-action="gift"><span>Schenken</span><small data-text="gift"></small></button></div><div class="tv-gifts"><p data-text="stock"></p><p data-text="gift-hint"></p><details><summary>Geschenke & Fortschritt</summary><p>Alle 10 gewonnenen normalen Wellen gibt es ein Geschenk. Ab Herz 2 zählen 30 weitere Siege für ein persönliches Geschenk. Gespräche und freigeschaltete Berührungen bleiben immer möglich.</p><p data-text="renewal"></p><button type="button" class="tv-combat-link" data-do="mara-combat">Mara im Kampf verwalten ↗</button></details></div></div>
         </div>
       </section>`;
     document.body.append(this.dialog);
@@ -207,17 +208,25 @@ export class TavernUI {
     this.text('combat', t("Welle {0} · ♥ {1}/20 · {2}", b.wave, b.lives, session.paused ? t('Pausiert') : session.suspended || session.awaitingResume ? t('Kampf angehalten') : b.learningPaused ? t('Lernpause') : t('Kampf läuft')));
     const error = this.get('.tv-error'); error.hidden = !session.error && !session.suspended && !session.awaitingResume;
     error.textContent = t(session.error ? t('Speichern fehlgeschlagen. Bitte kehre zum Kampf zurück, um den Spielstand zu prüfen.') : t('Sitzung angehalten. Bitte kehre zum Kampf zurück.'));
-    const points = this.points, count = hearts(points);
+    const points = this.points, count = hearts(points), capped = points >= SOCIAL.chapterMaximum;
+    const giftStatus = tavernGiftStatus(b.social, { tavernBuilt: b.settlement.tavernBuilt, ilyraRecruited: !!b.ilyra, boss15: !!b.bossVictories, boss25: !!b.secondBossVictories });
+    const personalReady = personalGiftReady(b.social, this.selected);
+    const touchCount = availableTouches(points).length;
     this.animation.setHearts?.(count);
     for (const who of ['mara', 'ilyra'] as const) {
       const n = hearts(b.social.points[who]);
       this.text(`${who}-hearts`, who === 'ilyra' && !b.ilyra ? '' : `${'♥'.repeat(n)}${'♡'.repeat(5 - n)}`);
+      const actionable = giftStatus.recipients.includes(who);
+      this.get(`.tv-${who}`).classList.toggle('gift-ready', actionable);
+      this.text(`${who}-gift`, actionable ? t('🎁 Geschenk für {0} überreichen', COMPANIONS[who].name) : who === 'ilyra' && !b.ilyra ? '' : personalGiftReady(b.social, who) ? t('🎁 Persönliches Geschenk bereit') : b.social.gifts ? t('🎁 {0} im Vorrat', b.social.gifts) : '');
     }
     this.text('mara-greeting', COMPANIONS.mara.stage(b.social.points.mara).greeting);
-    const next = SOCIAL.heartThresholds.find(value => value > points);
-    this.text('points', t("{0} von 5 Herzen · {1}", count, next ? t("noch {0} Zuneigung", next - points) : t('Vertrautheit vollendet')));
-    const progress = this.get<HTMLProgressElement>('progress'); progress.max = 160; progress.value = points;
-    progress.setAttribute('aria-valuetext', t("{0} Zuneigung · {1} von 5 Herzen", points, count));
+    const goal = points < 35 ? 35 : 70;
+    this.text('points', capped ? t('{0} Herzen · Etappe abgeschlossen', count) : t('{0} Herzen · {1} / {2} Zuneigung', count, points, goal));
+    this.text('personal', count !== 2 ? '' : personalReady ? points < 58 ? t('Geschenk für {0} bereit · noch {1} Zuneigung', this.content.name, 58 - points) : t('Persönliches Geschenk bereit · Herz 3 freischalten') : t('Persönliches Geschenk · {0} / 30 Siege', b.social.personal[this.selected].clears));
+    this.text('chapter', capped ? t('Eure Geschichte geht in einem kommenden Update weiter.') : '');
+    const progress = this.get<HTMLProgressElement>('progress'); progress.max = count > 3 ? 160 : 70; progress.value = points;
+    progress.setAttribute('aria-valuetext', capped ? t('{0} Herzen · Etappe abgeschlossen', count) : t('{0} Herzen · {1} / {2} Zuneigung', count, points, goal));
     if (this.bondCompanion !== this.selected || this.bondPoints !== points) {
       // Five equal visual sections; interpolate within each actual heart threshold.
       const lower = count ? SOCIAL.heartThresholds[count - 1]! : 0;
@@ -227,14 +236,17 @@ export class TavernUI {
       fill.style.width = `${Math.max(0, Math.min(100, section * 20))}%`;
       this.bondCompanion = this.selected; this.bondPoints = points;
     }
-    this.text('gift-summary', t("Geschenke: {0} · Details", b.social.gifts));
-    this.text('stock', t("Geschenke: {0} · Empfängerin: {1}", b.social.gifts, this.content.name));
-    this.text('renewal', t("Neue Zuneigung nach noch {0} gewonnenen Wellen.", SOCIAL.clearsPerRefill - (b.social.reserves[this.selected]?.clears ?? 0)));
+    this.text('stock', t('🎁 Vorrat: {0} · für {1}', b.social.gifts, this.content.name));
+    const gift = b.companionOffer(this.selected, 'gift');
+    const giftHint = personalReady && points < 58 && !gift.accepted ? t('Gespräche und Berührungen erhöhen eure Zuneigung.') : capped ? t('Deine Geschenke bleiben für spätere Inhalte erhalten.') : gift.gift === 'personal' ? t('Überreiche das persönliche Geschenk für Herz 3.') : points < 23 ? t('Noch {0} Zuneigung bis zu deinem Geschenk.', 23 - points) : points >= 58 ? t('Zuneigung bereit · noch {0} Siege für das persönliche Geschenk.', SOCIAL.personalClears - b.social.personal[this.selected].clears) : gift.reason === 'no-gift' ? t('Nächstes Geschenk nach noch {0} gewonnenen normalen Wellen.', SOCIAL.clearsPerGift - b.social.clearProgress) : points < 35 ? t('Ein Geschenk schaltet Herz 2 frei.') : t('Normale Geschenke helfen bis 58 Zuneigung.');
+    this.text('gift-hint', giftHint);
+    const reserve = b.social.reserves[this.selected];
+    this.text('renewal', capped ? t('Gespräche, Berührungen und Momente bleiben verfügbar.') : t('Neue Gesprächs- und Berührungspunkte nach je 3 gewonnenen normalen Wellen. Noch {0} Siege bis zur nächsten Auffüllung.', SOCIAL.clearsPerRefill - (reserve?.clears ?? 0)));
     this.text('ilyra-lock', b.ilyra ? COMPANIONS.ilyra.stage(b.social.points.ilyra).greeting : b.secondBossVictories ? b.settlement.tavernLevel === 2 ? t('Bereit für deine Einladung. Rekrutiere sie in der Gefährtenverwaltung.') : t('Boss 25 besiegt. Baue die Taverne auf Stufe II aus.') : t('Nach Boss 25 und dem Ausbau auf Taverne II rekrutierbar.'));
     this.get('[data-do="ilyra"]').textContent = t(b.ilyra ? t('Zeit mit Ilyra verbringen →') : b.ilyraRecruitable ? t('Ilyra kennenlernen →') : t('Rekrutierung & Ausbau →'));
     this.get<HTMLButtonElement>('[data-do="wisp"]').disabled = !b.wispUnlocked;
     const nextMoment = this.content.next(points);
-    this.text('moment-hint', nextMoment ? t("{0}Als Nächstes: „{1}“ · {2} Zuneigung.", count ? t('Herz antippen: Moment erleben. ') : '', nextMoment.title, nextMoment.points) : t('Fünf persönliche Momente · zum Wiedererleben ein Herz antippen.'));
+    this.text('moment-hint', nextMoment ? t("{0}Als Nächstes: „{1}“ · {2} Zuneigung.", count ? t('Herz antippen: Moment erleben. ') : '', nextMoment.title, nextMoment.points) : t('Deine Momente bleiben über die Herzen verfügbar.'));
     this.dialog.dataset.story = String(!!this.moment);
     this.get('.tv-back').setAttribute('aria-label', t(this.moment ? t("Zurück zu {0}", this.content.name) : this.screen === 'touch' ? t("Zurück zu {0}s Charakteransicht", this.content.name) : t('Zurück zur Tavernenübersicht')));
     this.get('.tv-story-heading').hidden = !this.moment;
@@ -245,7 +257,11 @@ export class TavernUI {
     this.get('.tv-touch-help').hidden = this.screen !== 'touch' || !!this.moment;
     const unlock = this.get<HTMLButtonElement>('[data-do="new-moment"]');
     unlock.hidden = !this.newMoment || !!this.moment;
-    if (this.newMoment) unlock.textContent = t("Neuer Moment: {0} →", this.content.moments[this.newMoment - 1]!.title);
+    if (this.newMoment) {
+      const added = this.newMoment === 2 ? t('Schulter') : this.newMoment === 3 ? t('Haare') : this.newMoment === 4 ? t('Hand') : '';
+      unlock.textContent = t("Neuer Moment: {0} →", this.content.moments[this.newMoment - 1]!.title) + (added ? t(' · Neu: {0} berühren', added) : '');
+    }
+    this.get('.tv-touch-help').textContent = t('Dauerhaft verfügbar: {0}. Tippe auf die Herzen an der Figur.', availableTouches(points).map(region => t(this.content.reactions[region].label)).join(', '));
     this.dialog.dataset.reacting = String(this.animation.reacting);
     const blocked = this.pending || session.inputBusy || !!session.error || session.suspended || session.awaitingResume || !this.animation.ready;
     unlock.disabled = blocked;
@@ -254,7 +270,7 @@ export class TavernUI {
       gestures.hidden = !!this.moment || count < 2 || this.screen === 'touch';
       for (const gesture of this.ports.presentation!.gestures) {
         const button = this.get<HTMLButtonElement>(`[data-gesture="${gesture.key}"]`);
-        button.hidden = !!gesture.companion && gesture.companion !== this.selected;
+        button.hidden = !!gesture.companion && gesture.companion !== this.selected || gesture.minHearts > Math.max(3, count);
         button.disabled = this.pending || session.inputBusy || !!session.error || session.suspended || session.awaitingResume || !this.animation.ready || count < gesture.minHearts;
       }
     }
@@ -264,19 +280,22 @@ export class TavernUI {
       const available = !!this.content.moment(points, moment.heart);
       button.disabled = blocked || !available;
       button.classList.toggle('unlocked', available);
-      button.setAttribute('aria-label', t("{0} {1}: {2}{3}", moment.heart, moment.heart === 1 ? t('Herz') : t('Herzen'), moment.title, available ? t(' · Moment erleben') : t(" · ab {0} Zuneigung", SOCIAL.heartThresholds[moment.heart - 1])));
+      button.classList.toggle('future', moment.heart > 3 && !available);
+      button.setAttribute('aria-label', t("{0} {1}: {2}{3}", moment.heart, moment.heart === 1 ? t('Herz') : t('Herzen'), moment.title, available ? t(' · Moment erleben') : moment.heart > 3 ? t(' · in einem kommenden Update') : t(" · ab {0} Zuneigung", SOCIAL.heartThresholds[moment.heart - 1])));
       button.title = t(button.getAttribute('aria-label')!);
     }
     for (const action of ['talk', 'touch', 'gift'] as const) {
       const offer = b.companionOffer(this.selected, action);
-      this.text(action, offer.points ? t("+{0} Zuneigung{1}", offer.points, action === 'gift' ? t(' · 1 Geschenk') : '') : offer.reason === 'no-gift' ? t('Kein Geschenk') : offer.reason === 'complete' ? t('Herzen vollständig') : action === 'gift' ? t('Abschnitt ausgeschöpft') : t('Ohne weitere Punkte'));
+      const detail = offer.points ? t('+{0} Zuneigung', offer.points) : capped ? t('Gemeinsame Zeit') : offer.reason === 'locked' ? t('Ab Herz 2') : offer.reason === 'limit' ? t('Neue Punkte in {0} Siegen', SOCIAL.clearsPerRefill - (reserve?.clears ?? 0)) : t('Ohne weitere Punkte');
+      this.text(action, action === 'gift' ? capped ? t('Etappe abgeschlossen') : offer.gift === 'personal' ? t('Herz 3 freischalten') : offer.accepted ? detail : personalReady && points < 58 ? t('Noch {0} Zuneigung', 58 - points) : offer.reason === 'no-gift' ? t('Kein Geschenk') : offer.reason === 'affection' ? t('Noch {0} Zuneigung', 23 - points) : t('Persönliches Geschenk fehlt') : action === 'touch' && touchCount ? t('{0} · {1}', touchCount === 1 ? t('1 Berührung') : t('{0} Berührungen', touchCount), detail) : detail);
+      this.get('[data-action="gift"] span').textContent = t(gift.gift === 'personal' ? 'Überreichen' : 'Schenken');
       const button = this.get<HTMLButtonElement>(action === 'touch' ? '[data-do="touch"]' : `[data-action="${action}"]`);
       button.disabled = blocked || !offer.accepted;
     }
     this.get('[data-do="touch"]').setAttribute('aria-pressed', String(this.screen === 'touch'));
     for (const key of Object.keys(this.content.reactions) as TouchRegion[]) {
       const button = this.get<HTMLButtonElement>(`[data-region="${key}"]`);
-      button.hidden = this.screen !== 'touch'; button.disabled = blocked || !this.animation.reactionsReady || count < this.content.reactions[key].minHearts;
+      button.hidden = this.screen !== 'touch' || count < this.content.reactions[key].minHearts; button.disabled = blocked || !this.animation.reactionsReady || count < this.content.reactions[key].minHearts;
     }
     const failedIdle = !!this.get('.tv-figure canvas').dataset.error;
     this.get('.tv-loading-portrait').hidden = this.animation.ready && !failedIdle;
@@ -337,7 +356,7 @@ export class TavernUI {
       if (action === 'talk') this.conversationTurn[who]++;
       const afterHearts = hearts(session.battle.social.points[who]);
       if (afterHearts > hearts(beforePoints)) this.newMoment = afterHearts;
-      this.result(() => result.points ? t("+{0} Zuneigung zu {1}{2}", result.points, content.name, action === 'gift' ? t(' · 1 Geschenk überreicht') : '') : offer.reason === 'complete' ? t("Alle Herzen erreicht. {0} freut sich trotzdem über deinen Besuch.", content.name) : t("{0} freut sich über deine Nähe. Für diesen Abschnitt gibt es keine weiteren Punkte.", content.name));
+      this.result(() => result.points ? t("+{0} Zuneigung zu {1}{2}", result.points, content.name, action === 'gift' ? result.gift === 'personal' ? t(' · Persönliches Geschenk überreicht') : t(' · 1 Geschenk überreicht') : '') : t('Gemeinsame Zeit mit {0} · ohne zusätzliche Zuneigung.', content.name));
       if (action === 'gift' && result.points > 0) this.ports.onGift?.();
       if (action === 'touch') { this.animation.play(region); this.ports.onTouch?.(who); }
       else this.animation.act?.(action);

@@ -5,6 +5,8 @@ import { t, numberFormat, onLanguageChange, language } from './i18n';
 import { bindStaticTranslations, mountLanguageSettings } from './i18n-dom';
 import { GameAudio } from './game-audio';
 import { TavernUI } from './tavern-ui';
+import { tavernGiftStatus } from './tavern-gift-status';
+import { COMPANIONS } from './tavern-companions';
 import { rigPreviewPresentation } from './tavern-rig-preview';
 import { discoveryStep, updateDiscoveryUI } from './discovery-ui';
 import { LessonPointer } from './lesson-pointer';
@@ -444,10 +446,20 @@ function syncUI(): void {
   const ilyraNew = sim.ilyraRecruitable;
   const tavernUpgradeNew = settlement.tavernLevel === 1 && sim.tavernUpgradeUnlocked;
   const tavernNew = ilyraNew || tavernUpgradeNew || sim.tavernUnlocked && !settlement.tavernBuilt && !settlement.tavernSeen;
+  const gifts = tavernGiftStatus(sim.social, { tavernBuilt: settlement.tavernBuilt, ilyraRecruited: !!sim.ilyra, boss15: !!sim.bossVictories, boss25: !!sim.secondBossVictories });
+  const giftNames = gifts.recipients.map(who => COMPANIONS[who].name).join(' / ');
+  const giftLabel = giftNames ? t('Geschenk überreichen: {0}', giftNames) : gifts.owned ? t('Geschenke im Vorrat') : '';
   element('pick-warehouse').classList.toggle('new-building', warehouseNew);
   element('pick-tavern').classList.toggle('new-building', tavernNew);
+  element('pick-tavern').classList.toggle('gift-ready', !!giftNames);
+  element('settlement-tab').classList.toggle('gift-ready', !!giftNames);
+  element('settlement-tab').classList.toggle('has-gifts', gifts.owned);
+  element('tavern-gift-note').hidden = !gifts.owned;
+  element('tavern-gift-note').textContent = giftLabel ? t('🎁 {0}', giftLabel) : '';
   element('settlement-tab').classList.toggle('new-building', warehouseNew || tavernNew);
   element('settlement-tab').setAttribute('aria-label', t(ilyraNew ? t('Siedlung · Ilyra wartet in der Taverne') : tavernUpgradeNew ? t('Siedlung · Taverne II verfügbar') : tavernNew ? t('Siedlung · Kostenloser Tavernenbausatz verfügbar') : warehouseNew ? t('Siedlung · Neues Gebäude verfügbar: Vorratslager') : t('Siedlung')));
+  if (giftLabel) element('settlement-tab').setAttribute('aria-label', `${element('settlement-tab').getAttribute('aria-label')} · ${giftLabel}`);
+  element('pick-tavern').title = giftLabel;
   element<HTMLImageElement>('tavern-icon').src = ART.tavern;
   element<HTMLImageElement>('tavern-portrait').src = ART.tavern;
   element('pick-tavern').hidden = sim.highestCleared < 11 && !sim.tavernUnlocked;
@@ -511,12 +523,14 @@ function syncUI(): void {
   scene?.acceptEvents(relevantEvents);
   audio.accept(relevantEvents, sim);
   if (relevantEvents.some(event => event.type === 'map-update')) { selectedPadId = undefined; placementType = undefined; closeContext(); }
-  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['frost-tip', 'defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'tavern', 'tavern-upgrade', 'boss-victory', 'clearing', 'workshop-upgrade', 'map-update'].includes(event.type)).at(-1);
+  const message = relevantEvents.find(event => event.type === 'boss-victory') ?? relevantEvents.filter(event => ['frost-tip', 'defeat', 'build', 'upgrade', 'sell', 'workshop', 'research', 'wisp', 'pads', 'warehouse', 'tavern', 'tavern-upgrade', 'boss-victory', 'clearing', 'workshop-upgrade', 'map-update'].includes(event.type)).at(-1) ?? relevantEvents.find(event => event.type === 'personal-gift') ?? relevantEvents.find(event => event.type === 'gift-found');
   if (message) toastUntil = performance.now() + 4500;
   if (message) showCombatMessage(() => t(message.type === 'clear' ? t("Welle {0} geschafft · +{1} Gold Abschlussbonus.", message.wave, currency.format(message.amount ?? 0))
     : message.type === 'kill' ? t("Gegner besiegt · +{0} Gold.", currency.format(message.amount ?? 0))
     : message.type === 'wave' ? t("{0} · Welle {1} hat begonnen. Deine Türme greifen automatisch an.", mode, message.wave)
     : message.type === 'boss-victory' ? message.amount ? t("{0} besiegt! +{1} Gold Erstprämie.", bossEncounter(message.wave ?? 15).title, currency.format(message.amount)) : t('Rosenspiegel erneut besiegt. Gewöhnliche Kampfbelohnungen erhalten.')
+    : message.type === 'personal-gift' ? t('Persönliches Geschenk für {0} bereit · Taverne', message.companion ? COMPANIONS[message.companion].name : '')
+    : message.type === 'gift-found' ? t('Geschenk gefunden · in der Taverne ansehen.')
     : message.type === 'map-update' ? t("Nordbogen angepasst · drei Baureihen oberhalb des Wegs.{0}", message.amount ? t(" {0} Türme kostenlos in der Nähe versetzt; alle Upgrades bleiben erhalten.", message.amount) : '')
     : message.type === 'clearing' ? t('Östliche Lichtung geöffnet! Optionale Fläche verfügbar · Lichtung ansehen.')
     : message.type === 'wisp' ? t('Wisp ist da! +10 % Kampf-Gold und die Steinschleuder sind jetzt verfügbar.')

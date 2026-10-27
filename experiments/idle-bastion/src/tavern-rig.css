@@ -35,7 +35,8 @@
 @media(max-width:700px) {
   #tavern-dialog[data-artwork="rigged"][open]:is([data-screen="character"],[data-screen="touch"]) { height:calc(100dvh - 8px); }
   #tavern-dialog[data-artwork="rigged"] .tv-header { flex-basis:53px; }
-  #tavern-dialog[data-artwork="rigged"] .tv-bond { flex-basis:96px; }
+  #tavern-dialog[data-artwork="rigged"] .tv-bond { flex:0 0 auto; min-height:112px; }
+  #tavern-dialog[data-artwork="rigged"] .tv-bond-copy { overflow:visible; max-height:none; }
   #tavern-dialog[data-artwork="rigged"] .tv-character-body { display:grid; grid-template-columns:minmax(0,1fr); grid-template-rows:minmax(0,1fr) clamp(180px,26dvh,240px); }
   #tavern-dialog[data-artwork="rigged"] .tv-stage { min-height:0; }
   #tavern-dialog[data-artwork="rigged"] .tv-conversation { max-height:none; }
