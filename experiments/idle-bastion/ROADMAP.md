@@ -4,7 +4,7 @@
 
 Fachliche Grundlage: [Umsetzungsplan mit Regeln, Quellen und Messwerten](docs/TAVERNE_DREI_HERZEN_PLAN.md). Die folgenden fünf Pakete ersetzen die bisherigen drei groben T12-Punkte. Alle Arbeitscheckboxen und der aktuelle Stand werden ausschließlich hier gepflegt; der Fachplan beschreibt Regeln und Prüffälle.
 
-**Aktueller Stand:** T12.1 bis T12.5 technisch abgeschlossen. 148/148 gezielte Tests, Produktionsbuild und Browserabläufe bestanden. Direkte Veröffentlichung der geprüften Paketreihe auf Main ist beauftragt; tatsächliche Push-/Pages-Bestätigung im Abschlusschat. Subjektive Nutzerbewertung bleibt offen.
+**Aktueller Stand:** T12.1 bis T12.5 technisch abgeschlossen. 148/148 gezielte Tests, Produktionsbuild und Browserabläufe bestanden. Die geprüfte Paketreihe bis `dc3cb8a` ist auf Main gepusht. Pages läuft über den bestehenden Main-Workflow; endgültige Deploymentbestätigung im Abschlusschat. Subjektive Nutzerbewertung bleibt offen.
 
 - [x] Aktuellen Main-Stand und Abhängigkeiten von Geschenken, Herzschwellen, Zeitbudgets, Szenen, Berührungen, Hinweisen, Speicherung und Farming gelesen. 90 neue Engine-Farmzyklen und vorhandene Vorstoßdaten ausgewertet.
 - [x] Anschlusswunsch im Plan präzisiert: Freigeschaltete Berührungen bleiben dauerhaft gemeinsam nutzbar; Schulter/Kopf-Haare/Hand nutzen bei beiden Figuren touch/head/giggle. Die dritte Zone folgt erst mit Herz 4; Drei-Herzen-Grenze bleibt.
