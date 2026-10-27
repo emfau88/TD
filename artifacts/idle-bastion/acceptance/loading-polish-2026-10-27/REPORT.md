@@ -22,7 +22,7 @@ Die Oberfläche verwendet einen gemeinsamen dunklen Petrolhintergrund mit dezent
 
 [320 px Deutsch](loading-320-de.png) · [Querformat](loading-844.png) · [Musikfehler mit bedienbaren Buttons](loading-error-320.png)
 
-Browseremulation ersetzt keine physische Smartphone-Abnahme. Die subjektive Bewertung durch den Nutzer bleibt offen. 
+Browseremulation ersetzt keine physische Smartphone-Abnahme. Die subjektive Bewertung durch den Nutzer bleibt offen.
 
 ## Veröffentlichung
 
