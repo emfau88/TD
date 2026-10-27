@@ -1,0 +1,45 @@
+[
+  {
+    "width": 390,
+    "height": 844,
+    "lang": "en",
+    "stats": [
+      {
+        "label": "Damage",
+        "value": "14.0",
+        "icon": true,
+        "decorative": "true",
+        "fits": true
+      },
+      {
+        "label": "Range",
+        "value": "132",
+        "icon": true,
+        "decorative": "true",
+        "fits": true
+      },
+      {
+        "label": "Attack interval",
+        "value": "0.60 s",
+        "icon": true,
+        "decorative": "true",
+        "fits": true
+      },
+      {
+        "label": "Kills",
+        "value": "1",
+        "icon": true,
+        "decorative": "true",
+        "fits": true
+      }
+    ],
+    "panel": {
+      "x": 8,
+      "y": 372.828125,
+      "width": 374,
+      "height": 367.171875
+    },
+    "upgradeResumes": true,
+    "errors": []
+  }
+]

@@ -4,8 +4,8 @@
 
 - [x] Kleine Werte-Icons für Schaden, Reichweite, Angriffsintervall und Abschüsse im bestehenden Pixel-SVG-Stil ergänzen; Beschriftungen und echte Werte lesbar halten.
 - [x] Produktionsbuild und echte Turmmenüs mit Aufwerten bei 1440/390/320 px geprüft, zusätzlich geöffnetes Menü in 844-px-Querformat. Kein Überlauf oder Seitenfehler; [Nachweis und Screenshots](../../artifacts/idle-bastion/acceptance/tower-stat-icons-2026-10-27/REPORT.md).
-- [ ] Icons auf Main/Pages veröffentlichen und live gegenprüfen.
-- [x] Tutorial-Lücke untersucht: nach Frostbau endet die große Lernkarte; Wisp wartet auf Frostforschung + Sieg in Welle 5, Lager später auf Welle 8. Der Zähler bleibt nur im kleinen Kopfzeilentext. Vorschlag an den Nutzer: sichtbarer kompakter Zwischenzielstreifen mit Tutorialzähler und konkreter Wellenvoraussetzung. Tutorialänderung aus dieser Nachfrage noch nicht umgesetzt.
+- [x] Icons als `93e010b` auf Main gepusht, [Pages-Lauf 40599673734](https://github.com/emfau88/TD/actions/runs/40599673734) erfolgreich. Live-Einstieg bei 390 px bestätigt vier Icons, lesbare Werte und funktionierendes Aufwerten ohne Seitenfehler.
+- [x] Tutorial-Lücke untersucht: nach Frostbau endet die große Lernkarte; Wisp wartet auf Frostforschung + Sieg in Welle 5, Lager später auf Welle 8. Der Zähler bleibt nur im kleinen Kopfzeilentext. Nach Nutzerhinweis zusätzlich Frost-Kombination, Zielanzeige, Kurzmeldungen und Ausbauhinweise geprüft: vorhandene Hinweisfläche um Zähler und nächstes Ziel ergänzen, jeweils nur eine ausführliche Erklärung zeigen; keine zusätzliche konkurrierende Box. Nützliche Frosthinweise erhalten. Tutorialänderung ausdrücklich nur geprüft/vorgeschlagen, nicht umgesetzt.
 
 **Ladebild visuell verfeinern · 27.10.2026, Nutzerfeedback:**
 
