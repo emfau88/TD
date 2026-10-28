@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: atlas failure retries once, releases rejected entry and permits a later request
+ok 1 - atlas failure retries once, releases rejected entry and permits a later request
+  ---
+  duration_ms: 6.1694
+  type: 'test'
+  ...
+# Subtest: atlas timeout and decode rejection are bounded and do not poison the cache
+ok 2 - atlas timeout and decode rejection are bounded and do not poison the cache
+  ---
+  duration_ms: 61.6285
+  type: 'test'
+  ...
+# Subtest: atlas cache bounds queued and decoded entries, protects pinned pages and cancels on stop
+ok 3 - atlas cache bounds queued and decoded entries, protects pinned pages and cancels on stop
+  ---
+  duration_ms: 2.8963
+  type: 'test'
+  ...
+# Subtest: atlas remains unavailable until image decoding completes
+ok 4 - atlas remains unavailable until image decoding completes
+  ---
+  duration_ms: 2.7428
+  type: 'test'
+  ...
+# Subtest: foreground action cancels obsolete warm-up work without reporting download failure
+ok 5 - foreground action cancels obsolete warm-up work without reporting download failure
+  ---
+  duration_ms: 2.672
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 555.8047

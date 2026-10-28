@@ -36,6 +36,11 @@ export class TavernUI {
   private conversationTurn: Record<Companion, number> = { mara: 0, ilyra: 0 };
   private selected: Companion = 'mara';
   private replyTimer?: ReturnType<typeof setTimeout>;
+  private reactionHintTimer?: ReturnType<typeof setTimeout>;
+  private reactionHintVisible = false;
+  private resetReactionHint(): void {
+    clearTimeout(this.reactionHintTimer); this.reactionHintTimer = undefined; this.reactionHintVisible = false;
+  }
   private bondCompanion?: Companion;
   private bondPoints = -1;
   private get content() { return COMPANIONS[this.selected]; }
@@ -81,7 +86,7 @@ export class TavernUI {
     this.observer = new ResizeObserver(() => this.positionHotspots()); this.observer.observe(this.get('.tv-stage'));
     const options = { signal: this.lifetime.signal };
     this.dialog.addEventListener('cancel', event => { event.preventDefault(); this.back(); }, options);
-    this.dialog.addEventListener('close', () => { if (this.isOpen) return; this.ports.session()?.setTavernOpen(false); this.animation.stop(); this.generation++; this.ports.onOpenChange?.(false); }, options);
+    this.dialog.addEventListener('close', () => { if (this.isOpen) return; this.resetReactionHint(); this.ports.session()?.setTavernOpen(false); this.animation.stop(); this.generation++; this.ports.onOpenChange?.(false); }, options);
     this.dialog.addEventListener('click', event => {
       const target = (event.target as HTMLElement).closest<HTMLButtonElement>('button');
       if (!target || target.disabled) return;
@@ -157,12 +162,12 @@ export class TavernUI {
     this.lastLives = session.battle.lives; this.lastPhase = session.battle.phase; this.lastDefeat = session.battle.progress.lastDefeat?.attemptId ?? 0;
     this.get('.tv-warning').hidden = true; this.dialog.showModal(); session.setTavernOpen(true); this.ports.onOpenChange?.(true); this.show('overview'); this.get<HTMLButtonElement>('[data-do="close"]').focus();
   }
-  close(): void { this.ports.onCompanion?.(null); this.animation.stop(); this.dialog.close(); this.ports.session()?.setTavernOpen(false); this.generation++; this.opener?.focus(); }
+  close(): void { this.resetReactionHint(); this.ports.onCompanion?.(null); this.animation.stop(); this.dialog.close(); this.ports.session()?.setTavernOpen(false); this.generation++; this.opener?.focus(); }
   private back(): void { if (this.moment) { this.endMoment(); return; } if (this.screen === 'character') this.show('overview'); else this.close(); }
   private navigate(where: Destination): void { this.close(); this.ports.navigate(where); }
   private select(who: Companion): void {
     if (this.pending || (who === 'ilyra' && !this.ports.session()?.battle.ilyra)) return;
-    this.generation++; this.animation.stop(); this.selected = who; this.newMoment = undefined;
+    this.resetReactionHint(); this.generation++; this.animation.stop(); this.selected = who; this.newMoment = undefined;
     clearTimeout(this.replyTimer); delete this.get('.tv-dialogue').dataset.reply;
     this.get('.tv-conversation').scrollTop = 0;
     this.screen = 'overview'; this.show('character');
@@ -180,7 +185,7 @@ export class TavernUI {
     // Install the new loading portrait before start() can synchronously notify UI.
     this.get<HTMLImageElement>('.tv-loading-portrait').src = (this.ports.presentation?.portrait ?? companionPortrait)(this.selected);
     if (wasOverview) this.get('.tv-figure canvas').hidden = true;
-    if (screen === 'overview') { this.generation++; this.pending = false; this.animation.stop(); }
+    if (screen === 'overview') { this.resetReactionHint(); this.generation++; this.pending = false; this.animation.stop(); }
     else if (wasOverview) { this.text('line', this.content.stage(this.points).greeting); this.result(() => ''); void this.animation.start(this.selected); }
     this.refreshLanguage();
     this.update(); this.positionHotspots();
@@ -304,10 +309,17 @@ export class TavernUI {
     const failedIdle = !!this.get('.tv-figure canvas').dataset.error;
     this.get('.tv-loading-portrait').hidden = this.animation.ready && !failedIdle;
     this.get('.tv-figure canvas').hidden = !this.animation.ready || failedIdle;
+    // The canvas acquires layout only after its loading portrait is replaced.
+    // A same-sized companion switch need not trigger ResizeObserver again.
+    if (this.animation.ready && !failedIdle) this.positionHotspots();
     const loading = this.get('.tv-load-status');
     const failedReaction = !!this.get('.tv-figure canvas').dataset.reactionError;
-    loading.hidden = this.animation.ready && !this.animation.loadingReactions && !failedReaction;
-    const loadingText = failedIdle ? t('Animation nicht verfügbar. Standbild wird angezeigt.') : !this.animation.ready ? t("{0} wird geladen …", this.content.name) : this.animation.loadingReactions ? t('Reaktion wird vorbereitet …') : failedReaction ? t('Reaktion nicht geladen. Du kannst es erneut versuchen.') : '';
+    if (this.screen === 'overview' || !this.animation.ready || !this.animation.loadingReactions || failedReaction) this.resetReactionHint();
+    else if (this.reactionHintTimer === undefined) {
+      this.reactionHintTimer = setTimeout(() => { this.reactionHintVisible = true; this.update(); }, 450);
+    }
+    loading.hidden = this.animation.ready && !failedIdle && !failedReaction && !this.reactionHintVisible;
+    const loadingText = failedIdle ? t('Animation nicht verfügbar. Standbild wird angezeigt.') : !this.animation.ready ? t("{0} wird geladen …", this.content.name) : this.animation.loadingReactions ? t('Einen kleinen Moment …') : failedReaction ? t('Reaktion nicht geladen. Du kannst es erneut versuchen.') : '';
     if (loading.textContent !== loadingText) loading.textContent = t(loadingText);
   }
   private async startMoment(heart: number): Promise<void> {
@@ -384,6 +396,7 @@ export class TavernUI {
     } finally { this.pending = false; this.update(); }
   }
   destroy(): void {
+    this.resetReactionHint();
     this.ports.session()?.setTavernOpen(false);
     if (this.isOpen) this.ports.onOpenChange?.(false); clearTimeout(this.replyTimer); this.unbindLanguage(); this.unbindStatic(); this.animation.stop(); this.observer.disconnect(); this.lifetime.abort(); this.dialog.remove(); }
 }

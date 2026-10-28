@@ -1,0 +1,194 @@
+[
+  {
+    "action": "[data-action=talk]",
+    "canvasVisible": true,
+    "clip": "head",
+    "cueVisible": false,
+    "error": null,
+    "frame": "3",
+    "markers": [
+      {
+        "height": 44,
+        "region": "hand",
+        "width": 44,
+        "x": 273,
+        "y": 331
+      },
+      {
+        "height": 44,
+        "region": "hair",
+        "width": 44,
+        "x": 151,
+        "y": 149
+      },
+      {
+        "height": 44,
+        "region": "shoulder",
+        "width": 44,
+        "x": 249,
+        "y": 176
+      }
+    ],
+    "pages": "14"
+  },
+  {
+    "action": "[data-region=hair]",
+    "canvasVisible": true,
+    "clip": "head",
+    "cueVisible": false,
+    "error": null,
+    "frame": "9",
+    "markers": [
+      {
+        "height": 44,
+        "region": "hand",
+        "width": 44,
+        "x": 273,
+        "y": 331
+      },
+      {
+        "height": 44,
+        "region": "hair",
+        "width": 44,
+        "x": 151,
+        "y": 149
+      },
+      {
+        "height": 44,
+        "region": "shoulder",
+        "width": 44,
+        "x": 249,
+        "y": 176
+      }
+    ],
+    "pages": "14"
+  },
+  {
+    "action": "[data-region=hand]",
+    "canvasVisible": true,
+    "clip": "giggle",
+    "cueVisible": false,
+    "error": null,
+    "frame": "9",
+    "markers": [
+      {
+        "height": 44,
+        "region": "hand",
+        "width": 44,
+        "x": 273,
+        "y": 331
+      },
+      {
+        "height": 44,
+        "region": "hair",
+        "width": 44,
+        "x": 151,
+        "y": 149
+      },
+      {
+        "height": 44,
+        "region": "shoulder",
+        "width": 44,
+        "x": 249,
+        "y": 176
+      }
+    ],
+    "pages": "14"
+  },
+  {
+    "action": "[data-gesture=giggle]",
+    "canvasVisible": true,
+    "clip": "giggle",
+    "cueVisible": false,
+    "error": null,
+    "frame": "8",
+    "markers": [
+      {
+        "height": 44,
+        "region": "hand",
+        "width": 44,
+        "x": 273,
+        "y": 331
+      },
+      {
+        "height": 44,
+        "region": "hair",
+        "width": 44,
+        "x": 151,
+        "y": 149
+      },
+      {
+        "height": 44,
+        "region": "shoulder",
+        "width": 44,
+        "x": 249,
+        "y": 176
+      }
+    ],
+    "pages": "14"
+  },
+  {
+    "action": "[data-gesture=hip]",
+    "canvasVisible": true,
+    "clip": "hip",
+    "cueVisible": false,
+    "error": null,
+    "frame": "9",
+    "markers": [
+      {
+        "height": 44,
+        "region": "hand",
+        "width": 44,
+        "x": 273,
+        "y": 331
+      },
+      {
+        "height": 44,
+        "region": "hair",
+        "width": 44,
+        "x": 151,
+        "y": 149
+      },
+      {
+        "height": 44,
+        "region": "shoulder",
+        "width": 44,
+        "x": 249,
+        "y": 176
+      }
+    ],
+    "pages": "14"
+  },
+  {
+    "action": "[data-region=shoulder]",
+    "canvasVisible": true,
+    "clip": "touch",
+    "cueVisible": false,
+    "error": null,
+    "frame": "9",
+    "markers": [
+      {
+        "height": 44,
+        "region": "hand",
+        "width": 44,
+        "x": 273,
+        "y": 331
+      },
+      {
+        "height": 44,
+        "region": "hair",
+        "width": 44,
+        "x": 151,
+        "y": 149
+      },
+      {
+        "height": 44,
+        "region": "shoulder",
+        "width": 44,
+        "x": 249,
+        "y": 176
+      }
+    ],
+    "pages": "14"
+  }
+]

@@ -33,7 +33,7 @@ Statuswerte: OFFEN / IN ARBEIT / ERLEDIGT / BLOCKIERT. ERLEDIGT setzt erfolgreic
 |---|---|---|---|
 | 1 Sichere automatische Tavernenpause | ERLEDIGT | `7cd014a`; 49/49 Tests, 14 DOM-Ausgangsfälle, Build/Browser; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40691206208) | Smartphone-System-Suspend nicht auf physischem Gerät geprüft |
 | 2 Berührungen ab Herz 1/2/3 | ERLEDIGT | `d361e4d`; 20/20 Tests, DOM-/Browsermatrix, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40692403336) | Geplante weitere UX-Pakete |
-| 3 Reaktionsladezeiten | OFFEN | — | Vollständig |
+| 3 Reaktionsladezeiten | IN ARBEIT | Implementiert; Cache-, Player-, DOM- und Browserprüfung, Build bestanden | Commit / Deployment |
 | 4 Gespräche und Geschenke | OFFEN | — | Vollständig |
 | 5 Herzfeedback und Tavernenoptik | OFFEN | — | Vollständig |
 | 6 Tutorial und Release-Regression | OFFEN | — | Vollständig |
@@ -88,7 +88,15 @@ Abnahme: kurze Warm-/Kaltwechsel ohne aufblitzende Technikmeldung; längere Verz
 
 Nachweis: deterministische verzögerte/fehlgeschlagene Ladefälle und Cachetests, Browseraktionen kalt/warm und schnelle Wechsel; Screenshot vor/während/nach wahrnehmbarer Verzögerung soweit reproduzierbar. Keine ungemessenen RAM-/FPS-Versprechen.
 
-Ergebnis / SHA / Deployment / Restprobleme: ausstehend.
+Ergebnis: Reaktionshinweis erst nach 450 ms; ruhiger Text „Einen kleinen Moment …“. Kurze Ladephasen und interne Übergänge blitzen nicht mehr als technische Meldung auf. Startpuffer zwei statt vier Seiten, danach vorhandene rollende Vier-Seiten-Vorladung. Lachen/Kompliment werden passend zu Herz 2/3 vorgeladen; persönliche Geschichten laden nur die benötigten Kopf-/Schulterclips. Letzte dargestellte Pose bleibt bei einer fehlenden Folgeseite erhalten. Cache unverändert 14 Einträge und zwei Downloads; keine neuen Assets.
+
+Zusätzlicher Browserbefund behoben: Beim Figurenwechsel ohne Größenänderung konnten die in Paket 2 direkt sichtbaren Marker noch die Nullmaße des versteckten Lade-Canvas verwenden. Positionierung erfolgt jetzt auch nach dessen Einblendung. Eigenständige Regression prüft diesen Übergang.
+
+Prüfung: 5/5 vorhandene Cachetests. Deterministischer Player-Test mit zurückgehaltenen Folgeseiten, Fortsetzung nach deren Freigabe, schnellen konkurrierenden Aktionen, tatsächlichem Atlasfehler und erfolgreicher erneuter Aktion; maximal 14 Cacheeinträge. DOM-Prüfung: kurze Wartephase bleibt auch später unsichtbar, längere wird angezeigt, Figur bleibt sichtbar, Fehler sofort sichtbar, Timer nach Schließen bereinigt; bisherige Marker-/Story-/Pausefälle weiterhin erfolgreich. Produktionsbuild bestanden.
+
+Browser: sechs schnelle tatsächliche Aktionen mit korrekten Clips Kopf/Kopf/Kichern/Kichern/Hüfte/Schulter; in allen Messpunkten sichtbare Figur, keine Fehlermeldung und kein Ladehinweis, stabile getrennte 44-px-Ziele, Cache 14. `p3-browser-reactions.json`, `after/p3-reactions-390.jpg`. Kontrollierte Verzögerung/Fehler im deterministischen DOM-/Player-Test, kein behaupteter Browser-Netzwerk-Drosseltest oder physischer RAM-Messwert.
+
+Verbleibend: echte langsame Netze können weiterhin einen sichtbaren Moment benötigen; Fehler werden nicht versteckt und dieselbe Aktion kann erneut ausgelöst werden. SHA / Deployment: ausstehend.
 
 ## Paket 4 – Gespräche und Geschenke
 

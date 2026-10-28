@@ -62,7 +62,7 @@ export class RigPreviewPlayer implements TavernPlayer {
   get reacting() { return this.key !== 'idle' || this.pending !== null; }
   get reactionsReady() { return this.ready; }
   constructor(private canvas: HTMLCanvasElement, private changed: () => void) { canvas.width = 480; canvas.height = 700; }
-  setHearts(count: number) { const previous = this.count; this.count = count; if (previous < 2 && count >= 2 && this.ready) this.prime(); }
+  setHearts(count: number) { const previous = this.count; this.count = count; if (count > previous && this.ready) this.prime(); }
   async start(who: Companion = 'mara') {
     this.stop(); const generation = this.generation; this.active = true;
     this.manifestAbort = new AbortController();
@@ -103,8 +103,8 @@ export class RigPreviewPlayer implements TavernPlayer {
     const generation = this.generation;
     this.failed.delete('head'); this.failed.delete('touch'); delete this.canvas.dataset.reactionError;
     this.loadingReactions = true; this.changed();
-    this.preparing = Promise.all([this.buffer('head', 3), this.buffer('touch', 3), ...(this.count >= 4 ? [this.buffer('giggle', 3)] : [])]).then(result => generation === this.generation && result.every(Boolean)).finally(() => {
-      if (generation === this.generation) { this.preparing = undefined; this.loadingReactions = !!this.pending; this.changed(); }
+    this.preparing = Promise.all([this.buffer('head', 2), this.buffer('touch', 2)]).then(result => generation === this.generation && result.every(Boolean)).finally(() => {
+      if (generation === this.generation) { this.preparing = undefined; this.loadingReactions = !!this.pending && !this.pendingReady; this.changed(); }
     });
     return this.preparing;
   }
@@ -122,7 +122,7 @@ export class RigPreviewPlayer implements TavernPlayer {
     this.prime(); this.changed();
     void this.buffer(key, this.startPages(key)).then(ready => {
       if (!ready || generation !== this.generation || intent !== this.intent || this.pending !== key) return;
-      this.pendingReady = true;
+      this.pendingReady = true; this.loadingReactions = false;
       if (this.key === 'idle' && !this.idleStill) {
         const neutral = this.clips.idle!.restFrames.reduce((a, b) => Math.abs(b - this.frame) < Math.abs(a - this.frame) ? b : a);
         const from = this.frame, steps = Math.min(8, Math.abs(neutral - from));
@@ -131,7 +131,9 @@ export class RigPreviewPlayer implements TavernPlayer {
       this.elapsed = 0; this.prime(); this.changed();
     });
   }
-  private startPages(_key: string) { return 4; }
+  // Sixteen decoded frames give the rolling four-page look-ahead time to fill.
+  // Waiting for four pages here doubled cold-start work and missed warm previews.
+  private startPages(_key: string) { return 2; }
   private urls(key: string, start: number, pages: number) { return this.clips[key]!.pages.slice(Math.floor(start / 8), Math.floor(start / 8) + pages); }
   private workingSet() {
     const urls = new Set([this.clips.idle!.pages[0]!]);
@@ -167,7 +169,7 @@ export class RigPreviewPlayer implements TavernPlayer {
   private prime() {
     if (!this.active || !this.clips.idle) return;
     const keep = this.workingSet();
-    const common = !this.pending ? ['head', 'touch', ...(this.count >= 2 ? ['joy'] : []), ...(this.count >= 4 ? ['giggle'] : [])].filter(key => key !== this.key && !this.failed.has(key)) : [];
+    const common = !this.pending ? ['head', 'touch', ...(this.count >= 2 ? ['joy'] : []), ...(this.count >= 2 ? ['giggle'] : []), ...(this.count >= 3 ? ['hip'] : [])].filter(key => key !== this.key && !this.failed.has(key)) : [];
     // Divide spare decoded pages among previews; the active clip keeps priority.
     const sparePerClip = Math.max(0, Math.floor((this.cache.limit - keep.size) / Math.max(1, common.length)));
     const warmPages = (key: string) => Math.min(sparePerClip, this.key === 'idle' ? key === 'head' ? 4 : 2 : ['head', 'touch', 'joy'].includes(this.key) ? 4 : 3);

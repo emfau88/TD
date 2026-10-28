@@ -60,6 +60,22 @@ try {
     ui.close();
   }
   console.log('PASS: both companions at hearts 0–3, permanent markers, locked explanations, reactions, stories and one character view.');
+  // Short waits remain quiet; a sustained wait and real failures remain visible.
+  ui.open(); click('[data-do=mara]'); await settle();
+  const cue=document.querySelector('.tv-load-status'), canvas=document.querySelector('.tv-figure canvas');
+  Object.defineProperty(canvas,'clientWidth',{configurable:true,get:()=>canvas.hidden?0:240});
+  Object.defineProperty(canvas,'clientHeight',{configurable:true,get:()=>canvas.hidden?0:350});
+  player.ready=false;ui.update();player.ready=true;ui.update();
+  assert.ok(parseFloat(document.querySelector('[data-region=shoulder]').style.left)>20,'loading completion repositions markers without a stage resize');
+  const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+  player.loadingReactions=true;ui.update();assert.equal(cue.hidden,true);
+  await delay(100);player.loadingReactions=false;ui.update();await delay(480);assert.equal(cue.hidden,true,'cancelled short wait never flashes later');
+  player.loadingReactions=true;ui.update();await delay(480);assert.equal(cue.hidden,false);assert.match(cue.textContent,/Moment|moment/);assert.equal(canvas.hidden,false,'retain the current pose');
+  player.loadingReactions=false;canvas.dataset.reactionError='true';ui.update();assert.equal(cue.hidden,false);assert.match(cue.textContent,/erneut|again/);
+  delete canvas.dataset.reactionError;ui.update();assert.equal(cue.hidden,true);
+  player.loadingReactions=true;ui.update();ui.close();await delay(480);player.loadingReactions=false;
+  ui.open();click('[data-do=mara]');await settle();assert.equal(cue.hidden,true,'closed character cannot leak a delayed hint');ui.close();
+  console.log('PASS: 450-ms loading cue, short-wait cancellation, visible pose, immediate failure and close cleanup.');
   ui.open(); assert.equal(session.tavernOpen,true); ui.destroy(); ui=undefined; assert.equal(session.tavernOpen,false);
   assert.deepEqual(destinations,['tavern','wisp','ilyra','tavern','wisp','ilyra']);
   console.log('PASS: 14 exit/manual-pause cases, stories, both companions, internal navigation and destroy preserve the hold lifecycle.');

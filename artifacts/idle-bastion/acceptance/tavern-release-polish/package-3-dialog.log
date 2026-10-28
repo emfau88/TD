@@ -1,0 +1,3 @@
+PASS: both companions at hearts 0–3, permanent markers, locked explanations, reactions, stories and one character view.
+PASS: 450-ms loading cue, short-wait cancellation, visible pose, immediate failure and close cleanup.
+PASS: 14 exit/manual-pause cases, stories, both companions, internal navigation and destroy preserve the hold lifecycle.
