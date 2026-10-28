@@ -35,7 +35,7 @@ Statuswerte: OFFEN / IN ARBEIT / ERLEDIGT / BLOCKIERT. ERLEDIGT setzt erfolgreic
 | 2 Berührungen ab Herz 1/2/3 | ERLEDIGT | `d361e4d`; 20/20 Tests, DOM-/Browsermatrix, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40692403336) | Geplante weitere UX-Pakete |
 | 3 Reaktionsladezeiten | ERLEDIGT | `ae8cf38`; Cache/Player/DOM/Browser und Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40694402033) | Langsame Netze können weiter warten müssen |
 | 4 Gespräche und Geschenke | ERLEDIGT | `671fb71`; 20/20 Tests, DOM/Browser DE/EN, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40696614303) | Geplantes optisches Paket 5 |
-| 5 Herzfeedback und Tavernenoptik | IN ARBEIT | Main synchron: `3ea7575`; gespeichertes Herzfeedback und mobile Gestaltung in Umsetzung | Prüfung / Deployment |
+| 5 Herzfeedback und Tavernenoptik | ERLEDIGT | `6693ff1`; sechs Speicherfälle, DOM/Browsermatrix, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40700042939) | Physische Geräte-/Audiofreigabe offen |
 | 6 Tutorial und Release-Regression | OFFEN | — | Vollständig |
 
 ## Paket 1 – Sichere automatische Tavernenpause
@@ -136,7 +136,7 @@ Prüfung: echter IndexedDB-Adapter mit kontrolliert verzögertem Schreibabschlus
 
 Browser: acht Kombinationen aus Mara/Ilyra, DE/EN und 320 × 568/390 × 844 ohne horizontalen Überlauf; Figurhöhe 295 bzw. 439 px, Markerziele 44 px, Fußaktionen innerhalb des Viewports. Desktop 1440 × 900 und Story-Einstieg/-Ausstieg geprüft. Herz 1 samt Leuchten/Schulter-Hinweis im Browser ausgelöst. Belege `p5-browser-matrix.json` und `after/p5-*.jpg`; keine JS-Warnungen/-Fehler. Reduced Motion anhand CSS geprüft, kein physischer Geräte-/Lautsprechertest behauptet.
 
-Verbleibend: Auf 320 px ist Scrollen zwischen Figur und Gespräch bewusst nötig. Sichtprüfung ersetzt keine persönliche Nutzerfreigabe. SHA / Deployment: werden nach dem Paket-Commit ergänzt.
+Verbleibend: Auf 320 px ist Scrollen zwischen Figur und Gespräch bewusst nötig. Sichtprüfung ersetzt keine persönliche Nutzerfreigabe. SHA: `6693ff108897b02b802850c92b5f1b7ecd929b0f`. [Pages-Lauf 40700042939](https://github.com/emfau88/TD/actions/runs/40700042939): erfolgreich für diesen Code-SHA.
 
 
 
