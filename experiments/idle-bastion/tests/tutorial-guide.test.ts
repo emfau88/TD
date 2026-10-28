@@ -79,3 +79,39 @@ test('saving stages and temporarily absent presenters still show progress and an
   paint();guide.update(b,view);assert.equal(guide.element.hidden,false);assert.match(guide.element.textContent!,/Spare 60 Gold/);
   setLanguage('en');
 });
+
+test('compact guide retains the objective and original required action across updates',()=>{
+  setLanguage('en');const {doc,guide,paint,b}=setup();b.highestCleared=5;
+  const before=b.snapshot(),button=doc.getElementById('meet-wisp') as HTMLButtonElement;
+  let clicks=0;button.addEventListener('click',()=>clicks++);
+  paint('#wisp-arrival');guide.update(b,view);
+  const details=doc.getElementById('guide-details')!,toggle=doc.getElementById('guide-toggle') as HTMLButtonElement;
+  assert.equal(details.hidden,true);assert.equal(toggle.getAttribute('aria-expanded'),'false');
+  assert.match(doc.querySelector('.guide-summary')!.textContent!,/Welcome Wisp/);
+  assert.equal(button.closest('#guide-details'),null);
+  assert.equal(button.closest('.guide-actions')?.parentElement,guide.element);
+  button.click();assert.equal(clicks,1);
+  toggle.click();assert.equal(details.hidden,false);assert.equal(toggle.getAttribute('aria-expanded'),'true');
+  paint('#wisp-arrival');guide.update(b,view);assert.equal(details.hidden,false);
+  toggle.click();assert.equal(details.hidden,true);
+  assert.deepEqual(b.snapshot(),before);
+  guide.update(b,{...view,placing:true});
+  assert.equal(button.closest('#wisp-arrival')!.parentElement!.id,'app');
+  assert.equal(doc.querySelectorAll('#meet-wisp').length,1);
+});
+test('compact waiting goal follows cleared waves and keeps DE/EN labels current',()=>{
+  const {doc,guide,paint,b}=setup();b.highestCleared=3;
+  setLanguage('de');paint('.goal-ribbon');guide.update(b,view);
+  assert.match(doc.querySelector('.guide-summary')!.textContent!,/Welle 5.*3\/5/);
+  assert.equal(doc.getElementById('guide-toggle')!.getAttribute('aria-label'),'Tutorialhinweis ausklappen');
+  b.highestCleared=4;setLanguage('en');paint('.goal-ribbon');guide.update(b,view);
+  assert.match(doc.querySelector('.guide-summary')!.textContent!,/wave 5.*4\/5/);
+  assert.equal(doc.getElementById('guide-toggle')!.getAttribute('aria-label'),'Expand tutorial hint');
+});
+test('defeat notices remain readable even when ordinary tutorial help is collapsed',()=>{
+  const {doc,guide,paint,b}=setup();paint('#fallback-note');guide.update(b,view);
+  assert.equal(doc.getElementById('guide-details')!.hidden,false);
+  assert.equal(doc.getElementById('guide-toggle')!.hidden,true);
+  paint('.goal-ribbon');guide.update(b,view);
+  assert.equal(doc.getElementById('guide-details')!.hidden,true);
+});

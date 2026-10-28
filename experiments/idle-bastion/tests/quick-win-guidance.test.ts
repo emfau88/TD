@@ -1,4 +1,7 @@
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
+import { TutorialGuide } from '../src/tutorial-guide';
+import { IdleBattle } from '../src/battle';
 import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 import { QuickWinGuidance, quickWinNotice, cannonIsNew, workshopGoldMissing, type QuickWinSnapshot, type QuickWinPreferences } from '../src/quick-win-guidance';
@@ -96,4 +99,35 @@ test('optional workshop notice waits for tutorial completion without consuming i
   assert.equal(quickWinNotice(value, preferences, false), 'cannon');
   assert.deepEqual(preferences, before);
   assert.equal(quickWinNotice(value, preferences), 'workshop');
+});
+
+test('live quick-win presenter keeps updating and dispatching after tutorial actions move', () => {
+  const dom=new JSDOM(readFileSync('experiments/idle-bastion/index.html','utf8'),{url:'https://example.test'});
+  const doc=dom.window.document, previous=Object.getOwnPropertyDescriptor(globalThis,'document');
+  Object.defineProperty(globalThis,'document',{configurable:true,value:doc});
+  const abort=new dom.window.AbortController(),actions:string[]=[],dismissed:string[]=[];
+  try {
+    const ui=new QuickWinGuidance('moved-actions',{action:a=>actions.push(a),dismissed:a=>dismissed.push(a)},abort.signal);
+    const guide=new TutorialGuide(doc);
+    const b=IdleBattle.restore(JSON.parse(readFileSync('artifacts/idle-bastion/acceptance/onboarding/menu-guide/browser.json','utf8')).final.battle)!;
+    b.introduction.stage='done';b.discovery='cannon';b.tutorial.hidden=false;
+    const view={suppressed:false,towerAtCap:false,tutorialActive:true};
+    ui.update(state(),view);
+    guide.update(b,{contextOpen:false,placing:false,blocked:false,paused:false});
+    const button=doc.getElementById('quick-win-open') as HTMLButtonElement;
+    assert.equal(button.closest('.guide-actions')?.parentElement,guide.element);
+    setLanguage('de');assert.doesNotThrow(()=>ui.update(state(),view));
+    assert.equal(button.textContent,'Im Baukatalog ansehen');
+    button.click();assert.deepEqual(actions,['cannon']);
+    ui.update(state({levelSix:true}),{...view,tutorialActive:false});
+    assert.equal(button.textContent,'Werkstatt öffnen');
+    (doc.getElementById('quick-win-dismiss') as HTMLButtonElement).click();
+    assert.deepEqual(dismissed,['workshop']);
+    assert.equal(ui.element.hidden,true);
+    guide.update(b,{contextOpen:true,placing:false,blocked:false,paused:false});
+    assert.equal(button.closest('#quick-win-hint'),ui.element);
+  } finally {
+    abort.abort();setLanguage('en');dom.window.close();
+    if(previous)Object.defineProperty(globalThis,'document',previous);else Reflect.deleteProperty(globalThis,'document');
+  }
 });

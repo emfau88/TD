@@ -26,6 +26,8 @@ export class QuickWinGuidance {
   private readonly badge: HTMLElement;
   private readonly tabBadge: HTMLElement;
   private readonly workshopLink: HTMLButtonElement;
+  private readonly openButton: HTMLButtonElement;
+  private readonly dismissButton: HTMLButtonElement;
   private readonly preferences: QuickWinPreferences = emptyPreferences();
   private notice?: QuickWinNotice;
   private readonly key: string;
@@ -46,13 +48,16 @@ export class QuickWinGuidance {
     document.getElementById('tower-tab')!.append(this.tabBadge);
     this.workshopLink = document.createElement('button'); this.workshopLink.id = 'tower-workshop-link'; this.workshopLink.type = 'button'; this.workshopLink.hidden = true;
     document.getElementById('action-hint')!.after(this.workshopLink);
-    this.element.querySelector('#quick-win-open')!.addEventListener('click', () => {
+    // The tutorial guide may move the existing actions outside collapsed copy.
+    this.openButton = this.element.querySelector<HTMLButtonElement>('#quick-win-open')!;
+    this.dismissButton = this.element.querySelector<HTMLButtonElement>('#quick-win-dismiss')!;
+    this.openButton.addEventListener('click', () => {
       if (!this.notice) return;
       const notice = this.notice;
       if (notice === 'cannon') this.inspectCannon(); else this.inspectWorkshop();
       this.ports.action(notice);
     }, { signal });
-    this.element.querySelector('#quick-win-dismiss')!.addEventListener('click', () => {
+    this.dismissButton.addEventListener('click', () => {
       if (!this.notice) return;
       const notice = this.notice;
       this.remember(notice === 'cannon' ? 'cannonDismissed' : 'workshopDismissed');
@@ -93,9 +98,9 @@ export class QuickWinGuidance {
     const missing = workshopGoldMissing(state.gold), cost = this.element.querySelector<HTMLElement>('#quick-win-cost')!;
     cost.hidden = !workshop;
     cost.textContent = workshop ? t(missing ? 'Ausbau: {0} Gold · noch {1} Gold.' : 'Ausbau: {0} Gold · bereit.', currency.format(SETTLEMENT.workshopUpgradeCost), currency.format(missing)) : '';
-    this.element.querySelector('#quick-win-open')!.textContent = t(workshop ? 'Werkstatt öffnen' : 'Im Baukatalog ansehen');
-    this.element.querySelector('#quick-win-dismiss')!.textContent = t('Später');
-    this.element.querySelector('#quick-win-dismiss')!.setAttribute('aria-label', t('Hinweis schließen'));
+    this.openButton.textContent = t(workshop ? 'Werkstatt öffnen' : 'Im Baukatalog ansehen');
+    this.dismissButton.textContent = t('Später');
+    this.dismissButton.setAttribute('aria-label', t('Hinweis schließen'));
     return true;
   }
 }

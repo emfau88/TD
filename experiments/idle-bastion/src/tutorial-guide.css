@@ -1,5 +1,5 @@
 /* One compact tutorial slot. Keep original controls and their listeners. */
-#tutorial-guide { position:absolute; z-index:18; top:calc(var(--header) + 9px); left:14px; width:320px; max-width:calc(100% - 104px); padding:10px 12px; color:#e9dec5; border:1px solid #9d8355; background:linear-gradient(115deg,#24342ff7,#111f25f7); box-shadow:0 4px 12px #0005; }
+#tutorial-guide { position:absolute; z-index:18; top:auto; bottom:calc(var(--dock) + 12px); left:50%; transform:translateX(-50%); width:480px; max-width:calc(100% - 24px); padding:10px 12px; color:#e9dec5; border:1px solid #9d8355; background:linear-gradient(115deg,#24342ff7,#111f25f7); box-shadow:0 4px 12px #0005; }
 #tutorial-guide[hidden],#tutorial-guide [hidden],.guide-inline[hidden],.guide-context-next[hidden] { display:none!important; }
 #tutorial-guide .tutorial-step { margin:0 0 5px; font-size:11px; }
 #tutorial-guide .guide-content > * { position:static; inset:auto; transform:none; width:100%; min-width:0; max-width:none; max-height:none; padding:0; margin:0; border:0; border-radius:0; background:none; box-shadow:none; }
@@ -28,7 +28,7 @@
 #placement-help > .guide-inline { width:100%; flex-basis:100%; margin-bottom:4px; }
 .guide-context-next { margin:6px 0; color:#d9c390; font:12px/1.4 Arial,sans-serif; }
 @media(max-width:700px) {
-  #tutorial-guide { left:8px; width:calc(100% - 96px); max-width:320px; padding:8px 9px; }
+  #tutorial-guide { width:calc(100% - 16px); max-width:480px; padding:8px 9px; bottom:calc(var(--dock) + 10px); }
   #tutorial-guide h2,#tutorial-guide #quick-win-title,#tutorial-guide #wisp-arrival strong,#tutorial-guide #goal-title { font-size:16px; }
   #tutorial-guide :is(.onboarding-actions,.quick-win-actions) { gap:4px; margin-top:7px; }
   #tutorial-guide button { min-height:44px; padding:7px 9px; font-size:11px; }
@@ -64,4 +64,22 @@
   :is(#tutorial-guide,#onboarding-card,#discovery-card,#wisp-arrival,.quick-win-hint) button:not(.goal-copy) { min-height:44px; font-size:13px; }
   .goal-copy { min-width:0; }
   #goal-action { min-width:56px; }
+}
+
+/* Keep the map clear: compact goal above the dock, optional explanation inside.
+   Original action nodes stay outside the collapsible region. */
+#tutorial-guide .guide-header { display:flex; gap:12px; align-items:center; justify-content:space-between; }
+#tutorial-guide .guide-header > div { min-width:0; }
+#tutorial-guide .guide-summary { margin:0; color:#f3dfb7; font:13px/1.4 "Segoe UI",system-ui,sans-serif; }
+#tutorial-guide #guide-toggle { flex:0 0 auto; min-height:44px; min-width:64px; padding:6px 9px; font:13px/1.2 var(--display); }
+#tutorial-guide #guide-details { margin-top:6px; max-height:min(34svh,260px); overflow-y:auto; overscroll-behavior:contain; }
+#tutorial-guide .guide-actions:empty { display:none; }
+#tutorial-guide .guide-actions > #meet-wisp { width:100%; }
+#tutorial-guide .guide-actions :is(.onboarding-actions,.quick-win-actions) { display:flex; gap:6px; flex-wrap:wrap; }
+#tutorial-guide .guide-actions button { white-space:normal; }
+#tutorial-guide.guide-compact .guide-actions:has(> .empty) { display:none; }
+.unified-tutorial #placement-help { left:50%; right:auto; transform:translateX(-50%); width:max-content; max-width:calc(100% - 16px); }
+@media(max-width:700px) {
+  #tutorial-guide .guide-header { gap:8px; }
+  #tutorial-guide .guide-summary { font-size:12px; }
 }

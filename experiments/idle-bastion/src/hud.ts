@@ -53,9 +53,9 @@ export function nextObjective(battle: IdleBattle): string {
     case 0: return t('Die Verteidigung läuft. Erste Käfer bringen Gold — dein zweiter Turm ist bereits bezahlbar.');
     case 1: return t('Nächstes Ziel: eigener Waldwächter auf einem hellen Bauplatz · 75 Gold.');
     case 2: return t('Nächstes Ziel: einen Waldwächter verbessern · 60 Gold.');
-    case 3: return t("Nächstes Ziel: Werkstatt bauen · {0}.", battle.workshopKitAvailable ? t('kostenloser Bausatz bereit') : remaining(battle.workshopBuildCost));
+    case 3: return t("Nächstes Ziel: Werkstatt bauen · {0}.", battle.workshopKitAvailable ? t('kostenlos bauen') : remaining(battle.workshopBuildCost));
     case 4: return t("Nächstes Ziel: Frostfassung erforschen · {0}.", remaining(SETTLEMENT.researchCost));
-    case 5: return t("Nächstes Ziel: Frostkristall an einem freien Platz bauen · {0}.", battle.frostKitAvailable ? t('1 kostenloser Bausatz') : remaining(battle.towerBuildCost(2)));
+    case 5: return t("Nächstes Ziel: Frostkristall an einem freien Platz bauen · {0}.", battle.frostKitAvailable ? t('Erster Bau kostenlos') : remaining(battle.towerBuildCost(2)));
     case 6: return t('Nächstes Ziel: den ersten blauen Frosttreffer im Kampf beobachten.');
     case 7: return battle.wispUnlocked ? t('Wisp begrüßen · +10 % Kampf-Gold, arbeitet automatisch.') : t('Deine Kombination arbeitet. Welle 5 meistern, dann kommt Wisp.');
     case 8: return t('Wisp arbeitet: +10 % Kampf-Gold. Steinschleuder bauen · 135 Gold.');

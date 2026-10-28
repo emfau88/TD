@@ -14,7 +14,7 @@ export class LessonPointer {
       if (button && !button.closest('[hidden]')) button.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     }
     if (!target) { this.arrow.hidden = true; this.cueKey = ''; return; }
-    // Controls already name their action. A quiet outline leaves the card readable.
+    // A single inward cue settles into a gentle outline pulse; the control itself stays still.
     // Only positions in the world need a directional pointer.
     if (button) { this.arrow.hidden = true; this.cueKey = ''; return; }
     const { x, y } = target as LessonPoint;

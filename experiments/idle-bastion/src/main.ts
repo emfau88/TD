@@ -227,9 +227,9 @@ function syncUI(): void {
     : ilyraMode === 'cast' ? t('Sternensalve · Gegner innerhalb der blauen Reichweite antippen')
     : groundMode === 'mara' ? t('Mara · begehbares Ziel antippen')
     : groundMode && buildingBuilt(sim, groundMode) ? t('Neuen Standort wählen und Versetzen bestätigen')
-    : groundMode ? t("{0} · freien Platz antippen · {1}", buildingName(groundMode), groundMode === 'workshop' && sim.workshopKitAvailable ? t('kostenloser Bausatz') : t("{0} Gold", buildingCost(sim, groundMode)))
+    : groundMode ? t("{0} · freien Platz antippen · {1}", buildingName(groundMode), groundMode === 'workshop' && sim.workshopKitAvailable ? t('kostenlos') : t("{0} Gold", buildingCost(sim, groundMode)))
     : sim.preparing ? t('Startturm · Pfeil zeigt einen guten Platz · antippen und kostenlos bauen')
-    : sim.guiding ? t('Frostkristall · goldenes Feld antippen · 1 kostenloser Bausatz')
+    : sim.guiding ? t('Frostkristall · markierten Platz antippen · kostenlos')
     : t("{0} · freies Feld am Weg antippen und direkt bauen", towerDefinition(placementType ?? 1).name));
   if (selectedHero && !ilyraMode) element('placement-text').textContent = heroSelectionText(sim);
   if (selectedHero && heroFeedback && performance.now() < heroFeedbackUntil) element('placement-text').textContent = heroFeedback();
@@ -256,8 +256,8 @@ function syncUI(): void {
   element('pick-frost').setAttribute('aria-pressed', String(placementType === 2));
   element('pick-frost').classList.toggle('locked', !sim.settlement.frostResearched);
   element('frost-lock').textContent = t(sim.settlement.frostResearched ? t('Verlangsamung') : t('Frostfassung nötig'));
-  element('frost-price').textContent = sim.frostKitAvailable ? t('1 kostenloser Bausatz') : t(sim.settlement.frostResearched ? '110' : t('Forschung'));
-  element('pick-frost').setAttribute('aria-label', sim.frostKitAvailable ? t('Frostkristall · 1 kostenloser Bausatz') : t('Frostkristall · 110 Gold'));
+  element('frost-price').textContent = sim.frostKitAvailable ? t('Kostenlos') : t(sim.settlement.frostResearched ? '110' : t('Forschung'));
+  element('pick-frost').setAttribute('aria-label', sim.frostKitAvailable ? t('Frostkristall · erster Bau kostenlos') : t('Frostkristall · 110 Gold'));
   for (const [name, kind, role, condition] of [['cannon', 3, t('Flächenschaden'), t('Frost & Welle 5')], ['sniper', 4, t('Ignoriert Rüstung'), t('Welle 10 meistern')], ['storm', 5, t('Kette · höchstens drei Ziele'), t('Werkstattforschung & Welle 28')]] as const) {
     const unlocked = sim.isTowerUnlocked(kind);
     element(`pick-${name}`).classList.toggle('locked', !unlocked);
@@ -409,7 +409,7 @@ function syncUI(): void {
   if (workshopIcon.getAttribute('src') !== workshopSource) workshopIcon.src = workshopSource;
   element('workshop-card-title').textContent = t(settlement.workshopUpgraded ? t('Werkstatt II') : settlement.workshopBuilt ? t('Werkstatt I') : t('Werkstatt I'));
   element('workshop-card-copy').textContent = t(settlement.workshopUpgraded ? t('Fortlaufende Turmlevel') : settlement.frostResearched ? t('Werkstatt II ausbauen') : settlement.frostResearched ? t('Frosttechnik verfügbar') : settlement.workshopBuilt ? t('Frostfassung erforschen') : t('Bauen & forschen'));
-  element('workshop-card-price').textContent = t(settlement.workshopUpgraded ? t('✓ Ausgebaut') : settlement.frostResearched ? currency.format(SETTLEMENT.workshopUpgradeCost) : settlement.frostResearched ? t('✓ Erforscht') : `${settlement.workshopBuilt ? SETTLEMENT.researchCost : sim.workshopKitAvailable ? t('Bausatz · kostenlos') : SETTLEMENT.workshopCost}`);
+  element('workshop-card-price').textContent = t(settlement.workshopUpgraded ? t('✓ Ausgebaut') : settlement.frostResearched ? currency.format(SETTLEMENT.workshopUpgradeCost) : settlement.frostResearched ? t('✓ Erforscht') : `${settlement.workshopBuilt ? SETTLEMENT.researchCost : sim.workshopKitAvailable ? t('Kostenlos bauen') : SETTLEMENT.workshopCost}`);
   element('pick-workshop').classList.toggle('researched', settlement.frostResearched);
   element('workshop-title').textContent = t(settlement.workshopUpgraded ? t('Werkstatt II') : settlement.workshopBuilt ? t('Werkstatt I') : t('Werkstatt bauen'));
   element('workshop-description').textContent = t(settlement.workshopUpgraded ? t('Der neue Arbeitsplatz erschließt Turmlevel ab 7. Höhere Level erhöhen den Schaden; Reichweite und Feuerrate bleiben begrenzt.') : settlement.frostResearched
@@ -421,7 +421,7 @@ function syncUI(): void {
   element('workshop-upgrade-condition').hidden = !settlement.frostResearched || settlement.workshopUpgraded;
   element('workshop-upgrade-condition').textContent = t(sim.gold < SETTLEMENT.workshopUpgradeCost ? t("Noch {0} Gold für Werkstatt II.", currency.format(workshopGoldMissing(sim.gold))) : t('Bereit zum Ausbau · Turmlevel ab 7 freischalten.'));
   buildWorkshop.hidden = settlement.workshopBuilt;
-  buildWorkshop.textContent = t(sim.workshopKitAvailable ? t('Werkstatt platzieren · kostenloser Bausatz') : t("Werkstatt platzieren · {0} Gold", sim.workshopBuildCost));
+  buildWorkshop.textContent = t(sim.workshopKitAvailable ? t('Werkstatt kostenlos bauen') : t("Werkstatt platzieren · {0} Gold", sim.workshopBuildCost));
   buildWorkshop.disabled = blocked || sim.gold < sim.workshopBuildCost;
   element<HTMLButtonElement>('pick-workshop').disabled = sim.preparing || sim.guiding && (sim.introduction.stage !== 'workshop' && sim.introduction.stage !== 'research' || !sim.learningPaused);
   researchFrost.hidden = !settlement.workshopBuilt || settlement.frostResearched;
@@ -472,7 +472,7 @@ function syncUI(): void {
   element('tavern-gift-note').hidden = !gifts.owned;
   element('tavern-gift-note').textContent = giftLabel;
   element('settlement-tab').classList.toggle('new-building', warehouseNew || tavernNew);
-  element('settlement-tab').setAttribute('aria-label', t(ilyraNew ? t('Siedlung · Ilyra wartet in der Taverne') : tavernUpgradeNew ? t('Siedlung · Taverne II verfügbar') : tavernNew ? t('Siedlung · Kostenloser Tavernenbausatz verfügbar') : warehouseNew ? t('Siedlung · Neues Gebäude verfügbar: Vorratslager') : t('Siedlung')));
+  element('settlement-tab').setAttribute('aria-label', t(ilyraNew ? t('Siedlung · Ilyra wartet in der Taverne') : tavernUpgradeNew ? t('Siedlung · Taverne II verfügbar') : tavernNew ? t('Siedlung · Taverne kostenlos bauen') : warehouseNew ? t('Siedlung · Neues Gebäude verfügbar: Vorratslager') : t('Siedlung')));
   if (giftLabel) element('settlement-tab').setAttribute('aria-label', `${element('settlement-tab').getAttribute('aria-label')} · ${giftLabel}`);
   element('pick-tavern').title = giftLabel;
   element<HTMLImageElement>('tavern-icon').src = ART.tavern;
@@ -482,12 +482,12 @@ function syncUI(): void {
   element('pick-tavern').classList.toggle('researched', settlement.tavernBuilt);
   element('tavern-card-price').textContent = t(settlement.tavernBuilt
     ? ilyraNew ? t('II · Ilyra wartet') : tavernUpgradeNew ? t('II ausbauen · 1.200') : t("Stufe {0} · Gefährten", settlement.tavernLevel === 2 ? 'II' : 'I')
-    : sim.tavernUnlocked ? t('Kostenloser Bausatz') : t('Nach Welle 12'));
+    : sim.tavernUnlocked ? t('Kostenlos bauen') : t('Nach Welle 12'));
   element('tavern-description').textContent = t(settlement.tavernBuilt
     ? t('Dein Treffpunkt für alle Gefährten. Wähle eine Figur für ihre Rolle und Befehle.')
-    : t('Nach Welle 12 erhältst du einen kostenlosen Bausatz. Hier findest du deine Gefährten und ihre Fähigkeiten.'));
+    : t('Nach Welle 12 kannst du die Taverne kostenlos bauen. Dort triffst du deine Gefährten.'));
   element('tavern-condition').textContent = t(!settlement.tavernBuilt
-    ? sim.tavernUnlocked ? t('Bausatz verfügbar · kein Gold nötig. Wähle einen freien Platz in deiner Siedlung.') : t('Welle 12 erfolgreich abschließen. Der Bausatz bleibt verfügbar, bis du bauen möchtest.')
+    ? sim.tavernUnlocked ? t('Baue deine Taverne kostenlos auf einem freien Platz in der Siedlung.') : t('Besiege Welle 12. Danach kannst du die Taverne jederzeit kostenlos bauen.')
     : settlement.tavernLevel === 1
       ? sim.tavernUpgradeUnlocked ? t('Boss 25 besiegt. Mit Taverne II kannst du Ilyra kostenlos rekrutieren.') : t('Nächstes Ziel: Boss 25 besiegen, dann für 1.200 Gold zu Taverne II ausbauen und Ilyra rekrutieren.')
       : sim.ilyra ? t('Mara verstärkt Türme · Wisp versorgt · Ilyra kämpft.') : t('Taverne II · Ilyra kennenlernen und kostenlos rekrutieren.'));

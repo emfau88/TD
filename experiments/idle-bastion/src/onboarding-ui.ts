@@ -33,7 +33,7 @@ export function updateOnboarding(live: BattleSession, view: { placing: boolean; 
   el('onboarding-card').hidden ||= saving;
   el('lesson-savings').hidden = !saving || placing || contextOpen || live.awaitingResume;
   el('lesson-savings-label').textContent = t(stage === 'workshop' ? t('Erste Welle überstehen') : stage === 'research' ? t('Spare auf Frostforschung') : t('Spare auf den Frostturm'));
-  el('lesson-savings-value').textContent = t(stage === 'workshop' ? t('Bausatz danach') : t("{0} / {1} G", Math.min(Math.floor(b.gold), b.lessonCost), b.lessonCost));
+  el('lesson-savings-value').textContent = t(stage === 'workshop' ? t('Danach kostenlos bauen') : t("{0} / {1} G", Math.min(Math.floor(b.gold), b.lessonCost), b.lessonCost));
   const savings = el<HTMLProgressElement>('lesson-savings-progress'); savings.max = Math.max(1,b.lessonCost); savings.value = Math.min(b.gold,b.lessonCost); savings.hidden = stage === 'workshop';
   secondary.hidden ||= complete;
   const progress = tutorialProgress(b, intro);
@@ -44,13 +44,13 @@ export function updateOnboarding(live: BattleSession, view: { placing: boolean; 
     case 'build': copy = [t('Wähle deinen Waldwächter'), t('Tippe unten im Menü „Türme“ auf den kostenlosen Startturm. Danach wählen wir einen Platz am Weg.'), '']; break;
     case 'ready': copy = [t('Dein Turm ist bereit'), t('Dein Waldwächter steht. Starte die Verteidigung, wenn du bereit bist.'), t('Verteidigung starten')]; break;
     case 'combat': copy = [t('Dein erstes Gefecht'), t('Jeder besiegte Käfer bringt Gold. Nach dem ersten Treffer zeige ich dir das Upgrade.'), '']; break;
-    case 'upgrade': copy = complete ? [t('Level 2 genügt zunächst'), t('Jetzt überstehen wir die erste Welle. Danach habe ich einen kostenlosen Werkstatt-Bausatz für dich.'), t('Weiter · Welle beenden')]
+    case 'upgrade': copy = complete ? [t('Level 2 genügt zunächst'), t('Überstehe die erste Welle. Danach kannst du deine Werkstatt kostenlos bauen.'), t('Weiter · Welle beenden')]
       : [t('Tippe auf deinen Waldwächter'), t('Die Welle wartet. Öffne den markierten Turm und verbessere ihn einmal für 60 Gold auf Level 2.'), '']; break;
     case 'workshop': copy = complete ? [t('Deine Werkstatt steht'), t('Hier erforschst du neue Turmtypen. Dein gespartes Gold verwenden wir für Frosttechnik.'), t('Weiter · Frosttechnik entdecken')]
-      : waiting ? [t('Die erste Welle läuft'), t('Nach dem Sieg steht dein kostenloser Werkstatt-Bausatz bereit.'), '']
-      : catalogPanel === 'settlement' ? [t('Wähle die Werkstatt'), t('Tippe unten auf die Werkstatt-Karte. Die Kamera zeigt dir die Siedlungswiese am Kern. Dort setzt du den kostenlosen Bausatz.'), '']
-      : [t('Dein Werkstatt-Bausatz ist bereit'), t('Öffne unten „Siedlung“. Dort findest du deine Gebäude. Die Welle wartet.'), '']; break;
-    case 'research': copy = complete ? [t('Frostkristall freigeschaltet'), t('Für deinen ersten Frostkristall bekommst du einen kostenlosen Bausatz. Weitere kosten 110 Gold.'), t('Weiter · Frostturm bauen')]
+      : waiting ? [t('Die erste Welle läuft'), t('Nach dem Sieg kannst du deine Werkstatt kostenlos bauen.'), '']
+      : catalogPanel === 'settlement' ? [t('Wähle die Werkstatt'), t('Tippe unten auf die Werkstatt. Wähle dann einen freien Platz in der Siedlung. Der erste Bau ist kostenlos.'), '']
+      : [t('Baue deine Werkstatt kostenlos'), t('Öffne unten „Siedlung“. Dort findest du deine Gebäude. Die Welle wartet.'), '']; break;
+    case 'research': copy = complete ? [t('Frostkristall freigeschaltet'), t('Dein erster Frostkristall ist kostenlos. Jeder weitere kostet 110 Gold.'), t('Weiter · Frostturm bauen')]
       : [t('Öffne deine Werkstatt'), t('Tippe auf das neue Gebäude auf der Karte. Dort erforschst du die Frostfassung für 60 Gold.'), '']; break;
     case 'frost': copy = catalogPanel === 'tower' ? [t('Wähle den Frostkristall'), t('Tippe unten auf den Frostkristall. Danach wählen wir einen Platz mit überlappender Reichweite.'), '']
       : [t('Zurück zu deinen Türmen'), t('Öffne unten „Türme“. Der erforschte Frostkristall ist jetzt dort verfügbar.'), '']; break;
@@ -68,7 +68,7 @@ export function updateOnboarding(live: BattleSession, view: { placing: boolean; 
   el('lesson-note').hidden = !b.guiding || !contextOpen;
   el('lesson-note').textContent = t(stage === 'upgrade' ? t('Die Welle wartet. Einmal „Aufwerten“ genügt.')
     : stage === 'research' ? t('Die Welle wartet. Erforsche hier die Frostfassung.') : t('Schließe die Auswahl, um den nächsten Klick zu sehen.'));
-  el('archer-price').textContent = t(b.preparing ? stage === 'ready' ? t('Kostenlos versetzen') : t('1 kostenloser Bausatz') : b.guiding ? t('Einmal auf Level 2') : '75');
+  el('archer-price').textContent = t(b.preparing ? stage === 'ready' ? t('Kostenlos versetzen') : t('Kostenlos') : b.guiding ? t('Einmal auf Level 2') : '75');
   el('archer-title').textContent = t(b.preparing ? t('Startturm') : t('Waldwächter'));
   el('pick-archer').setAttribute('aria-label', t(b.preparing ? t('Kostenlosen Startturm platzieren oder versetzen') : b.guiding ? t('Startturm und erstes Upgrade ansehen') : t('Waldwächter platzieren · 75 Gold')));
   if (b.guiding) {

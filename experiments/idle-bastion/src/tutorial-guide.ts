@@ -24,7 +24,7 @@ export function tutorialNext(b: IdleBattle): string {
     case 'upgrade': return t('Startturm öffnen und einmal auf Level 2 aufwerten.');
     case 'workshop': return b.lessonComplete ? t('Weiter zur Frostforschung.')
       : b.workshopKitAvailable ? t('In der Siedlung die Werkstatt wählen und platzieren.')
-      : t('Welle 1 meistern und den kostenlosen Werkstatt-Bausatz erhalten.');
+      : t('Welle 1 meistern, dann die Werkstatt kostenlos bauen.');
     case 'research': return b.lessonComplete ? t('Weiter: kostenlosen Frostkristall platzieren.')
       : b.gold < b.lessonCost ? t('Spare {0} Gold für die Frostforschung.', b.lessonCost)
       : t('Werkstatt öffnen und Frostfassung erforschen.');
@@ -44,6 +44,13 @@ export class TutorialGuide {
   private readonly heading: HTMLElement;
   private readonly next: HTMLElement;
   private readonly idle: HTMLElement;
+  private readonly details: HTMLElement;
+  private readonly summary: HTMLElement;
+  private readonly toggle: HTMLButtonElement;
+  private readonly actions: HTMLElement;
+  private actionGroup?: HTMLElement;
+  private actionHome?: Comment;
+  private collapsed = true;
   private active?: HTMLElement;
   private readonly homes = new Map<HTMLElement, Comment>();
   private readonly contextLabel: HTMLElement;
@@ -53,7 +60,12 @@ export class TutorialGuide {
     this.element = doc.createElement('section');
     this.element.id = 'tutorial-guide'; this.element.hidden = true;
     this.element.setAttribute('aria-labelledby', 'tutorial-guide-heading');
-    this.element.innerHTML = '<span id="tutorial-guide-heading" class="tutorial-step"></span><div class="guide-content"></div><p class="guide-next" hidden></p>';
+    this.element.innerHTML = '<div class="guide-header"><div><span id="tutorial-guide-heading" class="tutorial-step"></span><p class="guide-summary"></p></div><button id="guide-toggle" type="button" aria-controls="guide-details"></button></div><div id="guide-details"><div class="guide-content"></div><p class="guide-next" hidden></p></div><div class="guide-actions"></div>';
+    this.details = this.element.querySelector('#guide-details')!;
+    this.summary = this.element.querySelector('.guide-summary')!;
+    this.toggle = this.element.querySelector('#guide-toggle')!;
+    this.actions = this.element.querySelector('.guide-actions')!;
+    this.toggle.addEventListener('click', () => { this.collapsed = !this.collapsed; this.syncCollapse(); });
     this.heading = this.element.querySelector('#tutorial-guide-heading')!;
     this.content = this.element.querySelector('.guide-content')!;
     this.next = this.element.querySelector('.guide-next')!;
@@ -66,7 +78,19 @@ export class TutorialGuide {
     this.placementLabel = doc.createElement('span'); this.placementLabel.className = 'tutorial-step guide-inline';
     this.placementLabel.hidden = true; doc.getElementById('placement-help')!.prepend(this.placementLabel);
   }
+  private syncCollapse(): void {
+    // Alerts keep their full explanation. Collapsing never hides a required action.
+    const compact = this.collapsed && !this.toggle.hidden;
+    this.element.classList.toggle('guide-compact', compact);
+    this.details.hidden = compact;
+    this.summary.hidden = !compact;
+    this.toggle.textContent = t(compact ? 'Details' : 'Weniger');
+    this.toggle.setAttribute('aria-label', t(compact ? 'Tutorialhinweis ausklappen' : 'Tutorialhinweis einklappen'));
+    this.toggle.setAttribute('aria-expanded', String(!compact));
+  }
   private restore(): void {
+    if (this.actionGroup) this.actionHome!.replaceWith(this.actionGroup);
+    this.actionGroup = undefined; this.actionHome = undefined;
     if (this.active) this.homes.get(this.active)!.after(this.active);
     this.active = undefined; this.idle.remove();
   }
@@ -109,6 +133,11 @@ export class TutorialGuide {
           chosen.before(marker); this.homes.set(chosen, marker);
         }
         this.content.append(chosen); this.active = chosen;
+        const actions = chosen.querySelector<HTMLElement>('.onboarding-actions, .quick-win-actions, #meet-wisp');
+        if (actions) {
+          this.actionHome = this.doc.createComment('tutorial action home');
+          actions.before(this.actionHome); this.actions.append(actions); this.actionGroup = actions;
+        }
       }
     }
     if (!chosen) { this.idle.textContent = next; this.content.append(this.idle); }
@@ -124,6 +153,9 @@ export class TutorialGuide {
         ? t('Frost hält Gegner länger in Reichweite deiner Pfeile.')
         : t('Baue Türme oder werte sie auf.');
     }
+    this.summary.textContent = next;
+    this.toggle.hidden = chosen?.id === 'boss-banner' || chosen?.id === 'fallback-note';
+    this.syncCollapse();
     this.element.hidden = false;
   }
 }
