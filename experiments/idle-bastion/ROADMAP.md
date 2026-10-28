@@ -1,6 +1,6 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
-**Aktueller Auftrag · 28.10.2026:** Tavernen- und Tutorial-Release-Polish, sechs Pakete selbstständig nacheinander auf Main inklusive Tests, Commit/Push und Deploymentprüfung. Der vom Nutzer ausdrücklich verlangte [Masterplan](../../artifacts/idle-bastion/acceptance/tavern-release-polish/PLAN.md) führt für diesen Auftrag Status, Abnahme und Nachweise. Die frühere Vormerkung zur Pfeilentfernung ist damit beauftragt.
+**Aktueller Auftrag · 28.10.2026:** Tavernen- und Tutorial-Release-Polish, sechs Pakete selbstständig nacheinander auf Main inklusive Tests, Commit/Push und Deploymentprüfung. Der vom Nutzer ausdrücklich verlangte [Masterplan](../../artifacts/idle-bastion/acceptance/tavern-release-polish/PLAN.md) führt für diesen Auftrag Status, Abnahme und Nachweise. Die frühere Vormerkung zur Pfeilentfernung ist damit beauftragt. **Stand:** Pakete 1–5 erledigt; Paket 6 als `36c2ff8` veröffentlicht, vollständige Browserabnahme wegen Eingabe-Timeouts blockiert. Neuer geprüfter ZIP-Export im Lieferordner `Dokumente/Towers-and-Tantrums-Kongregate-2026-10-28-Polish-36c2ff8`; keine Einreichungsfreigabe behauptet.
 
 **Kongregate-Einreichungspaket · 28.10.2026, ausdrücklich beauftragt:**
 
@@ -18,9 +18,9 @@
 - [x] Pauseknopf zentriert oben bei Wellen-/Ansichtssteuerung; Desktop/Mobil geprüft. Mobile Position per Screenshot vom Nutzer freigegeben, anschließend ausdrücklich Commit und Push beauftragt.
 - [x] Als `0438c8e` auf Main gepusht und über [Pages-Lauf 40603849848](https://github.com/emfau88/TD/actions/runs/40603849848) erfolgreich veröffentlicht. Live bei 390/320 px geprüft: einheitliche Kachel, zentrierter Pauseknopf, Touch-Pause/Fortsetzen, Reload und Rückkehr zu normalen Hinweisen nach Tutorialende; keine Seitenfehler.
 
-**Vorgemerkt: Pfeile in Tutorialmeldungen · 28.10.2026, noch nicht umsetzen:**
+**Frühere Vormerkung: Pfeile in Tutorialmeldungen · durch aktuellen Release-Polish beauftragt:**
 
-- [ ] Pfeilzeichen in den Tutorialmeldungen entfernen; wo zur Bedienung nötig durch kurze, natürliche Beschriftungen ersetzen. Die bestehenden Aktionen bleiben erreichbar.
+- [x] In Paket 6 umgesetzt und veröffentlicht: dekorative Pfeile entfernt, natürliche Handlungsbeschriftungen und dezente Baukarten-Hervorhebung. Vollständige Browserabnahme siehe aktuellen Masterplan.
 - [x] Größenfrage eingeordnet: 320 × 568 px ist die sehr kleine Handyansicht, 844 × 390 px Querformat; bei 390 × 844 px beansprucht die kompakte Kachel deutlich weniger Bildschirmfläche. Nutzer wünscht deshalb aktuell keine weitere Layoutänderung.
 
 **Turmwerte und Tutorial-Übergang · 27.10.2026, Nutzerwunsch:**

@@ -1,0 +1,26 @@
+{
+  "sourceCommit": "36c2ff8a2bd530be3e41cca1d49b598b916732bb",
+  "cleanSource": true,
+  "zipCRC": "passed",
+  "manifestHashes": "all matched",
+  "standaloneEntries": 359,
+  "staticUrlReferences": 355,
+  "missingStaticUrls": [],
+  "httpFiles200": 358,
+  "separateUploadEquivalent": true,
+  "archives": [
+    {
+      "file": "01-game/Towers-and-Tantrums.zip",
+      "bytes": 77680759,
+      "sha256": "c52f570fb3aabd0c0af687d7cdb4c863e9ca01e1304a4758386ea141e4bf68bf"
+    },
+    {
+      "file": "01-game/separate-upload/additional-files.zip",
+      "bytes": 77671352,
+      "sha256": "8766d8d922521e2fd19a46c155c6d1a871da487de1006841f74156195cd76593"
+    }
+  ],
+  "browserLimit": "Complete click-through and host-specific save/audio verification remain blocked by browser input timeouts. No Kongregate upload or submission.",
+  "browserStartup": "Standalone build renders introduction 1/14 at 390x844, no observed JavaScript warnings/errors; first two actions work, full click-through blocked.",
+  "deliveryFolder": "C:\\Users\\madde\\Documents\\Towers-and-Tantrums-Kongregate-2026-10-28-Polish-36c2ff8"
+}

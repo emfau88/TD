@@ -36,7 +36,7 @@ Statuswerte: OFFEN / IN ARBEIT / ERLEDIGT / BLOCKIERT. ERLEDIGT setzt erfolgreic
 | 3 Reaktionsladezeiten | ERLEDIGT | `ae8cf38`; Cache/Player/DOM/Browser und Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40694402033) | Langsame Netze können weiter warten müssen |
 | 4 Gespräche und Geschenke | ERLEDIGT | `671fb71`; 20/20 Tests, DOM/Browser DE/EN, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40696614303) | Geplantes optisches Paket 5 |
 | 5 Herzfeedback und Tavernenoptik | ERLEDIGT | `6693ff1`; sechs Speicherfälle, DOM/Browsermatrix, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40700042939) | Physische Geräte-/Audiofreigabe offen |
-| 6 Tutorial und Release-Regression | BLOCKIERT | Tutorialcode umgesetzt; 380/413 Tests, ausschließlich 33 Baselinefehler; Modellablauf 1–14 bestanden | Vollständiger Browserablauf wegen Eingabe-Timeouts offen; Export / Deployment werden ergänzt |
+| 6 Tutorial und Release-Regression | BLOCKIERT | `36c2ff8`; 380/413 Tests, keine neuen Fehler; Modellablauf 1–14, ZIP geprüft; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40706758619) | Vollständiger Browserablauf wegen Eingabe-Timeouts offen |
 
 ## Paket 1 – Sichere automatische Tavernenpause
 
@@ -160,10 +160,18 @@ Einordnung der Altfehler: Nachweislich enthalten sind veraltete Schema-/Social-S
 
 Browser: aktueller frischer Start und die ersten Schritte bis zur Bauauswahl auf 320 × 568 sichtbar geprüft; Nachweis `after/p6-build-en-320.jpg`. Vorhandene Tavernenprüfungen aus Paketen 1–5 bleiben gültig. Der komplette anschließende Canvas-Bauablauf ist **nicht** als bestanden ausgewiesen: wiederholte CDP-Eingabe-Timeouts (`Emulation.setFocusEmulationEnabled`, `DOM.describeNode`, `DOM.resolveNode`), auch nach neuer Tabanbindung; ein abschließender Drag-Versuch setzte die Browser-Sitzung zurück. Windows-App-Zugriff wartete vergeblich auf die Toolfreigabe. Das ist eine Grenze der Prüfungsumgebung, kein nachgewiesener Fehler des Spiels. Keine versteckten Zustandsänderungen zur Umgehung des Tests vorgenommen.
 
-Nächster Schritt: Mit funktionierender Browser-Eingabe den vollständigen echten Ablauf DE/EN, Desktop/320/390 inklusive Frost, nachgelagerten Karten und den finalen Kongregate-Start/Save-Reload prüfen. Erst danach Paket 6 auf ERLEDIGT setzen. Code-SHA / Pages / neuer ZIP-Nachweis werden nach Sicherung ergänzt.
+Nächster Schritt: Mit funktionierender Browser-Eingabe den vollständigen echten Ablauf DE/EN, Desktop/320/390 inklusive Frost, nachgelagerten Karten und den finalen Kongregate-Start/Save-Reload prüfen. Erst danach Paket 6 auf ERLEDIGT setzen. Code-SHA `36c2ff8a2bd530be3e41cca1d49b598b916732bb`; [Pages-Lauf 40706758619](https://github.com/emfau88/TD/actions/runs/40706758619) erfolgreich.
+
+Kongregate: aus genau diesem sauberen Code-Commit neu gebaut. Voll-ZIP 77.680.759 Bytes, SHA-256 `c52f570fb3aabd0c0af687d7cdb4c863e9ca01e1304a4758386ea141e4bf68bf`. 359 Einträge einschließlich lokaler Lizenzdatei, index.html im Wurzelpfad, alle Manifest-Hashes/ZIP-CRC gültig. 355 statische URL-Ziele vorhanden; 358 Builddateien mit HTTP 200 und korrekter Länge. Separate Uploadvariante bytegleich. Nachweis: `kongregate-verification.json`, `kongregate-build-manifest.json` und wiederholbares `verify-kongregate.py`. Eigenständiger Export startet im Browser bei 390 × 844 mit Einführung 1/14 ohne beobachtete JS-Warnungen/-Fehler; erste zwei Aktionen bedienbar, anschließend derselbe Eingabe-Timeout. Beleg `after/p6-kongregate-start-en-390.jpg`. Vollständige Bedien-/Save-/Audioabnahme auf Kongregate bleibt offen.
+
+Neuer Lieferordner: `C:/Users/madde/Documents/Towers-and-Tantrums-Kongregate-2026-10-28-Polish-36c2ff8`. Beide kopierten ZIPs per SHA-256 mit dem geprüften Original verglichen. Bestehender älterer Export erhalten; für weitere Tests nur diesen neuen Ordner verwenden. Kein Upload oder Submit.
 
 
 
 ## Gesamtergebnis und Releaseentscheidung
 
-Noch offen. Abschlussbericht enthält Status aller sechs Pakete, Code-SHAs und erfolgreiche Deployments, tatsächliche Bugfixes, Browserbelege, verbleibende Probleme, kritische UX-Bewertung und begründete Kongregate-Review-Einschätzung.
+Pakete 1–5 sind technisch abgenommen und veröffentlicht. Paket 6 ist implementiert und ebenfalls veröffentlicht; seine vollständige Browserabnahme bleibt BLOCKIERT durch die beschriebene Eingabeverbindung. Sämtlicher Code und Prüfstand sind im Repository gesichert. Nächste Arbeit ist die oben konkret benannte Browserabnahme, kein weiteres Featurepaket.
+
+Die Taverne hat nun eine klare Trennung zwischen persönlichen Geschichten oben, Berührungen an der Figur und drei stabilen Hauptaktionen. Die Herzprogression 1/2/3 wird tatsächlich nutzbar. Auf 320 px ist die Figur größer; dafür muss zwischen Figur und Gespräch gescrollt werden. Das ist eine bewusste Abwägung und noch keine subjektive Nutzerfreigabe. Langsame Netze können trotz verzögertem Ladehinweis weiter warten müssen; physischer Smartphone-Speicherverbrauch wurde nicht gemessen.
+
+**Kongregate-Einschätzung: technisch vorbereiteter Prüfexport, noch keine uneingeschränkte Empfehlung zum Submit.** Vorher vollständigen aktuellen Browserdurchlauf und Kongregate-Preview mit Save/Reload/Audio abschließen sowie die 33 historischen Testfehler, besonders Save-Fixtures, gesondert einordnen. Keine zusätzlichen Kampf-/Boss-/Balancewerte, Offline-Grenzen oder Ertragsformeln geändert. Die angefragten Original-Smartphonebilder fehlten; alle gezeigten Vorher-/Nachherbelege stammen ausdrücklich aus unseren Browserprüfungen.
