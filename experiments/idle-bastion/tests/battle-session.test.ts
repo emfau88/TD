@@ -1,5 +1,6 @@
 import { createSocial as createLegacySocial } from '../src/tavern-social-legacy';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { IDBFactory } from 'fake-indexeddb';
 import { IdleBattle, type BattleSnapshot } from '../src/battle';
@@ -638,4 +639,93 @@ test('new gift notices wait for a durable save and do not replay on restore', as
   const failed = session.command(battle => { battle.social.gifts++; }); await tick();
   store.pending!.reject(new Error('gift save rejected')); assert.equal(await failed, false);
   assert.equal(session.battle.drainEvents().some(e => e.type === 'gift-found'), false);
+});
+
+
+test('tavern hold freezes every combat field in normal and boss fights at different frame rates', async () => {
+  const saved = JSON.parse(readFileSync(new URL('../../../artifacts/idle-bastion/acceptance/early-balance-release/selected/B-snapshots.json', import.meta.url), 'utf8'));
+  for (const key of ['active10', 'channel15', 'channel25']) {
+    const battle = IdleBattle.restore(saved[key]); assert.ok(battle, key);
+    const store = new ControlledStore(); store.current = fixture(battle);
+    const session = await open(store); await resume(session);
+    session.setTavernOpen(true); await session.flush();
+    const before = session.battle.snapshot();
+    for (const fps of [60, 10, 2]) for (let i = 0; i < fps * 3; i++) session.advance(1 / fps);
+    session.advance(90); // A stalled foreground tavern must not become an offline gap.
+    await session.flush();
+    assert.deepEqual(session.battle.snapshot(), before, key);
+    assert.equal(session.awaitingResume, false); assert.equal(session.offline.window, null);
+    assert.equal(store.current!.paused, false);
+    session.setTavernOpen(false); await session.flush(); await advance(session, .25);
+    assert.ok(session.battle.elapsed > before.elapsed);
+    await session.close();
+  }
+});
+
+test('tavern interactions commit while combat is held, without changing manual pause', async () => {
+  for (const paused of [false, true]) {
+    const b = new IdleBattle(); b.update(4); b.highestCleared = 12; b.buildTavern(b.recommendedTavernPlot!);
+    const store = new ControlledStore(); store.current = fixture(b, 1, paused);
+    const session = await open(store); await resume(session);
+    const elapsed = session.battle.elapsed;
+    session.setTavernOpen(true); await session.flush();
+    assert.equal((await new TavernInteractions().run(session, 'talk'))?.points, 8);
+    assert.equal(store.current!.battle.social.points.mara, 8);
+    for (let i = 0; i < 4; i++) {
+      session.setTavernOpen(true); session.advance(1); // internal views/repeated opening
+      assert.equal(session.battle.elapsed, elapsed);
+      session.setTavernOpen(false); await session.flush();
+      assert.equal(session.paused, paused); assert.equal(store.current!.paused, paused);
+      session.setTavernOpen(true);
+    }
+    await session.close();
+    const loaded = await open(store); await resume(loaded);
+    assert.equal(loaded.tavernOpen, false); assert.equal(loaded.paused, paused);
+    await advance(loaded, .25);
+    assert.equal(loaded.battle.elapsed > elapsed, !paused);
+    await loaded.close();
+  }
+});
+
+test('tavern heartbeat checkpoints exclude visit time; real departure retains existing offline policy', async () => {
+  for (const paused of [false, true]) {
+    const store = new ControlledStore(), session = await open(store);
+    await firstClear(session); const certificate = session.certificate!;
+    if (paused) await session.setPaused(true);
+    session.setTavernOpen(true); await session.flush();
+    const before = session.battle.snapshot();
+    for (let i = 0; i < 30; i++) {
+      store.clock += 1000; session.advance(1); await session.heartbeat();
+    }
+    assert.deepEqual(session.battle.snapshot(), before);
+    assert.equal(store.current!.offline.baseline.at, store.clock);
+    assert.equal(store.current!.offline.window, null);
+    await session.suspend(); const departedAt = store.clock;
+    store.clock += 60000;
+    const returned = await open(store);
+    assert.equal(returned.offline.window!.from, departedAt);
+    assert.equal(returned.pendingReward!.elapsedMs, 60000);
+    const expected = paused ? 0 : Number(BigInt(certificate.rewardGold) * 600n * 60000n / BigInt(certificate.durationMs));
+    assert.equal(returned.pendingReward!.amountUnits, expected);
+    returned.setTavernOpen(true); await resume(returned); // same open dialog after background return
+    const resumed = returned.battle.snapshot(); returned.advance(.5);
+    assert.deepEqual(returned.battle.snapshot(), resumed);
+    returned.setTavernOpen(false); await returned.flush();
+    assert.equal(returned.paused, paused);
+    await returned.close();
+  }
+});
+
+test('opening tavern during a pending write retains only previously accepted combat time', async () => {
+  const store = new ControlledStore(), session = await open(store);
+  await holdCheckpoint(session, store);
+  session.advance(.5);
+  const before = session.battle.elapsed;
+  session.setTavernOpen(true); session.advance(1); session.advance(120);
+  store.gate = false; store.pending!.confirm(); await session.flush();
+  assert.ok(Math.abs(session.battle.elapsed - before - .5) < 1e-8);
+  const held = session.battle.snapshot(); session.advance(1); await session.flush();
+  assert.deepEqual(session.battle.snapshot(), held);
+  assert.equal(session.offline.window, null);
+  await session.close();
 });

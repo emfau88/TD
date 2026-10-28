@@ -168,19 +168,19 @@ window.addEventListener('error', event => showError(t("Ein unerwarteter Fehler i
 function syncUI(): void {
   const live = session;
   const view = scene;
-  audio.setState(ready && !!live && !live.error && !live.suspended && !live.awaitingResume, !!live && !live.paused && !live.battle.learningPaused && !live.battle.preparing);
+  audio.setState(ready && !!live && !live.error && !live.suspended && !live.awaitingResume, !!live && !live.paused && !live.tavernOpen && !live.battle.learningPaused && !live.battle.preparing);
   const unavailable = !ready || !live || live.inputBusy || Boolean(live.error) || live.suspended;
   if (intro?.active) {
     element<HTMLButtonElement>('intro-skip').disabled = unavailable || finishingIntro || !!live?.awaitingResume;
     element<HTMLButtonElement>('onboarding-primary').disabled = unavailable || finishingIntro || !!live?.awaitingResume;
   }
   build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = unavailable;
-  if (!ready || !live || live.error || live.suspended || live.paused)
+  if (!ready || !live || live.error || live.suspended || live.paused || live.tavernOpen)
     element<HTMLButtonElement>('onboarding-primary').disabled = element<HTMLButtonElement>('onboarding-secondary').disabled = true;
   element<HTMLButtonElement>('build-cannon').disabled = element<HTMLButtonElement>('build-sniper').disabled = unavailable;
   buildFrost.disabled = buildWorkshop.disabled = buildWarehouse.disabled = researchFrost.disabled = unavailable;
   if (!ready || !live || !view) { quickWins.hide(); lessonPointer.show(); return; }
-  view.paused = live.paused || document.hidden || Boolean(live.error) || live.suspended || live.awaitingResume;
+  view.paused = live.paused || live.tavernOpen || document.hidden || Boolean(live.error) || live.suspended || live.awaitingResume;
   const saveStatus = element('save-status');
   saveStatus.dataset.revision = String(live.revision);
   saveStatus.textContent = t(live.error ? t('Probe angehalten · letzter bestätigter Stand erhalten')
@@ -883,6 +883,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     store?.close(); store = options.temporary ? undefined : await openBattleStore(undefined, databaseName);
     const live = await BattleSession.open(store, { recover: options.recover });
     session = live;
+    live.setTavernOpen(tavernUI.isOpen);
     clearHeroSelection(); resumeIlyraGuide = !!live.battle.ilyra && live.battle.ilyra.introduction !== 'done';
     let preferences: Storage | undefined;
     try { if (!live.temporary) preferences = localStorage; } catch { /* Optional UI preferences. */ }

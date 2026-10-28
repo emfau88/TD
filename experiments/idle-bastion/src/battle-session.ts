@@ -62,6 +62,8 @@ export class BattleSession {
   private committedSnapshot: BattleSnapshot;
   private committedPaused: boolean;
   private currentPaused: boolean;
+  /** Presentation hold, independent of the saved manual pause. */
+  private currentTavernOpen = false;
   private currentRevision: number;
   private currentError?: Error;
   private pendingWrite?: Promise<void>;
@@ -147,6 +149,16 @@ export class BattleSession {
 
   get battle(): IdleBattle { return this.currentBattle; }
   get paused(): boolean { return this.currentPaused; }
+  get tavernOpen(): boolean { return this.currentTavernOpen; }
+
+  /** Freeze new frames immediately. Complete accepted writes/time and persist
+   * the active boundary without changing manual pause or the offline policy. */
+  setTavernOpen(open: boolean): void {
+    if (this.currentTavernOpen === open) return;
+    this.currentTavernOpen = open;
+    void this.flush().catch(() => undefined);
+    this.onChange?.();
+  }
   get busy(): boolean { return !!this.pendingWrite || this.transitioning; }
   /** Background checkpoints do not make controls unavailable. */
   get inputBusy(): boolean { return this.actionPending || this.transitioning; }
@@ -163,7 +175,7 @@ export class BattleSession {
 
   advance(dtSeconds: number): void {
     if (this.closed || this.closing || this.currentError || this.transitioning
-      || (!!this.store && !this.currentWriter) || this.currentPaused || this.currentSuspended || this.waitingForResume
+      || (!!this.store && !this.currentWriter) || this.currentPaused || this.currentTavernOpen || this.currentSuspended || this.waitingForResume
       || !Number.isFinite(dtSeconds) || dtSeconds <= 0) return;
     if (dtSeconds > GAP_SECONDS && (this.currentBattle.preparing || this.currentBattle.learningPaused)) return;
     if (dtSeconds > GAP_SECONDS) {
@@ -286,8 +298,11 @@ export class BattleSession {
   heartbeat(): Promise<void> {
     if (!this.store || !this.currentWriter || this.currentSuspended || this.closed || this.closing || this.currentError) return Promise.resolve();
     if (this.renewal) return this.renewal;
-    this.renewal = this.store.renewWriter(this.currentWriter).then(writer => {
+    this.renewal = this.store.renewWriter(this.currentWriter).then(async writer => {
       this.currentWriter = writer;
+      // A visible tavern is active play, not an offline earnings window. Keep
+      // the durable time boundary moving even though no combat frames run.
+      if (this.currentTavernOpen && !this.waitingForResume && !this.transitioning) await this.flush();
     }).catch(error => {
       this.fail(asError(error), true);
       throw error;

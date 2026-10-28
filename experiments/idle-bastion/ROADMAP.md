@@ -1,5 +1,7 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Aktueller Auftrag · 28.10.2026:** Tavernen- und Tutorial-Release-Polish, sechs Pakete selbstständig nacheinander auf Main inklusive Tests, Commit/Push und Deploymentprüfung. Der vom Nutzer ausdrücklich verlangte [Masterplan](../../artifacts/idle-bastion/acceptance/tavern-release-polish/PLAN.md) führt für diesen Auftrag Status, Abnahme und Nachweise. Die frühere Vormerkung zur Pfeilentfernung ist damit beauftragt.
+
 **Kongregate-Einreichungspaket · 28.10.2026, ausdrücklich beauftragt:**
 
 - [x] Ausgehende Creditslinks entfernen; Namen erhalten, Quellen/Lizenzen zentral im Repository und erforderliche Hinweise lokal im Spielpaket mitliefern.

@@ -80,7 +80,7 @@ export class TavernUI {
     this.observer = new ResizeObserver(() => this.positionHotspots()); this.observer.observe(this.get('.tv-stage'));
     const options = { signal: this.lifetime.signal };
     this.dialog.addEventListener('cancel', event => { event.preventDefault(); this.back(); }, options);
-    this.dialog.addEventListener('close', () => { this.animation.stop(); this.generation++; this.ports.onOpenChange?.(false); }, options);
+    this.dialog.addEventListener('close', () => { if (this.isOpen) return; this.ports.session()?.setTavernOpen(false); this.animation.stop(); this.generation++; this.ports.onOpenChange?.(false); }, options);
     this.dialog.addEventListener('click', event => {
       const target = (event.target as HTMLElement).closest<HTMLButtonElement>('button');
       if (!target || target.disabled) return;
@@ -154,9 +154,9 @@ export class TavernUI {
     this.bondCompanion = undefined;
     this.opener = document.activeElement instanceof HTMLElement ? document.activeElement : undefined;
     this.lastLives = session.battle.lives; this.lastPhase = session.battle.phase; this.lastDefeat = session.battle.progress.lastDefeat?.attemptId ?? 0;
-    this.get('.tv-warning').hidden = true; this.dialog.showModal(); this.ports.onOpenChange?.(true); this.show('overview'); this.get<HTMLButtonElement>('[data-do="close"]').focus();
+    this.get('.tv-warning').hidden = true; this.dialog.showModal(); session.setTavernOpen(true); this.ports.onOpenChange?.(true); this.show('overview'); this.get<HTMLButtonElement>('[data-do="close"]').focus();
   }
-  close(): void { this.ports.onCompanion?.(null); this.animation.stop(); this.dialog.close(); this.generation++; this.opener?.focus(); }
+  close(): void { this.ports.onCompanion?.(null); this.animation.stop(); this.dialog.close(); this.ports.session()?.setTavernOpen(false); this.generation++; this.opener?.focus(); }
   private back(): void { if (this.moment) { this.endMoment(); return; } if (this.screen === 'touch') this.show('character'); else if (this.screen === 'character') this.show('overview'); else this.close(); }
   private navigate(where: Destination): void { this.close(); this.ports.navigate(where); }
   private select(who: Companion): void {
@@ -205,7 +205,7 @@ export class TavernUI {
       this.get('.tv-warning').hidden = false;
     }
     this.lastLives = b.lives; this.lastPhase = b.phase; this.lastDefeat = b.progress.lastDefeat?.attemptId ?? 0;
-    this.text('combat', t("Welle {0} · ♥ {1}/20 · {2}", b.wave, b.lives, session.paused ? t('Pausiert') : session.suspended || session.awaitingResume ? t('Kampf angehalten') : b.learningPaused ? t('Lernpause') : t('Kampf läuft')));
+    this.text('combat', t("Welle {0} · ♥ {1}/20 · {2}", b.wave, b.lives, session.paused ? t('Pausiert') : session.suspended || session.awaitingResume ? t('Kampf angehalten') : session.tavernOpen ? t('Tavernenpause') : b.learningPaused ? t('Lernpause') : t('Kampf läuft')));
     const error = this.get('.tv-error'); error.hidden = !session.error && !session.suspended && !session.awaitingResume;
     error.textContent = t(session.error ? t('Speichern fehlgeschlagen. Bitte kehre zum Kampf zurück, um den Spielstand zu prüfen.') : t('Sitzung angehalten. Bitte kehre zum Kampf zurück.'));
     const points = this.points, count = hearts(points), capped = points >= SOCIAL.chapterMaximum;
@@ -363,5 +363,7 @@ export class TavernUI {
       this.revealReply();
     } finally { this.pending = false; this.update(); }
   }
-  destroy(): void { clearTimeout(this.replyTimer); this.unbindLanguage(); this.unbindStatic(); this.animation.stop(); this.observer.disconnect(); this.lifetime.abort(); this.dialog.remove(); }
+  destroy(): void {
+    this.ports.session()?.setTavernOpen(false);
+    if (this.isOpen) this.ports.onOpenChange?.(false); clearTimeout(this.replyTimer); this.unbindLanguage(); this.unbindStatic(); this.animation.stop(); this.observer.disconnect(); this.lifetime.abort(); this.dialog.remove(); }
 }

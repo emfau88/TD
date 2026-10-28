@@ -15,3 +15,18 @@ for (const who of ['mara', 'ilyra'] as const) document.getElementById(who)!.addE
   const result = document.getElementById('result')!; result.replaceChildren();
   const link = document.createElement('a'); link.href = `../../index.html?probe=${slot}`; link.textContent = 'Isolierten Spieltest öffnen'; result.append(link);
 });
+
+// Reuse an actual recorded boss encounter, migrate through the normal loader,
+// then add only a legally built tavern. The regular save remains untouched.
+document.getElementById('boss')!.addEventListener('click', async () => {
+  const recorded = await import('../../../../artifacts/idle-bastion/acceptance/early-balance-release/selected/B-snapshots.json');
+  const b = IdleBattle.restore(recorded.channel15); if (!b) throw new Error('Bossfixture ungültig');
+  b.gold = 12000; b.discovery = 'off'; b.tutorial.hidden = true; b.wispArrival.met = true;
+  if (!b.buildTavern(b.recommendedTavernPlot!)) throw new Error('Tavernenbau fehlgeschlagen');
+  if (!IdleBattle.restore(b.snapshot())) throw new Error('Bossfixture lässt sich nicht laden');
+  const slot = `tavern-boss-${crypto.randomUUID()}`;
+  const store = await openBattleStore(undefined, `spire-idle-bastion-probe-${slot}`);
+  try { await store.save(b.snapshot(), true, 0); } finally { store.close(); }
+  const result = document.getElementById('result')!; result.replaceChildren();
+  const link = document.createElement('a'); link.href = `../../index.html?probe=${slot}`; link.textContent = 'Pausierten Bosstest öffnen'; result.append(link);
+});

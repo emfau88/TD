@@ -2,6 +2,7 @@
  * Keep placeholders and game values intact; never use these strings as simulation IDs. */
 import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
+  "Tavernenpause": "Tavern pause",
   "Gespräche und Berührungen erhöhen eure Zuneigung.": "Conversations and touches build affection.",
   "1 Berührung": "1 touch",
   "{0} Berührungen": "{0} touches",
