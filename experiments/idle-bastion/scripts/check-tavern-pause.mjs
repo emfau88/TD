@@ -5,6 +5,7 @@ import { createServer } from 'vite';
 import { JSDOM } from 'jsdom';
 const dom = new JSDOM('<!doctype html><body></body>', { url: 'http://localhost/' });
 for (const key of ['window', 'document', 'HTMLElement', 'HTMLCanvasElement', 'HTMLImageElement', 'AbortController']) globalThis[key] = dom.window[key];
+dom.window.HTMLElement.prototype.scrollIntoView = function () {};
 globalThis.ResizeObserver = class { observe() {} disconnect() {} };
 globalThis.requestAnimationFrame = () => 1; globalThis.cancelAnimationFrame = () => {};
 dom.window.HTMLDialogElement.prototype.showModal = function () { this.open = true; };
@@ -23,7 +24,7 @@ try {
   b.social.points.mara = b.social.points.ilyra = 70;
   const player = { ready:true, loadingReactions:false, reactionsReady:true, reacting:false,
     start:async()=>{},stop(){},setHearts(){},prepareReactions:async()=>true,play(){},act(){},scene(){},gesture(){} };
-  const presentation = {kind:'rig',create:()=>player,drawPortrait:async()=>{},portrait:()=>'',gestures:[],anchors:()=>({shoulder:{x:100,y:100},hair:{x:100,y:100},hand:{x:100,y:100}})};
+  const presentation = {kind:'rig',create:()=>player,drawPortrait:async()=>{},portrait:()=>'',gestures:[{key:'giggle',label:'Zusammen lachen',minHearts:2,line:{mara:'Mara lacht.',ilyra:'Ilyra lacht.'}},{key:'hip',label:'Kompliment machen',minHearts:3,line:{mara:'Mara lächelt.',ilyra:'Ilyra lächelt.'}},{key:'tease',label:'Ein wenig necken',minHearts:4,companion:'mara',line:{mara:'Mara neckt.',ilyra:''}}],anchors:()=>({shoulder:{x:100,y:100},hair:{x:100,y:100},hand:{x:100,y:100}})};
   const destinations=[];
   ui = new TavernUI({session:()=>session,presentation,navigate:where=>destinations.push(where)});
   const click = selector => document.querySelector(selector).click();
@@ -60,6 +61,26 @@ try {
     ui.close();
   }
   console.log('PASS: both companions at hearts 0–3, permanent markers, locked explanations, reactions, stories and one character view.');
+  for (const who of ['mara','ilyra']) for (const [count,points] of [[0,0],[1,10],[2,35],[3,70]]) {
+    b.social.points[who]=points;b.social.reserves[who]={talk:0,touch:count>=2?1:0,clears:0};b.social.personal[who]={clears:0,claimed:count>=3};
+    ui.open();click(`[data-do=${who}]`);await settle();click('[data-do=speak]');await settle();
+    const group=document.querySelector('.tv-gestures');assert.equal(group.hidden,false);
+    assert.equal([...group.querySelectorAll('button')].filter(button=>!button.hidden).length,3);
+    assert.equal(document.querySelector('[data-gesture=giggle]').dataset.locked,String(count<2));
+    assert.equal(document.querySelector('[data-gesture=hip]').dataset.locked,String(count<3));
+    const before=structuredClone(b.social);
+    for (const selector of ['[data-action=talk]','[data-gesture=giggle]','[data-gesture=hip]']) {click(selector);await settle();}
+    assert.deepEqual(b.social,before,'conversation repeats add no points with empty reserve');
+    ui.close();
+  }
+  b.social.points.mara=58;b.social.reserves.mara={talk:0,touch:0,clears:0};b.social.personal.mara={clears:9,claimed:false};b.social.gifts=1;
+  ui.open();click('[data-do=mara]');await settle();
+  assert.match(document.querySelector('[data-text=gift-hint]').textContent,/21/);
+  assert.match(document.querySelector('[data-text=gift-hint]').textContent,/bleibt erhalten|is kept/);
+  assert.equal(document.querySelector('[data-action=gift]').disabled,true);click('[data-action=gift]');await settle();assert.equal(b.social.gifts,1);assert.equal(b.social.points.mara,58);
+  assert.ok(document.querySelector('.tv-personal').closest('details'));
+  b.social.personal.mara.clears=30;ui.update();assert.equal(document.querySelector('[data-action=gift]').disabled,false);click('[data-action=gift]');await settle();await settle();assert.equal(b.social.points.mara,70);assert.equal(b.social.gifts,1);
+  ui.close();console.log('PASS: fixed speaking choices at hearts 0–3, zero-point repeats, locked explanations and personal gift preserves normal stock (21 remaining wins).');
   // Short waits remain quiet; a sustained wait and real failures remain visible.
   ui.open(); click('[data-do=mara]'); await settle();
   const cue=document.querySelector('.tv-load-status'), canvas=document.querySelector('.tv-figure canvas');

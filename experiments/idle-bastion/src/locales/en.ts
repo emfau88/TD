@@ -2,6 +2,22 @@
  * Keep placeholders and game values intact; never use these strings as simulation IDs. */
 import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
+  "Ein kleines Geschenk für {0}.": "A small gift for {0}.",
+  "Plaudern": "Chat",
+  "Kompliment machen": "Give a compliment",
+  "Gespräch wählen": "Choose a conversation",
+  "Ab Herz {0}": "From heart {0}",
+  "Ab Herz {0} verfügbar.": "Available from heart {0}.",
+  "Normale Geschenke: {0}": "Regular gifts: {0}",
+  "Persönliches Geschenk benötigt. {0}Noch {1} Siege.": "Personal gift needed. {0}{1} more victories.",
+  "Dein normales Geschenk bleibt erhalten.": "Your regular gift is kept.",
+  "Deine normalen Geschenke bleiben erhalten.": "Your regular gifts are kept.",
+  "Gesprächsreserve: {0}/3 · Berührungsreserve ab Herz 2: {1}/3.": "Conversation reserve: {0}/3 · Touch reserve from heart 2: {1}/3.",
+  "Herzen an der Figur": "Hearts on the character",
+  "Persönliches Geschenk": "Personal gift",
+  "Aus deinem Vorrat": "From your stock",
+  "Persönlich nötig": "Personal gift needed",
+
   "Einen kleinen Moment …": "Just a moment …",
   "Ab Herz 1": "From heart 1",
   "{0} berühren": "Touch {0}",

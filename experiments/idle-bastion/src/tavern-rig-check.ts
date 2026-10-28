@@ -1,11 +1,12 @@
 import './battle.css';
+import { language, setLanguage, type Language } from './i18n';
 import './premium.css';
 import { BattleSession } from './battle-session';
 import { SOCIAL, type Companion } from './tavern-social';
 import { TavernUI } from './tavern-ui';
 import { rigPreviewPresentation } from './tavern-rig-preview';
 
-// Isolated fixture: production main.ts keeps its current renderer until approval.
+// Isolated temporary fixture for the same renderer used by production main.ts.
 const session = await BattleSession.open(undefined, { guidedStart: false });
 const battle = session.battle;
 battle.update(4); battle.highestCleared = 25; battle.bossVictories = 1; battle.secondBossVictories = 1;
@@ -14,12 +15,16 @@ battle.update(.05); battle.buildTavern(battle.recommendedTavernPlot!);
 battle.wispArrival.met = true; battle.discovery = 'off'; battle.upgradeTavern(); battle.recruitIlyra();
 battle.social.gifts = 20;
 const select = document.querySelector<HTMLSelectElement>('#review-hearts')!;
+const wins = document.querySelector<HTMLInputElement>('#review-wins')!;
+const languageSelect = document.querySelector<HTMLSelectElement>('#review-language')!;
+languageSelect.value = language();
+languageSelect.addEventListener('change', () => setLanguage(languageSelect.value as Language));
 function setHearts() {
   const count = Number(select.value);
   for (const who of ['mara', 'ilyra'] as const) {
     battle.social.points[who] = count ? SOCIAL.heartThresholds[count - 1]! : 0;
     battle.social.reserves[who] = { talk: 3, touch: count >= 2 ? 3 : 0, clears: 0 };
-    battle.social.personal[who] = { clears: count >= 3 ? 30 : 0, claimed: count >= 3 };
+    battle.social.personal[who] = { clears: count >= 3 ? 30 : count >= 2 ? Math.min(30, Math.max(0, Math.floor(Number(wins.value) || 0))) : 0, claimed: count >= 3 };
   }
 }
 setHearts(); await session.setPaused(true);
@@ -33,6 +38,7 @@ function show(who: Companion) {
 document.querySelector('#review-mara')!.addEventListener('click', () => show('mara'));
 document.querySelector('#review-ilyra')!.addEventListener('click', () => show('ilyra'));
 select.addEventListener('change', setHearts);
+wins.addEventListener('change', setHearts);
 const comparison = document.querySelector<HTMLAnchorElement>('#quality-switch')!;
 comparison.hidden = !import.meta.env.DEV;
 const qualityUrl = new URL(location.href);

@@ -30,8 +30,11 @@
 #tavern-dialog[data-artwork="rigged"] .tv-dialogue[data-reply="true"] { animation:tv-reply 1.6s ease-out; }
 @keyframes tv-reply { 0% { box-shadow:inset 0 0 0 1px #e9c99066; background-color:#b89b6330; } 100% { box-shadow:inset 0 0 0 1px transparent; background-color:transparent; } }
 @media(prefers-reduced-motion:reduce) { #tavern-dialog[data-artwork="rigged"] .tv-dialogue[data-reply="true"] { animation:none; outline:1px solid #c3a17077; } }
-#tavern-dialog .tv-gestures { display:flex; flex-wrap:wrap; gap:7px; margin:10px 0 0; }
-#tavern-dialog .tv-gestures button { flex:1; font-size:12px; padding:8px; background:#26332f; }
+#tavern-dialog .tv-gestures { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; margin:10px 0 0; }
+#tavern-dialog .tv-gestures button { min-height:48px; font:13px/1.35 Arial,sans-serif; padding:8px; background:#26332f; }
+#tavern-dialog .tv-gestures [data-action=talk] { grid-column:1/-1; }
+#tavern-dialog .tv-gestures button small { display:block; color:#cbbca7; font:11px/1.35 Arial,sans-serif; }
+#tavern-dialog .tv-gestures button[data-locked="true"] { border-style:dashed; color:#b6b4ac; background:#202b2a; }
 @media(max-width:700px) {
   #tavern-dialog[data-artwork="rigged"][open]:is([data-screen="character"]) { height:calc(100dvh - 8px); }
   #tavern-dialog[data-artwork="rigged"] .tv-header { flex-basis:53px; }
@@ -44,5 +47,5 @@
   #tavern-dialog[data-artwork="rigged"] .tv-dialogue p { font-size:15px; line-height:1.5; }
   #tavern-dialog[data-artwork="rigged"] .tv-stage::after { height:10px; }
   #tavern-dialog .tv-gestures { gap:6px; margin-top:6px; }
-  #tavern-dialog .tv-gestures button { min-height:40px; padding:5px; font-size:11px; }
+  #tavern-dialog .tv-gestures button { min-height:44px; padding:5px; font-size:11px; }
 }
