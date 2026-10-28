@@ -35,7 +35,7 @@ Statuswerte: OFFEN / IN ARBEIT / ERLEDIGT / BLOCKIERT. ERLEDIGT setzt erfolgreic
 | 2 Berührungen ab Herz 1/2/3 | ERLEDIGT | `d361e4d`; 20/20 Tests, DOM-/Browsermatrix, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40692403336) | Geplante weitere UX-Pakete |
 | 3 Reaktionsladezeiten | ERLEDIGT | `ae8cf38`; Cache/Player/DOM/Browser und Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40694402033) | Langsame Netze können weiter warten müssen |
 | 4 Gespräche und Geschenke | ERLEDIGT | `671fb71`; 20/20 Tests, DOM/Browser DE/EN, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40696614303) | Geplantes optisches Paket 5 |
-| 5 Herzfeedback und Tavernenoptik | OFFEN | — | Vollständig |
+| 5 Herzfeedback und Tavernenoptik | IN ARBEIT | Main synchron: `3ea7575`; gespeichertes Herzfeedback und mobile Gestaltung in Umsetzung | Prüfung / Deployment |
 | 6 Tutorial und Release-Regression | OFFEN | — | Vollständig |
 
 ## Paket 1 – Sichere automatische Tavernenpause
@@ -130,7 +130,15 @@ Abnahme: Erfolg erst nach Speicherung, kein Erfolgsfeedback bei Fehler; keine Pf
 
 Nachweis: kontrolliert verzögerter/fehlgeschlagener Commit, Desktop und beide mobilen Größen, DE/EN, Reduced Motion, Vorher-/Nachherbilder.
 
-Ergebnis / SHA / Deployment / Restprobleme: ausstehend.
+Ergebnis: Hauptaktionen als gleichwertiger, dauerhaft erreichbarer Fußbereich. Auf Smartphones scrollen große Figur und Gespräch gemeinsam; Sprechen führt zur Auswahl, Berühren zurück zur Figur. Warme Braun-/Grüntöne, einheitliche Rahmen, kurze Pixel-Buttons und lesbare Dialogschrift. Oben stehen nur persönliche Geschichten/Herzen; Zahlen und technische Fortschrittsdetails sind eingeklappt. Dekorative Richtungspfeile entfernt. Herzfeedback nutzt den vorhandenen Gift-Klang, einen kurzen Kopfclip und ein 1,3-s-Leuchten; Reduced-Motion-CSS ersetzt Bewegung durch statischen Glanz. Neue Berührung und persönliche Geschichte erscheinen als freiwilliger Einstieg ohne Dialogpflicht.
+
+Prüfung: echter IndexedDB-Adapter mit kontrolliert verzögertem Schreibabschluss für Herz 1/2/3, jeweils Erfolg und Fehler. Auch bei Animation-Redraw bleibt unbestätigter Fortschritt unsichtbar; Fehlversuche rollen zurück, geben kein Feedback und zeigen Speicherfehler. Erfolgreiche Speicherung erzeugt genau einen Sound-Callback, Kopfreaktion und neuen Einstieg. Alle bisherigen DOM-Pause-/Marker-/Gesprächs-/Geschenk-/Ladefälle weiter erfolgreich. TypeScript und Produktionsbuild bestanden.
+
+Browser: acht Kombinationen aus Mara/Ilyra, DE/EN und 320 × 568/390 × 844 ohne horizontalen Überlauf; Figurhöhe 295 bzw. 439 px, Markerziele 44 px, Fußaktionen innerhalb des Viewports. Desktop 1440 × 900 und Story-Einstieg/-Ausstieg geprüft. Herz 1 samt Leuchten/Schulter-Hinweis im Browser ausgelöst. Belege `p5-browser-matrix.json` und `after/p5-*.jpg`; keine JS-Warnungen/-Fehler. Reduced Motion anhand CSS geprüft, kein physischer Geräte-/Lautsprechertest behauptet.
+
+Verbleibend: Auf 320 px ist Scrollen zwischen Figur und Gespräch bewusst nötig. Sichtprüfung ersetzt keine persönliche Nutzerfreigabe. SHA / Deployment: werden nach dem Paket-Commit ergänzt.
+
+
 
 ## Paket 6 – Tutorial und Release-Regression
 

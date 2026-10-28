@@ -2,6 +2,23 @@
  * Keep placeholders and game values intact; never use these strings as simulation IDs. */
 import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
+  "· Ab Herz {0}": "· From heart {0}",
+  "Persönliche Geschichten": "Personal stories",
+  "1 Herz": "1 heart",
+  "{0} Herzen": "{0} hearts",
+  "{0} · Etappe abgeschlossen": "{0} · Chapter complete",
+  "{0} · {1} / {2} Zuneigung": "{0} · {1} / {2} affection",
+  "Neu: {0} berühren": "New: touch {0}",
+  "Ein neues Herz für euch": "A new heart together",
+  "Persönlichen Moment erleben: {0}": "Share a personal moment: {0}",
+  "Zeit mit Mara verbringen": "Spend time with Mara",
+  "Rekrutierung ansehen": "View recruitment",
+  "Wisp · Gefährtenverwaltung": "Wisp · Companion management",
+  "Gebäude & Ausbau": "Buildings & upgrades",
+  "Mara im Kampf verwalten": "Manage Mara in battle",
+  "{0} im Kampf verwalten": "Manage {0} in battle",
+  "Zeit mit Ilyra verbringen": "Spend time with Ilyra",
+
   "Ein kleines Geschenk für {0}.": "A small gift for {0}.",
   "Plaudern": "Chat",
   "Kompliment machen": "Give a compliment",
@@ -21,7 +38,6 @@ export const english: Readonly<Record<string, string>> = {
   "Einen kleinen Moment …": "Just a moment …",
   "Ab Herz 1": "From heart 1",
   "{0} berühren": "Touch {0}",
-  " · Ab Herz {0}": " · From heart {0}",
   "{0} berühren · ab Herz {1}": "Touch {0} · from heart {1}",
   "Tippe auf die kleinen Herzen: Schulter ab Herz 1, Haare ab Herz 2, Hand ab Herz 3.": "Tap the small hearts: shoulder from heart 1, hair from heart 2, hand from heart 3.",
   "Tavernenpause": "Tavern pause",

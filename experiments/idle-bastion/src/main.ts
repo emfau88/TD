@@ -128,7 +128,7 @@ let padListKey = '';
 let mobileHintOpen = false;
 let mobileHintStep = -1;
 let ready = false;
-const tavernUI = new TavernUI({ session: () => session, presentation: rigPreviewPresentation, navigate: kind => openContext(kind, true), onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift'), onCompanion: who => audio.setCompanion(who), onTouch: who => audio.touchCompanion(who) });
+const tavernUI = new TavernUI({ session: () => session, presentation: rigPreviewPresentation, navigate: kind => openContext(kind, true), onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift'), onHeart: () => audio.play('gift'), onCompanion: who => audio.setCompanion(who), onTouch: who => audio.touchCompanion(who) });
 const quickWins = new QuickWinGuidance(databaseName, { action: openQuickWin, dismissed: acknowledgeQuickWin }, lifetime.signal);
 const tutorialGuide = new TutorialGuide();
 let booting = false;

@@ -1,0 +1,170 @@
+[
+  {
+    "size": [
+      320,
+      568
+    ],
+    "lang": "de",
+    "who": "mara",
+    "bodyOverflow": false,
+    "footerBottom": 563.1646728515625,
+    "markerWidths": [
+      44,
+      44,
+      44
+    ],
+    "overflow": false,
+    "stageHeight": 295,
+    "viewport": [
+      320,
+      568
+    ]
+  },
+  {
+    "size": [
+      320,
+      568
+    ],
+    "lang": "de",
+    "who": "ilyra",
+    "bodyOverflow": false,
+    "footerBottom": 563.1646728515625,
+    "markerWidths": [
+      44,
+      44,
+      44
+    ],
+    "overflow": false,
+    "stageHeight": 295,
+    "viewport": [
+      320,
+      568
+    ]
+  },
+  {
+    "size": [
+      320,
+      568
+    ],
+    "lang": "en",
+    "who": "mara",
+    "bodyOverflow": false,
+    "footerBottom": 563.1646728515625,
+    "markerWidths": [
+      44,
+      44,
+      44
+    ],
+    "overflow": false,
+    "stageHeight": 295,
+    "viewport": [
+      320,
+      568
+    ]
+  },
+  {
+    "size": [
+      320,
+      568
+    ],
+    "lang": "en",
+    "who": "ilyra",
+    "bodyOverflow": false,
+    "footerBottom": 563.1646728515625,
+    "markerWidths": [
+      44,
+      44,
+      44
+    ],
+    "overflow": false,
+    "stageHeight": 295,
+    "viewport": [
+      320,
+      568
+    ]
+  },
+  {
+    "size": [
+      389,
+      844
+    ],
+    "lang": "de",
+    "who": "mara",
+    "bodyOverflow": false,
+    "footerBottom": 839.4368286132812,
+    "markerWidths": [
+      44,
+      44,
+      44
+    ],
+    "overflow": false,
+    "stageHeight": 439,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "size": [
+      389,
+      844
+    ],
+    "lang": "de",
+    "who": "ilyra",
+    "bodyOverflow": false,
+    "footerBottom": 839.4368286132812,
+    "markerWidths": [
+      44,
+      44,
+      44
+    ],
+    "overflow": false,
+    "stageHeight": 439,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "size": [
+      389,
+      844
+    ],
+    "lang": "en",
+    "who": "mara",
+    "bodyOverflow": false,
+    "footerBottom": 839.4368286132812,
+    "markerWidths": [
+      44,
+      44,
+      44
+    ],
+    "overflow": false,
+    "stageHeight": 439,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "size": [
+      389,
+      844
+    ],
+    "lang": "en",
+    "who": "ilyra",
+    "bodyOverflow": false,
+    "footerBottom": 839.4368286132812,
+    "markerWidths": [
+      44,
+      44,
+      44
+    ],
+    "overflow": false,
+    "stageHeight": 439,
+    "viewport": [
+      390,
+      844
+    ]
+  }
+]

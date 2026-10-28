@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 import { JSDOM } from 'jsdom';
+import { IDBFactory } from 'fake-indexeddb';
 const dom = new JSDOM('<!doctype html><body></body>', { url: 'http://localhost/' });
 for (const key of ['window', 'document', 'HTMLElement', 'HTMLCanvasElement', 'HTMLImageElement', 'AbortController']) globalThis[key] = dom.window[key];
 dom.window.HTMLElement.prototype.scrollIntoView = function () {};
@@ -100,4 +101,37 @@ try {
   ui.open(); assert.equal(session.tavernOpen,true); ui.destroy(); ui=undefined; assert.equal(session.tavernOpen,false);
   assert.deepEqual(destinations,['tavern','wisp','ilyra','tavern','wisp','ilyra']);
   console.log('PASS: 14 exit/manual-pause cases, stories, both companions, internal navigation and destroy preserve the hold lifecycle.');
+  // Use the real transactional store, delaying only its durable write boundary.
+  await session.close(); session=undefined;
+  const { openBattleStore } = await server.ssrLoadModule('/src/save-store.ts');
+  for (const [before,action,heart] of [[8,'talk',1],[23,'gift',2],[58,'gift',3]]) for (const fail of [false,true]) {
+    const store=await openBattleStore(new IDBFactory(),'heart-feedback',()=>1000);
+    let gate=false, finish; const originalSave=store.save.bind(store);
+    store.save=(...args)=>gate?new Promise((resolve,reject)=>{finish=()=>fail?reject(new Error('Controlled heart write failure')):originalSave(...args).then(resolve,reject);}):originalSave(...args);
+    session=await BattleSession.open(store,{now:()=>1000,locks:null,guidedStart:false});
+    await session.command(model=>{
+      model.update(4);model.highestCleared=12;model.buildTavern(model.recommendedTavernPlot);
+      model.social.points.mara=before;model.social.gifts=2;
+      model.social.reserves.mara={talk:3,touch:before>=35?3:0,clears:0};model.social.personal.mara={clears:before>=35?30:0,claimed:false};
+    },true);
+    let sounds=0;const clips=[];player.scene=clip=>clips.push(clip);
+    ui=new TavernUI({session:()=>session,presentation,navigate(){},onHeart:()=>sounds++});
+    ui.open();click('[data-do=mara]');await session.flush();await settle();gate=true;
+    if(action==='talk')click('[data-do=speak]');click(`[data-action=${action}]`);await settle();
+    assert.ok(finish,'write is waiting for durable confirmation');assert.ok(session.battle.social.points.mara>before,'working state already advanced');
+    ui.update();assert.equal(document.querySelector('progress').value,before,'animation redraw cannot expose an uncommitted heart');
+    assert.equal(sounds,0);assert.equal(document.querySelector('[data-do=new-moment]').hidden,true);assert.equal(document.querySelector('[data-new-heart]'),null);
+    gate=false;finish();for(let i=0;i<30;i++)await settle();ui.update();
+    if(fail) {
+      assert.equal(sounds,0);assert.equal(session.battle.social.points.mara,before);assert.equal(document.querySelector('[data-new-heart]'),null);
+      assert.equal(document.querySelector('[data-do=new-moment]').hidden,true);assert.equal(document.querySelector('.tv-error').hidden,false);
+    } else {
+      assert.equal(sounds,1);assert.equal(document.querySelector('[data-new-heart]').dataset.moment,String(heart));assert.deepEqual(clips,['head']);
+      assert.equal(document.querySelector('[data-do=new-moment]').hidden,false);assert.match(document.querySelector('[data-text=unlock-title]').textContent,/Schulter|Haare|Hand|Shoulder|Hair/);
+      assert.equal((await store.load()).save.battle.social.points.mara,session.battle.social.points.mara);
+      for(let i=0;i<5;i++)ui.update();assert.equal(sounds,1,'redraw never repeats the cue');
+    }
+    ui.destroy();ui=undefined;await session.close().catch(error=>{if(!fail)throw error;});session=undefined;
+  }
+  console.log('PASS: hearts 1/2/3 stay hidden until durable acknowledgement; six delayed/success/failure cases, rollback, one sound, short reaction and unlock text.');
 } finally { ui?.destroy(); await session?.close(); await server.close(); dom.window.close(); }
