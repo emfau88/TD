@@ -34,7 +34,7 @@ Statuswerte: OFFEN / IN ARBEIT / ERLEDIGT / BLOCKIERT. ERLEDIGT setzt erfolgreic
 | 1 Sichere automatische Tavernenpause | ERLEDIGT | `7cd014a`; 49/49 Tests, 14 DOM-Ausgangsfälle, Build/Browser; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40691206208) | Smartphone-System-Suspend nicht auf physischem Gerät geprüft |
 | 2 Berührungen ab Herz 1/2/3 | ERLEDIGT | `d361e4d`; 20/20 Tests, DOM-/Browsermatrix, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40692403336) | Geplante weitere UX-Pakete |
 | 3 Reaktionsladezeiten | ERLEDIGT | `ae8cf38`; Cache/Player/DOM/Browser und Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40694402033) | Langsame Netze können weiter warten müssen |
-| 4 Gespräche und Geschenke | IN ARBEIT | Implementiert; 20/20 Tests, erweiterte DOM-/Browserprüfung, Build bestanden | Commit / Deployment |
+| 4 Gespräche und Geschenke | ERLEDIGT | `671fb71`; 20/20 Tests, DOM/Browser DE/EN, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40696614303) | Geplantes optisches Paket 5 |
 | 5 Herzfeedback und Tavernenoptik | OFFEN | — | Vollständig |
 | 6 Tutorial und Release-Regression | OFFEN | — | Vollständig |
 
@@ -116,7 +116,7 @@ Prüfung: 20/20 vorhandene Wirtschafts-/Interaktions-/Inhaltstests bestanden, ke
 
 Browser DE/EN: sichtbare gesperrte Gesprächswahlen ab Herz 0; Lachen bei 58 Punkten spielt `giggle`, Kompliment bei 70 spielt `hip`, Punkte unverändert. Zwei normale Geschenke führen von 35 über 47 auf 58; danach 18 normale Geschenke erhalten und englischer Hinweis auf 21 weitere Siege. 320 × 568 ohne horizontalen Überlauf, Hauptbuttons 62 px hoch, Gesprächswahlen mindestens 44 px. Screenshots `after/p4-speaking-de-390.jpg`, `after/p4-gift-en-390.jpg`, `after/p4-speaking-en-320.jpg`. Keine Browserwarnungen/-fehler.
 
-Verbleibend: Figurenhöhe und optisches Gesamtpolish folgen in Paket 5. SHA / Deployment: ausstehend.
+Verbleibend: Figurenhöhe und optisches Gesamtpolish folgen in Paket 5. SHA: `671fb710c1f1633a52bc8d31c0b06ac631da2e8c`. [Pages-Lauf 40696614303](https://github.com/emfau88/TD/actions/runs/40696614303): erfolgreich für diesen Code-SHA.
 
 ## Paket 5 – Herzfeedback und Tavernenoptik
 
