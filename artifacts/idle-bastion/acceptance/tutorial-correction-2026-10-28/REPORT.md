@@ -38,6 +38,9 @@ tutorial-guide.ts/css, premium.css, lesson-pointer.ts, quick-win-guidance.ts, Ba
 
 ## Veröffentlichung und Grenzen
 
-Commit/Push und Pages-Nachweis werden nach erfolgreicher Veröffentlichung ergänzt.
+Implementierung als **5bc197b9622067243c99b526b0322b88bbc0d373** direkt auf main gepusht.
+[Pages-Lauf 40765706375](https://github.com/emfau88/TD/actions/runs/40765706375) erfolgreich (deploy: 1m18s).
+Anschließender Live-Smoke bei 390×844 bestätigt kompakte Karte unten mittig, 650-ms-/2-s-Animation, per Tastatur aufklappbare Erklärung und sichtbare Frost-Bauempfehlung. Keine JavaScriptfehler. [Live-Aufnahme](live-390.png).
+Dieser Veröffentlichungsnachweis wird als separater Dokumentationscommit mit übersprungener CI gesichert.
 Die neue Position hält den oberen Kampfbereich frei. Eine aufgeklappte Erklärung kann weiterhin einen Teil des unteren Kartenbereichs überdecken; sie bleibt freiwillig und jederzeit einklappbar.
 Bestehendes Kongregate-Paket auf ausdrücklichen Nutzerwunsch nicht neu erzeugt und nicht verändert. Keine Einreichung.
