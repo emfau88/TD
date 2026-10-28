@@ -779,5 +779,76 @@
       }
     ],
     "subFont": "Arial, sans-serif"
+  },
+  {
+    "label": "Unpacked ZIP Ilyra legacy H2 EN 390",
+    "character": "Ilyra",
+    "hearts": [
+      {
+        "animation": "none",
+        "aria": "1 Heart: The Watch Can Wait · Experience moment",
+        "disabled": false,
+        "duration": "0s",
+        "heart": "1",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "2 Hearts: A Star Without a Name · Experience moment",
+        "disabled": false,
+        "duration": "0s",
+        "heart": "2",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "3 Hearts: Beneath the Calm · From 70 affection",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "3",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "4 Hearts: A Step Toward You · in a future update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "4",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "5 Hearts: Where I Want to Stay · in a future update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "5",
+        "text": "",
+        "unseen": "false"
+      }
+    ],
+    "options": [
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "text": "Chat"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "false",
+        "text": "Share a laugh"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Give a complimentFrom heart 3"
+      }
+    ],
+    "subFont": "Arial, sans-serif"
   }
 ]

@@ -1,6 +1,6 @@
 # Tavernenherzen und Aktionsschrift · 28.10.2026
 
-Status: Implementierung und lokale Abnahme abgeschlossen; Veröffentlichung wird nach dem Commit ergänzt.
+Status: **Abgeschlossen und veröffentlicht.** Codecommit `d73ed50fdf99a2715e9a759703f9040e0d2399d2` auf `main`; erfolgreiche Pages-Veröffentlichung und neuer ZIP-Export geprüft.
 Ausgangsstand: `c30060a2e740aebe95a5841fe93fc4ec3cd9c566` (`main`, mit `origin/main` synchronisiert). Der fremd bearbeitete Checkout in Documents/TowerDefense wurde nicht verändert.
 
 ## Gezielte Änderungen
@@ -58,4 +58,10 @@ Die Herzleiste wirkt ruhiger und weniger wie ein Upgrade-Menü. Die einheitliche
 
 ## Veröffentlichung
 
-Commit, Pages-Deployment und aktualisierter ZIP-Nachweis werden nach erfolgreicher Veröffentlichung hier ergänzt. Kein Kongregate-Upload oder Submit.
+- Codecommit: [`d73ed50`](https://github.com/emfau88/TD/commit/d73ed50fdf99a2715e9a759703f9040e0d2399d2). Nachfolgender Dokumentationscommit enthält ausschließlich ergänzte Nachweise und sprachlich identisch abgestimmte Vergleichsbilder.
+- [Pages-Lauf 40756913675](https://github.com/emfau88/TD/actions/runs/40756913675): **success**, veröffentlicht am 28.10.2026 um 19:46 UTC. Ausgelieferte Dateien zusätzlich direkt geprüft: neue Merkliste, 2-s-/4-%-Animation, Reduced-Motion-Regel und entfernte Herzbeschriftungen bestätigt; siehe `live-checks.json`.
+- `npm run build:kongregate` bestanden. Neuer vollständiger Lieferordner: `C:\Users\madde\Documents\Towers-and-Tantrums-Kongregate-2026-10-28-Hearts-d73ed50`.
+- Vollständiges ZIP: `01-game/Towers-and-Tantrums.zip`, **77.682.261 Byte**, 359 Dateien. SHA-256 `e24946754355ef1497a71e20c9a9a42e0f5110425a8b0dca900594bf20ebdf7f`.
+- Beide ZIPs CRC-geprüft, Einzelupload und Voll-ZIP inhaltsgleich; sämtliche Dateien stimmen mit dem neuen Build überein. Manifest dokumentiert sauberen Codecommit. `zip-validation.json` enthält die Prüfdaten.
+- Tatsächlich entpacktes ZIP lokal im Browser geladen: bestehender isolierter Spielstand nach Reload, Ilyra H2, ruhige erlebte Herzen, englisches Gesprächsmenü und Pixelify-Schrift bei 390×844 bestätigt; keine Browserwarnungen/-fehler. [Screenshot](screenshots/hearts-zip-smoke-390.jpg). Vorhandene Beigabentexte/Icon übernommen, Tavernenscreenshots aktualisiert.
+- Kein Kongregate-Upload oder Submit.

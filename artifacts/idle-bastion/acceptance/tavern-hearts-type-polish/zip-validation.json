@@ -1,0 +1,21 @@
+{
+  "sourceCommit": "d73ed50fdf99a2715e9a759703f9040e0d2399d2",
+  "fileCount": 359,
+  "archiveBytes": 77682261,
+  "crc": "PASS",
+  "separateUploadEquivalent": "PASS",
+  "allBuildFilesMatch": "PASS",
+  "unpacked": "C:\\Users\\madde\\AppData\\Local\\Temp\\td-hearts-d73ed50-lo2c36lx",
+  "archives": [
+    {
+      "file": "01-game/Towers-and-Tantrums.zip",
+      "bytes": 77682261,
+      "sha256": "e24946754355ef1497a71e20c9a9a42e0f5110425a8b0dca900594bf20ebdf7f"
+    },
+    {
+      "file": "01-game/separate-upload/additional-files.zip",
+      "bytes": 77672854,
+      "sha256": "7d0ab02241481fa5f0a154531a05f731790fe045b9c202198e384007534989d2"
+    }
+  ]
+}

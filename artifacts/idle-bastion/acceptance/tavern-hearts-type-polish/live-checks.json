@@ -1,0 +1,24 @@
+{
+  "url": "https://emfau88.github.io/TD/",
+  "sourceCommit": "d73ed50fdf99a2715e9a759703f9040e0d2399d2",
+  "deploymentRun": 40756913675,
+  "deployment": "success",
+  "checks": {
+    "storyHistoryKey": true,
+    "unseenStoryAnimation": true,
+    "scaleFourPercent": true,
+    "twoSecondCycle": true,
+    "reducedMotion": true,
+    "oldCaptionMarkupAbsent": true
+  },
+  "assets": [
+    "https://emfau88.github.io/TD/assets/battle-Bmzl7WRp.css",
+    "https://emfau88.github.io/TD/assets/battle-DmkJaLUO.js",
+    "https://emfau88.github.io/TD/assets/main-DQn_oNVY.css",
+    "https://emfau88.github.io/TD/assets/main-vu2Sym1s.js",
+    "https://emfau88.github.io/TD/assets/modulepreload-polyfill-B5Qt9EMX.js",
+    "https://emfau88.github.io/TD/assets/startup-Bf8OBAo4.js",
+    "https://emfau88.github.io/TD/assets/tavern-ui-B3mboVte.js",
+    "https://emfau88.github.io/TD/assets/tavern-ui-BgWBMzdo.css"
+  ]
+}
