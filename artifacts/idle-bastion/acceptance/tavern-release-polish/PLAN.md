@@ -32,7 +32,7 @@ Statuswerte: OFFEN / IN ARBEIT / ERLEDIGT / BLOCKIERT. ERLEDIGT setzt erfolgreic
 | Paket | Status | Ergebnis / Commit / Deployment | Verbleibend |
 |---|---|---|---|
 | 1 Sichere automatische Tavernenpause | ERLEDIGT | `7cd014a`; 49/49 Tests, 14 DOM-Ausgangsfälle, Build/Browser; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40691206208) | Smartphone-System-Suspend nicht auf physischem Gerät geprüft |
-| 2 Berührungen ab Herz 1/2/3 | OFFEN | — | Vollständig |
+| 2 Berührungen ab Herz 1/2/3 | IN ARBEIT | Implementiert; 20/20 Tests, DOM-/Browsermatrix, Build bestanden | Commit / Deployment |
 | 3 Reaktionsladezeiten | OFFEN | — | Vollständig |
 | 4 Gespräche und Geschenke | OFFEN | — | Vollständig |
 | 5 Herzfeedback und Tavernenoptik | OFFEN | — | Vollständig |
@@ -60,7 +60,7 @@ SHA: `7cd014aec0314e4c835cf3a09ec6858c08a59ee5`. [Pages-Lauf 40691206208](https:
 
 ## Paket 2 – Berührungen ab Herz 1/2/3
 
-Dateien: `src/tavern-social.ts`, `src/tavern-ui.ts`, `src/tavern-ui.css`, `src/tavern-rig-preview.css`, Inhaltsdateien, DE/EN-Texte und Social-/Interaction-/Content-Tests.
+Dateien: `src/tavern-social.ts`, `src/tavern-ui.ts`, `src/tavern-ui.css`, `src/tavern-rig.css`, Inhaltsdateien, DE/EN-Texte und Social-/Interaction-/Content-Tests.
 
 Ansatz: Schulter 1, Haare 2, Hand 3. Drei Marker direkt auf der normalen Figur, bei 0 sichtbar gesperrt; nur Geschichten blenden sie aus. Antippen erklärt Voraussetzung. Herz-1-Schulter bleibt rein kosmetisch; Reserven und Punkte ab Herz 2 bleiben unverändert. Bestehendes Saveformat genügt voraussichtlich, daher keine unnötige Migration.
 
@@ -70,7 +70,11 @@ Abnahme: beide Figuren bei Herz 0–3; richtige Sperren/Freigaben; sichtbare Her
 
 Nachweis: Fortschritts-/Save-Tests, Browsermatrix beider Figuren, Marker-Maße; Bilder bei 320 × 568 und 390 × 844.
 
-Ergebnis / SHA / Deployment / Restprobleme: ausstehend.
+Ergebnis: direkte Schulter-/Haar-/Handmarker bei Herz 1/2/3, sichtbar gesperrt ab 0, keine separate Berührungsansicht. Gesperrte Marker erklären ihre Schwelle beim Antippen; Berühren hebt sie hervor. Herzen 24 × 24 px, Ziele 44 × 44 px; Reaktionen verstecken sie nicht, persönliche Geschichten schon. Frühe Schulterberührung ist ausdrücklich kosmetisch und verändert auch bei Wiederholung weder Punkte noch Reserven. Kein Saveformatwechsel und keine Migration nötig; alte 4/5-Herzstände bleiben erhalten.
+
+Prüfung: 20/20 Social-/Content-/Interaction-/Gift-Tests, erweiterte DOM-Matrix für beide Figuren 0–3 plus sämtliche 14 Ausgangs-/Pausenfälle, Produktionsbuild bestanden. Testplayer liefert jetzt das korrekte erfolgreiche Promise-Ergebnis; dadurch werden persönliche Storysequenzen in der DOM-Prüfung tatsächlich durchlaufen. Browsermatrix `p2-browser-matrix.json`: 0 erklärt die Sperre, 1 bleibt bei 10 Punkten, 2 erhält bestehende +4 auf 39, 3 bleibt bei 70. Haarreaktion bei Herz 2, Handreaktion bei Herz 3 sowie Storyausblendung geprüft. Bei 320 × 568 und 390 × 844 alle Ziele 44 px, sichtbare Herzen 24 px; keine Browserfehler. Screenshots `after/p2-mara-320-heart2.jpg`, `after/p2-ilyra-390-heart3.jpg`.
+
+Verbleibend: Ladehinweis folgt in Paket 3, technische Texte/Gesprächsanordnung in Paket 4 und kleine 320-px-Figurenhöhe in Paket 5. SHA / Deployment: ausstehend.
 
 ## Paket 3 – Reaktionsladezeiten
 
@@ -88,7 +92,7 @@ Ergebnis / SHA / Deployment / Restprobleme: ausstehend.
 
 ## Paket 4 – Gespräche und Geschenke
 
-Dateien: `src/tavern-ui.ts`, `src/tavern-ui.css`, `src/tavern-rig-preview.css`, Inhalts-/Sprachdateien, UI-/Social-Tests.
+Dateien: `src/tavern-ui.ts`, `src/tavern-ui.css`, `src/tavern-rig.css`, Inhalts-/Sprachdateien, UI-/Social-Tests.
 
 Ansatz: feste Hauptaktionen Sprechen/Berühren/Schenken; zugehörige Gesprächsauswahl mit Plaudern/Lachen/Kompliment immer am selben Ort sichtbar. Berühren hebt vorhandene Marker hervor. Technische Fortschrittsdetails einklappen. Geschenkhinweis benennt persönliche Voraussetzung, erhaltenen normalen Vorrat und fehlende Siege.
 

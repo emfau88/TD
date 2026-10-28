@@ -21,7 +21,8 @@ export class TavernUI {
   private readonly lifetime = new AbortController();
   private readonly animation: TavernPlayer;
   private readonly observer: ResizeObserver;
-  private screen: 'overview' | 'character' | 'touch' = 'overview';
+  private screen: 'overview' | 'character' = 'overview';
+  private touchHint = false;
   private pending = false;
   private generation = 0;
   private lastLives = 20;
@@ -92,7 +93,7 @@ export class TavernUI {
         return;
       }
       if (target.dataset.moment) { void this.startMoment(Number(target.dataset.moment)); return; }
-      if (target.dataset.region) { if (!this.dragged) void this.act('touch', target.dataset.region as TouchRegion); return; }
+      if (target.dataset.region) { if (!this.dragged) void this.touch(target.dataset.region as TouchRegion); return; }
       switch (target.dataset.do) {
         case 'new-moment': if (this.newMoment) void this.startMoment(this.newMoment); break;
         case 'story-next': this.nextBeat(); break;
@@ -101,7 +102,7 @@ export class TavernUI {
         case 'back': this.back(); break;
         case 'dismiss': this.get('.tv-warning').hidden = true; break;
         case 'mara': this.select('mara'); break;
-        case 'touch': this.show(this.screen === 'touch' ? 'character' : 'touch'); break;
+        case 'touch': this.touchHint = true; delete this.dialog.dataset.touchHint; void this.dialog.offsetWidth; this.dialog.dataset.touchHint = 'true'; this.update(); break;
         case 'building': this.navigate('tavern'); break;
         case 'mara-combat': this.navigate(this.selected); break;
         case 'wisp': this.navigate('wisp'); break;
@@ -114,7 +115,7 @@ export class TavernUI {
   }
   private refreshLanguage(): void {
     const screen = this.screen;
-    this.get('#tv-title').textContent = screen === 'overview' ? 'The Last Cozy Corner' : screen === 'touch' ? t('Ein Moment mit {0}', this.content.name) : this.content.name;
+    this.get('#tv-title').textContent = screen === 'overview' ? 'The Last Cozy Corner' : this.content.name;
     this.get('.tv-stage-caption').textContent = t("{0} · {1}", this.content.name, this.content.role);
     this.get('.tv-dialogue small').textContent = t(this.content.name.toUpperCase());
     this.get('.tv-heart-buttons').setAttribute('aria-label', t("{0}s persönliche Momente", this.content.name));
@@ -157,7 +158,7 @@ export class TavernUI {
     this.get('.tv-warning').hidden = true; this.dialog.showModal(); session.setTavernOpen(true); this.ports.onOpenChange?.(true); this.show('overview'); this.get<HTMLButtonElement>('[data-do="close"]').focus();
   }
   close(): void { this.ports.onCompanion?.(null); this.animation.stop(); this.dialog.close(); this.ports.session()?.setTavernOpen(false); this.generation++; this.opener?.focus(); }
-  private back(): void { if (this.moment) { this.endMoment(); return; } if (this.screen === 'touch') this.show('character'); else if (this.screen === 'character') this.show('overview'); else this.close(); }
+  private back(): void { if (this.moment) { this.endMoment(); return; } if (this.screen === 'character') this.show('overview'); else this.close(); }
   private navigate(where: Destination): void { this.close(); this.ports.navigate(where); }
   private select(who: Companion): void {
     if (this.pending || (who === 'ilyra' && !this.ports.session()?.battle.ilyra)) return;
@@ -169,19 +170,18 @@ export class TavernUI {
   private show(screen: typeof this.screen): void {
     this.ports.onCompanion?.(screen==='overview'?null:this.selected);
     const wasOverview = this.screen === 'overview'; this.screen = screen;
-    this.moment = undefined;
+    this.moment = undefined; this.touchHint = false; delete this.dialog.dataset.touchHint;
     this.dialog.dataset.screen = screen; this.dialog.dataset.companion = this.selected;
     this.get('.tv-overview').hidden = screen !== 'overview'; this.get('.tv-character').hidden = screen === 'overview';
     this.get('.tv-back').hidden = screen === 'overview';
-    this.get('.tv-back').setAttribute('aria-label', t(screen === 'touch' ? t("Zurück zu {0}s Charakteransicht", this.content.name) : t('Zurück zur Tavernenübersicht')));
-    this.get('#tv-title').textContent = t(screen === 'overview' ? 'The Last Cozy Corner' : screen === 'touch' ? t("Ein Moment mit {0}", this.content.name) : this.content.name);
-    this.get('.tv-touch-help').hidden = screen !== 'touch';
+    this.get('.tv-back').setAttribute('aria-label', t('Zurück zur Tavernenübersicht'));
+    this.get('#tv-title').textContent = t(screen === 'overview' ? 'The Last Cozy Corner' : this.content.name);
+    this.get('.tv-touch-help').hidden = true;
     // Install the new loading portrait before start() can synchronously notify UI.
     this.get<HTMLImageElement>('.tv-loading-portrait').src = (this.ports.presentation?.portrait ?? companionPortrait)(this.selected);
     if (wasOverview) this.get('.tv-figure canvas').hidden = true;
     if (screen === 'overview') { this.generation++; this.pending = false; this.animation.stop(); }
     else if (wasOverview) { this.text('line', this.content.stage(this.points).greeting); this.result(() => ''); void this.animation.start(this.selected); }
-    if (screen === 'touch') void this.animation.prepareReactions();
     this.refreshLanguage();
     this.update(); this.positionHotspots();
     if (screen !== 'overview') this.get<HTMLButtonElement>('[data-do="back"]').focus();
@@ -248,26 +248,26 @@ export class TavernUI {
     const nextMoment = this.content.next(points);
     this.text('moment-hint', nextMoment ? t("{0}Als Nächstes: „{1}“ · {2} Zuneigung.", count ? t('Herz antippen: Moment erleben. ') : '', nextMoment.title, nextMoment.points) : t('Deine Momente bleiben über die Herzen verfügbar.'));
     this.dialog.dataset.story = String(!!this.moment);
-    this.get('.tv-back').setAttribute('aria-label', t(this.moment ? t("Zurück zu {0}", this.content.name) : this.screen === 'touch' ? t("Zurück zu {0}s Charakteransicht", this.content.name) : t('Zurück zur Tavernenübersicht')));
+    this.get('.tv-back').setAttribute('aria-label', t(this.moment ? t("Zurück zu {0}", this.content.name) : t('Zurück zur Tavernenübersicht')));
     this.get('.tv-story-heading').hidden = !this.moment;
     this.get('.tv-story-controls').hidden = !this.moment;
     this.get('.tv-actions').hidden = !!this.moment;
     this.get('.tv-gifts').hidden = !!this.moment;
     this.get('.tv-result').hidden = !!this.moment;
-    this.get('.tv-touch-help').hidden = this.screen !== 'touch' || !!this.moment;
+    this.get('.tv-touch-help').hidden = !this.touchHint || !!this.moment;
     const unlock = this.get<HTMLButtonElement>('[data-do="new-moment"]');
     unlock.hidden = !this.newMoment || !!this.moment;
     if (this.newMoment) {
-      const added = this.newMoment === 2 ? t('Schulter') : this.newMoment === 3 ? t('Haare') : this.newMoment === 4 ? t('Hand') : '';
+      const added = this.newMoment === 1 ? t('Schulter') : this.newMoment === 2 ? t('Haare') : this.newMoment === 3 ? t('Hand') : '';
       unlock.textContent = t("Neuer Moment: {0} →", this.content.moments[this.newMoment - 1]!.title) + (added ? t(' · Neu: {0} berühren', added) : '');
     }
-    this.get('.tv-touch-help').textContent = t('Dauerhaft verfügbar: {0}. Tippe auf die Herzen an der Figur.', availableTouches(points).map(region => t(this.content.reactions[region].label)).join(', '));
+    this.get('.tv-touch-help').textContent = t('Tippe auf die kleinen Herzen: Schulter ab Herz 1, Haare ab Herz 2, Hand ab Herz 3.');
     this.dialog.dataset.reacting = String(this.animation.reacting);
     const blocked = this.pending || session.inputBusy || !!session.error || session.suspended || session.awaitingResume || !this.animation.ready;
     unlock.disabled = blocked;
     const gestures = this.dialog.querySelector<HTMLElement>('.tv-gestures');
     if (gestures) {
-      gestures.hidden = !!this.moment || count < 2 || this.screen === 'touch';
+      gestures.hidden = !!this.moment || count < 2;
       for (const gesture of this.ports.presentation!.gestures) {
         const button = this.get<HTMLButtonElement>(`[data-gesture="${gesture.key}"]`);
         button.hidden = !!gesture.companion && gesture.companion !== this.selected || gesture.minHearts > Math.max(3, count);
@@ -286,16 +286,20 @@ export class TavernUI {
     }
     for (const action of ['talk', 'touch', 'gift'] as const) {
       const offer = b.companionOffer(this.selected, action);
-      const detail = offer.points ? t('+{0} Zuneigung', offer.points) : capped ? t('Gemeinsame Zeit') : offer.reason === 'locked' ? t('Ab Herz 2') : offer.reason === 'limit' ? t('Neue Punkte in {0} Siegen', SOCIAL.clearsPerRefill - (reserve?.clears ?? 0)) : t('Ohne weitere Punkte');
+      const detail = offer.points ? t('+{0} Zuneigung', offer.points) : capped ? t('Gemeinsame Zeit') : offer.reason === 'locked' ? t('Ab Herz 1') : offer.reason === 'companionship' ? t('Gemeinsame Zeit') : offer.reason === 'limit' ? t('Neue Punkte in {0} Siegen', SOCIAL.clearsPerRefill - (reserve?.clears ?? 0)) : t('Ohne weitere Punkte');
       this.text(action, action === 'gift' ? capped ? t('Etappe abgeschlossen') : offer.gift === 'personal' ? t('Herz 3 freischalten') : offer.accepted ? detail : personalReady && points < 58 ? t('Noch {0} Zuneigung', 58 - points) : offer.reason === 'no-gift' ? t('Kein Geschenk') : offer.reason === 'affection' ? t('Noch {0} Zuneigung', 23 - points) : t('Persönliches Geschenk fehlt') : action === 'touch' && touchCount ? t('{0} · {1}', touchCount === 1 ? t('1 Berührung') : t('{0} Berührungen', touchCount), detail) : detail);
       this.get('[data-action="gift"] span').textContent = t(gift.gift === 'personal' ? 'Überreichen' : 'Schenken');
       const button = this.get<HTMLButtonElement>(action === 'touch' ? '[data-do="touch"]' : `[data-action="${action}"]`);
-      button.disabled = blocked || !offer.accepted;
+      button.disabled = blocked || action !== 'touch' && !offer.accepted;
     }
-    this.get('[data-do="touch"]').setAttribute('aria-pressed', String(this.screen === 'touch'));
     for (const key of Object.keys(this.content.reactions) as TouchRegion[]) {
       const button = this.get<HTMLButtonElement>(`[data-region="${key}"]`);
-      button.hidden = this.screen !== 'touch' || count < this.content.reactions[key].minHearts; button.disabled = blocked || !this.animation.reactionsReady || count < this.content.reactions[key].minHearts;
+      const reaction = this.content.reactions[key], locked = count < reaction.minHearts;
+      button.hidden = this.screen === 'overview' || !!this.moment;
+      button.disabled = blocked;
+      button.dataset.locked = String(locked);
+      button.setAttribute('aria-label', t('{0} berühren', t(reaction.label)) + (locked ? t(' · Ab Herz {0}', reaction.minHearts) : ''));
+      button.title = locked ? t('{0} berühren · ab Herz {1}', t(reaction.label), reaction.minHearts) : t('{0} berühren', t(reaction.label));
     }
     const failedIdle = !!this.get('.tv-figure canvas').dataset.error;
     this.get('.tv-loading-portrait').hidden = this.animation.ready && !failedIdle;
@@ -340,6 +344,22 @@ export class TavernUI {
     this.moment = undefined;
     this.text('line', this.content.stage(this.points).greeting);
     this.result(() => t('Deine Momente bleiben über die Herzen verfügbar.')); this.update();
+  }
+  private async touch(region: TouchRegion): Promise<void> {
+    const reaction = this.content.reactions[region];
+    if (hearts(this.points) < reaction.minHearts) {
+      this.result(() => t('{0} berühren · ab Herz {1}', t(reaction.label), reaction.minHearts));
+      this.revealReply(); return;
+    }
+    if (!this.animation.reactionsReady) {
+      const generation = this.generation;
+      this.pending = true; this.update();
+      const ready = await this.animation.prepareReactions();
+      if (generation !== this.generation || !this.isOpen) return;
+      this.pending = false; this.update();
+      if (!ready) return;
+    }
+    await this.act('touch', region);
   }
   private async act(action: Interaction, region: TouchRegion = 'shoulder'): Promise<void> {
     const session = this.ports.session();

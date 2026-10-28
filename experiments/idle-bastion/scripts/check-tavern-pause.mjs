@@ -22,7 +22,7 @@ try {
   b.buildTavern(b.recommendedTavernPlot); b.upgradeTavern(); b.recruitIlyra();
   b.social.points.mara = b.social.points.ilyra = 70;
   const player = { ready:true, loadingReactions:false, reactionsReady:true, reacting:false,
-    start:async()=>{},stop(){},setHearts(){},prepareReactions:async()=>{},play(){},act(){},scene(){},gesture(){} };
+    start:async()=>{},stop(){},setHearts(){},prepareReactions:async()=>true,play(){},act(){},scene(){},gesture(){} };
   const presentation = {kind:'rig',create:()=>player,drawPortrait:async()=>{},portrait:()=>'',gestures:[],anchors:()=>({shoulder:{x:100,y:100},hair:{x:100,y:100},hand:{x:100,y:100}})};
   const destinations=[];
   ui = new TavernUI({session:()=>session,presentation,navigate:where=>destinations.push(where)});
@@ -44,6 +44,22 @@ try {
       await settle(); assert.equal(ui.isOpen,false,exit); assert.equal(session.tavernOpen,false,exit); assert.equal(session.paused,manual,exit);
     }
   }
+  // Locked markers explain themselves; available touches never disappear during reactions.
+  for (const who of ['mara','ilyra']) for (const [count,points] of [[0,0],[1,10],[2,35],[3,70]]) {
+    b.social.points[who]=points; b.social.reserves[who].touch=count>=2?3:0;
+    ui.open(); click(`[data-do=${who}]`); await settle(); ui.update();
+    const buttons=[...document.querySelectorAll('.tv-hotspot')];
+    assert.equal(buttons.length,3); assert.ok(buttons.every(button=>!button.hidden&&!button.disabled));
+    assert.equal(buttons.filter(button=>button.dataset.locked==='false').length,count);
+    const locked=buttons.find(button=>button.dataset.locked==='true');
+    if(locked) {const before=structuredClone(b.social);locked.click();await settle();assert.deepEqual(b.social,before);assert.match(document.querySelector('[data-text=result]').textContent,/Herz|heart/);}
+    player.reacting=true;ui.update();assert.ok(buttons.every(button=>!button.hidden));player.reacting=false;
+    click('[data-do=touch]');assert.equal(ui.dialog.dataset.screen,'character');
+    assert.equal(document.querySelector('.tv-touch-help').hidden,false);
+    if(count) {click('[data-moment="1"]');await settle();assert.ok(buttons.every(button=>button.hidden));click('[data-do=story-exit]');assert.ok(buttons.every(button=>!button.hidden));}
+    ui.close();
+  }
+  console.log('PASS: both companions at hearts 0–3, permanent markers, locked explanations, reactions, stories and one character view.');
   ui.open(); assert.equal(session.tavernOpen,true); ui.destroy(); ui=undefined; assert.equal(session.tavernOpen,false);
   assert.deepEqual(destinations,['tavern','wisp','ilyra','tavern','wisp','ilyra']);
   console.log('PASS: 14 exit/manual-pause cases, stories, both companions, internal navigation and destroy preserve the hold lifecycle.');

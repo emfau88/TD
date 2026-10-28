@@ -11,7 +11,7 @@ export const SOCIAL = Object.freeze({
   chapterMaximum: 70, talkPoints: 8, touchPoints: 4, giftPoints: 12,
   reserveLimit: 3, clearsPerRefill: 3, clearsPerGift: 10, personalClears: 30, stockLimit: 20,
 });
-export const TOUCH_HEARTS: Readonly<Record<TouchRegion, number>> = { shoulder: 2, hair: 3, hand: 4 };
+export const TOUCH_HEARTS: Readonly<Record<TouchRegion, number>> = { shoulder: 1, hair: 2, hand: 3 };
 export const COMPANION_IDS = ['mara', 'ilyra'] as const;
 export interface Reserve { talk: number; touch: number; clears: number }
 export interface SocialState {
@@ -26,7 +26,7 @@ export interface SocialState {
 export interface SocialAccess { tavernBuilt: boolean; ilyraRecruited: boolean; boss15: boolean; boss25: boolean }
 export interface InteractionResult {
   accepted: boolean; points: number; gift?: GiftKind;
-  reason: 'rewarded' | 'limit' | 'complete' | 'locked' | 'no-gift' | 'invalid' | 'affection' | 'gift-needed' | 'personal-needed' | 'gift-progress';
+  reason: 'rewarded' | 'limit' | 'complete' | 'locked' | 'no-gift' | 'invalid' | 'affection' | 'gift-needed' | 'personal-needed' | 'gift-progress' | 'companionship';
 }
 export const createSocial = (): SocialState => ({
   points: { mara: 0, ilyra: 0 }, gifts: 0,
@@ -91,6 +91,8 @@ export function interactionOffer(state: SocialState, access: SocialAccess, who: 
   if (!socialAvailable(access, who)) return deny('locked');
   if (action === 'touch' && !touchAvailable(state.points[who], choice.region ?? 'shoulder')) return deny('locked');
   const points = state.points[who];
+  // Early shoulder contact is cosmetic. Keep the earned reserve economy at heart 2.
+  if (action === 'touch' && points < 35) return { accepted: true, points: 0, reason: 'companionship' };
   if (points >= SOCIAL.chapterMaximum) return { accepted: action !== 'gift', points: 0, reason: 'complete' };
   if (action === 'gift') {
     const gift = choice.gift ?? (personalGiftReady(state, who) && points >= 58 ? 'personal' : 'normal');

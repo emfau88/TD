@@ -48,8 +48,8 @@
 /* Small visible markers; the invisible 44px target stays easy to tap. */
 #tavern-dialog .tv-hotspot { position:absolute; transform:translate(-50%,-50%); display:grid; place-items:center; width:44px; height:44px; padding:0; border-radius:50%; border:0; background:transparent; box-shadow:none; }
 #tavern-dialog .tv-hotspot:hover:not(:disabled) { border:0; background:transparent; }
-#tavern-dialog .tv-hotspot span { display:grid; place-items:center; width:18px; height:18px; color:#f38ab1; opacity:.95; text-shadow:-1px 0 #54283c,1px 0 #54283c,0 -1px #54283c,0 1px #54283c,0 2px 3px #0008; }
-#tavern-dialog .tv-hotspot span::after { content:'♥'; font:18px/18px Arial,sans-serif; }
+#tavern-dialog .tv-hotspot span { display:grid; place-items:center; width:24px; height:24px; color:#f38ab1; opacity:.95; text-shadow:-1px 0 #54283c,1px 0 #54283c,0 -1px #54283c,0 1px #54283c,0 2px 3px #0008; }
+#tavern-dialog .tv-hotspot span::after { content:'♥'; font:24px/24px Arial,sans-serif; }
 #tavern-dialog .tv-hotspot em { display:none; position:absolute; left:50%; top:37px; transform:translateX(-50%); font:11px Arial; background:#122025ed; padding:3px 6px; border-radius:3px; color:#f7e5bc; pointer-events:none; white-space:nowrap; }
 #tavern-dialog .tv-hotspot:focus-visible em { display:block; }
 @media(hover:hover) { #tavern-dialog .tv-hotspot:hover em { display:block; } #tavern-dialog .tv-hotspot:hover span { opacity:1; } }
@@ -101,7 +101,11 @@
   #tavern-dialog .tv-warning button { font-size:11px; padding:4px 7px; }
 }
 
-#tavern-dialog[data-reacting="true"] .tv-hotspot { visibility:hidden; }
+#tavern-dialog .tv-hotspot[data-locked="true"] span { color:#c7b8b8; opacity:.48; }
+#tavern-dialog .tv-hotspot[data-locked="true"] span::after { content:'♡'; }
+#tavern-dialog[data-touch-hint="true"] .tv-hotspot span { animation:tv-touch-hint 1.4s ease-out; }
+@keyframes tv-touch-hint { 30%,70% { transform:scale(1.18); filter:drop-shadow(0 0 5px #f6a9ce); } }
+@media(prefers-reduced-motion:reduce) { #tavern-dialog[data-touch-hint="true"] .tv-hotspot span { animation:none; outline:1px solid #f6a9ce; outline-offset:3px; } }
 @media(max-width:700px) { #tavern-dialog[data-screen="character"],#tavern-dialog[data-screen="touch"] { top:8px; bottom:auto; margin:0 auto; } }
 
 /* T05: earned hearts are the small, persistent entry points to personal scenes. */

@@ -1,0 +1,186 @@
+[
+  {
+    "markers": [
+      {
+        "hidden": false,
+        "locked": "true",
+        "region": "hand"
+      },
+      {
+        "hidden": false,
+        "locked": "true",
+        "region": "hair"
+      },
+      {
+        "hidden": false,
+        "locked": "true",
+        "region": "shoulder"
+      }
+    ],
+    "points": "0",
+    "result": "Schulter berühren · ab Herz 1",
+    "screen": "character",
+    "who": "mara"
+  },
+  {
+    "markers": [
+      {
+        "hidden": false,
+        "locked": "true",
+        "region": "hand"
+      },
+      {
+        "hidden": false,
+        "locked": "true",
+        "region": "hair"
+      },
+      {
+        "hidden": false,
+        "locked": "false",
+        "region": "shoulder"
+      }
+    ],
+    "points": "10",
+    "result": "Gemeinsame Zeit mit Mara · ohne zusätzliche Zuneigung.",
+    "screen": "character",
+    "who": "mara"
+  },
+  {
+    "markers": [
+      {
+        "hidden": false,
+        "locked": "true",
+        "region": "hand"
+      },
+      {
+        "hidden": false,
+        "locked": "false",
+        "region": "hair"
+      },
+      {
+        "hidden": false,
+        "locked": "false",
+        "region": "shoulder"
+      }
+    ],
+    "points": "39",
+    "result": "+4 Zuneigung zu Mara",
+    "screen": "character",
+    "who": "mara"
+  },
+  {
+    "markers": [
+      {
+        "hidden": false,
+        "locked": "false",
+        "region": "hand"
+      },
+      {
+        "hidden": false,
+        "locked": "false",
+        "region": "hair"
+      },
+      {
+        "hidden": false,
+        "locked": "false",
+        "region": "shoulder"
+      }
+    ],
+    "points": "70",
+    "result": "Gemeinsame Zeit mit Mara · ohne zusätzliche Zuneigung.",
+    "screen": "character",
+    "who": "mara"
+  },
+  {
+    "markers": [
+      {
+        "hidden": false,
+        "locked": "true",
+        "region": "hand"
+      },
+      {
+        "hidden": false,
+        "locked": "true",
+        "region": "hair"
+      },
+      {
+        "hidden": false,
+        "locked": "true",
+        "region": "shoulder"
+      }
+    ],
+    "points": "0",
+    "result": "Schulter berühren · ab Herz 1",
+    "screen": "character",
+    "who": "ilyra"
+  },
+  {
+    "markers": [
+      {
+        "hidden": false,
+        "locked": "true",
+        "region": "hand"
+      },
+      {
+        "hidden": false,
+        "locked": "true",
+        "region": "hair"
+      },
+      {
+        "hidden": false,
+        "locked": "false",
+        "region": "shoulder"
+      }
+    ],
+    "points": "10",
+    "result": "Gemeinsame Zeit mit Ilyra · ohne zusätzliche Zuneigung.",
+    "screen": "character",
+    "who": "ilyra"
+  },
+  {
+    "markers": [
+      {
+        "hidden": false,
+        "locked": "true",
+        "region": "hand"
+      },
+      {
+        "hidden": false,
+        "locked": "false",
+        "region": "hair"
+      },
+      {
+        "hidden": false,
+        "locked": "false",
+        "region": "shoulder"
+      }
+    ],
+    "points": "39",
+    "result": "+4 Zuneigung zu Ilyra",
+    "screen": "character",
+    "who": "ilyra"
+  },
+  {
+    "markers": [
+      {
+        "hidden": false,
+        "locked": "false",
+        "region": "hand"
+      },
+      {
+        "hidden": false,
+        "locked": "false",
+        "region": "hair"
+      },
+      {
+        "hidden": false,
+        "locked": "false",
+        "region": "shoulder"
+      }
+    ],
+    "points": "70",
+    "result": "Gemeinsame Zeit mit Ilyra · ohne zusätzliche Zuneigung.",
+    "screen": "character",
+    "who": "ilyra"
+  }
+]

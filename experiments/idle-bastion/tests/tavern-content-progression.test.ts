@@ -8,7 +8,7 @@ import { ILYRA_MOMENTS, ilyraLine, nextIlyraMoment } from '../src/tavern-ilyra-c
 
 test('each active touch uses a distinct existing clip, independent of story clips', () => {
   const manifest = JSON.parse(readFileSync(new URL('../assets/tavern-rig/manifest.json', import.meta.url), 'utf8'));
-  assert.deepEqual([35, 70, 110].map(p => availableTouches(p).map(region => TOUCH_CLIPS[region])), [['touch'], ['touch', 'head'], ['touch', 'head', 'giggle']]);
+  assert.deepEqual([10, 35, 70].map(p => availableTouches(p).map(region => TOUCH_CLIPS[region])), [['touch'], ['touch', 'head'], ['touch', 'head', 'giggle']]);
   for (const who of ['mara', 'ilyra']) for (const key of Object.values(TOUCH_CLIPS)) {
     assert.ok(manifest.heroes[who][key]);
     assert.ok(manifest.heroes[who][key].pages.every((page: string) => existsSync(new URL('../assets/tavern-rig/' + page, import.meta.url))));

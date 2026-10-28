@@ -105,17 +105,31 @@ test('recruitment guarantees Ilyra a welcome gift, full stock defers the claim',
   full.interactCompanion('ilyra', 'gift');
   assert.equal(full.social.gifts, 20); assert.equal(full.social.claimed.ilyraWelcome, true);
 });
-test('touches accumulate, share one reward reserve and remain playable at the chapter cap', () => {
-  const b = veteran(); heartTwo(b);
-  assert.deepEqual(availableTouches(35), ['shoulder']); assert.deepEqual(availableTouches(70), ['shoulder', 'hair']);
-  assert.deepEqual(availableTouches(110), ['shoulder', 'hair', 'hand']);
-  assert.equal(b.interactCompanion('mara', 'touch', { region: 'hair' }).reason, 'locked');
-  b.social.points.mara = 70;
-  for (const region of ['shoulder', 'hair'] as const) assert.deepEqual(b.interactCompanion('mara', 'touch', { region }), { accepted: true, points: 0, reason: 'complete' });
-  assert.equal(b.interactCompanion('mara', 'touch', { region: 'hand' }).accepted, false);
-  b.social.points.mara = 110;
-  assert.equal(b.interactCompanion('mara', 'touch', { region: 'hand' }).accepted, true);
+test('touches unlock at hearts 1/2/3, share the existing reserve from heart 2 and preserve legacy progress', () => {
+  assert.deepEqual([0,10,35,70,110,160].map(availableTouches), [[],['shoulder'],['shoulder','hair'],['shoulder','hair','hand'],['shoulder','hair','hand'],['shoulder','hair','hand']]);
+  for (const who of ['mara','ilyra'] as const) {
+    const b = veteran(true);
+    for (const points of [10,23,34]) {
+      b.social.points[who] = points; const before = structuredClone(b.social);
+      for (let i=0;i<20;i++) assert.deepEqual(b.interactCompanion(who,'touch',{region:'shoulder'}), {accepted:true,points:0,reason:'companionship'});
+      assert.equal(b.interactCompanion(who,'touch',{region:'hair'}).reason,'locked');
+      assert.equal(b.interactCompanion(who,'touch',{region:'hand'}).reason,'locked');
+      assert.deepEqual(b.social,before); assert.deepEqual(IdleBattle.restore(b.snapshot())!.social,before);
+    }
+    assert.equal(b.interactCompanion(who,'gift').points,1); // existing 34-point save reaches heart 2
+    assert.equal(b.social.reserves[who]!.touch,3);
+    assert.equal(b.interactCompanion(who,'touch',{region:'shoulder'}).points,4);
+    assert.equal(b.interactCompanion(who,'touch',{region:'hair'}).points,4);
+    assert.equal(b.social.reserves[who]!.touch,1);
+    assert.equal(b.interactCompanion(who,'touch',{region:'hand'}).reason,'locked');
+    for(const points of [70,110,160]) {
+      b.social.points[who]=points; const before=structuredClone(b.social);
+      for(const region of ['shoulder','hair','hand'] as const) assert.deepEqual(b.interactCompanion(who,'touch',{region}),{accepted:true,points:0,reason:'complete'});
+      assert.deepEqual(b.social,before); assert.deepEqual(IdleBattle.restore(b.snapshot())!.social,before);
+    }
+  }
 });
+
 test('schema 31 migration preserves earned values, claims, combat and partial gift progress exactly', () => {
   for (const points of [0, 23, 34, 35, 58, 69, 70, 109, 110, 160]) {
     const b = veteran(true), oldSocial = createLegacy(); grantLegacy(oldSocial, b.socialAccess);

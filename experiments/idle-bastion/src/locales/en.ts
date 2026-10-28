@@ -2,6 +2,11 @@
  * Keep placeholders and game values intact; never use these strings as simulation IDs. */
 import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
+  "Ab Herz 1": "From heart 1",
+  "{0} berühren": "Touch {0}",
+  " · Ab Herz {0}": " · From heart {0}",
+  "{0} berühren · ab Herz {1}": "Touch {0} · from heart {1}",
+  "Tippe auf die kleinen Herzen: Schulter ab Herz 1, Haare ab Herz 2, Hand ab Herz 3.": "Tap the small hearts: shoulder from heart 1, hair from heart 2, hand from heart 3.",
   "Tavernenpause": "Tavern pause",
   "Gespräche und Berührungen erhöhen eure Zuneigung.": "Conversations and touches build affection.",
   "1 Berührung": "1 touch",
