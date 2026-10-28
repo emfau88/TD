@@ -66,11 +66,23 @@ try {
     b.social.points[who]=points;b.social.reserves[who]={talk:0,touch:count>=2?1:0,clears:0};b.social.personal[who]={clears:0,claimed:count>=3};
     ui.open();click(`[data-do=${who}]`);await settle();click('[data-do=speak]');await settle();
     const group=document.querySelector('.tv-gestures');assert.equal(group.hidden,false);
+    assert.equal(group.parentElement.className,'tv-action-dock','conversation choices stay outside the text scroller');
+    assert.equal(document.querySelector('[data-do=speak]').getAttribute('aria-pressed'),'true');
+    ui.dialog.dispatchEvent(new dom.window.Event('cancel',{cancelable:true}));
+    assert.equal(group.hidden,true);assert.equal(ui.dialog.dataset.screen,'character');assert.equal(session.tavernOpen,true);
+    click('[data-do=speak]');
     assert.equal([...group.querySelectorAll('button')].filter(button=>!button.hidden).length,3);
     assert.equal(document.querySelector('[data-gesture=giggle]').dataset.locked,String(count<2));
     assert.equal(document.querySelector('[data-gesture=hip]').dataset.locked,String(count<3));
     const before=structuredClone(b.social);
-    for (const selector of ['[data-action=talk]','[data-gesture=giggle]','[data-gesture=hip]']) {click(selector);await settle();}
+    for (const selector of ['[data-action=talk]','[data-gesture=giggle]','[data-gesture=hip]']) {
+      if(group.hidden)click('[data-do=speak]');click(selector);await settle();
+      assert.equal(group.hidden,true,'choice reveals the reply and keeps the portrait unobstructed');
+      assert.equal(document.querySelector('[data-do=speak]').getAttribute('aria-pressed'),'false');
+    }
+    assert.equal(document.querySelector('.tv-unlock').parentElement.className,'tv-bond-copy');
+    assert.equal(document.querySelector('.tv-story-controls').parentElement.className,'tv-action-dock');
+    for (let heart=1;heart<=5;heart++) assert.equal(document.querySelector(`[data-moment="${heart}"]`).disabled,heart>count);
     assert.deepEqual(b.social,before,'conversation repeats add no points with empty reserve');
     ui.close();
   }

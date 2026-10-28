@@ -1,4 +1,5 @@
 import { IdleBattle } from '../../src/battle';
+import { setLanguage } from '../../src/i18n';
 import { openBattleStore } from '../../src/save-store';
 
 // UI-operated local fixture; deliberately absent from production build inputs.
@@ -9,6 +10,13 @@ for (const who of ['mara', 'ilyra'] as const) document.getElementById(who)!.addE
   b.buildWorkshop(); b.researchFrost(); b.update(.025); b.wispArrival.met = true; b.discovery = 'off'; b.tutorial.hidden = true;
   if (!b.buildTavern(b.recommendedTavernPlot!) || !b.upgradeTavern()) throw new Error('Tavernenfixture ungültig');
   if (who === 'ilyra') { if (!b.recruitIlyra()) throw new Error('Rekrutierung fehlgeschlagen'); b.ilyra!.introduction = 'done'; }
+  const points = Number((document.getElementById('hearts') as HTMLSelectElement).value);
+  for (const companion of (who === 'ilyra' ? ['mara', 'ilyra'] : ['mara']) as ('mara' | 'ilyra')[]) {
+    b.social.points[companion] = points;
+    b.social.reserves[companion]!.touch = points >= 35 ? 3 : 0;
+    b.social.personal[companion] = { clears: points >= 70 ? 30 : 0, claimed: points >= 70 };
+  }
+  setLanguage((document.getElementById('language') as HTMLSelectElement).value as 'de' | 'en');
   if (!IdleBattle.restore(b.snapshot())) throw new Error('Fixture lässt sich nicht laden');
   const store = await openBattleStore(undefined, `spire-idle-bastion-probe-${slot}`);
   try { await store.save(b.snapshot(), false, 0); } finally { store.close(); }

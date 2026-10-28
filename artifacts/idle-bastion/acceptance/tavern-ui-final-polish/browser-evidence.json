@@ -1,0 +1,682 @@
+[
+  {
+    "label": "Mara H3 chat 320 DE",
+    "character": "Mara",
+    "clip": {
+      "cachedPages": "14",
+      "clip": "head",
+      "companion": "mara",
+      "frame": "9"
+    },
+    "dialogue": "Heute war ich unsicher. Dann habe ich mich daran erinnert, dass ich nicht alles allein tragen muss.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": false,
+        "heart": "2"
+      },
+      {
+        "disabled": false,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 356.8467712402344,
+      "height": 169.911376953125,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Mara H3 laugh 320 DE",
+    "character": "Mara",
+    "clip": {
+      "cachedPages": "14",
+      "clip": "idle",
+      "companion": "mara",
+      "frame": "142"
+    },
+    "dialogue": "Gut, der war nicht schlecht. Erzähl ihn bloß nicht Wisp – sonst muss ich ihn morgen wieder hören.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": false,
+        "heart": "2"
+      },
+      {
+        "disabled": false,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 356.8467712402344,
+      "height": 169.911376953125,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Mara H3 compliment 320 DE",
+    "character": "Mara",
+    "clip": {
+      "cachedPages": "14",
+      "clip": "hip",
+      "companion": "mara",
+      "frame": "7"
+    },
+    "dialogue": "Na, wenn du mich so ansiehst, muss ja etwas dran sein.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": false,
+        "heart": "2"
+      },
+      {
+        "disabled": false,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 356.8467712402344,
+      "height": 169.911376953125,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Ilyra H3 chat 320 DE",
+    "character": "Ilyra",
+    "clip": {
+      "cachedPages": "14",
+      "clip": "head",
+      "companion": "ilyra",
+      "frame": "3"
+    },
+    "dialogue": "Ich habe lange geglaubt, Unabhängigkeit hieße, niemanden zu vermissen. Inzwischen sehe ich das anders.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": false,
+        "heart": "2"
+      },
+      {
+        "disabled": false,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 356.8467712402344,
+      "height": 169.911376953125,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Ilyra H3 laugh 320 DE",
+    "character": "Ilyra",
+    "clip": {
+      "cachedPages": "14",
+      "clip": "giggle",
+      "companion": "ilyra",
+      "frame": "7"
+    },
+    "dialogue": "Damit habe ich nicht gerechnet. Du weißt, wie du mich zum Lachen bringst.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": false,
+        "heart": "2"
+      },
+      {
+        "disabled": false,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 356.8467712402344,
+      "height": 169.911376953125,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Ilyra H3 compliment 320 DE",
+    "character": "Ilyra",
+    "clip": {
+      "cachedPages": "14",
+      "clip": "hip",
+      "companion": "ilyra",
+      "frame": "6"
+    },
+    "dialogue": "Du machst es mir nicht gerade leicht, ernst zu bleiben.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": false,
+        "heart": "2"
+      },
+      {
+        "disabled": false,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 356.8467712402344,
+      "height": 169.911376953125,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Ilyra H3 story completed and replayed",
+    "character": "Ilyra",
+    "clip": {
+      "cachedPages": "14",
+      "clip": "head",
+      "companion": "ilyra",
+      "frame": "15"
+    },
+    "dialogue": "Schön, dass du da bist. Heute möchte ich dir nichts vorspielen.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": false,
+        "heart": "2"
+      },
+      {
+        "disabled": false,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 356.8467712402344,
+      "height": 169.911376953125,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Ilyra H3 persisted after reload DE desktop",
+    "character": "Ilyra",
+    "clip": {
+      "cachedPages": "13",
+      "clip": "idle",
+      "companion": "ilyra",
+      "frame": "4"
+    },
+    "dialogue": "Schön, dass du da bist. Heute möchte ich dir nichts vorspielen.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": false,
+        "heart": "2"
+      },
+      {
+        "disabled": false,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 748.2704162597656,
+      "height": 481.2321166992187,
+      "y": 267.0382995605469
+    },
+    "story": "false"
+  },
+  {
+    "label": "Mara H2 locked compliment 360 EN",
+    "character": "Mara",
+    "clip": {
+      "cachedPages": "14",
+      "clip": "idle",
+      "companion": "mara",
+      "frame": "26"
+    },
+    "dialogue": "It's good to see you. I have something to tell you.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": false,
+        "heart": "2"
+      },
+      {
+        "disabled": true,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 565.1229248046875,
+      "height": 378.1875305175781,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Mara H2 laugh 360 EN",
+    "character": "Mara",
+    "clip": {
+      "cachedPages": "14",
+      "clip": "giggle",
+      "companion": "mara",
+      "frame": "2"
+    },
+    "dialogue": "All right, that was a good one. Just don't tell Wisp, or I'll have to hear it again tomorrow.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": false,
+        "heart": "2"
+      },
+      {
+        "disabled": true,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 565.1229248046875,
+      "height": 378.1875305175781,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Ilyra H2 menu 360 EN",
+    "character": "Ilyra",
+    "clip": {
+      "cachedPages": "12",
+      "clip": "idle",
+      "companion": "ilyra",
+      "frame": "13"
+    },
+    "dialogue": "The sky is clear today. Perhaps we'll have time later.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": false,
+        "heart": "2"
+      },
+      {
+        "disabled": true,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": false,
+    "stage": {
+      "bottom": 565.1229248046875,
+      "height": 378.1875305175781,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Mara H1 menu 390 DE",
+    "character": "Mara",
+    "clip": {
+      "cachedPages": "10",
+      "clip": "idle",
+      "companion": "mara",
+      "frame": "13"
+    },
+    "dialogue": "Dein Platz ist noch frei. Ich hatte gehofft, dass du vorbeischaust.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": true,
+        "heart": "2"
+      },
+      {
+        "disabled": true,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": false,
+    "stage": {
+      "bottom": 610.5774841308594,
+      "height": 423.64208984375,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Ilyra H1 menu 390 DE",
+    "character": "Ilyra",
+    "clip": {
+      "cachedPages": "10",
+      "clip": "idle",
+      "companion": "ilyra",
+      "frame": "15"
+    },
+    "dialogue": "Ich habe den Speer schon abgestellt. Heute darf die Wache warten.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": true,
+        "heart": "2"
+      },
+      {
+        "disabled": true,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": false,
+    "stage": {
+      "bottom": 610.5774841308594,
+      "height": 423.64208984375,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Mara H0 menu 390 EN",
+    "character": "Mara",
+    "clip": {
+      "cachedPages": "10",
+      "clip": "idle",
+      "companion": "mara",
+      "frame": "12"
+    },
+    "dialogue": "There you are. Sit with me for a moment.",
+    "hearts": [
+      {
+        "disabled": true,
+        "heart": "1"
+      },
+      {
+        "disabled": true,
+        "heart": "2"
+      },
+      {
+        "disabled": true,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": false,
+    "stage": {
+      "bottom": 601.1434936523438,
+      "height": 414.2080993652344,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Ilyra H0 menu 390 EN",
+    "character": "Ilyra",
+    "clip": {
+      "cachedPages": "10",
+      "clip": "idle",
+      "companion": "ilyra",
+      "frame": "13"
+    },
+    "dialogue": "You're welcome here. I'm still getting used to the quiet.",
+    "hearts": [
+      {
+        "disabled": true,
+        "heart": "1"
+      },
+      {
+        "disabled": true,
+        "heart": "2"
+      },
+      {
+        "disabled": true,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": false,
+    "stage": {
+      "bottom": 601.1434936523438,
+      "height": 414.2080993652344,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Ilyra new heart 1 after saved conversation",
+    "character": "Ilyra",
+    "clip": {
+      "cachedPages": "14",
+      "clip": "head",
+      "companion": "ilyra",
+      "frame": "1"
+    },
+    "dialogue": "Mara showed me a place by the fire. I think she notices when someone doesn't know where they belong.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": true,
+        "heart": "2"
+      },
+      {
+        "disabled": true,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 601.1435089111328,
+      "height": 373.6849670410156,
+      "y": 227.4585418701172
+    },
+    "story": "false"
+  },
+  {
+    "label": "Production build: Ilyra earned H1 persisted, 390 EN",
+    "character": "Ilyra",
+    "clip": {
+      "cachedPages": "10",
+      "clip": "idle",
+      "companion": "ilyra",
+      "frame": "14"
+    },
+    "dialogue": "I've already put down my spear. Today, the watch can wait.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": true,
+        "heart": "2"
+      },
+      {
+        "disabled": true,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": false,
+    "stage": {
+      "bottom": 601.1434936523438,
+      "height": 414.2080993652344,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  }
+]

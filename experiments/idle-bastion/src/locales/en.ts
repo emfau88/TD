@@ -2,6 +2,8 @@
  * Keep placeholders and game values intact; never use these strings as simulation IDs. */
 import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
+  "Herzen antippen: persönliche Momente erleben.": "Tap the hearts to share personal moments.",
+  "Moment": "Story",
   "Welle {0} meistern für {1} · {2}/{0} geschafft": "Beat wave {0} for {1} · {2}/{0} cleared",
   "Optional: In der Siedlung ein Lager bauen oder „Später“ wählen.": "Optional: Build a Storehouse in Settlement, or choose “Later”.",
   "In der Siedlung die Werkstatt wählen und platzieren.": "Choose the Workshop in Settlement and place it.",
@@ -80,7 +82,7 @@ export const english: Readonly<Record<string, string>> = {
   "Neue Punkte in {0} Siegen": "New points in {0} wins",
   "Etappe abgeschlossen": "Chapter complete",
   "Herz 3 freischalten": "Unlock heart 3",
-  "Noch {0} Zuneigung": "{0} more affection needed",
+  "Noch {0} Zuneigung": "Needs {0} affection",
   "Persönliches Geschenk fehlt": "Personal gift needed",
   "{0} Berührungen · {1}": "{0} touches · {1}",
   "Überreichen": "Give gift",
@@ -853,7 +855,7 @@ export const english: Readonly<Record<string, string>> = {
   "Tippe auf Hand, Haare oder Schulter. Ziehen löst keine Berührung aus.": "Tap her hand, hair or shoulder. Dragging doesn't trigger a touch.",
   "Sprechen": "Talk",
   "Berühren": "Touch",
-  "Schenken": "Give a gift",
+  "Schenken": "Gift",
   "Geschenke sind für die hier ausgewählte Gefährtin. Du erhältst sie bei Meilensteinen und begrenzt nach gewonnenen Wellen. Gespräche und Berührungen sind auch ohne weitere Punkte möglich. Neue Belohnungen nach 20 Minuten laufender Spielzeit; Pause und Offline-Zeit zählen nicht.": "Gifts go to the companion selected here. You receive them at milestones and in limited amounts after winning waves. You can keep talking and touching even when no more points are available. New rewards become available after 20 minutes of active play; paused and offline time do not count.",
   "Mara im Kampf verwalten ↗": "Manage Mara in battle ↗",
   "Zurück zur Tavernenübersicht": "Back to tavern overview",
