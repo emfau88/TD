@@ -3,198 +3,363 @@
     "name": "Wisp and pads unlock at permanent milestones, with no gift or repeated payment on reload",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\b08.test.ts:16:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "Wisp and pads unlock at permanent milestones, with no gift or repeated payment on reload",
+    "file": "experiments/idle-bastion/tests/b08.test.ts",
+    "line": 16,
+    "category": "A",
+    "resolution": "A (zusätzlich B): Turmtypen bleiben an Welle 5/10 gebunden, das freie Raster nicht. Künstlicher Wisp-Meilenstein braucht auch seinen gespeicherten Ankunftszeitpunkt."
   },
   {
     "name": "regular opening still funds workshop and Frost before Wisp; four roles remain saveable into armored waves",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\b08.test.ts:89:1'",
     "error": "'{\"workshop\":58.425000000000004,\"frost\":74.5,\"wisp\":78.92500000000001}'",
-    "stack": []
+    "stack": [],
+    "rawLogName": "regular opening still funds workshop and Frost before Wisp; four roles remain saveable into armored waves",
+    "file": "experiments/idle-bastion/tests/b08.test.ts",
+    "line": 89,
+    "category": "A",
+    "resolution": "A (zusätzlich B): B13 erlaubt schnellere Käufe. Reihenfolge und 90/150/240-s-Obergrenzen bleiben geprüft. Mara wird per regulärem Laufbefehl vom vorgesehenen Frostplatz ferngehalten; alle vier Turmrollen bleiben verpflichtend."
   },
   {
     "name": "B11 earned boss follow-up opens the clearing within the 8â€“11 minute target and retains farming",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\b10.test.ts:63:1'",
     "error": "'false == true'",
-    "stack": []
+    "stack": [],
+    "rawLogName": "B11 earned boss follow-up opens the clearing within the 8â€“11 minute target and retains farming",
+    "file": "experiments/idle-bastion/tests/b10.test.ts",
+    "line": 63,
+    "category": "A",
+    "resolution": "A: B13 hebt die Mindestwartezeit auf; Bossfolge, exakt 900 Gold, Einmalkauf, Farmnachweis und 11-Minuten-Obergrenze bleiben geprüft."
   },
   {
     "name": "historical B10 timing target remains a separate balance finding",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\b10.test.ts:81:1'",
     "error": "'Historical first-boss target 7–10 minutes; actual 354.35s'",
-    "stack": []
+    "stack": [],
+    "rawLogName": "historical B10 timing target remains a separate balance finding",
+    "file": "experiments/idle-bastion/tests/b10.test.ts",
+    "line": 81,
+    "category": "A",
+    "resolution": "A: B13 erlaubt Boss unter sieben Minuten ausdrücklich; aktiver Bosskanal, echter Sieg und bisherige 10-Minuten-Obergrenze bleiben geprüft."
   },
   {
     "name": "both new slots have useful level-one frost/damage overlap and accessible companion routes",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\b11.test.ts:34:1'",
     "error": "'cell-30-6: 6 world pixels with the core guard'",
-    "stack": []
+    "stack": [],
+    "rawLogName": "both new slots have useful level-one frost/damage overlap and accessible companion routes",
+    "file": "experiments/idle-bastion/tests/b11.test.ts",
+    "line": 34,
+    "category": "A",
+    "resolution": "A: B11-Überlappungsanforderung gilt für die zwei benannten Ostplätze, nicht jeden später hinzugefügten freien Kandidaten."
   },
   {
     "name": "earned continuation opens Workshop II around minute 13 and keeps an affordable next goal after minute 15",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\b12.test.ts:111:1'",
     "error": "'Workshop II around minutes 10–13'",
-    "stack": []
+    "stack": [],
+    "rawLogName": "earned continuation opens Workshop II around minute 13 and keeps an affordable next goal after minute 15",
+    "file": "experiments/idle-bastion/tests/b12.test.ts",
+    "line": 111,
+    "category": "A",
+    "resolution": "A: B13 erlaubt frühe Werkstatt II. Reihenfolge, exakt 1.200 Gold, Grenze 795 s, 15-Minuten-Fortschritt und bezahlbares Folgeangebot bleiben geprüft."
   },
   {
     "name": "rules 3–15 match main for 910 encounters; current rules change only waves 10 and 20",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\early-balance-release.test.ts:24:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "rules 3–15 match main for 910 encounters; current rules change only waves 10 and 20",
+    "file": "experiments/idle-bastion/tests/early-balance-release.test.ts",
+    "line": 24,
+    "category": "A",
+    "resolution": "Schema 32 statt fest verdrahtetem Schema 31; 910 historische Begegnungen bleiben exakt."
   },
   {
     "name": "real schema-30 fights resume with identical old movement, projectiles, timers and money until their boundary",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\early-balance-release.test.ts:52:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "real schema-30 fights resume with identical old movement, projectiles, timers and money until their boundary",
+    "file": "experiments/idle-bastion/tests/early-balance-release.test.ts",
+    "line": 52,
+    "category": "A",
+    "resolution": "vollständiger Kampfvergleich plus explizite soziale Schema-32-Migration."
   },
   {
     "name": "new wave 10/20 and both boss snapshots reload exactly; downgrade and forged old queues are rejected",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\early-balance-release.test.ts:67:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "new wave 10/20 and both boss snapshots reload exactly; downgrade and forged old queues are rejected",
+    "file": "experiments/idle-bastion/tests/early-balance-release.test.ts",
+    "line": 67,
+    "category": "A",
+    "resolution": "eingefrorene Schema-31-Boss-/Wellenstände inklusive Migration vergleichen."
   },
   {
     "name": "solid forest leaves the route, plots, every start pad and its approach accessible",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\forest-world.test.ts:7:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "solid forest leaves the route, plots, every start pad and its approach accessible",
+    "file": "experiments/idle-bastion/tests/forest-world.test.ts",
+    "line": 7,
+    "category": "A",
+    "resolution": "A: Wald schließt freie Kandidaten aus; benannte Plätze bleiben direkt erreichbar, übrige gültige Plätze haben erreichbare Fernzauberpositionen."
   },
   {
     "name": "schema 29 unfinished guidance gains eligibility; completed and paid saves retain prices",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\frost-kit.test.ts:33:1'",
     "error": "'undefined == true'",
-    "stack": []
+    "stack": [],
+    "rawLogName": "schema 29 unfinished guidance gains eligibility; completed and paid saves retain prices",
+    "file": "experiments/idle-bastion/tests/frost-kit.test.ts",
+    "line": 33,
+    "category": "B",
+    "resolution": "synthetischer Schema-Mix durch echte Schema-29-Ausgaben des historischen Modells ersetzt; kostenlose/gekaufte Frosttürme und Mischformat-Ablehnung geprüft."
   },
   {
     "name": "start fixture has unique reservations, correct budget and an in-bounds road ending at the core",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\layout.test.ts:11:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "start fixture has unique reservations, correct budget and an in-bounds road ending at the core",
+    "file": "experiments/idle-bastion/tests/layout.test.ts",
+    "line": 11,
+    "category": "A",
+    "resolution": "A: aktuelle freie Rastergeometrie statt 13 festen Plätzen; historische 13er-Karte zusätzlich explizit geprüft."
   },
   {
     "name": "Mara has continuous legal footpaths to all active tower approaches and the workshop",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\layout.test.ts:73:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "Mara has continuous legal footpaths to all active tower approaches and the workshop",
+    "file": "experiments/idle-bastion/tests/layout.test.ts",
+    "line": 73,
+    "category": "A",
+    "resolution": "A: ein leerer Baukandidat blockiert keinen Weg; ein tatsächlich belegtes Feld schließt den vierten Ausgang."
   },
   {
     "name": "unopened east cells reject walking and construction; expansion changes bounds but never routes enemies",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\layout.test.ts:92:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "unopened east cells reject walking and construction; expansion changes bounds but never routes enemies",
+    "file": "experiments/idle-bastion/tests/layout.test.ts",
+    "line": 92,
+    "category": "A",
+    "resolution": "A: drei freie Wegreihen reichen bis Spalte 30; Grenzen, Bauverbot, Weg und Reichweite weiter geprüft."
   },
   {
     "name": "schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\local-enemies.test.ts:56:1'",
     "error": "'wave 40'",
-    "stack": []
+    "stack": [],
+    "rawLogName": "schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40",
+    "file": "experiments/idle-bastion/tests/local-enemies.test.ts",
+    "line": 56,
+    "category": "B",
+    "resolution": "historische Schema-26-Ausgaben bei Welle 40/53/125 mit Originalmodell-Fortsetzungsorakel."
   },
   {
     "name": "schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\local-enemies.test.ts:66:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly",
+    "file": "experiments/idle-bastion/tests/local-enemies.test.ts",
+    "line": 66,
+    "category": "B",
+    "resolution": "originaler Schema-26-Schreiber erzeugt bezahltes Level 21 und hohe Gegner-HP; aktuelle Migration setzt exakt fort."
   },
   {
     "name": "ordinary earned opening and a saved walking segment restore without moving an unbuilt save",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\mara-waiting.test.ts:29:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "ordinary earned opening and a saved walking segment restore without moving an unbuilt save",
+    "file": "experiments/idle-bastion/tests/mara-waiting.test.ts",
+    "line": 29,
+    "category": "A",
+    "resolution": "Upgrade setzt automatisch fort; Testtreiber führt nur eine Kaufaktion pro Lernstufe aus. Echter gehender Save bleibt exakt geprüft."
   },
   {
     "name": "Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\mara.test.ts:22:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation",
+    "file": "experiments/idle-bastion/tests/mara.test.ts",
+    "line": 22,
+    "category": "A",
+    "resolution": "Automatik wartet dokumentiert auf Gegner beim Ziel. Positiv- und Negativfall sowie exakt 8/30 Sekunden geprüft."
   },
   {
     "name": "overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\mara.test.ts:41:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage",
+    "file": "experiments/idle-bastion/tests/mara.test.ts",
+    "line": 41,
+    "category": "B",
+    "resolution": "Die Startfixture enthält bereits ein Projektil. Neue Schüsse separat anhand UID prüfen, statt eine leere Schussliste vorauszusetzen; 1,5-facher Cooldown und Schaden weiter exakt."
   },
   {
     "name": "assignment walks at 80px/s on cardinal safe ground, preserves cooldown and gives no bonus before arrival",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\mara.test.ts:56:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "assignment walks at 80px/s on cardinal safe ground, preserves cooldown and gives no bonus before arrival",
+    "file": "experiments/idle-bastion/tests/mara.test.ts",
+    "line": 56,
+    "category": "A",
+    "resolution": "Fernbuff bleibt am alten Turm; Bewegung erfolgt unabhängig mit 80 px/s und legalen gespeicherten Kardinalsegmenten."
   },
   {
     "name": "retargeting halfway through a segment rejoins a centre and selling the target falls back to the starter without cooldown reset",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\mara.test.ts:84:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "retargeting halfway through a segment rejoins a centre and selling the target falls back to the starter without cooldown reset",
+    "file": "experiments/idle-bastion/tests/mara.test.ts",
+    "line": 84,
+    "category": "A",
+    "resolution": "Bewegungsziel getrennt von Zauberziel; Retargeting und Verkauf eines anderen Turms erhalten den alten Effekt/Cooldown."
   },
   {
     "name": "blocked targets stay understandable and harmless, and a changed blocked route reroutes around real obstacles",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\mara.test.ts:108:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "blocked targets stay understandable and harmless, and a changed blocked route reroutes around real obstacles",
+    "file": "experiments/idle-bastion/tests/mara.test.ts",
+    "line": 108,
+    "category": "A",
+    "resolution": "Neue Hindernisse stoppen den Lauf sicher; eine neue Anweisung sucht einen gültigen Fernzauberweg. Kein automatischer Nahkampf-Annäherungszwang."
   },
   {
     "name": "Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\mara.test.ts:195:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads",
+    "file": "experiments/idle-bastion/tests/mara.test.ts",
+    "line": 195,
+    "category": "A",
+    "resolution": "Aktiver Fernbuff trotz Zielwechsel, Halt oder unerreichbarem Laufziel ist gültig. Positive Reloads explizit geprüft; illegale IDs, Geometrie, Effektzuordnung und Timer weiterhin abgelehnt."
   },
   {
     "name": "a genuine schema-27 wave 46 keeps its old tank-heavy queue and live values, then adopts rules 14",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\merge-ready.test.ts:26:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "a genuine schema-27 wave 46 keeps its old tank-heavy queue and live values, then adopts rules 14",
+    "file": "experiments/idle-bastion/tests/merge-ready.test.ts",
+    "line": 26,
+    "category": "A",
+    "resolution": "Schema-27-Kampf bleibt exakt; nur dokumentierte Sozial-/Forschungsfelder migrieren."
   },
   {
     "name": "all starter locations survive the complete guided purchase sequence with real learning pauses",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\onboarding.test.ts:34:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "all starter locations survive the complete guided purchase sequence with real learning pauses",
+    "file": "experiments/idle-bastion/tests/onboarding.test.ts",
+    "line": 34,
+    "category": "A",
+    "resolution": "zwei explizite Fortsetzungen statt drei; Upgrade und Frostbau setzen automatisch fort. Alle Startplätze, Lernstopp und Kosten bleiben geprüft."
   },
   {
     "name": "real v14 veteran and its historical offline basis survive the schema-only migration",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\onboarding.test.ts:78:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "real v14 veteran and its historical offline basis survive the schema-only migration",
+    "file": "experiments/idle-bastion/tests/onboarding.test.ts",
+    "line": 78,
+    "category": "A",
+    "resolution": "v14-Veteran behält sämtliche alten Felder und Offline-Basis; neue Sozialfelder explizit geprüft."
   },
   {
     "name": "learning pause survives return without idle income and stays distinct from manual pause",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\onboarding.test.ts:149:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "learning pause survives return without idle income and stays distinct from manual pause",
+    "file": "experiments/idle-bastion/tests/onboarding.test.ts",
+    "line": 149,
+    "category": "A",
+    "resolution": "Upgrade beendet nur die Lernpause; manuelle Pause über Kauf/Reload sowie Abwesenheit ohne Ertrag zusätzlich geprüft."
   },
   {
     "name": "in-flight hops survive upgrade, sale and reload exactly; forged payloads and visited IDs are rejected",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\stormlight.test.ts:53:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "in-flight hops survive upgrade, sale and reload exactly; forged payloads and visited IDs are rejected",
+    "file": "experiments/idle-bastion/tests/stormlight.test.ts",
+    "line": 53,
+    "category": "B",
+    "resolution": "echtes Schema-29-Kettenprojektil nach Upgrade/Verkauf, Originalmodell-Fortsetzung und aktuelle Manipulationsabwehr."
   },
   {
     "name": "schema 28 live queues and wallets migrate unchanged without granting research or rewriting shots",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\stormlight.test.ts:89:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "schema 28 live queues and wallets migrate unchanged without granting research or rewriting shots",
+    "file": "experiments/idle-bastion/tests/stormlight.test.ts",
+    "line": 89,
+    "category": "A",
+    "resolution": "Schema-28-Kampf bleibt exakt, keine Sturmforschung geschenkt."
   },
   {
     "name": "Ilyra can retain the fifth tower as a sold volley source without counting chain damage twice",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\stormlight.test.ts:119:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "Ilyra can retain the fifth tower as a sold volley source without counting chain damage twice",
+    "file": "experiments/idle-bastion/tests/stormlight.test.ts",
+    "line": 119,
+    "category": "B",
+    "resolution": "echte Schema-29-Ilyra-Salve nach Turmverkauf mit Originalmodell-Fortsetzungsorakel."
   },
   {
     "name": "all eleven unlocked slots can hold towers and round-trip without moving the original eight",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\usability.test.ts:50:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "all eleven unlocked slots can hold towers and round-trip without moving the original eight",
+    "file": "experiments/idle-bastion/tests/usability.test.ts",
+    "line": 50,
+    "category": "A",
+    "resolution": "A (zusätzlich B): elf historische Anker auf echter migrierter Layout-1-Quelle prüfen; spätere Nordbogenversetzung separat durch map-camera abgesichert."
   },
   {
     "name": "a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\wave-rework.test.ts:60:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly",
+    "file": "experiments/idle-bastion/tests/wave-rework.test.ts",
+    "line": 60,
+    "category": "A",
+    "resolution": "v24-Kampffelder unverändert, soziale Struktur explizit migriert."
   },
   {
     "name": "a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules",
     "location": "'C:\\\\Users\\\\madde\\\\.codex\\\\worktrees\\\\english-default\\\\TowerDefense\\\\experiments\\\\idle-bastion\\\\tests\\\\wave-v2.test.ts:50:1'",
     "error": "|-",
-    "stack": []
+    "stack": [],
+    "rawLogName": "a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules",
+    "file": "experiments/idle-bastion/tests/wave-v2.test.ts",
+    "line": 50,
+    "category": "A",
+    "resolution": "v25-Kampffelder unverändert, soziale Struktur explizit migriert."
   }
 ]

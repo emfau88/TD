@@ -1,7 +1,7 @@
 import { legacyFixtures, restoreHistorical, assertHistoricalFields } from './legacy-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { BASE, IdleBattle, waveCount } from '../src/battle';
+import { BASE, IdleBattle, SETTLEMENT, waveCount } from '../src/battle';
 import { BOSS } from '../src/boss';
 import { certifyFarm } from '../src/farming';
 import { createOfflineState, beginAbsence, reserveOffline } from '../src/offline';
@@ -60,11 +60,14 @@ test('old wave-15 record is never a boss victory; an explicit repeat pays no sec
 });
 
 
-test('B11 earned boss follow-up opens the clearing within the 8â€“11 minute target and retains farming', () => {
+test('earned boss follow-up can open the clearing early, pays once and retains farming', () => {
   const b=IdleBattle.restore(opening().b.snapshot())!;
   for(let i=0;i<4000 && b.gold<900;i++){b.update(BASE.stepSeconds);b.drainEvents();}
-  assert.equal(b.unlockClearing(),true);
-  assert.ok(b.elapsed>=8*60 && b.elapsed<=11*60);
+  const wallet=b.gold, victoryAt=opening().b.elapsed;
+  assert.equal(b.unlockClearing(),true);assert.equal(b.gold,wallet-SETTLEMENT.clearingCost);
+  assert.equal(b.unlockClearing(),false);assert.equal(b.gold,wallet-SETTLEMENT.clearingCost);
+  // B13 accepted earlier clears; only the original upper bound remains a deadline.
+  assert.ok(b.elapsed>=victoryAt && b.elapsed<=11*60);
   assert.ok(certifyFarm(b),'Expanded snapshot must still support conservative farming proofs');
   console.log('B11 earned clearing:',{openedAt:b.elapsed,goldAfter:b.gold,columns:b.layout.bounds.columns});
 });
@@ -78,7 +81,10 @@ test('B11 migrates schema-eight saves during the active boss dance without reset
   assert.deepEqual(migrated.drainEvents(),[]);
 });
 
-test('historical B10 timing target remains a separate balance finding', () => {
+test('earned boss timing honors the B13 no-minimum policy and retains the active-play deadline', () => {
   const seconds=opening().b.elapsed;
-  assert.ok(seconds>=7*60&&seconds<=10*60,'Historical first-boss target 7–10 minutes; actual '+seconds+'s');
+  // 15min/REPORT.md accepts 5:46 for guided placement and explicitly rejects artificial time gates.
+  assert.ok(seconds>0&&seconds<=10*60,'Active-play first-boss deadline; actual '+seconds+'s');
+  assert.ok(opening().duringCharm);assert.ok(seconds>opening().duringCharm!.elapsed);
+  assert.equal(opening().b.bossVictories,1);
 });

@@ -108,18 +108,19 @@ test('Workshop II persistent command rolls back on failure and survives a commit
   if(loaded.kind==='valid')assert.equal(IdleBattle.restore(loaded.save.battle)!.settlement.workshopUpgraded,true);store.close();
 });
 
-test('earned continuation opens Workshop II around minute 13 and keeps an affordable next goal after minute 15',()=>{
-  const b=playOpening().b;assert.equal(b.unlockClearing(),true);
+test('earned continuation can open Workshop II early and retains a paid progression goal at minute 15',()=>{
+  const b=playOpening().b;assert.equal(b.unlockClearing(),true);const clearingAt=b.elapsed;
   let proof:FarmCertificate|undefined,key='',workshopAt=0,changed=false;
   while(b.elapsed<900){
-    if(!b.settlement.workshopUpgraded){if(b.upgradeWorkshop()){workshopAt=b.elapsed;changed=true;}}
+    if(!b.settlement.workshopUpgraded){const wallet=b.gold;if(b.upgradeWorkshop()){assert.equal(b.gold,wallet-SETTLEMENT.workshopUpgradeCost);workshopAt=b.elapsed;changed=true;}}
     else {const next=[...b.towers].filter(t=>t.level<7).sort((a,z)=>upgradeCost(a)-upgradeCost(z))[0];if(next&&b.upgrade(next.uid))changed=true;}
     const k=defenseFingerprint(b)+'/'+b.liveClearedWaves.join(',');
     if(k!==key){proof=certifyFarm(b,proof);b.setFarmWave(proof?.wave??1);key=k;}
     if(b.mode==='farm'&&changed){b.requestAdvance();changed=false;}
     b.update(BASE.stepSeconds);b.drainEvents();
   }
-  assert.ok(workshopAt>=600&&workshopAt<=795,'Workshop II around minutes 10–13');
+  // B13 accepts earlier Workshop II purchases; retain earned order and the original upper limit.
+  assert.ok(workshopAt>=clearingAt&&workshopAt<=795,'Workshop II after the earned clearing, by minute 13.25');
   assert.ok(b.highestCleared>=20,'Wave 25 is the next visible milestone after wave 20');
   assert.ok(proof);assert.equal(b.maxLevel,Infinity);assert.equal(currentGoal(b).action,'upgrade');
   assert.ok(currentGoal(b).cost!>0);assert.ok(IdleBattle.restore(b.snapshot()));

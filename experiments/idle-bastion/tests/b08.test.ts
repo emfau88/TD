@@ -90,6 +90,8 @@ test('Wisp adds precisely ten percent to farm production and offline uses that r
 });
 test('regular opening still funds workshop and Frost before Wisp; four roles remain saveable into armored waves', () => {
   const b = new IdleBattle(), archer = b.build('tower-03')!; b.assignMara(archer.uid);
+  // Keep the intended Frost cell free: remote assignment may otherwise stop Mara on it.
+  assert.ok(b.moveMaraTo({x:13,y:6}));
   const times: Record<string, number> = {};
   for (let step = 0; step < 16000 && b.highestCleared < 12; step++) {
     if (archer.level === 1 && b.gold >= 60) b.upgrade(archer.uid);
@@ -104,9 +106,11 @@ test('regular opening still funds workshop and Frost before Wisp; four roles rem
     b.update(BASE.stepSeconds); b.drainEvents();
     if (step % 40 === 0) assert.ok(IdleBattle.restore(b.snapshot()));
   }
-  assert.ok(times.workshop >= 60 && times.workshop <= 90, JSON.stringify(times));
+  // B13 explicitly allows strong placement to beat old minimum timings (15min/REPORT.md).
+  assert.ok(times.workshop > 0 && times.workshop <= 90, JSON.stringify(times));
+  assert.ok(times.frost >= times.workshop, JSON.stringify(times));
   assert.ok(times.frost <= 150, JSON.stringify(times));
   assert.ok(times.wisp >= times.frost && times.wisp <= 240, JSON.stringify(times));
-  assert.ok(b.highestCleared >= 12); assert.equal(new Set(b.towers.map(t => t.def.id)).size, 4);
+  assert.ok(b.highestCleared >= 12); assert.deepEqual([...new Set(b.towers.map(t => t.def.id))].sort(), [1,2,3,4], JSON.stringify({gold:b.gold,towers:b.towers.map(t=>[t.padId,t.def.id,t.level])}));
   console.log('B08 regular simulation milestone seconds:', times);
 });
