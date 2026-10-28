@@ -384,5 +384,7 @@
       "category": "A",
       "resolution": "v25-Kampffelder unverändert, soziale Struktur explizit migriert."
     }
-  ]
+  ],
+  "verifiedSourceCommit": "645f6e6db9ce8aa18052d74fe4c5a2e47a9871da",
+  "runtimeDiffVerifiedEmpty": true
 }

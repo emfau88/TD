@@ -62,7 +62,7 @@ Die alte Schema-26-Leselogik lehnte ihre eigenen hohen Gegner-HP ab. Dieser Fehl
 | 2 Lernpausen | onboarding, mara-waiting | 53/53 einschließlich Tutorial/Frost/Discovery/Heldensteuerung | `7c2e359b6b0e14f068b78d90dc134a2bff851745` |
 | 3 Freies Raster | b08, b11, layout, forest-world, usability | 28/28 + Wisp 1/1; Kamera/Kernsiedlung enthalten | `a1874147d2f93e94fa4f5346628414bf568102b6` |
 | 4 Mara | mara | 25/25, Typprüfung und Produktionsbuild | `1fea077946e205ab356052a09c5722906597cd48`, Typkorrektur `644f8bbf310b1cc7af78a5ba99b21f31e89af232` |
-| 5 Historische Zeitziele | b08, b10, b12 | 47/47 einschließlich Boss, Ilyra, Kampf und Release-Balance | SHA nach diesem Commit ergänzen |
+| 5 Historische Zeitziele | b08, b10, b12 | 47/47 einschließlich Boss, Ilyra, Kampf und Release-Balance | `645f6e6db9ce8aa18052d74fe4c5a2e47a9871da` |
 
 Alle Gruppen direkt auf `main`, ohne Force-Push. Gruppe 4 hatte nach erfolgreichem Laufzeittest einen CI-Typfehler im **Testcode** (`never[]` nach Leerarray-Assertion). Gleichwertige Längenprüfung korrigiert; 25/25 wiederholt und vollständiger Build erfolgreich. Kein fehlerhafter Spielbuild veröffentlicht. Details: `group1-tests.log` bis `group5-tests.log`, `group1-neighbors.log`, `group4-build.log`.
 
@@ -75,4 +75,6 @@ Die aufgehobenen Mindestzeiten sind ausdrücklich durch [B13](../15min/REPORT.md
 - Kein Laufzeitcode geändert; daher keine zusätzlichen Browser-Smokes oder Screenshots für diesen Test-Cleanup, kein neuer Kongregate-Export, kein Upload/Submit. Der bestehende geprüfte Export auf Spielcode `36c2ff8` bleibt durch diesen Auftrag unverändert.
 - **Kein offener technischer Blocker aus den 33 Fehlern. Bereit für die finale Kongregate-Abnahme.** Die komplette abschließende Browser-/Kongregate-Hostabnahme aus dem [Polish-Plan](../tavern-release-polish/PLAN.md) bleibt offen: dort waren Eingabe-Timeouts der Prüfungsumgebung dokumentiert. Keine uneingeschränkte Veröffentlichungsfreigabe daraus ableiten; dieser Cleanup ersetzt weder diesen Ablauf noch die visuelle Nutzerabnahme.
 
-Deployment-Nachweis des finalen Gruppencommits wird nach dem Push ergänzt.
+Finaler geprüfter Teststand: `645f6e6db9ce8aa18052d74fe4c5a2e47a9871da`, auf `origin/main`. [Pages-Deployment 40742721094](https://github.com/emfau88/TD/actions/runs/40742721094) **erfolgreich**, einschließlich Produktionsbuild, Upload und Veröffentlichung (28.10.2026, 18:12 UTC). Maschinenlesbarer Nachweis: `deployment.json`. Nachfolgender Dokumentationscommit ergänzt ausschließlich SHA/Deploymentnachweise.
+
+Weitere erfolgreiche Gruppen-Deployments: [Gruppe 1](https://github.com/emfau88/TD/actions/runs/40739888313), [Gruppe 2](https://github.com/emfau88/TD/actions/runs/40740202806), [Gruppe 3](https://github.com/emfau88/TD/actions/runs/40740957652), [Gruppe 4 nach Typkorrektur](https://github.com/emfau88/TD/actions/runs/40741904580). Der [vorherige CI-Typfehler](https://github.com/emfau88/TD/actions/runs/40741353541) bleibt transparent dokumentiert. Git-Vergleich bestätigt unveränderte Spielquellen, Assets, öffentliche Dateien, Laufzeitskripte, Abhängigkeiten und Workflows gegenüber dem Ausgangscommit.
