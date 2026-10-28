@@ -1,0 +1,329 @@
+TAP version 13
+# Subtest: Wisp pauses at the wave boundary; real Mara cast, countdown and optional purchases follow in order
+ok 1 - Wisp pauses at the wave boundary; real Mara cast, countdown and optional purchases follow in order
+  ---
+  duration_ms: 486.6741
+  type: 'test'
+  ...
+# Subtest: optional Mara and cannon lessons can be deferred; old Mara hint maps to Mara, never the clearing
+ok 2 - optional Mara and cannon lessons can be deferred; old Mara hint maps to Mara, never the clearing
+  ---
+  duration_ms: 88.8413
+  type: 'test'
+  ...
+# Subtest: Wisp learning pause survives absence without offline reward or repeated greeting
+ok 3 - Wisp learning pause survives absence without offline reward or repeated greeting
+  ---
+  duration_ms: 262.8827
+  type: 'test'
+  ...
+# Subtest: schema 16 veteran preserves all saved fields without a new compulsory lesson
+ok 4 - schema 16 veteran preserves all saved fields without a new compulsory lesson
+  ---
+  duration_ms: 14.7665
+  type: 'test'
+  ...
+# Subtest: dismissed defeat stays dismissed after reload; schema 17 migrates without losing gold
+ok 5 - dismissed defeat stays dismissed after reload; schema 17 migrates without losing gold
+  ---
+  duration_ms: 13.547
+  type: 'test'
+  ...
+# Subtest: Wisp arrives from the core side along the walkable route
+ok 6 - Wisp arrives from the core side along the walkable route
+  ---
+  duration_ms: 76.5336
+  type: 'test'
+  ...
+# Subtest: earned Frost kit is immediately affordable, atomic and consumed through sale and reload
+ok 7 - earned Frost kit is immediately affordable, atomic and consumed through sale and reload
+  ---
+  duration_ms: 278.4221
+  type: 'test'
+  ...
+# Subtest: only paid upgrades contribute to the free kit refund; forged free towers are rejected
+ok 8 - only paid upgrades contribute to the free kit refund; forged free towers are rejected
+  ---
+  duration_ms: 159.8186
+  type: 'test'
+  ...
+# Subtest: schema 29 unfinished guidance gains eligibility; completed and paid saves retain prices
+ok 9 - schema 29 unfinished guidance gains eligibility; completed and paid saves retain prices
+  ---
+  duration_ms: 27.9988
+  type: 'test'
+  ...
+# Subtest: Ilyra recommendation is reachable, free and covers the actual defended road without changing battle state
+ok 10 - Ilyra recommendation is reachable, free and covers the actual defended road without changing battle state
+  ---
+  duration_ms: 310.0721
+  type: 'test'
+  ...
+# Subtest: manual pause accepts both hero routes, replacements survive reload and Mara keeps assignment/cooldown
+ok 11 - manual pause accepts both hero routes, replacements survive reload and Mara keeps assignment/cooldown
+  ---
+  duration_ms: 497.4101
+  type: 'test'
+  ...
+# Subtest: guided stages block direct hero control; no volley movement or implicit first cast
+ok 12 - guided stages block direct hero control; no volley movement or implicit first cast
+  ---
+  duration_ms: 25.4263
+  type: 'test'
+  ...
+# Subtest: waiting walks remain local, legal and in range, with long rests and several facing directions
+ok 13 - waiting walks remain local, legal and in range, with long rests and several facing directions
+  ---
+  duration_ms: 468.7911
+  type: 'test'
+  ...
+# Subtest: ordinary earned opening and a saved walking segment restore without moving an unbuilt save
+ok 14 - ordinary earned opening and a saved walking segment restore without moving an unbuilt save
+  ---
+  duration_ms: 93.4277
+  type: 'test'
+  ...
+# Subtest: real first spell unlocks controls after its effect; waiting paths stop at the introduction
+ok 15 - real first spell unlocks controls after its effect; waiting paths stop at the introduction
+  ---
+  duration_ms: 254.5356
+  type: 'test'
+  ...
+# {"workshopCombatSeconds":7.7,"completeCombatSeconds":11.075000000000001,"learningAndPreparationSeconds":48.05,"totalSeconds":59.125}
+# Subtest: preparation persists without combat, production or repeated gifts
+ok 16 - preparation persists without combat, production or repeated gifts
+  ---
+  duration_ms: 162.3772
+  type: 'test'
+  ...
+# Subtest: all offered first placements clear wave one without manual support
+ok 17 - all offered first placements clear wave one without manual support
+  ---
+  duration_ms: 279.4597
+  type: 'test'
+  ...
+# Subtest: all starter locations survive the complete guided purchase sequence with real learning pauses
+ok 18 - all starter locations survive the complete guided purchase sequence with real learning pauses
+  ---
+  duration_ms: 826.6287
+  type: 'test'
+  ...
+# Subtest: pre-start state cannot smuggle money, combat, extra towers or unassigned active Mara
+ok 19 - pre-start state cannot smuggle money, combat, extra towers or unassigned active Mara
+  ---
+  duration_ms: 2.6012
+  type: 'test'
+  ...
+# Subtest: real v14 veteran and its historical offline basis survive the schema-only migration
+ok 20 - real v14 veteran and its historical offline basis survive the schema-only migration
+  ---
+  duration_ms: 115.4778
+  type: 'test'
+  ...
+# Subtest: session reload before start preserves the kit and avoids an empty return dialog
+ok 21 - session reload before start preserves the kit and avoids an empty return dialog
+  ---
+  duration_ms: 36.7362
+  type: 'test'
+  ...
+# Subtest: rejected first-build transaction rolls back the kit and complete preparation
+ok 22 - rejected first-build transaction rolls back the kit and complete preparation
+  ---
+  duration_ms: 11.2029
+  type: 'test'
+  ...
+# Subtest: schema 15 saves preserve preparation and completed play without forcing the extended lessons
+ok 23 - schema 15 saves preserve preparation and completed play without forcing the extended lessons
+  ---
+  duration_ms: 90.1078
+  type: 'test'
+  ...
+# Subtest: intro command waits for a background write, then rechecks and consumes the kit once
+ok 24 - intro command waits for a background write, then rechecks and consumes the kit once
+  ---
+  duration_ms: 22.9112
+  type: 'test'
+  ...
+# Subtest: learning pause survives return without idle income and stays distinct from manual pause
+ok 25 - learning pause survives return without idle income and stays distinct from manual pause
+  ---
+  duration_ms: 66.6874
+  type: 'test'
+  ...
+# Subtest: workshop kit waits for first victory, survives reload and never refunds an existing workshop
+ok 26 - workshop kit waits for first victory, survives reload and never refunds an existing workshop
+  ---
+  duration_ms: 39.751
+  type: 'test'
+  ...
+# Subtest: Variant B portrait framing includes the entrance and both complete tower bodies
+ok 27 - Variant B portrait framing includes the entrance and both complete tower bodies
+  ---
+  duration_ms: 1.7865
+  type: 'test'
+  ...
+# Subtest: legacy saved tower coordinates determine the frame without shifting actors to Variant B
+ok 28 - legacy saved tower coordinates determine the frame without shifting actors to Variant B
+  ---
+  duration_ms: 1.3728
+  type: 'test'
+  ...
+# Subtest: an actual Frost tower on another allowed row expands the frame instead of using a fixed position
+ok 29 - an actual Frost tower on another allowed row expands the frame instead of using a fixed position
+  ---
+  duration_ms: 0.2589
+  type: 'test'
+  ...
+# Subtest: pixel densities one and two preserve identical CSS framing and sprite scale
+ok 30 - pixel densities one and two preserve identical CSS framing and sprite scale
+  ---
+  duration_ms: 0.2479
+  type: 'test'
+  ...
+# Subtest: guided framing may zoom out to fit either axis but never zooms in beyond the normal view
+ok 31 - guided framing may zoom out to fit either axis but never zooms in beyond the normal view
+  ---
+  duration_ms: 0.195
+  type: 'test'
+  ...
+# Subtest: scene retains an explicit construction candidate when resizing and rotating into portrait
+ok 32 - scene retains an explicit construction candidate when resizing and rotating into portrait
+  ---
+  duration_ms: 402.1564
+  type: 'test'
+  ...
+# Subtest: player pan survives tutorial completion and ordinary same-orientation resize
+ok 33 - player pan survives tutorial completion and ordinary same-orientation resize
+  ---
+  duration_ms: 199.6299
+  type: 'test'
+  ...
+# Subtest: deliberate map focus and zoom leave tutorial framing and restore normal scale
+ok 34 - deliberate map focus and zoom leave tutorial framing and restore normal scale
+  ---
+  duration_ms: 129.8792
+  type: 'test'
+  ...
+# Subtest: tutorial and overview camera viewports end at the real map on desktop and portrait
+ok 35 - tutorial and overview camera viewports end at the real map on desktop and portrait
+  ---
+  duration_ms: 113.0481
+  type: 'test'
+  ...
+# Subtest: zooming out and back uses the full available viewport without accumulating an outside margin
+ok 36 - zooming out and back uses the full available viewport without accumulating an outside margin
+  ---
+  duration_ms: 161.3222
+  type: 'test'
+  ...
+# Subtest: Frost tip and wave objective share one slot, keeping the real counter and model intact
+ok 37 - Frost tip and wave objective share one slot, keeping the real counter and model intact
+  ---
+  duration_ms: 468.7637
+  type: 'test'
+  ...
+# Subtest: moving the existing Wisp card preserves its button and event listener
+ok 38 - moving the existing Wisp card preserves its button and event listener
+  ---
+  duration_ms: 136.7388
+  type: 'test'
+  ...
+# Subtest: step 14 waits on the cleared wave, not the current attempt, and survives restoration
+ok 39 - step 14 waits on the cleared wave, not the current attempt, and survives restoration
+  ---
+  duration_ms: 213.104
+  type: 'test'
+  ...
+# Subtest: an active lesson beats toasts, and a defeat notice beats optional discovery tips
+ok 40 - an active lesson beats toasts, and a defeat notice beats optional discovery tips
+  ---
+  duration_ms: 89.2137
+  type: 'test'
+  ...
+# Subtest: menus and placement carry the counter without a second tutorial card
+ok 41 - menus and placement carry the counter without a second tutorial card
+  ---
+  duration_ms: 109.8187
+  type: 'test'
+  ...
+# Subtest: modal suppression and ending or skipping the tutorial restore the ordinary HUD
+ok 42 - modal suppression and ending or skipping the tutorial restore the ordinary HUD
+  ---
+  duration_ms: 127.6359
+  type: 'test'
+  ...
+# Subtest: saving stages and temporarily absent presenters still show progress and an actionable next step
+ok 43 - saving stages and temporarily absent presenters still show progress and an actionable next step
+  ---
+  duration_ms: 93.4456
+  type: 'test'
+  ...
+# Subtest: new recommendation uses Variant B while legacy constructor and compatibility placements stay intact
+ok 44 - new recommendation uses Variant B while legacy constructor and compatibility placements stay intact
+  ---
+  duration_ms: 170.9488
+  type: 'test'
+  ...
+# Subtest: every offered new starter cell clears wave one without Mara or another purchase
+ok 45 - every offered new starter cell clears wave one without Mara or another purchase
+  ---
+  duration_ms: 237.9211
+  type: 'test'
+  ...
+# Subtest: actual guided Variant B reaches its free Frost kit and reloads at every purchase
+ok 46 - actual guided Variant B reaches its free Frost kit and reloads at every purchase
+  ---
+  duration_ms: 73.4953
+  type: 'test'
+  ...
+# Subtest: already placed legacy starter and historical ready saves retain their location and Frost recommendation
+ok 47 - already placed legacy starter and historical ready saves retain their location and Frost recommendation
+  ---
+  duration_ms: 103.3322
+  type: 'test'
+  ...
+# Subtest: preparation validation admits only the old bounded corridor or new Variant B family
+ok 48 - preparation validation admits only the old bounded corridor or new Variant B family
+  ---
+  duration_ms: 1.065
+  type: 'test'
+  ...
+# Subtest: multi-cell buildings snap their footprint centre to the chosen point
+ok 49 - multi-cell buildings snap their footprint centre to the chosen point
+  ---
+  duration_ms: 6.9536
+  type: 'test'
+  ...
+# Subtest: one total covers the three opening scenes and the earned building lessons
+ok 50 - one total covers the three opening scenes and the earned building lessons
+  ---
+  duration_ms: 191.1671
+  type: 'test'
+  ...
+# Subtest: discovery counts do not restart; optional lessons end the total and veterans get no new tutorial
+ok 51 - discovery counts do not restart; optional lessons end the total and veterans get no new tutorial
+  ---
+  duration_ms: 193.3627
+  type: 'test'
+  ...
+# Subtest: the first upgrade resumes the same wave and survives reload without a confirmation
+ok 52 - the first upgrade resumes the same wave and survives reload without a confirmation
+  ---
+  duration_ms: 34.8377
+  type: 'test'
+  ...
+# Subtest: an older save waiting after level 2 releases only its obsolete learning pause
+ok 53 - an older save waiting after level 2 releases only its obsolete learning pause
+  ---
+  duration_ms: 44.0924
+  type: 'test'
+  ...
+1..53
+# tests 53
+# suites 0
+# pass 53
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4954.717

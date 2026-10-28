@@ -40,9 +40,9 @@ test('ordinary earned opening and a saved walking segment restore without moving
     }
     if (!b.learningPaused) continue;
     if (b.introduction.stage === 'upgrade') assert.ok(b.upgrade(1));
-    if (b.introduction.stage === 'workshop') assert.ok(b.buildWorkshop());
-    if (b.introduction.stage === 'research') assert.ok(b.researchFrost());
-    assert.ok(b.continueLesson());
+    else if (b.introduction.stage === 'workshop') assert.ok(b.buildWorkshop());
+    else if (b.introduction.stage === 'research') assert.ok(b.researchFrost());
+    if (b.learningPaused) assert.ok(b.continueLesson());
   }
   assert.ok(checkedWalkingSave); assert.equal(b.introduction.stage, 'frost');
   assert.ok(IdleBattle.restore(b.snapshot())); assert.equal(b.mara.effectRemaining, 0);

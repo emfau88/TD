@@ -40,6 +40,7 @@ test('all starter locations survive the complete guided purchase sequence with r
    if(!b.learningPaused)continue;
    const before=b.snapshot();b.update(10);const after=b.snapshot();after.introduction.preparationSeconds=before.introduction.preparationSeconds;assert.deepEqual(after,before,'reading must freeze combat and income');
    if(b.introduction.stage!=='observe')assert.equal(b.continueLesson(),false);
+   const completedStage=b.introduction.stage;
    switch(b.introduction.stage){
     case 'upgrade': assert.equal(b.upgrade(1),true);assert.equal(b.upgrade(1),false);break;
     case 'workshop': { assert.ok(b.highestCleared >= 1); assert.equal(b.workshopBuildCost,0); const gold=b.gold; assert.equal(b.buildWorkshop(),true); assert.equal(b.gold,gold); assert.equal(b.buildWorkshop(),false); workshop=b.elapsed;break; }
@@ -48,10 +49,11 @@ test('all starter locations survive the complete guided purchase sequence with r
     case 'observe': break;
    }
    if(b.introduction.stage==='done') { assert.equal(b.learningPaused,false); restore(b); break; }
+   if(completedStage==='upgrade') { assert.equal(b.introduction.stage,'workshop');assert.equal(b.learningPaused,false);restore(b);continue; }
    assert.equal(b.lessonComplete,true);assert.equal(b.learningPaused,true);restore(b);
    assert.equal(b.continueLesson(),true);restore(b);pauses++;
   }
-  assert.equal(b.introduction.stage,'done',location.id);assert.equal(pauses,3);assert.equal(b.towers.length,2);assert.equal(b.towers[0].level,2);
+  assert.equal(b.introduction.stage,'done',location.id);assert.equal(pauses,2);assert.equal(b.towers.length,2);assert.equal(b.towers[0].level,2);
   assert.equal(b.discovery,'wisp'); b.drainEvents();
   for(let i=0;i<2400&&!b.tutorial.frostSeen;i++)b.update(.025);
   assert.ok(b.tutorial.frostSeen);assert.equal(b.drainEvents().filter(e=>e.type==='frost-tip').length,1);
@@ -152,7 +154,15 @@ test('learning pause survives return without idle income and stays distinct from
  const before=live.battle.snapshot();await live.close();now+=3600000;
  store=await openBattleStore(factory,'lesson-return',()=>now);live=await BattleSession.open(store,{now:()=>now,locks:null});
  assert.equal(live.paused,false);assert.equal(live.battle.learningPaused,true);assert.equal(live.awaitingResume,false);assert.equal(live.pendingReward,null);assert.deepEqual(live.battle.snapshot(),before);
- await live.command(b=>b.upgrade(1));assert.equal(live.battle.learningPaused,true);await live.command(b=>b.continueLesson());assert.equal(live.battle.learningPaused,false);await live.close();
+ assert.ok(await live.setPaused(true));
+ assert.ok(await live.command(b=>b.upgrade(1)));assert.equal(live.battle.learningPaused,false);
+ assert.equal(live.paused,true,'automatic lesson completion must retain manual pause');
+ const stopped=live.battle.snapshot();live.advance(1);assert.deepEqual(live.battle.snapshot(),stopped);
+ await live.close();store=await openBattleStore(factory,'lesson-return',()=>now);
+ live=await BattleSession.open(store,{now:()=>now,locks:null});assert.equal(live.paused,true);
+ assert.equal(live.pendingReward,null);assert.equal(live.awaitingResume,true);
+ assert.ok(await live.resumeActive());assert.ok(await live.setPaused(false));
+ const elapsed=live.battle.elapsed;live.advance(.1);assert.ok(live.battle.elapsed>elapsed);await live.close();
 });
 
 

@@ -22,7 +22,7 @@ Status: IN ARBEIT. Priorität: echte historische Speicherformate, danach Layout/
 | 14 | unopened east cells reject walking and construction; expansion changes bounds but never routes enemies | offen | Prüfung läuft |
 | 15 | schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40 | B | historische Schema-26-Ausgaben bei Welle 40/53/125 mit Originalmodell-Fortsetzungsorakel. |
 | 16 | schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly | B | originaler Schema-26-Schreiber erzeugt bezahltes Level 21 und hohe Gegner-HP; aktuelle Migration setzt exakt fort. |
-| 17 | ordinary earned opening and a saved walking segment restore without moving an unbuilt save | offen | Prüfung läuft |
+| 17 | ordinary earned opening and a saved walking segment restore without moving an unbuilt save | A | Upgrade setzt automatisch fort; Testtreiber führt nur eine Kaufaktion pro Lernstufe aus. Echter gehender Save bleibt exakt geprüft. |
 | 18 | Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation | offen | Prüfung läuft |
 | 19 | overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage | offen | Prüfung läuft |
 | 20 | assignment walks at 80px/s on cardinal safe ground, preserves cooldown and gives no bonus before arrival | offen | Prüfung läuft |
@@ -30,9 +30,9 @@ Status: IN ARBEIT. Priorität: echte historische Speicherformate, danach Layout/
 | 22 | blocked targets stay understandable and harmless, and a changed blocked route reroutes around real obstacles | offen | Prüfung läuft |
 | 23 | Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads | offen | Prüfung läuft |
 | 24 | a genuine schema-27 wave 46 keeps its old tank-heavy queue and live values, then adopts rules 14 | A | Schema-27-Kampf bleibt exakt; nur dokumentierte Sozial-/Forschungsfelder migrieren. |
-| 25 | all starter locations survive the complete guided purchase sequence with real learning pauses | offen | Prüfung läuft |
+| 25 | all starter locations survive the complete guided purchase sequence with real learning pauses | A | zwei explizite Fortsetzungen statt drei; Upgrade und Frostbau setzen automatisch fort. Alle Startplätze, Lernstopp und Kosten bleiben geprüft. |
 | 26 | real v14 veteran and its historical offline basis survive the schema-only migration | A | v14-Veteran behält sämtliche alten Felder und Offline-Basis; neue Sozialfelder explizit geprüft. |
-| 27 | learning pause survives return without idle income and stays distinct from manual pause | offen | Prüfung läuft |
+| 27 | learning pause survives return without idle income and stays distinct from manual pause | A | Upgrade beendet nur die Lernpause; manuelle Pause über Kauf/Reload sowie Abwesenheit ohne Ertrag zusätzlich geprüft. |
 | 28 | in-flight hops survive upgrade, sale and reload exactly; forged payloads and visited IDs are rejected | B | echtes Schema-29-Kettenprojektil nach Upgrade/Verkauf, Originalmodell-Fortsetzung und aktuelle Manipulationsabwehr. |
 | 29 | schema 28 live queues and wallets migrate unchanged without granting research or rewriting shots | A | Schema-28-Kampf bleibt exakt, keine Sturmforschung geschenkt. |
 | 30 | Ilyra can retain the fifth tower as a sold volley source without counting chain damage twice | B | echte Schema-29-Ilyra-Salve nach Turmverkauf mit Originalmodell-Fortsetzungsorakel. |
@@ -44,4 +44,8 @@ Status: IN ARBEIT. Priorität: echte historische Speicherformate, danach Layout/
 
 43/43 betroffene Tests, 103/103 Nachbartests (Save-Store, Session, Offline, Beziehungen), v14-Einzelprüfung 1/1. Keine Laufzeitänderungen. Unveränderte historische Quellen: `796f02e5fe49164c1edd7a17e12dcbeed4079001` (Schema 26) und `537b5e8c9cf09b696b41644da4c56dbc8633d720` (Schema 29). Generator und eingefrorene Vorher-/Nachherdaten unter `tests/fixtures/`. Die alte Schema-26-Leselogik lehnte ihre eigenen hohen HP ab; dieser historische Fehler wurde bereits in `5e24ddc` behoben und ist **kein neuer Fund im aktuellen Laufzeitcode**. Das neue Orakel stammt trotzdem unverändert aus dem damaligen Schreiber und Simulator.
 
-Commit: in diesem Gruppencommit; SHA wird im nächsten Berichtseintrag ergänzt.
+Commit Gruppe 1: `66af7a19902839745e196ade79e129e84d4cc5d4`, nach `origin/main` gepusht.
+
+## Gruppe 2 – Tutorial und Lernpause (geprüft)
+
+53/53 inklusive sämtlicher Tutorial-, Discovery-, Heldensteuerungs- und Frostkit-Nachbartests. Bestehender 14-Schritte-Ablauf, unveränderte Laufzeit/UI. Grundlage: freigegebene automatische Fortsetzung nach Upgrade (`a85870f`, vorhandene `tutorial-progress.test.ts`). Commit-SHA folgt im nächsten Eintrag.
