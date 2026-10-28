@@ -56,4 +56,4 @@ Commit Gruppe 1: `66af7a19902839745e196ade79e129e84d4cc5d4`, nach `origin/main` 
 
 ## Gruppe 4 – Mara und Kampftiming (geprüft)
 
-25/25 Mara-/Fernzauber-/Heldensteuerungs-/Wartebewegungstests. Maßgebliche Freigabe: `acceptance/p4/REDESIGN.md`, Abschnitt Ergebnis (sechs Felder, unabhängige Bewegung, 8-s-Buff am alten Turm, 30-s-Cooldown, Automatik nur bei Gegnern). Kein Laufzeitfehler gefunden, keine Laufzeitänderung. Commit-SHA folgt.
+25/25 Mara-/Fernzauber-/Heldensteuerungs-/Wartebewegungstests. Maßgebliche Freigabe: `acceptance/p4/REDESIGN.md`, Abschnitt Ergebnis (sechs Felder, unabhängige Bewegung, 8-s-Buff am alten Turm, 30-s-Cooldown, Automatik nur bei Gegnern). Kein Laufzeitfehler gefunden, keine Laufzeitänderung. Commit Gruppe 4: `1fea077946e205ab356052a09c5722906597cd48`. Der erste CI-Build scheiterte am neuen Testtyp (`never[]` nach Leerarray-Assertion), ohne Spieländerung. Nachfolgekorrektur verwendet die gleichwertige Längenprüfung; 25/25 erneut grün, vollständiger Produktionsbuild erfolgreich (`group4-build.log`).

@@ -5,7 +5,7 @@ import { BASE, BATTLE_RULES_VERSION, IdleBattle } from '../src/battle';
 import { certifyFarm, defenseFingerprint, isFarmCertificateValid } from '../src/farming';
 import { getForestBlockedCells } from '../src/forest-world';
 import { cellCenter, createIdleLayout, getTowerApproachCells, isWalkableCell, type WorldPoint } from '../src/layout';
-import { MARA, assignMaraTarget, cloneMara, createMara, moveMara, stepMara, validMara } from '../src/mara';
+import { MARA, assignMaraTarget, cloneMara, createMara, stepMara, validMara } from '../src/mara';
 
 const near = (actual: number, expected: number): void => assert.ok(Math.abs(actual - expected) < 1e-6, `${actual} != ${expected}`);
 const point = ({ x, y }: WorldPoint): WorldPoint => ({ x, y });
@@ -131,7 +131,7 @@ test('blocked remote destinations stop safely; a new order can route around a ne
   const newlyBlocked = { x: Math.floor(mara.path[0].x / 40), y: Math.floor(mara.path[0].y / 40) };
   const changed = [...forest, newlyBlocked];
   stepMara(mara, target, layout, changed, 0.025, true, true, true);
-  assert.equal(mara.unreachable,true);assert.deepEqual(mara.path,[]);assert.deepEqual(point(mara),before);
+  assert.equal(mara.unreachable,true);assert.equal(mara.path.length,0);assert.deepEqual(point(mara),before);
   assert.ok(validMara(mara, [target], layout, changed));
   assignMaraTarget(mara,target,layout,changed);
   assert.equal(mara.unreachable, false);assert.ok(mara.path.length>0);
