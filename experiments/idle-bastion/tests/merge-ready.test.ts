@@ -1,3 +1,4 @@
+import { expectedCombatMigration, cleanupFixtures, checkOldContinuation } from './cleanup-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {readFileSync} from 'node:fs';
@@ -25,7 +26,7 @@ test('only wave 46 changes under rules 14: retain a light escort, healer cap, ex
 });
 test('a genuine schema-27 wave 46 keeps its old tank-heavy queue and live values, then adopts rules 14',()=>{
  const original=structuredClone(active),b=IdleBattle.restore(original);assert.ok(b);assert.deepEqual(original,active);
- assert.equal(b.waveRecipeVersion,13);assert.deepEqual(b.snapshot(),{...active,schemaVersion:BATTLE_SCHEMA_VERSION,tutorialFrostUid:null,rulesVersion:BATTLE_RULES_VERSION,settlement:{...active.settlement,stormResearched:false}});
+ assert.equal(b.waveRecipeVersion,13);assert.deepEqual(b.snapshot(),expectedCombatMigration(active));
  const clone=IdleBattle.restore(b.snapshot())!;for(let i=0;i<100;i++){b.update(.025);clone.update(.025);}assert.deepEqual(b.snapshot(),clone.snapshot());
  const bad=structuredClone(active);bad.queue[0]='WoodSpider';assert.equal(IdleBattle.restore(bad),undefined);
  const corrupt=structuredClone(active);corrupt.enemies[0].maxHp++;assert.equal(IdleBattle.restore(corrupt),undefined);

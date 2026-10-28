@@ -1,0 +1,268 @@
+TAP version 13
+# Subtest: rules 3–15 match main for 910 encounters; current rules change only waves 10 and 20
+ok 1 - rules 3–15 match main for 910 encounters; current rules change only waves 10 and 20
+  ---
+  duration_ms: 127.3174
+  type: 'test'
+  ...
+# Subtest: wave 10 has 22 enemies in four short groups; wave 20 trades exactly three beetles with nearly equal rewards
+ok 2 - wave 10 has 22 enemies in four short groups; wave 20 trades exactly three beetles with nearly equal rewards
+  ---
+  duration_ms: 1.1788
+  type: 'test'
+  ...
+# Subtest: real schema-30 fights resume with identical old movement, projectiles, timers and money until their boundary
+ok 3 - real schema-30 fights resume with identical old movement, projectiles, timers and money until their boundary
+  ---
+  duration_ms: 394.8654
+  type: 'test'
+  ...
+# Subtest: new wave 10/20 and both boss snapshots reload exactly; downgrade and forged old queues are rejected
+ok 4 - new wave 10/20 and both boss snapshots reload exactly; downgrade and forged old queues are rejected
+  ---
+  duration_ms: 66.5502
+  type: 'test'
+  ...
+# Subtest: old farm departure remains payable once through native save migration; fresh proof needs two current clears
+ok 5 - old farm departure remains payable once through native save migration; fresh proof needs two current clears
+  ---
+  duration_ms: 496.0199
+  type: 'test'
+  ...
+# Subtest: earned release runs retain the first five waves and win both bosses without new losses or money farming
+ok 6 - earned release runs retain the first five waves and win both bosses without new losses or money farming
+  ---
+  duration_ms: 54.6179
+  type: 'test'
+  ...
+# Subtest: earned Frost kit is immediately affordable, atomic and consumed through sale and reload
+ok 7 - earned Frost kit is immediately affordable, atomic and consumed through sale and reload
+  ---
+  duration_ms: 234.0164
+  type: 'test'
+  ...
+# Subtest: only paid upgrades contribute to the free kit refund; forged free towers are rejected
+ok 8 - only paid upgrades contribute to the free kit refund; forged free towers are rejected
+  ---
+  duration_ms: 115.949
+  type: 'test'
+  ...
+# Subtest: schema 29 unfinished guidance gains eligibility; completed and paid saves retain prices
+ok 9 - schema 29 unfinished guidance gains eligibility; completed and paid saves retain prices
+  ---
+  duration_ms: 16.9495
+  type: 'test'
+  ...
+# Subtest: rules 12 stay byte-for-byte reproducible against the captured original 100-wave table; rules 13–15 keep opening 1–40 unchanged
+ok 10 - rules 12 stay byte-for-byte reproducible against the captured original 100-wave table; rules 13–15 keep opening 1–40 unchanged
+  ---
+  duration_ms: 29.9457
+  type: 'test'
+  ...
+# Subtest: new introductions repeat immediately; later recipes retain all sixteen species, two healer and 28 enemy caps
+ok 11 - new introductions repeat immediately; later recipes retain all sixteen species, two healer and 28 enemy caps
+  ---
+  duration_ms: 102.3278
+  type: 'test'
+  ...
+# Subtest: schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40
+ok 12 - schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40
+  ---
+  duration_ms: 220.9439
+  type: 'test'
+  ...
+# Subtest: schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly
+ok 13 - schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly
+  ---
+  duration_ms: 15.3374
+  type: 'test'
+  ...
+# Subtest: four compact atlases preserve metadata timings and genuine west views; cosmetic skins never change combat stats
+ok 14 - four compact atlases preserve metadata timings and genuine west views; cosmetic skins never change combat stats
+  ---
+  duration_ms: 10.3884
+  type: 'test'
+  ...
+# Subtest: every new species survives live save/reload deterministically; new farm proofs replace old rates without altering the model
+ok 15 - every new species survives live save/reload deterministically; new farm proofs replace old rates without altering the model
+  ---
+  duration_ms: 402.8626
+  type: 'test'
+  ...
+# Subtest: both historical and current offline receipts keep their exact amounts and one-claim boundary
+ok 16 - both historical and current offline receipts keep their exact amounts and one-claim boundary
+  ---
+  duration_ms: 2.6019
+  type: 'test'
+  ...
+# Subtest: only wave 46 changes under rules 14: retain a light escort, healer cap, exact cadence and total reward
+ok 17 - only wave 46 changes under rules 14: retain a light escort, healer cap, exact cadence and total reward
+  ---
+  duration_ms: 52.602
+  type: 'test'
+  ...
+# Subtest: a genuine schema-27 wave 46 keeps its old tank-heavy queue and live values, then adopts rules 14
+ok 18 - a genuine schema-27 wave 46 keeps its old tank-heavy queue and live values, then adopts rules 14
+  ---
+  duration_ms: 295.775
+  type: 'test'
+  ...
+# Subtest: raw restore re-proves saved farm 29 even without a departure certificate, with no live model or reward mutation
+ok 19 - raw restore re-proves saved farm 29 even without a departure certificate, with no live model or reward mutation
+  ---
+  duration_ms: 420.5185
+  type: 'test'
+  ...
+# Subtest: entry fallback recovers safe recent wave 38; harmful sales still invalidate higher farm proofs
+ok 20 - entry fallback recovers safe recent wave 38; harmful sales still invalidate higher farm proofs
+  ---
+  duration_ms: 425.0718
+  type: 'test'
+  ...
+# Subtest: native schema-27 reload retains its rules-13 offline claim and credits the exact amount once
+ok 21 - native schema-27 reload retains its rules-13 offline claim and credits the exact amount once
+  ---
+  duration_ms: 149.9337
+  type: 'test'
+  ...
+# Subtest: research is a separate once-only paid unlock after wave 28 and Ilyra; upgrades remain unbounded
+ok 22 - research is a separate once-only paid unlock after wave 28 and Ilyra; upgrades remain unbounded
+  ---
+  duration_ms: 168.8336
+  type: 'test'
+  ...
+# Subtest: a chain hits three distinct live targets, nearest first, with bounded range and 100/65/42 percent damage
+ok 23 - a chain hits three distinct live targets, nearest first, with bounded range and 100/65/42 percent damage
+  ---
+  duration_ms: 65.0039
+  type: 'test'
+  ...
+# Subtest: in-flight hops survive upgrade, sale and reload exactly; forged payloads and visited IDs are rejected
+ok 24 - in-flight hops survive upgrade, sale and reload exactly; forged payloads and visited IDs are rejected
+  ---
+  duration_ms: 105.3196
+  type: 'test'
+  ...
+# Subtest: Mara accelerates the fifth tower without increasing its per-chain target or damage cap; armor still applies
+ok 25 - Mara accelerates the fifth tower without increasing its per-chain target or damage cap; armor still applies
+  ---
+  duration_ms: 50.8991
+  type: 'test'
+  ...
+# Subtest: new farm proofs exclude active heroes; historical receipts remain exactly once and recipes are unchanged
+ok 26 - new farm proofs exclude active heroes; historical receipts remain exactly once and recipes are unchanged
+  ---
+  duration_ms: 117.6674
+  type: 'test'
+  ...
+# Subtest: schema 28 live queues and wallets migrate unchanged without granting research or rewriting shots
+ok 27 - schema 28 live queues and wallets migrate unchanged without granting research or rewriting shots
+  ---
+  duration_ms: 69.7501
+  type: 'test'
+  ...
+# Subtest: research is atomic across a failed native save, then remains paid and owned after reopening
+ok 28 - research is atomic across a failed native save, then remains paid and owned after reopening
+  ---
+  duration_ms: 119.1935
+  type: 'test'
+  ...
+# Subtest: all three original art stages retain source frame maps, PNG dimensions and the shared floor anchor
+ok 29 - all three original art stages retain source frame maps, PNG dimensions and the shared floor anchor
+  ---
+  duration_ms: 29.2453
+  type: 'test'
+  ...
+# Subtest: Ilyra can retain the fifth tower as a sold volley source without counting chain damage twice
+ok 30 - Ilyra can retain the fifth tower as a sold volley source without counting chain damage twice
+  ---
+  duration_ms: 69.1742
+  type: 'test'
+  ...
+# Subtest: all forty historical recipes remain exact; entry, bosses, HP and old spawn clocks stay intact
+ok 31 - all forty historical recipes remain exact; entry, bosses, HP and old spawn clocks stay intact
+  ---
+  duration_ms: 3.8354
+  type: 'test'
+  ...
+# Subtest: opening recipes are reproducible in reverse order, bounded, readable and repeat every introduction promptly
+ok 32 - opening recipes are reproducible in reverse order, bounded, readable and repeat every introduction promptly
+  ---
+  duration_ms: 17.2277
+  type: 'test'
+  ...
+# Subtest: a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly
+ok 33 - a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly
+  ---
+  duration_ms: 197.79
+  type: 'test'
+  ...
+# Subtest: both healer species share target locks, exclude each other and bosses, and resume their exact saved cast
+ok 34 - both healer species share target locks, exclude each other and bosses, and resume their exact saved cast
+  ---
+  duration_ms: 92.747
+  type: 'test'
+  ...
+# Subtest: historical and current offline entitlements retain their exact amount and can only be claimed once
+ok 35 - historical and current offline entitlements retain their exact amount and can only be claimed once
+  ---
+  duration_ms: 3.7641
+  type: 'test'
+  ...
+# Subtest: native save boundary migrates v24 and pays its pending historical offline claim exactly once
+ok 36 - native save boundary migrates v24 and pays its pending historical offline claim exactly once
+  ---
+  duration_ms: 41.5503
+  type: 'test'
+  ...
+# Subtest: three compact original atlases have real directional clips and stable nonmirrored left views
+ok 37 - three compact original atlases have real directional clips and stable nonmirrored left views
+  ---
+  duration_ms: 2.5247
+  type: 'test'
+  ...
+# Subtest: frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+ok 38 - frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+  ---
+  duration_ms: 24.2439
+  type: 'test'
+  ...
+# Subtest: larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+ok 39 - larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+  ---
+  duration_ms: 75.2422
+  type: 'test'
+  ...
+# Subtest: a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules
+ok 40 - a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules
+  ---
+  duration_ms: 220.2137
+  type: 'test'
+  ...
+# Subtest: level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+ok 41 - level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+  ---
+  duration_ms: 101.2898
+  type: 'test'
+  ...
+# Subtest: old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+ok 42 - old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+  ---
+  duration_ms: 563.6454
+  type: 'test'
+  ...
+# Subtest: HP continues past the old plateau; machine guards and old level curves remain explicit
+ok 43 - HP continues past the old plateau; machine guards and old level curves remain explicit
+  ---
+  duration_ms: 35.9174
+  type: 'test'
+  ...
+1..43
+# tests 43
+# suites 0
+# pass 43
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1996.5828

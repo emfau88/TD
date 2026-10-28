@@ -1,3 +1,4 @@
+import { cleanupFixtures, checkOldContinuation, expectedCombatMigration } from './cleanup-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync, statSync } from 'node:fs';
@@ -55,19 +56,18 @@ test('new introductions repeat immediately; later recipes retain all sixteen spe
 });
 test('schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40',()=>{
  for(const w of [40,53,125]){
-  const old=encounter(w,12);assert.ok(old);old.update(3);const s=old.snapshot();
-  const legacy={...s,schemaVersion:26,rulesVersion:12},before=structuredClone(legacy),b=IdleBattle.restore(legacy);assert.ok(b,`wave ${w}`);
-  assert.deepEqual(legacy,before);assert.equal(b.waveRecipeVersion,12);assert.deepEqual(b.snapshot(),{...s,schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:BATTLE_RULES_VERSION});
-  for(let i=0;i<40;i++){old.update(.025);b.update(.025);}assert.deepEqual(b.snapshot(),old.snapshot());
+  const fixture=cleanupFixtures().schema26['wave'+w],legacy=fixture.before;
+  assert.equal(legacy.schemaVersion,26);assert.equal(legacy.wave,w);
+  const b=checkOldContinuation(fixture);assert.equal(b.waveRecipeVersion,12);
   const bad=structuredClone(legacy);bad.queue[0]='MossShroom';assert.equal(IdleBattle.restore(bad),undefined);
   const hp=structuredClone(legacy);hp.enemies[0].maxHp++;assert.equal(IdleBattle.restore(hp),undefined);
  }
 });
 test('schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly',()=>{
- const b=encounter(125,12);assert.ok(b);b.update(1);const s=b.snapshot(),t=s.towers[0];
- t.level=21;t.spent=0;for(let level=1;level<21;level++)t.spent+=upgradeCost({def:BASE.tower,level});
- assert.ok(s.enemies.some(e=>e.maxHp>850*100000));
- assert.ok(IdleBattle.restore({...s,schemaVersion:26,rulesVersion:12}));
+ const fixture=cleanupFixtures().schema26.level21,s=fixture.before;
+ assert.equal(s.schemaVersion,26);assert.equal(s.towers[0].level,21);
+ assert.ok(s.enemies.some((e:any)=>e.maxHp>850*100000));
+ checkOldContinuation(fixture);
  const bad=structuredClone(s);bad.towers[0].spent++;assert.equal(IdleBattle.restore(bad),undefined);
 });
 test('four compact atlases preserve metadata timings and genuine west views; cosmetic skins never change combat stats',()=>{

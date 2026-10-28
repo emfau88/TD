@@ -1,3 +1,4 @@
+import { expectedCombatMigration } from './cleanup-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createHash } from 'node:crypto';
@@ -29,7 +30,7 @@ test('rules 3–15 match main for 910 encounters; current rules change only wave
     if(wave===10||wave===20)continue;
     assert.deepEqual({...encounter(wave,16),version:15},encounter(wave,15),'wave '+wave);
   }
-  assert.equal(BATTLE_SCHEMA_VERSION,31);assert.equal(BATTLE_RULES_VERSION,16);
+  assert.equal(BATTLE_SCHEMA_VERSION,32);assert.equal(BATTLE_RULES_VERSION,16);
 });
 
 test('wave 10 has 22 enemies in four short groups; wave 20 trades exactly three beetles with nearly equal rewards',()=>{
@@ -53,10 +54,10 @@ test('real schema-30 fights resume with identical old movement, projectiles, tim
   for(const fixture of legacy.continuations){
     const untouched=structuredClone(fixture.before),b=IdleBattle.restore(fixture.before);
     assert.ok(b,fixture.key);assert.deepEqual(fixture.before,untouched);
-    assert.deepEqual(b.snapshot(),{...fixture.before,schemaVersion:31,rulesVersion:16});
+    assert.deepEqual(b.snapshot(),expectedCombatMigration(fixture.before));
     for(let i=0;i<fixture.steps;i++)b.update(.025);
     // An old in-flight clear is not a new-rules farm certificate.
-    assert.deepEqual(b.snapshot(),{...fixture.after,schemaVersion:31,rulesVersion:16,liveClearedWaves:fixture.before.liveClearedWaves},fixture.key);
+    assert.deepEqual(b.snapshot(),{...expectedCombatMigration(fixture.after),liveClearedWaves:fixture.before.liveClearedWaves},fixture.key);
     assert.ok(IdleBattle.restore(b.snapshot()),fixture.key+' boundary');
     const attempt=b.attemptId;
     for(let i=0;i<2000&&b.attemptId===attempt;i++)b.update(.025);
@@ -67,7 +68,7 @@ test('real schema-30 fights resume with identical old movement, projectiles, tim
 test('new wave 10/20 and both boss snapshots reload exactly; downgrade and forged old queues are rejected',()=>{
   for(const key of ['active10','active20','channel15','channel25']){
     const b=IdleBattle.restore(current[key]),restored=IdleBattle.restore(current[key]);
-    assert.ok(b&&restored,key);assert.deepEqual(b.snapshot(),current[key]);
+    assert.ok(b&&restored,key);assert.deepEqual(b.snapshot(),expectedCombatMigration(current[key]));
     for(let i=0;i<200;i++){b.update(.025);restored.update(.025);}
     assert.deepEqual(b.snapshot(),restored.snapshot(),key);
     const downgraded={...current[key],schemaVersion:30,rulesVersion:15};

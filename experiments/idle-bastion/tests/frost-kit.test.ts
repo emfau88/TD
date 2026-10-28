@@ -1,3 +1,4 @@
+import { cleanupFixtures, expectedCombatMigration } from './cleanup-fixtures';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { IdleBattle, sellValue, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION } from '../src/battle';
@@ -31,14 +32,16 @@ test('only paid upgrades contribute to the free kit refund; forged free towers a
   assert.equal(IdleBattle.restore(missing.snapshot()), undefined);
 });
 test('schema 29 unfinished guidance gains eligibility; completed and paid saves retain prices', () => {
-  const b = guidedFrost(), old: any = b.snapshot(); old.schemaVersion = 29; old.rulesVersion = 15; old.waveRecipeVersion = 15; delete old.tutorialFrostUid;
+  const old = cleanupFixtures().schema29.guidedFrost.before; assert.equal(old.schemaVersion, 29);
   const unchanged = structuredClone(old), migrated = IdleBattle.restore(old)!;
   assert.ok(migrated); assert.equal(migrated.frostKitAvailable, true); assert.deepEqual(old, unchanged);
-  assert.deepEqual(migrated.snapshot(), { ...old, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION, tutorialFrostUid: null });
-  b.skipLessons(); assert.equal(b.frostKitAvailable, false);
-  b.discovery = 'off'; for (let i = 0; i < 8000 && b.gold < 110; i++) b.update(.025);
-  const paid = b.build(b.recommendedFrostPad!, 2)!; assert.equal(paid.spent, 110);
-  const paidOld: any = b.snapshot(); paidOld.schemaVersion = 29; paidOld.rulesVersion = 15; paidOld.waveRecipeVersion = 15; delete paidOld.tutorialFrostUid;
-  const next = IdleBattle.restore(paidOld)!; assert.ok(next); assert.equal(next.towerBuildCost(2), 110);
+  assert.deepEqual(migrated.snapshot(), expectedCombatMigration(old));
+  const paidOld = cleanupFixtures().schema29.paidFrost.before;
+  assert.equal(paidOld.schemaVersion,29); const paid = paidOld.towers.find((t:any)=>t.kind===2)!;
+  assert.equal(paid.spent,110);
+  const next = IdleBattle.restore(paidOld)!; assert.ok(next); assert.equal(next.frostKitAvailable,false);
+  assert.equal(next.towerBuildCost(2), 110); assert.deepEqual(next.snapshot(),expectedCombatMigration(paidOld));
   assert.equal(next.towers.find(t => t.uid === paid.uid)!.spent, 110); reload(next);
+  const mixed = { ...migrated.snapshot(), schemaVersion: 29, rulesVersion: 15 };
+  assert.equal(IdleBattle.restore(mixed),undefined,'modern social data is not a valid schema-29 save');
 });

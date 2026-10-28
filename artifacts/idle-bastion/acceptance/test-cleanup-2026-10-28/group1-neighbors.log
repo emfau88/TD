@@ -1,0 +1,628 @@
+TAP version 13
+# Subtest: a legally funded Frost run stays saveable through long wave tails and wave 15
+ok 1 - a legally funded Frost run stays saveable through long wave tails and wave 15
+  ---
+  duration_ms: 3204.978
+  type: 'test'
+  ...
+# Subtest: JSON round trip preserves a live wave, its homing shots, IDs and deterministic later rewards
+ok 2 - JSON round trip preserves a live wave, its homing shots, IDs and deterministic later rewards
+  ---
+  duration_ms: 537.9096
+  type: 'test'
+  ...
+# Subtest: snapshot records are detached from the live model and from restored models
+ok 3 - snapshot records are detached from the live model and from restored models
+  ---
+  duration_ms: 28.066
+  type: 'test'
+  ...
+# Subtest: a sold source retains its old shot level/damage and pays one kill after reload
+ok 4 - a sold source retains its old shot level/damage and pays one kill after reload
+  ---
+  duration_ms: 52.824
+  type: 'test'
+  ...
+# Subtest: reload immediately before lethal impact and after its event never replays kill money
+ok 5 - reload immediately before lethal impact and after its event never replays kill money
+  ---
+  duration_ms: 56.8345
+  type: 'test'
+  ...
+# Subtest: last enemy and clear bonus cross the save boundary once; intermission resumes at the exact remainder
+ok 6 - last enemy and clear bonus cross the save boundary once; intermission resumes at the exact remainder
+  ---
+  duration_ms: 134.2953
+  type: 'test'
+  ...
+# Subtest: initial delay and sub-tick remainder persist without accelerating or dropping simulation time
+ok 7 - initial delay and sub-tick remainder persist without accelerating or dropping simulation time
+  ---
+  duration_ms: 52.1874
+  type: 'test'
+  ...
+# Subtest: real defeat including the escaped enemy restores and enters the identical farm transition
+ok 8 - real defeat including the escaped enemy restores and enters the identical farm transition
+  ---
+  duration_ms: 390.5369
+  type: 'test'
+  ...
+# Subtest: every sampled route corner, enemy recipe and partial update remains valid through later waves
+ok 9 - every sampled route corner, enemy recipe and partial update remains valid through later waves
+  ---
+  duration_ms: 911.7646
+  type: 'test'
+  ...
+# Subtest: invalid resources, times, references, definitions and newer formats are rejected without mutating input
+ok 10 - invalid resources, times, references, definitions and newer formats are rejected without mutating input
+  ---
+  duration_ms: 39.474
+  type: 'test'
+  ...
+# Subtest: layout changes cannot be silently serialized under the starting-layout identity
+ok 11 - layout changes cannot be silently serialized under the starting-layout identity
+  ---
+  duration_ms: 4.2183
+  type: 'test'
+  ...
+# Subtest: free Frost commit includes consumption and tutorial exit; duplicate and failed writes cannot duplicate the kit
+ok 12 - free Frost commit includes consumption and tutorial exit; duplicate and failed writes cannot duplicate the kit
+  ---
+  duration_ms: 365.5836
+  type: 'test'
+  ...
+# Subtest: fresh persistent session commits before exposure and temporary play is explicit
+ok 13 - fresh persistent session commits before exposure and temporary play is explicit
+  ---
+  duration_ms: 86.2753
+  type: 'test'
+  ...
+# Subtest: purchase acknowledgement waits for commit and a concurrent click is rejected
+ok 14 - purchase acknowledgement waits for commit and a concurrent click is rejected
+  ---
+  duration_ms: 37.4575
+  type: 'test'
+  ...
+# Subtest: write rejection rolls back the complete battle and freezes further economic actions
+ok 15 - write rejection rolls back the complete battle and freezes further economic actions
+  ---
+  duration_ms: 68.935
+  type: 'test'
+  ...
+# Subtest: a second tab cannot simulate, load rewards or replace the active writer
+ok 16 - a second tab cannot simulate, load rewards or replace the active writer
+  ---
+  duration_ms: 44.2301
+  type: 'test'
+  ...
+# Subtest: expired epoch is taken over and the waking old tab cannot renew or overwrite newer gold
+ok 17 - expired epoch is taken over and the waking old tab cannot renew or overwrite newer gold
+  ---
+  duration_ms: 40.8395
+  type: 'test'
+  ...
+# Subtest: wave boundaries commit immediately; pure combat checkpoints at one second and flush stores the remainder
+ok 18 - wave boundaries commit immediately; pure combat checkpoints at one second and flush stores the remainder
+  ---
+  duration_ms: 39.9193
+  type: 'test'
+  ...
+# Subtest: pause persists and a closed paused game receives no offline production
+ok 19 - pause persists and a closed paused game receives no offline production
+  ---
+  duration_ms: 109.1673
+  type: 'test'
+  ...
+# Subtest: corrupt/newer saves remain protected and backup recovery is explicit
+ok 20 - corrupt/newer saves remain protected and backup recovery is explicit
+  ---
+  duration_ms: 11.5055
+  type: 'test'
+  ...
+# Subtest: pending commits preserve all active time in bounded batches, without creating offline time
+ok 21 - pending commits preserve all active time in bounded batches, without creating offline time
+  ---
+  duration_ms: 90.6509
+  type: 'test'
+  ...
+# Subtest: 60, 10 and 2 FPS produce the same saved combat and victory-based social progress
+ok 22 - 60, 10 and 2 FPS produce the same saved combat and victory-based social progress
+  ---
+  duration_ms: 341.3376
+  type: 'test'
+  ...
+# Subtest: flush, pause, hide and close finish queued active time before their boundary
+ok 23 - flush, pause, hide and close finish queued active time before their boundary
+  ---
+  duration_ms: 148.5129
+  type: 'test'
+  ...
+# Subtest: a real absence follows queued active time without crediting either interval twice
+ok 24 - a real absence follows queued active time without crediting either interval twice
+  ---
+  duration_ms: 37.9113
+  type: 'test'
+  ...
+# Subtest: failed checkpoint discards unconfirmed queued time and restores the saved combat
+ok 25 - failed checkpoint discards unconfirmed queued time and restores the saved combat
+  ---
+  duration_ms: 35.0464
+  type: 'test'
+  ...
+# Subtest: kill/clear notifications wait for the complete reward commit and restore never replays them
+ok 26 - kill/clear notifications wait for the complete reward commit and restore never replays them
+  ---
+  duration_ms: 242.3602
+  type: 'test'
+  ...
+# Subtest: farm certificate appears only after live clear, revalidates on upgrade and survives reload without rewards
+ok 27 - farm certificate appears only after live clear, revalidates on upgrade and survives reload without rewards
+  ---
+  duration_ms: 80.5879
+  type: 'test'
+  ...
+# Subtest: suspend releases ownership, reserves 60% offline income and blocks combat until claim plus actual continuation
+ok 28 - suspend releases ownership, reserves 60% offline income and blocks combat until claim plus actual continuation
+  ---
+  duration_ms: 80.9824
+  type: 'test'
+  ...
+# Subtest: reload/claim without active continuation preserves the same two-hour budget
+ok 29 - reload/claim without active continuation preserves the same two-hour budget
+  ---
+  duration_ms: 78.5561
+  type: 'test'
+  ...
+# Subtest: schema 29 migration preserves an already reserved offline reward exactly once
+ok 30 - schema 29 migration preserves an already reserved offline reward exactly once
+  ---
+  duration_ms: 69.1814
+  type: 'test'
+  ...
+# Subtest: failed offline claim rolls both gold and pending reward back for a safe later retry
+ok 31 - failed offline claim rolls both gold and pending reward back for a safe later retry
+  ---
+  duration_ms: 62.3324
+  type: 'test'
+  ...
+# Subtest: large frame gaps become absence and never fast-forward the live wave
+ok 32 - large frame gaps become absence and never fast-forward the live wave
+  ---
+  duration_ms: 67.7429
+  type: 'test'
+  ...
+# Subtest: actual IndexedDB integration rejects a second tab and preserves exact confirmed rewards across return
+ok 33 - actual IndexedDB integration rejects a second tab and preserves exact confirmed rewards across return
+  ---
+  duration_ms: 96.5745
+  type: 'test'
+  ...
+# Subtest: close is idempotent, stores the final combat state and releases the writer
+ok 34 - close is idempotent, stores the final combat state and releases the writer
+  ---
+  duration_ms: 32.148
+  type: 'test'
+  ...
+# Subtest: Web Locks use a short gate, and an unavailable browser lock still permits valid IDB takeover
+ok 35 - Web Locks use a short gate, and an unavailable browser lock still permits valid IDB takeover
+  ---
+  duration_ms: 28.7051
+  type: 'test'
+  ...
+# Subtest: claims preserve the fixed absence window and continuation includes a later tail exactly once
+ok 36 - claims preserve the fixed absence window and continuation includes a later tail exactly once
+  ---
+  duration_ms: 60.484
+  type: 'test'
+  ...
+# Subtest: a backwards clock cannot replay reserved offline time or move its cursor backwards
+ok 37 - a backwards clock cannot replay reserved offline time or move its cursor backwards
+  ---
+  duration_ms: 65.1269
+  type: 'test'
+  ...
+# Subtest: temporary play discards a large frame gap without offline gold or a return dialog
+ok 38 - temporary play discards a large frame gap without offline gold or a return dialog
+  ---
+  duration_ms: 57.4263
+  type: 'test'
+  ...
+# Subtest: background checkpoint accepts exactly one queued purchase and validates it after saving
+ok 39 - background checkpoint accepts exactly one queued purchase and validates it after saving
+  ---
+  duration_ms: 35.6562
+  type: 'test'
+  ...
+# Subtest: failed background write rejects the queued action without invoking its mutation
+ok 40 - failed background write rejects the queued action without invoking its mutation
+  ---
+  duration_ms: 31.592
+  type: 'test'
+  ...
+# Subtest: pause click during a checkpoint persists exactly once
+ok 41 - pause click during a checkpoint persists exactly once
+  ---
+  duration_ms: 35.2263
+  type: 'test'
+  ...
+# Subtest: gift click during autosave remains responsive without duplicate gifts or points
+ok 42 - gift click during autosave remains responsive without duplicate gifts or points
+  ---
+  duration_ms: 36.7895
+  type: 'test'
+  ...
+# Subtest: new gift notices wait for a durable save and do not replay on restore
+ok 43 - new gift notices wait for a durable save and do not replay on restore
+  ---
+  duration_ms: 36.4228
+  type: 'test'
+  ...
+# Subtest: tavern hold freezes every combat field in normal and boss fights at different frame rates
+ok 44 - tavern hold freezes every combat field in normal and boss fights at different frame rates
+  ---
+  duration_ms: 398.3191
+  type: 'test'
+  ...
+# Subtest: tavern interactions commit while combat is held, without changing manual pause
+ok 45 - tavern interactions commit while combat is held, without changing manual pause
+  ---
+  duration_ms: 81.4663
+  type: 'test'
+  ...
+# Subtest: tavern heartbeat checkpoints exclude visit time; real departure retains existing offline policy
+ok 46 - tavern heartbeat checkpoints exclude visit time; real departure retains existing offline policy
+  ---
+  duration_ms: 161.2802
+  type: 'test'
+  ...
+# Subtest: opening tavern during a pending write retains only previously accepted combat time
+ok 47 - opening tavern during a pending write retains only previously accepted combat time
+  ---
+  duration_ms: 32.2106
+  type: 'test'
+  ...
+# Subtest: first positive return persists the greeting before claim; unclaimed reload never repeats or changes its gold
+ok 48 - first positive return persists the greeting before claim; unclaimed reload never repeats or changes its gold
+  ---
+  duration_ms: 451.7588
+  type: 'test'
+  ...
+# Subtest: zero, paused and sub-gold returns: zero does not consume it; even a positive fraction qualifies
+ok 49 - zero, paused and sub-gold returns: zero does not consume it; even a positive fraction qualifies
+  ---
+  duration_ms: 790.5508
+  type: 'test'
+  ...
+# Subtest: a second absence within the same session cannot reuse the first visible greeting
+ok 50 - a second absence within the same session cannot reuse the first visible greeting
+  ---
+  duration_ms: 122.148
+  type: 'test'
+  ...
+# Subtest: failed greeting persistence leaves the old receipt and eligibility intact
+ok 51 - failed greeting persistence leaves the old receipt and eligibility intact
+  ---
+  duration_ms: 280.0443
+  type: 'test'
+  ...
+# Subtest: return greeting uses DE/EN, hides for ineligible saves, and adds no interaction gate
+ok 52 - return greeting uses DE/EN, hides for ineligible saves, and adds no interaction gate
+  ---
+  duration_ms: 223.2693
+  type: 'test'
+  ...
+# Subtest: 30 seconds, 10 minutes, 1 hour and 3 hours reserve 60% with the same two-hour cap
+ok 53 - 30 seconds, 10 minutes, 1 hour and 3 hours reserve 60% with the same two-hour cap
+  ---
+  duration_ms: 13.8095
+  type: 'test'
+  ...
+# Subtest: explicit pause and absence without a certified autonomous rate generate no gold
+ok 54 - explicit pause and absence without a certified autonomous rate generate no gold
+  ---
+  duration_ms: 0.52
+  type: 'test'
+  ...
+# Subtest: closing and reopening before claim consumes only the remaining cap of the original window
+ok 55 - closing and reopening before claim consumes only the remaining cap of the original window
+  ---
+  duration_ms: 0.8723
+  type: 'test'
+  ...
+# Subtest: claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+ok 56 - claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+  ---
+  duration_ms: 1.181
+  type: 'test'
+  ...
+# Subtest: backwards clock jumps never move the high-water cursor back or repay a reserved interval
+ok 57 - backwards clock jumps never move the high-water cursor back or repay a reserved interval
+  ---
+  duration_ms: 1.0966
+  type: 'test'
+  ...
+# Subtest: the certificate and paused state are frozen at the original departure
+ok 58 - the certificate and paused state are frozen at the original departure
+  ---
+  duration_ms: 0.5791
+  type: 'test'
+  ...
+# Subtest: confirmed active checkpoints and absence share a single non-overlapping time boundary
+ok 59 - confirmed active checkpoints and absence share a single non-overlapping time boundary
+  ---
+  duration_ms: 0.486
+  type: 'test'
+  ...
+# Subtest: exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+ok 60 - exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+  ---
+  duration_ms: 0.5777
+  type: 'test'
+  ...
+# Subtest: fractional units carry into future windows even when the certified rate changes
+ok 61 - fractional units carry into future windows even when the certified rate changes
+  ---
+  duration_ms: 0.5702
+  type: 'test'
+  ...
+# Subtest: invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+ok 62 - invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+  ---
+  duration_ms: 1.5261
+  type: 'test'
+  ...
+# Subtest: the first B04 schema-one policy defaults migrate without resetting a pending absence window
+ok 63 - the first B04 schema-one policy defaults migrate without resetting a pending absence window
+  ---
+  duration_ms: 0.4494
+  type: 'test'
+  ...
+# Subtest: policy migration never replaces an explicitly contradictory or malformed saved policy
+ok 64 - policy migration never replaces an explicitly contradictory or malformed saved policy
+  ---
+  duration_ms: 0.4025
+  type: 'test'
+  ...
+# Subtest: known historical departure proofs retain their original production basis
+ok 65 - known historical departure proofs retain their original production basis
+  ---
+  duration_ms: 1.2265
+  type: 'test'
+  ...
+# Subtest: isolated native IndexedDB starts empty and restores a committed battle and explicit pause
+ok 66 - isolated native IndexedDB starts empty and restores a committed battle and explicit pause
+  ---
+  duration_ms: 144.923
+  type: 'test'
+  ...
+# Subtest: each commit retains the last valid predecessor and advances revision monotonically
+ok 67 - each commit retains the last valid predecessor and advances revision monotonically
+  ---
+  duration_ms: 64.6995
+  type: 'test'
+  ...
+# Subtest: two connections racing the same revision have exactly one atomic CAS winner
+ok 68 - two connections racing the same revision have exactly one atomic CAS winner
+  ---
+  duration_ms: 48.9074
+  type: 'test'
+  ...
+# Subtest: invalid new snapshots, pause values and revisions leave primary and backup untouched
+ok 69 - invalid new snapshots, pause values and revisions leave primary and backup untouched
+  ---
+  duration_ms: 52.1854
+  type: 'test'
+  ...
+# Subtest: newer primary schemas never fall back to backup or permit overwrite or recovery
+ok 70 - newer primary schemas never fall back to backup or permit overwrite or recovery
+  ---
+  duration_ms: 43.9337
+  type: 'test'
+  ...
+# Subtest: a future battle rules version inside schema one is protected as unsupported
+ok 71 - a future battle rules version inside schema one is protected as unsupported
+  ---
+  duration_ms: 41.2346
+  type: 'test'
+  ...
+# Subtest: load never writes: corrupt known primary offers explicit recovery and preserves its raw evidence
+ok 72 - load never writes: corrupt known primary offers explicit recovery and preserves its raw evidence
+  ---
+  duration_ms: 47.3969
+  type: 'test'
+  ...
+# Subtest: recovery rechecks current primary atomically and refuses a newer valid save
+ok 73 - recovery rechecks current primary atomically and refuses a newer valid save
+  ---
+  duration_ms: 40.8406
+  type: 'test'
+  ...
+# Subtest: unrecognized corruption or a bad backup is reported and cannot be silently replaced
+ok 74 - unrecognized corruption or a bad backup is reported and cannot be silently replaced
+  ---
+  duration_ms: 40.2305
+  type: 'test'
+  ...
+# Subtest: a save aborted after successful put request is never acknowledged and leaves prior data intact
+ok 75 - a save aborted after successful put request is never acknowledged and leaves prior data intact
+  ---
+  duration_ms: 44.9415
+  type: 'test'
+  ...
+# Subtest: unavailable storage, future database version and blocked opens reject clearly
+ok 76 - unavailable storage, future database version and blocked opens reject clearly
+  ---
+  duration_ms: 2.4857
+  type: 'test'
+  ...
+# Subtest: an explicitly stored undefined value is corruption rather than an absent primary
+ok 77 - an explicitly stored undefined value is corruption rather than an absent primary
+  ---
+  duration_ms: 41.4137
+  type: 'test'
+  ...
+# Subtest: writer acquisition is atomic, exclusive and requires a lease for all subsequent production writes
+ok 78 - writer acquisition is atomic, exclusive and requires a lease for all subsequent production writes
+  ---
+  duration_ms: 40.96
+  type: 'test'
+  ...
+# Subtest: expired writer takeover rejects the waking old tab even when its save revision still matches
+ok 79 - expired writer takeover rejects the waking old tab even when its save revision still matches
+  ---
+  duration_ms: 46.6946
+  type: 'test'
+  ...
+# Subtest: renewal extends the same epoch; expired writers cannot renew or save themselves back into ownership
+ok 80 - renewal extends the same epoch; expired writers cannot renew or save themselves back into ownership
+  ---
+  duration_ms: 39.2182
+  type: 'test'
+  ...
+# Subtest: lease epoch and release tombstone survive reopening the database
+ok 81 - lease epoch and release tombstone survive reopening the database
+  ---
+  duration_ms: 92.4298
+  type: 'test'
+  ...
+# Subtest: backup recovery checks the writer epoch in the same transaction as replacement
+ok 82 - backup recovery checks the writer epoch in the same transaction as replacement
+  ---
+  duration_ms: 47.3651
+  type: 'test'
+  ...
+# Subtest: malformed or future writer records are protected instead of being overwritten by acquisition
+ok 83 - malformed or future writer records are protected instead of being overwritten by acquisition
+  ---
+  duration_ms: 2.0015
+  type: 'test'
+  ...
+# Subtest: envelope one migrates read-only without production evidence and retains CAS revision protection
+ok 84 - envelope one migrates read-only without production evidence and retains CAS revision protection
+  ---
+  duration_ms: 41.7627
+  type: 'test'
+  ...
+# Subtest: pending offline receipt and cleared claim persist atomically with actual gold across reloads
+ok 85 - pending offline receipt and cleared claim persist atomically with actual gold across reloads
+  ---
+  duration_ms: 40.3851
+  type: 'test'
+  ...
+# Subtest: a future offline schema is protected even with a valid predecessor
+ok 86 - a future offline schema is protected even with a valid predecessor
+  ---
+  duration_ms: 51.0809
+  type: 'test'
+  ...
+# Subtest: battle schema two migrates without rewriting the historical absence proof or pending receipt
+ok 87 - battle schema two migrates without rewriting the historical absence proof or pending receipt
+  ---
+  duration_ms: 16.5889
+  type: 'test'
+  ...
+# Subtest: session return across the Mara rule update pays the historical rate once and starts with no invented current proof
+ok 88 - session return across the Mara rule update pays the historical rate once and starts with no invented current proof
+  ---
+  duration_ms: 53.4652
+  type: 'test'
+  ...
+# Subtest: future battle schema and historical proof versions remain protected
+ok 89 - future battle schema and historical proof versions remain protected
+  ---
+  duration_ms: 73.47
+  type: 'test'
+  ...
+# Subtest: three conversations and a stock gift reach heart two for each companion without time gates
+ok 90 - three conversations and a stock gift reach heart two for each companion without time gates
+  ---
+  duration_ms: 135.9997
+  type: 'test'
+  ...
+# Subtest: locked and invalid companions/regions cannot spend anything
+ok 91 - locked and invalid companions/regions cannot spend anything
+  ---
+  duration_ms: 50.2915
+  type: 'test'
+  ...
+# Subtest: a personal gift is guaranteed on the thirtieth own live win, independent of stock and the other companion
+ok 92 - a personal gift is guaranteed on the thirtieth own live win, independent of stock and the other companion
+  ---
+  duration_ms: 47.6317
+  type: 'test'
+  ...
+# Subtest: affection may be ready before the gift, stock gifts never bypass the personal gate
+ok 93 - affection may be ready before the gift, stock gifts never bypass the personal gate
+  ---
+  duration_ms: 56.9405
+  type: 'test'
+  ...
+# Subtest: reward reserves refill per three victories, not time, reload, wall clock or offline gold
+ok 94 - reward reserves refill per three victories, not time, reload, wall clock or offline gold
+  ---
+  duration_ms: 44.9011
+  type: 'test'
+  ...
+# Subtest: normal drops have no twenty-minute quota, defer at full stock and stop after the available chapter
+ok 95 - normal drops have no twenty-minute quota, defer at full stock and stop after the available chapter
+  ---
+  duration_ms: 41.7724
+  type: 'test'
+  ...
+# Subtest: recruitment guarantees Ilyra a welcome gift, full stock defers the claim
+ok 96 - recruitment guarantees Ilyra a welcome gift, full stock defers the claim
+  ---
+  duration_ms: 83.0769
+  type: 'test'
+  ...
+# Subtest: touches unlock at hearts 1/2/3, share the existing reserve from heart 2 and preserve legacy progress
+ok 97 - touches unlock at hearts 1/2/3, share the existing reserve from heart 2 and preserve legacy progress
+  ---
+  duration_ms: 95.1979
+  type: 'test'
+  ...
+# Subtest: schema 31 migration preserves earned values, claims, combat and partial gift progress exactly
+ok 98 - schema 31 migration preserves earned values, claims, combat and partial gift progress exactly
+  ---
+  duration_ms: 460.0601
+  type: 'test'
+  ...
+# Subtest: legacy empty-stock Ilyra gets her welcome claim once; corrupt legacy budgets remain rejected
+ok 99 - legacy empty-stock Ilyra gets her welcome claim once; corrupt legacy budgets remain rejected
+  ---
+  duration_ms: 52.6531
+  type: 'test'
+  ...
+# Subtest: invalid current social states are rejected, never reset
+ok 100 - invalid current social states are rejected, never reset
+  ---
+  duration_ms: 296.0652
+  type: 'test'
+  ...
+# Subtest: live wave integration grants once and probes/offline preserve social progress and the farm fingerprint
+ok 101 - live wave integration grants once and probes/offline preserve social progress and the farm fingerprint
+  ---
+  duration_ms: 195.479
+  type: 'test'
+  ...
+# Subtest: gift consumption is atomic, failed saves roll back, pause and concurrent taps do not duplicate rewards
+ok 102 - gift consumption is atomic, failed saves roll back, pause and concurrent taps do not duplicate rewards
+  ---
+  duration_ms: 86.1712
+  type: 'test'
+  ...
+# Subtest: older pre-social saves retain building access and only proven milestone gifts
+ok 103 - older pre-social saves retain building access and only proven milestone gifts
+  ---
+  duration_ms: 62.5729
+  type: 'test'
+  ...
+1..103
+# tests 103
+# suites 0
+# pass 103
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5896.4508

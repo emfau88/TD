@@ -85,8 +85,8 @@ test('real v14 veteran and its historical offline basis survive the schema-only 
  assert.deepEqual(current.settlement,{...old.battle.settlement,tavernBuilt:false,tavernBuiltAt:null,
   tavernSeen:false,tavernLevel:0,stormResearched:false});
  assert.deepEqual(current.social,{points:{mara:0,ilyra:0},gifts:2,
-  claimed:{opening:false,boss15:true,boss25:true},lastClearAttempt:0,
-  window:{ticks:0,earnedGifts:0,clearProgress:0,used:{mara:{talk:0,gift:0,touch:0},ilyra:{talk:0,gift:0,touch:0}}}});
+  claimed:{opening:false,boss15:true,boss25:true,ilyraWelcome:false},lastClearAttempt:0,
+  reserves:{mara:null,ilyra:null},personal:{mara:{clears:0,claimed:false},ilyra:{clears:0,claimed:false}},clearProgress:0});
  assert.deepEqual(IdleBattle.restore(current)!.snapshot(),current);
  const factory=new IDBFactory(),store=await openBattleStore(factory,'intro-legacy',()=>old.writtenAt);
  const writer=(await store.acquireWriter('fixture'))!;await store.save(b.snapshot(),old.paused,0,{writer,offline:old.offline});
