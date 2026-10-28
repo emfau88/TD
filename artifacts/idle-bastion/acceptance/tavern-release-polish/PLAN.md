@@ -33,7 +33,7 @@ Statuswerte: OFFEN / IN ARBEIT / ERLEDIGT / BLOCKIERT. ERLEDIGT setzt erfolgreic
 |---|---|---|---|
 | 1 Sichere automatische Tavernenpause | ERLEDIGT | `7cd014a`; 49/49 Tests, 14 DOM-Ausgangsfälle, Build/Browser; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40691206208) | Smartphone-System-Suspend nicht auf physischem Gerät geprüft |
 | 2 Berührungen ab Herz 1/2/3 | ERLEDIGT | `d361e4d`; 20/20 Tests, DOM-/Browsermatrix, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40692403336) | Geplante weitere UX-Pakete |
-| 3 Reaktionsladezeiten | IN ARBEIT | Implementiert; Cache-, Player-, DOM- und Browserprüfung, Build bestanden | Commit / Deployment |
+| 3 Reaktionsladezeiten | ERLEDIGT | `ae8cf38`; Cache/Player/DOM/Browser und Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40694402033) | Langsame Netze können weiter warten müssen |
 | 4 Gespräche und Geschenke | OFFEN | — | Vollständig |
 | 5 Herzfeedback und Tavernenoptik | OFFEN | — | Vollständig |
 | 6 Tutorial und Release-Regression | OFFEN | — | Vollständig |
@@ -96,7 +96,7 @@ Prüfung: 5/5 vorhandene Cachetests. Deterministischer Player-Test mit zurückge
 
 Browser: sechs schnelle tatsächliche Aktionen mit korrekten Clips Kopf/Kopf/Kichern/Kichern/Hüfte/Schulter; in allen Messpunkten sichtbare Figur, keine Fehlermeldung und kein Ladehinweis, stabile getrennte 44-px-Ziele, Cache 14. `p3-browser-reactions.json`, `after/p3-reactions-390.jpg`. Kontrollierte Verzögerung/Fehler im deterministischen DOM-/Player-Test, kein behaupteter Browser-Netzwerk-Drosseltest oder physischer RAM-Messwert.
 
-Verbleibend: echte langsame Netze können weiterhin einen sichtbaren Moment benötigen; Fehler werden nicht versteckt und dieselbe Aktion kann erneut ausgelöst werden. SHA / Deployment: ausstehend.
+Verbleibend: echte langsame Netze können weiterhin einen sichtbaren Moment benötigen; Fehler werden nicht versteckt und dieselbe Aktion kann erneut ausgelöst werden. SHA: `ae8cf38326be339f7a5b439400112c30f60558c1`. [Pages-Lauf 40694402033](https://github.com/emfau88/TD/actions/runs/40694402033): erfolgreich für diesen Code-SHA.
 
 ## Paket 4 – Gespräche und Geschenke
 
