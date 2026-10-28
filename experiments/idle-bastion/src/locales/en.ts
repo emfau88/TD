@@ -2,6 +2,7 @@
  * Keep placeholders and game values intact; never use these strings as simulation IDs. */
 import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
+  "· Neue Geschichte erleben": "· Experience a new story",
   "Herzen antippen: persönliche Momente erleben.": "Tap the hearts to share personal moments.",
   "Moment": "Story",
   "Welle {0} meistern für {1} · {2}/{0} geschafft": "Beat wave {0} for {1} · {2}/{0} cleared",

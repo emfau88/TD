@@ -1,0 +1,783 @@
+[
+  {
+    "label": "Mara H1 unread, 360 EN",
+    "character": "Mara",
+    "hearts": [
+      {
+        "animation": "tv-unseen-story",
+        "aria": "1 Heart: A Seat by the Fire · Experience a new story",
+        "disabled": false,
+        "duration": "2s",
+        "heart": "1",
+        "text": "",
+        "unseen": "true"
+      },
+      {
+        "animation": "none",
+        "aria": "2 Hearts: My Lucky Keepsake · From 35 affection",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "2",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "3 Hearts: What I Can't Fix · From 70 affection",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "3",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "4 Hearts: Stay a Little Longer · in a future update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "4",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "5 Hearts: Our Tomorrow · in a future update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "5",
+        "text": "",
+        "unseen": "false"
+      }
+    ],
+    "options": [
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "text": "Chat"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Share a laughFrom heart 2"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Give a complimentFrom heart 3"
+      }
+    ],
+    "subFont": "Arial, sans-serif"
+  },
+  {
+    "label": "Ilyra H1 unread, 360 EN",
+    "character": "Ilyra",
+    "hearts": [
+      {
+        "animation": "tv-unseen-story",
+        "aria": "1 Heart: The Watch Can Wait · Experience a new story",
+        "disabled": false,
+        "duration": "2s",
+        "heart": "1",
+        "text": "",
+        "unseen": "true"
+      },
+      {
+        "animation": "none",
+        "aria": "2 Hearts: A Star Without a Name · From 35 affection",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "2",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "3 Hearts: Beneath the Calm · From 70 affection",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "3",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "4 Hearts: A Step Toward You · in a future update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "4",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "5 Hearts: Where I Want to Stay · in a future update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "5",
+        "text": "",
+        "unseen": "false"
+      }
+    ],
+    "options": [
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "text": "Chat"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Share a laughFrom heart 2"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Give a complimentFrom heart 3"
+      }
+    ],
+    "subFont": "Arial, sans-serif"
+  },
+  {
+    "label": "Mara H2 seen EN 360",
+    "character": "Mara",
+    "hearts": [
+      {
+        "animation": "none",
+        "aria": "1 Heart: A Seat by the Fire · Experience moment",
+        "disabled": false,
+        "duration": "0s",
+        "heart": "1",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "2 Hearts: My Lucky Keepsake · Experience moment",
+        "disabled": false,
+        "duration": "0s",
+        "heart": "2",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "3 Hearts: What I Can't Fix · From 70 affection",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "3",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "4 Hearts: Stay a Little Longer · in a future update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "4",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "5 Hearts: Our Tomorrow · in a future update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "5",
+        "text": "",
+        "unseen": "false"
+      }
+    ],
+    "options": [
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "text": "Chat"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "false",
+        "text": "Share a laugh"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Give a complimentFrom heart 3"
+      }
+    ],
+    "subFont": "Arial, sans-serif"
+  },
+  {
+    "label": "Ilyra H2 seen EN 360",
+    "character": "Ilyra",
+    "hearts": [
+      {
+        "animation": "none",
+        "aria": "1 Heart: The Watch Can Wait · Experience moment",
+        "disabled": false,
+        "duration": "0s",
+        "heart": "1",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "2 Hearts: A Star Without a Name · Experience moment",
+        "disabled": false,
+        "duration": "0s",
+        "heart": "2",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "3 Hearts: Beneath the Calm · From 70 affection",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "3",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "4 Hearts: A Step Toward You · in a future update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "4",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "5 Hearts: Where I Want to Stay · in a future update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "5",
+        "text": "",
+        "unseen": "false"
+      }
+    ],
+    "options": [
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "text": "Chat"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "false",
+        "text": "Share a laugh"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Give a complimentFrom heart 3"
+      }
+    ],
+    "subFont": "Arial, sans-serif"
+  },
+  {
+    "label": "Mara H0 DE 360",
+    "character": "Mara",
+    "hearts": [
+      {
+        "animation": "none",
+        "aria": "1 Herz: Ein Platz am Feuer · ab 10 Zuneigung",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "1",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "2 Herzen: Mein Glücksstück · ab 35 Zuneigung",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "2",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "3 Herzen: Was ich nicht reparieren kann · ab 70 Zuneigung",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "3",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "4 Herzen: Bleib noch ein bisschen · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "4",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "5 Herzen: Unser Morgen · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "5",
+        "text": "",
+        "unseen": "false"
+      }
+    ],
+    "options": [
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "text": "Plaudern"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Zusammen lachenAb Herz 2"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Kompliment machenAb Herz 3"
+      }
+    ],
+    "subFont": "Arial, sans-serif"
+  },
+  {
+    "label": "Ilyra H0 DE 360",
+    "character": "Ilyra",
+    "hearts": [
+      {
+        "animation": "none",
+        "aria": "1 Herz: Die Wache darf warten · ab 10 Zuneigung",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "1",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "2 Herzen: Ein Stern ohne Namen · ab 35 Zuneigung",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "2",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "3 Herzen: Was hinter der Ruhe liegt · ab 70 Zuneigung",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "3",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "4 Herzen: Ein Schritt auf dich zu · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "4",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "5 Herzen: Hier möchte ich bleiben · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "5",
+        "text": "",
+        "unseen": "false"
+      }
+    ],
+    "options": [
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "text": "Plaudern"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Zusammen lachenAb Herz 2"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Kompliment machenAb Herz 3"
+      }
+    ],
+    "subFont": "Arial, sans-serif"
+  },
+  {
+    "label": "Ilyra actual H0 to H1 unlock",
+    "character": "Ilyra",
+    "hearts": [
+      {
+        "animation": "tv-unseen-story",
+        "aria": "1 Herz: Die Wache darf warten · Neue Geschichte erleben",
+        "disabled": false,
+        "duration": "2s",
+        "heart": "1",
+        "text": "",
+        "unseen": "true"
+      },
+      {
+        "animation": "none",
+        "aria": "2 Herzen: Ein Stern ohne Namen · ab 35 Zuneigung",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "2",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "3 Herzen: Was hinter der Ruhe liegt · ab 70 Zuneigung",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "3",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "4 Herzen: Ein Schritt auf dich zu · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "4",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "5 Herzen: Hier möchte ich bleiben · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "5",
+        "text": "",
+        "unseen": "false"
+      }
+    ],
+    "options": [
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "text": "Plaudern"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Zusammen lachenAb Herz 2"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Kompliment machenAb Herz 3"
+      }
+    ],
+    "subFont": "Arial, sans-serif"
+  },
+  {
+    "label": "Ilyra new H1 story completed",
+    "character": "Ilyra",
+    "hearts": [
+      {
+        "animation": "none",
+        "aria": "1 Herz: Die Wache darf warten · Moment erleben",
+        "disabled": false,
+        "duration": "0s",
+        "heart": "1",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "2 Herzen: Ein Stern ohne Namen · ab 35 Zuneigung",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "2",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "3 Herzen: Was hinter der Ruhe liegt · ab 70 Zuneigung",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "3",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "4 Herzen: Ein Schritt auf dich zu · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "4",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "5 Herzen: Hier möchte ich bleiben · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "5",
+        "text": "",
+        "unseen": "false"
+      }
+    ],
+    "options": [
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "text": "Plaudern"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Zusammen lachenAb Herz 2"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Kompliment machenAb Herz 3"
+      }
+    ],
+    "subFont": "Arial, sans-serif"
+  },
+  {
+    "label": "Production legacy Ilyra H2 DE 390",
+    "character": "Ilyra",
+    "hearts": [
+      {
+        "animation": "none",
+        "aria": "1 Herz: Die Wache darf warten · Moment erleben",
+        "disabled": false,
+        "duration": "0s",
+        "heart": "1",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "2 Herzen: Ein Stern ohne Namen · Moment erleben",
+        "disabled": false,
+        "duration": "0s",
+        "heart": "2",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "3 Herzen: Was hinter der Ruhe liegt · ab 70 Zuneigung",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "3",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "4 Herzen: Ein Schritt auf dich zu · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "4",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "5 Herzen: Hier möchte ich bleiben · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "5",
+        "text": "",
+        "unseen": "false"
+      }
+    ],
+    "options": [
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "text": "Plaudern"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "false",
+        "text": "Zusammen lachen"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "true",
+        "text": "Kompliment machenAb Herz 3"
+      }
+    ],
+    "subFont": "Arial, sans-serif"
+  },
+  {
+    "label": "Production reload Mara H3: 1 seen, 2+3 unseen",
+    "character": "Mara",
+    "hearts": [
+      {
+        "animation": "none",
+        "aria": "1 Herz: Ein Platz am Feuer · Moment erleben",
+        "disabled": false,
+        "duration": "0s",
+        "heart": "1",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "tv-unseen-story",
+        "aria": "2 Herzen: Mein Glücksstück · Neue Geschichte erleben",
+        "disabled": false,
+        "duration": "2s",
+        "heart": "2",
+        "text": "",
+        "unseen": "true"
+      },
+      {
+        "animation": "tv-unseen-story",
+        "aria": "3 Herzen: Was ich nicht reparieren kann · Neue Geschichte erleben",
+        "disabled": false,
+        "duration": "2s",
+        "heart": "3",
+        "text": "",
+        "unseen": "true"
+      },
+      {
+        "animation": "none",
+        "aria": "4 Herzen: Bleib noch ein bisschen · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "4",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "5 Herzen: Unser Morgen · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "5",
+        "text": "",
+        "unseen": "false"
+      }
+    ],
+    "options": [
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "text": "Plaudern"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "false",
+        "text": "Zusammen lachen"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "false",
+        "text": "Kompliment machen"
+      }
+    ],
+    "subFont": "Arial, sans-serif"
+  },
+  {
+    "label": "Production reload Ilyra H3: 2 seen, 1+3 unseen",
+    "character": "Ilyra",
+    "hearts": [
+      {
+        "animation": "tv-unseen-story",
+        "aria": "1 Herz: Die Wache darf warten · Neue Geschichte erleben",
+        "disabled": false,
+        "duration": "2s",
+        "heart": "1",
+        "text": "",
+        "unseen": "true"
+      },
+      {
+        "animation": "none",
+        "aria": "2 Herzen: Ein Stern ohne Namen · Moment erleben",
+        "disabled": false,
+        "duration": "0s",
+        "heart": "2",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "tv-unseen-story",
+        "aria": "3 Herzen: Was hinter der Ruhe liegt · Neue Geschichte erleben",
+        "disabled": false,
+        "duration": "2s",
+        "heart": "3",
+        "text": "",
+        "unseen": "true"
+      },
+      {
+        "animation": "none",
+        "aria": "4 Herzen: Ein Schritt auf dich zu · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "4",
+        "text": "",
+        "unseen": "false"
+      },
+      {
+        "animation": "none",
+        "aria": "5 Herzen: Hier möchte ich bleiben · in einem kommenden Update",
+        "disabled": true,
+        "duration": "0s",
+        "heart": "5",
+        "text": "",
+        "unseen": "false"
+      }
+    ],
+    "options": [
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "text": "Plaudern"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "false",
+        "text": "Zusammen lachen"
+      },
+      {
+        "border": "solid",
+        "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+        "locked": "false",
+        "text": "Kompliment machen"
+      }
+    ],
+    "subFont": "Arial, sans-serif"
+  }
+]

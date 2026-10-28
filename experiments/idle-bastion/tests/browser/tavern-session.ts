@@ -1,3 +1,4 @@
+import { TavernStoryHistory } from '../../src/tavern-story-history';
 import { IdleBattle } from '../../src/battle';
 import { setLanguage } from '../../src/i18n';
 import { openBattleStore } from '../../src/save-store';
@@ -18,6 +19,11 @@ for (const who of ['mara', 'ilyra'] as const) document.getElementById(who)!.addE
   }
   setLanguage((document.getElementById('language') as HTMLSelectElement).value as 'de' | 'en');
   if (!IdleBattle.restore(b.snapshot())) throw new Error('Fixture lässt sich nicht laden');
+  const stories = (document.getElementById('stories') as HTMLSelectElement).value;
+  if (stories !== 'legacy') {
+    const history = new TavernStoryHistory(`spire-idle-bastion-probe-${slot}`, 'new', b.social.points, localStorage);
+    if (stories === 'seen') for (const companion of ['mara', 'ilyra'] as const) for (let heart = 1; heart <= 5; heart++) history.markOpened(companion, heart);
+  }
   const store = await openBattleStore(undefined, `spire-idle-bastion-probe-${slot}`);
   try { await store.save(b.snapshot(), false, 0); } finally { store.close(); }
   const result = document.getElementById('result')!; result.replaceChildren();

@@ -1,3 +1,4 @@
+import { TavernStoryHistory } from './tavern-story-history';
 import { t, onLanguageChange } from './i18n';
 import { bindStaticTranslations } from './i18n-dom';
 import { COMPANIONS } from './tavern-companions';
@@ -10,7 +11,7 @@ import './tavern-ui.css';
 import type { TavernPlayer, TavernPresentation } from './tavern-presentation';
 
 type Destination = 'tavern' | 'mara' | 'wisp' | 'ilyra';
-interface Ports { presentation?: TavernPresentation; session: () => BattleSession | undefined; navigate: (where: Destination) => void; onOpenChange?: (open:boolean) => void; onGift?: () => void; onHeart?: () => void; onCompanion?: (who:Companion|null) => void; onTouch?: (who:Companion) => void }
+interface Ports { storyHistory?: () => TavernStoryHistory | undefined; presentation?: TavernPresentation; session: () => BattleSession | undefined; navigate: (where: Destination) => void; onOpenChange?: (open:boolean) => void; onGift?: () => void; onHeart?: () => void; onCompanion?: (who:Companion|null) => void; onTouch?: (who:Companion) => void }
 export class TavernUI {
   readonly dialog: HTMLDialogElement;
   private lineSource = '';
@@ -26,7 +27,8 @@ export class TavernUI {
   private speaking = false;
   private pending = false;
   private pendingSocial?: SocialState;
-  private heartPulseTimer?: ReturnType<typeof setTimeout>;
+  private readonly previewStories = new TavernStoryHistory('preview', 'new', { mara: 0, ilyra: 0 });
+  private get storyHistory(): TavernStoryHistory { return this.ports.storyHistory?.() ?? this.previewStories; }
   private generation = 0;
   private lastLives = 20;
   private lastPhase = '';
@@ -66,7 +68,7 @@ export class TavernUI {
         <footer class="tv-overview-footer"><button type="button" data-do="wisp">Wisp · Gefährtenverwaltung</button><button type="button" data-do="building">Gebäude & Ausbau</button></footer>
       </section>
       <section class="tv-character" hidden>
-        <div class="tv-bond"><div class="tv-bond-visual"><div class="tv-heart-buttons" role="group" aria-label="Maras persönliche Momente">${this.content.moments.map(moment => `<button type="button" data-moment="${moment.heart}"><svg viewBox="0 0 40 38" aria-hidden="true"><path class="tv-heart-shape" d="M20 34C16 30 3 22 3 12C3 2 15 0 20 9C25 0 37 2 37 12C37 22 24 30 20 34Z"/><path class="tv-heart-shine" d="M8 13C7 8 12 5 16 10"/></svg><small></small></button>`).join('')}</div><div class="tv-bond-track" title="Ein Abschnitt pro Herz"><progress max="160" value="0" aria-label="Maras Zuneigung"></progress><span class="tv-bond-fill" aria-hidden="true"></span><span class="tv-bond-marks" aria-hidden="true"></span></div></div><div class="tv-bond-copy"><span class="tv-heart-help">Herzen antippen: persönliche Momente erleben.</span></div></div>
+        <div class="tv-bond"><div class="tv-bond-visual"><div class="tv-heart-buttons" role="group" aria-label="Maras persönliche Momente">${this.content.moments.map(moment => `<button type="button" data-moment="${moment.heart}"><svg viewBox="0 0 40 38" aria-hidden="true"><path class="tv-heart-shape" d="M20 34C16 30 3 22 3 12C3 2 15 0 20 9C25 0 37 2 37 12C37 22 24 30 20 34Z"/><path class="tv-heart-shine" d="M8 13C7 8 12 5 16 10"/></svg></button>`).join('')}</div><div class="tv-bond-track" title="Ein Abschnitt pro Herz"><progress max="160" value="0" aria-label="Maras Zuneigung"></progress><span class="tv-bond-fill" aria-hidden="true"></span><span class="tv-bond-marks" aria-hidden="true"></span></div></div><div class="tv-bond-copy"><span class="tv-heart-help">Herzen antippen: persönliche Momente erleben.</span></div></div>
         <div class="tv-character-body">
           <div class="tv-stage"><div class="tv-figure"><img class="tv-loading-portrait" alt="" aria-hidden="true" hidden><canvas width="384" height="512" aria-label="Mara, animierte Charakteransicht"></canvas>${Object.entries(this.content.reactions).map(([key, value]) => `<button type="button" class="tv-hotspot" data-region="${key}" aria-label="${value.label} berühren"><span aria-hidden="true"></span><em>${value.label}</em></button>`).join('')}</div><span class="tv-load-status" role="status" hidden></span><span class="tv-stage-caption">Mara · Tüftlerin des Hains</span></div>
           <div class="tv-conversation"><div class="tv-story-heading" hidden><small data-text="story-step"></small><h3 data-text="story-title"></h3></div><div class="tv-dialogue"><small>MARA</small><p data-text="line">Da bist du ja. Setz dich einen Moment zu mir.</p></div><p class="tv-result" data-text="result" role="status"></p><button type="button" data-do="new-moment" class="tv-unlock" hidden><strong data-text="unlock-title"></strong><span data-text="unlock-story"></span></button><div class="tv-story-controls" hidden><button type="button" data-do="story-next">Weiter</button><button type="button" data-do="story-exit">Zurück zu Mara</button></div><p class="tv-touch-help" hidden></p><div class="tv-actions"><button type="button" data-do="speak" aria-controls="tv-talk-options" aria-expanded="false"><span>Sprechen</span><small data-text="talk"></small></button><button type="button" data-do="touch"><span>Berühren</span><small data-text="touch"></small></button><button type="button" data-action="gift"><span>Schenken</span><small data-text="gift"></small></button></div><div class="tv-gifts"><p data-text="stock"></p><p data-text="gift-hint"></p><details><summary>Geschenke & Fortschritt</summary><p data-text="points"></p><p class="tv-chapter" data-text="chapter"></p><p class="tv-moment-hint" data-text="moment-hint"></p><p class="tv-personal" data-text="personal"></p><p data-text="reserves"></p><p>Normale Geschenke helfen bis 58 Zuneigung.</p><p>Alle 10 gewonnenen normalen Wellen gibt es ein Geschenk. Ab Herz 2 zählen 30 weitere Siege für ein persönliches Geschenk. Gespräche und freigeschaltete Berührungen bleiben immer möglich.</p><p data-text="renewal"></p><button type="button" class="tv-combat-link" data-do="mara-combat">Mara im Kampf verwalten</button></details></div></div>
@@ -181,7 +183,6 @@ export class TavernUI {
   private select(who: Companion): void {
     if (this.pending || (who === 'ilyra' && !this.ports.session()?.battle.ilyra)) return;
     this.resetReactionHint(); this.generation++; this.animation.stop(); this.selected = who; this.newMoment = undefined;
-    clearTimeout(this.heartPulseTimer); for (const button of this.dialog.querySelectorAll<HTMLElement>('[data-new-heart]')) delete button.dataset.newHeart;
     clearTimeout(this.replyTimer); delete this.get('.tv-dialogue').dataset.reply;
     this.get('.tv-conversation').scrollTop = 0; this.get('.tv-character-body').scrollTop = 0;
     this.screen = 'overview'; this.show('character');
@@ -306,10 +307,10 @@ export class TavernUI {
       const available = !!this.content.moment(points, moment.heart);
       button.disabled = blocked || !available;
       button.classList.toggle('unlocked', available);
-      button.querySelector('small')!.textContent = available ? t('Moment') : moment.heart > 3 ? t('Später') : String(moment.heart);
-      button.dataset.newMoment = String(this.newMoment === moment.heart);
+      const unseen = available && !this.storyHistory.isOpened(this.selected, moment.heart);
+      button.dataset.unseen = String(unseen);
       button.classList.toggle('future', moment.heart > 3 && !available);
-      button.setAttribute('aria-label', t("{0} {1}: {2}{3}", moment.heart, moment.heart === 1 ? t('Herz') : t('Herzen'), moment.title, available ? t(' · Moment erleben') : moment.heart > 3 ? t(' · in einem kommenden Update') : t(" · ab {0} Zuneigung", SOCIAL.heartThresholds[moment.heart - 1])));
+      button.setAttribute('aria-label', t("{0} {1}: {2}{3}", moment.heart, moment.heart === 1 ? t('Herz') : t('Herzen'), moment.title, available ? unseen ? t(' · Neue Geschichte erleben') : t(' · Moment erleben') : moment.heart > 3 ? t(' · in einem kommenden Update') : t(" · ab {0} Zuneigung", SOCIAL.heartThresholds[moment.heart - 1])));
       button.title = t(button.getAttribute('aria-label')!);
     }
     this.text('talk', t('Gespräch wählen'));
@@ -354,6 +355,7 @@ export class TavernUI {
     if (generation !== this.generation || !this.isOpen) return;
     this.pending = false;
     if (!ready) { this.update(); return; }
+    this.storyHistory.markOpened(this.selected, heart);
     this.show('character'); this.moment = { heart, beat: 0 };
     if (this.newMoment === heart) this.newMoment = undefined;
     this.renderBeat();
@@ -424,14 +426,10 @@ export class TavernUI {
   }
   private celebrateHeart(heart: number): void {
     this.newMoment = heart;
-    clearTimeout(this.heartPulseTimer);
-    for (const button of this.dialog.querySelectorAll<HTMLElement>('[data-new-heart]')) delete button.dataset.newHeart;
-    const button = this.get(`[data-moment="${heart}"]`); button.dataset.newHeart = 'true';
-    this.heartPulseTimer = setTimeout(() => { delete button.dataset.newHeart; }, 1400);
     this.ports.onHeart?.();
   }
   destroy(): void {
-    this.resetReactionHint(); clearTimeout(this.heartPulseTimer);
+    this.resetReactionHint();
     this.ports.session()?.setTavernOpen(false);
     if (this.isOpen) this.ports.onOpenChange?.(false); clearTimeout(this.replyTimer); this.unbindLanguage(); this.unbindStatic(); this.animation.stop(); this.observer.disconnect(); this.lifetime.abort(); this.dialog.remove(); }
 }

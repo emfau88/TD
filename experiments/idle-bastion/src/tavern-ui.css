@@ -188,7 +188,7 @@
 #tavern-dialog .gift-ready .tv-gift-badge { color:#ffe3a4; }
 #tavern-dialog .tv-personal,#tavern-dialog .tv-chapter { margin:4px 0 0; font-size:12px; line-height:1.35; color:#e7d7ac; }
 #tavern-dialog .tv-heart-buttons .future { opacity:.35; }
-#tavern-dialog .tv-heart-buttons .future .tv-heart-shape { stroke-dasharray:3 3; }
+#tavern-dialog .tv-heart-buttons .future .tv-heart-shape { stroke-dasharray:none; }
 #tavern-dialog .tv-gifts > p { margin:4px 0; }
 #tavern-dialog .tv-unlock { white-space:normal; }
 @media(max-width:700px) {

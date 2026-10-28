@@ -1,3 +1,4 @@
+import { TavernStoryHistory } from './tavern-story-history';
 import { mountCredits } from './credits-ui';
 import { offlineGoldDisplay } from './reward-display';
 import { loadingScreen } from './loading-screen';
@@ -128,7 +129,8 @@ let padListKey = '';
 let mobileHintOpen = false;
 let mobileHintStep = -1;
 let ready = false;
-const tavernUI = new TavernUI({ session: () => session, presentation: rigPreviewPresentation, navigate: kind => openContext(kind, true), onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift'), onHeart: () => audio.play('gift'), onCompanion: who => audio.setCompanion(who), onTouch: who => audio.touchCompanion(who) });
+let tavernStories: TavernStoryHistory | undefined;
+const tavernUI = new TavernUI({ storyHistory: () => tavernStories, session: () => session, presentation: rigPreviewPresentation, navigate: kind => openContext(kind, true), onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift'), onHeart: () => audio.play('gift'), onCompanion: who => audio.setCompanion(who), onTouch: who => audio.touchCompanion(who) });
 const quickWins = new QuickWinGuidance(databaseName, { action: openQuickWin, dismissed: acknowledgeQuickWin }, lifetime.signal);
 const tutorialGuide = new TutorialGuide();
 let booting = false;
@@ -888,6 +890,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     let preferences: Storage | undefined;
     try { if (!live.temporary) preferences = localStorage; } catch { /* Optional UI preferences. */ }
     intro = new MaraIntro(databaseName, live.origin, live.battle.introduction.stage, preferences);
+    tavernStories = new TavernStoryHistory(databaseName, live.origin, live.battle.social.points, preferences);
     finishingIntro = false;
     const portraitsReady = intro.active ? prepareIntroPortraits() : Promise.resolve([]);
     updateOnboarding(live, { placing: false, contextOpen: false, catalogPanel, revealing: false, intro });

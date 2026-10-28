@@ -18,6 +18,7 @@ let session, ui;
 try {
   const { BattleSession } = await server.ssrLoadModule('/src/battle-session.ts');
   const { TavernUI } = await server.ssrLoadModule('/src/tavern-ui.ts');
+  const { TavernStoryHistory } = await server.ssrLoadModule('/src/tavern-story-history.ts');
   session = await BattleSession.open(undefined, { guidedStart: false });
   const b = session.battle; b.update(4); b.highestCleared = 25; b.gold = 12000; b.bossVictories = b.secondBossVictories = 1;
   b.buildWorkshop(); b.researchFrost(); b.update(.025); b.wispArrival.met = true; b.discovery = 'off';
@@ -27,7 +28,8 @@ try {
     start:async()=>{},stop(){},setHearts(){},prepareReactions:async()=>true,play(){},act(){},scene(){},gesture(){} };
   const presentation = {kind:'rig',create:()=>player,drawPortrait:async()=>{},portrait:()=>'',gestures:[{key:'giggle',label:'Zusammen lachen',minHearts:2,line:{mara:'Mara lacht.',ilyra:'Ilyra lacht.'}},{key:'hip',label:'Kompliment machen',minHearts:3,line:{mara:'Mara lächelt.',ilyra:'Ilyra lächelt.'}},{key:'tease',label:'Ein wenig necken',minHearts:4,companion:'mara',line:{mara:'Mara neckt.',ilyra:''}}],anchors:()=>({shoulder:{x:100,y:100},hair:{x:100,y:100},hand:{x:100,y:100}})};
   const destinations=[];
-  ui = new TavernUI({session:()=>session,presentation,navigate:where=>destinations.push(where)});
+  let history=new TavernStoryHistory('dom','new',{mara:0,ilyra:0},dom.window.localStorage);
+  ui = new TavernUI({storyHistory:()=>history,session:()=>session,presentation,navigate:where=>destinations.push(where)});
   const click = selector => document.querySelector(selector).click();
   for (const manual of [false,true]) {
     await session.setPaused(manual);
@@ -62,6 +64,27 @@ try {
     ui.close();
   }
   console.log('PASS: both companions at hearts 0–3, permanent markers, locked explanations, reactions, stories and one character view.');
+  for(const who of ['mara','ilyra']) {
+    history=new TavernStoryHistory('dom','new',{mara:0,ilyra:0},dom.window.localStorage);
+    b.social.points[who]=35;ui.open();click(`[data-do=${who}]`);await settle();
+    const first=document.querySelector('[data-moment="1"]'), second=document.querySelector('[data-moment="2"]');
+    assert.equal(document.querySelectorAll('.tv-heart-buttons small').length,0,'no visible per-heart captions');
+    assert.equal(first.dataset.unseen,'true');assert.equal(second.dataset.unseen,'true');
+    assert.equal(document.querySelector('[data-moment="3"]').dataset.unseen,'false','locked hearts never pulse');
+    const saved=structuredClone(b.snapshot());
+    player.prepareReactions=async()=>false;click('[data-moment="1"]');await settle();
+    assert.equal(history.isOpened(who,1),false,'failed load must not consume a story cue');
+    player.prepareReactions=async()=>true;click('[data-moment="1"]');await settle();
+    assert.equal(first.dataset.unseen,'false');assert.equal(second.dataset.unseen,'true');
+    assert.ok(first.getAttribute('aria-label'));assert.equal(first.disabled,false);
+    click('[data-do=story-exit]');
+    history=new TavernStoryHistory('dom','loaded',b.social.points,dom.window.localStorage);ui.update();
+    assert.equal(first.dataset.unseen,'false');assert.equal(second.dataset.unseen,'true');
+    assert.deepEqual(b.snapshot(),saved,'story history has no battle/social/offline effect');
+    ui.close();
+  }
+  console.log('PASS: story first-open persistence, no per-heart captions, locked quiet, failed-load retry and unchanged battle for both companions.');
+
   for (const who of ['mara','ilyra']) for (const [count,points] of [[0,0],[1,10],[2,35],[3,70]]) {
     b.social.points[who]=points;b.social.reserves[who]={talk:0,touch:count>=2?1:0,clears:0};b.social.personal[who]={clears:0,claimed:count>=3};
     ui.open();click(`[data-do=${who}]`);await settle();click('[data-do=speak]');await settle();
@@ -132,13 +155,13 @@ try {
     if(action==='talk')click('[data-do=speak]');click(`[data-action=${action}]`);await settle();
     assert.ok(finish,'write is waiting for durable confirmation');assert.ok(session.battle.social.points.mara>before,'working state already advanced');
     ui.update();assert.equal(document.querySelector('progress').value,before,'animation redraw cannot expose an uncommitted heart');
-    assert.equal(sounds,0);assert.equal(document.querySelector('[data-do=new-moment]').hidden,true);assert.equal(document.querySelector('[data-new-heart]'),null);
+    assert.equal(sounds,0);assert.equal(document.querySelector('[data-do=new-moment]').hidden,true);assert.equal(document.querySelector(`[data-moment="${heart}"]`).dataset.unseen,'false');
     gate=false;finish();for(let i=0;i<30;i++)await settle();ui.update();
     if(fail) {
-      assert.equal(sounds,0);assert.equal(session.battle.social.points.mara,before);assert.equal(document.querySelector('[data-new-heart]'),null);
+      assert.equal(sounds,0);assert.equal(session.battle.social.points.mara,before);assert.equal(document.querySelector(`[data-moment="${heart}"]`).dataset.unseen,'false');
       assert.equal(document.querySelector('[data-do=new-moment]').hidden,true);assert.equal(document.querySelector('.tv-error').hidden,false);
     } else {
-      assert.equal(sounds,1);assert.equal(document.querySelector('[data-new-heart]').dataset.moment,String(heart));assert.deepEqual(clips,['head']);
+      assert.equal(sounds,1);assert.equal(document.querySelector(`[data-moment="${heart}"]`).dataset.unseen,'true');assert.deepEqual(clips,['head']);
       assert.equal(document.querySelector('[data-do=new-moment]').hidden,false);assert.match(document.querySelector('[data-text=unlock-title]').textContent,/Schulter|Haare|Hand|Shoulder|Hair/);
       assert.equal((await store.load()).save.battle.social.points.mara,session.battle.social.points.mara);
       for(let i=0;i<5;i++)ui.update();assert.equal(sounds,1,'redraw never repeats the cue');
