@@ -32,7 +32,7 @@ Statuswerte: OFFEN / IN ARBEIT / ERLEDIGT / BLOCKIERT. ERLEDIGT setzt erfolgreic
 | Paket | Status | Ergebnis / Commit / Deployment | Verbleibend |
 |---|---|---|---|
 | 1 Sichere automatische Tavernenpause | ERLEDIGT | `7cd014a`; 49/49 Tests, 14 DOM-Ausgangsfälle, Build/Browser; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40691206208) | Smartphone-System-Suspend nicht auf physischem Gerät geprüft |
-| 2 Berührungen ab Herz 1/2/3 | IN ARBEIT | Implementiert; 20/20 Tests, DOM-/Browsermatrix, Build bestanden | Commit / Deployment |
+| 2 Berührungen ab Herz 1/2/3 | ERLEDIGT | `d361e4d`; 20/20 Tests, DOM-/Browsermatrix, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40692403336) | Geplante weitere UX-Pakete |
 | 3 Reaktionsladezeiten | OFFEN | — | Vollständig |
 | 4 Gespräche und Geschenke | OFFEN | — | Vollständig |
 | 5 Herzfeedback und Tavernenoptik | OFFEN | — | Vollständig |
@@ -74,7 +74,7 @@ Ergebnis: direkte Schulter-/Haar-/Handmarker bei Herz 1/2/3, sichtbar gesperrt a
 
 Prüfung: 20/20 Social-/Content-/Interaction-/Gift-Tests, erweiterte DOM-Matrix für beide Figuren 0–3 plus sämtliche 14 Ausgangs-/Pausenfälle, Produktionsbuild bestanden. Testplayer liefert jetzt das korrekte erfolgreiche Promise-Ergebnis; dadurch werden persönliche Storysequenzen in der DOM-Prüfung tatsächlich durchlaufen. Browsermatrix `p2-browser-matrix.json`: 0 erklärt die Sperre, 1 bleibt bei 10 Punkten, 2 erhält bestehende +4 auf 39, 3 bleibt bei 70. Haarreaktion bei Herz 2, Handreaktion bei Herz 3 sowie Storyausblendung geprüft. Bei 320 × 568 und 390 × 844 alle Ziele 44 px, sichtbare Herzen 24 px; keine Browserfehler. Screenshots `after/p2-mara-320-heart2.jpg`, `after/p2-ilyra-390-heart3.jpg`.
 
-Verbleibend: Ladehinweis folgt in Paket 3, technische Texte/Gesprächsanordnung in Paket 4 und kleine 320-px-Figurenhöhe in Paket 5. SHA / Deployment: ausstehend.
+Verbleibend: Ladehinweis folgt in Paket 3, technische Texte/Gesprächsanordnung in Paket 4 und kleine 320-px-Figurenhöhe in Paket 5. SHA: `d361e4d782546c1851ca65bea3c6e0f84e6980a3`. [Pages-Lauf 40692403336](https://github.com/emfau88/TD/actions/runs/40692403336): erfolgreich für diesen Code-SHA.
 
 ## Paket 3 – Reaktionsladezeiten
 
