@@ -20,6 +20,6 @@ Nachweise: [Browser](browser-results.json), [ZIP-Kontrolle](package-check.json),
 ## Lieferung
 
 Ziel: C:/Users/madde/Documents/Towers-and-Tantrums-Kongregate-2026-10-28.
-Finale Ablage wird nach Versionssicherung bestätigt. Enthalten sind beide Uploadvarianten, Icon, vier Screenshots, englische Beschreibung, DE/EN-Steuerung, Formularhinweise mit AI-Offenlegung und freiwilliger 13+-Empfehlung sowie Prüfsummen.
+Finale Ablage bestätigt; [Lieferprüfung](delivery-check.json). Codebasis `953af81`; SHA-256 des endgültigen ZIP stimmt exakt mit der getesteten Fassung überein. Enthalten sind beide Uploadvarianten, Icon, vier Screenshots, englische Beschreibung, DE/EN-Steuerung, Formularhinweise mit AI-Offenlegung und freiwilliger 13+-Empfehlung sowie Prüfsummen.
 
 Kein Upload und keine Einreichung bei Kongregate. Die lokale iframe-Prüfung ist keine Zulassung und keine Prüfung auf einem physischen Handy; die tatsächliche Kongregate-Preview bleibt vor Submit for Review zu kontrollieren. Quellen-/Lizenzherkunft wurde aus den vorhandenen Nachweisen übernommen; kein erneuter Bytevergleich mit allen Anbieterarchiven behauptet.

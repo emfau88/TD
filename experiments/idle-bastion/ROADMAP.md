@@ -6,7 +6,7 @@
 - [x] Eigenen schlanken HTML5-Export mit relativen Pfaden erstellen; Prüfseiten, Galerien und Produktionsquellen ausschließen.
 - [x] Icon, vier echte aktuelle Screenshots, englische Beschreibung sowie DE/EN-Steuerung, AI-Hinweis und freiwillige Altersempfehlung 13+ lokal ablegen.
 - [x] Entpacktes ZIP im iframe bei 1000/390 px mit EN/DE geprüft: Musikstart, Bau/Upgrade, Pause, Reload, Credits und beide Tavernenfiguren bestanden; keine Seitenfehler oder externen Anfragen. ZIP-Varianten identisch geprüft, 359 Dateien, 77,7 MB. [Prüfbericht](../../artifacts/idle-bastion/acceptance/kongregate-2026-10-28/REPORT.md).
-- [ ] Endgültigen lokalen Lieferordner samt Prüfsummen ablegen; keine automatische Einreichung.
+- [x] Finaler Lieferordner `Dokumente/Towers-and-Tantrums-Kongregate-2026-10-28` abgelegt, vollständiges ZIP bytegleich zur geprüften Fassung bestätigt. Codebasis `953af81`; Icon, vier Screenshots, DE/EN-Texte und Prüfsummen enthalten. Noch nicht bei Kongregate hochgeladen oder eingereicht.
 
 **Kompakte gemeinsame Tutorialführung und Pauseknopf · 28.10.2026:**
 
