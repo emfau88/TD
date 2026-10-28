@@ -31,7 +31,7 @@ Statuswerte: OFFEN / IN ARBEIT / ERLEDIGT / BLOCKIERT. ERLEDIGT setzt erfolgreic
 
 | Paket | Status | Ergebnis / Commit / Deployment | Verbleibend |
 |---|---|---|---|
-| 1 Sichere automatische Tavernenpause | IN ARBEIT | Implementiert; 49/49 Tests, 14 DOM-Ausgangsfälle, Build und Browser bestanden | Commit / Deployment |
+| 1 Sichere automatische Tavernenpause | ERLEDIGT | `7cd014a`; 49/49 Tests, 14 DOM-Ausgangsfälle, Build/Browser; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40691206208) | Smartphone-System-Suspend nicht auf physischem Gerät geprüft |
 | 2 Berührungen ab Herz 1/2/3 | OFFEN | — | Vollständig |
 | 3 Reaktionsladezeiten | OFFEN | — | Vollständig |
 | 4 Gespräche und Geschenke | OFFEN | — | Vollständig |
@@ -56,7 +56,7 @@ Browser: reales Hauptspiel mit getrennten Probe-Saves. Welle 26 blieb bei 20/20 
 
 Grenze: Hintergrund/Resume ist auf Session-Ebene gezielt geprüft; ein echter vom Betriebssystem suspendierter Smartphone-Tab wurde nicht behauptet. Wie bisher kann ein harter Prozessabbruch nur die letzte bestätigte aktive Speichergrenze verwenden. Die folgenden UX-Pakete sind noch offen.
 
-SHA / Deployment: ausstehend.
+SHA: `7cd014aec0314e4c835cf3a09ec6858c08a59ee5`. [Pages-Lauf 40691206208](https://github.com/emfau88/TD/actions/runs/40691206208): Deploy-Job erfolgreich, 28.10.2026 12:51:40 UTC. Ergebnis anhand des exakten Code-SHA verifiziert.
 
 ## Paket 2 – Berührungen ab Herz 1/2/3
 
