@@ -415,7 +415,6 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 #discovery-card[data-strip="true"] .onboarding-actions { margin-top:3px; }
 #discovery-card[data-strip="true"] #discovery-later { position:absolute; right:6px; top:5px; min-width:28px; min-height:28px; padding:0; font-size:20px; border:0; }
 #discovery-card[data-strip="true"] .onboarding-actions:has(#discovery-next[hidden]) { margin:0; }
-.lesson-inline-target { padding-left:42px !important; }
 #lesson-pointer[data-mode="inline"] { width:20px; height:30px; transform:translate(-50%,-50%) rotate(-90deg); }
 #lesson-pointer[data-mode="map-below"] { transform:translate(-50%,0) rotate(180deg); }
 #lesson-pointer[data-mode="map-right"] { transform:translate(25%,-50%) rotate(90deg); }

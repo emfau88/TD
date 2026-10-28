@@ -1,0 +1,322 @@
+TAP version 13
+# Subtest: preparation persists without combat, production or repeated gifts
+ok 1 - preparation persists without combat, production or repeated gifts
+  ---
+  duration_ms: 88.0638
+  type: 'test'
+  ...
+# Subtest: all offered first placements clear wave one without manual support
+ok 2 - all offered first placements clear wave one without manual support
+  ---
+  duration_ms: 171.7931
+  type: 'test'
+  ...
+# Subtest: all starter locations survive the complete guided purchase sequence with real learning pauses
+not ok 3 - all starter locations survive the complete guided purchase sequence with real learning pauses
+  ---
+  duration_ms: 9.2749
+  type: 'test'
+  location: 'C:\\Users\\madde\\.codex\\worktrees\\english-default\\TowerDefense\\experiments\\idle-bastion\\tests\\onboarding.test.ts:34:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\.codex\worktrees\english-default\TowerDefense\experiments\idle-bastion\tests\onboarding.test.ts:51:11)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: pre-start state cannot smuggle money, combat, extra towers or unassigned active Mara
+ok 4 - pre-start state cannot smuggle money, combat, extra towers or unassigned active Mara
+  ---
+  duration_ms: 1.2859
+  type: 'test'
+  ...
+# Subtest: real v14 veteran and its historical offline basis survive the schema-only migration
+not ok 5 - real v14 veteran and its historical offline basis survive the schema-only migration
+  ---
+  duration_ms: 40.3255
+  type: 'test'
+  location: 'C:\\Users\\madde\\.codex\\worktrees\\english-default\\TowerDefense\\experiments\\idle-bastion\\tests\\onboarding.test.ts:78:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+        claimed: {
+          boss15: true,
+          boss25: true,
+    +     ilyraWelcome: false,
+          opening: false
+        },
+    +   clearProgress: 0,
+        gifts: 2,
+        lastClearAttempt: 0,
+    +   personal: {
+    +     ilyra: {
+    +       claimed: false,
+    +       clears: 0
+    +     },
+    +     mara: {
+    +       claimed: false,
+    +       clears: 0
+    +     }
+    +   },
+        points: {
+          ilyra: 0,
+          mara: 0
+        },
+    +   reserves: {
+    +     ilyra: null,
+    +     mara: null
+    -   window: {
+    -     clearProgress: 0,
+    -     earnedGifts: 0,
+    -     ticks: 0,
+    -     used: {
+    -       ilyra: {
+    -         gift: 0,
+    -         talk: 0,
+    -         touch: 0
+    -       },
+    -       mara: {
+    -         gift: 0,
+    -         talk: 0,
+    -         touch: 0
+    -       }
+    -     }
+        }
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    points:
+      mara: 0
+      ilyra: 0
+    gifts: 2
+    claimed:
+      opening: false
+      boss15: true
+      boss25: true
+    lastClearAttempt: 0
+    window:
+      ticks: 0
+      earnedGifts: 0
+      clearProgress: 0
+      used:
+        mara:
+          talk: 0
+          gift: 0
+          touch: 0
+        ilyra:
+          talk: 0
+          gift: 0
+          touch: 0
+  actual:
+    points:
+      mara: 0
+      ilyra: 0
+    gifts: 2
+    claimed:
+      opening: false
+      boss15: true
+      boss25: true
+      ilyraWelcome: false
+    reserves:
+      mara: ~
+      ilyra: ~
+    personal:
+      mara:
+        clears: 0
+        claimed: false
+      ilyra:
+        clears: 0
+        claimed: false
+    clearProgress: 0
+    lastClearAttempt: 0
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\.codex\worktrees\english-default\TowerDefense\experiments\idle-bastion\tests\onboarding.test.ts:87:9)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: session reload before start preserves the kit and avoids an empty return dialog
+ok 6 - session reload before start preserves the kit and avoids an empty return dialog
+  ---
+  duration_ms: 32.7065
+  type: 'test'
+  ...
+# Subtest: rejected first-build transaction rolls back the kit and complete preparation
+ok 7 - rejected first-build transaction rolls back the kit and complete preparation
+  ---
+  duration_ms: 5.7889
+  type: 'test'
+  ...
+# Subtest: schema 15 saves preserve preparation and completed play without forcing the extended lessons
+ok 8 - schema 15 saves preserve preparation and completed play without forcing the extended lessons
+  ---
+  duration_ms: 43.5662
+  type: 'test'
+  ...
+# Subtest: intro command waits for a background write, then rechecks and consumes the kit once
+ok 9 - intro command waits for a background write, then rechecks and consumes the kit once
+  ---
+  duration_ms: 11.4189
+  type: 'test'
+  ...
+# Subtest: learning pause survives return without idle income and stays distinct from manual pause
+not ok 10 - learning pause survives return without idle income and stays distinct from manual pause
+  ---
+  duration_ms: 14.3111
+  type: 'test'
+  location: 'C:\\Users\\madde\\.codex\\worktrees\\english-default\\TowerDefense\\experiments\\idle-bastion\\tests\\onboarding.test.ts:149:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\.codex\worktrees\english-default\TowerDefense\experiments\idle-bastion\tests\onboarding.test.ts:155:45)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: workshop kit waits for first victory, survives reload and never refunds an existing workshop
+ok 11 - workshop kit waits for first victory, survives reload and never refunds an existing workshop
+  ---
+  duration_ms: 20.123
+  type: 'test'
+  ...
+# Subtest: Frost tip and wave objective share one slot, keeping the real counter and model intact
+ok 12 - Frost tip and wave objective share one slot, keeping the real counter and model intact
+  ---
+  duration_ms: 244.2777
+  type: 'test'
+  ...
+# Subtest: moving the existing Wisp card preserves its button and event listener
+ok 13 - moving the existing Wisp card preserves its button and event listener
+  ---
+  duration_ms: 75.4487
+  type: 'test'
+  ...
+# Subtest: step 14 waits on the cleared wave, not the current attempt, and survives restoration
+ok 14 - step 14 waits on the cleared wave, not the current attempt, and survives restoration
+  ---
+  duration_ms: 112.1485
+  type: 'test'
+  ...
+# Subtest: an active lesson beats toasts, and a defeat notice beats optional discovery tips
+ok 15 - an active lesson beats toasts, and a defeat notice beats optional discovery tips
+  ---
+  duration_ms: 48.9003
+  type: 'test'
+  ...
+# Subtest: menus and placement carry the counter without a second tutorial card
+ok 16 - menus and placement carry the counter without a second tutorial card
+  ---
+  duration_ms: 57.2776
+  type: 'test'
+  ...
+# Subtest: modal suppression and ending or skipping the tutorial restore the ordinary HUD
+ok 17 - modal suppression and ending or skipping the tutorial restore the ordinary HUD
+  ---
+  duration_ms: 75.8126
+  type: 'test'
+  ...
+# Subtest: saving stages and temporarily absent presenters still show progress and an actionable next step
+ok 18 - saving stages and temporarily absent presenters still show progress and an actionable next step
+  ---
+  duration_ms: 46.0606
+  type: 'test'
+  ...
+# Subtest: new recommendation uses Variant B while legacy constructor and compatibility placements stay intact
+ok 19 - new recommendation uses Variant B while legacy constructor and compatibility placements stay intact
+  ---
+  duration_ms: 91.6336
+  type: 'test'
+  ...
+# Subtest: every offered new starter cell clears wave one without Mara or another purchase
+ok 20 - every offered new starter cell clears wave one without Mara or another purchase
+  ---
+  duration_ms: 94.0468
+  type: 'test'
+  ...
+# Subtest: actual guided Variant B reaches its free Frost kit and reloads at every purchase
+ok 21 - actual guided Variant B reaches its free Frost kit and reloads at every purchase
+  ---
+  duration_ms: 37.9389
+  type: 'test'
+  ...
+# Subtest: already placed legacy starter and historical ready saves retain their location and Frost recommendation
+ok 22 - already placed legacy starter and historical ready saves retain their location and Frost recommendation
+  ---
+  duration_ms: 63.8936
+  type: 'test'
+  ...
+# Subtest: preparation validation admits only the old bounded corridor or new Variant B family
+ok 23 - preparation validation admits only the old bounded corridor or new Variant B family
+  ---
+  duration_ms: 1.0037
+  type: 'test'
+  ...
+# Subtest: multi-cell buildings snap their footprint centre to the chosen point
+ok 24 - multi-cell buildings snap their footprint centre to the chosen point
+  ---
+  duration_ms: 5.0799
+  type: 'test'
+  ...
+# Subtest: one total covers the three opening scenes and the earned building lessons
+ok 25 - one total covers the three opening scenes and the earned building lessons
+  ---
+  duration_ms: 109.6525
+  type: 'test'
+  ...
+# Subtest: discovery counts do not restart; optional lessons end the total and veterans get no new tutorial
+ok 26 - discovery counts do not restart; optional lessons end the total and veterans get no new tutorial
+  ---
+  duration_ms: 115.7512
+  type: 'test'
+  ...
+# Subtest: the first upgrade resumes the same wave and survives reload without a confirmation
+ok 27 - the first upgrade resumes the same wave and survives reload without a confirmation
+  ---
+  duration_ms: 17.2803
+  type: 'test'
+  ...
+# Subtest: an older save waiting after level 2 releases only its obsolete learning pause
+ok 28 - an older save waiting after level 2 releases only its obsolete learning pause
+  ---
+  duration_ms: 19.0298
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 25
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2556.461

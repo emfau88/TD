@@ -11,13 +11,13 @@
 #tutorial-guide p,#tutorial-guide #goal-copy { margin:0; font:12px/1.4 Arial,sans-serif; color:#d1dbcf; }
 #tutorial-guide :is(.onboarding-actions,.quick-win-actions) { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:8px; }
 #tutorial-guide :is(.onboarding-actions,.quick-win-actions).empty { display:none; }
-#tutorial-guide button { min-height:40px; font-size:12px; }
+#tutorial-guide button { min-height:44px; font-size:12px; }
 #tutorial-guide .onboarding-actions button { margin:0; }
 #tutorial-guide #meet-wisp { margin-top:8px; }
 #tutorial-guide .goal-ribbon { display:flex; gap:8px; align-items:center; }
 #tutorial-guide #goal-title,#tutorial-guide #goal-copy { white-space:normal; overflow:visible; text-overflow:clip; }
 #tutorial-guide .goal-copy { display:grid; padding:0; gap:3px; border:0; min-height:0; }
-#tutorial-guide #goal-action { flex:0 0 28px; width:28px; border:0; background:none; font-size:24px; }
+#tutorial-guide #goal-action { flex:0 0 auto; width:auto; min-width:60px; border:1px solid #957c50; background:#2d392f; font:13px/1.3 var(--display); padding:8px; }
 #tutorial-guide #combat-message { text-align:left; pointer-events:auto; }
 #tutorial-guide #fallback-note { display:flex; gap:7px; align-items:start; }
 #tutorial-guide .guide-next { margin-top:7px; padding-top:6px; border-top:1px solid #a68b5433; color:#e0c991; font-size:11px; line-height:1.35; }
@@ -31,12 +31,37 @@
   #tutorial-guide { left:8px; width:calc(100% - 96px); max-width:320px; padding:8px 9px; }
   #tutorial-guide h2,#tutorial-guide #quick-win-title,#tutorial-guide #wisp-arrival strong,#tutorial-guide #goal-title { font-size:16px; }
   #tutorial-guide :is(.onboarding-actions,.quick-win-actions) { gap:4px; margin-top:7px; }
-  #tutorial-guide button { min-height:40px; padding:7px 9px; font-size:11px; }
+  #tutorial-guide button { min-height:44px; padding:7px 9px; font-size:11px; }
   #tutorial-guide .goal-copy { padding:0; }
-  #tutorial-guide #goal-action { padding:0; min-width:20px; flex-basis:20px; width:20px; }
+  #tutorial-guide #goal-action { padding:7px; min-width:56px; flex-basis:auto; width:auto; }
   .unified-tutorial #battle-phase { display:none; }
 }
 @media(max-height:500px) and (orientation:landscape) {
   #tutorial-guide { width:300px; padding:7px 10px; }
   #tutorial-guide :is(.onboarding-actions,.quick-win-actions) { margin-top:5px; }
+}
+
+/* The same quiet framing continues after step 14. Inner presenters keep the
+   guide's single frame; their original buttons and listeners stay intact. */
+#app > :is(#tutorial-guide,#discovery-card,#wisp-arrival,.quick-win-hint,.goal-ribbon,.lesson-savings,.fallback-note) {
+  border:1px solid #9d8355; border-radius:3px; color:#e9dec5;
+  background:linear-gradient(115deg,#29372ff7,#142326f7); box-shadow:0 4px 12px #0005;
+}
+#app > :is(#discovery-card,#wisp-arrival,.goal-ribbon,.fallback-note)::before { display:none; }
+:is(#tutorial-guide,#discovery-card,#wisp-arrival,.quick-win-hint,.fallback-note) p { font:13px/1.45 Arial,sans-serif; }
+:is(#tutorial-guide,#discovery-card,#wisp-arrival,.quick-win-hint) :is(h2,strong#quick-win-title,#wisp-arrival>div>strong) { font:500 18px/1.2 var(--display); color:#f1d49d; }
+:is(#tutorial-guide,#onboarding-card,#discovery-card,#wisp-arrival,.quick-win-hint) button:not(.goal-copy) {
+  min-height:44px; border:1px solid #a98a55; border-radius:3px; padding:8px 10px;
+  background:linear-gradient(#454b34,#28382c); color:#f6dfac; font:14px/1.3 var(--display);
+  box-shadow:none; text-shadow:none;
+}
+:is(#tutorial-guide,#onboarding-card,#discovery-card,#wisp-arrival,.quick-win-hint) button:not(.goal-copy)::before { display:none; }
+:is(#tutorial-guide,#onboarding-card,#discovery-card,#wisp-arrival,.quick-win-hint) button:not(.goal-copy):hover:enabled { background:#4d533a; }
+:is(#tutorial-guide,#onboarding-card,#discovery-card,#wisp-arrival,.quick-win-hint) button:not(.goal-copy):disabled { opacity:.65; }
+#goal-action { width:auto; min-width:60px; flex:0 0 auto; min-height:44px; padding:8px; font:13px/1.3 var(--display); }
+@media(max-width:700px) {
+  :is(#tutorial-guide,#discovery-card,#wisp-arrival,.quick-win-hint) :is(h2,strong#quick-win-title,#wisp-arrival>div>strong) { font-size:16px; }
+  :is(#tutorial-guide,#onboarding-card,#discovery-card,#wisp-arrival,.quick-win-hint) button:not(.goal-copy) { min-height:44px; font-size:13px; }
+  .goal-copy { min-width:0; }
+  #goal-action { min-width:56px; }
 }

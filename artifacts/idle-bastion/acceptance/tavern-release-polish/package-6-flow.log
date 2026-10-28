@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "steps": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "freeFrostGold": 25,
+  "transitions": [
+    {
+      "state": "combat/wisp",
+      "step": 6,
+      "gold": 75,
+      "wave": 1
+    },
+    {
+      "state": "upgrade/wisp",
+      "step": 6,
+      "gold": 83,
+      "wave": 1
+    },
+    {
+      "state": "workshop/wisp",
+      "step": 7,
+      "gold": 23,
+      "wave": 1
+    },
+    {
+      "state": "research/wisp",
+      "step": 8,
+      "gold": 85,
+      "wave": 1
+    },
+    {
+      "state": "frost/wisp",
+      "step": 9,
+      "gold": 25,
+      "wave": 1
+    },
+    {
+      "state": "done/wisp",
+      "step": 10,
+      "gold": 25,
+      "wave": 1
+    },
+    {
+      "state": "done/mara-wait",
+      "step": 11,
+      "gold": 423,
+      "wave": 5
+    },
+    {
+      "state": "done/mara-ready",
+      "step": 11,
+      "gold": 423,
+      "wave": 5
+    },
+    {
+      "state": "done/mara-effect",
+      "step": 11,
+      "gold": 423,
+      "wave": 6
+    },
+    {
+      "state": "done/mara-controls",
+      "step": 12,
+      "gold": 507,
+      "wave": 6
+    },
+    {
+      "state": "done/cannon",
+      "step": 13,
+      "gold": 507,
+      "wave": 6
+    },
+    {
+      "state": "done/warehouse",
+      "step": 14,
+      "gold": 507,
+      "wave": 6
+    }
+  ],
+  "final": {
+    "wave": 6,
+    "lives": 20,
+    "gold": 507
+  }
+}

@@ -1,0 +1,5 @@
+PASS: both companions at hearts 0–3, permanent markers, locked explanations, reactions, stories and one character view.
+PASS: fixed speaking choices at hearts 0–3, zero-point repeats, locked explanations and personal gift preserves normal stock (21 remaining wins).
+PASS: 450-ms loading cue, short-wait cancellation, visible pose, immediate failure and close cleanup.
+PASS: 14 exit/manual-pause cases, stories, both companions, internal navigation and destroy preserve the hold lifecycle.
+PASS: hearts 1/2/3 stay hidden until durable acknowledgement; six delayed/success/failure cases, rollback, one sound, short reaction and unlock text.

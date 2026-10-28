@@ -8,10 +8,10 @@ type GuideView = { intro?: Pick<MaraIntro, 'active' | 'step'>; contextOpen: bool
 export function tutorialNext(b: IdleBattle): string {
   if (b.introduction.stage === 'done') {
     if (b.discovery === 'wisp') return b.wispUnlocked ? t('Begrüße Wisp.')
-      : t('Welle {0} meistern → {1} · {2}/{0} geschafft', 5, 'Wisp', Math.min(5, b.highestCleared));
+      : t('Welle {0} meistern für {1} · {2}/{0} geschafft', 5, 'Wisp', Math.min(5, b.highestCleared));
     if (b.discovery === 'warehouse' && !b.warehouseUnlocked)
-      return t('Welle {0} meistern → {1} · {2}/{0} geschafft', 8, t('Vorratslager'), Math.min(8, b.highestCleared));
-    if (b.discovery === 'warehouse') return t('Optional: Siedlung → Lager bauen oder „Später“.');
+      return t('Welle {0} meistern für {1} · {2}/{0} geschafft', 8, t('Vorratslager'), Math.min(8, b.highestCleared));
+    if (b.discovery === 'warehouse') return t('Optional: In der Siedlung ein Lager bauen oder „Später“ wählen.');
     if (b.discovery === 'cannon') return t('Optional: Steinschleuder bauen oder „Später“.');
     if (b.discovery === 'mara-wait') return t('Tippe auf „Übertakten zeigen“.');
     if (b.discovery === 'mara-controls') return t('Tippe auf „Weiter“, um die nächste Entdeckung zu sehen.');
@@ -23,11 +23,11 @@ export function tutorialNext(b: IdleBattle): string {
     case 'combat': return t('Nach dem ersten Abschuss folgt das Turmupgrade.');
     case 'upgrade': return t('Startturm öffnen und einmal auf Level 2 aufwerten.');
     case 'workshop': return b.lessonComplete ? t('Weiter zur Frostforschung.')
-      : b.workshopKitAvailable ? t('Siedlung → Werkstatt wählen und platzieren.')
-      : t('Welle 1 meistern → kostenloser Werkstatt-Bausatz.');
+      : b.workshopKitAvailable ? t('In der Siedlung die Werkstatt wählen und platzieren.')
+      : t('Welle 1 meistern und den kostenlosen Werkstatt-Bausatz erhalten.');
     case 'research': return b.lessonComplete ? t('Weiter: kostenlosen Frostkristall platzieren.')
       : b.gold < b.lessonCost ? t('Spare {0} Gold für die Frostforschung.', b.lessonCost)
-      : t('Werkstatt öffnen → Frostfassung erforschen.');
+      : t('Werkstatt öffnen und Frostfassung erforschen.');
     case 'frost': case 'observe': return t('Frostkristall nahe dem Waldwächter platzieren.');
     default: return t('Lerne Mara und deine erste Verteidigung kennen.');
   }

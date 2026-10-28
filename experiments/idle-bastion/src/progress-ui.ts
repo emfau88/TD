@@ -92,6 +92,7 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       el('goal-title').textContent = t(goal.title);
       el('goal-copy').textContent = t(goal.detail);
       el('goal-action').setAttribute('aria-label', t(goal.label));
+      el('goal-action').textContent = t('Ansehen');
       const meter = el<HTMLProgressElement>('goal-progress');
       meter.hidden = goal.cost === undefined;
       meter.max = goal.cost ?? 1; meter.value = Math.min(b.gold, goal.cost ?? 1);

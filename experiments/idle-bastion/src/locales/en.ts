@@ -2,6 +2,12 @@
  * Keep placeholders and game values intact; never use these strings as simulation IDs. */
 import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
+  "Welle {0} meistern für {1} · {2}/{0} geschafft": "Beat wave {0} for {1} · {2}/{0} cleared",
+  "Optional: In der Siedlung ein Lager bauen oder „Später“ wählen.": "Optional: Build a Storehouse in Settlement, or choose “Later”.",
+  "In der Siedlung die Werkstatt wählen und platzieren.": "Choose the Workshop in Settlement and place it.",
+  "Welle 1 meistern und den kostenlosen Werkstatt-Bausatz erhalten.": "Beat wave 1 to earn the free Workshop kit.",
+  "Werkstatt öffnen und Frostfassung erforschen.": "Open the Workshop and research Frost Setting.",
+  "Ansehen": "View",
   "· Ab Herz {0}": "· From heart {0}",
   "Persönliche Geschichten": "Personal stories",
   "1 Herz": "1 heart",

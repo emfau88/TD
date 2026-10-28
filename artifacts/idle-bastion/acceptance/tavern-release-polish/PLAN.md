@@ -36,7 +36,7 @@ Statuswerte: OFFEN / IN ARBEIT / ERLEDIGT / BLOCKIERT. ERLEDIGT setzt erfolgreic
 | 3 Reaktionsladezeiten | ERLEDIGT | `ae8cf38`; Cache/Player/DOM/Browser und Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40694402033) | Langsame Netze können weiter warten müssen |
 | 4 Gespräche und Geschenke | ERLEDIGT | `671fb71`; 20/20 Tests, DOM/Browser DE/EN, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40696614303) | Geplantes optisches Paket 5 |
 | 5 Herzfeedback und Tavernenoptik | ERLEDIGT | `6693ff1`; sechs Speicherfälle, DOM/Browsermatrix, Build; [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/40700042939) | Physische Geräte-/Audiofreigabe offen |
-| 6 Tutorial und Release-Regression | OFFEN | — | Vollständig |
+| 6 Tutorial und Release-Regression | BLOCKIERT | Tutorialcode umgesetzt; 380/413 Tests, ausschließlich 33 Baselinefehler; Modellablauf 1–14 bestanden | Vollständiger Browserablauf wegen Eingabe-Timeouts offen; Export / Deployment werden ergänzt |
 
 ## Paket 1 – Sichere automatische Tavernenpause
 
@@ -152,7 +152,17 @@ Abnahme: kompletter frischer 14-Schritte-Einstieg inklusive kostenlosem Frost; n
 
 Nachweis: Test-/Buildprotokolle, Browsermatrix Desktop/320/390 DE/EN, Tutorial-/Tavernen-Vergleichsbilder, ZIP-Datei/Prüfsumme/Inhaltsprüfung, tatsächlicher Pages-Lauf. Physische Smartphone-/Kongregate-Hosttests nur behaupten, wenn tatsächlich durchgeführt.
 
-Ergebnis / SHA / Deployment / Restprobleme: ausstehend.
+Ergebnis: Baukarten und Aktionsbuttons erhalten nur die bestehende dezente Umrandung; der Richtungszeiger bleibt für echte Kartenpositionen erhalten. Keine zusätzliche Einrückung durch den entfernten Inline-Pfeil. Fortschrittsaktion heißt „Ansehen“/„View“ statt eines isolierten Pfeils, konkrete Aktion bleibt im Accessible Name. Tutorialtexte nennen die nächsten Handlungen als Sätze. Gemeinsame warme Rahmen, lesbare Dialogschrift und mindestens 44 px hohe Tutorial-/Anschlussbuttons. Die unveränderte `tutorial-progress.ts` enthält weiterhin exakt 14 Schritte.
+
+Automatische Prüfung: vollständiges `npm test`: **380/413 bestanden, 33 fehlgeschlagen**. Vergleich mit der unveränderten Baseline ergibt **keinen neuen und keinen verschwundenen Fehler** (`final-test-comparison.json`). Keine Tests entfernt, übersprungen oder abgeschwächt. Drei Fehler im gezielten Tutoriallauf sind ebenfalls Baselinefehler. Zusammenhängender frischer Modellablauf 1–14 mit regulären Käufen, kostenlosem Frost bei unverändert 25 Gold, Roundtrip-Speichern an Übergängen und optionalen Abschlussaktionen bestanden; Ende Welle 6, 20/20 Leben. Aktuelle Tavernen-DOM-/Speicher-/Pause- und Atlasplayerprüfungen erneut bestanden, Produktionsbuild erfolgreich.
+
+Einordnung der Altfehler: Nachweislich enthalten sind veraltete Schema-/Social-Struktur-, Kartenanzahl-, Lernpausen- und historische Timing-Erwartungen. Einige ältere bzw. künstlich zurückgestufte Save-Fixtures werden abgewiesen. Diese wurden nicht pauschal als harmlos erklärt und nicht durch Änderungen an Kampf, Balance oder Migrationen verdeckt. Für eine uneingeschränkte Releasefreigabe ist ihre gesonderte Bewertung nötig.
+
+Browser: aktueller frischer Start und die ersten Schritte bis zur Bauauswahl auf 320 × 568 sichtbar geprüft; Nachweis `after/p6-build-en-320.jpg`. Vorhandene Tavernenprüfungen aus Paketen 1–5 bleiben gültig. Der komplette anschließende Canvas-Bauablauf ist **nicht** als bestanden ausgewiesen: wiederholte CDP-Eingabe-Timeouts (`Emulation.setFocusEmulationEnabled`, `DOM.describeNode`, `DOM.resolveNode`), auch nach neuer Tabanbindung; ein abschließender Drag-Versuch setzte die Browser-Sitzung zurück. Windows-App-Zugriff wartete vergeblich auf die Toolfreigabe. Das ist eine Grenze der Prüfungsumgebung, kein nachgewiesener Fehler des Spiels. Keine versteckten Zustandsänderungen zur Umgehung des Tests vorgenommen.
+
+Nächster Schritt: Mit funktionierender Browser-Eingabe den vollständigen echten Ablauf DE/EN, Desktop/320/390 inklusive Frost, nachgelagerten Karten und den finalen Kongregate-Start/Save-Reload prüfen. Erst danach Paket 6 auf ERLEDIGT setzen. Code-SHA / Pages / neuer ZIP-Nachweis werden nach Sicherung ergänzt.
+
+
 
 ## Gesamtergebnis und Releaseentscheidung
 
