@@ -1,0 +1,21 @@
+{
+  "sourceCommit": "c26a01b03f2fe10afbd43d15cefe6e631589b2e9",
+  "runId": 40751659562,
+  "conclusion": "success",
+  "liveUrl": "https://emfau88.github.io/TD/",
+  "httpStatus": 200,
+  "entry": "./assets/battle-B24gOC5F.js",
+  "tavernJS": "./tavern-ui-Ci4ykrRB.js",
+  "css": [
+    "./main-BJHl1Z08.css",
+    "./tavern-ui-C_7bclz-.css"
+  ],
+  "checks": {
+    "actionDockInJS": true,
+    "heartExplanationInJS": true,
+    "selectedTalkInJS": true,
+    "fixedMenuInCSS": true,
+    "portraitSafeDesktopMenu": true
+  },
+  "note": "Entry JS hash differs from local Windows build; release identity verified by Actions headSha and delivered tavern JS/CSS features."
+}

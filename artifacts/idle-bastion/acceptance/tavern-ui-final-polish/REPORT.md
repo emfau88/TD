@@ -69,4 +69,17 @@ Geprüft wurde Chromium mit vorgegebenen Viewports, kein physisches iPhone/Andro
 
 ## Veröffentlichung
 
-Implementierungscommit und tatsächlicher Pages-Status werden nach dem Push hier ergänzt. Der vorhandene Kongregate-Export wird wegen der UI-Laufzeitänderung neu gebaut und separat geprüft.
+- Implementierung: [`c26a01b03f2fe10afbd43d15cefe6e631589b2e9`](https://github.com/emfau88/TD/commit/c26a01b03f2fe10afbd43d15cefe6e631589b2e9), direkt auf Main gepusht.
+- [Pages-Lauf 40751659562](https://github.com/emfau88/TD/actions/runs/40751659562): **success**, Deployment am 28.10.2026 um 19:10:52 UTC abgeschlossen. Live-HTTP 200, neue Menü-/Herzmerkmale im tatsächlich ausgelieferten JS und CSS bestätigt; [Nachweis](deployment.json). Die Dateihashes des lokalen Windows-Builds und CI-Builds sind nicht vollständig identisch; keine Byteidentität behauptet.
+- Dieser abschließende Nachweis wird separat als Dokumentationscommit mit `[skip ci]` gesichert; kein weiterer Laufzeitunterschied.
+
+## Aktualisierter Kongregate-Export
+
+Neuer Lieferordner: `C:/Users/madde/Documents/Towers-and-Tantrums-Kongregate-2026-10-28-UI-c26a01b`.
+
+- `npm run build:kongregate`: erfolgreich. Vorhandener Hinweis auf einen großen JS-Chunk; kein Buildfehler und keine zusätzlichen Assets/Bibliotheken.
+- Beide ZIP-Varianten geprüft: CRC, 359 Dateien inklusive Lizenz, alle Dateien bytegleich zum gebauten Inhalt; separate HTML-/Assetvariante identisch zur vollständigen ZIP. [Prüfprotokoll](export-check.json).
+- Vollständige ZIP: 77.681.183 Bytes, SHA-256 `25cdeea63ee7dc42f270b407dc9a3071f87f795b056c5befa2a09d4cd357e526`.
+- Tatsächlich aus dem ZIP entpacktes Spiel per lokalem HTTP gestartet: gespeicherte Zuneigung geladen, Gespräch mit sichtbarer Kopfreaktion, normales Geschenk (Vorrat 4→3), Herz 2 samt Haarhinweis, Storyzugang und erneuter Reload mit 35 Zuneigung / 3 Geschenken bestanden. Keine Browserwarnungen/-fehler. [Echte ZIP-Aufnahme](after/tavern-after-zip-390.jpg).
+- Bestehendes Icon und Texte übernommen; Tavernenbilder aktualisiert. Frühere Lieferordner nicht überschrieben. Kein Kongregate-Upload oder Submit. Finale Plattform-/Audioabnahme bleibt separat.
+

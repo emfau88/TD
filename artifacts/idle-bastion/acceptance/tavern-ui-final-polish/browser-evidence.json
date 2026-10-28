@@ -678,5 +678,125 @@
       "y": 186.93539428710935
     },
     "story": "false"
+  },
+  {
+    "label": "Extracted Kongregate ZIP: saved H1 and chat reaction 390 EN",
+    "character": "Ilyra",
+    "clip": {
+      "cachedPages": "12",
+      "clip": "head",
+      "companion": "ilyra",
+      "frame": "5"
+    },
+    "dialogue": "I once would have found an excuse to leave after an invitation. Today, I chose this seat myself.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": true,
+        "heart": "2"
+      },
+      {
+        "disabled": true,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 601.1434936523438,
+      "height": 414.2080993652344,
+      "y": 186.93539428710935
+    },
+    "story": "false"
+  },
+  {
+    "label": "Extracted ZIP: normal gift unlocks H2 and hair",
+    "character": "Ilyra",
+    "clip": {
+      "cachedPages": "14",
+      "clip": "head",
+      "companion": "ilyra",
+      "frame": "1"
+    },
+    "dialogue": "I'll keep it. It reminds me that someone here is thinking of me.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": false,
+        "heart": "2"
+      },
+      {
+        "disabled": true,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 601.1435089111328,
+      "height": 373.6849670410156,
+      "y": 227.4585418701172
+    },
+    "story": "false"
+  },
+  {
+    "label": "Extracted ZIP reload preserves H2 and 3 regular gifts",
+    "character": "Ilyra",
+    "clip": {
+      "cachedPages": "11",
+      "clip": "idle",
+      "companion": "ilyra",
+      "frame": "3"
+    },
+    "dialogue": "The sky is clear today. Perhaps we'll have time later.",
+    "hearts": [
+      {
+        "disabled": false,
+        "heart": "1"
+      },
+      {
+        "disabled": false,
+        "heart": "2"
+      },
+      {
+        "disabled": true,
+        "heart": "3"
+      },
+      {
+        "disabled": true,
+        "heart": "4"
+      },
+      {
+        "disabled": true,
+        "heart": "5"
+      }
+    ],
+    "menuHidden": true,
+    "stage": {
+      "bottom": 601.1434936523438,
+      "height": 414.2080993652344,
+      "y": 186.93539428710935
+    },
+    "story": "false"
   }
 ]
