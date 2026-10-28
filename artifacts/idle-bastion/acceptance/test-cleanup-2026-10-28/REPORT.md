@@ -23,12 +23,12 @@ Status: IN ARBEIT. Priorität: echte historische Speicherformate, danach Layout/
 | 15 | schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40 | B | historische Schema-26-Ausgaben bei Welle 40/53/125 mit Originalmodell-Fortsetzungsorakel. |
 | 16 | schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly | B | originaler Schema-26-Schreiber erzeugt bezahltes Level 21 und hohe Gegner-HP; aktuelle Migration setzt exakt fort. |
 | 17 | ordinary earned opening and a saved walking segment restore without moving an unbuilt save | A | Upgrade setzt automatisch fort; Testtreiber führt nur eine Kaufaktion pro Lernstufe aus. Echter gehender Save bleibt exakt geprüft. |
-| 18 | Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation | offen | Prüfung läuft |
-| 19 | overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage | offen | Prüfung läuft |
-| 20 | assignment walks at 80px/s on cardinal safe ground, preserves cooldown and gives no bonus before arrival | offen | Prüfung läuft |
-| 21 | retargeting halfway through a segment rejoins a centre and selling the target falls back to the starter without cooldown reset | offen | Prüfung läuft |
-| 22 | blocked targets stay understandable and harmless, and a changed blocked route reroutes around real obstacles | offen | Prüfung läuft |
-| 23 | Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads | offen | Prüfung läuft |
+| 18 | Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation | A | Automatik wartet dokumentiert auf Gegner beim Ziel. Positiv- und Negativfall sowie exakt 8/30 Sekunden geprüft. |
+| 19 | overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage | B | Die Startfixture enthält bereits ein Projektil. Neue Schüsse separat anhand UID prüfen, statt eine leere Schussliste vorauszusetzen; 1,5-facher Cooldown und Schaden weiter exakt. |
+| 20 | assignment walks at 80px/s on cardinal safe ground, preserves cooldown and gives no bonus before arrival | A | Fernbuff bleibt am alten Turm; Bewegung erfolgt unabhängig mit 80 px/s und legalen gespeicherten Kardinalsegmenten. |
+| 21 | retargeting halfway through a segment rejoins a centre and selling the target falls back to the starter without cooldown reset | A | Bewegungsziel getrennt von Zauberziel; Retargeting und Verkauf eines anderen Turms erhalten den alten Effekt/Cooldown. |
+| 22 | blocked targets stay understandable and harmless, and a changed blocked route reroutes around real obstacles | A | Neue Hindernisse stoppen den Lauf sicher; eine neue Anweisung sucht einen gültigen Fernzauberweg. Kein automatischer Nahkampf-Annäherungszwang. |
+| 23 | Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads | A | Aktiver Fernbuff trotz Zielwechsel, Halt oder unerreichbarem Laufziel ist gültig. Positive Reloads explizit geprüft; illegale IDs, Geometrie, Effektzuordnung und Timer weiterhin abgelehnt. |
 | 24 | a genuine schema-27 wave 46 keeps its old tank-heavy queue and live values, then adopts rules 14 | A | Schema-27-Kampf bleibt exakt; nur dokumentierte Sozial-/Forschungsfelder migrieren. |
 | 25 | all starter locations survive the complete guided purchase sequence with real learning pauses | A | zwei explizite Fortsetzungen statt drei; Upgrade und Frostbau setzen automatisch fort. Alle Startplätze, Lernstopp und Kosten bleiben geprüft. |
 | 26 | real v14 veteran and its historical offline basis survive the schema-only migration | A | v14-Veteran behält sämtliche alten Felder und Offline-Basis; neue Sozialfelder explizit geprüft. |
@@ -52,4 +52,8 @@ Commit Gruppe 1: `66af7a19902839745e196ade79e129e84d4cc5d4`, nach `origin/main` 
 
 ## Gruppe 3 – Bauflächen und Wege (geprüft)
 
-28/28 Layout-/Wald-/B11-/Bestands-/Kamera-/Kernsiedlungstests plus 1/1 Wisp-Freischaltung. Keine Karten- oder Laufzeitänderung. Regeln aus `acceptance/p4/REDESIGN.md` und vorhandener Nordbogen-Migrationsprüfung; direkte Erreichbarkeit alter Anker und Fernzauberreichweite sämtlicher freier Startkandidaten geprüft. Commit-SHA folgt.
+28/28 Layout-/Wald-/B11-/Bestands-/Kamera-/Kernsiedlungstests plus 1/1 Wisp-Freischaltung. Keine Karten- oder Laufzeitänderung. Regeln aus `acceptance/p4/REDESIGN.md` und vorhandener Nordbogen-Migrationsprüfung; direkte Erreichbarkeit alter Anker und Fernzauberreichweite sämtlicher freier Startkandidaten geprüft. Commit Gruppe 3: `a187414`, nach `origin/main` gepusht.
+
+## Gruppe 4 – Mara und Kampftiming (geprüft)
+
+25/25 Mara-/Fernzauber-/Heldensteuerungs-/Wartebewegungstests. Maßgebliche Freigabe: `acceptance/p4/REDESIGN.md`, Abschnitt Ergebnis (sechs Felder, unabhängige Bewegung, 8-s-Buff am alten Turm, 30-s-Cooldown, Automatik nur bei Gegnern). Kein Laufzeitfehler gefunden, keine Laufzeitänderung. Commit-SHA folgt.

@@ -1,0 +1,160 @@
+TAP version 13
+# Subtest: both sides of the road offer a three-cell band; trees, water, road and settlement stay excluded
+ok 1 - both sides of the road offer a three-cell band; trees, water, road and settlement stay excluded
+  ---
+  duration_ms: 101.7739
+  type: 'test'
+  ...
+# Subtest: a dense Frost / damage combination builds, charges once and survives exact continuation
+ok 2 - a dense Frost / damage combination builds, charges once and survives exact continuation
+  ---
+  duration_ms: 140.3526
+  type: 'test'
+  ...
+# Subtest: schema 10 preserves money, old tower positions, ongoing combat and cooldown, without inventing farm proof
+ok 3 - schema 10 preserves money, old tower positions, ongoing combat and cooldown, without inventing farm proof
+  ---
+  duration_ms: 44.2579
+  type: 'test'
+  ...
+# Subtest: Mara waits for combat at her target, casts remotely, retains her buff while walking and changing target
+ok 4 - Mara waits for combat at her target, casts remotely, retains her buff while walking and changing target
+  ---
+  duration_ms: 48.15
+  type: 'test'
+  ...
+# Subtest: buildings occupy chosen non-overlapping settlement footprints; Workshop II does not require the east
+ok 5 - buildings occupy chosen non-overlapping settlement footprints; Workshop II does not require the east
+  ---
+  duration_ms: 171.9265
+  type: 'test'
+  ...
+# Subtest: Wisp has one persisted arrival and greeting, independent of his immediate economic bonus
+ok 6 - Wisp has one persisted arrival and greeting, independent of his immediate economic bonus
+  ---
+  duration_ms: 53.4097
+  type: 'test'
+  ...
+# Subtest: new construction and chosen building positions survive the real IndexedDB transaction boundary
+ok 7 - new construction and chosen building positions survive the real IndexedDB transaction boundary
+  ---
+  duration_ms: 71.3168
+  type: 'test'
+  ...
+# Subtest: all weapon/projectile/impact atlases use the original frame maps, including one Frost crystal per frame
+ok 8 - all weapon/projectile/impact atlases use the original frame maps, including one Frost crystal per frame
+  ---
+  duration_ms: 70.8647
+  type: 'test'
+  ...
+# Subtest: a fully occupied legal band still has a bounded, persistable farm fingerprint
+ok 9 - a fully occupied legal band still has a bounded, persistable farm fingerprint
+  ---
+  duration_ms: 63.1038
+  type: 'test'
+  ...
+# Subtest: Ilyra recommendation is reachable, free and covers the actual defended road without changing battle state
+ok 10 - Ilyra recommendation is reachable, free and covers the actual defended road without changing battle state
+  ---
+  duration_ms: 216.8336
+  type: 'test'
+  ...
+# Subtest: manual pause accepts both hero routes, replacements survive reload and Mara keeps assignment/cooldown
+ok 11 - manual pause accepts both hero routes, replacements survive reload and Mara keeps assignment/cooldown
+  ---
+  duration_ms: 390.2637
+  type: 'test'
+  ...
+# Subtest: guided stages block direct hero control; no volley movement or implicit first cast
+ok 12 - guided stages block direct hero control; no volley movement or implicit first cast
+  ---
+  duration_ms: 24.0211
+  type: 'test'
+  ...
+# Subtest: waiting walks remain local, legal and in range, with long rests and several facing directions
+ok 13 - waiting walks remain local, legal and in range, with long rests and several facing directions
+  ---
+  duration_ms: 376.432
+  type: 'test'
+  ...
+# Subtest: ordinary earned opening and a saved walking segment restore without moving an unbuilt save
+ok 14 - ordinary earned opening and a saved walking segment restore without moving an unbuilt save
+  ---
+  duration_ms: 58.2314
+  type: 'test'
+  ...
+# Subtest: real first spell unlocks controls after its effect; waiting paths stop at the introduction
+ok 15 - real first spell unlocks controls after its effect; waiting paths stop at the introduction
+  ---
+  duration_ms: 194.1942
+  type: 'test'
+  ...
+# Subtest: Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation
+ok 16 - Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation
+  ---
+  duration_ms: 115.3788
+  type: 'test'
+  ...
+# Subtest: overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage
+ok 17 - overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage
+  ---
+  duration_ms: 111.6951
+  type: 'test'
+  ...
+# Subtest: independent movement walks at 80px/s; reassignment retains the old remote buff and cooldown
+ok 18 - independent movement walks at 80px/s; reassignment retains the old remote buff and cooldown
+  ---
+  duration_ms: 126.0682
+  type: 'test'
+  ...
+# Subtest: redirecting movement halfway through a segment rejoins a centre; selling the selected tower preserves another tower buff
+ok 19 - redirecting movement halfway through a segment rejoins a centre; selling the selected tower preserves another tower buff
+  ---
+  duration_ms: 78.3428
+  type: 'test'
+  ...
+# Subtest: blocked remote destinations stop safely; a new order can route around a newly placed obstacle
+ok 20 - blocked remote destinations stop safely; a new order can route around a newly placed obstacle
+  ---
+  duration_ms: 50.2537
+  type: 'test'
+  ...
+# Subtest: travel, assignment, effect and cooldown reload exactly without replay and continue deterministically
+ok 21 - travel, assignment, effect and cooldown reload exactly without replay and continue deterministically
+  ---
+  duration_ms: 668.1609
+  type: 'test'
+  ...
+# Subtest: effect and cooldown continue through wave pauses; waiting without simulation cannot advance them
+ok 22 - effect and cooldown continue through wave pauses; waiting without simulation cannot advance them
+  ---
+  duration_ms: 145.0629
+  type: 'test'
+  ...
+# Subtest: old rule snapshots migrate once, preserve money and combat payloads and require fresh live farm evidence
+ok 23 - old rule snapshots migrate once, preserve money and combat payloads and require fresh live farm evidence
+  ---
+  duration_ms: 33.9805
+  type: 'test'
+  ...
+# Subtest: Mara position and temporary effect never inflate a farm proof, while reassignment invalidates its fingerprint
+ok 24 - Mara position and temporary effect never inflate a farm proof, while reassignment invalidates its fingerprint
+  ---
+  duration_ms: 154.2003
+  type: 'test'
+  ...
+# Subtest: Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads
+ok 25 - Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads
+  ---
+  duration_ms: 56.632
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2273.6417

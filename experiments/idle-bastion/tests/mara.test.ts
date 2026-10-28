@@ -5,7 +5,7 @@ import { BASE, BATTLE_RULES_VERSION, IdleBattle } from '../src/battle';
 import { certifyFarm, defenseFingerprint, isFarmCertificateValid } from '../src/farming';
 import { getForestBlockedCells } from '../src/forest-world';
 import { cellCenter, createIdleLayout, getTowerApproachCells, isWalkableCell, type WorldPoint } from '../src/layout';
-import { MARA, assignMaraTarget, cloneMara, createMara, stepMara, validMara } from '../src/mara';
+import { MARA, assignMaraTarget, cloneMara, createMara, moveMara, stepMara, validMara } from '../src/mara';
 
 const near = (actual: number, expected: number): void => assert.ok(Math.abs(actual - expected) < 1e-6, `${actual} != ${expected}`);
 const point = ({ x, y }: WorldPoint): WorldPoint => ({ x, y });
@@ -26,15 +26,17 @@ test('Mara starts beside the protected tower; automatic effect lasts 8s and repe
   assert.deepEqual(point(mara), cellCenter(layout, layout.maraStart));
   assert.equal(stepMara(mara, tower, layout, blocked, 0.025, false, true), 0);
   assert.equal(mara.cooldownRemaining, 0);
-  assert.equal(stepMara(mara, tower, layout, blocked, 0.025, true, true), 0);
+  assert.equal(stepMara(mara, tower, layout, blocked, 0.025, true, true, false), 0);
+  assert.equal(mara.effectRemaining,0,'auto waits for an enemy at the tower');
+  assert.equal(stepMara(mara, tower, layout, blocked, 0.025, true, true, true), 0);
   assert.equal(mara.effectRemaining, MARA.duration);
   assert.equal(mara.cooldownRemaining, MARA.cooldown);
   let boostedSeconds = 0;
-  for (let index = 0; index < 320; index++) boostedSeconds += stepMara(mara, tower, layout, blocked, 0.025, true, true);
+  for (let index = 0; index < 320; index++) boostedSeconds += stepMara(mara, tower, layout, blocked, 0.025, true, true, true);
   near(boostedSeconds, 8); near(mara.effectRemaining, 0); near(mara.cooldownRemaining, 22);
-  for (let index = 0; index < 879; index++) stepMara(mara, tower, layout, blocked, 0.025, true, true);
+  for (let index = 0; index < 879; index++) stepMara(mara, tower, layout, blocked, 0.025, true, true, true);
   assert.ok(mara.cooldownRemaining > 0); assert.equal(mara.effectRemaining, 0);
-  stepMara(mara, tower, layout, blocked, 0.025, true, true);
+  stepMara(mara, tower, layout, blocked, 0.025, true, true, true);
   assert.equal(mara.cooldownRemaining, 30); assert.equal(mara.effectRemaining, 8);
 });
 
@@ -45,20 +47,24 @@ test('overclock reduces the existing firing cooldown at 1.5× and does not reset
   const boosted = IdleBattle.restore(battle.snapshot())!;
   assert.equal(ordinary.isMaraBoosted(ordinary.towers[0].uid), false);
   assert.equal(boosted.isMaraBoosted(boosted.towers[0].uid), true);
+  const existing=new Set(boosted.shots.map(shot=>shot.uid));
   boosted.update(0.1); ordinary.update(0.1);
   near(boosted.towers[0].cooldown, 0.35);
   near(ordinary.towers[0].cooldown, 0.4);
-  assert.equal(boosted.shots.length, 0);
-  until(boosted, () => boosted.shots.length > 0);
-  assert.equal(boosted.shots[0].damage, BASE.tower.damage);
+  assert.ok(boosted.shots.every(shot=>existing.has(shot.uid)),'no new shot before the remaining cooldown');
+  until(boosted, () => boosted.shots.some(shot=>!existing.has(shot.uid)));
+  assert.equal(boosted.shots.find(shot=>!existing.has(shot.uid))!.damage, BASE.tower.damage);
 });
 
-test('assignment walks at 80px/s on cardinal safe ground, preserves cooldown and gives no bonus before arrival', () => {
+test('independent movement walks at 80px/s; reassignment retains the old remote buff and cooldown', () => {
   const battle = started(), target = battle.build('tower-02')!, cooldown = battle.mara.cooldownRemaining;
   assert.equal(battle.assignMara(target.uid), true);
-  assert.equal(battle.mara.effectRemaining, 0);
+  assert.equal(battle.mara.effectRemaining, MARA.duration);
+  assert.equal(battle.mara.effectTowerUid,battle.towers[0].uid);
   assert.equal(battle.mara.cooldownRemaining, cooldown);
-  assert.ok(battle.mara.path.length > 0);
+  assert.equal(battle.mara.path.length,0,'nearby spell assignment does not force walking');
+  const destination=getTowerApproachCells(battle.layout,target.padId).find(c=>!battle.movementBlocked().some(p=>p.x===c.x&&p.y===c.y))!;
+  assert.ok(battle.moveMaraTo(destination));assert.ok(battle.mara.path.length > 0);
   const blocked = new Set(getForestBlockedCells(battle.layout).map(cell => `${cell.x},${cell.y}`));
   let previous = point(battle.mara);
   for (let step = 0; step < 1000 && battle.mara.path.length; step++) {
@@ -81,12 +87,14 @@ test('assignment walks at 80px/s on cardinal safe ground, preserves cooldown and
   assert.equal(battle.assignMara(target.uid), false);
 });
 
-test('retargeting halfway through a segment rejoins a centre and selling the target falls back to the starter without cooldown reset', () => {
+test('redirecting movement halfway through a segment rejoins a centre; selling the selected tower preserves another tower buff', () => {
   const battle = started(), target = battle.build('tower-02')!;
   battle.assignMara(target.uid);
+  assert.ok(battle.moveMaraTo({x:6,y:7}));
   battle.update(0.125);
   const mid = point(battle.mara), cooldown = battle.mara.cooldownRemaining;
   assert.equal(battle.assignMara(battle.towers[0].uid), true);
+  assert.ok(battle.moveMaraTo(battle.layout.maraStart));
   assert.equal(battle.mara.cooldownRemaining, cooldown);
   const centre = cellCenter(battle.layout, { x: Math.floor(mid.x / 40), y: Math.floor(mid.y / 40) });
   assert.deepEqual(battle.mara.path[0], centre);
@@ -95,34 +103,38 @@ test('retargeting halfway through a segment rejoins a centre and selling the tar
   assert.ok(IdleBattle.restore(battle.snapshot()));
   battle.assignMara(target.uid);
   battle.update(0.025);
-  const beforeSell = battle.mara.cooldownRemaining;
+  const beforeSell = battle.mara.cooldownRemaining, effectBeforeSell=battle.mara.effectRemaining;
   assert.equal(battle.sell(target.uid), true);
   assert.equal(battle.mara.targetTowerUid, battle.towers[0].uid);
-  assert.equal(battle.mara.effectRemaining, 0);
+  assert.equal(battle.mara.effectRemaining, effectBeforeSell);
+  assert.equal(battle.mara.effectTowerUid,battle.towers[0].uid);
   assert.equal(battle.mara.cooldownRemaining, beforeSell);
   assert.ok(IdleBattle.restore(battle.snapshot()));
   until(battle, () => battle.mara.path.length === 0);
   assert.equal(battle.mara.unreachable, false);
 });
 
-test('blocked targets stay understandable and harmless, and a changed blocked route reroutes around real obstacles', () => {
-  const layout = createIdleLayout(), pad = layout.towerPads.find(pad => pad.id === 'tower-02')!;
+test('blocked remote destinations stop safely; a new order can route around a newly placed obstacle', () => {
+  const layout = createIdleLayout(), pad = layout.towerPads.find(pad => pad.id === 'tower-03')!;
   const target = { uid: 2, padId: pad.id, ...cellCenter(layout, pad.cell) };
   const mara = createMara(layout, 1), forest = getForestBlockedCells(layout);
   mara.cooldownRemaining = 12;
-  const sealed = [...forest, ...getTowerApproachCells(layout, pad.id)];
+  const sealed = [...forest, {x:4,y:7},{x:6,y:7},{x:5,y:6},{x:5,y:8}];
   assignMaraTarget(mara, target, layout, sealed);
   assert.equal(mara.unreachable, true); assert.equal(mara.path.length, 0);
   const before = point(mara);
-  stepMara(mara, target, layout, sealed, 1, true, true);
+  stepMara(mara, target, layout, sealed, 1, true, true, true);
   assert.deepEqual(point(mara), before); assert.equal(mara.effectRemaining, 0); near(mara.cooldownRemaining, 11);
   assert.ok(validMara(mara, [target], layout, sealed));
   assignMaraTarget(mara, target, layout, forest);
   assert.equal(mara.unreachable, false); assert.ok(mara.path.length > 1);
   const newlyBlocked = { x: Math.floor(mara.path[0].x / 40), y: Math.floor(mara.path[0].y / 40) };
   const changed = [...forest, newlyBlocked];
-  stepMara(mara, target, layout, changed, 0.025, true, true);
-  assert.equal(mara.unreachable, false);
+  stepMara(mara, target, layout, changed, 0.025, true, true, true);
+  assert.equal(mara.unreachable,true);assert.deepEqual(mara.path,[]);assert.deepEqual(point(mara),before);
+  assert.ok(validMara(mara, [target], layout, changed));
+  assignMaraTarget(mara,target,layout,changed);
+  assert.equal(mara.unreachable, false);assert.ok(mara.path.length>0);
   assert.ok(!mara.path.some(point => Math.floor(point.x / 40) === newlyBlocked.x && Math.floor(point.y / 40) === newlyBlocked.y));
   assert.ok(validMara(mara, [target], layout, changed));
 });
@@ -194,20 +206,27 @@ test('Mara position and temporary effect never inflate a farm proof, while reass
 
 test('Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads', () => {
   const battle = started(), target = battle.build('tower-02')!;
-  battle.assignMara(target.uid); battle.update(0.125);
-  const good = battle.snapshot();
+  battle.assignMara(target.uid);assert.ok(battle.moveMaraTo({x:6,y:7}));battle.update(0.125);
+  const good = battle.snapshot(), {x,y}=good.mara;
   const changes = [
     { targetTowerUid: 999999 }, { x: -1 }, { y: Infinity }, { direction: 'side' },
     { x: 225.5, y: 305.5, path: [], unreachable: true },
     { cooldownRemaining: -1 }, { cooldownRemaining: 31 }, { effectRemaining: 9 },
     { effectRemaining: NaN }, { effectRemaining: 2, cooldownRemaining: 1 },
-    { effectRemaining: 1 }, { unreachable: true }, { path: null }, { path: [{ x: 240, y: 280 }] },
-    { path: [{ x: 140, y: 140 }] }, // Pond cell, also not adjacent.
-    { path: [{ x: 260, y: 340 }] }, // Diagonal first segment.
-    { path: [{ x: 260, y: 300 }, { x: 260, y: 300 }] },
-    { path: [{ x: 1000, y: 300 }] }, { path: [] },
+    { effectTowerUid:null }, { effectTowerUid:999999 }, { effectRemaining:0 },
+    { path: null }, { path: [{ x: 240, y: 280 }] },
+    { path: [{ x: 140, y: 140 }] },
+    { path: [{ x:x+40, y:y+40 }] },
+    { path: [good.mara.path[0],good.mara.path[0]] },
+    { path: [{ x: 1000, y: 300 }] },
   ];
   for (const fields of changes) assert.equal(IdleBattle.restore({ ...good, mara: { ...good.mara, ...fields } }), undefined, JSON.stringify(fields));
+  // Remote effects survive walking/retargeting; stopping or an unreachable route
+  // does not invalidate the still-active buff on its original tower.
+  for(const fields of [{effectRemaining:1},{unreachable:true},{path:[]}]) {
+    const valid={...good,mara:{...good.mara,...fields}};
+    assert.deepEqual(IdleBattle.restore(valid)?.snapshot(),valid);
+  }
   assert.equal(IdleBattle.restore({ ...good, mara: undefined }), undefined);
   const restored = IdleBattle.restore(good)!;
   restored.mara.path[0] = { x: 0, y: 0 };
