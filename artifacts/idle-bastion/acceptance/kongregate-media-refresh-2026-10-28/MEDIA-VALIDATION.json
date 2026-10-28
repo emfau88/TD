@@ -1,0 +1,42 @@
+{
+  "gameSourceCommit": "d73ed50fdf99a2715e9a759703f9040e0d2399d2",
+  "mainBeforeMedia": "e15aea9a696272a832487a79c3a39fa783546780",
+  "delivery": "C:\\Users\\madde\\Documents\\Towers-and-Tantrums-Kongregate-2026-10-28-Hearts-d73ed50\\02-media",
+  "zipUnchanged": true,
+  "screenshotsUnedited": true,
+  "browserWarningsOrErrorsInFinalObservedPage": [],
+  "files": [
+    {
+      "name": "01-defense-in-action.jpg",
+      "width": 1281,
+      "height": 800,
+      "format": "JPEG",
+      "bytes": 195591,
+      "sha256": "5d4c0d458f7d8930c34f09714d025e7c1f73993572ab1d38dc3cb933eef09608"
+    },
+    {
+      "name": "02-rosemirror-boss.jpg",
+      "width": 1281,
+      "height": 800,
+      "format": "JPEG",
+      "bytes": 195382,
+      "sha256": "f28083bdbd7fdd07bdce9d1e5215de357e4eb0530b905814f800bb746144e553"
+    },
+    {
+      "name": "03-ilyra-tavern.jpg",
+      "width": 1281,
+      "height": 800,
+      "format": "JPEG",
+      "bytes": 106036,
+      "sha256": "575eb0cc5a7e561cc35601a93a0c1cb2c0336979fa51094ba8ad026ea39e1288"
+    },
+    {
+      "name": "game-icon.png",
+      "width": 1402,
+      "height": 1122,
+      "format": "PNG",
+      "bytes": 2730172,
+      "sha256": "2706913b85a5627aa819eface52009acf80ef40cd8e3396bfe625b94dfc067ae"
+    }
+  ]
+}

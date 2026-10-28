@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Local media scenes</title><style>body{background:#182a25;color:#f0e4ca;font:18px system-ui;padding:30px}button,select{font:inherit;padding:12px;margin:8px}a{color:#ffd58b}</style><h1>Recorded game scenes</h1><p>Isolated review saves; current game rules and rendering. No player save is overwritten.</p><select id="scene"><option value="active20">Wave 20 · mixed attackers</option><option value="boss25">Wave 25 · recorded boss attack</option><option value="dense">Wave 40 · mixed defense and storm</option><option value="double">Wave 40 · two storm towers</option><option value="boss">Wave 15 · recorded boss attack</option></select><button id="prepare">Prepare scene</button><p id="result"></p><script type="module">
+import {IdleBattle} from '../src/battle.ts';
+import {openBattleStore} from '../src/save-store.ts';
+import {setLanguage} from '../src/i18n.ts';
+import dense from '../../../artifacts/idle-bastion/acceptance/b16/economy/one-storm-wave40.json';
+import double from '../../../artifacts/idle-bastion/acceptance/b16/economy/two-storms-wave40.json';
+import bosses from '../../../artifacts/idle-bastion/acceptance/early-balance-release/selected/B-snapshots.json';
+if(!import.meta.env.DEV)throw Error('Development only');
+document.getElementById('prepare').onclick=async()=>{
+try {
+const kind=document.getElementById('scene').value, b=IdleBattle.restore(kind==='boss'?bosses.channel15:kind==='boss25'?bosses.channel25:kind==='active20'?bosses.active20:kind==='double'?double:dense);if(!b)throw Error('Invalid recorded state');
+const slot='media-'+kind+'-'+crypto.randomUUID();setLanguage('en');
+const store=await openBattleStore(undefined,'spire-idle-bastion-probe-'+slot);
+try{await store.save(b.snapshot(),true,0)}finally{store.close()}
+const a=document.createElement('a');a.href='../?probe='+slot;a.textContent='Open recorded scene';document.getElementById('result').replaceChildren(a);
+}catch(e){document.getElementById('result').textContent=String(e)}
+};</script></html>
