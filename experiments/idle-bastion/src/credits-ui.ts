@@ -1,6 +1,7 @@
 import audioCredits from '../audio-credits.html?raw';
 import enemyCredits from '../enemy-credits.html?raw';
-import { t } from './i18n';
+import { t, language } from './i18n';
+import { populateCreditNotices } from './credit-notices';
 import './credits-ui.css';
 
 /** Render the same bundled credits as the standalone pages, without leaving the game. */
@@ -22,10 +23,8 @@ export function mountCredits(signal: AbortSignal): void {
       const page = new DOMParser().parseFromString(audio ? audioCredits : enemyCredits, 'text/html');
       // Only the authored credit content is included, never standalone page navigation.
       content.replaceChildren(...page.querySelector('[data-credit-content]')!.childNodes);
-      for (const link of content.querySelectorAll('a')) {
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-      }
+      populateCreditNotices(content);
+      content.lang = language();
       dialog.showModal();
       content.scrollTop = 0;
     }, { signal });

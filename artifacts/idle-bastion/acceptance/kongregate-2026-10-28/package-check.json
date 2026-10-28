@@ -1,0 +1,38 @@
+{
+  "archiveIntegrity": true,
+  "fileCount": 359,
+  "singleRootIndex": true,
+  "separateUploadIdentical": true,
+  "relativeEntryPaths": true,
+  "licensesIncluded": true,
+  "noReviewPagesOrSourceArchives": true,
+  "zipBytes": 77678801,
+  "zipSha256": "446cecb01e1ed56c089712cda48e802d6aa8e4ce9ca445fe49db65e40816b228",
+  "media": [
+    {
+      "name": "01-defense.png",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "name": "02-tower-upgrades.png",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "name": "03-mara.png",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "name": "04-ilyra.png",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "name": "game-icon.png",
+      "width": 1000,
+      "height": 800
+    }
+  ]
+}

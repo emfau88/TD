@@ -9,4 +9,6 @@
 #credits-dialog .credits-content h2 { margin:18px 0 8px; }
 #credits-dialog ul { padding-left:20px; margin:0; }
 #credits-dialog li { margin:14px 0; }
-#credits-dialog a { color:#e5bc85; text-decoration:underline; }
+#credits-dialog details { margin-top:22px; }
+#credits-dialog summary { cursor:pointer; color:#e5bc85; }
+#credits-dialog pre { white-space:pre-wrap; overflow-wrap:anywhere; font:12px/1.5 monospace; color:#bec8c2; }

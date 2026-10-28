@@ -1,6 +1,6 @@
 # Erste Audiostufe · 21.10.2026
 
-48 ausgewählte Spieldateien, keine neue Spielmechanik. Quellen, Urheber, Lizenzen und Bearbeitungen stehen vollständig auf [Audioquellen](../audio-credits.html), auch aus dem Spielmenü erreichbar. Weitere 24 Stimmenclips stehen ausschließlich zur Nutzerauswahl in der [Hörvergleichsseite](https://emfau88.github.io/TD/voice-check.html).
+48 ausgewählte Spieldateien, keine neue Spielmechanik. Quellen, Urheber, Lizenzen und Bearbeitungen stehen zentral in [SOURCES_AND_LICENSES.txt](SOURCES_AND_LICENSES.txt). Die [Audio-Credits](../audio-credits.html) bleiben kurz; vollständige Hinweise sind lokal aufklappbar, ohne ausgehende Links. Weitere 24 Stimmenclips stehen ausschließlich zur Nutzerauswahl in der [Hörvergleichsseite](https://emfau88.github.io/TD/voice-check.html).
 
 | Situation | Originaldatei / Auswahl | Umsetzung |
 | --- | --- | --- |

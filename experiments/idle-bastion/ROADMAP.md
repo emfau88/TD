@@ -1,5 +1,13 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Kongregate-Einreichungspaket · 28.10.2026, ausdrücklich beauftragt:**
+
+- [x] Ausgehende Creditslinks entfernen; Namen erhalten, Quellen/Lizenzen zentral im Repository und erforderliche Hinweise lokal im Spielpaket mitliefern.
+- [x] Eigenen schlanken HTML5-Export mit relativen Pfaden erstellen; Prüfseiten, Galerien und Produktionsquellen ausschließen.
+- [x] Icon, vier echte aktuelle Screenshots, englische Beschreibung sowie DE/EN-Steuerung, AI-Hinweis und freiwillige Altersempfehlung 13+ lokal ablegen.
+- [x] Entpacktes ZIP im iframe bei 1000/390 px mit EN/DE geprüft: Musikstart, Bau/Upgrade, Pause, Reload, Credits und beide Tavernenfiguren bestanden; keine Seitenfehler oder externen Anfragen. ZIP-Varianten identisch geprüft, 359 Dateien, 77,7 MB. [Prüfbericht](../../artifacts/idle-bastion/acceptance/kongregate-2026-10-28/REPORT.md).
+- [ ] Endgültigen lokalen Lieferordner samt Prüfsummen ablegen; keine automatische Einreichung.
+
 **Kompakte gemeinsame Tutorialführung und Pauseknopf · 28.10.2026:**
 
 - [x] Vorhandene Hinweise in einem kompakten Bereich zusammengeführt; Tutorialstand und nächstes Ziel bleiben zwischen den Schritten sichtbar, keine konkurrierenden Kacheln.

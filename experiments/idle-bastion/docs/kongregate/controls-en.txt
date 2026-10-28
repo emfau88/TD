@@ -1,0 +1,25 @@
+HOW TO PLAY
+Protect the core by building towers along the enemy path. Defeating enemies earns gold for upgrades, buildings and research. Combat runs automatically. After a setback, strengthen your defenses and use Advance when you are ready to try again.
+
+DESKTOP
+- Click buttons, towers and settlement buildings to select them or open their menus.
+- Choose a tower/building card, then click a valid location to place it.
+- Hold the left mouse button and drag an empty part of the map to move the camera.
+- Use Overview to frame the map and the + button to change zoom.
+- Use the pause/play button in the top bar to pause or resume combat.
+- Select companions to access their available abilities as they unlock.
+
+MOBILE / TOUCH
+- Tap buttons, towers and buildings to select them.
+- Choose a build card, then tap a valid location to place it.
+- Drag the map with one finger to move the camera.
+- Use the Overview, zoom and pause/play buttons in the same way as on desktop.
+
+LANGUAGE AND AUDIO
+Open the menu in the top-right corner to choose English or Deutsch and adjust music, effects and voices. Browser audio starts after your first interaction. Fullscreen is available where the browser and embedding page permit it.
+
+TAVERN
+Open the built tavern from the Settlement menu. Talk, give available gifts and revisit shared moments. Touch interactions unlock through relationship progress. The current version stops at three hearts per companion.
+
+SAVING
+Progress is stored automatically in this browser. It is not a Kongregate cloud save and does not automatically transfer between devices. The game's Fresh start option preserves the existing main save in a separate local slot.

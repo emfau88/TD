@@ -1213,5 +1213,8 @@ export const english: Readonly<Record<string, string>> = {
   "Neu: Vorratslager": "New: the Storehouse",
   "Speichert Offline-Gold bis zu 8 statt 2 Stunden. Optional · 650 Gold.": "Stores offline gold for up to 8 hours instead of 2. Optional · 650 gold.",
   "Türme verstärken": "Strengthen your towers",
-  "Baue Türme oder werte sie auf.": "Build or upgrade towers."
+  "Baue Türme oder werte sie auf.": "Build or upgrade towers.",
+  "Lizenzangaben": "License notices",
+  "Wiedergabe teilweise gekürzt und ausgeblendet.": "Playback is partly trimmed and faded.",
+  "Bearbeitet: Ebenen zusammengeführt, Atlanten und Bodenanker angepasst; Moospilz umgefärbt.": "Modified: layers merged, atlases and ground anchors adjusted; Moss Shroom recolored."
 };

@@ -1,0 +1,1 @@
+screenshots, icon and external request check passed

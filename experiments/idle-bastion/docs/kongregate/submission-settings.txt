@@ -1,0 +1,47 @@
+TITLE
+Towers & Tantrums
+
+TAGLINE
+Build towers. Make questionable friends.
+
+GAME TYPE
+HTML5/WebGL — hosted file upload.
+
+SUGGESTED CATEGORY
+Strategy & Defense (alternative: Idle).
+Suggested tags: Tower Defense, Idle, Fantasy, Pixel Art, Upgrades.
+
+FRAME
+Suggested starting size: 1000 x 650 pixels, responsive resizing if available.
+The game adapts to smaller touch viewports. Test the actual Kongregate Preview before submitting for review.
+
+FILES
+Recommended: 01-game/Towers-and-Tantrums.zip (includes index.html at archive root).
+Alternative only if the portal asks for separate files: index.html plus additional-files.zip from 01-game/separate-upload.
+Use one upload method, not both. Do not upload this entire delivery folder.
+
+MEDIA
+02-media/game-icon.png and four numbered screenshots.
+The screenshots show the actual submitted game. Later progression uses a prepared review save based on earned combat progress; the release itself starts normally.
+
+DESCRIPTION / INSTRUCTIONS
+Copy game-description-en.txt into the description field.
+Copy controls-en.txt into instructions; optionally append steuerung-de.txt.
+The description already contains the voluntary 13+ recommendation and AI disclosure.
+
+PLAYER DATA / SERVICES
+Local browser storage for progress, language and sound preferences.
+No game-owned accounts, payments, ad systems, analytics or cloud-save service are integrated.
+No generative AI service is called during play.
+No Kongregate statistics/leaderboard API integration is included in this submission build.
+The host platform may apply its own services and data practices.
+
+CREDITS
+Creator names and license notices remain in-game. There are no clickable external links in the credits. Full source addresses and required license texts are plain text in the local notices and LICENSES.txt inside the ZIP.
+
+OFFICIAL UPLOAD REFERENCE (checked 2026-10-28)
+https://blog.kongregate.com/hc/en-us/articles/44404778564109-UPLOAD-How-to-complete-the-game-information-Step-3-Alpha
+
+REVIEW
+Upload first, test in Preview, then explicitly choose Submit for Review.
+This local package has not been uploaded, submitted or approved by Kongregate.

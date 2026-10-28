@@ -1,0 +1,3 @@
+iframe passed 1000
+iframe passed 390
+screenshots, icon and external request check passed

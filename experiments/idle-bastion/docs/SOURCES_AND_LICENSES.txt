@@ -1,0 +1,261 @@
+TOWERS & TANTRUMS — SOURCES AND LICENSE NOTICES
+Updated 2026-10-28
+
+These notices accompany the game. Source addresses below are plain text, not
+external navigation links. Credits do not imply endorsement by the creators.
+Each license applies only to its corresponding third-party material.
+
+AUDIO AND ARTWORK
+=================
+
+Inn Music — tcarisland
+License: CC BY 4.0
+Quelle: https://opengameart.org/content/inn-music
+CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+
+Fantasy SFX Pack Vol 1 — JC Sounds
+License: CC BY 4.0
+Quelle: https://opengameart.org/content/jc-sounds-fantasy-sfx-pack-vol-1
+CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+Changes: Wiedergabe teilweise gekürzt und ausgeblendet.
+
+Medieval: Exploration — RandomMind
+License: CC0
+Quelle: https://opengameart.org/content/medieval-exploration
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+
+Various Sound Effects — Julie Damsgaard / Spring Spring / Spring Enterprises
+License: CC0
+Quelle: https://opengameart.org/content/various-sound-effects-0
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+
+Fast Hammer SFX — themightyglider / bart
+License: CC0
+Quelle: https://opengameart.org/content/fast-hammer-sfx
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+
+UI Sound Effects — Robin Lamb
+License: CC0
+Quelle: https://opengameart.org/content/ui-sound-effects-button-clicks-user-feedback-notifications
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+
+Hammer on wood — L.i.Z.e.L.l.E_+
+License: CC0
+Quelle: https://freesound.org/people/L.i.Z.e.L.l.E_%2B/sounds/707864/
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+
+Female sensual laughter — KatjaSavia
+License: Pixabay Content License
+Quelle: https://pixabay.com/sound-effects/people-female-sensual-laughter-218077/
+Pixabay Content License: https://pixabay.com/service/license-summary/
+
+Hmms various 1 / 2 — esperar
+License: CC0
+Aufnahme 1: https://freesound.org/people/esperar/sounds/170767/
+Aufnahme 2: https://freesound.org/people/esperar/sounds/170766/
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+Project audition reference only; not included in the Kongregate game build.
+
+Magic Spell SFX — JaggedStone
+License: CC0
+Quelle: https://opengameart.org/content/magic-spell-sfx
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+
+Flirty Female Voice Acting Pack FREE Version — Marti Topmade / topmademarti
+License: Creator-specific terms
+Quelle und Nutzungsbedingungen: https://topmademarti.itch.io/flirty-female-voice-acting-pack-free-version
+Personal/commercial game use allowed; credit required; no standalone redistribution or resale as a voice pack.
+
+Free Yandere Voice Pack — MaskedIntrovert
+License: Creator-specific terms
+Originalquelle und Nutzungsbedingungen: https://maskedintrovert.itch.io/free-yandere-voice-pack
+Personal/commercial use allowed; no standalone use, resale or claiming authorship. Custom terms, not CC0.
+
+Sexy vocals — pyro13djt
+License: CC0
+Quelle: https://freesound.org/people/pyro13djt/sounds/337997/
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+
+Free Monster Pack — Frakassets
+License: CC BY 4.0
+Quelle: https://frakassets.itch.io/free-monster-pack
+CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+Changes: Bearbeitet: Ebenen zusammengeführt, Atlanten und Bodenanker angepasst; Moospilz umgefärbt.
+
+Gegnergrafiken — Foozle / Baldur
+License: CC0
+Quelle: https://foozlecc.itch.io/
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+
+Original Spire towers, terrain, builder, Wisp and enemies — Baldur / Foozle
+License: CC0
+Source: https://foozlecc.itch.io/
+License: https://creativecommons.org/publicdomain/zero/1.0/
+Original pack Readme.txt files are preserved in the repository's Foozle_* folders.
+
+Lucifer Goblin Berserker / Skeleton Grunt / Cultist — Baldur / Foozle
+License: CC0
+https://foozlecc.itch.io/lucifer-goblin-berserker-enemy
+https://foozlecc.itch.io/lucifer-skeleton-grunt-enemy
+https://foozlecc.itch.io/lucifer-cultist-enemy
+https://creativecommons.org/publicdomain/zero/1.0/
+Original license notices: assets/lucifer/*-LICENSE.txt in the game source.
+
+Project-created art and code
+Selected character, building, UI, spell and loading artwork was made with AI assistance.
+AI tools also assisted with programming. No generative AI service runs during play.
+Project sources and production notes are retained in the repository.
+
+CC BY 4.0 attribution notice
+Inn Music, Fantasy SFX Pack Vol 1 and Free Monster Pack are used under CC BY 4.0.
+Creators, source URIs and modifications are listed above. Material is supplied
+without warranties under the terms of the license; no endorsement is implied.
+https://creativecommons.org/licenses/by/4.0/
+https://creativecommons.org/licenses/by/4.0/legalcode.en
+
+FONT LICENSE — PIXELIFY SANS
+==========================
+Copyright 2021 The Pixelify Sans Project Authors (https://github.com/eifetx/Pixelify-Sans)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+https://scripts.sil.org/OFL
+
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded,
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+
+
+Spire Clear Digits: project-created replacement glyphs for 2, 5 and 8.
+
+PHASER — MIT LICENSE
+====================
+The MIT License (MIT)
+
+Copyright (c) 2026 Richard Davey, Phaser Studio Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+EVENTEMITTER3 — MIT LICENSE
+==========================
+The MIT License (MIT)
+
+Copyright (c) 2014 Arnout Kazemier
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

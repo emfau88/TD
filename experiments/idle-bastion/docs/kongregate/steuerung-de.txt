@@ -1,0 +1,25 @@
+SO SPIELST DU
+Beschütze den Kern mit Türmen entlang des Gegnerwegs. Besiegte Gegner bringen Gold für Verbesserungen, Gebäude und Forschung. Der Kampf läuft automatisch. Nach einem Rückschlag kannst du deine Verteidigung verstärken und mit Erneut vorstoßen einen neuen Versuch beginnen.
+
+DESKTOP
+- Buttons, Türme und Gebäude anklicken, um sie auszuwählen oder ihre Menüs zu öffnen.
+- Eine Baukarte wählen und anschließend einen gültigen Platz anklicken.
+- Eine freie Stelle der Karte mit gedrückter linker Maustaste ziehen, um die Kamera zu bewegen.
+- Übersicht zeigt die Karte; der Plusbutton verändert den Zoom.
+- Oben mit Pause/Fortsetzen den Kampf anhalten oder weiterlaufen lassen.
+- Gefährten auswählen, um ihre im Verlauf freigeschalteten Fähigkeiten zu bedienen.
+
+HANDY / TOUCH
+- Buttons, Türme und Gebäude antippen.
+- Baukarte wählen und dann einen gültigen Bauplatz antippen.
+- Die Karte mit einem Finger verschieben.
+- Übersicht, Zoom und Pause/Fortsetzen über die entsprechenden Buttons bedienen.
+
+SPRACHE UND TON
+Im Menü oben rechts English oder Deutsch wählen sowie Musik, Effekte und Stimmen einstellen. Die Stimmen sind englisch. Browser-Audio startet nach der ersten Bedienung. Vollbild hängt vom Browser und der Einbettung ab.
+
+TAVERNE
+Die gebaute Taverne im Siedlungsmenü öffnen. Gespräche führen, vorhandene Geschenke überreichen und gemeinsame Momente erneut ansehen. Berührungen werden mit dem Beziehungsfortschritt freigeschaltet. Diese Version endet bei drei Herzen pro Gefährtin.
+
+SPEICHERN
+Das Spiel speichert automatisch lokal in diesem Browser. Es gibt keinen Kongregate-Cloud-Spielstand und keine automatische Übertragung zwischen Geräten. Eine frische Probe bewahrt die Hauptpartie in einem separaten lokalen Speicherplatz.

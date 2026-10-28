@@ -8,7 +8,7 @@ Quelle: [Free Yandere Voice Pack / Voice Pack 02](https://maskedintrovert.itch.i
 von **MaskedIntrovert**. Anbieterbedingungen am 27.10.2026 geprüft: persönliche und
 kommerzielle Verwendung erlaubt; keine eigenständige Verwendung, kein Weiterverkauf
 und kein Ausgeben als eigene Aufnahmen. Eigene Anbieterbedingungen, **nicht CC0**.
-Namensnennung, Quellenlink und Bedingungen stehen in den Audio-Credits im Spielmenü.
+Namensnennung bleibt in den Audio-Credits im Spielmenü. Quellen und Bedingungen stehen in `docs/SOURCES_AND_LICENSES.txt` und werden als lokale, nicht verlinkte Lizenzangaben mitgeliefert.
 Die Zuordnung beruht auf dem bereitgestellten Pack und den Dateinamen; ein zusätzlicher
 Bytevergleich mit dem Original-Downloadarchiv wurde hier nicht durchgeführt.
 

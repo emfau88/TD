@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: English is the explicit default; language choices survive blocked preference storage
+ok 1 - English is the explicit default; language choices survive blocked preference storage
+  ---
+  duration_ms: 0.8462
+  type: 'test'
+  ...
+# Subtest: complete sentences retain every placeholder, whitespace and dynamic values in both languages
+ok 2 - complete sentences retain every placeholder, whitespace and dynamic values in both languages
+  ---
+  duration_ms: 19.8748
+  type: 'test'
+  ...
+# Subtest: menu language switch preserves DOM identity, updates accessibility and persists only the preference
+ok 3 - menu language switch preserves DOM identity, updates accessibility and persists only the preference
+  ---
+  duration_ms: 119.3224
+  type: 'test'
+  ...
+# Subtest: language changes preserve an earned battle, farm proof and historical offline receipt exactly
+ok 4 - language changes preserve an earned battle, farm proof and historical offline receipt exactly
+  ---
+  duration_ms: 296.7303
+  type: 'test'
+  ...
+# Subtest: all enemy descriptions and companion dialogue stages have translations, without translating IDs
+ok 5 - all enemy descriptions and companion dialogue stages have translations, without translating IDs
+  ---
+  duration_ms: 1.2619
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2860.7607

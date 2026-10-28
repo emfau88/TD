@@ -27,7 +27,9 @@
     "classic:test:ui": "node scripts/check-ui.mjs",
     "classic:test:scene": "node scripts/check-scene.mjs",
     "classic:test:package": "node scripts/check-package.mjs",
-    "classic:balance:sim": "tsx scripts/balance.ts"
+    "classic:balance:sim": "tsx scripts/balance.ts",
+    "build:kongregate": "tsc --project experiments/idle-bastion/tsconfig.json --noEmit && vite build --config experiments/idle-bastion/vite.kongregate.config.ts",
+    "package:kongregate": "python scripts/package-kongregate.py"
   },
   "dependencies": {
     "phaser": "^4.1.0"

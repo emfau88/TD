@@ -1,0 +1,34 @@
+{
+  "results": [
+    {
+      "width": 1000,
+      "height": 650,
+      "lang": "en",
+      "embedded": true,
+      "musicReady": true,
+      "musicStarted": true,
+      "buildUpgrade": true,
+      "creditsNoLinks": true,
+      "licenseText": true,
+      "reload": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lang": "de",
+      "embedded": true,
+      "musicReady": true,
+      "musicStarted": true,
+      "buildUpgrade": true,
+      "creditsNoLinks": true,
+      "licenseText": true,
+      "reload": true
+    },
+    {
+      "screenshots": 4,
+      "source": "Earned wave-40 defense plus real tavern upgrades and recruitment; unmodified game rendering"
+    }
+  ],
+  "failures": [],
+  "external": []
+}

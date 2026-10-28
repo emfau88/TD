@@ -1,0 +1,17 @@
+TOWERS & TANTRUMS — KONGREGATE-EINREICHUNG
+
+1. Unter 01-game liegt Towers-and-Tantrums.zip. Dieses ZIP ist der empfohlene Upload für HTML5/WebGL. Die index.html liegt bereits direkt im Archiv.
+
+2. Falls das Formular stattdessen eine einzelne HTML-Datei plus Zusatzdateien verlangt: Die beiden Dateien aus 01-game/separate-upload verwenden. Nicht beide Uploadvarianten gleichzeitig auswählen.
+
+3. Unter 02-media liegen das Icon und vier aktuelle Spielaufnahmen.
+
+4. Unter 03-texts liegen die englische Beschreibung, englische/deutsche Steuerung und Vorschläge für die Formularfelder. AI-Hinweis und freiwillige Altersempfehlung 13+ stehen bereits in der Beschreibung.
+
+5. Nach dem Hochladen in Kongregates Preview kurz Start, Musik, Bauen und Speichern prüfen. Anschließend Submit for Review wählen. Die lokale Vorbereitung ist noch keine Einreichung oder Zulassung.
+
+Wichtig: Die ZIP nicht per Doppelklick als lokales Spiel öffnen. JavaScript-Module und Browser-Speicher benötigen einen HTTP(S)-Server; Kongregate übernimmt das Hosting nach dem Upload.
+
+Das Paket enthält nur das Spiel und seine benötigten Dateien. Prüfseiten, Galerien, Originalarchive und Repository-Dateien werden nicht hochgeladen. Namen und verpflichtende Lizenzangaben bleiben lokal lesbar; ausgehende Creditslinks sind entfernt.
+
+BUILD-MANIFEST.json enthält Dateigrößen und SHA-256-Prüfsummen. PRUEFUNG.txt beschreibt die tatsächlich durchgeführten lokalen Prüfungen und ihre Grenzen.
