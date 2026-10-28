@@ -13,16 +13,18 @@ function unlocked(wave = 5) {
   const b = new IdleBattle(); b.update(0.4); b.highestCleared = wave; b.gold = 5000;
   b.buildWorkshop(); b.researchFrost(); return b;
 }
-test('Wisp and pads unlock at permanent milestones, with no gift or repeated payment on reload', () => {
+test('Wisp and weapons unlock at permanent milestones while the free grid stays available, with no gift or repeated payment on reload', () => {
   const b = unlocked(4), before = b.gold;
+  const pads = b.layout.towerPads.filter(p => b.isPadUnlocked(p.id)).map(p => p.id);
+  assert.ok(pads.length > 100);
   assert.equal(b.wispUnlocked, false); assert.equal(b.build('tower-05', 3), undefined);
-  b.highestCleared = 5;
+  b.highestCleared = 5; b.wispArrival.at = b.elapsed; // Synthetic milestone must include its saved arrival.
   assert.equal(b.wispUnlocked, true); assert.equal(b.gold, before);
-  assert.equal(b.layout.towerPads.filter(p => b.isPadUnlocked(p.id)).length, 8);
+  assert.deepEqual(b.layout.towerPads.filter(p => b.isPadUnlocked(p.id)).map(p => p.id), pads);
   assert.equal(b.build('tower-05', 3)?.def, CANNON);
   assert.equal(b.isTowerUnlocked(4), false);
   b.highestCleared = 10;
-  assert.equal(b.layout.towerPads.filter(p => b.isPadUnlocked(p.id)).length, 11);
+  assert.deepEqual(b.layout.towerPads.filter(p => b.isPadUnlocked(p.id)).map(p => p.id), pads);
   assert.equal(b.build('tower-08', 4)?.def, SNIPER);
   assert.deepEqual(IdleBattle.restore(b.snapshot())!.snapshot(), b.snapshot());
   const bad = b.snapshot(); bad.highestCleared = 4;

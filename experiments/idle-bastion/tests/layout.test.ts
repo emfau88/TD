@@ -21,11 +21,12 @@ test('start fixture has unique reservations, correct budget and an in-bounds roa
     const previous = layout.road.cells[i - 1], current = layout.road.cells[i];
     assert.equal(Math.abs(current.x - previous.x) + Math.abs(current.y - previous.y), 1);
   }
-  assert.equal(layout.towerPads.length, 13);
-  assert.equal(layout.towerPads.filter(pad => pad.cell.x < 28).length, 11);
-  assert.equal(layout.towerPads.filter(pad => pad.availability === 'initial').length, 5);
+  assert.equal(createIdleLayout({version:2}).towerPads.length, 13, 'historical fixed-pad map');
+  assert.equal(layout.towerPads.length, 214);
+  assert.equal(layout.towerPads.filter(pad => pad.cell.x < 28).length, 203);
+  assert.equal(layout.towerPads.filter(pad => pad.availability === 'initial').length, 203);
   assert.equal(layout.towerPads.filter(pad => pad.isStarter).length, 1);
-  assert.equal(new Set(layout.towerPads.map(pad => key(pad.cell))).size, 13);
+  assert.equal(new Set(layout.towerPads.map(pad => key(pad.cell))).size, 214);
   const road = new Set(layout.road.cells.map(key));
   for (const plot of layout.plots) {
     for (const position of cellsInRect(plot.footprint)) {
@@ -85,7 +86,9 @@ test('Mara has continuous legal footpaths to all active tower approaches and the
   }
   assert.equal(findFootpath(layout, layout.maraStart, layout.core), undefined);
   const neighbours = [{ x: 6, y: 7 }, { x: 4, y: 7 }, { x: 5, y: 8 }];
-  // The fourth neighbour (5,6) is the reserved starter tower ground cell.
+  // Empty free-grid candidates are walkable. Only an actually built tower blocks this exit.
+  assert.ok(findFootpath(layout, layout.maraStart, { x: 4, y: 12 }, neighbours));
+  neighbours.push({x:5,y:6});
   assert.equal(findFootpath(layout, layout.maraStart, { x: 4, y: 12 }, neighbours), undefined);
 });
 
@@ -95,7 +98,7 @@ test('unopened east cells reject walking and construction; expansion changes bou
   assert.deepEqual(start.road, expanded.road);
   assert.deepEqual(start.core, expanded.core);
   for (const pad of start.towerPads.filter(pad => pad.availability === 'east-clearing')) {
-    assert.ok(pad.cell.x >= 28 && pad.cell.x <= 29);
+    assert.ok(pad.cell.x >= 28 && pad.cell.x <= 30);
     assert.equal(isUnlockedCell(start, pad.cell), false);
     assert.equal(getTowerApproachCells(start, pad.id).length, 0);
     assert.equal(canPlaceFootprint(start, { ...pad.cell, width: 1, height: 1 }, { reservationId: pad.id }), false);

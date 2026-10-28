@@ -1,0 +1,178 @@
+TAP version 13
+# Subtest: clearing purchase requires a real boss milestone and gold, charges once, preserves running combat
+ok 1 - clearing purchase requires a real boss milestone and gold, charges once, preserves running combat
+  ---
+  duration_ms: 209.425
+  type: 'test'
+  ...
+# Subtest: both new slots have useful level-one frost/damage overlap and accessible companion routes
+ok 2 - both new slots have useful level-one frost/damage overlap and accessible companion routes
+  ---
+  duration_ms: 118.4807
+  type: 'test'
+  ...
+# Subtest: expanded battle with east towers and a moving Mara reloads exactly; forged region state is rejected
+ok 3 - expanded battle with east towers and a moving Mara reloads exactly; forged region state is rejected
+  ---
+  duration_ms: 77.6674
+  type: 'test'
+  ...
+# Subtest: schema-eight live save migrates closed without changing money, combat or boss progress
+ok 4 - schema-eight live save migrates closed without changing money, combat or boss progress
+  ---
+  duration_ms: 45.3747
+  type: 'test'
+  ...
+# Subtest: failed persistent clearing purchase rolls back geometry and gold; committed purchase survives IndexedDB reload
+ok 5 - failed persistent clearing purchase rolls back geometry and gold; committed purchase survives IndexedDB reload
+  ---
+  duration_ms: 185.5219
+  type: 'test'
+  ...
+# Subtest: fresh core settlement preserves the west route and reserves the future east corridor
+ok 6 - fresh core settlement preserves the west route and reserves the future east corridor
+  ---
+  duration_ms: 255.2388
+  type: 'test'
+  ...
+# Subtest: published save retains its old settlement until an explicit free move; every owned actor survives reload
+ok 7 - published save retains its old settlement until an explicit free move; every owned actor survives reload
+  ---
+  duration_ms: 661.7141
+  type: 'test'
+  ...
+# Subtest: all formerly open tower cells remain clear after the move
+ok 8 - all formerly open tower cells remain clear after the move
+  ---
+  duration_ms: 131.7143
+  type: 'test'
+  ...
+# Subtest: session requires pause, commits the whole relocation once and rolls back on storage failure
+ok 9 - session requires pause, commits the whole relocation once and rolls back on storage failure
+  ---
+  duration_ms: 1385.8811
+  type: 'test'
+  ...
+# Subtest: a valid core position stays reachable and invalid mixed/overlapping snapshots are rejected
+ok 10 - a valid core position stays reachable and invalid mixed/overlapping snapshots are rejected
+  ---
+  duration_ms: 87.3018
+  type: 'test'
+  ...
+# Subtest: solid forest leaves the route, plots, every start pad and its approach accessible
+ok 11 - solid forest leaves the route, plots, every start pad and its approach accessible
+  ---
+  duration_ms: 146.81
+  type: 'test'
+  ...
+# Subtest: rendering and routing share deterministic immutable forest without opening eastern terrain
+ok 12 - rendering and routing share deterministic immutable forest without opening eastern terrain
+  ---
+  duration_ms: 144.4444
+  type: 'test'
+  ...
+# Subtest: start fixture has unique reservations, correct budget and an in-bounds road ending at the core
+ok 13 - start fixture has unique reservations, correct budget and an in-bounds road ending at the core
+  ---
+  duration_ms: 161.9842
+  type: 'test'
+  ...
+# Subtest: critical first-view positions and all initial pads fit inside the unscrolled start region
+ok 14 - critical first-view positions and all initial pads fit inside the unscrolled start region
+  ---
+  duration_ms: 10.6719
+  type: 'test'
+  ...
+# Subtest: building bodies block navigation while their courtyard remains reachable and reserved for building
+ok 15 - building bodies block navigation while their courtyard remains reachable and reserved for building
+  ---
+  duration_ms: 18.0716
+  type: 'test'
+  ...
+# Subtest: Mara has continuous legal footpaths to all active tower approaches and the workshop
+ok 16 - Mara has continuous legal footpaths to all active tower approaches and the workshop
+  ---
+  duration_ms: 110.281
+  type: 'test'
+  ...
+# Subtest: unopened east cells reject walking and construction; expansion changes bounds but never routes enemies
+ok 17 - unopened east cells reject walking and construction; expansion changes bounds but never routes enemies
+  ---
+  duration_ms: 153.1805
+  type: 'test'
+  ...
+# Subtest: placement rejects roads, reserved pads, bad footprints and map borders
+ok 18 - placement rejects roads, reserved pads, bad footprints and map borders
+  ---
+  duration_ms: 5.9099
+  type: 'test'
+  ...
+# Subtest: layout instances own immutable geometry and independent bounds
+ok 19 - layout instances own immutable geometry and independent bounds
+  ---
+  duration_ms: 16.6278
+  type: 'test'
+  ...
+# Subtest: orthogonal road rasterization rejects diagonals and does not duplicate corners
+ok 20 - orthogonal road rasterization rejects diagonals and does not duplicate corners
+  ---
+  duration_ms: 0.4198
+  type: 'test'
+  ...
+# Subtest: north road has three complete usable rows, while the entry, core and settlement stay in place
+ok 21 - north road has three complete usable rows, while the entry, core and settlement stay in place
+  ---
+  duration_ms: 212.8005
+  type: 'test'
+  ...
+# Subtest: an old active fight and paused reload retain exact enemies, shots and tower positions until the boundary
+ok 22 - an old active fight and paused reload retain exact enemies, shots and tower positions until the boundary
+  ---
+  duration_ms: 141.9444
+  type: 'test'
+  ...
+# Subtest: a maximally built old map migrates every tower without charges, duplicates or new obstacles
+ok 23 - a maximally built old map migrates every tower without charges, duplicates or new obstacles
+  ---
+  duration_ms: 190.0055
+  type: 'test'
+  ...
+# Subtest: invalid old road data is rejected before migration and an expanded settlement remains intact
+ok 24 - invalid old road data is rejected before migration and an expanded settlement remains intact
+  ---
+  duration_ms: 47.8098
+  type: 'test'
+  ...
+# Subtest: side-facing Scorpion artwork follows travel; vertical and other sheets retain their orientation
+ok 25 - side-facing Scorpion artwork follows travel; vertical and other sheets retain their orientation
+  ---
+  duration_ms: 2.4805
+  type: 'test'
+  ...
+# Subtest: each added Frost position shares at least 60 road pixels with two existing level-one damage positions
+ok 26 - each added Frost position shares at least 60 road pixels with two existing level-one damage positions
+  ---
+  duration_ms: 14.1806
+  type: 'test'
+  ...
+# Subtest: layout-one live save migrates combat intact and reroutes Mara away from a newly reserved pad without resetting cooldown
+ok 27 - layout-one live save migrates combat intact and reroutes Mara away from a newly reserved pad without resetting cooldown
+  ---
+  duration_ms: 88.6163
+  type: 'test'
+  ...
+# Subtest: all eleven historical slots survive the free-grid migration without moving the original eight
+ok 28 - all eleven historical slots survive the free-grid migration without moving the original eight
+  ---
+  duration_ms: 33.3445
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3414.0887

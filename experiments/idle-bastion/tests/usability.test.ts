@@ -47,9 +47,12 @@ test('layout-one live save migrates combat intact and reroutes Mara away from a 
   assert.deepEqual(modern.mara,expectedMara);
 });
 
-test('all eleven unlocked slots can hold towers and round-trip without moving the original eight', () => {
-  const b=new IdleBattle();b.update(4);b.highestCleared=10;b.gold=100000;
-  for(const pad of b.layout.towerPads.filter(p=>b.isPadUnlocked(p.id)&&!p.isStarter)) assert.ok(b.build(pad.id));
+test('all eleven historical slots survive the free-grid migration without moving the original eight', () => {
+  const b=IdleBattle.restore(legacyFixtures().critical.layoutOne8)!;assert.ok(b);b.highestCleared=10;b.gold=100000;
+  for(const pad of b.layout.towerPads.filter(p=>p.id.startsWith('tower-')&&b.isPadUnlocked(p.id)&&!b.towers.some(t=>t.padId===p.id))) assert.ok(b.build(pad.id));
   assert.equal(b.towers.length,11);assert.deepEqual(IdleBattle.restore(b.snapshot())!.snapshot(),b.snapshot());
-  for(const old of createIdleLayout({version:1}).towerPads) assert.deepEqual(b.layout.towerPads.find(p=>p.id===old.id),old);
+  for(const old of createIdleLayout({version:1}).towerPads) {
+    const current=b.layout.towerPads.find(p=>p.id===old.id)!;assert.ok(current);
+    assert.deepEqual(current,{...old,availability:old.availability==='east-clearing'?'east-clearing':'initial'});
+  }
 });

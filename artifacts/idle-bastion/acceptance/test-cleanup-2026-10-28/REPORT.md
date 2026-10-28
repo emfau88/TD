@@ -6,20 +6,20 @@ Status: IN ARBEIT. Priorität: echte historische Speicherformate, danach Layout/
 
 | Nr. | Ursprünglicher Test | Klasse | Befund / Nachweis |
 |---|---|---|---|
-| 1 | Wisp and pads unlock at permanent milestones, with no gift or repeated payment on reload | offen | Prüfung läuft |
+| 1 | Wisp and pads unlock at permanent milestones, with no gift or repeated payment on reload | A | A (zusätzlich B): Turmtypen bleiben an Welle 5/10 gebunden, das freie Raster nicht. Künstlicher Wisp-Meilenstein braucht auch seinen gespeicherten Ankunftszeitpunkt. |
 | 2 | regular opening still funds workshop and Frost before Wisp; four roles remain saveable into armored waves | offen | Prüfung läuft |
 | 3 | B11 earned boss follow-up opens the clearing within the 8â€“11 minute target and retains farming | offen | Prüfung läuft |
 | 4 | historical B10 timing target remains a separate balance finding | offen | Prüfung läuft |
-| 5 | both new slots have useful level-one frost/damage overlap and accessible companion routes | offen | Prüfung läuft |
+| 5 | both new slots have useful level-one frost/damage overlap and accessible companion routes | A | A: B11-Überlappungsanforderung gilt für die zwei benannten Ostplätze, nicht jeden später hinzugefügten freien Kandidaten. |
 | 6 | earned continuation opens Workshop II around minute 13 and keeps an affordable next goal after minute 15 | offen | Prüfung läuft |
 | 7 | rules 3–15 match main for 910 encounters; current rules change only waves 10 and 20 | A | Schema 32 statt fest verdrahtetem Schema 31; 910 historische Begegnungen bleiben exakt. |
 | 8 | real schema-30 fights resume with identical old movement, projectiles, timers and money until their boundary | A | vollständiger Kampfvergleich plus explizite soziale Schema-32-Migration. |
 | 9 | new wave 10/20 and both boss snapshots reload exactly; downgrade and forged old queues are rejected | A | eingefrorene Schema-31-Boss-/Wellenstände inklusive Migration vergleichen. |
-| 10 | solid forest leaves the route, plots, every start pad and its approach accessible | offen | Prüfung läuft |
+| 10 | solid forest leaves the route, plots, every start pad and its approach accessible | A | A: Wald schließt freie Kandidaten aus; benannte Plätze bleiben direkt erreichbar, übrige gültige Plätze haben erreichbare Fernzauberpositionen. |
 | 11 | schema 29 unfinished guidance gains eligibility; completed and paid saves retain prices | B | synthetischer Schema-Mix durch echte Schema-29-Ausgaben des historischen Modells ersetzt; kostenlose/gekaufte Frosttürme und Mischformat-Ablehnung geprüft. |
-| 12 | start fixture has unique reservations, correct budget and an in-bounds road ending at the core | offen | Prüfung läuft |
-| 13 | Mara has continuous legal footpaths to all active tower approaches and the workshop | offen | Prüfung läuft |
-| 14 | unopened east cells reject walking and construction; expansion changes bounds but never routes enemies | offen | Prüfung läuft |
+| 12 | start fixture has unique reservations, correct budget and an in-bounds road ending at the core | A | A: aktuelle freie Rastergeometrie statt 13 festen Plätzen; historische 13er-Karte zusätzlich explizit geprüft. |
+| 13 | Mara has continuous legal footpaths to all active tower approaches and the workshop | A | A: ein leerer Baukandidat blockiert keinen Weg; ein tatsächlich belegtes Feld schließt den vierten Ausgang. |
+| 14 | unopened east cells reject walking and construction; expansion changes bounds but never routes enemies | A | A: drei freie Wegreihen reichen bis Spalte 30; Grenzen, Bauverbot, Weg und Reichweite weiter geprüft. |
 | 15 | schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40 | B | historische Schema-26-Ausgaben bei Welle 40/53/125 mit Originalmodell-Fortsetzungsorakel. |
 | 16 | schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly | B | originaler Schema-26-Schreiber erzeugt bezahltes Level 21 und hohe Gegner-HP; aktuelle Migration setzt exakt fort. |
 | 17 | ordinary earned opening and a saved walking segment restore without moving an unbuilt save | A | Upgrade setzt automatisch fort; Testtreiber führt nur eine Kaufaktion pro Lernstufe aus. Echter gehender Save bleibt exakt geprüft. |
@@ -36,7 +36,7 @@ Status: IN ARBEIT. Priorität: echte historische Speicherformate, danach Layout/
 | 28 | in-flight hops survive upgrade, sale and reload exactly; forged payloads and visited IDs are rejected | B | echtes Schema-29-Kettenprojektil nach Upgrade/Verkauf, Originalmodell-Fortsetzung und aktuelle Manipulationsabwehr. |
 | 29 | schema 28 live queues and wallets migrate unchanged without granting research or rewriting shots | A | Schema-28-Kampf bleibt exakt, keine Sturmforschung geschenkt. |
 | 30 | Ilyra can retain the fifth tower as a sold volley source without counting chain damage twice | B | echte Schema-29-Ilyra-Salve nach Turmverkauf mit Originalmodell-Fortsetzungsorakel. |
-| 31 | all eleven unlocked slots can hold towers and round-trip without moving the original eight | offen | Prüfung läuft |
+| 31 | all eleven unlocked slots can hold towers and round-trip without moving the original eight | A | A (zusätzlich B): elf historische Anker auf echter migrierter Layout-1-Quelle prüfen; spätere Nordbogenversetzung separat durch map-camera abgesichert. |
 | 32 | a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly | A | v24-Kampffelder unverändert, soziale Struktur explizit migriert. |
 | 33 | a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules | A | v25-Kampffelder unverändert, soziale Struktur explizit migriert. |
 
@@ -48,4 +48,8 @@ Commit Gruppe 1: `66af7a19902839745e196ade79e129e84d4cc5d4`, nach `origin/main` 
 
 ## Gruppe 2 – Tutorial und Lernpause (geprüft)
 
-53/53 inklusive sämtlicher Tutorial-, Discovery-, Heldensteuerungs- und Frostkit-Nachbartests. Bestehender 14-Schritte-Ablauf, unveränderte Laufzeit/UI. Grundlage: freigegebene automatische Fortsetzung nach Upgrade (`a85870f`, vorhandene `tutorial-progress.test.ts`). Commit-SHA folgt im nächsten Eintrag.
+53/53 inklusive sämtlicher Tutorial-, Discovery-, Heldensteuerungs- und Frostkit-Nachbartests. Bestehender 14-Schritte-Ablauf, unveränderte Laufzeit/UI. Grundlage: freigegebene automatische Fortsetzung nach Upgrade (`a85870f`, vorhandene `tutorial-progress.test.ts`). Commit Gruppe 2: `7c2e359`, nach `origin/main` gepusht.
+
+## Gruppe 3 – Bauflächen und Wege (geprüft)
+
+28/28 Layout-/Wald-/B11-/Bestands-/Kamera-/Kernsiedlungstests plus 1/1 Wisp-Freischaltung. Keine Karten- oder Laufzeitänderung. Regeln aus `acceptance/p4/REDESIGN.md` und vorhandener Nordbogen-Migrationsprüfung; direkte Erreichbarkeit alter Anker und Fernzauberreichweite sämtlicher freier Startkandidaten geprüft. Commit-SHA folgt.

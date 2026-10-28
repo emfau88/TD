@@ -37,7 +37,7 @@ test('both new slots have useful level-one frost/damage overlap and accessible c
   assert.ok(blocked.filter(c=>c.x<28).every(c=>oldBlocked.has(key(c))), 'opening must not add obstacles to existing Mara routes');
   const guard = cellCenter(layout, layout.towerPads.find(p=>p.id==='tower-08')!.cell);
   const road = layout.road.waypoints.map(c=>cellCenter(layout,c));
-  for (const pad of layout.towerPads.filter(p=>p.availability==='east-clearing')) {
+  for (const pad of layout.towerPads.filter(p=>p.id==='tower-east-01'||p.id==='tower-east-02')) {
     const point=cellCenter(layout,pad.cell); let shared=0;
     for(let i=1;i<road.length;i++) {
       const a=road[i-1],z=road[i],length=Math.hypot(z.x-a.x,z.y-a.y);
