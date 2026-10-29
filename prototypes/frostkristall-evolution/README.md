@@ -59,4 +59,4 @@ Die gemeinsame Frostpalette liest sich schlüssiger als wechselnde Elemente. Die
 
 Revision 1 veröffentlicht als `c8c05a55deecb19d45feeb80f26b12747d379031` auf `main`. [Pages-Lauf 40947405969](https://github.com/emfau88/TD/actions/runs/40947405969) einschließlich Build und Publish erfolgreich. Öffentliche Revision 1 anschließend im Browser geprüft: alle acht Stufen geladen, eisblaue Stufe 2 im Flugbild, Mischreihen und Vergleich sichtbar, keine Konsolenfehler. [Live-Screenshot](screenshots/live-comparison.jpg).
 
-Revision 2: technische und lokale visuelle Prüfung abgeschlossen; Veröffentlichung wird nach dem Pages-Lauf dokumentiert.
+Revision 2 veröffentlicht als `8a24d4275c8d922bbc27b3a9d04110db737af175` auf `main`. [Pages-Lauf 40951030269](https://github.com/emfau88/TD/actions/runs/40951030269) erfolgreich. Öffentliche Vorschau anschließend geprüft: neuer Abschuss bei Level 20, laufender Acht-Stufen-Vergleich, alle Assets geladen, keine Konsolenfehler. [Live-Nachweis](screenshots/attacks-live.jpg).
