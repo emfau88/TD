@@ -18,6 +18,11 @@ const review = join(root, 'artifacts', 'idle-bastion', 'previews', 'ability-art'
 for (const name of ['index.html', 'assets', 'screenshots', 'videos']) {
   await cp(join(review, name), join(output, 'art-review', name), { recursive: true });
 }
+// Isolated tower study: copied as a separate page; never imported by the game.
+const towerStudy = join(root, 'prototypes', 'waldwaechter-evolution');
+for (const name of ['index.html', 'styles.css', 'preview.js', 'manifest.json', 'comparison.png', 'assets']) {
+  await cp(join(towerStudy, name), join(output, 'prototypes', 'waldwaechter-evolution', name), { recursive: true });
+}
 function redirect(target) {
   return `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Towers &amp; Tantrums · Weiter</title></head><body><p><a id="continue" href="${target}">Weiter zu Towers &amp; Tantrums</a></p><script>const target=new URL(${JSON.stringify(target)},location.href);target.search=location.search;target.hash=location.hash;document.getElementById('continue').href=target.href;location.replace(target.href);</script></body></html>`;
 }

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#142220">
+<title>Waldwächter · Grafikstudie</title>
+<link rel="stylesheet" href="./styles.css">
+<script type="module" src="./preview.js"></script>
+</head>
+<body>
+<main>
+<header class="intro">
+<p class="eyebrow">Towers &amp; Tantrums · Isolierter Prototyp</p>
+<h1>Ein Wächter. Sechs Stufen.</h1>
+<p>Kräftiger gebaut, gleich groß: Ab Level 7 bleibt der Größenrahmen erhalten.</p>
+</header>
+<section class="map-section" aria-labelledby="map-title">
+<div class="section-head">
+<h2 id="map-title">Auf der Karte</h2>
+<label class="toggle"><input id="labels" type="checkbox" checked> Level zeigen</label>
+</div>
+<canvas id="map" aria-label="Sechs Waldwächter auf originalen Kartentexturen, im normalen Spielmaßstab"></canvas>
+<p class="scale-note" id="scale-note" role="status">Originalgrafiken werden geladen …</p>
+<p class="caption">Sechs benachbarte Felder. Originaltexturen und echte Rendermaße; keine automatische Vergrößerung der Türme.</p>
+</section>
+
+<section aria-labelledby="comparison-title">
+<div class="section-head"><h2 id="comparison-title">Die Entwicklung</h2><a href="./comparison.png" download>Vergleich als PNG</a></div>
+<div class="comparison" id="comparison"></div>
+<p class="caption">1 / 4 / 7: unveränderte Originale. 10 / 15 / 20: neue statische Skins. Alle hier in nativer Pixelgröße.</p>
+</section>
+
+<section aria-labelledby="detail-title">
+<div class="section-head"><h2 id="detail-title">Pixel für Pixel</h2>
+<label>Vergrößerung <select id="detail-zoom"><option value="2">2×</option><option value="3" selected>3×</option><option value="4">4×</option></select></label>
+</div>
+<div class="levels" role="group" aria-label="Turmstufe für die Detailansicht" id="levels"></div>
+<div class="detail-layout">
+<div class="detail-scroll" tabindex="0" aria-label="Vergrößerte Pixelgrafik, bei Bedarf seitlich scrollbar"><canvas id="detail" width="96" height="150" aria-label="Zusammengesetzter Turm in Vergrößerung"></canvas></div>
+<div class="parts">
+<h3 id="detail-name">Meister · Level 20</h3>
+<p id="detail-description"></p>
+<div class="part-images"><figure><img id="base-part" alt="Separate Turmbasis" width="64" height="128"><figcaption>Basis · 64 × 128</figcaption></figure><figure><img id="weapon-part" alt="Separate bewegliche Waffe" width="96" height="96"><figcaption>Waffe · 96 × 96</figcaption></figure></div>
+<div class="downloads"><a id="download-base" download>Basis herunterladen</a><a id="download-weapon" download>Waffe herunterladen</a></div>
+</div>
+</div>
+</section>
+<footer>
+<p><strong>Größenrahmen statt Höhenwachstum.</strong> Die neuen Basen bleiben innerhalb der sichtbaren 64 × 116 Pixel von Level 7. Niedrige Brüstungen lassen das Geschütz frei. Bodenanker, Montagepunkte und Renderfaktor 0,63 bleiben erhalten.</p>
+<p>Statische Grafikstudie ohne Spielintegration. Kamera: normaler Spielausschnitt, ohne Tutorialfokus oder Übersichtszoom. Die kleinen römischen Ziffern auf den Originalfahnen sind Bestandteil der unveränderten Grafiken.</p>
+<a href="https://github.com/emfau88/TD/tree/main/prototypes/waldwaechter-evolution">Assets, Quellen und Prüfnachweis im Repository</a>
+</footer>
+</main>
+</body>
+</html>
+

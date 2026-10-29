@@ -1,0 +1,204 @@
+{
+  "baseCommit": "ff65d67b943d35d55f3e6518274ddf78760f88ab",
+  "nativeFrames": {
+    "base": [
+      64,
+      128
+    ],
+    "weapon": [
+      96,
+      96
+    ]
+  },
+  "mount": {
+    "baseY": 13,
+    "baseOrigin": [
+      0.5,
+      0.8
+    ],
+    "weaponY": -23,
+    "weaponOrigin": [
+      0.5,
+      0.5
+    ]
+  },
+  "scale": 0.63,
+  "cellSize": 40,
+  "worldHeight": 640,
+  "levels": [
+    {
+      "level": 1,
+      "original": true,
+      "baseBox": [
+        0,
+        30,
+        64,
+        128
+      ],
+      "weaponBox": [
+        30,
+        26,
+        66,
+        70
+      ]
+    },
+    {
+      "level": 4,
+      "original": true,
+      "baseBox": [
+        0,
+        21,
+        64,
+        128
+      ],
+      "weaponBox": [
+        26,
+        26,
+        69,
+        70
+      ]
+    },
+    {
+      "level": 7,
+      "original": true,
+      "baseBox": [
+        0,
+        12,
+        64,
+        128
+      ],
+      "weaponBox": [
+        23,
+        26,
+        73,
+        70
+      ]
+    },
+    {
+      "level": 10,
+      "original": false,
+      "sourceBaseBox": [
+        226,
+        313,
+        949,
+        1201
+      ],
+      "sourceWeaponBox": [
+        819,
+        198,
+        1335,
+        670
+      ],
+      "sourceMountY": 522,
+      "compactBaseSource": "sources/level-10-compact-base.png",
+      "baseBox": [
+        0,
+        12,
+        64,
+        128
+      ],
+      "weaponBox": [
+        20,
+        25,
+        76,
+        71
+      ]
+    },
+    {
+      "level": 15,
+      "original": false,
+      "sourceBaseBox": [
+        152,
+        265,
+        1025,
+        1230
+      ],
+      "sourceWeaponBox": [
+        800,
+        198,
+        1525,
+        756
+      ],
+      "sourceMountY": 485,
+      "compactBaseSource": "sources/level-15-compact-base.png",
+      "baseBox": [
+        0,
+        12,
+        64,
+        128
+      ],
+      "weaponBox": [
+        18,
+        23,
+        78,
+        73
+      ]
+    },
+    {
+      "level": 20,
+      "original": false,
+      "sourceBaseBox": [
+        140,
+        187,
+        1036,
+        1225
+      ],
+      "sourceWeaponBox": [
+        798,
+        200,
+        1529,
+        776
+      ],
+      "sourceMountY": 420,
+      "compactBaseSource": "sources/level-20-compact-base.png",
+      "baseBox": [
+        0,
+        12,
+        64,
+        128
+      ],
+      "weaponBox": [
+        16,
+        21,
+        80,
+        75
+      ]
+    }
+  ],
+  "terrain": {
+    "grass": [
+      128,
+      64,
+      64,
+      64
+    ],
+    "horizontalPath": [
+      384,
+      64,
+      64,
+      64
+    ],
+    "tree": [
+      833,
+      384,
+      62,
+      64
+    ]
+  },
+  "provenance": "Imagegen designs; deterministic crop/alignment/palette/alpha packaging. Original levels are exact source-frame copies.",
+  "hashes": {
+    "level-1-base.png": "315a70b619b5780ad2c6d6941fd98a33a78cb8dc13e05fd8cfcef3c404eabb69",
+    "level-1-weapon.png": "beac618f4b5a85d90ace73ec66870843350c921b80ad9cb30b215e2d412fe8c8",
+    "level-10-base.png": "a517ca10f5df4cd6600117eacdbca2223de54d4628d2762faa04da647e7fa40e",
+    "level-10-weapon.png": "39b2a86060ef20820007b04ca6e76068ea3061c20d85cadaa9eba0aafcd9348e",
+    "level-15-base.png": "304085f09aa35e77faab858fca2f1aa529c08218b3c0b86b73f4ad657df81141",
+    "level-15-weapon.png": "84fa1022cd586d054de94ee81c147b231d7a2e8d89a99a732695a9733c68ef45",
+    "level-20-base.png": "64dac05f4b39bd785b29f416af80afb6afbb2d04d63f81dd8bf46f591f97723d",
+    "level-20-weapon.png": "35c1b9902f0f9bbaed66238fe9d148994bb5242a21a07cd69879c86da07ef6ca",
+    "level-4-base.png": "008fd18506fd0c518e74274a793c571430d70a7d9a46be211d04d55142f64fd0",
+    "level-4-weapon.png": "8edabb68f3edb01151f83a9f1be3e61dec9ad3dc171c41794a9cd0c5c4577558",
+    "level-7-base.png": "87aa53c0133fb40e75198c65a0ff8723999e53c27ea328b40be573b4c6adace6",
+    "level-7-weapon.png": "757113f4b9cde11255638e660b152aabac03960ee103223b6ee441a520e46ea1",
+    "terrain.png": "0d36e48873dcfa12e656087da8e348b0ea2ddecf3b5f4724e9a5253b4e27c7f4"
+  }
+}
