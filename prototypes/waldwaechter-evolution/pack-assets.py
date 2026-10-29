@@ -85,7 +85,25 @@ for level, old_level in zip(LEVELS,[1,4,7,5,10,15,20,25]):
         weapon=f"assets/compact/level-{level}-weapon.png"))
 
 shutil.copy2(SOURCE/"Grass Tileset.png",ASSETS/"terrain.png")
-metadata=dict(revision=2,baseCommit="67f5f86222ed0eea4d4e7ac43948bc0c7f213541",
+# Extract one independent arrow per generated material tier. No painted pixels
+# or colour filters: only source cropping, nearest-neighbour and palette packing.
+for level,name,expected,width in [(10,"steel-arrows-generated.png",3,5),(15,"projectile-15-generated.png",4,5),(20,"projectile-20-generated.png",5,6),(25,"projectile-25-generated.png",6,7)]:
+    raw=opaque_source(HERE/"sources"/name)
+    alpha=raw.getchannel("A")
+    columns=[x for x in range(raw.width) if alpha.crop((x,0,x+1,raw.height)).getbbox()]
+    bands=[]
+    for x in columns:
+        if not bands or x>bands[-1][-1]+1: bands.append([x])
+        else: bands[-1].append(x)
+    assert len(bands)==expected, (level,len(bands),"Expected separate source arrows")
+    one=raw.crop((bands[1][0],0,bands[1][-1]+1,raw.height))
+    one=one.crop(one.getbbox()).resize((width,40),NEAREST)
+    alpha=one.getchannel("A")
+    one=one.quantize(colors=24,method=Image.Quantize.FASTOCTREE,dither=Image.Dither.NONE).convert("RGBA")
+    one.putalpha(alpha)
+    frame=Image.new("RGBA",(8,40));frame.alpha_composite(one,((8-width)//2,0))
+    frame.save(ASSETS/"shooting"/("steel-arrow.png" if level==10 else f"arrow-{level}.png"),optimize=True)
+metadata=dict(revision=3,baseCommit="0658f8a",
     nativeFrames=dict(base=[64,128],weapon=[96,96]),
     mount=dict(baseY=13,baseOrigin=[.5,.8],weaponY=-23,weaponOrigin=[.5,.5]),
     scale=.63,cellSize=40,worldHeight=640,levels=records,
@@ -99,12 +117,20 @@ metadata=dict(revision=2,baseCommit="67f5f86222ed0eea4d4e7ac43948bc0c7f213541",
 sheet=Image.new("RGBA",(8*112,166),(19,32,31,255))
 draw=ImageDraw.Draw(sheet)
 font=ImageFont.truetype(str(ASSETS/"PixelifySans.ttf"),14)
+clear=ImageFont.truetype(str(ASSETS/"SpireClearDigits.ttf"),14)
+def label(text,x,y):
+    fonts=[clear if c in "258" else font for c in text]
+    widths=[draw.textlength(c,font=f) for c,f in zip(text,fonts)]
+    cursor=x-sum(widths)/2
+    for c,f,w in zip(text,fonts,widths):
+        draw.text((cursor,y),c,font=f,fill="#eed9a4",anchor="ls")
+        cursor+=w
 for i,record in enumerate(records):
     x=i*112+56
     base=Image.open(HERE/record["base"]).convert("RGBA")
     weapon=Image.open(HERE/record["weapon"]).convert("RGBA")
     sheet.alpha_composite(base,(x-32,0))
     sheet.alpha_composite(weapon,(x-48,round(-2.742857+record["upperShift"])))
-    draw.text((x,138),f'LEVEL {record["level"]}',font=font,fill="#eed9a4",anchor="mt")
+    label(f'LEVEL {record["level"]}',x,152)
 sheet.resize((2688,498),NEAREST).save(HERE/"comparison.png",optimize=True)
 print(json.dumps([dict(level=r["level"],height=r["baseBox"][3]-r["baseBox"][1],shift=r["upperShift"],weaponY=r["weaponY"]) for r in records]))

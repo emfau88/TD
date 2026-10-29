@@ -59,3 +59,17 @@ for rear in levels:
 report=dict(result='pass',levels=8,bodyWorldHeight=92*.63,referenceMaxBodyWorldHeight=116*.63,rowSpacing=40,all64FrontRearPairsKeepRearRestWeaponVisible=True,occlusion=results)
 (ROOT/'geometry-check.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
 print(json.dumps(report,indent=2))
+
+# Original flight/attack/impact strips remain exact; no accidental resampling.
+for stage in [1,2,3]:
+ for part in ['projectile','weapon']:
+  copied=ROOT/f'assets/shooting/original-{stage}-{part}.png'
+  original=REPO/f'public/assets/Tower 01 - Level 0{stage} - {part.title()}.png'
+  assert copied.read_bytes()==original.read_bytes(),copied
+assert (ROOT/'assets/shooting/impact.png').read_bytes()==(REPO/'public/assets/Tower 01 - Weapon - Impact.png').read_bytes()
+for name,width in [('steel-arrow.png',5),('arrow-15.png',5),('arrow-20.png',6),('arrow-25.png',7)]:
+ arrow=Image.open(ROOT/'assets/shooting'/name).convert('RGBA')
+ assert arrow.size==(8,40) and set(arrow.getchannel('A').getdata())<={0,255}
+ assert arrow.getbbox()[2]-arrow.getbbox()[0]<=width
+assert (ROOT/'assets/SpireClearDigits.ttf').read_bytes()==(REPO/'experiments/idle-bastion/assets/ui/fonts/SpireClearDigits.ttf').read_bytes()
+print('Original attack/flight/impact strips, bounded steel arrow and clear digit font: pass')

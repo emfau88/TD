@@ -20,7 +20,7 @@ for (const name of ['index.html', 'assets', 'screenshots', 'videos']) {
 }
 // Isolated tower study: copied as a separate page; never imported by the game.
 const towerStudy = join(root, 'prototypes', 'waldwaechter-evolution');
-for (const name of ['index.html', 'styles.css', 'preview.js', 'manifest.json', 'comparison.png', 'assets']) {
+for (const name of ['index.html', 'styles.css', 'preview.js', 'shooting.js', 'shot-model.js', 'manifest.json', 'comparison.png', 'assets']) {
   await cp(join(towerStudy, name), join(output, 'prototypes', 'waldwaechter-evolution', name), { recursive: true });
 }
 function redirect(target) {

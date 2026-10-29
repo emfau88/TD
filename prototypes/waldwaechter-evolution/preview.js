@@ -1,4 +1,5 @@
-// Isolated static study. No game imports, gameplay, or save access.
+import {initShooting} from './shooting.js?v=3';
+// Isolated visual study. No game imports, gameplay, or save access.
 const levels=[1,2,3,5,10,15,20,25];
 const names=['Waldwächter','Ausgebaut','Veteran','Verstärkt','Stahlwächter','Elite','Meister','Großmeister'];
 const descriptions=[
@@ -66,7 +67,7 @@ function drawMap(){
  if($('labels').checked)for(const t of towers){
   const x=px(t.x),y=py(t.y+1);
   ctx.fillStyle='rgba(15,29,23,.9)';ctx.fillRect(x-12,y-8,24,17);
-  ctx.fillStyle='#ffe1a2';ctx.font='13px Pixelify,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(String(t.level),x,y+1);
+  ctx.fillStyle='#ffe1a2';ctx.font='13px "Spire Clear Digits",Pixelify,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(String(t.level),x,y+1);
  }
  canvas.dataset.zoom=zoom.toFixed(6);canvas.dataset.mode=mode;canvas.dataset.rows=String(rows);
  canvas.dataset.towers=String(towers.length);canvas.dataset.spacingWorld='40';
@@ -87,13 +88,13 @@ function setDetailZoom(){
  const factor=Number($('detail-zoom').value);$('detail').style.width=96*factor+'px';$('detail').style.height=140*factor+'px';
 }
 async function init(){
- const response=await fetch('./manifest.json?v=2');if(!response.ok)throw new Error('Grafikmanifest konnte nicht geladen werden.');
+ const response=await fetch('./manifest.json?v=3');if(!response.ok)throw new Error('Grafikmanifest konnte nicht geladen werden.');
  manifest=await response.json();
  await Promise.all(manifest.levels.map(async r=>{
   const [base,weapon,referenceBase,referenceWeapon]=await Promise.all([r.base,r.weapon,r.referenceBase,r.referenceWeapon].map(p=>loadImage('./'+p)));
   sprites.set(r.level,{compact:{base,weapon},reference:{base:referenceBase,weapon:referenceWeapon}});
  }));
- terrain=await loadImage('./assets/terrain.png');await document.fonts.load('14px Pixelify');
+ terrain=await loadImage('./assets/terrain.png');await Promise.all([document.fonts.load('14px Pixelify'),document.fonts.load('14px "Spire Clear Digits"','258')]);
  levels.forEach((level,i)=>{
   const card=document.createElement('article');card.className='tower-card';
   const canvas=document.createElement('canvas');canvas.width=96;canvas.height=140;canvas.setAttribute('aria-label','Waldwächter Level '+level);
@@ -106,7 +107,7 @@ async function init(){
  for(const id of ['labels','rows','height-mode'])$(id).addEventListener('change',drawMap);
  $('detail-zoom').addEventListener('change',setDetailZoom);
  new ResizeObserver(drawMap).observe($('map'));window.addEventListener('resize',drawMap);
- setDetailZoom();showDetail(selected);drawMap();document.body.dataset.ready='true';document.body.dataset.revision='2';
+ setDetailZoom();showDetail(selected);drawMap();await initShooting({manifest,terrain,sprites,drawPart,cameraZoom,loadImage});document.body.dataset.ready='true';document.body.dataset.revision='3';
 }
 init().catch(error=>{$('scale-note').textContent=error.message+' Bitte Seite neu laden.';$('scale-note').setAttribute('role','alert');console.error(error);});
 

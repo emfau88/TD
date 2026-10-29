@@ -1,4 +1,66 @@
-# Waldwächter – kompakte Grafikstudie, Revision 2
+# Waldwächter – Grafik- und Salvenstudie, Revision 3
+
+Stand: 29.10.2026. Ausgangsstand: main, Commit 0658f8a.
+
+[Interaktive Vorschau](https://emfau88.github.io/TD/prototypes/waldwaechter-evolution/?revision=3) · [Vergleich aller acht Skins](comparison.png) · [Projektilassets](assets/shooting/)
+
+## Ergebnis
+
+Staffelung weiterhin **1 / 2 / 3 / 5 / 10 / 15 / 20 / 25**. Die vorhandene Schriftkorrektur für 2/5/8 ist jetzt auch im Prototyp eingebunden, einschließlich Canvasbeschriftungen und Vergleichs-PNG.
+
+Neue Schussprobe mit acht Stufen/Richtungen, Pause/Neustart, Vierteltempo, Zeitregler und Flug-/Trefferstandbild. Normaler Spielmaßstab. Nach abschließender Nutzerpräferenz **höchstens drei sichtbare Pfeile pro Angriffszyklus**:
+
+| Level | Pfeile pro Zyklus | Gestaltung |
+|---|---|---|
+| 1 | 1 | Originalpfeil |
+| 2 | 2 gemeinsam | Original-Doppelpfeil |
+| 3 / 5 | 3 gemeinsam | Original-Dreiergruppe |
+| 10 | 3 gemeinsam | Stahlspitze, Holzschaft |
+| 15 | 2 + 1 | Helle Spitze, Messingfassung |
+| 20 | 1 + 1 + 1 | Breitere helle Spitze, blauer Schaft |
+| 25 | 1 + 1 + 1 | Markantere Spitze, kräftigere Goldfassung und Türkiskontrast |
+
+Salvenabstand 110 ms; maximal ein Einschlagssprite gleichzeitig. Fluggeschwindigkeit 480 und Projektilfaktor 0,45 stammen aus dem Spiel. Wiederholung nach 1,5 Sekunden und Mündungsversatz sind **Vorschauparameter**, keine Änderung oder Simulation der Upgradebalance. Erste drei Stufen: vorhandene sechs Angriffsframes. Neue Skins: vorläufiger Rückstoß durch kurze Verschiebung, keine fertigen neuen Angriffsatlanten.
+
+Das Spiel simuliert bereits einen Schuss pro Waldwächter-Angriff; mehrere Pfeile können in dessen Grafik stecken. Das Limit dient vor allem der Lesbarkeit. Ein Performancegewinn im Kampf wurde nicht gemessen. Die Studie berechnet keinen Schaden und greift nicht auf Spielstände zu.
+
+## Prüfung
+
+- 5/5 gezielte Tests: Gesamtlimit, Freigabe-/Ankunftszeiten, acht Richtungen, 15/30/60/144 FPS, Pause ohne Zeitnachholung, Rückwärtsscrubbing.
+- Assetprüfung: Original-Angriffs-/Flug-/Trefferatlanten bytegleich; neue Einzelpfeile im 8 × 40-Frame mit harter Transparenz; unveränderte Turmgeometrie und 64 statische Vorder-/Hinterkombinationen. Ziffernschrift bytegleich zum bestehenden Spiel.
+- Produktionsbuild erfolgreich; Pages-Paket nach finaler Anpassung erneut erzeugt und Vorschau-Dateien byteweise verglichen.
+- Echter Browser: alle Stufen, Richtungen, Flug/Treffer, Pause/Neustart, Zeitlupe, Zeitregler und Reload. Desktop, 390 × 844 und 320 × 568; kein horizontaler Seitenüberlauf oder Konsolenfehler. Reihen-/Höhenvergleich weiterhin bedienbar.
+- prefers-reduced-motion verhindert Autostart; manuelles Abspielen bleibt möglich. Ausgeblendete/weggescrollte Vorschau pausiert ohne Nachholung. Uhrverhalten getestet; geänderte OS-Bewegungseinstellung nicht im Browser emuliert.
+- Kein erneuter Vollsuite-Lauf für unveränderten Spielcode. Letzter dokumentierter Spielstand: 421/421.
+- Kein Kongregate-Export, keine Spielintegration oder Änderung an Schaden, Angriffstempo, Balance und Speicherformat.
+
+## Browserbilder
+
+[Desktop](screenshots/waldwaechter-v3-desktop.jpg) · [390 px](screenshots/waldwaechter-v3-390.jpg) · [320 px](screenshots/waldwaechter-v3-320.jpg)
+
+Angehaltene Flugphasen der echten HTML-Vorschau. Die Animation ist über den obigen Link bedienbar. Vorherige Größenvergleiche bleiben unten als Revision-2-Nachweis erhalten.
+
+## Kritische Bewertung
+
+Kurze Salven sind klarer als breite Vierer-/Fünfer-/Sechserreihen. Rhythmus und markantere Munition vermitteln Stärke ohne zusätzliche Gebäudefläche oder große Leuchteffekte. Bei 390 px sind die Salven gut verfolgbar. Bei 320 px fallen feine Materialunterschiede weniger auf; hauptsächlich der Rhythmus trägt. Die Gebäude-/Waffensilhouette bleibt der wichtigste Fortschrittshinweis.
+
+Die Studie zeigt einen stationären Zielmarker und einen schießenden Turm. Dichte Kämpfe, bewegte Ziele, fertige neue Angriffsatlanten und Anbindung kosmetischer Salven an genau einen echten Schadenstreffer sind nicht integriert oder abgenommen.
+
+## Quellen und Reproduktion
+
+Einzelpfeile werden aus transparenten Imagegen-Quellen ausgeschnitten und mit Nearest Neighbour ins native Raster gepackt. Keine Farbfilter oder programmatisch gemalten Ersatzgrafiken. Die Pfeilanzahl in Rohquellen ist **nicht** die Anzahl des finalen Angriffs.
+
+[Prompts und Referenz](sources/PROJECTILE-PROMPT.json). Werkzeuge: pack-assets.py, verify-assets.py und shot-model.test.js.
+
+Geändert: Prototypverzeichnis, dessen Kopierliste in scripts/package-pages.mjs und Roadmap. Keine neue Bibliothek.
+
+## Veröffentlichung
+
+Commit und erfolgreicher Pages-Lauf werden nach Veröffentlichung ergänzt.
+
+---
+
+# Historischer Nachweis: kompakte Grafikstudie, Revision 2
 
 Stand: 29.10.2026. Ausgangsstand dieser Revision: `67f5f86222ed0eea4d4e7ac43948bc0c7f213541` auf main.
 

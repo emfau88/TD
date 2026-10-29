@@ -1,6 +1,6 @@
 {
-  "revision": 2,
-  "baseCommit": "67f5f86222ed0eea4d4e7ac43948bc0c7f213541",
+  "revision": 3,
+  "baseCommit": "0658f8a",
   "nativeFrames": {
     "base": [
       64,
@@ -405,6 +405,17 @@
     "reference/level-3-base.png": "c31df757b82705a5a3fb57f1ba111935bcafcfedb02e7d9fb8eb186e4ad9d2fe",
     "reference/level-3-weapon.png": "a1ab40bb4e302c5491d78e58dc61b227b389807ac46f1bf9683e9b6ebd83a35b",
     "reference/level-5-base.png": "7bdec2854357738a55965d7bad510f3a2a4a7e3b0920117327ea4156b56e0366",
-    "reference/level-5-weapon.png": "8bc577a0fa5725fdcee9514d041b7748ba4c6cf788fed09fbc8a57286ce57f2c"
+    "reference/level-5-weapon.png": "8bc577a0fa5725fdcee9514d041b7748ba4c6cf788fed09fbc8a57286ce57f2c",
+    "shooting/arrow-15.png": "21fd0e8ad1963b4a2f93face86d5f28c7a1144543a6cde1940acc68fd1350301",
+    "shooting/arrow-20.png": "37c9a65a46dfa691164ceb49ae0fa41f684bfeecddd98db6dddafdb58ec20524",
+    "shooting/arrow-25.png": "742d3dfbefb9720f5dea27a84a8aeb3b94f38698fd15d01f7fc8583d6f1c58fe",
+    "shooting/impact.png": "b6875299a9876cd9f38a77d7a291da96fcec61ecbee23fbe47222a448e056c79",
+    "shooting/original-1-projectile.png": "ba18ae667c49fe543e98af6910f02b7d7104e95146dd3226aadc023740fe892b",
+    "shooting/original-1-weapon.png": "7a29ce001ce9ddcf4572c16438066b921fe6bed88211715d6b5b85efae9f4299",
+    "shooting/original-2-projectile.png": "30260f076c0f8c0c94b7277543b0aacac1ae004ccd2292852683babafa9d9749",
+    "shooting/original-2-weapon.png": "2b2c1b673e5436ab2067849633af849db0d4607e8faea115e4e118b45c653385",
+    "shooting/original-3-projectile.png": "5c743cfd800884fcce79e4529b4dc76b96e6bfca5f07f09b1e001bc8dd1813f3",
+    "shooting/original-3-weapon.png": "0132885f1b9bbc1da3731eedd41e280285385ca39d61820673cb1bb2a5bbb982",
+    "shooting/steel-arrow.png": "e8094e4934394b929a08adb34cb118fd30051beba6663dfdd4c5d0734e9399c4"
   }
 }

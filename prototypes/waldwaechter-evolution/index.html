@@ -5,16 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#142220">
 <title>Waldwächter · Grafikstudie</title>
-<link rel="stylesheet" href="./styles.css?v=2">
-<script type="module" src="./preview.js?v=2"></script>
+<link rel="stylesheet" href="./styles.css?v=3">
+<script type="module" src="./preview.js?v=3"></script>
 </head>
 <body>
 <main>
 <header class="intro">
 <p class="eyebrow">Towers &amp; Tantrums · Isolierter Prototyp</p>
-<h1>Acht Stufen. Mehr Durchblick.</h1>
+<h1>Acht Stufen. Kurze Salven.</h1>
 <p>1 · 2 · 3 · 5 · 10 · 15 · 20 · 25 – kompakte Körper, kräftigere Geschütze.</p>
 </header>
+<section aria-labelledby="shot-title">
+<div class="section-head"><h2 id="shot-title">Schussprobe</h2><span class="caption">Originaler Spielmaßstab</span></div>
+<div class="shot-levels" role="group" aria-label="Turmstufe für die Schussprobe" id="shot-levels"></div>
+<p id="shot-pattern"></p>
+<canvas id="shot" aria-label="Animierter Waldwächter mit kurzen Pfeilsalven; abspielbar, pausierbar und als Einzelbild prüfbar"></canvas>
+<div class="shot-options">
+<label>Richtung <select id="shot-direction"><option value="0">Oben</option><option value="45" selected>Rechts oben</option><option value="90">Rechts</option><option value="135">Rechts unten</option><option value="180">Unten</option><option value="225">Links unten</option><option value="270">Links</option><option value="315">Links oben</option></select></label>
+<label>Tempo <select id="shot-speed"><option value="1">Normal</option><option value=".25">Zeitlupe ¼×</option></select></label>
+</div>
+<div class="shot-playback"><button id="shot-play" type="button">Pause</button><button id="shot-restart" type="button">Neustart</button><button id="shot-flight" type="button">Flugbild</button><button id="shot-impact" type="button">Trefferbild</button></div>
+<label class="shot-timeline" for="shot-time">Zeit <input id="shot-time" type="range" min="0" max="1500" value="0" step="1"><output id="shot-phase" for="shot-time">Bereit</output></label>
+<p class="caption">Maximal drei Pfeile pro Angriffszyklus. Hohe Stufen schießen in zwei bis drei kurzen Salven. Rein visuelle Studie: keine zusätzlichen Schadenstreffer und keine Änderung am Spiel. Die Wiederholung nach 1,5 s dient nur dem Vergleich.</p>
+</section>
+
 <section class="map-section" aria-labelledby="map-title">
 <div class="section-head">
 <h2 id="map-title">Auf der Karte</h2>
@@ -31,7 +45,7 @@
 </section>
 
 <section aria-labelledby="comparison-title">
-<div class="section-head"><h2 id="comparison-title">Die Entwicklung</h2><a href="./comparison.png" download>Vergleich als PNG</a></div>
+<div class="section-head"><h2 id="comparison-title">Die Entwicklung</h2><a href="./comparison.png?v=3" download>Vergleich als PNG</a></div>
 <div class="comparison" id="comparison"></div>
 <p class="caption">1 / 2 / 3: Originaldesigns mit kürzerem Unterbau. 5 bis 25: neue Skins. Alle hier in nativer Pixelgröße; Waffenproportionen bleiben erhalten.</p>
 </section>
@@ -53,7 +67,7 @@
 </section>
 <footer>
 <p><strong>Größenrahmen statt Höhenwachstum.</strong> Die Gebäude bleiben 64 Grafikpixel breit. Einschließlich der ruhenden Waffe sind die kompakten Türme höchstens 92 Grafikpixel hoch; die alte große Basis allein war 116 Pixel hoch. Die Breite und der Bodenkontakt bleiben gleich. Die Waffen rücken mit ihren Plattformen nach unten; ihre Proportionen und der Renderfaktor 0,63 bleiben erhalten.</p>
-<p>Statische Grafikstudie ohne Spielintegration. Kamera: normaler Spielausschnitt, ohne Tutorialfokus oder Übersichtszoom. Die ersten drei Designs stammen aus dem Originalpack. Nur ihre Prototyp-Varianten sind kompakter; die Originaldateien und das Spiel bleiben unverändert.</p>
+<p>Grafik- und Salvenstudie ohne Spielintegration. Kamera: normaler Spielausschnitt, ohne Tutorialfokus oder Übersichtszoom. Die ersten drei Designs stammen aus dem Originalpack. Nur ihre Prototyp-Varianten sind kompakter; die Originaldateien und das Spiel bleiben unverändert.</p>
 <a href="https://github.com/emfau88/TD/tree/main/prototypes/waldwaechter-evolution">Assets, Quellen und Prüfnachweis im Repository</a>
 </footer>
 </main>
