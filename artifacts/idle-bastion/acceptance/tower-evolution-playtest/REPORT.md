@@ -49,3 +49,25 @@ Der vorbereitete Welle-40-Test ist für Level 25 deutlich unterfordernd: unverä
 Türme auf mittlere Wegstrecke versetzt; unbenutzter Startturm sicher hinten. Einzelstufen zeigen einen Turm pro Art. Wave 41 läuft über normale Updates bis zum sichtbaren Anmarsch, danach pausierter Save. Kamera zeigt Anmarsch und Schusszone, ◎ zentriert erneut. Keine Änderung an Kampfwerten, Maplayout, Saveformat oder Offline-Regeln. Alte Probe-URLs bleiben gültig.
 
 7/7 gezielte Tests bestanden (27 Aufstellungen, 16 Einzelstufen mit realen Schüssen und Save-Roundtrip); Produktionsbuild erfolgreich. Tatsächlicher Level-25-Waldwächterkampf auf Desktop und 390 px geprüft: Gegner vor Turm sichtbar, Treffer im Ausschnitt. Mobiler Kamerabutton auf Symbol gekürzt. Steinschleuder-Erweiterung folgt als separates Paket.
+
+
+## Steinschleuder und finale Arena · 29.10.2026
+
+**Runtime ergänzt, lokal geprüft; neuer Pages-Lauf folgt nach Push.** Arena separat als `d1fbc75` gesichert. Vorherige Abschnitte dokumentieren den damaligen Zwei-Turm-Stand; aktuell sind drei Turmarten enthalten.
+
+- Steinschleuder (Tower 03) mit acht Skins 1/2/3/5/10/15/20/25. Erste drei aus dem vorhandenen Paket, fünf neue kompakte Konstruktionen und passende Steinprojektile. Basis und Waffe getrennt; alte Waffen-/Projektilanimationen 1–3 unverändert. Neue Stufen: kurzer Rückstoß, ein sichtbarer rotierender Stein pro logischem Schuss und vorhandener Steineinschlag. Keine mehrphasige neue Spann-/Nachladeanimation behauptet.
+- Quellen und Prompts unter `prototypes/steinschleuder-evolution/sources/`, erzeugt mit eingebautem Imagegen; native PNGs in `assets/compact/`, Vergleich und Montage in README/manifest. Originalatlanten per SHA-256 unverändert; keine Farbfilter.
+- Neue Gebäude bleiben 52,92 Kartenpixel hoch und 40,32 breit; Originalstufen kompakt auf höchstens 57,96. 1.800 neue Waffenrichtungen geprüft, überall unter 58 Pixeln Gesamthöhe. Nearest-Neighbor, transparente native Pixel und begrenzte Palette.
+- Arena wegen der größeren Steinschleuder-Reichweite vorgezogen: erster sichtbarer Gegner bei x≥260, pausiert vor dem ersten Turmschuss. Kamera umfasst den Anmarsch; keine HP-/Schaden-/Tempo-/Reichweitenänderung. Einzelstufe ein Turm pro Art; gemischt drei. Kamerasymbol separat unter der Ansichtssteuerung, ohne mobilen Zielbutton zu verdecken. Alte Lesezeichen bleiben gültig; neu starten für die neue Aufstellung.
+
+**Technik:** Vollsuite **428/428**, gezielte Tests **7/7**, TypeScript/Produktionsbuild erfolgreich. Tests umfassen alle 36 Szenario-/Stufenkombinationen, alle 24 optischen Einzelstufen mit echten Schüssen und anschließend Upgrade, Verkauf und Save-Roundtrip. Jeder Start hat eigenes pausiertes IndexedDB-Save; Hauptsave unverändert. Test prüft zusätzlich, dass vor dem Start noch kein Turmprojektil unterwegs ist. Keine Änderungen an battle.ts, Originalassets, Saveformat, Gegnern, Balance oder Offline-Regeln.
+
+**Echter Browser:** alle acht Steinschleudern geladen und Kampf bis Welle 42; 1280×800, 390×844 und 320×568 geprüft. Einzelne Level-25-Steinschleuder, Level-25-Waldwächter und Level-20-Frost in neuer Arena geprüft. Pause/Reload bei Welle 42: 102.347 Gold, acht verbleibende Gegner und alle Türme erhalten, weiterhin pausiert. Keine Warnungen/JavaScript-Fehler. Ein `waitFor` direkt nach Reload lief vor Abschluss des Ladens ab; anschließende sichtbare Rückkehrkarte und Fortsetzung erfolgreich, kein Spielfehler. Nicht jeder der 24 Einzelfälle wurde zusätzlich separat im Browser geöffnet; diese vollständige Matrix ist automatisiert geprüft.
+
+**Sichtbewertung:** klarer Materialausbau ohne höhere Türme. 20/25 unterscheiden sich durch Panzerplatten, Gabelenden und goldene Beschläge; bei 320 px sind feine Unterschiede begrenzt. Die neue Testkamera verhindert verdeckte Einstiegstreffer. Gegner sterben auf hohen Stufen weiterhin rasch gemäß Originalwerten. Nur technischer Testbranch, visuelle Nutzerabnahme bleibt offen. Kein Main-Merge und kein Kongregate-Export.
+
+![Steinschleuder, alle acht Stufen und sichtbarer Anmarsch, echter Desktopbuild](stone-all-desktop-final.png)
+
+| 390 Pixel | 320 Pixel | Einzelstufe 25 |
+|---|---|---|
+| ![Alle Stufen 390](stone-all-390-final.png) | ![Alle Stufen 320](stone-all-320-final.png) | ![Stufe 25](stone25-390-final.png) |

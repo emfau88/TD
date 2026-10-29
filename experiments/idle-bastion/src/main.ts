@@ -957,6 +957,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
             view.frameTowerTest();
             if(!document.getElementById('tower-test-camera')){
               const button=document.createElement('button');button.id='tower-test-camera';button.type='button';button.textContent='◎';button.title=language()==='de'?'Testbereich':'Test area';button.setAttribute('aria-label',button.title);
+              Object.assign(button.style,{position:'absolute',top:'calc(100% + 6px)',right:'0',width:'40px',height:'40px'});
               button.addEventListener('click',()=>scene?.frameTowerTest());document.querySelector('.map-controls')?.prepend(button);
             }
           }

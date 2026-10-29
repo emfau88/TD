@@ -2,23 +2,20 @@
 
 **Branch: `codex/tower-evolution-playtest` · nicht in `main` integriert.**
 
-## [▶ Beide erweiterten Türme im Spiel testen](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html)
+## [▶ Alle drei erweiterten Türme im Spiel testen](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html)
 
-**Öffentlich spielbar und geprüft.** [Erfolgreiches Pages-Deployment](https://github.com/emfau88/TD/actions/runs/40956723521), Spielcode `a5db533`. Alle 604 Dateien der Hauptfassung wurden beim Veröffentlichen bytegleich erhalten.
+Waldwächter, Frostkristall und **Steinschleuder** mit den kompakten Skins **1 · 2 · 3 · 5 · 10 · 15 · 20 · 25** und passenden Projektilen. Oberhalb von 25 bleibt der letzte Skin erhalten.
 
-Waldwächter und Frostkristall mit den kompakten Skins **1 · 2 · 3 · 5 · 10 · 15 · 20 · 25**, passenden Projektilen und Frost-Angriffsanimationen.
+1. Turmart und Stufe wählen; für den Vergleich gibt es alle acht Stufen gleichzeitig.
+2. „Zur pausierten Verteidigung“ / „Return to paused defense“ bestätigen. Mit ▶ den Kampf starten; Turm anklicken, aufwerten, Pause/Zoom und Reload ausprobieren.
+3. Die neue Arena zeigt den sichtbaren Anmarsch auf die mittlere Wegstrecke. Einzelstufen verwenden nur einen Turm pro Art. **◎ / Testbereich** richtet die Kamera erneut aus.
+4. Die erzeugte `?probe=tower-arena-…`-Adresse als Lesezeichen speichern, um genau diesen Test fortzusetzen. Über das Spielmenü zur Auswahl zurückkehren. Alte Test-Lesezeichen behalten ihre alte Aufstellung; für die neue Arena neu starten.
 
-1. Auf der Testseite beide Turmarten, Waldwächter oder Frostkristall wählen. Alle acht Stufen oder eine bestimmte Stufe sind direkt verfügbar.
-2. „Zur pausierten Verteidigung“ / „Return to paused defense“ bestätigen. Mit ▶ oben den echten Kampf starten; Türme anklicken, aufwerten, Pause/Zoom und Reload ausprobieren.
-3. Die erzeugte `?probe=tower-arena-…`-Adresse als Lesezeichen speichern, um genau diesen Test fortzusetzen. Über das Spielmenü zur Testauswahl zurückkehren.
+Jeder Start erstellt einen **separaten Spielstand**. Auch [eine frische normale Partie des Branches](https://emfau88.github.io/TD/previews/tower-evolution/?fresh=1) ist von deiner Hauptpartie getrennt. Vorbereitete Welle-40-Karte, normale Kampfregeln, 100.000 Testgold: Grafiktest, kein Balancetest. Hohe Stufen töten weiterhin schnell, jetzt im sichtbaren Ausschnitt. Kampfwerte, Saveformat und Offline-Regeln unverändert. Kein Kongregate-Export.
 
-Jeder Start erstellt einen **separaten Spielstand**. Auch [eine frische normale Partie dieses Branches](https://emfau88.github.io/TD/previews/tower-evolution/?fresh=1) bleibt vollständig von deiner Hauptpartie getrennt. Der vorbereitete Grafiktest verwendet eine Karte nach Welle 40 mit neu zusammengestellten Türmen und 100.000 Testgold; er ist kein Balancetest. Kampfwerte, Saveformat und Offline-Regeln wurden nicht geändert. Kein Kongregate-Export.
+**Prüfung:** 428/428 Tests und Produktionsbuild erfolgreich; 36 Aufstellungen und jede der 24 optischen Stufen mit echten Schüssen, Aufwerten und Save-Roundtrip. [Prüfbericht / Deployment / Spielaufnahmen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md) · [Steinschleuder-Sprites und Quellen](prototypes/steinschleuder-evolution/README.md).
 
-**Geprüft:** 428/428 Tests, Produktionsbuild; [Prüfbericht und echte Spielaufnahmen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md).
-
-Der Test stellt die Türme jetzt am mittleren Wegabschnitt auf und zeigt bereits anrückende Gegner. Einzelstufen verwenden nur einen Turm pro Art. **◎ / Testbereich** richtet die Kamera auf Anmarsch und Schusszone. Level 25 besiegt Gegner weiterhin schnell; Schaden, Reichweite und Gegnerleben bleiben unverändert. Alte Test-Lesezeichen behalten ihre bisherige Aufstellung; für die neue Arena einen neuen Test starten.
-
-Der Testlink ist eine temporäre Pages-Unterseite. Nach einer späteren Main-Veröffentlichung gegebenenfalls den Workflow **Deploy SPIRE** auf diesem Branch erneut ausführen. Lokal selbst starten: `npm ci`, `npm run idle:dev -- --port 5193`, dann `http://127.0.0.1:5193/tower-test.html` (separater Port zum Hauptspiel).
+Der Testlink ist eine temporäre Pages-Unterseite. Nach einer späteren Main-Veröffentlichung den Workflow **Deploy SPIRE** auf diesem Branch erneut ausführen. Der Workflow erhält sämtliche Main-Dateien bytegleich. Lokal: `npm ci`, `npm run idle:dev -- --port 5193`, dann `http://127.0.0.1:5193/tower-test.html`.
 
 ---
 
