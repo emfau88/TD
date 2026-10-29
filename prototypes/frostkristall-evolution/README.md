@@ -49,4 +49,4 @@ Die Kartenbilder stammen aus der laufenden isolierten Vorschau mit echten Origin
 
 Die gemeinsame Frostpalette liest sich schlüssiger als wechselnde Elemente. Die frühen Formen und die spät hinzukommenden Streben/Facetten sind wiedererkennbar; die Größe bleibt ruhig. Echte neue Silhouetten funktionieren hier besser als bloße kleine Abzeichen. Auf 320 px sind einzelne Übergänge, besonders 3→5 und 5→10, dennoch subtil. 15/20/25 unterscheiden sich in der Fassung klarer; eine exakte Rangfolge allein am Bild ist nicht in jeder Situation selbstverständlich. Diese Grenze ist für die gemeinsame Sichtprüfung offengelegt. Keine behauptete visuelle Nutzerfreigabe.
 
-Veröffentlichungsnachweis wird nach erfolgreichem Pages-Lauf ergänzt.
+Veröffentlicht als `c8c05a55deecb19d45feeb80f26b12747d379031` auf `main`. [Pages-Lauf 40947405969](https://github.com/emfau88/TD/actions/runs/40947405969) einschließlich Build und Publish erfolgreich. Öffentliche Revision 1 anschließend im Browser geprüft: alle acht Stufen geladen, eisblaue Stufe 2 im Flugbild, Mischreihen und Vergleich sichtbar, keine Konsolenfehler. [Live-Screenshot](screenshots/live-comparison.jpg).
