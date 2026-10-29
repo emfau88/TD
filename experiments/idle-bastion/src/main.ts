@@ -953,6 +953,13 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
           introPortraits = await portraitsReady;
           if (scene !== view || session !== live) return;
           ready = true; drawDockArt(view); view.setSelected(selectedPadId); syncUI();
+          if(probeSlot?.startsWith('tower-arena-')) {
+            view.frameTowerTest();
+            if(!document.getElementById('tower-test-camera')){
+              const button=document.createElement('button');button.id='tower-test-camera';button.type='button';button.textContent='◎';button.title=language()==='de'?'Testbereich':'Test area';button.setAttribute('aria-label',button.title);
+              button.addEventListener('click',()=>scene?.frameTowerTest());document.querySelector('.map-controls')?.prepend(button);
+            }
+          }
           if (['ready', 'combat', 'upgrade', 'frost', 'observe'].includes(live.battle.introduction.stage)) view.focusGuidedDefense();
           loadingScreen()?.complete();
           if (intro?.active) element('onboarding-primary').focus({ preventScroll: true });

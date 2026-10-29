@@ -80,6 +80,7 @@ export class BattleScene extends Phaser.Scene {
   private wispName!: Phaser.GameObjects.Text;
   private combatEffects!: CombatEffects;
   private evolution!: EvolutionView;
+  private towerTestFrame = false;
   private buildKind?: TowerId;
   private groundMode?: 'mara' | BuildingId;
   private groundCell?: GridCell;
@@ -293,7 +294,11 @@ export class BattleScene extends Phaser.Scene {
     this.resizeCamera();
     this.cameras.main.centerOn(frame.x, this.portraitCamera ? frame.y : this.sim.layout.bounds.height / 2);
   }
+  frameTowerTest(): void {
+    this.towerTestFrame = true; this.overview = false; this.relativeZoom = 1; this.resizeCamera();
+  }
   resetCamera(): void {
+    this.towerTestFrame = false;
     this.guidedDefenseFrame = false;
     this.relativeZoom = 1; this.overview = true; this.resizeCamera();
     this.cameras.main.centerOn(this.sim.layout.bounds.width / 2, this.sim.layout.bounds.height / 2);
@@ -320,6 +325,7 @@ export class BattleScene extends Phaser.Scene {
     camera.setViewport(0, top, this.scale.width, viewHeight);
     this.baseZoom = portrait && !this.overview ? Math.max(this.scale.height / height, this.scale.width / 640)
       : Math.min(this.scale.width / (this.overview ? width : 1120), viewHeight / height);
+    if(this.towerTestFrame) this.baseZoom = Math.min(this.scale.width/520,viewHeight/400);
     const defense = this.guidedDefenseFrame && portrait ? this.defenseFrame(this.guidedDefensePad) : undefined;
     if (defense) this.baseZoom = tutorialDefenseZoom(this.baseZoom, this.scale.width, viewHeight, defense);
     camera.setZoom(this.baseZoom * this.relativeZoom);
@@ -327,6 +333,7 @@ export class BattleScene extends Phaser.Scene {
     const initialY = portrait && !this.overview ? camera.displayHeight / 2 - 40 : height / 2;
     camera.centerOn(!center || changedOrientation ? defense?.x ?? (portrait ? 280 : 560) : center.x,
       !center || changedOrientation ? defense?.y ?? initialY : center.y);
+    if(this.towerTestFrame)camera.centerOn(440,210);
     this.cameraFitted = true; this.hooks.changed();
   }
   private fitCameraBounds(): void {

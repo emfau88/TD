@@ -42,3 +42,10 @@ Der vorbereitete Welle-40-Test ist für Level 25 deutlich unterfordernd: unverä
 
 - `a5db533`: vollständige isolierte Spielintegration, Szenariostarter, Speichertrennung, Tests, Screenshots, README und Preview-Workflow.
 - Nachfolgender Abschlusscommit enthält nur erweiterten Test/Nachweise/README; veröffentlichter Spielcode bleibt `a5db533`.
+
+
+## Sichtbare Testarena · Folgeauftrag 29.10.2026
+
+Türme auf mittlere Wegstrecke versetzt; unbenutzter Startturm sicher hinten. Einzelstufen zeigen einen Turm pro Art. Wave 41 läuft über normale Updates bis zum sichtbaren Anmarsch, danach pausierter Save. Kamera zeigt Anmarsch und Schusszone, ◎ zentriert erneut. Keine Änderung an Kampfwerten, Maplayout, Saveformat oder Offline-Regeln. Alte Probe-URLs bleiben gültig.
+
+7/7 gezielte Tests bestanden (27 Aufstellungen, 16 Einzelstufen mit realen Schüssen und Save-Roundtrip); Produktionsbuild erfolgreich. Tatsächlicher Level-25-Waldwächterkampf auf Desktop und 390 px geprüft: Gegner vor Turm sichtbar, Treffer im Ausschnitt. Mobiler Kamerabutton auf Symbol gekürzt. Steinschleuder-Erweiterung folgt als separates Paket.

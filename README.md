@@ -10,13 +10,13 @@ Waldwächter und Frostkristall mit den kompakten Skins **1 · 2 · 3 · 5 · 10 
 
 1. Auf der Testseite beide Turmarten, Waldwächter oder Frostkristall wählen. Alle acht Stufen oder eine bestimmte Stufe sind direkt verfügbar.
 2. „Zur pausierten Verteidigung“ / „Return to paused defense“ bestätigen. Mit ▶ oben den echten Kampf starten; Türme anklicken, aufwerten, Pause/Zoom und Reload ausprobieren.
-3. Die erzeugte `?probe=tower-…`-Adresse als Lesezeichen speichern, um genau diesen Test fortzusetzen. Über das Spielmenü zur Testauswahl zurückkehren.
+3. Die erzeugte `?probe=tower-arena-…`-Adresse als Lesezeichen speichern, um genau diesen Test fortzusetzen. Über das Spielmenü zur Testauswahl zurückkehren.
 
 Jeder Start erstellt einen **separaten Spielstand**. Auch [eine frische normale Partie dieses Branches](https://emfau88.github.io/TD/previews/tower-evolution/?fresh=1) bleibt vollständig von deiner Hauptpartie getrennt. Der vorbereitete Grafiktest verwendet eine Karte nach Welle 40 mit neu zusammengestellten Türmen und 100.000 Testgold; er ist kein Balancetest. Kampfwerte, Saveformat und Offline-Regeln wurden nicht geändert. Kein Kongregate-Export.
 
 **Geprüft:** 428/428 Tests, Produktionsbuild; [Prüfbericht und echte Spielaufnahmen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md).
 
-Bei hohen Teststufen können Gegner schon am Eingang bzw. außerhalb des Hochkant-Ausschnitts sterben: Die Originalwerte sind unverändert und Level 25 ist für Welle 40 sehr stark. Für deutlich sichtbare Angriffe niedrigere Einzelstufen oder die Kartenübersicht nutzen.
+Der Test stellt die Türme jetzt am mittleren Wegabschnitt auf und zeigt bereits anrückende Gegner. Einzelstufen verwenden nur einen Turm pro Art. **◎ / Testbereich** richtet die Kamera auf Anmarsch und Schusszone. Level 25 besiegt Gegner weiterhin schnell; Schaden, Reichweite und Gegnerleben bleiben unverändert. Alte Test-Lesezeichen behalten ihre bisherige Aufstellung; für die neue Arena einen neuen Test starten.
 
 Der Testlink ist eine temporäre Pages-Unterseite. Nach einer späteren Main-Veröffentlichung gegebenenfalls den Workflow **Deploy SPIRE** auf diesem Branch erneut ausführen. Lokal selbst starten: `npm ci`, `npm run idle:dev -- --port 5193`, dann `http://127.0.0.1:5193/tower-test.html` (separater Port zum Hauptspiel).
 

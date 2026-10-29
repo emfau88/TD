@@ -40,8 +40,10 @@ test('prepared lineups contain every requested skin and round-trip without a new
   const b=createTowerProbe(scenario,earned,level), saved=b.snapshot();
   assert.deepEqual(IdleBattle.restore(saved)?.snapshot(),saved);
   if(level==='all')assert.deepEqual([...new Set(b.towers.map(t=>t.level))].sort((a,c)=>a-c),SKIN_LEVELS);
-  else assert.equal(b.towers.filter(t=>t.level===level).length>=4,true);
+  else assert.equal(b.towers.filter(t=>t.level===level).length>=(scenario==='mixed'?2:1),true);
   assert.ok(b.towers.every(t=>stats(t).damage>0));
+  assert.ok(b.enemies.some(e=>e.x>=320));
+  assert.ok(b.towers.every(t=>t.x>=460));
  }
 });
 test('every optical level survives real shots, upgrades, sales and save/reload using normal rules',()=>{
@@ -53,7 +55,9 @@ test('every optical level survives real shots, upgrades, sales and save/reload u
   const copy=IdleBattle.restore(b.snapshot())!;assert.ok(copy);
   assert.deepEqual(copy.snapshot(),b.snapshot());
   copy.gold += 1_000_000; copy.earned += 1_000_000; // Test-only budget for a real 25→26 purchase.
-  assert.ok(copy.upgrade(copy.towers[0].uid));assert.ok(copy.sell(copy.towers[1].uid));
+  assert.ok(copy.upgrade(copy.towers[0].uid));
+  const disposable=copy.towers.find(t=>!t.protected)??copy.build(copy.layout.towerPads.find(p=>copy.canBuild(p.id,1))!.id,1)!;
+  assert.ok(copy.sell(disposable.uid));
   assert.ok(IdleBattle.restore(copy.snapshot()));
  }
 });
