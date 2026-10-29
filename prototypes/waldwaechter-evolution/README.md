@@ -56,7 +56,7 @@ Geändert: Prototypverzeichnis, dessen Kopierliste in scripts/package-pages.mjs 
 
 ## Veröffentlichung
 
-Commit und erfolgreicher Pages-Lauf werden nach Veröffentlichung ergänzt.
+Commit [e595682](https://github.com/emfau88/TD/commit/e595682f3dbe76fff542089d05463408fb3510c3) auf main veröffentlicht. [Pages-Lauf 40941639911](https://github.com/emfau88/TD/actions/runs/40941639911) erfolgreich. Öffentliche Revision 3 im Browser geprüft: alle acht Stufen, Drei-Pfeil-Salven, Flugstandbild und vollständig geladene Assets; keine Konsolenfehler. Produktiver Spielcode und Originalassets gegenüber 0658f8a unverändert.
 
 ---
 
