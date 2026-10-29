@@ -13,6 +13,8 @@ Waldwächter, Frostkristall und **Steinschleuder** mit den kompakten Skins **1 �
 
 Jeder Start erstellt einen **separaten Spielstand**. Auch [eine frische normale Partie des Branches](https://emfau88.github.io/TD/previews/tower-evolution/?fresh=1) ist von deiner Hauptpartie getrennt. Vorbereitete Welle-40-Karte, normale Kampfregeln, 100.000 Testgold: Grafiktest, kein Balancetest. Hohe Stufen töten weiterhin schnell, jetzt im sichtbaren Ausschnitt. Kampfwerte, Saveformat und Offline-Regeln unverändert. Kein Kongregate-Export.
 
+**Live veröffentlicht:** [erfolgreiches Pages-Deployment](https://github.com/emfau88/TD/actions/runs/40963076081), Spielcode `1d62198`; alle 604 Hauptspiel-Dateien bytegleich erhalten.
+
 **Prüfung:** 428/428 Tests und Produktionsbuild erfolgreich; 36 Aufstellungen und jede der 24 optischen Stufen mit echten Schüssen, Aufwerten und Save-Roundtrip. [Prüfbericht / Deployment / Spielaufnahmen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md) · [Steinschleuder-Sprites und Quellen](prototypes/steinschleuder-evolution/README.md).
 
 Der Testlink ist eine temporäre Pages-Unterseite. Nach einer späteren Main-Veröffentlichung den Workflow **Deploy SPIRE** auf diesem Branch erneut ausführen. Der Workflow erhält sämtliche Main-Dateien bytegleich. Lokal: `npm ci`, `npm run idle:dev -- --port 5193`, dann `http://127.0.0.1:5193/tower-test.html`.

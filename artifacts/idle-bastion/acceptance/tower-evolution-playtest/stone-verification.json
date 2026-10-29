@@ -1,0 +1,28 @@
+{
+  "branch": "codex/tower-evolution-playtest",
+  "runtimeCommit": "1d6219829e5081690eb41b6bffbed148ce87c1d1",
+  "mainCommit": "93703cb66e369ed7f3a724f0e42575775cc12bc4",
+  "deployment": 40963076081,
+  "preservedMainFiles": 604,
+  "testsPassed": 428,
+  "testsFailed": 0,
+  "scenarioCases": 36,
+  "combatTierCases": 24,
+  "originalAtlasesUnchanged": true,
+  "viewports": [
+    [
+      1280,
+      800
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      320,
+      568
+    ]
+  ],
+  "browserErrors": [],
+  "notes": "Full optical-level combat matrix automated; representative desktop/mobile/individual high-level and live browser smoke documented in REPORT.md."
+}

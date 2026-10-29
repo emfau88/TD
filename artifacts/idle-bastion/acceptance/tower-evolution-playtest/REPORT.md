@@ -53,7 +53,7 @@ Türme auf mittlere Wegstrecke versetzt; unbenutzter Startturm sicher hinten. Ei
 
 ## Steinschleuder und finale Arena · 29.10.2026
 
-**Runtime ergänzt, lokal geprüft; neuer Pages-Lauf folgt nach Push.** Arena separat als `d1fbc75` gesichert. Vorherige Abschnitte dokumentieren den damaligen Zwei-Turm-Stand; aktuell sind drei Turmarten enthalten.
+**Veröffentlicht und live geprüft:** Runtime `1d6219829e5081690eb41b6bffbed148ce87c1d1`; [Pages-Lauf 40963076081](https://github.com/emfau88/TD/actions/runs/40963076081) erfolgreich. Herkunft per öffentlicher `feature-preview.json` bestätigt. Guard bestätigt sämtliche **604 Main-Dateien bytegleich**, Main weiter `93703cb66e369ed7f3a724f0e42575775cc12bc4`. Öffentliche Auswahl, alle acht Steinschleudern, Kampf bis Welle 42 und Pause geprüft; keine Browserwarnungen/Fehler. Arena separat als `d1fbc75` gesichert. Vorherige Abschnitte dokumentieren den damaligen Zwei-Turm-Stand; aktuell sind drei Turmarten enthalten.
 
 - Steinschleuder (Tower 03) mit acht Skins 1/2/3/5/10/15/20/25. Erste drei aus dem vorhandenen Paket, fünf neue kompakte Konstruktionen und passende Steinprojektile. Basis und Waffe getrennt; alte Waffen-/Projektilanimationen 1–3 unverändert. Neue Stufen: kurzer Rückstoß, ein sichtbarer rotierender Stein pro logischem Schuss und vorhandener Steineinschlag. Keine mehrphasige neue Spann-/Nachladeanimation behauptet.
 - Quellen und Prompts unter `prototypes/steinschleuder-evolution/sources/`, erzeugt mit eingebautem Imagegen; native PNGs in `assets/compact/`, Vergleich und Montage in README/manifest. Originalatlanten per SHA-256 unverändert; keine Farbfilter.
@@ -71,3 +71,6 @@ Türme auf mittlere Wegstrecke versetzt; unbenutzter Startturm sicher hinten. Ei
 | 390 Pixel | 320 Pixel | Einzelstufe 25 |
 |---|---|---|
 | ![Alle Stufen 390](stone-all-390-final.png) | ![Alle Stufen 320](stone-all-320-final.png) | ![Stufe 25](stone25-390-final.png) |
+
+
+![Öffentlich ausgelieferter Branch: Steinschleuder und Anmarsch](stone-live-desktop.png)
