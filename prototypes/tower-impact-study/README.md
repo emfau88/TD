@@ -40,7 +40,7 @@ Der sichtbare Mikrobenchmark zeichnet 96 Treffer pro Bild, 40 Frames je Stufe, a
 
 Die Entwicklung ist jetzt auch über Formen und Farben erkennbar, besonders bei Frostkrone/Prismenkreuz/Polarstern sowie Gold-/Smaragdsalven. Die hohen Steinwirkungen dürfen den getroffenen Gegner kurz verdecken und wirken im Dichtvergleich deutlich lebhafter. Ihr Stil ist bewusst kräftig und grafisch; wie gut die gesamte Effektmischung im laufenden Spiel harmoniert, ist vor einer Integration noch gemeinsam zu beurteilen. Die frühen Stufen bleiben enger verwandt. Ein Standbild zeigt die versetzten Salven nur teilweise.
 
-**Gestalterische Nutzerfreigabe und ein späterer Belastungstest im vollständigen Spiel stehen aus.** Revision 3 wurde als `9b7efa0` mit [Pages 40971886603](https://github.com/emfau88/TD/actions/runs/40971886603) veröffentlicht. Nachweis der aktuellen Veröffentlichung folgt unten.
+**Gestalterische Nutzerfreigabe und ein späterer Belastungstest im vollständigen Spiel stehen aus.** Revision 3 wurde als `9b7efa0` mit [Pages 40971886603](https://github.com/emfau88/TD/actions/runs/40971886603) veröffentlicht. Revision 4 ist als `03520cf61662cbec430215ecf8d8da5d16a85bb8` gepusht; [Pages 40974609788](https://github.com/emfau88/TD/actions/runs/40974609788) erfolgreich inklusive Produktionsbuild. Öffentliche Metadaten/Browserseite geprüft, keine Warnungen oder Fehler. Alle 604 Main-Dateien wurden bytegleich erhalten; Main bleibt `93703cb66e369ed7f3a724f0e42575775cc12bc4`.
 
 ### Aktuelle Browseraufnahmen
 
