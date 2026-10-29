@@ -77,3 +77,9 @@ Die Entwürfe für 5 und 25 fehlen. Diese Empfehlung ist weder eine zusätzliche
 - Python/Pillow ist nur für die Asset-Aufbereitung erforderlich. Die Vorschau selbst hat keine zusätzliche Bibliothek.
 - Lokal: `python -m http.server 5192 --directory prototypes/waldwaechter-evolution`, dann http://127.0.0.1:5192/ öffnen. Wegen JSON-Laden ist ein HTTP-Server erforderlich.
 
+
+## Veröffentlichung
+
+Prototyp-Commit: [48b2276](https://github.com/emfau88/TD/commit/48b2276aa18b3ab27030d664f9ffbf387888e9b9), direkt auf main gepusht.
+[Pages-Lauf 40931266839](https://github.com/emfau88/TD/actions/runs/40931266839): erfolgreich.
+Die öffentliche Vorschauseite wurde anschließend im echten Browser geöffnet: alle sechs Stufen geladen, Karte und Vergleich sichtbar, keine Konsolenfehler. Die gemeinsame gestalterische Freigabe bleibt offen.
