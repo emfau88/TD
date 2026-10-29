@@ -98,3 +98,7 @@ Türme auf mittlere Wegstrecke versetzt; unbenutzter Startturm sicher hinten. Ei
 - Danach separate [Impact-Designstudie](../../../../prototypes/tower-impact-study/README.md), keinerlei Änderung an CombatEffects oder sonstigem Spielcode. Vorlage/10/20 für alle vier Türme; Browser-/Bildnachweise und bewusst verbleibende Gestaltungsfragen dort. Kein Main-Merge, kein Kongregate-Export.
 
 - Impact-Studie e4f59ee: [Pages 40968759103](https://github.com/emfau88/TD/actions/runs/40968759103) erfolgreich, öffentliche Seite/Assets ohne Warnungen/Fehler geprüft, erneut 604 Main-Dateien bytegleich. Kleine abschließende Montagekorrektur: Sonderfont nur für 2/5/8 statt für alle Ziffern, 1/3/0 dadurch wieder lesbar; Neupackung/2.880-Richtungsprüfung bestanden, Laufzeitassets unverändert.
+
+## Impact-Studie Revision 3
+
+Auf Nutzerkorrektur Originale niedriger Main-Stufen plus echte Steigerung je Skin. 16/36 Vergleichsfelder, mehr Feuerwerk, eigener Level-15-Effekt. Nur Prototyp: keine Spielcodeänderung. Aktuelle Prüfung und Performance-Messung in [README](../../../../prototypes/tower-impact-study/README.md). Die frühere Empfehlung „drei Wirkungsgruppen reichen“ ist damit verworfen.

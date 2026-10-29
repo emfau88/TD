@@ -1,0 +1,153 @@
+{
+  "mainSha": "93703cb66e369ed7f3a724f0e42575775cc12bc4",
+  "levels": [
+    1,
+    2,
+    3
+  ],
+  "sources": [
+    {
+      "kind": 1,
+      "shot": {
+        "width": 8,
+        "height": 40,
+        "frameMap": [
+          0,
+          1,
+          2
+        ],
+        "tags": [],
+        "asset": "low-shot-1.png",
+        "source": "public/assets/Tower 01 - Level 01 - Projectile.png",
+        "sha256": "ba18ae667c49fe543e98af6910f02b7d7104e95146dd3226aadc023740fe892b"
+      },
+      "impact": {
+        "width": 64,
+        "height": 64,
+        "frameMap": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "tags": [],
+        "asset": "low-impact-1.png",
+        "source": "public/assets/Tower 01 - Weapon - Impact.png",
+        "sha256": "b6875299a9876cd9f38a77d7a291da96fcec61ecbee23fbe47222a448e056c79"
+      }
+    },
+    {
+      "kind": 2,
+      "shot": {
+        "width": 32,
+        "height": 32,
+        "frameMap": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "tags": [],
+        "asset": "low-shot-2.png",
+        "source": "public/assets/Tower 02 - Level 01 - Projectile.png",
+        "sha256": "b18bf28ffb78158901eef6e3d2651ae2cf880d88a87770561d630af208295cae"
+      },
+      "impact": {
+        "width": 64,
+        "height": 64,
+        "frameMap": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "tags": [],
+        "asset": "low-impact-2.png",
+        "source": "public/assets/Tower 02 - Level 01 - Projectile - Impact.png",
+        "sha256": "c15c9a9b63d4998c94d3c8a845546cedd8326a991fd881c9ed2bdae788824ec2"
+      }
+    },
+    {
+      "kind": 3,
+      "shot": {
+        "width": 10,
+        "height": 10,
+        "frameMap": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "tags": [],
+        "asset": "low-shot-3.png",
+        "source": "public/assets/Tower 03 - Level 01 - Projectile.png",
+        "sha256": "ed0b28c579f11c86f9b34a086fab8d8a44867f1ec793812791ee8d75121afcc2"
+      },
+      "impact": {
+        "width": 64,
+        "height": 64,
+        "frameMap": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "tags": [],
+        "asset": "low-impact-3.png",
+        "source": "public/assets/Tower 03 - Level 01 - Projectile - Impact.png",
+        "sha256": "d4d941e20f9c5850dbcd8c638639f6120761e55bdce3b3dd3f2fe28b4e4ff2b9"
+      }
+    },
+    {
+      "kind": 4,
+      "shot": {
+        "width": 8,
+        "height": 8,
+        "frameMap": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "tags": [],
+        "asset": "low-shot-4.png",
+        "source": "public/assets/Tower 04 - Level 01 - Projectile.png",
+        "sha256": "a98571849f4808e0090bd68f68a027e1747e91c9979921c14c62b688bd78451c"
+      },
+      "impact": {
+        "width": 64,
+        "height": 64,
+        "frameMap": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "tags": [],
+        "asset": "low-impact-4.png",
+        "source": "public/assets/Tower 04 - Level 01 - Projectile - Impact.png",
+        "sha256": "9000dbbb0b7a9872fe6adf5a605a1baf3b9c58352cab9e1268ab5add4d0be915"
+      }
+    }
+  ],
+  "additionalDesignSource": {
+    "source": "public/assets/Tower 03 - Level 03 - Projectile - Impact.png",
+    "asset": "stone-impact-3.png",
+    "sha256": "6057f1044b839b60e0021ec1c2bb684f533f0867b9937fc5a5d03f3814fcfd81"
+  }
+}
