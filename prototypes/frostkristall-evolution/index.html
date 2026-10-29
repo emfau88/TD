@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#142220">
+<title>Frostkristall · Grafikstudie</title>
+<link rel="stylesheet" href="./styles.css?v=1">
+<script type="module" src="./preview.js?v=1"></script>
+</head>
+<body>
+<main>
+<header class="intro">
+<p class="eyebrow">Towers &amp; Tantrums · Isolierter Prototyp</p>
+<h1>Frostkristall. Acht Stufen.</h1>
+<p>1 · 2 · 3 · 5 · 10 · 15 · 20 · 25 – kompakte Sockel, markante Kristalle.</p>
+</header>
+<section aria-labelledby="shot-title">
+<div class="section-head"><h2 id="shot-title">Schussprobe</h2><span class="caption">Originaler Spielmaßstab</span></div>
+<div class="shot-levels" role="group" aria-label="Turmstufe für die Schussprobe" id="shot-levels"></div>
+<p id="shot-pattern"></p>
+<canvas id="shot" aria-label="Animierter Frostkristall mit einem Frostgeschoss; abspielbar, pausierbar und als Einzelbild prüfbar"></canvas>
+<div class="shot-options">
+<label>Richtung <select id="shot-direction"><option value="0">Oben</option><option value="45" selected>Rechts oben</option><option value="90">Rechts</option><option value="135">Rechts unten</option><option value="180">Unten</option><option value="225">Links unten</option><option value="270">Links</option><option value="315">Links oben</option></select></label>
+<label>Tempo <select id="shot-speed"><option value="1">Normal</option><option value=".25">Zeitlupe ¼×</option></select></label>
+</div>
+<div class="shot-playback"><button id="shot-play" type="button">Pause</button><button id="shot-restart" type="button">Neustart</button><button id="shot-flight" type="button">Flugbild</button><button id="shot-impact" type="button">Trefferbild</button></div>
+<label class="shot-timeline" for="shot-time">Zeit <input id="shot-time" type="range" min="0" max="1800" value="0" step="1"><output id="shot-phase" for="shot-time">Bereit</output></label>
+<p class="caption">Ein sichtbares Frostgeschoss pro Zyklus. Kristall bleibt aufrecht; Stufe 1 verwendet die Originalanimation. Die blauen Farbvarianten und neuen Stufen zeigen eine vorläufige Kristallbewegung. Wiederholung nach 1,8 s nur zum Vergleich; keine Änderung am Spiel.</p>
+</section>
+
+<section class="map-section" aria-labelledby="map-title">
+<div class="section-head">
+<h2 id="map-title">Auf der Karte</h2>
+<label class="toggle"><input id="labels" type="checkbox"> Level zeigen</label>
+</div>
+<div class="map-controls">
+<label for="rows">Reihen <select id="rows"><option value="2">2 Reihen</option><option value="3" selected>3 Reihen</option></select></label>
+<label for="neighbor">Vorderreihe <select id="neighbor"><option value="warden" selected>Waldwächter</option><option value="frost">Frostkristalle</option></select></label>
+</div>
+<canvas id="map" aria-label="Mehrere direkt benachbarte Turmreihen auf Originaltexturen im normalen Spielmaßstab"></canvas>
+<p class="height-note">Gleicher Bodenanker, höchstens 58 Kartenpixel hoch – einschließlich Original-Angriffsframes.</p>
+<p class="scale-note" id="scale-note" role="status">Originalgrafiken werden geladen …</p>
+<p class="caption"><span id="row-note"></span> Originale Feldabstände und Tiefensortierung. Zwei Reihen zeigen jede Froststufe genau einmal.</p>
+</section>
+
+<section aria-labelledby="comparison-title">
+<div class="section-head"><h2 id="comparison-title">Die Entwicklung</h2><a href="./comparison.png?v=1" download>Vergleich als PNG</a></div>
+<div class="comparison" id="comparison"></div>
+<p class="caption">1 / 2 / 3: vorhandene Bauformen mit kompakteren Sockeln; 2 und 3 als separate eisblaue Farbvarianten. 5 bis 25: neue Skins. Im echten Spiel verwenden beide Turmarten bisher nur die drei Grafikstufen bei Level 1 / 4 / 7.</p>
+</section>
+
+<section aria-labelledby="detail-title">
+<div class="section-head"><h2 id="detail-title">Pixel für Pixel</h2>
+<label>Vergrößerung <select id="detail-zoom"><option value="2">2×</option><option value="3" selected>3×</option><option value="4">4×</option></select></label>
+</div>
+<div class="levels" role="group" aria-label="Turmstufe für die Detailansicht" id="levels"></div>
+<div class="detail-layout">
+<div class="detail-scroll" tabindex="0" aria-label="Vergrößerte Pixelgrafik, bei Bedarf seitlich scrollbar"><canvas id="detail" width="96" height="140" aria-label="Zusammengesetzter Turm in Vergrößerung"></canvas></div>
+<div class="parts">
+<h3 id="detail-name">Winterkrone · Level 25</h3>
+<p id="detail-description"></p>
+<div class="part-images"><figure><img id="base-part" alt="Separater Frostsockel" width="64" height="192"><figcaption>Sockel · 64 × 192</figcaption></figure><figure><img id="crystal-part" alt="Separater schwebender Kristall" width="64" height="64"><figcaption>Kristall · 64 × 64</figcaption></figure></div>
+<div class="downloads"><a id="download-base" download>Basis herunterladen</a><a id="download-crystal" download>Kristall herunterladen</a></div>
+</div>
+</div>
+</section>
+<footer>
+<p><strong>Nur eine Vorschau.</strong> Grundfläche höchstens 64 Grafikpixel breit, gleicher Fußpunkt wie im Spiel. Auch die vorhandenen Angriffsframes passen in den gemeinsamen Höhenrahmen. Neue Sockel und Kristalle sind getrennte Assets; ihre Schussbewegung ist vorläufig.</p>
+<p>Im Originalpack wechseln die Farben von Cyan über Bernstein zu Grün. Diese Studie bleibt durchgehend eisblau. Farbvarianten und kompaktere Sockel existieren ausschließlich im Prototyp. Keine Änderungen an Spielgrafiken, Verlangsamung, Schaden, Angriffstempo oder Speicherständen.</p>
+<div class="downloads"><a href="../waldwaechter-evolution/?revision=3">Waldwächter vergleichen</a><a href="https://github.com/emfau88/TD/tree/main/prototypes/frostkristall-evolution">Assets und Prüfnachweis</a></div>
+</footer>
+</main>
+</body>
+</html>

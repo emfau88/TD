@@ -1,0 +1,424 @@
+{
+  "revision": 1,
+  "baseCommit": "823d2ea",
+  "levels": [
+    {
+      "level": 1,
+      "originalStage": 1,
+      "upperShift": 38,
+      "crystalY": -16.9144,
+      "attackSize": 48,
+      "attackCols": 16,
+      "frameMap": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "idleCount": 10,
+      "base": "assets/compact/level-1-base.png",
+      "crystal": "assets/compact/level-1-crystal.png",
+      "baseBox": [
+        0,
+        120,
+        64,
+        192
+      ],
+      "crystalBox": [
+        18,
+        18,
+        46,
+        46
+      ]
+    },
+    {
+      "level": 2,
+      "originalStage": 2,
+      "upperShift": 48,
+      "crystalY": -10.6144,
+      "attackSize": 64,
+      "attackCols": 17,
+      "frameMap": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "idleCount": 16,
+      "paletteCorrected": true,
+      "source": "sources/level-2-ice-edit.png",
+      "projectile": "assets/compact/level-2-projectile.png",
+      "base": "assets/compact/level-2-base.png",
+      "crystal": "assets/compact/level-2-crystal.png",
+      "baseBox": [
+        0,
+        121,
+        64,
+        192
+      ],
+      "crystalBox": [
+        18,
+        12,
+        46,
+        52
+      ]
+    },
+    {
+      "level": 3,
+      "originalStage": 3,
+      "upperShift": 50,
+      "crystalY": -9.354400000000002,
+      "attackSize": 64,
+      "attackCols": 20,
+      "frameMap": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "idleCount": 20,
+      "paletteCorrected": true,
+      "source": "sources/level-3-ice-edit.png",
+      "projectile": "assets/compact/level-3-projectile.png",
+      "base": "assets/compact/level-3-base.png",
+      "crystal": "assets/compact/level-3-crystal.png",
+      "baseBox": [
+        0,
+        114,
+        64,
+        192
+      ],
+      "crystalBox": [
+        18,
+        6,
+        46,
+        58
+      ]
+    },
+    {
+      "level": 5,
+      "crystalY": -9.354400000000002,
+      "source": "sources/level-5-ice-edit.png",
+      "split": 1040,
+      "sourceBodyBox": [
+        324,
+        109,
+        860,
+        847
+      ],
+      "sourceCrystalBox": [
+        1222,
+        285,
+        1476,
+        670
+      ],
+      "projectile": "assets/compact/level-5-projectile.png",
+      "base": "assets/compact/level-5-base.png",
+      "crystal": "assets/compact/level-5-crystal.png",
+      "baseBox": [
+        2,
+        110,
+        62,
+        192
+      ],
+      "crystalBox": [
+        18,
+        11,
+        46,
+        53
+      ]
+    },
+    {
+      "level": 10,
+      "crystalY": -9.354400000000002,
+      "source": "sources/level-10-ice-edit.png",
+      "split": 917,
+      "sourceBodyBox": [
+        224,
+        161,
+        811,
+        941
+      ],
+      "sourceCrystalBox": [
+        1025,
+        296,
+        1295,
+        699
+      ],
+      "projectile": "assets/compact/level-10-projectile.png",
+      "base": "assets/compact/level-10-base.png",
+      "crystal": "assets/compact/level-10-crystal.png",
+      "baseBox": [
+        1,
+        110,
+        63,
+        192
+      ],
+      "crystalBox": [
+        16,
+        8,
+        48,
+        56
+      ]
+    },
+    {
+      "level": 15,
+      "crystalY": -9.354400000000002,
+      "source": "sources/level-15-generated.png",
+      "split": 911,
+      "sourceBodyBox": [
+        223,
+        153,
+        824,
+        942
+      ],
+      "sourceCrystalBox": [
+        1000,
+        315,
+        1352,
+        713
+      ],
+      "projectile": "assets/compact/level-15-projectile.png",
+      "base": "assets/compact/level-15-base.png",
+      "crystal": "assets/compact/level-15-crystal.png",
+      "baseBox": [
+        1,
+        110,
+        63,
+        192
+      ],
+      "crystalBox": [
+        15,
+        13,
+        49,
+        51
+      ]
+    },
+    {
+      "level": 20,
+      "crystalY": -9.354400000000002,
+      "source": "sources/level-20-generated.png",
+      "split": 889,
+      "sourceBodyBox": [
+        170,
+        110,
+        790,
+        945
+      ],
+      "sourceCrystalBox": [
+        990,
+        265,
+        1337,
+        752
+      ],
+      "projectile": "assets/compact/level-20-projectile.png",
+      "base": "assets/compact/level-20-base.png",
+      "crystal": "assets/compact/level-20-crystal.png",
+      "baseBox": [
+        1,
+        110,
+        62,
+        192
+      ],
+      "crystalBox": [
+        14,
+        8,
+        50,
+        56
+      ]
+    },
+    {
+      "level": 25,
+      "crystalY": -9.354400000000002,
+      "source": "sources/level-25-generated.png",
+      "split": 869,
+      "sourceBodyBox": [
+        219,
+        256,
+        746,
+        954
+      ],
+      "sourceCrystalBox": [
+        993,
+        374,
+        1326,
+        713
+      ],
+      "projectile": "assets/compact/level-25-projectile.png",
+      "base": "assets/compact/level-25-base.png",
+      "crystal": "assets/compact/level-25-crystal.png",
+      "baseBox": [
+        1,
+        110,
+        63,
+        192
+      ],
+      "crystalBox": [
+        12,
+        12,
+        52,
+        51
+      ]
+    }
+  ],
+  "scale": 0.63,
+  "cellSize": 40,
+  "baseY": 13,
+  "baseOriginY": 0.8666666666666667,
+  "frameBase": [
+    64,
+    192
+  ],
+  "frameCrystal": [
+    64,
+    64
+  ],
+  "maxHeight": 92,
+  "terrain": {
+    "grass": [
+      128,
+      64,
+      64,
+      64
+    ],
+    "horizontalPath": [
+      384,
+      64,
+      64,
+      64
+    ],
+    "tree": [
+      833,
+      384,
+      62,
+      64
+    ]
+  },
+  "hashes": {
+    "terrain.png": "0d36e48873dcfa12e656087da8e348b0ea2ddecf3b5f4724e9a5253b4e27c7f4",
+    "compact/level-1-base.png": "7e4fdb4db63d469404542a218b4eeb838db54a7e4213fa23e480818644cb9d0a",
+    "compact/level-1-crystal.png": "30ab409b934eac5b298e63195f200e87d65d5e7263fec8fc028a085fb111f02b",
+    "compact/level-10-base.png": "0f868d88a527834bb88122dce86eadb4348812b4aaf46d1b074c8d9e6b8e5f54",
+    "compact/level-10-crystal.png": "7c8c1ba6675405ada33daeb5c5307a2f817b23cf9cd34cc41d9e46907968edf6",
+    "compact/level-10-projectile.png": "e22c18daab778a1638639c6c10655cedaa6cc23abe096617fdd7ddc1e84db658",
+    "compact/level-15-base.png": "fd254860977313cb82d6e8099c5d95fb4fbb0aa6f1ee774da4924b1ca4dc7c8c",
+    "compact/level-15-crystal.png": "ab97e33f3f5196bab8f9bc326dcd389aa4a364ff17e6a7ee9304826ea7efbc93",
+    "compact/level-15-projectile.png": "5ea593204cdf3c0e9f66c49338033abe48f3b4e716b6963d9c54542c024a26c6",
+    "compact/level-2-base.png": "1916737e1800e9191e35fd23b4b47fe49d71be3cb294f4885506f405bc2af933",
+    "compact/level-2-crystal.png": "3614bad2ea00315109c7b37d68bc436dad823fac41ce2ff41e7701fbe2bb11b9",
+    "compact/level-2-projectile.png": "6dca5017f5823689de906ced23dd8a9ca16c461e99d614778ed40537ae570e77",
+    "compact/level-20-base.png": "1059af927f36192a7c04101b751fe039a34ec3c5d52ca50748e6cc5f30cfb5a8",
+    "compact/level-20-crystal.png": "87a41ec2c885785f163684f4d0886dd129996279720664beb76fe47a551f763f",
+    "compact/level-20-projectile.png": "f71791f24d1b2607f6feb38000277d10c27163f6f67c201f1c60be5bb1e6872f",
+    "compact/level-25-base.png": "6395d3b32a54c98df42ac6a69218f139b70b86e0c170897e2cb93fc2351bc675",
+    "compact/level-25-crystal.png": "852d38a54b42bcb38c19d420f98d8c65faeb0fbf48f09c58fe39de5621500e5c",
+    "compact/level-25-projectile.png": "8bcf5be83f4d964a58798f1ace7a8a3edaf99127e10d4368a071d3602d2d5e65",
+    "compact/level-3-base.png": "2ae21bd8d8d2b1c16a4b5616e1369f303a92438e1c8a95de87b8e3013804a9e9",
+    "compact/level-3-crystal.png": "966595133e9f6eac622a3a863ac8c666b6973c810baa5c7f10d4576339e13fa0",
+    "compact/level-3-projectile.png": "be2322597812163a2c44187d77b3e2aa61e0a35cc1d33534fb5f1067f5390aa5",
+    "compact/level-5-base.png": "66902e421fea245ebda9cf69cd08d515b518774955e6d1e3138de22455a86876",
+    "compact/level-5-crystal.png": "f80a6f40af4887a05b6099c3c68583eef60f2b65da029e60c78de7e0904efc19",
+    "compact/level-5-projectile.png": "4963f1f843fa9fff2bab0e3f590b9831107c6044bb21f9bc7c90f1d9eb5dd377",
+    "original/level-1-attack.png": "8cf9a8afc2249ea8923b9f5555a2a1e1bfcc20c7f6cb237252a2491f583edb6f",
+    "original/level-1-base.png": "5c8bf0a1af83468162f52bc6fc5fbd45e71d0bb8a76c7e8e7071a214255c6761",
+    "original/level-1-crystal.png": "be3345e54dd5e9438435ff0500662c7751fffe35a0e952b6e1f4551a00a5e32c",
+    "original/level-1-impact.png": "c15c9a9b63d4998c94d3c8a845546cedd8326a991fd881c9ed2bdae788824ec2",
+    "original/level-1-projectile.png": "b18bf28ffb78158901eef6e3d2651ae2cf880d88a87770561d630af208295cae",
+    "original/level-2-attack.png": "4b0deb70604fddf66a188d84e4612f01c4c183847bb951de15c1cf096259f609",
+    "original/level-2-base.png": "ebbe32c4ea1569a64a53c7f8cd52e1b2fa97a90c86830f9f4cf6638c3f7850df",
+    "original/level-2-crystal.png": "ae47edb490e6733b243ee1b73446d1ed3ca558fca99d623d7951035766e09e58",
+    "original/level-2-impact.png": "0556e8867fe26c13e0113e75ad41f5369f12a531d6055caf3ba41e086878f58a",
+    "original/level-2-projectile.png": "d5b811091adfbd2486fb211d1b7fb8c726082c7a4469e7df6e348327629d9a8f",
+    "original/level-3-attack.png": "7f2424b93f25fd5d658340a29b941142ce1dd19992328ef93021a9a123382d57",
+    "original/level-3-base.png": "ee4d72c7023473794311c921f92fd43162f68c74fe4ddb64df88337e0e863318",
+    "original/level-3-crystal.png": "cd2e57aa8e82ea597acc1e3a95d5248e0d3caaeea2532a74e6cd22ab471957b8",
+    "original/level-3-impact.png": "5ff541144644dfa4c293a2ea1317e54931fd3d3011a4236bd1c39047364570f8",
+    "original/level-3-projectile.png": "b68372c56757353f8e424ac3343b9e4b7f5fc8c9ece09ea03110f9b3bee65db4"
+  }
+}

@@ -23,6 +23,11 @@ const towerStudy = join(root, 'prototypes', 'waldwaechter-evolution');
 for (const name of ['index.html', 'styles.css', 'preview.js', 'shooting.js', 'shot-model.js', 'manifest.json', 'comparison.png', 'assets']) {
   await cp(join(towerStudy, name), join(output, 'prototypes', 'waldwaechter-evolution', name), { recursive: true });
 }
+// Separate frost study; no imports or asset requests from the production game.
+const frostStudy = join(root, 'prototypes', 'frostkristall-evolution');
+for (const name of ['index.html', 'styles.css', 'preview.js', 'study-model.js', 'manifest.json', 'comparison.png', 'assets']) {
+  await cp(join(frostStudy, name), join(output, 'prototypes', 'frostkristall-evolution', name), { recursive: true });
+}
 function redirect(target) {
   return `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Towers &amp; Tantrums · Weiter</title></head><body><p><a id="continue" href="${target}">Weiter zu Towers &amp; Tantrums</a></p><script>const target=new URL(${JSON.stringify(target)},location.href);target.search=location.search;target.hash=location.hash;document.getElementById('continue').href=target.href;location.replace(target.href);</script></body></html>`;
 }

@@ -1,0 +1,59 @@
+{
+  "result": "pass",
+  "levels": 8,
+  "frostPairs": 64,
+  "mixedPairs": 64,
+  "maxHeightWorld": 57.96,
+  "allRearCrystalsClear": true,
+  "originalAtlasesUnchanged": true,
+  "geometry": [
+    {
+      "level": 1,
+      "top": -28.2544,
+      "coreBottom": -6.8344000000000005,
+      "height": 57.3824
+    },
+    {
+      "level": 2,
+      "top": -28.2544,
+      "coreBottom": 3.8756000000000004,
+      "height": 57.3824
+    },
+    {
+      "level": 3,
+      "top": -28.2544,
+      "coreBottom": 9.545599999999997,
+      "height": 57.3824
+    },
+    {
+      "level": 5,
+      "top": -22.584400000000002,
+      "coreBottom": 4.775599999999999,
+      "height": 51.7124
+    },
+    {
+      "level": 10,
+      "top": -24.474400000000003,
+      "coreBottom": 6.6655999999999995,
+      "height": 53.6024
+    },
+    {
+      "level": 15,
+      "top": -22.532000000000004,
+      "coreBottom": 3.5155999999999987,
+      "height": 51.66
+    },
+    {
+      "level": 20,
+      "top": -24.474400000000003,
+      "coreBottom": 6.6655999999999995,
+      "height": 53.6024
+    },
+    {
+      "level": 25,
+      "top": -22.532000000000004,
+      "coreBottom": 3.5155999999999987,
+      "height": 51.66
+    }
+  ]
+}
