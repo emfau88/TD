@@ -13,9 +13,11 @@ Waldwächter, Frostkristall, Steinschleuder und **Scharfschütze** mit den kompa
 
 Jeder Start erstellt einen **separaten Spielstand**. Auch [eine frische normale Partie des Branches](https://emfau88.github.io/TD/previews/tower-evolution/?fresh=1) ist von deiner Hauptpartie getrennt. Vorbereitete Welle-40-Karte, normale Kampfregeln, 100.000 Testgold: Grafiktest, kein Balancetest. Hohe Stufen töten weiterhin schnell, jetzt im sichtbaren Ausschnitt. Kampfwerte, Saveformat und Offline-Regeln unverändert. Kein Kongregate-Export.
 
-**Vorheriger Deploymentstand (drei Türme):** [erfolgreiches Pages-Deployment](https://github.com/emfau88/TD/actions/runs/40963076081), Spielcode `1d62198`; alle 604 Hauptspiel-Dateien bytegleich erhalten.
+**Veröffentlichter Spielstand (vier Türme):** [erfolgreiches Pages-Deployment](https://github.com/emfau88/TD/actions/runs/40966998098), Spielcode `3072b9d`; alle 604 Hauptspiel-Dateien bytegleich erhalten.
 
 **Prüfung:** 428/428 Tests und Produktionsbuild erfolgreich; 45 Aufstellungen und jede der 32 optischen Stufen mit echten Schüssen, Aufwerten und Save-Roundtrip. [Prüfbericht / Deployment / Spielaufnahmen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md) · [Steinschleuder-Sprites und Quellen](prototypes/steinschleuder-evolution/README.md) · [Scharfschützen-Sprites und Prompts](prototypes/scharfschuetze-evolution/README.md).
+
+**Neue separate Designstudie:** [Impact-Vergleich für alle vier Türme](https://emfau88.github.io/TD/previews/tower-evolution/prototypes/tower-impact-study/) · Heute / Level 10 / Level 20, Spielgröße, Zeitlupe und dichtes Gefecht. **Neue Impacts sind noch nicht im Spiel.** [Bewertung und Screenshots](prototypes/tower-impact-study/README.md).
 
 Der Testlink ist eine temporäre Pages-Unterseite. Nach einer späteren Main-Veröffentlichung den Workflow **Deploy SPIRE** auf diesem Branch erneut ausführen. Der Workflow erhält sämtliche Main-Dateien bytegleich. Lokal: `npm ci`, `npm run idle:dev -- --port 5193`, dann `http://127.0.0.1:5193/tower-test.html`.
 

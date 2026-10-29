@@ -89,3 +89,10 @@ Türme auf mittlere Wegstrecke versetzt; unbenutzter Startturm sicher hinten. Ei
 | 390 Pixel | 320 Pixel | Einzelstufe 25 |
 |---|---|---|
 | ![390](sniper-all-390.png) | ![320](sniper-all-320.png) | ![25](sniper25-390.png) |
+
+
+### Veröffentlichung Scharfschütze / anschließende Impact-Studie
+
+- Spielcode 3072b9da90f7890a9945336b0e2d8874fe784df0, gepusht auf codex/tower-evolution-playtest. [Pages 40966998098](https://github.com/emfau88/TD/actions/runs/40966998098) erfolgreich; Metadaten mit SHA öffentlich geprüft, alle 604 Main-Dateien bytegleich erhalten. Main bleibt 93703cb66e369ed7f3a724f0e42575775cc12bc4.
+- Öffentlicher Browser-Smoke: Scharfschütze/all, echte Wellen 41–48, 20/20 Kern, keine Warnungen/Fehler. [Liveaufnahme 390](sniper-live-390.png).
+- Danach separate [Impact-Designstudie](../../../../prototypes/tower-impact-study/README.md), keinerlei Änderung an CombatEffects oder sonstigem Spielcode. Vorlage/10/20 für alle vier Türme; Browser-/Bildnachweise und bewusst verbleibende Gestaltungsfragen dort. Kein Main-Merge, kein Kongregate-Export.

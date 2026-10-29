@@ -28,6 +28,8 @@ const frostStudy = join(root, 'prototypes', 'frostkristall-evolution');
 for (const name of ['index.html', 'styles.css', 'preview.js', 'study-model.js', 'attack-motion.js', 'manifest.json', 'comparison.png', 'assets']) {
   await cp(join(frostStudy, name), join(output, 'prototypes', 'frostkristall-evolution', name), { recursive: true });
 }
+// Isolated impact comparison; never imported by the game.
+await cp(join(root, 'prototypes', 'tower-impact-study'), join(output, 'prototypes', 'tower-impact-study'), { recursive: true });
 function redirect(target) {
   return `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Towers &amp; Tantrums · Weiter</title></head><body><p><a id="continue" href="${target}">Weiter zu Towers &amp; Tantrums</a></p><script>const target=new URL(${JSON.stringify(target)},location.href);target.search=location.search;target.hash=location.hash;document.getElementById('continue').href=target.href;location.replace(target.href);</script></body></html>`;
 }
