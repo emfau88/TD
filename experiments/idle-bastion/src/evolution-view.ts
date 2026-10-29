@@ -15,6 +15,7 @@ function weaponKey(r:EvolutionSkin):string {
 }
 export function preloadEvolution(scene:Phaser.Scene):void {
  for(const r of EVOLUTION_SKINS){scene.load.image(key(r,'base'),source(r.base));scene.load.image(key(r,'weapon'),source(r.weapon));
+  if(r.kind===4&&r.level>3)scene.load.image(key(r,'projectile'),source('../../../prototypes/scharfschuetze-evolution/assets/compact/level-'+r.level+'-projectile.png'));
   if(r.kind===3&&r.level>3)scene.load.image(key(r,'projectile'),source('../../../prototypes/steinschleuder-evolution/assets/compact/level-'+r.level+'-projectile.png'));
   if(r.kind===2&&r.level>1)scene.load.image(key(r,'projectile'),source('../../../prototypes/frostkristall-evolution/assets/compact/level-'+r.level+'-projectile.png'));
   if(r.kind===1&&r.level>=10)scene.load.image(key(r,'projectile'),source('../../../prototypes/waldwaechter-evolution/assets/shooting/'+(r.level===10?'steel-arrow.png':'arrow-'+r.level+'.png')));
@@ -50,8 +51,8 @@ export function prepareEvolution(scene:Phaser.Scene):void {
   scene.textures.addCanvas(key(r,'glow'),iceMask(base));
  }
 }
-export function evolutionGhost(kind:number):{base:string;weapon:string;originY:number;weaponY:number}|undefined {
- const r=evolutionSkin(kind,1);return r?{base:key(r,'base'),weapon:weaponKey(r),originY:r.originY,weaponY:r.weaponY}:undefined;
+export function evolutionGhost(kind:number):{base:string;weapon:string;originY:number;weaponY:number;weaponScale:number}|undefined {
+ const r=evolutionSkin(kind,1);return r?{base:key(r,'base'),weapon:weaponKey(r),originY:r.originY,weaponY:r.weaponY,weaponScale:r.weaponScale??S}:undefined;
 }
 type Origin={model:{x:number;y:number};muzzle:{x:number;y:number};at:number};
 type ShotView={sprites:Phaser.GameObjects.Image[];origin:Origin};
@@ -62,7 +63,7 @@ export class EvolutionView {
  constructor(private scene:Phaser.Scene){}
  accept(events:readonly BattleEvent[],elapsed:number):void {
   for(const e of events){if(e.type!=='fire'||!e.shot||!e.tower)continue;const r=evolutionSkin(e.shot.kind,e.shot.level);if(!r)continue;
-   const a=e.tower.angle,extra=r.kind===1?16:r.kind===3?12:0,lift=r.kind===2?attackPose(r.level,.28).y*S:0;
+   const a=e.tower.angle,extra=r.kind===1?16:r.kind===3?12:r.kind===4?16:0,lift=r.kind===2?attackPose(r.level,.28).y*S:0;
    this.origins.set(e.shot.uid,{model:{x:e.tower.x,y:e.tower.y-12},muzzle:{x:e.tower.x+Math.sin(a)*extra,y:e.tower.y+r.weaponY-Math.cos(a)*extra+lift},at:elapsed});
   }
  }
@@ -73,8 +74,8 @@ export class EvolutionView {
   let frame=0,recoil=0;
   if(r.originalStage&&(r.kind!==2||r.level===1))frame=weaponFrame(r.kind,r.originalStage,age,elapsed,cycle);
   else if(r.kind===2)frame=time>0&&time<.86?1+Math.min(FRAMES-2,Math.floor(time/.86*(FRAMES-2))):0;
-  if((r.kind===1||r.kind===3)&&r.level>3&&age>=0&&age<.14)recoil=(r.kind===3?3:2.2)*Math.sin(Math.PI*age/.14);
-  view.weapon.setTexture(weaponKey(r),Math.max(0,frame)).setScale(S).setPosition(tower.x+tremble-Math.sin(tower.angle)*recoil,tower.y+r.weaponY+Math.cos(tower.angle)*recoil).setRotation((r.kind===2?0:tower.angle)+wobble).setTint(tint);
+  if((r.kind===1||r.kind===3||r.kind===4)&&r.level>3&&age>=0&&age<.14)recoil=(r.kind===3?3:2.2)*Math.sin(Math.PI*age/.14);
+  view.weapon.setTexture(weaponKey(r),Math.max(0,frame)).setScale(r.weaponScale??S).setPosition(tower.x+tremble-Math.sin(tower.angle)*recoil,tower.y+r.weaponY+Math.cos(tower.angle)*recoil).setRotation((r.kind===2?0:tower.angle)+wobble).setTint(tint);
   let glow=this.glows.get(tower.uid);
   if(r.kind===2&&r.level>1){
    if(!glow){glow=this.scene.add.image(0,0,key(r,'glow')).setScale(S);this.glows.set(tower.uid,glow);}
@@ -90,11 +91,11 @@ export class EvolutionView {
   for(const shot of sim.shots){const r=evolutionSkin(shot.kind,shot.level);if(!r)continue;
    const target=sim.enemies.find(e=>e.uid===shot.target);if(!target)continue;
    let v=this.shots.get(shot.uid);
-   const earlyArrow=r.kind===1&&r.level<10,originalFrost=r.kind===2&&r.level===1,originalStone=r.kind===3&&r.level<=3;
-   const sheet=earlyArrow?towerSheet(1,Math.min(3,r.level),'Projectile'):originalFrost?towerSheet(2,1,'Projectile'):originalStone?towerSheet(3,r.originalStage,'Projectile'):undefined;
+   const earlyArrow=r.kind===1&&r.level<10,originalFrost=r.kind===2&&r.level===1,originalStone=(r.kind===3||r.kind===4)&&r.level<=3;
+   const sheet=earlyArrow?towerSheet(1,Math.min(3,r.level),'Projectile'):originalFrost?towerSheet(2,1,'Projectile'):originalStone?towerSheet(r.kind,r.originalStage,'Projectile'):undefined;
    if(!v){const count=r.kind===1&&r.level>=10?3:1;
     const origin=this.origins.get(shot.uid)??{model:{x:shot.x,y:shot.y},muzzle:{x:shot.x,y:shot.y},at:elapsed};
-    v={origin,sprites:Array.from({length:count},()=>this.scene.add.image(shot.x,shot.y,sheet?.key??key(r,'projectile'),0).setScale(r.kind===2?.5:r.kind===3?.85:.45))};this.shots.set(shot.uid,v);
+    v={origin,sprites:Array.from({length:count},()=>this.scene.add.image(shot.x,shot.y,sheet?.key??key(r,'projectile'),0).setScale(r.kind===2?.5:(r.kind===3||r.kind===4)?.85:.45))};this.shots.set(shot.uid,v);
    }
    const moved=Math.hypot(shot.x-v.origin.model.x,shot.y-v.origin.model.y),left=Math.hypot(target.x-shot.x,target.y-shot.y),progress=Math.min(1,moved/Math.max(.001,moved+left));
    const copies=r.kind===1?arrowCopies(r.level,progress):[{offset:0,progress,visible:true}];

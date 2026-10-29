@@ -2,9 +2,9 @@ import { IdleBattle, visualStage } from './battle';
 import { SKIN_LEVELS, towerPreviewDatabase, type SkinLevel } from './tower-evolution';
 import { openBattleStore } from './save-store';
 
-export type TowerScenario = 'mixed' | 'warden' | 'frost' | 'slinger';
+export type TowerScenario = 'mixed' | 'warden' | 'frost' | 'slinger' | 'sniper';
 export function isTowerScenario(value: unknown): value is TowerScenario {
-  return value === 'mixed' || value === 'warden' || value === 'frost' || value === 'slinger';
+  return value === 'mixed' || value === 'warden' || value === 'frost' || value === 'slinger' || value === 'sniper';
 }
 /** Explicitly synthetic VISUAL test setup, never a balance/progression benchmark.
  * Recorded wave-40 world, replaced defensive lineup, added setup gold.
@@ -24,9 +24,9 @@ export function createTowerProbe(scenario: TowerScenario, earnedLate: unknown, l
   const parked = b.layout.towerPads.find(p=>p.cell.x>=22&&b.canBuild(p.id,1));
   if (!parked) throw new Error('Missing safe starter parking pad');
   Object.assign(starter,{padId:parked.id,x:parked.cell.x*40+20,y:parked.cell.y*40+20});
-  const levels = level === 'all' ? [...SKIN_LEVELS] : scenario === 'mixed' ? [level,level,level] : [level];
+  const levels = level === 'all' ? [...SKIN_LEVELS] : scenario === 'mixed' ? [level,level,level,level] : [level];
   for (const [i, targetLevel] of levels.entries()) {
-    const kind = scenario === 'warden' ? 1 : scenario === 'frost' ? 2 : scenario === 'slinger' ? 3 : (i % 3 + 1) as 1|2|3;
+    const kind = scenario === 'warden' ? 1 : scenario === 'frost' ? 2 : scenario === 'slinger' ? 3 : scenario === 'sniper' ? 4 : (i % 4 + 1) as 1|2|3|4;
     const [x,y] = reviewPads[i];
     const pad = b.layout.towerPads.find(p=>p.cell.x===x&&p.cell.y===y);
     if (!pad) throw new Error('Missing review pad');
@@ -36,8 +36,8 @@ export function createTowerProbe(scenario: TowerScenario, earnedLate: unknown, l
   }
   // Prepare a real wave until the first enemy enters the review area. No HP,
   // damage, speed, range, cooldown or projectile rules are overridden.
-  for(let i=0;i<3000&&!b.enemies.some(e=>e.x>=260);i++) b.update(.025);
-  if(!b.enemies.some(e=>e.x>=260))throw new Error('No visible approach prepared');
+  for(let i=0;i<3000&&!b.enemies.some(e=>e.x>=220);i++) b.update(.025);
+  if(!b.enemies.some(e=>e.x>=220))throw new Error('No visible approach prepared');
   b.gold = 100_000; // Readable test wallet after purchases; enough for ordinary inspection upgrades.
   b.drainEvents();
   if (!IdleBattle.restore(b.snapshot())) throw new Error('Test setup failed save validation');

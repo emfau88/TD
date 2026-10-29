@@ -1,0 +1,115 @@
+{
+  "levels": [
+    {
+      "kind": 4,
+      "level": 1,
+      "weaponY": -0.5,
+      "originY": 0.8,
+      "weaponScale": 0.53,
+      "originalStage": 1,
+      "base": "assets/compact/level-1-base.png",
+      "weapon": "assets/compact/level-1-weapon.png",
+      "projectile": "assets/compact/level-1-projectile.png"
+    },
+    {
+      "kind": 4,
+      "level": 2,
+      "weaponY": -0.5,
+      "originY": 0.8,
+      "weaponScale": 0.53,
+      "originalStage": 2,
+      "base": "assets/compact/level-2-base.png",
+      "weapon": "assets/compact/level-2-weapon.png",
+      "projectile": "assets/compact/level-2-projectile.png"
+    },
+    {
+      "kind": 4,
+      "level": 3,
+      "weaponY": -0.5,
+      "originY": 0.8,
+      "weaponScale": 0.53,
+      "originalStage": 3,
+      "base": "assets/compact/level-3-base.png",
+      "weapon": "assets/compact/level-3-weapon.png",
+      "projectile": "assets/compact/level-3-projectile.png"
+    },
+    {
+      "kind": 4,
+      "level": 5,
+      "weaponY": -4.892000000000003,
+      "originY": 0.8,
+      "weaponScale": 0.63,
+      "originalStage": 0,
+      "base": "assets/compact/level-5-base.png",
+      "weapon": "assets/compact/level-5-weapon.png",
+      "projectile": "assets/compact/level-5-projectile.png"
+    },
+    {
+      "kind": 4,
+      "level": 10,
+      "weaponY": -4.892000000000003,
+      "originY": 0.8,
+      "weaponScale": 0.63,
+      "originalStage": 0,
+      "base": "assets/compact/level-10-base.png",
+      "weapon": "assets/compact/level-10-weapon.png",
+      "projectile": "assets/compact/level-10-projectile.png"
+    },
+    {
+      "kind": 4,
+      "level": 15,
+      "weaponY": -4.892000000000003,
+      "originY": 0.8,
+      "weaponScale": 0.63,
+      "originalStage": 0,
+      "base": "assets/compact/level-15-base.png",
+      "weapon": "assets/compact/level-15-weapon.png",
+      "projectile": "assets/compact/level-15-projectile.png"
+    },
+    {
+      "kind": 4,
+      "level": 20,
+      "weaponY": -4.892000000000003,
+      "originY": 0.8,
+      "weaponScale": 0.63,
+      "originalStage": 0,
+      "base": "assets/compact/level-20-base.png",
+      "weapon": "assets/compact/level-20-weapon.png",
+      "projectile": "assets/compact/level-20-projectile.png"
+    },
+    {
+      "kind": 4,
+      "level": 25,
+      "weaponY": -4.892000000000003,
+      "originY": 0.8,
+      "weaponScale": 0.63,
+      "originalStage": 0,
+      "base": "assets/compact/level-25-base.png",
+      "weapon": "assets/compact/level-25-weapon.png",
+      "projectile": "assets/compact/level-25-projectile.png"
+    }
+  ],
+  "scale": 0.63,
+  "nativeBase": [
+    64,
+    128
+  ],
+  "nativeWeapon": [
+    128,
+    128
+  ],
+  "baseY": 13,
+  "originalHashes": {
+    "Tower 04 - Level 01 - Projectile - Impact.png": "9000dbbb0b7a9872fe6adf5a605a1baf3b9c58352cab9e1268ab5add4d0be915",
+    "Tower 04 - Level 01 - Projectile.png": "a98571849f4808e0090bd68f68a027e1747e91c9979921c14c62b688bd78451c",
+    "Tower 04 - Level 01 - Weapon.png": "4bacf3a2bd6f186b04ca2c9e87db40c9d9cbfff59db1953e6ea68039e6d43b1e",
+    "Tower 04 - Level 02 - Projectile - Impact.png": "9355da03c03f76de136daa0ac5edb501d2e1b6c577d0c2ae494af148617f7927",
+    "Tower 04 - Level 02 - Projectile.png": "2a6e8bd26e2af0c9f1f7e5f700d9e967ad9ee2330969fcb18de602bb20bd4ea2",
+    "Tower 04 - Level 02 - Weapon.png": "10c651ba8bf03f34f26c23bca46af84aac58e6af865f36e14bc3dd7f1af43f77",
+    "Tower 04 - Level 03 - Projectile - Impact.png": "ec40d797c8c3b681405f92a7025ab3e6f58c45be7ea351409f07e490f9186630",
+    "Tower 04 - Level 03 - Projectile.png": "e65098e19bee4b78df99b2444f34a77fb970c3d3c4543557abe79bcd3cb2e60f",
+    "Tower 04 - Level 03 - Weapon.png": "c35df186115b9198459fc935ef2123d543a00fd60638774695d13c8597cf28f8",
+    "Tower 04.png": "fc50b73d57bcba6fabdd665ef001c2c2c044310b55364ebb0a6579cfe6f14a01"
+  },
+  "provenance": "Original stages 1\u20133, lower facade shortened; original weapon frames retained, render scale .53 for safe aim envelope. Built-in Imagegen parts for 5\u201325; nearest-neighbour native-grid packaging, no color filters or original overwrites."
+}

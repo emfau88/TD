@@ -1,7 +1,7 @@
 /** Branch-only visual selection. Saved visualStage and all combat stats stay unchanged. */
 export const SKIN_LEVELS = [1,2,3,5,10,15,20,25] as const;
 export type SkinLevel = typeof SKIN_LEVELS[number];
-export interface EvolutionSkin {kind:number;level:number;weaponY:number;originY:number;originalStage:number;base:string;weapon:string}
+export interface EvolutionSkin {kind:number;level:number;weaponY:number;originY:number;weaponScale?:number;originalStage:number;base:string;weapon:string}
 export const EVOLUTION_SKINS: readonly EvolutionSkin[] = [
   {"kind":1,"level":1,"weaponY":-14.81,"originY":0.8,"originalStage":1,"base":"../../../prototypes/waldwaechter-evolution/assets/compact/level-1-base.png","weapon":"../../../prototypes/waldwaechter-evolution/assets/compact/level-1-weapon.png"},
   {"kind":1,"level":2,"weaponY":-13.55,"originY":0.8,"originalStage":2,"base":"../../../prototypes/waldwaechter-evolution/assets/compact/level-2-base.png","weapon":"../../../prototypes/waldwaechter-evolution/assets/compact/level-2-weapon.png"},
@@ -27,6 +27,14 @@ export const EVOLUTION_SKINS: readonly EvolutionSkin[] = [
   {"kind":3,"level":15,"weaponY":-4.892000000000003,"originY":0.8,"originalStage":0,"base":"../../../prototypes/steinschleuder-evolution/assets/compact/level-15-base.png","weapon":"../../../prototypes/steinschleuder-evolution/assets/compact/level-15-weapon.png"},
   {"kind":3,"level":20,"weaponY":-4.892000000000003,"originY":0.8,"originalStage":0,"base":"../../../prototypes/steinschleuder-evolution/assets/compact/level-20-base.png","weapon":"../../../prototypes/steinschleuder-evolution/assets/compact/level-20-weapon.png"},
   {"kind":3,"level":25,"weaponY":-4.892000000000003,"originY":0.8,"originalStage":0,"base":"../../../prototypes/steinschleuder-evolution/assets/compact/level-25-base.png","weapon":"../../../prototypes/steinschleuder-evolution/assets/compact/level-25-weapon.png"},
+  {"kind":4,"level":1,"weaponY":-0.5,"originY":0.8,"weaponScale":0.53,"originalStage":1,"base":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-1-base.png","weapon":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-1-weapon.png"},
+  {"kind":4,"level":2,"weaponY":-0.5,"originY":0.8,"weaponScale":0.53,"originalStage":2,"base":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-2-base.png","weapon":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-2-weapon.png"},
+  {"kind":4,"level":3,"weaponY":-0.5,"originY":0.8,"weaponScale":0.53,"originalStage":3,"base":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-3-base.png","weapon":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-3-weapon.png"},
+  {"kind":4,"level":5,"weaponY":-4.892000000000003,"originY":0.8,"weaponScale":0.63,"originalStage":0,"base":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-5-base.png","weapon":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-5-weapon.png"},
+  {"kind":4,"level":10,"weaponY":-4.892000000000003,"originY":0.8,"weaponScale":0.63,"originalStage":0,"base":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-10-base.png","weapon":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-10-weapon.png"},
+  {"kind":4,"level":15,"weaponY":-4.892000000000003,"originY":0.8,"weaponScale":0.63,"originalStage":0,"base":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-15-base.png","weapon":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-15-weapon.png"},
+  {"kind":4,"level":20,"weaponY":-4.892000000000003,"originY":0.8,"weaponScale":0.63,"originalStage":0,"base":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-20-base.png","weapon":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-20-weapon.png"},
+  {"kind":4,"level":25,"weaponY":-4.892000000000003,"originY":0.8,"weaponScale":0.63,"originalStage":0,"base":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-25-base.png","weapon":"../../../prototypes/scharfschuetze-evolution/assets/compact/level-25-weapon.png"},
 ];
 export function skinLevel(level:number):SkinLevel {
   return [...SKIN_LEVELS].reverse().find(tier=>level>=tier)??1;

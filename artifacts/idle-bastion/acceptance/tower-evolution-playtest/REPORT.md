@@ -74,3 +74,18 @@ Türme auf mittlere Wegstrecke versetzt; unbenutzter Startturm sicher hinten. Ei
 
 
 ![Öffentlich ausgelieferter Branch: Steinschleuder und Anmarsch](stone-live-desktop.png)
+
+
+## Scharfschütze · 29.10.2026
+
+- Basis `ca1ae79`; nur vorhandener Testbranch. Stufen 1/2/3 aus Original Tower 04, fünf neue Skins und passende grüne Projektile 5/10/15/20/25. Getrennte Basen/Wurfarme, alte Animationen 1–3 vollständig erhalten. Hohe Stufen mit kurzem Rückstoß; Trefferwirkungen noch unverändert. Asset-/Promptnachweis im [Scharfschützen-Verzeichnis](../../../../prototypes/scharfschuetze-evolution/README.md).
+- Grundkörper maximal 57,96 Kartenpixel hoch, neue Stufen 53,55; Breite 40,32. Originalarme kompakt mit 0,53 gerendert, neue mit 0,63; Originaldateien unverändert. 2.880 Ausrichtungen einschließlich neuer Rückstoßreserve bestanden, keine Waffe unterhalb des Bodenabschlusses. Bauvorschau verwendet denselben Maßstab.
+- Teststart jetzt bei sichtbarem Anmarsch x≥220, vor dem ersten Turmschuss auch mit Scharfschützenreichweite. Vier Turmarten, 45 vorbereitete Aufstellungen, 32 optische Einzelstufen mit echtem Kampf, Upgrade/Verkauf/Save-Roundtrip. **428/428 Tests**, gezielt **7/7**, TypeScript/Produktionsbuild bestanden.
+- Browser: alle acht Scharfschützen geladen und Kampf bis Welle 43, Desktop 1280×800, Hochkant 390×844 / 320×568. Pause/Reload erhält Welle 43 und 104.030 Gold; zusätzliche Einzelstufe 25 geprüft. Keine JavaScript-Warnungen/Fehler. Browserverbindung einmal neu initialisiert, danach vollständig zugänglich. Nicht alle 32 Einzelstufen zusätzlich separat manuell geöffnet; vollständige Matrix automatisiert.
+- Keine Änderungen an Kampfwerten, Saveformat, Offline-Regeln, Originalassets oder Main. Kein Kongregate-Export. Neuer Deploymentnachweis folgt nach Push. Nach Abschluss separat beauftragt: Impact-Vorschläge und Vergleich für alle vier Turmarten, vorerst ohne Integration.
+
+![Scharfschützen im echten Desktop-Spiel](sniper-all-desktop.png)
+
+| 390 Pixel | 320 Pixel | Einzelstufe 25 |
+|---|---|---|
+| ![390](sniper-all-390.png) | ![320](sniper-all-320.png) | ![25](sniper25-390.png) |

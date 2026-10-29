@@ -2,9 +2,9 @@
 
 **Branch: `codex/tower-evolution-playtest` · nicht in `main` integriert.**
 
-## [▶ Alle drei erweiterten Türme im Spiel testen](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html)
+## [▶ Alle vier erweiterten Türme im Spiel testen](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html)
 
-Waldwächter, Frostkristall und **Steinschleuder** mit den kompakten Skins **1 · 2 · 3 · 5 · 10 · 15 · 20 · 25** und passenden Projektilen. Oberhalb von 25 bleibt der letzte Skin erhalten.
+Waldwächter, Frostkristall, Steinschleuder und **Scharfschütze** mit den kompakten Skins **1 · 2 · 3 · 5 · 10 · 15 · 20 · 25** und passenden Projektilen. Oberhalb von 25 bleibt der letzte Skin erhalten.
 
 1. Turmart und Stufe wählen; für den Vergleich gibt es alle acht Stufen gleichzeitig.
 2. „Zur pausierten Verteidigung“ / „Return to paused defense“ bestätigen. Mit ▶ den Kampf starten; Turm anklicken, aufwerten, Pause/Zoom und Reload ausprobieren.
@@ -13,9 +13,9 @@ Waldwächter, Frostkristall und **Steinschleuder** mit den kompakten Skins **1 �
 
 Jeder Start erstellt einen **separaten Spielstand**. Auch [eine frische normale Partie des Branches](https://emfau88.github.io/TD/previews/tower-evolution/?fresh=1) ist von deiner Hauptpartie getrennt. Vorbereitete Welle-40-Karte, normale Kampfregeln, 100.000 Testgold: Grafiktest, kein Balancetest. Hohe Stufen töten weiterhin schnell, jetzt im sichtbaren Ausschnitt. Kampfwerte, Saveformat und Offline-Regeln unverändert. Kein Kongregate-Export.
 
-**Live veröffentlicht:** [erfolgreiches Pages-Deployment](https://github.com/emfau88/TD/actions/runs/40963076081), Spielcode `1d62198`; alle 604 Hauptspiel-Dateien bytegleich erhalten.
+**Vorheriger Deploymentstand (drei Türme):** [erfolgreiches Pages-Deployment](https://github.com/emfau88/TD/actions/runs/40963076081), Spielcode `1d62198`; alle 604 Hauptspiel-Dateien bytegleich erhalten.
 
-**Prüfung:** 428/428 Tests und Produktionsbuild erfolgreich; 36 Aufstellungen und jede der 24 optischen Stufen mit echten Schüssen, Aufwerten und Save-Roundtrip. [Prüfbericht / Deployment / Spielaufnahmen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md) · [Steinschleuder-Sprites und Quellen](prototypes/steinschleuder-evolution/README.md).
+**Prüfung:** 428/428 Tests und Produktionsbuild erfolgreich; 45 Aufstellungen und jede der 32 optischen Stufen mit echten Schüssen, Aufwerten und Save-Roundtrip. [Prüfbericht / Deployment / Spielaufnahmen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md) · [Steinschleuder-Sprites und Quellen](prototypes/steinschleuder-evolution/README.md) · [Scharfschützen-Sprites und Prompts](prototypes/scharfschuetze-evolution/README.md).
 
 Der Testlink ist eine temporäre Pages-Unterseite. Nach einer späteren Main-Veröffentlichung den Workflow **Deploy SPIRE** auf diesem Branch erneut ausführen. Der Workflow erhält sämtliche Main-Dateien bytegleich. Lokal: `npm ci`, `npm run idle:dev -- --port 5193`, dann `http://127.0.0.1:5193/tower-test.html`.
 
