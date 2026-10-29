@@ -72,3 +72,9 @@ Nicht durch die statische Prüfung abgedeckt: sämtliche Schusswinkel, neue Angr
 - Lokal: `python -m http.server 5192 --directory prototypes/waldwaechter-evolution`, danach http://127.0.0.1:5192/.
 
 Vorgängerversion: Commit [48b2276](https://github.com/emfau88/TD/commit/48b2276aa18b3ab27030d664f9ffbf387888e9b9), damaliger [Pages-Lauf](https://github.com/emfau88/TD/actions/runs/40931266839). Alte Screenshots ohne „v2“ dokumentieren ausschließlich diesen früheren Stand.
+
+## Veröffentlichung dieser Revision
+
+Commit [fe45916](https://github.com/emfau88/TD/commit/fe45916926c804a18856228b3d508b7c6e8a8e60) direkt auf main gepusht.
+[Pages-Lauf 40935231595](https://github.com/emfau88/TD/actions/runs/40935231595) erfolgreich.
+Die öffentliche Seite mit `?revision=2` wurde anschließend im echten Browser geprüft: Revision 2 vollständig geladen, acht Stufen und kompakter Dreireihenvergleich vorhanden, keine Konsolenfehler.
