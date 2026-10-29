@@ -1,0 +1,9 @@
+{
+  "branch": "codex/tower-evolution-playtest",
+  "codeCommit": "a5db53339e42263df903ed4dd44ed9ad0d828413",
+  "mainCommit": "93703cb66e369ed7f3a724f0e42575775cc12bc4",
+  "run": 40956723521,
+  "conclusion": "success",
+  "preservedMainFiles": 604,
+  "publicUrl": "https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html"
+}

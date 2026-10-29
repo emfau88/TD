@@ -44,14 +44,15 @@ test('prepared lineups contain every requested skin and round-trip without a new
   assert.ok(b.towers.every(t=>stats(t).damage>0));
  }
 });
-test('prepared combat survives shots, upgrades, sales and save/reload using normal rules',()=>{
- for(const scenario of ['mixed','warden','frost'] as const){
-  const b=createTowerProbe(scenario,earned), before=b.snapshot();
+test('every optical level survives real shots, upgrades, sales and save/reload using normal rules',()=>{
+ for(const scenario of ['warden','frost'] as const)for(const level of SKIN_LEVELS){
+  const b=createTowerProbe(scenario,earned,level), before=b.snapshot(), kind=scenario==='warden'?1:2;
   let fires=0;
-  for(let i=0;i<600;i++){b.update(.025);fires+=b.drainEvents().filter(e=>e.type==='fire').length;}
-  assert.ok(fires>0);assert.ok(b.elapsed>before.elapsed);
+  for(let i=0;i<600;i++){b.update(.025);fires+=b.drainEvents().filter(e=>e.type==='fire'&&e.shot?.kind===kind&&e.shot.level===level).length;}
+  assert.ok(fires>0,`${scenario} ${level} must actually shoot`);assert.ok(b.elapsed>before.elapsed);
   const copy=IdleBattle.restore(b.snapshot())!;assert.ok(copy);
   assert.deepEqual(copy.snapshot(),b.snapshot());
+  copy.gold += 1_000_000; copy.earned += 1_000_000; // Test-only budget for a real 25→26 purchase.
   assert.ok(copy.upgrade(copy.towers[0].uid));assert.ok(copy.sell(copy.towers[1].uid));
   assert.ok(IdleBattle.restore(copy.snapshot()));
  }

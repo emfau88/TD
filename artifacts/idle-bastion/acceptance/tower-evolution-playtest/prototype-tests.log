@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: eight agreed stages, cool variants preserve the original stage provenance
+ok 1 - eight agreed stages, cool variants preserve the original stage provenance
+  ---
+  duration_ms: 2.3485
+  type: 'test'
+  ...
+# Subtest: one flight window and one impact inside a single demonstration cycle
+ok 2 - one flight window and one impact inside a single demonstration cycle
+  ---
+  duration_ms: 2.4707
+  type: 'test'
+  ...
+# Subtest: first-stage animation retains every original frame; other stages use the separate choreography
+ok 3 - first-stage animation retains every original frame; other stages use the separate choreography
+  ---
+  duration_ms: 0.8191
+  type: 'test'
+  ...
+# Subtest: nonrotating crystal launches in eight directions at unchanged distance
+ok 4 - nonrotating crystal launches in eight directions at unchanged distance
+  ---
+  duration_ms: 1.0594
+  type: 'test'
+  ...
+# Subtest: 15/30/60/144 FPS agree; hidden or paused time is not caught up
+ok 5 - 15/30/60/144 FPS agree; hidden or paused time is not caught up
+  ---
+  duration_ms: 0.5173
+  type: 'test'
+  ...
+# Subtest: every blue stage completes charge, release and return without lingering effects
+ok 6 - every blue stage completes charge, release and return without lingering effects
+  ---
+  duration_ms: 11.0507
+  type: 'test'
+  ...
+# Subtest: backward scrubbing is deterministic; no state or particles accumulate
+ok 7 - backward scrubbing is deterministic; no state or particles accumulate
+  ---
+  duration_ms: 2.2171
+  type: 'test'
+  ...
+# Subtest: choreography follows the same clock at low and high FPS and quarter speed
+ok 8 - choreography follows the same clock at low and high FPS and quarter speed
+  ---
+  duration_ms: 1.6056
+  type: 'test'
+  ...
+# Subtest: new effect grid is versioned and has eight bounded frames
+ok 9 - new effect grid is versioned and has eight bounded frames
+  ---
+  duration_ms: 2.19
+  type: 'test'
+  ...
+# Subtest: all eight skins cap total arrows per cycle at three
+ok 10 - all eight skins cap total arrows per cycle at three
+  ---
+  duration_ms: 2.6805
+  type: 'test'
+  ...
+# Subtest: salvos release and arrive sequentially inside one cycle
+ok 11 - salvos release and arrive sequentially inside one cycle
+  ---
+  duration_ms: 1.1034
+  type: 'test'
+  ...
+# Subtest: geometry keeps fixed trajectory length, correct muzzle orientation at eight angles
+ok 12 - geometry keeps fixed trajectory length, correct muzzle orientation at eight angles
+  ---
+  duration_ms: 0.5107
+  type: 'test'
+  ...
+# Subtest: timeline is consistent at 15, 30, 60 and 144 FPS; no hidden time catch-up
+ok 13 - timeline is consistent at 15, 30, 60 and 144 FPS; no hidden time catch-up
+  ---
+  duration_ms: 0.3642
+  type: 'test'
+  ...
+# Subtest: scrubbing backwards restores prior state; recoil ends before next cycle
+ok 14 - scrubbing backwards restores prior state; recoil ends before next cycle
+  ---
+  duration_ms: 0.1974
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 144.3754

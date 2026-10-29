@@ -2,9 +2,9 @@
 
 **Branch: `codex/tower-evolution-playtest` · nicht in `main` integriert.**
 
-## [▶ Beide erweiterten Türme lokal testen](http://127.0.0.1:5192/tower-test.html)
+## [▶ Beide erweiterten Türme im Spiel testen](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html)
 
-Der lokale Testserver läuft während der Abnahme. **[Vorgesehener öffentlicher Testlink](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html): noch nicht freigeschaltet.** GitHub Pages erlaubt bislang nur Main und ältere Testbranches. Die automatische Freigabeprüfung verlangt eine ausdrückliche Zustimmung, genau diesen neuen Branch in die bestehende Freigabeliste aufzunehmen.
+**Öffentlich spielbar und geprüft.** [Erfolgreiches Pages-Deployment](https://github.com/emfau88/TD/actions/runs/40956723521), Spielcode `a5db533`. Alle 604 Dateien der Hauptfassung wurden beim Veröffentlichen bytegleich erhalten.
 
 Waldwächter und Frostkristall mit den kompakten Skins **1 · 2 · 3 · 5 · 10 · 15 · 20 · 25**, passenden Projektilen und Frost-Angriffsanimationen.
 
@@ -15,6 +15,8 @@ Waldwächter und Frostkristall mit den kompakten Skins **1 · 2 · 3 · 5 · 10 
 Jeder Start erstellt einen **separaten Spielstand**. Auch [eine frische normale Partie dieses Branches](https://emfau88.github.io/TD/previews/tower-evolution/?fresh=1) bleibt vollständig von deiner Hauptpartie getrennt. Der vorbereitete Grafiktest verwendet eine Karte nach Welle 40 mit neu zusammengestellten Türmen und 100.000 Testgold; er ist kein Balancetest. Kampfwerte, Saveformat und Offline-Regeln wurden nicht geändert. Kein Kongregate-Export.
 
 **Geprüft:** 428/428 Tests, Produktionsbuild; [Prüfbericht und echte Spielaufnahmen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md).
+
+Bei hohen Teststufen können Gegner schon am Eingang bzw. außerhalb des Hochkant-Ausschnitts sterben: Die Originalwerte sind unverändert und Level 25 ist für Welle 40 sehr stark. Für deutlich sichtbare Angriffe niedrigere Einzelstufen oder die Kartenübersicht nutzen.
 
 Der Testlink ist eine temporäre Pages-Unterseite. Nach einer späteren Main-Veröffentlichung gegebenenfalls den Workflow **Deploy SPIRE** auf diesem Branch erneut ausführen. Lokal selbst starten: `npm ci`, `npm run idle:dev -- --port 5193`, dann `http://127.0.0.1:5193/tower-test.html` (separater Port zum Hauptspiel).
 

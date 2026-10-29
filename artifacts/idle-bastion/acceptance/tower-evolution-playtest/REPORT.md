@@ -1,7 +1,9 @@
 # Isolierter Turmtest · 29.10.2026
 
 - Branch: `codex/tower-evolution-playtest`, Basis `93703cb66e369ed7f3a724f0e42575775cc12bc4` (`main`). Kein Merge nach main.
-- [Spielbarer Teststart](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html) · Öffentlicher Link noch nicht aktiviert: automatische Freigabeprüfung verweigert die neue branchgenaue Pages-Deploymentberechtigung ohne ausdrückliche Nutzerzustimmung. Bestehende Freigabeliste unverändert. [Bereits lokal spielbar](http://127.0.0.1:5192/tower-test.html).
+- [Spielbarer Teststart](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html) · [Pages-Lauf 40956723521](https://github.com/emfau88/TD/actions/runs/40956723521) erfolgreich. Ausgelieferter Spielcode `a5db53339e42263df903ed4dd44ed9ad0d828413`; Herkunft `93703cb66e369ed7f3a724f0e42575775cc12bc4`.
+- Nutzer hat das Hinzufügen **genau dieses Branches** zur Pages-Freigabeliste ausdrücklich bestätigt. Bestehende Freigaben erhalten; Guard bestätigt alle **604 Main-Dateien bytegleich**. Öffentlichen Teststarter und Kampf im Browser geprüft; keine Warnungen/JS-Fehler. Kein Merge nach Main.
+
 - Beide freigegebenen kompakten Reihen im tatsächlichen Phaser-Spiel: Skins 1/2/3/5/10/15/20/25, ab 25 letzter Skin. Andere Turmarten behalten ihr Rendering.
 - Waldwächter: Originalwaffenanimationen 1–3, Rückstoß für neue Waffen; höchstens drei visuelle Pfeile pro Schuss, später 2+1 beziehungsweise 1+1+1. Frost: Originalanimation 1, vorhandene Vorschau-Choreografie 2–25 als einmalig vorbereitete Atlanten, eisblaue Projektile und Einschläge.
 - Auswahl verwendet das echte Level; gespeichertes `visualStage`, Turmwerte, logische Projektile, Schaden, Cooldowns, Gegner, Spielstandschema und Offline-Regeln bleiben unverändert. Mehrfachpfeile sind ausschließlich Darstellung eines vorhandenen logischen Schusses.
@@ -10,9 +12,9 @@
 
 ## Prüfungen
 
-- Vollsuite **428/428** erfolgreich; zusätzlich nach der finalen Testgeld-Anpassung **7/7** gezielte Tests. Darin alle 27 Szenario-/Stufenkombinationen, echter Kampf, Aufwerten/Verkaufen, Save-Roundtrip, eindeutige pausierte Slots und bytegleicher Hauptspielstand in IndexedDB.
+- Finale Vollsuite **428/428** erfolgreich. Darin alle 27 Szenario-/Stufenkombinationen und nach Nutzerpräzisierung jede der **16 optischen Stufen einzeln mit echten Schüssen**, Aufwerten/Verkaufen und Save-Roundtrip; eindeutige pausierte Slots und bytegleicher Hauptspielstand in IndexedDB. Zusätzlich **7/7** gezielte Tests vor diesem erweiterten Abschlusslauf.
 - TypeScript und Vite-Produktionsbuild erfolgreich. Beim erneuten lokalen Verpacken hielt der Python-Testserver eine MP3-Datei offen (EBUSY). Nach Stoppen des Servers `package-pages.mjs` erfolgreich; kein Quellcode- oder Deploymentfehler.
-- Echte Browserprüfung: gemischter Kampf auf Desktop und 390/320 px, Pause und Reload mitten in Welle 43 mit gleichen Türmen, Gold und Gegnerzahl. Frost separat mit allen acht Stufen bis Welle 43; alle acht Waldwächter sichtbar und im Kampflauf, zusätzlich vier Level-25-Waldwächter bis Welle 44. Menürückkehr zum Teststarter funktioniert. Keine Browserwarnungen oder JavaScript-Fehler in diesen Spielabläufen.
+- Echte Browserprüfung: gemischter Kampf auf Desktop und 390/320 px, Pause und Reload mitten in Welle 43 mit gleichen Türmen, Gold und Gegnerzahl. Frost separat mit allen acht Stufen bis Welle 43; alle acht Waldwächter sichtbar und im Kampflauf bis Welle 50, zusätzlich vier Level-25-Waldwächter bis Welle 44. Menürückkehr zum Teststarter funktioniert. Keine Browserwarnungen oder JavaScript-Fehler in diesen Spielabläufen.
 - Neue Runtime-Dateien: `tower-evolution.ts`, `evolution-view.ts`; kleine Anschlüsse in `battle-scene.ts`, `combat-effects.ts`, `main.ts`. Teststarter, Vite-Eintrag, README und branchgebundene Preview-Veröffentlichung ergänzt. Originalassets nicht verändert; keine Kongregate-Neupackung.
 
 - Zusätzlich **14/14** Prototyp-Tests; Assetprüfungen erfolgreich: 12.607 Frostposen, unveränderte Originalatlanten, maximal 57,96 Kartenpixel Höhe, freie hintere Waffen/Kristalle in allen untersuchten Nachbarpaarungen.
@@ -23,7 +25,7 @@ Alle 16 zugeordneten Skins sind korrekt geladen und sichtbar; kompakte Grundkör
 
 Der vorbereitete Welle-40-Test ist für Level 25 deutlich unterfordernd: unverändert etwa 15.350 Schaden beim Waldwächter bzw. 7.675 bei Frost; Reichweiten 162 bzw. 156 Kartenpixel. Zusammen mit der Aufstellung am Eingang und dem Hochkant-Ausschnitt können Gegner schon außerhalb des sichtbaren Ausschnitts sterben. Das ist kein neuer Schadens-/Reichweitenfehler. Für besser sichtbare Angriffe einzelne Stufen und die Übersicht verwenden; die ursprünglichen Werte wurden bewusst erhalten.
 
-![Gemischte echte Desktop-Verteidigung](tower-test-desktop.png)
+![Öffentlich ausgelieferte gemischte Desktop-Verteidigung](tower-test-live-desktop.png)
 
 | Waldwächter, alle acht Stufen, 390 px | Frost, alle acht Stufen, 390 px | Frostkampf bei 320 px |
 | --- | --- | --- |
@@ -35,3 +37,8 @@ Der vorbereitete Welle-40-Test ist für Level 25 deutlich unterfordernd: unverä
 - Echte Kampfzyklen sind kürzer als in der freien Grafikvorschau; die Frostphasen richten sich nach dem vorhandenen Schusszeitpunkt. In dichter Verteidigung können starke Türme Gegner erledigen, bevor hintere Türme schießen. Einzelstufen lassen sich deshalb gesondert starten.
 - Auf sehr kleinen Ansichten bleiben hohe Stufen kompakt; die bestehende Zoomfunktion erleichtert die Sichtprüfung. Keine zusätzliche Smartphone- oder Leistungsoptimierung zugesagt.
 - Die Vorschau wird neben ein bytegleich geprüftes Main-Pages-Artefakt gelegt. Eine spätere normale Main-Veröffentlichung entfernt diesen temporären Unterpfad; erneuter Workflow-Start auf diesem Branch stellt ihn wieder her. Hauptspiel-Dateien werden beim Preview-Packaging durch SHA-256-Vergleich geschützt.
+
+## Commits
+
+- `a5db533`: vollständige isolierte Spielintegration, Szenariostarter, Speichertrennung, Tests, Screenshots, README und Preview-Workflow.
+- Nachfolgender Abschlusscommit enthält nur erweiterten Test/Nachweise/README; veröffentlichter Spielcode bleibt `a5db533`.
