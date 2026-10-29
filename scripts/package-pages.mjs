@@ -25,7 +25,7 @@ for (const name of ['index.html', 'styles.css', 'preview.js', 'shooting.js', 'sh
 }
 // Separate frost study; no imports or asset requests from the production game.
 const frostStudy = join(root, 'prototypes', 'frostkristall-evolution');
-for (const name of ['index.html', 'styles.css', 'preview.js', 'study-model.js', 'manifest.json', 'comparison.png', 'assets']) {
+for (const name of ['index.html', 'styles.css', 'preview.js', 'study-model.js', 'attack-motion.js', 'manifest.json', 'comparison.png', 'assets']) {
   await cp(join(frostStudy, name), join(output, 'prototypes', 'frostkristall-evolution', name), { recursive: true });
 }
 function redirect(target) {

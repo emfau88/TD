@@ -2,7 +2,7 @@
 export const LEVELS=[1,2,3,5,10,15,20,25],CYCLE=1.8,FIRE=.28,DISTANCE=110,SPEED=480;
 export function sample(t){
  t=Math.max(0,Math.min(CYCLE,t));const age=t-FIRE,arrival=FIRE+DISTANCE/SPEED;
- return {time:t,age,arrival,flight:age>=0&&t<arrival,progress:Math.max(0,Math.min(1,age*SPEED/DISTANCE)),impact:t>=arrival&&t<arrival+.5,impactAge:t-arrival,coreDip:age>=0&&age<.24?Math.sin(age/.24*Math.PI)*.9:0};
+ return {time:t,age,arrival,flight:age>=0&&t<arrival,progress:Math.max(0,Math.min(1,age*SPEED/DISTANCE)),impact:t>=arrival&&t<arrival+.5,impactAge:t-arrival};
 }
 export function crystalFrame(r,t){
  if(!r.originalStage||r.paletteCorrected)return 0;

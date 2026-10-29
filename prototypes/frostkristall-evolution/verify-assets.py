@@ -1,10 +1,18 @@
 """Prototype invariants: source preservation, bounded geometry, clear rear cores."""
 from pathlib import Path
-import hashlib,json,colorsys
+import hashlib,json,colorsys,subprocess
 from PIL import Image
 R=Path(__file__).resolve().parent;REPO=R.parents[1];A=R/'assets'
 m=json.loads((R/'manifest.json').read_text())
 assert [r['level'] for r in m['levels']]==[1,2,3,5,10,15,20,25]
+fx=json.loads((R/'attack-fx.json').read_text())
+fxImage=Image.open(R/fx['path']).convert('RGBA')
+assert fxImage.size==(256,128) and set(fxImage.getchannel('A').getdata())<={0,255}
+assert hashlib.sha256((R/fx['path']).read_bytes()).hexdigest()==fx['sha256']
+fxBoxes=[fxImage.crop((i%4*64,i//4*64,i%4*64+64,i//4*64+64)).getbbox() for i in range(8)]
+assert all(fxBoxes)
+js="import {attackPose} from './attack-motion.js';console.log(JSON.stringify(Object.fromEntries([2,3,5,10,15,20,25].map(l=>[l,Array.from({length:1801},(_,i)=>attackPose(l,i/1000))]))))"
+poses=json.loads(subprocess.check_output(['node','--input-type=module','-e',js],cwd=R,text=True))
 bounds=[]
 for r in m['levels']:
  b=Image.open(R/r['base']).convert('RGBA');c=Image.open(R/r['crystal']).convert('RGBA')
@@ -13,7 +21,7 @@ for r in m['levels']:
  bb=b.getbbox();cb=c.getbbox();assert bb[3]==192 and bb[0]>=0 and bb[2]<=64
  bodyTop=13+(bb[1]-166.4)*.63
  crystalTop=r['crystalY']+(cb[1]-32)*.63
- crystalBottom=r['crystalY']+(cb[3]-32)*.63+.9
+ crystalBottom=r['crystalY']+(cb[3]-32)*.63
  # Include every preserved source animation frame in the conservative envelope.
  if r.get('originalStage'):
   n=r['originalStage'];atlas=Image.open(A/f'original/level-{n}-attack.png').convert('RGBA');size=r['attackSize'];cols=r['attackCols']
@@ -23,6 +31,16 @@ for r in m['levels']:
    assert box
    crystalTop=min(crystalTop,r['crystalY']+(box[1]-size/2)*.63)
    crystalBottom=max(crystalBottom,r['crystalY']+(box[3]-size/2)*.63)
+ # Every actual new pose and effect frame must respect the same compact envelope.
+ for p in poses.get(str(r['level']),[]):
+  assert cb[0]-p['spread']>=0 and cb[2]+p['spread']<=64
+  crystalTop=min(crystalTop,r['crystalY']+(cb[1]-32+p['y'])*.63)
+  crystalBottom=max(crystalBottom,r['crystalY']+(cb[3]-32+p['y'])*.63)
+  if p['fxFrame']>=0:
+   f=fxBoxes[p['fxFrame']];scale=p['fxSize']/64
+   assert (f[2]-f[0])*scale<=64
+   crystalTop=min(crystalTop,r['crystalY']+(f[1]-32)*scale*.63)
+   crystalBottom=max(crystalBottom,r['crystalY']+(f[3]-32)*scale*.63)
  top=min(bodyTop,crystalTop);bottom=13+(192-166.4)*.63
  assert bottom-top<=92*.63+1e-5,(r['level'],bottom-top)
  bounds.append(dict(level=r['level'],top=top,coreBottom=crystalBottom,height=round(bottom-top,4)))
@@ -49,6 +67,6 @@ for rear in bounds:
   bb=w['baseBox'];wb=w['weaponBox']
   top=min(13+(bb[1]-102.4)*.63,w['weaponY']+(wb[1]-48)*.63)
   assert rear['coreBottom']<40+top,(rear['level'],w['level'])
-report=dict(result='pass',levels=8,frostPairs=64,mixedPairs=64,maxHeightWorld=92*.63,allRearCrystalsClear=True,originalAtlasesUnchanged=True,geometry=bounds)
+report=dict(result='pass',animationPoses=7*1801,effectFrames=8,levels=8,frostPairs=64,mixedPairs=64,maxHeightWorld=92*.63,allRearCrystalsClear=True,originalAtlasesUnchanged=True,geometry=bounds)
 (R/'geometry-check.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
 print(json.dumps(report,indent=2))

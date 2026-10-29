@@ -1,5 +1,7 @@
 {
   "result": "pass",
+  "animationPoses": 12607,
+  "effectFrames": 8,
   "levels": 8,
   "frostPairs": 64,
   "mixedPairs": 64,
@@ -27,33 +29,33 @@
     },
     {
       "level": 5,
-      "top": -22.584400000000002,
-      "coreBottom": 4.775599999999999,
-      "height": 51.7124
+      "top": -23.8444,
+      "coreBottom": 5.765599999999999,
+      "height": 52.9724
     },
     {
       "level": 10,
-      "top": -24.474400000000003,
-      "coreBottom": 6.6655999999999995,
-      "height": 53.6024
+      "top": -26.364400000000003,
+      "coreBottom": 7.6556,
+      "height": 55.4924
     },
     {
       "level": 15,
-      "top": -22.532000000000004,
-      "coreBottom": 3.5155999999999987,
-      "height": 51.66
+      "top": -22.584400000000002,
+      "coreBottom": 4.505599999999998,
+      "height": 51.7124
     },
     {
       "level": 20,
-      "top": -24.474400000000003,
-      "coreBottom": 6.6655999999999995,
-      "height": 53.6024
+      "top": -26.364400000000003,
+      "coreBottom": 7.6556,
+      "height": 55.4924
     },
     {
       "level": 25,
-      "top": -22.532000000000004,
-      "coreBottom": 3.5155999999999987,
-      "height": 51.66
+      "top": -23.8444,
+      "coreBottom": 4.505599999999998,
+      "height": 52.9724
     }
   ]
 }
