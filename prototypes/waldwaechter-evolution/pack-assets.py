@@ -1,77 +1,110 @@
-"""Mechanical sprite packaging only: crop generated parts, align to original
-frames/mount, nearest-neighbour pixel grid, bounded palette and binary alpha.
-Original game assets are copied/cropped losslessly and never overwritten."""
+"""Build isolated comparison assets. Original files remain untouched.
+Imagegen sources supply new artwork; packaging uses nearest-neighbour only.
+The compact variant shifts the upper assembly and shortens its lower body.
+"""
 from pathlib import Path
 import hashlib, json, shutil
+from math import ceil
 from PIL import Image, ImageDraw, ImageFont
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
 ASSETS = HERE / "assets"
-ASSETS.mkdir(exist_ok=True)
 SOURCE = REPO / "public" / "assets"
 NEAREST = Image.Resampling.NEAREST
-records = []
-for stage, level in enumerate([1, 4, 7]):
-    base_source = Image.open(SOURCE / "Tower 01.png").convert("RGBA")
-    base = base_source.crop((stage * 64, 0, stage * 64 + 64, 128))
-    weapon = Image.open(SOURCE / f"Tower 01 - Level 0{stage+1} - Weapon.png").convert("RGBA").crop((0, 0, 96, 96))
-    base.save(ASSETS / f"level-{level}-base.png")
-    weapon.save(ASSETS / f"level-{level}-weapon.png")
-    records.append(dict(level=level, original=True, baseBox=base.getbbox(), weaponBox=weapon.getbbox()))
+LEVELS = [1, 2, 3, 5, 10, 15, 20, 25]
+for folder in [ASSETS, ASSETS/"reference", ASSETS/"compact"]:
+    folder.mkdir(exist_ok=True)
+source_records = {}
+for stage, old_level in enumerate([1, 4, 7]):
+    base = Image.open(SOURCE/"Tower 01.png").convert("RGBA").crop((stage*64,0,stage*64+64,128))
+    weapon = Image.open(SOURCE/f"Tower 01 - Level 0{stage+1} - Weapon.png").convert("RGBA").crop((0,0,96,96))
+    base.save(ASSETS/f"level-{old_level}-base.png")
+    weapon.save(ASSETS/f"level-{old_level}-weapon.png")
+    source_records[old_level] = dict(originalStage=stage+1)
 
-# Full-resolution generators are retained in sources; only these runtime copies
-# lose alpha fringes. No recoloring, filters, or procedural ornament generation.
-for level, split, mount_y, top, weapon_size in [
-    (10, 760, 522, 12, (56, 46)),
-    (15, 796, 485, 12, (60, 50)),
-    (20, 796, 420, 12, (64, 54)),
-]:
-    image = Image.open(HERE / "sources" / f"level-{level}-generated.png").convert("RGBA")
+def opaque_source(path):
+    image = Image.open(path).convert("RGBA")
     image.putalpha(image.getchannel("A").point(lambda a: 255 if a >= 192 else 0))
-    left = Image.open(HERE / "sources" / f"level-{level}-compact-base.png").convert("RGBA")
-    left.putalpha(left.getchannel("A").point(lambda a: 255 if a >= 192 else 0))
+    return image
+
+for level, split, mount_y, weapon_size in [
+    (5,820,387,(52,44)), (10,760,522,(56,46)),
+    (15,796,485,(60,50)), (20,796,420,(64,54)),
+    (25,820,385,(60,48))
+]:
+    source_path = HERE/"sources"/f"level-{level}-generated.png"
+    image = opaque_source(source_path)
+    compact_source = HERE/"sources"/f"level-{level}-compact-base.png"
+    left = opaque_source(compact_source) if compact_source.exists() else image.crop((0,0,split,image.height))
     box = left.getbbox()
     left = left.crop(box)
-    # Keep the original mount at source base y45 (weapon center y48, offset -2.74).
-    local_mount = mount_y - box[1]
-    base = Image.new("RGBA", (64, 128))
-    base.alpha_composite(left.crop((0, 0, left.width, local_mount)).resize((64, 45-top), NEAREST), (0, top))
-    base.alpha_composite(left.crop((0, local_mount, left.width, left.height)).resize((64, 83), NEAREST), (0, 45))
-    right = image.crop((split, 0, image.width, image.height))
+    local_mount = mount_y-box[1]
+    base = Image.new("RGBA",(64,128))
+    base.alpha_composite(left.crop((0,0,left.width,local_mount)).resize((64,33),NEAREST),(0,12))
+    base.alpha_composite(left.crop((0,local_mount,left.width,left.height)).resize((64,83),NEAREST),(0,45))
+    right = image.crop((split,0,image.width,image.height))
     wbox = right.getbbox()
-    right = right.crop(wbox).resize(weapon_size, NEAREST)
-    weapon = Image.new("RGBA", (96, 96))
-    weapon.alpha_composite(right, (48-weapon_size[0]//2, 48-weapon_size[1]//2))
-    for part, sprite in [("base", base), ("weapon", weapon)]:
-        alpha = sprite.getchannel("A")
-        sprite = sprite.quantize(colors=32, method=Image.Quantize.FASTOCTREE, dither=Image.Dither.NONE).convert("RGBA")
+    right = right.crop(wbox).resize(weapon_size,NEAREST)
+    weapon = Image.new("RGBA",(96,96))
+    weapon.alpha_composite(right,(48-weapon_size[0]//2,48-weapon_size[1]//2))
+    for part,sprite in [("base",base),("weapon",weapon)]:
+        alpha=sprite.getchannel("A")
+        sprite=sprite.quantize(colors=32,method=Image.Quantize.FASTOCTREE,dither=Image.Dither.NONE).convert("RGBA")
         sprite.putalpha(alpha)
-        sprite.save(ASSETS / f"level-{level}-{part}.png", optimize=True)
-    records.append(dict(level=level, original=False, sourceBaseBox=box,
-                        sourceWeaponBox=[wbox[0]+split,wbox[1],wbox[2]+split,wbox[3]],
-                        sourceMountY=mount_y, compactBaseSource=f"sources/level-{level}-compact-base.png", baseBox=base.getbbox(), weaponBox=weapon.getbbox()))
+        sprite.save(ASSETS/f"level-{level}-{part}.png",optimize=True)
+    source_records[level] = dict(
+        generated=True, sourceBase=str((compact_source if compact_source.exists() else source_path).relative_to(HERE)).replace("\\","/"),
+        sourceBaseBox=box,sourceMountY=mount_y,
+        sourceWeaponBox=[wbox[0]+split,wbox[1],wbox[2]+split,wbox[3]])
 
-shutil.copy2(SOURCE / "Grass Tileset.png", ASSETS / "terrain.png")
-metadata = dict(baseCommit="ff65d67b943d35d55f3e6518274ddf78760f88ab",
+records=[]
+for level, old_level in zip(LEVELS,[1,4,7,5,10,15,20,25]):
+    base=Image.open(ASSETS/f"level-{old_level}-base.png").convert("RGBA")
+    weapon=Image.open(ASSETS/f"level-{old_level}-weapon.png").convert("RGBA")
+    original_box=base.getbbox()
+    # The level-1 arrow projects above its platform. Include it in the height
+    # budget rather than letting the early stage obscure the rear row.
+    weapon_top_in_base=-2.742857+weapon.getbbox()[1]
+    compact_top=36+max(0,ceil(original_box[1]-weapon_top_in_base))
+    shift=compact_top-original_box[1]
+    # Ground remains at row128. Upper pixels and weapon move together; only the
+    # lower facade changes height. Weapons retain their exact pixels/proportions.
+    compact=Image.new("RGBA",(64,128))
+    compact.alpha_composite(base.crop((0,0,64,64)),(0,shift))
+    compact.alpha_composite(base.crop((0,64,64,128)).resize((64,64-shift),NEAREST),(0,64+shift))
+    for folder,sprite in [("reference",base),("compact",compact)]:
+        sprite.save(ASSETS/folder/f"level-{level}-base.png",optimize=True)
+        weapon.save(ASSETS/folder/f"level-{level}-weapon.png",optimize=True)
+    records.append(dict(level=level,previousLevel=old_level,**source_records[old_level],
+        referenceBox=original_box,baseBox=compact.getbbox(),weaponBox=weapon.getbbox(),
+        upperShift=shift,weaponY=-23+shift*.63,
+        referenceBase=f"assets/reference/level-{level}-base.png",
+        referenceWeapon=f"assets/reference/level-{level}-weapon.png",
+        base=f"assets/compact/level-{level}-base.png",
+        weapon=f"assets/compact/level-{level}-weapon.png"))
+
+shutil.copy2(SOURCE/"Grass Tileset.png",ASSETS/"terrain.png")
+metadata=dict(revision=2,baseCommit="67f5f86222ed0eea4d4e7ac43948bc0c7f213541",
     nativeFrames=dict(base=[64,128],weapon=[96,96]),
     mount=dict(baseY=13,baseOrigin=[.5,.8],weaponY=-23,weaponOrigin=[.5,.5]),
     scale=.63,cellSize=40,worldHeight=640,levels=records,
+    compact=dict(minBaseTop=36,maxAssembledHeight=92,bodyCut=64),
     terrain=dict(grass=[128,64,64,64],horizontalPath=[384,64,64,64],tree=[833,384,62,64]),
-    provenance="Imagegen designs; deterministic crop/alignment/palette/alpha packaging. Original levels are exact source-frame copies.",
-    hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in ASSETS.glob("*.png")})
-(HERE / "manifest.json").write_text(json.dumps(metadata,indent=2),encoding="utf-8")
+    provenance="Imagegen designs for new skins; deterministic native-grid packaging. Original early designs retained; prototype-only shorter lower bodies, exact weapon pixels.",
+    hashes={str(p.relative_to(ASSETS)).replace("\\","/"):hashlib.sha256(p.read_bytes()).hexdigest() for p in ASSETS.rglob("*.png")})
+(HERE/"manifest.json").write_text(json.dumps(metadata,indent=2),encoding="utf-8")
 
-# A technical contact sheet of the assembled native frames, not a concept mockup.
-sheet = Image.new("RGBA",(6*112,180),(19,32,31,255))
-draw = ImageDraw.Draw(sheet)
-font = ImageFont.truetype(str(ASSETS/"PixelifySans.ttf"),14)
-for i,level in enumerate([1,4,7,10,15,20]):
+# Actual packed pixel frames, not a newly painted promotional comparison.
+sheet=Image.new("RGBA",(8*112,166),(19,32,31,255))
+draw=ImageDraw.Draw(sheet)
+font=ImageFont.truetype(str(ASSETS/"PixelifySans.ttf"),14)
+for i,record in enumerate(records):
     x=i*112+56
-    base=Image.open(ASSETS/f"level-{level}-base.png").convert("RGBA")
-    weapon=Image.open(ASSETS/f"level-{level}-weapon.png").convert("RGBA")
-    sheet.alpha_composite(base,(x-32,20))
-    sheet.alpha_composite(weapon,(x-48,17))
-    draw.text((x,156),f"LEVEL {level}",font=font,fill="#eed9a4",anchor="mt")
-sheet.resize((2016,540),NEAREST).save(HERE/"comparison.png",optimize=True)
-print(json.dumps(records,indent=2))
+    base=Image.open(HERE/record["base"]).convert("RGBA")
+    weapon=Image.open(HERE/record["weapon"]).convert("RGBA")
+    sheet.alpha_composite(base,(x-32,0))
+    sheet.alpha_composite(weapon,(x-48,round(-2.742857+record["upperShift"])))
+    draw.text((x,138),f'LEVEL {record["level"]}',font=font,fill="#eed9a4",anchor="mt")
+sheet.resize((2688,498),NEAREST).save(HERE/"comparison.png",optimize=True)
+print(json.dumps([dict(level=r["level"],height=r["baseBox"][3]-r["baseBox"][1],shift=r["upperShift"],weaponY=r["weaponY"]) for r in records]))

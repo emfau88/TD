@@ -1,0 +1,50 @@
+{
+  "result": "pass",
+  "levels": 8,
+  "bodyWorldHeight": 57.96,
+  "referenceMaxBodyWorldHeight": 73.08,
+  "rowSpacing": 40,
+  "all64FrontRearPairsKeepRearRestWeaponVisible": true,
+  "occlusion": [
+    {
+      "level": 1,
+      "hiddenBeforePercent": 48.77,
+      "hiddenAfterPercent": 28.86
+    },
+    {
+      "level": 2,
+      "hiddenBeforePercent": 45.11,
+      "hiddenAfterPercent": 26.91
+    },
+    {
+      "level": 3,
+      "hiddenBeforePercent": 41.66,
+      "hiddenAfterPercent": 27.16
+    },
+    {
+      "level": 5,
+      "hiddenBeforePercent": 44.22,
+      "hiddenAfterPercent": 28.69
+    },
+    {
+      "level": 10,
+      "hiddenBeforePercent": 43.17,
+      "hiddenAfterPercent": 28.06
+    },
+    {
+      "level": 15,
+      "hiddenBeforePercent": 45.02,
+      "hiddenAfterPercent": 29.37
+    },
+    {
+      "level": 20,
+      "hiddenBeforePercent": 44.22,
+      "hiddenAfterPercent": 28.97
+    },
+    {
+      "level": 25,
+      "hiddenBeforePercent": 43.44,
+      "hiddenAfterPercent": 28.18
+    }
+  ]
+}

@@ -1,85 +1,74 @@
-# Waldwächter – isolierte Grafikstudie
+# Waldwächter – kompakte Grafikstudie, Revision 2
 
-Stand: 29.10.2026. Ausgangspunkt: `ff65d67b943d35d55f3e6518274ddf78760f88ab` auf main.
+Stand: 29.10.2026. Ausgangsstand dieser Revision: `67f5f86222ed0eea4d4e7ac43948bc0c7f213541` auf main.
 
-[HTML-Vorschau](https://emfau88.github.io/TD/prototypes/waldwaechter-evolution/) · [Vergleich aller sechs Stufen](comparison.png) · [Einzelassets](assets/)
+[Interaktive Vorschau](https://emfau88.github.io/TD/prototypes/waldwaechter-evolution/?revision=2) · [Alle acht Stufen](comparison.png) · [Kompakte Assets](assets/compact/) · [Geometrieprüfung](geometry-check.json)
 
-## Ergebnis und Umfang
+## Was geändert wurde
 
-Drei neue statische Pixelart-Skins für die Vergleichsstufen 10, 15 und 20, jeweils mit separater Basis und Waffe. Level 1/4/7 sind pixelidentische Ausschnitte der Originalatlanten. Keine Änderung an produktivem Rendering, Spielregeln, Speicherständen, Originalassets oder Kongregate-Export. Nur die Pages-Verpackung kopiert die Studie unter eine eigene URL.
+Die Rückmeldung zur Verdeckung hinterer Reihen war berechtigt. Die erste Studie begrenzte die neuen Gebäude lediglich auf die bereits hohe dritte Originalstufe. Das war kein ausreichender Mehrreihentest.
 
-Nach der visuellen Rückmeldung des Nutzers wurden die hohen Brüstungen und Kronenspitzen verworfen. Die finalen Basen haben **alle dieselbe sichtbare Begrenzung wie Original-Level 7: 64 × 116 Pixel**, im unveränderten 64 × 128-Frame. Die drei neuen Stufen wachsen somit weder nach oben noch zur Seite. Unterschiede entstehen durch Träger, offene Plattformen und Waffenbau.
+- **Staffelung im Prototyp: 1 / 2 / 3 / 5 / 10 / 15 / 20 / 25.**
+- Die drei Originaldesigns entsprechen jetzt den Prototyp-Leveln 1/2/3. Ihre Originaldateien bleiben unverändert; für die Vorschau existieren separate kompakte Varianten.
+- Neue Imagegen-Skins für **5** (Holz-/Eisenverstärkung) und **25** (Kreuzstreben und zwei kompakte Bogeneinheiten) ergänzen die bisherigen Entwürfe 10/15/20.
+- Alle zusammengesetzten Türme inklusive ruhender Waffe passen in höchstens **64 × 92 native Pixel**. Die bisherige große Basis allein war 64 × 116 Pixel hoch.
+- Bei Faktor 0,63 ergibt das höchstens **57,96 statt 73,08 Kartenpixel Höhe**: bei den hohen Stufen rund 21 % weniger.
+- Breite und Bodenkontakt bleiben gleich. Oberer Aufbau und Waffe werden gemeinsam nach unten versetzt; der untere Körper wird verkürzt. Waffen werden dabei weder gestaucht noch verkleinert.
+- Level 1 berücksichtigt zusätzlich seine über die Plattform ragende Pfeilspitze. Seine Basis ist 85 Pixel hoch; einschließlich Waffe bleibt er innerhalb des gemeinsamen 92-Pixel-Budgets.
+- Neue Kartenansicht mit **zwei oder drei unmittelbar benachbarten Reihen**. Umschaltung zwischen kompaktem und bisherigem Höhenformat bei identischen Positionen. Beschriftungen sind optional und standardmäßig aus.
 
-- **10:** Stahlträger und schwere dreifache Armbrust.
-- **15:** kantige Doppelarme, verstärkte Verbindungspunkte, zurückhaltende Goldflächen.
-- **20:** V-Streben, kräftigere goldene Verbindungen und Meistergeschütz.
+**Keine Integration ins Spiel.** Spielregeln, produktive Renderdateien, Levelzuordnung, Speicherstände, Originalassets und Kongregate-Export sind unverändert.
 
-Die separaten Waffen bleiben im 96 × 96-Frame. Ihr statischer Rotationsradius beträgt höchstens 31,69 native Pixel; damit bleiben sie auch beim Drehen innerhalb der 64-Pixel-Breite der Basis. Das ersetzt keine spätere Animationsprüfung.
+## Was der Reihenvergleich tatsächlich zeigt
 
-## Authentischer Maßstab
+Originale Gras-/Weg-/Baumtexturen, Feldabstand 40 Welteinheiten und dieselbe Tiefensortierung wie `battle-scene.ts`: Basis bei y+1000, Waffe bei y+1001. Die Kamera verwendet die normale Spielskalierung und vergrößert die Türme nicht, um die Vorschau zu füllen.
 
-Aus `tower-atlas.ts`, `art.ts` und `battle-scene.ts` übernommen:
+| Fenster | Kamerazoom | Reihenabstand | Breite einer Basis |
+|---|---:|---:|---:|
+| 390 × 844 | 1,31875 | 52,75 px | 53,17 px |
+| 320 × 568 | 0,8875 | 35,50 px | 35,78 px |
 
-- Basis: 64 × 128, Ursprung (0,5 / 0,8), Y-Versatz +13.
-- Waffe: 96 × 96, Ursprung (0,5 / 0,5), Y-Versatz −23.
-- Renderfaktor: 0,63. Kartenfeld: 40 Welteinheiten.
-- Normale Hochkantkamera: max(Höhe / 640, Breite / 640).
-- Normale Desktopkamera: min(Breite / 1120, Höhe / 640).
-- Keine Anpassung an die Zahl der gezeigten Türme, kein künstliches Vergrößern des Kartenausschnitts.
+Die Karte ist ein **separat nachgebildeter Ausschnitt**, keine Spielintegration. Zwei Reihen zeigen alle acht Stufen; drei Reihen wiederholen vier Stufen im Vordergrund. Der Modus „Bisheriges Format“ stellt auch die neuen Level 5/25 im alten Höhenbudget dar: Er ist eine Größenreferenz, keine Behauptung, diese Skins hätten vorher im Spiel existiert.
 
-Die Karte ist ein **separat nachgebildeter Ausschnitt** aus originalen Gras-, Weg- und Baumtexturen, nicht das laufende Spiel. Sechs Türme stehen auf unmittelbar benachbarten Feldern. Tutorialfokus, Übersichtszoom und manuelles Zoomen sind ausdrücklich nicht simuliert.
+Die statische Alpha-Prüfung testet alle **64 Vorder-/Hinterturm-Kombinationen** bei 40 Welteinheiten Abstand:
+- Alle ruhenden, nach oben gerichteten hinteren Geschütze bleiben vollständig sichtbar.
+- Je nach hinterer Stufe waren im ungünstigsten Vordergrundfall zuvor **41,66–48,77 %** seiner undurchsichtigen Fläche verdeckt.
+- In der kompakten Variante sind es **26,91–29,37 %**.
+- Dies misst die verdeckte Grafikfläche, nicht den subjektiven Nutzen. Der hintere Unterbau wird weiterhin teilweise verdeckt.
 
-| Referenzfenster | Kamerazoom | Breite der Turmbasis |
-|---|---:|---:|
-| 390 × 844 | 1,31875 | 53,17 CSS-Pixel |
-| 320 × 568 | 0,8875 | 35,78 CSS-Pixel |
-| Desktop ca. 1280 × 800 | ca. 1,14 | ca. 46,1 CSS-Pixel |
+## Echte Browsernachweise
 
-Die Detailansicht nutzt ganzzahlige Vergrößerungen ohne Glättung. Der direkte Vergleich zeigt native Frames. Levelbeschriftungen lassen sich ausblenden; die in den unveränderten Originalfahnen enthaltenen römischen Ziffern bleiben erhalten.
+| Größe | Bisheriges Höhenformat | Kompakt |
+|---|---|---|
+| 390 × 844 | [Screenshot](screenshots/waldwaechter-v2-390-before.jpg) | [Screenshot](screenshots/waldwaechter-v2-390-after.jpg) |
+| 320 × 568 | [Screenshot](screenshots/waldwaechter-v2-320-before.jpg) | [Screenshot](screenshots/waldwaechter-v2-320-after.jpg) |
+| Desktop | — | [Reihenvergleich](screenshots/waldwaechter-v2-desktop.jpg), [acht Einzelstufen](screenshots/waldwaechter-v2-desktop-comparison.jpg) |
 
-## Nachweise
+Im Browser geprüft: 390/320 px, beide Höhenmodi, zwei/drei Reihen, Beschriftungen an/aus, alle acht Detailstufen, 4×-Vergrößerung mit eigenem Scrollbereich, getrennte Basis-/Waffenlinks, Reload und Desktop. Kein horizontaler Seitenüberlauf und keine Konsolenfehler bei diesen Prüfungen.
 
-Echte Browser-Screenshots der separaten Vorschau, keine gestalteten Mockups:
+## Technische Prüfung
 
-- [390 × 844, mit Leveln](screenshots/waldwaechter-390.jpg)
-- [390 × 844, ohne Level](screenshots/waldwaechter-390-blind.jpg)
-- [320 × 568, mit Leveln](screenshots/waldwaechter-320.jpg)
-- [320 × 568, ohne Level](screenshots/waldwaechter-320-blind.jpg)
-- [Desktop](screenshots/waldwaechter-desktop.jpg)
-
-Geprüft: alle sechs Detailstufen, Beschriftungen an/aus, 2×/3×/4×-Vergrößerung (4× mit eigenem horizontalem Scrollbereich), mobile Gesamtbreite ohne horizontalen Seitenüberlauf, getrennte Basis-/Waffenlinks, Reload. Keine Browser-Konsolenfehler bei diesen Prüfungen.
-
-- `python prototypes/waldwaechter-evolution/verify-assets.py`: bestanden; Originalpixel, Frames, harte Transparenz, SHA-256, identische Gebäudegrenzen und statische Waffenradien.
+- `python prototypes/waldwaechter-evolution/verify-assets.py`: bestanden. Originalreferenzen pixelidentisch, native Framegrößen, harte Transparenz, SHA-256, unverzerrte Waffen, gemeinsames Höhenbudget, Rotationsradius innerhalb der Basisbreite und statische Verdeckung.
 - `node --check prototypes/waldwaechter-evolution/preview.js`: bestanden.
-- `npm test`: **421/421**, keine übersprungenen Tests.
-- `npm run build`: bestanden; eigenständige Vorschau im Pages-Ausgabeverzeichnis.
+- `npm run build`: bestanden. Nach den letzten statischen Anpassungen wurde das Pages-Paket erneut erzeugt und die kopierten Dateien verglichen.
+- Keine Spielcodeänderung; daher in dieser Revision gezielte Asset-/Geometrie- und Browserprüfungen statt einer weiteren vollständigen Spieltestsuite. Die vorherige Revision hatte 421/421 bestandene Tests.
 
-## Kritische Bewertung
+## Kritische Bewertung und Grenzen
 
-Richtige neue Konstruktionen funktionieren hier besser als kleine Symbole oder Farbfilter: Waffenarme, Stützen und große Materialflächen bleiben bei Spielgröße lesbar. Der Sprung von Original-Level 7 zu Level 20 ist auch bei 320 Pixel Breite sichtbar, ohne die Gebäude zu vergrößern. Die Familie bleibt über Steinplattform, Holzfront, blaue Fahne und Armbrust erkennbar.
+Die kompakteren Körper sind für dichte Reihen überzeugender als das bisherige Höhenwachstum. Originalidentität, Waffenformen und starke Materialflächen bleiben lesbar. Die zusätzlichen Skins unterscheiden sich durch Konstruktion; Level 25 verwendet eine erkennbare Doppelbogen-Anordnung.
 
-**Grenze:** Zwischen 15 und 20 ist die Abstufung bei 320 Pixel Breite weniger eindeutig als bei 390. Kleine Pfeilführungen und Nieten gehen verloren; der Eindruck trägt hauptsächlich über Goldflächen und Streben. Die neuen Stufen sind außerdem detailreicher als das Originalpack. Dies ist ein brauchbarer visueller Prototyp, noch keine Freigabe für die Integration.
+Drei direkt aufeinanderfolgende Reihen wirken weiterhin dicht. Das ist bei dieser Perspektive zu erwarten; Fahnen und Unterbauten können nicht gleichzeitig vollständig sichtbar bleiben. Level 15/20 sind bei 320 px näher beieinander als in der Detailansicht. Kompression reduziert außerdem die vertikale Auflösung der unteren Holz-/Steinflächen. Diese bewusste Grenze ist sichtbar und kein Anspruch auf fertige Produktionsgrafik.
 
-Nicht geprüft/erst für eine spätere Integration relevant: neue Angriffsframes, wechselnde Schussrichtungen im Kampf, Effekte/Einheiten vor den Türmen und Performance im vollständigen Spiel. Die Studie erzeugt keine Animationen.
-
-## Empfohlene spätere Levelstaffelung
-
-Auf die anschließende Nutzerfrage wird **1 / 2 / 3 / 5 / 10 / 15 / 20 / 25** empfohlen: sichtbare frühe Entwicklung, danach klare Fünferschritte. Die drei Originalgrafikstufen würden dabei auf Spiellevel 1/2/3 rücken; aktuell sind sie bewusst noch mit den bestehenden Spielschwellen 1/4/7 gezeigt.
-
-Die Entwürfe für 5 und 25 fehlen. Diese Empfehlung ist weder eine zusätzliche Assetproduktion noch eine Änderung der Spielzuordnung. Integration und endgültige Staffelung bleiben eine gemeinsame spätere Entscheidung.
+Nicht durch die statische Prüfung abgedeckt: sämtliche Schusswinkel, neue Angriffsframes, bewegte Einheiten/Effekte zwischen den Türmen und Performance im laufenden Spiel. Der separate Waffenradius ist geometrisch begrenzt; das ersetzt keine spätere Animations-/Kampfprüfung. **Gemeinsame Sichtfreigabe und Spielintegration bleiben offen.**
 
 ## Quellen und Reproduktion
 
-- Originale: `public/assets/Tower 01.png`, `Tower 01 - Level 01/02/03 - Weapon.png`, `Grass Tileset.png`.
-- Neue Entwürfe: eingebautes **Imagegen**-Tool. Vollständige Prompts in [PROMPTS.json](sources/PROMPTS.json) und [COMPACT-PROMPTS.json](sources/COMPACT-PROMPTS.json).
-- Generierte Quellen getrennt von den gepackten Sprites in `sources/`. Die älteren Gesamtentwürfe dienen weiter als Waffenquelle; für die Basen werden ausschließlich die kompakteren Revisionen verwendet.
-- `pack-assets.py` schneidet die Bauteile zu, richtet sie an den ursprünglichen Montagepunkten aus und reduziert mit Nearest Neighbour auf das native Raster. Begrenzte 32-Farben-Palette je neuem Bauteil, binäre Transparenz, keine nachträglichen Farbfilter oder prozeduralen Verzierungen.
-- Python/Pillow ist nur für die Asset-Aufbereitung erforderlich. Die Vorschau selbst hat keine zusätzliche Bibliothek.
-- Lokal: `python -m http.server 5192 --directory prototypes/waldwaechter-evolution`, dann http://127.0.0.1:5192/ öffnen. Wegen JSON-Laden ist ein HTTP-Server erforderlich.
+- `assets/reference/`: Vergleichsformat; Originalstufen 1/2/3 sind verlustfreie Ausschnitte aus den vorhandenen Atlanten.
+- `assets/compact/`: separate kompakte Basis- und Waffen-PNGs für alle acht Level.
+- Frames: Basis 64 × 128, Waffe 96 × 96. Basismontage +13, Ursprung (0,5 / 0,8), Faktor 0,63 unverändert. Der prototypeigene Waffenversatz steht pro Stufe in `manifest.json`.
+- Neue Zeichnungen mit dem eingebauten **Imagegen**-Tool: [Prompts für 5 und 25](sources/PROGRESSION-PROMPTS.json). Frühere Entwürfe und [Prompts](sources/PROMPTS.json), [Brüstungsrevision](sources/COMPACT-PROMPTS.json) bleiben erhalten.
+- `pack-assets.py`: reproduzierbare native Rasterpackung per Nearest Neighbour, binäre Transparenz und begrenzte Palette; keine Farbfilter als Ersatz für Skins. Der obere Bildbereich und die Waffe verschieben sich gemeinsam, nur der untere Körper wird vertikal verkürzt.
+- `verify-assets.py` erzeugt `geometry-check.json`. Python/Pillow nur für Aufbereitung und Prüfung; keine neue Laufzeitbibliothek.
+- Lokal: `python -m http.server 5192 --directory prototypes/waldwaechter-evolution`, danach http://127.0.0.1:5192/.
 
-
-## Veröffentlichung
-
-Prototyp-Commit: [48b2276](https://github.com/emfau88/TD/commit/48b2276aa18b3ab27030d664f9ffbf387888e9b9), direkt auf main gepusht.
-[Pages-Lauf 40931266839](https://github.com/emfau88/TD/actions/runs/40931266839): erfolgreich.
-Die öffentliche Vorschauseite wurde anschließend im echten Browser geöffnet: alle sechs Stufen geladen, Karte und Vergleich sichtbar, keine Konsolenfehler. Die gemeinsame gestalterische Freigabe bleibt offen.
+Vorgängerversion: Commit [48b2276](https://github.com/emfau88/TD/commit/48b2276aa18b3ab27030d664f9ffbf387888e9b9), damaliger [Pages-Lauf](https://github.com/emfau88/TD/actions/runs/40931266839). Alte Screenshots ohne „v2“ dokumentieren ausschließlich diesen früheren Stand.

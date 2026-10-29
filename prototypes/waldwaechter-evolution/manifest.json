@@ -1,5 +1,6 @@
 {
-  "baseCommit": "ff65d67b943d35d55f3e6518274ddf78760f88ab",
+  "revision": 2,
+  "baseCommit": "67f5f86222ed0eea4d4e7ac43948bc0c7f213541",
   "nativeFrames": {
     "base": [
       64,
@@ -28,10 +29,17 @@
   "levels": [
     {
       "level": 1,
-      "original": true,
-      "baseBox": [
+      "previousLevel": 1,
+      "originalStage": 1,
+      "referenceBox": [
         0,
         30,
+        64,
+        128
+      ],
+      "baseBox": [
+        0,
+        43,
         64,
         128
       ],
@@ -40,14 +48,27 @@
         26,
         66,
         70
-      ]
+      ],
+      "upperShift": 13,
+      "weaponY": -14.81,
+      "referenceBase": "assets/reference/level-1-base.png",
+      "referenceWeapon": "assets/reference/level-1-weapon.png",
+      "base": "assets/compact/level-1-base.png",
+      "weapon": "assets/compact/level-1-weapon.png"
     },
     {
-      "level": 4,
-      "original": true,
-      "baseBox": [
+      "level": 2,
+      "previousLevel": 4,
+      "originalStage": 2,
+      "referenceBox": [
         0,
         21,
+        64,
+        128
+      ],
+      "baseBox": [
+        0,
+        36,
         64,
         128
       ],
@@ -56,14 +77,27 @@
         26,
         69,
         70
-      ]
+      ],
+      "upperShift": 15,
+      "weaponY": -13.55,
+      "referenceBase": "assets/reference/level-2-base.png",
+      "referenceWeapon": "assets/reference/level-2-weapon.png",
+      "base": "assets/compact/level-2-base.png",
+      "weapon": "assets/compact/level-2-weapon.png"
     },
     {
-      "level": 7,
-      "original": true,
-      "baseBox": [
+      "level": 3,
+      "previousLevel": 7,
+      "originalStage": 3,
+      "referenceBox": [
         0,
         12,
+        64,
+        128
+      ],
+      "baseBox": [
+        0,
+        36,
         64,
         128
       ],
@@ -72,28 +106,84 @@
         26,
         73,
         70
-      ]
+      ],
+      "upperShift": 24,
+      "weaponY": -7.879999999999999,
+      "referenceBase": "assets/reference/level-3-base.png",
+      "referenceWeapon": "assets/reference/level-3-weapon.png",
+      "base": "assets/compact/level-3-base.png",
+      "weapon": "assets/compact/level-3-weapon.png"
+    },
+    {
+      "level": 5,
+      "previousLevel": 5,
+      "generated": true,
+      "sourceBase": "sources/level-5-generated.png",
+      "sourceBaseBox": [
+        99,
+        173,
+        805,
+        914
+      ],
+      "sourceMountY": 387,
+      "sourceWeaponBox": [
+        883,
+        287,
+        1461,
+        779
+      ],
+      "referenceBox": [
+        0,
+        12,
+        64,
+        128
+      ],
+      "baseBox": [
+        0,
+        36,
+        64,
+        128
+      ],
+      "weaponBox": [
+        22,
+        26,
+        74,
+        70
+      ],
+      "upperShift": 24,
+      "weaponY": -7.879999999999999,
+      "referenceBase": "assets/reference/level-5-base.png",
+      "referenceWeapon": "assets/reference/level-5-weapon.png",
+      "base": "assets/compact/level-5-base.png",
+      "weapon": "assets/compact/level-5-weapon.png"
     },
     {
       "level": 10,
-      "original": false,
+      "previousLevel": 10,
+      "generated": true,
+      "sourceBase": "sources/level-10-compact-base.png",
       "sourceBaseBox": [
         226,
         313,
         949,
         1201
       ],
+      "sourceMountY": 522,
       "sourceWeaponBox": [
         819,
         198,
         1335,
         670
       ],
-      "sourceMountY": 522,
-      "compactBaseSource": "sources/level-10-compact-base.png",
-      "baseBox": [
+      "referenceBox": [
         0,
         12,
+        64,
+        128
+      ],
+      "baseBox": [
+        0,
+        36,
         64,
         128
       ],
@@ -102,28 +192,41 @@
         25,
         76,
         71
-      ]
+      ],
+      "upperShift": 24,
+      "weaponY": -7.879999999999999,
+      "referenceBase": "assets/reference/level-10-base.png",
+      "referenceWeapon": "assets/reference/level-10-weapon.png",
+      "base": "assets/compact/level-10-base.png",
+      "weapon": "assets/compact/level-10-weapon.png"
     },
     {
       "level": 15,
-      "original": false,
+      "previousLevel": 15,
+      "generated": true,
+      "sourceBase": "sources/level-15-compact-base.png",
       "sourceBaseBox": [
         152,
         265,
         1025,
         1230
       ],
+      "sourceMountY": 485,
       "sourceWeaponBox": [
         800,
         198,
         1525,
         756
       ],
-      "sourceMountY": 485,
-      "compactBaseSource": "sources/level-15-compact-base.png",
-      "baseBox": [
+      "referenceBox": [
         0,
         12,
+        64,
+        128
+      ],
+      "baseBox": [
+        0,
+        36,
         64,
         128
       ],
@@ -132,28 +235,41 @@
         23,
         78,
         73
-      ]
+      ],
+      "upperShift": 24,
+      "weaponY": -7.879999999999999,
+      "referenceBase": "assets/reference/level-15-base.png",
+      "referenceWeapon": "assets/reference/level-15-weapon.png",
+      "base": "assets/compact/level-15-base.png",
+      "weapon": "assets/compact/level-15-weapon.png"
     },
     {
       "level": 20,
-      "original": false,
+      "previousLevel": 20,
+      "generated": true,
+      "sourceBase": "sources/level-20-compact-base.png",
       "sourceBaseBox": [
         140,
         187,
         1036,
         1225
       ],
+      "sourceMountY": 420,
       "sourceWeaponBox": [
         798,
         200,
         1529,
         776
       ],
-      "sourceMountY": 420,
-      "compactBaseSource": "sources/level-20-compact-base.png",
-      "baseBox": [
+      "referenceBox": [
         0,
         12,
+        64,
+        128
+      ],
+      "baseBox": [
+        0,
+        36,
         64,
         128
       ],
@@ -162,9 +278,63 @@
         21,
         80,
         75
-      ]
+      ],
+      "upperShift": 24,
+      "weaponY": -7.879999999999999,
+      "referenceBase": "assets/reference/level-20-base.png",
+      "referenceWeapon": "assets/reference/level-20-weapon.png",
+      "base": "assets/compact/level-20-base.png",
+      "weapon": "assets/compact/level-20-weapon.png"
+    },
+    {
+      "level": 25,
+      "previousLevel": 25,
+      "generated": true,
+      "sourceBase": "sources/level-25-generated.png",
+      "sourceBaseBox": [
+        113,
+        189,
+        774,
+        944
+      ],
+      "sourceMountY": 385,
+      "sourceWeaponBox": [
+        870,
+        199,
+        1456,
+        857
+      ],
+      "referenceBox": [
+        0,
+        12,
+        64,
+        128
+      ],
+      "baseBox": [
+        0,
+        36,
+        64,
+        128
+      ],
+      "weaponBox": [
+        18,
+        24,
+        78,
+        72
+      ],
+      "upperShift": 24,
+      "weaponY": -7.879999999999999,
+      "referenceBase": "assets/reference/level-25-base.png",
+      "referenceWeapon": "assets/reference/level-25-weapon.png",
+      "base": "assets/compact/level-25-base.png",
+      "weapon": "assets/compact/level-25-weapon.png"
     }
   ],
+  "compact": {
+    "minBaseTop": 36,
+    "maxAssembledHeight": 92,
+    "bodyCut": 64
+  },
   "terrain": {
     "grass": [
       128,
@@ -185,7 +355,7 @@
       64
     ]
   },
-  "provenance": "Imagegen designs; deterministic crop/alignment/palette/alpha packaging. Original levels are exact source-frame copies.",
+  "provenance": "Imagegen designs for new skins; deterministic native-grid packaging. Original early designs retained; prototype-only shorter lower bodies, exact weapon pixels.",
   "hashes": {
     "level-1-base.png": "315a70b619b5780ad2c6d6941fd98a33a78cb8dc13e05fd8cfcef3c404eabb69",
     "level-1-weapon.png": "beac618f4b5a85d90ace73ec66870843350c921b80ad9cb30b215e2d412fe8c8",
@@ -195,10 +365,46 @@
     "level-15-weapon.png": "84fa1022cd586d054de94ee81c147b231d7a2e8d89a99a732695a9733c68ef45",
     "level-20-base.png": "64dac05f4b39bd785b29f416af80afb6afbb2d04d63f81dd8bf46f591f97723d",
     "level-20-weapon.png": "35c1b9902f0f9bbaed66238fe9d148994bb5242a21a07cd69879c86da07ef6ca",
+    "level-25-base.png": "6c324c5758d645b52c3d22e7c93f7df517ec744b0e3200049e61ef69c15fe0ae",
+    "level-25-weapon.png": "6d77b8262becdb9c789b9f215e672b8ca411413de6277e58f99ca4e89e361b17",
     "level-4-base.png": "008fd18506fd0c518e74274a793c571430d70a7d9a46be211d04d55142f64fd0",
     "level-4-weapon.png": "8edabb68f3edb01151f83a9f1be3e61dec9ad3dc171c41794a9cd0c5c4577558",
+    "level-5-base.png": "7bdec2854357738a55965d7bad510f3a2a4a7e3b0920117327ea4156b56e0366",
+    "level-5-weapon.png": "8bc577a0fa5725fdcee9514d041b7748ba4c6cf788fed09fbc8a57286ce57f2c",
     "level-7-base.png": "87aa53c0133fb40e75198c65a0ff8723999e53c27ea328b40be573b4c6adace6",
     "level-7-weapon.png": "757113f4b9cde11255638e660b152aabac03960ee103223b6ee441a520e46ea1",
-    "terrain.png": "0d36e48873dcfa12e656087da8e348b0ea2ddecf3b5f4724e9a5253b4e27c7f4"
+    "terrain.png": "0d36e48873dcfa12e656087da8e348b0ea2ddecf3b5f4724e9a5253b4e27c7f4",
+    "compact/level-1-base.png": "c9b36d1a34a33a741f1bfa06ed6768dda39b0bae94ce64c0757ab4360175002f",
+    "compact/level-1-weapon.png": "295591bad4153f9b6f36ef8ce5dec3dd092c6f99c350b869f8c24efce098214e",
+    "compact/level-10-base.png": "78042543bf387e88e24f2eed27bfb5a8cb9cc77a47bb3e34c73da511e00137bd",
+    "compact/level-10-weapon.png": "39b2a86060ef20820007b04ca6e76068ea3061c20d85cadaa9eba0aafcd9348e",
+    "compact/level-15-base.png": "5e155e644cef8c98fc4cd7b9bdf6b96916bcad98cead22d9a7579188d30bb874",
+    "compact/level-15-weapon.png": "84fa1022cd586d054de94ee81c147b231d7a2e8d89a99a732695a9733c68ef45",
+    "compact/level-2-base.png": "df5ab81429d27c1e54b6e00986f0d73ea09c782e8a45e02125cc81f16a6027f2",
+    "compact/level-2-weapon.png": "43465e6ab56c479090d515fbadd17b815896347a5c5d33af719307b877d3245c",
+    "compact/level-20-base.png": "e7970c234ba98b211d7cc7b0609c07154d14404be98d473ff41831f47fa41d9c",
+    "compact/level-20-weapon.png": "35c1b9902f0f9bbaed66238fe9d148994bb5242a21a07cd69879c86da07ef6ca",
+    "compact/level-25-base.png": "ca191b7ab41d9db8bbbf701945fa14df219349ee15ac753918d4831d22e4acfd",
+    "compact/level-25-weapon.png": "6d77b8262becdb9c789b9f215e672b8ca411413de6277e58f99ca4e89e361b17",
+    "compact/level-3-base.png": "a19386641b196dcaeaac460c7afb7723d81176ab9ef9c8d82e577d2af5b36b97",
+    "compact/level-3-weapon.png": "a1ab40bb4e302c5491d78e58dc61b227b389807ac46f1bf9683e9b6ebd83a35b",
+    "compact/level-5-base.png": "4d45e2c39a3c80a7183578cfe67695b5a38409d1260e60c46f3bb3f27b9e5832",
+    "compact/level-5-weapon.png": "8bc577a0fa5725fdcee9514d041b7748ba4c6cf788fed09fbc8a57286ce57f2c",
+    "reference/level-1-base.png": "293fa72d863970a8a188ee592e2fe396785cfee9ff3bd04b9865039145d51e6c",
+    "reference/level-1-weapon.png": "295591bad4153f9b6f36ef8ce5dec3dd092c6f99c350b869f8c24efce098214e",
+    "reference/level-10-base.png": "a517ca10f5df4cd6600117eacdbca2223de54d4628d2762faa04da647e7fa40e",
+    "reference/level-10-weapon.png": "39b2a86060ef20820007b04ca6e76068ea3061c20d85cadaa9eba0aafcd9348e",
+    "reference/level-15-base.png": "304085f09aa35e77faab858fca2f1aa529c08218b3c0b86b73f4ad657df81141",
+    "reference/level-15-weapon.png": "84fa1022cd586d054de94ee81c147b231d7a2e8d89a99a732695a9733c68ef45",
+    "reference/level-2-base.png": "7b89a79c4c2f49bacd7c5c4674d2d152d0d729c375ed140877636f73aba45bea",
+    "reference/level-2-weapon.png": "43465e6ab56c479090d515fbadd17b815896347a5c5d33af719307b877d3245c",
+    "reference/level-20-base.png": "64dac05f4b39bd785b29f416af80afb6afbb2d04d63f81dd8bf46f591f97723d",
+    "reference/level-20-weapon.png": "35c1b9902f0f9bbaed66238fe9d148994bb5242a21a07cd69879c86da07ef6ca",
+    "reference/level-25-base.png": "6c324c5758d645b52c3d22e7c93f7df517ec744b0e3200049e61ef69c15fe0ae",
+    "reference/level-25-weapon.png": "6d77b8262becdb9c789b9f215e672b8ca411413de6277e58f99ca4e89e361b17",
+    "reference/level-3-base.png": "c31df757b82705a5a3fb57f1ba111935bcafcfedb02e7d9fb8eb186e4ad9d2fe",
+    "reference/level-3-weapon.png": "a1ab40bb4e302c5491d78e58dc61b227b389807ac46f1bf9683e9b6ebd83a35b",
+    "reference/level-5-base.png": "7bdec2854357738a55965d7bad510f3a2a4a7e3b0920117327ea4156b56e0366",
+    "reference/level-5-weapon.png": "8bc577a0fa5725fdcee9514d041b7748ba4c6cf788fed09fbc8a57286ce57f2c"
   }
 }
