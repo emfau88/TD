@@ -1,60 +1,110 @@
-// Cosmetic study only. One logical hit; bounded sparks and a short secondary accent.
+// Hand-authored pixel effects, isolated from the game. Distinct silhouettes and timing per skin.
 export const LEVELS=[1,2,3,5,10,15,20,25];
+export const NAMES={
+ 1:['Pfeilkontakt','Holzsplitter','Stahlsplitter','Kerbsplitter','Silberfächer','Goldspaltung','Smaragdsalve','Meistersalve'],
+ 2:['Frostkontakt','Eissplitter','Eisfunken','Eisbruch','Kristallkrone','Prismenkreuz','Polarstern','Aurorabruch'],
+ 3:['Steinkontakt','Steinsplitter','Schwerer Treffer','Steinbruch','Glutstoß','Feuerstoß','Meteorsplitter','Sonnenbruch'],
+ 4:['Kontaktstern','Grüne Funken','Scharfer Kontakt','Fokusblitz','Jadeschnitt','Doppellanze','Lichtlanze','Sternlanze']
+};
+const PALETTES={
+ 1:[['#625c4e','#cad1bb','#f7f0cc'],['#644a30','#c69b62','#f5d9a1'],['#465e66','#c8e2db','#f8ffed'],['#61472d','#d2a567','#ffe5b1'],['#3e6580','#b9dfe9','#f5ffff'],['#81542c','#f5c85e','#fff1b4'],['#276553','#72e6b0','#ffdf87'],['#7f5e28','#f8d774','#f7ffe4']],
+ 2:[['#428399','#9ce0e7','#eaffff'],['#3f869f','#8ad5e9','#e6ffff'],['#347eab','#78d1ed','#f4ffff'],['#2b779e','#76cee6','#e4ffff'],['#346b99','#a0dff6','#f6ffff'],['#304b91','#75bff2','#d9fbff'],['#355480','#a8e6e8','#f5ffff'],['#655095','#b0dcfa','#f8ffff']],
+ 3:[['#70534b','#c7a273','#f3d7a0'],['#75533b','#d3ae7c','#f9df9f'],['#734f39','#d9a568','#ffe1a1'],['#574938','#b59464','#efcd8e'],['#803f2b','#ec8d38','#ffe5a0'],['#873134','#f15d32','#ffe0a0'],['#68342c','#f99535','#fff3b0'],['#8f382a','#ffc249','#fff9d8']],
+ 4:[['#47674c','#a6cc76','#f0ffdb'],['#3f6e48','#aad971','#f1ffcf'],['#326b50','#a3e992','#f3ffe2'],['#365f42','#a5df73','#f3ffd6'],['#246b59','#64dbac','#e6fff1'],['#285c54','#8df2be','#efffe9'],['#356c78','#8ae8e6','#f4ffff'],['#45684b','#c5ef91','#fff4bc']]
+};
 export function profile(kind,level){
  const i=Math.max(0,LEVELS.indexOf(level));
- return {i,life:300+i*25+(kind===3?55:0),scale:.85+i*(kind===3?.055:.075),
-  count:[0,2,3,4,6,8,10,12][i],radius:[7,8,10,12,15,18,21,24][i]*(kind===3?1.25:1),
-  trail:[0,1,1,2,3,4,5,6][i]};
+ return {i,life:[300,320,350,380,420,450,480,520][i]+(kind===3?30:0),
+  scale:.85+i*.05,count:[0,2,3,4,6,8,10,12][i],radius:[7,8,10,12,15,18,21,24][i],
+  trail:[0,1,1,2,3,4,5,6][i],colors:PALETTES[kind][i],name:NAMES[kind][i]};
 }
 function px(c,x,y,w,h,color){c.fillStyle=color;c.fillRect(Math.round(x),Math.round(y),Math.max(1,Math.round(w)),Math.max(1,Math.round(h)))}
 function ray(c,x,y,xx,yy,color,width=1){const n=Math.ceil(Math.max(Math.abs(xx-x),Math.abs(yy-y)));for(let j=0;j<=n;j++)px(c,x+(xx-x)*j/Math.max(1,n),y+(yy-y)*j/Math.max(1,n),width,width,color)}
-function diamond(c,x,y,n,color){px(c,x,y-n,1,n*2+1,color);px(c,x-n,y,n*2+1,1,color);if(n>=3)px(c,x-1,y-1,3,3,color)}
-const COLORS={1:['#8a6439','#f0c77e','#fff5d2'],2:['#3a8cae','#8bddf0','#edffff'],3:['#815235','#f2b35f','#fff2c4'],4:['#49744c','#b2eb72','#f2ffda']};
+function diamond(c,x,y,n,color){for(let yy=-Math.ceil(n);yy<=Math.ceil(n);yy++){const w=Math.max(0,Math.floor(n-Math.abs(yy)));px(c,x-w,y+yy,w*2+1,1,color)}}
+// Stepped, asymmetric flame clouds distinguish fire from crystalline diamond facets.
+function flame(c,x,y,n,color,seed){
+ for(let yy=-Math.ceil(n);yy<=Math.ceil(n*.8);yy+=2){
+  const row=Math.max(-n,Math.min(n,yy)),w=Math.floor(Math.sqrt(Math.max(0,n*n-row*row))*.83);
+  const shift=Math.round(Math.sin((yy+seed)*.43)*1.5),notch=(Math.floor((yy+seed)/4)%3===0?1:0);
+  if(w>0)px(c,x-w+shift,y+yy,w*2-notch,2,color);
+ }
+}
+function polygon(c,points,color){
+ const lo=Math.ceil(Math.min(...points.map(p=>p[1]))),hi=Math.floor(Math.max(...points.map(p=>p[1])));
+ for(let y=lo;y<=hi;y++){const cuts=[];for(let j=0;j<points.length;j++){const a=points[j],b=points[(j+1)%points.length];if((a[1]<=y&&b[1]>y)||(b[1]<=y&&a[1]>y))cuts.push(a[0]+(y-a[1])*(b[0]-a[0])/(b[1]-a[1]))}cuts.sort((a,b)=>a-b);for(let j=0;j+1<cuts.length;j+=2)px(c,Math.ceil(cuts[j]),y,Math.max(1,Math.floor(cuts[j+1])-Math.ceil(cuts[j])+1),1,color)}
+}
+function blade(c,x,y,a,len,width,colors){
+ const dx=Math.cos(a),dy=Math.sin(a),nx=-dy,ny=dx;
+ polygon(c,[[x-dx*2,y-dy*2],[x+dx*len*.35+nx*width,y+dy*len*.35+ny*width],[x+dx*len,y+dy*len],[x+dx*len*.35-nx*width,y+dy*len*.35-ny*width]],colors[0]);
+ polygon(c,[[x,y],[x+dx*len*.35+nx*(width-1),y+dy*len*.35+ny*(width-1)],[x+dx*(len-1),y+dy*(len-1)],[x+dx*len*.35,y+dy*len*.35]],colors[1]);
+ ray(c,x,y,x+dx*(len-2),y+dy*(len-2),colors[2]);
+}
+function brokenRing(c,r,y,colors,phase=0,segments=10){
+ for(let j=0;j<segments;j++){const a=j/segments*Math.PI*2+phase;ray(c,Math.cos(a)*r,Math.sin(a)*r*.44+y,Math.cos(a+.25)*r,Math.sin(a+.25)*r*.44+y,colors[j%3?1:2])}
+}
 export function drawTrail(c,kind,level,x,y,dx,dy){
- const p=profile(kind,level),colors=COLORS[kind];c.save();
- for(let j=p.trail;j>0;j--){c.globalAlpha=(1-j/(p.trail+1))*.5;const n=p.i>=5?2:1;
-  px(c,x-dx*j*4,y-dy*j*4,n,n,colors[1]);if(p.i>=6&&j%2===0)px(c,x-dx*j*4+2,y-dy*j*4+3,1,1,colors[2]);}
- c.restore();
+ const p=profile(kind,level);c.save();
+ for(let j=p.trail;j>0;j--){c.globalAlpha=(1-j/(p.trail+1))*.65;const n=p.i>=5?2:1;px(c,x-dx*j*4,y-dy*j*4,n,n,p.colors[j%3?1:2]);if(p.i>=6&&j%2===0)px(c,x-dx*j*4+2,y-dy*j*4+3,1,1,p.colors[2])}c.restore();
+}
+function extras(c,kind,p,t){
+ const count=p.i<3?p.count:Math.min(p.count,8);
+ for(let j=0;j<count;j++){
+  const a=j/count*Math.PI*2+.32,d=4+Math.sqrt(t)*p.radius*(kind===3?1.25:1),x=Math.cos(a)*d,y=Math.sin(a)*d*(kind===3?.65:1)+(kind===3?t*t*11:0);
+  c.globalAlpha=Math.min(1,(1-t)*1.7);
+  if(kind===3){const n=p.i>=6?3:2;px(c,x,y,n,n,p.colors[0]);px(c,x,y,n,1,p.colors[1])}
+  else ray(c,x,y,x+Math.cos(a)*(p.i>=5?3:2),y+Math.sin(a)*(p.i>=5?3:2),p.colors[j%2?1:2],p.i>=6?2:1);
+ }
 }
 export function drawImpact(c,kind,level,age,base){
- const p=profile(kind,level);if(age<0||age>=p.life)return;
- const t=age/p.life,colors=COLORS[kind],high=p.i>=5;c.save();
- // Original silhouette anchors every tier. Later tiers add a shorter secondary burst.
- c.save();c.scale(p.scale,p.scale);c.globalAlpha=kind===3&&t>.4?Math.max(.2,1-(t-.4)*1.4):1;
- base(c,t);c.restore();
- if(p.i===0){c.restore();return}
- const kick=Math.max(0,1-age/(75+p.i*6));
- if(kick){c.globalAlpha=kick*.9;const n=2+p.i*.45;diamond(c,0,0,n,colors[2]);}
- if(high&&age>=75&&age<155){c.globalAlpha=(1-(age-75)/80)*.8;diamond(c,0,-1,p.i-1,colors[2]);}
- // Facets/debris grow in number, length and distance with each visible skin.
- for(let j=0;j<p.count;j++){
-  const delay=high&&j%3===0?55:0,u=Math.max(0,(age-delay)/(p.life-delay));if(age<delay)continue;
-  const a=kind===1?(-Math.PI*.96+j/(p.count-1)*Math.PI*.88):j/p.count*Math.PI*2+.32;
-  const distance=(kind===3?12:3)+Math.sqrt(u)*p.radius;
-  const x=Math.cos(a)*distance,y=Math.sin(a)*distance*(kind===3?.63:1)+(kind===3?u*u*11:0);
-  c.globalAlpha=Math.min(1,(1-u)*2.1);
-  if(kind===2){
-   const length=3+p.i*.5;
-   ray(c,x,y,x+Math.cos(a)*length,y+Math.sin(a)*length,colors[0],p.i>=4?3:2);
-   ray(c,x,y,x+Math.cos(a)*(length-1),y+Math.sin(a)*(length-1),colors[2],p.i>=6?2:1);
-  }else if(kind===3){
-   const n=2+(j%3===0?1:0)+(p.i>=5?1:0);
-   px(c,x,y,n,n,colors[0]);px(c,x,y,n,1,colors[1]);
-   if(high&&j%2===0)ray(c,x,y,x-Math.cos(a)*3,y-Math.sin(a)*3,colors[2]);
-  }else if(kind===1){
-   const n=2+p.i*.5;ray(c,x,y,x+Math.cos(a)*n,y+Math.sin(a)*n,colors[0],2);
-   ray(c,x,y,x+Math.cos(a)*(n-1),y+Math.sin(a)*(n-1),colors[2]);
-  }else{diamond(c,x,y,high&&j%2===0?2:1,colors[j%2?1:2]);}
+ const p=profile(kind,level);if(age<0||age>=p.life)return;const t=age/p.life,colors=p.colors,i=p.i;c.save();
+ if(i<3){
+  c.save();c.scale(p.scale,p.scale);base(c,t);c.restore();extras(c,kind,p,t);c.restore();return;
  }
- // A low, broken impulse for stone/ice; never a persistent overlay.
- if(p.i>=3&&(kind===2||kind===3)&&t<.6){
-  const radius=(7+t*p.radius)*(kind===3?1.4:1),segments=kind===3?10:8;c.globalAlpha=(1-t/.6)*.65;
-  for(let j=0;j<segments;j++){const a=j/segments*Math.PI*2;
-   ray(c,Math.cos(a)*radius,Math.sin(a)*radius*.43+8,Math.cos(a+.22)*radius,Math.sin(a+.22)*radius*.43+8,colors[1],p.i>=6?2:1);}
+ const fade=Math.min(1,(1-t)*2.2);c.globalAlpha=fade;
+ if(kind===1){
+  if(i<=5){
+   const count=i===3?2:i===4?3:5;
+   for(let j=0;j<count;j++){const delay=i===5&&j%2?65:0;if(age<delay)continue;const u=(age-delay)/(p.life-delay);
+    blade(c,Math.sin(j*2)*2,-u*3,-2.8+j/Math.max(1,count-1)*2.4,7+(i-3)*3+Math.sin(u*Math.PI)*4,i===3?2:3,colors);}
+  }else{
+   const clusters=i===6?2:3;
+   for(let q=0;q<clusters;q++){const delay=q*(i===6?55:65);if(age<delay||age>delay+260)continue;
+    const u=(age-delay)/260;c.globalAlpha=1-u;const x=(q-(clusters-1)/2)*9,y=q===1?-5:1;
+    for(let j=0;j<3;j++)blade(c,x,y,-2.6+j*.9,10+Math.sin(u*Math.PI)*7,2,colors);
+    diamond(c,x,y,Math.max(1,3-u*3),colors[2]);
+   }
+  }
+ }else if(kind===2){
+  if(i===3){diamond(c,0,0,7,colors[0]);diamond(c,0,-1,5,colors[1]);for(const a of [-2.6,-.6])blade(c,0,0,a,10+t*5,2,colors)}
+  if(i===4){for(let j=0;j<5;j++)blade(c,0,5,-Math.PI+.18+j*(Math.PI-.36)/4,13+Math.sin(t*Math.PI)*6,3,colors)}
+  if(i===5){for(let j=0;j<4;j++)blade(c,0,0,j*Math.PI/2+.35,13+Math.sin(t*Math.PI)*7,4,colors);diamond(c,0,0,5,colors[2])}
+  if(i===6){for(let j=0;j<6;j++)blade(c,0,0,j*Math.PI/3,14+Math.sin(t*Math.PI)*6,3,colors);diamond(c,0,0,5,colors[2]);if(t<.5)brokenRing(c,13+t*14,5,colors,.3,8)}
+  if(i===7){for(let j=0;j<8;j++){const a=j*Math.PI/4;blade(c,Math.cos(a)*5,Math.sin(a)*5,a,12+Math.sin(t*Math.PI)*7,3,colors)}diamond(c,0,0,6,colors[2]);if(age>65&&t<.65)brokenRing(c,15+t*20,1,colors,t*.7,12)}
+ }else if(kind===3){
+  if(i===3){
+   for(let j=0;j<5;j++){const a=j/5*Math.PI*2,x=Math.cos(a)*(8+t*12),y=Math.sin(a)*(5+t*7);px(c,x-4,y-3,8,7,colors[0]);px(c,x-3,y-3,6,3,colors[1]);px(c,x-2,y-3,3,1,colors[2])}
+   c.globalAlpha=fade*.45;brokenRing(c,13+t*9,9,colors);
+  }else if(i===4||i===5){
+   const lobes=i===4?3:5;
+   for(let j=0;j<lobes;j++){const a=j/lobes*Math.PI*2,x=Math.cos(a)*(7+t*6),y=Math.sin(a)*(5+t*7)-t*5,n=(i===4?15:17)*(1-t*.5);
+    flame(c,x,y,n,colors[0],j*3);flame(c,x,y-1,n-2,colors[1],j*3);if(t<.48)flame(c,x,y-2,n-5,colors[2],j*3);}
+   if(i===5&&age>70&&t<.65)brokenRing(c,13+t*16,9,colors,.2,12);
+  }else if(i===6){
+   blade(c,0,5,-Math.PI/2,30-t*8,10,colors);blade(c,0,2,-2.8,24,6,colors);blade(c,0,2,-.3,24,6,colors);
+   for(let j=0;j<6;j++){const a=j/6*Math.PI*2,x=Math.cos(a)*(16+Math.sqrt(t)*18),y=Math.sin(a)*(7+Math.sqrt(t)*14)+t*t*5;diamond(c,x,y,3,colors[0]);diamond(c,x,y,2,colors[1]);px(c,x,y,1,1,colors[2]);}
+   if(t<.65)brokenRing(c,17+t*17,8,colors,.1,12);
+  }else{
+   for(let j=0;j<8;j++)blade(c,0,0,j*Math.PI/4,20+Math.sin(t*Math.PI)*15,j%2?4:7,colors);
+   diamond(c,0,0,12*(1-t*.5),colors[1]);diamond(c,0,0,8*(1-t),colors[2]);
+   if(age>75&&t<.7)brokenRing(c,18+t*17,9,colors,0,14);
+  }
+ }else{
+  const diagonal=-.2;
+  if(i===3){blade(c,-10,2,diagonal,23,4,colors);diamond(c,0,0,3,colors[2])}
+  if(i===4){blade(c,-10,4,-.45,24,3,colors);blade(c,-5,-7,.8,18,3,colors)}
+  if(i===5){for(let j=0;j<2;j++){if(age<j*55)continue;blade(c,-13,4-j*7,diagonal,28,3,colors)}if(t<.45)diamond(c,0,0,4,colors[2])}
+  if(i===6){blade(c,-17,3,diagonal,35,4,colors);for(const sign of [-1,1]){ray(c,-3,0,6,sign*8,colors[1],2);ray(c,6,sign*8,15,sign*11,colors[2]);}diamond(c,0,0,4,colors[2])}
+  if(i===7){for(let j=0;j<3;j++){if(age<j*60||age>j*60+260)continue;c.globalAlpha=(1-(age-j*60)/260)*fade;blade(c,-17,6-j*6,-.2+(j-1)*.17,35,3,colors)}for(let j=0;j<4;j++)blade(c,0,0,j*Math.PI/2+.6,12+t*7,2,colors);diamond(c,0,0,4,colors[2]);}
  }
- if(kind===4&&p.i>=3&&t<.4){
-  c.globalAlpha=(1-t/.4)*.85;const r=7+p.i*2;
-  ray(c,-r,4,r,-4,colors[1],p.i>=5?2:1);ray(c,-r*.6,2,r*.6,-2,colors[2]);
- }
- c.restore();
+ extras(c,kind,p,t);c.restore();
 }

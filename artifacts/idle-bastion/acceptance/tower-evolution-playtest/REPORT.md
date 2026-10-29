@@ -102,3 +102,11 @@ Türme auf mittlere Wegstrecke versetzt; unbenutzter Startturm sicher hinten. Ei
 ## Impact-Studie Revision 3
 
 Auf Nutzerkorrektur Originale niedriger Main-Stufen plus echte Steigerung je Skin. 16/36 Vergleichsfelder, mehr Feuerwerk, eigener Level-15-Effekt. Nur Prototyp: keine Spielcodeänderung. Aktuelle Prüfung und Performance-Messung in [README](../../../../prototypes/tower-impact-study/README.md). Die frühere Empfehlung „drei Wirkungsgruppen reichen“ ist damit verworfen.
+
+## Impact-Studie Revision 4 · 30.10.2026
+
+Neue Pixelzeichnungen, Materialfarben und Trefferfolgen für jede Skin-Stufe; eigene Formen ab 5. Frostkrone/Prismenkreuz/Polarstern, Gold-/Smaragdsalven, Glut-/Feuer-/Meteoreinschläge und Präzisionslanzen ersetzen die reine Größensteigerung. Unveränderte niedrige Main-Originale bleiben als Referenz sichtbar. Keine Spielcode-/Balance-/Saveänderung.
+
+32 Profile/2.720 Zeitposen, Originalhashes und Syntax bestanden; Browser Desktop/390/320 ohne Warnungen/Fehler. Höchstens 11,25 MiB rohe Pixel im vollständigen Spritecache; Mikrobenchmark 96 Level-25-Treffer: Ø 0,13 ms / P95 0,20 ms CPU-Zeichenzeit. Kein vollständiger GPU-/Spiel-/Smartphone-Benchmark. Screenshots, technische Grenzen und Sichtbewertung in der [Studien-README](../../../../prototypes/tower-impact-study/README.md). Gestalterische Freigabe weiter offen.
+
+Revision 3 wurde zuvor als 9b7efa0 mit Pages 40971886603 veröffentlicht. Veröffentlichung der Revision 4 folgt nach Commit/Push. Kein Main-Merge und kein Export.

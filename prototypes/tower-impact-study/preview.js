@@ -1,10 +1,11 @@
-import {LEVELS,profile,drawImpact,drawTrail} from './effects.js?v=3';
-const $=id=>document.getElementById(id),images=new Map(),visible=new Set();
+import {LEVELS,NAMES,profile,drawImpact,drawTrail} from './effects.js?v=4';
+const $=id=>document.getElementById(id),images=new Map(),visible=new Set(),effectCache=new Map();
+const FX_SIZE=96,FX_FRAMES=10;
 const kinds=[
- {id:1,name:'Waldwächter',color:'#e3d6a5',note:'Vom Pfeilkontakt zum goldhellen Splitterfächer.',scale:.6,duration:500},
- {id:2,name:'Frostkristall',color:'#ace7ec',note:'Mehr Eisbruch, längere Facetten und ein kurzer Frostimpuls.',scale:.8,duration:500},
- {id:3,name:'Steinschleuder',color:'#dec093',note:'Wachsende Explosion, Steinsplitter und kräftiger Bodenimpuls.',scale:1.6,duration:500},
- {id:4,name:'Scharfschütze',color:'#c7e791',note:'Vom Kontaktstern zum grünen Präzisionsblitz mit Funken.',scale:.6,duration:350}
+ {id:1,name:'Waldwächter',color:'#e3d6a5',note:'Holz und Stahl → Silberfächer → Goldspaltung → Smaragdsalven.',scale:.6,duration:500},
+ {id:2,name:'Frostkristall',color:'#ace7ec',note:'Eisbruch → Kristallkrone → Prismenkreuz → Aurorabruch.',scale:.8,duration:500},
+ {id:3,name:'Steinschleuder',color:'#dec093',note:'Steinbruch → Glutstoß → Feuerstoß → Meteorsplitter.',scale:1.6,duration:500},
+ {id:4,name:'Scharfschütze',color:'#c7e791',note:'Fokusblitz → Jadeschnitt → Doppellanze → Sternlanze.',scale:.6,duration:350}
 ];
 let baseline,shotFrames,views=[],ready=false,last=null;
 const motion=matchMedia('(prefers-reduced-motion: reduce)');
@@ -13,11 +14,13 @@ const observer=new IntersectionObserver(entries=>{for(const e of entries){if(e.i
 function makeRows(){
  for(const v of views)observer.unobserve(v.canvas);views=[];visible.clear();$('rows').replaceChildren();
  const all=$('levels').value==='all';document.body.classList.toggle('all-levels',all);
+ $('comparison-description').innerHTML='Links: <strong>Level 1–3 aus dem aktuellen Hauptspiel</strong>. Daneben die Entwürfe für <strong>'+(all?'alle acht Skins von Level 1 bis 25':'Level 10, 15 und 20')+'</strong> – jeder neue Skin bekommt einen eigenen Angriffscharakter.';
  const columns=[{level:0,label:'Level 1–3',note:'Original · Hauptspiel'},...(all?LEVELS:[10,15,20]).map(level=>({level,label:'Level '+level,note:level===1?'Entwurf · Basis −15 %':'Neuer Entwurf'}))];
  for(const k of kinds){
   const row=document.createElement('section');row.className='row';row.style.setProperty('--accent',k.color);
   row.innerHTML='<div class="row-head"><h2>'+k.name+'</h2><p>'+k.note+'</p></div><div class="grid"></div>';
-  for(const column of columns){
+  for(const entry of columns){
+   const column={...entry,note:entry.level===0?entry.note:NAMES[k.id][LEVELS.indexOf(entry.level)]};
    const fig=document.createElement('figure');fig.className='cell';fig.innerHTML='<figcaption>'+column.label+'<small>'+column.note+'</small></figcaption><canvas role="img" aria-label="'+k.name+' '+column.label+' '+column.note+': animierter Treffervergleich"></canvas>';
    row.querySelector('.grid').append(fig);const canvas=fig.querySelector('canvas');views.push({canvas,k,column});observer.observe(canvas);
   }$('rows').append(row);
@@ -32,16 +35,28 @@ function enemy(c,x,y,clock){
  c.drawImage(im,f%cols*64,Math.floor(f/cols)*64,64,64,Math.round(x-32*s),Math.round(y-32*s),64*s,64*s);
  pixel(c,x-12,y-19,24,3,'#23322d');pixel(c,x-11,y-18,22,1,'#a9d37c');
 }
-function base(c,k,progress,level=0){
+function base(c,k,progress){
  if(progress<0||progress>=1)return;
- const m=baseline.sources.find(r=>r.kind===k.id).impact,im=images.get(k.id===3&&level>=5?'stone-impact-3':'low-impact-'+k.id),cols=im.width/m.width;
+ const m=baseline.sources.find(r=>r.kind===k.id).impact,im=images.get('low-impact-'+k.id),cols=im.width/m.width;
  const f=m.frameMap[Math.min(m.frameMap.length-1,Math.floor(progress*m.frameMap.length))],s=k.scale;
  c.drawImage(im,f%cols*m.width,Math.floor(f/cols)*m.height,m.width,m.height,-m.width*s/2,-m.height*s/2,m.width*s,m.height*s);
 }
+function atlasFor(k,level){
+ const key=k.id+'-'+level;if(effectCache.has(key))return effectCache.get(key);
+ const atlas=document.createElement('canvas');atlas.width=FX_SIZE*FX_FRAMES;atlas.height=FX_SIZE;
+ const ctx=atlas.getContext('2d');ctx.imageSmoothingEnabled=false;const life=profile(k.id,level).life;
+ for(let frame=0;frame<FX_FRAMES;frame++){
+  ctx.save();ctx.translate(frame*FX_SIZE+FX_SIZE/2,FX_SIZE/2);
+  drawImpact(ctx,k.id,level,(frame+.5)/FX_FRAMES*life,(cc,t)=>base(cc,k,t));
+  ctx.restore();
+ }
+ effectCache.set(key,atlas);return atlas;
+}
 function impact(c,k,level,x,y,age){
- c.save();c.translate(Math.round(x),Math.round(y));
- if(level===0)base(c,k,age/k.duration);else drawImpact(c,k.id,level,age,(ctx,p)=>base(ctx,k,p,level));
- c.restore();
+ if(level===0){c.save();c.translate(Math.round(x),Math.round(y));base(c,k,age/k.duration);c.restore();return}
+ const life=profile(k.id,level).life;if(age<0||age>=life)return;
+ const atlas=atlasFor(k,level),frame=Math.min(FX_FRAMES-1,Math.floor(age/life*FX_FRAMES));
+ c.drawImage(atlas,frame*FX_SIZE,0,FX_SIZE,FX_SIZE,Math.round(x-FX_SIZE/2),Math.round(y-FX_SIZE/2),FX_SIZE,FX_SIZE);
 }
 function shot(c,k,level,x,y,age){
  const im=images.get(level===0?'low-shot-'+k.id:'shot-'+k.id+'-'+level),s=k.id===1?.45:k.id===2?.5:.85;
@@ -100,7 +115,7 @@ $('benchmark').onclick=async()=>{
    }
    samples.sort((a,b)=>a-b);result.push('L'+level+': Ø '+(samples.reduce((a,b)=>a+b)/samples.length).toFixed(2)+' ms · P95 '+samples[Math.ceil(samples.length*.95)-1].toFixed(2)+' ms');
   }
-  $('benchmark-result').textContent='96 Treffer / Bild — '+result.join(' | ')+'. Nur Canvas-Effekte in diesem Browser; keine Messung des vollständigen Spiels oder eines echten Smartphones.';
+  $('benchmark-result').textContent='96 Treffer / Bild · CPU-Zeichenzeit — '+result.join(' | ')+'. Effekte als vorberechnete Sprites; ohne GPU-Gesamtkosten, Spielsimulation oder Smartphone-Messung.';
  }catch(e){$('benchmark-result').textContent='Messung fehlgeschlagen: '+e.message}
  finally{button.disabled=false;playing=wasPlaying;last=null;render()}
 };
@@ -108,5 +123,5 @@ makeRows();
 Promise.all([
  fetch('./baseline-main.json').then(r=>{if(!r.ok)throw Error('Originaldaten fehlen');return r.json()}).then(data=>{baseline=data}),
  fetch('./shot-frames.json').then(r=>{if(!r.ok)throw Error('Projektilframes fehlen');return r.json()}).then(data=>{shotFrames=data}),
- ...['terrain','enemy','stone-impact-3',...kinds.flatMap(k=>['low-impact-'+k.id,'low-shot-'+k.id,...LEVELS.map(level=>'shot-'+k.id+'-'+level)])].map(load)
+ ...['terrain','enemy',...kinds.flatMap(k=>['low-impact-'+k.id,'low-shot-'+k.id,...LEVELS.map(level=>'shot-'+k.id+'-'+level)])].map(load)
 ]).then(()=>{ready=true;render(true);requestAnimationFrame(loop)}).catch(e=>{$('status').textContent=e.message+' – bitte Seite neu laden.';console.error(e)});
