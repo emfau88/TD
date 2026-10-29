@@ -17,7 +17,7 @@ Jeder Start erstellt einen **separaten Spielstand**. Auch [eine frische normale 
 
 **Prüfung:** 428/428 Tests und Produktionsbuild erfolgreich; 45 Aufstellungen und jede der 32 optischen Stufen mit echten Schüssen, Aufwerten und Save-Roundtrip. [Prüfbericht / Deployment / Spielaufnahmen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md) · [Steinschleuder-Sprites und Quellen](prototypes/steinschleuder-evolution/README.md) · [Scharfschützen-Sprites und Prompts](prototypes/scharfschuetze-evolution/README.md).
 
-**Neue separate Designstudie:** [Impact-Vergleich für alle vier Türme](https://emfau88.github.io/TD/previews/tower-evolution/prototypes/tower-impact-study/) · Heute / Level 10 / Level 20, Spielgröße, Zeitlupe und dichtes Gefecht. **Neue Impacts sind noch nicht im Spiel.** [Bewertung und Screenshots](prototypes/tower-impact-study/README.md).
+**Neue separate Designstudie:** [Impact-Vergleich für alle vier Türme](https://emfau88.github.io/TD/previews/tower-evolution/prototypes/tower-impact-study/) · Heute / Level 10 / Level 20, Spielgröße, Zeitlupe und dichtes Gefecht. **Neue Impacts sind noch nicht im Spiel.** Studie e4f59ee: [Deployment erfolgreich](https://github.com/emfau88/TD/actions/runs/40968759103). [Bewertung und Screenshots](prototypes/tower-impact-study/README.md).
 
 Der Testlink ist eine temporäre Pages-Unterseite. Nach einer späteren Main-Veröffentlichung den Workflow **Deploy SPIRE** auf diesem Branch erneut ausführen. Der Workflow erhält sämtliche Main-Dateien bytegleich. Lokal: `npm ci`, `npm run idle:dev -- --port 5193`, dann `http://127.0.0.1:5193/tower-test.html`.
 

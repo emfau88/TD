@@ -60,7 +60,7 @@ for i,r in enumerate(records):
     sheet.alpha_composite(b,(x-32,0));ws=r['weaponScale']/.63;size=round(128*ws);w=w.resize((size,size),NN)
     sheet.alpha_composite(w,(x-size//2,round(102.4+(r['weaponY']-13)/.63-size/2)))
     sheet.alpha_composite(p,(x-p.width//2,138))
-    label='LEVEL '+str(r['level']);fonts=[digits if c.isdigit() else font for c in label]
+    label='LEVEL '+str(r['level']);fonts=[digits if c in '258' else font for c in label]
     widths=[d.textlength(c,font=f) for c,f in zip(label,fonts)];cursor=x-sum(widths)/2
     for c,f,width in zip(label,fonts,widths):
         d.text((cursor,168),c,fill='#eed9a4',font=f);cursor+=width

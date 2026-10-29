@@ -37,3 +37,7 @@ Diese zusätzliche Studie: JS-Syntaxprüfung, statisches Pages-Packaging, Browse
 [Desktop · Detail 2×](screenshots/impact-comparison-desktop.png) · [390 · Spielgröße](screenshots/impact-comparison-390.png) · [320 · Spielgröße](screenshots/impact-comparison-320.png) · [390 · dichtes Gefecht](screenshots/impact-dense-390.png)
 
 Quellen: public/assets/Tower 01 - Weapon - Impact.png; Tower 02 - Level 01 - Projectile - Impact.png; Tower 03/04 - Level 03 - Projectile - Impact.png; Grass Tileset.png; Leafbug.png. Alle in assets/ unverändert kopiert. Projektilreferenzen aus den vier bestehenden Prototypverzeichnissen; keine Originalassets überschrieben.
+
+## Veröffentlichung
+
+Als e4f59ee auf codex/tower-evolution-playtest gepusht. [Pages 40968759103](https://github.com/emfau88/TD/actions/runs/40968759103) erfolgreich; Produktionsbuild auf GitHub erfolgreich. Öffentliche Seite und Assets im Browser geprüft, keine Warnungen/Fehler. Metadaten bestätigen e4f59ee und unveränderten Main 93703cb; alle 604 Main-Dateien bytegleich erhalten. Folgecommit korrigiert ausschließlich die Ziffernbeschriftung der Scharfschützen-Vergleichsmontage und dokumentiert diesen Nachweis; Spielassets bleiben bytegleich.
