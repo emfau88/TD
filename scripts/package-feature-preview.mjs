@@ -10,8 +10,8 @@ if (!mainPath || !branchPath || !/^[a-f0-9]{40}$/.test(branchSha ?? '') || !/^[a
 const main = await realpath(resolve(mainPath)), branch = await realpath(resolve(branchPath));
 if (main === branch || !relative(main, branch).startsWith('..')) throw new Error('Main and branch artifacts must be separate');
 await readFile(join(main, 'index.html'));
-await readFile(join(branch, 'feature-check.html'));
-const target = join(main, 'previews', 'frost-hero');
+await readFile(join(branch, 'tower-test.html'));
+const target = join(main, 'previews', 'tower-evolution');
 try { await lstat(target); throw new Error('Preview path already exists in main artifact'); }
 catch (error) { if (error.code !== 'ENOENT') throw error; }
 async function hashes(directory, prefix = '') {
@@ -28,8 +28,8 @@ const original = await hashes(main);
 await cp(branch, target, { recursive: true, errorOnExist: true, force: false });
 // The normal packager already includes the separate static gallery.
 await readFile(join(target, 'art-review', 'index.html'));
-await writeFile(join(target, 'feature-preview.json'), JSON.stringify({ branch: 'codex/frost-kit-hero-controls', branchSha, mainSha }, null, 2) + '\n');
+await writeFile(join(target, 'feature-preview.json'), JSON.stringify({ branch: 'codex/tower-evolution-playtest', branchSha, mainSha }, null, 2) + '\n');
 const combined = await hashes(main);
 for (const [file, digest] of original) if (combined.get(file) !== digest) throw new Error(`Main artifact changed: ${file}`);
-for (const file of combined.keys()) if (!original.has(file) && !file.startsWith('previews/frost-hero/')) throw new Error(`Unexpected addition: ${file}`);
+for (const file of combined.keys()) if (!original.has(file) && !file.startsWith('previews/tower-evolution/')) throw new Error(`Unexpected addition: ${file}`);
 console.log(`Preserved all ${original.size} main files byte-for-byte; added preview for ${branchSha}.`);

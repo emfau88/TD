@@ -1,3 +1,4 @@
+import {towerPreviewDatabase} from './tower-evolution';
 import { TavernStoryHistory } from './tavern-story-history';
 import { mountCredits } from './credits-ui';
 import { offlineGoldDisplay } from './reward-display';
@@ -90,8 +91,7 @@ if (entryURL.searchParams.has('fresh')) {
 }
 const probeSlot = entryURL.searchParams.get('probe');
 // Explicit fresh probes keep the user's main game and its offline clock intact.
-const defaultDatabaseName = import.meta.env.VITE_FEATURE_PREVIEW === '1' ? 'spire-idle-bastion-preview-frost-heroes' : 'spire-idle-bastion';
-const databaseName = probeSlot && /^[a-z0-9-]{1,60}$/.test(probeSlot) ? `spire-idle-bastion-probe-${probeSlot}` : defaultDatabaseName;
+const databaseName = towerPreviewDatabase(probeSlot);
 let session: BattleSession | undefined;
 let intro: MaraIntro | undefined;
 let introPortraits: string[] = [];

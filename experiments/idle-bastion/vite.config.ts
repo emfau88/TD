@@ -27,6 +27,7 @@ export default defineConfig({
         voiceCheck: fileURLToPath(new URL('./voice-check.html', import.meta.url)),
         effectsCheck: fileURLToPath(new URL('./effects-check.html', import.meta.url)),
         mara: fileURLToPath(new URL('./mara-check.html', import.meta.url)),
+        towerTest: fileURLToPath(new URL('./tower-test.html', import.meta.url)),
         featureCheck: fileURLToPath(new URL('./feature-check.html', import.meta.url)),
       },
     },

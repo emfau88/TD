@@ -36,7 +36,7 @@ export class CombatEffects {
       const hitKey=e.shot?`${e.shot.uid}:${e.shot.chainHits?.length??0}`:'';
       if (e.type === 'hit' && e.shot && !hits.has(hitKey)) {
         hits.add(hitKey);
-        const sheet = towerSheet(e.shot.kind, visualStage(e.shot.level), 'Projectile - Impact');
+        const sheet = towerSheet(e.shot.kind, e.shot.kind===2?1:visualStage(e.shot.level), 'Projectile - Impact');
         this.add(sheet.key, e.x!, e.y!, sheet.frameMap, elapsed,
           e.shot.kind === 5 ? 0.25 : e.shot.kind === 4 ? 0.35 : 0.5, e.shot.kind === 5 ? 30/sheet.width : e.shot.kind === 3 ? 1.6 : e.shot.kind === 2 ? 0.8 : 0.6);
       }
