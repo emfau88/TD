@@ -2,9 +2,9 @@ import { IdleBattle, visualStage } from './battle';
 import { SKIN_LEVELS, towerPreviewDatabase, type SkinLevel } from './tower-evolution';
 import { openBattleStore } from './save-store';
 
-export type TowerScenario = 'mixed' | 'warden' | 'frost' | 'slinger' | 'sniper';
+export type TowerScenario = 'mixed' | 'warden' | 'frost' | 'slinger' | 'sniper' | 'storm';
 export function isTowerScenario(value: unknown): value is TowerScenario {
-  return value === 'mixed' || value === 'warden' || value === 'frost' || value === 'slinger' || value === 'sniper';
+  return value === 'mixed' || value === 'warden' || value === 'frost' || value === 'slinger' || value === 'sniper' || value === 'storm';
 }
 /** Explicitly synthetic VISUAL test setup, never a balance/progression benchmark.
  * Recorded wave-40 world, replaced defensive lineup, added setup gold.
@@ -19,14 +19,22 @@ export function createTowerProbe(scenario: TowerScenario, earnedLate: unknown, l
   Object.assign(starter, { level: 1, visualStage: visualStage(1), spent: 0, kills: 0, cooldown: 0, angle: 0 });
   b.gold += 10_000_000; b.earned += 10_000_000;
   b.tutorial.hidden = true;
+  if(scenario==='storm'||scenario==='mixed'){
+    // Synthetic visual setup completes the existing prerequisite, then buys normal research.
+    if(!b.settlement.tavernBuilt&&!b.buildTavern(b.recommendedTavernPlot!))throw new Error('Cannot prepare Tavern');
+    if(b.settlement.tavernLevel<2&&!b.upgradeTavern())throw new Error('Cannot prepare Tavern II');
+    if(!b.ilyra&&!b.recruitIlyra())throw new Error('Cannot prepare Ilyra');
+    b.ilyra!.introduction='done';
+    if(!b.settlement.stormResearched&&!b.researchStorm())throw new Error('Cannot prepare Stormlight research');
+  }
   // Move the synthetic defense to the middle stretch; never attack at the spawn.
   const reviewPads = [[11,3],[12,3],[13,3],[14,3],[11,5],[12,5],[13,5],[14,5]];
   const parked = b.layout.towerPads.find(p=>p.cell.x>=22&&b.canBuild(p.id,1));
   if (!parked) throw new Error('Missing safe starter parking pad');
   Object.assign(starter,{padId:parked.id,x:parked.cell.x*40+20,y:parked.cell.y*40+20});
-  const levels = level === 'all' ? [...SKIN_LEVELS] : scenario === 'mixed' ? [level,level,level,level] : [level];
+  const levels = level === 'all' ? [...SKIN_LEVELS] : scenario === 'mixed' ? [level,level,level,level,level] : [level];
   for (const [i, targetLevel] of levels.entries()) {
-    const kind = scenario === 'warden' ? 1 : scenario === 'frost' ? 2 : scenario === 'slinger' ? 3 : scenario === 'sniper' ? 4 : (i % 4 + 1) as 1|2|3|4;
+    const kind = scenario === 'warden' ? 1 : scenario === 'frost' ? 2 : scenario === 'slinger' ? 3 : scenario === 'sniper' ? 4 : scenario === 'storm' ? 5 : (i % 5 + 1) as 1|2|3|4|5;
     const [x,y] = reviewPads[i];
     const pad = b.layout.towerPads.find(p=>p.cell.x===x&&p.cell.y===y);
     if (!pad) throw new Error('Missing review pad');

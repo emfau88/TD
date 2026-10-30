@@ -1,0 +1,2684 @@
+
+> spire-defense@1.0.0 test
+> npm run idle:test
+
+
+> spire-defense@1.0.0 idle:test
+> tsx --test experiments/idle-bastion/tests/*.test.ts
+
+TAP version 13
+# Subtest: bundled runtime atlases retain original dimensions and logical enemy frame maps
+ok 1 - bundled runtime atlases retain original dimensions and logical enemy frame maps
+  ---
+  duration_ms: 42.4636
+  type: 'test'
+  ...
+# Subtest: every measured Mara crop fits its own runtime cell and preserves the documented shared foot anchor
+ok 2 - every measured Mara crop fits its own runtime cell and preserves the documented shared foot anchor
+  ---
+  duration_ms: 0.8248
+  type: 'test'
+  ...
+# Subtest: animation frames depend only on simulation time, retain directions and repeat within the original frame maps
+ok 3 - animation frames depend only on simulation time, retain directions and repeat within the original frame maps
+  ---
+  duration_ms: 0.8218
+  type: 'test'
+  ...
+# Subtest: the real idle route uses the accepted connecting source quadrants for each turn and straight segment
+ok 4 - the real idle route uses the accepted connecting source quadrants for each turn and straight segment
+  ---
+  duration_ms: 41.9724
+  type: 'test'
+  ...
+# Subtest: four tower roles use launch/actual hit; splash and unrelated events do not duplicate impacts
+ok 5 - four tower roles use launch/actual hit; splash and unrelated events do not duplicate impacts
+  ---
+  duration_ms: 7.035
+  type: 'test'
+  ...
+# Subtest: combat bursts are bounded and core warning has its own cooldown
+ok 6 - combat bursts are bounded and core warning has its own cooldown
+  ---
+  duration_ms: 0.6132
+  type: 'test'
+  ...
+# Subtest: frost buildup cannot overlap itself across multiple towers
+ok 7 - frost buildup cannot overlap itself across multiple towers
+  ---
+  duration_ms: 0.2394
+  type: 'test'
+  ...
+# Subtest: saved effects and gift stock are silent; only new spells/received gifts make cues
+ok 8 - saved effects and gift stock are silent; only new spells/received gifts make cues
+  ---
+  duration_ms: 39.8631
+  type: 'test'
+  ...
+# Subtest: settings tolerate invalid storage and never exceed safe slider range
+ok 9 - settings tolerate invalid storage and never exceed safe slider range
+  ---
+  duration_ms: 0.5977
+  type: 'test'
+  ...
+# Subtest: tower build and upgrade have distinct cues; settlement keeps craft
+ok 10 - tower build and upgrade have distinct cues; settlement keeps craft
+  ---
+  duration_ms: 0.3435
+  type: 'test'
+  ...
+# Subtest: boss laugh starts once per dance, never on load or windup-to-channel
+ok 11 - boss laugh starts once per dance, never on load or windup-to-channel
+  ---
+  duration_ms: 10.3129
+  type: 'test'
+  ...
+# B08 regular simulation milestone seconds: { workshop: 58.425000000000004, frost: 74.5, wisp: 78.92500000000001 }
+# Subtest: Wisp and weapons unlock at permanent milestones while the free grid stays available, with no gift or repeated payment on reload
+ok 12 - Wisp and weapons unlock at permanent milestones while the free grid stays available, with no gift or repeated payment on reload
+  ---
+  duration_ms: 293.3667
+  type: 'test'
+  ...
+# Subtest: cannon splash pays each kill once, carries tenths, and does not boost sale or offline credit
+ok 13 - cannon splash pays each kill once, carries tenths, and does not boost sale or offline credit
+  ---
+  duration_ms: 79.2435
+  type: 'test'
+  ...
+# Subtest: sniper prioritizes armor and its projectile ignores mitigation
+ok 14 - sniper prioritizes armor and its projectile ignores mitigation
+  ---
+  duration_ms: 53.6187
+  type: 'test'
+  ...
+# Subtest: schema five midwave migration preserves combat and historical money, without certifying an old recipe
+ok 15 - schema five midwave migration preserves combat and historical money, without certifying an old recipe
+  ---
+  duration_ms: 158.105
+  type: 'test'
+  ...
+# Subtest: Wisp adds precisely ten percent to farm production and offline uses that rate once
+ok 16 - Wisp adds precisely ten percent to farm production and offline uses that rate once
+  ---
+  duration_ms: 145.0822
+  type: 'test'
+  ...
+# Subtest: regular opening still funds workshop and Frost before Wisp; four roles remain saveable into armored waves
+ok 17 - regular opening still funds workshop and Frost before Wisp; four roles remain saveable into armored waves
+  ---
+  duration_ms: 1437.4462
+  type: 'test'
+  ...
+# Subtest: warehouse has real unlock and price gates; old saves retain combat and renew farm evidence
+ok 18 - warehouse has real unlock and price gates; old saves retain combat and renew farm evidence
+  ---
+  duration_ms: 59.2836
+  type: 'test'
+  ...
+# Subtest: old 60% / 2h absence stays frozen; warehouse policy begins at the next active boundary
+ok 19 - old 60% / 2h absence stays frozen; warehouse policy begins at the next active boundary
+  ---
+  duration_ms: 2.1795
+  type: 'test'
+  ...
+# Subtest: eight-hour cap survives repeated returns, reload and repeated claims; paused production remains zero
+ok 20 - eight-hour cap survives repeated returns, reload and repeated claims; paused production remains zero
+  ---
+  duration_ms: 0.8661
+  type: 'test'
+  ...
+# B09 earned warehouse at 189.475 s, cleared wave 10 | 1h reward 31029.041 gold | two upgrades persisted
+# Subtest: legal opening buys warehouse; one controlled hour is paid once and funds two real upgrades after reload
+ok 21 - legal opening buys warehouse; one controlled hour is paid once and funds two real upgrades after reload
+  ---
+  duration_ms: 3821.1264
+  type: 'test'
+  ...
+# Subtest: Wisp reaches the warehouse entrance along the existing walkable grid
+ok 22 - Wisp reaches the warehouse entrance along the existing walkable grid
+  ---
+  duration_ms: 1.7615
+  type: 'test'
+  ...
+# B10 legal run: {
+#   warehouseAt: 189.47500000000002,
+#   bossStarted: 280.95,
+#   victoryAt: 354.35,
+#   wins: 1,
+#   gold: 976,
+#   bossAttempts: { attempts: 1, wins: 1, losses: 0 },
+#   interrupts: 0,
+#   towers: [
+#     [ 'tower-start', 1, 4 ],
+#     [ 'tower-03', 1, 4 ],
+#     [ 'tower-06', 3, 3 ],
+#     [ 'tower-07', 4, 3 ],
+#     [ 'tower-05', 1, 3 ]
+#   ]
+# }
+# B11 earned clearing: { openedAt: 354.35, goldAfter: 76, columns: 32 }
+# Subtest: earned boss clear rewards once, records the milestone, and stays outside safe/offline production
+ok 23 - earned boss clear rewards once, records the milestone, and stays outside safe/offline production
+  ---
+  duration_ms: 2097.5032
+  type: 'test'
+  ...
+# Subtest: reloaded boss keeps health, skill and deterministic combat; no premature victory
+ok 24 - reloaded boss keeps health, skill and deterministic combat; no premature victory
+  ---
+  duration_ms: 77.6081
+  type: 'test'
+  ...
+# Subtest: boss escaping forces farming without a first victory; retry is explicit and saveable
+ok 25 - boss escaping forces farming without a first victory; retry is explicit and saveable
+  ---
+  duration_ms: 62.7821
+  type: 'test'
+  ...
+# Subtest: old wave-15 record is never a boss victory; an explicit repeat pays no second first reward
+ok 26 - old wave-15 record is never a boss victory; an explicit repeat pays no second first reward
+  ---
+  duration_ms: 148.2331
+  type: 'test'
+  ...
+# Subtest: earned boss follow-up can open the clearing early, pays once and retains farming
+ok 27 - earned boss follow-up can open the clearing early, pays once and retains farming
+  ---
+  duration_ms: 567.4953
+  type: 'test'
+  ...
+# Subtest: B11 migrates schema-eight saves during the active boss dance without resetting combat
+ok 28 - B11 migrates schema-eight saves during the active boss dance without resetting combat
+  ---
+  duration_ms: 82.3833
+  type: 'test'
+  ...
+# Subtest: earned boss timing honors the B13 no-minimum policy and retains the active-play deadline
+ok 29 - earned boss timing honors the B13 no-minimum policy and retains the active-play deadline
+  ---
+  duration_ms: 0.335
+  type: 'test'
+  ...
+# Subtest: clearing purchase requires a real boss milestone and gold, charges once, preserves running combat
+ok 30 - clearing purchase requires a real boss milestone and gold, charges once, preserves running combat
+  ---
+  duration_ms: 269.9
+  type: 'test'
+  ...
+# Subtest: both new slots have useful level-one frost/damage overlap and accessible companion routes
+ok 31 - both new slots have useful level-one frost/damage overlap and accessible companion routes
+  ---
+  duration_ms: 184.2583
+  type: 'test'
+  ...
+# Subtest: expanded battle with east towers and a moving Mara reloads exactly; forged region state is rejected
+ok 32 - expanded battle with east towers and a moving Mara reloads exactly; forged region state is rejected
+  ---
+  duration_ms: 73.7735
+  type: 'test'
+  ...
+# Subtest: schema-eight live save migrates closed without changing money, combat or boss progress
+ok 33 - schema-eight live save migrates closed without changing money, combat or boss progress
+  ---
+  duration_ms: 50.3069
+  type: 'test'
+  ...
+# Subtest: failed persistent clearing purchase rolls back geometry and gold; committed purchase survives IndexedDB reload
+ok 34 - failed persistent clearing purchase rolls back geometry and gold; committed purchase survives IndexedDB reload
+  ---
+  duration_ms: 263.625
+  type: 'test'
+  ...
+# Subtest: Workshop II charges once after Frost and unlocks continuing level 7+ / three bounded art stages
+ok 35 - Workshop II charges once after Frost and unlocks continuing level 7+ / three bounded art stages
+  ---
+  duration_ms: 275.8513
+  type: 'test'
+  ...
+# Subtest: schema nine expanded live save migrates without changing combat, purchases or a historical wave-25 record
+ok 36 - schema nine expanded live save migrates without changing combat, purchases or a historical wave-25 record
+  ---
+  duration_ms: 132.3067
+  type: 'test'
+  ...
+# Subtest: second boss pays its own first reward once, survives reload, and never becomes an offline farm
+ok 37 - second boss pays its own first reward once, survives reload, and never becomes an offline farm
+  ---
+  duration_ms: 308.7365
+  type: 'test'
+  ...
+# Subtest: second boss defeat preserves expansion and requires an explicit new advance
+ok 38 - second boss defeat preserves expansion and requires an explicit new advance
+  ---
+  duration_ms: 151.8796
+  type: 'test'
+  ...
+# B10 legal run: {
+#   warehouseAt: 189.47500000000002,
+#   bossStarted: 280.95,
+#   victoryAt: 354.35,
+#   wins: 1,
+#   gold: 976,
+#   bossAttempts: { attempts: 1, wins: 1, losses: 0 },
+#   interrupts: 0,
+#   towers: [
+#     [ 'tower-start', 1, 4 ],
+#     [ 'tower-03', 1, 4 ],
+#     [ 'tower-06', 3, 3 ],
+#     [ 'tower-07', 4, 3 ],
+#     [ 'tower-05', 1, 3 ]
+#   ]
+# }
+# B12 earned continuation: {
+#   workshopAt: 410.95000000000005,
+#   at15: 24,
+#   levels: [ 7, 7, 7, 5, 7 ],
+#   nextCost: 866
+# }
+# Subtest: Workshop II persistent command rolls back on failure and survives a committed reload
+ok 39 - Workshop II persistent command rolls back on failure and survives a committed reload
+  ---
+  duration_ms: 107.6252
+  type: 'test'
+  ...
+# Subtest: earned continuation can open Workshop II early and retains a paid progression goal at minute 15
+ok 40 - earned continuation can open Workshop II early and retains a paid progression goal at minute 15
+  ---
+  duration_ms: 10926.9868
+  type: 'test'
+  ...
+# Subtest: late waves retain bounded populations and level 20 still offers a real next upgrade
+ok 41 - late waves retain bounded populations and level 20 still offers a real next upgrade
+  ---
+  duration_ms: 158.7049
+  type: 'test'
+  ...
+# Subtest: B13 keeps entry recipes/rewards intact, softens later HP and bounds income
+ok 42 - B13 keeps entry recipes/rewards intact, softens later HP and bounds income
+  ---
+  duration_ms: 1.3334
+  type: 'test'
+  ...
+# Subtest: v13 active boss/queue/HP and money survive migration without a mid-wave balance switch
+ok 43 - v13 active boss/queue/HP and money survive migration without a mid-wave balance switch
+  ---
+  duration_ms: 289.2707
+  type: 'test'
+  ...
+# Subtest: an upgrade reproves the formerly safe wave even when the latest two clears are unsafe
+ok 44 - an upgrade reproves the formerly safe wave even when the latest two clears are unsafe
+  ---
+  duration_ms: 1502.059
+  type: 'test'
+  ...
+# Subtest: workshop II objective and its action select the same useful area-damage investment
+ok 45 - workshop II objective and its action select the same useful area-damage investment
+  ---
+  duration_ms: 3130.1551
+  type: 'test'
+  ...
+# Subtest: a legally funded Frost run stays saveable through long wave tails and wave 15
+ok 46 - a legally funded Frost run stays saveable through long wave tails and wave 15
+  ---
+  duration_ms: 6186.1189
+  type: 'test'
+  ...
+# Subtest: JSON round trip preserves a live wave, its homing shots, IDs and deterministic later rewards
+ok 47 - JSON round trip preserves a live wave, its homing shots, IDs and deterministic later rewards
+  ---
+  duration_ms: 1403.3238
+  type: 'test'
+  ...
+# Subtest: snapshot records are detached from the live model and from restored models
+ok 48 - snapshot records are detached from the live model and from restored models
+  ---
+  duration_ms: 62.3912
+  type: 'test'
+  ...
+# Subtest: a sold source retains its old shot level/damage and pays one kill after reload
+ok 49 - a sold source retains its old shot level/damage and pays one kill after reload
+  ---
+  duration_ms: 156.1275
+  type: 'test'
+  ...
+# Subtest: reload immediately before lethal impact and after its event never replays kill money
+ok 50 - reload immediately before lethal impact and after its event never replays kill money
+  ---
+  duration_ms: 138.875
+  type: 'test'
+  ...
+# Subtest: last enemy and clear bonus cross the save boundary once; intermission resumes at the exact remainder
+ok 51 - last enemy and clear bonus cross the save boundary once; intermission resumes at the exact remainder
+  ---
+  duration_ms: 425.0384
+  type: 'test'
+  ...
+# Subtest: initial delay and sub-tick remainder persist without accelerating or dropping simulation time
+ok 52 - initial delay and sub-tick remainder persist without accelerating or dropping simulation time
+  ---
+  duration_ms: 104.6567
+  type: 'test'
+  ...
+# Subtest: real defeat including the escaped enemy restores and enters the identical farm transition
+ok 53 - real defeat including the escaped enemy restores and enters the identical farm transition
+  ---
+  duration_ms: 954.8503
+  type: 'test'
+  ...
+# Subtest: every sampled route corner, enemy recipe and partial update remains valid through later waves
+ok 54 - every sampled route corner, enemy recipe and partial update remains valid through later waves
+  ---
+  duration_ms: 2410.1384
+  type: 'test'
+  ...
+# Subtest: invalid resources, times, references, definitions and newer formats are rejected without mutating input
+ok 55 - invalid resources, times, references, definitions and newer formats are rejected without mutating input
+  ---
+  duration_ms: 129.2814
+  type: 'test'
+  ...
+# Subtest: layout changes cannot be silently serialized under the starting-layout identity
+ok 56 - layout changes cannot be silently serialized under the starting-layout identity
+  ---
+  duration_ms: 10.0655
+  type: 'test'
+  ...
+# Subtest: free Frost commit includes consumption and tutorial exit; duplicate and failed writes cannot duplicate the kit
+ok 57 - free Frost commit includes consumption and tutorial exit; duplicate and failed writes cannot duplicate the kit
+  ---
+  duration_ms: 642.3359
+  type: 'test'
+  ...
+# Subtest: fresh persistent session commits before exposure and temporary play is explicit
+ok 58 - fresh persistent session commits before exposure and temporary play is explicit
+  ---
+  duration_ms: 176.1654
+  type: 'test'
+  ...
+# Subtest: purchase acknowledgement waits for commit and a concurrent click is rejected
+ok 59 - purchase acknowledgement waits for commit and a concurrent click is rejected
+  ---
+  duration_ms: 57.8596
+  type: 'test'
+  ...
+# Subtest: write rejection rolls back the complete battle and freezes further economic actions
+ok 60 - write rejection rolls back the complete battle and freezes further economic actions
+  ---
+  duration_ms: 106.7086
+  type: 'test'
+  ...
+# Subtest: a second tab cannot simulate, load rewards or replace the active writer
+ok 61 - a second tab cannot simulate, load rewards or replace the active writer
+  ---
+  duration_ms: 66.8039
+  type: 'test'
+  ...
+# Subtest: expired epoch is taken over and the waking old tab cannot renew or overwrite newer gold
+ok 62 - expired epoch is taken over and the waking old tab cannot renew or overwrite newer gold
+  ---
+  duration_ms: 62.1275
+  type: 'test'
+  ...
+# Subtest: wave boundaries commit immediately; pure combat checkpoints at one second and flush stores the remainder
+ok 63 - wave boundaries commit immediately; pure combat checkpoints at one second and flush stores the remainder
+  ---
+  duration_ms: 56.8566
+  type: 'test'
+  ...
+# Subtest: pause persists and a closed paused game receives no offline production
+ok 64 - pause persists and a closed paused game receives no offline production
+  ---
+  duration_ms: 191.136
+  type: 'test'
+  ...
+# Subtest: corrupt/newer saves remain protected and backup recovery is explicit
+ok 65 - corrupt/newer saves remain protected and backup recovery is explicit
+  ---
+  duration_ms: 9.3216
+  type: 'test'
+  ...
+# Subtest: pending commits preserve all active time in bounded batches, without creating offline time
+ok 66 - pending commits preserve all active time in bounded batches, without creating offline time
+  ---
+  duration_ms: 106.3479
+  type: 'test'
+  ...
+# Subtest: 60, 10 and 2 FPS produce the same saved combat and victory-based social progress
+ok 67 - 60, 10 and 2 FPS produce the same saved combat and victory-based social progress
+  ---
+  duration_ms: 422.3704
+  type: 'test'
+  ...
+# Subtest: flush, pause, hide and close finish queued active time before their boundary
+ok 68 - flush, pause, hide and close finish queued active time before their boundary
+  ---
+  duration_ms: 298.2818
+  type: 'test'
+  ...
+# Subtest: a real absence follows queued active time without crediting either interval twice
+ok 69 - a real absence follows queued active time without crediting either interval twice
+  ---
+  duration_ms: 73.5274
+  type: 'test'
+  ...
+# Subtest: failed checkpoint discards unconfirmed queued time and restores the saved combat
+ok 70 - failed checkpoint discards unconfirmed queued time and restores the saved combat
+  ---
+  duration_ms: 59.6176
+  type: 'test'
+  ...
+# Subtest: kill/clear notifications wait for the complete reward commit and restore never replays them
+ok 71 - kill/clear notifications wait for the complete reward commit and restore never replays them
+  ---
+  duration_ms: 499.2784
+  type: 'test'
+  ...
+# Subtest: farm certificate appears only after live clear, revalidates on upgrade and survives reload without rewards
+ok 72 - farm certificate appears only after live clear, revalidates on upgrade and survives reload without rewards
+  ---
+  duration_ms: 240.9495
+  type: 'test'
+  ...
+# Subtest: suspend releases ownership, reserves 60% offline income and blocks combat until claim plus actual continuation
+ok 73 - suspend releases ownership, reserves 60% offline income and blocks combat until claim plus actual continuation
+  ---
+  duration_ms: 193.0878
+  type: 'test'
+  ...
+# Subtest: reload/claim without active continuation preserves the same two-hour budget
+ok 74 - reload/claim without active continuation preserves the same two-hour budget
+  ---
+  duration_ms: 127.5091
+  type: 'test'
+  ...
+# Subtest: schema 29 migration preserves an already reserved offline reward exactly once
+ok 75 - schema 29 migration preserves an already reserved offline reward exactly once
+  ---
+  duration_ms: 136.1418
+  type: 'test'
+  ...
+# Subtest: failed offline claim rolls both gold and pending reward back for a safe later retry
+ok 76 - failed offline claim rolls both gold and pending reward back for a safe later retry
+  ---
+  duration_ms: 139.4583
+  type: 'test'
+  ...
+# Subtest: large frame gaps become absence and never fast-forward the live wave
+ok 77 - large frame gaps become absence and never fast-forward the live wave
+  ---
+  duration_ms: 153.5231
+  type: 'test'
+  ...
+# Subtest: actual IndexedDB integration rejects a second tab and preserves exact confirmed rewards across return
+ok 78 - actual IndexedDB integration rejects a second tab and preserves exact confirmed rewards across return
+  ---
+  duration_ms: 283.7147
+  type: 'test'
+  ...
+# Subtest: close is idempotent, stores the final combat state and releases the writer
+ok 79 - close is idempotent, stores the final combat state and releases the writer
+  ---
+  duration_ms: 67.2916
+  type: 'test'
+  ...
+# Subtest: Web Locks use a short gate, and an unavailable browser lock still permits valid IDB takeover
+ok 80 - Web Locks use a short gate, and an unavailable browser lock still permits valid IDB takeover
+  ---
+  duration_ms: 61.5438
+  type: 'test'
+  ...
+# Subtest: claims preserve the fixed absence window and continuation includes a later tail exactly once
+ok 81 - claims preserve the fixed absence window and continuation includes a later tail exactly once
+  ---
+  duration_ms: 159.2766
+  type: 'test'
+  ...
+# Subtest: a backwards clock cannot replay reserved offline time or move its cursor backwards
+ok 82 - a backwards clock cannot replay reserved offline time or move its cursor backwards
+  ---
+  duration_ms: 160.1785
+  type: 'test'
+  ...
+# Subtest: temporary play discards a large frame gap without offline gold or a return dialog
+ok 83 - temporary play discards a large frame gap without offline gold or a return dialog
+  ---
+  duration_ms: 136.1736
+  type: 'test'
+  ...
+# Subtest: background checkpoint accepts exactly one queued purchase and validates it after saving
+ok 84 - background checkpoint accepts exactly one queued purchase and validates it after saving
+  ---
+  duration_ms: 85.029
+  type: 'test'
+  ...
+# Subtest: failed background write rejects the queued action without invoking its mutation
+ok 85 - failed background write rejects the queued action without invoking its mutation
+  ---
+  duration_ms: 80.8053
+  type: 'test'
+  ...
+# Subtest: pause click during a checkpoint persists exactly once
+ok 86 - pause click during a checkpoint persists exactly once
+  ---
+  duration_ms: 87.6385
+  type: 'test'
+  ...
+# Subtest: gift click during autosave remains responsive without duplicate gifts or points
+ok 87 - gift click during autosave remains responsive without duplicate gifts or points
+  ---
+  duration_ms: 73.0805
+  type: 'test'
+  ...
+# Subtest: new gift notices wait for a durable save and do not replay on restore
+ok 88 - new gift notices wait for a durable save and do not replay on restore
+  ---
+  duration_ms: 76.4965
+  type: 'test'
+  ...
+# Subtest: tavern hold freezes every combat field in normal and boss fights at different frame rates
+ok 89 - tavern hold freezes every combat field in normal and boss fights at different frame rates
+  ---
+  duration_ms: 1060.9596
+  type: 'test'
+  ...
+# Subtest: tavern interactions commit while combat is held, without changing manual pause
+ok 90 - tavern interactions commit while combat is held, without changing manual pause
+  ---
+  duration_ms: 203.7005
+  type: 'test'
+  ...
+# Subtest: tavern heartbeat checkpoints exclude visit time; real departure retains existing offline policy
+ok 91 - tavern heartbeat checkpoints exclude visit time; real departure retains existing offline policy
+  ---
+  duration_ms: 476.402
+  type: 'test'
+  ...
+# Subtest: opening tavern during a pending write retains only previously accepted combat time
+ok 92 - opening tavern during a pending write retains only previously accepted combat time
+  ---
+  duration_ms: 68.6712
+  type: 'test'
+  ...
+# Subtest: fresh model owns a free protected starter and automatically starts wave one at 1×
+ok 93 - fresh model owns a free protected starter and automatically starts wave one at 1×
+  ---
+  duration_ms: 107.4131
+  type: 'test'
+  ...
+# Subtest: building spends the real balance once and rejects occupied, invalid and unopened pads
+ok 94 - building spends the real balance once and rejects occupied, invalid and unopened pads
+  ---
+  duration_ms: 142.2723
+  type: 'test'
+  ...
+# Subtest: level upgrades charge 60 then 94, reject insolvency/max level and keep art stage separate
+ok 95 - level upgrades charge 60 then 94, reject insolvency/max level and keep art stage separate
+  ---
+  duration_ms: 6.3764
+  type: 'test'
+  ...
+# Subtest: selling returns 70 percent of actual investment exactly once; starter remains protected
+ok 96 - selling returns 70 percent of actual investment exactly once; starter remains protected
+  ---
+  duration_ms: 130.8877
+  type: 'test'
+  ...
+# Subtest: unassisted protected starter clears the real entry geometry at 20/20 (cooldown 0)
+ok 97 - unassisted protected starter clears the real entry geometry at 20/20 (cooldown 0)
+  ---
+  duration_ms: 95.0595
+  type: 'test'
+  ...
+# Subtest: unassisted protected starter clears the real entry geometry at 20/20 (cooldown 0.6)
+ok 98 - unassisted protected starter clears the real entry geometry at 20/20 (cooldown 0.6)
+  ---
+  duration_ms: 60.6352
+  type: 'test'
+  ...
+# Subtest: new attempts reset core and active combat, preserve money/towers and use globally increasing IDs
+ok 99 - new attempts reset core and active combat, preserve money/towers and use globally increasing IDs
+  ---
+  duration_ms: 61.3278
+  type: 'test'
+  ...
+# Subtest: projectiles retain fired damage and level after upgrading and selling their source
+ok 100 - projectiles retain fired damage and level after upgrading and selling their source
+  ---
+  duration_ms: 72.9451
+  type: 'test'
+  ...
+# Subtest: simultaneous lethal projectiles cannot pay a kill twice
+ok 101 - simultaneous lethal projectiles cannot pay a kill twice
+  ---
+  duration_ms: 57.0034
+  type: 'test'
+  ...
+# Subtest: escape records defeat without erasing gold or purchases and then returns to live farming
+ok 102 - escape records defeat without erasing gold or purchases and then returns to live farming
+  ---
+  duration_ms: 115.6659
+  type: 'test'
+  ...
+# Subtest: fixed steps give the same combat and economy for large, frame-sized and partial updates
+ok 103 - fixed steps give the same combat and economy for large, frame-sized and partial updates
+  ---
+  duration_ms: 312.4125
+  type: 'test'
+  ...
+# Subtest: non-finite or non-positive time cannot start waves or change money
+ok 104 - non-finite or non-positive time cannot start waves or change money
+  ---
+  duration_ms: 48.7544
+  type: 'test'
+  ...
+# Subtest: a sold tower can still earn one kill from a projectile already in flight
+ok 105 - a sold tower can still earn one kill from a projectile already in flight
+  ---
+  duration_ms: 91.0743
+  type: 'test'
+  ...
+# Subtest: an escaped enemy pays no kill reward; a damaged successful attempt still starts the next with full core
+ok 106 - an escaped enemy pays no kill reward; a damaged successful attempt still starts the next with full core
+  ---
+  duration_ms: 108.9136
+  type: 'test'
+  ...
+# Subtest: every other voice is reachable exactly once, without an immediate repeat
+ok 107 - every other voice is reachable exactly once, without an immediate repeat
+  ---
+  duration_ms: 3.0192
+  type: 'test'
+  ...
+# Subtest: command pools contain only the chosen clips and use the same quieter loudness target
+ok 108 - command pools contain only the chosen clips and use the same quieter loudness target
+  ---
+  duration_ms: 81.0961
+  type: 'test'
+  ...
+# Subtest: all 32 reserve clips retain their own cuts; selected runtime WAVs are exact copies
+ok 109 - all 32 reserve clips retain their own cuts; selected runtime WAVs are exact copies
+  ---
+  duration_ms: 254.6164
+  type: 'test'
+  ...
+# Subtest: the approved seven original files match their loudness calibration and retain peak headroom
+ok 110 - the approved seven original files match their loudness calibration and retain peak headroom
+  ---
+  duration_ms: 46.896
+  type: 'test'
+  ...
+# Subtest: fresh core settlement preserves the west route and reserves the future east corridor
+ok 111 - fresh core settlement preserves the west route and reserves the future east corridor
+  ---
+  duration_ms: 400.7606
+  type: 'test'
+  ...
+# Subtest: published save retains its old settlement until an explicit free move; every owned actor survives reload
+ok 112 - published save retains its old settlement until an explicit free move; every owned actor survives reload
+  ---
+  duration_ms: 2057.8237
+  type: 'test'
+  ...
+# Subtest: all formerly open tower cells remain clear after the move
+ok 113 - all formerly open tower cells remain clear after the move
+  ---
+  duration_ms: 285.1199
+  type: 'test'
+  ...
+# Subtest: session requires pause, commits the whole relocation once and rolls back on storage failure
+ok 114 - session requires pause, commits the whole relocation once and rolls back on storage failure
+  ---
+  duration_ms: 2191.1303
+  type: 'test'
+  ...
+# Subtest: a valid core position stays reachable and invalid mixed/overlapping snapshots are rejected
+ok 115 - a valid core position stays reachable and invalid mixed/overlapping snapshots are rejected
+  ---
+  duration_ms: 196.7787
+  type: 'test'
+  ...
+# Subtest: both sides of the road offer a three-cell band; trees, water, road and settlement stay excluded
+ok 116 - both sides of the road offer a three-cell band; trees, water, road and settlement stay excluded
+  ---
+  duration_ms: 169.9624
+  type: 'test'
+  ...
+# Subtest: a dense Frost / damage combination builds, charges once and survives exact continuation
+ok 117 - a dense Frost / damage combination builds, charges once and survives exact continuation
+  ---
+  duration_ms: 155.5187
+  type: 'test'
+  ...
+# Subtest: schema 10 preserves money, old tower positions, ongoing combat and cooldown, without inventing farm proof
+ok 118 - schema 10 preserves money, old tower positions, ongoing combat and cooldown, without inventing farm proof
+  ---
+  duration_ms: 111.0725
+  type: 'test'
+  ...
+# Subtest: Mara waits for combat at her target, casts remotely, retains her buff while walking and changing target
+ok 119 - Mara waits for combat at her target, casts remotely, retains her buff while walking and changing target
+  ---
+  duration_ms: 54.0907
+  type: 'test'
+  ...
+# Subtest: buildings occupy chosen non-overlapping settlement footprints; Workshop II does not require the east
+ok 120 - buildings occupy chosen non-overlapping settlement footprints; Workshop II does not require the east
+  ---
+  duration_ms: 238.11
+  type: 'test'
+  ...
+# Subtest: Wisp has one persisted arrival and greeting, independent of his immediate economic bonus
+ok 121 - Wisp has one persisted arrival and greeting, independent of his immediate economic bonus
+  ---
+  duration_ms: 64.4759
+  type: 'test'
+  ...
+# Subtest: new construction and chosen building positions survive the real IndexedDB transaction boundary
+ok 122 - new construction and chosen building positions survive the real IndexedDB transaction boundary
+  ---
+  duration_ms: 74.193
+  type: 'test'
+  ...
+# Subtest: all weapon/projectile/impact atlases use the original frame maps, including one Frost crystal per frame
+ok 123 - all weapon/projectile/impact atlases use the original frame maps, including one Frost crystal per frame
+  ---
+  duration_ms: 2075.8012
+  type: 'test'
+  ...
+# Subtest: a fully occupied legal band still has a bounded, persistable farm fingerprint
+ok 124 - a fully occupied legal band still has a bounded, persistable farm fingerprint
+  ---
+  duration_ms: 92.4559
+  type: 'test'
+  ...
+# Subtest: Wisp pauses at the wave boundary; real Mara cast, countdown and optional purchases follow in order
+ok 125 - Wisp pauses at the wave boundary; real Mara cast, countdown and optional purchases follow in order
+  ---
+  duration_ms: 549.0716
+  type: 'test'
+  ...
+# Subtest: optional Mara and cannon lessons can be deferred; old Mara hint maps to Mara, never the clearing
+ok 126 - optional Mara and cannon lessons can be deferred; old Mara hint maps to Mara, never the clearing
+  ---
+  duration_ms: 91.5451
+  type: 'test'
+  ...
+# Subtest: Wisp learning pause survives absence without offline reward or repeated greeting
+ok 127 - Wisp learning pause survives absence without offline reward or repeated greeting
+  ---
+  duration_ms: 278.7761
+  type: 'test'
+  ...
+# Subtest: schema 16 veteran preserves all saved fields without a new compulsory lesson
+ok 128 - schema 16 veteran preserves all saved fields without a new compulsory lesson
+  ---
+  duration_ms: 14.9882
+  type: 'test'
+  ...
+# Subtest: dismissed defeat stays dismissed after reload; schema 17 migrates without losing gold
+ok 129 - dismissed defeat stays dismissed after reload; schema 17 migrates without losing gold
+  ---
+  duration_ms: 15.1296
+  type: 'test'
+  ...
+# Subtest: Wisp arrives from the core side along the walkable route
+ok 130 - Wisp arrives from the core side along the walkable route
+  ---
+  duration_ms: 109.462
+  type: 'test'
+  ...
+# Subtest: rules 3–15 match main for 910 encounters; current rules change only waves 10 and 20
+ok 131 - rules 3–15 match main for 910 encounters; current rules change only waves 10 and 20
+  ---
+  duration_ms: 136.556
+  type: 'test'
+  ...
+# Subtest: wave 10 has 22 enemies in four short groups; wave 20 trades exactly three beetles with nearly equal rewards
+ok 132 - wave 10 has 22 enemies in four short groups; wave 20 trades exactly three beetles with nearly equal rewards
+  ---
+  duration_ms: 1.1855
+  type: 'test'
+  ...
+# Subtest: real schema-30 fights resume with identical old movement, projectiles, timers and money until their boundary
+ok 133 - real schema-30 fights resume with identical old movement, projectiles, timers and money until their boundary
+  ---
+  duration_ms: 573.2569
+  type: 'test'
+  ...
+# Subtest: new wave 10/20 and both boss snapshots reload exactly; downgrade and forged old queues are rejected
+ok 134 - new wave 10/20 and both boss snapshots reload exactly; downgrade and forged old queues are rejected
+  ---
+  duration_ms: 160.6004
+  type: 'test'
+  ...
+# Subtest: old farm departure remains payable once through native save migration; fresh proof needs two current clears
+ok 135 - old farm departure remains payable once through native save migration; fresh proof needs two current clears
+  ---
+  duration_ms: 1016.7055
+  type: 'test'
+  ...
+# Subtest: earned release runs retain the first five waves and win both bosses without new losses or money farming
+ok 136 - earned release runs retain the first five waves and win both bosses without new losses or money farming
+  ---
+  duration_ms: 511.3046
+  type: 'test'
+  ...
+# Subtest: staged introductions, unchanged opening and boss escorts, bounded varied late recipes
+ok 137 - staged introductions, unchanged opening and boss escorts, bounded varied late recipes
+  ---
+  duration_ms: 17.7166
+  type: 'test'
+  ...
+# Subtest: all original movement tags resolve through frameMap, with correct sizes, timings and facing
+ok 138 - all original movement tags resolve through frameMap, with correct sizes, timings and facing
+  ---
+  duration_ms: 1.9184
+  type: 'test'
+  ...
+# Subtest: healing cast is saved exactly, bounded to two escorts, capped and protected against stacking
+ok 139 - healing cast is saved exactly, bounded to two escorts, capped and protected against stacking
+  ---
+  duration_ms: 214.2119
+  type: 'test'
+  ...
+# Subtest: a killed healer cannot pulse later in that tick, and no boss can be healed
+ok 140 - a killed healer cannot pulse later in that tick, and no boss can be healed
+  ---
+  duration_ms: 172.9658
+  type: 'test'
+  ...
+# Subtest: void resists slow, while all four towers can target flying enemies
+ok 141 - void resists slow, while all four towers can target flying enemies
+  ---
+  duration_ms: 434.1997
+  type: 'test'
+  ...
+# Subtest: published v12 combat survives migration, old queue completes and next attempt uses current rules
+ok 142 - published v12 combat survives migration, old queue completes and next attempt uses current rules
+  ---
+  duration_ms: 241.981
+  type: 'test'
+  ...
+# Subtest: derived HP tolerates browser Math.pow rounding, but still rejects modified stats
+ok 143 - derived HP tolerates browser Math.pow rounding, but still rejects modified stats
+  ---
+  duration_ms: 130.7292
+  type: 'test'
+  ...
+# Subtest: impact thresholds match skins, retain level 25 above the cap for all five towers
+ok 144 - impact thresholds match skins, retain level 25 above the cap for all five towers
+  ---
+  duration_ms: 3.2948
+  type: 'test'
+  ...
+# Subtest: all 40 textures prepare once, with bounded frames and no per-hit canvas allocation
+ok 145 - all 40 textures prepare once, with bounded frames and no per-hit canvas allocation
+  ---
+  duration_ms: 34.6475
+  type: 'test'
+  ...
+# Subtest: confirmed payload chooses impact after owner upgrade/sale; splash yields only one visual hit
+ok 146 - confirmed payload chooses impact after owner upgrade/sale; splash yields only one visual hit
+  ---
+  duration_ms: 1.8686
+  type: 'test'
+  ...
+# Subtest: impact timing follows simulation pause, expiry and rollback, with existing 96-sprite bound
+ok 147 - impact timing follows simulation pause, expiry and rollback, with existing 96-sprite bound
+  ---
+  duration_ms: 2.0234
+  type: 'test'
+  ...
+# Subtest: Stormlight uses its new duration while construction retains the original lifetime
+ok 148 - Stormlight uses its new duration while construction retains the original lifetime
+  ---
+  duration_ms: 0.4024
+  type: 'test'
+  ...
+# Subtest: all five towers at all eight tiers trigger their impact in real combat without mutating the save
+ok 149 - all five towers at all eight tiers trigger their impact in real combat without mutating the save
+  ---
+  duration_ms: 1076.9823
+  type: 'test'
+  ...
+# Subtest: paid defenses at 40/50/60/70 improve or retain income, with at most four genuine two-clear probes and no live mutation
+ok 150 - paid defenses at 40/50/60/70 improve or retain income, with at most four genuine two-clear probes and no live mutation
+  ---
+  duration_ms: 7107.6339
+  type: 'test'
+  ...
+# Subtest: sparse history picks an actually cleared midpoint, breaks ties downwards and never guesses missing waves
+ok 151 - sparse history picks an actually cleared midpoint, breaks ties downwards and never guesses missing waves
+  ---
+  duration_ms: 425.8876
+  type: 'test'
+  ...
+# Subtest: a leaky or economically worse midpoint preserves the exact valid proof without re-proving it
+ok 152 - a leaky or economically worse midpoint preserves the exact valid proof without re-proving it
+  ---
+  duration_ms: 325.2599
+  type: 'test'
+  ...
+# Subtest: upgrades or harmful sales require fresh proof, while an unsafe former choice cannot survive through its old rate
+ok 153 - upgrades or harmful sales require fresh proof, while an unsafe former choice cannot survive through its old rate
+  ---
+  duration_ms: 272.2694
+  type: 'test'
+  ...
+# Subtest: entry pruning never creates evidence: first clear still needs two cycles, and skipped entry cannot beat the proven rate
+ok 154 - entry pruning never creates evidence: first clear still needs two cycles, and skipped entry cannot beat the proven rate
+  ---
+  duration_ms: 472.1243
+  type: 'test'
+  ...
+# Subtest: native reload preserves the pending rules-14 receipt, pays it once and uses better proof only for future absence
+ok 155 - native reload preserves the pending rules-14 receipt, pays it once and uses better proof only for future absence
+  ---
+  duration_ms: 615.2725
+  type: 'test'
+  ...
+# Subtest: native reload preserves the pending rules-15 receipt, pays it once and uses better proof only for future absence
+ok 156 - native reload preserves the pending rules-15 receipt, pays it once and uses better proof only for future absence
+  ---
+  duration_ms: 615.2676
+  type: 'test'
+  ...
+# Subtest: current and historical in-flight combat resumes identically after a read-only farm search
+ok 157 - current and historical in-flight combat resumes identically after a read-only farm search
+  ---
+  duration_ms: 697.5314
+  type: 'test'
+  ...
+# Subtest: no live completion means no certificate or fabricated starter rate
+ok 158 - no live completion means no certificate or fabricated starter rate
+  ---
+  duration_ms: 120.0409
+  type: 'test'
+  ...
+# Subtest: first real clear proves two conservative no-damage cycles including both pauses without touching live state or events
+ok 159 - first real clear proves two conservative no-damage cycles including both pauses without touching live state or events
+  ---
+  duration_ms: 220.3176
+  type: 'test'
+  ...
+# Subtest: combat timers and money do not invalidate a proof; a purchase or upgrade does
+ok 160 - combat timers and money do not invalidate a proof; a purchase or upgrade does
+  ---
+  duration_ms: 179.0669
+  type: 'test'
+  ...
+# Subtest: a harmful sale immediately invalidates the old defense and selects a genuinely safe lower proof
+ok 161 - a harmful sale immediately invalidates the old defense and selects a genuinely safe lower proof
+  ---
+  duration_ms: 811.8689
+  type: 'test'
+  ...
+# Subtest: a successful but damaged real wave is not safe; previous valid evidence survives a newer leaky clear
+ok 162 - a successful but damaged real wave is not safe; previous valid evidence survives a newer leaky clear
+  ---
+  duration_ms: 343.3429
+  type: 'test'
+  ...
+# Subtest: defeat returns to a fresh farm attempt, repeats it and never advances until the queued command crosses a boundary
+ok 163 - defeat returns to a fresh farm attempt, repeats it and never advances until the queued command crosses a boundary
+  ---
+  duration_ms: 668.3419
+  type: 'test'
+  ...
+# Subtest: snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history
+ok 164 - snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history
+  ---
+  duration_ms: 248.9682
+  type: 'test'
+  ...
+# Subtest: offline thousandths survive repeated credits, spending and snapshots; invalid amounts are atomic
+ok 165 - offline thousandths survive repeated credits, spending and snapshots; invalid amounts are atomic
+  ---
+  duration_ms: 86.2277
+  type: 'test'
+  ...
+# Subtest: current progress and certificate fields reject invalid histories, references, versions and numeric limits
+ok 166 - current progress and certificate fields reject invalid histories, references, versions and numeric limits
+  ---
+  duration_ms: 145.8755
+  type: 'test'
+  ...
+# Subtest: a valid non-entry proof survives later leaky clears with unchanged defense
+ok 167 - a valid non-entry proof survives later leaky clears with unchanged defense
+  ---
+  duration_ms: 1497.6
+  type: 'test'
+  ...
+# Subtest: bounded live history pins both entry evidence and the currently certified farm wave
+ok 168 - bounded live history pins both entry evidence and the currently certified farm wave
+  ---
+  duration_ms: 77.493
+  type: 'test'
+  ...
+# Subtest: Frost preview earns its 25 gold and stops before the single free build
+ok 169 - Frost preview earns its 25 gold and stops before the single free build
+  ---
+  duration_ms: 212.9665
+  type: 'test'
+  ...
+# Subtest: Ilyra preview pays the upgrade and retains her real first movement
+ok 170 - Ilyra preview pays the upgrade and retains her real first movement
+  ---
+  duration_ms: 138.0211
+  type: 'test'
+  ...
+# Subtest: hero preview completes the actual first volley and is ready for free movement
+ok 171 - hero preview completes the actual first volley and is ready for free movement
+  ---
+  duration_ms: 73.6292
+  type: 'test'
+  ...
+# Subtest: every visit creates a distinct durable probe and leaves the main save byte-for-byte intact
+ok 172 - every visit creates a distinct durable probe and leaves the main save byte-for-byte intact
+  ---
+  duration_ms: 77.7984
+  type: 'test'
+  ...
+# Subtest: invalid saved defense fails instead of generating a substitute game
+ok 173 - invalid saved defense fails instead of generating a substitute game
+  ---
+  duration_ms: 0.9017
+  type: 'test'
+  ...
+# Subtest: solid forest leaves the route, plots, every start pad and its approach accessible
+ok 174 - solid forest leaves the route, plots, every start pad and its approach accessible
+  ---
+  duration_ms: 159.4549
+  type: 'test'
+  ...
+# Subtest: rendering and routing share deterministic immutable forest without opening eastern terrain
+ok 175 - rendering and routing share deterministic immutable forest without opening eastern terrain
+  ---
+  duration_ms: 164.4117
+  type: 'test'
+  ...
+# Subtest: earned Frost kit is immediately affordable, atomic and consumed through sale and reload
+ok 176 - earned Frost kit is immediately affordable, atomic and consumed through sale and reload
+  ---
+  duration_ms: 323.7623
+  type: 'test'
+  ...
+# Subtest: only paid upgrades contribute to the free kit refund; forged free towers are rejected
+ok 177 - only paid upgrades contribute to the free kit refund; forged free towers are rejected
+  ---
+  duration_ms: 148.9753
+  type: 'test'
+  ...
+# Subtest: schema 29 unfinished guidance gains eligibility; completed and paid saves retain prices
+ok 178 - schema 29 unfinished guidance gains eligibility; completed and paid saves retain prices
+  ---
+  duration_ms: 18.1502
+  type: 'test'
+  ...
+# Subtest: Ilyra recommendation is reachable, free and covers the actual defended road without changing battle state
+ok 179 - Ilyra recommendation is reachable, free and covers the actual defended road without changing battle state
+  ---
+  duration_ms: 258.6496
+  type: 'test'
+  ...
+# Subtest: manual pause accepts both hero routes, replacements survive reload and Mara keeps assignment/cooldown
+ok 180 - manual pause accepts both hero routes, replacements survive reload and Mara keeps assignment/cooldown
+  ---
+  duration_ms: 442.5718
+  type: 'test'
+  ...
+# Subtest: guided stages block direct hero control; no volley movement or implicit first cast
+ok 181 - guided stages block direct hero control; no volley movement or implicit first cast
+  ---
+  duration_ms: 25.8445
+  type: 'test'
+  ...
+# Subtest: English is the explicit default; language choices survive blocked preference storage
+ok 182 - English is the explicit default; language choices survive blocked preference storage
+  ---
+  duration_ms: 1.5521
+  type: 'test'
+  ...
+# Subtest: complete sentences retain every placeholder, whitespace and dynamic values in both languages
+ok 183 - complete sentences retain every placeholder, whitespace and dynamic values in both languages
+  ---
+  duration_ms: 38.8174
+  type: 'test'
+  ...
+# Subtest: menu language switch preserves DOM identity, updates accessibility and persists only the preference
+ok 184 - menu language switch preserves DOM identity, updates accessibility and persists only the preference
+  ---
+  duration_ms: 190.8008
+  type: 'test'
+  ...
+# Subtest: language changes preserve an earned battle, farm proof and historical offline receipt exactly
+ok 185 - language changes preserve an earned battle, farm proof and historical offline receipt exactly
+  ---
+  duration_ms: 611.1759
+  type: 'test'
+  ...
+# Subtest: all enemy descriptions and companion dialogue stages have translations, without translating IDs
+ok 186 - all enemy descriptions and companion dialogue stages have translations, without translating IDs
+  ---
+  duration_ms: 2.4685
+  type: 'test'
+  ...
+# Subtest: free conscious recruitment preserves veteran saves and rejects repeats; core settlement also supports it
+ok 187 - free conscious recruitment preserves veteran saves and rejects repeats; core settlement also supports it
+  ---
+  duration_ms: 483.8779
+  type: 'test'
+  ...
+# Subtest: movement remains independent, bounded and reloadable; obstacles reject orders
+ok 188 - movement remains independent, bounded and reloadable; obstacles reject orders
+  ---
+  duration_ms: 70.9586
+  type: 'test'
+  ...
+# Subtest: saved windup and flight hit once, reward ground/air kills once, and reject forged damage
+ok 189 - saved windup and flight hit once, reward ground/air kills once, and reject forged damage
+  ---
+  duration_ms: 81.491
+  type: 'test'
+  ...
+# Subtest: air damage is 50 percent higher, scaling ignores Mara, and empty waves never spend cooldown
+ok 190 - air damage is 50 percent higher, scaling ignores Mara, and empty waves never spend cooldown
+  ---
+  duration_ms: 71.3843
+  type: 'test'
+  ...
+# Subtest: recruitment is transactional across storage failure and reload
+ok 191 - recruitment is transactional across storage failure and reload
+  ---
+  duration_ms: 190.98
+  type: 'test'
+  ...
+# Subtest: farm proof ignores recruited Ilyra and pending spells
+ok 192 - farm proof ignores recruited Ilyra and pending spells
+  ---
+  duration_ms: 135.9574
+  type: 'test'
+  ...
+# Subtest: slower volleys remain in flight at the old hit time; legacy saves finish once at their old pace
+ok 193 - slower volleys remain in flight at the old hit time; legacy saves finish once at their old pace
+  ---
+  duration_ms: 97.6757
+  type: 'test'
+  ...
+# Subtest: start fixture has unique reservations, correct budget and an in-bounds road ending at the core
+ok 194 - start fixture has unique reservations, correct budget and an in-bounds road ending at the core
+  ---
+  duration_ms: 142.6504
+  type: 'test'
+  ...
+# Subtest: critical first-view positions and all initial pads fit inside the unscrolled start region
+ok 195 - critical first-view positions and all initial pads fit inside the unscrolled start region
+  ---
+  duration_ms: 9.0432
+  type: 'test'
+  ...
+# Subtest: building bodies block navigation while their courtyard remains reachable and reserved for building
+ok 196 - building bodies block navigation while their courtyard remains reachable and reserved for building
+  ---
+  duration_ms: 42.3066
+  type: 'test'
+  ...
+# Subtest: Mara has continuous legal footpaths to all active tower approaches and the workshop
+ok 197 - Mara has continuous legal footpaths to all active tower approaches and the workshop
+  ---
+  duration_ms: 112.7036
+  type: 'test'
+  ...
+# Subtest: unopened east cells reject walking and construction; expansion changes bounds but never routes enemies
+ok 198 - unopened east cells reject walking and construction; expansion changes bounds but never routes enemies
+  ---
+  duration_ms: 134.4983
+  type: 'test'
+  ...
+# Subtest: placement rejects roads, reserved pads, bad footprints and map borders
+ok 199 - placement rejects roads, reserved pads, bad footprints and map borders
+  ---
+  duration_ms: 6.0726
+  type: 'test'
+  ...
+# Subtest: layout instances own immutable geometry and independent bounds
+ok 200 - layout instances own immutable geometry and independent bounds
+  ---
+  duration_ms: 21.2776
+  type: 'test'
+  ...
+# Subtest: orthogonal road rasterization rejects diagonals and does not duplicate corners
+ok 201 - orthogonal road rasterization rejects diagonals and does not duplicate corners
+  ---
+  duration_ms: 0.423
+  type: 'test'
+  ...
+# (node:47644) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: startup shows actual resource counts and leaves non-resource phases indeterminate
+ok 202 - startup shows actual resource counts and leaves non-resource phases indeterminate
+  ---
+  duration_ms: 380.4282
+  type: 'test'
+  ...
+# Subtest: unknown resource totals and non-finite counts never become fictitious progress
+ok 203 - unknown resource totals and non-finite counts never become fictitious progress
+  ---
+  duration_ms: 120.7568
+  type: 'test'
+  ...
+# Subtest: startup failure exposes retry and saved-game recovery without activating either automatically
+ok 204 - startup failure exposes retry and saved-game recovery without activating either automatically
+  ---
+  duration_ms: 113.0631
+  type: 'test'
+  ...
+# Subtest: ready, dismissal and destruction release input and cancel startup timeouts
+ok 205 - ready, dismissal and destruction release input and cancel startup timeouts
+  ---
+  duration_ms: 98.2104
+  type: 'test'
+  ...
+# Subtest: watchdog follows real activity, fails once, and defers while the document is hidden
+ok 206 - watchdog follows real activity, fails once, and defers while the document is hidden
+  ---
+  duration_ms: 79.6296
+  type: 'test'
+  ...
+# Subtest: startup phase, resource count and recovery controls use the selected English or German copy
+ok 207 - startup phase, resource count and recovery controls use the selected English or German copy
+  ---
+  duration_ms: 115.4105
+  type: 'test'
+  ...
+# Subtest: one loading joke persists through progress, translates, and gives errors the floor
+ok 208 - one loading joke persists through progress, translates, and gives errors the floor
+  ---
+  duration_ms: 69.5414
+  type: 'test'
+  ...
+# Subtest: rules 12 stay byte-for-byte reproducible against the captured original 100-wave table; rules 13–15 keep opening 1–40 unchanged
+ok 209 - rules 12 stay byte-for-byte reproducible against the captured original 100-wave table; rules 13–15 keep opening 1–40 unchanged
+  ---
+  duration_ms: 32.7917
+  type: 'test'
+  ...
+# Subtest: new introductions repeat immediately; later recipes retain all sixteen species, two healer and 28 enemy caps
+ok 210 - new introductions repeat immediately; later recipes retain all sixteen species, two healer and 28 enemy caps
+  ---
+  duration_ms: 133.0445
+  type: 'test'
+  ...
+# Subtest: schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40
+ok 211 - schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40
+  ---
+  duration_ms: 350.5333
+  type: 'test'
+  ...
+# Subtest: schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly
+ok 212 - schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly
+  ---
+  duration_ms: 42.1653
+  type: 'test'
+  ...
+# Subtest: four compact atlases preserve metadata timings and genuine west views; cosmetic skins never change combat stats
+ok 213 - four compact atlases preserve metadata timings and genuine west views; cosmetic skins never change combat stats
+  ---
+  duration_ms: 9.6454
+  type: 'test'
+  ...
+# Subtest: every new species survives live save/reload deterministically; new farm proofs replace old rates without altering the model
+ok 214 - every new species survives live save/reload deterministically; new farm proofs replace old rates without altering the model
+  ---
+  duration_ms: 528.7538
+  type: 'test'
+  ...
+# Subtest: both historical and current offline receipts keep their exact amounts and one-claim boundary
+ok 215 - both historical and current offline receipts keep their exact amounts and one-claim boundary
+  ---
+  duration_ms: 2.3665
+  type: 'test'
+  ...
+# Subtest: north road has three complete usable rows, while the entry, core and settlement stay in place
+ok 216 - north road has three complete usable rows, while the entry, core and settlement stay in place
+  ---
+  duration_ms: 214.4104
+  type: 'test'
+  ...
+# Subtest: an old active fight and paused reload retain exact enemies, shots and tower positions until the boundary
+ok 217 - an old active fight and paused reload retain exact enemies, shots and tower positions until the boundary
+  ---
+  duration_ms: 140.909
+  type: 'test'
+  ...
+# Subtest: a maximally built old map migrates every tower without charges, duplicates or new obstacles
+ok 218 - a maximally built old map migrates every tower without charges, duplicates or new obstacles
+  ---
+  duration_ms: 207.6742
+  type: 'test'
+  ...
+# Subtest: invalid old road data is rejected before migration and an expanded settlement remains intact
+ok 219 - invalid old road data is rejected before migration and an expanded settlement remains intact
+  ---
+  duration_ms: 51.5336
+  type: 'test'
+  ...
+# Subtest: Mara button describes actual buff and cast restrictions without modifying the save
+ok 220 - Mara button describes actual buff and cast restrictions without modifying the save
+  ---
+  duration_ms: 298.6799
+  type: 'test'
+  ...
+# Subtest: Mara map/menu share radial state and preserve stable status nodes across language and cooldown ticks
+ok 221 - Mara map/menu share radial state and preserve stable status nodes across language and cooldown ticks
+  ---
+  duration_ms: 499.0601
+  type: 'test'
+  ...
+# Subtest: new intro resumes each scene without changing the authoritative welcome phase
+ok 222 - new intro resumes each scene without changing the authoritative welcome phase
+  ---
+  duration_ms: 18.016
+  type: 'test'
+  ...
+# Subtest: legacy saves, recovery, stale and corrupt preferences never start a new intro
+ok 223 - legacy saves, recovery, stale and corrupt preferences never start a new intro
+  ---
+  duration_ms: 0.5779
+  type: 'test'
+  ...
+# Subtest: intro completion is slot-local and a new game overwrites stale completion
+ok 224 - intro completion is slot-local and a new game overwrites stale completion
+  ---
+  duration_ms: 0.2753
+  type: 'test'
+  ...
+# Subtest: blocked preferences retain in-memory interaction and protect existing saves on reload
+ok 225 - blocked preferences retain in-memory interaction and protect existing saves on reload
+  ---
+  duration_ms: 0.2806
+  type: 'test'
+  ...
+# Subtest: session provenance stays runtime-only and intro skip persists build without skipping lessons or gifting towers
+ok 226 - session provenance stays runtime-only and intro skip persists build without skipping lessons or gifting towers
+  ---
+  duration_ms: 187.0365
+  type: 'test'
+  ...
+# Subtest: failed welcome transition keeps the current intro resumable and does not grant anything
+ok 227 - failed welcome transition keeps the current intro resumable and does not grant anything
+  ---
+  duration_ms: 7.7436
+  type: 'test'
+  ...
+# Subtest: all intro copy and actions have English translations
+ok 228 - all intro copy and actions have English translations
+  ---
+  duration_ms: 0.5113
+  type: 'test'
+  ...
+# Subtest: waiting walks remain local, legal and in range, with long rests and several facing directions
+ok 229 - waiting walks remain local, legal and in range, with long rests and several facing directions
+  ---
+  duration_ms: 454.1202
+  type: 'test'
+  ...
+# Subtest: ordinary earned opening and a saved walking segment restore without moving an unbuilt save
+ok 230 - ordinary earned opening and a saved walking segment restore without moving an unbuilt save
+  ---
+  duration_ms: 70.4116
+  type: 'test'
+  ...
+# Subtest: real first spell unlocks controls after its effect; waiting paths stop at the introduction
+ok 231 - real first spell unlocks controls after its effect; waiting paths stop at the introduction
+  ---
+  duration_ms: 292.5652
+  type: 'test'
+  ...
+# Subtest: Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation
+ok 232 - Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation
+  ---
+  duration_ms: 135.5584
+  type: 'test'
+  ...
+# Subtest: overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage
+ok 233 - overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage
+  ---
+  duration_ms: 147.5458
+  type: 'test'
+  ...
+# Subtest: independent movement walks at 80px/s; reassignment retains the old remote buff and cooldown
+ok 234 - independent movement walks at 80px/s; reassignment retains the old remote buff and cooldown
+  ---
+  duration_ms: 127.4619
+  type: 'test'
+  ...
+# Subtest: redirecting movement halfway through a segment rejoins a centre; selling the selected tower preserves another tower buff
+ok 235 - redirecting movement halfway through a segment rejoins a centre; selling the selected tower preserves another tower buff
+  ---
+  duration_ms: 85.19
+  type: 'test'
+  ...
+# Subtest: blocked remote destinations stop safely; a new order can route around a newly placed obstacle
+ok 236 - blocked remote destinations stop safely; a new order can route around a newly placed obstacle
+  ---
+  duration_ms: 56.4649
+  type: 'test'
+  ...
+# Subtest: travel, assignment, effect and cooldown reload exactly without replay and continue deterministically
+ok 237 - travel, assignment, effect and cooldown reload exactly without replay and continue deterministically
+  ---
+  duration_ms: 969.9962
+  type: 'test'
+  ...
+# Subtest: effect and cooldown continue through wave pauses; waiting without simulation cannot advance them
+ok 238 - effect and cooldown continue through wave pauses; waiting without simulation cannot advance them
+  ---
+  duration_ms: 215.9377
+  type: 'test'
+  ...
+# Subtest: old rule snapshots migrate once, preserve money and combat payloads and require fresh live farm evidence
+ok 239 - old rule snapshots migrate once, preserve money and combat payloads and require fresh live farm evidence
+  ---
+  duration_ms: 79.5328
+  type: 'test'
+  ...
+# Subtest: Mara position and temporary effect never inflate a farm proof, while reassignment invalidates its fingerprint
+ok 240 - Mara position and temporary effect never inflate a farm proof, while reassignment invalidates its fingerprint
+  ---
+  duration_ms: 214.6465
+  type: 'test'
+  ...
+# Subtest: Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads
+ok 241 - Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads
+  ---
+  duration_ms: 82.6486
+  type: 'test'
+  ...
+# Subtest: only wave 46 changes under rules 14: retain a light escort, healer cap, exact cadence and total reward
+ok 242 - only wave 46 changes under rules 14: retain a light escort, healer cap, exact cadence and total reward
+  ---
+  duration_ms: 44.4516
+  type: 'test'
+  ...
+# Subtest: a genuine schema-27 wave 46 keeps its old tank-heavy queue and live values, then adopts rules 14
+ok 243 - a genuine schema-27 wave 46 keeps its old tank-heavy queue and live values, then adopts rules 14
+  ---
+  duration_ms: 334.1021
+  type: 'test'
+  ...
+# Subtest: raw restore re-proves saved farm 29 even without a departure certificate, with no live model or reward mutation
+ok 244 - raw restore re-proves saved farm 29 even without a departure certificate, with no live model or reward mutation
+  ---
+  duration_ms: 504.1401
+  type: 'test'
+  ...
+# Subtest: entry fallback recovers safe recent wave 38; harmful sales still invalidate higher farm proofs
+ok 245 - entry fallback recovers safe recent wave 38; harmful sales still invalidate higher farm proofs
+  ---
+  duration_ms: 680.6107
+  type: 'test'
+  ...
+# Subtest: native schema-27 reload retains its rules-13 offline claim and credits the exact amount once
+ok 246 - native schema-27 reload retains its rules-13 offline claim and credits the exact amount once
+  ---
+  duration_ms: 269.7236
+  type: 'test'
+  ...
+# Subtest: first positive return persists the greeting before claim; unclaimed reload never repeats or changes its gold
+ok 247 - first positive return persists the greeting before claim; unclaimed reload never repeats or changes its gold
+  ---
+  duration_ms: 893.6528
+  type: 'test'
+  ...
+# Subtest: zero, paused and sub-gold returns: zero does not consume it; even a positive fraction qualifies
+ok 248 - zero, paused and sub-gold returns: zero does not consume it; even a positive fraction qualifies
+  ---
+  duration_ms: 1040.7645
+  type: 'test'
+  ...
+# Subtest: a second absence within the same session cannot reuse the first visible greeting
+ok 249 - a second absence within the same session cannot reuse the first visible greeting
+  ---
+  duration_ms: 142.4165
+  type: 'test'
+  ...
+# Subtest: failed greeting persistence leaves the old receipt and eligibility intact
+ok 250 - failed greeting persistence leaves the old receipt and eligibility intact
+  ---
+  duration_ms: 277.4729
+  type: 'test'
+  ...
+# Subtest: return greeting uses DE/EN, hides for ineligible saves, and adds no interaction gate
+ok 251 - return greeting uses DE/EN, hides for ineligible saves, and adds no interaction gate
+  ---
+  duration_ms: 230.255
+  type: 'test'
+  ...
+# Subtest: 30 seconds, 10 minutes, 1 hour and 3 hours reserve 60% with the same two-hour cap
+ok 252 - 30 seconds, 10 minutes, 1 hour and 3 hours reserve 60% with the same two-hour cap
+  ---
+  duration_ms: 4.7692
+  type: 'test'
+  ...
+# Subtest: explicit pause and absence without a certified autonomous rate generate no gold
+ok 253 - explicit pause and absence without a certified autonomous rate generate no gold
+  ---
+  duration_ms: 0.5097
+  type: 'test'
+  ...
+# Subtest: closing and reopening before claim consumes only the remaining cap of the original window
+ok 254 - closing and reopening before claim consumes only the remaining cap of the original window
+  ---
+  duration_ms: 0.6243
+  type: 'test'
+  ...
+# Subtest: claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+ok 255 - claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+  ---
+  duration_ms: 0.9962
+  type: 'test'
+  ...
+# Subtest: backwards clock jumps never move the high-water cursor back or repay a reserved interval
+ok 256 - backwards clock jumps never move the high-water cursor back or repay a reserved interval
+  ---
+  duration_ms: 0.6554
+  type: 'test'
+  ...
+# Subtest: the certificate and paused state are frozen at the original departure
+ok 257 - the certificate and paused state are frozen at the original departure
+  ---
+  duration_ms: 0.3422
+  type: 'test'
+  ...
+# Subtest: confirmed active checkpoints and absence share a single non-overlapping time boundary
+ok 258 - confirmed active checkpoints and absence share a single non-overlapping time boundary
+  ---
+  duration_ms: 0.4704
+  type: 'test'
+  ...
+# Subtest: exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+ok 259 - exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+  ---
+  duration_ms: 0.5542
+  type: 'test'
+  ...
+# Subtest: fractional units carry into future windows even when the certified rate changes
+ok 260 - fractional units carry into future windows even when the certified rate changes
+  ---
+  duration_ms: 0.5645
+  type: 'test'
+  ...
+# Subtest: invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+ok 261 - invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+  ---
+  duration_ms: 1.579
+  type: 'test'
+  ...
+# Subtest: the first B04 schema-one policy defaults migrate without resetting a pending absence window
+ok 262 - the first B04 schema-one policy defaults migrate without resetting a pending absence window
+  ---
+  duration_ms: 0.4524
+  type: 'test'
+  ...
+# Subtest: policy migration never replaces an explicitly contradictory or malformed saved policy
+ok 263 - policy migration never replaces an explicitly contradictory or malformed saved policy
+  ---
+  duration_ms: 1.1753
+  type: 'test'
+  ...
+# Subtest: known historical departure proofs retain their original production basis
+ok 264 - known historical departure proofs retain their original production basis
+  ---
+  duration_ms: 1.6951
+  type: 'test'
+  ...
+# {"workshopCombatSeconds":7.7,"completeCombatSeconds":11.075000000000001,"learningAndPreparationSeconds":48.05,"totalSeconds":59.125}
+# Subtest: preparation persists without combat, production or repeated gifts
+ok 265 - preparation persists without combat, production or repeated gifts
+  ---
+  duration_ms: 149.0869
+  type: 'test'
+  ...
+# Subtest: all offered first placements clear wave one without manual support
+ok 266 - all offered first placements clear wave one without manual support
+  ---
+  duration_ms: 300.1745
+  type: 'test'
+  ...
+# Subtest: all starter locations survive the complete guided purchase sequence with real learning pauses
+ok 267 - all starter locations survive the complete guided purchase sequence with real learning pauses
+  ---
+  duration_ms: 864.6777
+  type: 'test'
+  ...
+# Subtest: pre-start state cannot smuggle money, combat, extra towers or unassigned active Mara
+ok 268 - pre-start state cannot smuggle money, combat, extra towers or unassigned active Mara
+  ---
+  duration_ms: 2.3721
+  type: 'test'
+  ...
+# Subtest: real v14 veteran and its historical offline basis survive the schema-only migration
+ok 269 - real v14 veteran and its historical offline basis survive the schema-only migration
+  ---
+  duration_ms: 120.3959
+  type: 'test'
+  ...
+# Subtest: session reload before start preserves the kit and avoids an empty return dialog
+ok 270 - session reload before start preserves the kit and avoids an empty return dialog
+  ---
+  duration_ms: 36.3209
+  type: 'test'
+  ...
+# Subtest: rejected first-build transaction rolls back the kit and complete preparation
+ok 271 - rejected first-build transaction rolls back the kit and complete preparation
+  ---
+  duration_ms: 11.6945
+  type: 'test'
+  ...
+# Subtest: schema 15 saves preserve preparation and completed play without forcing the extended lessons
+ok 272 - schema 15 saves preserve preparation and completed play without forcing the extended lessons
+  ---
+  duration_ms: 109.0232
+  type: 'test'
+  ...
+# Subtest: intro command waits for a background write, then rechecks and consumes the kit once
+ok 273 - intro command waits for a background write, then rechecks and consumes the kit once
+  ---
+  duration_ms: 21.7208
+  type: 'test'
+  ...
+# Subtest: learning pause survives return without idle income and stays distinct from manual pause
+ok 274 - learning pause survives return without idle income and stays distinct from manual pause
+  ---
+  duration_ms: 58.48
+  type: 'test'
+  ...
+# Subtest: workshop kit waits for first victory, survives reload and never refunds an existing workshop
+ok 275 - workshop kit waits for first victory, survives reload and never refunds an existing workshop
+  ---
+  duration_ms: 42.7667
+  type: 'test'
+  ...
+# Subtest: live starts and outcomes persist without replaying starts on reload; farm cycles stay separate
+ok 276 - live starts and outcomes persist without replaying starts on reload; farm cycles stay separate
+  ---
+  duration_ms: 217.5919
+  type: 'test'
+  ...
+# Subtest: a genuine defeat records the failed advance before switching to farm
+ok 277 - a genuine defeat records the failed advance before switching to farm
+  ---
+  duration_ms: 484.4246
+  type: 'test'
+  ...
+# Subtest: schema four migration keeps combat and invalidates old rule proofs but does not invent old attempts
+ok 278 - schema four migration keeps combat and invalidates old rule proofs but does not invent old attempts
+  ---
+  duration_ms: 160.0483
+  type: 'test'
+  ...
+# Subtest: invalid statistics cannot be loaded and snapshots do not share mutable records
+ok 279 - invalid statistics cannot be loaded and snapshots do not share mutable records
+  ---
+  duration_ms: 83.9834
+  type: 'test'
+  ...
+# Subtest: bounded wave history retains aggregate results and accepts a returning low farm wave
+ok 280 - bounded wave history retains aggregate results and accepts a returning low farm wave
+  ---
+  duration_ms: 1.2094
+  type: 'test'
+  ...
+# Subtest: live income warms up, rolls over 60 active seconds and resets on rollback
+ok 281 - live income warms up, rolls over 60 active seconds and resets on rollback
+  ---
+  duration_ms: 0.6884
+  type: 'test'
+  ...
+# Subtest: purchases, sales and offline claims do not change battle-earned production
+ok 282 - purchases, sales and offline claims do not change battle-earned production
+  ---
+  duration_ms: 58.5005
+  type: 'test'
+  ...
+# Subtest: quick-win notices follow real unlock and level-six state without changing either condition
+ok 283 - quick-win notices follow real unlock and level-six state without changing either condition
+  ---
+  duration_ms: 1.5018
+  type: 'test'
+  ...
+# Subtest: dismissing cannon explanation retains NEW until inspection or an existing cannon
+ok 284 - dismissing cannon explanation retains NEW until inspection or an existing cannon
+  ---
+  duration_ms: 0.3131
+  type: 'test'
+  ...
+# Subtest: UI dismissals persist per slot, keep catalogue reminder and translate live content
+ok 285 - UI dismissals persist per slot, keep catalogue reminder and translate live content
+  ---
+  duration_ms: 215.8999
+  type: 'test'
+  ...
+# Subtest: blocked UI preference storage keeps dismissals in memory without affecting the game
+ok 286 - blocked UI preference storage keeps dismissals in memory without affecting the game
+  ---
+  duration_ms: 33.0685
+  type: 'test'
+  ...
+# Subtest: optional workshop notice waits for tutorial completion without consuming its preference
+ok 287 - optional workshop notice waits for tutorial completion without consuming its preference
+  ---
+  duration_ms: 0.3752
+  type: 'test'
+  ...
+# Subtest: live quick-win presenter keeps updating and dispatching after tutorial actions move
+ok 288 - live quick-win presenter keeps updating and dispatching after tutorial actions move
+  ---
+  duration_ms: 336.7016
+  type: 'test'
+  ...
+# Subtest: actual Frost hit preserves the earned boss dance through reload; selling its target still ends it
+ok 289 - actual Frost hit preserves the earned boss dance through reload; selling its target still ends it
+  ---
+  duration_ms: 606.0628
+  type: 'test'
+  ...
+# Subtest: fresh guided opening reaches Wisp without early Mara casts or leaks
+ok 290 - fresh guided opening reaches Wisp without early Mara casts or leaks
+  ---
+  duration_ms: 240.0244
+  type: 'test'
+  ...
+# Subtest: return gold uses whole coins and unambiguous grouping, with exact fractional details
+ok 291 - return gold uses whole coins and unambiguous grouping, with exact fractional details
+  ---
+  duration_ms: 2.7956
+  type: 'test'
+  ...
+# Subtest: only actual millions receive a scale label; exact values remain lossless at the safe unit limit
+ok 292 - only actual millions receive a scale label; exact values remain lossless at the safe unit limit
+  ---
+  duration_ms: 1.1899
+  type: 'test'
+  ...
+# Subtest: isolated native IndexedDB starts empty and restores a committed battle and explicit pause
+ok 293 - isolated native IndexedDB starts empty and restores a committed battle and explicit pause
+  ---
+  duration_ms: 262.3643
+  type: 'test'
+  ...
+# Subtest: each commit retains the last valid predecessor and advances revision monotonically
+ok 294 - each commit retains the last valid predecessor and advances revision monotonically
+  ---
+  duration_ms: 82.4535
+  type: 'test'
+  ...
+# Subtest: two connections racing the same revision have exactly one atomic CAS winner
+ok 295 - two connections racing the same revision have exactly one atomic CAS winner
+  ---
+  duration_ms: 86.144
+  type: 'test'
+  ...
+# Subtest: invalid new snapshots, pause values and revisions leave primary and backup untouched
+ok 296 - invalid new snapshots, pause values and revisions leave primary and backup untouched
+  ---
+  duration_ms: 53.9031
+  type: 'test'
+  ...
+# Subtest: newer primary schemas never fall back to backup or permit overwrite or recovery
+ok 297 - newer primary schemas never fall back to backup or permit overwrite or recovery
+  ---
+  duration_ms: 55.4253
+  type: 'test'
+  ...
+# Subtest: a future battle rules version inside schema one is protected as unsupported
+ok 298 - a future battle rules version inside schema one is protected as unsupported
+  ---
+  duration_ms: 60.0249
+  type: 'test'
+  ...
+# Subtest: load never writes: corrupt known primary offers explicit recovery and preserves its raw evidence
+ok 299 - load never writes: corrupt known primary offers explicit recovery and preserves its raw evidence
+  ---
+  duration_ms: 68.5251
+  type: 'test'
+  ...
+# Subtest: recovery rechecks current primary atomically and refuses a newer valid save
+ok 300 - recovery rechecks current primary atomically and refuses a newer valid save
+  ---
+  duration_ms: 70.8375
+  type: 'test'
+  ...
+# Subtest: unrecognized corruption or a bad backup is reported and cannot be silently replaced
+ok 301 - unrecognized corruption or a bad backup is reported and cannot be silently replaced
+  ---
+  duration_ms: 84.3343
+  type: 'test'
+  ...
+# Subtest: a save aborted after successful put request is never acknowledged and leaves prior data intact
+ok 302 - a save aborted after successful put request is never acknowledged and leaves prior data intact
+  ---
+  duration_ms: 67.2115
+  type: 'test'
+  ...
+# Subtest: unavailable storage, future database version and blocked opens reject clearly
+ok 303 - unavailable storage, future database version and blocked opens reject clearly
+  ---
+  duration_ms: 2.5275
+  type: 'test'
+  ...
+# Subtest: an explicitly stored undefined value is corruption rather than an absent primary
+ok 304 - an explicitly stored undefined value is corruption rather than an absent primary
+  ---
+  duration_ms: 53.3669
+  type: 'test'
+  ...
+# Subtest: writer acquisition is atomic, exclusive and requires a lease for all subsequent production writes
+ok 305 - writer acquisition is atomic, exclusive and requires a lease for all subsequent production writes
+  ---
+  duration_ms: 62.8935
+  type: 'test'
+  ...
+# Subtest: expired writer takeover rejects the waking old tab even when its save revision still matches
+ok 306 - expired writer takeover rejects the waking old tab even when its save revision still matches
+  ---
+  duration_ms: 60.4161
+  type: 'test'
+  ...
+# Subtest: renewal extends the same epoch; expired writers cannot renew or save themselves back into ownership
+ok 307 - renewal extends the same epoch; expired writers cannot renew or save themselves back into ownership
+  ---
+  duration_ms: 56.8542
+  type: 'test'
+  ...
+# Subtest: lease epoch and release tombstone survive reopening the database
+ok 308 - lease epoch and release tombstone survive reopening the database
+  ---
+  duration_ms: 101.258
+  type: 'test'
+  ...
+# Subtest: backup recovery checks the writer epoch in the same transaction as replacement
+ok 309 - backup recovery checks the writer epoch in the same transaction as replacement
+  ---
+  duration_ms: 59.1269
+  type: 'test'
+  ...
+# Subtest: malformed or future writer records are protected instead of being overwritten by acquisition
+ok 310 - malformed or future writer records are protected instead of being overwritten by acquisition
+  ---
+  duration_ms: 2.1555
+  type: 'test'
+  ...
+# Subtest: envelope one migrates read-only without production evidence and retains CAS revision protection
+ok 311 - envelope one migrates read-only without production evidence and retains CAS revision protection
+  ---
+  duration_ms: 63.8522
+  type: 'test'
+  ...
+# Subtest: pending offline receipt and cleared claim persist atomically with actual gold across reloads
+ok 312 - pending offline receipt and cleared claim persist atomically with actual gold across reloads
+  ---
+  duration_ms: 59.8803
+  type: 'test'
+  ...
+# Subtest: a future offline schema is protected even with a valid predecessor
+ok 313 - a future offline schema is protected even with a valid predecessor
+  ---
+  duration_ms: 67.996
+  type: 'test'
+  ...
+# Subtest: battle schema two migrates without rewriting the historical absence proof or pending receipt
+ok 314 - battle schema two migrates without rewriting the historical absence proof or pending receipt
+  ---
+  duration_ms: 21.2018
+  type: 'test'
+  ...
+# Subtest: session return across the Mara rule update pays the historical rate once and starts with no invented current proof
+ok 315 - session return across the Mara rule update pays the historical rate once and starts with no invented current proof
+  ---
+  duration_ms: 63.5769
+  type: 'test'
+  ...
+# Subtest: future battle schema and historical proof versions remain protected
+ok 316 - future battle schema and historical proof versions remain protected
+  ---
+  duration_ms: 126.5665
+  type: 'test'
+  ...
+# Subtest: all eight Stormlight tiers show chain hops from the hit enemy, never from their owner
+ok 317 - all eight Stormlight tiers show chain hops from the hit enemy, never from their owner
+  ---
+  duration_ms: 565.2059
+  type: 'test'
+  ...
+# Subtest: lightning paths stay narrow with exact endpoints, finite coordinates and bounded lifetime
+ok 318 - lightning paths stay narrow with exact endpoints, finite coordinates and bounded lifetime
+  ---
+  duration_ms: 16.0758
+  type: 'test'
+  ...
+# Subtest: three chain contacts retain separate impacts; duplicate contacts collapse; links pause and cap at 48
+ok 319 - three chain contacts retain separate impacts; duplicate contacts collapse; links pause and cap at 48
+  ---
+  duration_ms: 2.8535
+  type: 'test'
+  ...
+# Subtest: research is a separate once-only paid unlock after wave 28 and Ilyra; upgrades remain unbounded
+ok 320 - research is a separate once-only paid unlock after wave 28 and Ilyra; upgrades remain unbounded
+  ---
+  duration_ms: 192.8003
+  type: 'test'
+  ...
+# Subtest: a chain hits three distinct live targets, nearest first, with bounded range and 100/65/42 percent damage
+ok 321 - a chain hits three distinct live targets, nearest first, with bounded range and 100/65/42 percent damage
+  ---
+  duration_ms: 71.7957
+  type: 'test'
+  ...
+# Subtest: in-flight hops survive upgrade, sale and reload exactly; forged payloads and visited IDs are rejected
+ok 322 - in-flight hops survive upgrade, sale and reload exactly; forged payloads and visited IDs are rejected
+  ---
+  duration_ms: 118.025
+  type: 'test'
+  ...
+# Subtest: Mara accelerates the fifth tower without increasing its per-chain target or damage cap; armor still applies
+ok 323 - Mara accelerates the fifth tower without increasing its per-chain target or damage cap; armor still applies
+  ---
+  duration_ms: 63.6193
+  type: 'test'
+  ...
+# Subtest: new farm proofs exclude active heroes; historical receipts remain exactly once and recipes are unchanged
+ok 324 - new farm proofs exclude active heroes; historical receipts remain exactly once and recipes are unchanged
+  ---
+  duration_ms: 161.7013
+  type: 'test'
+  ...
+# Subtest: schema 28 live queues and wallets migrate unchanged without granting research or rewriting shots
+ok 325 - schema 28 live queues and wallets migrate unchanged without granting research or rewriting shots
+  ---
+  duration_ms: 93.6004
+  type: 'test'
+  ...
+# Subtest: research is atomic across a failed native save, then remains paid and owned after reopening
+ok 326 - research is atomic across a failed native save, then remains paid and owned after reopening
+  ---
+  duration_ms: 145.2188
+  type: 'test'
+  ...
+# Subtest: all three original art stages retain source frame maps, PNG dimensions and the shared floor anchor
+ok 327 - all three original art stages retain source frame maps, PNG dimensions and the shared floor anchor
+  ---
+  duration_ms: 11.0551
+  type: 'test'
+  ...
+# Subtest: Ilyra can retain the fifth tower as a sold volley source without counting chain damage twice
+ok 328 - Ilyra can retain the fifth tower as a sold volley source without counting chain damage twice
+  ---
+  duration_ms: 85.5538
+  type: 'test'
+  ...
+# Subtest: atlas failure retries once, releases rejected entry and permits a later request
+ok 329 - atlas failure retries once, releases rejected entry and permits a later request
+  ---
+  duration_ms: 7.1324
+  type: 'test'
+  ...
+# Subtest: atlas timeout and decode rejection are bounded and do not poison the cache
+ok 330 - atlas timeout and decode rejection are bounded and do not poison the cache
+  ---
+  duration_ms: 73.8357
+  type: 'test'
+  ...
+# Subtest: atlas cache bounds queued and decoded entries, protects pinned pages and cancels on stop
+ok 331 - atlas cache bounds queued and decoded entries, protects pinned pages and cancels on stop
+  ---
+  duration_ms: 4.0565
+  type: 'test'
+  ...
+# Subtest: atlas remains unavailable until image decoding completes
+ok 332 - atlas remains unavailable until image decoding completes
+  ---
+  duration_ms: 2.6271
+  type: 'test'
+  ...
+# Subtest: foreground action cancels obsolete warm-up work without reporting download failure
+ok 333 - foreground action cancels obsolete warm-up work without reporting download failure
+  ---
+  duration_ms: 1.6357
+  type: 'test'
+  ...
+# Subtest: each active touch uses a distinct existing clip, independent of story clips
+ok 334 - each active touch uses a distinct existing clip, independent of story clips
+  ---
+  duration_ms: 31.0563
+  type: 'test'
+  ...
+# Subtest: conversation rotation retains earlier unlocked lines without leaking future stages
+ok 335 - conversation rotation retains earlier unlocked lines without leaking future stages
+  ---
+  duration_ms: 0.9461
+  type: 'test'
+  ...
+# Subtest: gift ownership and actionable recipients stay separate across both companions and the chapter cap
+ok 336 - gift ownership and actionable recipients stay separate across both companions and the chapter cap
+  ---
+  duration_ms: 2.8072
+  type: 'test'
+  ...
+# Subtest: Ilyra requires actual recruitment; each transaction retains its recipient and shared stock
+ok 337 - Ilyra requires actual recruitment; each transaction retains its recipient and shared stock
+  ---
+  duration_ms: 198.7902
+  type: 'test'
+  ...
+# Subtest: Ilyra has five distinct replayable heart scenes and six own dialogue stages
+ok 338 - Ilyra has five distinct replayable heart scenes and six own dialogue stages
+  ---
+  duration_ms: 0.9394
+  type: 'test'
+  ...
+# Subtest: tavern actions preserve manual pause, consume one gift per transaction and serialize taps
+ok 339 - tavern actions preserve manual pause, consume one gift per transaction and serialize taps
+  ---
+  duration_ms: 200.5844
+  type: 'test'
+  ...
+# Subtest: unrewarded interactions remain playable without another save; failed save has no UI reward
+ok 340 - unrewarded interactions remain playable without another save; failed save has no UI reward
+  ---
+  duration_ms: 67.5601
+  type: 'test'
+  ...
+# Subtest: touch region and personal gift choice are checked at execution and cannot substitute another reward
+ok 341 - touch region and personal gift choice are checked at execution and cannot substitute another reward
+  ---
+  duration_ms: 69.4836
+  type: 'test'
+  ...
+# Subtest: each earned heart unlocks one distinct three-beat moment, preserved across restore without replay rewards
+ok 342 - each earned heart unlocks one distinct three-beat moment, preserved across restore without replay rewards
+  ---
+  duration_ms: 194.285
+  type: 'test'
+  ...
+# Subtest: all six relationship stages have distinct greetings and contextual actions, including unearned replay
+ok 343 - all six relationship stages have distinct greetings and contextual actions, including unearned replay
+  ---
+  duration_ms: 0.6111
+  type: 'test'
+  ...
+# Subtest: three conversations and a stock gift reach heart two for each companion without time gates
+ok 344 - three conversations and a stock gift reach heart two for each companion without time gates
+  ---
+  duration_ms: 179.0421
+  type: 'test'
+  ...
+# Subtest: locked and invalid companions/regions cannot spend anything
+ok 345 - locked and invalid companions/regions cannot spend anything
+  ---
+  duration_ms: 74.6964
+  type: 'test'
+  ...
+# Subtest: a personal gift is guaranteed on the thirtieth own live win, independent of stock and the other companion
+ok 346 - a personal gift is guaranteed on the thirtieth own live win, independent of stock and the other companion
+  ---
+  duration_ms: 58.4882
+  type: 'test'
+  ...
+# Subtest: affection may be ready before the gift, stock gifts never bypass the personal gate
+ok 347 - affection may be ready before the gift, stock gifts never bypass the personal gate
+  ---
+  duration_ms: 64.2568
+  type: 'test'
+  ...
+# Subtest: reward reserves refill per three victories, not time, reload, wall clock or offline gold
+ok 348 - reward reserves refill per three victories, not time, reload, wall clock or offline gold
+  ---
+  duration_ms: 62.2837
+  type: 'test'
+  ...
+# Subtest: normal drops have no twenty-minute quota, defer at full stock and stop after the available chapter
+ok 349 - normal drops have no twenty-minute quota, defer at full stock and stop after the available chapter
+  ---
+  duration_ms: 58.8965
+  type: 'test'
+  ...
+# Subtest: recruitment guarantees Ilyra a welcome gift, full stock defers the claim
+ok 350 - recruitment guarantees Ilyra a welcome gift, full stock defers the claim
+  ---
+  duration_ms: 125.9706
+  type: 'test'
+  ...
+# Subtest: touches unlock at hearts 1/2/3, share the existing reserve from heart 2 and preserve legacy progress
+ok 351 - touches unlock at hearts 1/2/3, share the existing reserve from heart 2 and preserve legacy progress
+  ---
+  duration_ms: 128.0362
+  type: 'test'
+  ...
+# Subtest: schema 31 migration preserves earned values, claims, combat and partial gift progress exactly
+ok 352 - schema 31 migration preserves earned values, claims, combat and partial gift progress exactly
+  ---
+  duration_ms: 662.9005
+  type: 'test'
+  ...
+# Subtest: legacy empty-stock Ilyra gets her welcome claim once; corrupt legacy budgets remain rejected
+ok 353 - legacy empty-stock Ilyra gets her welcome claim once; corrupt legacy budgets remain rejected
+  ---
+  duration_ms: 57.6758
+  type: 'test'
+  ...
+# Subtest: invalid current social states are rejected, never reset
+ok 354 - invalid current social states are rejected, never reset
+  ---
+  duration_ms: 438.4469
+  type: 'test'
+  ...
+# Subtest: live wave integration grants once and probes/offline preserve social progress and the farm fingerprint
+ok 355 - live wave integration grants once and probes/offline preserve social progress and the farm fingerprint
+  ---
+  duration_ms: 319.582
+  type: 'test'
+  ...
+# Subtest: gift consumption is atomic, failed saves roll back, pause and concurrent taps do not duplicate rewards
+ok 356 - gift consumption is atomic, failed saves roll back, pause and concurrent taps do not duplicate rewards
+  ---
+  duration_ms: 138.5195
+  type: 'test'
+  ...
+# Subtest: older pre-social saves retain building access and only proven milestone gifts
+ok 357 - older pre-social saves retain building access and only proven milestone gifts
+  ---
+  duration_ms: 123.176
+  type: 'test'
+  ...
+# Subtest: opened stories persist individually across reload, remain companion/slot-local, and reset with a new game
+ok 358 - opened stories persist individually across reload, remain companion/slot-local, and reset with a new game
+  ---
+  duration_ms: 1.7069
+  type: 'test'
+  ...
+# Subtest: legacy history starts quietly without changing points, then tracks later unlocks normally
+ok 359 - legacy history starts quietly without changing points, then tracks later unlocks normally
+  ---
+  duration_ms: 1.177
+  type: 'test'
+  ...
+# Subtest: malformed or unavailable UI storage never prevents play or changes game data
+ok 360 - malformed or unavailable UI storage never prevents play or changes game data
+  ---
+  duration_ms: 0.798
+  type: 'test'
+  ...
+# Subtest: stale UI instances merge opened stories and reject invalid chapter numbers
+ok 361 - stale UI instances merge opened stories and reject invalid chapter numbers
+  ---
+  duration_ms: 0.2796
+  type: 'test'
+  ...
+# Subtest: wave 12 awards one free kit without changing combat, gold or introduction
+ok 362 - wave 12 awards one free kit without changing combat, gold or introduction
+  ---
+  duration_ms: 239.8858
+  type: 'test'
+  ...
+# Subtest: upgrade needs actual boss 25 and 1,200 gold; recruitment needs level II; repeats cannot charge
+ok 363 - upgrade needs actual boss 25 and 1,200 gold; recruitment needs level II; repeats cannot charge
+  ---
+  duration_ms: 52.5904
+  type: 'test'
+  ...
+# Subtest: old schema 18 preserves actors, free plots, coins and progress; invalid new ownership is rejected
+ok 364 - old schema 18 preserves actors, free plots, coins and progress; invalid new ownership is rejected
+  ---
+  duration_ms: 140.164
+  type: 'test'
+  ...
+# Subtest: every legal pair of old settlement plots leaves a tavern site without moving either building
+ok 365 - every legal pair of old settlement plots leaves a tavern site without moving either building
+  ---
+  duration_ms: 14.4586
+  type: 'test'
+  ...
+# Subtest: tavern command persists once and rolls back coins and position on storage failure
+ok 366 - tavern command persists once and rolls back coins and position on storage failure
+  ---
+  duration_ms: 87.6321
+  type: 'test'
+  ...
+# Subtest: farm proof still works after a tavern built at nonzero combat time
+ok 367 - farm proof still works after a tavern built at nonzero combat time
+  ---
+  duration_ms: 72.5939
+  type: 'test'
+  ...
+# Subtest: schema 22 owners become II once; nonowners keep kit, old recruitment, gold and positions survive
+ok 368 - schema 22 owners become II once; nonowners keep kit, old recruitment, gold and positions survive
+  ---
+  duration_ms: 33.1527
+  type: 'test'
+  ...
+# Subtest: paid upgrade rolls back on save failure and survives reload without a second payment
+ok 369 - paid upgrade rolls back on save failure and survives reload without a second payment
+  ---
+  duration_ms: 88.2652
+  type: 'test'
+  ...
+# Subtest: companion UI explains locked Ilyra without an early recruitment offer
+ok 370 - companion UI explains locked Ilyra without an early recruitment offer
+  ---
+  duration_ms: 420.7494
+  type: 'test'
+  ...
+# Subtest: visual tiers change exactly at the approved boundaries, for all five towers
+ok 371 - visual tiers change exactly at the approved boundaries, for all five towers
+  ---
+  duration_ms: 4.2064
+  type: 'test'
+  ...
+# Subtest: high-level arrows use at most three visual copies, stagger and converge at the logical hit
+ok 372 - high-level arrows use at most three visual copies, stagger and converge at the logical hit
+  ---
+  duration_ms: 2.2919
+  type: 'test'
+  ...
+# Subtest: Frost releases on the real shot and returns to rest even at fast cooldowns
+ok 373 - Frost releases on the real shot and returns to rest even at fast cooldowns
+  ---
+  duration_ms: 0.64
+  type: 'test'
+  ...
+# Subtest: prepared lineups contain every requested skin and round-trip without a new schema
+ok 374 - prepared lineups contain every requested skin and round-trip without a new schema
+  ---
+  duration_ms: 914.3963
+  type: 'test'
+  ...
+# Subtest: every optical level survives real shots, upgrades, sales and save/reload using normal rules
+ok 375 - every optical level survives real shots, upgrades, sales and save/reload using normal rules
+  ---
+  duration_ms: 1628.754
+  type: 'test'
+  ...
+# Subtest: preview slots are unique, paused and cannot read or overwrite the main save
+ok 376 - preview slots are unique, paused and cannot read or overwrite the main save
+  ---
+  duration_ms: 54.6816
+  type: 'test'
+  ...
+# Subtest: invalid test foundations fail closed
+ok 377 - invalid test foundations fail closed
+  ---
+  duration_ms: 1.1911
+  type: 'test'
+  ...
+# Subtest: Variant B portrait framing includes the entrance and both complete tower bodies
+ok 378 - Variant B portrait framing includes the entrance and both complete tower bodies
+  ---
+  duration_ms: 2.0999
+  type: 'test'
+  ...
+# Subtest: legacy saved tower coordinates determine the frame without shifting actors to Variant B
+ok 379 - legacy saved tower coordinates determine the frame without shifting actors to Variant B
+  ---
+  duration_ms: 1.1464
+  type: 'test'
+  ...
+# Subtest: an actual Frost tower on another allowed row expands the frame instead of using a fixed position
+ok 380 - an actual Frost tower on another allowed row expands the frame instead of using a fixed position
+  ---
+  duration_ms: 0.2288
+  type: 'test'
+  ...
+# Subtest: pixel densities one and two preserve identical CSS framing and sprite scale
+ok 381 - pixel densities one and two preserve identical CSS framing and sprite scale
+  ---
+  duration_ms: 0.2494
+  type: 'test'
+  ...
+# Subtest: guided framing may zoom out to fit either axis but never zooms in beyond the normal view
+ok 382 - guided framing may zoom out to fit either axis but never zooms in beyond the normal view
+  ---
+  duration_ms: 0.2095
+  type: 'test'
+  ...
+# Subtest: scene retains an explicit construction candidate when resizing and rotating into portrait
+ok 383 - scene retains an explicit construction candidate when resizing and rotating into portrait
+  ---
+  duration_ms: 432.1035
+  type: 'test'
+  ...
+# Subtest: player pan survives tutorial completion and ordinary same-orientation resize
+ok 384 - player pan survives tutorial completion and ordinary same-orientation resize
+  ---
+  duration_ms: 204.7916
+  type: 'test'
+  ...
+# Subtest: deliberate map focus and zoom leave tutorial framing and restore normal scale
+ok 385 - deliberate map focus and zoom leave tutorial framing and restore normal scale
+  ---
+  duration_ms: 137.4298
+  type: 'test'
+  ...
+# Subtest: tutorial and overview camera viewports end at the real map on desktop and portrait
+ok 386 - tutorial and overview camera viewports end at the real map on desktop and portrait
+  ---
+  duration_ms: 118.6233
+  type: 'test'
+  ...
+# Subtest: zooming out and back uses the full available viewport without accumulating an outside margin
+ok 387 - zooming out and back uses the full available viewport without accumulating an outside margin
+  ---
+  duration_ms: 155.4303
+  type: 'test'
+  ...
+# Subtest: Frost tip and wave objective share one slot, keeping the real counter and model intact
+ok 388 - Frost tip and wave objective share one slot, keeping the real counter and model intact
+  ---
+  duration_ms: 390.7545
+  type: 'test'
+  ...
+# Subtest: moving the existing Wisp card preserves its button and event listener
+ok 389 - moving the existing Wisp card preserves its button and event listener
+  ---
+  duration_ms: 124.3868
+  type: 'test'
+  ...
+# Subtest: step 14 waits on the cleared wave, not the current attempt, and survives restoration
+ok 390 - step 14 waits on the cleared wave, not the current attempt, and survives restoration
+  ---
+  duration_ms: 167.8316
+  type: 'test'
+  ...
+# Subtest: an active lesson beats toasts, and a defeat notice beats optional discovery tips
+ok 391 - an active lesson beats toasts, and a defeat notice beats optional discovery tips
+  ---
+  duration_ms: 81.4283
+  type: 'test'
+  ...
+# Subtest: menus and placement carry the counter without a second tutorial card
+ok 392 - menus and placement carry the counter without a second tutorial card
+  ---
+  duration_ms: 82.5036
+  type: 'test'
+  ...
+# Subtest: modal suppression and ending or skipping the tutorial restore the ordinary HUD
+ok 393 - modal suppression and ending or skipping the tutorial restore the ordinary HUD
+  ---
+  duration_ms: 87.8348
+  type: 'test'
+  ...
+# Subtest: saving stages and temporarily absent presenters still show progress and an actionable next step
+ok 394 - saving stages and temporarily absent presenters still show progress and an actionable next step
+  ---
+  duration_ms: 62.5916
+  type: 'test'
+  ...
+# Subtest: compact guide retains the objective and original required action across updates
+ok 395 - compact guide retains the objective and original required action across updates
+  ---
+  duration_ms: 65.168
+  type: 'test'
+  ...
+# Subtest: compact waiting goal follows cleared waves and keeps DE/EN labels current
+ok 396 - compact waiting goal follows cleared waves and keeps DE/EN labels current
+  ---
+  duration_ms: 68.8732
+  type: 'test'
+  ...
+# Subtest: defeat notices remain readable even when ordinary tutorial help is collapsed
+ok 397 - defeat notices remain readable even when ordinary tutorial help is collapsed
+  ---
+  duration_ms: 52.84
+  type: 'test'
+  ...
+# Subtest: new recommendation uses Variant B while legacy constructor and compatibility placements stay intact
+ok 398 - new recommendation uses Variant B while legacy constructor and compatibility placements stay intact
+  ---
+  duration_ms: 166.5892
+  type: 'test'
+  ...
+# Subtest: every offered new starter cell clears wave one without Mara or another purchase
+ok 399 - every offered new starter cell clears wave one without Mara or another purchase
+  ---
+  duration_ms: 186.3967
+  type: 'test'
+  ...
+# Subtest: actual guided Variant B reaches its free Frost kit and reloads at every purchase
+ok 400 - actual guided Variant B reaches its free Frost kit and reloads at every purchase
+  ---
+  duration_ms: 68.3677
+  type: 'test'
+  ...
+# Subtest: already placed legacy starter and historical ready saves retain their location and Frost recommendation
+ok 401 - already placed legacy starter and historical ready saves retain their location and Frost recommendation
+  ---
+  duration_ms: 85.4217
+  type: 'test'
+  ...
+# Subtest: preparation validation admits only the old bounded corridor or new Variant B family
+ok 402 - preparation validation admits only the old bounded corridor or new Variant B family
+  ---
+  duration_ms: 0.8827
+  type: 'test'
+  ...
+# Subtest: multi-cell buildings snap their footprint centre to the chosen point
+ok 403 - multi-cell buildings snap their footprint centre to the chosen point
+  ---
+  duration_ms: 7.3487
+  type: 'test'
+  ...
+# Subtest: one total covers the three opening scenes and the earned building lessons
+ok 404 - one total covers the three opening scenes and the earned building lessons
+  ---
+  duration_ms: 187.6461
+  type: 'test'
+  ...
+# Subtest: discovery counts do not restart; optional lessons end the total and veterans get no new tutorial
+ok 405 - discovery counts do not restart; optional lessons end the total and veterans get no new tutorial
+  ---
+  duration_ms: 213.412
+  type: 'test'
+  ...
+# Subtest: the first upgrade resumes the same wave and survives reload without a confirmation
+ok 406 - the first upgrade resumes the same wave and survives reload without a confirmation
+  ---
+  duration_ms: 25.4051
+  type: 'test'
+  ...
+# Subtest: an older save waiting after level 2 releases only its obsolete learning pause
+ok 407 - an older save waiting after level 2 releases only its obsolete learning pause
+  ---
+  duration_ms: 23.0846
+  type: 'test'
+  ...
+# Subtest: side-facing Scorpion artwork follows travel; vertical and other sheets retain their orientation
+ok 408 - side-facing Scorpion artwork follows travel; vertical and other sheets retain their orientation
+  ---
+  duration_ms: 1.2094
+  type: 'test'
+  ...
+# Subtest: each added Frost position shares at least 60 road pixels with two existing level-one damage positions
+ok 409 - each added Frost position shares at least 60 road pixels with two existing level-one damage positions
+  ---
+  duration_ms: 13.7825
+  type: 'test'
+  ...
+# Subtest: layout-one live save migrates combat intact and reroutes Mara away from a newly reserved pad without resetting cooldown
+ok 410 - layout-one live save migrates combat intact and reroutes Mara away from a newly reserved pad without resetting cooldown
+  ---
+  duration_ms: 96.258
+  type: 'test'
+  ...
+# Subtest: all eleven historical slots survive the free-grid migration without moving the original eight
+ok 411 - all eleven historical slots survive the free-grid migration without moving the original eight
+  ---
+  duration_ms: 44.7191
+  type: 'test'
+  ...
+# Subtest: countdown describes the actual cooldown without changing battle or accepting another cast
+ok 412 - countdown describes the actual cooldown without changing battle or accepting another cast
+  ---
+  duration_ms: 222.9511
+  type: 'test'
+  ...
+# Subtest: position, walking, ready and casting labels follow the real first-volley flow
+ok 413 - position, walking, ready and casting labels follow the real first-volley flow
+  ---
+  duration_ms: 36.6016
+  type: 'test'
+  ...
+# Subtest: zero cooldown alone cannot enable aiming without a valid target or while paused
+ok 414 - zero cooldown alone cannot enable aiming without a valid target or while paused
+  ---
+  duration_ms: 32.4863
+  type: 'test'
+  ...
+# Subtest: map and menu keep identical readable status, native disabled semantics and stable DOM in both languages
+ok 415 - map and menu keep identical readable status, native disabled semantics and stable DOM in both languages
+  ---
+  duration_ms: 337.3149
+  type: 'test'
+  ...
+# Subtest: all forty historical recipes remain exact; entry, bosses, HP and old spawn clocks stay intact
+ok 416 - all forty historical recipes remain exact; entry, bosses, HP and old spawn clocks stay intact
+  ---
+  duration_ms: 4.7216
+  type: 'test'
+  ...
+# Subtest: opening recipes are reproducible in reverse order, bounded, readable and repeat every introduction promptly
+ok 417 - opening recipes are reproducible in reverse order, bounded, readable and repeat every introduction promptly
+  ---
+  duration_ms: 17.1877
+  type: 'test'
+  ...
+# Subtest: a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly
+ok 418 - a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly
+  ---
+  duration_ms: 215.8985
+  type: 'test'
+  ...
+# Subtest: both healer species share target locks, exclude each other and bosses, and resume their exact saved cast
+ok 419 - both healer species share target locks, exclude each other and bosses, and resume their exact saved cast
+  ---
+  duration_ms: 92.1029
+  type: 'test'
+  ...
+# Subtest: historical and current offline entitlements retain their exact amount and can only be claimed once
+ok 420 - historical and current offline entitlements retain their exact amount and can only be claimed once
+  ---
+  duration_ms: 2.4444
+  type: 'test'
+  ...
+# Subtest: native save boundary migrates v24 and pays its pending historical offline claim exactly once
+ok 421 - native save boundary migrates v24 and pays its pending historical offline claim exactly once
+  ---
+  duration_ms: 45.1571
+  type: 'test'
+  ...
+# Subtest: three compact original atlases have real directional clips and stable nonmirrored left views
+ok 422 - three compact original atlases have real directional clips and stable nonmirrored left views
+  ---
+  duration_ms: 5.0121
+  type: 'test'
+  ...
+# Subtest: frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+ok 423 - frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+  ---
+  duration_ms: 16.265
+  type: 'test'
+  ...
+# Subtest: larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+ok 424 - larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+  ---
+  duration_ms: 78.721
+  type: 'test'
+  ...
+# Subtest: a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules
+ok 425 - a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules
+  ---
+  duration_ms: 226.4691
+  type: 'test'
+  ...
+# Subtest: level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+ok 426 - level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+  ---
+  duration_ms: 113.5172
+  type: 'test'
+  ...
+# Subtest: old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+ok 427 - old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+  ---
+  duration_ms: 651.3729
+  type: 'test'
+  ...
+# Subtest: HP continues past the old plateau; machine guards and old level curves remain explicit
+ok 428 - HP continues past the old plateau; machine guards and old level curves remain explicit
+  ---
+  duration_ms: 46.1957
+  type: 'test'
+  ...
+# Subtest: workshop and research spend ordinary gold once, gate Frost and levels 4–6, and round-trip
+ok 429 - workshop and research spend ordinary gold once, gate Frost and levels 4–6, and round-trip
+  ---
+  duration_ms: 165.2307
+  type: 'test'
+  ...
+# Subtest: a Frost projectile retains its slow after sale and reload; expired slow restores normal speed
+ok 430 - a Frost projectile retains its slow after sale and reload; expired slow restores normal speed
+  ---
+  duration_ms: 120.4795
+  type: 'test'
+  ...
+# Subtest: Frost defense receives conservative farm proof and selling it invalidates the old proof
+ok 431 - Frost defense receives conservative farm proof and selling it invalidates the old proof
+  ---
+  duration_ms: 203.0751
+  type: 'test'
+  ...
+# Subtest: schema three preserves Mara and gold while migrating to damaged workshop and fresh live farm evidence
+ok 432 - schema three preserves Mara and gold while migrating to damaged workshop and fresh live farm evidence
+  ---
+  duration_ms: 47.0218
+  type: 'test'
+  ...
+# Subtest: malformed unlocks, Frost payloads and slow timers are rejected
+ok 433 - malformed unlocks, Frost payloads and slow timers are rejected
+  ---
+  duration_ms: 55.1701
+  type: 'test'
+  ...
+# Subtest: tutorial accepts early actions and alternative pads; replay/skip preserve economy and defense
+ok 434 - tutorial accepts early actions and alternative pads; replay/skip preserve economy and defense
+  ---
+  duration_ms: 63.5451
+  type: 'test'
+  ...
+# Subtest: real impact and construction sprites sort between back/front towers, not with HUD
+ok 435 - real impact and construction sprites sort between back/front towers, not with HUD
+  ---
+  duration_ms: 2.5062
+  type: 'test'
+  ...
+# Subtest: projectile height does not put launch behind its own tower, or hit in front of foreground row
+ok 436 - projectile height does not put launch behind its own tower, or hit in front of foreground row
+  ---
+  duration_ms: 0.3243
+  type: 'test'
+  ...
+# Subtest: Ilyra separates floor, lifted flight and impact; removing her clears all spell drawing
+ok 437 - Ilyra separates floor, lifted flight and impact; removing her clears all spell drawing
+  ---
+  duration_ms: 2.8565
+  type: 'test'
+  ...
+1..437
+# tests 437
+# suites 0
+# pass 437
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18322.0132

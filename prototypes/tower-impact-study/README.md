@@ -1,3 +1,13 @@
+# Impact-Studie · Revision 6 · Sturmlicht ergänzt
+
+[Vergleich aller fünf Türme](https://emfau88.github.io/TD/previews/tower-evolution/prototypes/tower-impact-study/?revision=6) · [Im echten Testbranch-Kampf testen](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html).
+
+Neu: Stromkontakt / Ladungsfunken / roter Blitz / Lichtbogen / Donnerschlag / Kettenkrone / Sturmnova / Meistersturm bei 1/2/3/5/10/15/20/25. Frühe Original-Sturmlicht-Atlanten erhalten, neue goldene und violettweiße Verzweigungen, gebrochene Ringe und Nachimpulse ab 5. 250–450 ms Laufzeit. Originalspalte weiterhin unveränderte niedrige Main-Grafikstufe 1. 40 vorberechnete Profile, maximal 14,06 MiB rohe Pixel. Zusätzliche Originalhashes und Atlasmetadaten in baseline-main.json.
+
+Die Zeichenoperationen aller 32 vorherigen Profile sind gegen Revision 5 identisch geprüft. 872 Vergleichs-/Sturmlichtposen, endliche Koordinaten und Alpha, 96-Pixel-Atlasgrenzen geprüft. Browservergleich und reale Kampfprüfung erfolgreich. 437/437 Spieltests und Produktionsbuild; Details, Bilder und technische Grenzen im [Sturmlicht-Bericht](../sturmlicht-evolution/README.md). Kein Main-Merge. Der untenstehende Revision-5-Abschnitt dokumentiert den früheren Vier-Turm-Stand einschließlich damaliger Messwerte.
+
+---
+
 # Impact-Studie · Revision 5 · Zusammenhängende Stein- und Scharfschützenentwicklung
 
 [Animierte Vergleichsvorschau](https://emfau88.github.io/TD/previews/tower-evolution/prototypes/tower-impact-study/?revision=5)

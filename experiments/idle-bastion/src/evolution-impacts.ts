@@ -8,15 +8,15 @@ const BASE_SCALE = [0, 0.6, 0.8, 1.6, 0.6];
 export interface EvolutionImpact { key:string; frames:readonly number[]; duration:number; level:number }
 /** Cosmetic selection uses the fired payload, including after upgrades, sale or reload. */
 export function evolutionImpact(kind:number, level:number):EvolutionImpact | undefined {
-  if (!Number.isInteger(kind) || kind < 1 || kind > 4) return undefined;
+  if (!Number.isInteger(kind) || kind < 1 || kind > 5) return undefined;
   const tier = skinLevel(level);
   return { key:`evolution-impact-r5-${kind}-${tier}`, frames:FRAMES, duration:profile(kind,tier).life/1000, level:tier };
 }
 
 /** Same ten poses and original stage-one source as the approved comparison. */
 export function paintImpactAtlas(context:CanvasRenderingContext2D, kind:number, level:number, source:HTMLImageElement | HTMLCanvasElement):void {
-  const sheet = towerSheet(kind, 1, 'Projectile - Impact');
-  const columns = source.width / sheet.width, scale = BASE_SCALE[kind], life = profile(kind,level).life;
+  const sheet = towerSheet(kind, kind===5?Math.min(3,skinLevel(level)):1, 'Projectile - Impact');
+  const columns = source.width / sheet.width, scale = kind===5?30/sheet.width:BASE_SCALE[kind], life = profile(kind,level).life;
   context.imageSmoothingEnabled = false;
   const base = (c:CanvasRenderingContext2D, progress:number) => {
     const f = sheet.frameMap[Math.min(sheet.frameMap.length-1, Math.floor(progress*sheet.frameMap.length))];
@@ -30,12 +30,12 @@ export function paintImpactAtlas(context:CanvasRenderingContext2D, kind:number, 
   }
 }
 
-/** One upload per profile while loading, never per hit. 32 fixed 960x96 textures, ~11.25 MiB raw pixels. */
+/** One upload per profile while loading, never per hit. 40 fixed 960x96 textures, ~14.06 MiB raw pixels. */
 export function prepareEvolutionImpacts(scene:Phaser.Scene):void {
-  for (const kind of [1,2,3,4]) for (const level of SKIN_LEVELS) {
+  for (const kind of [1,2,3,4,5]) for (const level of SKIN_LEVELS) {
     const impact=evolutionImpact(kind,level)!;
     if (scene.textures.exists(impact.key)) continue;
-    const original=towerSheet(kind,1,'Projectile - Impact');
+    const original=towerSheet(kind,kind===5?Math.min(3,skinLevel(level)):1,'Projectile - Impact');
     if (!scene.textures.exists(original.key)) throw new Error(`Missing original impact: ${original.key}`);
     const source=scene.textures.get(original.key).getSourceImage() as HTMLImageElement;
     const canvas=document.createElement('canvas');

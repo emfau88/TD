@@ -1,11 +1,12 @@
-import {LEVELS,NAMES,profile,drawImpact,drawTrail,IMPACT_FRAME_SIZE,IMPACT_FRAME_COUNT} from './effects.js?v=5';
+import {LEVELS,NAMES,profile,drawImpact,drawTrail,IMPACT_FRAME_SIZE,IMPACT_FRAME_COUNT} from './effects.js?v=6';
 const $=id=>document.getElementById(id),images=new Map(),visible=new Set(),effectCache=new Map();
 const FX_SIZE=IMPACT_FRAME_SIZE,FX_FRAMES=IMPACT_FRAME_COUNT;
 const kinds=[
  {id:1,name:'Waldwächter',color:'#e3d6a5',note:'Holz und Stahl → Silberfächer → Goldspaltung → Smaragdsalven.',scale:.6,duration:500},
  {id:2,name:'Frostkristall',color:'#ace7ec',note:'Eisbruch → Kristallkrone → Prismenkreuz → Aurorabruch.',scale:.8,duration:500},
  {id:3,name:'Steinschleuder',color:'#dec093',note:'Steinbruch → Glutstoß → Feuerstoß → Feuereruption → Inferno.',scale:1.6,duration:500},
- {id:4,name:'Scharfschütze',color:'#c7e791',note:'Kontaktstern → Jadestern → Doppelimpuls → Präzisionsnova.',scale:.6,duration:350}
+ {id:4,name:'Scharfschütze',color:'#c7e791',note:'Kontaktstern → Jadestern → Doppelimpuls → Präzisionsnova.',scale:.6,duration:350},
+ {id:5,name:'Sturmlicht',color:'#dec2fc',note:'Lichtbogen → Donnerschlag → Kettenkrone → Sturmnova → Meistersturm.',scale:30/64,duration:250}
 ];
 let baseline,shotFrames,views=[],ready=false,last=null;
 const motion=matchMedia('(prefers-reduced-motion: reduce)');
@@ -35,10 +36,11 @@ function enemy(c,x,y,clock){
  c.drawImage(im,f%cols*64,Math.floor(f/cols)*64,64,64,Math.round(x-32*s),Math.round(y-32*s),64*s,64*s);
  pixel(c,x-12,y-19,24,3,'#23322d');pixel(c,x-11,y-18,22,1,'#a9d37c');
 }
-function base(c,k,progress){
+function base(c,k,progress,level=0){
  if(progress<0||progress>=1)return;
- const m=baseline.sources.find(r=>r.kind===k.id).impact,im=images.get('low-impact-'+k.id),cols=im.width/m.width;
- const f=m.frameMap[Math.min(m.frameMap.length-1,Math.floor(progress*m.frameMap.length))],s=k.scale;
+ const record=baseline.sources.find(r=>r.kind===k.id),stage=k.id===5&&level>1?Math.min(3,level):1;
+ const m=stage>1?record.impactStages[stage]:record.impact,im=images.get(stage>1?'storm-impact-'+stage:'low-impact-'+k.id),cols=im.width/m.width;
+ const f=m.frameMap[Math.min(m.frameMap.length-1,Math.floor(progress*m.frameMap.length))],s=k.id===5?30/m.width:k.scale;
  c.drawImage(im,f%cols*m.width,Math.floor(f/cols)*m.height,m.width,m.height,-m.width*s/2,-m.height*s/2,m.width*s,m.height*s);
 }
 function atlasFor(k,level){
@@ -47,7 +49,7 @@ function atlasFor(k,level){
  const ctx=atlas.getContext('2d');ctx.imageSmoothingEnabled=false;const life=profile(k.id,level).life;
  for(let frame=0;frame<FX_FRAMES;frame++){
   ctx.save();ctx.translate(frame*FX_SIZE+FX_SIZE/2,FX_SIZE/2);
-  drawImpact(ctx,k.id,level,(frame+.5)/FX_FRAMES*life,(cc,t)=>base(cc,k,t));
+  drawImpact(ctx,k.id,level,(frame+.5)/FX_FRAMES*life,(cc,t)=>base(cc,k,t,level));
   ctx.restore();
  }
  effectCache.set(key,atlas);return atlas;
@@ -59,7 +61,7 @@ function impact(c,k,level,x,y,age){
  c.drawImage(atlas,frame*FX_SIZE,0,FX_SIZE,FX_SIZE,Math.round(x-FX_SIZE/2),Math.round(y-FX_SIZE/2),FX_SIZE,FX_SIZE);
 }
 function shot(c,k,level,x,y,age){
- const im=images.get(level===0?'low-shot-'+k.id:'shot-'+k.id+'-'+level),s=k.id===1?.45:k.id===2?.5:.85;
+ const im=images.get(level===0?'low-shot-'+k.id:'shot-'+k.id+'-'+level),s=k.id===5&&(level===0||level<=3)?24/(level===0?32:level*32):k.id===1?.45:k.id===2?.5:.85;
  if(level>0)drawTrail(c,k.id,level,x,y,.96,-.28);
  c.save();c.translate(Math.round(x),Math.round(y));c.rotate(Math.PI/2-.28);
  const m=level===0?baseline.sources.find(r=>r.kind===k.id).shot:shotFrames[k.id+'-'+level];
@@ -110,7 +112,7 @@ $('benchmark').onclick=async()=>{
    for(let frame=0;frame<40;frame++){
     if(frame%8===0)await new Promise(requestAnimationFrame);
     const start=performance.now();c.clearRect(0,0,600,400);
-    for(let n=0;n<96;n++){const k=kinds[n%4];impact(c,k,level,25+(n%12)*50,25+Math.floor(n/12)*48,(n*17+frame*11)%profile(k.id,level).life)}
+    for(let n=0;n<96;n++){const k=kinds[n%kinds.length];impact(c,k,level,25+(n%12)*50,25+Math.floor(n/12)*48,(n*17+frame*11)%profile(k.id,level).life)}
     if(frame>=8)samples.push(performance.now()-start);
    }
    samples.sort((a,b)=>a-b);result.push('L'+level+': Ø '+(samples.reduce((a,b)=>a+b)/samples.length).toFixed(2)+' ms · P95 '+samples[Math.ceil(samples.length*.95)-1].toFixed(2)+' ms');
@@ -123,5 +125,5 @@ makeRows();
 Promise.all([
  fetch('./baseline-main.json').then(r=>{if(!r.ok)throw Error('Originaldaten fehlen');return r.json()}).then(data=>{baseline=data}),
  fetch('./shot-frames.json').then(r=>{if(!r.ok)throw Error('Projektilframes fehlen');return r.json()}).then(data=>{shotFrames=data}),
- ...['terrain','enemy',...kinds.flatMap(k=>['low-impact-'+k.id,'low-shot-'+k.id,...LEVELS.map(level=>'shot-'+k.id+'-'+level)])].map(load)
+ ...['terrain','enemy','storm-impact-2','storm-impact-3',...kinds.flatMap(k=>['low-impact-'+k.id,'low-shot-'+k.id,...LEVELS.map(level=>'shot-'+k.id+'-'+level)])].map(load)
 ]).then(()=>{ready=true;render(true);requestAnimationFrame(loop)}).catch(e=>{$('status').textContent=e.message+' – bitte Seite neu laden.';console.error(e)});

@@ -135,3 +135,28 @@ Geänderte Laufzeitstellen: `src/evolution-impacts.ts`, `src/combat-effects.ts`,
 
 
 ![Öffentliche Testseite: Level 25 im echten Kampf](impact-live25-desktop.png)
+
+
+## Sturmlicht als fünfte Reihe · 30.10.2026
+
+Nur `codex/tower-evolution-playtest`, Ausgangscommit `dc3577b`, Main bleibt `93703cb66e369ed7f3a724f0e42575775cc12bc4`. Acht Skins **1/2/3/5/10/15/20/25**, gleiche 57,96 Kartenpixel Gebäudehöhe, getrennte Basis/Emitter, Originalangriffe 1–3, neue korrekt zur Flugrichtung ausgerichtete Projektile und kurze Abschussreaktionen ab 5. Eigene farbige Kettenblitze und elektrische Impacts für alle acht Stufen. Die Flugbahn wird an jeder echten Kettenetappe aktualisiert; keine zusätzlichen Treffer oder veränderten Kampfwerte.
+
+- **437/437 Tests**, keine ausgelassenen Tests; `storm-tests.log`. TypeScript und Produktionsbuild erfolgreich, `storm-build.log`.
+- 54 Szenario-/Stufenkombinationen und alle 40 optischen Einzelstufen mit echten Schüssen, Upgrade/Verkauf/Save-Roundtrip; zusätzliche Sturmlicht-Ketten-, Reload-, Liniengeometrie- und Effektbereinigungstests. Kettenzahl und Schadensabfall unverändert.
+- Assetprüfung aller acht Stufen und Originalhashes bestanden. 872 Effektposen und 265.576 Zeichenaufrufe geprüft; eigene Sturmlicht-Formen bleiben innerhalb ihrer 96-Pixel-Frames. Alle Zeichenoperationen der übrigen vier Reihen sind exakt identisch zum vorher veröffentlichten Stand.
+- Echter lokaler Produktionsbuild: Desktop 1280×720, 390×844 und 320×568. Alle acht Skins in zwei Reihen sichtbar, Angriffe im Kampf, bis Welle 43 gespielt. Pause/Reload hält **104.282 Gold, Welle 43, 14 verbleibende Gegner und 20/20 Kernleben**; Rückkehr 0 Offlinegold, Türme erhalten. Neue Studie mit allen Stufen und hohen Impacts angesehen. Keine Browserwarnungen oder JavaScript-Fehler.
+- Nicht jede einzelne Stufe wurde separat manuell gestartet; vollständige Matrix automatisiert. Viewport-Emulation, kein physisches Smartphone und kein Gesamtspiel-GPU-Benchmark. Zwei unmittelbar nach UI-Wechseln erstellte Aufnahmen waren noch alte Frames und wurden nach sichtbarer Aktualisierung ersetzt. Ein Label-Selektor der Vergleichsansicht schlug fehl; Auswahl über vorhandene DOM-ID erfolgreich.
+- Budget: 40 Impact-Atlanten ~14,06 MiB rohe Pixel, zusätzliche Sturmlicht-Abschussatlanten ~2,11 MiB; Verwaltungs-/GPU-Kopien nicht enthalten. Bestehende Grenzen 96 Treffer-Sprites / 48 kurze Kettenlinien erhalten.
+- Neue Quellen und Prompts: [Sturmlicht-README](../../../../prototypes/sturmlicht-evolution/README.md). Hauptänderungen: tower-evolution.ts, evolution-view.ts, storm-visuals.ts, evolution-impacts.ts, combat-effects.ts, tower-test-probes.ts, Launcher, Tests und gemeinsame Vergleichsstudie. Keine Änderungen an battle.ts, Speicherung, Offline-Regeln, Originalassets oder Kongregate-Export.
+
+Kritische Sichtbewertung: kompakte, gleich hohe Gebäude; neue Materialien und Spulen tragen die Entwicklung. 20/25 bleiben bewusst verwandt, Meisterring und elektrische Verzweigungen unterscheiden sie. Auf 320 px in der Gesamtansicht verschwinden Details; größere Farbflächen und vorhandener Zoom bleiben lesbar. Starke gleichzeitige Treffer verdecken Gegner kurz, kein dauerhaftes Leuchten oder großer Flächenblitz. Gestalterische Nutzerabnahme steht aus.
+
+![Alle acht Sturmlicht-Skins auf Desktop](storm-all-desktop.png)
+
+| 390×844: echter pausierter Kettenangriff | 320×568 nach Reload |
+|---|---|
+| ![Sturmlicht-Kampf](storm-390-paused.png) | ![Kompakte Sturmlicht-Türme](storm-all-320.png) |
+
+![Hohe Sturmlicht-Impacts in der separaten Studie](storm-impacts.png)
+
+Sturmlicht-Commit und Pages-Veröffentlichungsnachweis folgen nach Prüfung.

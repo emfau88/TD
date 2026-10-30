@@ -143,6 +143,97 @@
         "source": "public/assets/Tower 04 - Level 01 - Projectile - Impact.png",
         "sha256": "9000dbbb0b7a9872fe6adf5a605a1baf3b9c58352cab9e1268ab5add4d0be915"
       }
+    },
+    {
+      "kind": 5,
+      "shot": {
+        "width": 32,
+        "height": 32,
+        "frameMap": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "tags": [],
+        "asset": "low-shot-5.png",
+        "source": "public/assets/Tower 05 - Level 01 - Projectile.png",
+        "sha256": "bb4e9dd655287e157d4a4ae36d873fc32e41f6fb33f4884a0c42ca56f50fc07d"
+      },
+      "impact": {
+        "width": 64,
+        "height": 64,
+        "frameMap": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "tags": [],
+        "asset": "low-impact-5.png",
+        "source": "public/assets/Tower 05 - Level 01 - Projectile - Impact.png",
+        "sha256": "d034056eb0606b924b65bb1677237b845bc9f19113188bc9c50c90afbea066d9"
+      },
+      "impactStages": {
+        "2": {
+          "width": 64,
+          "height": 64,
+          "frameMap": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "tags": [],
+          "asset": "storm-impact-2.png",
+          "source": "public/assets/Tower 05 - Level 02 - Projectile - Impact.png",
+          "sha256": "0c62a3b0392d5f096afe46ca3bd8bb5ba1bf44b88c91990c70f98468eed041bf"
+        },
+        "3": {
+          "width": 96,
+          "height": 96,
+          "frameMap": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "tags": [],
+          "asset": "storm-impact-3.png",
+          "source": "public/assets/Tower 05 - Level 03 - Projectile - Impact.png",
+          "sha256": "7b66d332bd336c97fa79d999a59d3b35263ef54b0918062e8b75809ab0b01f7a"
+        }
+      }
     }
   ],
   "additionalDesignSource": {

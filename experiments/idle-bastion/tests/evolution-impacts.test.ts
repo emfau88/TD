@@ -18,23 +18,24 @@ function renderer() {
       setDepth(n:number){this.depth=n;return this;},setFrame(n:number){this.frame=n;return this;},destroy(){this.destroyed=true;}};
     return sprite;
   }
-  return {images,scene:{add:{image:(x:number,y:number,key:string,frame:number)=>{const sprite=image(x,y,key,frame);images.push(sprite);return sprite;}}} as unknown as Phaser.Scene};
+  const graphics=()=>({setDepth(){return this;},lineStyle(){return this;},beginPath(){return this;},moveTo(){return this;},lineTo(){return this;},strokePath(){return this;},setAlpha(){return this;},destroy(){}});
+  return {images,scene:{add:{graphics,image:(x:number,y:number,key:string,frame:number)=>{const sprite=image(x,y,key,frame);images.push(sprite);return sprite;}}} as unknown as Phaser.Scene};
 }
 const hit=(kind:number,level:number,uid=1,x=200,y=220):BattleEvent=>({type:'hit',shot:{uid,kind,level} as Shot,x,y});
 
-test('impact thresholds match skins, retain level 25 above the cap and leave Stormlight alone',()=>{
-  for(const kind of [1,2,3,4])for(let level=1;level<=120;level++){
+test('impact thresholds match skins, retain level 25 above the cap for all five towers',()=>{
+  for(const kind of [1,2,3,4,5])for(let level=1;level<=120;level++){
     const expected=[...SKIN_LEVELS].reverse().find(n=>n<=level)!;
     const fx=evolutionImpact(kind,level)!;
     assert.equal(fx.level,expected);assert.equal(fx.key,`evolution-impact-r5-${kind}-${expected}`);
-    assert.equal(fx.frames.length,10);assert.ok(fx.duration>=.3&&fx.duration<=.55);
+    assert.equal(fx.frames.length,10);assert.ok(fx.duration>=(kind===5?.25:.3)&&fx.duration<=.55);
   }
-  assert.equal(evolutionImpact(5,25),undefined);
+  assert.equal(evolutionImpact(6,25),undefined);
 });
 
-test('all 32 textures prepare once, with bounded frames and no per-hit canvas allocation',()=>{
+test('all 40 textures prepare once, with bounded frames and no per-hit canvas allocation',()=>{
   const textures=new Map<string,unknown>(),frames:number[][]=[];let canvases=0,originalDraws=0;
-  for(const kind of [1,2,3,4])textures.set(towerSheet(kind,1,'Projectile - Impact').key,{getSourceImage:()=>({width:512,height:128})});
+  for(const kind of [1,2,3,4,5])for(const stage of (kind===5?[1,2,3]:[1]))textures.set(towerSheet(kind,stage,'Projectile - Impact').key,{getSourceImage:()=>({width:576,height:192})});
   const context={save(){},restore(){},scale(){},translate(){},fillRect(){},drawImage(...args:unknown[]){
     assert.equal(args.length,9);assert.ok(args.slice(1).every(Number.isFinite));originalDraws++;
   }};
@@ -46,7 +47,7 @@ test('all 32 textures prepare once, with bounded frames and no per-hit canvas al
   }}} as unknown as Phaser.Scene;
   try { prepareEvolutionImpacts(scene);prepareEvolutionImpacts(scene); }
   finally { if(doc)Object.defineProperty(globalThis,'document',doc);else delete (globalThis as {document?:unknown}).document; }
-  assert.equal(canvases,32);assert.equal(frames.length,320);assert.ok(originalDraws>0);
+  assert.equal(canvases,40);assert.equal(frames.length,400);assert.ok(originalDraws>0);
   assert.ok(frames.every(([frame,source,x,y,w,h])=>source===0&&x===frame*96&&y===0&&w===96&&h===96));
 });
 
@@ -71,17 +72,17 @@ test('impact timing follows simulation pause, expiry and rollback, with existing
   assert.equal(images.filter(i=>!i.destroyed).length,96);fx.destroy();assert.ok(images.every(i=>i.destroyed));
 });
 
-test('other tower effects and construction retain their original textures and duration',()=>{
+test('Stormlight uses its new duration while construction retains the original lifetime',()=>{
   const {scene,images}=renderer(),fx=new CombatEffects(scene);
   fx.accept([hit(5,20),{type:'build',tower:{x:200,y:260} as never}],1);
-  assert.equal(images[0].key,towerSheet(5,3,'Projectile - Impact').key);
+  assert.equal(images[0].key,evolutionImpact(5,20)!.key);
   assert.equal(images[1].depth,worldEffectDepth(260));
-  fx.update(1.26,new Set(),new Set());assert.equal(images[0].destroyed,true);assert.equal(images[1].destroyed,false);
+  fx.update(1.42,new Set(),new Set());assert.equal(images[0].destroyed,true);assert.equal(images[1].destroyed,false);
 });
 
-test('all four towers at all eight tiers trigger their impact in real combat without mutating the save',()=>{
+test('all five towers at all eight tiers trigger their impact in real combat without mutating the save',()=>{
   const earned=JSON.parse(readFileSync(new URL('../../../artifacts/idle-bastion/acceptance/wave-rework-v2/earned-balanced-late.json',import.meta.url),'utf8'));
-  for(const [index,scenario] of (['warden','frost','slinger','sniper'] as const).entries())for(const level of SKIN_LEVELS){
+  for(const [index,scenario] of (['warden','frost','slinger','sniper','storm'] as const).entries())for(const level of SKIN_LEVELS){
     const b=createTowerProbe(scenario,earned,level),kind=index+1;let events:BattleEvent[]=[];
     for(let tick=0;tick<1200;tick++){b.update(.025);events=b.drainEvents();if(events.some(e=>e.type==='hit'&&e.shot?.kind===kind&&e.shot.level===level))break;}
     assert.ok(events.some(e=>e.type==='hit'&&e.shot?.kind===kind&&e.shot.level===level),`${scenario} ${level} hits`);

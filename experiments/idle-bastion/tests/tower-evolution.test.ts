@@ -8,12 +8,12 @@ import { SKIN_LEVELS, skinLevel, evolutionSkin, arrowCopies, frostAnimationTime,
 import { createTowerProbe, saveTowerProbe } from '../src/tower-test-probes';
 const earned = JSON.parse(readFileSync(new URL('../../../artifacts/idle-bastion/acceptance/wave-rework-v2/earned-balanced-late.json', import.meta.url),'utf8'));
 
-test('visual tiers change exactly at the approved boundaries, only for the four towers',()=>{
+test('visual tiers change exactly at the approved boundaries, for all five towers',()=>{
  for(let level=1;level<=120;level++){
   const expected=[...SKIN_LEVELS].reverse().find(n=>level>=n)!;
   assert.equal(skinLevel(level),expected);
-  for(const kind of [1,2,3,4])assert.equal(evolutionSkin(kind,level)?.level,expected);
-  for(const kind of [5])assert.equal(evolutionSkin(kind,level),undefined);
+  for(const kind of [1,2,3,4,5])assert.equal(evolutionSkin(kind,level)?.level,expected);
+  for(const kind of [0,6])assert.equal(evolutionSkin(kind,level),undefined);
  }
 });
 test('high-level arrows use at most three visual copies, stagger and converge at the logical hit',()=>{
@@ -36,11 +36,11 @@ test('Frost releases on the real shot and returns to rest even at fast cooldowns
  }
 });
 test('prepared lineups contain every requested skin and round-trip without a new schema',()=>{
- for(const scenario of ['mixed','warden','frost','slinger','sniper'] as const)for(const level of ['all',...SKIN_LEVELS] as const){
+ for(const scenario of ['mixed','warden','frost','slinger','sniper','storm'] as const)for(const level of ['all',...SKIN_LEVELS] as const){
   const b=createTowerProbe(scenario,earned,level), saved=b.snapshot();
   assert.deepEqual(IdleBattle.restore(saved)?.snapshot(),saved);
   if(level==='all')assert.deepEqual([...new Set(b.towers.map(t=>t.level))].sort((a,c)=>a-c),SKIN_LEVELS);
-  else assert.equal(b.towers.filter(t=>t.level===level).length>=(scenario==='mixed'?4:1),true);
+  else assert.equal(b.towers.filter(t=>t.level===level).length>=(scenario==='mixed'?5:1),true);
   assert.ok(b.towers.every(t=>stats(t).damage>0));
   assert.ok(b.enemies.some(e=>e.x>=220));
   assert.equal(b.shots.length,0,'preview pauses before the first tower fires');
@@ -48,15 +48,15 @@ test('prepared lineups contain every requested skin and round-trip without a new
  }
 });
 test('every optical level survives real shots, upgrades, sales and save/reload using normal rules',()=>{
- for(const scenario of ['warden','frost','slinger','sniper'] as const)for(const level of SKIN_LEVELS){
-  const b=createTowerProbe(scenario,earned,level), before=b.snapshot(), kind=scenario==='warden'?1:scenario==='frost'?2:scenario==='slinger'?3:4;
+ for(const scenario of ['warden','frost','slinger','sniper','storm'] as const)for(const level of SKIN_LEVELS){
+  const b=createTowerProbe(scenario,earned,level), before=b.snapshot(), kind=scenario==='warden'?1:scenario==='frost'?2:scenario==='slinger'?3:scenario==='sniper'?4:5;
   let fires=0;
   for(let i=0;i<600;i++){b.update(.025);fires+=b.drainEvents().filter(e=>e.type==='fire'&&e.shot?.kind===kind&&e.shot.level===level).length;}
   assert.ok(fires>0,`${scenario} ${level} must actually shoot`);assert.ok(b.elapsed>before.elapsed);
   const copy=IdleBattle.restore(b.snapshot())!;assert.ok(copy);
   assert.deepEqual(copy.snapshot(),b.snapshot());
   copy.gold += 1_000_000; copy.earned += 1_000_000; // Test-only budget for a real 25→26 purchase.
-  assert.ok(copy.upgrade(copy.towers[0].uid));
+  assert.ok(copy.upgrade(copy.towers.find(t=>t.def.id===kind&&t.level===level)!.uid));
   const disposable=copy.towers.find(t=>!t.protected)??copy.build(copy.layout.towerPads.find(p=>copy.canBuild(p.id,1))!.id,1)!;
   assert.ok(copy.sell(disposable.uid));
   assert.ok(IdleBattle.restore(copy.snapshot()));

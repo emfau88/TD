@@ -5,9 +5,11 @@ export const NAMES={
  1:['Pfeilkontakt','Holzsplitter','Stahlsplitter','Kerbsplitter','Silberfächer','Goldspaltung','Smaragdsalve','Meistersalve'],
  2:['Frostkontakt','Eissplitter','Eisfunken','Eisbruch','Kristallkrone','Prismenkreuz','Polarstern','Aurorabruch'],
  3:['Steinkontakt','Steinsplitter','Schwerer Treffer','Steinbruch','Glutstoß','Feuerstoß','Feuereruption','Inferno'],
+ 5:['Stromkontakt','Ladungsfunken','Roter Blitz','Lichtbogen','Donnerschlag','Kettenkrone','Sturmnova','Meistersturm'],
  4:['Kontaktstern','Grüne Funken','Scharfer Kontakt','Fokusstern','Jadestern','Doppelimpuls','Präzisionsnova','Meistertreffer']
 };
 const PALETTES={
+ 5:[['#42788d','#8edce9','#efffff'],['#795b80','#df9bb4','#fff0f7'],['#8e3448','#ed635d','#fff0d9'],['#8e3448','#ff7961','#fff5df'],['#98622d','#ffc165','#fff8df'],['#997b36','#ffdf7d','#ffffe8'],['#7652a5','#c1a4fa','#fff8d8'],['#8661b0','#e0bcff','#fffce6']],
  1:[['#625c4e','#cad1bb','#f7f0cc'],['#644a30','#c69b62','#f5d9a1'],['#465e66','#c8e2db','#f8ffed'],['#61472d','#d2a567','#ffe5b1'],['#3e6580','#b9dfe9','#f5ffff'],['#81542c','#f5c85e','#fff1b4'],['#276553','#72e6b0','#ffdf87'],['#7f5e28','#f8d774','#f7ffe4']],
  2:[['#428399','#9ce0e7','#eaffff'],['#3f869f','#8ad5e9','#e6ffff'],['#347eab','#78d1ed','#f4ffff'],['#2b779e','#76cee6','#e4ffff'],['#346b99','#a0dff6','#f6ffff'],['#304b91','#75bff2','#d9fbff'],['#355480','#a8e6e8','#f5ffff'],['#655095','#b0dcfa','#f8ffff']],
  3:[['#70534b','#c7a273','#f3d7a0'],['#75533b','#d3ae7c','#f9df9f'],['#734f39','#d9a568','#ffe1a1'],['#574938','#b59464','#efcd8e'],['#803f2b','#ec8d38','#ffe5a0'],['#873134','#f15d32','#ffe0a0'],['#8e3327','#ff9238','#fff2b2'],['#9b3827','#ffc555','#fffbe0']],
@@ -15,7 +17,7 @@ const PALETTES={
 };
 export function profile(kind,level){
  const i=Math.max(0,LEVELS.indexOf(level));
- return {i,life:kind===4?[350,370,390,420,450,480,520,550][i]:[300,320,350,380,420,450,480,520][i]+(kind===3?30:0),
+ return {i,life:kind===5?[250,270,290,320,350,380,410,450][i]:kind===4?[350,370,390,420,450,480,520,550][i]:[300,320,350,380,420,450,480,520][i]+(kind===3?30:0),
   scale:.85+i*.05,count:[0,2,3,4,6,8,10,12][i],radius:[7,8,10,12,15,18,21,24][i],
   trail:[0,1,1,2,3,4,5,6][i],colors:PALETTES[kind][i],name:NAMES[kind][i]};
 }
@@ -100,7 +102,7 @@ export function drawImpact(c,kind,level,age,base){
     if(i===7&&age>135)brokenRing(c,18+u*16,8,colors,.5,14);
    }
   }
- }else{
+ }else if(kind===4){
   // Every tier keeps the original contact star and builds on the same jade piercing axis.
   const tier=i-3,length=[17,21,25,29,33][tier],width=[2,3,4,5,6][tier],axis=-.2;
   c.save();c.scale(p.scale,p.scale);base(c,t);c.restore();
@@ -123,6 +125,27 @@ export function drawImpact(c,kind,level,age,base){
   }
   c.globalAlpha=fade;
   diamond(c,0,0,2+(i-3)*.6,colors[2]);
+ }
+
+ if(kind===5){
+  // Short jagged discharges retain a clear contact point; higher tiers add forks and a delayed pulse.
+  const arms=[0,0,0,3,4,5,6,8][i],reach=[0,0,0,13,16,19,22,25][i];
+  diamond(c,0,0,Math.max(1,5-t*4),colors[2]);
+  for(let j=0;j<arms;j++){
+   const a=j/arms*Math.PI*2+.25,dx=Math.cos(a),dy=Math.sin(a),nx=-dy,ny=dx;
+   let x=0,y=0;
+   for(let k=1;k<=4;k++){
+    const dist=reach*k/4*(.7+Math.sin(t*Math.PI)*.3),bend=k===4?0:(k%2?1:-1)*(2+i*.4);
+    const xx=dx*dist+nx*bend,yy=dy*dist+ny*bend;
+    ray(c,x,y,xx,yy,colors[1],i>=6?3:2);ray(c,x,y,xx,yy,colors[2]);x=xx;y=yy;
+    if(i>=5&&k===3)ray(c,x,y,x+nx*(4+i-5)+dx*2,y+ny*(4+i-5)+dy*2,colors[1]);
+   }
+  }
+  if(i>=4&&age>55&&t<.7)brokenRing(c,9+t*(10+i),3,colors,.2,8+i);
+  if(i>=6&&age>110&&age<310){
+   c.globalAlpha=(1-(age-110)/200)*.8;diamond(c,0,0,i===7?5:3,colors[2]);
+   if(i===7)for(let j=0;j<4;j++){const a=j*Math.PI/2+.6;ray(c,Math.cos(a)*9,Math.sin(a)*9,Math.cos(a)*25,Math.sin(a)*25,colors[2],2)}
+  }
  }
 
  extras(c,kind,p,t);c.restore();

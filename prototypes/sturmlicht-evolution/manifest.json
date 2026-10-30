@@ -1,0 +1,115 @@
+{
+  "levels": [
+    {
+      "kind": 5,
+      "level": 1,
+      "weaponY": -14,
+      "originY": 0.8,
+      "weaponScale": 0.63,
+      "originalStage": 1,
+      "base": "assets/compact/level-1-base.png",
+      "weapon": "assets/compact/level-1-weapon.png",
+      "projectile": "assets/compact/level-1-projectile.png"
+    },
+    {
+      "kind": 5,
+      "level": 2,
+      "weaponY": -14,
+      "originY": 0.8,
+      "weaponScale": 0.63,
+      "originalStage": 2,
+      "base": "assets/compact/level-2-base.png",
+      "weapon": "assets/compact/level-2-weapon.png",
+      "projectile": "assets/compact/level-2-projectile.png"
+    },
+    {
+      "kind": 5,
+      "level": 3,
+      "weaponY": -14,
+      "originY": 0.8,
+      "weaponScale": 0.63,
+      "originalStage": 3,
+      "base": "assets/compact/level-3-base.png",
+      "weapon": "assets/compact/level-3-weapon.png",
+      "projectile": "assets/compact/level-3-projectile.png"
+    },
+    {
+      "kind": 5,
+      "level": 5,
+      "weaponY": -14,
+      "originY": 0.8,
+      "weaponScale": 0.63,
+      "originalStage": 0,
+      "base": "assets/compact/level-5-base.png",
+      "weapon": "assets/compact/level-5-weapon.png",
+      "projectile": "assets/compact/level-5-projectile.png"
+    },
+    {
+      "kind": 5,
+      "level": 10,
+      "weaponY": -14,
+      "originY": 0.8,
+      "weaponScale": 0.63,
+      "originalStage": 0,
+      "base": "assets/compact/level-10-base.png",
+      "weapon": "assets/compact/level-10-weapon.png",
+      "projectile": "assets/compact/level-10-projectile.png"
+    },
+    {
+      "kind": 5,
+      "level": 15,
+      "weaponY": -14,
+      "originY": 0.8,
+      "weaponScale": 0.63,
+      "originalStage": 0,
+      "base": "assets/compact/level-15-base.png",
+      "weapon": "assets/compact/level-15-weapon.png",
+      "projectile": "assets/compact/level-15-projectile.png"
+    },
+    {
+      "kind": 5,
+      "level": 20,
+      "weaponY": -14,
+      "originY": 0.8,
+      "weaponScale": 0.63,
+      "originalStage": 0,
+      "base": "assets/compact/level-20-base.png",
+      "weapon": "assets/compact/level-20-weapon.png",
+      "projectile": "assets/compact/level-20-projectile.png"
+    },
+    {
+      "kind": 5,
+      "level": 25,
+      "weaponY": -14,
+      "originY": 0.8,
+      "weaponScale": 0.63,
+      "originalStage": 0,
+      "base": "assets/compact/level-25-base.png",
+      "weapon": "assets/compact/level-25-weapon.png",
+      "projectile": "assets/compact/level-25-projectile.png"
+    }
+  ],
+  "scale": 0.63,
+  "nativeBase": [
+    64,
+    128
+  ],
+  "nativeWeapon": [
+    96,
+    96
+  ],
+  "baseY": 13,
+  "originalHashes": {
+    "Tower 05 - Level 01 - Projectile - Impact.png": "d034056eb0606b924b65bb1677237b845bc9f19113188bc9c50c90afbea066d9",
+    "Tower 05 - Level 01 - Projectile.png": "bb4e9dd655287e157d4a4ae36d873fc32e41f6fb33f4884a0c42ca56f50fc07d",
+    "Tower 05 - Level 01 - Weapon.png": "3cca00c101d2fd8bc2009347850ba0b3847212b8bf3ca0c55dd0ce17ae57e59f",
+    "Tower 05 - Level 02 - Projectile - Impact.png": "0c62a3b0392d5f096afe46ca3bd8bb5ba1bf44b88c91990c70f98468eed041bf",
+    "Tower 05 - Level 02 - Projectile.png": "856dcd29138ae9652c8e207ca599cc327c92a12373789fec9cab5fe7568d782d",
+    "Tower 05 - Level 02 - Weapon.png": "1eae710ffdf29b9b71b5a072ec5246fbb65a615737d61a1f1a498bccd63bdbfb",
+    "Tower 05 - Level 03 - Projectile - Impact.png": "7b66d332bd336c97fa79d999a59d3b35263ef54b0918062e8b75809ab0b01f7a",
+    "Tower 05 - Level 03 - Projectile.png": "51ec7a6de71f9318bb703820d0e9b236e51852a5b90669e9c702cfb4e81a957f",
+    "Tower 05 - Level 03 - Weapon.png": "d776d6f7e5b3dde5ce6ae08edee828b9bbe4548ea8eaeae85820819db61daa17",
+    "Tower 05.png": "f2822cd0ac2f2823e430a753c2a8dcb91e5d0e6646fc313dd5204333280abd6b"
+  },
+  "provenance": "Original stages 1\u20133, lower facade shortened; original weapon frames retained; upright emitter, same .63 scale for every level. Built-in Imagegen parts for 5\u201325; nearest-neighbour native-grid packaging; new projectiles normalized to the upward-facing renderer axis; no color filters or original overwrites."
+}

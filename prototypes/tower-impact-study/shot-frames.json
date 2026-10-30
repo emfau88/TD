@@ -23,5 +23,20 @@
     "width": 32,
     "height": 32,
     "frames": 5
+  },
+  "5-1": {
+    "width": 32,
+    "height": 32,
+    "frames": 12
+  },
+  "5-2": {
+    "width": 64,
+    "height": 64,
+    "frames": 12
+  },
+  "5-3": {
+    "width": 96,
+    "height": 96,
+    "frames": 12
   }
 }
