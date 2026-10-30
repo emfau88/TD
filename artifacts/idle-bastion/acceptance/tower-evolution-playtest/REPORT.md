@@ -164,3 +164,8 @@ Kritische Sichtbewertung: kompakte, gleich hohe Gebäude; neue Materialien und S
 Öffentliche Testauswahl mit fünf Türmen und Level 25 gestartet; Sturmlicht im Kampf bis Welle 42, Blitze und Impacts sichtbar. Am Ende pausiert: 102.249 Gold, 10 Gegner, 20/20 Kernleben. Keine Browserwarnungen oder JavaScript-Fehler. Der anschließende Abschlusscommit enthält nur Dokumentation, Metadaten und diesen Screenshot; veröffentlichter Spielcode bleibt `3bdb038`. Kein Main-Merge, kein Export.
 
 ![Echter öffentlicher Level-25-Sturmlicht-Kettenangriff](storm-live-25.png)
+
+
+## Erneute Gesamtprüfung aller fünf Türme
+
+[Prüfergebnisse, aktuelle Spielaufnahmen und Main-Übernahmevoraussetzungen](COMBINED_REVIEW.md). 437/437 Tests und alle zusätzlichen Prüfungen erfolgreich; vor einem unveränderten Main-Merge bestehen noch die dokumentierten Produktions-/Preview-Integrationspunkte. Dieser Folgeauftrag ändert keinen Laufzeitcode.

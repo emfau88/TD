@@ -1,0 +1,2290 @@
+{
+  "scope": "Strict scene adapter, not GPU performance",
+  "single": [
+    {
+      "scenario": "warden",
+      "level": 1,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "1": 24
+      },
+      "hits": {
+        "1": 23
+      },
+      "maxSprites": 4,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "idle-atlas-1-1-Projectile",
+        "evolution-impact-r5-1-1"
+      ]
+    },
+    {
+      "scenario": "warden",
+      "level": 2,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "1": 26
+      },
+      "hits": {
+        "1": 26
+      },
+      "maxSprites": 4,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-2-base",
+        "idle-atlas-1-2-Weapon",
+        "idle-atlas-1-2-Projectile",
+        "evolution-impact-r5-1-2"
+      ]
+    },
+    {
+      "scenario": "warden",
+      "level": 3,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "1": 31
+      },
+      "hits": {
+        "1": 30
+      },
+      "maxSprites": 5,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-3-base",
+        "idle-atlas-1-3-Weapon",
+        "idle-atlas-1-3-Projectile",
+        "evolution-impact-r5-1-3"
+      ]
+    },
+    {
+      "scenario": "warden",
+      "level": 5,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "1": 31
+      },
+      "hits": {
+        "1": 30
+      },
+      "maxSprites": 5,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-5-base",
+        "evolution-1-5-weapon",
+        "idle-atlas-1-3-Projectile",
+        "evolution-impact-r5-1-5"
+      ]
+    },
+    {
+      "scenario": "warden",
+      "level": 10,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "1": 31
+      },
+      "hits": {
+        "1": 30
+      },
+      "maxSprites": 7,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-10-base",
+        "evolution-1-10-weapon",
+        "evolution-1-10-projectile",
+        "evolution-impact-r5-1-10"
+      ]
+    },
+    {
+      "scenario": "warden",
+      "level": 15,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "1": 31
+      },
+      "hits": {
+        "1": 30
+      },
+      "maxSprites": 7,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-15-base",
+        "evolution-1-15-weapon",
+        "evolution-1-15-projectile",
+        "evolution-impact-r5-1-15"
+      ]
+    },
+    {
+      "scenario": "warden",
+      "level": 20,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "1": 31
+      },
+      "hits": {
+        "1": 30
+      },
+      "maxSprites": 7,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-20-base",
+        "evolution-1-20-weapon",
+        "evolution-1-20-projectile",
+        "evolution-impact-r5-1-20"
+      ]
+    },
+    {
+      "scenario": "warden",
+      "level": 25,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "1": 27
+      },
+      "hits": {
+        "1": 26
+      },
+      "maxSprites": 7,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-25-base",
+        "evolution-1-25-weapon",
+        "evolution-1-25-projectile",
+        "evolution-impact-r5-1-25"
+      ]
+    },
+    {
+      "scenario": "frost",
+      "level": 1,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "2": 16
+      },
+      "hits": {
+        "2": 16
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-2-1-base",
+        "idle-atlas-2-1-Weapon",
+        "idle-atlas-2-1-Projectile",
+        "evolution-impact-r5-2-1"
+      ]
+    },
+    {
+      "scenario": "frost",
+      "level": 2,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "2": 18
+      },
+      "hits": {
+        "2": 18
+      },
+      "maxSprites": 7,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-2-2-base",
+        "evolution-2-2-attack",
+        "evolution-2-2-glow",
+        "evolution-2-2-projectile",
+        "evolution-impact-r5-2-2"
+      ]
+    },
+    {
+      "scenario": "frost",
+      "level": 3,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "2": 20
+      },
+      "hits": {
+        "2": 20
+      },
+      "maxSprites": 7,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-2-3-base",
+        "evolution-2-3-attack",
+        "evolution-2-3-glow",
+        "evolution-2-3-projectile",
+        "evolution-impact-r5-2-3"
+      ]
+    },
+    {
+      "scenario": "frost",
+      "level": 5,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "2": 21
+      },
+      "hits": {
+        "2": 21
+      },
+      "maxSprites": 7,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-2-5-base",
+        "evolution-2-5-attack",
+        "evolution-2-5-glow",
+        "evolution-2-5-projectile",
+        "evolution-impact-r5-2-5"
+      ]
+    },
+    {
+      "scenario": "frost",
+      "level": 10,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "2": 21
+      },
+      "hits": {
+        "2": 21
+      },
+      "maxSprites": 7,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-2-10-base",
+        "evolution-2-10-attack",
+        "evolution-2-10-glow",
+        "evolution-2-10-projectile",
+        "evolution-impact-r5-2-10"
+      ]
+    },
+    {
+      "scenario": "frost",
+      "level": 15,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "2": 21
+      },
+      "hits": {
+        "2": 21
+      },
+      "maxSprites": 7,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-2-15-base",
+        "evolution-2-15-attack",
+        "evolution-2-15-glow",
+        "evolution-2-15-projectile",
+        "evolution-impact-r5-2-15"
+      ]
+    },
+    {
+      "scenario": "frost",
+      "level": 20,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "2": 21
+      },
+      "hits": {
+        "2": 21
+      },
+      "maxSprites": 7,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-2-20-base",
+        "evolution-2-20-attack",
+        "evolution-2-20-glow",
+        "evolution-2-20-projectile",
+        "evolution-impact-r5-2-20"
+      ]
+    },
+    {
+      "scenario": "frost",
+      "level": 25,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "2": 20
+      },
+      "hits": {
+        "2": 20
+      },
+      "maxSprites": 7,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-2-25-base",
+        "evolution-2-25-attack",
+        "evolution-2-25-glow",
+        "evolution-2-25-projectile",
+        "evolution-impact-r5-2-25"
+      ]
+    },
+    {
+      "scenario": "slinger",
+      "level": 1,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "3": 10
+      },
+      "hits": {
+        "3": 28
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-3-1-base",
+        "idle-atlas-3-1-Weapon",
+        "idle-atlas-3-1-Projectile",
+        "evolution-impact-r5-3-1"
+      ]
+    },
+    {
+      "scenario": "slinger",
+      "level": 2,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "3": 11
+      },
+      "hits": {
+        "3": 30
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-3-2-base",
+        "idle-atlas-3-2-Weapon",
+        "idle-atlas-3-2-Projectile",
+        "evolution-impact-r5-3-2"
+      ]
+    },
+    {
+      "scenario": "slinger",
+      "level": 3,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "3": 13
+      },
+      "hits": {
+        "3": 30
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-3-3-base",
+        "idle-atlas-3-3-Weapon",
+        "idle-atlas-3-3-Projectile",
+        "evolution-impact-r5-3-3"
+      ]
+    },
+    {
+      "scenario": "slinger",
+      "level": 5,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "3": 13
+      },
+      "hits": {
+        "3": 34
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-3-5-base",
+        "evolution-3-5-weapon",
+        "evolution-3-5-projectile",
+        "evolution-impact-r5-3-5"
+      ]
+    },
+    {
+      "scenario": "slinger",
+      "level": 10,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "3": 13
+      },
+      "hits": {
+        "3": 34
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-3-10-base",
+        "evolution-3-10-weapon",
+        "evolution-3-10-projectile",
+        "evolution-impact-r5-3-10"
+      ]
+    },
+    {
+      "scenario": "slinger",
+      "level": 15,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "3": 13
+      },
+      "hits": {
+        "3": 38
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-3-15-base",
+        "evolution-3-15-weapon",
+        "evolution-3-15-projectile",
+        "evolution-impact-r5-3-15"
+      ]
+    },
+    {
+      "scenario": "slinger",
+      "level": 20,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "3": 10
+      },
+      "hits": {
+        "3": 28
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-3-20-base",
+        "evolution-3-20-weapon",
+        "evolution-3-20-projectile",
+        "evolution-impact-r5-3-20"
+      ]
+    },
+    {
+      "scenario": "slinger",
+      "level": 25,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "3": 10
+      },
+      "hits": {
+        "3": 28
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-3-25-base",
+        "evolution-3-25-weapon",
+        "evolution-3-25-projectile",
+        "evolution-impact-r5-3-25"
+      ]
+    },
+    {
+      "scenario": "sniper",
+      "level": 1,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "4": 9
+      },
+      "hits": {
+        "4": 8
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-4-1-base",
+        "idle-atlas-4-1-Weapon",
+        "idle-atlas-4-1-Projectile",
+        "evolution-impact-r5-4-1"
+      ]
+    },
+    {
+      "scenario": "sniper",
+      "level": 2,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "4": 10
+      },
+      "hits": {
+        "4": 10
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-4-2-base",
+        "idle-atlas-4-2-Weapon",
+        "idle-atlas-4-2-Projectile",
+        "evolution-impact-r5-4-2"
+      ]
+    },
+    {
+      "scenario": "sniper",
+      "level": 3,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "4": 11
+      },
+      "hits": {
+        "4": 11
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-4-3-base",
+        "idle-atlas-4-3-Weapon",
+        "idle-atlas-4-3-Projectile",
+        "evolution-impact-r5-4-3"
+      ]
+    },
+    {
+      "scenario": "sniper",
+      "level": 5,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "4": 11
+      },
+      "hits": {
+        "4": 11
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-4-5-base",
+        "evolution-4-5-weapon",
+        "evolution-4-5-projectile",
+        "evolution-impact-r5-4-5"
+      ]
+    },
+    {
+      "scenario": "sniper",
+      "level": 10,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "4": 11
+      },
+      "hits": {
+        "4": 11
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-4-10-base",
+        "evolution-4-10-weapon",
+        "evolution-4-10-projectile",
+        "evolution-impact-r5-4-10"
+      ]
+    },
+    {
+      "scenario": "sniper",
+      "level": 15,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "4": 11
+      },
+      "hits": {
+        "4": 11
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-4-15-base",
+        "evolution-4-15-weapon",
+        "evolution-4-15-projectile",
+        "evolution-impact-r5-4-15"
+      ]
+    },
+    {
+      "scenario": "sniper",
+      "level": 20,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "4": 11
+      },
+      "hits": {
+        "4": 11
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-4-20-base",
+        "evolution-4-20-weapon",
+        "evolution-4-20-projectile",
+        "evolution-impact-r5-4-20"
+      ]
+    },
+    {
+      "scenario": "sniper",
+      "level": 25,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "4": 11
+      },
+      "hits": {
+        "4": 11
+      },
+      "maxSprites": 6,
+      "maxLines": 0,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-4-25-base",
+        "evolution-4-25-weapon",
+        "evolution-4-25-projectile",
+        "evolution-impact-r5-4-25"
+      ]
+    },
+    {
+      "scenario": "storm",
+      "level": 1,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "5": 38
+      },
+      "hits": {
+        "5": 38
+      },
+      "maxSprites": 8,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-5-1-base",
+        "idle-atlas-5-1-Weapon",
+        "idle-atlas-5-1-Projectile",
+        "evolution-impact-r5-5-1"
+      ]
+    },
+    {
+      "scenario": "storm",
+      "level": 2,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "5": 40
+      },
+      "hits": {
+        "5": 39
+      },
+      "maxSprites": 8,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-5-2-base",
+        "idle-atlas-5-2-Weapon",
+        "idle-atlas-5-2-Projectile",
+        "evolution-impact-r5-5-2"
+      ]
+    },
+    {
+      "scenario": "storm",
+      "level": 3,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "5": 46
+      },
+      "hits": {
+        "5": 46
+      },
+      "maxSprites": 8,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-5-3-base",
+        "idle-atlas-5-3-Weapon",
+        "idle-atlas-5-3-Projectile",
+        "evolution-impact-r5-5-3"
+      ]
+    },
+    {
+      "scenario": "storm",
+      "level": 5,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "5": 46
+      },
+      "hits": {
+        "5": 46
+      },
+      "maxSprites": 8,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-5-5-base",
+        "evolution-5-5-cast",
+        "evolution-5-5-projectile",
+        "evolution-impact-r5-5-5"
+      ]
+    },
+    {
+      "scenario": "storm",
+      "level": 10,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "5": 46
+      },
+      "hits": {
+        "5": 46
+      },
+      "maxSprites": 8,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-5-10-base",
+        "evolution-5-10-cast",
+        "evolution-5-10-projectile",
+        "evolution-impact-r5-5-10"
+      ]
+    },
+    {
+      "scenario": "storm",
+      "level": 15,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "5": 51
+      },
+      "hits": {
+        "5": 51
+      },
+      "maxSprites": 8,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-5-15-base",
+        "evolution-5-15-cast",
+        "evolution-5-15-projectile",
+        "evolution-impact-r5-5-15"
+      ]
+    },
+    {
+      "scenario": "storm",
+      "level": 20,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "5": 50
+      },
+      "hits": {
+        "5": 50
+      },
+      "maxSprites": 8,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-5-20-base",
+        "evolution-5-20-cast",
+        "evolution-5-20-projectile",
+        "evolution-impact-r5-5-20"
+      ]
+    },
+    {
+      "scenario": "storm",
+      "level": 25,
+      "fps": 60,
+      "seconds": 16,
+      "checks": 965,
+      "fires": {
+        "5": 28
+      },
+      "hits": {
+        "5": 28
+      },
+      "maxSprites": 8,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-5-25-base",
+        "evolution-5-25-cast",
+        "evolution-5-25-projectile",
+        "evolution-impact-r5-5-25"
+      ]
+    }
+  ],
+  "mixed": [
+    {
+      "scenario": "mixed",
+      "level": 1,
+      "fps": 15,
+      "seconds": 24,
+      "checks": 365,
+      "fires": {
+        "1": 32,
+        "2": 22,
+        "3": 14,
+        "4": 12,
+        "5": 56
+      },
+      "hits": {
+        "1": 32,
+        "2": 22,
+        "3": 42,
+        "4": 12,
+        "5": 56
+      },
+      "maxSprites": 18,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-2-1-base",
+        "idle-atlas-2-1-Weapon",
+        "evolution-3-1-base",
+        "idle-atlas-3-1-Weapon",
+        "evolution-4-1-base",
+        "idle-atlas-4-1-Weapon",
+        "evolution-5-1-base",
+        "idle-atlas-5-1-Weapon",
+        "idle-atlas-5-1-Projectile",
+        "idle-atlas-1-1-Projectile",
+        "evolution-impact-r5-5-1",
+        "evolution-impact-r5-1-1",
+        "idle-atlas-2-1-Projectile",
+        "evolution-impact-r5-2-1",
+        "idle-atlas-3-1-Projectile",
+        "idle-atlas-4-1-Projectile",
+        "evolution-impact-r5-3-1",
+        "evolution-impact-r5-4-1"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 1,
+      "fps": 30,
+      "seconds": 24,
+      "checks": 725,
+      "fires": {
+        "1": 32,
+        "2": 22,
+        "3": 14,
+        "4": 12,
+        "5": 56
+      },
+      "hits": {
+        "1": 32,
+        "2": 22,
+        "3": 42,
+        "4": 12,
+        "5": 56
+      },
+      "maxSprites": 18,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-2-1-base",
+        "idle-atlas-2-1-Weapon",
+        "evolution-3-1-base",
+        "idle-atlas-3-1-Weapon",
+        "evolution-4-1-base",
+        "idle-atlas-4-1-Weapon",
+        "evolution-5-1-base",
+        "idle-atlas-5-1-Weapon",
+        "idle-atlas-5-1-Projectile",
+        "idle-atlas-1-1-Projectile",
+        "evolution-impact-r5-5-1",
+        "evolution-impact-r5-1-1",
+        "idle-atlas-2-1-Projectile",
+        "evolution-impact-r5-2-1",
+        "idle-atlas-3-1-Projectile",
+        "idle-atlas-4-1-Projectile",
+        "evolution-impact-r5-3-1",
+        "evolution-impact-r5-4-1"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 1,
+      "fps": 60,
+      "seconds": 24,
+      "checks": 1445,
+      "fires": {
+        "1": 32,
+        "2": 22,
+        "3": 14,
+        "4": 12,
+        "5": 56
+      },
+      "hits": {
+        "1": 32,
+        "2": 22,
+        "3": 42,
+        "4": 12,
+        "5": 56
+      },
+      "maxSprites": 18,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-2-1-base",
+        "idle-atlas-2-1-Weapon",
+        "evolution-3-1-base",
+        "idle-atlas-3-1-Weapon",
+        "evolution-4-1-base",
+        "idle-atlas-4-1-Weapon",
+        "evolution-5-1-base",
+        "idle-atlas-5-1-Weapon",
+        "idle-atlas-5-1-Projectile",
+        "idle-atlas-1-1-Projectile",
+        "evolution-impact-r5-5-1",
+        "evolution-impact-r5-1-1",
+        "idle-atlas-2-1-Projectile",
+        "idle-atlas-3-1-Projectile",
+        "idle-atlas-4-1-Projectile",
+        "evolution-impact-r5-2-1",
+        "evolution-impact-r5-3-1",
+        "evolution-impact-r5-4-1"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 1,
+      "fps": 120,
+      "seconds": 24,
+      "checks": 2885,
+      "fires": {
+        "1": 32,
+        "2": 22,
+        "3": 14,
+        "4": 12,
+        "5": 56
+      },
+      "hits": {
+        "1": 32,
+        "2": 22,
+        "3": 42,
+        "4": 12,
+        "5": 56
+      },
+      "maxSprites": 18,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-1-base",
+        "idle-atlas-1-1-Weapon",
+        "evolution-2-1-base",
+        "idle-atlas-2-1-Weapon",
+        "evolution-3-1-base",
+        "idle-atlas-3-1-Weapon",
+        "evolution-4-1-base",
+        "idle-atlas-4-1-Weapon",
+        "evolution-5-1-base",
+        "idle-atlas-5-1-Weapon",
+        "idle-atlas-5-1-Projectile",
+        "idle-atlas-1-1-Projectile",
+        "evolution-impact-r5-5-1",
+        "evolution-impact-r5-1-1",
+        "idle-atlas-2-1-Projectile",
+        "idle-atlas-3-1-Projectile",
+        "idle-atlas-4-1-Projectile",
+        "evolution-impact-r5-2-1",
+        "evolution-impact-r5-3-1",
+        "evolution-impact-r5-4-1"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 2,
+      "fps": 15,
+      "seconds": 24,
+      "checks": 365,
+      "fires": {
+        "1": 36,
+        "2": 26,
+        "3": 16,
+        "4": 13,
+        "5": 65
+      },
+      "hits": {
+        "1": 36,
+        "2": 26,
+        "3": 58,
+        "4": 13,
+        "5": 65
+      },
+      "maxSprites": 21,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-2-base",
+        "idle-atlas-1-2-Weapon",
+        "evolution-2-2-base",
+        "evolution-2-2-attack",
+        "evolution-2-2-glow",
+        "evolution-3-2-base",
+        "idle-atlas-3-2-Weapon",
+        "evolution-4-2-base",
+        "idle-atlas-4-2-Weapon",
+        "evolution-5-2-base",
+        "idle-atlas-5-2-Weapon",
+        "idle-atlas-5-2-Projectile",
+        "idle-atlas-1-2-Projectile",
+        "evolution-impact-r5-5-2",
+        "evolution-impact-r5-1-2",
+        "evolution-2-2-projectile",
+        "evolution-impact-r5-2-2",
+        "idle-atlas-4-2-Projectile",
+        "idle-atlas-3-2-Projectile",
+        "evolution-impact-r5-3-2",
+        "evolution-impact-r5-4-2"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 2,
+      "fps": 30,
+      "seconds": 24,
+      "checks": 725,
+      "fires": {
+        "1": 36,
+        "2": 26,
+        "3": 16,
+        "4": 13,
+        "5": 65
+      },
+      "hits": {
+        "1": 36,
+        "2": 26,
+        "3": 58,
+        "4": 13,
+        "5": 65
+      },
+      "maxSprites": 21,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-2-base",
+        "idle-atlas-1-2-Weapon",
+        "evolution-2-2-base",
+        "evolution-2-2-attack",
+        "evolution-2-2-glow",
+        "evolution-3-2-base",
+        "idle-atlas-3-2-Weapon",
+        "evolution-4-2-base",
+        "idle-atlas-4-2-Weapon",
+        "evolution-5-2-base",
+        "idle-atlas-5-2-Weapon",
+        "idle-atlas-5-2-Projectile",
+        "idle-atlas-1-2-Projectile",
+        "evolution-impact-r5-5-2",
+        "evolution-impact-r5-1-2",
+        "evolution-2-2-projectile",
+        "idle-atlas-4-2-Projectile",
+        "evolution-impact-r5-2-2",
+        "idle-atlas-3-2-Projectile",
+        "evolution-impact-r5-3-2",
+        "evolution-impact-r5-4-2"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 2,
+      "fps": 60,
+      "seconds": 24,
+      "checks": 1445,
+      "fires": {
+        "1": 36,
+        "2": 26,
+        "3": 16,
+        "4": 13,
+        "5": 65
+      },
+      "hits": {
+        "1": 36,
+        "2": 26,
+        "3": 58,
+        "4": 13,
+        "5": 65
+      },
+      "maxSprites": 20,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-2-base",
+        "idle-atlas-1-2-Weapon",
+        "evolution-2-2-base",
+        "evolution-2-2-attack",
+        "evolution-2-2-glow",
+        "evolution-3-2-base",
+        "idle-atlas-3-2-Weapon",
+        "evolution-4-2-base",
+        "idle-atlas-4-2-Weapon",
+        "evolution-5-2-base",
+        "idle-atlas-5-2-Weapon",
+        "idle-atlas-5-2-Projectile",
+        "idle-atlas-1-2-Projectile",
+        "evolution-impact-r5-5-2",
+        "evolution-impact-r5-1-2",
+        "evolution-2-2-projectile",
+        "idle-atlas-4-2-Projectile",
+        "idle-atlas-3-2-Projectile",
+        "evolution-impact-r5-2-2",
+        "evolution-impact-r5-3-2",
+        "evolution-impact-r5-4-2"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 2,
+      "fps": 120,
+      "seconds": 24,
+      "checks": 2885,
+      "fires": {
+        "1": 36,
+        "2": 26,
+        "3": 16,
+        "4": 13,
+        "5": 65
+      },
+      "hits": {
+        "1": 36,
+        "2": 26,
+        "3": 58,
+        "4": 13,
+        "5": 65
+      },
+      "maxSprites": 20,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-2-base",
+        "idle-atlas-1-2-Weapon",
+        "evolution-2-2-base",
+        "evolution-2-2-attack",
+        "evolution-2-2-glow",
+        "evolution-3-2-base",
+        "idle-atlas-3-2-Weapon",
+        "evolution-4-2-base",
+        "idle-atlas-4-2-Weapon",
+        "evolution-5-2-base",
+        "idle-atlas-5-2-Weapon",
+        "idle-atlas-5-2-Projectile",
+        "idle-atlas-1-2-Projectile",
+        "evolution-impact-r5-5-2",
+        "evolution-impact-r5-1-2",
+        "evolution-2-2-projectile",
+        "idle-atlas-4-2-Projectile",
+        "idle-atlas-3-2-Projectile",
+        "evolution-impact-r5-2-2",
+        "evolution-impact-r5-3-2",
+        "evolution-impact-r5-4-2"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 3,
+      "fps": 15,
+      "seconds": 24,
+      "checks": 365,
+      "fires": {
+        "1": 43,
+        "2": 30,
+        "3": 18,
+        "4": 15,
+        "5": 83
+      },
+      "hits": {
+        "1": 43,
+        "2": 30,
+        "3": 69,
+        "4": 15,
+        "5": 82
+      },
+      "maxSprites": 21,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-3-base",
+        "idle-atlas-1-3-Weapon",
+        "evolution-2-3-base",
+        "evolution-2-3-attack",
+        "evolution-2-3-glow",
+        "evolution-3-3-base",
+        "idle-atlas-3-3-Weapon",
+        "evolution-4-3-base",
+        "idle-atlas-4-3-Weapon",
+        "evolution-5-3-base",
+        "idle-atlas-5-3-Weapon",
+        "idle-atlas-5-3-Projectile",
+        "evolution-impact-r5-5-3",
+        "idle-atlas-1-3-Projectile",
+        "evolution-impact-r5-1-3",
+        "evolution-2-3-projectile",
+        "idle-atlas-3-3-Projectile",
+        "idle-atlas-4-3-Projectile",
+        "evolution-impact-r5-2-3",
+        "evolution-impact-r5-3-3",
+        "evolution-impact-r5-4-3"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 3,
+      "fps": 30,
+      "seconds": 24,
+      "checks": 725,
+      "fires": {
+        "1": 43,
+        "2": 30,
+        "3": 18,
+        "4": 15,
+        "5": 83
+      },
+      "hits": {
+        "1": 43,
+        "2": 30,
+        "3": 69,
+        "4": 15,
+        "5": 82
+      },
+      "maxSprites": 20,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-3-base",
+        "idle-atlas-1-3-Weapon",
+        "evolution-2-3-base",
+        "evolution-2-3-attack",
+        "evolution-2-3-glow",
+        "evolution-3-3-base",
+        "idle-atlas-3-3-Weapon",
+        "evolution-4-3-base",
+        "idle-atlas-4-3-Weapon",
+        "evolution-5-3-base",
+        "idle-atlas-5-3-Weapon",
+        "idle-atlas-5-3-Projectile",
+        "evolution-impact-r5-5-3",
+        "idle-atlas-1-3-Projectile",
+        "evolution-impact-r5-1-3",
+        "evolution-2-3-projectile",
+        "idle-atlas-3-3-Projectile",
+        "idle-atlas-4-3-Projectile",
+        "evolution-impact-r5-2-3",
+        "evolution-impact-r5-3-3",
+        "evolution-impact-r5-4-3"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 3,
+      "fps": 60,
+      "seconds": 24,
+      "checks": 1445,
+      "fires": {
+        "1": 43,
+        "2": 30,
+        "3": 18,
+        "4": 15,
+        "5": 83
+      },
+      "hits": {
+        "1": 43,
+        "2": 30,
+        "3": 69,
+        "4": 15,
+        "5": 82
+      },
+      "maxSprites": 20,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-3-base",
+        "idle-atlas-1-3-Weapon",
+        "evolution-2-3-base",
+        "evolution-2-3-attack",
+        "evolution-2-3-glow",
+        "evolution-3-3-base",
+        "idle-atlas-3-3-Weapon",
+        "evolution-4-3-base",
+        "idle-atlas-4-3-Weapon",
+        "evolution-5-3-base",
+        "idle-atlas-5-3-Weapon",
+        "idle-atlas-5-3-Projectile",
+        "evolution-impact-r5-5-3",
+        "idle-atlas-1-3-Projectile",
+        "evolution-impact-r5-1-3",
+        "evolution-2-3-projectile",
+        "idle-atlas-3-3-Projectile",
+        "idle-atlas-4-3-Projectile",
+        "evolution-impact-r5-2-3",
+        "evolution-impact-r5-3-3",
+        "evolution-impact-r5-4-3"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 3,
+      "fps": 120,
+      "seconds": 24,
+      "checks": 2885,
+      "fires": {
+        "1": 43,
+        "2": 30,
+        "3": 18,
+        "4": 15,
+        "5": 83
+      },
+      "hits": {
+        "1": 43,
+        "2": 30,
+        "3": 69,
+        "4": 15,
+        "5": 82
+      },
+      "maxSprites": 20,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-3-base",
+        "idle-atlas-1-3-Weapon",
+        "evolution-2-3-base",
+        "evolution-2-3-attack",
+        "evolution-2-3-glow",
+        "evolution-3-3-base",
+        "idle-atlas-3-3-Weapon",
+        "evolution-4-3-base",
+        "idle-atlas-4-3-Weapon",
+        "evolution-5-3-base",
+        "idle-atlas-5-3-Weapon",
+        "idle-atlas-5-3-Projectile",
+        "evolution-impact-r5-5-3",
+        "idle-atlas-1-3-Projectile",
+        "evolution-impact-r5-1-3",
+        "evolution-2-3-projectile",
+        "idle-atlas-3-3-Projectile",
+        "idle-atlas-4-3-Projectile",
+        "evolution-impact-r5-2-3",
+        "evolution-impact-r5-3-3",
+        "evolution-impact-r5-4-3"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 5,
+      "fps": 15,
+      "seconds": 24,
+      "checks": 365,
+      "fires": {
+        "1": 43,
+        "2": 31,
+        "3": 18,
+        "4": 16,
+        "5": 83
+      },
+      "hits": {
+        "1": 43,
+        "2": 31,
+        "3": 68,
+        "4": 15,
+        "5": 82
+      },
+      "maxSprites": 21,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-5-base",
+        "evolution-1-5-weapon",
+        "evolution-2-5-base",
+        "evolution-2-5-attack",
+        "evolution-2-5-glow",
+        "evolution-3-5-base",
+        "evolution-3-5-weapon",
+        "evolution-4-5-base",
+        "evolution-4-5-weapon",
+        "evolution-5-5-base",
+        "evolution-5-5-cast",
+        "evolution-5-5-projectile",
+        "evolution-impact-r5-5-5",
+        "idle-atlas-1-3-Projectile",
+        "evolution-impact-r5-1-5",
+        "evolution-2-5-projectile",
+        "evolution-3-5-projectile",
+        "evolution-4-5-projectile",
+        "evolution-impact-r5-2-5",
+        "evolution-impact-r5-3-5",
+        "evolution-impact-r5-4-5"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 5,
+      "fps": 30,
+      "seconds": 24,
+      "checks": 725,
+      "fires": {
+        "1": 43,
+        "2": 31,
+        "3": 18,
+        "4": 16,
+        "5": 83
+      },
+      "hits": {
+        "1": 43,
+        "2": 31,
+        "3": 68,
+        "4": 15,
+        "5": 82
+      },
+      "maxSprites": 21,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-5-base",
+        "evolution-1-5-weapon",
+        "evolution-2-5-base",
+        "evolution-2-5-attack",
+        "evolution-2-5-glow",
+        "evolution-3-5-base",
+        "evolution-3-5-weapon",
+        "evolution-4-5-base",
+        "evolution-4-5-weapon",
+        "evolution-5-5-base",
+        "evolution-5-5-cast",
+        "evolution-5-5-projectile",
+        "evolution-impact-r5-5-5",
+        "idle-atlas-1-3-Projectile",
+        "evolution-impact-r5-1-5",
+        "evolution-2-5-projectile",
+        "evolution-3-5-projectile",
+        "evolution-4-5-projectile",
+        "evolution-impact-r5-2-5",
+        "evolution-impact-r5-3-5",
+        "evolution-impact-r5-4-5"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 5,
+      "fps": 60,
+      "seconds": 24,
+      "checks": 1445,
+      "fires": {
+        "1": 43,
+        "2": 31,
+        "3": 18,
+        "4": 16,
+        "5": 83
+      },
+      "hits": {
+        "1": 43,
+        "2": 31,
+        "3": 68,
+        "4": 15,
+        "5": 82
+      },
+      "maxSprites": 21,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-5-base",
+        "evolution-1-5-weapon",
+        "evolution-2-5-base",
+        "evolution-2-5-attack",
+        "evolution-2-5-glow",
+        "evolution-3-5-base",
+        "evolution-3-5-weapon",
+        "evolution-4-5-base",
+        "evolution-4-5-weapon",
+        "evolution-5-5-base",
+        "evolution-5-5-cast",
+        "evolution-5-5-projectile",
+        "evolution-impact-r5-5-5",
+        "idle-atlas-1-3-Projectile",
+        "evolution-impact-r5-1-5",
+        "evolution-2-5-projectile",
+        "evolution-3-5-projectile",
+        "evolution-4-5-projectile",
+        "evolution-impact-r5-2-5",
+        "evolution-impact-r5-3-5",
+        "evolution-impact-r5-4-5"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 5,
+      "fps": 120,
+      "seconds": 24,
+      "checks": 2885,
+      "fires": {
+        "1": 43,
+        "2": 31,
+        "3": 18,
+        "4": 16,
+        "5": 83
+      },
+      "hits": {
+        "1": 43,
+        "2": 31,
+        "3": 68,
+        "4": 15,
+        "5": 82
+      },
+      "maxSprites": 21,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-5-base",
+        "evolution-1-5-weapon",
+        "evolution-2-5-base",
+        "evolution-2-5-attack",
+        "evolution-2-5-glow",
+        "evolution-3-5-base",
+        "evolution-3-5-weapon",
+        "evolution-4-5-base",
+        "evolution-4-5-weapon",
+        "evolution-5-5-base",
+        "evolution-5-5-cast",
+        "evolution-5-5-projectile",
+        "evolution-impact-r5-5-5",
+        "idle-atlas-1-3-Projectile",
+        "evolution-impact-r5-1-5",
+        "evolution-2-5-projectile",
+        "evolution-3-5-projectile",
+        "evolution-4-5-projectile",
+        "evolution-impact-r5-2-5",
+        "evolution-impact-r5-3-5",
+        "evolution-impact-r5-4-5"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 10,
+      "fps": 15,
+      "seconds": 24,
+      "checks": 365,
+      "fires": {
+        "1": 43,
+        "2": 31,
+        "3": 18,
+        "4": 16,
+        "5": 81
+      },
+      "hits": {
+        "1": 43,
+        "2": 30,
+        "3": 61,
+        "4": 15,
+        "5": 80
+      },
+      "maxSprites": 23,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-10-base",
+        "evolution-1-10-weapon",
+        "evolution-2-10-base",
+        "evolution-2-10-attack",
+        "evolution-2-10-glow",
+        "evolution-3-10-base",
+        "evolution-3-10-weapon",
+        "evolution-4-10-base",
+        "evolution-4-10-weapon",
+        "evolution-5-10-base",
+        "evolution-5-10-cast",
+        "evolution-5-10-projectile",
+        "evolution-impact-r5-5-10",
+        "evolution-1-10-projectile",
+        "evolution-impact-r5-1-10",
+        "evolution-2-10-projectile",
+        "evolution-3-10-projectile",
+        "evolution-4-10-projectile",
+        "evolution-impact-r5-2-10",
+        "evolution-impact-r5-3-10",
+        "evolution-impact-r5-4-10"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 10,
+      "fps": 30,
+      "seconds": 24,
+      "checks": 725,
+      "fires": {
+        "1": 43,
+        "2": 31,
+        "3": 18,
+        "4": 16,
+        "5": 81
+      },
+      "hits": {
+        "1": 43,
+        "2": 30,
+        "3": 61,
+        "4": 15,
+        "5": 80
+      },
+      "maxSprites": 22,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-10-base",
+        "evolution-1-10-weapon",
+        "evolution-2-10-base",
+        "evolution-2-10-attack",
+        "evolution-2-10-glow",
+        "evolution-3-10-base",
+        "evolution-3-10-weapon",
+        "evolution-4-10-base",
+        "evolution-4-10-weapon",
+        "evolution-5-10-base",
+        "evolution-5-10-cast",
+        "evolution-5-10-projectile",
+        "evolution-impact-r5-5-10",
+        "evolution-1-10-projectile",
+        "evolution-impact-r5-1-10",
+        "evolution-2-10-projectile",
+        "evolution-3-10-projectile",
+        "evolution-4-10-projectile",
+        "evolution-impact-r5-2-10",
+        "evolution-impact-r5-3-10",
+        "evolution-impact-r5-4-10"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 10,
+      "fps": 60,
+      "seconds": 24,
+      "checks": 1445,
+      "fires": {
+        "1": 43,
+        "2": 31,
+        "3": 18,
+        "4": 16,
+        "5": 81
+      },
+      "hits": {
+        "1": 43,
+        "2": 30,
+        "3": 61,
+        "4": 15,
+        "5": 80
+      },
+      "maxSprites": 22,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-10-base",
+        "evolution-1-10-weapon",
+        "evolution-2-10-base",
+        "evolution-2-10-attack",
+        "evolution-2-10-glow",
+        "evolution-3-10-base",
+        "evolution-3-10-weapon",
+        "evolution-4-10-base",
+        "evolution-4-10-weapon",
+        "evolution-5-10-base",
+        "evolution-5-10-cast",
+        "evolution-5-10-projectile",
+        "evolution-impact-r5-5-10",
+        "evolution-1-10-projectile",
+        "evolution-impact-r5-1-10",
+        "evolution-2-10-projectile",
+        "evolution-3-10-projectile",
+        "evolution-4-10-projectile",
+        "evolution-impact-r5-2-10",
+        "evolution-impact-r5-3-10",
+        "evolution-impact-r5-4-10"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 10,
+      "fps": 120,
+      "seconds": 24,
+      "checks": 2885,
+      "fires": {
+        "1": 43,
+        "2": 31,
+        "3": 18,
+        "4": 16,
+        "5": 81
+      },
+      "hits": {
+        "1": 43,
+        "2": 30,
+        "3": 61,
+        "4": 15,
+        "5": 80
+      },
+      "maxSprites": 22,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-10-base",
+        "evolution-1-10-weapon",
+        "evolution-2-10-base",
+        "evolution-2-10-attack",
+        "evolution-2-10-glow",
+        "evolution-3-10-base",
+        "evolution-3-10-weapon",
+        "evolution-4-10-base",
+        "evolution-4-10-weapon",
+        "evolution-5-10-base",
+        "evolution-5-10-cast",
+        "evolution-5-10-projectile",
+        "evolution-impact-r5-5-10",
+        "evolution-1-10-projectile",
+        "evolution-impact-r5-1-10",
+        "evolution-2-10-projectile",
+        "evolution-3-10-projectile",
+        "evolution-4-10-projectile",
+        "evolution-impact-r5-2-10",
+        "evolution-impact-r5-3-10",
+        "evolution-impact-r5-4-10"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 15,
+      "fps": 15,
+      "seconds": 24,
+      "checks": 365,
+      "fires": {
+        "1": 38,
+        "2": 23,
+        "3": 13,
+        "4": 11,
+        "5": 60
+      },
+      "hits": {
+        "1": 27,
+        "2": 18,
+        "3": 20,
+        "4": 8,
+        "5": 56
+      },
+      "maxSprites": 23,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-15-base",
+        "evolution-1-15-weapon",
+        "evolution-2-15-base",
+        "evolution-2-15-attack",
+        "evolution-2-15-glow",
+        "evolution-3-15-base",
+        "evolution-3-15-weapon",
+        "evolution-4-15-base",
+        "evolution-4-15-weapon",
+        "evolution-5-15-base",
+        "evolution-5-15-cast",
+        "evolution-5-15-projectile",
+        "evolution-impact-r5-5-15",
+        "evolution-1-15-projectile",
+        "evolution-impact-r5-1-15",
+        "evolution-2-15-projectile",
+        "evolution-impact-r5-2-15",
+        "evolution-3-15-projectile",
+        "evolution-4-15-projectile",
+        "evolution-impact-r5-3-15",
+        "evolution-impact-r5-4-15"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 15,
+      "fps": 30,
+      "seconds": 24,
+      "checks": 725,
+      "fires": {
+        "1": 38,
+        "2": 23,
+        "3": 13,
+        "4": 11,
+        "5": 60
+      },
+      "hits": {
+        "1": 27,
+        "2": 18,
+        "3": 20,
+        "4": 8,
+        "5": 56
+      },
+      "maxSprites": 22,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-15-base",
+        "evolution-1-15-weapon",
+        "evolution-2-15-base",
+        "evolution-2-15-attack",
+        "evolution-2-15-glow",
+        "evolution-3-15-base",
+        "evolution-3-15-weapon",
+        "evolution-4-15-base",
+        "evolution-4-15-weapon",
+        "evolution-5-15-base",
+        "evolution-5-15-cast",
+        "evolution-5-15-projectile",
+        "evolution-impact-r5-5-15",
+        "evolution-1-15-projectile",
+        "evolution-impact-r5-1-15",
+        "evolution-2-15-projectile",
+        "evolution-impact-r5-2-15",
+        "evolution-3-15-projectile",
+        "evolution-4-15-projectile",
+        "evolution-impact-r5-3-15",
+        "evolution-impact-r5-4-15"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 15,
+      "fps": 60,
+      "seconds": 24,
+      "checks": 1445,
+      "fires": {
+        "1": 38,
+        "2": 23,
+        "3": 13,
+        "4": 11,
+        "5": 60
+      },
+      "hits": {
+        "1": 27,
+        "2": 18,
+        "3": 20,
+        "4": 8,
+        "5": 56
+      },
+      "maxSprites": 22,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-15-base",
+        "evolution-1-15-weapon",
+        "evolution-2-15-base",
+        "evolution-2-15-attack",
+        "evolution-2-15-glow",
+        "evolution-3-15-base",
+        "evolution-3-15-weapon",
+        "evolution-4-15-base",
+        "evolution-4-15-weapon",
+        "evolution-5-15-base",
+        "evolution-5-15-cast",
+        "evolution-5-15-projectile",
+        "evolution-impact-r5-5-15",
+        "evolution-1-15-projectile",
+        "evolution-impact-r5-1-15",
+        "evolution-2-15-projectile",
+        "evolution-impact-r5-2-15",
+        "evolution-3-15-projectile",
+        "evolution-4-15-projectile",
+        "evolution-impact-r5-3-15",
+        "evolution-impact-r5-4-15"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 15,
+      "fps": 120,
+      "seconds": 24,
+      "checks": 2885,
+      "fires": {
+        "1": 38,
+        "2": 23,
+        "3": 13,
+        "4": 11,
+        "5": 60
+      },
+      "hits": {
+        "1": 27,
+        "2": 18,
+        "3": 20,
+        "4": 8,
+        "5": 56
+      },
+      "maxSprites": 22,
+      "maxLines": 3,
+      "keys": [
+        "evolution-1-15-base",
+        "evolution-1-15-weapon",
+        "evolution-2-15-base",
+        "evolution-2-15-attack",
+        "evolution-2-15-glow",
+        "evolution-3-15-base",
+        "evolution-3-15-weapon",
+        "evolution-4-15-base",
+        "evolution-4-15-weapon",
+        "evolution-5-15-base",
+        "evolution-5-15-cast",
+        "evolution-5-15-projectile",
+        "evolution-impact-r5-5-15",
+        "evolution-1-15-projectile",
+        "evolution-impact-r5-1-15",
+        "evolution-2-15-projectile",
+        "evolution-impact-r5-2-15",
+        "evolution-3-15-projectile",
+        "evolution-4-15-projectile",
+        "evolution-impact-r5-3-15",
+        "evolution-impact-r5-4-15"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 20,
+      "fps": 15,
+      "seconds": 24,
+      "checks": 365,
+      "fires": {
+        "1": 3,
+        "5": 51
+      },
+      "hits": {
+        "5": 51
+      },
+      "maxSprites": 16,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-20-base",
+        "evolution-1-20-weapon",
+        "evolution-2-20-base",
+        "evolution-2-20-attack",
+        "evolution-2-20-glow",
+        "evolution-3-20-base",
+        "evolution-3-20-weapon",
+        "evolution-4-20-base",
+        "evolution-4-20-weapon",
+        "evolution-5-20-base",
+        "evolution-5-20-cast",
+        "evolution-5-20-projectile",
+        "evolution-impact-r5-5-20",
+        "evolution-1-20-projectile"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 20,
+      "fps": 30,
+      "seconds": 24,
+      "checks": 725,
+      "fires": {
+        "1": 3,
+        "5": 51
+      },
+      "hits": {
+        "5": 51
+      },
+      "maxSprites": 16,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-20-base",
+        "evolution-1-20-weapon",
+        "evolution-2-20-base",
+        "evolution-2-20-attack",
+        "evolution-2-20-glow",
+        "evolution-3-20-base",
+        "evolution-3-20-weapon",
+        "evolution-4-20-base",
+        "evolution-4-20-weapon",
+        "evolution-5-20-base",
+        "evolution-5-20-cast",
+        "evolution-5-20-projectile",
+        "evolution-impact-r5-5-20",
+        "evolution-1-20-projectile"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 20,
+      "fps": 60,
+      "seconds": 24,
+      "checks": 1445,
+      "fires": {
+        "1": 3,
+        "5": 51
+      },
+      "hits": {
+        "5": 51
+      },
+      "maxSprites": 16,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-20-base",
+        "evolution-1-20-weapon",
+        "evolution-2-20-base",
+        "evolution-2-20-attack",
+        "evolution-2-20-glow",
+        "evolution-3-20-base",
+        "evolution-3-20-weapon",
+        "evolution-4-20-base",
+        "evolution-4-20-weapon",
+        "evolution-5-20-base",
+        "evolution-5-20-cast",
+        "evolution-5-20-projectile",
+        "evolution-impact-r5-5-20",
+        "evolution-1-20-projectile"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 20,
+      "fps": 120,
+      "seconds": 24,
+      "checks": 2885,
+      "fires": {
+        "1": 3,
+        "5": 51
+      },
+      "hits": {
+        "5": 51
+      },
+      "maxSprites": 16,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-20-base",
+        "evolution-1-20-weapon",
+        "evolution-2-20-base",
+        "evolution-2-20-attack",
+        "evolution-2-20-glow",
+        "evolution-3-20-base",
+        "evolution-3-20-weapon",
+        "evolution-4-20-base",
+        "evolution-4-20-weapon",
+        "evolution-5-20-base",
+        "evolution-5-20-cast",
+        "evolution-5-20-projectile",
+        "evolution-impact-r5-5-20",
+        "evolution-1-20-projectile"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 25,
+      "fps": 15,
+      "seconds": 24,
+      "checks": 365,
+      "fires": {
+        "5": 29
+      },
+      "hits": {
+        "5": 28
+      },
+      "maxSprites": 15,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-25-base",
+        "evolution-1-25-weapon",
+        "evolution-2-25-base",
+        "evolution-2-25-attack",
+        "evolution-2-25-glow",
+        "evolution-3-25-base",
+        "evolution-3-25-weapon",
+        "evolution-4-25-base",
+        "evolution-4-25-weapon",
+        "evolution-5-25-base",
+        "evolution-5-25-cast",
+        "evolution-5-25-projectile",
+        "evolution-impact-r5-5-25"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 25,
+      "fps": 30,
+      "seconds": 24,
+      "checks": 725,
+      "fires": {
+        "5": 29
+      },
+      "hits": {
+        "5": 28
+      },
+      "maxSprites": 15,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-25-base",
+        "evolution-1-25-weapon",
+        "evolution-2-25-base",
+        "evolution-2-25-attack",
+        "evolution-2-25-glow",
+        "evolution-3-25-base",
+        "evolution-3-25-weapon",
+        "evolution-4-25-base",
+        "evolution-4-25-weapon",
+        "evolution-5-25-base",
+        "evolution-5-25-cast",
+        "evolution-5-25-projectile",
+        "evolution-impact-r5-5-25"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 25,
+      "fps": 60,
+      "seconds": 24,
+      "checks": 1445,
+      "fires": {
+        "5": 29
+      },
+      "hits": {
+        "5": 28
+      },
+      "maxSprites": 15,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-25-base",
+        "evolution-1-25-weapon",
+        "evolution-2-25-base",
+        "evolution-2-25-attack",
+        "evolution-2-25-glow",
+        "evolution-3-25-base",
+        "evolution-3-25-weapon",
+        "evolution-4-25-base",
+        "evolution-4-25-weapon",
+        "evolution-5-25-base",
+        "evolution-5-25-cast",
+        "evolution-5-25-projectile",
+        "evolution-impact-r5-5-25"
+      ]
+    },
+    {
+      "scenario": "mixed",
+      "level": 25,
+      "fps": 120,
+      "seconds": 24,
+      "checks": 2885,
+      "fires": {
+        "5": 29
+      },
+      "hits": {
+        "5": 28
+      },
+      "maxSprites": 15,
+      "maxLines": 2,
+      "keys": [
+        "evolution-1-25-base",
+        "evolution-1-25-weapon",
+        "evolution-2-25-base",
+        "evolution-2-25-attack",
+        "evolution-2-25-glow",
+        "evolution-3-25-base",
+        "evolution-3-25-weapon",
+        "evolution-4-25-base",
+        "evolution-4-25-weapon",
+        "evolution-5-25-base",
+        "evolution-5-25-cast",
+        "evolution-5-25-projectile",
+        "evolution-impact-r5-5-25"
+      ]
+    }
+  ],
+  "errors": [],
+  "simultaneous": {
+    "actualPayloads": 40,
+    "trajectorySteps": 101,
+    "impactCap": 96,
+    "lineCap": 48,
+    "maxSprites": 231,
+    "maxLines": 48,
+    "cleanup": "complete",
+    "note": "Strict renderer replay, not physical-device FPS or 40-tower balance simulation"
+  },
+  "storage": {
+    "main": "valid",
+    "branchDefault": "empty",
+    "mainPreserved": true,
+    "branchName": "spire-idle-bastion-tower-evolution"
+  },
+  "textures": {
+    "registered": 212,
+    "generatedBytes": 20742144,
+    "generatedMiB": 19.78125,
+    "prebakeDrawCalls": 67512
+  },
+  "result": "pass"
+}
