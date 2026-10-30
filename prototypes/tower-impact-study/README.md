@@ -42,7 +42,7 @@ Die Kritik an Revision 4 war berechtigt: Die schmale Meteorspitze verlor die Mas
 
 **Gestalterische Nutzerfreigabe und ein späterer Belastungstest im vollständigen Spiel stehen aus.** Revision 3 wurde als `9b7efa0` mit [Pages 40971886603](https://github.com/emfau88/TD/actions/runs/40971886603) veröffentlicht. Revision 4 ist als `03520cf61662cbec430215ecf8d8da5d16a85bb8` gepusht; [Pages 40974609788](https://github.com/emfau88/TD/actions/runs/40974609788) erfolgreich inklusive Produktionsbuild. Öffentliche Metadaten/Browserseite geprüft, keine Warnungen oder Fehler. Alle 604 Main-Dateien wurden bytegleich erhalten; Main bleibt `93703cb66e369ed7f3a724f0e42575775cc12bc4`.
 
-Revision 5: lokale Prüfung abgeschlossen; Veröffentlichung wird nach Commit/Push ergänzt.
+Revision 5 als `9053954e2bf1130c22992786304fe4978442c9e4` veröffentlicht; [Pages 41095111417](https://github.com/emfau88/TD/actions/runs/41095111417) einschließlich Produktionsbuild erfolgreich. Öffentliche Metadaten und Browserseite ohne Warnungen/Fehler geprüft; alle 604 Main-Dateien bytegleich erhalten.
 
 ### Aktuelle Browseraufnahmen
 
