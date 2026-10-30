@@ -3,18 +3,18 @@ export const LEVELS=[1,2,3,5,10,15,20,25];
 export const NAMES={
  1:['Pfeilkontakt','Holzsplitter','Stahlsplitter','Kerbsplitter','Silberfächer','Goldspaltung','Smaragdsalve','Meistersalve'],
  2:['Frostkontakt','Eissplitter','Eisfunken','Eisbruch','Kristallkrone','Prismenkreuz','Polarstern','Aurorabruch'],
- 3:['Steinkontakt','Steinsplitter','Schwerer Treffer','Steinbruch','Glutstoß','Feuerstoß','Meteorsplitter','Sonnenbruch'],
- 4:['Kontaktstern','Grüne Funken','Scharfer Kontakt','Fokusblitz','Jadeschnitt','Doppellanze','Lichtlanze','Sternlanze']
+ 3:['Steinkontakt','Steinsplitter','Schwerer Treffer','Steinbruch','Glutstoß','Feuerstoß','Feuereruption','Inferno'],
+ 4:['Kontaktstern','Grüne Funken','Scharfer Kontakt','Fokusstern','Jadestern','Doppelimpuls','Präzisionsnova','Meistertreffer']
 };
 const PALETTES={
  1:[['#625c4e','#cad1bb','#f7f0cc'],['#644a30','#c69b62','#f5d9a1'],['#465e66','#c8e2db','#f8ffed'],['#61472d','#d2a567','#ffe5b1'],['#3e6580','#b9dfe9','#f5ffff'],['#81542c','#f5c85e','#fff1b4'],['#276553','#72e6b0','#ffdf87'],['#7f5e28','#f8d774','#f7ffe4']],
  2:[['#428399','#9ce0e7','#eaffff'],['#3f869f','#8ad5e9','#e6ffff'],['#347eab','#78d1ed','#f4ffff'],['#2b779e','#76cee6','#e4ffff'],['#346b99','#a0dff6','#f6ffff'],['#304b91','#75bff2','#d9fbff'],['#355480','#a8e6e8','#f5ffff'],['#655095','#b0dcfa','#f8ffff']],
- 3:[['#70534b','#c7a273','#f3d7a0'],['#75533b','#d3ae7c','#f9df9f'],['#734f39','#d9a568','#ffe1a1'],['#574938','#b59464','#efcd8e'],['#803f2b','#ec8d38','#ffe5a0'],['#873134','#f15d32','#ffe0a0'],['#68342c','#f99535','#fff3b0'],['#8f382a','#ffc249','#fff9d8']],
- 4:[['#47674c','#a6cc76','#f0ffdb'],['#3f6e48','#aad971','#f1ffcf'],['#326b50','#a3e992','#f3ffe2'],['#365f42','#a5df73','#f3ffd6'],['#246b59','#64dbac','#e6fff1'],['#285c54','#8df2be','#efffe9'],['#356c78','#8ae8e6','#f4ffff'],['#45684b','#c5ef91','#fff4bc']]
+ 3:[['#70534b','#c7a273','#f3d7a0'],['#75533b','#d3ae7c','#f9df9f'],['#734f39','#d9a568','#ffe1a1'],['#574938','#b59464','#efcd8e'],['#803f2b','#ec8d38','#ffe5a0'],['#873134','#f15d32','#ffe0a0'],['#8e3327','#ff9238','#fff2b2'],['#9b3827','#ffc555','#fffbe0']],
+ 4:[['#47674c','#a6cc76','#f0ffdb'],['#3f6e48','#aad971','#f1ffcf'],['#326b50','#a3e992','#f3ffe2'],['#326345','#9fe47f','#f3ffe0'],['#28694a','#8ce6a0','#f4ffe5'],['#276e4d','#91efac','#f7ffe9'],['#2b7651','#a4f5b1','#fff9cf'],['#347b52','#bcf5ae','#fff5b5']]
 };
 export function profile(kind,level){
  const i=Math.max(0,LEVELS.indexOf(level));
- return {i,life:[300,320,350,380,420,450,480,520][i]+(kind===3?30:0),
+ return {i,life:kind===4?[350,370,390,420,450,480,520,550][i]:[300,320,350,380,420,450,480,520][i]+(kind===3?30:0),
   scale:.85+i*.05,count:[0,2,3,4,6,8,10,12][i],radius:[7,8,10,12,15,18,21,24][i],
   trail:[0,1,1,2,3,4,5,6][i],colors:PALETTES[kind][i],name:NAMES[kind][i]};
 }
@@ -84,27 +84,45 @@ export function drawImpact(c,kind,level,age,base){
   if(i===3){
    for(let j=0;j<5;j++){const a=j/5*Math.PI*2,x=Math.cos(a)*(8+t*12),y=Math.sin(a)*(5+t*7);px(c,x-4,y-3,8,7,colors[0]);px(c,x-3,y-3,6,3,colors[1]);px(c,x-2,y-3,3,1,colors[2])}
    c.globalAlpha=fade*.45;brokenRing(c,13+t*9,9,colors);
-  }else if(i===4||i===5){
-   const lobes=i===4?3:5;
-   for(let j=0;j<lobes;j++){const a=j/lobes*Math.PI*2,x=Math.cos(a)*(7+t*6),y=Math.sin(a)*(5+t*7)-t*5,n=(i===4?15:17)*(1-t*.5);
-    flame(c,x,y,n,colors[0],j*3);flame(c,x,y-1,n-2,colors[1],j*3);if(t<.48)flame(c,x,y-2,n-5,colors[2],j*3);}
-   if(i===5&&age>70&&t<.65)brokenRing(c,13+t*16,9,colors,.2,12);
-  }else if(i===6){
-   blade(c,0,5,-Math.PI/2,30-t*8,10,colors);blade(c,0,2,-2.8,24,6,colors);blade(c,0,2,-.3,24,6,colors);
-   for(let j=0;j<6;j++){const a=j/6*Math.PI*2,x=Math.cos(a)*(16+Math.sqrt(t)*18),y=Math.sin(a)*(7+Math.sqrt(t)*14)+t*t*5;diamond(c,x,y,3,colors[0]);diamond(c,x,y,2,colors[1]);px(c,x,y,1,1,colors[2]);}
-   if(t<.65)brokenRing(c,17+t*17,8,colors,.1,12);
   }else{
-   for(let j=0;j<8;j++)blade(c,0,0,j*Math.PI/4,20+Math.sin(t*Math.PI)*15,j%2?4:7,colors);
-   diamond(c,0,0,12*(1-t*.5),colors[1]);diamond(c,0,0,8*(1-t),colors[2]);
-   if(age>75&&t<.7)brokenRing(c,18+t*17,9,colors,0,14);
+   // Keep the fire-cloud family: higher tiers retain its mass and add heat/afterburn.
+   const tier=i-4,lobes=[3,5,7,8][tier],size=[15,17,20,22][tier];
+   for(let j=0;j<lobes;j++){
+    const a=j/lobes*Math.PI*2,x=Math.cos(a)*(7+t*6),y=Math.sin(a)*(5+t*7)-t*(5+tier*2),n=size*(1-t*.5);
+    flame(c,x,y,n,colors[0],j*3);flame(c,x,y-1,n-2,colors[1],j*3);
+    if(t<.48+tier*.035)flame(c,x,y-2,n-5,colors[2],j*3);
+   }
+   if(i>=5&&age>70&&t<.65)brokenRing(c,13+t*16+(i-5)*2,9,colors,.2,12);
+   if(i>=6&&age>75&&t<.72){
+    const u=(age-75)/(p.life-75),n=(i===6?9:12)*(1-u*.5);
+    flame(c,0,-5-u*10,n+3,colors[1],3);flame(c,0,-7-u*10,n,colors[2],3);
+    if(i===7&&age>135)brokenRing(c,18+u*16,8,colors,.5,14);
+   }
   }
  }else{
-  const diagonal=-.2;
-  if(i===3){blade(c,-10,2,diagonal,23,4,colors);diamond(c,0,0,3,colors[2])}
-  if(i===4){blade(c,-10,4,-.45,24,3,colors);blade(c,-5,-7,.8,18,3,colors)}
-  if(i===5){for(let j=0;j<2;j++){if(age<j*55)continue;blade(c,-13,4-j*7,diagonal,28,3,colors)}if(t<.45)diamond(c,0,0,4,colors[2])}
-  if(i===6){blade(c,-17,3,diagonal,35,4,colors);for(const sign of [-1,1]){ray(c,-3,0,6,sign*8,colors[1],2);ray(c,6,sign*8,15,sign*11,colors[2]);}diamond(c,0,0,4,colors[2])}
-  if(i===7){for(let j=0;j<3;j++){if(age<j*60||age>j*60+260)continue;c.globalAlpha=(1-(age-j*60)/260)*fade;blade(c,-17,6-j*6,-.2+(j-1)*.17,35,3,colors)}for(let j=0;j<4;j++)blade(c,0,0,j*Math.PI/2+.6,12+t*7,2,colors);diamond(c,0,0,4,colors[2]);}
+  // Every tier keeps the original contact star and builds on the same jade piercing axis.
+  const tier=i-3,length=[17,21,25,29,33][tier],width=[2,3,4,5,6][tier],axis=-.2;
+  c.save();c.scale(p.scale,p.scale);base(c,t);c.restore();
+  for(const a of [axis,axis+Math.PI])blade(c,0,0,a,length,width,colors);
+  if(i>=4)for(let j=0;j<4;j++)blade(c,0,0,axis+Math.PI/4+j*Math.PI/2,10+(i-4)*3,2,colors);
+  if(i>=5&&age>55){
+   c.globalAlpha=fade*.75;
+   for(const offset of [-5,5])blade(c,-9,offset,axis,18+(i-5)*3,2,colors);
+  }
+  if(i>=6&&age>80){
+   c.globalAlpha=fade;const u=(age-80)/(p.life-80),radius=14+u*11+(i-6)*3;
+   for(let j=0;j<8;j++){
+    const a=j*Math.PI/4+axis,x=Math.cos(a)*radius,y=Math.sin(a)*radius;
+    ray(c,x,y,x+Math.cos(a)*4,y+Math.sin(a)*4,j%2?'#e9d384':colors[1],2);
+   }
+  }
+  if(i===7&&age>130&&age<400){
+   c.globalAlpha=(1-(age-130)/270)*.8;
+   for(let j=0;j<4;j++)blade(c,0,0,axis+j*Math.PI/2,22,3,['#6b753e','#d1ed9c','#fff8c8']);
+  }
+  c.globalAlpha=fade;
+  diamond(c,0,0,2+(i-3)*.6,colors[2]);
  }
+
  extras(c,kind,p,t);c.restore();
 }

@@ -1,11 +1,11 @@
-import {LEVELS,NAMES,profile,drawImpact,drawTrail} from './effects.js?v=4';
+import {LEVELS,NAMES,profile,drawImpact,drawTrail} from './effects.js?v=5';
 const $=id=>document.getElementById(id),images=new Map(),visible=new Set(),effectCache=new Map();
 const FX_SIZE=96,FX_FRAMES=10;
 const kinds=[
  {id:1,name:'Waldwächter',color:'#e3d6a5',note:'Holz und Stahl → Silberfächer → Goldspaltung → Smaragdsalven.',scale:.6,duration:500},
  {id:2,name:'Frostkristall',color:'#ace7ec',note:'Eisbruch → Kristallkrone → Prismenkreuz → Aurorabruch.',scale:.8,duration:500},
- {id:3,name:'Steinschleuder',color:'#dec093',note:'Steinbruch → Glutstoß → Feuerstoß → Meteorsplitter.',scale:1.6,duration:500},
- {id:4,name:'Scharfschütze',color:'#c7e791',note:'Fokusblitz → Jadeschnitt → Doppellanze → Sternlanze.',scale:.6,duration:350}
+ {id:3,name:'Steinschleuder',color:'#dec093',note:'Steinbruch → Glutstoß → Feuerstoß → Feuereruption → Inferno.',scale:1.6,duration:500},
+ {id:4,name:'Scharfschütze',color:'#c7e791',note:'Kontaktstern → Jadestern → Doppelimpuls → Präzisionsnova.',scale:.6,duration:350}
 ];
 let baseline,shotFrames,views=[],ready=false,last=null;
 const motion=matchMedia('(prefers-reduced-motion: reduce)');

@@ -110,3 +110,9 @@ Neue Pixelzeichnungen, Materialfarben und Trefferfolgen für jede Skin-Stufe; ei
 32 Profile/2.720 Zeitposen, Originalhashes und Syntax bestanden; Browser Desktop/390/320 ohne Warnungen/Fehler. Höchstens 11,25 MiB rohe Pixel im vollständigen Spritecache; Mikrobenchmark 96 Level-25-Treffer: Ø 0,13 ms / P95 0,20 ms CPU-Zeichenzeit. Kein vollständiger GPU-/Spiel-/Smartphone-Benchmark. Screenshots, technische Grenzen und Sichtbewertung in der [Studien-README](../../../../prototypes/tower-impact-study/README.md). Gestalterische Freigabe weiter offen.
 
 Revision 3 wurde zuvor als 9b7efa0 mit Pages 40971886603 veröffentlicht. Revision 4: `03520cf61662cbec430215ecf8d8da5d16a85bb8`, [Pages 40974609788](https://github.com/emfau88/TD/actions/runs/40974609788) erfolgreich inklusive Produktionsbuild. Öffentliche Metadaten und Browserseite ohne Warnungen/Fehler geprüft, 604 Main-Dateien bytegleich; Main weiterhin 93703cb66e369ed7f3a724f0e42575775cc12bc4. Kein Main-Merge und kein Export.
+
+## Impact-Studie Revision 5 · 30.10.2026
+
+Auf Nutzerkritik Stilbrüche korrigiert: Stein 20/25 führen die Feuerwolke mit mehr Volumen, Hitze und Nachbrand fort. Scharfschütze behält seinen grünen Originalkontaktstern; Durchschlag, diagonale Strahlen und Nachimpulse bauen additiv aufeinander auf. Frühester Kontakt wieder mindestens 350 ms sichtbar. Keine Spielintegration oder Änderung von Kampfwerten.
+
+32 Profile/2.720 Zeitposen, endliche Geometrie und Framegrenzen geprüft. Alle 16 Wald-/Frostprofile zeichnen identisch zu Revision 4. Desktop mit kompletter Scharfschützenreihe, 390-Pixel-Dichtvergleich, 320 Pixel/36 Felder ohne Overflow und Browserfehler geprüft. Mikrobenchmark 96 Treffer: L25 Ø 0,19 ms / P95 0,40 ms CPU-Zeichenzeit, keine GPU-/Smartphone-Aussage. [Bilder und aktuelle Bewertung](../../../../prototypes/tower-impact-study/README.md). Veröffentlichung folgt nach Commit/Push; Nutzer-Sichtfreigabe offen.
