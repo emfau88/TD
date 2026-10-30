@@ -13,7 +13,7 @@ Waldwächter, Frostkristall, Steinschleuder und **Scharfschütze** mit den kompa
 
 Jeder Start erstellt einen **separaten Spielstand**. Auch [eine frische normale Partie des Branches](https://emfau88.github.io/TD/previews/tower-evolution/?fresh=1) ist von deiner Hauptpartie getrennt. Vorbereitete Welle-40-Karte, normale Kampfregeln, 100.000 Testgold: Grafiktest, kein Balancetest. Hohe Stufen töten weiterhin schnell, jetzt im sichtbaren Ausschnitt. Kampfwerte, Saveformat und Offline-Regeln unverändert. Kein Kongregate-Export.
 
-**Vorherige Veröffentlichung (vor Impact-Integration):** [erfolgreiches Pages-Deployment](https://github.com/emfau88/TD/actions/runs/40966998098), Spielcode `3072b9d`; alle 604 Hauptspiel-Dateien bytegleich erhalten.
+**Veröffentlicht mit neuen Impacts:** [erfolgreiches Pages-Deployment](https://github.com/emfau88/TD/actions/runs/41098071728), Spielcode `52cdfae`; alle 604 Hauptspiel-Dateien bytegleich erhalten. Öffentlicher Kampf und Metadaten geprüft.
 
 **Prüfung der Impact-Integration:** 434/434 Tests und Produktionsbuild erfolgreich; 45 Aufstellungen und jede der 32 optischen Stufen mit echten Schüssen, Aufwerten und Save-Roundtrip. [Prüfbericht / Deployment / Spielaufnahmen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md) · [Steinschleuder-Sprites und Quellen](prototypes/steinschleuder-evolution/README.md) · [Scharfschützen-Sprites und Prompts](prototypes/scharfschuetze-evolution/README.md).
 

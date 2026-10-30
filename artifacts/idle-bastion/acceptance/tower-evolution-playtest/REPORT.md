@@ -129,6 +129,9 @@ Auf Nutzerkritik Stilbrüche korrigiert: Stein 20/25 führen die Feuerwolke mit 
 - **Browser:** Vier Level-25-Türme gemeinsam im Desktopkampf (1280×720), Steinschleuder 25 separat, Frost 20 bei 390×844 und 320×568 einschließlich normalem Kartenzoom. Gemischte Gruppe beendet Welle 41; Pause/Reload erhält exakt 101.776 Gold, Welle 41/Record 41 und 20/20 Kern. Keine Browserwarnungen/-fehler. Alle 32 Stufen automatisiert im echten Kampfsystem, nicht jede Kombination zusätzlich einzeln manuell geöffnet.
 - **Grenzen:** Ein einzelner Frostturm ist weiterhin keine vollständige Welle-41-Verteidigung und wechselt bei Niederlage regelgerecht ins Farming; dies ist kein Balancetest. Treffer bleiben kurz (300–550 ms). Kein vollständiger FPS-/GPU-Benchmark und kein physisches Smartphone getestet. Der begrenzte Cache ist kein Nachweis für die Leistung jedes Endgeräts. Nutzerbeurteilung des gesamten Gefechts bleibt Zweck dieses Branches.
 
-Geänderte Laufzeitstellen: `src/evolution-impacts.ts`, `src/combat-effects.ts`, Ladevorbereitung in `src/battle-scene.ts`; dazu Typen/Framekonstanten der gemeinsamen Studie, Launcherhinweise, neue Tests und Dokumentation. Veröffentlichungsnachweis folgt nach Push.
+Geänderte Laufzeitstellen: `src/evolution-impacts.ts`, `src/combat-effects.ts`, Ladevorbereitung in `src/battle-scene.ts`; dazu Typen/Framekonstanten der gemeinsamen Studie, Launcherhinweise, neue Tests und Dokumentation. Veröffentlicht als `52cdfaea66adbb7d38843de4b80dc57e116346c7`; [Pages 41098071728](https://github.com/emfau88/TD/actions/runs/41098071728) erfolgreich, einschließlich erneutem Produktionsbuild. Öffentliche Metadaten bestätigen den Branch-Commit und unveränderten Main-SHA. Alle 604 Hauptspiel-Dateien bytegleich erhalten. Öffentlicher Level-25-Kampf bis Wellenende 41, 101.776 Gold und 20/20 Kern, ohne Browserwarnungen/-fehler; anschließend pausiert. Abschließender Folgecommit enthält nur diesen Nachweis und die Aufnahme.
 
 ![Vier Level-25-Türme und tatsächlicher Treffer im Desktopkampf](impact-in-game25-desktop.png)
+
+
+![Öffentliche Testseite: Level 25 im echten Kampf](impact-live25-desktop.png)
