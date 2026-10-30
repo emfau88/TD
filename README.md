@@ -4,7 +4,7 @@
 
 ## [▶ Alle vier erweiterten Türme im Spiel testen](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html)
 
-Waldwächter, Frostkristall, Steinschleuder und **Scharfschütze** mit den kompakten Skins **1 · 2 · 3 · 5 · 10 · 15 · 20 · 25** und passenden Projektilen. Oberhalb von 25 bleibt der letzte Skin erhalten.
+Waldwächter, Frostkristall, Steinschleuder und **Scharfschütze** mit den kompakten Skins **1 · 2 · 3 · 5 · 10 · 15 · 20 · 25** und passenden Projektilen sowie den freigegebenen Trefferwirkungen aus Revision 5. Oberhalb von 25 bleiben letzter Skin und stärkster Impact erhalten.
 
 1. Turmart und Stufe wählen; für den Vergleich gibt es alle acht Stufen gleichzeitig.
 2. „Zur pausierten Verteidigung“ / „Return to paused defense“ bestätigen. Mit ▶ den Kampf starten; Turm anklicken, aufwerten, Pause/Zoom und Reload ausprobieren.
@@ -13,11 +13,11 @@ Waldwächter, Frostkristall, Steinschleuder und **Scharfschütze** mit den kompa
 
 Jeder Start erstellt einen **separaten Spielstand**. Auch [eine frische normale Partie des Branches](https://emfau88.github.io/TD/previews/tower-evolution/?fresh=1) ist von deiner Hauptpartie getrennt. Vorbereitete Welle-40-Karte, normale Kampfregeln, 100.000 Testgold: Grafiktest, kein Balancetest. Hohe Stufen töten weiterhin schnell, jetzt im sichtbaren Ausschnitt. Kampfwerte, Saveformat und Offline-Regeln unverändert. Kein Kongregate-Export.
 
-**Veröffentlichter Spielstand (vier Türme):** [erfolgreiches Pages-Deployment](https://github.com/emfau88/TD/actions/runs/40966998098), Spielcode `3072b9d`; alle 604 Hauptspiel-Dateien bytegleich erhalten.
+**Vorherige Veröffentlichung (vor Impact-Integration):** [erfolgreiches Pages-Deployment](https://github.com/emfau88/TD/actions/runs/40966998098), Spielcode `3072b9d`; alle 604 Hauptspiel-Dateien bytegleich erhalten.
 
-**Prüfung:** 428/428 Tests und Produktionsbuild erfolgreich; 45 Aufstellungen und jede der 32 optischen Stufen mit echten Schüssen, Aufwerten und Save-Roundtrip. [Prüfbericht / Deployment / Spielaufnahmen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md) · [Steinschleuder-Sprites und Quellen](prototypes/steinschleuder-evolution/README.md) · [Scharfschützen-Sprites und Prompts](prototypes/scharfschuetze-evolution/README.md).
+**Prüfung der Impact-Integration:** 434/434 Tests und Produktionsbuild erfolgreich; 45 Aufstellungen und jede der 32 optischen Stufen mit echten Schüssen, Aufwerten und Save-Roundtrip. [Prüfbericht / Deployment / Spielaufnahmen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md) · [Steinschleuder-Sprites und Quellen](prototypes/steinschleuder-evolution/README.md) · [Scharfschützen-Sprites und Prompts](prototypes/scharfschuetze-evolution/README.md).
 
-**Neue separate Designstudie:** [Impact-Vergleich für alle vier Türme](https://emfau88.github.io/TD/previews/tower-evolution/prototypes/tower-impact-study/?revision=5) · Originale niedrige Main-Stufen / neue 10 / 15 / 20; zusätzlich alle acht Skins mit eigener wachsender Trefferwirkung, Spielgröße, Zeitlupe und dichtes Gefecht. **Neue Impacts sind noch nicht im Spiel.** Revision 5 führt Steinschleuder und Scharfschütze als durchgehende optische Steigerung fort: volle Feuereruptionen und ein gemeinsamer grüner Kontaktstern. [Bewertung und Screenshots](prototypes/tower-impact-study/README.md).
+**Zugehörige Vergleichsstudie:** [Impact-Vergleich für alle vier Türme](https://emfau88.github.io/TD/previews/tower-evolution/prototypes/tower-impact-study/?revision=5) · Originale niedrige Main-Stufen / neue 10 / 15 / 20; zusätzlich alle acht Skins mit eigener wachsender Trefferwirkung, Spielgröße, Zeitlupe und dichtes Gefecht. **Diese Trefferwirkungen sind jetzt im isolierten Testbranch-Spiel integriert.** Revision 5 führt Steinschleuder und Scharfschütze als durchgehende optische Steigerung fort: volle Feuereruptionen und ein gemeinsamer grüner Kontaktstern. [Bewertung und Screenshots](prototypes/tower-impact-study/README.md).
 
 Der Testlink ist eine temporäre Pages-Unterseite. Nach einer späteren Main-Veröffentlichung den Workflow **Deploy SPIRE** auf diesem Branch erneut ausführen. Der Workflow erhält sämtliche Main-Dateien bytegleich. Lokal: `npm ci`, `npm run idle:dev -- --port 5193`, dann `http://127.0.0.1:5193/tower-test.html`.
 

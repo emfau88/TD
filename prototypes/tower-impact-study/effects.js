@@ -1,4 +1,5 @@
-// Hand-authored pixel effects, isolated from the game. Distinct silhouettes and timing per skin.
+// Approved pixel effects shared by the design study and isolated testbranch renderer.
+export const IMPACT_FRAME_SIZE=96,IMPACT_FRAME_COUNT=10;
 export const LEVELS=[1,2,3,5,10,15,20,25];
 export const NAMES={
  1:['Pfeilkontakt','Holzsplitter','Stahlsplitter','Kerbsplitter','Silberfächer','Goldspaltung','Smaragdsalve','Meistersalve'],

@@ -1,6 +1,6 @@
-import {LEVELS,NAMES,profile,drawImpact,drawTrail} from './effects.js?v=5';
+import {LEVELS,NAMES,profile,drawImpact,drawTrail,IMPACT_FRAME_SIZE,IMPACT_FRAME_COUNT} from './effects.js?v=5';
 const $=id=>document.getElementById(id),images=new Map(),visible=new Set(),effectCache=new Map();
-const FX_SIZE=96,FX_FRAMES=10;
+const FX_SIZE=IMPACT_FRAME_SIZE,FX_FRAMES=IMPACT_FRAME_COUNT;
 const kinds=[
  {id:1,name:'Waldwächter',color:'#e3d6a5',note:'Holz und Stahl → Silberfächer → Goldspaltung → Smaragdsalven.',scale:.6,duration:500},
  {id:2,name:'Frostkristall',color:'#ace7ec',note:'Eisbruch → Kristallkrone → Prismenkreuz → Aurorabruch.',scale:.8,duration:500},

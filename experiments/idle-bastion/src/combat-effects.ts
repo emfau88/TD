@@ -2,6 +2,7 @@ import type Phaser from 'phaser';
 import { visualStage, type BattleEvent } from './battle';
 import { TOWER_SHEETS, towerSheet } from './tower-atlas';
 import { worldEffectDepth } from './world-depth';
+import { evolutionImpact } from './evolution-impacts';
 
 type Effect = { sprite: Phaser.GameObjects.Image; at: number; frames: readonly number[]; duration: number };
 /** Cosmetic, bounded effects follow confirmed simulation time, including pause. */
@@ -36,6 +37,11 @@ export class CombatEffects {
       const hitKey=e.shot?`${e.shot.uid}:${e.shot.chainHits?.length??0}`:'';
       if (e.type === 'hit' && e.shot && !hits.has(hitKey)) {
         hits.add(hitKey);
+        const evolved = evolutionImpact(e.shot.kind, e.shot.level);
+        if (evolved) {
+          this.add(evolved.key, e.x!, e.y!, evolved.frames, elapsed, evolved.duration, 1);
+          continue;
+        }
         const sheet = towerSheet(e.shot.kind, e.shot.kind===2?1:visualStage(e.shot.level), 'Projectile - Impact');
         this.add(sheet.key, e.x!, e.y!, sheet.frameMap, elapsed,
           e.shot.kind === 5 ? 0.25 : e.shot.kind === 4 ? 0.35 : 0.5, e.shot.kind === 5 ? 30/sheet.width : e.shot.kind === 3 ? 1.6 : e.shot.kind === 2 ? 0.8 : 0.6);

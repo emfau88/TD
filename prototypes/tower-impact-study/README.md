@@ -2,7 +2,7 @@
 
 [Animierte Vergleichsvorschau](https://emfau88.github.io/TD/previews/tower-evolution/prototypes/tower-impact-study/?revision=5)
 
-**Nur Vorschau im Branch `codex/tower-evolution-playtest`. Keine neuen Impacts im Spiel, keine Änderung an Kampfwerten, Saveformat oder Offline-System.** Revision 5 korrigiert auf Nutzerfeedback den Stilbruch bei Stein 20/25 und die wechselnden Trefferformen beim Scharfschützen. Waldwächter und Frost bleiben exakt wie in Revision 4.
+**Revision 5 wurde vom Nutzer für den Testbranch freigegeben und ist jetzt im echten Branch-Spiel integriert. [Im Kampf testen](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html). Hauptspiel, Kampfwerte, Saveformat und Offline-System bleiben unverändert.** Revision 5 korrigiert auf Nutzerfeedback den Stilbruch bei Stein 20/25 und die wechselnden Trefferformen beim Scharfschützen. Waldwächter und Frost bleiben exakt wie in Revision 4.
 
 ## Vergleich
 
@@ -25,7 +25,7 @@ Originalimpact-Maßstäbe 0,6/0,8/1,6/0,6; Dauer 500/500/500/350 ms. Originalpro
 
 Neue Effekte werden einmal in 10 Frames à 96×96 Pixel vorberechnet. Danach genügt ein Sprite-Zeichenaufruf pro Impact. Höchstens 32 Profile, etwa **11,25 MiB rohe Pixel** bei allen Stufen (Standardvergleich etwa 4,22 MiB; zusätzliche Browser-/GPU-Verwaltung nicht enthalten). Pixelraster ohne geglättete geometrische Kanten. Unsichtbare Vergleichsfelder werden nicht laufend neu gezeichnet, Hintergrundtabs halten an, Reduced Motion startet pausiert. Keine Bibliotheken, Spielimporte oder Speicherzugriffe.
 
-## Tatsächliche Prüfung
+## Historische Prüfung der eigenständigen Revision-5-Studie
 
 - JS-Syntax und Pages-Packaging erfolgreich.
 - 32 Profile / 2.720 Zeitposen: endliche Koordinaten, Alpha 0–1, balancierter Canvas-Zustand, kein Zeichnen nach Ablauf. 358.401 geprüfte Pixel-Zeichenaufrufe; eigene Formen reichen höchstens 35 Pixel vom Mittelpunkt und passen in die 96-Pixel-Frames.
@@ -59,3 +59,10 @@ Detailansicht 2×:
 ![Drei versetzte Einschläge auf dem Smartphone](screenshots/impact-v5-dense-390.png)
 
 [Vorher: Revision 4](screenshots/impact-v4-detail.png). Frühere Bilder dokumentieren verworfene oder überarbeitete Entwürfe und sind keine Abnahme dieser Revision.
+
+
+## Integration ins Testbranch-Spiel · 30.10.2026
+
+`evolution-impacts.ts` verwendet dieselbe `drawImpact`-Funktion und dieselben zehn 96-Pixel-Posen wie diese Studie. Alle 32 Profile werden einmal beim Laden vorbereitet; im Kampf ein Sprite pro bestätigtem Treffer, weiter höchstens 96 Effektsprites. Auswahl nach gespeichertem Geschosslevel, unveränderte Trefferdeduplizierung und Kampfzeit/Pause. Keine zusätzlichen Treffer, Schadenswerte oder Speicherfelder. Die zusätzlichen Projektilspuren der Vergleichsstudie werden dadurch nicht separat ins Spiel übernommen.
+
+434/434 Spieltests und Produktionsbuild erfolgreich. Aktuelle Browserbilder und Deployment im [Integrationsbericht](../../artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md). Die obigen Prüfzahlen und reinen Studien-Benchmarks bleiben historische Nachweise, keine Messung der vollständigen Spielperformance.

@@ -12,6 +12,7 @@ import { JELLY_HEAL } from './enemy-roster';
 import { enemyHealFrame } from './enemy-art';
 import { MARA } from './mara';
 import { CombatEffects } from './combat-effects';
+import { prepareEvolutionImpacts } from './evolution-impacts';
 import { projectileDepth } from './world-depth';
 import { weaponFrame, towerSheet } from './tower-atlas';
 import { succubusFrame } from '../../../reference/src/succubus-art';
@@ -152,6 +153,8 @@ export class BattleScene extends Phaser.Scene {
     this.hooks.preparing?.();
     prepareArt(this);
     prepareEvolution(this);
+    try { prepareEvolutionImpacts(this); }
+    catch (error) { console.error(error); this.failLoading(); return; }
     const { width, height } = this.sim.layout.bounds;
     this.cameras.main.setBounds(0, 0, width, height).setScroll(0, 0);
     this.forest = createForest(this, this.sim.layout);
