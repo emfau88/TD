@@ -159,4 +159,8 @@ Kritische Sichtbewertung: kompakte, gleich hohe Gebäude; neue Materialien und S
 
 ![Hohe Sturmlicht-Impacts in der separaten Studie](storm-impacts.png)
 
-Sturmlicht-Commit und Pages-Veröffentlichungsnachweis folgen nach Prüfung.
+**Veröffentlicht:** Spielcode `3bdb038630b1c48597fb193bc92c86d75c0e1c71`, [Pages-Lauf 41110381033](https://github.com/emfau88/TD/actions/runs/41110381033) erfolgreich, einschließlich CI-Produktionsbuild. Deployment-Guard: sämtliche **604 Main-Dateien bytegleich**. Öffentliche `feature-preview.json` bestätigt Branch- und Main-SHA; [kompakter Nachweis](storm-deployment.json). Main bleibt `93703cb66e369ed7f3a724f0e42575775cc12bc4`.
+
+Öffentliche Testauswahl mit fünf Türmen und Level 25 gestartet; Sturmlicht im Kampf bis Welle 42, Blitze und Impacts sichtbar. Am Ende pausiert: 102.249 Gold, 10 Gegner, 20/20 Kernleben. Keine Browserwarnungen oder JavaScript-Fehler. Der anschließende Abschlusscommit enthält nur Dokumentation, Metadaten und diesen Screenshot; veröffentlichter Spielcode bleibt `3bdb038`. Kein Main-Merge, kein Export.
+
+![Echter öffentlicher Level-25-Sturmlicht-Kettenangriff](storm-live-25.png)
