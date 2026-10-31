@@ -42,6 +42,8 @@ Statische Screenshots dokumentieren die Geometrie; die Bewegung wurde zusätzlic
 
 Laufzeit: `lesson-pointer.ts`, `premium.css`, `battle-scene.ts`, `main.ts`, `mara-intro.ts`, `onboarding-ui.ts`, `tutorial-guide.ts`, `locales/en.ts`. Tests: `lesson-pointer.test.ts`, Ergänzung `tutorial-camera.test.ts`, lokale `tests/browser/tutorial-guidance.html/ts`. Roadmap und dieser Bericht.
 
-Commit/Push und Pages-Veröffentlichung: nach den abgeschlossenen lokalen Prüfungen ausstehend; der Deploymentnachweis wird nachgetragen.
+Implementierung und Nachweise: **5bfabe44389a370776d10275d9a740c68d7fcc04**, direkt auf `main` gepusht. [Pages-Lauf 41206497137](https://github.com/emfau88/TD/actions/runs/41206497137) erfolgreich (inklusive CI-Produktionsbuild). Öffentliche Seite im Browser geprüft: beide Pulsanimationen aktiv, kein Halo, „Choose your tower“ und kein vorzeitiger Kartenpfeil; keine Browserfehler. [Öffentlicher Screenshot](tutorial-live-choice.png). Dieser Nachtrag enthält ausschließlich Dokumentation.
+
+Der Intro-Reload wurde zusätzlich auf DE/390 geprüft: Schritt 2 bleibt erhalten, „Verstanden“ pulsiert, danach erscheint „Deinen Turm auswählen“.
 
 Bewertung: Der Einstieg verwendet nun eine verständliche visuelle Sprache: Informationspfeil für Orte, pulsierender Rahmen für den nächsten Klick, genau ein quadratischer Bauhinweis. Der reale Werkstattweg vermittelt, wo Forschung später stattfindet. Auf 320 px beansprucht die geöffnete Werkstatt viel Fläche, bleibt in der Lernpause aber vollständig bedienbar. Kein technischer Blocker in den geprüften Änderungen; die benannte Einschränkung beim automatisierten Kartenklick bleibt transparent.
