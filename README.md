@@ -1,35 +1,12 @@
-# Towers & Tantrums · isolierter Turmtest
-
-**Branch: `codex/tower-evolution-playtest` · nicht in `main` integriert.**
-
-## [▶ Alle fünf erweiterten Türme im Spiel testen](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html)
-
-Waldwächter, Frostkristall, Steinschleuder, Scharfschütze und **Sturmlicht** mit den kompakten Skins **1 · 2 · 3 · 5 · 10 · 15 · 20 · 25** und passenden Projektilen sowie levelabhängigen Trefferwirkungen (vier freigegebene Reihen aus Revision 5, neue Sturmlicht-Reihe). Oberhalb von 25 bleiben letzter Skin und stärkster Impact erhalten.
-
-1. Turmart und Stufe wählen; für den Vergleich gibt es alle acht Stufen gleichzeitig.
-2. „Zur pausierten Verteidigung“ / „Return to paused defense“ bestätigen. Mit ▶ den Kampf starten; Turm anklicken, aufwerten, Pause/Zoom und Reload ausprobieren.
-3. Die neue Arena zeigt den sichtbaren Anmarsch auf die mittlere Wegstrecke. Einzelstufen verwenden nur einen Turm pro Art. **◎ / Testbereich** richtet die Kamera erneut aus.
-4. Die erzeugte `?probe=tower-arena-…`-Adresse als Lesezeichen speichern, um genau diesen Test fortzusetzen. Über das Spielmenü zur Auswahl zurückkehren. Alte Test-Lesezeichen behalten ihre alte Aufstellung; für die neue Arena neu starten.
-
-Jeder Start erstellt einen **separaten Spielstand**. Auch [eine frische normale Partie des Branches](https://emfau88.github.io/TD/previews/tower-evolution/?fresh=1) ist von deiner Hauptpartie getrennt. Vorbereitete Welle-40-Karte, normale Kampfregeln, 100.000 Testgold: Grafiktest, kein Balancetest. Hohe Stufen töten weiterhin schnell, jetzt im sichtbaren Ausschnitt. Kampfwerte, Saveformat und Offline-Regeln unverändert. Kein Kongregate-Export.
-
-**Sturmlicht ergänzt:** 437/437 Tests und Produktionsbuild erfolgreich; 54 Aufstellungen und jede der 40 optischen Stufen mit echten Schüssen, Aufwerten und Save-Roundtrip. Als `3bdb038` veröffentlicht, [Pages erfolgreich](https://github.com/emfau88/TD/actions/runs/41110381033); öffentlicher Level-25-Kampf geprüft, sämtliche **604 Main-Dateien bytegleich**. [Prüfbericht / Deployment / Spielaufnahmen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/REPORT.md) · [Sturmlicht-Sprites, Vergleich und Prompts](prototypes/sturmlicht-evolution/README.md).
-
-**Aktuelle Gesamtprüfung:** Alle fünf Turmreihen technisch geprüft; vor einem Main-Merge müssen Test-Speichertrennung und Testoberfläche umgeschaltet werden. [Ergebnis und konkrete Übernahmevoraussetzungen](artifacts/idle-bastion/acceptance/tower-evolution-playtest/COMBINED_REVIEW.md).
-
-**Zugehörige Vergleichsstudie:** [Impact-Vergleich für alle fünf Türme](https://emfau88.github.io/TD/previews/tower-evolution/prototypes/tower-impact-study/?revision=6). Originale niedrige Main-Stufen / neue 10 / 15 / 20; zusätzlich alle acht Skins mit eigener Trefferwirkung, Spielgröße, Zeitlupe und dichtes Gefecht. Die vier bisherigen Reihen bleiben unverändert; Sturmlicht ergänzt farbige Kettenblitze, elektrische Kronen und kurze Nachimpulse. **Alle fünf Reihen sind im isolierten Branch-Spiel aktiv.** [Details](prototypes/tower-impact-study/README.md).
-
-Der Testlink ist eine temporäre Pages-Unterseite. Nach einer späteren Main-Veröffentlichung den Workflow **Deploy SPIRE** auf diesem Branch erneut ausführen. Der Workflow erhält sämtliche Main-Dateien bytegleich. Lokal: `npm ci`, `npm run idle:dev -- --port 5193`, dann `http://127.0.0.1:5193/tower-test.html`.
-
----
-
-## Beschreibung der unveränderten Hauptfassung
+# Towers & Tantrums
 
 *Build towers. Make questionable friends.*
 
+
+
 Ein Idle-Tower-Defense-Spiel im Pixelwald: Türme bauen, automatische Wellen abwehren,
 die Siedlung ausbauen und zwischen den Kämpfen die Gefährten in der Taverne kennenlernen.
-**In Entwicklung · Stand 27.10.2026 · veröffentlicht von `main`.**
+**In Entwicklung · Stand 31.10.2026 · veröffentlicht von `main`.**
 Bisheriger Projektname: SPIRE · Idle Bastion.
 
 **[▶ Spielen / fortsetzen](https://emfau88.github.io/TD/)** ·
@@ -38,6 +15,19 @@ Bisheriger Projektname: SPIRE · Idle Bastion.
 Der Frischstart legt einen separaten Spielstand an und erhält deine bisherige Partie.
 Seine erzeugte `?probe=…`-Adresse kannst du als Lesezeichen speichern.
 Spielstände liegen lokal im Browser. Englisch ist voreingestellt; Deutsch lässt sich im Spielmenü wählen.
+
+## Turmentwicklung
+
+Alle fünf Türme entwickeln sich sichtbar auf Level **1 · 2 · 3 · 5 · 10 · 15 · 20 · 25**,
+mit kompakten Skins, passenden Projektilen und abgestuften Impacts. Kampfwerte,
+Speicherformat und Offline-Regeln bleiben erhalten.
+[Integrationsprüfung](artifacts/idle-bastion/acceptance/tower-evolution-playtest/MAIN_INTEGRATION.md).
+
+Der [separate Teststarter](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html)
+bleibt im Branch `codex/tower-evolution-playtest` isoliert. Seine Probe-Links verwenden
+eigene Spielstände und Testgold; sie werden nicht in Hauptspielstände umgewandelt.
+Lokal nur mit `VITE_FEATURE_PREVIEW=1` starten (PowerShell: `$env:VITE_FEATURE_PREVIEW='1'`),
+dann `npm run idle:dev` und `/tower-test.html`. Normale Builds enthalten keinen Turmteststarter.
 
 ## So sieht es heute aus · 27.10.2026
 

@@ -1,5 +1,7 @@
 # Gesamtprüfung aller fünf Türme · 30.10.2026
 
+**Nachtrag 31.10.2026:** Die unten gefundenen Integrationshindernisse wurden auf ausdrücklichen Folgeauftrag behoben; aktuelle Prüfung und Übernahme stehen im [Integrationsbericht](MAIN_INTEGRATION.md). Dieser Bericht bleibt der unveränderte historische Audit.
+
 **Urteil: Die Turmdarstellung besteht die Prüfung. Den Branch in seiner jetzigen Form noch nicht unverändert nach main übernehmen.** Vorher müssen die beabsichtigte Test-Speichertrennung und die Testoberfläche für den Produktionsbetrieb umgeschaltet werden. Keine neue Gameplay- oder Grafikentwicklung nötig. Dieser Auftrag verändert keinen Laufzeitcode und führt keinen Merge aus.
 
 Geprüft: Branch `codex/tower-evolution-playtest`, HEAD `a8765d0d09dadbc97845ed2b4e3a8e171a021ec3`, veröffentlichter Spielcode `3bdb038630b1c48597fb193bc92c86d75c0e1c71`. Aktuelles main `93703cb66e369ed7f3a724f0e42575775cc12bc4`; vor der Prüfung frisch gefetcht. Kein fremder oder ungesicherter Ausgangsdiff.

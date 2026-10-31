@@ -1,0 +1,93 @@
+[
+  {
+    "database": "spire-idle-bastion",
+    "current": {
+      "schema": 32,
+      "gold": 1820,
+      "wave": 40,
+      "paused": true,
+      "towers": [
+        {
+          "kind": 1,
+          "level": 14
+        },
+        {
+          "kind": 1,
+          "level": 13
+        },
+        {
+          "kind": 2,
+          "level": 3
+        },
+        {
+          "kind": 3,
+          "level": 11
+        },
+        {
+          "kind": 4,
+          "level": 11
+        }
+      ],
+      "elapsed": 1833,
+      "pending": 0
+    },
+    "battleEqualsOriginal": true
+  },
+  {
+    "database": "spire-idle-bastion-probe-integration-old",
+    "current": {
+      "schema": 32,
+      "gold": 118,
+      "wave": 2,
+      "paused": true,
+      "towers": [
+        {
+          "kind": 1,
+          "level": 1
+        },
+        {
+          "kind": 1,
+          "level": 1
+        }
+      ],
+      "elapsed": 19.5,
+      "pending": 0
+    },
+    "battleEqualsOriginal": false
+  },
+  {
+    "database": "spire-idle-bastion-probe-integration-offline-valid",
+    "current": {
+      "schema": 32,
+      "gold": 7200,
+      "wave": 1,
+      "paused": true,
+      "towers": [
+        {
+          "kind": 1,
+          "level": 1
+        },
+        {
+          "kind": 1,
+          "level": 1
+        }
+      ],
+      "elapsed": 0.4,
+      "pending": 0
+    },
+    "battleEqualsOriginal": false
+  },
+  {
+    "database": "spire-idle-bastion-tower-evolution",
+    "current": {
+      "schema": 32,
+      "gold": 75,
+      "wave": 0,
+      "paused": true,
+      "towers": [],
+      "elapsed": 0,
+      "pending": 0
+    },
+    "battleEqualsOriginal": true
+  }
+]

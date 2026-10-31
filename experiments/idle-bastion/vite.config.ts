@@ -1,9 +1,19 @@
 import { fileURLToPath } from 'node:url';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 
-export default defineConfig({
+export default defineConfig(({ mode }) => {
+  const preview = loadEnv(mode, root, '').VITE_FEATURE_PREVIEW === '1';
+  return {
+  plugins: [{
+    name: 'tower-preview-ui',
+    transformIndexHtml(html, context) {
+      if (!preview || !context.filename.replaceAll('\\', '/').endsWith('/index.html')) return html;
+      return html.replace('</title>', ' · Tower test branch</title>')
+        .replace('<!-- tower-preview-menu -->', '<p><a href="./tower-test.html" style="color:#c5e7ed">Tower test branch · Testauswahl / Test selection</a></p>');
+    },
+  }],
   root,
   base: './',
   publicDir: false,
@@ -27,9 +37,10 @@ export default defineConfig({
         voiceCheck: fileURLToPath(new URL('./voice-check.html', import.meta.url)),
         effectsCheck: fileURLToPath(new URL('./effects-check.html', import.meta.url)),
         mara: fileURLToPath(new URL('./mara-check.html', import.meta.url)),
-        towerTest: fileURLToPath(new URL('./tower-test.html', import.meta.url)),
+        ...(preview ? { towerTest: fileURLToPath(new URL('./tower-test.html', import.meta.url)) } : {}),
         featureCheck: fileURLToPath(new URL('./feature-check.html', import.meta.url)),
       },
     },
   },
+  };
 });

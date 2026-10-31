@@ -1,4 +1,4 @@
-import {towerPreviewDatabase} from './tower-evolution';
+import { gameDatabase } from './save-namespace';
 import { TavernStoryHistory } from './tavern-story-history';
 import { mountCredits } from './credits-ui';
 import { offlineGoldDisplay } from './reward-display';
@@ -91,7 +91,8 @@ if (entryURL.searchParams.has('fresh')) {
 }
 const probeSlot = entryURL.searchParams.get('probe');
 // Explicit fresh probes keep the user's main game and its offline clock intact.
-const databaseName = towerPreviewDatabase(probeSlot);
+const featurePreview = import.meta.env.VITE_FEATURE_PREVIEW === '1';
+const databaseName = gameDatabase(featurePreview, probeSlot);
 let session: BattleSession | undefined;
 let intro: MaraIntro | undefined;
 let introPortraits: string[] = [];
@@ -953,7 +954,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
           introPortraits = await portraitsReady;
           if (scene !== view || session !== live) return;
           ready = true; drawDockArt(view); view.setSelected(selectedPadId); syncUI();
-          if(probeSlot?.startsWith('tower-arena-')) {
+          if(featurePreview && probeSlot?.startsWith('tower-arena-')) {
             view.frameTowerTest();
             if(!document.getElementById('tower-test-camera')){
               const button=document.createElement('button');button.id='tower-test-camera';button.type='button';button.textContent='◎';button.title=language()==='de'?'Testbereich':'Test area';button.setAttribute('aria-label',button.title);
