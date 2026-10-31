@@ -24,4 +24,6 @@ Ausgang: main `93703cb66e369ed7f3a724f0e42575775cc12bc4`, Testbranch `2cf020de48
 ![Historischer Hauptsave mit neuer Turmdarstellung nach Reload](integration-main-reload.png)
 ![Historischer Kampf erfolgreich fortgesetzt](integration-old-combat.png)
 
-**Lokale Abnahme bestanden: Übernahme nach main vertretbar.** Die beiden Integrationshindernisse sind behoben. Veröffentlichung und öffentliche Gegenprüfung folgen nach dem Commit. Die technische Prüfung ersetzt keine Leistungsmessung auf physischer Smartphone-Hardware.
+**Lokale Abnahme bestanden: Übernahme nach main vertretbar.** Die beiden Integrationshindernisse sind behoben. Korrekturcommit `3af45cc`, anschließend Merge `46a1e156968e7f4dd9c7f73870c06dcd58381cef` nach main. [Main-Pages 41189905584](https://github.com/emfau88/TD/actions/runs/41189905584) erfolgreich. Öffentliches Hauptspiel startet mit separater frischer Probe; normaler Titel und Menü ohne Testauswahl. Veröffentlichtes Laufzeitbundle `main-lr3GkZZQ.js` stimmt mit dem Linux-CI-Buildprotokoll überein und enthält Main-/Probe-Namen sowie neue Turmdarstellung, keine Testkamera oder Preview-Datenbank. Die lokalen Windows-Bundlehashes unterscheiden sich; die Zuordnung wurde daher gegen den tatsächlichen CI-Build geprüft.
+
+Die Testseite wird anschließend über den bestehenden genehmigten Preview-Workflow wieder bereitgestellt; dabei bleiben Main-Dateien bytegleich. Keine Kongregate-Erstellung. Die technische Prüfung ersetzt keine Leistungsmessung auf physischer Smartphone-Hardware.
