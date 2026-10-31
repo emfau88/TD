@@ -1,0 +1,1 @@
+96 Treffer / Bild — L1: Ø 0.27 ms · P95 0.40 ms | L10: Ø 1.29 ms · P95 1.50 ms | L25: Ø 2.42 ms · P95 3.10 ms. Nur Canvas-Effekte in diesem Browser; keine Messung des vollständigen Spiels oder eines echten Smartphones.

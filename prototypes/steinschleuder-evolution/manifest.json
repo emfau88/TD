@@ -1,0 +1,107 @@
+{
+  "levels": [
+    {
+      "kind": 3,
+      "level": 1,
+      "weaponY": -17.33,
+      "originY": 0.8,
+      "originalStage": 1,
+      "base": "assets/compact/level-1-base.png",
+      "weapon": "assets/compact/level-1-weapon.png",
+      "projectile": "assets/compact/level-1-projectile.png"
+    },
+    {
+      "kind": 3,
+      "level": 2,
+      "weaponY": -6.620000000000001,
+      "originY": 0.8,
+      "originalStage": 2,
+      "base": "assets/compact/level-2-base.png",
+      "weapon": "assets/compact/level-2-weapon.png",
+      "projectile": "assets/compact/level-2-projectile.png"
+    },
+    {
+      "kind": 3,
+      "level": 3,
+      "weaponY": -0.9499999999999993,
+      "originY": 0.8,
+      "originalStage": 3,
+      "base": "assets/compact/level-3-base.png",
+      "weapon": "assets/compact/level-3-weapon.png",
+      "projectile": "assets/compact/level-3-projectile.png"
+    },
+    {
+      "kind": 3,
+      "level": 5,
+      "weaponY": -4.892000000000003,
+      "originY": 0.8,
+      "originalStage": 0,
+      "base": "assets/compact/level-5-base.png",
+      "weapon": "assets/compact/level-5-weapon.png",
+      "projectile": "assets/compact/level-5-projectile.png"
+    },
+    {
+      "kind": 3,
+      "level": 10,
+      "weaponY": -4.892000000000003,
+      "originY": 0.8,
+      "originalStage": 0,
+      "base": "assets/compact/level-10-base.png",
+      "weapon": "assets/compact/level-10-weapon.png",
+      "projectile": "assets/compact/level-10-projectile.png"
+    },
+    {
+      "kind": 3,
+      "level": 15,
+      "weaponY": -4.892000000000003,
+      "originY": 0.8,
+      "originalStage": 0,
+      "base": "assets/compact/level-15-base.png",
+      "weapon": "assets/compact/level-15-weapon.png",
+      "projectile": "assets/compact/level-15-projectile.png"
+    },
+    {
+      "kind": 3,
+      "level": 20,
+      "weaponY": -4.892000000000003,
+      "originY": 0.8,
+      "originalStage": 0,
+      "base": "assets/compact/level-20-base.png",
+      "weapon": "assets/compact/level-20-weapon.png",
+      "projectile": "assets/compact/level-20-projectile.png"
+    },
+    {
+      "kind": 3,
+      "level": 25,
+      "weaponY": -4.892000000000003,
+      "originY": 0.8,
+      "originalStage": 0,
+      "base": "assets/compact/level-25-base.png",
+      "weapon": "assets/compact/level-25-weapon.png",
+      "projectile": "assets/compact/level-25-projectile.png"
+    }
+  ],
+  "scale": 0.63,
+  "nativeBase": [
+    64,
+    128
+  ],
+  "nativeWeapon": [
+    96,
+    96
+  ],
+  "baseY": 13,
+  "originalHashes": {
+    "Tower 03 - Level 01 - Projectile - Impact.png": "d4d941e20f9c5850dbcd8c638639f6120761e55bdce3b3dd3f2fe28b4e4ff2b9",
+    "Tower 03 - Level 01 - Projectile.png": "ed0b28c579f11c86f9b34a086fab8d8a44867f1ec793812791ee8d75121afcc2",
+    "Tower 03 - Level 01 - Weapon.png": "b865be190fd97fddab771d16adab5f52629661c77bd191f4d9e496dfce26d0c0",
+    "Tower 03 - Level 02 - Projectile - Impact.png": "cc0fe9ea96226065d7c91228529f5ced63a23e2782d91f27db650e02ddf75c1a",
+    "Tower 03 - Level 02 - Projectile.png": "4cfbfdef694c59113155c42cca59de564e0e92acf9925c97839b4ffd0282f1c4",
+    "Tower 03 - Level 02 - Weapon.png": "dcb99027d1a37a0355f176dc39a12e011a063081cff683c0510e347d64344bb9",
+    "Tower 03 - Level 03 - Projectile - Impact.png": "6057f1044b839b60e0021ec1c2bb684f533f0867b9937fc5a5d03f3814fcfd81",
+    "Tower 03 - Level 03 - Projectile.png": "151d3421d1ac9e7221447580659b7db9d280f1b17c4133ac6906790f7d48beef",
+    "Tower 03 - Level 03 - Weapon.png": "8872279cdfc5ffc51ae8fa7007c117dff00705c7ed0e83d85dba99ab39f1bb87",
+    "Tower 03.png": "a564bf83d5207d84aec74943873a2cede67f999b3f8e1ff31cad270a7ad26d9e"
+  },
+  "provenance": "Original stages 1\u20133, lower facade shortened. Built-in Imagegen parts for 5\u201325; nearest-neighbour native-grid packaging, no color filters or original overwrites."
+}

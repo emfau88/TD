@@ -1,0 +1,1 @@
+96 Treffer / Bild · CPU-Zeichenzeit — L1: Ø 0.10 ms · P95 0.20 ms | L10: Ø 0.10 ms · P95 0.20 ms | L25: Ø 0.13 ms · P95 0.20 ms. Effekte als vorberechnete Sprites; ohne GPU-Gesamtkosten, Spielsimulation oder Smartphone-Messung.

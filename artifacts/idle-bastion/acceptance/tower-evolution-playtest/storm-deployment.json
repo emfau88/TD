@@ -1,0 +1,9 @@
+{
+  "branch": "codex/tower-evolution-playtest",
+  "branchSha": "3bdb038630b1c48597fb193bc92c86d75c0e1c71",
+  "mainSha": "93703cb66e369ed7f3a724f0e42575775cc12bc4",
+  "run": "https://github.com/emfau88/TD/actions/runs/41110381033",
+  "conclusion": "success",
+  "mainFilesPreservedByteForByte": 604,
+  "browser": "Public Stormlight 25 combat reached wave 42; paused with 102249 gold, 10 enemies, 20 core health; no warnings or errors."
+}

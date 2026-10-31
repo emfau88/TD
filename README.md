@@ -2,9 +2,11 @@
 
 *Build towers. Make questionable friends.*
 
+
+
 Ein Idle-Tower-Defense-Spiel im Pixelwald: Türme bauen, automatische Wellen abwehren,
 die Siedlung ausbauen und zwischen den Kämpfen die Gefährten in der Taverne kennenlernen.
-**In Entwicklung · Stand 27.10.2026 · veröffentlicht von `main`.**
+**In Entwicklung · Stand 31.10.2026 · veröffentlicht von `main`.**
 Bisheriger Projektname: SPIRE · Idle Bastion.
 
 **[▶ Spielen / fortsetzen](https://emfau88.github.io/TD/)** ·
@@ -13,6 +15,19 @@ Bisheriger Projektname: SPIRE · Idle Bastion.
 Der Frischstart legt einen separaten Spielstand an und erhält deine bisherige Partie.
 Seine erzeugte `?probe=…`-Adresse kannst du als Lesezeichen speichern.
 Spielstände liegen lokal im Browser. Englisch ist voreingestellt; Deutsch lässt sich im Spielmenü wählen.
+
+## Turmentwicklung
+
+Alle fünf Türme entwickeln sich sichtbar auf Level **1 · 2 · 3 · 5 · 10 · 15 · 20 · 25**,
+mit kompakten Skins, passenden Projektilen und abgestuften Impacts. Kampfwerte,
+Speicherformat und Offline-Regeln bleiben erhalten.
+[Integrationsprüfung](artifacts/idle-bastion/acceptance/tower-evolution-playtest/MAIN_INTEGRATION.md).
+
+Der [separate Teststarter](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html)
+bleibt im Branch `codex/tower-evolution-playtest` isoliert. Seine Probe-Links verwenden
+eigene Spielstände und Testgold; sie werden nicht in Hauptspielstände umgewandelt.
+Lokal nur mit `VITE_FEATURE_PREVIEW=1` starten (PowerShell: `$env:VITE_FEATURE_PREVIEW='1'`),
+dann `npm run idle:dev` und `/tower-test.html`. Normale Builds enthalten keinen Turmteststarter.
 
 ## So sieht es heute aus · 27.10.2026
 

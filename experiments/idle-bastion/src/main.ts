@@ -1,3 +1,4 @@
+import { gameDatabase } from './save-namespace';
 import { TavernStoryHistory } from './tavern-story-history';
 import { mountCredits } from './credits-ui';
 import { offlineGoldDisplay } from './reward-display';
@@ -90,8 +91,8 @@ if (entryURL.searchParams.has('fresh')) {
 }
 const probeSlot = entryURL.searchParams.get('probe');
 // Explicit fresh probes keep the user's main game and its offline clock intact.
-const defaultDatabaseName = import.meta.env.VITE_FEATURE_PREVIEW === '1' ? 'spire-idle-bastion-preview-frost-heroes' : 'spire-idle-bastion';
-const databaseName = probeSlot && /^[a-z0-9-]{1,60}$/.test(probeSlot) ? `spire-idle-bastion-probe-${probeSlot}` : defaultDatabaseName;
+const featurePreview = import.meta.env.VITE_FEATURE_PREVIEW === '1';
+const databaseName = gameDatabase(featurePreview, probeSlot);
 let session: BattleSession | undefined;
 let intro: MaraIntro | undefined;
 let introPortraits: string[] = [];
@@ -953,6 +954,14 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
           introPortraits = await portraitsReady;
           if (scene !== view || session !== live) return;
           ready = true; drawDockArt(view); view.setSelected(selectedPadId); syncUI();
+          if(featurePreview && probeSlot?.startsWith('tower-arena-')) {
+            view.frameTowerTest();
+            if(!document.getElementById('tower-test-camera')){
+              const button=document.createElement('button');button.id='tower-test-camera';button.type='button';button.textContent='◎';button.title=language()==='de'?'Testbereich':'Test area';button.setAttribute('aria-label',button.title);
+              Object.assign(button.style,{position:'absolute',top:'calc(100% + 6px)',right:'0',width:'40px',height:'40px'});
+              button.addEventListener('click',()=>scene?.frameTowerTest());document.querySelector('.map-controls')?.prepend(button);
+            }
+          }
           if (['ready', 'combat', 'upgrade', 'frost', 'observe'].includes(live.battle.introduction.stage)) view.focusGuidedDefense();
           loadingScreen()?.complete();
           if (intro?.active) element('onboarding-primary').focus({ preventScroll: true });

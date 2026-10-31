@@ -1,3 +1,5 @@
+import {preloadEvolution,prepareEvolution,evolutionGhost,EvolutionView} from './evolution-view';
+import {evolutionSkin} from './tower-evolution';
 import { t } from './i18n';
 import { ILYRA } from './ilyra';
 import type { ControlledHero } from './hero-controls';
@@ -10,6 +12,7 @@ import { JELLY_HEAL } from './enemy-roster';
 import { enemyHealFrame } from './enemy-art';
 import { MARA } from './mara';
 import { CombatEffects } from './combat-effects';
+import { prepareEvolutionImpacts } from './evolution-impacts';
 import { projectileDepth } from './world-depth';
 import { weaponFrame, towerSheet } from './tower-atlas';
 import { succubusFrame } from '../../../reference/src/succubus-art';
@@ -77,6 +80,8 @@ export class BattleScene extends Phaser.Scene {
   }
   private wispName!: Phaser.GameObjects.Text;
   private combatEffects!: CombatEffects;
+  private evolution!: EvolutionView;
+  private towerTestFrame = false;
   private buildKind?: TowerId;
   private groundMode?: 'mara' | BuildingId;
   private groundCell?: GridCell;
@@ -128,6 +133,7 @@ export class BattleScene extends Phaser.Scene {
     this.load.on(Phaser.Loader.Events.FILE_COMPLETE, () => { this.hooks.loadProgress?.(++completed, this.requiredTextures.length); });
     this.load.on(Phaser.Loader.Events.FILE_LOAD_ERROR, () => this.failLoading());
     preloadArt(this);
+    preloadEvolution(this);
     preloadSpellArt(this);
     this.requiredTextures = [...this.load.list].map(file => file.key);
     this.hooks.loadProgress?.(0, this.requiredTextures.length);
@@ -146,6 +152,9 @@ export class BattleScene extends Phaser.Scene {
     if (this.loadingFailed || this.requiredTextures.some(key => !this.textures.exists(key))) { this.failLoading(); return; }
     this.hooks.preparing?.();
     prepareArt(this);
+    prepareEvolution(this);
+    try { prepareEvolutionImpacts(this); }
+    catch (error) { console.error(error); this.failLoading(); return; }
     const { width, height } = this.sim.layout.bounds;
     this.cameras.main.setBounds(0, 0, width, height).setScroll(0, 0);
     this.forest = createForest(this, this.sim.layout);
@@ -154,6 +163,7 @@ export class BattleScene extends Phaser.Scene {
     this.effects = this.add.graphics().setDepth(5500);
     this.bossCharmView = new BossCharmView(this, this.pixelDensity);
     this.combatEffects = new CombatEffects(this);
+    this.evolution = new EvolutionView(this);
     this.ilyraView = new IlyraView(this);
     this.heroMarks = new HeroMarks(this);
     this.maraSpell = new MaraSpellView(this);
@@ -192,7 +202,7 @@ export class BattleScene extends Phaser.Scene {
       this.input.off('pointermove', this.panAtPointer, this);
       this.input.off('wheel', this.zoomAtPointer, this);
       this.scale.off('resize', this.resizeCamera, this);
-      this.bossCharmView.destroy(); this.combatEffects.destroy();
+      this.bossCharmView.destroy(); this.combatEffects.destroy(); this.evolution.destroy();
       this.heroMarks.destroy(); this.maraSpell.destroy(); this.ilyraView.destroy();
       this.forest?.destroy(); this.forest = undefined;
       this.padLabels.clear(); this.padMarks.clear(); this.towerViews.clear(); this.enemyViews.clear(); this.shotViews.clear();
@@ -228,7 +238,7 @@ export class BattleScene extends Phaser.Scene {
       this.hooks.changed();
     }
   }
-  acceptEvents(events: readonly BattleEvent[]): void { if (this.readyToDraw) this.combatEffects.accept(events, this.sim.elapsed + this.sim.introduction.preparationSeconds); }
+  acceptEvents(events: readonly BattleEvent[]): void { if (this.readyToDraw) { const time=this.sim.elapsed+this.sim.introduction.preparationSeconds; this.combatEffects.accept(events,time); this.evolution.accept(events,time); } }
   invalidatePointer(): void { this.pendingTap = undefined; this.dragOrigin = undefined; }
   setIlyraMode(mode?: 'move'|'cast'): void { if (this.ilyraMode !== mode) this.invalidatePointer(); this.ilyraMode=mode; }
   setHeroSelection(hero?: ControlledHero, suggestion?: { x: number; y: number }): void {
@@ -287,7 +297,11 @@ export class BattleScene extends Phaser.Scene {
     this.resizeCamera();
     this.cameras.main.centerOn(frame.x, this.portraitCamera ? frame.y : this.sim.layout.bounds.height / 2);
   }
+  frameTowerTest(): void {
+    this.towerTestFrame = true; this.overview = false; this.relativeZoom = 1; this.resizeCamera();
+  }
   resetCamera(): void {
+    this.towerTestFrame = false;
     this.guidedDefenseFrame = false;
     this.relativeZoom = 1; this.overview = true; this.resizeCamera();
     this.cameras.main.centerOn(this.sim.layout.bounds.width / 2, this.sim.layout.bounds.height / 2);
@@ -314,6 +328,7 @@ export class BattleScene extends Phaser.Scene {
     camera.setViewport(0, top, this.scale.width, viewHeight);
     this.baseZoom = portrait && !this.overview ? Math.max(this.scale.height / height, this.scale.width / 640)
       : Math.min(this.scale.width / (this.overview ? width : 1120), viewHeight / height);
+    if(this.towerTestFrame) this.baseZoom = Math.min(this.scale.width/520,viewHeight/400);
     const defense = this.guidedDefenseFrame && portrait ? this.defenseFrame(this.guidedDefensePad) : undefined;
     if (defense) this.baseZoom = tutorialDefenseZoom(this.baseZoom, this.scale.width, viewHeight, defense);
     camera.setZoom(this.baseZoom * this.relativeZoom);
@@ -321,6 +336,7 @@ export class BattleScene extends Phaser.Scene {
     const initialY = portrait && !this.overview ? camera.displayHeight / 2 - 40 : height / 2;
     camera.centerOn(!center || changedOrientation ? defense?.x ?? (portrait ? 280 : 560) : center.x,
       !center || changedOrientation ? defense?.y ?? initialY : center.y);
+    if(this.towerTestFrame)camera.centerOn(440,210);
     this.cameraFitted = true; this.hooks.changed();
   }
   private fitCameraBounds(): void {
@@ -664,11 +680,12 @@ export class BattleScene extends Phaser.Scene {
       if (Math.hypot(p.x - point.x, p.y - point.y) <= range) g.fillStyle(0xffe0a0, 0.2).fillRect(cell.x * size, cell.y * size, size, size);
     }
     if (!tower && this.buildKind) {
-      const art = towerArt(this.buildKind), mount = towerMount(this.buildKind), valid = this.sim.canBuild(pad.id, this.buildKind);
+      const original = towerArt(this.buildKind), compact=evolutionGhost(this.buildKind);
+      const art=compact?{base:compact.base,weapons:[compact.weapon]}:original,mount=compact?{baseY:13,originY:compact.originY,weaponY:compact.weaponY}:towerMount(this.buildKind), valid = this.sim.canBuild(pad.id, this.buildKind);
       this.ghostBase.setVisible(true).setTexture(art.base, 0).setPosition(point.x, point.y + mount.baseY).setScale(SCALE.tower)
         .setOrigin(0.5, mount.originY).setAlpha(0.75).setTint(valid ? 0xffffff : 0xff9999);
       this.ghostWeapon.setVisible(true).setTexture(art.weapons[0], 0).setPosition(point.x, point.y + mount.weaponY)
-        .setScale(SCALE.tower).setAlpha(0.75).setTint(valid ? 0xffffff : 0xff9999);
+        .setScale(compact?.weaponScale??SCALE.tower).setAlpha(0.75).setTint(valid ? 0xffffff : 0xff9999);
     }
     g.lineStyle(2, 0xf2daa0, 0.95).strokeEllipse(point.x, point.y + 7, 35, 18);
   }
@@ -708,16 +725,22 @@ export class BattleScene extends Phaser.Scene {
       const view = this.towerView(tower), stat = stats(tower);
       const charmed = sim.isCharmed(tower.uid);
       const boosted = sim.isMaraBoosted(tower.uid), firingCooldown = stat.cooldown / ((boosted ? 1.5 : 1) * (charmed ? BOSS.rateMultiplier : 1));
+      const age = charmAge(sim.bossCharm), wobble = charmed ? Math.sin(age * 8) * 0.035 : 0;
+      const tremble = charmed ? Math.sin(age * 31) * 0.65 : 0;
+      const tint = charmed ? Phaser.Display.Color.GetColor(255, Math.round(192 + Math.sin(age * 5) * 22), Math.round(229 + Math.sin(age * 5) * 10))
+        : 0xffffff;
+      if(evolutionSkin(tower.def.id,tower.level)){
+        const visualTime=elapsed+sim.introduction.preparationSeconds;
+        const hasTarget=sim.enemies.some(e=>e.hp>0&&Math.hypot(e.x-tower.x,e.y-tower.y)<=stat.range);
+        this.evolution.updateTower(tower,view,visualTime-this.combatEffects.firedAt(tower.uid),firingCooldown,tower.cooldown/((boosted?1.5:1)*(charmed?BOSS.rateMultiplier:1)),hasTarget,visualTime,tint,tremble,wobble);
+        continue;
+      }
       const firingAge = elapsed - this.combatEffects.firedAt(tower.uid);
       const art = towerArt(tower.def.id, tower.visualStage), mount = towerMount(tower.def.id);
       const frame = weaponFrame(tower.def.id, tower.visualStage, firingAge, elapsed, firingCooldown);
       const weaponKey = art.weapons[tower.visualStage - 1];
       if (view.weapon.texture.key !== weaponKey) view.weapon.setTexture(weaponKey);
       view.base.setFrame(tower.visualStage - 1).setOrigin(0.5, mount.originY);
-      const age = charmAge(sim.bossCharm), wobble = charmed ? Math.sin(age * 8) * 0.035 : 0;
-      const tremble = charmed ? Math.sin(age * 31) * 0.65 : 0;
-      const tint = charmed ? Phaser.Display.Color.GetColor(255, Math.round(192 + Math.sin(age * 5) * 22), Math.round(229 + Math.sin(age * 5) * 10))
-        : 0xffffff;
       view.base.setPosition(tower.x + tremble * 0.6, tower.y + mount.baseY).setRotation(wobble * 0.4).setTint(tint);
       view.weapon.setPosition(tower.x + tremble, tower.y + mount.weaponY).setFrame(Math.max(0, frame)).setRotation((tower.def.id === 2 ? 0 : tower.angle) + wobble).setTint(tint);
     }
@@ -754,7 +777,9 @@ export class BattleScene extends Phaser.Scene {
     }
     const shots = new Set(sim.shots.map(shot => shot.uid));
     for (const [uid, view] of this.shotViews) if (!shots.has(uid)) { view.destroy(); this.shotViews.delete(uid); }
+    this.evolution.sync(sim,elapsed+sim.introduction.preparationSeconds);
     for (const shot of sim.shots) {
+      if(evolutionSkin(shot.kind,shot.level))continue;
       let view = this.shotViews.get(shot.uid);
       if (!view) { view = this.add.image(shot.x, shot.y, towerArt(shot.kind, visualStage(shot.level)).projectile, 0).setScale(shot.kind === 5 ? 24 / towerSheet(5,visualStage(shot.level),'Projectile').width : shot.kind >= 3 ? 0.85 : shot.kind === 2 ? 0.5 : SCALE.projectile); this.shotViews.set(shot.uid, view); }
       view.setPosition(shot.x, shot.y).setFrame(loopFrame(this.combatEffects.shotAge(shot.uid, elapsed), towerArt(shot.kind, visualStage(shot.level)).shotFrames));

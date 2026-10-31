@@ -1,0 +1,5 @@
+{
+  "prompt": "Precise object edit of the supplied transparent pixel-art Stone Slinger parts sheet. Change ONLY the round red stone loaded in the center detached slingshot: make that loaded stone the same cool-grey iron-banded stone shown separately at the far right. Keep the loaded stone the same small size and in exactly the same location, straps meeting it. Preserve all tower wood, metal braces, weapon arms, dimensions, layouts, projectile at right and all transparent gaps. No other changes. Crisp pixel art, genuine transparent background.",
+  "reference": "sources/level-10-generated.png",
+  "output": "sources/level-10-matched.png"
+}
