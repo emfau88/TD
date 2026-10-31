@@ -429,13 +429,14 @@ function syncUI(): void {
   researchFrost.textContent = t("Frostfassung erforschen · {0} Gold", SETTLEMENT.researchCost);
   researchFrost.disabled = blocked || sim.gold < SETTLEMENT.researchCost;
   element('choose-frost').hidden = !settlement.frostResearched;
-  const techVisible=settlement.workshopBuilt&&!sim.guiding;
+  const techVisible=settlement.workshopBuilt;
   element('research-icons').hidden=!techVisible;element('research-details').hidden=!techVisible;
   for(const tech of ['frost','storm'] as const){
     const researched=tech==='frost'?settlement.frostResearched:settlement.stormResearched;
     const available=tech==='frost'?settlement.workshopBuilt:sim.stormResearchUnlocked;
     element(`tech-${tech}`).classList.toggle('locked',!researched&&!available);
     element(`tech-${tech}`).setAttribute('aria-pressed',String(selectedTechnology===tech));
+    element<HTMLButtonElement>(`tech-${tech}`).disabled=sim.guiding&&tech!=='frost';
     element(`tech-${tech}-status`).textContent = t(researched?t('✓ Erforscht'):available?t('Erforschbar'):t('Gesperrt'));
   }
   element('research-details').textContent = t(selectedTechnology==='frost'
@@ -443,7 +444,7 @@ function syncUI(): void {
     : settlement.stormResearched?t("✓ Sturmlicht: bis zu drei Ziele, 80 Sprungreichweite, sinkender Schaden. Turmbau separat: {0} Gold.", STORMLIGHT.cost)
     : t("Sturmlicht: Frostfassung, gemeisterte Welle {0} und abgeschlossene Ilyra-Einführung nötig. Forschung {1} Gold; Turmbau separat {2} Gold.", STORM_CHAIN.wave, STORM_CHAIN.researchCost, STORMLIGHT.cost));
   const stormResearch=element<HTMLButtonElement>('research-storm');
-  stormResearch.hidden=!techVisible||settlement.stormResearched;
+  stormResearch.hidden=!techVisible||sim.guiding||settlement.stormResearched;
   stormResearch.disabled=blocked||!sim.stormResearchUnlocked||sim.gold<STORM_CHAIN.researchCost;
 
   const warehouseIcon = element<HTMLImageElement>('warehouse-icon');
@@ -635,8 +636,9 @@ function syncLessonPointer(): void {
   if (intro?.active && session?.battle.introduction.stage === 'welcome') {
     scene?.setLearningTarget();
     const point = scene?.introAnchor();
-    lessonPointer.show(point && !session.error && !session.suspended && !session.awaitingResume
-      && !document.querySelector('dialog[open]') ? point : undefined, ['intro-core', 'intro-spawn', 'intro-starter'][intro.step]);
+    const allowed = !session.error && !session.suspended && !session.awaitingResume && !document.querySelector('dialog[open]');
+    lessonPointer.show(allowed ? point : undefined, ['intro-core', 'intro-spawn', 'intro-starter'][intro.step],
+      allowed ? element<HTMLButtonElement>('onboarding-primary') : undefined);
     return;
   }
   const b = session?.battle;
@@ -1057,8 +1059,12 @@ element('onboarding-primary').addEventListener('click', () => {
   }
   if (stage === 'ready') { void perform(b => b.startDefense()).then(() => scene?.focusGuidedDefense()); return; }
   if (b.lessonComplete) {
-    void perform(b => b.continueLesson()).then(() => {
-      if (session && ['combat', 'workshop', 'frost', 'observe'].includes(session.battle.introduction.stage)) scene?.focusGuidedDefense();
+    const live = session; let accepted = false;
+    void perform(b => { accepted = b.continueLesson(); }).then(() => {
+      if (!accepted || session !== live || live?.error) return;
+      if (stage === 'workshop' && live?.battle.introduction.stage === 'research') {
+        selectedTechnology = 'frost'; catalogPanel = 'settlement'; openContext('settlement');
+      } else if (live && ['combat', 'workshop', 'frost', 'observe'].includes(live.battle.introduction.stage)) scene?.focusGuidedDefense();
     }); return;
   }
 

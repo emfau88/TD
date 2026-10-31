@@ -468,8 +468,8 @@ export class BattleScene extends Phaser.Scene {
       return this.worldAnchor({ x: core.x, y: core.y - 66 });
     }
     if (this.introStep === 1) return this.worldAnchor(cellCenter(layout, layout.road.cells[0]));
-    const pad = layout.towerPads.find(p => p.id === this.sim.recommendedStarterPad);
-    return pad && this.worldAnchor(cellCenter(layout, pad.cell));
+    // Choose the tower first; the placement recommendation appears afterwards.
+    return undefined;
   }
   private introMaraPose(): { x: number; y: number; alpha: number } {
     const pan = this.cameras.main.panEffect;
@@ -484,7 +484,6 @@ export class BattleScene extends Phaser.Scene {
   private drawIntroMark(): void {
     const graphics = this.learningMark, layout = this.sim.layout;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const alpha = reduced ? .85 : .75 + Math.sin(this.time.now / 600) * .12;
     if (this.introStep === 0) return;
     const points = layout.road.waypoints.map(cell => cellCenter(layout, cell));
     if (this.introStep === 1) {
@@ -494,13 +493,6 @@ export class BattleScene extends Phaser.Scene {
         for (; offset < length; offset += 48) graphics.fillStyle(0xffe0a0, .6).fillCircle(a.x + (b.x - a.x) * offset / length, a.y + (b.y - a.y) * offset / length, 3);
         offset -= length;
       }
-    } else {
-      const pad = layout.towerPads.find(pad => pad.id === this.sim.recommendedStarterPad);
-      if (pad) {
-        const { x, y } = pad.cell, size = layout.cellSize;
-        graphics.fillStyle(0xffd778, .08).fillRect(x * size, y * size, size, size);
-        graphics.lineStyle(2, 0xffdf8a, alpha).strokeRect(x * size, y * size, size, size);
-      }
     }
   }
   private drawLearningMark(): void {
@@ -509,15 +501,13 @@ export class BattleScene extends Phaser.Scene {
     if (!this.learningTarget) return;
     const point = this.learningPoint(this.learningTarget); if (!point) return;
     const pulse = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? .85 : .75 + Math.sin(this.time.now / 300) * .15;
-    if (this.learningTarget === 'starter' || this.learningTarget === 'upgrade') {
-      const size = this.sim.layout.cellSize;
-      this.learningMark.fillStyle(0xffd778,.10).fillRect(point.x-size/2,point.y-size/2,size,size);
-      this.learningMark.lineStyle(2,0xffdf8a,pulse).strokeRect(point.x-size/2,point.y-size/2,size,size);
-    } else {
-      this.learningMark.fillStyle(0xffd778,.10).fillCircle(point.x,point.y,21);
-      this.learningMark.lineStyle(2,0xffdf8a,pulse).strokeCircle(point.x,point.y,21);
-    }
+    // Placement already outlines the whole building footprint; do not add a second marker.
+    if (this.groundMode === 'workshop' || this.groundMode === 'warehouse') return;
+    const size = this.sim.layout.cellSize;
+    this.learningMark.fillStyle(0xffd778,.10).fillRect(point.x-size/2,point.y-size/2,size,size);
+    this.learningMark.lineStyle(2,0xffdf8a,pulse).strokeRect(point.x-size/2,point.y-size/2,size,size);
   }
+
   uiAnchor(kind: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'ilyra' | 'clearing'): { x: number; y: number } {
     const point = this.objectPoint(kind), camera = this.cameras.main;
     return { x: camera.x + (point.x - camera.worldView.x) * camera.zoom, y: camera.y + (point.y - camera.worldView.y) * camera.zoom };
@@ -672,12 +662,15 @@ export class BattleScene extends Phaser.Scene {
     const pad = this.selectedPad(); if (!pad) return;
     const point = cellCenter(this.sim.layout, pad.cell), tower = this.sim.towers.find(t => t.padId === pad.id);
     const range = tower ? stats(tower).range : towerDefinition(this.buildKind ?? 1).range;
-    g.fillStyle(colors.gold, 0.055).fillCircle(point.x, point.y, range);
-    g.lineStyle(1.5, colors.gold, 0.6).strokeCircle(point.x, point.y, range);
-    // Highlight the exact shared attack corridor, not just an abstract circle.
-    for (const cell of this.sim.layout.road.cells) {
-      const p = cellCenter(this.sim.layout, cell);
-      if (Math.hypot(p.x - point.x, p.y - point.y) <= range) g.fillStyle(0xffe0a0, 0.2).fillRect(cell.x * size, cell.y * size, size, size);
+    const guidedPlacement = !!this.buildKind && (this.sim.preparing || this.sim.guiding);
+    if (!guidedPlacement) {
+      g.fillStyle(colors.gold, 0.055).fillCircle(point.x, point.y, range);
+      g.lineStyle(1.5, colors.gold, 0.6).strokeCircle(point.x, point.y, range);
+      // Highlight the exact shared attack corridor, not just an abstract circle.
+      for (const cell of this.sim.layout.road.cells) {
+        const p = cellCenter(this.sim.layout, cell);
+        if (Math.hypot(p.x - point.x, p.y - point.y) <= range) g.fillStyle(0xffe0a0, 0.2).fillRect(cell.x * size, cell.y * size, size, size);
+      }
     }
     if (!tower && this.buildKind) {
       const original = towerArt(this.buildKind), compact=evolutionGhost(this.buildKind);
@@ -687,7 +680,7 @@ export class BattleScene extends Phaser.Scene {
       this.ghostWeapon.setVisible(true).setTexture(art.weapons[0], 0).setPosition(point.x, point.y + mount.weaponY)
         .setScale(compact?.weaponScale??SCALE.tower).setAlpha(0.75).setTint(valid ? 0xffffff : 0xff9999);
     }
-    g.lineStyle(2, 0xf2daa0, 0.95).strokeEllipse(point.x, point.y + 7, 35, 18);
+    if (!this.sim.preparing && !this.sim.guiding) g.lineStyle(2, 0xf2daa0, 0.95).strokeEllipse(point.x, point.y + 7, 35, 18);
   }
   private selectedPad(): TowerPad | undefined { return this.sim.layout.towerPads.find(pad => pad.id === this.selectedPadId); }
   private towerView(tower: Tower): TowerView {

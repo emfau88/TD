@@ -29,5 +29,5 @@ export class MaraIntro {
 export const INTRO_COPY = [
   ['Willkommen im alten Hain', 'Ah, da bist du ja! Ich bin Mara. Willkommen im alten Hain. Den Kern dort müssen wir beschützen. Eigentlich ist es hier ziemlich friedlich. Eigentlich.', 'Weiter'],
   ['Der Weg zum Kern', 'Die Angreifer kommen von hier und folgen dem Weg zum Kern. Eine verlorene Welle? Dein Ausbau bleibt erhalten. Wir verstärken die Türme und versuchen es wieder.', 'Verstanden'],
-  ['Unsere erste Verteidigung', 'Du baust die Türme, die kämpfen von allein. Und ich? Ich habe noch ein paar Zauber im Ärmel. Aber eins nach dem anderen – fangen wir mit deinem Waldwächter an!', 'Ersten Turm bauen'],
+  ['Unsere erste Verteidigung', 'Du baust die Türme, die kämpfen von allein. Und ich? Ich habe noch ein paar Zauber im Ärmel. Aber eins nach dem anderen – fangen wir mit deinem Waldwächter an!', 'Deinen Turm auswählen'],
 ] as const;

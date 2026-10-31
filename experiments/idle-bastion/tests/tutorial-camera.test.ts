@@ -161,3 +161,14 @@ test('zooming out and back uses the full available viewport without accumulating
   assert.deepEqual({ x: camera.x, y: camera.y, width: camera.width, height: camera.height }, normal);
   assert.equal(scene.mapViewport.width, 390); assert.equal(scene.mapViewport.height, 658);
 });
+
+
+test('intro explains tower choice without prematurely marking a build tile', t => {
+  const { scene, camera } = cameraScene(t);
+  camera.panEffect = { isRunning: false }; scene.introStep = 2;
+  assert.equal(scene.introAnchor(), undefined);
+  scene.learningMark = new Proxy({}, { get() { assert.fail('No placement mark before selecting a tower'); } });
+  scene.time = { now: 0 };
+  globalThis.window.matchMedia = (() => ({ matches: false })) as any;
+  scene.drawIntroMark();
+});

@@ -42,11 +42,11 @@ export function updateOnboarding(live: BattleSession, view: { placing: boolean; 
   switch (stage) {
     case 'welcome': copy = [t('Willkommen im alten Hain'), t('Ich bin Mara. Gemeinsam schützen wir diesen Wald. Ich zeige dir, wie du deinen ersten Turm baust. Bis dahin kommen keine Gegner.'), t('Los geht’s')]; break;
     case 'build': copy = [t('Wähle deinen Waldwächter'), t('Tippe unten im Menü „Türme“ auf den kostenlosen Startturm. Danach wählen wir einen Platz am Weg.'), '']; break;
-    case 'ready': copy = [t('Dein Turm ist bereit'), t('Dein Waldwächter steht. Starte die Verteidigung, wenn du bereit bist.'), t('Verteidigung starten')]; break;
+    case 'ready': copy = [t('Dein Turm ist bereit'), t('Dein Waldwächter steht. Starte Welle 1, wenn du bereit bist. Danach kämpfen deine Türme automatisch.'), t('Welle 1 starten')]; break;
     case 'combat': copy = [t('Dein erstes Gefecht'), t('Jeder besiegte Käfer bringt Gold. Nach dem ersten Treffer zeige ich dir das Upgrade.'), '']; break;
     case 'upgrade': copy = complete ? [t('Level 2 genügt zunächst'), t('Überstehe die erste Welle. Danach kannst du deine Werkstatt kostenlos bauen.'), t('Weiter · Welle beenden')]
       : [t('Tippe auf deinen Waldwächter'), t('Die Welle wartet. Öffne den markierten Turm und verbessere ihn einmal für 60 Gold auf Level 2.'), '']; break;
-    case 'workshop': copy = complete ? [t('Deine Werkstatt steht'), t('Hier erforschst du neue Turmtypen. Dein gespartes Gold verwenden wir für Frosttechnik.'), t('Weiter · Frosttechnik entdecken')]
+    case 'workshop': copy = complete ? [t('Deine Werkstatt steht'), t('Öffne die Werkstatt. Dort erforschst du die Frostfassung für 60 Gold und schaltest deinen Frostkristall frei.'), t('Werkstatt öffnen')]
       : waiting ? [t('Die erste Welle läuft'), t('Nach dem Sieg kannst du deine Werkstatt kostenlos bauen.'), '']
       : catalogPanel === 'settlement' ? [t('Wähle die Werkstatt'), t('Tippe unten auf die Werkstatt. Wähle dann einen freien Platz in der Siedlung. Der erste Bau ist kostenlos.'), '']
       : [t('Baue deine Werkstatt kostenlos'), t('Öffne unten „Siedlung“. Dort findest du deine Gebäude. Die Welle wartet.'), '']; break;
@@ -85,7 +85,7 @@ export function updateOnboarding(live: BattleSession, view: { placing: boolean; 
   if (b.preparing) {
     el('wave').textContent = t('—'); el('wave-mode').textContent = t('Vorbereitung');
     el('record-wave').textContent = t('Noch kein Kampf'); el('live-income').textContent = t('Startkapital · 0 G/min');
-    el('battle-phase').textContent = t('Erst bauen, dann Verteidigung starten'); el('pause-state').textContent = t('BEREIT');
+    el('battle-phase').textContent = t('Erst bauen, dann Welle 1 starten'); el('pause-state').textContent = t('BEREIT');
     el<HTMLButtonElement>('pause').disabled = true;
   }
 }

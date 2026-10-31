@@ -18,11 +18,11 @@ export function tutorialNext(b: IdleBattle): string {
     return t('Beobachte Maras Verstärkung.');
   }
   switch (b.introduction.stage) {
-    case 'build': return t('Waldwächter wählen und am markierten Feld bauen.');
-    case 'ready': return t('Tippe auf „Verteidigung starten“.');
+    case 'build': return t('Wähle unten den kostenlosen Startturm.');
+    case 'ready': return t('Tippe auf „Welle 1 starten“.');
     case 'combat': return t('Nach dem ersten Abschuss folgt das Turmupgrade.');
     case 'upgrade': return t('Startturm öffnen und einmal auf Level 2 aufwerten.');
-    case 'workshop': return b.lessonComplete ? t('Weiter zur Frostforschung.')
+    case 'workshop': return b.lessonComplete ? t('Öffne deine Werkstatt zur Frostforschung.')
       : b.workshopKitAvailable ? t('In der Siedlung die Werkstatt wählen und platzieren.')
       : t('Welle 1 meistern, dann die Werkstatt kostenlos bauen.');
     case 'research': return b.lessonComplete ? t('Weiter: kostenlosen Frostkristall platzieren.')

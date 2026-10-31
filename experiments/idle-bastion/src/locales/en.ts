@@ -1286,5 +1286,13 @@ export const english: Readonly<Record<string, string>> = {
   "Details": "Details",
   "Weniger": "Less",
   "Tutorialhinweis ausklappen": "Expand tutorial hint",
-  "Tutorialhinweis einklappen": "Collapse tutorial hint"
+  "Tutorialhinweis einklappen": "Collapse tutorial hint",
+  'Deinen Turm auswählen': 'Choose your tower',
+  'Welle 1 starten': 'Start wave 1',
+  'Dein Waldwächter steht. Starte Welle 1, wenn du bereit bist. Danach kämpfen deine Türme automatisch.': 'Your Grove Warden is ready. Start wave 1 when you are ready. Your towers will fight automatically.',
+  'Öffne die Werkstatt. Dort erforschst du die Frostfassung für 60 Gold und schaltest deinen Frostkristall frei.': 'Open the workshop. Research Frost Setting there for 60 gold to unlock your Frost Crystal.',
+  'Erst bauen, dann Welle 1 starten': 'Build first, then start wave 1',
+  'Wähle unten den kostenlosen Startturm.': 'Choose the free starter tower below.',
+  'Tippe auf „Welle 1 starten“.': 'Tap “Start wave 1”.',
+  'Öffne deine Werkstatt zur Frostforschung.': 'Open your workshop to research Frost Setting.',
 };
