@@ -37,4 +37,9 @@ Geändert: `src/audio-cues.ts`, `src/hero-command-voice.ts`, `src/progress-ui.ts
 
 ## Abschluss
 
-Lokale Abnahme abgeschlossen. Commit und Deployment werden nach Veröffentlichung ergänzt. Alle drei gemeldeten Punkte bearbeitet; keine offene Integrationsentscheidung.
+ERLEDIGT als [`9a708d3`](https://github.com/emfau88/TD/commit/9a708d30b7162341871b026627fad4849611d73c) auf Main gepusht.
+[Pages-Lauf 41227355432](https://github.com/emfau88/TD/actions/runs/41227355432) erfolgreich.
+Öffentliches Spiel anschließend in separater englischer Probe-Partie gestartet: neue
+Zielanzeige, Ilyra-Auswahl, sichtbarer Tanz und Pause bestätigt; keine Browserwarnungen/-fehler.
+[Öffentlicher Nachweis](public-9a708d3.png). Alle drei gemeldeten Punkte bearbeitet;
+keine offene Integrationsentscheidung. Die abschließende Dokumentation enthält keine weitere Laufzeitänderung.
