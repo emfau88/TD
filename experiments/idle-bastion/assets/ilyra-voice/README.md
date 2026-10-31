@@ -38,7 +38,10 @@ nur gelesen. [Browserprüfung](../../../../artifacts/idle-bastion/acceptance/ily
 Zusätzlich senpai2/3, sweetheart2/3 und youremine1 bytegleich übernommen (206.400 Bytes).
 Auswahl und Bewegung verwenden senpai1/2/3 sowie sweetheart1/2/3, eine bestätigte
 manuelle Sternensalve youremine1. Die ursprünglichen sieben Tavernenclips bleiben
-unverändert ausgewählt. Derselbe Lautheitsreferenzwert, Befehlsfaktor 0,5 statt 0,7
-(rund 2,92 dB leiser als die Tavernenreaktionen), Stimmenregler und sieben Sekunden
+unverändert ausgewählt. Derselbe Lautheitsreferenzwert; seit 31.10.2026 Kartenfaktor
+0,8 statt zuvor 0,5 (+4,08 dB), bei Standardregler −26,58 statt −30,66 LUFS.
+Auch bei Stimmenregler 100 % bleiben Ilyras einzelnen Kartenclips unter −9,06 dBTP.
+`levels.json` bleibt die historische Quellenkalibrierung mit Faktor 0,5; die aktuellen
+Kartenfaktoren stehen in `src/audio-cues.ts` (`HERO_COMMAND_GAIN`). Stimmenregler und sieben Sekunden
 Mindestabstand gemeinsam mit Mara. Kein zusätzlicher Download beim Kartenstart.
 Automatische Zauber, automatische Einführungsauswahl und abgelehnte Befehle sind stumm.

@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { nextVoiceIndex } from '../src/companion-voice';
+import { HERO_COMMAND_GAIN } from '../src/audio-cues';
 import { ILYRA_VOICE_GAINS, ILYRA_COMMAND_VOICE_GAINS, MARA_COMMAND_VOICE_GAINS } from '../src/ilyra-voice-levels';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -14,7 +15,7 @@ test('every other voice is reachable exactly once, without an immediate repeat',
   assert.equal(nextVoiceIndex(1,0),0);
 });
 
-test('command pools contain only the chosen clips and use the same quieter loudness target',()=>{
+test('command pools retain source calibration and safe headroom at their current playback gains',()=>{
   assert.deepEqual(Object.keys(MARA_COMMAND_VOICE_GAINS),['P11','P09','P07','P06','P03','P01','P14'].map(id=>`${id}.wav`));
   assert.deepEqual(Object.keys(ILYRA_COMMAND_VOICE_GAINS),['senpai1','senpai2','senpai3','sweetheart1','sweetheart2','sweetheart3','youremine1'].map(id=>`voice1-${id}.mp3`));
   const assets=new URL('../assets/',import.meta.url);
@@ -25,7 +26,8 @@ test('command pools contain only the chosen clips and use the same quieter loudn
       const gain=(table as Record<string,number>)[clip.file];
       assert.equal(createHash('sha256').update(readFileSync(new URL(`${folder}/${clip.file}`,assets))).digest('hex'),clip.sha256);
       assert.ok(Math.abs(clip.integratedLufs+20*Math.log10(gain)-report.targetLufs)<.001);
-      assert.ok(clip.truePeakDbtp+20*Math.log10(gain*.5)<-6,'headroom even at maximum voice slider');
+      const playback = folder === 'ilyra-voice' ? HERO_COMMAND_GAIN.ilyra : HERO_COMMAND_GAIN.mara;
+      assert.ok(clip.truePeakDbtp+20*Math.log10(gain*playback)<-6,'headroom even at maximum voice slider');
     }
   }
 });

@@ -6,7 +6,7 @@ import { BASE, IdleBattle, SETTLEMENT, stats, towerDefinition, upgradeCost, visu
 import { BattleSession } from '../src/battle-session';
 import { openBattleStore } from '../src/save-store';
 import { certifyFarm, defenseFingerprint, type FarmCertificate } from '../src/farming';
-import { currentGoal } from '../src/progress-ui';
+import { currentGoal, recommendedUpgrade } from '../src/progress-ui';
 import { playOpening } from './helpers/earned-opening';
 
 // Rich unit fixture for boundary checks only; the timing test below earns every coin.
@@ -108,7 +108,7 @@ test('Workshop II persistent command rolls back on failure and survives a commit
   if(loaded.kind==='valid')assert.equal(IdleBattle.restore(loaded.save.battle)!.settlement.workshopUpgraded,true);store.close();
 });
 
-test('earned continuation can open Workshop II early and retains a paid progression goal at minute 15',()=>{
+test('earned continuation opens Workshop II early and retains paid upgrades without repeated tasks at minute 15',()=>{
   const b=playOpening().b;assert.equal(b.unlockClearing(),true);const clearingAt=b.elapsed;
   let proof:FarmCertificate|undefined,key='',workshopAt=0,changed=false;
   while(b.elapsed<900){
@@ -122,16 +122,18 @@ test('earned continuation can open Workshop II early and retains a paid progress
   // B13 accepts earlier Workshop II purchases; retain earned order and the original upper limit.
   assert.ok(workshopAt>=clearingAt&&workshopAt<=795,'Workshop II after the earned clearing, by minute 13.25');
   assert.ok(b.highestCleared>=20,'Wave 25 is the next visible milestone after wave 20');
-  assert.ok(proof);assert.equal(b.maxLevel,Infinity);assert.equal(currentGoal(b).action,'upgrade');
-  assert.ok(currentGoal(b).cost!>0);assert.ok(IdleBattle.restore(b.snapshot()));
-  console.log('B12 earned continuation:',{workshopAt,at15:b.highestCleared,levels:b.towers.map(t=>t.level),nextCost:currentGoal(b).cost});
+  assert.ok(proof);assert.equal(b.maxLevel,Infinity);assert.equal(currentGoal(b).action,'progress');
+  assert.ok(upgradeCost(recommendedUpgrade(b)!)>0);assert.ok(IdleBattle.restore(b.snapshot()));
+  console.log('B12 earned continuation:',{workshopAt,at15:b.highestCleared,levels:b.towers.map(t=>t.level),nextCost:upgradeCost(recommendedUpgrade(b)!)});
 });
 
 test('late waves retain bounded populations and level 20 still offers a real next upgrade',()=>{
   const b=eligible();b.upgradeWorkshop();b.gold=100000000;b.secondBossVictories=1;b.highestCleared=25;b.attemptId=2;
   for(const [pad,kind] of [['tower-02',2],['tower-03',3],['tower-07',4]] as const)assert.ok(b.build(pad,kind));
   for(const t of b.towers)while(t.level<20)assert.equal(b.upgrade(t.uid),true);
-  assert.equal(currentGoal(b).action,'upgrade');assert.ok(currentGoal(b).cost!>0);
+  assert.equal(currentGoal(b).action,'progress');
+  const next = recommendedUpgrade(b)!; assert.ok(upgradeCost(next)>0);
+  assert.equal(b.upgrade(next.uid),true); assert.equal(next.level,21);
   assert.ok(waveCount(1000000)>=18&&waveCount(1000000)<=BASE.waves.maxCount);
   assert.ok(Number.isSafeInteger(upgradeCost({def:towerDefinition(4),level:20})));
   b.wave=999999;b.highestCleared=999999;b.update(60);

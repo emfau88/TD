@@ -23,6 +23,8 @@ export const CUES = {
 export type Cue = keyof typeof CUES;
 export type AudioMix = { music:number; effects:number; voices:number; muted:boolean };
 export const DEFAULT_MIX: AudioMix = { music:.16, effects:.55, voices:.55, muted:false };
+// Map speech competes with combat audio. Keep Mara's accepted mix; lift only Ilyra.
+export const HERO_COMMAND_GAIN = { mara: .5, ilyra: .8 } as const;
 export function readMix(value: unknown): AudioMix {
   const obj = value && typeof value === 'object' ? value as Partial<AudioMix> : {};
   const level = (key:'music'|'effects'|'voices') => typeof obj[key] === 'number' && Number.isFinite(obj[key]) ? Math.max(0,Math.min(1,obj[key]!)) : DEFAULT_MIX[key];

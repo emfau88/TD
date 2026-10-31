@@ -35,6 +35,18 @@
 - **Befehlsantworten:** Mara P11/P09/P07/P06/P03/P01/P14; Ilyra senpai1/2/3 und sweetheart1/2/3 für Auswahl/Bewegung, youremine1 für manuelle Sternensalve. Beide auf denselben Lautheitsreferenzwert angeglichen, gemeinsamer Faktor 0,5 (rund 2,92 dB unter Tavernenreaktionen). Ein Player mit sieben Sekunden Mindestabstand auch über Figurenwechsel hinweg; keine Warteschlange, keine Stimme bei Automatik/Reload/abgelehnten Befehlen. [Mara-Pool und Gesamtmischung](../assets/mara-command-voice/README.md). Alle 32 P-Dateien separat als Projektreserve archiviert, nur die sieben gewählten in der Spiellaufzeit.
 - Aktuelle Gefährtenanimationen und Spielgrafiken unverändert. Kein zusätzlicher Bildbedarf.
 
+## Korrektur der Kartenantworten · 31.10.2026
+
+Die oben beschriebene Quellenkalibrierung bleibt erhalten. Auf Nutzerfeedback
+erhält ausschließlich Ilyra in `HERO_COMMAND_GAIN` Kartenfaktor **0,8** statt
+0,5 (+4,08 dB). Bei Standard-Stimmenregler 55 % sind es −26,58 statt −30,66 LUFS.
+Ihre einzelnen Clips bleiben auch bei Stimmenregler 100 % unter −9,06 dBTP.
+Mara behält 0,5, die Tavernenreaktionen 0,7. Audiodateien, Effekte, Musik,
+Reglerwerte, sieben Sekunden Mindestabstand und Abbruchschutz bleiben unverändert.
+`levels.json` dokumentiert die ursprüngliche Quellenkalibrierung mit Faktor 0,5;
+die aktuellen Kartenfaktoren stehen in `src/audio-cues.ts` (`HERO_COMMAND_GAIN`).
+Diese technische Messung ersetzt keine subjektive Hörabnahme.
+
 ## Noch offen
 
 26.10.2026: Maras bewusste Auswahl auf der Karte oder über ihr Porträt bestätigt

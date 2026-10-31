@@ -13,6 +13,7 @@ export { MARA_FOOT };
 export const ART = Object.freeze({
   stormTower: new URL('../../../public/assets/Tower 05.png', import.meta.url).href,
   ilyra: new URL('../assets/ilyra/ilyra-atlas.png', import.meta.url).href,
+  ilyraIdle: new URL('../assets/ilyra/idle-spear/atlas.png', import.meta.url).href,
   sniperWeapon3: new URL('../../../public/assets/Tower 04 - Level 03 - Weapon.png', import.meta.url).href,
   cannonWeapon3: new URL('../../../public/assets/Tower 03 - Level 03 - Weapon.png', import.meta.url).href,
   frostWeapon3: new URL('../../../public/assets/Tower 02 - Level 03 - Weapon.png', import.meta.url).href,
@@ -53,6 +54,7 @@ export const ART = Object.freeze({
 export const KEYS = Object.freeze({
   stormTower: 'idle-stormTower',
   ilyra: 'idle-ilyra',
+  ilyraIdle: 'idle-ilyra-spear',
   sniperWeapon3: 'idle-sniperWeapon3',
   cannonWeapon3: 'idle-cannonWeapon3',
   frostWeapon3: 'idle-frostWeapon3',
@@ -110,6 +112,7 @@ export function preloadArt(scene: Phaser.Scene): void {
   preloadTowerSheets(scene);
   preloadEnemySheets(scene);
   scene.load.spritesheet(KEYS.ilyra, ART.ilyra, {frameWidth:64,frameHeight:64});
+  scene.load.spritesheet(KEYS.ilyraIdle, ART.ilyraIdle, {frameWidth:64,frameHeight:64,endFrame:32});
   scene.load.image(KEYS.grass, ART.grass);
   scene.load.image(KEYS.water, ART.water);
   scene.load.image(KEYS.maraSource, ART.maraSource);

@@ -1,0 +1,57 @@
+{
+  "commandGainBefore": 0.5,
+  "ilyraCommandGainAfter": 0.8,
+  "increaseDb": 4.082,
+  "maraUnchanged": true,
+  "clips": [
+    {
+      "file": "voice1-senpai1.mp3",
+      "sourceLufs": -27.34,
+      "beforeDefaultLufs": -30.658,
+      "afterDefaultLufs": -26.576,
+      "afterMaxPeakDbtp": -10.653
+    },
+    {
+      "file": "voice1-senpai2.mp3",
+      "sourceLufs": -26.36,
+      "beforeDefaultLufs": -30.658,
+      "afterDefaultLufs": -26.576,
+      "afterMaxPeakDbtp": -11.033
+    },
+    {
+      "file": "voice1-senpai3.mp3",
+      "sourceLufs": -28.84,
+      "beforeDefaultLufs": -30.658,
+      "afterDefaultLufs": -26.576,
+      "afterMaxPeakDbtp": -9.063
+    },
+    {
+      "file": "voice1-sweetheart1.mp3",
+      "sourceLufs": -29.79,
+      "beforeDefaultLufs": -30.658,
+      "afterDefaultLufs": -26.576,
+      "afterMaxPeakDbtp": -12.943
+    },
+    {
+      "file": "voice1-sweetheart2.mp3",
+      "sourceLufs": -26.75,
+      "beforeDefaultLufs": -30.658,
+      "afterDefaultLufs": -26.576,
+      "afterMaxPeakDbtp": -11.913
+    },
+    {
+      "file": "voice1-sweetheart3.mp3",
+      "sourceLufs": -29.64,
+      "beforeDefaultLufs": -30.658,
+      "afterDefaultLufs": -26.576,
+      "afterMaxPeakDbtp": -12.453
+    },
+    {
+      "file": "voice1-youremine1.mp3",
+      "sourceLufs": -22.61,
+      "beforeDefaultLufs": -30.658,
+      "afterDefaultLufs": -26.576,
+      "afterMaxPeakDbtp": -13.823
+    }
+  ]
+}

@@ -799,6 +799,7 @@ export const english: Readonly<Record<string, string>> = {
   "Waldwächter platzieren": "Place Grove Warden",
   "Verteidigung vollständig ausgebaut": "Defenses fully built",
   "Sicher farmen oder Welle {0} versuchen": "Farm safely or try wave {0}",
+  "Deine Verteidigung arbeitet": "Your defenses are at work",
   "Fortschritt und Vorstoß ansehen": "View progress and advance",
   "Laufender Goldzufluss aus Kampfbelohnungen. {0} aktive Sekunden gemessen. Details öffnen.": "Live gold income from battle rewards. {0} active seconds measured. Open details.",
   "Rückzug": "Retreat",

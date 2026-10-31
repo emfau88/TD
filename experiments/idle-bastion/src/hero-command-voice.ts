@@ -1,4 +1,5 @@
 import { nextVoiceIndex } from './companion-voice';
+import { HERO_COMMAND_GAIN } from './audio-cues';
 import { ILYRA_COMMAND_VOICE_GAINS, MARA_COMMAND_VOICE_GAINS } from './ilyra-voice-levels';
 
 export type VoiceHero='mara'|'ilyra';
@@ -19,6 +20,7 @@ export class HeroCommandVoice {
   private volume=0;
   private previous:Record<VoiceHero,string>={mara:'',ilyra:''};
   private clipGain=1;
+  private playbackGain:number=HERO_COMMAND_GAIN.mara;
   private lastStart=-Infinity;
   private pending=false;
   constructor(context:AudioContext,output:AudioNode){
@@ -27,7 +29,7 @@ export class HeroCommandVoice {
     this.element.preload='none';this.element.hidden=true;this.element.dataset.spireVoice='hero-command';document.body.append(this.element);
   }
   setState(enabled:boolean,volume:number):void {
-    this.volume=volume;this.gain.gain.value=volume*.5*this.clipGain;
+    this.volume=volume;this.gain.gain.value=volume*this.playbackGain*this.clipGain;
     if(this.enabled===enabled)return;
     this.enabled=enabled;
     if(!enabled){this.element.pause();this.element.removeAttribute('src');this.element.load();}
@@ -36,7 +38,8 @@ export class HeroCommandVoice {
     if(!this.enabled||this.pending||!this.element.paused||performance.now()-this.lastStart<7000)return;
     const pool=who==='mara'?mara:command==='cast'?orders:greetings;
     const clip=pool[nextVoiceIndex(pool.length,pool.findIndex(item=>item.file===this.previous[who]))];
-    this.previous[who]=clip.file;this.clipGain=clip.gain;this.gain.gain.value=this.volume*.5*clip.gain;
+    this.previous[who]=clip.file;this.clipGain=clip.gain;this.playbackGain=HERO_COMMAND_GAIN[who];
+    this.gain.gain.value=this.volume*this.playbackGain*clip.gain;
     this.element.src=clip.url;this.element.dataset.hero=who;this.element.dataset.command=command;
     this.lastStart=performance.now();this.pending=true;
     void this.element.play().catch(()=>{ /* Audio failure never affects an accepted game command. */ }).finally(()=>{this.pending=false;});

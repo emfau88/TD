@@ -16,10 +16,11 @@ Sprachbestätigung. Taverne, Mute, Stimmenregler null, Hintergrund und Sessionve
 stoppen den Player. Downloads erst bei einer tatsächlich ausgespielten Antwort.
 
 `scripts/measure-tavern-voices.py` misst die unveränderten Dateien. Gemeinsamer
-Referenzwert −19,445 LUFS, danach Befehlsfaktor **0,5** statt Tavernenfaktor 0,7:
+Referenzwert −19,445 LUFS, danach für Mara unverändert Befehlsfaktor **0,5** statt Tavernenfaktor 0,7:
 rund **2,92 dB leiser**. Bei Standard-Stimmenregler 55 % liegt die angeglichene
 integrierte Lautheit bei rund −30,66 LUFS. Auch beim maximalen Stimmenregler bleiben
-alle Befehlsclips unter −8,19 dBTP. Keine neue Dynamikkompression; Musik-/Effektpegel
+alle Mara-Befehlsclips unter −8,19 dBTP. Ilyra erhält seit 31.10.2026 getrennt Faktor
+0,8 (+4,08 dB); ihre Quellenkalibrierung bleibt unverändert. Keine neue Dynamikkompression; Musik-/Effektpegel
 und gespeicherte Reglerwerte unverändert. Messwerte ersetzen keine subjektive Hörabnahme.
 
 Die zentralen Messdaten inklusive SHA-256 liegen in `../ilyra-voice/levels.json`.

@@ -1,5 +1,10 @@
 # Ilyra — Lauf- und Zauberanimationen
 
+**Ergänzung 31.10.2026:** Der Nutzer hat die vorhandene V3-Speer-Idle nun ausdrücklich
+für die Karte freigegeben. Sie liegt getrennt in [idle-spear](idle-spear/README.md).
+Der folgende Originalatlas für Stand/Laufen/Zauber bleibt unverändert; frühere
+„noch keine Idle“-Angaben beschreiben den damaligen Stand.
+
 32 Rahmen auf einem 512 × 256 PNG-Atlas, jeweils 64 × 64 Pixel mit Fußpunkt **(32, 56)**. Vier Richtungen: unten, rechts, oben, links. Die linke Ansicht spiegelt die rechte um die Rahmenmitte; dadurch wechselt die Speerhand. Diese Vereinfachung ist nur für die Figurendarstellung gedacht, nicht für die Berechnung von Treffern oder Zielen.
 
 ## Dateien und Verwendung
