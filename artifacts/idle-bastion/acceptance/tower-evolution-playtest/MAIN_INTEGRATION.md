@@ -34,3 +34,10 @@ Die Testseite wird anschließend über den bestehenden genehmigten Preview-Workf
 Main-Endstand `2531b46d8ab3e34c4b57349815f5f2d4d1d73b66`, [abschließendes Main-Deployment 41190092981](https://github.com/emfau88/TD/actions/runs/41190092981) erfolgreich. Öffentlicher Frischstart, Menü ohne Testnavigation und Reload der neuen normalen Probe bestätigt; keine Browserwarnungen/-fehler. Das zusätzliche Bauen per Koordinaten wurde wegen eines Browsersteuerungs-Timeouts nicht als Live-Abnahme gezählt; historische normale Kampffortsetzung und Reload waren im lokalen Produktionsbuild bereits bestanden.
 
 Der erste anschließende Preview-Lauf `41190175790` meldet Erfolg und bestätigt 708 unveränderte Main-Dateien, lieferte bei der anschließenden HTTP-Prüfung aber 404 für Teststarter und Metadaten. Beide Deployments nutzten denselben Commit. Die Preview erhält deshalb diesen eigenen Dokumentationscommit und wird erneut veröffentlicht; Laufzeitcode bleibt identisch. Die Ursache (Publizierungs-/Cache-Verhalten) ist damit noch nicht bewiesen. Ein vor dem Update angelegter, pausierter Preview-Save mit 100.000 Gold / Welle 41 dient der abschließenden Gegenprobe.
+
+
+**Abschließende Preview-Abnahme erfolgreich:** [Pages 41190389419](https://github.com/emfau88/TD/actions/runs/41190389419) veröffentlicht Preview-Commit `332f3870f499cbb5f513dbe557d1f0782529a92a` neben Main `2531b46d8ab3e34c4b57349815f5f2d4d1d73b66`. Teststarter und Metadaten öffentlich erreichbar, 708 Main-Dateien bytegleich. Der vor dem Update angelegte Probe-Link öffnet unverändert 100.000 Gold, Welle 41, alle fünf Level-25-Türme und manuelle Pause; +0 Offlinegold. Testkamera und Menülink vorhanden, keine Browserwarnungen/-fehler. Die vorübergehende Nichterreichbarkeit ist behoben; keine zusätzliche Laufzeitänderung erforderlich.
+
+![Erhaltener Preview-Spielstand nach Veröffentlichung](integration-preview-preserved.png)
+
+**Ergebnis:** Beide Integrationspunkte behoben, Main übernommen und veröffentlicht, separate Preview und alte Probe-Spielstände erhalten. Keine verbleibenden technischen Integrationsblocker aus dieser Prüfung. Kein Kongregate-Paket erstellt.
