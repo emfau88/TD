@@ -129,7 +129,7 @@ test('deliberate map focus and zoom leave tutorial framing and restore normal sc
   assert.equal(scene.guidedDefenseFrame, false); near(camera.zoom, 658 / 640 * 1.15);
 });
 
-test('tutorial and overview camera viewports end at the real map on desktop and portrait', t => {
+test('tutorial and overview fill the viewport, with only the scenic overscan needed to fit the map', t => {
   const { scene, camera, model } = cameraScene(t);
   camera.setBounds = (x: number, y: number, width: number, height: number) => { camera.bounds = { x, y, width, height }; };
   for (const [width, height] of [[390, 900], [320, 700], [1440, 900], [2560, 1080]]) {
@@ -139,16 +139,44 @@ test('tutorial and overview camera viewports end at the real map on desktop and 
     for (const overview of [false, true]) {
       scene.overview = overview; scene.guidedDefenseFrame = !overview;
       scene.resizeCamera();
-      assert.deepEqual(camera.bounds, { x: 0, y: 0, ...model.layout.bounds });
-      assert.ok(camera.displayWidth <= model.layout.bounds.width);
-      assert.ok(camera.displayHeight <= model.layout.bounds.height);
-      assert.ok(camera.x >= 0 && camera.y >= 0);
-      assert.ok(camera.x + camera.width <= width && camera.y + camera.height <= height);
+      assert.deepEqual({ x: camera.x, y: camera.y, width: camera.width, height: camera.height },
+        { x: 0, y: 0, width, height }, 'never letterbox the game or the tutorial overlay');
+      const bounds = model.layout.bounds;
+      const padX = Math.max(0, (camera.displayWidth - bounds.width) / 2);
+      const padY = Math.max(0, (camera.displayHeight - bounds.height) / 2);
+      near(camera.bounds.x, -padX); near(camera.bounds.y, -padY);
+      near(camera.bounds.width, Math.max(bounds.width, camera.displayWidth));
+      near(camera.bounds.height, Math.max(bounds.height, camera.displayHeight));
+      // Axes smaller than the viewport remain centred, not freely pannable.
+      near(camera.bounds.width - camera.displayWidth, Math.max(0, bounds.width - camera.displayWidth));
+      near(camera.bounds.height - camera.displayHeight, Math.max(0, bounds.height - camera.displayHeight));
       if (overview) {
-        assert.ok(Math.abs(camera.width - model.layout.bounds.width * camera.zoom) < 1);
-        assert.ok(Math.abs(camera.height - model.layout.bounds.height * camera.zoom) < 1);
+        assert.ok(camera.displayWidth >= bounds.width - 1e-9);
+        assert.ok(camera.displayHeight >= bounds.height - 1e-9);
       }
     }
+  }
+});
+
+test('portrait fills the measured space behind the guide at both pixel densities without changing the map', t => {
+  const { scene, camera, model } = cameraScene(t);
+  const original = JSON.stringify(model.layout);
+  let scenery: number[] = [];
+  scene.forest = { extendBackdrop: (x: number, y: number) => { scenery = [x, y]; } };
+  for (const [width, height] of [[390, 844], [360, 800], [320, 568]]) for (const density of [1, 2]) {
+    Object.assign(globalThis.window, { innerWidth: width, innerHeight: height });
+    scene.pixelDensity = density;
+    scene.scale = { width: width * density, height: height * density };
+    scene.game.canvas.getBoundingClientRect = () => ({ top: 0, bottom: height });
+    globalThis.document.querySelector = ((selector: string) => ({ getBoundingClientRect: () =>
+      selector === '.app-header' ? { bottom: 56 } : { top: height - 96 } })) as any;
+    scene.focusGuidedDefense();
+    assert.deepEqual({ x: camera.x, y: camera.y, width: camera.width, height: camera.height },
+      { x: 0, y: 56 * density, width: width * density, height: (height - 152) * density });
+    near(camera.zoom / density, width / 480);
+    near(scenery[0]!, 0);
+    near(scenery[1]!, Math.max(0, ((height - 152) * density / camera.zoom - 640) / 2));
+    assert.equal(JSON.stringify(model.layout), original, 'decorative overscan must not create playable cells');
   }
 });
 

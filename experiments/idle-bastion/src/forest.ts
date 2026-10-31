@@ -8,7 +8,7 @@ import { KEYS, SCALE, loopFrame } from './art';
 import { getForestWorld } from './forest-world';
 import { cellCenter, CORE_ACCESS, findFootpath, createIdleLayout, type GridCell, type IdleLayout } from './layout';
 
-export interface ForestView { update(elapsed: number, built: boolean, builtAt: number | null, warehouseBuilt: boolean, warehouseBuiltAt: number | null, warehouseUnlocked: boolean, workshopUpgraded?: boolean, upgradedAt?: number | null, tavernBuilt?: boolean, tavernBuiltAt?: number | null, tavernLevel?: number, coreTime?: number): void; destroy(): void }
+export interface ForestView { extendBackdrop(padX: number, padY: number): void; update(elapsed: number, built: boolean, builtAt: number | null, warehouseBuilt: boolean, warehouseBuiltAt: number | null, warehouseUnlocked: boolean, workshopUpgraded?: boolean, upgradedAt?: number | null, tavernBuilt?: boolean, tavernBuiltAt?: number | null, tavernLevel?: number, coreTime?: number): void; destroy(): void }
 const cellKey = ({ x, y }: GridCell) => `${x},${y}`;
 /** Source quadrants are chosen from occupied N/E/S/W neighbours. */
 export function roadSource(position: GridCell, road: ReadonlySet<string>): readonly [number, number] {
@@ -35,10 +35,20 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   for (let y = 0; y < layout.bounds.rows; y++) for (let x = 0; x < layout.bounds.columns; x++) {
     context.drawImage(source, 128, 64, 64, 64, x * size, y * size, size, size);
   }
-  // Cosmetic one-cell camera margin; these pixels never become buildable land.
-  for (let x = 0; x < layout.bounds.columns; x++) for (const y of [-1, layout.bounds.rows]) {
-    track(scene.add.image(x * size, y * size, KEYS.grass, 'grass').setOrigin(0).setScale(SCALE.tile).setTint(0xc9d7c7).setDepth(0));
+  // Small repeating woodland tile made from existing art. Four static strips
+  // fill camera overscan, without adding cells, actors or navigable land.
+  const woodland = canvas('idle-forest-backdrop', 160, 160), wood = woodland.context;
+  wood.imageSmoothingEnabled = false;
+  for (let y = 0; y < 160; y += 40) for (let x = 0; x < 160; x += 40)
+    wood.drawImage(source, 128, 64, 64, 64, x, y, 40, 40);
+  for (let row = -1; row <= 4; row++) for (let col = -1; col <= 4; col++) {
+    const frame = scene.textures.getFrame(KEYS.grass, `tree-${((row + col) % 4 + 4) % 4}`)!;
+    wood.drawImage(source, frame.cutX, frame.cutY, frame.cutWidth, frame.cutHeight,
+      col * 40 + (row % 2 ? 20 : 0) - 25, row * 40 - 36, 50, 51);
   }
+  wood.fillStyle = 'rgba(20,56,36,.17)'; wood.fillRect(0, 0, 160, 160); woodland.refresh();
+  const backdrop = Array.from({ length: 4 }, () => track(scene.add.tileSprite(0, 0, 1, 1, woodland.key)
+    .setOrigin(0).setDepth(-1).setVisible(false)));
   const road = new Set(layout.road.cells.map(cellKey));
   for (const position of layout.road.cells) {
     const [x, y] = roadSource(position, road);
@@ -146,6 +156,14 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   let lastVisualTime = scene.time.now, workshopAge = Infinity, warehouseAge = Infinity, tavernAge = Infinity;
   let shownWorkshopBuild: number | null | undefined, shownWarehouseBuild: number | null | undefined, shownTavernBuild: number | null | undefined;
   return {
+    extendBackdrop(padX, padY) {
+      // Round outward so subpixel camera rounding cannot leave a dark seam.
+      const x = Math.ceil(padX) + 2, y = Math.ceil(padY) + 2, { width, height } = layout.bounds;
+      const strips = [[-x, -y, width + x * 2, y], [-x, height, width + x * 2, y],
+        [-x, 0, x, height], [width, 0, x, height]];
+      strips.forEach(([left, top, w, h], index) => backdrop[index]!
+        .setPosition(left!, top!).setSize(w!, h!).setTilePosition(left!, top!).setVisible(true));
+    },
     update(elapsed, built, builtAt, warehouseBuilt, warehouseBuiltAt, _warehouseUnlocked, workshopUpgraded = false, upgradedAt = null, tavernBuilt = false, tavernBuiltAt = null, tavernLevel = 1, coreTime = elapsed) {
       const workshopTexture = workshopUpgraded ? KEYS.workshopUpgraded : KEYS.workshop;
       if (building.texture.key !== workshopTexture) building.setTexture(workshopTexture);

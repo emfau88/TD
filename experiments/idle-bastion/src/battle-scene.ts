@@ -342,13 +342,13 @@ export class BattleScene extends Phaser.Scene {
   private fitCameraBounds(): void {
     const camera = this.cameras.main, { width, height } = this.sim.layout.bounds;
     const view = this.mapViewport ?? { x: 0, y: 0, width: this.scale.width, height: this.scale.height };
-    // Keep the rendered viewport inside the actual map even when zoomed out.
-    // Spare screen space belongs to the UI backdrop, never to walkable terrain.
-    const shownWidth = Math.min(view.width, Math.floor(width * camera.zoom));
-    const shownHeight = Math.min(view.height, Math.floor(height * camera.zoom));
-    camera.setViewport(Math.round(view.x + (view.width - shownWidth) / 2),
-      Math.round(view.y + (view.height - shownHeight) / 2), shownWidth, shownHeight);
-    camera.setBounds(0, 0, width, height);
+    // Keep every available screen pixel. If an axis fits the whole map, centre
+    // it with only the necessary scenic margin; never add extra panning room.
+    camera.setViewport(view.x, view.y, view.width, view.height);
+    const padX = Math.max(0, (camera.displayWidth - width) / 2);
+    const padY = Math.max(0, (camera.displayHeight - height) / 2);
+    camera.setBounds(-padX, -padY, width + padX * 2, height + padY * 2);
+    this.forest?.extendBackdrop(padX, padY);
   }
   focusPad(padId: string): void {
     if ((this.sim.preparing || this.sim.guiding) && (this.sim.isPreferredStarterLocation(padId)
@@ -449,6 +449,7 @@ export class BattleScene extends Phaser.Scene {
     // Generic tutorial headroom here exposed the green renderer background.
     camera.setBounds(0, -top / zoom, bounds.width + (this.scale.width - width) / zoom,
       bounds.height + (this.scale.height - height) / zoom);
+    this.forest?.extendBackdrop((this.scale.width - width) / zoom, this.scale.height / zoom);
     const core = cellCenter(this.sim.layout, this.sim.layout.core);
     const defense = this.defenseFrame();
     const target = this.introStep === 0 ? { x: core.x, y: core.y - 20 }
