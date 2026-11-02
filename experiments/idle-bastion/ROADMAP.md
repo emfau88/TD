@@ -1,10 +1,11 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
-**Glutwerfer / Werkstattforschung · 02.11.2026 — umgesetzt und geprüft, Main-Veröffentlichung folgt.**
+**Glutwerfer / Werkstattforschung · 02.11.2026 — als `de9576c` mit Menü-Nachkorrektur `dd784fd` auf Main/Pages veröffentlicht.**
 
 - [x] Umfang: vorhandener Turm 07 mit eigenen Waffen, Feuerball und Einschlag; Forschung in Werkstatt II nach gemeisterter W34, getrennte Baukosten. Bestehende Wellen und Goldtarife erhalten. [Messmethode und erster Kandidat](../../artifacts/glutwerfer-2026-11-02/METHOD.md).
 - [x] Zusatzauftrag: dezente vorhandene Neu-Markierung an Siedlung/Werkstatt und Glutwerfer-Eintrag, unabhängig vom Geldbestand. Bewusstes Ansehen der verfügbaren Forschung wird gespeichert; kein Popup oder zusätzliche Hinweiskachel.
 - [x] Drei verdiente Aufbauten und identische 24-h-Rückkehrbudgets verglichen. Forschung 5.000 Gold (10,9–13,5 min Sparen ab W34), separater Bau 220; optionale Ergänzung, kein pauschal besserer Kauf. 476/476 Tests, Produktionsbuild und Desktop-/Mobilfluss DE/EN bestanden. Atomare Bezahlung, Brand, Verkauf/Reload, Altstände, Mara/Ilyra und einmalige Neu-Markierung geprüft. [Werte, ungünstige Fälle und Grenzen](../../artifacts/glutwerfer-2026-11-02/REPORT.md).
+- [x] Pages `41497308566` erfolgreich; zwölf öffentliche Desktop-/Mobilfälle DE/EN mit Altstand, Sperren, Neu/Gesehen, tatsächlichen Käufen, Brand, drei Originalstufen und exaktem Reload bestanden. Explizite Sturmlichtwahl bleibt trotz neuer Glutforschung erhalten. [Öffentliche Prüfwerte](../../artifacts/glutwerfer-2026-11-02/public-browser/results.json).
 - [ ] Menschliche Spielgefühl-Abnahme nach Vorführung. Keine Freigabe weiterer Türme/Gegner/Gebäude ableiten.
 - [x] Auswahl für später präzisiert: Wurzeltrommler und Frostwidder verworfen; historische Dateien bleiben erhalten. Schwebendes Auge, Flammengeist und Sternenrichter sind ausgewählt zur weiteren Planung. Sternenrichter benötigt Herkunfts-/Darstellungsprüfung; kein Einbau aus diesem Auftrag.
 

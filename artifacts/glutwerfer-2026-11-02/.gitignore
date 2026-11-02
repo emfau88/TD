@@ -6,3 +6,4 @@
 /tests-*.txt
 /build-*.txt
 /browser/debug-*
+/public-browser/*.png

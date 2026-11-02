@@ -53,6 +53,7 @@ langer zusätzlicher Freilauf; höchstens vier völlig schadensfreie neue Wellen
 am Stück im taktischen Rückkehrlauf, genau wie ohne den Turm.
 
 **Kritische Einordnung:** Der Preis und die Bodenbeschränkung sind spürbar.
+Die Sparzeit oben bezahlt nur die Forschung. Mit Bau und allen Upgrades bis Level 6 sind es insgesamt 8.545 Gold, bis Level 7 10.470 Gold.
 Sofortiges Sparen bremst den aktiven Rekord; ein mittelmäßig platzierter Glutwerfer
 kann schlechter sein als weitere vorhandene Upgrades. Neben Frost ist er eine
 nutzbare Ergänzung: der taktische Rückkehrlauf scheitert erstmals eine Welle
@@ -74,6 +75,16 @@ sind erhalten, nicht aus der Auswertung entfernt. [Methode](METHOD.md),
 [zweiter Kandidat mit ursprünglichen Aufstellungen](candidate-2/results.json).
 
 ## Prüfungen und Reproduktion
+
+Öffentlicher Nachweis: Glutpaket `de9576c`, anschließende kleine Menüauswahlkorrektur
+`dd784fd`. [Pages-Lauf 41497308566](https://github.com/emfau88/TD/actions/runs/41497308566)
+erfolgreich. Zwölf öffentliche Browserfälle auf Desktop/Deutsch und Mobil/Englisch
+bestanden, einschließlich echtem Main-Altsave mit Schema 34, expliziter Sturmlichtwahl
+bei ungelesener Glutforschung, einmaliger 5.220-Gold-Zahlung, Brand und Reload.
+[Öffentliche Prüfwerte](public-browser/results.json), [Protokoll](browser-public.txt).
+Der anfängliche automatische Wechsel zur Glutforschung überschreibt keine bewusst
+gewählte andere Technologie mehr; zusätzlicher Produktionsbuild und gezielte
+Desktop-/Mobilprüfung bestanden. Kein Kampf-/Preisnachschliff nach den Messungen.
 
 **476/476 Tests**, Produktionsbuild, zehn neue gezielte Prüfungen für Forschung,
 Gold/Savefehler, Neu/Gesehen, Bodenfilter/Rüstung, Brandüberlagerung, Killzahlung,

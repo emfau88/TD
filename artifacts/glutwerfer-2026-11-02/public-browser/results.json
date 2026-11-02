@@ -1,0 +1,34 @@
+[
+  {
+    "width": 1440,
+    "lang": "de",
+    "explicitChoicePreserved": true,
+    "locked": true,
+    "newWithoutMoney": true,
+    "seenPersists": true,
+    "researchAndBuildPaid": 5220,
+    "exactPausedReload": true,
+    "originalStages": [
+      1,
+      2,
+      3
+    ],
+    "errors": []
+  },
+  {
+    "width": 390,
+    "lang": "en",
+    "explicitChoicePreserved": true,
+    "locked": true,
+    "newWithoutMoney": true,
+    "seenPersists": true,
+    "researchAndBuildPaid": 5220,
+    "exactPausedReload": true,
+    "originalStages": [
+      1,
+      2,
+      3
+    ],
+    "errors": []
+  }
+]

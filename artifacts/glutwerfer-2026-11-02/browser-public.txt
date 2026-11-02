@@ -1,0 +1,14 @@
+seed 1440 explicit-choice
+seed 1440 locked
+seed 1440 new-poor
+seed 1440 purchase
+seed 1440 stage4
+seed 1440 stage7
+{"width":1440,"lang":"de","explicitChoicePreserved":true,"locked":true,"newWithoutMoney":true,"seenPersists":true,"researchAndBuildPaid":5220,"exactPausedReload":true,"originalStages":[1,2,3],"errors":[]}
+seed 390 explicit-choice
+seed 390 locked
+seed 390 new-poor
+seed 390 purchase
+seed 390 stage4
+seed 390 stage7
+{"width":390,"lang":"en","explicitChoicePreserved":true,"locked":true,"newWithoutMoney":true,"seenPersists":true,"researchAndBuildPaid":5220,"exactPausedReload":true,"originalStages":[1,2,3],"errors":[]}
