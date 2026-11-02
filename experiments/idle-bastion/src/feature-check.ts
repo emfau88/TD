@@ -18,7 +18,13 @@ async function launch(scenario: FeatureScenario): Promise<void> {
   busy = true; buttons.forEach(button => button.disabled = true);
   error.hidden = true; status.textContent = t('Testspielstand wird vorbereitet …');
   try {
-    const battle = createFeatureProbe(scenario, JSON.parse(earnedLate));
+    let recorded = JSON.parse(earnedLate);
+    if (scenario === 'boss' || scenario === 'ilyra-unlock') {
+      const { default: snapshots } = await import('../../../artifacts/idle-bastion/acceptance/early-balance-release/selected/B-snapshots.json?raw');
+      const earned = JSON.parse(snapshots);
+      recorded = scenario === 'boss' ? earned.entry15 : earned.clear25;
+    }
+    const battle = createFeatureProbe(scenario, recorded);
     const probe = await saveFeatureProbe(battle, scenario);
     const target = new URL('./', location.href); target.searchParams.set('probe', probe);
     location.assign(target.href);

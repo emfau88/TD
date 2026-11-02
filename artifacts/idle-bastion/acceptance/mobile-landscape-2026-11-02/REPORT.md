@@ -43,6 +43,10 @@ nicht die komplette Karte verkleinert. Die konkrete Handyabnahme bleibt offen.
 
 [Messwerte](followup/results.json), [720×320](followup/720-initial.png),
 [unterer Kartenrand](followup/720-bottom.png), [844×390 DE](followup/844-initial.png).
+Als `daebbf2` auf Main veröffentlicht; [Pages 41519846232](https://github.com/emfau88/TD/actions/runs/41519846232)
+erfolgreich. Anschließend 20 öffentliche Browserzustände in denselben fünf
+Formaten ohne HTTP-/JavaScriptfehler geprüft; dort ohne lokalen Kamerahook.
+[Öffentliche Nachkorrektur-Messwerte](followup-public-results.json).
 Reproduktion gegen einen frischen Produktionsbuild:
 
 ```powershell

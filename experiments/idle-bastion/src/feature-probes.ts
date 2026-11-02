@@ -3,16 +3,16 @@ import { ilyraFirstTarget, recommendIlyraPosition } from './hero-controls';
 import { ilyraCell } from './ilyra';
 import { openBattleStore } from './save-store';
 
-export type FeatureScenario = 'frost' | 'heroes' | 'ilyra';
+export type FeatureScenario = 'frost' | 'heroes' | 'ilyra' | 'boss' | 'ilyra-unlock';
 export function isFeatureScenario(value: unknown): value is FeatureScenario {
-  return value === 'frost' || value === 'heroes' || value === 'ilyra';
+  return value === 'frost' || value === 'heroes' || value === 'ilyra' || value === 'boss' || value === 'ilyra-unlock';
 }
 function requireAction(ok: unknown, action: string): asserts ok {
   if (!ok) throw new Error(`Feature preview could not prepare ${action}.`);
 }
 
 /** Prepared review scenarios only. All purchases and introductions use normal commands. */
-export function createFeatureProbe(scenario: FeatureScenario, earnedLate?: unknown): IdleBattle {
+export function createFeatureProbe(scenario: FeatureScenario, earnedSnapshot?: unknown): IdleBattle {
   if (!isFeatureScenario(scenario)) throw new Error('Unknown feature scenario');
   if (scenario === 'frost') {
     const b = IdleBattle.newGame();
@@ -30,11 +30,20 @@ export function createFeatureProbe(scenario: FeatureScenario, earnedLate?: unkno
     requireAction(b.introduction.stage === 'frost' && b.learningPaused, 'Frost lesson');
     return b;
   }
-  // Recorded earned wave-40 defense, not an unlimited wallet or changed unlock rules.
-  const b = IdleBattle.restore(earnedLate);
+  // Recorded earned defenses, not an unlimited wallet or changed unlock rules.
+  const b = IdleBattle.restore(earnedSnapshot);
   requireAction(b, 'recorded defense');
+  if (scenario === 'boss') {
+    requireAction(b.wave === 15 && b.phase === 'wave' && b.highestCleared === 14 && b.bossVictories === 0, 'first boss entry');
+    return b;
+  }
+  if (scenario === 'ilyra-unlock') requireAction(b.highestCleared === 25 && b.secondBossVictories > 0 && !b.ilyra, 'Ilyra unlock entry');
   requireAction(b.buildTavern(b.recommendedTavernPlot!), 'tavern');
   requireAction(b.upgradeTavern(), 'tavern upgrade');
+  if (scenario === 'ilyra-unlock') {
+    requireAction(b.ilyraRecruitable && !b.guiding && !b.discoveryActive, 'available Ilyra recruitment');
+    return b;
+  }
   requireAction(b.recruitIlyra(), 'Ilyra recruitment');
   if (scenario === 'heroes') {
     const position = recommendIlyraPosition(b);
@@ -60,7 +69,7 @@ export async function saveFeatureProbe(battle: IdleBattle, scenario: FeatureScen
   try {
     // Fail closed even in the practically impossible event of a UUID collision.
     if ((await store.load()).kind !== 'empty') throw new Error('Preview slot is already occupied');
-    await store.save(battle.snapshot(), false, 0);
+    await store.save(battle.snapshot(), scenario === 'boss' || scenario === 'ilyra-unlock', 0);
     return probe;
   } finally { store.close(); }
 }

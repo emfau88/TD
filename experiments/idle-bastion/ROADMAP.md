@@ -1,12 +1,19 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**README-Teststarts · 02.11.2026 — umgesetzt und lokal geprüft, Veröffentlichung läuft.**
+
+- [x] Direkte README-Links zum ersten Boss W15 und zur selbst ausführbaren Ilyra-Rekrutierung nach Boss 25. Vorhandenen Teststarter erweitert; bestehende erspielte Stände, regulär bezahlte Taverne II, frische UUID-Partien, anfänglich pausiert. Keine Änderungen an normalem Einstieg oder Spielregeln.
+- [x] 8/8 gezielte Tests, TypeScript/Produktionsbuild und sechs Browserläufe auf Desktop EN / Touch-Querformat DE bestanden: echter Bossstart, eigene Rekrutierung, Reload, wiederholter Link und unveränderter Hauptsave. [Nachweise](../../artifacts/idle-bastion/acceptance/readme-starts-2026-11-02/REPORT.md).
+- [ ] Commit/Push und öffentliche Prüfung abschließen.
+
 **Handy-Querformat · 02.11.2026 — als `27ab413` auf Main/Pages veröffentlicht.**
 
 - [x] Einheitlicher Modus für flache Touch-Querformate: kleinere Kopf-/Bauleiste, vollständige Bau-/Gefährtenkarten, kompakte Intro-/Tutorialhinweise mit passender Intro-Kamera und nutzbare Taverne. Schwerpunkt gängige Handyformate; keine Sonderlayouts für exotische Kleinstgeräte.
 - [x] 39/39 gezielte Tests und Produktionsbuild bestanden. 111 Browserzustände auf 720×320 / 844×390 / 932×430 sowie Hochformat/Desktop geprüft, DE/EN, Rotation, echter Starterbau, Forschung, Taverne/Herzgeschichten, Menüscrollen, Rückkehr und Reload. Keine Browserfehler; Spielregeln und Speicherformat unverändert. [Messungen und Aufnahmen](../../artifacts/idle-bastion/acceptance/mobile-landscape-2026-11-02/REPORT.md).
 - [x] Main per Fast-forward übernommen und gepusht; [Pages-Lauf 41513208351](https://github.com/emfau88/TD/actions/runs/41513208351) erfolgreich. Sechs öffentliche Start-/Menü-/Tavernenproben inklusive Touch, Hochformat, Desktop und kurzem Mausfenster bestanden. Ein anfänglicher 503-Schriftabruf war beim erneuten vollständigen Lauf behoben; [öffentliche Messwerte](../../artifacts/idle-bastion/acceptance/mobile-landscape-2026-11-02/public-results.json).
 - [x] Nach Handy-Rückmeldung zu Schritt 6: schmale rechtsbündige Kampf-Tutorialbox und erreichbarer unterer Kartenrand durch Kamera-Sichtfeld zwischen den Leisten. Normaler Maßstab erhalten. 35/35 gezielte Tests, Produktionsbuild und 26 Browserzustände mit echtem Upgrade, Touch-Verschieben, Zoom und Rotation bestanden; Nachweis im selben Bericht.
-- [ ] Veröffentlichung der Nachkorrektur und erneute menschliche Sichtprüfung auf dem konkreten Handy. Die erste Rückmeldung ist berücksichtigt; keine physische Geräteabnahme behauptet.
+- [x] Nachkorrektur als `daebbf2` auf Main veröffentlicht; [Pages 41519846232](https://github.com/emfau88/TD/actions/runs/41519846232) erfolgreich. 20 öffentliche Browserzustände in fünf Formaten ohne HTTP-/JavaScriptfehler; Messwerte im selben Bericht.
+- [ ] Erneute menschliche Sichtprüfung auf dem konkreten Handy. Die erste Rückmeldung ist berücksichtigt; keine physische Geräteabnahme behauptet.
 
 **Glutwerfer / Werkstattforschung · 02.11.2026 — als `de9576c` mit Menü-Nachkorrektur `dd784fd` auf Main/Pages veröffentlicht.**
 

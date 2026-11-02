@@ -1,0 +1,68 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "lang": "en",
+    "scenario": "boss",
+    "wave": 15,
+    "paused": true,
+    "uniqueSlot": true,
+    "mainUnchanged": true,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "lang": "en",
+    "scenario": "ilyra-unlock",
+    "wave": 25,
+    "paused": true,
+    "uniqueSlot": true,
+    "mainUnchanged": true,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "lang": "en",
+    "scenario": "boss",
+    "wave": 15,
+    "paused": true,
+    "uniqueSlot": true,
+    "mainUnchanged": true,
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "lang": "de",
+    "scenario": "boss",
+    "wave": 15,
+    "paused": true,
+    "uniqueSlot": true,
+    "mainUnchanged": true,
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "lang": "de",
+    "scenario": "ilyra-unlock",
+    "wave": 25,
+    "paused": true,
+    "uniqueSlot": true,
+    "mainUnchanged": true,
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "lang": "de",
+    "scenario": "boss",
+    "wave": 15,
+    "paused": true,
+    "uniqueSlot": true,
+    "mainUnchanged": true,
+    "errors": []
+  }
+]

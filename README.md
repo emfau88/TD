@@ -10,10 +10,16 @@ die Siedlung ausbauen und zwischen den Kämpfen die Gefährten in der Taverne ke
 Bisheriger Projektname: SPIRE · Idle Bastion.
 
 **[▶ Spielen / fortsetzen](https://emfau88.github.io/TD/)** ·
-**[✦ Frische Partie](https://emfau88.github.io/TD/?fresh=1)**
+**[✦ Frische Partie](https://emfau88.github.io/TD/?fresh=1)** ·
+**[⚔ Erster Boss · Welle 15](https://emfau88.github.io/TD/feature-check.html?scenario=boss)** ·
+**[✧ Ilyra freischalten](https://emfau88.github.io/TD/feature-check.html?scenario=ilyra-unlock)**
 
 Der Frischstart legt einen separaten Spielstand an und erhält deine bisherige Partie.
 Seine erzeugte `?probe=…`-Adresse kannst du als Lesezeichen speichern.
+Die beiden Teststarts erzeugen ebenfalls jeweils eine separate Partie und starten
+pausiert: beim ersten Boss beziehungsweise direkt nach Boss 25 mit vorbereiteter
+Taverne II. Oben auf ▶ drücken; Ilyra lässt sich über **Siedlung → Taverne** mit
+**„Ilyra kennenlernen“** selbst freischalten. Dein normaler Spielstand bleibt erhalten.
 Spielstände liegen lokal im Browser. Englisch ist voreingestellt; Deutsch lässt sich im Spielmenü wählen.
 
 ## Turmentwicklung
