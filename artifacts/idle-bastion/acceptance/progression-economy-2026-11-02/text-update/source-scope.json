@@ -1,0 +1,11 @@
+{
+  "checkedFiles": 131,
+  "changed": [
+    "src/locales/en.ts",
+    "src/main.ts",
+    "src/progress-ui.ts",
+    "index.html"
+  ],
+  "unchangedOtherFiles": 127,
+  "combatAndEconomyUnchanged": true
+}

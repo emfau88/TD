@@ -37,7 +37,7 @@ const HINTS = [
   'Nach Welle 10 wird der Scharfschütze verfügbar. Verbessere deine Verteidigung für diesen Meilenstein.',
   'Der Scharfschütze bevorzugt gepanzerte Gegner und ignoriert ihre Rüstung. Ab Welle 11 kommen Panzerskorpione. Frost und Flächentreffer helfen gegen ihre Begleiter.',
   'Unsere erste Kombination funktioniert: Waldwächter verursachen Schaden, Frostkristalle halten Gegner länger in Reichweite. Probiere Plätze und meine Zuweisung aus.',
-  'Das Vorratslager sammelt länger: 65 % der sicheren Farmbasis für bis zu acht Stunden. Öffne Siedlung, prüfe die Vorschau und baue es für 650 Gold. Die besseren Werte gelten für die nächste Abwesenheit.',
+  'Das Vorratslager sammelt länger: 26 % der sicheren Farmbasis für bis zu acht Stunden. Öffne Siedlung, prüfe die Vorschau und baue es für 650 Gold. Die besseren Werte gelten für die nächste Abwesenheit.',
   'Nach gemeisterter Welle 8 kannst du ein Vorratslager bauen. Verbessere deine Verteidigung und spare dann 650 Gold. Wisp versorgt später beide Gebäude.',
   'Rosenspiegel erwartet uns in Welle 15. Ihr Herzfaden kündigt an, welchen Turm sie verführt. Frost bremst ihren Vormarsch; Flächentreffer räumen Begleiter ab, Scharfschützen durchdringen ihre Rüstung. Die erste vollständige Bosswelle bringt einmalig 750 Gold.',
   'Jetzt übernimmt Wisp die Versorgung. Meine Magie heißt Übertakten: acht Sekunden lang 50 % mehr Feuerrate. Goldener Ring und Restsekunden zeigen den verstärkten Turm. Automatisch zaubere ich nur bei Gegnern; über mein Porträt kannst du auch selbst auslösen.',
@@ -59,7 +59,7 @@ export function nextObjective(battle: IdleBattle): string {
     case 6: return t('Nächstes Ziel: den ersten blauen Frosttreffer im Kampf beobachten.');
     case 7: return battle.wispUnlocked ? t('Wisp begrüßen · +10 % Kampf-Gold, arbeitet automatisch.') : t('Deine Kombination arbeitet. Welle 5 meistern, dann kommt Wisp.');
     case 8: return t('Wisp arbeitet: +10 % Kampf-Gold. Steinschleuder bauen · 135 Gold.');
-    case 12: return t("Vorratslager bauen · {0} · 65 % Offline-Ertrag für bis zu 8 Stunden.", remaining(SETTLEMENT.warehouseCost));
+    case 12: return t("Vorratslager bauen · {0} · 26 % Offline-Ertrag für bis zu 8 Stunden.", remaining(SETTLEMENT.warehouseCost));
     case 13: return t('Welle 8 meistern: Vorratslager freischalten.');
     case 9: return t('Welle 10 meistern: Scharfschütze.');
     case 10: return t('Scharfschütze bauen · 170 Gold · Rüstung durchdringen.');

@@ -370,7 +370,7 @@ test('farm certificate appears only after live clear, revalidates on upgrade and
   assert.equal(reloaded.battle.gold, session.battle.gold);
 });
 
-test('suspend releases ownership, reserves 60% offline income and blocks combat until claim plus actual continuation', async () => {
+test('suspend releases ownership, reserves 24% offline income and blocks combat until claim plus actual continuation', async () => {
   const store = new ControlledStore(), session = await open(store);
   await firstClear(session);
   const certificate = session.certificate!, before = session.battle.snapshot();
@@ -381,7 +381,7 @@ test('suspend releases ownership, reserves 60% offline income and blocks combat 
   const returned = await open(store);
   assert.equal(returned.awaitingResume, true);
   const reward = returned.pendingReward!;
-  const expected = Number(BigInt(certificate.rewardGold) * 600n * 3600000n / BigInt(certificate.durationMs));
+  const expected = Number(BigInt(certificate.rewardGold) * 240n * 3600000n / BigInt(certificate.durationMs));
   assert.equal(reward.amountUnits, expected);
   returned.advance(0.25);
   assert.deepEqual(returned.battle.snapshot(), before);
@@ -518,7 +518,7 @@ test('claims preserve the fixed absence window and continuation includes a later
   store.clock += 3000;
   await returned.heartbeat(); // Owns the dialog while the user decides to continue.
   assert.equal(await returned.resumeActive(), true);
-  const expected = Number(BigInt(certificate.rewardGold) * 600n * 63000n / BigInt(certificate.durationMs));
+  const expected = Number(BigInt(certificate.rewardGold) * 240n * 63000n / BigInt(certificate.durationMs));
   assert.equal(returned.battle.gold * 1000 + returned.battle.goldRemainderUnits, before + expected);
   assert.equal(await returned.resumeActive(), false);
   assert.equal(returned.battle.gold * 1000 + returned.battle.goldRemainderUnits, before + expected);
@@ -705,7 +705,7 @@ test('tavern heartbeat checkpoints exclude visit time; real departure retains ex
     const returned = await open(store);
     assert.equal(returned.offline.window!.from, departedAt);
     assert.equal(returned.pendingReward!.elapsedMs, 60000);
-    const expected = paused ? 0 : Number(BigInt(certificate.rewardGold) * 600n * 60000n / BigInt(certificate.durationMs));
+    const expected = paused ? 0 : Number(BigInt(certificate.rewardGold) * 240n * 60000n / BigInt(certificate.durationMs));
     assert.equal(returned.pendingReward!.amountUnits, expected);
     returned.setTavernOpen(true); await resume(returned); // same open dialog after background return
     const resumed = returned.battle.snapshot(); returned.advance(.5);

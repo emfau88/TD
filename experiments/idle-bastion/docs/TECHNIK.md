@@ -531,7 +531,8 @@ Ein harter Prozessabbruch kann die letzten noch nicht bestätigten Simulationsbr
 
 ## 10. Offline-Belohnung ohne Doppelzählung
 
-- Ausgangswerte: 60 % der zertifizierten Rate, höchstens 2 Stunden. Lager I: 65 %, höchstens 8 Stunden.
+- Neue Abreisen ab Kampfregel 17 / Battleschema 33: 24 % der zertifizierten Rate, höchstens 2 Stunden. Lager I: 26 %, höchstens 8 Stunden. Bereits gemeisterte Wellen liefern außerhalb der Anleitung 10 % ihrer gewöhnlichen Gegner-/Abschlussbelohnung; der Farmnachweis enthält diesen Faktor bereits. Erstabschlüsse und einmalige Bossprämien bleiben unverändert.
+- Migration: Geld, Ausbau und Rekorde bleiben erhalten. Alte laufende `waveRecipeVersion` behalten ihre Belohnung bis zum nächsten Versuch; neue Farmnachweise verwenden Regel 17. Gespeicherte Abreisegrundlagen und offene Belege bleiben bei 60 % / 2 h beziehungsweise 65 % / 8 h. Fehlende historische Policy-Felder bedeuten weiterhin 60 % / 2 h. Erst tatsächliche aktive Fortsetzung setzt die neue Policy. Kein weiterer 4-%-Faktor in der Offline-Abrechnung.
 - Grundlage ist die beim Verlassen gültige sichere Rate einschließlich damaliger Boni. Keine nachträglich erfundenen höheren Raten oder rückwirkenden Lagerverbesserungen.
 - Formel: sichere Goldrate pro Minute × anrechenbare Minuten × Effizienz, mit einmaliger Rundung und gespeichertem Rest.
 - Offline entstehen ausschließlich Gold und ein Rückkehrbeleg. Keine Bossabschlüsse, Wellenrekorde, Charakter-/Technologie-/Gebietsfreischaltungen oder automatischen Käufe.

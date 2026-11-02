@@ -45,7 +45,7 @@ import { BattleScene } from './battle-scene';
 import { nextObjective, tutorialHint, tutorialStep } from './hud';
 import { BattleSession, SessionLoadError, SessionOwnershipError } from './battle-session';
 import { openBattleStore, type BattleSaveStore } from './save-store';
-import { offlinePolicy, WAREHOUSE_OFFLINE } from './offline';
+import { offlinePolicy, OFFLINE, WAREHOUSE_OFFLINE, LEGACY_OFFLINE, LEGACY_WAREHOUSE_OFFLINE } from './offline';
 import { farmRewardGold } from './farming';
 import { ART } from './art';
 import { drawDockArt } from './dock-art';
@@ -359,7 +359,9 @@ function syncUI(): void {
       : !basis ? t('Noch kein sicherer Farmnachweis vorhanden. Besiege zuerst eine Welle zuverlässig.')
       : reward && reward.elapsedMs > reward.creditedMs ? t('Deine Vorräte sind voll. Die Sammelzeit wurde ausgeschöpft.')
       : t('Deine Verteidigung hat Gold für dich gesammelt. Setze es für deinen nächsten Ausbau ein.'));
-    element('return-basis').textContent = t("Farmbasis beim Verlassen: {0} G/min · {1} % Ertrag · bis zu {2} Stunden. Zeit bis zum Einsammeln zählt mit.", rateFormat.format(basis ? farmRewardGold(basis) * 60000 / basis.durationMs : 0), departure.efficiencyPermille / 10, departure.limitMs / 3600000);
+    element('return-basis').textContent = t("Farmbasis beim Verlassen: {0} G/min · {1} % Ertrag · bis zu {2} Stunden. Zeit bis zum Einsammeln zählt mit.", rateFormat.format(basis ? farmRewardGold(basis) * 60000 / basis.durationMs : 0), departure.efficiencyPermille / 10, departure.limitMs / 3600000)
+      + (basis && (departure.efficiencyPermille === LEGACY_OFFLINE.efficiencyPermille || departure.efficiencyPermille === LEGACY_WAREHOUSE_OFFLINE.efficiencyPermille)
+        ? ' ' + t('Diese Abwesenheit wird noch nach den früheren Regeln vergütet.') : '');
     claim.textContent = t(reward && reward.amountUnits > 0 ? t('Belohnung einsammeln und fortsetzen') : live.paused ? t('Zur pausierten Verteidigung') : t('Verteidigung fortsetzen'));
     claim.disabled = unavailable || document.hidden;
   }
@@ -505,11 +507,12 @@ function syncUI(): void {
   element('warehouse-description').textContent = t(builtWarehouse ? t('Wisp versorgt das Lager. Deine Vorräte sammeln automatisch während deiner Abwesenheit.')
     : t('Wenn du das Spiel schließt, sammelt deine sichere Verteidigung weiter. Das Lager verlängert das Sammeln von 2 auf 8 Stunden. Optional; es macht deine Türme nicht stärker.'));
   element('warehouse-rate').textContent = t(certificate ? t("{0} G/min", rateFormat.format(safeRate)) : t('Noch kein Nachweis'));
-  element('warehouse-efficiency').textContent = t(builtWarehouse ? t('65 % der Farmbasis') : '60 % → 65 %');
+  element('warehouse-efficiency').textContent = builtWarehouse ? t('{0} % der Farmbasis', WAREHOUSE_OFFLINE.efficiencyPermille / 10)
+    : `${OFFLINE.efficiencyPermille / 10} % → ${WAREHOUSE_OFFLINE.efficiencyPermille / 10} %`;
   element('warehouse-cap').textContent = t(builtWarehouse ? t('Bis zu 8 Stunden') : t('2 → 8 Stunden'));
   element('warehouse-preview').textContent = t(live.paused ? t('0 Gold · Pause aktiv') : !certificate ? t('Zuerst sicher farmen')
     : builtWarehouse ? t("≈ {0} Gold", currency.format(safeRate * 60 * WAREHOUSE_OFFLINE.efficiencyPermille / 1000))
-    : t("{0} → {1} Gold", currency.format(safeRate * 60 * 0.6), currency.format(safeRate * 60 * 0.65)));
+    : t("{0} → {1} Gold", currency.format(safeRate * 60 * OFFLINE.efficiencyPermille / 1000), currency.format(safeRate * 60 * WAREHOUSE_OFFLINE.efficiencyPermille / 1000)));
   element('warehouse-condition').textContent = t(!sim.warehouseUnlocked ? t("Voraussetzung: {0} · Welle 8 {1}.", sim.wispUnlocked ? 'Wisp ✓' : t('Wisp (Frost & Welle 5)'), sim.highestCleared >= 8 ? '✓' : 'meistern')
     : !builtWarehouse && sim.gold < SETTLEMENT.warehouseCost ? t("Noch {0} Gold. Die Vorschau gilt bei unveränderter Verteidigung; während einer Pause entsteht kein Ertrag.", currency.format(SETTLEMENT.warehouseCost - sim.gold))
     : t('Vorschau bei unveränderter Verteidigung. Während einer Pause entsteht kein Offline-Ertrag.'));
@@ -526,7 +529,7 @@ function syncUI(): void {
   element('clearing-condition').textContent = t('Die Ostfront folgt in einem späteren Ausbau.');
   element('show-clearing').hidden = !atCore;
   element('layout-status').textContent = t(view.paused ? t('Kampf angehalten.')
-    : sim.mode === 'farm' ? t("Sicheres Farmen · Welle {0}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang.", sim.farmWave)
+    : sim.mode === 'farm' ? t("Sicheres Farmen · Welle {0}. Bereits geschaffte Wellen geben 10 % Gold. Ein neuer Vorstoß beginnt auf deinen Wunsch am Wellenübergang.", sim.farmWave)
     : t("Automatischer Vorstoß · höchste geschaffte Welle {0}.", sim.highestCleared));
   const relevantEvents = sim.drainEvents();
   scene?.acceptEvents(relevantEvents);
@@ -551,7 +554,7 @@ function syncUI(): void {
     : message.type === 'workshop' ? t('Die Werkstatt ist fertig! Frostfassung ist jetzt erforschbar.')
     : message.type === 'tavern-upgrade' ? t('Taverne II fertig! Du kannst jetzt Ilyra kennenlernen und kostenlos rekrutieren.')
     : message.type === 'tavern' ? t('Die Taverne steht! Ein neuer Treffpunkt für deine Siedlung.')
-    : message.type === 'warehouse' ? t('Vorratslager gebaut! Künftig 65 % Offline-Ertrag für bis zu 8 Stunden.')
+    : message.type === 'warehouse' ? t('Vorratslager gebaut! Künftig 26 % Offline-Ertrag für bis zu 8 Stunden.')
     : message.type === 'research' && message.technology === 'storm' ? t('Sturmlicht erforscht! Der Turmbau ist jetzt im Baukatalog verfügbar.') : message.type === 'research' ? t('Frostfassung erforscht! Baue einen Frostkristall oder verbessere Türme bis Level 6.')
     : message.type === 'sell' ? t("Turm verkauft · +{0} Gold. Die sichere Farmbasis wird neu geprüft.", currency.format(message.amount ?? 0))
     : t('Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.')));

@@ -194,7 +194,7 @@ test('Mara position and temporary effect never inflate a farm proof, while reass
   battle.mara.cooldownRemaining = 30; battle.mara.effectRemaining = 8;
   const active = certifyFarm(battle)!;
   assert.deepEqual(active, ordinary);
-  assert.deepEqual({ reward: active.rewardGold, duration: active.durationMs }, { reward: 140, duration: 21100 });
+  assert.deepEqual({ reward: active.rewardGold, duration: active.durationMs }, { reward: 14, duration: 21100 });
   const tower = battle.build('tower-02')!, before = certifyFarm(battle)!;
   const fingerprint = defenseFingerprint(battle);
   assert.equal(battle.assignMara(tower.uid), true);

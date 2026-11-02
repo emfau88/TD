@@ -1,0 +1,2 @@
+legacy 390px: exact claim, reload, current hints, pause and continued combat passed
+fresh 390px: starter placement, first clear and paid upgrade passed

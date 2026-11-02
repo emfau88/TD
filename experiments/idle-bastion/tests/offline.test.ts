@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
-  OFFLINE, activateOffline, beginAbsence, checkpointActive, claimOffline,
+  OFFLINE, LEGACY_OFFLINE, activateOffline, beginAbsence, checkpointActive, claimOffline,
   createOfflineState, reserveOffline, restoreOffline, type OfflineState,
 } from '../src/offline';
 import type { FarmCertificate } from '../src/farming';
@@ -11,10 +11,10 @@ const BASIS: FarmCertificate = { wave: 1, fingerprint: 'defense-a', rulesVersion
 const start = (basis: FarmCertificate | null = BASIS, paused = false): OfflineState =>
   beginAbsence(createOfflineState(START), START, basis, paused);
 
-test('30 seconds, 10 minutes, 1 hour and 3 hours reserve 60% with the same two-hour cap', () => {
+test('30 seconds, 10 minutes, 1 hour and 3 hours reserve 24% with the same two-hour cap', () => {
   for (const duration of [30_000, 600_000, 3_600_000, 10_800_000]) {
     const state = reserveOffline(start(), START + duration);
-    assert.equal(state.pendingReward?.amountUnits, Math.min(duration, OFFLINE.limitMs));
+    assert.equal(state.pendingReward?.amountUnits, Math.min(duration, OFFLINE.limitMs) * 0.4);
     assert.equal(state.pendingReward?.elapsedMs, duration);
     assert.equal(state.pendingReward?.creditedMs, Math.min(duration, OFFLINE.limitMs));
     assert.equal(state.window?.usedMs, Math.min(duration, OFFLINE.limitMs));
@@ -38,11 +38,11 @@ test('closing and reopening before claim consumes only the remaining cap of the 
   const reopened = restoreOffline(JSON.parse(JSON.stringify(initial)))!;
   const later = reserveOffline(reopened, START + 10_800_000);
   assert.equal(later.pendingReward?.id, id);
-  assert.equal(later.pendingReward?.amountUnits, OFFLINE.limitMs);
+  assert.equal(later.pendingReward?.amountUnits, OFFLINE.limitMs * 0.4);
   assert.equal(later.window?.from, START);
   assert.equal(later.window?.usedMs, OFFLINE.limitMs);
   const claimed = claimOffline(later, id);
-  assert.equal(claimed.amountUnits, OFFLINE.limitMs);
+  assert.equal(claimed.amountUnits, OFFLINE.limitMs * 0.4);
   assert.ok(claimed.state.window, 'A claim does not end the absence window.');
   const closedAgain = reserveOffline(claimed.state, START + 14_400_000);
   assert.equal(closedAgain.pendingReward?.amountUnits, 0);
@@ -57,13 +57,13 @@ test('claims are idempotent, wrong IDs do nothing and only actual active play st
   assert.deepEqual(wrong.state, pending);
   assert.throws(() => activateOffline(pending, START + 30_000, BASIS, false), /Claim/);
   const claimed = claimOffline(pending, pending.pendingReward!.id);
-  assert.equal(claimed.amountUnits, 30_000);
+  assert.equal(claimed.amountUnits, 12_000);
   assert.equal(claimOffline(claimed.state, pending.pendingReward!.id).amountUnits, 0);
   const active = activateOffline(claimed.state, START + 30_000, BASIS, false);
   assert.equal(active.window, null);
   const later = beginAbsence(active, START + 40_000, BASIS, false);
   assert.notEqual(later.window?.id, pending.window?.id);
-  assert.equal(reserveOffline(later, START + 70_000).pendingReward?.amountUnits, 30_000);
+  assert.equal(reserveOffline(later, START + 70_000).pendingReward?.amountUnits, 12_000);
 });
 
 test('backwards clock jumps never move the high-water cursor back or repay a reserved interval', () => {
@@ -73,7 +73,7 @@ test('backwards clock jumps never move the high-water cursor back or repay a res
   const caughtUp = reserveOffline(backward, START + 30_000);
   assert.deepEqual(caughtUp, first);
   const forward = reserveOffline(caughtUp, START + 90_000);
-  assert.equal(forward.pendingReward?.amountUnits, 90_000);
+  assert.equal(forward.pendingReward?.amountUnits, 36_000);
   assert.equal(forward.window?.cursorHighWater, START + 90_000);
 });
 
@@ -82,7 +82,7 @@ test('the certificate and paused state are frozen at the original departure', ()
   const morePowerful = { ...BASIS, rewardGold: BASIS.rewardGold * 10, fingerprint: 'defense-b' };
   const attemptedReset = beginAbsence(old, START + 20_000, morePowerful, false);
   assert.deepEqual(attemptedReset, old);
-  assert.equal(reserveOffline(attemptedReset, START + 30_000).pendingReward?.amountUnits, 30_000);
+  assert.equal(reserveOffline(attemptedReset, START + 30_000).pendingReward?.amountUnits, 12_000);
   const paused = start(BASIS, true);
   assert.equal(reserveOffline(beginAbsence(paused, START + 20_000, BASIS, false), START + 30_000).pendingReward?.amountUnits, 0);
 });
@@ -92,12 +92,12 @@ test('confirmed active checkpoints and absence share a single non-overlapping ti
   const afterActive = checkpointActive(initial, START + 10_000, BASIS, false);
   // Abrupt close after the last confirmed active checkpoint: only its tail counts.
   const crashReturn = reserveOffline(afterActive, START + 40_000);
-  assert.equal(crashReturn.pendingReward?.amountUnits, 30_000);
+  assert.equal(crashReturn.pendingReward?.amountUnits, 12_000);
   assert.equal(crashReturn.window?.from, START + 10_000);
   assert.throws(() => checkpointActive(crashReturn, START + 40_000, BASIS, false), /Resume/);
   // A normal visibility boundary advances past actively simulated time as well.
   const hidden = beginAbsence(afterActive, START + 15_000, BASIS, false);
-  assert.equal(reserveOffline(hidden, START + 40_000).pendingReward?.amountUnits, 25_000);
+  assert.equal(reserveOffline(hidden, START + 40_000).pendingReward?.amountUnits, 10_000);
 });
 
 test('exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips', () => {
@@ -109,7 +109,7 @@ test('exact rational currency remainders survive tiny repeated reservations, cla
     state = restoreOffline(JSON.parse(JSON.stringify(claimed.state)))!;
     total += claimed.amountUnits;
   }
-  assert.equal(total, 600);
+  assert.equal(total, 240);
   assert.deepEqual(state.roundingRemainder, { numerator: '0', denominator: '1' });
   assert.equal(reserveOffline(start(tiny), START + 7).pendingReward?.amountUnits, total);
 });
@@ -119,11 +119,11 @@ test('fractional units carry into future windows even when the certified rate ch
   const eleven = { ...BASIS, rewardGold: 1, durationMs: 11 };
   const first = reserveOffline(start(seven), START + 1);
   const claimOne = claimOffline(first, first.pendingReward!.id);
-  assert.equal(claimOne.amountUnits, 85);
+  assert.equal(claimOne.amountUnits, 34);
   const active = activateOffline(claimOne.state, START + 1, eleven, false);
   const second = reserveOffline(beginAbsence(active, START + 2, eleven, false), START + 3);
-  assert.equal(second.pendingReward?.amountUnits, 55);
-  assert.deepEqual(second.roundingRemainder, { numerator: '20', denominator: '77' });
+  assert.equal(second.pendingReward?.amountUnits, 22);
+  assert.deepEqual(second.roundingRemainder, { numerator: '8', denominator: '77' });
 });
 
 test('invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected', () => {
@@ -148,7 +148,8 @@ test('invalid saved cursors, caps, pending amounts, versions and fractional rema
 });
 
 test('the first B04 schema-one policy defaults migrate without resetting a pending absence window', () => {
-  const original = reserveOffline(start({ ...BASIS, rewardGold: 1, durationMs: 7 }), START + 1);
+  const original = reserveOffline(beginAbsence(createOfflineState(START), START,
+    { ...BASIS, rewardGold: 1, durationMs: 7 }, false, LEGACY_OFFLINE), START + 1);
   const legacy = JSON.parse(JSON.stringify(original));
   delete legacy.baseline.efficiencyPermille;
   delete legacy.baseline.limitMs;
@@ -159,7 +160,7 @@ test('the first B04 schema-one policy defaults migrate without resetting a pendi
   assert.deepEqual(migrated?.pendingReward, original.pendingReward);
   assert.deepEqual(migrated?.roundingRemainder, original.roundingRemainder);
   assert.equal(reserveOffline(migrated!, START + 7).pendingReward?.amountUnits, 600);
-  const active = createOfflineState(START);
+  const active = checkpointActive(createOfflineState(START), START, null, false, LEGACY_OFFLINE);
   const oldActive = JSON.parse(JSON.stringify(active));
   delete oldActive.baseline.efficiencyPermille;
   delete oldActive.baseline.limitMs;
@@ -180,7 +181,7 @@ test('policy migration never replaces an explicitly contradictory or malformed s
 test('known historical departure proofs retain their original production basis', () => {
   for (const rulesVersion of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]) {
     const basis = { ...BASIS, rulesVersion, fingerprint: `defense-rules-${rulesVersion}` };
-    const pending = reserveOffline(start(basis), START + 30_000);
+    const pending = reserveOffline(beginAbsence(createOfflineState(START), START, basis, false, LEGACY_OFFLINE), START + 30_000);
     const restored = restoreOffline(JSON.parse(JSON.stringify(pending)));
     assert.deepEqual(restored, pending);
     assert.equal(restored?.window?.certificate?.rulesVersion, rulesVersion);
@@ -188,6 +189,6 @@ test('known historical departure proofs retain their original production basis',
     assert.equal(reserveOffline(restored!, START + 60_000).pendingReward?.amountUnits, 60_000);
   }
   const future = JSON.parse(JSON.stringify(start()));
-  future.baseline.certificate.rulesVersion = future.window.certificate.rulesVersion = 17;
+  future.baseline.certificate.rulesVersion = future.window.certificate.rulesVersion = 18;
   assert.equal(restoreOffline(future), undefined);
 });

@@ -88,7 +88,7 @@ test('entry pruning never creates evidence: first clear still needs two cycles, 
   assert.equal(measured(fresh).proof, undefined);
   for (let i = 0; i < 8000 && !fresh.highestCleared; i++) fresh.update(BASE.stepSeconds);
   const first = measured(fresh); assert.ok(first.proof);
-  assert.equal(first.proof.wave, 1); assert.equal(first.proof.rewardGold, 140);
+  assert.equal(first.proof.wave, 1); assert.equal(first.proof.rewardGold, 14);
   assert.equal(first.proof.durationMs, 21100); assert.equal(first.probes[0].clears, 2);
   const b = paid('control', 40), full = measured(b); assert.ok(full.proof);
   assert.ok(!full.probes.some(p => p.wave === 1));

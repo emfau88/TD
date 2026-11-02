@@ -6,7 +6,7 @@ import { BASE, IdleBattle, SETTLEMENT } from '../src/battle';
 import { BattleSession } from '../src/battle-session';
 import { openBattleStore } from '../src/save-store';
 import { certifyFarm, defenseFingerprint, farmRewardUnits } from '../src/farming';
-import { OFFLINE, WAREHOUSE_OFFLINE, activateOffline, beginAbsence, checkpointActive, claimOffline, createOfflineState, reserveOffline, restoreOffline } from '../src/offline';
+import { OFFLINE, LEGACY_OFFLINE, WAREHOUSE_OFFLINE, activateOffline, beginAbsence, checkpointActive, claimOffline, createOfflineState, reserveOffline, restoreOffline } from '../src/offline';
 import { wispPose } from '../src/wisp';
 import { getForestBlockedCells } from '../src/forest-world';
 
@@ -47,7 +47,7 @@ test('warehouse has real unlock and price gates; old saves retain combat and ren
 });
 
 test('old 60% / 2h absence stays frozen; warehouse policy begins at the next active boundary', () => {
-  const start = beginAbsence(createOfflineState(START), START, basis, false);
+  const start = beginAbsence(createOfflineState(START), START, basis, false, LEGACY_OFFLINE);
   const preserved = beginAbsence(start, START + HOUR, basis, false, WAREHOUSE_OFFLINE);
   assert.deepEqual(preserved, start);
   const old = reserveOffline(preserved, START + 3 * HOUR);
@@ -56,7 +56,7 @@ test('old 60% / 2h absence stays frozen; warehouse policy begins at the next act
   const claimed = claimOffline(old, old.pendingReward!.id);
   const active = activateOffline(claimed.state, START + 3 * HOUR, basis, false, WAREHOUSE_OFFLINE);
   const next = reserveOffline(beginAbsence(active, START + 3 * HOUR, basis, false, WAREHOUSE_OFFLINE), START + 6 * HOUR);
-  assert.equal(next.pendingReward!.efficiencyPermille, 650); assert.equal(next.pendingReward!.creditedMs, 3 * HOUR);
+  assert.equal(next.pendingReward!.efficiencyPermille, 260); assert.equal(next.pendingReward!.creditedMs, 3 * HOUR);
 });
 
 test('eight-hour cap survives repeated returns, reload and repeated claims; paused production remains zero', () => {
@@ -67,7 +67,7 @@ test('eight-hour cap survives repeated returns, reload and repeated claims; paus
   state = beginAbsence(state, START + 4 * HOUR, basis, false, WAREHOUSE_OFFLINE);
   state = reserveOffline(state, START + 12 * HOUR);
   assert.equal(state.pendingReward!.id, claimId); assert.equal(state.window!.usedMs, 8 * HOUR);
-  const expected = Number(farmRewardUnits(basis) * 650n * BigInt(8 * HOUR) / (BigInt(basis.durationMs) * 1000n));
+  const expected = Number(farmRewardUnits(basis) * 260n * BigInt(8 * HOUR) / (BigInt(basis.durationMs) * 1000n));
   assert.equal(state.pendingReward!.amountUnits, expected);
   const claimed = claimOffline(state, claimId);
   assert.equal(claimOffline(claimed.state, claimId).amountUnits, 0);
@@ -89,14 +89,14 @@ test('legal opening buys warehouse; one controlled hour is paid once and funds t
   await live.resumeActive();
   await live.command(b => b.buildWarehouse());
   assert.equal(live.battle.settlement.warehouseBuilt, true);
-  assert.equal(live.offline.baseline.efficiencyPermille, 650);
+  assert.equal(live.offline.baseline.efficiencyPermille, 260);
   const before = live.battle.gold * 1000 + live.battle.goldRemainderUnits, elapsed = live.battle.elapsed;
   const proof = live.certificate!;
   await live.close();
   now += HOUR;
   live = await BattleSession.open(await openBattleStore(factory, name, () => now), { now: () => now, locks: null });
   const reward = live.pendingReward!;
-  const expected = Number(farmRewardUnits(proof) * 650n * BigInt(HOUR) / (BigInt(proof.durationMs) * 1000n));
+  const expected = Number(farmRewardUnits(proof) * 260n * BigInt(HOUR) / (BigInt(proof.durationMs) * 1000n));
   assert.equal(reward.amountUnits, expected); assert.equal(reward.creditedMs, HOUR);
   await live.claimOffline(); await live.claimOffline(); await live.resumeActive();
   assert.equal(live.battle.gold * 1000 + live.battle.goldRemainderUnits, before + expected);

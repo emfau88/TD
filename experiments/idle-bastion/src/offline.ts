@@ -4,12 +4,17 @@
  */
 import { farmRewardUnits, type FarmCertificate } from './farming';
 
-export const OFFLINE = Object.freeze({ unitsPerGold: 1000, efficiencyPermille: 600, limitMs: 2 * 60 * 60 * 1000 });
+export const OFFLINE = Object.freeze({ unitsPerGold: 1000, efficiencyPermille: 240, limitMs: 2 * 60 * 60 * 1000 });
 export interface OfflinePolicy { readonly efficiencyPermille: number; readonly limitMs: number }
-export const WAREHOUSE_OFFLINE: OfflinePolicy = Object.freeze({ efficiencyPermille: 650, limitMs: 8 * 60 * 60 * 1000 });
+export const WAREHOUSE_OFFLINE: OfflinePolicy = Object.freeze({ efficiencyPermille: 260, limitMs: 8 * 60 * 60 * 1000 });
+/** Frozen departure contracts remain readable and payable at their original rate. */
+export const LEGACY_OFFLINE: OfflinePolicy = Object.freeze({ efficiencyPermille: 600, limitMs: OFFLINE.limitMs });
+export const LEGACY_WAREHOUSE_OFFLINE: OfflinePolicy = Object.freeze({ efficiencyPermille: 650, limitMs: WAREHOUSE_OFFLINE.limitMs });
 export const offlinePolicy = (warehouseBuilt: boolean): OfflinePolicy => warehouseBuilt ? WAREHOUSE_OFFLINE : OFFLINE;
 const validPolicy = (efficiency: unknown, limit: unknown) => efficiency === OFFLINE.efficiencyPermille && limit === OFFLINE.limitMs
-  || efficiency === WAREHOUSE_OFFLINE.efficiencyPermille && limit === WAREHOUSE_OFFLINE.limitMs;
+  || efficiency === WAREHOUSE_OFFLINE.efficiencyPermille && limit === WAREHOUSE_OFFLINE.limitMs
+  || efficiency === LEGACY_OFFLINE.efficiencyPermille && limit === LEGACY_OFFLINE.limitMs
+  || efficiency === LEGACY_WAREHOUSE_OFFLINE.efficiencyPermille && limit === LEGACY_WAREHOUSE_OFFLINE.limitMs;
 export interface Fraction { numerator: string; denominator: string }
 export interface OfflineBaseline {
   at: number; paused: boolean; certificate: FarmCertificate | null; efficiencyPermille: number; limitMs: number;
@@ -38,8 +43,8 @@ function certificate(value: unknown): FarmCertificate | null | undefined {
   if (value === null) return null;
   // Historical departure proofs retain the rule set that earned them. New
   // active proofs are validated separately by farming.ts against current rules.
-  if (!object(value) || !positive(value.wave) || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].includes(value.rulesVersion as number) || !positive(value.rewardGold)
-    || (value.rewardRemainderUnits !== undefined && (![4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].includes(value.rulesVersion as number) || !natural(value.rewardRemainderUnits) || value.rewardRemainderUnits > 999))
+  if (!object(value) || !positive(value.wave) || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].includes(value.rulesVersion as number) || !positive(value.rewardGold)
+    || (value.rewardRemainderUnits !== undefined && (![4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].includes(value.rulesVersion as number) || !natural(value.rewardRemainderUnits) || value.rewardRemainderUnits > 999))
     || !positive(value.durationMs) || typeof value.fingerprint !== 'string' || value.fingerprint.length < 1
     || value.fingerprint.length > 20_000) return undefined;
   return {
@@ -52,8 +57,8 @@ function baseline(value: unknown): OfflineBaseline | undefined {
   if (!object(value) || !natural(value.at) || typeof value.paused !== 'boolean') return undefined;
   // The first B04 schema-1 build implied exactly 60% / 2h. Migrate only absent
   // policy fields; an explicitly stored contradictory value stays invalid.
-  const efficiencyPermille = Object.hasOwn(value, 'efficiencyPermille') ? value.efficiencyPermille : OFFLINE.efficiencyPermille;
-  const limitMs = Object.hasOwn(value, 'limitMs') ? value.limitMs : OFFLINE.limitMs;
+  const efficiencyPermille = Object.hasOwn(value, 'efficiencyPermille') ? value.efficiencyPermille : LEGACY_OFFLINE.efficiencyPermille;
+  const limitMs = Object.hasOwn(value, 'limitMs') ? value.limitMs : LEGACY_OFFLINE.limitMs;
   if (!validPolicy(efficiencyPermille, limitMs)) return undefined;
   const basis = certificate(value.certificate);
   return basis === undefined ? undefined : { at: value.at, paused: value.paused, certificate: basis, efficiencyPermille: efficiencyPermille as number, limitMs: limitMs as number };

@@ -1,0 +1,10 @@
+relaxed: fresh progression and purchases match the hypothesis exactly
+relaxed W20: 24886.331 gold, challenge W40 after 624.625s; exact match
+relaxed W30: 37739.52 gold, challenge W40 after 310.4s; exact match
+mixed: fresh progression and purchases match the hypothesis exactly
+mixed W20: 31961.248 gold, challenge W40 after 530.45s; exact match
+mixed W30: 42123.095 gold, challenge W40 after 289.5s; exact match
+tactical: fresh progression and purchases match the hypothesis exactly
+tactical W20: 32736.809 gold, challenge W40 after 512.5s; exact match
+tactical W30: 47357.57 gold, challenge W44 after 396.4s; exact match
+PASS: three fresh runs, six returns, 24 absence comparisons, complete purchase/summary parity.

@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: English is the explicit default; language choices survive blocked preference storage
+ok 1 - English is the explicit default; language choices survive blocked preference storage
+  ---
+  duration_ms: 0.9071
+  type: 'test'
+  ...
+# Subtest: complete sentences retain every placeholder, whitespace and dynamic values in both languages
+ok 2 - complete sentences retain every placeholder, whitespace and dynamic values in both languages
+  ---
+  duration_ms: 21.0072
+  type: 'test'
+  ...
+# Subtest: menu language switch preserves DOM identity, updates accessibility and persists only the preference
+ok 3 - menu language switch preserves DOM identity, updates accessibility and persists only the preference
+  ---
+  duration_ms: 134.9408
+  type: 'test'
+  ...
+# Subtest: language changes preserve an earned battle, farm proof and historical offline receipt exactly
+ok 4 - language changes preserve an earned battle, farm proof and historical offline receipt exactly
+  ---
+  duration_ms: 380.1779
+  type: 'test'
+  ...
+# Subtest: all enemy descriptions and companion dialogue stages have translations, without translating IDs
+ok 5 - all enemy descriptions and companion dialogue stages have translations, without translating IDs
+  ---
+  duration_ms: 1.7083
+  type: 'test'
+  ...
+# Subtest: first positive return persists the greeting before claim; unclaimed reload never repeats or changes its gold
+ok 6 - first positive return persists the greeting before claim; unclaimed reload never repeats or changes its gold
+  ---
+  duration_ms: 517.7206
+  type: 'test'
+  ...
+# Subtest: zero, paused and sub-gold returns: zero does not consume it; even a positive fraction qualifies
+ok 7 - zero, paused and sub-gold returns: zero does not consume it; even a positive fraction qualifies
+  ---
+  duration_ms: 746.5277
+  type: 'test'
+  ...
+# Subtest: a second absence within the same session cannot reuse the first visible greeting
+ok 8 - a second absence within the same session cannot reuse the first visible greeting
+  ---
+  duration_ms: 118.361
+  type: 'test'
+  ...
+# Subtest: failed greeting persistence leaves the old receipt and eligibility intact
+ok 9 - failed greeting persistence leaves the old receipt and eligibility intact
+  ---
+  duration_ms: 287.248
+  type: 'test'
+  ...
+# Subtest: return greeting uses DE/EN, hides for ineligible saves, and adds no interaction gate
+ok 10 - return greeting uses DE/EN, hides for ineligible saves, and adds no interaction gate
+  ---
+  duration_ms: 183.5673
+  type: 'test'
+  ...
+# Subtest: return gold uses whole coins and unambiguous grouping, with exact fractional details
+ok 11 - return gold uses whole coins and unambiguous grouping, with exact fractional details
+  ---
+  duration_ms: 6.3136
+  type: 'test'
+  ...
+# Subtest: only actual millions receive a scale label; exact values remain lossless at the safe unit limit
+ok 12 - only actual millions receive a scale label; exact values remain lossless at the safe unit limit
+  ---
+  duration_ms: 1.6233
+  type: 'test'
+  ...
+# Subtest: Frost tip and wave objective share one slot, keeping the real counter and model intact
+ok 13 - Frost tip and wave objective share one slot, keeping the real counter and model intact
+  ---
+  duration_ms: 299.6133
+  type: 'test'
+  ...
+# Subtest: moving the existing Wisp card preserves its button and event listener
+ok 14 - moving the existing Wisp card preserves its button and event listener
+  ---
+  duration_ms: 97.8556
+  type: 'test'
+  ...
+# Subtest: step 14 waits on the cleared wave, not the current attempt, and survives restoration
+ok 15 - step 14 waits on the cleared wave, not the current attempt, and survives restoration
+  ---
+  duration_ms: 131.0447
+  type: 'test'
+  ...
+# Subtest: an active lesson beats toasts, and a defeat notice beats optional discovery tips
+ok 16 - an active lesson beats toasts, and a defeat notice beats optional discovery tips
+  ---
+  duration_ms: 67.6391
+  type: 'test'
+  ...
+# Subtest: menus and placement carry the counter without a second tutorial card
+ok 17 - menus and placement carry the counter without a second tutorial card
+  ---
+  duration_ms: 50.084
+  type: 'test'
+  ...
+# Subtest: modal suppression and ending or skipping the tutorial restore the ordinary HUD
+ok 18 - modal suppression and ending or skipping the tutorial restore the ordinary HUD
+  ---
+  duration_ms: 55.8526
+  type: 'test'
+  ...
+# Subtest: saving stages and temporarily absent presenters still show progress and an actionable next step
+ok 19 - saving stages and temporarily absent presenters still show progress and an actionable next step
+  ---
+  duration_ms: 45.0973
+  type: 'test'
+  ...
+# Subtest: compact guide retains the objective and original required action across updates
+ok 20 - compact guide retains the objective and original required action across updates
+  ---
+  duration_ms: 48.7873
+  type: 'test'
+  ...
+# Subtest: compact waiting goal follows cleared waves and keeps DE/EN labels current
+ok 21 - compact waiting goal follows cleared waves and keeps DE/EN labels current
+  ---
+  duration_ms: 58.3563
+  type: 'test'
+  ...
+# Subtest: defeat notices remain readable even when ordinary tutorial help is collapsed
+ok 22 - defeat notices remain readable even when ordinary tutorial help is collapsed
+  ---
+  duration_ms: 44.1418
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6616.1087

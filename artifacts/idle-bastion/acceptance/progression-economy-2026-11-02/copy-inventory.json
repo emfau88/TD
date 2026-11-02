@@ -1,0 +1,4558 @@
+{
+  "summary": {
+    "typescriptFiles": 111,
+    "htmlFiles": 20,
+    "economicTextOccurrences": 670,
+    "distinctEconomicText": 458,
+    "oldOfflinePercentageOccurrences": [],
+    "note": "Inventory covers every TS file under src and every top-level HTML page. It includes translations and lab/unreachable strings; visibility and correctness require manual classification."
+  },
+  "manifest": [
+    {
+      "file": "src/art.ts",
+      "sha256": "15f3e6e13b9e7af2dc9c0621c6ee71877f27860941120f79763a026a145479e3"
+    },
+    {
+      "file": "src/asset-check.ts",
+      "sha256": "b37dfa30f64cffd06fe6acd60b4801ac19c5f283b310d4d402d69c832549cd18"
+    },
+    {
+      "file": "src/audio-cues.ts",
+      "sha256": "6f4bedec4428554fda1ddfabf97b02e4ea93e3e146a355808c792f9858fca54f"
+    },
+    {
+      "file": "src/balance.ts",
+      "sha256": "1eb62a4ee3d1af9818a073203a45e0f648aad2dd2e0894f30aa08d414e9291af"
+    },
+    {
+      "file": "src/battle-scene.ts",
+      "sha256": "e8bd0a3aebfdf49691db82b0312bd99f804c9c9a0486aebcdeb9ca50362bf72b"
+    },
+    {
+      "file": "src/battle-session.ts",
+      "sha256": "122fb849db6706efb31ed0530e0c77f391cf1ec91f9f720066571faa74ba9d61"
+    },
+    {
+      "file": "src/battle.ts",
+      "sha256": "17e6986fc7c47e22f4471e2e47358338657b895b9d70735f9ffd5a00eed36d74"
+    },
+    {
+      "file": "src/bootstrap.ts",
+      "sha256": "c63a16c43b4267ee610e14f92827c10b7452ee58d54ed10549962d7415748d5b"
+    },
+    {
+      "file": "src/boss-visuals.ts",
+      "sha256": "70b04641ea04292d12387bc65d8640de0ee51464edab420e0187245db18d27f8"
+    },
+    {
+      "file": "src/boss.ts",
+      "sha256": "9e1209b7384c30bc31511b3b7e477bb6771cbb74ea87fc4b8e3ab0ec64cf30c5"
+    },
+    {
+      "file": "src/combat-effects.ts",
+      "sha256": "bc823068cc9eef02cd1df414aaa6dee6e770a56a1ee4fd1caddc37703987e22f"
+    },
+    {
+      "file": "src/companion-voice.ts",
+      "sha256": "3f06ff47d4162e57e34cdf8afd793569791681dc916a82455a0f8a201f77e8e8"
+    },
+    {
+      "file": "src/credit-notices.ts",
+      "sha256": "e49030963995c09a70b2169d47f650434837796a516b4e2ca3954d573bd777ac"
+    },
+    {
+      "file": "src/credits-page.ts",
+      "sha256": "d686901b53bcf0bd18252474b3328658a897b28d69bcba5daac426b6d4eafdc2"
+    },
+    {
+      "file": "src/credits-ui.ts",
+      "sha256": "d5cd30d3a62c86a7e2e814c3991c991ab1f2711727560d61966dc5164c35e1a2"
+    },
+    {
+      "file": "src/discovery-ui.ts",
+      "sha256": "1f160900c54c63e8ccdab57dd8b662e3cc0e098b90f5c233651adf75c79c4795"
+    },
+    {
+      "file": "src/dock-art.ts",
+      "sha256": "cd4451825728435053c0f247eefd9ef4b7234146c97b8e1fe2ceceee75f3b7e0"
+    },
+    {
+      "file": "src/effects-check.ts",
+      "sha256": "78024fe1865b22d489d54aed699cf3038f91aadeefd9d9d09c66ae62808aadee"
+    },
+    {
+      "file": "src/enemy-art.ts",
+      "sha256": "b28a6c4aa9bca652a9a42106f49f1f55a8a72e563f2a052b5a61e7c0a268fa63"
+    },
+    {
+      "file": "src/enemy-check.ts",
+      "sha256": "ab507d57ec0f237bcd3cfb6f2bc740d9d327e798e91907c138f30c38f1802478"
+    },
+    {
+      "file": "src/enemy-lab.ts",
+      "sha256": "6210abdd8dd2de8e4cefbdc5e0ebd30d56194583ddceeba349d99f5e3cc26c64"
+    },
+    {
+      "file": "src/enemy-roster.ts",
+      "sha256": "fe5715db6db5d6599890402691441edb1b35d50df6924880d27ae19dded95a1f"
+    },
+    {
+      "file": "src/evolution-impacts.ts",
+      "sha256": "9eed96f695e407fd629afba7c85ce75a0d322f0cdf3357a4d05ef26952f46067"
+    },
+    {
+      "file": "src/evolution-view.ts",
+      "sha256": "c2b09e173ae27d5ec5df74bbfc4f654024ae4ee967b7d03d2b730000ce0ddd26"
+    },
+    {
+      "file": "src/farming.ts",
+      "sha256": "ca666c76f395f64a4c4debc8a92d8a528e3e0ee2ff2f757a6c5ff29e51cf824c"
+    },
+    {
+      "file": "src/feature-check.ts",
+      "sha256": "b298eba683473f6dd73fad217fe37c6d0a5181870ae5b1b8d72fb63b2898ac65"
+    },
+    {
+      "file": "src/feature-probes.ts",
+      "sha256": "dec666ee0e89c49ea94dbbc3a91a17ff3a3b6154580fc0d528c6ab11af6a0a52"
+    },
+    {
+      "file": "src/forest-world.ts",
+      "sha256": "8b89188126db51e406f6a20f5c0d19a2f321478cb5de31f04a4b7dee6182a0b1"
+    },
+    {
+      "file": "src/forest.ts",
+      "sha256": "8a0aa267781dfd0c3ccfd2b161caa8ef5f5a84be0d3405c06fb8210873090dd3"
+    },
+    {
+      "file": "src/game-audio.ts",
+      "sha256": "a49aeb42ce0d65d23a35925fea4f5880a46ec2780c080020c45a8d040707b7d4"
+    },
+    {
+      "file": "src/hero-command-voice.ts",
+      "sha256": "d50900bd244b3433195d9fb7abc7e06e88a808c7b0df3a0c874d08976e50333b"
+    },
+    {
+      "file": "src/hero-controls.ts",
+      "sha256": "2620ed54fecbed47720d3394e9992a43899383a12ff0ddd883df95911a89b057"
+    },
+    {
+      "file": "src/hero-marks.ts",
+      "sha256": "1aef4458810471b6528b44abd531d4e5f7c12b2fa5370af67bf81b06f411d3d6"
+    },
+    {
+      "file": "src/hud.ts",
+      "sha256": "89cd6700fbf46443dced4c35d9656ac8649480a4438c32aca212b0fe3d7a1a77"
+    },
+    {
+      "file": "src/i18n-dom.ts",
+      "sha256": "2bc4308f869a48f2048ddd21a7e2a2cb5d897e59aeac3acbc59396d2a125885e"
+    },
+    {
+      "file": "src/i18n.ts",
+      "sha256": "471a27af95bd8f935f887228db835a1a449a88e3a3f46013b2bf8e5679f68afc"
+    },
+    {
+      "file": "src/idle-review.ts",
+      "sha256": "9af11592a9dde9021dc4921ee23d43fef4e7e80046b51ea2be293d7b74c5c5ac"
+    },
+    {
+      "file": "src/ilyra-check.ts",
+      "sha256": "7680a4e7969d32bb119619361a20a702dd54422b1e7bd4351bd26375854221a5"
+    },
+    {
+      "file": "src/ilyra-idle.ts",
+      "sha256": "ae62f4a0088acdb31344942c461acdf679b3dca62c6feda4e02e266d041ba9d5"
+    },
+    {
+      "file": "src/ilyra-spell-view.ts",
+      "sha256": "3f16d53ec906dfeb2c03f5952a36395b0ee895dff9579f933cb1180b50cad4a0"
+    },
+    {
+      "file": "src/ilyra-ui.ts",
+      "sha256": "0ff2ec45c10bb61af029ec883a4ce9a09fff446249a32cad3a40038f17fba862"
+    },
+    {
+      "file": "src/ilyra-view.ts",
+      "sha256": "721a5afd7ce2cfe32d2a7d06afc5bea70301c6b06dd9fcf8b653084639327cdf"
+    },
+    {
+      "file": "src/ilyra-voice-levels.ts",
+      "sha256": "fbb131df85676f6e6e2ed8859b67998ca6e446d287ac40dce66edef5f2c1c79b"
+    },
+    {
+      "file": "src/ilyra-voice.ts",
+      "sha256": "99cce48417af11154e7f53ae28ac47d81257f6a4118c0a2c93ac3915ef318bcc"
+    },
+    {
+      "file": "src/ilyra.ts",
+      "sha256": "2eba80d846b01f41181ff0366a9e1108ef4456590de18318e3c2ea4f3f05ecfe"
+    },
+    {
+      "file": "src/intro-portraits.ts",
+      "sha256": "09061b620fbc8350e664bc8f9ac073f8b376285735bee5691ad1df51ab11c603"
+    },
+    {
+      "file": "src/layout-main.ts",
+      "sha256": "85e5a7be0e7b1b91f4ec6c57a4ddb6c26f1f72462b77dfc88ed30aa79d97c9b2"
+    },
+    {
+      "file": "src/layout.ts",
+      "sha256": "8b4991eba2add628f165ae7747e92cbc50bac213ad8b12f572e816573e92757f"
+    },
+    {
+      "file": "src/lesson-pointer.ts",
+      "sha256": "e37c4a5391872683ae74a1e41d4ce7f01d75b01691661e97fa2be57d88a73648"
+    },
+    {
+      "file": "src/loading-screen.ts",
+      "sha256": "5b91001ae5af644b828f3ae832c6ed4e178dceff59e3f7aa866bb1b497971a75"
+    },
+    {
+      "file": "src/local-enemy-frames.ts",
+      "sha256": "a0c9eba5667738cf0fd45c7f9d0f097f43c31df7e1ddb6d28678b579bf2d36f9"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "sha256": "7552cd69c85480112f2218cf7aca6a6e5f87e4d0bdee5b02b64b98044d27a895"
+    },
+    {
+      "file": "src/locales/startup.ts",
+      "sha256": "803e7ee1127e9a424df223d950c0a8d9faf87ae3175532a7f2ee5d3627f47158"
+    },
+    {
+      "file": "src/lucifer-frames.ts",
+      "sha256": "0478fc30eaeaa19c0d230961084ee2c69bd4afd8a8e356b6e858714a8325ac7b"
+    },
+    {
+      "file": "src/main.ts",
+      "sha256": "300809e1c80eb9522f84fe2a64f5f49bacbec26d11827393ba1e95cdae06536c"
+    },
+    {
+      "file": "src/mara-action.ts",
+      "sha256": "1b7969740d3fb67cb02f9f7e6f623fd68648ee3a42ebecae46e12e508ca41580"
+    },
+    {
+      "file": "src/mara-check.ts",
+      "sha256": "7626f497fb037f1acdc93badc0af1a287ed06b315506023d6afc1c070eb108a7"
+    },
+    {
+      "file": "src/mara-intro.ts",
+      "sha256": "4282bd9f6c99d3e7e2b43b49273921637912abc7ee6212b090d5f0a0a2f9f983"
+    },
+    {
+      "file": "src/mara-legacy.ts",
+      "sha256": "41b65521ec03d7dcfff01dbdb444239f7cfbf8b79f4f5b51de335345ab250352"
+    },
+    {
+      "file": "src/mara-spell-view.ts",
+      "sha256": "a6a111c60e707ae04bc6731699ffc13dd6a0d43e93b156472109e823d67f77a0"
+    },
+    {
+      "file": "src/mara-voice.ts",
+      "sha256": "4cf8f5754773da7d791ed9cffd6648362013c6bbdb9a759779ec395bad488314"
+    },
+    {
+      "file": "src/mara.ts",
+      "sha256": "22ef7de5ca5c2927d05a3845b73d9473ac9837859a6870ee0a2ce87d5bf6ece7"
+    },
+    {
+      "file": "src/offline-welcome.ts",
+      "sha256": "536f9b82c486c5abd785e55f89aa366610e2fe0d1e92e378da9720b9f531ee78"
+    },
+    {
+      "file": "src/offline.ts",
+      "sha256": "faed6d48231d55d4aca102c4328952038c6edcaedad35798f3db6a1483b08735"
+    },
+    {
+      "file": "src/onboarding-ui.ts",
+      "sha256": "f39d365ea5b3b28109b97ea4b039a976b0d67fdf615b6c5f9a3b795397efde0d"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "sha256": "8d8e515105a51ead321f97e4b071c992ba066f787c596edf116f19af9385a5a8"
+    },
+    {
+      "file": "src/progress.ts",
+      "sha256": "2b4970dd85714899bcb8c8d7179baeb34f1a92975d66ea6e9cec5d8971de8214"
+    },
+    {
+      "file": "src/quick-win-guidance.ts",
+      "sha256": "225df0768694430c37d1a2cd87ba9ca751660e97c3587b0c1a36278600fe4b2f"
+    },
+    {
+      "file": "src/reward-display.ts",
+      "sha256": "8066942c4934df42fc6440cc827f741e95cc36b7ba1161708f7184278533ba8a"
+    },
+    {
+      "file": "src/save-namespace.ts",
+      "sha256": "2b16729748293eb712cc3d7262547182ac607a2798cb70aef2c6a3abd65d4c56"
+    },
+    {
+      "file": "src/save-store.ts",
+      "sha256": "ac4f894e25088cbaf11437fb69785f02ded02eff99ca76cda09bb2abda5553e2"
+    },
+    {
+      "file": "src/spell-art.ts",
+      "sha256": "69aa56c3e9daa8bc451131c5e9640f6b0bf9f7eeb1760c10964a14f6e7154e7f"
+    },
+    {
+      "file": "src/spell-button.ts",
+      "sha256": "8f4c97db8e450ea4345ba00e7cf4a5c7e2e53d6607e07673fe1b6e08a408c39a"
+    },
+    {
+      "file": "src/spell-sprites.ts",
+      "sha256": "c535534bddd33dd94cf327667b8437f035bb6cc63303e8d8cf834ea4e8423da2"
+    },
+    {
+      "file": "src/storm-visuals.ts",
+      "sha256": "e308aded6e5a87c19c4100aa78e6ad25407dada32651b412e74e442872373685"
+    },
+    {
+      "file": "src/stormlight-check.ts",
+      "sha256": "4d1593ed4fd7fd7d89422ea69d4e4487075395b7ed5540fb784d4fb5524dd18e"
+    },
+    {
+      "file": "src/tavern-animation.ts",
+      "sha256": "7a827a06c7f27b702bc5e256ef3473622db86157de8734a9842b9d3f693e5342"
+    },
+    {
+      "file": "src/tavern-atlas-cache.ts",
+      "sha256": "14e118766f65a918388b7ab9b1fa94567417227c5b34bba0fb0102c269dffd36"
+    },
+    {
+      "file": "src/tavern-check.ts",
+      "sha256": "bda7f9685eb825327650609a07770fb3f43bbe0b3475650ae2b295e6ff3b368b"
+    },
+    {
+      "file": "src/tavern-companions.ts",
+      "sha256": "abc699c8b7979e228683c890984187472f511dd19d89af21a3c3017f57206a5b"
+    },
+    {
+      "file": "src/tavern-content.ts",
+      "sha256": "7cfb19f515a3a7a81d12d82a2798625c760c65e263c9e7c331dc43610cf1bc6e"
+    },
+    {
+      "file": "src/tavern-gift-status.ts",
+      "sha256": "9b8408a9db9ada4f5d7bec69885fa232b5776cc2a0366187131afb14bfc0f5c3"
+    },
+    {
+      "file": "src/tavern-ilyra-content.ts",
+      "sha256": "a9a3fdc1ee444a045ab2bb91d38045d71788c8469acd71e3f8819fa0cb0bbd6d"
+    },
+    {
+      "file": "src/tavern-interactions.ts",
+      "sha256": "b5110e113808467e659643d8ab33b63f126d6fdb4a5134153b66ebb9f1fbbfc4"
+    },
+    {
+      "file": "src/tavern-mara-content.ts",
+      "sha256": "39d283dafebbaa810b0b21dedfda2119e7e2cf09ebbca77728a072c157d2ac05"
+    },
+    {
+      "file": "src/tavern-presentation.ts",
+      "sha256": "f3068b8b842ec1e0a41f329bc969a06c8f4aca31bf74e70d85c83ccaf731fe8e"
+    },
+    {
+      "file": "src/tavern-rig-check.ts",
+      "sha256": "c569a559666731fe958fd0ae4c862927e4ce6b26ce2b6df5f096b5ad4f7ebe3b"
+    },
+    {
+      "file": "src/tavern-rig-preview.ts",
+      "sha256": "7092346766ef2622090c926faf828836dfc0799f8552373deaa62e92d6183206"
+    },
+    {
+      "file": "src/tavern-rig-source-preview.ts",
+      "sha256": "16d4172b43fa9b4c2a7423207d76b69701c6d19d71578e6b744e6aaf1e2c4fb2"
+    },
+    {
+      "file": "src/tavern-social-legacy.ts",
+      "sha256": "e3aed0e080a95eff06cadb099a1d8010e6aca7e9141d3f150516f38dd5037457"
+    },
+    {
+      "file": "src/tavern-social.ts",
+      "sha256": "a6c68e24e6fe0317ee32e530051de314380293f14e8c7de162587c6fcb337843"
+    },
+    {
+      "file": "src/tavern-story-history.ts",
+      "sha256": "a5d962e72152996524830738a12770fb7304cf652c68c7257204ca1866f98d24"
+    },
+    {
+      "file": "src/tavern-ui.ts",
+      "sha256": "4bde1bc3082fea033142c5bc502ac095d373e5ac8e3554eb224b0124ea499b39"
+    },
+    {
+      "file": "src/tower-atlas.ts",
+      "sha256": "93c10ad3f43d7173352b795df3bc02285212fa479e77ac08fcf96f7120163afd"
+    },
+    {
+      "file": "src/tower-evolution.ts",
+      "sha256": "6cbe9c958621b19cfc44ca5ec0208418b48f8993cd505960dd0de9ff30e1fe36"
+    },
+    {
+      "file": "src/tower-test-probes.ts",
+      "sha256": "87c15a2bc56e27a58f53f8ff690c6069d13e01b1e09e5268e577a6e342a4e364"
+    },
+    {
+      "file": "src/tower-test.ts",
+      "sha256": "c8e4ea670c3b7af1af0cc4f619c7014a0d671dc894b910ea639f0da881f2519b"
+    },
+    {
+      "file": "src/tutorial-camera.ts",
+      "sha256": "2851429c9a45bfd3a16f9f6f13c100da82baafac0fe12fd04165f80bb543613d"
+    },
+    {
+      "file": "src/tutorial-guide.ts",
+      "sha256": "631919e01dde719426352a4bcfbb501ced78490f922728101eafc9c98c1ae1c0"
+    },
+    {
+      "file": "src/tutorial-placement.ts",
+      "sha256": "69c8a17d5f5ec3d05b802f1e28e5c983125d0ff28777bb9beb981fdebeb79c8e"
+    },
+    {
+      "file": "src/tutorial-progress.ts",
+      "sha256": "5bfadad92ea50cf5d086a09f54a98d438ed4df6212dd54b68ca9f84d623d723f"
+    },
+    {
+      "file": "src/ui-icons.ts",
+      "sha256": "a1e4bd22803c3652c8631be5932224ecba62e7aa074262de121631277bec1686"
+    },
+    {
+      "file": "src/voice-check.ts",
+      "sha256": "697ee22140496122d0c49308f8526a908a80a34e0a3ba1dbaea7809dace66887"
+    },
+    {
+      "file": "src/volley-action.ts",
+      "sha256": "4cecf2dc9b7436966705b96289ee0c17bf50ff08a292fb28eaa72fa2dbda8f69"
+    },
+    {
+      "file": "src/wave-recipes-v11.ts",
+      "sha256": "195520c33bac62236f53343d68ae7b397dc8ff36026beff19e8240d0c1a8b7da"
+    },
+    {
+      "file": "src/wave-recipes-v12.ts",
+      "sha256": "3c574c020f49d0da20e27145af8c9d54b568850a7dcff45596958b0033e76dde"
+    },
+    {
+      "file": "src/wave-recipes-v13.ts",
+      "sha256": "6f1fd0c777edc1c153192360085bba1d87c85ff0dad33f721ee7a984d1e98e6b"
+    },
+    {
+      "file": "src/wave-recipes.ts",
+      "sha256": "b5d340cfc87873764825bbf1219f2bb064b66df54719a4e44bb92175e8cfc94c"
+    },
+    {
+      "file": "src/wisp.ts",
+      "sha256": "b8e452b7c287e64e441be007f37d9ff491daa5e18d8a8d314d849d50f58621e5"
+    },
+    {
+      "file": "src/workshop-annex.ts",
+      "sha256": "3813d4084776ad0a284c197c19c24c57c2952e8ec1e4aa066aff085a699e39ea"
+    },
+    {
+      "file": "src/world-depth.ts",
+      "sha256": "2e2424762ed9083bd0b6ef72aade1c96118cebb991d4ca3ad1b46edaee16e77d"
+    },
+    {
+      "file": "asset-check.html",
+      "sha256": "e6d5b469313e748f03a1dda747e249dc67debc617785c8bb94584f9d79b5c897"
+    },
+    {
+      "file": "audio-credits.html",
+      "sha256": "dac7b173a7e732b239addbf9ac936a8bdd333a6b49ed64fe956cf79877d34c00"
+    },
+    {
+      "file": "effects-check.html",
+      "sha256": "9cd2b3e9649657a7e6aaa25536e1c6e110b8e1d5c16ba7b2b6baf8b0da22b543"
+    },
+    {
+      "file": "enemy-check.html",
+      "sha256": "2ea8d70bc5b9c9ab3f6affe5f14df02c997cbbb4c96129d836ee470bf9dead7f"
+    },
+    {
+      "file": "enemy-credits.html",
+      "sha256": "dfd109dbe52548e5c80443cf682273447971cc41293cee4cd6c481c3fabeb9b0"
+    },
+    {
+      "file": "enemy-lab.html",
+      "sha256": "e2e5ab3674549434961094228253bfff24cfc9c68922083ca890d28e0ec92c9d"
+    },
+    {
+      "file": "feature-check.html",
+      "sha256": "c5c0dc67c7856517a70b8d8b6d290e92c256eb91559cdf3d3c5e0c82d247dacf"
+    },
+    {
+      "file": "idle-review.html",
+      "sha256": "3a2f6c9abe994e2a87e8fac8bf0338bc4ee06b3c43bed62dc3c37f7a5ca1c1e2"
+    },
+    {
+      "file": "ilyra-check.html",
+      "sha256": "7d908c1579b643e98bc58173005d26dd4a79baa6bccb644192110b8c50165f67"
+    },
+    {
+      "file": "index.html",
+      "sha256": "1ab87e0eea5cd2cc1040336d092089692d019f521bb6f50666df9d64b0ec86a7"
+    },
+    {
+      "file": "layout.html",
+      "sha256": "9fd820716515bb0ed85e8e902b2ccbfc13505c9ef2481c96ac016f1a6b92a707"
+    },
+    {
+      "file": "mara-check.html",
+      "sha256": "ad9379a1f75eafec51b29f4887c000a01c761d5b429b1707a039e1c882914e95"
+    },
+    {
+      "file": "rest-review.html",
+      "sha256": "f30d2cf2a11e139c98e323e2dd651af2604af50efc29ebc3c6e1c24990547c88"
+    },
+    {
+      "file": "stormlight-check.html",
+      "sha256": "9fdac96f43af3f8c83edee656b32a86014cdba863627d1deed7a9d557da4b0a9"
+    },
+    {
+      "file": "tavern-check.html",
+      "sha256": "ed51fc018b3d46a5135c1357c4072ecf712f0cf375d2bff04e162b2c170f0727"
+    },
+    {
+      "file": "tavern-rig-check.html",
+      "sha256": "52673b37526a45c4843d3c8d1fdd2add347eb8b3c91231a38fc4624d841b1dac"
+    },
+    {
+      "file": "tower-test.html",
+      "sha256": "d66b6ba7a9b2de898dd674acf6b57934b00f38d6699ddc6097ba0bba81f56495"
+    },
+    {
+      "file": "unity-idle-review.html",
+      "sha256": "6c13cc79b694dab398fd35ceb7701d4a2df9fa0d3708043296764dd91c4aa860"
+    },
+    {
+      "file": "unity-review.html",
+      "sha256": "3a670f39c3d6fea0e21c1c078bf4157be2274ea73f593f78981670dd0f313fb4"
+    },
+    {
+      "file": "voice-check.html",
+      "sha256": "a94d57054d329b5bd78d83f2024c568262625d57921f9fea44f42931257f595e"
+    }
+  ],
+  "rows": [
+    {
+      "file": "src/art.ts",
+      "line": 23,
+      "kind": "typescript",
+      "text": "../../../public/assets/Wisp - Animations.png"
+    },
+    {
+      "file": "src/battle-scene.ts",
+      "line": 147,
+      "kind": "typescript",
+      "text": "Wisp · +10 % Gold"
+    },
+    {
+      "file": "src/battle-scene.ts",
+      "line": 184,
+      "kind": "typescript",
+      "text": "Wisp · +10 % Gold"
+    },
+    {
+      "file": "src/battle.ts",
+      "line": 977,
+      "kind": "typescript",
+      "text": "Invalid offline gold transaction."
+    },
+    {
+      "file": "src/battle.ts",
+      "line": 1080,
+      "kind": "typescript",
+      "text": "Invalid gold transaction."
+    },
+    {
+      "file": "src/battle.ts",
+      "line": 1093,
+      "kind": "typescript",
+      "text": "Invalid battle reward."
+    },
+    {
+      "file": "src/discovery-ui.ts",
+      "line": 15,
+      "kind": "typescript",
+      "text": "Wisp begrüßen · nächste Welle wartet"
+    },
+    {
+      "file": "src/discovery-ui.ts",
+      "line": 21,
+      "kind": "typescript",
+      "text": "Mara lässt einen Turm 8 Sekunden lang 50 % schneller schießen."
+    },
+    {
+      "file": "src/discovery-ui.ts",
+      "line": 28,
+      "kind": "typescript",
+      "text": "Mara hat gerade gezaubert. Der goldene Ring zeigt ihr Ziel: 8 Sekunden lang 50 % höhere Feuerrate. Sieh dir die Wirkung in Ruhe an."
+    },
+    {
+      "file": "src/discovery-ui.ts",
+      "line": 32,
+      "kind": "typescript",
+      "text": "+50 % Feuerrate · goldener Ring am Turm"
+    },
+    {
+      "file": "src/discovery-ui.ts",
+      "line": 40,
+      "kind": "typescript",
+      "text": "Sie trifft mehrere Gegner zugleich. Wähle unten die Steinschleuder und einen Platz bei Frost. Optional · 135 Gold."
+    },
+    {
+      "file": "src/discovery-ui.ts",
+      "line": 41,
+      "kind": "typescript",
+      "text": "Unter „Türme“ findest du jetzt die Steinschleuder. Sie trifft Gegnergruppen; Frost hält sie länger zusammen. Optional · 135 Gold."
+    },
+    {
+      "file": "src/discovery-ui.ts",
+      "line": 44,
+      "kind": "typescript",
+      "text": "Neu: Vorratslager"
+    },
+    {
+      "file": "src/discovery-ui.ts",
+      "line": 45,
+      "kind": "typescript",
+      "text": "Speichert Offline-Gold bis zu 8 statt 2 Stunden. Optional · 650 Gold."
+    },
+    {
+      "file": "src/enemy-check.ts",
+      "line": 26,
+      "kind": "typescript",
+      "text": "25 % Rüstung"
+    },
+    {
+      "file": "src/enemy-roster.ts",
+      "line": 17,
+      "kind": "typescript",
+      "text": "45 % Rüstung"
+    },
+    {
+      "file": "src/enemy-roster.ts",
+      "line": 18,
+      "kind": "typescript",
+      "text": "Langsam, viele Lebenspunkte · 25 % Rüstung"
+    },
+    {
+      "file": "src/enemy-roster.ts",
+      "line": 20,
+      "kind": "typescript",
+      "text": "Beweglicher Panzer · 30 % Rüstung"
+    },
+    {
+      "file": "src/enemy-roster.ts",
+      "line": 22,
+      "kind": "typescript",
+      "text": "Frost verlangsamt ihn nur um 20 %"
+    },
+    {
+      "file": "src/enemy-roster.ts",
+      "line": 24,
+      "kind": "typescript",
+      "text": "Mittelschwerer Wächter · 25 % Rüstung"
+    },
+    {
+      "file": "src/enemy-roster.ts",
+      "line": 29,
+      "kind": "typescript",
+      "text": "Langsamer Panzer · 25 % Rüstung, zwei Kernschaden"
+    },
+    {
+      "file": "src/forest.ts",
+      "line": 45,
+      "kind": "typescript",
+      "text": "`tree-${((row + col) % 4 + 4) % 4}`"
+    },
+    {
+      "file": "src/forest.ts",
+      "line": 115,
+      "kind": "typescript",
+      "text": "`${autumn ? 'autumn' : 'tree'}-${index % 4}`"
+    },
+    {
+      "file": "src/forest.ts",
+      "line": 148,
+      "kind": "typescript",
+      "text": "Lager I"
+    },
+    {
+      "file": "src/forest.ts",
+      "line": 170,
+      "kind": "typescript",
+      "text": "Lager I"
+    },
+    {
+      "file": "src/game-audio.ts",
+      "line": 268,
+      "kind": "typescript",
+      "text": "{0} %"
+    },
+    {
+      "file": "src/game-audio.ts",
+      "line": 269,
+      "kind": "typescript",
+      "text": "{0} %"
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 28,
+      "kind": "typescript",
+      "text": "Ich bin Mara. Unser Startturm greift automatisch an. Beobachte die ersten Käfer — für jeden besiegten Gegner erhalten wir Gold."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 30,
+      "kind": "typescript",
+      "text": "Ein Upgrade erhöht den Schaden sofort. Wähle einen Waldwächter und werte ihn für 60 Gold auf. Ich unterstütze meinen zugewiesenen Turm automatisch."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 33,
+      "kind": "typescript",
+      "text": "Setze einen Frostkristall an eine Kurve, wo auch ein Waldwächter angreift. Sind alle Plätze belegt, kannst du einen gekauften Turm für 70 % verkaufen."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 34,
+      "kind": "typescript",
+      "text": "Die blauen Treffer bremsen Käfer zwei Sekunden lang um 45 %. Andere Türme bekommen dadurch mehr Zeit zum Angreifen."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 35,
+      "kind": "typescript",
+      "text": "Nach gemeisterter Welle 5 kommt Wisp kostenlos zur Werkstatt. Er bringt dauerhaft 10 % mehr Kampf-Gold mit; außerdem werden Steinschleuder verfügbar."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 36,
+      "kind": "typescript",
+      "text": "Wisp versorgt die Werkstatt. Sein Goldbonus wirkt automatisch. Setze eine Steinschleuder nahe Frost ein: Ihr Flächentreffer trifft ganze Käfergruppen."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 40,
+      "kind": "typescript",
+      "text": "Das Vorratslager sammelt länger: 26 % der sicheren Farmbasis für bis zu acht Stunden. Öffne Siedlung, prüfe die Vorschau und baue es für 650 Gold. Die besseren Werte gelten für die nächste Abwesenheit."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 41,
+      "kind": "typescript",
+      "text": "Nach gemeisterter Welle 8 kannst du ein Vorratslager bauen. Verbessere deine Verteidigung und spare dann 650 Gold. Wisp versorgt später beide Gebäude."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 42,
+      "kind": "typescript",
+      "text": "Rosenspiegel erwartet uns in Welle 15. Ihr Herzfaden kündigt an, welchen Turm sie verführt. Frost bremst ihren Vormarsch; Flächentreffer räumen Begleiter ab, Scharfschützen durchdringen ihre Rüstung. Die erste vollständige Bosswelle bringt einmalig 750 Gold."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 43,
+      "kind": "typescript",
+      "text": "Jetzt übernimmt Wisp die Versorgung. Meine Magie heißt Übertakten: acht Sekunden lang 50 % mehr Feuerrate. Goldener Ring und Restsekunden zeigen den verstärkten Turm. Automatisch zaubere ich nur bei Gegnern; über mein Porträt kannst du auch selbst auslösen."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 44,
+      "kind": "typescript",
+      "text": "Baue die Werkstatt für 1.200 Gold zur Stufe II aus. Der neue Arbeitsplatz ermöglicht weitere Turmlevel ab 7; die nächste Herausforderung wartet in Welle 25."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 45,
+      "kind": "typescript",
+      "text": "Rosenspiegel kehrt in Welle 25 mit einer größeren Begleitgruppe zurück. Höhere Turmlevel und unsere vier Rollen helfen. Für den ersten Sieg gibt es einmalig 1.200 Gold."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 48,
+      "kind": "typescript",
+      "text": "Übertakten wirkt jetzt: +50 % Feuerrate, noch {0} Sekunden. Der goldene Ring zeigt meinen Zielturm. Über mein Porträt kannst du später auch manuell zaubern; die Automatik wartet auf Gegner."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 51,
+      "kind": "typescript",
+      "text": "{0} Gold · bereit"
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 51,
+      "kind": "typescript",
+      "text": "noch {0} Gold"
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 53,
+      "kind": "typescript",
+      "text": "Die Verteidigung läuft. Erste Käfer bringen Gold — dein zweiter Turm ist bereits bezahlbar."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 54,
+      "kind": "typescript",
+      "text": "Nächstes Ziel: eigener Waldwächter auf einem hellen Bauplatz · 75 Gold."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 55,
+      "kind": "typescript",
+      "text": "Nächstes Ziel: einen Waldwächter verbessern · 60 Gold."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 60,
+      "kind": "typescript",
+      "text": "Wisp begrüßen · +10 % Kampf-Gold, arbeitet automatisch."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 60,
+      "kind": "typescript",
+      "text": "Deine Kombination arbeitet. Welle 5 meistern, dann kommt Wisp."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 61,
+      "kind": "typescript",
+      "text": "Wisp arbeitet: +10 % Kampf-Gold. Steinschleuder bauen · 135 Gold."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 62,
+      "kind": "typescript",
+      "text": "Vorratslager bauen · {0} · 26 % Offline-Ertrag für bis zu 8 Stunden."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 63,
+      "kind": "typescript",
+      "text": "Welle 8 meistern: Vorratslager freischalten."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 65,
+      "kind": "typescript",
+      "text": "Scharfschütze bauen · 170 Gold · Rüstung durchdringen."
+    },
+    {
+      "file": "src/hud.ts",
+      "line": 66,
+      "kind": "typescript",
+      "text": "Rosenspiegel besiegen · 750 Gold Erstprämie · Frost bremst ihren Vormarsch."
+    },
+    {
+      "file": "src/idle-review.ts",
+      "line": 85,
+      "kind": "typescript",
+      "text": "`${((elapsed%duration)/1000).toFixed(2)} s`"
+    },
+    {
+      "file": "src/ilyra-ui.ts",
+      "line": 12,
+      "kind": "typescript",
+      "text": "Dabei · +50 % Turmtempo für 8 s"
+    },
+    {
+      "file": "src/ilyra-ui.ts",
+      "line": 13,
+      "kind": "typescript",
+      "text": "Dabei · +10 % Kampf-Gold"
+    },
+    {
+      "file": "src/layout-main.ts",
+      "line": 138,
+      "kind": "typescript",
+      "text": "LAGER · SPÄTER"
+    },
+    {
+      "file": "src/layout-main.ts",
+      "line": 184,
+      "kind": "typescript",
+      "text": "`${plot.id === 'workshop' ? 'Werkstatt' : 'Späteres Lager'}: reservierte Fläche ${plot.footprint.width} × ${plot.footprint.height} Zellen. Hintere Reihe für das Gebäude, vordere Reihe als begehbarer Vorplatz.`"
+    },
+    {
+      "file": "src/layout-main.ts",
+      "line": 184,
+      "kind": "typescript",
+      "text": "Späteres Lager"
+    },
+    {
+      "file": "src/lesson-pointer.ts",
+      "line": 25,
+      "kind": "typescript",
+      "text": ".app-header, #tutorial-guide, .onboarding-card, .wisp-arrival, .context-panel, .combat-toast, .placement-help, .fallback-note"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 9,
+      "kind": "typescript",
+      "text": "Optional: In der Siedlung ein Lager bauen oder „Später“ wählen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 9,
+      "kind": "typescript",
+      "text": "Optional: Build a Storehouse in Settlement, or choose “Later”."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 25,
+      "kind": "typescript",
+      "text": "Wisp · Gefährtenverwaltung"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 25,
+      "kind": "typescript",
+      "text": "Wisp · Companion management"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 44,
+      "kind": "typescript",
+      "text": "Aus deinem Vorrat"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 60,
+      "kind": "typescript",
+      "text": "🎁 {0} im Vorrat"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 67,
+      "kind": "typescript",
+      "text": "🎁 Vorrat: {0} · für {1}"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 93,
+      "kind": "typescript",
+      "text": "Geschenke im Vorrat"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 102,
+      "kind": "typescript",
+      "text": "Nach Wisps Ankunft zeigt dir Mara ihren Zauber. Danach kannst du sie selbst steuern."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 102,
+      "kind": "typescript",
+      "text": "After Wisp arrives, Mara will show you her spell. Then you can control her yourself."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 106,
+      "kind": "typescript",
+      "text": "Da bist du ja! Ich habe auf dein Gold aufgepasst. Nachgezählt habe ich es nur dreimal. Na gut, viermal."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 106,
+      "kind": "typescript",
+      "text": "There you are! I've been guarding your gold. I only counted it three times. All right, four."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 131,
+      "kind": "typescript",
+      "text": "25 Gold, Forschung bezahlt, Frostbausatz bereit. Folge dem Hinweis zum ersten kostenlosen Frostturm."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 131,
+      "kind": "typescript",
+      "text": "25 gold, research paid, Frost kit ready. Follow the guide to build your first free Frost tower."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 158,
+      "kind": "typescript",
+      "text": "Frostkristall · goldenes Feld antippen · 1 kostenloser Bausatz"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 158,
+      "kind": "typescript",
+      "text": "Frost Crystal · tap a golden tile · 1 free kit"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 160,
+      "kind": "typescript",
+      "text": "Frostkristall · 110 Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 160,
+      "kind": "typescript",
+      "text": "Frost Crystal · 110 gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 161,
+      "kind": "typescript",
+      "text": "Für deinen ersten Frostkristall bekommst du einen kostenlosen Bausatz. Weitere kosten 110 Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 161,
+      "kind": "typescript",
+      "text": "You get one free kit for your first Frost Crystal. Further towers cost 110 gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 181,
+      "kind": "typescript",
+      "text": "Ausbau: {0} Gold · noch {1} Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 181,
+      "kind": "typescript",
+      "text": "Upgrade: {0} gold · {1} more gold needed."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 182,
+      "kind": "typescript",
+      "text": "Ausbau: {0} Gold · bereit."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 182,
+      "kind": "typescript",
+      "text": "Upgrade: {0} gold · ready."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 186,
+      "kind": "typescript",
+      "text": "Werkstatt II kostet {0} Gold und erschließt Turmlevel ab 7."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 186,
+      "kind": "typescript",
+      "text": "Workshop II costs {0} gold and unlocks tower levels from 7 onward."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 191,
+      "kind": "typescript",
+      "text": "Gut, der war nicht schlecht. Erzähl ihn bloß nicht Wisp – sonst muss ich ihn morgen wieder hören."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 191,
+      "kind": "typescript",
+      "text": "All right, that was a good one. Just don't tell Wisp, or I'll have to hear it again tomorrow."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 198,
+      "kind": "typescript",
+      "text": "Ertrag wird ermittelt"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 198,
+      "kind": "typescript",
+      "text": "Calculating income"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 199,
+      "kind": "typescript",
+      "text": "Gold. Ertragsdetails öffnen"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 199,
+      "kind": "typescript",
+      "text": "Gold. Open income details"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 218,
+      "kind": "typescript",
+      "text": "Wisp · Neu im Hain"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 218,
+      "kind": "typescript",
+      "text": "Wisp · New to the grove"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 219,
+      "kind": "typescript",
+      "text": "Ich bin Wisp und kümmere mich um die Vorräte. Deine Kämpfe bringen ab jetzt 10 % mehr Gold. Das läuft automatisch."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 219,
+      "kind": "typescript",
+      "text": "I'm Wisp, and I'll handle the supplies. Your battles now earn 10% more gold. It all happens automatically."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 227,
+      "kind": "typescript",
+      "text": "Waldwächter bauen · 75 Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 227,
+      "kind": "typescript",
+      "text": "Build a Grove Warden · 75 gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 228,
+      "kind": "typescript",
+      "text": "Frostkristall bauen · 110 Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 228,
+      "kind": "typescript",
+      "text": "Build a Frost Crystal · 110 gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 229,
+      "kind": "typescript",
+      "text": "Steinschleuder bauen · 135 Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 229,
+      "kind": "typescript",
+      "text": "Build a Stone Slinger · 135 gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 230,
+      "kind": "typescript",
+      "text": "Sturmlicht bauen · 170 Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 230,
+      "kind": "typescript",
+      "text": "Build a Stormlight · 170 gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 231,
+      "kind": "typescript",
+      "text": "Scharfschütze bauen · 170 Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 231,
+      "kind": "typescript",
+      "text": "Build a Sharpshooter · 170 gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 240,
+      "kind": "typescript",
+      "text": "Sturmlicht erforschen · 900 Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 240,
+      "kind": "typescript",
+      "text": "Research Stormlight · 900 gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 241,
+      "kind": "typescript",
+      "text": "Werkstatt II ausbauen · 1.200 Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 241,
+      "kind": "typescript",
+      "text": "Upgrade to Workshop II · 1,200 gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 244,
+      "kind": "typescript",
+      "text": "Wisp erledigt Werkstattgänge und erhöht Gegner- und Wellenbelohnungen dauerhaft um 10 %. Du musst nichts einsammeln oder zuweisen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 244,
+      "kind": "typescript",
+      "text": "Wisp runs workshop errands and permanently increases enemy and wave rewards by 10%. You don't need to collect anything or assign tasks."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 245,
+      "kind": "typescript",
+      "text": "Der Bonus steckt bereits in der sicheren Farmbasis. Verkäufe erhalten keinen Bonus."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 245,
+      "kind": "typescript",
+      "text": "The bonus is already included in your certified farm income. Selling gives no bonus."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 250,
+      "kind": "typescript",
+      "text": "Taverne II ausbauen · 1.200 Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 250,
+      "kind": "typescript",
+      "text": "Upgrade to Tavern II · 1,200 gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 255,
+      "kind": "typescript",
+      "text": "Unterstützt den aktiven Kampf. Sichere Farmbasis und Offline-Ertrag rechnen ohne Sternensalve."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 255,
+      "kind": "typescript",
+      "text": "Supports active combat. Certified farm income and offline earnings exclude Star Volley."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 256,
+      "kind": "typescript",
+      "text": "Sichere Farmbasis"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 256,
+      "kind": "typescript",
+      "text": "Certified farm income"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 257,
+      "kind": "typescript",
+      "text": "Collection time"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 258,
+      "kind": "typescript",
+      "text": "Nach einer Stunde"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 258,
+      "kind": "typescript",
+      "text": "After one hour"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 259,
+      "kind": "typescript",
+      "text": "Lager platzieren · 650 Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 259,
+      "kind": "typescript",
+      "text": "Place a storehouse · 650 gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 260,
+      "kind": "typescript",
+      "text": "Lager versetzen"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 260,
+      "kind": "typescript",
+      "text": "Move storehouse"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 262,
+      "kind": "typescript",
+      "text": "Mara zaubert über sechs Felder Entfernung: acht Sekunden lang 50 % mehr Feuerrate. Die Automatik wartet auf Gegner in Reichweite des Turms. Du kannst auch selbst auslösen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 262,
+      "kind": "typescript",
+      "text": "Mara casts from up to six tiles away: 50% faster fire rate for eight seconds. Auto-cast waits for enemies in the tower's range. You can also cast manually."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 275,
+      "kind": "typescript",
+      "text": "Mehr Offline-Ertrag"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 275,
+      "kind": "typescript",
+      "text": "More offline income"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 290,
+      "kind": "typescript",
+      "text": "Belohnung einsammeln und fortsetzen"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 290,
+      "kind": "typescript",
+      "text": "Collect reward and continue"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 312,
+      "kind": "typescript",
+      "text": "Sicheres Farmen"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 312,
+      "kind": "typescript",
+      "text": "Safe farming"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 314,
+      "kind": "typescript",
+      "text": "Kampfgold seit Aufzeichnung"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 314,
+      "kind": "typescript",
+      "text": "Battle gold since tracking began"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 315,
+      "kind": "typescript",
+      "text": "Sie kündigt ihren Ziel-Turm an und senkt dessen Feuerrate 4,5 Sekunden lang um 40 %. Frost verlangsamt ihren Vormarsch, unterbricht aber nicht den Zauber. Steinschleudern treffen die Begleitgruppe; Scharfschützen durchdringen deren Rüstung. Erreicht der Boss den Kern, scheitert der Versuch."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 315,
+      "kind": "typescript",
+      "text": "She marks her target tower and reduces its fire rate by 40% for 4.5 seconds. Frost slows her advance but does not interrupt the spell. Stone Slingers hit her escorts; Sharpshooters pierce their armor. If the boss reaches the core, the attempt fails."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 316,
+      "kind": "typescript",
+      "text": "Erstprämien: 750 Gold in Welle 15, 1.200 Gold in Welle 25; jeweils einmalig und ohne Wisp-Bonus. Spätere Siege geben 10 % des gewöhnlichen Gegner- und Wellen-Goldes. Bosswellen erzeugen keine Offline-Farmbasis."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 316,
+      "kind": "typescript",
+      "text": "First victories: 750 gold on wave 15 and 1,200 gold on wave 25; each paid once, without Wisp's bonus. Later victories grant 10% of regular enemy and wave gold. Boss waves cannot certify offline farming."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 317,
+      "kind": "typescript",
+      "text": "Ab Welle 16 steigt das gewöhnliche Kampf-Gold: zunächst auf das Doppelte, danach pro Welle um 12 Prozentpunkte bis höchstens zum Vierfachen. So finanzierst du die höheren Turmlevel; Wisps Bonus kommt einmalig hinzu."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 317,
+      "kind": "typescript",
+      "text": "Regular battle gold increases from wave 16: initially doubled, then rising by 12 percentage points per wave up to four times the base amount. This funds higher tower levels; Wisp's bonus applies once on top."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 322,
+      "kind": "typescript",
+      "text": "Dein Goldfluss"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 322,
+      "kind": "typescript",
+      "text": "Your gold income"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 323,
+      "kind": "typescript",
+      "text": "Current income"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 333,
+      "kind": "typescript",
+      "text": "Die Laternenqualle heilt nach kurzem Aufleuchten bis zu zwei verwundete Begleiter um je 6 % ihrer maximalen Lebenspunkte. Frühestens alle 3 Sekunden; keine Heilung von Quallen oder Bossen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 333,
+      "kind": "typescript",
+      "text": "After a brief glow, the Lantern Jelly heals up to two wounded allies for 6% of their maximum health each. At least 3 seconds between heals; it cannot heal jellies or bosses."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 337,
+      "kind": "typescript",
+      "text": "Farm runs"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 357,
+      "kind": "typescript",
+      "text": "Gold für das nächste Ziel"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 357,
+      "kind": "typescript",
+      "text": "Gold for the next goal"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 366,
+      "kind": "typescript",
+      "text": "Gold für den nächsten Lernschritt"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 366,
+      "kind": "typescript",
+      "text": "Gold for the next tutorial step"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 367,
+      "kind": "typescript",
+      "text": "Wisp kommt an"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 367,
+      "kind": "typescript",
+      "text": "Wisp is arriving"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 375,
+      "kind": "typescript",
+      "text": "Waldwächter platzieren · 75 Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 375,
+      "kind": "typescript",
+      "text": "Place a Grove Warden · 75 gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 382,
+      "kind": "typescript",
+      "text": "Wisp ansehen"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 382,
+      "kind": "typescript",
+      "text": "View Wisp"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 395,
+      "kind": "typescript",
+      "text": "Abwesend · Kampf angehalten"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 396,
+      "kind": "typescript",
+      "text": "Temporäre Probe · kein Speichern und kein Offline-Ertrag"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 396,
+      "kind": "typescript",
+      "text": "Temporary trial · No saving or offline income"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 399,
+      "kind": "typescript",
+      "text": "Werkstatt und Lager"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 399,
+      "kind": "typescript",
+      "text": "Workshop and storehouse"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 401,
+      "kind": "typescript",
+      "text": "Wisp kommt kostenlos nach Frostfassung und gemeisterter Welle 5. {0} · {1}."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 401,
+      "kind": "typescript",
+      "text": "Wisp joins for free after Frost Setting research and a successful wave 5. {0} · {1}."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 404,
+      "kind": "typescript",
+      "text": "Wisp · +10 Prozent Kampf-Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 404,
+      "kind": "typescript",
+      "text": "Wisp · +10 percent battle gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 405,
+      "kind": "typescript",
+      "text": "Wisp · Frostfassung und Welle 5 nötig"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 405,
+      "kind": "typescript",
+      "text": "Wisp · Requires Frost Setting and wave 5"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 413,
+      "kind": "typescript",
+      "text": "Frostkristall · goldenes Feld antippen und bauen · 110 Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 413,
+      "kind": "typescript",
+      "text": "Frost Crystal · Tap the golden tile to build · 110 gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 416,
+      "kind": "typescript",
+      "text": "Hier bauen · {0} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 416,
+      "kind": "typescript",
+      "text": "Build here · {0} gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 436,
+      "kind": "typescript",
+      "text": "Nach Wisp"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 436,
+      "kind": "typescript",
+      "text": "After Wisp"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 439,
+      "kind": "typescript",
+      "text": "Mara zeigt dir Übertakten nach Wisps Ankunft. Zuerst bauen wir die Verteidigung auf."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 439,
+      "kind": "typescript",
+      "text": "Mara will show you Overclock after Wisp arrives. First, let's build your defenses."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 448,
+      "kind": "typescript",
+      "text": "Welle {0}: zwei konservative, schadensfreie Wiederholungen inklusive Wellenpausen. Grundlage für {1} % Offline-Ertrag."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 448,
+      "kind": "typescript",
+      "text": "Wave {0}: two conservative, damage-free runs including wave breaks. Basis for {1}% offline income."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 449,
+      "kind": "typescript",
+      "text": "Noch kein gültiger Farmnachweis. Eine erste Welle muss live geschafft und zweimal konservativ geprüft werden."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 449,
+      "kind": "typescript",
+      "text": "No valid farm certificate yet. A wave must first be cleared live, then pass two conservative checks."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 454,
+      "kind": "typescript",
+      "text": "Wechsel ins sichere Farmen …"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 454,
+      "kind": "typescript",
+      "text": "Switching to safe farming…"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 461,
+      "kind": "typescript",
+      "text": "Die gespeicherte Pause war aktiv. Dabei entsteht kein Offline-Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 461,
+      "kind": "typescript",
+      "text": "Your saved game was paused. No offline gold is earned while paused."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 462,
+      "kind": "typescript",
+      "text": "Noch kein sicherer Farmnachweis vorhanden. Besiege zuerst eine Welle zuverlässig."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 462,
+      "kind": "typescript",
+      "text": "No safe farm certificate yet. First, reliably clear a wave."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 463,
+      "kind": "typescript",
+      "text": "Deine Vorräte sind voll. Die Sammelzeit wurde ausgeschöpft."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 463,
+      "kind": "typescript",
+      "text": "Your supplies are full. The collection time limit was reached."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 464,
+      "kind": "typescript",
+      "text": "Deine Verteidigung hat Gold für dich gesammelt. Setze es für deinen nächsten Ausbau ein."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 464,
+      "kind": "typescript",
+      "text": "Your defenses collected gold for you. Put it toward your next upgrade."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 465,
+      "kind": "typescript",
+      "text": "Farmbasis beim Verlassen: {0} G/min · {1} % Ertrag · bis zu {2} Stunden. Zeit bis zum Einsammeln zählt mit."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 465,
+      "kind": "typescript",
+      "text": "Farm income on departure: {0} G/min · {1}% efficiency · Up to {2} hours. Time until collection is included."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 471,
+      "kind": "typescript",
+      "text": "Bis zu drei Ziele · 80 Sprungreichweite · 100/65/42 % Schaden"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 471,
+      "kind": "typescript",
+      "text": "Up to three targets · 80 jump range · 100/65/42% damage"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 472,
+      "kind": "typescript",
+      "text": "Bevorzugt Rüstung · ignoriert 100 % davon"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 472,
+      "kind": "typescript",
+      "text": "Prioritizes armor · Ignores 100% of it"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 474,
+      "kind": "typescript",
+      "text": "Frosttreffer · 45 % langsamer für 2 s"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 474,
+      "kind": "typescript",
+      "text": "Frost hit · 45% slower for 2 s"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 477,
+      "kind": "typescript",
+      "text": "{0} verteidigt den Weg. Verbessere ihn oder investiere das Gold an anderer Stelle."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 477,
+      "kind": "typescript",
+      "text": "{0} defends the path. Upgrade it or invest your gold elsewhere."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 493,
+      "kind": "typescript",
+      "text": "Weitere Upgrades benötigen mehr Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 493,
+      "kind": "typescript",
+      "text": "Further upgrades need more gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 496,
+      "kind": "typescript",
+      "text": "Noch {0} Gold bis zum nächsten Level."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 496,
+      "kind": "typescript",
+      "text": "{0} more gold to the next level."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 498,
+      "kind": "typescript",
+      "text": "Noch {0} Gold bis zum Waldwächter."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 498,
+      "kind": "typescript",
+      "text": "{0} more gold for a Grove Warden."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 507,
+      "kind": "typescript",
+      "text": "Noch {0} Gold für Werkstatt II."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 507,
+      "kind": "typescript",
+      "text": "{0} more gold for Workshop II."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 510,
+      "kind": "typescript",
+      "text": "Werkstatt platzieren · {0} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 510,
+      "kind": "typescript",
+      "text": "Place workshop · {0} gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 511,
+      "kind": "typescript",
+      "text": "Frostfassung erforschen · {0} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 511,
+      "kind": "typescript",
+      "text": "Research Frost Setting · {0} gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 515,
+      "kind": "typescript",
+      "text": "Frostfassung: Werkstatt nötig · 60 Gold. Verlangsamt Gegner und erschließt Turmlevel 4–6."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 515,
+      "kind": "typescript",
+      "text": "Frost Setting: requires a workshop · 60 gold. Slows enemies and unlocks tower levels 4–6."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 516,
+      "kind": "typescript",
+      "text": "✓ Sturmlicht: bis zu drei Ziele, 80 Sprungreichweite, sinkender Schaden. Turmbau separat: {0} Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 516,
+      "kind": "typescript",
+      "text": "✓ Stormlight: up to three targets, 80 jump range, decreasing damage. Tower purchase is separate: {0} gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 517,
+      "kind": "typescript",
+      "text": "Sturmlicht: Frostfassung, gemeisterte Welle {0} und abgeschlossene Ilyra-Einführung nötig. Forschung {1} Gold; Turmbau separat {2} Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 517,
+      "kind": "typescript",
+      "text": "Stormlight: requires Frost Setting, cleared wave {0} and completed Ilyra introduction. Research: {1} gold; tower purchase: {2} gold separately."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 522,
+      "kind": "typescript",
+      "text": "Siedlung · Neues Gebäude verfügbar: Vorratslager"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 522,
+      "kind": "typescript",
+      "text": "Settlement · New building available: Storehouse"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 530,
+      "kind": "typescript",
+      "text": "Bausatz verfügbar · kein Gold nötig. Wähle einen freien Platz in deiner Siedlung."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 530,
+      "kind": "typescript",
+      "text": "Kit available · No gold needed. Choose an empty spot in your settlement."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 533,
+      "kind": "typescript",
+      "text": "Nächstes Ziel: Boss 25 besiegen, dann für 1.200 Gold zu Taverne II ausbauen und Ilyra rekrutieren."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 533,
+      "kind": "typescript",
+      "text": "Next goal: defeat boss 25, upgrade to Tavern II for 1,200 gold, then recruit Ilyra."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 534,
+      "kind": "typescript",
+      "text": "Mara verstärkt Türme · Wisp versorgt · Ilyra kämpft."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 534,
+      "kind": "typescript",
+      "text": "Mara boosts towers · Wisp brings supplies · Ilyra fights."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 537,
+      "kind": "typescript",
+      "text": "Taverne II · noch {0} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 537,
+      "kind": "typescript",
+      "text": "Tavern II · {0} more gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 538,
+      "kind": "typescript",
+      "text": "Wisp versorgt das Lager. Deine Vorräte sammeln automatisch während deiner Abwesenheit."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 538,
+      "kind": "typescript",
+      "text": "Wisp supplies the storehouse. Your reserves fill automatically while you're away."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 539,
+      "kind": "typescript",
+      "text": "Wenn du das Spiel schließt, sammelt deine sichere Verteidigung weiter. Das Lager verlängert das Sammeln von 2 auf 8 Stunden. Optional; es macht deine Türme nicht stärker."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 539,
+      "kind": "typescript",
+      "text": "When you close the game, your safe defenses keep collecting. The storehouse extends collection from 2 to 8 hours. Optional; it doesn't strengthen your towers."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 541,
+      "kind": "typescript",
+      "text": "{0} % der Farmbasis"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 541,
+      "kind": "typescript",
+      "text": "{0}% of certified farm income"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 542,
+      "kind": "typescript",
+      "text": "Bereits gemeisterte Wellen geben 10 % des normalen Goldes. Neue Wellen und einmalige Bossprämien behalten ihren vollen Ertrag."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 542,
+      "kind": "typescript",
+      "text": "Previously cleared waves award 10% of normal gold. New waves and one-time boss bonuses keep their full rewards."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 543,
+      "kind": "typescript",
+      "text": "Bis zu 8 Stunden"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 543,
+      "kind": "typescript",
+      "text": "Up to 8 hours"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 544,
+      "kind": "typescript",
+      "text": "0 Gold · Pause aktiv"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 544,
+      "kind": "typescript",
+      "text": "0 gold · Paused"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 545,
+      "kind": "typescript",
+      "text": "Zuerst sicher farmen"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 545,
+      "kind": "typescript",
+      "text": "Establish safe farming first"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 546,
+      "kind": "typescript",
+      "text": "Noch {0} Gold. Die Vorschau gilt bei unveränderter Verteidigung; während einer Pause entsteht kein Ertrag."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 546,
+      "kind": "typescript",
+      "text": "{0} more gold. This preview assumes unchanged defenses; no income is earned while paused."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 547,
+      "kind": "typescript",
+      "text": "Vorschau bei unveränderter Verteidigung. Während einer Pause entsteht kein Offline-Ertrag."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 547,
+      "kind": "typescript",
+      "text": "Preview with unchanged defenses. No offline income is earned while paused."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 552,
+      "kind": "typescript",
+      "text": "Dein früherer Lichtungskauf zählt beim späteren Öffnen der Ostfront mit 900 Gold. Diese Gutschrift ist für den Zugang reserviert."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 552,
+      "kind": "typescript",
+      "text": "Your earlier clearing purchase counts as 900 gold toward opening the future eastern front. This credit is reserved for access."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 553,
+      "kind": "typescript",
+      "text": "Werkstatt, Lager und Taverne ziehen gemeinsam in die geschützte Siedlung südöstlich des Kerns. Gebäudelevel, Gold und Verteidigung bleiben erhalten. Die Gebäude kannst du dort bei Pause frei versetzen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 553,
+      "kind": "typescript",
+      "text": "The workshop, storehouse and tavern move together to the sheltered settlement southeast of the core. Building levels, gold and defenses are preserved. You can freely reposition the buildings there while paused."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 558,
+      "kind": "typescript",
+      "text": "Dein Lichtungskauf bleibt als 900-Gold-Gutschrift für den späteren Ostzugang erhalten."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 558,
+      "kind": "typescript",
+      "text": "Your clearing purchase is preserved as 900 gold credit toward future eastern access."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 560,
+      "kind": "typescript",
+      "text": "Sicheres Farmen · Welle {0}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 560,
+      "kind": "typescript",
+      "text": "Safe farming · Wave {0}. Another advance starts only when you request it, at a wave transition."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 562,
+      "kind": "typescript",
+      "text": "Welle {0} geschafft · +{1} Gold Abschlussbonus."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 562,
+      "kind": "typescript",
+      "text": "Wave {0} cleared · +{1} gold completion bonus."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 563,
+      "kind": "typescript",
+      "text": "Gegner besiegt · +{0} Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 563,
+      "kind": "typescript",
+      "text": "Enemy defeated · +{0} gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 565,
+      "kind": "typescript",
+      "text": "{0} besiegt! +{1} Gold Erstprämie."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 565,
+      "kind": "typescript",
+      "text": "{0} defeated! +{1} gold first-victory reward."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 566,
+      "kind": "typescript",
+      "text": "Rosenspiegel erneut besiegt. Gewöhnliche Kampfbelohnungen erhalten."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 566,
+      "kind": "typescript",
+      "text": "Rosemirror defeated again. Regular battle rewards earned."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 570,
+      "kind": "typescript",
+      "text": "Wisp ist da! +10 % Kampf-Gold und die Steinschleuder sind jetzt verfügbar."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 570,
+      "kind": "typescript",
+      "text": "Wisp has arrived! +10% battle gold and the Stone Slinger are now available."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 579,
+      "kind": "typescript",
+      "text": "Vorratslager gebaut! Künftig 26 % Offline-Ertrag für bis zu 8 Stunden."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 579,
+      "kind": "typescript",
+      "text": "Storehouse built! Future offline income: 26% for up to 8 hours."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 582,
+      "kind": "typescript",
+      "text": "Turm verkauft · +{0} Gold. Die sichere Farmbasis wird neu geprüft."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 582,
+      "kind": "typescript",
+      "text": "Tower sold · +{0} gold. Certified farm income is being checked again."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 583,
+      "kind": "typescript",
+      "text": "Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 583,
+      "kind": "typescript",
+      "text": "The advance failed. Gold and towers are preserved; your defenses switch to safe farming."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 589,
+      "kind": "typescript",
+      "text": "Frost aktiv · 45 % langsamer · {0} s"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 589,
+      "kind": "typescript",
+      "text": "Frost active · 45% slower · {0} s"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 592,
+      "kind": "typescript",
+      "text": "Boss und Begleiter besiegen · {0} Gold Erstprämie"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 592,
+      "kind": "typescript",
+      "text": "Defeat boss and escorts · {0} gold first-victory reward"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 596,
+      "kind": "typescript",
+      "text": "Gespeicherte Verteidigung geladen. Gold, Türme und laufender Kampf sind wieder da."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 596,
+      "kind": "typescript",
+      "text": "Saved defenses loaded. Your gold, towers and ongoing battle are restored."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 603,
+      "kind": "typescript",
+      "text": "Spiel bereits in einem anderen Tab aktiv. Dieser Tab führt keinen Kampf aus und vergibt kein Gold. Du kannst ihn erneut aktivieren, wenn der andere Tab nicht mehr aktiv ist."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 603,
+      "kind": "typescript",
+      "text": "The game is already active in another tab. This tab runs no combat and awards no gold. You can reactivate it once the other tab is no longer active."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 623,
+      "kind": "typescript",
+      "text": "Jeder besiegte Käfer bringt Gold. Nach dem ersten Treffer zeige ich dir das Upgrade."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 623,
+      "kind": "typescript",
+      "text": "Every defeated beetle gives you gold. After the first hit, I'll show you how to upgrade."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 628,
+      "kind": "typescript",
+      "text": "Die Welle wartet. Öffne den markierten Turm und verbessere ihn einmal für 60 Gold auf Level 2."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 628,
+      "kind": "typescript",
+      "text": "The wave is waiting. Open the marked tower and upgrade it once to level 2 for 60 gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 630,
+      "kind": "typescript",
+      "text": "Hier erforschst du neue Turmtypen. Dein gespartes Gold verwenden wir für Frosttechnik."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 630,
+      "kind": "typescript",
+      "text": "This is where you research new tower types. We'll use your saved gold for frost technology."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 639,
+      "kind": "typescript",
+      "text": "Jetzt bauen wir den neuen Turm neben deinen Waldwächter. Er kostet 110 Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 639,
+      "kind": "typescript",
+      "text": "Now let's build the new tower beside your Grove Warden. It costs 110 gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 642,
+      "kind": "typescript",
+      "text": "Tippe auf das neue Gebäude auf der Karte. Dort erforschst du die Frostfassung für 60 Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 642,
+      "kind": "typescript",
+      "text": "Tap the new building on the map. Research Frost Setting there for 60 gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 664,
+      "kind": "typescript",
+      "text": "Wisp begrüßen · nächste Welle wartet"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 664,
+      "kind": "typescript",
+      "text": "Greet Wisp · Next wave is waiting"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 667,
+      "kind": "typescript",
+      "text": "Ein Turm schießt 8 Sekunden lang 50 % schneller. Nach deinem Tipp wartet Mara auf Gegner und zeigt dir den Zauber."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 667,
+      "kind": "typescript",
+      "text": "A tower fires 50% faster for 8 seconds. After your tap, Mara waits for enemies and demonstrates the spell."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 673,
+      "kind": "typescript",
+      "text": "Mara hat gerade gezaubert. Der goldene Ring zeigt ihr Ziel: 8 Sekunden lang 50 % höhere Feuerrate. Sieh dir die Wirkung in Ruhe an."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 673,
+      "kind": "typescript",
+      "text": "Mara just cast her spell. The golden ring marks her target: 50% faster fire rate for 8 seconds. Take a moment to watch it work."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 676,
+      "kind": "typescript",
+      "text": "+50 % Feuerrate · goldener Ring am Turm"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 676,
+      "kind": "typescript",
+      "text": "+50% fire rate · Golden ring around the tower"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 681,
+      "kind": "typescript",
+      "text": "Sie trifft mehrere Gegner zugleich. Wähle unten die Steinschleuder und einen Platz bei Frost. Optional · 135 Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 681,
+      "kind": "typescript",
+      "text": "It hits several enemies at once. Choose the Stone Slinger below and place it near frost. Optional · 135 gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 682,
+      "kind": "typescript",
+      "text": "Unter „Türme“ findest du jetzt die Steinschleuder. Sie trifft Gegnergruppen; Frost hält sie länger zusammen. Optional · 135 Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 682,
+      "kind": "typescript",
+      "text": "You'll now find the Stone Slinger under “Towers”. It hits groups of enemies; frost keeps them together longer. Optional · 135 gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 683,
+      "kind": "typescript",
+      "text": "Neu in der Siedlung: Vorratslager"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 683,
+      "kind": "typescript",
+      "text": "New in your settlement: Storehouse"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 684,
+      "kind": "typescript",
+      "text": "Wenn du das Spiel schließt, sammelt deine sichere Verteidigung weiter. Das Lager verlängert das Sammeln von 2 auf 8 Stunden. Optional · 650 Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 684,
+      "kind": "typescript",
+      "text": "When you close the game, your safe defenses keep collecting. The storehouse extends collection from 2 to 8 hours. Optional · 650 gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 692,
+      "kind": "typescript",
+      "text": "Dabei · +50 % Turmtempo für 8 s"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 692,
+      "kind": "typescript",
+      "text": "Joined · +50% tower fire rate for 8 s"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 707,
+      "kind": "typescript",
+      "text": "Ich bin Mara. Unser Startturm greift automatisch an. Beobachte die ersten Käfer — für jeden besiegten Gegner erhalten wir Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 707,
+      "kind": "typescript",
+      "text": "I'm Mara. Our starter tower attacks automatically. Watch the first beetles—we get gold for every enemy defeated."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 709,
+      "kind": "typescript",
+      "text": "Ein Upgrade erhöht den Schaden sofort. Wähle einen Waldwächter und werte ihn für 60 Gold auf. Ich unterstütze meinen zugewiesenen Turm automatisch."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 709,
+      "kind": "typescript",
+      "text": "An upgrade increases damage immediately. Select a Grove Warden and upgrade it for 60 gold. I automatically support my assigned tower."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 712,
+      "kind": "typescript",
+      "text": "Setze einen Frostkristall an eine Kurve, wo auch ein Waldwächter angreift. Sind alle Plätze belegt, kannst du einen gekauften Turm für 70 % verkaufen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 712,
+      "kind": "typescript",
+      "text": "Place a Frost Crystal at a bend where a Grove Warden also attacks. If every spot is taken, you can sell a purchased tower for 70% of its investment."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 713,
+      "kind": "typescript",
+      "text": "Die blauen Treffer bremsen Käfer zwei Sekunden lang um 45 %. Andere Türme bekommen dadurch mehr Zeit zum Angreifen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 713,
+      "kind": "typescript",
+      "text": "Blue hits slow beetles by 45% for two seconds. That gives other towers more time to attack."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 714,
+      "kind": "typescript",
+      "text": "Nach gemeisterter Welle 5 kommt Wisp kostenlos zur Werkstatt. Er bringt dauerhaft 10 % mehr Kampf-Gold mit; außerdem werden Steinschleuder verfügbar."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 714,
+      "kind": "typescript",
+      "text": "After you clear wave 5, Wisp joins the workshop for free. He permanently adds 10% battle gold; the Stone Slinger also becomes available."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 715,
+      "kind": "typescript",
+      "text": "Wisp versorgt die Werkstatt. Sein Goldbonus wirkt automatisch. Setze eine Steinschleuder nahe Frost ein: Ihr Flächentreffer trifft ganze Käfergruppen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 715,
+      "kind": "typescript",
+      "text": "Wisp supplies the workshop. His gold bonus works automatically. Place a Stone Slinger near frost: its area hit strikes entire beetle groups."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 719,
+      "kind": "typescript",
+      "text": "Das Vorratslager sammelt länger: 26 % der sicheren Farmbasis für bis zu acht Stunden. Öffne Siedlung, prüfe die Vorschau und baue es für 650 Gold. Die besseren Werte gelten für die nächste Abwesenheit."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 719,
+      "kind": "typescript",
+      "text": "The storehouse collects longer: 26% of certified farm income for up to eight hours. Open Settlement, check the preview and build it for 650 gold. The improved rates apply to your next absence."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 720,
+      "kind": "typescript",
+      "text": "Nach gemeisterter Welle 8 kannst du ein Vorratslager bauen. Verbessere deine Verteidigung und spare dann 650 Gold. Wisp versorgt später beide Gebäude."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 720,
+      "kind": "typescript",
+      "text": "After clearing wave 8, you can build a storehouse. Strengthen your defenses, then save 650 gold. Wisp will supply both buildings."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 721,
+      "kind": "typescript",
+      "text": "Rosenspiegel erwartet uns in Welle 15. Ihr Herzfaden kündigt an, welchen Turm sie verführt. Frost bremst ihren Vormarsch; Flächentreffer räumen Begleiter ab, Scharfschützen durchdringen ihre Rüstung. Die erste vollständige Bosswelle bringt einmalig 750 Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 721,
+      "kind": "typescript",
+      "text": "Rosemirror awaits us in wave 15. Her heart tether reveals which tower she will charm. Frost slows her advance; area hits clear escorts, and Sharpshooters pierce their armor. Completing the first boss wave awards 750 gold once."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 722,
+      "kind": "typescript",
+      "text": "Jetzt übernimmt Wisp die Versorgung. Meine Magie heißt Übertakten: acht Sekunden lang 50 % mehr Feuerrate. Goldener Ring und Restsekunden zeigen den verstärkten Turm. Automatisch zaubere ich nur bei Gegnern; über mein Porträt kannst du auch selbst auslösen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 722,
+      "kind": "typescript",
+      "text": "Wisp is taking over supplies now. My magic is called Overclock: 50% faster fire rate for eight seconds. A golden ring and countdown mark the boosted tower. I auto-cast only when enemies are present; you can also cast manually through my portrait."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 723,
+      "kind": "typescript",
+      "text": "Baue die Werkstatt für 1.200 Gold zur Stufe II aus. Der neue Arbeitsplatz ermöglicht weitere Turmlevel ab 7; die nächste Herausforderung wartet in Welle 25."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 723,
+      "kind": "typescript",
+      "text": "Upgrade the workshop to tier II for 1,200 gold. The new workbench unlocks tower levels 7 and above; the next challenge awaits in wave 25."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 724,
+      "kind": "typescript",
+      "text": "Rosenspiegel kehrt in Welle 25 mit einer größeren Begleitgruppe zurück. Höhere Turmlevel und unsere vier Rollen helfen. Für den ersten Sieg gibt es einmalig 1.200 Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 724,
+      "kind": "typescript",
+      "text": "Rosemirror returns in wave 25 with a larger escort. Higher tower levels and our four roles will help. The first victory awards 1,200 gold once."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 725,
+      "kind": "typescript",
+      "text": "Übertakten wirkt jetzt: +50 % Feuerrate, noch {0} Sekunden. Der goldene Ring zeigt meinen Zielturm. Über mein Porträt kannst du später auch manuell zaubern; die Automatik wartet auf Gegner."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 725,
+      "kind": "typescript",
+      "text": "Overclock is active: +50% fire rate, {0} seconds left. The golden ring marks my target tower. You can later cast manually through my portrait; auto-cast waits for enemies."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 726,
+      "kind": "typescript",
+      "text": "Die Verteidigung läuft. Erste Käfer bringen Gold — dein zweiter Turm ist bereits bezahlbar."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 726,
+      "kind": "typescript",
+      "text": "Your defenses are running. The first beetles bring gold—you can already afford your second tower."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 727,
+      "kind": "typescript",
+      "text": "Nächstes Ziel: eigener Waldwächter auf einem hellen Bauplatz · 75 Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 727,
+      "kind": "typescript",
+      "text": "Next goal: your own Grove Warden on a highlighted building spot · 75 gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 728,
+      "kind": "typescript",
+      "text": "Nächstes Ziel: einen Waldwächter verbessern · 60 Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 728,
+      "kind": "typescript",
+      "text": "Next goal: upgrade a Grove Warden · 60 gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 734,
+      "kind": "typescript",
+      "text": "Wisp begrüßen · +10 % Kampf-Gold, arbeitet automatisch."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 734,
+      "kind": "typescript",
+      "text": "Greet Wisp · +10% battle gold, works automatically."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 735,
+      "kind": "typescript",
+      "text": "Deine Kombination arbeitet. Welle 5 meistern, dann kommt Wisp."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 735,
+      "kind": "typescript",
+      "text": "Your combination is working. Clear wave 5, then Wisp arrives."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 736,
+      "kind": "typescript",
+      "text": "Wisp arbeitet: +10 % Kampf-Gold. Steinschleuder bauen · 135 Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 736,
+      "kind": "typescript",
+      "text": "Wisp is working: +10% battle gold. Build a Stone Slinger · 135 gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 737,
+      "kind": "typescript",
+      "text": "Vorratslager bauen · {0} · 26 % Offline-Ertrag für bis zu 8 Stunden."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 737,
+      "kind": "typescript",
+      "text": "Build a storehouse · {0} · 26% offline income for up to 8 hours."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 738,
+      "kind": "typescript",
+      "text": "Welle 8 meistern: Vorratslager freischalten."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 738,
+      "kind": "typescript",
+      "text": "Clear wave 8: unlock the storehouse."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 740,
+      "kind": "typescript",
+      "text": "Scharfschütze bauen · 170 Gold · Rüstung durchdringen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 740,
+      "kind": "typescript",
+      "text": "Build a Sharpshooter · 170 gold · Pierce armor."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 742,
+      "kind": "typescript",
+      "text": "Rosenspiegel besiegen · 750 Gold Erstprämie · Frost bremst ihren Vormarsch."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 742,
+      "kind": "typescript",
+      "text": "Defeat Rosemirror · 750 gold first-victory reward · Frost slows her advance."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 765,
+      "kind": "typescript",
+      "text": "Wisp ist angekommen"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 765,
+      "kind": "typescript",
+      "text": "Wisp has arrived"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 766,
+      "kind": "typescript",
+      "text": "+10 % Kampf-Gold · arbeitet selbstständig"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 766,
+      "kind": "typescript",
+      "text": "+10% battle gold · Works independently"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 767,
+      "kind": "typescript",
+      "text": "Wisp kennenlernen"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 767,
+      "kind": "typescript",
+      "text": "Meet Wisp"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 772,
+      "kind": "typescript",
+      "text": "Vorräte für deine Rückkehr"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 772,
+      "kind": "typescript",
+      "text": "Supplies for your return"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 773,
+      "kind": "typescript",
+      "text": "{0} · optional: 2 → 8 Stunden sammeln"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 773,
+      "kind": "typescript",
+      "text": "{0} · Optional: collect for 2 → 8 hours"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 774,
+      "kind": "typescript",
+      "text": "Vorratslager ansehen"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 774,
+      "kind": "typescript",
+      "text": "View storehouse"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 776,
+      "kind": "typescript",
+      "text": "Vorratslager freischalten · längere Offline-Erträge"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 776,
+      "kind": "typescript",
+      "text": "Unlock the storehouse · Longer offline earnings"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 783,
+      "kind": "typescript",
+      "text": "Welle 15 · 750 Gold Erstprämie · Frost verlangsamt"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 783,
+      "kind": "typescript",
+      "text": "Wave 15 · 750 gold first-victory reward · Frost slows her"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 788,
+      "kind": "typescript",
+      "text": "8 Sekunden · +50 % Feuerrate · Automatik wartet auf Gegner"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 788,
+      "kind": "typescript",
+      "text": "8 seconds · +50% fire rate · Auto-cast waits for enemies"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 793,
+      "kind": "typescript",
+      "text": "Welle 25 · 1.200 Gold Erstprämie"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 793,
+      "kind": "typescript",
+      "text": "Wave 25 · 1,200 gold first-victory reward"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 802,
+      "kind": "typescript",
+      "text": "Sicher farmen oder Welle {0} versuchen"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 802,
+      "kind": "typescript",
+      "text": "Farm safely or try wave {0}"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 805,
+      "kind": "typescript",
+      "text": "Laufender Goldzufluss aus Kampfbelohnungen. {0} aktive Sekunden gemessen. Details öffnen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 805,
+      "kind": "typescript",
+      "text": "Live gold income from battle rewards. {0} active seconds measured. Open details."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 812,
+      "kind": "typescript",
+      "text": "Freie Bewegung · {0} · besonders wirksam gegen Flieger. Kein garantierter Offline-Bonus."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 812,
+      "kind": "typescript",
+      "text": "Free movement · {0} · Especially effective against flyers. No guaranteed offline bonus."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 815,
+      "kind": "typescript",
+      "text": "Auftrag: {0} versorgen · +10 % Kampf-Gold. Bereits in Live-Ertrag und Farmbasis enthalten."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 815,
+      "kind": "typescript",
+      "text": "Task: supply {0} · +10% battle gold. Already included in live and certified farm income."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 818,
+      "kind": "typescript",
+      "text": "First-victory reward received."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 823,
+      "kind": "typescript",
+      "text": "Durchschnitt der letzten {0} aktiven Sekunden. Käufe, Verkäufe und Offline-Gutschriften zählen nicht dazu. Nach Neuladen beginnt die Messung neu."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 823,
+      "kind": "typescript",
+      "text": "Average over the last {0} active seconds. Purchases, sales and offline credits are excluded. Measurement restarts on reload."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 825,
+      "kind": "typescript",
+      "text": "{0} % der sicheren Farmbasis · höchstens {1} Stunden. {2}"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 825,
+      "kind": "typescript",
+      "text": "{0}% of certified farm income · Up to {1} hours. {2}"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 826,
+      "kind": "typescript",
+      "text": "Bei unveränderter Verteidigung etwa {0} Gold in einer Stunde."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 826,
+      "kind": "typescript",
+      "text": "With unchanged defenses, about {0} gold in one hour."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 828,
+      "kind": "typescript",
+      "text": "Welle {0} nicht geschafft. Jetzt Farmen auf Welle {1}. Gold, Türme und Forschung bleiben erhalten."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 828,
+      "kind": "typescript",
+      "text": "Wave {0} failed. Now farming wave {1}. Gold, towers and research are preserved."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 829,
+      "kind": "typescript",
+      "text": "Letzte Niederlage: Welle {0}. Gold und Ausbau blieben erhalten."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 829,
+      "kind": "typescript",
+      "text": "Last defeat: wave {0}. Gold and upgrades were preserved."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 853,
+      "kind": "typescript",
+      "text": "Wisp · Gefährtenverwaltung ↗"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 853,
+      "kind": "typescript",
+      "text": "Wisp · Companion management ↗"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 862,
+      "kind": "typescript",
+      "text": "Geschenke sind für die hier ausgewählte Gefährtin. Du erhältst sie bei Meilensteinen und begrenzt nach gewonnenen Wellen. Gespräche und Berührungen sind auch ohne weitere Punkte möglich. Neue Belohnungen nach 20 Minuten laufender Spielzeit; Pause und Offline-Zeit zählen nicht."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 862,
+      "kind": "typescript",
+      "text": "Gifts go to the companion selected here. You receive them at milestones and in limited amounts after winning waves. You can keep talking and touching even when no more points are available. New rewards become available after 20 minutes of active play; paused and offline time do not count."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 887,
+      "kind": "typescript",
+      "text": "Next reward period in {0} min. of active play."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 902,
+      "kind": "typescript",
+      "text": "Reward period exhausted"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 917,
+      "kind": "typescript",
+      "text": "{0} enjoys your company. No more points are available for this reward period."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 947,
+      "kind": "typescript",
+      "text": "Heute habe ich Wisp erklärt, warum man Schrauben sortiert. Er hat mir erklärt, warum Gold schöner glänzt. Unentschieden."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 947,
+      "kind": "typescript",
+      "text": "Today I explained to Wisp why we sort screws. He explained why gold shines more nicely. Let's call it a draw."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1031,
+      "kind": "typescript",
+      "text": "Heute habe ich Wisp gefragt, wie lange er hierbleibt. Er sagte: Solange es sich lohnt. Ich glaube, bei ihm bedeutete das etwas anderes als bei mir."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1031,
+      "kind": "typescript",
+      "text": "Today I asked Wisp how long he'd stay. He said: as long as it's worth it. I think that meant something different to him than it does to me."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1077,
+      "kind": "typescript",
+      "text": "45 % Rüstung"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1077,
+      "kind": "typescript",
+      "text": "45% armor"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1080,
+      "kind": "typescript",
+      "text": "Langsam, viele Lebenspunkte · 25 % Rüstung"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1080,
+      "kind": "typescript",
+      "text": "Slow, high health · 25% armor"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1085,
+      "kind": "typescript",
+      "text": "Beweglicher Panzer · 30 % Rüstung"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1085,
+      "kind": "typescript",
+      "text": "Mobile armor · 30% armor"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1091,
+      "kind": "typescript",
+      "text": "Frost verlangsamt ihn nur um 20 %"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1091,
+      "kind": "typescript",
+      "text": "Frost slows it by only 20%"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1097,
+      "kind": "typescript",
+      "text": "Mittelschwerer Wächter · 25 % Rüstung"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1097,
+      "kind": "typescript",
+      "text": "Medium-weight guardian · 25% armor"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1110,
+      "kind": "typescript",
+      "text": "Langsamer Panzer · 25 % Rüstung, zwei Kernschaden"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1110,
+      "kind": "typescript",
+      "text": "Slow armored enemy · 25% armor, two core damage"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1121,
+      "kind": "typescript",
+      "text": "Aktiv · +10 % Kampf-Gold. Auftrag: {0} versorgen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1121,
+      "kind": "typescript",
+      "text": "Active · +10% battle gold. Task: supply {0}."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1124,
+      "kind": "typescript",
+      "text": "+10 % Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1124,
+      "kind": "typescript",
+      "text": "+10% gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1126,
+      "kind": "typescript",
+      "text": "{0} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1126,
+      "kind": "typescript",
+      "text": "{0} gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1139,
+      "kind": "typescript",
+      "text": "+{0} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1139,
+      "kind": "typescript",
+      "text": "+{0} gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1143,
+      "kind": "typescript",
+      "text": "Aufwerten · {0} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1143,
+      "kind": "typescript",
+      "text": "Upgrade · {0} gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1144,
+      "kind": "typescript",
+      "text": "Verkaufen · +{0} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1144,
+      "kind": "typescript",
+      "text": "Sell · +{0} gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1153,
+      "kind": "typescript",
+      "text": "Wisp & Welle 8"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1153,
+      "kind": "typescript",
+      "text": "Wisp & Wave 8"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1154,
+      "kind": "typescript",
+      "text": "2 → 8 Stunden"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1154,
+      "kind": "typescript",
+      "text": "2 → 8 hours"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1155,
+      "kind": "typescript",
+      "text": "≈ {0} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1155,
+      "kind": "typescript",
+      "text": "≈ {0} gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1156,
+      "kind": "typescript",
+      "text": "{0} → {1} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1156,
+      "kind": "typescript",
+      "text": "{0} → {1} gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1158,
+      "kind": "typescript",
+      "text": "Wisp (Frost & Welle 5)"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1158,
+      "kind": "typescript",
+      "text": "Wisp (Frost & Wave 5)"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1162,
+      "kind": "typescript",
+      "text": "♥ {0}: 40 % langsamer · {1} s"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1162,
+      "kind": "typescript",
+      "text": "♥ {0}: 40% slower · {1} s"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1166,
+      "kind": "typescript",
+      "text": "Starting gold · 0 G/min"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1168,
+      "kind": "typescript",
+      "text": "Dabei · +10 % Kampf-Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1168,
+      "kind": "typescript",
+      "text": "Joined · +10% battle gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1171,
+      "kind": "typescript",
+      "text": "{0} Gold · bereit"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1171,
+      "kind": "typescript",
+      "text": "{0} gold · Ready"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1172,
+      "kind": "typescript",
+      "text": "noch {0} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1172,
+      "kind": "typescript",
+      "text": "{0} more gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1173,
+      "kind": "typescript",
+      "text": "Noch {0} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1173,
+      "kind": "typescript",
+      "text": "{0} more gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1176,
+      "kind": "typescript",
+      "text": "{0} von {1} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1176,
+      "kind": "typescript",
+      "text": "{0} of {1} gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1196,
+      "kind": "typescript",
+      "text": "Wisp · +10 % Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1196,
+      "kind": "typescript",
+      "text": "Wisp · +10% gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1198,
+      "kind": "typescript",
+      "text": "{0} %"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1198,
+      "kind": "typescript",
+      "text": "{0}%"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1199,
+      "kind": "typescript",
+      "text": "Lager I"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1199,
+      "kind": "typescript",
+      "text": "Storehouse I"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1201,
+      "kind": "typescript",
+      "text": "Willkommen, Wisp!"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1201,
+      "kind": "typescript",
+      "text": "Welcome, Wisp!"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1203,
+      "kind": "typescript",
+      "text": "Wisp · Versorgung"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1203,
+      "kind": "typescript",
+      "text": "Wisp · Supplies"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1206,
+      "kind": "typescript",
+      "text": "Vorratslager I"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1206,
+      "kind": "typescript",
+      "text": "Storehouse I"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1207,
+      "kind": "typescript",
+      "text": "Offline income"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1230,
+      "kind": "typescript",
+      "text": "Weniger als 1 Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1230,
+      "kind": "typescript",
+      "text": "Less than 1 gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1231,
+      "kind": "typescript",
+      "text": "≈ +{0} Gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1231,
+      "kind": "typescript",
+      "text": "≈ +{0} gold"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1239,
+      "kind": "typescript",
+      "text": "Begrüße Wisp."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1239,
+      "kind": "typescript",
+      "text": "Welcome Wisp."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1240,
+      "kind": "typescript",
+      "text": "Optional: Siedlung → Lager bauen oder „Später“."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1240,
+      "kind": "typescript",
+      "text": "Optional: Settlement → build a Storehouse, or choose “Later”."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1253,
+      "kind": "typescript",
+      "text": "Spare {0} Gold für die Frostforschung."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1253,
+      "kind": "typescript",
+      "text": "Save {0} gold for Frost research."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1260,
+      "kind": "typescript",
+      "text": "Baue Türme oder werte sie auf. Das Lager folgt nach Welle 8."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1260,
+      "kind": "typescript",
+      "text": "Build or upgrade towers. The Storehouse follows after wave 8."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1262,
+      "kind": "typescript",
+      "text": "Mara lässt einen Turm 8 Sekunden lang 50 % schneller schießen."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1262,
+      "kind": "typescript",
+      "text": "Mara makes one tower fire 50% faster for 8 seconds."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1263,
+      "kind": "typescript",
+      "text": "Neu: Vorratslager"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1263,
+      "kind": "typescript",
+      "text": "New: the Storehouse"
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1264,
+      "kind": "typescript",
+      "text": "Speichert Offline-Gold bis zu 8 statt 2 Stunden. Optional · 650 Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1264,
+      "kind": "typescript",
+      "text": "Stores offline gold for up to 8 hours instead of 2. Optional · 650 gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1276,
+      "kind": "typescript",
+      "text": "Dein erster Frostkristall ist kostenlos. Jeder weitere kostet 110 Gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1276,
+      "kind": "typescript",
+      "text": "Your first Frost Crystal is free. Each additional one costs 110 gold."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1295,
+      "kind": "typescript",
+      "text": "Öffne die Werkstatt. Dort erforschst du die Frostfassung für 60 Gold und schaltest deinen Frostkristall frei."
+    },
+    {
+      "file": "src/locales/en.ts",
+      "line": 1295,
+      "kind": "typescript",
+      "text": "Open the workshop. Research Frost Setting there for 60 gold to unlock your Frost Crystal."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 190,
+      "kind": "typescript",
+      "text": "Abwesend · Kampf angehalten"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 191,
+      "kind": "typescript",
+      "text": "Temporäre Probe · kein Speichern und kein Offline-Ertrag"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 209,
+      "kind": "typescript",
+      "text": "Aktiv · +10 % Kampf-Gold. Auftrag: {0} versorgen."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 209,
+      "kind": "typescript",
+      "text": "Werkstatt und Lager"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 209,
+      "kind": "typescript",
+      "text": "Wisp kommt kostenlos nach Frostfassung und gemeisterter Welle 5. {0} · {1}."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 211,
+      "kind": "typescript",
+      "text": "+10 % Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 212,
+      "kind": "typescript",
+      "text": "Wisp · +10 Prozent Kampf-Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 212,
+      "kind": "typescript",
+      "text": "Wisp · Frostfassung und Welle 5 nötig"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 231,
+      "kind": "typescript",
+      "text": "{0} Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 252,
+      "kind": "typescript",
+      "text": "Hier bauen · {0} Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 252,
+      "kind": "typescript",
+      "text": "Hier bauen · {0} Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 261,
+      "kind": "typescript",
+      "text": "Frostkristall · 110 Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 282,
+      "kind": "typescript",
+      "text": "`${Math.floor(playSeconds / 60)}:${String(Math.floor(playSeconds % 60)).padStart(2, '0')}`"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 300,
+      "kind": "typescript",
+      "text": "Nach Wisp"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 302,
+      "kind": "typescript",
+      "text": "Mara zeigt dir Übertakten nach Wisps Ankunft. Zuerst bauen wir die Verteidigung auf."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 316,
+      "kind": "typescript",
+      "text": "Nach Wisps Ankunft zeigt dir Mara ihren Zauber. Danach kannst du sie selbst steuern."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 327,
+      "kind": "typescript",
+      "text": "Welle {0}: zwei konservative, schadensfreie Wiederholungen inklusive Wellenpausen. Grundlage für {1} % Offline-Ertrag."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 328,
+      "kind": "typescript",
+      "text": "Noch kein gültiger Farmnachweis. Eine erste Welle muss live geschafft und zweimal konservativ geprüft werden."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 335,
+      "kind": "typescript",
+      "text": "Wechsel ins sichere Farmen …"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 358,
+      "kind": "typescript",
+      "text": "Die gespeicherte Pause war aktiv. Dabei entsteht kein Offline-Gold."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 359,
+      "kind": "typescript",
+      "text": "Noch kein sicherer Farmnachweis vorhanden. Besiege zuerst eine Welle zuverlässig."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 360,
+      "kind": "typescript",
+      "text": "Deine Vorräte sind voll. Die Sammelzeit wurde ausgeschöpft."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 361,
+      "kind": "typescript",
+      "text": "Deine Verteidigung hat Gold für dich gesammelt. Setze es für deinen nächsten Ausbau ein."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 362,
+      "kind": "typescript",
+      "text": "Farmbasis beim Verlassen: {0} G/min · {1} % Ertrag · bis zu {2} Stunden. Zeit bis zum Einsammeln zählt mit."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 363,
+      "kind": "typescript",
+      "text": "Belohnung einsammeln und fortsetzen"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 373,
+      "kind": "typescript",
+      "text": "Bis zu drei Ziele · 80 Sprungreichweite · 100/65/42 % Schaden"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 373,
+      "kind": "typescript",
+      "text": "Bevorzugt Rüstung · ignoriert 100 % davon"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 373,
+      "kind": "typescript",
+      "text": "Frosttreffer · 45 % langsamer für 2 s"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 375,
+      "kind": "typescript",
+      "text": "{0} verteidigt den Weg. Verbessere ihn oder investiere das Gold an anderer Stelle."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 390,
+      "kind": "typescript",
+      "text": "Aufwerten · {0} Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 394,
+      "kind": "typescript",
+      "text": "Verkaufen · +{0} Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 405,
+      "kind": "typescript",
+      "text": "Weitere Upgrades benötigen mehr Gold."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 405,
+      "kind": "typescript",
+      "text": "Noch {0} Gold bis zum nächsten Level."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 406,
+      "kind": "typescript",
+      "text": "Noch {0} Gold bis zum Waldwächter."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 417,
+      "kind": "typescript",
+      "text": "Werkstatt II kostet {0} Gold und erschließt Turmlevel ab 7."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 423,
+      "kind": "typescript",
+      "text": "Noch {0} Gold für Werkstatt II."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 425,
+      "kind": "typescript",
+      "text": "Werkstatt platzieren · {0} Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 429,
+      "kind": "typescript",
+      "text": "Frostfassung erforschen · {0} Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 443,
+      "kind": "typescript",
+      "text": "Frostfassung: Werkstatt nötig · 60 Gold. Verlangsamt Gegner und erschließt Turmlevel 4–6."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 444,
+      "kind": "typescript",
+      "text": "✓ Sturmlicht: bis zu drei Ziele, 80 Sprungreichweite, sinkender Schaden. Turmbau separat: {0} Gold."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 445,
+      "kind": "typescript",
+      "text": "Sturmlicht: Frostfassung, gemeisterte Welle {0} und abgeschlossene Ilyra-Einführung nötig. Forschung {1} Gold; Turmbau separat {2} Gold."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 468,
+      "kind": "typescript",
+      "text": "Geschenke im Vorrat"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 477,
+      "kind": "typescript",
+      "text": "Siedlung · Neues Gebäude verfügbar: Vorratslager"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 494,
+      "kind": "typescript",
+      "text": "Nächstes Ziel: Boss 25 besiegen, dann für 1.200 Gold zu Taverne II ausbauen und Ilyra rekrutieren."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 495,
+      "kind": "typescript",
+      "text": "Mara verstärkt Türme · Wisp versorgt · Ilyra kämpft."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 503,
+      "kind": "typescript",
+      "text": "Taverne II · noch {0} Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 503,
+      "kind": "typescript",
+      "text": "Taverne II ausbauen · 1.200 Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 504,
+      "kind": "typescript",
+      "text": "Wisp & Welle 8"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 505,
+      "kind": "typescript",
+      "text": "Wisp versorgt das Lager. Deine Vorräte sammeln automatisch während deiner Abwesenheit."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 506,
+      "kind": "typescript",
+      "text": "Wenn du das Spiel schließt, sammelt deine sichere Verteidigung weiter. Das Lager verlängert das Sammeln von 2 auf 8 Stunden. Optional; es macht deine Türme nicht stärker."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 508,
+      "kind": "typescript",
+      "text": "{0} % der Farmbasis"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 509,
+      "kind": "typescript",
+      "text": "`${OFFLINE.efficiencyPermille / 10} % → ${WAREHOUSE_OFFLINE.efficiencyPermille / 10} %`"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 510,
+      "kind": "typescript",
+      "text": "Bis zu 8 Stunden"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 510,
+      "kind": "typescript",
+      "text": "2 → 8 Stunden"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 511,
+      "kind": "typescript",
+      "text": "0 Gold · Pause aktiv"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 511,
+      "kind": "typescript",
+      "text": "Zuerst sicher farmen"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 512,
+      "kind": "typescript",
+      "text": "≈ {0} Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 513,
+      "kind": "typescript",
+      "text": "{0} → {1} Gold"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 514,
+      "kind": "typescript",
+      "text": "Wisp ✓"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 514,
+      "kind": "typescript",
+      "text": "Wisp (Frost & Welle 5)"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 515,
+      "kind": "typescript",
+      "text": "Noch {0} Gold. Die Vorschau gilt bei unveränderter Verteidigung; während einer Pause entsteht kein Ertrag."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 516,
+      "kind": "typescript",
+      "text": "Vorschau bei unveränderter Verteidigung. Während einer Pause entsteht kein Offline-Ertrag."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 526,
+      "kind": "typescript",
+      "text": "Dein früherer Lichtungskauf zählt beim späteren Öffnen der Ostfront mit 900 Gold. Diese Gutschrift ist für den Zugang reserviert."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 530,
+      "kind": "typescript",
+      "text": "Sicheres Farmen · Welle {0}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 538,
+      "kind": "typescript",
+      "text": "Welle {0} geschafft · +{1} Gold Abschlussbonus."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 539,
+      "kind": "typescript",
+      "text": "Gegner besiegt · +{0} Gold."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 541,
+      "kind": "typescript",
+      "text": "{0} besiegt! +{1} Gold Erstprämie."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 541,
+      "kind": "typescript",
+      "text": "Rosenspiegel erneut besiegt. Gewöhnliche Kampfbelohnungen erhalten."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 546,
+      "kind": "typescript",
+      "text": "Wisp ist da! +10 % Kampf-Gold und die Steinschleuder sind jetzt verfügbar."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 555,
+      "kind": "typescript",
+      "text": "Vorratslager gebaut! Künftig 26 % Offline-Ertrag für bis zu 8 Stunden."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 557,
+      "kind": "typescript",
+      "text": "Turm verkauft · +{0} Gold. Die sichere Farmbasis wird neu geprüft."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 558,
+      "kind": "typescript",
+      "text": "Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 579,
+      "kind": "typescript",
+      "text": "♥ {0}: 40 % langsamer · {1} s"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 581,
+      "kind": "typescript",
+      "text": "Frost aktiv · 45 % langsamer · {0} s"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 582,
+      "kind": "typescript",
+      "text": "Boss und Begleiter besiegen · {0} Gold Erstprämie"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 913,
+      "kind": "typescript",
+      "text": "Gespeicherte Verteidigung geladen. Gold, Türme und laufender Kampf sind wieder da."
+    },
+    {
+      "file": "src/main.ts",
+      "line": 964,
+      "kind": "typescript",
+      "text": "calc(100% + 6px)"
+    },
+    {
+      "file": "src/main.ts",
+      "line": 1003,
+      "kind": "typescript",
+      "text": "Spiel bereits in einem anderen Tab aktiv. Dieser Tab führt keinen Kampf aus und vergibt kein Gold. Du kannst ihn erneut aktivieren, wenn der andere Tab nicht mehr aktiv ist."
+    },
+    {
+      "file": "src/offline-welcome.ts",
+      "line": 3,
+      "kind": "typescript",
+      "text": "Da bist du ja! Ich habe auf dein Gold aufgepasst. Nachgezählt habe ich es nur dreimal. Na gut, viermal."
+    },
+    {
+      "file": "src/offline.ts",
+      "line": 39,
+      "kind": "typescript",
+      "text": "Offline time must be a non-negative safe integer."
+    },
+    {
+      "file": "src/offline.ts",
+      "line": 120,
+      "kind": "typescript",
+      "text": "Invalid offline state."
+    },
+    {
+      "file": "src/offline.ts",
+      "line": 125,
+      "kind": "typescript",
+      "text": "Invalid farm certificate."
+    },
+    {
+      "file": "src/offline.ts",
+      "line": 142,
+      "kind": "typescript",
+      "text": "Invalid offline policy."
+    },
+    {
+      "file": "src/offline.ts",
+      "line": 174,
+      "kind": "typescript",
+      "text": "Offline reward exceeds the safe currency range."
+    },
+    {
+      "file": "src/offline.ts",
+      "line": 197,
+      "kind": "typescript",
+      "text": "Pending reward exceeds the safe currency range."
+    },
+    {
+      "file": "src/offline.ts",
+      "line": 222,
+      "kind": "typescript",
+      "text": "Claim the pending offline receipt before resuming active play."
+    },
+    {
+      "file": "src/onboarding-ui.ts",
+      "line": 46,
+      "kind": "typescript",
+      "text": "Jeder besiegte Käfer bringt Gold. Nach dem ersten Treffer zeige ich dir das Upgrade."
+    },
+    {
+      "file": "src/onboarding-ui.ts",
+      "line": 48,
+      "kind": "typescript",
+      "text": "Die Welle wartet. Öffne den markierten Turm und verbessere ihn einmal für 60 Gold auf Level 2."
+    },
+    {
+      "file": "src/onboarding-ui.ts",
+      "line": 49,
+      "kind": "typescript",
+      "text": "Öffne die Werkstatt. Dort erforschst du die Frostfassung für 60 Gold und schaltest deinen Frostkristall frei."
+    },
+    {
+      "file": "src/onboarding-ui.ts",
+      "line": 53,
+      "kind": "typescript",
+      "text": "Dein erster Frostkristall ist kostenlos. Jeder weitere kostet 110 Gold."
+    },
+    {
+      "file": "src/onboarding-ui.ts",
+      "line": 54,
+      "kind": "typescript",
+      "text": "Tippe auf das neue Gebäude auf der Karte. Dort erforschst du die Frostfassung für 60 Gold."
+    },
+    {
+      "file": "src/onboarding-ui.ts",
+      "line": 73,
+      "kind": "typescript",
+      "text": "Waldwächter platzieren · 75 Gold"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 29,
+      "kind": "typescript",
+      "text": "Noch {0} Gold"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 41,
+      "kind": "typescript",
+      "text": "Wisp ist angekommen"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 41,
+      "kind": "typescript",
+      "text": "+10 % Kampf-Gold · arbeitet selbstständig"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 41,
+      "kind": "typescript",
+      "text": "Wisp kennenlernen"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 43,
+      "kind": "typescript",
+      "text": "Vorräte für deine Rückkehr"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 43,
+      "kind": "typescript",
+      "text": "{0} · optional: 2 → 8 Stunden sammeln"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 43,
+      "kind": "typescript",
+      "text": "Vorratslager ansehen"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 44,
+      "kind": "typescript",
+      "text": "Vorratslager freischalten · längere Offline-Erträge"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 48,
+      "kind": "typescript",
+      "text": "Welle 15 · 750 Gold Erstprämie · Frost verlangsamt"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 50,
+      "kind": "typescript",
+      "text": "8 Sekunden · +50 % Feuerrate · Automatik wartet auf Gegner"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 52,
+      "kind": "typescript",
+      "text": "Welle 25 · 1.200 Gold Erstprämie"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 57,
+      "kind": "typescript",
+      "text": "Sicher farmen oder Welle {0} versuchen"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 62,
+      "kind": "typescript",
+      "text": "Sicher farmen oder Welle {0} versuchen"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 89,
+      "kind": "typescript",
+      "text": "Ertrag wird ermittelt"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 91,
+      "kind": "typescript",
+      "text": "Laufender Goldzufluss aus Kampfbelohnungen. {0} aktive Sekunden gemessen. Details öffnen."
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 107,
+      "kind": "typescript",
+      "text": "{0} von {1} Gold"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 113,
+      "kind": "typescript",
+      "text": "Freie Bewegung · {0} · besonders wirksam gegen Flieger. Kein garantierter Offline-Bonus."
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 114,
+      "kind": "typescript",
+      "text": "Auftrag: {0} versorgen · +10 % Kampf-Gold. Bereits in Live-Ertrag und Farmbasis enthalten."
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 114,
+      "kind": "typescript",
+      "text": "Werkstatt und Lager"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 133,
+      "kind": "typescript",
+      "text": "Durchschnitt der letzten {0} aktiven Sekunden. Käufe, Verkäufe und Offline-Gutschriften zählen nicht dazu. Nach Neuladen beginnt die Messung neu."
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 134,
+      "kind": "typescript",
+      "text": "Bereits gemeisterte Wellen geben 10 % des normalen Goldes. Neue Wellen und einmalige Bossprämien behalten ihren vollen Ertrag."
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 137,
+      "kind": "typescript",
+      "text": "{0} % der sicheren Farmbasis · höchstens {1} Stunden. {2}"
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 137,
+      "kind": "typescript",
+      "text": "Bei unveränderter Verteidigung etwa {0} Gold in einer Stunde."
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 141,
+      "kind": "typescript",
+      "text": "Welle {0} nicht geschafft. Jetzt Farmen auf Welle {1}. Gold, Türme und Forschung bleiben erhalten."
+    },
+    {
+      "file": "src/progress-ui.ts",
+      "line": 142,
+      "kind": "typescript",
+      "text": "Letzte Niederlage: Welle {0}. Gold und Ausbau blieben erhalten."
+    },
+    {
+      "file": "src/quick-win-guidance.ts",
+      "line": 100,
+      "kind": "typescript",
+      "text": "Ausbau: {0} Gold · noch {1} Gold."
+    },
+    {
+      "file": "src/quick-win-guidance.ts",
+      "line": 100,
+      "kind": "typescript",
+      "text": "Ausbau: {0} Gold · bereit."
+    },
+    {
+      "file": "src/reward-display.ts",
+      "line": 14,
+      "kind": "typescript",
+      "text": "Weniger als 1 Gold"
+    },
+    {
+      "file": "src/reward-display.ts",
+      "line": 15,
+      "kind": "typescript",
+      "text": "≈ +{0} Gold"
+    },
+    {
+      "file": "src/reward-display.ts",
+      "line": 16,
+      "kind": "typescript",
+      "text": "+{0} Gold"
+    },
+    {
+      "file": "src/reward-display.ts",
+      "line": 17,
+      "kind": "typescript",
+      "text": "+{0} Gold"
+    },
+    {
+      "file": "src/save-store.ts",
+      "line": 67,
+      "kind": "typescript",
+      "text": "The offline state requires a newer game version."
+    },
+    {
+      "file": "src/save-store.ts",
+      "line": 72,
+      "kind": "typescript",
+      "text": "The offline production proof requires a newer game version."
+    },
+    {
+      "file": "src/save-store.ts",
+      "line": 84,
+      "kind": "typescript",
+      "text": "The saved offline state is invalid."
+    },
+    {
+      "file": "src/save-store.ts",
+      "line": 118,
+      "kind": "typescript",
+      "text": "The supplied writer lease no longer exists."
+    },
+    {
+      "file": "src/tavern-ilyra-content.ts",
+      "line": 37,
+      "kind": "typescript",
+      "text": "Heute habe ich Wisp gefragt, wie lange er hierbleibt. Er sagte: Solange es sich lohnt. Ich glaube, bei ihm bedeutete das etwas anderes als bei mir."
+    },
+    {
+      "file": "src/tavern-mara-content.ts",
+      "line": 36,
+      "kind": "typescript",
+      "text": "Heute habe ich Wisp erklärt, warum man Schrauben sortiert. Er hat mir erklärt, warum Gold schöner glänzt. Unentschieden."
+    },
+    {
+      "file": "src/tavern-rig-preview.ts",
+      "line": 258,
+      "kind": "typescript",
+      "text": "Gut, der war nicht schlecht. Erzähl ihn bloß nicht Wisp – sonst muss ich ihn morgen wieder hören."
+    },
+    {
+      "file": "src/tavern-ui.ts",
+      "line": 57,
+      "kind": "typescript",
+      "text": "`\r\n      <header class=\"tv-header\"><button type=\"button\" data-do=\"back\" class=\"tv-back\" aria-label=\"Zurück zur Tavernenübersicht\">‹</button><div><small>DER ALTE HAIN</small><h2 id=\"tv-title\">The Last Cozy Corner</h2></div><button type=\"button\" data-do=\"close\" class=\"tv-close\" aria-label=\"Taverne schließen\">×</button></header>\r\n      <div class=\"tv-combat\"><span data-text=\"combat\"></span><button type=\"button\" data-do=\"close\">Zum Kampf</button></div>\r\n      <div class=\"tv-warning\" role=\"status\" hidden><span data-text=\"warning\"></span><button type=\"button\" data-do=\"close\">Zum Kampf</button><button type=\"button\" data-do=\"dismiss\" aria-label=\"Kampfhinweis ausblenden\">×</button></div>\r\n      <div class=\"tv-error\" role=\"alert\" hidden></div>\r\n      <section class=\"tv-overview\">\r\n        <div class=\"tv-room\"><span>EIN MOMENT AM FEUER</span><h3>Unter Gefährten.</h3><p>Ein Gespräch. Ein kleines Geschenk.<br>Und Zeit, einander kennenzulernen.</p></div>\r\n        <div class=\"tv-guests\">\r\n          <button type=\"button\" class=\"tv-guest tv-mara\" data-do=\"mara\"><canvas width=\"136\" height=\"160\" aria-hidden=\"true\"></canvas><div><small>DEINE TÜFTLERIN</small><h3>Mara</h3><span data-text=\"mara-hearts\" class=\"tv-hearts\"></span><p class=\"tv-gift-badge\" data-text=\"mara-gift\"></p><p data-text=\"mara-greeting\">„Schön, dass du vorbeischaust.“</p><strong>Zeit mit Mara verbringen</strong></div></button>\r\n          <article class=\"tv-guest tv-ilyra\"><canvas width=\"136\" height=\"160\" aria-hidden=\"true\"></canvas><div><small>STERNENWÄCHTERIN</small><h3>Ilyra</h3><span data-text=\"ilyra-hearts\" class=\"tv-hearts\"></span><p class=\"tv-gift-badge\" data-text=\"ilyra-gift\"></p><p data-text=\"ilyra-lock\"></p><button type=\"button\" data-do=\"ilyra\" class=\"tv-small\">Rekrutierung ansehen</button></div></article>\r\n        </div>\r\n        <footer class=\"tv-overview-footer\"><button type=\"button\" data-do=\"wisp\">Wisp · Gefährtenverwaltung</button><button type=\"button\" data-do=\"building\">Gebäude & Ausbau</button></footer>\r\n      </section>\r\n      <section class=\"tv-character\" hidden>\r\n        <div class=\"tv-bond\"><div class=\"tv-bond-visual\"><div class=\"tv-heart-buttons\" role=\"group\" aria-label=\"Maras persönliche Momente\">${this.content.moments.map(moment => `<button type=\"button\" data-moment=\"${moment.heart}\"><svg viewBox=\"0 0 40 38\" aria-hidden=\"true\"><path class=\"tv-heart-shape\" d=\"M20 34C16 30 3 22 3 12C3 2 15 0 20 9C25 0 37 2 37 12C37 22 24 30 20 34Z\"/><path class=\"tv-heart-shine\" d=\"M8 13C7 8 12 5 16 10\"/></svg></button>`).join('')}</div><div class=\"tv-bond-track\" title=\"Ein Abschnitt pro Herz\"><progress max=\"160\" value=\"0\" aria-label=\"Maras Zuneigung\"></progress><span class=\"tv-bond-fill\" aria-hidden=\"true\"></span><span class=\"tv-bond-marks\" aria-hidden=\"true\"></span></div></div><div class=\"tv-bond-copy\"><span class=\"tv-heart-help\">Herzen antippen: persönliche Momente erleben.</span></div></div>\r\n        <div class=\"tv-character-body\">\r\n          <div class=\"tv-stage\"><div class=\"tv-figure\"><img class=\"tv-loading-portrait\" alt=\"\" aria-hidden=\"true\" hidden><canvas width=\"384\" height=\"512\" aria-label=\"Mara, animierte Charakteransicht\"></canvas>${Object.entries(this.content.reactions).map(([key, value]) => `<button type=\"button\" class=\"tv-hotspot\" data-region=\"${key}\" aria-label=\"${value.label} berühren\"><span aria-hidden=\"true\"></span><em>${value.label}</em></button>`).join('')}</div><span class=\"tv-load-status\" role=\"status\" hidden></span><span class=\"tv-stage-caption\">Mara · Tüftlerin des Hains</span></div>\r\n          <div class=\"tv-conversation\"><div class=\"tv-story-heading\" hidden><small data-text=\"story-step\"></small><h3 data-text=\"story-title\"></h3></div><div class=\"tv-dialogue\"><small>MARA</small><p data-text=\"line\">Da bist du ja. Setz dich einen Moment zu mir.</p></div><p class=\"tv-result\" data-text=\"result\" role=\"status\"></p><button type=\"button\" data-do=\"new-moment\" class=\"tv-unlock\" hidden><strong data-text=\"unlock-title\"></strong><span data-text=\"unlock-story\"></span></button><div class=\"tv-story-controls\" hidden><button type=\"button\" data-do=\"story-next\">Weiter</button><button type=\"button\" data-do=\"story-exit\">Zurück zu Mara</button></div><p class=\"tv-touch-help\" hidden></p><div class=\"tv-actions\"><button type=\"button\" data-do=\"speak\" aria-controls=\"tv-talk-options\" aria-expanded=\"false\"><span>Sprechen</span><small data-text=\"talk\"></small></button><button type=\"button\" data-do=\"touch\"><span>Berühren</span><small data-text=\"touch\"></small></button><button type=\"button\" data-action=\"gift\"><span>Schenken</span><small data-text=\"gift\"></small></button></div><div class=\"tv-gifts\"><p data-text=\"stock\"></p><p data-text=\"gift-hint\"></p><details><summary>Geschenke & Fortschritt</summary><p data-text=\"points\"></p><p class=\"tv-chapter\" data-text=\"chapter\"></p><p class=\"tv-moment-hint\" data-text=\"moment-hint\"></p><p class=\"tv-personal\" data-text=\"personal\"></p><p data-text=\"reserves\"></p><p>Normale Geschenke helfen bis 58 Zuneigung.</p><p>Alle 10 gewonnenen normalen Wellen gibt es ein Geschenk. Ab Herz 2 zählen 30 weitere Siege für ein persönliches Geschenk. Gespräche und freigeschaltete Berührungen bleiben immer möglich.</p><p data-text=\"renewal\"></p><button type=\"button\" class=\"tv-combat-link\" data-do=\"mara-combat\">Mara im Kampf verwalten</button></details></div></div>\r\n        </div>\r\n      </section>`"
+    },
+    {
+      "file": "src/tavern-ui.ts",
+      "line": 240,
+      "kind": "typescript",
+      "text": "🎁 {0} im Vorrat"
+    },
+    {
+      "file": "src/tavern-ui.ts",
+      "line": 256,
+      "kind": "typescript",
+      "text": "`${Math.max(0, Math.min(100, section * 20))}%`"
+    },
+    {
+      "file": "src/tavern-ui.ts",
+      "line": 318,
+      "kind": "typescript",
+      "text": "Aus deinem Vorrat"
+    },
+    {
+      "file": "src/tutorial-guide.ts",
+      "line": 10,
+      "kind": "typescript",
+      "text": "Begrüße Wisp."
+    },
+    {
+      "file": "src/tutorial-guide.ts",
+      "line": 14,
+      "kind": "typescript",
+      "text": "Optional: In der Siedlung ein Lager bauen oder „Später“ wählen."
+    },
+    {
+      "file": "src/tutorial-guide.ts",
+      "line": 29,
+      "kind": "typescript",
+      "text": "Spare {0} Gold für die Frostforschung."
+    },
+    {
+      "file": "src/tutorial-guide.ts",
+      "line": 136,
+      "kind": "typescript",
+      "text": ".onboarding-actions, .quick-win-actions, #meet-wisp"
+    },
+    {
+      "file": "index.html",
+      "line": 37,
+      "kind": "html-text",
+      "text": "Ertrag wird ermittelt"
+    },
+    {
+      "file": "index.html",
+      "line": 37,
+      "kind": "html-text",
+      "text": "Gold. Ertragsdetails öffnen"
+    },
+    {
+      "file": "index.html",
+      "line": 52,
+      "kind": "html-text",
+      "text": "Wisp · Neu im Hain"
+    },
+    {
+      "file": "index.html",
+      "line": 52,
+      "kind": "html-text",
+      "text": "Ich bin Wisp und kümmere mich um die Vorräte. Deine Kämpfe bringen ab jetzt 10 % mehr Gold. Das läuft automatisch."
+    },
+    {
+      "file": "index.html",
+      "line": 52,
+      "kind": "html-text",
+      "text": "Willkommen, Wisp!"
+    },
+    {
+      "file": "index.html",
+      "line": 65,
+      "kind": "html-text",
+      "text": "Waldwächter bauen · 75 Gold"
+    },
+    {
+      "file": "index.html",
+      "line": 65,
+      "kind": "html-text",
+      "text": "Frostkristall bauen · 110 Gold"
+    },
+    {
+      "file": "index.html",
+      "line": 65,
+      "kind": "html-text",
+      "text": "Steinschleuder bauen · 135 Gold"
+    },
+    {
+      "file": "index.html",
+      "line": 65,
+      "kind": "html-text",
+      "text": "Sturmlicht bauen · 170 Gold"
+    },
+    {
+      "file": "index.html",
+      "line": 65,
+      "kind": "html-text",
+      "text": "Scharfschütze bauen · 170 Gold"
+    },
+    {
+      "file": "index.html",
+      "line": 67,
+      "kind": "html-text",
+      "text": "Sturmlicht erforschen · 900 Gold"
+    },
+    {
+      "file": "index.html",
+      "line": 67,
+      "kind": "html-text",
+      "text": "Werkstatt II ausbauen · 1.200 Gold"
+    },
+    {
+      "file": "index.html",
+      "line": 68,
+      "kind": "html-text",
+      "text": "Wisp · Versorgung"
+    },
+    {
+      "file": "index.html",
+      "line": 68,
+      "kind": "html-text",
+      "text": "Wisp erledigt Werkstattgänge und erhöht Gegner- und Wellenbelohnungen dauerhaft um 10 %. Du musst nichts einsammeln oder zuweisen."
+    },
+    {
+      "file": "index.html",
+      "line": 68,
+      "kind": "html-text",
+      "text": "Der Bonus steckt bereits in der sicheren Farmbasis. Verkäufe erhalten keinen Bonus."
+    },
+    {
+      "file": "index.html",
+      "line": 78,
+      "kind": "html-text",
+      "text": "Wisp · Versorgung"
+    },
+    {
+      "file": "index.html",
+      "line": 81,
+      "kind": "html-text",
+      "text": "Taverne II ausbauen · 1.200 Gold"
+    },
+    {
+      "file": "index.html",
+      "line": 89,
+      "kind": "html-text",
+      "text": "Unterstützt den aktiven Kampf. Sichere Farmbasis und Offline-Ertrag rechnen ohne Sternensalve."
+    },
+    {
+      "file": "index.html",
+      "line": 92,
+      "kind": "html-text",
+      "text": "Vorratslager I"
+    },
+    {
+      "file": "index.html",
+      "line": 93,
+      "kind": "html-text",
+      "text": "Sichere Farmbasis"
+    },
+    {
+      "file": "index.html",
+      "line": 93,
+      "kind": "html-text",
+      "text": "Offline-Ertrag"
+    },
+    {
+      "file": "index.html",
+      "line": 93,
+      "kind": "html-text",
+      "text": "Nach einer Stunde"
+    },
+    {
+      "file": "index.html",
+      "line": 94,
+      "kind": "html-text",
+      "text": "Lager platzieren · 650 Gold"
+    },
+    {
+      "file": "index.html",
+      "line": 94,
+      "kind": "html-text",
+      "text": "Lager versetzen"
+    },
+    {
+      "file": "index.html",
+      "line": 99,
+      "kind": "html-text",
+      "text": "Mara zaubert über sechs Felder Entfernung: acht Sekunden lang 50 % mehr Feuerrate. Die Automatik wartet auf Gegner in Reichweite des Turms. Du kannst auch selbst auslösen."
+    },
+    {
+      "file": "index.html",
+      "line": 112,
+      "kind": "html-text",
+      "text": "Lager I"
+    },
+    {
+      "file": "index.html",
+      "line": 112,
+      "kind": "html-text",
+      "text": "Mehr Offline-Ertrag"
+    },
+    {
+      "file": "index.html",
+      "line": 114,
+      "kind": "html-text",
+      "text": "Wisp"
+    },
+    {
+      "file": "index.html",
+      "line": 122,
+      "kind": "html-text",
+      "text": "Abwesend"
+    },
+    {
+      "file": "index.html",
+      "line": 122,
+      "kind": "html-text",
+      "text": "Belohnung einsammeln und fortsetzen"
+    },
+    {
+      "file": "index.html",
+      "line": 126,
+      "kind": "html-text",
+      "text": "Sicheres Farmen"
+    },
+    {
+      "file": "index.html",
+      "line": 126,
+      "kind": "html-text",
+      "text": "Kampfgold seit Aufzeichnung"
+    },
+    {
+      "file": "index.html",
+      "line": 127,
+      "kind": "html-text",
+      "text": "Sie kündigt ihren Ziel-Turm an und senkt dessen Feuerrate 4,5 Sekunden lang um 40 %. Frost verlangsamt ihren Vormarsch, unterbricht aber nicht den Zauber. Steinschleudern treffen die Begleitgruppe; Scharfschützen durchdringen deren Rüstung. Erreicht der Boss den Kern, scheitert der Versuch."
+    },
+    {
+      "file": "index.html",
+      "line": 127,
+      "kind": "html-text",
+      "text": "Erstprämien: 750 Gold in Welle 15, 1.200 Gold in Welle 25; jeweils einmalig und ohne Wisp-Bonus. Spätere Siege geben 10 % des gewöhnlichen Gegner- und Wellen-Goldes. Bosswellen erzeugen keine Offline-Farmbasis."
+    },
+    {
+      "file": "index.html",
+      "line": 127,
+      "kind": "html-text",
+      "text": "Ab Welle 16 steigt das gewöhnliche Kampf-Gold: zunächst auf das Doppelte, danach pro Welle um 12 Prozentpunkte bis höchstens zum Vierfachen. So finanzierst du die höheren Turmlevel; Wisps Bonus kommt einmalig hinzu."
+    },
+    {
+      "file": "index.html",
+      "line": 129,
+      "kind": "html-text",
+      "text": "Dein Goldfluss"
+    },
+    {
+      "file": "index.html",
+      "line": 129,
+      "kind": "html-text",
+      "text": "Sichere Farmbasis"
+    },
+    {
+      "file": "index.html",
+      "line": 129,
+      "kind": "html-text",
+      "text": "Offline-Ertrag"
+    },
+    {
+      "file": "index.html",
+      "line": 129,
+      "kind": "html-text",
+      "text": "Wisp · Versorgung"
+    },
+    {
+      "file": "index.html",
+      "line": 130,
+      "kind": "html-text",
+      "text": "Die Laternenqualle heilt nach kurzem Aufleuchten bis zu zwei verwundete Begleiter um je 6 % ihrer maximalen Lebenspunkte. Frühestens alle 3 Sekunden; keine Heilung von Quallen oder Bossen."
+    },
+    {
+      "file": "index.html",
+      "line": 131,
+      "kind": "html-text",
+      "text": "Farmdurchläufe"
+    },
+    {
+      "file": "index.html",
+      "line": 43,
+      "kind": "aria-label",
+      "text": "Gold für das nächste Ziel"
+    },
+    {
+      "file": "index.html",
+      "line": 49,
+      "kind": "aria-label",
+      "text": "Gold für den nächsten Lernschritt"
+    },
+    {
+      "file": "index.html",
+      "line": 50,
+      "kind": "aria-label",
+      "text": "Gold für den nächsten Lernschritt"
+    },
+    {
+      "file": "index.html",
+      "line": 52,
+      "kind": "aria-label",
+      "text": "Wisp kommt an"
+    },
+    {
+      "file": "index.html",
+      "line": 106,
+      "kind": "aria-label",
+      "text": "Waldwächter platzieren · 75 Gold"
+    },
+    {
+      "file": "index.html",
+      "line": 114,
+      "kind": "aria-label",
+      "text": "Wisp ansehen"
+    }
+  ]
+}

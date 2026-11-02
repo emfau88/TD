@@ -134,14 +134,14 @@ test('schema 31 migration preserves earned values, claims, combat and partial gi
   for (const points of [0, 23, 34, 35, 58, 69, 70, 109, 110, 160]) {
     const b = veteran(true), oldSocial = createLegacy(); grantLegacy(oldSocial, b.socialAccess);
     oldSocial.points.mara = points; oldSocial.points.ilyra = points; oldSocial.window.clearProgress = 9;
-    const old = { ...b.snapshot(), schemaVersion: 31, social: oldSocial }, copy = structuredClone(old);
+    const old = { ...b.snapshot(), schemaVersion: 31, rulesVersion: 16, waveRecipeVersion: 16, social: oldSocial }, copy = structuredClone(old);
     const restored = IdleBattle.restore(old); assert.ok(restored); assert.deepEqual(old, copy);
     assert.deepEqual(restored.social.points, oldSocial.points); assert.equal(restored.social.gifts, oldSocial.gifts);
     assert.equal(restored.social.clearProgress, 9); assert.equal(restored.social.personal.mara.clears, 0);
     assert.equal(restored.social.personal.mara.claimed, points >= 70);
-    const { social, schemaVersion, ...combat } = restored.snapshot();
-    const { social: unused, schemaVersion: previous, ...oldCombat } = old;
-    assert.deepEqual(combat, oldCombat); assert.equal(schemaVersion, 32);
+    const { social, schemaVersion, rulesVersion, ...combat } = restored.snapshot();
+    const { social: unused, schemaVersion: previous, rulesVersion: oldRules, ...oldCombat } = old;
+    assert.deepEqual(combat, oldCombat); assert.equal(schemaVersion, 33); assert.equal(rulesVersion, 17);
     assert.deepEqual(IdleBattle.restore(restored.snapshot())!.snapshot(), restored.snapshot());
     if (points === 34) assert.equal(restored.interactCompanion('mara', 'gift').points, 1);
     if (points === 69) { clears(restored, 30); assert.equal(restored.interactCompanion('mara', 'gift').points, 1); }
@@ -153,7 +153,7 @@ test('legacy empty-stock Ilyra gets her welcome claim once; corrupt legacy budge
   const migrated = migrateSocial(old, b.socialAccess, b.attemptId)!; assert.equal(migrated.gifts, 1);
   b.social = migrated; assert.deepEqual(IdleBattle.restore(b.snapshot())!.social, migrated);
   old.window.used.mara.gift = 3;
-  assert.equal(IdleBattle.restore({ ...b.snapshot(), schemaVersion: 31, social: old }), undefined);
+  assert.equal(IdleBattle.restore({ ...b.snapshot(), schemaVersion: 31, rulesVersion: 16, waveRecipeVersion: 16, social: old }), undefined);
 });
 test('invalid current social states are rejected, never reset', () => {
   for (const corrupt of [

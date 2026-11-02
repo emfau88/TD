@@ -1,0 +1,92 @@
+{
+  "translatedEconomicMessages": 183,
+  "missing": [],
+  "policies": {
+    "OFFLINE": {
+      "unitsPerGold": 1000,
+      "efficiencyPermille": 240,
+      "limitMs": 7200000
+    },
+    "WAREHOUSE_OFFLINE": {
+      "efficiencyPermille": 260,
+      "limitMs": 28800000
+    },
+    "LEGACY_OFFLINE": {
+      "efficiencyPermille": 600,
+      "limitMs": 7200000
+    },
+    "LEGACY_WAREHOUSE_OFFLINE": {
+      "efficiencyPermille": 650,
+      "limitMs": 28800000
+    }
+  },
+  "sample": {
+    "full": 110,
+    "repeat": 11
+  },
+  "goldCurve": [
+    {
+      "wave": 16,
+      "base100New": 200,
+      "base100Repeat": 20
+    },
+    {
+      "wave": 20,
+      "base100New": 248,
+      "base100Repeat": 24.8
+    },
+    {
+      "wave": 21,
+      "base100New": 258,
+      "base100Repeat": 25.8
+    },
+    {
+      "wave": 25,
+      "base100New": 308,
+      "base100Repeat": 30.8
+    },
+    {
+      "wave": 33,
+      "base100New": 384,
+      "base100Repeat": 38.4
+    },
+    {
+      "wave": 40,
+      "base100New": 384,
+      "base100Repeat": 38.4
+    }
+  ],
+  "prices": {
+    "towers": [
+      75,
+      110,
+      135,
+      170,
+      170
+    ],
+    "firstUpgrade": 60,
+    "workshopCost": 200,
+    "researchCost": 60,
+    "warehouseCost": 650,
+    "tavernCost": 0,
+    "tavernUpgradeCost": 1200,
+    "clearingCost": 900,
+    "workshopUpgradeCost": 1200,
+    "slowFactor": 0.55,
+    "slowSeconds": 2
+  },
+  "rendered": [
+    {
+      "lang": "de",
+      "wisp": "Wisp · VersorgungWisp erledigt Werkstattgänge und erhöht Gegner- und Wellenbelohnungen dauerhaft um 10 %. Du musst nichts einsammeln oder zuweisen.Der Bonus steckt bereits in der sicheren Farmbasis. Verkäufe erhalten keinen Bonus.",
+      "boss": "Boss · RosenspiegelSie kündigt ihren Ziel-Turm an und senkt dessen Feuerrate 4,5 Sekunden lang um 40 %. Frost verlangsamt ihren Vormarsch, unterbricht aber nicht den Zauber. Steinschleudern treffen die Begleitgruppe; Scharfschützen durchdringen deren Rüstung. Erreicht der Boss den Kern, scheitert der Versuch.Erstprämien: 750 Gold in Welle 15, 1.200 Gold in Welle 25; jeweils einmalig und ohne Wisp-Bonus. Spätere Siege geben 10 % des gewöhnlichen Gegner- und Wellen-Goldes. Bosswellen erzeugen keine Offline-Farmbasis.Ab Welle 16 steigt das gewöhnliche Kampf-Gold: zunächst auf das Doppelte, danach pro Welle um 12 Prozentpunkte bis höchstens zum Vierfachen. So finanzierst du die höheren Turmlevel; Wisps Bonus kommt einmalig hinzu.Boss herausfordern · Welle 15Erste Begegnung wiederholen · Welle 15",
+      "towerCount": "Gegner auf dem WaldwegAlle vier Turmtypen treffen auch Flieger. Flieger folgen dem Waldweg; sie überspringen deine Verteidigung nicht.Gegnertypen und GegenmittelDie Laternenqualle heilt nach kurzem Aufleuchten bis zu zwei verwundete Begleiter um je 6 % ihrer maximalen Lebenspunkte. Frühestens alle 3 Sekunden; keine Heilung von Quallen oder Bossen."
+    },
+    {
+      "lang": "en",
+      "wisp": "Wisp · SuppliesWisp runs workshop errands and permanently increases enemy and wave rewards by 10%. You don't need to collect anything or assign tasks.The bonus is already included in your certified farm income. Selling gives no bonus.",
+      "boss": "Boss · RosemirrorShe marks her target tower and reduces its fire rate by 40% for 4.5 seconds. Frost slows her advance but does not interrupt the spell. Stone Slingers hit her escorts; Sharpshooters pierce their armor. If the boss reaches the core, the attempt fails.First victories: 750 gold on wave 15 and 1,200 gold on wave 25; each paid once, without Wisp's bonus. Later victories grant 10% of regular enemy and wave gold. Boss waves cannot certify offline farming.Regular battle gold increases from wave 16: initially doubled, then rising by 12 percentage points per wave up to four times the base amount. This funds higher tower levels; Wisp's bonus applies once on top.Challenge boss · Wave 15Replay first encounter · Wave 15",
+      "towerCount": "Enemies on the forest pathAll tower types also hit flying enemies. Flyers follow the forest path; they don't bypass your defenses.Enemy types and countersAfter a brief glow, the Lantern Jelly heals up to two wounded allies for 6% of their maximum health each. At least 3 seconds between heals; it cannot heal jellies or bosses."
+    }
+  ]
+}

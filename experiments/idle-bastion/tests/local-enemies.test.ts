@@ -8,11 +8,11 @@ import { waveRecipe, clearReward, spawnGap } from '../src/wave-recipes';
 import { healthMultiplier, battleReward } from '../src/balance';
 import { ENEMY_SHEETS, enemyFrame, enemyFlip } from '../src/enemy-art';
 import { certifyFarm, isFarmCertificateValid } from '../src/farming';
-import { createOfflineState, beginAbsence, reserveOffline, claimOffline, restoreOffline } from '../src/offline';
+import { LEGACY_OFFLINE, createOfflineState, beginAbsence, reserveOffline, claimOffline, restoreOffline } from '../src/offline';
 const read=(file:string)=>JSON.parse(readFileSync(new URL('../../../artifacts/idle-bastion/acceptance/'+file,import.meta.url),'utf8'));
 const seed=read('wave-rework-v2/earned-balanced-late.json');
 const added=['MossShroom','WoodSpider','HornedBat','EmberBomb'] as const;
-function encounter(wave:number,version:12|13|14|15|16=BATTLE_RULES_VERSION){
+function encounter(wave:number,version:12|13|14|15|16|17=BATTLE_RULES_VERSION){
  const prep=IdleBattle.restore(seed)!.snapshot();prep.highestCleared=wave-1;prep.wave=wave-1;prep.phase='intermission';prep.mode='advance';prep.advanceRequested=false;prep.queue=[];prep.enemies=[];prep.shots=[];prep.intermissionRemaining=0;prep.spawnTimer=0;prep.lives=BASE.coreLives;prep.liveClearedWaves=prep.liveClearedWaves.filter(w=>w<wave);prep.farmWave=1;
  const b=IdleBattle.restore(prep)!;assert.ok(b);b.update(.025);
  const s=b.snapshot();s.waveRecipeVersion=version;s.enemies=[];s.shots=[];s.spawnTimer=.15;
@@ -98,7 +98,7 @@ test('every new species survives live save/reload deterministically; new farm pr
 test('both historical and current offline receipts keep their exact amounts and one-claim boundary',()=>{
  for(const version of [12,13,14]){
   const proof={wave:29,rulesVersion:version,fingerprint:'departure',rewardGold:100,rewardRemainderUnits:250,durationMs:10000};
-  const offline=reserveOffline(beginAbsence(createOfflineState(1000),1000,proof,false),31000);
+  const offline=reserveOffline(beginAbsence(createOfflineState(1000),1000,proof,false,LEGACY_OFFLINE),31000);
   assert.ok(restoreOffline(offline));const receipt=offline.pendingReward!.id,claimed=claimOffline(offline,receipt);assert.equal(claimed.amountUnits,180450);assert.equal(claimOffline(claimed.state,receipt).amountUnits,0);
  }
 });

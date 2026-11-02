@@ -1,0 +1,33 @@
+[
+  {
+    "kind": "current",
+    "lang": "de",
+    "width": 1440,
+    "expectedGold": 31961.248,
+    "shown": "DEINE SIEDLUNG\nWillkommen zurück\nMara\n\nDa bist du ja! Ich habe auf dein Gold aufgepasst. Nachgezählt habe ich es nur dreimal. Na gut, viermal.\n\n+31 961 Gold\nGenauer Betrag\n\nDeine Vorräte sind voll. Die Sammelzeit wurde ausgeschöpft.\n\nAbwesend\n24 Std. 0 Min.\nAngerechnet\n8 Std. 0 Min.\n\nFarmbasis beim Verlassen: 256,1 G/min · 26 % Ertrag · bis zu 8 Stunden. Zeit bis zum Einsammeln zählt mit.\n\nBelohnung einsammeln und fortsetzen",
+    "rateNote": "Nach 15 aktiven Sekunden erscheint eine erste Schätzung. Nach 60 Sekunden ist das Messfenster vollständig. Bereits gemeisterte Wellen geben 10 % des normalen Goldes. Neue Wellen und einmalige Bossprämien behalten ihren vollen Ertrag.",
+    "offlineNote": "26 % der sicheren Farmbasis · höchstens 8 Stunden. Bei unveränderter Verteidigung etwa 0 Gold in einer Stunde.",
+    "continuedSeconds": 2.5749999999999886,
+    "errors": []
+  },
+  {
+    "kind": "legacy",
+    "lang": "en",
+    "width": 390,
+    "expectedGold": 799031.221,
+    "shown": "YOUR SETTLEMENT\nWelcome back\nMara\n\nThere you are! I've been guarding your gold. I only counted it three times. All right, four.\n\n+799 031 gold\nExact amount\n\nYour supplies are full. The collection time limit was reached.\n\nTime away\n24 hr 0 min\nTime credited\n8 hr 0 min\n\nFarm income on departure: 2,561 G/min · 65% efficiency · Up to 8 hours. Time until collection is included.\n\nCollect reward and continue",
+    "rateNote": "An initial estimate appears after 15 active seconds. The measurement window is complete after 60 seconds. Previously cleared waves award 10% of normal gold. New waves and one-time boss bonuses keep their full rewards.",
+    "offlineNote": "26% of certified farm income · Up to 8 hours. With unchanged defenses, about 0 gold in one hour.",
+    "continuedSeconds": 2.5499999999999545,
+    "errors": []
+  },
+  {
+    "kind": "fresh",
+    "lang": "en",
+    "width": 390,
+    "starterBuild": true,
+    "firstWave": true,
+    "paidUpgrade": true,
+    "errors": []
+  }
+]

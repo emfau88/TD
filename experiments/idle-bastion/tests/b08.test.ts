@@ -30,7 +30,7 @@ test('Wisp and weapons unlock at permanent milestones while the free grid stays 
   const bad = b.snapshot(); bad.highestCleared = 4;
   assert.equal(IdleBattle.restore(bad), undefined);
 });
-test('cannon splash pays each kill once, carries tenths, and does not boost sale or offline credit', () => {
+test('cannon splash pays repeated-wave kills once, carries hundredths, and does not boost sale or offline credit', () => {
   const b = unlocked(), cannon = b.build('tower-02', 3)!;
   const first = b.enemies[0];
   b.enemies = [0, 1, 2].map(i => ({ ...first, uid: 40 + i, x: first.x + i * 8, hp: 28, maxHp: 28 }));
@@ -38,11 +38,11 @@ test('cannon splash pays each kill once, carries tenths, and does not boost sale
   const wallet = b.gold;
   b.update(BASE.stepSeconds);
   assert.equal(b.kills, 3); assert.equal(cannon.kills, 3);
-  assert.equal(b.gold - wallet, 26); assert.equal(b.goldRemainderUnits, 400);
-  assert.equal(b.progress.battleGold, 26); assert.equal(b.rewardRemainderUnits, 400);
+  assert.equal(b.gold - wallet, 2); assert.equal(b.goldRemainderUnits, 640);
+  assert.equal(b.progress.battleGold, 2); assert.equal(b.rewardRemainderUnits, 640);
   const earned = b.progress.battleGold;
-  b.creditOfflineUnits(1000); assert.equal(b.gold, wallet + 27);
-  b.sell(cannon.uid); assert.equal(b.gold, wallet + 27 + Math.round(135 * 0.7));
+  b.creditOfflineUnits(1000); assert.equal(b.gold, wallet + 3);
+  b.sell(cannon.uid); assert.equal(b.gold, wallet + 3 + Math.round(135 * 0.7));
   assert.equal(b.progress.battleGold, earned);
 });
 test('sniper prioritizes armor and its projectile ignores mitigation', () => {
@@ -78,10 +78,10 @@ test('Wisp adds precisely ten percent to farm production and offline uses that r
   const withWisp = certifyFarm(b)!; assert.ok(withWisp);
   assert.notEqual(defenseFingerprint(b), base.fingerprint);
   assert.equal(withWisp.durationMs, base.durationMs);
-  assert.equal(farmRewardGold(withWisp), farmRewardGold(base) * 1.1);
+  assert.equal(farmRewardUnits(withWisp) * 10n, farmRewardUnits(base) * 11n);
   const pending = reserveOffline(beginAbsence(createOfflineState(0), 0, withWisp, false), 60000);
   assert.ok(restoreOffline(pending));
-  const amount = Number(farmRewardUnits(withWisp) * 600n * 60000n / (BigInt(withWisp.durationMs) * 1000n));
+  const amount = Number(farmRewardUnits(withWisp) * 240n * 60000n / (BigInt(withWisp.durationMs) * 1000n));
   assert.equal(pending.pendingReward!.amountUnits, amount);
   const claimed = claimOffline(pending, pending.pendingReward!.id), wallet = b.gold * 1000 + b.goldRemainderUnits;
   b.creditOfflineUnits(claimed.amountUnits);

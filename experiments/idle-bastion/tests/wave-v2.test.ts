@@ -8,7 +8,7 @@ import { healthMultiplier, battleReward } from '../src/balance';
 import { ENEMIES, isHealer } from '../src/enemy-roster';
 import { waveRecipe, spawnGap, clearReward } from '../src/wave-recipes';
 import { certifyFarm, isFarmCertificateValid } from '../src/farming';
-import { beginAbsence, reserveOffline, createOfflineState } from '../src/offline';
+import { LEGACY_OFFLINE, beginAbsence, reserveOffline, createOfflineState } from '../src/offline';
 import { openBattleStore } from '../src/save-store';
 import { BattleSession } from '../src/battle-session';
 import { stepIlyraMotion } from '../src/ilyra';
@@ -95,7 +95,7 @@ test('old farm evidence cannot certify new waves; historical offline receipts re
   const before=earned.snapshot(),fresh=certifyFarm(earned,previous);assert.ok(fresh&&fresh.wave>1);
   assert.equal(fresh.rulesVersion,BATTLE_RULES_VERSION);assert.equal(isFarmCertificateValid(fresh,earned),true);assert.deepEqual(earned.snapshot(),before);
   const factory=new IDBFactory(),name='w02-schema25';let store=await openBattleStore(factory,name,()=>31000);store.close();
-  const offline=reserveOffline(beginAbsence(createOfflineState(1000),1000,legacyProof,false),31000);
+  const offline=reserveOffline(beginAbsence(createOfflineState(1000),1000,legacyProof,false,LEGACY_OFFLINE),31000);
   await new Promise<void>((resolve,reject)=>{const r=factory.open(name,1);r.onerror=()=>reject(r.error);r.onsuccess=()=>{
     const db=r.result,tx=db.transaction('saves','readwrite');tx.objectStore('saves').put({schemaVersion:2,revision:1,writtenAt:31000,paused:false,battle:first,offline},'default');
     tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>reject(tx.error);

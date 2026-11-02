@@ -1,7 +1,7 @@
 import { createSocial as createLegacySocial, grantMilestoneGifts as grantLegacyMilestoneGifts, validSocial as validLegacySocial } from './tavern-social-legacy';
 import { createSocial, grantMilestoneGifts, migrateSocial, recordSocialClear, interact, interactionOffer, validSocial, type SocialState, type SocialAccess, type Companion, type Interaction, type InteractionResult, type InteractionChoice } from './tavern-social';
 import { ILYRA, createIlyra, cloneIlyra, moveIlyra, stepIlyraMotion, validIlyra, ilyraCell, type IlyraState } from './ilyra';
-import { BALANCE, healthMultiplier, battleReward } from './balance';
+import { BALANCE, healthMultiplier, battleRewardUnits } from './balance';
 import { waveRecipe, spawnGap, clearReward } from './wave-recipes';
 import { ENEMIES, regularEnemy, enemyId, isHealer, JELLY_HEAL, type EnemyDef } from './enemy-roster';
 export type { EnemyDef } from './enemy-roster';
@@ -46,8 +46,8 @@ export const SNIPER = Object.freeze({ id: 4 as const, name: 'Scharfschütze', co
 export const STORMLIGHT = Object.freeze({ id: 5 as const, name: 'Sturmlicht', cost: 170, damage: 26, range: 144, cooldown: 1.05, color: 0x9edfea });
 export const STORM_CHAIN = Object.freeze({ targets: 3, range: 80, decay: 0.65, researchCost: 900, wave: 28 });
 export const SPLASH_RADIUS = 52;
-export const BATTLE_RULES_VERSION = 16 as const;
-export const BATTLE_SCHEMA_VERSION = 32 as const;
+export const BATTLE_RULES_VERSION = 17 as const;
+export const BATTLE_SCHEMA_VERSION = 33 as const;
 export const LIVE_CANDIDATE_LIMIT = 32;
 /** Reserved boss milestones never contribute repeatable offline production. */
 export const isNormalFarmWave = (wave: number): boolean => Number.isSafeInteger(wave) && wave >= 1 && wave !== 15 && wave !== 25;
@@ -96,14 +96,14 @@ export interface BattleSnapshot {
   introduction: Introduction;
   ilyra: IlyraState | null;
   social: SocialState;
-  schemaVersion: 32; rulesVersion: 16; layoutVersion: 3 | 4 | 5;
+  schemaVersion: 33; rulesVersion: 17; layoutVersion: 3 | 4 | 5;
   /** Retained after sale; only this tower's base construction was free. */
   tutorialFrostUid: number | null;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32' | 'core40';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
   progress: ProgressRecord;
-  rewardRemainderUnits: number; waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
+  rewardRemainderUnits: number; waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
   goldRemainderUnits: number; mode: BattleMode; highestCleared: number; attemptId: number;
   liveClearedWaves: number[]; farmWave: number; advanceRequested: boolean;
   gold: number; lives: number; wave: number; phase: Phase; elapsed: number;
@@ -155,7 +155,7 @@ export class IdleBattle {
   gold: number = BASE.startGold;
   goldRemainderUnits = 0;
   rewardRemainderUnits = 0;
-  waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 = BATTLE_RULES_VERSION;
+  waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 = BATTLE_RULES_VERSION;
   plots: PlotPositions = structuredClone(DEFAULT_PLOTS);
   wispArrival = { at: null as number | null, met: false };
   clearing = { unlocked: false, openedAt: null as number | null };
@@ -550,7 +550,7 @@ export class IdleBattle {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 20, model.layout.version as 3 | 4 | 5)) return undefined;
       value = { ...value, schemaVersion: 21, ilyra: null };
     }
-    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23 || value.schemaVersion === 24 || value.schemaVersion === 25 || value.schemaVersion === 26 || value.schemaVersion === 27 || value.schemaVersion === 28 || value.schemaVersion === 29 || value.schemaVersion === 30 || value.schemaVersion === 31 || value.schemaVersion === 32)) {
+    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23 || value.schemaVersion === 24 || value.schemaVersion === 25 || value.schemaVersion === 26 || value.schemaVersion === 27 || value.schemaVersion === 28 || value.schemaVersion === 29 || value.schemaVersion === 30 || value.schemaVersion === 31 || value.schemaVersion === 32 || value.schemaVersion === 33)) {
       if (![3, 4, 5].includes(value.layoutVersion as number) || !validPlotPositions(value.plots, value.layoutVersion as number)) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion as 3 | 4 | 5));
     }
@@ -606,14 +606,20 @@ export class IdleBattle {
     }
     if (isRecord(value) && value.schemaVersion === 30) {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5, 15)) return undefined;
-      value = { ...value, schemaVersion: 31, rulesVersion: BATTLE_RULES_VERSION };
+      value = { ...value, schemaVersion: 31, rulesVersion: 16 };
     }
     if (isRecord(value) && value.schemaVersion === 31) {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5, 16, 31)) return undefined;
       const social = migrateSocial(value.social, { tavernBuilt: value.settlement.tavernBuilt,
         ilyraRecruited: value.ilyra !== null, boss15: value.bossVictories > 0, boss25: value.secondBossVictories > 0 }, value.attemptId);
       if (!social) return undefined;
-      value = { ...value, schemaVersion: BATTLE_SCHEMA_VERSION, social };
+      value = { ...value, schemaVersion: 32, social };
+    }
+    if (isRecord(value) && value.schemaVersion === 32) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5, 16, 32)) return undefined;
+      // Change only the current contract. Saved wave recipes, money, projectiles
+      // and clear evidence remain intact; fresh farm proofs use the new rules.
+      value = { ...value, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION };
     }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5)) return undefined;
     model.tutorialFrostUid = value.tutorialFrostUid;
@@ -1077,10 +1083,11 @@ export class IdleBattle {
     if (reward && !excludeBattleRate) this.progress.battleGold += amount;
   }
 
-  /** Fractional battle rewards and the shared wallet retain all tenths. Offline
+  /** Fractional battle rewards and the shared wallet retain all thousandths. Offline
    * receipts and sales bypass this method; certificates already include Wisp. */
   private creditBattleReward(base: number): number {
-    const units = battleReward(base, this.wave, this.waveRecipeVersion) * (this.wispUnlocked ? 1100 : 1000);
+    const units = battleRewardUnits(base, this.wave, this.waveRecipeVersion, this.wispUnlocked,
+      !this.guiding && this.wave <= this.highestCleared);
     const wallet = this.goldRemainderUnits + units, reward = this.rewardRemainderUnits + units;
     const gold = Math.floor(wallet / 1000), earned = Math.floor(reward / 1000);
     if (![this.gold + gold, this.earned + earned, this.progress.battleGold + earned].every(Number.isSafeInteger)) throw new Error('Invalid battle reward.');
@@ -1382,12 +1389,12 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  */
 function validSnapshot(
   value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
-  currentRules: 15 | 16 = BATTLE_RULES_VERSION, socialSchema: 31 | 32 = BATTLE_SCHEMA_VERSION,
+  currentRules: 15 | 16 | 17 = BATTLE_RULES_VERSION, socialSchema: 31 | 32 | 33 = BATTLE_SCHEMA_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
   if (!isRecord(value) || value.schemaVersion !== (legacy || (currentRules === 15 ? 30 : socialSchema)) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy === 28 ? 14 : legacy === 27 ? 13 : legacy === 26 ? 12 : legacy === 25 ? 11 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : currentRules)
     || value.layoutVersion !== layoutVersion || value.layoutId !== (layoutVersion === 5 ? 'core40' : layout.bounds.columns === 32 ? 'east32' : 'start28') || legacy > 0 && legacy < 20 && layoutVersion === 5) return false;
-  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy === 28 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] : legacy === 27 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] : legacy === 26 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12] : legacy === 25 ? [3, 4, 5, 6, 7, 8, 9, 10, 11] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ...(currentRules >= 16 ? [16] : [])]).includes(value.waveRecipeVersion as number))) return false;
+  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy === 28 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] : legacy === 27 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] : legacy === 26 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12] : legacy === 25 ? [3, 4, 5, 6, 7, 8, 9, 10, 11] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ...(currentRules >= 16 ? [16] : []), ...(currentRules >= 17 ? [17] : [])]).includes(value.waveRecipeVersion as number))) return false;
   if ((!legacy || legacy >= 9) && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
     || layoutVersion !== 5 && value.clearing.unlocked !== (layout.bounds.columns === 32)
     || (value.clearing.unlocked ? !integerIn(value.bossVictories, 1) || !numberIn(value.clearing.openedAt, 0, value.elapsed as number) : value.clearing.openedAt !== null))) return false;

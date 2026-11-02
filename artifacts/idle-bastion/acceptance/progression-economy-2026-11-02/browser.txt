@@ -1,0 +1,1 @@
+current 1440px: exact claim, reload, current hints, pause and continued combat passed

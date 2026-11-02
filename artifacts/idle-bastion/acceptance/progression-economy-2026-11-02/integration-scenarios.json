@@ -1,0 +1,4210 @@
+[
+  {
+    "scenario": "fresh",
+    "style": "relaxed",
+    "permille": 100,
+    "elapsed": 1799.925,
+    "initialRecord": 0,
+    "highest": 35,
+    "wave": 29,
+    "mode": "farm",
+    "firstLeak": {
+      "wave": 12,
+      "at": 237.15
+    },
+    "firstPressure": {
+      "wave": 12,
+      "at": 245.175
+    },
+    "firstLoss": {
+      "wave": 15,
+      "at": 438.375
+    },
+    "losses": 4,
+    "frontierAttempts": 39,
+    "pressureAttempts": 11,
+    "longestSafe": 11,
+    "frontierSafeBeforePressure": 11,
+    "farmSeconds": 234.5,
+    "activeSeconds": 1565.5,
+    "maxNoRecordSeconds": 543.275,
+    "earned": 28908.86,
+    "gold": 727.86,
+    "spent": 28256,
+    "levels": [
+      {
+        "pad": "cell-10-5",
+        "kind": 1,
+        "level": 11,
+        "spent": 7340
+      },
+      {
+        "pad": "tower-02",
+        "kind": 2,
+        "level": 4,
+        "spent": 446
+      },
+      {
+        "pad": "tower-04",
+        "kind": 1,
+        "level": 11,
+        "spent": 7415
+      },
+      {
+        "pad": "tower-06",
+        "kind": 4,
+        "level": 8,
+        "spent": 6206
+      },
+      {
+        "pad": "cell-9-7",
+        "kind": 3,
+        "level": 8,
+        "spent": 4939
+      }
+    ],
+    "farm": 29,
+    "farmPerMinute": 340.787,
+    "ilyra": null,
+    "storm": false,
+    "milestones": [
+      {
+        "seconds": 300,
+        "record": 12,
+        "wave": 13,
+        "mode": "advance",
+        "gold": 990.5,
+        "earned": 2068.5,
+        "spent": 1153,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 3,
+            "spent": 154
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 2,
+            "spent": 60
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 3,
+            "spent": 229
+          }
+        ]
+      },
+      {
+        "seconds": 600,
+        "record": 14,
+        "wave": 15,
+        "mode": "advance",
+        "gold": 1211.85,
+        "earned": 2627.85,
+        "spent": 1491,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 4,
+            "spent": 323
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 2,
+            "spent": 60
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 4,
+            "spent": 398
+          }
+        ]
+      },
+      {
+        "seconds": 900,
+        "record": 15,
+        "wave": 16,
+        "mode": "advance",
+        "gold": 889.14,
+        "earned": 3877.14,
+        "spent": 3063,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 5,
+            "spent": 627
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 5,
+            "spent": 702
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 4,
+            "spent": 826
+          }
+        ]
+      },
+      {
+        "seconds": 1200,
+        "record": 24,
+        "wave": 24,
+        "mode": "advance",
+        "gold": 768.44,
+        "earned": 12317.44,
+        "spent": 11624,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 9,
+            "spent": 3839
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 9,
+            "spent": 3914
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 5,
+            "spent": 1515
+          }
+        ]
+      },
+      {
+        "seconds": 1500,
+        "record": 30,
+        "wave": 31,
+        "mode": "advance",
+        "gold": 1391.54,
+        "earned": 22065.54,
+        "spent": 20749,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 10,
+            "spent": 5348
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 10,
+            "spent": 5423
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 7,
+            "spent": 4242
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 7,
+            "spent": 3380
+          }
+        ]
+      }
+    ],
+    "recoveries": [
+      {
+        "wave": 15,
+        "lossAt": 438.375,
+        "gold": 1371.1,
+        "winAt": 889.125,
+        "duration": 450.75
+      },
+      {
+        "wave": 36,
+        "lossAt": 1778.75,
+        "gold": 656.14
+      }
+    ]
+  },
+  {
+    "scenario": "return",
+    "departure": 20,
+    "offline": 24886.331,
+    "rewards": [
+      {
+        "hours": 0.5,
+        "gold": 1555.395
+      },
+      {
+        "hours": 2,
+        "gold": 6221.582
+      },
+      {
+        "hours": 8,
+        "gold": 24886.331
+      },
+      {
+        "hours": 24,
+        "gold": 24886.331
+      }
+    ],
+    "style": "relaxed",
+    "permille": 100,
+    "elapsed": 1800,
+    "initialRecord": 20,
+    "highest": 43,
+    "wave": 44,
+    "mode": "advance",
+    "firstLeak": {
+      "wave": 39,
+      "at": 585.1
+    },
+    "firstPressure": {
+      "wave": 40,
+      "at": 624.625
+    },
+    "firstLoss": {
+      "wave": 44,
+      "at": 852.85
+    },
+    "losses": 2,
+    "frontierAttempts": 25,
+    "pressureAttempts": 6,
+    "longestSafe": 18,
+    "frontierSafeBeforePressure": 19,
+    "farmSeconds": 841.1,
+    "activeSeconds": 958.9,
+    "maxNoRecordSeconds": 1017.05,
+    "earned": 44607.98,
+    "gold": 543.111,
+    "spent": 70735,
+    "returnSpending": {
+      "spent": 26118,
+      "remaining": 552.131,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 12,
+          "spent": 9970
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 4,
+          "spent": 446
+        },
+        {
+          "pad": "tower-04",
+          "kind": 1,
+          "level": 12,
+          "spent": 10045
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 10,
+          "spent": 12219
+        }
+      ]
+    },
+    "levels": [
+      {
+        "pad": "cell-10-5",
+        "kind": 1,
+        "level": 14,
+        "spent": 18023
+      },
+      {
+        "pad": "tower-02",
+        "kind": 2,
+        "level": 4,
+        "spent": 446
+      },
+      {
+        "pad": "tower-04",
+        "kind": 1,
+        "level": 14,
+        "spent": 18098
+      },
+      {
+        "pad": "tower-06",
+        "kind": 4,
+        "level": 12,
+        "spent": 22696
+      },
+      {
+        "pad": "cell-9-7",
+        "kind": 3,
+        "level": 12,
+        "spent": 18034
+      }
+    ],
+    "farm": 29,
+    "farmPerMinute": 487.206,
+    "ilyra": null,
+    "storm": false,
+    "milestones": [
+      {
+        "seconds": 300,
+        "record": 30,
+        "wave": 31,
+        "mode": "advance",
+        "gold": 8485.031,
+        "earned": 14783.9,
+        "spent": 32969,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 13,
+            "spent": 13441
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 12,
+            "spent": 10045
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 10,
+            "spent": 12219
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 7,
+            "spent": 3380
+          }
+        ]
+      },
+      {
+        "seconds": 600,
+        "record": 39,
+        "wave": 40,
+        "mode": "advance",
+        "gold": 1645.731,
+        "earned": 30433.6,
+        "spent": 55458,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 13,
+            "spent": 13516
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          }
+        ]
+      },
+      {
+        "seconds": 900,
+        "record": 43,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 3866.241,
+        "earned": 37236.11,
+        "spent": 60040,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 14,
+            "spent": 18098
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          }
+        ]
+      },
+      {
+        "seconds": 1200,
+        "record": 43,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 1458.301,
+        "earned": 39562.17,
+        "spent": 64774,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 14,
+            "spent": 18098
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          }
+        ]
+      },
+      {
+        "seconds": 1500,
+        "record": 43,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 3886.991,
+        "earned": 41990.86,
+        "spent": 64774,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 14,
+            "spent": 18098
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          }
+        ]
+      },
+      {
+        "seconds": 1800,
+        "record": 43,
+        "wave": 44,
+        "mode": "advance",
+        "gold": 543.111,
+        "earned": 44607.98,
+        "spent": 70735,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 14,
+            "spent": 18098
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 12,
+            "spent": 22696
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          }
+        ]
+      }
+    ],
+    "recoveries": [
+      {
+        "wave": 44,
+        "lossAt": 852.85,
+        "gold": 3527.331
+      }
+    ]
+  },
+  {
+    "scenario": "return",
+    "departure": 30,
+    "offline": 37739.52,
+    "rewards": [
+      {
+        "hours": 0.5,
+        "gold": 2358.72
+      },
+      {
+        "hours": 2,
+        "gold": 9434.88
+      },
+      {
+        "hours": 8,
+        "gold": 37739.52
+      },
+      {
+        "hours": 24,
+        "gold": 37739.52
+      }
+    ],
+    "style": "relaxed",
+    "permille": 100,
+    "elapsed": 1800,
+    "initialRecord": 30,
+    "highest": 45,
+    "wave": 29,
+    "mode": "farm",
+    "firstLeak": {
+      "wave": 40,
+      "at": 306.575
+    },
+    "firstPressure": {
+      "wave": 40,
+      "at": 310.4
+    },
+    "firstLoss": {
+      "wave": 46,
+      "at": 614.95
+    },
+    "losses": 2,
+    "frontierAttempts": 17,
+    "pressureAttempts": 6,
+    "longestSafe": 9,
+    "frontierSafeBeforePressure": 9,
+    "farmSeconds": 1132.575,
+    "activeSeconds": 667.425,
+    "maxNoRecordSeconds": 1239.525,
+    "earned": 35394.26,
+    "gold": 6322.88,
+    "spent": 68997,
+    "returnSpending": {
+      "spent": 37040,
+      "remaining": 2885.62,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 13,
+          "spent": 13441
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 4,
+          "spent": 446
+        },
+        {
+          "pad": "tower-04",
+          "kind": 1,
+          "level": 13,
+          "spent": 13516
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 11,
+          "spent": 16735
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 11,
+          "spent": 13300
+        }
+      ]
+    },
+    "levels": [
+      {
+        "pad": "cell-10-5",
+        "kind": 1,
+        "level": 15,
+        "spent": 24072
+      },
+      {
+        "pad": "tower-02",
+        "kind": 2,
+        "level": 4,
+        "spent": 446
+      },
+      {
+        "pad": "tower-04",
+        "kind": 1,
+        "level": 15,
+        "spent": 24147
+      },
+      {
+        "pad": "tower-06",
+        "kind": 4,
+        "level": 12,
+        "spent": 22696
+      },
+      {
+        "pad": "cell-9-7",
+        "kind": 3,
+        "level": 12,
+        "spent": 18034
+      }
+    ],
+    "farm": 29,
+    "farmPerMinute": 487.206,
+    "ilyra": null,
+    "storm": false,
+    "milestones": [
+      {
+        "seconds": 300,
+        "record": 39,
+        "wave": 40,
+        "mode": "advance",
+        "gold": 5899.02,
+        "earned": 16911.4,
+        "spent": 50938,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 14,
+            "spent": 18098
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          }
+        ]
+      },
+      {
+        "seconds": 600,
+        "record": 45,
+        "wave": 46,
+        "mode": "advance",
+        "gold": 2883.72,
+        "earned": 25906.1,
+        "spent": 62948,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 15,
+            "spent": 24072
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 14,
+            "spent": 18098
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 12,
+            "spent": 22696
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          }
+        ]
+      },
+      {
+        "seconds": 900,
+        "record": 45,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 5145.98,
+        "earned": 28168.36,
+        "spent": 62948,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 15,
+            "spent": 24072
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 14,
+            "spent": 18098
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 12,
+            "spent": 22696
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          }
+        ]
+      },
+      {
+        "seconds": 1200,
+        "record": 45,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 1450.98,
+        "earned": 30522.36,
+        "spent": 68997,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 15,
+            "spent": 24072
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 15,
+            "spent": 24147
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 12,
+            "spent": 22696
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          }
+        ]
+      },
+      {
+        "seconds": 1500,
+        "record": 45,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 3884.51,
+        "earned": 32955.89,
+        "spent": 68997,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 15,
+            "spent": 24072
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 15,
+            "spent": 24147
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 12,
+            "spent": 22696
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          }
+        ]
+      },
+      {
+        "seconds": 1800,
+        "record": 45,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 6322.88,
+        "earned": 35394.26,
+        "spent": 68997,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 15,
+            "spent": 24072
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 4,
+            "spent": 446
+          },
+          {
+            "pad": "tower-04",
+            "kind": 1,
+            "level": 15,
+            "spent": 24147
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 12,
+            "spent": 22696
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          }
+        ]
+      }
+    ],
+    "recoveries": [
+      {
+        "wave": 46,
+        "lossAt": 614.95,
+        "gold": 2883.72
+      }
+    ]
+  },
+  {
+    "scenario": "fresh",
+    "style": "mixed",
+    "permille": 100,
+    "elapsed": 3599.925,
+    "initialRecord": 0,
+    "highest": 41,
+    "wave": 42,
+    "mode": "advance",
+    "firstLeak": {
+      "wave": 29,
+      "at": 686.225
+    },
+    "firstPressure": {
+      "wave": 32,
+      "at": 811.8
+    },
+    "firstLoss": {
+      "wave": 40,
+      "at": 1201.025
+    },
+    "losses": 7,
+    "frontierAttempts": 48,
+    "pressureAttempts": 14,
+    "longestSafe": 28,
+    "frontierSafeBeforePressure": 31,
+    "farmSeconds": 1976.5,
+    "activeSeconds": 1623.5,
+    "maxNoRecordSeconds": 2368.375,
+    "earned": 54186.53,
+    "gold": 3059.53,
+    "spent": 51202,
+    "levels": [
+      {
+        "pad": "cell-10-5",
+        "kind": 1,
+        "level": 12,
+        "spent": 9970
+      },
+      {
+        "pad": "tower-02",
+        "kind": 2,
+        "level": 3,
+        "spent": 198
+      },
+      {
+        "pad": "cell-9-7",
+        "kind": 3,
+        "level": 10,
+        "spent": 9714
+      },
+      {
+        "pad": "tower-03",
+        "kind": 4,
+        "level": 9,
+        "spent": 8798
+      },
+      {
+        "pad": "tower-09",
+        "kind": 5,
+        "level": 9,
+        "spent": 8798
+      },
+      {
+        "pad": "tower-06",
+        "kind": 3,
+        "level": 10,
+        "spent": 9714
+      }
+    ],
+    "farm": 29,
+    "farmPerMinute": 452.527,
+    "ilyra": "done",
+    "storm": true,
+    "milestones": [
+      {
+        "seconds": 300,
+        "record": 15,
+        "wave": 16,
+        "mode": "advance",
+        "gold": 393.3,
+        "earned": 3894.3,
+        "spent": 3576,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 6,
+            "spent": 1174
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 4,
+            "spent": 668
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 4,
+            "spent": 826
+          }
+        ]
+      },
+      {
+        "seconds": 600,
+        "record": 26,
+        "wave": 27,
+        "mode": "advance",
+        "gold": 1307.9,
+        "earned": 16001.9,
+        "spent": 14769,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 9,
+            "spent": 3839
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 7,
+            "spent": 3380
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 7,
+            "spent": 4242
+          }
+        ]
+      },
+      {
+        "seconds": 900,
+        "record": 33,
+        "wave": 34,
+        "mode": "advance",
+        "gold": 1412,
+        "earned": 27696,
+        "spent": 26359,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 10,
+            "spent": 5348
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 8,
+            "spent": 4939
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 7,
+            "spent": 4242
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 7,
+            "spent": 4242
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 7,
+            "spent": 3380
+          }
+        ]
+      },
+      {
+        "seconds": 1200,
+        "record": 39,
+        "wave": 40,
+        "mode": "advance",
+        "gold": 574.8,
+        "earned": 34337.8,
+        "spent": 33838,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 11,
+            "spent": 7340
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 8,
+            "spent": 4939
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 8,
+            "spent": 4939
+          }
+        ]
+      },
+      {
+        "seconds": 1500,
+        "record": 39,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 555.76,
+        "earned": 36376.76,
+        "spent": 35896,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 11,
+            "spent": 7340
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 8,
+            "spent": 4939
+          }
+        ]
+      },
+      {
+        "seconds": 1800,
+        "record": 39,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 671.91,
+        "earned": 38550.91,
+        "spent": 37954,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 11,
+            "spent": 7340
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          }
+        ]
+      },
+      {
+        "seconds": 2100,
+        "record": 39,
+        "wave": 40,
+        "mode": "advance",
+        "gold": 349.76,
+        "earned": 40820.76,
+        "spent": 40546,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 11,
+            "spent": 7340
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          }
+        ]
+      },
+      {
+        "seconds": 2400,
+        "record": 39,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 2343.84,
+        "earned": 42814.84,
+        "spent": 40546,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 11,
+            "spent": 7340
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          }
+        ]
+      },
+      {
+        "seconds": 2700,
+        "record": 39,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 2001.89,
+        "earned": 45064.89,
+        "spent": 43138,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 11,
+            "spent": 7340
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          }
+        ]
+      },
+      {
+        "seconds": 3000,
+        "record": 39,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 1768.57,
+        "earned": 47461.57,
+        "spent": 45768,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 12,
+            "spent": 9970
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          }
+        ]
+      },
+      {
+        "seconds": 3300,
+        "record": 39,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 1516.01,
+        "earned": 49926.01,
+        "spent": 48485,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 12,
+            "spent": 9970
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 10,
+            "spent": 9714
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          }
+        ]
+      }
+    ],
+    "recoveries": [
+      {
+        "wave": 40,
+        "lossAt": 1201.025,
+        "gold": 574.8,
+        "winAt": 3519.275,
+        "duration": 2318.25
+      }
+    ]
+  },
+  {
+    "scenario": "return",
+    "departure": 20,
+    "offline": 31961.248,
+    "rewards": [
+      {
+        "hours": 0.5,
+        "gold": 1997.578
+      },
+      {
+        "hours": 2,
+        "gold": 7990.312
+      },
+      {
+        "hours": 8,
+        "gold": 31961.248
+      },
+      {
+        "hours": 24,
+        "gold": 31961.248
+      }
+    ],
+    "style": "mixed",
+    "permille": 100,
+    "elapsed": 1800,
+    "initialRecord": 20,
+    "highest": 45,
+    "wave": 46,
+    "mode": "advance",
+    "firstLeak": {
+      "wave": 40,
+      "at": 512.675
+    },
+    "firstPressure": {
+      "wave": 40,
+      "at": 530.45
+    },
+    "firstLoss": {
+      "wave": 44,
+      "at": 730.225
+    },
+    "losses": 3,
+    "frontierAttempts": 28,
+    "pressureAttempts": 7,
+    "longestSafe": 19,
+    "frontierSafeBeforePressure": 19,
+    "farmSeconds": 787.7,
+    "activeSeconds": 1012.3,
+    "maxNoRecordSeconds": 769.75,
+    "earned": 48035.91,
+    "gold": 557.058,
+    "spent": 80367,
+    "returnSpending": {
+      "spent": 30814,
+      "remaining": 2074.148,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 13,
+          "spent": 13441
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 10,
+          "spent": 9714
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 10,
+          "spent": 12219
+        }
+      ]
+    },
+    "levels": [
+      {
+        "pad": "cell-10-5",
+        "kind": 1,
+        "level": 14,
+        "spent": 18023
+      },
+      {
+        "pad": "tower-02",
+        "kind": 2,
+        "level": 3,
+        "spent": 198
+      },
+      {
+        "pad": "cell-9-7",
+        "kind": 3,
+        "level": 12,
+        "spent": 18034
+      },
+      {
+        "pad": "tower-03",
+        "kind": 4,
+        "level": 11,
+        "spent": 16735
+      },
+      {
+        "pad": "tower-06",
+        "kind": 3,
+        "level": 11,
+        "spent": 13300
+      },
+      {
+        "pad": "tower-09",
+        "kind": 5,
+        "level": 11,
+        "spent": 16735
+      }
+    ],
+    "farm": 29,
+    "farmPerMinute": 477.018,
+    "ilyra": "done",
+    "storm": true,
+    "milestones": [
+      {
+        "seconds": 300,
+        "record": 32,
+        "wave": 33,
+        "mode": "advance",
+        "gold": 4448.848,
+        "earned": 18543.7,
+        "spent": 46983,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 5,
+            "spent": 1215
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 1,
+            "spent": 170
+          }
+        ]
+      },
+      {
+        "seconds": 600,
+        "record": 41,
+        "wave": 42,
+        "mode": "advance",
+        "gold": 3046.348,
+        "earned": 34268.2,
+        "spent": 64110,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 10,
+            "spent": 9714
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 9,
+            "spent": 8798
+          }
+        ]
+      },
+      {
+        "seconds": 900,
+        "record": 43,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 906.298,
+        "earned": 39135.15,
+        "spent": 71117,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 10,
+            "spent": 12219
+          }
+        ]
+      },
+      {
+        "seconds": 1200,
+        "record": 43,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 3275.698,
+        "earned": 41504.55,
+        "spent": 71117,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 10,
+            "spent": 12219
+          }
+        ]
+      },
+      {
+        "seconds": 1500,
+        "record": 45,
+        "wave": 46,
+        "mode": "advance",
+        "gold": 3074.668,
+        "earned": 45819.52,
+        "spent": 75633,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 11,
+            "spent": 16735
+          }
+        ]
+      },
+      {
+        "seconds": 1800,
+        "record": 45,
+        "wave": 46,
+        "mode": "advance",
+        "gold": 557.058,
+        "earned": 48035.91,
+        "spent": 80367,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 11,
+            "spent": 16735
+          }
+        ]
+      }
+    ],
+    "recoveries": [
+      {
+        "wave": 44,
+        "lossAt": 730.225,
+        "gold": 3222.348,
+        "winAt": 1430.975,
+        "duration": 700.75
+      },
+      {
+        "wave": 46,
+        "lossAt": 1528.425,
+        "gold": 3074.668
+      }
+    ]
+  },
+  {
+    "scenario": "return",
+    "departure": 30,
+    "offline": 42123.095,
+    "rewards": [
+      {
+        "hours": 0.5,
+        "gold": 2632.693
+      },
+      {
+        "hours": 2,
+        "gold": 10530.773
+      },
+      {
+        "hours": 8,
+        "gold": 42123.095
+      },
+      {
+        "hours": 24,
+        "gold": 42123.095
+      }
+    ],
+    "style": "mixed",
+    "permille": 100,
+    "elapsed": 1800,
+    "initialRecord": 30,
+    "highest": 45,
+    "wave": 29,
+    "mode": "farm",
+    "firstLeak": {
+      "wave": 40,
+      "at": 285.3
+    },
+    "firstPressure": {
+      "wave": 40,
+      "at": 289.5
+    },
+    "firstLoss": {
+      "wave": 46,
+      "at": 581.3
+    },
+    "losses": 3,
+    "frontierAttempts": 18,
+    "pressureAttempts": 6,
+    "longestSafe": 9,
+    "frontierSafeBeforePressure": 9,
+    "farmSeconds": 1113.45,
+    "activeSeconds": 686.55,
+    "maxNoRecordSeconds": 1273.325,
+    "earned": 36326.84,
+    "gold": 2632.335,
+    "spent": 77478,
+    "returnSpending": {
+      "spent": 41263,
+      "remaining": 2520.495,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 13,
+          "spent": 13441
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 10,
+          "spent": 9714
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 10,
+          "spent": 12219
+        },
+        {
+          "pad": "tower-09",
+          "kind": 5,
+          "level": 10,
+          "spent": 12219
+        },
+        {
+          "pad": "tower-06",
+          "kind": 3,
+          "level": 10,
+          "spent": 9714
+        }
+      ]
+    },
+    "levels": [
+      {
+        "pad": "cell-10-5",
+        "kind": 1,
+        "level": 14,
+        "spent": 18023
+      },
+      {
+        "pad": "tower-02",
+        "kind": 2,
+        "level": 3,
+        "spent": 198
+      },
+      {
+        "pad": "cell-9-7",
+        "kind": 3,
+        "level": 12,
+        "spent": 18034
+      },
+      {
+        "pad": "tower-03",
+        "kind": 4,
+        "level": 12,
+        "spent": 22696
+      },
+      {
+        "pad": "tower-09",
+        "kind": 5,
+        "level": 11,
+        "spent": 16735
+      },
+      {
+        "pad": "tower-06",
+        "kind": 3,
+        "level": 12,
+        "spent": 18034
+      }
+    ],
+    "farm": 29,
+    "farmPerMinute": 477.018,
+    "ilyra": "done",
+    "storm": true,
+    "milestones": [
+      {
+        "seconds": 300,
+        "record": 40,
+        "wave": 40,
+        "mode": "advance",
+        "gold": 4203.595,
+        "earned": 17887.1,
+        "spent": 57467,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 13,
+            "spent": 13441
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          }
+        ]
+      },
+      {
+        "seconds": 600,
+        "record": 45,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 3606.415,
+        "earned": 26605.92,
+        "spent": 66783,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          }
+        ]
+      },
+      {
+        "seconds": 900,
+        "record": 45,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 1366.665,
+        "earned": 29100.17,
+        "spent": 71517,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          }
+        ]
+      },
+      {
+        "seconds": 1200,
+        "record": 45,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 3731.225,
+        "earned": 31464.73,
+        "spent": 71517,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          }
+        ]
+      },
+      {
+        "seconds": 1500,
+        "record": 45,
+        "wave": 46,
+        "mode": "advance",
+        "gold": 344.775,
+        "earned": 34039.28,
+        "spent": 77478,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 12,
+            "spent": 22696
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          }
+        ]
+      },
+      {
+        "seconds": 1800,
+        "record": 45,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 2632.335,
+        "earned": 36326.84,
+        "spent": 77478,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 14,
+            "spent": 18023
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 12,
+            "spent": 22696
+          },
+          {
+            "pad": "tower-09",
+            "kind": 5,
+            "level": 11,
+            "spent": 16735
+          },
+          {
+            "pad": "tower-06",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          }
+        ]
+      }
+    ],
+    "recoveries": [
+      {
+        "wave": 46,
+        "lossAt": 581.3,
+        "gold": 3510.495
+      }
+    ]
+  },
+  {
+    "scenario": "fresh",
+    "style": "tactical",
+    "permille": 100,
+    "elapsed": 3599.925,
+    "initialRecord": 0,
+    "highest": 43,
+    "wave": 44,
+    "mode": "advance",
+    "firstLeak": {
+      "wave": 32,
+      "at": 749.5
+    },
+    "firstPressure": {
+      "wave": 36,
+      "at": 900.475
+    },
+    "firstLoss": {
+      "wave": 40,
+      "at": 1115.65
+    },
+    "losses": 8,
+    "frontierAttempts": 51,
+    "pressureAttempts": 16,
+    "longestSafe": 31,
+    "frontierSafeBeforePressure": 35,
+    "farmSeconds": 1837.7,
+    "activeSeconds": 1762.3,
+    "maxNoRecordSeconds": 1648.425,
+    "earned": 58083.83,
+    "gold": 567.83,
+    "spent": 57591,
+    "levels": [
+      {
+        "pad": "cell-10-5",
+        "kind": 1,
+        "level": 12,
+        "spent": 9970
+      },
+      {
+        "pad": "tower-02",
+        "kind": 2,
+        "level": 3,
+        "spent": 198
+      },
+      {
+        "pad": "tower-09",
+        "kind": 3,
+        "level": 10,
+        "spent": 9714
+      },
+      {
+        "pad": "tower-03",
+        "kind": 4,
+        "level": 9,
+        "spent": 8798
+      },
+      {
+        "pad": "cell-14-7",
+        "kind": 2,
+        "level": 3,
+        "spent": 308
+      },
+      {
+        "pad": "cell-9-7",
+        "kind": 3,
+        "level": 9,
+        "spent": 6997
+      },
+      {
+        "pad": "tower-06",
+        "kind": 4,
+        "level": 9,
+        "spent": 8798
+      },
+      {
+        "pad": "cell-10-3",
+        "kind": 5,
+        "level": 9,
+        "spent": 8798
+      }
+    ],
+    "farm": 29,
+    "farmPerMinute": 489.667,
+    "ilyra": "done",
+    "storm": true,
+    "milestones": [
+      {
+        "seconds": 300,
+        "record": 15,
+        "wave": 16,
+        "mode": "advance",
+        "gold": 364.9,
+        "earned": 3790.9,
+        "spent": 3501,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 5,
+            "spent": 627
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 5,
+            "spent": 1215
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 3,
+            "spent": 443
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          }
+        ]
+      },
+      {
+        "seconds": 600,
+        "record": 26,
+        "wave": 27,
+        "mode": "advance",
+        "gold": 514.5,
+        "earned": 16503.5,
+        "spent": 16064,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 9,
+            "spent": 3839
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 7,
+            "spent": 3380
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 5,
+            "spent": 1515
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 6,
+            "spent": 2199
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 5,
+            "spent": 1515
+          }
+        ]
+      },
+      {
+        "seconds": 900,
+        "record": 35,
+        "wave": 36,
+        "mode": "advance",
+        "gold": 1427.2,
+        "earned": 30844.2,
+        "spent": 29492,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 10,
+            "spent": 5348
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 8,
+            "spent": 4939
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 6,
+            "spent": 2754
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 8,
+            "spent": 4939
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 6,
+            "spent": 2754
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 7,
+            "spent": 4242
+          }
+        ]
+      },
+      {
+        "seconds": 1200,
+        "record": 39,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 1601.59,
+        "earned": 35986.59,
+        "spent": 34460,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 11,
+            "spent": 7340
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 8,
+            "spent": 4939
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 7,
+            "spent": 4242
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 8,
+            "spent": 4939
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 7,
+            "spent": 4242
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 7,
+            "spent": 4242
+          }
+        ]
+      },
+      {
+        "seconds": 1500,
+        "record": 39,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 1874,
+        "earned": 38223,
+        "spent": 36424,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 11,
+            "spent": 7340
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 8,
+            "spent": 4939
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 7,
+            "spent": 4242
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 8,
+            "spent": 4939
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 7,
+            "spent": 4242
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 8,
+            "spent": 6206
+          }
+        ]
+      },
+      {
+        "seconds": 1800,
+        "record": 39,
+        "wave": 40,
+        "mode": "advance",
+        "gold": 457.74,
+        "earned": 40734.74,
+        "spent": 40352,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 11,
+            "spent": 7340
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 8,
+            "spent": 4939
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 8,
+            "spent": 4939
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 8,
+            "spent": 6206
+          }
+        ]
+      },
+      {
+        "seconds": 2100,
+        "record": 39,
+        "wave": 40,
+        "mode": "farm",
+        "gold": 505.14,
+        "earned": 42840.14,
+        "spent": 42410,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 11,
+            "spent": 7340
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 8,
+            "spent": 4939
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 8,
+            "spent": 6206
+          }
+        ]
+      },
+      {
+        "seconds": 2400,
+        "record": 39,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 709.51,
+        "earned": 45102.51,
+        "spent": 44468,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 11,
+            "spent": 7340
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 8,
+            "spent": 6206
+          }
+        ]
+      },
+      {
+        "seconds": 2700,
+        "record": 39,
+        "wave": 40,
+        "mode": "advance",
+        "gold": 755.2,
+        "earned": 47740.2,
+        "spent": 47060,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 11,
+            "spent": 7340
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 9,
+            "spent": 8798
+          }
+        ]
+      },
+      {
+        "seconds": 3000,
+        "record": 43,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 1159.88,
+        "earned": 53491.88,
+        "spent": 52407,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 12,
+            "spent": 9970
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 10,
+            "spent": 9714
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 9,
+            "spent": 8798
+          }
+        ]
+      },
+      {
+        "seconds": 3300,
+        "record": 43,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 785.48,
+        "earned": 55709.48,
+        "spent": 54999,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 12,
+            "spent": 9970
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 10,
+            "spent": 9714
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 9,
+            "spent": 6997
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 8,
+            "spent": 6206
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 9,
+            "spent": 8798
+          }
+        ]
+      }
+    ],
+    "recoveries": [
+      {
+        "wave": 40,
+        "lossAt": 1115.65,
+        "gold": 1020.9,
+        "winAt": 2711.125,
+        "duration": 1595.475
+      },
+      {
+        "wave": 44,
+        "lossAt": 2929.65,
+        "gold": 649.7
+      }
+    ]
+  },
+  {
+    "scenario": "return",
+    "departure": 20,
+    "offline": 32736.809,
+    "rewards": [
+      {
+        "hours": 0.5,
+        "gold": 2046.05
+      },
+      {
+        "hours": 2,
+        "gold": 8184.202
+      },
+      {
+        "hours": 8,
+        "gold": 32736.809
+      },
+      {
+        "hours": 24,
+        "gold": 32736.809
+      }
+    ],
+    "style": "tactical",
+    "permille": 100,
+    "elapsed": 1800,
+    "initialRecord": 20,
+    "highest": 45,
+    "wave": 35,
+    "mode": "farm",
+    "firstLeak": {
+      "wave": 40,
+      "at": 498.25
+    },
+    "firstPressure": {
+      "wave": 40,
+      "at": 512.5
+    },
+    "firstLoss": {
+      "wave": 46,
+      "at": 794.375
+    },
+    "losses": 3,
+    "frontierAttempts": 28,
+    "pressureAttempts": 6,
+    "longestSafe": 19,
+    "frontierSafeBeforePressure": 19,
+    "farmSeconds": 898.025,
+    "activeSeconds": 901.975,
+    "maxNoRecordSeconds": 1061.025,
+    "earned": 48944.73,
+    "gold": 3328.439,
+    "spent": 79333,
+    "returnSpending": {
+      "spent": 32861,
+      "remaining": 855.709,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 8,
+          "spent": 2696
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 12,
+          "spent": 18034
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 5,
+          "spent": 1515
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 2,
+          "level": 3,
+          "spent": 308
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 11,
+          "spent": 13300
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 5,
+          "spent": 1515
+        }
+      ]
+    },
+    "levels": [
+      {
+        "pad": "cell-10-5",
+        "kind": 1,
+        "level": 13,
+        "spent": 13441
+      },
+      {
+        "pad": "tower-02",
+        "kind": 2,
+        "level": 3,
+        "spent": 198
+      },
+      {
+        "pad": "tower-09",
+        "kind": 3,
+        "level": 12,
+        "spent": 18034
+      },
+      {
+        "pad": "tower-03",
+        "kind": 4,
+        "level": 10,
+        "spent": 12219
+      },
+      {
+        "pad": "cell-14-7",
+        "kind": 2,
+        "level": 3,
+        "spent": 308
+      },
+      {
+        "pad": "cell-9-7",
+        "kind": 3,
+        "level": 11,
+        "spent": 13300
+      },
+      {
+        "pad": "tower-06",
+        "kind": 4,
+        "level": 10,
+        "spent": 12219
+      },
+      {
+        "pad": "cell-10-3",
+        "kind": 5,
+        "level": 10,
+        "spent": 12219
+      }
+    ],
+    "farm": 35,
+    "farmPerMinute": 485.001,
+    "ilyra": "done",
+    "storm": true,
+    "milestones": [
+      {
+        "seconds": 300,
+        "record": 33,
+        "wave": 34,
+        "mode": "advance",
+        "gold": 2095.409,
+        "earned": 19643.7,
+        "spent": 51265,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 11,
+            "spent": 7340
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 7,
+            "spent": 4242
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 7,
+            "spent": 4242
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 8,
+            "spent": 6206
+          }
+        ]
+      },
+      {
+        "seconds": 600,
+        "record": 42,
+        "wave": 42,
+        "mode": "advance",
+        "gold": 4103.009,
+        "earned": 35985.3,
+        "spent": 65599,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 12,
+            "spent": 9970
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 9,
+            "spent": 8798
+          }
+        ]
+      },
+      {
+        "seconds": 900,
+        "record": 45,
+        "wave": 35,
+        "mode": "farm",
+        "gold": 2932.109,
+        "earned": 41706.4,
+        "spent": 72491,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 13,
+            "spent": 13441
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 10,
+            "spent": 12219
+          }
+        ]
+      },
+      {
+        "seconds": 1200,
+        "record": 45,
+        "wave": 35,
+        "mode": "farm",
+        "gold": 1864.669,
+        "earned": 44059.96,
+        "spent": 75912,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 13,
+            "spent": 13441
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 10,
+            "spent": 12219
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 10,
+            "spent": 12219
+          }
+        ]
+      },
+      {
+        "seconds": 1500,
+        "record": 45,
+        "wave": 35,
+        "mode": "farm",
+        "gold": 901.069,
+        "earned": 46517.36,
+        "spent": 79333,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 13,
+            "spent": 13441
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 10,
+            "spent": 12219
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 10,
+            "spent": 12219
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 10,
+            "spent": 12219
+          }
+        ]
+      },
+      {
+        "seconds": 1800,
+        "record": 45,
+        "wave": 35,
+        "mode": "farm",
+        "gold": 3328.439,
+        "earned": 48944.73,
+        "spent": 79333,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 13,
+            "spent": 13441
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 12,
+            "spent": 18034
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 10,
+            "spent": 12219
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 11,
+            "spent": 13300
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 10,
+            "spent": 12219
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 10,
+            "spent": 12219
+          }
+        ]
+      }
+    ],
+    "recoveries": [
+      {
+        "wave": 46,
+        "lossAt": 794.375,
+        "gold": 2088.409
+      }
+    ]
+  },
+  {
+    "scenario": "return",
+    "departure": 30,
+    "offline": 47357.57,
+    "rewards": [
+      {
+        "hours": 0.5,
+        "gold": 2959.848
+      },
+      {
+        "hours": 2,
+        "gold": 11839.392
+      },
+      {
+        "hours": 8,
+        "gold": 47357.57
+      },
+      {
+        "hours": 24,
+        "gold": 47357.57
+      }
+    ],
+    "style": "tactical",
+    "permille": 100,
+    "elapsed": 1800,
+    "initialRecord": 30,
+    "highest": 45,
+    "wave": 29,
+    "mode": "farm",
+    "firstLeak": {
+      "wave": 44,
+      "at": 378.45
+    },
+    "firstPressure": {
+      "wave": 44,
+      "at": 396.4
+    },
+    "firstLoss": {
+      "wave": 46,
+      "at": 490.15
+    },
+    "losses": 3,
+    "frontierAttempts": 18,
+    "pressureAttempts": 4,
+    "longestSafe": 13,
+    "frontierSafeBeforePressure": 13,
+    "farmSeconds": 1201.45,
+    "activeSeconds": 598.55,
+    "maxNoRecordSeconds": 1365.25,
+    "earned": 38338.08,
+    "gold": 4476.45,
+    "spent": 82281,
+    "returnSpending": {
+      "spent": 48034,
+      "remaining": 385.37,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 11,
+          "spent": 7340
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 13,
+          "spent": 24283
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 6,
+          "spent": 2754
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 2,
+          "level": 3,
+          "spent": 308
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 13,
+          "spent": 24283
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 5,
+          "spent": 1515
+        },
+        {
+          "pad": "cell-10-3",
+          "kind": 5,
+          "level": 7,
+          "spent": 4242
+        }
+      ]
+    },
+    "levels": [
+      {
+        "pad": "cell-10-5",
+        "kind": 1,
+        "level": 13,
+        "spent": 13441
+      },
+      {
+        "pad": "tower-02",
+        "kind": 2,
+        "level": 3,
+        "spent": 198
+      },
+      {
+        "pad": "tower-09",
+        "kind": 3,
+        "level": 13,
+        "spent": 24283
+      },
+      {
+        "pad": "tower-03",
+        "kind": 4,
+        "level": 10,
+        "spent": 12219
+      },
+      {
+        "pad": "cell-14-7",
+        "kind": 2,
+        "level": 3,
+        "spent": 308
+      },
+      {
+        "pad": "cell-9-7",
+        "kind": 3,
+        "level": 13,
+        "spent": 24283
+      },
+      {
+        "pad": "tower-06",
+        "kind": 4,
+        "level": 10,
+        "spent": 12219
+      },
+      {
+        "pad": "cell-10-3",
+        "kind": 5,
+        "level": 10,
+        "spent": 12219
+      }
+    ],
+    "farm": 29,
+    "farmPerMinute": 509.614,
+    "ilyra": "done",
+    "storm": true,
+    "milestones": [
+      {
+        "seconds": 300,
+        "record": 41,
+        "wave": 42,
+        "mode": "advance",
+        "gold": 453.37,
+        "earned": 20581,
+        "spent": 68547,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 12,
+            "spent": 9970
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 13,
+            "spent": 24283
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 13,
+            "spent": 24283
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 9,
+            "spent": 8798
+          }
+        ]
+      },
+      {
+        "seconds": 600,
+        "record": 45,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 1206.26,
+        "earned": 28225.89,
+        "spent": 75439,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 13,
+            "spent": 13441
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 13,
+            "spent": 24283
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 13,
+            "spent": 24283
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 10,
+            "spent": 12219
+          }
+        ]
+      },
+      {
+        "seconds": 900,
+        "record": 45,
+        "wave": 46,
+        "mode": "advance",
+        "gold": 565.07,
+        "earned": 31005.7,
+        "spent": 78860,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 13,
+            "spent": 13441
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 13,
+            "spent": 24283
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 10,
+            "spent": 12219
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 13,
+            "spent": 24283
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 10,
+            "spent": 12219
+          }
+        ]
+      },
+      {
+        "seconds": 1200,
+        "record": 45,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 2810.94,
+        "earned": 33251.57,
+        "spent": 78860,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 13,
+            "spent": 13441
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 13,
+            "spent": 24283
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 10,
+            "spent": 12219
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 13,
+            "spent": 24283
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 9,
+            "spent": 8798
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 10,
+            "spent": 12219
+          }
+        ]
+      },
+      {
+        "seconds": 1500,
+        "record": 45,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 1927.64,
+        "earned": 35789.27,
+        "spent": 82281,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 13,
+            "spent": 13441
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 13,
+            "spent": 24283
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 10,
+            "spent": 12219
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 13,
+            "spent": 24283
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 10,
+            "spent": 12219
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 10,
+            "spent": 12219
+          }
+        ]
+      },
+      {
+        "seconds": 1800,
+        "record": 45,
+        "wave": 29,
+        "mode": "farm",
+        "gold": 4476.45,
+        "earned": 38338.08,
+        "spent": 82281,
+        "levels": [
+          {
+            "pad": "cell-10-5",
+            "kind": 1,
+            "level": 13,
+            "spent": 13441
+          },
+          {
+            "pad": "tower-02",
+            "kind": 2,
+            "level": 3,
+            "spent": 198
+          },
+          {
+            "pad": "tower-09",
+            "kind": 3,
+            "level": 13,
+            "spent": 24283
+          },
+          {
+            "pad": "tower-03",
+            "kind": 4,
+            "level": 10,
+            "spent": 12219
+          },
+          {
+            "pad": "cell-14-7",
+            "kind": 2,
+            "level": 3,
+            "spent": 308
+          },
+          {
+            "pad": "cell-9-7",
+            "kind": 3,
+            "level": 13,
+            "spent": 24283
+          },
+          {
+            "pad": "tower-06",
+            "kind": 4,
+            "level": 10,
+            "spent": 12219
+          },
+          {
+            "pad": "cell-10-3",
+            "kind": 5,
+            "level": 10,
+            "spent": 12219
+          }
+        ]
+      }
+    ],
+    "recoveries": [
+      {
+        "wave": 46,
+        "lossAt": 490.15,
+        "gold": 336.27
+      }
+    ]
+  }
+]

@@ -7,7 +7,7 @@ import { ENEMIES, ENEMY_ROSTER, isHealer, JELLY_HEAL } from '../src/enemy-roster
 import { waveRecipe, spawnGap, clearReward } from '../src/wave-recipes';
 import { healthMultiplier } from '../src/balance';
 import { ENEMY_SHEETS, enemyFrame, enemyFlip, enemyHealFrame } from '../src/enemy-art';
-import { createOfflineState, beginAbsence, reserveOffline, claimOffline } from '../src/offline';
+import { LEGACY_OFFLINE, createOfflineState, beginAbsence, reserveOffline, claimOffline } from '../src/offline';
 import { IDBFactory } from 'fake-indexeddb';
 import { openBattleStore } from '../src/save-store';
 import { BattleSession } from '../src/battle-session';
@@ -94,7 +94,7 @@ test('both healer species share target locks, exclude each other and bosses, and
 test('historical and current offline entitlements retain their exact amount and can only be claimed once',()=>{
   for(const rulesVersion of [10,11,12]){
     const certificate={wave:1,fingerprint:'historical-or-current',rulesVersion,rewardGold:100,durationMs:10000};
-    let state=beginAbsence(createOfflineState(1000),1000,certificate,false);
+    let state=beginAbsence(createOfflineState(1000),1000,certificate,false,LEGACY_OFFLINE);
     state=reserveOffline(state,61000);assert.ok(state.pendingReward);const rewardId=state.pendingReward.id;
     const first=claimOffline(state,rewardId);assert.equal(first.amountUnits,360000);
     const again=claimOffline(first.state,rewardId);assert.equal(again.amountUnits,0);
@@ -104,7 +104,7 @@ test('historical and current offline entitlements retain their exact amount and 
 test('native save boundary migrates v24 and pays its pending historical offline claim exactly once',async()=>{
   const factory=new IDBFactory(), name='wave-rework-v24';
   let store=await openBattleStore(factory,name,()=>31000);store.close();
-  const offline=reserveOffline(beginAbsence(createOfflineState(1000),1000,{wave:24,rulesVersion:10,fingerprint:'v24-departure',rewardGold:100,durationMs:10000},false),31000);
+  const offline=reserveOffline(beginAbsence(createOfflineState(1000),1000,{wave:24,rulesVersion:10,fingerprint:'v24-departure',rewardGold:100,durationMs:10000},false,LEGACY_OFFLINE),31000);
   await new Promise<void>((resolve,reject)=>{const request=factory.open(name,1);request.onerror=()=>reject(request.error);request.onsuccess=()=>{
     const db=request.result,tx=db.transaction('saves','readwrite');tx.objectStore('saves').put({schemaVersion:2,revision:1,writtenAt:31000,paused:false,battle:structuredClone(old),offline},'default');
     tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>reject(tx.error);

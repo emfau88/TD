@@ -1,0 +1,6 @@
+PASS legacy de: current production copy, conditional legacy note, mobile layout and journal
+PASS current de: current production copy, conditional legacy note, mobile layout and journal
+PASS farm de: current production copy, conditional legacy note, mobile layout and journal
+PASS legacy en: current production copy, conditional legacy note, mobile layout and journal
+PASS current en: current production copy, conditional legacy note, mobile layout and journal
+PASS farm en: current production copy, conditional legacy note, mobile layout and journal

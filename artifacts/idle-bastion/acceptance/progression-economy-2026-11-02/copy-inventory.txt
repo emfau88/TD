@@ -1,0 +1,689 @@
+src/art.ts:23 [typescript] ../../../public/assets/Wisp - Animations.png
+src/battle-scene.ts:147 [typescript] Wisp · +10 % Gold
+src/battle-scene.ts:184 [typescript] Wisp · +10 % Gold
+src/battle.ts:977 [typescript] Invalid offline gold transaction.
+src/battle.ts:1080 [typescript] Invalid gold transaction.
+src/battle.ts:1093 [typescript] Invalid battle reward.
+src/discovery-ui.ts:15 [typescript] Wisp begrüßen · nächste Welle wartet
+src/discovery-ui.ts:21 [typescript] Mara lässt einen Turm 8 Sekunden lang 50 % schneller schießen.
+src/discovery-ui.ts:28 [typescript] Mara hat gerade gezaubert. Der goldene Ring zeigt ihr Ziel: 8 Sekunden lang 50 % höhere Feuerrate. Sieh dir die Wirkung in Ruhe an.
+src/discovery-ui.ts:32 [typescript] +50 % Feuerrate · goldener Ring am Turm
+src/discovery-ui.ts:40 [typescript] Sie trifft mehrere Gegner zugleich. Wähle unten die Steinschleuder und einen Platz bei Frost. Optional · 135 Gold.
+src/discovery-ui.ts:41 [typescript] Unter „Türme“ findest du jetzt die Steinschleuder. Sie trifft Gegnergruppen; Frost hält sie länger zusammen. Optional · 135 Gold.
+src/discovery-ui.ts:44 [typescript] Neu: Vorratslager
+src/discovery-ui.ts:45 [typescript] Speichert Offline-Gold bis zu 8 statt 2 Stunden. Optional · 650 Gold.
+src/enemy-check.ts:26 [typescript] 25 % Rüstung
+src/enemy-roster.ts:17 [typescript] 45 % Rüstung
+src/enemy-roster.ts:18 [typescript] Langsam, viele Lebenspunkte · 25 % Rüstung
+src/enemy-roster.ts:20 [typescript] Beweglicher Panzer · 30 % Rüstung
+src/enemy-roster.ts:22 [typescript] Frost verlangsamt ihn nur um 20 %
+src/enemy-roster.ts:24 [typescript] Mittelschwerer Wächter · 25 % Rüstung
+src/enemy-roster.ts:29 [typescript] Langsamer Panzer · 25 % Rüstung, zwei Kernschaden
+src/forest.ts:45 [typescript] `tree-${((row + col) % 4 + 4) % 4}`
+src/forest.ts:115 [typescript] `${autumn ? 'autumn' : 'tree'}-${index % 4}`
+src/forest.ts:148 [typescript] Lager I
+src/forest.ts:170 [typescript] Lager I
+src/game-audio.ts:268 [typescript] {0} %
+src/game-audio.ts:269 [typescript] {0} %
+src/hud.ts:28 [typescript] Ich bin Mara. Unser Startturm greift automatisch an. Beobachte die ersten Käfer — für jeden besiegten Gegner erhalten wir Gold.
+src/hud.ts:30 [typescript] Ein Upgrade erhöht den Schaden sofort. Wähle einen Waldwächter und werte ihn für 60 Gold auf. Ich unterstütze meinen zugewiesenen Turm automatisch.
+src/hud.ts:33 [typescript] Setze einen Frostkristall an eine Kurve, wo auch ein Waldwächter angreift. Sind alle Plätze belegt, kannst du einen gekauften Turm für 70 % verkaufen.
+src/hud.ts:34 [typescript] Die blauen Treffer bremsen Käfer zwei Sekunden lang um 45 %. Andere Türme bekommen dadurch mehr Zeit zum Angreifen.
+src/hud.ts:35 [typescript] Nach gemeisterter Welle 5 kommt Wisp kostenlos zur Werkstatt. Er bringt dauerhaft 10 % mehr Kampf-Gold mit; außerdem werden Steinschleuder verfügbar.
+src/hud.ts:36 [typescript] Wisp versorgt die Werkstatt. Sein Goldbonus wirkt automatisch. Setze eine Steinschleuder nahe Frost ein: Ihr Flächentreffer trifft ganze Käfergruppen.
+src/hud.ts:40 [typescript] Das Vorratslager sammelt länger: 26 % der sicheren Farmbasis für bis zu acht Stunden. Öffne Siedlung, prüfe die Vorschau und baue es für 650 Gold. Die besseren Werte gelten für die nächste Abwesenheit.
+src/hud.ts:41 [typescript] Nach gemeisterter Welle 8 kannst du ein Vorratslager bauen. Verbessere deine Verteidigung und spare dann 650 Gold. Wisp versorgt später beide Gebäude.
+src/hud.ts:42 [typescript] Rosenspiegel erwartet uns in Welle 15. Ihr Herzfaden kündigt an, welchen Turm sie verführt. Frost bremst ihren Vormarsch; Flächentreffer räumen Begleiter ab, Scharfschützen durchdringen ihre Rüstung. Die erste vollständige Bosswelle bringt einmalig 750 Gold.
+src/hud.ts:43 [typescript] Jetzt übernimmt Wisp die Versorgung. Meine Magie heißt Übertakten: acht Sekunden lang 50 % mehr Feuerrate. Goldener Ring und Restsekunden zeigen den verstärkten Turm. Automatisch zaubere ich nur bei Gegnern; über mein Porträt kannst du auch selbst auslösen.
+src/hud.ts:44 [typescript] Baue die Werkstatt für 1.200 Gold zur Stufe II aus. Der neue Arbeitsplatz ermöglicht weitere Turmlevel ab 7; die nächste Herausforderung wartet in Welle 25.
+src/hud.ts:45 [typescript] Rosenspiegel kehrt in Welle 25 mit einer größeren Begleitgruppe zurück. Höhere Turmlevel und unsere vier Rollen helfen. Für den ersten Sieg gibt es einmalig 1.200 Gold.
+src/hud.ts:48 [typescript] Übertakten wirkt jetzt: +50 % Feuerrate, noch {0} Sekunden. Der goldene Ring zeigt meinen Zielturm. Über mein Porträt kannst du später auch manuell zaubern; die Automatik wartet auf Gegner.
+src/hud.ts:51 [typescript] {0} Gold · bereit
+src/hud.ts:51 [typescript] noch {0} Gold
+src/hud.ts:53 [typescript] Die Verteidigung läuft. Erste Käfer bringen Gold — dein zweiter Turm ist bereits bezahlbar.
+src/hud.ts:54 [typescript] Nächstes Ziel: eigener Waldwächter auf einem hellen Bauplatz · 75 Gold.
+src/hud.ts:55 [typescript] Nächstes Ziel: einen Waldwächter verbessern · 60 Gold.
+src/hud.ts:60 [typescript] Wisp begrüßen · +10 % Kampf-Gold, arbeitet automatisch.
+src/hud.ts:60 [typescript] Deine Kombination arbeitet. Welle 5 meistern, dann kommt Wisp.
+src/hud.ts:61 [typescript] Wisp arbeitet: +10 % Kampf-Gold. Steinschleuder bauen · 135 Gold.
+src/hud.ts:62 [typescript] Vorratslager bauen · {0} · 26 % Offline-Ertrag für bis zu 8 Stunden.
+src/hud.ts:63 [typescript] Welle 8 meistern: Vorratslager freischalten.
+src/hud.ts:65 [typescript] Scharfschütze bauen · 170 Gold · Rüstung durchdringen.
+src/hud.ts:66 [typescript] Rosenspiegel besiegen · 750 Gold Erstprämie · Frost bremst ihren Vormarsch.
+src/idle-review.ts:85 [typescript] `${((elapsed%duration)/1000).toFixed(2)} s`
+src/ilyra-ui.ts:12 [typescript] Dabei · +50 % Turmtempo für 8 s
+src/ilyra-ui.ts:13 [typescript] Dabei · +10 % Kampf-Gold
+src/layout-main.ts:138 [typescript] LAGER · SPÄTER
+src/layout-main.ts:184 [typescript] `${plot.id === 'workshop' ? 'Werkstatt' : 'Späteres Lager'}: reservierte Fläche ${plot.footprint.width} × ${plot.footprint.height} Zellen. Hintere Reihe für das Gebäude, vordere Reihe als begehbarer Vorplatz.`
+src/layout-main.ts:184 [typescript] Späteres Lager
+src/lesson-pointer.ts:25 [typescript] .app-header, #tutorial-guide, .onboarding-card, .wisp-arrival, .context-panel, .combat-toast, .placement-help, .fallback-note
+src/locales/en.ts:9 [typescript] Optional: In der Siedlung ein Lager bauen oder „Später“ wählen.
+src/locales/en.ts:9 [typescript] Optional: Build a Storehouse in Settlement, or choose “Later”.
+src/locales/en.ts:25 [typescript] Wisp · Gefährtenverwaltung
+src/locales/en.ts:25 [typescript] Wisp · Companion management
+src/locales/en.ts:44 [typescript] Aus deinem Vorrat
+src/locales/en.ts:60 [typescript] 🎁 {0} im Vorrat
+src/locales/en.ts:67 [typescript] 🎁 Vorrat: {0} · für {1}
+src/locales/en.ts:93 [typescript] Geschenke im Vorrat
+src/locales/en.ts:102 [typescript] Nach Wisps Ankunft zeigt dir Mara ihren Zauber. Danach kannst du sie selbst steuern.
+src/locales/en.ts:102 [typescript] After Wisp arrives, Mara will show you her spell. Then you can control her yourself.
+src/locales/en.ts:106 [typescript] Da bist du ja! Ich habe auf dein Gold aufgepasst. Nachgezählt habe ich es nur dreimal. Na gut, viermal.
+src/locales/en.ts:106 [typescript] There you are! I've been guarding your gold. I only counted it three times. All right, four.
+src/locales/en.ts:131 [typescript] 25 Gold, Forschung bezahlt, Frostbausatz bereit. Folge dem Hinweis zum ersten kostenlosen Frostturm.
+src/locales/en.ts:131 [typescript] 25 gold, research paid, Frost kit ready. Follow the guide to build your first free Frost tower.
+src/locales/en.ts:158 [typescript] Frostkristall · goldenes Feld antippen · 1 kostenloser Bausatz
+src/locales/en.ts:158 [typescript] Frost Crystal · tap a golden tile · 1 free kit
+src/locales/en.ts:160 [typescript] Frostkristall · 110 Gold
+src/locales/en.ts:160 [typescript] Frost Crystal · 110 gold
+src/locales/en.ts:161 [typescript] Für deinen ersten Frostkristall bekommst du einen kostenlosen Bausatz. Weitere kosten 110 Gold.
+src/locales/en.ts:161 [typescript] You get one free kit for your first Frost Crystal. Further towers cost 110 gold.
+src/locales/en.ts:181 [typescript] Ausbau: {0} Gold · noch {1} Gold.
+src/locales/en.ts:181 [typescript] Upgrade: {0} gold · {1} more gold needed.
+src/locales/en.ts:182 [typescript] Ausbau: {0} Gold · bereit.
+src/locales/en.ts:182 [typescript] Upgrade: {0} gold · ready.
+src/locales/en.ts:186 [typescript] Werkstatt II kostet {0} Gold und erschließt Turmlevel ab 7.
+src/locales/en.ts:186 [typescript] Workshop II costs {0} gold and unlocks tower levels from 7 onward.
+src/locales/en.ts:191 [typescript] Gut, der war nicht schlecht. Erzähl ihn bloß nicht Wisp – sonst muss ich ihn morgen wieder hören.
+src/locales/en.ts:191 [typescript] All right, that was a good one. Just don't tell Wisp, or I'll have to hear it again tomorrow.
+src/locales/en.ts:198 [typescript] Ertrag wird ermittelt
+src/locales/en.ts:198 [typescript] Calculating income
+src/locales/en.ts:199 [typescript] Gold. Ertragsdetails öffnen
+src/locales/en.ts:199 [typescript] Gold. Open income details
+src/locales/en.ts:218 [typescript] Wisp · Neu im Hain
+src/locales/en.ts:218 [typescript] Wisp · New to the grove
+src/locales/en.ts:219 [typescript] Ich bin Wisp und kümmere mich um die Vorräte. Deine Kämpfe bringen ab jetzt 10 % mehr Gold. Das läuft automatisch.
+src/locales/en.ts:219 [typescript] I'm Wisp, and I'll handle the supplies. Your battles now earn 10% more gold. It all happens automatically.
+src/locales/en.ts:227 [typescript] Waldwächter bauen · 75 Gold
+src/locales/en.ts:227 [typescript] Build a Grove Warden · 75 gold
+src/locales/en.ts:228 [typescript] Frostkristall bauen · 110 Gold
+src/locales/en.ts:228 [typescript] Build a Frost Crystal · 110 gold
+src/locales/en.ts:229 [typescript] Steinschleuder bauen · 135 Gold
+src/locales/en.ts:229 [typescript] Build a Stone Slinger · 135 gold
+src/locales/en.ts:230 [typescript] Sturmlicht bauen · 170 Gold
+src/locales/en.ts:230 [typescript] Build a Stormlight · 170 gold
+src/locales/en.ts:231 [typescript] Scharfschütze bauen · 170 Gold
+src/locales/en.ts:231 [typescript] Build a Sharpshooter · 170 gold
+src/locales/en.ts:240 [typescript] Sturmlicht erforschen · 900 Gold
+src/locales/en.ts:240 [typescript] Research Stormlight · 900 gold
+src/locales/en.ts:241 [typescript] Werkstatt II ausbauen · 1.200 Gold
+src/locales/en.ts:241 [typescript] Upgrade to Workshop II · 1,200 gold
+src/locales/en.ts:244 [typescript] Wisp erledigt Werkstattgänge und erhöht Gegner- und Wellenbelohnungen dauerhaft um 10 %. Du musst nichts einsammeln oder zuweisen.
+src/locales/en.ts:244 [typescript] Wisp runs workshop errands and permanently increases enemy and wave rewards by 10%. You don't need to collect anything or assign tasks.
+src/locales/en.ts:245 [typescript] Der Bonus steckt bereits in der sicheren Farmbasis. Verkäufe erhalten keinen Bonus.
+src/locales/en.ts:245 [typescript] The bonus is already included in your certified farm income. Selling gives no bonus.
+src/locales/en.ts:250 [typescript] Taverne II ausbauen · 1.200 Gold
+src/locales/en.ts:250 [typescript] Upgrade to Tavern II · 1,200 gold
+src/locales/en.ts:255 [typescript] Unterstützt den aktiven Kampf. Sichere Farmbasis und Offline-Ertrag rechnen ohne Sternensalve.
+src/locales/en.ts:255 [typescript] Supports active combat. Certified farm income and offline earnings exclude Star Volley.
+src/locales/en.ts:256 [typescript] Sichere Farmbasis
+src/locales/en.ts:256 [typescript] Certified farm income
+src/locales/en.ts:257 [typescript] Collection time
+src/locales/en.ts:258 [typescript] Nach einer Stunde
+src/locales/en.ts:258 [typescript] After one hour
+src/locales/en.ts:259 [typescript] Lager platzieren · 650 Gold
+src/locales/en.ts:259 [typescript] Place a storehouse · 650 gold
+src/locales/en.ts:260 [typescript] Lager versetzen
+src/locales/en.ts:260 [typescript] Move storehouse
+src/locales/en.ts:262 [typescript] Mara zaubert über sechs Felder Entfernung: acht Sekunden lang 50 % mehr Feuerrate. Die Automatik wartet auf Gegner in Reichweite des Turms. Du kannst auch selbst auslösen.
+src/locales/en.ts:262 [typescript] Mara casts from up to six tiles away: 50% faster fire rate for eight seconds. Auto-cast waits for enemies in the tower's range. You can also cast manually.
+src/locales/en.ts:275 [typescript] Mehr Offline-Ertrag
+src/locales/en.ts:275 [typescript] More offline income
+src/locales/en.ts:290 [typescript] Belohnung einsammeln und fortsetzen
+src/locales/en.ts:290 [typescript] Collect reward and continue
+src/locales/en.ts:312 [typescript] Sicheres Farmen
+src/locales/en.ts:312 [typescript] Safe farming
+src/locales/en.ts:314 [typescript] Kampfgold seit Aufzeichnung
+src/locales/en.ts:314 [typescript] Battle gold since tracking began
+src/locales/en.ts:315 [typescript] Sie kündigt ihren Ziel-Turm an und senkt dessen Feuerrate 4,5 Sekunden lang um 40 %. Frost verlangsamt ihren Vormarsch, unterbricht aber nicht den Zauber. Steinschleudern treffen die Begleitgruppe; Scharfschützen durchdringen deren Rüstung. Erreicht der Boss den Kern, scheitert der Versuch.
+src/locales/en.ts:315 [typescript] She marks her target tower and reduces its fire rate by 40% for 4.5 seconds. Frost slows her advance but does not interrupt the spell. Stone Slingers hit her escorts; Sharpshooters pierce their armor. If the boss reaches the core, the attempt fails.
+src/locales/en.ts:316 [typescript] Erstprämien: 750 Gold in Welle 15, 1.200 Gold in Welle 25; jeweils einmalig und ohne Wisp-Bonus. Spätere Siege geben 10 % des gewöhnlichen Gegner- und Wellen-Goldes. Bosswellen erzeugen keine Offline-Farmbasis.
+src/locales/en.ts:316 [typescript] First victories: 750 gold on wave 15 and 1,200 gold on wave 25; each paid once, without Wisp's bonus. Later victories grant 10% of regular enemy and wave gold. Boss waves cannot certify offline farming.
+src/locales/en.ts:317 [typescript] Ab Welle 16 steigt das gewöhnliche Kampf-Gold: zunächst auf das Doppelte, danach pro Welle um 12 Prozentpunkte bis höchstens zum Vierfachen. So finanzierst du die höheren Turmlevel; Wisps Bonus kommt einmalig hinzu.
+src/locales/en.ts:317 [typescript] Regular battle gold increases from wave 16: initially doubled, then rising by 12 percentage points per wave up to four times the base amount. This funds higher tower levels; Wisp's bonus applies once on top.
+src/locales/en.ts:322 [typescript] Dein Goldfluss
+src/locales/en.ts:322 [typescript] Your gold income
+src/locales/en.ts:323 [typescript] Current income
+src/locales/en.ts:333 [typescript] Die Laternenqualle heilt nach kurzem Aufleuchten bis zu zwei verwundete Begleiter um je 6 % ihrer maximalen Lebenspunkte. Frühestens alle 3 Sekunden; keine Heilung von Quallen oder Bossen.
+src/locales/en.ts:333 [typescript] After a brief glow, the Lantern Jelly heals up to two wounded allies for 6% of their maximum health each. At least 3 seconds between heals; it cannot heal jellies or bosses.
+src/locales/en.ts:337 [typescript] Farm runs
+src/locales/en.ts:357 [typescript] Gold für das nächste Ziel
+src/locales/en.ts:357 [typescript] Gold for the next goal
+src/locales/en.ts:366 [typescript] Gold für den nächsten Lernschritt
+src/locales/en.ts:366 [typescript] Gold for the next tutorial step
+src/locales/en.ts:367 [typescript] Wisp kommt an
+src/locales/en.ts:367 [typescript] Wisp is arriving
+src/locales/en.ts:375 [typescript] Waldwächter platzieren · 75 Gold
+src/locales/en.ts:375 [typescript] Place a Grove Warden · 75 gold
+src/locales/en.ts:382 [typescript] Wisp ansehen
+src/locales/en.ts:382 [typescript] View Wisp
+src/locales/en.ts:395 [typescript] Abwesend · Kampf angehalten
+src/locales/en.ts:396 [typescript] Temporäre Probe · kein Speichern und kein Offline-Ertrag
+src/locales/en.ts:396 [typescript] Temporary trial · No saving or offline income
+src/locales/en.ts:399 [typescript] Werkstatt und Lager
+src/locales/en.ts:399 [typescript] Workshop and storehouse
+src/locales/en.ts:401 [typescript] Wisp kommt kostenlos nach Frostfassung und gemeisterter Welle 5. {0} · {1}.
+src/locales/en.ts:401 [typescript] Wisp joins for free after Frost Setting research and a successful wave 5. {0} · {1}.
+src/locales/en.ts:404 [typescript] Wisp · +10 Prozent Kampf-Gold
+src/locales/en.ts:404 [typescript] Wisp · +10 percent battle gold
+src/locales/en.ts:405 [typescript] Wisp · Frostfassung und Welle 5 nötig
+src/locales/en.ts:405 [typescript] Wisp · Requires Frost Setting and wave 5
+src/locales/en.ts:413 [typescript] Frostkristall · goldenes Feld antippen und bauen · 110 Gold
+src/locales/en.ts:413 [typescript] Frost Crystal · Tap the golden tile to build · 110 gold
+src/locales/en.ts:416 [typescript] Hier bauen · {0} Gold
+src/locales/en.ts:416 [typescript] Build here · {0} gold
+src/locales/en.ts:436 [typescript] Nach Wisp
+src/locales/en.ts:436 [typescript] After Wisp
+src/locales/en.ts:439 [typescript] Mara zeigt dir Übertakten nach Wisps Ankunft. Zuerst bauen wir die Verteidigung auf.
+src/locales/en.ts:439 [typescript] Mara will show you Overclock after Wisp arrives. First, let's build your defenses.
+src/locales/en.ts:448 [typescript] Welle {0}: zwei konservative, schadensfreie Wiederholungen inklusive Wellenpausen. Grundlage für {1} % Offline-Ertrag.
+src/locales/en.ts:448 [typescript] Wave {0}: two conservative, damage-free runs including wave breaks. Basis for {1}% offline income.
+src/locales/en.ts:449 [typescript] Noch kein gültiger Farmnachweis. Eine erste Welle muss live geschafft und zweimal konservativ geprüft werden.
+src/locales/en.ts:449 [typescript] No valid farm certificate yet. A wave must first be cleared live, then pass two conservative checks.
+src/locales/en.ts:454 [typescript] Wechsel ins sichere Farmen …
+src/locales/en.ts:454 [typescript] Switching to safe farming…
+src/locales/en.ts:461 [typescript] Die gespeicherte Pause war aktiv. Dabei entsteht kein Offline-Gold.
+src/locales/en.ts:461 [typescript] Your saved game was paused. No offline gold is earned while paused.
+src/locales/en.ts:462 [typescript] Noch kein sicherer Farmnachweis vorhanden. Besiege zuerst eine Welle zuverlässig.
+src/locales/en.ts:462 [typescript] No safe farm certificate yet. First, reliably clear a wave.
+src/locales/en.ts:463 [typescript] Deine Vorräte sind voll. Die Sammelzeit wurde ausgeschöpft.
+src/locales/en.ts:463 [typescript] Your supplies are full. The collection time limit was reached.
+src/locales/en.ts:464 [typescript] Deine Verteidigung hat Gold für dich gesammelt. Setze es für deinen nächsten Ausbau ein.
+src/locales/en.ts:464 [typescript] Your defenses collected gold for you. Put it toward your next upgrade.
+src/locales/en.ts:465 [typescript] Farmbasis beim Verlassen: {0} G/min · {1} % Ertrag · bis zu {2} Stunden. Zeit bis zum Einsammeln zählt mit.
+src/locales/en.ts:465 [typescript] Farm income on departure: {0} G/min · {1}% efficiency · Up to {2} hours. Time until collection is included.
+src/locales/en.ts:471 [typescript] Bis zu drei Ziele · 80 Sprungreichweite · 100/65/42 % Schaden
+src/locales/en.ts:471 [typescript] Up to three targets · 80 jump range · 100/65/42% damage
+src/locales/en.ts:472 [typescript] Bevorzugt Rüstung · ignoriert 100 % davon
+src/locales/en.ts:472 [typescript] Prioritizes armor · Ignores 100% of it
+src/locales/en.ts:474 [typescript] Frosttreffer · 45 % langsamer für 2 s
+src/locales/en.ts:474 [typescript] Frost hit · 45% slower for 2 s
+src/locales/en.ts:477 [typescript] {0} verteidigt den Weg. Verbessere ihn oder investiere das Gold an anderer Stelle.
+src/locales/en.ts:477 [typescript] {0} defends the path. Upgrade it or invest your gold elsewhere.
+src/locales/en.ts:493 [typescript] Weitere Upgrades benötigen mehr Gold.
+src/locales/en.ts:493 [typescript] Further upgrades need more gold.
+src/locales/en.ts:496 [typescript] Noch {0} Gold bis zum nächsten Level.
+src/locales/en.ts:496 [typescript] {0} more gold to the next level.
+src/locales/en.ts:498 [typescript] Noch {0} Gold bis zum Waldwächter.
+src/locales/en.ts:498 [typescript] {0} more gold for a Grove Warden.
+src/locales/en.ts:507 [typescript] Noch {0} Gold für Werkstatt II.
+src/locales/en.ts:507 [typescript] {0} more gold for Workshop II.
+src/locales/en.ts:510 [typescript] Werkstatt platzieren · {0} Gold
+src/locales/en.ts:510 [typescript] Place workshop · {0} gold
+src/locales/en.ts:511 [typescript] Frostfassung erforschen · {0} Gold
+src/locales/en.ts:511 [typescript] Research Frost Setting · {0} gold
+src/locales/en.ts:515 [typescript] Frostfassung: Werkstatt nötig · 60 Gold. Verlangsamt Gegner und erschließt Turmlevel 4–6.
+src/locales/en.ts:515 [typescript] Frost Setting: requires a workshop · 60 gold. Slows enemies and unlocks tower levels 4–6.
+src/locales/en.ts:516 [typescript] ✓ Sturmlicht: bis zu drei Ziele, 80 Sprungreichweite, sinkender Schaden. Turmbau separat: {0} Gold.
+src/locales/en.ts:516 [typescript] ✓ Stormlight: up to three targets, 80 jump range, decreasing damage. Tower purchase is separate: {0} gold.
+src/locales/en.ts:517 [typescript] Sturmlicht: Frostfassung, gemeisterte Welle {0} und abgeschlossene Ilyra-Einführung nötig. Forschung {1} Gold; Turmbau separat {2} Gold.
+src/locales/en.ts:517 [typescript] Stormlight: requires Frost Setting, cleared wave {0} and completed Ilyra introduction. Research: {1} gold; tower purchase: {2} gold separately.
+src/locales/en.ts:522 [typescript] Siedlung · Neues Gebäude verfügbar: Vorratslager
+src/locales/en.ts:522 [typescript] Settlement · New building available: Storehouse
+src/locales/en.ts:530 [typescript] Bausatz verfügbar · kein Gold nötig. Wähle einen freien Platz in deiner Siedlung.
+src/locales/en.ts:530 [typescript] Kit available · No gold needed. Choose an empty spot in your settlement.
+src/locales/en.ts:533 [typescript] Nächstes Ziel: Boss 25 besiegen, dann für 1.200 Gold zu Taverne II ausbauen und Ilyra rekrutieren.
+src/locales/en.ts:533 [typescript] Next goal: defeat boss 25, upgrade to Tavern II for 1,200 gold, then recruit Ilyra.
+src/locales/en.ts:534 [typescript] Mara verstärkt Türme · Wisp versorgt · Ilyra kämpft.
+src/locales/en.ts:534 [typescript] Mara boosts towers · Wisp brings supplies · Ilyra fights.
+src/locales/en.ts:537 [typescript] Taverne II · noch {0} Gold
+src/locales/en.ts:537 [typescript] Tavern II · {0} more gold
+src/locales/en.ts:538 [typescript] Wisp versorgt das Lager. Deine Vorräte sammeln automatisch während deiner Abwesenheit.
+src/locales/en.ts:538 [typescript] Wisp supplies the storehouse. Your reserves fill automatically while you're away.
+src/locales/en.ts:539 [typescript] Wenn du das Spiel schließt, sammelt deine sichere Verteidigung weiter. Das Lager verlängert das Sammeln von 2 auf 8 Stunden. Optional; es macht deine Türme nicht stärker.
+src/locales/en.ts:539 [typescript] When you close the game, your safe defenses keep collecting. The storehouse extends collection from 2 to 8 hours. Optional; it doesn't strengthen your towers.
+src/locales/en.ts:541 [typescript] {0} % der Farmbasis
+src/locales/en.ts:541 [typescript] {0}% of certified farm income
+src/locales/en.ts:542 [typescript] Bereits gemeisterte Wellen geben 10 % des normalen Goldes. Neue Wellen und einmalige Bossprämien behalten ihren vollen Ertrag.
+src/locales/en.ts:542 [typescript] Previously cleared waves award 10% of normal gold. New waves and one-time boss bonuses keep their full rewards.
+src/locales/en.ts:543 [typescript] Bis zu 8 Stunden
+src/locales/en.ts:543 [typescript] Up to 8 hours
+src/locales/en.ts:544 [typescript] 0 Gold · Pause aktiv
+src/locales/en.ts:544 [typescript] 0 gold · Paused
+src/locales/en.ts:545 [typescript] Zuerst sicher farmen
+src/locales/en.ts:545 [typescript] Establish safe farming first
+src/locales/en.ts:546 [typescript] Noch {0} Gold. Die Vorschau gilt bei unveränderter Verteidigung; während einer Pause entsteht kein Ertrag.
+src/locales/en.ts:546 [typescript] {0} more gold. This preview assumes unchanged defenses; no income is earned while paused.
+src/locales/en.ts:547 [typescript] Vorschau bei unveränderter Verteidigung. Während einer Pause entsteht kein Offline-Ertrag.
+src/locales/en.ts:547 [typescript] Preview with unchanged defenses. No offline income is earned while paused.
+src/locales/en.ts:552 [typescript] Dein früherer Lichtungskauf zählt beim späteren Öffnen der Ostfront mit 900 Gold. Diese Gutschrift ist für den Zugang reserviert.
+src/locales/en.ts:552 [typescript] Your earlier clearing purchase counts as 900 gold toward opening the future eastern front. This credit is reserved for access.
+src/locales/en.ts:553 [typescript] Werkstatt, Lager und Taverne ziehen gemeinsam in die geschützte Siedlung südöstlich des Kerns. Gebäudelevel, Gold und Verteidigung bleiben erhalten. Die Gebäude kannst du dort bei Pause frei versetzen.
+src/locales/en.ts:553 [typescript] The workshop, storehouse and tavern move together to the sheltered settlement southeast of the core. Building levels, gold and defenses are preserved. You can freely reposition the buildings there while paused.
+src/locales/en.ts:558 [typescript] Dein Lichtungskauf bleibt als 900-Gold-Gutschrift für den späteren Ostzugang erhalten.
+src/locales/en.ts:558 [typescript] Your clearing purchase is preserved as 900 gold credit toward future eastern access.
+src/locales/en.ts:560 [typescript] Sicheres Farmen · Welle {0}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang.
+src/locales/en.ts:560 [typescript] Safe farming · Wave {0}. Another advance starts only when you request it, at a wave transition.
+src/locales/en.ts:562 [typescript] Welle {0} geschafft · +{1} Gold Abschlussbonus.
+src/locales/en.ts:562 [typescript] Wave {0} cleared · +{1} gold completion bonus.
+src/locales/en.ts:563 [typescript] Gegner besiegt · +{0} Gold.
+src/locales/en.ts:563 [typescript] Enemy defeated · +{0} gold.
+src/locales/en.ts:565 [typescript] {0} besiegt! +{1} Gold Erstprämie.
+src/locales/en.ts:565 [typescript] {0} defeated! +{1} gold first-victory reward.
+src/locales/en.ts:566 [typescript] Rosenspiegel erneut besiegt. Gewöhnliche Kampfbelohnungen erhalten.
+src/locales/en.ts:566 [typescript] Rosemirror defeated again. Regular battle rewards earned.
+src/locales/en.ts:570 [typescript] Wisp ist da! +10 % Kampf-Gold und die Steinschleuder sind jetzt verfügbar.
+src/locales/en.ts:570 [typescript] Wisp has arrived! +10% battle gold and the Stone Slinger are now available.
+src/locales/en.ts:579 [typescript] Vorratslager gebaut! Künftig 26 % Offline-Ertrag für bis zu 8 Stunden.
+src/locales/en.ts:579 [typescript] Storehouse built! Future offline income: 26% for up to 8 hours.
+src/locales/en.ts:582 [typescript] Turm verkauft · +{0} Gold. Die sichere Farmbasis wird neu geprüft.
+src/locales/en.ts:582 [typescript] Tower sold · +{0} gold. Certified farm income is being checked again.
+src/locales/en.ts:583 [typescript] Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.
+src/locales/en.ts:583 [typescript] The advance failed. Gold and towers are preserved; your defenses switch to safe farming.
+src/locales/en.ts:589 [typescript] Frost aktiv · 45 % langsamer · {0} s
+src/locales/en.ts:589 [typescript] Frost active · 45% slower · {0} s
+src/locales/en.ts:592 [typescript] Boss und Begleiter besiegen · {0} Gold Erstprämie
+src/locales/en.ts:592 [typescript] Defeat boss and escorts · {0} gold first-victory reward
+src/locales/en.ts:596 [typescript] Gespeicherte Verteidigung geladen. Gold, Türme und laufender Kampf sind wieder da.
+src/locales/en.ts:596 [typescript] Saved defenses loaded. Your gold, towers and ongoing battle are restored.
+src/locales/en.ts:603 [typescript] Spiel bereits in einem anderen Tab aktiv. Dieser Tab führt keinen Kampf aus und vergibt kein Gold. Du kannst ihn erneut aktivieren, wenn der andere Tab nicht mehr aktiv ist.
+src/locales/en.ts:603 [typescript] The game is already active in another tab. This tab runs no combat and awards no gold. You can reactivate it once the other tab is no longer active.
+src/locales/en.ts:623 [typescript] Jeder besiegte Käfer bringt Gold. Nach dem ersten Treffer zeige ich dir das Upgrade.
+src/locales/en.ts:623 [typescript] Every defeated beetle gives you gold. After the first hit, I'll show you how to upgrade.
+src/locales/en.ts:628 [typescript] Die Welle wartet. Öffne den markierten Turm und verbessere ihn einmal für 60 Gold auf Level 2.
+src/locales/en.ts:628 [typescript] The wave is waiting. Open the marked tower and upgrade it once to level 2 for 60 gold.
+src/locales/en.ts:630 [typescript] Hier erforschst du neue Turmtypen. Dein gespartes Gold verwenden wir für Frosttechnik.
+src/locales/en.ts:630 [typescript] This is where you research new tower types. We'll use your saved gold for frost technology.
+src/locales/en.ts:639 [typescript] Jetzt bauen wir den neuen Turm neben deinen Waldwächter. Er kostet 110 Gold.
+src/locales/en.ts:639 [typescript] Now let's build the new tower beside your Grove Warden. It costs 110 gold.
+src/locales/en.ts:642 [typescript] Tippe auf das neue Gebäude auf der Karte. Dort erforschst du die Frostfassung für 60 Gold.
+src/locales/en.ts:642 [typescript] Tap the new building on the map. Research Frost Setting there for 60 gold.
+src/locales/en.ts:664 [typescript] Wisp begrüßen · nächste Welle wartet
+src/locales/en.ts:664 [typescript] Greet Wisp · Next wave is waiting
+src/locales/en.ts:667 [typescript] Ein Turm schießt 8 Sekunden lang 50 % schneller. Nach deinem Tipp wartet Mara auf Gegner und zeigt dir den Zauber.
+src/locales/en.ts:667 [typescript] A tower fires 50% faster for 8 seconds. After your tap, Mara waits for enemies and demonstrates the spell.
+src/locales/en.ts:673 [typescript] Mara hat gerade gezaubert. Der goldene Ring zeigt ihr Ziel: 8 Sekunden lang 50 % höhere Feuerrate. Sieh dir die Wirkung in Ruhe an.
+src/locales/en.ts:673 [typescript] Mara just cast her spell. The golden ring marks her target: 50% faster fire rate for 8 seconds. Take a moment to watch it work.
+src/locales/en.ts:676 [typescript] +50 % Feuerrate · goldener Ring am Turm
+src/locales/en.ts:676 [typescript] +50% fire rate · Golden ring around the tower
+src/locales/en.ts:681 [typescript] Sie trifft mehrere Gegner zugleich. Wähle unten die Steinschleuder und einen Platz bei Frost. Optional · 135 Gold.
+src/locales/en.ts:681 [typescript] It hits several enemies at once. Choose the Stone Slinger below and place it near frost. Optional · 135 gold.
+src/locales/en.ts:682 [typescript] Unter „Türme“ findest du jetzt die Steinschleuder. Sie trifft Gegnergruppen; Frost hält sie länger zusammen. Optional · 135 Gold.
+src/locales/en.ts:682 [typescript] You'll now find the Stone Slinger under “Towers”. It hits groups of enemies; frost keeps them together longer. Optional · 135 gold.
+src/locales/en.ts:683 [typescript] Neu in der Siedlung: Vorratslager
+src/locales/en.ts:683 [typescript] New in your settlement: Storehouse
+src/locales/en.ts:684 [typescript] Wenn du das Spiel schließt, sammelt deine sichere Verteidigung weiter. Das Lager verlängert das Sammeln von 2 auf 8 Stunden. Optional · 650 Gold.
+src/locales/en.ts:684 [typescript] When you close the game, your safe defenses keep collecting. The storehouse extends collection from 2 to 8 hours. Optional · 650 gold.
+src/locales/en.ts:692 [typescript] Dabei · +50 % Turmtempo für 8 s
+src/locales/en.ts:692 [typescript] Joined · +50% tower fire rate for 8 s
+src/locales/en.ts:707 [typescript] Ich bin Mara. Unser Startturm greift automatisch an. Beobachte die ersten Käfer — für jeden besiegten Gegner erhalten wir Gold.
+src/locales/en.ts:707 [typescript] I'm Mara. Our starter tower attacks automatically. Watch the first beetles—we get gold for every enemy defeated.
+src/locales/en.ts:709 [typescript] Ein Upgrade erhöht den Schaden sofort. Wähle einen Waldwächter und werte ihn für 60 Gold auf. Ich unterstütze meinen zugewiesenen Turm automatisch.
+src/locales/en.ts:709 [typescript] An upgrade increases damage immediately. Select a Grove Warden and upgrade it for 60 gold. I automatically support my assigned tower.
+src/locales/en.ts:712 [typescript] Setze einen Frostkristall an eine Kurve, wo auch ein Waldwächter angreift. Sind alle Plätze belegt, kannst du einen gekauften Turm für 70 % verkaufen.
+src/locales/en.ts:712 [typescript] Place a Frost Crystal at a bend where a Grove Warden also attacks. If every spot is taken, you can sell a purchased tower for 70% of its investment.
+src/locales/en.ts:713 [typescript] Die blauen Treffer bremsen Käfer zwei Sekunden lang um 45 %. Andere Türme bekommen dadurch mehr Zeit zum Angreifen.
+src/locales/en.ts:713 [typescript] Blue hits slow beetles by 45% for two seconds. That gives other towers more time to attack.
+src/locales/en.ts:714 [typescript] Nach gemeisterter Welle 5 kommt Wisp kostenlos zur Werkstatt. Er bringt dauerhaft 10 % mehr Kampf-Gold mit; außerdem werden Steinschleuder verfügbar.
+src/locales/en.ts:714 [typescript] After you clear wave 5, Wisp joins the workshop for free. He permanently adds 10% battle gold; the Stone Slinger also becomes available.
+src/locales/en.ts:715 [typescript] Wisp versorgt die Werkstatt. Sein Goldbonus wirkt automatisch. Setze eine Steinschleuder nahe Frost ein: Ihr Flächentreffer trifft ganze Käfergruppen.
+src/locales/en.ts:715 [typescript] Wisp supplies the workshop. His gold bonus works automatically. Place a Stone Slinger near frost: its area hit strikes entire beetle groups.
+src/locales/en.ts:719 [typescript] Das Vorratslager sammelt länger: 26 % der sicheren Farmbasis für bis zu acht Stunden. Öffne Siedlung, prüfe die Vorschau und baue es für 650 Gold. Die besseren Werte gelten für die nächste Abwesenheit.
+src/locales/en.ts:719 [typescript] The storehouse collects longer: 26% of certified farm income for up to eight hours. Open Settlement, check the preview and build it for 650 gold. The improved rates apply to your next absence.
+src/locales/en.ts:720 [typescript] Nach gemeisterter Welle 8 kannst du ein Vorratslager bauen. Verbessere deine Verteidigung und spare dann 650 Gold. Wisp versorgt später beide Gebäude.
+src/locales/en.ts:720 [typescript] After clearing wave 8, you can build a storehouse. Strengthen your defenses, then save 650 gold. Wisp will supply both buildings.
+src/locales/en.ts:721 [typescript] Rosenspiegel erwartet uns in Welle 15. Ihr Herzfaden kündigt an, welchen Turm sie verführt. Frost bremst ihren Vormarsch; Flächentreffer räumen Begleiter ab, Scharfschützen durchdringen ihre Rüstung. Die erste vollständige Bosswelle bringt einmalig 750 Gold.
+src/locales/en.ts:721 [typescript] Rosemirror awaits us in wave 15. Her heart tether reveals which tower she will charm. Frost slows her advance; area hits clear escorts, and Sharpshooters pierce their armor. Completing the first boss wave awards 750 gold once.
+src/locales/en.ts:722 [typescript] Jetzt übernimmt Wisp die Versorgung. Meine Magie heißt Übertakten: acht Sekunden lang 50 % mehr Feuerrate. Goldener Ring und Restsekunden zeigen den verstärkten Turm. Automatisch zaubere ich nur bei Gegnern; über mein Porträt kannst du auch selbst auslösen.
+src/locales/en.ts:722 [typescript] Wisp is taking over supplies now. My magic is called Overclock: 50% faster fire rate for eight seconds. A golden ring and countdown mark the boosted tower. I auto-cast only when enemies are present; you can also cast manually through my portrait.
+src/locales/en.ts:723 [typescript] Baue die Werkstatt für 1.200 Gold zur Stufe II aus. Der neue Arbeitsplatz ermöglicht weitere Turmlevel ab 7; die nächste Herausforderung wartet in Welle 25.
+src/locales/en.ts:723 [typescript] Upgrade the workshop to tier II for 1,200 gold. The new workbench unlocks tower levels 7 and above; the next challenge awaits in wave 25.
+src/locales/en.ts:724 [typescript] Rosenspiegel kehrt in Welle 25 mit einer größeren Begleitgruppe zurück. Höhere Turmlevel und unsere vier Rollen helfen. Für den ersten Sieg gibt es einmalig 1.200 Gold.
+src/locales/en.ts:724 [typescript] Rosemirror returns in wave 25 with a larger escort. Higher tower levels and our four roles will help. The first victory awards 1,200 gold once.
+src/locales/en.ts:725 [typescript] Übertakten wirkt jetzt: +50 % Feuerrate, noch {0} Sekunden. Der goldene Ring zeigt meinen Zielturm. Über mein Porträt kannst du später auch manuell zaubern; die Automatik wartet auf Gegner.
+src/locales/en.ts:725 [typescript] Overclock is active: +50% fire rate, {0} seconds left. The golden ring marks my target tower. You can later cast manually through my portrait; auto-cast waits for enemies.
+src/locales/en.ts:726 [typescript] Die Verteidigung läuft. Erste Käfer bringen Gold — dein zweiter Turm ist bereits bezahlbar.
+src/locales/en.ts:726 [typescript] Your defenses are running. The first beetles bring gold—you can already afford your second tower.
+src/locales/en.ts:727 [typescript] Nächstes Ziel: eigener Waldwächter auf einem hellen Bauplatz · 75 Gold.
+src/locales/en.ts:727 [typescript] Next goal: your own Grove Warden on a highlighted building spot · 75 gold.
+src/locales/en.ts:728 [typescript] Nächstes Ziel: einen Waldwächter verbessern · 60 Gold.
+src/locales/en.ts:728 [typescript] Next goal: upgrade a Grove Warden · 60 gold.
+src/locales/en.ts:734 [typescript] Wisp begrüßen · +10 % Kampf-Gold, arbeitet automatisch.
+src/locales/en.ts:734 [typescript] Greet Wisp · +10% battle gold, works automatically.
+src/locales/en.ts:735 [typescript] Deine Kombination arbeitet. Welle 5 meistern, dann kommt Wisp.
+src/locales/en.ts:735 [typescript] Your combination is working. Clear wave 5, then Wisp arrives.
+src/locales/en.ts:736 [typescript] Wisp arbeitet: +10 % Kampf-Gold. Steinschleuder bauen · 135 Gold.
+src/locales/en.ts:736 [typescript] Wisp is working: +10% battle gold. Build a Stone Slinger · 135 gold.
+src/locales/en.ts:737 [typescript] Vorratslager bauen · {0} · 26 % Offline-Ertrag für bis zu 8 Stunden.
+src/locales/en.ts:737 [typescript] Build a storehouse · {0} · 26% offline income for up to 8 hours.
+src/locales/en.ts:738 [typescript] Welle 8 meistern: Vorratslager freischalten.
+src/locales/en.ts:738 [typescript] Clear wave 8: unlock the storehouse.
+src/locales/en.ts:740 [typescript] Scharfschütze bauen · 170 Gold · Rüstung durchdringen.
+src/locales/en.ts:740 [typescript] Build a Sharpshooter · 170 gold · Pierce armor.
+src/locales/en.ts:742 [typescript] Rosenspiegel besiegen · 750 Gold Erstprämie · Frost bremst ihren Vormarsch.
+src/locales/en.ts:742 [typescript] Defeat Rosemirror · 750 gold first-victory reward · Frost slows her advance.
+src/locales/en.ts:765 [typescript] Wisp ist angekommen
+src/locales/en.ts:765 [typescript] Wisp has arrived
+src/locales/en.ts:766 [typescript] +10 % Kampf-Gold · arbeitet selbstständig
+src/locales/en.ts:766 [typescript] +10% battle gold · Works independently
+src/locales/en.ts:767 [typescript] Wisp kennenlernen
+src/locales/en.ts:767 [typescript] Meet Wisp
+src/locales/en.ts:772 [typescript] Vorräte für deine Rückkehr
+src/locales/en.ts:772 [typescript] Supplies for your return
+src/locales/en.ts:773 [typescript] {0} · optional: 2 → 8 Stunden sammeln
+src/locales/en.ts:773 [typescript] {0} · Optional: collect for 2 → 8 hours
+src/locales/en.ts:774 [typescript] Vorratslager ansehen
+src/locales/en.ts:774 [typescript] View storehouse
+src/locales/en.ts:776 [typescript] Vorratslager freischalten · längere Offline-Erträge
+src/locales/en.ts:776 [typescript] Unlock the storehouse · Longer offline earnings
+src/locales/en.ts:783 [typescript] Welle 15 · 750 Gold Erstprämie · Frost verlangsamt
+src/locales/en.ts:783 [typescript] Wave 15 · 750 gold first-victory reward · Frost slows her
+src/locales/en.ts:788 [typescript] 8 Sekunden · +50 % Feuerrate · Automatik wartet auf Gegner
+src/locales/en.ts:788 [typescript] 8 seconds · +50% fire rate · Auto-cast waits for enemies
+src/locales/en.ts:793 [typescript] Welle 25 · 1.200 Gold Erstprämie
+src/locales/en.ts:793 [typescript] Wave 25 · 1,200 gold first-victory reward
+src/locales/en.ts:802 [typescript] Sicher farmen oder Welle {0} versuchen
+src/locales/en.ts:802 [typescript] Farm safely or try wave {0}
+src/locales/en.ts:805 [typescript] Laufender Goldzufluss aus Kampfbelohnungen. {0} aktive Sekunden gemessen. Details öffnen.
+src/locales/en.ts:805 [typescript] Live gold income from battle rewards. {0} active seconds measured. Open details.
+src/locales/en.ts:812 [typescript] Freie Bewegung · {0} · besonders wirksam gegen Flieger. Kein garantierter Offline-Bonus.
+src/locales/en.ts:812 [typescript] Free movement · {0} · Especially effective against flyers. No guaranteed offline bonus.
+src/locales/en.ts:815 [typescript] Auftrag: {0} versorgen · +10 % Kampf-Gold. Bereits in Live-Ertrag und Farmbasis enthalten.
+src/locales/en.ts:815 [typescript] Task: supply {0} · +10% battle gold. Already included in live and certified farm income.
+src/locales/en.ts:818 [typescript] First-victory reward received.
+src/locales/en.ts:823 [typescript] Durchschnitt der letzten {0} aktiven Sekunden. Käufe, Verkäufe und Offline-Gutschriften zählen nicht dazu. Nach Neuladen beginnt die Messung neu.
+src/locales/en.ts:823 [typescript] Average over the last {0} active seconds. Purchases, sales and offline credits are excluded. Measurement restarts on reload.
+src/locales/en.ts:825 [typescript] {0} % der sicheren Farmbasis · höchstens {1} Stunden. {2}
+src/locales/en.ts:825 [typescript] {0}% of certified farm income · Up to {1} hours. {2}
+src/locales/en.ts:826 [typescript] Bei unveränderter Verteidigung etwa {0} Gold in einer Stunde.
+src/locales/en.ts:826 [typescript] With unchanged defenses, about {0} gold in one hour.
+src/locales/en.ts:828 [typescript] Welle {0} nicht geschafft. Jetzt Farmen auf Welle {1}. Gold, Türme und Forschung bleiben erhalten.
+src/locales/en.ts:828 [typescript] Wave {0} failed. Now farming wave {1}. Gold, towers and research are preserved.
+src/locales/en.ts:829 [typescript] Letzte Niederlage: Welle {0}. Gold und Ausbau blieben erhalten.
+src/locales/en.ts:829 [typescript] Last defeat: wave {0}. Gold and upgrades were preserved.
+src/locales/en.ts:853 [typescript] Wisp · Gefährtenverwaltung ↗
+src/locales/en.ts:853 [typescript] Wisp · Companion management ↗
+src/locales/en.ts:862 [typescript] Geschenke sind für die hier ausgewählte Gefährtin. Du erhältst sie bei Meilensteinen und begrenzt nach gewonnenen Wellen. Gespräche und Berührungen sind auch ohne weitere Punkte möglich. Neue Belohnungen nach 20 Minuten laufender Spielzeit; Pause und Offline-Zeit zählen nicht.
+src/locales/en.ts:862 [typescript] Gifts go to the companion selected here. You receive them at milestones and in limited amounts after winning waves. You can keep talking and touching even when no more points are available. New rewards become available after 20 minutes of active play; paused and offline time do not count.
+src/locales/en.ts:887 [typescript] Next reward period in {0} min. of active play.
+src/locales/en.ts:902 [typescript] Reward period exhausted
+src/locales/en.ts:917 [typescript] {0} enjoys your company. No more points are available for this reward period.
+src/locales/en.ts:947 [typescript] Heute habe ich Wisp erklärt, warum man Schrauben sortiert. Er hat mir erklärt, warum Gold schöner glänzt. Unentschieden.
+src/locales/en.ts:947 [typescript] Today I explained to Wisp why we sort screws. He explained why gold shines more nicely. Let's call it a draw.
+src/locales/en.ts:1031 [typescript] Heute habe ich Wisp gefragt, wie lange er hierbleibt. Er sagte: Solange es sich lohnt. Ich glaube, bei ihm bedeutete das etwas anderes als bei mir.
+src/locales/en.ts:1031 [typescript] Today I asked Wisp how long he'd stay. He said: as long as it's worth it. I think that meant something different to him than it does to me.
+src/locales/en.ts:1077 [typescript] 45 % Rüstung
+src/locales/en.ts:1077 [typescript] 45% armor
+src/locales/en.ts:1080 [typescript] Langsam, viele Lebenspunkte · 25 % Rüstung
+src/locales/en.ts:1080 [typescript] Slow, high health · 25% armor
+src/locales/en.ts:1085 [typescript] Beweglicher Panzer · 30 % Rüstung
+src/locales/en.ts:1085 [typescript] Mobile armor · 30% armor
+src/locales/en.ts:1091 [typescript] Frost verlangsamt ihn nur um 20 %
+src/locales/en.ts:1091 [typescript] Frost slows it by only 20%
+src/locales/en.ts:1097 [typescript] Mittelschwerer Wächter · 25 % Rüstung
+src/locales/en.ts:1097 [typescript] Medium-weight guardian · 25% armor
+src/locales/en.ts:1110 [typescript] Langsamer Panzer · 25 % Rüstung, zwei Kernschaden
+src/locales/en.ts:1110 [typescript] Slow armored enemy · 25% armor, two core damage
+src/locales/en.ts:1121 [typescript] Aktiv · +10 % Kampf-Gold. Auftrag: {0} versorgen.
+src/locales/en.ts:1121 [typescript] Active · +10% battle gold. Task: supply {0}.
+src/locales/en.ts:1124 [typescript] +10 % Gold
+src/locales/en.ts:1124 [typescript] +10% gold
+src/locales/en.ts:1126 [typescript] {0} Gold
+src/locales/en.ts:1126 [typescript] {0} gold
+src/locales/en.ts:1139 [typescript] +{0} Gold
+src/locales/en.ts:1139 [typescript] +{0} gold
+src/locales/en.ts:1143 [typescript] Aufwerten · {0} Gold
+src/locales/en.ts:1143 [typescript] Upgrade · {0} gold
+src/locales/en.ts:1144 [typescript] Verkaufen · +{0} Gold
+src/locales/en.ts:1144 [typescript] Sell · +{0} gold
+src/locales/en.ts:1153 [typescript] Wisp & Welle 8
+src/locales/en.ts:1153 [typescript] Wisp & Wave 8
+src/locales/en.ts:1154 [typescript] 2 → 8 Stunden
+src/locales/en.ts:1154 [typescript] 2 → 8 hours
+src/locales/en.ts:1155 [typescript] ≈ {0} Gold
+src/locales/en.ts:1155 [typescript] ≈ {0} gold
+src/locales/en.ts:1156 [typescript] {0} → {1} Gold
+src/locales/en.ts:1156 [typescript] {0} → {1} gold
+src/locales/en.ts:1158 [typescript] Wisp (Frost & Welle 5)
+src/locales/en.ts:1158 [typescript] Wisp (Frost & Wave 5)
+src/locales/en.ts:1162 [typescript] ♥ {0}: 40 % langsamer · {1} s
+src/locales/en.ts:1162 [typescript] ♥ {0}: 40% slower · {1} s
+src/locales/en.ts:1166 [typescript] Starting gold · 0 G/min
+src/locales/en.ts:1168 [typescript] Dabei · +10 % Kampf-Gold
+src/locales/en.ts:1168 [typescript] Joined · +10% battle gold
+src/locales/en.ts:1171 [typescript] {0} Gold · bereit
+src/locales/en.ts:1171 [typescript] {0} gold · Ready
+src/locales/en.ts:1172 [typescript] noch {0} Gold
+src/locales/en.ts:1172 [typescript] {0} more gold
+src/locales/en.ts:1173 [typescript] Noch {0} Gold
+src/locales/en.ts:1173 [typescript] {0} more gold
+src/locales/en.ts:1176 [typescript] {0} von {1} Gold
+src/locales/en.ts:1176 [typescript] {0} of {1} gold
+src/locales/en.ts:1196 [typescript] Wisp · +10 % Gold
+src/locales/en.ts:1196 [typescript] Wisp · +10% gold
+src/locales/en.ts:1198 [typescript] {0} %
+src/locales/en.ts:1198 [typescript] {0}%
+src/locales/en.ts:1199 [typescript] Lager I
+src/locales/en.ts:1199 [typescript] Storehouse I
+src/locales/en.ts:1201 [typescript] Willkommen, Wisp!
+src/locales/en.ts:1201 [typescript] Welcome, Wisp!
+src/locales/en.ts:1203 [typescript] Wisp · Versorgung
+src/locales/en.ts:1203 [typescript] Wisp · Supplies
+src/locales/en.ts:1206 [typescript] Vorratslager I
+src/locales/en.ts:1206 [typescript] Storehouse I
+src/locales/en.ts:1207 [typescript] Offline income
+src/locales/en.ts:1230 [typescript] Weniger als 1 Gold
+src/locales/en.ts:1230 [typescript] Less than 1 gold
+src/locales/en.ts:1231 [typescript] ≈ +{0} Gold
+src/locales/en.ts:1231 [typescript] ≈ +{0} gold
+src/locales/en.ts:1239 [typescript] Begrüße Wisp.
+src/locales/en.ts:1239 [typescript] Welcome Wisp.
+src/locales/en.ts:1240 [typescript] Optional: Siedlung → Lager bauen oder „Später“.
+src/locales/en.ts:1240 [typescript] Optional: Settlement → build a Storehouse, or choose “Later”.
+src/locales/en.ts:1253 [typescript] Spare {0} Gold für die Frostforschung.
+src/locales/en.ts:1253 [typescript] Save {0} gold for Frost research.
+src/locales/en.ts:1260 [typescript] Baue Türme oder werte sie auf. Das Lager folgt nach Welle 8.
+src/locales/en.ts:1260 [typescript] Build or upgrade towers. The Storehouse follows after wave 8.
+src/locales/en.ts:1262 [typescript] Mara lässt einen Turm 8 Sekunden lang 50 % schneller schießen.
+src/locales/en.ts:1262 [typescript] Mara makes one tower fire 50% faster for 8 seconds.
+src/locales/en.ts:1263 [typescript] Neu: Vorratslager
+src/locales/en.ts:1263 [typescript] New: the Storehouse
+src/locales/en.ts:1264 [typescript] Speichert Offline-Gold bis zu 8 statt 2 Stunden. Optional · 650 Gold.
+src/locales/en.ts:1264 [typescript] Stores offline gold for up to 8 hours instead of 2. Optional · 650 gold.
+src/locales/en.ts:1276 [typescript] Dein erster Frostkristall ist kostenlos. Jeder weitere kostet 110 Gold.
+src/locales/en.ts:1276 [typescript] Your first Frost Crystal is free. Each additional one costs 110 gold.
+src/locales/en.ts:1295 [typescript] Öffne die Werkstatt. Dort erforschst du die Frostfassung für 60 Gold und schaltest deinen Frostkristall frei.
+src/locales/en.ts:1295 [typescript] Open the workshop. Research Frost Setting there for 60 gold to unlock your Frost Crystal.
+src/main.ts:190 [typescript] Abwesend · Kampf angehalten
+src/main.ts:191 [typescript] Temporäre Probe · kein Speichern und kein Offline-Ertrag
+src/main.ts:209 [typescript] Aktiv · +10 % Kampf-Gold. Auftrag: {0} versorgen.
+src/main.ts:209 [typescript] Werkstatt und Lager
+src/main.ts:209 [typescript] Wisp kommt kostenlos nach Frostfassung und gemeisterter Welle 5. {0} · {1}.
+src/main.ts:211 [typescript] +10 % Gold
+src/main.ts:212 [typescript] Wisp · +10 Prozent Kampf-Gold
+src/main.ts:212 [typescript] Wisp · Frostfassung und Welle 5 nötig
+src/main.ts:231 [typescript] {0} Gold
+src/main.ts:252 [typescript] Hier bauen · {0} Gold
+src/main.ts:252 [typescript] Hier bauen · {0} Gold
+src/main.ts:261 [typescript] Frostkristall · 110 Gold
+src/main.ts:282 [typescript] `${Math.floor(playSeconds / 60)}:${String(Math.floor(playSeconds % 60)).padStart(2, '0')}`
+src/main.ts:300 [typescript] Nach Wisp
+src/main.ts:302 [typescript] Mara zeigt dir Übertakten nach Wisps Ankunft. Zuerst bauen wir die Verteidigung auf.
+src/main.ts:316 [typescript] Nach Wisps Ankunft zeigt dir Mara ihren Zauber. Danach kannst du sie selbst steuern.
+src/main.ts:327 [typescript] Welle {0}: zwei konservative, schadensfreie Wiederholungen inklusive Wellenpausen. Grundlage für {1} % Offline-Ertrag.
+src/main.ts:328 [typescript] Noch kein gültiger Farmnachweis. Eine erste Welle muss live geschafft und zweimal konservativ geprüft werden.
+src/main.ts:335 [typescript] Wechsel ins sichere Farmen …
+src/main.ts:358 [typescript] Die gespeicherte Pause war aktiv. Dabei entsteht kein Offline-Gold.
+src/main.ts:359 [typescript] Noch kein sicherer Farmnachweis vorhanden. Besiege zuerst eine Welle zuverlässig.
+src/main.ts:360 [typescript] Deine Vorräte sind voll. Die Sammelzeit wurde ausgeschöpft.
+src/main.ts:361 [typescript] Deine Verteidigung hat Gold für dich gesammelt. Setze es für deinen nächsten Ausbau ein.
+src/main.ts:362 [typescript] Farmbasis beim Verlassen: {0} G/min · {1} % Ertrag · bis zu {2} Stunden. Zeit bis zum Einsammeln zählt mit.
+src/main.ts:363 [typescript] Belohnung einsammeln und fortsetzen
+src/main.ts:373 [typescript] Bis zu drei Ziele · 80 Sprungreichweite · 100/65/42 % Schaden
+src/main.ts:373 [typescript] Bevorzugt Rüstung · ignoriert 100 % davon
+src/main.ts:373 [typescript] Frosttreffer · 45 % langsamer für 2 s
+src/main.ts:375 [typescript] {0} verteidigt den Weg. Verbessere ihn oder investiere das Gold an anderer Stelle.
+src/main.ts:390 [typescript] Aufwerten · {0} Gold
+src/main.ts:394 [typescript] Verkaufen · +{0} Gold
+src/main.ts:405 [typescript] Weitere Upgrades benötigen mehr Gold.
+src/main.ts:405 [typescript] Noch {0} Gold bis zum nächsten Level.
+src/main.ts:406 [typescript] Noch {0} Gold bis zum Waldwächter.
+src/main.ts:417 [typescript] Werkstatt II kostet {0} Gold und erschließt Turmlevel ab 7.
+src/main.ts:423 [typescript] Noch {0} Gold für Werkstatt II.
+src/main.ts:425 [typescript] Werkstatt platzieren · {0} Gold
+src/main.ts:429 [typescript] Frostfassung erforschen · {0} Gold
+src/main.ts:443 [typescript] Frostfassung: Werkstatt nötig · 60 Gold. Verlangsamt Gegner und erschließt Turmlevel 4–6.
+src/main.ts:444 [typescript] ✓ Sturmlicht: bis zu drei Ziele, 80 Sprungreichweite, sinkender Schaden. Turmbau separat: {0} Gold.
+src/main.ts:445 [typescript] Sturmlicht: Frostfassung, gemeisterte Welle {0} und abgeschlossene Ilyra-Einführung nötig. Forschung {1} Gold; Turmbau separat {2} Gold.
+src/main.ts:468 [typescript] Geschenke im Vorrat
+src/main.ts:477 [typescript] Siedlung · Neues Gebäude verfügbar: Vorratslager
+src/main.ts:494 [typescript] Nächstes Ziel: Boss 25 besiegen, dann für 1.200 Gold zu Taverne II ausbauen und Ilyra rekrutieren.
+src/main.ts:495 [typescript] Mara verstärkt Türme · Wisp versorgt · Ilyra kämpft.
+src/main.ts:503 [typescript] Taverne II · noch {0} Gold
+src/main.ts:503 [typescript] Taverne II ausbauen · 1.200 Gold
+src/main.ts:504 [typescript] Wisp & Welle 8
+src/main.ts:505 [typescript] Wisp versorgt das Lager. Deine Vorräte sammeln automatisch während deiner Abwesenheit.
+src/main.ts:506 [typescript] Wenn du das Spiel schließt, sammelt deine sichere Verteidigung weiter. Das Lager verlängert das Sammeln von 2 auf 8 Stunden. Optional; es macht deine Türme nicht stärker.
+src/main.ts:508 [typescript] {0} % der Farmbasis
+src/main.ts:509 [typescript] `${OFFLINE.efficiencyPermille / 10} % → ${WAREHOUSE_OFFLINE.efficiencyPermille / 10} %`
+src/main.ts:510 [typescript] Bis zu 8 Stunden
+src/main.ts:510 [typescript] 2 → 8 Stunden
+src/main.ts:511 [typescript] 0 Gold · Pause aktiv
+src/main.ts:511 [typescript] Zuerst sicher farmen
+src/main.ts:512 [typescript] ≈ {0} Gold
+src/main.ts:513 [typescript] {0} → {1} Gold
+src/main.ts:514 [typescript] Wisp ✓
+src/main.ts:514 [typescript] Wisp (Frost & Welle 5)
+src/main.ts:515 [typescript] Noch {0} Gold. Die Vorschau gilt bei unveränderter Verteidigung; während einer Pause entsteht kein Ertrag.
+src/main.ts:516 [typescript] Vorschau bei unveränderter Verteidigung. Während einer Pause entsteht kein Offline-Ertrag.
+src/main.ts:526 [typescript] Dein früherer Lichtungskauf zählt beim späteren Öffnen der Ostfront mit 900 Gold. Diese Gutschrift ist für den Zugang reserviert.
+src/main.ts:530 [typescript] Sicheres Farmen · Welle {0}. Ein neuer Vorstoß beginnt erst auf deinen Wunsch am Wellenübergang.
+src/main.ts:538 [typescript] Welle {0} geschafft · +{1} Gold Abschlussbonus.
+src/main.ts:539 [typescript] Gegner besiegt · +{0} Gold.
+src/main.ts:541 [typescript] {0} besiegt! +{1} Gold Erstprämie.
+src/main.ts:541 [typescript] Rosenspiegel erneut besiegt. Gewöhnliche Kampfbelohnungen erhalten.
+src/main.ts:546 [typescript] Wisp ist da! +10 % Kampf-Gold und die Steinschleuder sind jetzt verfügbar.
+src/main.ts:555 [typescript] Vorratslager gebaut! Künftig 26 % Offline-Ertrag für bis zu 8 Stunden.
+src/main.ts:557 [typescript] Turm verkauft · +{0} Gold. Die sichere Farmbasis wird neu geprüft.
+src/main.ts:558 [typescript] Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.
+src/main.ts:579 [typescript] ♥ {0}: 40 % langsamer · {1} s
+src/main.ts:581 [typescript] Frost aktiv · 45 % langsamer · {0} s
+src/main.ts:582 [typescript] Boss und Begleiter besiegen · {0} Gold Erstprämie
+src/main.ts:913 [typescript] Gespeicherte Verteidigung geladen. Gold, Türme und laufender Kampf sind wieder da.
+src/main.ts:964 [typescript] calc(100% + 6px)
+src/main.ts:1003 [typescript] Spiel bereits in einem anderen Tab aktiv. Dieser Tab führt keinen Kampf aus und vergibt kein Gold. Du kannst ihn erneut aktivieren, wenn der andere Tab nicht mehr aktiv ist.
+src/offline-welcome.ts:3 [typescript] Da bist du ja! Ich habe auf dein Gold aufgepasst. Nachgezählt habe ich es nur dreimal. Na gut, viermal.
+src/offline.ts:39 [typescript] Offline time must be a non-negative safe integer.
+src/offline.ts:120 [typescript] Invalid offline state.
+src/offline.ts:125 [typescript] Invalid farm certificate.
+src/offline.ts:142 [typescript] Invalid offline policy.
+src/offline.ts:174 [typescript] Offline reward exceeds the safe currency range.
+src/offline.ts:197 [typescript] Pending reward exceeds the safe currency range.
+src/offline.ts:222 [typescript] Claim the pending offline receipt before resuming active play.
+src/onboarding-ui.ts:46 [typescript] Jeder besiegte Käfer bringt Gold. Nach dem ersten Treffer zeige ich dir das Upgrade.
+src/onboarding-ui.ts:48 [typescript] Die Welle wartet. Öffne den markierten Turm und verbessere ihn einmal für 60 Gold auf Level 2.
+src/onboarding-ui.ts:49 [typescript] Öffne die Werkstatt. Dort erforschst du die Frostfassung für 60 Gold und schaltest deinen Frostkristall frei.
+src/onboarding-ui.ts:53 [typescript] Dein erster Frostkristall ist kostenlos. Jeder weitere kostet 110 Gold.
+src/onboarding-ui.ts:54 [typescript] Tippe auf das neue Gebäude auf der Karte. Dort erforschst du die Frostfassung für 60 Gold.
+src/onboarding-ui.ts:73 [typescript] Waldwächter platzieren · 75 Gold
+src/progress-ui.ts:29 [typescript] Noch {0} Gold
+src/progress-ui.ts:41 [typescript] Wisp ist angekommen
+src/progress-ui.ts:41 [typescript] +10 % Kampf-Gold · arbeitet selbstständig
+src/progress-ui.ts:41 [typescript] Wisp kennenlernen
+src/progress-ui.ts:43 [typescript] Vorräte für deine Rückkehr
+src/progress-ui.ts:43 [typescript] {0} · optional: 2 → 8 Stunden sammeln
+src/progress-ui.ts:43 [typescript] Vorratslager ansehen
+src/progress-ui.ts:44 [typescript] Vorratslager freischalten · längere Offline-Erträge
+src/progress-ui.ts:48 [typescript] Welle 15 · 750 Gold Erstprämie · Frost verlangsamt
+src/progress-ui.ts:50 [typescript] 8 Sekunden · +50 % Feuerrate · Automatik wartet auf Gegner
+src/progress-ui.ts:52 [typescript] Welle 25 · 1.200 Gold Erstprämie
+src/progress-ui.ts:57 [typescript] Sicher farmen oder Welle {0} versuchen
+src/progress-ui.ts:62 [typescript] Sicher farmen oder Welle {0} versuchen
+src/progress-ui.ts:89 [typescript] Ertrag wird ermittelt
+src/progress-ui.ts:91 [typescript] Laufender Goldzufluss aus Kampfbelohnungen. {0} aktive Sekunden gemessen. Details öffnen.
+src/progress-ui.ts:107 [typescript] {0} von {1} Gold
+src/progress-ui.ts:113 [typescript] Freie Bewegung · {0} · besonders wirksam gegen Flieger. Kein garantierter Offline-Bonus.
+src/progress-ui.ts:114 [typescript] Auftrag: {0} versorgen · +10 % Kampf-Gold. Bereits in Live-Ertrag und Farmbasis enthalten.
+src/progress-ui.ts:114 [typescript] Werkstatt und Lager
+src/progress-ui.ts:133 [typescript] Durchschnitt der letzten {0} aktiven Sekunden. Käufe, Verkäufe und Offline-Gutschriften zählen nicht dazu. Nach Neuladen beginnt die Messung neu.
+src/progress-ui.ts:134 [typescript] Bereits gemeisterte Wellen geben 10 % des normalen Goldes. Neue Wellen und einmalige Bossprämien behalten ihren vollen Ertrag.
+src/progress-ui.ts:137 [typescript] {0} % der sicheren Farmbasis · höchstens {1} Stunden. {2}
+src/progress-ui.ts:137 [typescript] Bei unveränderter Verteidigung etwa {0} Gold in einer Stunde.
+src/progress-ui.ts:141 [typescript] Welle {0} nicht geschafft. Jetzt Farmen auf Welle {1}. Gold, Türme und Forschung bleiben erhalten.
+src/progress-ui.ts:142 [typescript] Letzte Niederlage: Welle {0}. Gold und Ausbau blieben erhalten.
+src/quick-win-guidance.ts:100 [typescript] Ausbau: {0} Gold · noch {1} Gold.
+src/quick-win-guidance.ts:100 [typescript] Ausbau: {0} Gold · bereit.
+src/reward-display.ts:14 [typescript] Weniger als 1 Gold
+src/reward-display.ts:15 [typescript] ≈ +{0} Gold
+src/reward-display.ts:16 [typescript] +{0} Gold
+src/reward-display.ts:17 [typescript] +{0} Gold
+src/save-store.ts:67 [typescript] The offline state requires a newer game version.
+src/save-store.ts:72 [typescript] The offline production proof requires a newer game version.
+src/save-store.ts:84 [typescript] The saved offline state is invalid.
+src/save-store.ts:118 [typescript] The supplied writer lease no longer exists.
+src/tavern-ilyra-content.ts:37 [typescript] Heute habe ich Wisp gefragt, wie lange er hierbleibt. Er sagte: Solange es sich lohnt. Ich glaube, bei ihm bedeutete das etwas anderes als bei mir.
+src/tavern-mara-content.ts:36 [typescript] Heute habe ich Wisp erklärt, warum man Schrauben sortiert. Er hat mir erklärt, warum Gold schöner glänzt. Unentschieden.
+src/tavern-rig-preview.ts:258 [typescript] Gut, der war nicht schlecht. Erzähl ihn bloß nicht Wisp – sonst muss ich ihn morgen wieder hören.
+src/tavern-ui.ts:57 [typescript] `
+      <header class="tv-header"><button type="button" data-do="back" class="tv-back" aria-label="Zurück zur Tavernenübersicht">‹</button><div><small>DER ALTE HAIN</small><h2 id="tv-title">The Last Cozy Corner</h2></div><button type="button" data-do="close" class="tv-close" aria-label="Taverne schließen">×</button></header>
+      <div class="tv-combat"><span data-text="combat"></span><button type="button" data-do="close">Zum Kampf</button></div>
+      <div class="tv-warning" role="status" hidden><span data-text="warning"></span><button type="button" data-do="close">Zum Kampf</button><button type="button" data-do="dismiss" aria-label="Kampfhinweis ausblenden">×</button></div>
+      <div class="tv-error" role="alert" hidden></div>
+      <section class="tv-overview">
+        <div class="tv-room"><span>EIN MOMENT AM FEUER</span><h3>Unter Gefährten.</h3><p>Ein Gespräch. Ein kleines Geschenk.<br>Und Zeit, einander kennenzulernen.</p></div>
+        <div class="tv-guests">
+          <button type="button" class="tv-guest tv-mara" data-do="mara"><canvas width="136" height="160" aria-hidden="true"></canvas><div><small>DEINE TÜFTLERIN</small><h3>Mara</h3><span data-text="mara-hearts" class="tv-hearts"></span><p class="tv-gift-badge" data-text="mara-gift"></p><p data-text="mara-greeting">„Schön, dass du vorbeischaust.“</p><strong>Zeit mit Mara verbringen</strong></div></button>
+          <article class="tv-guest tv-ilyra"><canvas width="136" height="160" aria-hidden="true"></canvas><div><small>STERNENWÄCHTERIN</small><h3>Ilyra</h3><span data-text="ilyra-hearts" class="tv-hearts"></span><p class="tv-gift-badge" data-text="ilyra-gift"></p><p data-text="ilyra-lock"></p><button type="button" data-do="ilyra" class="tv-small">Rekrutierung ansehen</button></div></article>
+        </div>
+        <footer class="tv-overview-footer"><button type="button" data-do="wisp">Wisp · Gefährtenverwaltung</button><button type="button" data-do="building">Gebäude & Ausbau</button></footer>
+      </section>
+      <section class="tv-character" hidden>
+        <div class="tv-bond"><div class="tv-bond-visual"><div class="tv-heart-buttons" role="group" aria-label="Maras persönliche Momente">${this.content.moments.map(moment => `<button type="button" data-moment="${moment.heart}"><svg viewBox="0 0 40 38" aria-hidden="true"><path class="tv-heart-shape" d="M20 34C16 30 3 22 3 12C3 2 15 0 20 9C25 0 37 2 37 12C37 22 24 30 20 34Z"/><path class="tv-heart-shine" d="M8 13C7 8 12 5 16 10"/></svg></button>`).join('')}</div><div class="tv-bond-track" title="Ein Abschnitt pro Herz"><progress max="160" value="0" aria-label="Maras Zuneigung"></progress><span class="tv-bond-fill" aria-hidden="true"></span><span class="tv-bond-marks" aria-hidden="true"></span></div></div><div class="tv-bond-copy"><span class="tv-heart-help">Herzen antippen: persönliche Momente erleben.</span></div></div>
+        <div class="tv-character-body">
+          <div class="tv-stage"><div class="tv-figure"><img class="tv-loading-portrait" alt="" aria-hidden="true" hidden><canvas width="384" height="512" aria-label="Mara, animierte Charakteransicht"></canvas>${Object.entries(this.content.reactions).map(([key, value]) => `<button type="button" class="tv-hotspot" data-region="${key}" aria-label="${value.label} berühren"><span aria-hidden="true"></span><em>${value.label}</em></button>`).join('')}</div><span class="tv-load-status" role="status" hidden></span><span class="tv-stage-caption">Mara · Tüftlerin des Hains</span></div>
+          <div class="tv-conversation"><div class="tv-story-heading" hidden><small data-text="story-step"></small><h3 data-text="story-title"></h3></div><div class="tv-dialogue"><small>MARA</small><p data-text="line">Da bist du ja. Setz dich einen Moment zu mir.</p></div><p class="tv-result" data-text="result" role="status"></p><button type="button" data-do="new-moment" class="tv-unlock" hidden><strong data-text="unlock-title"></strong><span data-text="unlock-story"></span></button><div class="tv-story-controls" hidden><button type="button" data-do="story-next">Weiter</button><button type="button" data-do="story-exit">Zurück zu Mara</button></div><p class="tv-touch-help" hidden></p><div class="tv-actions"><button type="button" data-do="speak" aria-controls="tv-talk-options" aria-expanded="false"><span>Sprechen</span><small data-text="talk"></small></button><button type="button" data-do="touch"><span>Berühren</span><small data-text="touch"></small></button><button type="button" data-action="gift"><span>Schenken</span><small data-text="gift"></small></button></div><div class="tv-gifts"><p data-text="stock"></p><p data-text="gift-hint"></p><details><summary>Geschenke & Fortschritt</summary><p data-text="points"></p><p class="tv-chapter" data-text="chapter"></p><p class="tv-moment-hint" data-text="moment-hint"></p><p class="tv-personal" data-text="personal"></p><p data-text="reserves"></p><p>Normale Geschenke helfen bis 58 Zuneigung.</p><p>Alle 10 gewonnenen normalen Wellen gibt es ein Geschenk. Ab Herz 2 zählen 30 weitere Siege für ein persönliches Geschenk. Gespräche und freigeschaltete Berührungen bleiben immer möglich.</p><p data-text="renewal"></p><button type="button" class="tv-combat-link" data-do="mara-combat">Mara im Kampf verwalten</button></details></div></div>
+        </div>
+      </section>`
+src/tavern-ui.ts:240 [typescript] 🎁 {0} im Vorrat
+src/tavern-ui.ts:256 [typescript] `${Math.max(0, Math.min(100, section * 20))}%`
+src/tavern-ui.ts:318 [typescript] Aus deinem Vorrat
+src/tutorial-guide.ts:10 [typescript] Begrüße Wisp.
+src/tutorial-guide.ts:14 [typescript] Optional: In der Siedlung ein Lager bauen oder „Später“ wählen.
+src/tutorial-guide.ts:29 [typescript] Spare {0} Gold für die Frostforschung.
+src/tutorial-guide.ts:136 [typescript] .onboarding-actions, .quick-win-actions, #meet-wisp
+index.html:37 [html-text] Ertrag wird ermittelt
+index.html:37 [html-text] Gold. Ertragsdetails öffnen
+index.html:52 [html-text] Wisp · Neu im Hain
+index.html:52 [html-text] Ich bin Wisp und kümmere mich um die Vorräte. Deine Kämpfe bringen ab jetzt 10 % mehr Gold. Das läuft automatisch.
+index.html:52 [html-text] Willkommen, Wisp!
+index.html:65 [html-text] Waldwächter bauen · 75 Gold
+index.html:65 [html-text] Frostkristall bauen · 110 Gold
+index.html:65 [html-text] Steinschleuder bauen · 135 Gold
+index.html:65 [html-text] Sturmlicht bauen · 170 Gold
+index.html:65 [html-text] Scharfschütze bauen · 170 Gold
+index.html:67 [html-text] Sturmlicht erforschen · 900 Gold
+index.html:67 [html-text] Werkstatt II ausbauen · 1.200 Gold
+index.html:68 [html-text] Wisp · Versorgung
+index.html:68 [html-text] Wisp erledigt Werkstattgänge und erhöht Gegner- und Wellenbelohnungen dauerhaft um 10 %. Du musst nichts einsammeln oder zuweisen.
+index.html:68 [html-text] Der Bonus steckt bereits in der sicheren Farmbasis. Verkäufe erhalten keinen Bonus.
+index.html:78 [html-text] Wisp · Versorgung
+index.html:81 [html-text] Taverne II ausbauen · 1.200 Gold
+index.html:89 [html-text] Unterstützt den aktiven Kampf. Sichere Farmbasis und Offline-Ertrag rechnen ohne Sternensalve.
+index.html:92 [html-text] Vorratslager I
+index.html:93 [html-text] Sichere Farmbasis
+index.html:93 [html-text] Offline-Ertrag
+index.html:93 [html-text] Nach einer Stunde
+index.html:94 [html-text] Lager platzieren · 650 Gold
+index.html:94 [html-text] Lager versetzen
+index.html:99 [html-text] Mara zaubert über sechs Felder Entfernung: acht Sekunden lang 50 % mehr Feuerrate. Die Automatik wartet auf Gegner in Reichweite des Turms. Du kannst auch selbst auslösen.
+index.html:112 [html-text] Lager I
+index.html:112 [html-text] Mehr Offline-Ertrag
+index.html:114 [html-text] Wisp
+index.html:122 [html-text] Abwesend
+index.html:122 [html-text] Belohnung einsammeln und fortsetzen
+index.html:126 [html-text] Sicheres Farmen
+index.html:126 [html-text] Kampfgold seit Aufzeichnung
+index.html:127 [html-text] Sie kündigt ihren Ziel-Turm an und senkt dessen Feuerrate 4,5 Sekunden lang um 40 %. Frost verlangsamt ihren Vormarsch, unterbricht aber nicht den Zauber. Steinschleudern treffen die Begleitgruppe; Scharfschützen durchdringen deren Rüstung. Erreicht der Boss den Kern, scheitert der Versuch.
+index.html:127 [html-text] Erstprämien: 750 Gold in Welle 15, 1.200 Gold in Welle 25; jeweils einmalig und ohne Wisp-Bonus. Spätere Siege geben 10 % des gewöhnlichen Gegner- und Wellen-Goldes. Bosswellen erzeugen keine Offline-Farmbasis.
+index.html:127 [html-text] Ab Welle 16 steigt das gewöhnliche Kampf-Gold: zunächst auf das Doppelte, danach pro Welle um 12 Prozentpunkte bis höchstens zum Vierfachen. So finanzierst du die höheren Turmlevel; Wisps Bonus kommt einmalig hinzu.
+index.html:129 [html-text] Dein Goldfluss
+index.html:129 [html-text] Sichere Farmbasis
+index.html:129 [html-text] Offline-Ertrag
+index.html:129 [html-text] Wisp · Versorgung
+index.html:130 [html-text] Die Laternenqualle heilt nach kurzem Aufleuchten bis zu zwei verwundete Begleiter um je 6 % ihrer maximalen Lebenspunkte. Frühestens alle 3 Sekunden; keine Heilung von Quallen oder Bossen.
+index.html:131 [html-text] Farmdurchläufe
+index.html:43 [aria-label] Gold für das nächste Ziel
+index.html:49 [aria-label] Gold für den nächsten Lernschritt
+index.html:50 [aria-label] Gold für den nächsten Lernschritt
+index.html:52 [aria-label] Wisp kommt an
+index.html:106 [aria-label] Waldwächter platzieren · 75 Gold
+index.html:114 [aria-label] Wisp ansehen

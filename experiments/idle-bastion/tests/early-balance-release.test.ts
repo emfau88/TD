@@ -30,7 +30,7 @@ test('rules 3–15 match main for 910 encounters; current rules change only wave
     if(wave===10||wave===20)continue;
     assert.deepEqual({...encounter(wave,16),version:15},encounter(wave,15),'wave '+wave);
   }
-  assert.equal(BATTLE_SCHEMA_VERSION,32);assert.equal(BATTLE_RULES_VERSION,16);
+  assert.equal(BATTLE_SCHEMA_VERSION,33);assert.equal(BATTLE_RULES_VERSION,17);
 });
 
 test('wave 10 has 22 enemies in four short groups; wave 20 trades exactly three beetles with nearly equal rewards',()=>{
@@ -61,7 +61,7 @@ test('real schema-30 fights resume with identical old movement, projectiles, tim
     assert.ok(IdleBattle.restore(b.snapshot()),fixture.key+' boundary');
     const attempt=b.attemptId;
     for(let i=0;i<2000&&b.attemptId===attempt;i++)b.update(.025);
-    assert.ok(b.attemptId>attempt);assert.equal(b.waveRecipeVersion,16);
+    assert.ok(b.attemptId>attempt);assert.equal(b.waveRecipeVersion,BATTLE_RULES_VERSION);
   }
 });
 
@@ -83,7 +83,7 @@ test('new wave 10/20 and both boss snapshots reload exactly; downgrade and forge
 test('old farm departure remains payable once through native save migration; fresh proof needs two current clears',async()=>{
   const {snapshot,proof}=legacy.departure,b=IdleBattle.restore(snapshot)!;assert.ok(b);
   const before=b.snapshot();assert.equal(isFarmCertificateValid(proof,b),false);
-  const fresh=certifyFarm(b,proof);assert.ok(fresh);assert.equal(fresh.rulesVersion,16);
+  const fresh=certifyFarm(b,proof);assert.ok(fresh);assert.equal(fresh.rulesVersion,BATTLE_RULES_VERSION);
   assert.equal(isFarmCertificateValid(fresh,b),true);assert.deepEqual(b.snapshot(),before);
   const offline=reserveOffline(beginAbsence(createOfflineState(1000),1000,proof,false,WAREHOUSE_OFFLINE),31000);
   const units=offline.pendingReward!.amountUnits;assert.ok(units>0);
@@ -97,7 +97,7 @@ test('old farm departure remains payable once through native save migration; fre
   store=await openBattleStore(factory,name,()=>31000);
   const session=await BattleSession.open(store,{now:()=>31000,ownerId:'early-release',locks:null});
   assert.equal(session.pendingReward?.amountUnits,units);
-  assert.equal(session.certificate?.rulesVersion,16);
+  assert.equal(session.certificate?.rulesVersion,BATTLE_RULES_VERSION);
   const gold=session.battle.gold*1000+session.battle.goldRemainderUnits;
   assert.equal(await session.claimOffline(),true);
   assert.equal(session.battle.gold*1000+session.battle.goldRemainderUnits,gold+units);

@@ -3,7 +3,7 @@ import test from 'node:test';
 import { IDBFactory } from 'fake-indexeddb';
 import { legacyFixtures, assertHistoricalFields } from './legacy-fixtures';
 import { IdleBattle, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION } from '../src/battle';
-import { beginAbsence, claimOffline, createOfflineState, reserveOffline } from '../src/offline';
+import { LEGACY_OFFLINE, beginAbsence, claimOffline, createOfflineState, reserveOffline } from '../src/offline';
 import { BattleSession } from '../src/battle-session';
 import {
   openBattleStore, SaveConflictError, SaveUnsupportedError, SaveValidationError,
@@ -457,7 +457,7 @@ test('pending offline receipt and cleared claim persist atomically with actual g
   const battle = IdleBattle.restore(loaded.save.battle)!;
   battle.creditOfflineUnits(claimed.amountUnits);
   const second = await reopened.save(battle.snapshot(), false, loaded.save.revision, { writer: nextWriter, offline: claimed.state });
-  assert.equal(second.battle.gold, first.battle.gold + 30);
+  assert.equal(second.battle.gold, first.battle.gold + 12);
   assert.equal(second.offline.pendingReward, null);
   assert.ok(second.offline.window, 'Persisting a claim still must not end the original window.');
   assert.equal(claimOffline(second.offline, loaded.save.offline.pendingReward!.id).amountUnits, 0);
@@ -484,7 +484,7 @@ test('battle schema two migrates without rewriting the historical absence proof 
   const oldBattle = legacyFixtures().store.schema2;
   const battle = oldBattle;
   const basis = { wave: 1, fingerprint: 'pre-mara-rule-one-defense', rulesVersion: 1, rewardGold: 200, durationMs: 120_000 };
-  const offline = reserveOffline(beginAbsence(createOfflineState(1000), 1000, basis, false), 31_000);
+  const offline = reserveOffline(beginAbsence(createOfflineState(1000), 1000, basis, false, LEGACY_OFFLINE), 31_000);
   const legacy = { schemaVersion: 2, revision: 12, writtenAt: 31_000, paused: false, battle: oldBattle, offline };
   await rawWrite(factory, 'default', legacy);
   const store = await openBattleStore(factory, DB_NAME, () => 61_000);
@@ -512,7 +512,7 @@ test('session return across the Mara rule update pays the historical rate once a
   const oldBattle = legacyFixtures().store.schema2;
   const battle = oldBattle;
   const basis = { wave: 1, fingerprint: 'pre-mara-rule-one-defense', rulesVersion: 1, rewardGold: 200, durationMs: 120_000 };
-  const offline = reserveOffline(beginAbsence(createOfflineState(1000), 1000, basis, false), 31_000);
+  const offline = reserveOffline(beginAbsence(createOfflineState(1000), 1000, basis, false, LEGACY_OFFLINE), 31_000);
   await rawWrite(factory, 'default', { schemaVersion: 2, revision: 12, writtenAt: 31_000, paused: false, battle: oldBattle, offline });
   const store = await openBattleStore(factory, DB_NAME, () => now);
   const returned = await BattleSession.open(store, { now: () => now, ownerId: 'rules-update-tab', locks: null });

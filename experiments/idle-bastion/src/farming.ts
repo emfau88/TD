@@ -1,4 +1,4 @@
-import { BALANCE, battleReward } from './balance';
+import { BALANCE, battleRewardUnits } from './balance';
 /** Conservative, bounded, Phaser-free proofs. A probe never mutates the live
  * model, issues its rewards or consumes its renderer/tutorial event stream.
  */
@@ -28,10 +28,10 @@ const MAX_PROBE_REWARD = 2.2 * BALANCE.maxRewardFactor * (BASE.waves.maxCount * 
 // A generous upper bound for two entry clears: every reward including Wisp's
 // 10%, rounded upwards, with zero combat time and only the mandatory pauses.
 // This can discard an economically dominated fallback, never certify a wave.
-const MAX_ENTRY_REWARD = Math.ceil(2.2 * (
-  battleReward(clearReward(1, BATTLE_RULES_VERSION), 1, BATTLE_RULES_VERSION)
-  + Array.from({ length: waveCount(1) }, (_, index) => battleReward(waveEnemy(1, index).gold, 1, BATTLE_RULES_VERSION))
-    .reduce((sum, gold) => sum + gold, 0)));
+const MAX_ENTRY_REWARD = Math.ceil(2 * (
+  battleRewardUnits(clearReward(1, BATTLE_RULES_VERSION), 1, BATTLE_RULES_VERSION, true, true)
+  + Array.from({ length: waveCount(1) }, (_, index) => battleRewardUnits(waveEnemy(1, index).gold, 1, BATTLE_RULES_VERSION, true, true))
+    .reduce((sum, units) => sum + units, 0)) / 1000);
 
 /** Ignores transient HP, cooldowns, currency, IDs and kill statistics. Every
  * economically relevant placement/level/rule/layout change invalidates a proof.

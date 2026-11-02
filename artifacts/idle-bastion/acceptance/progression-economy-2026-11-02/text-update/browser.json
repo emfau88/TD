@@ -1,0 +1,62 @@
+[
+  {
+    "lang": "de",
+    "kind": "legacy",
+    "basis": "Farmbasis beim Verlassen: 2.561 G/min · 65 % Ertrag · bis zu 8 Stunden. Zeit bis zum Einsammeln zählt mit. Diese Abwesenheit wird noch nach den früheren Regeln vergütet.",
+    "fallback": "",
+    "rate": "Nach 15 aktiven Sekunden erscheint eine erste Schätzung. Nach 60 Sekunden ist das Messfenster vollständig. Bereits gemeisterte Wellen geben 10 % des normalen Goldes. Noch nicht geschaffte Wellen und einmalige Bossprämien behalten ihren vollen Ertrag.",
+    "boss": "Rosenspiegels Rückkehr · Welle 25\n\nWelle 15: 1 Siege · Welle 25: 0 Siege. Noch unbesiegt · Herausforderung nach Welle 24. Frühere Wellenrekorde ersetzen keinen Bosssieg.\n\nSie kündigt ihren Ziel-Turm an und senkt dessen Feuerrate 4,5 Sekunden lang um 40 %. Frost verlangsamt ihren Vormarsch, unterbricht aber nicht den Zauber. Steinschleudern treffen die Begleitgruppe; Scharfschützen durchdringen deren Rüstung. Erreicht der Boss den Kern, scheitert der Versuch.\n\nErstprämien: 750 Gold in Welle 15, 1.200 Gold in Welle 25; jeweils einmalig und ohne Wisp-Bonus. Spätere Siege geben 10 % des gewöhnlichen Gegner- und Wellen-Goldes. Bosswellen erzeugen keine Offline-Farmbasis.\n\nNoch nicht geschaffte Wellen bringen den vollen Ertrag, der ab Welle 16 steigt. Bereits geschaffte Wellen bringen 10 % des normalen Goldes. Wisps Bonus ist in den angezeigten Erträgen bereits enthalten.\n\nBoss herausfordern · Welle 25Erste Begegnung wiederholen · Welle 15",
+    "enemy": "Gegner auf dem Waldweg\n\nZusammenstellung Welle 20 · Schwarm: 3 × Panzerflieger · 8 × Feuerkäfer · 2 × Waldgoblin · 12 × Blattkäfer\n\nNächster neuer Gegnertyp: Laternenqualle ab Welle 21.\n\nAlle Turmtypen treffen auch Flieger. Flieger folgen dem Waldweg; sie überspringen deine Verteidigung nicht.\n\nGegnertypen und Gegenmittel",
+    "errors": []
+  },
+  {
+    "lang": "de",
+    "kind": "current",
+    "basis": "Farmbasis beim Verlassen: 256,1 G/min · 26 % Ertrag · bis zu 8 Stunden. Zeit bis zum Einsammeln zählt mit.",
+    "fallback": "",
+    "rate": "Nach 15 aktiven Sekunden erscheint eine erste Schätzung. Nach 60 Sekunden ist das Messfenster vollständig. Bereits gemeisterte Wellen geben 10 % des normalen Goldes. Noch nicht geschaffte Wellen und einmalige Bossprämien behalten ihren vollen Ertrag.",
+    "boss": "Rosenspiegels Rückkehr · Welle 25\n\nWelle 15: 1 Siege · Welle 25: 0 Siege. Noch unbesiegt · Herausforderung nach Welle 24. Frühere Wellenrekorde ersetzen keinen Bosssieg.\n\nSie kündigt ihren Ziel-Turm an und senkt dessen Feuerrate 4,5 Sekunden lang um 40 %. Frost verlangsamt ihren Vormarsch, unterbricht aber nicht den Zauber. Steinschleudern treffen die Begleitgruppe; Scharfschützen durchdringen deren Rüstung. Erreicht der Boss den Kern, scheitert der Versuch.\n\nErstprämien: 750 Gold in Welle 15, 1.200 Gold in Welle 25; jeweils einmalig und ohne Wisp-Bonus. Spätere Siege geben 10 % des gewöhnlichen Gegner- und Wellen-Goldes. Bosswellen erzeugen keine Offline-Farmbasis.\n\nNoch nicht geschaffte Wellen bringen den vollen Ertrag, der ab Welle 16 steigt. Bereits geschaffte Wellen bringen 10 % des normalen Goldes. Wisps Bonus ist in den angezeigten Erträgen bereits enthalten.\n\nBoss herausfordern · Welle 25Erste Begegnung wiederholen · Welle 15",
+    "enemy": "Gegner auf dem Waldweg\n\nZusammenstellung Welle 20 · Schwarm: 3 × Panzerflieger · 8 × Feuerkäfer · 2 × Waldgoblin · 12 × Blattkäfer\n\nNächster neuer Gegnertyp: Laternenqualle ab Welle 21.\n\nAlle Turmtypen treffen auch Flieger. Flieger folgen dem Waldweg; sie überspringen deine Verteidigung nicht.\n\nGegnertypen und Gegenmittel",
+    "errors": []
+  },
+  {
+    "lang": "de",
+    "kind": "farm",
+    "basis": "Farmbasis beim Verlassen: 340,8 G/min · 26 % Ertrag · bis zu 8 Stunden. Zeit bis zum Einsammeln zählt mit.",
+    "fallback": "Welle 36 nicht geschafft. Jetzt Farmen auf Welle 29 mit 10 % Gold für bereits geschaffte Wellen. Gold und Ausbau bleiben erhalten. Verbessere deine Verteidigung und starte erneut einen Vorstoß.",
+    "rate": "Nach 15 aktiven Sekunden erscheint eine erste Schätzung. Nach 60 Sekunden ist das Messfenster vollständig. Bereits gemeisterte Wellen geben 10 % des normalen Goldes. Noch nicht geschaffte Wellen und einmalige Bossprämien behalten ihren vollen Ertrag.",
+    "boss": "Rosenspiegels Rückkehr · Welle 25\n\nWelle 15: 1 Siege · Welle 25: 1 Siege. Erstprämie erhalten.\n\nSie kündigt ihren Ziel-Turm an und senkt dessen Feuerrate 4,5 Sekunden lang um 40 %. Frost verlangsamt ihren Vormarsch, unterbricht aber nicht den Zauber. Steinschleudern treffen die Begleitgruppe; Scharfschützen durchdringen deren Rüstung. Erreicht der Boss den Kern, scheitert der Versuch.\n\nErstprämien: 750 Gold in Welle 15, 1.200 Gold in Welle 25; jeweils einmalig und ohne Wisp-Bonus. Spätere Siege geben 10 % des gewöhnlichen Gegner- und Wellen-Goldes. Bosswellen erzeugen keine Offline-Farmbasis.\n\nNoch nicht geschaffte Wellen bringen den vollen Ertrag, der ab Welle 16 steigt. Bereits geschaffte Wellen bringen 10 % des normalen Goldes. Wisps Bonus ist in den angezeigten Erträgen bereits enthalten.\n\nBoss erneut herausfordern · Welle 25Erste Begegnung wiederholen · Welle 15",
+    "enemy": "Gegner auf dem Waldweg\n\nZusammenstellung Welle 29 · Unterstützung: 19 × Waldgoblin · 2 × Leerenfalter · 2 × Laternenqualle\n\nNächster neuer Gegnertyp: Moospilz ab Welle 42.\n\nAlle Turmtypen treffen auch Flieger. Flieger folgen dem Waldweg; sie überspringen deine Verteidigung nicht.\n\nGegnertypen und Gegenmittel",
+    "errors": []
+  },
+  {
+    "lang": "en",
+    "kind": "legacy",
+    "basis": "Farm income on departure: 2,561 G/min · 65% efficiency · Up to 8 hours. Time until collection is included. This absence is still paid under the previous rules.",
+    "fallback": "",
+    "rate": "An initial estimate appears after 15 active seconds. The measurement window is complete after 60 seconds. Previously cleared waves award 10% of normal gold. Waves you have not cleared yet and one-time boss bonuses keep their full rewards.",
+    "boss": "Rosemirror's return · Wave 25\n\nWave 15: 1 wins · Wave 25: 0 wins. Undefeated · Challenge after wave 24. Earlier wave records do not count as a boss victory.\n\nShe marks her target tower and reduces its fire rate by 40% for 4.5 seconds. Frost slows her advance but does not interrupt the spell. Stone Slingers hit her escorts; Sharpshooters pierce their armor. If the boss reaches the core, the attempt fails.\n\nFirst victories: 750 gold on wave 15 and 1,200 gold on wave 25; each paid once, without Wisp's bonus. Later victories grant 10% of regular enemy and wave gold. Boss waves cannot certify offline farming.\n\nWaves you have not cleared yet grant full rewards, which increase from wave 16 onward. Previously cleared waves grant 10% of normal gold. Wisp's bonus is already included in the displayed earnings.\n\nChallenge boss · Wave 25Replay first encounter · Wave 15",
+    "enemy": "Enemies on the forest path\n\nWave 20 · Swarm composition: 3 × Armored Flyer · 8 × Fire Beetle · 2 × Forest Goblin · 12 × Leaf Beetle\n\nNext new enemy: Lantern Jelly from wave 21.\n\nAll tower types also hit flying enemies. Flyers follow the forest path; they don't bypass your defenses.\n\nEnemy types and counters",
+    "errors": []
+  },
+  {
+    "lang": "en",
+    "kind": "current",
+    "basis": "Farm income on departure: 256.1 G/min · 26% efficiency · Up to 8 hours. Time until collection is included.",
+    "fallback": "",
+    "rate": "An initial estimate appears after 15 active seconds. The measurement window is complete after 60 seconds. Previously cleared waves award 10% of normal gold. Waves you have not cleared yet and one-time boss bonuses keep their full rewards.",
+    "boss": "Rosemirror's return · Wave 25\n\nWave 15: 1 wins · Wave 25: 0 wins. Undefeated · Challenge after wave 24. Earlier wave records do not count as a boss victory.\n\nShe marks her target tower and reduces its fire rate by 40% for 4.5 seconds. Frost slows her advance but does not interrupt the spell. Stone Slingers hit her escorts; Sharpshooters pierce their armor. If the boss reaches the core, the attempt fails.\n\nFirst victories: 750 gold on wave 15 and 1,200 gold on wave 25; each paid once, without Wisp's bonus. Later victories grant 10% of regular enemy and wave gold. Boss waves cannot certify offline farming.\n\nWaves you have not cleared yet grant full rewards, which increase from wave 16 onward. Previously cleared waves grant 10% of normal gold. Wisp's bonus is already included in the displayed earnings.\n\nChallenge boss · Wave 25Replay first encounter · Wave 15",
+    "enemy": "Enemies on the forest path\n\nWave 20 · Swarm composition: 3 × Armored Flyer · 8 × Fire Beetle · 2 × Forest Goblin · 12 × Leaf Beetle\n\nNext new enemy: Lantern Jelly from wave 21.\n\nAll tower types also hit flying enemies. Flyers follow the forest path; they don't bypass your defenses.\n\nEnemy types and counters",
+    "errors": []
+  },
+  {
+    "lang": "en",
+    "kind": "farm",
+    "basis": "Farm income on departure: 340.8 G/min · 26% efficiency · Up to 8 hours. Time until collection is included.",
+    "fallback": "Wave 36 failed. Now farming wave 29 for 10% gold on previously cleared waves. Your gold and upgrades are preserved. Improve your defense, then start another push.",
+    "rate": "An initial estimate appears after 15 active seconds. The measurement window is complete after 60 seconds. Previously cleared waves award 10% of normal gold. Waves you have not cleared yet and one-time boss bonuses keep their full rewards.",
+    "boss": "Rosemirror's return · Wave 25\n\nWave 15: 1 wins · Wave 25: 1 wins. First-victory reward received.\n\nShe marks her target tower and reduces its fire rate by 40% for 4.5 seconds. Frost slows her advance but does not interrupt the spell. Stone Slingers hit her escorts; Sharpshooters pierce their armor. If the boss reaches the core, the attempt fails.\n\nFirst victories: 750 gold on wave 15 and 1,200 gold on wave 25; each paid once, without Wisp's bonus. Later victories grant 10% of regular enemy and wave gold. Boss waves cannot certify offline farming.\n\nWaves you have not cleared yet grant full rewards, which increase from wave 16 onward. Previously cleared waves grant 10% of normal gold. Wisp's bonus is already included in the displayed earnings.\n\nChallenge boss again · Wave 25Replay first encounter · Wave 15",
+    "enemy": "Enemies on the forest path\n\nWave 29 · Support composition: 19 × Forest Goblin · 2 × Void Moth · 2 × Lantern Jelly\n\nNext new enemy: Moss Shroom from wave 42.\n\nAll tower types also hit flying enemies. Flyers follow the forest path; they don't bypass your defenses.\n\nEnemy types and counters",
+    "errors": []
+  }
+]

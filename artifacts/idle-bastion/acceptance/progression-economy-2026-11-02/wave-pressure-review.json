@@ -1,0 +1,3001 @@
+{
+  "note": "Raw HP and armor-adjusted HP are diagnostics, not a universal combat difficulty score. Armor penetration, splash, healing, speed, grouping and placement affect real pressure. Ordinary gold excludes first-boss bonuses.",
+  "waves": [
+    {
+      "wave": 1,
+      "family": "tutorial",
+      "composition": {
+        "Leafbug": 6
+      },
+      "count": 6,
+      "hp": 144,
+      "armorAdjustedHp": 144,
+      "ordinaryGold": 77
+    },
+    {
+      "wave": 2,
+      "family": "tutorial",
+      "composition": {
+        "Leafbug": 7
+      },
+      "count": 7,
+      "hp": 195,
+      "armorAdjustedHp": 195,
+      "ordinaryGold": 88
+    },
+    {
+      "wave": 3,
+      "family": "tutorial",
+      "composition": {
+        "Leafbug": 8
+      },
+      "count": 8,
+      "hp": 258,
+      "armorAdjustedHp": 258,
+      "ordinaryGold": 99
+    },
+    {
+      "wave": 4,
+      "family": "tutorial",
+      "composition": {
+        "Leafbug": 6,
+        "Firebug": 3
+      },
+      "count": 9,
+      "hp": 384,
+      "armorAdjustedHp": 384,
+      "ordinaryGold": 119.9
+    },
+    {
+      "wave": 5,
+      "family": "tutorial",
+      "composition": {
+        "Leafbug": 7,
+        "Firebug": 3
+      },
+      "count": 10,
+      "hp": 489,
+      "armorAdjustedHp": 489,
+      "ordinaryGold": 130.9
+    },
+    {
+      "wave": 6,
+      "family": "swarm",
+      "composition": {
+        "Leafbug": 8,
+        "FlyingLocust": 2,
+        "Firebug": 1
+      },
+      "count": 11,
+      "hp": 559,
+      "armorAdjustedHp": 559,
+      "ordinaryGold": 168.3
+    },
+    {
+      "wave": 7,
+      "family": "rush",
+      "composition": {
+        "Firebug": 8,
+        "FlyingLocust": 2
+      },
+      "count": 10,
+      "hp": 760,
+      "armorAdjustedHp": 760,
+      "ordinaryGold": 188.1
+    },
+    {
+      "wave": 8,
+      "family": "swarm",
+      "composition": {
+        "Leafbug": 9,
+        "FlyingLocust": 4
+      },
+      "count": 13,
+      "hp": 837,
+      "armorAdjustedHp": 837,
+      "ordinaryGold": 196.9
+    },
+    {
+      "wave": 9,
+      "family": "rush",
+      "composition": {
+        "Firebug": 7,
+        "Firewasp": 2,
+        "FlyingLocust": 1
+      },
+      "count": 10,
+      "hp": 1016,
+      "armorAdjustedHp": 1016,
+      "ordinaryGold": 217.8
+    },
+    {
+      "wave": 10,
+      "family": "swarm",
+      "composition": {
+        "Leafbug": 10,
+        "Firewasp": 2,
+        "FlyingLocust": 10
+      },
+      "count": 22,
+      "hp": 1871,
+      "armorAdjustedHp": 1871,
+      "ordinaryGold": 235.4
+    },
+    {
+      "wave": 11,
+      "family": "armor",
+      "composition": {
+        "Leafbug": 12,
+        "Scorpion": 2
+      },
+      "count": 14,
+      "hp": 1712,
+      "armorAdjustedHp": 2073,
+      "ordinaryGold": 273.9
+    },
+    {
+      "wave": 12,
+      "family": "swarm",
+      "composition": {
+        "Firebug": 10,
+        "FlyingLocust": 5,
+        "Scorpion": 2
+      },
+      "count": 17,
+      "hp": 2763,
+      "armorAdjustedHp": 3182,
+      "ordinaryGold": 254.1
+    },
+    {
+      "wave": 13,
+      "family": "armor",
+      "composition": {
+        "Scorpion": 5,
+        "Leafbug": 9,
+        "MagmaCrab": 2
+      },
+      "count": 16,
+      "hp": 3716,
+      "armorAdjustedHp": 5247,
+      "ordinaryGold": 305.8
+    },
+    {
+      "wave": 14,
+      "family": "swarm",
+      "composition": {
+        "Firebug": 11,
+        "FlyingLocust": 6,
+        "MagmaCrab": 2
+      },
+      "count": 19,
+      "hp": 4503,
+      "armorAdjustedHp": 4871,
+      "ordinaryGold": 282.7
+    },
+    {
+      "wave": 15,
+      "family": "boss",
+      "composition": {
+        "Leafbug": 5,
+        "Rosenspiegel": 1,
+        "Scorpion": 1,
+        "Firebug": 2
+      },
+      "count": 9,
+      "hp": 10048,
+      "armorAdjustedHp": 11280,
+      "ordinaryGold": 227.7
+    },
+    {
+      "wave": 16,
+      "family": "armor",
+      "composition": {
+        "Scorpion": 6,
+        "Leafbug": 12
+      },
+      "count": 18,
+      "hp": 5307,
+      "armorAdjustedHp": 7523,
+      "ordinaryGold": 710.6
+    },
+    {
+      "wave": 17,
+      "family": "rush",
+      "composition": {
+        "FlyingLocust": 13,
+        "Firewasp": 7,
+        "Clampbeetle": 2
+      },
+      "count": 22,
+      "hp": 5487,
+      "armorAdjustedHp": 5907,
+      "ordinaryGold": 706.2
+    },
+    {
+      "wave": 18,
+      "family": "swarm",
+      "composition": {
+        "Leafbug": 14,
+        "Firebug": 7,
+        "Clampbeetle": 2
+      },
+      "count": 23,
+      "hp": 7722,
+      "armorAdjustedHp": 8196,
+      "ordinaryGold": 764.5
+    },
+    {
+      "wave": 19,
+      "family": "rush",
+      "composition": {
+        "FlyingLocust": 15,
+        "Firewasp": 7,
+        "ForestGoblin": 2
+      },
+      "count": 24,
+      "hp": 7215,
+      "armorAdjustedHp": 7215,
+      "ordinaryGold": 855.8
+    },
+    {
+      "wave": 20,
+      "family": "swarm",
+      "composition": {
+        "Clampbeetle": 3,
+        "Firebug": 8,
+        "ForestGoblin": 2,
+        "Leafbug": 12
+      },
+      "count": 25,
+      "hp": 11420,
+      "armorAdjustedHp": 12328,
+      "ordinaryGold": 914.1
+    },
+    {
+      "wave": 21,
+      "family": "support",
+      "composition": {
+        "MagmaCrab": 7,
+        "Firebug": 14,
+        "LanternJelly": 2
+      },
+      "count": 23,
+      "hp": 18492,
+      "armorAdjustedHp": 21596,
+      "ordinaryGold": 1103.3
+    },
+    {
+      "wave": 22,
+      "family": "armor",
+      "composition": {
+        "Scorpion": 9,
+        "Leafbug": 11,
+        "LanternJelly": 2
+      },
+      "count": 22,
+      "hp": 14845,
+      "armorAdjustedHp": 21764,
+      "ordinaryGold": 1207.8
+    },
+    {
+      "wave": 23,
+      "family": "swarm",
+      "composition": {
+        "Firebug": 19,
+        "FlyingLocust": 9
+      },
+      "count": 28,
+      "hp": 17540,
+      "armorAdjustedHp": 17540,
+      "ordinaryGold": 1130.8
+    },
+    {
+      "wave": 24,
+      "family": "rush",
+      "composition": {
+        "Firebug": 19,
+        "Firewasp": 8
+      },
+      "count": 27,
+      "hp": 20492,
+      "armorAdjustedHp": 20492,
+      "ordinaryGold": 1226.5
+    },
+    {
+      "wave": 25,
+      "family": "boss",
+      "composition": {
+        "Leafbug": 7,
+        "Rosenspiegel": 1,
+        "Scorpion": 2,
+        "Firebug": 3
+      },
+      "count": 13,
+      "hp": 33079,
+      "armorAdjustedHp": 37858,
+      "ordinaryGold": 914.1
+    },
+    {
+      "wave": 26,
+      "family": "swarm",
+      "composition": {
+        "Leafbug": 17,
+        "ForestGoblin": 9,
+        "BoneGuard": 2
+      },
+      "count": 28,
+      "hp": 25798,
+      "armorAdjustedHp": 26921,
+      "ordinaryGold": 1292.5
+    },
+    {
+      "wave": 27,
+      "family": "armor",
+      "composition": {
+        "Clampbeetle": 9,
+        "FlyingLocust": 11,
+        "BoneGuard": 2
+      },
+      "count": 22,
+      "hp": 26382,
+      "armorAdjustedHp": 34062,
+      "ordinaryGold": 1524.6
+    },
+    {
+      "wave": 28,
+      "family": "rush",
+      "composition": {
+        "Firebug": 17,
+        "Firewasp": 9,
+        "Voidbutterfly": 2
+      },
+      "count": 28,
+      "hp": 34428,
+      "armorAdjustedHp": 34724,
+      "ordinaryGold": 1436.6
+    },
+    {
+      "wave": 29,
+      "family": "support",
+      "composition": {
+        "ForestGoblin": 19,
+        "Voidbutterfly": 2,
+        "LanternJelly": 2
+      },
+      "count": 23,
+      "hp": 36605,
+      "armorAdjustedHp": 36939,
+      "ordinaryGold": 1615.9
+    },
+    {
+      "wave": 30,
+      "family": "armor",
+      "composition": {
+        "Scorpion": 9,
+        "Leafbug": 13
+      },
+      "count": 22,
+      "hp": 38067,
+      "armorAdjustedHp": 56459,
+      "ordinaryGold": 1713.8
+    },
+    {
+      "wave": 31,
+      "family": "swarm",
+      "composition": {
+        "Leafbug": 19,
+        "ForestGoblin": 9
+      },
+      "count": 28,
+      "hp": 44031,
+      "armorAdjustedHp": 44031,
+      "ordinaryGold": 1556.5
+    },
+    {
+      "wave": 32,
+      "family": "support",
+      "composition": {
+        "MagmaCrab": 7,
+        "ForestGoblin": 14,
+        "ForestCultist": 2
+      },
+      "count": 23,
+      "hp": 73230,
+      "armorAdjustedHp": 85137,
+      "ordinaryGold": 1820.5
+    },
+    {
+      "wave": 33,
+      "family": "armor",
+      "composition": {
+        "Clampbeetle": 9,
+        "FlyingLocust": 11,
+        "ForestCultist": 2
+      },
+      "count": 22,
+      "hp": 53052,
+      "armorAdjustedHp": 66397,
+      "ordinaryGold": 1900.8
+    },
+    {
+      "wave": 34,
+      "family": "rush",
+      "composition": {
+        "Firebug": 19,
+        "Firewasp": 8
+      },
+      "count": 27,
+      "hp": 69560,
+      "armorAdjustedHp": 69560,
+      "ordinaryGold": 1718.2
+    },
+    {
+      "wave": 35,
+      "family": "swarm",
+      "composition": {
+        "Leafbug": 19,
+        "ForestGoblin": 9
+      },
+      "count": 28,
+      "hp": 71792,
+      "armorAdjustedHp": 71792,
+      "ordinaryGold": 1687.4
+    },
+    {
+      "wave": 36,
+      "family": "support",
+      "composition": {
+        "BoneGuard": 7,
+        "ForestGoblin": 15,
+        "LanternJelly": 2
+      },
+      "count": 24,
+      "hp": 104110,
+      "armorAdjustedHp": 117458,
+      "ordinaryGold": 1890.9
+    },
+    {
+      "wave": 37,
+      "family": "rush",
+      "composition": {
+        "Firewasp": 19,
+        "Voidbutterfly": 8
+      },
+      "count": 27,
+      "hp": 90026,
+      "armorAdjustedHp": 93578,
+      "ordinaryGold": 1743.5
+    },
+    {
+      "wave": 38,
+      "family": "armor",
+      "composition": {
+        "Scorpion": 9,
+        "Leafbug": 13
+      },
+      "count": 22,
+      "hp": 101198,
+      "armorAdjustedHp": 150094,
+      "ordinaryGold": 1954.7
+    },
+    {
+      "wave": 39,
+      "family": "rush",
+      "composition": {
+        "Firebug": 19,
+        "Firewasp": 8
+      },
+      "count": 27,
+      "hp": 128160,
+      "armorAdjustedHp": 128160,
+      "ordinaryGold": 1760
+    },
+    {
+      "wave": 40,
+      "family": "armor",
+      "composition": {
+        "BoneGuard": 5,
+        "ForestGoblin": 19,
+        "ForestCultist": 2
+      },
+      "count": 26,
+      "hp": 176871,
+      "armorAdjustedHp": 192416,
+      "ordinaryGold": 2201.1
+    },
+    {
+      "wave": 41,
+      "family": "rush",
+      "composition": {
+        "Firebug": 19,
+        "Firewasp": 9
+      },
+      "count": 28,
+      "hp": 168630,
+      "armorAdjustedHp": 168630,
+      "ordinaryGold": 1776.5
+    },
+    {
+      "wave": 42,
+      "family": "armor",
+      "composition": {
+        "Scorpion": 7,
+        "Leafbug": 12,
+        "MossShroom": 2
+      },
+      "count": 21,
+      "hp": 150276,
+      "armorAdjustedHp": 212284,
+      "ordinaryGold": 1993.2
+    },
+    {
+      "wave": 43,
+      "family": "swarm",
+      "composition": {
+        "Leafbug": 17,
+        "FlyingLocust": 9,
+        "MossShroom": 2
+      },
+      "count": 28,
+      "hp": 157577,
+      "armorAdjustedHp": 157577,
+      "ordinaryGold": 1758.9
+    },
+    {
+      "wave": 44,
+      "family": "armor",
+      "composition": {
+        "MagmaCrab": 9,
+        "Firebug": 13
+      },
+      "count": 22,
+      "hp": 321287,
+      "armorAdjustedHp": 387645,
+      "ordinaryGold": 1994.3
+    },
+    {
+      "wave": 45,
+      "family": "rush",
+      "composition": {
+        "FlyingLocust": 17,
+        "Firewasp": 10
+      },
+      "count": 27,
+      "hp": 187463,
+      "armorAdjustedHp": 187463,
+      "ordinaryGold": 1828.2
+    },
+    {
+      "wave": 46,
+      "family": "support",
+      "composition": {
+        "Scorpion": 7,
+        "WoodSpider": 15,
+        "LanternJelly": 2
+      },
+      "count": 24,
+      "hp": 309277,
+      "armorAdjustedHp": 410379,
+      "ordinaryGold": 1986.6
+    },
+    {
+      "wave": 47,
+      "family": "armor",
+      "composition": {
+        "Clampbeetle": 7,
+        "FlyingLocust": 12,
+        "WoodSpider": 2
+      },
+      "count": 21,
+      "hp": 253734,
+      "armorAdjustedHp": 311184,
+      "ordinaryGold": 2036.1
+    },
+    {
+      "wave": 48,
+      "family": "swarm",
+      "composition": {
+        "MossShroom": 17,
+        "Firebug": 11
+      },
+      "count": 28,
+      "hp": 383195,
+      "armorAdjustedHp": 383195,
+      "ordinaryGold": 1796.3
+    },
+    {
+      "wave": 49,
+      "family": "rush",
+      "composition": {
+        "FlyingLocust": 19,
+        "Firewasp": 9
+      },
+      "count": 28,
+      "hp": 312786,
+      "armorAdjustedHp": 312786,
+      "ordinaryGold": 1862.3
+    },
+    {
+      "wave": 50,
+      "family": "armor",
+      "composition": {
+        "BoneGuard": 7,
+        "WoodSpider": 12,
+        "HornedBat": 2
+      },
+      "count": 21,
+      "hp": 456489,
+      "armorAdjustedHp": 530364,
+      "ordinaryGold": 2058.1
+    }
+  ],
+  "runs": [
+    {
+      "style": "relaxed",
+      "scenario": "fresh",
+      "firstLeak": {
+        "wave": 12,
+        "at": 237.15
+      },
+      "firstPressure": {
+        "wave": 12,
+        "at": 245.175
+      },
+      "firstLoss": {
+        "wave": 15,
+        "at": 438.375
+      },
+      "rows": [
+        {
+          "wave": 10,
+          "damage": 0,
+          "farthest": 0.598,
+          "start": 143.325,
+          "end": 169.475,
+          "result": "clear",
+          "gold": 235.4
+        },
+        {
+          "wave": 11,
+          "damage": 0,
+          "farthest": 0.511,
+          "start": 171.475,
+          "end": 200.4,
+          "result": "clear",
+          "gold": 273.9
+        },
+        {
+          "wave": 12,
+          "damage": 5,
+          "farthest": 1,
+          "start": 202.4,
+          "end": 245.175,
+          "result": "clear",
+          "gold": 209
+        },
+        {
+          "wave": 13,
+          "damage": 10,
+          "farthest": 1,
+          "start": 247.175,
+          "end": 304.175,
+          "result": "clear",
+          "gold": 206.8
+        },
+        {
+          "wave": 14,
+          "damage": 7,
+          "farthest": 0.999,
+          "start": 306.175,
+          "end": 345.85,
+          "result": "clear",
+          "gold": 200.2
+        },
+        {
+          "wave": 15,
+          "damage": 20,
+          "farthest": 1,
+          "start": 347.85,
+          "end": 438.375,
+          "result": "defeat",
+          "gold": 84.7
+        },
+        {
+          "wave": 15,
+          "damage": 20,
+          "farthest": 1,
+          "start": 514.225,
+          "end": 604.75,
+          "result": "defeat",
+          "gold": 84.7
+        },
+        {
+          "wave": 15,
+          "damage": 20,
+          "farthest": 1,
+          "start": 680.9,
+          "end": 771.425,
+          "result": "defeat",
+          "gold": 84.7
+        },
+        {
+          "wave": 15,
+          "damage": 0,
+          "farthest": 0.504,
+          "start": 832.75,
+          "end": 889.125,
+          "result": "clear",
+          "gold": 977.7
+        },
+        {
+          "wave": 16,
+          "damage": 0,
+          "farthest": 0.401,
+          "start": 891.125,
+          "end": 919.475,
+          "result": "clear",
+          "gold": 710.6
+        },
+        {
+          "wave": 17,
+          "damage": 0,
+          "farthest": 0.493,
+          "start": 921.475,
+          "end": 943.975,
+          "result": "clear",
+          "gold": 706.2
+        },
+        {
+          "wave": 18,
+          "damage": 0,
+          "farthest": 0.547,
+          "start": 945.975,
+          "end": 974.725,
+          "result": "clear",
+          "gold": 764.5
+        },
+        {
+          "wave": 19,
+          "damage": 0,
+          "farthest": 0.493,
+          "start": 976.725,
+          "end": 999.875,
+          "result": "clear",
+          "gold": 855.8
+        },
+        {
+          "wave": 20,
+          "damage": 0,
+          "farthest": 0.605,
+          "start": 1001.875,
+          "end": 1030.6,
+          "result": "clear",
+          "gold": 914.1
+        },
+        {
+          "wave": 21,
+          "damage": 0,
+          "farthest": 0.731,
+          "start": 1032.6,
+          "end": 1074.625,
+          "result": "clear",
+          "gold": 1103.3
+        },
+        {
+          "wave": 22,
+          "damage": 0,
+          "farthest": 0.532,
+          "start": 1076.625,
+          "end": 1114.725,
+          "result": "clear",
+          "gold": 1207.8
+        },
+        {
+          "wave": 23,
+          "damage": 4,
+          "farthest": 1,
+          "start": 1116.725,
+          "end": 1155.85,
+          "result": "clear",
+          "gold": 1004.3
+        },
+        {
+          "wave": 24,
+          "damage": 1,
+          "farthest": 0.999,
+          "start": 1157.85,
+          "end": 1198.675,
+          "result": "clear",
+          "gold": 1191.3
+        },
+        {
+          "wave": 25,
+          "damage": 0,
+          "farthest": 0.627,
+          "start": 1200.675,
+          "end": 1269.05,
+          "result": "clear",
+          "gold": 2114.1
+        },
+        {
+          "wave": 26,
+          "damage": 2,
+          "farthest": 1,
+          "start": 1271.05,
+          "end": 1314.125,
+          "result": "clear",
+          "gold": 1237.5
+        },
+        {
+          "wave": 27,
+          "damage": 0,
+          "farthest": 0.685,
+          "start": 1316.125,
+          "end": 1354.35,
+          "result": "clear",
+          "gold": 1524.6
+        },
+        {
+          "wave": 28,
+          "damage": 3,
+          "farthest": 1,
+          "start": 1356.35,
+          "end": 1398.075,
+          "result": "clear",
+          "gold": 1317.8
+        },
+        {
+          "wave": 29,
+          "damage": 4,
+          "farthest": 1,
+          "start": 1400.075,
+          "end": 1437.275,
+          "result": "clear",
+          "gold": 1422.3
+        },
+        {
+          "wave": 30,
+          "damage": 0,
+          "farthest": 0.61,
+          "start": 1439.275,
+          "end": 1480.425,
+          "result": "clear",
+          "gold": 1713.8
+        },
+        {
+          "wave": 31,
+          "damage": 0,
+          "farthest": 0.682,
+          "start": 1482.425,
+          "end": 1518.025,
+          "result": "clear",
+          "gold": 1556.5
+        },
+        {
+          "wave": 32,
+          "damage": 16,
+          "farthest": 1,
+          "start": 1520.025,
+          "end": 1585.15,
+          "result": "clear",
+          "gold": 1057.1
+        },
+        {
+          "wave": 33,
+          "damage": 9,
+          "farthest": 1,
+          "start": 1587.15,
+          "end": 1638.375,
+          "result": "clear",
+          "gold": 1521.3
+        },
+        {
+          "wave": 34,
+          "damage": 9,
+          "farthest": 1,
+          "start": 1640.375,
+          "end": 1681.8,
+          "result": "clear",
+          "gold": 1293.6
+        },
+        {
+          "wave": 35,
+          "damage": 10,
+          "farthest": 1,
+          "start": 1683.8,
+          "end": 1727.725,
+          "result": "clear",
+          "gold": 1304.6
+        },
+        {
+          "wave": 36,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1729.725,
+          "end": 1778.75,
+          "result": "defeat",
+          "gold": 456.5
+        }
+      ]
+    },
+    {
+      "style": "relaxed",
+      "scenario": "w20-24h",
+      "firstLeak": {
+        "wave": 39,
+        "at": 585.1
+      },
+      "firstPressure": {
+        "wave": 40,
+        "at": 624.625
+      },
+      "firstLoss": {
+        "wave": 44,
+        "at": 852.85
+      },
+      "rows": [
+        {
+          "wave": 21,
+          "damage": 0,
+          "farthest": 0.355,
+          "start": 2,
+          "end": 30.05,
+          "result": "clear",
+          "gold": 1103.3
+        },
+        {
+          "wave": 22,
+          "damage": 0,
+          "farthest": 0.275,
+          "start": 32.05,
+          "end": 59.525,
+          "result": "clear",
+          "gold": 1207.8
+        },
+        {
+          "wave": 23,
+          "damage": 0,
+          "farthest": 0.365,
+          "start": 61.525,
+          "end": 84.175,
+          "result": "clear",
+          "gold": 1130.8
+        },
+        {
+          "wave": 24,
+          "damage": 0,
+          "farthest": 0.265,
+          "start": 86.175,
+          "end": 108.325,
+          "result": "clear",
+          "gold": 1226.5
+        },
+        {
+          "wave": 25,
+          "damage": 0,
+          "farthest": 0.29,
+          "start": 110.325,
+          "end": 144.325,
+          "result": "clear",
+          "gold": 2114.1
+        },
+        {
+          "wave": 26,
+          "damage": 0,
+          "farthest": 0.376,
+          "start": 146.325,
+          "end": 170.3,
+          "result": "clear",
+          "gold": 1292.5
+        },
+        {
+          "wave": 27,
+          "damage": 0,
+          "farthest": 0.391,
+          "start": 172.3,
+          "end": 198.2,
+          "result": "clear",
+          "gold": 1524.6
+        },
+        {
+          "wave": 28,
+          "damage": 0,
+          "farthest": 0.458,
+          "start": 200.2,
+          "end": 225.1,
+          "result": "clear",
+          "gold": 1436.6
+        },
+        {
+          "wave": 29,
+          "damage": 0,
+          "farthest": 0.49,
+          "start": 227.1,
+          "end": 251.65,
+          "result": "clear",
+          "gold": 1615.9
+        },
+        {
+          "wave": 30,
+          "damage": 0,
+          "farthest": 0.384,
+          "start": 253.65,
+          "end": 284.65,
+          "result": "clear",
+          "gold": 1713.8
+        },
+        {
+          "wave": 31,
+          "damage": 0,
+          "farthest": 0.399,
+          "start": 286.65,
+          "end": 311.45,
+          "result": "clear",
+          "gold": 1556.5
+        },
+        {
+          "wave": 32,
+          "damage": 0,
+          "farthest": 0.563,
+          "start": 313.45,
+          "end": 346.7,
+          "result": "clear",
+          "gold": 1820.5
+        },
+        {
+          "wave": 33,
+          "damage": 0,
+          "farthest": 0.482,
+          "start": 348.7,
+          "end": 380.225,
+          "result": "clear",
+          "gold": 1900.8
+        },
+        {
+          "wave": 34,
+          "damage": 0,
+          "farthest": 0.47,
+          "start": 382.225,
+          "end": 409,
+          "result": "clear",
+          "gold": 1718.2
+        },
+        {
+          "wave": 35,
+          "damage": 0,
+          "farthest": 0.456,
+          "start": 411,
+          "end": 435.075,
+          "result": "clear",
+          "gold": 1687.4
+        },
+        {
+          "wave": 36,
+          "damage": 0,
+          "farthest": 0.672,
+          "start": 437.075,
+          "end": 473.1,
+          "result": "clear",
+          "gold": 1890.9
+        },
+        {
+          "wave": 37,
+          "damage": 0,
+          "farthest": 0.577,
+          "start": 475.1,
+          "end": 501.9,
+          "result": "clear",
+          "gold": 1743.5
+        },
+        {
+          "wave": 38,
+          "damage": 0,
+          "farthest": 0.578,
+          "start": 503.9,
+          "end": 543.825,
+          "result": "clear",
+          "gold": 1954.7
+        },
+        {
+          "wave": 39,
+          "damage": 4,
+          "farthest": 0.999,
+          "start": 545.825,
+          "end": 587.25,
+          "result": "clear",
+          "gold": 1575.2
+        },
+        {
+          "wave": 40,
+          "damage": 11,
+          "farthest": 1,
+          "start": 589.25,
+          "end": 638.975,
+          "result": "clear",
+          "gold": 1634.6
+        },
+        {
+          "wave": 41,
+          "damage": 13,
+          "farthest": 1,
+          "start": 640.975,
+          "end": 682.7,
+          "result": "clear",
+          "gold": 1167.1
+        },
+        {
+          "wave": 42,
+          "damage": 5,
+          "farthest": 1,
+          "start": 684.7,
+          "end": 736.825,
+          "result": "clear",
+          "gold": 1831.5
+        },
+        {
+          "wave": 43,
+          "damage": 5,
+          "farthest": 1,
+          "start": 738.825,
+          "end": 782.95,
+          "result": "clear",
+          "gold": 1588.4
+        },
+        {
+          "wave": 44,
+          "damage": 20,
+          "farthest": 1,
+          "start": 784.95,
+          "end": 852.85,
+          "result": "defeat",
+          "gold": 462
+        },
+        {
+          "wave": 44,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1033.8,
+          "end": 1101.7,
+          "result": "defeat",
+          "gold": 462
+        }
+      ]
+    },
+    {
+      "style": "relaxed",
+      "scenario": "w30-24h",
+      "firstLeak": {
+        "wave": 40,
+        "at": 306.575
+      },
+      "firstPressure": {
+        "wave": 40,
+        "at": 310.4
+      },
+      "firstLoss": {
+        "wave": 46,
+        "at": 614.95
+      },
+      "rows": [
+        {
+          "wave": 31,
+          "damage": 0,
+          "farthest": 0.253,
+          "start": 2,
+          "end": 22.175,
+          "result": "clear",
+          "gold": 1556.5
+        },
+        {
+          "wave": 32,
+          "damage": 0,
+          "farthest": 0.471,
+          "start": 24.175,
+          "end": 54.075,
+          "result": "clear",
+          "gold": 1820.5
+        },
+        {
+          "wave": 33,
+          "damage": 0,
+          "farthest": 0.292,
+          "start": 56.075,
+          "end": 82.25,
+          "result": "clear",
+          "gold": 1900.8
+        },
+        {
+          "wave": 34,
+          "damage": 0,
+          "farthest": 0.47,
+          "start": 84.25,
+          "end": 111.3,
+          "result": "clear",
+          "gold": 1718.2
+        },
+        {
+          "wave": 35,
+          "damage": 0,
+          "farthest": 0.344,
+          "start": 113.3,
+          "end": 136.075,
+          "result": "clear",
+          "gold": 1687.4
+        },
+        {
+          "wave": 36,
+          "damage": 0,
+          "farthest": 0.516,
+          "start": 138.075,
+          "end": 168.725,
+          "result": "clear",
+          "gold": 1890.9
+        },
+        {
+          "wave": 37,
+          "damage": 0,
+          "farthest": 0.513,
+          "start": 170.725,
+          "end": 196.625,
+          "result": "clear",
+          "gold": 1743.5
+        },
+        {
+          "wave": 38,
+          "damage": 0,
+          "farthest": 0.508,
+          "start": 198.625,
+          "end": 235.9,
+          "result": "clear",
+          "gold": 1954.7
+        },
+        {
+          "wave": 39,
+          "damage": 0,
+          "farthest": 0.665,
+          "start": 237.9,
+          "end": 270.925,
+          "result": "clear",
+          "gold": 1760
+        },
+        {
+          "wave": 40,
+          "damage": 7,
+          "farthest": 1,
+          "start": 272.925,
+          "end": 313.525,
+          "result": "clear",
+          "gold": 1816.1
+        },
+        {
+          "wave": 41,
+          "damage": 8,
+          "farthest": 1,
+          "start": 315.525,
+          "end": 357.25,
+          "result": "clear",
+          "gold": 1398.1
+        },
+        {
+          "wave": 42,
+          "damage": 0,
+          "farthest": 0.686,
+          "start": 359.25,
+          "end": 402.175,
+          "result": "clear",
+          "gold": 1993.2
+        },
+        {
+          "wave": 43,
+          "damage": 3,
+          "farthest": 1,
+          "start": 404.175,
+          "end": 448.3,
+          "result": "clear",
+          "gold": 1656.6
+        },
+        {
+          "wave": 44,
+          "damage": 17,
+          "farthest": 1,
+          "start": 450.3,
+          "end": 518.2,
+          "result": "clear",
+          "gold": 1208.9
+        },
+        {
+          "wave": 45,
+          "damage": 9,
+          "farthest": 1,
+          "start": 520.2,
+          "end": 560.475,
+          "result": "clear",
+          "gold": 1433.3
+        },
+        {
+          "wave": 46,
+          "damage": 20,
+          "farthest": 1,
+          "start": 562.475,
+          "end": 614.95,
+          "result": "defeat",
+          "gold": 367.4
+        },
+        {
+          "wave": 46,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1036.1,
+          "end": 1088.575,
+          "result": "defeat",
+          "gold": 367.4
+        }
+      ]
+    },
+    {
+      "style": "mixed",
+      "scenario": "fresh",
+      "firstLeak": {
+        "wave": 29,
+        "at": 686.225
+      },
+      "firstPressure": {
+        "wave": 32,
+        "at": 811.8
+      },
+      "firstLoss": {
+        "wave": 40,
+        "at": 1201.025
+      },
+      "rows": [
+        {
+          "wave": 10,
+          "damage": 0,
+          "farthest": 0.196,
+          "start": 143.05,
+          "end": 155.325,
+          "result": "clear",
+          "gold": 235.4
+        },
+        {
+          "wave": 11,
+          "damage": 0,
+          "farthest": 0.184,
+          "start": 157.325,
+          "end": 173.975,
+          "result": "clear",
+          "gold": 273.9
+        },
+        {
+          "wave": 12,
+          "damage": 0,
+          "farthest": 0.267,
+          "start": 175.975,
+          "end": 190.225,
+          "result": "clear",
+          "gold": 254.1
+        },
+        {
+          "wave": 13,
+          "damage": 0,
+          "farthest": 0.269,
+          "start": 192.225,
+          "end": 213.95,
+          "result": "clear",
+          "gold": 305.8
+        },
+        {
+          "wave": 14,
+          "damage": 0,
+          "farthest": 0.303,
+          "start": 215.95,
+          "end": 233.775,
+          "result": "clear",
+          "gold": 282.7
+        },
+        {
+          "wave": 15,
+          "damage": 0,
+          "farthest": 0.307,
+          "start": 235.775,
+          "end": 277.6,
+          "result": "clear",
+          "gold": 977.7
+        },
+        {
+          "wave": 16,
+          "damage": 0,
+          "farthest": 0.258,
+          "start": 279.6,
+          "end": 303.2,
+          "result": "clear",
+          "gold": 710.6
+        },
+        {
+          "wave": 17,
+          "damage": 0,
+          "farthest": 0.278,
+          "start": 305.2,
+          "end": 322.325,
+          "result": "clear",
+          "gold": 706.2
+        },
+        {
+          "wave": 18,
+          "damage": 0,
+          "farthest": 0.349,
+          "start": 324.325,
+          "end": 345.325,
+          "result": "clear",
+          "gold": 764.5
+        },
+        {
+          "wave": 19,
+          "damage": 0,
+          "farthest": 0.265,
+          "start": 347.325,
+          "end": 365.5,
+          "result": "clear",
+          "gold": 855.8
+        },
+        {
+          "wave": 20,
+          "damage": 0,
+          "farthest": 0.347,
+          "start": 367.5,
+          "end": 388.25,
+          "result": "clear",
+          "gold": 914.1
+        },
+        {
+          "wave": 21,
+          "damage": 0,
+          "farthest": 0.402,
+          "start": 390.25,
+          "end": 421.325,
+          "result": "clear",
+          "gold": 1103.3
+        },
+        {
+          "wave": 22,
+          "damage": 0,
+          "farthest": 0.362,
+          "start": 423.325,
+          "end": 454,
+          "result": "clear",
+          "gold": 1207.8
+        },
+        {
+          "wave": 23,
+          "damage": 0,
+          "farthest": 0.38,
+          "start": 456,
+          "end": 479,
+          "result": "clear",
+          "gold": 1130.8
+        },
+        {
+          "wave": 24,
+          "damage": 0,
+          "farthest": 0.42,
+          "start": 481,
+          "end": 506.875,
+          "result": "clear",
+          "gold": 1226.5
+        },
+        {
+          "wave": 25,
+          "damage": 0,
+          "farthest": 0.362,
+          "start": 508.875,
+          "end": 554.35,
+          "result": "clear",
+          "gold": 2114.1
+        },
+        {
+          "wave": 26,
+          "damage": 0,
+          "farthest": 0.383,
+          "start": 556.35,
+          "end": 581.775,
+          "result": "clear",
+          "gold": 1292.5
+        },
+        {
+          "wave": 27,
+          "damage": 0,
+          "farthest": 0.441,
+          "start": 583.775,
+          "end": 614.45,
+          "result": "clear",
+          "gold": 1524.6
+        },
+        {
+          "wave": 28,
+          "damage": 0,
+          "farthest": 0.618,
+          "start": 616.45,
+          "end": 647.825,
+          "result": "clear",
+          "gold": 1436.6
+        },
+        {
+          "wave": 29,
+          "damage": 1,
+          "farthest": 1,
+          "start": 649.825,
+          "end": 686.225,
+          "result": "clear",
+          "gold": 1567.5
+        },
+        {
+          "wave": 30,
+          "damage": 0,
+          "farthest": 0.44,
+          "start": 688.225,
+          "end": 722.975,
+          "result": "clear",
+          "gold": 1713.8
+        },
+        {
+          "wave": 31,
+          "damage": 0,
+          "farthest": 0.377,
+          "start": 724.975,
+          "end": 750.25,
+          "result": "clear",
+          "gold": 1556.5
+        },
+        {
+          "wave": 32,
+          "damage": 7,
+          "farthest": 1,
+          "start": 752.25,
+          "end": 817.075,
+          "result": "clear",
+          "gold": 1476.2
+        },
+        {
+          "wave": 33,
+          "damage": 2,
+          "farthest": 1,
+          "start": 819.075,
+          "end": 867.075,
+          "result": "clear",
+          "gold": 1824.9
+        },
+        {
+          "wave": 34,
+          "damage": 4,
+          "farthest": 0.999,
+          "start": 869.075,
+          "end": 910.5,
+          "result": "clear",
+          "gold": 1529
+        },
+        {
+          "wave": 35,
+          "damage": 2,
+          "farthest": 1,
+          "start": 912.5,
+          "end": 954.175,
+          "result": "clear",
+          "gold": 1598.3
+        },
+        {
+          "wave": 36,
+          "damage": 19,
+          "farthest": 1,
+          "start": 956.175,
+          "end": 1007.325,
+          "result": "clear",
+          "gold": 1005.4
+        },
+        {
+          "wave": 37,
+          "damage": 17,
+          "farthest": 1,
+          "start": 1009.325,
+          "end": 1046.575,
+          "result": "clear",
+          "gold": 817.3
+        },
+        {
+          "wave": 38,
+          "damage": 16,
+          "farthest": 1,
+          "start": 1048.575,
+          "end": 1104.575,
+          "result": "clear",
+          "gold": 1435.5
+        },
+        {
+          "wave": 39,
+          "damage": 18,
+          "farthest": 1,
+          "start": 1106.575,
+          "end": 1150.9,
+          "result": "clear",
+          "gold": 910.8
+        },
+        {
+          "wave": 40,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1152.9,
+          "end": 1201.025,
+          "result": "defeat",
+          "gold": 346.5
+        },
+        {
+          "wave": 40,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1434.35,
+          "end": 1482.475,
+          "result": "defeat",
+          "gold": 346.5
+        },
+        {
+          "wave": 40,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1737.6,
+          "end": 1785.725,
+          "result": "defeat",
+          "gold": 422.4
+        },
+        {
+          "wave": 40,
+          "damage": 20,
+          "farthest": 1,
+          "start": 2086.625,
+          "end": 2134.75,
+          "result": "defeat",
+          "gold": 401.5
+        },
+        {
+          "wave": 40,
+          "damage": 20,
+          "farthest": 1,
+          "start": 2458.925,
+          "end": 2507.05,
+          "result": "defeat",
+          "gold": 477.4
+        },
+        {
+          "wave": 40,
+          "damage": 20,
+          "farthest": 1,
+          "start": 2804.1,
+          "end": 2853.85,
+          "result": "defeat",
+          "gold": 587.4
+        },
+        {
+          "wave": 40,
+          "damage": 20,
+          "farthest": 1,
+          "start": 3140.725,
+          "end": 3190.475,
+          "result": "defeat",
+          "gold": 587.4
+        },
+        {
+          "wave": 40,
+          "damage": 18,
+          "farthest": 1,
+          "start": 3469.525,
+          "end": 3519.275,
+          "result": "clear",
+          "gold": 1344.2
+        },
+        {
+          "wave": 41,
+          "damage": 14,
+          "farthest": 0.999,
+          "start": 3521.275,
+          "end": 3563,
+          "result": "clear",
+          "gold": 1116.5
+        }
+      ]
+    },
+    {
+      "style": "mixed",
+      "scenario": "w20-24h",
+      "firstLeak": {
+        "wave": 40,
+        "at": 512.675
+      },
+      "firstPressure": {
+        "wave": 40,
+        "at": 530.45
+      },
+      "firstLoss": {
+        "wave": 44,
+        "at": 730.225
+      },
+      "rows": [
+        {
+          "wave": 21,
+          "damage": 0,
+          "farthest": 0.165,
+          "start": 2,
+          "end": 23.175,
+          "result": "clear",
+          "gold": 1103.3
+        },
+        {
+          "wave": 22,
+          "damage": 0,
+          "farthest": 0.184,
+          "start": 25.175,
+          "end": 48.075,
+          "result": "clear",
+          "gold": 1207.8
+        },
+        {
+          "wave": 23,
+          "damage": 0,
+          "farthest": 0.141,
+          "start": 50.075,
+          "end": 65.5,
+          "result": "clear",
+          "gold": 1130.8
+        },
+        {
+          "wave": 24,
+          "damage": 0,
+          "farthest": 0.181,
+          "start": 67.5,
+          "end": 87.55,
+          "result": "clear",
+          "gold": 1226.5
+        },
+        {
+          "wave": 25,
+          "damage": 0,
+          "farthest": 0.234,
+          "start": 89.55,
+          "end": 114.45,
+          "result": "clear",
+          "gold": 2114.1
+        },
+        {
+          "wave": 26,
+          "damage": 0,
+          "farthest": 0.197,
+          "start": 116.45,
+          "end": 133.55,
+          "result": "clear",
+          "gold": 1292.5
+        },
+        {
+          "wave": 27,
+          "damage": 0,
+          "farthest": 0.2,
+          "start": 135.55,
+          "end": 158.125,
+          "result": "clear",
+          "gold": 1524.6
+        },
+        {
+          "wave": 28,
+          "damage": 0,
+          "farthest": 0.223,
+          "start": 160.125,
+          "end": 179.15,
+          "result": "clear",
+          "gold": 1436.6
+        },
+        {
+          "wave": 29,
+          "damage": 0,
+          "farthest": 0.301,
+          "start": 181.15,
+          "end": 201.775,
+          "result": "clear",
+          "gold": 1615.9
+        },
+        {
+          "wave": 30,
+          "damage": 0,
+          "farthest": 0.214,
+          "start": 203.775,
+          "end": 228.725,
+          "result": "clear",
+          "gold": 1713.8
+        },
+        {
+          "wave": 31,
+          "damage": 0,
+          "farthest": 0.247,
+          "start": 230.725,
+          "end": 250.875,
+          "result": "clear",
+          "gold": 1556.5
+        },
+        {
+          "wave": 32,
+          "damage": 0,
+          "farthest": 0.381,
+          "start": 252.875,
+          "end": 280.975,
+          "result": "clear",
+          "gold": 1820.5
+        },
+        {
+          "wave": 33,
+          "damage": 0,
+          "farthest": 0.281,
+          "start": 282.975,
+          "end": 308.5,
+          "result": "clear",
+          "gold": 1900.8
+        },
+        {
+          "wave": 34,
+          "damage": 0,
+          "farthest": 0.338,
+          "start": 310.5,
+          "end": 335.225,
+          "result": "clear",
+          "gold": 1718.2
+        },
+        {
+          "wave": 35,
+          "damage": 0,
+          "farthest": 0.355,
+          "start": 337.225,
+          "end": 359.175,
+          "result": "clear",
+          "gold": 1687.4
+        },
+        {
+          "wave": 36,
+          "damage": 0,
+          "farthest": 0.505,
+          "start": 361.175,
+          "end": 388.45,
+          "result": "clear",
+          "gold": 1890.9
+        },
+        {
+          "wave": 37,
+          "damage": 0,
+          "farthest": 0.482,
+          "start": 390.45,
+          "end": 414.925,
+          "result": "clear",
+          "gold": 1743.5
+        },
+        {
+          "wave": 38,
+          "damage": 0,
+          "farthest": 0.397,
+          "start": 416.925,
+          "end": 449.075,
+          "result": "clear",
+          "gold": 1954.7
+        },
+        {
+          "wave": 39,
+          "damage": 0,
+          "farthest": 0.439,
+          "start": 451.075,
+          "end": 478.7,
+          "result": "clear",
+          "gold": 1760
+        },
+        {
+          "wave": 40,
+          "damage": 5,
+          "farthest": 1,
+          "start": 480.7,
+          "end": 530.45,
+          "result": "clear",
+          "gold": 1964.6
+        },
+        {
+          "wave": 41,
+          "damage": 8,
+          "farthest": 0.999,
+          "start": 532.45,
+          "end": 574.175,
+          "result": "clear",
+          "gold": 1398.1
+        },
+        {
+          "wave": 42,
+          "damage": 2,
+          "farthest": 0.999,
+          "start": 576.175,
+          "end": 628.3,
+          "result": "clear",
+          "gold": 1929.4
+        },
+        {
+          "wave": 43,
+          "damage": 0,
+          "farthest": 0.55,
+          "start": 630.3,
+          "end": 661.225,
+          "result": "clear",
+          "gold": 1758.9
+        },
+        {
+          "wave": 44,
+          "damage": 20,
+          "farthest": 1,
+          "start": 663.225,
+          "end": 730.225,
+          "result": "defeat",
+          "gold": 415.8
+        },
+        {
+          "wave": 44,
+          "damage": 20,
+          "farthest": 1,
+          "start": 792.375,
+          "end": 860.025,
+          "result": "defeat",
+          "gold": 462
+        },
+        {
+          "wave": 44,
+          "damage": 19,
+          "farthest": 1,
+          "start": 1363.325,
+          "end": 1430.975,
+          "result": "clear",
+          "gold": 1116.5
+        },
+        {
+          "wave": 45,
+          "damage": 8,
+          "farthest": 1,
+          "start": 1432.975,
+          "end": 1473.925,
+          "result": "clear",
+          "gold": 1483.9
+        },
+        {
+          "wave": 46,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1475.925,
+          "end": 1528.425,
+          "result": "defeat",
+          "gold": 367.4
+        }
+      ]
+    },
+    {
+      "style": "mixed",
+      "scenario": "w30-24h",
+      "firstLeak": {
+        "wave": 40,
+        "at": 285.3
+      },
+      "firstPressure": {
+        "wave": 40,
+        "at": 289.5
+      },
+      "firstLoss": {
+        "wave": 46,
+        "at": 581.3
+      },
+      "rows": [
+        {
+          "wave": 31,
+          "damage": 0,
+          "farthest": 0.252,
+          "start": 2,
+          "end": 22.425,
+          "result": "clear",
+          "gold": 1556.5
+        },
+        {
+          "wave": 32,
+          "damage": 0,
+          "farthest": 0.284,
+          "start": 24.425,
+          "end": 50.625,
+          "result": "clear",
+          "gold": 1820.5
+        },
+        {
+          "wave": 33,
+          "damage": 0,
+          "farthest": 0.284,
+          "start": 52.625,
+          "end": 77.825,
+          "result": "clear",
+          "gold": 1900.8
+        },
+        {
+          "wave": 34,
+          "damage": 0,
+          "farthest": 0.333,
+          "start": 79.825,
+          "end": 103.825,
+          "result": "clear",
+          "gold": 1718.2
+        },
+        {
+          "wave": 35,
+          "damage": 0,
+          "farthest": 0.347,
+          "start": 105.825,
+          "end": 127.625,
+          "result": "clear",
+          "gold": 1687.4
+        },
+        {
+          "wave": 36,
+          "damage": 0,
+          "farthest": 0.447,
+          "start": 129.625,
+          "end": 157.275,
+          "result": "clear",
+          "gold": 1890.9
+        },
+        {
+          "wave": 37,
+          "damage": 0,
+          "farthest": 0.383,
+          "start": 159.275,
+          "end": 182.75,
+          "result": "clear",
+          "gold": 1743.5
+        },
+        {
+          "wave": 38,
+          "damage": 0,
+          "farthest": 0.415,
+          "start": 184.75,
+          "end": 217.9,
+          "result": "clear",
+          "gold": 1954.7
+        },
+        {
+          "wave": 39,
+          "damage": 0,
+          "farthest": 0.447,
+          "start": 219.9,
+          "end": 247.925,
+          "result": "clear",
+          "gold": 1760
+        },
+        {
+          "wave": 40,
+          "damage": 7,
+          "farthest": 1,
+          "start": 249.925,
+          "end": 299.675,
+          "result": "clear",
+          "gold": 1854.6
+        },
+        {
+          "wave": 41,
+          "damage": 3,
+          "farthest": 0.999,
+          "start": 301.675,
+          "end": 343.4,
+          "result": "clear",
+          "gold": 1637.9
+        },
+        {
+          "wave": 42,
+          "damage": 0,
+          "farthest": 0.534,
+          "start": 345.4,
+          "end": 383.525,
+          "result": "clear",
+          "gold": 1993.2
+        },
+        {
+          "wave": 43,
+          "damage": 0,
+          "farthest": 0.531,
+          "start": 385.525,
+          "end": 415.35,
+          "result": "clear",
+          "gold": 1758.9
+        },
+        {
+          "wave": 44,
+          "damage": 17,
+          "farthest": 1,
+          "start": 417.35,
+          "end": 485,
+          "result": "clear",
+          "gold": 1208.9
+        },
+        {
+          "wave": 45,
+          "damage": 7,
+          "farthest": 1,
+          "start": 487,
+          "end": 526.675,
+          "result": "clear",
+          "gold": 1534.5
+        },
+        {
+          "wave": 46,
+          "damage": 20,
+          "farthest": 1,
+          "start": 528.675,
+          "end": 581.3,
+          "result": "defeat",
+          "gold": 489.5
+        },
+        {
+          "wave": 46,
+          "damage": 20,
+          "farthest": 1,
+          "start": 764.9,
+          "end": 817.525,
+          "result": "defeat",
+          "gold": 489.5
+        },
+        {
+          "wave": 46,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1485.325,
+          "end": 1537.95,
+          "result": "defeat",
+          "gold": 489.5
+        }
+      ]
+    },
+    {
+      "style": "tactical",
+      "scenario": "fresh",
+      "firstLeak": {
+        "wave": 32,
+        "at": 749.5
+      },
+      "firstPressure": {
+        "wave": 36,
+        "at": 900.475
+      },
+      "firstLoss": {
+        "wave": 40,
+        "at": 1115.65
+      },
+      "rows": [
+        {
+          "wave": 10,
+          "damage": 0,
+          "farthest": 0.221,
+          "start": 142.5,
+          "end": 155.75,
+          "result": "clear",
+          "gold": 235.4
+        },
+        {
+          "wave": 11,
+          "damage": 0,
+          "farthest": 0.212,
+          "start": 157.75,
+          "end": 174.775,
+          "result": "clear",
+          "gold": 273.9
+        },
+        {
+          "wave": 12,
+          "damage": 0,
+          "farthest": 0.306,
+          "start": 176.775,
+          "end": 192.075,
+          "result": "clear",
+          "gold": 254.1
+        },
+        {
+          "wave": 13,
+          "damage": 0,
+          "farthest": 0.294,
+          "start": 194.075,
+          "end": 216.575,
+          "result": "clear",
+          "gold": 305.8
+        },
+        {
+          "wave": 14,
+          "damage": 0,
+          "farthest": 0.291,
+          "start": 218.575,
+          "end": 237.125,
+          "result": "clear",
+          "gold": 282.7
+        },
+        {
+          "wave": 15,
+          "damage": 0,
+          "farthest": 0.307,
+          "start": 239.125,
+          "end": 282,
+          "result": "clear",
+          "gold": 977.7
+        },
+        {
+          "wave": 16,
+          "damage": 0,
+          "farthest": 0.258,
+          "start": 284,
+          "end": 307.6,
+          "result": "clear",
+          "gold": 710.6
+        },
+        {
+          "wave": 17,
+          "damage": 0,
+          "farthest": 0.252,
+          "start": 309.6,
+          "end": 325.475,
+          "result": "clear",
+          "gold": 706.2
+        },
+        {
+          "wave": 18,
+          "damage": 0,
+          "farthest": 0.275,
+          "start": 327.475,
+          "end": 346.8,
+          "result": "clear",
+          "gold": 764.5
+        },
+        {
+          "wave": 19,
+          "damage": 0,
+          "farthest": 0.26,
+          "start": 348.8,
+          "end": 366.85,
+          "result": "clear",
+          "gold": 855.8
+        },
+        {
+          "wave": 20,
+          "damage": 0,
+          "farthest": 0.35,
+          "start": 368.85,
+          "end": 389.8,
+          "result": "clear",
+          "gold": 914.1
+        },
+        {
+          "wave": 21,
+          "damage": 0,
+          "farthest": 0.348,
+          "start": 391.8,
+          "end": 421,
+          "result": "clear",
+          "gold": 1103.3
+        },
+        {
+          "wave": 22,
+          "damage": 0,
+          "farthest": 0.296,
+          "start": 423,
+          "end": 451.225,
+          "result": "clear",
+          "gold": 1207.8
+        },
+        {
+          "wave": 23,
+          "damage": 0,
+          "farthest": 0.306,
+          "start": 453.225,
+          "end": 473.775,
+          "result": "clear",
+          "gold": 1130.8
+        },
+        {
+          "wave": 24,
+          "damage": 0,
+          "farthest": 0.339,
+          "start": 475.775,
+          "end": 500.625,
+          "result": "clear",
+          "gold": 1226.5
+        },
+        {
+          "wave": 25,
+          "damage": 0,
+          "farthest": 0.353,
+          "start": 502.625,
+          "end": 547.375,
+          "result": "clear",
+          "gold": 2114.1
+        },
+        {
+          "wave": 26,
+          "damage": 0,
+          "farthest": 0.36,
+          "start": 549.375,
+          "end": 573.6,
+          "result": "clear",
+          "gold": 1292.5
+        },
+        {
+          "wave": 27,
+          "damage": 0,
+          "farthest": 0.32,
+          "start": 575.6,
+          "end": 601.4,
+          "result": "clear",
+          "gold": 1524.6
+        },
+        {
+          "wave": 28,
+          "damage": 0,
+          "farthest": 0.418,
+          "start": 603.4,
+          "end": 628.1,
+          "result": "clear",
+          "gold": 1436.6
+        },
+        {
+          "wave": 29,
+          "damage": 0,
+          "farthest": 0.42,
+          "start": 630.1,
+          "end": 652.65,
+          "result": "clear",
+          "gold": 1615.9
+        },
+        {
+          "wave": 30,
+          "damage": 0,
+          "farthest": 0.359,
+          "start": 654.65,
+          "end": 685.575,
+          "result": "clear",
+          "gold": 1713.8
+        },
+        {
+          "wave": 31,
+          "damage": 0,
+          "farthest": 0.367,
+          "start": 687.575,
+          "end": 711.475,
+          "result": "clear",
+          "gold": 1556.5
+        },
+        {
+          "wave": 32,
+          "damage": 4,
+          "farthest": 1,
+          "start": 713.475,
+          "end": 754.075,
+          "result": "clear",
+          "gold": 1604.9
+        },
+        {
+          "wave": 33,
+          "damage": 0,
+          "farthest": 0.496,
+          "start": 756.075,
+          "end": 789.575,
+          "result": "clear",
+          "gold": 1900.8
+        },
+        {
+          "wave": 34,
+          "damage": 2,
+          "farthest": 0.999,
+          "start": 791.575,
+          "end": 835,
+          "result": "clear",
+          "gold": 1625.8
+        },
+        {
+          "wave": 35,
+          "damage": 0,
+          "farthest": 0.43,
+          "start": 837,
+          "end": 862.775,
+          "result": "clear",
+          "gold": 1687.4
+        },
+        {
+          "wave": 36,
+          "damage": 19,
+          "farthest": 1,
+          "start": 864.775,
+          "end": 917,
+          "result": "clear",
+          "gold": 1005.4
+        },
+        {
+          "wave": 37,
+          "damage": 12,
+          "farthest": 0.999,
+          "start": 919,
+          "end": 957.15,
+          "result": "clear",
+          "gold": 1086.8
+        },
+        {
+          "wave": 38,
+          "damage": 11,
+          "farthest": 1,
+          "start": 959.15,
+          "end": 1016.375,
+          "result": "clear",
+          "gold": 1597.2
+        },
+        {
+          "wave": 39,
+          "damage": 15,
+          "farthest": 1,
+          "start": 1018.375,
+          "end": 1062.7,
+          "result": "clear",
+          "gold": 1053.8
+        },
+        {
+          "wave": 40,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1064.7,
+          "end": 1115.65,
+          "result": "defeat",
+          "gold": 401.5
+        },
+        {
+          "wave": 40,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1266.575,
+          "end": 1317.525,
+          "result": "defeat",
+          "gold": 363
+        },
+        {
+          "wave": 40,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1513.05,
+          "end": 1564.05,
+          "result": "defeat",
+          "gold": 473
+        },
+        {
+          "wave": 40,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1780.9,
+          "end": 1831.85,
+          "result": "defeat",
+          "gold": 363
+        },
+        {
+          "wave": 40,
+          "damage": 20,
+          "farthest": 1,
+          "start": 2048.525,
+          "end": 2099.525,
+          "result": "defeat",
+          "gold": 418
+        },
+        {
+          "wave": 40,
+          "damage": 20,
+          "farthest": 1,
+          "start": 2313.75,
+          "end": 2364.75,
+          "result": "defeat",
+          "gold": 418
+        },
+        {
+          "wave": 40,
+          "damage": 19,
+          "farthest": 1,
+          "start": 2660.125,
+          "end": 2711.125,
+          "result": "clear",
+          "gold": 1250.7
+        },
+        {
+          "wave": 41,
+          "damage": 14,
+          "farthest": 1,
+          "start": 2713.125,
+          "end": 2756.1,
+          "result": "clear",
+          "gold": 1116.5
+        },
+        {
+          "wave": 42,
+          "damage": 10,
+          "farthest": 1,
+          "start": 2758.1,
+          "end": 2810.225,
+          "result": "clear",
+          "gold": 1661
+        },
+        {
+          "wave": 43,
+          "damage": 9,
+          "farthest": 1,
+          "start": 2812.225,
+          "end": 2859.925,
+          "result": "clear",
+          "gold": 1447.6
+        },
+        {
+          "wave": 44,
+          "damage": 20,
+          "farthest": 1,
+          "start": 2861.925,
+          "end": 2929.65,
+          "result": "defeat",
+          "gold": 369.6
+        },
+        {
+          "wave": 44,
+          "damage": 20,
+          "farthest": 1,
+          "start": 3193.55,
+          "end": 3261.275,
+          "result": "defeat",
+          "gold": 369.6
+        }
+      ]
+    },
+    {
+      "style": "tactical",
+      "scenario": "w20-24h",
+      "firstLeak": {
+        "wave": 40,
+        "at": 498.25
+      },
+      "firstPressure": {
+        "wave": 40,
+        "at": 512.5
+      },
+      "firstLoss": {
+        "wave": 46,
+        "at": 794.375
+      },
+      "rows": [
+        {
+          "wave": 21,
+          "damage": 0,
+          "farthest": 0.176,
+          "start": 2,
+          "end": 23.725,
+          "result": "clear",
+          "gold": 1103.3
+        },
+        {
+          "wave": 22,
+          "damage": 0,
+          "farthest": 0.176,
+          "start": 25.725,
+          "end": 48.775,
+          "result": "clear",
+          "gold": 1207.8
+        },
+        {
+          "wave": 23,
+          "damage": 0,
+          "farthest": 0.141,
+          "start": 50.775,
+          "end": 66.2,
+          "result": "clear",
+          "gold": 1130.8
+        },
+        {
+          "wave": 24,
+          "damage": 0,
+          "farthest": 0.18,
+          "start": 68.2,
+          "end": 88.25,
+          "result": "clear",
+          "gold": 1226.5
+        },
+        {
+          "wave": 25,
+          "damage": 0,
+          "farthest": 0.233,
+          "start": 90.25,
+          "end": 115.05,
+          "result": "clear",
+          "gold": 2114.1
+        },
+        {
+          "wave": 26,
+          "damage": 0,
+          "farthest": 0.182,
+          "start": 117.05,
+          "end": 134.15,
+          "result": "clear",
+          "gold": 1292.5
+        },
+        {
+          "wave": 27,
+          "damage": 0,
+          "farthest": 0.181,
+          "start": 136.15,
+          "end": 158.125,
+          "result": "clear",
+          "gold": 1524.6
+        },
+        {
+          "wave": 28,
+          "damage": 0,
+          "farthest": 0.246,
+          "start": 160.125,
+          "end": 179.525,
+          "result": "clear",
+          "gold": 1436.6
+        },
+        {
+          "wave": 29,
+          "damage": 0,
+          "farthest": 0.264,
+          "start": 181.525,
+          "end": 198.675,
+          "result": "clear",
+          "gold": 1615.9
+        },
+        {
+          "wave": 30,
+          "damage": 0,
+          "farthest": 0.209,
+          "start": 200.675,
+          "end": 224.95,
+          "result": "clear",
+          "gold": 1713.8
+        },
+        {
+          "wave": 31,
+          "damage": 0,
+          "farthest": 0.227,
+          "start": 226.95,
+          "end": 245.2,
+          "result": "clear",
+          "gold": 1556.5
+        },
+        {
+          "wave": 32,
+          "damage": 0,
+          "farthest": 0.245,
+          "start": 247.2,
+          "end": 271.225,
+          "result": "clear",
+          "gold": 1820.5
+        },
+        {
+          "wave": 33,
+          "damage": 0,
+          "farthest": 0.223,
+          "start": 273.225,
+          "end": 296.5,
+          "result": "clear",
+          "gold": 1900.8
+        },
+        {
+          "wave": 34,
+          "damage": 0,
+          "farthest": 0.243,
+          "start": 298.5,
+          "end": 320.1,
+          "result": "clear",
+          "gold": 1718.2
+        },
+        {
+          "wave": 35,
+          "damage": 0,
+          "farthest": 0.236,
+          "start": 322.1,
+          "end": 340.375,
+          "result": "clear",
+          "gold": 1687.4
+        },
+        {
+          "wave": 36,
+          "damage": 0,
+          "farthest": 0.394,
+          "start": 342.375,
+          "end": 368.825,
+          "result": "clear",
+          "gold": 1890.9
+        },
+        {
+          "wave": 37,
+          "damage": 0,
+          "farthest": 0.366,
+          "start": 370.825,
+          "end": 394.275,
+          "result": "clear",
+          "gold": 1743.5
+        },
+        {
+          "wave": 38,
+          "damage": 0,
+          "farthest": 0.391,
+          "start": 396.275,
+          "end": 429.475,
+          "result": "clear",
+          "gold": 1954.7
+        },
+        {
+          "wave": 39,
+          "damage": 0,
+          "farthest": 0.436,
+          "start": 431.475,
+          "end": 458.85,
+          "result": "clear",
+          "gold": 1760
+        },
+        {
+          "wave": 40,
+          "damage": 6,
+          "farthest": 1,
+          "start": 460.85,
+          "end": 512.5,
+          "result": "clear",
+          "gold": 1909.6
+        },
+        {
+          "wave": 41,
+          "damage": 2,
+          "farthest": 0.999,
+          "start": 514.5,
+          "end": 557.125,
+          "result": "clear",
+          "gold": 1684.1
+        },
+        {
+          "wave": 42,
+          "damage": 0,
+          "farthest": 0.497,
+          "start": 559.125,
+          "end": 598.15,
+          "result": "clear",
+          "gold": 1993.2
+        },
+        {
+          "wave": 43,
+          "damage": 0,
+          "farthest": 0.407,
+          "start": 600.15,
+          "end": 625.85,
+          "result": "clear",
+          "gold": 1758.9
+        },
+        {
+          "wave": 44,
+          "damage": 16,
+          "farthest": 1,
+          "start": 627.85,
+          "end": 696.4,
+          "result": "clear",
+          "gold": 1255.1
+        },
+        {
+          "wave": 45,
+          "damage": 9,
+          "farthest": 1,
+          "start": 698.4,
+          "end": 738.975,
+          "result": "clear",
+          "gold": 1445.4
+        },
+        {
+          "wave": 46,
+          "damage": 20,
+          "farthest": 1,
+          "start": 740.975,
+          "end": 794.375,
+          "result": "defeat",
+          "gold": 418
+        },
+        {
+          "wave": 46,
+          "damage": 20,
+          "farthest": 1,
+          "start": 983.9,
+          "end": 1037.3,
+          "result": "defeat",
+          "gold": 418
+        },
+        {
+          "wave": 46,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1414.325,
+          "end": 1468.525,
+          "result": "defeat",
+          "gold": 481.8
+        }
+      ]
+    },
+    {
+      "style": "tactical",
+      "scenario": "w30-24h",
+      "firstLeak": {
+        "wave": 44,
+        "at": 378.45
+      },
+      "firstPressure": {
+        "wave": 44,
+        "at": 396.4
+      },
+      "firstLoss": {
+        "wave": 46,
+        "at": 490.15
+      },
+      "rows": [
+        {
+          "wave": 31,
+          "damage": 0,
+          "farthest": 0.185,
+          "start": 2,
+          "end": 20.25,
+          "result": "clear",
+          "gold": 1556.5
+        },
+        {
+          "wave": 32,
+          "damage": 0,
+          "farthest": 0.191,
+          "start": 22.25,
+          "end": 44.925,
+          "result": "clear",
+          "gold": 1820.5
+        },
+        {
+          "wave": 33,
+          "damage": 0,
+          "farthest": 0.187,
+          "start": 46.925,
+          "end": 69.425,
+          "result": "clear",
+          "gold": 1900.8
+        },
+        {
+          "wave": 34,
+          "damage": 0,
+          "farthest": 0.201,
+          "start": 71.425,
+          "end": 91.8,
+          "result": "clear",
+          "gold": 1718.2
+        },
+        {
+          "wave": 35,
+          "damage": 0,
+          "farthest": 0.23,
+          "start": 93.8,
+          "end": 112.575,
+          "result": "clear",
+          "gold": 1687.4
+        },
+        {
+          "wave": 36,
+          "damage": 0,
+          "farthest": 0.291,
+          "start": 114.575,
+          "end": 138.65,
+          "result": "clear",
+          "gold": 1890.9
+        },
+        {
+          "wave": 37,
+          "damage": 0,
+          "farthest": 0.258,
+          "start": 140.65,
+          "end": 160.975,
+          "result": "clear",
+          "gold": 1743.5
+        },
+        {
+          "wave": 38,
+          "damage": 0,
+          "farthest": 0.308,
+          "start": 162.975,
+          "end": 191.375,
+          "result": "clear",
+          "gold": 1954.7
+        },
+        {
+          "wave": 39,
+          "damage": 0,
+          "farthest": 0.295,
+          "start": 193.375,
+          "end": 216.125,
+          "result": "clear",
+          "gold": 1760
+        },
+        {
+          "wave": 40,
+          "damage": 0,
+          "farthest": 0.463,
+          "start": 218.125,
+          "end": 249.25,
+          "result": "clear",
+          "gold": 2201.1
+        },
+        {
+          "wave": 41,
+          "damage": 0,
+          "farthest": 0.405,
+          "start": 251.25,
+          "end": 276.1,
+          "result": "clear",
+          "gold": 1776.5
+        },
+        {
+          "wave": 42,
+          "damage": 0,
+          "farthest": 0.366,
+          "start": 278.1,
+          "end": 309.6,
+          "result": "clear",
+          "gold": 1993.2
+        },
+        {
+          "wave": 43,
+          "damage": 0,
+          "farthest": 0.296,
+          "start": 311.6,
+          "end": 333.275,
+          "result": "clear",
+          "gold": 1758.9
+        },
+        {
+          "wave": 44,
+          "damage": 14,
+          "farthest": 1,
+          "start": 335.275,
+          "end": 403.525,
+          "result": "clear",
+          "gold": 1347.5
+        },
+        {
+          "wave": 45,
+          "damage": 0,
+          "farthest": 0.56,
+          "start": 405.525,
+          "end": 434.75,
+          "result": "clear",
+          "gold": 1828.2
+        },
+        {
+          "wave": 46,
+          "damage": 20,
+          "farthest": 1,
+          "start": 436.75,
+          "end": 490.15,
+          "result": "defeat",
+          "gold": 418
+        },
+        {
+          "wave": 46,
+          "damage": 20,
+          "farthest": 1,
+          "start": 878.075,
+          "end": 932.275,
+          "result": "defeat",
+          "gold": 481.8
+        },
+        {
+          "wave": 46,
+          "damage": 20,
+          "farthest": 1,
+          "start": 1281.75,
+          "end": 1335.95,
+          "result": "defeat",
+          "gold": 481.8
+        }
+      ]
+    }
+  ]
+}

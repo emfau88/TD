@@ -1,0 +1,7 @@
+relaxed never: 752.4 gold; exact hypothesis match
+relaxed immediate: 592.9 gold; exact hypothesis match
+mixed never: 4116.31 gold; exact hypothesis match
+mixed immediate: 3828 gold; exact hypothesis match
+tactical never: 4524.52 gold; exact hypothesis match
+tactical immediate: 4691.5 gold; exact hypothesis match
+PASS: six repeated-attack/farming controls and adaptive 60-minute recovery match exactly.

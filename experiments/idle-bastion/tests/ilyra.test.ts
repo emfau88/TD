@@ -69,7 +69,7 @@ test('saved windup and flight hit once, reward ground/air kills once, and reject
  for(const e of targets)assert.ok(e.hp<=v.damage*(e.def.flying?ILYRA.airMultiplier:1)*(1-e.def.armor));
  const targetIds=targets.map(e=>e.uid).sort((a,b)=>a-b);
  const goldBefore=b.gold*1000+b.goldRemainderUnits, earnedBefore=b.earned*1000+b.rewardRemainderUnits;
- const rewardUnits=targets.reduce((sum,e)=>sum+battleReward(e.def.gold,b.wave,b.waveRecipeVersion)*(b.wispUnlocked?1100:1000),0);
+ const rewardUnits=targets.reduce((sum,e)=>sum+battleReward(e.def.gold,b.wave,b.waveRecipeVersion)*(b.wispUnlocked?1100:1000)*0.1,0);
  b.drainEvents();advance(b,.025);advance(restored,.025);assert.deepEqual(restored.snapshot(),b.snapshot());
  const killEvents=b.drainEvents().filter(e=>e.type==='kill');
  assert.deepEqual(killEvents.map(e=>e.enemy!.uid).sort((a,b)=>a-b),targetIds);

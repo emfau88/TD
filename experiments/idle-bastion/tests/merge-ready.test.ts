@@ -7,7 +7,7 @@ import {IdleBattle,BATTLE_SCHEMA_VERSION,BATTLE_RULES_VERSION} from '../src/batt
 import {waveRecipe} from '../src/wave-recipes';
 import {ENEMIES} from '../src/enemy-roster';
 import {certifyFarm,isFarmCertificateValid} from '../src/farming';
-import {createOfflineState,beginAbsence,reserveOffline} from '../src/offline';
+import { LEGACY_OFFLINE,createOfflineState,beginAbsence,reserveOffline} from '../src/offline';
 import {openBattleStore} from '../src/save-store';
 import {BattleSession} from '../src/battle-session';
 const read=(p:string)=>JSON.parse(readFileSync(new URL('../../../artifacts/idle-bastion/acceptance/'+p,import.meta.url),'utf8'));
@@ -49,7 +49,7 @@ test('native schema-27 reload retains its rules-13 offline claim and credits the
  const factory=new IDBFactory(),name='e01-merge-v27',now=31000;
  let store=await openBattleStore(factory,name,()=>now);store.close();
  const oldProof={wave:29,rulesVersion:13,fingerprint:'historical-departure',rewardGold:100,rewardRemainderUnits:250,durationMs:10000};
- const offline=reserveOffline(beginAbsence(createOfflineState(1000),1000,oldProof,false),now);
+ const offline=reserveOffline(beginAbsence(createOfflineState(1000),1000,oldProof,false,LEGACY_OFFLINE),now);
  await new Promise<void>((resolve,reject)=>{const r=factory.open(name,1);r.onerror=()=>reject(r.error);r.onsuccess=()=>{const db=r.result,tx=db.transaction('saves','readwrite');tx.objectStore('saves').put({schemaVersion:2,revision:1,writtenAt:now,paused:false,battle:active,offline},'default');tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>reject(tx.error);};});
  store=await openBattleStore(factory,name,()=>now);const session=await BattleSession.open(store,{now:()=>now,ownerId:'merge-v27',locks:null});
  assert.equal(session.battle.waveRecipeVersion,13);assert.deepEqual(session.battle.snapshot().queue,active.queue);

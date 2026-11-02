@@ -1,0 +1,281 @@
+[
+  {
+    "wave": 19,
+    "family": "rush",
+    "composition": {
+      "FlyingLocust": 15,
+      "Firewasp": 7,
+      "ForestGoblin": 2
+    },
+    "count": 24,
+    "hp": 7215,
+    "armorAdjustedHp": 7215,
+    "ordinaryGold": 855.8
+  },
+  {
+    "wave": 20,
+    "family": "swarm",
+    "composition": {
+      "Clampbeetle": 3,
+      "Firebug": 8,
+      "ForestGoblin": 2,
+      "Leafbug": 12
+    },
+    "count": 25,
+    "hp": 11420,
+    "armorAdjustedHp": 12328,
+    "ordinaryGold": 914.1
+  },
+  {
+    "wave": 21,
+    "family": "support",
+    "composition": {
+      "MagmaCrab": 7,
+      "Firebug": 14,
+      "LanternJelly": 2
+    },
+    "count": 23,
+    "hp": 18492,
+    "armorAdjustedHp": 21596,
+    "ordinaryGold": 1103.3
+  },
+  {
+    "wave": 22,
+    "family": "armor",
+    "composition": {
+      "Scorpion": 9,
+      "Leafbug": 11,
+      "LanternJelly": 2
+    },
+    "count": 22,
+    "hp": 14845,
+    "armorAdjustedHp": 21764,
+    "ordinaryGold": 1207.8
+  },
+  {
+    "wave": 23,
+    "family": "swarm",
+    "composition": {
+      "Firebug": 19,
+      "FlyingLocust": 9
+    },
+    "count": 28,
+    "hp": 17540,
+    "armorAdjustedHp": 17540,
+    "ordinaryGold": 1130.8
+  },
+  {
+    "wave": 24,
+    "family": "rush",
+    "composition": {
+      "Firebug": 19,
+      "Firewasp": 8
+    },
+    "count": 27,
+    "hp": 20492,
+    "armorAdjustedHp": 20492,
+    "ordinaryGold": 1226.5
+  },
+  {
+    "wave": 25,
+    "family": "boss",
+    "composition": {
+      "Leafbug": 7,
+      "Rosenspiegel": 1,
+      "Scorpion": 2,
+      "Firebug": 3
+    },
+    "count": 13,
+    "hp": 33079,
+    "armorAdjustedHp": 37858,
+    "ordinaryGold": 914.1
+  },
+  {
+    "wave": 26,
+    "family": "swarm",
+    "composition": {
+      "Leafbug": 17,
+      "ForestGoblin": 9,
+      "BoneGuard": 2
+    },
+    "count": 28,
+    "hp": 25798,
+    "armorAdjustedHp": 26921,
+    "ordinaryGold": 1292.5
+  },
+  {
+    "wave": 27,
+    "family": "armor",
+    "composition": {
+      "Clampbeetle": 9,
+      "FlyingLocust": 11,
+      "BoneGuard": 2
+    },
+    "count": 22,
+    "hp": 26382,
+    "armorAdjustedHp": 34062,
+    "ordinaryGold": 1524.6
+  },
+  {
+    "wave": 28,
+    "family": "rush",
+    "composition": {
+      "Firebug": 17,
+      "Firewasp": 9,
+      "Voidbutterfly": 2
+    },
+    "count": 28,
+    "hp": 34428,
+    "armorAdjustedHp": 34724,
+    "ordinaryGold": 1436.6
+  },
+  {
+    "wave": 29,
+    "family": "support",
+    "composition": {
+      "ForestGoblin": 19,
+      "Voidbutterfly": 2,
+      "LanternJelly": 2
+    },
+    "count": 23,
+    "hp": 36605,
+    "armorAdjustedHp": 36939,
+    "ordinaryGold": 1615.9
+  },
+  {
+    "wave": 30,
+    "family": "armor",
+    "composition": {
+      "Scorpion": 9,
+      "Leafbug": 13
+    },
+    "count": 22,
+    "hp": 38067,
+    "armorAdjustedHp": 56459,
+    "ordinaryGold": 1713.8
+  },
+  {
+    "wave": 31,
+    "family": "swarm",
+    "composition": {
+      "Leafbug": 19,
+      "ForestGoblin": 9
+    },
+    "count": 28,
+    "hp": 44031,
+    "armorAdjustedHp": 44031,
+    "ordinaryGold": 1556.5
+  },
+  {
+    "wave": 32,
+    "family": "support",
+    "composition": {
+      "MagmaCrab": 7,
+      "ForestGoblin": 14,
+      "ForestCultist": 2
+    },
+    "count": 23,
+    "hp": 73230,
+    "armorAdjustedHp": 85137,
+    "ordinaryGold": 1820.5
+  },
+  {
+    "wave": 33,
+    "family": "armor",
+    "composition": {
+      "Clampbeetle": 9,
+      "FlyingLocust": 11,
+      "ForestCultist": 2
+    },
+    "count": 22,
+    "hp": 53052,
+    "armorAdjustedHp": 66397,
+    "ordinaryGold": 1900.8
+  },
+  {
+    "wave": 34,
+    "family": "rush",
+    "composition": {
+      "Firebug": 19,
+      "Firewasp": 8
+    },
+    "count": 27,
+    "hp": 69560,
+    "armorAdjustedHp": 69560,
+    "ordinaryGold": 1718.2
+  },
+  {
+    "wave": 35,
+    "family": "swarm",
+    "composition": {
+      "Leafbug": 19,
+      "ForestGoblin": 9
+    },
+    "count": 28,
+    "hp": 71792,
+    "armorAdjustedHp": 71792,
+    "ordinaryGold": 1687.4
+  },
+  {
+    "wave": 36,
+    "family": "support",
+    "composition": {
+      "BoneGuard": 7,
+      "ForestGoblin": 15,
+      "LanternJelly": 2
+    },
+    "count": 24,
+    "hp": 104110,
+    "armorAdjustedHp": 117458,
+    "ordinaryGold": 1890.9
+  },
+  {
+    "wave": 37,
+    "family": "rush",
+    "composition": {
+      "Firewasp": 19,
+      "Voidbutterfly": 8
+    },
+    "count": 27,
+    "hp": 90026,
+    "armorAdjustedHp": 93578,
+    "ordinaryGold": 1743.5
+  },
+  {
+    "wave": 38,
+    "family": "armor",
+    "composition": {
+      "Scorpion": 9,
+      "Leafbug": 13
+    },
+    "count": 22,
+    "hp": 101198,
+    "armorAdjustedHp": 150094,
+    "ordinaryGold": 1954.7
+  },
+  {
+    "wave": 39,
+    "family": "rush",
+    "composition": {
+      "Firebug": 19,
+      "Firewasp": 8
+    },
+    "count": 27,
+    "hp": 128160,
+    "armorAdjustedHp": 128160,
+    "ordinaryGold": 1760
+  },
+  {
+    "wave": 40,
+    "family": "armor",
+    "composition": {
+      "BoneGuard": 5,
+      "ForestGoblin": 19,
+      "ForestCultist": 2
+    },
+    "count": 26,
+    "hp": 176871,
+    "armorAdjustedHp": 192416,
+    "ordinaryGold": 2201.1
+  }
+]
