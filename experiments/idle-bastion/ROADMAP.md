@@ -1,5 +1,12 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Handy-Querformat · 02.11.2026 — Umsetzung, kompakte Prüfung und Commit/Push ausdrücklich beauftragt.**
+
+- [x] Einheitlicher Modus für flache Touch-Querformate: kleinere Kopf-/Bauleiste, vollständige Bau-/Gefährtenkarten, kompakte Intro-/Tutorialhinweise mit passender Intro-Kamera und nutzbare Taverne. Schwerpunkt gängige Handyformate; keine Sonderlayouts für exotische Kleinstgeräte.
+- [x] 39/39 gezielte Tests und Produktionsbuild bestanden. 111 Browserzustände auf 720×320 / 844×390 / 932×430 sowie Hochformat/Desktop geprüft, DE/EN, Rotation, echter Starterbau, Forschung, Taverne/Herzgeschichten, Menüscrollen, Rückkehr und Reload. Keine Browserfehler; Spielregeln und Speicherformat unverändert. [Messungen und Aufnahmen](../../artifacts/idle-bastion/acceptance/mobile-landscape-2026-11-02/REPORT.md).
+- [ ] Beauftragte Veröffentlichung auf Main/Pages und abschließende öffentliche Stichprobe.
+- [ ] Menschliche Sichtprüfung auf dem konkreten Handy bleibt offen; keine physische Geräteabnahme behauptet.
+
 **Glutwerfer / Werkstattforschung · 02.11.2026 — als `de9576c` mit Menü-Nachkorrektur `dd784fd` auf Main/Pages veröffentlicht.**
 
 - [x] Umfang: vorhandener Turm 07 mit eigenen Waffen, Feuerball und Einschlag; Forschung in Werkstatt II nach gemeisterter W34, getrennte Baukosten. Bestehende Wellen und Goldtarife erhalten. [Messmethode und erster Kandidat](../../artifacts/glutwerfer-2026-11-02/METHOD.md).

@@ -1,0 +1,149 @@
+/* A shallow touch viewport needs one coherent layout, regardless of its width.
+   Keep desktop and portrait rules intact. The camera reads this mode from CSS. */
+@media (max-height:500px) and (orientation:landscape) and (pointer:coarse) {
+  :root {
+    --compact-landscape:1;
+    --landscape-left:max(8px,env(safe-area-inset-left));
+    --landscape-right:max(8px,env(safe-area-inset-right));
+    --header:calc(48px + env(safe-area-inset-top));
+    --dock:calc(64px + env(safe-area-inset-bottom));
+  }
+  #app { height:100dvh; }
+  .app-header { padding:env(safe-area-inset-top) var(--landscape-right) 0 var(--landscape-left); gap:8px; }
+  .app-header .brand { display:none; }
+  .app-header .resource-strip { flex:1; min-width:0; gap:12px; justify-content:space-between; }
+  .app-header .resource-tile { min-width:0; min-height:44px; padding:0; gap:6px; }
+  .app-header .resource-tile > span:last-child { min-width:0; }
+  .app-header .resource-tile strong,.app-header .resource-tile strong b { font-size:20px; line-height:1.1; }
+  .app-header .resource-tile small { font-size:10px; max-width:100%; overflow:hidden; text-overflow:ellipsis; }
+  .app-header .life-tile small { display:none; }
+  .app-header .life-tile { position:static; width:auto; height:auto; overflow:visible; clip-path:none; background:none; border:0; }
+  .app-header .life-tile strong { font-family:var(--display); }
+  .app-header .gold-tile { flex:1; overflow:hidden; }
+  .app-header .gold-tile strong { overflow:hidden; text-overflow:ellipsis; }
+  .app-header .wave-tile { flex:0 0 auto; }
+  .app-header .ui-icon,.app-header .coin-symbol,.app-header .heart { width:24px; height:24px; flex-basis:24px; }
+  .header-actions { flex-shrink:0; gap:3px; margin:0; }
+  .header-actions .icon-button { width:44px; height:44px; min-height:44px; }
+  .header-actions #fullscreen,.header-actions #open-progress { display:grid; }
+
+  /* Tabs and the existing horizontal catalog share a single row. */
+  .command-dock { padding:5px var(--landscape-right) calc(5px + env(safe-area-inset-bottom)) var(--landscape-left); gap:8px; }
+  .catalog { display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:8px; flex:1; width:auto; min-width:0; }
+  .context-tabs { height:52px; margin:0; gap:3px; align-items:center; }
+  .context-tabs button { height:48px; min-height:48px; padding:4px 7px; font-size:13px; white-space:nowrap; }
+  .context-tabs .ui-icon { display:none; }
+  .context-tabs #catalog-next { width:44px; min-width:44px; padding:0; }
+  .catalog-items { height:52px; min-width:0; gap:6px; overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:none; }
+  .catalog-items::-webkit-scrollbar { display:none; }
+  #tower-catalog .build-card { flex:0 0 170px; }
+  #settlement-catalog .building-card { flex:0 0 180px; min-width:180px; }
+  .build-card { height:52px; padding:2px 6px 2px 2px; gap:4px; }
+  .build-card span { gap:2px; }
+  #tower-catalog .build-card strong,.building-card strong { font-size:14px; line-height:1.15; white-space:normal; }
+  .build-card b { font-size:12px; line-height:1.1; }
+  .build-card small { display:none; }
+  #tower-catalog .build-card canvas { flex:0 0 32px; width:32px; height:40px; }
+  #settlement-catalog .building-card img { width:40px; height:40px; }
+  .price-icon { width:14px; height:14px; flex-basis:14px; }
+  .companions { gap:4px; align-items:center; }
+  .companions .companion-card { width:48px; min-width:48px; height:52px; padding:2px; gap:0; }
+  .companions .companion-card canvas { width:24px; height:30px; flex:none; }
+  .companions .companion-card span { width:100%; gap:0; }
+  .companions .companion-card strong { font-size:12px; line-height:14px; }
+  .companions .companion-card small { display:none; }
+  .companions .companion-card progress { height:2px; margin:0; }
+  .battle-status { position:absolute; right:var(--landscape-right); bottom:calc(var(--dock) + 6px); width:auto; padding:0; border:0; }
+  #battle-phase { display:none; }
+  .battle-status .advance-button { position:static; width:auto; min-height:44px; padding:6px 10px; font-size:13px; }
+  .map-controls { top:calc(var(--header) + 6px); right:var(--landscape-right); gap:4px; }
+  .map-controls button,.map-controls #camera-zoom { width:44px; min-height:44px; padding:0; font-size:18px; }
+  .map-controls button span:not(.ui-icon) { display:none; }
+
+  /* Content-sized intro at the bottom; no top+bottom stretching. */
+  #onboarding-card.mara-intro {
+    left:var(--landscape-left); right:var(--landscape-right); top:auto; bottom:max(6px,env(safe-area-inset-bottom));
+    width:auto; max-width:none; transform:none; padding:8px 10px; gap:0 12px;
+    grid-template-columns:64px minmax(0,1fr); max-height:calc(100dvh - var(--header) - 24px); overflow-y:auto;
+  }
+  #onboarding-card.mara-intro > div { display:block; }
+  #onboarding-card.mara-intro #intro-portrait { width:64px; height:76px; grid-row:auto; align-self:center; }
+  #onboarding-card.mara-intro .eyebrow { font-size:10px; padding:0; }
+  #onboarding-card.mara-intro h2 { font-size:18px; margin:2px 0 4px; }
+  #onboarding-card.mara-intro p { font-size:13px; line-height:1.3; }
+  #onboarding-card.mara-intro .onboarding-actions { margin-top:4px; justify-content:flex-start; gap:8px; }
+  #onboarding-card.mara-intro button { min-height:44px; padding:5px 9px; font-size:13px; }
+
+  /* The guide attaches to the dock edge. Details scroll, required actions remain. */
+  #app > #tutorial-guide {
+    left:var(--landscape-left); right:var(--landscape-right); bottom:var(--dock); top:auto;
+    width:auto; max-width:none; transform:none; padding:4px 8px;
+    max-height:calc(100dvh - var(--header) - var(--dock) - 8px); overflow-y:auto;
+  }
+  #tutorial-guide .guide-header { gap:8px; }
+  #tutorial-guide .guide-header > div { display:flex; align-items:center; gap:10px; }
+  #tutorial-guide .tutorial-step { flex:none; margin:0; white-space:nowrap; font-size:11px; }
+  #tutorial-guide .guide-summary { font-size:12px; line-height:1.3; }
+  #tutorial-guide #guide-toggle { min-height:44px; padding:5px 8px; }
+  #tutorial-guide #guide-details { max-height:24dvh; margin-top:4px; }
+  #tutorial-guide .guide-actions :is(.onboarding-actions,.quick-win-actions) { margin-top:4px; }
+  #tutorial-guide .guide-actions > #meet-wisp { width:auto; margin-top:4px; }
+  #tutorial-guide h2 { font-size:16px; }
+  #tutorial-guide p { font-size:12px; line-height:1.35; }
+  .unified-tutorial #placement-help { bottom:var(--dock); max-width:calc(100% - var(--landscape-left) - var(--landscape-right)); }
+
+  /* Menus use the available height instead of hiding content below the dock. */
+  #context-panel { top:calc(var(--header) + 6px)!important; bottom:auto!important; left:auto!important; right:var(--landscape-right); width:min(360px,calc(100% - var(--landscape-left) - var(--landscape-right))); max-height:calc(100dvh - var(--header) - 12px - env(safe-area-inset-bottom)); padding:10px; }
+  #context-panel button { min-height:44px; }
+  #context-panel .context-header .icon-button { width:44px; height:44px; }
+  #game-menu,#chronicle { left:var(--landscape-left); right:var(--landscape-right); max-width:calc(100vw - var(--landscape-left) - var(--landscape-right)); max-height:calc(100dvh - 12px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); }
+  .return-overlay { padding:max(6px,env(safe-area-inset-top)) var(--landscape-right) max(6px,env(safe-area-inset-bottom)) var(--landscape-left); }
+  .return-dialog { max-height:calc(100dvh - 12px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); }
+
+  /* Portrait on the left; hearts, conversation and actions on the right. */
+  #tavern-dialog[open],#tavern-dialog[data-artwork="rigged"][open]:is([data-screen="character"]) {
+    display:flex; flex-direction:column; top:env(safe-area-inset-top); bottom:env(safe-area-inset-bottom);
+    left:var(--landscape-left); right:var(--landscape-right);
+    width:calc(100vw - var(--landscape-left) - var(--landscape-right)); max-width:920px;
+    height:calc(100dvh - 8px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); max-height:calc(100dvh - 8px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    margin:auto; overflow:hidden;
+  }
+  #tavern-dialog[data-artwork] .tv-header { flex:0 0 50px; padding:2px 8px; gap:8px; }
+  #tavern-dialog .tv-header small { display:none; }
+  #tavern-dialog .tv-header h2,#tavern-dialog[data-screen="overview"] .tv-header h2 { font-size:20px; }
+  #tavern-dialog .tv-combat { flex:none; min-height:28px; padding:0 10px; font-size:11px; }
+  #tavern-dialog .tv-combat button { display:none; } /* The close button returns to battle. */
+  #tavern-dialog .tv-warning { flex:none; padding:2px 8px; font-size:11px; }
+  #tavern-dialog .tv-overview { min-height:0; overflow:auto; }
+  #tavern-dialog .tv-room { min-height:0; padding:10px 14px; }
+  #tavern-dialog .tv-room h3 { margin-top:3px; font-size:23px; }
+  #tavern-dialog .tv-room p { margin:4px 0; }
+  #tavern-dialog .tv-guests { grid-template-columns:1fr 1fr; padding:10px; gap:10px; }
+  #tavern-dialog .tv-guest { min-height:132px; padding:8px; gap:8px; }
+  #tavern-dialog .tv-guest canvas { width:68px; height:80px; }
+  #tavern-dialog .tv-guest h3 { font-size:20px; }
+  #tavern-dialog .tv-guest p { margin:4px 0; }
+  #tavern-dialog .tv-overview-footer { padding:0 10px 10px; }
+  #tavern-dialog[data-artwork] .tv-character { display:grid; flex:1; min-height:0; grid-template-columns:38% minmax(0,1fr); grid-template-rows:auto minmax(0,1fr) auto; }
+  #tavern-dialog[data-artwork] .tv-character-body { display:contents; }
+  #tavern-dialog[data-artwork] .tv-stage { grid-column:1; grid-row:1 / 4; height:auto; min-height:0; }
+  #tavern-dialog[data-artwork] .tv-bond { grid-column:2; grid-row:1; display:flex; flex-wrap:wrap; align-items:center; gap:2px 8px; padding:2px 8px 4px; min-height:0; max-height:100px; overflow:auto; }
+  #tavern-dialog .tv-bond-visual { width:230px; max-width:100%; flex-shrink:0; }
+  #tavern-dialog .tv-heart-buttons { gap:2px; }
+  #tavern-dialog .tv-heart-buttons svg { width:28px; height:27px; }
+  #tavern-dialog .tv-bond-track { height:4px; margin:0 4px; }
+  #tavern-dialog .tv-heart-help { display:none; } /* Hearts retain their accessible names. */
+  #tavern-dialog .tv-bond-copy { flex:1; text-align:left; }
+  #tavern-dialog .tv-bond-copy .tv-unlock { margin:0; padding:4px; }
+  #tavern-dialog[data-artwork] .tv-conversation { grid-column:2; grid-row:2; min-height:0; max-height:none; overflow:auto; padding:8px 10px; }
+  #tavern-dialog[data-artwork] .tv-dialogue { min-height:0; padding:4px 8px; }
+  #tavern-dialog[data-artwork] .tv-dialogue p { font-size:14px; line-height:1.4; margin:4px 0; }
+  #tavern-dialog .tv-gifts { margin-top:4px; }
+  #tavern-dialog .tv-action-dock { grid-column:2; grid-row:3; min-width:0; }
+  #tavern-dialog .tv-action-dock > .tv-actions,#tavern-dialog .tv-action-dock > .tv-story-controls { padding:4px; gap:4px; }
+  #tavern-dialog .tv-actions button { min-height:48px; padding:4px 2px; }
+  #tavern-dialog .tv-actions span { font-size:14px; }
+  #tavern-dialog .tv-actions small { font-size:10px; line-height:1.2; margin-top:2px; }
+  #tavern-dialog .tv-gestures { left:0; padding:6px; gap:4px; max-height:calc(100dvh - 130px); overflow:auto; }
+  #tavern-dialog .tv-gestures button { min-height:48px; padding:4px; font-size:13px; }
+}

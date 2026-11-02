@@ -39,6 +39,7 @@ import './premium.css';
 import './spell-actions.css';
 import './tutorial-guide.css';
 import './header-pause.css';
+import './landscape.css';
 import { mountUIIcons, uiIcon } from './ui-icons';
 import { EMBER, EMBER_BURN, emberBurnDamage, STORM_CHAIN, STORMLIGHT, SETTLEMENT, towerDefinition, type TowerId, stats, upgradeCost, sellValue, type IdleBattle } from './battle';
 import { BattleScene } from './battle-scene';

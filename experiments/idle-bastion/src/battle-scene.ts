@@ -109,6 +109,7 @@ export class BattleScene extends Phaser.Scene {
   private baseZoom = 1;
   private overview = false;
   private portraitCamera = false;
+  private compactLandscape = false;
   private cameraFitted = false;
   private mapViewport?: { x: number; y: number; width: number; height: number };
   private guidedDefenseFrame = false;
@@ -309,6 +310,7 @@ export class BattleScene extends Phaser.Scene {
   }
   private resizeCamera(): void {
     this.invalidatePointer();
+    this.compactLandscape = getComputedStyle(document.documentElement).getPropertyValue('--compact-landscape').trim() === '1';
     if (this.introStep !== null) { this.frameIntro(false); return; }
     const camera = this.cameras.main, { width, height } = this.sim.layout.bounds;
     const portrait = this.scale.width / this.pixelDensity <= 700 && window.innerHeight > window.innerWidth;
@@ -435,7 +437,11 @@ export class BattleScene extends Phaser.Scene {
     const camera = this.cameras.main, canvas = this.game.canvas.getBoundingClientRect(), dialog = this.introRect;
     const header = document.querySelector('.app-header')!.getBoundingClientRect();
     const top = Math.max(0, header.bottom - canvas.top + 8) * this.pixelDensity;
-    const side = window.innerHeight <= 500 && window.innerWidth > window.innerHeight;
+    // The compact touch layout puts the intro below the map. Read the CSS mode
+    // so camera framing and the actual dialog cannot disagree at a breakpoint.
+    const compactLandscape = getComputedStyle(document.documentElement).getPropertyValue('--compact-landscape').trim() === '1';
+    this.compactLandscape = compactLandscape;
+    const side = !compactLandscape && window.innerHeight <= 500 && window.innerWidth > window.innerHeight;
     const width = Math.max(1, side ? (dialog.left - canvas.left - 8) * this.pixelDensity : this.scale.width);
     const height = Math.max(1, (side ? canvas.bottom - 8 : dialog.top - 12) * this.pixelDensity - canvas.top * this.pixelDensity - top);
     // Render behind the card too. Only the target framing uses the unoccluded
@@ -443,7 +449,7 @@ export class BattleScene extends Phaser.Scene {
     camera.panEffect.reset(); camera.setViewport(0, 0, this.scale.width, this.scale.height);
     const bounds = this.sim.layout.bounds;
     const zoom = Math.max(width / bounds.width, height / bounds.height,
-      Math.min(width / (window.innerWidth <= 700 || side ? 520 : 1050), height / 400));
+      Math.min(width / (window.innerWidth <= 700 || side || compactLandscape ? 520 : 1050), height / 400));
     camera.setZoom(zoom);
     // Only the parts covered by the HUD/dialog may extend beyond the map.
     // Generic tutorial headroom here exposed the green renderer background.
@@ -790,10 +796,10 @@ export class BattleScene extends Phaser.Scene {
     this.combatEffects.update(elapsed + sim.introduction.preparationSeconds, shots, towers);
     this.drawLearningMark();
     this.coreLabel.setVisible(sim.preparing);
-    // On phones health belongs to the core, not to a floating screen badge.
+    // Portrait phones label the core; compact landscape has room in the HUD.
     // Keep its type readable at any map zoom; the world camera clips it naturally.
     const core = cellCenter(sim.layout, sim.layout.core);
-    this.coreHealthLabel.setVisible(this.scale.width / this.pixelDensity <= 700)
+    this.coreHealthLabel.setVisible(this.scale.width / this.pixelDensity <= 700 && !this.compactLandscape)
       .setPosition(core.x, core.y + 48).setScale(this.pixelDensity / this.cameras.main.zoom)
       .setText(`♥ ${sim.lives} / ${BASE.coreLives}`);
     const boostedTower = sim.towers.find(t => sim.isMaraBoosted(t.uid));

@@ -71,9 +71,10 @@ test('guided framing may zoom out to fit either axis but never zooms in beyond t
 // Exercise real scene methods without booting Phaser's renderer, as in the
 // existing check-tutorial-input harness. The camera mock records only geometry.
 function cameraScene(t: TestContext) {
-  const globals = new Map(['window', 'document'].map(key => [key, Object.getOwnPropertyDescriptor(globalThis, key)]));
+  const globals = new Map(['window', 'document', 'getComputedStyle'].map(key => [key, Object.getOwnPropertyDescriptor(globalThis, key)]));
   Object.defineProperty(globalThis, 'window', { configurable: true, value: { innerWidth: 390, innerHeight: 844 } });
   Object.defineProperty(globalThis, 'document', { configurable: true, value: { querySelector: () => undefined } });
+  Object.defineProperty(globalThis, 'getComputedStyle', { configurable: true, value: () => ({ getPropertyValue: () => (window as any).compactLandscape ? '1' : '' }) });
   t.after(() => { for (const [key, descriptor] of globals) if (descriptor) Object.defineProperty(globalThis, key, descriptor); else Reflect.deleteProperty(globalThis, key); });
   const source = readFileSync(new URL('../src/battle-scene.ts', import.meta.url), 'utf8');
   const code = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, esModuleInterop: true } }).outputText;
@@ -96,6 +97,31 @@ function cameraScene(t: TestContext) {
   for (const method of ['syncLayout', 'refreshLabels', 'drawSelection', 'drawActors']) scene[method] = () => {};
   return { scene, model, camera };
 }
+
+test('touch landscape intro frames its target above the bottom card; desktop retains its side card', t => {
+  const { scene, model, camera } = cameraScene(t);
+  Object.assign(window, { innerWidth:720, innerHeight:320, compactLandscape:true, matchMedia: () => ({ matches:false }) });
+  Object.assign(document, { querySelector: () => ({ getBoundingClientRect: () => ({ bottom:48 }) }) });
+  model.layout.core = { x:27, y:6 };
+  scene.scale = { width:720, height:320 };
+  scene.game.canvas.getBoundingClientRect = () => ({ left:0, top:0, bottom:320 });
+  camera.panEffect = { reset() {} };
+  scene.introStep = 0;
+  scene.introRect = { left:8, top:174, width:704, height:140 };
+  scene.frameIntro(false);
+  const targetX = 1100, targetY = 240;
+  near((targetX - camera.scrollX) * camera.zoom, 360);
+  near((targetY - camera.scrollY) * camera.zoom, 109);
+  assert.equal(scene.compactLandscape, true);
+  assert.equal(camera.height, 320, 'map continues behind the bottom card');
+  // A shallow mouse viewport keeps the existing right-hand intro geometry.
+  Object.assign(window, { compactLandscape:false });
+  scene.introRect = { left:352, top:56, width:360, height:256 };
+  scene.frameIntro(false);
+  near((targetX - camera.scrollX) * camera.zoom, 172);
+  near((targetY - camera.scrollY) * camera.zoom, 184);
+  assert.equal(scene.compactLandscape, false);
+});
 
 test('scene retains an explicit construction candidate when resizing and rotating into portrait', t => {
   const { scene, camera } = cameraScene(t);
