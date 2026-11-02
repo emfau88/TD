@@ -1,0 +1,2 @@
+current: W35, exact 24h claim, old/new recipe, combat, pause and reload passed
+legacy: W31, exact 24h claim, old/new recipe, combat, pause and reload passed

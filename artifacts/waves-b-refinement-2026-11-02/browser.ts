@@ -4,7 +4,7 @@ import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {IdleBattle} from '../../experiments/idle-bastion/src/battle';
 import {certifyFarm,farmRewardUnits} from '../../experiments/idle-bastion/src/farming';
 import {beginAbsence,createOfflineState,WAREHOUSE_OFFLINE} from '../../experiments/idle-bastion/src/offline';
-const out='artifacts/waves-b-refinement-2026-11-02/browser',origin=process.argv[2]??'http://127.0.0.1:5197';mkdirSync(out,{recursive:true});
+const out=process.argv[3]??'artifacts/waves-b-refinement-2026-11-02/browser',origin=(process.argv[2]??'http://127.0.0.1:5197').replace(/\/$/,'');mkdirSync(out,{recursive:true});
 const legacy=JSON.parse(readFileSync('experiments/idle-bastion/tests/fixtures/wave-progression-v17.json','utf8'));
 const currentRun=JSON.parse(readFileSync('artifacts/waves-b-refinement-2026-11-02/integrated/runs/mixed-fresh60.json','utf8'));
 const current=IdleBattle.restore(currentRun.snapshots.firstPost25Loss)!;assert.ok(current);

@@ -150,6 +150,26 @@ nochmals Gegner im Einschlagsradius. Keine automatische Aktivierung ins Leere.
 Die Flugzeit kann erlauben, dass Gegner den Zielkreis vor dem Einschlag verlassen.
 Kein Fähigkeitsfix notwendig, keine Laufzeitänderung an diesen Funktionen.
 
+## Veröffentlichung und öffentlicher Browsernachweis
+
+Spieländerung als [`4836c8a`](https://github.com/emfau88/TD/commit/4836c8a53aa97aca16ccdedc8255bd7131d3ac10)
+auf `main` übertragen und gepusht, ohne neuen Branch oder Force-Push.
+[Pages-Lauf 41487335069](https://github.com/emfau88/TD/actions/runs/41487335069)
+ist erfolgreich. Anschließend dieselben beiden Browserfälle auf
+<https://emfau88.github.io/TD/> mit getrennten Testspielständen geprüft:
+
+- Desktop DE: neue W35, Rezept 18, genau 38.603,797 Gold aus dem gespeicherten
+  24-h-Testanspruch. Beide Helden-Automatikschalter aus/ein sowie Speicherung
+  und Reload bestätigt.
+- Mobil EN / 390 px: laufende alte W31 mit Rezept 17 bleibt auch unter Regeln 18
+  erhalten, genau 42.123,095 Gold aus dem alten Testanspruch.
+- Beide Fälle: kein doppelter Claim nach Reload, mindestens fünf Sekunden
+  echter Kampf, Pause und exakte Wiederherstellung; keine Konsolen-/Assetfehler.
+  [Öffentliche Prüfwerte](public-browser/results.json), [Protokoll](public-browser.txt).
+
+Reproduktionsaufruf nach Vorbereitung der lokalen Integrationsdaten:
+`node --import tsx artifacts/waves-b-refinement-2026-11-02/browser.ts https://emfau88.github.io/TD artifacts/waves-b-refinement-2026-11-02/public-browser`
+
 ## Reproduktion und Grenzen
 
 `prepare.py B2` / `prepare.py B3` bauen aus der unveränderten B-Engine des
