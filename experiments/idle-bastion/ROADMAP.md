@@ -1,5 +1,13 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Animierter Vollbild-Ladescreen · 02.11.2026 — Nutzerfreigabe für Einbau, Commit und Push.**
+
+- [x] Eigenständige Vollbildszene mit ImageGen-Wald und getrennten Figuren für Quer-/Hochformat, acht Feuerbildern, Funken, Licht und dezentem Nebel. Sechs PC-/Handyformate, Animation/Pause, DE/EN, reduzierte Bewegung, Rotation und Wiederholung im Browser geprüft. [Vorschau und Nachweise](../../prototypes/loading-campfire-v1/README.md).
+- [x] Nutzer hat die Vorschau zum Einbau freigegeben. WebP-Exporte, vollständige kleine Szene und Loader-CSS direkt in der gebauten HTML-Seite; scharfe Ebenen optional, niedrig priorisiert und abbrechbar. Echte Ladephasen, Wiederholen, Musik-/Save-Recovery unverändert; keine Mindestwartezeit.
+- [x] Zusätzliche Wolke zwölf Sekunden ausschließlich im freien Himmel, danach ruhend; 24 weiter steigende Funken mit zwei größeren Glutstücken, gelegentlicher Schriftglanz und deutlicher 7–8-px-Ladebalken. Pause, reduzierte Bewegung und Ende der Effekte beim Spielstart berücksichtigt.
+- [x] 14/14 Loader-/Audiotests, TypeScript/Build, sechs Desktop-/Handyformate, Rotation, Animation/Pause, Hintergrundwolke, erster Bildaufbau ohne Bootstrap sowie echter Spielstart auch ohne optionale Bilder geprüft. [Nachweise und Messgrenzen](../../artifacts/idle-bastion/acceptance/loading-scene-2026-11-02/REPORT.md). Physische Handyprüfung nicht durch Emulation ersetzt.
+- [ ] Veröffentlichung auf Main/Pages und öffentlicher Starttest.
+
 **README-Teststarts · 02.11.2026 — als `d4e70b9` auf Main/Pages veröffentlicht.**
 
 - [x] Direkte README-Links zum ersten Boss W15 und zur selbst ausführbaren Ilyra-Rekrutierung nach Boss 25. Vorhandenen Teststarter erweitert; bestehende erspielte Stände, regulär bezahlte Taverne II, frische UUID-Partien, anfänglich pausiert. Keine Änderungen an normalem Einstieg oder Spielregeln.

@@ -1,0 +1,12 @@
+layout 1440x900: OK
+layout 1920x1080: OK
+layout 844x390: OK
+layout 932x430: OK
+layout 720x360: OK
+layout 390x844: OK
+performance local: {"inline":36.20000000298023,"detail":238.5,"fire":253.39999999850988,"paint":[{"name":"first-paint","ms":152},{"name":"first-contentful-paint","ms":152}],"artBytes":299530}
+performance mobile-10Mbps: {"inline":213.29999999701977,"detail":1458.2999999970198,"fire":1541.8999999985099,"paint":[{"name":"first-paint","ms":588},{"name":"first-contentful-paint","ms":588}],"artBytes":299530}
+performance mobile-1.6Mbps: {"inline":401.20000000298023,"fire":3744.10000000149,"detail":3784.2000000029802,"paint":[{"name":"first-paint","ms":396},{"name":"first-contentful-paint","ms":396}],"artBytes":299530}
+real startup normal: OK
+real startup missing-decoration: OK
+real startup reduced-motion: OK

@@ -1,0 +1,66 @@
+[
+  {
+    "name": "forest",
+    "source": "exec-ae59828d-74fe-44dd-bc6b-f5a2c5a9f306.png",
+    "width": 1671,
+    "height": 941,
+    "hasAlpha": false,
+    "output": {
+      "format": "webp",
+      "width": 1671,
+      "height": 941,
+      "channels": 3,
+      "premultiplied": false,
+      "hasAlpha": false,
+      "size": 406872
+    }
+  },
+  {
+    "name": "camp-wide",
+    "source": "exec-69e64cb7-2f31-4b9e-b0c7-268506c8472e.png",
+    "width": 1536,
+    "height": 1024,
+    "hasAlpha": true,
+    "output": {
+      "format": "webp",
+      "width": 1440,
+      "height": 960,
+      "channels": 4,
+      "premultiplied": true,
+      "hasAlpha": true,
+      "size": 300898
+    }
+  },
+  {
+    "name": "camp-portrait",
+    "source": "exec-62118665-bc22-4972-b588-6e56caf1eb5e.png",
+    "width": 1122,
+    "height": 1402,
+    "hasAlpha": true,
+    "output": {
+      "format": "webp",
+      "width": 960,
+      "height": 1200,
+      "channels": 4,
+      "premultiplied": true,
+      "hasAlpha": true,
+      "size": 349878
+    }
+  },
+  {
+    "name": "fire-atlas",
+    "source": "exec-8fdd6783-fdff-49fb-b45e-ff3d019cf440.png",
+    "width": 1774,
+    "height": 887,
+    "hasAlpha": true,
+    "output": {
+      "format": "webp",
+      "width": 1536,
+      "height": 768,
+      "channels": 4,
+      "premultiplied": true,
+      "hasAlpha": true,
+      "size": 251288
+    }
+  }
+]

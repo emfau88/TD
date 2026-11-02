@@ -1,5 +1,19 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Vollbild-Ladeszene — 02.11.2026
+
+Die frühen HTML-Bilder sind kleine Inline-WebPs. Vite bettet ausschließlich im
+Spieleinstieg auch dessen Loader-Stylesheet ein. loading-scene.ts lädt optionale,
+niedrig priorisierte WebP-Details nach dem ersten Bildaufbau und bricht laufende
+Requests bei Verlassen des Loaders ab. Bildfehler bleiben dekorativ; ausschließlich
+LoadingScreen und der bestehende Spielstart steuern Ladefortschritt/Readiness.
+Animation endet bei hidden/error, respektiert reduzierte Bewegung und manuelle
+Pause. Keine Speicher-/Regeländerung und keine künstliche Mindestanzeigezeit.
+Quellen, Prompts und Exporte liegen unter prototypes/loading-campfire-v1/;
+Laufzeitbilder unter assets/loading/scene/. Die Wolkenbahn verwendet Koordinaten
+der 1671×941-Waldvorlage und bleibt auch im Hochformat außerhalb der Baumkronen.
+[Integrationsnachweise](../../../artifacts/idle-bastion/acceptance/loading-scene-2026-11-02/REPORT.md).
+
 ## Glutwerfer — Regeln 19 / Schema 35, 02.11.2026
 
 Turm-ID 7 ist nach bewusster Forschung zugelassen; ID 6 bleibt Reserve. Schema 34

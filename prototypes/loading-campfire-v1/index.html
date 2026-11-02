@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#08131e">
+  <title>Towers &amp; Tantrums · Lagerfeuer-Vorschau</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="scene" id="scene" aria-label="Animierter Ladescreen-Entwurf für Towers & Tantrums">
+    <div class="world" aria-hidden="true"><img src="assets/forest.webp" alt="" class="forest" fetchpriority="high"><div class="sky"><img class="cloud" src="assets/cloud.webp" alt=""></div><div class="world-shade"></div></div>
+    <div class="stars" aria-hidden="true"></div>
+    <div class="mist mist-back" aria-hidden="true"></div>
+    <div class="ground-light" aria-hidden="true"></div>
+    <div class="camp" aria-hidden="true">
+      <picture><source media="(orientation: portrait)" srcset="assets/camp-portrait.webp"><img id="camp-art" src="assets/camp-wide.webp" alt="" fetchpriority="high"></picture>
+      <div class="fire-light"></div><canvas id="fire" width="320" height="320"></canvas>
+      <div class="embers"></div>
+    </div>
+    <div class="mist mist-front" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <header class="title-block">
+      <p class="location"><span></span><b id="location">Der alte Hain</b><span></span></p>
+      <h1><span data-boot-title="Towers &amp;">Towers <i>&amp;</i></span> <span data-boot-title="Tantrums">Tantrums</span></h1>
+      <p class="tagline">Build towers. Make questionable friends.</p>
+    </header>
+    <section class="loading" aria-label="Ladeanimation als Vorschau">
+      <div class="load-line"><span id="status">Das Lager erwacht …</span><span class="percentage" id="percentage">0%</span></div>
+      <div class="track" role="progressbar" aria-label="Simulierter Ladefortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="fill"></span></div>
+      <p class="quip" id="quip">Wir erklären den Monstern, wie Anstehen funktioniert.</p>
+      <button class="replay" id="replay" type="button" hidden>Vorschau erneut abspielen <span aria-hidden="true">↻</span></button>
+    </section>
+    <div class="draft" id="draft">VISUELLER ENTWURF</div>
+    <nav class="tools" aria-label="Vorschau steuern">
+      <button id="lang" type="button" aria-label="Switch to English">EN</button>
+      <button id="motion" type="button" aria-pressed="true" aria-label="Animation anhalten" title="Animation anhalten"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="pause-symbol" d="M6 4v12M14 4v12"/><path class="play-symbol" d="m6 3 10 7-10 7Z"/></svg></button>
+      <button id="fullscreen" type="button" aria-label="Vollbild" title="Vollbild"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4"/></svg></button>
+    </nav>
+  </main>
+  <script src="scene.js"></script>
+</body>
+</html>

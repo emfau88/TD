@@ -1,0 +1,123 @@
+[
+  {
+    "source": "forest",
+    "name": "forest-tiny",
+    "format": "webp",
+    "width": 160,
+    "height": 90,
+    "channels": 3,
+    "premultiplied": false,
+    "hasAlpha": false,
+    "size": 2422
+  },
+  {
+    "source": "forest",
+    "name": "forest-mobile",
+    "format": "webp",
+    "width": 960,
+    "height": 541,
+    "channels": 3,
+    "premultiplied": false,
+    "hasAlpha": false,
+    "size": 107432
+  },
+  {
+    "source": "forest",
+    "name": "forest-desktop",
+    "format": "webp",
+    "width": 1671,
+    "height": 941,
+    "channels": 3,
+    "premultiplied": false,
+    "hasAlpha": false,
+    "size": 288194
+  },
+  {
+    "source": "camp-wide",
+    "name": "camp-wide-tiny",
+    "format": "webp",
+    "width": 180,
+    "height": 120,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 6640
+  },
+  {
+    "source": "camp-wide",
+    "name": "camp-wide-mobile",
+    "format": "webp",
+    "width": 600,
+    "height": 400,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 59524
+  },
+  {
+    "source": "camp-wide",
+    "name": "camp-wide-desktop",
+    "format": "webp",
+    "width": 1200,
+    "height": 800,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 188170
+  },
+  {
+    "source": "camp-portrait",
+    "name": "camp-portrait-tiny",
+    "format": "webp",
+    "width": 144,
+    "height": 180,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 10568
+  },
+  {
+    "source": "camp-portrait",
+    "name": "camp-portrait-mobile",
+    "format": "webp",
+    "width": 600,
+    "height": 750,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 144222
+  },
+  {
+    "source": "fire-atlas",
+    "name": "fire-atlas",
+    "format": "webp",
+    "width": 1024,
+    "height": 512,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 105890
+  },
+  {
+    "source": "cloud",
+    "name": "cloud",
+    "format": "webp",
+    "width": 640,
+    "height": 213,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 26684
+  },
+  {
+    "source": "fire-atlas first frame",
+    "name": "fire-tiny",
+    "format": "webp",
+    "width": 80,
+    "height": 80,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 2420
+  }
+]

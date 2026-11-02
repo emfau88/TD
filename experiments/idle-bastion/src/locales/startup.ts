@@ -1,6 +1,8 @@
 // Small enough for the entry screen before Phaser and the main text catalogue.
 export const startupEnglish: Record<string, string> = {
   'Der alte Hain': 'The Old Grove',
+  'Animation anhalten': 'Pause animation',
+  'Animation abspielen': 'Play animation',
   'Die Musik wird vorbereitet …': 'Getting the music ready…',
   'Ohne Musik fortfahren': 'Continue without music',
   'Die Musik ist noch nicht abspielbereit. Versuche es erneut oder starte ohne Musik.': 'The music is not ready to play. Try again or continue without music.',

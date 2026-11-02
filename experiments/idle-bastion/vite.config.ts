@@ -1,4 +1,5 @@
 import { fileURLToPath } from 'node:url';
+import { posix } from 'node:path';
 import { defineConfig, loadEnv } from 'vite';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
@@ -7,6 +8,26 @@ export default defineConfig(({ mode }) => {
   const preview = loadEnv(mode, root, '').VITE_FEATURE_PREVIEW === '1';
   return {
   plugins: [{
+    name: 'inline-first-paint-loading-css',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html, context) {
+        if (!context.bundle || !context.filename.replaceAll('\\', '/').endsWith('/index.html')) return html;
+        // This entry stylesheet contains only the loader. Avoid a render-blocking round trip.
+        return html.replace(/<link rel="stylesheet"[^>]*href="([^"]+)"[^>]*>/g, (tag, href: string) => {
+          const path = href.replace(/^\.\//, '');
+          const asset = context.bundle?.[path];
+          if (!asset || asset.type !== 'asset' || typeof asset.source !== 'string') return tag;
+          const css = asset.source.replace(/url\(([^)]+)\)/g, (original, raw: string) => {
+            const url = raw.replace(/^['"]|['"]$/g, '');
+            if (/^(?:data:|https?:|\/)/.test(url)) return original;
+            return `url("./${posix.join(posix.dirname(path), url)}")`;
+          });
+          return `<style data-boot-style>${css}</style>`;
+        });
+      },
+    },
+  }, {
     name: 'tower-preview-ui',
     transformIndexHtml(html, context) {
       if (!preview || !context.filename.replaceAll('\\', '/').endsWith('/index.html')) return html;
