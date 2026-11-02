@@ -831,7 +831,7 @@ function openQuickWin(notice: QuickWinNotice): void {
   catalogPanel = 'tower'; placementType = undefined; closeContext();
   const card = element<HTMLButtonElement>('pick-cannon'); card.scrollIntoView({ block: 'nearest', inline: 'nearest' }); card.focus({ preventScroll: true });
 }
-function openContext(kind: typeof selectedPanel, buildingControls = false, focus = true): void {
+function openContext(kind: typeof selectedPanel, buildingControls = false, focus = true, technology?: typeof selectedTechnology): void {
   if (kind === 'clearing' && (session?.battle.layout.version !== 5 || !session.battle.eastAccessCredit)) return;
   if (session?.battle.preparing && kind !== 'mara' || intro?.active || performance.now() < workshopRevealUntil) return;
   if (session && (kind === 'settlement' && session.battle.settlement.workshopBuilt || kind === 'warehouse' && session.battle.settlement.warehouseBuilt || kind === 'tavern' && buildingControls && session.battle.settlement.tavernBuilt)) audio.play('craft');
@@ -841,7 +841,7 @@ function openContext(kind: typeof selectedPanel, buildingControls = false, focus
   }
   if (kind !== 'tower') { selectedPadId = undefined; scene?.setSelected(); }
   if (kind === 'tavern' && session?.battle.settlement.tavernBuilt && !buildingControls) { contextOpen = false; syncUI(); tavernUI.open(); return; }
-  if(kind==='settlement'&&session?.battle.emberResearchNew)selectedTechnology='ember';
+  if(kind==='settlement')selectedTechnology=technology??(session?.battle.emberResearchNew?'ember':selectedTechnology);
   if (focus) scene?.focusObject(kind); syncUI();
   if(kind==='settlement'&&selectedTechnology==='ember'&&session?.battle.emberResearchNew)void perform(b=>b.inspectEmberResearch(),true,true);
   if (kind === 'tavern' && session?.battle.tavernUnlocked && !session.battle.settlement.tavernSeen)
@@ -858,7 +858,7 @@ function startPlacement(kind: TowerId): void {
   if (session.battle.guiding && (kind !== 2 || session.battle.introduction.stage !== 'frost')) return;
   if (session.battle.introduction.stage === 'welcome') { void perform(b => b.beginIntroduction()).then(() => { if (session?.battle.introduction.stage === 'build') startPlacement(kind); }); return; }
   if (kind === 2 && !session.battle.settlement.frostResearched) { catalogPanel = 'settlement'; openContext('settlement'); return; }
-  if (!session.battle.isTowerUnlocked(kind)) { if (kind === 5 || kind === 7) {selectedTechnology=kind===7?'ember':'storm';catalogPanel='settlement';openContext('settlement');} else if (kind === 3) openContext('wisp'); else { showCombatMessage(() => t('Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.')); toastUntil = performance.now() + 6000; syncUI(); } return; }
+  if (!session.battle.isTowerUnlocked(kind)) { if (kind === 5 || kind === 7) {catalogPanel='settlement';openContext('settlement',false,true,kind===7?'ember':'storm');} else if (kind === 3) openContext('wisp'); else { showCombatMessage(() => t('Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.')); toastUntil = performance.now() + 6000; syncUI(); } return; }
   if (placementType === kind) { placementType = undefined; closeContext(); return; }
   ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
   // Only guided construction suggests a location. Ordinary purchases keep the player's view.

@@ -1,0 +1,4 @@
+seed 1440 explicit-choice
+{"width":1440,"lang":"de","explicitChoicePreserved":true,"newSeenOnlyWhenViewed":true,"errors":[]}
+seed 390 explicit-choice
+{"width":390,"lang":"en","explicitChoicePreserved":true,"newSeenOnlyWhenViewed":true,"errors":[]}
