@@ -92,3 +92,13 @@ Quellen und vollständige ImageGen-Prompts:
 Nur integriertes ImageGen, kein API-/CLI-Fallback. Generierte Originale erhalten,
 WebP-Exporte ausschließlich skalieren/komprimieren bzw. ersten Feuerframe entnehmen.
 Veröffentlichungsstatus steht in der fortlaufenden Roadmap.
+
+## Öffentliche Verifikation
+
+Implementierung d44f51b per Fast-forward auf Main übernommen und gepusht.
+[Pages-Lauf 41533798669](https://github.com/emfau88/TD/actions/runs/41533798669)
+erfolgreich. Anschließend reale öffentliche Starts auf 844×390 Touch-Querformat
+und 1440×900 Desktop: Inline-Szene/Wolke im ausgelieferten HTML, ready,
+sichtbares Spielcanvas, freigegebene Eingaben, keine HTTP- oder JavaScriptfehler.
+Beide Prüfungen liefen in frischen isolierten Browserkontexten.
+[Öffentliche Messdaten](public.json).
