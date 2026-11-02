@@ -62,6 +62,11 @@ Katalogausschnitt bleibt scrollbar; vertikal werden die Karten vollständig geze
   bestanden, einschließlich 844×390 mit Maus (neuer Modus bleibt aus) und einem
   künstlich gesetzten asymmetrischen 44-px-Rand in 720×320. Letzteres prüft die
   Layoutberechnung, nicht die Meldung realer Hardwareaussparungen durch Android.
+- Öffentliche Stichprobe nach erfolgreichem [Pages-Lauf 41513208351](https://github.com/emfau88/TD/actions/runs/41513208351)
+  für Codecommit `27ab413`: dieselben sechs Fälle bestanden. Ein erster Lauf wurde
+  wegen HTTP 503 für die bestehende Schriftdatei abgebrochen; anschließender
+  Direktabruf HTTP 200 und kompletter Wiederholungslauf ohne HTTP-/JavaScriptfehler.
+  [Öffentliche Messwerte](public-results.json).
 
 Die Teststände stammen aus echten Modellschritten bzw. dem vorhandenen
 Glutwerfer-Simulationsnachweis. Für Herzgeschichten werden zwei reale Gespräche

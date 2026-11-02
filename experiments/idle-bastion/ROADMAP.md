@@ -1,10 +1,10 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
-**Handy-Querformat · 02.11.2026 — Umsetzung, kompakte Prüfung und Commit/Push ausdrücklich beauftragt.**
+**Handy-Querformat · 02.11.2026 — als `27ab413` auf Main/Pages veröffentlicht.**
 
 - [x] Einheitlicher Modus für flache Touch-Querformate: kleinere Kopf-/Bauleiste, vollständige Bau-/Gefährtenkarten, kompakte Intro-/Tutorialhinweise mit passender Intro-Kamera und nutzbare Taverne. Schwerpunkt gängige Handyformate; keine Sonderlayouts für exotische Kleinstgeräte.
 - [x] 39/39 gezielte Tests und Produktionsbuild bestanden. 111 Browserzustände auf 720×320 / 844×390 / 932×430 sowie Hochformat/Desktop geprüft, DE/EN, Rotation, echter Starterbau, Forschung, Taverne/Herzgeschichten, Menüscrollen, Rückkehr und Reload. Keine Browserfehler; Spielregeln und Speicherformat unverändert. [Messungen und Aufnahmen](../../artifacts/idle-bastion/acceptance/mobile-landscape-2026-11-02/REPORT.md).
-- [ ] Beauftragte Veröffentlichung auf Main/Pages und abschließende öffentliche Stichprobe.
+- [x] Main per Fast-forward übernommen und gepusht; [Pages-Lauf 41513208351](https://github.com/emfau88/TD/actions/runs/41513208351) erfolgreich. Sechs öffentliche Start-/Menü-/Tavernenproben inklusive Touch, Hochformat, Desktop und kurzem Mausfenster bestanden. Ein anfänglicher 503-Schriftabruf war beim erneuten vollständigen Lauf behoben; [öffentliche Messwerte](../../artifacts/idle-bastion/acceptance/mobile-landscape-2026-11-02/public-results.json).
 - [ ] Menschliche Sichtprüfung auf dem konkreten Handy bleibt offen; keine physische Geräteabnahme behauptet.
 
 **Glutwerfer / Werkstattforschung · 02.11.2026 — als `de9576c` mit Menü-Nachkorrektur `dd784fd` auf Main/Pages veröffentlicht.**
