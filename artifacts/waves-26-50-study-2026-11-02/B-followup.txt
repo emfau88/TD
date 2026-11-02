@@ -1,0 +1,7 @@
+{"variant":"B","name":"relaxed-matched30-24h","highest":42,"pressure":{"wave":35,"at":176.075},"loss":{"wave":41,"at":469.05},"farmRate":458.411,"gold":36288.324}
+{"variant":"B","name":"mixed-matched30-24h","highest":43,"pressure":{"wave":37,"at":220.65},"loss":{"wave":41,"at":424.35},"farmRate":467.248,"gold":36305.76}
+{"variant":"B","name":"mixed-retry-never","highest":34,"farmRate":309.325}
+{"variant":"B","name":"mixed-retry-immediate","highest":34,"pressure":{"wave":35,"at":33.2},"loss":{"wave":35,"at":46.5},"farmRate":309.325}
+{"variant":"B","name":"mixed-adapt60","highest":39,"pressure":{"wave":29,"at":691.625},"loss":{"wave":35,"at":998.05},"farmRate":387.574}
+{"variant":"B","name":"tactical-matched30-24h","highest":44,"pressure":{"wave":39,"at":263.9},"loss":{"wave":44,"at":546.275},"farmRate":457.471,"gold":40464.73}
+PASS B followup: real purchases, earned snapshots, farm proofs, offline caps and money/save checks

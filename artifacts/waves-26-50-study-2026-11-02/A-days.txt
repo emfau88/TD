@@ -1,0 +1,4 @@
+{"variant":"A","name":"tactical-day2","highest":49,"pressure":{"wave":44,"at":77.975},"loss":{"wave":50,"at":362.875},"farmRate":537.141,"gold":62856.411}
+{"variant":"A","name":"tactical-day3","highest":52,"pressure":{"wave":50,"at":49.875},"loss":{"wave":53,"at":198.55},"farmRate":537.141,"gold":67035.231}
+{"variant":"A","name":"tactical-day4","highest":52,"pressure":{"wave":53,"at":37.65},"loss":{"wave":53,"at":53.675},"farmRate":580.51,"gold":67035.231}
+PASS A days: real purchases, earned snapshots, farm proofs, offline caps and money/save checks

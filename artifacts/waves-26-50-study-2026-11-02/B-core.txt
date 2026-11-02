@@ -1,0 +1,10 @@
+{"variant":"B","name":"relaxed-fresh60","highest":34,"pressure":{"wave":12,"at":245.175},"loss":{"wave":15,"at":438.375},"farmRate":327.349}
+{"variant":"B","name":"relaxed-w20-24h","highest":40,"pressure":{"wave":35,"at":498.275},"loss":{"wave":39,"at":701.975},"farmRate":417.455,"gold":24814.057}
+{"variant":"B","name":"relaxed-w30-24h","highest":42,"pressure":{"wave":35,"at":177.6},"loss":{"wave":41,"at":470.575},"farmRate":458.411,"gold":36288.324}
+{"variant":"B","name":"mixed-fresh60","highest":35,"pressure":{"wave":29,"at":691.625},"loss":{"wave":35,"at":998.05},"farmRate":334.058}
+{"variant":"B","name":"mixed-w20-24h","highest":42,"pressure":{"wave":36,"at":445.825},"loss":{"wave":41,"at":684.425},"farmRate":483.561,"gold":31961.248}
+{"variant":"B","name":"mixed-w30-24h","highest":43,"pressure":{"wave":37,"at":212.15},"loss":{"wave":41,"at":414},"farmRate":467.248,"gold":38603.797}
+{"variant":"B","name":"tactical-fresh60","highest":39,"pressure":{"wave":31,"at":738.325},"loss":{"wave":35,"at":942.2},"farmRate":429.951}
+{"variant":"B","name":"tactical-w20-24h","highest":43,"pressure":{"wave":39,"at":515.45},"loss":{"wave":44,"at":802.4},"farmRate":457.471,"gold":32736.809}
+{"variant":"B","name":"tactical-w30-24h","highest":44,"pressure":{"wave":39,"at":262.575},"loss":{"wave":44,"at":545.475},"farmRate":509.614,"gold":41333.217}
+PASS B core: real purchases, earned snapshots, farm proofs, offline caps and money/save checks

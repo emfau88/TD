@@ -1,0 +1,4 @@
+{"variant":"control","name":"tactical-day2","highest":52,"pressure":{"wave":50,"at":170.6},"loss":{"wave":53,"at":311.65},"farmRate":579.873,"gold":63599.785}
+{"variant":"control","name":"tactical-day3","highest":55,"pressure":{"wave":53,"at":40.425},"loss":{"wave":56,"at":201.575},"farmRate":579.237,"gold":72368.108}
+{"variant":"control","name":"tactical-day4","highest":60,"pressure":{"wave":56,"at":53.875},"loss":{"wave":59,"at":199.7},"farmRate":572.954,"gold":72288.757}
+PASS control days: real purchases, earned snapshots, farm proofs, offline caps and money/save checks

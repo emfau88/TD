@@ -1,0 +1,28 @@
+PASS: W1–25, towers, prices, counts, spawn timing, introduction/healer slots, base reward budget; B diagnostic pressure rises through W55; sources match frozen manifests.
+control [
+  { wave: 26, hp: 25798, pressure: 28966, gold: 1292.5 },
+  { wave: 30, hp: 38067, pressure: 54122, gold: 1713.799999999999 },
+  { wave: 35, hp: 71792, pressure: 78086, gold: 1687.3999999999992 },
+  { wave: 40, hp: 176871, pressure: 218534, gold: 2201.1 },
+  { wave: 44, hp: 321287, pressure: 353058, gold: 1994.300000000001 },
+  { wave: 50, hp: 456489, pressure: 574771, gold: 2058.099999999999 },
+  { wave: 51, hp: 404600, pressure: 494260, gold: 1878.7999999999995 }
+]
+A [
+  { wave: 26, hp: 27346, pressure: 30704, gold: 1292.5 },
+  { wave: 30, hp: 49487, pressure: 70358, gold: 1713.799999999999 },
+  { wave: 35, hp: 114867, pressure: 124938, gold: 1687.3999999999992 },
+  { wave: 40, hp: 282994, pressure: 349655, gold: 2201.1 },
+  { wave: 44, hp: 514059, pressure: 564893, gold: 1994.300000000001 },
+  { wave: 50, hp: 730383, pressure: 919634, gold: 2058.099999999999 },
+  { wave: 51, hp: 647360, pressure: 790816, gold: 1878.7999999999995 }
+]
+B [
+  { wave: 26, hp: 28955, pressure: 33308, gold: 1290.3 },
+  { wave: 30, hp: 44925, pressure: 66605, gold: 1714.899999999999 },
+  { wave: 35, hp: 134936, pressure: 151033, gold: 1687.3999999999994 },
+  { wave: 40, hp: 225218, pressure: 278269, gold: 2201.1 },
+  { wave: 44, hp: 413713, pressure: 453711, gold: 1993.200000000001 },
+  { wave: 50, hp: 742853, pressure: 944604, gold: 2056.999999999999 },
+  { wave: 51, hp: 873773, pressure: 1067402, gold: 1878.7999999999995 }
+]

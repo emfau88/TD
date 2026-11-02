@@ -1,0 +1,4 @@
+{"variant":"control","name":"mixed-retry-never","highest":39,"farmRate":410.822}
+{"variant":"control","name":"mixed-retry-immediate","highest":39,"pressure":{"wave":40,"at":32.4},"loss":{"wave":40,"at":48.725},"farmRate":410.822}
+{"variant":"control","name":"mixed-adapt60","highest":43,"pressure":{"wave":32,"at":811.8},"loss":{"wave":40,"at":1201.025},"farmRate":488.433}
+PASS control followup: real purchases, earned snapshots, farm proofs, offline caps and money/save checks

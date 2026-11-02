@@ -1,0 +1,7 @@
+{"variant":"A","name":"relaxed-matched30-24h","highest":43,"pressure":{"wave":36,"at":209.55},"loss":{"wave":40,"at":416.275},"farmRate":458.411,"gold":35386.617}
+{"variant":"A","name":"mixed-matched30-24h","highest":39,"pressure":{"wave":36,"at":190.675},"loss":{"wave":40,"at":399.125},"farmRate":458.411,"gold":33774.759}
+{"variant":"A","name":"mixed-retry-never","highest":31,"farmRate":309.325}
+{"variant":"A","name":"mixed-retry-immediate","highest":31,"pressure":{"wave":32,"at":36.3},"loss":{"wave":32,"at":64.725},"farmRate":309.325}
+{"variant":"A","name":"mixed-adapt60","highest":35,"pressure":{"wave":28,"at":680.3},"loss":{"wave":32,"at":895.275},"farmRate":435.748}
+{"variant":"A","name":"tactical-matched30-24h","highest":43,"pressure":{"wave":40,"at":333.4},"loss":{"wave":44,"at":573.5},"farmRate":479.262,"gold":39694.689}
+PASS A followup: real purchases, earned snapshots, farm proofs, offline caps and money/save checks

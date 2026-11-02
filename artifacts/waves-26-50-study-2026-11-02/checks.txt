@@ -1,0 +1,53 @@
+{
+  "validatedRuns": 51,
+  "offlineComparisons": 72,
+  "sourceFilesUnchanged": 111,
+  "entryThrough25": "exact states, rows and purchases identical",
+  "wave26to50": "actually fought in each variant",
+  "retry": [
+    {
+      "variant": "control",
+      "wave": 40,
+      "safe": 4116.31,
+      "retry": 3828,
+      "ratio": 0.9299591138665454
+    },
+    {
+      "variant": "A",
+      "wave": 32,
+      "safe": 3080.88,
+      "retry": 4338.4,
+      "ratio": 1.4081690945444156
+    },
+    {
+      "variant": "B",
+      "wave": 35,
+      "safe": 3080.88,
+      "retry": 3746.6,
+      "ratio": 1.2160811196800914
+    }
+  ],
+  "recipes": {
+    "control": {
+      "minPressureStep": 0.6470491282238857,
+      "maxPressureStep": 2.1353605624670426,
+      "minTypes": 2,
+      "maxTypes": 3,
+      "maxGoldDeviation": 0
+    },
+    "A": {
+      "minPressureStep": 0.6470491282238865,
+      "maxPressureStep": 2.13536056246704,
+      "minTypes": 2,
+      "maxTypes": 3,
+      "maxGoldDeviation": 0
+    },
+    "B": {
+      "minPressureStep": 1.129999999999999,
+      "maxPressureStep": 1.193962264150943,
+      "minTypes": 2,
+      "maxTypes": 3,
+      "maxGoldDeviation": 0.0018371096142068
+    }
+  }
+}
