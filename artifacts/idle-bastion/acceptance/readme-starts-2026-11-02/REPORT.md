@@ -26,6 +26,10 @@ Sechs echte Produktionsbrowser-Läufe auf Desktop 1440×900 EN und Touch-Querfor
 prüft den unveränderten Hauptsave des isolierten Browserkontexts, neue Probe-ID,
 anfängliche Pause und tatsächlichen Kampffortgang bzw. dauerhafte Rekrutierung.
 Keine HTTP-/JavaScriptfehler. [Lokale Ergebnisse](local/results.json).
+Codecommit `d4e70b9` auf Main veröffentlicht; [Pages 41521130051](https://github.com/emfau88/TD/actions/runs/41521130051)
+erfolgreich. Dieselben sechs Abläufe anschließend auf der öffentlichen Seite
+erneut bestanden, einschließlich Rekrutierung, Reload und Hauptsave-Schutz.
+[Öffentliche Ergebnisse](public/results.json).
 Die historischen Stände sind Bedienproben; daraus wird keine neue Balanceaussage
 abgeleitet. Keine persönlichen Browserprofile oder Spielstände verwendet.
 

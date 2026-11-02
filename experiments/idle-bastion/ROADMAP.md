@@ -1,10 +1,10 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
-**README-Teststarts · 02.11.2026 — umgesetzt und lokal geprüft, Veröffentlichung läuft.**
+**README-Teststarts · 02.11.2026 — als `d4e70b9` auf Main/Pages veröffentlicht.**
 
 - [x] Direkte README-Links zum ersten Boss W15 und zur selbst ausführbaren Ilyra-Rekrutierung nach Boss 25. Vorhandenen Teststarter erweitert; bestehende erspielte Stände, regulär bezahlte Taverne II, frische UUID-Partien, anfänglich pausiert. Keine Änderungen an normalem Einstieg oder Spielregeln.
 - [x] 8/8 gezielte Tests, TypeScript/Produktionsbuild und sechs Browserläufe auf Desktop EN / Touch-Querformat DE bestanden: echter Bossstart, eigene Rekrutierung, Reload, wiederholter Link und unveränderter Hauptsave. [Nachweise](../../artifacts/idle-bastion/acceptance/readme-starts-2026-11-02/REPORT.md).
-- [ ] Commit/Push und öffentliche Prüfung abschließen.
+- [x] Per Fast-forward auf Main übernommen und gepusht; [Pages 41521130051](https://github.com/emfau88/TD/actions/runs/41521130051) erfolgreich. Dieselben sechs öffentlichen Browserabläufe einschließlich Hauptsave-Schutz bestanden, keine HTTP-/JavaScriptfehler. Messwerte im Bericht.
 
 **Handy-Querformat · 02.11.2026 — als `27ab413` auf Main/Pages veröffentlicht.**
 
