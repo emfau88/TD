@@ -74,15 +74,15 @@
   #onboarding-card.mara-intro .onboarding-actions { margin-top:4px; justify-content:flex-start; gap:8px; }
   #onboarding-card.mara-intro button { min-height:44px; padding:5px 9px; font-size:13px; }
 
-  /* The guide attaches to the dock edge. Details scroll, required actions remain. */
+  /* Keep the left/central road visible; only a compact box meets the dock edge. */
   #app > #tutorial-guide {
-    left:var(--landscape-left); right:var(--landscape-right); bottom:var(--dock); top:auto;
-    width:auto; max-width:none; transform:none; padding:4px 8px;
+    left:auto; right:var(--landscape-right); bottom:var(--dock); top:auto;
+    width:clamp(220px,32vw,280px); max-width:calc(100% - var(--landscape-left) - var(--landscape-right)); transform:none; padding:4px 8px;
     max-height:calc(100dvh - var(--header) - var(--dock) - 8px); overflow-y:auto;
   }
   #tutorial-guide .guide-header { gap:8px; }
-  #tutorial-guide .guide-header > div { display:flex; align-items:center; gap:10px; }
-  #tutorial-guide .tutorial-step { flex:none; margin:0; white-space:nowrap; font-size:11px; }
+  #tutorial-guide .guide-header > div { display:block; }
+  #tutorial-guide .tutorial-step { display:block; margin:0 0 3px; white-space:nowrap; font-size:11px; }
   #tutorial-guide .guide-summary { font-size:12px; line-height:1.3; }
   #tutorial-guide #guide-toggle { min-height:44px; padding:5px 8px; }
   #tutorial-guide #guide-details { max-height:24dvh; margin-top:4px; }

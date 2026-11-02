@@ -318,18 +318,20 @@ export class BattleScene extends Phaser.Scene {
     const center = this.cameraFitted ? { x: camera.midPoint.x, y: camera.midPoint.y } : undefined;
     if (changedOrientation) { this.relativeZoom = 1; this.overview = false; }
     this.portraitCamera = portrait;
-    // Use the visible area between HUD and dock. Keep the existing mobile sprite
-    // scale; the smaller camera viewport supplies useful vertical travel instead.
+    // Bars must not hide the map's reachable edges. Both mobile orientations use
+    // their measured free area; normal landscape keeps its established sprite scale.
     const canvas = this.game.canvas.getBoundingClientRect();
     const header = document.querySelector('.app-header')?.getBoundingClientRect();
     const dock = document.querySelector('.command-dock')?.getBoundingClientRect();
-    const top = portrait ? Math.max(0, (header?.bottom ?? canvas.top) - canvas.top) * this.pixelDensity : 0;
-    const bottom = portrait ? Math.max(top + 1, ((dock?.top ?? canvas.bottom) - canvas.top) * this.pixelDensity) : this.scale.height;
+    const betweenBars = portrait || this.compactLandscape;
+    const top = betweenBars ? Math.max(0, (header?.bottom ?? canvas.top) - canvas.top) * this.pixelDensity : 0;
+    const bottom = betweenBars ? Math.max(top + 1, ((dock?.top ?? canvas.bottom) - canvas.top) * this.pixelDensity) : this.scale.height;
     const viewHeight = Math.max(1, Math.min(this.scale.height, bottom) - top);
     this.mapViewport = { x: 0, y: top, width: this.scale.width, height: viewHeight };
     camera.setViewport(0, top, this.scale.width, viewHeight);
+    const fitHeight = this.compactLandscape && !this.overview ? this.scale.height : viewHeight;
     this.baseZoom = portrait && !this.overview ? Math.max(this.scale.height / height, this.scale.width / 640)
-      : Math.min(this.scale.width / (this.overview ? width : 1120), viewHeight / height);
+      : Math.min(this.scale.width / (this.overview ? width : 1120), fitHeight / height);
     if(this.towerTestFrame) this.baseZoom = Math.min(this.scale.width/520,viewHeight/400);
     const defense = this.guidedDefenseFrame && portrait ? this.defenseFrame(this.guidedDefensePad) : undefined;
     if (defense) this.baseZoom = tutorialDefenseZoom(this.baseZoom, this.scale.width, viewHeight, defense);

@@ -8,3 +8,9 @@ browser/*
 !browser/390-844-tavern-mara.png
 !browser/1440-900-wave1.png
 smoke/
+followup/*
+!followup/results.json
+!followup/720-initial.png
+!followup/720-bottom.png
+!followup/844-initial.png
+followup-public/

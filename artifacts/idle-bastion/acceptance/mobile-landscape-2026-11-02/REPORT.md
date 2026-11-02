@@ -1,5 +1,56 @@
 # Handy-Querformat · Towers & Tantrums
 
+## Nachkorrektur nach Handy-Rückmeldung
+
+Ausgangspunkt `3d4b558`: Das neue Handyfoto zeigt Tutorialschritt 6. Der
+vollbreite Hinweis verdeckte weiterhin den unteren Weg; außerdem behandelte die
+Querformatkamera die Fläche hinter den Leisten als sichtbar. Dadurch war bei
+normalem Zoom kein vertikales Verschieben bis zum unteren Kartenrand möglich.
+
+- Kampf-Tutorialhinweise sitzen nun rechts in einer 220–280 px breiten Box.
+  Aufklappbare Details und vorhandene Aktionen bleiben erhalten. Die drei
+  vorgeschalteten Intro-Seiten sind von dieser Nachkorrektur nicht betroffen.
+- Die Touch-Querformatkamera nutzt den gemessenen Bereich zwischen den Leisten.
+  Der normale Maßstab bleibt gleich; der untere Kartenrand kann durch Verschieben
+  über die Bauleiste gebracht werden. Die Übersicht passt die ganze Karte in
+  diesen Bereich. Während des Tutorials bleibt der Übersichtsknopf wie bisher
+  eine Rückkehr zum aktuellen Lernziel.
+- Ausschließlich Darstellung/Kamera; keine Änderungen an Spielregeln, Kartenmodell,
+  Assets oder Spielständen. Hochformat-/Desktopregeln bleiben gleich.
+
+| Messung im Zustand des Handyfotos | Vorher | Nachher |
+| --- | ---: | ---: |
+| Breite Tutorialhinweis bei 720×320 | 704 px | 230 px |
+| Kamera-Sichtfeld bei 720×320 | 320 px, teilweise hinter Leisten | 208 px zwischen Leisten |
+| Normaler Kartenmaßstab bei 720×320 | 0,5 | 0,5 |
+| Unterer Kartenrand vollständig erreichbar | nein | ja, durch Verschieben |
+
+35/35 gezielte Kamera-/Intro-/Tutorialtests und Produktionsbuild bestanden.
+26 Browserzustände im Produktionsbuild auf 720×320 EN, 844×390 DE, 932×430 EN
+sowie Hochformat 390×844 und Desktop 1440×900 geprüft, ohne HTTP-/JavaScriptfehler.
+Der Startzustand entsteht durch echte Modellschritte bis zur Upgrade-Lernpause.
+Geprüft: Details, echte Touch-Verschiebung bis Kartenende, Zoom, Lernziel-Rückkehr,
+Turm öffnen und aufwerten sowie Rotation. Die Übersicht wurde zusätzlich direkt
+über die Kameramethode geprüft, da der Tutorialknopf absichtlich das Lernziel
+fokussiert. Nur die lokale Browserantwort erhält dafür einen Beobachtungshook;
+kein Testhook im Spiel. Keine persönlichen Spielstände geöffnet.
+
+Im anfänglichen 720×320-Ausschnitt sind 37 von 39 Wegfeld-Mittelpunkten frei
+sichtbar, bei 844×390 und 932×430 alle 39. Das ist eine einfache geometrische
+Messung, keine Garantie, dass alle Gegnersprites jederzeit unverdeckt bleiben.
+Verschieben kann obere Kartenteile ausblenden; die normale Ansicht zeigt bewusst
+nicht die komplette Karte verkleinert. Die konkrete Handyabnahme bleibt offen.
+
+[Messwerte](followup/results.json), [720×320](followup/720-initial.png),
+[unterer Kartenrand](followup/720-bottom.png), [844×390 DE](followup/844-initial.png).
+Reproduktion gegen einen frischen Produktionsbuild:
+
+```powershell
+npx tsx artifacts/idle-bastion/acceptance/mobile-landscape-2026-11-02/followup.ts http://127.0.0.1:5199
+```
+
+## Ursprüngliches Paket
+
 Ausgangsstand: `a6f2cae` auf Main, 02.11.2026. Beauftragt: ausschließlich das
 Querformat-Paket einschließlich Prüfung, Commit und Push. Schwerpunkt gängige
 Handygrößen, keine Sonderlayouts für exotische Kleinstgeräte.

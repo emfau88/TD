@@ -216,6 +216,24 @@ test('zooming out and back uses the full available viewport without accumulating
   assert.equal(scene.mapViewport.width, 390); assert.equal(scene.mapViewport.height, 658);
 });
 
+test('touch landscape keeps normal sprite scale but allows the lower map edge above the dock', t => {
+  const { scene, camera, model } = cameraScene(t);
+  for (const [width, height] of [[720,320],[844,390],[932,430]]) for (const density of [1,2]) {
+    Object.assign(window, { innerWidth:width, innerHeight:height, compactLandscape:true });
+    scene.pixelDensity = density; scene.scale = { width:width*density, height:height*density };
+    scene.game.canvas.getBoundingClientRect = () => ({ top:0, bottom:height });
+    document.querySelector = ((selector:string) => ({ getBoundingClientRect: () => selector === '.app-header' ? { bottom:48 } : { top:height-64 } })) as any;
+    scene.overview = false; scene.resizeCamera();
+    near(camera.zoom / density, Math.min(width/1120,height/640));
+    near(camera.y / density,48); near(camera.height / density,height-112);
+    assert.ok(camera.displayHeight<640,'vertical travel is available instead of pinning hidden map edges');
+    camera.setScroll(0,model.layout.bounds.height-camera.displayHeight);
+    near((640-camera.scrollY)*camera.zoom/density+camera.y/density,height-64);
+    scene.overview = true; scene.resizeCamera();
+    assert.ok(camera.displayHeight>=640-1e-9);assert.ok(camera.displayWidth>=1600-1e-9);
+  }
+});
+
 
 test('intro explains tower choice without prematurely marking a build tile', t => {
   const { scene, camera } = cameraScene(t);
