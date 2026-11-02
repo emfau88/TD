@@ -189,6 +189,6 @@ test('known historical departure proofs retain their original production basis',
     assert.equal(reserveOffline(restored!, START + 60_000).pendingReward?.amountUnits, 60_000);
   }
   const future = JSON.parse(JSON.stringify(start()));
-  future.baseline.certificate.rulesVersion = future.window.certificate.rulesVersion = 19;
+  future.baseline.certificate.rulesVersion = future.window.certificate.rulesVersion = 20;
   assert.equal(restoreOffline(future), undefined);
 });

@@ -40,7 +40,7 @@ import './spell-actions.css';
 import './tutorial-guide.css';
 import './header-pause.css';
 import { mountUIIcons, uiIcon } from './ui-icons';
-import { STORM_CHAIN, STORMLIGHT, SETTLEMENT, towerDefinition, type TowerId, stats, upgradeCost, sellValue, type IdleBattle } from './battle';
+import { EMBER, EMBER_BURN, emberBurnDamage, STORM_CHAIN, STORMLIGHT, SETTLEMENT, towerDefinition, type TowerId, stats, upgradeCost, sellValue, type IdleBattle } from './battle';
 import { BattleScene } from './battle-scene';
 import { nextObjective, tutorialHint, tutorialStep } from './hud';
 import { BattleSession, SessionLoadError, SessionOwnershipError } from './battle-session';
@@ -102,7 +102,7 @@ let game: Phaser.Game | undefined;
 let gameResize: ResizeObserver | undefined;
 let store: BattleSaveStore | undefined;
 let selectedPadId: string | undefined;
-let selectedTechnology: 'frost'|'storm' = 'frost';
+let selectedTechnology: 'frost'|'storm'|'ember' = 'frost';
 let selectedPanel: 'tower' | 'settlement' | 'warehouse' | 'tavern' | 'mara' | 'wisp' | 'ilyra' | 'clearing' = 'tower';
 let catalogPanel: 'tower' | 'settlement' = 'tower';
 let contextOpen = false;
@@ -259,12 +259,12 @@ function syncUI(): void {
   element('frost-lock').textContent = t(sim.settlement.frostResearched ? t('Verlangsamung') : t('Frostfassung nötig'));
   element('frost-price').textContent = sim.frostKitAvailable ? t('Kostenlos') : t(sim.settlement.frostResearched ? '110' : t('Forschung'));
   element('pick-frost').setAttribute('aria-label', sim.frostKitAvailable ? t('Frostkristall · erster Bau kostenlos') : t('Frostkristall · 110 Gold'));
-  for (const [name, kind, role, condition] of [['cannon', 3, t('Flächenschaden'), t('Frost & Welle 5')], ['sniper', 4, t('Ignoriert Rüstung'), t('Welle 10 meistern')], ['storm', 5, t('Kette · höchstens drei Ziele'), t('Werkstattforschung & Welle 28')]] as const) {
+  for (const [name, kind, role, condition] of [['cannon', 3, t('Flächenschaden'), t('Frost & Welle 5')], ['sniper', 4, t('Ignoriert Rüstung'), t('Welle 10 meistern')], ['storm', 5, t('Kette · höchstens drei Ziele'), t('Werkstattforschung & Welle 28')], ['ember', 7, t('Brand · nur Bodengegner'), t('Werkstatt II · Welle 34')]] as const) {
     const unlocked = sim.isTowerUnlocked(kind);
     element(`pick-${name}`).classList.toggle('locked', !unlocked);
     element(`pick-${name}`).setAttribute('aria-pressed', String(placementType === kind));
     element(`${name}-lock`).textContent = t(unlocked ? role : condition);
-    element(`${name}-price`).textContent = t(unlocked ? String(towerDefinition(kind).cost) : kind === 3 ? sim.highestCleared < 5 ? t('Welle 5') : t('Forschung') : kind === 5 ? t('Forschung') : t('Welle 10'));
+    element(`${name}-price`).textContent = t(unlocked ? String(towerDefinition(kind).cost) : kind === 3 ? sim.highestCleared < 5 ? t('Welle 5') : t('Forschung') : kind === 5 || kind === 7 ? t('Forschung') : t('Welle 10'));
   }
   const freePads = sim.layout.towerPads.filter(pad => sim.isPadUnlocked(pad.id) && !sim.towers.some(tower => tower.padId === pad.id));
   const padKey = language() + ':' + freePads.map(pad => pad.id).join(',');
@@ -372,7 +372,7 @@ function syncUI(): void {
   element('selection-title').textContent = t(selectedPanel === 'ilyra' ? t('Ilyra · Sternensalve') : selectedPanel === 'tavern' ? t("Taverne {0}", sim.settlement.tavernLevel === 2 ? 'II' : 'I') : selectedPanel === 'clearing' ? t('Ostzugang') : selectedPanel === 'warehouse' ? t('Vorratslager') : selectedPanel === 'wisp' ? 'Wisp' : selectedPanel === 'mara' ? 'Mara' : selectedPanel === 'settlement' ? t('Werkstatt')
     : tower ? t("{0} · Level {1}", tower.def.name, tower.level) : pad ? t('Freier Bauplatz') : t('Bauplatz wählen'));
   element('tower-name').textContent = t(tower?.def.name ?? t('Turm wählen'));
-  element('tower-role').textContent = t(tower?.def.id === 5 ? t('Bis zu drei Ziele · 80 Sprungreichweite · 100/65/42 % Schaden') : tower?.def.id === 4 ? t('Bevorzugt Rüstung · ignoriert 100 % davon') : tower?.def.id === 3 ? t('Flächentreffer · 52 Reichweite um das Ziel') : tower?.def.id === 2 ? t('Frosttreffer · 45 % langsamer für 2 s') : t('Zuverlässige Pfeile · Allrounder'));
+  element('tower-role').textContent = t(tower?.def.id === 7 ? t('Nur Boden · Brand für {0} s · Radius {1} · stärkster Brand zählt', EMBER_BURN.seconds, EMBER_BURN.radius) : tower?.def.id === 5 ? t('Bis zu drei Ziele · 80 Sprungreichweite · 100/65/42 % Schaden') : tower?.def.id === 4 ? t('Bevorzugt Rüstung · ignoriert 100 % davon') : tower?.def.id === 3 ? t('Flächentreffer · 52 Reichweite um das Ziel') : tower?.def.id === 2 ? t('Frosttreffer · 45 % langsamer für 2 s') : t('Zuverlässige Pfeile · Allrounder'));
   element('selection-description').textContent = t(selectedPanel !== 'tower' ? '' : tower
     ? tower.protected ? t('Dein erster Turm sichert die Grundverteidigung. Du kannst ihn verbessern.') : t("{0} verteidigt den Weg. Verbessere ihn oder investiere das Gold an anderer Stelle.", tower.def.name)
     : (pad && sim.isPadUnlocked(pad.id)) ? t('Wähle einen freigeschalteten Turm für diesen Platz.')
@@ -382,7 +382,7 @@ function syncUI(): void {
   buildFrost.hidden = Boolean(tower) || !sim.settlement.frostResearched;
   build.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId);
   buildFrost.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId, 2);
-  for (const [name, kind] of [['cannon', 3], ['sniper', 4], ['storm', 5]] as const) {
+  for (const [name, kind] of [['cannon', 3], ['sniper', 4], ['storm', 5], ['ember', 7]] as const) {
     const button = element<HTMLButtonElement>(`build-${name}`);
     button.hidden = Boolean(tower) || !sim.isTowerUnlocked(kind);
     button.disabled = blocked || !selectedPadId || !sim.canBuild(selectedPadId, kind);
@@ -397,7 +397,8 @@ function syncUI(): void {
   element('tower-stats').innerHTML = tower ? (() => {
     const values = stats(tower);
     return [
-      ['damage', t('Schaden'), damageFormat.format(values.damage)],
+      ['damage', t(tower.def.id === 7 ? 'Trefferschaden' : 'Schaden'), damageFormat.format(values.damage)],
+      ...(tower.def.id === 7 ? [['damage', t('Brand pro Sekunde'), damageFormat.format(emberBurnDamage(tower.level))]] : []),
       ['target', t('Reichweite'), values.range],
       ['cooldown', t('Angriff alle'), `${intervalFormat.format(values.cooldown)} s`],
       ['skull', t('Abschüsse'), tower.kills],
@@ -433,20 +434,29 @@ function syncUI(): void {
   element('choose-frost').hidden = !settlement.frostResearched;
   const techVisible=settlement.workshopBuilt;
   element('research-icons').hidden=!techVisible;element('research-details').hidden=!techVisible;
-  for(const tech of ['frost','storm'] as const){
-    const researched=tech==='frost'?settlement.frostResearched:settlement.stormResearched;
-    const available=tech==='frost'?settlement.workshopBuilt:sim.stormResearchUnlocked;
+  for(const tech of ['frost','storm','ember'] as const){
+    const researched=tech==='frost'?settlement.frostResearched:tech==='ember'?settlement.emberResearched:settlement.stormResearched;
+    const available=tech==='frost'?settlement.workshopBuilt:tech==='ember'?sim.emberResearchUnlocked:sim.stormResearchUnlocked;
     element(`tech-${tech}`).classList.toggle('locked',!researched&&!available);
     element(`tech-${tech}`).setAttribute('aria-pressed',String(selectedTechnology===tech));
     element<HTMLButtonElement>(`tech-${tech}`).disabled=sim.guiding&&tech!=='frost';
-    element(`tech-${tech}-status`).textContent = t(researched?t('✓ Erforscht'):available?t('Erforschbar'):t('Gesperrt'));
+    element(`tech-${tech}-status`).textContent = t(researched?t('✓ Erforscht'):tech==='ember'&&sim.emberResearchNew?t('Neu'):available?t('Erforschbar'):t('Gesperrt'));
   }
-  element('research-details').textContent = t(selectedTechnology==='frost'
+  element('research-details').textContent = t(selectedTechnology==='ember'
+    ? settlement.emberResearched ? t('✓ Glutwerfer: kleine Bodenfläche und Brand für {0} s. Nur der stärkste Brand zählt. Turmbau separat: {1} Gold.', EMBER_BURN.seconds, EMBER.cost)
+      : t('Glutwerfer: Werkstatt II und gemeisterte Welle {0} nötig. Forschung {1} Gold; Turmbau separat {2} Gold. Trifft nur Bodengegner und verursacht Brand.', EMBER_BURN.wave, currency.format(EMBER_BURN.researchCost), EMBER.cost)
+    : selectedTechnology==='frost'
     ? settlement.frostResearched?t('✓ Frostfassung: Frostkristall und Turmlevel 4–6 verfügbar.'):t('Frostfassung: Werkstatt nötig · 60 Gold. Verlangsamt Gegner und erschließt Turmlevel 4–6.')
     : settlement.stormResearched?t("✓ Sturmlicht: bis zu drei Ziele, 80 Sprungreichweite, sinkender Schaden. Turmbau separat: {0} Gold.", STORMLIGHT.cost)
     : t("Sturmlicht: Frostfassung, gemeisterte Welle {0} und abgeschlossene Ilyra-Einführung nötig. Forschung {1} Gold; Turmbau separat {2} Gold.", STORM_CHAIN.wave, STORM_CHAIN.researchCost, STORMLIGHT.cost));
   const stormResearch=element<HTMLButtonElement>('research-storm');
-  stormResearch.hidden=!techVisible||sim.guiding||settlement.stormResearched;
+  stormResearch.hidden=!techVisible||sim.guiding||settlement.stormResearched||selectedTechnology==='ember';
+  const emberResearch=element<HTMLButtonElement>('research-ember');
+  emberResearch.hidden=!techVisible||sim.guiding||settlement.emberResearched||selectedTechnology!=='ember';
+  emberResearch.disabled=blocked||!sim.emberResearchUnlocked||sim.gold<EMBER_BURN.researchCost;
+  emberResearch.textContent=t('Glutwerfer erforschen · {0} Gold', currency.format(EMBER_BURN.researchCost));
+  element('ember-saving').hidden=emberResearch.hidden||!sim.emberResearchUnlocked||sim.gold>=EMBER_BURN.researchCost;
+  element('ember-saving').textContent=t('Noch {0} Gold bis zur Glutwerfer-Forschung.', currency.format(Math.max(0,EMBER_BURN.researchCost-sim.gold)));
   stormResearch.disabled=blocked||!sim.stormResearchUnlocked||sim.gold<STORM_CHAIN.researchCost;
 
   const warehouseIcon = element<HTMLImageElement>('warehouse-icon');
@@ -461,6 +471,9 @@ function syncUI(): void {
   const safeRate = certificate ? farmRewardGold(certificate) * 60000 / certificate.durationMs : 0;
   element('pick-warehouse').classList.toggle('locked', !sim.warehouseUnlocked);
   element('pick-warehouse').classList.toggle('researched', builtWarehouse);
+  const emberNew = sim.emberResearchNew;
+  element('pick-workshop').classList.toggle('new-building',emberNew);
+  element('pick-ember').classList.toggle('new-building',emberNew);
   const warehouseNew = sim.warehouseUnlocked && !builtWarehouse && !(sim.tutorial.seen & (1 << 12)) && (!sim.discoveryActive || sim.discovery === 'warehouse');
   const ilyraNew = sim.ilyraRecruitable;
   const tavernUpgradeNew = settlement.tavernLevel === 1 && sim.tavernUpgradeUnlocked;
@@ -475,8 +488,8 @@ function syncUI(): void {
   element('pick-tavern').classList.toggle('has-gifts', gifts.owned);
   element('tavern-gift-note').hidden = !gifts.owned;
   element('tavern-gift-note').textContent = giftLabel;
-  element('settlement-tab').classList.toggle('new-building', warehouseNew || tavernNew);
-  element('settlement-tab').setAttribute('aria-label', t(ilyraNew ? t('Siedlung · Ilyra wartet in der Taverne') : tavernUpgradeNew ? t('Siedlung · Taverne II verfügbar') : tavernNew ? t('Siedlung · Taverne kostenlos bauen') : warehouseNew ? t('Siedlung · Neues Gebäude verfügbar: Vorratslager') : t('Siedlung')));
+  element('settlement-tab').classList.toggle('new-building', warehouseNew || tavernNew || emberNew);
+  element('settlement-tab').setAttribute('aria-label', t(emberNew ? t('Siedlung · Neue Forschung: Glutwerfer') : ilyraNew ? t('Siedlung · Ilyra wartet in der Taverne') : tavernUpgradeNew ? t('Siedlung · Taverne II verfügbar') : tavernNew ? t('Siedlung · Taverne kostenlos bauen') : warehouseNew ? t('Siedlung · Neues Gebäude verfügbar: Vorratslager') : t('Siedlung')));
   if (giftLabel) element('settlement-tab').setAttribute('aria-label', `${element('settlement-tab').getAttribute('aria-label')} · ${giftLabel}`);
   element('pick-tavern').title = giftLabel;
   element<HTMLImageElement>('tavern-icon').src = ART.tavern;
@@ -555,7 +568,7 @@ function syncUI(): void {
     : message.type === 'tavern-upgrade' ? t('Taverne II fertig! Du kannst jetzt Ilyra kennenlernen und kostenlos rekrutieren.')
     : message.type === 'tavern' ? t('Die Taverne steht! Ein neuer Treffpunkt für deine Siedlung.')
     : message.type === 'warehouse' ? t('Vorratslager gebaut! Künftig 26 % Offline-Ertrag für bis zu 8 Stunden.')
-    : message.type === 'research' && message.technology === 'storm' ? t('Sturmlicht erforscht! Der Turmbau ist jetzt im Baukatalog verfügbar.') : message.type === 'research' ? t('Frostfassung erforscht! Baue einen Frostkristall oder verbessere Türme bis Level 6.')
+    : message.type === 'research' && message.technology === 'ember' ? t('Glutwerfer erforscht! Der Turmbau ist jetzt im Baukatalog verfügbar.') : message.type === 'research' && message.technology === 'storm' ? t('Sturmlicht erforscht! Der Turmbau ist jetzt im Baukatalog verfügbar.') : message.type === 'research' ? t('Frostfassung erforscht! Baue einen Frostkristall oder verbessere Türme bis Level 6.')
     : message.type === 'sell' ? t("Turm verkauft · +{0} Gold. Die sichere Farmbasis wird neu geprüft.", currency.format(message.amount ?? 0))
     : t('Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.')));
   const startedWave = relevantEvents.find(e => e.type === 'wave');
@@ -828,7 +841,9 @@ function openContext(kind: typeof selectedPanel, buildingControls = false, focus
   }
   if (kind !== 'tower') { selectedPadId = undefined; scene?.setSelected(); }
   if (kind === 'tavern' && session?.battle.settlement.tavernBuilt && !buildingControls) { contextOpen = false; syncUI(); tavernUI.open(); return; }
+  if(kind==='settlement'&&session?.battle.emberResearchNew)selectedTechnology='ember';
   if (focus) scene?.focusObject(kind); syncUI();
+  if(kind==='settlement'&&selectedTechnology==='ember'&&session?.battle.emberResearchNew)void perform(b=>b.inspectEmberResearch(),true,true);
   if (kind === 'tavern' && session?.battle.tavernUnlocked && !session.battle.settlement.tavernSeen)
     void perform(b => { b.settlement.tavernSeen = true; }, true, true);
   if (kind === 'warehouse' && session?.battle.warehouseUnlocked && !(session.battle.tutorial.seen & (1 << 12)))
@@ -843,7 +858,7 @@ function startPlacement(kind: TowerId): void {
   if (session.battle.guiding && (kind !== 2 || session.battle.introduction.stage !== 'frost')) return;
   if (session.battle.introduction.stage === 'welcome') { void perform(b => b.beginIntroduction()).then(() => { if (session?.battle.introduction.stage === 'build') startPlacement(kind); }); return; }
   if (kind === 2 && !session.battle.settlement.frostResearched) { catalogPanel = 'settlement'; openContext('settlement'); return; }
-  if (!session.battle.isTowerUnlocked(kind)) { if (kind === 5) {selectedTechnology='storm';catalogPanel='settlement';openContext('settlement');} else if (kind === 3) openContext('wisp'); else { showCombatMessage(() => t('Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.')); toastUntil = performance.now() + 6000; syncUI(); } return; }
+  if (!session.battle.isTowerUnlocked(kind)) { if (kind === 5 || kind === 7) {selectedTechnology=kind===7?'ember':'storm';catalogPanel='settlement';openContext('settlement');} else if (kind === 3) openContext('wisp'); else { showCombatMessage(() => t('Scharfschütze: Welle 10 meistern. Ab Welle 11 schützt Rüstung einen Teil der Gegner.')); toastUntil = performance.now() + 6000; syncUI(); } return; }
   if (placementType === kind) { placementType = undefined; closeContext(); return; }
   ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; catalogPanel = 'tower'; placementType = kind; contextOpen = false; selectedPadId = undefined; scene?.setSelected();
   // Only guided construction suggests a location. Ordinary purchases keep the player's view.
@@ -1136,7 +1151,7 @@ for (const kind of ['tower', 'settlement'] as const) {
   }, { signal: lifetime.signal });
 }
 element('choose-frost').addEventListener('click', () => startPlacement(2), { signal: lifetime.signal });
-for (const [name, kind] of [['cannon', 3], ['sniper', 4], ['storm', 5]] as const) {
+for (const [name, kind] of [['cannon', 3], ['sniper', 4], ['storm', 5], ['ember', 7]] as const) {
   element(`pick-${name}`).addEventListener('click', () => { if (kind === 3 && session?.battle.isTowerUnlocked(3)) inspectCannon(); startPlacement(kind); }, { signal: lifetime.signal });
   element(`build-${name}`).addEventListener('click', () => { if (selectedPadId) void placeTower(selectedPadId, kind); }, { signal: lifetime.signal });
 }
@@ -1168,8 +1183,9 @@ element('challenge-boss').addEventListener('click', () => {
 element('catalog-next').addEventListener('click', () => { const list = element(`${catalogPanel}-catalog`); list.scrollTo({ left: list.scrollLeft >= list.scrollWidth - list.clientWidth - 2 ? 0 : list.scrollLeft + list.clientWidth, behavior: 'smooth' }); }, { signal: lifetime.signal });
 element('pick-archer').addEventListener('click', () => startPlacement(1), { signal: lifetime.signal });
 element('pick-frost').addEventListener('click', () => startPlacement(2), { signal: lifetime.signal });
+element('research-ember').addEventListener('click',()=>{void perform(b=>b.researchEmber());},{signal:lifetime.signal});
 element('research-storm').addEventListener('click', () => {void perform(b=>b.researchStorm());}, {signal:lifetime.signal});
-for(const tech of ['frost','storm'] as const)element(`tech-${tech}`).addEventListener('click',()=>{selectedTechnology=tech;syncUI();},{signal:lifetime.signal});
+for(const tech of ['frost','storm','ember'] as const)element(`tech-${tech}`).addEventListener('click',()=>{selectedTechnology=tech;syncUI();if(tech==='ember'&&session?.battle.emberResearchNew)void perform(b=>b.inspectEmberResearch(),true,true);},{signal:lifetime.signal});
 element('pick-clearing').addEventListener('click', () => openContext('clearing'), { signal: lifetime.signal });
 element('show-clearing').addEventListener('click', () => { placementType = undefined; closeContext(); scene?.showBase(); }, { signal: lifetime.signal });
 

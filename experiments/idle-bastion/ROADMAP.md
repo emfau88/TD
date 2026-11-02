@@ -1,5 +1,13 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Glutwerfer / Werkstattforschung · 02.11.2026 — umgesetzt und geprüft, Main-Veröffentlichung folgt.**
+
+- [x] Umfang: vorhandener Turm 07 mit eigenen Waffen, Feuerball und Einschlag; Forschung in Werkstatt II nach gemeisterter W34, getrennte Baukosten. Bestehende Wellen und Goldtarife erhalten. [Messmethode und erster Kandidat](../../artifacts/glutwerfer-2026-11-02/METHOD.md).
+- [x] Zusatzauftrag: dezente vorhandene Neu-Markierung an Siedlung/Werkstatt und Glutwerfer-Eintrag, unabhängig vom Geldbestand. Bewusstes Ansehen der verfügbaren Forschung wird gespeichert; kein Popup oder zusätzliche Hinweiskachel.
+- [x] Drei verdiente Aufbauten und identische 24-h-Rückkehrbudgets verglichen. Forschung 5.000 Gold (10,9–13,5 min Sparen ab W34), separater Bau 220; optionale Ergänzung, kein pauschal besserer Kauf. 476/476 Tests, Produktionsbuild und Desktop-/Mobilfluss DE/EN bestanden. Atomare Bezahlung, Brand, Verkauf/Reload, Altstände, Mara/Ilyra und einmalige Neu-Markierung geprüft. [Werte, ungünstige Fälle und Grenzen](../../artifacts/glutwerfer-2026-11-02/REPORT.md).
+- [ ] Menschliche Spielgefühl-Abnahme nach Vorführung. Keine Freigabe weiterer Türme/Gegner/Gebäude ableiten.
+- [x] Auswahl für später präzisiert: Wurzeltrommler und Frostwidder verworfen; historische Dateien bleiben erhalten. Schwebendes Auge, Flammengeist und Sternenrichter sind ausgewählt zur weiteren Planung. Sternenrichter benötigt Herkunfts-/Darstellungsprüfung; kein Einbau aus diesem Auftrag.
+
 **W26–50 · B-Nachschliff, 02.11.2026 — umgesetzt, geprüft und als `4836c8a` auf Main veröffentlicht.**
 
 - [x] Nach gemeinsamer Auswahl B als Grundlage integriert, eigener Regelstand 18 / Schema 34. Die erste Ergänzung in vier Wellen verworfen; endgültig nur zwei zusätzliche bekannte Leerenfalter in W35/38 innerhalb des geglätteten Gruppenbudgets. W1–25, Türme, Preise, Gegnergrundwerte, Spawnzeiten, Offline-/Wiederholungsregeln und Kernleben unverändert. Normale Fortsetzung über W50 ohne Kurvenreset; keine neuen Inhalte.
@@ -698,7 +706,7 @@ Diese Liste ist das einzige aktuelle Arbeitsboard. Die Nummern zeigen die sinnvo
 
 - [ ] **29 · B19 — Ostfront bewusst eröffnen. Geplant.** Nach Taverne/Ilyra und passendem Fortschritt: Gebiet ansehen, Verteidigung vorbereiten, ausdrücklich öffnen. Wenig Gold erlaubt weiteres Westfarmen; kein Überraschungsangriff beim Laden. Zunächst einzelne Ostangriffe, dann wechselnde Schwerpunkte; kompakte Front-/Gefahrenanzeige, kurze schließbare Hinweise, freie Kampfzone. Veteranen behalten Rekord/Besitz und bekommen eine gestaffelte Einführung ohne zweite Wellenzählung oder erfundene Bossabschlüsse. Fertig, wenn Erstzugang, Reload der Vorbereitung und mobile Übersicht verständlich funktionieren. Erste öffentliche Ostfront erst hier.
 
-- [ ] **30 · B20 — Glutwerfer. Geplant.** Vorhandenen Turm 07 samt korrekt ausgeschnittenen Effekten verwenden. Bodenzone/Brandschaden mit Frost kombinieren; stärkste Brandquelle und eindeutige Erneuerungsregel statt unbegrenztem Stapeln, Flieger als Schwäche. Keine Bosszauber-Unterbrechung. Forschung ungefähr Welle 33–35 bewusst in der Werkstatt kaufen und als Icon anzeigen. Quelle/Schaden/Restzeit bleiben bei Verkauf/Reload erhalten; überlappende Brände und letzte Kills kompakt prüfen.
+- [x] **30 · B20 — Glutwerfer. Am 02.11.2026 ausdrücklich beauftragt und umgesetzt.** Werkstatt II nach gemeisterter W34, Forschung 5.000/Bau 220 Gold, Originalgrafiken, Bodenbrand mit stärkster Quelle und gespeichertem Trefferlevel, eigene Feuerbälle/Impacts. Dezentes Neu/Gesehen, 476/476 Tests und begrenzter Preis-/Aufstellungsvergleich. Veröffentlichung und noch offene menschliche Abnahme im aktuellen Eintrag am Dokumentanfang; keine Ostfront daraus ableiten.
 
 - [ ] **31 · B21 — Verlauf 26–40 und Boss 40. Geplant, zwei Teilschritte.** Erst Wellen/Wirtschaft, dann eigener Bossabschnitt. Folge: Boss 25 → Taverne/Ilyra → Sturmlicht → vorbereitete Ostfront → Glutwerfer → Doppelangriffe → Boss 40. Vorhandenen Leerenfalter ab Welle 28 berücksichtigen; Zusammensetzung statt bloßer HP-Sprünge. Gesamtbelastung beider Fronten begrenzen, keine dauernde Bedienhektik. Boss mit klar angekündigter neuer Mechanik (bevorzugt zeitweiliger Gruppenschutz), passende Bestandskunst zuerst prüfen. Boss 40 aus sicherem Offline-Farmen ausschließen und bisherige Suchgrenze 32 gezielt erweitern. Zwei Verteidigungsansätze und überwiegend automatische Spielweise legal prüfen; Zeiten/Annahmen transparent, keine Endlosbalance behaupten.
 

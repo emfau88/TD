@@ -1,0 +1,372 @@
+[
+  {
+    "name": "relaxed-control60",
+    "style": "relaxed",
+    "elapsed": 3599.925,
+    "initialRecord": 0,
+    "highest": 35,
+    "firstLoss": {
+      "wave": 15,
+      "at": 438.375
+    },
+    "firstPressure": {
+      "wave": 12,
+      "at": 245.175
+    },
+    "longestSafe": 11,
+    "maxNoRecordSeconds": 933.95,
+    "farmPerMinute": 327.349,
+    "spent": 32906,
+    "gold": 2534.97,
+    "emberLevels": []
+  },
+  {
+    "name": "relaxed-ember60",
+    "style": "relaxed",
+    "elapsed": 3599.925,
+    "initialRecord": 0,
+    "highest": 34,
+    "firstLoss": {
+      "wave": 15,
+      "at": 438.375
+    },
+    "firstPressure": {
+      "wave": 12,
+      "at": 245.175
+    },
+    "longestSafe": 11,
+    "maxNoRecordSeconds": 999.175,
+    "farmPerMinute": 296.905,
+    "spent": 34306,
+    "gold": 194.8,
+    "research": {
+      "t": 3412.025,
+      "wave": 26,
+      "cost": 5000
+    },
+    "emberLevels": [
+      {
+        "pad": "cell-17-7",
+        "kind": 7,
+        "level": 4,
+        "spent": 1050
+      }
+    ]
+  },
+  {
+    "name": "relaxed-return-control",
+    "style": "relaxed",
+    "elapsed": 1800,
+    "initialRecord": 34,
+    "highest": 42,
+    "firstLoss": {
+      "wave": 43,
+      "at": 434.275
+    },
+    "firstPressure": {
+      "wave": 36,
+      "at": 84.6
+    },
+    "longestSafe": 0,
+    "maxNoRecordSeconds": 1412.175,
+    "offline": 37053.754,
+    "farmPerMinute": 313.04,
+    "spent": 50951,
+    "gold": 4415.654,
+    "emberLevels": []
+  },
+  {
+    "name": "relaxed-return-ember",
+    "style": "relaxed",
+    "elapsed": 1800,
+    "initialRecord": 34,
+    "highest": 40,
+    "firstLoss": {
+      "wave": 40,
+      "at": 285.9
+    },
+    "firstPressure": {
+      "wave": 36,
+      "at": 82.075
+    },
+    "longestSafe": 0,
+    "maxNoRecordSeconds": 940.875,
+    "offline": 37053.754,
+    "farmPerMinute": 335.706,
+    "spent": 51884,
+    "gold": 2731.684,
+    "research": {
+      "t": 0,
+      "wave": 34,
+      "cost": 5000
+    },
+    "emberLevels": [
+      {
+        "pad": "cell-17-7",
+        "kind": 7,
+        "level": 10,
+        "spent": 15792
+      }
+    ]
+  },
+  {
+    "name": "mixed-control60",
+    "style": "mixed",
+    "elapsed": 3599.925,
+    "initialRecord": 0,
+    "highest": 35,
+    "firstLoss": {
+      "wave": 35,
+      "at": 995.75
+    },
+    "firstPressure": {
+      "wave": 29,
+      "at": 691.625
+    },
+    "longestSafe": 27,
+    "maxNoRecordSeconds": 1442.4,
+    "farmPerMinute": 334.058,
+    "spent": 40546,
+    "gold": 1606.18,
+    "emberLevels": []
+  },
+  {
+    "name": "mixed-ember60",
+    "style": "mixed",
+    "elapsed": 3599.925,
+    "initialRecord": 0,
+    "highest": 35,
+    "firstLoss": {
+      "wave": 35,
+      "at": 995.75
+    },
+    "firstPressure": {
+      "wave": 29,
+      "at": 691.625
+    },
+    "longestSafe": 27,
+    "maxNoRecordSeconds": 1435.6,
+    "farmPerMinute": 369.537,
+    "spent": 42316,
+    "gold": 660.19,
+    "research": {
+      "t": 1742.025,
+      "wave": 19,
+      "cost": 5000
+    },
+    "emberLevels": [
+      {
+        "pad": "cell-10-3",
+        "kind": 7,
+        "level": 7,
+        "spent": 5470
+      }
+    ]
+  },
+  {
+    "name": "mixed-return-control",
+    "style": "mixed",
+    "elapsed": 1800,
+    "initialRecord": 34,
+    "highest": 43,
+    "firstLoss": {
+      "wave": 41,
+      "at": 319.9
+    },
+    "firstPressure": {
+      "wave": 36,
+      "at": 81.25
+    },
+    "longestSafe": 1,
+    "maxNoRecordSeconds": 772.975,
+    "offline": 38603.797,
+    "farmPerMinute": 405.991,
+    "spent": 57430,
+    "gold": 3299.377,
+    "emberLevels": []
+  },
+  {
+    "name": "mixed-return-ember",
+    "style": "mixed",
+    "elapsed": 1800,
+    "initialRecord": 34,
+    "highest": 42,
+    "firstLoss": {
+      "wave": 41,
+      "at": 315.75
+    },
+    "firstPressure": {
+      "wave": 36,
+      "at": 79.175
+    },
+    "longestSafe": 1,
+    "maxNoRecordSeconds": 885,
+    "offline": 38603.797,
+    "farmPerMinute": 380.892,
+    "spent": 56595,
+    "gold": 2455.777,
+    "research": {
+      "t": 0,
+      "wave": 34,
+      "cost": 5000
+    },
+    "emberLevels": [
+      {
+        "pad": "cell-10-3",
+        "kind": 7,
+        "level": 9,
+        "spent": 11365
+      }
+    ]
+  },
+  {
+    "name": "tactical-control60",
+    "style": "tactical",
+    "elapsed": 3599.925,
+    "initialRecord": 0,
+    "highest": 39,
+    "firstLoss": {
+      "wave": 35,
+      "at": 940.525
+    },
+    "firstPressure": {
+      "wave": 31,
+      "at": 738.325
+    },
+    "longestSafe": 30,
+    "maxNoRecordSeconds": 701.775,
+    "farmPerMinute": 426.171,
+    "spent": 47060,
+    "gold": 2601.22,
+    "emberLevels": []
+  },
+  {
+    "name": "tactical-ember60",
+    "style": "tactical",
+    "elapsed": 3599.925,
+    "initialRecord": 0,
+    "highest": 36,
+    "firstLoss": {
+      "wave": 35,
+      "at": 940.525
+    },
+    "firstPressure": {
+      "wave": 31,
+      "at": 738.325
+    },
+    "longestSafe": 30,
+    "maxNoRecordSeconds": 1054,
+    "farmPerMinute": 438.21,
+    "spent": 46866,
+    "gold": 1087.36,
+    "research": {
+      "t": 1547.025,
+      "wave": 29,
+      "cost": 5000
+    },
+    "emberLevels": [
+      {
+        "pad": "cell-10-7",
+        "kind": 7,
+        "level": 7,
+        "spent": 5470
+      }
+    ]
+  },
+  {
+    "name": "tactical-return-control",
+    "style": "tactical",
+    "elapsed": 1800,
+    "initialRecord": 34,
+    "highest": 44,
+    "firstLoss": {
+      "wave": 44,
+      "at": 441.6
+    },
+    "firstPressure": {
+      "wave": 39,
+      "at": 158.75
+    },
+    "longestSafe": 4,
+    "maxNoRecordSeconds": 1151.8,
+    "offline": 46182.668,
+    "farmPerMinute": 509.614,
+    "spent": 73385,
+    "gold": 280.288,
+    "emberLevels": []
+  },
+  {
+    "name": "tactical-return-ember",
+    "style": "tactical",
+    "elapsed": 1800,
+    "initialRecord": 34,
+    "highest": 43,
+    "firstLoss": {
+      "wave": 37,
+      "at": 96.3
+    },
+    "firstPressure": {
+      "wave": 37,
+      "at": 84.9
+    },
+    "longestSafe": 2,
+    "maxNoRecordSeconds": 968.15,
+    "offline": 46182.668,
+    "farmPerMinute": 489.667,
+    "spent": 70403,
+    "gold": 1640.778,
+    "research": {
+      "t": 0,
+      "wave": 34,
+      "cost": 5000
+    },
+    "emberLevels": [
+      {
+        "pad": "cell-10-7",
+        "kind": 7,
+        "level": 13,
+        "spent": 39533
+      }
+    ]
+  },
+  {
+    "name": "tactical-return-two",
+    "style": "tactical",
+    "elapsed": 1800,
+    "initialRecord": 34,
+    "highest": 44,
+    "firstLoss": {
+      "wave": 37,
+      "at": 100.6
+    },
+    "firstPressure": {
+      "wave": 37,
+      "at": 88.525
+    },
+    "longestSafe": 2,
+    "maxNoRecordSeconds": 818.025,
+    "offline": 46182.668,
+    "farmPerMinute": 478.785,
+    "spent": 70928,
+    "gold": 282.748,
+    "research": {
+      "t": 0,
+      "wave": 34,
+      "cost": 5000
+    },
+    "emberLevels": [
+      {
+        "pad": "cell-10-7",
+        "kind": 7,
+        "level": 11,
+        "spent": 21636
+      },
+      {
+        "pad": "cell-12-5",
+        "kind": 7,
+        "level": 10,
+        "spent": 15792
+      }
+    ]
+  }
+]

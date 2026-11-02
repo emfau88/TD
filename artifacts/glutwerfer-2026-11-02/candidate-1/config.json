@@ -1,0 +1,8 @@
+{
+  "damage": 18,
+  "burnDps": 12,
+  "cooldown": 1.1,
+  "radius": 30,
+  "research": 5000,
+  "build": 220
+}

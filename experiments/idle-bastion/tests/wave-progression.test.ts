@@ -14,7 +14,7 @@ import {openBattleStore} from '../src/save-store';
 const fixture=JSON.parse(readFileSync(new URL('./fixtures/wave-progression-v17.json',import.meta.url),'utf8'));
 const baseline=JSON.parse(readFileSync(new URL('../../../artifacts/waves-26-50-study-2026-11-02/recipes.json',import.meta.url),'utf8')).control.rows;
 const current=BATTLE_RULES_VERSION;
-const promote=(s:object)=>({...s,schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:current});
+const promote=(s:any)=>({...s,settlement:{...s.settlement,emberResearched:false,emberResearchSeen:false},schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:current});
 const enemies=(wave:number,version:number)=>Array.from({length:waveCount(wave,version)},(_,i)=>waveEnemy(wave,i,version));
 function until(b:IdleBattle,done:()=>boolean){for(let i=0;i<16000&&!done();i++)b.update(.025);assert.ok(done());}
 

@@ -1,0 +1,8 @@
+/runs/
+/candidate-1/runs/
+/candidate-2/runs/
+/.repro*/
+/local-logs/
+/tests-*.txt
+/build-*.txt
+/browser/debug-*

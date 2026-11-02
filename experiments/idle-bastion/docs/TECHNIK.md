@@ -1,5 +1,19 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Glutwerfer — Regeln 19 / Schema 35, 02.11.2026
+
+Turm-ID 7 ist nach bewusster Forschung zugelassen; ID 6 bleibt Reserve. Schema 34
+wird unter Regeln 18 validiert, erhält `emberResearched/emberResearchSeen: false`
+und behält das Rezept des laufenden Versuchs. Alte Abreisebelege bleiben gültig.
+`Enemy.burn` enthält nur Quelle, eingefrorenes Trefferlevel und Restdauer. Ein
+stärkster Brand, Rüstung und genau eine Killvergütung; tiefe Kopie beim Speichern
+und Laden. Auch verkaufte Quellen bleiben nachvollziehbar. Automatischer Mara-
+Einsatz berücksichtigt den Bodenfilter; Ilyra übernimmt nur direkten Turm-DPS.
+Neue Farmnachweise simulieren denselben Brand ohne aktive Heldenfähigkeiten.
+Die Gesehen-Markierung wird über den vorhandenen atomaren Sessionbefehl gespeichert
+und gehört nicht zum Verteidigungsfingerabdruck. Kein eigener Offlinealgorithmus.
+[Messungen und Prüfungen](../../../artifacts/glutwerfer-2026-11-02/REPORT.md).
+
 ## Gemeinsame Tutorialführung und Pause — 28.10.2026
 
 `TutorialGuide` führt die vorhandenen Hinweis-Elemente nach deren Aktualisierung

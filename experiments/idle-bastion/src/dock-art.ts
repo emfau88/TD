@@ -14,7 +14,9 @@ export function drawDockArt(scene: Phaser.Scene): void {
       context.drawImage(frame.source.image as CanvasImageSource, frame.cutX, frame.cutY,
         frame.cutWidth, frame.cutHeight, x, y, width, height);
     };
-    if (canvas.dataset.icon === 'storm') {
+    if (canvas.dataset.icon === 'ember') {
+      draw(KEYS.emberTower,12,0,40,80);draw(towerSheet(7,1,'Weapon').key,12,7,40,40);
+    } else if (canvas.dataset.icon === 'storm') {
       draw(KEYS.stormTower,12,0,40,80);draw(towerSheet(5,1,'Weapon').key,2,-5,60,60);
     } else if (canvas.dataset.icon === 'mara') draw(KEYS.mara, -8, 0, 80, 80);
     else if (canvas.dataset.icon === 'ilyra') draw(KEYS.ilyra, -8, 0, 80, 80);

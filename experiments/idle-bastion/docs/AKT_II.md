@@ -17,6 +17,15 @@ bleiben außerhalb dieses Auftrags. Status und Freigabe ausschließlich in der R
 
 ## Bestand statt unnötiger Neuproduktion
 
+**Konkretisierung Glutwerfer vom 02.11.2026:** Auf direkten Nutzerauftrag unabhängig
+von der weiterhin geplanten Ostfront eingebunden. Werkstatt II, Frostfassung und
+gemeisterte W34; Forschung 5.000 Gold, separater Bau 220. 22 Trefferschaden,
+16 Brand/s für 3 s, 30 Bodenradius, 125 Reichweite, 0,95 s Abstand. Nur stärkster
+Brand, bestehende Levelkurve und drei Originalgrafikstufen. Dezenter Neu-/Besitzhinweis
+in der vorhandenen Werkstatt. [Preisvergleich und Grenzen](../../../artifacts/glutwerfer-2026-11-02/REPORT.md).
+Die früheren Reserveangaben unten beschreiben den Planungsstand; Sonnenobelisk
+und Schnellfeuer bleiben Reserve. Keine anderen Akt-II-Pakete daraus ableiten.
+
 | Quelle | Tatsächlich vorhanden | Konsequenz |
 | --- | --- | --- |
 | [Klassische Turmdaten](../../../reference/src/data.ts), [Kampflogik](../../../reference/src/simulation.ts) | Sturmlicht (05, Kette), Schnellfeuer (06), Glutwerfer (07, Brand), Sonnenobelisk (08, Fläche/Durchschlag) | Rollen und Algorithmen als Vorlage; alte Preise/Schadenswerte nicht ungeprüft nach Idle übernehmen |

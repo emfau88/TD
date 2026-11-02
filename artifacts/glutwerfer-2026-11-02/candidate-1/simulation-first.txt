@@ -1,0 +1,13 @@
+{"name":"relaxed-control60","highest":35,"loss":{"wave":15,"at":438.375},"pressure":{"wave":12,"at":245.175},"maxNoRecord":933.95,"emberLevels":[],"farm":327.349}
+{"name":"relaxed-ember60","highest":34,"loss":{"wave":15,"at":438.375},"pressure":{"wave":12,"at":245.175},"maxNoRecord":999.175,"researchAt":3412.025,"emberLevels":[{"pad":"cell-17-7","kind":7,"level":4,"spent":1050}],"farm":296.905}
+{"name":"relaxed-return-control","highest":42,"loss":{"wave":43,"at":434.275},"pressure":{"wave":36,"at":84.6},"maxNoRecord":1412.175,"emberLevels":[],"farm":313.04}
+{"name":"relaxed-return-ember","highest":40,"loss":{"wave":40,"at":290.8},"pressure":{"wave":36,"at":85.2},"maxNoRecord":905.3,"researchAt":0,"emberLevels":[{"pad":"cell-17-7","kind":7,"level":10,"spent":15792}],"farm":335.706}
+{"name":"mixed-control60","highest":35,"loss":{"wave":35,"at":995.75},"pressure":{"wave":29,"at":691.625},"maxNoRecord":1442.4,"emberLevels":[],"farm":334.058}
+{"name":"mixed-ember60","highest":35,"loss":{"wave":35,"at":995.75},"pressure":{"wave":29,"at":691.625},"maxNoRecord":1992.525,"researchAt":1742.025,"emberLevels":[{"pad":"cell-10-3","kind":7,"level":7,"spent":5470}],"farm":360.923}
+{"name":"mixed-return-control","highest":43,"loss":{"wave":41,"at":319.9},"pressure":{"wave":36,"at":81.25},"maxNoRecord":772.975,"emberLevels":[],"farm":405.991}
+{"name":"mixed-return-ember","highest":42,"loss":{"wave":40,"at":275.125},"pressure":{"wave":36,"at":76.575},"maxNoRecord":583.8,"researchAt":0,"emberLevels":[{"pad":"cell-10-3","kind":7,"level":9,"spent":11365}],"farm":383.937}
+{"name":"tactical-control60","highest":39,"loss":{"wave":35,"at":940.525},"pressure":{"wave":31,"at":738.325},"maxNoRecord":701.775,"emberLevels":[],"farm":426.171}
+{"name":"tactical-ember60","highest":36,"loss":{"wave":35,"at":940.525},"pressure":{"wave":31,"at":738.325},"maxNoRecord":1207.825,"researchAt":1547.025,"emberLevels":[{"pad":"cell-10-7","kind":7,"level":7,"spent":5470}],"farm":426.171}
+{"name":"tactical-return-control","highest":44,"loss":{"wave":44,"at":441.6},"pressure":{"wave":39,"at":158.75},"maxNoRecord":1151.8,"emberLevels":[],"farm":509.614}
+{"name":"tactical-return-ember","highest":44,"loss":{"wave":44,"at":450.525},"pressure":{"wave":39,"at":168.7},"maxNoRecord":878.775,"researchAt":0,"emberLevels":[{"pad":"cell-10-7","kind":7,"level":8,"spent":8011}],"farm":432.056}
+{"name":"tactical-return-two","highest":43,"loss":{"wave":44,"at":466.95},"pressure":{"wave":37,"at":95.825},"maxNoRecord":1403.675,"researchAt":0,"emberLevels":[{"pad":"cell-10-7","kind":7,"level":8,"spent":8011},{"pad":"cell-12-5","kind":7,"level":8,"spent":8011}],"farm":479.97}

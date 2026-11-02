@@ -8,6 +8,12 @@ Browser gespeichert. Der Spielstand und seine Farm-/Offline-Grundlage ändern si
 nicht. [Prüfbericht und Bildschirmansichten](../../artifacts/idle-bastion/acceptance/language/REPORT.md).
 [Normal spielen](https://emfau88.github.io/TD/) · [Frische Partie beginnen](https://emfau88.github.io/TD/?fresh=1). Die frische Partie erhält den bisherigen Hauptspielstand.
 
+**Glutwerfer:** Werkstatt II und gemeisterte Welle 34 machen die optionale Forschung
+für 5.000 Gold verfügbar; Turmbau separat 220 Gold. Eigener Feuerball, kleine
+Bodenfläche und nicht stapelbarer Brand. Ein dezentes „Neu“ macht auf die neue
+Forschung aufmerksam, bis sie angesehen wurde. [Messungen und Prüfgrenzen](../../artifacts/glutwerfer-2026-11-02/REPORT.md).
+Veröffentlichungsstand und menschliche Abnahme ausschließlich in der Roadmap.
+
 **B16 · Sturmlicht veröffentlicht:** Tower 05 mit drei Originalstufen, bis zu drei
 Kettenzielen, Werkstattforschung nach Welle 28/Ilyra (900 Gold) und separatem Bau
 (170 Gold). Am 23.10.2026 visuell freigegeben und als `922aff6` auf main/Pages übernommen.

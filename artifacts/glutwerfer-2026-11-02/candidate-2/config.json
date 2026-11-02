@@ -1,0 +1,9 @@
+{
+  "damage": 22,
+  "burnDps": 16,
+  "cooldown": 0.95,
+  "radius": 30,
+  "research": 5000,
+  "build": 220,
+  "controller": "initial placement; area weight 3"
+}

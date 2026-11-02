@@ -1,6 +1,15 @@
 /** Measured original atlas metadata, copied from public/assets/manifest.json. */
 import type Phaser from 'phaser';
 export const TOWER_SHEETS = {
+  '7-1-Weapon': { ...{"width": 64, "height": 64, "frameMap": [0, 1, 2, 3, 4, 5], "tags": []}, key: 'idle-atlas-7-1-Weapon', url: new URL('../../../public/assets/Tower 07 - Level 01 - Weapon.png', import.meta.url).href },
+  '7-1-Projectile': { ...{"width": 32, "height": 32, "frameMap": [0, 1, 2, 3, 4, 5, 6, 7], "tags": []}, key: 'idle-atlas-7-1-Projectile', url: new URL('../../../public/assets/Tower 07 - Level X - Projectile.png', import.meta.url).href },
+  '7-1-Projectile - Impact': { ...{"width": 64, "height": 64, "frameMap": [0, 1, 2, 3, 4, 5, 6, 7, 8], "tags": []}, key: 'idle-atlas-7-1-Projectile - Impact', url: new URL('../../../public/assets/Tower 07 - Level X - Projectile - Impact.png', import.meta.url).href },
+  '7-2-Weapon': { ...{"width": 64, "height": 64, "frameMap": [0, 1, 2, 3, 4, 5, 6], "tags": []}, key: 'idle-atlas-7-2-Weapon', url: new URL('../../../public/assets/Tower 07 - Level 02 - Weapon.png', import.meta.url).href },
+  '7-2-Projectile': { ...{"width": 32, "height": 32, "frameMap": [0, 1, 2, 3, 4, 5, 6, 7], "tags": []}, key: 'idle-atlas-7-2-Projectile', url: new URL('../../../public/assets/Tower 07 - Level X - Projectile.png', import.meta.url).href },
+  '7-2-Projectile - Impact': { ...{"width": 64, "height": 64, "frameMap": [0, 1, 2, 3, 4, 5, 6, 7, 8], "tags": []}, key: 'idle-atlas-7-2-Projectile - Impact', url: new URL('../../../public/assets/Tower 07 - Level X - Projectile - Impact.png', import.meta.url).href },
+  '7-3-Weapon': { ...{"width": 64, "height": 64, "frameMap": [0, 1, 2, 3, 4, 5, 6, 7, 8], "tags": []}, key: 'idle-atlas-7-3-Weapon', url: new URL('../../../public/assets/Tower 07 - Level 03 - Weapon.png', import.meta.url).href },
+  '7-3-Projectile': { ...{"width": 32, "height": 32, "frameMap": [0, 1, 2, 3, 4, 5, 6, 7], "tags": []}, key: 'idle-atlas-7-3-Projectile', url: new URL('../../../public/assets/Tower 07 - Level X - Projectile.png', import.meta.url).href },
+  '7-3-Projectile - Impact': { ...{"width": 64, "height": 64, "frameMap": [0, 1, 2, 3, 4, 5, 6, 7, 8], "tags": []}, key: 'idle-atlas-7-3-Projectile - Impact', url: new URL('../../../public/assets/Tower 07 - Level X - Projectile - Impact.png', import.meta.url).href },
   '1-1-Weapon': { ...{"width": 96, "height": 96, "frameMap": [0, 1, 2, 3, 4, 5], "tags": []}, key: 'idle-atlas-1-1-Weapon', url: new URL('../../../public/assets/Tower 01 - Level 01 - Weapon.png', import.meta.url).href },
   '1-1-Projectile': { ...{"width": 8, "height": 40, "frameMap": [0, 1, 2], "tags": []}, key: 'idle-atlas-1-1-Projectile', url: new URL('../../../public/assets/Tower 01 - Level 01 - Projectile.png', import.meta.url).href },
   '1-1-Projectile - Impact': { ...{"width": 64, "height": 64, "frameMap": [0, 1, 2, 3, 4, 5], "tags": []}, key: 'idle-atlas-1-1-Projectile - Impact', url: new URL('../../../public/assets/Tower 01 - Weapon - Impact.png', import.meta.url).href },

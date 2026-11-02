@@ -2,6 +2,21 @@
  * Keep placeholders and game values intact; never use these strings as simulation IDs. */
 import { startupEnglish } from './startup';
 export const english: Readonly<Record<string, string>> = {
+  "Glutwerfer": "Ember Thrower",
+  "Glutwerfer auswählen": "Select Ember Thrower",
+  "Glutwerfer bauen · 220 Gold": "Build Ember Thrower · 220 gold",
+  "Glutwerfer erforschen": "Research Ember Thrower",
+  "Glutwerfer erforschen · {0} Gold": "Research Ember Thrower · {0} gold",
+  "Noch {0} Gold bis zur Glutwerfer-Forschung.": "{0} more gold needed for Ember Thrower research.",
+  "Brand · nur Bodengegner": "Burn · ground enemies only",
+  "Werkstatt II · Welle 34": "Workshop II · wave 34",
+  "Trefferschaden": "Impact damage",
+  "Brand pro Sekunde": "Burn per second",
+  "Nur Boden · Brand für {0} s · Radius {1} · stärkster Brand zählt": "Ground only · {0} s burn · radius {1} · strongest burn applies",
+  "✓ Glutwerfer: kleine Bodenfläche und Brand für {0} s. Nur der stärkste Brand zählt. Turmbau separat: {1} Gold.": "✓ Ember Thrower: small ground area and a {0} s burn. Only the strongest burn applies. Tower construction costs {1} gold separately.",
+  "Glutwerfer: Werkstatt II und gemeisterte Welle {0} nötig. Forschung {1} Gold; Turmbau separat {2} Gold. Trifft nur Bodengegner und verursacht Brand.": "Ember Thrower: requires Workshop II and wave {0} cleared. Research costs {1} gold; tower construction costs {2} gold separately. Hits ground enemies only and applies a burn.",
+  "Glutwerfer erforscht! Der Turmbau ist jetzt im Baukatalog verfügbar.": "Ember Thrower researched! You can now build it from the tower catalog.",
+  "Siedlung · Neue Forschung: Glutwerfer": "Settlement · New research: Ember Thrower",
   "· Neue Geschichte erleben": "· Experience a new story",
   "Herzen antippen: persönliche Momente erleben.": "Tap the hearts to share personal moments.",
   "Moment": "Story",

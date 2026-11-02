@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: ember research is a deliberate once-only payment after W34 and Workshop II; new marker does not require money
+ok 1 - ember research is a deliberate once-only payment after W34 and Workshop II; new marker does not require money
+  ---
+  duration_ms: 139.9152
+  type: 'test'
+  ...
+# Subtest: ember area and targeting exclude flyers; armor affects direct hits and the one ongoing burn
+ok 2 - ember area and targeting exclude flyers; armor affects direct hits and the one ongoing burn
+  ---
+  duration_ms: 8.1839
+  type: 'test'
+  ...
+# Subtest: weaker burns neither stack nor refresh a stronger source; equal and stronger hits renew it
+ok 3 - weaker burns neither stack nor refresh a stronger source; equal and stronger hits renew it
+  ---
+  duration_ms: 3.6991
+  type: 'test'
+  ...
+# Subtest: burn kills pay once, retain attribution after sale and never pay for an already dead enemy
+ok 4 - burn kills pay once, retain attribution after sale and never pay for an already dead enemy
+  ---
+  duration_ms: 4.2251
+  type: 'test'
+  ...
+# Subtest: real burn and shot preserve fired level across upgrade, sale and exact reload; forged sources and levels fail
+ok 5 - real burn and shot preserve fired level across upgrade, sale and exact reload; forged sources and levels fail
+  ---
+  duration_ms: 59.447
+  type: 'test'
+  ...
+# Subtest: original ember artwork has complete weapons, shared fireball and impact; W1â€“250 recipes stay identical
+ok 6 - original ember artwork has complete weapons, shared fireball and impact; W1â€“250 recipes stay identical
+  ---
+  duration_ms: 35.5724
+  type: 'test'
+  ...
+# Subtest: ember purchases and seen status are atomic on native save failure and persist once on success
+ok 7 - ember purchases and seen status are atomic on native save failure and persist once on success
+  ---
+  duration_ms: 979.8826
+  type: 'test'
+  ...
+# Subtest: ember farms are proven with saved burns and no active heroes, without changing the source battle
+ok 8 - ember farms are proven with saved burns and no active heroes, without changing the source battle
+  ---
+  duration_ms: 116.4383
+  type: 'test'
+  ...
+# Subtest: Mara does not spend automatic overclock on flyers that her ember tower cannot attack
+ok 9 - Mara does not spend automatic overclock on flyers that her ember tower cannot attack
+  ---
+  duration_ms: 3.2292
+  type: 'test'
+  ...
+# Subtest: Ilyra can retain an ember source through sale and reload without multiplying its burn into her volley
+ok 10 - Ilyra can retain an ember source through sale and reload without multiplying its burn into her volley
+  ---
+  duration_ms: 54.6285
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2417.1121

@@ -63,7 +63,7 @@ test('a genuine v24 live queue, healed targets, timer, projectiles, wallet and a
   const s=b.snapshot();assert.equal(s.schemaVersion,BATTLE_SCHEMA_VERSION);assert.equal(s.rulesVersion,BATTLE_RULES_VERSION);assert.equal(s.waveRecipeVersion,10);
   for(const key of ['queue','enemies','shots','towers','spawnTimer','gold','goldRemainderUnits','rewardRemainderUnits','earned','mara','ilyra','elapsed','bossCharm'] as const)assert.deepEqual(s[key],old[key],key);
   assert.deepEqual(s.social,expectedCombatSocial(old));
-  assert.deepEqual(s.settlement,{...old.settlement,stormResearched:false});
+  assert.deepEqual(s.settlement,{...old.settlement,stormResearched:false,emberResearched:false,emberResearchSeen:false});
   assert.deepEqual(s.liveClearedWaves,[]);assert.equal(s.farmWave,1);
   const bad=structuredClone(old);bad.queue[0]=bad.queue[0]==='Leafbug'?'Firebug':'Leafbug';assert.equal(IdleBattle.restore(bad),undefined);
   const badHp=structuredClone(old);badHp.enemies[0].maxHp+=1;assert.equal(IdleBattle.restore(badHp),undefined);

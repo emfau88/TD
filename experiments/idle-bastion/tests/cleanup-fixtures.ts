@@ -19,7 +19,7 @@ export function expectedCombatSocial(old: any) {
 export function expectedCombatMigration(old: any) {
   return { ...old, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION,
     tutorialFrostUid: old.tutorialFrostUid ?? null,
-    settlement: { ...old.settlement, stormResearched: old.settlement.stormResearched ?? false },
+    settlement: { ...old.settlement, stormResearched: old.settlement.stormResearched ?? false, emberResearched: false, emberResearchSeen: false },
     social: expectedCombatSocial(old) };
 }
 export function checkOldContinuation(fixture: any) {

@@ -85,7 +85,7 @@ test('real v14 veteran and its historical offline basis survive the schema-only 
  assertHistoricalFields(current,{...old.battle,schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:BATTLE_RULES_VERSION});
  assert.equal(current.discovery,'off');assert.equal(current.dismissedDefeatAttempt,0);assert.equal(current.ilyra,null);
  assert.deepEqual(current.settlement,{...old.battle.settlement,tavernBuilt:false,tavernBuiltAt:null,
-  tavernSeen:false,tavernLevel:0,stormResearched:false});
+  tavernSeen:false,tavernLevel:0,stormResearched:false,emberResearched:false,emberResearchSeen:false});
  assert.deepEqual(current.social,{points:{mara:0,ilyra:0},gifts:2,
   claimed:{opening:false,boss15:true,boss25:true,ilyraWelcome:false},lastClearAttempt:0,
   reserves:{mara:null,ilyra:null},personal:{mara:{clears:0,claimed:false},ilyra:{clears:0,claimed:false}},clearProgress:0});

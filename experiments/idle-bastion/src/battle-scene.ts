@@ -51,7 +51,7 @@ export interface BattleSceneHooks {
 }
 const colors = { gold: 0xd9bd79, text: '#eae5ce', muted: '#91a58e', panel: '#183424' };
 type TowerView = { base: Phaser.GameObjects.Image; weapon: Phaser.GameObjects.Image };
-type EnemyView = { sprite: Phaser.GameObjects.Image; shadow: Phaser.GameObjects.Ellipse };
+type EnemyView = { sprite: Phaser.GameObjects.Image; shadow: Phaser.GameObjects.Ellipse; burn?: Phaser.GameObjects.Image };
 
 /** B05 uses original measured artwork. Simulation time selects every frame;
  * Phaser animations, tweens and drawing never change combat or grant rewards.
@@ -736,11 +736,11 @@ export class BattleScene extends Phaser.Scene {
       if (view.weapon.texture.key !== weaponKey) view.weapon.setTexture(weaponKey);
       view.base.setFrame(tower.visualStage - 1).setOrigin(0.5, mount.originY);
       view.base.setPosition(tower.x + tremble * 0.6, tower.y + mount.baseY).setRotation(wobble * 0.4).setTint(tint);
-      view.weapon.setPosition(tower.x + tremble, tower.y + mount.weaponY).setFrame(Math.max(0, frame)).setRotation((tower.def.id === 2 ? 0 : tower.angle) + wobble).setTint(tint);
+      view.weapon.setPosition(tower.x + tremble, tower.y + mount.weaponY).setFrame(Math.max(0, frame)).setRotation((tower.def.id === 2 || tower.def.id === 7 ? 0 : tower.angle) + wobble).setTint(tint);
     }
     this.maraSpell.update(sim, this.towerViews);
     const enemies = new Set(sim.enemies.map(enemy => enemy.uid));
-    for (const [uid, view] of this.enemyViews) if (!enemies.has(uid)) { view.sprite.destroy(); view.shadow.destroy(); this.enemyViews.delete(uid); }
+    for (const [uid, view] of this.enemyViews) if (!enemies.has(uid)) { view.sprite.destroy(); view.shadow.destroy(); view.burn?.destroy(); this.enemyViews.delete(uid); }
     for (const enemy of sim.enemies) {
       const view = this.enemyView(enemy);
       const lift = enemy.def.flying ? 7 + Math.sin(elapsed * 5 + enemy.uid) * 1.5 : 0;
@@ -760,7 +760,13 @@ export class BattleScene extends Phaser.Scene {
         this.effects.lineStyle(2, 0x9aefb3, alpha).strokeEllipse(enemy.x, enemy.y + 6, 24 + age * 35, 10 + age * 14);
         this.effects.fillStyle(0xbbffd2, alpha).fillRect(enemy.x - 1, enemy.y - 30 - age * 20, 3, 9).fillRect(enemy.x - 4, enemy.y - 27 - age * 20, 9, 3);
       }
-      view.sprite.setTint(enemy.slowRemaining > 0 ? 0x83ddff : 0xffffff);
+      view.sprite.setTint(enemy.slowRemaining > 0 ? 0x83ddff : enemy.burn ? 0xffbd80 : 0xffffff);
+      if (enemy.burn) {
+        const flame = towerSheet(7,1,'Projectile');
+        if (!view.burn) view.burn=this.add.image(0,0,flame.key,0).setScale(.45);
+        view.burn.setVisible(true).setPosition(enemy.x+18,enemy.y-15).setDepth(enemy.y+1001)
+          .setFrame(flame.frameMap[loopFrame(elapsed,flame.frameMap.length)]);
+      } else view.burn?.setVisible(false);
       if (enemy.slowRemaining > 0) this.effects.lineStyle(1.5, 0x96e8fa, 0.75).strokeEllipse(enemy.x, enemy.y + 7, 26, 10);
       view.shadow.setPosition(enemy.x, enemy.y + enemyShadowOffset(enemy.def.id)).setDepth(enemy.y + 999);
       if (enemy.hp < enemy.maxHp || enemy.def.id === 'Rosenspiegel') {
