@@ -1,7 +1,7 @@
 import { legacyFixtures, restoreHistorical, assertHistoricalFields } from './legacy-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { BASE, BATTLE_RULES_VERSION, IdleBattle } from '../src/battle';
+import { BASE, BATTLE_RULES_VERSION, IdleBattle, stats } from '../src/battle';
 import { certifyFarm, defenseFingerprint, isFarmCertificateValid } from '../src/farming';
 import { getForestBlockedCells } from '../src/forest-world';
 import { cellCenter, createIdleLayout, getTowerApproachCells, isWalkableCell, type WorldPoint } from '../src/layout';
@@ -54,6 +54,20 @@ test('overclock reduces the existing firing cooldown at 1.5× and does not reset
   assert.ok(boosted.shots.every(shot=>existing.has(shot.uid)),'no new shot before the remaining cooldown');
   until(boosted, () => boosted.shots.some(shot=>!existing.has(shot.uid)));
   assert.equal(boosted.shots.find(shot=>!existing.has(shot.uid))!.damage, BASE.tower.damage);
+});
+
+test('battle auto-overclock requires a live enemy inside the assigned tower range, not merely a finished cooldown',()=>{
+  for(const situation of ['empty','outside','dead','inside','charmed'] as const){
+    const b=started(),target=b.towers.find(t=>t.uid===b.mara.targetTowerUid)!,enemy=b.enemies[0];
+    b.mara.cooldownRemaining=0;b.mara.effectRemaining=0;b.mara.effectTowerUid=null;b.mara.autoCast=true;
+    b.enemies=situation==='empty'?[]:[enemy];
+    enemy.x=target.x+(situation==='outside'?stats(target).range+1:0);enemy.y=target.y;
+    if(situation==='dead')enemy.hp=0;
+    if(situation==='charmed')b.bossCharm={phase:'channel',targetUid:target.uid,remaining:1,cooldown:0};
+    b.update(BASE.stepSeconds);
+    assert.equal(b.mara.effectRemaining,situation==='inside'?MARA.duration:0,situation);
+    assert.equal(b.mara.cooldownRemaining,situation==='inside'?MARA.cooldown:0,situation);
+  }
 });
 
 test('independent movement walks at 80px/s; reassignment retains the old remote buff and cooldown', () => {

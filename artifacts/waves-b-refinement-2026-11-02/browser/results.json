@@ -1,0 +1,26 @@
+[
+  {
+    "kind": "current",
+    "width": 1440,
+    "lang": "de",
+    "wave": 35,
+    "recipe": 18,
+    "gold": 38603.797,
+    "seconds": 5.0499999999999545,
+    "exactCombatReload": true,
+    "autoButtonsAndReload": true,
+    "errors": []
+  },
+  {
+    "kind": "legacy",
+    "width": 390,
+    "lang": "en",
+    "wave": 31,
+    "recipe": 17,
+    "gold": 42123.095,
+    "seconds": 5.050000000000068,
+    "exactCombatReload": true,
+    "autoButtonsAndReload": false,
+    "errors": []
+  }
+]

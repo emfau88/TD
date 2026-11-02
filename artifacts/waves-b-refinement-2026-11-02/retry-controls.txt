@@ -1,0 +1,8 @@
+{"variant":"control","style":"relaxed","retry":"never","wave":36,"earned":3439.37}
+{"variant":"control","style":"relaxed","retry":"immediate","wave":36,"earned":5478}
+{"variant":"control","style":"tactical","retry":"never","wave":40,"earned":4524.52}
+{"variant":"control","style":"tactical","retry":"immediate","wave":40,"earned":4691.5}
+{"variant":"B","style":"relaxed","retry":"never","wave":34,"earned":2915}
+{"variant":"B","style":"relaxed","retry":"immediate","wave":34,"earned":3480.4}
+{"variant":"B","style":"tactical","retry":"never","wave":35,"earned":3783.45}
+{"variant":"B","style":"tactical","retry":"immediate","wave":35,"earned":4461.6}

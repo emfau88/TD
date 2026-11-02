@@ -40,8 +40,11 @@ test('raw restore re-proves saved farm 29 even without a departure certificate, 
  const invalid={...proof,wave:999,fingerprint:'untrusted-old-proof'};
  assert.equal(certifyFarm(b,invalid)?.wave,29);assert.deepEqual(b.snapshot(),before);
 });
-test('entry fallback recovers safe recent wave 38; harmful sales still invalidate higher farm proofs',()=>{
- const b=IdleBattle.restore({...seed,farmWave:1})!,proof=certifyFarm(b);assert.ok(proof);assert.equal(proof.wave,38);assert.ok(isFarmCertificateValid(proof,b));
+test('entry fallback rejects newly unsafe late waves; safe known candidates recover and harmful sales invalidate proofs',()=>{
+ const b=IdleBattle.restore({...seed,farmWave:1})!,proof=certifyFarm(b);assert.ok(proof);assert.equal(proof.wave,1);assert.ok(isFarmCertificateValid(proof,b));
+ // The old W38 defense is no longer safe under rules 18. A genuinely safe
+ // recent candidate still recovers; the bounded search is not an exhaustive scan.
+ b.liveClearedWaves=[1,28,29,30];const recovered=certifyFarm(b);assert.ok(recovered);assert.equal(recovered.wave,29);assert.ok(isFarmCertificateValid(recovered,b));
  const c=IdleBattle.restore(seed)!,previous=certifyFarm(c)!;for(const t of [...c.towers])if(!t.protected)c.sell(t.uid);
  assert.equal(isFarmCertificateValid(previous,c),false);const safe=certifyFarm(c,previous);assert.ok(safe);assert.equal(safe.wave,1);assert.ok(isFarmCertificateValid(safe,c));
 });

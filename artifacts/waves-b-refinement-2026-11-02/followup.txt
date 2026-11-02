@@ -1,0 +1,10 @@
+{"name":"relaxed-w30-24h","highest":42,"leak":{"wave":35,"at":168.225},"pressure":{"wave":35,"at":177.55},"loss":{"wave":41,"at":470.525},"maxNoRecord":1044.375,"offline":36288.324}
+{"name":"relaxed-retry-never","highest":33,"maxNoRecord":600}
+{"name":"relaxed-retry-immediate","highest":33,"leak":{"wave":34,"at":29.425},"pressure":{"wave":34,"at":32.65},"loss":{"wave":34,"at":44.7},"maxNoRecord":600}
+{"name":"mixed-w30-24h","highest":43,"leak":{"wave":37,"at":207.9},"pressure":{"wave":37,"at":211.3},"loss":{"wave":41,"at":413.15},"maxNoRecord":1067.85,"offline":38603.797}
+{"name":"mixed-retry-never","highest":33,"maxNoRecord":600}
+{"name":"mixed-retry-immediate","highest":33,"leak":{"wave":34,"at":29.725},"pressure":{"wave":34,"at":33.125},"loss":{"wave":34,"at":45.65},"maxNoRecord":600}
+{"name":"mixed-adapt60","highest":39,"leak":{"wave":28,"at":654.225},"pressure":{"wave":29,"at":691.625},"loss":{"wave":34,"at":947.325},"maxNoRecord":1026.925}
+{"name":"tactical-w30-24h","highest":44,"leak":{"wave":39,"at":259.725},"pressure":{"wave":39,"at":265.05},"loss":{"wave":44,"at":547.95},"maxNoRecord":663.85,"offline":41333.217}
+{"name":"tactical-retry-never","highest":34,"maxNoRecord":600}
+{"name":"tactical-retry-immediate","highest":34,"leak":{"wave":35,"at":30.375},"pressure":{"wave":35,"at":35.125},"loss":{"wave":35,"at":49.725},"maxNoRecord":600}

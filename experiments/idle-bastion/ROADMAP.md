@@ -1,11 +1,21 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**W26–50 · B-Nachschliff, 02.11.2026 — umgesetzt und geprüft; bedingte Main-Veröffentlichung ausdrücklich beauftragt.**
+
+- [x] Nach gemeinsamer Auswahl B als Grundlage integriert, eigener Regelstand 18 / Schema 34. Die erste Ergänzung in vier Wellen verworfen; endgültig nur zwei zusätzliche bekannte Leerenfalter in W35/38 innerhalb des geglätteten Gruppenbudgets. W1–25, Türme, Preise, Gegnergrundwerte, Spawnzeiten, Offline-/Wiederholungsregeln und Kernleben unverändert. Normale Fortsetzung über W50 ohne Kurvenreset; keine neuen Inhalte.
+- [x] 38 isolierte Nachschliff-Läufe, acht zusätzliche Wiederholungsproben, 19 exakt reproduzierende Integrationsläufe und 15 Migrationen tatsächlich erspielter Altzustände geprüft. Alle W26–50 durchkämpft; 250 Rezepte verglichen. Verbesserungen und verbleibende Grenzen im [Prüfbericht](../../artifacts/waves-b-refinement-2026-11-02/REPORT.md).
+- [x] Abschließend 466/466 vollständige Tests und Produktionsbuild bestanden; nach Zusatzauftrag zwei gezielte Heldentests ergänzt, 19/19 Mara-/Ilyra-Tests bestanden. Desktop-/Mobilbrowser bestätigen neue und alte laufende Rezepte, genaue 24-h-Ansprüche, einmaligen Claim, Pause und Reload. Veröffentlichung wird im Bericht nachgewiesen.
+- [x] Zusatzprüfung: Mara wartet automatisch auf lebende Gegner in Reichweite ihres Zielturms. Ilyras einschaltbare Automatik wartet auf Gruppen, Flieger oder Boss in Zauberreichweite. Leere Ziele verbrauchen keine automatische Aktivierung; keine Fähigkeitenänderung notwendig.
+- [ ] Menschliche Spielgefühl-Abnahme bleibt offen. Niederlagen und Farmphasen sind gewollt; keine garantierte Bestwelle pro Sitzung. Nutzer autorisiert Commit/Push auf Main nur bei belegter Verbesserung und eingehaltenem Umfang; diese Bedingungen werden im Bericht bewertet.
+- [ ] **Spätere Designfrage, nur vorgemerkt:** Kernleben werden derzeit zu Beginn jeder Welle und nach Niederlage auf 20 gesetzt. Nutzer möchte prüfen, ob ein Übertrag von Schaden sinnvoll wäre. Erst zusammen mit fairer Erholung und Folgen für lange Idle-/Farmphasen untersuchen; keine HP-/Regenerationsänderung beauftragt.
+- [x] Name erneut festgehalten: **Towers & Tantrums**. Bestandsprüfung weiterer Türme/Monster und Gebäudevorschläge beauftragt, ausschließlich Analyse. [Bestand, Reihenfolge und Aufwand](../../artifacts/waves-b-refinement-2026-11-02/FOLLOWUP_OPTIONS.md). Keine Glutwerfer-/Gebäude-/Gegnerintegration aus diesem Auftrag ableiten.
+
 **W26–50 · 02.11.2026 — Schritte 1–5 abgeschlossen; gemeinsame Entscheidung in Schritt 6 offen.**
 
 - [x] Gold-/Textstand `d412048` nach Main übernommen, Pages `41473447230` erfolgreich; öffentliche Desktop-/Mobilfassung mit neuem und altem Offline-Anspruch, Claim/Reload, Pause/Fortsetzung und frischem Einstieg geprüft. 460/460 Tests und Produktionsbuild bestanden. [Release-Nachweis](../../artifacts/idle-bastion/acceptance/progression-economy-2026-11-02/MAIN_INTEGRATION.md).
 - [x] Vergleichsbasis, Kandidaten und Kriterien vor den Messungen dokumentiert und per Prüfsumme eingefroren. Neuere Nutzerpräzisierung gilt: W1–25 unverändert, Schwerpunkt W26–50. Kontrollstand, begrenzte HP-Rampe A und geglättete Kurve mit kleinen Gruppenänderungen B ausschließlich isoliert simuliert.
 - [x] 51 Läufe und 72 Abwesenheitsabrechnungen einschließlich drei Spielweisen, neu erspielter W20-/W30-Zustände, identischer W30-Vergleichsverteidigungen, Erholung, Aufbauanpassung und vier Tageszyklen geprüft. W1–25 samt Zuständen und Käufen exakt gleich; alle W26–50 tatsächlich durchkämpft, 111 Hauptspielquellen unverändert. [Auswertung, Pro/Contra und Entscheidungsvorlage](../../artifacts/waves-26-50-study-2026-11-02/REPORT.md).
-- [ ] Schritt 6 gemeinsam entscheiden: A nicht empfohlen; B bessere Grundlage, aber taktische W20-Rückkehr weiter lange überlegen und in einer gemischten Fehlversuchsprobe 22 % Mehrertrag gegenüber sicherem Farmen. Keine Auswahl, Wellenintegration oder visuelle Freigabe vorweggenommen. Gezielter Nachschliff ist nur Empfehlung.
+- [x] Schritt 6 anschließend entschieden: Nutzer hat B als Grundlage und den begrenzten Nachschliff ausdrücklich beauftragt. Umsetzung/Nachweise im aktuellen Eintrag oben; die damalige Entscheidungsvorlage bleibt als historische Messung erhalten.
 
 **Progressionswirtschaft · 02.11.2026 — veröffentlicht als `d412048`.**
 

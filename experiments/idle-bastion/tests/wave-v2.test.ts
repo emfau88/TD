@@ -92,7 +92,10 @@ test('old farm evidence cannot certify new waves; historical offline receipts re
   const earned=IdleBattle.restore(read('wave-rework-v2/baseline-v11/earned-balanced-late.json'))!;
   const previous=read('wave-rework-v2/baseline-v11/played-balanced.json').farm;
   assert.equal(isFarmCertificateValid(previous,earned),false);
-  const before=earned.snapshot(),fresh=certifyFarm(earned,previous);assert.ok(fresh&&fresh.wave>1);
+  const before=earned.snapshot(),fresh=certifyFarm(earned,previous);assert.ok(fresh);
+  // This old paid defense cannot certify its late candidates under rules 18;
+  // the only proven fallback is W1, never the obsolete historical rate.
+  assert.equal(fresh.wave,1);
   assert.equal(fresh.rulesVersion,BATTLE_RULES_VERSION);assert.equal(isFarmCertificateValid(fresh,earned),true);assert.deepEqual(earned.snapshot(),before);
   const factory=new IDBFactory(),name='w02-schema25';let store=await openBattleStore(factory,name,()=>31000);store.close();
   const offline=reserveOffline(beginAbsence(createOfflineState(1000),1000,legacyProof,false,LEGACY_OFFLINE),31000);

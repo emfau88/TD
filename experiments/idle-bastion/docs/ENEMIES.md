@@ -1,5 +1,20 @@
 # Vorhandene Gegner im Idle-Spiel
 
+## W26–50 · Regeln 18, 02.11.2026
+
+Aktueller Name: **Towers & Tantrums**. Der begrenzte B-Nachschliff normalisiert
+ab W26 den nominalen Gruppendruck gegen eine feste W26–30-Referenz und ergänzt
+eine bis W35 auslaufende Rampe. Die bestehende späte Grundsteigerung setzt sich
+über W50 fort. Das ist keine Anpassung an den individuellen Spieler.
+W35/38 erhalten zusätzlich jeweils zwei bekannte Leerenfalter, ersetzt aus der
+leichten Begleitung. Meist zwei, höchstens drei Arten; Anzahl, Spawnzeiten,
+Heiler und Einführungen bleiben erhalten. Das Basisgold der ganzen Welle bleibt
+gleich; Abschuss-/Abschlussanteile gleichen die Zusammensetzung aus.
+W1–25, Turmwerte und Gegnergrundwerte sind unverändert. Historische Regeln bis
+17 liegen in `wave-recipes-v17.ts`; alte laufende Kämpfe werden erst an der
+Versuchsgrenze auf neue Regeln umgestellt. [Messung und Grenzen](../../../artifacts/waves-b-refinement-2026-11-02/REPORT.md).
+Die folgenden Versionsstände dokumentieren frühere Erweiterungen.
+
 ## Aktueller Zusatz E01 · lokale Pakete, 23.10.2026
 
 Schema **28**, Kampfregeln **14**, sechzehn normale Arten plus vorhandene Bossfigur.

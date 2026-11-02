@@ -33,7 +33,9 @@ function measured(battle: IdleBattle, previous?: FarmCertificate) {
 const rate = (proof: FarmCertificate) => farmRewardGold(proof) * 60000 / proof.durationMs;
 
 test('paid defenses at 40/50/60/70 improve or retain income, with at most four genuine two-clear probes and no live mutation', () => {
-  const expected = { control: [31, 36, 41, 46], 'one-storm': [26, 26, 43, 48], 'two-storms': [26, 26, 43, 48] };
+  // These historical paid defenses must re-prove the harder current waves.
+  // A formerly safe W31/W43 is no longer presumed safe from its old result.
+  const expected = { control: [23, 36, 41, 46], 'one-storm': [26, 26, 26, 48], 'two-storms': [26, 26, 26, 48] };
   for (const [strategy, selected] of Object.entries(expected)) for (const [index, wave] of [40, 50, 60, 70].entries()) {
     const b = paid(strategy, wave), old = prior(b), before = b.snapshot(), events = structuredClone(b.events);
     for (const previous of [undefined, old]) {
@@ -56,7 +58,11 @@ test('sparse history picks an actually cleared midpoint, breaks ties downwards a
   for (const w of [1, 23, 31, 32, 40]) assert.ok(b.liveClearedWaves.includes(w));
   b.liveClearedWaves = [1, 23, 31, 32, 40];
   const result = measured(b, old);
-  assert.equal(result.proof?.wave, 31); assert.ok(result.probes.some(p => p.wave === 31));
+  assert.equal(result.proof?.wave, 23); assert.ok(result.probes.some(p => p.wave === 31));
+  const midpoint=result.probes.find(p => p.wave === 31)!;
+  assert.equal(midpoint.clears,2);assert.equal(midpoint.lives,BASE.coreLives);
+  const isolated=IdleBattle.restore({...b.snapshot(),liveClearedWaves:[1,31],farmWave:31})!;
+  const slower=certifyFarm(isolated)!;assert.equal(slower.wave,31);assert.ok(rate(old)>rate(slower));
   assert.ok(!result.probes.some(p => p.wave === 32));
   b.liveClearedWaves = [1, 23, 32, 40];
   assert.ok(measured(b, old).probes.some(p => p.wave === 32));

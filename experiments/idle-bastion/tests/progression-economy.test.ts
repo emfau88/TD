@@ -91,9 +91,9 @@ test('real schema 32 in-flight replay preserves every field and old reward until
   assert.deepEqual(b.snapshot(),promote(legacy.after));assert.equal(units(b)-before,29700);
   assert.deepEqual(IdleBattle.restore(b.snapshot())!.snapshot(),b.snapshot());
   const attempt=b.attemptId;until(b,()=>b.attemptId>attempt);
-  assert.equal(b.waveRecipeVersion,17);
+  assert.equal(b.waveRecipeVersion,BATTLE_RULES_VERSION);
   assert.equal(isFarmCertificateValid(legacy.proof,b),false);
-  const proof=certifyFarm(b,legacy.proof)!;assert.ok(proof);assert.equal(proof.rulesVersion,17);
+  const proof=certifyFarm(b,legacy.proof)!;assert.ok(proof);assert.equal(proof.rulesVersion,BATTLE_RULES_VERSION);
   assert.equal(proof.wave,legacy.proof.wave);assert.equal(proof.durationMs,legacy.proof.durationMs);
   assert.equal(farmRewardUnits(proof)*10n,farmRewardUnits(legacy.proof));
 });
@@ -125,7 +125,7 @@ test('native session preserves old 60/65% active baselines and pending claims ex
     assert.equal(session.battle.elapsed,old.elapsed);assert.equal(session.battle.wave,old.wave);
     assert.equal(await session.resumeActive(),true);
     assert.equal(session.offline.baseline.efficiencyPermille,policy===LEGACY_OFFLINE?240:260);
-    assert.equal(session.offline.baseline.certificate!.rulesVersion,17);
+    assert.equal(session.offline.baseline.certificate!.rulesVersion,BATTLE_RULES_VERSION);
     await session.close();
   }
 });

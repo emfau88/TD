@@ -93,6 +93,25 @@ test('air damage is 50 percent higher, scaling ignores Mara, and empty waves nev
  assert.equal(b.castIlyraAt({x:1500,y:100}),false);
 });
 
+test('enabled volley automation waits for a reachable live group or flyer and never spends cooldown on empty ground',()=>{
+ for(const situation of ['empty','outside','dead','single-ground','group','flyer'] as const){
+  const b=volleyFixture(),s=b.ilyra!,sample=b.enemies[0];
+  s.volley=null;s.cooldown=0;s.introduction='done';assert.ok(b.setIlyraAuto(true));
+  assert.equal(IdleBattle.restore(b.snapshot())!.ilyra!.autoCast,true);
+  // Isolate target selection with controlled positions, without movement or
+  // tower kills changing the group before the skill's targeting boundary.
+  const count=situation==='empty'?0:situation==='group'?2:1;
+  b.enemies=Array.from({length:count},(_,i)=>({...sample,uid:sample.uid+i,
+   x:s.x+(situation==='outside'?ILYRA.range+1:30)+i,y:s.y,
+   hp:situation==='dead'?0:sample.maxHp,def:situation==='flyer'?BASE.enemies.FlyingLocust:BASE.enemies.Leafbug}));
+  assert.equal(b.castIlyraAt({x:s.x+ILYRA.range+100,y:s.y}),false);
+  for(let i=0;i<40&&!s.volley;i++)(b as unknown as {stepIlyra(dt:number):void}).stepIlyra(.025);
+  const expected=situation==='group'||situation==='flyer';
+  assert.equal(!!s.volley,expected,situation);assert.equal(s.cooldown,expected?ILYRA.cooldown:0,situation);
+  if(s.volley)assert.ok(b.enemies.some(e=>e.hp>0&&Math.hypot(e.x-s.volley!.x,e.y-s.volley!.y)<=ILYRA.radius));
+ }
+});
+
 test('recruitment is transactional across storage failure and reload',async()=>{
  const factory=new IDBFactory();let store=await openBattleStore(factory,'b15b');await store.save(veteran().snapshot(),false,0);
  let live=await BattleSession.open(store,{locks:null});if(live.pendingReward)await live.claimOffline();await live.resumeActive();

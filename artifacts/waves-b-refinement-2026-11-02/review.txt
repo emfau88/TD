@@ -1,0 +1,2 @@
+PASS: 19 integrated runs exactly reproduce B3 rows, purchases, summaries, offline payouts and final states (only version metadata differs). W26–50 fought; 250 recipes match.
+PASS: baseline/B/B2/B3 hashes unchanged; 107 unrelated production sources unchanged.

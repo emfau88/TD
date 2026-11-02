@@ -1,0 +1,3 @@
+{"name":"tactical-day2","highest":49,"leak":{"wave":45,"at":38.6},"pressure":{"wave":45,"at":39.775},"loss":{"wave":50,"at":298.7},"maxNoRecord":1557.7,"offline":62856.411}
+{"name":"tactical-day3","highest":52,"leak":{"wave":50,"at":41.025},"pressure":{"wave":50,"at":44.15},"loss":{"wave":53,"at":201.075},"maxNoRecord":1651.225,"offline":67035.231}
+{"name":"tactical-day4","highest":53,"leak":{"wave":53,"at":34.9},"pressure":{"wave":53,"at":38.2},"loss":{"wave":54,"at":101.85},"maxNoRecord":1744,"offline":70060.942}

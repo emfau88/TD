@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { IDBFactory } from 'fake-indexeddb';
-import { IdleBattle, BASE } from '../src/battle';
+import { IdleBattle, BASE, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION } from '../src/battle';
 import { BattleSession } from '../src/battle-session';
 import { openBattleStore } from '../src/save-store';
 import { certifyFarm, defenseFingerprint } from '../src/farming';
@@ -141,7 +141,7 @@ test('schema 31 migration preserves earned values, claims, combat and partial gi
     assert.equal(restored.social.personal.mara.claimed, points >= 70);
     const { social, schemaVersion, rulesVersion, ...combat } = restored.snapshot();
     const { social: unused, schemaVersion: previous, rulesVersion: oldRules, ...oldCombat } = old;
-    assert.deepEqual(combat, oldCombat); assert.equal(schemaVersion, 33); assert.equal(rulesVersion, 17);
+    assert.deepEqual(combat, oldCombat); assert.equal(schemaVersion, BATTLE_SCHEMA_VERSION); assert.equal(rulesVersion, BATTLE_RULES_VERSION);
     assert.deepEqual(IdleBattle.restore(restored.snapshot())!.snapshot(), restored.snapshot());
     if (points === 34) assert.equal(restored.interactCompanion('mara', 'gift').points, 1);
     if (points === 69) { clears(restored, 30); assert.equal(restored.interactCompanion('mara', 'gift').points, 1); }

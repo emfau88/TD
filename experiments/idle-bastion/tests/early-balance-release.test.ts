@@ -22,7 +22,7 @@ function encounter(wave:number,version:number){
     gaps:enemies.map((_,i)=>spawnGap(wave,i+1,version)),clear:battleReward(clearReward(wave,version),wave,version)};
 }
 
-test('rules 3–15 match main for 910 encounters; current rules change only waves 10 and 20',()=>{
+test('rules 3–15 match main for 910 encounters; frozen rules 16 change only waves 10 and 20',()=>{
   const rows=[];
   for(let version=3;version<=15;version++)for(let wave=1;wave<=70;wave++)rows.push(encounter(wave,version));
   assert.equal(createHash('sha256').update(JSON.stringify(rows)).digest('hex'),legacy.historicDigest);
@@ -30,7 +30,6 @@ test('rules 3–15 match main for 910 encounters; current rules change only wave
     if(wave===10||wave===20)continue;
     assert.deepEqual({...encounter(wave,16),version:15},encounter(wave,15),'wave '+wave);
   }
-  assert.equal(BATTLE_SCHEMA_VERSION,33);assert.equal(BATTLE_RULES_VERSION,17);
 });
 
 test('wave 10 has 22 enemies in four short groups; wave 20 trades exactly three beetles with nearly equal rewards',()=>{

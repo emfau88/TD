@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: free conscious recruitment preserves veteran saves and rejects repeats; core settlement also supports it
+ok 1 - free conscious recruitment preserves veteran saves and rejects repeats; core settlement also supports it
+  ---
+  duration_ms: 336.9121
+  type: 'test'
+  ...
+# Subtest: movement remains independent, bounded and reloadable; obstacles reject orders
+ok 2 - movement remains independent, bounded and reloadable; obstacles reject orders
+  ---
+  duration_ms: 56.1691
+  type: 'test'
+  ...
+# Subtest: saved windup and flight hit once, reward ground/air kills once, and reject forged damage
+ok 3 - saved windup and flight hit once, reward ground/air kills once, and reject forged damage
+  ---
+  duration_ms: 60.2079
+  type: 'test'
+  ...
+# Subtest: air damage is 50 percent higher, scaling ignores Mara, and empty waves never spend cooldown
+ok 4 - air damage is 50 percent higher, scaling ignores Mara, and empty waves never spend cooldown
+  ---
+  duration_ms: 56.0393
+  type: 'test'
+  ...
+# Subtest: enabled volley automation waits for a reachable live group or flyer and never spends cooldown on empty ground
+ok 5 - enabled volley automation waits for a reachable live group or flyer and never spends cooldown on empty ground
+  ---
+  duration_ms: 290.4268
+  type: 'test'
+  ...
+# Subtest: recruitment is transactional across storage failure and reload
+ok 6 - recruitment is transactional across storage failure and reload
+  ---
+  duration_ms: 111.3332
+  type: 'test'
+  ...
+# Subtest: farm proof ignores recruited Ilyra and pending spells
+ok 7 - farm proof ignores recruited Ilyra and pending spells
+  ---
+  duration_ms: 95.3669
+  type: 'test'
+  ...
+# Subtest: slower volleys remain in flight at the old hit time; legacy saves finish once at their old pace
+ok 8 - slower volleys remain in flight at the old hit time; legacy saves finish once at their old pace
+  ---
+  duration_ms: 69.5522
+  type: 'test'
+  ...
+# Subtest: Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation
+ok 9 - Mara starts beside the protected tower; automatic effect lasts 8s and repeats at 30s from activation
+  ---
+  duration_ms: 83.9458
+  type: 'test'
+  ...
+# Subtest: overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage
+ok 10 - overclock reduces the existing firing cooldown at 1.5× and does not reset a shot or alter damage
+  ---
+  duration_ms: 105.1633
+  type: 'test'
+  ...
+# Subtest: battle auto-overclock requires a live enemy inside the assigned tower range, not merely a finished cooldown
+ok 11 - battle auto-overclock requires a live enemy inside the assigned tower range, not merely a finished cooldown
+  ---
+  duration_ms: 242.831
+  type: 'test'
+  ...
+# Subtest: independent movement walks at 80px/s; reassignment retains the old remote buff and cooldown
+ok 12 - independent movement walks at 80px/s; reassignment retains the old remote buff and cooldown
+  ---
+  duration_ms: 112.4837
+  type: 'test'
+  ...
+# Subtest: redirecting movement halfway through a segment rejoins a centre; selling the selected tower preserves another tower buff
+ok 13 - redirecting movement halfway through a segment rejoins a centre; selling the selected tower preserves another tower buff
+  ---
+  duration_ms: 56.4174
+  type: 'test'
+  ...
+# Subtest: blocked remote destinations stop safely; a new order can route around a newly placed obstacle
+ok 14 - blocked remote destinations stop safely; a new order can route around a newly placed obstacle
+  ---
+  duration_ms: 51.111
+  type: 'test'
+  ...
+# Subtest: travel, assignment, effect and cooldown reload exactly without replay and continue deterministically
+ok 15 - travel, assignment, effect and cooldown reload exactly without replay and continue deterministically
+  ---
+  duration_ms: 624.4999
+  type: 'test'
+  ...
+# Subtest: effect and cooldown continue through wave pauses; waiting without simulation cannot advance them
+ok 16 - effect and cooldown continue through wave pauses; waiting without simulation cannot advance them
+  ---
+  duration_ms: 146.2315
+  type: 'test'
+  ...
+# Subtest: old rule snapshots migrate once, preserve money and combat payloads and require fresh live farm evidence
+ok 17 - old rule snapshots migrate once, preserve money and combat payloads and require fresh live farm evidence
+  ---
+  duration_ms: 35.6872
+  type: 'test'
+  ...
+# Subtest: Mara position and temporary effect never inflate a farm proof, while reassignment invalidates its fingerprint
+ok 18 - Mara position and temporary effect never inflate a farm proof, while reassignment invalidates its fingerprint
+  ---
+  duration_ms: 163.9215
+  type: 'test'
+  ...
+# Subtest: Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads
+ok 19 - Mara snapshots reject invalid target IDs, obstacles, routes and timer payloads
+  ---
+  duration_ms: 54.8252
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2388.9107

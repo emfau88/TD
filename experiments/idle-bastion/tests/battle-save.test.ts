@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { BASE, IdleBattle, SETTLEMENT, type BattleSnapshot } from '../src/battle';
+import { BASE, IdleBattle, SETTLEMENT, BATTLE_SCHEMA_VERSION, BATTLE_RULES_VERSION, type BattleSnapshot } from '../src/battle';
 import { createIdleLayout } from '../src/layout';
 
 const jsonCopy = <T>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
@@ -187,8 +187,8 @@ test('invalid resources, times, references, definitions and newer formats are re
   until(sim, () => sim.shots.length > 0);
   const valid = sim.snapshot();
   const mutations: [string, (value: BattleSnapshot) => void][] = [
-    ['schema', value => { value.schemaVersion = 34 as 33; }],
-    ['rules', value => { value.rulesVersion = 18 as 17; }],
+    ['schema', value => { value.schemaVersion = (BATTLE_SCHEMA_VERSION + 1) as typeof BATTLE_SCHEMA_VERSION; }],
+    ['rules', value => { value.rulesVersion = (BATTLE_RULES_VERSION + 1) as typeof BATTLE_RULES_VERSION; }],
     ['layout version', value => { value.layoutVersion = 6 as 5; }],
     ['layout identity', value => { value.layoutId = 'unknown' as 'start28'; }],
     ['negative gold', value => { value.gold = -1; }],

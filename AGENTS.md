@@ -1,4 +1,6 @@
-# SPIRE · aktuelles Hauptspiel
+# Towers & Tantrums · aktuelles Hauptspiel
+
+- Aktueller Spielname ist **Towers & Tantrums** (am 02.11.2026 erneut bestätigt). SPIRE / Idle Bastion sind historische Namen; technische Pfade und Speicherkennungen bleiben erhalten.
 
 - Nutzer hat am 21.10.2026 die Übernahme des Idle-Bastion-Stands nach `main` ausdrücklich beauftragt. `main` ist künftig der veröffentlichte Hauptstand; neue Arbeitsbranches verwenden `codex/`.
 - Aktueller Spielcode bleibt zur Vermeidung unnötiger Pfad-/Assetmigrationen unter `experiments/idle-bastion/`. Vor Änderungen dortige `README.md`, `ROADMAP.md`, passende Fachdateien und `AGENTS.md` lesen. Die fortlaufende Roadmap ist die einzige aktuelle Aufgabenliste.

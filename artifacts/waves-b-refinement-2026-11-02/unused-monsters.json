@@ -1,0 +1,56 @@
+[
+  {
+    "id": "dragon-whelp-green",
+    "actions": [
+      "Attack",
+      "Hurt",
+      "Idle"
+    ],
+    "inGame": false
+  },
+  {
+    "id": "floating-eye-purple",
+    "actions": [
+      "Attack",
+      "Hurt",
+      "Idle"
+    ],
+    "inGame": false
+  },
+  {
+    "id": "flame-wisp-orange",
+    "actions": [
+      "Attack",
+      "Hurt",
+      "Idle"
+    ],
+    "inGame": false
+  },
+  {
+    "id": "biter-plant-red",
+    "actions": [
+      "Attack",
+      "Hurt",
+      "Idle"
+    ],
+    "inGame": false
+  },
+  {
+    "id": "cobra-green",
+    "actions": [
+      "Attack",
+      "Hurt",
+      "Idle"
+    ],
+    "inGame": false
+  },
+  {
+    "id": "sandworm-pink",
+    "actions": [
+      "Attack",
+      "Hurt",
+      "Idle"
+    ],
+    "inGame": false
+  }
+]
