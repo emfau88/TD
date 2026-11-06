@@ -1,2 +1,3 @@
 # The inventory records exact original bytes, including text line endings.
-files/** -text
+# Frozen historical sources also retain their original whitespace verbatim.
+files/** -text -whitespace
