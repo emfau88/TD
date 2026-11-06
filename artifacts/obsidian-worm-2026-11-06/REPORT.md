@@ -1,6 +1,7 @@
 # Obsidianwurm: Einbau und Prüfung
 
-06.11.2026 · Ausgangsstand `c000122` / Regeln 19. Ergebnis lokal, Regeln 20 / Schema 36.
+06.11.2026 · Ausgangsstand `c000122` / Regeln 19. Spielcode `81c5185` auf Main/Pages,
+Regeln 20 / Schema 36. [Erfolgreiche öffentliche Prüfung](PUBLIC_VERIFICATION.md).
 
 ## Ergebnis und Umfang
 

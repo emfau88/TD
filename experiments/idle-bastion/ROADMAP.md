@@ -1,6 +1,6 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
-**Obsidianwurm · 06.11.2026 — Studie freigegeben, begrenzter Spieleinbau ausdrücklich beauftragt und lokal geprüft.**
+**Obsidianwurm · 06.11.2026 — Spielcode `81c5185` auf Main/Pages veröffentlicht und live geprüft.**
 
 - [x] Auf Nutzerwunsch langer Pixelart-Wurm mit 30 Körpersegmenten, Kopf und Schwanz; Obsidian statt Naturthema. Gemeinsame Wegspur, sichtbarer Verlust hinterer Segmente und Originalgegner als Größenvergleich. [Vorschau, Herkunft und Grenzen](../../prototypes/segment-worm-v1/README.md).
 - [x] Desktop, gängiges Handy-Querformat und Hochformat im Browser geprüft: Segmentverlust, Bewegung, Pause, Zoom, reduzierte Bewegung und fehlerfreier Aufbau. Keine Spielmechaniken, Speicherzugriffe oder Hauptspiel-Einbindung.
@@ -9,6 +9,8 @@
 - [x] Drei vorhandene Kauf-/Bauprofile jeweils 60 Minuten frisch sowie nach 24 Stunden Abwesenheit ab erspielten W30/W35/W44 geprüft. HP-Varianten des langen Bosses verglichen, zu zähe Variante verworfen. Nach W30-Rückkehr wieder Niederlagen nach 6,7–10 Minuten; W45 nach späterer W44-Rückkehr in zwei Profilen direkt, im flächenlastigen Profil nach zwei Fehlversuchen überwunden. [Messungen und Grenzen](../../artifacts/obsidian-worm-2026-11-06/REPORT.md).
 - [x] 490/490 vollständige Tests einschließlich Sessiontest für 24-Stunden-Rückkehr mitten in beiden Wurmwellen bestanden; Produktionsbuild und je sechs Browserfälle am Entwicklungsserver und fertigen Build (Desktop, Handy quer/hoch, DE/EN) erfolgreich. Solowellen, echte Weggeometrie, Treffer, alte Saves/Offlineansprüche, Bewegung/Pause/Reload geprüft. Keine physische Handyabnahme behauptet.
 - [x] Nutzer hat anschließend Commit und Veröffentlichung auf Main mit kurzer Live-Prüfung ausdrücklich beauftragt. Veröffentlichung wird separat nachgewiesen; keine weiteren Gameplayänderungen.
+- [x] Normaler Fast-forward-Push auf Main; [Pages 42247043422](https://github.com/emfau88/TD/actions/runs/42247043422) erfolgreich. Beide Wurmwellen öffentlich auf Desktop und Handy quer/hoch geprüft: sechs Fälle ohne HTTP-/JavaScriptfehler, Bewegung/Pause/exakter Reload erfolgreich, jeweils nur ein Gegner. [Live-Nachweis](../../artifacts/obsidian-worm-2026-11-06/PUBLIC_VERIFICATION.md).
+- [x] Auf Zusatzfrage Besetzungen W1–50 direkt aus aktuellen Rezepten ausgewertet: 19 Definitionen / 18 Figurenfamilien im Gesamtkader; in W1–20 entfallen 82,9 % der Gegner auf Blattkäfer, Feuerkäfer und Flugheuschrecke. [Vollständige Wellenübersicht und Messmethode](../../artifacts/obsidian-worm-2026-11-06/WAVES_1_50.md). Keine daraus abgeleitete Gameplayänderung.
 - [ ] Menschliche Sichtprüfung des integrierten Kampfes auf dem eigenen Gerät.
 
 **Animierter Vollbild-Ladescreen · 02.11.2026 — als d44f51b auf Main/Pages veröffentlicht.**
