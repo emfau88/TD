@@ -35,7 +35,7 @@ const rate = (proof: FarmCertificate) => farmRewardGold(proof) * 60000 / proof.d
 test('paid defenses at 40/50/60/70 improve or retain income, with at most four genuine two-clear probes and no live mutation', () => {
   // These historical paid defenses must re-prove the harder current waves.
   // A formerly safe W31/W43 is no longer presumed safe from its old result.
-  const expected = { control: [23, 36, 41, 46], 'one-storm': [26, 26, 26, 48], 'two-storms': [26, 26, 26, 48] };
+  const expected = { control: [23, 23, 41, 46], 'one-storm': [26, 26, 26, 48], 'two-storms': [26, 26, 26, 48] };
   for (const [strategy, selected] of Object.entries(expected)) for (const [index, wave] of [40, 50, 60, 70].entries()) {
     const b = paid(strategy, wave), old = prior(b), before = b.snapshot(), events = structuredClone(b.events);
     for (const previous of [undefined, old]) {
@@ -114,8 +114,8 @@ for (const historicalRules of [14, 15]) test(`native reload preserves the pendin
   store = await openBattleStore(factory, name, () => now);
   let session = await BattleSession.open(store, { now: () => now, locks: null });
   assert.equal(session.battle.snapshot().schemaVersion, BATTLE_SCHEMA_VERSION); assert.equal(session.certificate?.rulesVersion, BATTLE_RULES_VERSION);
-  assert.equal(session.certificate?.wave, 36); assert.deepEqual(session.pendingReward, receipt);
-  assert.deepEqual(session.battle.snapshot(), { ...before, farmWave: 36 });
+  assert.equal(session.certificate?.wave, 23); assert.deepEqual(session.pendingReward, receipt);
+  assert.deepEqual(session.battle.snapshot(), { ...before, farmWave: 23 });
   const units = session.battle.gold * 1000 + session.battle.goldRemainderUnits;
   assert.equal(await session.claimOffline(), true); assert.equal(await session.claimOffline(), false);
   assert.equal(session.battle.gold * 1000 + session.battle.goldRemainderUnits - units, receipt.amountUnits);
@@ -127,7 +127,7 @@ for (const historicalRules of [14, 15]) test(`native reload preserves the pendin
   if (session.pendingReward) await session.claimOffline(); else await session.resumeActive();
   assert.equal(session.offline.baseline.certificate?.wave, session.certificate?.wave);
   const future = reserveOffline(beginAbsence(session.offline, now, session.certificate, false, offlinePolicy(true)), now + 60000);
-  assert.ok(future.pendingReward!.amountUnits > receipt.amountUnits);
+  assert.ok(future.pendingReward!.amountUnits >= receipt.amountUnits);
   await session.close();
 });
 

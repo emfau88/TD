@@ -4,6 +4,7 @@ import { succubusFrame } from '../../../reference/src/succubus-art';
 import type { EnemyId } from './enemy-roster';
 import { LOCAL_ENEMY_FRAMES } from './local-enemy-frames';
 import { LUCIFER_FRAMES } from './lucifer-frames';
+import { WORM_SHEET } from './worm-view';
 export type EnemyDirection = 'up' | 'down' | 'side';
 // Measured in world pixels from the unchanged sprite anchor. Humanoid feet
 // differ from the insects' body centres. Flyers project below their entire
@@ -21,6 +22,8 @@ interface EnemySheet { key: string; url: string; width: number; height: number; 
  * Side artwork was visually checked; left-facing sheets invert horizontal mirroring.
  */
 export const ENEMY_SHEETS: Record<EnemyId, EnemySheet> = {
+  ObsidianWormYoung: WORM_SHEET,
+  ObsidianWorm: WORM_SHEET,
   MossShroom: { ...LOCAL_ENEMY_FRAMES.MossShroom, url:new URL('../assets/local-monsters/MossShroom.png',import.meta.url).href },
   WoodSpider: { ...LOCAL_ENEMY_FRAMES.WoodSpider, url:new URL('../assets/local-monsters/WoodSpider.png',import.meta.url).href },
   HornedBat: { ...LOCAL_ENEMY_FRAMES.HornedBat, url:new URL('../assets/local-monsters/HornedBat.png',import.meta.url).href },
@@ -41,7 +44,8 @@ export const ENEMY_SHEETS: Record<EnemyId, EnemySheet> = {
   Rosenspiegel: { key: 'idle-enemy-Rosenspiegel', width: 64, height: 64, scale: 1.15, facesLeft: false, move: { down: {frames: [], durations: []}, up: {frames: [], durations: []}, side: {frames: [], durations: []} }, url: new URL('../../../public/assets/Succubus Pixel v2.png', import.meta.url).href },
 };
 export function preloadEnemySheets(scene: Phaser.Scene): void {
-  for (const s of Object.values(ENEMY_SHEETS)) scene.load.spritesheet(s.key, s.url, { frameWidth: s.width, frameHeight: s.height });
+  const loaded=new Set<string>();
+  for (const s of Object.values(ENEMY_SHEETS)) if(!loaded.has(s.key)){loaded.add(s.key);scene.load.spritesheet(s.key, s.url, { frameWidth: s.width, frameHeight: s.height });}
 }
 export function enemyFrame(kind: EnemyId, direction: EnemyDirection, elapsed: number, movingLeft = false, identity = 0): number {
   if (kind === 'Rosenspiegel') return succubusFrame('move', direction, elapsed * 1000);

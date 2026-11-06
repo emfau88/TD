@@ -1,6 +1,7 @@
-/** Rules 18: measured B progression, with a small frost-resistant escort.
+/** Rules 20: solo worms at W36/45 over the measured rules-18 B progression.
  * Historical attempts remain routed through their frozen recipes. */
 import { ENEMIES, introducedEnemy, isHealer, type EnemyId } from './enemy-roster';
+import { wormEncounter } from './worm';
 import { enemyPressure, type WaveRecipe } from './wave-recipes-v11';
 import { waveRecipeV17, spawnGapV17, clearRewardV17 } from './wave-recipes-v17';
 export { FAMILY_NAMES, enemyPressure, type WaveFamily, type WaveRecipe } from './wave-recipes-v11';
@@ -9,7 +10,13 @@ export { FAMILY_NAMES, enemyPressure, type WaveFamily, type WaveRecipe } from '.
 // existing bounded generator. New enemy roles can use the same pressure budget.
 const progressionRecipes = new Map<number, WaveRecipe>();
 const FROST_ESCORT_WAVES: readonly number[] = [35, 38];
-export function waveRecipe(wave: number, version = 18): WaveRecipe {
+export function waveRecipe(wave: number, version = 20): WaveRecipe {
+  const worm = wormEncounter(wave, version);
+  if (worm) {
+    const previous = waveRecipe(wave, 19);
+    const budget = previous.clearGold + previous.enemies.reduce((sum,id)=>sum+ENEMIES[id].gold,0);
+    return { family:'armor', enemies:[worm], gaps:[1], clearGold:budget-ENEMIES[worm].gold, elite:true };
+  }
   const old = waveRecipeV17(wave, version);
   if (version < 18 || wave <= 25 || wave > 50 || old.elite) return old;
   const cached = progressionRecipes.get(wave);
@@ -49,8 +56,9 @@ export function waveRecipe(wave: number, version = 18): WaveRecipe {
   return recipe;
 }
 
-export const spawnGap = spawnGapV17; // Quantities and clocks are unchanged.
+export const spawnGap = spawnGapV17; // Ordinary quantities/clocks are unchanged; worms have no second spawn.
 export function clearReward(wave: number, version: number): number {
+  if (wormEncounter(wave, version)) return waveRecipe(wave, version).clearGold;
   return version >= 18 && wave >= 26 && wave <= 50
     ? waveRecipe(wave, version).clearGold : clearRewardV17(wave, version);
 }

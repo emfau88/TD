@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Obsidianwurm · Pixelstudie</title><link rel="icon" href="data:,"><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div><p class="eyebrow">Towers &amp; Tantrums · separate Bewegungsstudie</p><h1>Obsidianwurm <small>30 Segmente</small></h1></div><span class="draft">ENTWURF 01</span></header>
+<main>
+ <section class="stage" aria-label="Bewegungsprobe auf einem Waldweg">
+  <canvas id="route" aria-label="Langer Obsidianwurm auf einer Kurvenstrecke neben Blattkäfer und Skorpion"></canvas>
+  <div class="stage-label"><span class="dot"></span><span id="state">30 Körpersegmente · Spielmaßstab</span></div>
+  <div class="view-tools"><button id="pause" aria-pressed="false">Pause</button><button id="zoom" aria-pressed="false">2× ansehen</button></div>
+ </section>
+ <div class="controls">
+  <label for="health">Lebenspunkte <strong id="health-value">100 %</strong></label>
+  <input id="health" type="range" min="0" max="100" value="100" step="1" aria-label="Lebenspunkte der Vorschau">
+  <button id="hit">Treffer −10 %</button><button id="reset">Wiederherstellen</button>
+  <label class="auto"><input id="auto" type="checkbox"> Verlust automatisch zeigen</label>
+ </div>
+ <p class="caption">Kopf, 30 Körpersegmente und Schwanz. Die Teile folgen derselben Wegspur; verlorene Segmente brechen am hinteren Ende ab. <span>Lebenspunkte hier nur zur Vorführung.</span></p>
+ <section class="comparison">
+  <div class="comparison-title"><h2>So klein ist er tatsächlich</h2><p>1× Spieleinheiten · vorhandene Gegner unverändert skaliert</p></div>
+  <canvas id="comparison" aria-label="Größenvergleich des vollständigen und verkürzten Wurms mit vorhandenen Gegnern"></canvas>
+ </section>
+ <details><summary>Pixelansichten vergrößert</summary><div class="details-body"><img src="assets/obsidian-parts.png" width="512" height="384" alt="Pixelgrafik: Kopf, zwei Körperposen und Schwanz, jeweils seitlich, nach unten und nach oben."><p>Die große Tafel zeigt die einzelnen Bauteile. Der Wurm wird daraus zusammengesetzt. Die laufende Vorschau oben verwendet denselben Maßstab 0,83 wie die Vergleichsgegner.</p></div></details>
+ <footer>Studie ohne Spielstandzugriff · noch kein Gegner im Hauptspiel</footer>
+</main><script type="module" src="scene.js"></script></body></html>

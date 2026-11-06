@@ -24,7 +24,8 @@ import './offline-welcome.css';
 import './mara-intro.css';
 import { QuickWinGuidance, workshopGoldMissing, type QuickWinNotice } from './quick-win-guidance';
 import './quick-win-guidance.css';
-import { introducedEnemy } from './enemy-roster';
+import { introducedEnemy, ENEMIES } from './enemy-roster';
+import { wormEncounter } from './worm';
 import { MARA } from './mara';
 import { heroWorldAvailable, maraControlStage, recommendIlyraPosition, ilyraFirstTarget, type ControlledHero } from './hero-controls';
 import { syncIlyraUI } from './ilyra-ui';
@@ -582,11 +583,12 @@ function syncUI(): void {
   element('combat-message').hidden = sim.introduction.stage !== 'done' || !!discovery || performance.now() > toastUntil || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
   if (!element('combat-message').hidden) { element('tutorial-card').hidden = true; element('mobile-hint').hidden = true; }
   progressUI.update(live);
-  const boss = sim.bossEnemy, charm = sim.bossCharm;
-  const showBoss = sim.bossActive && !live.awaitingResume && !contextOpen && !placementType;
+  const worm=sim.wormEnemy,wormId=wormEncounter(sim.wave,sim.waveRecipeVersion),boss = worm ?? sim.bossEnemy, charm = sim.bossCharm;
+  const showBoss = (sim.bossActive || sim.wormActive) && !live.awaitingResume && !contextOpen && !placementType;
   element('boss-banner').hidden = !showBoss;
+  element('boss-banner').dataset.worm=String(!!wormId);
   document.querySelector<HTMLElement>('.goal-ribbon')!.hidden = showBoss || sim.introduction.stage !== 'done' || !!discovery || !element('wisp-arrival').hidden || hintStep === 15 && !element('tutorial-card').hidden;
-  element('boss-title').textContent = t("{0} · Welle {1}", bossEncounter(sim.wave).title, sim.wave);
+  element('boss-title').textContent = t("{0} · Welle {1}", wormId ? ENEMIES[wormId].name : bossEncounter(sim.wave).title, sim.wave);
   element('boss-health').textContent = t(boss ? t("{0} / {1}", currency.format(Math.ceil(boss.hp)), currency.format(Math.ceil(boss.maxHp))) : sim.bossQueued ? t('Im Anmarsch') : t('Boss gefallen'));
   const health = element<HTMLProgressElement>('boss-health-bar');
   health.max = boss?.maxHp ?? 1; health.value = boss?.hp ?? (sim.bossQueued ? 1 : 0);
@@ -598,6 +600,11 @@ function syncUI(): void {
     : boss ? t('Frost bremst ihren Vormarsch · der Tanz läuft weiter') : sim.bossQueued ? sim.bossWins(sim.wave) ? t('Boss und Begleiter besiegen · Wiederholung') : t("Boss und Begleiter besiegen · {0} Gold Erstprämie", currency.format(bossEncounter(sim.wave).firstReward)) : t('Besiege noch die übrigen Begleiter'));
   element('boss-banner').dataset.phase = charm.phase;
   element('boss-support').textContent = t("{0} Begleiter übrig · Fläche & Durchdringung", Math.max(0, sim.remaining - (boss || sim.bossQueued ? 1 : 0)));
+  if(wormId){
+    if(!worm){element('boss-health').textContent=t('Im Anmarsch');health.max=1;health.value=1;}
+    element('boss-skill').textContent=t('Eine Lebensleiste · der ganze sichtbare Körper ist treffbar');
+    element('boss-support').textContent=t('Erreicht der Kopf den Kern, scheitert die Welle.');
+  }
   document.getElementById('app')!.classList.toggle('context-open', contextOpen || Boolean(placementType || groundMode));
   updateOnboarding(live, { placing: Boolean(placementType || groundMode), contextOpen, catalogPanel, revealing: performance.now() < workshopRevealUntil, intro, portraits: introPortraits });
   syncIntroCamera();

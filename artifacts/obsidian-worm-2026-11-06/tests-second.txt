@@ -1,0 +1,414 @@
+TAP version 13
+# Subtest: a legally funded Frost run stays saveable through long wave tails and wave 15
+ok 1 - a legally funded Frost run stays saveable through long wave tails and wave 15
+  ---
+  duration_ms: 2670.1555
+  type: 'test'
+  ...
+# Subtest: JSON round trip preserves a live wave, its homing shots, IDs and deterministic later rewards
+ok 2 - JSON round trip preserves a live wave, its homing shots, IDs and deterministic later rewards
+  ---
+  duration_ms: 447.8529
+  type: 'test'
+  ...
+# Subtest: snapshot records are detached from the live model and from restored models
+ok 3 - snapshot records are detached from the live model and from restored models
+  ---
+  duration_ms: 23.945
+  type: 'test'
+  ...
+# Subtest: a sold source retains its old shot level/damage and pays one kill after reload
+ok 4 - a sold source retains its old shot level/damage and pays one kill after reload
+  ---
+  duration_ms: 42.5744
+  type: 'test'
+  ...
+# Subtest: reload immediately before lethal impact and after its event never replays kill money
+ok 5 - reload immediately before lethal impact and after its event never replays kill money
+  ---
+  duration_ms: 51.5068
+  type: 'test'
+  ...
+# Subtest: last enemy and clear bonus cross the save boundary once; intermission resumes at the exact remainder
+ok 6 - last enemy and clear bonus cross the save boundary once; intermission resumes at the exact remainder
+  ---
+  duration_ms: 103.2437
+  type: 'test'
+  ...
+# Subtest: initial delay and sub-tick remainder persist without accelerating or dropping simulation time
+ok 7 - initial delay and sub-tick remainder persist without accelerating or dropping simulation time
+  ---
+  duration_ms: 39.5179
+  type: 'test'
+  ...
+# Subtest: real defeat including the escaped enemy restores and enters the identical farm transition
+ok 8 - real defeat including the escaped enemy restores and enters the identical farm transition
+  ---
+  duration_ms: 342.277
+  type: 'test'
+  ...
+# Subtest: every sampled route corner, enemy recipe and partial update remains valid through later waves
+ok 9 - every sampled route corner, enemy recipe and partial update remains valid through later waves
+  ---
+  duration_ms: 827.2201
+  type: 'test'
+  ...
+# Subtest: invalid resources, times, references, definitions and newer formats are rejected without mutating input
+ok 10 - invalid resources, times, references, definitions and newer formats are rejected without mutating input
+  ---
+  duration_ms: 39.9049
+  type: 'test'
+  ...
+# Subtest: layout changes cannot be silently serialized under the starting-layout identity
+ok 11 - layout changes cannot be silently serialized under the starting-layout identity
+  ---
+  duration_ms: 4.2362
+  type: 'test'
+  ...
+# Subtest: fresh model owns a free protected starter and automatically starts wave one at 1×
+ok 12 - fresh model owns a free protected starter and automatically starts wave one at 1×
+  ---
+  duration_ms: 87.6167
+  type: 'test'
+  ...
+# Subtest: building spends the real balance once and rejects occupied, invalid and unopened pads
+ok 13 - building spends the real balance once and rejects occupied, invalid and unopened pads
+  ---
+  duration_ms: 103.881
+  type: 'test'
+  ...
+# Subtest: level upgrades charge 60 then 94, reject insolvency/max level and keep art stage separate
+ok 14 - level upgrades charge 60 then 94, reject insolvency/max level and keep art stage separate
+  ---
+  duration_ms: 6.2625
+  type: 'test'
+  ...
+# Subtest: selling returns 70 percent of actual investment exactly once; starter remains protected
+ok 15 - selling returns 70 percent of actual investment exactly once; starter remains protected
+  ---
+  duration_ms: 41.8839
+  type: 'test'
+  ...
+# Subtest: unassisted protected starter clears the real entry geometry at 20/20 (cooldown 0)
+ok 16 - unassisted protected starter clears the real entry geometry at 20/20 (cooldown 0)
+  ---
+  duration_ms: 68.3098
+  type: 'test'
+  ...
+# Subtest: unassisted protected starter clears the real entry geometry at 20/20 (cooldown 0.6)
+ok 17 - unassisted protected starter clears the real entry geometry at 20/20 (cooldown 0.6)
+  ---
+  duration_ms: 60.167
+  type: 'test'
+  ...
+# Subtest: new attempts reset core and active combat, preserve money/towers and use globally increasing IDs
+ok 18 - new attempts reset core and active combat, preserve money/towers and use globally increasing IDs
+  ---
+  duration_ms: 54.3478
+  type: 'test'
+  ...
+# Subtest: projectiles retain fired damage and level after upgrading and selling their source
+ok 19 - projectiles retain fired damage and level after upgrading and selling their source
+  ---
+  duration_ms: 53.488
+  type: 'test'
+  ...
+# Subtest: simultaneous lethal projectiles cannot pay a kill twice
+ok 20 - simultaneous lethal projectiles cannot pay a kill twice
+  ---
+  duration_ms: 52.2137
+  type: 'test'
+  ...
+# Subtest: escape records defeat without erasing gold or purchases and then returns to live farming
+ok 21 - escape records defeat without erasing gold or purchases and then returns to live farming
+  ---
+  duration_ms: 83.5165
+  type: 'test'
+  ...
+# Subtest: fixed steps give the same combat and economy for large, frame-sized and partial updates
+ok 22 - fixed steps give the same combat and economy for large, frame-sized and partial updates
+  ---
+  duration_ms: 210.1547
+  type: 'test'
+  ...
+# Subtest: non-finite or non-positive time cannot start waves or change money
+ok 23 - non-finite or non-positive time cannot start waves or change money
+  ---
+  duration_ms: 41.3796
+  type: 'test'
+  ...
+# Subtest: a sold tower can still earn one kill from a projectile already in flight
+ok 24 - a sold tower can still earn one kill from a projectile already in flight
+  ---
+  duration_ms: 38.3938
+  type: 'test'
+  ...
+# Subtest: an escaped enemy pays no kill reward; a damaged successful attempt still starts the next with full core
+ok 25 - an escaped enemy pays no kill reward; a damaged successful attempt still starts the next with full core
+  ---
+  duration_ms: 61.0517
+  type: 'test'
+  ...
+# Subtest: ember research is a deliberate once-only payment after W34 and Workshop II; new marker does not require money
+ok 26 - ember research is a deliberate once-only payment after W34 and Workshop II; new marker does not require money
+  ---
+  duration_ms: 141.1435
+  type: 'test'
+  ...
+# Subtest: ember area and targeting exclude flyers; armor affects direct hits and the one ongoing burn
+ok 27 - ember area and targeting exclude flyers; armor affects direct hits and the one ongoing burn
+  ---
+  duration_ms: 8.3122
+  type: 'test'
+  ...
+# Subtest: weaker burns neither stack nor refresh a stronger source; equal and stronger hits renew it
+ok 28 - weaker burns neither stack nor refresh a stronger source; equal and stronger hits renew it
+  ---
+  duration_ms: 4.6452
+  type: 'test'
+  ...
+# Subtest: burn kills pay once, retain attribution after sale and never pay for an already dead enemy
+ok 29 - burn kills pay once, retain attribution after sale and never pay for an already dead enemy
+  ---
+  duration_ms: 6.3305
+  type: 'test'
+  ...
+# Subtest: real burn and shot preserve fired level across upgrade, sale and exact reload; forged sources and levels fail
+ok 30 - real burn and shot preserve fired level across upgrade, sale and exact reload; forged sources and levels fail
+  ---
+  duration_ms: 46.8443
+  type: 'test'
+  ...
+# Subtest: original ember artwork has complete weapons, shared fireball and impact; W1â€“250 recipes stay identical
+ok 31 - original ember artwork has complete weapons, shared fireball and impact; W1â€“250 recipes stay identical
+  ---
+  duration_ms: 36.5789
+  type: 'test'
+  ...
+# Subtest: ember purchases and seen status are atomic on native save failure and persist once on success
+ok 32 - ember purchases and seen status are atomic on native save failure and persist once on success
+  ---
+  duration_ms: 881.8019
+  type: 'test'
+  ...
+# Subtest: ember farms are proven with saved burns and no active heroes, without changing the source battle
+ok 33 - ember farms are proven with saved burns and no active heroes, without changing the source battle
+  ---
+  duration_ms: 103.0806
+  type: 'test'
+  ...
+# Subtest: Mara does not spend automatic overclock on flyers that her ember tower cannot attack
+ok 34 - Mara does not spend automatic overclock on flyers that her ember tower cannot attack
+  ---
+  duration_ms: 5.1393
+  type: 'test'
+  ...
+# Subtest: Ilyra can retain an ember source through sale and reload without multiplying its burn into her volley
+ok 35 - Ilyra can retain an ember source through sale and reload without multiplying its burn into her volley
+  ---
+  duration_ms: 51.2998
+  type: 'test'
+  ...
+# Subtest: no live completion means no certificate or fabricated starter rate
+ok 36 - no live completion means no certificate or fabricated starter rate
+  ---
+  duration_ms: 76.7358
+  type: 'test'
+  ...
+# Subtest: first real clear proves two conservative no-damage cycles including both pauses without touching live state or events
+ok 37 - first real clear proves two conservative no-damage cycles including both pauses without touching live state or events
+  ---
+  duration_ms: 132.837
+  type: 'test'
+  ...
+# Subtest: combat timers and money do not invalidate a proof; a purchase or upgrade does
+ok 38 - combat timers and money do not invalidate a proof; a purchase or upgrade does
+  ---
+  duration_ms: 127.4938
+  type: 'test'
+  ...
+# Subtest: a harmful sale immediately invalidates the old defense and selects a genuinely safe lower proof
+ok 39 - a harmful sale immediately invalidates the old defense and selects a genuinely safe lower proof
+  ---
+  duration_ms: 566.0056
+  type: 'test'
+  ...
+# Subtest: a successful but damaged real wave is not safe; previous valid evidence survives a newer leaky clear
+ok 40 - a successful but damaged real wave is not safe; previous valid evidence survives a newer leaky clear
+  ---
+  duration_ms: 156.3456
+  type: 'test'
+  ...
+# Subtest: defeat returns to a fresh farm attempt, repeats it and never advances until the queued command crosses a boundary
+ok 41 - defeat returns to a fresh farm attempt, repeats it and never advances until the queued command crosses a boundary
+  ---
+  duration_ms: 223.0288
+  type: 'test'
+  ...
+# Subtest: snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history
+ok 42 - snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history
+  ---
+  duration_ms: 47.7994
+  type: 'test'
+  ...
+# Subtest: offline thousandths survive repeated credits, spending and snapshots; invalid amounts are atomic
+ok 43 - offline thousandths survive repeated credits, spending and snapshots; invalid amounts are atomic
+  ---
+  duration_ms: 27.2286
+  type: 'test'
+  ...
+# Subtest: current progress and certificate fields reject invalid histories, references, versions and numeric limits
+ok 44 - current progress and certificate fields reject invalid histories, references, versions and numeric limits
+  ---
+  duration_ms: 54.3531
+  type: 'test'
+  ...
+# Subtest: a valid non-entry proof survives later leaky clears with unchanged defense
+ok 45 - a valid non-entry proof survives later leaky clears with unchanged defense
+  ---
+  duration_ms: 492.2615
+  type: 'test'
+  ...
+# Subtest: bounded live history pins both entry evidence and the currently certified farm wave
+ok 46 - bounded live history pins both entry evidence and the currently certified farm wave
+  ---
+  duration_ms: 26.8989
+  type: 'test'
+  ...
+# Subtest: free conscious recruitment preserves veteran saves and rejects repeats; core settlement also supports it
+ok 47 - free conscious recruitment preserves veteran saves and rejects repeats; core settlement also supports it
+  ---
+  duration_ms: 354.3648
+  type: 'test'
+  ...
+# Subtest: movement remains independent, bounded and reloadable; obstacles reject orders
+ok 48 - movement remains independent, bounded and reloadable; obstacles reject orders
+  ---
+  duration_ms: 66.598
+  type: 'test'
+  ...
+# Subtest: saved windup and flight hit once, reward ground/air kills once, and reject forged damage
+ok 49 - saved windup and flight hit once, reward ground/air kills once, and reject forged damage
+  ---
+  duration_ms: 69.4169
+  type: 'test'
+  ...
+# Subtest: air damage is 50 percent higher, scaling ignores Mara, and empty waves never spend cooldown
+ok 50 - air damage is 50 percent higher, scaling ignores Mara, and empty waves never spend cooldown
+  ---
+  duration_ms: 51.4754
+  type: 'test'
+  ...
+# Subtest: enabled volley automation waits for a reachable live group or flyer and never spends cooldown on empty ground
+ok 51 - enabled volley automation waits for a reachable live group or flyer and never spends cooldown on empty ground
+  ---
+  duration_ms: 282.2882
+  type: 'test'
+  ...
+# Subtest: recruitment is transactional across storage failure and reload
+ok 52 - recruitment is transactional across storage failure and reload
+  ---
+  duration_ms: 73.4853
+  type: 'test'
+  ...
+# Subtest: farm proof ignores recruited Ilyra and pending spells
+ok 53 - farm proof ignores recruited Ilyra and pending spells
+  ---
+  duration_ms: 60.5277
+  type: 'test'
+  ...
+# Subtest: slower volleys remain in flight at the old hit time; legacy saves finish once at their old pace
+ok 54 - slower volleys remain in flight at the old hit time; legacy saves finish once at their old pace
+  ---
+  duration_ms: 52.9879
+  type: 'test'
+  ...
+# Subtest: rules 17 still reproduce the frozen pre-change compositions, HP, clocks and gold
+ok 55 - rules 17 still reproduce the frozen pre-change compositions, HP, clocks and gold
+  ---
+  duration_ms: 16.3687
+  type: 'test'
+  ...
+# Subtest: current progression preserves opening, populations, clocks, introductions and full-clear gold
+not ok 56 - current progression preserves opening, populations, clocks, introductions and full-clear gold
+  ---
+  duration_ms: 64.3664
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\progression-economy\\experiments\\idle-bastion\\tests\\wave-progression.test.ts:1:2103'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      enemies(wave,version)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\progression-economy\experiments\idle-bastion\tests\wave-progression.test.ts:44:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: a real in-flight rule-17 W31 keeps every combat field, then adopts current rules at the next attempt
+ok 57 - a real in-flight rule-17 W31 keeps every combat field, then adopts current rules at the next attempt
+  ---
+  duration_ms: 471.7554
+  type: 'test'
+  ...
+# Subtest: rule-17 departure survives native session migration and reload, with one exact claim and fresh proofs
+ok 58 - rule-17 departure survives native session migration and reload, with one exact claim and fresh proofs
+  ---
+  duration_ms: 376.4377
+  type: 'test'
+  ...
+# Subtest: only W36 and W45 change; one worm, no escorts, same base gold budget, no offline farm
+ok 59 - only W36 and W45 change; one worm, no escorts, same base gold budget, no offline farm
+  ---
+  duration_ms: 43.6212
+  type: 'test'
+  ...
+# Subtest: both encounters round-trip during entry, movement, damage and defeat; never coexist with creeps
+ok 60 - both encounters round-trip during entry, movement, damage and defeat; never coexist with creeps
+  ---
+  duration_ms: 865.2129
+  type: 'test'
+  ...
+# Subtest: visible parts shrink from the rear, stay on the route and do not pile up at the entrance
+ok 61 - visible parts shrink from the rear, stay on the route and do not pile up at the entrance
+  ---
+  duration_ms: 2.979
+  type: 'test'
+  ...
+# Subtest: body-only targets are in range; cannon/ember/chain hit one shared enemy, not every segment
+ok 62 - body-only targets are in range; cannon/ember/chain hit one shared enemy, not every segment
+  ---
+  duration_ms: 2.3549
+  type: 'test'
+  ...
+# Subtest: head escape causes one defeat; no kill or segment gold
+ok 63 - head escape causes one defeat; no kill or segment gold
+  ---
+  duration_ms: 2.6615
+  type: 'test'
+  ...
+# Subtest: rule-19 attempts and historical W36 farm evidence migrate without changing combat or money
+ok 64 - rule-19 attempts and historical W36 farm evidence migrate without changing combat or money
+  ---
+  duration_ms: 5.0733
+  type: 'test'
+  ...
+1..64
+# tests 64
+# suites 0
+# pass 63
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5287.5413

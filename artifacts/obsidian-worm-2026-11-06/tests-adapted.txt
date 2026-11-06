@@ -1,0 +1,272 @@
+TAP version 13
+# Subtest: paid defenses at 40/50/60/70 improve or retain income, with at most four genuine two-clear probes and no live mutation
+ok 1 - paid defenses at 40/50/60/70 improve or retain income, with at most four genuine two-clear probes and no live mutation
+  ---
+  duration_ms: 5636.4081
+  type: 'test'
+  ...
+# Subtest: sparse history picks an actually cleared midpoint, breaks ties downwards and never guesses missing waves
+ok 2 - sparse history picks an actually cleared midpoint, breaks ties downwards and never guesses missing waves
+  ---
+  duration_ms: 453.7948
+  type: 'test'
+  ...
+# Subtest: a leaky or economically worse midpoint preserves the exact valid proof without re-proving it
+ok 3 - a leaky or economically worse midpoint preserves the exact valid proof without re-proving it
+  ---
+  duration_ms: 128.6647
+  type: 'test'
+  ...
+# Subtest: upgrades or harmful sales require fresh proof, while an unsafe former choice cannot survive through its old rate
+ok 4 - upgrades or harmful sales require fresh proof, while an unsafe former choice cannot survive through its old rate
+  ---
+  duration_ms: 165.1855
+  type: 'test'
+  ...
+# Subtest: entry pruning never creates evidence: first clear still needs two cycles, and skipped entry cannot beat the proven rate
+ok 5 - entry pruning never creates evidence: first clear still needs two cycles, and skipped entry cannot beat the proven rate
+  ---
+  duration_ms: 683.85
+  type: 'test'
+  ...
+# Subtest: native reload preserves the pending rules-14 receipt, pays it once and uses better proof only for future absence
+ok 6 - native reload preserves the pending rules-14 receipt, pays it once and uses better proof only for future absence
+  ---
+  duration_ms: 1104.9926
+  type: 'test'
+  ...
+# Subtest: native reload preserves the pending rules-15 receipt, pays it once and uses better proof only for future absence
+ok 7 - native reload preserves the pending rules-15 receipt, pays it once and uses better proof only for future absence
+  ---
+  duration_ms: 663.3233
+  type: 'test'
+  ...
+# Subtest: current and historical in-flight combat resumes identically after a read-only farm search
+ok 8 - current and historical in-flight combat resumes identically after a read-only farm search
+  ---
+  duration_ms: 646.6205
+  type: 'test'
+  ...
+# Subtest: rules 12 stay byte-for-byte reproducible against the captured original 100-wave table; rules 13–15 keep opening 1–40 unchanged
+ok 9 - rules 12 stay byte-for-byte reproducible against the captured original 100-wave table; rules 13–15 keep opening 1–40 unchanged
+  ---
+  duration_ms: 44.1241
+  type: 'test'
+  ...
+# Subtest: new introductions repeat immediately; later recipes retain all sixteen species, two healer and 28 enemy caps
+ok 10 - new introductions repeat immediately; later recipes retain all sixteen species, two healer and 28 enemy caps
+  ---
+  duration_ms: 198.9544
+  type: 'test'
+  ...
+# Subtest: schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40
+ok 11 - schema 26 live attempts retain exact queues, enemies, clocks and wallet, including waves after 40
+  ---
+  duration_ms: 405.3857
+  type: 'test'
+  ...
+# Subtest: schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly
+ok 12 - schema 26 already permits paid levels above 20; rules 12/13 HP above the old global cap reload exactly
+  ---
+  duration_ms: 50.6663
+  type: 'test'
+  ...
+# Subtest: four compact atlases preserve metadata timings and genuine west views; cosmetic skins never change combat stats
+ok 13 - four compact atlases preserve metadata timings and genuine west views; cosmetic skins never change combat stats
+  ---
+  duration_ms: 12.7819
+  type: 'test'
+  ...
+# Subtest: every new species survives live save/reload deterministically; new farm proofs replace old rates without altering the model
+ok 14 - every new species survives live save/reload deterministically; new farm proofs replace old rates without altering the model
+  ---
+  duration_ms: 624.6696
+  type: 'test'
+  ...
+# Subtest: both historical and current offline receipts keep their exact amounts and one-claim boundary
+ok 15 - both historical and current offline receipts keep their exact amounts and one-claim boundary
+  ---
+  duration_ms: 7.4046
+  type: 'test'
+  ...
+# Subtest: 30 seconds, 10 minutes, 1 hour and 3 hours reserve 24% with the same two-hour cap
+ok 16 - 30 seconds, 10 minutes, 1 hour and 3 hours reserve 24% with the same two-hour cap
+  ---
+  duration_ms: 6.9889
+  type: 'test'
+  ...
+# Subtest: explicit pause and absence without a certified autonomous rate generate no gold
+ok 17 - explicit pause and absence without a certified autonomous rate generate no gold
+  ---
+  duration_ms: 0.621
+  type: 'test'
+  ...
+# Subtest: closing and reopening before claim consumes only the remaining cap of the original window
+ok 18 - closing and reopening before claim consumes only the remaining cap of the original window
+  ---
+  duration_ms: 3.6369
+  type: 'test'
+  ...
+# Subtest: claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+ok 19 - claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window
+  ---
+  duration_ms: 2.1317
+  type: 'test'
+  ...
+# Subtest: backwards clock jumps never move the high-water cursor back or repay a reserved interval
+ok 20 - backwards clock jumps never move the high-water cursor back or repay a reserved interval
+  ---
+  duration_ms: 2.7543
+  type: 'test'
+  ...
+# Subtest: the certificate and paused state are frozen at the original departure
+ok 21 - the certificate and paused state are frozen at the original departure
+  ---
+  duration_ms: 0.5452
+  type: 'test'
+  ...
+# Subtest: confirmed active checkpoints and absence share a single non-overlapping time boundary
+ok 22 - confirmed active checkpoints and absence share a single non-overlapping time boundary
+  ---
+  duration_ms: 0.5112
+  type: 'test'
+  ...
+# Subtest: exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+ok 23 - exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips
+  ---
+  duration_ms: 0.657
+  type: 'test'
+  ...
+# Subtest: fractional units carry into future windows even when the certified rate changes
+ok 24 - fractional units carry into future windows even when the certified rate changes
+  ---
+  duration_ms: 1.1074
+  type: 'test'
+  ...
+# Subtest: invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+ok 25 - invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected
+  ---
+  duration_ms: 1.9709
+  type: 'test'
+  ...
+# Subtest: the first B04 schema-one policy defaults migrate without resetting a pending absence window
+ok 26 - the first B04 schema-one policy defaults migrate without resetting a pending absence window
+  ---
+  duration_ms: 0.538
+  type: 'test'
+  ...
+# Subtest: policy migration never replaces an explicitly contradictory or malformed saved policy
+ok 27 - policy migration never replaces an explicitly contradictory or malformed saved policy
+  ---
+  duration_ms: 2.0222
+  type: 'test'
+  ...
+# Subtest: known historical departure proofs retain their original production basis
+ok 28 - known historical departure proofs retain their original production basis
+  ---
+  duration_ms: 1.663
+  type: 'test'
+  ...
+# Subtest: all forty historical recipes remain exact; entry, bosses, HP and old spawn clocks stay intact
+ok 29 - all forty historical recipes remain exact; entry, bosses, HP and old spawn clocks stay intact
+  ---
+  duration_ms: 24.6233
+  type: 'test'
+  ...
+# Subtest: opening recipes are reproducible in reverse order, bounded, readable and repeat every introduction promptly
+not ok 30 - opening recipes are reproducible in reverse order, bounded, readable and repeat every introduction promptly
+  ---
+  duration_ms: 49.6481
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\progression-economy\\experiments\\idle-bastion\\tests\\wave-rework.test.ts:1:1865'
+  failureType: 'testCodeFailure'
+  error: 'Laternenqualle disappears before wave 39'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\progression-economy\experiments\idle-bastion\tests\wave-rework.test.ts:54:123)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly
+ok 31 - a genuine v24 live queue, healed targets, timer, projectiles, wallet and actors survive exactly
+  ---
+  duration_ms: 336.3204
+  type: 'test'
+  ...
+# Subtest: both healer species share target locks, exclude each other and bosses, and resume their exact saved cast
+ok 32 - both healer species share target locks, exclude each other and bosses, and resume their exact saved cast
+  ---
+  duration_ms: 160.3916
+  type: 'test'
+  ...
+# Subtest: historical and current offline entitlements retain their exact amount and can only be claimed once
+ok 33 - historical and current offline entitlements retain their exact amount and can only be claimed once
+  ---
+  duration_ms: 3.2438
+  type: 'test'
+  ...
+# Subtest: native save boundary migrates v24 and pays its pending historical offline claim exactly once
+ok 34 - native save boundary migrates v24 and pays its pending historical offline claim exactly once
+  ---
+  duration_ms: 64.9972
+  type: 'test'
+  ...
+# Subtest: three compact original atlases have real directional clips and stable nonmirrored left views
+ok 35 - three compact original atlases have real directional clips and stable nonmirrored left views
+  ---
+  duration_ms: 12.9467
+  type: 'test'
+  ...
+# Subtest: frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+ok 36 - frozen first-rework quantities, composition, HP, clocks and total rewards remain exact
+  ---
+  duration_ms: 18.7791
+  type: 'test'
+  ...
+# Subtest: larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+ok 37 - larger families retain bounded populations, healers, deterministic later waves and distinct rhythms
+  ---
+  duration_ms: 113.5452
+  type: 'test'
+  ...
+# Subtest: a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules
+ok 38 - a genuine schema-25 active healer wave migrates intact, rejects corruption, then starts current rules
+  ---
+  duration_ms: 282.2995
+  type: 'test'
+  ...
+# Subtest: level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+ok 39 - level 20 is no ceiling: paid upgrades, higher-level projectiles and exact spent totals survive reload
+  ---
+  duration_ms: 148.4266
+  type: 'test'
+  ...
+# Subtest: old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+ok 40 - old farm evidence cannot certify new waves; historical offline receipts remain payable exactly once
+  ---
+  duration_ms: 859.1344
+  type: 'test'
+  ...
+# Subtest: HP continues past the old plateau; machine guards and old level curves remain explicit
+ok 41 - HP continues past the old plateau; machine guards and old level curves remain explicit
+  ---
+  duration_ms: 73.4023
+  type: 'test'
+  ...
+1..41
+# tests 41
+# suites 0
+# pass 40
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11243.2068

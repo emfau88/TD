@@ -1,5 +1,5 @@
 TOWERS & TANTRUMS — SOURCES AND LICENSE NOTICES
-Updated 2026-10-28
+Updated 2026-11-06
 
 These notices accompany the game. Source addresses below are plain text, not
 external navigation links. Credits do not imply endorsement by the creators.
@@ -7,6 +7,14 @@ Each license applies only to its corresponding third-party material.
 
 AUDIO AND ARTWORK
 =================
+
+Obsidian worm — generated project artwork, 2026-11-06
+Created with OpenAI ImageGen for Towers & Tantrums; not a third-party CC0 pack.
+Runtime atlas: assets/obsidian-worm/parts.png, twelve modular pixel-art parts.
+Originals and full prompts: prototypes/segment-worm-v1/PROMPTS.md in the repository.
+Changes: native-size nearest-neighbour export, binary alpha, 32-colour palette.
+Existing Leafbug/Scorpion artwork served only as a scale/style reference and is
+not included in this atlas. Their existing notices remain applicable separately.
 
 Inn Music — tcarisland
 License: CC BY 4.0

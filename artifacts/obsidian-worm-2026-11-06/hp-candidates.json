@@ -1,0 +1,830 @@
+[
+  {
+    "style": "relaxed",
+    "returned": false,
+    "hp": 500,
+    "result": "defeat",
+    "seconds": 47.13,
+    "farthest": 1,
+    "remaining": 0.023
+  },
+  {
+    "style": "relaxed",
+    "returned": false,
+    "hp": 550,
+    "result": "defeat",
+    "seconds": 47.43,
+    "farthest": 1,
+    "remaining": 0.071
+  },
+  {
+    "style": "relaxed",
+    "returned": false,
+    "hp": 600,
+    "result": "defeat",
+    "seconds": 47.43,
+    "farthest": 1,
+    "remaining": 0.131
+  },
+  {
+    "style": "relaxed",
+    "returned": false,
+    "hp": 700,
+    "result": "defeat",
+    "seconds": 48.07,
+    "farthest": 1,
+    "remaining": 0.214
+  },
+  {
+    "style": "relaxed",
+    "returned": true,
+    "hp": 500,
+    "result": "intermission",
+    "seconds": 31.32,
+    "farthest": 0.59,
+    "remaining": 0,
+    "offline": 60803.312,
+    "spending": {
+      "spent": 52655,
+      "remaining": 8761.7,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 16,
+          "spent": 32056
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 4,
+          "spent": 446
+        },
+        {
+          "pad": "tower-04",
+          "kind": 1,
+          "level": 16,
+          "spent": 32131
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 14,
+          "spent": 40952
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 14,
+          "spent": 32531
+        },
+        {
+          "pad": "cell-17-7",
+          "kind": 7,
+          "level": 13,
+          "spent": 39533
+        }
+      ]
+    }
+  },
+  {
+    "style": "relaxed",
+    "returned": true,
+    "hp": 550,
+    "result": "intermission",
+    "seconds": 33.05,
+    "farthest": 0.629,
+    "remaining": 0,
+    "offline": 60803.312,
+    "spending": {
+      "spent": 52655,
+      "remaining": 8761.7,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 16,
+          "spent": 32056
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 4,
+          "spent": 446
+        },
+        {
+          "pad": "tower-04",
+          "kind": 1,
+          "level": 16,
+          "spent": 32131
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 14,
+          "spent": 40952
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 14,
+          "spent": 32531
+        },
+        {
+          "pad": "cell-17-7",
+          "kind": 7,
+          "level": 13,
+          "spent": 39533
+        }
+      ]
+    }
+  },
+  {
+    "style": "relaxed",
+    "returned": true,
+    "hp": 600,
+    "result": "intermission",
+    "seconds": 34.95,
+    "farthest": 0.673,
+    "remaining": 0,
+    "offline": 60803.312,
+    "spending": {
+      "spent": 52655,
+      "remaining": 8761.7,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 16,
+          "spent": 32056
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 4,
+          "spent": 446
+        },
+        {
+          "pad": "tower-04",
+          "kind": 1,
+          "level": 16,
+          "spent": 32131
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 14,
+          "spent": 40952
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 14,
+          "spent": 32531
+        },
+        {
+          "pad": "cell-17-7",
+          "kind": 7,
+          "level": 13,
+          "spent": 39533
+        }
+      ]
+    }
+  },
+  {
+    "style": "relaxed",
+    "returned": true,
+    "hp": 700,
+    "result": "defeat",
+    "seconds": 47.13,
+    "farthest": 1,
+    "remaining": 0.031,
+    "offline": 60803.312,
+    "spending": {
+      "spent": 52655,
+      "remaining": 8761.7,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 16,
+          "spent": 32056
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 4,
+          "spent": 446
+        },
+        {
+          "pad": "tower-04",
+          "kind": 1,
+          "level": 16,
+          "spent": 32131
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 14,
+          "spent": 40952
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 14,
+          "spent": 32531
+        },
+        {
+          "pad": "cell-17-7",
+          "kind": 7,
+          "level": 13,
+          "spent": 39533
+        }
+      ]
+    }
+  },
+  {
+    "style": "mixed",
+    "returned": false,
+    "hp": 500,
+    "result": "intermission",
+    "seconds": 33.65,
+    "farthest": 0.673,
+    "remaining": 0
+  },
+  {
+    "style": "mixed",
+    "returned": false,
+    "hp": 550,
+    "result": "defeat",
+    "seconds": 45.83,
+    "farthest": 1,
+    "remaining": 0.051
+  },
+  {
+    "style": "mixed",
+    "returned": false,
+    "hp": 600,
+    "result": "defeat",
+    "seconds": 46.18,
+    "farthest": 1,
+    "remaining": 0.114
+  },
+  {
+    "style": "mixed",
+    "returned": false,
+    "hp": 700,
+    "result": "defeat",
+    "seconds": 46.85,
+    "farthest": 1,
+    "remaining": 0.191
+  },
+  {
+    "style": "mixed",
+    "returned": true,
+    "hp": 500,
+    "result": "intermission",
+    "seconds": 22.83,
+    "farthest": 0.401,
+    "remaining": 0,
+    "offline": 58234.176,
+    "spending": {
+      "spent": 58115,
+      "remaining": 2589.71,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 16,
+          "spent": 32056
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 14,
+          "spent": 32531
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 13,
+          "spent": 30565
+        },
+        {
+          "pad": "tower-09",
+          "kind": 5,
+          "level": 13,
+          "spent": 30565
+        },
+        {
+          "pad": "tower-06",
+          "kind": 3,
+          "level": 14,
+          "spent": 32531
+        },
+        {
+          "pad": "cell-9-5",
+          "kind": 7,
+          "level": 13,
+          "spent": 39533
+        }
+      ]
+    }
+  },
+  {
+    "style": "mixed",
+    "returned": true,
+    "hp": 550,
+    "result": "intermission",
+    "seconds": 24.85,
+    "farthest": 0.447,
+    "remaining": 0,
+    "offline": 58234.176,
+    "spending": {
+      "spent": 58115,
+      "remaining": 2589.71,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 16,
+          "spent": 32056
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 14,
+          "spent": 32531
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 13,
+          "spent": 30565
+        },
+        {
+          "pad": "tower-09",
+          "kind": 5,
+          "level": 13,
+          "spent": 30565
+        },
+        {
+          "pad": "tower-06",
+          "kind": 3,
+          "level": 14,
+          "spent": 32531
+        },
+        {
+          "pad": "cell-9-5",
+          "kind": 7,
+          "level": 13,
+          "spent": 39533
+        }
+      ]
+    }
+  },
+  {
+    "style": "mixed",
+    "returned": true,
+    "hp": 600,
+    "result": "intermission",
+    "seconds": 27.38,
+    "farthest": 0.508,
+    "remaining": 0,
+    "offline": 58234.176,
+    "spending": {
+      "spent": 58115,
+      "remaining": 2589.71,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 16,
+          "spent": 32056
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 14,
+          "spent": 32531
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 13,
+          "spent": 30565
+        },
+        {
+          "pad": "tower-09",
+          "kind": 5,
+          "level": 13,
+          "spent": 30565
+        },
+        {
+          "pad": "tower-06",
+          "kind": 3,
+          "level": 14,
+          "spent": 32531
+        },
+        {
+          "pad": "cell-9-5",
+          "kind": 7,
+          "level": 13,
+          "spent": 39533
+        }
+      ]
+    }
+  },
+  {
+    "style": "mixed",
+    "returned": true,
+    "hp": 700,
+    "result": "defeat",
+    "seconds": 45.85,
+    "farthest": 1,
+    "remaining": 0.019,
+    "offline": 58234.176,
+    "spending": {
+      "spent": 58115,
+      "remaining": 2589.71,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 16,
+          "spent": 32056
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 14,
+          "spent": 32531
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 13,
+          "spent": 30565
+        },
+        {
+          "pad": "tower-09",
+          "kind": 5,
+          "level": 13,
+          "spent": 30565
+        },
+        {
+          "pad": "tower-06",
+          "kind": 3,
+          "level": 14,
+          "spent": 32531
+        },
+        {
+          "pad": "cell-9-5",
+          "kind": 7,
+          "level": 13,
+          "spent": 39533
+        }
+      ]
+    }
+  },
+  {
+    "style": "tactical",
+    "returned": false,
+    "hp": 500,
+    "result": "defeat",
+    "seconds": 54.58,
+    "farthest": 1,
+    "remaining": 0.257
+  },
+  {
+    "style": "tactical",
+    "returned": false,
+    "hp": 550,
+    "result": "defeat",
+    "seconds": 54.9,
+    "farthest": 1,
+    "remaining": 0.307
+  },
+  {
+    "style": "tactical",
+    "returned": false,
+    "hp": 600,
+    "result": "defeat",
+    "seconds": 54.9,
+    "farthest": 1,
+    "remaining": 0.346
+  },
+  {
+    "style": "tactical",
+    "returned": false,
+    "hp": 700,
+    "result": "defeat",
+    "seconds": 55.55,
+    "farthest": 1,
+    "remaining": 0.425
+  },
+  {
+    "style": "tactical",
+    "returned": true,
+    "hp": 500,
+    "result": "defeat",
+    "seconds": 52.3,
+    "farthest": 1,
+    "remaining": 0.002,
+    "offline": 58524.107,
+    "spending": {
+      "spent": 58745,
+      "remaining": 1807.724,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 13,
+          "spent": 13441
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 16,
+          "spent": 57791
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 7,
+          "spent": 4242
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 2,
+          "level": 3,
+          "spent": 308
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 15,
+          "spent": 43419
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 7,
+          "spent": 4242
+        },
+        {
+          "pad": "cell-10-3",
+          "kind": 5,
+          "level": 8,
+          "spent": 6206
+        },
+        {
+          "pad": "cell-13-7",
+          "kind": 7,
+          "level": 6,
+          "spent": 3545
+        }
+      ]
+    }
+  },
+  {
+    "style": "tactical",
+    "returned": true,
+    "hp": 550,
+    "result": "defeat",
+    "seconds": 52.95,
+    "farthest": 1,
+    "remaining": 0.067,
+    "offline": 58524.107,
+    "spending": {
+      "spent": 58745,
+      "remaining": 1807.724,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 13,
+          "spent": 13441
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 16,
+          "spent": 57791
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 7,
+          "spent": 4242
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 2,
+          "level": 3,
+          "spent": 308
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 15,
+          "spent": 43419
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 7,
+          "spent": 4242
+        },
+        {
+          "pad": "cell-10-3",
+          "kind": 5,
+          "level": 8,
+          "spent": 6206
+        },
+        {
+          "pad": "cell-13-7",
+          "kind": 7,
+          "level": 6,
+          "spent": 3545
+        }
+      ]
+    }
+  },
+  {
+    "style": "tactical",
+    "returned": true,
+    "hp": 600,
+    "result": "defeat",
+    "seconds": 53.28,
+    "farthest": 1,
+    "remaining": 0.112,
+    "offline": 58524.107,
+    "spending": {
+      "spent": 58745,
+      "remaining": 1807.724,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 13,
+          "spent": 13441
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 16,
+          "spent": 57791
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 7,
+          "spent": 4242
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 2,
+          "level": 3,
+          "spent": 308
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 15,
+          "spent": 43419
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 7,
+          "spent": 4242
+        },
+        {
+          "pad": "cell-10-3",
+          "kind": 5,
+          "level": 8,
+          "spent": 6206
+        },
+        {
+          "pad": "cell-13-7",
+          "kind": 7,
+          "level": 6,
+          "spent": 3545
+        }
+      ]
+    }
+  },
+  {
+    "style": "tactical",
+    "returned": true,
+    "hp": 700,
+    "result": "defeat",
+    "seconds": 53.6,
+    "farthest": 1,
+    "remaining": 0.185,
+    "offline": 58524.107,
+    "spending": {
+      "spent": 58745,
+      "remaining": 1807.724,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 13,
+          "spent": 13441
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 16,
+          "spent": 57791
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 7,
+          "spent": 4242
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 2,
+          "level": 3,
+          "spent": 308
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 15,
+          "spent": 43419
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 7,
+          "spent": 4242
+        },
+        {
+          "pad": "cell-10-3",
+          "kind": 5,
+          "level": 8,
+          "spent": 6206
+        },
+        {
+          "pad": "cell-13-7",
+          "kind": 7,
+          "level": 6,
+          "spent": 3545
+        }
+      ]
+    }
+  }
+]

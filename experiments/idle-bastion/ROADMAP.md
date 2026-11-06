@@ -1,5 +1,16 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Obsidianwurm · 06.11.2026 — Studie freigegeben, begrenzter Spieleinbau ausdrücklich beauftragt und lokal geprüft.**
+
+- [x] Auf Nutzerwunsch langer Pixelart-Wurm mit 30 Körpersegmenten, Kopf und Schwanz; Obsidian statt Naturthema. Gemeinsame Wegspur, sichtbarer Verlust hinterer Segmente und Originalgegner als Größenvergleich. [Vorschau, Herkunft und Grenzen](../../prototypes/segment-worm-v1/README.md).
+- [x] Desktop, gängiges Handy-Querformat und Hochformat im Browser geprüft: Segmentverlust, Bewegung, Pause, Zoom, reduzierte Bewegung und fehlerfreier Aufbau. Keine Spielmechaniken, Speicherzugriffe oder Hauptspiel-Einbindung.
+- [x] Lange Variante vom Nutzer positiv bewertet; gewünschten engeren Kopfanschluss von 16 auf 12,5 Spieleinheiten umgesetzt. Drei Browserformate erneut geprüft, zusätzlich vollständiger Wegumlauf mit acht Blickwinkeln und visueller Prüfung des Anschlusses.
+- [x] Nach gesondertem Nutzerauftrag: W36 mit 15 Segmenten als Mini-Boss, W45 mit 30 als Boss; Solobegegnungen, eine Lebensleiste, Körper treffbar, Segmentverlust ohne Mehrfachschaden/-gold. Alle anderen Wellen, Turmwerte und allgemeinen Goldquoten erhalten. Kein zusätzliches Featurepaket.
+- [x] Drei vorhandene Kauf-/Bauprofile jeweils 60 Minuten frisch sowie nach 24 Stunden Abwesenheit ab erspielten W30/W35/W44 geprüft. HP-Varianten des langen Bosses verglichen, zu zähe Variante verworfen. Nach W30-Rückkehr wieder Niederlagen nach 6,7–10 Minuten; W45 nach späterer W44-Rückkehr in zwei Profilen direkt, im flächenlastigen Profil nach zwei Fehlversuchen überwunden. [Messungen und Grenzen](../../artifacts/obsidian-worm-2026-11-06/REPORT.md).
+- [x] 490/490 vollständige Tests einschließlich Sessiontest für 24-Stunden-Rückkehr mitten in beiden Wurmwellen bestanden; Produktionsbuild und je sechs Browserfälle am Entwicklungsserver und fertigen Build (Desktop, Handy quer/hoch, DE/EN) erfolgreich. Solowellen, echte Weggeometrie, Treffer, alte Saves/Offlineansprüche, Bewegung/Pause/Reload geprüft. Keine physische Handyabnahme behauptet.
+- [x] Nutzer hat anschließend Commit und Veröffentlichung auf Main mit kurzer Live-Prüfung ausdrücklich beauftragt. Veröffentlichung wird separat nachgewiesen; keine weiteren Gameplayänderungen.
+- [ ] Menschliche Sichtprüfung des integrierten Kampfes auf dem eigenen Gerät.
+
 **Animierter Vollbild-Ladescreen · 02.11.2026 — als d44f51b auf Main/Pages veröffentlicht.**
 
 - [x] Eigenständige Vollbildszene mit ImageGen-Wald und getrennten Figuren für Quer-/Hochformat, acht Feuerbildern, Funken, Licht und dezentem Nebel. Sechs PC-/Handyformate, Animation/Pause, DE/EN, reduzierte Bewegung, Rotation und Wiederholung im Browser geprüft. [Vorschau und Nachweise](../../prototypes/loading-campfire-v1/README.md).

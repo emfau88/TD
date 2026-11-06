@@ -1,6 +1,13 @@
 /* A shallow touch viewport needs one coherent layout, regardless of its width.
    Keep desktop and portrait rules intact. The camera reads this mode from CSS. */
 @media (max-height:500px) and (orientation:landscape) and (pointer:coarse) {
+  /* The long entrance body stays visible; applies only to the new worm banner. */
+  .boss-banner[data-worm="true"] { left:auto; right:90px; top:calc(var(--header) + 6px); width:min(330px,40vw); padding:7px 9px; }
+  .boss-banner[data-worm="true"] .boss-heading { gap:5px; }
+  .boss-banner[data-worm="true"] .boss-heading strong { font-size:13px; }
+  .boss-banner[data-worm="true"] p { font-size:10px; line-height:1.25; }
+  .boss-banner[data-worm="true"] small { font-size:9px; line-height:1.25; }
+  .boss-banner[data-worm="true"] progress { margin:5px 0; }
   :root {
     --compact-landscape:1;
     --landscape-left:max(8px,env(safe-area-inset-left));

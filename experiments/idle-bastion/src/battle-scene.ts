@@ -9,6 +9,8 @@ import { HeroMarks } from './hero-marks';
 import { MaraSpellView } from './mara-spell-view';
 import { ENEMY_SHEETS, enemyShadowOffset } from './enemy-art';
 import { JELLY_HEAL } from './enemy-roster';
+import { isWorm } from './worm';
+import { WormView } from './worm-view';
 import { enemyHealFrame } from './enemy-art';
 import { MARA } from './mara';
 import { CombatEffects } from './combat-effects';
@@ -51,7 +53,7 @@ export interface BattleSceneHooks {
 }
 const colors = { gold: 0xd9bd79, text: '#eae5ce', muted: '#91a58e', panel: '#183424' };
 type TowerView = { base: Phaser.GameObjects.Image; weapon: Phaser.GameObjects.Image };
-type EnemyView = { sprite: Phaser.GameObjects.Image; shadow: Phaser.GameObjects.Ellipse; burn?: Phaser.GameObjects.Image };
+type EnemyView = { sprite: Phaser.GameObjects.Image; shadow: Phaser.GameObjects.Ellipse; burn?: Phaser.GameObjects.Image; worm?:WormView };
 
 /** B05 uses original measured artwork. Simulation time selects every frame;
  * Phaser animations, tweens and drawing never change combat or grant rewards.
@@ -710,6 +712,7 @@ export class BattleScene extends Phaser.Scene {
       view = { sprite: this.add.image(enemy.x, enemy.y, ENEMY_SHEETS[enemy.def.id].key).setScale(ENEMY_SHEETS[enemy.def.id].scale),
         shadow: this.add.ellipse(enemy.x, enemy.y + enemyShadowOffset(enemy.def.id), 23, 9, 0x263e30, 0.24) };
       if (enemy.def.id === 'Rosenspiegel') view.sprite.setOrigin(0.5, 56/64).setScale(1.15);
+      if (isWorm(enemy.def.id)) {view.worm=new WormView(this);view.sprite.setVisible(false);view.shadow.setVisible(false);}
       this.enemyViews.set(enemy.uid, view);
     }
     return view;
@@ -733,7 +736,7 @@ export class BattleScene extends Phaser.Scene {
         : 0xffffff;
       if(evolutionSkin(tower.def.id,tower.level)){
         const visualTime=elapsed+sim.introduction.preparationSeconds;
-        const hasTarget=sim.enemies.some(e=>e.hp>0&&Math.hypot(e.x-tower.x,e.y-tower.y)<=stat.range);
+        const hasTarget=sim.enemies.some(e=>e.hp>0&&sim.enemyDistance(e,tower)<=stat.range);
         this.evolution.updateTower(tower,view,visualTime-this.combatEffects.firedAt(tower.uid),firingCooldown,tower.cooldown/((boosted?1.5:1)*(charmed?BOSS.rateMultiplier:1)),hasTarget,visualTime,tint,tremble,wobble);
         continue;
       }
@@ -748,9 +751,15 @@ export class BattleScene extends Phaser.Scene {
     }
     this.maraSpell.update(sim, this.towerViews);
     const enemies = new Set(sim.enemies.map(enemy => enemy.uid));
-    for (const [uid, view] of this.enemyViews) if (!enemies.has(uid)) { view.sprite.destroy(); view.shadow.destroy(); view.burn?.destroy(); this.enemyViews.delete(uid); }
+    for (const [uid, view] of this.enemyViews) if (!enemies.has(uid)) { view.sprite.destroy(); view.shadow.destroy(); view.burn?.destroy(); view.worm?.destroy(); this.enemyViews.delete(uid); }
     for (const enemy of sim.enemies) {
       const view = this.enemyView(enemy);
+      if(view.worm){
+        view.worm.update(sim,enemy);
+        this.effects.fillStyle(0x263f33,.9).fillRect(enemy.x-18,enemy.y-25,36,5);
+        this.effects.fillStyle(enemy.hp/enemy.maxHp<.3?0xdf9573:0xdde69c).fillRect(enemy.x-17,enemy.y-24,34*enemy.hp/enemy.maxHp,3);
+        continue;
+      }
       const lift = enemy.def.flying ? 7 + Math.sin(elapsed * 5 + enemy.uid) * 1.5 : 0;
       view.sprite.setPosition(enemy.x, enemy.y - lift).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed, enemy.flip, enemy.uid)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(enemy.y + 1000);
       if (enemy.def.id === 'Rosenspiegel') {
@@ -791,7 +800,7 @@ export class BattleScene extends Phaser.Scene {
       let view = this.shotViews.get(shot.uid);
       if (!view) { view = this.add.image(shot.x, shot.y, towerArt(shot.kind, visualStage(shot.level)).projectile, 0).setScale(shot.kind === 5 ? 24 / towerSheet(5,visualStage(shot.level),'Projectile').width : shot.kind >= 3 ? 0.85 : shot.kind === 2 ? 0.5 : SCALE.projectile); this.shotViews.set(shot.uid, view); }
       view.setPosition(shot.x, shot.y).setFrame(loopFrame(this.combatEffects.shotAge(shot.uid, elapsed), towerArt(shot.kind, visualStage(shot.level)).shotFrames));
-      const target = sim.enemies.find(enemy => enemy.uid === shot.target);
+      const enemy = sim.enemies.find(enemy => enemy.uid === shot.target), target = enemy && sim.enemyTargetPoint(enemy,shot);
       view.setDepth(projectileDepth(shot,sim.towers.find(tower=>tower.uid===shot.towerUid),target));
       if (target) view.setRotation(Math.atan2(target.y - shot.y, target.x - shot.x) + Math.PI / 2);
     }

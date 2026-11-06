@@ -95,7 +95,7 @@ export class EvolutionView {
   for(const [id,v] of this.shots)if(!liveShots.has(id)||v.origin.at>elapsed){v.sprites.forEach(s=>s.destroy());this.shots.delete(id);}
   for(const [id,o] of this.origins)if(!liveShots.has(id)||o.at>elapsed)this.origins.delete(id);
   for(const shot of sim.shots){const r=evolutionSkin(shot.kind,shot.level);if(!r)continue;
-   const target=sim.enemies.find(e=>e.uid===shot.target);if(!target)continue;
+   const enemy=sim.enemies.find(e=>e.uid===shot.target);if(!enemy)continue;const target=sim.enemyTargetPoint(enemy,shot);
    let v=this.shots.get(shot.uid);
    const earlyArrow=r.kind===1&&r.level<10,originalFrost=r.kind===2&&r.level===1,originalStone=(r.kind===3||r.kind===4||r.kind===5)&&r.level<=3;
    const sheet=earlyArrow?towerSheet(1,Math.min(3,r.level),'Projectile'):originalFrost?towerSheet(2,1,'Projectile'):originalStone?towerSheet(r.kind,r.originalStage,'Projectile'):undefined;

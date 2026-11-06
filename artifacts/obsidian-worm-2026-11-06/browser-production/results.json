@@ -1,0 +1,62 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "lang": "de",
+    "wave": 36,
+    "oneEnemy": true,
+    "moving": true,
+    "exactPausedReload": true,
+    "parts": 14
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "lang": "de",
+    "wave": 45,
+    "oneEnemy": true,
+    "moving": true,
+    "exactPausedReload": true,
+    "parts": 27
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "lang": "en",
+    "wave": 36,
+    "oneEnemy": true,
+    "moving": true,
+    "exactPausedReload": true,
+    "parts": 14
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "lang": "en",
+    "wave": 45,
+    "oneEnemy": true,
+    "moving": true,
+    "exactPausedReload": true,
+    "parts": 27
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "lang": "de",
+    "wave": 36,
+    "oneEnemy": true,
+    "moving": true,
+    "exactPausedReload": true,
+    "parts": 14
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "lang": "de",
+    "wave": 45,
+    "oneEnemy": true,
+    "moving": true,
+    "exactPausedReload": true,
+    "parts": 27
+  }
+]

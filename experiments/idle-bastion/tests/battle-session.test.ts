@@ -77,6 +77,29 @@ const open = (store: SessionStore, options: SessionOptions = {}) => BattleSessio
 const fixture = (battle: IdleBattle, revision = 1, paused = false): SaveEnvelope => ({
   schemaVersion: 2, revision, writtenAt: 1000, paused, battle: battle.snapshot(), offline: createOfflineState(1000),
 });
+
+test('returning mid-worm after 24h preserves combat and claims normal farm income once', async () => {
+  const source = JSON.parse(readFileSync(new URL('./fixtures/wave-progression-v17.json', import.meta.url), 'utf8'));
+  for (const wave of [36, 45]) {
+    const snapshot = IdleBattle.restore(source.before)!.snapshot();
+    Object.assign(snapshot, { highestCleared: wave - 1, wave: wave - 1, phase: 'intermission', mode: 'advance', advanceRequested: false,
+      queue: [], enemies: [], shots: [], intermissionRemaining: 0, spawnTimer: 0, lives: 20, farmWave: 1 });
+    const battle = IdleBattle.restore(snapshot)!; battle.update(.2); assert.ok(battle.wormActive);
+    const store = new ControlledStore(); store.current = fixture(battle);
+    const session = await open(store); await resume(session); await session.suspend();
+    const before = session.battle.snapshot(); store.clock += 24 * 60 * 60 * 1000;
+    const returned = await open(store), reward = returned.pendingReward!;
+    assert.deepEqual(returned.battle.snapshot().enemies, before.enemies);
+    assert.equal(returned.battle.elapsed, before.elapsed); assert.equal(returned.battle.wave, wave);
+    assert.ok(reward.amountUnits > 0); assert.ok(reward.creditedMs <= 8 * 60 * 60 * 1000);
+    assert.ok(![36, 45].includes(returned.offline.window!.certificate!.wave));
+    assert.equal(await returned.claimOffline(), true); assert.equal(await returned.claimOffline(), false);
+    assert.equal(returned.battle.gold * 1000 + returned.battle.goldRemainderUnits,
+      before.gold * 1000 + before.goldRemainderUnits + reward.amountUnits);
+    assert.deepEqual(returned.battle.snapshot().enemies, before.enemies);
+    await returned.close();
+  }
+});
 test('free Frost commit includes consumption and tutorial exit; duplicate and failed writes cannot duplicate the kit', async () => {
   for (const fail of [false, true]) {
     const store = new ControlledStore(); store.current = fixture(guidedFrost());

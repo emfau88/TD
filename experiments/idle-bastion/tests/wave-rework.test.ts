@@ -4,6 +4,7 @@ import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { IdleBattle, BASE, BATTLE_RULES_VERSION, BATTLE_SCHEMA_VERSION, waveCount, waveEnemy } from '../src/battle';
 import { ENEMIES, ENEMY_ROSTER, isHealer, JELLY_HEAL } from '../src/enemy-roster';
+import {isWorm} from '../src/worm';
 import { waveRecipe, spawnGap, clearReward } from '../src/wave-recipes';
 import { healthMultiplier } from '../src/balance';
 import { ENEMY_SHEETS, enemyFrame, enemyFlip, enemyHealFrame } from '../src/enemy-art';
@@ -30,7 +31,7 @@ test('opening recipes are reproducible in reverse order, bounded, readable and r
   for(let wave=6;wave<=40;wave++){
     if(wave===15||wave===25)continue;
     const r=waveRecipe(wave);signatures.set(wave,JSON.stringify(r));families.add(r.family);
-    assert.ok(r.enemies.length<=28&&r.enemies.length>=6);
+    assert.ok(r.enemies.length<=28&&(wave===36?r.enemies.length===1:r.enemies.length>=6));
     assert.ok(new Set(r.enemies).size<=(wave===20?4:3),`types in wave ${wave}`);
     assert.ok(r.enemies.filter(id=>isHealer(ENEMIES[id])).length<=2);
     for(const id of r.enemies)assert.ok(ENEMIES[id].firstWave<=wave);
@@ -45,12 +46,13 @@ test('opening recipes are reproducible in reverse order, bounded, readable and r
   }
   assert.equal(families.size,4);assert.equal(waveRecipe(40).elite,true);
   for(let wave=40;wave>=6;wave--)if(signatures.has(wave))assert.equal(JSON.stringify(waveRecipe(wave)),signatures.get(wave));
-  for(const e of ENEMY_ROSTER.filter(e=>e.firstWave>=6&&e.id!=='Rosenspiegel')){
+  for(const e of ENEMY_ROSTER.filter(e=>e.firstWave>=6&&e.id!=='Rosenspiegel'&&!isWorm(e.id))){
     assert.equal(ids(e.firstWave).filter(id=>id===e.id).length,e.firstWave===46?15:2,e.name);
     const next=[e.firstWave+1,e.firstWave+2,e.firstWave+3].filter(w=>w!==15&&w!==25).slice(0,2);
     assert.ok(next.some(w=>ids(w).includes(e.id)),`${e.name} repeated`);
     let absence=0;
-    for(let wave=e.firstWave;wave<=40;wave++)if(wave!==15&&wave!==25){absence=ids(wave).includes(e.id)?0:absence+1;assert.ok(absence<=9,`${e.name} disappears before wave ${wave}`);}
+    // Preserve the historical regular-wave cadence; W36 intentionally replaces its healer group.
+    for(let wave=e.firstWave;wave<=40;wave++)if(wave!==15&&wave!==25){absence=ids(wave,19).includes(e.id)?0:absence+1;assert.ok(absence<=9,`${e.name} disappears before wave ${wave}`);}
   }
   assert.ok(ids(10).includes('Firewasp'));assert.ok(ids(17).includes('Firewasp'));
   assert.ok(new Set([...signatures.keys()].filter(w=>w>=10).map(w=>waveRecipe(w).gaps.join(','))).size>=8);

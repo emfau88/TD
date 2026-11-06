@@ -1,0 +1,13 @@
+{
+  "Leafbug": {
+    "frame": 40,
+    "size": 64,
+    "scale": 0.83
+  },
+  "Scorpion": {
+    "frame": 40,
+    "size": 64,
+    "scale": 0.83
+  },
+  "worldTile": 40
+}

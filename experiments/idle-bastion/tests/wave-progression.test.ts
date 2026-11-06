@@ -33,13 +33,15 @@ test('rules 17 still reproduce the frozen pre-change compositions, HP, clocks an
 test('current progression preserves opening, populations, clocks, introductions and full-clear gold',()=>{
   let previousPressure=0;
   for(let wave=1;wave<=250;wave++){
-    const old=enemies(wave,17),now=enemies(wave,current),boss=wave===15||wave===25;
+    // W36/45 now have dedicated worm tests; keep the original B curve audited.
+    const version=wave===36||wave===45?19:current;
+    const old=enemies(wave,17),now=enemies(wave,version),boss=wave===15||wave===25;
     assert.equal(now.length,old.length);
     assert.deepEqual(now.map((_,i)=>spawnGap(wave,i+1,current)),old.map((_,i)=>spawnGap(wave,i+1,17)));
     const gold=(version:number)=>enemies(wave,version).reduce((s,e)=>s+e.gold,clearReward(wave,version));
     assert.equal(gold(current),gold(17));
     const paid=(version:number)=>enemies(wave,version).reduce((s,e)=>s+battleRewardUnits(e.gold,wave,version,true,false),battleRewardUnits(clearReward(wave,version),wave,version,true,false));
-    assert.ok(Math.abs(paid(current)/paid(17)-1)<.003);
+    assert.ok(Math.abs(paid(version)/paid(17)-1)<.003);
     if(wave<=25){assert.deepEqual(now,old);assert.equal(healthMultiplier(wave,current,boss),healthMultiplier(wave,17,boss));}
     else {
       assert.ok(new Set(now.map(e=>e.id)).size<=3);
@@ -47,7 +49,7 @@ test('current progression preserves opening, populations, clocks, introductions 
       assert.ok(now.every(e=>e.firstWave<=wave));
       const special=introducedEnemy(wave,current)?.id??introducedEnemy(wave-1,current)?.id;
       if(special)assert.equal(now.filter(e=>e.id===special).length,old.filter(e=>e.id===special).length);
-      const pressure=now.reduce((s,e)=>s+enemyPressure(e.id)*healthMultiplier(wave,current,false),0);
+      const pressure=now.reduce((s,e)=>s+enemyPressure(e.id)*healthMultiplier(wave,version,false),0);
       if(wave>26)assert.ok(pressure/previousPressure>=1.13-1e-12&&pressure/previousPressure<=1.1941);
       previousPressure=pressure;
       if(wave>50)assert.deepEqual(waveRecipe(wave,current),waveRecipe(wave,17));

@@ -3,6 +3,7 @@ import { createSocial, grantMilestoneGifts, migrateSocial, recordSocialClear, in
 import { ILYRA, createIlyra, cloneIlyra, moveIlyra, stepIlyraMotion, validIlyra, ilyraCell, type IlyraState } from './ilyra';
 import { BALANCE, healthMultiplier, battleRewardUnits } from './balance';
 import { waveRecipe, spawnGap, clearReward } from './wave-recipes';
+import { isWorm, wormEncounter, wormNodes, enemyContact, type Point } from './worm';
 import { ENEMIES, regularEnemy, enemyId, isHealer, JELLY_HEAL, type EnemyDef } from './enemy-roster';
 export type { EnemyDef } from './enemy-roster';
 /** Phaser-free B02 battle model.
@@ -48,11 +49,11 @@ export const STORM_CHAIN = Object.freeze({ targets: 3, range: 80, decay: 0.65, r
 export const EMBER = Object.freeze({ id: 7 as const, name: 'Glutwerfer', cost: 220, damage: 22, range: 125, cooldown: 0.95, color: 0xf8a576 });
 export const EMBER_BURN = Object.freeze({ damagePerSecond: 16, seconds: 3, radius: 30, researchCost: 5000, wave: 34 });
 export const SPLASH_RADIUS = 52;
-export const BATTLE_RULES_VERSION = 19 as const;
-export const BATTLE_SCHEMA_VERSION = 35 as const;
+export const BATTLE_RULES_VERSION = 20 as const;
+export const BATTLE_SCHEMA_VERSION = 36 as const;
 export const LIVE_CANDIDATE_LIMIT = 32;
 /** Reserved boss milestones never contribute repeatable offline production. */
-export const isNormalFarmWave = (wave: number): boolean => Number.isSafeInteger(wave) && wave >= 1 && wave !== 15 && wave !== 25;
+export const isNormalFarmWave = (wave: number, recipe = BATTLE_RULES_VERSION as number): boolean => Number.isSafeInteger(wave) && wave >= 1 && wave !== 15 && wave !== 25 && !wormEncounter(wave, recipe);
 export type BattleMode = 'advance' | 'farm';
 export type Phase = 'intermission' | 'wave' | 'defeat';
 export type TowerId = 1 | 2 | 3 | 4 | 5 | 7;
@@ -100,14 +101,14 @@ export interface BattleSnapshot {
   introduction: Introduction;
   ilyra: IlyraState | null;
   social: SocialState;
-  schemaVersion: 35; rulesVersion: 19; layoutVersion: 3 | 4 | 5;
+  schemaVersion: 36; rulesVersion: 20; layoutVersion: 3 | 4 | 5;
   /** Retained after sale; only this tower's base construction was free. */
   tutorialFrostUid: number | null;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32' | 'core40';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
   progress: ProgressRecord;
-  rewardRemainderUnits: number; waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19;
+  rewardRemainderUnits: number; waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20;
   goldRemainderUnits: number; mode: BattleMode; highestCleared: number; attemptId: number;
   liveClearedWaves: number[]; farmWave: number; advanceRequested: boolean;
   gold: number; lives: number; wave: number; phase: Phase; elapsed: number;
@@ -555,7 +556,7 @@ export class IdleBattle {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 20, model.layout.version as 3 | 4 | 5)) return undefined;
       value = { ...value, schemaVersion: 21, ilyra: null };
     }
-    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23 || value.schemaVersion === 24 || value.schemaVersion === 25 || value.schemaVersion === 26 || value.schemaVersion === 27 || value.schemaVersion === 28 || value.schemaVersion === 29 || value.schemaVersion === 30 || value.schemaVersion === 31 || value.schemaVersion === 32 || value.schemaVersion === 33 || value.schemaVersion === 34 || value.schemaVersion === 35)) {
+    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23 || value.schemaVersion === 24 || value.schemaVersion === 25 || value.schemaVersion === 26 || value.schemaVersion === 27 || value.schemaVersion === 28 || value.schemaVersion === 29 || value.schemaVersion === 30 || value.schemaVersion === 31 || value.schemaVersion === 32 || value.schemaVersion === 33 || value.schemaVersion === 34 || value.schemaVersion === 35 || value.schemaVersion === 36)) {
       if (![3, 4, 5].includes(value.layoutVersion as number) || !validPlotPositions(value.plots, value.layoutVersion as number)) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion as 3 | 4 | 5));
     }
@@ -634,8 +635,15 @@ export class IdleBattle {
     }
     if (isRecord(value) && value.schemaVersion === 34) {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5, 18, 34)) return undefined;
-      value = { ...value, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION,
+      value = { ...value, schemaVersion: 35, rulesVersion: 19,
         settlement: { ...value.settlement, emberResearched: false, emberResearchSeen: false } };
+    }
+    if (isRecord(value) && value.schemaVersion === 35) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5, 19, 35)) return undefined;
+      // Keep the old attempt and money. Only future farms exclude the new milestones.
+      value = { ...value, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION,
+        liveClearedWaves: value.liveClearedWaves.filter(wave => isNormalFarmWave(wave)),
+        farmWave: isNormalFarmWave(value.farmWave) ? value.farmWave : 1 };
     }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5)) return undefined;
     model.tutorialFrostUid = value.tutorialFrostUid;
@@ -841,7 +849,7 @@ export class IdleBattle {
     const s = this.ilyra;
     return !!s && this.ilyraAbilities && s.introduction !== 'move' && !s.path.length && !s.volley && s.cooldown <= 1e-9 && this.phase === 'wave'
       && Number.isFinite(point.x) && Number.isFinite(point.y) && point.x >= 0 && point.y >= 0 && point.x < this.layout.bounds.width && point.y < this.layout.bounds.height
-      && distance(s,point) <= ILYRA.range && this.enemies.some(e => e.hp > 0 && distance(e,point) <= ILYRA.radius);
+      && distance(s,point) <= ILYRA.range && this.enemies.some(e => e.hp > 0 && this.enemyDistance(e,point) <= ILYRA.radius);
   }
   castIlyraAt(point: {x:number;y:number}): boolean {
     if (!this.canCastIlyra(point)) return false;
@@ -862,7 +870,7 @@ export class IdleBattle {
       if (!v.hit && v.age >= ILYRA.impact) {
         v.hit = true;
         if (this.ilyraAbilities && this.phase === 'wave') {
-          for (const enemy of this.enemies) if (enemy.hp > 0 && distance(enemy,v) <= ILYRA.radius) {
+          for (const enemy of this.enemies) if (enemy.hp > 0 && this.enemyDistance(enemy,v) <= ILYRA.radius) {
             enemy.hp=Math.max(0,enemy.hp-v.damage*(enemy.def.flying?ILYRA.airMultiplier:1)*(1-enemy.def.armor));
             if (enemy.hp<=0) this.rewardKill(enemy);
           }
@@ -872,10 +880,10 @@ export class IdleBattle {
       if (v.age>=ILYRA.duration)s.volley=null;
     }
     if (this.ilyraAbilities && s.autoCast && !s.path.length && !s.volley && s.cooldown <= 1e-9 && this.phase === 'wave') {
-      const candidates=this.enemies.filter(e=>e.hp>0&&distance(e,s)<=ILYRA.range).map(e=>({e,
-        score:this.enemies.filter(n=>n.hp>0&&distance(n,e)<=ILYRA.radius).reduce((sum,n)=>sum+(n.def.flying?2:1),0)}));
+      const candidates=this.enemies.filter(e=>e.hp>0&&this.enemyDistance(e,s)<=ILYRA.range).map(e=>({e,point:this.enemyTargetPoint(e,s),
+        score:this.enemies.filter(n=>n.hp>0&&this.enemyDistance(n,this.enemyTargetPoint(e,s))<=ILYRA.radius).reduce((sum,n)=>sum+(n.def.flying?2:1),0)}));
       const target=candidates.sort((a,b)=>b.score-a.score||b.e.distance-a.e.distance||a.e.uid-b.e.uid)[0];
-      if(target&&(target.score>=2||target.e.def.id==='Rosenspiegel'))this.castIlyraAt(target.e);
+      if(target&&(target.score>=2||target.e.def.id==='Rosenspiegel'||isWorm(target.e.def.id)))this.castIlyraAt(target.point);
     }
   }
 
@@ -984,6 +992,11 @@ export class IdleBattle {
   get bossActive(): boolean { return this.phase === 'wave' && isBossWave(this.wave, this.waveRecipeVersion); }
   get bossEnemy(): Enemy | undefined { return this.enemies.find(e => e.def.id === 'Rosenspiegel' && e.hp > 0); }
   get bossQueued(): boolean { return this.queue.some(def => def.id === 'Rosenspiegel'); }
+  get wormActive(): boolean { return this.phase === 'wave' && !!wormEncounter(this.wave,this.waveRecipeVersion); }
+  get wormEnemy(): Enemy | undefined { return this.enemies.find(e=>isWorm(e.def.id)&&e.hp>0); }
+  wormBody(enemy: Enemy) { return wormNodes(enemy,this.path); }
+  enemyTargetPoint(enemy: Enemy, from: Point): Point { return enemyContact(enemy,from,this.path); }
+  enemyDistance(enemy: Enemy, from: Point): number { return distance(from,this.enemyTargetPoint(enemy,from)); }
   requestBossChallenge(wave: BossWave = 15): boolean {
     if ((wave !== 15 && wave !== 25) || this.highestCleared < wave - 1 || wave === 25 && !this.bossVictories || this.phase === 'defeat' || this.bossActive || this.bossChallengeRequested) return false;
     this.bossChallengeRequested = true; this.bossChallengeWave = wave; return true;
@@ -1154,7 +1167,7 @@ export class IdleBattle {
   }
 
   private spawn(def: EnemyDef): void {
-    const multiplier = healthMultiplier(this.wave, this.waveRecipeVersion, def.id === 'Rosenspiegel');
+    const multiplier = healthMultiplier(this.wave, this.waveRecipeVersion, def.id === 'Rosenspiegel' || isWorm(def.id));
     const maxHp = def.hp * multiplier;
     this.enemies.push({
       uid: this.uid++, def, ...this.path[0], hp: maxHp, maxHp,
@@ -1195,7 +1208,7 @@ export class IdleBattle {
       if (healer.hp <= 0 || !isHealer(healer.def)) continue;
       healer.healCooldown = Math.max(0, healer.healCooldown - dt);
       const targets = () => this.enemies.filter(e => e.hp > 0 && e.hp < e.maxHp && e.healLockout <= 1e-9
-        && !isHealer(e.def) && e.def.id !== 'Rosenspiegel' && distance(healer, e) <= JELLY_HEAL.range)
+        && !isHealer(e.def) && e.def.id !== 'Rosenspiegel' && !isWorm(e.def.id) && distance(healer, e) <= JELLY_HEAL.range)
         .sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp || a.uid - b.uid).slice(0, JELLY_HEAL.targets);
       if (healer.healRemaining > 0) {
         healer.healRemaining = Math.max(0, healer.healRemaining - dt);
@@ -1208,18 +1221,18 @@ export class IdleBattle {
     }
   }
 
-  private impact(shot: Shot, enemy: Enemy): boolean {
+  private impact(shot: Shot, enemy: Enemy, point: Point = enemy): boolean {
     const targets = shot.kind === 3 || shot.kind === 7 ? this.enemies.filter(candidate => candidate.hp > 0
-      && (shot.kind !== 7 || !candidate.def.flying) && distance(candidate, enemy) <= (shot.kind === 7 ? EMBER_BURN.radius : SPLASH_RADIUS)) : [enemy];
-    for (const target of targets) this.hit(shot, target);
+      && (shot.kind !== 7 || !candidate.def.flying) && this.enemyDistance(candidate, point) <= (shot.kind === 7 ? EMBER_BURN.radius : SPLASH_RADIUS)) : [enemy];
+    for (const target of targets) this.hit(shot, target, this.enemyTargetPoint(target,point));
     if (shot.kind === 5) {
       shot.chainHits!.push(enemy.uid);
       if (shot.chainHits!.length < STORM_CHAIN.targets) {
-        const next = this.enemies.filter(e => e.hp > 0 && !shot.chainHits!.includes(e.uid) && distance(e, enemy) <= STORM_CHAIN.range)
-          .sort((a,b) => distance(a,enemy)-distance(b,enemy) || a.uid-b.uid)[0];
+        const next = this.enemies.filter(e => e.hp > 0 && !shot.chainHits!.includes(e.uid) && this.enemyDistance(e, point) <= STORM_CHAIN.range)
+          .sort((a,b) => this.enemyDistance(a,point)-this.enemyDistance(b,point) || a.uid-b.uid)[0];
         if (next) {
-          shot.target=next.uid; shot.x=enemy.x; shot.y=enemy.y;
-          this.events.push({type:'fire',shot:cloneShot(shot),enemy:next,x:enemy.x,y:enemy.y});
+          shot.target=next.uid; shot.x=point.x; shot.y=point.y;
+          this.events.push({type:'fire',shot:cloneShot(shot),enemy:next,x:point.x,y:point.y});
           return true;
         }
       }
@@ -1227,7 +1240,7 @@ export class IdleBattle {
     return false;
   }
 
-  private hit(shot: Shot, enemy: Enemy): void {
+  private hit(shot: Shot, enemy: Enemy, point: Point = enemy): void {
     if (enemy.hp <= 0) return;
     const damage = shot.damage * (shot.kind === 5 ? Math.pow(STORM_CHAIN.decay,shot.chainHits!.length) : 1);
     enemy.hp = Math.max(0, enemy.hp - damage * (shot.kind === 4 ? 1 : 1 - enemy.def.armor));
@@ -1239,7 +1252,7 @@ export class IdleBattle {
       if (!this.tutorial.frostSeen && !this.tutorial.hidden && this.discovery !== 'off') this.events.push({ type: 'frost-tip' });
       this.tutorial.frostSeen = true;
     }
-    this.events.push({ type: 'hit', shot: shot.kind === 5 ? cloneShot(shot) : shot, enemy, x: enemy.x, y: enemy.y, amount: damage });
+    this.events.push({ type: 'hit', shot: shot.kind === 5 ? cloneShot(shot) : shot, enemy, x: point.x, y: point.y, amount: damage });
     if (enemy.hp > 0) return;
     this.rewardKill(enemy, shot.towerUid);
   }
@@ -1302,7 +1315,7 @@ export class IdleBattle {
       prepareWaitingMara(this.mara, maraTarget, this.layout, movementBlocked, this.elapsed, !this.wispUnlocked);
     const boostedSeconds = stepMara(this.mara, maraTarget, this.layout, movementBlocked,
       dt, this.phase === 'wave', this.maraBonus,
-      !this.maraIntroductionPending && !this.isCharmed(maraTarget.uid) && this.enemies.some(e => e.hp > 0 && (maraTarget!.def.id !== 7 || !e.def.flying) && distance(e, maraTarget!) <= stats(maraTarget!).range));
+      !this.maraIntroductionPending && !this.isCharmed(maraTarget.uid) && this.enemies.some(e => e.hp > 0 && (maraTarget!.def.id !== 7 || !e.def.flying) && this.enemyDistance(e, maraTarget!) <= stats(maraTarget!).range));
     if (this.phase !== 'wave') this.stepIlyra(dt);
     if (this.phase === 'defeat') {
       this.mode = 'farm'; this.bossCharm = freshCharm(); this.bossChallengeRequested = false;
@@ -1352,10 +1365,11 @@ export class IdleBattle {
       tower.cooldown = Math.max(0, tower.cooldown - (dt + support) * (this.isCharmed(tower.uid) ? BOSS.rateMultiplier : 1));
       if (tower.cooldown > 1e-9) continue;
       const stat = stats(tower);
-      const target = this.enemies.filter(enemy => enemy.hp > 0 && (tower.def.id !== 7 || !enemy.def.flying) && distance(tower, enemy) <= stat.range)
+      const target = this.enemies.filter(enemy => enemy.hp > 0 && (tower.def.id !== 7 || !enemy.def.flying) && this.enemyDistance(enemy, tower) <= stat.range)
         .sort((a, b) => (tower.def.id === 4 ? b.def.armor - a.def.armor : 0) || b.distance - a.distance || a.uid - b.uid)[0];
       if (!target || this.shots.length >= BASE.maxProjectiles) continue;
-      tower.angle = Math.atan2(target.y - tower.y, target.x - tower.x) + Math.PI / 2;
+      const aim = this.enemyTargetPoint(target,tower);
+      tower.angle = Math.atan2(aim.y - tower.y, aim.x - tower.x) + Math.PI / 2;
       tower.cooldown = stat.cooldown;
       const shot: Shot = {
         uid: this.uid++, towerUid: tower.uid, target: target.uid,
@@ -1369,10 +1383,10 @@ export class IdleBattle {
     this.shots = this.shots.filter(shot => {
       const target = this.enemies.find(enemy => enemy.uid === shot.target && enemy.hp > 0);
       if (!target) return false;
-      const gap = distance(shot, target), step = shot.speed * dt;
-      if (gap <= step + 4) return this.impact(shot, target);
-      shot.x += (target.x - shot.x) / gap * step;
-      shot.y += (target.y - shot.y) / gap * step;
+      const aim=this.enemyTargetPoint(target,shot),gap = distance(shot, aim), step = shot.speed * dt;
+      if (gap <= step + 4) return this.impact(shot, target, aim);
+      shot.x += (aim.x - shot.x) / gap * step;
+      shot.y += (aim.y - shot.y) / gap * step;
       return true;
     });
     this.stepHealers(dt);
@@ -1434,12 +1448,12 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  */
 function validSnapshot(
   value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
-  currentRules: 15 | 16 | 17 | 18 | 19 = BATTLE_RULES_VERSION, socialSchema: 31 | 32 | 33 | 34 | 35 = BATTLE_SCHEMA_VERSION,
+  currentRules: 15 | 16 | 17 | 18 | 19 | 20 = BATTLE_RULES_VERSION, socialSchema: 31 | 32 | 33 | 34 | 35 | 36 = BATTLE_SCHEMA_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
   if (!isRecord(value) || value.schemaVersion !== (legacy || (currentRules === 15 ? 30 : socialSchema)) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy === 28 ? 14 : legacy === 27 ? 13 : legacy === 26 ? 12 : legacy === 25 ? 11 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : currentRules)
     || value.layoutVersion !== layoutVersion || value.layoutId !== (layoutVersion === 5 ? 'core40' : layout.bounds.columns === 32 ? 'east32' : 'start28') || legacy > 0 && legacy < 20 && layoutVersion === 5) return false;
-  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy === 28 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] : legacy === 27 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] : legacy === 26 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12] : legacy === 25 ? [3, 4, 5, 6, 7, 8, 9, 10, 11] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ...(currentRules >= 16 ? [16] : []), ...(currentRules >= 17 ? [17] : []), ...(currentRules >= 18 ? [18] : []), ...(currentRules >= 19 ? [19] : [])]).includes(value.waveRecipeVersion as number))) return false;
+  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy === 28 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] : legacy === 27 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] : legacy === 26 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12] : legacy === 25 ? [3, 4, 5, 6, 7, 8, 9, 10, 11] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ...(currentRules >= 16 ? [16] : []), ...(currentRules >= 17 ? [17] : []), ...(currentRules >= 18 ? [18] : []), ...(currentRules >= 19 ? [19] : []), ...(currentRules >= 20 ? [20] : [])]).includes(value.waveRecipeVersion as number))) return false;
   if ((!legacy || legacy >= 9) && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
     || layoutVersion !== 5 && value.clearing.unlocked !== (layout.bounds.columns === 32)
     || (value.clearing.unlocked ? !integerIn(value.bossVictories, 1) || !numberIn(value.clearing.openedAt, 0, value.elapsed as number) : value.clearing.openedAt !== null))) return false;
@@ -1531,12 +1545,12 @@ function validSnapshot(
   const levelLimit = (modern || legacy === 10) && (value.settlement as BattleSnapshot['settlement']).workshopUpgraded ? (legacy && legacy < 26 ? 20 : Number.MAX_SAFE_INTEGER) : !original && (value.settlement as BattleSnapshot['settlement']).frostResearched ? 6 : 3;
   if (!integerIn(value.goldRemainderUnits, 0, 999) || (value.mode !== 'advance' && value.mode !== 'farm')
     || !integerIn(value.highestCleared, 0, Number.MAX_SAFE_INTEGER - 1) || !integerIn(value.attemptId)
-    || !integerIn(value.farmWave, 1) || !isNormalFarmWave(value.farmWave)
+    || !integerIn(value.farmWave, 1) || !isNormalFarmWave(value.farmWave, legacy ? 14 : currentRules)
     || typeof value.advanceRequested !== 'boolean' || (value.advanceRequested && value.mode !== 'farm')
     || !Array.isArray(value.liveClearedWaves) || value.liveClearedWaves.length > LIVE_CANDIDATE_LIMIT) return false;
   let previousWave = 0;
   for (const wave of value.liveClearedWaves) {
-    if (!integerIn(wave, 1, value.highestCleared) || !isNormalFarmWave(wave) || wave <= previousWave) return false;
+    if (!integerIn(wave, 1, value.highestCleared) || !isNormalFarmWave(wave, legacy ? 14 : currentRules) || wave <= previousWave) return false;
     previousWave = wave;
   }
   if (value.farmWave !== 1 && !value.liveClearedWaves.includes(value.farmWave)) return false;
@@ -1655,7 +1669,9 @@ function validSnapshot(
     if ((!legacy || legacy >= 13) && (!numberIn(enemy.healLockout, 0, JELLY_HEAL.lockout)
       || !numberIn(enemy.healRemaining, 0, isHealer(def) ? JELLY_HEAL.cast : 0)
       || !numberIn(enemy.healCooldown, 0, isHealer(def) ? JELLY_HEAL.cooldown : 0))) return false;
-    const expectedHp = def.hp * healthMultiplier(value.wave, (legacy && legacy < 6 ? 3 : value.waveRecipeVersion) as number, def.id === 'Rosenspiegel');
+    if (isWorm(def.id) && wormEncounter(value.wave, Number(value.waveRecipeVersion)) !== def.id) return false;
+    if (wormEncounter(value.wave, Number(value.waveRecipeVersion)) && !isWorm(def.id)) return false;
+    const expectedHp = def.hp * healthMultiplier(value.wave, (legacy && legacy < 6 ? 3 : value.waveRecipeVersion) as number, def.id === 'Rosenspiegel' || isWorm(def.id));
     if (!sameComputedStat(enemy.maxHp, expectedHp) || (value.wave < 4 && enemy.defId !== 'Leafbug')) return false;
     if (enemy.hp === 0 && (value.phase !== 'defeat' || enemy.segment !== path.length - 1)) return false;
     if (enemy.segment === path.length - 1) {

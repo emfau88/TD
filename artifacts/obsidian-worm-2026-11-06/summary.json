@@ -1,0 +1,570 @@
+[
+  {
+    "label": "baseline",
+    "style": "relaxed",
+    "scenario": "fresh",
+    "offline": 0,
+    "highest": 34,
+    "firstLoss": {
+      "wave": 15,
+      "at": 438.375
+    },
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 0,
+        "defeats": 0
+      },
+      {
+        "wave": 45,
+        "attempts": 0,
+        "defeats": 0
+      }
+    ]
+  },
+  {
+    "label": "baseline",
+    "style": "relaxed",
+    "scenario": "w30-24h",
+    "offline": 36288.324,
+    "highest": 40,
+    "firstLoss": {
+      "wave": 41,
+      "at": 469.3
+    },
+    "spentOnReturn": 35592,
+    "goldRemaining": 2134.964,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 1,
+        "defeats": 0,
+        "firstStart": 180.225,
+        "winAt": 232.275,
+        "fightSeconds": 52.05,
+        "farthest": 1
+      },
+      {
+        "wave": 45,
+        "attempts": 0,
+        "defeats": 0
+      }
+    ]
+  },
+  {
+    "label": "baseline",
+    "style": "mixed",
+    "scenario": "fresh",
+    "offline": 0,
+    "highest": 35,
+    "firstLoss": {
+      "wave": 35,
+      "at": 995.75
+    },
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 6,
+        "defeats": 6,
+        "firstStart": 2008.05
+      },
+      {
+        "wave": 45,
+        "attempts": 0,
+        "defeats": 0
+      }
+    ]
+  },
+  {
+    "label": "baseline",
+    "style": "mixed",
+    "scenario": "w30-24h",
+    "offline": 38603.797,
+    "highest": 43,
+    "firstLoss": {
+      "wave": 41,
+      "at": 418.575
+    },
+    "spentOnReturn": 37792,
+    "goldRemaining": 2054.197,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 1,
+        "defeats": 0,
+        "firstStart": 144.375,
+        "winAt": 181.65,
+        "fightSeconds": 37.275,
+        "farthest": 1
+      },
+      {
+        "wave": 45,
+        "attempts": 0,
+        "defeats": 0
+      }
+    ]
+  },
+  {
+    "label": "baseline",
+    "style": "mixed",
+    "scenario": "w35-24h",
+    "offline": 42469.302,
+    "highest": 43,
+    "firstLoss": {
+      "wave": 43,
+      "at": 374.3
+    },
+    "spentOnReturn": 40067,
+    "goldRemaining": 3393.582,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 1,
+        "defeats": 0,
+        "firstStart": 2,
+        "winAt": 31.925,
+        "fightSeconds": 29.925,
+        "farthest": 0.46
+      },
+      {
+        "wave": 45,
+        "attempts": 0,
+        "defeats": 0
+      }
+    ]
+  },
+  {
+    "label": "baseline",
+    "style": "tactical",
+    "scenario": "fresh",
+    "offline": 0,
+    "highest": 36,
+    "firstLoss": {
+      "wave": 35,
+      "at": 940.525
+    },
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 5,
+        "defeats": 4,
+        "firstStart": 1695.3,
+        "winAt": 2671.375,
+        "fightSeconds": 52.225,
+        "farthest": 1
+      },
+      {
+        "wave": 45,
+        "attempts": 0,
+        "defeats": 0
+      }
+    ]
+  },
+  {
+    "label": "baseline",
+    "style": "tactical",
+    "scenario": "w30-24h",
+    "offline": 41333.217,
+    "highest": 44,
+    "firstLoss": {
+      "wave": 45,
+      "at": 587.35
+    },
+    "spentOnReturn": 41806,
+    "goldRemaining": 589.017,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 1,
+        "defeats": 0,
+        "firstStart": 121.475,
+        "winAt": 147.525,
+        "fightSeconds": 26.05,
+        "farthest": 0.357
+      },
+      {
+        "wave": 45,
+        "attempts": 5,
+        "defeats": 5,
+        "firstStart": 546.775
+      }
+    ]
+  },
+  {
+    "label": "baseline",
+    "style": "tactical",
+    "scenario": "w35-24h",
+    "offline": 47035.409,
+    "highest": 44,
+    "firstLoss": {
+      "wave": 45,
+      "at": 466.1
+    },
+    "spentOnReturn": 46293,
+    "goldRemaining": 1177.349,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 1,
+        "defeats": 0,
+        "firstStart": 2,
+        "winAt": 30.825,
+        "fightSeconds": 28.825,
+        "farthest": 0.429
+      },
+      {
+        "wave": 45,
+        "attempts": 5,
+        "defeats": 5,
+        "firstStart": 425.525
+      }
+    ]
+  },
+  {
+    "label": "selected",
+    "style": "relaxed",
+    "scenario": "fresh",
+    "offline": 0,
+    "highest": 34,
+    "firstLoss": {
+      "wave": 15,
+      "at": 438.375
+    },
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 0,
+        "defeats": 0
+      },
+      {
+        "wave": 45,
+        "attempts": 0,
+        "defeats": 0
+      }
+    ]
+  },
+  {
+    "label": "selected",
+    "style": "relaxed",
+    "scenario": "w30-24h",
+    "offline": 36288.324,
+    "highest": 40,
+    "firstLoss": {
+      "wave": 41,
+      "at": 444.875
+    },
+    "spentOnReturn": 35592,
+    "goldRemaining": 2134.964,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 1,
+        "defeats": 0,
+        "firstStart": 180.225,
+        "winAt": 207.85,
+        "fightSeconds": 27.625,
+        "farthest": 0.516
+      },
+      {
+        "wave": 45,
+        "attempts": 0,
+        "defeats": 0
+      }
+    ]
+  },
+  {
+    "label": "selected",
+    "style": "relaxed",
+    "scenario": "w35-24h",
+    "offline": 52098.424,
+    "highest": 45,
+    "firstLoss": {
+      "wave": 45,
+      "at": 434.7
+    },
+    "spentOnReturn": 47544,
+    "goldRemaining": 5564.188,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 1,
+        "defeats": 0,
+        "firstStart": 2,
+        "winAt": 21.55,
+        "fightSeconds": 19.55,
+        "farthest": 0.347
+      },
+      {
+        "wave": 45,
+        "attempts": 2,
+        "defeats": 1,
+        "firstStart": 387.375,
+        "firstRemainingHp": 0.023314592521353157,
+        "winAt": 1392.025,
+        "fightSeconds": 38.225,
+        "farthest": 0.748
+      }
+    ]
+  },
+  {
+    "label": "selected",
+    "style": "relaxed",
+    "scenario": "w44-24h",
+    "offline": 60803.312,
+    "highest": 46,
+    "firstLoss": {
+      "wave": 47,
+      "at": 132.875
+    },
+    "spentOnReturn": 52655,
+    "goldRemaining": 8761.7,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 0,
+        "defeats": 0
+      },
+      {
+        "wave": 45,
+        "attempts": 1,
+        "defeats": 0,
+        "firstStart": 2,
+        "winAt": 33.525,
+        "fightSeconds": 31.525,
+        "farthest": 0.59
+      }
+    ]
+  },
+  {
+    "label": "selected",
+    "style": "mixed",
+    "scenario": "fresh",
+    "offline": 0,
+    "highest": 35,
+    "firstLoss": {
+      "wave": 35,
+      "at": 995.75
+    },
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 5,
+        "defeats": 5,
+        "firstStart": 2008.05,
+        "firstRemainingHp": 0.23286754560907905
+      },
+      {
+        "wave": 45,
+        "attempts": 0,
+        "defeats": 0
+      }
+    ]
+  },
+  {
+    "label": "selected",
+    "style": "mixed",
+    "scenario": "w30-24h",
+    "offline": 38603.797,
+    "highest": 43,
+    "firstLoss": {
+      "wave": 41,
+      "at": 404.775
+    },
+    "spentOnReturn": 37792,
+    "goldRemaining": 2054.197,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 1,
+        "defeats": 0,
+        "firstStart": 144.375,
+        "winAt": 166.175,
+        "fightSeconds": 21.8,
+        "farthest": 0.381
+      },
+      {
+        "wave": 45,
+        "attempts": 0,
+        "defeats": 0
+      }
+    ]
+  },
+  {
+    "label": "selected",
+    "style": "mixed",
+    "scenario": "w35-24h",
+    "offline": 42469.302,
+    "highest": 43,
+    "firstLoss": {
+      "wave": 43,
+      "at": 365.925
+    },
+    "spentOnReturn": 40067,
+    "goldRemaining": 3393.582,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 1,
+        "defeats": 0,
+        "firstStart": 2,
+        "winAt": 23.55,
+        "fightSeconds": 21.55,
+        "farthest": 0.377
+      },
+      {
+        "wave": 45,
+        "attempts": 0,
+        "defeats": 0
+      }
+    ]
+  },
+  {
+    "label": "selected",
+    "style": "mixed",
+    "scenario": "w44-24h",
+    "offline": 58234.176,
+    "highest": 48,
+    "firstLoss": {
+      "wave": 49,
+      "at": 216.25
+    },
+    "spentOnReturn": 58115,
+    "goldRemaining": 2589.71,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 0,
+        "defeats": 0
+      },
+      {
+        "wave": 45,
+        "attempts": 1,
+        "defeats": 0,
+        "firstStart": 2,
+        "winAt": 25.025,
+        "fightSeconds": 23.025,
+        "farthest": 0.4
+      }
+    ]
+  },
+  {
+    "label": "selected",
+    "style": "tactical",
+    "scenario": "fresh",
+    "offline": 0,
+    "highest": 36,
+    "firstLoss": {
+      "wave": 35,
+      "at": 940.525
+    },
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 4,
+        "defeats": 3,
+        "firstStart": 1695.3,
+        "firstRemainingHp": 0.08191455996031673,
+        "winAt": 2469.55,
+        "fightSeconds": 40.75,
+        "farthest": 0.675
+      },
+      {
+        "wave": 45,
+        "attempts": 0,
+        "defeats": 0
+      }
+    ]
+  },
+  {
+    "label": "selected",
+    "style": "tactical",
+    "scenario": "w30-24h",
+    "offline": 41333.217,
+    "highest": 44,
+    "firstLoss": {
+      "wave": 45,
+      "at": 598.75
+    },
+    "spentOnReturn": 41806,
+    "goldRemaining": 589.017,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 1,
+        "defeats": 0,
+        "firstStart": 121.475,
+        "winAt": 142.725,
+        "fightSeconds": 21.25,
+        "farthest": 0.373
+      },
+      {
+        "wave": 45,
+        "attempts": 4,
+        "defeats": 4,
+        "firstStart": 544.3,
+        "firstRemainingHp": 0.24741630752642962
+      }
+    ]
+  },
+  {
+    "label": "selected",
+    "style": "tactical",
+    "scenario": "w35-24h",
+    "offline": 47035.409,
+    "highest": 44,
+    "firstLoss": {
+      "wave": 45,
+      "at": 471.75
+    },
+    "spentOnReturn": 46293,
+    "goldRemaining": 1177.349,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 1,
+        "defeats": 0,
+        "firstStart": 2,
+        "winAt": 22.45,
+        "fightSeconds": 20.45,
+        "farthest": 0.361
+      },
+      {
+        "wave": 45,
+        "attempts": 5,
+        "defeats": 5,
+        "firstStart": 417.625,
+        "firstRemainingHp": 0.1915442940780584
+      }
+    ]
+  },
+  {
+    "label": "selected",
+    "style": "tactical",
+    "scenario": "w44-24h",
+    "offline": 58524.107,
+    "highest": 49,
+    "firstLoss": {
+      "wave": 45,
+      "at": 54.5
+    },
+    "spentOnReturn": 58745,
+    "goldRemaining": 1807.724,
+    "encounters": [
+      {
+        "wave": 36,
+        "attempts": 0,
+        "defeats": 0
+      },
+      {
+        "wave": 45,
+        "attempts": 3,
+        "defeats": 2,
+        "firstStart": 2,
+        "firstRemainingHp": 0.0018060800160112675,
+        "winAt": 383.875,
+        "fightSeconds": 38.175,
+        "farthest": 0.63
+      }
+    ]
+  }
+]

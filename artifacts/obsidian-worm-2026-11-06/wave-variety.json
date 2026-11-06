@@ -1,0 +1,927 @@
+{
+  "roster": [
+    {
+      "id": "ObsidianWormYoung",
+      "name": "Junger Obsidianwurm",
+      "firstWave": 36,
+      "actualFirst": 36,
+      "encounters": 1,
+      "role": "Mini-Boss · 15 Segmente, eine Lebensleiste"
+    },
+    {
+      "id": "ObsidianWorm",
+      "name": "Obsidianwurm",
+      "firstWave": 45,
+      "actualFirst": 45,
+      "encounters": 1,
+      "role": "Boss · 30 Segmente, eine Lebensleiste"
+    },
+    {
+      "id": "Leafbug",
+      "name": "Blattkäfer",
+      "firstWave": 1,
+      "actualFirst": 1,
+      "encounters": 23,
+      "role": "Ungepanzerter Schwarm"
+    },
+    {
+      "id": "Firebug",
+      "name": "Feuerkäfer",
+      "firstWave": 4,
+      "actualFirst": 4,
+      "encounters": 20,
+      "role": "Zügiger Nahverwandter"
+    },
+    {
+      "id": "FlyingLocust",
+      "name": "Flugheuschrecke",
+      "firstWave": 6,
+      "actualFirst": 6,
+      "encounters": 15,
+      "role": "Schneller, leichter Schwarm"
+    },
+    {
+      "id": "Firewasp",
+      "name": "Feuerwespe",
+      "firstWave": 9,
+      "actualFirst": 9,
+      "encounters": 11,
+      "role": "Sehr schneller Durchbrecher"
+    },
+    {
+      "id": "Scorpion",
+      "name": "Panzerskorpion",
+      "firstWave": 11,
+      "actualFirst": 11,
+      "encounters": 11,
+      "role": "45 % Rüstung"
+    },
+    {
+      "id": "MagmaCrab",
+      "name": "Magmakrabbe",
+      "firstWave": 13,
+      "actualFirst": 13,
+      "encounters": 5,
+      "role": "Langsam, viele Lebenspunkte · 25 % Rüstung"
+    },
+    {
+      "id": "Rosenspiegel",
+      "name": "Rosenspiegel",
+      "firstWave": 15,
+      "actualFirst": 15,
+      "encounters": 2,
+      "role": "Boss · verführt einen Turm"
+    },
+    {
+      "id": "Clampbeetle",
+      "name": "Panzerflieger",
+      "firstWave": 17,
+      "actualFirst": 17,
+      "encounters": 6,
+      "role": "Beweglicher Panzer · 30 % Rüstung"
+    },
+    {
+      "id": "LanternJelly",
+      "name": "Laternenqualle",
+      "firstWave": 21,
+      "actualFirst": 21,
+      "encounters": 4,
+      "role": "Heilt bis zu zwei verwundete Begleiter"
+    },
+    {
+      "id": "Voidbutterfly",
+      "name": "Leerenfalter",
+      "firstWave": 28,
+      "actualFirst": 28,
+      "encounters": 5,
+      "role": "Frost verlangsamt ihn nur um 20 %"
+    },
+    {
+      "id": "ForestGoblin",
+      "name": "Waldgoblin",
+      "firstWave": 19,
+      "actualFirst": 19,
+      "encounters": 8,
+      "role": "Schneller Bodenläufer mit mittleren Lebenspunkten"
+    },
+    {
+      "id": "BoneGuard",
+      "name": "Knochenwächter",
+      "firstWave": 26,
+      "actualFirst": 26,
+      "encounters": 4,
+      "role": "Mittelschwerer Wächter · 25 % Rüstung"
+    },
+    {
+      "id": "ForestCultist",
+      "name": "Waldkultist",
+      "firstWave": 32,
+      "actualFirst": 32,
+      "encounters": 3,
+      "role": "Bodenheiler · teilt Heilsperren mit der Qualle"
+    },
+    {
+      "id": "MossShroom",
+      "name": "Moospilz",
+      "firstWave": 42,
+      "actualFirst": 42,
+      "encounters": 3,
+      "role": "Kleiner Waldläufer · zwei kosmetische Kappenfarben"
+    },
+    {
+      "id": "WoodSpider",
+      "name": "Waldspinne",
+      "firstWave": 46,
+      "actualFirst": 46,
+      "encounters": 3,
+      "role": "Flinker, leichter Bodenläufer"
+    },
+    {
+      "id": "HornedBat",
+      "name": "Hornfledermaus",
+      "firstWave": 50,
+      "actualFirst": 50,
+      "encounters": 1,
+      "role": "Schneller, leichter Flieger"
+    },
+    {
+      "id": "EmberBomb",
+      "name": "Zunderläufer",
+      "firstWave": 54,
+      "actualFirst": null,
+      "encounters": 0,
+      "role": "Langsamer Panzer · 25 % Rüstung, zwei Kernschaden"
+    }
+  ],
+  "bands": [
+    {
+      "from": 1,
+      "to": 5,
+      "types": 2,
+      "meanTypes": 1.4,
+      "uniqueTypeSets": 2,
+      "dominant": "Leafbug",
+      "dominantShare": 85,
+      "sameTypeSetAsPrevious": 3,
+      "total": 40,
+      "counts": {
+        "Leafbug": 34,
+        "Firebug": 6
+      }
+    },
+    {
+      "from": 6,
+      "to": 10,
+      "types": 4,
+      "meanTypes": 2.6,
+      "uniqueTypeSets": 5,
+      "dominant": "Leafbug",
+      "dominantShare": 40.9,
+      "sameTypeSetAsPrevious": 0,
+      "total": 66,
+      "counts": {
+        "Leafbug": 27,
+        "FlyingLocust": 19,
+        "Firebug": 16,
+        "Firewasp": 4
+      }
+    },
+    {
+      "from": 11,
+      "to": 20,
+      "types": 9,
+      "meanTypes": 3,
+      "uniqueTypeSets": 9,
+      "dominant": "Leafbug",
+      "dominantShare": 34.2,
+      "sameTypeSetAsPrevious": 0,
+      "total": 187,
+      "counts": {
+        "Leafbug": 64,
+        "Scorpion": 16,
+        "Firebug": 38,
+        "FlyingLocust": 39,
+        "MagmaCrab": 4,
+        "Rosenspiegel": 1,
+        "Firewasp": 14,
+        "Clampbeetle": 7,
+        "ForestGoblin": 4
+      }
+    },
+    {
+      "from": 21,
+      "to": 30,
+      "types": 12,
+      "meanTypes": 2.8,
+      "uniqueTypeSets": 10,
+      "dominant": "Firebug",
+      "dominantShare": 29.2,
+      "sameTypeSetAsPrevious": 0,
+      "total": 236,
+      "counts": {
+        "MagmaCrab": 7,
+        "Firebug": 69,
+        "LanternJelly": 6,
+        "Scorpion": 22,
+        "Leafbug": 42,
+        "FlyingLocust": 18,
+        "Firewasp": 20,
+        "Rosenspiegel": 1,
+        "ForestGoblin": 32,
+        "BoneGuard": 4,
+        "Clampbeetle": 11,
+        "Voidbutterfly": 4
+      }
+    },
+    {
+      "from": 31,
+      "to": 40,
+      "types": 12,
+      "meanTypes": 2.4,
+      "uniqueTypeSets": 9,
+      "dominant": "ForestGoblin",
+      "dominantShare": 24.7,
+      "sameTypeSetAsPrevious": 0,
+      "total": 231,
+      "counts": {
+        "ForestGoblin": 57,
+        "Leafbug": 37,
+        "MagmaCrab": 9,
+        "ForestCultist": 6,
+        "Clampbeetle": 11,
+        "FlyingLocust": 9,
+        "Firewasp": 38,
+        "Firebug": 32,
+        "Voidbutterfly": 15,
+        "ObsidianWormYoung": 1,
+        "Scorpion": 11,
+        "BoneGuard": 5
+      }
+    },
+    {
+      "from": 41,
+      "to": 50,
+      "types": 13,
+      "meanTypes": 2.4,
+      "uniqueTypeSets": 10,
+      "dominant": "Firebug",
+      "dominantShare": 18.9,
+      "sameTypeSetAsPrevious": 0,
+      "total": 222,
+      "counts": {
+        "Firewasp": 24,
+        "Firebug": 42,
+        "Scorpion": 16,
+        "MossShroom": 17,
+        "Leafbug": 23,
+        "FlyingLocust": 39,
+        "MagmaCrab": 11,
+        "ObsidianWorm": 1,
+        "WoodSpider": 27,
+        "LanternJelly": 2,
+        "Clampbeetle": 9,
+        "BoneGuard": 9,
+        "HornedBat": 2
+      }
+    }
+  ],
+  "first20": {
+    "Leafbug": 125,
+    "Firebug": 60,
+    "FlyingLocust": 58,
+    "Firewasp": 18,
+    "Scorpion": 16,
+    "MagmaCrab": 4,
+    "Rosenspiegel": 1,
+    "Clampbeetle": 7,
+    "ForestGoblin": 4
+  },
+  "rows": [
+    {
+      "wave": 1,
+      "count": 6,
+      "types": 1,
+      "dominant": "Leafbug",
+      "dominantShare": 1,
+      "special": "ordinary",
+      "counts": {
+        "Leafbug": 6
+      }
+    },
+    {
+      "wave": 2,
+      "count": 7,
+      "types": 1,
+      "dominant": "Leafbug",
+      "dominantShare": 1,
+      "special": "ordinary",
+      "counts": {
+        "Leafbug": 7
+      }
+    },
+    {
+      "wave": 3,
+      "count": 8,
+      "types": 1,
+      "dominant": "Leafbug",
+      "dominantShare": 1,
+      "special": "ordinary",
+      "counts": {
+        "Leafbug": 8
+      }
+    },
+    {
+      "wave": 4,
+      "count": 9,
+      "types": 2,
+      "dominant": "Leafbug",
+      "dominantShare": 0.6666666666666666,
+      "special": "ordinary",
+      "counts": {
+        "Leafbug": 6,
+        "Firebug": 3
+      }
+    },
+    {
+      "wave": 5,
+      "count": 10,
+      "types": 2,
+      "dominant": "Leafbug",
+      "dominantShare": 0.7,
+      "special": "ordinary",
+      "counts": {
+        "Leafbug": 7,
+        "Firebug": 3
+      }
+    },
+    {
+      "wave": 6,
+      "count": 11,
+      "types": 3,
+      "dominant": "Leafbug",
+      "dominantShare": 0.7272727272727273,
+      "special": "ordinary",
+      "counts": {
+        "Leafbug": 8,
+        "FlyingLocust": 2,
+        "Firebug": 1
+      }
+    },
+    {
+      "wave": 7,
+      "count": 10,
+      "types": 2,
+      "dominant": "Firebug",
+      "dominantShare": 0.8,
+      "special": "ordinary",
+      "counts": {
+        "Firebug": 8,
+        "FlyingLocust": 2
+      }
+    },
+    {
+      "wave": 8,
+      "count": 13,
+      "types": 2,
+      "dominant": "Leafbug",
+      "dominantShare": 0.6923076923076923,
+      "special": "ordinary",
+      "counts": {
+        "Leafbug": 9,
+        "FlyingLocust": 4
+      }
+    },
+    {
+      "wave": 9,
+      "count": 10,
+      "types": 3,
+      "dominant": "Firebug",
+      "dominantShare": 0.7,
+      "special": "ordinary",
+      "counts": {
+        "Firebug": 7,
+        "Firewasp": 2,
+        "FlyingLocust": 1
+      }
+    },
+    {
+      "wave": 10,
+      "count": 22,
+      "types": 3,
+      "dominant": "Leafbug",
+      "dominantShare": 0.45454545454545453,
+      "special": "ordinary",
+      "counts": {
+        "Leafbug": 10,
+        "Firewasp": 2,
+        "FlyingLocust": 10
+      }
+    },
+    {
+      "wave": 11,
+      "count": 14,
+      "types": 2,
+      "dominant": "Leafbug",
+      "dominantShare": 0.8571428571428571,
+      "special": "ordinary",
+      "counts": {
+        "Leafbug": 12,
+        "Scorpion": 2
+      }
+    },
+    {
+      "wave": 12,
+      "count": 17,
+      "types": 3,
+      "dominant": "Firebug",
+      "dominantShare": 0.5882352941176471,
+      "special": "ordinary",
+      "counts": {
+        "Firebug": 10,
+        "FlyingLocust": 5,
+        "Scorpion": 2
+      }
+    },
+    {
+      "wave": 13,
+      "count": 16,
+      "types": 3,
+      "dominant": "Leafbug",
+      "dominantShare": 0.5625,
+      "special": "ordinary",
+      "counts": {
+        "Scorpion": 5,
+        "Leafbug": 9,
+        "MagmaCrab": 2
+      }
+    },
+    {
+      "wave": 14,
+      "count": 19,
+      "types": 3,
+      "dominant": "Firebug",
+      "dominantShare": 0.5789473684210527,
+      "special": "ordinary",
+      "counts": {
+        "Firebug": 11,
+        "FlyingLocust": 6,
+        "MagmaCrab": 2
+      }
+    },
+    {
+      "wave": 15,
+      "count": 9,
+      "types": 4,
+      "dominant": "Leafbug",
+      "dominantShare": 0.5555555555555556,
+      "special": "boss",
+      "counts": {
+        "Leafbug": 5,
+        "Rosenspiegel": 1,
+        "Scorpion": 1,
+        "Firebug": 2
+      }
+    },
+    {
+      "wave": 16,
+      "count": 18,
+      "types": 2,
+      "dominant": "Leafbug",
+      "dominantShare": 0.6666666666666666,
+      "special": "ordinary",
+      "counts": {
+        "Scorpion": 6,
+        "Leafbug": 12
+      }
+    },
+    {
+      "wave": 17,
+      "count": 22,
+      "types": 3,
+      "dominant": "FlyingLocust",
+      "dominantShare": 0.5909090909090909,
+      "special": "ordinary",
+      "counts": {
+        "FlyingLocust": 13,
+        "Firewasp": 7,
+        "Clampbeetle": 2
+      }
+    },
+    {
+      "wave": 18,
+      "count": 23,
+      "types": 3,
+      "dominant": "Leafbug",
+      "dominantShare": 0.6086956521739131,
+      "special": "ordinary",
+      "counts": {
+        "Leafbug": 14,
+        "Firebug": 7,
+        "Clampbeetle": 2
+      }
+    },
+    {
+      "wave": 19,
+      "count": 24,
+      "types": 3,
+      "dominant": "FlyingLocust",
+      "dominantShare": 0.625,
+      "special": "ordinary",
+      "counts": {
+        "FlyingLocust": 15,
+        "Firewasp": 7,
+        "ForestGoblin": 2
+      }
+    },
+    {
+      "wave": 20,
+      "count": 25,
+      "types": 4,
+      "dominant": "Leafbug",
+      "dominantShare": 0.48,
+      "special": "ordinary",
+      "counts": {
+        "Clampbeetle": 3,
+        "Firebug": 8,
+        "ForestGoblin": 2,
+        "Leafbug": 12
+      }
+    },
+    {
+      "wave": 21,
+      "count": 23,
+      "types": 3,
+      "dominant": "Firebug",
+      "dominantShare": 0.6086956521739131,
+      "special": "ordinary",
+      "counts": {
+        "MagmaCrab": 7,
+        "Firebug": 14,
+        "LanternJelly": 2
+      }
+    },
+    {
+      "wave": 22,
+      "count": 22,
+      "types": 3,
+      "dominant": "Leafbug",
+      "dominantShare": 0.5,
+      "special": "ordinary",
+      "counts": {
+        "Scorpion": 9,
+        "Leafbug": 11,
+        "LanternJelly": 2
+      }
+    },
+    {
+      "wave": 23,
+      "count": 28,
+      "types": 2,
+      "dominant": "Firebug",
+      "dominantShare": 0.6785714285714286,
+      "special": "ordinary",
+      "counts": {
+        "Firebug": 19,
+        "FlyingLocust": 9
+      }
+    },
+    {
+      "wave": 24,
+      "count": 27,
+      "types": 2,
+      "dominant": "Firebug",
+      "dominantShare": 0.7037037037037037,
+      "special": "ordinary",
+      "counts": {
+        "Firebug": 19,
+        "Firewasp": 8
+      }
+    },
+    {
+      "wave": 25,
+      "count": 13,
+      "types": 4,
+      "dominant": "Leafbug",
+      "dominantShare": 0.5384615384615384,
+      "special": "boss",
+      "counts": {
+        "Leafbug": 7,
+        "Rosenspiegel": 1,
+        "Scorpion": 2,
+        "Firebug": 3
+      }
+    },
+    {
+      "wave": 26,
+      "count": 28,
+      "types": 3,
+      "dominant": "ForestGoblin",
+      "dominantShare": 0.4642857142857143,
+      "special": "ordinary",
+      "counts": {
+        "ForestGoblin": 13,
+        "BoneGuard": 2,
+        "Leafbug": 13
+      }
+    },
+    {
+      "wave": 27,
+      "count": 22,
+      "types": 3,
+      "dominant": "Clampbeetle",
+      "dominantShare": 0.5,
+      "special": "ordinary",
+      "counts": {
+        "Clampbeetle": 11,
+        "BoneGuard": 2,
+        "FlyingLocust": 9
+      }
+    },
+    {
+      "wave": 28,
+      "count": 28,
+      "types": 3,
+      "dominant": "Firebug",
+      "dominantShare": 0.5,
+      "special": "ordinary",
+      "counts": {
+        "Firewasp": 12,
+        "Voidbutterfly": 2,
+        "Firebug": 14
+      }
+    },
+    {
+      "wave": 29,
+      "count": 23,
+      "types": 3,
+      "dominant": "ForestGoblin",
+      "dominantShare": 0.8260869565217391,
+      "special": "ordinary",
+      "counts": {
+        "ForestGoblin": 19,
+        "Voidbutterfly": 2,
+        "LanternJelly": 2
+      }
+    },
+    {
+      "wave": 30,
+      "count": 22,
+      "types": 2,
+      "dominant": "Scorpion",
+      "dominantShare": 0.5,
+      "special": "ordinary",
+      "counts": {
+        "Scorpion": 11,
+        "Leafbug": 11
+      }
+    },
+    {
+      "wave": 31,
+      "count": 28,
+      "types": 2,
+      "dominant": "Leafbug",
+      "dominantShare": 0.5357142857142857,
+      "special": "ordinary",
+      "counts": {
+        "ForestGoblin": 13,
+        "Leafbug": 15
+      }
+    },
+    {
+      "wave": 32,
+      "count": 23,
+      "types": 3,
+      "dominant": "ForestGoblin",
+      "dominantShare": 0.5217391304347826,
+      "special": "ordinary",
+      "counts": {
+        "MagmaCrab": 9,
+        "ForestCultist": 2,
+        "ForestGoblin": 12
+      }
+    },
+    {
+      "wave": 33,
+      "count": 22,
+      "types": 3,
+      "dominant": "Clampbeetle",
+      "dominantShare": 0.5,
+      "special": "ordinary",
+      "counts": {
+        "Clampbeetle": 11,
+        "ForestCultist": 2,
+        "FlyingLocust": 9
+      }
+    },
+    {
+      "wave": 34,
+      "count": 27,
+      "types": 2,
+      "dominant": "Firebug",
+      "dominantShare": 0.5925925925925926,
+      "special": "ordinary",
+      "counts": {
+        "Firewasp": 11,
+        "Firebug": 16
+      }
+    },
+    {
+      "wave": 35,
+      "count": 28,
+      "types": 3,
+      "dominant": "ForestGoblin",
+      "dominantShare": 0.4642857142857143,
+      "special": "ordinary",
+      "counts": {
+        "ForestGoblin": 13,
+        "Leafbug": 13,
+        "Voidbutterfly": 2
+      }
+    },
+    {
+      "wave": 36,
+      "count": 1,
+      "types": 1,
+      "dominant": "ObsidianWormYoung",
+      "dominantShare": 1,
+      "special": "boss",
+      "counts": {
+        "ObsidianWormYoung": 1
+      }
+    },
+    {
+      "wave": 37,
+      "count": 27,
+      "types": 2,
+      "dominant": "Firewasp",
+      "dominantShare": 0.5925925925925926,
+      "special": "ordinary",
+      "counts": {
+        "Voidbutterfly": 11,
+        "Firewasp": 16
+      }
+    },
+    {
+      "wave": 38,
+      "count": 22,
+      "types": 3,
+      "dominant": "Scorpion",
+      "dominantShare": 0.5,
+      "special": "ordinary",
+      "counts": {
+        "Scorpion": 11,
+        "Leafbug": 9,
+        "Voidbutterfly": 2
+      }
+    },
+    {
+      "wave": 39,
+      "count": 27,
+      "types": 2,
+      "dominant": "Firebug",
+      "dominantShare": 0.5925925925925926,
+      "special": "ordinary",
+      "counts": {
+        "Firewasp": 11,
+        "Firebug": 16
+      }
+    },
+    {
+      "wave": 40,
+      "count": 26,
+      "types": 3,
+      "dominant": "ForestGoblin",
+      "dominantShare": 0.7307692307692307,
+      "special": "elite",
+      "counts": {
+        "BoneGuard": 5,
+        "ForestGoblin": 19,
+        "ForestCultist": 2
+      }
+    },
+    {
+      "wave": 41,
+      "count": 28,
+      "types": 2,
+      "dominant": "Firebug",
+      "dominantShare": 0.5714285714285714,
+      "special": "ordinary",
+      "counts": {
+        "Firewasp": 12,
+        "Firebug": 16
+      }
+    },
+    {
+      "wave": 42,
+      "count": 21,
+      "types": 3,
+      "dominant": "Leafbug",
+      "dominantShare": 0.47619047619047616,
+      "special": "ordinary",
+      "counts": {
+        "Scorpion": 9,
+        "MossShroom": 2,
+        "Leafbug": 10
+      }
+    },
+    {
+      "wave": 43,
+      "count": 28,
+      "types": 3,
+      "dominant": "FlyingLocust",
+      "dominantShare": 0.4642857142857143,
+      "special": "ordinary",
+      "counts": {
+        "FlyingLocust": 13,
+        "MossShroom": 2,
+        "Leafbug": 13
+      }
+    },
+    {
+      "wave": 44,
+      "count": 22,
+      "types": 2,
+      "dominant": "MagmaCrab",
+      "dominantShare": 0.5,
+      "special": "ordinary",
+      "counts": {
+        "MagmaCrab": 11,
+        "Firebug": 11
+      }
+    },
+    {
+      "wave": 45,
+      "count": 1,
+      "types": 1,
+      "dominant": "ObsidianWorm",
+      "dominantShare": 1,
+      "special": "boss",
+      "counts": {
+        "ObsidianWorm": 1
+      }
+    },
+    {
+      "wave": 46,
+      "count": 24,
+      "types": 3,
+      "dominant": "WoodSpider",
+      "dominantShare": 0.625,
+      "special": "ordinary",
+      "counts": {
+        "Scorpion": 7,
+        "WoodSpider": 15,
+        "LanternJelly": 2
+      }
+    },
+    {
+      "wave": 47,
+      "count": 21,
+      "types": 3,
+      "dominant": "FlyingLocust",
+      "dominantShare": 0.47619047619047616,
+      "special": "ordinary",
+      "counts": {
+        "Clampbeetle": 9,
+        "WoodSpider": 2,
+        "FlyingLocust": 10
+      }
+    },
+    {
+      "wave": 48,
+      "count": 28,
+      "types": 2,
+      "dominant": "Firebug",
+      "dominantShare": 0.5357142857142857,
+      "special": "ordinary",
+      "counts": {
+        "Firebug": 15,
+        "MossShroom": 13
+      }
+    },
+    {
+      "wave": 49,
+      "count": 28,
+      "types": 2,
+      "dominant": "FlyingLocust",
+      "dominantShare": 0.5714285714285714,
+      "special": "ordinary",
+      "counts": {
+        "Firewasp": 12,
+        "FlyingLocust": 16
+      }
+    },
+    {
+      "wave": 50,
+      "count": 21,
+      "types": 3,
+      "dominant": "WoodSpider",
+      "dominantShare": 0.47619047619047616,
+      "special": "ordinary",
+      "counts": {
+        "BoneGuard": 9,
+        "HornedBat": 2,
+        "WoodSpider": 10
+      }
+    }
+  ]
+}

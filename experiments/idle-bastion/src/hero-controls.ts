@@ -40,7 +40,7 @@ export function recommendIlyraPosition(b: IdleBattle): WorldPoint | undefined {
 export function ilyraFirstTarget(b: IdleBattle): WorldPoint | undefined {
   const s = b.ilyra; if (!s || s.path.length || s.volley || s.introduction === 'move') return;
   for (const e of b.enemies) {
-    const dx = e.x - s.x, dy = e.y - s.y, distance = Math.hypot(dx, dy), scale = Math.min(1, (ILYRA.range - .01) / Math.max(1, distance));
+    const target=b.enemyTargetPoint(e,s),dx = target.x - s.x, dy = target.y - s.y, distance = Math.hypot(dx, dy), scale = Math.min(1, (ILYRA.range - .01) / Math.max(1, distance));
     const point = { x: s.x + dx * scale, y: s.y + dy * scale };
     if (b.canCastIlyra(point)) return point;
   }

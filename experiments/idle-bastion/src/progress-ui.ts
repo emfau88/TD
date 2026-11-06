@@ -2,6 +2,7 @@ import { t, numberFormat, language } from './i18n';
 import { waveRecipe, FAMILY_NAMES } from './wave-recipes';
 import { ENEMY_ROSTER } from './enemy-roster';
 import { bossEncounter } from './boss';
+import { wormEncounter } from './worm';
 import { farmRewardGold } from './farming';
 import { waveCount, waveEnemy, SETTLEMENT, FROST, upgradeCost, type IdleBattle } from './battle';
 import type { BattleSession } from './battle-session';
@@ -148,7 +149,7 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
         enemiesKey = enemyKey;
         const counts = new Map<string, number>();
         for (let i = 0; i < (b.wave ? total : 0); i++) { const name = waveEnemy(b.wave, i, b.waveRecipeVersion).name; counts.set(name, (counts.get(name) ?? 0) + 1); }
-        el('journal-wave-enemies').textContent = t(b.wave ? t("Zusammenstellung Welle {0}{1}: {2}", b.wave, b.waveRecipeVersion >= 11 && b.wave >= 6 && b.wave !== 15 && b.wave !== 25 ? t(" · {0}{1}", waveRecipe(b.wave).elite ? 'Elite · ' : '', FAMILY_NAMES[waveRecipe(b.wave).family]) : '', [...counts].map(([name, n]) => t("{0} × {1}", n, name)).join(' · ')) : t('Die erste Welle besteht aus Blattkäfern.'));
+        el('journal-wave-enemies').textContent = t(b.wave ? t("Zusammenstellung Welle {0}{1}: {2}", b.wave, wormEncounter(b.wave,b.waveRecipeVersion) ? t(b.wave===36?' · Mini-Boss':' · Boss') : b.waveRecipeVersion >= 11 && b.wave >= 6 && b.wave !== 15 && b.wave !== 25 ? t(" · {0}{1}", waveRecipe(b.wave,b.waveRecipeVersion).elite ? 'Elite · ' : '', FAMILY_NAMES[waveRecipe(b.wave,b.waveRecipeVersion).family]) : '', [...counts].map(([name, n]) => t("{0} × {1}", n, name)).join(' · ')) : t('Die erste Welle besteht aus Blattkäfern.'));
         const reached = Math.max(b.wave, b.highestCleared), next = ENEMY_ROSTER.filter(e => e.id !== 'Rosenspiegel' && e.firstWave > reached).sort((a,z) => a.firstWave-z.firstWave)[0];
         el('journal-next-enemy').textContent = t(next ? t("Nächster neuer Gegnertyp: {0} ab Welle {1}.", next.name, next.firstWave) : t('Alle normalen Gegnertypen verfügbar. Weitere Wellen wechseln zwischen Schwärmen, Tempo, Panzern und Unterstützung.'));
         el('journal-enemy-roster').replaceChildren(...ENEMY_ROSTER.filter(e => e.id !== 'Rosenspiegel' && e.firstWave <= Math.max(1, reached)).map(e => {

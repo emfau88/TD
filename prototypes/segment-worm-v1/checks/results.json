@@ -1,0 +1,65 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "segments": 30,
+    "half": 15,
+    "scale": 0.83,
+    "headSpacing": 12.5,
+    "lengthApprox": 417.5,
+    "spacing": {
+      "min": 12.505679555809671,
+      "max": 13.540174447244176
+    },
+    "pause": true,
+    "zoom": true,
+    "reducedMotion": true,
+    "noHorizontalPageOverflow": true,
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "segments": 30,
+    "half": 15,
+    "scale": 0.83,
+    "headSpacing": 12.5,
+    "lengthApprox": 417.5,
+    "spacing": {
+      "min": 12.5058922053605,
+      "max": 13.503663948953415
+    },
+    "pause": true,
+    "zoom": true,
+    "reducedMotion": true,
+    "noHorizontalPageOverflow": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "segments": 30,
+    "half": 15,
+    "scale": 0.83,
+    "headSpacing": 12.5,
+    "lengthApprox": 417.5,
+    "spacing": {
+      "min": 12.50709088522247,
+      "max": 13.527081848240387
+    },
+    "pause": true,
+    "zoom": true,
+    "reducedMotion": true,
+    "noHorizontalPageOverflow": true,
+    "errors": []
+  },
+  {
+    "headJoint": {
+      "configured": 12.5,
+      "min": 12.069724730023175,
+      "max": 12.567901690312056,
+      "directions": 8,
+      "completeRoute": true
+    }
+  }
+]

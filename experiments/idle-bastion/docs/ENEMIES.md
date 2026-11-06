@@ -1,5 +1,28 @@
 # Vorhandene Gegner im Idle-Spiel
 
+## Obsidianwurm · Regeln 20 / Schema 36, 06.11.2026
+
+W36 wird zur Solobegegnung mit dem jungen Obsidianwurm (15 Körpersegmente), W45
+zum langen Boss (30). Beide nutzen eine Lebensleiste und eine Gegner-ID;
+Flächenschaden trifft einmal, Kettenblitze springen nicht zwischen Körperteilen.
+Der gesamte sichtbare Körper ist treffbar. Hintere Segmente verschwinden mit
+sinkenden HP. Kein zusätzliches Gold je Segment und keine Begleiter.
+
+| Welle | HP einschließlich Wellenwachstum | Tempo | Rüstung | Kernschaden |
+| --- | ---: | ---: | ---: | ---: |
+| 36 | 52.003,09 | 42 | 10 % | 20 |
+| 45 | 156.219,47 | 42 | 10 % | 20 |
+
+Die zwei bisherigen Wellenbudgets bleiben auf Basisgoldebene gleich. Durch die
+vorhandene Rundung pro Vergütung unterscheiden sich die vollständigen Auszahlungen
+mit Wisp um +2,2 / −5,5 Gold. Keine Zusatzprämie. Neue Farmnachweise schließen beide
+Wellen aus; die normalen Farm-/Offlinequoten bleiben gleich. Historische laufende
+Versuche behalten ihre Rezepte und bereits erworbene Offlineansprüche.
+Alle übrigen Rezepte 1–250 wurden gegen Regeln 19 auf Gleichheit geprüft.
+
+[Balance, drei Spielweisen, Rückkehr und Grenzen](../../../artifacts/obsidian-worm-2026-11-06/REPORT.md)
+· [Grafikherkunft](../assets/obsidian-worm/README.md).
+
 ## W26–50 · Regeln 18, 02.11.2026
 
 Aktueller Name: **Towers & Tantrums**. Der begrenzte B-Nachschliff normalisiert

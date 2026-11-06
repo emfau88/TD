@@ -1,5 +1,21 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Segmentgegner — Regeln 20 / Schema 36, 06.11.2026
+
+`worm.ts` leitet die sichtbaren Teile ausschließlich aus gespeicherter Kopfdistanz,
+HP und der tatsächlichen Weglinie ab. Keine zusätzlichen Gegner-UIDs oder
+Segmentzustände im Save. Gemeinsame Kontaktpunktberechnung für Reichweite,
+Geschosse, Flächenschaden und Heldenfähigkeiten. Bei normalen Gegnern bleibt der
+bisherige Punkt unverändert. `worm-view.ts` setzt denselben Körper mit eigener
+Bodentiefe pro Teil zusammen und teilt einen kleinen Atlas zwischen beiden Arten.
+
+Schema 35 wird erst unter Regeln 19 validiert. Die Migration nach 36 erhält den
+laufenden Versuch samt Rezept, Gold und Projektile; nur W36/W45 entfallen als
+künftige Farmkandidaten. Schema 34 durchläuft weiterhin ausdrücklich 35, bevor
+die neue Migration greift. Historische Offlinebelege bleiben bei ihrer ursprünglichen
+Regelversion zahlbar. Neue Kämpfe dürfen den passenden Wurm ausschließlich in
+W36/W45 und ohne Begleiter enthalten. [Prüfnachweise](../../../artifacts/obsidian-worm-2026-11-06/REPORT.md).
+
 ## Vollbild-Ladeszene — 02.11.2026
 
 Die frühen HTML-Bilder sind kleine Inline-WebPs. Vite bettet ausschließlich im

@@ -1,5 +1,6 @@
 /** Idle-owned balance; the original enemy packs supply art, not mutable rules. */
-export type EnemyId = 'Leafbug' | 'Firebug' | 'Scorpion' | 'Rosenspiegel' | 'FlyingLocust' | 'Firewasp' | 'MagmaCrab' | 'Clampbeetle' | 'LanternJelly' | 'Voidbutterfly' | 'ForestGoblin' | 'BoneGuard' | 'ForestCultist' | 'MossShroom' | 'WoodSpider' | 'HornedBat' | 'EmberBomb';
+import { isWorm } from './worm';
+export type EnemyId = 'Leafbug' | 'Firebug' | 'Scorpion' | 'Rosenspiegel' | 'FlyingLocust' | 'Firewasp' | 'MagmaCrab' | 'Clampbeetle' | 'LanternJelly' | 'Voidbutterfly' | 'ForestGoblin' | 'BoneGuard' | 'ForestCultist' | 'MossShroom' | 'WoodSpider' | 'HornedBat' | 'EmberBomb' | 'ObsidianWormYoung' | 'ObsidianWorm';
 export interface EnemyDef {
   readonly id: EnemyId; readonly name: string; readonly hp: number; readonly speed: number;
   readonly gold: number; readonly armor: number; readonly lives: number;
@@ -10,6 +11,8 @@ function enemy(id: EnemyId, name: string, hp: number, speed: number, gold: numbe
   return Object.freeze({ id, name, hp, speed, gold, armor, lives, firstWave, flying, role, counter, slowFactor });
 }
 export const ENEMIES = Object.freeze({
+  ObsidianWormYoung: enemy('ObsidianWormYoung', 'Junger Obsidianwurm', 500, 42, 80, .1, 20, 36, false, 'Mini-Boss · 15 Segmente, eine Lebensleiste', 'Den ganzen Körper beschießen; erreicht der Kopf den Kern, scheitert die Welle'),
+  ObsidianWorm: enemy('ObsidianWorm', 'Obsidianwurm', 500, 42, 80, .1, 20, 45, false, 'Boss · 30 Segmente, eine Lebensleiste', 'Frost und konzentriertes Feuer; verlorene Segmente geben kein zusätzliches Gold'),
   Leafbug: enemy('Leafbug', 'Blattkäfer', 24, 45, 8, 0, 1, 1, false, 'Ungepanzerter Schwarm', 'Waldwächter und Flächenschaden'),
   Firebug: enemy('Firebug', 'Feuerkäfer', 34, 56, 11, 0, 1, 4, false, 'Zügiger Nahverwandter', 'Frost verlängert das Schussfenster'),
   FlyingLocust: enemy('FlyingLocust', 'Flugheuschrecke', 20, 63, 9, 0, 1, 6, true, 'Schneller, leichter Schwarm', 'Frost und Steinschleuder kombinieren'),
@@ -31,7 +34,7 @@ export const ENEMIES = Object.freeze({
 export const isHealer = (def: EnemyDef): boolean => def.id === 'LanternJelly' || def.id === 'ForestCultist';
 export const ENEMY_ROSTER: readonly EnemyDef[] = Object.values(ENEMIES);
 export const enemyId = (value: unknown): value is EnemyId => typeof value === 'string' && Object.hasOwn(ENEMIES, value);
-export const introducedEnemy = (wave: number, recipe = 11): EnemyDef | undefined => ENEMY_ROSTER.find(e => e.firstWave === wave && e.id !== 'Rosenspiegel'
+export const introducedEnemy = (wave: number, recipe = 11): EnemyDef | undefined => ENEMY_ROSTER.find(e => e.firstWave === wave && e.id !== 'Rosenspiegel' && !isWorm(e.id)
   && (recipe >= 11 || !['ForestGoblin','BoneGuard','ForestCultist'].includes(e.id))
   && (recipe >= 13 || e.firstWave <= 40));
 const THEMES: readonly (readonly EnemyId[])[] = [

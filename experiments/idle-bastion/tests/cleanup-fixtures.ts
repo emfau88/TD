@@ -18,6 +18,8 @@ export function expectedCombatSocial(old: any) {
 }
 export function expectedCombatMigration(old: any) {
   return { ...old, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION,
+    liveClearedWaves: old.liveClearedWaves.filter((wave:number)=>wave!==36&&wave!==45),
+    farmWave: old.farmWave===36||old.farmWave===45 ? 1 : old.farmWave,
     tutorialFrostUid: old.tutorialFrostUid ?? null,
     settlement: { ...old.settlement, stormResearched: old.settlement.stormResearched ?? false, emberResearched: false, emberResearchSeen: false },
     social: expectedCombatSocial(old) };

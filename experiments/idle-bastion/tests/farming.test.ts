@@ -209,7 +209,7 @@ test('bounded live history pins both entry evidence and the currently certified 
   snapshot.wave = 49; snapshot.highestCleared = 48; snapshot.attemptId = 49;
   snapshot.progress.waves[0].wave = 49; // Match the artificially moved active attempt.
   snapshot.farmWave = 3;
-  snapshot.liveClearedWaves = [1, 3, ...Array.from({ length: 31 }, (_, index) => index + 18).filter(wave => wave !== 25)];
+  snapshot.liveClearedWaves = [1, 3, ...Array.from({ length: 33 }, (_, index) => index + 16).filter(wave => ![25,36,45].includes(wave))];
   assert.equal(snapshot.liveClearedWaves.length, 32);
   const target = snapshot.enemies.find(enemy => enemy.uid === snapshot.shots[0].target)!;
   target.maxHp = BASE.enemies[target.defId].hp * healthMultiplier(49, snapshot.waveRecipeVersion, false);
