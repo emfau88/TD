@@ -1,0 +1,74 @@
+TAP version 13
+# Subtest: rules 17 preserve enemy composition, counts, HP and base rewards from 16 through endless waves
+ok 1 - rules 17 preserve enemy composition, counts, HP and base rewards from 16 through endless waves
+  ---
+  duration_ms: 7.8137
+  type: 'test'
+  ...
+# Subtest: first live clear pays 70 gold, replay pays 7, proof includes the reduction exactly once
+ok 2 - first live clear pays 70 gold, replay pays 7, proof includes the reduction exactly once
+  ---
+  duration_ms: 109.2792
+  type: 'test'
+  ...
+# Subtest: repeat classification includes advance mode and old bosses, but excludes uncleared frontiers and tutorial
+ok 3 - repeat classification includes advance mode and old bosses, but excludes uncleared frontiers and tutorial
+  ---
+  duration_ms: 61.9575
+  type: 'test'
+  ...
+# Subtest: both first boss bonuses remain full and once-only alongside reduced repeat clear rewards
+ok 4 - both first boss bonuses remain full and once-only alongside reduced repeat clear rewards
+  ---
+  duration_ms: 2.9497
+  type: 'test'
+  ...
+# Subtest: real schema 32 in-flight replay preserves every field and old reward until the next attempt
+not ok 5 - real schema 32 in-flight replay preserves every field and old reward until the next attempt
+  ---
+  duration_ms: 195.0826
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\progression-economy\\experiments\\idle-bastion\\tests\\progression-economy.test.ts:1:4326'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 1828200n
+    - 914100n
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 914100n
+  actual: 1828200n
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\progression-economy\experiments\idle-bastion\tests\progression-economy.test.ts:103:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: native session preserves old 60/65% active baselines and pending claims exactly once, then starts new policy
+ok 6 - native session preserves old 60/65% active baselines and pending claims exactly once, then starts new policy
+  ---
+  duration_ms: 969.5062
+  type: 'test'
+  ...
+# Subtest: new policy fractions survive repeated claims and reloads without a second multiplier or reset
+ok 7 - new policy fractions survive repeated claims and reloads without a second multiplier or reset
+  ---
+  duration_ms: 119.3033
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 6
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2060.9648

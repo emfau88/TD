@@ -7,7 +7,7 @@ import { IlyraView } from './ilyra-view';
 import { preloadSpellArt } from './spell-art';
 import { HeroMarks } from './hero-marks';
 import { MaraSpellView } from './mara-spell-view';
-import { ENEMY_SHEETS, enemyShadowOffset } from './enemy-art';
+import { ENEMY_SHEETS, enemyShadowOffset, slimeHop } from './enemy-art';
 import { JELLY_HEAL } from './enemy-roster';
 import { isWorm } from './worm';
 import { WormView } from './worm-view';
@@ -760,7 +760,7 @@ export class BattleScene extends Phaser.Scene {
         this.effects.fillStyle(enemy.hp/enemy.maxHp<.3?0xdf9573:0xdde69c).fillRect(enemy.x-17,enemy.y-24,34*enemy.hp/enemy.maxHp,3);
         continue;
       }
-      const lift = enemy.def.flying ? 7 + Math.sin(elapsed * 5 + enemy.uid) * 1.5 : 0;
+      const lift = enemy.def.id === 'CobaltSlime' ? slimeHop(elapsed) : enemy.def.flying ? 7 + Math.sin(elapsed * 5 + enemy.uid) * 1.5 : 0;
       view.sprite.setPosition(enemy.x, enemy.y - lift).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed, enemy.flip, enemy.uid)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(enemy.y + 1000);
       if (enemy.def.id === 'Rosenspiegel') {
         const casting = sim.bossCharm.phase === 'windup' || sim.bossCharm.phase === 'channel';

@@ -3,7 +3,8 @@ import {readFileSync} from 'node:fs';
 import test from 'node:test';
 import {IDBFactory} from 'fake-indexeddb';
 import {BASE, BATTLE_RULES_VERSION, BATTLE_SCHEMA_VERSION, IdleBattle, waveCount, waveEnemy} from '../src/battle';
-import {battleReward, healthMultiplier} from '../src/balance';
+import {battleReward, battleRewardUnits, healthMultiplier} from '../src/balance';
+import {clearReward} from '../src/wave-recipes';
 import {certifyFarm, farmRewardUnits, isFarmCertificateValid} from '../src/farming';
 import {OFFLINE, WAREHOUSE_OFFLINE, LEGACY_OFFLINE, LEGACY_WAREHOUSE_OFFLINE,
   beginAbsence, checkpointActive, claimOffline, createOfflineState, reserveOffline, restoreOffline} from '../src/offline';
@@ -94,8 +95,12 @@ test('real schema 32 in-flight replay preserves every field and old reward until
   assert.equal(b.waveRecipeVersion,BATTLE_RULES_VERSION);
   assert.equal(isFarmCertificateValid(legacy.proof,b),false);
   const proof=certifyFarm(b,legacy.proof)!;assert.ok(proof);assert.equal(proof.rulesVersion,BATTLE_RULES_VERSION);
-  assert.equal(proof.wave,legacy.proof.wave);assert.equal(proof.durationMs,legacy.proof.durationMs);
-  assert.equal(farmRewardUnits(proof)*10n,farmRewardUnits(legacy.proof));
+  // New compositions may change the best farm, but not the repeat-gold policy.
+  assert.equal(proof.wave,20);assert.ok(isFarmCertificateValid(proof,b));
+  const first=Array.from({length:waveCount(proof.wave)},(_,i)=>waveEnemy(proof.wave,i)).reduce(
+    (sum,e)=>sum+battleRewardUnits(e.gold,proof.wave,BATTLE_RULES_VERSION,true,false),
+    battleRewardUnits(clearReward(proof.wave,BATTLE_RULES_VERSION),proof.wave,BATTLE_RULES_VERSION,true,false));
+  assert.equal(farmRewardUnits(proof)*10n,BigInt(first)*2n); // certificate spans two full cycles
 });
 
 test('native session preserves old 60/65% active baselines and pending claims exactly once, then starts new policy',async()=>{

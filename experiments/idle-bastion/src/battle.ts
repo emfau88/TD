@@ -49,8 +49,8 @@ export const STORM_CHAIN = Object.freeze({ targets: 3, range: 80, decay: 0.65, r
 export const EMBER = Object.freeze({ id: 7 as const, name: 'Glutwerfer', cost: 220, damage: 22, range: 125, cooldown: 0.95, color: 0xf8a576 });
 export const EMBER_BURN = Object.freeze({ damagePerSecond: 16, seconds: 3, radius: 30, researchCost: 5000, wave: 34 });
 export const SPLASH_RADIUS = 52;
-export const BATTLE_RULES_VERSION = 20 as const;
-export const BATTLE_SCHEMA_VERSION = 36 as const;
+export const BATTLE_RULES_VERSION = 21 as const;
+export const BATTLE_SCHEMA_VERSION = 37 as const;
 export const LIVE_CANDIDATE_LIMIT = 32;
 /** Reserved boss milestones never contribute repeatable offline production. */
 export const isNormalFarmWave = (wave: number, recipe = BATTLE_RULES_VERSION as number): boolean => Number.isSafeInteger(wave) && wave >= 1 && wave !== 15 && wave !== 25 && !wormEncounter(wave, recipe);
@@ -61,8 +61,8 @@ export type TowerDef = typeof BASE.tower | typeof FROST | typeof CANNON | typeof
 export const towerDefinition = (id: TowerId): TowerDef => ({ 1: BASE.tower, 2: FROST, 3: CANNON, 4: SNIPER, 5: STORMLIGHT, 7: EMBER })[id];
 export const padUnlocked = (availability: string, wave: number, clearing = false): boolean => availability === 'initial' || availability === 'wave-5' && wave >= 5 || availability === 'wave-10' && wave >= 10 || availability === 'east-clearing' && clearing;
 export const towerUnlocked = (kind: TowerId, frost: boolean, wave: number, storm = false, ember = false): boolean => kind === 1 || kind === 2 && frost || kind === 3 && frost && wave >= 5 || kind === 4 && wave >= 10 || kind === 5 && storm && wave >= STORM_CHAIN.wave || kind === 7 && ember && wave >= EMBER_BURN.wave;
-export const waveCount = (wave: number, recipe: number = BATTLE_RULES_VERSION): number => isBossWave(wave, recipe) ? bossEncounter(wave).count : recipe >= 11 && wave >= 6 ? waveRecipe(wave, recipe).enemies.length : Math.min(BASE.waves.maxCount, BASE.waves.firstCount + wave - 1);
-export const waveEnemy = (wave: number, index: number, recipe: number = BATTLE_RULES_VERSION): EnemyDef => isBossWave(wave, recipe) && index === 2 ? BASE.enemies.Rosenspiegel : recipe >= 11 && wave >= 6 && !isBossWave(wave, recipe) ? ENEMIES[waveRecipe(wave, recipe).enemies[index]] : regularEnemy(wave, index, recipe);
+export const waveCount = (wave: number, recipe: number = BATTLE_RULES_VERSION): number => isBossWave(wave, recipe) ? bossEncounter(wave).count : (recipe >= 21 && wave >= 3 || recipe >= 11 && wave >= 6) ? waveRecipe(wave, recipe).enemies.length : Math.min(BASE.waves.maxCount, BASE.waves.firstCount + wave - 1);
+export const waveEnemy = (wave: number, index: number, recipe: number = BATTLE_RULES_VERSION): EnemyDef => isBossWave(wave, recipe) && index === 2 ? BASE.enemies.Rosenspiegel : (recipe >= 21 && wave >= 3 || recipe >= 11 && wave >= 6) && !isBossWave(wave, recipe) ? ENEMIES[waveRecipe(wave, recipe).enemies[index]] : regularEnemy(wave, index, recipe);
 export interface Tower {
   uid: number; padId: string; x: number; y: number; def: TowerDef;
   level: number; visualStage: 1 | 2 | 3; cooldown: number; spent: number;
@@ -101,14 +101,14 @@ export interface BattleSnapshot {
   introduction: Introduction;
   ilyra: IlyraState | null;
   social: SocialState;
-  schemaVersion: 36; rulesVersion: 20; layoutVersion: 3 | 4 | 5;
+  schemaVersion: 37; rulesVersion: 21; layoutVersion: 3 | 4 | 5;
   /** Retained after sale; only this tower's base construction was free. */
   tutorialFrostUid: number | null;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32' | 'core40';
   clearing: { unlocked: boolean; openedAt: number | null };
   bossVictories: number; secondBossVictories: number; bossChallengeRequested: boolean; bossChallengeWave: BossWave; bossCharm: BossCharm;
   progress: ProgressRecord;
-  rewardRemainderUnits: number; waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20;
+  rewardRemainderUnits: number; waveRecipeVersion: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21;
   goldRemainderUnits: number; mode: BattleMode; highestCleared: number; attemptId: number;
   liveClearedWaves: number[]; farmWave: number; advanceRequested: boolean;
   gold: number; lives: number; wave: number; phase: Phase; elapsed: number;
@@ -556,7 +556,7 @@ export class IdleBattle {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 20, model.layout.version as 3 | 4 | 5)) return undefined;
       value = { ...value, schemaVersion: 21, ilyra: null };
     }
-    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23 || value.schemaVersion === 24 || value.schemaVersion === 25 || value.schemaVersion === 26 || value.schemaVersion === 27 || value.schemaVersion === 28 || value.schemaVersion === 29 || value.schemaVersion === 30 || value.schemaVersion === 31 || value.schemaVersion === 32 || value.schemaVersion === 33 || value.schemaVersion === 34 || value.schemaVersion === 35 || value.schemaVersion === 36)) {
+    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23 || value.schemaVersion === 24 || value.schemaVersion === 25 || value.schemaVersion === 26 || value.schemaVersion === 27 || value.schemaVersion === 28 || value.schemaVersion === 29 || value.schemaVersion === 30 || value.schemaVersion === 31 || value.schemaVersion === 32 || value.schemaVersion === 33 || value.schemaVersion === 34 || value.schemaVersion === 35 || value.schemaVersion === 36 || value.schemaVersion === 37)) {
       if (![3, 4, 5].includes(value.layoutVersion as number) || !validPlotPositions(value.plots, value.layoutVersion as number)) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion as 3 | 4 | 5));
     }
@@ -641,9 +641,16 @@ export class IdleBattle {
     if (isRecord(value) && value.schemaVersion === 35) {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5, 19, 35)) return undefined;
       // Keep the old attempt and money. Only future farms exclude the new milestones.
-      value = { ...value, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION,
+      value = { ...value, schemaVersion: 36, rulesVersion: 20,
         liveClearedWaves: value.liveClearedWaves.filter(wave => isNormalFarmWave(wave)),
         farmWave: isNormalFarmWave(value.farmWave) ? value.farmWave : 1 };
+    }
+    if (isRecord(value) && value.schemaVersion === 36) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5, 20, 36)) return undefined;
+      // Keep the in-flight queue, HP, money and historical offline receipts.
+      // Cleared waves remain candidates, not proof: certifyFarm invalidates the
+      // old rules fingerprint and simulates two complete current-rule clears.
+      value = { ...value, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION };
     }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5)) return undefined;
     model.tutorialFrostUid = value.tutorialFrostUid;
@@ -1448,12 +1455,12 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  */
 function validSnapshot(
   value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
-  currentRules: 15 | 16 | 17 | 18 | 19 | 20 = BATTLE_RULES_VERSION, socialSchema: 31 | 32 | 33 | 34 | 35 | 36 = BATTLE_SCHEMA_VERSION,
+  currentRules: 15 | 16 | 17 | 18 | 19 | 20 | 21 = BATTLE_RULES_VERSION, socialSchema: 31 | 32 | 33 | 34 | 35 | 36 | 37 = BATTLE_SCHEMA_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
   if (!isRecord(value) || value.schemaVersion !== (legacy || (currentRules === 15 ? 30 : socialSchema)) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy === 28 ? 14 : legacy === 27 ? 13 : legacy === 26 ? 12 : legacy === 25 ? 11 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : currentRules)
     || value.layoutVersion !== layoutVersion || value.layoutId !== (layoutVersion === 5 ? 'core40' : layout.bounds.columns === 32 ? 'east32' : 'start28') || legacy > 0 && legacy < 20 && layoutVersion === 5) return false;
-  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy === 28 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] : legacy === 27 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] : legacy === 26 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12] : legacy === 25 ? [3, 4, 5, 6, 7, 8, 9, 10, 11] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ...(currentRules >= 16 ? [16] : []), ...(currentRules >= 17 ? [17] : []), ...(currentRules >= 18 ? [18] : []), ...(currentRules >= 19 ? [19] : []), ...(currentRules >= 20 ? [20] : [])]).includes(value.waveRecipeVersion as number))) return false;
+  if ((!legacy || legacy >= 6) && (!integerIn(value.rewardRemainderUnits, 0, 999) || !(legacy && legacy < 8 ? [3, 4] : legacy === 28 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] : legacy === 27 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] : legacy === 26 ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12] : legacy === 25 ? [3, 4, 5, 6, 7, 8, 9, 10, 11] : legacy >= 14 ? [3, 4, 5, 6, 7, 8, 9, 10] : legacy === 13 ? [3, 4, 5, 6, 7, 8, 9] : legacy === 12 ? [3, 4, 5, 6, 7, 8] : legacy === 11 ? [3, 4, 5, 6, 7] : legacy === 10 ? [3, 4, 5, 6] : legacy ? [3, 4, 5] : [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ...(currentRules >= 16 ? [16] : []), ...(currentRules >= 17 ? [17] : []), ...(currentRules >= 18 ? [18] : []), ...(currentRules >= 19 ? [19] : []), ...(currentRules >= 20 ? [20] : []), ...(currentRules >= 21 ? [21] : [])]).includes(value.waveRecipeVersion as number))) return false;
   if ((!legacy || legacy >= 9) && (!isRecord(value.clearing) || typeof value.clearing.unlocked !== 'boolean'
     || layoutVersion !== 5 && value.clearing.unlocked !== (layout.bounds.columns === 32)
     || (value.clearing.unlocked ? !integerIn(value.bossVictories, 1) || !numberIn(value.clearing.openedAt, 0, value.elapsed as number) : value.clearing.openedAt !== null))) return false;
@@ -1665,6 +1672,7 @@ function validSnapshot(
     }
     if (def.firstWave > 40 && (value.waveRecipeVersion as number) < 13) return false;
     if (['ForestGoblin','BoneGuard','ForestCultist'].includes(def.id) && (value.waveRecipeVersion as number) < 11) return false;
+    if (['CobaltSlime','FlameWisp','FloatingEye'].includes(def.id) && (value.waveRecipeVersion as number) < 21) return false;
     if (def.firstWave > value.wave || def.firstWave >= 6 && !['Scorpion', 'Rosenspiegel'].includes(def.id) && (value.waveRecipeVersion as number) < 9) return false;
     if ((!legacy || legacy >= 13) && (!numberIn(enemy.healLockout, 0, JELLY_HEAL.lockout)
       || !numberIn(enemy.healRemaining, 0, isHealer(def) ? JELLY_HEAL.cast : 0)
@@ -1672,7 +1680,8 @@ function validSnapshot(
     if (isWorm(def.id) && wormEncounter(value.wave, Number(value.waveRecipeVersion)) !== def.id) return false;
     if (wormEncounter(value.wave, Number(value.waveRecipeVersion)) && !isWorm(def.id)) return false;
     const expectedHp = def.hp * healthMultiplier(value.wave, (legacy && legacy < 6 ? 3 : value.waveRecipeVersion) as number, def.id === 'Rosenspiegel' || isWorm(def.id));
-    if (!sameComputedStat(enemy.maxHp, expectedHp) || (value.wave < 4 && enemy.defId !== 'Leafbug')) return false;
+    if (!sameComputedStat(enemy.maxHp, expectedHp) || (value.wave < 4 && enemy.defId !== 'Leafbug'
+      && !(value.wave === 3 && (value.waveRecipeVersion as number) >= 21 && enemy.defId === 'CobaltSlime'))) return false;
     if (enemy.hp === 0 && (value.phase !== 'defeat' || enemy.segment !== path.length - 1)) return false;
     if (enemy.segment === path.length - 1) {
       if (value.phase !== 'defeat' || enemy.hp !== 0 || !near(enemy.distance, pathLength)

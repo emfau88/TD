@@ -1,0 +1,89 @@
+{
+  "scale": 0.83,
+  "creatures": [
+    {
+      "id": "cobalt-slime",
+      "name": "Kobaltschleim",
+      "label": "Neuer Entwurf · Standpose",
+      "url": "assets/cobalt-slime.png",
+      "frame": 64,
+      "pivot": {
+        "x": 32,
+        "y": 43
+      },
+      "bounds": {
+        "left": 15,
+        "top": 18,
+        "width": 34,
+        "height": 25
+      },
+      "screen": {
+        "width": 28,
+        "height": 21
+      }
+    },
+    {
+      "id": "flame-wisp-orange",
+      "name": "Flammengeist",
+      "label": "Original aus der Reserve",
+      "url": "assets/flame-wisp-orange.png",
+      "frame": 64,
+      "pivot": {
+        "x": 32,
+        "y": 43
+      },
+      "bounds": {
+        "left": 18,
+        "top": 17,
+        "width": 28,
+        "height": 26
+      },
+      "screen": {
+        "width": 23,
+        "height": 22
+      }
+    },
+    {
+      "id": "floating-eye-purple",
+      "name": "Schwebendes Auge",
+      "label": "Original aus der Reserve",
+      "url": "assets/floating-eye-purple.png",
+      "frame": 64,
+      "pivot": {
+        "x": 32,
+        "y": 43
+      },
+      "bounds": {
+        "left": 22,
+        "top": 21,
+        "width": 20,
+        "height": 28
+      },
+      "screen": {
+        "width": 17,
+        "height": 23
+      }
+    }
+  ],
+  "reference": {
+    "id": "leafbug",
+    "name": "Blattkäfer",
+    "label": "Original zum Größenvergleich",
+    "url": "assets/leafbug.png",
+    "frame": 64,
+    "pivot": {
+      "x": 32,
+      "y": 32
+    },
+    "bounds": {
+      "left": 9,
+      "top": 21,
+      "width": 42,
+      "height": 19
+    },
+    "screen": {
+      "width": 35,
+      "height": 16
+    }
+  }
+}

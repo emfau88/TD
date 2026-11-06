@@ -8,6 +8,12 @@ Each license applies only to its corresponding third-party material.
 AUDIO AND ARTWORK
 =================
 
+Cobalt Slime — generated project artwork, 2026-11-06
+Created with OpenAI ImageGen for Towers & Tantrums, not a third-party CC0 pack.
+Runtime: assets/creep-trio/CobaltSlime.png, 18 directional hop poses.
+Originals/prompts: assets/creep-trio/sources and assets/creep-trio/PROMPTS.md.
+Changes: nearest-neighbour native export, binary alpha, shared 16-colour palette.
+
 Obsidian worm — generated project artwork, 2026-11-06
 Created with OpenAI ImageGen for Towers & Tantrums; not a third-party CC0 pack.
 Runtime atlas: assets/obsidian-worm/parts.png, twelve modular pixel-art parts.
@@ -89,6 +95,9 @@ License: CC BY 4.0
 Quelle: https://frakassets.itch.io/free-monster-pack
 CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
 Changes: Bearbeitet: Ebenen zusammengeführt, Atlanten und Bodenanker angepasst; Moospilz umgefärbt.
+Also used: flame-wisp-orange and floating-eye-purple, original 48px outlined
+directional Idle animation. Lit/shine layers combined and packed into 64px cells.
+Runtime atlases: assets/creep-trio/FlameWisp.png and FloatingEye.png.
 
 Gegnergrafiken — Foozle / Baldur
 License: CC0

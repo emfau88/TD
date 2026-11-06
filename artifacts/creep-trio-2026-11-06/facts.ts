@@ -1,0 +1,12 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {IdleBattle,waveCount,waveEnemy} from '../../experiments/idle-bastion/src/battle';
+import {clearReward} from '../../experiments/idle-bastion/src/wave-recipes';
+import {battleRewardUnits} from '../../experiments/idle-bastion/src/balance';
+import {certifyFarm,farmRewardGold} from '../../experiments/idle-bastion/src/farming';
+const read=(p:string)=>JSON.parse(readFileSync(new URL(p,import.meta.url),'utf8'));
+const paid=(w:number,v:number)=>Array.from({length:waveCount(w,v)},(_,i)=>waveEnemy(w,i,v)).reduce((s,e)=>s+battleRewardUnits(e.gold,w,v,true,false),battleRewardUnits(clearReward(w,v),w,v,true,false));
+const rounding=Array.from({length:250},(_,i)=>({wave:i+1,old:paid(i+1,20)/1000,current:paid(i+1,21)/1000,ratio:paid(i+1,21)/paid(i+1,20)-1})).sort((a,b)=>Math.abs(b.ratio)-Math.abs(a.ratio));
+const farms:any={};
+for(const strategy of ['control','one-storm','two-storms'])farms[strategy]=[40,50,60,70].map(w=>{const b=IdleBattle.restore(read(`../idle-bastion/acceptance/b16/economy/${strategy}-wave${w}-earned.json`))!;const p=certifyFarm(b)!;return {record:w,wave:p.wave,rate:farmRewardGold(p)/p.durationMs*60000};});
+const f=read('../../experiments/idle-bastion/tests/fixtures/wave-progression-v17.json'),b=IdleBattle.restore(f.before)!;const legacyFarm=certifyFarm(b);
+writeFileSync(new URL('facts.json',import.meta.url),JSON.stringify({rounding:rounding.slice(0,10),farms,legacyFarm},null,2));console.log(JSON.stringify({rounding:rounding[0],farms,legacyFarm}));

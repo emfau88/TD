@@ -1,5 +1,16 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Drei Creeps · 06.11.2026 — nach freigegebener Vorschau lokal integriert, Regeln 21 / Schema 37.**
+
+- [x] Neuer Kobaltschleim als einzelne Pixel-Standpose; Flammengeist und schwebendes Auge unverändert aus dem vorhandenen Frakassets-Reservepaket. Gemeinsamer Vergleich 4× und klein im Spielmaßstab neben Original-Blattkäfer/Originalweg. [Vorschau, Quellen und Grenzen](../../prototypes/creep-trio-v1/README.md).
+- [x] Desktop, gängiges Handy-Querformat und Hochformat geprüft; transparente Kanten, keine Browserfehler und keine Speicherzugriffe. Keine Spielintegration oder Wellen-/Balanceänderung.
+- [x] Drei Standbilder vom Nutzer positiv bewertet; anschließend ausschließlich animierte kleine Vorschau beauftragt. Sechs neue Schleim-Hüpfbilder, je acht originale Frakassets-Idle-Bilder für Front-/Seitenansicht von Flammengeist und Auge; kleine Darstellung, Wegbewegung, optionale 4×-Ansicht und Pause. Fünf Browserfälle inklusive DPR 3, reduzierter Bewegung, Rotation und halbem Tempo bestanden. [Animation und Nachweise](../../prototypes/creep-trio-v1/README.md).
+- [x] Bewegungsprobe vom Nutzer positiv bewertet; gezielter Spieleinbau und Prüfung mit drei Spielertypen einschließlich Pause ausdrücklich beauftragt. Kobaltschleim ab W3, Flammengeist ab W7, schwebendes Auge ab W12; wiederkehrende Mischungen ohne zusätzliche Gegnerplätze. Schleim um zwei nötige Blickrichtungen ergänzt, andere Originalgrafiken erhalten. Keine weiteren Spielsysteme geändert.
+- [x] Bisheriger Stand und Varianten mit denselben drei Kauf-/Bauprofilen verglichen: je 60 Minuten frisch und je 30 Minuten nach 24 Stunden Pause ab erspielten W8/W14/W20. 30-Minuten-/2-/8-/24-Stunden-Vergütung mit echter Offlineabrechnung geprüft. Frische Rekorde bleiben W34/35/36; nach W20-Tagespause wieder Treffer nach 6,2–7,7 und erste Niederlagen nach 11,4–12,5 Minuten. [Messungen und ehrliche Grenzen](../../artifacts/creep-trio-2026-11-06/REPORT.md).
+- [x] 495/495 Tests, TypeScript/Produktionsbuild sowie jeweils neun Browserfälle am Entwicklungsserver und fertigen Produktionsbuild (drei Einführungen auf Desktop, Handy quer/hoch, DE/EN) bestanden: echte Sprites, Bewegung, Pause, exakter Reload, keine Browserfehler. Alte laufende Wellen/Offlinebelege bleiben erhalten. Keine physische Geräteabnahme behauptet.
+- [x] Nutzer hat anschließend Commit und Push des geprüften Stands auf Main ausdrücklich beauftragt. Allgemeine Gegnerüberdeckung und die Idee „schnelle Gegner zuerst“ sind nur zur Beratung gestellt; keine entsprechende Änderung in diesem Paket.
+- [ ] Veröffentlichung und öffentlicher Kurztest werden separat nachgewiesen; menschliche Sichtprüfung des integrierten Spiels auf dem eigenen Gerät bleibt offen.
+
 **Obsidianwurm · 06.11.2026 — Spielcode `81c5185` auf Main/Pages veröffentlicht und live geprüft.**
 
 - [x] Auf Nutzerwunsch langer Pixelart-Wurm mit 30 Körpersegmenten, Kopf und Schwanz; Obsidian statt Naturthema. Gemeinsame Wegspur, sichtbarer Verlust hinterer Segmente und Originalgegner als Größenvergleich. [Vorschau, Herkunft und Grenzen](../../prototypes/segment-worm-v1/README.md).

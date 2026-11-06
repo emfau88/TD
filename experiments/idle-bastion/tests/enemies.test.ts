@@ -25,7 +25,7 @@ function woundedGroup(b: IdleBattle) {
 test('staged introductions, unchanged opening and boss escorts, bounded varied late recipes', () => {
   const expected = new Map([[6,'FlyingLocust'],[9,'Firewasp'],[13,'MagmaCrab'],[17,'Clampbeetle'],[21,'LanternJelly'],[28,'Voidbutterfly'],[19,'ForestGoblin'],[26,'BoneGuard'],[32,'ForestCultist'],[42,'MossShroom'],[46,'WoodSpider'],[50,'HornedBat'],[54,'EmberBomb']]);
   for (const [wave, id] of expected) { assert.equal(introducedEnemy(wave,BATTLE_RULES_VERSION)?.id,id); assert.equal(waveEnemy(wave,2).id,id); }
-  for (const wave of [1,2,3,4,5,15,25]) for (let i=0;i<waveCount(wave);i++) assert.deepEqual(waveEnemy(wave,i),waveEnemy(wave,i,8));
+  for (const wave of [1,2,15,25]) for (let i=0;i<waveCount(wave);i++) assert.deepEqual(waveEnemy(wave,i),waveEnemy(wave,i,8));
   const seen=new Set<string>();
   for (let wave=1;wave<=64;wave++) {
     assert.ok(waveCount(wave)<=28); let healers=0;
@@ -85,7 +85,7 @@ test('void resists slow, while all four towers can target flying enemies', () =>
     const b=lateBattle(), enemy=b.enemies[0];enemy.def=def;enemy.speed=def.speed;enemy.slowRemaining=2;
     const at=enemy.distance;b.update(.025);assert.ok(Math.abs(enemy.distance-at-def.speed*def.slowFactor*.025)<1e-6);
   }
-  assert.deepEqual(ENEMY_ROSTER.filter(e=>e.flying).map(e=>e.id).sort(),['FlyingLocust','Firewasp','Clampbeetle','LanternJelly','Voidbutterfly','HornedBat'].sort());
+  assert.deepEqual(ENEMY_ROSTER.filter(e=>e.flying).map(e=>e.id).sort(),['FlyingLocust','Firewasp','Clampbeetle','LanternJelly','Voidbutterfly','HornedBat','FlameWisp','FloatingEye'].sort());
   // Targeting in the shared tower loop has no ground/air filter; each kind fires at the same isolated flyer.
   for(const kind of [1,2,3,4] as const) {
     const c=new IdleBattle();c.highestCleared=9;c.update(.5);const e=c.enemies[0];e.def=ENEMIES.Firewasp;

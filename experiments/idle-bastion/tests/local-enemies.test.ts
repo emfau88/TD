@@ -13,7 +13,7 @@ import { LEGACY_OFFLINE, createOfflineState, beginAbsence, reserveOffline, claim
 const read=(file:string)=>JSON.parse(readFileSync(new URL('../../../artifacts/idle-bastion/acceptance/'+file,import.meta.url),'utf8'));
 const seed=read('wave-rework-v2/earned-balanced-late.json');
 const added=['MossShroom','WoodSpider','HornedBat','EmberBomb'] as const;
-function encounter(wave:number,version:12|13|14|15|16|17|18|19|20=BATTLE_RULES_VERSION){
+function encounter(wave:number,version:12|13|14|15|16|17|18|19|20|21=BATTLE_RULES_VERSION){
  const prep=IdleBattle.restore(seed)!.snapshot();prep.highestCleared=wave-1;prep.wave=wave-1;prep.phase='intermission';prep.mode='advance';prep.advanceRequested=false;prep.queue=[];prep.enemies=[];prep.shots=[];prep.intermissionRemaining=0;prep.spawnTimer=0;prep.lives=BASE.coreLives;prep.liveClearedWaves=prep.liveClearedWaves.filter(w=>w<wave);prep.farmWave=1;
  const b=IdleBattle.restore(prep)!;assert.ok(b);b.update(.025);
  const s=b.snapshot();s.waveRecipeVersion=version;s.enemies=[];s.shots=[];s.spawnTimer=.15;
@@ -35,8 +35,8 @@ test('rules 12 stay byte-for-byte reproducible against the captured original 100
   }
  }
 });
-test('new introductions repeat immediately; later recipes retain all sixteen species, two healer and 28 enemy caps',()=>{
- assert.equal(ENEMY_ROSTER.filter(e=>!isWorm(e.id)).length,17);
+test('new introductions repeat immediately; later recipes retain all current species, two healer and 28 enemy caps',()=>{
+ assert.equal(ENEMY_ROSTER.filter(e=>!isWorm(e.id)).length,20);
  for(const id of added){const w=ENEMIES[id].firstWave;assert.equal(introducedEnemy(w,12),undefined);assert.equal(introducedEnemy(w,13)?.id,id);
   for(const n of [w,w+1]){assert.equal(waveRecipe(n,13).enemies.filter(e=>e===id).length,2,`legacy ${id} at ${n}`);assert.equal(waveRecipe(n).enemies.filter(e=>e===id).length,n===46?15:2,`${id} at ${n}`);}
  }

@@ -30,7 +30,8 @@ test('rules 17 still reproduce the frozen pre-change compositions, HP, clocks an
   }
 });
 
-test('current progression preserves opening, populations, clocks, introductions and full-clear gold',()=>{
+test('frozen B progression preserves opening, populations, clocks, introductions and full-clear gold',()=>{
+  const current=20; // Current trio compositions and budgets are checked in creep-trio.test.ts.
   let previousPressure=0;
   for(let wave=1;wave<=250;wave++){
     // W36/45 now have dedicated worm tests; keep the original B curve audited.

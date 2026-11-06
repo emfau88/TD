@@ -1,5 +1,32 @@
 # Vorhandene Gegner im Idle-Spiel
 
+## Frühe Vielfalt · Regeln 21 / Schema 37, 06.11.2026
+
+Kobaltschleim ab W3 (28 HP, Tempo 40, 8 Gold, Boden), Flammengeist ab W7
+(28 HP, Tempo 68, 11 Gold, fliegend), schwebendes Auge ab W12 (32 HP, Tempo 42,
+9 Gold, fliegend). Jeweils ungepanzert, ein Kernschaden, normale Frostwirkung.
+Keine Sonderfähigkeiten, keine Turm-/Helden-/Goldregeländerungen.
+
+Die drei ersetzen bestehende Plätze: in W1–20 weiterhin 293 Gegner, jetzt
+zwölf statt neun verschiedene Figuren einschließlich Rosenspiegel. Der Anteil
+von Blattkäfer/Feuerkäfer/Flugheuschrecke sinkt von 82,9 auf 48,5 %.
+W1/2 und Boss-/Elitewellen bleiben erhalten. Wiederkehr in gemischten Gruppen;
+ab W26 ersetzt der Flammengeist vorhandene Flieger, damit das Boden-/Luftverhältnis
+und vorhandene Konter erhalten bleiben. Die gemessene spätere Druckkurve bleibt
+gleich; unterschiedliche HP/Tempi verändern trotzdem Kampfverläufe.
+
+Basisgoldbudgets, Anzahl und Spawnzeiten bleiben pro Welle erhalten. Bestehende
+Einzelrundung verändert die tatsächliche Vollauszahlung in W1–250 um höchstens
+0,62 %. Alte Versuche behalten Regeln 20 oder älter; erst die nächste Welle
+nutzt 21. Farmkandidaten bleiben erhalten, ihre Zertifikate werden unter neuen
+Regeln durch zwei vollständige Probekämpfe erneuert. Alte Offlineansprüche
+bleiben exakt zahlbar.
+
+22 Definitionen / 21 Figurenfamilien insgesamt (zwei Längen einer Wurmfamilie).
+[Balance, Rückkehr und Grenzen](../../../artifacts/creep-trio-2026-11-06/REPORT.md)
+· [Atlanten, Originalquellen und Prompts](../assets/creep-trio/README.md).
+Die folgenden Abschnitte beschreiben vorherige Paketstände.
+
 ## Obsidianwurm · Regeln 20 / Schema 36, 06.11.2026
 
 W36 wird zur Solobegegnung mit dem jungen Obsidianwurm (15 Körpersegmente), W45

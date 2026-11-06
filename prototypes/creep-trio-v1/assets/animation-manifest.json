@@ -1,0 +1,504 @@
+{
+  "scale": 0.83,
+  "creatures": [
+    {
+      "id": "cobalt-slime",
+      "name": "Kobaltschleim",
+      "label": "Neuer Entwurf · Standpose",
+      "url": "assets/cobalt-slime.png",
+      "frame": 64,
+      "pivot": {
+        "x": 32,
+        "y": 43
+      },
+      "bounds": {
+        "left": 15,
+        "top": 18,
+        "width": 34,
+        "height": 25
+      },
+      "screen": {
+        "width": 28,
+        "height": 21
+      },
+      "animation": {
+        "url": "assets/cobalt-slime-animation.png",
+        "frames": [
+          {
+            "duration": 150,
+            "bounds": {
+              "left": 15,
+              "top": 16,
+              "width": 34,
+              "height": 27
+            },
+            "sha256": "5834d3d98ce03a19e2a6275039e7e9ef99e03bec762e0d9429e722ab53e2e8c0"
+          },
+          {
+            "duration": 100,
+            "bounds": {
+              "left": 13,
+              "top": 21,
+              "width": 38,
+              "height": 22
+            },
+            "sha256": "53b78e27d36956d751103c3e5a84441d444909140de369cd7941ad9120e0ec87"
+          },
+          {
+            "duration": 100,
+            "bounds": {
+              "left": 17,
+              "top": 13,
+              "width": 31,
+              "height": 30
+            },
+            "sha256": "e6ca64d067cd58778008505713a3579147d22616c27118d1d5cc194c86ba7be3"
+          },
+          {
+            "duration": 180,
+            "bounds": {
+              "left": 17,
+              "top": 15,
+              "width": 30,
+              "height": 28
+            },
+            "sha256": "7f61659d6b5e5c104e6fcd29388fd84e2fe758ba6e0d8dd3144c4d912b5c8b05"
+          },
+          {
+            "duration": 100,
+            "bounds": {
+              "left": 13,
+              "top": 22,
+              "width": 38,
+              "height": 21
+            },
+            "sha256": "1136f45091387c6828963b1df870d16967e3456ad35e21c848d1a150cff600ca"
+          },
+          {
+            "duration": 130,
+            "bounds": {
+              "left": 15,
+              "top": 17,
+              "width": 35,
+              "height": 26
+            },
+            "sha256": "706ab655f47c27e16773a23f8b1da5659aa54ef960e982c827af484f9f96a4d9"
+          }
+        ],
+        "cycle": 760,
+        "notes": "ImageGen 6-pose hop study. Fixed baseline, common native scale; preview adds vertical hop."
+      }
+    },
+    {
+      "id": "flame-wisp-orange",
+      "name": "Flammengeist",
+      "label": "Original aus der Reserve",
+      "url": "assets/flame-wisp-orange.png",
+      "frame": 64,
+      "pivot": {
+        "x": 32,
+        "y": 43
+      },
+      "bounds": {
+        "left": 18,
+        "top": 17,
+        "width": 28,
+        "height": 26
+      },
+      "screen": {
+        "width": 23,
+        "height": 22
+      },
+      "animation": {
+        "url": "assets/flame-wisp-orange-animation.png",
+        "frames": [
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 18,
+              "top": 17,
+              "width": 28,
+              "height": 26
+            },
+            "sha256": "14476b6b18ca0ce292d3da0c32080a4ae90e090880fe46d1edcc4d5c6269724c"
+          },
+          {
+            "duration": 84,
+            "bounds": {
+              "left": 19,
+              "top": 15,
+              "width": 27,
+              "height": 27
+            },
+            "sha256": "f2838d3722103360f99fa2d13040891e427f6c1be1c75eeab057e1dc008be25c"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 19,
+              "top": 18,
+              "width": 28,
+              "height": 24
+            },
+            "sha256": "b29853bb60d94ab0d6d00d36ba8074a96cea4b8b1e2a3a975d34d6568e8e18e1"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 19,
+              "top": 19,
+              "width": 28,
+              "height": 23
+            },
+            "sha256": "e28994749a5794dde0a06ced840bdd28ed7fc014b48ede28513a36f7d349fc6f"
+          },
+          {
+            "duration": 84,
+            "bounds": {
+              "left": 18,
+              "top": 17,
+              "width": 28,
+              "height": 26
+            },
+            "sha256": "bdb1bd24bbc491be5b4ac7610b7a20e273c14a0e4fbbba57cce1eb5ec0009952"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 18,
+              "top": 18,
+              "width": 27,
+              "height": 26
+            },
+            "sha256": "f19c57f4d53392f8ef054f170a284ff08ceee403ef89e971c38d82e54ddc6667"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 17,
+              "top": 22,
+              "width": 28,
+              "height": 23
+            },
+            "sha256": "99a34b541b87f489df573902b326f63f61aaa3e57e271317e1486a1a8d4ffbe6"
+          },
+          {
+            "duration": 84,
+            "bounds": {
+              "left": 18,
+              "top": 21,
+              "width": 27,
+              "height": 23
+            },
+            "sha256": "bf7637b8f3310cd92adcf7503e1132b59e0f660d959d5648fdf13f04d3d078d5"
+          }
+        ],
+        "cycle": 667,
+        "notes": "Original Frakassets Idle South, 8 frames. No Walk clip in source; translation is preview only."
+      },
+      "sideAnimation": {
+        "url": "assets/flame-wisp-orange-east-animation.png",
+        "frames": [
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 23,
+              "top": 18,
+              "width": 18,
+              "height": 30
+            },
+            "sha256": "72aed0c067eadcb47f37fe8ab4dd8d4dceea7f4d047aeca961c10f0c85594d5f"
+          },
+          {
+            "duration": 84,
+            "bounds": {
+              "left": 23,
+              "top": 12,
+              "width": 18,
+              "height": 34
+            },
+            "sha256": "23f8d0e33f80586b1306a63906a703f4e7a3e75ab4658a2446772180f2aba51c"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 23,
+              "top": 16,
+              "width": 18,
+              "height": 28
+            },
+            "sha256": "cacb3183f59de9707d22b9de4f559c3346c4ba706d8972d1cad272b53e5cca85"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 23,
+              "top": 19,
+              "width": 18,
+              "height": 25
+            },
+            "sha256": "76f0c9dcd942600cbe23dca064947e748b39f3563887fd7193932ae77d27518e"
+          },
+          {
+            "duration": 84,
+            "bounds": {
+              "left": 23,
+              "top": 19,
+              "width": 18,
+              "height": 27
+            },
+            "sha256": "8210bfcd2af14b78526270255541c245105eba5d372ba2471e9c48a3805c7b75"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 23,
+              "top": 17,
+              "width": 18,
+              "height": 31
+            },
+            "sha256": "fd21ac77efca5922322fd6912d2a847ffed2e45b2b1082a063cf592592d9b91e"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 23,
+              "top": 21,
+              "width": 18,
+              "height": 29
+            },
+            "sha256": "b90bb84b4bdf5e54d6c27ec0ebce40e4675a5f3119a35593d3d64116c5431e9e"
+          },
+          {
+            "duration": 84,
+            "bounds": {
+              "left": 23,
+              "top": 23,
+              "width": 18,
+              "height": 26
+            },
+            "sha256": "c3fe6bdef468b691c6a4df0af886fb23c17e22e6766029d3b70abe8d4438234f"
+          }
+        ],
+        "cycle": 667,
+        "notes": "Original Frakassets Idle East, 8 frames. No Walk clip in source; translation is preview only."
+      }
+    },
+    {
+      "id": "floating-eye-purple",
+      "name": "Schwebendes Auge",
+      "label": "Original aus der Reserve",
+      "url": "assets/floating-eye-purple.png",
+      "frame": 64,
+      "pivot": {
+        "x": 32,
+        "y": 43
+      },
+      "bounds": {
+        "left": 22,
+        "top": 21,
+        "width": 20,
+        "height": 28
+      },
+      "screen": {
+        "width": 17,
+        "height": 23
+      },
+      "animation": {
+        "url": "assets/floating-eye-purple-animation.png",
+        "frames": [
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 22,
+              "top": 21,
+              "width": 20,
+              "height": 28
+            },
+            "sha256": "687e972d2b0dbdc66a528428cb2f10d77f442323c24a5654742bb93c5082eb0d"
+          },
+          {
+            "duration": 84,
+            "bounds": {
+              "left": 22,
+              "top": 20,
+              "width": 20,
+              "height": 27
+            },
+            "sha256": "91332dbe3bb5efb1dfd40b20309ac66d70693096045b8159c26229646b747358"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 23,
+              "top": 19,
+              "width": 19,
+              "height": 27
+            },
+            "sha256": "0edfc78014cd68d31b14a0fc1b8d2e51557e792a56164a6a1e7bbebafdde44eb"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 22,
+              "top": 20,
+              "width": 20,
+              "height": 27
+            },
+            "sha256": "d7ee63bb55141fd5caf038b02dd490de72436d206c8c6ee62543acbb566729e0"
+          },
+          {
+            "duration": 84,
+            "bounds": {
+              "left": 22,
+              "top": 21,
+              "width": 20,
+              "height": 27
+            },
+            "sha256": "8d4940108ff775a7594bfda8c49c8742102bef7f4bab1ee95a62d33f96c96a35"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 22,
+              "top": 21,
+              "width": 20,
+              "height": 28
+            },
+            "sha256": "760f0e97a75b80d0d602b3f04db9742775a85bfa8eef0d172b8d4affc5f409d1"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 22,
+              "top": 19,
+              "width": 19,
+              "height": 31
+            },
+            "sha256": "50443d3e5994b55f1a9bce614a7db2819a91939f19e5dd4a31d7910e23e9e3e3"
+          },
+          {
+            "duration": 84,
+            "bounds": {
+              "left": 22,
+              "top": 21,
+              "width": 20,
+              "height": 28
+            },
+            "sha256": "040de99062a1fe7516527b512beb86d41a979c05a38880a04b3d4d865e85bd88"
+          }
+        ],
+        "cycle": 667,
+        "notes": "Original Frakassets Idle South, 8 frames. No Walk clip in source; translation is preview only."
+      },
+      "sideAnimation": {
+        "url": "assets/floating-eye-purple-east-animation.png",
+        "frames": [
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 22,
+              "top": 19,
+              "width": 21,
+              "height": 29
+            },
+            "sha256": "a033aba1af870b91e0ce2e1e400f7c75a51818bd58f237f6ad1ce22322d9e90d"
+          },
+          {
+            "duration": 84,
+            "bounds": {
+              "left": 21,
+              "top": 18,
+              "width": 22,
+              "height": 29
+            },
+            "sha256": "023c0c796421053852f922e5bda61c7cc6a5b01a5fcd09eeb6ad6140a4d370b8"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 22,
+              "top": 18,
+              "width": 21,
+              "height": 29
+            },
+            "sha256": "411c7f6af35d4aa3ee35795966ae90d376e7050b1f78ea27475144eb6a513dd5"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 21,
+              "top": 18,
+              "width": 22,
+              "height": 29
+            },
+            "sha256": "e4db7391d7f4ab7a0dd4ecebc47389f794d53b611e1cbeb52c1256ca447b341d"
+          },
+          {
+            "duration": 84,
+            "bounds": {
+              "left": 22,
+              "top": 19,
+              "width": 21,
+              "height": 27
+            },
+            "sha256": "bef341a363e3e95978e6b07683cc1762c8ccef9c22e43b8aafc537e07f06ea22"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 22,
+              "top": 20,
+              "width": 20,
+              "height": 27
+            },
+            "sha256": "1c1e5dcccf6e0571bb224e17f8ced16db4522852fc9a4bd7a7e9c1a1838151ea"
+          },
+          {
+            "duration": 83,
+            "bounds": {
+              "left": 24,
+              "top": 20,
+              "width": 20,
+              "height": 28
+            },
+            "sha256": "4899919df1865922c006faf75efba3127d0a277c3cb262e489f294f164ac5c33"
+          },
+          {
+            "duration": 84,
+            "bounds": {
+              "left": 22,
+              "top": 20,
+              "width": 21,
+              "height": 29
+            },
+            "sha256": "6efb6be764ac0ff4fc45c1ac7afd8fc227bde2e42dac300dd91aabe8736830dd"
+          }
+        ],
+        "cycle": 667,
+        "notes": "Original Frakassets Idle East, 8 frames. No Walk clip in source; translation is preview only."
+      }
+    }
+  ],
+  "reference": {
+    "id": "leafbug",
+    "name": "Blattkäfer",
+    "label": "Original zum Größenvergleich",
+    "url": "assets/leafbug.png",
+    "frame": 64,
+    "pivot": {
+      "x": 32,
+      "y": 32
+    },
+    "bounds": {
+      "left": 9,
+      "top": 21,
+      "width": 42,
+      "height": 19
+    },
+    "screen": {
+      "width": 35,
+      "height": 16
+    }
+  }
+}

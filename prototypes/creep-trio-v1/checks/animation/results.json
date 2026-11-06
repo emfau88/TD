@@ -1,0 +1,92 @@
+[
+  {
+    "width": 1032,
+    "height": 660,
+    "dpr": 1,
+    "reduced": false,
+    "uniqueFrames": [
+      6,
+      8,
+      8
+    ],
+    "movement": true,
+    "pauseFreezesPixels": true,
+    "halfSpeed": true,
+    "detailView": true,
+    "noStorage": true,
+    "noOverflow": true,
+    "noBrowserErrors": true
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "dpr": 1,
+    "reduced": false,
+    "uniqueFrames": [
+      6,
+      8,
+      8
+    ],
+    "movement": true,
+    "pauseFreezesPixels": true,
+    "halfSpeed": true,
+    "detailView": true,
+    "noStorage": true,
+    "noOverflow": true,
+    "noBrowserErrors": true
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "dpr": 1,
+    "reduced": false,
+    "uniqueFrames": [
+      6,
+      8,
+      8
+    ],
+    "movement": true,
+    "pauseFreezesPixels": true,
+    "halfSpeed": true,
+    "detailView": true,
+    "noStorage": true,
+    "noOverflow": true,
+    "noBrowserErrors": true
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "dpr": 3,
+    "reduced": false,
+    "uniqueFrames": [
+      6,
+      8,
+      8
+    ],
+    "movement": true,
+    "pauseFreezesPixels": true,
+    "halfSpeed": true,
+    "detailView": true,
+    "noStorage": true,
+    "noOverflow": true,
+    "noBrowserErrors": true
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "dpr": 1,
+    "reduced": true,
+    "uniqueFrames": [
+      6,
+      8,
+      8
+    ],
+    "movement": true,
+    "pauseFreezesPixels": true,
+    "halfSpeed": true,
+    "detailView": true,
+    "noStorage": true,
+    "noOverflow": true,
+    "noBrowserErrors": true
+  }
+]

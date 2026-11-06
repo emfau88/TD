@@ -1,76 +1,54 @@
-/** Rules 20: solo worms at W36/45 over the measured rules-18 B progression.
- * Historical attempts remain routed through their frozen recipes. */
-import { ENEMIES, introducedEnemy, isHealer, type EnemyId } from './enemy-roster';
-import { wormEncounter } from './worm';
-import { enemyPressure, type WaveRecipe } from './wave-recipes-v11';
-import { waveRecipeV17, spawnGapV17, clearRewardV17 } from './wave-recipes-v17';
-export { FAMILY_NAMES, enemyPressure, type WaveFamily, type WaveRecipe } from './wave-recipes-v11';
-
-// Only the 25 reviewed encounters are cached; endless recipes retain the
-// existing bounded generator. New enemy roles can use the same pressure budget.
-const progressionRecipes = new Map<number, WaveRecipe>();
-const FROST_ESCORT_WAVES: readonly number[] = [35, 38];
-export function waveRecipe(wave: number, version = 20): WaveRecipe {
-  const worm = wormEncounter(wave, version);
-  if (worm) {
-    const previous = waveRecipe(wave, 19);
-    const budget = previous.clearGold + previous.enemies.reduce((sum,id)=>sum+ENEMIES[id].gold,0);
-    return { family:'armor', enemies:[worm], gaps:[1], clearGold:budget-ENEMIES[worm].gold, elite:true };
-  }
-  const old = waveRecipeV17(wave, version);
-  if (version < 18 || wave <= 25 || wave > 50 || old.elite) return old;
-  const cached = progressionRecipes.get(wave);
-  if (cached) return cached;
-  const special = introducedEnemy(wave, 18)?.id ?? introducedEnemy(wave - 1, 18)?.id;
-  const types = [...new Set(old.enemies)].filter(id => !isHealer(ENEMIES[id]) && id !== special);
-  const count = (id: EnemyId) => old.enemies.filter(x => x === id).length;
-  const light = types.filter(id => ENEMIES[id].armor === 0).sort((a, b) => count(b) - count(a))[0];
-  const armored = types.filter(id => ENEMIES[id].armor > 0).sort((a, b) => enemyPressure(b) - enemyPressure(a))[0];
-  const fast = [...types].sort((a, b) => ENEMIES[b].speed - ENEMIES[a].speed)[0];
-  const heavyFamily = old.family === 'armor' || old.family === 'support';
-  const from = heavyFamily ? light : [...types].sort((a, b) => count(b) - count(a))[0];
-  const to = heavyFamily ? armored : fast;
-  const replacements = heavyFamily ? 2 : old.family === 'swarm' ? 4 : 3;
-  const enemies = [...old.enemies];
-  let clearGold = old.clearGold;
-  const replace = (index: number, id: EnemyId) => {
-    const cost = ENEMIES[id].gold - ENEMIES[enemies[index]].gold;
-    if (clearGold - cost < 20) return;
-    enemies[index] = id;
-    clearGold -= cost;
-  };
-  if (from && to && from !== to) {
-    const slots = enemies.map((id, i) => id === from ? i : -1).filter(i => i >= 0);
-    const n = Math.min(replacements, slots.length);
-    for (let k = 0; k < n; k++) replace(slots[Math.floor(k * slots.length / n)], to);
-  }
-  // Two established fast escorts, without changing introductions or healers.
-  if (FROST_ESCORT_WAVES.includes(wave)) {
-    const slots = enemies.map((id, i) => id === light ? i : -1).filter(i => i >= 0);
-    for (const index of [slots[1], slots[Math.floor(slots.length / 2)]]) {
-      if (index !== undefined) replace(index, 'Voidbutterfly');
+/** Rules 21: three readable silhouettes in the opening, then recurring escorts.
+ * Historical attempts use the frozen rules-20 recipes without substitution. */
+import {ENEMIES,regularEnemy,type EnemyId} from './enemy-roster';
+import {wormEncounter} from './worm';
+import {waveRecipeV20,spawnGapV20,clearRewardV20,waveHealthFactorV20} from './wave-recipes-v20';
+import {enemyPressure,type WaveRecipe} from './wave-recipes-v11';
+export {FAMILY_NAMES,enemyPressure,type WaveFamily,type WaveRecipe} from './wave-recipes-v11';
+type Swap=readonly [from:EnemyId,to:EnemyId,count?:number];
+const OPENING:Readonly<Record<number,readonly Swap[]>>={
+  3:[['Leafbug','CobaltSlime',2]], 4:[['Leafbug','CobaltSlime',2]],
+  5:[['Leafbug','CobaltSlime']], 7:[['Firebug','FlameWisp',2]],
+  8:[['Leafbug','FlameWisp',2],['Leafbug','CobaltSlime']],
+  9:[['Firebug','FlameWisp']], 10:[['Leafbug','CobaltSlime']],
+  12:[['FlyingLocust','FloatingEye',2]], 14:[['FlyingLocust','FloatingEye']],
+  16:[['Leafbug','CobaltSlime']], 18:[['Firebug','FlameWisp']],
+  19:[['FlyingLocust','FloatingEye']], 20:[['Leafbug','CobaltSlime'],['Firebug','FlameWisp']],
+  23:[['Firebug','FlameWisp'],['FlyingLocust','FloatingEye']],
+  27:[['FlyingLocust','FloatingEye']], 33:[['FlyingLocust','FloatingEye']],
+  38:[['Leafbug','CobaltSlime']], 41:[['Firewasp','FlameWisp']],
+};
+// Later fire spirits replace existing flyers, preserving ground/air counters.
+const RECURRING:readonly Swap[]=[['Leafbug','CobaltSlime'],['Firewasp','FlameWisp'],['FlyingLocust','FloatingEye']];
+function previous(wave:number):WaveRecipe{
+  if(wave>=6)return waveRecipeV20(wave,20);
+  const enemies=Array.from({length:wave+5},(_,i)=>regularEnemy(wave,i,20).id);
+  return {family:'swarm',enemies,gaps:enemies.map((_,i)=>spawnGapV20(wave,i+1,20)),clearGold:clearRewardV20(wave,20),elite:false};
+}
+export function waveRecipe(wave:number,version=21):WaveRecipe{
+  if(version<21)return waveRecipeV20(wave,version);
+  const old=previous(wave);
+  if(wave===15||wave===25||wormEncounter(wave,version)||old.elite)return old;
+  const swaps=OPENING[wave]??(wave>=26?[RECURRING[wave%3]]:[]);
+  if(!swaps.length)return old;
+  const enemies=[...old.enemies];let clearGold=old.clearGold;
+  for(const[from,to,count]of swaps){
+    const slots=enemies.map((id,i)=>id===from?i:-1).filter(i=>i>=0),n=Math.min(count??slots.length,slots.length);
+    for(let k=0;k<n;k++){
+      const index=slots[Math.floor((k+.5)*slots.length/n)];
+      enemies[index]=to;clearGold+=ENEMIES[from].gold-ENEMIES[to].gold;
     }
   }
-  const recipe = Object.freeze({ ...old, enemies: Object.freeze(enemies), clearGold });
-  progressionRecipes.set(wave, recipe);
-  return recipe;
+  return {...old,enemies,clearGold};
 }
-
-export const spawnGap = spawnGapV17; // Ordinary quantities/clocks are unchanged; worms have no second spawn.
-export function clearReward(wave: number, version: number): number {
-  if (wormEncounter(wave, version)) return waveRecipe(wave, version).clearGold;
-  return version >= 18 && wave >= 26 && wave <= 50
-    ? waveRecipe(wave, version).clearGold : clearRewardV17(wave, version);
+export const spawnGap=spawnGapV20;
+export function clearReward(wave:number,version:number):number{
+  return version>=21&&wave!==15&&wave!==25?waveRecipe(wave,version).clearGold:clearRewardV20(wave,version);
 }
-
-let progressionAnchor: number | undefined;
-/** Normalize mixed groups against a fixed W26–30 reference, then apply B's
- * finite ramp. The ordinary 13% growth continues after W50 without a reset.
- * This is a shared difficulty curve, never adaptive to the player's defense. */
-export function waveHealthFactor(wave: number, version: number, boss: boolean): number {
-  if (version < 18 || wave <= 25 || boss) return 1;
-  progressionAnchor ??= Math.exp([26, 27, 28, 29, 30].reduce((sum, w) => sum
-    + Math.log(waveRecipeV17(w, 17).enemies.reduce((s, id) => s + enemyPressure(id), 0)), 0) / 5);
-  const weight = waveRecipe(wave, version).enemies.reduce((sum, id) => sum + enemyPressure(id), 0);
-  return progressionAnchor / weight * (1 + .06 * Math.min(wave - 25, 10));
+export function waveHealthFactor(wave:number,version:number,boss:boolean):number{
+  const factor=waveHealthFactorV20(wave,Math.min(version,20),boss);
+  if(version<21||wave<=25||boss||wormEncounter(wave,version))return factor;
+  const pressure=(r:WaveRecipe)=>r.enemies.reduce((sum,id)=>sum+enemyPressure(id),0);
+  // Retain the reviewed late pressure curve; only the composition changes.
+  return factor*pressure(previous(wave))/pressure(waveRecipe(wave,version));
 }

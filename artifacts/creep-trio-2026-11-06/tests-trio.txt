@@ -1,0 +1,56 @@
+TAP version 13
+# Subtest: all 250 rules-20 waves retain their frozen queue, HP, clocks and clear gold
+ok 1 - all 250 rules-20 waves retain their frozen queue, HP, clocks and clear gold
+  ---
+  duration_ms: 32.35
+  type: 'test'
+  ...
+# Subtest: staged trio adds three early silhouettes without increasing counts, wave budgets or late pressure
+not ok 2 - staged trio adds three early silhouettes without increasing counts, wave budgets or late pressure
+  ---
+  duration_ms: 7.8336
+  type: 'test'
+  location: 'C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\progression-economy\\experiments\\idle-bastion\\tests\\creep-trio.test.ts:1:1255'
+  failureType: 'testCodeFailure'
+  error: 'rounding W28'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\progression-economy\experiments\idle-bastion\tests\creep-trio.test.ts:29:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: each new creature survives live save/reload at entry and along the route
+ok 3 - each new creature survives live save/reload at entry and along the route
+  ---
+  duration_ms: 332.8904
+  type: 'test'
+  ...
+# Subtest: old rule-20 combat is exact until the boundary and farm claims require a fresh proof
+ok 4 - old rule-20 combat is exact until the boundary and farm claims require a fresh proof
+  ---
+  duration_ms: 163.575
+  type: 'test'
+  ...
+# Subtest: compact trio atlases provide all route directions and matching loop timings
+ok 5 - compact trio atlases provide all route directions and matching loop timings
+  ---
+  duration_ms: 6.2593
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 4
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1096.5284

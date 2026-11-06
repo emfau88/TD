@@ -5,6 +5,7 @@ import type { EnemyId } from './enemy-roster';
 import { LOCAL_ENEMY_FRAMES } from './local-enemy-frames';
 import { LUCIFER_FRAMES } from './lucifer-frames';
 import { WORM_SHEET } from './worm-view';
+import { CREEP_TRIO_FRAMES } from './creep-trio-frames';
 export type EnemyDirection = 'up' | 'down' | 'side';
 // Measured in world pixels from the unchanged sprite anchor. Humanoid feet
 // differ from the insects' body centres. Flyers project below their entire
@@ -13,6 +14,7 @@ const SHADOW_Y: Partial<Record<EnemyId, number>> = {
   Rosenspiegel: 0, ForestGoblin: 7, BoneGuard: 6, ForestCultist: 4,
   FlyingLocust: 20, Firewasp: 22, Clampbeetle: 27, Voidbutterfly: 25,
   LanternJelly: 15, HornedBat: 22,
+  FlameWisp: 12, FloatingEye: 15,
 };
 export const enemyShadowOffset = (kind: EnemyId): number => SHADOW_Y[kind] ?? 9;
 interface Clip { frames: readonly number[]; durations: readonly number[] }
@@ -22,6 +24,9 @@ interface EnemySheet { key: string; url: string; width: number; height: number; 
  * Side artwork was visually checked; left-facing sheets invert horizontal mirroring.
  */
 export const ENEMY_SHEETS: Record<EnemyId, EnemySheet> = {
+  CobaltSlime: { ...CREEP_TRIO_FRAMES.CobaltSlime, url:new URL('../assets/creep-trio/CobaltSlime.png',import.meta.url).href },
+  FlameWisp: { ...CREEP_TRIO_FRAMES.FlameWisp, url:new URL('../assets/creep-trio/FlameWisp.png',import.meta.url).href },
+  FloatingEye: { ...CREEP_TRIO_FRAMES.FloatingEye, url:new URL('../assets/creep-trio/FloatingEye.png',import.meta.url).href },
   ObsidianWormYoung: WORM_SHEET,
   ObsidianWorm: WORM_SHEET,
   MossShroom: { ...LOCAL_ENEMY_FRAMES.MossShroom, url:new URL('../assets/local-monsters/MossShroom.png',import.meta.url).href },
@@ -66,4 +71,13 @@ export function enemyHealFrame(kind: EnemyId, direction: EnemyDirection, elapsed
 export function enemyFlip(kind: EnemyId, direction: EnemyDirection, movingLeft: boolean): boolean {
   if (ENEMY_SHEETS[kind].move.left) return false;
   return direction === 'side' && (ENEMY_SHEETS[kind].facesLeft ? !movingLeft : movingLeft);
+}
+/** Visual offset only: collider, targeting and saved path position stay on the ground. */
+export function slimeHop(elapsed:number):number {
+  const t=Math.max(0,elapsed*1000)%760,keys=[[0,0],[250,0],[350,6],[420,7],[530,0],[760,0]];
+  for(let i=1;i<keys.length;i++)if(t<keys[i][0]){
+    const [a,y]=keys[i-1],[b,z]=keys[i],u=(t-a)/(b-a);
+    return y+(z-y)*(1-Math.cos(u*Math.PI))/2;
+  }
+  return 0;
 }

@@ -1,0 +1,1292 @@
+[
+  {
+    "style": "relaxed",
+    "case": "fresh",
+    "oldHighest": 34,
+    "highest": 34,
+    "gold": null,
+    "oldGold": null,
+    "firstLoss": {
+      "wave": 15,
+      "at": 452.6
+    },
+    "firstLeak": {
+      "wave": 12,
+      "at": 239.9
+    },
+    "pressure": {
+      "wave": 12,
+      "at": 244.4
+    },
+    "record30": 32,
+    "maxStall": 992.275,
+    "spentOnReturn": null,
+    "early": [
+      {
+        "wave": 1,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 12.0
+      },
+      {
+        "wave": 2,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 13.17
+      },
+      {
+        "wave": 3,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 14.25
+      },
+      {
+        "wave": 4,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 14.97
+      },
+      {
+        "wave": 5,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 16.9
+      },
+      {
+        "wave": 6,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 11.75
+      },
+      {
+        "wave": 7,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 13.17
+      },
+      {
+        "wave": 8,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 14.7
+      },
+      {
+        "wave": 9,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 14.65
+      },
+      {
+        "wave": 10,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 25.1
+      },
+      {
+        "wave": 11,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 28.93
+      },
+      {
+        "wave": 12,
+        "livesLost": 5,
+        "result": "clear",
+        "duration": 42.78
+      },
+      {
+        "wave": 13,
+        "livesLost": 10,
+        "result": "clear",
+        "duration": 57.0
+      },
+      {
+        "wave": 14,
+        "livesLost": 11,
+        "result": "clear",
+        "duration": 54.68
+      },
+      {
+        "wave": 15,
+        "livesLost": 20,
+        "result": "defeat",
+        "duration": 90.53
+      },
+      {
+        "wave": 15,
+        "livesLost": 20,
+        "result": "defeat",
+        "duration": 90.53
+      },
+      {
+        "wave": 15,
+        "livesLost": 20,
+        "result": "defeat",
+        "duration": 90.52
+      },
+      {
+        "wave": 15,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 57.33
+      },
+      {
+        "wave": 16,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 32.08
+      },
+      {
+        "wave": 17,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 22.5
+      },
+      {
+        "wave": 18,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 26.83
+      },
+      {
+        "wave": 19,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 29.9
+      },
+      {
+        "wave": 20,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 29.5
+      }
+    ]
+  },
+  {
+    "style": "relaxed",
+    "case": "w8-24h",
+    "oldHighest": 33,
+    "highest": 32,
+    "gold": 2141.922,
+    "oldGold": 2141.922,
+    "firstLoss": {
+      "wave": 15,
+      "at": 327.65
+    },
+    "firstLeak": {
+      "wave": 12,
+      "at": 114.95
+    },
+    "pressure": {
+      "wave": 12,
+      "at": 119.45
+    },
+    "record30": 32,
+    "maxStall": 546.375,
+    "spentOnReturn": {
+      "spent": 744,
+      "remaining": 2085.222,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 3,
+          "spent": 154
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 2,
+          "spent": 60
+        },
+        {
+          "pad": "tower-04",
+          "kind": 1,
+          "level": 3,
+          "spent": 229
+        }
+      ]
+    },
+    "early": [
+      {
+        "wave": 9,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 14.65
+      },
+      {
+        "wave": 10,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 25.1
+      },
+      {
+        "wave": 11,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 28.92
+      },
+      {
+        "wave": 12,
+        "livesLost": 5,
+        "result": "clear",
+        "duration": 42.78
+      },
+      {
+        "wave": 13,
+        "livesLost": 10,
+        "result": "clear",
+        "duration": 57.0
+      },
+      {
+        "wave": 14,
+        "livesLost": 11,
+        "result": "clear",
+        "duration": 54.68
+      },
+      {
+        "wave": 15,
+        "livesLost": 20,
+        "result": "defeat",
+        "duration": 90.52
+      },
+      {
+        "wave": 15,
+        "livesLost": 20,
+        "result": "defeat",
+        "duration": 90.52
+      },
+      {
+        "wave": 15,
+        "livesLost": 20,
+        "result": "defeat",
+        "duration": 90.52
+      },
+      {
+        "wave": 15,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 48.9
+      },
+      {
+        "wave": 16,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 29.83
+      },
+      {
+        "wave": 17,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 21.9
+      },
+      {
+        "wave": 18,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 26.12
+      },
+      {
+        "wave": 19,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 29.9
+      },
+      {
+        "wave": 20,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 28.3
+      }
+    ]
+  },
+  {
+    "style": "relaxed",
+    "case": "w14-24h",
+    "oldHighest": 35,
+    "highest": 35,
+    "gold": 9795.113,
+    "oldGold": 9281.665,
+    "firstLoss": {
+      "wave": 15,
+      "at": 92.525
+    },
+    "firstLeak": {
+      "wave": 15,
+      "at": 92.525
+    },
+    "pressure": {
+      "wave": 15,
+      "at": 92.525
+    },
+    "record30": 35,
+    "maxStall": 558.675,
+    "spentOnReturn": {
+      "spent": 0,
+      "remaining": 11044.113,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 3,
+          "spent": 154
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 2,
+          "spent": 60
+        },
+        {
+          "pad": "tower-04",
+          "kind": 1,
+          "level": 3,
+          "spent": 229
+        }
+      ]
+    },
+    "early": [
+      {
+        "wave": 15,
+        "livesLost": 20,
+        "result": "defeat",
+        "duration": 90.53
+      },
+      {
+        "wave": 15,
+        "livesLost": 20,
+        "result": "defeat",
+        "duration": 90.52
+      },
+      {
+        "wave": 15,
+        "livesLost": 20,
+        "result": "defeat",
+        "duration": 90.53
+      },
+      {
+        "wave": 15,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 46.75
+      },
+      {
+        "wave": 16,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 29.9
+      },
+      {
+        "wave": 17,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 21.5
+      },
+      {
+        "wave": 18,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 26.82
+      },
+      {
+        "wave": 19,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 30.25
+      },
+      {
+        "wave": 20,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 28.25
+      }
+    ]
+  },
+  {
+    "style": "relaxed",
+    "case": "w20-24h",
+    "oldHighest": 40,
+    "highest": 39,
+    "gold": 21964.8,
+    "oldGold": 24814.057,
+    "firstLoss": {
+      "wave": 39,
+      "at": 683.25
+    },
+    "firstLeak": {
+      "wave": 34,
+      "at": 460.525
+    },
+    "pressure": {
+      "wave": 34,
+      "at": 464.65
+    },
+    "record30": 39,
+    "maxStall": 774.275,
+    "spentOnReturn": {
+      "spent": 21622,
+      "remaining": 1402.84,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 12,
+          "spent": 9970
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 4,
+          "spent": 446
+        },
+        {
+          "pad": "tower-04",
+          "kind": 1,
+          "level": 11,
+          "spent": 7415
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 9,
+          "spent": 8798
+        }
+      ]
+    },
+    "early": []
+  },
+  {
+    "style": "mixed",
+    "case": "fresh",
+    "oldHighest": 35,
+    "highest": 35,
+    "gold": null,
+    "oldGold": null,
+    "firstLoss": {
+      "wave": 35,
+      "at": 1055.05
+    },
+    "firstLeak": {
+      "wave": 21,
+      "at": 436.625
+    },
+    "pressure": {
+      "wave": 26,
+      "at": 617.075
+    },
+    "record30": 34,
+    "maxStall": 1322.925,
+    "spentOnReturn": null,
+    "early": [
+      {
+        "wave": 1,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 12.0
+      },
+      {
+        "wave": 2,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 13.17
+      },
+      {
+        "wave": 3,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 15.22
+      },
+      {
+        "wave": 4,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 16.23
+      },
+      {
+        "wave": 5,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 18.07
+      },
+      {
+        "wave": 6,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 12.2
+      },
+      {
+        "wave": 7,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 13.0
+      },
+      {
+        "wave": 8,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 13.3
+      },
+      {
+        "wave": 9,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 12.15
+      },
+      {
+        "wave": 10,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 12.75
+      },
+      {
+        "wave": 11,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 17.15
+      },
+      {
+        "wave": 12,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 14.92
+      },
+      {
+        "wave": 13,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 22.08
+      },
+      {
+        "wave": 14,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 18.28
+      },
+      {
+        "wave": 15,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 42.4
+      },
+      {
+        "wave": 16,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 25.03
+      },
+      {
+        "wave": 17,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 17.52
+      },
+      {
+        "wave": 18,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 19.62
+      },
+      {
+        "wave": 19,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 21.32
+      },
+      {
+        "wave": 20,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 21.8
+      }
+    ]
+  },
+  {
+    "style": "mixed",
+    "case": "w8-24h",
+    "oldHighest": 34,
+    "highest": 34,
+    "gold": 2372.531,
+    "oldGold": 2355.339,
+    "firstLoss": {
+      "wave": 35,
+      "at": 832
+    },
+    "firstLeak": {
+      "wave": 26,
+      "at": 435.45
+    },
+    "pressure": {
+      "wave": 31,
+      "at": 611.125
+    },
+    "record30": 34,
+    "maxStall": 1012.175,
+    "spentOnReturn": {
+      "spent": 2172,
+      "remaining": 718.831,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 6,
+          "spent": 1174
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 4,
+          "spent": 668
+        }
+      ]
+    },
+    "early": [
+      {
+        "wave": 9,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 11.1
+      },
+      {
+        "wave": 10,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 11.9
+      },
+      {
+        "wave": 11,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 15.27
+      },
+      {
+        "wave": 12,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 12.02
+      },
+      {
+        "wave": 13,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 20.58
+      },
+      {
+        "wave": 14,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 16.45
+      },
+      {
+        "wave": 15,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 37.75
+      },
+      {
+        "wave": 16,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 20.9
+      },
+      {
+        "wave": 17,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 16.35
+      },
+      {
+        "wave": 18,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 17.68
+      },
+      {
+        "wave": 19,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 19.18
+      },
+      {
+        "wave": 20,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 18.88
+      }
+    ]
+  },
+  {
+    "style": "mixed",
+    "case": "w14-24h",
+    "oldHighest": 38,
+    "highest": 36,
+    "gold": 12125.549,
+    "oldGold": 12219.585,
+    "firstLoss": {
+      "wave": 36,
+      "at": 652.65
+    },
+    "firstLeak": {
+      "wave": 31,
+      "at": 425.125
+    },
+    "pressure": {
+      "wave": 34,
+      "at": 558.825
+    },
+    "record30": 36,
+    "maxStall": 600,
+    "spentOnReturn": {
+      "spent": 11227,
+      "remaining": 1222.549,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 9,
+          "spent": 3839
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 7,
+          "spent": 3380
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 7,
+          "spent": 4242
+        }
+      ]
+    },
+    "early": [
+      {
+        "wave": 15,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 25.6
+      },
+      {
+        "wave": 16,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 20.25
+      },
+      {
+        "wave": 17,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 14.6
+      },
+      {
+        "wave": 18,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 14.72
+      },
+      {
+        "wave": 19,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 18.1
+      },
+      {
+        "wave": 20,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 16.9
+      }
+    ]
+  },
+  {
+    "style": "mixed",
+    "case": "w20-24h",
+    "oldHighest": 42,
+    "highest": 42,
+    "gold": 28817.578,
+    "oldGold": 31961.248,
+    "firstLoss": {
+      "wave": 41,
+      "at": 682.6
+    },
+    "firstLeak": {
+      "wave": 34,
+      "at": 371.65
+    },
+    "pressure": {
+      "wave": 37,
+      "at": 473.475
+    },
+    "record30": 42,
+    "maxStall": 573.075,
+    "spentOnReturn": {
+      "spent": 27343,
+      "remaining": 2401.478,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 12,
+          "spent": 9970
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 10,
+          "spent": 9714
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 10,
+          "spent": 12219
+        }
+      ]
+    },
+    "early": []
+  },
+  {
+    "style": "tactical",
+    "case": "fresh",
+    "oldHighest": 36,
+    "highest": 36,
+    "gold": null,
+    "oldGold": null,
+    "firstLoss": {
+      "wave": 35,
+      "at": 955.2
+    },
+    "firstLeak": {
+      "wave": 31,
+      "at": 746.375
+    },
+    "pressure": {
+      "wave": 31,
+      "at": 754.15
+    },
+    "record30": 35,
+    "maxStall": 1240.45,
+    "spentOnReturn": null,
+    "early": [
+      {
+        "wave": 1,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 12.0
+      },
+      {
+        "wave": 2,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 13.17
+      },
+      {
+        "wave": 3,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 15.22
+      },
+      {
+        "wave": 4,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 16.23
+      },
+      {
+        "wave": 5,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 18.07
+      },
+      {
+        "wave": 6,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 11.85
+      },
+      {
+        "wave": 7,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 13.27
+      },
+      {
+        "wave": 8,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 15.0
+      },
+      {
+        "wave": 9,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 12.1
+      },
+      {
+        "wave": 10,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 13.25
+      },
+      {
+        "wave": 11,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 17.03
+      },
+      {
+        "wave": 12,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 16.85
+      },
+      {
+        "wave": 13,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 22.53
+      },
+      {
+        "wave": 14,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 17.15
+      },
+      {
+        "wave": 15,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 42.88
+      },
+      {
+        "wave": 16,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 23.6
+      },
+      {
+        "wave": 17,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 17.05
+      },
+      {
+        "wave": 18,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 19.6
+      },
+      {
+        "wave": 19,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 22.35
+      },
+      {
+        "wave": 20,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 22.57
+      }
+    ]
+  },
+  {
+    "style": "tactical",
+    "case": "w8-24h",
+    "oldHighest": 35,
+    "highest": 35,
+    "gold": 2163.306,
+    "oldGold": 2222.473,
+    "firstLoss": {
+      "wave": 36,
+      "at": 839.9
+    },
+    "firstLeak": {
+      "wave": 31,
+      "at": 586.35
+    },
+    "pressure": {
+      "wave": 31,
+      "at": 594.125
+    },
+    "record30": 35,
+    "maxStall": 1014.925,
+    "spentOnReturn": {
+      "spent": 1805,
+      "remaining": 509.606,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 5,
+          "spent": 627
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 5,
+          "spent": 1215
+        }
+      ]
+    },
+    "early": [
+      {
+        "wave": 9,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 12.25
+      },
+      {
+        "wave": 10,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 13.38
+      },
+      {
+        "wave": 11,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 16.85
+      },
+      {
+        "wave": 12,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 12.65
+      },
+      {
+        "wave": 13,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 18.8
+      },
+      {
+        "wave": 14,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 16.3
+      },
+      {
+        "wave": 15,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 40.1
+      },
+      {
+        "wave": 16,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 23.6
+      },
+      {
+        "wave": 17,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 17.15
+      },
+      {
+        "wave": 18,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 18.58
+      },
+      {
+        "wave": 19,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 20.4
+      },
+      {
+        "wave": 20,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 20.1
+      }
+    ]
+  },
+  {
+    "style": "tactical",
+    "case": "w14-24h",
+    "oldHighest": 39,
+    "highest": 39,
+    "gold": 11754.136,
+    "oldGold": 12476.726,
+    "firstLoss": {
+      "wave": 37,
+      "at": 651.525
+    },
+    "firstLeak": {
+      "wave": 34,
+      "at": 522.25
+    },
+    "pressure": {
+      "wave": 34,
+      "at": 526.375
+    },
+    "record30": 39,
+    "maxStall": 1061.825,
+    "spentOnReturn": {
+      "spent": 11622,
+      "remaining": 456.136,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 5,
+          "spent": 627
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 10,
+          "spent": 9714
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 5,
+          "spent": 1515
+        }
+      ]
+    },
+    "early": [
+      {
+        "wave": 15,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 33.27
+      },
+      {
+        "wave": 16,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 20.58
+      },
+      {
+        "wave": 17,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 15.9
+      },
+      {
+        "wave": 18,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 16.5
+      },
+      {
+        "wave": 19,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 19.35
+      },
+      {
+        "wave": 20,
+        "livesLost": 0,
+        "result": "clear",
+        "duration": 15.72
+      }
+    ]
+  },
+  {
+    "style": "tactical",
+    "case": "w20-24h",
+    "oldHighest": 43,
+    "highest": 42,
+    "gold": 28579.46,
+    "oldGold": 32736.809,
+    "firstLoss": {
+      "wave": 43,
+      "at": 747.375
+    },
+    "firstLeak": {
+      "wave": 37,
+      "at": 429.375
+    },
+    "pressure": {
+      "wave": 37,
+      "at": 432.75
+    },
+    "record30": 42,
+    "maxStall": 1101,
+    "spentOnReturn": {
+      "spent": 28909,
+      "remaining": 289.36,
+      "levels": [
+        {
+          "pad": "cell-10-5",
+          "kind": 1,
+          "level": 9,
+          "spent": 3839
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 3,
+          "spent": 198
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 11,
+          "spent": 13300
+        },
+        {
+          "pad": "tower-03",
+          "kind": 4,
+          "level": 5,
+          "spent": 1515
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 2,
+          "level": 3,
+          "spent": 308
+        },
+        {
+          "pad": "cell-9-7",
+          "kind": 3,
+          "level": 11,
+          "spent": 13300
+        },
+        {
+          "pad": "tower-06",
+          "kind": 4,
+          "level": 5,
+          "spent": 1515
+        }
+      ]
+    },
+    "early": []
+  }
+]
