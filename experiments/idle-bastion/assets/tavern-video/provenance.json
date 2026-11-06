@@ -1,0 +1,140 @@
+{
+  "source_commit": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
+  "approved_clips": [
+    {
+      "character": "mara",
+      "code": "M01",
+      "role": "idle",
+      "selected_revision": "v2",
+      "sha256": "63179b51ef61db4abfc69050b6c1ca9d1db598b41419f74912586b2e03d0a725",
+      "new_bytes": 484243,
+      "new_seconds": 4.458333
+    },
+    {
+      "character": "mara",
+      "code": "M02",
+      "role": "head",
+      "selected_revision": "v1",
+      "sha256": "9f19ecdd841fba54470f4945366888388375b28308672bcadd843fdb60418284",
+      "new_bytes": 926994,
+      "new_seconds": 3.75
+    },
+    {
+      "character": "mara",
+      "code": "M03",
+      "role": "touch",
+      "selected_revision": "v1",
+      "sha256": "590102f3d03e209cc71e29f18501e4b3d0ef6b2e5162223d5d3620e2904469c3",
+      "new_bytes": 696134,
+      "new_seconds": 3.041667
+    },
+    {
+      "character": "mara",
+      "code": "M04",
+      "role": "variant",
+      "selected_revision": "v2",
+      "sha256": "c0c3fcaa704bf4d97622f55d9a7edde9e9c3eeea67889a598759b19d5eea0244",
+      "new_bytes": 285492,
+      "new_seconds": 3.75
+    },
+    {
+      "character": "mara",
+      "code": "M05",
+      "role": "giggle",
+      "selected_revision": "v1",
+      "sha256": "1e8c9252bd3599714a86fac47497448909399289080eb10c9ae1810cc5b39c17",
+      "new_bytes": 1328492,
+      "new_seconds": 4.458333
+    },
+    {
+      "character": "mara",
+      "code": "M06",
+      "role": "joy",
+      "selected_revision": "v1",
+      "sha256": "0d148aa0a3741c398b8a00a2b5ba8dd97d3cfd2a6a39c068622fd850e1ad208f",
+      "new_bytes": 924521,
+      "new_seconds": 3.75
+    },
+    {
+      "character": "mara",
+      "code": "M07",
+      "role": "tease",
+      "selected_revision": "v1",
+      "sha256": "46ca4ec1749649aece9d3d01e6e27a63a2cad94e30f79ebfce5c29870047c714",
+      "new_bytes": 768910,
+      "new_seconds": 3.041667
+    },
+    {
+      "character": "mara",
+      "code": "M08",
+      "role": "hip",
+      "selected_revision": "v1",
+      "sha256": "27ae4c612e82a316cb3500e8efad65ebbed2c184e09943dd70f836360ba2e525",
+      "new_bytes": 1074239,
+      "new_seconds": 4.458333
+    },
+    {
+      "character": "ilyra",
+      "code": "I01",
+      "role": "idle",
+      "selected_revision": "v2",
+      "sha256": "9ae0a9936547b1901fe7deca53de94304e28d9348f8a6ec996c1d8c3342fee8d",
+      "new_bytes": 352232,
+      "new_seconds": 4.458333
+    },
+    {
+      "character": "ilyra",
+      "code": "I02",
+      "role": "head",
+      "selected_revision": "v1",
+      "sha256": "9c47da04b3619bb612e71fa343f505b6b5e87861a201b017144231d6d4bfc5e9",
+      "new_bytes": 534112,
+      "new_seconds": 2.333333
+    },
+    {
+      "character": "ilyra",
+      "code": "I03",
+      "role": "touch",
+      "selected_revision": "v1",
+      "sha256": "4237a14814fc21478e24267b9f06098edc3e765b4352c187e1ddc5c680cfbe3a",
+      "new_bytes": 702619,
+      "new_seconds": 3.041667
+    },
+    {
+      "character": "ilyra",
+      "code": "I04",
+      "role": "variant",
+      "selected_revision": "v3",
+      "sha256": "8a06cacfd85a01e00f7fa841641c48ed147959f23a39b1939dc112a541fb67a1",
+      "new_bytes": 488562,
+      "new_seconds": 4.458333
+    },
+    {
+      "character": "ilyra",
+      "code": "I05",
+      "role": "giggle",
+      "selected_revision": "v1",
+      "sha256": "5fe512cd9e678b7c0f5342afeae8be28a6c7fd3a44a66f558dc5ed621ea488f5",
+      "new_bytes": 993014,
+      "new_seconds": 3.75
+    },
+    {
+      "character": "ilyra",
+      "code": "I06",
+      "role": "joy",
+      "selected_revision": "v3",
+      "sha256": "e77a337977c51b0de00c7879765ef78a4b5416ed1e7155ce03fbe2a5e1fbd017",
+      "new_bytes": 667462,
+      "new_seconds": 3.041667
+    },
+    {
+      "character": "ilyra",
+      "code": "I07",
+      "role": "hip",
+      "selected_revision": "v1",
+      "sha256": "a4faf225b0291b8d7439c2c13b8e634616e2de57d9ac57ab5bfaa612be6053fc",
+      "new_bytes": 994940,
+      "new_seconds": 4.458333
+    }
+  ]
+}

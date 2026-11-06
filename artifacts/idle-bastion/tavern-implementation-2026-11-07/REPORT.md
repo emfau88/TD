@@ -1,0 +1,15 @@
+# Tavernen-Videos und verständlicher Fortschritt · 07.11.2026
+
+Umsetzung auf `codex/tavern-comfy-integration`, Ausgangspunkt Main `daf39fb`. Lokales Spiel unter http://127.0.0.1:5277/; isolierte Prüfung unter http://127.0.0.1:5277/tavern-rig-check.html?artwork=video&sound=1 . Hauptspielstand/Veröffentlichung unverändert; echte Spielproben verwenden separate IndexedDB-Slots.
+
+Bulk 0 abgeschlossen: 253 alte Dateien / 49.038.130 Byte unter `archive/tavern-animations/pre-comfy-2026-11-06/`, vollständige probeweise Wiederherstellung und SHA-256-Vergleich. Originale/historische Verbraucher erhalten. Die 15 abgenommenen MP4-Master wurden unverändert kopiert (11.221.966 Byte).
+
+Bulk 1 lokal umgesetzt und technisch geprüft: stummer Video-Player im vorhandenen Canvas, gleiche logische Koordinaten und identische gemessene Fenster-/Figurenmaße bei 1280 und390px. Hintergrundseiten angepasst, keine Menüänderung. 15 Cliprollen einschließlich15/18s-Idlevarianten, echte Stimmen, Geschenkverbrauch, letzte Folgeaktion, Fehlerwiederholung und Close geprüft. Zwei beim Review gefundene Recovery-Probleme korrigiert und gezielt im echten Browser nachgestellt. Hauptspiel bei1280/320px mit Reload und separatem Save geprüft: Videoplayer aktiv, keine alten Atlasbilder geladen, keine Seitenfehler.
+
+Bulk 2 lokal umgesetzt und technisch geprüft: ein kurzer kontextabhängiger Hinweis im bisherigen Geschenkbereich; Details bleiben aufklappbar. Gesperrte Herzen erklären ihren Grund, der vorhandene Freischaltknopf bietet die neue Berührung an, persönliche Momente bleiben an den Herzen. Dezenter1100ms-Herzglanz erst nach erfolgreicher Speicherung, reduzierte Bewegung, bisherige Kopfreaktion/Audio. Deutsch/Englisch. 12 Browserfälle (58/18,47/30,58/30 ×1280/320px ×DE/EN): Hinweis vollständig sichtbar, drei Hauptaktionen, kein horizontales Überlaufen, keine Seitenfehler. Erklärung gesperrter Herzen, tatsächlicher Aufstieg und Ausprobieren geprüft.
+
+35/35 gezielte Tests aus sechs Dateien bestanden, TypeScript/Produktionsbuild `npm run build` bestanden. Keine Behauptung einer grünen Vollsuite. Ergebnisse in `tests.log`, `build.log`, `playback/results.json`, `recovery-results.json`, `main/results.json`, `progress/results.json`. Vorher-/Nachher-Aufnahmen liegen in `before/` und `video/`; tatsächlich neue Texte in `progress/`.
+
+Offene menschliche Abnahme: visuelle Integration, Verständlichkeit ohne vorherige Erklärung und Spielgefühl. Die automatisierten Zustands-/Layoutprüfungen ersetzen sie nicht. Bis dahin gelten Bulk1/2 als technisch umgesetzt, nicht als subjektiv abgenommen. Kein echtes Mobilgerät geprüft; schmale Chrome-Ansichten wurden emuliert. Browserprüfungen liefen mit Softwaregrafik, keine belastbare Hardware-Performance-Messung.
+
+Bulk 3 begonnen: M09 v1 erzeugte eine fremde Hand und wurde verworfen. Separate v2 (73Frames/3,04s,222–228s Renderzeit) ohne fremde Hand vollständig angesehen und im Chat zur Sichtprüfung gezeigt. Keine Einbindung von M09 vor Nutzerfreigabe, keine weiteren neuen Clips gestartet. GPU aktuell frei.

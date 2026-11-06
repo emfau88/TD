@@ -1,0 +1,2 @@
+# The inventory records exact original bytes, including text line endings.
+files/** -text

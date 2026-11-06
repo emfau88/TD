@@ -1,5 +1,14 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Tavernen-Ausbau · 07.11.2026 — bulkweise Umsetzung ausdrücklich beauftragt, Bulk 0 abgeschlossen / Bulk 1 in Arbeit.**
+
+- [x] Mara M01–M08 und Ilyra I01–I07 im aktuellen Chat visuell freigegeben; alle 15 neuen Clips bleiben vorerst separate Artefakte. [Exakte Fassungen und geplante Zuordnung](../../artifacts/idle-bastion/tavern-audit-2026-11-06/clip-replacement-plan.json).
+- [x] Auf ausdrücklichen Nutzerauftrag einen [Markdown-Plan mit Bulks und Abnahmekriterien](docs/TAVERNE_AUSBAUPLAN_2026-11-06.md) erstellt: verständliche Herzbedingungen, Archivierung/Austausch, fehlende Reaktionen, vollständige ortsgebundene Interaktionssets, Herz-4-/5-Erlebnisse, Geschenkrolle und Herzfreischaltung. Geprüfte Spielbasis ist `origin/main` / `daf39fb`; dieser Checkout bleibt der ältere Tavernenbranch. Frühere Einträge und vorhandene lokale Änderungen erhalten.
+- [x] Auf Nutzerpräzisierung den Plan durchgehend vereinfacht: vertrauter Stil und drei Hauptaktionen bleiben, ein kurzer kontextabhängiger Hinweis statt Zahlenkarte, Rückblicke über Herzen, neue Gespräche und direkte Ortswechsel über Sprechen. Keine zusätzliche Archiv-/Favoriten-/Raumverwaltung, keine neuen Menüebenen oder vollständiger Layoutumbau; auch die Bulk-Abnahmen entsprechend geschärft. Nur Dokumentation geändert.
+- [x] Bulk 0: Main `daf39fb` frisch abgeglichen, getrennter Branch `codex/tavern-comfy-integration`, vier unveränderte Desktop-/Handyansichten festgehalten. 15 freigegebene Master per Hash geprüft; 253 alte Dateien / 49.038.130 Byte im Repo archiviert und vollständig testweise mit identischen Prüfsummen wiederhergestellt. Alte Verbraucher/Pfade erhalten.
+- [x] Bulk 1 technisch umgesetzt:15 Cliprollen, Stimmen, Geschenke, Fehlerwiederholung und echte Hauptspiel-/Reload-Proben bei1280/320px bestanden. Bulk2 ebenfalls implementiert;12 Browserfälle DE/EN mit sichtbaren Kurztexten ohne zusätzliche Menüs. 35/35 gezielte Tests, TypeScript und Produktionsbuild bestanden. [Prüfbericht](../../artifacts/idle-bastion/tavern-implementation-2026-11-07/REPORT.md).
+- [ ] Menschliche visuelle Integrations-/Verständnisabnahme für Bulk1/2 offen. Bulk3: M09 v1 verworfen (fremde Hand), v2 fertig und zur Kontrolle im Chat; Nutzerfreigabe vor Einbau offen. Weitere neue Clips noch nicht gestartet; kein GPU-Job läuft. Plan-Detailcheckboxen und Übersicht synchron aktualisiert.
+
 **Gegnerdarstellung · 06.11.2026 — Spielcode `40dbe26` auf Main/Pages veröffentlicht.**
 
 - [x] Feuerkäfer proportional 20 % kleiner (0,83 → 0,664); Originalgrafik erhalten, Schatten passend verkleinert. Mittlere Flughöhe 7 → 9,8 Spieleinheiten, bisheriges ruhiges Schweben erhalten.

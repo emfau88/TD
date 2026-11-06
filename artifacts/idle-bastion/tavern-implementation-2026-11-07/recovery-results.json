@@ -1,0 +1,31 @@
+{
+  "checks": [
+    {
+      "name": "failed preparation retries head and touch",
+      "passed": true,
+      "first": false,
+      "second": true,
+      "requests": {
+        "head": 2,
+        "touch": 2
+      }
+    },
+    {
+      "name": "ended reaction returns to idle after pending download fails",
+      "passed": true,
+      "holding": {
+        "clip": "giggle",
+        "pending": "head",
+        "ended": true
+      },
+      "recovered": {
+        "clip": "idle",
+        "error": "true",
+        "pending": null,
+        "loading": false
+      }
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

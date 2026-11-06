@@ -1,0 +1,137 @@
+{
+  "width": 480,
+  "height": 704,
+  "crop": [
+    0,
+    2,
+    480,
+    700
+  ],
+  "audio": false,
+  "heroes": {
+    "mara": {
+      "idle": {
+        "file": "mara/idle.mp4",
+        "code": "M01",
+        "fps": 24,
+        "frames": 107,
+        "duration": 4.458333,
+        "sha256": "63179b51ef61db4abfc69050b6c1ca9d1db598b41419f74912586b2e03d0a725"
+      },
+      "head": {
+        "file": "mara/head.mp4",
+        "code": "M02",
+        "fps": 24,
+        "frames": 90,
+        "duration": 3.75,
+        "sha256": "9f19ecdd841fba54470f4945366888388375b28308672bcadd843fdb60418284"
+      },
+      "touch": {
+        "file": "mara/touch.mp4",
+        "code": "M03",
+        "fps": 24,
+        "frames": 73,
+        "duration": 3.041667,
+        "sha256": "590102f3d03e209cc71e29f18501e4b3d0ef6b2e5162223d5d3620e2904469c3"
+      },
+      "variant": {
+        "file": "mara/variant.mp4",
+        "code": "M04",
+        "fps": 24,
+        "frames": 90,
+        "duration": 3.75,
+        "sha256": "c0c3fcaa704bf4d97622f55d9a7edde9e9c3eeea67889a598759b19d5eea0244"
+      },
+      "giggle": {
+        "file": "mara/giggle.mp4",
+        "code": "M05",
+        "fps": 24,
+        "frames": 107,
+        "duration": 4.458333,
+        "sha256": "1e8c9252bd3599714a86fac47497448909399289080eb10c9ae1810cc5b39c17"
+      },
+      "joy": {
+        "file": "mara/joy.mp4",
+        "code": "M06",
+        "fps": 24,
+        "frames": 90,
+        "duration": 3.75,
+        "sha256": "0d148aa0a3741c398b8a00a2b5ba8dd97d3cfd2a6a39c068622fd850e1ad208f"
+      },
+      "tease": {
+        "file": "mara/tease.mp4",
+        "code": "M07",
+        "fps": 24,
+        "frames": 73,
+        "duration": 3.041667,
+        "sha256": "46ca4ec1749649aece9d3d01e6e27a63a2cad94e30f79ebfce5c29870047c714"
+      },
+      "hip": {
+        "file": "mara/hip.mp4",
+        "code": "M08",
+        "fps": 24,
+        "frames": 107,
+        "duration": 4.458333,
+        "sha256": "27ae4c612e82a316cb3500e8efad65ebbed2c184e09943dd70f836360ba2e525"
+      }
+    },
+    "ilyra": {
+      "idle": {
+        "file": "ilyra/idle.mp4",
+        "code": "I01",
+        "fps": 24,
+        "frames": 107,
+        "duration": 4.458333,
+        "sha256": "9ae0a9936547b1901fe7deca53de94304e28d9348f8a6ec996c1d8c3342fee8d"
+      },
+      "head": {
+        "file": "ilyra/head.mp4",
+        "code": "I02",
+        "fps": 24,
+        "frames": 56,
+        "duration": 2.333333,
+        "sha256": "9c47da04b3619bb612e71fa343f505b6b5e87861a201b017144231d6d4bfc5e9"
+      },
+      "touch": {
+        "file": "ilyra/touch.mp4",
+        "code": "I03",
+        "fps": 24,
+        "frames": 73,
+        "duration": 3.041667,
+        "sha256": "4237a14814fc21478e24267b9f06098edc3e765b4352c187e1ddc5c680cfbe3a"
+      },
+      "variant": {
+        "file": "ilyra/variant.mp4",
+        "code": "I04",
+        "fps": 24,
+        "frames": 107,
+        "duration": 4.458333,
+        "sha256": "8a06cacfd85a01e00f7fa841641c48ed147959f23a39b1939dc112a541fb67a1"
+      },
+      "giggle": {
+        "file": "ilyra/giggle.mp4",
+        "code": "I05",
+        "fps": 24,
+        "frames": 90,
+        "duration": 3.75,
+        "sha256": "5fe512cd9e678b7c0f5342afeae8be28a6c7fd3a44a66f558dc5ed621ea488f5"
+      },
+      "joy": {
+        "file": "ilyra/joy.mp4",
+        "code": "I06",
+        "fps": 24,
+        "frames": 73,
+        "duration": 3.041667,
+        "sha256": "e77a337977c51b0de00c7879765ef78a4b5416ed1e7155ce03fbe2a5e1fbd017"
+      },
+      "hip": {
+        "file": "ilyra/hip.mp4",
+        "code": "I07",
+        "fps": 24,
+        "frames": 107,
+        "duration": 4.458333,
+        "sha256": "a4faf225b0291b8d7439c2c13b8e634616e2de57d9ac57ab5bfaa612be6053fc"
+      }
+    }
+  }
+}

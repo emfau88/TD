@@ -1,0 +1,6 @@
+/* The approved videos include the same cropped room. Align the side scenery
+   with that crop while keeping the existing 480 × 700 character coordinates. */
+#tavern-dialog[data-artwork="rigged"] .tv-stage[data-video="true"] {
+  background-size:auto calc(100% * 704 / 700);
+  background-position:calc(40% + var(--video-room-shift,0px)) center;
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "width": 1280,
+    "errors": [],
+    "oldAtlasImages": [],
+    "reload": true,
+    "actualMainVideo": true,
+    "probeUrl": "http://127.0.0.1:5277/index.html?probe=t07-78d03635-b6c1-43ba-a861-67d143871071"
+  },
+  {
+    "width": 320,
+    "errors": [],
+    "oldAtlasImages": [],
+    "reload": true,
+    "actualMainVideo": true,
+    "probeUrl": "http://127.0.0.1:5277/index.html?probe=t07-54294cf3-7353-4ea4-84fb-07a5d6844cc1"
+  }
+]

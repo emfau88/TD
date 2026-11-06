@@ -28,7 +28,23 @@ function setHearts() {
   }
 }
 setHearts(); await session.setPaused(true);
-const ui = new TavernUI({ session: () => session, presentation: rigPreviewPresentation, navigate: () => {} });
+const presentation = new URLSearchParams(location.search).get('artwork') === 'video'
+  ? (await import('./tavern-video')).videoPresentation : rigPreviewPresentation;
+const audio = new URLSearchParams(location.search).get('sound') === '1'
+  ? new (await import('./game-audio')).GameAudio({ combat: false }) : undefined;
+audio?.setState(true, false);
+const events: { type: string; who?: Companion }[] = [];
+const ui = new TavernUI({
+  session: () => session, presentation, navigate: () => {},
+  onOpenChange: open => audio?.setTavern(open),
+  onCompanion: who => audio?.setCompanion(who),
+  onTouch: who => { events.push({ type: 'touch', who }); audio?.touchCompanion(who); },
+  onGift: () => { events.push({ type: 'gift' }); audio?.play('gift'); },
+  onHeart: () => { events.push({ type: 'heart' }); audio?.play('gift'); },
+});
+if (import.meta.env.DEV) {
+  (window as unknown as { tavernReview: object }).tavernReview = { session, ui, events, audio };
+}
 session.onChange = () => ui.update();
 function show(who: Companion) {
   ui.close(); setHearts(); ui.open();
@@ -37,8 +53,8 @@ function show(who: Companion) {
 }
 document.querySelector('#review-mara')!.addEventListener('click', () => show('mara'));
 document.querySelector('#review-ilyra')!.addEventListener('click', () => show('ilyra'));
-select.addEventListener('change', setHearts);
-wins.addEventListener('change', setHearts);
+select.addEventListener('change', () => { setHearts(); ui.update(); });
+wins.addEventListener('change', () => { setHearts(); ui.update(); });
 const comparison = document.querySelector<HTMLAnchorElement>('#quality-switch')!;
 comparison.hidden = !import.meta.env.DEV;
 const qualityUrl = new URL(location.href);
@@ -54,4 +70,4 @@ if (previousUrl.searchParams.get('quality') === '90') {
 } else previousUrl.searchParams.set('quality', '90');
 previousQuality.href = previousUrl.href;
 show(new URLSearchParams(location.search).get('hero') === 'ilyra' ? 'ilyra' : 'mara');
-if (import.meta.hot) import.meta.hot.dispose(() => { ui.destroy(); void session.close(); });
+if (import.meta.hot) import.meta.hot.dispose(() => { ui.destroy(); audio?.destroy(); void session.close(); });

@@ -1,0 +1,75 @@
+[
+  {
+    "who": "mara",
+    "seen": [
+      "idle",
+      "variant",
+      "head",
+      "touch",
+      "giggle",
+      "hip",
+      "tease",
+      "joy"
+    ],
+    "gift": {
+      "points": 47,
+      "gifts": 19,
+      "events": [
+        {
+          "type": "touch",
+          "who": "mara"
+        },
+        {
+          "type": "touch",
+          "who": "mara"
+        },
+        {
+          "type": "gift"
+        }
+      ]
+    },
+    "errors": [],
+    "nativeVideo": true,
+    "noOldAtlasDownloads": true,
+    "stoppedVoiceOnClose": true
+  },
+  {
+    "who": "ilyra",
+    "seen": [
+      "idle",
+      "variant",
+      "head",
+      "touch",
+      "giggle",
+      "hip",
+      "joy"
+    ],
+    "gift": {
+      "points": 47,
+      "gifts": 19,
+      "events": [
+        {
+          "type": "touch",
+          "who": "ilyra"
+        },
+        {
+          "type": "touch",
+          "who": "ilyra"
+        },
+        {
+          "type": "gift"
+        }
+      ]
+    },
+    "errors": [],
+    "nativeVideo": true,
+    "noOldAtlasDownloads": true,
+    "stoppedVoiceOnClose": true
+  },
+  {
+    "delayedHead": true,
+    "latestActionWins": true,
+    "failedReactionRetry": true,
+    "closeClearsOldCharacter": true
+  }
+]

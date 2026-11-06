@@ -1,0 +1,200 @@
+/* The tavern owns one modal; its three views share navigation and battle status. */
+#tavern-dialog { --tv-gold:#dfc28a; --tv-muted:#b9b7ab; width:min(920px,calc(100vw - 40px)); max-width:920px; height:fit-content; max-height:calc(100dvh - 40px); padding:0; color:#f4ead5; background:#111f23; border:1px solid #ad8a4d; border-radius:3px; overflow:auto; box-shadow:0 20px 80px #000b; font-family:Arial,sans-serif; }
+#tavern-dialog::backdrop { background:#030c11b8; backdrop-filter:blur(3px); }
+#tavern-dialog * { box-sizing:border-box; }
+#tavern-dialog [hidden] { display:none!important; }
+#tavern-dialog h2,#tavern-dialog h3 { font-family:var(--display,serif); color:#f2dba4; margin:0; font-weight:500; line-height:1.15; }
+#tavern-dialog h2 { font-size:28px; } #tavern-dialog h3 { font-size:26px; }
+#tavern-dialog p { margin:8px 0; line-height:1.5; }
+#tavern-dialog small { font-size:10px; letter-spacing:1.4px; color:#c5b38c; }
+#tavern-dialog button { min-height:44px; font-family:inherit; cursor:pointer; border:1px solid #8f774e; border-image:none; border-radius:3px; background:linear-gradient(#2e3836,#1c292b); color:#f5e4bf; padding:8px 12px; box-shadow:none; text-shadow:none; }
+#tavern-dialog button::before,#tavern-dialog button::after { content:none; }
+#tavern-dialog button:hover:not(:disabled) { border-color:#f0cc83; background:#394440; }
+#tavern-dialog button:focus-visible { outline:2px solid #ffe3a4; outline-offset:3px; }
+#tavern-dialog button:disabled { opacity:.48; cursor:default; }
+#tavern-dialog .tv-header { display:flex; align-items:center; gap:12px; padding:14px 20px 12px; background:linear-gradient(110deg,#283130,#122126); border-bottom:1px solid #8b7145; }
+#tavern-dialog .tv-header small { display:block; margin-bottom:4px; }
+#tavern-dialog .tv-close { margin-left:auto; font:28px Arial; padding:0; width:44px; }
+#tavern-dialog .tv-back { font-size:30px; padding:0; width:44px; }
+#tavern-dialog .tv-combat { display:flex; align-items:center; justify-content:space-between; padding:0 20px; min-height:40px; color:var(--tv-muted); background:#0d191d; font-size:12px; }
+#tavern-dialog .tv-combat button { border:0; background:none; padding:0 0 0 8px; min-height:36px; font-size:12px; }
+#tavern-dialog .tv-warning { display:flex; gap:10px; align-items:center; padding:8px 14px; background:#483327; font-size:13px; border-bottom:1px solid #b07f49; }
+#tavern-dialog .tv-warning span { flex:1; } #tavern-dialog .tv-warning button { min-height:36px; }
+#tavern-dialog .tv-error { padding:10px 18px; background:#642c2c; }
+#tavern-dialog .tv-room { min-height:174px; padding:26px 28px; background:linear-gradient(90deg,#151512e8,#171b1d88 55%,#1b17150a),url('../assets/runtime/room.webp') center 54%/cover; border-bottom:1px solid #6c5638; }
+#tavern-dialog .tv-room span { color:#e3c98c; font-size:10px; letter-spacing:2px; }
+#tavern-dialog .tv-room h3 { font-size:32px; margin-top:8px; }
+#tavern-dialog .tv-room p { color:#e0d7c2; font-size:13px; }
+#tavern-dialog .tv-guests { display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:20px; }
+#tavern-dialog .tv-guest { position:relative; display:flex; gap:10px; align-items:center; min-height:184px; padding:12px; border:1px solid #776341; border-radius:3px; background:linear-gradient(135deg,#30322b,#142328); text-align:left; overflow:hidden; }
+#tavern-dialog .tv-guest canvas { width:105px; height:124px; flex-shrink:0; image-rendering:pixelated; }
+#tavern-dialog .tv-guest img { width:100px; height:154px; object-fit:cover; object-position:50% 50%; flex-shrink:0; image-rendering:pixelated; }
+#tavern-dialog .tv-guest h3 { margin:3px 0 4px; }
+#tavern-dialog .tv-guest p { color:#c9c8bb; font-size:12px; }
+#tavern-dialog .tv-guest strong { font-size:12px; color:#e7c88b; font-weight:400; }
+#tavern-dialog .tv-small { font-size:11px; padding:6px; background:transparent; }
+#tavern-dialog .tv-hearts { font-family:Arial,sans-serif; letter-spacing:4px; color:#e2a08c; font-size:23px; white-space:nowrap; }
+#tavern-dialog .tv-overview-footer { display:flex; justify-content:space-between; gap:12px; padding:0 20px 20px; }
+#tavern-dialog .tv-overview-footer button { font-size:12px; background:transparent; }
+#tavern-dialog .tv-bond-track progress { position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+#tavern-dialog .tv-bond-fill { display:block; height:100%; width:0; border-radius:4px; background:linear-gradient(90deg,#b94879,#e986b0); box-shadow:inset 0 1px 0 #ffd7e577; transition:width 700ms cubic-bezier(.22,.61,.36,1); }
+#tavern-dialog .tv-bond-marks { position:absolute; inset:0; background:repeating-linear-gradient(90deg,transparent 0,transparent calc(20% - 1px),#f6c7db66 calc(20% - 1px),#f6c7db66 20%); pointer-events:none; }
+@media (prefers-reduced-motion:reduce) { #tavern-dialog .tv-bond-fill { transition:none!important; } }
+#tavern-dialog .tv-character-body { display:grid; grid-template-columns:1.05fr 1fr; min-height:470px; }
+#tavern-dialog .tv-stage { position:relative; display:flex; align-items:center; justify-content:center; min-width:0; min-height:0; background:linear-gradient(#181b1c19,#111e22b3),url('../assets/runtime/room.webp') 40% center/cover; overflow:hidden; }
+#tavern-dialog .tv-figure { position:relative; height:460px; max-height:100%; width:100%; display:flex; justify-content:center; }
+#tavern-dialog .tv-figure canvas { height:100%; width:auto; max-width:100%; object-fit:contain; image-rendering:pixelated; }
+#tavern-dialog .tv-stage-caption { position:absolute; bottom:8px; left:0; right:0; text-align:center; color:#ded1b0; font-size:11px; text-shadow:0 1px 3px #000; }
+/* Small visible markers; the invisible 44px target stays easy to tap. */
+#tavern-dialog .tv-hotspot { position:absolute; transform:translate(-50%,-50%); display:grid; place-items:center; width:44px; height:44px; padding:0; border-radius:50%; border:0; background:transparent; box-shadow:none; }
+#tavern-dialog .tv-hotspot:hover:not(:disabled) { border:0; background:transparent; }
+#tavern-dialog .tv-hotspot span { display:grid; place-items:center; width:24px; height:24px; color:#f38ab1; opacity:.95; text-shadow:-1px 0 #54283c,1px 0 #54283c,0 -1px #54283c,0 1px #54283c,0 2px 3px #0008; }
+#tavern-dialog .tv-hotspot span::after { content:'♥'; font:24px/24px Arial,sans-serif; }
+#tavern-dialog .tv-hotspot em { display:none; position:absolute; left:50%; top:37px; transform:translateX(-50%); font:11px Arial; background:#122025ed; padding:3px 6px; border-radius:3px; color:#f7e5bc; pointer-events:none; white-space:nowrap; }
+#tavern-dialog .tv-hotspot:focus-visible em { display:block; }
+@media(hover:hover) { #tavern-dialog .tv-hotspot:hover em { display:block; } #tavern-dialog .tv-hotspot:hover span { opacity:1; } }
+#tavern-dialog .tv-conversation { display:flex; flex-direction:column; padding:30px 24px 18px; background:linear-gradient(150deg,#26302d,#102024); min-width:0; }
+#tavern-dialog .tv-dialogue { border-left:2px solid #a58651; padding-left:16px; min-height:122px; }
+#tavern-dialog .tv-dialogue p { font-size:16px; line-height:1.65; color:#f0e3cc; }
+#tavern-dialog .tv-result { font-size:12px; color:#e0bd84; min-height:36px; margin:10px 0; }
+#tavern-dialog .tv-touch-help { color:#c4c5b8; font-size:12px; }
+#tavern-dialog .tv-actions { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-top:auto; }
+#tavern-dialog .tv-actions button { padding:12px 4px; background:linear-gradient(#4c4733,#302f27); }
+#tavern-dialog .tv-actions button[aria-pressed="true"] { border-color:#f7d897; background:#655434; }
+#tavern-dialog .tv-actions span { font-family:var(--display,serif); font-size:19px; display:block; }
+#tavern-dialog .tv-actions small { display:block; margin-top:5px; letter-spacing:0; font-size:10px; line-height:1.4; }
+#tavern-dialog .tv-gifts { margin-top:12px; font-size:12px; color:#d7c5a3; }
+#tavern-dialog details { margin-top:8px; color:#aebbb5; font-size:11px; }
+#tavern-dialog summary { cursor:pointer; min-height:28px; }
+#tavern-dialog .tv-combat-link { border:0; background:none; font-size:11px; padding:4px 0; text-align:left; color:#adbdb8; }
+@media(max-width:700px) {
+  #tavern-dialog { width:calc(100vw - 16px); max-height:calc(100dvh - 16px); }
+  #tavern-dialog .tv-header { padding:10px 12px; gap:8px; }
+  #tavern-dialog h2 { font-size:23px; } #tavern-dialog .tv-header small { font-size:9px; }
+  #tavern-dialog .tv-combat { padding:0 12px; font-size:11px; }
+  #tavern-dialog .tv-room { min-height:138px; padding:18px; }
+  #tavern-dialog .tv-room h3 { font-size:28px; }
+  #tavern-dialog .tv-guests { grid-template-columns:1fr; gap:10px; padding:12px; }
+  #tavern-dialog .tv-guest { min-height:148px; padding:10px; }
+  #tavern-dialog .tv-guest img { height:124px; } #tavern-dialog .tv-guest canvas { width:94px; height:111px; }
+  #tavern-dialog .tv-overview-footer { padding:0 12px 12px; gap:8px; }
+  #tavern-dialog .tv-overview-footer button { flex:1; font-size:11px; }
+  #tavern-dialog .tv-hearts { font-size:21px; letter-spacing:3px; }
+  #tavern-dialog .tv-character-body { display:flex; flex-direction:column; min-height:0; }
+  #tavern-dialog .tv-stage { height:clamp(220px,40dvh,350px); flex:none; }
+  #tavern-dialog .tv-figure { height:100%; width:100%; }
+  #tavern-dialog .tv-conversation { padding:10px 12px 6px; }
+  #tavern-dialog .tv-dialogue { min-height:0; padding-left:10px; }
+  #tavern-dialog .tv-dialogue small { display:none; }
+  #tavern-dialog .tv-dialogue p { font-size:13px; line-height:1.4; margin:0; }
+  #tavern-dialog .tv-result { min-height:0; font-size:11px; margin:5px 0; }
+  #tavern-dialog .tv-result:empty { display:none; }
+  #tavern-dialog .tv-touch-help { margin:4px 0; font-size:11px; }
+  #tavern-dialog .tv-actions { gap:6px; margin-top:8px; }
+  #tavern-dialog .tv-actions button { padding:8px 3px; }
+  #tavern-dialog .tv-actions span { font-size:18px; }
+  #tavern-dialog .tv-actions small { font-size:9px; }
+  #tavern-dialog .tv-gifts { margin-top:8px; font-size:11px; }
+  #tavern-dialog details { margin-top:5px; }
+  #tavern-dialog .tv-combat-link { min-height:32px; }
+  #tavern-dialog .tv-warning { gap:6px; padding:6px 10px; font-size:11px; }
+  #tavern-dialog .tv-warning button { font-size:11px; padding:4px 7px; }
+}
+
+#tavern-dialog .tv-hotspot[data-locked="true"] span { color:#c7b8b8; opacity:.48; }
+#tavern-dialog .tv-hotspot[data-locked="true"] span::after { content:'♡'; }
+#tavern-dialog[data-touch-hint="true"] .tv-hotspot span { animation:tv-touch-hint 1.4s ease-out; }
+@keyframes tv-touch-hint { 30%,70% { transform:scale(1.18); filter:drop-shadow(0 0 5px #f6a9ce); } }
+@media(prefers-reduced-motion:reduce) { #tavern-dialog[data-touch-hint="true"] .tv-hotspot span { animation:none; outline:1px solid #f6a9ce; outline-offset:3px; } }
+@media(max-width:700px) { #tavern-dialog[data-screen="character"],#tavern-dialog[data-screen="touch"] { top:8px; bottom:auto; margin:0 auto; } }
+
+/* T05: earned hearts are the small, persistent entry points to personal scenes. */
+#tavern-dialog .tv-story-heading { margin-bottom:16px; }
+#tavern-dialog .tv-story-heading h3 { margin-top:7px; font-size:24px; }
+#tavern-dialog .tv-story-controls { display:flex; gap:8px; margin-top:auto; padding-top:20px; }
+#tavern-dialog .tv-story-controls button:first-child { background:linear-gradient(#685438,#413a2b); }
+#tavern-dialog .tv-story-controls button { flex:1; font-size:13px; }
+#tavern-dialog .tv-unlock { text-align:left; margin-bottom:12px; font-size:12px; background:#4a3b2b; border-color:#d0ac71; }
+#tavern-dialog[data-story="true"] .tv-dialogue { min-height:150px; }
+@media(max-width:700px) {
+  #tavern-dialog .tv-stage { height:clamp(220px,37dvh,330px); }
+  #tavern-dialog .tv-story-heading { margin-bottom:8px; }
+  #tavern-dialog .tv-story-heading h3 { font-size:22px; }
+  #tavern-dialog .tv-story-controls { padding-top:12px; }
+  #tavern-dialog[data-story="true"] .tv-dialogue { min-height:64px; }
+  #tavern-dialog .tv-unlock { min-height:40px; margin:4px 0; font-size:11px; }
+}
+
+/* A fixed portrait shell gives spare height to the character, not empty panels.
+   Long dialogue/details scroll below her; navigation and affection stay in view. */
+@media(max-width:700px) {
+  #tavern-dialog[open]:is([data-screen="character"],[data-screen="touch"]) {
+    display:flex; flex-direction:column; top:4px; width:calc(100vw - 8px);
+    height:calc(100dvh - 8px); max-height:calc(100dvh - 8px); overflow:hidden;
+  }
+  #tavern-dialog:is([data-screen="character"],[data-screen="touch"]) .tv-header { padding:4px 10px; flex:none; }
+  #tavern-dialog:not([data-screen="overview"]) .tv-header small { display:none; }
+  #tavern-dialog:not([data-screen="overview"]) h2 { font-size:21px; }
+  #tavern-dialog .tv-character { display:flex; flex-direction:column; flex:1; min-height:0; }
+  #tavern-dialog .tv-combat,#tavern-dialog .tv-warning,#tavern-dialog .tv-error { flex:none; }
+  #tavern-dialog .tv-character-body { flex:1; min-height:0; }
+  #tavern-dialog .tv-stage { height:auto; min-height:210px; flex:1; }
+  #tavern-dialog .tv-figure { position:absolute; inset:0; align-items:center; }
+  #tavern-dialog .tv-figure canvas { flex:none; width:auto; height:auto; max-height:100%; max-width:100%; aspect-ratio:3/4; }
+  #tavern-dialog .tv-stage-caption { display:none; }
+  #tavern-dialog .tv-conversation { flex:none; max-height:42dvh; overflow-y:auto; padding:8px 10px 4px; border-top:1px solid #66553b; }
+  #tavern-dialog .tv-conversation > * { flex-shrink:0; }
+  #tavern-dialog .tv-dialogue p { font-size:13px; line-height:1.4; }
+  #tavern-dialog .tv-actions { margin-top:6px; }
+  #tavern-dialog .tv-actions button { min-height:48px; padding:5px 2px; }
+  #tavern-dialog .tv-actions span { font-size:16px; }
+  #tavern-dialog .tv-actions small { margin-top:3px; font-size:10px; }
+  #tavern-dialog .tv-gifts { margin-top:2px; }
+  #tavern-dialog .tv-gifts details { margin:0; }
+  #tavern-dialog .tv-gifts summary { min-height:44px; display:flex; align-items:center; gap:5px; font-size:11px; }
+  #tavern-dialog .tv-gifts summary::before { content:'›'; font-size:19px; }
+  #tavern-dialog .tv-gifts details[open] summary::before { content:'⌄'; }
+  #tavern-dialog[data-story="true"] .tv-dialogue { min-height:0; }
+}
+
+/* One coherent affection meter: large unboxed hearts, separate aligned track. */
+#tavern-dialog .tv-bond { display:grid; grid-template-columns:280px 1fr; align-items:center; gap:22px; padding:10px 22px 12px; border-bottom:1px solid #66553b; background:linear-gradient(100deg,#33232a55,transparent); }
+#tavern-dialog .tv-heart-buttons { display:grid; grid-template-columns:repeat(5,1fr); gap:4px; }
+#tavern-dialog .tv-heart-buttons button { display:grid; place-items:center; height:44px; min-width:44px; padding:2px; border:0; background:transparent; opacity:1; }
+#tavern-dialog .tv-heart-buttons button:hover:not(:disabled) { background:transparent; }
+#tavern-dialog .tv-heart-buttons svg { width:38px; height:36px; overflow:visible; }
+#tavern-dialog .tv-heart-shape { fill:#392a33; stroke:#95717f; stroke-width:1.5; stroke-linejoin:round; }
+#tavern-dialog .tv-heart-shine { fill:none; stroke:#edc5d0; stroke-width:2.5; stroke-linecap:round; opacity:.12; }
+#tavern-dialog .tv-heart-buttons .unlocked .tv-heart-shape { fill:#e16b96; stroke:#ffd0df; filter:drop-shadow(0 2px 3px #dd4b7955); }
+#tavern-dialog .tv-heart-buttons .unlocked .tv-heart-shine { opacity:.85; }
+#tavern-dialog .tv-heart-buttons button:hover:not(:disabled) .tv-heart-shape { fill:#f38ab1; }
+#tavern-dialog .tv-bond-track { position:relative; height:8px; margin:7px 5px 0; border:1px solid #80546a; border-radius:5px; overflow:hidden; background:#30232d; box-shadow:inset 0 1px 3px #0008; }
+#tavern-dialog [data-text="points"] { font-size:13px; color:#f0c6d6; line-height:1.4; }
+#tavern-dialog .tv-moment-hint { font-size:11px; color:#c6bcb6; margin:5px 0 0; line-height:1.4; }
+#tavern-dialog .tv-loading-portrait { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:136px; height:160px; image-rendering:pixelated; }
+#tavern-dialog .tv-load-status { position:absolute; bottom:28px; left:12px; right:12px; text-align:center; padding:6px; font-size:12px; background:#162126e8; border-radius:3px; }
+@media(max-width:700px) {
+  #tavern-dialog .tv-bond { flex:none; grid-template-columns:1fr; gap:6px; padding:4px 12px 7px; }
+  #tavern-dialog .tv-bond-visual { width:min(100%,280px); justify-self:center; }
+  #tavern-dialog .tv-bond-copy { text-align:center; }
+  #tavern-dialog [data-text="points"] { font-size:11px; }
+  #tavern-dialog .tv-moment-hint { display:none; }
+}
+
+/* Owned gifts are quiet; an actionable recipient gets the accent. */
+#tavern-dialog .tv-guest.gift-ready { border-color:#edc77a; }
+#tavern-dialog .tv-gift-badge:empty,#tavern-dialog .tv-personal:empty,#tavern-dialog .tv-chapter:empty { display:none; }
+#tavern-dialog .tv-gift-badge { color:#e8d5a4; font-size:11px; margin:4px 0; }
+#tavern-dialog .gift-ready .tv-gift-badge { color:#ffe3a4; }
+#tavern-dialog .tv-personal,#tavern-dialog .tv-chapter { margin:4px 0 0; font-size:12px; line-height:1.35; color:#e7d7ac; }
+#tavern-dialog .tv-heart-buttons .future { opacity:.35; }
+#tavern-dialog .tv-heart-buttons .future .tv-heart-shape { stroke-dasharray:none; }
+#tavern-dialog .tv-gifts > p { margin:4px 0; }
+#tavern-dialog .tv-unlock { white-space:normal; }
+@media(max-width:700px) {
+  #tavern-dialog .tv-personal,#tavern-dialog .tv-chapter { font-size:11px; }
+  #tavern-dialog .tv-gifts { font-size:11px; }
+}
+
+#tavern-dialog[data-screen="overview"] .tv-header > div { flex:1; min-width:0; }
+#tavern-dialog[data-screen="overview"] .tv-header h2 { white-space:normal; overflow:visible; text-overflow:clip; font-size:clamp(18px,3.7vw,28px); text-wrap:balance; }

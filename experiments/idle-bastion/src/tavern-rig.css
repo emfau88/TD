@@ -109,3 +109,16 @@
 #tavern-dialog .tv-heart-buttons .unlocked[data-unseen="true"] svg { transform-origin:center; filter:drop-shadow(0 0 4px #ef9fbd88); animation:tv-unseen-story 2s ease-in-out infinite; }
 @keyframes tv-unseen-story { 0%,100% { transform:scale(1); filter:drop-shadow(0 0 1px #ef9fbd44); } 50% { transform:scale(1.04); filter:drop-shadow(0 0 4px #ef9fbd88); } }
 @media(prefers-reduced-motion:reduce) { #tavern-dialog .tv-heart-buttons .unlocked[data-unseen="true"] svg { animation:none; transform:none; } }
+
+/* Earned once after a committed action; no extra panel or permanent sparkle. */
+#tavern-dialog .tv-heart-buttons .unlocked[data-celebrating="true"] svg { animation:tv-heart-earned 1.05s ease-out both; }
+@keyframes tv-heart-earned {
+  0% { transform:scale(.86); filter:drop-shadow(0 0 0 transparent); }
+  30% { transform:scale(1.2); filter:drop-shadow(0 0 8px #f4b5c5bb); }
+  65% { transform:scale(1.04); filter:drop-shadow(0 0 4px #ef9fbd88); }
+  100% { transform:scale(1); filter:drop-shadow(0 0 1px #ef9fbd44); }
+}
+#tavern-dialog .tv-actions [data-action="gift"][data-ready="true"] { border-color:#c5a66b; }
+@media(prefers-reduced-motion:reduce) {
+  #tavern-dialog .tv-heart-buttons .unlocked[data-celebrating="true"] svg { animation:none; transform:none; filter:none; }
+}

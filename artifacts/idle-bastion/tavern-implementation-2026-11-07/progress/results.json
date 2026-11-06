@@ -1,0 +1,158 @@
+[
+  {
+    "width": 1280,
+    "language": "de",
+    "points": 58,
+    "clears": 18,
+    "hint": "Für Maras persönliches Geschenk fehlen noch 12 gewonnene normale Wellen. Auch Farmen zählt.",
+    "bounds": {
+      "fullyVisible": true,
+      "hintBottom": 465.1875,
+      "containerBottom": 720,
+      "overflow": false
+    }
+  },
+  {
+    "width": 1280,
+    "language": "de",
+    "points": 47,
+    "clears": 30,
+    "hint": "Dein persönliches Geschenk wartet schon. Verbringt noch etwas Zeit miteinander.",
+    "bounds": {
+      "fullyVisible": true,
+      "hintBottom": 465.1875,
+      "containerBottom": 720,
+      "overflow": false
+    }
+  },
+  {
+    "width": 1280,
+    "language": "de",
+    "points": 58,
+    "clears": 30,
+    "hint": "Dein persönliches Geschenk ist bereit – überreiche es für Herz 3.",
+    "bounds": {
+      "fullyVisible": true,
+      "hintBottom": 447.1875,
+      "containerBottom": 720,
+      "overflow": false
+    }
+  },
+  {
+    "width": 1280,
+    "language": "en",
+    "points": 58,
+    "clears": 18,
+    "hint": "Win 12 more normal waves for Mara's personal gift. Farming counts too.",
+    "bounds": {
+      "fullyVisible": true,
+      "hintBottom": 447.1875,
+      "containerBottom": 720,
+      "overflow": false
+    }
+  },
+  {
+    "width": 1280,
+    "language": "en",
+    "points": 47,
+    "clears": 30,
+    "hint": "Your personal gift is waiting. Spend a little more time together.",
+    "bounds": {
+      "fullyVisible": true,
+      "hintBottom": 447.1875,
+      "containerBottom": 720,
+      "overflow": false
+    }
+  },
+  {
+    "width": 1280,
+    "language": "en",
+    "points": 58,
+    "clears": 30,
+    "hint": "Your personal gift is ready – give it to unlock heart 3.",
+    "bounds": {
+      "fullyVisible": true,
+      "hintBottom": 447.1875,
+      "containerBottom": 720,
+      "overflow": false
+    }
+  },
+  {
+    "width": 320,
+    "language": "de",
+    "points": 58,
+    "clears": 18,
+    "hint": "Für Maras persönliches Geschenk fehlen noch 12 gewonnene normale Wellen. Auch Farmen zählt.",
+    "bounds": {
+      "fullyVisible": true,
+      "hintBottom": 736.71875,
+      "containerBottom": 752.625,
+      "overflow": false
+    }
+  },
+  {
+    "width": 320,
+    "language": "de",
+    "points": 47,
+    "clears": 30,
+    "hint": "Dein persönliches Geschenk wartet schon. Verbringt noch etwas Zeit miteinander.",
+    "bounds": {
+      "fullyVisible": true,
+      "hintBottom": 736.71875,
+      "containerBottom": 752.625,
+      "overflow": false
+    }
+  },
+  {
+    "width": 320,
+    "language": "de",
+    "points": 58,
+    "clears": 30,
+    "hint": "Dein persönliches Geschenk ist bereit – überreiche es für Herz 3.",
+    "bounds": {
+      "fullyVisible": true,
+      "hintBottom": 736.71875,
+      "containerBottom": 752.625,
+      "overflow": false
+    }
+  },
+  {
+    "width": 320,
+    "language": "en",
+    "points": 58,
+    "clears": 18,
+    "hint": "Win 12 more normal waves for Mara's personal gift. Farming counts too.",
+    "bounds": {
+      "fullyVisible": true,
+      "hintBottom": 736.71875,
+      "containerBottom": 752.625,
+      "overflow": false
+    }
+  },
+  {
+    "width": 320,
+    "language": "en",
+    "points": 47,
+    "clears": 30,
+    "hint": "Your personal gift is waiting. Spend a little more time together.",
+    "bounds": {
+      "fullyVisible": true,
+      "hintBottom": 736.71875,
+      "containerBottom": 752.625,
+      "overflow": false
+    }
+  },
+  {
+    "width": 320,
+    "language": "en",
+    "points": 58,
+    "clears": 30,
+    "hint": "Your personal gift is ready – give it to unlock heart 3.",
+    "bounds": {
+      "fullyVisible": true,
+      "hintBottom": 736.71875,
+      "containerBottom": 752.625,
+      "overflow": false
+    }
+  }
+]

@@ -1,0 +1,111 @@
+/* Local review uses the real tavern shell. The higher positions leave
+   10 source pixels below the crop, plus the visible foreground rail. */
+/* Size the shell from the viewport, never from dialogue or visible actions.
+   Otherwise each reply resizes the stage and therefore the whole character. */
+#tavern-dialog[data-artwork="rigged"][open]:is([data-screen="character"]) { display:flex; flex-direction:column; height:min(760px,calc(100dvh - 32px)); overflow:hidden; }
+#tavern-dialog[data-artwork="rigged"] .tv-header { flex:0 0 74px; }
+#tavern-dialog[data-artwork="rigged"] .tv-header > div { min-width:0; }
+#tavern-dialog[data-artwork="rigged"] .tv-header h2 { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+#tavern-dialog[data-artwork="rigged"] .tv-header button { flex-shrink:0; }
+#tavern-dialog[data-artwork="rigged"] .tv-combat,#tavern-dialog[data-artwork="rigged"] .tv-warning,#tavern-dialog[data-artwork="rigged"] .tv-error { flex:none; }
+#tavern-dialog[data-artwork="rigged"] .tv-character { display:flex; flex-direction:column; flex:1; min-height:0; }
+#tavern-dialog[data-artwork="rigged"] .tv-bond { flex:0 0 82px; min-height:0; }
+#tavern-dialog[data-artwork="rigged"] .tv-bond-copy { min-height:0; max-height:100%; overflow:auto; }
+#tavern-dialog[data-artwork="rigged"] .tv-character-body { flex:1; min-height:0; grid-template-rows:minmax(0,1fr); }
+#tavern-dialog[data-artwork="rigged"] .tv-conversation { min-height:0; overflow:auto; scrollbar-gutter:stable; }
+#tavern-dialog[data-artwork="rigged"] .tv-conversation > * { flex-shrink:0; }
+#tavern-dialog[data-artwork="rigged"] .tv-stage { isolation:isolate; align-self:stretch; }
+#tavern-dialog[data-artwork="rigged"] .tv-figure { position:absolute; inset:0; height:100%; max-height:none; align-items:flex-end; }
+#tavern-dialog[data-artwork="rigged"] .tv-figure canvas { height:100%; width:auto; max-width:none; max-height:none; aspect-ratio:24/35; object-fit:fill; image-rendering:auto; flex:none; }
+#tavern-dialog[data-artwork="rigged"] .tv-stage::after { content:''; position:absolute; z-index:3; left:0; right:0; bottom:0; height:16px; border-top:2px solid #a8854e; background:linear-gradient(#34413b,#18282b 5px,#102025); box-shadow:0 -7px 15px #0b151d55; pointer-events:none; }
+#tavern-dialog[data-artwork="rigged"] .tv-stage-caption { z-index:4; bottom:3px; font-size:10px; letter-spacing:.04em; }
+#tavern-dialog[data-artwork="rigged"] .tv-hotspot { width:44px; height:44px; z-index:2; }
+#tavern-dialog[data-artwork="rigged"] .tv-hotspot span { width:24px; height:24px; }
+#tavern-dialog[data-artwork="rigged"] .tv-hotspot span::after { font-size:24px; line-height:24px; }
+#tavern-dialog[data-artwork="rigged"] .tv-hotspot em { top:37px; }
+#tavern-dialog[data-artwork="rigged"] .tv-guest canvas { image-rendering:auto; }
+#tavern-dialog[data-artwork="rigged"] .tv-loading-portrait { image-rendering:auto; }
+#tavern-dialog[data-artwork="rigged"] .tv-dialogue { padding:12px 14px; border-left:2px solid #c3a170; border-radius:0 4px 4px 0; background:linear-gradient(110deg,#bfa16a13,transparent); }
+#tavern-dialog[data-artwork="rigged"] .tv-dialogue p { font-size:17px; line-height:1.6; color:#fff0db; }
+#tavern-dialog[data-artwork="rigged"] .tv-dialogue[data-reply="true"] { animation:tv-reply 1.6s ease-out; }
+@keyframes tv-reply { 0% { box-shadow:inset 0 0 0 1px #e9c99066; background-color:#b89b6330; } 100% { box-shadow:inset 0 0 0 1px transparent; background-color:transparent; } }
+@media(prefers-reduced-motion:reduce) { #tavern-dialog[data-artwork="rigged"] .tv-dialogue[data-reply="true"] { animation:none; outline:1px solid #c3a17077; } }
+#tavern-dialog .tv-gestures { position:absolute; bottom:100%; left:0; right:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; margin:0; padding:10px 12px; border-top:1px solid #a68757; background:#26302b; box-shadow:0 -4px 10px #101b2255; }
+#tavern-dialog .tv-gestures button { min-height:48px; font:15px/1.35 var(--display,"Pixelify Sans",sans-serif); padding:8px; background:#26332f; }
+#tavern-dialog .tv-gestures button { text-decoration:none; border-radius:5px; }
+#tavern-dialog .tv-gestures button small { display:block; letter-spacing:0; color:#cbbca7; font:12px/1.35 Arial,sans-serif; }
+#tavern-dialog .tv-gestures button[data-locked="true"] { border-style:solid; border-color:#62655a; color:#b6b4ac; background:#202b2a; }
+@media(max-width:700px) {
+  #tavern-dialog[data-artwork="rigged"][open]:is([data-screen="character"]) { height:calc(100dvh - 8px); }
+  #tavern-dialog[data-artwork="rigged"] .tv-header { flex-basis:53px; }
+  #tavern-dialog[data-artwork="rigged"] .tv-bond { flex:0 0 auto; min-height:0; }
+  #tavern-dialog[data-artwork="rigged"] .tv-bond-copy { overflow:visible; max-height:none; }
+  #tavern-dialog[data-artwork="rigged"] .tv-character-body { display:flex; flex-direction:column; overflow:hidden; }
+  #tavern-dialog[data-artwork="rigged"] .tv-stage { height:auto; min-height:0; flex:1; }
+  #tavern-dialog[data-artwork="rigged"] .tv-conversation { flex:0 0 clamp(120px,18dvh,158px); max-height:none; overflow-y:auto; overscroll-behavior:contain; padding:10px 12px; }
+  #tavern-dialog[data-artwork="rigged"] .tv-dialogue { padding:8px 10px; }
+  #tavern-dialog[data-artwork="rigged"] .tv-dialogue p { font-size:15px; line-height:1.5; }
+  #tavern-dialog[data-artwork="rigged"] .tv-stage::after { height:10px; }
+  #tavern-dialog .tv-gestures { gap:6px; padding:8px 7px; }
+  #tavern-dialog .tv-gestures button { min-height:66px; padding:7px 4px; font-size:15px; }
+}
+
+/* Keep the invitations in reach; the menu floats over the text, not the portrait. */
+#tavern-dialog .tv-action-dock { position:relative; flex:none; z-index:5; }
+#tavern-dialog .tv-action-dock > .tv-actions { flex:none; margin:0; padding:9px 12px; border-top:1px solid #947345; background:linear-gradient(#34362c,#202b28); }
+#tavern-dialog .tv-actions button { min-height:62px; padding:7px 4px; border-color:#a68757; }
+#tavern-dialog .tv-actions span { font-size:17px; }
+#tavern-dialog .tv-actions small { font:12px/1.35 Arial,sans-serif; letter-spacing:0; margin-top:4px; }
+#tavern-dialog .tv-actions button:disabled { opacity:1; color:#bbb5a6; border-color:#635e4e; background:#29302b; }
+#tavern-dialog .tv-actions button:disabled small { color:#aaa99d; }
+#tavern-dialog .tv-bond-copy { font:12px/1.35 Arial,sans-serif; color:#e4c3ca; }
+#tavern-dialog .tv-conversation { background:linear-gradient(145deg,#37362b,#172826); }
+#tavern-dialog .tv-result:empty { display:none; }
+#tavern-dialog .tv-unlock { padding:11px 12px; border-color:#d2a0ab; background:linear-gradient(110deg,#52313d,#3e3930); }
+#tavern-dialog .tv-unlock strong { display:block; color:#ffd1e3; font-size:14px; margin-bottom:5px; }
+#tavern-dialog .tv-unlock span { display:block; color:#f1dfc7; font:12px/1.45 Arial,sans-serif; }
+@media(max-width:700px) {
+  #tavern-dialog .tv-bond { gap:3px; padding:3px 12px 6px; }
+  #tavern-dialog .tv-bond-track { margin-top:2px; height:6px; }
+  #tavern-dialog .tv-bond-copy { font-size:11px; }
+  #tavern-dialog .tv-action-dock > .tv-actions { padding:7px; gap:6px; }
+  #tavern-dialog .tv-actions span { font-size:16px; }
+  #tavern-dialog .tv-moment-hint { display:block; }
+}
+
+/* Unlabelled story hearts retain their full accessible names and 44px targets. */
+#tavern-dialog .tv-heart-buttons button { height:44px; border:1px solid transparent; border-radius:6px; gap:0; }
+#tavern-dialog .tv-heart-buttons svg { width:36px; height:35px; }
+#tavern-dialog .tv-heart-buttons button.unlocked { border-color:transparent; background:transparent; }
+#tavern-dialog .tv-heart-buttons button.unlocked:hover:not(:disabled) { background:#bd73951a; }
+#tavern-dialog .tv-heart-buttons .future { opacity:1; }
+#tavern-dialog .tv-heart-buttons .future svg { opacity:.4; }
+#tavern-dialog .tv-bond-copy { overflow:visible; }
+#tavern-dialog .tv-bond-copy .tv-unlock { width:100%; min-height:44px; padding:6px 8px; text-align:center; }
+#tavern-dialog .tv-bond-copy .tv-unlock strong { margin:0; font-size:13px; }
+#tavern-dialog .tv-bond-copy .tv-unlock span { font-size:12px; }
+#tavern-dialog .tv-action-dock > .tv-story-controls { margin:0; padding:9px 12px; border-top:1px solid #947345; background:#26302b; }
+#tavern-dialog .tv-action-dock .tv-story-controls button { min-height:48px; }
+#tavern-dialog .tv-actions button[aria-pressed="true"] { box-shadow:inset 0 0 0 1px #e5c68c; }
+@media(max-width:700px) {
+  #tavern-dialog[data-artwork="rigged"][data-story="true"] .tv-conversation { flex-basis:clamp(160px,32dvh,260px); }
+  #tavern-dialog .tv-bond-copy { font-size:12px; }
+  #tavern-dialog .tv-story-heading h3 { font-size:20px; }
+  #tavern-dialog .tv-actions small { font-size:12px; }
+}
+
+@media(min-width:701px) {
+  #tavern-dialog .tv-gestures { left:51.22%; }
+}
+
+/* Action names share the display face; explanatory copy keeps its reading face. */
+#tavern-dialog button:not(.tv-close):not(.tv-back) { font-family:var(--display,"Pixelify Sans",sans-serif); }
+#tavern-dialog button small,#tavern-dialog .tv-guest p,#tavern-dialog .tv-unlock span { font-family:Arial,sans-serif; }
+#tavern-dialog .tv-guest strong,#tavern-dialog .tv-overview-footer button,#tavern-dialog .tv-small,#tavern-dialog .tv-story-controls button,#tavern-dialog .tv-combat button,#tavern-dialog .tv-combat-link { font-size:15px; }
+/* CSS-only padlock, hidden from accessibility: the text states the requirement. */
+#tavern-dialog .tv-gestures [data-locked="true"] small::before { content:''; display:inline-block; width:9px; height:10px; margin-right:5px; background:currentColor; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Cpath d='M3 6V4a3 3 0 0 1 6 0v2' fill='none' stroke='black' stroke-width='1.5'/%3E%3Crect x='1' y='6' width='10' height='8' rx='1'/%3E%3C/svg%3E") center/contain no-repeat; }
+#tavern-dialog .tv-gestures [data-locked="true"] small { position:relative; }
+#tavern-dialog .tv-heart-buttons .unlocked .tv-heart-shape { filter:none; }
+#tavern-dialog .tv-heart-buttons .unlocked[data-unseen="true"] svg { transform-origin:center; filter:drop-shadow(0 0 4px #ef9fbd88); animation:tv-unseen-story 2s ease-in-out infinite; }
+@keyframes tv-unseen-story { 0%,100% { transform:scale(1); filter:drop-shadow(0 0 1px #ef9fbd44); } 50% { transform:scale(1.04); filter:drop-shadow(0 0 4px #ef9fbd88); } }
+@media(prefers-reduced-motion:reduce) { #tavern-dialog .tv-heart-buttons .unlocked[data-unseen="true"] svg { animation:none; transform:none; } }

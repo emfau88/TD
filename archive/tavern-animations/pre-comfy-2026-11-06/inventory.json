@@ -1,0 +1,1270 @@
+{
+  "source_commit": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
+  "files": [
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/.gitattributes",
+      "bytes": 119,
+      "sha256": "36d3a536c6e6d5141ab65456438c01097b7902f0c41b2289a377d46d8b03c51d"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/00.webp",
+      "bytes": 186226,
+      "sha256": "a4273420765c5696b5ce7056d833471587e9aebf980e9de1b24a9f67d7e19741"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/01.webp",
+      "bytes": 237216,
+      "sha256": "71e91096271683ed2cffbfe7deefa32654a9421150a2d7cdc1ac2d82b949ae5c"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/02.webp",
+      "bytes": 233748,
+      "sha256": "21e8fc3aa1e07cce83a68e097f599cb68a6c64a2143df108498faa72a56d305b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/03.webp",
+      "bytes": 234832,
+      "sha256": "603f9fda631a3f0197e182de5ae976a292ea0d0ef5ac0d9fcd572f1864b85137"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/04.webp",
+      "bytes": 222826,
+      "sha256": "b816e30b3e4935f967f3ab928d3e0b7ab1b458ff3dea2b925c33d3774aacebac"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/05.webp",
+      "bytes": 233536,
+      "sha256": "ff3011445679f6bb7324205491931cd401c87787a3e9e912c3cd9a6745637b3a"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/06.webp",
+      "bytes": 223694,
+      "sha256": "688e20b1733bddadb29d2ff66225bf6d4bec7aafe87acb5dd3864aff4c381157"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/07.webp",
+      "bytes": 230246,
+      "sha256": "384fd5bdea01444feec83367c876de8770e4405fbc8532af05f14df16e091e9d"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/08.webp",
+      "bytes": 225326,
+      "sha256": "e2de1619b20ef343fbd2b339464c69bdfc56a87b3e589dd40638f748f6f969be"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/09.webp",
+      "bytes": 231244,
+      "sha256": "9d5bad4c1ba983efa6b51c1bc7cab55717959aa218be5a8a545e9da00bf8a175"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/10.webp",
+      "bytes": 214606,
+      "sha256": "33f00d6a2b70d2da96f550a7e4f8b55f8184dcf2af9073114fd6a4d8fec15ba2"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/11.webp",
+      "bytes": 172548,
+      "sha256": "6c99f3e6fe344b675b6c469457869a0fe8cf2243322b8635716edb13205c450b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/12.webp",
+      "bytes": 168830,
+      "sha256": "fc91939ad418657258e0fc254e35848139ae22dfc7f2fbee1cd196a5d12dbb42"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/13.webp",
+      "bytes": 168944,
+      "sha256": "8e3f2675f83b468231e0438e5ebb4956b8412f262dd313c1469515881de5743b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/giggle/14.webp",
+      "bytes": 168704,
+      "sha256": "06ee4c3b4309d534990a383f8fbb9cc9e7cd5010cb5fbeee729c3baae72e0d48"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/head/00.webp",
+      "bytes": 187188,
+      "sha256": "921ea1b401ebdeda95f84cea9a1c07e007527c92a43de6578e9dacfcab26d3bd"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/head/01.webp",
+      "bytes": 225734,
+      "sha256": "49f5b5999312b36904fc06c53a60a9a3c684485f474629d8078f8243e3e96e4f"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/head/02.webp",
+      "bytes": 234840,
+      "sha256": "8c796f214618c622621360a1e6d4e5a8d20a2a7a11b4b916b4d41b42ea3a5196"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/head/03.webp",
+      "bytes": 225604,
+      "sha256": "9e3d249acafe21004d0611610b0a00f0b54203c350de6be438a486b82afc2418"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/head/04.webp",
+      "bytes": 218990,
+      "sha256": "0aee22cc1d64e79dff2970e64abde7f35cc83f9be294a3e45f1ffa83f326c0f0"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/head/05.webp",
+      "bytes": 226372,
+      "sha256": "fdc28868bd783aaeefae60ca845f5d376a2bc78e6a238f9fe31e3af98383f017"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/head/06.webp",
+      "bytes": 229806,
+      "sha256": "485bb126b86f252409f49297aa6330736900335394a8e1bf96f956ec52ec0432"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/head/07.webp",
+      "bytes": 224874,
+      "sha256": "c518b71eb9b32443b9b48aed5edfdc22fdc1666f396652828afb72dabc69385b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/head/08.webp",
+      "bytes": 181832,
+      "sha256": "49e87f0119aeb271636033369272840d4e8498b833a25e2f8a6f13ab6b23da8a"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/head/09.webp",
+      "bytes": 169024,
+      "sha256": "fe321747784a9cc19ac013c35caebd5d00412ccd5be80b582bb29b6eb7d7962b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/head/10.webp",
+      "bytes": 85350,
+      "sha256": "ec24f8172a1cf80bc8c758ea585917d1db8ea61a2d36fb798df967edbe0fce5b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/00.webp",
+      "bytes": 233108,
+      "sha256": "08de12041fcd977802c34fb66608629d31594da9defad03777bd1addb3d40329"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/01.webp",
+      "bytes": 258260,
+      "sha256": "1105fd2d77f5c80bd6f65702951597b8d884192fc81c9650390de355d44c90a8"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/02.webp",
+      "bytes": 269756,
+      "sha256": "a0632a2af18061f3138cd1771abe02d4b299aedb956eb3042e0de4ce8c969843"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/03.webp",
+      "bytes": 274474,
+      "sha256": "4b5c8c585e0a7a917503e4d1a52486fa71303e42b4eaf5408e1d807429000c4b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/04.webp",
+      "bytes": 278052,
+      "sha256": "18946eb411541c2ae68b29c96b019a009c78fd7e410009cc8b64f6c0deb287e5"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/05.webp",
+      "bytes": 277196,
+      "sha256": "ed6710ce8e01c1b596c674ecf467720058889004314b5a379e3096514bd75f34"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/06.webp",
+      "bytes": 270960,
+      "sha256": "91a6cb92c1022037bf7901030490539d7c9ab7b3662708c78ad438c0414726f5"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/07.webp",
+      "bytes": 253910,
+      "sha256": "460a580a0e955e611f2f4467c46e37e9eec8a9da971b6f66e73777f51b298955"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/08.webp",
+      "bytes": 271354,
+      "sha256": "961794d04c33fd04d5871a704b3fe3af4c68a84934279b1c8a81b9c104cee268"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/09.webp",
+      "bytes": 281092,
+      "sha256": "80c43036f7ee18f713886b29f6624aebff8ac8453289cb8b07903ae21ca5b117"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/10.webp",
+      "bytes": 281912,
+      "sha256": "29a922e9a8ec5c88c839aacbf6e346a817f1423e24f5bfb95885bd78205fcdbf"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/11.webp",
+      "bytes": 283824,
+      "sha256": "9a39e8ec0e6848dedb9b2c207d32dab2b53d3b5b268c5636bc19cefa84bd05b1"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/12.webp",
+      "bytes": 281950,
+      "sha256": "c964e5f30184f9a620bce43b5d238aad5c2cdd66ca52cb913db1aabf79025ef1"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/13.webp",
+      "bytes": 277440,
+      "sha256": "c7c386190fcb507fd7e2ddcab9a6ebfb2820112f215d7f9c9eb646bf522d276b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/14.webp",
+      "bytes": 263956,
+      "sha256": "272f3eac303ead6c1ac9e8ebe37136351e013e61e62177b626967e23f26e66c6"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/15.webp",
+      "bytes": 259446,
+      "sha256": "e0a3f220e2255a49c001306a11532496754afaf5f96b8d064e1d08ae80227009"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/16.webp",
+      "bytes": 273458,
+      "sha256": "2cd8b2696c36508a265cd92db4b0a6d75f9dfc527a3114019888ee9b623fb715"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/17.webp",
+      "bytes": 277890,
+      "sha256": "9d8ab942e5fa117a0da74d08bf052004a84fd614ae480e4d051add5252ffdc81"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/18.webp",
+      "bytes": 277526,
+      "sha256": "7b7a3c997c55cdaa03b647c322045d143511ed8c4637a87aeeefc3c2a06c6411"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/19.webp",
+      "bytes": 273440,
+      "sha256": "997c9f2ddfdfb8abf2b2adfccb856eb0fc6a8e530117fb8a56df03fe3c21d8bc"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/20.webp",
+      "bytes": 266372,
+      "sha256": "7df4833f6292a80e490ea95875beca302985dfe7e6132f320b54bb2dc1e41a32"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/21.webp",
+      "bytes": 250894,
+      "sha256": "7867fb428cc0e7b256b8aced4c63b140358682ff9692c1840035418c2166d730"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/hip/22.webp",
+      "bytes": 111704,
+      "sha256": "1e1c081d560c4e2e0e73cfd748ef0100ad7ba530cb72a937657c65b2ec23acbb"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/00.webp",
+      "bytes": 199988,
+      "sha256": "bd2e4197d531821a64bfe6cb6d68e83eac80d4c3618bb23b964169815392d221"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/01.webp",
+      "bytes": 212168,
+      "sha256": "eb2ba2b6081eda1f8f7c74a65b8dcbcc74ce8ab0dca2fa3ca4915adbd1031e9d"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/02.webp",
+      "bytes": 213736,
+      "sha256": "b5505844d2ce9d2310cd43aef235b1634cc2165af5a62e79249f9d3a83d7d3fd"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/03.webp",
+      "bytes": 215976,
+      "sha256": "ce607f46d3105ac9a8534c4f2fecde9872dec28a8b8bb71e0e976f59c4fee8b0"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/04.webp",
+      "bytes": 218348,
+      "sha256": "53514a1aea9d7d8c8cacb42b3ea0da5bc40fe8d79b344c3fd2c6f3381c8f2ab6"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/05.webp",
+      "bytes": 216398,
+      "sha256": "abdc03b8b147ca920708ded8f54893e612fc0a0d5bd88b852363ff60892c3541"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/06.webp",
+      "bytes": 213140,
+      "sha256": "dd4e45139d21a1beeca0a725f23e628fe48a250775f3aa8bd3f8538a6a2f1a20"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/07.webp",
+      "bytes": 201576,
+      "sha256": "926358020f4507f798b6fdeb2b0a6494989cfbf42481cd4951ff113cfd332c64"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/08.webp",
+      "bytes": 209916,
+      "sha256": "d8eb42bb64539a2cd2c9612b01b5a1659f72668bd583321bd2954fb6c331230b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/09.webp",
+      "bytes": 216974,
+      "sha256": "a8470a18d3b2b803779abc409a1fca63a293662099da69eb42c9a3e9eea68b6e"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/10.webp",
+      "bytes": 219790,
+      "sha256": "fe294063e19d63165f5d6d6f2ed06e1bebff940c44f04078781aca077ed81ea2"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/11.webp",
+      "bytes": 220194,
+      "sha256": "1ba55694fa8a739b49c589d99c1e42f71231b5f1d05351b820ea74423c6e5229"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/12.webp",
+      "bytes": 219674,
+      "sha256": "5eb0b1c0677e439a128b02be68441bedc8f566edef52841c35ce15d1f262845b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/13.webp",
+      "bytes": 215560,
+      "sha256": "89ad73b2cd6fbdba0caa7a064305ad8db0ac2d00d91498b210e4b7134e203da0"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/14.webp",
+      "bytes": 210624,
+      "sha256": "1dfc6ac07363a86fc7b3d66494812525948d2fd537d2bbdbb7274c96a36ede80"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/15.webp",
+      "bytes": 208430,
+      "sha256": "bb97767925660bfb26e755407082d2a4e8e2ac38f36bda7ebab8c6042ff7a64d"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/16.webp",
+      "bytes": 212064,
+      "sha256": "f6b6f5e934fa5a25dd52980220c34f826181e70b06b7333aca39e761e0607d34"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/17.webp",
+      "bytes": 213588,
+      "sha256": "a5fef2f5baee1888e01e3e08819f15190fa2037688548c0c6732a8bc8e45072f"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/18.webp",
+      "bytes": 214114,
+      "sha256": "346a1aceb72d12d448d2baf23bdd06dbaa09771655c469fc949f7b366e125bf7"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/19.webp",
+      "bytes": 210042,
+      "sha256": "2d5a88fc11bf3095f24d44ef43fe2714a3461a157c0bc0e06321df3c90cc5c64"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/20.webp",
+      "bytes": 205082,
+      "sha256": "919fd886b068482e80f11fbff46459dceafa67d6c5fdcb18a5362a8370e668c8"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/21.webp",
+      "bytes": 186896,
+      "sha256": "36928c46d40c82b431c8bb486d2bfcf15be5e7cbb5e6f29053a80853052aac28"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/idle/22.webp",
+      "bytes": 85824,
+      "sha256": "1c61995502b2e0eaaa8a6bc659046029c6acaf0ff7919119959822600f300a8d"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/joy/00.webp",
+      "bytes": 190398,
+      "sha256": "54421724d19d6163477fba5a323f9b4f045d013eb48a2f4570ffa01f11c01ccf"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/joy/01.webp",
+      "bytes": 235004,
+      "sha256": "47bae7759f8dca132c35905e4744c27373f82a55761f6e89039b00c49846c42c"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/joy/02.webp",
+      "bytes": 240476,
+      "sha256": "2cf7b3b248872554547d51234ee45d1520529b89b646a72aa54f60a8a80c8975"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/joy/03.webp",
+      "bytes": 242530,
+      "sha256": "44b0b93c8f074467e9e612f2772e5c1abc10bbc1ac684922d60c4930f2dc121e"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/joy/04.webp",
+      "bytes": 235286,
+      "sha256": "28f3d36bbc550c06e886d45ce5d88f70495341fd73bfc913892247e4ecde9043"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/joy/05.webp",
+      "bytes": 224338,
+      "sha256": "fbf6277dd2c8a86c896e7c6e687c6ac10a7b1f14522dce00110339cb191ec79c"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/joy/06.webp",
+      "bytes": 211754,
+      "sha256": "a18e05ee09e483672fea30f6f230188f4bd1543194d30b015133f376cedbbc73"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/joy/07.webp",
+      "bytes": 172984,
+      "sha256": "958f211466ec74e43a48f36659c75573d48486ffd1053d9889c5fbe077e5c041"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/joy/08.webp",
+      "bytes": 168600,
+      "sha256": "e5c96de513e5e4b54d03a62d28f9a2e0211f267deb12e971cf8c66a72bfbc168"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/joy/09.webp",
+      "bytes": 168700,
+      "sha256": "8216b3eb26ba94ce8926711d64f5f358369ece5a0fede4e617d6ce783348cef7"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/joy/10.webp",
+      "bytes": 168828,
+      "sha256": "30eb3ad78095839a2ad243ccfcc66c623d2705f556a3b9ccec873ba43d03fffa"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/joy/11.webp",
+      "bytes": 168666,
+      "sha256": "2b365dd89446229bb9abfb0ce7c4f9db33ffa6fdbdcff326b3e95809491c3034"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/00.webp",
+      "bytes": 203560,
+      "sha256": "ad8f75bb4cc2ffad08dfb3ca1886200ccfe51f4d5e03e3b5cdf918ace3e1a172"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/01.webp",
+      "bytes": 234266,
+      "sha256": "cdd7dbc8d3203f760c80dbdb694cf3212551c39d58fe2ee929c4f3fb73d076fd"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/02.webp",
+      "bytes": 226688,
+      "sha256": "1651f7c3b3b2f880ce4562efec331b0e8c1262ed7ce52ab0aec52b00fe4b2488"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/03.webp",
+      "bytes": 218246,
+      "sha256": "b6585e1b1a87740d67cd307a73ebc759a9077bceb16fbabbc265f76ac327a750"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/04.webp",
+      "bytes": 216766,
+      "sha256": "211378916fe6dbd8908d81190e89b20ebbb97f6e5d4be6ab9aacfa87694d4741"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/05.webp",
+      "bytes": 212862,
+      "sha256": "d166a6d93448658a7ddc4173f96ba3847aeebc7cd2c692c266a8e1046529b393"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/06.webp",
+      "bytes": 223136,
+      "sha256": "652ba6fbf28e2399608d1c1bb59216f4025ecb8985af39f0e2a3ef13dfc11995"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/07.webp",
+      "bytes": 225646,
+      "sha256": "876dd970e29093dd26adb28caad515e6970ac59156787007bd18973e46585869"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/08.webp",
+      "bytes": 222992,
+      "sha256": "6b266d14e47a89c5c040cf7105f682c673f8e12a7ebe9187f4bfcc645cca78cf"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/09.webp",
+      "bytes": 201566,
+      "sha256": "83d8c1666c5e4959a268de3fe9ae62d66cfb00755c3c3b864b2e14c54b975f84"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/10.webp",
+      "bytes": 169372,
+      "sha256": "71bee17ffde2f008e7059a44617ee6cda3a7869fc2af9e3e7b50a041176293d3"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/touch/11.webp",
+      "bytes": 168704,
+      "sha256": "06ee4c3b4309d534990a383f8fbb9cc9e7cd5010cb5fbeee729c3baae72e0d48"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/00.webp",
+      "bytes": 172950,
+      "sha256": "8a61c5cba97b17c135215b76a12fa1438b1ad5cd29e73a6c7d7e453b6d3f1be1"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/01.webp",
+      "bytes": 219012,
+      "sha256": "8880098b10b7d3fbca7d7e716de2a28223294cb7daf7f974d0df1e7852ca8080"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/02.webp",
+      "bytes": 225262,
+      "sha256": "f8491e0e923a8f4144a19421c4bb368fa17b5917590e75c8c17e89ee022bd8d5"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/03.webp",
+      "bytes": 228666,
+      "sha256": "ecc3ec9f7413d72300c083945e0a8668f16cd028792a73f65194aa0237275592"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/04.webp",
+      "bytes": 227026,
+      "sha256": "59c1546ad9c537e2eb40dd0c7f81711e8fecc346677e194e77c35974750120a6"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/05.webp",
+      "bytes": 220348,
+      "sha256": "f9d0aed2faf1a909356fe2e5705d558539ccc67a81c3fc06f32f0607e8ea08f5"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/06.webp",
+      "bytes": 214528,
+      "sha256": "17f583a13c29981702f3e981ec941cfd9b7fd719b85a7c6092b43dc4bd7f1bae"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/07.webp",
+      "bytes": 216652,
+      "sha256": "2a6deeef1150f8945da147f42f740a57a5a8f1090fea25517b868bad22f4df23"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/08.webp",
+      "bytes": 217384,
+      "sha256": "17cdf6993ab8c138cdb2ca35e5b64677cfee6acd0cb070d56d70cb01c5c120b4"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/09.webp",
+      "bytes": 208750,
+      "sha256": "e6a7d67e06fa4fa6892194eb97d225990960c5dcf14898d45f3f9d569f01ec89"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/10.webp",
+      "bytes": 218158,
+      "sha256": "2aa79232d708f357929ab95b282555e3a6885be00f47b81d22d8260907700091"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/11.webp",
+      "bytes": 224020,
+      "sha256": "f72dcca3e4cfb01c235ba21dd386fdc79cc3a0d0bdcd525ad3104fe59efad5c2"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/12.webp",
+      "bytes": 224972,
+      "sha256": "f4cfc81b10c9c407c4b5bb732570e74addf29f7bc948952c157c41f45aca97fa"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/13.webp",
+      "bytes": 224070,
+      "sha256": "2959bab018ee0435eca28e1fc05433a2d3c21ab7595475a938cb93192ee89e57"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/14.webp",
+      "bytes": 219122,
+      "sha256": "61e540bdffe5c32eedb46637876851b5e8975fcd2c4b6058b4aafcf042d76687"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/15.webp",
+      "bytes": 192326,
+      "sha256": "59dbccd05133605449ff7e02c4d0f1e2f97b57de72cab89ce8209fa2adc01b0c"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/16.webp",
+      "bytes": 169354,
+      "sha256": "380c262efbd3120337da15200d2128b4182af60ee9793e985d22b8b83bcfc8a5"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra/variant/17.webp",
+      "bytes": 168704,
+      "sha256": "06ee4c3b4309d534990a383f8fbb9cc9e7cd5010cb5fbeee729c3baae72e0d48"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/ilyra-portrait.webp",
+      "bytes": 86846,
+      "sha256": "869883f6181706bcc63b52c1d1e22c7d761235d470200fc26ab1fe81ce37e253"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/manifest.json",
+      "bytes": 13527,
+      "sha256": "b2148a97afabd8e2617e4225810f96390646d129bbb94b4d6879ab7700432af1"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/00.webp",
+      "bytes": 211690,
+      "sha256": "b3d30581148538b4f29fb2281d6f7e53c7801b277c569076cb126982ae3bdc73"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/01.webp",
+      "bytes": 221266,
+      "sha256": "eed664cc0ce34fa61c36b31b82900261f47e4eb9253391ae0ce49d312c56f65b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/02.webp",
+      "bytes": 219038,
+      "sha256": "994eae92499ba7c1d3ce38820f8bf742ca15b6e6030d1fac8ee71ad2e7b0c32b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/03.webp",
+      "bytes": 218248,
+      "sha256": "5164a76c00c27695c82798593baf87b22215ac408d359d3398ae9f262c7900fb"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/04.webp",
+      "bytes": 209030,
+      "sha256": "59d7cf3082acd45ddcfca79ead83ce083daa7599c9d8aa164a38e61fe6691f37"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/05.webp",
+      "bytes": 208876,
+      "sha256": "abd0b6997aed98fccc2da025b69f5fe0f36741f4246f7083720fb8509bec0bea"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/06.webp",
+      "bytes": 209296,
+      "sha256": "8436c2714d1fa1dd0b278c483a4f0bf88c1957f7119aa02a6469cd0a25df390f"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/07.webp",
+      "bytes": 219730,
+      "sha256": "18d7b309eefd139dcb977dd8963198d8de6f714bc5a56d767a07eb1d29db8e66"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/08.webp",
+      "bytes": 218598,
+      "sha256": "bc238dea4ef9982cb46943409018b78a3c1026974e6e90559e96eb6145d5d194"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/09.webp",
+      "bytes": 218648,
+      "sha256": "a3787d2b521e09f9daf3730b733522c659c2529533ceab53f3af966bd23493e5"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/10.webp",
+      "bytes": 221536,
+      "sha256": "80af62830ee990e0afdf6109820c05c0e22068eb33c2c8cfc0724d19f277095c"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/11.webp",
+      "bytes": 207726,
+      "sha256": "021f548e3d1988760c0b14a21f0f517c9ecc9737892d51909cf897d87a2e3fe1"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/12.webp",
+      "bytes": 169640,
+      "sha256": "53c23c4d59cfb5c28dc1f3856ca395b366689461513bf3b02cad7b9c518c1e22"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/13.webp",
+      "bytes": 164956,
+      "sha256": "1eaa66765ebf7619402b6c6e9d2e83b8e44ec6769a6deedfa5b9da0323e30a93"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/14.webp",
+      "bytes": 164452,
+      "sha256": "0205af51ac2f6149db2b252322065dd33f4c9a7d29ca40378ca406ba8759f8ad"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/15.webp",
+      "bytes": 164800,
+      "sha256": "4dc689666e07cfa06062ee1085b03e15ef47a3a2f25ff9a08fafbc61501db8ae"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/16.webp",
+      "bytes": 164728,
+      "sha256": "46e1af05e79f52ca51bc20c1afbb68a75abb7543970805ea1b1fa11c0ab27bee"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/17.webp",
+      "bytes": 164688,
+      "sha256": "e91b9638a26fdf5fbe4ead4814d9ec58404c2f5c439eb5f556e3ad029fd37e8d"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/18.webp",
+      "bytes": 164574,
+      "sha256": "29ea590b6bf411916c49f661df74a472aa98f082462054228b33c9aace6d90fa"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/19.webp",
+      "bytes": 164494,
+      "sha256": "1982759c85ace03363dd0a835c79e0daa7fcf16cc5df4a57dd72efdd82dd3de4"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/giggle/20.webp",
+      "bytes": 50112,
+      "sha256": "d4b1795933b96c23514c7fe681a32101c1a973a6009e5bce4027eb8050e8d32e"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/head/00.webp",
+      "bytes": 210860,
+      "sha256": "10a08f0cdf8a400c000899f85c00b137de3c0fd0e8e36896aeecb4e38ecd721e"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/head/01.webp",
+      "bytes": 215674,
+      "sha256": "c73af74b33af0c49962d7e8b46b97bc39331a860cf020e99eef1ae1290cdb8ab"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/head/02.webp",
+      "bytes": 216912,
+      "sha256": "b28d5ad09a3fa3476823b2e992b0d450a10ce103a65b67b971ed1186d422a15b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/head/03.webp",
+      "bytes": 208676,
+      "sha256": "afa71ec877217f3fa8e189794004c1e9f7789132a57b0ccab1aac03c2e3c61aa"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/head/04.webp",
+      "bytes": 216044,
+      "sha256": "4fefad48d913954bee730b1821cf26fd8b2b6819470229f2399a4dc3bf8800cd"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/head/05.webp",
+      "bytes": 215082,
+      "sha256": "ff0c8e7b9804d7df65c0b5fe4e8c76103d07c97d11cbc14e36359da73d69a6d7"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/head/06.webp",
+      "bytes": 213672,
+      "sha256": "6de79c214f43e5dcff09195985c9da85c965c8e66eef48415ea059c8d11c2ab8"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/head/07.webp",
+      "bytes": 87102,
+      "sha256": "0f1aaf5eadcc40e8e3abbaa7ceb868d5aa7f36d1d9e516bb2163ff7516ec00ef"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/00.webp",
+      "bytes": 217156,
+      "sha256": "b561be404049452ab0534e0f64e6b9c56585bcd18c30f63bd00e02cb1212480b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/01.webp",
+      "bytes": 221478,
+      "sha256": "51056aa298df1b656812b18694c51e7bf8577c8ea07c9635b5d139884e4b418d"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/02.webp",
+      "bytes": 220214,
+      "sha256": "4187d0f6993b2967435e9668c4bd2c2adc78201599f4a2fda64b0a4afc6cbcb9"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/03.webp",
+      "bytes": 221384,
+      "sha256": "c4d6956764e235812b701a6e50ff9b3d87d62baf79cfe156e9793ba270fc5631"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/04.webp",
+      "bytes": 191824,
+      "sha256": "f76a4e0dc48e66c82acd2600a4097109db406fb1aa69f79b4aa8ff28d918c97b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/05.webp",
+      "bytes": 185538,
+      "sha256": "6acfaa755ea077ecabeb5982021b4623780c84ca4a0eb3f986f7b2fc3e55813b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/06.webp",
+      "bytes": 189028,
+      "sha256": "d7d2deb3ad04fe57dbb2b2dc2b85fb7db7230556b569b3c41dd4e128a29444ac"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/07.webp",
+      "bytes": 222386,
+      "sha256": "8b602da4e6ab2f92be14e895d9440b3a86454aef850a46747171ca25ba9c5e1a"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/08.webp",
+      "bytes": 219838,
+      "sha256": "8d47d7eee45742a33bb303c66672e73f28cdf6cd7fdb532aed73f8a7d399b342"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/09.webp",
+      "bytes": 218742,
+      "sha256": "601a1fc5213e3a10cc7a495317328b16cfdf04143e232c74608a0dcbcf2bcfb4"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/10.webp",
+      "bytes": 219216,
+      "sha256": "f19152051c31a2b351239db2ff852ff746309d407678d737e94077245f26a288"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/11.webp",
+      "bytes": 209492,
+      "sha256": "b4df96cbc91e5046eed1a47ecfe45b5c8cbd377df26864afb1a0f45cc6969a64"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/12.webp",
+      "bytes": 170428,
+      "sha256": "8c023fa692d139b4eb54af407e2785da6bd3720d3f92685234a944d89819749f"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/13.webp",
+      "bytes": 164692,
+      "sha256": "14ecd8aa4aa5fa51bafc8b5de80ca4dd49d0136168458240ecaedb0f8659c730"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/14.webp",
+      "bytes": 164850,
+      "sha256": "0d2d4de32c174541a81676df53dce95cd2e9a0bb67b7146a92524aa43717021a"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/15.webp",
+      "bytes": 164564,
+      "sha256": "d9a7da33e1deaabc9f2c7243bec8de37e49aee4baa57b019c6229cebf6d7aed8"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/16.webp",
+      "bytes": 164630,
+      "sha256": "cb02cd60b58b5a1c76f416af7fc1d28c82d3fd39ffc589bad2bf2220bfa5c3be"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/17.webp",
+      "bytes": 164718,
+      "sha256": "641afab03a07675c994509f442e35a0f5ff8d6e069f5553633b0bacd2c49b8e5"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/hip/18.webp",
+      "bytes": 127908,
+      "sha256": "44a19eac00cb51ef0661465f7dcf2f1789629689e359da4fe4490f901c56fcea"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/00.webp",
+      "bytes": 174626,
+      "sha256": "2606c3f1789443352e552f718fe5c6434db5b2e84dadf849b46cae1d09d0e2d9"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/01.webp",
+      "bytes": 206120,
+      "sha256": "52e5169655054be108ec5980f7103e7c4d073af0d1e543bc0a50a1f929909b69"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/02.webp",
+      "bytes": 207248,
+      "sha256": "132c90943aa83af4ca7306e963e270aba9dc334da977384b6c7354c274cdc66a"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/03.webp",
+      "bytes": 208412,
+      "sha256": "bec638bffbd5ac502d2b4c4657381fc0b699cdb2100d708ba4e213c6ceda3767"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/04.webp",
+      "bytes": 207496,
+      "sha256": "1186aa06d2b108ea4efaf615a43234dac7ec6df925c3fa2988fcb30424b910a9"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/05.webp",
+      "bytes": 202516,
+      "sha256": "6a8d0925214874d04e0a82f7397d308b0a13b3d7f012ccce30d737bb26724119"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/06.webp",
+      "bytes": 192964,
+      "sha256": "e978240bf8296c3bd075f32ea3111be611699b6d50f150fdb6cb8be63d620381"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/07.webp",
+      "bytes": 186852,
+      "sha256": "ab69553e0f71dad67955082de0b8545c71692126a3ec7d639e593e7c5361ac9e"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/08.webp",
+      "bytes": 195462,
+      "sha256": "8cdea05c228d5863169893b07fcccd410497391bfd062b0ff0fb516422fadb79"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/09.webp",
+      "bytes": 201720,
+      "sha256": "2acb09524d40a4b81c66a2f32228863adc3a0f4247991c4274c04d6cbb2f6a0d"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/10.webp",
+      "bytes": 204336,
+      "sha256": "016ccd676e7df294b0ab9814e0335c55c35c4c4e0ebd851d3b705ddf14f72088"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/11.webp",
+      "bytes": 205480,
+      "sha256": "4434d9d59eae8926c9eeeb034125691a7ed3c83019a383c798972b1488feea45"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/12.webp",
+      "bytes": 206310,
+      "sha256": "574447ea534c0088433e51bcef3adf94a173eadafc03acbae639e3b1d35d0453"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/13.webp",
+      "bytes": 205028,
+      "sha256": "6d6f670f36a75545f8a66a0925cd4797e2a7d0c94ac1537cc1f62b8c8b765de8"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/14.webp",
+      "bytes": 202970,
+      "sha256": "7dc0884a03f3e7a6218615464100baba80006f50bafe71c277e2636836c08d61"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/15.webp",
+      "bytes": 199154,
+      "sha256": "fe2413af19b3c0e6610be74891532c9945898f61aa374ec745bd338c48c952fe"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/16.webp",
+      "bytes": 185874,
+      "sha256": "a0adfc02bdb8d3ee6f60e4f1b92d1433855f568ba47f89ad5e38c93642dfc30a"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/17.webp",
+      "bytes": 168934,
+      "sha256": "1c1db8c2fb18145972218b271dd6f56c8bb6ac2d8621762f60d9c1c98a274a5a"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/idle/18.webp",
+      "bytes": 127694,
+      "sha256": "994b221f2c9ec0b079a62fd11e699c5877b7f96991ee47664a0a2e3b4e37b6b0"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/00.webp",
+      "bytes": 214848,
+      "sha256": "56812f86ed121083849e3a95986fea8335e0fde2e1f34d185161ee903b6c155a"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/01.webp",
+      "bytes": 222308,
+      "sha256": "76649cd3c1747e983c2eff1bef31048d6b2f133b715a4d0849f8daa9fdfb9b71"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/02.webp",
+      "bytes": 219342,
+      "sha256": "29d566421b85011669c34a18555f4b424f9c92cb20c1e389770570a2dc1e9021"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/03.webp",
+      "bytes": 218822,
+      "sha256": "a300279f7002cfbdc5a68ccddb7634ce2a44ed4e08c97f7d3a4cd39f8bce4fdd"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/04.webp",
+      "bytes": 216302,
+      "sha256": "7d37d5e265f6d3418a3dcb890296c997d4b69507e2fc28331fe0d4e5e8dfc212"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/05.webp",
+      "bytes": 219514,
+      "sha256": "da8d7449223d3d578650688bf5c9b5b6559e771eda6a13c49acf0e1ca8022073"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/06.webp",
+      "bytes": 220586,
+      "sha256": "98b291622f1ce691e49223146ab53d578178ee6230992f728e5e485fb9fcf0b8"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/07.webp",
+      "bytes": 219152,
+      "sha256": "6fe9ae11cac3cbe104c3aef13b1d828464d4e8cd4bdec9b5f85fb0fd62feb5fa"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/08.webp",
+      "bytes": 215032,
+      "sha256": "e3db20335512fd77fef0b7dc54361109a32a83917dbbce10983abbb11f1a2f03"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/09.webp",
+      "bytes": 183918,
+      "sha256": "b8051e44383661e93e0e6ecb606bdf52fba55ca328efdfc01a6356d78b0ccf23"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/10.webp",
+      "bytes": 164814,
+      "sha256": "ccdd31cbb6d3e29b57939a4efdcdcf46dbfbc6f07e07a02ade01f42a2b2b20f3"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/11.webp",
+      "bytes": 164646,
+      "sha256": "df1825156f0c276b9b0125ac9a289e8c521eb3fa2a13efd72e17094a13e491b9"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/12.webp",
+      "bytes": 164914,
+      "sha256": "477b7b45f09e06a7102fd8384a6e42c6f1578f0accc28b8949bc0fed0445f7a5"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/13.webp",
+      "bytes": 164602,
+      "sha256": "2e88df1024ea50edd9cbe947278dfb97ce76df89e7331721ef004cd7c25650ae"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/14.webp",
+      "bytes": 164502,
+      "sha256": "2686c1769ca26d2ae4c35016a167d31b3b004c523f5f904220394db98d374fdd"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/joy/15.webp",
+      "bytes": 127908,
+      "sha256": "44a19eac00cb51ef0661465f7dcf2f1789629689e359da4fe4490f901c56fcea"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/tease/00.webp",
+      "bytes": 223018,
+      "sha256": "a7d131a763df3f7a1177afb17beb29badd447c0126bab4b854dd0decc89829aa"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/tease/01.webp",
+      "bytes": 220482,
+      "sha256": "e77313c653b24b9e900a2879e8bad51c291e2e184f4ff695163b2fc5c75ce99e"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/tease/02.webp",
+      "bytes": 218752,
+      "sha256": "486b892c68414ad91515b32e67d2ae4bb5856b7e22d80319236ea3019c87f0a5"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/tease/03.webp",
+      "bytes": 217830,
+      "sha256": "f78039ee62ae7205256de89573020f76ea8770a51345d313a123a73c42f8e234"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/tease/04.webp",
+      "bytes": 209202,
+      "sha256": "e52589f7e6627d5435188ef43e436931bcc0217393848c752a37b94560fa6383"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/tease/05.webp",
+      "bytes": 207000,
+      "sha256": "5109138f5792f53a18e822a3020ba2dd14fb278aef0612b0be674f281635c1e0"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/tease/06.webp",
+      "bytes": 211858,
+      "sha256": "436f1ab66df36efd743e68badc9e0b621aaad290cc73b454d254d693ab5a20ed"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/tease/07.webp",
+      "bytes": 217478,
+      "sha256": "b315e8056e98f767d2a08e6e82f1ecb25905254d6549f347b1c4247cd9d7b9ca"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/tease/08.webp",
+      "bytes": 217938,
+      "sha256": "afd90fcb247d6cb5fc7ad5f77a28316b90fd7f4e1994ae5792c7919e6dad1b61"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/tease/09.webp",
+      "bytes": 217662,
+      "sha256": "762d259ad2898c6e2d53f53a89bc61af62d349ab97e9a368ac6cedf68dfa9b61"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/tease/10.webp",
+      "bytes": 220214,
+      "sha256": "83030677bcae0a6165a8d1d7929eaf8ff049467df67733462aa21ed3799aedd0"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/tease/11.webp",
+      "bytes": 204954,
+      "sha256": "e0d8a3c61a2a6e742b5ebf9fb5762bc915ca55dd0b004f1b9d763f52ab3a4550"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/tease/12.webp",
+      "bytes": 128574,
+      "sha256": "c897a02e37c7fbbac0a9fffb364443d55e2a9f531c5ed81de1a7ff6dcf86facb"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/touch/00.webp",
+      "bytes": 212476,
+      "sha256": "0b2cb1b0702525971cac35e0f41521d213c047f374ed9a91f7f058261a84fbdc"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/touch/01.webp",
+      "bytes": 213874,
+      "sha256": "bf02a27564edc99d651378a134e5c90b0946920f83fe7c96c0e74d4eaab99b9f"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/touch/02.webp",
+      "bytes": 210766,
+      "sha256": "30ddb1ba6977a6aca4b4929f599fed686542352f8290a539bc8265cad11eff0f"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/touch/03.webp",
+      "bytes": 202318,
+      "sha256": "3d284e21e02e6f8f0a5dc9b95ba0599b4074c9815f6f273fbe885c1a794b96b2"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/touch/04.webp",
+      "bytes": 200590,
+      "sha256": "fae73de51d1fa1e6f2c7b54a495d708363fc53493845f1b2754f82d2290772af"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/touch/05.webp",
+      "bytes": 207790,
+      "sha256": "ea5ccc560977b1e91b014eb5da1b84ab383204e3f3ae152afb474461a6cc347b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/touch/06.webp",
+      "bytes": 208590,
+      "sha256": "8c73a1648753acc8819be2b1f778038ca8e17031bf412ede2cff351694c51b2d"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/touch/07.webp",
+      "bytes": 209602,
+      "sha256": "4403965bbe6ab482cc92710a8d8910706d3bdcc2a6e2c06b0c427f33cef61821"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/touch/08.webp",
+      "bytes": 211610,
+      "sha256": "994b9b5784ceac34a68e564f2332f68cdcf83d11fc395ef4694b3d1f0d9cb504"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/touch/09.webp",
+      "bytes": 196792,
+      "sha256": "9ca685e8e34803684d3db9eb6db10c1ea26dc381ba28b860bafb88c7a4eda22e"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/touch/10.webp",
+      "bytes": 82020,
+      "sha256": "375e29eeb819713c0af30926f2cf2187293638cbeae2b21c6f9e0fe4987f1ea4"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/00.webp",
+      "bytes": 174394,
+      "sha256": "967d33fb1fed6654d961fc723fcb8494fd62d708a7e53013efda13cdebf9c344"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/01.webp",
+      "bytes": 211352,
+      "sha256": "b5045a4a4d392ab68ee3264bac5627e30550cad2ab27d5b7fb3042313b8d2754"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/02.webp",
+      "bytes": 212804,
+      "sha256": "555e891b7ad26f2ec18b9de650594ac88f4160f43e1d126b6733e6842d34d7e8"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/03.webp",
+      "bytes": 212600,
+      "sha256": "ea0e4798ddf6ad2f586c8f070f0961de4c6904c7414e0f3ccb18eb16fb1c4184"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/04.webp",
+      "bytes": 203764,
+      "sha256": "8a332a23f177c3dacf20e157faebbdf7a1adca038735bb1f5e9efb8c2db8feed"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/05.webp",
+      "bytes": 194192,
+      "sha256": "bd28fe0d3d2700ded832c250649bd3a791f3d99965587f4d9c48a74d97f5b87b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/06.webp",
+      "bytes": 196542,
+      "sha256": "28b6c5453d13984ff78d75911d68f7ef85515a98b9a6638dc749ba0c3c846366"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/07.webp",
+      "bytes": 200776,
+      "sha256": "5d6b3984f9930f1029e822f7c2f14b21f58426507f66cbe389dba5ecb588b47e"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/08.webp",
+      "bytes": 209790,
+      "sha256": "837e7eadcca2ccc8cbb20b662e219ab5c21b180eb475dae5a41524402578417b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/09.webp",
+      "bytes": 211382,
+      "sha256": "4516a2b726abd8847d80e2e4b514d93a14ad53166ac3bfa1cfb424eeca15cabd"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/10.webp",
+      "bytes": 210922,
+      "sha256": "4508f4e81cf493350f998b98706a25b9e77a44aeb39551f717056808f37d9c5f"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/11.webp",
+      "bytes": 210142,
+      "sha256": "b56ccd346c23b823f2851de4651bbf2e60189f893874e22539bd748cb4c3d8ae"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/12.webp",
+      "bytes": 207280,
+      "sha256": "3911f91c78e84a5b720401eacf43f8c9e16fd82352ea816970ad4436f10abb44"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/13.webp",
+      "bytes": 169942,
+      "sha256": "be1bd0d2bef89c41e2f31ddc2476ead30287210179ed0bc27f27ae8e66922fc8"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara/variant/14.webp",
+      "bytes": 50164,
+      "sha256": "9cc0c754988d730facc9a5de7edab908ac309d65046227d1d647229aa513571b"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/mara-portrait.webp",
+      "bytes": 93176,
+      "sha256": "d6bf0ecc349ae6721e01e7b098cde2d4aceac3ee01a6cc41f696e4fd4b00dc90"
+    },
+    {
+      "path": "experiments/idle-bastion/assets/tavern-rig/README.md",
+      "bytes": 3101,
+      "sha256": "464f5d07c0d2396deb5f9e38c9bc182f3fb6c99a211a1f3c0828b7b5e8e22d14"
+    },
+    {
+      "path": "experiments/idle-bastion/scripts/pack-tavern-rig.py",
+      "bytes": 6373,
+      "sha256": "dad9f31e9d705a5a0ba1f931c04cc5b950f91ba2ff6b99363a905e8c36b6221f"
+    },
+    {
+      "path": "experiments/idle-bastion/src/main.ts",
+      "bytes": 108758,
+      "sha256": "a4abb248e4e53cef441bd24526b341114543dba382a366b1cfc8475256727d09"
+    },
+    {
+      "path": "experiments/idle-bastion/src/tavern-atlas-cache.ts",
+      "bytes": 4103,
+      "sha256": "14e118766f65a918388b7ab9b1fa94567417227c5b34bba0fb0102c269dffd36"
+    },
+    {
+      "path": "experiments/idle-bastion/src/tavern-content.ts",
+      "bytes": 518,
+      "sha256": "7cfb19f515a3a7a81d12d82a2798625c760c65e263c9e7c331dc43610cf1bc6e"
+    },
+    {
+      "path": "experiments/idle-bastion/src/tavern-presentation.ts",
+      "bytes": 1155,
+      "sha256": "f3068b8b842ec1e0a41f329bc969a06c8f4aca31bf74e70d85c83ccaf731fe8e"
+    },
+    {
+      "path": "experiments/idle-bastion/src/tavern-rig-check.ts",
+      "bytes": 3568,
+      "sha256": "c569a559666731fe958fd0ae4c862927e4ce6b26ce2b6df5f096b5ad4f7ebe3b"
+    },
+    {
+      "path": "experiments/idle-bastion/src/tavern-rig-preview.ts",
+      "bytes": 16709,
+      "sha256": "7092346766ef2622090c926faf828836dfc0799f8552373deaa62e92d6183206"
+    },
+    {
+      "path": "experiments/idle-bastion/src/tavern-rig-source-preview.ts",
+      "bytes": 2886,
+      "sha256": "16d4172b43fa9b4c2a7423207d76b69701c6d19d71578e6b744e6aaf1e2c4fb2"
+    },
+    {
+      "path": "experiments/idle-bastion/src/tavern-rig.css",
+      "bytes": 10629,
+      "sha256": "0cb9bc2b1d5c4e43a7fbf4a0557a88cd632f82e88fc74860e82d12e8e7c7750d"
+    },
+    {
+      "path": "experiments/idle-bastion/src/tavern-ui.css",
+      "bytes": 17933,
+      "sha256": "b1967d8532efde3ee81c3e64dd0aa53c53ec4e5d67402e20c8914fb0f6943b29"
+    },
+    {
+      "path": "experiments/idle-bastion/src/tavern-ui.ts",
+      "bytes": 38130,
+      "sha256": "4bde1bc3082fea033142c5bc502ac095d373e5ac8e3554eb224b0124ea499b39"
+    },
+    {
+      "path": "experiments/idle-bastion/tavern-rig-check.html",
+      "bytes": 1635,
+      "sha256": "52673b37526a45c4843d3c8d1fdd2add347eb8b3c91231a38fc4624d841b1dac"
+    }
+  ]
+}

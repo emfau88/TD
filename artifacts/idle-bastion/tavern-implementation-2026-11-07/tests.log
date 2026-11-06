@@ -1,0 +1,220 @@
+TAP version 13
+# Subtest: four tower roles use launch/actual hit; splash and unrelated events do not duplicate impacts
+ok 1 - four tower roles use launch/actual hit; splash and unrelated events do not duplicate impacts
+  ---
+  duration_ms: 1.6207
+  type: 'test'
+  ...
+# Subtest: combat bursts are bounded and core warning has its own cooldown
+ok 2 - combat bursts are bounded and core warning has its own cooldown
+  ---
+  duration_ms: 0.3258
+  type: 'test'
+  ...
+# Subtest: frost buildup cannot overlap itself across multiple towers
+ok 3 - frost buildup cannot overlap itself across multiple towers
+  ---
+  duration_ms: 0.1574
+  type: 'test'
+  ...
+# Subtest: saved effects and gift stock are silent; only new spells/received gifts make cues
+ok 4 - saved effects and gift stock are silent; only new spells/received gifts make cues
+  ---
+  duration_ms: 21.8344
+  type: 'test'
+  ...
+# Subtest: settings tolerate invalid storage and never exceed safe slider range
+ok 5 - settings tolerate invalid storage and never exceed safe slider range
+  ---
+  duration_ms: 0.505
+  type: 'test'
+  ...
+# Subtest: tower build and upgrade have distinct cues; settlement keeps craft
+ok 6 - tower build and upgrade have distinct cues; settlement keeps craft
+  ---
+  duration_ms: 0.1743
+  type: 'test'
+  ...
+# Subtest: boss laugh starts once per dance, never on load or windup-to-channel
+ok 7 - boss laugh starts once per dance, never on load or windup-to-channel
+  ---
+  duration_ms: 7.1329
+  type: 'test'
+  ...
+# Subtest: English is the explicit default; language choices survive blocked preference storage
+ok 8 - English is the explicit default; language choices survive blocked preference storage
+  ---
+  duration_ms: 0.8137
+  type: 'test'
+  ...
+# Subtest: complete sentences retain every placeholder, whitespace and dynamic values in both languages
+ok 9 - complete sentences retain every placeholder, whitespace and dynamic values in both languages
+  ---
+  duration_ms: 58.4396
+  type: 'test'
+  ...
+# Subtest: menu language switch preserves DOM identity, updates accessibility and persists only the preference
+ok 10 - menu language switch preserves DOM identity, updates accessibility and persists only the preference
+  ---
+  duration_ms: 103.0939
+  type: 'test'
+  ...
+# Subtest: language changes preserve an earned battle, farm proof and historical offline receipt exactly
+ok 11 - language changes preserve an earned battle, farm proof and historical offline receipt exactly
+  ---
+  duration_ms: 282.7204
+  type: 'test'
+  ...
+# Subtest: all enemy descriptions and companion dialogue stages have translations, without translating IDs
+ok 12 - all enemy descriptions and companion dialogue stages have translations, without translating IDs
+  ---
+  duration_ms: 1.0453
+  type: 'test'
+  ...
+# Subtest: each active touch uses a distinct existing clip, independent of story clips
+ok 13 - each active touch uses a distinct existing clip, independent of story clips
+  ---
+  duration_ms: 59.8605
+  type: 'test'
+  ...
+# Subtest: conversation rotation retains earlier unlocked lines without leaking future stages
+ok 14 - conversation rotation retains earlier unlocked lines without leaking future stages
+  ---
+  duration_ms: 1.2045
+  type: 'test'
+  ...
+# Subtest: tavern actions preserve manual pause, consume one gift per transaction and serialize taps
+ok 15 - tavern actions preserve manual pause, consume one gift per transaction and serialize taps
+  ---
+  duration_ms: 120.8501
+  type: 'test'
+  ...
+# Subtest: unrewarded interactions remain playable without another save; failed save has no UI reward
+ok 16 - unrewarded interactions remain playable without another save; failed save has no UI reward
+  ---
+  duration_ms: 46.5103
+  type: 'test'
+  ...
+# Subtest: touch region and personal gift choice are checked at execution and cannot substitute another reward
+ok 17 - touch region and personal gift choice are checked at execution and cannot substitute another reward
+  ---
+  duration_ms: 40.8303
+  type: 'test'
+  ...
+# Subtest: heart-three hint names the missing wins, independently of ordinary gift stock
+ok 18 - heart-three hint names the missing wins, independently of ordinary gift stock
+  ---
+  duration_ms: 2.7342
+  type: 'test'
+  ...
+# Subtest: ready gift and ready affection are explained separately without losing either condition
+ok 19 - ready gift and ready affection are explained separately without losing either condition
+  ---
+  duration_ms: 0.5042
+  type: 'test'
+  ...
+# Subtest: first gift, exhausted reserve, and completed legacy chapters have an actionable explanation
+ok 20 - first gift, exhausted reserve, and completed legacy chapters have an actionable explanation
+  ---
+  duration_ms: 0.4159
+  type: 'test'
+  ...
+# Subtest: all hint paths translate and reading them never changes earned progress
+ok 21 - all hint paths translate and reading them never changes earned progress
+  ---
+  duration_ms: 1.8616
+  type: 'test'
+  ...
+# Subtest: three conversations and a stock gift reach heart two for each companion without time gates
+ok 22 - three conversations and a stock gift reach heart two for each companion without time gates
+  ---
+  duration_ms: 110.7614
+  type: 'test'
+  ...
+# Subtest: locked and invalid companions/regions cannot spend anything
+ok 23 - locked and invalid companions/regions cannot spend anything
+  ---
+  duration_ms: 36.6523
+  type: 'test'
+  ...
+# Subtest: a personal gift is guaranteed on the thirtieth own live win, independent of stock and the other companion
+ok 24 - a personal gift is guaranteed on the thirtieth own live win, independent of stock and the other companion
+  ---
+  duration_ms: 32.2828
+  type: 'test'
+  ...
+# Subtest: affection may be ready before the gift, stock gifts never bypass the personal gate
+ok 25 - affection may be ready before the gift, stock gifts never bypass the personal gate
+  ---
+  duration_ms: 29.9768
+  type: 'test'
+  ...
+# Subtest: reward reserves refill per three victories, not time, reload, wall clock or offline gold
+ok 26 - reward reserves refill per three victories, not time, reload, wall clock or offline gold
+  ---
+  duration_ms: 34.3066
+  type: 'test'
+  ...
+# Subtest: normal drops have no twenty-minute quota, defer at full stock and stop after the available chapter
+ok 27 - normal drops have no twenty-minute quota, defer at full stock and stop after the available chapter
+  ---
+  duration_ms: 28.1902
+  type: 'test'
+  ...
+# Subtest: recruitment guarantees Ilyra a welcome gift, full stock defers the claim
+ok 28 - recruitment guarantees Ilyra a welcome gift, full stock defers the claim
+  ---
+  duration_ms: 62.3153
+  type: 'test'
+  ...
+# Subtest: touches unlock at hearts 1/2/3, share the existing reserve from heart 2 and preserve legacy progress
+ok 29 - touches unlock at hearts 1/2/3, share the existing reserve from heart 2 and preserve legacy progress
+  ---
+  duration_ms: 64.3911
+  type: 'test'
+  ...
+# Subtest: schema 31 migration preserves earned values, claims, combat and partial gift progress exactly
+ok 30 - schema 31 migration preserves earned values, claims, combat and partial gift progress exactly
+  ---
+  duration_ms: 287.2811
+  type: 'test'
+  ...
+# Subtest: legacy empty-stock Ilyra gets her welcome claim once; corrupt legacy budgets remain rejected
+ok 31 - legacy empty-stock Ilyra gets her welcome claim once; corrupt legacy budgets remain rejected
+  ---
+  duration_ms: 29.0378
+  type: 'test'
+  ...
+# Subtest: invalid current social states are rejected, never reset
+ok 32 - invalid current social states are rejected, never reset
+  ---
+  duration_ms: 206.3161
+  type: 'test'
+  ...
+# Subtest: live wave integration grants once and probes/offline preserve social progress and the farm fingerprint
+ok 33 - live wave integration grants once and probes/offline preserve social progress and the farm fingerprint
+  ---
+  duration_ms: 139.3819
+  type: 'test'
+  ...
+# Subtest: gift consumption is atomic, failed saves roll back, pause and concurrent taps do not duplicate rewards
+ok 34 - gift consumption is atomic, failed saves roll back, pause and concurrent taps do not duplicate rewards
+  ---
+  duration_ms: 61.6935
+  type: 'test'
+  ...
+# Subtest: older pre-social saves retain building access and only proven milestone gifts
+ok 35 - older pre-social saves retain building access and only proven milestone gifts
+  ---
+  duration_ms: 44.2163
+  type: 'test'
+  ...
+1..35
+# tests 35
+# suites 0
+# pass 35
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4196.2073

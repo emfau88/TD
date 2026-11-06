@@ -6,6 +6,7 @@ import { TavernInteractions } from './tavern-interactions';
 import type { BattleSession } from './battle-session';
 import { hearts, SOCIAL, personalGiftReady, type Interaction, type Companion, type SocialState } from './tavern-social';
 import { tavernGiftStatus } from './tavern-gift-status';
+import { tavernProgressHint } from './tavern-progress-hint';
 import { TavernAnimation, drawCompanionPortrait, companionPortrait, type TouchRegion } from './tavern-animation';
 import './tavern-ui.css';
 import type { TavernPlayer, TavernPresentation } from './tavern-presentation';
@@ -38,6 +39,7 @@ export class TavernUI {
   private portraitsStarted = false;
   private moment?: { heart: number; beat: number };
   private newMoment?: number;
+  private celebrationTimer?: ReturnType<typeof setTimeout>;
   private conversationTurn: Record<Companion, number> = { mara: 0, ilyra: 0 };
   private selected: Companion = 'mara';
   private replyTimer?: ReturnType<typeof setTimeout>;
@@ -101,20 +103,20 @@ export class TavernUI {
       const target = (event.target as HTMLElement).closest<HTMLButtonElement>('button');
       if (!target || target.disabled) return;
       const action = target.dataset.action as Interaction | undefined;
-      if (action) { this.speaking = false; this.touchHint = false; this.update(); if (action === 'talk') this.get<HTMLButtonElement>('[data-do=speak]').focus(); void this.act(action); return; }
+      if (action) { this.newMoment = undefined; this.speaking = false; this.touchHint = false; this.update(); if (action === 'talk') this.get<HTMLButtonElement>('[data-do=speak]').focus(); void this.act(action); return; }
       if (target.dataset.gesture) {
         const gesture = this.ports.presentation?.gestures.find(g => g.key === target.dataset.gesture);
         if (gesture && (!gesture.companion || gesture.companion === this.selected)) {
-          this.speaking = false; this.update(); this.get<HTMLButtonElement>('[data-do=speak]').focus();
+          this.newMoment = undefined; this.speaking = false; this.update(); this.get<HTMLButtonElement>('[data-do=speak]').focus();
           if (hearts(this.points) < gesture.minHearts) { this.result(() => t('Ab Herz {0} verfügbar.', gesture.minHearts)); this.revealReply(); return; }
           this.animation.gesture?.(gesture.key); this.text('line', gesture.line[this.selected]); this.result(() => ''); this.revealReply(); this.update();
         }
         return;
       }
-      if (target.dataset.moment) { void this.startMoment(Number(target.dataset.moment)); return; }
+      if (target.dataset.moment) { this.chooseMoment(Number(target.dataset.moment)); return; }
       if (target.dataset.region) { if (!this.dragged) void this.touch(target.dataset.region as TouchRegion); return; }
       switch (target.dataset.do) {
-        case 'new-moment': if (this.newMoment) void this.startMoment(this.newMoment); break;
+        case 'new-moment': void this.tryNewTouch(); break;
         case 'story-next': this.nextBeat(); break;
         case 'story-exit': this.endMoment(); break;
         case 'close': this.close(); break;
@@ -122,7 +124,7 @@ export class TavernUI {
         case 'dismiss': this.get('.tv-warning').hidden = true; break;
         case 'mara': this.select('mara'); break;
         case 'speak': this.speaking = !this.speaking; this.touchHint = false; this.update(); break;
-        case 'touch': this.speaking = false; this.touchHint = true; delete this.dialog.dataset.touchHint; void this.dialog.offsetWidth; this.dialog.dataset.touchHint = 'true'; this.update(); this.get('.tv-conversation').scrollTop = 0; break;
+        case 'touch': this.newMoment = undefined; this.speaking = false; this.touchHint = true; delete this.dialog.dataset.touchHint; void this.dialog.offsetWidth; this.dialog.dataset.touchHint = 'true'; this.update(); this.get('.tv-conversation').scrollTop = 0; break;
         case 'building': this.navigate('tavern'); break;
         case 'mara-combat': this.navigate(this.selected); break;
         case 'wisp': this.navigate('wisp'); break;
@@ -177,12 +179,12 @@ export class TavernUI {
     this.lastLives = session.battle.lives; this.lastPhase = session.battle.phase; this.lastDefeat = session.battle.progress.lastDefeat?.attemptId ?? 0;
     this.get('.tv-warning').hidden = true; this.dialog.showModal(); session.setTavernOpen(true); this.ports.onOpenChange?.(true); this.show('overview'); this.get<HTMLButtonElement>('[data-do="close"]').focus();
   }
-  close(): void { this.resetReactionHint(); this.ports.onCompanion?.(null); this.animation.stop(); this.dialog.close(); this.ports.session()?.setTavernOpen(false); this.generation++; this.opener?.focus(); }
+  close(): void { this.resetCelebration(); this.resetReactionHint(); this.ports.onCompanion?.(null); this.animation.stop(); this.dialog.close(); this.ports.session()?.setTavernOpen(false); this.generation++; this.opener?.focus(); }
   private back(): void { if (this.moment) { this.endMoment(); return; } if (this.screen === 'character') this.show('overview'); else this.close(); }
   private navigate(where: Destination): void { this.close(); this.ports.navigate(where); }
   private select(who: Companion): void {
     if (this.pending || (who === 'ilyra' && !this.ports.session()?.battle.ilyra)) return;
-    this.resetReactionHint(); this.generation++; this.animation.stop(); this.selected = who; this.newMoment = undefined;
+    this.resetCelebration(); this.resetReactionHint(); this.generation++; this.animation.stop(); this.selected = who; this.newMoment = undefined;
     clearTimeout(this.replyTimer); delete this.get('.tv-dialogue').dataset.reply;
     this.get('.tv-conversation').scrollTop = 0; this.get('.tv-character-body').scrollTop = 0;
     this.screen = 'overview'; this.show('character');
@@ -225,7 +227,7 @@ export class TavernUI {
       this.get('.tv-warning').hidden = false;
     }
     this.lastLives = b.lives; this.lastPhase = b.phase; this.lastDefeat = b.progress.lastDefeat?.attemptId ?? 0;
-    this.text('combat', t("Welle {0} · ♥ {1}/20 · {2}", b.wave, b.lives, session.paused ? t('Pausiert') : session.suspended || session.awaitingResume ? t('Kampf angehalten') : session.tavernOpen ? t('Tavernenpause') : b.learningPaused ? t('Lernpause') : t('Kampf läuft')));
+    this.text('combat', t("Welle {0} · ♥ {1}/20 · {2}", b.wave, b.lives, session.paused ? t('Pausiert') : session.suspended || session.awaitingResume ? t('Kampf angehalten') : session.tavernOpen ? t('Kampf pausiert während des Besuchs') : b.learningPaused ? t('Lernpause') : t('Kampf läuft')));
     const error = this.get('.tv-error'); error.hidden = !session.error && !session.suspended && !session.awaitingResume;
     error.textContent = t(session.error ? t('Speichern fehlgeschlagen. Bitte kehre zum Kampf zurück, um den Spielstand zu prüfen.') : t('Sitzung angehalten. Bitte kehre zum Kampf zurück.'));
     const points = this.points, count = hearts(points), capped = points >= SOCIAL.chapterMaximum;
@@ -258,8 +260,9 @@ export class TavernUI {
     }
     this.text('stock', t('Normale Geschenke: {0}', social.gifts));
     const gift = b.companionOffer(this.selected, 'gift');
-    const giftHint = personalReady && points < 58 && !gift.accepted ? t('Gespräche und Berührungen erhöhen eure Zuneigung.') : capped ? t('Deine Geschenke bleiben für spätere Inhalte erhalten.') : gift.gift === 'personal' ? t('Überreiche das persönliche Geschenk für Herz 3.') : points < 23 ? t('Noch {0} Zuneigung bis zu deinem Geschenk.', 23 - points) : points >= 58 ? t('Persönliches Geschenk benötigt. {0}Noch {1} Siege.', social.gifts ? social.gifts === 1 ? t('Dein normales Geschenk bleibt erhalten. ') : t('Deine normalen Geschenke bleiben erhalten. ') : '', SOCIAL.personalClears - social.personal[this.selected].clears) : gift.reason === 'no-gift' ? t('Nächstes Geschenk nach noch {0} gewonnenen normalen Wellen.', SOCIAL.clearsPerGift - social.clearProgress) : points < 35 ? t('Ein Geschenk schaltet Herz 2 frei.') : t('Ein kleines Geschenk für {0}.', this.content.name);
-    this.text('gift-hint', giftHint);
+    const hint = tavernProgressHint(social, this.selected, this.content.name);
+    this.text('gift-hint', t(hint.message, ...(hint.values ?? [])));
+    this.get('[data-action=gift]').dataset.ready = String(gift.accepted);
     const reserve = social.reserves[this.selected];
     this.text('reserves', t('Gesprächsreserve: {0}/3 · Berührungsreserve ab Herz 2: {1}/3.', reserve?.talk ?? 0, reserve?.touch ?? 0));
     this.text('renewal', capped ? t('Gespräche, Berührungen und Momente bleiben verfügbar.') : t('Neue Gesprächs- und Berührungspunkte nach je 3 gewonnenen normalen Wellen. Noch {0} Siege bis zur nächsten Auffüllung.', SOCIAL.clearsPerRefill - (reserve?.clears ?? 0)));
@@ -282,7 +285,7 @@ export class TavernUI {
     if (this.newMoment) {
       const added = this.newMoment === 1 ? t('Schulter') : this.newMoment === 2 ? t('Haare') : this.newMoment === 3 ? t('Hand') : '';
       this.text('unlock-title', added ? t('Neu: {0} berühren', added) : t('Ein neues Herz für euch'));
-      this.text('unlock-story', t('Persönlichen Moment erleben: {0}', this.content.moments[this.newMoment - 1]!.title));
+      this.text('unlock-story', added ? t('Ausprobieren') : t('Persönlichen Moment erleben: {0}', this.content.moments[this.newMoment - 1]!.title));
     }
     this.get('.tv-touch-help').textContent = t('Tippe auf die kleinen Herzen: Schulter ab Herz 1, Haare ab Herz 2, Hand ab Herz 3.');
     this.dialog.dataset.reacting = String(this.animation.reacting);
@@ -305,17 +308,19 @@ export class TavernUI {
     for (const moment of this.content.moments) {
       const button = this.get<HTMLButtonElement>(`[data-moment="${moment.heart}"]`);
       const available = !!this.content.moment(points, moment.heart);
-      button.disabled = blocked || !available;
+      button.disabled = blocked;
+      button.dataset.locked = String(!available);
       button.classList.toggle('unlocked', available);
       const unseen = available && !this.storyHistory.isOpened(this.selected, moment.heart);
       button.dataset.unseen = String(unseen);
       button.classList.toggle('future', moment.heart > 3 && !available);
       button.setAttribute('aria-label', t("{0} {1}: {2}{3}", moment.heart, moment.heart === 1 ? t('Herz') : t('Herzen'), moment.title, available ? unseen ? t(' · Neue Geschichte erleben') : t(' · Moment erleben') : moment.heart > 3 ? t(' · in einem kommenden Update') : t(" · ab {0} Zuneigung", SOCIAL.heartThresholds[moment.heart - 1])));
+      if (!available) button.setAttribute('aria-label', button.getAttribute('aria-label')! + t(' · Voraussetzungen ansehen'));
       button.title = t(button.getAttribute('aria-label')!);
     }
     this.text('talk', t('Gespräch wählen'));
     this.text('touch', t('Herzen an der Figur'));
-    this.text('gift', capped ? t('Etappe abgeschlossen') : gift.gift === 'personal' ? t('Persönliches Geschenk') : gift.accepted ? t('Aus deinem Vorrat') : gift.reason === 'no-gift' ? t('Kein Geschenk') : gift.reason === 'affection' ? t('Noch {0} Zuneigung', (personalReady ? 58 : 23) - points) : t('Persönlich nötig'));
+    this.text('gift', capped ? t('Etappe abgeschlossen') : gift.gift === 'personal' ? t('Persönliches Geschenk') : gift.accepted ? t('Aus deinem Vorrat') : gift.reason === 'no-gift' ? t('Kein Geschenk') : gift.reason === 'affection' ? t('Erst näher kennenlernen') : t('Persönliches Geschenk fehlt'));
     this.get('[data-action="gift"] span').textContent = t('Schenken');
     this.get<HTMLButtonElement>('[data-do=speak]').disabled = blocked;
     this.get<HTMLButtonElement>('[data-action=talk]').disabled = blocked;
@@ -345,6 +350,29 @@ export class TavernUI {
     loading.hidden = this.animation.ready && !failedIdle && !failedReaction && !this.reactionHintVisible;
     const loadingText = failedIdle ? t('Animation nicht verfügbar. Standbild wird angezeigt.') : !this.animation.ready ? t("{0} wird geladen …", this.content.name) : this.animation.loadingReactions ? t('Einen kleinen Moment …') : failedReaction ? t('Reaktion nicht geladen. Du kannst es erneut versuchen.') : '';
     if (loading.textContent !== loadingText) loading.textContent = t(loadingText);
+  }
+  private chooseMoment(heart: number): void {
+    if (this.content.moment(this.points, heart)) { void this.startMoment(heart); return; }
+    this.newMoment = undefined;
+    if (heart > 3) this.result(() => t('Diese Begegnung folgt in einem kommenden Update.'));
+    else if (heart === 1) this.result(() => t('Sprecht miteinander, um euch kennenzulernen.'));
+    else if (heart === 3 && hearts(this.points) < 2) this.result(() => t('Lernt euch zuerst bis Herz 2 kennen.'));
+    else this.result(() => {
+      const state = this.ports.session()?.battle.social;
+      if (!state) return '';
+      const hint = tavernProgressHint(state, this.selected, this.content.name);
+      return t(hint.message, ...(hint.values ?? []));
+    });
+    this.update(); this.revealReply(false);
+  }
+  private async tryNewTouch(): Promise<void> {
+    const heart = this.newMoment;
+    if (!heart) return;
+    if (heart > 3) { await this.startMoment(heart); return; }
+    const region: TouchRegion = heart === 1 ? 'shoulder' : heart === 2 ? 'hair' : 'hand';
+    this.newMoment = undefined; this.speaking = false; this.touchHint = true;
+    this.update();
+    await this.touch(region);
   }
   private async startMoment(heart: number): Promise<void> {
     const session = this.ports.session();
@@ -383,6 +411,7 @@ export class TavernUI {
     this.result(() => t('Deine Momente bleiben über die Herzen verfügbar.')); this.update(); this.get('.tv-conversation').scrollTop = 0;
   }
   private async touch(region: TouchRegion): Promise<void> {
+    this.newMoment = undefined; this.update();
     const reaction = this.content.reactions[region];
     if (hearts(this.points) < reaction.minHearts) {
       this.result(() => t('{0} berühren · ab Herz {1}', t(reaction.label), reaction.minHearts));
@@ -424,12 +453,19 @@ export class TavernUI {
       this.revealReply(action !== 'touch');
     } finally { this.pendingSocial = undefined; this.pending = false; this.update(); }
   }
+  private resetCelebration(): void {
+    clearTimeout(this.celebrationTimer); this.celebrationTimer = undefined;
+    for (const button of this.dialog.querySelectorAll<HTMLElement>('[data-celebrating]')) delete button.dataset.celebrating;
+  }
   private celebrateHeart(heart: number): void {
-    this.newMoment = heart;
+    this.resetCelebration(); this.newMoment = heart;
+    const button = this.get(`[data-moment="${heart}"]`);
+    button.dataset.celebrating = 'true';
+    this.celebrationTimer = setTimeout(() => { delete button.dataset.celebrating; this.celebrationTimer = undefined; }, 1100);
     this.ports.onHeart?.();
   }
   destroy(): void {
-    this.resetReactionHint();
+    this.resetCelebration(); this.resetReactionHint();
     this.ports.session()?.setTavernOpen(false);
     if (this.isOpen) this.ports.onOpenChange?.(false); clearTimeout(this.replyTimer); this.unbindLanguage(); this.unbindStatic(); this.animation.stop(); this.observer.disconnect(); this.lifetime.abort(); this.dialog.remove(); }
 }
