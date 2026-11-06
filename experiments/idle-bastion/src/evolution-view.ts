@@ -5,6 +5,7 @@ import { EVOLUTION_SKINS, evolutionSkin, evolutionKey, frostAnimationTime, arrow
 import { towerSheet, weaponFrame } from './tower-atlas';
 import type { BattleEvent, IdleBattle, Tower } from './battle';
 import { projectileDepth } from './world-depth';
+import { chainSource, enemyPresentation, presentedTarget, type PresentEnemy } from './enemy-presentation';
 
 const urls=import.meta.glob(['../../../prototypes/*-evolution/assets/compact/*.png','../../../prototypes/waldwaechter-evolution/assets/shooting/*.png','../../../prototypes/frostkristall-evolution/assets/frost-cast-v2.png'],{eager:true,query:'?url',import:'default'}) as Record<string,string>;
 const FX='evolution-frost-cast',S=.63,FRAMES=30;
@@ -64,9 +65,13 @@ export class EvolutionView {
  private origins=new Map<number,Origin>();
  private shots=new Map<number,ShotView>();
  constructor(private scene:Phaser.Scene){}
- accept(events:readonly BattleEvent[],elapsed:number):void {
+ accept(events:readonly BattleEvent[],elapsed:number,present?:PresentEnemy):void {
   for(const e of events){if(e.type!=='fire'||!e.shot)continue;const r=evolutionSkin(e.shot.kind,e.shot.level);if(!r)continue;
-   if(r.kind===5){const origin=stormShotOrigin(e,elapsed);if(origin)this.origins.set(e.shot.uid,origin);continue;}
+   if(r.kind===5){const origin=stormShotOrigin(e,elapsed);if(origin){
+    const previous=chainSource(e,events);
+    if(previous&&present){const pose=present(previous);origin.muzzle.x+=pose.x-previous.x;origin.muzzle.y+=pose.y-previous.y;}
+    this.origins.set(e.shot.uid,origin);
+   }continue;}
    if(!e.tower)continue;
    const a=e.tower.angle,extra=r.kind===1?16:r.kind===3?12:r.kind===4?16:0,lift=r.kind===2?attackPose(r.level,.28).y*S:0;
    this.origins.set(e.shot.uid,{model:{x:e.tower.x,y:e.tower.y-12},muzzle:{x:e.tower.x+Math.sin(a)*extra,y:e.tower.y+r.weaponY-Math.cos(a)*extra+lift},at:elapsed});
@@ -106,9 +111,10 @@ export class EvolutionView {
    const segment=this.origins.get(shot.uid);if(segment&&segment!==v.origin)v.origin=segment;
    const moved=Math.hypot(shot.x-v.origin.model.x,shot.y-v.origin.model.y),left=Math.hypot(target.x-shot.x,target.y-shot.y),progress=Math.min(1,moved/Math.max(.001,moved+left));
    const copies=r.kind===1?arrowCopies(r.level,progress):[{offset:0,progress,visible:true}];
-   const start=v.origin.muzzle,angle=Math.atan2(target.y-start.y,target.x-start.x)+Math.PI/2;
+   const visual=presentedTarget(enemy,target,enemyPresentation(enemy,sim.layout,sim.elapsed));
+   const start=v.origin.muzzle,angle=Math.atan2(visual.y-start.y,visual.x-start.x)+Math.PI/2;
    const depth=projectileDepth(shot,sim.towers.find(t=>t.uid===shot.towerUid),target);
-   v.sprites.forEach((sprite,i)=>{const p=copies[i];sprite.setVisible(p.visible).setPosition(start.x+(target.x-start.x)*p.progress+Math.cos(angle)*p.offset*.45,start.y+(target.y-start.y)*p.progress+Math.sin(angle)*p.offset*.45).setRotation(angle+(r.kind===3?progress*Math.PI*2:0)).setDepth(depth);
+   v.sprites.forEach((sprite,i)=>{const p=copies[i];sprite.setVisible(p.visible).setPosition(start.x+(visual.x-start.x)*p.progress+Math.cos(angle)*p.offset*.45,start.y+(visual.y-start.y)*p.progress+Math.sin(angle)*p.offset*.45).setRotation(angle+(r.kind===3?progress*Math.PI*2:0)).setDepth(depth);
     if(sheet)sprite.setFrame(Math.floor(Math.max(0,elapsed-v.origin.at)*11)%sheet.frameMap.length);
    });
   }

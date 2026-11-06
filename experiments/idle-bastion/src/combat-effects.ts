@@ -5,6 +5,7 @@ import { worldEffectDepth } from './world-depth';
 import { stormLinkStyle, stormLinkPoints } from './storm-visuals';
 import { evolutionSkin } from './tower-evolution';
 import { evolutionImpact } from './evolution-impacts';
+import { chainSource, type PresentEnemy } from './enemy-presentation';
 
 type Effect = { sprite: Phaser.GameObjects.Image; at: number; frames: readonly number[]; duration: number };
 /** Cosmetic, bounded effects follow confirmed simulation time, including pause. */
@@ -13,7 +14,7 @@ export class CombatEffects {
   private shots = new Map<number, number>();
   private fires = new Map<number, number>();
   private links: {line: Phaser.GameObjects.Graphics; at: number; duration:number}[] = [];
-  constructor(private scene: Phaser.Scene) {}
+  constructor(private scene: Phaser.Scene, private present?: PresentEnemy) {}
   firedAt(uid: number): number { return this.fires.get(uid) ?? -100; }
   shotAge(uid: number, elapsed: number): number {
     if (!this.shots.has(uid)) this.shots.set(uid, elapsed);
@@ -25,10 +26,12 @@ export class CombatEffects {
       if (e.type === 'fire' && e.tower) this.fires.set(e.tower.uid, elapsed);
       if (e.type === 'fire' && e.shot?.kind === 5 && e.enemy) {
         if(this.links.length>=48)this.links.shift()!.line.destroy();
-        const line=this.scene.add.graphics().setDepth(worldEffectDepth(e.enemy.y));
+        const target=this.present?.(e.enemy) ?? { ...e.enemy, groundY:e.enemy.y };
+        const previous=chainSource(e,events), from=previous && this.present?.(previous);
+        const line=this.scene.add.graphics().setDepth(worldEffectDepth(target.groundY));
         const emitter=e.tower?evolutionSkin(5,e.shot.level):undefined;
-        const x=e.x!,y=e.y!+(emitter?emitter.weaponY-4:0),style=stormLinkStyle(e.shot.level);
-        const points=stormLinkPoints(x,y,e.enemy.x,e.enemy.y,e.shot.level,e.shot.uid);
+        const x=e.x!+(from?from.x-previous!.x:0),y=e.y!+(emitter?emitter.weaponY-4:0)+(from?from.y-previous!.y:0),style=stormLinkStyle(e.shot.level);
+        const points=stormLinkPoints(x,y,target.x,target.y,e.shot.level,e.shot.uid);
         for(const [width,color,alpha] of [[style.width+2,style.colors[0],.35],[style.width,style.colors[1],.9],[1,style.colors[2],1]]){
           line.lineStyle(width,color,alpha).beginPath().moveTo(points[0].x,points[0].y);
           for(const p of points.slice(1))line.lineTo(p.x,p.y);line.strokePath();
@@ -44,14 +47,17 @@ export class CombatEffects {
       const hitKey=e.shot?`${e.shot.uid}:${e.shot.chainHits?.length??0}`:'';
       if (e.type === 'hit' && e.shot && !hits.has(hitKey)) {
         hits.add(hitKey);
+        const pose=e.enemy && this.present?.(e.enemy);
+        const x=e.x!+(pose?pose.x-e.enemy!.x:0),y=e.y!+(pose?pose.y-e.enemy!.y:0);
+        const groundY=e.y!+(pose?pose.groundY-e.enemy!.y:0);
         const evolved = evolutionImpact(e.shot.kind, e.shot.level);
         if (evolved) {
-          this.add(evolved.key, e.x!, e.y!, evolved.frames, elapsed, evolved.duration, 1);
+          this.add(evolved.key, x, y, evolved.frames, elapsed, evolved.duration, 1, .5, groundY);
           continue;
         }
         const sheet = towerSheet(e.shot.kind, e.shot.kind===2?1:visualStage(e.shot.level), 'Projectile - Impact');
-        this.add(sheet.key, e.x!, e.y!, sheet.frameMap, elapsed,
-          e.shot.kind === 5 ? 0.25 : e.shot.kind === 4 ? 0.35 : 0.5, e.shot.kind === 5 ? 30/sheet.width : e.shot.kind === 3 ? 1.6 : e.shot.kind === 2 ? 0.8 : 0.6);
+        this.add(sheet.key, x, y, sheet.frameMap, elapsed,
+          e.shot.kind === 5 ? 0.25 : e.shot.kind === 4 ? 0.35 : 0.5, e.shot.kind === 5 ? 30/sheet.width : e.shot.kind === 3 ? 1.6 : e.shot.kind === 2 ? 0.8 : 0.6, .5, groundY);
       }
     }
   }

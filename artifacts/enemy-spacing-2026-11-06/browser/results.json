@@ -1,0 +1,83 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "lang": "de",
+    "wave": 3,
+    "id": "CobaltSlime",
+    "moving": true,
+    "exactPausedReload": true
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "lang": "de",
+    "wave": 7,
+    "id": "FlameWisp",
+    "moving": true,
+    "exactPausedReload": true
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "lang": "de",
+    "wave": 12,
+    "id": "FloatingEye",
+    "moving": true,
+    "exactPausedReload": true
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "lang": "en",
+    "wave": 3,
+    "id": "CobaltSlime",
+    "moving": true,
+    "exactPausedReload": true
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "lang": "en",
+    "wave": 7,
+    "id": "FlameWisp",
+    "moving": true,
+    "exactPausedReload": true
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "lang": "en",
+    "wave": 12,
+    "id": "FloatingEye",
+    "moving": true,
+    "exactPausedReload": true
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "lang": "de",
+    "wave": 3,
+    "id": "CobaltSlime",
+    "moving": true,
+    "exactPausedReload": true
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "lang": "de",
+    "wave": 7,
+    "id": "FlameWisp",
+    "moving": true,
+    "exactPausedReload": true
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "lang": "de",
+    "wave": 12,
+    "id": "FloatingEye",
+    "moving": true,
+    "exactPausedReload": true
+  }
+]

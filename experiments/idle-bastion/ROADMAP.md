@@ -1,5 +1,13 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Gegnerdarstellung · 06.11.2026 — geprüft; Commit und Push ausdrücklich freigegeben.**
+
+- [x] Feuerkäfer proportional 20 % kleiner (0,83 → 0,664); Originalgrafik erhalten, Schatten passend verkleinert. Mittlere Flughöhe 7 → 9,8 Spieleinheiten, bisheriges ruhiges Schweben erhalten.
+- [x] Stabile, artabhängig begrenzte Versätze von höchstens drei Spieleinheiten; breite Figuren bleiben mittig, vor Kurven sanft zur Mitte. Lebensleisten, Statusanzeigen, Geschosse und Ketten-/Treffereffekte folgen der Darstellung. Bosse/Würmer bleiben mittig; keine Änderungen an Kampf, Wellen, Gold oder Saves.
+- [x] 498/498 Tests, TypeScript/Build, 66 gemessene Richtungs-Silhouetten, neun Entwicklungs- und neun Produktionsbrowserfälle sowie sechs zusätzliche Kurven-/Frostfälle bestanden. Desktop und gängige Handyformate, Bewegung/Pause/Reload geprüft. [Nachweis und Grenzen](../../artifacts/enemy-spacing-2026-11-06/REPORT.md).
+- [x] Nutzer hat anschließend Commit und Push beauftragt; keine zusätzlichen umfassenden Testreihen gewünscht.
+- [ ] Veröffentlichung nachweisen; menschliche Beurteilung auf dem eigenen Handy bleibt offen.
+
 **Drei Creeps · 06.11.2026 — Spielcode `963170a` auf Main/Pages veröffentlicht, Regeln 21 / Schema 37.**
 
 - [x] Neuer Kobaltschleim als einzelne Pixel-Standpose; Flammengeist und schwebendes Auge unverändert aus dem vorhandenen Frakassets-Reservepaket. Gemeinsamer Vergleich 4× und klein im Spielmaßstab neben Original-Blattkäfer/Originalweg. [Vorschau, Quellen und Grenzen](../../prototypes/creep-trio-v1/README.md).

@@ -1,0 +1,530 @@
+[
+  {
+    "id": "CobaltSlime",
+    "dir": "side",
+    "visibleWidth": 31.54,
+    "visibleHeight": 24.9,
+    "crossRadius": 15.77,
+    "offset": 2.2299999999999898
+  },
+  {
+    "id": "CobaltSlime",
+    "dir": "down",
+    "visibleWidth": 28.22,
+    "visibleHeight": 25.73,
+    "crossRadius": 14.11,
+    "offset": 2.230000000000018
+  },
+  {
+    "id": "CobaltSlime",
+    "dir": "up",
+    "visibleWidth": 30.709999999999997,
+    "visibleHeight": 26.56,
+    "crossRadius": 15.77,
+    "offset": 2.230000000000018
+  },
+  {
+    "id": "FlameWisp",
+    "dir": "down",
+    "visibleWidth": 24.9,
+    "visibleHeight": 24.9,
+    "crossRadius": 12.45,
+    "offset": 3
+  },
+  {
+    "id": "FlameWisp",
+    "dir": "side",
+    "visibleWidth": 14.94,
+    "visibleHeight": 31.54,
+    "crossRadius": 16.599999999999998,
+    "offset": 1.4000000000000057
+  },
+  {
+    "id": "FlameWisp",
+    "dir": "up",
+    "visibleWidth": 24.07,
+    "visibleHeight": 26.56,
+    "crossRadius": 12.45,
+    "offset": 3
+  },
+  {
+    "id": "FlameWisp",
+    "dir": "left",
+    "visibleWidth": 14.94,
+    "visibleHeight": 25.73,
+    "crossRadius": 13.28,
+    "offset": 1.4000000000000057
+  },
+  {
+    "id": "FloatingEye",
+    "dir": "down",
+    "visibleWidth": 16.599999999999998,
+    "visibleHeight": 25.73,
+    "crossRadius": 8.299999999999999,
+    "offset": 3
+  },
+  {
+    "id": "FloatingEye",
+    "dir": "side",
+    "visibleWidth": 19.09,
+    "visibleHeight": 25.73,
+    "crossRadius": 14.11,
+    "offset": 3
+  },
+  {
+    "id": "FloatingEye",
+    "dir": "up",
+    "visibleWidth": 16.599999999999998,
+    "visibleHeight": 25.73,
+    "crossRadius": 8.299999999999999,
+    "offset": 3
+  },
+  {
+    "id": "FloatingEye",
+    "dir": "left",
+    "visibleWidth": 18.259999999999998,
+    "visibleHeight": 24.9,
+    "crossRadius": 14.11,
+    "offset": 3
+  },
+  {
+    "id": "Leafbug",
+    "dir": "down",
+    "visibleWidth": 18.259999999999998,
+    "visibleHeight": 36.519999999999996,
+    "crossRadius": 9.129999999999999,
+    "offset": 3
+  },
+  {
+    "id": "Leafbug",
+    "dir": "up",
+    "visibleWidth": 18.259999999999998,
+    "visibleHeight": 36.519999999999996,
+    "crossRadius": 9.129999999999999,
+    "offset": 3
+  },
+  {
+    "id": "Leafbug",
+    "dir": "side",
+    "visibleWidth": 39.01,
+    "visibleHeight": 15.77,
+    "crossRadius": 9.129999999999999,
+    "offset": 3
+  },
+  {
+    "id": "Firebug",
+    "dir": "down",
+    "visibleWidth": 42.496,
+    "visibleHeight": 35.856,
+    "crossRadius": 21.248,
+    "offset": 0
+  },
+  {
+    "id": "Firebug",
+    "dir": "up",
+    "visibleWidth": 42.496,
+    "visibleHeight": 36.52,
+    "crossRadius": 21.248,
+    "offset": 0
+  },
+  {
+    "id": "Firebug",
+    "dir": "side",
+    "visibleWidth": 37.848,
+    "visibleHeight": 22.576,
+    "crossRadius": 11.952,
+    "offset": 3
+  },
+  {
+    "id": "FlyingLocust",
+    "dir": "down",
+    "visibleWidth": 48.14,
+    "visibleHeight": 36.519999999999996,
+    "crossRadius": 24.07,
+    "offset": 0
+  },
+  {
+    "id": "FlyingLocust",
+    "dir": "up",
+    "visibleWidth": 48.14,
+    "visibleHeight": 34.86,
+    "crossRadius": 24.07,
+    "offset": 0
+  },
+  {
+    "id": "FlyingLocust",
+    "dir": "side",
+    "visibleWidth": 33.199999999999996,
+    "visibleHeight": 37.35,
+    "crossRadius": 19.09,
+    "offset": 0
+  },
+  {
+    "id": "Firewasp",
+    "dir": "down",
+    "visibleWidth": 41.6,
+    "visibleHeight": 35.1,
+    "crossRadius": 20.8,
+    "offset": 0
+  },
+  {
+    "id": "Firewasp",
+    "dir": "up",
+    "visibleWidth": 41.6,
+    "visibleHeight": 31.200000000000003,
+    "crossRadius": 20.8,
+    "offset": 0
+  },
+  {
+    "id": "Firewasp",
+    "dir": "side",
+    "visibleWidth": 36.4,
+    "visibleHeight": 33.800000000000004,
+    "crossRadius": 20.8,
+    "offset": 0
+  },
+  {
+    "id": "Scorpion",
+    "dir": "down",
+    "visibleWidth": 39.839999999999996,
+    "visibleHeight": 48.97,
+    "crossRadius": 19.919999999999998,
+    "offset": 0
+  },
+  {
+    "id": "Scorpion",
+    "dir": "up",
+    "visibleWidth": 39.839999999999996,
+    "visibleHeight": 46.48,
+    "crossRadius": 19.919999999999998,
+    "offset": 0
+  },
+  {
+    "id": "Scorpion",
+    "dir": "side",
+    "visibleWidth": 44.82,
+    "visibleHeight": 34.03,
+    "crossRadius": 17.43,
+    "offset": 0.5699999999999932
+  },
+  {
+    "id": "MagmaCrab",
+    "dir": "down",
+    "visibleWidth": 34.86,
+    "visibleHeight": 39.01,
+    "crossRadius": 17.43,
+    "offset": 0.57000000000005
+  },
+  {
+    "id": "MagmaCrab",
+    "dir": "up",
+    "visibleWidth": 34.86,
+    "visibleHeight": 40.669999999999995,
+    "crossRadius": 17.43,
+    "offset": 0.57000000000005
+  },
+  {
+    "id": "MagmaCrab",
+    "dir": "side",
+    "visibleWidth": 42.33,
+    "visibleHeight": 30.709999999999997,
+    "crossRadius": 15.77,
+    "offset": 2.2299999999999898
+  },
+  {
+    "id": "Clampbeetle",
+    "dir": "down",
+    "visibleWidth": 53.12,
+    "visibleHeight": 44.82,
+    "crossRadius": 26.56,
+    "offset": 0
+  },
+  {
+    "id": "Clampbeetle",
+    "dir": "up",
+    "visibleWidth": 53.12,
+    "visibleHeight": 42.33,
+    "crossRadius": 26.56,
+    "offset": 0
+  },
+  {
+    "id": "Clampbeetle",
+    "dir": "side",
+    "visibleWidth": 43.989999999999995,
+    "visibleHeight": 47.309999999999995,
+    "crossRadius": 25.73,
+    "offset": 0
+  },
+  {
+    "id": "LanternJelly",
+    "dir": "down",
+    "visibleWidth": 36.519999999999996,
+    "visibleHeight": 27.389999999999997,
+    "crossRadius": 18.259999999999998,
+    "offset": 0
+  },
+  {
+    "id": "LanternJelly",
+    "dir": "up",
+    "visibleWidth": 36.519999999999996,
+    "visibleHeight": 26.56,
+    "crossRadius": 18.259999999999998,
+    "offset": 0
+  },
+  {
+    "id": "LanternJelly",
+    "dir": "side",
+    "visibleWidth": 33.199999999999996,
+    "visibleHeight": 26.56,
+    "crossRadius": 13.28,
+    "offset": 3
+  },
+  {
+    "id": "Voidbutterfly",
+    "dir": "down",
+    "visibleWidth": 48.14,
+    "visibleHeight": 44.82,
+    "crossRadius": 24.07,
+    "offset": 0
+  },
+  {
+    "id": "Voidbutterfly",
+    "dir": "up",
+    "visibleWidth": 48.14,
+    "visibleHeight": 44.82,
+    "crossRadius": 24.07,
+    "offset": 0
+  },
+  {
+    "id": "Voidbutterfly",
+    "dir": "side",
+    "visibleWidth": 31.54,
+    "visibleHeight": 43.989999999999995,
+    "crossRadius": 23.24,
+    "offset": 0
+  },
+  {
+    "id": "ForestGoblin",
+    "dir": "down",
+    "visibleWidth": 28.22,
+    "visibleHeight": 24.07,
+    "crossRadius": 14.11,
+    "offset": 3
+  },
+  {
+    "id": "ForestGoblin",
+    "dir": "up",
+    "visibleWidth": 28.22,
+    "visibleHeight": 24.07,
+    "crossRadius": 14.11,
+    "offset": 3
+  },
+  {
+    "id": "ForestGoblin",
+    "dir": "side",
+    "visibleWidth": 25.73,
+    "visibleHeight": 24.07,
+    "crossRadius": 16.599999999999998,
+    "offset": 1.4000000000000057
+  },
+  {
+    "id": "ForestGoblin",
+    "dir": "left",
+    "visibleWidth": 25.73,
+    "visibleHeight": 24.07,
+    "crossRadius": 16.599999999999998,
+    "offset": 1.4000000000000057
+  },
+  {
+    "id": "BoneGuard",
+    "dir": "down",
+    "visibleWidth": 20.75,
+    "visibleHeight": 24.9,
+    "crossRadius": 14.11,
+    "offset": 3
+  },
+  {
+    "id": "BoneGuard",
+    "dir": "up",
+    "visibleWidth": 19.919999999999998,
+    "visibleHeight": 24.9,
+    "crossRadius": 13.28,
+    "offset": 3
+  },
+  {
+    "id": "BoneGuard",
+    "dir": "side",
+    "visibleWidth": 17.43,
+    "visibleHeight": 24.9,
+    "crossRadius": 17.43,
+    "offset": 0.5699999999999932
+  },
+  {
+    "id": "BoneGuard",
+    "dir": "left",
+    "visibleWidth": 23.24,
+    "visibleHeight": 24.9,
+    "crossRadius": 17.43,
+    "offset": 0.5699999999999932
+  },
+  {
+    "id": "ForestCultist",
+    "dir": "down",
+    "visibleWidth": 19.919999999999998,
+    "visibleHeight": 32.37,
+    "crossRadius": 9.959999999999999,
+    "offset": 3
+  },
+  {
+    "id": "ForestCultist",
+    "dir": "up",
+    "visibleWidth": 19.919999999999998,
+    "visibleHeight": 32.37,
+    "crossRadius": 9.959999999999999,
+    "offset": 3
+  },
+  {
+    "id": "ForestCultist",
+    "dir": "side",
+    "visibleWidth": 18.259999999999998,
+    "visibleHeight": 31.54,
+    "crossRadius": 26.56,
+    "offset": 0
+  },
+  {
+    "id": "ForestCultist",
+    "dir": "left",
+    "visibleWidth": 18.259999999999998,
+    "visibleHeight": 31.54,
+    "crossRadius": 26.56,
+    "offset": 0
+  },
+  {
+    "id": "MossShroom",
+    "dir": "down",
+    "visibleWidth": 16.599999999999998,
+    "visibleHeight": 21.58,
+    "crossRadius": 8.299999999999999,
+    "offset": 3
+  },
+  {
+    "id": "MossShroom",
+    "dir": "side",
+    "visibleWidth": 16.599999999999998,
+    "visibleHeight": 23.24,
+    "crossRadius": 12.45,
+    "offset": 3
+  },
+  {
+    "id": "MossShroom",
+    "dir": "up",
+    "visibleWidth": 16.599999999999998,
+    "visibleHeight": 22.41,
+    "crossRadius": 8.299999999999999,
+    "offset": 3
+  },
+  {
+    "id": "MossShroom",
+    "dir": "left",
+    "visibleWidth": 16.599999999999998,
+    "visibleHeight": 23.24,
+    "crossRadius": 12.45,
+    "offset": 3
+  },
+  {
+    "id": "WoodSpider",
+    "dir": "down",
+    "visibleWidth": 31.54,
+    "visibleHeight": 25.73,
+    "crossRadius": 15.77,
+    "offset": 2.230000000000018
+  },
+  {
+    "id": "WoodSpider",
+    "dir": "side",
+    "visibleWidth": 27.389999999999997,
+    "visibleHeight": 27.389999999999997,
+    "crossRadius": 19.919999999999998,
+    "offset": 0
+  },
+  {
+    "id": "WoodSpider",
+    "dir": "up",
+    "visibleWidth": 31.54,
+    "visibleHeight": 23.24,
+    "crossRadius": 15.77,
+    "offset": 2.230000000000018
+  },
+  {
+    "id": "WoodSpider",
+    "dir": "left",
+    "visibleWidth": 27.389999999999997,
+    "visibleHeight": 27.389999999999997,
+    "crossRadius": 19.919999999999998,
+    "offset": 0
+  },
+  {
+    "id": "HornedBat",
+    "dir": "down",
+    "visibleWidth": 36.519999999999996,
+    "visibleHeight": 21.58,
+    "crossRadius": 18.259999999999998,
+    "offset": 0
+  },
+  {
+    "id": "HornedBat",
+    "dir": "side",
+    "visibleWidth": 14.11,
+    "visibleHeight": 35.69,
+    "crossRadius": 20.75,
+    "offset": 0
+  },
+  {
+    "id": "HornedBat",
+    "dir": "up",
+    "visibleWidth": 36.519999999999996,
+    "visibleHeight": 21.58,
+    "crossRadius": 18.259999999999998,
+    "offset": 0
+  },
+  {
+    "id": "HornedBat",
+    "dir": "left",
+    "visibleWidth": 14.11,
+    "visibleHeight": 35.69,
+    "crossRadius": 20.75,
+    "offset": 0
+  },
+  {
+    "id": "EmberBomb",
+    "dir": "down",
+    "visibleWidth": 16.599999999999998,
+    "visibleHeight": 22.41,
+    "crossRadius": 8.299999999999999,
+    "offset": 3
+  },
+  {
+    "id": "EmberBomb",
+    "dir": "side",
+    "visibleWidth": 14.11,
+    "visibleHeight": 21.58,
+    "crossRadius": 12.45,
+    "offset": 3
+  },
+  {
+    "id": "EmberBomb",
+    "dir": "up",
+    "visibleWidth": 16.599999999999998,
+    "visibleHeight": 17.43,
+    "crossRadius": 8.299999999999999,
+    "offset": 3
+  },
+  {
+    "id": "EmberBomb",
+    "dir": "left",
+    "visibleWidth": 14.11,
+    "visibleHeight": 21.58,
+    "crossRadius": 12.45,
+    "offset": 3
+  }
+]

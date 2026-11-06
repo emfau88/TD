@@ -7,7 +7,8 @@ import { IlyraView } from './ilyra-view';
 import { preloadSpellArt } from './spell-art';
 import { HeroMarks } from './hero-marks';
 import { MaraSpellView } from './mara-spell-view';
-import { ENEMY_SHEETS, enemyShadowOffset, slimeHop } from './enemy-art';
+import { ENEMY_SHEETS, enemyShadowOffset } from './enemy-art';
+import { enemyPresentation, presentedTarget, presentedShot } from './enemy-presentation';
 import { JELLY_HEAL } from './enemy-roster';
 import { isWorm } from './worm';
 import { WormView } from './worm-view';
@@ -165,7 +166,7 @@ export class BattleScene extends Phaser.Scene {
     this.selection = this.add.graphics().setDepth(6000);
     this.effects = this.add.graphics().setDepth(5500);
     this.bossCharmView = new BossCharmView(this, this.pixelDensity);
-    this.combatEffects = new CombatEffects(this);
+    this.combatEffects = new CombatEffects(this, enemy => enemyPresentation(enemy, this.sim.layout, this.sim.elapsed));
     this.evolution = new EvolutionView(this);
     this.ilyraView = new IlyraView(this);
     this.heroMarks = new HeroMarks(this);
@@ -241,7 +242,7 @@ export class BattleScene extends Phaser.Scene {
       this.hooks.changed();
     }
   }
-  acceptEvents(events: readonly BattleEvent[]): void { if (this.readyToDraw) { const time=this.sim.elapsed+this.sim.introduction.preparationSeconds; this.combatEffects.accept(events,time); this.evolution.accept(events,time); } }
+  acceptEvents(events: readonly BattleEvent[]): void { if (this.readyToDraw) { const time=this.sim.elapsed+this.sim.introduction.preparationSeconds; this.combatEffects.accept(events,time); this.evolution.accept(events,time,enemy => enemyPresentation(enemy,this.sim.layout,this.sim.elapsed)); } }
   invalidatePointer(): void { this.pendingTap = undefined; this.dragOrigin = undefined; }
   setIlyraMode(mode?: 'move'|'cast'): void { if (this.ilyraMode !== mode) this.invalidatePointer(); this.ilyraMode=mode; }
   setHeroSelection(hero?: ControlledHero, suggestion?: { x: number; y: number }): void {
@@ -760,36 +761,37 @@ export class BattleScene extends Phaser.Scene {
         this.effects.fillStyle(enemy.hp/enemy.maxHp<.3?0xdf9573:0xdde69c).fillRect(enemy.x-17,enemy.y-24,34*enemy.hp/enemy.maxHp,3);
         continue;
       }
-      const lift = enemy.def.id === 'CobaltSlime' ? slimeHop(elapsed) : enemy.def.flying ? 7 + Math.sin(elapsed * 5 + enemy.uid) * 1.5 : 0;
-      view.sprite.setPosition(enemy.x, enemy.y - lift).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed, enemy.flip, enemy.uid)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(enemy.y + 1000);
+      const pose = enemyPresentation(enemy, sim.layout, elapsed), { x, y, groundY } = pose;
+      view.sprite.setPosition(x, y).setFrame(enemyFrame(enemy.def.id, enemy.direction, elapsed, enemy.flip, enemy.uid)).setFlipX(enemyFlip(enemy.def.id, enemy.direction, enemy.flip)).setDepth(groundY + 1000 + (enemy.def.flying ? 2 : 0));
       if (enemy.def.id === 'Rosenspiegel') {
         const casting = sim.bossCharm.phase === 'windup' || sim.bossCharm.phase === 'channel';
         if (casting) view.sprite.setFrame(succubusFrame('dance', 'down', charmAge(sim.bossCharm) * 1000)).setFlipX(false);
-        this.effects.lineStyle(2, 0xdb80cd, 0.8).strokeEllipse(enemy.x, enemy.y, 34, 13);
+        this.effects.lineStyle(2, 0xdb80cd, 0.8).strokeEllipse(x, groundY, 34, 13);
       }
       if (enemy.healRemaining > 0) {
         view.sprite.setFrame(enemyHealFrame(enemy.def.id, enemy.direction, JELLY_HEAL.cast - enemy.healRemaining, enemy.flip));
         const charge = 1 - enemy.healRemaining / JELLY_HEAL.cast;
-        this.effects.lineStyle(2, 0x9aefb3, .7).strokeEllipse(enemy.x, enemy.y + 7, 22 + charge * 26, 10 + charge * 10);
+        this.effects.lineStyle(2, 0x9aefb3, .7).strokeEllipse(x, groundY + 7, 22 + charge * 26, 10 + charge * 10);
       }
       if (enemy.healLockout > JELLY_HEAL.lockout - .6) {
         const age = JELLY_HEAL.lockout - enemy.healLockout, alpha = 1 - age / .6;
-        this.effects.lineStyle(2, 0x9aefb3, alpha).strokeEllipse(enemy.x, enemy.y + 6, 24 + age * 35, 10 + age * 14);
-        this.effects.fillStyle(0xbbffd2, alpha).fillRect(enemy.x - 1, enemy.y - 30 - age * 20, 3, 9).fillRect(enemy.x - 4, enemy.y - 27 - age * 20, 9, 3);
+        this.effects.lineStyle(2, 0x9aefb3, alpha).strokeEllipse(x, groundY + 6, 24 + age * 35, 10 + age * 14);
+        this.effects.fillStyle(0xbbffd2, alpha).fillRect(x - 1, y - 30 - age * 20, 3, 9).fillRect(x - 4, y - 27 - age * 20, 9, 3);
       }
       view.sprite.setTint(enemy.slowRemaining > 0 ? 0x83ddff : enemy.burn ? 0xffbd80 : 0xffffff);
       if (enemy.burn) {
         const flame = towerSheet(7,1,'Projectile');
         if (!view.burn) view.burn=this.add.image(0,0,flame.key,0).setScale(.45);
-        view.burn.setVisible(true).setPosition(enemy.x+18,enemy.y-15).setDepth(enemy.y+1001)
+        view.burn.setVisible(true).setPosition(x+18,y-15).setDepth(groundY+1001)
           .setFrame(flame.frameMap[loopFrame(elapsed,flame.frameMap.length)]);
       } else view.burn?.setVisible(false);
-      if (enemy.slowRemaining > 0) this.effects.lineStyle(1.5, 0x96e8fa, 0.75).strokeEllipse(enemy.x, enemy.y + 7, 26, 10);
-      view.shadow.setPosition(enemy.x, enemy.y + enemyShadowOffset(enemy.def.id)).setDepth(enemy.y + 999);
+      if (enemy.slowRemaining > 0) this.effects.lineStyle(1.5, 0x96e8fa, 0.75).strokeEllipse(x, groundY + 7, 26, 10);
+      view.shadow.setPosition(x, groundY + enemyShadowOffset(enemy.def.id)).setDepth(groundY + 999)
+        .setScale(enemy.def.id === 'Firebug' ? .8 : 1);
       if (enemy.hp < enemy.maxHp || enemy.def.id === 'Rosenspiegel') {
-        const barY = enemy.y - lift - (enemy.def.id === 'Rosenspiegel' ? 55 : 25), fraction = Math.max(0, enemy.hp / enemy.maxHp);
-        this.effects.fillStyle(0x263f33, 0.9).fillRect(enemy.x - 15, barY, 30, 5);
-        this.effects.fillStyle(fraction < 0.3 ? 0xdf9573 : 0xdde69c).fillRect(enemy.x - 14, barY + 1, 28 * fraction, 3);
+        const barY = y - (enemy.def.id === 'Rosenspiegel' ? 55 : 25), fraction = Math.max(0, enemy.hp / enemy.maxHp);
+        this.effects.fillStyle(0x263f33, 0.9).fillRect(x - 15, barY, 30, 5);
+        this.effects.fillStyle(fraction < 0.3 ? 0xdf9573 : 0xdde69c).fillRect(x - 14, barY + 1, 28 * fraction, 3);
       }
     }
     const shots = new Set(sim.shots.map(shot => shot.uid));
@@ -799,10 +801,13 @@ export class BattleScene extends Phaser.Scene {
       if(evolutionSkin(shot.kind,shot.level))continue;
       let view = this.shotViews.get(shot.uid);
       if (!view) { view = this.add.image(shot.x, shot.y, towerArt(shot.kind, visualStage(shot.level)).projectile, 0).setScale(shot.kind === 5 ? 24 / towerSheet(5,visualStage(shot.level),'Projectile').width : shot.kind >= 3 ? 0.85 : shot.kind === 2 ? 0.5 : SCALE.projectile); this.shotViews.set(shot.uid, view); }
-      view.setPosition(shot.x, shot.y).setFrame(loopFrame(this.combatEffects.shotAge(shot.uid, elapsed), towerArt(shot.kind, visualStage(shot.level)).shotFrames));
       const enemy = sim.enemies.find(enemy => enemy.uid === shot.target), target = enemy && sim.enemyTargetPoint(enemy,shot);
-      view.setDepth(projectileDepth(shot,sim.towers.find(tower=>tower.uid===shot.towerUid),target));
-      if (target) view.setRotation(Math.atan2(target.y - shot.y, target.x - shot.x) + Math.PI / 2);
+      const tower = sim.towers.find(tower => tower.uid === shot.towerUid);
+      const visual = enemy && target && presentedTarget(enemy, target, enemyPresentation(enemy, sim.layout, elapsed));
+      const point = target && visual ? presentedShot(shot, target, visual, tower ? { x: tower.x, y: tower.y - 12 } : undefined) : shot;
+      view.setPosition(point.x, point.y).setFrame(loopFrame(this.combatEffects.shotAge(shot.uid, elapsed), towerArt(shot.kind, visualStage(shot.level)).shotFrames));
+      view.setDepth(projectileDepth(shot,tower,target));
+      if (visual) view.setRotation(Math.atan2(visual.y - point.y, visual.x - point.x) + Math.PI / 2);
     }
     this.combatEffects.update(elapsed + sim.introduction.preparationSeconds, shots, towers);
     this.drawLearningMark();

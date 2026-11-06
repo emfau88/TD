@@ -26,9 +26,18 @@ Alle Maße unten sind Spieleinheiten bei 100 % Weltmaßstab. Eine Zelle bleibt *
 | Wisp | 64 × 64 Frames | Faktor 0,9; sichtbare Silhouette ungefähr 23 × 30; Ursprung (0,5 / 51÷64) |
 | Mara | Vorhandene vermessene Quelle, 64 × 64 Laufzeitframes | Maßstab 1; sichtbare Höhe etwa 38–42; Fußpunkt (32 / 56) |
 | Rosenspiegel | `public/assets/Succubus Pixel v2.png` (vorhandener v3-Inhalt unter Kompatibilitätsnamen), reine Frame-Funktion aus `reference/src/succubus-art.ts` | 64 × 64 Frames; Faktor 1,15 als Boss, Fußpunkt (32 / 56). Vorhandenes Laufen und Tanzen; Herzfaden/Zielring als Canvas-Effekte; auf ausdrücklichen Nutzerwunsch zusätzlich 136 × 164 CSS-Pixel großes Tanzfenster mit dem Original-HD-Atlas |
+| Feuerkäfer (Nutzerkorrektur 06.11.2026) | Unveränderte 128 × 64 Originalframes | Einheitlicher Faktor 0,664 statt 0,83, proportional 20 % kleiner; Schatten ebenfalls × 0,8 |
 | Andere Türme/Gegner | Vorhandene Atlanten und Metadaten | Bestehende Skalierung und Montage übernehmen; keine gemeinsame Größen-Normalisierung |
 
 **Bildrahmen, sichtbare Silhouette und belegte Bodenfläche sind verschiedene Größen.** Die Außenabmessungen eines PNGs definieren weder die Kollisionsfläche noch die sichtbare Größe. Transparenter Rand zählt nicht zur Silhouette.
+
+Darstellungsnachschliff 06.11.2026: `enemy-presentation.ts` begrenzt stabile seitliche
+Versätze anhand vermessener Silhouetten auf maximal drei Spieleinheiten. Große
+Figuren bleiben mittig; die letzten/ersten 24 Spieleinheiten jedes Wegsegments
+sind versatzfrei. Flieger schweben im Mittel 9,8 statt 7 Einheiten über ihrem
+Anker, weiterhin mit ±1,5 Einheiten Bewegung. Tiefe und Schatten richten sich
+nach dem Bodenpunkt, Geschosse und Treffer nach der sichtbaren Position.
+Keine neuen Bilder, keine Physik oder Kampfregeländerung.
 
 Leichte Draufsicht, Blickrichtung und Lichtführung entsprechen den Originaltürmen. Keine neue Isometrie. Große lesbare Farbflächen, klare Konturen und kleine Bodenschatten; keine weichen Renderkanten, fotorealistischen Materialien oder überfeinen Dachdetails. Gebäude stehen über ihrem Bodenanker, Figuren laufen auf der Bodenebene.
 

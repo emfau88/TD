@@ -1,0 +1,57 @@
+import assert from 'node:assert/strict';
+import{readFileSync,writeFileSync,mkdirSync}from'node:fs';
+import{chromium}from'file:///C:/Users/madde/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+import{IdleBattle}from'../../experiments/idle-bastion/src/battle';
+import{createOfflineState}from'../../experiments/idle-bastion/src/offline';
+const origin=process.argv[2]??'http://127.0.0.1:5190',out=process.argv[3]??'artifacts/enemy-spacing-2026-11-06/corners';mkdirSync(out,{recursive:true});
+const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'}),results:any[]=[];
+async function saved(page:any,name:string){return page.evaluate(async(name:string)=>new Promise<any>((resolve,reject)=>{const q=indexedDB.open(name);q.onerror=()=>reject(q.error);q.onsuccess=()=>{const db=q.result,r=db.transaction('saves').objectStore('saves').get('default');r.onsuccess=()=>{db.close();resolve(r.result);};r.onerror=()=>reject(r.error);};}),name);}
+try{
+ for(const [width,height,lang]of [[1440,900,'de'],[844,390,'en'],[390,844,'de']]as const){
+  const context=await browser.newContext({viewport:{width,height},hasTouch:width<1000,isMobile:width<1000}),page=await context.newPage(),errors:string[]=[];
+  page.on('pageerror',(e:Error)=>errors.push(e.message));page.on('response',(r:any)=>{if(r.url().startsWith(origin)&&r.status()>=400)errors.push(r.status()+' '+r.url());});
+  await page.addInitScript((lang:string)=>{localStorage.setItem('spire-language-v1',lang);localStorage.setItem('spire-audio-mix-v1',JSON.stringify({muted:true,music:0,effects:0,voices:0}));},lang);
+  for(const [wave,id]of [[21,'LanternJelly'],[35,'Voidbutterfly']]as const){
+   const earned=JSON.parse(readFileSync(new URL('../creep-trio-2026-11-06/final/mixed-fresh.json',import.meta.url),'utf8'));
+   const b=IdleBattle.restore(earned.snapshots[wave===21?'clear20':'clear34'])!;
+   // Deliberately weak visual fixture, not balance evidence: allow a dense group to reach bends/towers.
+   for(const tower of b.towers){tower.level=1;tower.visualStage=1;tower.spent=tower.protected||tower.uid===b.tutorialFrostUid?0:tower.def.cost;}
+   b.wave=wave-1;b.highestCleared=wave-1;b.phase='intermission';b.intermissionRemaining=0;b.mode='advance';
+   for(let i=0;i<2000&&!b.enemies.some(e=>e.distance>=690);i++){b.update(.025);b.drainEvents();}
+   assert.equal(b.wave,wave);assert.ok(b.enemies.some(e=>e.def.id===id));assert.ok(IdleBattle.restore(b.snapshot()));
+   const battle=b.snapshot(),slot='creep-'+width+'-'+wave+'-'+process.pid,name='spire-idle-bastion-probe-'+slot,now=Date.now(),off=createOfflineState(now);off.baseline.paused=true;
+   await page.goto(origin+'/audio-credits.html');
+   await page.evaluate(async({name,battle,now,off}:any)=>new Promise<void>((resolve,reject)=>{const q=indexedDB.open(name,1);q.onupgradeneeded=()=>q.result.createObjectStore('saves');q.onerror=()=>reject(q.error);q.onsuccess=()=>{const db=q.result,tx=db.transaction('saves','readwrite');tx.objectStore('saves').put({schemaVersion:2,revision:1,writtenAt:now,paused:true,battle,offline:off,maraOfflineWelcomeSeen:true},'default');tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>reject(tx.error);};}),{name,battle,now,off});
+   await page.goto(origin+'/?probe='+slot);await page.locator('#game canvas').waitFor({timeout:60000});await page.locator('#boot-screen').waitFor({state:'hidden',timeout:60000});
+   if(await page.locator('#claim-offline').isVisible())await page.locator('#claim-offline').click();
+   await page.waitForFunction(()=>!(document.querySelector('#pause')as HTMLButtonElement).disabled);
+   assert.equal(await page.locator('#pause').getAttribute('aria-pressed'),'true');
+   if(await page.locator('#hint-skip').isVisible())await page.locator('#hint-skip').click();
+   await page.evaluate(async()=>{
+    const loaded=performance.getEntriesByType('resource').map(e=>e.name).find(url=>url.includes('/src/battle-scene.ts'));
+    if(!loaded)throw new Error('Missing loaded battle-scene URL');
+    const {BattleScene}=await import(loaded);
+    const original=(BattleScene.prototype as any).drawActors;
+    (BattleScene.prototype as any).drawActors=function(...args:any[]){(window as any).__spacingScene=this;return original.apply(this,args);};
+   });
+   await page.waitForFunction(()=>!!(window as any).__spacingScene);
+   const rendered=await page.evaluate(async()=>{
+    const scene=(window as any).__spacingScene, b=scene.sim;
+    scene.focusPoint({x:620,y:270});
+    const {enemyPresentation}=await import('/src/enemy-presentation.ts');
+    return b.enemies.map((e:any)=>{const v=scene.enemyViews.get(e.uid),p=enemyPresentation(e,b.layout,b.elapsed);
+      return {id:e.def.id,slow:e.slowRemaining>0,x:v.sprite.x,y:v.sprite.y,expectedX:p.x,expectedY:p.y,scaleX:v.sprite.scaleX,scaleY:v.sprite.scaleY,shift:Math.hypot(p.groundX-e.x,p.groundY-e.y),depth:v.sprite.depth,groundY:p.groundY,shadowX:v.shadow.x};});
+   });
+   assert.ok(rendered.length>5);for(const e of rendered){assert.equal(e.x,e.expectedX);assert.equal(e.y,e.expectedY);assert.equal(e.x,e.shadowX);assert.equal(e.scaleX,e.scaleY);assert.ok(e.shift<=3.000001);assert.ok(e.depth>=e.groundY+1000&&e.depth<=e.groundY+1002);}
+   const before=(await saved(page,name)).battle;await page.screenshot({path:out+'/'+width+'-w'+wave+'.png'});
+   await page.locator('#pause').click();await page.waitForTimeout(800);await page.locator('#pause').click();
+   await page.waitForFunction(()=>document.querySelector('#pause')!.getAttribute('aria-pressed')==='true');
+   const after=(await saved(page,name)).battle;assert.ok(after.elapsed>before.elapsed);assert.ok(after.enemies.some((e:any)=>e.defId===id));assert.ok(IdleBattle.restore(after));
+   await page.screenshot({path:out+'/'+width+'-w'+wave+'-moved.png'});
+   await page.reload();await page.locator('#boot-screen').waitFor({state:'hidden',timeout:60000});await page.waitForTimeout(180);assert.deepEqual((await saved(page,name)).battle,after);
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+   results.push({width,height,lang,wave,id,moving:true,exactPausedReload:true,rendered});
+  }
+  assert.deepEqual(errors,[]);await context.close();console.log(width+' OK');
+ }
+}finally{writeFileSync(out+'/results.json',JSON.stringify(results,null,2));await browser.close();}
