@@ -121,7 +121,7 @@ export class TavernUI {
       if (action) { this.newMoment = undefined; this.speaking = false; this.touchHint = false; this.update(); if (action === 'talk') this.get<HTMLButtonElement>('[data-do=speak]').focus(); void this.act(action); return; }
       if (target.dataset.gesture) {
         const gesture = this.ports.presentation?.gestures.find(g => g.key === target.dataset.gesture);
-        if (gesture && (!gesture.companion || gesture.companion === this.selected)) {
+        if (gesture && (!gesture.companion || gesture.companion === this.selected) && this.animation.canGesture?.(gesture.key) !== false) {
           this.newMoment = undefined; this.speaking = false; this.update(); this.get<HTMLButtonElement>('[data-do=speak]').focus();
           if (hearts(this.points) < gesture.minHearts) { this.result(() => t('Ab Herz {0} verfügbar.', gesture.minHearts)); this.revealReply(); return; }
           this.animation.gesture?.(gesture.key);
@@ -337,12 +337,14 @@ export class TavernUI {
     this.dialog.dataset.reacting = String(this.animation.reacting);
     const blocked = this.pending || this.animation.changingLocation || session.inputBusy || !!session.error || session.suspended || session.awaitingResume || !this.animation.ready;
     const location = this.get<HTMLButtonElement>('[data-do=switch-location]');
-    location.hidden = !this.animation.canVisit?.('mara-counter');
+    const alternate = this.selected === 'mara' ? 'mara-counter' : 'ilyra-window';
+    const atAlternate = this.animation.location === alternate;
+    location.hidden = !this.animation.canVisit?.(alternate);
     location.disabled = !!blocked;
-    location.textContent = t(this.animation.location === 'mara-counter' ? 'Wieder an unseren Platz' : 'Zum Tresen');
+    location.textContent = t(atAlternate ? 'Wieder an unseren Platz' : this.selected === 'mara' ? 'Zum Tresen' : 'Zum Fenster');
     this.dialog.dataset.location = this.animation.location ?? 'standard';
     this.get('.tv-stage-caption').textContent = this.animation.location === 'mara-counter'
-      ? t('Mara · Am Tresen') : t('{0} · {1}', this.content.name, this.content.role);
+      ? t('Mara · Am Tresen') : this.animation.location === 'ilyra-window' ? t('Ilyra · Am Fenster') : t('{0} · {1}', this.content.name, this.content.role);
     unlock.disabled = blocked;
     const gestures = this.dialog.querySelector<HTMLElement>('.tv-gestures');
     if (gestures) {
@@ -351,7 +353,8 @@ export class TavernUI {
       this.get('[data-do=speak]').setAttribute('aria-pressed', String(!gestures.hidden));
       for (const gesture of (this.ports.presentation?.gestures ?? [])) {
         const button = this.get<HTMLButtonElement>(`[data-gesture="${gesture.key}"]`);
-        button.hidden = !!gesture.companion && gesture.companion !== this.selected || gesture.minHearts > Math.max(3, count);
+        button.hidden = !!gesture.companion && gesture.companion !== this.selected || gesture.minHearts > Math.max(3, count)
+          || this.animation.canGesture?.(gesture.key) === false;
         button.disabled = blocked;
         button.dataset.locked = String(count < gesture.minHearts);
         button.querySelector('small')!.textContent = count < gesture.minHearts ? t('Ab Herz {0}', gesture.minHearts) : '';
@@ -389,7 +392,7 @@ export class TavernUI {
       const button = this.get<HTMLButtonElement>(`[data-region="${key}"]`);
       const reaction = this.content.reactions[key], locked = count < reaction.minHearts;
       button.hidden = this.screen === 'overview' || this.inConversation;
-      button.disabled = blocked || this.animation.location === 'mara-counter' && this.animation.reacting;
+      button.disabled = blocked || atAlternate && this.animation.reacting;
       button.dataset.locked = String(locked);
       button.setAttribute('aria-label', t('{0} berühren', t(reaction.label)) + (locked ? t(' · Ab Herz {0}', reaction.minHearts) : ''));
       button.title = locked ? t('{0} berühren · ab Herz {1}', t(reaction.label), reaction.minHearts) : t('{0} berühren', t(reaction.label));
@@ -554,7 +557,7 @@ export class TavernUI {
     this.result(() => wasEncounter ? '' : t('Deine Momente bleiben über die Herzen verfügbar.')); this.update(); this.get('.tv-conversation').scrollTop = 0;
   }
   private async touch(region: TouchRegion): Promise<void> {
-    if (this.animation.changingLocation || this.animation.location === 'mara-counter' && this.animation.reacting) return;
+    if (this.animation.changingLocation || (this.animation.location ?? 'standard') !== 'standard' && this.animation.reacting) return;
     this.newMoment = undefined; this.update();
     const reaction = this.content.reactions[region];
     if (hearts(this.points) < reaction.minHearts) {
@@ -603,13 +606,15 @@ export class TavernUI {
     const session = this.ports.session();
     if (!this.animation.setLocation || !session || this.pending || this.animation.changingLocation
       || session.inputBusy || session.error || session.suspended || session.awaitingResume || this.inConversation) return;
-    const location = this.animation.location === 'mara-counter' ? 'standard' : 'mara-counter';
+    const alternate = this.selected === 'mara' ? 'mara-counter' : 'ilyra-window';
+    const location = this.animation.location === alternate ? 'standard' : alternate;
     const generation = this.generation; this.speaking = false; this.touchHint = false;
     this.result(() => t('Einen Moment …'));
     const ok = await this.animation.setLocation(location);
     if (generation !== this.generation || !this.isOpen) return;
     if (ok) {
-      this.text('line', location === 'mara-counter' ? 'Hier am Tresen haben wir etwas mehr Ruhe. Schön, dass du mitkommst.' : this.content.stage(this.points).greeting);
+      this.text('line', location === 'mara-counter' ? 'Hier am Tresen haben wir etwas mehr Ruhe. Schön, dass du mitkommst.'
+        : location === 'ilyra-window' ? 'Hier am Fenster ist es schön ruhig. Bleib doch einen Moment bei mir.' : this.content.stage(this.points).greeting);
       this.result(() => '');
     } else this.result(() => t('Der Platz konnte nicht geladen werden. Wir bleiben erst einmal hier. Du kannst es erneut versuchen.'));
     this.refreshLanguage(); this.update();

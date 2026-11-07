@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "heart3StillClosed": true,
+  "failedLoadKeepsRoom": true,
+  "retry": true,
+  "threeTouchesUseIlyraPool": true,
+  "missingGesturesProduceNoVoice": true,
+  "standardComplimentPreserved": true,
+  "staleSwitchCancelled": true,
+  "errors": []
+}

@@ -49,7 +49,7 @@ export class TavernVideoPlayer implements TavernPlayer {
     if (sceneConfig && !this.localScene) throw new Error('Incomplete tavern scene media.');
     canvas.width = 480; canvas.height = 700;
   }
-  private get clips(): Readonly<Record<string, Clip>> { return this.localScene?.clips ?? manifest.heroes[this.who]; }
+  private get clips(): Readonly<Partial<Record<string, Clip>>> { return this.localScene?.clips ?? manifest.heroes[this.who]; }
   private get warmKeys(): readonly string[] { return this.localScene ? ['talk', 'shoulder'] : ['head', 'touch']; }
   /** A staged scene is attached only after its idle frame has decoded. */
   attachCanvas(canvas: HTMLCanvasElement): void {
@@ -129,8 +129,14 @@ export class TavernVideoPlayer implements TavernPlayer {
       else if (action === 'talk' || action === 'gift') this.enqueueScene(action);
     } else this.enqueue(action === 'talk' ? 'head' : this.count >= 2 ? 'joy' : 'touch');
   }
+  canGesture(key: string): boolean {
+    if (!Object.hasOwn(GESTURE_HEARTS, key)) return false;
+    if (!this.localScene) return !!this.clips[key];
+    const action = key === 'giggle' ? 'laugh' : key === 'hip' ? 'compliment' : key === 'tease' ? 'tease' : undefined;
+    return !!action && !!sceneVideoRole(this.localScene, action);
+  }
   gesture(key: string): void {
-    if (Object.hasOwn(GESTURE_HEARTS, key) && this.count >= GESTURE_HEARTS[key]!) {
+    if (this.canGesture(key) && this.count >= GESTURE_HEARTS[key]!) {
       if (this.localScene) {
         if (key === 'giggle') this.enqueueScene('laugh');
         else if (key === 'hip') this.enqueueScene('compliment');

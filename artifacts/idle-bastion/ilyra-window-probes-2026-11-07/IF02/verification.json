@@ -28,6 +28,6 @@
   "render_seconds": 174.1,
   "visual_review": "All 56 decoded frames and hand details inspected; enlarged face sequence checked. Small coherent inclination and blink, stable ledge contact, no observed foreign hand, finger flicker or neck collapse.",
   "user_approved": true,
-  "game_integration": false,
+  "game_integration": true,
   "user_visual_acceptance": "Explicitly approved by user on 2026-11-07; IF01 selected corrected v2."
 }

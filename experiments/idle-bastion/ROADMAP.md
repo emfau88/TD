@@ -1,5 +1,13 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Taverne · 07.11.2026 — IF01–IF05 freigegeben und integriert; gemeinsame Main-Übernahme beauftragt.**
+
+- [x] IF05 ausdrücklich freigegeben. Alle fünf nativen Fensterclips unverändert eingebunden, einschließlich ruhiger IF01-v2; keine weiteren Renderings.
+- [x] Ilyra für bereits verdientes Herz 4/5 über Sprechen → Zum Fenster, eigene Ruhe/Gespräch/Haare/Schulter/Hand, passende Herzen und bestehender Stimmenpool. IF06/IF07 fehlen: Lachen/Annäherung am Fenster ausgeblendet, am bisherigen Platz erhalten. Die aktuelle Einbauanweisung ersetzt das frühere Warten auf alle sieben Clips.
+- [x] 32/32 gezielte Tests, TypeScript/Produktionsbuild, beide Figuren auf Desktop/Handy in DE/EN, 18.316 Anzeigeframes ohne beobachtete schwarze Ränder oder Größenwechsel; Rückblicke/Rückkehr/Reload, Ladefehler/Wiederholung, Stimmen und Abbruch geprüft. [Nachweise](../../artifacts/idle-bastion/ilyra-window-integration-2026-11-07/REPORT.md).
+- [x] Aktuellen Main abgeglichen/übernommen: Frost-/Scharfschützenkorrekturen bereits enthalten. Gesamter offener Tavernen-Laufzeitstand einschließlich Mara MC01–MC07 wird gemeinsam übernommen; historische Rig-Archivbranches bleiben erhalten.
+- [ ] Gemeinsamen Stand nach Main pushen und öffentlichen Deploy prüfen.
+
 **Turmdarstellung · 07.11.2026 — Frostkörper und frühe Scharfschützen-Montage korrigiert.**
 
 - [x] Alle acht Frost-Grafikstufen geprüft und Grundkörper passend vergrößert; Körperhöhe 53,55 / 55,44 / 57,96 Spieleinheiten, keine Verkleinerung beim Upgrade. Breite/Bodenanker erhalten; Kristall, Leuchten und Bauvorschau korrekt angeschlossen.
@@ -9,14 +17,14 @@
 - [x] Als `4d771b86` auf `codex/tower-mount-fix` committed/gepusht und per Fast-forward auf Main veröffentlicht. [Pages 42385360962](https://github.com/emfau88/TD/actions/runs/42385360962) erfolgreich; öffentliche Einstiegsdateien entsprechen dem CI-Build, Tower-Modul bytegleich mit dem lokal geprüften Build. Öffentlicher Spielstart ohne HTTP-/JavaScriptfehler bestätigt (`public-delivery.json`).
 - [ ] Menschliche Sichtabnahme der Turmkorrekturen auf dem eigenen Gerät.
 
-**Tavernen-Ausbau · 07.11.2026 — bulkweise Umsetzung ausdrücklich beauftragt, Bulk 0/3 abgeschlossen / Bulk 1–2/4 technisch fertig / Bulk 5 technisch fertig / IF01–IF04 freigegeben / IF05 zur Abnahme / Renderstopp.**
+**Tavernen-Ausbau · 07.11.2026 — bulkweise Umsetzung ausdrücklich beauftragt, Bulk 0/3 abgeschlossen / Bulk 1–2/4 technisch fertig / Bulk 5 technisch fertig / IF01–IF05 freigegeben und integriert / Renderstopp.**
 
 - [x] MC04/MC06/MC07 ausdrücklich freigegeben. Alle sieben Mara-Tresenclips als eigene Szene integriert: eigener Hintergrund, passende Hotspots/Reaktionen, bestehende Stimmen, Rückblicke mit korrekter Rückkehr und abgesicherte Ladewechsel. 13/13 gezielte Tests, Produktionsbuild und echte Desktop-/Handyprobe bestanden. Für bereits verdientes Herz 4 erreichbar; neue Herz-4-Fortschrittsstrecke bleibt offen. [Nachweis](../../artifacts/idle-bastion/tavern-counter-completion-2026-11-07/REPORT.md).
 - [ ] Menschliche Ingame-Sichtabnahme der Mara-Tresenszene.
 - [x] Ilyra IF01(3,75s), IF02(2,33s), IF03(2,33s) nach Mara-Integration nacheinander erstellt und geprüft: alle202 Frames/Hände, Gesicht und gemeinsame Endpunkte. IF01 per bewährter lokaler Videostabilisierung korrigiert, Original erhalten. [Proben, Referenz und Prompts](../../artifacts/idle-bastion/ilyra-window-probes-2026-11-07/REPORT.md).
 - [x] IF01 (korrigierte v2), IF02 und IF03 ausdrücklich vom Nutzer freigegeben.
 - [x] IF04/Schulter mit eigener Hand an der Hüfte und kleiner Gewichtsverlagerung erstellt und geprüft; 3,04s, 73 Frames. Vom Nutzer ausdrücklich freigegeben.
-- [x] IF05/Hand nacheinander nach IF04 fertiggestellt und geprüft; 3,04s, 73 Frames. Nutzerfreigabe offen. Renderstopp umgesetzt; IF06 nur vorbereitet, Start ausdrücklich gesperrt. Kein Ilyra-Spieleinbau.
+- [x] IF05/Hand nacheinander nach IF04 fertiggestellt und geprüft; 3,04s, 73 Frames. Vom Nutzer freigegeben und anschließend integriert. Renderstopp umgesetzt; IF06 nur vorbereitet, Start ausdrücklich gesperrt.
 - [x] Mara erneut im tatsächlichen Produktionsspiel auf Desktop/Handy geprüft: alle sieben Clips, 2.053 Anzeigeframes; keine beobachteten schwarzen Zwischenbilder/Ränder, falschen Szenen oder Größenwechsel. [Echte Ingame-Aufnahmen](../../artifacts/idle-bastion/tavern-counter-visual-audit-2026-11-07/REPORT.md).
 - [x] Gemeinsame isolierte Szenenprobe für Mara/Tresen und Ilyra/Fenster erstellt: Reaktionen anklicken und automatisch zur eigenen Ruhepose zurückkehren, ohne Spielstandzugriff. [Testzugang und Offline-Datei](../../artifacts/idle-bastion/tavern-scene-preview-2026-11-07/README.md).
 

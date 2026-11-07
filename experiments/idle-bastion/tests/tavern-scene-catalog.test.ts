@@ -9,7 +9,7 @@ function fixture(id: TavernSceneId = 'mara-counter') {
   const roles: SceneRole[] = ['idle', 'talk', 'hair', 'shoulder', 'hand', 'laugh', 'approach'];
   const clips = Object.fromEntries(roles.map(role => [role, {
     file: `${id}/test-${role}.mp4`, startPose: basePose, endPose: basePose, referenceId,
-  }])) as Record<SceneRole, TavernScene['clips'][SceneRole]>;
+  }])) as Record<SceneRole, NonNullable<TavernScene['clips'][SceneRole]>>;
   const scene: TavernScene = { id, companion: id === 'mara-counter' ? 'mara' : 'ilyra', basePose, referenceId, clips };
   return { scene, files: new Set(Object.values(clips).map(clip => clip.file)) };
 }
@@ -74,7 +74,7 @@ test('only Mara receives teasing; unknown actions and absent scenes never fall b
   assert.equal(resolveSceneClip(mara.scene, 'unknown' as SceneAction, mara.files), undefined);
   assert.equal(resolveSceneClip(undefined, 'hand', mara.files), undefined);
   assert.equal(resolveSceneClip({ clips: {} }, 'idle', mara.files), undefined);
-  assert.deepEqual(Object.keys(TAVERN_SCENE_CATALOG), ['mara-counter'], 'only the complete approved scene is registered');
+  assert.deepEqual(Object.keys(TAVERN_SCENE_CATALOG), ['mara-counter', 'ilyra-window'], 'only approved basic sets are registered');
 });
 
 test('registered production scene has all seven actual files, shared artwork and valid timing', () => {
@@ -87,4 +87,22 @@ test('registered production scene has all seven actual files, shared artwork and
   for (const file of ['background.png', 'poster.png']) assert.ok(existsSync(new URL(`mara-counter/${file}`, base)));
   assert.ok(compileTavernSceneVideo({scene, media, poster:'poster.png', background:'background.png',
     anchors:{hair:{x:125,y:143},shoulder:{x:125,y:249},hand:{x:273,y:459}}}, urls));
+});
+
+test('Ilyra window has five approved local roles; unproduced extras never resolve to standing clips', () => {
+  const scene = TAVERN_SCENE_CATALOG['ilyra-window']!;
+  const base = new URL('../assets/tavern-video/', import.meta.url);
+  const media = JSON.parse(readFileSync(new URL('ilyra-window/media.json', base), 'utf8'));
+  const urls = Object.fromEntries(Object.values(scene.clips).map(clip => {
+    const url = new URL(clip.file, base); assert.ok(existsSync(url)); return [clip.file, url.href];
+  }));
+  assert.equal(Object.keys(urls).length, 5);
+  for (const action of ['idle','talk','gift','hair','shoulder','hand'] as const) {
+    assert.ok(resolveSceneClip(scene, action, new Set(Object.keys(urls)))?.file.startsWith('ilyra-window/'));
+  }
+  for (const action of ['laugh','compliment','tease'] as const) assert.equal(resolveSceneClip(scene, action, new Set(Object.keys(urls))), undefined);
+  assert.ok(compileTavernSceneVideo({scene,media,poster:'poster.png',background:'background.png',
+    anchors:{hair:{x:140,y:198},shoulder:{x:128,y:288},hand:{x:393,y:480}}},urls));
+  delete urls['ilyra-window/IF04.mp4'];
+  assert.equal(isCompleteTavernScene(scene,new Set(Object.keys(urls))),false,'A missing required interaction still blocks the whole location.');
 });

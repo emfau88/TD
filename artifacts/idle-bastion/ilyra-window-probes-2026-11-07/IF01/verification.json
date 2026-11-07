@@ -28,7 +28,7 @@
   "render_seconds": 4.0,
   "visual_review": "All original 90 frames inspected, corrected face and hands contact sheets reviewed. Face retained; idle body/cape/hands stabilized using the earlier approved I01-v2 method.",
   "user_approved": true,
-  "game_integration": false,
+  "game_integration": true,
   "corrected_delivery_copy_unchanged": true,
   "original_h3_render_seconds": 288.2,
   "correction_seconds": 4.0,

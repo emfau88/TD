@@ -1,0 +1,31 @@
+{
+  "nativeUnchanged": true,
+  "clips": [
+    {
+      "clip": "IF01",
+      "bytes": 322239,
+      "sha256": "07b9d7e3519be52bc567ef8d57f681866b7e521e380d5813db002dab5784d884"
+    },
+    {
+      "clip": "IF02",
+      "bytes": 456575,
+      "sha256": "73b602294c1723c050f0bae4845b61779ca32788070752cd2b45d482b96bf171"
+    },
+    {
+      "clip": "IF03",
+      "bytes": 489909,
+      "sha256": "43eee7e222c5ef5390731464ec81e2ef084faa3f975a3597bbccc889ed7d540a"
+    },
+    {
+      "clip": "IF04",
+      "bytes": 715942,
+      "sha256": "6225f374ada17955b3500d9befb43befb605581cea57755c54ba911278d0a9b0"
+    },
+    {
+      "clip": "IF05",
+      "bytes": 695947,
+      "sha256": "9921361af8bbe972c5ff4977009aa523cc8b3439774379c25a06cc2f875642db"
+    }
+  ],
+  "renderedNewClips": false
+}

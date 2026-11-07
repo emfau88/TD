@@ -18,6 +18,7 @@ export interface TavernPlayer {
   setHearts?(count: number): void;
   act?(action: Interaction): void;
   gesture?(key: string): void;
+  canGesture?(key: string): boolean;
   readonly location?: TavernLocation;
   readonly changingLocation?: boolean;
   canVisit?(location: TavernLocation): boolean;

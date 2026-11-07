@@ -73,4 +73,5 @@ export class TavernVisitPlayer implements TavernPlayer {
   scene(clip: TavernSceneClip) { if (!this.changingLocation) this.player.scene(clip); }
   act(action: Interaction) { if (!this.changingLocation) this.player.act(action); }
   gesture(key: string) { if (!this.changingLocation) this.player.gesture(key); }
+  canGesture(key: string) { return this.player.canGesture(key); }
 }

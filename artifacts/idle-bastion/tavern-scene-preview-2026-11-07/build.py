@@ -17,8 +17,8 @@ data={
         note='Vollständiges Set: jede Reaktion gehört zur gleichen Tresenszene.',
         clips=[clip(f'MC{i:02}',label,mara/f'MC{i:02}.mp4') for i,label in enumerate(['Ruhe','Sprechen','Haare','Schulter','Hand','Zusammen lachen','Annäherung'],1)]),
     'ilyra':dict(name='Ilyra am Fenster',poster=data_uri(ilyra/'IF04/frame-start.png','image/png'),
-        note='IF04: eigene Hand an die Hüfte. IF05: Handreaktion, noch zur Freigabe. Lachen (IF06) und Annäherung (IF07) fehlen weiterhin.',
-        clips=[clip(f'IF{i:02}',label,next((ilyra/f'IF{i:02}').glob('*_ComfyUI.mp4')),i<5) for i,label in enumerate(['Ruhe','Sprechen','Haare','Schulter / Hüftpose','Hand'],1)])
+        note='IF04: eigene Hand an die Hüfte. IF05: freigegebene Handreaktion. Lachen (IF06) und Annäherung (IF07) fehlen weiterhin.',
+        clips=[clip(f'IF{i:02}',label,next((ilyra/f'IF{i:02}').glob('*_ComfyUI.mp4')),True) for i,label in enumerate(['Ruhe','Sprechen','Haare','Schulter / Hüftpose','Hand'],1)])
 }
 source=(HERE/'source.html').read_text(encoding='utf-8')
 assert source.count('__ASSETS__')==1

@@ -1,0 +1,127 @@
+{
+  "base": "http://127.0.0.1:5281/",
+  "compiledGame": true,
+  "passed": true,
+  "results": [
+    {
+      "who": "ilyra",
+      "width": 1280,
+      "lang": "de",
+      "frames": 3308,
+      "clips": {
+        "idle": 125,
+        "talk": 711,
+        "hair": 709,
+        "shoulder": 850,
+        "hand": 913
+      },
+      "blackOrTransparentFrames": 0,
+      "wrongScenes": 0,
+      "stableStage": true,
+      "storyReturn": true,
+      "standardGesturesPreserved": true,
+      "reload": true,
+      "quality": [
+        {
+          "source": "http://127.0.0.1:5281/assets/idle-DYtzXjcS.mp4",
+          "width": 480,
+          "height": 704,
+          "total": 6,
+          "dropped": 0
+        }
+      ],
+      "errors": []
+    },
+    {
+      "who": "ilyra",
+      "width": 390,
+      "lang": "en",
+      "frames": 3710,
+      "clips": {
+        "idle": 136,
+        "talk": 754,
+        "hair": 726,
+        "shoulder": 1069,
+        "hand": 1025
+      },
+      "blackOrTransparentFrames": 0,
+      "wrongScenes": 0,
+      "stableStage": true,
+      "storyReturn": true,
+      "standardGesturesPreserved": true,
+      "reload": true,
+      "quality": [
+        {
+          "source": "http://127.0.0.1:5281/assets/idle-DYtzXjcS.mp4",
+          "width": 480,
+          "height": 704,
+          "total": 6,
+          "dropped": 0
+        }
+      ],
+      "errors": []
+    },
+    {
+      "who": "mara",
+      "width": 1280,
+      "lang": "en",
+      "frames": 5506,
+      "clips": {
+        "idle": 191,
+        "talk": 529,
+        "hair": 886,
+        "shoulder": 748,
+        "hand": 927,
+        "laugh": 896,
+        "approach": 1329
+      },
+      "blackOrTransparentFrames": 0,
+      "wrongScenes": 0,
+      "stableStage": true,
+      "storyReturn": true,
+      "standardGesturesPreserved": true,
+      "reload": true,
+      "quality": [
+        {
+          "source": "http://127.0.0.1:5281/assets/idle-IGE_1PxL.mp4",
+          "width": 480,
+          "height": 704,
+          "total": 6,
+          "dropped": 0
+        }
+      ],
+      "errors": []
+    },
+    {
+      "who": "mara",
+      "width": 390,
+      "lang": "de",
+      "frames": 5792,
+      "clips": {
+        "idle": 174,
+        "talk": 768,
+        "hair": 986,
+        "shoulder": 708,
+        "hand": 754,
+        "laugh": 1003,
+        "approach": 1399
+      },
+      "blackOrTransparentFrames": 0,
+      "wrongScenes": 0,
+      "stableStage": true,
+      "storyReturn": true,
+      "standardGesturesPreserved": true,
+      "reload": true,
+      "quality": [
+        {
+          "source": "http://127.0.0.1:5281/assets/idle-IGE_1PxL.mp4",
+          "width": 480,
+          "height": 704,
+          "total": 6,
+          "dropped": 0
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

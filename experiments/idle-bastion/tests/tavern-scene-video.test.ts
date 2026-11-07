@@ -31,8 +31,8 @@ test('both complete scenes map existing actions only to local roles and metadata
     assert.equal(scene.poster, config.poster); assert.equal(scene.background, config.background);
     for (const [action, role] of actions) {
       assert.equal(sceneVideoRole(scene, action), role);
-      const clip = scene.clips[role];
-      assert.equal(clip.file, config.scene.clips[role].file);
+      const clip = scene.clips[role]!;
+      assert.equal(clip.file, config.scene.clips[role]!.file);
       assert.equal(clip.url, urls[clip.file]);
       assert.equal(clip.frames / clip.fps, clip.duration);
       assert.ok(clip.file.startsWith(`${id}/`));
@@ -44,17 +44,21 @@ test('both complete scenes map existing actions only to local roles and metadata
   }
 });
 
-test('one absent file, role or metadata record makes the entire scene unavailable', () => {
+test('every advertised file or metadata record is required; optional gestures may be omitted', () => {
   for (const missing of ['idle', 'talk', 'hair', 'shoulder', 'hand', 'laugh', 'approach'] as const) {
     const { config, urls } = fixture();
-    const absentFile = { ...urls }; delete absentFile[config.scene.clips[missing].file];
+    const absentFile = { ...urls }; delete absentFile[config.scene.clips[missing]!.file];
     absentFile[`mara/${missing}.mp4`] = `/assets/mara/${missing}.mp4`;
     assert.equal(compileTavernSceneVideo(config, absentFile), undefined, 'A standard file cannot fill the missing scene role.');
     const absentRole = structuredClone(config) as any; delete absentRole.scene.clips[missing];
-    assert.equal(compileTavernSceneVideo(absentRole, urls), undefined);
-    const absentMetadata = structuredClone(config) as any; delete absentMetadata.media[config.scene.clips[missing].file];
+    const withoutRole = compileTavernSceneVideo(absentRole, urls);
+    if (missing === 'laugh' || missing === 'approach') {
+      assert.ok(withoutRole);
+      assert.equal(sceneVideoRole(withoutRole, missing === 'laugh' ? 'laugh' : 'compliment'), undefined);
+    } else assert.equal(withoutRole, undefined);
+    const absentMetadata = structuredClone(config) as any; delete absentMetadata.media[config.scene.clips[missing]!.file];
     assert.equal(compileTavernSceneVideo(absentMetadata, urls), undefined);
-    const blankUrl = { ...urls, [config.scene.clips[missing].file]: '' };
+    const blankUrl = { ...urls, [config.scene.clips[missing]!.file]: '' };
     assert.equal(compileTavernSceneVideo(config, blankUrl), undefined);
   }
 });
@@ -68,7 +72,7 @@ test('native 30 FPS and intentional compatible reuse are preserved', () => {
   const scene = compileTavernSceneVideo(reused, urls)!;
   assert.ok(scene);
   assert.equal(scene.clips.hair.url, scene.clips.talk.url);
-  assert.deepEqual([scene.clips.approach.fps, scene.clips.approach.frames, scene.clips.approach.duration], [30, 126, 4.2]);
+  assert.deepEqual([scene.clips.approach!.fps, scene.clips.approach!.frames, scene.clips.approach!.duration], [30, 126, 4.2]);
 });
 
 test('crossed poses/references and malformed timing or display anchors are rejected', () => {

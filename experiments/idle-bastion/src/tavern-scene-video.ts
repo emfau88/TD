@@ -1,4 +1,4 @@
-import { isCompleteTavernScene, type TavernScene, type SceneAction, type SceneRole } from './tavern-scene-catalog';
+import { isCompleteTavernScene, SCENE_ROLES, type TavernScene, type SceneAction, type SceneRole, type SceneClips } from './tavern-scene-catalog';
 import type { TouchRegion } from './tavern-social';
 
 export interface SceneVideoMetadata { readonly fps: number; readonly frames: number; readonly duration: number }
@@ -14,13 +14,12 @@ export interface TavernSceneVideoConfig {
 export interface CompiledTavernSceneVideo {
   readonly id: TavernScene['id'];
   readonly companion: TavernScene['companion'];
-  readonly clips: Readonly<Record<SceneRole, SceneVideoMetadata & { readonly file: string; readonly url: string }>>;
+  readonly clips: SceneClips<SceneVideoMetadata & { readonly file: string; readonly url: string }>;
   readonly poster: string;
   readonly background: string;
   readonly anchors: TavernSceneVideoConfig['anchors'];
 }
 
-const roles = ['idle', 'talk', 'hair', 'shoulder', 'hand', 'laugh', 'approach'] as const;
 const actionRoles: Readonly<Record<SceneAction, SceneRole>> = {
   idle: 'idle', talk: 'talk', gift: 'talk', hair: 'hair', shoulder: 'shoulder', hand: 'hand',
   laugh: 'laugh', compliment: 'approach', tease: 'laugh',
@@ -42,8 +41,10 @@ export function compileTavernSceneVideo(value: unknown, availableUrls: Readonly<
     anchors[region] = Object.freeze({ x: anchor.x, y: anchor.y });
   }
   const clips = {} as Record<SceneRole, SceneVideoMetadata & { file: string; url: string }>;
-  for (const role of roles) {
-    const file = value.scene.clips[role].file;
+  for (const role of SCENE_ROLES) {
+    const source = value.scene.clips[role];
+    if (!source) continue;
+    const file = source.file;
     const metadata = value.media[file];
     if (!object(metadata) || !positive(metadata.fps) || metadata.fps > 120
       || !positive(metadata.frames) || !Number.isSafeInteger(metadata.frames)
@@ -57,5 +58,6 @@ export function compileTavernSceneVideo(value: unknown, availableUrls: Readonly<
 
 export function sceneVideoRole(scene: CompiledTavernSceneVideo, action: SceneAction): SceneRole | undefined {
   if (!Object.hasOwn(actionRoles, action) || action === 'tease' && scene.companion !== 'mara') return;
-  return actionRoles[action];
+  const role = actionRoles[action];
+  return scene.clips[role] ? role : undefined;
 }

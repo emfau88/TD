@@ -1,0 +1,27 @@
+{
+  "ilyra-window/IF01.mp4": {
+    "fps": 24,
+    "frames": 90,
+    "duration": 3.75
+  },
+  "ilyra-window/IF02.mp4": {
+    "fps": 24,
+    "frames": 56,
+    "duration": 2.3333333333333335
+  },
+  "ilyra-window/IF03.mp4": {
+    "fps": 24,
+    "frames": 56,
+    "duration": 2.3333333333333335
+  },
+  "ilyra-window/IF04.mp4": {
+    "fps": 24,
+    "frames": 73,
+    "duration": 3.0416666666666665
+  },
+  "ilyra-window/IF05.mp4": {
+    "fps": 24,
+    "frames": 73,
+    "duration": 3.0416666666666665
+  }
+}

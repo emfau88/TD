@@ -28,6 +28,6 @@
   "render_seconds": 180.4,
   "visual_review": "All 56 decoded frames and hand details inspected, enlarged face sequence checked. Slow pleased blink with a small coherent head dip rather than exactly the requested sideways tilt; readable reaction, no observed foreign hand or finger flicker. Slight own hanging-arm movement follows the pose. Retained for user judgement without unnecessary rerender.",
   "user_approved": true,
-  "game_integration": false,
+  "game_integration": true,
   "user_visual_acceptance": "Explicitly approved by user on 2026-11-07; IF01 selected corrected v2."
 }

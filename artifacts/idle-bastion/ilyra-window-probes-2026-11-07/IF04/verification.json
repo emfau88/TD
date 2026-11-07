@@ -28,6 +28,6 @@
   "render_seconds": 228.1,
   "visual_review": "All 73 decoded frames, both hands in every frame and enlarged face sequence inspected. Own picture-left hand moves to hip/belt and back, with coherent sideways weight shift. No observed foreign hand, twitching separate fingers, neck collapse or wardrobe change. Retained unmodified for user approval.",
   "user_approved": true,
-  "game_integration": false,
+  "game_integration": true,
   "approval_basis": "User: ja if04 ist freigegeben (07.11.2026)."
 }
