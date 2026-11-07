@@ -32,4 +32,8 @@ Die frühen Scharfschützenwaffen waren rund 10 Spieleinheiten zu tief montiert.
 
 150 frühere simulierte Siege ergeben keinen persönlichen Fortschritt: Der Zähler beginnt je Figur erst ab Herz 2. Neue normale Siege 10/20 öffnen die zwei Zwischengespräche, Sieg 30 das persönliche Geschenk für Herz 3. Eine andere Figur ohne Herz 2 bleibt bei null. Vorhandene normale Geschenke können die Zuneigung schnell bis 58 füllen, umgehen aber nicht die 30 neuen Siege. 21/21 Tavernen-/Begegnungstests bestanden; Audit in `tavern-counter-audit.json`. Nur Plantext präzisiert, keine Balanceänderung.
 
-Veröffentlichung und aktuelle Checkboxen stehen in der [Roadmap](../../../experiments/idle-bastion/ROADMAP.md).
+## Veröffentlichung
+
+Code `4d771b86` auf Arbeitsbranch und Main gepusht. [Pages-Lauf 42385360962](https://github.com/emfau88/TD/actions/runs/42385360962) erfolgreich; [Hauptspiel](https://emfau88.github.io/TD/) öffentlich gestartet, keine HTTP-/JavaScriptfehler. Live-Einstiegsdateien entsprechen den Namen aus dem erfolgreichen CI-Build. Das ausgelieferte Tower-Modul ist SHA-256-/bytegleich mit dem lokal geprüften Produktionsmodul (`public-delivery.json`). Die lokalen Windows-Einstiegsdateien haben andere Chunknamen als der Linux-CI-Build; daher wurden sie nicht fälschlich als Live-Sollversion vorausgesetzt. Der vollständige CI-Artefaktdownload wurde abgebrochen, weil für diesen Nachweis die Einstiegsdateien aus dem CI-Protokoll und das geprüfte Tower-Modul genügen.
+
+Der separate Tavernen-Testlink bleibt nach dem zuvor fehlgeschlagenen Vorschau-Deploy offen. Dies betrifft nicht die erfolgreiche Hauptspiel-Veröffentlichung. Aktuelle Checkboxen stehen in der [Roadmap](../../../experiments/idle-bastion/ROADMAP.md).

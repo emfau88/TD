@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-07T15:19:12.909Z",
+  "codeCommit": "4d771b864f8fef069bb33f9ece2fd8fb25e07c47",
+  "run": 42385360962,
+  "url": "https://emfau88.github.io/TD/",
+  "entry": "./assets/battle-Cbawi2Or.js",
+  "hashes": [
+    {
+      "asset": "./assets/battle-Cbawi2Or.js",
+      "bytes": 8973,
+      "sha256": "f7dcf71800ebddb97e04899798d2e27991c3d967ade987b02d19a7fc4ab5941b"
+    },
+    {
+      "asset": "./assets/main-Bw6Y5PKZ.js",
+      "bytes": 407088,
+      "sha256": "41fe32ebd74a833b8ec933a22590a1ea9a8be6956e353a36a027cdc632dc6221"
+    },
+    {
+      "asset": "./assets/ilyra-view-B_kij17b.js",
+      "bytes": 30656,
+      "sha256": "b860706c88b7833021000ce375a49a95b03736eb1b33d8c940a4f996a15a34e1"
+    }
+  ],
+  "browserStarted": true,
+  "errors": [],
+  "httpErrors": []
+}
