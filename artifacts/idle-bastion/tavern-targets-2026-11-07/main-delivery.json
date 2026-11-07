@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-07",
+  "codeCommit": "2913db030882e2292e93baca7f42733c0fd55764",
+  "mainCommit": "846844ed58df99dffbe4ddce2e19ab0111c76c95",
+  "mainRun": 42380585653,
+  "mainRunSuccess": true,
+  "mainPublicCases": 2,
+  "productCodeChangedAfterPublicMainTests": false,
+  "previewRestorationPending": true,
+  "firstPreviewRestoration": {
+    "run": 42380613530,
+    "workflowSuccess": true,
+    "httpStatus": 404,
+    "note": "Preview and main used the same commit/build version. Publish the evidence-only feature commit separately before retrying the preview."
+  }
+}
