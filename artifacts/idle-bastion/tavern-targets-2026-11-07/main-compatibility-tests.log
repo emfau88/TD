@@ -1,0 +1,190 @@
+TAP version 13
+# Subtest: production preserves original main and probe names; preview remains isolated
+ok 1 - production preserves original main and probe names; preview remains isolated
+  ---
+  duration_ms: 2.0841
+  type: 'test'
+  ...
+# Subtest: direct main, Tower preview and Tavern preview links persist independent default saves
+ok 2 - direct main, Tower preview and Tavern preview links persist independent default saves
+  ---
+  duration_ms: 59.6179
+  type: 'test'
+  ...
+# Subtest: existing historical main/probe saves survive boot selection and a persisted reload without crossing namespaces
+ok 3 - existing historical main/probe saves survive boot selection and a persisted reload without crossing namespaces
+  ---
+  duration_ms: 123.1043
+  type: 'test'
+  ...
+# Subtest: the two own-win milestones remain available after heart three without inventing history
+ok 4 - the two own-win milestones remain available after heart three without inventing history
+  ---
+  duration_ms: 2.2667
+  type: 'test'
+  ...
+# Subtest: seen, one immutable choice, neutral completion and independent records have no rewards
+ok 5 - seen, one immutable choice, neutral completion and independent records have no rewards
+  ---
+  duration_ms: 161.2931
+  type: 'test'
+  ...
+# Subtest: access and socialRewards are checked before encounter mutation
+ok 6 - access and socialRewards are checked before encounter mutation
+  ---
+  duration_ms: 60.1273
+  type: 'test'
+  ...
+# Subtest: current snapshots deep-copy partially read records and preserve choices on reload
+ok 7 - current snapshots deep-copy partially read records and preserve choices on reload
+  ---
+  duration_ms: 36.5482
+  type: 'test'
+  ...
+# Subtest: schema37 migration validates all old fields and adds only empty optional encounter records
+ok 8 - schema37 migration validates all old fields and adds only empty optional encounter records
+  ---
+  duration_ms: 45.1442
+  type: 'test'
+  ...
+# Subtest: current schema rejects malformed or impossible records rather than resetting them
+ok 9 - current schema rejects malformed or impossible records rather than resetting them
+  ---
+  duration_ms: 301.1966
+  type: 'test'
+  ...
+# Subtest: encounter choices use durable commands: rejected save rolls back, duplicates cannot overwrite
+ok 10 - encounter choices use durable commands: rejected save rolls back, duplicates cannot overwrite
+  ---
+  duration_ms: 97.45
+  type: 'test'
+  ...
+# Subtest: three conversations and a stock gift reach heart two for each companion without time gates
+ok 11 - three conversations and a stock gift reach heart two for each companion without time gates
+  ---
+  duration_ms: 156.2328
+  type: 'test'
+  ...
+# Subtest: locked and invalid companions/regions cannot spend anything
+ok 12 - locked and invalid companions/regions cannot spend anything
+  ---
+  duration_ms: 53.4708
+  type: 'test'
+  ...
+# Subtest: a personal gift is guaranteed on the thirtieth own live win, independent of stock and the other companion
+ok 13 - a personal gift is guaranteed on the thirtieth own live win, independent of stock and the other companion
+  ---
+  duration_ms: 36.6438
+  type: 'test'
+  ...
+# Subtest: affection may be ready before the gift, stock gifts never bypass the personal gate
+ok 14 - affection may be ready before the gift, stock gifts never bypass the personal gate
+  ---
+  duration_ms: 36.7465
+  type: 'test'
+  ...
+# Subtest: reward reserves refill per three victories, not time, reload, wall clock or offline gold
+ok 15 - reward reserves refill per three victories, not time, reload, wall clock or offline gold
+  ---
+  duration_ms: 37.8964
+  type: 'test'
+  ...
+# Subtest: normal drops have no twenty-minute quota, defer at full stock and stop after the available chapter
+ok 16 - normal drops have no twenty-minute quota, defer at full stock and stop after the available chapter
+  ---
+  duration_ms: 37.9096
+  type: 'test'
+  ...
+# Subtest: recruitment guarantees Ilyra a welcome gift, full stock defers the claim
+ok 17 - recruitment guarantees Ilyra a welcome gift, full stock defers the claim
+  ---
+  duration_ms: 65.6546
+  type: 'test'
+  ...
+# Subtest: touches unlock at hearts 1/2/3, share the existing reserve from heart 2 and preserve legacy progress
+ok 18 - touches unlock at hearts 1/2/3, share the existing reserve from heart 2 and preserve legacy progress
+  ---
+  duration_ms: 92.3856
+  type: 'test'
+  ...
+# Subtest: schema 31 migration preserves earned values, claims, combat and partial gift progress exactly
+ok 19 - schema 31 migration preserves earned values, claims, combat and partial gift progress exactly
+  ---
+  duration_ms: 400.8535
+  type: 'test'
+  ...
+# Subtest: legacy empty-stock Ilyra gets her welcome claim once; corrupt legacy budgets remain rejected
+ok 20 - legacy empty-stock Ilyra gets her welcome claim once; corrupt legacy budgets remain rejected
+  ---
+  duration_ms: 30.5768
+  type: 'test'
+  ...
+# Subtest: invalid current social states are rejected, never reset
+ok 21 - invalid current social states are rejected, never reset
+  ---
+  duration_ms: 281.1946
+  type: 'test'
+  ...
+# Subtest: live wave integration grants once and probes/offline preserve social progress and the farm fingerprint
+ok 22 - live wave integration grants once and probes/offline preserve social progress and the farm fingerprint
+  ---
+  duration_ms: 166.796
+  type: 'test'
+  ...
+# Subtest: gift consumption is atomic, failed saves roll back, pause and concurrent taps do not duplicate rewards
+ok 23 - gift consumption is atomic, failed saves roll back, pause and concurrent taps do not duplicate rewards
+  ---
+  duration_ms: 77.4011
+  type: 'test'
+  ...
+# Subtest: older pre-social saves retain building access and only proven milestone gifts
+ok 24 - older pre-social saves retain building access and only proven milestone gifts
+  ---
+  duration_ms: 53.6754
+  type: 'test'
+  ...
+# Subtest: Tavern presets retain the recorded paid defense and buy prerequisites without adding gold
+ok 25 - Tavern presets retain the recorded paid defense and buy prerequisites without adding gold
+  ---
+  duration_ms: 188.6261
+  type: 'test'
+  ...
+# Subtest: first visit, optional encounters, all touches and both personal-gift conditions are represented honestly
+ok 26 - first visit, optional encounters, all touches and both personal-gift conditions are represented honestly
+  ---
+  duration_ms: 25.7953
+  type: 'test'
+  ...
+# Subtest: explicit legacy-four-heart review preserves existing access without granting new progression
+ok 27 - explicit legacy-four-heart review preserves existing access without granting new progression
+  ---
+  duration_ms: 5.8164
+  type: 'test'
+  ...
+# Subtest: each Tavern start uses a fresh Main-matching Tavern key and preserves normal and both default preview saves
+ok 28 - each Tavern start uses a fresh Main-matching Tavern key and preserves normal and both default preview saves
+  ---
+  duration_ms: 328.4687
+  type: 'test'
+  ...
+# Subtest: autoopen requires both preview flags, a generated test slot and an explicit companion
+ok 29 - autoopen requires both preview flags, a generated test slot and an explicit companion
+  ---
+  duration_ms: 0.6779
+  type: 'test'
+  ...
+# Subtest: ordinary and Tower-only builds exclude Tavern test entries
+ok 30 - ordinary and Tower-only builds exclude Tavern test entries
+  ---
+  duration_ms: 8.8727
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2566.4069

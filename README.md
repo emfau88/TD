@@ -23,13 +23,15 @@ Taverne II. Oben auf ▶ drücken; Ilyra lässt sich über **Siedlung → Tavern
 Spielstände liegen lokal im Browser. Englisch ist voreingestellt; Deutsch lässt sich im Spielmenü wählen.
 
 <!-- tavern-preview-start -->
-## Tavernen-Testbranch · 07.11.2026
+## Taverne und direkte Testzugänge · 07.11.2026
 
 **[▶ Taverne direkt im Spiel testen](https://emfau88.github.io/TD/previews/tavern/tavern-test.html)** ·
 **[▷ Maras neue Tresenclips ansehen](https://emfau88.github.io/TD/previews/tavern/tavern-counter-check.html)**
 
-Die Links zeigen den Branch [`codex/tavern-comfy-integration`](https://github.com/emfau88/TD/tree/codex/tavern-comfy-integration).
-Der normale Spielen-Link oben führt weiterhin zum veröffentlichten Main-Stand.
+Der geprüfte Tavernenstand ist nach `main` übernommen. Die direkten Testlinks zeigen
+weiterhin [`codex/tavern-comfy-integration`](https://github.com/emfau88/TD/tree/codex/tavern-comfy-integration)
+mit getrennten Testspielständen und der zusätzlichen Tresenprobe.
+Der normale Spielen-Link oben führt zum Hauptspiel; dessen aktueller Veröffentlichungsnachweis steht in der Roadmap.
 
 Im Teststarter ist **Herz 3** vorausgewählt: Mara oder Ilyra wählen, Besuch starten
 und den gewöhnlichen Rückkehrbeleg bestätigen. Danach öffnet sich die Figur im
@@ -72,7 +74,7 @@ vorerst bei einem normalen Geschenk je zehn Siege und höchstens 20 im Vorrat.
 | Weitere Tresenrollen | MC04/Schulter, MC06/Lachen und MC07/Annäherung nur vorbereitet; weitere Produktion auf Nutzerwunsch zurückgestellt. Alte Vorbeuge-V2 bleibt erhalten. |
 | Ilyra am Fenster, Herz 4/5 | Noch nicht spielbar neu freigeschaltet. Bedingungen, Begegnungen und Geschenkbilanz dieser Etappen sind Zukunftsplanung. Einzelne Bildmomente sind als sparsame Alternative vorgeschlagen, noch nicht produziert. |
 | Outfits und weitere Posen | Zukunftsideen. Keine laufende Generierung. |
-| Abschließende Abnahme | Persönliche Bewertung von Darstellung, Verständlichkeit und Tempo bleibt offen. Die Vorschau dient dieser Prüfung; Übernahme des Tavernenpakets nach Main steht noch aus. |
+| Abschließende Abnahme | Main-Übernahme vom Nutzer beauftragt und erfolgt. Die direkten Testzugänge bleiben verfügbar. Eine ausdrückliche Sichtabnahme der letzten I07-Größenkorrektur und eine gemeinsame Bewertung des Tempos werden dadurch nicht als erfolgt behauptet. |
 
 ### Reaktionssounds
 

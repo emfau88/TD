@@ -14,4 +14,10 @@ Auf ausdrückliche Rückmeldung beim Testen: größere Berührungsherzen am PC, 
 - Beim Vergleich berücksichtigt: Die bereits vorhandene Sitzungseröffnung zertifiziert das nächste Farmziel neu; Offline-Gold erhöht regulär auch die Gesamtverdienstzahl. Die Kampfzeit, laufende Welle, Türme, Gegner, Projektile, Figuren und Beziehungen bleiben unverändert. Dafür wurde keine Spielregel geändert.
 - Native Ausgangsbilder, fünf korrigierte Zeitpunkte und tatsächliche Ingame-Ansichten von Ruhe → Kompliment → Ruhe angesehen. Original und abgeleitete Laufzeitdatei sind in der Asset-Herkunft getrennt ausgewiesen.
 
-Öffentliche Versions- und Funktionsprüfung folgt nach dem Deployment. Keine weiteren Szenen-/Videoproduktionen und kein Main-Merge.
+## Öffentliche Prüfung und Main-Vorbereitung
+
+Code `2913db03` wurde mit [Pages 42378344595](https://github.com/emfau88/TD/actions/runs/42378344595) erfolgreich als getrennte Vorschau veröffentlicht. Versionskennung und Main-Basis stimmen. Vier öffentliche Desktop-/Handyfälle mit beiden Figuren und zwei Wiederaufnahmefälle bestanden; keine Browserfehler. Bei Ilyra wurden in diesem öffentlichen Wiederaufnahmefall 66.326 Gold-Unterheiten exakt einmal gutgeschrieben. Die öffentliche Ruhe→Kompliment→Ruhe-Folge und die Wiederaufnahmeansicht wurden angesehen. 721 Dateien des damaligen Hauptspiels blieben erhalten.
+
+Anschließend hat der Nutzer die Übernahme nach Main beauftragt. Das normale Produktionsbuild ohne Vorschauflags, 30/30 gezielte Save-/Tavernen-Kompatibilitätstests und zwei echte Produktionsbrowserfälle DE/Desktop und EN/Handy mit beiden Figuren, Berührungen, Kompliment und Reload bestanden. Die normale Speicherkennung wurde dabei ausdrücklich geprüft. Es wurde nicht erneut die gesamte frühere 531er-Suite ausgeführt. Code `2913db03` ist als Fast-forward nach Main übernommen und mit [Pages 42380058567](https://github.com/emfau88/TD/actions/runs/42380058567) veröffentlicht. Auch die öffentliche Hauptversion bestand beide Fälle: DE/Desktop und EN/Handy, jeweils beide Figuren, Handreaktionen, Ilyras Kompliment und Reload. Normale Speicherkennung bestätigt, keine JavaScriptfehler (`main-public/results.json`).
+
+Weitere Szenen-/Videoproduktionen bleiben zurückgestellt. Der spätere Clipplan und der separate Turm-Prüfbericht verändern keine Spielfunktionen.

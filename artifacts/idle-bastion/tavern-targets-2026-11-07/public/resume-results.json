@@ -1,0 +1,37 @@
+{
+  "base": "https://emfau88.github.io/TD/previews/tavern/",
+  "lifecycleEmulated": true,
+  "passed": true,
+  "cases": [
+    {
+      "who": "mara",
+      "language": "de",
+      "viewport": {
+        "width": 1280,
+        "height": 844
+      },
+      "paused": true,
+      "rewardUnits": 0,
+      "resumeWithoutLeaving": true,
+      "momentPreserved": true,
+      "combatFrozen": true,
+      "doubleClickCreditsOnce": true,
+      "interactionAfterReturn": true
+    },
+    {
+      "who": "ilyra",
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "paused": false,
+      "rewardUnits": 66326,
+      "resumeWithoutLeaving": true,
+      "momentPreserved": true,
+      "combatFrozen": true,
+      "doubleClickCreditsOnce": true,
+      "interactionAfterReturn": true
+    }
+  ]
+}

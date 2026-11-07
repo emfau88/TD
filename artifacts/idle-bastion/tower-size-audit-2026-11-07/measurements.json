@@ -1,0 +1,278 @@
+[
+  {
+    "kind": 1,
+    "level": 1,
+    "base_box": [
+      0,
+      43,
+      64,
+      128
+    ],
+    "weapon_box": [
+      30,
+      26,
+      66,
+      70
+    ],
+    "base_scale": 0.63,
+    "weapon_scale": 0.63,
+    "base_visible_height": 53.55,
+    "weapon_visible_height": 27.72,
+    "total_rest_height": 57.798,
+    "weapon_mount_y": -14.81,
+    "mount_in_base_source_y": 58.257
+  },
+  {
+    "kind": 1,
+    "level": 2,
+    "base_box": [
+      0,
+      36,
+      64,
+      128
+    ],
+    "weapon_box": [
+      26,
+      26,
+      69,
+      70
+    ],
+    "base_scale": 0.63,
+    "weapon_scale": 0.63,
+    "base_visible_height": 57.96,
+    "weapon_visible_height": 27.72,
+    "total_rest_height": 57.96,
+    "weapon_mount_y": -13.55,
+    "mount_in_base_source_y": 60.257
+  },
+  {
+    "kind": 1,
+    "level": 3,
+    "base_box": [
+      0,
+      36,
+      64,
+      128
+    ],
+    "weapon_box": [
+      23,
+      26,
+      73,
+      70
+    ],
+    "base_scale": 0.63,
+    "weapon_scale": 0.63,
+    "base_visible_height": 57.96,
+    "weapon_visible_height": 27.72,
+    "total_rest_height": 57.96,
+    "weapon_mount_y": -7.879999999999999,
+    "mount_in_base_source_y": 69.257
+  },
+  {
+    "kind": 2,
+    "level": 1,
+    "base_box": [
+      0,
+      120,
+      64,
+      192
+    ],
+    "weapon_box": [
+      18,
+      18,
+      46,
+      46
+    ],
+    "base_scale": 0.63,
+    "weapon_scale": 0.63,
+    "base_visible_height": 45.36,
+    "weapon_visible_height": 17.64,
+    "total_rest_height": 54.862,
+    "weapon_mount_y": -16.9144,
+    "mount_in_base_source_y": 118.917
+  },
+  {
+    "kind": 2,
+    "level": 2,
+    "base_box": [
+      0,
+      121,
+      64,
+      192
+    ],
+    "weapon_box": [
+      18,
+      12,
+      46,
+      52
+    ],
+    "base_scale": 0.63,
+    "weapon_scale": 0.63,
+    "base_visible_height": 44.73,
+    "weapon_visible_height": 25.2,
+    "total_rest_height": 52.342,
+    "weapon_mount_y": -10.6144,
+    "mount_in_base_source_y": 128.917
+  },
+  {
+    "kind": 2,
+    "level": 3,
+    "base_box": [
+      0,
+      114,
+      64,
+      192
+    ],
+    "weapon_box": [
+      18,
+      6,
+      46,
+      58
+    ],
+    "base_scale": 0.63,
+    "weapon_scale": 0.63,
+    "base_visible_height": 49.14,
+    "weapon_visible_height": 32.76,
+    "total_rest_height": 54.862,
+    "weapon_mount_y": -9.354400000000002,
+    "mount_in_base_source_y": 130.917
+  },
+  {
+    "kind": 3,
+    "level": 1,
+    "base_box": [
+      0,
+      40,
+      64,
+      128
+    ],
+    "weapon_box": [
+      27,
+      30,
+      69,
+      66
+    ],
+    "base_scale": 0.63,
+    "weapon_scale": 0.63,
+    "base_visible_height": 55.44,
+    "weapon_visible_height": 22.68,
+    "total_rest_height": 57.798,
+    "weapon_mount_y": -17.33,
+    "mount_in_base_source_y": 54.257
+  },
+  {
+    "kind": 3,
+    "level": 2,
+    "base_box": [
+      0,
+      36,
+      64,
+      128
+    ],
+    "weapon_box": [
+      27,
+      30,
+      69,
+      66
+    ],
+    "base_scale": 0.63,
+    "weapon_scale": 0.63,
+    "base_visible_height": 57.96,
+    "weapon_visible_height": 22.68,
+    "total_rest_height": 57.96,
+    "weapon_mount_y": -6.620000000000001,
+    "mount_in_base_source_y": 71.257
+  },
+  {
+    "kind": 3,
+    "level": 3,
+    "base_box": [
+      0,
+      36,
+      64,
+      128
+    ],
+    "weapon_box": [
+      26,
+      29,
+      70,
+      69
+    ],
+    "base_scale": 0.63,
+    "weapon_scale": 0.63,
+    "base_visible_height": 57.96,
+    "weapon_visible_height": 25.2,
+    "total_rest_height": 57.96,
+    "weapon_mount_y": -0.9499999999999993,
+    "mount_in_base_source_y": 80.257
+  },
+  {
+    "kind": 4,
+    "level": 1,
+    "base_box": [
+      0,
+      36,
+      64,
+      128
+    ],
+    "weapon_box": [
+      54,
+      34,
+      74,
+      108
+    ],
+    "base_scale": 0.63,
+    "weapon_scale": 0.53,
+    "base_visible_height": 57.96,
+    "weapon_visible_height": 39.22,
+    "total_rest_height": 57.96,
+    "weapon_mount_y": -0.5,
+    "mount_in_base_source_y": 80.971
+  },
+  {
+    "kind": 4,
+    "level": 2,
+    "base_box": [
+      0,
+      36,
+      64,
+      128
+    ],
+    "weapon_box": [
+      54,
+      34,
+      74,
+      108
+    ],
+    "base_scale": 0.63,
+    "weapon_scale": 0.53,
+    "base_visible_height": 57.96,
+    "weapon_visible_height": 39.22,
+    "total_rest_height": 57.96,
+    "weapon_mount_y": -0.5,
+    "mount_in_base_source_y": 80.971
+  },
+  {
+    "kind": 4,
+    "level": 3,
+    "base_box": [
+      0,
+      36,
+      64,
+      128
+    ],
+    "weapon_box": [
+      52,
+      34,
+      76,
+      116
+    ],
+    "base_scale": 0.63,
+    "weapon_scale": 0.53,
+    "base_visible_height": 57.96,
+    "weapon_visible_height": 43.46,
+    "total_rest_height": 57.96,
+    "weapon_mount_y": -0.5,
+    "mount_in_base_source_y": 80.971
+  }
+]
