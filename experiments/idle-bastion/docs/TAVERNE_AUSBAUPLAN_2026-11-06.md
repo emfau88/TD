@@ -13,9 +13,11 @@ Diese ausdrücklich gewünschte Markdown-Datei beschreibt Umfang und Abnahmekrit
 - [x] **Bulk 0 abgeschlossen:** Arbeitsbasis, Vergleichsaufnahmen und verifiziertes Altarchiv (6/6 Schritte).
 - [ ] **Bulk 1 technisch abgeschlossen, visuelle Abnahme offen:** 15 Cliprollen/Stimmen, Fehlerfälle, echtes Hauptspiel bei1280/320px mit Reload sowie Produktionsbuild bestanden; alle9 Umsetzungsschritte unten erledigt.
 - [ ] **Bulk 2 technisch abgeschlossen, menschliche Verständnis-/Sichtprobe offen:** zwölf DE/EN-Desktop-/Handyfälle bestanden; Hinweis in allen Fällen sichtbar. Gezielte Tests und Build grün; sechs von sieben Schritten unten erledigt.
-- [ ] **Bulk 3 begonnen:** M09 v1 wegen fremder Hand verworfen; v2 fertig, alle73Frames kontrolliert und Vergleich im Chat gezeigt. Nutzerfreigabe von M09 offen; weitere neue Clips noch nicht gestartet.
+- [x] **Bulk 3 abgeschlossen:** M09 v3 und I08 ausdrücklich freigegeben, als eigene Handreaktionen lokal integriert und samt Kontaktpunkten/Stimmen geprüft. M10/I09 nach Nutzervergleich verworfen; bewährte M02/I02 bleiben. Keine pauschale Neuproduktion.
+- [ ] **Bulk 4 technisch abgeschlossen:** vier Begegnungen mit dauerhaften gleichwertigen Antworten, ehrlichen Rückbezügen und Fortsetzen. Bestehendes Sprechen-Menü, kein zusätzliches Aufstiegsgate. 512/512 Tests, Build, acht DE/EN-Desktop-/Handyfälle und Hauptspiel/Reload bestanden; menschliche Inhalts-/Spielgefühlabnahme offen.
+- [ ] **Bulk 5 Vorbereitung:** vorhandene aufrechte Tresenpose und V2 werden gegen die freigegebene Mara geprüft. Zuerst ausschließlich MC01/Idle + MC05/Hand als zusammenpassende Qualitätsprobe.
 
-Bulks 4–9 sind noch offen. Diese Übersicht und die Detailcheckboxen werden nach überprüften Ergebnissen aktualisiert; eine ausstehende Sichtabnahme wird nicht durch einen technischen Haken ersetzt.
+Bulks 5–9 sind noch offen; Bulk 5 beginnt mit der kleinen isolierten Qualitätsprobe. Diese Übersicht und die Detailcheckboxen werden nach überprüften Ergebnissen aktualisiert; eine ausstehende Sichtabnahme wird nicht durch einen technischen Haken ersetzt.
 
 ## 1. Entscheidung: der empfohlene Weg
 
@@ -48,7 +50,7 @@ Die Tabellen im Plan beschreiben mögliche Zustände und interne Zuordnungen. Si
 
 | Bereich | Tatsächlicher Stand | Folgerung |
 | --- | --- | --- |
-| Animationen | Mara M01–M08 und Ilyra I01–I07 ausdrücklich freigegeben; noch nicht eingebaut | Beim Austausch exakt die abgenommenen Revisionen verwenden |
+| Animationen | Mara M01–M08 und Ilyra I01–I07 ausdrücklich freigegeben und lokal integriert; zusätzlich M09 v3/I08 als eigene Hände integriert | Beim Austausch exakt die abgenommenen Revisionen verwenden |
 | Dateiformat | Neu: stumme H.264-MP4s, 480 × 704, 24 FPS, Hintergrund enthalten. Alt: transparente WebP-Atlanten, 480 × 700, 30 FPS | Neuer Darstellungsadapter und geprüfte Komposition nötig; bloßer Dateitausch genügt nicht |
 | Umfang | Neue 15 MP4s: 11.221.966 Byte; alte 15 Laufzeit-Atlanten: 48.628.964 Byte | Rund 77 % weniger Dateidaten, aber kein identischer Codec-/Laufzeitvergleich und keine RAM-Messung |
 | Einstieg | Drei Gespräche: 0 → 8 → 16 → 23; normales Geschenk → 35 Punkte / Herz 2 | Schnellen Einstieg erhalten |
@@ -196,6 +198,8 @@ Danach: M02/I02 für Haare, M03/I03 für Schulter, M05/I05 für echtes Lachen, M
 
 Eine neue Herzfreischaltung benötigt **keinen zusätzlichen KI-Clip**: zunächst die bestehende dezente Kopfbestätigung plus neue UI-Animation; später passt in der Standardansicht die freigegebene Freude zu einem freudigen Aufstieg. Ernste Storyabschnitte bleiben davon ausgenommen. Diese spätere Änderung wird ausdrücklich im UX-Paket geprüft und nicht heimlich im reinen Assettausch vorgenommen.
 
+**Nutzerentscheidung nach den Vergleichen:** I08 ist freigegeben. Neue M10 und I09 verbessern die Wirkung aus Nutzersicht nicht; stattdessen bleiben die links gezeigten bereits freigegebenen M02/I02 in Verwendung. Damit sind nur die zwei eigenen Handreaktionen als neue Standardassets vorgesehen. Passende bestehende Reaktionen dürfen bewusst mehrere Situationen bedienen. M09 wird ausschließlich wegen des beanstandeten Fingerzuckens korrigiert.
+
 ### 5.2 Herz 4: sieben Rollen pro neuem Treffpunkt
 
 Für Mara heißen die Plan-IDs `MC01–MC07`, für Ilyra `IF01–IF07`. MC = Mara am Counter/Tresen; IF = Ilyra am Fenster. Pro Figur **eine** verbindliche Grundpose und ein unveränderter Szenenhintergrund.
@@ -223,7 +227,7 @@ Diese sieben Rollen sind ein vollständiges kleines Set, kein Versprechen auf je
 
 Die neue Wangenaktion wird als ortsgebundene Belohnung benannt: „Neu: Wange berühren am Tresen“. Die Standardansicht erhält dafür keinen unbenutzbaren Hotspot und keine neue Ortsauswahl: Der vorhandene direkte Eintrag „Zum Tresen“ unter Sprechen führt zum passenden Ort. Soll die Wangenberührung später überall verfügbar sein, sind zwei zusätzliche Reaktionen für die Standardpose nötig.
 
-**Produktionsumfang des vorgeschlagenen vollständigen Bogens:** vier Standard-Ergänzungen + vierzehn Herz-4-Rollen + vier Herz-5-Rollen = **22 zusätzliche Rollen**, mit einer vorhandenen Tresen-Reaktionsvorlage. Kein Auftrag, diese nun alle zu rendern. Erst die vier Standard-Ergänzungen, danach ein kleines Mara-Tresenpaket als Qualitätsnachweis.
+**Produktionsumfang des vorgeschlagenen vollständigen Bogens:** nach Nutzervergleich zwei neue Standard-Handreaktionen + vierzehn Herz-4-Rollen + vier Herz-5-Rollen = **20 zusätzliche Rollen**, mit einer vorhandenen Tresen-Reaktionsvorlage. Kein Auftrag, diese nun alle zu rendern. Zuerst die nötigen Standard-Handreaktionen, die bereits guten Gesprächsclips behalten; danach ein kleines Mara-Tresenpaket als Qualitätsnachweis.
 
 Vorerst zurückstellen: weitere Hotspots ohne eigene Reaktion, dauerhaft tiefe Ellbogenhaltung mit vollständigem Bedienumfang, Umarmung aus schwieriger Perspektive, frei kombinierbare Outfitwechsel und mehrere zusätzliche Räume. Sie vervielfachen den nötigen Animationsbestand.
 
@@ -372,28 +376,35 @@ Abhängig von Bulk 1; benötigt keine neue KI-Animation.
 
 ### Bulk 3 — Vier fehlende Standardreaktionen
 
+**Abgeschlossen:** Beide eigenen Handreaktionen sind nach Nutzerfreigabe integriert. M09 v3 ersetzt das beanstandete Fingerzucken; I08 bleibt die freigegebene Fassung. Neue M10/I09 werden nach Nutzervergleich nicht verwendet, M02/I02 bleiben bewusst für Gespräche erhalten. Kein weiterer Standardclip wird ohne konkreten Bedarf neu produziert.
+
 Abhängig von Bulk 1; kann nach Bulk 2 unabhängig vom neuen Szenensystem abgenommen werden.
 
-- [x] M09/Hand aus bestehender Mara-Referenz einzeln erzeugt und eigene Bildprüfung durchgeführt: v1 verworfen (fremde Hand), v2 ohne fremde Hand,73Frames/3,04s. Vergleich im Chat gezeigt; **Nutzerfreigabe noch offen**.
-- [ ] I08/Hand aus Ilyras Referenz einzeln erzeugen und beurteilen.
-- [ ] M10 und I09 als kurze ruhige Gesprächsreaktionen erstellen; bestehende Haare-/Schulter-/Lachclips behalten.
-- [ ] Handreaktionen dem tatsächlichen Herz-3-Handkontakt zuordnen; Lachen bleibt M05/I05. Neutralen Dialog von Haarberührung trennen.
-- [ ] Start-/Endpose, Hände, Hals, Bildränder und Rückkehr in den Idle in der echten UI prüfen; Nutzerabnahme pro Clip einholen.
-- [ ] Eigene Clip-Rollen einführen, statt die globale Hand→Kichern-Abkürzung an anderer Stelle erneut einzubauen.
+- [x] M09 erzeugt und verglichen: v1 verworfen (fremde Hand), v2 ohne fremde Hand. Nutzer findet Bewegung/Blick gut, beanstandet Fingerzucken.
+- [x] Notwendige M09-Korrektur v3 erzeugt; vollständige Bildfolge und Handdetails geprüft, Vergleich im Chat gezeigt. Finger wirken in der eigenen Sichtkontrolle ruhiger.
+- [x] M09 v3 vom Nutzer ausdrücklich freigegeben (07.11.2026), unverändert eingebunden und im echten UI geprüft; keine Freigabe aus technischen Tests abgeleitet.
+- [x] I08/Hand aus gleicher Ilyra-Referenz einzeln erzeugt (73Frames/3,04s;234,4s Renderzeit); vollständige Bildfolge, Gesicht/Hände und Ränder kontrolliert. Keine fremde Hand; **Vom Nutzer freigegeben**; eigener Handclip lokal integriert, bildlinker Kontaktpunkt passend gesetzt. Echte UI: Hand→I08, Lachen→I05, Gespräch/Haare→I02, Schulter→I03; Stimmen, Stoppen beim Schließen und unveränderte Punkte/Geschenke geprüft.
+- [x] M10 erzeugt und verglichen; Nutzer bevorzugt die bisherige M02-Fassung (linker Clip). **M02 für Gespräche behalten, neue M10 nicht verwenden.** Keine weitere Neuproduktion nötig.
+- [x] I09 erzeugt und verglichen; Nutzer bevorzugt die bisherige I02-Fassung (linker Clip). **I02 für Gespräche behalten, neue I09 nicht verwenden.** Bestehende Haare-/Schulter-/Lachclips erhalten.
+- [x] Freigegebene Handreaktionen dem tatsächlichen Herz-3-Handkontakt zugeordnet; Lachen bleibt M05/I05. M02/I02 für neutrale Gespräche ausdrücklich weiterverwenden; deren passende Mehrfachnutzung ist nach Nutzerentscheidung akzeptiert.
+- [x] Beide Handclips vom Nutzer abgenommen; echte UI auf Desktop/390px geprüft: Hand→M09/I08, Lachen→M05/I05, Gespräch/Haare→M02/I02, Schulter→M03/I03; separate Stimmen laufen/stoppen, keine unerwarteten Punkte/Geschenke oder Browserfehler. Bildlinke Handanker Mara(117,590), Ilyra(102,568).
+- [x] Eigene optionale Handrolle eingeführt: Ilyra nutzt I08; Mara nutzt den freigegebenen M09 v3. Keine neue globale Hand→Kichern-Abkürzung. TypeScript, Diffprüfung und gezielte Chrome-UI-Probe ohne GPU bestanden.
 
-**Abnahme:** Die drei Berührungen sind sichtbar verschieden, Plaudern wirkt nicht jedes Mal wie Haarberührung. Die freigegebenen 15 Clips bleiben erhalten und sinnvoll verwendet.
+**Abnahme:** Freigegebene eigene Handreaktionen spielen passend zum gewählten Kontaktpunkt; bewährte M02/I02 bleiben nach Nutzervergleich die Gesprächsreaktionen. Die freigegebenen 15 Clips bleiben erhalten und sinnvoll verwendet. Keine Neuproduktion nur um eine formale Cliptrennung zu erzwingen.
 
 ### Bulk 4 — Herz 2 bis 3 mit kleinen Begegnungen füllen
 
-Abhängig von Bulk 2; Bulk 3 liefert passende neutrale Animationen.
+**Technisch abgeschlossen, menschliche Inhalts-/Spielgefühlprobe offen.** Schema 38 ergänzt ausschließlich Begegnungsrecords; Kampfregeln 21 und Herz-/Geschenkvoraussetzungen bleiben erhalten. Acht Browserfälle mit beiden sichtbaren Antworten, Sprachwechsel, Saveablehnung, Doppeltipp, Fortsetzen und neutralem Zweig bestanden. Vollsuite 512/512, Produktionsbuild und echtes Hauptspiel/Reload bei1280/320px bestanden. [Nachweise](../../../artifacts/idle-bastion/tavern-implementation-2026-11-07/REPORT.md).
 
-- [ ] Je Figur zwei kurze Begegnungen bei 10/20 der bestehenden 30 Siege schreiben, mit je einer kleinen Wahl und späterem Rückbezug.
-- [ ] Neue Dialoge mit vorhandenen Geschichten abstimmen; versprochene Handlungen/Orte noch nicht als schon benutzbar darstellen.
-- [ ] Verfügbarkeit, ungesehene Begegnungen und tatsächlich getroffene Entscheidungen dauerhaft je Figur speichern; übersprungene Wahl neutral behandeln.
-- [ ] Neue Gespräche über Sprechen/Plaudern und Antwortoptionen direkt im bestehenden Dialog anbieten. Kein Begegnungsarchiv oder zusätzlicher Haupttab; Wiederholung der Herzmomente bleibt an den Herzen.
-- [ ] Beim Erreichen mehrerer Meilensteine nichts verlieren, nichts automatisch nacheinander aufzwingen und keinen Siegfortschritt zurücksetzen.
-- [ ] Persönliche Geschenke erzählerisch konkretisieren; normale Geschenke und ihre begrenzte Rolle verständlich halten.
-- [ ] Tatsächlichen Weg zu Herz 3 mit schwächerer, normaler und überlegener Verteidigung sowie beiden Figuren prüfen. Aktive Simulationszeit und reale Bedien-/Lesezeit unterscheiden.
+Abhängig von Bulk 2; Die bewährten M02/I02 liefern nach Nutzerentscheidung bereits passende neutrale Animationen; keine neue Gesprächsproduktion erforderlich.
+
+- [x] Je Figur zwei kurze Begegnungen bei 10/20 der bestehenden 30 Siege schreiben, mit je einer kleinen Wahl und späterem Rückbezug.
+- [x] Neue Dialoge mit vorhandenen Geschichten abstimmen; versprochene Handlungen/Orte noch nicht als schon benutzbar darstellen.
+- [x] Verfügbarkeit, ungesehene Begegnungen und tatsächlich getroffene Entscheidungen dauerhaft je Figur speichern; übersprungene Wahl neutral behandeln.
+- [x] Neue Gespräche über Sprechen/Plaudern und Antwortoptionen direkt im bestehenden Dialog anbieten. Kein Begegnungsarchiv oder zusätzlicher Haupttab; Wiederholung der Herzmomente bleibt an den Herzen.
+- [x] Beim Erreichen mehrerer Meilensteine nichts verlieren, nichts automatisch nacheinander aufzwingen und keinen Siegfortschritt zurücksetzen.
+- [x] Persönliche Geschenke erzählerisch konkretisieren; normale Geschenke und ihre begrenzte Rolle verständlich halten.
+- [x] Tatsächlichen Weg zu Herz 3 mit schwächerer, normaler und überlegener Verteidigung sowie beiden Figuren prüfen. Gemessene reguläre Farmfälle: 10:02–11:37 Minuten Kampfzeit für30 Siege; beide Figuren parallel gleich schnell. Engine-Einstiegswellen-Randfall4:41, daher keine harte5-Minuten-Grenze. Aktive Simulationszeit und nicht gemessene reale Bedien-/Lesezeit ausdrücklich getrennt. [Methodik](../../../artifacts/idle-bastion/tavern-implementation-2026-11-07/bulk4-timing/REPORT.md).
 
 **Abnahme:** Vor Herz 3 gibt es zwei echte neue Begegnungen; Fortschritt und Wiederholung bleiben frei, keine zusätzliche verdeckte Dialogsperre.
 
@@ -495,4 +506,4 @@ Nach dem vollständigen ersten Bogen; keine Voraussetzung für Bulk 0–8.
 
 Die neuen Standardclips sind visuell freigegeben; ihre Spielintegration ist noch nicht geprüft. Tresen-V2 ist eine vorhandene bevorzugte Vorlage, kein bereits vollständig ausgelieferter Herz-4-Ort. Die genannten Zeiten und späteren Siegziele sind Zielkorridore beziehungsweise Testvorschläge. Verständlichkeit, endgültiges Tempo und die Wirkung der neuen Szenen werden erst durch die aufgeführten Prüfungen bestätigt.
 
-Für diesen Plan wurden aktuelle gespeicherte Main-Quellen, die aktuelle Anzeige-/Aktionslogik, Audio-/Story-Historie und vorhandene Tresen-Dokumentation und Vorschauaufnahmen gelesen beziehungsweise angesehen. Die anschließende Nutzerpräzisierung ist in den Oberflächenregeln, Textbeispielen, Szenenabläufen und Bulk-Abnahmen berücksichtigt: gezielte Verbesserung der vertrauten Taverne, kein vollständiger Umbau. Diese Aussage beschreibt die abgeschlossene Planungsphase; die anschließend beauftragte Umsetzung ist oben je Bulk dokumentiert. Aktuell: Bulk 0 abgeschlossen, Bulk 1/2 lokal technisch abgeschlossen und menschliche Integrations-/Verständnisabnahme offen. M09 v2 als erste neue Standardreaktion fertig zur Nutzerprüfung; noch nicht eingebunden. Der Einstiegspfad bleibt Bulk 0–2: sichern, die abgenommenen Clips einbauen und den bestehenden Fortschritt kurz und verständlich erklären.
+Für diesen Plan wurden aktuelle gespeicherte Main-Quellen, die aktuelle Anzeige-/Aktionslogik, Audio-/Story-Historie und vorhandene Tresen-Dokumentation und Vorschauaufnahmen gelesen beziehungsweise angesehen. Die anschließende Nutzerpräzisierung ist in den Oberflächenregeln, Textbeispielen, Szenenabläufen und Bulk-Abnahmen berücksichtigt: gezielte Verbesserung der vertrauten Taverne, kein vollständiger Umbau. Diese Aussage beschreibt die abgeschlossene Planungsphase; die anschließend beauftragte Umsetzung ist oben je Bulk dokumentiert. Aktuell: Bulk 0 abgeschlossen, Bulk 1/2 lokal technisch abgeschlossen und menschliche Integrations-/Verständnisabnahme offen. Bulk 3 abgeschlossen: M09 v3/I08 freigegeben und lokal geprüft integriert; M02/I02 bleiben. Bulk 4 technisch abgeschlossen und nachgewiesen; Bulk 5 bereitet die isolierte Tresen-Qualitätsprobe vor. Der Einstiegspfad bleibt Bulk 0–2: sichern, die abgenommenen Clips einbauen und den bestehenden Fortschritt kurz und verständlich erklären.

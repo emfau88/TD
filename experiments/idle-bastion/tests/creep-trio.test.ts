@@ -1,3 +1,4 @@
+import {expectedEmptyEncounters} from './cleanup-fixtures';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {readFileSync,statSync} from 'node:fs';
@@ -51,7 +52,7 @@ test('each new creature survives live save/reload at entry and along the route',
 });
 test('old rule-20 combat is exact until the boundary and farm claims require a fresh proof',()=>{
  const s=read('baseline/mixed-fresh.json').snapshots.clear14;
- const b=IdleBattle.restore(s)!;assert.ok(b);assert.deepEqual(b.snapshot(),{...s,schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:BATTLE_RULES_VERSION});
+ const b=IdleBattle.restore(s)!;assert.ok(b);assert.deepEqual(b.snapshot(),{...s,schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:BATTLE_RULES_VERSION,social:{...s.social,encounters:expectedEmptyEncounters()}});
  const old=read('baseline/mixed-w14-24h.json').proof;assert.equal(isFarmCertificateValid(old,b),false);
  const before=b.snapshot(),proof=certifyFarm(b,old);assert.ok(proof);assert.equal(proof.rulesVersion,21);assert.deepEqual(b.snapshot(),before);
  b.update(3);assert.equal(b.waveRecipeVersion,21);assert.ok(IdleBattle.restore(b.snapshot()));

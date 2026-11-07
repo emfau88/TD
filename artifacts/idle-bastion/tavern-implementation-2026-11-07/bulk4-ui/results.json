@@ -1,0 +1,525 @@
+{
+  "cases": [
+    {
+      "who": "mara",
+      "language": "de",
+      "width": 1280,
+      "firstChoice": "first",
+      "before": {
+        "records": {
+          "first": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          },
+          "second": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 10,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "after": {
+        "records": {
+          "first": {
+            "seen": true,
+            "choice": "first",
+            "completed": true
+          },
+          "second": {
+            "seen": true,
+            "choice": "second",
+            "completed": true
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 30,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "bounds": {
+        "horizontalOverflow": false,
+        "stageHeight": 494.8125,
+        "threeActions": 3,
+        "answersVisible": true
+      },
+      "recollection": "Du hast gefragt, was mir mein altes Zahnrad bedeutet. Deine Frage ist mir im Kopf geblieben. Heute habe ich ein kleines Stück Messing aufgehoben.",
+      "giftLine": "Ein kleines Messingzahnrad, nur für mich? Es passt zu meinem alten Glücksstück. Du hast dir wirklich gemerkt, was mir etwas bedeutet.",
+      "errors": []
+    },
+    {
+      "who": "ilyra",
+      "language": "de",
+      "width": 1280,
+      "firstChoice": "first",
+      "before": {
+        "records": {
+          "first": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          },
+          "second": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 10,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "after": {
+        "records": {
+          "first": {
+            "seen": true,
+            "choice": "first",
+            "completed": true
+          },
+          "second": {
+            "seen": true,
+            "choice": "second",
+            "completed": true
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 30,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "bounds": {
+        "horizontalOverflow": false,
+        "stageHeight": 494.8125,
+        "threeActions": 3,
+        "answersVisible": true
+      },
+      "recollection": "Ich habe vorhin nach unserem Abendlicht gesehen. Deinen Namen dafür habe ich nicht vergessen. Heute wollte ich dich zuerst finden.",
+      "giftLine": "Ein kleiner Sternanhänger? Den behalte ich nah bei mir. Nicht, weil er mir den Weg zeigt – sondern weil du an mich gedacht hast.",
+      "errors": []
+    },
+    {
+      "who": "mara",
+      "language": "en",
+      "width": 1280,
+      "firstChoice": "second",
+      "before": {
+        "records": {
+          "first": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          },
+          "second": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 10,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "after": {
+        "records": {
+          "first": {
+            "seen": true,
+            "choice": "second",
+            "completed": true
+          },
+          "second": {
+            "seen": true,
+            "choice": "second",
+            "completed": true
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 30,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "bounds": {
+        "horizontalOverflow": false,
+        "stageHeight": 494.8125,
+        "threeActions": 3,
+        "answersVisible": true
+      },
+      "recollection": "“You make me miss a beat, too,” you said. Cheeky. Apparently I did not forget it quite so quickly – and today I saved a little piece of brass.",
+      "giftLine": "A little brass cog, just for me? It goes with my old lucky piece. You really remembered what matters to me.",
+      "errors": []
+    },
+    {
+      "who": "ilyra",
+      "language": "en",
+      "width": 1280,
+      "firstChoice": "second",
+      "before": {
+        "records": {
+          "first": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          },
+          "second": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 10,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "after": {
+        "records": {
+          "first": {
+            "seen": true,
+            "choice": "second",
+            "completed": true
+          },
+          "second": {
+            "seen": true,
+            "choice": "second",
+            "completed": true
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 30,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "bounds": {
+        "horizontalOverflow": false,
+        "stageHeight": 494.8125,
+        "threeActions": 3,
+        "answersVisible": true
+      },
+      "recollection": "You wanted to simply watch the star with me. I thought of that today – and this time I did not want to wait for you to speak to me.",
+      "giftLine": "A little star pendant? I will keep it close. Not because it shows me the way – because you thought of me.",
+      "errors": []
+    },
+    {
+      "who": "mara",
+      "language": "de",
+      "width": 320,
+      "firstChoice": null,
+      "before": {
+        "records": {
+          "first": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          },
+          "second": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 10,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "after": {
+        "records": {
+          "first": {
+            "seen": true,
+            "choice": null,
+            "completed": true
+          },
+          "second": {
+            "seen": true,
+            "choice": "second",
+            "completed": true
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 30,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "bounds": {
+        "horizontalOverflow": false,
+        "stageHeight": 266.09375,
+        "threeActions": 3,
+        "answersVisible": true
+      },
+      "recollection": "Heute habe ich ein kleines Stück Messing gefunden. In der Werkstatt kann ich es nicht brauchen. Trotzdem wollte ich es nicht wegwerfen.",
+      "giftLine": "Ein kleines Messingzahnrad, nur für mich? Es passt zu meinem alten Glücksstück. Du hast dir wirklich gemerkt, was mir etwas bedeutet.",
+      "errors": []
+    },
+    {
+      "who": "ilyra",
+      "language": "de",
+      "width": 320,
+      "firstChoice": null,
+      "before": {
+        "records": {
+          "first": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          },
+          "second": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 10,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "after": {
+        "records": {
+          "first": {
+            "seen": true,
+            "choice": null,
+            "completed": true
+          },
+          "second": {
+            "seen": true,
+            "choice": "second",
+            "completed": true
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 30,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "bounds": {
+        "horizontalOverflow": false,
+        "stageHeight": 266.09375,
+        "threeActions": 3,
+        "answersVisible": true
+      },
+      "recollection": "Ich habe vorhin nach meinem kleinen Stern gesehen. Danach habe ich mich dabei ertappt, nach dir Ausschau zu halten.",
+      "giftLine": "Ein kleiner Sternanhänger? Den behalte ich nah bei mir. Nicht, weil er mir den Weg zeigt – sondern weil du an mich gedacht hast.",
+      "errors": []
+    },
+    {
+      "who": "mara",
+      "language": "en",
+      "width": 320,
+      "firstChoice": null,
+      "before": {
+        "records": {
+          "first": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          },
+          "second": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 10,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "after": {
+        "records": {
+          "first": {
+            "seen": true,
+            "choice": null,
+            "completed": true
+          },
+          "second": {
+            "seen": true,
+            "choice": "second",
+            "completed": true
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 30,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "bounds": {
+        "horizontalOverflow": false,
+        "stageHeight": 272.09375,
+        "threeActions": 3,
+        "answersVisible": true
+      },
+      "recollection": "I found a little piece of brass today. I have no use for it in the workshop. Still, I did not want to throw it away.",
+      "giftLine": "A little brass cog, just for me? It goes with my old lucky piece. You really remembered what matters to me.",
+      "errors": []
+    },
+    {
+      "who": "ilyra",
+      "language": "en",
+      "width": 320,
+      "firstChoice": null,
+      "before": {
+        "records": {
+          "first": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          },
+          "second": {
+            "seen": false,
+            "choice": null,
+            "completed": false
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 10,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "after": {
+        "records": {
+          "first": {
+            "seen": true,
+            "choice": null,
+            "completed": true
+          },
+          "second": {
+            "seen": true,
+            "choice": "second",
+            "completed": true
+          }
+        },
+        "points": 47,
+        "gifts": 20,
+        "personal": {
+          "clears": 30,
+          "claimed": false
+        },
+        "reserves": {
+          "talk": 3,
+          "touch": 3,
+          "clears": 0
+        }
+      },
+      "bounds": {
+        "horizontalOverflow": false,
+        "stageHeight": 272.09375,
+        "threeActions": 3,
+        "answersVisible": true
+      },
+      "recollection": "I looked for my little star earlier. Afterwards, I caught myself looking out for you.",
+      "giftLine": "A little star pendant? I will keep it close. Not because it shows me the way – because you thought of me.",
+      "errors": []
+    }
+  ],
+  "skippedAllStillEarnedHeartThree": true
+}

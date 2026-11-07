@@ -1,0 +1,5806 @@
+{
+  "date": "2026-11-07",
+  "worktree": "C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\tavern-comfy-integration",
+  "battleSchema": 38,
+  "battleRules": 21,
+  "fixedStepSeconds": 0.025,
+  "sourceHashes": {
+    "battle.ts": "c512a9877703f7f43ac25a7c290bbd4debca6a9599ee5ba39598d6ac767f7ce4",
+    "farming.ts": "310f718b0331ad399f56bd082974d5faf77e0a4156132b2bc0c5da33d843416c",
+    "tavern-social.ts": "a9920e5d17f0b068df2e055a8890a0c3ec28df90f87c8a3a193b9014757e6776",
+    "tavern-encounter-state.ts": "42cdefc5181f0a49908a7ad59b2905c045bc639fb8a507d1ac60fb2802c60bbb",
+    "wave-recipes.ts": "cc50f21c578df635ce859ae29c6c15dc03ac1a4c7a4489dfe098f9185c1990c5",
+    "enemy-roster.ts": "fe52286f965fa9b802a142ae6ec6659037416dca6956e75f58036eb1a994ce5e",
+    "balance.ts": "00e3be868ee54d92f8d14ae5e2ff44669a903756f0a1679a51bbfcfe3e266dff",
+    "boss.ts": "9e1209b7384c30bc31511b3b7e477bb6771cbb74ea87fc4b8e3ab0ec64cf30c5",
+    "mara.ts": "22ef7de5ca5c2927d05a3845b73d9473ac9837859a6870ee0a2ce87d5bf6ece7",
+    "ilyra.ts": "88db65506ce7f8f92c35e65f1e0eb8ee9352a03a418f682aada430717d842ac5"
+  },
+  "noDatabaseAccess": true,
+  "measuredCpuWallMilliseconds": 6713.637,
+  "interpretation": "Combat elapsed is 1x simulation seconds including normal intermissions. Fixture transaction calls and optional encounter status commands run instantly without advancing combat. Human reading, actual UI input, animation, save latency, frame scheduling and offline absence are not timed. Paid historical defense snapshots are migrated with current rules; no new combat gold/tower grants or upgrades occur in timed runs. Social relationships are intentionally reset and advanced through normal commands to exactly 35 points per character before measurement.",
+  "results": [
+    {
+      "id": "weaker-favorite-certified",
+      "defense": {
+        "id": "weaker",
+        "label": "Schwächerer bezahlter Stand nach Welle 28",
+        "file": "control-wave28-earned.json"
+      },
+      "input": {
+        "path": "C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\tavern-comfy-integration\\artifacts\\idle-bastion\\acceptance\\b16\\economy\\control-wave28-earned.json",
+        "sha256": "9418831dc4e52a14c22bd6049f88e37df818da89308fee7731ec70b3f3dcd23d",
+        "sourceSchema": 29
+      },
+      "focus": "favorite",
+      "targets": [
+        "mara"
+      ],
+      "farmPolicy": "certified",
+      "farmWave": 23,
+      "certifiedFarm": {
+        "wave": 23,
+        "twoCycleSeconds": 47,
+        "rewardGold": 226,
+        "rewardRemainderUnits": 160
+      },
+      "defenseTowers": [
+        {
+          "pad": "tower-start",
+          "kind": 1,
+          "level": 9,
+          "damage": 230.685,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-03",
+          "kind": 1,
+          "level": 8,
+          "damage": 177.45000000000002,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 2,
+          "damage": 12.25,
+          "cooldown": 0.7964601769911506
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 7,
+          "damage": 273,
+          "cooldown": 1.1923076923076923
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 4,
+          "level": 5,
+          "damage": 302.1,
+          "cooldown": 1.4230769230769231
+        },
+        {
+          "pad": "cell-24-7",
+          "kind": 3,
+          "level": 6,
+          "damage": 210,
+          "cooldown": 1.1923076923076923
+        }
+      ],
+      "automaticMara": true,
+      "automaticIlyra": false,
+      "manualCombatCasts": 0,
+      "combatSeconds": 696.525,
+      "waveSeconds": 636.525,
+      "intermissionSeconds": 60,
+      "clears": [
+        {
+          "index": 1,
+          "atCombatSeconds": 23.5,
+          "wave": 23,
+          "attemptId": 29,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 2,
+          "atCombatSeconds": 47.075,
+          "wave": 23,
+          "attemptId": 30,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 3,
+          "atCombatSeconds": 69.75,
+          "wave": 23,
+          "attemptId": 31,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 4,
+          "atCombatSeconds": 93.175,
+          "wave": 23,
+          "attemptId": 32,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 5,
+          "atCombatSeconds": 116.3,
+          "wave": 23,
+          "attemptId": 33,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 6,
+          "atCombatSeconds": 139.275,
+          "wave": 23,
+          "attemptId": 34,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 7,
+          "atCombatSeconds": 161.85,
+          "wave": 23,
+          "attemptId": 35,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 8,
+          "atCombatSeconds": 184.725,
+          "wave": 23,
+          "attemptId": 36,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 9,
+          "atCombatSeconds": 208.225,
+          "wave": 23,
+          "attemptId": 37,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 10,
+          "atCombatSeconds": 231.3,
+          "wave": 23,
+          "attemptId": 38,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 11,
+          "atCombatSeconds": 255.3,
+          "wave": 23,
+          "attemptId": 39,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 12,
+          "atCombatSeconds": 278.175,
+          "wave": 23,
+          "attemptId": 40,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 13,
+          "atCombatSeconds": 301.675,
+          "wave": 23,
+          "attemptId": 41,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 14,
+          "atCombatSeconds": 325.175,
+          "wave": 23,
+          "attemptId": 42,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 15,
+          "atCombatSeconds": 348.75,
+          "wave": 23,
+          "attemptId": 43,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 16,
+          "atCombatSeconds": 371.425,
+          "wave": 23,
+          "attemptId": 44,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 17,
+          "atCombatSeconds": 394.85,
+          "wave": 23,
+          "attemptId": 45,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 18,
+          "atCombatSeconds": 417.975,
+          "wave": 23,
+          "attemptId": 46,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 19,
+          "atCombatSeconds": 440.95,
+          "wave": 23,
+          "attemptId": 47,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 20,
+          "atCombatSeconds": 463.525,
+          "wave": 23,
+          "attemptId": 48,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 21,
+          "atCombatSeconds": 486.4,
+          "wave": 23,
+          "attemptId": 49,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 22,
+          "atCombatSeconds": 509.9,
+          "wave": 23,
+          "attemptId": 50,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 23,
+          "atCombatSeconds": 532.975,
+          "wave": 23,
+          "attemptId": 51,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 24,
+          "atCombatSeconds": 556.975,
+          "wave": 23,
+          "attemptId": 52,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 25,
+          "atCombatSeconds": 579.85,
+          "wave": 23,
+          "attemptId": 53,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 26,
+          "atCombatSeconds": 603.35,
+          "wave": 23,
+          "attemptId": 54,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 27,
+          "atCombatSeconds": 626.85,
+          "wave": 23,
+          "attemptId": 55,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 28,
+          "atCombatSeconds": 650.425,
+          "wave": 23,
+          "attemptId": 56,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 29,
+          "atCombatSeconds": 673.1,
+          "wave": 23,
+          "attemptId": 57,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 30,
+          "atCombatSeconds": 696.525,
+          "wave": 23,
+          "attemptId": 58,
+          "lives": 20,
+          "gifts": 4,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        }
+      ],
+      "losses": 0,
+      "escapes": 0,
+      "actions": [
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 35,
+          "afterPoints": 39,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 39,
+          "afterPoints": 43,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 43,
+          "afterPoints": 47,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "normal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 11,
+            "reason": "rewarded",
+            "gift": "normal"
+          },
+          "beforePoints": 47,
+          "afterPoints": 58,
+          "beforeGifts": 2,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 696.525,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "personal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 12,
+            "reason": "rewarded",
+            "gift": "personal"
+          },
+          "beforePoints": 58,
+          "afterPoints": 70,
+          "beforeGifts": 4,
+          "afterGifts": 4
+        }
+      ],
+      "visits": [
+        {
+          "atWins": 10,
+          "atCombatSeconds": 231.3,
+          "encounter": "first",
+          "targets": [
+            "mara"
+          ],
+          "instantStateCommands": 3,
+          "rewards": 0
+        },
+        {
+          "atWins": 20,
+          "atCombatSeconds": 463.525,
+          "encounter": "second",
+          "targets": [
+            "mara"
+          ],
+          "instantStateCommands": 3,
+          "rewards": 0
+        }
+      ],
+      "gateChecks": [
+        {
+          "atWins": 0,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        },
+        {
+          "atWins": 29,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        }
+      ],
+      "initialPoints": {
+        "mara": 35,
+        "ilyra": 35
+      },
+      "initialGifts": 2,
+      "beforePersonal": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": false,
+              "choice": null,
+              "completed": false
+            },
+            "second": {
+              "seen": false,
+              "choice": null,
+              "completed": false
+            }
+          }
+        },
+        "points": {
+          "mara": 58,
+          "ilyra": 35
+        },
+        "gifts": 4,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": false
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": false
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 58
+      },
+      "finalSocial": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": false,
+              "choice": null,
+              "completed": false
+            },
+            "second": {
+              "seen": false,
+              "choice": null,
+              "completed": false
+            }
+          }
+        },
+        "points": {
+          "mara": 70,
+          "ilyra": 35
+        },
+        "gifts": 4,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": true
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": false
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 58
+      },
+      "realReadingAndInputSeconds": null,
+      "instantAffectionTransactions": 5,
+      "instantEncounterStateCommands": 6,
+      "snapshotsRoundtripValid": true
+    },
+    {
+      "id": "weaker-both-certified",
+      "defense": {
+        "id": "weaker",
+        "label": "Schwächerer bezahlter Stand nach Welle 28",
+        "file": "control-wave28-earned.json"
+      },
+      "input": {
+        "path": "C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\tavern-comfy-integration\\artifacts\\idle-bastion\\acceptance\\b16\\economy\\control-wave28-earned.json",
+        "sha256": "9418831dc4e52a14c22bd6049f88e37df818da89308fee7731ec70b3f3dcd23d",
+        "sourceSchema": 29
+      },
+      "focus": "both",
+      "targets": [
+        "mara",
+        "ilyra"
+      ],
+      "farmPolicy": "certified",
+      "farmWave": 23,
+      "certifiedFarm": {
+        "wave": 23,
+        "twoCycleSeconds": 47,
+        "rewardGold": 226,
+        "rewardRemainderUnits": 160
+      },
+      "defenseTowers": [
+        {
+          "pad": "tower-start",
+          "kind": 1,
+          "level": 9,
+          "damage": 230.685,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-03",
+          "kind": 1,
+          "level": 8,
+          "damage": 177.45000000000002,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 2,
+          "damage": 12.25,
+          "cooldown": 0.7964601769911506
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 7,
+          "damage": 273,
+          "cooldown": 1.1923076923076923
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 4,
+          "level": 5,
+          "damage": 302.1,
+          "cooldown": 1.4230769230769231
+        },
+        {
+          "pad": "cell-24-7",
+          "kind": 3,
+          "level": 6,
+          "damage": 210,
+          "cooldown": 1.1923076923076923
+        }
+      ],
+      "automaticMara": true,
+      "automaticIlyra": false,
+      "manualCombatCasts": 0,
+      "combatSeconds": 696.525,
+      "waveSeconds": 636.525,
+      "intermissionSeconds": 60,
+      "clears": [
+        {
+          "index": 1,
+          "atCombatSeconds": 23.5,
+          "wave": 23,
+          "attemptId": 29,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 2,
+          "atCombatSeconds": 47.075,
+          "wave": 23,
+          "attemptId": 30,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 3,
+          "atCombatSeconds": 69.75,
+          "wave": 23,
+          "attemptId": 31,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 4,
+          "atCombatSeconds": 93.175,
+          "wave": 23,
+          "attemptId": 32,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 5,
+          "atCombatSeconds": 116.3,
+          "wave": 23,
+          "attemptId": 33,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 6,
+          "atCombatSeconds": 139.275,
+          "wave": 23,
+          "attemptId": 34,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 7,
+          "atCombatSeconds": 161.85,
+          "wave": 23,
+          "attemptId": 35,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 8,
+          "atCombatSeconds": 184.725,
+          "wave": 23,
+          "attemptId": 36,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 9,
+          "atCombatSeconds": 208.225,
+          "wave": 23,
+          "attemptId": 37,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 10,
+          "atCombatSeconds": 231.3,
+          "wave": 23,
+          "attemptId": 38,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 11,
+          "atCombatSeconds": 255.3,
+          "wave": 23,
+          "attemptId": 39,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 12,
+          "atCombatSeconds": 278.175,
+          "wave": 23,
+          "attemptId": 40,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 13,
+          "atCombatSeconds": 301.675,
+          "wave": 23,
+          "attemptId": 41,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 14,
+          "atCombatSeconds": 325.175,
+          "wave": 23,
+          "attemptId": 42,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 15,
+          "atCombatSeconds": 348.75,
+          "wave": 23,
+          "attemptId": 43,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 16,
+          "atCombatSeconds": 371.425,
+          "wave": 23,
+          "attemptId": 44,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 17,
+          "atCombatSeconds": 394.85,
+          "wave": 23,
+          "attemptId": 45,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 18,
+          "atCombatSeconds": 417.975,
+          "wave": 23,
+          "attemptId": 46,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 19,
+          "atCombatSeconds": 440.95,
+          "wave": 23,
+          "attemptId": 47,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 20,
+          "atCombatSeconds": 463.525,
+          "wave": 23,
+          "attemptId": 48,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 21,
+          "atCombatSeconds": 486.4,
+          "wave": 23,
+          "attemptId": 49,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 22,
+          "atCombatSeconds": 509.9,
+          "wave": 23,
+          "attemptId": 50,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 23,
+          "atCombatSeconds": 532.975,
+          "wave": 23,
+          "attemptId": 51,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 24,
+          "atCombatSeconds": 556.975,
+          "wave": 23,
+          "attemptId": 52,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 25,
+          "atCombatSeconds": 579.85,
+          "wave": 23,
+          "attemptId": 53,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 26,
+          "atCombatSeconds": 603.35,
+          "wave": 23,
+          "attemptId": 54,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 27,
+          "atCombatSeconds": 626.85,
+          "wave": 23,
+          "attemptId": 55,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 28,
+          "atCombatSeconds": 650.425,
+          "wave": 23,
+          "attemptId": 56,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 29,
+          "atCombatSeconds": 673.1,
+          "wave": 23,
+          "attemptId": 57,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 30,
+          "atCombatSeconds": 696.525,
+          "wave": 23,
+          "attemptId": 58,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        }
+      ],
+      "losses": 0,
+      "escapes": 0,
+      "actions": [
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 35,
+          "afterPoints": 39,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 39,
+          "afterPoints": 43,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 43,
+          "afterPoints": 47,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "normal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 11,
+            "reason": "rewarded",
+            "gift": "normal"
+          },
+          "beforePoints": 47,
+          "afterPoints": 58,
+          "beforeGifts": 2,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 35,
+          "afterPoints": 39,
+          "beforeGifts": 1,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 39,
+          "afterPoints": 43,
+          "beforeGifts": 1,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 43,
+          "afterPoints": 47,
+          "beforeGifts": 1,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "gift",
+          "choice": {
+            "gift": "normal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 11,
+            "reason": "rewarded",
+            "gift": "normal"
+          },
+          "beforePoints": 47,
+          "afterPoints": 58,
+          "beforeGifts": 1,
+          "afterGifts": 0
+        },
+        {
+          "atCombatSeconds": 696.525,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "personal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 12,
+            "reason": "rewarded",
+            "gift": "personal"
+          },
+          "beforePoints": 58,
+          "afterPoints": 70,
+          "beforeGifts": 3,
+          "afterGifts": 3
+        },
+        {
+          "atCombatSeconds": 696.525,
+          "who": "ilyra",
+          "action": "gift",
+          "choice": {
+            "gift": "personal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 12,
+            "reason": "rewarded",
+            "gift": "personal"
+          },
+          "beforePoints": 58,
+          "afterPoints": 70,
+          "beforeGifts": 3,
+          "afterGifts": 3
+        }
+      ],
+      "visits": [
+        {
+          "atWins": 10,
+          "atCombatSeconds": 231.3,
+          "encounter": "first",
+          "targets": [
+            "mara",
+            "ilyra"
+          ],
+          "instantStateCommands": 6,
+          "rewards": 0
+        },
+        {
+          "atWins": 20,
+          "atCombatSeconds": 463.525,
+          "encounter": "second",
+          "targets": [
+            "mara",
+            "ilyra"
+          ],
+          "instantStateCommands": 6,
+          "rewards": 0
+        }
+      ],
+      "gateChecks": [
+        {
+          "atWins": 0,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            },
+            {
+              "who": "ilyra",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        },
+        {
+          "atWins": 29,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            },
+            {
+              "who": "ilyra",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        }
+      ],
+      "initialPoints": {
+        "mara": 35,
+        "ilyra": 35
+      },
+      "initialGifts": 2,
+      "beforePersonal": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          }
+        },
+        "points": {
+          "mara": 58,
+          "ilyra": 58
+        },
+        "gifts": 3,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": false
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": false
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 58
+      },
+      "finalSocial": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          }
+        },
+        "points": {
+          "mara": 70,
+          "ilyra": 70
+        },
+        "gifts": 3,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": true
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": true
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 58
+      },
+      "realReadingAndInputSeconds": null,
+      "instantAffectionTransactions": 10,
+      "instantEncounterStateCommands": 12,
+      "snapshotsRoundtripValid": true
+    },
+    {
+      "id": "normal-favorite-certified",
+      "defense": {
+        "id": "normal",
+        "label": "Mittlerer bezahlter Stand nach Welle 40",
+        "file": "control-wave40-earned.json"
+      },
+      "input": {
+        "path": "C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\tavern-comfy-integration\\artifacts\\idle-bastion\\acceptance\\b16\\economy\\control-wave40-earned.json",
+        "sha256": "1ed87a61eee55921bf161b5635b860eaa268b8d8bf189a8ad4674c3295f6a724",
+        "sourceSchema": 29
+      },
+      "focus": "favorite",
+      "targets": [
+        "mara"
+      ],
+      "farmPolicy": "certified",
+      "farmWave": 23,
+      "certifiedFarm": {
+        "wave": 23,
+        "twoCycleSeconds": 39.85,
+        "rewardGold": 226,
+        "rewardRemainderUnits": 160
+      },
+      "defenseTowers": [
+        {
+          "pad": "tower-start",
+          "kind": 1,
+          "level": 12,
+          "damage": 506.8149450000001,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-03",
+          "kind": 1,
+          "level": 12,
+          "damage": 506.8149450000001,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 2,
+          "damage": 12.25,
+          "cooldown": 0.7964601769911506
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 12,
+          "damage": 1013.6298900000002,
+          "cooldown": 1.1923076923076923
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 4,
+          "level": 9,
+          "damage": 873.3075,
+          "cooldown": 1.4230769230769231
+        },
+        {
+          "pad": "cell-24-7",
+          "kind": 3,
+          "level": 11,
+          "damage": 779.7153000000001,
+          "cooldown": 1.1923076923076923
+        }
+      ],
+      "automaticMara": true,
+      "automaticIlyra": false,
+      "manualCombatCasts": 0,
+      "combatSeconds": 602.25,
+      "waveSeconds": 542.25,
+      "intermissionSeconds": 60,
+      "clears": [
+        {
+          "index": 1,
+          "atCombatSeconds": 20,
+          "wave": 23,
+          "attemptId": 71,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 2,
+          "atCombatSeconds": 40.3,
+          "wave": 23,
+          "attemptId": 72,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 3,
+          "atCombatSeconds": 60.225,
+          "wave": 23,
+          "attemptId": 73,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 4,
+          "atCombatSeconds": 80.225,
+          "wave": 23,
+          "attemptId": 74,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 5,
+          "atCombatSeconds": 100.525,
+          "wave": 23,
+          "attemptId": 75,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 6,
+          "atCombatSeconds": 120.45,
+          "wave": 23,
+          "attemptId": 76,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 7,
+          "atCombatSeconds": 140.45,
+          "wave": 23,
+          "attemptId": 77,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 8,
+          "atCombatSeconds": 160.75,
+          "wave": 23,
+          "attemptId": 78,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 9,
+          "atCombatSeconds": 180.675,
+          "wave": 23,
+          "attemptId": 79,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 10,
+          "atCombatSeconds": 200.675,
+          "wave": 23,
+          "attemptId": 80,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 11,
+          "atCombatSeconds": 220.975,
+          "wave": 23,
+          "attemptId": 81,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 12,
+          "atCombatSeconds": 240.9,
+          "wave": 23,
+          "attemptId": 82,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 13,
+          "atCombatSeconds": 260.9,
+          "wave": 23,
+          "attemptId": 83,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 14,
+          "atCombatSeconds": 281.2,
+          "wave": 23,
+          "attemptId": 84,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 15,
+          "atCombatSeconds": 301.125,
+          "wave": 23,
+          "attemptId": 85,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 16,
+          "atCombatSeconds": 321.125,
+          "wave": 23,
+          "attemptId": 86,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 17,
+          "atCombatSeconds": 341.425,
+          "wave": 23,
+          "attemptId": 87,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 18,
+          "atCombatSeconds": 361.35,
+          "wave": 23,
+          "attemptId": 88,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 19,
+          "atCombatSeconds": 381.35,
+          "wave": 23,
+          "attemptId": 89,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 20,
+          "atCombatSeconds": 401.65,
+          "wave": 23,
+          "attemptId": 90,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 21,
+          "atCombatSeconds": 421.575,
+          "wave": 23,
+          "attemptId": 91,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 22,
+          "atCombatSeconds": 441.575,
+          "wave": 23,
+          "attemptId": 92,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 23,
+          "atCombatSeconds": 461.875,
+          "wave": 23,
+          "attemptId": 93,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 24,
+          "atCombatSeconds": 481.8,
+          "wave": 23,
+          "attemptId": 94,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 25,
+          "atCombatSeconds": 501.8,
+          "wave": 23,
+          "attemptId": 95,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 26,
+          "atCombatSeconds": 522.1,
+          "wave": 23,
+          "attemptId": 96,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 27,
+          "atCombatSeconds": 542.025,
+          "wave": 23,
+          "attemptId": 97,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 28,
+          "atCombatSeconds": 562.025,
+          "wave": 23,
+          "attemptId": 98,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 29,
+          "atCombatSeconds": 582.325,
+          "wave": 23,
+          "attemptId": 99,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 30,
+          "atCombatSeconds": 602.25,
+          "wave": 23,
+          "attemptId": 100,
+          "lives": 20,
+          "gifts": 4,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        }
+      ],
+      "losses": 0,
+      "escapes": 0,
+      "actions": [
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 35,
+          "afterPoints": 39,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 39,
+          "afterPoints": 43,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 43,
+          "afterPoints": 47,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "normal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 11,
+            "reason": "rewarded",
+            "gift": "normal"
+          },
+          "beforePoints": 47,
+          "afterPoints": 58,
+          "beforeGifts": 2,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 602.25,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "personal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 12,
+            "reason": "rewarded",
+            "gift": "personal"
+          },
+          "beforePoints": 58,
+          "afterPoints": 70,
+          "beforeGifts": 4,
+          "afterGifts": 4
+        }
+      ],
+      "visits": [
+        {
+          "atWins": 10,
+          "atCombatSeconds": 200.675,
+          "encounter": "first",
+          "targets": [
+            "mara"
+          ],
+          "instantStateCommands": 3,
+          "rewards": 0
+        },
+        {
+          "atWins": 20,
+          "atCombatSeconds": 401.65,
+          "encounter": "second",
+          "targets": [
+            "mara"
+          ],
+          "instantStateCommands": 3,
+          "rewards": 0
+        }
+      ],
+      "gateChecks": [
+        {
+          "atWins": 0,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        },
+        {
+          "atWins": 29,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        }
+      ],
+      "initialPoints": {
+        "mara": 35,
+        "ilyra": 35
+      },
+      "initialGifts": 2,
+      "beforePersonal": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": false,
+              "choice": null,
+              "completed": false
+            },
+            "second": {
+              "seen": false,
+              "choice": null,
+              "completed": false
+            }
+          }
+        },
+        "points": {
+          "mara": 58,
+          "ilyra": 35
+        },
+        "gifts": 4,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": false
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": false
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 100
+      },
+      "finalSocial": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": false,
+              "choice": null,
+              "completed": false
+            },
+            "second": {
+              "seen": false,
+              "choice": null,
+              "completed": false
+            }
+          }
+        },
+        "points": {
+          "mara": 70,
+          "ilyra": 35
+        },
+        "gifts": 4,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": true
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": false
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 100
+      },
+      "realReadingAndInputSeconds": null,
+      "instantAffectionTransactions": 5,
+      "instantEncounterStateCommands": 6,
+      "snapshotsRoundtripValid": true
+    },
+    {
+      "id": "normal-both-certified",
+      "defense": {
+        "id": "normal",
+        "label": "Mittlerer bezahlter Stand nach Welle 40",
+        "file": "control-wave40-earned.json"
+      },
+      "input": {
+        "path": "C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\tavern-comfy-integration\\artifacts\\idle-bastion\\acceptance\\b16\\economy\\control-wave40-earned.json",
+        "sha256": "1ed87a61eee55921bf161b5635b860eaa268b8d8bf189a8ad4674c3295f6a724",
+        "sourceSchema": 29
+      },
+      "focus": "both",
+      "targets": [
+        "mara",
+        "ilyra"
+      ],
+      "farmPolicy": "certified",
+      "farmWave": 23,
+      "certifiedFarm": {
+        "wave": 23,
+        "twoCycleSeconds": 39.85,
+        "rewardGold": 226,
+        "rewardRemainderUnits": 160
+      },
+      "defenseTowers": [
+        {
+          "pad": "tower-start",
+          "kind": 1,
+          "level": 12,
+          "damage": 506.8149450000001,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-03",
+          "kind": 1,
+          "level": 12,
+          "damage": 506.8149450000001,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 2,
+          "damage": 12.25,
+          "cooldown": 0.7964601769911506
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 12,
+          "damage": 1013.6298900000002,
+          "cooldown": 1.1923076923076923
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 4,
+          "level": 9,
+          "damage": 873.3075,
+          "cooldown": 1.4230769230769231
+        },
+        {
+          "pad": "cell-24-7",
+          "kind": 3,
+          "level": 11,
+          "damage": 779.7153000000001,
+          "cooldown": 1.1923076923076923
+        }
+      ],
+      "automaticMara": true,
+      "automaticIlyra": false,
+      "manualCombatCasts": 0,
+      "combatSeconds": 602.25,
+      "waveSeconds": 542.25,
+      "intermissionSeconds": 60,
+      "clears": [
+        {
+          "index": 1,
+          "atCombatSeconds": 20,
+          "wave": 23,
+          "attemptId": 71,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 2,
+          "atCombatSeconds": 40.3,
+          "wave": 23,
+          "attemptId": 72,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 3,
+          "atCombatSeconds": 60.225,
+          "wave": 23,
+          "attemptId": 73,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 4,
+          "atCombatSeconds": 80.225,
+          "wave": 23,
+          "attemptId": 74,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 5,
+          "atCombatSeconds": 100.525,
+          "wave": 23,
+          "attemptId": 75,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 6,
+          "atCombatSeconds": 120.45,
+          "wave": 23,
+          "attemptId": 76,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 7,
+          "atCombatSeconds": 140.45,
+          "wave": 23,
+          "attemptId": 77,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 8,
+          "atCombatSeconds": 160.75,
+          "wave": 23,
+          "attemptId": 78,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 9,
+          "atCombatSeconds": 180.675,
+          "wave": 23,
+          "attemptId": 79,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 10,
+          "atCombatSeconds": 200.675,
+          "wave": 23,
+          "attemptId": 80,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 11,
+          "atCombatSeconds": 220.975,
+          "wave": 23,
+          "attemptId": 81,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 12,
+          "atCombatSeconds": 240.9,
+          "wave": 23,
+          "attemptId": 82,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 13,
+          "atCombatSeconds": 260.9,
+          "wave": 23,
+          "attemptId": 83,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 14,
+          "atCombatSeconds": 281.2,
+          "wave": 23,
+          "attemptId": 84,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 15,
+          "atCombatSeconds": 301.125,
+          "wave": 23,
+          "attemptId": 85,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 16,
+          "atCombatSeconds": 321.125,
+          "wave": 23,
+          "attemptId": 86,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 17,
+          "atCombatSeconds": 341.425,
+          "wave": 23,
+          "attemptId": 87,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 18,
+          "atCombatSeconds": 361.35,
+          "wave": 23,
+          "attemptId": 88,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 19,
+          "atCombatSeconds": 381.35,
+          "wave": 23,
+          "attemptId": 89,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 20,
+          "atCombatSeconds": 401.65,
+          "wave": 23,
+          "attemptId": 90,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 21,
+          "atCombatSeconds": 421.575,
+          "wave": 23,
+          "attemptId": 91,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 22,
+          "atCombatSeconds": 441.575,
+          "wave": 23,
+          "attemptId": 92,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 23,
+          "atCombatSeconds": 461.875,
+          "wave": 23,
+          "attemptId": 93,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 24,
+          "atCombatSeconds": 481.8,
+          "wave": 23,
+          "attemptId": 94,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 25,
+          "atCombatSeconds": 501.8,
+          "wave": 23,
+          "attemptId": 95,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 26,
+          "atCombatSeconds": 522.1,
+          "wave": 23,
+          "attemptId": 96,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 27,
+          "atCombatSeconds": 542.025,
+          "wave": 23,
+          "attemptId": 97,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 28,
+          "atCombatSeconds": 562.025,
+          "wave": 23,
+          "attemptId": 98,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 29,
+          "atCombatSeconds": 582.325,
+          "wave": 23,
+          "attemptId": 99,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 30,
+          "atCombatSeconds": 602.25,
+          "wave": 23,
+          "attemptId": 100,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        }
+      ],
+      "losses": 0,
+      "escapes": 0,
+      "actions": [
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 35,
+          "afterPoints": 39,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 39,
+          "afterPoints": 43,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 43,
+          "afterPoints": 47,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "normal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 11,
+            "reason": "rewarded",
+            "gift": "normal"
+          },
+          "beforePoints": 47,
+          "afterPoints": 58,
+          "beforeGifts": 2,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 35,
+          "afterPoints": 39,
+          "beforeGifts": 1,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 39,
+          "afterPoints": 43,
+          "beforeGifts": 1,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 43,
+          "afterPoints": 47,
+          "beforeGifts": 1,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "gift",
+          "choice": {
+            "gift": "normal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 11,
+            "reason": "rewarded",
+            "gift": "normal"
+          },
+          "beforePoints": 47,
+          "afterPoints": 58,
+          "beforeGifts": 1,
+          "afterGifts": 0
+        },
+        {
+          "atCombatSeconds": 602.25,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "personal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 12,
+            "reason": "rewarded",
+            "gift": "personal"
+          },
+          "beforePoints": 58,
+          "afterPoints": 70,
+          "beforeGifts": 3,
+          "afterGifts": 3
+        },
+        {
+          "atCombatSeconds": 602.25,
+          "who": "ilyra",
+          "action": "gift",
+          "choice": {
+            "gift": "personal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 12,
+            "reason": "rewarded",
+            "gift": "personal"
+          },
+          "beforePoints": 58,
+          "afterPoints": 70,
+          "beforeGifts": 3,
+          "afterGifts": 3
+        }
+      ],
+      "visits": [
+        {
+          "atWins": 10,
+          "atCombatSeconds": 200.675,
+          "encounter": "first",
+          "targets": [
+            "mara",
+            "ilyra"
+          ],
+          "instantStateCommands": 6,
+          "rewards": 0
+        },
+        {
+          "atWins": 20,
+          "atCombatSeconds": 401.65,
+          "encounter": "second",
+          "targets": [
+            "mara",
+            "ilyra"
+          ],
+          "instantStateCommands": 6,
+          "rewards": 0
+        }
+      ],
+      "gateChecks": [
+        {
+          "atWins": 0,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            },
+            {
+              "who": "ilyra",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        },
+        {
+          "atWins": 29,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            },
+            {
+              "who": "ilyra",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        }
+      ],
+      "initialPoints": {
+        "mara": 35,
+        "ilyra": 35
+      },
+      "initialGifts": 2,
+      "beforePersonal": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          }
+        },
+        "points": {
+          "mara": 58,
+          "ilyra": 58
+        },
+        "gifts": 3,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": false
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": false
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 100
+      },
+      "finalSocial": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          }
+        },
+        "points": {
+          "mara": 70,
+          "ilyra": 70
+        },
+        "gifts": 3,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": true
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": true
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 100
+      },
+      "realReadingAndInputSeconds": null,
+      "instantAffectionTransactions": 10,
+      "instantEncounterStateCommands": 12,
+      "snapshotsRoundtripValid": true
+    },
+    {
+      "id": "superior-favorite-certified",
+      "defense": {
+        "id": "superior",
+        "label": "Überlegener bezahlter Stand nach Welle 70",
+        "file": "one-storm-wave70-earned.json"
+      },
+      "input": {
+        "path": "C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\tavern-comfy-integration\\artifacts\\idle-bastion\\acceptance\\b16\\economy\\one-storm-wave70-earned.json",
+        "sha256": "edc244aec90e6e5b495d26029a44c65f7679a1a19608fc3901209231006b85d4",
+        "sourceSchema": 29
+      },
+      "focus": "favorite",
+      "targets": [
+        "mara"
+      ],
+      "farmPolicy": "certified",
+      "farmWave": 48,
+      "certifiedFarm": {
+        "wave": 48,
+        "twoCycleSeconds": 42.25,
+        "rewardGold": 358,
+        "rewardRemainderUnits": 600
+      },
+      "defenseTowers": [
+        {
+          "pad": "tower-start",
+          "kind": 1,
+          "level": 24,
+          "damage": 11807.817729955534,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-03",
+          "kind": 1,
+          "level": 24,
+          "damage": 11807.817729955534,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 2,
+          "damage": 12.25,
+          "cooldown": 0.7964601769911506
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 24,
+          "damage": 23615.635459911067,
+          "cooldown": 1.1923076923076923
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 4,
+          "level": 22,
+          "damage": 26450.31021503141,
+          "cooldown": 1.4230769230769231
+        },
+        {
+          "pad": "cell-24-7",
+          "kind": 5,
+          "level": 23,
+          "damage": 16868.31104279362,
+          "cooldown": 0.8076923076923077
+        }
+      ],
+      "automaticMara": true,
+      "automaticIlyra": false,
+      "manualCombatCasts": 0,
+      "combatSeconds": 622.25,
+      "waveSeconds": 562.25,
+      "intermissionSeconds": 60,
+      "clears": [
+        {
+          "index": 1,
+          "atCombatSeconds": 21.2,
+          "wave": 48,
+          "attemptId": 1628,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 2,
+          "atCombatSeconds": 41.1,
+          "wave": 48,
+          "attemptId": 1629,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 3,
+          "atCombatSeconds": 62.225,
+          "wave": 48,
+          "attemptId": 1630,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 4,
+          "atCombatSeconds": 83.425,
+          "wave": 48,
+          "attemptId": 1631,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 5,
+          "atCombatSeconds": 103.325,
+          "wave": 48,
+          "attemptId": 1632,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 6,
+          "atCombatSeconds": 124.45,
+          "wave": 48,
+          "attemptId": 1633,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 7,
+          "atCombatSeconds": 145.65,
+          "wave": 48,
+          "attemptId": 1634,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 8,
+          "atCombatSeconds": 165.55,
+          "wave": 48,
+          "attemptId": 1635,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 9,
+          "atCombatSeconds": 186.675,
+          "wave": 48,
+          "attemptId": 1636,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 10,
+          "atCombatSeconds": 207.875,
+          "wave": 48,
+          "attemptId": 1637,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 11,
+          "atCombatSeconds": 227.775,
+          "wave": 48,
+          "attemptId": 1638,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 12,
+          "atCombatSeconds": 248.9,
+          "wave": 48,
+          "attemptId": 1639,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 13,
+          "atCombatSeconds": 270.1,
+          "wave": 48,
+          "attemptId": 1640,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 14,
+          "atCombatSeconds": 290,
+          "wave": 48,
+          "attemptId": 1641,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 15,
+          "atCombatSeconds": 311.125,
+          "wave": 48,
+          "attemptId": 1642,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 16,
+          "atCombatSeconds": 332.325,
+          "wave": 48,
+          "attemptId": 1643,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 17,
+          "atCombatSeconds": 352.225,
+          "wave": 48,
+          "attemptId": 1644,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 18,
+          "atCombatSeconds": 373.35,
+          "wave": 48,
+          "attemptId": 1645,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 19,
+          "atCombatSeconds": 394.55,
+          "wave": 48,
+          "attemptId": 1646,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 20,
+          "atCombatSeconds": 414.45,
+          "wave": 48,
+          "attemptId": 1647,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 21,
+          "atCombatSeconds": 435.575,
+          "wave": 48,
+          "attemptId": 1648,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 22,
+          "atCombatSeconds": 456.775,
+          "wave": 48,
+          "attemptId": 1649,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 23,
+          "atCombatSeconds": 476.675,
+          "wave": 48,
+          "attemptId": 1650,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 24,
+          "atCombatSeconds": 497.8,
+          "wave": 48,
+          "attemptId": 1651,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 25,
+          "atCombatSeconds": 519,
+          "wave": 48,
+          "attemptId": 1652,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 26,
+          "atCombatSeconds": 538.9,
+          "wave": 48,
+          "attemptId": 1653,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 27,
+          "atCombatSeconds": 560.025,
+          "wave": 48,
+          "attemptId": 1654,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 28,
+          "atCombatSeconds": 581.225,
+          "wave": 48,
+          "attemptId": 1655,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 29,
+          "atCombatSeconds": 601.125,
+          "wave": 48,
+          "attemptId": 1656,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        },
+        {
+          "index": 30,
+          "atCombatSeconds": 622.25,
+          "wave": 48,
+          "attemptId": 1657,
+          "lives": 20,
+          "gifts": 4,
+          "points": {
+            "mara": 58,
+            "ilyra": 35
+          }
+        }
+      ],
+      "losses": 0,
+      "escapes": 0,
+      "actions": [
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 35,
+          "afterPoints": 39,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 39,
+          "afterPoints": 43,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 43,
+          "afterPoints": 47,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "normal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 11,
+            "reason": "rewarded",
+            "gift": "normal"
+          },
+          "beforePoints": 47,
+          "afterPoints": 58,
+          "beforeGifts": 2,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 622.25,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "personal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 12,
+            "reason": "rewarded",
+            "gift": "personal"
+          },
+          "beforePoints": 58,
+          "afterPoints": 70,
+          "beforeGifts": 4,
+          "afterGifts": 4
+        }
+      ],
+      "visits": [
+        {
+          "atWins": 10,
+          "atCombatSeconds": 207.875,
+          "encounter": "first",
+          "targets": [
+            "mara"
+          ],
+          "instantStateCommands": 3,
+          "rewards": 0
+        },
+        {
+          "atWins": 20,
+          "atCombatSeconds": 414.45,
+          "encounter": "second",
+          "targets": [
+            "mara"
+          ],
+          "instantStateCommands": 3,
+          "rewards": 0
+        }
+      ],
+      "gateChecks": [
+        {
+          "atWins": 0,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        },
+        {
+          "atWins": 29,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        }
+      ],
+      "initialPoints": {
+        "mara": 35,
+        "ilyra": 35
+      },
+      "initialGifts": 2,
+      "beforePersonal": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": false,
+              "choice": null,
+              "completed": false
+            },
+            "second": {
+              "seen": false,
+              "choice": null,
+              "completed": false
+            }
+          }
+        },
+        "points": {
+          "mara": 58,
+          "ilyra": 35
+        },
+        "gifts": 4,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": false
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": false
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 1657
+      },
+      "finalSocial": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": false,
+              "choice": null,
+              "completed": false
+            },
+            "second": {
+              "seen": false,
+              "choice": null,
+              "completed": false
+            }
+          }
+        },
+        "points": {
+          "mara": 70,
+          "ilyra": 35
+        },
+        "gifts": 4,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": true
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": false
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 1657
+      },
+      "realReadingAndInputSeconds": null,
+      "instantAffectionTransactions": 5,
+      "instantEncounterStateCommands": 6,
+      "snapshotsRoundtripValid": true
+    },
+    {
+      "id": "superior-both-certified",
+      "defense": {
+        "id": "superior",
+        "label": "Überlegener bezahlter Stand nach Welle 70",
+        "file": "one-storm-wave70-earned.json"
+      },
+      "input": {
+        "path": "C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\tavern-comfy-integration\\artifacts\\idle-bastion\\acceptance\\b16\\economy\\one-storm-wave70-earned.json",
+        "sha256": "edc244aec90e6e5b495d26029a44c65f7679a1a19608fc3901209231006b85d4",
+        "sourceSchema": 29
+      },
+      "focus": "both",
+      "targets": [
+        "mara",
+        "ilyra"
+      ],
+      "farmPolicy": "certified",
+      "farmWave": 48,
+      "certifiedFarm": {
+        "wave": 48,
+        "twoCycleSeconds": 42.25,
+        "rewardGold": 358,
+        "rewardRemainderUnits": 600
+      },
+      "defenseTowers": [
+        {
+          "pad": "tower-start",
+          "kind": 1,
+          "level": 24,
+          "damage": 11807.817729955534,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-03",
+          "kind": 1,
+          "level": 24,
+          "damage": 11807.817729955534,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 2,
+          "damage": 12.25,
+          "cooldown": 0.7964601769911506
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 24,
+          "damage": 23615.635459911067,
+          "cooldown": 1.1923076923076923
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 4,
+          "level": 22,
+          "damage": 26450.31021503141,
+          "cooldown": 1.4230769230769231
+        },
+        {
+          "pad": "cell-24-7",
+          "kind": 5,
+          "level": 23,
+          "damage": 16868.31104279362,
+          "cooldown": 0.8076923076923077
+        }
+      ],
+      "automaticMara": true,
+      "automaticIlyra": false,
+      "manualCombatCasts": 0,
+      "combatSeconds": 622.25,
+      "waveSeconds": 562.25,
+      "intermissionSeconds": 60,
+      "clears": [
+        {
+          "index": 1,
+          "atCombatSeconds": 21.2,
+          "wave": 48,
+          "attemptId": 1628,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 2,
+          "atCombatSeconds": 41.1,
+          "wave": 48,
+          "attemptId": 1629,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 3,
+          "atCombatSeconds": 62.225,
+          "wave": 48,
+          "attemptId": 1630,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 4,
+          "atCombatSeconds": 83.425,
+          "wave": 48,
+          "attemptId": 1631,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 5,
+          "atCombatSeconds": 103.325,
+          "wave": 48,
+          "attemptId": 1632,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 6,
+          "atCombatSeconds": 124.45,
+          "wave": 48,
+          "attemptId": 1633,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 7,
+          "atCombatSeconds": 145.65,
+          "wave": 48,
+          "attemptId": 1634,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 8,
+          "atCombatSeconds": 165.55,
+          "wave": 48,
+          "attemptId": 1635,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 9,
+          "atCombatSeconds": 186.675,
+          "wave": 48,
+          "attemptId": 1636,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 10,
+          "atCombatSeconds": 207.875,
+          "wave": 48,
+          "attemptId": 1637,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 11,
+          "atCombatSeconds": 227.775,
+          "wave": 48,
+          "attemptId": 1638,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 12,
+          "atCombatSeconds": 248.9,
+          "wave": 48,
+          "attemptId": 1639,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 13,
+          "atCombatSeconds": 270.1,
+          "wave": 48,
+          "attemptId": 1640,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 14,
+          "atCombatSeconds": 290,
+          "wave": 48,
+          "attemptId": 1641,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 15,
+          "atCombatSeconds": 311.125,
+          "wave": 48,
+          "attemptId": 1642,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 16,
+          "atCombatSeconds": 332.325,
+          "wave": 48,
+          "attemptId": 1643,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 17,
+          "atCombatSeconds": 352.225,
+          "wave": 48,
+          "attemptId": 1644,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 18,
+          "atCombatSeconds": 373.35,
+          "wave": 48,
+          "attemptId": 1645,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 19,
+          "atCombatSeconds": 394.55,
+          "wave": 48,
+          "attemptId": 1646,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 20,
+          "atCombatSeconds": 414.45,
+          "wave": 48,
+          "attemptId": 1647,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 21,
+          "atCombatSeconds": 435.575,
+          "wave": 48,
+          "attemptId": 1648,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 22,
+          "atCombatSeconds": 456.775,
+          "wave": 48,
+          "attemptId": 1649,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 23,
+          "atCombatSeconds": 476.675,
+          "wave": 48,
+          "attemptId": 1650,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 24,
+          "atCombatSeconds": 497.8,
+          "wave": 48,
+          "attemptId": 1651,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 25,
+          "atCombatSeconds": 519,
+          "wave": 48,
+          "attemptId": 1652,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 26,
+          "atCombatSeconds": 538.9,
+          "wave": 48,
+          "attemptId": 1653,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 27,
+          "atCombatSeconds": 560.025,
+          "wave": 48,
+          "attemptId": 1654,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 28,
+          "atCombatSeconds": 581.225,
+          "wave": 48,
+          "attemptId": 1655,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 29,
+          "atCombatSeconds": 601.125,
+          "wave": 48,
+          "attemptId": 1656,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 30,
+          "atCombatSeconds": 622.25,
+          "wave": 48,
+          "attemptId": 1657,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        }
+      ],
+      "losses": 0,
+      "escapes": 0,
+      "actions": [
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 35,
+          "afterPoints": 39,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 39,
+          "afterPoints": 43,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 43,
+          "afterPoints": 47,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "normal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 11,
+            "reason": "rewarded",
+            "gift": "normal"
+          },
+          "beforePoints": 47,
+          "afterPoints": 58,
+          "beforeGifts": 2,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 35,
+          "afterPoints": 39,
+          "beforeGifts": 1,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 39,
+          "afterPoints": 43,
+          "beforeGifts": 1,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 43,
+          "afterPoints": 47,
+          "beforeGifts": 1,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "gift",
+          "choice": {
+            "gift": "normal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 11,
+            "reason": "rewarded",
+            "gift": "normal"
+          },
+          "beforePoints": 47,
+          "afterPoints": 58,
+          "beforeGifts": 1,
+          "afterGifts": 0
+        },
+        {
+          "atCombatSeconds": 622.25,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "personal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 12,
+            "reason": "rewarded",
+            "gift": "personal"
+          },
+          "beforePoints": 58,
+          "afterPoints": 70,
+          "beforeGifts": 3,
+          "afterGifts": 3
+        },
+        {
+          "atCombatSeconds": 622.25,
+          "who": "ilyra",
+          "action": "gift",
+          "choice": {
+            "gift": "personal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 12,
+            "reason": "rewarded",
+            "gift": "personal"
+          },
+          "beforePoints": 58,
+          "afterPoints": 70,
+          "beforeGifts": 3,
+          "afterGifts": 3
+        }
+      ],
+      "visits": [
+        {
+          "atWins": 10,
+          "atCombatSeconds": 207.875,
+          "encounter": "first",
+          "targets": [
+            "mara",
+            "ilyra"
+          ],
+          "instantStateCommands": 6,
+          "rewards": 0
+        },
+        {
+          "atWins": 20,
+          "atCombatSeconds": 414.45,
+          "encounter": "second",
+          "targets": [
+            "mara",
+            "ilyra"
+          ],
+          "instantStateCommands": 6,
+          "rewards": 0
+        }
+      ],
+      "gateChecks": [
+        {
+          "atWins": 0,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            },
+            {
+              "who": "ilyra",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        },
+        {
+          "atWins": 29,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            },
+            {
+              "who": "ilyra",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        }
+      ],
+      "initialPoints": {
+        "mara": 35,
+        "ilyra": 35
+      },
+      "initialGifts": 2,
+      "beforePersonal": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          }
+        },
+        "points": {
+          "mara": 58,
+          "ilyra": 58
+        },
+        "gifts": 3,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": false
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": false
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 1657
+      },
+      "finalSocial": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          }
+        },
+        "points": {
+          "mara": 70,
+          "ilyra": 70
+        },
+        "gifts": 3,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": true
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": true
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 1657
+      },
+      "realReadingAndInputSeconds": null,
+      "instantAffectionTransactions": 10,
+      "instantEncounterStateCommands": 12,
+      "snapshotsRoundtripValid": true
+    },
+    {
+      "id": "superior-both-entry-recovery-edge",
+      "defense": {
+        "id": "superior",
+        "label": "Überlegener bezahlter Stand nach Welle 70",
+        "file": "one-storm-wave70-earned.json"
+      },
+      "input": {
+        "path": "C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\tavern-comfy-integration\\artifacts\\idle-bastion\\acceptance\\b16\\economy\\one-storm-wave70-earned.json",
+        "sha256": "edc244aec90e6e5b495d26029a44c65f7679a1a19608fc3901209231006b85d4",
+        "sourceSchema": 29
+      },
+      "focus": "both",
+      "targets": [
+        "mara",
+        "ilyra"
+      ],
+      "farmPolicy": "entry-recovery-edge",
+      "farmWave": 1,
+      "certifiedFarm": {
+        "wave": 48,
+        "twoCycleSeconds": 42.25,
+        "rewardGold": 358,
+        "rewardRemainderUnits": 600
+      },
+      "defenseTowers": [
+        {
+          "pad": "tower-start",
+          "kind": 1,
+          "level": 24,
+          "damage": 11807.817729955534,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-03",
+          "kind": 1,
+          "level": 24,
+          "damage": 11807.817729955534,
+          "cooldown": 0.4615384615384615
+        },
+        {
+          "pad": "tower-02",
+          "kind": 2,
+          "level": 2,
+          "damage": 12.25,
+          "cooldown": 0.7964601769911506
+        },
+        {
+          "pad": "tower-09",
+          "kind": 3,
+          "level": 24,
+          "damage": 23615.635459911067,
+          "cooldown": 1.1923076923076923
+        },
+        {
+          "pad": "cell-14-7",
+          "kind": 4,
+          "level": 22,
+          "damage": 26450.31021503141,
+          "cooldown": 1.4230769230769231
+        },
+        {
+          "pad": "cell-24-7",
+          "kind": 5,
+          "level": 23,
+          "damage": 16868.31104279362,
+          "cooldown": 0.8076923076923077
+        }
+      ],
+      "automaticMara": true,
+      "automaticIlyra": false,
+      "manualCombatCasts": 0,
+      "combatSeconds": 281.25,
+      "waveSeconds": 221.25,
+      "intermissionSeconds": 60,
+      "clears": [
+        {
+          "index": 1,
+          "atCombatSeconds": 9.375,
+          "wave": 1,
+          "attemptId": 1628,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 2,
+          "atCombatSeconds": 18.75,
+          "wave": 1,
+          "attemptId": 1629,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 3,
+          "atCombatSeconds": 28.125,
+          "wave": 1,
+          "attemptId": 1630,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 4,
+          "atCombatSeconds": 37.5,
+          "wave": 1,
+          "attemptId": 1631,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 5,
+          "atCombatSeconds": 46.875,
+          "wave": 1,
+          "attemptId": 1632,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 6,
+          "atCombatSeconds": 56.25,
+          "wave": 1,
+          "attemptId": 1633,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 7,
+          "atCombatSeconds": 65.625,
+          "wave": 1,
+          "attemptId": 1634,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 8,
+          "atCombatSeconds": 75,
+          "wave": 1,
+          "attemptId": 1635,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 9,
+          "atCombatSeconds": 84.375,
+          "wave": 1,
+          "attemptId": 1636,
+          "lives": 20,
+          "gifts": 0,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 10,
+          "atCombatSeconds": 93.75,
+          "wave": 1,
+          "attemptId": 1637,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 11,
+          "atCombatSeconds": 103.125,
+          "wave": 1,
+          "attemptId": 1638,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 12,
+          "atCombatSeconds": 112.5,
+          "wave": 1,
+          "attemptId": 1639,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 13,
+          "atCombatSeconds": 121.875,
+          "wave": 1,
+          "attemptId": 1640,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 14,
+          "atCombatSeconds": 131.25,
+          "wave": 1,
+          "attemptId": 1641,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 15,
+          "atCombatSeconds": 140.625,
+          "wave": 1,
+          "attemptId": 1642,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 16,
+          "atCombatSeconds": 150,
+          "wave": 1,
+          "attemptId": 1643,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 17,
+          "atCombatSeconds": 159.375,
+          "wave": 1,
+          "attemptId": 1644,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 18,
+          "atCombatSeconds": 168.75,
+          "wave": 1,
+          "attemptId": 1645,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 19,
+          "atCombatSeconds": 178.125,
+          "wave": 1,
+          "attemptId": 1646,
+          "lives": 20,
+          "gifts": 1,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 20,
+          "atCombatSeconds": 187.5,
+          "wave": 1,
+          "attemptId": 1647,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 21,
+          "atCombatSeconds": 196.875,
+          "wave": 1,
+          "attemptId": 1648,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 22,
+          "atCombatSeconds": 206.25,
+          "wave": 1,
+          "attemptId": 1649,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 23,
+          "atCombatSeconds": 215.625,
+          "wave": 1,
+          "attemptId": 1650,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 24,
+          "atCombatSeconds": 225,
+          "wave": 1,
+          "attemptId": 1651,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 25,
+          "atCombatSeconds": 234.375,
+          "wave": 1,
+          "attemptId": 1652,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 26,
+          "atCombatSeconds": 243.75,
+          "wave": 1,
+          "attemptId": 1653,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 27,
+          "atCombatSeconds": 253.125,
+          "wave": 1,
+          "attemptId": 1654,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 28,
+          "atCombatSeconds": 262.5,
+          "wave": 1,
+          "attemptId": 1655,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 29,
+          "atCombatSeconds": 271.875,
+          "wave": 1,
+          "attemptId": 1656,
+          "lives": 20,
+          "gifts": 2,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        },
+        {
+          "index": 30,
+          "atCombatSeconds": 281.25,
+          "wave": 1,
+          "attemptId": 1657,
+          "lives": 20,
+          "gifts": 3,
+          "points": {
+            "mara": 58,
+            "ilyra": 58
+          }
+        }
+      ],
+      "losses": 0,
+      "escapes": 0,
+      "actions": [
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 35,
+          "afterPoints": 39,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 39,
+          "afterPoints": 43,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 43,
+          "afterPoints": 47,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "normal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 11,
+            "reason": "rewarded",
+            "gift": "normal"
+          },
+          "beforePoints": 47,
+          "afterPoints": 58,
+          "beforeGifts": 2,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 35,
+          "afterPoints": 39,
+          "beforeGifts": 1,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 39,
+          "afterPoints": 43,
+          "beforeGifts": 1,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 43,
+          "afterPoints": 47,
+          "beforeGifts": 1,
+          "afterGifts": 1
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "gift",
+          "choice": {
+            "gift": "normal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 11,
+            "reason": "rewarded",
+            "gift": "normal"
+          },
+          "beforePoints": 47,
+          "afterPoints": 58,
+          "beforeGifts": 1,
+          "afterGifts": 0
+        },
+        {
+          "atCombatSeconds": 281.25,
+          "who": "mara",
+          "action": "gift",
+          "choice": {
+            "gift": "personal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 12,
+            "reason": "rewarded",
+            "gift": "personal"
+          },
+          "beforePoints": 58,
+          "afterPoints": 70,
+          "beforeGifts": 3,
+          "afterGifts": 3
+        },
+        {
+          "atCombatSeconds": 281.25,
+          "who": "ilyra",
+          "action": "gift",
+          "choice": {
+            "gift": "personal"
+          },
+          "result": {
+            "accepted": true,
+            "points": 12,
+            "reason": "rewarded",
+            "gift": "personal"
+          },
+          "beforePoints": 58,
+          "afterPoints": 70,
+          "beforeGifts": 3,
+          "afterGifts": 3
+        }
+      ],
+      "visits": [
+        {
+          "atWins": 10,
+          "atCombatSeconds": 93.75,
+          "encounter": "first",
+          "targets": [
+            "mara",
+            "ilyra"
+          ],
+          "instantStateCommands": 6,
+          "rewards": 0
+        },
+        {
+          "atWins": 20,
+          "atCombatSeconds": 187.5,
+          "encounter": "second",
+          "targets": [
+            "mara",
+            "ilyra"
+          ],
+          "instantStateCommands": 6,
+          "rewards": 0
+        }
+      ],
+      "gateChecks": [
+        {
+          "atWins": 0,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            },
+            {
+              "who": "ilyra",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        },
+        {
+          "atWins": 29,
+          "results": [
+            {
+              "who": "mara",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            },
+            {
+              "who": "ilyra",
+              "personal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "gift-progress"
+              },
+              "normal": {
+                "accepted": false,
+                "points": 0,
+                "reason": "personal-needed"
+              }
+            }
+          ]
+        }
+      ],
+      "initialPoints": {
+        "mara": 35,
+        "ilyra": 35
+      },
+      "initialGifts": 2,
+      "beforePersonal": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          }
+        },
+        "points": {
+          "mara": 58,
+          "ilyra": 58
+        },
+        "gifts": 3,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": false
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": false
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 1657
+      },
+      "finalSocial": {
+        "encounters": {
+          "mara": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          },
+          "ilyra": {
+            "first": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            },
+            "second": {
+              "seen": true,
+              "choice": "first",
+              "completed": true
+            }
+          }
+        },
+        "points": {
+          "mara": 70,
+          "ilyra": 70
+        },
+        "gifts": 3,
+        "claimed": {
+          "opening": true,
+          "boss15": true,
+          "boss25": true,
+          "ilyraWelcome": true
+        },
+        "reserves": {
+          "mara": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          },
+          "ilyra": {
+            "talk": 3,
+            "touch": 3,
+            "clears": 0
+          }
+        },
+        "personal": {
+          "mara": {
+            "clears": 30,
+            "claimed": true
+          },
+          "ilyra": {
+            "clears": 30,
+            "claimed": true
+          }
+        },
+        "clearProgress": 0,
+        "lastClearAttempt": 1657
+      },
+      "realReadingAndInputSeconds": null,
+      "instantAffectionTransactions": 10,
+      "instantEncounterStateCommands": 12,
+      "snapshotsRoundtripValid": true
+    }
+  ],
+  "checks": {
+    "bothShareSameThirtyLiveWins": true,
+    "giftFreeAffectionAlternative": {
+      "wins": 3,
+      "combatSeconds": 60.225,
+      "actions": [
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 35,
+          "afterPoints": 39,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 39,
+          "afterPoints": 43,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 43,
+          "afterPoints": 47,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 35,
+          "afterPoints": 39,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 39,
+          "afterPoints": 43,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 0,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 4,
+            "reason": "rewarded"
+          },
+          "beforePoints": 43,
+          "afterPoints": 47,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 60.225,
+          "who": "mara",
+          "action": "talk",
+          "choice": {},
+          "result": {
+            "accepted": true,
+            "points": 8,
+            "reason": "rewarded"
+          },
+          "beforePoints": 47,
+          "afterPoints": 55,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 60.225,
+          "who": "mara",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 3,
+            "reason": "rewarded"
+          },
+          "beforePoints": 55,
+          "afterPoints": 58,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 60.225,
+          "who": "ilyra",
+          "action": "talk",
+          "choice": {},
+          "result": {
+            "accepted": true,
+            "points": 8,
+            "reason": "rewarded"
+          },
+          "beforePoints": 47,
+          "afterPoints": 55,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        },
+        {
+          "atCombatSeconds": 60.225,
+          "who": "ilyra",
+          "action": "touch",
+          "choice": {
+            "region": "hair"
+          },
+          "result": {
+            "accepted": true,
+            "points": 3,
+            "reason": "rewarded"
+          },
+          "beforePoints": 55,
+          "afterPoints": 58,
+          "beforeGifts": 2,
+          "afterGifts": 2
+        }
+      ],
+      "points": {
+        "mara": 58,
+        "ilyra": 58
+      },
+      "gifts": 2,
+      "gateResults": [
+        {
+          "who": "mara",
+          "personal": {
+            "accepted": false,
+            "points": 0,
+            "reason": "gift-progress"
+          },
+          "normal": {
+            "accepted": false,
+            "points": 0,
+            "reason": "personal-needed"
+          }
+        },
+        {
+          "who": "ilyra",
+          "personal": {
+            "accepted": false,
+            "points": 0,
+            "reason": "gift-progress"
+          },
+          "normal": {
+            "accepted": false,
+            "points": 0,
+            "reason": "personal-needed"
+          }
+        }
+      ]
+    },
+    "bossVictoryExcluded": {
+      "wave": 15,
+      "combatSeconds": 9.725,
+      "personalClears": {
+        "mara": {
+          "clears": 0,
+          "claimed": false
+        },
+        "ilyra": {
+          "clears": 0,
+          "claimed": false
+        }
+      }
+    },
+    "defeatExcluded": {
+      "soldPads": [
+        "tower-03",
+        "tower-02",
+        "tower-09",
+        "cell-14-7",
+        "cell-24-7"
+      ],
+      "remainingTowerLevel": 9,
+      "failedWave": 29,
+      "combatSeconds": 38.25,
+      "personalClears": {
+        "mara": {
+          "clears": 0,
+          "claimed": false
+        },
+        "ilyra": {
+          "clears": 0,
+          "claimed": false
+        }
+      }
+    },
+    "offlineExcluded": {
+      "creditedGold": 12345,
+      "personalClears": {
+        "mara": {
+          "clears": 0,
+          "claimed": false
+        },
+        "ilyra": {
+          "clears": 0,
+          "claimed": false
+        }
+      }
+    }
+  }
+}

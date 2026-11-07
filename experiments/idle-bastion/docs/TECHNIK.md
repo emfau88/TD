@@ -1,5 +1,24 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Optionale Tavernenbegegnungen — Schema 38 / Regeln 21, 07.11.2026
+
+Zwei feste Begegnungsrecords je Figur speichern nur `seen`, `choice` und
+`completed`. Die geprüfte Migration 37→38 ergänzt leere Records, ohne Siege,
+Herzen oder Entscheidungen zu erfinden. Kampfregeln, Farmfingerprint und
+historische Offlineansprüche bleiben bei Regeln 21.
+
+Eigene normale Live-Siege seit Herz 2 öffnen bei 10/20 zwei Gespräche. Bereits
+verdiente höhere Herzen machen versäumte alte Themen optional verfügbar.
+Auswahl und Abschluss werden über dieselbe atomare Sessiongrenze wie andere
+Aktionen gespeichert; eine abgelehnte Speicherung zeigt keine gewählte Antwort.
+Die Gespräche verändern keine Zuneigung, Reserven oder Geschenke und sind keine
+zusätzliche Bedingung für Herz 3. Schließen lässt ein unfertiges Thema verfügbar;
+ein Gesprächsende startet kein weiteres automatisch.
+
+Die vorhandenen Wege und drei Hauptaktionen bleiben erhalten. Antworten stehen
+direkt im Dialog; genaue Fortschrittszahlen bleiben im vorhandenen Detailbereich.
+[Prüfbericht](../../../artifacts/idle-bastion/tavern-implementation-2026-11-07/REPORT.md).
+
 ## Segmentgegner — Regeln 20 / Schema 36, 06.11.2026
 
 `worm.ts` leitet die sichtbaren Teile ausschließlich aus gespeicherter Kopfdistanz,

@@ -1,0 +1,66 @@
+[
+  {
+    "who": "ilyra",
+    "seen": [
+      "hand",
+      "giggle",
+      "head",
+      "head",
+      "touch"
+    ],
+    "anchors": {
+      "hair": {
+        "x": 174,
+        "y": 256.0006237006237
+      },
+      "shoulder": {
+        "x": 342,
+        "y": 302.99958419958426
+      },
+      "hand": {
+        "x": 102,
+        "y": 567.9997920997921
+      }
+    },
+    "voice": {
+      "playing": true,
+      "time": 0.407036,
+      "source": "http://127.0.0.1:5277/assets/ilyra-voice/voice1-wouldntyou1.mp3"
+    },
+    "noAffectionOrGiftChangeAtHeart3": true,
+    "stoppedVoicesOnClose": true,
+    "errors": []
+  },
+  {
+    "who": "mara",
+    "seen": [
+      "hand",
+      "giggle",
+      "head",
+      "head",
+      "touch"
+    ],
+    "anchors": {
+      "hair": {
+        "x": 142.99927272727277,
+        "y": 261.9993762993763
+      },
+      "shoulder": {
+        "x": 350,
+        "y": 305.00062370062375
+      },
+      "hand": {
+        "x": 117.00072727272725,
+        "y": 589.9995841995842
+      }
+    },
+    "voice": {
+      "playing": true,
+      "time": 0.441179,
+      "source": "http://127.0.0.1:5277/assets/mara-voice/flirty_respectful_10.wav"
+    },
+    "noAffectionOrGiftChangeAtHeart3": true,
+    "stoppedVoicesOnClose": true,
+    "errors": []
+  }
+]

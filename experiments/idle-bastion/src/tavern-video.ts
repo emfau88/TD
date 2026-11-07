@@ -89,7 +89,9 @@ export class TavernVideoPlayer implements TavernPlayer {
     return this.preparing;
   }
   play(region: TouchRegion): void {
-    if (Object.hasOwn(TOUCH_HEARTS, region) && this.count >= TOUCH_HEARTS[region]) this.enqueue(TOUCH_CLIPS[region]);
+    if (Object.hasOwn(TOUCH_HEARTS, region) && this.count >= TOUCH_HEARTS[region]) {
+      this.enqueue(region === 'hand' && this.clips.hand ? 'hand' : TOUCH_CLIPS[region]);
+    }
   }
   scene(clip: TavernSceneClip): void { this.enqueue(clip); }
   act(action: Interaction): void { this.enqueue(action === 'talk' ? 'head' : this.count >= 2 ? 'joy' : 'touch'); }
@@ -219,6 +221,9 @@ export const videoPresentation: TavernPresentation = {
     const image = new Image(); image.src = portraits[who]; await image.decode();
     canvas.getContext('2d')?.drawImage(image, 0, 0, canvas.width, canvas.height);
   },
-  anchors: TAVERN_ANCHORS,
+  // M09/I08 react with the image-left hand; coordinates include the two-pixel crop.
+  anchors: who => Object.hasOwn(manifest.heroes[who], 'hand')
+    ? { ...TAVERN_ANCHORS(who), hand: who === 'mara' ? { x: 117, y: 590 } : { x: 102, y: 568 } }
+    : TAVERN_ANCHORS(who),
   gestures: TAVERN_GESTURES,
 };

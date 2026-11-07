@@ -1,3 +1,4 @@
+import { createEncounterState, validEncounterState, type EncounterState } from './tavern-encounter-state';
 import { validSocial as validLegacySocial, type SocialState as LegacySocialState } from './tavern-social-legacy';
 
 /** Saved relationship progress; independent of clocks, combat strength and offline gold. */
@@ -15,6 +16,7 @@ export const TOUCH_HEARTS: Readonly<Record<TouchRegion, number>> = { shoulder: 1
 export const COMPANION_IDS = ['mara', 'ilyra'] as const;
 export interface Reserve { talk: number; touch: number; clears: number }
 export interface SocialState {
+  encounters: EncounterState;
   points: Record<Companion, number>;
   gifts: number;
   claimed: { opening: boolean; boss15: boolean; boss25: boolean; ilyraWelcome: boolean };
@@ -29,6 +31,7 @@ export interface InteractionResult {
   reason: 'rewarded' | 'limit' | 'complete' | 'locked' | 'no-gift' | 'invalid' | 'affection' | 'gift-needed' | 'personal-needed' | 'gift-progress' | 'companionship';
 }
 export const createSocial = (): SocialState => ({
+  encounters: createEncounterState(),
   points: { mara: 0, ilyra: 0 }, gifts: 0,
   claimed: { opening: false, boss15: false, boss25: false, ilyraWelcome: false },
   reserves: { mara: null, ilyra: null },
@@ -142,7 +145,9 @@ export function migrateSocial(value: unknown, access: SocialAccess, attemptId: n
 }
 const object = (x: unknown): x is Record<string, unknown> => !!x && typeof x === 'object' && !Array.isArray(x);
 const integer = (x: unknown, max: number): x is number => Number.isSafeInteger(x) && (x as number) >= 0 && (x as number) <= max;
-export function validSocial(value: unknown, access: SocialAccess, attemptId: number): value is SocialState {
+export type SocialBeforeEncounters = Omit<SocialState, 'encounters'>;
+/** Frozen schema-32–37 fields, checked before the explicit encounter migration. */
+export function validSocialBeforeEncounters(value: unknown, access: SocialAccess, attemptId: number): value is SocialBeforeEncounters {
   if (!object(value) || !object(value.points) || !object(value.claimed) || !object(value.reserves) || !object(value.personal)
     || !integer(value.gifts, 20) || !integer(value.clearProgress, 9) || !integer(value.lastClearAttempt, attemptId)) return false;
   for (const who of COMPANION_IDS) {
@@ -158,4 +163,9 @@ export function validSocial(value: unknown, access: SocialAccess, attemptId: num
     ['opening', access.tavernBuilt], ['boss15', access.boss15], ['boss25', access.boss25], ['ilyraWelcome', access.tavernBuilt && access.ilyraRecruited],
   ] as const) if (typeof value.claimed[key] !== 'boolean' || value.claimed[key] && !eligible) return false;
   return access.tavernBuilt || value.clearProgress === 0 && value.lastClearAttempt === 0;
+}
+
+export function validSocial(value: unknown, access: SocialAccess, attemptId: number): value is SocialState {
+  return validSocialBeforeEncounters(value, access, attemptId)
+    && validEncounterState((value as SocialBeforeEncounters & { encounters?: unknown }).encounters, value);
 }

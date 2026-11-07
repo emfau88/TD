@@ -19,11 +19,20 @@ test('each active touch uses a distinct existing clip, independent of story clip
     assert.ok(moments.flatMap(m => m.beats).every(b => ['idle', 'head', 'touch'].includes(b.clip)));
   }
 });
-test('conversation rotation retains earlier unlocked lines without leaking future stages', () => {
+test('conversation rotation keeps current closeness and selected memories without future lines', () => {
   for (const line of [maraLine, ilyraLine]) {
-    const heard = new Set(Array.from({ length: 8 }, (_, turn) => line(70, 'talk', 'shoulder', turn)));
-    for (const points of [0, 10, 35, 70]) for (let i = 0; i < 2; i++) assert.ok(heard.has(line(points, 'talk', 'shoulder', i)));
-    assert.equal(heard.size, 8); assert.equal(heard.has(line(110, 'talk', 'shoulder', 0)), false);
+    const early = new Set(Array.from({ length: 6 }, (_, turn) => line(35, 'talk', 'shoulder', turn)));
+    for (const points of [0, 10, 35]) for (let i = 0; i < 2; i++) assert.ok(early.has(line(points, 'talk', 'shoulder', i)));
+    const introductions = [0, 10].flatMap(points => [0, 1].map(turn => line(points, 'talk', 'shoulder', turn)));
+    for (const points of [70, 110, 160]) {
+      const heard = new Set(Array.from({ length: 8 }, (_, turn) => line(points, 'talk', 'shoulder', turn)));
+      for (const introduction of introductions) assert.equal(heard.has(introduction), false);
+      for (let turn = 0; turn < 2; turn++) assert.ok(heard.has(line(points, 'talk', 'shoulder', turn)));
+      assert.ok(heard.size <= 4);
+    }
+    const heard = new Set(Array.from({ length: 6 }, (_, turn) => line(70, 'talk', 'shoulder', turn)));
+    assert.ok(heard.has(line(35, 'talk', 'shoulder', 0)), 'A concrete shared theme remains.');
+    assert.equal(heard.has(line(110, 'talk', 'shoulder', 0)), false);
   }
   assert.equal(nextMaraMoment(70), undefined); assert.equal(nextIlyraMoment(70), undefined);
 });

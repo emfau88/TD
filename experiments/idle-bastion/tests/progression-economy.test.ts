@@ -1,3 +1,4 @@
+import {expectedEmptyEncounters} from './cleanup-fixtures';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import test from 'node:test';
@@ -85,7 +86,7 @@ test('both first boss bonuses remain full and once-only alongside reduced repeat
 
 test('real schema 32 in-flight replay preserves every field and old reward until the next attempt',()=>{
   const original=structuredClone(legacy.before),b=IdleBattle.restore(original)!;assert.ok(b);
-  const promote=(s:any)=>({...s,settlement:{...s.settlement,emberResearched:false,emberResearchSeen:false},schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:BATTLE_RULES_VERSION});
+  const promote=(s:any)=>({...s,settlement:{...s.settlement,emberResearched:false,emberResearchSeen:false},social:{...s.social,encounters:expectedEmptyEncounters()},schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:BATTLE_RULES_VERSION});
   assert.deepEqual(b.snapshot(),promote(legacy.before));assert.deepEqual(original,legacy.before);
   const before=units(b);
   for(let i=0;i<160;i++)b.update(.025);

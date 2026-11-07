@@ -45,7 +45,11 @@ export function maraMoment(points: number, heart: number): MaraMoment | undefine
 }
 export function maraLine(points: number, action: Interaction, region: TouchRegion, turn: number): string {
   const stage = maraStage(points);
-  const talks = [stage, ...stages.slice(0, hearts(points))].flatMap(entry => entry.talk);
+  const count = hearts(points);
+  // Keep the earned closeness: a concrete memory may return, an introduction should not.
+  const earlier = count < 3 ? stages.slice(0, count).flatMap(entry => entry.talk)
+    : count === 3 ? [stages[2].talk[0]] : [...stages[count - 1]!.talk];
+  const talks = [...stage.talk, ...earlier];
   return action === 'talk' ? talks[Math.abs(turn) % talks.length]! : action === 'gift' ? stage.gift : stage[region];
 }
 export function nextMaraMoment(points: number): { title: string; points: number } | undefined {

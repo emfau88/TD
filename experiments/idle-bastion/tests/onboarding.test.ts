@@ -1,3 +1,4 @@
+import {expectedEmptyEncounters} from './cleanup-fixtures';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -86,7 +87,7 @@ test('real v14 veteran and its historical offline basis survive the schema-only 
  assert.equal(current.discovery,'off');assert.equal(current.dismissedDefeatAttempt,0);assert.equal(current.ilyra,null);
  assert.deepEqual(current.settlement,{...old.battle.settlement,tavernBuilt:false,tavernBuiltAt:null,
   tavernSeen:false,tavernLevel:0,stormResearched:false,emberResearched:false,emberResearchSeen:false});
- assert.deepEqual(current.social,{points:{mara:0,ilyra:0},gifts:2,
+ assert.deepEqual(current.social,{encounters:expectedEmptyEncounters(),points:{mara:0,ilyra:0},gifts:2,
   claimed:{opening:false,boss15:true,boss25:true,ilyraWelcome:false},lastClearAttempt:0,
   reserves:{mara:null,ilyra:null},personal:{mara:{clears:0,claimed:false},ilyra:{clears:0,claimed:false}},clearProgress:0});
  assert.deepEqual(IdleBattle.restore(current)!.snapshot(),current);

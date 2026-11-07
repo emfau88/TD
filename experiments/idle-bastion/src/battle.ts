@@ -1,5 +1,6 @@
+import { createEncounterState, markEncounterSeen, chooseEncounter, completeEncounter, type EncounterId, type EncounterChoice } from './tavern-encounter-state';
 import { createSocial as createLegacySocial, grantMilestoneGifts as grantLegacyMilestoneGifts, validSocial as validLegacySocial } from './tavern-social-legacy';
-import { createSocial, grantMilestoneGifts, migrateSocial, recordSocialClear, interact, interactionOffer, validSocial, type SocialState, type SocialAccess, type Companion, type Interaction, type InteractionResult, type InteractionChoice } from './tavern-social';
+import { createSocial, grantMilestoneGifts, migrateSocial, recordSocialClear, interact, interactionOffer, validSocial, validSocialBeforeEncounters, socialAvailable, type SocialState, type SocialAccess, type Companion, type Interaction, type InteractionResult, type InteractionChoice } from './tavern-social';
 import { ILYRA, createIlyra, cloneIlyra, moveIlyra, stepIlyraMotion, validIlyra, ilyraCell, type IlyraState } from './ilyra';
 import { BALANCE, healthMultiplier, battleRewardUnits } from './balance';
 import { waveRecipe, spawnGap, clearReward } from './wave-recipes';
@@ -50,7 +51,7 @@ export const EMBER = Object.freeze({ id: 7 as const, name: 'Glutwerfer', cost: 2
 export const EMBER_BURN = Object.freeze({ damagePerSecond: 16, seconds: 3, radius: 30, researchCost: 5000, wave: 34 });
 export const SPLASH_RADIUS = 52;
 export const BATTLE_RULES_VERSION = 21 as const;
-export const BATTLE_SCHEMA_VERSION = 37 as const;
+export const BATTLE_SCHEMA_VERSION = 38 as const;
 export const LIVE_CANDIDATE_LIMIT = 32;
 /** Reserved boss milestones never contribute repeatable offline production. */
 export const isNormalFarmWave = (wave: number, recipe = BATTLE_RULES_VERSION as number): boolean => Number.isSafeInteger(wave) && wave >= 1 && wave !== 15 && wave !== 25 && !wormEncounter(wave, recipe);
@@ -101,7 +102,7 @@ export interface BattleSnapshot {
   introduction: Introduction;
   ilyra: IlyraState | null;
   social: SocialState;
-  schemaVersion: 37; rulesVersion: 21; layoutVersion: 3 | 4 | 5;
+  schemaVersion: 38; rulesVersion: 21; layoutVersion: 3 | 4 | 5;
   /** Retained after sale; only this tower's base construction was free. */
   tutorialFrostUid: number | null;
   plots: PlotPositions; wispArrival: { at: number | null; met: boolean }; layoutId: 'start28' | 'east32' | 'core40';
@@ -556,7 +557,7 @@ export class IdleBattle {
       if (!validSnapshot(value, model.layout, model.path, model.pathLength, 20, model.layout.version as 3 | 4 | 5)) return undefined;
       value = { ...value, schemaVersion: 21, ilyra: null };
     }
-    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23 || value.schemaVersion === 24 || value.schemaVersion === 25 || value.schemaVersion === 26 || value.schemaVersion === 27 || value.schemaVersion === 28 || value.schemaVersion === 29 || value.schemaVersion === 30 || value.schemaVersion === 31 || value.schemaVersion === 32 || value.schemaVersion === 33 || value.schemaVersion === 34 || value.schemaVersion === 35 || value.schemaVersion === 36 || value.schemaVersion === 37)) {
+    if (isRecord(value) && (value.schemaVersion === 21 || value.schemaVersion === 22 || value.schemaVersion === 23 || value.schemaVersion === 24 || value.schemaVersion === 25 || value.schemaVersion === 26 || value.schemaVersion === 27 || value.schemaVersion === 28 || value.schemaVersion === 29 || value.schemaVersion === 30 || value.schemaVersion === 31 || value.schemaVersion === 32 || value.schemaVersion === 33 || value.schemaVersion === 34 || value.schemaVersion === 35 || value.schemaVersion === 36 || value.schemaVersion === 37 || value.schemaVersion === 38)) {
       if (![3, 4, 5].includes(value.layoutVersion as number) || !validPlotPositions(value.plots, value.layoutVersion as number)) return undefined;
       model.useLayout(battleLayout(isRecord(value.clearing) && value.clearing.unlocked === true, value.plots, value.layoutVersion as 3 | 4 | 5));
     }
@@ -650,7 +651,11 @@ export class IdleBattle {
       // Keep the in-flight queue, HP, money and historical offline receipts.
       // Cleared waves remain candidates, not proof: certifyFarm invalidates the
       // old rules fingerprint and simulates two complete current-rule clears.
-      value = { ...value, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION };
+      value = { ...value, schemaVersion: 37, rulesVersion: 21 };
+    }
+    if (isRecord(value) && value.schemaVersion === 37) {
+      if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5, 21, 37)) return undefined;
+      value = { ...value, schemaVersion: 38, social: { ...value.social, encounters: createEncounterState() } };
     }
     if (!validSnapshot(value, model.layout, model.path, model.pathLength, 0, model.layout.version as 3 | 4 | 5)) return undefined;
     model.tutorialFrostUid = value.tutorialFrostUid;
@@ -797,6 +802,16 @@ export class IdleBattle {
   interactCompanion(who: Companion, action: Interaction, choice: InteractionChoice = {}): InteractionResult {
     if (!this.socialRewards) return { accepted: false, points: 0, reason: 'locked' };
     return interact(this.social, this.socialAccess, who, action, choice);
+  }
+
+  beginCompanionEncounter(who: Companion, id: EncounterId): boolean {
+    return this.socialRewards && socialAvailable(this.socialAccess, who) && markEncounterSeen(this.social, who, id);
+  }
+  chooseCompanionEncounter(who: Companion, id: EncounterId, choice: EncounterChoice): boolean {
+    return this.socialRewards && socialAvailable(this.socialAccess, who) && chooseEncounter(this.social, who, id, choice);
+  }
+  finishCompanionEncounter(who: Companion, id: EncounterId): boolean {
+    return this.socialRewards && socialAvailable(this.socialAccess, who) && completeEncounter(this.social, who, id);
   }
 
   get tavernUnlocked(): boolean { return this.highestCleared >= 12; }
@@ -1455,7 +1470,7 @@ const sameComputedStat = (value: unknown, expected: number): boolean => typeof v
  */
 function validSnapshot(
   value: unknown, layout: IdleLayout, path: readonly { x: number; y: number }[], pathLength: number, legacy: 0 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 = 0, layoutVersion: 1 | 2 | 3 | 4 | 5 = legacy ? 2 : LAYOUT_VERSION,
-  currentRules: 15 | 16 | 17 | 18 | 19 | 20 | 21 = BATTLE_RULES_VERSION, socialSchema: 31 | 32 | 33 | 34 | 35 | 36 | 37 = BATTLE_SCHEMA_VERSION,
+  currentRules: 15 | 16 | 17 | 18 | 19 | 20 | 21 = BATTLE_RULES_VERSION, socialSchema: 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 = BATTLE_SCHEMA_VERSION,
 ): value is BattleSnapshot {
   const modern = !legacy || legacy >= 11;
   if (!isRecord(value) || value.schemaVersion !== (legacy || (currentRules === 15 ? 30 : socialSchema)) || value.rulesVersion !== (legacy === 2 ? 1 : legacy === 3 ? 2 : legacy && legacy < 6 ? 3 : legacy && legacy < 8 ? 4 : legacy === 28 ? 14 : legacy === 27 ? 13 : legacy === 26 ? 12 : legacy === 25 ? 11 : legacy >= 14 ? 10 : legacy === 13 ? 9 : legacy === 12 ? 8 : legacy === 11 ? 7 : legacy === 10 ? 6 : legacy ? 5 : currentRules)
@@ -1536,7 +1551,7 @@ function validSnapshot(
       || (settlement.tavernBuilt ? !eligible
         || !numberIn(settlement.tavernBuiltAt, 0, value.elapsed as number) : settlement.tavernBuiltAt !== null)) return false;
   } else if (modern && (value.plots as PlotPositions).tavern !== undefined) return false;
-  if (!legacy && !(currentRules < 16 || socialSchema === 31 ? validLegacySocial : validSocial)(value.social, {
+  if (!legacy && !(currentRules < 16 || socialSchema === 31 ? validLegacySocial : socialSchema < 38 ? validSocialBeforeEncounters : validSocial)(value.social, {
     tavernBuilt: (value.settlement as BattleSnapshot['settlement']).tavernBuilt,
     ilyraRecruited: value.ilyra !== null,
     boss15: (value.bossVictories as number) > 0, boss25: (value.secondBossVictories as number) > 0,

@@ -3,6 +3,7 @@ import { language, setLanguage, type Language } from './i18n';
 import './premium.css';
 import { BattleSession } from './battle-session';
 import { SOCIAL, type Companion } from './tavern-social';
+import { createEncounterState } from './tavern-encounter-state';
 import { TavernUI } from './tavern-ui';
 import { rigPreviewPresentation } from './tavern-rig-preview';
 
@@ -20,6 +21,7 @@ const languageSelect = document.querySelector<HTMLSelectElement>('#review-langua
 languageSelect.value = language();
 languageSelect.addEventListener('change', () => setLanguage(languageSelect.value as Language));
 function setHearts() {
+  battle.social.encounters = createEncounterState();
   const count = Number(select.value);
   for (const who of ['mara', 'ilyra'] as const) {
     battle.social.points[who] = count ? SOCIAL.heartThresholds[count - 1]! : 0;

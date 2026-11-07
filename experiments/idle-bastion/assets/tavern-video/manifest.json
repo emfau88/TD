@@ -73,6 +73,14 @@
         "frames": 107,
         "duration": 4.458333,
         "sha256": "27ae4c612e82a316cb3500e8efad65ebbed2c184e09943dd70f836360ba2e525"
+      },
+      "hand": {
+        "file": "mara/hand.mp4",
+        "code": "M09",
+        "fps": 24,
+        "frames": 73,
+        "duration": 3.0416666666666665,
+        "sha256": "47bdc128c1979a4e3f51626a0cf6ed67f1676ba8a1a9f4c6bbdf24b64196c998"
       }
     },
     "ilyra": {
@@ -131,6 +139,14 @@
         "frames": 107,
         "duration": 4.458333,
         "sha256": "a4faf225b0291b8d7439c2c13b8e634616e2de57d9ac57ab5bfaa612be6053fc"
+      },
+      "hand": {
+        "file": "ilyra/hand.mp4",
+        "code": "I08",
+        "fps": 24,
+        "frames": 73,
+        "duration": 3.0416666666666665,
+        "sha256": "95cdd592220003922c2d667d78d0919f1c574592149ad30de3a27896ced93a05"
       }
     }
   }

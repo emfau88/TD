@@ -6,10 +6,15 @@ export const cleanupFixtures = () => JSON.parse(readFileSync(new URL('./fixtures
  * Do not call the runtime migration to construct its own expected result.
  * Relationship-rich migrations are independently covered in tavern-social.test.ts.
  */
+/** Independent schema-38 defaults, not constructed by runtime migration code. */
+export const expectedEmptyEncounters = () => ({
+  mara: { first: { seen: false, choice: null, completed: false }, second: { seen: false, choice: null, completed: false } },
+  ilyra: { first: { seen: false, choice: null, completed: false }, second: { seen: false, choice: null, completed: false } },
+});
 export function expectedCombatSocial(old: any) {
   assert.deepEqual(old.social.points, { mara: 0, ilyra: 0 });
   assert.ok(!old.ilyra || old.social.gifts > 0, 'fixture already owns the welcome gift');
-  return { points: { mara: 0, ilyra: 0 }, gifts: old.social.gifts,
+  return { encounters: expectedEmptyEncounters(), points: { mara: 0, ilyra: 0 }, gifts: old.social.gifts,
     claimed: { ...old.social.claimed, ilyraWelcome: !!old.ilyra },
     reserves: { mara: old.settlement.tavernBuilt ? { talk: 3, touch: 0, clears: 0 } : null,
       ilyra: old.ilyra ? { talk: 3, touch: 0, clears: 0 } : null },

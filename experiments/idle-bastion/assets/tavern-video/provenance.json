@@ -135,6 +135,24 @@
       "sha256": "a4faf225b0291b8d7439c2c13b8e634616e2de57d9ac57ab5bfaa612be6053fc",
       "new_bytes": 994940,
       "new_seconds": 4.458333
+    },
+    {
+      "character": "ilyra",
+      "code": "I08",
+      "role": "hand",
+      "selected_revision": "v1",
+      "sha256": "95cdd592220003922c2d667d78d0919f1c574592149ad30de3a27896ced93a05",
+      "new_bytes": 545711,
+      "new_seconds": 3.0416666666666665
+    },
+    {
+      "character": "mara",
+      "code": "M09",
+      "role": "hand",
+      "selected_revision": "v3",
+      "sha256": "47bdc128c1979a4e3f51626a0cf6ed67f1676ba8a1a9f4c6bbdf24b64196c998",
+      "new_bytes": 629355,
+      "new_seconds": 3.0416666666666665
     }
   ]
 }
