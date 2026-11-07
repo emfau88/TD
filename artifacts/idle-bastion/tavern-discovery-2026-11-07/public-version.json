@@ -1,0 +1,11 @@
+{
+  "branch": "codex/tavern-comfy-integration",
+  "branchSha": "f0709f85600c0fdbaadb0452c61c62a0256432ed",
+  "mainSha": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
+  "entries": [
+    "tavern-test.html",
+    "tavern-counter-check.html"
+  ],
+  "verifiedMainFiles": 721,
+  "preservedPublishedFiles": 721
+}

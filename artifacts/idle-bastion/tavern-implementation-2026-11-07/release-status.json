@@ -1,7 +1,7 @@
 {
-  "code_commit": "46ee42861592433bc4d70f9862c80338cfb2e1f0",
+  "code_commit": "f0709f85600c0fdbaadb0452c61c62a0256432ed",
   "branch": "codex/tavern-comfy-integration",
-  "workflow_run": 42326182901,
+  "workflow_run": 42374351131,
   "workflow_success": true,
   "url": "https://emfau88.github.io/TD/previews/tavern/tavern-test.html",
   "counter_url": "https://emfau88.github.io/TD/previews/tavern/tavern-counter-check.html",
@@ -23,5 +23,12 @@
   "transition_public_cases": 6,
   "transition_public_sampled_frames": 921,
   "verified_main_files": 721,
-  "mobile_user_approval": false
+  "mobile_user_approval": false,
+  "discovery_targeted_tests": 14,
+  "discovery_local_browser_cases": 8,
+  "discovery_local_answer_choices": 32,
+  "discovery_public_browser_cases": 2,
+  "discovery_public_answer_choices": 8,
+  "discovery_user_approval": false,
+  "full_suite_rerun_for_discovery": false
 }

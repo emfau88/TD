@@ -14,4 +14,8 @@ Der bestehende Siedlungs-/Taverneneintrag zeigt „Neu“ und „Neues Gespräch
 - Tatsächlicher Weg über Siedlung → Taverne → Figur → Sprechen geprüft. Abbruch und Reload zeigen Fortsetzen, beide Antwortwege einschließlich bewusstem Weiterzuhören funktionieren, nach Abschluss aller Gespräche kein Gesprächs-Neu am Taverneneintrag. Keine JavaScriptfehler oder horizontalen Überläufe.
 - Repräsentative echte Handyaufnahmen angesehen. Keine neue Medienproduktion; keine Behauptung einer physischen Geräteabnahme. Alte Prüfskripte unter `tavern-implementation-2026-11-07/` dokumentieren den damaligen Stand mit Antworten im scrollenden Text. Für den neuen Aufbau gilt `check-discovery.mjs` samt `local/results.json`.
 
-Öffentliche Prüfung und Versionsnachweis folgen nach dem Deployment.
+## Öffentliche Prüfung
+
+Als `f0709f85` unter demselben Testlink veröffentlicht; [Pages 42374351131](https://github.com/emfau88/TD/actions/runs/42374351131) erfolgreich. Öffentlich DE/EN bei 390×650 mit beiden Figuren und allen vier Begegnungen geprüft: acht Antwortauswahlen unmittelbar sichtbar, Fortsetzen/Reload und neutrale Beendigung korrekt. 721 Main-Dateien erhalten; menschliche Sichtabnahme bleibt offen.
+
+Die öffentliche Versionskennung entspricht dem geprüften Codecommit `f0709f85600c0fdbaadb0452c61c62a0256432ed`; Main bleibt `daf39fb7b13a05a78530b503fa45074b5f65c9de`. Beide öffentlichen Hauptspielfälle einschließlich neuer/fortgesetzter/erledigter Hinweise bestanden ohne JavaScriptfehler oder horizontale Überläufe. [Messwerte](public/results.json), [Versionsnachweis](public-version.json), [Antwortwahl](public/de-390-mara-answers.png) und [Tavernenhinweis](public/de-390-notice.png). Die vollständige ältere 531-Test-Reihe wurde für diesen kleinen Nachschliff nicht wiederholt; maßgeblich sind die oben genannten 14 gezielten Tests und der aktuelle Build.
