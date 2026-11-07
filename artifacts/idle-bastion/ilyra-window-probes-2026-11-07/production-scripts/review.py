@@ -35,4 +35,4 @@ def main(code, revision=None):
  (folder/'verification.json').write_text(json.dumps(verification,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  print(json.dumps(dict(clip=code,seconds=frames/24,bytes=video.stat().st_size,render_seconds=r['seconds'],video=str(video))))
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('code',choices=['IF01','IF02','IF03']);p.add_argument('--revision');args=p.parse_args();main(args.code,args.revision)
+ p=argparse.ArgumentParser();p.add_argument('code',choices=['IF01','IF02','IF03','IF04','IF05','IF06']);p.add_argument('--revision');args=p.parse_args();main(args.code,args.revision)

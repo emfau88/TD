@@ -25,6 +25,8 @@ Spielstände liegen lokal im Browser. Englisch ist voreingestellt; Deutsch läss
 <!-- tavern-preview-start -->
 ## Taverne und direkte Testzugänge · 07.11.2026
 
+**Beide neuen Szenen direkt testen:** [Mara am Tresen und Ilyra am Fenster – lokale Clipprobe](http://127.0.0.1:5292/) · [einzelne Offline-Datei und Hinweise](artifacts/idle-bastion/tavern-scene-preview-2026-11-07/README.md). Ohne Durchspielen oder Spielstandzugriff. IF01–IF04 freigegeben, IF05 zur Abnahme; Ilyra weiterhin nicht im Spiel. [Mara: aktuelle echte Ingame-Screenshots auf Desktop/Handy](artifacts/idle-bastion/tavern-counter-visual-audit-2026-11-07/REPORT.md).
+
 **Neuer Arbeitsstand `codex/tavern-counter-completion`:** Alle sieben Mara-Tresenclips sind freigegeben und als zusammengehörige Szene eingebunden. Lokal im [Teststarter](http://127.0.0.1:5278/tavern-test.html) „Früher verdiente 4 Herzen“ und Mara wählen, dann **Sprechen → Zum Tresen**. [Prüfbericht und Ingame-Bilder](artifacts/idle-bastion/tavern-counter-completion-2026-11-07/REPORT.md). Dieser neue Stand ist noch nicht auf Main veröffentlicht; der neue Fortschritt von Herz 3 auf 4 bleibt offen.
 
 **Aktueller Hostinghinweis:** Das [Hauptspiel](https://emfau88.github.io/TD/) enthält den übernommenen Tavernenstand. Die beiden öffentlichen Direktlinks unten sind nach der Main-Veröffentlichung vorübergehend nicht erreichbar: GitHub Pages brach die Wiederherstellung nach zehn Minuten ab. Am Entwicklungs-PC funktioniert der [lokale Teststarter](http://127.0.0.1:5278/tavern-test.html). Der Wiederherstellungspunkt bleibt in der Roadmap offen.

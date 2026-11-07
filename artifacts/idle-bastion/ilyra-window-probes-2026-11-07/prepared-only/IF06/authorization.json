@@ -1,0 +1,8 @@
+{
+  "clip": "IF06",
+  "authorized": false,
+  "basis": "User explicitly approves IF01–IF03 and requests IF04, IF05, IF06 sequentially; no game integration. Additional direction: own hand on hip and slight sideways weight shift.",
+  "scope": "IF04–IF06 only",
+  "initially_authorized": true,
+  "latest_direction": "User requests stop after IF04, then allows IF05 to finish. IF06 must not start."
+}

@@ -2,7 +2,9 @@
   "sequence": [
     "IF01",
     "IF02",
-    "IF03"
+    "IF03",
+    "IF04",
+    "IF05"
   ],
   "parallel_jobs": false,
   "clips": [
@@ -12,7 +14,7 @@
       "duration": 3.75,
       "bytes": 322239,
       "sha256": "07b9d7e3519be52bc567ef8d57f681866b7e521e380d5813db002dab5784d884",
-      "user_approved": false,
+      "user_approved": true,
       "integrated": false,
       "original_h3_render_seconds": 288.2,
       "stabilized": true
@@ -23,7 +25,7 @@
       "duration": 2.333333,
       "bytes": 456575,
       "sha256": "73b602294c1723c050f0bae4845b61779ca32788070752cd2b45d482b96bf171",
-      "user_approved": false,
+      "user_approved": true,
       "integrated": false,
       "original_h3_render_seconds": 174.1,
       "stabilized": false
@@ -34,10 +36,37 @@
       "duration": 2.333333,
       "bytes": 489909,
       "sha256": "43eee7e222c5ef5390731464ec81e2ef084faa3f975a3597bbccc889ed7d540a",
-      "user_approved": false,
+      "user_approved": true,
       "integrated": false,
       "original_h3_render_seconds": 180.4,
       "stabilized": false
+    },
+    {
+      "clip": "IF04",
+      "relative_file": "IF04/Ilyra_IF04_Schulter_ComfyUI.mp4",
+      "duration": 3.041667,
+      "bytes": 715942,
+      "sha256": "6225f374ada17955b3500d9befb43befb605581cea57755c54ba911278d0a9b0",
+      "user_approved": true,
+      "integrated": false,
+      "original_h3_render_seconds": 228.1,
+      "stabilized": false
+    },
+    {
+      "clip": "IF05",
+      "relative_file": "IF05/Ilyra_IF05_Hand_ComfyUI.mp4",
+      "duration": 3.041667,
+      "bytes": 695947,
+      "sha256": "9921361af8bbe972c5ff4977009aa523cc8b3439774379c25a06cc2f875642db",
+      "user_approved": false,
+      "integrated": false,
+      "original_h3_render_seconds": 252.1,
+      "stabilized": false
     }
+  ],
+  "rendering_stopped": true,
+  "deferred": [
+    "IF06",
+    "IF07"
   ]
 }

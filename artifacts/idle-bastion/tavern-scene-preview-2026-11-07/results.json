@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "offlineFile": true,
+  "results": [
+    {
+      "width": 1200,
+      "played": [
+        "MC02",
+        "MC03",
+        "MC04",
+        "MC05",
+        "MC06",
+        "MC07",
+        "IF02",
+        "IF03",
+        "IF04",
+        "IF05"
+      ],
+      "returnToIdle": true,
+      "rapidSwitch": true,
+      "noOverflow": true,
+      "noPageErrors": true,
+      "noSaveAccess": true
+    },
+    {
+      "width": 390,
+      "played": [
+        "MC02",
+        "MC03",
+        "MC04",
+        "MC05",
+        "MC06",
+        "MC07",
+        "IF02",
+        "IF03",
+        "IF04",
+        "IF05"
+      ],
+      "returnToIdle": true,
+      "rapidSwitch": true,
+      "noOverflow": true,
+      "noPageErrors": true,
+      "noSaveAccess": true
+    }
+  ]
+}

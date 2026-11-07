@@ -1,0 +1,32 @@
+{
+  "clip": "IF05",
+  "video": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\ilyra-window\\IF05\\Ilyra_IF05_Hand_ComfyUI.mp4",
+  "native_copy_unchanged": true,
+  "video_sha256": "9921361af8bbe972c5ff4977009aa523cc8b3439774379c25a06cc2f875642db",
+  "decode_passed": true,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 704,
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "duration": "3.041667",
+        "nb_read_frames": "73"
+      }
+    ],
+    "format": {
+      "duration": "3.041667",
+      "size": "695947"
+    }
+  },
+  "source_reference_sha256": "1a5a73fb8c69cf19db7f085f700bb33e49c9f59534e555f25037898bf6d505fc",
+  "render_seconds": 252.1,
+  "visual_review": "All 73 decoded frames, both hands in every frame and enlarged face sequence inspected. Own hand gently turns/lifts from the ledge and returns; glance toward hand then viewer. No observed foreign hand, isolated finger twitch, neck collapse or outfit change. Native output retained; user approval pending.",
+  "user_approved": false,
+  "game_integration": false
+}

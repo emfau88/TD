@@ -27,6 +27,7 @@
   "source_reference_sha256": "1a5a73fb8c69cf19db7f085f700bb33e49c9f59534e555f25037898bf6d505fc",
   "render_seconds": 174.1,
   "visual_review": "All 56 decoded frames and hand details inspected; enlarged face sequence checked. Small coherent inclination and blink, stable ledge contact, no observed foreign hand, finger flicker or neck collapse.",
-  "user_approved": false,
-  "game_integration": false
+  "user_approved": true,
+  "game_integration": false,
+  "user_visual_acceptance": "Explicitly approved by user on 2026-11-07; IF01 selected corrected v2."
 }

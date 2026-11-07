@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taverne · Szenenprobe</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#17130f;color:#f3e6cf;font:16px/1.45 system-ui,sans-serif}main{max-width:850px;margin:auto;padding:20px}h1{font:500 25px Georgia,serif;margin:0 0 8px}p{margin:8px 0;color:#d2c1a4}button{font:inherit;cursor:pointer;min-height:44px;padding:9px 15px;border:1px solid #8c7148;border-radius:9px;background:#30271d;color:#f5e9d5}button:hover{background:#473824}button[aria-pressed=true]{background:#73532c;border-color:#e5c488}button:focus-visible{outline:3px solid #f3d390;outline-offset:3px}.characters{display:flex;gap:10px;margin:16px 0}.characters button{flex:1}.layout{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:22px;align-items:start}.stage{position:relative;aspect-ratio:480/704;width:100%;overflow:hidden;border-radius:10px;background:#35271b}.stage img,.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}.stage video{opacity:0;pointer-events:none}.stage video.visible{opacity:1;z-index:1}.actions{display:grid;grid-template-columns:1fr;gap:9px}.detail{font-size:14px;min-height:43px;color:#dfc598}.status{min-height:24px;font-size:14px}h2{font:500 22px Georgia,serif;margin:2px 0 8px}.notes{font-size:14px;margin-top:18px}a{color:#f0cd94}#error{color:#ffc9a9}footer{margin-top:20px;font-size:13px;color:#baa98e}@media(max-width:600px){main{padding:12px}.layout{grid-template-columns:1fr;gap:14px}.stage{max-width:360px;margin:auto}.actions{grid-template-columns:repeat(2,minmax(0,1fr))}.characters{margin:12px 0}.detail{min-height:0}button{padding:9px 8px}}
+</style>
+<main>
+<h1>Ein Besuch in der Taverne</h1>
+<p>Figur wählen, Reaktion anklicken. Anschließend kehrt sie von selbst zur Ruhepose zurück.</p>
+<nav class="characters" aria-label="Figur"><button data-hero="mara" aria-pressed="true">Mara · Tresen</button><button data-hero="ilyra" aria-pressed="false">Ilyra · Fenster</button></nav>
+<div class="layout"><div class="stage" aria-label="Animierte Tavernenszene"><img id="poster" alt="Ruhepose"><div id="videos"></div></div>
+<section><h2 id="name"></h2><div id="actions" class="actions" aria-label="Reaktionen"></div><p id="detail" class="detail"></p><p id="status" class="status" role="status"></p><p id="error" role="alert" hidden></p><p id="notes" class="notes"></p></section></div>
+<footer>Isolierte, stumme Clipprobe · kein Zugriff auf Spielstände. Mara MC01–MC07 und Ilyra IF01–IF04 sind freigegeben; IF05 steht zur Beurteilung. Ilyras Fensterszene ist noch nicht ins Spiel eingebaut.</footer>
+</main>
+<script id="assets" type="application/json">__ASSETS__</script>
+<script>
+const data=JSON.parse(document.getElementById('assets').textContent);
+const stage=document.querySelector('.stage'), container=document.getElementById('videos');
+const poster=document.getElementById('poster'), actions=document.getElementById('actions');
+const status=document.getElementById('status'), detail=document.getElementById('detail'), error=document.getElementById('error');
+let hero=new URLSearchParams(location.search).get('hero')==='ilyra'?'ilyra':'mara', current=null, token=0;
+const videos=new Map();
+function videoFor(clip){
+  if(videos.has(clip.code))return videos.get(clip.code);
+  const v=document.createElement('video');v.muted=true;v.defaultMuted=true;v.playsInline=true;v.preload='auto';v.src=clip.src;v.setAttribute('aria-hidden','true');v.dataset.clip=clip.code;container.append(v);videos.set(clip.code,v);
+  v.addEventListener('ended',()=>{if(current===v&&!v.loop)playClip(data[hero].clips[0]);});
+  return v;
+}
+function ready(v){
+  if(v.readyState>=2)return Promise.resolve();
+  return new Promise((resolve,reject)=>{
+    const timer=setTimeout(()=>finish(new Error('Laden dauert zu lange. Bitte erneut anklicken.')),12000);
+    const loaded=()=>finish(), failed=()=>finish(new Error('Video konnte nicht geladen werden.'));
+    function finish(err){clearTimeout(timer);v.removeEventListener('loadeddata',loaded);v.removeEventListener('error',failed);err?reject(err):resolve();}
+    v.addEventListener('loadeddata',loaded);v.addEventListener('error',failed);
+  });
+}
+async function playClip(clip){
+  const request=++token, selectedHero=hero;error.hidden=true;status.textContent='Wird geladen …';
+  const v=videoFor(clip);
+  try{
+    await ready(v);if(request!==token)return;
+    v.loop=clip===data[hero].clips[0];v.currentTime=0;
+    // Keep the previous decoded frame visible until this video has its first frame.
+    const firstFrame=new Promise(resolve=>{if(v.requestVideoFrameCallback)v.requestVideoFrameCallback(resolve);else requestAnimationFrame(()=>requestAnimationFrame(resolve));});
+    await v.play();await firstFrame;if(request!==token){if(v!==current)v.pause();return;}
+    for(const other of videos.values()){if(other!==v){other.classList.remove('visible');other.pause();}}
+    current=v;v.classList.add('visible');stage.dataset.hero=selectedHero;stage.dataset.clip=clip.code;
+    poster.src=data[hero].poster;detail.textContent=clip.code+' · '+clip.duration.toFixed(2).replace('.',',')+' s · '+(clip.approved?'freigegeben':'Freigabe offen');
+    status.textContent=clip.label;for(const b of actions.children)b.setAttribute('aria-pressed',String(b.dataset.clip===clip.code));
+  }catch(e){if(request===token){status.textContent='';error.textContent=e.message+' Reaktion erneut wählen.';error.hidden=false;}}
+}
+function chooseHero(next){
+  hero=next;const entry=data[hero];document.getElementById('name').textContent=entry.name;
+  for(const b of document.querySelectorAll('[data-hero]'))b.setAttribute('aria-pressed',String(b.dataset.hero===hero));
+  actions.replaceChildren();for(const clip of entry.clips){const b=document.createElement('button');b.textContent=clip.label;b.dataset.clip=clip.code;b.setAttribute('aria-pressed','false');b.onclick=()=>playClip(clip);actions.append(b);}
+  document.getElementById('notes').textContent=entry.note;
+  if(!current)poster.src=entry.poster;
+  playClip(entry.clips[0]);
+}
+for(const b of document.querySelectorAll('[data-hero]'))b.onclick=()=>chooseHero(b.dataset.hero);
+chooseHero(hero);
+</script>
+</html>

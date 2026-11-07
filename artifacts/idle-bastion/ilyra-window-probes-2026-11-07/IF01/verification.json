@@ -27,9 +27,10 @@
   "source_reference_sha256": "1a5a73fb8c69cf19db7f085f700bb33e49c9f59534e555f25037898bf6d505fc",
   "render_seconds": 4.0,
   "visual_review": "All original 90 frames inspected, corrected face and hands contact sheets reviewed. Face retained; idle body/cape/hands stabilized using the earlier approved I01-v2 method.",
-  "user_approved": false,
+  "user_approved": true,
   "game_integration": false,
   "corrected_delivery_copy_unchanged": true,
   "original_h3_render_seconds": 288.2,
-  "correction_seconds": 4.0
+  "correction_seconds": 4.0,
+  "user_visual_acceptance": "Explicitly approved by user on 2026-11-07; IF01 selected corrected v2."
 }

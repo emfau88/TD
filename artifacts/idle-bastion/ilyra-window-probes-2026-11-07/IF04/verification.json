@@ -1,0 +1,33 @@
+{
+  "clip": "IF04",
+  "video": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\ilyra-window\\IF04\\Ilyra_IF04_Schulter_ComfyUI.mp4",
+  "native_copy_unchanged": true,
+  "video_sha256": "6225f374ada17955b3500d9befb43befb605581cea57755c54ba911278d0a9b0",
+  "decode_passed": true,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 704,
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "duration": "3.041667",
+        "nb_read_frames": "73"
+      }
+    ],
+    "format": {
+      "duration": "3.041667",
+      "size": "715942"
+    }
+  },
+  "source_reference_sha256": "1a5a73fb8c69cf19db7f085f700bb33e49c9f59534e555f25037898bf6d505fc",
+  "render_seconds": 228.1,
+  "visual_review": "All 73 decoded frames, both hands in every frame and enlarged face sequence inspected. Own picture-left hand moves to hip/belt and back, with coherent sideways weight shift. No observed foreign hand, twitching separate fingers, neck collapse or wardrobe change. Retained unmodified for user approval.",
+  "user_approved": true,
+  "game_integration": false,
+  "approval_basis": "User: ja if04 ist freigegeben (07.11.2026)."
+}

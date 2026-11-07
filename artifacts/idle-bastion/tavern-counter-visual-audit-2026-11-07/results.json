@@ -1,0 +1,55 @@
+{
+  "base": "http://127.0.0.1:5281/",
+  "compiledGame": true,
+  "passed": true,
+  "results": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1280,
+        "height": 844
+      },
+      "frames": 641,
+      "clips": {
+        "idle": 72,
+        "talk": 64,
+        "hair": 83,
+        "shoulder": 66,
+        "hand": 86,
+        "laugh": 158,
+        "approach": 112
+      },
+      "blackOrTransparentFrames": 0,
+      "wrongScenes": 0,
+      "stageStable": true,
+      "cssStates": [
+        "[\"none\",\"none\",\"none\",\"1\"]"
+      ],
+      "errors": []
+    },
+    {
+      "name": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "frames": 1412,
+      "clips": {
+        "idle": 88,
+        "talk": 142,
+        "hair": 184,
+        "shoulder": 138,
+        "hand": 197,
+        "laugh": 381,
+        "approach": 282
+      },
+      "blackOrTransparentFrames": 0,
+      "wrongScenes": 0,
+      "stageStable": true,
+      "cssStates": [
+        "[\"none\",\"none\",\"none\",\"1\"]"
+      ],
+      "errors": []
+    }
+  ]
+}

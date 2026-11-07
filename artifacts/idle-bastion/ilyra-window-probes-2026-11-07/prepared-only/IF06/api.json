@@ -1,0 +1,267 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_w4a8_mixed.safetensors",
+      "weight_dtype": "default"
+    },
+    "_meta": {
+      "title": "H3 / speichersparendes W4A8-Modell"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+      "type": "krea2",
+      "device": "default"
+    },
+    "_meta": {
+      "title": "Kleiner Textencoder / automatisch auslagern"
+    }
+  },
+  "3": {
+    "class_type": "ClipProjApply",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "projection": "mmh3-4b-ClipProj-v3.1.safetensors"
+    },
+    "_meta": {
+      "title": "Textencoder an H3 anpassen"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    },
+    "_meta": {
+      "title": "H3 Video-Decoder / INT8"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "Ilyra_IF06_Originalreferenz.png"
+    },
+    "_meta": {
+      "title": "IF06 · Lachen · identische freigegebene Fensterreferenz"
+    }
+  },
+  "6": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "19",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 480,
+      "height": 704,
+      "crop": "disabled"
+    },
+    "_meta": {
+      "title": "IF06 · Lachen · identische freigegebene Fensterreferenz"
+    }
+  },
+  "7": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "A continuous 3.04-second illustrated fantasy game warm laughing reaction. The adult illustrated woman Ilyra from <Picture 1> is alone beside the same CLOSED tavern window throughout. Preserve her exact blue eyes, tan skin, long silver-white wavy hair, gold goggles with blue lenses on her head, white and royal-blue outfit, gold diamond belt buckle, white gloves, forearm covers, gold wrist cuffs and upper-arm band. Keep the exact face, mature adult proportions, clothing coverage, crisp colored outlines and painted cel shading. She reacts with a short spontaneous warm chuckle, her smile opening naturally and her eyes softening almost closed with amusement. Two small connected shoulder and upper-torso pulses accompany the brief laugh. She inclines forward only a little as one coherent unit. Her head follows the body naturally, with stable neck length and no head bob, large bow or repeated rocking. Her own left hand at picture-right remains comfortably supported on the original window-ledge contact. Her own right hand stays near her thigh and follows only the small body motion, with relaxed fingers held together. The arms stay comfortably close to the body; no raised or spreading arms. Small natural follow-through of her clothing and hair follows the connected laughing impulses with a slight delay and settles quickly with her body. There is no isolated movement while at rest. She finishes the chuckle, reopens her eyes and returns to her original small closed-mouth smile.  Start and finish in the exact supplied window stance, with her own left hand flat on the window ledge at picture-right and her own right hand beside her thigh at picture-left, open eyes and her original small closed-mouth smile. Keep natural neck length and comfortable chin-to-collarbone spacing. The head remains anatomically connected to the neck and shoulders, never sliding down or changing size. Preserve the original glove design and relaxed finger shape and thumb position. Fingers remain stable relative to the palm, without separate twitching, fluttering, tapping or curling. Exactly one woman, only her own two hands and arms. No other hand touches her. Nothing enters or leaves the frame. The camera, framing, closed window, wooden ledge, mug, candles, room and lighting remain fixed. No wind or independent cape flutter. Hair and fabric follow actual body movement gently and settle promptly. Keep the original illustrated game artwork, body proportions and clothing coverage throughout. No speech, captions, music or sound.",
+      "width": 480,
+      "height": 704,
+      "length": 73,
+      "first_frame": [
+        "6",
+        0
+      ],
+      "last_frame": [
+        "6",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "IF06 · Lachen · identische freigegebene Fensterreferenz"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    },
+    "_meta": {
+      "title": "H3 Grundeinstellungen"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "conditioning": [
+        "7",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "H3 ohne zusaetzliches CFG"
+    }
+  },
+  "10": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2611076006
+    },
+    "_meta": {
+      "title": "Fester Vergleichs-Seed"
+    }
+  },
+  "11": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    },
+    "_meta": {
+      "title": "H3 Sampler"
+    }
+  },
+  "12": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "20 Schritte fuer den Qualitaetstest"
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "10",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "11",
+        0
+      ],
+      "sigmas": [
+        "12",
+        0
+      ],
+      "latent_image": [
+        "7",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Video berechnen"
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "H3-Decoder / automatische Kacheln"
+    }
+  },
+  "15": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "14",
+        0
+      ],
+      "batch_index": 0,
+      "length": 73
+    },
+    "_meta": {
+      "title": "IF06 · Lachen · identische freigegebene Fensterreferenz"
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "15",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": "auto",
+      "color_space": "sRGB",
+      "chroma_subsampling": "420",
+      "codec": "none"
+    },
+    "_meta": {
+      "title": "24 Bilder pro Sekunde"
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "Ilyra_IF06_Lachen_Fenster_H3_480x704_24fps",
+      "format": "mp4",
+      "format.codec": "h264"
+    },
+    "_meta": {
+      "title": "IF06 · Lachen · identische freigegebene Fensterreferenz"
+    }
+  },
+  "19": {
+    "class_type": "ImageCrop",
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ],
+      "width": 1036,
+      "height": 1519,
+      "x": 0,
+      "y": 0
+    },
+    "_meta": {
+      "title": "IF06 · Lachen · identische freigegebene Fensterreferenz"
+    }
+  }
+}

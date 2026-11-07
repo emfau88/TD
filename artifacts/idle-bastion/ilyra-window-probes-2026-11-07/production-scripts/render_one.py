@@ -7,7 +7,7 @@ def read(path): return json.loads(path.read_text(encoding='utf-8'))
 def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
 def validate(code):
  folder=ROOT/code
- assert code in ['IF01','IF02','IF03'] and not any((folder/f).exists() for f in ['job.json','result.json','history.json'])
+ assert code in ['IF01','IF02','IF03','IF04','IF05','IF06'] and not any((folder/f).exists() for f in ['job.json','result.json','history.json'])
  graph=read(folder/'api.json');workflow=read(folder/f'Ilyra_{code}_ComfyUI_Workflow.json');s=read(folder/'preparation.json')
  nodes={str(n['id']):n for n in workflow['nodes']};links={l[0]:l for l in workflow['links']}
  assert set(graph)==set(nodes)-{'18'} and len(links)==len(workflow['links'])
@@ -28,7 +28,7 @@ def validate(code):
  assert graph['6']['inputs']==template['6']['inputs']
  assert graph['5']['inputs']['image']==nodes['5']['widgets_values'][0]==s['first_and_last_frame']
  assert graph['7']['inputs']['first_frame']==graph['7']['inputs']['last_frame']==['6',0]
- frames={'IF01':90,'IF02':56,'IF03':56}[code]
+ frames={'IF01':90,'IF02':56,'IF03':56,'IF04':73,'IF05':73,'IF06':73}[code]
  assert graph['7']['inputs']['length']==graph['15']['inputs']['length']==s['frames']==frames
  assert nodes['7']['widgets_values']==[graph['7']['inputs']['prompt'],480,704,frames]
  assert (folder/'prompt.txt').read_text(encoding='utf-8').strip()==graph['7']['inputs']['prompt']
@@ -39,7 +39,7 @@ def validate(code):
  assert read(folder/'authorization.json')['authorized'] is True
  return folder,graph,workflow,s
 if __name__=='__main__':
- parser=argparse.ArgumentParser();parser.add_argument('code',choices=['IF01','IF02','IF03']);parser.add_argument('--render',action='store_true');args=parser.parse_args()
+ parser=argparse.ArgumentParser();parser.add_argument('code',choices=['IF01','IF02','IF03','IF04','IF05','IF06']);parser.add_argument('--render',action='store_true');args=parser.parse_args()
  folder,graph,workflow,s=validate(args.code)
  print(f'{args.code} preflight passed: reference, API/UI wiring, original model/20-step sampler/decoder, {s["frames"]}/24 seconds.',flush=True)
  if args.render:

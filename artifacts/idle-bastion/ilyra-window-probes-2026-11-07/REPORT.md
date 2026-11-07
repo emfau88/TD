@@ -1,12 +1,16 @@
-# Ilyra am Fenster · erste drei Proben · 07.11.2026
+# Ilyra am Fenster · fünf Proben · 07.11.2026
 
-Auf Nutzerauftrag **nacheinander** erstellt, jeweils nach Abschluss und Bildprüfung des vorherigen Clips. Keine Integration ins Spiel und keine vorweggenommene Nutzerfreigabe. IF04–IF07, Herz 5 und weitere Szenen wurden nicht gestartet.
+**Aktueller Stand:** IF01 (korrigierte v2), IF02, IF03 und IF04 ausdrücklich freigegeben. IF05 fertig zur Abnahme. Nach IF05 Renderstopp; IF06 nur vorbereitet mit gesperrter Autorisierung, kein Job gestartet. Kein Ilyra-Spieleinbau. [Alle Szenen isoliert testen](../tavern-scene-preview-2026-11-07/README.md).
+
+Alle fünf Clips auf Nutzerauftrag **nacheinander** erstellt, jeweils nach Abschluss und Bildprüfung des vorherigen Clips. Keine Integration ins Spiel. IF06/IF07, Herz 5 und weitere Szenen nicht gestartet.
 
 | Clip | Inhalt | Dauer | Status |
 | --- | --- | ---: | --- |
-| IF01 | Ruhige Grundpose, dezentes Blinzeln | 3,75 s | v2 korrigiert, zur Freigabe |
-| IF02 | Aufmerksam zuhören, kleine Kopfneigung und warmes Blinzeln | 2,33 s | native Fassung, zur Freigabe |
-| IF03 | Sanfte Reaktion auf Haarkontakt, ohne sichtbare fremde Hand | 2,33 s | native Fassung, zur Freigabe |
+| IF01 | Ruhige Grundpose, dezentes Blinzeln | 3,75 s | v2 korrigiert, freigegeben |
+| IF02 | Aufmerksam zuhören, kleine Kopfneigung und warmes Blinzeln | 2,33 s | native Fassung, freigegeben |
+| IF03 | Sanfte Reaktion auf Haarkontakt, ohne sichtbare fremde Hand | 2,33 s | native Fassung, freigegeben |
+| IF04 | Schulterreaktion, eigene Hand an der Hüfte, leichte seitliche Gewichtsverlagerung | 3,04 s | native Fassung, freigegeben |
+| IF05 | Eigene Hand sanft wenden/anheben, Blick zur Hand und zurück | 3,04 s | native Fassung, Freigabe offen |
 
 Gemeinsame neue Fensterreferenz aus der bisherigen erwachsenen Ilyra und dem tatsächlichen Tavernenbild, erstellt mit dem eingebauten image_gen-Werkzeug. [Bildprompt und Herkunft](reference-generation.md), [Referenz](reference.png). Gleiches Bild als erstes und letztes Frame aller drei lokalen ComfyUI-Jobs. Gleiche Kleidung, Frisur und Fensterposition; beide eigenen Hände vollständig sichtbar.
 
@@ -17,3 +21,7 @@ Alle 202 nativen Frames, Hände in jedem Frame sowie vergrößerte Gesichtskonta
 **IF01-Korrektur:** Der erste Render zeigte ein unerwünschtes Anheben/Krümmen der Finger auf der Fensterbank. Statt einer erneuten KI-Berechnung wurde die bereits bei I01 v2 akzeptierte lokale Videostabilisierung wiederverwendet: Gesicht und Blinzeln oberhalb Zeile249 unverändert, weicher Übergang bis280, Körper/Umhang/Hände darunter im Ruhebild gehalten. Im verlustfreien Zwischenmaster pixelgenau geprüft. 90 Frames und 3,75s bleiben erhalten; Ausgabe H.264 CRF16. Der ursprüngliche Render bleibt unter `IF01/original-v1` erhalten. IF02/IF03 wurden nicht nachträglich verändert.
 
 Die Produktionsskripte sind Herkunftsnachweise; ihre ursprüngliche lokale Arbeitsbasis bleibt `artifacts/idle-bastion/tavern-comfy-series-2026-11-06/ilyra-window`. Nur dort über den geprüften Einzelläufer starten; bestehende Jobs werden gegen versehentliches Überschreiben geschützt. Zur erneuten Nutzung eines Workflows die gemeinsame Referenz unter dem darin angegebenen Eingabedateinamen laden.
+
+## Zweite Lieferung: IF04 und IF05
+
+Beide mit derselben Referenz und den bewährten Modell-/Sampler-/Decoderknoten. Je73 Frames, 480×704, native24FPS, stumm. IF04:228,1s Renderzeit /715.942Byte; IF05:252,1s /695.947Byte. Alle146 Frames, Hände und vergrößerte Gesichter kontrolliert; keine beobachtete fremde Hand, einzelne zuckende Finger, auffällige Halsverkürzung oder Kleidungswechsel. Beide unverändert übernommen; IF05 bleibt eine Sichtprobe zur Nutzerfreigabe. IF06 ist unter `prepared-only` nachvollziehbar abgelegt; `authorized:false`, kein Render. Die Angaben zur ersten Lieferung oben bleiben als Herkunftsnachweis erhalten.
