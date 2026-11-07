@@ -1,5 +1,14 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Turmdarstellung · 07.11.2026 — Frostkörper und frühe Scharfschützen-Montage korrigiert.**
+
+- [x] Alle acht Frost-Grafikstufen geprüft und Grundkörper passend vergrößert; Körperhöhe 53,55 / 55,44 / 57,96 Spieleinheiten, keine Verkleinerung beim Upgrade. Breite/Bodenanker erhalten; Kristall, Leuchten und Bauvorschau korrekt angeschlossen.
+- [x] Scharfschützenwaffe auf Spiellevel 1–4 auf der tatsächlichen Dachmitte montiert; originale Waffenbilder, Größe und Geschossursprünge erhalten. Keine Kampf-/Saveänderung.
+- [x] 18/18 gezielte Tests, Produktionsbuild, 20.160 Geometrieposen und tatsächlicher Spielrenderer mit 544 Scharfschützenzuständen sowie sämtlichen Froststufen/236 Kristallbildern geprüft; keine Browserfehler. [Vergleiche und Nachweis](../../artifacts/idle-bastion/tower-mount-fix-2026-11-07/REPORT.md).
+- [x] Tavernenfrage separat geprüft: frühere/Tutorialsiege zählen nicht für die persönlichen 10/20/30-Sieg-Schwellen; je Figur erst ab Herz 2. Plan 4.1/4.2 präzisiert, 21/21 Tests und eigener Zähleraudit bestanden; keine Balanceänderung.
+- [ ] Commit/Push auf Main und öffentliche Auslieferung der Tower-Korrekturen bestätigen.
+- [ ] Menschliche Sichtabnahme der Turmkorrekturen auf dem eigenen Gerät.
+
 **Tavernen-Ausbau · 07.11.2026 — bulkweise Umsetzung ausdrücklich beauftragt, Bulk 0/3 abgeschlossen / Bulk 1–2/4 technisch fertig / Bulk 5 Videoausbau zurückgestellt.**
 
 - [x] MC03/Haarreaktion ausdrücklich vom Nutzer freigegeben. PC-Berührungsherzen verdoppelt, Touch-Größe erhalten; Ilyras vorhandenen Komplimentclip in der Figurengröße korrigiert und Original archiviert. Direkter „Besuch fortsetzen“-Knopf nach Fensterwechsel/Minimieren, mit regulärer einmaliger Offline-Gutschrift und weiterhin pausiertem Kampf. 39/39 gezielte Tests, Build, acht Ziel-/Reaktionsfälle und zwei Wiederaufnahmefälle bestanden. [Nachweis](../../artifacts/idle-bastion/tavern-targets-2026-11-07/REPORT.md).

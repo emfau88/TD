@@ -55,8 +55,8 @@ export function prepareEvolution(scene:Phaser.Scene):void {
   scene.textures.addCanvas(key(r,'glow'),iceMask(base));
  }
 }
-export function evolutionGhost(kind:number):{base:string;weapon:string;originY:number;weaponY:number;weaponScale:number}|undefined {
- const r=evolutionSkin(kind,1);return r?{base:key(r,'base'),weapon:weaponKey(r),originY:r.originY,weaponY:r.weaponY,weaponScale:r.weaponScale??S}:undefined;
+export function evolutionGhost(kind:number):{base:string;weapon:string;originY:number;weaponY:number;baseScaleY:number;weaponScale:number}|undefined {
+ const r=evolutionSkin(kind,1);return r?{base:key(r,'base'),weapon:weaponKey(r),originY:r.originY,weaponY:r.weaponY,baseScaleY:r.baseScaleY??S,weaponScale:r.weaponScale??S}:undefined;
 }
 type Origin={model:{x:number;y:number};muzzle:{x:number;y:number};at:number};
 type ShotView={sprites:Phaser.GameObjects.Image[];origin:Origin};
@@ -79,7 +79,7 @@ export class EvolutionView {
  }
  updateTower(tower:Tower,view:EvolutionTowerView,age:number,cycle:number,cooldown:number,hasTarget:boolean,elapsed:number,tint:number,tremble:number,wobble:number):boolean {
   const r=evolutionSkin(tower.def.id,tower.level);if(!r)return false;
-  view.base.setTexture(key(r,'base'),0).setOrigin(.5,r.originY).setPosition(tower.x+tremble*.6,tower.y+13).setRotation(wobble*.4).setTint(tint);
+  view.base.setTexture(key(r,'base'),0).setScale(S,r.baseScaleY??S).setOrigin(.5,r.originY).setPosition(tower.x+tremble*.6,tower.y+13).setRotation(wobble*.4).setTint(tint);
   const time=r.kind===2?frostAnimationTime(age,cooldown,cycle,hasTarget):0,p=attackPose(r.level,time);
   let frame=0,recoil=0;
   if(r.originalStage&&(r.kind!==2||r.level===1))frame=weaponFrame(r.kind,r.originalStage,age,elapsed,cycle);
@@ -90,7 +90,7 @@ export class EvolutionView {
   let glow=this.glows.get(tower.uid);
   if(r.kind===2&&r.level>1){
    if(!glow){glow=this.scene.add.image(0,0,key(r,'glow')).setScale(S);this.glows.set(tower.uid,glow);}
-   glow.setTexture(key(r,'glow')).setOrigin(.5,r.originY).setPosition(view.base.x,view.base.y).setRotation(view.base.rotation).setTint(tint).setDepth(tower.y+1000.1).setAlpha(p.baseLight).setVisible(p.baseLight>0);
+   glow.setTexture(key(r,'glow')).setScale(S,r.baseScaleY??S).setOrigin(.5,r.originY).setPosition(view.base.x,view.base.y).setRotation(view.base.rotation).setTint(tint).setDepth(tower.y+1000.1).setAlpha(p.baseLight).setVisible(p.baseLight>0);
   }else glow?.setVisible(false);
   return true;
  }

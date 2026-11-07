@@ -687,7 +687,7 @@ export class BattleScene extends Phaser.Scene {
     if (!tower && this.buildKind) {
       const original = towerArt(this.buildKind), compact=evolutionGhost(this.buildKind);
       const art=compact?{base:compact.base,weapons:[compact.weapon]}:original,mount=compact?{baseY:13,originY:compact.originY,weaponY:compact.weaponY}:towerMount(this.buildKind), valid = this.sim.canBuild(pad.id, this.buildKind);
-      this.ghostBase.setVisible(true).setTexture(art.base, 0).setPosition(point.x, point.y + mount.baseY).setScale(SCALE.tower)
+      this.ghostBase.setVisible(true).setTexture(art.base, 0).setPosition(point.x, point.y + mount.baseY).setScale(SCALE.tower,compact?.baseScaleY??SCALE.tower)
         .setOrigin(0.5, mount.originY).setAlpha(0.75).setTint(valid ? 0xffffff : 0xff9999);
       this.ghostWeapon.setVisible(true).setTexture(art.weapons[0], 0).setPosition(point.x, point.y + mount.weaponY)
         .setScale(compact?.weaponScale??SCALE.tower).setAlpha(0.75).setTint(valid ? 0xffffff : 0xff9999);

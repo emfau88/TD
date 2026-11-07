@@ -154,7 +154,7 @@ Erst diese Probe bestätigt Verständlichkeit. Eine technisch korrekte Beschrift
 | --- | --- | --- |
 | Herz 1 | Bestehend: 10 Punkte | Schulterkontakt, persönliche Begrüßung, erster Moment |
 | Herz 2 | Bestehend: 35 Punkte durch schnellen Einstieg | Haare, gemeinsames Lachen, Blickwechsel; klares persönliches Ziel |
-| Auf dem Weg zu Herz 3 | Bestehend 30 Siege; **neu:** Treffen bei 10 und 20 Siegen | Neue Antworten, kleine Wahl, Initiative und Vorfreude |
+| Auf dem Weg zu Herz 3 | 30 **neue normale Siege seit Herz 2 bei dieser Figur**; Treffen nach 10 und 20 dieser neuen Siege | Neue Antworten, kleine Wahl, Initiative und Vorfreude |
 | Herz 3 | Bestehend: 58 + persönliches Geschenk = 70 | Eigene Handreaktion, Kompliment, dritter Moment |
 | Herz 4 | **Testvorschlag:** 98 Punkte + 40 normale Siege seit Herz 3; Einladung bewusst annehmen → 110 | Vollständig interaktiver neuer Treffpunkt; Mara zusätzlich vorhandenes Necken |
 | Herz 5 | **Testvorschlag:** 148 Punkte + 50 normale Siege seit Herz 4; besonderen Moment bewusst beginnen → 160 | Eigene Wangenreaktion am neuen Treffpunkt, persönlicher Abschluss und dauerhafte Wiederholbarkeit |
@@ -168,6 +168,10 @@ Für Herz 4 und 5 dieselbe kurze kontextabhängige Erklärung verwenden. Die Bed
 ### 4.2 Kleine Begegnungen mit Bedeutung
 
 Erstes Paket nur zwischen Herz 2 und 3: **zwei kurze Begegnungen je Figur**, je zwei bis drei Textabschnitte, eine Antwortwahl mit zwei stimmigen Optionen.
+
+**Zählbeginn ausdrücklich geklärt (07.11.2026):** Die folgenden 10/20 Siege sind keine Gesamtzahl seit Spielbeginn und keine Tutorialmeilensteine. Für jede Figur zählt `personal[Figur].clears` erst ab deren Herz 2 (35 Zuneigung). Siege vor Tavernenbau, vor dem ersten Besuch oder vor Herz 2 werden nicht nachträglich übernommen. Beispiel: Mara erreicht nach bereits 25 früheren Siegen Herz 2 → ihr Zähler steht trotzdem bei 0; erst zehn weitere normale Siege öffnen das erste Gespräch. Hat Ilyra noch kein Herz 2, beginnt ihr eigener Zähler noch nicht. Haben beide Herz 2, zählen dieselben neuen Siege für beide parallel. Live-Farmen zählt; Bosskämpfe, Niederlagen und Offlinegold nicht.
+
+**Warum ein Besuch trotzdem schnell wirken kann:** Herz 2 benötigt nur drei Gespräche und ein normales Geschenk. Normale Geschenke können bereits vor dem ersten Besuch vorhanden sein; nach gebauter Taverne kann bei weiteren Siegen auch ohne Besuch normaler Vorrat entstehen. Damit lässt sich Zuneigung nach Herz 2 schnell auf 58 bringen, aber weder der persönliche Siegfortschritt noch Herz 3 kaufen. Für Herz 3 bleiben 30 neue Siege, mindestens 58 Zuneigung und die bewusste persönliche Geschenkübergabe erforderlich. Alte bereits verdiente Herzen bleiben erhalten; der Direkt-Teststarter mit Herz 3 ist absichtlich vorbereitet und bildet keinen frischen Einstieg ab. Eine Änderung der Zahlen oder Geschenkbalance folgt aus dieser Klarstellung nicht.
 
 - **Mara / 10 Siege:** Rückbezug auf ihr Glückszahnrad; ehrlich nachfragen oder ihren Scherz erwidern. Sie merkt sich den gewählten Ton.
 - **Mara / 20 Siege:** Sie behält etwas für den Spieler zurück beziehungsweise deutet den späteren Platz am Tresen an. Noch keine Nutzung des nicht freigeschalteten Ortes.

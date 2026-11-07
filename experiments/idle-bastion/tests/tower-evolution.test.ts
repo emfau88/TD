@@ -26,6 +26,20 @@ test('high-level arrows use at most three visual copies, stagger and converge at
  assert.equal(arrowCopies(20,0).filter(c=>c.visible).length,1);
  assert.equal(arrowCopies(25,.4).filter(c=>c.visible).length,3);
 });
+
+test('frost pedestals match the tower bodies without moving their footing or shrinking at an upgrade',()=>{
+ const manifest=JSON.parse(readFileSync(new URL('../../../prototypes/frostkristall-evolution/manifest.json',import.meta.url),'utf8'));
+ let previous=0;
+ for(const row of manifest.levels){
+  const skin=evolutionSkin(2,row.level)!,scale=skin.baseScaleY??.63;
+  const height=(row.baseBox[3]-row.baseBox[1])*scale;
+  assert.ok(height>=53.5&&height<=58,`frost ${row.level}: body must match neighbouring towers`);
+  assert.ok(height>=previous-1e-8,`frost ${row.level}: no smaller body at an upgrade`);
+  assert.ok(Math.abs((192-192*skin.originY)*scale-25.6*.63)<1e-8,'original ground anchor preserved');
+  previous=height;
+ }
+ for(const kind of [1,3,4,5])for(const level of SKIN_LEVELS)assert.equal(evolutionSkin(kind,level)?.baseScaleY,undefined);
+});
 test('Frost releases on the real shot and returns to rest even at fast cooldowns',()=>{
  for(const cycle of [.1,.3,.6,1,2]){
   assert.equal(frostAnimationTime(0,cycle,cycle,true),.28);

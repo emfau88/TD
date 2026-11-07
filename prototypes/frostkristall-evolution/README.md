@@ -1,5 +1,7 @@
 # Frostkristall · isolierte Grafikstudie
 
+**Hauptspielkorrektur 07.11.2026:** Die Originalbilder dieser Studie bleiben erhalten. Im Spiel werden die Grundkörper inzwischen in der Höhe an die übrigen Türme angepasst: 53,55 / 55,44 / 57,96 Spieleinheiten für Stufe 1 / 2 / ab 3. Bodenpunkt und Breite bleiben identisch; Kristall, Sockelglühen und Bauvorschau sind passend verankert. Die isolierte historische Studie unten zeigt weiterhin ihre ursprünglichen Maße. [Aktueller Ingame-Vergleich aller Stufen](../../artifacts/idle-bastion/tower-mount-fix-2026-11-07/REPORT.md).
+
 Stand: 29.10.2026, Animationen Revision 2. Ursprung der Grafikstudie: `823d2ea88a583ef29a3e1c847ff322773bb65e3f` auf `main`.
 
 [Vorschau auf GitHub Pages](https://emfau88.github.io/TD/prototypes/frostkristall-evolution/?revision=2) · [Vergleich aller acht Stufen](comparison.png) · [Neue Einzelassets](assets/compact/)

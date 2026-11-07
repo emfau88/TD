@@ -27,7 +27,9 @@ for level in LEVELS:
         compact.save(OUT/f'level-{level}-base.png');weapon.save(OUT/f'level-{level}-weapon.png')
         projectile=Image.open(ORIGINAL/f'Tower 04 - Level 0{level} - Projectile.png').convert('RGBA').crop((0,0,*[(8,8),(15,12),(10,10)][level-1]))
         projectile.save(OUT/f'level-{level}-projectile.png')
-        mount=-.5
+        # The hinge belongs to the roof centre (native row 65), not its front parapet.
+        # Long original arms may overhang the compact masonry while rotating.
+        mount=13+(65-102.4)*.63
     else:
         raw=Image.open(HERE/f'sources/level-{level}-generated.png').convert('RGBA')
         raw.putalpha(raw.getchannel('A').point(lambda a:255 if a>=192 else 0))

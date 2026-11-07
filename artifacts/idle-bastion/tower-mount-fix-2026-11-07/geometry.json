@@ -1,0 +1,54 @@
+{
+  "originalAtlases": "unchanged",
+  "levels": [
+    {
+      "level": 1,
+      "restHeight": 57.96,
+      "maxRotatedFrameHeight": 71.49,
+      "baseWidth": 40.32
+    },
+    {
+      "level": 2,
+      "restHeight": 57.96,
+      "maxRotatedFrameHeight": 71.49,
+      "baseWidth": 40.32
+    },
+    {
+      "level": 3,
+      "restHeight": 57.96,
+      "maxRotatedFrameHeight": 71.49,
+      "baseWidth": 40.32
+    },
+    {
+      "level": 5,
+      "restHeight": 53.55,
+      "maxRotatedFrameHeight": 55.75,
+      "baseWidth": 40.32
+    },
+    {
+      "level": 10,
+      "restHeight": 53.55,
+      "maxRotatedFrameHeight": 55.75,
+      "baseWidth": 40.32
+    },
+    {
+      "level": 15,
+      "restHeight": 53.55,
+      "maxRotatedFrameHeight": 55.75,
+      "baseWidth": 40.32
+    },
+    {
+      "level": 20,
+      "restHeight": 53.55,
+      "maxRotatedFrameHeight": 55.75,
+      "baseWidth": 40.32
+    },
+    {
+      "level": 25,
+      "restHeight": 53.55,
+      "maxRotatedFrameHeight": 56.38,
+      "baseWidth": 40.32
+    }
+  ],
+  "weaponFrameAngles": 20160
+}

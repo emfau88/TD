@@ -1,0 +1,50 @@
+{
+  "firstVisit": {
+    "points": 0,
+    "personalWins": 0,
+    "stock": 8,
+    "firstConversation": false
+  },
+  "priorWins": 150,
+  "milestones": [
+    {
+      "newWins": 9,
+      "first": false,
+      "second": false,
+      "personalGift": false
+    },
+    {
+      "newWins": 10,
+      "first": true,
+      "second": false,
+      "personalGift": false
+    },
+    {
+      "newWins": 19,
+      "first": true,
+      "second": false,
+      "personalGift": false
+    },
+    {
+      "newWins": 20,
+      "first": true,
+      "second": true,
+      "personalGift": false
+    },
+    {
+      "newWins": 29,
+      "first": true,
+      "second": true,
+      "personalGift": false
+    },
+    {
+      "newWins": 30,
+      "first": true,
+      "second": true,
+      "personalGift": true
+    }
+  ],
+  "heart3Points": 70,
+  "otherCompanionWins": 0,
+  "gameCodeChanged": false
+}

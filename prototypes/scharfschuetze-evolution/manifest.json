@@ -3,7 +3,7 @@
     {
       "kind": 4,
       "level": 1,
-      "weaponY": -0.5,
+      "weaponY": -10.562000000000005,
       "originY": 0.8,
       "weaponScale": 0.53,
       "originalStage": 1,
@@ -14,7 +14,7 @@
     {
       "kind": 4,
       "level": 2,
-      "weaponY": -0.5,
+      "weaponY": -10.562000000000005,
       "originY": 0.8,
       "weaponScale": 0.53,
       "originalStage": 2,
@@ -25,7 +25,7 @@
     {
       "kind": 4,
       "level": 3,
-      "weaponY": -0.5,
+      "weaponY": -10.562000000000005,
       "originY": 0.8,
       "weaponScale": 0.53,
       "originalStage": 3,

@@ -1,5 +1,7 @@
 # Scharfschütze / Sharpshooter · Testbranch
 
+**Hauptspielkorrektur 07.11.2026:** Die frühen Stufen sitzen jetzt mit ihrer Halterung in der Dachmitte (native Zeile 65), statt vorne an der Zinne. Das betrifft Spiellevel 1–4. Sockel, Breite und Original-Waffenbilder bleiben erhalten. Die folgende Größenbeschreibung dokumentiert den vorherigen kompakten Prototyp; aktuell bleiben die Sockel unter 58 Spieleinheiten, die gedrehten Originalarme dürfen darüber hinausragen. Sämtliche 17 Originalframes und alle Richtungen werden geprüft; der größte Ausschlag einschließlich des im Originalframe gezeichneten Geschosses liegt bei 71,49. [Aktueller Nachweis](../../artifacts/idle-bastion/tower-mount-fix-2026-11-07/REPORT.md).
+
 [Im Spiel testen](https://emfau88.github.io/TD/previews/tower-evolution/tower-test.html) → **Scharfschütze**. Acht Stufen: **1 / 2 / 3 / 5 / 10 / 15 / 20 / 25**.
 
 ![Tatsächliche gepackte Sprites und Projektile](comparison.png)

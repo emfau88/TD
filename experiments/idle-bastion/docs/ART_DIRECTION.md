@@ -31,6 +31,8 @@ Alle Maße unten sind Spieleinheiten bei 100 % Weltmaßstab. Eine Zelle bleibt *
 
 **Bildrahmen, sichtbare Silhouette und belegte Bodenfläche sind verschiedene Größen.** Die Außenabmessungen eines PNGs definieren weder die Kollisionsfläche noch die sichtbare Größe. Transparenter Rand zählt nicht zur Silhouette.
 
+Turmkorrektur 07.11.2026: Der Frost-Grundkörper erhält im Hauptspiel eine sichtbare Höhe von 53,55 / 55,44 / 57,96 Spieleinheiten (Stufen 1 / 2 / ab 3), passend zu den anderen Turmkörpern. Die Breite bleibt bei Faktor 0,63; die vertikale Darstellung und der Ursprung werden gemeinsam angepasst, sodass der bisherige Bodenpunkt exakt erhalten bleibt. Kristallposition, Sockelleuchten und Bauvorschau folgen dieser Geometrie. Die Originalbilder und Kristallanimationen bleiben erhalten. Beim Scharfschützen sitzt die Halterung der drei frühen Grafikstufen (Spiellevel 1–4) nun in Dachzeile 65. Die langen Originalarme dürfen beim Drehen über den kompakten Sockel hinausragen; sie werden nicht zur Einhaltung einer künstlichen Gesamthöhe an die vordere Zinne versetzt.
+
 Darstellungsnachschliff 06.11.2026: `enemy-presentation.ts` begrenzt stabile seitliche
 Versätze anhand vermessener Silhouetten auf maximal drei Spieleinheiten. Große
 Figuren bleiben mittig; die letzten/ersten 24 Spieleinheiten jedes Wegsegments
