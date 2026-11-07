@@ -1,0 +1,79 @@
+{
+  "base": "https://emfau88.github.io/TD/previews/tavern/",
+  "cases": [
+    {
+      "preset": "heart3",
+      "who": "mara",
+      "width": 1280,
+      "language": "de",
+      "points": 70,
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-be25fd8e-721e-4790-a791-0529abc28eed&tavernTest=mara",
+      "overflow": false
+    },
+    {
+      "preset": "heart3",
+      "who": "ilyra",
+      "width": 320,
+      "language": "en",
+      "points": 70,
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-37fcc115-51a3-4412-b5ee-8f10741de7b5&tavernTest=ilyra",
+      "overflow": false
+    },
+    {
+      "preset": "fresh",
+      "who": "mara",
+      "width": 320,
+      "language": "de",
+      "points": 0,
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-30bd7026-2d4a-4e09-a7ad-315997505989&tavernTest=mara",
+      "overflow": false
+    },
+    {
+      "preset": "heart2-10",
+      "who": "ilyra",
+      "width": 1280,
+      "language": "de",
+      "points": 35,
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-518cc06f-247c-4b95-8704-7434d3e025db&tavernTest=ilyra",
+      "overflow": false
+    },
+    {
+      "preset": "heart2-20",
+      "who": "mara",
+      "width": 320,
+      "language": "en",
+      "points": 35,
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-e3da878f-11b9-4377-bb39-91a0d67e39e9&tavernTest=mara",
+      "overflow": false
+    },
+    {
+      "preset": "gift58-18",
+      "who": "mara",
+      "width": 1280,
+      "language": "de",
+      "points": 58,
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-75db93a3-d8a0-47af-906f-71a54361e88d&tavernTest=mara",
+      "overflow": false
+    },
+    {
+      "preset": "gift58-30",
+      "who": "ilyra",
+      "width": 320,
+      "language": "de",
+      "points": 58,
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-1753b6e2-d234-4946-94b8-e46f8b3c5b9e&tavernTest=ilyra",
+      "overflow": false
+    },
+    {
+      "preset": "legacy4",
+      "who": "mara",
+      "width": 1280,
+      "language": "de",
+      "points": 110,
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-e5736219-b533-421e-b97f-16777cf6ceb2&tavernTest=mara",
+      "overflow": false
+    }
+  ],
+  "counterVoiceAndReturn": true,
+  "errors": []
+}

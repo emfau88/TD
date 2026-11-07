@@ -1,0 +1,2709 @@
+{
+  "baselineCommit": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
+  "branchCommitAtCapture": "8726431214d34803419d59c5ce416a82fce91eff",
+  "viewport": {
+    "width": 390,
+    "height": 900,
+    "deviceScaleFactor": 1
+  },
+  "foundationFile": "artifacts/idle-bastion/acceptance/early-balance-release/selected/B-snapshots.json#clear25",
+  "foundationSHA256": "93ee8b25e1d4152006ed05e31a565043ccb1f1b9aae47b55ca1541440781dcb8",
+  "notes": [
+    "Real TavernUI and BattleSession from each source tree; source files untouched.",
+    "Each capture uses a separate browser context and unique comparison IndexedDB key, never user save namespaces.",
+    "Real shipped old rig/new video presentation; genuine idle canvas is frozen for a neutral still. For the gift, artwork is frozen before the action; all UI/save/celebration code runs normally. No game text, UI element or rewards are replaced.",
+    "For the third-heart shot, the real committed 200ms CSS animation state is paused for capture."
+  ],
+  "cases": [
+    {
+      "id": "01-progress",
+      "points": 58,
+      "clears": 18,
+      "title": "Bis zum persönlichen Geschenk",
+      "caption": "Gleicher Ausgangsstand: 58 Zuneigung, 18 persönliche Siege. Beide Fassungen nennen die noch fehlenden 12 Siege. Rechts wird zusätzlich klar: Gewonnene normale Wellen zählen, auch beim Farmen. Geschenkdetails bleiben zugeklappt.",
+      "captures": [
+        {
+          "source": "before",
+          "commit": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
+          "original": "01-progress-before.png",
+          "errors": [],
+          "key": "tavern-ui-comparison-before-01-progress-464e1c5e-6b00-40fa-ac04-1924965de64a",
+          "commonInitial": {
+            "points": {
+              "mara": 58,
+              "ilyra": 58
+            },
+            "gifts": 4,
+            "personal": {
+              "mara": {
+                "clears": 18,
+                "claimed": false
+              },
+              "ilyra": {
+                "clears": 18,
+                "claimed": false
+              }
+            },
+            "reserves": {
+              "mara": {
+                "talk": 3,
+                "touch": 3,
+                "clears": 0
+              },
+              "ilyra": {
+                "talk": 3,
+                "touch": 3,
+                "clears": 0
+              }
+            }
+          },
+          "points": 58,
+          "clears": 18,
+          "paused": true,
+          "revision": 5,
+          "sessionError": null,
+          "hint": {
+            "text": "Persönliches Geschenk benötigt. Deine normalen Geschenke bleiben erhalten. Noch 12 Siege.",
+            "visible": true,
+            "top": 724,
+            "bottom": 760
+          },
+          "unlock": {
+            "text": "",
+            "visible": false,
+            "top": 0,
+            "bottom": 0
+          },
+          "line": {
+            "text": "Schön, dich zu sehen. Ich habe dir etwas zu erzählen.",
+            "visible": false,
+            "top": 643,
+            "bottom": 688
+          },
+          "giftDetailsOpen": false,
+          "actions": [
+            {
+              "text": "SprechenGespräch wählen",
+              "visible": true
+            },
+            {
+              "text": "BerührenHerzen an der Figur",
+              "visible": true
+            },
+            {
+              "text": "SchenkenPersönlich nötig",
+              "visible": true
+            }
+          ],
+          "answers": [],
+          "story": "false",
+          "overflow": false,
+          "artwork": "genuine idle frame",
+          "captureDelayMs": null,
+          "saves": [
+            {
+              "revision": 1,
+              "at": 587.5999999977648,
+              "social": {
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 18,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 18,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 2,
+              "at": 814.5,
+              "social": {
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 18,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 18,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 3,
+              "at": 818.0999999977648,
+              "social": {
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 18,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 18,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 4,
+              "at": 821.3999999985099,
+              "social": {
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 18,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 18,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 5,
+              "at": 910.0999999977648,
+              "social": {
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 18,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 18,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            }
+          ],
+          "cssHeart": {
+            "transform": "none",
+            "filter": "none"
+          },
+          "commonInitialSHA256": "74ba5253432e185ebb66556f286ab57ec2012a28c9b9c1a91bc1e21856891ea3",
+          "initialSnapshotSHA256": "ee14c525a58537d8f742ad66c8ef7f9c9f74699de3437220a2f25a80b9283ce7",
+          "currentSnapshotSHA256": "6c98d2ae97b38b964a13efa08dea83b9ce0a126a148a7f83b040f6c12bc76c04"
+        },
+        {
+          "source": "after",
+          "commit": "8726431214d34803419d59c5ce416a82fce91eff",
+          "original": "01-progress-after.png",
+          "errors": [],
+          "key": "tavern-ui-comparison-after-01-progress-778e1d88-e342-4264-92e9-ce50fad4dfd4",
+          "commonInitial": {
+            "points": {
+              "mara": 58,
+              "ilyra": 58
+            },
+            "gifts": 4,
+            "personal": {
+              "mara": {
+                "clears": 18,
+                "claimed": false
+              },
+              "ilyra": {
+                "clears": 18,
+                "claimed": false
+              }
+            },
+            "reserves": {
+              "mara": {
+                "talk": 3,
+                "touch": 3,
+                "clears": 0
+              },
+              "ilyra": {
+                "talk": 3,
+                "touch": 3,
+                "clears": 0
+              }
+            }
+          },
+          "points": 58,
+          "clears": 18,
+          "paused": true,
+          "revision": 5,
+          "sessionError": null,
+          "hint": {
+            "text": "Für Maras persönliches Geschenk fehlen noch 12 gewonnene normale Wellen. Auch Farmen zählt.",
+            "visible": true,
+            "top": 714.625,
+            "bottom": 750.625
+          },
+          "unlock": {
+            "text": "",
+            "visible": false,
+            "top": 0,
+            "bottom": 0
+          },
+          "line": {
+            "text": "Schön, dich zu sehen. Ich habe dir etwas zu erzählen.",
+            "visible": false,
+            "top": 633.625,
+            "bottom": 678.625
+          },
+          "giftDetailsOpen": false,
+          "actions": [
+            {
+              "text": "SprechenNeues Gespräch",
+              "visible": true
+            },
+            {
+              "text": "BerührenHerzen an der Figur",
+              "visible": true
+            },
+            {
+              "text": "SchenkenPersönliches Geschenk fehlt",
+              "visible": true
+            }
+          ],
+          "answers": [
+            {
+              "text": "",
+              "visible": false
+            },
+            {
+              "text": "",
+              "visible": false
+            }
+          ],
+          "story": "false",
+          "overflow": false,
+          "artwork": "genuine idle frame",
+          "captureDelayMs": null,
+          "saves": [
+            {
+              "revision": 1,
+              "at": 388.9000000022352,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 18,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 18,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 2,
+              "at": 635.3000000007451,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 18,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 18,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 3,
+              "at": 639,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 18,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 18,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 4,
+              "at": 641.8000000007451,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 18,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 18,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 5,
+              "at": 735.8000000007451,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 18,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 18,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            }
+          ],
+          "cssHeart": {
+            "transform": "none",
+            "filter": "none"
+          },
+          "commonInitialSHA256": "74ba5253432e185ebb66556f286ab57ec2012a28c9b9c1a91bc1e21856891ea3",
+          "initialSnapshotSHA256": "6946679d05b3cd079ae042b348bf38cfa3b71e3c22ef276f047089f6f4d99599",
+          "currentSnapshotSHA256": "8fd6cb384cac4bfb43ec01d4a15924e2fb96de53e0bff47dc22f3f9603ae2653"
+        }
+      ]
+    },
+    {
+      "id": "02-conversation",
+      "points": 35,
+      "clears": 10,
+      "title": "Ein Gespräch im bestehenden Dialog",
+      "caption": "Gleicher Ausgangsstand: Herz 2 und 10 persönliche Siege. Links folgt die normale Antwort; rechts eine neue optionale Begegnung mit zwei Antworten. Danach kehren die drei gewohnten Hauptaktionen zurück.",
+      "captures": [
+        {
+          "source": "before",
+          "commit": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
+          "original": "02-conversation-before.png",
+          "errors": [],
+          "key": "tavern-ui-comparison-before-02-conversation-c2541c37-08f6-4a15-98c3-6859e6614bf2",
+          "commonInitial": {
+            "points": {
+              "mara": 35,
+              "ilyra": 35
+            },
+            "gifts": 4,
+            "personal": {
+              "mara": {
+                "clears": 10,
+                "claimed": false
+              },
+              "ilyra": {
+                "clears": 10,
+                "claimed": false
+              }
+            },
+            "reserves": {
+              "mara": {
+                "talk": 3,
+                "touch": 3,
+                "clears": 0
+              },
+              "ilyra": {
+                "talk": 3,
+                "touch": 3,
+                "clears": 0
+              }
+            }
+          },
+          "points": 43,
+          "clears": 10,
+          "paused": true,
+          "revision": 6,
+          "sessionError": null,
+          "hint": {
+            "text": "Ein kleines Geschenk für Mara.",
+            "visible": false,
+            "top": 809,
+            "bottom": 827
+          },
+          "unlock": {
+            "text": "",
+            "visible": false,
+            "top": 0,
+            "bottom": 0
+          },
+          "line": {
+            "text": "Mein Glückszahnrad ist noch da. Nein, du darfst es nicht in einen Turm einbauen. Manches behalte ich einfach für mich.",
+            "visible": true,
+            "top": 679,
+            "bottom": 746.5
+          },
+          "giftDetailsOpen": false,
+          "actions": [
+            {
+              "text": "SprechenGespräch wählen",
+              "visible": true
+            },
+            {
+              "text": "BerührenHerzen an der Figur",
+              "visible": true
+            },
+            {
+              "text": "SchenkenAus deinem Vorrat",
+              "visible": true
+            }
+          ],
+          "answers": [],
+          "story": "false",
+          "overflow": false,
+          "artwork": "genuine idle frame",
+          "captureDelayMs": null,
+          "saves": [
+            {
+              "revision": 1,
+              "at": 590.8000000007451,
+              "social": {
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 2,
+              "at": 823.8999999985099,
+              "social": {
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 3,
+              "at": 826.8999999985099,
+              "social": {
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 4,
+              "at": 829.6999999992549,
+              "social": {
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 5,
+              "at": 924.1999999992549,
+              "social": {
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 6,
+              "at": 1220,
+              "social": {
+                "points": {
+                  "mara": 43,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 2,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            }
+          ],
+          "cssHeart": {
+            "transform": "none",
+            "filter": "none"
+          },
+          "commonInitialSHA256": "bfb139c08eab77dc0be36f177f6db6b9a2e4549b8abf15bb7e7901758c95b45e",
+          "initialSnapshotSHA256": "3dc0781f4a1c6353aab808d082dca1c96cade46294fa4ef49a95616a9353477a",
+          "currentSnapshotSHA256": "4edf05e5959d3a27ce859fb77b59fd6908a64abb079836c873754faaa79ef6ed"
+        },
+        {
+          "source": "after",
+          "commit": "8726431214d34803419d59c5ce416a82fce91eff",
+          "original": "02-conversation-after.png",
+          "errors": [],
+          "key": "tavern-ui-comparison-after-02-conversation-3da4dd40-14f4-41b0-9da1-fca23847d842",
+          "commonInitial": {
+            "points": {
+              "mara": 35,
+              "ilyra": 35
+            },
+            "gifts": 4,
+            "personal": {
+              "mara": {
+                "clears": 10,
+                "claimed": false
+              },
+              "ilyra": {
+                "clears": 10,
+                "claimed": false
+              }
+            },
+            "reserves": {
+              "mara": {
+                "talk": 3,
+                "touch": 3,
+                "clears": 0
+              },
+              "ilyra": {
+                "talk": 3,
+                "touch": 3,
+                "clears": 0
+              }
+            }
+          },
+          "points": 35,
+          "clears": 10,
+          "paused": true,
+          "revision": 10,
+          "sessionError": null,
+          "hint": {
+            "text": "Lernt euch weiter kennen. Für dein persönliches Geschenk fehlen außerdem noch 20 gewonnene Wellen.",
+            "visible": false,
+            "top": 0,
+            "bottom": 0
+          },
+          "unlock": {
+            "text": "",
+            "visible": false,
+            "top": 0,
+            "bottom": 0
+          },
+          "line": {
+            "text": "Das kleine Zahnrad hier stammt aus meiner ersten Uhr. Sie ging ständig nach, aber ich habe es behalten. Nicht alles muss perfekt funktionieren, damit ich daran hänge.",
+            "visible": true,
+            "top": 548.6875,
+            "bottom": 603.25
+          },
+          "giftDetailsOpen": false,
+          "actions": [
+            {
+              "text": "SprechenGespräch fortsetzen",
+              "visible": false
+            },
+            {
+              "text": "BerührenHerzen an der Figur",
+              "visible": false
+            },
+            {
+              "text": "SchenkenAus deinem Vorrat",
+              "visible": false
+            }
+          ],
+          "answers": [
+            {
+              "text": "Was bedeutet es dir?",
+              "visible": true
+            },
+            {
+              "text": "Du bringst mich auch aus dem Takt.",
+              "visible": true
+            }
+          ],
+          "story": "true",
+          "overflow": false,
+          "artwork": "genuine idle frame",
+          "captureDelayMs": null,
+          "saves": [
+            {
+              "revision": 1,
+              "at": 286.30000000074506,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 2,
+              "at": 546.3000000007451,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 3,
+              "at": 550.0999999977648,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 4,
+              "at": 553.5999999977648,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 5,
+              "at": 645,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 6,
+              "at": 951.3999999985099,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": true,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 7,
+              "at": 1557.800000000745,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": true,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 8,
+              "at": 2552,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": true,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 9,
+              "at": 3550.699999999255,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": true,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 10,
+              "at": 4555.300000000745,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": true,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 35,
+                  "ilyra": 35
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 10,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 10,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            }
+          ],
+          "cssHeart": {
+            "transform": "none",
+            "filter": "none"
+          },
+          "afterConversation": {
+            "threeMainActionsVisible": 3,
+            "answerButtonsVisible": 0
+          },
+          "commonInitialSHA256": "bfb139c08eab77dc0be36f177f6db6b9a2e4549b8abf15bb7e7901758c95b45e",
+          "initialSnapshotSHA256": "db7361653ee848687cea65ae83bbfec8db7863407c72fe033255f26e701ef00a",
+          "currentSnapshotSHA256": "34254b55697749e5d9d99ba05ff0eac74fd922c72f7ad9305badf467489e2bc5"
+        }
+      ]
+    },
+    {
+      "id": "03-unlock",
+      "points": 58,
+      "clears": 30,
+      "title": "Das dritte Herz und eine neue Berührung",
+      "caption": "Gleicher Ausgangsstand: 58 Zuneigung und das persönliche Geschenk bereit. Links führt der Knopf zur persönlichen Geschichte, rechts direkt zum Ausprobieren der neuen Handberührung. Das verdiente Herz leuchtet rechts kurz auf.",
+      "captures": [
+        {
+          "source": "before",
+          "commit": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
+          "original": "03-unlock-before.png",
+          "errors": [],
+          "key": "tavern-ui-comparison-before-03-unlock-38976a7d-4a1b-4fc9-9265-f6da44e2f3bf",
+          "commonInitial": {
+            "points": {
+              "mara": 58,
+              "ilyra": 58
+            },
+            "gifts": 4,
+            "personal": {
+              "mara": {
+                "clears": 30,
+                "claimed": false
+              },
+              "ilyra": {
+                "clears": 30,
+                "claimed": false
+              }
+            },
+            "reserves": {
+              "mara": {
+                "talk": 3,
+                "touch": 3,
+                "clears": 0
+              },
+              "ilyra": {
+                "talk": 3,
+                "touch": 3,
+                "clears": 0
+              }
+            }
+          },
+          "points": 70,
+          "clears": 30,
+          "paused": true,
+          "revision": 6,
+          "sessionError": null,
+          "hint": {
+            "text": "Deine Geschenke bleiben für spätere Inhalte erhalten.",
+            "visible": true,
+            "top": 777.125,
+            "bottom": 795.125
+          },
+          "unlock": {
+            "text": "Neu: Hand berührenPersönlichen Moment erleben: Was ich nicht reparieren kann",
+            "visible": true,
+            "top": 160,
+            "bottom": 208.9375
+          },
+          "line": {
+            "text": "Das behalte ich. Und nein, ich zerlege es nicht sofort in seine Einzelteile.",
+            "visible": true,
+            "top": 669.625,
+            "bottom": 714.625
+          },
+          "giftDetailsOpen": false,
+          "actions": [
+            {
+              "text": "SprechenGespräch wählen",
+              "visible": true
+            },
+            {
+              "text": "BerührenHerzen an der Figur",
+              "visible": true
+            },
+            {
+              "text": "SchenkenEtappe abgeschlossen",
+              "visible": true
+            }
+          ],
+          "answers": [],
+          "story": "false",
+          "overflow": false,
+          "artwork": "genuine idle frame",
+          "captureDelayMs": null,
+          "saves": [
+            {
+              "revision": 1,
+              "at": 616.7000000029802,
+              "social": {
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 30,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 30,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 2,
+              "at": 858.2000000029802,
+              "social": {
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 30,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 30,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 3,
+              "at": 861.4000000022352,
+              "social": {
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 30,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 30,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 4,
+              "at": 864.6000000014901,
+              "social": {
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 30,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 30,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 5,
+              "at": 954.6000000014901,
+              "social": {
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 30,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 30,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 6,
+              "at": 1221.2000000029802,
+              "social": {
+                "points": {
+                  "mara": 70,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 30,
+                    "claimed": true
+                  },
+                  "ilyra": {
+                    "clears": 30,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            }
+          ],
+          "cssHeart": {
+            "transform": "matrix(1.00385, 0, 0, 1.00385, 0, 0)",
+            "filter": "drop-shadow(rgba(239, 159, 189, 0.294) 0px 0px 1.28863px)"
+          },
+          "commonInitialSHA256": "a6b31f85d6707ac065fbc04e51aa43e7887434b9365f515fc095b6350ce0ca3a",
+          "initialSnapshotSHA256": "f47819bed95313fffc57c53b9a3a14e7753e03105b59a18f5e02d0030a2f905f",
+          "currentSnapshotSHA256": "451ade3c44c04090c79d23e069bf90babc5f71be7717c443fca92e11cb1ac086"
+        },
+        {
+          "source": "after",
+          "commit": "8726431214d34803419d59c5ce416a82fce91eff",
+          "original": "03-unlock-after.png",
+          "errors": [],
+          "key": "tavern-ui-comparison-after-03-unlock-d2536f35-7f22-4796-8c93-3abb0940c2dd",
+          "commonInitial": {
+            "points": {
+              "mara": 58,
+              "ilyra": 58
+            },
+            "gifts": 4,
+            "personal": {
+              "mara": {
+                "clears": 30,
+                "claimed": false
+              },
+              "ilyra": {
+                "clears": 30,
+                "claimed": false
+              }
+            },
+            "reserves": {
+              "mara": {
+                "talk": 3,
+                "touch": 3,
+                "clears": 0
+              },
+              "ilyra": {
+                "talk": 3,
+                "touch": 3,
+                "clears": 0
+              }
+            }
+          },
+          "points": 70,
+          "clears": 30,
+          "paused": true,
+          "revision": 6,
+          "sessionError": null,
+          "hint": {
+            "text": "Diese Etappe ist abgeschlossen. Eure gemeinsamen Momente bleiben.",
+            "visible": false,
+            "top": 799.625,
+            "bottom": 835.625
+          },
+          "unlock": {
+            "text": "Neu: Hand berührenAusprobieren",
+            "visible": true,
+            "top": 160,
+            "bottom": 208.9375
+          },
+          "line": {
+            "text": "Ein kleines Messingzahnrad, nur für mich? Es passt zu meinem alten Glücksstück. Du hast dir wirklich gemerkt, was mir etwas bedeutet.",
+            "visible": true,
+            "top": 669.625,
+            "bottom": 737.125
+          },
+          "giftDetailsOpen": false,
+          "actions": [
+            {
+              "text": "SprechenNeues Gespräch",
+              "visible": true
+            },
+            {
+              "text": "BerührenHerzen an der Figur",
+              "visible": true
+            },
+            {
+              "text": "SchenkenEtappe abgeschlossen",
+              "visible": true
+            }
+          ],
+          "answers": [
+            {
+              "text": "",
+              "visible": false
+            },
+            {
+              "text": "",
+              "visible": false
+            }
+          ],
+          "story": "false",
+          "overflow": false,
+          "artwork": "genuine idle frame",
+          "captureDelayMs": 216.30000000074506,
+          "saves": [
+            {
+              "revision": 1,
+              "at": 383.8999999985099,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 30,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 30,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 2,
+              "at": 640.3999999985099,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 30,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 30,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 3,
+              "at": 644.0999999977648,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 30,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 30,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 4,
+              "at": 647.7999999970198,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 30,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 30,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 5,
+              "at": 741.0999999977648,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 58,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 30,
+                    "claimed": false
+                  },
+                  "ilyra": {
+                    "clears": 30,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            },
+            {
+              "revision": 6,
+              "at": 935.1999999992549,
+              "social": {
+                "encounters": {
+                  "mara": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  },
+                  "ilyra": {
+                    "first": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    },
+                    "second": {
+                      "seen": false,
+                      "choice": null,
+                      "completed": false
+                    }
+                  }
+                },
+                "points": {
+                  "mara": 70,
+                  "ilyra": 58
+                },
+                "gifts": 4,
+                "claimed": {
+                  "opening": true,
+                  "boss15": true,
+                  "boss25": true,
+                  "ilyraWelcome": true
+                },
+                "reserves": {
+                  "mara": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  },
+                  "ilyra": {
+                    "talk": 3,
+                    "touch": 3,
+                    "clears": 0
+                  }
+                },
+                "personal": {
+                  "mara": {
+                    "clears": 30,
+                    "claimed": true
+                  },
+                  "ilyra": {
+                    "clears": 30,
+                    "claimed": false
+                  }
+                },
+                "clearProgress": 0,
+                "lastClearAttempt": 0
+              }
+            }
+          ],
+          "cssHeart": {
+            "transform": "matrix(1.1377, 0, 0, 1.1377, 0, 0)",
+            "filter": "drop-shadow(rgba(244, 181, 197, 0.6) 0px 0px 6.53416px)"
+          },
+          "commonInitialSHA256": "a6b31f85d6707ac065fbc04e51aa43e7887434b9365f515fc095b6350ce0ca3a",
+          "initialSnapshotSHA256": "6a6bdc635be9eb21dc9490dced2607a7e61eed8ec8503bbbacd4e89abe4dbaa6",
+          "currentSnapshotSHA256": "d19136b6afe22b0dd4dfd0248b186bb5a607f2233abe6cef7caa32a4b0d37759"
+        }
+      ]
+    }
+  ]
+}

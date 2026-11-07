@@ -91,6 +91,25 @@ der geschriebenen deutschen/englischen Dialoge.
 | Ruhige/ernste Antworten, normales Plaudern, Weiter, Fortsetzen, Rückblicke und Idle | Keine zusätzliche zufällige Stimme. Geschenk-/Herzklänge bleiben erhalten. |
 | Separate Tresenprobe | MC05/Hand und MC03/Haare verwenden Maras Pool; MC01/Idle und MC02/Gespräch bleiben ohne zusätzliche Reaktionsstimme. |
 
+### UI vorher und nachher
+
+Drei echte Vergleiche mit gleichem Ausgangsstand; links veröffentlichte Basis,
+rechts der Testbranch. Die vertrauten drei Hauptaktionen bleiben erhalten.
+
+**1. Fehlende Siege verständlicher:** Schon vorher wurden die zwölf fehlenden Siege genannt. Jetzt sind normale Wellen und Farmen ausdrücklich erklärt.
+
+![Geschenkfortschritt – vorher und nachher](artifacts/idle-bastion/tavern-ui-comparison-2026-11-07/01-progress-pair.png)
+
+**2. Neue Begegnung im vorhandenen Dialog:** Zwei persönliche Antworten auf dem Weg zu Herz 3; nach dem Gespräch kehren die gewohnten drei Aktionen zurück.
+
+![Optionale Begegnung im bisherigen Dialog – vorher und nachher](artifacts/idle-bastion/tavern-ui-comparison-2026-11-07/02-conversation-pair.png)
+
+**3. Neue Berührung direkt ausprobieren:** Nach Herz 3 führt „Ausprobieren“ zur Handreaktion. Der persönliche Herzmoment bleibt über das Herz erreichbar; das verdiente Herz leuchtet kurz auf.
+
+![Herz 3 und neue Handberührung – vorher und nachher](artifacts/idle-bastion/tavern-ui-comparison-2026-11-07/03-unlock-pair.png)
+
+[Quellen, unveränderte Einzelaufnahmen und Vergleichsmethode](artifacts/idle-bastion/tavern-ui-comparison-2026-11-07/NOTES.md).
+
 [Tavernenplan mit aktuellem Status](experiments/idle-bastion/docs/TAVERNE_AUSBAUPLAN_2026-11-06.md) ·
 [Technische Nachweise](artifacts/idle-bastion/tavern-implementation-2026-11-07/REPORT.md)
 <!-- tavern-preview-end -->

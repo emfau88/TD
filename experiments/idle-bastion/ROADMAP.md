@@ -1,8 +1,11 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
-**Tavernen-Ausbau · 07.11.2026 — bulkweise Umsetzung ausdrücklich beauftragt, Bulk 0/3 abgeschlossen / Bulk 1–2/4 technisch fertig / Bulk 5 in Arbeit.**
+**Tavernen-Ausbau · 07.11.2026 — bulkweise Umsetzung ausdrücklich beauftragt, Bulk 0/3 abgeschlossen / Bulk 1–2/4 technisch fertig / Bulk 5 Videoausbau zurückgestellt.**
 
 **Neue Nutzerpriorität:** Nach laufendem MC03 keine weitere Videoproduktion. MC01/MC05/MC02 freigegeben; restlicher Tresen-, Fenster-, Herz-5-/Outfit-Ausbau Zukunft. Mögliche Bildbegegnungen nur zur Diskussion, noch kein Bildauftrag. Herz1–3 technisch verbessert; gemeinsame menschliche Abnahme/Veröffentlichung und Entscheidung über schlankere spätere Inhalte bleiben offen.
+
+- [x] Zusätzliche Branch-Testlieferung: Code87264312 auf `codex/tavern-comfy-integration` gepusht; [isolierte Ingame-Vorschau ohne Durchspielen](https://emfau88.github.io/TD/previews/tavern/tavern-test.html) mit eigenemSpeicher/separatenTestständen veröffentlicht.531/531 Tests, Build, acht lokale und acht öffentliche Ingame-Fälle bestanden. Figurenbezogene Zufallssounds für neue passende Reaktionen ergänzt und geprüft. [Pages42324019684](https://github.com/emfau88/TD/actions/runs/42324019684) erhältMain/andereVorschauen unverändert; keinMain-Merge.
+- [x] Auf Nutzerauftrag drei echte UI-Vorher/Nachher-Paare mit gleichen Ausgangswerten erstellt, visuell geprüft und in der Branch-README verlinkt: Fortschritt, neueDialogantworten, Hand-Ausprobieren nachHerz3. Quellen/Originalscreens/Metadaten liegen bei; keineClip- oder erfundeneUI-Darstellung.
 
 - [x] Mara M01–M08 und Ilyra I01–I07 im aktuellen Chat visuell freigegeben; alle 15 neuen Clips sind im isolierten Umsetzungsbranch lokal integriert; öffentliche Hauptversion unverändert. [Exakte Fassungen und geplante Zuordnung](../../artifacts/idle-bastion/tavern-audit-2026-11-06/clip-replacement-plan.json).
 - [x] Auf ausdrücklichen Nutzerauftrag einen [Markdown-Plan mit Bulks und Abnahmekriterien](docs/TAVERNE_AUSBAUPLAN_2026-11-06.md) erstellt: verständliche Herzbedingungen, Archivierung/Austausch, fehlende Reaktionen, vollständige ortsgebundene Interaktionssets, Herz-4-/5-Erlebnisse, Geschenkrolle und Herzfreischaltung. Geprüfte Spielbasis ist `origin/main` / `daf39fb`; dieser Checkout bleibt der ältere Tavernenbranch. Frühere Einträge und vorhandene lokale Änderungen erhalten.
