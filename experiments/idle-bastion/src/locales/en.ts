@@ -1403,6 +1403,8 @@ export const english: Readonly<Record<string, string>> = {
   "Gespräch beenden": "End conversation",
   "Neues Gespräch": "New conversation",
   "Gespräch fortsetzen": "Continue conversation",
+  "{0} · Neues Gespräch": "{0} · New conversation",
+  "{0} · Gespräch fortsetzen": "{0} · Continue conversation",
   "{0} möchte mit dir sprechen.": "{0} would like to talk to you.",
   "Ein neues Thema wartet.": "A new topic is waiting.",
   "Erst noch etwas plaudern": "Chat a little first",

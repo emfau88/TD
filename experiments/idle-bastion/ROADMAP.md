@@ -2,6 +2,8 @@
 
 **Tavernen-Ausbau · 07.11.2026 — bulkweise Umsetzung ausdrücklich beauftragt, Bulk 0/3 abgeschlossen / Bulk 1–2/4 technisch fertig / Bulk 5 Videoausbau zurückgestellt.**
 
+- [x] Nachschliff aus dem Branch-Review lokal fertig: beide Antworten sofort sichtbar in der bestehenden Aktionsleiste; dezenter Neu-/Fortsetzen-Hinweis am Siedlungs-/Tavernenzugang und bei den Figuren. Acht echte Hauptspielfälle DE/EN mit beiden Figuren, 32 Antwortauswahlen, Abbruch/Reload/neutralem Zweig und unveränderter mobiler Bühne bestanden; 14/14 gezielte Tests und Produktionsbuild grün. [Nachweis](../../artifacts/idle-bastion/tavern-discovery-2026-11-07/REPORT.md).
+- [ ] Diesen Nachschliff unter dem bestehenden getrennten Testlink veröffentlichen und öffentlich prüfen.
 **Neue Nutzerpriorität:** Nach MC03 keine weitere Videoproduktion. MC01/MC05/MC02 freigegeben; MC03 fertig, Nutzerurteil offen. Restlicher Tresen-, Fenster-, Herz-5-/Outfit-Ausbau Zukunft. Mögliche Bildbegegnungen nur zur Diskussion, noch kein Bildauftrag. Herz1–3 technisch verbessert und als getrennte Vorschau veröffentlicht; gemeinsame menschliche Abnahme und Entscheidung über schlankere spätere Inhalte bleiben offen.
 
 - [x] Mobile Nutzerrückmeldungen lokal behoben: gemeinsame scrollbare Textfläche und feste Hochformatreserven halten die Figur bei Herzaufstieg, Momenten und Begegnungen stabil. 128 Rig-Zustände und zehn echte Touch-Hauptspielfälle mit 180 Zuständen geprüft. Dunklen Kompliment-Sondereffekt durch normale Bildüberblendung ersetzt; zehn direkte Videoübergänge und sechs echte Hauptspielfälle beider Figuren ohne dunkles Rechteck. Produktionsbuild bestanden; drei README-Vergleichsbilder aktualisiert.

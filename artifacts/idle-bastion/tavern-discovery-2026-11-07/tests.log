@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: four short encounters have two equal choices, usable existing clips and complete English
+ok 1 - four short encounters have two equal choices, usable existing clips and complete English
+  ---
+  duration_ms: 1.5479
+  type: 'test'
+  ...
+# Subtest: second encounter recalls only the actual first choice; neutral history invents no choice
+ok 2 - second encounter recalls only the actual first choice; neutral history invents no choice
+  ---
+  duration_ms: 1.3839
+  type: 'test'
+  ...
+# Subtest: star nickname remains private and personal gifts have concrete separate meanings
+ok 3 - star nickname remains private and personal gifts have concrete separate meanings
+  ---
+  duration_ms: 0.2749
+  type: 'test'
+  ...
+# Subtest: the two own-win milestones remain available after heart three without inventing history
+ok 4 - the two own-win milestones remain available after heart three without inventing history
+  ---
+  duration_ms: 1.0875
+  type: 'test'
+  ...
+# Subtest: seen, one immutable choice, neutral completion and independent records have no rewards
+ok 5 - seen, one immutable choice, neutral completion and independent records have no rewards
+  ---
+  duration_ms: 105.9907
+  type: 'test'
+  ...
+# Subtest: access and socialRewards are checked before encounter mutation
+ok 6 - access and socialRewards are checked before encounter mutation
+  ---
+  duration_ms: 43.0083
+  type: 'test'
+  ...
+# Subtest: current snapshots deep-copy partially read records and preserve choices on reload
+ok 7 - current snapshots deep-copy partially read records and preserve choices on reload
+  ---
+  duration_ms: 33.0674
+  type: 'test'
+  ...
+# Subtest: schema37 migration validates all old fields and adds only empty optional encounter records
+ok 8 - schema37 migration validates all old fields and adds only empty optional encounter records
+  ---
+  duration_ms: 33.3114
+  type: 'test'
+  ...
+# Subtest: current schema rejects malformed or impossible records rather than resetting them
+ok 9 - current schema rejects malformed or impossible records rather than resetting them
+  ---
+  duration_ms: 248.8785
+  type: 'test'
+  ...
+# Subtest: encounter choices use durable commands: rejected save rolls back, duplicates cannot overwrite
+ok 10 - encounter choices use durable commands: rejected save rolls back, duplicates cannot overwrite
+  ---
+  duration_ms: 88.2236
+  type: 'test'
+  ...
+# Subtest: gift ownership and actionable recipients stay separate across both companions and the chapter cap
+ok 11 - gift ownership and actionable recipients stay separate across both companions and the chapter cap
+  ---
+  duration_ms: 3.8836
+  type: 'test'
+  ...
+# Subtest: notices appear at own milestones, without spending gifts or clearing unread content
+ok 12 - notices appear at own milestones, without spending gifts or clearing unread content
+  ---
+  duration_ms: 1.9769
+  type: 'test'
+  ...
+# Subtest: started conversation stays resumable; the next available topic becomes new only after completion
+ok 13 - started conversation stays resumable; the next available topic becomes new only after completion
+  ---
+  duration_ms: 0.9152
+  type: 'test'
+  ...
+# Subtest: companions are independent, locked access stays quiet, earned heart-three content remains discoverable
+ok 14 - companions are independent, locked access stays quiet, earned heart-three content remains discoverable
+  ---
+  duration_ms: 0.3903
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1403.7451

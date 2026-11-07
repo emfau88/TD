@@ -10,6 +10,7 @@ import { bindStaticTranslations, mountLanguageSettings } from './i18n-dom';
 import { GameAudio } from './game-audio';
 import { TavernUI } from './tavern-ui';
 import { tavernGiftStatus } from './tavern-gift-status';
+import { pendingTavernConversations } from './tavern-visit-status';
 import { COMPANIONS } from './tavern-companions';
 import { videoPresentation } from './tavern-video';
 import { discoveryStep, updateDiscoveryUI } from './discovery-ui';
@@ -495,16 +496,20 @@ function syncUI(): void {
   const tavernUpgradeNew = settlement.tavernLevel === 1 && sim.tavernUpgradeUnlocked;
   const tavernNew = ilyraNew || tavernUpgradeNew || sim.tavernUnlocked && !settlement.tavernBuilt && !settlement.tavernSeen;
   const gifts = tavernGiftStatus(sim.social, { tavernBuilt: settlement.tavernBuilt, ilyraRecruited: !!sim.ilyra, boss15: !!sim.bossVictories, boss25: !!sim.secondBossVictories });
+  const conversations = pendingTavernConversations(sim.social, sim.socialAccess);
+  const newConversations = conversations.filter(item => item.isNew);
+  const conversationNames = (newConversations.length ? newConversations : conversations).map(item => COMPANIONS[item.who].name).join(' / ');
+  const conversationLabel = conversationNames ? t(newConversations.length ? '{0} · Neues Gespräch' : '{0} · Gespräch fortsetzen', conversationNames) : '';
   const giftNames = gifts.recipients.map(who => COMPANIONS[who].name).join(' / ');
-  const giftLabel = giftNames ? t('Geschenk überreichen: {0}', giftNames) : gifts.owned ? t('Geschenke im Vorrat') : '';
+  const giftLabel = conversationLabel || (giftNames ? t('Geschenk überreichen: {0}', giftNames) : gifts.owned ? t('Geschenke im Vorrat') : '');
   element('pick-warehouse').classList.toggle('new-building', warehouseNew);
-  element('pick-tavern').classList.toggle('new-building', tavernNew);
-  element('pick-tavern').classList.toggle('gift-ready', !!giftNames);
+  element('pick-tavern').classList.toggle('new-building', tavernNew || !!newConversations.length);
+  element('pick-tavern').classList.toggle('gift-ready', !!giftNames && !newConversations.length);
   element('tavern-gift-badge').hidden = !gifts.owned;
   element('pick-tavern').classList.toggle('has-gifts', gifts.owned);
-  element('tavern-gift-note').hidden = !gifts.owned;
+  element('tavern-gift-note').hidden = !giftLabel;
   element('tavern-gift-note').textContent = giftLabel;
-  element('settlement-tab').classList.toggle('new-building', warehouseNew || tavernNew || emberNew);
+  element('settlement-tab').classList.toggle('new-building', warehouseNew || tavernNew || emberNew || !!newConversations.length);
   element('settlement-tab').setAttribute('aria-label', t(emberNew ? t('Siedlung · Neue Forschung: Glutwerfer') : ilyraNew ? t('Siedlung · Ilyra wartet in der Taverne') : tavernUpgradeNew ? t('Siedlung · Taverne II verfügbar') : tavernNew ? t('Siedlung · Taverne kostenlos bauen') : warehouseNew ? t('Siedlung · Neues Gebäude verfügbar: Vorratslager') : t('Siedlung')));
   if (giftLabel) element('settlement-tab').setAttribute('aria-label', `${element('settlement-tab').getAttribute('aria-label')} · ${giftLabel}`);
   element('pick-tavern').title = giftLabel;
@@ -514,7 +519,7 @@ function syncUI(): void {
   element('pick-tavern').classList.toggle('locked', !sim.tavernUnlocked);
   element('pick-tavern').classList.toggle('researched', settlement.tavernBuilt);
   element('tavern-card-price').textContent = t(settlement.tavernBuilt
-    ? ilyraNew ? t('II · Ilyra wartet') : tavernUpgradeNew ? t('II ausbauen · 1.200') : t("Stufe {0} · Gefährten", settlement.tavernLevel === 2 ? 'II' : 'I')
+    ? ilyraNew ? t('II · Ilyra wartet') : tavernUpgradeNew ? t('II ausbauen · 1.200') : conversations.length ? t(newConversations.length ? 'Neues Gespräch' : 'Gespräch fortsetzen') : t("Stufe {0} · Gefährten", settlement.tavernLevel === 2 ? 'II' : 'I')
     : sim.tavernUnlocked ? t('Kostenlos bauen') : t('Nach Welle 12'));
   element('tavern-description').textContent = t(settlement.tavernBuilt
     ? t('Dein Treffpunkt für alle Gefährten. Wähle eine Figur für ihre Rolle und Befehle.')

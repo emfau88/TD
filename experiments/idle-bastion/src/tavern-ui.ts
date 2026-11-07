@@ -6,6 +6,7 @@ import { TavernInteractions } from './tavern-interactions';
 import type { BattleSession } from './battle-session';
 import { hearts, SOCIAL, personalGiftReady, type Interaction, type Companion, type SocialState } from './tavern-social';
 import { tavernGiftStatus } from './tavern-gift-status';
+import { pendingTavernConversations } from './tavern-visit-status';
 import { tavernProgressHint } from './tavern-progress-hint';
 import { encounterRecord, nextEncounter, type EncounterId, type EncounterChoice } from './tavern-encounter-state';
 import { tavernEncounter, personalGiftLine } from './tavern-encounter-content';
@@ -84,9 +85,11 @@ export class TavernUI {
     document.body.append(this.dialog);
     const replies = document.createElement('div'); replies.className = 'tv-replies'; replies.hidden = true;
     replies.innerHTML = '<small data-text="answer-prompt"></small><div role="group"><button type="button" data-answer="first"></button><button type="button" data-answer="second"></button></div>';
-    this.get('.tv-dialogue').after(replies);
+    const listen = document.createElement('button'); listen.type = 'button'; listen.className = 'tv-listen';
+    listen.dataset.do = 'encounter-listen'; listen.textContent = 'Weiter zuhören'; listen.hidden = true;
+    this.get('.tv-dialogue').after(listen);
     const dock = document.createElement('div'); dock.className = 'tv-action-dock';
-    dock.append(this.get('.tv-actions'), this.get('.tv-story-controls'));
+    dock.append(this.get('.tv-actions'), this.get('.tv-story-controls'), replies);
     this.get('.tv-character').append(dock);
     this.get('.tv-bond-copy').append(this.get('.tv-unlock'));
     this.get('.tv-dialogue').setAttribute('aria-live', 'polite');
@@ -129,6 +132,7 @@ export class TavernUI {
       switch (target.dataset.do) {
         case 'new-moment': void this.tryNewTouch(); break;
         case 'story-next': this.nextBeat(); break;
+        case 'encounter-listen': void this.nextEncounterBeat(); break;
         case 'story-exit': this.endMoment(); break;
         case 'close': this.close(); break;
         case 'back': this.back(); break;
@@ -253,14 +257,16 @@ export class TavernUI {
     error.textContent = t(session.error ? t('Speichern fehlgeschlagen. Bitte kehre zum Kampf zurück, um den Spielstand zu prüfen.') : t('Sitzung angehalten. Bitte kehre zum Kampf zurück.'));
     const points = this.points, count = hearts(points), capped = points >= SOCIAL.chapterMaximum;
     const giftStatus = tavernGiftStatus(social, { tavernBuilt: b.settlement.tavernBuilt, ilyraRecruited: !!b.ilyra, boss15: !!b.bossVictories, boss25: !!b.secondBossVictories });
+    const conversations = pendingTavernConversations(social, b.socialAccess);
     const personalReady = personalGiftReady(social, this.selected);
     this.animation.setHearts?.(count);
     for (const who of ['mara', 'ilyra'] as const) {
       const n = hearts(social.points[who]);
       this.text(`${who}-hearts`, who === 'ilyra' && !b.ilyra ? '' : `${'♥'.repeat(n)}${'♡'.repeat(5 - n)}`);
       const actionable = giftStatus.recipients.includes(who);
-      this.get(`.tv-${who}`).classList.toggle('gift-ready', actionable);
-      this.text(`${who}-gift`, actionable ? t('🎁 Geschenk für {0} überreichen', COMPANIONS[who].name) : who === 'ilyra' && !b.ilyra ? '' : personalGiftReady(social, who) ? t('🎁 Persönliches Geschenk bereit') : social.gifts ? t('🎁 {0} im Vorrat', social.gifts) : '');
+      const conversation = conversations.find(item => item.who === who);
+      this.get(`.tv-${who}`).classList.toggle('gift-ready', actionable || !!conversation?.isNew);
+      this.text(`${who}-gift`, conversation ? t(conversation.isNew ? 'Neues Gespräch' : 'Gespräch fortsetzen') : actionable ? t('🎁 Geschenk für {0} überreichen', COMPANIONS[who].name) : who === 'ilyra' && !b.ilyra ? '' : personalGiftReady(social, who) ? t('🎁 Persönliches Geschenk bereit') : social.gifts ? t('🎁 {0} im Vorrat', social.gifts) : '');
     }
     this.text('mara-greeting', COMPANIONS.mara.stage(social.points.mara).greeting);
     const goal = points < 35 ? 35 : 70;
@@ -296,13 +302,15 @@ export class TavernUI {
     this.dialog.dataset.encounter = String(!!this.encounter);
     this.get('.tv-back').setAttribute('aria-label', t(this.inConversation ? t("Zurück zu {0}", this.content.name) : t('Zurück zur Tavernenübersicht')));
     this.get('.tv-story-heading').hidden = !this.inConversation;
-    this.get('.tv-story-controls').hidden = !this.inConversation;
+    const choosing = !!this.encounter && this.encounter.phase === 'opening'
+      && this.encounter.beat === this.encounterContent()!.opening.length - 1;
+    this.get('.tv-story-controls').hidden = !this.inConversation || choosing;
     this.get('.tv-actions').hidden = this.inConversation;
     this.get('.tv-gifts').hidden = this.inConversation;
     this.get('.tv-result').hidden = this.inConversation;
     this.get('.tv-touch-help').hidden = !this.touchHint || this.inConversation;
-    this.get('.tv-replies').hidden = !this.encounter || this.encounter.phase !== 'opening'
-      || this.encounter.beat !== this.encounterContent()!.opening.length - 1;
+    this.get('.tv-replies').hidden = !choosing;
+    this.get('.tv-listen').hidden = !choosing;
     const unlock = this.get<HTMLButtonElement>('[data-do="new-moment"]');
     unlock.hidden = !this.newMoment || this.inConversation;
     this.get('.tv-heart-help').hidden = !unlock.hidden;
@@ -329,6 +337,7 @@ export class TavernUI {
       }
     }
     this.get<HTMLButtonElement>('[data-do="story-next"]').disabled = blocked;
+    this.get<HTMLButtonElement>('[data-do="encounter-listen"]').disabled = blocked;
     for (const button of this.dialog.querySelectorAll<HTMLButtonElement>('[data-answer]')) button.disabled = blocked;
     for (const moment of this.content.moments) {
       const button = this.get<HTMLButtonElement>(`[data-moment="${moment.heart}"]`);

@@ -1,0 +1,806 @@
+{
+  "base": "http://127.0.0.1:5278/",
+  "results": [
+    {
+      "language": "de",
+      "viewport": {
+        "width": 320,
+        "height": 650
+      },
+      "who": "mara",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "Was bedeutet es dir?",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Du bringst mich auch aus dem Takt.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 320,
+        "height": 650
+      },
+      "who": "mara",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "Das klingt nach einer guten Pause.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Weniger Werkzeug, mehr Ablenkung?",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 320,
+        "height": 650
+      },
+      "who": "ilyra",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "Für uns könnte er „Abendlicht“ heißen.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Ich würde ihn einfach mit dir ansehen.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 320,
+        "height": 650
+      },
+      "who": "ilyra",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "Ich freue mich, dass du mich gesucht hast.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Such mich ruhig öfter.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "who": "mara",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "Was bedeutet es dir?",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Du bringst mich auch aus dem Takt.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "who": "mara",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "Das klingt nach einer guten Pause.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Weniger Werkzeug, mehr Ablenkung?",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "who": "ilyra",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "Für uns könnte er „Abendlicht“ heißen.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Ich würde ihn einfach mit dir ansehen.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "who": "ilyra",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "Ich freue mich, dass du mich gesucht hast.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Such mich ruhig öfter.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 1280,
+        "height": 844
+      },
+      "who": "mara",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "Was bedeutet es dir?",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Du bringst mich auch aus dem Takt.",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 1280,
+        "height": 844
+      },
+      "who": "mara",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "Das klingt nach einer guten Pause.",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Weniger Werkzeug, mehr Ablenkung?",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 1280,
+        "height": 844
+      },
+      "who": "ilyra",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "Für uns könnte er „Abendlicht“ heißen.",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Ich würde ihn einfach mit dir ansehen.",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 1280,
+        "height": 844
+      },
+      "who": "ilyra",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "Ich freue mich, dass du mich gesucht hast.",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Such mich ruhig öfter.",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 667,
+        "height": 375
+      },
+      "who": "mara",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "Was bedeutet es dir?",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Du bringst mich auch aus dem Takt.",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 667,
+        "height": 375
+      },
+      "who": "mara",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "Das klingt nach einer guten Pause.",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Weniger Werkzeug, mehr Ablenkung?",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 667,
+        "height": 375
+      },
+      "who": "ilyra",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "Für uns könnte er „Abendlicht“ heißen.",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Ich würde ihn einfach mit dir ansehen.",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "viewport": {
+        "width": 667,
+        "height": 375
+      },
+      "who": "ilyra",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "Ich freue mich, dass du mich gesucht hast.",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Such mich ruhig öfter.",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 320,
+        "height": 650
+      },
+      "who": "mara",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "What does it mean to you?",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "You make me miss a beat, too.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 320,
+        "height": 650
+      },
+      "who": "mara",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "That sounds like a good break.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Fewer tools, more distractions?",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 320,
+        "height": 650
+      },
+      "who": "ilyra",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "We could call it “Evening Light.”",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "I would simply watch it with you.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 320,
+        "height": 650
+      },
+      "who": "ilyra",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "I am glad you came looking for me.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Come looking for me more often.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "who": "mara",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "What does it mean to you?",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "You make me miss a beat, too.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "who": "mara",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "That sounds like a good break.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Fewer tools, more distractions?",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "who": "ilyra",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "We could call it “Evening Light.”",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "I would simply watch it with you.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "who": "ilyra",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "I am glad you came looking for me.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Come looking for me more often.",
+          "height": 75,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 844
+      },
+      "who": "mara",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "What does it mean to you?",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "You make me miss a beat, too.",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 844
+      },
+      "who": "mara",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "That sounds like a good break.",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Fewer tools, more distractions?",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 844
+      },
+      "who": "ilyra",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "We could call it “Evening Light.”",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "I would simply watch it with you.",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 844
+      },
+      "who": "ilyra",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "I am glad you came looking for me.",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Come looking for me more often.",
+          "height": 48,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 667,
+        "height": 375
+      },
+      "who": "mara",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "What does it mean to you?",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "You make me miss a beat, too.",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 667,
+        "height": 375
+      },
+      "who": "mara",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "That sounds like a good break.",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Fewer tools, more distractions?",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 667,
+        "height": 375
+      },
+      "who": "ilyra",
+      "encounter": 0,
+      "visibility": [
+        {
+          "text": "We could call it “Evening Light.”",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "I would simply watch it with you.",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 667,
+        "height": 375
+      },
+      "who": "ilyra",
+      "encounter": 1,
+      "visibility": [
+        {
+          "text": "I am glad you came looking for me.",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        },
+        {
+          "text": "Come looking for me more often.",
+          "height": 49.09375,
+          "visible": true,
+          "hit": true,
+          "textFits": true
+        }
+      ]
+    }
+  ],
+  "passed": true
+}

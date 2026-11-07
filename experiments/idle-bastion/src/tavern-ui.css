@@ -209,5 +209,4 @@
   #tavern-dialog[data-artwork="rigged"][data-encounter="true"] .tv-story-heading h3 { font-size:18px; }
   #tavern-dialog[data-artwork="rigged"][data-encounter="true"] .tv-dialogue { padding:4px 8px; }
   #tavern-dialog[data-artwork="rigged"][data-encounter="true"] .tv-dialogue p { font-size:13px; line-height:1.4; }
-  #tavern-dialog[data-encounter="true"] .tv-replies { margin-top:8px; }
 }

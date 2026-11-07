@@ -1,0 +1,8 @@
+# Keep all local captures, version a small representative selection.
+*/*.png
+!local/de-320-mara-answers.png
+!local/de-320-notice.png
+!local/en-390-ilyra-answers.png
+!local/de-667-mara-answers.png
+!public/de-390-mara-answers.png
+!public/de-390-notice.png

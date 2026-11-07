@@ -67,7 +67,7 @@ vorerst bei einem normalen Geschenk je zehn Siege und höchstens 20 im Vorrat.
 | Bestehende Taverne | 17 freigegebene Standardclips inklusive eigener Handreaktionen M09/I08, richtige Kontaktpunkte und ursprüngliche Gestaltung. Alte Animationen im Repo archiviert. |
 | Verständlichkeit | Kurzer passender Fortschrittshinweis, erklärbare gesperrte Herzen, sichtbare persönliche Geschenkübergabe und dezenter Herzglanz. Details bleiben im vorhandenen aufklappbaren Bereich. |
 | Mobile Darstellung | Die Figur bleibt beim Öffnen von Herzmomenten und Gesprächen gleich groß. Längere Texte und Antworten lassen sich im Textbereich scrollen. Der dunkle Übergang bei Komplimenten wurde durch die normale kurze Bildüberblendung ersetzt. |
-| Weg Herz 2→3 | Je Figur zwei neue optionale Gespräche mit gleichwertigen Antworten, gespeicherter Erinnerung und neutralem Zweig. Keine zusätzlichen Aufstiegspflichten. |
+| Weg Herz 2→3 | Je Figur zwei neue optionale Gespräche mit gleichwertigen Antworten, gespeicherter Erinnerung und neutralem Zweig. Beide Antworten stehen direkt in der unteren Aktionsleiste. Siedlung/Taverne und Figuren zeigen neue oder fortsetzbare Gespräche an. Keine zusätzlichen Aufstiegspflichten. |
 | Mara am Tresen | MC01/Ruhe, MC02/Gespräch und MC05/Hand freigegeben. MC03/Haare fertig, Nutzerbeurteilung offen. Alle vier in der separaten Clipprobe; noch kein vollständiger neuer Treffpunkt im Spiel. |
 | Weitere Tresenrollen | MC04/Schulter, MC06/Lachen und MC07/Annäherung nur vorbereitet; weitere Produktion auf Nutzerwunsch zurückgestellt. Alte Vorbeuge-V2 bleibt erhalten. |
 | Ilyra am Fenster, Herz 4/5 | Noch nicht spielbar neu freigeschaltet. Bedingungen, Begegnungen und Geschenkbilanz dieser Etappen sind Zukunftsplanung. Einzelne Bildmomente sind als sparsame Alternative vorgeschlagen, noch nicht produziert. |
@@ -101,7 +101,7 @@ rechts der Testbranch. Die vertrauten drei Hauptaktionen bleiben erhalten.
 
 ![Geschenkfortschritt – vorher und nachher](artifacts/idle-bastion/tavern-ui-comparison-2026-11-07/01-progress-pair.png)
 
-**2. Neue Begegnung im vorhandenen Dialog:** Zwei persönliche Antworten auf dem Weg zu Herz 3; nach dem Gespräch kehren die gewohnten drei Aktionen zurück. Rechts ist der Textbereich zu den Antworten gescrollt; die Figur behält ihre Größe.
+**2. Neue Begegnung im vorhandenen Dialog:** Zwei persönliche Antworten auf dem Weg zu Herz 3; nach dem Gespräch kehren die gewohnten drei Aktionen zurück. Dieses Vergleichsbild dokumentiert den ersten Dialogstand mit gescrollten Antworten. Nach dem anschließenden Nachschliff stehen sie sofort sichtbar in der unteren Leiste: [aktuelle Handyansicht](artifacts/idle-bastion/tavern-discovery-2026-11-07/local/de-320-mara-answers.png). Der bestehende Tavernenzugang zeigt außerdem [neue Gespräche](artifacts/idle-bastion/tavern-discovery-2026-11-07/local/de-320-notice.png) an.
 
 ![Optionale Begegnung im bisherigen Dialog – vorher und nachher](artifacts/idle-bastion/tavern-ui-comparison-2026-11-07/02-conversation-pair.png)
 
