@@ -42,7 +42,7 @@
   #tavern-dialog[data-artwork="rigged"] .tv-bond-copy { overflow:visible; max-height:none; }
   #tavern-dialog[data-artwork="rigged"] .tv-character-body { display:flex; flex-direction:column; overflow:hidden; }
   #tavern-dialog[data-artwork="rigged"] .tv-stage { height:auto; min-height:0; flex:1; }
-  #tavern-dialog[data-artwork="rigged"] .tv-conversation { flex:0 0 clamp(120px,18dvh,158px); max-height:none; overflow-y:auto; overscroll-behavior:contain; padding:10px 12px; }
+  #tavern-dialog[data-artwork="rigged"] .tv-conversation { flex:0 0 clamp(120px,20dvh,180px); max-height:none; overflow-y:auto; overscroll-behavior:contain; padding:10px 12px; }
   #tavern-dialog[data-artwork="rigged"] .tv-dialogue { padding:8px 10px; }
   #tavern-dialog[data-artwork="rigged"] .tv-dialogue p { font-size:15px; line-height:1.5; }
   #tavern-dialog[data-artwork="rigged"] .tv-stage::after { height:10px; }
@@ -88,10 +88,20 @@
 #tavern-dialog .tv-action-dock .tv-story-controls button { min-height:48px; }
 #tavern-dialog .tv-actions button[aria-pressed="true"] { box-shadow:inset 0 0 0 1px #e5c68c; }
 @media(max-width:700px) {
-  #tavern-dialog[data-artwork="rigged"][data-story="true"] .tv-conversation { flex-basis:clamp(160px,32dvh,260px); }
   #tavern-dialog .tv-bond-copy { font-size:12px; }
   #tavern-dialog .tv-story-heading h3 { font-size:20px; }
   #tavern-dialog .tv-actions small { font-size:12px; }
+}
+
+/* Story text and answers scroll in the same space as ordinary dialogue.
+   Reserve the unlock invitation and action row even while they are hidden,
+   so opening a heart or earning one never resizes the portrait. */
+@media(max-width:700px) and (orientation:portrait) {
+  #tavern-dialog[data-artwork="rigged"] .tv-bond { flex:none; grid-template-rows:52px 48px; }
+  #tavern-dialog[data-artwork="rigged"] .tv-bond-copy { display:flex; align-items:center; justify-content:center; height:48px; overflow:auto; }
+  #tavern-dialog[data-artwork="rigged"] .tv-bond-copy .tv-unlock { margin:0; padding:4px 8px; }
+  #tavern-dialog[data-artwork="rigged"] .tv-action-dock { display:flex; flex:0 0 90px; min-height:0; }
+  #tavern-dialog[data-artwork="rigged"] .tv-action-dock > :is(.tv-actions,.tv-story-controls) { width:100%; height:100%; }
 }
 
 @media(min-width:701px) {

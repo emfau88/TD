@@ -1,0 +1,1438 @@
+{
+  "captures": 52,
+  "changed": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "label": "moment1:open",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -88.719
+        },
+        "canvas": {
+          "x": 30.422,
+          "y": 0,
+          "width": -60.844,
+          "height": -88.719
+        },
+        "conversation": {
+          "x": 0,
+          "y": -88.719,
+          "width": 0,
+          "height": 108.094
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "label": "moment1:next1",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -88.719
+        },
+        "canvas": {
+          "x": 30.422,
+          "y": 0,
+          "width": -60.844,
+          "height": -88.719
+        },
+        "conversation": {
+          "x": 0,
+          "y": -88.719,
+          "width": 0,
+          "height": 108.094
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "label": "moment1:next2",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -88.719
+        },
+        "canvas": {
+          "x": 30.422,
+          "y": 0,
+          "width": -60.844,
+          "height": -88.719
+        },
+        "conversation": {
+          "x": 0,
+          "y": -88.719,
+          "width": 0,
+          "height": 108.094
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "label": "moment3:open",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -88.719
+        },
+        "canvas": {
+          "x": 30.422,
+          "y": 0,
+          "width": -60.844,
+          "height": -88.719
+        },
+        "conversation": {
+          "x": 0,
+          "y": -88.719,
+          "width": 0,
+          "height": 108.094
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "label": "moment3:next",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -88.719
+        },
+        "canvas": {
+          "x": 30.422,
+          "y": 0,
+          "width": -60.844,
+          "height": -88.719
+        },
+        "conversation": {
+          "x": 0,
+          "y": -88.719,
+          "width": 0,
+          "height": 108.094
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "label": "encounter:choice",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -149.437
+        },
+        "canvas": {
+          "x": 51.234,
+          "y": 0,
+          "width": -102.469,
+          "height": -149.437
+        },
+        "conversation": {
+          "x": 0,
+          "y": -149.437,
+          "width": 0,
+          "height": 168.813
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "label": "encounter:reply",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -149.437
+        },
+        "canvas": {
+          "x": 51.234,
+          "y": 0,
+          "width": -102.469,
+          "height": -149.437
+        },
+        "conversation": {
+          "x": 0,
+          "y": -149.437,
+          "width": 0,
+          "height": 168.813
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "label": "moment1:open",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -88.719
+        },
+        "canvas": {
+          "x": 30.422,
+          "y": 0,
+          "width": -60.844,
+          "height": -88.719
+        },
+        "conversation": {
+          "x": 0,
+          "y": -88.719,
+          "width": 0,
+          "height": 108.094
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "label": "moment1:next1",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -88.719
+        },
+        "canvas": {
+          "x": 30.422,
+          "y": 0,
+          "width": -60.844,
+          "height": -88.719
+        },
+        "conversation": {
+          "x": 0,
+          "y": -88.719,
+          "width": 0,
+          "height": 108.094
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "label": "moment1:next2",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -88.719
+        },
+        "canvas": {
+          "x": 30.422,
+          "y": 0,
+          "width": -60.844,
+          "height": -88.719
+        },
+        "conversation": {
+          "x": 0,
+          "y": -88.719,
+          "width": 0,
+          "height": 108.094
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "label": "moment3:open",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -88.719
+        },
+        "canvas": {
+          "x": 30.422,
+          "y": 0,
+          "width": -60.844,
+          "height": -88.719
+        },
+        "conversation": {
+          "x": 0,
+          "y": -88.719,
+          "width": 0,
+          "height": 108.094
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "label": "moment3:next",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -88.719
+        },
+        "canvas": {
+          "x": 30.422,
+          "y": 0,
+          "width": -60.844,
+          "height": -88.719
+        },
+        "conversation": {
+          "x": 0,
+          "y": -88.719,
+          "width": 0,
+          "height": 108.094
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "label": "encounter:choice",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -149.437
+        },
+        "canvas": {
+          "x": 51.234,
+          "y": 0,
+          "width": -102.469,
+          "height": -149.437
+        },
+        "conversation": {
+          "x": 0,
+          "y": -149.437,
+          "width": 0,
+          "height": 168.813
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "label": "encounter:reply",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 13.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -155.437
+        },
+        "canvas": {
+          "x": 53.297,
+          "y": 0,
+          "width": -106.594,
+          "height": -155.437
+        },
+        "conversation": {
+          "x": 0,
+          "y": -155.437,
+          "width": 0,
+          "height": 168.813
+        },
+        "dock": {
+          "x": 0,
+          "y": 13.375,
+          "width": 0,
+          "height": -13.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "label": "moment1:open",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -68.625
+        },
+        "canvas": {
+          "x": 23.531,
+          "y": 0,
+          "width": -47.062,
+          "height": -68.625
+        },
+        "conversation": {
+          "x": 0,
+          "y": -68.625,
+          "width": 0,
+          "height": 88
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "label": "moment1:next1",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -68.625
+        },
+        "canvas": {
+          "x": 23.531,
+          "y": 0,
+          "width": -47.062,
+          "height": -68.625
+        },
+        "conversation": {
+          "x": 0,
+          "y": -68.625,
+          "width": 0,
+          "height": 88
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "label": "moment1:next2",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -68.625
+        },
+        "canvas": {
+          "x": 23.531,
+          "y": 0,
+          "width": -47.062,
+          "height": -68.625
+        },
+        "conversation": {
+          "x": 0,
+          "y": -68.625,
+          "width": 0,
+          "height": 88
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "label": "moment3:open",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -68.625
+        },
+        "canvas": {
+          "x": 23.531,
+          "y": 0,
+          "width": -47.062,
+          "height": -68.625
+        },
+        "conversation": {
+          "x": 0,
+          "y": -68.625,
+          "width": 0,
+          "height": 88
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "label": "moment3:next",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -68.625
+        },
+        "canvas": {
+          "x": 23.531,
+          "y": 0,
+          "width": -47.062,
+          "height": -68.625
+        },
+        "conversation": {
+          "x": 0,
+          "y": -68.625,
+          "width": 0,
+          "height": 88
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "label": "encounter:choice",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -107.625
+        },
+        "canvas": {
+          "x": 36.906,
+          "y": 0,
+          "width": -73.797,
+          "height": -107.625
+        },
+        "conversation": {
+          "x": 0,
+          "y": -107.625,
+          "width": 0,
+          "height": 127
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "label": "encounter:reply",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 19.375
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": -107.625
+        },
+        "canvas": {
+          "x": 36.906,
+          "y": 0,
+          "width": -73.797,
+          "height": -107.625
+        },
+        "conversation": {
+          "x": 0,
+          "y": -107.625,
+          "width": 0,
+          "height": 127
+        },
+        "dock": {
+          "x": 0,
+          "y": 19.375,
+          "width": 0,
+          "height": -19.375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "label": "moment1:open",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "canvas": {
+          "x": -4.812,
+          "y": 0,
+          "width": 9.609,
+          "height": 14
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "dock": {
+          "x": 0,
+          "y": 14,
+          "width": 0,
+          "height": -14
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "label": "moment1:next1",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "canvas": {
+          "x": -4.812,
+          "y": 0,
+          "width": 9.609,
+          "height": 14
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "dock": {
+          "x": 0,
+          "y": 14,
+          "width": 0,
+          "height": -14
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "label": "moment1:next2",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "canvas": {
+          "x": -4.812,
+          "y": 0,
+          "width": 9.609,
+          "height": 14
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "dock": {
+          "x": 0,
+          "y": 14,
+          "width": 0,
+          "height": -14
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "label": "moment3:open",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "canvas": {
+          "x": -4.812,
+          "y": 0,
+          "width": 9.609,
+          "height": 14
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "dock": {
+          "x": 0,
+          "y": 14,
+          "width": 0,
+          "height": -14
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "label": "moment3:next",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "canvas": {
+          "x": -4.812,
+          "y": 0,
+          "width": 9.609,
+          "height": 14
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "dock": {
+          "x": 0,
+          "y": 14,
+          "width": 0,
+          "height": -14
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "label": "encounter:choice",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "canvas": {
+          "x": -4.812,
+          "y": 0,
+          "width": 9.609,
+          "height": 14
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "dock": {
+          "x": 0,
+          "y": 14,
+          "width": 0,
+          "height": -14
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "label": "encounter:reply",
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "character": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "canvas": {
+          "x": -4.812,
+          "y": 0,
+          "width": 9.609,
+          "height": 14
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 14
+        },
+        "dock": {
+          "x": 0,
+          "y": 14,
+          "width": 0,
+          "height": -14
+        }
+      }
+    }
+  ],
+  "sourceHashes": {
+    "tavern-ui.css": "1c51470eda7bfd2306cb2fbc8c24931025daadb691363bbc215d2db715a57f77",
+    "tavern-rig.css": "4e2c665a89e3beec1ddc0dc40ff03fbd15401229436d7f482bb6660c9196325e",
+    "tavern-video.css": "a9593a371195d7e1364dfc741078e18ec5a662e69b602483b1ea70e7ef30c3c9"
+  }
+}

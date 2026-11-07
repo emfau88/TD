@@ -40,7 +40,7 @@ export class TavernVideoPlayer implements TavernPlayer {
   private last = 0;
   private idleSeconds = 0;
   private drawn = '';
-  private transition?: { image: HTMLCanvasElement; elapsed: number; poseChange: boolean };
+  private transition?: { image: HTMLCanvasElement; elapsed: number };
   private readonly localScene?: CompiledTavernSceneVideo;
   private restoreStage?: () => void;
   constructor(private canvas: HTMLCanvasElement, private changed: () => void, sceneConfig?: TavernSceneVideoConfig) {
@@ -217,8 +217,7 @@ export class TavernVideoPlayer implements TavernPlayer {
       }
       const image = document.createElement('canvas'); image.width = 480; image.height = 700;
       image.getContext('2d')?.drawImage(this.canvas, 0, 0);
-      const poseChange = key === 'hip' || this.key === 'hip';
-      this.transition = matchMedia('(prefers-reduced-motion: reduce)').matches ? undefined : { image, elapsed: 0, poseChange };
+      this.transition = matchMedia('(prefers-reduced-motion: reduce)').matches ? undefined : { image, elapsed: 0 };
       this.current?.video.pause(); this.current = entry; this.key = key;
       entry.video.loop = key === 'idle'; entry.video.currentTime = 0;
       this.drawn = ''; this.idleSeconds = 0; this.draw(); this.resume(entry);
@@ -231,7 +230,7 @@ export class TavernVideoPlayer implements TavernPlayer {
     if (!this.active || !this.ready || document.hidden) return;
     if (this.transition) {
       this.transition.elapsed += dt;
-      if (this.transition.elapsed >= (this.transition.poseChange ? .24 : .12)) this.transition = undefined;
+      if (this.transition.elapsed >= .12) this.transition = undefined;
     }
     if (this.key === 'idle' && !this.pending && !this.current?.video.paused) {
       this.idleSeconds += dt;
@@ -251,15 +250,9 @@ export class TavernVideoPlayer implements TavernPlayer {
     ctx.clearRect(0, 0, 480, 700); ctx.imageSmoothingEnabled = true;
     ctx.drawImage(entry.video, 0, 2, 480, 700, 0, 0, 480, 700);
     if (this.transition) {
-      const { image, elapsed, poseChange } = this.transition;
+      const { image, elapsed } = this.transition;
       ctx.save();
-      if (poseChange) {
-        if (elapsed < .12) ctx.drawImage(image, 0, 0);
-        ctx.globalAlpha = elapsed < .12 ? elapsed / .12 : 1 - (elapsed - .12) / .12;
-        ctx.fillStyle = '#142125'; ctx.fillRect(0, 0, 480, 700);
-      } else {
-        ctx.globalAlpha = Math.max(0, 1 - elapsed / .12); ctx.drawImage(image, 0, 0);
-      }
+      ctx.globalAlpha = Math.max(0, 1 - elapsed / .12); ctx.drawImage(image, 0, 0);
       ctx.restore();
     }
     this.drawn = stamp; this.canvas.dataset.clip = this.key; this.canvas.dataset.frame = String(frame);

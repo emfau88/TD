@@ -1,0 +1,11 @@
+# Retain all local captures; version measurements and representative views.
+*/*.png
+!before/390x844-normal.png
+!before/390x844-moment1-open.png
+!before/390x844-encounter-choice.png
+!after/de-390x844-normal.png
+!after/de-390x844-moment1-open.png
+!after/de-390x844-encounter-choice.png
+!main-after/mara-de-390x844-earnedHeart3.png
+!main-after/ilyra-en-390x844-moment3-open.png
+!main-after/mara-de-844x390-encounter-choice.png

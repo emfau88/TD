@@ -1,6 +1,6 @@
 {
   "baselineCommit": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
-  "branchCommitAtCapture": "8726431214d34803419d59c5ce416a82fce91eff",
+  "branchCommitAtCapture": "dc93fc9ea73407eda720ab079cdae1352ed13776",
   "viewport": {
     "width": 390,
     "height": 900,
@@ -12,8 +12,16 @@
     "Real TavernUI and BattleSession from each source tree; source files untouched.",
     "Each capture uses a separate browser context and unique comparison IndexedDB key, never user save namespaces.",
     "Real shipped old rig/new video presentation; genuine idle canvas is frozen for a neutral still. For the gift, artwork is frozen before the action; all UI/save/celebration code runs normally. No game text, UI element or rewards are replaced.",
-    "For the third-heart shot, the real committed 200ms CSS animation state is paused for capture."
+    "For the third-heart shot, the real committed 200ms CSS animation state is paused for capture.",
+    "Refresh after the portrait-size correction: actual canvas geometry is measured before/during/after the encounter. The real dialogue pane is naturally scrolled to the two answer buttons; no UI content or rewards are replaced.",
+    "All three refreshed pair images were viewed. Both encounter answers fit fully after native local scroll. New canvas dimensions stay283.875x414CSSpx before/during/after encounter and before/after heart3. The genuine unlock callout is44.9375px inside the48px reserved slot; no UI image/DOM retouching."
   ],
+  "cssAtCapture": {
+    "tavern-ui.css": "66c4629c00d804bebf4f8b08fba9ed453c97140b6a60aa2f575ccbeda13cb3a5",
+    "tavern-rig.css": "1b098191339a0e10408db09395a5b036a522ad23c837dc3472dcbdb985f33fad"
+  },
+  "comparisonScriptSHA256": "441289063137c7fe56fdef204717a1ab2be19f1adc4fe904ac4696d634700128",
+  "captureProcedure": "Original compare-ui.mjs with in-memory diagnostic geometry/scroll assertions; original artifact script and product sources untouched.",
   "cases": [
     {
       "id": "01-progress",
@@ -27,7 +35,7 @@
           "commit": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
           "original": "01-progress-before.png",
           "errors": [],
-          "key": "tavern-ui-comparison-before-01-progress-464e1c5e-6b00-40fa-ac04-1924965de64a",
+          "key": "tavern-ui-comparison-before-01-progress-7167b5e3-4d7e-4058-a440-c82848072255",
           "commonInitial": {
             "points": {
               "mara": 58,
@@ -103,7 +111,7 @@
           "saves": [
             {
               "revision": 1,
-              "at": 587.5999999977648,
+              "at": 815.6999999992549,
               "social": {
                 "points": {
                   "mara": 58,
@@ -144,7 +152,7 @@
             },
             {
               "revision": 2,
-              "at": 814.5,
+              "at": 1045.199999999255,
               "social": {
                 "points": {
                   "mara": 58,
@@ -185,7 +193,7 @@
             },
             {
               "revision": 3,
-              "at": 818.0999999977648,
+              "at": 1048,
               "social": {
                 "points": {
                   "mara": 58,
@@ -226,7 +234,7 @@
             },
             {
               "revision": 4,
-              "at": 821.3999999985099,
+              "at": 1050.8999999985099,
               "social": {
                 "points": {
                   "mara": 58,
@@ -267,7 +275,7 @@
             },
             {
               "revision": 5,
-              "at": 910.0999999977648,
+              "at": 1156.800000000745,
               "social": {
                 "points": {
                   "mara": 58,
@@ -311,16 +319,132 @@
             "transform": "none",
             "filter": "none"
           },
+          "geometry": {
+            "initial": {
+              "canvas": {
+                "x": 30.15625,
+                "y": 179.1875,
+                "width": 329.6875,
+                "height": 480.8125,
+                "top": 179.1875,
+                "bottom": 660
+              },
+              "figure": {
+                "x": 5,
+                "y": 179.1875,
+                "width": 380,
+                "height": 480.8125,
+                "top": 179.1875,
+                "bottom": 660
+              },
+              "stage": {
+                "x": 5,
+                "y": 179.1875,
+                "width": 380,
+                "height": 480.8125,
+                "top": 179.1875,
+                "bottom": 660
+              },
+              "bondCopy": {
+                "x": 17,
+                "y": 156,
+                "width": 356,
+                "height": 16.1875,
+                "top": 156,
+                "bottom": 172.1875
+              },
+              "unlock": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "unlockVisible": false,
+              "unlockInsideBond": true,
+              "conversation": {
+                "x": 5,
+                "y": 660,
+                "width": 380,
+                "height": 158,
+                "top": 660,
+                "bottom": 818,
+                "clientHeight": 157,
+                "scrollHeight": 193,
+                "scrollTop": 0,
+                "overflowY": "auto"
+              },
+              "answers": []
+            },
+            "captured": {
+              "canvas": {
+                "x": 30.15625,
+                "y": 179.1875,
+                "width": 329.6875,
+                "height": 480.8125,
+                "top": 179.1875,
+                "bottom": 660
+              },
+              "figure": {
+                "x": 5,
+                "y": 179.1875,
+                "width": 380,
+                "height": 480.8125,
+                "top": 179.1875,
+                "bottom": 660
+              },
+              "stage": {
+                "x": 5,
+                "y": 179.1875,
+                "width": 380,
+                "height": 480.8125,
+                "top": 179.1875,
+                "bottom": 660
+              },
+              "bondCopy": {
+                "x": 17,
+                "y": 156,
+                "width": 356,
+                "height": 16.1875,
+                "top": 156,
+                "bottom": 172.1875
+              },
+              "unlock": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "unlockVisible": false,
+              "unlockInsideBond": true,
+              "conversation": {
+                "x": 5,
+                "y": 660,
+                "width": 380,
+                "height": 158,
+                "top": 660,
+                "bottom": 818,
+                "clientHeight": 157,
+                "scrollHeight": 193,
+                "scrollTop": 36,
+                "overflowY": "auto"
+              },
+              "answers": []
+            }
+          },
           "commonInitialSHA256": "74ba5253432e185ebb66556f286ab57ec2012a28c9b9c1a91bc1e21856891ea3",
           "initialSnapshotSHA256": "ee14c525a58537d8f742ad66c8ef7f9c9f74699de3437220a2f25a80b9283ce7",
           "currentSnapshotSHA256": "6c98d2ae97b38b964a13efa08dea83b9ce0a126a148a7f83b040f6c12bc76c04"
         },
         {
           "source": "after",
-          "commit": "8726431214d34803419d59c5ce416a82fce91eff",
+          "commit": "dc93fc9ea73407eda720ab079cdae1352ed13776",
           "original": "01-progress-after.png",
           "errors": [],
-          "key": "tavern-ui-comparison-after-01-progress-778e1d88-e342-4264-92e9-ce50fad4dfd4",
+          "key": "tavern-ui-comparison-after-01-progress-d0af9018-7361-46b6-acfd-4ec5ecfa9842",
           "commonInitial": {
             "points": {
               "mara": 58,
@@ -358,8 +482,8 @@
           "hint": {
             "text": "Für Maras persönliches Geschenk fehlen noch 12 gewonnene normale Wellen. Auch Farmen zählt.",
             "visible": true,
-            "top": 714.625,
-            "bottom": 750.625
+            "top": 711,
+            "bottom": 747
           },
           "unlock": {
             "text": "",
@@ -369,9 +493,9 @@
           },
           "line": {
             "text": "Schön, dich zu sehen. Ich habe dir etwas zu erzählen.",
-            "visible": false,
-            "top": 633.625,
-            "bottom": 678.625
+            "visible": true,
+            "top": 630,
+            "bottom": 675
           },
           "giftDetailsOpen": false,
           "actions": [
@@ -405,7 +529,7 @@
           "saves": [
             {
               "revision": 1,
-              "at": 388.9000000022352,
+              "at": 358.3999999985099,
               "social": {
                 "encounters": {
                   "mara": {
@@ -472,7 +596,7 @@
             },
             {
               "revision": 2,
-              "at": 635.3000000007451,
+              "at": 592.6999999992549,
               "social": {
                 "encounters": {
                   "mara": {
@@ -539,7 +663,7 @@
             },
             {
               "revision": 3,
-              "at": 639,
+              "at": 595.8999999985099,
               "social": {
                 "encounters": {
                   "mara": {
@@ -606,7 +730,7 @@
             },
             {
               "revision": 4,
-              "at": 641.8000000007451,
+              "at": 599.6999999992549,
               "social": {
                 "encounters": {
                   "mara": {
@@ -673,7 +797,7 @@
             },
             {
               "revision": 5,
-              "at": 735.8000000007451,
+              "at": 685.3000000007451,
               "social": {
                 "encounters": {
                   "mara": {
@@ -743,6 +867,168 @@
             "transform": "none",
             "filter": "none"
           },
+          "geometry": {
+            "initial": {
+              "canvas": {
+                "x": 53.0625,
+                "y": 211,
+                "width": 283.875,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "figure": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "stage": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "bondCopy": {
+                "x": 17,
+                "y": 156,
+                "width": 356,
+                "height": 48,
+                "top": 156,
+                "bottom": 204
+              },
+              "unlock": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "unlockVisible": false,
+              "unlockInsideBond": true,
+              "conversation": {
+                "x": 5,
+                "y": 625,
+                "width": 380,
+                "height": 180,
+                "top": 625,
+                "bottom": 805,
+                "clientHeight": 179,
+                "scrollHeight": 193,
+                "scrollTop": 0,
+                "overflowY": "auto"
+              },
+              "answers": [
+                {
+                  "text": "",
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "fullyVisible": false,
+                  "visibleHeight": 0
+                },
+                {
+                  "text": "",
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "fullyVisible": false,
+                  "visibleHeight": 0
+                }
+              ]
+            },
+            "captured": {
+              "canvas": {
+                "x": 53.0625,
+                "y": 211,
+                "width": 283.875,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "figure": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "stage": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "bondCopy": {
+                "x": 17,
+                "y": 156,
+                "width": 356,
+                "height": 48,
+                "top": 156,
+                "bottom": 204
+              },
+              "unlock": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "unlockVisible": false,
+              "unlockInsideBond": true,
+              "conversation": {
+                "x": 5,
+                "y": 625,
+                "width": 380,
+                "height": 180,
+                "top": 625,
+                "bottom": 805,
+                "clientHeight": 179,
+                "scrollHeight": 193,
+                "scrollTop": 14,
+                "overflowY": "auto"
+              },
+              "answers": [
+                {
+                  "text": "",
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "fullyVisible": false,
+                  "visibleHeight": 0
+                },
+                {
+                  "text": "",
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "fullyVisible": false,
+                  "visibleHeight": 0
+                }
+              ]
+            }
+          },
           "commonInitialSHA256": "74ba5253432e185ebb66556f286ab57ec2012a28c9b9c1a91bc1e21856891ea3",
           "initialSnapshotSHA256": "6946679d05b3cd079ae042b348bf38cfa3b71e3c22ef276f047089f6f4d99599",
           "currentSnapshotSHA256": "8fd6cb384cac4bfb43ec01d4a15924e2fb96de53e0bff47dc22f3f9603ae2653"
@@ -754,14 +1040,14 @@
       "points": 35,
       "clears": 10,
       "title": "Ein Gespräch im bestehenden Dialog",
-      "caption": "Gleicher Ausgangsstand: Herz 2 und 10 persönliche Siege. Links folgt die normale Antwort; rechts eine neue optionale Begegnung mit zwei Antworten. Danach kehren die drei gewohnten Hauptaktionen zurück.",
+      "caption": "Gleicher Ausgangsstand: Herz 2 und 10 persönliche Siege. Links die normale Antwort, rechts die neue optionale Begegnung. Rechts ist der echte Dialogbereich zu den beiden Antworten gescrollt; längerer Text bleibt lokal scrollbar. Die Figur bleibt während der Begegnung gleich groß. Danach kehren die drei gewohnten Hauptaktionen zurück.",
       "captures": [
         {
           "source": "before",
           "commit": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
           "original": "02-conversation-before.png",
           "errors": [],
-          "key": "tavern-ui-comparison-before-02-conversation-c2541c37-08f6-4a15-98c3-6859e6614bf2",
+          "key": "tavern-ui-comparison-before-02-conversation-6e114ae3-9b9b-4070-8f9e-fab03bbabe94",
           "commonInitial": {
             "points": {
               "mara": 35,
@@ -837,7 +1123,7 @@
           "saves": [
             {
               "revision": 1,
-              "at": 590.8000000007451,
+              "at": 608.1999999992549,
               "social": {
                 "points": {
                   "mara": 35,
@@ -878,7 +1164,7 @@
             },
             {
               "revision": 2,
-              "at": 823.8999999985099,
+              "at": 853.6999999992549,
               "social": {
                 "points": {
                   "mara": 35,
@@ -919,7 +1205,7 @@
             },
             {
               "revision": 3,
-              "at": 826.8999999985099,
+              "at": 857.6000000014901,
               "social": {
                 "points": {
                   "mara": 35,
@@ -960,7 +1246,7 @@
             },
             {
               "revision": 4,
-              "at": 829.6999999992549,
+              "at": 860.6999999992549,
               "social": {
                 "points": {
                   "mara": 35,
@@ -1001,7 +1287,7 @@
             },
             {
               "revision": 5,
-              "at": 924.1999999992549,
+              "at": 951.5,
               "social": {
                 "points": {
                   "mara": 35,
@@ -1042,7 +1328,7 @@
             },
             {
               "revision": 6,
-              "at": 1220,
+              "at": 1285.699999999255,
               "social": {
                 "points": {
                   "mara": 43,
@@ -1086,16 +1372,132 @@
             "transform": "none",
             "filter": "none"
           },
+          "geometry": {
+            "initial": {
+              "canvas": {
+                "x": 30.15625,
+                "y": 179.1875,
+                "width": 329.6875,
+                "height": 480.8125,
+                "top": 179.1875,
+                "bottom": 660
+              },
+              "figure": {
+                "x": 5,
+                "y": 179.1875,
+                "width": 380,
+                "height": 480.8125,
+                "top": 179.1875,
+                "bottom": 660
+              },
+              "stage": {
+                "x": 5,
+                "y": 179.1875,
+                "width": 380,
+                "height": 480.8125,
+                "top": 179.1875,
+                "bottom": 660
+              },
+              "bondCopy": {
+                "x": 17,
+                "y": 156,
+                "width": 356,
+                "height": 16.1875,
+                "top": 156,
+                "bottom": 172.1875
+              },
+              "unlock": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "unlockVisible": false,
+              "unlockInsideBond": true,
+              "conversation": {
+                "x": 5,
+                "y": 660,
+                "width": 380,
+                "height": 158,
+                "top": 660,
+                "bottom": 818,
+                "clientHeight": 157,
+                "scrollHeight": 175,
+                "scrollTop": 0,
+                "overflowY": "auto"
+              },
+              "answers": []
+            },
+            "captured": {
+              "canvas": {
+                "x": 30.15625,
+                "y": 179.1875,
+                "width": 329.6875,
+                "height": 480.8125,
+                "top": 179.1875,
+                "bottom": 660
+              },
+              "figure": {
+                "x": 5,
+                "y": 179.1875,
+                "width": 380,
+                "height": 480.8125,
+                "top": 179.1875,
+                "bottom": 660
+              },
+              "stage": {
+                "x": 5,
+                "y": 179.1875,
+                "width": 380,
+                "height": 480.8125,
+                "top": 179.1875,
+                "bottom": 660
+              },
+              "bondCopy": {
+                "x": 17,
+                "y": 156,
+                "width": 356,
+                "height": 16.1875,
+                "top": 156,
+                "bottom": 172.1875
+              },
+              "unlock": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "unlockVisible": false,
+              "unlockInsideBond": true,
+              "conversation": {
+                "x": 5,
+                "y": 660,
+                "width": 380,
+                "height": 158,
+                "top": 660,
+                "bottom": 818,
+                "clientHeight": 157,
+                "scrollHeight": 224,
+                "scrollTop": 0,
+                "overflowY": "auto"
+              },
+              "answers": []
+            }
+          },
           "commonInitialSHA256": "bfb139c08eab77dc0be36f177f6db6b9a2e4549b8abf15bb7e7901758c95b45e",
           "initialSnapshotSHA256": "3dc0781f4a1c6353aab808d082dca1c96cade46294fa4ef49a95616a9353477a",
           "currentSnapshotSHA256": "4edf05e5959d3a27ce859fb77b59fd6908a64abb079836c873754faaa79ef6ed"
         },
         {
           "source": "after",
-          "commit": "8726431214d34803419d59c5ce416a82fce91eff",
+          "commit": "dc93fc9ea73407eda720ab079cdae1352ed13776",
           "original": "02-conversation-after.png",
           "errors": [],
-          "key": "tavern-ui-comparison-after-02-conversation-3da4dd40-14f4-41b0-9da1-fca23847d842",
+          "key": "tavern-ui-comparison-after-02-conversation-e0a4a087-26c0-4038-b1d6-4f0ffced6bd6",
           "commonInitial": {
             "points": {
               "mara": 35,
@@ -1144,9 +1546,9 @@
           },
           "line": {
             "text": "Das kleine Zahnrad hier stammt aus meiner ersten Uhr. Sie ging ständig nach, aber ich habe es behalten. Nicht alles muss perfekt funktionieren, damit ich daran hänge.",
-            "visible": true,
-            "top": 548.6875,
-            "bottom": 603.25
+            "visible": false,
+            "top": 618.6875,
+            "bottom": 673.25
           },
           "giftDetailsOpen": false,
           "actions": [
@@ -1180,7 +1582,7 @@
           "saves": [
             {
               "revision": 1,
-              "at": 286.30000000074506,
+              "at": 382.1000000014901,
               "social": {
                 "encounters": {
                   "mara": {
@@ -1247,7 +1649,7 @@
             },
             {
               "revision": 2,
-              "at": 546.3000000007451,
+              "at": 602.4000000022352,
               "social": {
                 "encounters": {
                   "mara": {
@@ -1314,7 +1716,7 @@
             },
             {
               "revision": 3,
-              "at": 550.0999999977648,
+              "at": 605.5,
               "social": {
                 "encounters": {
                   "mara": {
@@ -1381,7 +1783,7 @@
             },
             {
               "revision": 4,
-              "at": 553.5999999977648,
+              "at": 608.8000000007451,
               "social": {
                 "encounters": {
                   "mara": {
@@ -1448,7 +1850,7 @@
             },
             {
               "revision": 5,
-              "at": 645,
+              "at": 699.1000000014901,
               "social": {
                 "encounters": {
                   "mara": {
@@ -1515,7 +1917,7 @@
             },
             {
               "revision": 6,
-              "at": 951.3999999985099,
+              "at": 999.5,
               "social": {
                 "encounters": {
                   "mara": {
@@ -1582,7 +1984,7 @@
             },
             {
               "revision": 7,
-              "at": 1557.800000000745,
+              "at": 1611.5,
               "social": {
                 "encounters": {
                   "mara": {
@@ -1649,7 +2051,7 @@
             },
             {
               "revision": 8,
-              "at": 2552,
+              "at": 2612.60000000149,
               "social": {
                 "encounters": {
                   "mara": {
@@ -1716,7 +2118,7 @@
             },
             {
               "revision": 9,
-              "at": 3550.699999999255,
+              "at": 3612.10000000149,
               "social": {
                 "encounters": {
                   "mara": {
@@ -1783,7 +2185,7 @@
             },
             {
               "revision": 10,
-              "at": 4555.300000000745,
+              "at": 4610.300000000745,
               "social": {
                 "encounters": {
                   "mara": {
@@ -1853,9 +2255,251 @@
             "transform": "none",
             "filter": "none"
           },
+          "geometry": {
+            "initial": {
+              "canvas": {
+                "x": 53.0625,
+                "y": 211,
+                "width": 283.875,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "figure": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "stage": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "bondCopy": {
+                "x": 17,
+                "y": 156,
+                "width": 356,
+                "height": 48,
+                "top": 156,
+                "bottom": 204
+              },
+              "unlock": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "unlockVisible": false,
+              "unlockInsideBond": true,
+              "conversation": {
+                "x": 5,
+                "y": 625,
+                "width": 380,
+                "height": 180,
+                "top": 625,
+                "bottom": 805,
+                "clientHeight": 179,
+                "scrollHeight": 193,
+                "scrollTop": 0,
+                "overflowY": "auto"
+              },
+              "answers": [
+                {
+                  "text": "",
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "fullyVisible": false,
+                  "visibleHeight": 0
+                },
+                {
+                  "text": "",
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "fullyVisible": false,
+                  "visibleHeight": 0
+                }
+              ]
+            },
+            "captured": {
+              "canvas": {
+                "x": 53.0625,
+                "y": 211,
+                "width": 283.875,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "figure": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "stage": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "bondCopy": {
+                "x": 17,
+                "y": 156,
+                "width": 356,
+                "height": 48,
+                "top": 156,
+                "bottom": 204
+              },
+              "unlock": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "unlockVisible": false,
+              "unlockInsideBond": true,
+              "conversation": {
+                "x": 5,
+                "y": 625,
+                "width": 380,
+                "height": 180,
+                "top": 625,
+                "bottom": 805,
+                "clientHeight": 179,
+                "scrollHeight": 242,
+                "scrollTop": 57,
+                "overflowY": "auto"
+              },
+              "answers": [
+                {
+                  "text": "Was bedeutet es dir?",
+                  "x": 17,
+                  "y": 702.25,
+                  "width": 341,
+                  "height": 44,
+                  "top": 702.25,
+                  "bottom": 746.25,
+                  "fullyVisible": true,
+                  "visibleHeight": 44
+                },
+                {
+                  "text": "Du bringst mich auch aus dem Takt.",
+                  "x": 17,
+                  "y": 753.25,
+                  "width": 341,
+                  "height": 44,
+                  "top": 753.25,
+                  "bottom": 797.25,
+                  "fullyVisible": true,
+                  "visibleHeight": 44
+                }
+              ]
+            }
+          },
           "afterConversation": {
             "threeMainActionsVisible": 3,
-            "answerButtonsVisible": 0
+            "answerButtonsVisible": 0,
+            "geometry": {
+              "canvas": {
+                "x": 53.0625,
+                "y": 211,
+                "width": 283.875,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "figure": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "stage": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "bondCopy": {
+                "x": 17,
+                "y": 156,
+                "width": 356,
+                "height": 48,
+                "top": 156,
+                "bottom": 204
+              },
+              "unlock": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "unlockVisible": false,
+              "unlockInsideBond": true,
+              "conversation": {
+                "x": 5,
+                "y": 625,
+                "width": 380,
+                "height": 180,
+                "top": 625,
+                "bottom": 805,
+                "clientHeight": 179,
+                "scrollHeight": 193,
+                "scrollTop": 0,
+                "overflowY": "auto"
+              },
+              "answers": [
+                {
+                  "text": "Was bedeutet es dir?",
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "fullyVisible": false,
+                  "visibleHeight": 0
+                },
+                {
+                  "text": "Du bringst mich auch aus dem Takt.",
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "fullyVisible": false,
+                  "visibleHeight": 0
+                }
+              ]
+            }
           },
           "commonInitialSHA256": "bfb139c08eab77dc0be36f177f6db6b9a2e4549b8abf15bb7e7901758c95b45e",
           "initialSnapshotSHA256": "db7361653ee848687cea65ae83bbfec8db7863407c72fe033255f26e701ef00a",
@@ -1875,7 +2519,7 @@
           "commit": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
           "original": "03-unlock-before.png",
           "errors": [],
-          "key": "tavern-ui-comparison-before-03-unlock-38976a7d-4a1b-4fc9-9265-f6da44e2f3bf",
+          "key": "tavern-ui-comparison-before-03-unlock-c8c328ae-8e8d-4a25-8a73-ca256467bcb2",
           "commonInitial": {
             "points": {
               "mara": 58,
@@ -1951,7 +2595,7 @@
           "saves": [
             {
               "revision": 1,
-              "at": 616.7000000029802,
+              "at": 562.8000000007451,
               "social": {
                 "points": {
                   "mara": 58,
@@ -1992,7 +2636,7 @@
             },
             {
               "revision": 2,
-              "at": 858.2000000029802,
+              "at": 779.8000000007451,
               "social": {
                 "points": {
                   "mara": 58,
@@ -2033,7 +2677,7 @@
             },
             {
               "revision": 3,
-              "at": 861.4000000022352,
+              "at": 782.8000000007451,
               "social": {
                 "points": {
                   "mara": 58,
@@ -2074,7 +2718,7 @@
             },
             {
               "revision": 4,
-              "at": 864.6000000014901,
+              "at": 785.5,
               "social": {
                 "points": {
                   "mara": 58,
@@ -2115,7 +2759,7 @@
             },
             {
               "revision": 5,
-              "at": 954.6000000014901,
+              "at": 865,
               "social": {
                 "points": {
                   "mara": 58,
@@ -2156,7 +2800,7 @@
             },
             {
               "revision": 6,
-              "at": 1221.2000000029802,
+              "at": 1112.3999999985099,
               "social": {
                 "points": {
                   "mara": 70,
@@ -2197,8 +2841,124 @@
             }
           ],
           "cssHeart": {
-            "transform": "matrix(1.00385, 0, 0, 1.00385, 0, 0)",
-            "filter": "drop-shadow(rgba(239, 159, 189, 0.294) 0px 0px 1.28863px)"
+            "transform": "matrix(1.00327, 0, 0, 1.00327, 0, 0)",
+            "filter": "drop-shadow(rgba(239, 159, 189, 0.29) 0px 0px 1.24498px)"
+          },
+          "geometry": {
+            "initial": {
+              "canvas": {
+                "x": 33.359375,
+                "y": 179.1875,
+                "width": 323.265625,
+                "height": 471.4375,
+                "top": 179.1875,
+                "bottom": 650.625
+              },
+              "figure": {
+                "x": 5,
+                "y": 179.1875,
+                "width": 380,
+                "height": 471.4375,
+                "top": 179.1875,
+                "bottom": 650.625
+              },
+              "stage": {
+                "x": 5,
+                "y": 179.1875,
+                "width": 380,
+                "height": 471.4375,
+                "top": 179.1875,
+                "bottom": 650.625
+              },
+              "bondCopy": {
+                "x": 17,
+                "y": 156,
+                "width": 356,
+                "height": 16.1875,
+                "top": 156,
+                "bottom": 172.1875
+              },
+              "unlock": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "unlockVisible": false,
+              "unlockInsideBond": true,
+              "conversation": {
+                "x": 5,
+                "y": 650.625,
+                "width": 380,
+                "height": 158,
+                "top": 650.625,
+                "bottom": 808.625,
+                "clientHeight": 157,
+                "scrollHeight": 175,
+                "scrollTop": 0,
+                "overflowY": "auto"
+              },
+              "answers": []
+            },
+            "captured": {
+              "canvas": {
+                "x": 47.328125,
+                "y": 219.9375,
+                "width": 295.328125,
+                "height": 430.6875,
+                "top": 219.9375,
+                "bottom": 650.625
+              },
+              "figure": {
+                "x": 5,
+                "y": 219.9375,
+                "width": 380,
+                "height": 430.6875,
+                "top": 219.9375,
+                "bottom": 650.625
+              },
+              "stage": {
+                "x": 5,
+                "y": 219.9375,
+                "width": 380,
+                "height": 430.6875,
+                "top": 219.9375,
+                "bottom": 650.625
+              },
+              "bondCopy": {
+                "x": 17,
+                "y": 156,
+                "width": 356,
+                "height": 56.9375,
+                "top": 156,
+                "bottom": 212.9375
+              },
+              "unlock": {
+                "x": 17,
+                "y": 160,
+                "width": 356,
+                "height": 48.9375,
+                "top": 160,
+                "bottom": 208.9375
+              },
+              "unlockVisible": true,
+              "unlockInsideBond": true,
+              "conversation": {
+                "x": 5,
+                "y": 650.625,
+                "width": 380,
+                "height": 158,
+                "top": 650.625,
+                "bottom": 808.625,
+                "clientHeight": 157,
+                "scrollHeight": 202,
+                "scrollTop": 0,
+                "overflowY": "auto"
+              },
+              "answers": []
+            }
           },
           "commonInitialSHA256": "a6b31f85d6707ac065fbc04e51aa43e7887434b9365f515fc095b6350ce0ca3a",
           "initialSnapshotSHA256": "f47819bed95313fffc57c53b9a3a14e7753e03105b59a18f5e02d0030a2f905f",
@@ -2206,10 +2966,10 @@
         },
         {
           "source": "after",
-          "commit": "8726431214d34803419d59c5ce416a82fce91eff",
+          "commit": "dc93fc9ea73407eda720ab079cdae1352ed13776",
           "original": "03-unlock-after.png",
           "errors": [],
-          "key": "tavern-ui-comparison-after-03-unlock-d2536f35-7f22-4796-8c93-3abb0940c2dd",
+          "key": "tavern-ui-comparison-after-03-unlock-2b3218c3-fb98-4c74-a1bc-b1f8ca15b364",
           "commonInitial": {
             "points": {
               "mara": 58,
@@ -2247,20 +3007,20 @@
           "hint": {
             "text": "Diese Etappe ist abgeschlossen. Eure gemeinsamen Momente bleiben.",
             "visible": false,
-            "top": 799.625,
-            "bottom": 835.625
+            "top": 774,
+            "bottom": 810
           },
           "unlock": {
             "text": "Neu: Hand berührenAusprobieren",
             "visible": true,
-            "top": 160,
-            "bottom": 208.9375
+            "top": 157.53125,
+            "bottom": 202.46875
           },
           "line": {
             "text": "Ein kleines Messingzahnrad, nur für mich? Es passt zu meinem alten Glücksstück. Du hast dir wirklich gemerkt, was mir etwas bedeutet.",
             "visible": true,
-            "top": 669.625,
-            "bottom": 737.125
+            "top": 644,
+            "bottom": 711.5
           },
           "giftDetailsOpen": false,
           "actions": [
@@ -2290,11 +3050,11 @@
           "story": "false",
           "overflow": false,
           "artwork": "genuine idle frame",
-          "captureDelayMs": 216.30000000074506,
+          "captureDelayMs": 215.60000000149012,
           "saves": [
             {
               "revision": 1,
-              "at": 383.8999999985099,
+              "at": 260.6000000014901,
               "social": {
                 "encounters": {
                   "mara": {
@@ -2361,7 +3121,7 @@
             },
             {
               "revision": 2,
-              "at": 640.3999999985099,
+              "at": 423.1000000014901,
               "social": {
                 "encounters": {
                   "mara": {
@@ -2428,7 +3188,7 @@
             },
             {
               "revision": 3,
-              "at": 644.0999999977648,
+              "at": 425,
               "social": {
                 "encounters": {
                   "mara": {
@@ -2495,7 +3255,7 @@
             },
             {
               "revision": 4,
-              "at": 647.7999999970198,
+              "at": 427.1000000014901,
               "social": {
                 "encounters": {
                   "mara": {
@@ -2562,7 +3322,7 @@
             },
             {
               "revision": 5,
-              "at": 741.0999999977648,
+              "at": 503.69999999925494,
               "social": {
                 "encounters": {
                   "mara": {
@@ -2629,7 +3389,7 @@
             },
             {
               "revision": 6,
-              "at": 935.1999999992549,
+              "at": 675.1999999992549,
               "social": {
                 "encounters": {
                   "mara": {
@@ -2699,11 +3459,195 @@
             "transform": "matrix(1.1377, 0, 0, 1.1377, 0, 0)",
             "filter": "drop-shadow(rgba(244, 181, 197, 0.6) 0px 0px 6.53416px)"
           },
+          "geometry": {
+            "initial": {
+              "canvas": {
+                "x": 53.0625,
+                "y": 211,
+                "width": 283.875,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "figure": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "stage": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "bondCopy": {
+                "x": 17,
+                "y": 156,
+                "width": 356,
+                "height": 48,
+                "top": 156,
+                "bottom": 204
+              },
+              "unlock": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "unlockVisible": false,
+              "unlockInsideBond": true,
+              "conversation": {
+                "x": 5,
+                "y": 625,
+                "width": 380,
+                "height": 180,
+                "top": 625,
+                "bottom": 805,
+                "clientHeight": 179,
+                "scrollHeight": 193,
+                "scrollTop": 0,
+                "overflowY": "auto"
+              },
+              "answers": [
+                {
+                  "text": "",
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "fullyVisible": false,
+                  "visibleHeight": 0
+                },
+                {
+                  "text": "",
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "fullyVisible": false,
+                  "visibleHeight": 0
+                }
+              ]
+            },
+            "captured": {
+              "canvas": {
+                "x": 53.0625,
+                "y": 211,
+                "width": 283.875,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "figure": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "stage": {
+                "x": 5,
+                "y": 211,
+                "width": 380,
+                "height": 414,
+                "top": 211,
+                "bottom": 625
+              },
+              "bondCopy": {
+                "x": 17,
+                "y": 156,
+                "width": 356,
+                "height": 48,
+                "top": 156,
+                "bottom": 204
+              },
+              "unlock": {
+                "x": 17,
+                "y": 157.53125,
+                "width": 356,
+                "height": 44.9375,
+                "top": 157.53125,
+                "bottom": 202.46875
+              },
+              "unlockVisible": true,
+              "unlockInsideBond": true,
+              "conversation": {
+                "x": 5,
+                "y": 625,
+                "width": 380,
+                "height": 180,
+                "top": 625,
+                "bottom": 805,
+                "clientHeight": 179,
+                "scrollHeight": 242,
+                "scrollTop": 0,
+                "overflowY": "auto"
+              },
+              "answers": [
+                {
+                  "text": "",
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "fullyVisible": false,
+                  "visibleHeight": 0
+                },
+                {
+                  "text": "",
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "fullyVisible": false,
+                  "visibleHeight": 0
+                }
+              ]
+            }
+          },
           "commonInitialSHA256": "a6b31f85d6707ac065fbc04e51aa43e7887434b9365f515fc095b6350ce0ca3a",
           "initialSnapshotSHA256": "6a6bdc635be9eb21dc9490dced2607a7e61eed8ec8503bbbacd4e89abe4dbaa6",
           "currentSnapshotSHA256": "d19136b6afe22b0dd4dfd0248b186bb5a607f2233abe6cef7caa32a4b0d37759"
         }
       ]
     }
-  ]
+  ],
+  "refreshedAtUtc": "2026-11-07T01:48:41.619009+00:00",
+  "baselineTrackedSourcesUnchanged": true,
+  "cssWorkingTreeDiffAtCapture": [
+    "experiments/idle-bastion/src/tavern-rig.css",
+    "experiments/idle-bastion/src/tavern-ui.css"
+  ],
+  "viewedPairImages": [
+    "01-progress-pair.png",
+    "02-conversation-pair.png",
+    "03-unlock-pair.png"
+  ],
+  "refreshedImageSHA256": {
+    "01-progress-after.png": "1bc41cb67d7f9de378add473f4d6149ae90bcaac1a91af78cfd2f1afa0ac7257",
+    "01-progress-before.png": "2a9f57e4bee689701b3c009fa9b432551fd5a8f0362c44385b7f22f99e8282d9",
+    "01-progress-pair.png": "11d43988d21b2f8145b5b0642cf103e1660b636b32eeca4da3979249bd09e8d5",
+    "02-conversation-after.png": "ed20b649fc71cfaa263e25f10e8e38f195de636acc266b9ac295c0f31827c6e9",
+    "02-conversation-before.png": "71d0ad939af93f43b9cfad732bf1499805905f31965bd8a9834784fd51be1adf",
+    "02-conversation-pair.png": "c4b1b676c47bb7d021dc50ce5a05044055919091b75a3acb2458b7cbe920355d",
+    "03-unlock-after.png": "6a1cddf98d76b64ed0a57aa38a284fa3b91c7a33d68a7f60e7ef5c96f63228e6",
+    "03-unlock-before.png": "3bccccbf62e61984921c70c3c9a1fe991b39a2ff744def76a7c5717410721cfd",
+    "03-unlock-pair.png": "3aa39c3f21ce20bc11aa2d9ae4467d871822d4124e76b7155f96e6b8912f9031"
+  }
 }

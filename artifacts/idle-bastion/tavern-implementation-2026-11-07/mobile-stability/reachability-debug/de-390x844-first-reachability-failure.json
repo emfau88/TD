@@ -1,0 +1,232 @@
+{
+  "choice": "first",
+  "reachable": {
+    "top": 705.453125,
+    "bottom": 749.453125,
+    "height": 44,
+    "insideTextArea": false,
+    "insideViewport": true,
+    "hitTarget": true,
+    "hit": "<button type=\"button\" data-answer=\"first\">Was bedeutet es dir?</button>",
+    "textArea": {
+      "top": 580.203125,
+      "bottom": 749,
+      "height": 168.796875,
+      "scrollTop": 9,
+      "scrollHeight": 242,
+      "clientHeight": 168,
+      "overflowY": "auto"
+    },
+    "parent": "<div role=\"group\" aria-label=\"Deine Antwort\"><button type=\"button\" data-answer=\"first\">Was bedeutet es dir?</button><button type=\"button\" data-answer=\"second\">Du bringst mich auch aus dem Takt.</button></div>"
+  },
+  "choiceState": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "language": "de",
+    "label": "encounter:choice",
+    "rects": {
+      "dialog": {
+        "x": 4,
+        "y": 4,
+        "width": 382,
+        "height": 836,
+        "flex": "0 1 auto",
+        "flexBasis": "auto",
+        "minHeight": "0px",
+        "maxHeight": "836px",
+        "overflowY": "hidden",
+        "scrollHeight": 834,
+        "clientHeight": 834
+      },
+      "character": {
+        "x": 5,
+        "y": 98,
+        "width": 380,
+        "height": 741,
+        "flex": "1 1 0%",
+        "flexBasis": "0%",
+        "minHeight": "0px",
+        "maxHeight": "none",
+        "overflowY": "visible",
+        "scrollHeight": 741,
+        "clientHeight": 741
+      },
+      "body": {
+        "x": 5,
+        "y": 211,
+        "width": 380,
+        "height": 538,
+        "flex": "1 1 0%",
+        "flexBasis": "0%",
+        "minHeight": "0px",
+        "maxHeight": "none",
+        "overflowY": "hidden",
+        "scrollHeight": 538,
+        "clientHeight": 538
+      },
+      "stage": {
+        "x": 5,
+        "y": 211,
+        "width": 380,
+        "height": 369.203125,
+        "flex": "1 1 0%",
+        "flexBasis": "0%",
+        "minHeight": "0px",
+        "maxHeight": "none",
+        "overflowY": "hidden",
+        "scrollHeight": 369,
+        "clientHeight": 369
+      },
+      "canvas": {
+        "x": 68.421875,
+        "y": 211,
+        "width": 253.15625,
+        "height": 369.203125,
+        "flex": "0 0 auto",
+        "flexBasis": "auto",
+        "minHeight": "auto",
+        "maxHeight": "none",
+        "overflowY": "clip",
+        "scrollHeight": 369,
+        "clientHeight": 369
+      },
+      "conversation": {
+        "x": 5,
+        "y": 580.203125,
+        "width": 380,
+        "height": 168.796875,
+        "flex": "0 0 168.8px",
+        "flexBasis": "168.8px",
+        "minHeight": "0px",
+        "maxHeight": "none",
+        "overflowY": "auto",
+        "scrollHeight": 242,
+        "clientHeight": 168
+      },
+      "dock": {
+        "x": 5,
+        "y": 749,
+        "width": 380,
+        "height": 90,
+        "flex": "0 0 90px",
+        "flexBasis": "90px",
+        "minHeight": "0px",
+        "maxHeight": "none",
+        "overflowY": "visible",
+        "scrollHeight": 90,
+        "clientHeight": 90
+      }
+    },
+    "buttons": [
+      {
+        "text": "Was bedeutet es dir?",
+        "disabled": false,
+        "top": 714.453125,
+        "bottom": 758.453125,
+        "height": 44,
+        "withinViewport": true
+      },
+      {
+        "text": "Du bringst mich auch aus dem Takt.",
+        "disabled": false,
+        "top": 765.453125,
+        "bottom": 809.453125,
+        "height": 44,
+        "withinViewport": true
+      },
+      {
+        "text": "Weiter zuhören",
+        "disabled": false,
+        "top": 759,
+        "bottom": 830,
+        "height": 71,
+        "withinViewport": true
+      },
+      {
+        "text": "Zurück zu Mara",
+        "disabled": false,
+        "top": 759,
+        "bottom": 830,
+        "height": 71,
+        "withinViewport": true
+      }
+    ],
+    "story": "true",
+    "encounter": {
+      "id": "first",
+      "phase": "opening",
+      "beat": 0
+    },
+    "points": 70,
+    "error": null,
+    "overflow": false,
+    "delta": {
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "character": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "body": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "stage": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "canvas": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "conversation": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "dock": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "choiceReachability": [
+      {
+        "choice": "first",
+        "top": 705.453125,
+        "bottom": 749.453125,
+        "height": 44,
+        "insideTextArea": false,
+        "insideViewport": true,
+        "hitTarget": true,
+        "hit": "<button type=\"button\" data-answer=\"first\">Was bedeutet es dir?</button>",
+        "textArea": {
+          "top": 580.203125,
+          "bottom": 749,
+          "height": 168.796875,
+          "scrollTop": 9,
+          "scrollHeight": 242,
+          "clientHeight": 168,
+          "overflowY": "auto"
+        },
+        "parent": "<div role=\"group\" aria-label=\"Deine Antwort\"><button type=\"button\" data-answer=\"first\">Was bedeutet es dir?</button><button type=\"button\" data-answer=\"second\">Du bringst mich auch aus dem Takt.</button></div>"
+      }
+    ]
+  }
+}

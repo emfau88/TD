@@ -1,0 +1,11 @@
+{
+  "cases": 10,
+  "captures": 180,
+  "portraitChanged": 0,
+  "changed": [],
+  "sourceHashes": {
+    "tavern-ui.css": "66c4629c00d804bebf4f8b08fba9ed453c97140b6a60aa2f575ccbeda13cb3a5",
+    "tavern-rig.css": "1b098191339a0e10408db09395a5b036a522ad23c837dc3472dcbdb985f33fad",
+    "landscape.css": "bfa0456ab54550bd905868bc4d3832ea981cdb45f7338a0c8d5c135ff7680b04"
+  }
+}

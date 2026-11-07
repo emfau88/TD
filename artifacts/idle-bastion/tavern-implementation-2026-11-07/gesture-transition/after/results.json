@@ -1,0 +1,3580 @@
+[
+  {
+    "who": "mara",
+    "name": "idle-to-giggle",
+    "sources": [
+      {
+        "key": "idle",
+        "uniformDarkRatio": 0.06919047619047619,
+        "blackRatio": 0.0037142857142857142,
+        "transparentRatio": 0,
+        "mean": 62.89009523809371
+      },
+      {
+        "key": "giggle",
+        "uniformDarkRatio": 0.06771428571428571,
+        "blackRatio": 0.0030476190476190477,
+        "transparentRatio": 0,
+        "mean": 62.46715873015739
+      },
+      {
+        "key": "hip",
+        "uniformDarkRatio": 0.06571428571428571,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 62.175714285714406
+      },
+      {
+        "key": "joy",
+        "uniformDarkRatio": 0.06614285714285714,
+        "blackRatio": 0.002,
+        "transparentRatio": 0,
+        "mean": 62.00230158730077
+      },
+      {
+        "key": "head",
+        "uniformDarkRatio": 0.06652380952380953,
+        "blackRatio": 0.002761904761904762,
+        "transparentRatio": 0,
+        "mean": 62.484190476189625
+      },
+      {
+        "key": "touch",
+        "uniformDarkRatio": 0.06647619047619048,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 62.11299999999958
+      }
+    ],
+    "errors": [],
+    "before": "idle",
+    "arg": "giggle",
+    "frames": [
+      {
+        "at": 0,
+        "key": "giggle",
+        "pending": null,
+        "frame": "0",
+        "transition": {
+          "elapsed": 0.05
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0122
+        },
+        "uniformDarkRatio": 0.06866666666666667,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 62.40949206349222
+      },
+      {
+        "at": 33.299999999999955,
+        "key": "giggle",
+        "pending": null,
+        "frame": "1",
+        "transition": {
+          "elapsed": 0.08329999999999996
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0565
+        },
+        "uniformDarkRatio": 0.06871428571428571,
+        "blackRatio": 0.003476190476190476,
+        "transparentRatio": 0,
+        "mean": 62.23014285714221
+      },
+      {
+        "at": 83.29999999999995,
+        "key": "giggle",
+        "pending": null,
+        "frame": "2",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.106
+        },
+        "uniformDarkRatio": 0.06528571428571428,
+        "blackRatio": 0.002476190476190476,
+        "transparentRatio": 0,
+        "mean": 62.70998412698287
+      },
+      {
+        "at": 133.29999999999995,
+        "key": "giggle",
+        "pending": null,
+        "frame": "3",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1498
+        },
+        "uniformDarkRatio": 0.06552380952380953,
+        "blackRatio": 0.002619047619047619,
+        "transparentRatio": 0,
+        "mean": 62.706698412697286
+      },
+      {
+        "at": 166.60000000000014,
+        "key": "giggle",
+        "pending": null,
+        "frame": "4",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1899
+        },
+        "uniformDarkRatio": 0.06604761904761905,
+        "blackRatio": 0.0025714285714285713,
+        "transparentRatio": 0,
+        "mean": 62.707412698411595
+      },
+      {
+        "at": 216.70000000000005,
+        "key": "giggle",
+        "pending": null,
+        "frame": "5",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2336
+        },
+        "uniformDarkRatio": 0.06604761904761905,
+        "blackRatio": 0.0025714285714285713,
+        "transparentRatio": 0,
+        "mean": 62.707412698411595
+      },
+      {
+        "at": 266.60000000000014,
+        "key": "giggle",
+        "pending": null,
+        "frame": "6",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2775
+        },
+        "uniformDarkRatio": 0.06980952380952381,
+        "blackRatio": 0.0018095238095238095,
+        "transparentRatio": 0,
+        "mean": 62.51296825396646
+      },
+      {
+        "at": 299.9000000000001,
+        "key": "giggle",
+        "pending": null,
+        "frame": "7",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3156
+        },
+        "uniformDarkRatio": 0.0690952380952381,
+        "blackRatio": 0.0015714285714285715,
+        "transparentRatio": 0,
+        "mean": 62.63133333333184
+      },
+      {
+        "at": 333.29999999999995,
+        "key": "giggle",
+        "pending": null,
+        "frame": "8",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3544
+        },
+        "uniformDarkRatio": 0.0690952380952381,
+        "blackRatio": 0.0015714285714285715,
+        "transparentRatio": 0,
+        "mean": 62.63133333333184
+      },
+      {
+        "at": 383.29999999999995,
+        "key": "giggle",
+        "pending": null,
+        "frame": "9",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3947
+        },
+        "uniformDarkRatio": 0.06838095238095238,
+        "blackRatio": 0.0028095238095238095,
+        "transparentRatio": 0,
+        "mean": 62.7629841269828
+      },
+      {
+        "at": 416.70000000000005,
+        "key": "giggle",
+        "pending": null,
+        "frame": "10",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4354
+        },
+        "uniformDarkRatio": 0.07123809523809524,
+        "blackRatio": 0.0020952380952380953,
+        "transparentRatio": 0,
+        "mean": 63.036015873014364
+      },
+      {
+        "at": 466.60000000000014,
+        "key": "giggle",
+        "pending": null,
+        "frame": "11",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4773
+        },
+        "uniformDarkRatio": 0.07276190476190476,
+        "blackRatio": 0.0020476190476190477,
+        "transparentRatio": 0,
+        "mean": 62.674190476189125
+      },
+      {
+        "at": 499.9000000000001,
+        "key": "giggle",
+        "pending": null,
+        "frame": "12",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5194
+        },
+        "uniformDarkRatio": 0.07276190476190476,
+        "blackRatio": 0.0021904761904761906,
+        "transparentRatio": 0,
+        "mean": 62.757238095236275
+      },
+      {
+        "at": 550,
+        "key": "giggle",
+        "pending": null,
+        "frame": "13",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5614
+        },
+        "uniformDarkRatio": 0.07238095238095238,
+        "blackRatio": 0.002476190476190476,
+        "transparentRatio": 0,
+        "mean": 63.56898412698278
+      },
+      {
+        "at": 583.3,
+        "key": "giggle",
+        "pending": null,
+        "frame": "14",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6026
+        },
+        "uniformDarkRatio": 0.07457142857142857,
+        "blackRatio": 0.002380952380952381,
+        "transparentRatio": 0,
+        "mean": 63.80668253968103
+      },
+      {
+        "at": 633.3,
+        "key": "giggle",
+        "pending": null,
+        "frame": "15",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6432
+        },
+        "uniformDarkRatio": 0.07404761904761904,
+        "blackRatio": 0.003142857142857143,
+        "transparentRatio": 0,
+        "mean": 65.0232222222204
+      },
+      {
+        "at": 666.6000000000001,
+        "key": "giggle",
+        "pending": null,
+        "frame": "16",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6852
+        },
+        "uniformDarkRatio": 0.0739047619047619,
+        "blackRatio": 0.002285714285714286,
+        "transparentRatio": 0,
+        "mean": 65.24869841269663
+      },
+      {
+        "at": 716.6000000000001,
+        "key": "giggle",
+        "pending": null,
+        "frame": "17",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.7276
+        },
+        "uniformDarkRatio": 0.07461904761904761,
+        "blackRatio": 0.0027142857142857142,
+        "transparentRatio": 0,
+        "mean": 65.68657142856976
+      }
+    ],
+    "peak": {
+      "at": 716.6000000000001,
+      "key": "giggle",
+      "pending": null,
+      "frame": "17",
+      "transition": null,
+      "media": {
+        "readyState": 4,
+        "seeking": false,
+        "time": 0.7276
+      },
+      "uniformDarkRatio": 0.07461904761904761,
+      "blackRatio": 0.0027142857142857142,
+      "transparentRatio": 0,
+      "mean": 65.68657142856976
+    }
+  },
+  {
+    "who": "mara",
+    "name": "idle-to-hip",
+    "sources": [
+      {
+        "key": "idle",
+        "uniformDarkRatio": 0.06919047619047619,
+        "blackRatio": 0.0037142857142857142,
+        "transparentRatio": 0,
+        "mean": 62.89009523809371
+      },
+      {
+        "key": "giggle",
+        "uniformDarkRatio": 0.06771428571428571,
+        "blackRatio": 0.0030476190476190477,
+        "transparentRatio": 0,
+        "mean": 62.46715873015739
+      },
+      {
+        "key": "hip",
+        "uniformDarkRatio": 0.06571428571428571,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 62.175714285714406
+      },
+      {
+        "key": "joy",
+        "uniformDarkRatio": 0.06614285714285714,
+        "blackRatio": 0.002,
+        "transparentRatio": 0,
+        "mean": 62.00230158730077
+      },
+      {
+        "key": "head",
+        "uniformDarkRatio": 0.06652380952380953,
+        "blackRatio": 0.002761904761904762,
+        "transparentRatio": 0,
+        "mean": 62.484190476189625
+      },
+      {
+        "key": "touch",
+        "uniformDarkRatio": 0.06647619047619048,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 62.11299999999958
+      }
+    ],
+    "errors": [],
+    "before": "idle",
+    "arg": "hip",
+    "frames": [
+      {
+        "at": 0,
+        "key": "hip",
+        "pending": null,
+        "frame": "0",
+        "transition": {
+          "elapsed": 0.03340000000000009
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0093
+        },
+        "uniformDarkRatio": 0.068,
+        "blackRatio": 0.003857142857142857,
+        "transparentRatio": 0,
+        "mean": 62.41039682539655
+      },
+      {
+        "at": 49.899999999999636,
+        "key": "hip",
+        "pending": null,
+        "frame": "1",
+        "transition": {
+          "elapsed": 0.08329999999999974
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0487
+        },
+        "uniformDarkRatio": 0.06561904761904762,
+        "blackRatio": 0.003619047619047619,
+        "transparentRatio": 0,
+        "mean": 62.02439682539686
+      },
+      {
+        "at": 83.29999999999973,
+        "key": "hip",
+        "pending": null,
+        "frame": "2",
+        "transition": {
+          "elapsed": 0.11669999999999983
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0902
+        },
+        "uniformDarkRatio": 0.06433333333333334,
+        "blackRatio": 0.004333333333333333,
+        "transparentRatio": 0,
+        "mean": 61.99019047619022
+      },
+      {
+        "at": 133.29999999999973,
+        "key": "hip",
+        "pending": null,
+        "frame": "3",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1323
+        },
+        "uniformDarkRatio": 0.06438095238095239,
+        "blackRatio": 0.0036666666666666666,
+        "transparentRatio": 0,
+        "mean": 62.328968253967965
+      },
+      {
+        "at": 166.5999999999999,
+        "key": "hip",
+        "pending": null,
+        "frame": "4",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1752
+        },
+        "uniformDarkRatio": 0.06538095238095239,
+        "blackRatio": 0.0036666666666666666,
+        "transparentRatio": 0,
+        "mean": 62.32990476190421
+      },
+      {
+        "at": 216.5999999999999,
+        "key": "hip",
+        "pending": null,
+        "frame": "5",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2153
+        },
+        "uniformDarkRatio": 0.06466666666666666,
+        "blackRatio": 0.0036666666666666666,
+        "transparentRatio": 0,
+        "mean": 62.32693650793623
+      },
+      {
+        "at": 249.89999999999964,
+        "key": "hip",
+        "pending": null,
+        "frame": "6",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2568
+        },
+        "uniformDarkRatio": 0.066,
+        "blackRatio": 0.0038095238095238095,
+        "transparentRatio": 0,
+        "mean": 62.414857142856896
+      },
+      {
+        "at": 299.89999999999964,
+        "key": "hip",
+        "pending": null,
+        "frame": "7",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2991
+        },
+        "uniformDarkRatio": 0.06642857142857143,
+        "blackRatio": 0.0038095238095238095,
+        "transparentRatio": 0,
+        "mean": 62.372222222222014
+      },
+      {
+        "at": 333.1999999999998,
+        "key": "hip",
+        "pending": null,
+        "frame": "8",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3422
+        },
+        "uniformDarkRatio": 0.067,
+        "blackRatio": 0.003857142857142857,
+        "transparentRatio": 0,
+        "mean": 62.42590476190452
+      },
+      {
+        "at": 383.2999999999997,
+        "key": "hip",
+        "pending": null,
+        "frame": "9",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3841
+        },
+        "uniformDarkRatio": 0.06590476190476191,
+        "blackRatio": 0.0038095238095238095,
+        "transparentRatio": 0,
+        "mean": 62.27219047619029
+      },
+      {
+        "at": 416.5999999999999,
+        "key": "hip",
+        "pending": null,
+        "frame": "10",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.424
+        },
+        "uniformDarkRatio": 0.06619047619047619,
+        "blackRatio": 0.002761904761904762,
+        "transparentRatio": 0,
+        "mean": 62.54795238095184
+      },
+      {
+        "at": 466.5999999999999,
+        "key": "hip",
+        "pending": null,
+        "frame": "11",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.464
+        },
+        "uniformDarkRatio": 0.06461904761904762,
+        "blackRatio": 0.0031904761904761906,
+        "transparentRatio": 0,
+        "mean": 62.26884126984043
+      },
+      {
+        "at": 499.89999999999964,
+        "key": "hip",
+        "pending": null,
+        "frame": "12",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.508
+        },
+        "uniformDarkRatio": 0.06657142857142857,
+        "blackRatio": 0.0028095238095238095,
+        "transparentRatio": 0,
+        "mean": 62.35565079365016
+      },
+      {
+        "at": 550,
+        "key": "hip",
+        "pending": null,
+        "frame": "13",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5493
+        },
+        "uniformDarkRatio": 0.06285714285714286,
+        "blackRatio": 0.0035238095238095237,
+        "transparentRatio": 0,
+        "mean": 62.116841269841395
+      },
+      {
+        "at": 583.1999999999998,
+        "key": "hip",
+        "pending": null,
+        "frame": "14",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5886
+        },
+        "uniformDarkRatio": 0.06542857142857143,
+        "blackRatio": 0.0020952380952380953,
+        "transparentRatio": 0,
+        "mean": 62.894698412697615
+      },
+      {
+        "at": 633.2999999999997,
+        "key": "hip",
+        "pending": null,
+        "frame": "15",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6312
+        },
+        "uniformDarkRatio": 0.06438095238095239,
+        "blackRatio": 0.0019047619047619048,
+        "transparentRatio": 0,
+        "mean": 62.7297142857138
+      },
+      {
+        "at": 666.5,
+        "key": "hip",
+        "pending": null,
+        "frame": "16",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6731
+        },
+        "uniformDarkRatio": 0.0650952380952381,
+        "blackRatio": 0.0019047619047619048,
+        "transparentRatio": 0,
+        "mean": 62.81060317460312
+      },
+      {
+        "at": 716.5999999999999,
+        "key": "hip",
+        "pending": null,
+        "frame": "17",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.7139
+        },
+        "uniformDarkRatio": 0.062,
+        "blackRatio": 0.0021904761904761906,
+        "transparentRatio": 0,
+        "mean": 62.72796825396801
+      }
+    ],
+    "peak": {
+      "at": 0,
+      "key": "hip",
+      "pending": null,
+      "frame": "0",
+      "transition": {
+        "elapsed": 0.03340000000000009
+      },
+      "media": {
+        "readyState": 4,
+        "seeking": false,
+        "time": 0.0093
+      },
+      "uniformDarkRatio": 0.068,
+      "blackRatio": 0.003857142857142857,
+      "transparentRatio": 0,
+      "mean": 62.41039682539655
+    }
+  },
+  {
+    "who": "mara",
+    "name": "hip-to-giggle",
+    "sources": [
+      {
+        "key": "idle",
+        "uniformDarkRatio": 0.06919047619047619,
+        "blackRatio": 0.0037142857142857142,
+        "transparentRatio": 0,
+        "mean": 62.89009523809371
+      },
+      {
+        "key": "giggle",
+        "uniformDarkRatio": 0.06771428571428571,
+        "blackRatio": 0.0030476190476190477,
+        "transparentRatio": 0,
+        "mean": 62.46715873015739
+      },
+      {
+        "key": "hip",
+        "uniformDarkRatio": 0.06571428571428571,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 62.175714285714406
+      },
+      {
+        "key": "joy",
+        "uniformDarkRatio": 0.06614285714285714,
+        "blackRatio": 0.002,
+        "transparentRatio": 0,
+        "mean": 62.00230158730077
+      },
+      {
+        "key": "head",
+        "uniformDarkRatio": 0.06652380952380953,
+        "blackRatio": 0.002761904761904762,
+        "transparentRatio": 0,
+        "mean": 62.484190476189625
+      },
+      {
+        "key": "touch",
+        "uniformDarkRatio": 0.06647619047619048,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 62.11299999999958
+      }
+    ],
+    "errors": [],
+    "before": "hip",
+    "arg": "giggle",
+    "frames": [
+      {
+        "at": 0,
+        "key": "hip",
+        "pending": "giggle",
+        "frame": "3",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1604
+        },
+        "uniformDarkRatio": 0.06538095238095239,
+        "blackRatio": 0.0036666666666666666,
+        "transparentRatio": 0,
+        "mean": 62.32990476190421
+      },
+      {
+        "at": 50,
+        "key": "hip",
+        "pending": "giggle",
+        "frame": "4",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2032
+        },
+        "uniformDarkRatio": 0.06466666666666666,
+        "blackRatio": 0.0036666666666666666,
+        "transparentRatio": 0,
+        "mean": 62.32693650793623
+      },
+      {
+        "at": 83.29999999999973,
+        "key": "giggle",
+        "pending": null,
+        "frame": "0",
+        "transition": {
+          "elapsed": 0.033299999999999726
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0415
+        },
+        "uniformDarkRatio": 0.06576190476190476,
+        "blackRatio": 0.004142857142857143,
+        "transparentRatio": 0,
+        "mean": 61.94519047619079
+      },
+      {
+        "at": 133.29999999999973,
+        "key": "giggle",
+        "pending": null,
+        "frame": "1",
+        "transition": {
+          "elapsed": 0.08329999999999974
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0833
+        },
+        "uniformDarkRatio": 0.06647619047619048,
+        "blackRatio": 0.0025714285714285713,
+        "transparentRatio": 0,
+        "mean": 62.17219047618981
+      },
+      {
+        "at": 166.69999999999982,
+        "key": "giggle",
+        "pending": null,
+        "frame": "2",
+        "transition": {
+          "elapsed": 0.11669999999999983
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1252
+        },
+        "uniformDarkRatio": 0.06623809523809523,
+        "blackRatio": 0.0031904761904761906,
+        "transparentRatio": 0,
+        "mean": 62.23733333333262
+      },
+      {
+        "at": 216.69999999999982,
+        "key": "giggle",
+        "pending": null,
+        "frame": "3",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.167
+        },
+        "uniformDarkRatio": 0.06542857142857143,
+        "blackRatio": 0.002619047619047619,
+        "transparentRatio": 0,
+        "mean": 62.71301587301475
+      },
+      {
+        "at": 249.9000000000001,
+        "key": "giggle",
+        "pending": null,
+        "frame": "4",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2093
+        },
+        "uniformDarkRatio": 0.06604761904761905,
+        "blackRatio": 0.0025714285714285713,
+        "transparentRatio": 0,
+        "mean": 62.707412698411595
+      },
+      {
+        "at": 300,
+        "key": "giggle",
+        "pending": null,
+        "frame": "6",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2533
+        },
+        "uniformDarkRatio": 0.0670952380952381,
+        "blackRatio": 0.0016666666666666668,
+        "transparentRatio": 0,
+        "mean": 62.97979365079237
+      },
+      {
+        "at": 333.2999999999997,
+        "key": "giggle",
+        "pending": null,
+        "frame": "6",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2926
+        },
+        "uniformDarkRatio": 0.0670952380952381,
+        "blackRatio": 0.0016666666666666668,
+        "transparentRatio": 0,
+        "mean": 62.97979365079237
+      },
+      {
+        "at": 383.2999999999997,
+        "key": "giggle",
+        "pending": null,
+        "frame": "8",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3371
+        },
+        "uniformDarkRatio": 0.06980952380952381,
+        "blackRatio": 0.0018095238095238095,
+        "transparentRatio": 0,
+        "mean": 62.51296825396646
+      },
+      {
+        "at": 416.5999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "9",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.379
+        },
+        "uniformDarkRatio": 0.06838095238095238,
+        "blackRatio": 0.0028095238095238095,
+        "transparentRatio": 0,
+        "mean": 62.7629841269828
+      },
+      {
+        "at": 466.6999999999998,
+        "key": "giggle",
+        "pending": null,
+        "frame": "10",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4213
+        },
+        "uniformDarkRatio": 0.07276190476190476,
+        "blackRatio": 0.0020476190476190477,
+        "transparentRatio": 0,
+        "mean": 62.674190476189125
+      },
+      {
+        "at": 500,
+        "key": "giggle",
+        "pending": null,
+        "frame": "11",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4614
+        },
+        "uniformDarkRatio": 0.07276190476190476,
+        "blackRatio": 0.0020476190476190477,
+        "transparentRatio": 0,
+        "mean": 62.674190476189125
+      },
+      {
+        "at": 549.9000000000001,
+        "key": "giggle",
+        "pending": null,
+        "frame": "12",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5051
+        },
+        "uniformDarkRatio": 0.07276190476190476,
+        "blackRatio": 0.0021904761904761906,
+        "transparentRatio": 0,
+        "mean": 62.757238095236275
+      },
+      {
+        "at": 583.2999999999997,
+        "key": "giggle",
+        "pending": null,
+        "frame": "13",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5461
+        },
+        "uniformDarkRatio": 0.07238095238095238,
+        "blackRatio": 0.002476190476190476,
+        "transparentRatio": 0,
+        "mean": 63.56898412698278
+      },
+      {
+        "at": 633.1999999999998,
+        "key": "giggle",
+        "pending": null,
+        "frame": "14",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.588
+        },
+        "uniformDarkRatio": 0.07457142857142857,
+        "blackRatio": 0.002380952380952381,
+        "transparentRatio": 0,
+        "mean": 63.80668253968103
+      },
+      {
+        "at": 666.5999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "14",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6252
+        },
+        "uniformDarkRatio": 0.07457142857142857,
+        "blackRatio": 0.002380952380952381,
+        "transparentRatio": 0,
+        "mean": 63.80668253968103
+      },
+      {
+        "at": 716.5999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "15",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6676
+        },
+        "uniformDarkRatio": 0.07404761904761904,
+        "blackRatio": 0.003142857142857143,
+        "transparentRatio": 0,
+        "mean": 65.0232222222204
+      }
+    ],
+    "peak": {
+      "at": 633.1999999999998,
+      "key": "giggle",
+      "pending": null,
+      "frame": "14",
+      "transition": null,
+      "media": {
+        "readyState": 4,
+        "seeking": false,
+        "time": 0.588
+      },
+      "uniformDarkRatio": 0.07457142857142857,
+      "blackRatio": 0.002380952380952381,
+      "transparentRatio": 0,
+      "mean": 63.80668253968103
+    }
+  },
+  {
+    "who": "mara",
+    "name": "hip-to-idle",
+    "sources": [
+      {
+        "key": "idle",
+        "uniformDarkRatio": 0.06919047619047619,
+        "blackRatio": 0.0037142857142857142,
+        "transparentRatio": 0,
+        "mean": 62.89009523809371
+      },
+      {
+        "key": "giggle",
+        "uniformDarkRatio": 0.06771428571428571,
+        "blackRatio": 0.0030476190476190477,
+        "transparentRatio": 0,
+        "mean": 62.46715873015739
+      },
+      {
+        "key": "hip",
+        "uniformDarkRatio": 0.06571428571428571,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 62.175714285714406
+      },
+      {
+        "key": "joy",
+        "uniformDarkRatio": 0.06614285714285714,
+        "blackRatio": 0.002,
+        "transparentRatio": 0,
+        "mean": 62.00230158730077
+      },
+      {
+        "key": "head",
+        "uniformDarkRatio": 0.06652380952380953,
+        "blackRatio": 0.002761904761904762,
+        "transparentRatio": 0,
+        "mean": 62.484190476189625
+      },
+      {
+        "key": "touch",
+        "uniformDarkRatio": 0.06647619047619048,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 62.11299999999958
+      }
+    ],
+    "errors": [],
+    "before": "hip",
+    "arg": "idle",
+    "frames": [
+      {
+        "at": 0,
+        "key": "idle",
+        "pending": null,
+        "frame": "0",
+        "transition": {
+          "elapsed": 0.033300000000000184
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0159
+        },
+        "uniformDarkRatio": 0.066,
+        "blackRatio": 0.004428571428571428,
+        "transparentRatio": 0,
+        "mean": 62.063698412698436
+      },
+      {
+        "at": 50,
+        "key": "idle",
+        "pending": null,
+        "frame": "1",
+        "transition": {
+          "elapsed": 0.08330000000000018
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0561
+        },
+        "uniformDarkRatio": 0.06942857142857142,
+        "blackRatio": 0.003857142857142857,
+        "transparentRatio": 0,
+        "mean": 62.29358730158695
+      },
+      {
+        "at": 83.39999999999964,
+        "key": "idle",
+        "pending": null,
+        "frame": "2",
+        "transition": {
+          "elapsed": 0.11669999999999982
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0982
+        },
+        "uniformDarkRatio": 0.06814285714285714,
+        "blackRatio": 0.003904761904761905,
+        "transparentRatio": 0,
+        "mean": 62.59431746031809
+      },
+      {
+        "at": 133.39999999999964,
+        "key": "idle",
+        "pending": null,
+        "frame": "3",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1411
+        },
+        "uniformDarkRatio": 0.06647619047619048,
+        "blackRatio": 0.003285714285714286,
+        "transparentRatio": 0,
+        "mean": 63.10126984126938
+      },
+      {
+        "at": 183.30000000000018,
+        "key": "idle",
+        "pending": null,
+        "frame": "4",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2005
+        },
+        "uniformDarkRatio": 0.06623809523809523,
+        "blackRatio": 0.0033809523809523808,
+        "transparentRatio": 0,
+        "mean": 63.11025396825337
+      },
+      {
+        "at": 233.30000000000018,
+        "key": "idle",
+        "pending": null,
+        "frame": "5",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2425
+        },
+        "uniformDarkRatio": 0.06728571428571428,
+        "blackRatio": 0.0035714285714285713,
+        "transparentRatio": 0,
+        "mean": 63.05442857142796
+      },
+      {
+        "at": 283.3000000000002,
+        "key": "idle",
+        "pending": null,
+        "frame": "6",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.285
+        },
+        "uniformDarkRatio": 0.06628571428571428,
+        "blackRatio": 0.0033809523809523808,
+        "transparentRatio": 0,
+        "mean": 63.03771428571369
+      },
+      {
+        "at": 316.60000000000036,
+        "key": "idle",
+        "pending": null,
+        "frame": "7",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.327
+        },
+        "uniformDarkRatio": 0.06619047619047619,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 63.07066666666609
+      },
+      {
+        "at": 366.60000000000036,
+        "key": "idle",
+        "pending": null,
+        "frame": "8",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.37
+        },
+        "uniformDarkRatio": 0.06604761904761905,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 63.02406349206299
+      },
+      {
+        "at": 400,
+        "key": "idle",
+        "pending": null,
+        "frame": "9",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4118
+        },
+        "uniformDarkRatio": 0.06714285714285714,
+        "blackRatio": 0.003619047619047619,
+        "transparentRatio": 0,
+        "mean": 63.086063492062635
+      },
+      {
+        "at": 449.89999999999964,
+        "key": "idle",
+        "pending": null,
+        "frame": "10",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4543
+        },
+        "uniformDarkRatio": 0.06695238095238096,
+        "blackRatio": 0.0037142857142857142,
+        "transparentRatio": 0,
+        "mean": 63.06684126984045
+      },
+      {
+        "at": 483.3000000000002,
+        "key": "idle",
+        "pending": null,
+        "frame": "11",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4942
+        },
+        "uniformDarkRatio": 0.0670952380952381,
+        "blackRatio": 0.003857142857142857,
+        "transparentRatio": 0,
+        "mean": 63.11001587301527
+      },
+      {
+        "at": 533.3000000000002,
+        "key": "idle",
+        "pending": null,
+        "frame": "12",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5392
+        },
+        "uniformDarkRatio": 0.06685714285714285,
+        "blackRatio": 0.003952380952380952,
+        "transparentRatio": 0,
+        "mean": 63.07698412698326
+      },
+      {
+        "at": 566.6000000000004,
+        "key": "idle",
+        "pending": null,
+        "frame": "13",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5844
+        },
+        "uniformDarkRatio": 0.068,
+        "blackRatio": 0.0033333333333333335,
+        "transparentRatio": 0,
+        "mean": 63.16615873015851
+      },
+      {
+        "at": 616.6999999999998,
+        "key": "idle",
+        "pending": null,
+        "frame": "15",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6277
+        },
+        "uniformDarkRatio": 0.06766666666666667,
+        "blackRatio": 0.0031904761904761906,
+        "transparentRatio": 0,
+        "mean": 63.23401587301516
+      },
+      {
+        "at": 666.6999999999998,
+        "key": "idle",
+        "pending": null,
+        "frame": "16",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6698
+        },
+        "uniformDarkRatio": 0.06747619047619048,
+        "blackRatio": 0.0029047619047619048,
+        "transparentRatio": 0,
+        "mean": 63.354095238094594
+      },
+      {
+        "at": 699.8999999999996,
+        "key": "idle",
+        "pending": null,
+        "frame": "17",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.7151
+        },
+        "uniformDarkRatio": 0.06719047619047619,
+        "blackRatio": 0.0033333333333333335,
+        "transparentRatio": 0,
+        "mean": 63.336888888888296
+      },
+      {
+        "at": 750,
+        "key": "idle",
+        "pending": null,
+        "frame": "18",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.7584
+        },
+        "uniformDarkRatio": 0.06728571428571428,
+        "blackRatio": 0.003,
+        "transparentRatio": 0,
+        "mean": 63.47326984126926
+      }
+    ],
+    "peak": {
+      "at": 50,
+      "key": "idle",
+      "pending": null,
+      "frame": "1",
+      "transition": {
+        "elapsed": 0.08330000000000018
+      },
+      "media": {
+        "readyState": 4,
+        "seeking": false,
+        "time": 0.0561
+      },
+      "uniformDarkRatio": 0.06942857142857142,
+      "blackRatio": 0.003857142857142857,
+      "transparentRatio": 0,
+      "mean": 62.29358730158695
+    }
+  },
+  {
+    "who": "mara",
+    "name": "idle-to-shoulder",
+    "sources": [
+      {
+        "key": "idle",
+        "uniformDarkRatio": 0.06919047619047619,
+        "blackRatio": 0.0037142857142857142,
+        "transparentRatio": 0,
+        "mean": 62.89009523809371
+      },
+      {
+        "key": "giggle",
+        "uniformDarkRatio": 0.06771428571428571,
+        "blackRatio": 0.0030476190476190477,
+        "transparentRatio": 0,
+        "mean": 62.46715873015739
+      },
+      {
+        "key": "hip",
+        "uniformDarkRatio": 0.06571428571428571,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 62.175714285714406
+      },
+      {
+        "key": "joy",
+        "uniformDarkRatio": 0.06614285714285714,
+        "blackRatio": 0.002,
+        "transparentRatio": 0,
+        "mean": 62.00230158730077
+      },
+      {
+        "key": "head",
+        "uniformDarkRatio": 0.06652380952380953,
+        "blackRatio": 0.002761904761904762,
+        "transparentRatio": 0,
+        "mean": 62.484190476189625
+      },
+      {
+        "key": "touch",
+        "uniformDarkRatio": 0.06647619047619048,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 62.11299999999958
+      }
+    ],
+    "errors": [],
+    "before": "idle",
+    "arg": "shoulder",
+    "frames": [
+      {
+        "at": 0,
+        "key": "touch",
+        "pending": null,
+        "frame": "0",
+        "transition": {
+          "elapsed": 0.033300000000000184
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0107
+        },
+        "uniformDarkRatio": 0.06814285714285714,
+        "blackRatio": 0.0035238095238095237,
+        "transparentRatio": 0,
+        "mean": 62.39380952380916
+      },
+      {
+        "at": 50,
+        "key": "touch",
+        "pending": null,
+        "frame": "1",
+        "transition": {
+          "elapsed": 0.08330000000000018
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0568
+        },
+        "uniformDarkRatio": 0.06542857142857143,
+        "blackRatio": 0.0036666666666666666,
+        "transparentRatio": 0,
+        "mean": 61.97834920634916
+      },
+      {
+        "at": 100,
+        "key": "touch",
+        "pending": null,
+        "frame": "2",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0987
+        },
+        "uniformDarkRatio": 0.06557142857142857,
+        "blackRatio": 0.002761904761904762,
+        "transparentRatio": 0,
+        "mean": 62.52588888888806
+      },
+      {
+        "at": 133.29999999999927,
+        "key": "touch",
+        "pending": null,
+        "frame": "3",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1434
+        },
+        "uniformDarkRatio": 0.06590476190476191,
+        "blackRatio": 0.0028095238095238095,
+        "transparentRatio": 0,
+        "mean": 62.446285714285125
+      },
+      {
+        "at": 183.39999999999964,
+        "key": "touch",
+        "pending": null,
+        "frame": "4",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1891
+        },
+        "uniformDarkRatio": 0.06433333333333334,
+        "blackRatio": 0.0028095238095238095,
+        "transparentRatio": 0,
+        "mean": 62.44995238095205
+      },
+      {
+        "at": 233.39999999999964,
+        "key": "touch",
+        "pending": null,
+        "frame": "5",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2353
+        },
+        "uniformDarkRatio": 0.06523809523809523,
+        "blackRatio": 0.0032380952380952383,
+        "transparentRatio": 0,
+        "mean": 62.36785714285688
+      },
+      {
+        "at": 266.6999999999998,
+        "key": "touch",
+        "pending": null,
+        "frame": "6",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2795
+        },
+        "uniformDarkRatio": 0.07176190476190476,
+        "blackRatio": 0.0030476190476190477,
+        "transparentRatio": 0,
+        "mean": 62.00793650793551
+      },
+      {
+        "at": 316.6999999999998,
+        "key": "touch",
+        "pending": null,
+        "frame": "7",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3247
+        },
+        "uniformDarkRatio": 0.06995238095238095,
+        "blackRatio": 0.003142857142857143,
+        "transparentRatio": 0,
+        "mean": 62.03182539682444
+      },
+      {
+        "at": 366.6999999999998,
+        "key": "touch",
+        "pending": null,
+        "frame": "8",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3699
+        },
+        "uniformDarkRatio": 0.06857142857142857,
+        "blackRatio": 0.0034285714285714284,
+        "transparentRatio": 0,
+        "mean": 61.728047619047075
+      },
+      {
+        "at": 400,
+        "key": "touch",
+        "pending": null,
+        "frame": "9",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4129
+        },
+        "uniformDarkRatio": 0.07157142857142858,
+        "blackRatio": 0.0026666666666666666,
+        "transparentRatio": 0,
+        "mean": 62.05012698412586
+      },
+      {
+        "at": 450.09999999999945,
+        "key": "touch",
+        "pending": null,
+        "frame": "10",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.455
+        },
+        "uniformDarkRatio": 0.0700952380952381,
+        "blackRatio": 0.002761904761904762,
+        "transparentRatio": 0,
+        "mean": 61.897714285713384
+      },
+      {
+        "at": 483.39999999999964,
+        "key": "touch",
+        "pending": null,
+        "frame": "11",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4982
+        },
+        "uniformDarkRatio": 0.07114285714285715,
+        "blackRatio": 0.0027142857142857142,
+        "transparentRatio": 0,
+        "mean": 61.96626984126873
+      },
+      {
+        "at": 533.2999999999993,
+        "key": "touch",
+        "pending": null,
+        "frame": "12",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5426
+        },
+        "uniformDarkRatio": 0.07114285714285715,
+        "blackRatio": 0.0024285714285714284,
+        "transparentRatio": 0,
+        "mean": 61.6577142857132
+      },
+      {
+        "at": 583.2999999999993,
+        "key": "touch",
+        "pending": null,
+        "frame": "13",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5831
+        },
+        "uniformDarkRatio": 0.07233333333333333,
+        "blackRatio": 0.0025238095238095237,
+        "transparentRatio": 0,
+        "mean": 61.8594603174593
+      },
+      {
+        "at": 616.6999999999998,
+        "key": "touch",
+        "pending": null,
+        "frame": "14",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6241
+        },
+        "uniformDarkRatio": 0.07438095238095238,
+        "blackRatio": 0.002761904761904762,
+        "transparentRatio": 0,
+        "mean": 62.12468253968169
+      },
+      {
+        "at": 666.6999999999998,
+        "key": "touch",
+        "pending": null,
+        "frame": "15",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6663
+        },
+        "uniformDarkRatio": 0.07533333333333334,
+        "blackRatio": 0.0027142857142857142,
+        "transparentRatio": 0,
+        "mean": 62.17279365079277
+      },
+      {
+        "at": 700,
+        "key": "touch",
+        "pending": null,
+        "frame": "17",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.7125
+        },
+        "uniformDarkRatio": 0.07280952380952381,
+        "blackRatio": 0.003142857142857143,
+        "transparentRatio": 0,
+        "mean": 62.18763492063391
+      }
+    ],
+    "peak": {
+      "at": 666.6999999999998,
+      "key": "touch",
+      "pending": null,
+      "frame": "15",
+      "transition": null,
+      "media": {
+        "readyState": 4,
+        "seeking": false,
+        "time": 0.6663
+      },
+      "uniformDarkRatio": 0.07533333333333334,
+      "blackRatio": 0.0027142857142857142,
+      "transparentRatio": 0,
+      "mean": 62.17279365079277
+    }
+  },
+  {
+    "who": "ilyra",
+    "name": "idle-to-giggle",
+    "sources": [
+      {
+        "key": "idle",
+        "uniformDarkRatio": 0.03919047619047619,
+        "blackRatio": 0.0029523809523809524,
+        "transparentRatio": 0,
+        "mean": 83.20407936507758
+      },
+      {
+        "key": "giggle",
+        "uniformDarkRatio": 0.06819047619047619,
+        "blackRatio": 0.0012857142857142856,
+        "transparentRatio": 0,
+        "mean": 84.36903174602972
+      },
+      {
+        "key": "hip",
+        "uniformDarkRatio": 0.04419047619047619,
+        "blackRatio": 0.0014761904761904762,
+        "transparentRatio": 0,
+        "mean": 96.04453968253682
+      },
+      {
+        "key": "joy",
+        "uniformDarkRatio": 0.06738095238095237,
+        "blackRatio": 0.0003333333333333333,
+        "transparentRatio": 0,
+        "mean": 84.31066666666419
+      },
+      {
+        "key": "head",
+        "uniformDarkRatio": 0.06866666666666667,
+        "blackRatio": 0.00038095238095238096,
+        "transparentRatio": 0,
+        "mean": 84.53250793650433
+      },
+      {
+        "key": "touch",
+        "uniformDarkRatio": 0.07404761904761904,
+        "blackRatio": 0.000619047619047619,
+        "transparentRatio": 0,
+        "mean": 84.41842857142613
+      }
+    ],
+    "errors": [],
+    "before": "idle",
+    "arg": "giggle",
+    "frames": [
+      {
+        "at": 0,
+        "key": "giggle",
+        "pending": null,
+        "frame": "0",
+        "transition": {
+          "elapsed": 0.05
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0072
+        },
+        "uniformDarkRatio": 0.04566666666666667,
+        "blackRatio": 0.0013333333333333333,
+        "transparentRatio": 0,
+        "mean": 83.25074603174552
+      },
+      {
+        "at": 33.200000000000045,
+        "key": "giggle",
+        "pending": null,
+        "frame": "1",
+        "transition": {
+          "elapsed": 0.08320000000000005
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0499
+        },
+        "uniformDarkRatio": 0.05852380952380953,
+        "blackRatio": 0.0011904761904761906,
+        "transparentRatio": 0,
+        "mean": 83.58376190476154
+      },
+      {
+        "at": 83.29999999999995,
+        "key": "giggle",
+        "pending": null,
+        "frame": "2",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0969
+        },
+        "uniformDarkRatio": 0.06928571428571428,
+        "blackRatio": 0.0011904761904761906,
+        "transparentRatio": 0,
+        "mean": 84.5414444444427
+      },
+      {
+        "at": 133.20000000000005,
+        "key": "giggle",
+        "pending": null,
+        "frame": "3",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1409
+        },
+        "uniformDarkRatio": 0.06861904761904762,
+        "blackRatio": 0.001238095238095238,
+        "transparentRatio": 0,
+        "mean": 84.53290476190301
+      },
+      {
+        "at": 166.5999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "4",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1842
+        },
+        "uniformDarkRatio": 0.06957142857142858,
+        "blackRatio": 0.001380952380952381,
+        "transparentRatio": 0,
+        "mean": 84.55025396825226
+      },
+      {
+        "at": 216.5999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "5",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2315
+        },
+        "uniformDarkRatio": 0.06804761904761905,
+        "blackRatio": 0.0013333333333333333,
+        "transparentRatio": 0,
+        "mean": 84.54012698412525
+      },
+      {
+        "at": 266.5999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "6",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2766
+        },
+        "uniformDarkRatio": 0.0688095238095238,
+        "blackRatio": 0.001,
+        "transparentRatio": 0,
+        "mean": 84.68682539682243
+      },
+      {
+        "at": 316.5999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "7",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.319
+        },
+        "uniformDarkRatio": 0.06838095238095238,
+        "blackRatio": 0.0008571428571428571,
+        "transparentRatio": 0,
+        "mean": 85.50796825396608
+      },
+      {
+        "at": 350,
+        "key": "giggle",
+        "pending": null,
+        "frame": "8",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3608
+        },
+        "uniformDarkRatio": 0.06742857142857143,
+        "blackRatio": 0.0008095238095238096,
+        "transparentRatio": 0,
+        "mean": 85.91763492063255
+      },
+      {
+        "at": 399.89999999999986,
+        "key": "giggle",
+        "pending": null,
+        "frame": "9",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4035
+        },
+        "uniformDarkRatio": 0.06923809523809524,
+        "blackRatio": 0.0005714285714285715,
+        "transparentRatio": 0,
+        "mean": 87.012968253966
+      },
+      {
+        "at": 433.20000000000005,
+        "key": "giggle",
+        "pending": null,
+        "frame": "10",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4445
+        },
+        "uniformDarkRatio": 0.06838095238095238,
+        "blackRatio": 0.0007619047619047619,
+        "transparentRatio": 0,
+        "mean": 87.76431746031531
+      },
+      {
+        "at": 483.29999999999995,
+        "key": "giggle",
+        "pending": null,
+        "frame": "11",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4862
+        },
+        "uniformDarkRatio": 0.06476190476190476,
+        "blackRatio": 0.0007619047619047619,
+        "transparentRatio": 0,
+        "mean": 89.36957142856971
+      },
+      {
+        "at": 516.5999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "12",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5324
+        },
+        "uniformDarkRatio": 0.05857142857142857,
+        "blackRatio": 0.0008095238095238096,
+        "transparentRatio": 0,
+        "mean": 89.97495238095127
+      },
+      {
+        "at": 566.5999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "13",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5776
+        },
+        "uniformDarkRatio": 0.05842857142857143,
+        "blackRatio": 0.0003333333333333333,
+        "transparentRatio": 0,
+        "mean": 90.1232539682519
+      },
+      {
+        "at": 616.5999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "14",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6226
+        },
+        "uniformDarkRatio": 0.05728571428571429,
+        "blackRatio": 0.00038095238095238096,
+        "transparentRatio": 0,
+        "mean": 89.55095238095046
+      },
+      {
+        "at": 649.8999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "15",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6651
+        },
+        "uniformDarkRatio": 0.05785714285714286,
+        "blackRatio": 0.00028571428571428574,
+        "transparentRatio": 0,
+        "mean": 89.20820634920429
+      },
+      {
+        "at": 700,
+        "key": "giggle",
+        "pending": null,
+        "frame": "16",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.7053
+        },
+        "uniformDarkRatio": 0.05676190476190476,
+        "blackRatio": 0.00042857142857142855,
+        "transparentRatio": 0,
+        "mean": 88.99528571428343
+      }
+    ],
+    "peak": {
+      "at": 166.5999999999999,
+      "key": "giggle",
+      "pending": null,
+      "frame": "4",
+      "transition": null,
+      "media": {
+        "readyState": 4,
+        "seeking": false,
+        "time": 0.1842
+      },
+      "uniformDarkRatio": 0.06957142857142858,
+      "blackRatio": 0.001380952380952381,
+      "transparentRatio": 0,
+      "mean": 84.55025396825226
+    }
+  },
+  {
+    "who": "ilyra",
+    "name": "idle-to-hip",
+    "sources": [
+      {
+        "key": "idle",
+        "uniformDarkRatio": 0.03919047619047619,
+        "blackRatio": 0.0029523809523809524,
+        "transparentRatio": 0,
+        "mean": 83.20407936507758
+      },
+      {
+        "key": "giggle",
+        "uniformDarkRatio": 0.06819047619047619,
+        "blackRatio": 0.0012857142857142856,
+        "transparentRatio": 0,
+        "mean": 84.36903174602972
+      },
+      {
+        "key": "hip",
+        "uniformDarkRatio": 0.04419047619047619,
+        "blackRatio": 0.0014761904761904762,
+        "transparentRatio": 0,
+        "mean": 96.04453968253682
+      },
+      {
+        "key": "joy",
+        "uniformDarkRatio": 0.06738095238095237,
+        "blackRatio": 0.0003333333333333333,
+        "transparentRatio": 0,
+        "mean": 84.31066666666419
+      },
+      {
+        "key": "head",
+        "uniformDarkRatio": 0.06866666666666667,
+        "blackRatio": 0.00038095238095238096,
+        "transparentRatio": 0,
+        "mean": 84.53250793650433
+      },
+      {
+        "key": "touch",
+        "uniformDarkRatio": 0.07404761904761904,
+        "blackRatio": 0.000619047619047619,
+        "transparentRatio": 0,
+        "mean": 84.41842857142613
+      }
+    ],
+    "errors": [],
+    "before": "idle",
+    "arg": "hip",
+    "frames": [
+      {
+        "at": 0,
+        "key": "hip",
+        "pending": null,
+        "frame": "0",
+        "transition": {
+          "elapsed": 0.033299999999999726
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0132
+        },
+        "uniformDarkRatio": 0.031142857142857142,
+        "blackRatio": 0.0011904761904761906,
+        "transparentRatio": 0,
+        "mean": 86.30577777777745
+      },
+      {
+        "at": 50,
+        "key": "hip",
+        "pending": null,
+        "frame": "1",
+        "transition": {
+          "elapsed": 0.08329999999999974
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0539
+        },
+        "uniformDarkRatio": 0.037714285714285714,
+        "blackRatio": 0.00042857142857142855,
+        "transparentRatio": 0,
+        "mean": 91.62820634920566
+      },
+      {
+        "at": 83.30000000000018,
+        "key": "hip",
+        "pending": null,
+        "frame": "2",
+        "transition": {
+          "elapsed": 0.11659999999999993
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0949
+        },
+        "uniformDarkRatio": 0.0440952380952381,
+        "blackRatio": 0.000619047619047619,
+        "transparentRatio": 0,
+        "mean": 95.21177777777734
+      },
+      {
+        "at": 133.4000000000001,
+        "key": "hip",
+        "pending": null,
+        "frame": "3",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1353
+        },
+        "uniformDarkRatio": 0.044238095238095236,
+        "blackRatio": 0.0014761904761904762,
+        "transparentRatio": 0,
+        "mean": 96.15098412698147
+      },
+      {
+        "at": 166.70000000000027,
+        "key": "hip",
+        "pending": null,
+        "frame": "4",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1757
+        },
+        "uniformDarkRatio": 0.04452380952380952,
+        "blackRatio": 0.001380952380952381,
+        "transparentRatio": 0,
+        "mean": 96.17461904761666
+      },
+      {
+        "at": 216.70000000000027,
+        "key": "hip",
+        "pending": null,
+        "frame": "5",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2186
+        },
+        "uniformDarkRatio": 0.04404761904761905,
+        "blackRatio": 0.0014761904761904762,
+        "transparentRatio": 0,
+        "mean": 96.14309523809249
+      },
+      {
+        "at": 250,
+        "key": "hip",
+        "pending": null,
+        "frame": "6",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2621
+        },
+        "uniformDarkRatio": 0.04414285714285714,
+        "blackRatio": 0.0010476190476190477,
+        "transparentRatio": 0,
+        "mean": 96.34585714285451
+      },
+      {
+        "at": 300,
+        "key": "hip",
+        "pending": null,
+        "frame": "7",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3066
+        },
+        "uniformDarkRatio": 0.043476190476190474,
+        "blackRatio": 0.001380952380952381,
+        "transparentRatio": 0,
+        "mean": 96.25944444444205
+      },
+      {
+        "at": 333.4000000000001,
+        "key": "hip",
+        "pending": null,
+        "frame": "8",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3492
+        },
+        "uniformDarkRatio": 0.043904761904761905,
+        "blackRatio": 0.0011904761904761906,
+        "transparentRatio": 0,
+        "mean": 96.3181587301562
+      },
+      {
+        "at": 383.3000000000002,
+        "key": "hip",
+        "pending": null,
+        "frame": "9",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3911
+        },
+        "uniformDarkRatio": 0.04342857142857143,
+        "blackRatio": 0.0009047619047619047,
+        "transparentRatio": 0,
+        "mean": 97.62646031745797
+      },
+      {
+        "at": 416.5999999999999,
+        "key": "hip",
+        "pending": null,
+        "frame": "10",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4329
+        },
+        "uniformDarkRatio": 0.04580952380952381,
+        "blackRatio": 0.0007619047619047619,
+        "transparentRatio": 0,
+        "mean": 97.9201111111096
+      },
+      {
+        "at": 466.7000000000003,
+        "key": "hip",
+        "pending": null,
+        "frame": "11",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4764
+        },
+        "uniformDarkRatio": 0.043095238095238096,
+        "blackRatio": 0.0007619047619047619,
+        "transparentRatio": 0,
+        "mean": 97.90923809523532
+      },
+      {
+        "at": 516.7000000000003,
+        "key": "hip",
+        "pending": null,
+        "frame": "12",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5185
+        },
+        "uniformDarkRatio": 0.044238095238095236,
+        "blackRatio": 0.0008095238095238096,
+        "transparentRatio": 0,
+        "mean": 97.97149206348887
+      },
+      {
+        "at": 549.9000000000001,
+        "key": "hip",
+        "pending": null,
+        "frame": "13",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5634
+        },
+        "uniformDarkRatio": 0.04342857142857143,
+        "blackRatio": 0.0008571428571428571,
+        "transparentRatio": 0,
+        "mean": 97.11571428571152
+      },
+      {
+        "at": 600,
+        "key": "hip",
+        "pending": null,
+        "frame": "14",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6075
+        },
+        "uniformDarkRatio": 0.044571428571428574,
+        "blackRatio": 0.00038095238095238096,
+        "transparentRatio": 0,
+        "mean": 97.15065079364926
+      },
+      {
+        "at": 650,
+        "key": "hip",
+        "pending": null,
+        "frame": "15",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.65
+        },
+        "uniformDarkRatio": 0.04404761904761905,
+        "blackRatio": 0.00042857142857142855,
+        "transparentRatio": 0,
+        "mean": 97.22158730158499
+      },
+      {
+        "at": 683.3000000000002,
+        "key": "hip",
+        "pending": null,
+        "frame": "16",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6944
+        },
+        "uniformDarkRatio": 0.04361904761904762,
+        "blackRatio": 0.0003333333333333333,
+        "transparentRatio": 0,
+        "mean": 97.83119047618855
+      },
+      {
+        "at": 733.3000000000002,
+        "key": "hip",
+        "pending": null,
+        "frame": "17",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.7389
+        },
+        "uniformDarkRatio": 0.043333333333333335,
+        "blackRatio": 0.00038095238095238096,
+        "transparentRatio": 0,
+        "mean": 97.96482539682327
+      }
+    ],
+    "peak": {
+      "at": 416.5999999999999,
+      "key": "hip",
+      "pending": null,
+      "frame": "10",
+      "transition": null,
+      "media": {
+        "readyState": 4,
+        "seeking": false,
+        "time": 0.4329
+      },
+      "uniformDarkRatio": 0.04580952380952381,
+      "blackRatio": 0.0007619047619047619,
+      "transparentRatio": 0,
+      "mean": 97.9201111111096
+    }
+  },
+  {
+    "who": "ilyra",
+    "name": "hip-to-giggle",
+    "sources": [
+      {
+        "key": "idle",
+        "uniformDarkRatio": 0.03919047619047619,
+        "blackRatio": 0.0029523809523809524,
+        "transparentRatio": 0,
+        "mean": 83.20407936507758
+      },
+      {
+        "key": "giggle",
+        "uniformDarkRatio": 0.06819047619047619,
+        "blackRatio": 0.0012857142857142856,
+        "transparentRatio": 0,
+        "mean": 84.36903174602972
+      },
+      {
+        "key": "hip",
+        "uniformDarkRatio": 0.04419047619047619,
+        "blackRatio": 0.0014761904761904762,
+        "transparentRatio": 0,
+        "mean": 96.04453968253682
+      },
+      {
+        "key": "joy",
+        "uniformDarkRatio": 0.06738095238095237,
+        "blackRatio": 0.0003333333333333333,
+        "transparentRatio": 0,
+        "mean": 84.31066666666419
+      },
+      {
+        "key": "head",
+        "uniformDarkRatio": 0.06866666666666667,
+        "blackRatio": 0.00038095238095238096,
+        "transparentRatio": 0,
+        "mean": 84.53250793650433
+      },
+      {
+        "key": "touch",
+        "uniformDarkRatio": 0.07404761904761904,
+        "blackRatio": 0.000619047619047619,
+        "transparentRatio": 0,
+        "mean": 84.41842857142613
+      }
+    ],
+    "errors": [],
+    "before": "hip",
+    "arg": "giggle",
+    "frames": [
+      {
+        "at": 0,
+        "key": "giggle",
+        "pending": null,
+        "frame": "0",
+        "transition": {
+          "elapsed": 0.05009999999999991
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.007
+        },
+        "uniformDarkRatio": 0.04661904761904762,
+        "blackRatio": 0.00042857142857142855,
+        "transparentRatio": 0,
+        "mean": 90.81190476190449
+      },
+      {
+        "at": 33.30000000000018,
+        "key": "giggle",
+        "pending": null,
+        "frame": "1",
+        "transition": {
+          "elapsed": 0.08340000000000009
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0477
+        },
+        "uniformDarkRatio": 0.050333333333333334,
+        "blackRatio": 0.000619047619047619,
+        "transparentRatio": 0,
+        "mean": 87.54146031745931
+      },
+      {
+        "at": 83.30000000000018,
+        "key": "giggle",
+        "pending": null,
+        "frame": "2",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0892
+        },
+        "uniformDarkRatio": 0.06928571428571428,
+        "blackRatio": 0.0011904761904761906,
+        "transparentRatio": 0,
+        "mean": 84.5414444444427
+      },
+      {
+        "at": 116.59999999999991,
+        "key": "giggle",
+        "pending": null,
+        "frame": "3",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1314
+        },
+        "uniformDarkRatio": 0.06861904761904762,
+        "blackRatio": 0.001238095238095238,
+        "transparentRatio": 0,
+        "mean": 84.53290476190301
+      },
+      {
+        "at": 150,
+        "key": "giggle",
+        "pending": null,
+        "frame": "4",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1706
+        },
+        "uniformDarkRatio": 0.06957142857142858,
+        "blackRatio": 0.001380952380952381,
+        "transparentRatio": 0,
+        "mean": 84.55025396825226
+      },
+      {
+        "at": 200,
+        "key": "giggle",
+        "pending": null,
+        "frame": "5",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2144
+        },
+        "uniformDarkRatio": 0.06804761904761905,
+        "blackRatio": 0.0013333333333333333,
+        "transparentRatio": 0,
+        "mean": 84.54012698412525
+      },
+      {
+        "at": 250,
+        "key": "giggle",
+        "pending": null,
+        "frame": "6",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2609
+        },
+        "uniformDarkRatio": 0.0688095238095238,
+        "blackRatio": 0.001,
+        "transparentRatio": 0,
+        "mean": 84.68682539682243
+      },
+      {
+        "at": 283.3000000000002,
+        "key": "giggle",
+        "pending": null,
+        "frame": "7",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3048
+        },
+        "uniformDarkRatio": 0.06914285714285714,
+        "blackRatio": 0.001,
+        "transparentRatio": 0,
+        "mean": 84.53952380952147
+      },
+      {
+        "at": 333.3000000000002,
+        "key": "giggle",
+        "pending": null,
+        "frame": "8",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3445
+        },
+        "uniformDarkRatio": 0.06838095238095238,
+        "blackRatio": 0.0008571428571428571,
+        "transparentRatio": 0,
+        "mean": 85.50796825396608
+      },
+      {
+        "at": 366.7000000000003,
+        "key": "giggle",
+        "pending": null,
+        "frame": "9",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3892
+        },
+        "uniformDarkRatio": 0.06742857142857143,
+        "blackRatio": 0.0008095238095238096,
+        "transparentRatio": 0,
+        "mean": 85.91763492063255
+      },
+      {
+        "at": 416.5999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "10",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.429
+        },
+        "uniformDarkRatio": 0.06923809523809524,
+        "blackRatio": 0.0005714285714285715,
+        "transparentRatio": 0,
+        "mean": 87.012968253966
+      },
+      {
+        "at": 450,
+        "key": "giggle",
+        "pending": null,
+        "frame": "11",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4713
+        },
+        "uniformDarkRatio": 0.06838095238095238,
+        "blackRatio": 0.0007619047619047619,
+        "transparentRatio": 0,
+        "mean": 87.76431746031531
+      },
+      {
+        "at": 499.9000000000001,
+        "key": "giggle",
+        "pending": null,
+        "frame": "12",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5121
+        },
+        "uniformDarkRatio": 0.06476190476190476,
+        "blackRatio": 0.0007619047619047619,
+        "transparentRatio": 0,
+        "mean": 89.36957142856971
+      },
+      {
+        "at": 533.3000000000002,
+        "key": "giggle",
+        "pending": null,
+        "frame": "13",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5513
+        },
+        "uniformDarkRatio": 0.05857142857142857,
+        "blackRatio": 0.0008095238095238096,
+        "transparentRatio": 0,
+        "mean": 89.97495238095127
+      },
+      {
+        "at": 583.3000000000002,
+        "key": "giggle",
+        "pending": null,
+        "frame": "14",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5914
+        },
+        "uniformDarkRatio": 0.05842857142857143,
+        "blackRatio": 0.0003333333333333333,
+        "transparentRatio": 0,
+        "mean": 90.1232539682519
+      },
+      {
+        "at": 616.5999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "15",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6333
+        },
+        "uniformDarkRatio": 0.05728571428571429,
+        "blackRatio": 0.00038095238095238096,
+        "transparentRatio": 0,
+        "mean": 89.55095238095046
+      },
+      {
+        "at": 666.5999999999999,
+        "key": "giggle",
+        "pending": null,
+        "frame": "16",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6744
+        },
+        "uniformDarkRatio": 0.05785714285714286,
+        "blackRatio": 0.00028571428571428574,
+        "transparentRatio": 0,
+        "mean": 89.20820634920429
+      },
+      {
+        "at": 700,
+        "key": "giggle",
+        "pending": null,
+        "frame": "17",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.7137
+        },
+        "uniformDarkRatio": 0.05676190476190476,
+        "blackRatio": 0.00042857142857142855,
+        "transparentRatio": 0,
+        "mean": 88.99528571428343
+      }
+    ],
+    "peak": {
+      "at": 150,
+      "key": "giggle",
+      "pending": null,
+      "frame": "4",
+      "transition": null,
+      "media": {
+        "readyState": 4,
+        "seeking": false,
+        "time": 0.1706
+      },
+      "uniformDarkRatio": 0.06957142857142858,
+      "blackRatio": 0.001380952380952381,
+      "transparentRatio": 0,
+      "mean": 84.55025396825226
+    }
+  },
+  {
+    "who": "ilyra",
+    "name": "hip-to-idle",
+    "sources": [
+      {
+        "key": "idle",
+        "uniformDarkRatio": 0.03919047619047619,
+        "blackRatio": 0.0029523809523809524,
+        "transparentRatio": 0,
+        "mean": 83.20407936507758
+      },
+      {
+        "key": "giggle",
+        "uniformDarkRatio": 0.06819047619047619,
+        "blackRatio": 0.0012857142857142856,
+        "transparentRatio": 0,
+        "mean": 84.36903174602972
+      },
+      {
+        "key": "hip",
+        "uniformDarkRatio": 0.04419047619047619,
+        "blackRatio": 0.0014761904761904762,
+        "transparentRatio": 0,
+        "mean": 96.04453968253682
+      },
+      {
+        "key": "joy",
+        "uniformDarkRatio": 0.06738095238095237,
+        "blackRatio": 0.0003333333333333333,
+        "transparentRatio": 0,
+        "mean": 84.31066666666419
+      },
+      {
+        "key": "head",
+        "uniformDarkRatio": 0.06866666666666667,
+        "blackRatio": 0.00038095238095238096,
+        "transparentRatio": 0,
+        "mean": 84.53250793650433
+      },
+      {
+        "key": "touch",
+        "uniformDarkRatio": 0.07404761904761904,
+        "blackRatio": 0.000619047619047619,
+        "transparentRatio": 0,
+        "mean": 84.41842857142613
+      }
+    ],
+    "errors": [],
+    "before": "hip",
+    "arg": "idle",
+    "frames": [
+      {
+        "at": 0,
+        "key": "idle",
+        "pending": null,
+        "frame": "0",
+        "transition": {
+          "elapsed": 0.033300000000000184
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0189
+        },
+        "uniformDarkRatio": 0.039142857142857146,
+        "blackRatio": 0.00042857142857142855,
+        "transparentRatio": 0,
+        "mean": 92.09031746031744
+      },
+      {
+        "at": 50,
+        "key": "idle",
+        "pending": null,
+        "frame": "1",
+        "transition": {
+          "elapsed": 0.08330000000000018
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0588
+        },
+        "uniformDarkRatio": 0.030571428571428572,
+        "blackRatio": 0.001238095238095238,
+        "transparentRatio": 0,
+        "mean": 86.7194761904756
+      },
+      {
+        "at": 83.39999999999964,
+        "key": "idle",
+        "pending": null,
+        "frame": "2",
+        "transition": {
+          "elapsed": 0.11669999999999982
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1034
+        },
+        "uniformDarkRatio": 0.043095238095238096,
+        "blackRatio": 0.0018571428571428571,
+        "transparentRatio": 0,
+        "mean": 83.23934920634767
+      },
+      {
+        "at": 133.39999999999964,
+        "key": "idle",
+        "pending": null,
+        "frame": "3",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1459
+        },
+        "uniformDarkRatio": 0.03876190476190476,
+        "blackRatio": 0.0028095238095238095,
+        "transparentRatio": 0,
+        "mean": 83.21792063491874
+      },
+      {
+        "at": 183.39999999999964,
+        "key": "idle",
+        "pending": null,
+        "frame": "4",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1877
+        },
+        "uniformDarkRatio": 0.038857142857142854,
+        "blackRatio": 0.0027142857142857142,
+        "transparentRatio": 0,
+        "mean": 83.22687301587113
+      },
+      {
+        "at": 216.69999999999982,
+        "key": "idle",
+        "pending": null,
+        "frame": "5",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2283
+        },
+        "uniformDarkRatio": 0.03880952380952381,
+        "blackRatio": 0.0028095238095238095,
+        "transparentRatio": 0,
+        "mean": 83.21885714285526
+      },
+      {
+        "at": 250,
+        "key": "idle",
+        "pending": null,
+        "frame": "6",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2704
+        },
+        "uniformDarkRatio": 0.03833333333333333,
+        "blackRatio": 0.002476190476190476,
+        "transparentRatio": 0,
+        "mean": 83.18487301587108
+      },
+      {
+        "at": 300,
+        "key": "idle",
+        "pending": null,
+        "frame": "7",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3129
+        },
+        "uniformDarkRatio": 0.03876190476190476,
+        "blackRatio": 0.0025238095238095237,
+        "transparentRatio": 0,
+        "mean": 83.17980952380755
+      },
+      {
+        "at": 350,
+        "key": "idle",
+        "pending": null,
+        "frame": "8",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3556
+        },
+        "uniformDarkRatio": 0.0380952380952381,
+        "blackRatio": 0.002619047619047619,
+        "transparentRatio": 0,
+        "mean": 83.18726984126799
+      },
+      {
+        "at": 383.39999999999964,
+        "key": "idle",
+        "pending": null,
+        "frame": "9",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4003
+        },
+        "uniformDarkRatio": 0.038952380952380954,
+        "blackRatio": 0.0028095238095238095,
+        "transparentRatio": 0,
+        "mean": 83.17793650793467
+      },
+      {
+        "at": 433.39999999999964,
+        "key": "idle",
+        "pending": null,
+        "frame": "10",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4445
+        },
+        "uniformDarkRatio": 0.03919047619047619,
+        "blackRatio": 0.0025714285714285713,
+        "transparentRatio": 0,
+        "mean": 83.20457142856958
+      },
+      {
+        "at": 483.3000000000002,
+        "key": "idle",
+        "pending": null,
+        "frame": "11",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4893
+        },
+        "uniformDarkRatio": 0.03880952380952381,
+        "blackRatio": 0.002619047619047619,
+        "transparentRatio": 0,
+        "mean": 83.22249206349011
+      },
+      {
+        "at": 516.6999999999998,
+        "key": "idle",
+        "pending": null,
+        "frame": "12",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5354
+        },
+        "uniformDarkRatio": 0.03909523809523809,
+        "blackRatio": 0.002619047619047619,
+        "transparentRatio": 0,
+        "mean": 83.20619047618861
+      },
+      {
+        "at": 566.6999999999998,
+        "key": "idle",
+        "pending": null,
+        "frame": "13",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5785
+        },
+        "uniformDarkRatio": 0.039142857142857146,
+        "blackRatio": 0.0021904761904761906,
+        "transparentRatio": 0,
+        "mean": 83.22712698412496
+      },
+      {
+        "at": 616.6999999999998,
+        "key": "idle",
+        "pending": null,
+        "frame": "14",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6241
+        },
+        "uniformDarkRatio": 0.03909523809523809,
+        "blackRatio": 0.0023333333333333335,
+        "transparentRatio": 0,
+        "mean": 83.21860317460118
+      },
+      {
+        "at": 650,
+        "key": "idle",
+        "pending": null,
+        "frame": "16",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.67
+        },
+        "uniformDarkRatio": 0.03890476190476191,
+        "blackRatio": 0.0023333333333333335,
+        "transparentRatio": 0,
+        "mean": 83.24182539682343
+      },
+      {
+        "at": 700.1000000000004,
+        "key": "idle",
+        "pending": null,
+        "frame": "17",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.7126
+        },
+        "uniformDarkRatio": 0.039047619047619046,
+        "blackRatio": 0.0021904761904761906,
+        "transparentRatio": 0,
+        "mean": 83.27095238095046
+      }
+    ],
+    "peak": {
+      "at": 83.39999999999964,
+      "key": "idle",
+      "pending": null,
+      "frame": "2",
+      "transition": {
+        "elapsed": 0.11669999999999982
+      },
+      "media": {
+        "readyState": 4,
+        "seeking": false,
+        "time": 0.1034
+      },
+      "uniformDarkRatio": 0.043095238095238096,
+      "blackRatio": 0.0018571428571428571,
+      "transparentRatio": 0,
+      "mean": 83.23934920634767
+    }
+  },
+  {
+    "who": "ilyra",
+    "name": "idle-to-shoulder",
+    "sources": [
+      {
+        "key": "idle",
+        "uniformDarkRatio": 0.03919047619047619,
+        "blackRatio": 0.0029523809523809524,
+        "transparentRatio": 0,
+        "mean": 83.20407936507758
+      },
+      {
+        "key": "giggle",
+        "uniformDarkRatio": 0.06819047619047619,
+        "blackRatio": 0.0012857142857142856,
+        "transparentRatio": 0,
+        "mean": 84.36903174602972
+      },
+      {
+        "key": "hip",
+        "uniformDarkRatio": 0.04419047619047619,
+        "blackRatio": 0.0014761904761904762,
+        "transparentRatio": 0,
+        "mean": 96.04453968253682
+      },
+      {
+        "key": "joy",
+        "uniformDarkRatio": 0.06738095238095237,
+        "blackRatio": 0.0003333333333333333,
+        "transparentRatio": 0,
+        "mean": 84.31066666666419
+      },
+      {
+        "key": "head",
+        "uniformDarkRatio": 0.06866666666666667,
+        "blackRatio": 0.00038095238095238096,
+        "transparentRatio": 0,
+        "mean": 84.53250793650433
+      },
+      {
+        "key": "touch",
+        "uniformDarkRatio": 0.07404761904761904,
+        "blackRatio": 0.000619047619047619,
+        "transparentRatio": 0,
+        "mean": 84.41842857142613
+      }
+    ],
+    "errors": [],
+    "before": "idle",
+    "arg": "shoulder",
+    "frames": [
+      {
+        "at": 0,
+        "key": "touch",
+        "pending": null,
+        "frame": "0",
+        "transition": {
+          "elapsed": 0.05
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0217
+        },
+        "uniformDarkRatio": 0.04742857142857143,
+        "blackRatio": 0.001238095238095238,
+        "transparentRatio": 0,
+        "mean": 83.27061904761844
+      },
+      {
+        "at": 50,
+        "key": "touch",
+        "pending": null,
+        "frame": "1",
+        "transition": {
+          "elapsed": 0.1
+        },
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.0617
+        },
+        "uniformDarkRatio": 0.06314285714285714,
+        "blackRatio": 0.0007142857142857143,
+        "transparentRatio": 0,
+        "mean": 83.7475555555542
+      },
+      {
+        "at": 83.39999999999964,
+        "key": "touch",
+        "pending": null,
+        "frame": "2",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1087
+        },
+        "uniformDarkRatio": 0.07223809523809524,
+        "blackRatio": 0.0004761904761904762,
+        "transparentRatio": 0,
+        "mean": 84.57455555555272
+      },
+      {
+        "at": 133.39999999999964,
+        "key": "touch",
+        "pending": null,
+        "frame": "3",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1524
+        },
+        "uniformDarkRatio": 0.07247619047619047,
+        "blackRatio": 0.00042857142857142855,
+        "transparentRatio": 0,
+        "mean": 84.58612698412426
+      },
+      {
+        "at": 183.30000000000018,
+        "key": "touch",
+        "pending": null,
+        "frame": "4",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.1951
+        },
+        "uniformDarkRatio": 0.07242857142857143,
+        "blackRatio": 0.0004761904761904762,
+        "transparentRatio": 0,
+        "mean": 84.57844444444159
+      },
+      {
+        "at": 216.69999999999982,
+        "key": "touch",
+        "pending": null,
+        "frame": "5",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2387
+        },
+        "uniformDarkRatio": 0.07133333333333333,
+        "blackRatio": 0.0006666666666666666,
+        "transparentRatio": 0,
+        "mean": 84.7214761904744
+      },
+      {
+        "at": 266.6999999999998,
+        "key": "touch",
+        "pending": null,
+        "frame": "6",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.2822
+        },
+        "uniformDarkRatio": 0.07147619047619047,
+        "blackRatio": 0.0006666666666666666,
+        "transparentRatio": 0,
+        "mean": 84.66663492063279
+      },
+      {
+        "at": 300.09999999999945,
+        "key": "touch",
+        "pending": null,
+        "frame": "7",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3244
+        },
+        "uniformDarkRatio": 0.07114285714285715,
+        "blackRatio": 0.000619047619047619,
+        "transparentRatio": 0,
+        "mean": 84.71685714285474
+      },
+      {
+        "at": 350,
+        "key": "touch",
+        "pending": null,
+        "frame": "8",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.3654
+        },
+        "uniformDarkRatio": 0.07014285714285715,
+        "blackRatio": 0.0005238095238095238,
+        "transparentRatio": 0,
+        "mean": 84.63090476190219
+      },
+      {
+        "at": 383.3000000000002,
+        "key": "touch",
+        "pending": null,
+        "frame": "9",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4089
+        },
+        "uniformDarkRatio": 0.07276190476190476,
+        "blackRatio": 0.00038095238095238096,
+        "transparentRatio": 0,
+        "mean": 85.12274603174392
+      },
+      {
+        "at": 433.39999999999964,
+        "key": "touch",
+        "pending": null,
+        "frame": "10",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4519
+        },
+        "uniformDarkRatio": 0.0700952380952381,
+        "blackRatio": 0.00028571428571428574,
+        "transparentRatio": 0,
+        "mean": 84.92507936507768
+      },
+      {
+        "at": 483.3000000000002,
+        "key": "touch",
+        "pending": null,
+        "frame": "11",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.4952
+        },
+        "uniformDarkRatio": 0.0699047619047619,
+        "blackRatio": 0.00014285714285714287,
+        "transparentRatio": 0,
+        "mean": 85.64471428571169
+      },
+      {
+        "at": 516.6999999999998,
+        "key": "touch",
+        "pending": null,
+        "frame": "12",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5401
+        },
+        "uniformDarkRatio": 0.0699047619047619,
+        "blackRatio": 0.0003333333333333333,
+        "transparentRatio": 0,
+        "mean": 85.37141269841094
+      },
+      {
+        "at": 566.6999999999998,
+        "key": "touch",
+        "pending": null,
+        "frame": "13",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.5799
+        },
+        "uniformDarkRatio": 0.07214285714285715,
+        "blackRatio": 0.00028571428571428574,
+        "transparentRatio": 0,
+        "mean": 85.74730158729996
+      },
+      {
+        "at": 600,
+        "key": "touch",
+        "pending": null,
+        "frame": "14",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6211
+        },
+        "uniformDarkRatio": 0.07228571428571429,
+        "blackRatio": 0.0002380952380952381,
+        "transparentRatio": 0,
+        "mean": 85.50315873015703
+      },
+      {
+        "at": 650,
+        "key": "touch",
+        "pending": null,
+        "frame": "15",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.6638
+        },
+        "uniformDarkRatio": 0.07361904761904763,
+        "blackRatio": 0.00014285714285714287,
+        "transparentRatio": 0,
+        "mean": 85.25971428571202
+      },
+      {
+        "at": 683.3000000000002,
+        "key": "touch",
+        "pending": null,
+        "frame": "16",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.7055
+        },
+        "uniformDarkRatio": 0.07271428571428572,
+        "blackRatio": 0.0005238095238095238,
+        "transparentRatio": 0,
+        "mean": 84.13234920634716
+      },
+      {
+        "at": 733.3000000000002,
+        "key": "touch",
+        "pending": null,
+        "frame": "17",
+        "transition": null,
+        "media": {
+          "readyState": 4,
+          "seeking": false,
+          "time": 0.7504
+        },
+        "uniformDarkRatio": 0.06938095238095238,
+        "blackRatio": 0.00019047619047619048,
+        "transparentRatio": 0,
+        "mean": 84.53338095237861
+      }
+    ],
+    "peak": {
+      "at": 650,
+      "key": "touch",
+      "pending": null,
+      "frame": "15",
+      "transition": null,
+      "media": {
+        "readyState": 4,
+        "seeking": false,
+        "time": 0.6638
+      },
+      "uniformDarkRatio": 0.07361904761904763,
+      "blackRatio": 0.00014285714285714287,
+      "transparentRatio": 0,
+      "mean": 85.25971428571202
+    }
+  }
+]
