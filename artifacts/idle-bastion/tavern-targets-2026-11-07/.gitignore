@@ -1,0 +1,14 @@
+*.png
+!series-background.png
+I07-size-corrected.mp4
+local/*.png
+!local/desktop-ilyra-hearts.png
+!local/phone-ilyra-hearts.png
+!local/mara-resume.png
+!local/ilyra-resume.png
+public/*.png
+!public/desktop-ilyra-hearts.png
+!public/desktop-ilyra-compliment.png
+!public/ilyra-idle.png
+!public/ilyra-return.png
+!public/ilyra-resume.png

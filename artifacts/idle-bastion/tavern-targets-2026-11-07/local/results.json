@@ -1,0 +1,294 @@
+{
+  "base": "http://127.0.0.1:5278/",
+  "passed": true,
+  "cases": [
+    {
+      "name": "desktop",
+      "who": "mara",
+      "targets": [
+        {
+          "region": "hand",
+          "width": 64,
+          "height": 64,
+          "heart": "48px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "hair",
+          "width": 64,
+          "height": 64,
+          "heart": "48px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "shoulder",
+          "width": 64,
+          "height": 64,
+          "heart": "48px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        }
+      ],
+      "reactionMapping": "passed",
+      "complimentReturn": "not changed",
+      "errors": []
+    },
+    {
+      "name": "desktop",
+      "who": "ilyra",
+      "targets": [
+        {
+          "region": "hand",
+          "width": 64,
+          "height": 64,
+          "heart": "48px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "hair",
+          "width": 64,
+          "height": 64,
+          "heart": "48px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "shoulder",
+          "width": 64,
+          "height": 64,
+          "heart": "48px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        }
+      ],
+      "reactionMapping": "passed",
+      "complimentReturn": "passed",
+      "errors": []
+    },
+    {
+      "name": "phone",
+      "who": "mara",
+      "targets": [
+        {
+          "region": "hand",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "hair",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "shoulder",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        }
+      ],
+      "reactionMapping": "passed",
+      "complimentReturn": "not changed",
+      "errors": []
+    },
+    {
+      "name": "phone",
+      "who": "ilyra",
+      "targets": [
+        {
+          "region": "hand",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "hair",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "shoulder",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        }
+      ],
+      "reactionMapping": "passed",
+      "complimentReturn": "passed",
+      "errors": []
+    },
+    {
+      "name": "touch-desktop-size",
+      "who": "mara",
+      "targets": [
+        {
+          "region": "hand",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "hair",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "shoulder",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        }
+      ],
+      "reactionMapping": "passed",
+      "complimentReturn": "not changed",
+      "errors": []
+    },
+    {
+      "name": "touch-desktop-size",
+      "who": "ilyra",
+      "targets": [
+        {
+          "region": "hand",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "hair",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "shoulder",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        }
+      ],
+      "reactionMapping": "passed",
+      "complimentReturn": "passed",
+      "errors": []
+    },
+    {
+      "name": "phone-landscape",
+      "who": "mara",
+      "targets": [
+        {
+          "region": "hand",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "hair",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "shoulder",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        }
+      ],
+      "reactionMapping": "passed",
+      "complimentReturn": "not changed",
+      "errors": []
+    },
+    {
+      "name": "phone-landscape",
+      "who": "ilyra",
+      "targets": [
+        {
+          "region": "hand",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "hair",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        },
+        {
+          "region": "shoulder",
+          "width": 44,
+          "height": 44,
+          "heart": "24px",
+          "centered": true,
+          "hit": true,
+          "inside": true
+        }
+      ],
+      "reactionMapping": "passed",
+      "complimentReturn": "passed",
+      "errors": []
+    }
+  ]
+}

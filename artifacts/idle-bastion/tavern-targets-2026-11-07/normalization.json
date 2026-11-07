@@ -1,0 +1,15 @@
+{
+  "source": "I07-approved-original.mp4",
+  "source_sha256": "a4faf225b0291b8d7439c2c13b8e634616e2de57d9ac57ab5bfaa612be6053fc",
+  "output": "I07-size-corrected.mp4",
+  "sha256": "f0388f44740f7ac9f7b9bc73fabdd100f02f07af060397e2ba4c76efd444b32a",
+  "frames": 107,
+  "fps": 24,
+  "scale": 0.9,
+  "anchor": [
+    240,
+    400
+  ],
+  "method": "Foreground normalization over original fixed series background. Existing motion/timing; no AI rendering.",
+  "user_approval_of_derived_version": false
+}

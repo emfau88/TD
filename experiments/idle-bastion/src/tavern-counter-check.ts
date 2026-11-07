@@ -9,7 +9,7 @@ import './tavern-counter-check.css';
 if (!import.meta.env.DEV && import.meta.env.VITE_TAVERN_PREVIEW !== '1') throw new Error('Nur in der getrennten Tavernen-Vorschau verfügbar.');
 const clips = { idle, talk, hair, hand };
 type Clip = keyof typeof clips;
-const labels: Record<Clip, string> = { idle: 'MC01 · Ruhe', talk: 'MC02 · Gespräch', hair: 'MC03 · Haarreaktion (Nutzerurteil offen)', hand: 'MC05 · Handreaktion' };
+const labels: Record<Clip, string> = { idle: 'MC01 · Ruhe', talk: 'MC02 · Gespräch', hair: 'MC03 · Haarreaktion', hand: 'MC05 · Handreaktion' };
 const video = document.querySelector<HTMLVideoElement>('#clip')!;
 const poster = document.querySelector<HTMLImageElement>('#poster')!; poster.src = posterUrl;
 const status = document.querySelector<HTMLElement>('#status')!;

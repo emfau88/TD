@@ -64,11 +64,11 @@ vorerst bei einem normalen Geschenk je zehn Siege und höchstens 20 im Vorrat.
 
 | Bereich | Stand in diesem Branch |
 | --- | --- |
-| Bestehende Taverne | 17 freigegebene Standardclips inklusive eigener Handreaktionen M09/I08, richtige Kontaktpunkte und ursprüngliche Gestaltung. Alte Animationen im Repo archiviert. |
+| Bestehende Taverne | 17 freigegebene Standardanimationen inklusive eigener Handreaktionen M09/I08. Berührungsherzen am PC größer; I07-Größenkorrektur zur Sichtprüfung. Direkte Fortsetzung nach Fensterwechsel. Originale im Repo archiviert. |
 | Verständlichkeit | Kurzer passender Fortschrittshinweis, erklärbare gesperrte Herzen, sichtbare persönliche Geschenkübergabe und dezenter Herzglanz. Details bleiben im vorhandenen aufklappbaren Bereich. |
 | Mobile Darstellung | Die Figur bleibt beim Öffnen von Herzmomenten und Gesprächen gleich groß. Längere Texte und Antworten lassen sich im Textbereich scrollen. Der dunkle Übergang bei Komplimenten wurde durch die normale kurze Bildüberblendung ersetzt. |
 | Weg Herz 2→3 | Je Figur zwei neue optionale Gespräche mit gleichwertigen Antworten, gespeicherter Erinnerung und neutralem Zweig. Beide Antworten stehen direkt in der unteren Aktionsleiste. Siedlung/Taverne und Figuren zeigen neue oder fortsetzbare Gespräche an. Keine zusätzlichen Aufstiegspflichten. |
-| Mara am Tresen | MC01/Ruhe, MC02/Gespräch und MC05/Hand freigegeben. MC03/Haare fertig, Nutzerbeurteilung offen. Alle vier in der separaten Clipprobe; noch kein vollständiger neuer Treffpunkt im Spiel. |
+| Mara am Tresen | MC01/Ruhe, MC02/Gespräch, MC03/Haare und MC05/Hand freigegeben. Alle vier in der separaten Clipprobe; noch kein vollständiger neuer Treffpunkt im Spiel. |
 | Weitere Tresenrollen | MC04/Schulter, MC06/Lachen und MC07/Annäherung nur vorbereitet; weitere Produktion auf Nutzerwunsch zurückgestellt. Alte Vorbeuge-V2 bleibt erhalten. |
 | Ilyra am Fenster, Herz 4/5 | Noch nicht spielbar neu freigeschaltet. Bedingungen, Begegnungen und Geschenkbilanz dieser Etappen sind Zukunftsplanung. Einzelne Bildmomente sind als sparsame Alternative vorgeschlagen, noch nicht produziert. |
 | Outfits und weitere Posen | Zukunftsideen. Keine laufende Generierung. |

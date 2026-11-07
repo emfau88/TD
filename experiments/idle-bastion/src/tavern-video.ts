@@ -196,7 +196,10 @@ export class TavernVideoPlayer implements TavernPlayer {
   private resume(entry: Entry): void {
     if (document.hidden) return;
     const generation = this.generation;
-    void entry.video.play().catch(() => {
+    void entry.video.play().catch(error => {
+      // Hiding the tab or replacing a reaction pauses an in-flight play().
+      // That normal cancellation is not a failed media load.
+      if (error instanceof DOMException && error.name === 'AbortError') return;
       if (this.active && generation === this.generation && this.current === entry) {
         this.canvas.dataset.reactionError = 'true'; this.changed();
       }

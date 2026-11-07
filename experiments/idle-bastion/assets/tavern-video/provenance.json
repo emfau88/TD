@@ -154,5 +154,19 @@
       "new_bytes": 629355,
       "new_seconds": 3.0416666666666665
     }
+  ],
+  "runtime_derivatives": [
+    {
+      "character": "ilyra",
+      "code": "I07",
+      "role": "hip",
+      "file": "ilyra/hip.mp4",
+      "source_sha256": "a4faf225b0291b8d7439c2c13b8e634616e2de57d9ac57ab5bfaa612be6053fc",
+      "source_archive": "artifacts/idle-bastion/tavern-targets-2026-11-07/I07-approved-original.mp4",
+      "sha256": "f0388f44740f7ac9f7b9bc73fabdd100f02f07af060397e2ba4c76efd444b32a",
+      "bytes": 577696,
+      "reason": "User-reported size jump: foreground uniformly scaled to 90% around (240,400); original room, motion, frame count and timing preserved.",
+      "user_approved": false
+    }
   ]
 }

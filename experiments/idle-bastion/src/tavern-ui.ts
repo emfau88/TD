@@ -16,7 +16,7 @@ import './tavern-ui.css';
 import type { TavernPlayer, TavernPresentation } from './tavern-presentation';
 
 type Destination = 'tavern' | 'mara' | 'wisp' | 'ilyra';
-interface Ports { storyHistory?: () => TavernStoryHistory | undefined; presentation?: TavernPresentation; session: () => BattleSession | undefined; navigate: (where: Destination) => void; onOpenChange?: (open:boolean) => void; onGift?: () => void; onHeart?: () => void; onCompanion?: (who:Companion|null) => void; onTouch?: (who:Companion) => void }
+interface Ports { storyHistory?: () => TavernStoryHistory | undefined; presentation?: TavernPresentation; session: () => BattleSession | undefined; navigate: (where: Destination) => void; resume?: () => Promise<void>; onOpenChange?: (open:boolean) => void; onGift?: () => void; onHeart?: () => void; onCompanion?: (who:Companion|null) => void; onTouch?: (who:Companion) => void }
 export class TavernUI {
   readonly dialog: HTMLDialogElement;
   private lineSource = '';
@@ -66,7 +66,7 @@ export class TavernUI {
       <header class="tv-header"><button type="button" data-do="back" class="tv-back" aria-label="Zurück zur Tavernenübersicht">‹</button><div><small>DER ALTE HAIN</small><h2 id="tv-title">The Last Cozy Corner</h2></div><button type="button" data-do="close" class="tv-close" aria-label="Taverne schließen">×</button></header>
       <div class="tv-combat"><span data-text="combat"></span><button type="button" data-do="close">Zum Kampf</button></div>
       <div class="tv-warning" role="status" hidden><span data-text="warning"></span><button type="button" data-do="close">Zum Kampf</button><button type="button" data-do="dismiss" aria-label="Kampfhinweis ausblenden">×</button></div>
-      <div class="tv-error" role="alert" hidden></div>
+      <div class="tv-error" role="alert" hidden><span data-text="session-status"></span><button type="button" data-do="resume-visit" hidden>Besuch fortsetzen</button></div>
       <section class="tv-overview">
         <div class="tv-room"><span>EIN MOMENT AM FEUER</span><h3>Unter Gefährten.</h3><p>Ein Gespräch. Ein kleines Geschenk.<br>Und Zeit, einander kennenzulernen.</p></div>
         <div class="tv-guests">
@@ -135,6 +135,7 @@ export class TavernUI {
         case 'encounter-listen': void this.nextEncounterBeat(); break;
         case 'story-exit': this.endMoment(); break;
         case 'close': this.close(); break;
+        case 'resume-visit': void this.ports.resume?.(); break;
         case 'back': this.back(); break;
         case 'dismiss': this.get('.tv-warning').hidden = true; break;
         case 'mara': this.select('mara'); break;
@@ -254,7 +255,16 @@ export class TavernUI {
     this.lastLives = b.lives; this.lastPhase = b.phase; this.lastDefeat = b.progress.lastDefeat?.attemptId ?? 0;
     this.text('combat', t("Welle {0} · ♥ {1}/20 · {2}", b.wave, b.lives, session.paused ? t('Pausiert') : session.suspended || session.awaitingResume ? t('Kampf angehalten') : session.tavernOpen ? t('Kampf pausiert während des Besuchs') : b.learningPaused ? t('Lernpause') : t('Kampf läuft')));
     const error = this.get('.tv-error'); error.hidden = !session.error && !session.suspended && !session.awaitingResume;
-    error.textContent = t(session.error ? t('Speichern fehlgeschlagen. Bitte kehre zum Kampf zurück, um den Spielstand zu prüfen.') : t('Sitzung angehalten. Bitte kehre zum Kampf zurück.'));
+    error.dataset.session = String(!session.error);
+    this.text('session-status', session.error ? t('Speichern fehlgeschlagen. Bitte kehre zum Kampf zurück, um den Spielstand zu prüfen.')
+      : session.suspended ? t('Dein Besuch wird wieder geladen …')
+      : this.ports.resume ? session.pendingReward && session.pendingReward.amountUnits > 0
+        ? t('Willkommen zurück. Beim Fortsetzen wird dein gesammeltes Gold gutgeschrieben.')
+        : t('Willkommen zurück. Du kannst deinen Besuch hier fortsetzen.')
+      : t('Sitzung angehalten. Bitte kehre zum Kampf zurück.'));
+    const resume = this.get<HTMLButtonElement>('[data-do="resume-visit"]');
+    resume.hidden = !!session.error || !this.ports.resume || session.suspended || !session.awaitingResume;
+    resume.disabled = this.pending || session.inputBusy || document.hidden;
     const points = this.points, count = hearts(points), capped = points >= SOCIAL.chapterMaximum;
     const giftStatus = tavernGiftStatus(social, { tavernBuilt: b.settlement.tavernBuilt, ilyraRecruited: !!b.ilyra, boss15: !!b.bossVictories, boss25: !!b.secondBossVictories });
     const conversations = pendingTavernConversations(social, b.socialAccess);

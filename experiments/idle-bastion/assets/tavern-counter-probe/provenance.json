@@ -24,7 +24,7 @@
     {
       "code": "MC03",
       "file": "MC03.mp4",
-      "userApproved": false,
+      "userApproved": true,
       "source": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC03\\Mara_MC03_Haare_ComfyUI.mp4",
       "bytes": 651581,
       "sha256": "6c137e9d90264c90c05b671558ee7bb0754d62a775e5f61d3ebde721e656a4b2",

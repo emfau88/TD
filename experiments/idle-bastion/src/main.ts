@@ -138,7 +138,7 @@ let mobileHintOpen = false;
 let mobileHintStep = -1;
 let ready = false;
 let tavernStories: TavernStoryHistory | undefined;
-const tavernUI = new TavernUI({ storyHistory: () => tavernStories, session: () => session, presentation: videoPresentation, navigate: kind => openContext(kind, true), onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift'), onHeart: () => audio.play('gift'), onCompanion: who => audio.setCompanion(who), onTouch: who => audio.touchCompanion(who) });
+const tavernUI = new TavernUI({ storyHistory: () => tavernStories, session: () => session, presentation: videoPresentation, navigate: kind => openContext(kind, true), resume: resumeSession, onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift'), onHeart: () => audio.play('gift'), onCompanion: who => audio.setCompanion(who), onTouch: who => audio.touchCompanion(who) });
 function openTavernProbe(): void {
   const live = session;
   if (!tavernProbePending || !tavernProbeCompanion || !ready || !scene || !live || live.temporary
@@ -1294,16 +1294,17 @@ element('camera-reset').addEventListener('click', () => {
 }, { signal: lifetime.signal });
 element('camera-zoom').addEventListener('click', () => { if (scene) scene.setMapZoom(scene.mapZoom > 1 ? 1 : 1.15); syncUI(); }, { signal: lifetime.signal });
 pause.addEventListener('click', () => { if (session) { const completion = session.setPaused(!session.paused); syncUI(); void completion.then(syncUI); } }, { signal: lifetime.signal });
-claim.addEventListener('click', () => {
+async function resumeSession(): Promise<void> {
   const live = session;
-  if (!live || live.inputBusy || live.error || document.hidden) return;
+  if (!ready || !live || live.inputBusy || live.error || live.suspended || document.hidden) return;
   const complete = async () => {
     if (live.pendingReward) await live.claimOffline();
     if (!live.error && !document.hidden) await live.resumeActive();
     syncUI();
   };
-  void complete(); syncUI();
-}, { signal: lifetime.signal });
+  const completion = complete(); syncUI(); await completion;
+}
+claim.addEventListener('click', () => { void resumeSession(); }, { signal: lifetime.signal });
 element('reset').addEventListener('click', () => {
   void (session?.suspend() ?? Promise.resolve()).catch(() => undefined).then(() => window.location.reload());
 }, { signal: lifetime.signal });
