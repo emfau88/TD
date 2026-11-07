@@ -1,0 +1,4743 @@
+{
+  "origin": "https://emfau88.github.io/TD/previews/tavern",
+  "sourceHashes": null,
+  "viewports": [
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "verify": true,
+  "results": [
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "normal58",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 175
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 58,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": null
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "earnedHeart3",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 242
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": true,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "moment1:open",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 168
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "moment1:next1",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 182
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "moment1:next2",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 168
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "moment1:next3",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 220
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": true,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "moment1:end",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 220
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": true,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "moment3:open",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 168
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "moment3:next",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 168
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "normal70help",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 220
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "moment3:end",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 220
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "talk:options",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 220
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "encounter:choice",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 242
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "true",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "reachability": [
+        {
+          "answer": "first",
+          "height": 44,
+          "insideTextArea": true,
+          "insideViewport": true,
+          "hitTarget": true,
+          "rect": {
+            "top": 705.453125,
+            "bottom": 749.453125
+          },
+          "textArea": {
+            "top": 580.203125,
+            "bottom": 749
+          }
+        },
+        {
+          "answer": "second",
+          "height": 44,
+          "insideTextArea": true,
+          "insideViewport": true,
+          "hitTarget": true,
+          "rect": {
+            "top": 691.453125,
+            "bottom": 735.453125
+          },
+          "textArea": {
+            "top": 580.203125,
+            "bottom": 749
+          }
+        }
+      ]
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "encounter:scroll-first",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 242
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "true",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "encounter:scroll-second",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 242
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "true",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "encounter:reply",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 168
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "true",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "encounter:end",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 193
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "mara",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "de",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-411b339b-68ba-4f3a-856d-871a5da69502&tavernTest=mara",
+      "label": "encounter:back",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 193
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "Neu: Hand berührenAusprobieren",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "normal58",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 175
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 58,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": null
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "earnedHeart3",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 224
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": true,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "moment1:open",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 168
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "moment1:next1",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 168
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "moment1:next2",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 168
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "moment1:next3",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 202
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": true,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "moment1:end",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 202
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": true,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "moment3:open",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 168
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "moment3:next",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 168
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "normal70help",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 202
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "moment3:end",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 202
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "talk:options",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 202
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "encounter:choice",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 242
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "true",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "reachability": [
+        {
+          "answer": "first",
+          "height": 44,
+          "insideTextArea": true,
+          "insideViewport": true,
+          "hitTarget": true,
+          "rect": {
+            "top": 705.453125,
+            "bottom": 749.453125
+          },
+          "textArea": {
+            "top": 580.203125,
+            "bottom": 749
+          }
+        },
+        {
+          "answer": "second",
+          "height": 44,
+          "insideTextArea": true,
+          "insideViewport": true,
+          "hitTarget": true,
+          "rect": {
+            "top": 691.453125,
+            "bottom": 735.453125
+          },
+          "textArea": {
+            "top": 580.203125,
+            "bottom": 749
+          }
+        }
+      ]
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "encounter:scroll-first",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 242
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "true",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "encounter:scroll-second",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 242
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "true",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "encounter:reply",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 168
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "true",
+      "encounter": "true",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "encounter:end",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 175
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "who": "ilyra",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "url": "https://emfau88.github.io/TD/previews/tavern/index.html?probe=tavern-review-46f7e243-2382-4e69-9bb3-be81422ce08e&tavernTest=ilyra",
+      "label": "encounter:back",
+      "rects": {
+        "dialog": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "overflowY": "hidden",
+          "clientHeight": 834,
+          "scrollHeight": 834
+        },
+        "body": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 538,
+          "overflowY": "hidden",
+          "clientHeight": 538,
+          "scrollHeight": 538
+        },
+        "stage": {
+          "x": 5,
+          "y": 211,
+          "width": 380,
+          "height": 369.203125,
+          "overflowY": "hidden",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "canvas": {
+          "x": 68.421875,
+          "y": 211,
+          "width": 253.15625,
+          "height": 369.203125,
+          "overflowY": "clip",
+          "clientHeight": 369,
+          "scrollHeight": 369
+        },
+        "conversation": {
+          "x": 5,
+          "y": 580.203125,
+          "width": 380,
+          "height": 168.796875,
+          "overflowY": "auto",
+          "clientHeight": 168,
+          "scrollHeight": 175
+        },
+        "dock": {
+          "x": 5,
+          "y": 749,
+          "width": 380,
+          "height": 90,
+          "overflowY": "visible",
+          "clientHeight": 90,
+          "scrollHeight": 90
+        },
+        "bond": {
+          "x": 5,
+          "y": 98,
+          "width": 380,
+          "height": 113,
+          "overflowY": "visible",
+          "clientHeight": 112,
+          "scrollHeight": 112
+        }
+      },
+      "points": 70,
+      "story": "false",
+      "encounter": "false",
+      "unlockVisible": false,
+      "unlockText": "New: touch HandTry it",
+      "error": "",
+      "overflow": false,
+      "coarse": true,
+      "compactLandscape": false,
+      "loadedStyles": [
+        "https://emfau88.github.io/TD/previews/tavern/assets/tavern-ui-DAgksU3E.css",
+        "https://emfau88.github.io/TD/previews/tavern/assets/main-BHDLVRor.css"
+      ],
+      "delta": {
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "body": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "conversation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "bond": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    }
+  ]
+}

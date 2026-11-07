@@ -25,11 +25,12 @@ try {
         await page.waitForFunction(() => document.querySelector('.tv-figure canvas')?.dataset.clip === 'hip');
       } else await page.waitForFunction(() => document.querySelector('.tv-figure canvas')?.dataset.clip === 'idle');
       await page.click('[data-do=speak]');
-      await page.evaluate(duration => {
+      await page.evaluate(({ duration, target }) => {
         window.transitionSamples = new Promise(resolve => {
-          const frames = [], canvas = document.querySelector('.tv-figure canvas'); let started;
+          const frames = [], canvas = document.querySelector('.tv-figure canvas'); let started, reactionStarted;
           const sample = now => {
             started ??= now;
+            if (canvas.dataset.clip === target) reactionStarted ??= now;
             const pixels = canvas.getContext('2d').getImageData(0, 0, 480, 700).data;
             let dark = 0, black = 0, transparent = 0, total = 0;
             for (let i = 0; i < pixels.length; i += 64) {
@@ -39,10 +40,10 @@ try {
               if (pixels[i + 3] < 240) transparent++;
             }
             frames.push({ at: now - started, clip: canvas.dataset.clip, dark: dark / total, black: black / total, transparent: transparent / total });
-            if (now - started < duration) requestAnimationFrame(sample); else resolve(frames);
+            if (reactionStarted === undefined ? now - started < 15000 : now - reactionStarted < duration) requestAnimationFrame(sample); else resolve(frames);
           }; requestAnimationFrame(sample);
         });
-      }, duration);
+      }, { duration, target: key });
       await page.click(`[data-gesture=${key}]`);
       const frames = await page.evaluate(() => window.transitionSamples);
       assert.ok(frames.some(frame => frame.clip === key), `${who}/${name}: reaction must actually play`);

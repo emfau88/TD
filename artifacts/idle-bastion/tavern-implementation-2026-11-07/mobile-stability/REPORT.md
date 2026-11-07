@@ -52,4 +52,8 @@ $env:STABILITY_PHASE='main-public-smoke'
 node artifacts/idle-bastion/tavern-implementation-2026-11-07/mobile-stability/check-main-mobile-stability.mjs --verify
 ```
 
-`STABILITY_LANGUAGE` kann Deutsch (`de`) oder Englisch (`en`) vorgeben. Ohne Filter prüft der Main-Test wieder alle zehn Fälle. Öffentliche Prüfung, Build und Veröffentlichung übernimmt Root; sie sind nicht Bestandteil der hier dokumentierten lokalen Ergebnisse. Reale Handyhardware, Betriebssystemleisten, Zoom-/Schriftvergrößerung, Safe-Area-Sonderfälle und eine menschliche Nutzerabnahme wurden damit nicht geprüft.
+`STABILITY_LANGUAGE` kann Deutsch (`de`) oder Englisch (`en`) vorgeben. Ohne Filter prüft der Main-Test wieder alle zehn Fälle.
+
+Root hat anschließend den Produktionsbuild und die Veröffentlichung als `46ee4286` mit Pages-Lauf 42326182901 erfolgreich abgeschlossen. Öffentliche Stichprobe auf der bestätigten neuen Version: Mara DE und Ilyra EN auf 390×844, zwei echte Touch-Hauptspielfälle / 36 Zustände, null Größen- oder Positionsänderungen. Antworten nach lokalem Scrollen vollständig erreichbar, keine JavaScript-/sichtbaren Sitzungsfehler oder horizontalen Überläufe. Nachweise in `main-public/{measurements,summary}.json`.
+
+Reale Handyhardware, Betriebssystemleisten, Zoom-/Schriftvergrößerung, Safe-Area-Sonderfälle und eine menschliche Nutzerabnahme wurden damit nicht geprüft.
