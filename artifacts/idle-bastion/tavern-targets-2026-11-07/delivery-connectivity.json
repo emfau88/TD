@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://emfau88.github.io/TD/",
+    "status": 200
+  },
+  {
+    "url": "http://127.0.0.1:5278/tavern-test.html",
+    "status": 200
+  },
+  {
+    "url": "https://emfau88.github.io/TD/previews/tavern/tavern-test.html",
+    "status": 404
+  },
+  {
+    "url": "https://emfau88.github.io/TD/previews/tavern/tavern-counter-check.html",
+    "status": 404
+  }
+]

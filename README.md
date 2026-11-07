@@ -25,6 +25,8 @@ Spielstände liegen lokal im Browser. Englisch ist voreingestellt; Deutsch läss
 <!-- tavern-preview-start -->
 ## Taverne und direkte Testzugänge · 07.11.2026
 
+**Aktueller Hostinghinweis:** Das [Hauptspiel](https://emfau88.github.io/TD/) enthält den übernommenen Tavernenstand. Die beiden öffentlichen Direktlinks unten sind nach der Main-Veröffentlichung vorübergehend nicht erreichbar: GitHub Pages brach die Wiederherstellung nach zehn Minuten ab. Am Entwicklungs-PC funktioniert der [lokale Teststarter](http://127.0.0.1:5278/tavern-test.html). Der Wiederherstellungspunkt bleibt in der Roadmap offen.
+
 **[▶ Taverne direkt im Spiel testen](https://emfau88.github.io/TD/previews/tavern/tavern-test.html)** ·
 **[▷ Maras neue Tresenclips ansehen](https://emfau88.github.io/TD/previews/tavern/tavern-counter-check.html)**
 
@@ -74,7 +76,7 @@ vorerst bei einem normalen Geschenk je zehn Siege und höchstens 20 im Vorrat.
 | Weitere Tresenrollen | MC04/Schulter, MC06/Lachen und MC07/Annäherung nur vorbereitet; weitere Produktion auf Nutzerwunsch zurückgestellt. Alte Vorbeuge-V2 bleibt erhalten. |
 | Ilyra am Fenster, Herz 4/5 | Noch nicht spielbar neu freigeschaltet. Bedingungen, Begegnungen und Geschenkbilanz dieser Etappen sind Zukunftsplanung. Einzelne Bildmomente sind als sparsame Alternative vorgeschlagen, noch nicht produziert. |
 | Outfits und weitere Posen | Zukunftsideen. Keine laufende Generierung. |
-| Abschließende Abnahme | Main-Übernahme vom Nutzer beauftragt und erfolgt. Die direkten Testzugänge bleiben verfügbar. Eine ausdrückliche Sichtabnahme der letzten I07-Größenkorrektur und eine gemeinsame Bewertung des Tempos werden dadurch nicht als erfolgt behauptet. |
+| Abschließende Abnahme | Main-Übernahme vom Nutzer beauftragt und erfolgt. Der lokale Testzugang ist verfügbar; die öffentlichen Direktlinks müssen nach dem Pages-Fehler wiederhergestellt werden. Eine ausdrückliche Sichtabnahme der letzten I07-Größenkorrektur und eine gemeinsame Bewertung des Tempos werden dadurch nicht als erfolgt behauptet. |
 
 ### Reaktionssounds
 

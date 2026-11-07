@@ -42,5 +42,14 @@
   "full_suite_rerun_for_targets": false,
   "preview_main_baseline_before_merge": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
   "main_public_cases": 2,
-  "main_public_verification_passed": true
+  "main_public_verification_passed": true,
+  "main_documentation_commit": "846844ed58df99dffbe4ddce2e19ab0111c76c95",
+  "main_documentation_run": 42380585653,
+  "main_documentation_run_success": true,
+  "preview_available": false,
+  "preview_restoration_pending": true,
+  "preview_restoration_run": 42381268263,
+  "preview_restoration_success": false,
+  "preview_restoration_error": "Pages syncing_files timeout after600s",
+  "local_preview_url": "http://127.0.0.1:5278/tavern-test.html"
 }

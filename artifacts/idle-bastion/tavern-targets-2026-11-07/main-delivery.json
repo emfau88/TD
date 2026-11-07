@@ -12,5 +12,24 @@
     "workflowSuccess": true,
     "httpStatus": 404,
     "note": "Preview and main used the same commit/build version. Publish the evidence-only feature commit separately before retrying the preview."
-  }
+  },
+  "restorationAttempts": [
+    {
+      "run": 42380894665,
+      "attempt": 1,
+      "result": "Pages API rejected because deployment 846844ed was reported in progress; status GET said succeed; cancel returned finished."
+    },
+    {
+      "run": 42380894665,
+      "attempt": 2,
+      "result": "Repeated job uploaded a second github-pages artifact; deployment rejected the two matching artifacts."
+    },
+    {
+      "run": 42381268263,
+      "attempt": 1,
+      "result": "Deployment accepted but stuck syncing_files; 600-second timeout, cancelled. No further retries launched."
+    }
+  ],
+  "pagesApiDocumentation": "https://docs.github.com/en/rest/pages/pages#cancel-a-github-pages-deployment",
+  "previewRestorationBlocked": "GitHub Pages remained syncing_files for 600 seconds; run42381268263 timed out and cancelled the deployment. Main HTTP200, local starter HTTP200, both public preview entry points HTTP404."
 }
