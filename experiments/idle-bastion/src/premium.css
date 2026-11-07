@@ -400,8 +400,9 @@ dialog::backdrop,.return-overlay { background:#070e13bb; backdrop-filter:blur(3p
 /* Unlock discovery belongs to the build menu, never to empty map plots. */
 .new-building { position:relative; }
 .new-building::after { content:'Neu'; position:absolute; right:5px; top:4px; padding:2px 5px; background:#edc77a; color:#282117; font:11px "Segoe UI",sans-serif; }
-#settlement-tab.new-building { padding-right:42px; }
-#settlement-tab.new-building::after { top:50%; transform:translateY(-50%); }
+#settlement-tab.new-building, #tower-tab.new-building { padding-right:42px; }
+#settlement-tab.new-building::after, #tower-tab.new-building::after { top:50%; transform:translateY(-50%); }
+#pick-frost.new-building > span > strong { padding-right:23px; }
 .tutorial-card[data-step="15"] { top:calc(var(--header) + 9px); bottom:auto; width:350px; }
 .tutorial-card[data-step="15"] .mara-portrait { display:none; }
 .tutorial-card[data-step="15"] .tutorial-copy { padding-left:0; }

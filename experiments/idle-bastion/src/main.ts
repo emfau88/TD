@@ -425,6 +425,9 @@ function syncUI(): void {
     : tower ? tower.level >= sim.maxLevel ? sim.settlement.frostResearched ? sim.settlement.workshopUpgraded ? t('Weitere Upgrades benötigen mehr Gold.') : t('Werkstatt II erschließt weitere Turmlevel.') : t('Frostfassung erschließt Level 4–6.') : sim.gold < upgradeCost(tower) ? t("Noch {0} Gold bis zum nächsten Level.", currency.format(upgradeCost(tower) - sim.gold)) : t('Mehr Schaden verbessert die Verteidigung sofort.')
     : (pad && sim.isPadUnlocked(pad.id)) && sim.gold < 75 ? t("Noch {0} Gold bis zum Waldwächter.", currency.format(75 - sim.gold)) : '');
   const settlement = sim.settlement;
+  const frostNew = sim.frostKitAvailable || sim.introduction.stage === 'research' && sim.lessonComplete;
+  element('pick-frost').classList.toggle('new-building', frostNew);
+  element('tower-tab').classList.toggle('new-building', frostNew);
   const workshopIcon = element<HTMLImageElement>('workshop-icon');
   const workshopSource = sim.settlement.workshopUpgraded ? ART.workshopUpgraded : ART.workshop;
   if (workshopIcon.getAttribute('src') !== workshopSource) workshopIcon.src = workshopSource;
@@ -735,8 +738,8 @@ function syncLessonPointer(): void {
       return;
     }
     if (step === 'wisp') button('meet-wisp');
-    else if (step === 'mara-start' || step === 'mara-wait') button('discovery-next');
-    else if (step === 'mara-controls' || step === 'mara-ready' && !b.mara.autoCast) button('pick-mara');
+    else if (step === 'mara-start' || step === 'mara-wait' || step === 'mara-controls') button('discovery-next');
+    else if (step === 'mara-ready' && !b.mara.autoCast) button('pick-mara');
     else if (step === 'cannon') button(catalogPanel === 'tower' ? 'pick-cannon' : 'tower-tab');
     else if (step === 'warehouse') button(catalogPanel === 'settlement' ? 'pick-warehouse' : 'settlement-tab');
     else lessonPointer.show();
@@ -843,17 +846,18 @@ function aimIlyra(): void {
   heroGeneration++; ilyraMode = 'cast'; heroFeedback = undefined; contextOpen = false; syncUI();
 }
 function closeContext(): void { clearHeroSelection(); ilyraMode = undefined; groundMode = undefined; groundCandidate = undefined; contextOpen = false; selectedPadId = undefined; scene?.setSelected(); syncUI(); }
-function acknowledgeQuickWin(notice: QuickWinNotice): void {
+function acknowledgeQuickWin(notice: QuickWinNotice, complete = true): void {
   const b = session?.battle;
   if (!b) return;
+  if (!complete && notice === 'cannon' && discoveryStep(b) === 'cannon') { syncUI(); return; }
   const bit = 1 << (notice === 'cannon' ? 8 : 16);
   if (!(b.tutorial.seen & bit) || notice === 'cannon' && discoveryStep(b) === 'cannon')
     void perform(battle => { battle.tutorial.seen |= bit; if (notice === 'cannon' && discoveryStep(battle) === 'cannon') battle.dismissDiscovery(); }, true, true);
   else syncUI();
 }
-function inspectCannon(): void { quickWins.inspectCannon(); acknowledgeQuickWin('cannon'); }
+function inspectCannon(): void { quickWins.inspectCannon(); acknowledgeQuickWin('cannon', false); }
 function openQuickWin(notice: QuickWinNotice): void {
-  acknowledgeQuickWin(notice);
+  acknowledgeQuickWin(notice, false);
   if (notice === 'workshop') { catalogPanel = 'settlement'; openContext('settlement'); return; }
   catalogPanel = 'tower'; placementType = undefined; closeContext();
   const card = element<HTMLButtonElement>('pick-cannon'); card.scrollIntoView({ block: 'nearest', inline: 'nearest' }); card.focus({ preventScroll: true });
@@ -869,6 +873,10 @@ function openContext(kind: typeof selectedPanel, buildingControls = false, focus
   if (kind !== 'tower') { selectedPadId = undefined; scene?.setSelected(); }
   if (kind === 'tavern' && session?.battle.settlement.tavernBuilt && !buildingControls) { contextOpen = false; syncUI(); tavernUI.open(); return; }
   if(kind==='settlement')selectedTechnology=technology??(session?.battle.emberResearchNew?'ember':selectedTechnology);
+  if (kind === 'settlement' && session?.battle.introduction.stage === 'workshop' && session.battle.lessonComplete) {
+    selectedTechnology = 'frost';
+    void perform(b => { if (b.introduction.stage === 'workshop') b.continueLesson(); }, true, true);
+  }
   if (focus) scene?.focusObject(kind); syncUI();
   if(kind==='settlement'&&selectedTechnology==='ember'&&session?.battle.emberResearchNew)void perform(b=>b.inspectEmberResearch(),true,true);
   if (kind === 'tavern' && session?.battle.tavernUnlocked && !session.battle.settlement.tavernSeen)

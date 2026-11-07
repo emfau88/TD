@@ -7,15 +7,15 @@ type GuideView = { intro?: Pick<MaraIntro, 'active' | 'step'>; contextOpen: bool
 /** Describe confirmed progress, never time estimates or extra unlock requirements. */
 export function tutorialNext(b: IdleBattle): string {
   if (b.introduction.stage === 'done') {
-    if (b.discovery === 'wisp') return b.wispUnlocked ? t('Begrüße Wisp.')
+    if (b.discovery === 'wisp') return b.wispUnlocked ? t('Begrüße Wisp: automatisch 10 % mehr Kampf-Gold.')
       : t('Welle {0} meistern für {1} · {2}/{0} geschafft', 5, 'Wisp', Math.min(5, b.highestCleared));
     if (b.discovery === 'warehouse' && !b.warehouseUnlocked)
       return t('Welle {0} meistern für {1} · {2}/{0} geschafft', 8, t('Vorratslager'), Math.min(8, b.highestCleared));
-    if (b.discovery === 'warehouse') return t('Optional: In der Siedlung ein Lager bauen oder „Später“ wählen.');
-    if (b.discovery === 'cannon') return t('Optional: Steinschleuder bauen oder „Später“.');
-    if (b.discovery === 'mara-wait') return t('Tippe auf „Übertakten zeigen“.');
-    if (b.discovery === 'mara-controls') return t('Tippe auf „Weiter“, um die nächste Entdeckung zu sehen.');
-    return t('Beobachte Maras Verstärkung.');
+    if (b.discovery === 'warehouse') return t('Optional: Lager in „Siedlung“ für 8 statt 2 Stunden Offline-Gold. Oder „Später“.');
+    if (b.discovery === 'cannon') return t('Optional: Steinschleuder trifft Gruppen. Bei Frost bauen oder „Später“.');
+    if (b.discovery === 'mara-wait') return t('Mara lässt einen Turm 8 Sekunden lang 50 % schneller schießen.');
+    if (b.discovery === 'mara-controls') return t('Mara zaubert automatisch. Bedienung im Mara-Porträt; „Weiter“ setzt die Einführung fort.');
+    return t('Maras Verstärkung: 8 Sekunden lang +50 % Feuerrate. Achte auf den goldenen Ring am Turm.');
   }
   switch (b.introduction.stage) {
     case 'build': return t('Wähle unten den kostenlosen Startturm.');

@@ -1,5 +1,14 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Tutorial · 07.11.2026 — ausschließlich die fünf beauftragten Korrekturen.**
+
+- [x] 1. Werkstatt über Siedlungskachel, Karten-Gebäude und Tutorialbutton öffnen: alle Zugänge führen zur sofort nutzbaren Frostforschung; Übergang bleibt gespeichert.
+- [x] 2. Frost nach erster Forschung am Turmreiter und an der Baukarte als „Neu“ markieren; nach erstem Bau ausblenden.
+- [x] 3. In Maras Bedienungsschritt den tatsächlich geforderten „Weiter“-Knopf hervorheben; Porträtbedienung erhalten.
+- [x] 4. Nutzen von Wisp, Mara, Steinschleuder und Lager im vorhandenen kompakten Hinweis erklären, in DE/EN.
+- [x] 5. Steinschleuder-Lektion erst nach erfolgreichem Bau oder ausdrücklichem „Später“ abschließen; Ansehen, Auswahl und Abbruch bleiben bei 13/14.
+- [x] 37/37 gezielte Tests, Produktionsbuild und echte Browserprobe bei 1280×900 sowie 360×800 bestanden; Reload, beide „Später“-Wege und unveränderte Forschungskosten geprüft. [Prüfnachweis](../../artifacts/idle-bastion/tutorial-fixes-2026-11-07/REPORT.md). Keine Änderungen an Balance, Speicherschema oder sonstigen Spielinhalten.
+
 **Taverne · 07.11.2026 — IF01–IF05 freigegeben und integriert; gemeinsamer Tavernenstand auf Main veröffentlicht.**
 
 - [x] IF05 ausdrücklich freigegeben. Alle fünf nativen Fensterclips unverändert eingebunden, einschließlich ruhiger IF01-v2; keine weiteren Renderings.

@@ -9,15 +9,23 @@ function prepare(stage: string): IdleBattle {
   b.startDefense();
   for (let i = 0; i < 16000; i++) {
     b.update(.025);
+    if (b.discovery === 'mara-controls') {
+      if (stage === 'cannon' && !b.continueDiscovery()) throw Error('Cannon fixture failed');
+      return b;
+    }
     if (!b.learningPaused) continue;
     if (b.introduction.stage === 'upgrade') {
       if (!b.upgrade(1)) throw Error('Upgrade failed');
     } else if (b.introduction.stage === 'workshop') {
       if (!b.buildWorkshop() || !IdleBattle.restore(b.snapshot())) throw Error('Workshop fixture failed');
-      return b;
+      if (stage === 'workshop') return b;
+      if (!b.continueLesson() || !b.researchFrost() || !b.continueLesson()
+        || !b.build(b.recommendedFrostPad!, 2)) throw Error('Frost fixture failed');
+    } else if (b.discovery === 'wisp') {
+      if (!b.meetWisp() || !b.continueDiscovery()) throw Error('Wisp fixture failed');
     }
   }
-  throw Error('Tutorial did not reach workshop');
+  throw Error(`Tutorial did not reach ${stage}`);
 }
 if (!import.meta.env.DEV) throw Error('Local development only');
 for (const button of document.querySelectorAll<HTMLButtonElement>('[data-stage]')) button.onclick = async () => {
