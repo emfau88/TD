@@ -6,7 +6,7 @@
 - [x] Scharfschützenwaffe auf Spiellevel 1–4 auf der tatsächlichen Dachmitte montiert; originale Waffenbilder, Größe und Geschossursprünge erhalten. Keine Kampf-/Saveänderung.
 - [x] 18/18 gezielte Tests, Produktionsbuild, 20.160 Geometrieposen und tatsächlicher Spielrenderer mit 544 Scharfschützenzuständen sowie sämtlichen Froststufen/236 Kristallbildern geprüft; keine Browserfehler. [Vergleiche und Nachweis](../../artifacts/idle-bastion/tower-mount-fix-2026-11-07/REPORT.md).
 - [x] Tavernenfrage separat geprüft: frühere/Tutorialsiege zählen nicht für die persönlichen 10/20/30-Sieg-Schwellen; je Figur erst ab Herz 2. Plan 4.1/4.2 präzisiert, 21/21 Tests und eigener Zähleraudit bestanden; keine Balanceänderung.
-- [ ] Commit/Push auf Main und öffentliche Auslieferung der Tower-Korrekturen bestätigen.
+- [x] Als `4d771b86` auf `codex/tower-mount-fix` committed/gepusht und per Fast-forward auf Main veröffentlicht. [Pages 42385360962](https://github.com/emfau88/TD/actions/runs/42385360962) erfolgreich; öffentliche Einstiegsdateien entsprechen dem CI-Build, Tower-Modul bytegleich mit dem lokal geprüften Build. Öffentlicher Spielstart ohne HTTP-/JavaScriptfehler bestätigt (`public-delivery.json`).
 - [ ] Menschliche Sichtabnahme der Turmkorrekturen auf dem eigenen Gerät.
 
 **Tavernen-Ausbau · 07.11.2026 — bulkweise Umsetzung ausdrücklich beauftragt, Bulk 0/3 abgeschlossen / Bulk 1–2/4 technisch fertig / Bulk 5 Videoausbau zurückgestellt.**
