@@ -1,0 +1,288 @@
+{
+  "date": "2026-11-07",
+  "repository": "emfau88/TD",
+  "worktree": "C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\tavern-comfy-integration",
+  "main_sha": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
+  "main_run": {
+    "id": 42281846927,
+    "url": "https://github.com/emfau88/TD/actions/runs/42281846927"
+  },
+  "published_deployment": {
+    "deployment": {
+      "url": "https://api.github.com/repos/emfau88/TD/deployments/7609204820",
+      "id": 7609204820,
+      "node_id": "DE_kwDOVMiMt88AAAABxYtAVA",
+      "task": "deploy",
+      "original_environment": "github-pages",
+      "environment": "github-pages",
+      "description": null,
+      "created_at": "2026-11-06T19:41:32Z",
+      "updated_at": "2026-11-06T19:42:40Z",
+      "statuses_url": "https://api.github.com/repos/emfau88/TD/deployments/7609204820/statuses",
+      "repository_url": "https://api.github.com/repos/emfau88/TD",
+      "creator": {
+        "login": "emfau88",
+        "id": 261224599,
+        "node_id": "U_kgDOD5H4lw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/261224599?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/emfau88",
+        "html_url": "https://github.com/emfau88",
+        "followers_url": "https://api.github.com/users/emfau88/followers",
+        "following_url": "https://api.github.com/users/emfau88/following{/other_user}",
+        "gists_url": "https://api.github.com/users/emfau88/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/emfau88/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/emfau88/subscriptions",
+        "organizations_url": "https://api.github.com/users/emfau88/orgs",
+        "repos_url": "https://api.github.com/users/emfau88/repos",
+        "events_url": "https://api.github.com/users/emfau88/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/emfau88/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "sha": "daf39fb7b13a05a78530b503fa45074b5f65c9de",
+      "ref": "main",
+      "payload": {},
+      "transient_environment": false,
+      "production_environment": false,
+      "performed_via_github_app": {
+        "id": 15368,
+        "client_id": "Iv1.05c79e9ad1f6bdfa",
+        "slug": "github-actions",
+        "node_id": "MDM6QXBwMTUzNjg=",
+        "owner": {
+          "login": "github",
+          "id": 9919,
+          "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/github",
+          "html_url": "https://github.com/github",
+          "followers_url": "https://api.github.com/users/github/followers",
+          "following_url": "https://api.github.com/users/github/following{/other_user}",
+          "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/github/subscriptions",
+          "organizations_url": "https://api.github.com/users/github/orgs",
+          "repos_url": "https://api.github.com/users/github/repos",
+          "events_url": "https://api.github.com/users/github/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/github/received_events",
+          "type": "Organization",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "name": "GitHub Actions",
+        "description": "Automate your workflow from idea to production",
+        "external_url": "https://help.github.com/en/actions",
+        "html_url": "https://github.com/apps/github-actions",
+        "created_at": "2018-07-30T09:30:17Z",
+        "updated_at": "2026-06-18T16:17:48Z",
+        "permissions": {
+          "actions": "write",
+          "administration": "read",
+          "artifact_metadata": "write",
+          "attestations": "write",
+          "checks": "write",
+          "code_quality": "write",
+          "contents": "write",
+          "copilot_requests": "write",
+          "deployments": "write",
+          "discussions": "write",
+          "drives": "write",
+          "issues": "write",
+          "merge_queues": "write",
+          "metadata": "read",
+          "models": "read",
+          "packages": "write",
+          "pages": "write",
+          "pull_requests": "write",
+          "repository_hooks": "write",
+          "repository_projects": "write",
+          "security_events": "write",
+          "statuses": "write",
+          "vulnerability_alerts": "read"
+        },
+        "events": [
+          "branch_protection_rule",
+          "check_run",
+          "check_suite",
+          "create",
+          "delete",
+          "deployment",
+          "deployment_status",
+          "discussion",
+          "discussion_comment",
+          "fork",
+          "gollum",
+          "issues",
+          "issue_comment",
+          "label",
+          "merge_group",
+          "milestone",
+          "page_build",
+          "public",
+          "pull_request",
+          "pull_request_review",
+          "pull_request_review_comment",
+          "push",
+          "registry_package",
+          "release",
+          "repository",
+          "repository_dispatch",
+          "status",
+          "watch",
+          "workflow_dispatch",
+          "workflow_run"
+        ]
+      }
+    },
+    "status": {
+      "url": "https://api.github.com/repos/emfau88/TD/deployments/7609204820/statuses/21609100044",
+      "id": 21609100044,
+      "node_id": "DES_kwDOVMiMt88AAAAFCACzDA",
+      "state": "success",
+      "creator": {
+        "login": "emfau88",
+        "id": 261224599,
+        "node_id": "U_kgDOD5H4lw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/261224599?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/emfau88",
+        "html_url": "https://github.com/emfau88",
+        "followers_url": "https://api.github.com/users/emfau88/followers",
+        "following_url": "https://api.github.com/users/emfau88/following{/other_user}",
+        "gists_url": "https://api.github.com/users/emfau88/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/emfau88/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/emfau88/subscriptions",
+        "organizations_url": "https://api.github.com/users/emfau88/orgs",
+        "repos_url": "https://api.github.com/users/emfau88/repos",
+        "events_url": "https://api.github.com/users/emfau88/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/emfau88/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "description": "",
+      "environment": "github-pages",
+      "target_url": "https://github.com/emfau88/TD/actions/runs/42281846927/job/128112562036",
+      "created_at": "2026-11-06T19:42:40Z",
+      "updated_at": "2026-11-06T19:42:40Z",
+      "deployment_url": "https://api.github.com/repos/emfau88/TD/deployments/7609204820",
+      "repository_url": "https://api.github.com/repos/emfau88/TD",
+      "environment_url": "https://emfau88.github.io/TD/",
+      "log_url": "https://github.com/emfau88/TD/actions/runs/42281846927/job/128112562036",
+      "performed_via_github_app": null
+    }
+  },
+  "published_run_id": 42281846927,
+  "downloads": {
+    "42281846927": {
+      "artifact": {
+        "id": 13535457483,
+        "node_id": "MDg6QXJ0aWZhY3QxMzUzNTQ1NzQ4Mw==",
+        "name": "github-pages",
+        "size_in_bytes": 103515687,
+        "url": "https://api.github.com/repos/emfau88/TD/actions/artifacts/13535457483",
+        "archive_download_url": "https://api.github.com/repos/emfau88/TD/actions/artifacts/13535457483/zip",
+        "expired": false,
+        "digest": "sha256:8b321bc1ca1b1c34b23e2f218da1958c35650ab1a7f8d755834675b6cd3d3730",
+        "created_at": "2026-11-06T19:42:20Z",
+        "updated_at": "2026-11-06T19:42:20Z",
+        "expires_at": "2026-11-07T19:42:16Z",
+        "workflow_run": {
+          "id": 42281846927,
+          "repository_id": 1422429367,
+          "head_repository_id": 1422429367,
+          "head_branch": "main",
+          "head_sha": "daf39fb7b13a05a78530b503fa45074b5f65c9de"
+        }
+      },
+      "archive": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-implementation-2026-11-07\\preview-pack-test\\download-42281846927\\artifact.tar",
+      "archive_bytes": 113346560,
+      "archive_sha256": "cc0e4313d6d7a625b645f5e56f6590f83b1b4a3cf64d6c1ede64c0dff6f4cb59"
+    }
+  },
+  "branch_sha_test_argument": "eaf70419b3831807d4e4bdd242ac69f214c551bf",
+  "branch_sha_note": "Local working-tree HEAD used only as packaging provenance test input; this does not claim a published or clean committed build.",
+  "main": {
+    "files": 721,
+    "bytes": 112773095,
+    "manifest_sha256": "90bce6412744b3417c995150d5be4dab93570dcacd1dc389af8c9f39a91fba57"
+  },
+  "published_before": {
+    "files": 721,
+    "bytes": 112773095,
+    "manifest_sha256": "90bce6412744b3417c995150d5be4dab93570dcacd1dc389af8c9f39a91fba57"
+  },
+  "combined": {
+    "files": 1246,
+    "bytes": 193086144,
+    "manifest_sha256": "a28781e9f5069169da4ad6090ad4d87ef359a83f7d271a57f1b06e58f2cfde9a"
+  },
+  "branch_dist": {
+    "files": 524,
+    "bytes": 80312746,
+    "manifest_sha256": "f34f2197c634305316f5a0c17e8abb3519adbdb62c47287c3d56a2c36d2c8871"
+  },
+  "protected_published_files": {
+    "files": 721,
+    "bytes": 112773095,
+    "manifest_sha256": "90bce6412744b3417c995150d5be4dab93570dcacd1dc389af8c9f39a91fba57"
+  },
+  "existing_other_previews": {
+    "files": 2,
+    "bytes": 1010,
+    "manifest_sha256": "d9271e90b96880f9937a74171dc9e9b6bc679506cce6966f4005603e50913178"
+  },
+  "new_tavern_preview": {
+    "files": 525,
+    "bytes": 80313049,
+    "manifest_sha256": "72c9e64b50b21bb17894753434e5b74a8a5ac5dd3fa602b9e0f23f0ec850227c"
+  },
+  "counter_assets": {
+    "assets/MC01-CfkYRZhK.mp4": {
+      "bytes": 599544,
+      "sha256": "54cedbcd28f7c7db59ca1e940a63d9d7ae04410addb02f21b701deeaeee08df0"
+    },
+    "assets/MC02-DFpiXEVI.mp4": {
+      "bytes": 444745,
+      "sha256": "df6d1388760979f9afde9d027eb2f1fb7db846590dcdb5c650f89dee425626a3"
+    },
+    "assets/MC03-CDxQaSeW.mp4": {
+      "bytes": 651581,
+      "sha256": "6c137e9d90264c90c05b671558ee7bb0754d62a775e5f61d3ebde721e656a4b2"
+    },
+    "assets/MC05-hyjFiTWm.mp4": {
+      "bytes": 474141,
+      "sha256": "fcdfa7d92e0739e71b0619be8de5919a800b9953aa45a5dc9df62ed0b3b9069f"
+    }
+  },
+  "checks": {
+    "actualArtifactsDownloaded": true,
+    "mainFilesByteIdentical": true,
+    "allPublishedFilesOutsideTavernByteIdentical": true,
+    "allExistingOtherPreviewsByteIdentical": true,
+    "onlyTavernPrefixAddedOrReplaced": true,
+    "branchDistUnchanged": true,
+    "remoteMainStillSame": true,
+    "bothPreviewEntriesPresent": true,
+    "counterClipsPresent": 4,
+    "noDeployPushOrPolicyChange": true,
+    "finalNamespaceHardenedBuildUsed": true
+  },
+  "package_command": [
+    "node",
+    "C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\tavern-comfy-integration\\scripts\\package-tavern-preview.mjs",
+    "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-implementation-2026-11-07\\preview-pack-test\\main-site",
+    "C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\tavern-comfy-integration\\dist",
+    "eaf70419b3831807d4e4bdd242ac69f214c551bf",
+    "daf39fb7b13a05a78530b503fa45074b5f65c9de",
+    "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-implementation-2026-11-07\\preview-pack-test\\combined-site"
+  ],
+  "package_stdout": "Verified 721 current main files; preserved every published file outside previews/tavern/; packaged 524 branch files for eaf70419b3831807d4e4bdd242ac69f214c551bf.",
+  "phase": "final-preview-build",
+  "final_namespace_marker": true,
+  "download_reused": true,
+  "prior_pack_check": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-implementation-2026-11-07\\preview-pack-test\\pre-hardening-results.json"
+}

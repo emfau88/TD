@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Taverne testen · Towers &amp; Tantrums</title>
+<style>
+@font-face{font-family:Pixelify;src:url('./assets/ui/fonts/PixelifySans.ttf')}*{box-sizing:border-box}body{margin:0;background:#14231e;color:#ece5c9;font:16px/1.6 system-ui,sans-serif}main{max-width:720px;margin:4vh auto;padding:24px}h1{font-family:Pixelify,monospace;font-size:clamp(30px,6vw,42px);line-height:1.15;margin:10px 0}small{color:#bbd4bf}a{color:#a7def1}.panel{padding:22px;border:1px solid #6c7860;border-radius:12px;background:#20342c;margin:24px 0}label{display:block;margin:16px 0 6px}label:first-child{margin-top:0}select,button{font:inherit;min-height:48px;border:1px solid #9ca986;border-radius:7px;padding:10px 14px;width:100%}select{background:#13271f;color:inherit}button{background:#d1dfae;color:#18271e;font-weight:650;cursor:pointer;margin-top:22px}button:hover{background:#e4efca}button:disabled{opacity:.5}#status{min-height:1.6em}li+li{margin-top:8px}@media(max-width:500px){main{padding:18px;margin:12px auto}.panel{padding:16px}}
+</style></head><body><main>
+<small>ISOLIERTE TAVERNEN-VORSCHAU · TAVERN PREVIEW</small>
+<h1>Ein Besuch bei Mara &amp; Ilyra</h1>
+<p>Neue Animationen, Berührungen und Gespräche im echten Spiel ausprobieren. Wähle deinen Startpunkt — du musst die Taverne dafür nicht erst erspielen.</p>
+<form id="tavern-test" class="panel">
+<label for="preset">Wo möchtest du anfangen? / Starting point</label>
+<select id="preset" name="preset">
+<option value="heart3" selected>Herz 3 · alle bisherigen Berührungen / all current touches</option>
+<option value="fresh">Erster Besuch · Beziehung von Anfang an / relationship from the start</option>
+<option value="heart2-10">Herz 2 · erstes neues Gespräch / first new conversation</option>
+<option value="heart2-20">Herz 2 · beide neuen Gespräche / both new conversations</option>
+<option value="gift58-18">Vor Herz 3 · persönliches Geschenk noch unterwegs / gift still on its way</option>
+<option value="gift58-30">Vor Herz 3 · persönliches Geschenk bereit / personal gift ready</option>
+<option value="legacy4">Früher verdiente 4 Herzen · auch Maras Necken testen (kein neuer Herz-4-Ausbau) / previously earned 4 hearts, including Mara’s teasing</option>
+</select>
+<label for="companion">Zuerst besuchen / Visit first</label><select id="companion" name="companion"><option value="mara">Mara</option><option value="ilyra">Ilyra</option></select>
+<label for="language">Sprache / Language</label><select id="language" name="language"><option value="de">Deutsch</option><option value="en">English</option></select>
+<button id="start" type="submit">Tavernenbesuch starten / Start Tavern visit</button><p id="status" role="status" aria-live="polite"></p>
+</form>
+<ul><li>Beide Figuren sind rekrutiert. Dein gewählter Beziehungsstand gilt für beide; in der Taverne kannst du frei wechseln. / Both companions are recruited and share the selected starting progress.</li>
+<li>Den Rückkehrbeleg einmal bestätigen, dann öffnet sich die gewählte Figur. Der Kampf bleibt pausiert. Für weitere Siege die Taverne schließen und oben ▶ drücken. / Confirm the return card to enter. Combat stays paused until you leave and press ▶.</li>
+<li>Jeder Start legt einen eigenen Testspielstand an. Die erzeugte Spieladresse als Lesezeichen behalten, um genau diesen Besuch fortzusetzen. Deine Hauptpartie bleibt unberührt. / Each start creates a separate save; bookmark the game address to continue it. Your main game is untouched.</li>
+<li>Der Beziehungsstand ist für den Test vorbereitet. Verteidigung und Geld stammen aus einer erspielten Partie nach Welle 25; Tavernen-Ausbau und Rekrutierung verwenden die normalen Spielaktionen. / Relationship progress is prepared for review; the defense and wallet come from a recorded wave-25 game.</li></ul>
+<p><a href="./tavern-counter-check.html">Separate Tresen-Clipvorschau / Counter clip preview</a> · <a href="./index.html">Zum Spiel im Testbranch / Preview game</a></p>
+<script type="module" src="./src/tavern-test.ts"></script></main></body></html>

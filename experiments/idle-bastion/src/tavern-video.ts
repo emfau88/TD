@@ -7,10 +7,13 @@ import { GESTURE_HEARTS, TOUCH_CLIPS, type TavernSceneClip } from './tavern-cont
 import { TOUCH_HEARTS, type Companion, type Interaction, type TouchRegion } from './tavern-social';
 import { TAVERN_ANCHORS, TAVERN_GESTURES } from './tavern-gestures';
 import type { TavernPlayer, TavernPresentation } from './tavern-presentation';
+import { compileTavernSceneVideo, sceneVideoRole, type TavernSceneVideoConfig, type CompiledTavernSceneVideo } from './tavern-scene-video';
+import type { SceneAction } from './tavern-scene-catalog';
 import './tavern-rig.css';
 import './tavern-video.css';
 
 const urls = import.meta.glob<string>('../assets/tavern-video/**/*.mp4', { eager: true, query: '?url', import: 'default' });
+const sceneUrls = Object.fromEntries(Object.entries(urls).map(([file, url]) => [file.replace('../assets/tavern-video/', ''), url]));
 type Clip = { file: string; frames: number; fps: number; duration: number };
 type Entry = { video: HTMLVideoElement; loaded: Promise<boolean>; cancel: () => void; failed: boolean };
 const posters = { mara: maraPoster, ilyra: ilyraPoster };
@@ -38,16 +41,25 @@ export class TavernVideoPlayer implements TavernPlayer {
   private idleSeconds = 0;
   private drawn = '';
   private transition?: { image: HTMLCanvasElement; elapsed: number; poseChange: boolean };
-  constructor(private canvas: HTMLCanvasElement, private changed: () => void) {
+  private readonly localScene?: CompiledTavernSceneVideo;
+  private restoreStage?: () => void;
+  constructor(private canvas: HTMLCanvasElement, private changed: () => void, sceneConfig?: TavernSceneVideoConfig) {
+    this.localScene = sceneConfig ? compileTavernSceneVideo(sceneConfig, sceneUrls) : undefined;
+    if (sceneConfig && !this.localScene) throw new Error('Incomplete tavern scene media.');
     canvas.width = 480; canvas.height = 700;
   }
-  private get clips(): Record<string, Clip> { return manifest.heroes[this.who]; }
+  private get clips(): Readonly<Record<string, Clip>> { return this.localScene?.clips ?? manifest.heroes[this.who]; }
+  private get warmKeys(): readonly string[] { return this.localScene ? ['talk', 'shoulder'] : ['head', 'touch']; }
   setHearts(count: number) { this.count = count; }
-  async start(who: Companion = 'mara'): Promise<void> {
+  async start(who: Companion = this.localScene?.companion ?? 'mara'): Promise<void> {
     this.stop(); this.active = true; this.who = who;
+    if (this.localScene && who !== this.localScene.companion) {
+      this.active = false; this.canvas.dataset.error = 'true'; this.changed(); return;
+    }
     const generation = this.generation;
     this.canvas.dataset.companion = who; this.canvas.dataset.renderer = 'video';
     this.canvas.closest<HTMLElement>('.tv-stage')?.setAttribute('data-video', 'true');
+    if (this.localScene) this.applySceneBackground(this.localScene);
     this.lifetime = new AbortController();
     document.addEventListener('visibilitychange', () => {
       this.last = 0;
@@ -67,6 +79,7 @@ export class TavernVideoPlayer implements TavernPlayer {
   stop(): void {
     this.active = false; this.generation++; this.intent++;
     cancelAnimationFrame(this.frameRequest); this.lifetime?.abort();
+    this.restoreStage?.(); this.restoreStage = undefined;
     for (const entry of this.entries.values()) this.release(entry);
     this.entries.clear(); this.current = undefined; this.preparing = undefined;
     this.ready = false; this.loadingReactions = false; this.key = 'idle'; this.pending = null;
@@ -79,7 +92,7 @@ export class TavernVideoPlayer implements TavernPlayer {
     if (this.preparing) return this.preparing;
     const generation = this.generation;
     this.loadingReactions = true; delete this.canvas.dataset.reactionError; this.changed();
-    this.preparing = Promise.all(['head', 'touch'].map(key => this.entry(key).loaded)).then(results => {
+    this.preparing = Promise.all(this.warmKeys.map(key => this.entry(key).loaded)).then(results => {
       const ok = results.every(Boolean) && this.active && generation === this.generation;
       if (!ok && this.active && generation === this.generation) this.canvas.dataset.reactionError = 'true';
       return ok;
@@ -90,13 +103,51 @@ export class TavernVideoPlayer implements TavernPlayer {
   }
   play(region: TouchRegion): void {
     if (Object.hasOwn(TOUCH_HEARTS, region) && this.count >= TOUCH_HEARTS[region]) {
-      this.enqueue(region === 'hand' && this.clips.hand ? 'hand' : TOUCH_CLIPS[region]);
+      if (this.localScene) this.enqueueScene(region);
+      else this.enqueue(region === 'hand' && this.clips.hand ? 'hand' : TOUCH_CLIPS[region]);
     }
   }
-  scene(clip: TavernSceneClip): void { this.enqueue(clip); }
-  act(action: Interaction): void { this.enqueue(action === 'talk' ? 'head' : this.count >= 2 ? 'joy' : 'touch'); }
+  scene(clip: TavernSceneClip): void {
+    if (this.localScene) {
+      if (clip === 'head') this.enqueueScene('talk');
+      else if (clip === 'touch') this.enqueueScene('shoulder');
+      else if (clip === 'idle') this.enqueueScene('idle');
+    } else this.enqueue(clip);
+  }
+  act(action: Interaction): void {
+    if (this.localScene) {
+      if (action === 'touch') this.enqueueScene('shoulder');
+      else if (action === 'talk' || action === 'gift') this.enqueueScene(action);
+    } else this.enqueue(action === 'talk' ? 'head' : this.count >= 2 ? 'joy' : 'touch');
+  }
   gesture(key: string): void {
-    if (Object.hasOwn(GESTURE_HEARTS, key) && this.count >= GESTURE_HEARTS[key]!) this.enqueue(key);
+    if (Object.hasOwn(GESTURE_HEARTS, key) && this.count >= GESTURE_HEARTS[key]!) {
+      if (this.localScene) {
+        if (key === 'giggle') this.enqueueScene('laugh');
+        else if (key === 'hip') this.enqueueScene('compliment');
+        else if (key === 'tease') this.enqueueScene('tease');
+      } else this.enqueue(key);
+    }
+  }
+  private enqueueScene(action: SceneAction): void {
+    const key = this.localScene && sceneVideoRole(this.localScene, action);
+    if (key) this.enqueue(key);
+  }
+  private applySceneBackground(scene: CompiledTavernSceneVideo): void {
+    const stage = this.canvas.closest<HTMLElement>('.tv-stage'); if (!stage) return;
+    const previous = ['background-image', 'background-size', 'background-position'].map(name => ({
+      name, value: stage.style.getPropertyValue(name), priority: stage.style.getPropertyPriority(name),
+    }));
+    stage.dataset.videoScene = scene.id;
+    stage.style.backgroundImage = `url(${JSON.stringify(scene.background)})`;
+    stage.style.backgroundSize = 'cover'; stage.style.backgroundPosition = 'center';
+    this.restoreStage = () => {
+      if (stage.dataset.videoScene !== scene.id) return;
+      for (const { name, value, priority } of previous) {
+        if (value) stage.style.setProperty(name, value, priority); else stage.style.removeProperty(name);
+      }
+      delete stage.dataset.videoScene;
+    };
   }
   private entry(key: string): Entry {
     const cached = this.entries.get(key);
@@ -129,14 +180,16 @@ export class TavernVideoPlayer implements TavernPlayer {
       if (this.active && this.current === entry) { this.canvas.dataset.reactionError = 'true'; this.changed(); }
     });
     this.entries.set(key, entry);
-    video.src = urls[`../assets/tavern-video/${clip.file}`]!; video.load();
+    video.src = this.localScene ? this.localScene.clips[key as keyof typeof this.localScene.clips]!.url
+      : urls[`../assets/tavern-video/${clip.file}`]!;
+    video.load();
     this.prune(); return entry;
   }
   private release(entry: Entry): void {
     entry.cancel(); entry.video.pause(); entry.video.removeAttribute('src'); entry.video.load();
   }
   private prune(): void {
-    const keep = new Set(['idle', 'head', 'touch', this.key, this.pending]);
+    const keep = new Set(['idle', ...this.warmKeys, this.key, this.pending]);
     for (const [key, entry] of this.entries) if (!keep.has(key)) { this.release(entry); this.entries.delete(key); }
     this.canvas.dataset.cachedVideos = String(this.entries.size);
   }
@@ -182,7 +235,7 @@ export class TavernVideoPlayer implements TavernPlayer {
     }
     if (this.key === 'idle' && !this.pending && !this.current?.video.paused) {
       this.idleSeconds += dt;
-      if (this.count >= 2 && this.idleSeconds >= (this.who === 'mara' ? 15 : 18)) this.enqueue('variant');
+      if (!this.localScene && this.count >= 2 && this.idleSeconds >= (this.who === 'mara' ? 15 : 18)) this.enqueue('variant');
     }
     this.draw();
   };
@@ -227,3 +280,20 @@ export const videoPresentation: TavernPresentation = {
     : TAVERN_ANCHORS(who),
   gestures: TAVERN_GESTURES,
 };
+
+/** Opt-in preview factory. Undelivered sets stay unavailable; main keeps videoPresentation. */
+export function createSceneVideoPresentation(config: TavernSceneVideoConfig): TavernPresentation | undefined {
+  const scene = compileTavernSceneVideo(config, sceneUrls); if (!scene) return;
+  return {
+    kind: 'rigged',
+    create: (canvas, changed) => new TavernVideoPlayer(canvas, changed, config),
+    portrait: who => who === scene.companion ? scene.poster : '',
+    async drawPortrait(canvas, who) {
+      if (who !== scene.companion) return;
+      const image = new Image(); image.src = scene.poster; await image.decode();
+      canvas.getContext('2d')?.drawImage(image, 0, 0, canvas.width, canvas.height);
+    },
+    anchors: () => scene.anchors,
+    gestures: TAVERN_GESTURES,
+  };
+}

@@ -10,14 +10,18 @@ Diese ausdrücklich gewünschte Markdown-Datei beschreibt Umfang und Abnahmekrit
 
 ## Aktueller Umsetzungsstand · 07.11.2026
 
+**Zusätzlich beauftragt:** Stand auf `codex/tavern-comfy-integration` committen/pushen und isolierten öffentlichen Ingame-Test mit vorbereiteten Spielständen in der README verlinken. Teststarter, eigener Speichernamensraum und passende zufällige Reaktionssounds sind lokal fertig geprüft (531/531 Tests, Build, acht Ingame-Fälle); Veröffentlichung und drei echte UI-Vorher/Nachher-Vergleiche werden abschließend nachgewiesen.
+
+**Neue Priorität auf ausdrücklichen Nutzerwunsch:** Weitere Videoproduktion wird nach dem bereits laufenden MC03 zurückgestellt. MC01, MC05 und MC02 sind ausdrücklich freigegeben. MC04/MC06/MC07, Ilyras Fensterset und spätere Herz-5-/Outfitvideos vorerst nicht starten. Einzelbilder als mögliche spätere Alternative sind nur eine Idee, kein aktueller Generierungsauftrag. Die verbleibenden Bulks unten bleiben als Zukunftsplan erhalten; der Schwerpunkt liegt zunächst auf dem vorhandenen Herz-1–3-Bogen, Verständlichkeit und abschließender Prüfung. Herz 4/5 sind noch nicht neu spielbar freigeschaltet.
+
 - [x] **Bulk 0 abgeschlossen:** Arbeitsbasis, Vergleichsaufnahmen und verifiziertes Altarchiv (6/6 Schritte).
 - [ ] **Bulk 1 technisch abgeschlossen, visuelle Abnahme offen:** 15 Cliprollen/Stimmen, Fehlerfälle, echtes Hauptspiel bei1280/320px mit Reload sowie Produktionsbuild bestanden; alle9 Umsetzungsschritte unten erledigt.
 - [ ] **Bulk 2 technisch abgeschlossen, menschliche Verständnis-/Sichtprobe offen:** zwölf DE/EN-Desktop-/Handyfälle bestanden; Hinweis in allen Fällen sichtbar. Gezielte Tests und Build grün; sechs von sieben Schritten unten erledigt.
 - [x] **Bulk 3 abgeschlossen:** M09 v3 und I08 ausdrücklich freigegeben, als eigene Handreaktionen lokal integriert und samt Kontaktpunkten/Stimmen geprüft. M10/I09 nach Nutzervergleich verworfen; bewährte M02/I02 bleiben. Keine pauschale Neuproduktion.
 - [ ] **Bulk 4 technisch abgeschlossen:** vier Begegnungen mit dauerhaften gleichwertigen Antworten, ehrlichen Rückbezügen und Fortsetzen. Bestehendes Sprechen-Menü, kein zusätzliches Aufstiegsgate. 512/512 Tests, Build, acht DE/EN-Desktop-/Handyfälle und Hauptspiel/Reload bestanden; menschliche Inhalts-/Spielgefühlabnahme offen.
-- [ ] **Bulk 5 Vorbereitung:** vorhandene aufrechte Tresenpose und V2 werden gegen die freigegebene Mara geprüft. Zuerst ausschließlich MC01/Idle + MC05/Hand als zusammenpassende Qualitätsprobe.
+- [ ] **Bulk 5 in Arbeit:** aufrechte vorhandene Tresenpose und V2 visuell gegen Mara geprüft, gemeinsame Comfy-Referenz480×704 samt beiden Händen kontrolliert. MC01/Idle fertig (90Frames/3,75s;291,2s), gesamte Bildfolge/Gesicht/Hände kontrolliert und im Chat gezeigt; **Vom Nutzer freigegeben.** MC05/Hand ebenfalls vom Nutzer freigegeben; gemeinsame Ruhe→Hand→Ruhe-Probe aufDesktop/320px einschließlich Fehlerfallback bestanden. MC02 ebenfalls fertig und vom Nutzer freigegeben; MC03 ist als letzter bereits gestarteter Clip fertig kontrolliert, Nutzerurteil offen; keine weiteren Renderings. Weitere Produktion ausdrücklich zurückgestellt.
 
-Bulks 5–9 sind noch offen; Bulk 5 beginnt mit der kleinen isolierten Qualitätsprobe. Diese Übersicht und die Detailcheckboxen werden nach überprüften Ergebnissen aktualisiert; eine ausstehende Sichtabnahme wird nicht durch einen technischen Haken ersetzt.
+Bulk 5 läuft als kleine isolierte Qualitätsprobe; Bulks 6–9 sind noch offen. Diese Übersicht und die Detailcheckboxen werden nach überprüften Ergebnissen aktualisiert; eine ausstehende Sichtabnahme wird nicht durch einen technischen Haken ersetzt.
 
 ## 1. Entscheidung: der empfohlene Weg
 
@@ -412,9 +416,9 @@ Abhängig von Bulk 2; Die bewährten M02/I02 liefern nach Nutzerentscheidung ber
 
 Abhängig von Bulk 1–4. Zuerst isolierte Vorschau; Herz 4 noch nicht im Hauptspiel öffnen.
 
-- [ ] Aufrechtere Tresen-Grundpose und festen Hintergrund als verbindliche Szene auswählen; alte Kunst mit der freigegebenen Mara auf Identität/Kleidung abgleichen.
+- [x] Vorhandene aufrechte Tresen-Grundpose und festen Hintergrund als gemeinsame Szene ausgewählt; Identität/Kleidung gegen Mara abgeglichen. Gemeinsame Referenz über Comfy-Bildknoten geprüft: Original1086×1448 → Crop[99,0,987,1448] →480×704, beide Hände vollständig sichtbar und Proportionen erhalten. [Vorprüfung](../../../artifacts/idle-bastion/tavern-implementation-2026-11-07/bulk5-preflight/REPORT.md).
 - [ ] Alten V2-Clip prüfen und entscheiden, ob er im neuen Set stimmig wiederverwendet oder mit ComfyUI neu umgesetzt wird. Die tiefe Ellbogenstütze nicht als fertigen Übergang behandeln.
-- [ ] Als kleine Qualitätsprobe MC01/Idle und MC05/Hand erstellen. Ruhe → Berührung → dieselbe Ruhe zusammen zeigen; erst danach die restlichen Rollen produzieren.
+- [x] Kleine Qualitätsprobe MC01/Idle(3,75s) und MC05/Hand(3,04s) nacheinander erstellt, vollständig kontrolliert und beide vom Nutzer ausdrücklich freigegeben. Gemeinsame Ruhe→Hand→dieselbeRuhe-Vorschau aufDesktop/320px und gezielter Ladefehler bestanden; erst danach MC02 gestartet. Keine Spielintegration des Teilsets.
 - [ ] MC02, MC03, MC04, MC06 und MC07 nacheinander fertigstellen, mit gleichen Referenzen und einzeln dokumentierter Sichtabnahme.
 - [ ] Szenenkatalog mit Anfangs-/Endpose, lokalen Aktionen, Hotspots und Fehlerverhalten umsetzen. Versehentliche Verweise auf Standardclips technisch zurückweisen.
 - [ ] Einladung mit „Mitkommen“, Vorladen, bewussten Szenenschnitt und direkte Rückkehr prüfen. Spätere Ortswechsel über einen kontextabhängigen Eintrag im vorhandenen Sprechen-Menü; keine Orts-/Poseauswahl oder zusätzliche Navigationsleiste. Den letzten Ort gegebenenfalls automatisch merken.
@@ -483,6 +487,7 @@ Nach dem vollständigen ersten Bogen; keine Voraussetzung für Bulk 0–8.
 
 ### Animation
 
+- Neu präzisiert am 07.11.2026: Bewährte Prompts/Scripts der freigegebenen M01–M08/I01–I07 bleiben die Qualitätsgrundlage. Neue Reaktionen dürfen deutlicher flirty und neckisch werden: bewusster Blickkontakt, wissendes Lächeln, kurze gespannte Pausen und passende Annäherung. Idle bleibt dezent; Intensität entsteht in den Reaktionen mit kontrollierten Bewegungen und weiterhin stabiler Anatomie.
 - Kamera und Hintergrund bleiben in einer Szene fest. Gleiche Figur, Kleidung, Haare, Accessoires und Proportionen; kein Fotorealismus.
 - Nie fremde Hände. Klare kleine Reaktionen statt schwieriger Mehrpersonenbewegungen.
 - Idle: fast ruhige Arme, dezente Atmung und Mimik, keine Halsstauchung, kein unmotiviertes Haar-/Umhang- oder Brustwackeln.

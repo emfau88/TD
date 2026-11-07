@@ -9,6 +9,7 @@ import { tavernGiftStatus } from './tavern-gift-status';
 import { tavernProgressHint } from './tavern-progress-hint';
 import { encounterRecord, nextEncounter, type EncounterId, type EncounterChoice } from './tavern-encounter-state';
 import { tavernEncounter, personalGiftLine } from './tavern-encounter-content';
+import { voiceForTavernGesture, voiceForEncounterAnswer } from './tavern-reaction-voice';
 import { TavernAnimation, drawCompanionPortrait, companionPortrait, type TouchRegion } from './tavern-animation';
 import './tavern-ui.css';
 import type { TavernPlayer, TavernPresentation } from './tavern-presentation';
@@ -117,7 +118,9 @@ export class TavernUI {
         if (gesture && (!gesture.companion || gesture.companion === this.selected)) {
           this.newMoment = undefined; this.speaking = false; this.update(); this.get<HTMLButtonElement>('[data-do=speak]').focus();
           if (hearts(this.points) < gesture.minHearts) { this.result(() => t('Ab Herz {0} verfügbar.', gesture.minHearts)); this.revealReply(); return; }
-          this.animation.gesture?.(gesture.key); this.text('line', gesture.line[this.selected]); this.result(() => ''); this.revealReply(); this.update();
+          this.animation.gesture?.(gesture.key);
+          if (voiceForTavernGesture(this.selected, gesture.key)) this.ports.onTouch?.(this.selected);
+          this.text('line', gesture.line[this.selected]); this.result(() => ''); this.revealReply(); this.update();
         }
         return;
       }
@@ -187,6 +190,15 @@ export class TavernUI {
     this.opener = document.activeElement instanceof HTMLElement ? document.activeElement : undefined;
     this.lastLives = session.battle.lives; this.lastPhase = session.battle.phase; this.lastDefeat = session.battle.progress.lastDefeat?.attemptId ?? 0;
     this.get('.tv-warning').hidden = true; this.dialog.showModal(); session.setTavernOpen(true); this.ports.onOpenChange?.(true); this.show('overview'); this.get<HTMLButtonElement>('[data-do="close"]').focus();
+  }
+  /** Navigate to a recruited companion using the regular Tavern screen. */
+  openCompanion(who: Companion): boolean {
+    const live = this.ports.session();
+    if (!live || live.error || live.suspended || live.awaitingResume || live.inputBusy
+      || !live.battle.settlement.tavernBuilt || who === 'ilyra' && !live.battle.ilyra) return false;
+    this.open();
+    if (!this.isOpen) return false;
+    this.select(who); return true;
   }
   close(): void { this.resetCelebration(); this.resetReactionHint(); this.ports.onCompanion?.(null); this.animation.stop(); this.dialog.close(); this.ports.session()?.setTavernOpen(false); this.generation++; this.opener?.focus(); }
   private back(): void { if (this.inConversation) { this.endMoment(); return; } if (this.screen === 'character') this.show('overview'); else this.close(); }
@@ -459,6 +471,7 @@ export class TavernUI {
       const saved = await session.command(b => { chosen = b.chooseCompanionEncounter(who, current.id, choice); }, true);
       if (!saved || !chosen || generation !== this.generation || this.encounter !== current || !this.isOpen) return;
       current.phase = 'reply'; current.beat = 0; this.renderEncounter();
+      if (voiceForEncounterAnswer(who, current.id, choice)) this.ports.onTouch?.(who);
     } finally { this.pending = false; this.update(); }
   }
   private async nextEncounterBeat(): Promise<void> {

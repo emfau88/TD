@@ -1,0 +1,45 @@
+{
+  "purpose": "Isolated preview only; incomplete interactive scene, no heart4unlock",
+  "entries": [
+    {
+      "code": "MC01",
+      "file": "MC01.mp4",
+      "userApproved": true,
+      "source": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC01\\Mara_MC01_Idle_ComfyUI.mp4",
+      "bytes": 599544,
+      "sha256": "54cedbcd28f7c7db59ca1e940a63d9d7ae04410addb02f21b701deeaeee08df0",
+      "fps": 24,
+      "frames": 90
+    },
+    {
+      "code": "MC02",
+      "file": "MC02.mp4",
+      "userApproved": true,
+      "source": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC02\\Mara_MC02_Gespraech_ComfyUI.mp4",
+      "bytes": 444745,
+      "sha256": "df6d1388760979f9afde9d027eb2f1fb7db846590dcdb5c650f89dee425626a3",
+      "fps": 24,
+      "frames": 56
+    },
+    {
+      "code": "MC03",
+      "file": "MC03.mp4",
+      "userApproved": false,
+      "source": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC03\\Mara_MC03_Haare_ComfyUI.mp4",
+      "bytes": 651581,
+      "sha256": "6c137e9d90264c90c05b671558ee7bb0754d62a775e5f61d3ebde721e656a4b2",
+      "fps": 24,
+      "frames": 73
+    },
+    {
+      "code": "MC05",
+      "file": "MC05.mp4",
+      "userApproved": true,
+      "source": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC05\\Mara_MC05_Hand_ComfyUI.mp4",
+      "bytes": 474141,
+      "sha256": "fcdfa7d92e0739e71b0619be8de5919a800b9953aa45a5dc9df62ed0b3b9069f",
+      "fps": 24,
+      "frames": 73
+    }
+  ]
+}

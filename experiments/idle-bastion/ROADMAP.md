@@ -1,6 +1,8 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
-**Tavernen-Ausbau · 07.11.2026 — bulkweise Umsetzung ausdrücklich beauftragt, Bulk 0/3 abgeschlossen / Bulk 1–2/4 technisch fertig / Bulk 5 Vorbereitung.**
+**Tavernen-Ausbau · 07.11.2026 — bulkweise Umsetzung ausdrücklich beauftragt, Bulk 0/3 abgeschlossen / Bulk 1–2/4 technisch fertig / Bulk 5 in Arbeit.**
+
+**Neue Nutzerpriorität:** Nach laufendem MC03 keine weitere Videoproduktion. MC01/MC05/MC02 freigegeben; restlicher Tresen-, Fenster-, Herz-5-/Outfit-Ausbau Zukunft. Mögliche Bildbegegnungen nur zur Diskussion, noch kein Bildauftrag. Herz1–3 technisch verbessert; gemeinsame menschliche Abnahme/Veröffentlichung und Entscheidung über schlankere spätere Inhalte bleiben offen.
 
 - [x] Mara M01–M08 und Ilyra I01–I07 im aktuellen Chat visuell freigegeben; alle 15 neuen Clips sind im isolierten Umsetzungsbranch lokal integriert; öffentliche Hauptversion unverändert. [Exakte Fassungen und geplante Zuordnung](../../artifacts/idle-bastion/tavern-audit-2026-11-06/clip-replacement-plan.json).
 - [x] Auf ausdrücklichen Nutzerauftrag einen [Markdown-Plan mit Bulks und Abnahmekriterien](docs/TAVERNE_AUSBAUPLAN_2026-11-06.md) erstellt: verständliche Herzbedingungen, Archivierung/Austausch, fehlende Reaktionen, vollständige ortsgebundene Interaktionssets, Herz-4-/5-Erlebnisse, Geschenkrolle und Herzfreischaltung. Geprüfte Spielbasis ist `origin/main` / `daf39fb`; dieser Checkout bleibt der ältere Tavernenbranch. Frühere Einträge und vorhandene lokale Änderungen erhalten.
@@ -9,7 +11,7 @@
 - [x] Bulk 1 technisch umgesetzt:15 Cliprollen, Stimmen, Geschenke, Fehlerwiederholung und echte Hauptspiel-/Reload-Proben bei1280/320px bestanden. Bulk2 ebenfalls implementiert;12 Browserfälle DE/EN mit sichtbaren Kurztexten ohne zusätzliche Menüs. 35/35 gezielte Tests, TypeScript und Produktionsbuild bestanden. [Prüfbericht](../../artifacts/idle-bastion/tavern-implementation-2026-11-07/REPORT.md).
 - [x] Bulk3 abgeschlossen: M09v3 undI08 vom Nutzer freigegeben,17 unveränderte Master/12.397.032Byte lokal integriert. Hände eigeneClips; M02/I02 nach Nutzervergleich für Gespräche behalten, neueM10/I09 verworfen. Kontaktpunkte/übrigeClips/nativeStimmen/Punkte/Geschenke in echterUI geprüft, keine Browserfehler.
 - [x] Bulk4 technisch abgeschlossen: jeFigur zwei optionale Begegnungen bei10/20Siegen, zwei gleichwertige Antworten im bestehendenDialog, dauerhafte Wahl/neutrale Rückbezüge/Fortsetzen. Schema38 nur für Begegnungsrecords, Regeln21 unverändert.512/512 Tests, Produktionsbuild, acht DE/EN-Desktop-/Handyfälle und echtesHauptspiel/Reload grün. Drei geprüfte Farmaufbauten benötigen10:02–11:37Minuten für30Siege; beideFigurenparallel gleicherKampfaufwand, keine harte5-Minuten-Untergrenze. [Bericht](../../artifacts/idle-bastion/tavern-implementation-2026-11-07/REPORT.md).
-- [ ] Menschliche Integrations-/Verständnis-/Inhalts-/Spielgefühlabnahme für Bulk1/2/4 offen. Bulk5: bestehende Tresenpose/V2 gegen Mara-Identität prüfen; zuerst nur MC01/Idle+MC05/Hand als isolierteQualitätsprobe, übrigeRollen erst danach. Keine unnötige Standard-Neuproduktion.
+- [ ] Menschliche Integrations-/Verständnis-/Inhalts-/Spielgefühlabnahme für Bulk1/2/4 offen. Bulk5: bestehende Tresenpose/V2 gegen Mara-Identität geprüft, gemeinsamer480×704-Referenzausschnitt mit beiden Händen kontrolliert; MC01/Idle undMC05/Hand vom Nutzer freigegeben, gemeinsame Ruhe→Hand→Ruhe-Probe aufDesktop/320px einschließlich Fehlerfall bestanden. MC02 ebenfalls vom Nutzer freigegeben; MC03 als letzter laufender Clip, MC04/06/07 nicht starten. Teilset nicht ins Spiel eingebaut. Keine unnötige Standard-Neuproduktion.
 
 **Gegnerdarstellung · 06.11.2026 — Spielcode `40dbe26` auf Main/Pages veröffentlicht.**
 

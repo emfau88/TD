@@ -22,6 +22,79 @@ Taverne II. Oben auf ▶ drücken; Ilyra lässt sich über **Siedlung → Tavern
 **„Ilyra kennenlernen“** selbst freischalten. Dein normaler Spielstand bleibt erhalten.
 Spielstände liegen lokal im Browser. Englisch ist voreingestellt; Deutsch lässt sich im Spielmenü wählen.
 
+<!-- tavern-preview-start -->
+## Tavernen-Testbranch · 07.11.2026
+
+**[▶ Taverne direkt im Spiel testen](https://emfau88.github.io/TD/previews/tavern/tavern-test.html)** ·
+**[▷ Maras neue Tresenclips ansehen](https://emfau88.github.io/TD/previews/tavern/tavern-counter-check.html)**
+
+Die Links zeigen den Branch [`codex/tavern-comfy-integration`](https://github.com/emfau88/TD/tree/codex/tavern-comfy-integration).
+Der normale Spielen-Link oben führt weiterhin zum veröffentlichten Main-Stand.
+
+Im Teststarter ist **Herz 3** vorausgewählt: Mara oder Ilyra wählen, Besuch starten
+und den gewöhnlichen Rückkehrbeleg bestätigen. Danach öffnet sich die Figur im
+**echten Spiel**, mit neuen Clips, Dialogen und Fortschrittshinweisen. Beide Figuren
+sind rekrutiert. Jeder Start erzeugt einen eigenen Testspielstand; die Hauptpartie
+bleibt erhalten. Die erzeugte Spieladresse lässt sich zum Fortsetzen speichern.
+Der Kampf startet pausiert. Weitere Siege gibt es nach Schließen der Taverne und ▶.
+
+Weitere Startpunkte: erster Besuch, Herz 2 mit 10 oder 20 Siegen, 58 Punkte/18 Siege
+und 58 Punkte/30 Siege. „Früher verdiente 4 Herzen“ macht zusätzlich Maras bereits vorhandenes Necken prüfbar; es ist kein neuer Herz-4-Ausbau. Damit lassen sich die neuen Gespräche, ein fehlendes
+persönliches Geschenk und der tatsächliche Aufstieg zu Herz 3 direkt prüfen.
+
+### Ungefähres Beziehungstempo
+
+Die Zeiten gelten **ab dem ersten Tavernenbesuch**, zusätzlich zum Erspielen der
+Taverne nach Welle 12 beziehungsweise Ilyras Rekrutierung nach Boss 25.
+
+| Ziel | Voraussetzung | Größenordnung |
+| --- | --- | --- |
+| Herz 2 | Drei Gespräche: 0→8→16→23; normales Geschenk→35 | Ein kurzer Besuch, bei ruhigem Lesen grob 30–90 Sekunden. Das ist eine Lese-Schätzung; schnelle Klicks können kürzer sein. Keine Mindestzeit. |
+| Herz 3 | 58 Zuneigung, 30 gewonnene normale Livewellen seit dem eigenen Herz 2, persönliches Geschenk bewusst überreichen | Drei geprüfte reguläre Farmaufbauten brauchen etwa 10–12 Minuten Kampfzeit, dazu Besuche und Lesen. Beide bereits auf Herz 2 stehenden Figuren sammeln dieselben Siege parallel. |
+
+Normale Geschenke ersetzen die 30 Siege nicht. Farmen zählt; Bosskämpfe, Niederlagen
+und Offlinegold zählen nicht. In der offenen Taverne pausiert der Kampf. Eine harte
+Fünf-Minuten-Grenze existiert nicht: ein eigens gesetzter Einstiegwellen-Randfall
+benötigte 4:41 Minuten. [Messung und Grenzen](artifacts/idle-bastion/tavern-implementation-2026-11-07/bulk4-timing/REPORT.md).
+Die vorhandene Siegebremse wurde erhalten; neu sind vor allem ihre klare Erklärung
+und die Begegnungen bei 10/20 Siegen. Geschenkzufluss und Vorratsgrenze bleiben
+vorerst bei einem normalen Geschenk je zehn Siege und höchstens 20 im Vorrat.
+
+### Was enthalten ist und was noch fehlt
+
+| Bereich | Stand in diesem Branch |
+| --- | --- |
+| Bestehende Taverne | 17 freigegebene Standardclips inklusive eigener Handreaktionen M09/I08, richtige Kontaktpunkte und ursprüngliche Gestaltung. Alte Animationen im Repo archiviert. |
+| Verständlichkeit | Kurzer passender Fortschrittshinweis, erklärbare gesperrte Herzen, sichtbare persönliche Geschenkübergabe und dezenter Herzglanz. Details bleiben im vorhandenen aufklappbaren Bereich. |
+| Weg Herz 2→3 | Je Figur zwei neue optionale Gespräche mit gleichwertigen Antworten, gespeicherter Erinnerung und neutralem Zweig. Keine zusätzlichen Aufstiegspflichten. |
+| Mara am Tresen | MC01/Ruhe, MC02/Gespräch und MC05/Hand freigegeben. MC03/Haare fertig, Nutzerbeurteilung offen. Alle vier in der separaten Clipprobe; noch kein vollständiger neuer Treffpunkt im Spiel. |
+| Weitere Tresenrollen | MC04/Schulter, MC06/Lachen und MC07/Annäherung nur vorbereitet; weitere Produktion auf Nutzerwunsch zurückgestellt. Alte Vorbeuge-V2 bleibt erhalten. |
+| Ilyra am Fenster, Herz 4/5 | Noch nicht spielbar neu freigeschaltet. Bedingungen, Begegnungen und Geschenkbilanz dieser Etappen sind Zukunftsplanung. Einzelne Bildmomente sind als sparsame Alternative vorgeschlagen, noch nicht produziert. |
+| Outfits und weitere Posen | Zukunftsideen. Keine laufende Generierung. |
+| Abschließende Abnahme | Persönliche Bewertung von Darstellung, Verständlichkeit und Tempo bleibt offen. Die Vorschau dient dieser Prüfung; Übernahme des Tavernenpakets nach Main steht noch aus. |
+
+### Reaktionssounds
+
+Mara verwendet ihren bestehenden Pool aus **10 WAVs**, Ilyra ihren eigenen aus
+**7 MP3s**. Zufällige Auswahl ohne unmittelbare Wiederholung; laufende Stimmen
+werden nicht überlagert oder durch neue Taps neu gestartet, mindestens 2,5 Sekunden
+zwischen Starts. Stimmenregler, Stummschalten, Figurenwechsel und Schließen gelten
+weiter. Die englischen Poolzeilen sind Reaktionsstimmen, keine wortgetreue Vertonung
+der geschriebenen deutschen/englischen Dialoge.
+
+| Situation | Verknüpfung |
+| --- | --- |
+| Schulter, Haare, Hand; auch neue M09/I08 | Jeweils der Pool der ausgewählten Figur. |
+| Zusammen lachen, Kompliment | Jetzt ebenfalls der passende Figurenpool. |
+| Mara necken | Maras Pool, sobald die Geste tatsächlich freigeschaltet ist. |
+| Neue Flirtantworten | Mara: „Du bringst mich auch aus dem Takt.“ und „Weniger Werkzeug, mehr Ablenkung?“; Ilyra: „Such mich ruhig öfter.“ Jeweils erst nach erfolgreichem Speichern der Auswahl. |
+| Ruhige/ernste Antworten, normales Plaudern, Weiter, Fortsetzen, Rückblicke und Idle | Keine zusätzliche zufällige Stimme. Geschenk-/Herzklänge bleiben erhalten. |
+| Separate Tresenprobe | MC05/Hand und MC03/Haare verwenden Maras Pool; MC01/Idle und MC02/Gespräch bleiben ohne zusätzliche Reaktionsstimme. |
+
+[Tavernenplan mit aktuellem Status](experiments/idle-bastion/docs/TAVERNE_AUSBAUPLAN_2026-11-06.md) ·
+[Technische Nachweise](artifacts/idle-bastion/tavern-implementation-2026-11-07/REPORT.md)
+<!-- tavern-preview-end -->
+
 ## Turmentwicklung
 
 Alle fünf Türme entwickeln sich sichtbar auf Level **1 · 2 · 3 · 5 · 10 · 15 · 20 · 25**,

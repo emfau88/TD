@@ -88,3 +88,67 @@ jobs:
       - name: Publish preserved main and feature preview
         id: deployment
         uses: actions/deploy-pages@v4
+
+  tavern-preview:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/codex/tavern-comfy-integration'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      deployments: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}previews/tavern/tavern-test.html
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Build isolated tavern preview
+        run: npm run build
+        env:
+          VITE_FEATURE_PREVIEW: '1'
+          VITE_TAVERN_PREVIEW: '1'
+      - name: Preserve the published site and verify its main baseline
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          main_sha="$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq .sha)"
+          main_run_json="$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/idle-bastion-pages.yml/runs?branch=main&status=success&per_page=1")"
+          main_run_id="$(jq -r '.workflow_runs[0].id // empty' <<< "$main_run_json")"
+          artifact_sha="$(jq -r '.workflow_runs[0].head_sha // empty' <<< "$main_run_json")"
+          test -n "$main_run_id"
+          test "$main_sha" = "$artifact_sha" || { echo 'Main has no matching successful Pages build yet.'; exit 1; }
+          published_run_id=""
+          while read -r deployment_id; do
+            statuses="$(gh api "repos/$GITHUB_REPOSITORY/deployments/$deployment_id/statuses")"
+            test "$(jq -r '.[0].state // empty' <<< "$statuses")" = success || continue
+            published_run_id="$(jq -r '.[0].log_url | capture("/actions/runs/(?<id>[0-9]+)").id' <<< "$statuses")"
+            break
+          done < <(gh api "repos/$GITHUB_REPOSITORY/deployments?environment=github-pages&per_page=30" --jq 'sort_by(.created_at) | reverse | .[].id')
+          test -n "$published_run_id" || { echo 'No successful published Pages baseline found; refusing to discard existing previews.'; exit 1; }
+          gh run download "$main_run_id" --repo "$GITHUB_REPOSITORY" --name github-pages --dir "$RUNNER_TEMP/main-pages"
+          gh run download "$published_run_id" --repo "$GITHUB_REPOSITORY" --name github-pages --dir "$RUNNER_TEMP/published-pages"
+          mkdir "$RUNNER_TEMP/main-site" "$RUNNER_TEMP/preview-site"
+          tar -xf "$RUNNER_TEMP/main-pages/artifact.tar" -C "$RUNNER_TEMP/main-site"
+          tar -xf "$RUNNER_TEMP/published-pages/artifact.tar" -C "$RUNNER_TEMP/preview-site"
+          node scripts/package-tavern-preview.mjs "$RUNNER_TEMP/main-site" dist "$GITHUB_SHA" "$main_sha" "$RUNNER_TEMP/preview-site"
+          echo "PREVIEW_MAIN_SHA=$main_sha" >> "$GITHUB_ENV"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/preview-site
+      - name: Ensure main did not advance while packaging
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: test "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq .sha)" = "$PREVIEW_MAIN_SHA"
+      - name: Publish preserved main and isolated tavern preview
+        id: deployment
+        uses: actions/deploy-pages@v4

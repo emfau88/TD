@@ -1,4 +1,5 @@
 import { gameDatabase } from './save-namespace';
+import { tavernTestCompanion } from './tavern-test-route';
 import { TavernStoryHistory } from './tavern-story-history';
 import { mountCredits } from './credits-ui';
 import { offlineGoldDisplay } from './reward-display';
@@ -94,7 +95,10 @@ if (entryURL.searchParams.has('fresh')) {
 const probeSlot = entryURL.searchParams.get('probe');
 // Explicit fresh probes keep the user's main game and its offline clock intact.
 const featurePreview = import.meta.env.VITE_FEATURE_PREVIEW === '1';
-const databaseName = gameDatabase(featurePreview, probeSlot);
+const tavernPreview = featurePreview && import.meta.env.VITE_TAVERN_PREVIEW === '1';
+const tavernProbeCompanion = tavernTestCompanion(featurePreview, tavernPreview, entryURL.searchParams);
+let tavernProbePending = !!tavernProbeCompanion;
+const databaseName = gameDatabase(featurePreview, probeSlot, tavernPreview);
 let session: BattleSession | undefined;
 let intro: MaraIntro | undefined;
 let introPortraits: string[] = [];
@@ -134,6 +138,15 @@ let mobileHintStep = -1;
 let ready = false;
 let tavernStories: TavernStoryHistory | undefined;
 const tavernUI = new TavernUI({ storyHistory: () => tavernStories, session: () => session, presentation: videoPresentation, navigate: kind => openContext(kind, true), onOpenChange: open => audio.setTavern(open), onGift: () => audio.play('gift'), onHeart: () => audio.play('gift'), onCompanion: who => audio.setCompanion(who), onTouch: who => audio.touchCompanion(who) });
+function openTavernProbe(): void {
+  const live = session;
+  if (!tavernProbePending || !tavernProbeCompanion || !ready || !scene || !live || live.temporary
+    || live.error || live.suspended || live.inputBusy || live.awaitingResume || intro?.active
+    || document.hidden || loadingScreen()?.visible || document.querySelector('dialog[open]')) return;
+  // Set first: opening the real dialog synchronously notifies the session/UI.
+  tavernProbePending = false;
+  if (!tavernUI.openCompanion(tavernProbeCompanion)) tavernProbePending = true;
+}
 const quickWins = new QuickWinGuidance(databaseName, { action: openQuickWin, dismissed: acknowledgeQuickWin }, lifetime.signal);
 const tutorialGuide = new TutorialGuide();
 let booting = false;
@@ -193,6 +206,7 @@ function syncUI(): void {
     : live.temporary ? t('Temporäre Probe · kein Speichern und kein Offline-Ertrag')
     : live.busy ? t('Wird gespeichert …') : t('1× · dieser Tab ist aktiv · lokal gespeichert'));
   tavernUI.update();
+  openTavernProbe();
   if (live.inputBusy) return;
   const sim = live.battle;
   if (selectedHero && !heroContextAvailable()) clearHeroSelection();
@@ -992,6 +1006,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
           }
           if (['ready', 'combat', 'upgrade', 'frost', 'observe'].includes(live.battle.introduction.stage)) view.focusGuidedDefense();
           loadingScreen()?.complete();
+          openTavernProbe();
           if (intro?.active) element('onboarding-primary').focus({ preventScroll: true });
         }
         catch { ready = false; view.paused = true; showError(t('Das Spiel konnte nicht gestartet werden. Bitte versuche es erneut.')); }

@@ -1,0 +1,79 @@
+{
+  "base": "http://127.0.0.1:5278/",
+  "cases": [
+    {
+      "preset": "heart3",
+      "who": "mara",
+      "width": 1280,
+      "language": "de",
+      "points": 70,
+      "url": "http://127.0.0.1:5278/index.html?probe=tavern-review-e8c2e09b-9dfe-4b17-8e1f-ad8aaf19edd0&tavernTest=mara",
+      "overflow": false
+    },
+    {
+      "preset": "heart3",
+      "who": "ilyra",
+      "width": 320,
+      "language": "en",
+      "points": 70,
+      "url": "http://127.0.0.1:5278/index.html?probe=tavern-review-7bee7c40-5dfd-4aaa-a17d-52fb59ea3e79&tavernTest=ilyra",
+      "overflow": false
+    },
+    {
+      "preset": "fresh",
+      "who": "mara",
+      "width": 320,
+      "language": "de",
+      "points": 0,
+      "url": "http://127.0.0.1:5278/index.html?probe=tavern-review-bd9ffa4d-4877-432b-afb4-c10664728dd8&tavernTest=mara",
+      "overflow": false
+    },
+    {
+      "preset": "heart2-10",
+      "who": "ilyra",
+      "width": 1280,
+      "language": "de",
+      "points": 35,
+      "url": "http://127.0.0.1:5278/index.html?probe=tavern-review-0d16354e-30a0-44c3-9967-22d5d47944a8&tavernTest=ilyra",
+      "overflow": false
+    },
+    {
+      "preset": "heart2-20",
+      "who": "mara",
+      "width": 320,
+      "language": "en",
+      "points": 35,
+      "url": "http://127.0.0.1:5278/index.html?probe=tavern-review-74c99195-9526-4155-b4b9-30f4ad81b54b&tavernTest=mara",
+      "overflow": false
+    },
+    {
+      "preset": "gift58-18",
+      "who": "mara",
+      "width": 1280,
+      "language": "de",
+      "points": 58,
+      "url": "http://127.0.0.1:5278/index.html?probe=tavern-review-95fe660f-bf80-4fae-90c3-7040533c483a&tavernTest=mara",
+      "overflow": false
+    },
+    {
+      "preset": "gift58-30",
+      "who": "ilyra",
+      "width": 320,
+      "language": "de",
+      "points": 58,
+      "url": "http://127.0.0.1:5278/index.html?probe=tavern-review-de28845d-d4ca-4441-9bf9-3ac7272357e2&tavernTest=ilyra",
+      "overflow": false
+    },
+    {
+      "preset": "legacy4",
+      "who": "mara",
+      "width": 1280,
+      "language": "de",
+      "points": 110,
+      "url": "http://127.0.0.1:5278/index.html?probe=tavern-review-f4655578-d265-47a0-9fa8-af6c33fc1a05&tavernTest=mara",
+      "overflow": false
+    }
+  ],
+  "counterVoiceAndReturn": true,
+  "errors": []
+}

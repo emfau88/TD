@@ -9,12 +9,39 @@ import { legacyFixtures } from './legacy-fixtures';
 test('production preserves original main and probe names; preview remains isolated', () => {
   for (const probe of [undefined, null, '', '../bad', 'UPPER', 'a'.repeat(61)]) {
     assert.equal(gameDatabase(false, probe), 'spire-idle-bastion');
+    assert.equal(gameDatabase(false, probe, true), 'spire-idle-bastion');
     assert.equal(gameDatabase(true, probe), 'spire-idle-bastion-tower-evolution');
+    assert.equal(gameDatabase(true, probe, false), 'spire-idle-bastion-tower-evolution');
+    assert.equal(gameDatabase(true, probe, true), 'spire-tavern-preview-v1');
   }
   for (const probe of ['a', 'a'.repeat(60), 'old-2026-10-21', 'tower-arena-old']) {
     assert.equal(gameDatabase(false, probe), `spire-idle-bastion-probe-${probe}`);
+    assert.equal(gameDatabase(false, probe, true), `spire-idle-bastion-probe-${probe}`);
     assert.equal(gameDatabase(true, probe), `spire-idle-bastion-tower-evolution-${probe}`);
+    assert.equal(gameDatabase(true, probe, false), `spire-idle-bastion-tower-evolution-${probe}`);
+    assert.equal(gameDatabase(true, probe, true), `spire-tavern-preview-v1-${probe}`);
   }
+});
+
+test('direct main, Tower preview and Tavern preview links persist independent default saves', async () => {
+  const factory = new IDBFactory();
+  const main = await openBattleStore(factory, gameDatabase(false));
+  const tower = await openBattleStore(factory, gameDatabase(true));
+  const tavern = await openBattleStore(factory, gameDatabase(true, undefined, true));
+  const b = IdleBattle.newGame();
+  await main.save(b.snapshot(), false, 0);
+  await tower.save(b.snapshot(), true, 0);
+  const mainBefore = await main.load(), towerBefore = await tower.load();
+  assert.deepEqual(await tavern.load(), { kind: 'empty' });
+  b.beginIntroduction();
+  await tavern.save(b.snapshot(), true, 0);
+  const tavernBefore = await tavern.load();
+  tavern.close();
+  const reload = await openBattleStore(factory, gameDatabase(true, undefined, true));
+  assert.deepEqual(await reload.load(), tavernBefore);
+  assert.deepEqual(await main.load(), mainBefore);
+  assert.deepEqual(await tower.load(), towerBefore);
+  reload.close(); main.close(); tower.close();
 });
 
 test('existing historical main/probe saves survive boot selection and a persisted reload without crossing namespaces', async () => {
