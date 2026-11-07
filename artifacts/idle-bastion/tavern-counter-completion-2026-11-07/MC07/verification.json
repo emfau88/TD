@@ -1,0 +1,110 @@
+{
+  "character": "mara",
+  "clip": "MC07",
+  "video": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC07\\Mara_MC07_Annaeherung_ComfyUI.mp4",
+  "source_video": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC07\\generated\\Mara_MC07_Approach_Tresen_H3_480x704_24fps_00001_.mp4",
+  "video_sha256": "e81bbb5125c8e4c4aceedecf0bc4daf926c2906a85cd3c36e30eba68ebb8c6f8",
+  "native_copy_unchanged": true,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 704,
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "duration": "4.458333",
+        "nb_read_frames": "107"
+      }
+    ],
+    "format": {
+      "duration": "4.458333",
+      "size": "934715"
+    }
+  },
+  "decode_passed": true,
+  "reference_original_sha256": "93d84c667a7466b0c76b5d43c8d26a2d970cbe06c07951b7a685661cdb612895",
+  "reference_original_unchanged": true,
+  "reference_unchanged": true,
+  "shared_crop_chain": {
+    "original": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\mara-counter-pose-v1\\mara-counter-base.png",
+    "original_sha256": "93d84c667a7466b0c76b5d43c8d26a2d970cbe06c07951b7a685661cdb612895",
+    "input": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC07\\input\\Mara_MC07_Originalreferenz.png",
+    "input_sha256": "93d84c667a7466b0c76b5d43c8d26a2d970cbe06c07951b7a685661cdb612895",
+    "processed_reference": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\reference-check\\generated\\Mara_Counter_Referenz_480x704_00001_.png",
+    "processed_reference_sha256": "0132e3e8e044831e53c6edbdb3a9008389f950815273d9bc2f537d64ba575085",
+    "original_dimensions": [
+      1086,
+      1448
+    ],
+    "crop": {
+      "x": 99,
+      "y": 0,
+      "width": 987,
+      "height": 1448
+    },
+    "scale": {
+      "width": 480,
+      "height": 704,
+      "method": "lanczos",
+      "further_crop": "disabled"
+    },
+    "chain": "LoadImage -> ImageCrop(99,0,987,1448) -> ImageScale(480,704,lanczos)",
+    "identical_first_last_input": true,
+    "shared_between_MC01_MC05": true
+  },
+  "render_seconds": 348.2,
+  "comparison": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC07\\Mara_MC07_Vergleich_Referenz_vs_ComfyUI.mp4",
+  "comparison_seconds": 5.208333333333333,
+  "comparison_fps": 120,
+  "comparison_details": {
+    "file": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC07\\Mara_MC07_Vergleich_Referenz_vs_ComfyUI.mp4",
+    "seconds": 5.208333333333333,
+    "fps": 120,
+    "left": "Shared processed starting reference, held still; not an old game animation.",
+    "right": "New probe at native speed followed by its final-frame hold.",
+    "interpolation": false,
+    "frame_rate_note": "120 FPS uses frame duplication only; no optical flow or new intermediate poses."
+  },
+  "review_frame_indices": [
+    0,
+    10,
+    19,
+    29,
+    39,
+    48,
+    58,
+    67,
+    77,
+    87,
+    96,
+    106
+  ],
+  "all_frame_sheets": true,
+  "sample_crops": {
+    "face": [
+      85,
+      28,
+      250,
+      240
+    ],
+    "hands": [
+      155,
+      350,
+      310,
+      185
+    ]
+  },
+  "all_near_hand_frame_sheets": false,
+  "near_hand_crop": null,
+  "assistant_review": "Inspected all 107 full frames, both-hands crops for every frame, enlarged face samples, and endpoints beside approved MC01. No foreign hands, conspicuous finger-shape jumps, neck collapse or identity/outfit change observed. More readable lean and expressive face than old mesh V2. Mouth briefly opens with the smile despite the closed-mouth prompt; not a fixed closed-mouth take. Selected as preferred candidate after user delegated reuse choice; human final visual review remains open.",
+  "visual_review": "Ready for user review; no guarantee of error-free generation.",
+  "user_visual_acceptance": "Explicitly approved in chat on 2026-11-07",
+  "game_integration": false,
+  "all_both_hand_frame_sheets": true,
+  "idle_endpoint_visual_comparison": true,
+  "selection": "Prefer new ComfyUI MC07; retain old 4.2-second V2 unchanged."
+}

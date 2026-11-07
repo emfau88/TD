@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { existsSync, readFileSync } from 'node:fs';
+import { compileTavernSceneVideo } from '../src/tavern-scene-video';
 import { isCompleteTavernScene, resolveSceneClip, TAVERN_SCENE_CATALOG, type TavernScene, type TavernSceneId, type SceneRole, type SceneAction } from '../src/tavern-scene-catalog';
 
 function fixture(id: TavernSceneId = 'mara-counter') {
@@ -72,5 +74,17 @@ test('only Mara receives teasing; unknown actions and absent scenes never fall b
   assert.equal(resolveSceneClip(mara.scene, 'unknown' as SceneAction, mara.files), undefined);
   assert.equal(resolveSceneClip(undefined, 'hand', mara.files), undefined);
   assert.equal(resolveSceneClip({ clips: {} }, 'idle', mara.files), undefined);
-  assert.deepEqual(TAVERN_SCENE_CATALOG, {}, 'no undelivered or unapproved scene registered');
+  assert.deepEqual(Object.keys(TAVERN_SCENE_CATALOG), ['mara-counter'], 'only the complete approved scene is registered');
+});
+
+test('registered production scene has all seven actual files, shared artwork and valid timing', () => {
+  const scene = TAVERN_SCENE_CATALOG['mara-counter']!;
+  const base = new URL('../assets/tavern-video/', import.meta.url);
+  const media = JSON.parse(readFileSync(new URL('mara-counter/media.json', base), 'utf8'));
+  const urls = Object.fromEntries(Object.values(scene.clips).map(clip => {
+    const url = new URL(clip.file, base); assert.ok(existsSync(url), clip.file); return [clip.file, url.href];
+  }));
+  for (const file of ['background.png', 'poster.png']) assert.ok(existsSync(new URL(`mara-counter/${file}`, base)));
+  assert.ok(compileTavernSceneVideo({scene, media, poster:'poster.png', background:'background.png',
+    anchors:{hair:{x:125,y:143},shoulder:{x:125,y:249},hand:{x:273,y:459}}}, urls));
 });

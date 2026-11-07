@@ -15,8 +15,15 @@ export interface TavernScene {
   readonly clips: Readonly<Record<SceneRole, SceneClip>>;
 }
 
-// Populated only after all local roles and their media have been delivered.
-export const TAVERN_SCENE_CATALOG: Readonly<Partial<Record<TavernSceneId, TavernScene>>> = Object.freeze({});
+const counterPose = 'mara-counter:upright', counterReference = 'mara-counter-93d84c667a74';
+const counterClip = (id: string): SceneClip => Object.freeze({ file: `mara-counter/${id}.mp4`,
+  startPose: counterPose, endPose: counterPose, referenceId: counterReference });
+// Only complete, user-approved sets belong here. Ilyra's window is still in production.
+export const TAVERN_SCENE_CATALOG: Readonly<Partial<Record<TavernSceneId, TavernScene>>> = Object.freeze({
+  'mara-counter': Object.freeze({ id: 'mara-counter', companion: 'mara', basePose: counterPose, referenceId: counterReference,
+    clips: Object.freeze({ idle: counterClip('MC01'), talk: counterClip('MC02'), hair: counterClip('MC03'),
+      shoulder: counterClip('MC04'), hand: counterClip('MC05'), laugh: counterClip('MC06'), approach: counterClip('MC07') }) }),
+});
 const roles: readonly SceneRole[] = ['idle', 'talk', 'hair', 'shoulder', 'hand', 'laugh', 'approach'];
 const actionRoles: Readonly<Record<SceneAction, SceneRole>> = {
   idle: 'idle', talk: 'talk', gift: 'talk', hair: 'hair', shoulder: 'shoulder', hand: 'hand',

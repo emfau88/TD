@@ -1,0 +1,109 @@
+{
+  "character": "mara",
+  "clip": "MC04",
+  "video": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC04\\Mara_MC04_Schulter_ComfyUI.mp4",
+  "source_video": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC04\\generated\\Mara_MC04_Shoulder_Tresen_H3_480x704_24fps_00001_.mp4",
+  "video_sha256": "04a0861a7f016ae5748dfa911b97867fd5b115aefe45b34599070e20ab14b021",
+  "native_copy_unchanged": true,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 704,
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "duration": "2.333333",
+        "nb_read_frames": "56"
+      }
+    ],
+    "format": {
+      "duration": "2.333333",
+      "size": "419431"
+    }
+  },
+  "decode_passed": true,
+  "reference_original_sha256": "93d84c667a7466b0c76b5d43c8d26a2d970cbe06c07951b7a685661cdb612895",
+  "reference_original_unchanged": true,
+  "reference_unchanged": true,
+  "shared_crop_chain": {
+    "original": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\mara-counter-pose-v1\\mara-counter-base.png",
+    "original_sha256": "93d84c667a7466b0c76b5d43c8d26a2d970cbe06c07951b7a685661cdb612895",
+    "input": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC04\\input\\Mara_MC04_Originalreferenz.png",
+    "input_sha256": "93d84c667a7466b0c76b5d43c8d26a2d970cbe06c07951b7a685661cdb612895",
+    "processed_reference": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\reference-check\\generated\\Mara_Counter_Referenz_480x704_00001_.png",
+    "processed_reference_sha256": "0132e3e8e044831e53c6edbdb3a9008389f950815273d9bc2f537d64ba575085",
+    "original_dimensions": [
+      1086,
+      1448
+    ],
+    "crop": {
+      "x": 99,
+      "y": 0,
+      "width": 987,
+      "height": 1448
+    },
+    "scale": {
+      "width": 480,
+      "height": 704,
+      "method": "lanczos",
+      "further_crop": "disabled"
+    },
+    "chain": "LoadImage -> ImageCrop(99,0,987,1448) -> ImageScale(480,704,lanczos)",
+    "identical_first_last_input": true,
+    "shared_between_MC01_MC05": true
+  },
+  "render_seconds": 174.1,
+  "comparison": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC04\\Mara_MC04_Vergleich_Referenz_vs_ComfyUI.mp4",
+  "comparison_seconds": 3.0833333333333335,
+  "comparison_fps": 120,
+  "comparison_details": {
+    "file": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC04\\Mara_MC04_Vergleich_Referenz_vs_ComfyUI.mp4",
+    "seconds": 3.0833333333333335,
+    "fps": 120,
+    "left": "Shared processed starting reference, held still; not an old game animation.",
+    "right": "New probe at native speed followed by its final-frame hold.",
+    "interpolation": false,
+    "frame_rate_note": "120 FPS uses frame duplication only; no optical flow or new intermediate poses."
+  },
+  "review_frame_indices": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    55
+  ],
+  "all_frame_sheets": true,
+  "sample_crops": {
+    "face": [
+      85,
+      28,
+      250,
+      240
+    ],
+    "hands": [
+      155,
+      350,
+      310,
+      185
+    ]
+  },
+  "all_near_hand_frame_sheets": false,
+  "near_hand_crop": null,
+  "assistant_review": "Inspected all 56 full frames plus both-hands crops for every frame and 12 enlarged face samples. No foreign hand, conspicuous finger-shape jump, neck collapse, identity/outfit change or scene intrusion observed. Compact subtle shoulder/body relaxation; human playback judgement still pending.",
+  "visual_review": "Ready for user review; no claim of guaranteed error-free generation.",
+  "user_visual_acceptance": "Explicitly approved in chat on 2026-11-07",
+  "game_integration": false,
+  "all_both_hand_frame_sheets": true,
+  "idle_endpoint_visual_comparison": true
+}

@@ -1,6 +1,8 @@
 import type { TavernSceneClip } from './tavern-content';
 import type { Companion, Interaction } from './tavern-social';
 import type { TouchRegion } from './tavern-animation';
+import type { TavernSceneId } from './tavern-scene-catalog';
+export type TavernLocation = 'standard' | TavernSceneId;
 
 // The same tavern UI can review new artwork without switching the published game.
 export interface TavernPlayer {
@@ -16,6 +18,11 @@ export interface TavernPlayer {
   setHearts?(count: number): void;
   act?(action: Interaction): void;
   gesture?(key: string): void;
+  readonly location?: TavernLocation;
+  readonly changingLocation?: boolean;
+  canVisit?(location: TavernLocation): boolean;
+  setLocation?(location: TavernLocation): Promise<boolean>;
+  anchors?(): Record<TouchRegion, { x: number; y: number }>;
 }
 export interface TavernPresentation {
   kind: string;

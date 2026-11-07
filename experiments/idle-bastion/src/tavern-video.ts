@@ -9,6 +9,7 @@ import { TAVERN_ANCHORS, TAVERN_GESTURES } from './tavern-gestures';
 import type { TavernPlayer, TavernPresentation } from './tavern-presentation';
 import { compileTavernSceneVideo, sceneVideoRole, type TavernSceneVideoConfig, type CompiledTavernSceneVideo } from './tavern-scene-video';
 import type { SceneAction } from './tavern-scene-catalog';
+import { TavernVisitPlayer } from './tavern-visit-player';
 import './tavern-rig.css';
 import './tavern-video.css';
 
@@ -50,6 +51,14 @@ export class TavernVideoPlayer implements TavernPlayer {
   }
   private get clips(): Readonly<Record<string, Clip>> { return this.localScene?.clips ?? manifest.heroes[this.who]; }
   private get warmKeys(): readonly string[] { return this.localScene ? ['talk', 'shoulder'] : ['head', 'touch']; }
+  /** A staged scene is attached only after its idle frame has decoded. */
+  attachCanvas(canvas: HTMLCanvasElement): void {
+    this.canvas = canvas; canvas.width = 480; canvas.height = 700;
+    canvas.dataset.companion = this.who; canvas.dataset.renderer = 'video';
+    canvas.closest<HTMLElement>('.tv-stage')?.setAttribute('data-video', 'true');
+    if (this.localScene) this.applySceneBackground(this.localScene);
+    this.drawn = ''; this.draw();
+  }
   setHearts(count: number) { this.count = count; }
   async start(who: Companion = this.localScene?.companion ?? 'mara'): Promise<void> {
     this.stop(); this.active = true; this.who = who;
@@ -264,7 +273,7 @@ export class TavernVideoPlayer implements TavernPlayer {
 
 export const videoPresentation: TavernPresentation = {
   kind: 'rigged',
-  create: (canvas, changed) => new TavernVideoPlayer(canvas, changed),
+  create: (canvas, changed) => new TavernVisitPlayer(canvas, changed),
   portrait: who => posters[who],
   async drawPortrait(canvas, who) {
     const image = new Image(); image.src = portraits[who]; await image.decode();

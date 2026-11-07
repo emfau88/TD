@@ -1,0 +1,32 @@
+{
+  "clip": "IF02",
+  "video": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\ilyra-window\\IF02\\Ilyra_IF02_Gespraech_ComfyUI.mp4",
+  "native_copy_unchanged": true,
+  "video_sha256": "73b602294c1723c050f0bae4845b61779ca32788070752cd2b45d482b96bf171",
+  "decode_passed": true,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 704,
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "duration": "2.333333",
+        "nb_read_frames": "56"
+      }
+    ],
+    "format": {
+      "duration": "2.333333",
+      "size": "456575"
+    }
+  },
+  "source_reference_sha256": "1a5a73fb8c69cf19db7f085f700bb33e49c9f59534e555f25037898bf6d505fc",
+  "render_seconds": 174.1,
+  "visual_review": "All 56 decoded frames and hand details inspected; enlarged face sequence checked. Small coherent inclination and blink, stable ledge contact, no observed foreign hand, finger flicker or neck collapse.",
+  "user_approved": false,
+  "game_integration": false
+}

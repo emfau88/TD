@@ -1,0 +1,267 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_w4a8_mixed.safetensors",
+      "weight_dtype": "default"
+    },
+    "_meta": {
+      "title": "H3 / speichersparendes W4A8-Modell"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+      "type": "krea2",
+      "device": "default"
+    },
+    "_meta": {
+      "title": "Kleiner Textencoder / automatisch auslagern"
+    }
+  },
+  "3": {
+    "class_type": "ClipProjApply",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "projection": "mmh3-4b-ClipProj-v3.1.safetensors"
+    },
+    "_meta": {
+      "title": "Textencoder an H3 anpassen"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    },
+    "_meta": {
+      "title": "H3 Video-Decoder / INT8"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "Mara_MC04_Originalreferenz.png"
+    },
+    "_meta": {
+      "title": "MC04 - unveraenderte Originalzeichnung am Tresen"
+    }
+  },
+  "6": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "19",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 480,
+      "height": 704,
+      "crop": "disabled"
+    },
+    "_meta": {
+      "title": "MC04 - Crop proportional auf 480 x 704"
+    }
+  },
+  "7": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "A single continuous 2.33-second 2D illustrated fantasy game relaxed shoulder reaction. The adult illustrated woman Mara from <Picture 1> is alone at the same wooden tavern counter throughout. Preserve her exact green eyes, red hair and single thick braid over the shoulder on the left of the image, teal scarf and cape, burgundy leather bodice with gold fastenings, rolled white sleeves, brown fingerless gloves, belt, dark trousers, jewelry and two turquoise bottles. Keep the exact drawn face, proportions, clothing coverage, colored outlines and painted cel shading. She briefly relaxes her own shoulders and lets a little upper-body tension release, with a warm knowing glance at the viewer and a restrained closed-mouth smile. The small movement stays coherent through the upper torso and neck; it is not a shrug, bow or large lean. Her head remains comfortably upright and her neck keeps its original length. Both of her own hands remain supported at their original counter contacts with stable finger shapes. The forearms follow only the tiny shoulder release, without sliding the hands. Briefly hold the relaxed expression, then settle to the exact original stance. Keep the bust, braid and cape calm, without independent motion, repeated breathing pulses or swaying. Start and finish in the exact supplied counter stance, with both of her own hands resting at their original places on the wooden counter, open eyes and the original small closed-mouth smile. Keep natural neck length and comfortable original chin-to-scarf spacing. The head follows the small body movement naturally and never slides or sinks into the shoulders. Both hands belong to Mara; no other person appears. Preserve the original relaxed finger shape and thumb position, with all fingers stable relative to their palm. The camera, framing, counter, tavern furniture and warm lighting remain completely fixed. The countertop and all existing props remain unchanged. All originally open space above the counter and around her stays empty; the existing counter remains fully intact. Nothing enters or leaves the frame. Keep the original illustrated game artwork throughout. No speaking, lip sync, captions, music or sound.",
+      "width": 480,
+      "height": 704,
+      "length": 56,
+      "first_frame": [
+        "6",
+        0
+      ],
+      "last_frame": [
+        "6",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "MC04 - Shoulder aus derselben Tresen-Grundpose"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    },
+    "_meta": {
+      "title": "H3 Grundeinstellungen"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "conditioning": [
+        "7",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "H3 ohne zusaetzliches CFG"
+    }
+  },
+  "10": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2611075004
+    },
+    "_meta": {
+      "title": "Fester Vergleichs-Seed"
+    }
+  },
+  "11": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    },
+    "_meta": {
+      "title": "H3 Sampler"
+    }
+  },
+  "12": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "20 Schritte fuer den Qualitaetstest"
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "10",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "11",
+        0
+      ],
+      "sigmas": [
+        "12",
+        0
+      ],
+      "latent_image": [
+        "7",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Video berechnen"
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "H3-Decoder / automatische Kacheln"
+    }
+  },
+  "15": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "14",
+        0
+      ],
+      "batch_index": 0,
+      "length": 56
+    },
+    "_meta": {
+      "title": "56 native Frames / 24 FPS"
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "15",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": "auto",
+      "color_space": "sRGB",
+      "chroma_subsampling": "420",
+      "codec": "none"
+    },
+    "_meta": {
+      "title": "24 Bilder pro Sekunde"
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "Mara_MC04_Shoulder_Tresen_H3_480x704_24fps",
+      "format": "mp4",
+      "format.codec": "h264"
+    },
+    "_meta": {
+      "title": "MC04 · separate Videoprobe"
+    }
+  },
+  "19": {
+    "class_type": "ImageCrop",
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ],
+      "width": 987,
+      "height": 1448,
+      "x": 99,
+      "y": 0
+    },
+    "_meta": {
+      "title": "MC04 - Original 99/0/987/1448"
+    }
+  }
+}

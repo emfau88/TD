@@ -25,6 +25,8 @@ Spielstände liegen lokal im Browser. Englisch ist voreingestellt; Deutsch läss
 <!-- tavern-preview-start -->
 ## Taverne und direkte Testzugänge · 07.11.2026
 
+**Neuer Arbeitsstand `codex/tavern-counter-completion`:** Alle sieben Mara-Tresenclips sind freigegeben und als zusammengehörige Szene eingebunden. Lokal im [Teststarter](http://127.0.0.1:5278/tavern-test.html) „Früher verdiente 4 Herzen“ und Mara wählen, dann **Sprechen → Zum Tresen**. [Prüfbericht und Ingame-Bilder](artifacts/idle-bastion/tavern-counter-completion-2026-11-07/REPORT.md). Dieser neue Stand ist noch nicht auf Main veröffentlicht; der neue Fortschritt von Herz 3 auf 4 bleibt offen.
+
 **Aktueller Hostinghinweis:** Das [Hauptspiel](https://emfau88.github.io/TD/) enthält den übernommenen Tavernenstand. Die beiden öffentlichen Direktlinks unten sind nach der Main-Veröffentlichung vorübergehend nicht erreichbar: GitHub Pages brach die Wiederherstellung nach zehn Minuten ab. Am Entwicklungs-PC funktioniert der [lokale Teststarter](http://127.0.0.1:5278/tavern-test.html). Der Wiederherstellungspunkt bleibt in der Roadmap offen.
 
 **[▶ Taverne direkt im Spiel testen](https://emfau88.github.io/TD/previews/tavern/tavern-test.html)** ·
@@ -72,9 +74,9 @@ vorerst bei einem normalen Geschenk je zehn Siege und höchstens 20 im Vorrat.
 | Verständlichkeit | Kurzer passender Fortschrittshinweis, erklärbare gesperrte Herzen, sichtbare persönliche Geschenkübergabe und dezenter Herzglanz. Details bleiben im vorhandenen aufklappbaren Bereich. |
 | Mobile Darstellung | Die Figur bleibt beim Öffnen von Herzmomenten und Gesprächen gleich groß. Längere Texte und Antworten lassen sich im Textbereich scrollen. Der dunkle Übergang bei Komplimenten wurde durch die normale kurze Bildüberblendung ersetzt. |
 | Weg Herz 2→3 | Je Figur zwei neue optionale Gespräche mit gleichwertigen Antworten, gespeicherter Erinnerung und neutralem Zweig. Beide Antworten stehen direkt in der unteren Aktionsleiste. Siedlung/Taverne und Figuren zeigen neue oder fortsetzbare Gespräche an. Keine zusätzlichen Aufstiegspflichten. |
-| Mara am Tresen | MC01/Ruhe, MC02/Gespräch, MC03/Haare und MC05/Hand freigegeben. Alle vier in der separaten Clipprobe; noch kein vollständiger neuer Treffpunkt im Spiel. |
-| Weitere Tresenrollen | MC04/Schulter, MC06/Lachen und MC07/Annäherung nur vorbereitet; weitere Produktion auf Nutzerwunsch zurückgestellt. Alte Vorbeuge-V2 bleibt erhalten. |
-| Ilyra am Fenster, Herz 4/5 | Noch nicht spielbar neu freigeschaltet. Bedingungen, Begegnungen und Geschenkbilanz dieser Etappen sind Zukunftsplanung. Einzelne Bildmomente sind als sparsame Alternative vorgeschlagen, noch nicht produziert. |
+| Mara am Tresen | MC01–MC07 freigegeben. Vollständige lokale Szene mit eigenem Raum, passenden Berührungspunkten und vorhandenen Stimmen. Für bereits verdientes Herz 4 über Sprechen erreichbar. |
+| Weitere Tresenrollen | MC04/Schulter, MC06/Lachen, neue MC07/Annäherung ausdrücklich freigegeben und integriert. Alte Vorbeuge-V2 bleibt erhalten. |
+| Ilyra am Fenster, Herz 4/5 | [IF01–IF03 als geprüfte Proben fertig](artifacts/idle-bastion/ilyra-window-probes-2026-11-07/REPORT.md), Nutzerfreigabe offen. Keine Integration des Teilsets. Restliche Clips, neue Fortschrittsbedingungen, Begegnungen und Geschenkbilanz bleiben offen. |
 | Outfits und weitere Posen | Zukunftsideen. Keine laufende Generierung. |
 | Abschließende Abnahme | Main-Übernahme vom Nutzer beauftragt und erfolgt. Der lokale Testzugang ist verfügbar; die öffentlichen Direktlinks müssen nach dem Pages-Fehler wiederhergestellt werden. Eine ausdrückliche Sichtabnahme der letzten I07-Größenkorrektur und eine gemeinsame Bewertung des Tempos werden dadurch nicht als erfolgt behauptet. |
 

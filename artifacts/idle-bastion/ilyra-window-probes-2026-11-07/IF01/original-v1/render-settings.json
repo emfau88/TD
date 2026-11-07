@@ -1,0 +1,46 @@
+{
+  "character": "ilyra",
+  "clip": "IF01",
+  "label": "Ruhe",
+  "prepared_on": "2026-11-07",
+  "width": 480,
+  "height": 704,
+  "frames": 90,
+  "fps": 24,
+  "duration_seconds": 3.75,
+  "seed": 2611076001,
+  "steps": 20,
+  "audio": false,
+  "game_integration": false,
+  "first_and_last_frame": "Ilyra_IF01_Originalreferenz.png",
+  "original_reference": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\ilyra-window\\reference\\Ilyra_Fenster_Originalreferenz.png",
+  "original_dimensions": [
+    1036,
+    1519
+  ],
+  "source_sha256": "1a5a73fb8c69cf19db7f085f700bb33e49c9f59534e555f25037898bf6d505fc",
+  "input_sha256": "1a5a73fb8c69cf19db7f085f700bb33e49c9f59534e555f25037898bf6d505fc",
+  "crop": {
+    "x": 0,
+    "y": 0,
+    "width": 1036,
+    "height": 1519
+  },
+  "template": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC04",
+  "quality_basis": [
+    "ilyra/I01/v2",
+    "ilyra/I02",
+    "mara/M01/v2",
+    "mara/M03",
+    "mara-counter/MC04"
+  ],
+  "render_submitted": "See job.json",
+  "render_requested": true,
+  "engine_sha256": "1403b7db9bc22c9f39527c91fdef66d6d2b5ac0b13852a46c818f6ad7868499c",
+  "authorization": {
+    "clip": "IF01",
+    "authorized": true,
+    "basis": "Latest user: integrate approved MC04/MC06/MC07, then create the next three missing Ilyra clips sequentially and show for approval.",
+    "scope": "IF01–IF03 only, no game integration before visual acceptance"
+  }
+}

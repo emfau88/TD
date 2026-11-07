@@ -13,7 +13,7 @@ import { tavernEncounter, personalGiftLine } from './tavern-encounter-content';
 import { voiceForTavernGesture, voiceForEncounterAnswer } from './tavern-reaction-voice';
 import { TavernAnimation, drawCompanionPortrait, companionPortrait, type TouchRegion } from './tavern-animation';
 import './tavern-ui.css';
-import type { TavernPlayer, TavernPresentation } from './tavern-presentation';
+import type { TavernPlayer, TavernPresentation, TavernLocation } from './tavern-presentation';
 
 type Destination = 'tavern' | 'mara' | 'wisp' | 'ilyra';
 interface Ports { storyHistory?: () => TavernStoryHistory | undefined; presentation?: TavernPresentation; session: () => BattleSession | undefined; navigate: (where: Destination) => void; resume?: () => Promise<void>; onOpenChange?: (open:boolean) => void; onGift?: () => void; onHeart?: () => void; onCompanion?: (who:Companion|null) => void; onTouch?: (who:Companion) => void }
@@ -42,6 +42,7 @@ export class TavernUI {
   private opener?: HTMLElement;
   private portraitsStarted = false;
   private moment?: { heart: number; beat: number };
+  private momentReturn?: TavernLocation;
   private encounter?: { id: EncounterId; phase: 'opening' | 'reply'; beat: number };
   private get inConversation(): boolean { return !!this.moment || !!this.encounter; }
   private newMoment?: number;
@@ -98,6 +99,8 @@ export class TavernUI {
     {
       const gestures = document.createElement('div'); gestures.className = 'tv-gestures'; gestures.id = 'tv-talk-options'; gestures.setAttribute('role', 'group');
       gestures.innerHTML = '<button type="button" data-action="talk"><span>Plaudern</span></button>';
+      const location = document.createElement('button'); location.type = 'button';
+      location.dataset.do = 'switch-location'; location.hidden = true; gestures.append(location);
       gestures.setAttribute('aria-label', 'Gespräch wählen');
       for (const gesture of ports.presentation?.gestures ?? []) {
         const button = document.createElement('button'); button.type = 'button'; button.dataset.gesture = gesture.key; const label = document.createElement('span'); label.textContent = gesture.label; const requirement = document.createElement('small'); button.append(label, requirement); gestures.append(button);
@@ -134,6 +137,7 @@ export class TavernUI {
         case 'story-next': this.nextBeat(); break;
         case 'encounter-listen': void this.nextEncounterBeat(); break;
         case 'story-exit': this.endMoment(); break;
+        case 'switch-location': void this.switchLocation(); break;
         case 'close': this.close(); break;
         case 'resume-visit': void this.ports.resume?.(); break;
         case 'back': this.back(); break;
@@ -229,7 +233,7 @@ export class TavernUI {
     this.get<HTMLImageElement>('.tv-loading-portrait').src = (this.ports.presentation?.portrait ?? companionPortrait)(this.selected);
     if (wasOverview) this.get('.tv-figure canvas').hidden = true;
     if (screen === 'overview') { this.resetReactionHint(); this.generation++; this.pending = false; this.animation.stop(); }
-    else if (wasOverview) { this.text('line', this.content.stage(this.points).greeting); this.result(() => ''); void this.animation.start(this.selected); }
+    else if (wasOverview) { this.momentReturn = undefined; this.animation.setHearts?.(hearts(this.points)); this.text('line', this.content.stage(this.points).greeting); this.result(() => ''); void this.animation.start(this.selected); }
     this.refreshLanguage();
     this.update(); this.positionHotspots();
     if (screen !== 'overview') this.get<HTMLButtonElement>('[data-do="back"]').focus();
@@ -238,7 +242,7 @@ export class TavernUI {
     const canvas = this.get<HTMLCanvasElement>('.tv-figure canvas');
     for (const [key, value] of Object.entries(this.content.reactions)) {
       const target = this.get(`[data-region="${key}"]`);
-      const anchor = this.ports.presentation?.anchors(this.selected)[key as TouchRegion] ?? value;
+      const anchor = this.animation.anchors?.()[key as TouchRegion] ?? this.ports.presentation?.anchors(this.selected)[key as TouchRegion] ?? value;
       target.style.left = `${canvas.offsetLeft + canvas.clientWidth * anchor.x / canvas.width}px`;
       target.style.top = `${canvas.offsetTop + canvas.clientHeight * anchor.y / canvas.height}px`;
     }
@@ -331,7 +335,14 @@ export class TavernUI {
     }
     this.get('.tv-touch-help').textContent = t('Tippe auf die kleinen Herzen: Schulter ab Herz 1, Haare ab Herz 2, Hand ab Herz 3.');
     this.dialog.dataset.reacting = String(this.animation.reacting);
-    const blocked = this.pending || session.inputBusy || !!session.error || session.suspended || session.awaitingResume || !this.animation.ready;
+    const blocked = this.pending || this.animation.changingLocation || session.inputBusy || !!session.error || session.suspended || session.awaitingResume || !this.animation.ready;
+    const location = this.get<HTMLButtonElement>('[data-do=switch-location]');
+    location.hidden = !this.animation.canVisit?.('mara-counter');
+    location.disabled = !!blocked;
+    location.textContent = t(this.animation.location === 'mara-counter' ? 'Wieder an unseren Platz' : 'Zum Tresen');
+    this.dialog.dataset.location = this.animation.location ?? 'standard';
+    this.get('.tv-stage-caption').textContent = this.animation.location === 'mara-counter'
+      ? t('Mara · Am Tresen') : t('{0} · {1}', this.content.name, this.content.role);
     unlock.disabled = blocked;
     const gestures = this.dialog.querySelector<HTMLElement>('.tv-gestures');
     if (gestures) {
@@ -352,7 +363,7 @@ export class TavernUI {
     for (const moment of this.content.moments) {
       const button = this.get<HTMLButtonElement>(`[data-moment="${moment.heart}"]`);
       const available = !!this.content.moment(points, moment.heart);
-      button.disabled = blocked;
+      button.disabled = !!blocked;
       button.dataset.locked = String(!available);
       button.classList.toggle('unlocked', available);
       const unseen = available && !this.storyHistory.isOpened(this.selected, moment.heart);
@@ -378,7 +389,7 @@ export class TavernUI {
       const button = this.get<HTMLButtonElement>(`[data-region="${key}"]`);
       const reaction = this.content.reactions[key], locked = count < reaction.minHearts;
       button.hidden = this.screen === 'overview' || this.inConversation;
-      button.disabled = blocked;
+      button.disabled = blocked || this.animation.location === 'mara-counter' && this.animation.reacting;
       button.dataset.locked = String(locked);
       button.setAttribute('aria-label', t('{0} berühren', t(reaction.label)) + (locked ? t(' · Ab Herz {0}', reaction.minHearts) : ''));
       button.title = locked ? t('{0} berühren · ab Herz {1}', t(reaction.label), reaction.minHearts) : t('{0} berühren', t(reaction.label));
@@ -427,12 +438,18 @@ export class TavernUI {
     if (!session || this.pending || session.inputBusy || session.error || session.suspended || session.awaitingResume || !this.animation.ready || !this.content.moment(this.points, heart)) return;
     const generation = this.generation;
     this.pending = true; this.update();
-    const ready = await this.animation.prepareReactions();
+    const returnTo = this.animation.location ?? 'standard';
+    const located = returnTo === 'standard' || await this.animation.setLocation?.('standard');
+    if (generation !== this.generation || !this.isOpen) return;
+    const ready = located && await this.animation.prepareReactions();
     if (generation !== this.generation || !this.isOpen) return;
     this.pending = false;
-    if (!ready) { this.update(); return; }
+    if (!ready) {
+      if (returnTo !== 'standard') await this.animation.setLocation?.(returnTo);
+      this.update(); return;
+    }
     this.storyHistory.markOpened(this.selected, heart);
-    this.show('character'); this.moment = { heart, beat: 0 };
+    this.show('character'); this.momentReturn = returnTo; this.moment = { heart, beat: 0 };
     if (this.newMoment === heart) this.newMoment = undefined;
     this.renderBeat();
   }
@@ -531,10 +548,13 @@ export class TavernUI {
     const wasEncounter = !!this.encounter;
     this.encounter = undefined;
     this.moment = undefined;
+    const returnTo = this.momentReturn; this.momentReturn = undefined;
+    if (returnTo && returnTo !== 'standard') void this.animation.setLocation?.(returnTo);
     this.text('line', this.content.stage(this.points).greeting);
     this.result(() => wasEncounter ? '' : t('Deine Momente bleiben über die Herzen verfügbar.')); this.update(); this.get('.tv-conversation').scrollTop = 0;
   }
   private async touch(region: TouchRegion): Promise<void> {
+    if (this.animation.changingLocation || this.animation.location === 'mara-counter' && this.animation.reacting) return;
     this.newMoment = undefined; this.update();
     const reaction = this.content.reactions[region];
     if (hearts(this.points) < reaction.minHearts) {
@@ -553,7 +573,7 @@ export class TavernUI {
   }
   private async act(action: Interaction, region: TouchRegion = 'shoulder'): Promise<void> {
     const session = this.ports.session();
-    if (!session || this.pending || session.inputBusy || session.error || session.suspended || session.awaitingResume || !this.animation.ready) return;
+    if (!session || this.pending || this.animation.changingLocation || session.inputBusy || session.error || session.suspended || session.awaitingResume || !this.animation.ready) return;
     if (this.inConversation || action === 'touch' && !this.animation.reactionsReady) return;
     const topic = action === 'talk' && nextEncounter(session.battle.social, this.selected);
     if (topic) { await this.startEncounter(topic); return; }
@@ -578,6 +598,21 @@ export class TavernUI {
       else this.animation.act?.(action);
       this.revealReply(action !== 'touch');
     } finally { this.pendingSocial = undefined; this.pending = false; this.update(); }
+  }
+  private async switchLocation(): Promise<void> {
+    const session = this.ports.session();
+    if (!this.animation.setLocation || !session || this.pending || this.animation.changingLocation
+      || session.inputBusy || session.error || session.suspended || session.awaitingResume || this.inConversation) return;
+    const location = this.animation.location === 'mara-counter' ? 'standard' : 'mara-counter';
+    const generation = this.generation; this.speaking = false; this.touchHint = false;
+    this.result(() => t('Einen Moment …'));
+    const ok = await this.animation.setLocation(location);
+    if (generation !== this.generation || !this.isOpen) return;
+    if (ok) {
+      this.text('line', location === 'mara-counter' ? 'Hier am Tresen haben wir etwas mehr Ruhe. Schön, dass du mitkommst.' : this.content.stage(this.points).greeting);
+      this.result(() => '');
+    } else this.result(() => t('Der Platz konnte nicht geladen werden. Wir bleiben erst einmal hier. Du kannst es erneut versuchen.'));
+    this.refreshLanguage(); this.update();
   }
   private resetCelebration(): void {
     clearTimeout(this.celebrationTimer); this.celebrationTimer = undefined;

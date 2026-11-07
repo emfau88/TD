@@ -1,0 +1,6 @@
+{
+  "clip": "IF02",
+  "authorized": true,
+  "basis": "Latest user: integrate approved MC04/MC06/MC07, then create the next three missing Ilyra clips sequentially and show for approval.",
+  "scope": "IF01–IF03 only, no game integration before visual acceptance"
+}

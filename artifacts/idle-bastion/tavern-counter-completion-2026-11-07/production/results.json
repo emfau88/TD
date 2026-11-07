@@ -1,0 +1,36 @@
+{
+  "base": "http://127.0.0.1:5281/",
+  "passed": true,
+  "cases": [
+    {
+      "language": "de",
+      "viewport": {
+        "width": 1280,
+        "height": 844
+      },
+      "normalMainNamespace": true,
+      "bothFigures": true,
+      "handReactions": true,
+      "complimentReturn": true,
+      "reloadPreserved": true,
+      "productionCounterScene": true,
+      "localizedRoomControl": true,
+      "errors": []
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "normalMainNamespace": true,
+      "bothFigures": true,
+      "handReactions": true,
+      "complimentReturn": true,
+      "reloadPreserved": true,
+      "productionCounterScene": true,
+      "localizedRoomControl": true,
+      "errors": []
+    }
+  ]
+}

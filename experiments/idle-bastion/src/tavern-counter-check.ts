@@ -1,15 +1,18 @@
 import { GameAudio } from './game-audio';
-import idle from '../assets/tavern-counter-probe/MC01.mp4';
-import talk from '../assets/tavern-counter-probe/MC02.mp4';
-import hair from '../assets/tavern-counter-probe/MC03.mp4';
-import hand from '../assets/tavern-counter-probe/MC05.mp4';
-import posterUrl from '../assets/tavern-counter-probe/poster.png';
+import idle from '../assets/tavern-video/mara-counter/MC01.mp4';
+import talk from '../assets/tavern-video/mara-counter/MC02.mp4';
+import hair from '../assets/tavern-video/mara-counter/MC03.mp4';
+import shoulder from '../assets/tavern-video/mara-counter/MC04.mp4';
+import hand from '../assets/tavern-video/mara-counter/MC05.mp4';
+import laugh from '../assets/tavern-video/mara-counter/MC06.mp4';
+import approach from '../assets/tavern-video/mara-counter/MC07.mp4';
+import posterUrl from '../assets/tavern-video/mara-counter/poster.png';
 import './tavern-counter-check.css';
 
 if (!import.meta.env.DEV && import.meta.env.VITE_TAVERN_PREVIEW !== '1') throw new Error('Nur in der getrennten Tavernen-Vorschau verfügbar.');
-const clips = { idle, talk, hair, hand };
+const clips = { idle, talk, hair, shoulder, hand, laugh, approach };
 type Clip = keyof typeof clips;
-const labels: Record<Clip, string> = { idle: 'MC01 · Ruhe', talk: 'MC02 · Gespräch', hair: 'MC03 · Haarreaktion', hand: 'MC05 · Handreaktion' };
+const labels: Record<Clip, string> = { idle: 'MC01 · Ruhe', talk: 'MC02 · Gespräch', hair: 'MC03 · Haarreaktion', shoulder: 'MC04 · Schulter', hand: 'MC05 · Handreaktion', laugh: 'MC06 · Lachen', approach: 'MC07 · Annäherung' };
 const video = document.querySelector<HTMLVideoElement>('#clip')!;
 const poster = document.querySelector<HTMLImageElement>('#poster')!; poster.src = posterUrl;
 const status = document.querySelector<HTMLElement>('#status')!;
@@ -39,7 +42,7 @@ function play(key: Clip, reactionSound = false) {
   timer = setTimeout(failed, 15000); video.src = clips[key]; video.load();
 }
 for (const button of buttons) button.addEventListener('click', () => {
-  const key = button.dataset.clip as Clip; if (Object.hasOwn(clips, key)) play(key, key === 'hair' || key === 'hand');
+  const key = button.dataset.clip as Clip; if (Object.hasOwn(clips, key)) play(key, key !== 'idle' && key !== 'talk');
 });
 const soundStatus = document.querySelector<HTMLElement>('#sound-status')!;
 document.querySelector('#enable-sound')!.addEventListener('click', () => { audio.setMix({ muted: false }); soundStatus.textContent = 'Ton aktiv. Hand- oder Haarreaktion wählen; Stimme und Musik verwenden die vorhandenen Spielregler.'; });

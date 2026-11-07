@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: existing playful gestures use each companion pool; Mara teasing does not leak to Ilyra
+ok 1 - existing playful gestures use each companion pool; Mara teasing does not leak to Ilyra
+  ---
+  duration_ms: 0.8129
+  type: 'test'
+  ...
+# Subtest: playful encounter replies may use a random voice without voicing the quiet or confiding path
+ok 2 - playful encounter replies may use a random voice without voicing the quiet or confiding path
+  ---
+  duration_ms: 0.4693
+  type: 'test'
+  ...
+# Subtest: complete local sets map existing actions to scene-specific clips and the shared resting pose
+ok 3 - complete local sets map existing actions to scene-specific clips and the shared resting pose
+  ---
+  duration_ms: 2.1699
+  type: 'test'
+  ...
+# Subtest: missing roles or missing actual media make the whole scene unavailable
+ok 4 - missing roles or missing actual media make the whole scene unavailable
+  ---
+  duration_ms: 0.2599
+  type: 'test'
+  ...
+# Subtest: crossed companion, standard clip, pose and reference are rejected
+ok 5 - crossed companion, standard clip, pose and reference are rejected
+  ---
+  duration_ms: 0.7329
+  type: 'test'
+  ...
+# Subtest: compatible roles may intentionally reuse one existing local clip
+ok 6 - compatible roles may intentionally reuse one existing local clip
+  ---
+  duration_ms: 0.2003
+  type: 'test'
+  ...
+# Subtest: only Mara receives teasing; unknown actions and absent scenes never fall back
+ok 7 - only Mara receives teasing; unknown actions and absent scenes never fall back
+  ---
+  duration_ms: 0.1776
+  type: 'test'
+  ...
+# Subtest: registered production scene has all seven actual files, shared artwork and valid timing
+ok 8 - registered production scene has all seven actual files, shared artwork and valid timing
+  ---
+  duration_ms: 6.2492
+  type: 'test'
+  ...
+# Subtest: both complete scenes map existing actions only to local roles and metadata
+ok 9 - both complete scenes map existing actions only to local roles and metadata
+  ---
+  duration_ms: 2.4166
+  type: 'test'
+  ...
+# Subtest: one absent file, role or metadata record makes the entire scene unavailable
+ok 10 - one absent file, role or metadata record makes the entire scene unavailable
+  ---
+  duration_ms: 1.7399
+  type: 'test'
+  ...
+# Subtest: native 30 FPS and intentional compatible reuse are preserved
+ok 11 - native 30 FPS and intentional compatible reuse are preserved
+  ---
+  duration_ms: 0.4766
+  type: 'test'
+  ...
+# Subtest: crossed poses/references and malformed timing or display anchors are rejected
+ok 12 - crossed poses/references and malformed timing or display anchors are rejected
+  ---
+  duration_ms: 1.1417
+  type: 'test'
+  ...
+# Subtest: compiled scene snapshots cannot be changed by later draft edits
+ok 13 - compiled scene snapshots cannot be changed by later draft edits
+  ---
+  duration_ms: 0.245
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 415.2658

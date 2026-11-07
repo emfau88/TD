@@ -1,0 +1,41 @@
+{
+  "character": "mara",
+  "clip": "MC07",
+  "prepared_on": "2026-11-07",
+  "render_submitted": false,
+  "render_requested": false,
+  "width": 480,
+  "height": 704,
+  "frames": 107,
+  "fps": 24,
+  "duration_seconds": 4.458333333333333,
+  "seed": 2611075007,
+  "steps": 20,
+  "audio": false,
+  "game_integration": false,
+  "first_and_last_frame": "Mara_MC07_Originalreferenz.png",
+  "first_and_last_processed_node": "6",
+  "original_reference": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\mara-counter-pose-v1\\mara-counter-base.png",
+  "original_dimensions": [
+    1086,
+    1448
+  ],
+  "source_sha256": "93d84c667a7466b0c76b5d43c8d26a2d970cbe06c07951b7a685661cdb612895",
+  "input_sha256": "93d84c667a7466b0c76b5d43c8d26a2d970cbe06c07951b7a685661cdb612895",
+  "crop": {
+    "x": 99,
+    "y": 0,
+    "width": 987,
+    "height": 1448
+  },
+  "processing": "LoadImage -> installed ImageCrop -> ImageScale lanczos -> identical first/last inputs. No image file modified.",
+  "template": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara-counter\\MC01",
+  "mara_launcher_sha256": "eca55518f1107b8a0f54330911e50ba9082115460e22ccd71aca301564b517a2",
+  "review_focus": [
+    "Upright to restrained deliberate closeness, hold, upright return",
+    "Supported elbows/hands, no compressed arms/belly/neck",
+    "Knowing gaze and confident closed smile"
+  ],
+  "motion_reference": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\mara\\M08\\prompt.txt",
+  "preparation_basis": "Remaining Bulk5 roles after approved MC01 and MC05; prepare only."
+}

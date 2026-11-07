@@ -1,0 +1,32 @@
+{
+  "clip": "IF03",
+  "video": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\ilyra-window\\IF03\\Ilyra_IF03_Haare_ComfyUI.mp4",
+  "native_copy_unchanged": true,
+  "video_sha256": "43eee7e222c5ef5390731464ec81e2ef084faa3f975a3597bbccc889ed7d540a",
+  "decode_passed": true,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 704,
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "duration": "2.333333",
+        "nb_read_frames": "56"
+      }
+    ],
+    "format": {
+      "duration": "2.333333",
+      "size": "489909"
+    }
+  },
+  "source_reference_sha256": "1a5a73fb8c69cf19db7f085f700bb33e49c9f59534e555f25037898bf6d505fc",
+  "render_seconds": 180.4,
+  "visual_review": "All 56 decoded frames and hand details inspected, enlarged face sequence checked. Slow pleased blink with a small coherent head dip rather than exactly the requested sideways tilt; readable reaction, no observed foreign hand or finger flicker. Slight own hanging-arm movement follows the pose. Retained for user judgement without unnecessary rerender.",
+  "user_approved": false,
+  "game_integration": false
+}

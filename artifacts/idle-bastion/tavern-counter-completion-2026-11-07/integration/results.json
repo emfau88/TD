@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "mobile": false,
+      "allSeven": true,
+      "voices": true,
+      "storyReturn": true,
+      "stableStage": true,
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "allSeven": true,
+      "voices": true,
+      "storyReturn": true,
+      "stableStage": true,
+      "errors": []
+    },
+    {
+      "gates": true,
+      "failedRoomKeepsOriginal": true,
+      "retry": true,
+      "staleSwitchCancelled": true
+    }
+  ]
+}

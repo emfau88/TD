@@ -1,0 +1,35 @@
+{
+  "clip": "IF01",
+  "video": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\ilyra-window\\IF01\\v2\\Ilyra_IF01_Ruhe_ComfyUI.mp4",
+  "native_copy_unchanged": false,
+  "video_sha256": "07b9d7e3519be52bc567ef8d57f681866b7e521e380d5813db002dab5784d884",
+  "decode_passed": true,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 704,
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "duration": "3.750000",
+        "nb_read_frames": "90"
+      }
+    ],
+    "format": {
+      "duration": "3.750000",
+      "size": "322239"
+    }
+  },
+  "source_reference_sha256": "1a5a73fb8c69cf19db7f085f700bb33e49c9f59534e555f25037898bf6d505fc",
+  "render_seconds": 4.0,
+  "visual_review": "All original 90 frames inspected, corrected face and hands contact sheets reviewed. Face retained; idle body/cape/hands stabilized using the earlier approved I01-v2 method.",
+  "user_approved": false,
+  "game_integration": false,
+  "corrected_delivery_copy_unchanged": true,
+  "original_h3_render_seconds": 288.2,
+  "correction_seconds": 4.0
+}

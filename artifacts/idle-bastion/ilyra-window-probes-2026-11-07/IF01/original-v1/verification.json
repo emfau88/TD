@@ -1,0 +1,33 @@
+{
+  "clip": "IF01",
+  "video": "C:\\Users\\madde\\Documents\\TowerDefense\\artifacts\\idle-bastion\\tavern-comfy-series-2026-11-06\\ilyra-window\\IF01\\Ilyra_IF01_Ruhe_ComfyUI.mp4",
+  "native_copy_unchanged": true,
+  "video_sha256": "a3255a9cbefe16670cc49e2c8453609fe05fc21f7079bf4e5c51f56461b3814c",
+  "decode_passed": true,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 704,
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "duration": "3.750000",
+        "nb_read_frames": "90"
+      }
+    ],
+    "format": {
+      "duration": "3.750000",
+      "size": "533421"
+    }
+  },
+  "source_reference_sha256": "1a5a73fb8c69cf19db7f085f700bb33e49c9f59534e555f25037898bf6d505fc",
+  "render_seconds": 288.2,
+  "visual_review": "All 90 frames inspected. Unwanted finger curl on window ledge; preserved as original but superseded by v2.",
+  "user_approved": false,
+  "game_integration": false,
+  "selected_for_delivery": false
+}

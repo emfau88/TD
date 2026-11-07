@@ -1,0 +1,10 @@
+{
+  "clip": "MC04",
+  "basis": "Full-plan implementation and current counter-probe preparation instruction",
+  "user_authorization": "User explicitly requests sequential MC04, MC06, MC07 production after showing existing MC07 V2; follow proven M01-M08 scripts and inspect artifacts, especially foreign hands.",
+  "preparation_only_at_creation": true,
+  "render_started": false,
+  "individual_render_approval_claimed": true,
+  "execution_policy": "Render one clip at a time, inspect before next. MC07 reuse decision pending user review of existing V2; no game integration.",
+  "current_instruction_date": "2026-11-07"
+}

@@ -1,0 +1,267 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_w4a8_mixed.safetensors",
+      "weight_dtype": "default"
+    },
+    "_meta": {
+      "title": "H3 / speichersparendes W4A8-Modell"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+      "type": "krea2",
+      "device": "default"
+    },
+    "_meta": {
+      "title": "Kleiner Textencoder / automatisch auslagern"
+    }
+  },
+  "3": {
+    "class_type": "ClipProjApply",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "projection": "mmh3-4b-ClipProj-v3.1.safetensors"
+    },
+    "_meta": {
+      "title": "Textencoder an H3 anpassen"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    },
+    "_meta": {
+      "title": "H3 Video-Decoder / INT8"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "Ilyra_IF01_Originalreferenz.png"
+    },
+    "_meta": {
+      "title": "IF01 · Ruhe · feste Fensterreferenz"
+    }
+  },
+  "6": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "19",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 480,
+      "height": 704,
+      "crop": "disabled"
+    },
+    "_meta": {
+      "title": "IF01 · Ruhe · feste Fensterreferenz"
+    }
+  },
+  "7": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "A quiet continuous 3.75-second idle loop. The adult illustrated woman Ilyra from <Picture 1> is alone beside the same CLOSED tavern window throughout. Preserve her exact blue eyes, tan skin, long silver-white wavy hair, gold goggles with blue lenses on her head, white and royal-blue outfit, gold diamond belt buckle, white gloves, forearm covers, gold wrist cuffs and upper-arm band. Keep the exact face, mature adult proportions, clothing coverage, crisp colored outlines and painted cel shading. Her own left gloved hand at picture-right remains resting flat at its original contact on the wooden window ledge. Her own right gloved hand at picture-left remains relaxed beside her thigh, with the original gently grouped fingers. She is comfortably still and attentive, with just one soft natural blink and a barely perceptible settling of her small smile. Her eyes return to the viewer. Keep her head upright and almost motionless. Shoulders, chest and arms remain essentially still; no visible breathing lift or lean. The resting hand never leaves the ledge. The hanging arm and relaxed fingers remain in place. The blue cape hangs completely still as a separate shape behind her white hair.  Start and finish in the exact supplied window stance, open eyes and the original small closed-mouth smile. Maintain natural neck length, original chin-to-collarbone distance, shoulder height and torso proportions. The head never slides down into the shoulders or changes size. Both hands belong to Ilyra and retain their original relaxed finger and thumb shapes throughout; fingers do not wiggle or curl one at a time. No other person or hand appears. Nothing enters or leaves the frame. Keep all props, ledge, closed window, timber, candles, camera, framing and lighting fixed. No wind, flutter, independent cloth or hair motion, repeated body pulses or exaggerated breathing. Remain a drawn 2D game character, never photorealistic or 3D. No captions, music or sound.",
+      "width": 480,
+      "height": 704,
+      "length": 90,
+      "first_frame": [
+        "6",
+        0
+      ],
+      "last_frame": [
+        "6",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "IF01 · Ruhe · feste Fensterreferenz"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    },
+    "_meta": {
+      "title": "H3 Grundeinstellungen"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "conditioning": [
+        "7",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "H3 ohne zusaetzliches CFG"
+    }
+  },
+  "10": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2611076001
+    },
+    "_meta": {
+      "title": "Fester Vergleichs-Seed"
+    }
+  },
+  "11": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    },
+    "_meta": {
+      "title": "H3 Sampler"
+    }
+  },
+  "12": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "20 Schritte fuer den Qualitaetstest"
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "10",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "11",
+        0
+      ],
+      "sigmas": [
+        "12",
+        0
+      ],
+      "latent_image": [
+        "7",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Video berechnen"
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "H3-Decoder / automatische Kacheln"
+    }
+  },
+  "15": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "14",
+        0
+      ],
+      "batch_index": 0,
+      "length": 90
+    },
+    "_meta": {
+      "title": "IF01 · Ruhe · feste Fensterreferenz"
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "15",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": "auto",
+      "color_space": "sRGB",
+      "chroma_subsampling": "420",
+      "codec": "none"
+    },
+    "_meta": {
+      "title": "24 Bilder pro Sekunde"
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "Ilyra_IF01_Ruhe_Fenster_H3_480x704_24fps",
+      "format": "mp4",
+      "format.codec": "h264"
+    },
+    "_meta": {
+      "title": "IF01 · Ruhe · feste Fensterreferenz"
+    }
+  },
+  "19": {
+    "class_type": "ImageCrop",
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ],
+      "width": 1036,
+      "height": 1519,
+      "x": 0,
+      "y": 0
+    },
+    "_meta": {
+      "title": "IF01 · Ruhe · feste Fensterreferenz"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "sequence": [
+    "MC04",
+    "MC06",
+    "MC07"
+  ],
+  "parallel_jobs": false,
+  "clips": [
+    {
+      "clip": "MC04",
+      "file": "Mara_MC04_Schulter_ComfyUI.mp4",
+      "frames": "56",
+      "seconds": "2.333333",
+      "bytes": "419431",
+      "sha256": "04a0861a7f016ae5748dfa911b97867fd5b115aefe45b34599070e20ab14b021",
+      "render_seconds": 174.1,
+      "user_approved": true
+    },
+    {
+      "clip": "MC06",
+      "file": "Mara_MC06_Lachen_ComfyUI.mp4",
+      "frames": "73",
+      "seconds": "3.041667",
+      "bytes": "632466",
+      "sha256": "1a2f3336641c79e024030158424ed2f9bebfc803e3af2beba484f51eb667ff30",
+      "render_seconds": 222.1,
+      "user_approved": true
+    },
+    {
+      "clip": "MC07",
+      "file": "Mara_MC07_Annaeherung_ComfyUI.mp4",
+      "frames": "107",
+      "seconds": "4.458333",
+      "bytes": "934715",
+      "sha256": "e81bbb5125c8e4c4aceedecf0bc4daf926c2906a85cd3c36e30eba68ebb8c6f8",
+      "render_seconds": 348.2,
+      "user_approved": true
+    }
+  ],
+  "integrated": true,
+  "mc07_choice": "New ComfyUI version explicitly approved by user; original V2 retained.",
+  "branch": "codex/tavern-counter-completion",
+  "deployed": false,
+  "in_game_visual_acceptance": false
+}

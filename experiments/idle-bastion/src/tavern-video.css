@@ -4,3 +4,11 @@
   background-size:auto calc(100% * 704 / 700);
   background-position:calc(40% + var(--video-room-shift,0px)) center;
 }
+
+/* The counter has its own room plate. Soft peripheral scenery never contains a
+   second character; the native video in front stays sharp and unchanged. */
+#tavern-dialog .tv-stage[data-video-scene]::before {
+  content:''; position:absolute; inset:-16px; background:inherit;
+  filter:blur(12px); pointer-events:none; z-index:0;
+}
+#tavern-dialog .tv-stage[data-video-scene] .tv-figure { z-index:1; }

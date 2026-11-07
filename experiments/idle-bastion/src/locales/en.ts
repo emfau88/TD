@@ -1413,4 +1413,10 @@ export const english: Readonly<Record<string, string>> = {
   "Ein neues Thema wartet.": "A new topic is waiting.",
   "Erst noch etwas plaudern": "Chat a little first",
   "Noch einmal darüber sprechen": "Talk about it again",
+  "Zum Tresen": "Over to the counter",
+  "Wieder an unseren Platz": "Back to our spot",
+  "Mara · Am Tresen": "Mara · At the counter",
+  "Einen Moment …": "Just a moment …",
+  "Hier am Tresen haben wir etwas mehr Ruhe. Schön, dass du mitkommst.": "It is a little quieter here at the counter. I am glad you came along.",
+  "Der Platz konnte nicht geladen werden. Wir bleiben erst einmal hier. Du kannst es erneut versuchen.": "This spot could not be loaded. We will stay here for now. You can try again.",
 };
