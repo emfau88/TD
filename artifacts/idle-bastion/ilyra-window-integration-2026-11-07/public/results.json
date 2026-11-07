@@ -1,0 +1,127 @@
+{
+  "base": "https://emfau88.github.io/TD/",
+  "compiledGame": true,
+  "passed": true,
+  "results": [
+    {
+      "who": "ilyra",
+      "width": 1280,
+      "lang": "de",
+      "frames": 3374,
+      "clips": {
+        "idle": 334,
+        "talk": 577,
+        "hair": 669,
+        "shoulder": 923,
+        "hand": 871
+      },
+      "blackOrTransparentFrames": 0,
+      "wrongScenes": 0,
+      "stableStage": true,
+      "storyReturn": true,
+      "standardGesturesPreserved": true,
+      "reload": true,
+      "quality": [
+        {
+          "source": "https://emfau88.github.io/TD/assets/idle-DYtzXjcS.mp4",
+          "width": 480,
+          "height": 704,
+          "total": 6,
+          "dropped": 0
+        }
+      ],
+      "errors": []
+    },
+    {
+      "who": "ilyra",
+      "width": 390,
+      "lang": "en",
+      "frames": 4052,
+      "clips": {
+        "idle": 441,
+        "talk": 768,
+        "hair": 764,
+        "shoulder": 1003,
+        "hand": 1076
+      },
+      "blackOrTransparentFrames": 0,
+      "wrongScenes": 0,
+      "stableStage": true,
+      "storyReturn": true,
+      "standardGesturesPreserved": true,
+      "reload": true,
+      "quality": [
+        {
+          "source": "https://emfau88.github.io/TD/assets/idle-DYtzXjcS.mp4",
+          "width": 480,
+          "height": 704,
+          "total": 6,
+          "dropped": 0
+        }
+      ],
+      "errors": []
+    },
+    {
+      "who": "mara",
+      "width": 1280,
+      "lang": "en",
+      "frames": 6107,
+      "clips": {
+        "idle": 661,
+        "talk": 676,
+        "hair": 870,
+        "shoulder": 742,
+        "hand": 907,
+        "laugh": 950,
+        "approach": 1301
+      },
+      "blackOrTransparentFrames": 0,
+      "wrongScenes": 0,
+      "stableStage": true,
+      "storyReturn": true,
+      "standardGesturesPreserved": true,
+      "reload": true,
+      "quality": [
+        {
+          "source": "https://emfau88.github.io/TD/assets/idle-IGE_1PxL.mp4",
+          "width": 480,
+          "height": 704,
+          "total": 6,
+          "dropped": 0
+        }
+      ],
+      "errors": []
+    },
+    {
+      "who": "mara",
+      "width": 390,
+      "lang": "de",
+      "frames": 6632,
+      "clips": {
+        "idle": 452,
+        "talk": 758,
+        "hair": 1046,
+        "shoulder": 752,
+        "hand": 1082,
+        "laugh": 1025,
+        "approach": 1517
+      },
+      "blackOrTransparentFrames": 0,
+      "wrongScenes": 0,
+      "stableStage": true,
+      "storyReturn": true,
+      "standardGesturesPreserved": true,
+      "reload": true,
+      "quality": [
+        {
+          "source": "https://emfau88.github.io/TD/assets/idle-IGE_1PxL.mp4",
+          "width": 480,
+          "height": 704,
+          "total": 4,
+          "dropped": 0
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

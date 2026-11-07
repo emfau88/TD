@@ -1,12 +1,12 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
-**Taverne · 07.11.2026 — IF01–IF05 freigegeben und integriert; gemeinsame Main-Übernahme beauftragt.**
+**Taverne · 07.11.2026 — IF01–IF05 freigegeben und integriert; gemeinsamer Tavernenstand auf Main veröffentlicht.**
 
 - [x] IF05 ausdrücklich freigegeben. Alle fünf nativen Fensterclips unverändert eingebunden, einschließlich ruhiger IF01-v2; keine weiteren Renderings.
 - [x] Ilyra für bereits verdientes Herz 4/5 über Sprechen → Zum Fenster, eigene Ruhe/Gespräch/Haare/Schulter/Hand, passende Herzen und bestehender Stimmenpool. IF06/IF07 fehlen: Lachen/Annäherung am Fenster ausgeblendet, am bisherigen Platz erhalten. Die aktuelle Einbauanweisung ersetzt das frühere Warten auf alle sieben Clips.
 - [x] 32/32 gezielte Tests, TypeScript/Produktionsbuild, beide Figuren auf Desktop/Handy in DE/EN, 18.316 Anzeigeframes ohne beobachtete schwarze Ränder oder Größenwechsel; Rückblicke/Rückkehr/Reload, Ladefehler/Wiederholung, Stimmen und Abbruch geprüft. [Nachweise](../../artifacts/idle-bastion/ilyra-window-integration-2026-11-07/REPORT.md).
 - [x] Aktuellen Main abgeglichen/übernommen: Frost-/Scharfschützenkorrekturen bereits enthalten. Gesamter offener Tavernen-Laufzeitstand einschließlich Mara MC01–MC07 wird gemeinsam übernommen; historische Rig-Archivbranches bleiben erhalten.
-- [ ] Gemeinsamen Stand nach Main pushen und öffentlichen Deploy prüfen.
+- [x] Gemeinsamer Stand `6a2e9fc5` auf Main und Arbeitsbranch gepusht; [Pages 42401670300](https://github.com/emfau88/TD/actions/runs/42401670300) erfolgreich. Öffentliche DE/EN-Spielprobe mit beiden Figuren auf Desktop/Handy, lokalen Reaktionen, Rückblicken und Reload bestanden. Code enthält auch alle bereits veröffentlichten Turmkorrekturen.
 
 **Turmdarstellung · 07.11.2026 — Frostkörper und frühe Scharfschützen-Montage korrigiert.**
 

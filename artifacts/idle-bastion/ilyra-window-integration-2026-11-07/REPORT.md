@@ -23,7 +23,7 @@ Ladefehler/Wiederholung, Abbruch durch Figurenwechsel, Herz-3-Sperre, drei Stimm
 
 Aktueller Remote-Main `dde9e79a` wurde vor der Integration übernommen. Die Frostkörper-/Scharfschützenkorrektur `4d771b86` und deren Veröffentlichungsdokumentation sind bereits enthalten. Zusätzlich aus diesem Arbeitsbranch: vollständige Mara-Tresenszene, geprüfte Fensterclips, gemeinsame Testansicht, aktuelle Dokumentation. Keine offenen aktuellen Tavernen-/Turm-Laufzeitcommits außerhalb dieses Standes gefunden. Der separate Archivbranch `codex/tavern-backup-ab9e5cf` enthält alte Rig-/Unity-Produktionssicherungen vom23.10.; er bleibt als Archiv erhalten und ist kein ausstehender Spielfix. Unabhängige Änderungen im alten Wurzelcheckout werden nicht mitveröffentlicht.
 
-Main-Push und öffentlicher Deploy: Nachweis wird nach Abschluss ergänzt.
+Code `6a2e9fc5` gemeinsam auf Main/Arbeitsbranch gepusht; [GitHub Pages 42401670300](https://github.com/emfau88/TD/actions/runs/42401670300) erfolgreich. Öffentliche Spielseite anschließend mit beiden Figuren bei1280/390px inDE/EN geprüft: 20,165 Anzeigeframes, vorhandene Reaktionen, Rückblicke/Rückkehr und Reload ohne beobachtete schwarze Rahmen, Größenwechsel oder Browser-/HTTP-Fehler. [Öffentliche Messungen](public/results.json).
 
 ![Ilyra im echten Desktopspiel](production/ilyra-1280-idle.png)
 ![Ilyra Schulterreaktion im Handyformat](production/ilyra-390-shoulder.png)
