@@ -1,5 +1,18 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Mara-Einstieg · 08.11.2026 — MI01 und MI02 freigegeben und eingebaut; MI03 bleibt statisch.**
+
+- [x] Drei vorhandene Porträtplätze geprüft und Mini-Clips geplant: MI01 Begrüßung/kleines eigenes Winken (~3 s), MI02 Erklärung/Blick und Nicken (~2 s), MI03 Loslegen/Lächeln und Augenzwinkern (~2,5 s). Referenz, Blickwinkel, Kleidung und ruhiger Kopf/Hals bleiben erhalten.
+- [x] MI01 mit vorhandenem hochauflösendem Begrüßungsporträt als Start-/Endreferenz vorbereitet; bewährte M01-v2-Modell-/Sampler-/Decoderknoten, 480×576, 73 native Frames bei 24 FPS, ohne Ton.
+- [x] MI01 gerendert: 3,04 s, 329.277 Byte, H.264, keine Audiospur; alle 73 Frames plus vergrößerte Handansichten und Endpose kontrolliert. Kleines eigenes Winken, Blinzeln und Rückkehr zur Ruhe. [Clip und Nachweis](../../artifacts/idle-bastion/mara-intro-clips-2026-11-08/REPORT.md).
+- [x] MI01 ausdrücklich freigegeben; originale stumme MP4-Vorschau mit dunkler Dialogfarbe erhalten.
+- [x] MI02 auf Nutzerauftrag separat vorbereitet und gestartet: vorhandenes konzentriertes Porträt, kurzer Blick zur Seite und sehr kleines Nicken, 56 native Frames bei 24 FPS / 2,33 s, stumm; MI01 unverändert erhalten.
+- [x] MI02 fertig: 2,33 s, 380.671 Byte, H.264, ohne Audiospur. Alle 56 Frames sowie vergrößerte Gesichts-/Halsansichten geprüft: Seitenblick, kleines Nicken mit Blinzeln, Rückkehr zur offenen ruhigen Endpose. Native Fassung unverändert als separate Probe abgelegt.
+- [x] MI02 ausdrücklich freigegeben; Nutzer beauftragt den Einbau genau dieser beiden Clips sowie Commit/Push. MI03 nicht gestartet und weiterhin vorhandenes Standbild.
+- [x] MI01 in der Begrüßung und MI02 bei „Der Weg zum Kern“ transparent eingebunden: native 24 FPS/Bewegung beibehalten, je einmal abspielen, Endbild halten, Weiter/Überspringen jederzeit möglich. Bestehende Porträtgrößen, Texte, Ton und Tutorialfortschritt erhalten.
+- [x] Transparente WebP-Atlanten (272×320; zusammen 2,39 MB) nur für den aktuellen Schritt nachladen; nach Ende Bildspeicher freigeben. Statische Originalporträts bei Ladefehlern und reduzierter Bewegung; später geladene alte Clips können einen übersprungenen Schritt nicht wieder einblenden.
+- [x] 22/22 gezielte Tests und Produktionsbuild bestanden. Desktop 1280×900 sowie Hochformat 390×844/360×800 geprüft: Endbild gehalten, schneller Wechsel während MI01, Wiederaufnahme von Schritt 2, statischer Schritt 3 und reguläres/übersprungenes Intro → Turmbau; keine beobachteten Rahmen oder Browserfehler. [Prüfbericht](../../artifacts/idle-bastion/mara-intro-clips-2026-11-08/REPORT.md).
+
 **Tutorial · 07.11.2026 — ausschließlich die fünf beauftragten Korrekturen.**
 
 - [x] 1. Werkstatt über Siedlungskachel, Karten-Gebäude und Tutorialbutton öffnen: alle Zugänge führen zur sofort nutzbaren Frostforschung; Übergang bleibt gespeichert.

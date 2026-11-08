@@ -1,0 +1,251 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_w4a8_mixed.safetensors",
+      "weight_dtype": "default"
+    },
+    "_meta": {
+      "title": "H3 / speichersparendes W4A8-Modell"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+      "type": "krea2",
+      "device": "default"
+    },
+    "_meta": {
+      "title": "Kleiner Textencoder / automatisch auslagern"
+    }
+  },
+  "3": {
+    "class_type": "ClipProjApply",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "projection": "mmh3-4b-ClipProj-v3.1.safetensors"
+    },
+    "_meta": {
+      "title": "Textencoder an H3 anpassen"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    },
+    "_meta": {
+      "title": "H3 Video-Decoder / INT8"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "Mara_MI01_Begruessung_Referenz.png"
+    },
+    "_meta": {
+      "title": "MI01 · vorhandenes Begrüßungsporträt"
+    }
+  },
+  "6": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 480,
+      "height": 576,
+      "crop": "disabled"
+    },
+    "_meta": {
+      "title": "Porträt 480 × 576 · proportional vorbereitet"
+    }
+  },
+  "7": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "A calm three-second animated 2D illustrated fantasy game dialogue portrait. The adult woman Mara from <Picture 1> warmly greets the player with ONE small wave of her OWN left hand, on the RIGHT side of the image. This is a close bust portrait, with the original camera angle and framing fixed. Preserve her exact familiar face, bright green eyes, warm orange-red hairstyle, large braid on the viewer-left, loose red hair on the viewer-right, teal neck scarf, gold diamond pendant, gold and teal earring, burgundy bodice, white neckline trim, shoulder straps and original drawn body proportions. Preserve the clean outlines, warm cel shading, existing colors and illustrated game style. Begin in the exact reference pose, her hands below the bottom of the portrait. Her own left forearm rises naturally from her own left shoulder at the lower-right edge of the portrait. Her own left hand comes up beside her cheek, palm facing the viewer, never covering her face or eyes. She wears her simple brown fingerless glove, matching her adventurer outfit. Her four fingers stay naturally together and steady, thumb relaxed, five anatomically correct digits. The hand makes one very small relaxed side-to-side greeting from the wrist, then smoothly lowers out of view along the same path to the original resting position. No independent finger movements. Her closed-mouth smile warms only slightly. One soft natural blink, eyes fully open again at the end. Her head remains at its original height and angle, neck length and scarf spacing unchanged. Her shoulders, chest and torso stay quiet; no body bouncing, no pronounced breathing, no head bobbing. Her hair, braid and scarf remain still. The gesture is smooth, small and friendly, without speaking. Complete the wave and lower the hand before the final half second, then hold the original calm reference pose with both eyes open and the same gentle smile. Only Mara and the flat dark teal background are visible. The background remains uniformly still and featureless. No other person, no detached or external hands, no additional limbs, no object, no text, no scenery. No zoom, no camera movement, no change of clothing, no photorealism, no music, no sound, no lip sync.",
+      "width": 480,
+      "height": 576,
+      "length": 73,
+      "first_frame": [
+        "6",
+        0
+      ],
+      "last_frame": [
+        "6",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "MI01 · kleines eigenes Winken und ruhige Rückkehr"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    },
+    "_meta": {
+      "title": "H3 Grundeinstellungen"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "conditioning": [
+        "7",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "H3 ohne zusaetzliches CFG"
+    }
+  },
+  "10": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2611081001
+    },
+    "_meta": {
+      "title": "MI01 · fester Seed"
+    }
+  },
+  "11": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    },
+    "_meta": {
+      "title": "H3 Sampler"
+    }
+  },
+  "12": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "20 Schritte fuer den Qualitaetstest"
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "10",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "11",
+        0
+      ],
+      "sigmas": [
+        "12",
+        0
+      ],
+      "latent_image": [
+        "7",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Video berechnen"
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "H3-Decoder / automatische Kacheln"
+    }
+  },
+  "15": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "14",
+        0
+      ],
+      "batch_index": 0,
+      "length": 73
+    },
+    "_meta": {
+      "title": "73 native Frames · 3,04 Sekunden"
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "15",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": "auto",
+      "color_space": "sRGB",
+      "chroma_subsampling": "420",
+      "codec": "none"
+    },
+    "_meta": {
+      "title": "24 Bilder pro Sekunde"
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "Mara_MI01_Begruessung_H3_480x576_24fps",
+      "format": "mp4",
+      "format.codec": "h264"
+    },
+    "_meta": {
+      "title": "MI01 · stumme separate Videoprobe"
+    }
+  }
+}

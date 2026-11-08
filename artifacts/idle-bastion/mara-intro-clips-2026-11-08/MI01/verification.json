@@ -1,0 +1,32 @@
+{
+  "video": "C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\tavern-comfy-integration\\artifacts\\idle-bastion\\mara-intro-clips-2026-11-08\\MI01\\Mara_MI01_Begruessung_ComfyUI.mp4",
+  "native_copy_unchanged": true,
+  "video_sha256": "d855955f747ca38484cab22ae8f73f36de11cc051c6dc41de435c47e2a50dc6f",
+  "decode_passed": true,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 576,
+        "r_frame_rate": "24/1",
+        "nb_read_frames": "73"
+      }
+    ],
+    "format": {
+      "duration": "3.041667",
+      "size": "329277"
+    }
+  },
+  "render_seconds": 192.1,
+  "source_unchanged": true,
+  "game_portrait_unchanged": true,
+  "visual_review": "Reviewed all 73 frames in contact sheets, enlarged hand samples and final frame. Own gloved hand waves and lowers; eyes reopen; no observed external hand, extra digits or conspicuous neck shift. Subsequently approved by the user.",
+  "user_approved": true,
+  "game_integration": true,
+  "approval_note": "User: ja gut so, nächster clip (08.11.2026). No game integration authorized.",
+  "integration_note": "Transparent atlas derivative integrated in the corresponding intro scene on 08.11.2026; native source preserved."
+}

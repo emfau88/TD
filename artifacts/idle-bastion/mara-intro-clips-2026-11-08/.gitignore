@@ -1,0 +1,6 @@
+# Local duplicates and generated inspection frames; masters/review sheets are kept.
+*/generated/
+*/user/
+*/temp/
+*/packaged-frame-*.png
+*.log

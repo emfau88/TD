@@ -19,7 +19,8 @@ import { updateOnboarding } from './onboarding-ui';
 import { MaraIntro } from './mara-intro';
 import { tutorialProgress } from './tutorial-progress';
 import { TutorialGuide } from './tutorial-guide';
-import { prepareIntroPortraits } from './intro-portraits';
+import { prepareIntroPortraits, introAnimations } from './intro-portraits';
+import { IntroPortraitPlayer } from './intro-animation';
 import maraOfflinePortrait from '../assets/intro/mara/mischievous.webp';
 import { updateOfflineWelcome } from './offline-welcome';
 import './offline-welcome.css';
@@ -103,6 +104,7 @@ const databaseName = gameDatabase(featurePreview, probeSlot, tavernPreview);
 let session: BattleSession | undefined;
 let intro: MaraIntro | undefined;
 let introPortraits: string[] = [];
+const introPlayer = new IntroPortraitPlayer(element('intro-animation'), element('intro-portrait'), introAnimations);
 let finishingIntro = false;
 let scene: BattleScene | undefined;
 let game: Phaser.Game | undefined;
@@ -629,6 +631,8 @@ function syncUI(): void {
   }
   document.getElementById('app')!.classList.toggle('context-open', contextOpen || Boolean(placementType || groundMode));
   updateOnboarding(live, { placing: Boolean(placementType || groundMode), contextOpen, catalogPanel, revealing: performance.now() < workshopRevealUntil, intro, portraits: introPortraits });
+  introPlayer.show(intro?.active && sim.introduction.stage === 'welcome' ? intro.step : undefined);
+  introPlayer.setPaused(document.hidden || element('onboarding-card').hidden);
   syncIntroCamera();
   updateDiscoveryUI(live, contextOpen, Boolean(placementType || groundMode), catalogPanel);
   const tutorial = tutorialProgress(sim, intro);
@@ -930,6 +934,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
   if (booting || document.hidden) return;
   if (retryTimer !== undefined) { clearTimeout(retryTimer); retryTimer = undefined; }
   booting = true; ready = false; audio.setState(false, false);
+  introPlayer.setPaused(true);
   loadingScreen()?.begin('save', language());
   build.disabled = upgrade.disabled = sell.disabled = pause.disabled = advance.disabled = claim.disabled = assignMara.disabled = true;
   element('app-error').hidden = true; element('load-actions').hidden = true; element('error-panel').hidden = true;
@@ -1329,10 +1334,10 @@ document.addEventListener('visibilitychange', () => {
   })
     .catch(error => showError(t("Die Probe ist angehalten. {0}", error instanceof Error ? error.message : String(error)), false, true));
 }, { signal: lifetime.signal });
-window.addEventListener('pagehide', () => { void session?.suspend().catch(() => undefined); }, { signal: lifetime.signal });
+window.addEventListener('pagehide', () => { introPlayer.setPaused(true); void session?.suspend().catch(() => undefined); }, { signal: lifetime.signal });
 const heartbeat = window.setInterval(() => {
   if (!document.hidden && session && !session.suspended) void session.heartbeat().catch(() => syncUI());
 }, 1000);
 const unbindDynamicLanguage = onLanguageChange(() => { showCombatMessage(); syncUI(); scene?.refreshLanguage(); });
-if (import.meta.hot) import.meta.hot.dispose(() => { loadingScreen()?.dismiss(); unbindStaticLanguage(); unmountLanguage(); unbindDynamicLanguage(); quickWins.destroy(); tavernUI.destroy(); audio.destroy(); lifetime.abort(); clearInterval(heartbeat); clearTimeout(retryTimer); game?.destroy(true); void session?.close().catch(() => undefined); });
+if (import.meta.hot) import.meta.hot.dispose(() => { introPlayer.stop(); loadingScreen()?.dismiss(); unbindStaticLanguage(); unmountLanguage(); unbindDynamicLanguage(); quickWins.destroy(); tavernUI.destroy(); audio.destroy(); lifetime.abort(); clearInterval(heartbeat); clearTimeout(retryTimer); game?.destroy(true); void session?.close().catch(() => undefined); });
 void boot();

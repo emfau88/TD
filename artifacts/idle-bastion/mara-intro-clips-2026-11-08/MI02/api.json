@@ -1,0 +1,251 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_w4a8_mixed.safetensors",
+      "weight_dtype": "default"
+    },
+    "_meta": {
+      "title": "H3 / speichersparendes W4A8-Modell"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+      "type": "krea2",
+      "device": "default"
+    },
+    "_meta": {
+      "title": "Kleiner Textencoder / automatisch auslagern"
+    }
+  },
+  "3": {
+    "class_type": "ClipProjApply",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "projection": "mmh3-4b-ClipProj-v3.1.safetensors"
+    },
+    "_meta": {
+      "title": "Textencoder an H3 anpassen"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    },
+    "_meta": {
+      "title": "H3 Video-Decoder / INT8"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "Mara_MI02_Erklaerung_Referenz.png"
+    },
+    "_meta": {
+      "title": "MI02 · vorhandenes konzentriertes Porträt"
+    }
+  },
+  "6": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 480,
+      "height": 576,
+      "crop": "disabled"
+    },
+    "_meta": {
+      "title": "Porträt 480 × 576 · proportional vorbereitet"
+    }
+  },
+  "7": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "A quiet two-second animated 2D illustrated fantasy game dialogue portrait. The adult woman Mara from <Picture 1> is calmly explaining the way to the core to the player. This is a fixed close bust portrait. Preserve her exact original camera angle, head size and framing. Preserve her familiar face, green eyes, warm orange-red hair, large braid on the viewer-left, loose red hair on the viewer-right, teal scarf, gold diamond pendant, gold and teal earring, burgundy bodice, white neckline trim, shoulder straps, original proportions, clean outlines and warm illustrated cel shading. Begin in the exact reference pose with the original attentive, reassuring closed-mouth smile. Her eyes briefly glance a little toward the viewer-left, as if indicating the route beside the portrait. Only her gaze moves sideways; the face remains comfortably facing the player, no large head turn. She returns her gaze to the player and gives ONE very small, slow acknowledging nod. The nod is a shallow rotation of only a few degrees at the head-neck joint, then a smooth return to the original angle; no downward sliding of the whole head and no chin sinking into the scarf. The natural neck length and space between jaw, scarf and collarbones stay consistent. Her shoulders, upper chest and torso remain level and still. No body sway, bouncing or pronounced breathing. The hair, braid, scarf and pendant remain quietly at rest without wind. Her mouth remains closed with the same small smile. She may blink gently once while returning her gaze. The movement is restrained, smooth and human, not theatrical. Both hands remain below the portrait and invisible throughout. Only this one woman is visible. Finish the small nod before the last quarter second and hold the exact original reference pose with eyes fully open, looking toward the player and the calm reassuring smile. The flat dark teal background stays uniformly still and featureless. No hands, no other person, no new limbs, no props, no text, no scenery. No zoom, camera motion, outfit change, photorealism, speaking, lip sync, music or sound.",
+      "width": 480,
+      "height": 576,
+      "length": 56,
+      "first_frame": [
+        "6",
+        0
+      ],
+      "last_frame": [
+        "6",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "MI02 · kurzer Blick, dezentes Nicken"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    },
+    "_meta": {
+      "title": "H3 Grundeinstellungen"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "conditioning": [
+        "7",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "H3 ohne zusaetzliches CFG"
+    }
+  },
+  "10": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2611081002
+    },
+    "_meta": {
+      "title": "MI02 · fester Seed"
+    }
+  },
+  "11": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    },
+    "_meta": {
+      "title": "H3 Sampler"
+    }
+  },
+  "12": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "20 Schritte fuer den Qualitaetstest"
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "10",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "11",
+        0
+      ],
+      "sigmas": [
+        "12",
+        0
+      ],
+      "latent_image": [
+        "7",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Video berechnen"
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "H3-Decoder / automatische Kacheln"
+    }
+  },
+  "15": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "14",
+        0
+      ],
+      "batch_index": 0,
+      "length": 56
+    },
+    "_meta": {
+      "title": "56 native Frames · 2,33 Sekunden"
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "15",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": "auto",
+      "color_space": "sRGB",
+      "chroma_subsampling": "420",
+      "codec": "none"
+    },
+    "_meta": {
+      "title": "24 Bilder pro Sekunde"
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "Mara_MI02_Erklaerung_H3_480x576_24fps",
+      "format": "mp4",
+      "format.codec": "h264"
+    },
+    "_meta": {
+      "title": "MI02 · stumme separate Videoprobe"
+    }
+  }
+}

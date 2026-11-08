@@ -1,0 +1,41 @@
+{
+  "clips": [
+    {
+      "code": "MI01",
+      "frames": 73,
+      "fps": 24,
+      "width": 272,
+      "height": 320,
+      "columns": 4,
+      "perPage": 16,
+      "pages": [
+        "mi01-0.webp",
+        "mi01-1.webp",
+        "mi01-2.webp",
+        "mi01-3.webp",
+        "mi01-4.webp"
+      ],
+      "source_sha256": "d855955f747ca38484cab22ae8f73f36de11cc051c6dc41de435c47e2a50dc6f",
+      "bytes": 1309532
+    },
+    {
+      "code": "MI02",
+      "frames": 56,
+      "fps": 24,
+      "width": 272,
+      "height": 320,
+      "columns": 4,
+      "perPage": 16,
+      "pages": [
+        "mi02-0.webp",
+        "mi02-1.webp",
+        "mi02-2.webp",
+        "mi02-3.webp"
+      ],
+      "source_sha256": "aae8785eb2f1bbd5c7d91d208d0b0b67264d735c79134e8f28585f4b1c46fc85",
+      "bytes": 1081958
+    }
+  ],
+  "method": "Exterior connected background only, tolerance 18, 0.5 px alpha edge, unpremultiply matte; crop pad and resize to original portrait ratio.",
+  "source_videos_unchanged": true
+}

@@ -2,6 +2,13 @@ import welcome from '../assets/intro/mara/welcome.webp';
 import focused from '../assets/intro/mara/focused.webp';
 import mischievous from '../assets/intro/mara/mischievous.webp';
 import fallback from '../assets/tavern-rig/mara-portrait.webp';
+import animations from '../assets/intro/mara/animation/manifest.json';
+
+const pages = import.meta.glob<string>('../assets/intro/mara/animation/*.webp', { eager: true, query: '?url', import: 'default' });
+// URL imports do not download the atlases. Only the displayed scene loads them.
+export const introAnimations = animations.map(clip => ({ ...clip,
+  pages: clip.pages.map(page => pages[`../assets/intro/mara/animation/${page}`]),
+}));
 
 const sources = [welcome, focused, mischievous];
 let prepared: Promise<string[]> | undefined;

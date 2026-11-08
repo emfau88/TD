@@ -1,0 +1,32 @@
+{
+  "video": "C:\\Users\\madde\\Documents\\TowerDefense\\.worktrees\\tavern-comfy-integration\\artifacts\\idle-bastion\\mara-intro-clips-2026-11-08\\MI02\\Mara_MI02_Erklaerung_ComfyUI.mp4",
+  "native_copy_unchanged": true,
+  "video_sha256": "aae8785eb2f1bbd5c7d91d208d0b0b67264d735c79134e8f28585f4b1c46fc85",
+  "decode_passed": true,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 576,
+        "r_frame_rate": "24/1",
+        "nb_read_frames": "56"
+      }
+    ],
+    "format": {
+      "duration": "2.333333",
+      "size": "380671"
+    }
+  },
+  "render_seconds": 156.2,
+  "source_unchanged": true,
+  "game_portrait_unchanged": true,
+  "visual_review": "Reviewed all 56 frames and enlarged face/neck samples: side glance, small nod with blinking, calm eyes-open ending. No observed extra hand, abrupt neck displacement or outfit change. Native output preserved. Subsequently approved by user.",
+  "user_approved": true,
+  "game_integration": true,
+  "approval_note": "User approved MI02 and requested integration of MI01 and MI02, commit and push (08.11.2026).",
+  "integration_note": "Transparent atlas derivative integrated in the corresponding intro scene on 08.11.2026; native source preserved."
+}
