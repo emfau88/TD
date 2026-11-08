@@ -1,5 +1,11 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Waldkanten · 08.11.2026 — gezielte Darstellungs-Korrektur umgesetzt und geprüft.**
+
+- [x] Ursache geprüft: rechteckige Hintergrundwald-Streifen schneiden Bäume oben/unten und seitlich an der Kartengrenze ab.
+- [x] Hintergrundgras und vollständige dekorative Baum-Silhouetten getrennt. Überlappung innerhalb der Karte ausschließlich auf bereits vorhandenen Baumfeldern; Wege, freie Bauflächen, Hindernisse und Spielstände unverändert.
+- [x] 4/4 Geometrie-/Bestandstests und Produktionsbuild bestanden. Desktop 1280×900/1920×650 sowie Handy 390×844/360×800 mit Übersicht, Zoom und Bauauswahl geprüft: vollständige Silhouetten an allen Rändern, keine gemeldeten Browserfehler. [Prüfnachweis und Bilder](../../artifacts/idle-bastion/forest-borders-2026-11-08/REPORT.md).
+
 **Mara-Einstieg · 08.11.2026 — MI01 und MI02 freigegeben und eingebaut; MI03 bleibt statisch.**
 
 - [x] Drei vorhandene Porträtplätze geprüft und Mini-Clips geplant: MI01 Begrüßung/kleines eigenes Winken (~3 s), MI02 Erklärung/Blick und Nicken (~2 s), MI03 Loslegen/Lächeln und Augenzwinkern (~2,5 s). Referenz, Blickwinkel, Kleidung und ruhiger Kopf/Hals bleiben erhalten.

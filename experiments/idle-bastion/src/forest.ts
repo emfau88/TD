@@ -1,11 +1,12 @@
 import { t } from './i18n';
 /** Selective reuse of the accepted woodland's original ground/shore montage.
- * All decoration comes from the same pure world used by companion navigation.
+ * Playable decoration comes from the same pure world used by companion navigation.
  */
 import type Phaser from 'phaser';
 import { clearWaterBackdrop, waterTileSource } from '../../../reference/src/terrain';
 import { KEYS, SCALE, loopFrame } from './art';
 import { getForestWorld } from './forest-world';
+import { BACKDROP_TREE, backdropTrees } from './forest-backdrop';
 import { cellCenter, CORE_ACCESS, findFootpath, createIdleLayout, type GridCell, type IdleLayout } from './layout';
 
 export interface ForestView { extendBackdrop(padX: number, padY: number): void; update(elapsed: number, built: boolean, builtAt: number | null, warehouseBuilt: boolean, warehouseBuiltAt: number | null, warehouseUnlocked: boolean, workshopUpgraded?: boolean, upgradedAt?: number | null, tavernBuilt?: boolean, tavernBuiltAt?: number | null, tavernLevel?: number, coreTime?: number): void; destroy(): void }
@@ -35,20 +36,16 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
   for (let y = 0; y < layout.bounds.rows; y++) for (let x = 0; x < layout.bounds.columns; x++) {
     context.drawImage(source, 128, 64, 64, 64, x * size, y * size, size, size);
   }
-  // Small repeating woodland tile made from existing art. Four static strips
-  // fill camera overscan, without adding cells, actors or navigable land.
+  // Only grass may end at a rectangular map boundary. Whole decorative trees
+  // are drawn separately so the overscan strips cannot slice their silhouettes.
   const woodland = canvas('idle-forest-backdrop', 160, 160), wood = woodland.context;
   wood.imageSmoothingEnabled = false;
   for (let y = 0; y < 160; y += 40) for (let x = 0; x < 160; x += 40)
     wood.drawImage(source, 128, 64, 64, 64, x, y, 40, 40);
-  for (let row = -1; row <= 4; row++) for (let col = -1; col <= 4; col++) {
-    const frame = scene.textures.getFrame(KEYS.grass, `tree-${((row + col) % 4 + 4) % 4}`)!;
-    wood.drawImage(source, frame.cutX, frame.cutY, frame.cutWidth, frame.cutHeight,
-      col * 40 + (row % 2 ? 20 : 0) - 25, row * 40 - 36, 50, 51);
-  }
   wood.fillStyle = 'rgba(20,56,36,.17)'; wood.fillRect(0, 0, 160, 160); woodland.refresh();
   const backdrop = Array.from({ length: 4 }, () => track(scene.add.tileSprite(0, 0, 1, 1, woodland.key)
     .setOrigin(0).setDepth(-1).setVisible(false)));
+  let scenery: Phaser.GameObjects.Image[] = [], scenerySize = '';
   const road = new Set(layout.road.cells.map(cellKey));
   for (const position of layout.road.cells) {
     const [x, y] = roadSource(position, road);
@@ -163,6 +160,13 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
         [-x, 0, x, height], [width, 0, x, height]];
       strips.forEach(([left, top, w, h], index) => backdrop[index]!
         .setPosition(left!, top!).setSize(w!, h!).setTilePosition(left!, top!).setVisible(true));
+      const signature = `${Math.ceil(x / BACKDROP_TREE.spacing)},${Math.ceil(y / BACKDROP_TREE.spacing)}`;
+      if (signature !== scenerySize) {
+        scenerySize = signature;
+        for (const tree of scenery) tree.destroy();
+        scenery = backdropTrees(layout, world.trees, x, y).map(tree => scene.add.image(tree.x, tree.y, KEYS.grass, `tree-${tree.variant}`)
+          .setOrigin(0).setDisplaySize(BACKDROP_TREE.width, BACKDROP_TREE.height).setTint(0xd8e2da).setDepth(3));
+      }
     },
     update(elapsed, built, builtAt, warehouseBuilt, warehouseBuiltAt, _warehouseUnlocked, workshopUpgraded = false, upgradedAt = null, tavernBuilt = false, tavernBuiltAt = null, tavernLevel = 1, coreTime = elapsed) {
       const workshopTexture = workshopUpgraded ? KEYS.workshopUpgraded : KEYS.workshop;
@@ -206,6 +210,6 @@ export function createForest(scene: Phaser.Scene, layout: IdleLayout): ForestVie
       warehouseLabel.setVisible(warehouseBuilt && warehouseAge > 1.6);
       tavernLabel?.setText(t("Taverne {0}", tavernLevel === 2 ? 'II' : 'I')).setVisible(tavernBuilt && tavernAge > 1.6);
     },
-    destroy() { for (const object of objects) object.destroy(); for (const key of textureKeys) scene.textures.remove(key); },
+    destroy() { for (const tree of scenery) tree.destroy(); for (const object of objects) object.destroy(); for (const key of textureKeys) scene.textures.remove(key); },
   };
 }
