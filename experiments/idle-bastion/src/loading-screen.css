@@ -30,7 +30,7 @@
 #boot-screen .boot-mist-front { z-index:2; bottom:8%; height:16%; opacity:.34; filter:blur(8px); animation-duration:27s; animation-delay:-13s; animation-direction:alternate-reverse; }
 #boot-screen .boot-copy { position:absolute; z-index:4; left:50%; top:8%; transform:translateX(-50%); width:92%; text-align:center; text-shadow:0 3px 2px #04101d,0 5px 22px #06111f; }
 #boot-screen .boot-eyebrow { display:block; margin:0 0 13px; color:#e5ce9b; font-size:10px; letter-spacing:.28em; text-transform:uppercase; }
-#boot-screen h1 { margin:0; font:700 clamp(48px,6.5vw,108px)/.94 "Spire Loading",Georgia,serif; letter-spacing:-.025em; color:#ffdf99; filter:drop-shadow(0 3px 0 #433424); }
+#boot-screen h1 { display:block; margin:0; text-align:center; font:700 clamp(48px,6.5vw,108px)/.94 "Spire Loading",Georgia,serif; letter-spacing:-.025em; color:#ffdf99; filter:drop-shadow(0 3px 0 #433424); }
 #boot-screen h1 span { position:relative; display:inline-block; white-space:nowrap; }
 #boot-screen h1 span::after { content:attr(data-boot-title); position:absolute; inset:0; color:transparent; text-shadow:none; background:linear-gradient(110deg,transparent 43%,#fff4cbcc 49%,transparent 55%) 180% 0/240% 100%; background-clip:text; -webkit-background-clip:text; animation:boot-title-glint 10s ease-in-out infinite; pointer-events:none; }
 #boot-screen .boot-tagline { font-size:clamp(12px,1.2vw,17px); margin:16px 0 0; color:#e8ddcc; letter-spacing:.025em; }

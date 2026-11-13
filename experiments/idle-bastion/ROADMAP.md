@@ -1,5 +1,12 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Ladetitel zentrieren · 13.11.2026 — lokal korrigiert; noch nicht bei Kongregate hochgeladen.**
+
+- [x] Ursache in der tatsächlichen Preview bestätigt: globale `h1`-Regel aus `premium.css` setzt den Ladetitel auf `display:flex` mit links beginnender Anordnung. Der zentrierte Elternrahmen reicht dafür nicht aus.
+- [x] Ladetitel in `loading-screen.css` ausdrücklich auf Blocklayout und zentrierten Text gesetzt. Bestehende einzeilige Desktop-/zweizeilige Hochkantgestaltung bleibt erhalten; ausschließlich zwei CSS-Deklarationen geändert. TypeScript und Kongregate-Produktionsbuild erfolgreich.
+- [ ] Visuelle Abnahme der korrigierten Fassung bei Kongregate-Größe und Hochkant: lokaler Browser erreicht den Prüfserver nicht; direkte lokale Datei durch Browser-URL-Richtlinie blockiert. Keine erfolgreiche neue Sichtprüfung behauptet. [Prüfbericht](../../artifacts/idle-bastion/acceptance/loading-title-center-2026-11-13/REPORT.md).
+- [ ] Korrigiertes Paket `C:/Users/madde/Documents/TowerDefense/Upload-Paket-Kongregate-2026-11-13-Titel-Zentriert` bei Kongregate einsetzen. Der bestätigte Portalstand im folgenden Abschnitt enthält diese anschließende Titelkorrektur noch nicht. **Publish bleibt ausschließlich beim Nutzer.**
+
 **Kongregate-Upload · 13.11.2026 — vollständig vorhanden, Ready to Publish; Publish nur durch den Nutzer.**
 
 Der neuere Nutzerauftrag erlaubt den Austausch der Preview-Spieldateien und des Icons sowie Commit/Push auf GitHub. Titel, Beschreibung, Steuerung, Screenshots und sonstige Spielangaben müssen unverändert bleiben. **Kein Kongregate-Publish durch den Agenten.** Die vorherige Beschränkung auf ein lokales Paket ist damit für diesen Upload aufgehoben. Git-Sicherung auf `codex/kongregate-leaderboards`; `main`/Pages werden dabei nicht veröffentlicht.
