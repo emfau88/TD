@@ -47,6 +47,23 @@ function fixture(): IdleBattle {
   return battle;
 }
 
+test('optional farm record migrates without invented history, stays monotone and rejects invalid writes', async () => {
+  const factory = new IDBFactory(), store = await openBattleStore(factory, DB_NAME);
+  const snapshot = fixture().snapshot();
+  const old = await store.save(snapshot, false, 0);
+  assert.equal(old.bestFarmGoldPerMinute, undefined);
+  const recorded = await store.save(snapshot, false, old.revision, { bestFarmGoldPerMinute: 123 });
+  const lower = await store.save(snapshot, false, recorded.revision, { bestFarmGoldPerMinute: 12 });
+  const omitted = await store.save(snapshot, false, lower.revision);
+  assert.equal(omitted.bestFarmGoldPerMinute, 123);
+  for (const value of [-1, 1.5, NaN, Infinity, Number.MAX_SAFE_INTEGER + 1]) {
+    await assert.rejects(store.save(snapshot, false, omitted.revision, { bestFarmGoldPerMinute: value }), SaveValidationError);
+  }
+  const loaded = await store.load(); assert.equal(loaded.kind, 'valid');
+  if (loaded.kind === 'valid') assert.equal(loaded.save.bestFarmGoldPerMinute, 123);
+  store.close();
+});
+
 test('isolated native IndexedDB starts empty and restores a committed battle and explicit pause', async () => {
   const factory = new IDBFactory();
   const store = await openBattleStore(factory, DB_NAME);

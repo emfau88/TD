@@ -9,6 +9,7 @@ import {
   createOfflineState, reserveOffline, type OfflineReward, type OfflineState,
 } from './offline';
 import type { BattleSaveStore, SaveEnvelope, WriterLease } from './save-store';
+import { certifiedGoldPerMinute, type LeaderboardScores } from './leaderboard-scores';
 
 export type SessionStore = Pick<BattleSaveStore,
   'load' | 'save' | 'recoverBackup' | 'close' | 'acquireWriter' | 'renewWriter' | 'releaseWriter'>;
@@ -85,6 +86,7 @@ export class BattleSession {
   private maraOfflineWelcomeSeen = false;
   private committedMaraOfflineWelcomeSeen = false;
   private showingMaraOfflineWelcome = false;
+  private committedBestFarmGoldPerMinute = 0;
 
   private constructor(
     battle: IdleBattle, private readonly store: SessionStore | undefined,
@@ -95,6 +97,7 @@ export class BattleSession {
     this.committedSnapshot = battle.snapshot();
     this.committedPaused = this.currentPaused = save?.paused ?? false;
     this.currentRevision = save?.revision ?? 0;
+    this.committedBestFarmGoldPerMinute = save?.bestFarmGoldPerMinute ?? 0;
     this.committedMaraOfflineWelcomeSeen = this.maraOfflineWelcomeSeen = save?.maraOfflineWelcomeSeen === true;
     this.currentOffline = clone(save?.offline ?? createOfflineState(now()));
     this.committedOffline = clone(this.currentOffline);
@@ -165,6 +168,12 @@ export class BattleSession {
   get error(): Error | undefined { return this.currentError; }
   get revision(): number { return this.currentRevision; }
   get temporary(): boolean { return !this.store; }
+  /** Never expose uncommitted kills, clears or proofs to external services. */
+  get leaderboardScores(): LeaderboardScores | undefined {
+    if (this.temporary || this.currentError || this.currentRevision === 0) return undefined;
+    return { highestWave: this.committedSnapshot.highestCleared,
+      bestGoldPerMinute: this.committedBestFarmGoldPerMinute, enemiesDefeated: this.committedSnapshot.kills };
+  }
   get certificate(): FarmCertificate | null { return this.currentCertificate && clone(this.currentCertificate); }
   get offline(): OfflineState { return clone(this.currentOffline); }
   get pendingReward(): OfflineReward | null { return this.currentOffline.pendingReward && clone(this.currentOffline.pendingReward); }
@@ -406,12 +415,14 @@ export class BattleSession {
       this.currentOffline = checkpointActive(this.currentOffline, this.now(), this.currentCertificate, paused || this.currentBattle.learningPaused, offlinePolicy(this.currentBattle.settlement.warehouseBuilt));
     }
     const offline = clone(this.currentOffline);
-    if (!force && same(snapshot, this.committedSnapshot) && paused === this.committedPaused && same(offline, this.committedOffline) && maraOfflineWelcomeSeen === this.committedMaraOfflineWelcomeSeen) return Promise.resolve();
+    const bestFarmGoldPerMinute = Math.max(this.committedBestFarmGoldPerMinute, certifiedGoldPerMinute(this.currentCertificate));
+    if (!force && same(snapshot, this.committedSnapshot) && paused === this.committedPaused && same(offline, this.committedOffline) && maraOfflineWelcomeSeen === this.committedMaraOfflineWelcomeSeen
+      && bestFarmGoldPerMinute === this.committedBestFarmGoldPerMinute) return Promise.resolve();
     const task = Promise.resolve().then(async () => {
       try {
         if (this.store) {
           if (!this.currentWriter) throw new SessionOwnershipError('Dieser Tab besitzt keine Schreibberechtigung mehr.');
-          const save = await this.store.save(snapshot, paused, this.currentRevision, { writer: this.currentWriter, offline, maraOfflineWelcomeSeen });
+          const save = await this.store.save(snapshot, paused, this.currentRevision, { writer: this.currentWriter, offline, maraOfflineWelcomeSeen, bestFarmGoldPerMinute });
           this.currentRevision = save.revision;
         }
         // Publish gift notices only after the complete snapshot is durable.
@@ -428,6 +439,7 @@ export class BattleSession {
         this.committedPaused = paused;
         this.committedOffline = clone(offline);
         this.committedMaraOfflineWelcomeSeen = maraOfflineWelcomeSeen;
+        this.committedBestFarmGoldPerMinute = bestFarmGoldPerMinute;
         this.checkpointSeconds = 0;
       } catch (value) { this.fail(asError(value), true); throw this.currentError; }
     }).then(() => {

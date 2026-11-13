@@ -10,6 +10,8 @@ export interface SaveEnvelope {
   battle: BattleSnapshot; offline: OfflineState;
   /** Optional presentation history; absent in older saves. No economic effect. */
   maraOfflineWelcomeSeen?: boolean;
+  /** Historical certified whole gold/minute; absent before leaderboards. */
+  bestFarmGoldPerMinute?: number;
 }
 export type LoadResult =
   | { kind: 'empty' }
@@ -18,7 +20,7 @@ export type LoadResult =
   | { kind: 'unsupported'; reason: string }
   | { kind: 'corrupt'; reason: string };
 export interface WriterLease { ownerId: string; epoch: number; expiresAt: number }
-export interface SaveOptions { writer?: WriterLease; offline?: OfflineState; maraOfflineWelcomeSeen?: boolean }
+export interface SaveOptions { writer?: WriterLease; offline?: OfflineState; maraOfflineWelcomeSeen?: boolean; bestFarmGoldPerMinute?: number }
 export interface BattleSaveStore {
   load(): Promise<LoadResult>;
   save(snapshot: BattleSnapshot, paused: boolean, expectedRevision: number, options?: SaveOptions): Promise<SaveEnvelope>;
@@ -82,11 +84,15 @@ function inspect(value: unknown, present = value !== undefined): Inspection {
     ? checkpointActive(createOfflineState(value.writtenAt), value.writtenAt, null, value.paused)
     : restoreOffline(value.offline);
   if (!offline) return { kind: 'corrupt', reason: 'The saved offline state is invalid.' };
+  if (value.bestFarmGoldPerMinute !== undefined && !natural(value.bestFarmGoldPerMinute)) {
+    return { kind: 'corrupt', reason: 'The saved farm record is invalid.' };
+  }
   return {
     kind: 'valid', save: {
       schemaVersion: 2, revision: value.revision, writtenAt: value.writtenAt,
       paused: value.paused, battle: restored.snapshot(), offline,
       ...(value.maraOfflineWelcomeSeen === true ? { maraOfflineWelcomeSeen: true } : {}),
+      ...(value.bestFarmGoldPerMinute !== undefined ? { bestFarmGoldPerMinute: value.bestFarmGoldPerMinute as number } : {}),
     },
   };
 }
@@ -164,7 +170,9 @@ function createStore(db: IDBDatabase, clock: () => number): BattleSaveStore {
       const restored = IdleBattle.restore(snapshot);
       const proposedOffline = options.offline === undefined ? undefined : restoreOffline(options.offline);
       const writer = options.writer && { ...options.writer };
-      if (!restored || typeof paused !== 'boolean' || !natural(expectedRevision) || (options.offline !== undefined && !proposedOffline)) {
+      const bestFarmGoldPerMinute = options.bestFarmGoldPerMinute;
+      if (!restored || typeof paused !== 'boolean' || !natural(expectedRevision) || (options.offline !== undefined && !proposedOffline)
+        || bestFarmGoldPerMinute !== undefined && !natural(bestFarmGoldPerMinute)) {
         return Promise.reject(new SaveValidationError('The proposed battle save is invalid.'));
       }
       const battle = restored.snapshot();
@@ -185,6 +193,10 @@ function createStore(db: IDBDatabase, clock: () => number): BattleSaveStore {
             written = { schemaVersion: 2, revision: nextRevision(revision), writtenAt: now, paused, battle, offline };
             // Monotone even when a caller only writes combat/offline fields.
             if (options.maraOfflineWelcomeSeen === true || current.kind === 'valid' && current.save.maraOfflineWelcomeSeen === true) written.maraOfflineWelcomeSeen = true;
+            const previousFarmRecord = current.kind === 'valid' ? current.save.bestFarmGoldPerMinute : undefined;
+            if (bestFarmGoldPerMinute !== undefined || previousFarmRecord !== undefined) {
+              written.bestFarmGoldPerMinute = Math.max(bestFarmGoldPerMinute ?? 0, previousFarmRecord ?? 0);
+            }
             if (current.kind === 'valid') store.put(current.save, BACKUP);
             store.put(written, PRIMARY);
           } catch (error) { fail(error); }

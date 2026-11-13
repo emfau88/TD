@@ -1,0 +1,20 @@
+{
+  "archivesVerified": true,
+  "fileCount": 201,
+  "entryBytes": 66035,
+  "additionalFilesBytes": 55227488,
+  "archives": [
+    {
+      "file": "01-game/Towers-and-Tantrums.zip",
+      "bytes": 55260387,
+      "sha256": "ebfc2bef0ab8a54078fc42fcf75260d05f4481768a53a85a36ea836b722b2b5a"
+    },
+    {
+      "file": "01-game/separate-upload/additional-files.zip",
+      "bytes": 55227488,
+      "sha256": "ff20b9a397945e7e899a5d3e6321df22eb328e19987bcefcf53a13cef5baa953"
+    }
+  ],
+  "uploaded": false,
+  "released": false
+}

@@ -1,4 +1,6 @@
 import { gameDatabase } from './save-namespace';
+import { leaderboardEligible } from './leaderboard-scores';
+import { KongregateLeaderboards, kongregateLoader } from './kongregate';
 import { tavernTestCompanion } from './tavern-test-route';
 import { TavernStoryHistory } from './tavern-story-history';
 import { mountCredits } from './credits-ui';
@@ -101,6 +103,11 @@ const tavernPreview = featurePreview && import.meta.env.VITE_TAVERN_PREVIEW === 
 const tavernProbeCompanion = tavernTestCompanion(featurePreview, tavernPreview, entryURL.searchParams);
 let tavernProbePending = !!tavernProbeCompanion;
 const databaseName = gameDatabase(featurePreview, probeSlot, tavernPreview);
+const leaderboards = leaderboardEligible(import.meta.env.VITE_KONGREGATE === '1', featurePreview, databaseName, entryURL.searchParams)
+  ? new KongregateLeaderboards(kongregateLoader(window, document)) : undefined;
+function syncLeaderboards(force = false): void {
+  leaderboards?.update(ready ? session?.leaderboardScores : undefined, force);
+}
 let session: BattleSession | undefined;
 let intro: MaraIntro | undefined;
 let introPortraits: string[] = [];
@@ -968,7 +975,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     }
     if (session !== live) return;
     if (live.battle.wave > 0) showCombatMessage(() => t('Gespeicherte Verteidigung geladen. Gold, Türme und laufender Kampf sind wieder da.'));
-    live.onChange = () => { if (session === live) { scene?.refresh(); syncUI(); } };
+    live.onChange = () => { if (session === live) { scene?.refresh(); syncUI(); syncLeaderboards(); } };
     live.onError = error => { if (session === live) { showError(t("Die Probe ist angehalten; der letzte bestätigte Stand bleibt erhalten. {0}", error.message), false, true); syncUI(); } };
     // Render at up to twice CSS resolution on dense displays. Phaser's own
     // displayScale maps touch coordinates back into the larger canvas.
@@ -1335,9 +1342,11 @@ document.addEventListener('visibilitychange', () => {
     .catch(error => showError(t("Die Probe ist angehalten. {0}", error instanceof Error ? error.message : String(error)), false, true));
 }, { signal: lifetime.signal });
 window.addEventListener('pagehide', () => { introPlayer.setPaused(true); void session?.suspend().catch(() => undefined); }, { signal: lifetime.signal });
+window.addEventListener('online', () => syncLeaderboards(true), { signal: lifetime.signal });
 const heartbeat = window.setInterval(() => {
+  syncLeaderboards();
   if (!document.hidden && session && !session.suspended) void session.heartbeat().catch(() => syncUI());
 }, 1000);
 const unbindDynamicLanguage = onLanguageChange(() => { showCombatMessage(); syncUI(); scene?.refreshLanguage(); });
-if (import.meta.hot) import.meta.hot.dispose(() => { introPlayer.stop(); loadingScreen()?.dismiss(); unbindStaticLanguage(); unmountLanguage(); unbindDynamicLanguage(); quickWins.destroy(); tavernUI.destroy(); audio.destroy(); lifetime.abort(); clearInterval(heartbeat); clearTimeout(retryTimer); game?.destroy(true); void session?.close().catch(() => undefined); });
+if (import.meta.hot) import.meta.hot.dispose(() => { leaderboards?.dispose(); introPlayer.stop(); loadingScreen()?.dismiss(); unbindStaticLanguage(); unmountLanguage(); unbindDynamicLanguage(); quickWins.destroy(); tavernUI.destroy(); audio.destroy(); lifetime.abort(); clearInterval(heartbeat); clearTimeout(retryTimer); game?.destroy(true); void session?.close().catch(() => undefined); });
 void boot();

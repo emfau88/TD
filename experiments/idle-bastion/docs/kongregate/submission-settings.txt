@@ -16,8 +16,8 @@ Suggested starting size: 1000 x 650 pixels, responsive resizing if available.
 The game adapts to smaller touch viewports. Test the actual Kongregate Preview before submitting for review.
 
 FILES
-Recommended: 01-game/Towers-and-Tantrums.zip (includes index.html at archive root).
-Alternative only if the portal asks for separate files: index.html plus additional-files.zip from 01-game/separate-upload.
+For the version form inspected on 2026-11-13: index.html plus additional-files.zip from 01-game/separate-upload.
+Alternative only if the portal accepts a complete ZIP: 01-game/Towers-and-Tantrums.zip (includes index.html at archive root).
 Use one upload method, not both. Do not upload this entire delivery folder.
 
 MEDIA
@@ -33,7 +33,12 @@ PLAYER DATA / SERVICES
 Local browser storage for progress, language and sound preferences.
 No game-owned accounts, payments, ad systems, analytics or cloud-save service are integrated.
 No generative AI service is called during play.
-No Kongregate statistics/leaderboard API integration is included in this submission build.
+The Kongregate build loads the official client API and submits three saved values:
+Highest Wave, Best Gold per Minute, Enemies Defeated.
+All three statistics use Max, Display in leaderboards enabled, Server API only disabled.
+Best Gold per Minute is the historical certified safe rate, rounded down to whole gold/minute.
+Probe, temporary and feature-preview games do not submit scores.
+This is not a cloud-save or cheat-proof backend service.
 The host platform may apply its own services and data practices.
 
 CREDITS

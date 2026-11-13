@@ -1,5 +1,29 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Kongregate-Upload · 13.11.2026 — Update ausdrücklich beauftragt; Publish nur durch den Nutzer.**
+
+Der neuere Nutzerauftrag erlaubt den Austausch der Preview-Spieldateien und des Icons sowie Commit/Push auf GitHub. Titel, Beschreibung, Steuerung, Screenshots und sonstige Spielangaben müssen unverändert bleiben. **Kein Kongregate-Publish durch den Agenten.** Die vorherige Beschränkung auf ein lokales Paket ist damit für diesen Upload aufgehoben. Git-Sicherung auf `codex/kongregate-leaderboards`; `main`/Pages werden dabei nicht veröffentlicht.
+
+- [x] Bestehende Texte, Kategorie und drei Screenshots vor Änderungen erfasst. Preview zeigt vor dem Austausch einen aktivierten Publish-Button; Spiel noch unveröffentlicht.
+- [x] Neues Icon im Portal eingesetzt; Erfolgsmeldung und kleine Portalansicht geprüft. [Portalnachweis](../../artifacts/idle-bastion/acceptance/kongregate-leaderboards-2026-11-13/portal-icon-updated.png).
+- [ ] Vorbereitetes HTML/ZIP hochladen, Metadaten danach exakt vergleichen und Freigabestatus erneut ablesen. Dateien sind ausgewählt; Vertragsbestätigung vor dem Upload angefragt.
+
+**Kongregate-Icon · 13.11.2026 — V2 erstellt und als Portalicon ausgewählt.**
+
+- [x] Bestehenden Stil, beide Figuren und Ballista-/Kristallturm erhalten; Bild vereinfacht, Titel unten und obere linke Ecke für Portal-Badges beruhigt. Neue PNG-Datei (1402 × 1122) im bestehenden Upload-Paket unter `02-media/game-icon-v2-title-bottom.png`; Original erhalten. [Bild, Prompt und Prüfnachweis](../../artifacts/idle-bastion/acceptance/kongregate-icon-v2-2026-11-13/REPORT.md).
+- [x] Veröffentlichungsablauf anhand aktueller offizieller Quellen geprüft: neue Builds vor/während Review und Updates nach Publish vorgesehen; automatischer Freigabeerhalt nach Austausch eines schon genehmigten, unveröffentlichten Builds nicht ausdrücklich dokumentiert. Tatsächlichen Status nach dem beauftragten Upload separat prüfen.
+
+**Kongregate-Bestenlisten · 13.11.2026 — K01 eingebaut und Upload-Paket geprüft.**
+
+Der Einbau und das Upload-Paket sind geprüft. Der anschließende Upload-/Git-Auftrag und seine weiterhin geltende Publish-Sperre stehen oben. Offene Stabilitäts- und Spielgefühlprüfungen bleiben bestehen.
+
+- [x] **K01 · Drei Bestenlisten:** `Highest Wave`, `Best Gold per Minute`, `Enemies Defeated`. Höchste vollständig besiegte Welle, persönliche sichere Goldrate (abgerundete ganze Gold/Minute) und tatsächliche Gegner im regulären Save. Farmrekord dauerhaft im optionalen Save-Feld ergänzt; vorhandene Saves erhalten. Keine simulierten Siege/Gegner oder Offline-Kills.
+- [x] Portaldefinitionen angelegt (IDs 144398–144400): alle **Max**, in Bestenlisten sichtbar, Client API erlaubt. Anbindung nur im Kongregate-Build; ausschließlich bestätigte Speicherwerte, Wiederholung nach Laden/Anmeldung/Verbindungsrückkehr und regelmäßig. Test-/Probe-/temporäre Partien ausgeschlossen. Fehlende API blockiert das Spiel nicht.
+- [x] 79 gezielte Speicher-, Session-, Farm- und Bestenlistentests sowie TypeScript und Kongregate-Produktionsbuild bestanden. Lokaler Browserlauf mit simuliertem SDK: echter erster Sieg meldet Welle 1 / 29 Gold pro Minute / 6 Gegner, Reload meldet identisch; blockierte API und Probe-Ausschluss geprüft. [Prüfbericht](../../artifacts/idle-bastion/acceptance/kongregate-leaderboards-2026-11-13/REPORT.md).
+- [x] Upload-Paket lokal unter `C:/Users/madde/Documents/TowerDefense/Upload-Paket-Kongregate-2026-11-13` bereitgestellt, beide ZIPs und 201 Dateien geprüft. Für das geöffnete Formular `01-game/separate-upload/index.html` plus `additional-files.zip` verwenden.
+- [ ] In der tatsächlichen Kongregate-Preview Rekordmeldung, Reload, Verbindungsunterbrechung und Ausschluss von Testständen prüfen. Einfache Client-Meldungen sind nicht vollständig gegen manipulierte lokale Spielstände geschützt; die Bestenliste ersetzt weder Export/Import noch Cloudsave.
+- [ ] **Später optional:** schnellster Sieg über Boss 25 als getrennte Herausforderung mit gleichen Startbedingungen und ohne Offline-Gold. Eigenen Zeit-/Versuchsrekord und faire Regeln zuerst festlegen; nicht aus bestehender Gesamtspielzeit ableiten und nicht für die ersten drei Listen voraussetzen.
+
 **Waldkanten · 08.11.2026 — gezielte Darstellungs-Korrektur umgesetzt und geprüft.**
 
 - [x] Ursache geprüft: rechteckige Hintergrundwald-Streifen schneiden Bäume oben/unten und seitlich an der Kartengrenze ab.

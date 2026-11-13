@@ -8,7 +8,7 @@ import { TavernInteractions } from '../src/tavern-interactions';
 import { guidedFrost } from './helpers/guided-frost';
 import { BattleSession, SessionLoadError, SessionOwnershipError, type SessionOptions, type SessionStore } from '../src/battle-session';
 import { createOfflineState, type OfflineState } from '../src/offline';
-import { openBattleStore, type LoadResult, type SaveEnvelope, type WriterLease } from '../src/save-store';
+import { openBattleStore, type LoadResult, type SaveEnvelope, type SaveOptions, type WriterLease } from '../src/save-store';
 
 const copy = <T>(value: T): T => structuredClone(value);
 const tick = async (): Promise<void> => { await new Promise<void>(resolve => setImmediate(resolve)); };
@@ -43,7 +43,7 @@ class ControlledStore implements SessionStore {
     if (!writer || !this.lease || this.lease.ownerId !== writer.ownerId || this.lease.epoch !== writer.epoch
       || this.lease.expiresAt <= this.clock) throw new SessionOwnershipError('Writer epoch expired or displaced');
   }
-  save(battle: BattleSnapshot, paused: boolean, expected: number, options?: { writer?: WriterLease; offline?: OfflineState }): Promise<SaveEnvelope> {
+  save(battle: BattleSnapshot, paused: boolean, expected: number, options?: SaveOptions): Promise<SaveEnvelope> {
     this.writes.push({ battle: copy(battle), paused, expected });
     return new Promise((resolve, reject) => {
       const confirm = () => {
@@ -53,6 +53,7 @@ class ControlledStore implements SessionStore {
           this.current = {
             schemaVersion: 2, revision: expected + 1, writtenAt: this.clock, battle: copy(battle), paused,
             offline: copy(options?.offline ?? createOfflineState(this.clock)),
+            bestFarmGoldPerMinute: options?.bestFarmGoldPerMinute,
           };
           resolve(copy(this.current));
         } catch (error) { reject(error); }
@@ -76,6 +77,22 @@ const open = (store: SessionStore, options: SessionOptions = {}) => BattleSessio
 });
 const fixture = (battle: IdleBattle, revision = 1, paused = false): SaveEnvelope => ({
   schemaVersion: 2, revision, writtenAt: 1000, paused, battle: battle.snapshot(), offline: createOfflineState(1000),
+});
+
+test('leaderboard scores cross only a successful durable boundary', async () => {
+  for (const fail of [false, true]) {
+    const store = new ControlledStore(), session = await open(store);
+    const before = session.leaderboardScores;
+    store.gate = true;
+    const command = session.command(battle => { battle.kills += 7; });
+    await tick();
+    assert.equal(session.battle.kills, 7);
+    assert.deepEqual(session.leaderboardScores, before);
+    if (fail) store.pending!.reject(new Error('Disk full')); else store.pending!.confirm();
+    assert.equal(await command, !fail);
+    assert.equal(session.leaderboardScores?.enemiesDefeated, fail ? undefined : 7);
+    assert.equal(store.current!.battle.kills, fail ? 0 : 7);
+  }
 });
 
 test('returning mid-worm after 24h preserves combat and claims normal farm income once', async () => {

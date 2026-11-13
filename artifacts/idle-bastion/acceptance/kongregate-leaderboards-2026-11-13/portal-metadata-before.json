@@ -1,0 +1,253 @@
+{
+  "fields": [
+    {
+      "checked": false,
+      "id": "games-325429_title",
+      "name": "game[title]",
+      "type": "text",
+      "value": "Towers & Tantrums"
+    },
+    {
+      "checked": false,
+      "id": "game_summary",
+      "name": "game[summary]",
+      "type": "textarea",
+      "value": "Towers &amp; Tantrums\nBuild towers. Make questionable friends.\n\nA quiet forest settlement. A growing army of pests. Companions with opinions.\n\nBuild and upgrade your defenses, combine slowing frost with hard-hitting towers, and keep the core standing through advancing enemy waves. Combat runs automatically while you choose what to build, research new options and put your companions' abilities to work.\n\nBetween battles, visit The Last Cozy Corner. Get to know Mara and Ilyra through conversations, gifts and shared moments. Apparently saving the grove also requires social skills.\n\nFeatures:\n- Tower defense with idle progression and offline gold.\n- Different tower roles, research and companion abilities.\n- A growing settlement and a tavern with character stories.\n- Mouse and touch controls; English and German interface and text. Character voices are in English.\n\nThis version includes the first three relationship hearts for each companion. Further relationship content is planned for future updates.\n\nIntended for ages 13 and up. Contains fantasy combat and mild flirtatious dialogue. This is the developer's voluntary age recommendation.\n\nAI disclosure: AI tools assisted with programming, selected visual assets and some text. The game does not generate AI content during play.\n\nProgress is saved locally in this browser. Clearing the game's site data removes that local progress.\n"
+    },
+    {
+      "checked": false,
+      "id": "game_instructions",
+      "name": "game[instructions]",
+      "type": "textarea",
+      "value": "DESKTOP\n- Click buttons, towers and settlement buildings to select them or open their menus.\n- Choose a tower/building card, then click a valid location to place it.\n- Hold the left mouse button and drag an empty part of the map to move the camera.\n- Use Overview to frame the map and the + button to change zoom.\n- Use the pause/play button in the top bar to pause or resume combat.\n- Select companions to access their available abilities as they unlock.\n\nMOBILE / TOUCH\n- Tap buttons, towers and buildings to select them.\n- Choose a build card, then tap a valid location to place it.\n- Drag the map with one finger to move the camera.\n- Use the Overview, zoom and pause/play buttons in the same way as on desktop.\n"
+    },
+    {
+      "checked": false,
+      "id": "game_category_id",
+      "name": "game[category_id]",
+      "type": "select-one",
+      "value": "9"
+    },
+    {
+      "checked": false,
+      "id": "collab_username_0",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": true,
+      "id": "",
+      "name": "game[collaborations_wrapper][0][visible]",
+      "type": "checkbox",
+      "value": "1"
+    },
+    {
+      "checked": false,
+      "id": "collab_username_1",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": true,
+      "id": "",
+      "name": "game[collaborations_wrapper][1][visible]",
+      "type": "checkbox",
+      "value": "1"
+    },
+    {
+      "checked": false,
+      "id": "collab_username_2",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": true,
+      "id": "",
+      "name": "game[collaborations_wrapper][2][visible]",
+      "type": "checkbox",
+      "value": "1"
+    },
+    {
+      "checked": false,
+      "id": "tester_username_0",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_1",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_2",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_3",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_4",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_5",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_6",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_7",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_8",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_9",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_10",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_11",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_12",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_13",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_14",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_15",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_16",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_17",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_18",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "tester_username_19",
+      "name": "",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "game_discord_server_id",
+      "name": "game[discord_server_id]",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "game_discord_channel_id",
+      "name": "game[discord_channel_id]",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "checked": false,
+      "id": "game_api_callback_url",
+      "name": "game[api_callback_url]",
+      "type": "text",
+      "value": ""
+    }
+  ],
+  "images": [
+    {
+      "alt": "Game icon",
+      "src": "https://cdn2.kongcdn.com/game_icons/0070/3433/game-icon.png?i10c=img.resize(width:250,height:200)"
+    },
+    {
+      "alt": "Screenshot",
+      "src": "https://cdn4.kongcdn.com/assets/screenshots/0095/6752/01-defense-in-action.jpg"
+    },
+    {
+      "alt": "Screenshot",
+      "src": "https://cdn4.kongcdn.com/assets/screenshots/0095/6753/02-rosemirror-boss.jpg"
+    },
+    {
+      "alt": "Screenshot",
+      "src": "https://cdn1.kongcdn.com/assets/screenshots/0095/6754/03-ilyra-tavern.jpg"
+    }
+  ]
+}

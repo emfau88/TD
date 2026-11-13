@@ -1,0 +1,25 @@
+{
+  "results": [
+    {
+      "case": "regular-game",
+      "savedScores": {
+        "Highest Wave": 1,
+        "Best Gold per Minute": 29,
+        "Enemies Defeated": 6
+      },
+      "reloadResubmits": true,
+      "sdkLoadedOncePerPage": true
+    },
+    {
+      "case": "api-unavailable",
+      "gameStarts": true,
+      "sdkRequests": 1
+    },
+    {
+      "case": "probe-excluded",
+      "gameStarts": true,
+      "sdkRequests": 0
+    }
+  ],
+  "errors": []
+}
