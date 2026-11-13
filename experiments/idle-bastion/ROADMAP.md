@@ -1,12 +1,14 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
-**Kongregate-Upload · 13.11.2026 — Update ausdrücklich beauftragt; Publish nur durch den Nutzer.**
+**Kongregate-Upload · 13.11.2026 — vollständig vorhanden, Ready to Publish; Publish nur durch den Nutzer.**
 
 Der neuere Nutzerauftrag erlaubt den Austausch der Preview-Spieldateien und des Icons sowie Commit/Push auf GitHub. Titel, Beschreibung, Steuerung, Screenshots und sonstige Spielangaben müssen unverändert bleiben. **Kein Kongregate-Publish durch den Agenten.** Die vorherige Beschränkung auf ein lokales Paket ist damit für diesen Upload aufgehoben. Git-Sicherung auf `codex/kongregate-leaderboards`; `main`/Pages werden dabei nicht veröffentlicht.
 
 - [x] Bestehende Texte, Kategorie und drei Screenshots vor Änderungen erfasst. Preview zeigt vor dem Austausch einen aktivierten Publish-Button; Spiel noch unveröffentlicht.
 - [x] Neues Icon im Portal eingesetzt; Erfolgsmeldung und kleine Portalansicht geprüft. [Portalnachweis](../../artifacts/idle-bastion/acceptance/kongregate-leaderboards-2026-11-13/portal-icon-updated.png).
-- [ ] Vorbereitetes HTML/ZIP hochladen, Metadaten danach exakt vergleichen und Freigabestatus erneut ablesen. Dateien sind ausgewählt; Vertragsbestätigung vor dem Upload angefragt.
+- [x] HTML/ZIP vollständig im bestehenden Spieleintrag vorhanden: alle 200 Manifestdateien plus `LICENSES.txt` in der Portaldateiliste, neue `index.html` mit 64,5 KB. Tatsächliche Kongregate-Preview startet bis Maras Anleitung; neues Buildskript und Kongregate-SDK im Spiel-iframe nachgewiesen. Metadatenfelder und drei Screenshot-URLs vor/nachher exakt identisch.
+- [x] Nach zwischenzeitlichem `Uploading`/nicht erreichbarer Preview und Nutzerstopp beim ausdrücklich beauftragten Wiederaufnehmen den Endzustand geprüft: **Ready to Publish**, Publish-Button aktiv. Kein weiterer Upload nötig, keine erneute ausstehende Freigabe angezeigt und nicht veröffentlicht. [Portalstatus](../../artifacts/idle-bastion/acceptance/kongregate-leaderboards-2026-11-13/portal-status-after.png).
+- [x] Spielcode/Icon als `a078f293` auf `codex/kongregate-leaderboards` committed und gepusht; GitHub-Commit per API bestätigt. `main`/Pages unverändert.
 
 **Kongregate-Icon · 13.11.2026 — V2 erstellt und als Portalicon ausgewählt.**
 

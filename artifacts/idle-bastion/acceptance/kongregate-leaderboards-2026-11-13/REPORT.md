@@ -29,7 +29,37 @@ in `portal-metadata-before.json` erfasst. Die alte Preview zeigte einen aktivier
 Publish-Button (`portal-status-before.json`, `portal-before-upload.png`). Das neue
 Icon wurde mit Erfolgsmeldung gespeichert (`portal-icon-updated.png`). Nach
 ausdrücklicher Bestätigung des Nutzers wurden die vier Lizenz-/Zusicherungsfelder
-gesetzt und Upload ausgelöst; die Serverbestätigung steht noch aus.
+gesetzt und Upload ausgelöst. Der Endzustand ist inzwischen bestätigt: vollständig
+hochgeladen, **Ready to Publish**, nicht veröffentlicht.
+
+## Tatsächlicher Portalabschluss
+
+- Zwischenzeitlich zeigte das Portal `Uploading`, ein leeres Uploadformular und
+  keine erreichbare Preview. Nach dem zweiten Uploadversuch wurde auf Nutzerwunsch
+  angehalten. Beim ausdrücklich beauftragten Wiederaufnehmen war die neue Preview
+  wieder vorhanden. Aus diesem Zwischenzustand lässt sich kein dauerhafter Verlust
+  der Freigabe ableiten; der genaue interne Plattformablauf ist nicht bekannt.
+- Portaldateiliste anschließend vollständig: alle **200 Manifestdateien** plus
+  **LICENSES.txt**; außerdem listet Kongregate das hochgeladene ZIP selbst.
+  [Dateinamenvergleich](portal-files-observed.json). Das ist ein Abgleich der
+  angezeigten Dateinamen, keine Remote-Prüfsummenmessung.
+- `index.html` wird mit **64,5 KB** angezeigt. Das tatsächlich gestartete Spiel
+  verwendet `assets/index-Bccx9Q-0.js`, passend zum geprüften Paket, und lädt das
+  Kongregate-SDK. Die Ladeansicht endet; Maras Anleitung `Welcome to the Old Grove`
+  mit `Continue`/`Skip intro` ist verfügbar. Keine künstlichen Spielwerte erzeugt.
+- Ein Konsolenfehler stammt aus Kongregates `sitewide_async_javascripts`:
+  `Cannot read properties of null (reading 'innerHTML')`. Der Spielstart gelingt
+  dennoch; kein beobachteter Fehler aus dem Spielcode. Keine vollständige
+  Live-Bestenlistenabnahme daraus ableiten.
+- Sämtliche erfassten Metadatenfelder und die drei Screenshot-URLs sind exakt
+  unverändert: [Vergleich](portal-metadata-comparison.json),
+  [Nachher](portal-metadata-after.json). Neues Icon separat erfolgreich gespeichert.
+- Entwicklerportal zeigt **Ready to Publish**, die Preview einen aktivierten
+  **Publish**-Button. [Statusnachweis](portal-status-after.png). Publish, Delete
+  current preview version und Submit for Review wurden nicht betätigt.
+- Spielcode und Icon: GitHub-Commit `a078f293f3aab91420a6f9428f792890dfb9678a`
+  auf `codex/kongregate-leaderboards`; GitHub-API bestätigt den Commit. `main`
+  unverändert bei `08ad32fb`; kein Pages-Deploy ausgelöst.
 
 ## Tatsächlich geprüft
 
@@ -72,9 +102,9 @@ Arbeitsbranch `codex/kongregate-leaderboards` und löst keinen Pages-Deploy aus.
 
 ## Offene Abnahme
 
-Eine echte Kongregate-Preview mit dem neuen Spielpaket ist **noch nicht geprüft**.
-Nach dem beauftragten Upload sind die echte Serverannahme und die sichtbaren
-Bestenlisten noch zu prüfen. Client-Statistiken
+Der Spielstart der echten Kongregate-Preview ist geprüft. Die tatsächliche Annahme
+positiver Rekordwerte durch den Statistikserver und die sichtbaren Bestenlisten
+sind noch nicht geprüft. Client-Statistiken
 sind nicht vollständig gegen manipulierte lokale Saves geschützt. Kein Cloudsave.
 
 Offizielle API-Verträge:
