@@ -34,17 +34,17 @@ test('rules 17 preserve enemy composition, counts, HP and base rewards from 16 t
   }
 });
 
-test('first live clear pays 70 gold, replay pays 7, proof includes the reduction exactly once',()=>{
+test('first live clear pays 70 gold, replay pays 28, proof includes the reduction exactly once',()=>{
   const b=new IdleBattle();until(b,()=>b.highestCleared===1);
   assert.equal(b.earned*1000+b.rewardRemainderUnits,70000);
-  const proof=certifyFarm(b)!;assert.equal(farmRewardUnits(proof),14000n);assert.equal(proof.durationMs,21100);
+  const proof=certifyFarm(b)!;assert.equal(farmRewardUnits(proof),56000n);assert.equal(proof.durationMs,21100);
   b.mode='farm';b.setFarmWave(1);const before=units(b),attempt=b.attemptId;
   until(b,()=>b.attemptId>attempt&&b.phase==='intermission');
-  assert.equal(units(b)-before,7000);
+  assert.equal(units(b)-before,28000);
   for(const policy of [OFFLINE,WAREHOUSE_OFFLINE]){
     const start=beginAbsence(createOfflineState(0),0,proof,false,policy);
     const oneCycle=reserveOffline(start,21100);
-    assert.equal(oneCycle.pendingReward!.amountUnits,policy===OFFLINE?3360:3640);
+    assert.equal(oneCycle.pendingReward!.amountUnits,policy===OFFLINE?13440:14560);
     assert.equal(reserveOffline(start,86400000).pendingReward!.amountUnits,
       reserveOffline(start,policy.limitMs).pendingReward!.amountUnits);
   }
@@ -101,7 +101,7 @@ test('real schema 32 in-flight replay preserves every field and old reward until
   const first=Array.from({length:waveCount(proof.wave)},(_,i)=>waveEnemy(proof.wave,i)).reduce(
     (sum,e)=>sum+battleRewardUnits(e.gold,proof.wave,BATTLE_RULES_VERSION,true,false),
     battleRewardUnits(clearReward(proof.wave,BATTLE_RULES_VERSION),proof.wave,BATTLE_RULES_VERSION,true,false));
-  assert.equal(farmRewardUnits(proof)*10n,BigInt(first)*2n); // certificate spans two full cycles
+  assert.equal(farmRewardUnits(proof)*5n,BigInt(first)*4n); // certificate spans two full cycles
 });
 
 test('native session preserves old 60/65% active baselines and pending claims exactly once, then starts new policy',async()=>{

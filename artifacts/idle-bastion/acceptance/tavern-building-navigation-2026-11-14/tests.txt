@@ -1,0 +1,24 @@
+✔ English is the explicit default; language choices survive blocked preference storage (0.8923ms)
+✔ complete sentences retain every placeholder, whitespace and dynamic values in both languages (60.8239ms)
+✔ menu language switch preserves DOM identity, updates accessibility and persists only the preference (160.5905ms)
+✔ language changes preserve an earned battle, farm proof and historical offline receipt exactly (434.1343ms)
+✔ all enemy descriptions and companion dialogue stages have translations, without translating IDs (1.6611ms)
+✔ Ilyra requires actual recruitment; each transaction retains its recipient and shared stock (194.6508ms)
+✔ Ilyra has five distinct replayable heart scenes and six own dialogue stages (0.9547ms)
+✔ wave 12 awards one free kit without changing combat, gold or introduction (120.0361ms)
+✔ upgrade needs actual boss 25 and 1,200 gold; recruitment needs level II; repeats cannot charge (33.5022ms)
+✔ old schema 18 preserves actors, free plots, coins and progress; invalid new ownership is rejected (150.0781ms)
+✔ every legal pair of old settlement plots leaves a tavern site without moving either building (24.9089ms)
+✔ tavern command persists once and rolls back coins and position on storage failure (107.364ms)
+✔ farm proof still works after a tavern built at nonzero combat time (54.9845ms)
+✔ schema 22 owners become II once; nonowners keep kit, old recruitment, gold and positions survive (29.004ms)
+✔ paid upgrade rolls back on save failure and survives reload without a second payment (75.4015ms)
+✔ companion UI explains locked Ilyra without an early recruitment offer (451.4197ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6556.0784

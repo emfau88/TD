@@ -1,0 +1,10 @@
+{
+  "defeatDismissalSurvivesReload": true,
+  "firstLeakNotRepeatedAfterReload": true,
+  "errors": [],
+  "scenarios": "Prepared isolated W31 save; defeat -> farm26; leak -> 19 core health; both paused for comparisons",
+  "viewports": [
+    "390x844",
+    "844x390"
+  ]
+}

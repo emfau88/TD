@@ -45,7 +45,7 @@ test('first real clear proves two conservative no-damage cycles including both p
   const battle = firstClear();
   const before = battle.snapshot(), events = structuredClone(battle.events);
   const certificate = certifyFarm(battle);
-  assert.deepEqual(small(certificate), { wave: 1, rewardGold: 14, durationMs: 21100 });
+  assert.deepEqual(small(certificate), { wave: 1, rewardGold: 56, durationMs: 21100 });
   assert.ok(isFarmCertificateValid(certificate, battle));
   assert.deepEqual(battle.snapshot(), before);
   assert.deepEqual(battle.events, events);

@@ -179,7 +179,7 @@ test('policy migration never replaces an explicitly contradictory or malformed s
 });
 
 test('known historical departure proofs retain their original production basis', () => {
-  for (const rulesVersion of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]) {
+  for (const rulesVersion of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]) {
     const basis = { ...BASIS, rulesVersion, wave: rulesVersion === 19 ? 36 : 1, fingerprint: `defense-rules-${rulesVersion}` };
     const pending = reserveOffline(beginAbsence(createOfflineState(START), START, basis, false, LEGACY_OFFLINE), START + 30_000);
     const restored = restoreOffline(JSON.parse(JSON.stringify(pending)));
@@ -189,6 +189,6 @@ test('known historical departure proofs retain their original production basis',
     assert.equal(reserveOffline(restored!, START + 60_000).pendingReward?.amountUnits, 60_000);
   }
   const future = JSON.parse(JSON.stringify(start()));
-  future.baseline.certificate.rulesVersion = future.window.certificate.rulesVersion = 22;
+  future.baseline.certificate.rulesVersion = future.window.certificate.rulesVersion = 23;
   assert.equal(restoreOffline(future), undefined);
 });

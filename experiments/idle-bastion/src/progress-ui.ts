@@ -132,14 +132,16 @@ export function createProgressUI(goTo: (action: GoalAction) => void, signal: Abo
       el('journal-live-rate').textContent = t(rateText);
       el('journal-rate-note').textContent = t(rate.perMinute === null ? t('Nach 15 aktiven Sekunden erscheint eine erste Schätzung. Nach 60 Sekunden ist das Messfenster vollständig.')
         : t("Durchschnitt der letzten {0} aktiven Sekunden. Käufe, Verkäufe und Offline-Gutschriften zählen nicht dazu. Nach Neuladen beginnt die Messung neu.", Math.floor(rate.seconds)))
-        + ' ' + t('Bereits gemeisterte Wellen geben 10 % des normalen Goldes. Noch nicht geschaffte Wellen und einmalige Bossprämien behalten ihren vollen Ertrag.');
+        + ' ' + t('Bereits gemeisterte Wellen geben 40 % des normalen Goldes. Noch nicht geschaffte Wellen und einmalige Bossprämien behalten ihren vollen Ertrag.');
       el('journal-safe-rate').textContent = t(certificate ? t("{0} G/min", gold(safe)) : t('Noch kein Nachweis'));
       el('journal-offline-rate').textContent = t(live.paused ? t('0 G/min · Pause aktiv') : t("{0} G/min", gold(offline)));
       el('journal-offline-note').textContent = t("{0} % der sicheren Farmbasis · höchstens {1} Stunden. {2}", policy.efficiencyPermille / 10, policy.limitMs / 3600000, certificate ? t("Bei unveränderter Verteidigung etwa {0} Gold in einer Stunde.", gold(live.paused ? 0 : offline * 60)) : t('Zuerst eine Welle zuverlässig besiegen.'));
       const defeat = p.lastDefeat;
       const fallback = b.mode === 'farm' && defeat && defeat.attemptId !== b.dismissedDefeatAttempt;
       el('fallback-note').hidden = !fallback || live.awaitingResume;
-      el('fallback-copy').textContent = t(fallback ? t("Welle {0} nicht geschafft. Jetzt Farmen auf Welle {1} mit 10 % Gold für bereits geschaffte Wellen. Gold und Ausbau bleiben erhalten. Verbessere deine Verteidigung und starte erneut einen Vorstoß.", defeat.wave, b.farmWave) : '');
+      el('fallback-copy').textContent = !fallback ? '' : certificate
+        ? t('Kein Fortschritt verloren: Gold und Ausbau bleiben. Farmwelle {0}: ca. {1} G/min bei 40 % Belohnung. Verstärke deine Türme in Ruhe. Dein nächster Vorstoß beginnt wieder bei Welle {2}.', b.farmWave, gold(safe), b.nextAdvanceWave)
+        : t('Kein Fortschritt verloren: Gold und Ausbau bleiben. Verstärke deine Türme in Ruhe. Dein nächster Vorstoß beginnt wieder bei Welle {0}.', b.nextAdvanceWave);
       el('journal-last-defeat').textContent = t(defeat ? t("Letzte Niederlage: Welle {0}. Gold und Ausbau blieben erhalten.", defeat.wave) : p.sinceAttempt > 1 ? t('Vor dem Update wurde keine Niederlagenhistorie aufgezeichnet.') : t('Bisher keine Niederlage.'));
       el('history-note').textContent = t(p.sinceAttempt > 1
         ? t("Aufzeichnung ab Versuch {0}. Frühere Versuche sind unbekannt; laufende Altversuche werden nicht nachträglich gezählt. Die letzten {1} verschiedenen Wellen bleiben einzeln erhalten.", p.sinceAttempt, HISTORY_LIMIT)

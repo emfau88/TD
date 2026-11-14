@@ -1,5 +1,25 @@
 # Technische Leitplanken — SPIRE: Idle Bastion
 
+## Farmbelohnung und Hinweise — Schema 39 / Regeln 22, 14.11.2026
+
+Wiederholte Gegner-/Wellenbelohnungen betragen ab Rezept 22 exakt 40 %.
+Rezepte 17–21 behalten 10 %, frühere Rezepte ihren historischen Ertrag.
+Die Migration 38→39 validiert zuerst den vollständigen alten Stand und ändert
+nur Schema/Regeln; das Rezept einer laufenden Welle und alle Beträge bleiben
+erhalten. Erst der nächste Versuch verwendet Rezept 22. Erstbelohnungen,
+einmalige Bossprämien, Tutorialausnahmen und Wisps einmaliger Bonus bleiben gleich.
+
+Der neue Regel-Fingerprint erfordert einen frisch simulierten Farmnachweis;
+die Kandidatensuche ist unverändert. Die höhere Farmbasis erhöht auch neu
+entstehende Offline-Erträge, bei weiterhin 24/26 % Effizienz und 2/8 Stunden.
+Historische Abreisebelege und bereits reservierte Ansprüche behalten ihren Wert.
+
+Der erste Durchbruch wird einmal je Speicherplatz im vorhandenen Kampfhinweis
+erklärt. `spire-ui-first-leak-v1:<slot>` ist ausschließlich eine optionale
+UI-Präferenz; bei blockiertem Speicher gilt sie für die laufende Sitzung.
+Der vorhandene Niederlagenhinweis bleibt pro Ereignis schließbar. Im niedrigen
+Querformat erhält er den Platz des normalen Zielhinweises ohne neue Typografie.
+
 ## Optionale Tavernenbegegnungen — Schema 38 / Regeln 21, 07.11.2026
 
 Zwei feste Begegnungsrecords je Figur speichern nur `seen`, `choice` und

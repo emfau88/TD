@@ -92,10 +92,10 @@ test('current snapshots deep-copy partially read records and preserve choices on
 });
 
 test('schema37 migration validates all old fields and adds only empty optional encounter records', () => {
-  const b = veteran(); const old: any = b.snapshot(); old.schemaVersion = 37; delete old.social.encounters;
+  const b = veteran(); const old: any = b.snapshot(); old.schemaVersion = 37; old.rulesVersion = 21; old.waveRecipeVersion = 21; delete old.social.encounters;
   const untouched = structuredClone(old), loaded = IdleBattle.restore(old)!;
-  assert.ok(loaded); assert.equal(BATTLE_SCHEMA_VERSION, 38); assert.equal(BATTLE_RULES_VERSION, 21);
-  assert.deepEqual(loaded.snapshot(), { ...old, schemaVersion: 38, social: { ...old.social, encounters: empty() } });
+  assert.ok(loaded); assert.equal(loaded.snapshot().schemaVersion, BATTLE_SCHEMA_VERSION); assert.equal(loaded.snapshot().rulesVersion, BATTLE_RULES_VERSION);
+  assert.deepEqual(loaded.snapshot(), { ...old, schemaVersion: BATTLE_SCHEMA_VERSION, rulesVersion: BATTLE_RULES_VERSION, social: { ...old.social, encounters: empty() } });
   assert.deepEqual(old, untouched);
   const invalid = structuredClone(old); invalid.social.gifts = 21;
   assert.equal(IdleBattle.restore(invalid), undefined);

@@ -1,0 +1,223 @@
+✔ a legally funded Frost run stays saveable through long wave tails and wave 15 (4043.8758ms)
+✔ JSON round trip preserves a live wave, its homing shots, IDs and deterministic later rewards (593.7881ms)
+✔ snapshot records are detached from the live model and from restored models (28.28ms)
+✔ a sold source retains its old shot level/damage and pays one kill after reload (54.0232ms)
+✔ reload immediately before lethal impact and after its event never replays kill money (62.63ms)
+✔ last enemy and clear bonus cross the save boundary once; intermission resumes at the exact remainder (119.3699ms)
+✔ initial delay and sub-tick remainder persist without accelerating or dropping simulation time (43.1269ms)
+✔ real defeat including the escaped enemy restores and enters the identical farm transition (415.951ms)
+✔ every sampled route corner, enemy recipe and partial update remains valid through later waves (1002.8441ms)
+✔ invalid resources, times, references, definitions and newer formats are rejected without mutating input (38.1677ms)
+✔ layout changes cannot be silently serialized under the starting-layout identity (4.4004ms)
+✔ leaderboard scores cross only a successful durable boundary (268.5261ms)
+✔ returning mid-worm after 24h preserves combat and claims normal farm income once (1043.6987ms)
+✔ free Frost commit includes consumption and tutorial exit; duplicate and failed writes cannot duplicate the kit (300.1355ms)
+✔ fresh persistent session commits before exposure and temporary play is explicit (78.9943ms)
+✔ purchase acknowledgement waits for commit and a concurrent click is rejected (34.6172ms)
+✔ write rejection rolls back the complete battle and freezes further economic actions (39.6482ms)
+✔ a second tab cannot simulate, load rewards or replace the active writer (40.0794ms)
+✔ expired epoch is taken over and the waking old tab cannot renew or overwrite newer gold (42.8132ms)
+✔ wave boundaries commit immediately; pure combat checkpoints at one second and flush stores the remainder (38.6893ms)
+✔ pause persists and a closed paused game receives no offline production (90.2797ms)
+✔ corrupt/newer saves remain protected and backup recovery is explicit (9.3335ms)
+✔ pending commits preserve all active time in bounded batches, without creating offline time (99.4139ms)
+✔ 60, 10 and 2 FPS produce the same saved combat and victory-based social progress (392.045ms)
+✔ flush, pause, hide and close finish queued active time before their boundary (196.9845ms)
+✔ a real absence follows queued active time without crediting either interval twice (41.972ms)
+✔ failed checkpoint discards unconfirmed queued time and restores the saved combat (31.0545ms)
+✔ kill/clear notifications wait for the complete reward commit and restore never replays them (185.0915ms)
+✔ farm certificate appears only after live clear, revalidates on upgrade and survives reload without rewards (71.5703ms)
+✔ suspend releases ownership, reserves 24% offline income and blocks combat until claim plus actual continuation (60.359ms)
+✔ reload/claim without active continuation preserves the same two-hour budget (65.2968ms)
+✔ schema 29 migration preserves an already reserved offline reward exactly once (72.8061ms)
+✔ failed offline claim rolls both gold and pending reward back for a safe later retry (78.1433ms)
+✔ large frame gaps become absence and never fast-forward the live wave (70.0928ms)
+✔ actual IndexedDB integration rejects a second tab and preserves exact confirmed rewards across return (123.5442ms)
+✔ close is idempotent, stores the final combat state and releases the writer (57.503ms)
+✔ Web Locks use a short gate, and an unavailable browser lock still permits valid IDB takeover (39.0368ms)
+✔ claims preserve the fixed absence window and continuation includes a later tail exactly once (81.5108ms)
+✔ a backwards clock cannot replay reserved offline time or move its cursor backwards (83.0018ms)
+✔ temporary play discards a large frame gap without offline gold or a return dialog (57.7248ms)
+✔ background checkpoint accepts exactly one queued purchase and validates it after saving (31.4845ms)
+✔ failed background write rejects the queued action without invoking its mutation (31.804ms)
+✔ pause click during a checkpoint persists exactly once (32.6918ms)
+✔ gift click during autosave remains responsive without duplicate gifts or points (31.2144ms)
+✔ new gift notices wait for a durable save and do not replay on restore (33.6738ms)
+✔ tavern hold freezes every combat field in normal and boss fights at different frame rates (402.5518ms)
+✔ tavern interactions commit while combat is held, without changing manual pause (81.3672ms)
+✔ tavern heartbeat checkpoints exclude visit time; real departure retains existing offline policy (174.8802ms)
+✔ opening tavern during a pending write retains only previously accepted combat time (33.5392ms)
+✔ all 250 rules-20 waves retain their frozen queue, HP, clocks and clear gold (73.5889ms)
+✔ staged trio adds three early silhouettes without increasing counts, wave budgets or late pressure (168.4819ms)
+✔ each new creature survives live save/reload at entry and along the route (694.1364ms)
+✔ old rule-20 combat is exact until the boundary and farm claims require a fresh proof (307.9871ms)
+✔ compact trio atlases provide all route directions and matching loop timings (4.6942ms)
+✔ 40% rewards preserve enemies, timing, HP, first clears and Wisp through endless waves (29.4468ms)
+✔ schema38 migration retains the entire recorded defense and current attempt until the next wave (227.0227ms)
+✔ first-leak reassurance waits for free UI space and persists once per save slot (0.4786ms)
+✔ defeat takes precedence and blocked preference storage cannot break the hint (0.3738ms)
+✔ no live completion means no certificate or fabricated starter rate (96.1219ms)
+✖ first real clear proves two conservative no-damage cycles including both pauses without touching live state or events (221.0967ms)
+✔ combat timers and money do not invalidate a proof; a purchase or upgrade does (153.4775ms)
+✔ a harmful sale immediately invalidates the old defense and selects a genuinely safe lower proof (685.4638ms)
+✔ a successful but damaged real wave is not safe; previous valid evidence survives a newer leaky clear (238.2855ms)
+✔ defeat returns to a fresh farm attempt, repeats it and never advances until the queued command crosses a boundary (334.8898ms)
+✔ snapshot v1 migration retains combat exactly and invents neither a certificate nor live-clear history (68.5775ms)
+✔ offline thousandths survive repeated credits, spending and snapshots; invalid amounts are atomic (33.5839ms)
+✔ current progress and certificate fields reject invalid histories, references, versions and numeric limits (57.2922ms)
+✔ a valid non-entry proof survives later leaky clears with unchanged defense (846.6598ms)
+✔ bounded live history pins both entry evidence and the currently certified farm wave (48.9351ms)
+✔ English is the explicit default; language choices survive blocked preference storage (1.2316ms)
+✔ complete sentences retain every placeholder, whitespace and dynamic values in both languages (20.3649ms)
+✔ menu language switch preserves DOM identity, updates accessibility and persists only the preference (126.1452ms)
+✔ language changes preserve an earned battle, farm proof and historical offline receipt exactly (316.7294ms)
+✔ all enemy descriptions and companion dialogue stages have translations, without translating IDs (1.2637ms)
+✔ 30 seconds, 10 minutes, 1 hour and 3 hours reserve 24% with the same two-hour cap (8.2458ms)
+✔ explicit pause and absence without a certified autonomous rate generate no gold (0.5873ms)
+✔ closing and reopening before claim consumes only the remaining cap of the original window (0.6373ms)
+✔ claims are idempotent, wrong IDs do nothing and only actual active play starts a fresh window (1.9288ms)
+✔ backwards clock jumps never move the high-water cursor back or repay a reserved interval (1.011ms)
+✔ the certificate and paused state are frozen at the original departure (0.4271ms)
+✔ confirmed active checkpoints and absence share a single non-overlapping time boundary (0.4992ms)
+✔ exact rational currency remainders survive tiny repeated reservations, claims and JSON round trips (0.5782ms)
+✔ fractional units carry into future windows even when the certified rate changes (0.5204ms)
+✔ invalid saved cursors, caps, pending amounts, versions and fractional remainders are rejected (1.7706ms)
+✔ the first B04 schema-one policy defaults migrate without resetting a pending absence window (0.4397ms)
+✔ policy migration never replaces an explicitly contradictory or malformed saved policy (0.4763ms)
+✖ known historical departure proofs retain their original production basis (7.7427ms)
+✔ rules 17 preserve enemy composition, counts, HP and base rewards from 16 through endless waves (13.5041ms)
+✔ first live clear pays 70 gold, replay pays 28, proof includes the reduction exactly once (240.6568ms)
+✔ repeat classification includes advance mode and old bosses, but excludes uncleared frontiers and tutorial (107.0594ms)
+✔ both first boss bonuses remain full and once-only alongside reduced repeat clear rewards (6.2762ms)
+✔ real schema 32 in-flight replay preserves every field and old reward until the next attempt (429.7395ms)
+✔ native session preserves old 60/65% active baselines and pending claims exactly once, then starts new policy (1650.0617ms)
+✔ new policy fractions survive repeated claims and reloads without a second multiplier or reset (230.2947ms)
+✔ optional farm record migrates without invented history, stays monotone and rejects invalid writes (210.2827ms)
+✔ isolated native IndexedDB starts empty and restores a committed battle and explicit pause (67.6928ms)
+✔ each commit retains the last valid predecessor and advances revision monotonically (97.6608ms)
+✔ two connections racing the same revision have exactly one atomic CAS winner (68.2421ms)
+✔ invalid new snapshots, pause values and revisions leave primary and backup untouched (62.5036ms)
+✔ newer primary schemas never fall back to backup or permit overwrite or recovery (62.7678ms)
+✔ a future battle rules version inside schema one is protected as unsupported (64.1651ms)
+✔ load never writes: corrupt known primary offers explicit recovery and preserves its raw evidence (69.5744ms)
+✔ recovery rechecks current primary atomically and refuses a newer valid save (75.6105ms)
+✔ unrecognized corruption or a bad backup is reported and cannot be silently replaced (66.0399ms)
+✔ a save aborted after successful put request is never acknowledged and leaves prior data intact (59.8751ms)
+✔ unavailable storage, future database version and blocked opens reject clearly (2.5786ms)
+✔ an explicitly stored undefined value is corruption rather than an absent primary (44.8828ms)
+✔ writer acquisition is atomic, exclusive and requires a lease for all subsequent production writes (55.682ms)
+✔ expired writer takeover rejects the waking old tab even when its save revision still matches (60.6436ms)
+✔ renewal extends the same epoch; expired writers cannot renew or save themselves back into ownership (46.7432ms)
+✔ lease epoch and release tombstone survive reopening the database (93.274ms)
+✔ backup recovery checks the writer epoch in the same transaction as replacement (46.5754ms)
+✔ malformed or future writer records are protected instead of being overwritten by acquisition (1.9443ms)
+✔ envelope one migrates read-only without production evidence and retains CAS revision protection (47.9564ms)
+✔ pending offline receipt and cleared claim persist atomically with actual gold across reloads (52.6804ms)
+✔ a future offline schema is protected even with a valid predecessor (49.6404ms)
+✔ battle schema two migrates without rewriting the historical absence proof or pending receipt (17.3855ms)
+✔ session return across the Mara rule update pays the historical rate once and starts with no invented current proof (54.1976ms)
+✔ future battle schema and historical proof versions remain protected (88.7649ms)
+✔ the two own-win milestones remain available after heart three without inventing history (1.8814ms)
+✔ seen, one immutable choice, neutral completion and independent records have no rewards (222.3566ms)
+✔ access and socialRewards are checked before encounter mutation (95.921ms)
+✔ current snapshots deep-copy partially read records and preserve choices on reload (60.0184ms)
+✔ schema37 migration validates all old fields and adds only empty optional encounter records (73.6299ms)
+✔ current schema rejects malformed or impossible records rather than resetting them (513.1957ms)
+✔ encounter choices use durable commands: rejected save rolls back, duplicates cannot overwrite (140.6636ms)
+ℹ tests 126
+ℹ suites 0
+ℹ pass 124
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7812.8138
+
+✖ failing tests:
+
+test at experiments\idle-bastion\tests\farming.test.ts:1:1911
+✖ first real clear proves two conservative no-damage cycles including both pauses without touching live state or events (221.0967ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+    {
+      durationMs: 21100,
+  +   rewardGold: 56,
+  -   rewardGold: 14,
+      wave: 1
+    }
+
+      at TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\tavern-comfy-integration\experiments\idle-bastion\tests\farming.test.ts:48:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { wave: 1, rewardGold: 56, durationMs: 21100 },
+    expected: { wave: 1, rewardGold: 14, durationMs: 21100 },
+    operator: 'deepStrictEqual'
+  }
+
+test at experiments\idle-bastion\tests\offline.test.ts:1:8331
+✖ known historical departure proofs retain their original production basis (7.7427ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + {
+  +   baseline: {
+  +     at: 1000000,
+  +     certificate: {
+  +       durationMs: 120000,
+  +       fingerprint: 'defense-a',
+  +       rewardGold: 200,
+  +       rulesVersion: 22,
+  +       wave: 1
+  +     },
+  +     efficiencyPermille: 240,
+  +     limitMs: 7200000,
+  +     paused: false
+  +   },
+  +   nextWindowId: 2,
+  +   pendingReward: null,
+  +   roundingRemainder: {
+  +     denominator: '1',
+  +     numerator: '0'
+  +   },
+  +   schemaVersion: 1,
+  +   window: {
+  +     at: 1000000,
+  +     certificate: {
+  +       durationMs: 120000,
+  +       fingerprint: 'defense-a',
+  +       rewardGold: 200,
+  +       rulesVersion: 22,
+  +       wave: 1
+  +     },
+  +     cursorHighWater: 1000000,
+  +     efficiencyPermille: 240,
+  +     from: 1000000,
+  +     id: 'absence-1-1000000',
+  +     limitMs: 7200000,
+  +     paused: false,
+  +     sequence: 0,
+  +     usedMs: 0
+  +   }
+  + }
+  - undefined
+
+      at TestContext.<anonymous> (C:\Users\madde\Documents\TowerDefense\.worktrees\tavern-comfy-integration\experiments\idle-bastion\tests\offline.test.ts:193:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { schemaVersion: 1, nextWindowId: 2, baseline: { at: 1000000, paused: false, certificate: [Object], efficiencyPermille: 240, limitMs: 7200000 }, window: { at: 1000000, paused: false, certificate: [Object], efficiencyPermille: 240, limitMs: 7200000, id: 'absence-1-1000000', from: 1000000, cursorHighWater: 1000000, usedMs: 0, sequence: 0 }, pendingReward: null, roundingRemainder: { numerator: '0', denominator: '1' } },
+    expected: undefined,
+    operator: 'strictEqual'
+  }

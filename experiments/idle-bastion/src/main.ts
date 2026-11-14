@@ -19,6 +19,7 @@ import { discoveryStep, updateDiscoveryUI } from './discovery-ui';
 import { LessonPointer } from './lesson-pointer';
 import { updateOnboarding } from './onboarding-ui';
 import { MaraIntro } from './mara-intro';
+import { LeakGuidance } from './leak-guidance';
 import { tutorialProgress } from './tutorial-progress';
 import { TutorialGuide } from './tutorial-guide';
 import { prepareIntroPortraits, introAnimations } from './intro-portraits';
@@ -110,6 +111,7 @@ function syncLeaderboards(force = false): void {
 }
 let session: BattleSession | undefined;
 let intro: MaraIntro | undefined;
+let leakGuidance: LeakGuidance | undefined;
 let introPortraits: string[] = [];
 const introPlayer = new IntroPortraitPlayer(element('intro-animation'), element('intro-portrait'), introAnimations);
 let finishingIntro = false;
@@ -137,6 +139,7 @@ const buildingCost = (b: IdleBattle, id: BuildingId): number => id === 'workshop
 let groundCandidate: GridCell | undefined;
 let toastUntil = 0;
 let combatMessage: (() => string) | undefined;
+const leakMessage = () => t('Einzelne Durchbrüche sind verkraftbar. Jede Welle beginnt wieder mit 20 Kernleben.');
 function showCombatMessage(message = combatMessage): void {
   combatMessage = message;
   if (message) element('combat-message').textContent = message();
@@ -575,7 +578,7 @@ function syncUI(): void {
   element('clearing-condition').textContent = t('Die Ostfront folgt in einem späteren Ausbau.');
   element('show-clearing').hidden = !atCore;
   element('layout-status').textContent = t(view.paused ? t('Kampf angehalten.')
-    : sim.mode === 'farm' ? t("Sicheres Farmen · Welle {0}. Bereits geschaffte Wellen geben 10 % Gold. Ein neuer Vorstoß beginnt auf deinen Wunsch am Wellenübergang.", sim.farmWave)
+    : sim.mode === 'farm' ? t("Sicheres Farmen · Welle {0}. Bereits geschaffte Wellen geben 40 % Gold. Ein neuer Vorstoß beginnt auf deinen Wunsch am Wellenübergang.", sim.farmWave)
     : t("Automatischer Vorstoß · höchste geschaffte Welle {0}.", sim.highestCleared));
   const relevantEvents = sim.drainEvents();
   scene?.acceptEvents(relevantEvents);
@@ -603,7 +606,7 @@ function syncUI(): void {
     : message.type === 'warehouse' ? t('Vorratslager gebaut! Künftig 26 % Offline-Ertrag für bis zu 8 Stunden.')
     : message.type === 'research' && message.technology === 'ember' ? t('Glutwerfer erforscht! Der Turmbau ist jetzt im Baukatalog verfügbar.') : message.type === 'research' && message.technology === 'storm' ? t('Sturmlicht erforscht! Der Turmbau ist jetzt im Baukatalog verfügbar.') : message.type === 'research' ? t('Frostfassung erforscht! Baue einen Frostkristall oder verbessere Türme bis Level 6.')
     : message.type === 'sell' ? t("Turm verkauft · +{0} Gold. Die sichere Farmbasis wird neu geprüft.", currency.format(message.amount ?? 0))
-    : t('Der Vorstoß ist gescheitert. Gold und Türme bleiben erhalten; die Verteidigung wechselt ins sichere Farmen.')));
+    : t('Kein Fortschritt verloren: Gold und Ausbau bleiben. Sammle beim sicheren Farmen Gold, verstärke deine Türme und versuche es in Ruhe erneut.')));
   const startedWave = relevantEvents.find(e => e.type === 'wave');
   const newcomer = startedWave && sim.waveRecipeVersion >= 9 && sim.mode === 'advance' && sim.highestCleared < sim.wave ? introducedEnemy(sim.wave, sim.waveRecipeVersion) : undefined;
   if (!message && newcomer && newcomer.firstWave >= 6 && !announcedEnemies.has(newcomer.id)) {
@@ -611,14 +614,25 @@ function syncUI(): void {
     showCombatMessage(() => t("Neu: {0} · {1}. Mehr in der Chronik.", newcomer.name, newcomer.counter));
     toastUntil = performance.now() + 6500;
   }
+  const fallbackPending = sim.mode === 'farm' && !!sim.progress.lastDefeat && sim.progress.lastDefeat.attemptId !== sim.dismissedDefeatAttempt;
+  leakGuidance?.observe(sim.lives);
+  if (leakGuidance?.take(!!message || !!newcomer || performance.now() < toastUntil || sim.guiding || sim.introduction.stage !== 'done'
+    || !!discovery || contextOpen || Boolean(placementType || groundMode || ilyraMode) || live.awaitingResume || live.suspended
+    || !!live.error || document.hidden || !!document.querySelector('dialog[open]') || fallbackPending || sim.bossActive || sim.wormActive)) {
+    showCombatMessage(leakMessage);
+    toastUntil = performance.now() + 10000;
+  }
   element('combat-message').hidden = sim.introduction.stage !== 'done' || !!discovery || performance.now() > toastUntil || contextOpen || Boolean(placementType || groundMode) || live.awaitingResume;
   if (!element('combat-message').hidden) { element('tutorial-card').hidden = true; element('mobile-hint').hidden = true; }
   progressUI.update(live);
+  const fallbackVisible = !element('fallback-note').hidden && !contextOpen && !placementType && !groundMode;
+  if (fallbackVisible) for (const id of ['tutorial-card', 'mobile-hint', 'combat-message']) element(id).hidden = true;
   const worm=sim.wormEnemy,wormId=wormEncounter(sim.wave,sim.waveRecipeVersion),boss = worm ?? sim.bossEnemy, charm = sim.bossCharm;
   const showBoss = (sim.bossActive || sim.wormActive) && !live.awaitingResume && !contextOpen && !placementType;
   element('boss-banner').hidden = !showBoss;
   element('boss-banner').dataset.worm=String(!!wormId);
-  document.querySelector<HTMLElement>('.goal-ribbon')!.hidden = showBoss || sim.introduction.stage !== 'done' || !!discovery || !element('wisp-arrival').hidden || hintStep === 15 && !element('tutorial-card').hidden;
+  document.querySelector<HTMLElement>('.goal-ribbon')!.hidden = showBoss || sim.introduction.stage !== 'done' || !!discovery || !element('wisp-arrival').hidden || hintStep === 15 && !element('tutorial-card').hidden
+    || fallbackVisible && matchMedia('(max-height:500px) and (orientation:landscape)').matches;
   element('boss-title').textContent = t("{0} · Welle {1}", wormId ? ENEMIES[wormId].name : bossEncounter(sim.wave).title, sim.wave);
   element('boss-health').textContent = t(boss ? t("{0} / {1}", currency.format(Math.ceil(boss.hp)), currency.format(Math.ceil(boss.maxHp))) : sim.bossQueued ? t('Im Anmarsch') : t('Boss gefallen'));
   const health = element<HTMLProgressElement>('boss-health-bar');
@@ -659,7 +673,7 @@ function syncUI(): void {
     workshopAvailable: settlement.workshopBuilt && settlement.frostResearched && !settlement.workshopUpgraded,
     levelSix: sim.towers.some(value => value.level >= 6), gold: sim.gold, tutorialSeen: sim.tutorial.seen,
   }, {
-    suppressed: contextOpen || Boolean(placementType || groundMode || ilyraMode) || live.awaitingResume || !!live.error || live.suspended
+    suppressed: contextOpen || Boolean(placementType || groundMode || ilyraMode) || live.awaitingResume || !!live.error || live.suspended || fallbackVisible || combatMessage === leakMessage && !element('combat-message').hidden
       || sim.introduction.stage !== 'done' || !!discovery && discovery !== 'cannon' || sim.bossActive
       || !element('wisp-arrival').hidden || performance.now() < workshopRevealUntil || !!document.querySelector('dialog[open]'),
     tutorialActive: !!tutorial,
@@ -958,6 +972,7 @@ async function boot(options: { temporary?: boolean; recover?: boolean } = {}, ow
     let preferences: Storage | undefined;
     try { if (!live.temporary) preferences = localStorage; } catch { /* Optional UI preferences. */ }
     intro = new MaraIntro(databaseName, live.origin, live.battle.introduction.stage, preferences);
+    leakGuidance = new LeakGuidance(databaseName, preferences);
     tavernStories = new TavernStoryHistory(databaseName, live.origin, live.battle.social.points, preferences);
     finishingIntro = false;
     const portraitsReady = intro.active ? prepareIntroPortraits() : Promise.resolve([]);

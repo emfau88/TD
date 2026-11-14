@@ -74,7 +74,7 @@ export class TavernUI {
           <button type="button" class="tv-guest tv-mara" data-do="mara"><canvas width="136" height="160" aria-hidden="true"></canvas><div><small>DEINE TÜFTLERIN</small><h3>Mara</h3><span data-text="mara-hearts" class="tv-hearts"></span><p class="tv-gift-badge" data-text="mara-gift"></p><p data-text="mara-greeting">„Schön, dass du vorbeischaust.“</p><strong>Zeit mit Mara verbringen</strong></div></button>
           <article class="tv-guest tv-ilyra"><canvas width="136" height="160" aria-hidden="true"></canvas><div><small>STERNENWÄCHTERIN</small><h3>Ilyra</h3><span data-text="ilyra-hearts" class="tv-hearts"></span><p class="tv-gift-badge" data-text="ilyra-gift"></p><p data-text="ilyra-lock"></p><button type="button" data-do="ilyra" class="tv-small">Rekrutierung ansehen</button></div></article>
         </div>
-        <footer class="tv-overview-footer"><button type="button" data-do="wisp">Wisp · Gefährtenverwaltung</button><button type="button" data-do="building">Gebäude & Ausbau</button></footer>
+        <footer class="tv-overview-footer"><button type="button" data-do="wisp">Wisp · Gefährtenverwaltung</button><button type="button" data-do="building">Taverne verwalten</button></footer>
       </section>
       <section class="tv-character" hidden>
         <div class="tv-bond"><div class="tv-bond-visual"><div class="tv-heart-buttons" role="group" aria-label="Maras persönliche Momente">${this.content.moments.map(moment => `<button type="button" data-moment="${moment.heart}"><svg viewBox="0 0 40 38" aria-hidden="true"><path class="tv-heart-shape" d="M20 34C16 30 3 22 3 12C3 2 15 0 20 9C25 0 37 2 37 12C37 22 24 30 20 34Z"/><path class="tv-heart-shine" d="M8 13C7 8 12 5 16 10"/></svg></button>`).join('')}</div><div class="tv-bond-track" title="Ein Abschnitt pro Herz"><progress max="160" value="0" aria-label="Maras Zuneigung"></progress><span class="tv-bond-fill" aria-hidden="true"></span><span class="tv-bond-marks" aria-hidden="true"></span></div></div><div class="tv-bond-copy"><span class="tv-heart-help">Herzen antippen: persönliche Momente erleben.</span></div></div>
@@ -148,7 +148,7 @@ export class TavernUI {
         case 'building': this.navigate('tavern'); break;
         case 'mara-combat': this.navigate(this.selected); break;
         case 'wisp': this.navigate('wisp'); break;
-        case 'ilyra': if (this.ports.session()?.battle.ilyra) this.select('ilyra'); else this.navigate(this.ports.session()?.battle.ilyraRecruitable ? 'ilyra' : 'tavern'); break;
+        case 'ilyra': if (this.ports.session()?.battle.ilyra) this.select('ilyra'); else this.navigate('ilyra'); break;
       }
     }, options);
     this.dialog.addEventListener('pointerdown', event => { this.pointer = [event.clientX, event.clientY]; this.dragged = false; }, options);
@@ -307,8 +307,9 @@ export class TavernUI {
     const reserve = social.reserves[this.selected];
     this.text('reserves', t('Gesprächsreserve: {0}/3 · Berührungsreserve ab Herz 2: {1}/3.', reserve?.talk ?? 0, reserve?.touch ?? 0));
     this.text('renewal', capped ? t('Gespräche, Berührungen und Momente bleiben verfügbar.') : t('Neue Gesprächs- und Berührungspunkte nach je 3 gewonnenen normalen Wellen. Noch {0} Siege bis zur nächsten Auffüllung.', SOCIAL.clearsPerRefill - (reserve?.clears ?? 0)));
-    this.text('ilyra-lock', b.ilyra ? COMPANIONS.ilyra.stage(social.points.ilyra).greeting : b.secondBossVictories ? b.settlement.tavernLevel === 2 ? t('Bereit für deine Einladung. Rekrutiere sie in der Gefährtenverwaltung.') : t('Boss 25 besiegt. Baue die Taverne auf Stufe II aus.') : t('Nach Boss 25 und dem Ausbau auf Taverne II rekrutierbar.'));
-    this.get('[data-do="ilyra"]').textContent = t(b.ilyra ? t('Zeit mit Ilyra verbringen') : b.ilyraRecruitable ? t('Ilyra kennenlernen') : t('Rekrutierung & Ausbau'));
+    this.text('ilyra-lock', b.ilyra ? COMPANIONS.ilyra.stage(social.points.ilyra).greeting : b.secondBossVictories ? b.settlement.tavernLevel === 2 ? t('Bereit für deine Einladung. Rekrutiere sie in der Gefährtenverwaltung.') : t('Für ihre Rekrutierung fehlt noch Taverne II.') : t('Nach Boss 25 und dem Ausbau auf Taverne II rekrutierbar.'));
+    this.get('[data-do="ilyra"]').textContent = t(b.ilyra ? t('Zeit mit Ilyra verbringen') : b.ilyraRecruitable ? t('Ilyra kennenlernen') : t('Rekrutierung ansehen'));
+    this.get('[data-do="building"]').textContent = t(b.settlement.tavernLevel < 2 ? 'Taverne ausbauen' : 'Taverne verwalten');
     this.get<HTMLButtonElement>('[data-do="wisp"]').disabled = !b.wispUnlocked;
     const nextMoment = this.content.next(points);
     this.text('moment-hint', nextMoment ? t("{0}Als Nächstes: „{1}“ · {2} Zuneigung.", count ? t('Herz antippen: Moment erleben. ') : '', nextMoment.title, nextMoment.points) : t('Deine Momente bleiben über die Herzen verfügbar.'));

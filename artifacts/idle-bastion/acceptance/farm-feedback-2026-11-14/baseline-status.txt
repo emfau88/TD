@@ -1,0 +1,1 @@
+Source: c839cc36; screenshot fixtures derive from the earned W31 snapshot. Defeat and one remaining-health decrement are prepared review states, isolated from player saves.

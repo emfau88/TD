@@ -54,8 +54,8 @@ test('old rule-20 combat is exact until the boundary and farm claims require a f
  const s=read('baseline/mixed-fresh.json').snapshots.clear14;
  const b=IdleBattle.restore(s)!;assert.ok(b);assert.deepEqual(b.snapshot(),{...s,schemaVersion:BATTLE_SCHEMA_VERSION,rulesVersion:BATTLE_RULES_VERSION,social:{...s.social,encounters:expectedEmptyEncounters()}});
  const old=read('baseline/mixed-w14-24h.json').proof;assert.equal(isFarmCertificateValid(old,b),false);
- const before=b.snapshot(),proof=certifyFarm(b,old);assert.ok(proof);assert.equal(proof.rulesVersion,21);assert.deepEqual(b.snapshot(),before);
- b.update(3);assert.equal(b.waveRecipeVersion,21);assert.ok(IdleBattle.restore(b.snapshot()));
+ const before=b.snapshot(),proof=certifyFarm(b,old);assert.ok(proof);assert.equal(proof.rulesVersion,BATTLE_RULES_VERSION);assert.deepEqual(b.snapshot(),before);
+ b.update(3);assert.equal(b.waveRecipeVersion,BATTLE_RULES_VERSION);assert.ok(IdleBattle.restore(b.snapshot()));
 });
 test('compact trio atlases provide all route directions and matching loop timings',()=>{
  for(const id of ['CobaltSlime','FlameWisp','FloatingEye']as const){

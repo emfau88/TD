@@ -1,5 +1,20 @@
 # Fortlaufende Roadmap — Towers & Tantrums (bisher SPIRE: Idle Bastion)
 
+**Tavernen-Ausbau und Rekrutierung · 14.11.2026 — lokal korrigiert und geprüft.**
+
+- [x] DE/EN: Ilyras Button zeigt vor ihrer Freischaltung „Rekrutierung ansehen / View recruitment“ und öffnet ausschließlich ihre Rekrutierungsinfos. Vorhandene Freischaltbedingungen und spätere Charakteransicht erhalten.
+- [x] Separater Gebäude-Button unten: „Taverne ausbauen / Upgrade tavern“, nach Ausbau „Taverne verwalten / Manage tavern“. Keine CSS-, Schrift-, Asset-, Kosten- oder Speicheränderung.
+- [x] 16 gezielte Tavernen-/Ilyra-/Sprachtests und Produktionsbuild bestanden. Beide Navigationswege im Browser geprüft, einschließlich gesperrter und verfügbarer Rekrutierung; DE-/EN-Vorher-/Nachher-Aufnahmen und identische berechnete Button-Stile. [Prüfbericht](../../artifacts/idle-bastion/acceptance/tavern-building-navigation-2026-11-14/REPORT.md).
+- [ ] Visuelle Nutzerabnahme; kein Upload oder Release für diesen Auftrag.
+
+**Farmen und Niederlagenhinweise · 14.11.2026 — lokal umgesetzt und geprüft.**
+
+- [x] Wiederholungsbelohnung auf ausdrücklich gewünschte 40 % erhöht. Erstbelohnungen, Boss-Erstprämien, Wisp-Bonus und Auswahl sicherer Farmwellen erhalten. Schema 39 / Regeln 22 bewahren laufende Altversuche und bereits verdiente Offlineansprüche.
+- [x] Bestehenden Niederlagenhinweis in DE/EN beruhigender formuliert: Gold/Ausbau bleiben, tatsächliche Farmbasis und nächste Vorstoßwelle sichtbar. Im niedrigen Querformat nicht mehr ausgeblendet; Schrift, Farben und vorhandener Rahmen erhalten.
+- [x] Einmaliger DE-/EN-Hinweis zu einzelnen Durchbrüchen und 20 Kernleben zum Wellenstart im vorhandenen Kampfhinweis. Optionale Markierung je Speicherplatz; keine neue Spielmechanik.
+- [x] 126 gezielte Tests und Produktionsbuild bestanden. Vorher-/Nachher-Bilder aus isolierten lokalen Browserpartien, Hoch-/Querformat, Schließen/Neuladen und Einmaligkeit geprüft. [Prüfbericht und Bilder](../../artifacts/idle-bastion/acceptance/farm-feedback-2026-11-14/REPORT.md).
+- [ ] Visuelle Nutzerabnahme. Diese Änderung wurde nicht hochgeladen oder veröffentlicht.
+
 **Ladetitel zentrieren · 13.11.2026 — lokal korrigiert; noch nicht bei Kongregate hochgeladen.**
 
 - [x] Ursache in der tatsächlichen Preview bestätigt: globale `h1`-Regel aus `premium.css` setzt den Ladetitel auf `display:flex` mit links beginnender Anordnung. Der zentrierte Elternrahmen reicht dafür nicht aus.

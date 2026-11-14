@@ -108,7 +108,7 @@ dialog { background:linear-gradient(130deg,#3b3025,#28221b); border-color:#b5946
 @media (max-height:500px) and (orientation:landscape) {
   :root { --header:52px; } .resource-tile { min-height:42px; } .resource-tile strong { font-size:18px; } .resource-tile small { font-size:10px; }
   .goal-ribbon { width:280px; } .goal-copy { padding:6px 9px; } .goal-copy .eyebrow { display:none; } .goal-copy strong { font-size:13px; }
-  .fallback-note { display:none; } .tutorial-card { bottom:calc(var(--dock) + 6px); } .companion-card { min-width:150px; }
+  .fallback-note { top:calc(var(--header) + 12px); } .tutorial-card { bottom:calc(var(--dock) + 6px); } .companion-card { min-width:150px; }
 }
 
 /* Mobile follow-up: browser chrome reserves normal device insets already.

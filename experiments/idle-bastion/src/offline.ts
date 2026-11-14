@@ -43,8 +43,8 @@ function certificate(value: unknown): FarmCertificate | null | undefined {
   if (value === null) return null;
   // Historical departure proofs retain the rule set that earned them. New
   // active proofs are validated separately by farming.ts against current rules.
-  if (!object(value) || !positive(value.wave) || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21].includes(value.rulesVersion as number) || !positive(value.rewardGold)
-    || (value.rewardRemainderUnits !== undefined && (![4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21].includes(value.rulesVersion as number) || !natural(value.rewardRemainderUnits) || value.rewardRemainderUnits > 999))
+  if (!object(value) || !positive(value.wave) || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22].includes(value.rulesVersion as number) || !positive(value.rewardGold)
+    || (value.rewardRemainderUnits !== undefined && (![4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22].includes(value.rulesVersion as number) || !natural(value.rewardRemainderUnits) || value.rewardRemainderUnits > 999))
     || !positive(value.durationMs) || typeof value.fingerprint !== 'string' || value.fingerprint.length < 1
     || value.fingerprint.length > 20_000) return undefined;
   return {

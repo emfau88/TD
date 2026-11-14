@@ -1,0 +1,15 @@
+{
+  "viewport": "390x844 (browser rounding 391x844)",
+  "languages": [
+    "de",
+    "en"
+  ],
+  "buttonStylesUnchanged": true,
+  "lockedRecruitmentOpensIlyra": true,
+  "lockedRecruitmentOffersPurchase": false,
+  "buildingButtonOpensTavern": true,
+  "upgradedBuildingLabel": "Manage tavern",
+  "readyIlyraLabel": "Meet Ilyra",
+  "readyRecruitmentVisibleAndEnabled": true,
+  "errors": []
+}

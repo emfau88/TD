@@ -1,0 +1,24 @@
+[
+  {
+    "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+    "border": "0.914808px solid rgb(143, 119, 78)",
+    "color": "rgb(245, 228, 191)",
+    "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+    "id": "ilyra",
+    "lineHeight": "normal",
+    "padding": "6px",
+    "size": "15px",
+    "weight": "400"
+  },
+  {
+    "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+    "border": "0.914808px solid rgb(143, 119, 78)",
+    "color": "rgb(245, 228, 191)",
+    "font": "\"Spire Clear Digits\", \"Pixelify Sans\", \"Segoe UI\", sans-serif",
+    "id": "building",
+    "lineHeight": "normal",
+    "padding": "8px 12px",
+    "size": "15px",
+    "weight": "400"
+  }
+]
